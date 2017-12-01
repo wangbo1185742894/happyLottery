@@ -13,6 +13,8 @@
 		2DCBB2841FD1000700934D92 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCBB2831FD1000700934D92 /* main.m */; };
 		2DCBB28E1FD1000700934D92 /* happyLotteryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCBB28D1FD1000700934D92 /* happyLotteryTests.m */; };
 		2DCBB2991FD1000700934D92 /* happyLotteryUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCBB2981FD1000700934D92 /* happyLotteryUITests.m */; };
+		2DCBB2BF1FD108B900934D92 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCBB2BE1FD108B900934D92 /* BaseViewController.m */; };
+		2DCBB2C21FD108DA00934D92 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCBB2C11FD108DA00934D92 /* RootViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,11 @@
 		2DCBB2941FD1000700934D92 /* happyLotteryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = happyLotteryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DCBB2981FD1000700934D92 /* happyLotteryUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = happyLotteryUITests.m; sourceTree = "<group>"; };
 		2DCBB29A1FD1000700934D92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2DCBB2BD1FD108B900934D92 /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		2DCBB2BE1FD108B900934D92 /* BaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		2DCBB2C01FD108DA00934D92 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		2DCBB2C11FD108DA00934D92 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		2DCBB2C61FD1098300934D92 /* HappyLottery.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HappyLottery.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,12 +103,12 @@
 		2DCBB2731FD1000700934D92 /* happyLottery */ = {
 			isa = PBXGroup;
 			children = (
-				2DCBB2741FD1000700934D92 /* AppDelegate.h */,
-				2DCBB2751FD1000700934D92 /* AppDelegate.m */,
-				2DCBB27D1FD1000700934D92 /* Assets.xcassets */,
-				2DCBB27F1FD1000700934D92 /* LaunchScreen.storyboard */,
-				2DCBB2821FD1000700934D92 /* Info.plist */,
-				2DCBB2831FD1000700934D92 /* main.m */,
+				2DCBB2B91FD107F100934D92 /* AppDelegate */,
+				2DCBB2BA1FD107F100934D92 /* Class */,
+				2DCBB2B61FD107F000934D92 /* Comment */,
+				2DCBB2BB1FD107F100934D92 /* Libs */,
+				2DCBB2B81FD107F000934D92 /* Other */,
+				2DCBB2B71FD107F000934D92 /* Resource */,
 			);
 			path = happyLottery;
 			sourceTree = "<group>";
@@ -122,6 +129,91 @@
 				2DCBB29A1FD1000700934D92 /* Info.plist */,
 			);
 			path = happyLotteryUITests;
+			sourceTree = "<group>";
+		};
+		2DCBB2B61FD107F000934D92 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Comment;
+			sourceTree = "<group>";
+		};
+		2DCBB2B71FD107F000934D92 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				2DCBB27D1FD1000700934D92 /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		2DCBB2B81FD107F000934D92 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				2DCBB27F1FD1000700934D92 /* LaunchScreen.storyboard */,
+				2DCBB2821FD1000700934D92 /* Info.plist */,
+				2DCBB2831FD1000700934D92 /* main.m */,
+				2DCBB2C61FD1098300934D92 /* HappyLottery.pch */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		2DCBB2B91FD107F100934D92 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				2DCBB2741FD1000700934D92 /* AppDelegate.h */,
+				2DCBB2751FD1000700934D92 /* AppDelegate.m */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		2DCBB2BA1FD107F100934D92 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				2DCBB2BC1FD108A500934D92 /* Base */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		2DCBB2BB1FD107F100934D92 /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Libs;
+			sourceTree = "<group>";
+		};
+		2DCBB2BC1FD108A500934D92 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				2DCBB2C41FD1091A00934D92 /* Controller */,
+				2DCBB2C51FD1091A00934D92 /* Model */,
+				2DCBB2C31FD1091A00934D92 /* View */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		2DCBB2C31FD1091A00934D92 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2DCBB2C41FD1091A00934D92 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2DCBB2BD1FD108B900934D92 /* BaseViewController.h */,
+				2DCBB2BE1FD108B900934D92 /* BaseViewController.m */,
+				2DCBB2C01FD108DA00934D92 /* RootViewController.h */,
+				2DCBB2C11FD108DA00934D92 /* RootViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2DCBB2C51FD1091A00934D92 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,6 +349,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DCBB2841FD1000700934D92 /* main.m in Sources */,
+				2DCBB2BF1FD108B900934D92 /* BaseViewController.m in Sources */,
+				2DCBB2C21FD108DA00934D92 /* RootViewController.m in Sources */,
 				2DCBB2761FD1000700934D92 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -414,7 +508,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TSK429FVKW;
-				INFOPLIST_FILE = happyLottery/Info.plist;
+				GCC_PREFIX_HEADER = happyLottery/Other/HappyLottery.pch;
+				INFOPLIST_FILE = "$(SRCROOT)/happyLottery/Other/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.only.happyLottery;
@@ -429,7 +524,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TSK429FVKW;
-				INFOPLIST_FILE = happyLottery/Info.plist;
+				GCC_PREFIX_HEADER = happyLottery/Other/HappyLottery.pch;
+				INFOPLIST_FILE = "$(SRCROOT)/happyLottery/Other/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.only.happyLottery;
