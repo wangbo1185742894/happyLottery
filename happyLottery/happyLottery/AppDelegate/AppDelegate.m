@@ -7,11 +7,17 @@
 //
 
 #import "AppDelegate.h"
+#import "NewFeatureViewController.h"
+#define KEYAPPVERSION @"appVersion"
+#define KEYCURAPPVERSION @"CFBundleShortVersionString"
 
-@interface AppDelegate ()
+@interface AppDelegate ()<NewFeatureViewDelegate>
 {
     
     UITabBarController *tabBarControllerMain;
+    NSUserDefaults *defaults;
+    NSString * lastVersion;//应用内保存的版本号
+    NSString * curVersion; //当前版本号
 }
 @end
 
@@ -21,11 +27,37 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self loadTabVC];
     _window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    _window.rootViewController = tabBarControllerMain;
     [_window makeKeyAndVisible];
-    
     _window.backgroundColor = [UIColor whiteColor];
+    defaults = [NSUserDefaults standardUserDefaults];
+    
+    [self setNewFeature];
     return YES;
+}
+
+-(void)setNewFeature{
+    
+    lastVersion = [defaults objectForKey:KEYAPPVERSION];
+    curVersion = [NSBundle mainBundle].infoDictionary[KEYCURAPPVERSION];
+    if ([curVersion isEqualToString:lastVersion]) { //
+        _window.rootViewController = tabBarControllerMain;
+    }else{
+        [defaults setObject:curVersion forKey:KEYAPPVERSION];
+        [defaults synchronize];
+        [self showNewFeature];
+    }
+}
+
+-(void)newFeatureSetRootVC{
+    _window.rootViewController = tabBarControllerMain;
+
+}
+
+-(void)showNewFeature{
+    NewFeatureViewController * newFeatureVC = [[NewFeatureViewController alloc]init];
+    newFeatureVC.delegate = self;
+    _window.rootViewController = newFeatureVC;
+    
 }
 
 - (void) loadTabVC {

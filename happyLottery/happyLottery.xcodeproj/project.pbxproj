@@ -25,6 +25,7 @@
 		2DDEDC161FD4DC16007AEBF7 /* MineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DDEDC141FD4DC16007AEBF7 /* MineViewController.xib */; };
 		2DDEDC1A1FD4DE97007AEBF7 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDEDC181FD4DE96007AEBF7 /* Utility.m */; };
 		2DDEDC1D1FD4DEFF007AEBF7 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDEDC1C1FD4DEFF007AEBF7 /* UIView+MJExtension.m */; };
+		2DDEDC221FD4F57F007AEBF7 /* NewFeatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDEDC201FD4F57F007AEBF7 /* NewFeatureViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,8 @@
 		2DDEDC1B1FD4DEFF007AEBF7 /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
 		2DDEDC1C1FD4DEFF007AEBF7 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
 		2DDEDC1E1FD4DFDE007AEBF7 /* Macro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
+		2DDEDC1F1FD4F57F007AEBF7 /* NewFeatureViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewFeatureViewController.h; sourceTree = "<group>"; };
+		2DDEDC201FD4F57F007AEBF7 /* NewFeatureViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewFeatureViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,6 +246,8 @@
 				2DCBB2BE1FD108B900934D92 /* BaseViewController.m */,
 				2DCBB2C01FD108DA00934D92 /* RootViewController.h */,
 				2DCBB2C11FD108DA00934D92 /* RootViewController.m */,
+				2DDEDC1F1FD4F57F007AEBF7 /* NewFeatureViewController.h */,
+				2DDEDC201FD4F57F007AEBF7 /* NewFeatureViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -536,6 +541,7 @@
 				2DDEDC061FD4DBD8007AEBF7 /* BuyLotteryViewController.m in Sources */,
 				2DCBB2761FD1000700934D92 /* AppDelegate.m in Sources */,
 				2DDEDC151FD4DC16007AEBF7 /* MineViewController.m in Sources */,
+				2DDEDC221FD4F57F007AEBF7 /* NewFeatureViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
