@@ -15,6 +15,16 @@
 		2DCBB2991FD1000700934D92 /* happyLotteryUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCBB2981FD1000700934D92 /* happyLotteryUITests.m */; };
 		2DCBB2BF1FD108B900934D92 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCBB2BE1FD108B900934D92 /* BaseViewController.m */; };
 		2DCBB2C21FD108DA00934D92 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCBB2C11FD108DA00934D92 /* RootViewController.m */; };
+		2DDEDC061FD4DBD8007AEBF7 /* BuyLotteryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDEDC041FD4DBD8007AEBF7 /* BuyLotteryViewController.m */; };
+		2DDEDC071FD4DBD8007AEBF7 /* BuyLotteryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DDEDC051FD4DBD8007AEBF7 /* BuyLotteryViewController.xib */; };
+		2DDEDC0B1FD4DBF1007AEBF7 /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDEDC091FD4DBF1007AEBF7 /* DiscoverViewController.m */; };
+		2DDEDC0C1FD4DBF1007AEBF7 /* DiscoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DDEDC0A1FD4DBF1007AEBF7 /* DiscoverViewController.xib */; };
+		2DDEDC101FD4DC03007AEBF7 /* GroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDEDC0E1FD4DC03007AEBF7 /* GroupViewController.m */; };
+		2DDEDC111FD4DC03007AEBF7 /* GroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DDEDC0F1FD4DC03007AEBF7 /* GroupViewController.xib */; };
+		2DDEDC151FD4DC16007AEBF7 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDEDC131FD4DC16007AEBF7 /* MineViewController.m */; };
+		2DDEDC161FD4DC16007AEBF7 /* MineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DDEDC141FD4DC16007AEBF7 /* MineViewController.xib */; };
+		2DDEDC1A1FD4DE97007AEBF7 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDEDC181FD4DE96007AEBF7 /* Utility.m */; };
+		2DDEDC1D1FD4DEFF007AEBF7 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDEDC1C1FD4DEFF007AEBF7 /* UIView+MJExtension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +63,24 @@
 		2DCBB2C01FD108DA00934D92 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		2DCBB2C11FD108DA00934D92 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		2DCBB2C61FD1098300934D92 /* HappyLottery.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HappyLottery.pch; sourceTree = "<group>"; };
+		2DDEDC031FD4DBD8007AEBF7 /* BuyLotteryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BuyLotteryViewController.h; sourceTree = "<group>"; };
+		2DDEDC041FD4DBD8007AEBF7 /* BuyLotteryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BuyLotteryViewController.m; sourceTree = "<group>"; };
+		2DDEDC051FD4DBD8007AEBF7 /* BuyLotteryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BuyLotteryViewController.xib; sourceTree = "<group>"; };
+		2DDEDC081FD4DBF1007AEBF7 /* DiscoverViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiscoverViewController.h; sourceTree = "<group>"; };
+		2DDEDC091FD4DBF1007AEBF7 /* DiscoverViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
+		2DDEDC0A1FD4DBF1007AEBF7 /* DiscoverViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiscoverViewController.xib; sourceTree = "<group>"; };
+		2DDEDC0D1FD4DC03007AEBF7 /* GroupViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupViewController.h; sourceTree = "<group>"; };
+		2DDEDC0E1FD4DC03007AEBF7 /* GroupViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupViewController.m; sourceTree = "<group>"; };
+		2DDEDC0F1FD4DC03007AEBF7 /* GroupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupViewController.xib; sourceTree = "<group>"; };
+		2DDEDC121FD4DC16007AEBF7 /* MineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
+		2DDEDC131FD4DC16007AEBF7 /* MineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
+		2DDEDC141FD4DC16007AEBF7 /* MineViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineViewController.xib; sourceTree = "<group>"; };
+		2DDEDC171FD4DE78007AEBF7 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		2DDEDC181FD4DE96007AEBF7 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
+		2DDEDC191FD4DE96007AEBF7 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		2DDEDC1B1FD4DEFF007AEBF7 /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
+		2DDEDC1C1FD4DEFF007AEBF7 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
+		2DDEDC1E1FD4DFDE007AEBF7 /* Macro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +162,12 @@
 		2DCBB2B61FD107F000934D92 /* Comment */ = {
 			isa = PBXGroup;
 			children = (
+				2DDEDC171FD4DE78007AEBF7 /* Constants.h */,
+				2DDEDC1E1FD4DFDE007AEBF7 /* Macro.h */,
+				2DDEDC191FD4DE96007AEBF7 /* Utility.h */,
+				2DDEDC181FD4DE96007AEBF7 /* Utility.m */,
+				2DDEDC1B1FD4DEFF007AEBF7 /* UIView+MJExtension.h */,
+				2DDEDC1C1FD4DEFF007AEBF7 /* UIView+MJExtension.m */,
 			);
 			path = Comment;
 			sourceTree = "<group>";
@@ -169,6 +203,10 @@
 		2DCBB2BA1FD107F100934D92 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				2DDEDBFF1FD4DBB6007AEBF7 /* BuyLottery(购彩) */,
+				2DDEDBF31FD4DBB5007AEBF7 /* LotteryDiscover(发现) */,
+				2DDEDBFB1FD4DBB5007AEBF7 /* LotteryGroup(圈子) */,
+				2DDEDBF71FD4DBB5007AEBF7 /* LotteryMine(我的) */,
 				2DCBB2BC1FD108A500934D92 /* Base */,
 			);
 			path = Class;
@@ -214,6 +252,142 @@
 			children = (
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		2DDEDBF31FD4DBB5007AEBF7 /* LotteryDiscover(发现) */ = {
+			isa = PBXGroup;
+			children = (
+				2DDEDBF41FD4DBB5007AEBF7 /* Controller */,
+				2DDEDBF51FD4DBB5007AEBF7 /* Model */,
+				2DDEDBF61FD4DBB5007AEBF7 /* View */,
+			);
+			path = "LotteryDiscover(发现)";
+			sourceTree = "<group>";
+		};
+		2DDEDBF41FD4DBB5007AEBF7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2DDEDC081FD4DBF1007AEBF7 /* DiscoverViewController.h */,
+				2DDEDC091FD4DBF1007AEBF7 /* DiscoverViewController.m */,
+				2DDEDC0A1FD4DBF1007AEBF7 /* DiscoverViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2DDEDBF51FD4DBB5007AEBF7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2DDEDBF61FD4DBB5007AEBF7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2DDEDBF71FD4DBB5007AEBF7 /* LotteryMine(我的) */ = {
+			isa = PBXGroup;
+			children = (
+				2DDEDBF81FD4DBB5007AEBF7 /* Controller */,
+				2DDEDBF91FD4DBB5007AEBF7 /* Model */,
+				2DDEDBFA1FD4DBB5007AEBF7 /* View */,
+			);
+			path = "LotteryMine(我的)";
+			sourceTree = "<group>";
+		};
+		2DDEDBF81FD4DBB5007AEBF7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2DDEDC121FD4DC16007AEBF7 /* MineViewController.h */,
+				2DDEDC131FD4DC16007AEBF7 /* MineViewController.m */,
+				2DDEDC141FD4DC16007AEBF7 /* MineViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2DDEDBF91FD4DBB5007AEBF7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2DDEDBFA1FD4DBB5007AEBF7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2DDEDBFB1FD4DBB5007AEBF7 /* LotteryGroup(圈子) */ = {
+			isa = PBXGroup;
+			children = (
+				2DDEDBFC1FD4DBB5007AEBF7 /* Controller */,
+				2DDEDBFD1FD4DBB5007AEBF7 /* Model */,
+				2DDEDBFE1FD4DBB5007AEBF7 /* View */,
+			);
+			path = "LotteryGroup(圈子)";
+			sourceTree = "<group>";
+		};
+		2DDEDBFC1FD4DBB5007AEBF7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2DDEDC0D1FD4DC03007AEBF7 /* GroupViewController.h */,
+				2DDEDC0E1FD4DC03007AEBF7 /* GroupViewController.m */,
+				2DDEDC0F1FD4DC03007AEBF7 /* GroupViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2DDEDBFD1FD4DBB5007AEBF7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2DDEDBFE1FD4DBB5007AEBF7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2DDEDBFF1FD4DBB6007AEBF7 /* BuyLottery(购彩) */ = {
+			isa = PBXGroup;
+			children = (
+				2DDEDC001FD4DBB6007AEBF7 /* Controller */,
+				2DDEDC011FD4DBB6007AEBF7 /* Model */,
+				2DDEDC021FD4DBB6007AEBF7 /* View */,
+			);
+			path = "BuyLottery(购彩)";
+			sourceTree = "<group>";
+		};
+		2DDEDC001FD4DBB6007AEBF7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2DDEDC031FD4DBD8007AEBF7 /* BuyLotteryViewController.h */,
+				2DDEDC041FD4DBD8007AEBF7 /* BuyLotteryViewController.m */,
+				2DDEDC051FD4DBD8007AEBF7 /* BuyLotteryViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2DDEDC011FD4DBB6007AEBF7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2DDEDC021FD4DBB6007AEBF7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,8 +496,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DDEDC071FD4DBD8007AEBF7 /* BuyLotteryViewController.xib in Resources */,
+				2DDEDC0C1FD4DBF1007AEBF7 /* DiscoverViewController.xib in Resources */,
 				2DCBB2811FD1000700934D92 /* LaunchScreen.storyboard in Resources */,
 				2DCBB27E1FD1000700934D92 /* Assets.xcassets in Resources */,
+				2DDEDC111FD4DC03007AEBF7 /* GroupViewController.xib in Resources */,
+				2DDEDC161FD4DC16007AEBF7 /* MineViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,10 +526,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DDEDC101FD4DC03007AEBF7 /* GroupViewController.m in Sources */,
+				2DDEDC1D1FD4DEFF007AEBF7 /* UIView+MJExtension.m in Sources */,
 				2DCBB2841FD1000700934D92 /* main.m in Sources */,
+				2DDEDC0B1FD4DBF1007AEBF7 /* DiscoverViewController.m in Sources */,
 				2DCBB2BF1FD108B900934D92 /* BaseViewController.m in Sources */,
+				2DDEDC1A1FD4DE97007AEBF7 /* Utility.m in Sources */,
 				2DCBB2C21FD108DA00934D92 /* RootViewController.m in Sources */,
+				2DDEDC061FD4DBD8007AEBF7 /* BuyLotteryViewController.m in Sources */,
 				2DCBB2761FD1000700934D92 /* AppDelegate.m in Sources */,
+				2DDEDC151FD4DC16007AEBF7 /* MineViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

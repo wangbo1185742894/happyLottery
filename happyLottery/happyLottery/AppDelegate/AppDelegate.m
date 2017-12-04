@@ -9,20 +9,91 @@
 #import "AppDelegate.h"
 
 @interface AppDelegate ()
-
+{
+    
+    UITabBarController *tabBarControllerMain;
+}
 @end
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [self loadTabVC];
     _window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    _window.rootViewController = [[RootViewController alloc]init];
+    _window.rootViewController = tabBarControllerMain;
     [_window makeKeyAndVisible];
+    
     _window.backgroundColor = [UIColor whiteColor];
     return YES;
 }
 
+- (void) loadTabVC {
+    
+    NSMutableDictionary *tabAttrs = [NSMutableDictionary dictionaryWithCapacity: 3];
+    tabAttrs[@"tabTitle"] = @"购彩";
+    tabAttrs[@"title"] = @"彩票";
+    tabAttrs[@"itemNormal"] = @"selected_icon_goucai";
+    tabAttrs[@"itemSelected"] = @"unselected_icon_goucai";
+    tabAttrs[@"rootVC"] = @"BuyLotteryViewController";
+    UINavigationController *homeNavVC = [self tabNavVCWithAttr: tabAttrs];
+    
+    tabAttrs[@"tabTitle"] = @"圈子";
+    tabAttrs[@"title"] = @"圈子";
+    tabAttrs[@"itemNormal"] = @"selected_icon_kaijiang";
+    tabAttrs[@"itemSelected"] = @"unselected_icon_kaijiang";
+    tabAttrs[@"rootVC"] = @"GroupViewController";
+    UINavigationController *gouCaiNavVC = [self tabNavVCWithAttr: tabAttrs];
+    
+    tabAttrs[@"tabTitle"] = @"发现";
+    tabAttrs[@"title"] = @"发现";
+    tabAttrs[@"itemNormal"] = @"selected_icon_faxian";
+    tabAttrs[@"itemSelected"] = @"unselected_icon_faxian";
+    tabAttrs[@"rootVC"] = @"DiscoverViewController";
+    UINavigationController *faXianNavVC = [self tabNavVCWithAttr: tabAttrs];
+    
+    
+    tabAttrs[@"tabTitle"] = @"我的";
+    tabAttrs[@"title"] = @"我的";
+    tabAttrs[@"itemNormal"] = @"selected_icon_wode";
+    tabAttrs[@"itemSelected"] = @"unselected_icon_wode";
+    tabAttrs[@"rootVC"] = @"MineViewController";
+    UINavigationController *memberNavVC = [self tabNavVCWithAttr: tabAttrs];
+    tabBarControllerMain = [[UITabBarController alloc] init];
+    tabBarControllerMain.viewControllers = @[homeNavVC,gouCaiNavVC,faXianNavVC, memberNavVC];
+    tabBarControllerMain.view.frame = CGRectMake(0, 0, self.window.bounds.size.width, self.window.bounds.size.height);
+    
+    tabBarControllerMain.view.backgroundColor = [UIColor whiteColor];
+    
+    tabBarControllerMain.tabBar.barTintColor = [UIColor whiteColor];
+    
+}
+
+- (UINavigationController *) tabNavVCWithAttr: (NSDictionary*) attrs {
+    UIImage *normalImage = [[UIImage imageNamed: attrs[@"itemNormal"]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UIImage *selectedImage = [[UIImage imageNamed: attrs[@"itemSelected"]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
+    UITabBarItem *tabBarItem = [[UITabBarItem alloc] initWithTitle: attrs[@"tabTitle"] image: normalImage selectedImage: selectedImage];
+    NSDictionary *normalAttributes = @{NSFontAttributeName: [UIFont systemFontOfSize:12], NSForegroundColorAttributeName: RGBCOLOR(72, 72, 72)};
+    [tabBarItem setTitleTextAttributes: normalAttributes forState:UIControlStateNormal];
+    
+    NSDictionary *selectedAttributes = @{NSFontAttributeName: [UIFont systemFontOfSize:12], NSForegroundColorAttributeName: TextCharColor};
+    [tabBarItem setTitleTextAttributes: selectedAttributes forState:UIControlStateSelected];
+    NSString *rootVCClassName = attrs[@"rootVC"];
+    
+    UIViewController *rootVC = [[NSClassFromString(rootVCClassName) alloc] initWithNibName: rootVCClassName bundle: nil];
+    
+    
+    rootVC.title = attrs[@"title"];
+    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController: rootVC];
+    navVC.navigationBar.barTintColor = [Utility colorFromHexString:@"e4431c"];
+    navVC.tabBarItem = tabBarItem;
+    
+    
+    navVC.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor], NSFontAttributeName: [UIFont systemFontOfSize:18]};
+    navVC.navigationBar.tintColor = [UIColor whiteColor];
+    return navVC;
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
