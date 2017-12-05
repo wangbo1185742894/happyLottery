@@ -381,6 +381,7 @@
 + (double) timeintervalForDate: (NSDate *) date {
     return [date timeIntervalSince1970];
 }
+
 + (NSString *)weekDayGetForTimeString:(NSString *)time{
     
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];

@@ -16,7 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    MemberManager *manager = [[MemberManager alloc]init];
+    [manager loginCurUser];
 }
 
 - (void)didReceiveMemoryWarning {

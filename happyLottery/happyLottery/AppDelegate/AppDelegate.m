@@ -26,13 +26,20 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self loadTabVC];
+    
+    [self setKeyWindow];
+    
+    [self setNewFeature];
+    
+    return YES;
+}
+
+-(void)setKeyWindow{
     _window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     [_window makeKeyAndVisible];
     _window.backgroundColor = [UIColor whiteColor];
     defaults = [NSUserDefaults standardUserDefaults];
     
-    [self setNewFeature];
-    return YES;
 }
 
 -(void)setNewFeature{
