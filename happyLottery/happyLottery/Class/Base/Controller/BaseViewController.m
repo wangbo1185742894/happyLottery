@@ -11,6 +11,7 @@
 #import <netdb.h>
 
 
+
 @interface BaseViewController ()
 {
     MBProgressHUD *loadingView;
@@ -23,6 +24,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
   
+}
+
+-(BOOL)isIphoneX{
+    return [Utility isIphoneX];
 }
 -(void)viewWillAppear:(BOOL)animated{
     
@@ -198,5 +203,6 @@
         [loadingView hide: YES];
     }
 }
+
 
 @end

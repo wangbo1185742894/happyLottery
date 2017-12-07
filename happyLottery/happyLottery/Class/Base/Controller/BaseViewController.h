@@ -10,4 +10,16 @@
 
 @interface BaseViewController : UIViewController
 
+- (void) showPromptText: (NSString *) text hideAfterDelay: (NSTimeInterval) interval;
+- (void) showLoadingViewWithText: (NSString *) text
+                  withDetailText: (NSString *) sText;
+- (void) showLoadingText: (NSString *) text;
+- (void) showLoadingViewWithText: (NSString *) text
+                  withDetailText: (NSString *) sText
+                        autoHide: (NSTimeInterval) interval;
+- (void) showLoadingViewWithText: (NSString *) text;
+- (void) showPromptText: (NSString *) text;
+- (void) hidePromptText ;
+- (void) hideLoadingView;
+-(BOOL)isIphoneX;
 @end

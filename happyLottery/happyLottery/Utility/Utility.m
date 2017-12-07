@@ -8,6 +8,7 @@
 #import "Utility.h"
 #import <CommonCrypto/CommonDigest.h>
 #import "Macro.h"
+#import <sys/utsname.h>
 
 @implementation Utility
 + (NSString *) hashIDForString : (NSString *) str {
@@ -434,160 +435,82 @@
     return nil;
 }
 
++(BOOL)isIphoneX{
+    if ([[self iphoneType] isEqualToString:@"iPhone X"]) {
+        return YES;
+    }else{
+        if (KscreenHeight == 812) {
+            return YES;
+        }else{
+            return NO;
+        }
+    }
+    
+}
+
++ (NSString*)iphoneType {
+    
+    
+    struct utsname systemInfo;
+    
+    uname(&systemInfo);
+    
+    NSString*platform = [NSString stringWithCString: systemInfo.machine encoding:NSASCIIStringEncoding];
+    
+    if([platform isEqualToString:@"iPhone1,1"]) return @"iPhone 2G";
+    
+    if([platform isEqualToString:@"iPhone1,2"]) return @"iPhone 3G";
+    
+    if([platform isEqualToString:@"iPhone2,1"]) return @"iPhone 3GS";
+    
+    if([platform isEqualToString:@"iPhone3,1"]) return @"iPhone 4";
+    
+    if([platform isEqualToString:@"iPhone3,2"]) return @"iPhone 4";
+    
+    if([platform isEqualToString:@"iPhone3,3"]) return @"iPhone 4";
+    
+    if([platform isEqualToString:@"iPhone4,1"]) return @"iPhone 4S";
+    
+    if([platform isEqualToString:@"iPhone5,1"]) return @"iPhone 5";
+    
+    if([platform isEqualToString:@"iPhone5,2"]) return @"iPhone 5";
+    
+    if([platform isEqualToString:@"iPhone5,3"]) return @"iPhone 5c";
+    
+    if([platform isEqualToString:@"iPhone5,4"]) return @"iPhone 5c";
+    
+    if([platform isEqualToString:@"iPhone6,1"]) return @"iPhone 5s";
+    
+    if([platform isEqualToString:@"iPhone6,2"]) return @"iPhone 5s";
+    
+    if([platform isEqualToString:@"iPhone7,1"]) return @"iPhone 6 Plus";
+    
+    if([platform isEqualToString:@"iPhone7,2"]) return @"iPhone 6";
+    
+    if([platform isEqualToString:@"iPhone8,1"]) return @"iPhone 6s";
+    
+    if([platform isEqualToString:@"iPhone8,2"]) return @"iPhone 6s Plus";
+    
+    if([platform isEqualToString:@"iPhone8,4"]) return @"iPhone SE";
+    
+    if([platform isEqualToString:@"iPhone9,1"]) return @"iPhone 7";
+    
+    if([platform isEqualToString:@"iPhone9,2"]) return @"iPhone 7 Plus";
+    
+    if([platform isEqualToString:@"iPhone10,1"]) return @"iPhone 8";
+    
+    if([platform isEqualToString:@"iPhone10,4"]) return @"iPhone 8";
+    
+    if([platform isEqualToString:@"iPhone10,2"]) return @"iPhone 8 Plus";
+    
+    if([platform isEqualToString:@"iPhone10,5"]) return @"iPhone 8 Plus";
+    
+    if([platform isEqualToString:@"iPhone10,3"]) return @"iPhone X";
+    
+    if([platform isEqualToString:@"iPhone10,6"]) return @"iPhone X";
+    
+    return @"";
+}
+
 @end
 
-/*
-   //Regular Expression to check numeric only
-   static NSString * const InputValidationErrorDomain = @"InputValidationErrorDomain";
-   - (BOOL) validateInput:(UITextField *)input error:(NSError**) error
-   {
-    NSError *regError = nil;
-    NSRegularExpression *regex = [NSRegularExpression
-                                  regularExpressionWithPattern:@"^[0-9]*$"
-                                  options:NSRegularExpressionAnchorsMatchLines
-                                  error:&regError];
-
-    NSUInteger numberOfMatches = [regex
-                                  numberOfMatchesInString:[input text]
-                                  options:NSMatchingAnchored
-                                  range:NSMakeRange(0, [[input text] length])];
-
-    // if there is not a single match
-    // then return an error and NO
-    if (numberOfMatches == 0)
-    {
-        if (error != nil)
-        {
-            NSString *description = NSLocalizedString(@"Input Validation Failed", @"");
-            NSString *reason = NSLocalizedString(@"The input can only contain numerical values", @"");
-
-            NSArray *objArray = [NSArray arrayWithObjects:description, reason, nil];
-            NSArray *keyArray = [NSArray arrayWithObjects:NSLocalizedDescriptionKey,
-                                 NSLocalizedFailureReasonErrorKey, nil];
-
-            NSDictionary *userInfo = [NSDictionary dictionaryWithObjects:objArray
-                                                                 forKeys:keyArray];
- *error = [NSError errorWithDomain:InputValidationErrorDomain
-                                         code:1001
-                                     userInfo:userInfo];
-        }
-
-        return NO;
-    }
-
-    return YES;
-   }
-
-   //1. nsmutablearray customized sort function
-   //p1 and p2 are the two separate entity for compare
-   static int comparePersonsUsingSelector(id p1, id p2, void *context)
-   {
-    // cast context to what we know it really is:  an NSString
-    NSString *methodName = context;
-    SEL methodSelector = NSSelectorFromString(methodName);
-    id value1 = objc_msgSend(p1, methodSelector);
-    id value2 = objc_msgSend(p2, methodSelector);
-
-    //    return [value1 compare:value2];
-    float firstAge = [(NSString *)value1 floatValue];
-    float secondAge = [(NSString *)value2 floatValue];
-    if (firstAge > secondAge) {
-        return NSOrderedDescending;
-    } else if (firstAge < secondAge) {
-        return NSOrderedAscending;
-    } else {
-        return NSOrderedSame;
-    }
-
-   }
-
-   - (void)viewDidLoad {
-    [super viewDidLoad];
-    [self.saveGasStationArray sortUsingFunction:comparePersonsUsingSelector context:@"gasStationDistance"];
-
-   }
-
-   //2. call method at run time
-
-   typedef double (*FnPtrGet) (id, SEL, CLLocation*);
- +(double)returnMeDistanceFrom:(CLLocation *)cl to:(CLLocation *)tocl{
-    id target = cl;
-    NSString *targetCallMethod = @"";
-    NSString *version = @"3.2";
-    NSString *systemVersion = [[UIDevice currentDevice] systemVersion];
-    if ([systemVersion compare:version options:NSNumericSearch] != NSOrderedDescending) {
-        targetCallMethod = @"getDistanceFrom:";
-    } else {
-        targetCallMethod = @"distanceFromLocation:";
-    }
-
-    SEL method =  NSSelectorFromString(targetCallMethod);
-    IMP mFunc = [target methodForSelector:method];
-
-    FnPtrGet func = (FnPtrGet)mFunc;
-
-    double distance =  func(target, method, tocl);
-    return distance;
-   }
-
-
-   groupAnimation {
-     CGPoint fromPoint = CGPointMake(97, 258);
-     CGPoint toPoint = CGPointMake(300, 400);
-
-     UIBezierPath *movePath = [UIBezierPath bezierPath];
-     [movePath moveToPoint:fromPoint];
-
-     [movePath addQuadCurveToPoint:toPoint
-     controlPoint:CGPointMake(toPoint.x,fromPoint.y)];
-
-     CAKeyframeAnimation *moveAnim = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-     moveAnim.path = movePath.CGPath;
-     moveAnim.removedOnCompletion = NO;
-
-     CABasicAnimation *scaleAnim = [CABasicAnimation animationWithKeyPath:@"transform"];
-     scaleAnim.fromValue = [NSValue valueWithCATransform3D:CATransform3DIdentity];
-     scaleAnim.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(0.1, 0.1, 0.1)];
-     scaleAnim.removedOnCompletion = NO;
-
-     CABasicAnimation *opacityAnim = [CABasicAnimation animationWithKeyPath:@"alpha"];
-     opacityAnim.fromValue = [NSNumber numberWithFloat:1.0];
-     opacityAnim.toValue = [NSNumber numberWithFloat:0.0];
-     opacityAnim.removedOnCompletion = NO;
-
-     CAAnimationGroup *animGroup = [CAAnimationGroup animation];
-     animGroup.animations = [NSArray arrayWithObjects:moveAnim,scaleAnim,opacityAnim,nil];
-     animGroup.duration = 2;
-     [imgView.layer addAnimation:animGroup forKey:nil];
-     [imgView performSelector: @selector(removeFromSuperview) withObject: nil afterDelay:2];
-   }
-
-   save view as a picture {
-     UIGraphicsBeginImageContext(pictureView.bounds.size);
-
-
-     [pictureView.layer renderInContext:UIGraphicsGetCurrentContext()];
-
-     UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
-
-     UIGraphicsEndImageContext();
-   }
-   screen shot {
-     CGImageRef screen = UIGetScreenImage();
-     UIImage* screenImage = [UIImage imageWithCGImage:screen];
-     CGImageRelease(screen);
-   }
-   get coordinate from an address  {
-   http://maps.google.com/maps/geo?q=杭州市文三路477号&output=xml
-   http://maps.google.com/maps/geo?q=杭州市文三路477号&output=json
-   }
-   color components {
-     CGColorRef color = currentColor.CGColor;
-     const CGFloat *components = CGColorGetComponents(color);
-     CGFloat red = components[0];
-     CGFloat green = components[1];
-     CGFloat blue = components[2];
-
-     glColor4f(red,green, blue, 1.0);
-   }
- */

@@ -5,6 +5,9 @@
 //  Copyright 2011 AMP. All rights reserved.
 //
 
+#define KscreenWidth CGRectGetWidth([UIScreen mainScreen].bounds)
+#define KscreenHeight CGRectGetHeight([UIScreen mainScreen].bounds)
+
 #define StrFromFloat(F)     [NSString stringWithFormat : @ "%f", F]
 #define StrFromInt(I)       [NSString stringWithFormat : @ "%d", I]
 #define StrFromFloat(F)     [NSString stringWithFormat : @ "%f", F]

@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D02BA091FD6374A00042E03 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D02B9F91FD6374A00042E03 /* MBProgressHUD.m */; };
+		2D4B174E1FD7B9270034B708 /* WBAdsImgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B174D1FD7B9270034B708 /* WBAdsImgView.m */; };
+		2D4B1DC31FD7D6030034B708 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B1DC21FD7D6030034B708 /* MBProgressHUD.m */; };
+		2D4B1E1C1FD8C8080034B708 /* launchImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D4B1E1B1FD8C8070034B708 /* launchImage@2x.png */; };
+		2D4B1E201FD8C9180034B708 /* ad_home1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D4B1E1D1FD8C9180034B708 /* ad_home1.png */; };
+		2D4B1E211FD8C9180034B708 /* ad_home3.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D4B1E1E1FD8C9180034B708 /* ad_home3.png */; };
+		2D4B1E221FD8C9180034B708 /* ad_home2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D4B1E1F1FD8C9180034B708 /* ad_home2.png */; };
 		2DCBB2761FD1000700934D92 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCBB2751FD1000700934D92 /* AppDelegate.m */; };
 		2DCBB27E1FD1000700934D92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DCBB27D1FD1000700934D92 /* Assets.xcassets */; };
 		2DCBB2811FD1000700934D92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DCBB27F1FD1000700934D92 /* LaunchScreen.storyboard */; };
@@ -93,8 +98,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2D02B9F81FD6374A00042E03 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		2D02B9F91FD6374A00042E03 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		2D4B174C1FD7B9270034B708 /* WBAdsImgView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBAdsImgView.h; sourceTree = "<group>"; };
+		2D4B174D1FD7B9270034B708 /* WBAdsImgView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBAdsImgView.m; sourceTree = "<group>"; };
+		2D4B1DC11FD7D6030034B708 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		2D4B1DC21FD7D6030034B708 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		2D4B1E1B1FD8C8070034B708 /* launchImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launchImage@2x.png"; sourceTree = "<group>"; };
+		2D4B1E1D1FD8C9180034B708 /* ad_home1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ad_home1.png; sourceTree = "<group>"; };
+		2D4B1E1E1FD8C9180034B708 /* ad_home3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ad_home3.png; sourceTree = "<group>"; };
+		2D4B1E1F1FD8C9180034B708 /* ad_home2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ad_home2.png; sourceTree = "<group>"; };
 		2DCBB2711FD1000700934D92 /* happyLottery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = happyLottery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DCBB2741FD1000700934D92 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2DCBB2751FD1000700934D92 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -257,14 +268,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2D02B9EA1FD6374A00042E03 /* MBHUD */ = {
+		2D4B1DB41FD7D1F90034B708 /* MBHUD */ = {
 			isa = PBXGroup;
 			children = (
-				2D02B9F81FD6374A00042E03 /* MBProgressHUD.h */,
-				2D02B9F91FD6374A00042E03 /* MBProgressHUD.m */,
+				2D4B1DC11FD7D6030034B708 /* MBProgressHUD.h */,
+				2D4B1DC21FD7D6030034B708 /* MBProgressHUD.m */,
 			);
-			name = MBHUD;
-			path = ../../../../ziyouguoguanDEV/Lottery/Vendor/MBHUD;
+			path = MBHUD;
 			sourceTree = "<group>";
 		};
 		2DCBB2681FD1000700934D92 = {
@@ -332,6 +342,10 @@
 			isa = PBXGroup;
 			children = (
 				2DCBB27D1FD1000700934D92 /* Assets.xcassets */,
+				2D4B1E1D1FD8C9180034B708 /* ad_home1.png */,
+				2D4B1E1F1FD8C9180034B708 /* ad_home2.png */,
+				2D4B1E1E1FD8C9180034B708 /* ad_home3.png */,
+				2D4B1E1B1FD8C8070034B708 /* launchImage@2x.png */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -374,7 +388,7 @@
 		2DCBB2BB1FD107F100934D92 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
-				2D02B9EA1FD6374A00042E03 /* MBHUD */,
+				2D4B1DB41FD7D1F90034B708 /* MBHUD */,
 				2DDEDC6D1FD568A4007AEBF7 /* AFNetworking */,
 				2DDEDC4B1FD568A4007AEBF7 /* SDWebImage */,
 				2DDEDC361FD521A0007AEBF7 /* XMLDictionary */,
@@ -560,6 +574,8 @@
 		2DDEDC021FD4DBB6007AEBF7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2D4B174C1FD7B9270034B708 /* WBAdsImgView.h */,
+				2D4B174D1FD7B9270034B708 /* WBAdsImgView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -814,11 +830,15 @@
 			files = (
 				2DDEDC071FD4DBD8007AEBF7 /* BuyLotteryViewController.xib in Resources */,
 				2DDEDC0C1FD4DBF1007AEBF7 /* DiscoverViewController.xib in Resources */,
+				2D4B1E221FD8C9180034B708 /* ad_home2.png in Resources */,
 				2DCBB2811FD1000700934D92 /* LaunchScreen.storyboard in Resources */,
 				2DDEDE761FD568C9007AEBF7 /* LICENSE in Resources */,
 				2DCBB27E1FD1000700934D92 /* Assets.xcassets in Resources */,
+				2D4B1E211FD8C9180034B708 /* ad_home3.png in Resources */,
 				2DDEDC111FD4DC03007AEBF7 /* GroupViewController.xib in Resources */,
 				2DDEDE771FD568C9007AEBF7 /* README.md in Resources */,
+				2D4B1E201FD8C9180034B708 /* ad_home1.png in Resources */,
+				2D4B1E1C1FD8C8080034B708 /* launchImage@2x.png in Resources */,
 				2DDEDC161FD4DC16007AEBF7 /* MineViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -851,10 +871,10 @@
 				2DDEDE5D1FD568C9007AEBF7 /* MKAnnotationView+WebCache.m in Sources */,
 				2DDEDE7E1FD568C9007AEBF7 /* UIImageView+AFNetworking.m in Sources */,
 				2DDEDC101FD4DC03007AEBF7 /* GroupViewController.m in Sources */,
+				2D4B1DC31FD7D6030034B708 /* MBProgressHUD.m in Sources */,
 				2DDEDE801FD568C9007AEBF7 /* UIRefreshControl+AFNetworking.m in Sources */,
 				2DDEDC1D1FD4DEFF007AEBF7 /* UIView+MJExtension.m in Sources */,
 				2DCBB2841FD1000700934D92 /* main.m in Sources */,
-				2D02BA091FD6374A00042E03 /* MBProgressHUD.m in Sources */,
 				2DDEDE731FD568C9007AEBF7 /* AFURLRequestSerialization.m in Sources */,
 				2DDEDE7C1FD568C9007AEBF7 /* UIAlertView+AFNetworking.m in Sources */,
 				2DDEDE6F1FD568C9007AEBF7 /* AFHTTPSessionManager.m in Sources */,
@@ -873,6 +893,7 @@
 				2DDEDE661FD568C9007AEBF7 /* UIButton+WebCache.m in Sources */,
 				2DDEDC2D1FD51C8B007AEBF7 /* SOAPResponse.m in Sources */,
 				2DDEDE791FD568C9007AEBF7 /* AFImageDownloader.m in Sources */,
+				2D4B174E1FD7B9270034B708 /* WBAdsImgView.m in Sources */,
 				2DDEDC3D1FD521D0007AEBF7 /* GTMBase64.m in Sources */,
 				2DDEDE7B1FD568C9007AEBF7 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				2DDEDC471FD52562007AEBF7 /* GlobalInstance.m in Sources */,

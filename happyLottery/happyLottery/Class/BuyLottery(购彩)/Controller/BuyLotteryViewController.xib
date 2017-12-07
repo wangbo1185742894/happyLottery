@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BuyLotteryViewController">
             <connections>
+                <outlet property="scrContentView" destination="0Aq-6s-ooa" id="LvL-Ta-7jo"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,7 +19,35 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fa9-CY-iCG">
+                    <rect key="frame" x="0.0" y="-20" width="375" height="687"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Aq-6s-ooa">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="700"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="700" id="Gty-Is-B4q"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="0Aq-6s-ooa" firstAttribute="leading" secondItem="fa9-CY-iCG" secondAttribute="leading" id="RUF-cm-wKW"/>
+                        <constraint firstItem="0Aq-6s-ooa" firstAttribute="top" secondItem="fa9-CY-iCG" secondAttribute="top" id="TSg-2B-qgf"/>
+                        <constraint firstAttribute="trailing" secondItem="0Aq-6s-ooa" secondAttribute="trailing" id="cQz-v0-WW8"/>
+                        <constraint firstAttribute="bottom" secondItem="0Aq-6s-ooa" secondAttribute="bottom" id="tjx-Id-H2w"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fa9-CY-iCG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="-20" id="dgH-hC-1BQ"/>
+                <constraint firstAttribute="bottom" secondItem="fa9-CY-iCG" secondAttribute="bottom" id="em4-cd-oIu"/>
+                <constraint firstItem="fa9-CY-iCG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lEJ-gb-g5t"/>
+                <constraint firstAttribute="trailing" secondItem="fa9-CY-iCG" secondAttribute="trailing" id="nWk-Q2-r6o"/>
+                <constraint firstItem="0Aq-6s-ooa" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="pWD-de-DMY"/>
+            </constraints>
+            <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>
     </objects>
 </document>
