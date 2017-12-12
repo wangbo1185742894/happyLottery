@@ -72,14 +72,6 @@
 
 #define kRadianToDegrees(radian) (radian*180.0)/(M_PI)
 
-//视图左边留白距离
-#define LEFTPADDING 15
-
-//十一选五每天最大期数
-#define MAXQI11X5 88
-
-//}
-
 #define ColorFromImage(imageName) [UIColor colorWithPatternImage: [UIImage imageNamed: imageName]]
 #define RGBCOLOR(r,g,b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1]
 #define RGBACOLOR(r,g,b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
