@@ -118,10 +118,16 @@
 -(void)timeLabel
 {
     _i += 0.01;
-    label1.text = [NSString stringWithFormat:@"%.0f%%",_i*100.0];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        label1.text = [NSString stringWithFormat:@"%.0f%%",_i*100.0];
+    });
+    
     
     if (_i >= self.progress) {
-        label1.text = [NSString stringWithFormat:@"%.0f%%",self.progress*100];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            label1.text = [NSString stringWithFormat:@"%.0f%%",self.progress*100];
+        });
+        
         [progressTimer invalidate];
         progressTimer = nil;
         
