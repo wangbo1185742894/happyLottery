@@ -126,6 +126,19 @@
 		2DDEDE7F1FD568C9007AEBF7 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDEDC961FD568A4007AEBF7 /* UIProgressView+AFNetworking.m */; };
 		2DDEDE801FD568C9007AEBF7 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDEDC981FD568A4007AEBF7 /* UIRefreshControl+AFNetworking.m */; };
 		2DDEDE811FD568C9007AEBF7 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDEDC9A1FD568A4007AEBF7 /* UIWebView+AFNetworking.m */; };
+		F9DC698C1FDF7CF5007D384D /* Mine.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9DC698B1FDF7CF5007D384D /* Mine.plist */; };
+		F9DC69951FDF878D007D384D /* MyOrderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DC69931FDF878D007D384D /* MyOrderListViewController.m */; };
+		F9DC69961FDF878D007D384D /* MyOrderListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9DC69941FDF878D007D384D /* MyOrderListViewController.xib */; };
+		F9DC699A1FDF888F007D384D /* MyFavoriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DC69981FDF888F007D384D /* MyFavoriteViewController.m */; };
+		F9DC699B1FDF888F007D384D /* MyFavoriteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9DC69991FDF888F007D384D /* MyFavoriteViewController.xib */; };
+		F9DC699F1FDF88E5007D384D /* IntegralMallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DC699D1FDF88E5007D384D /* IntegralMallViewController.m */; };
+		F9DC69A01FDF88E5007D384D /* IntegralMallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9DC699E1FDF88E5007D384D /* IntegralMallViewController.xib */; };
+		F9DC69A41FDF8929007D384D /* MyShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DC69A21FDF8929007D384D /* MyShareViewController.m */; };
+		F9DC69A51FDF8929007D384D /* MyShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9DC69A31FDF8929007D384D /* MyShareViewController.xib */; };
+		F9DC69A91FDF8957007D384D /* MyHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DC69A71FDF8957007D384D /* MyHelpViewController.m */; };
+		F9DC69AA1FDF8957007D384D /* MyHelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9DC69A81FDF8957007D384D /* MyHelpViewController.xib */; };
+		F9DC69AE1FDF898A007D384D /* MySettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DC69AC1FDF898A007D384D /* MySettingViewController.m */; };
+		F9DC69AF1FDF898A007D384D /* MySettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9DC69AD1FDF898A007D384D /* MySettingViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -341,6 +354,25 @@
 		2DDEDC981FD568A4007AEBF7 /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		2DDEDC991FD568A4007AEBF7 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		2DDEDC9A1FD568A4007AEBF7 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		F9DC698B1FDF7CF5007D384D /* Mine.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Mine.plist; sourceTree = "<group>"; };
+		F9DC69921FDF878D007D384D /* MyOrderListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyOrderListViewController.h; sourceTree = "<group>"; };
+		F9DC69931FDF878D007D384D /* MyOrderListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyOrderListViewController.m; sourceTree = "<group>"; };
+		F9DC69941FDF878D007D384D /* MyOrderListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyOrderListViewController.xib; sourceTree = "<group>"; };
+		F9DC69971FDF888F007D384D /* MyFavoriteViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyFavoriteViewController.h; sourceTree = "<group>"; };
+		F9DC69981FDF888F007D384D /* MyFavoriteViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyFavoriteViewController.m; sourceTree = "<group>"; };
+		F9DC69991FDF888F007D384D /* MyFavoriteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyFavoriteViewController.xib; sourceTree = "<group>"; };
+		F9DC699C1FDF88E5007D384D /* IntegralMallViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntegralMallViewController.h; sourceTree = "<group>"; };
+		F9DC699D1FDF88E5007D384D /* IntegralMallViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntegralMallViewController.m; sourceTree = "<group>"; };
+		F9DC699E1FDF88E5007D384D /* IntegralMallViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntegralMallViewController.xib; sourceTree = "<group>"; };
+		F9DC69A11FDF8929007D384D /* MyShareViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyShareViewController.h; sourceTree = "<group>"; };
+		F9DC69A21FDF8929007D384D /* MyShareViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyShareViewController.m; sourceTree = "<group>"; };
+		F9DC69A31FDF8929007D384D /* MyShareViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyShareViewController.xib; sourceTree = "<group>"; };
+		F9DC69A61FDF8957007D384D /* MyHelpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyHelpViewController.h; sourceTree = "<group>"; };
+		F9DC69A71FDF8957007D384D /* MyHelpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyHelpViewController.m; sourceTree = "<group>"; };
+		F9DC69A81FDF8957007D384D /* MyHelpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyHelpViewController.xib; sourceTree = "<group>"; };
+		F9DC69AB1FDF898A007D384D /* MySettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MySettingViewController.h; sourceTree = "<group>"; };
+		F9DC69AC1FDF898A007D384D /* MySettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MySettingViewController.m; sourceTree = "<group>"; };
+		F9DC69AD1FDF898A007D384D /* MySettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MySettingViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -636,6 +668,7 @@
 				2DDEDBF81FD4DBB5007AEBF7 /* Controller */,
 				2DDEDBF91FD4DBB5007AEBF7 /* Model */,
 				2DDEDBFA1FD4DBB5007AEBF7 /* View */,
+				F9DC698B1FDF7CF5007D384D /* Mine.plist */,
 			);
 			path = "LotteryMine(我的)";
 			sourceTree = "<group>";
@@ -646,6 +679,24 @@
 				2DDEDC121FD4DC16007AEBF7 /* MineViewController.h */,
 				2DDEDC131FD4DC16007AEBF7 /* MineViewController.m */,
 				2DDEDC141FD4DC16007AEBF7 /* MineViewController.xib */,
+				F9DC69921FDF878D007D384D /* MyOrderListViewController.h */,
+				F9DC69931FDF878D007D384D /* MyOrderListViewController.m */,
+				F9DC69941FDF878D007D384D /* MyOrderListViewController.xib */,
+				F9DC69971FDF888F007D384D /* MyFavoriteViewController.h */,
+				F9DC69981FDF888F007D384D /* MyFavoriteViewController.m */,
+				F9DC69991FDF888F007D384D /* MyFavoriteViewController.xib */,
+				F9DC699C1FDF88E5007D384D /* IntegralMallViewController.h */,
+				F9DC699D1FDF88E5007D384D /* IntegralMallViewController.m */,
+				F9DC699E1FDF88E5007D384D /* IntegralMallViewController.xib */,
+				F9DC69A11FDF8929007D384D /* MyShareViewController.h */,
+				F9DC69A21FDF8929007D384D /* MyShareViewController.m */,
+				F9DC69A31FDF8929007D384D /* MyShareViewController.xib */,
+				F9DC69A61FDF8957007D384D /* MyHelpViewController.h */,
+				F9DC69A71FDF8957007D384D /* MyHelpViewController.m */,
+				F9DC69A81FDF8957007D384D /* MyHelpViewController.xib */,
+				F9DC69AB1FDF898A007D384D /* MySettingViewController.h */,
+				F9DC69AC1FDF898A007D384D /* MySettingViewController.m */,
+				F9DC69AD1FDF898A007D384D /* MySettingViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -996,9 +1047,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9DC69A51FDF8929007D384D /* MyShareViewController.xib in Resources */,
+				F9DC699B1FDF888F007D384D /* MyFavoriteViewController.xib in Resources */,
+				F9DC69AF1FDF898A007D384D /* MySettingViewController.xib in Resources */,
 				2DDEDC071FD4DBD8007AEBF7 /* BuyLotteryViewController.xib in Resources */,
+
+				F9DC69AA1FDF8957007D384D /* MyHelpViewController.xib in Resources */,
+
 				2D4B1E751FDF684E0034B708 /* fenleixian@2x.png in Resources */,
 				2D4B1E6F1FDF684E0034B708 /* faxian_defealt@2x.png in Resources */,
+
 				2DDEDC0C1FD4DBF1007AEBF7 /* DiscoverViewController.xib in Resources */,
 				2D4B1E871FDF684E0034B708 /* yuce@2x.png in Resources */,
 				2D4B1E7F1FDF684E0034B708 /* weishoucang@2x.png in Resources */,
@@ -1010,6 +1068,9 @@
 				2D4B1E8A1FDF684E0034B708 /* yuce_defealt@3x.png in Resources */,
 				2D4B1E8D1FDF684E0034B708 /* yucezhanji@2x.png in Resources */,
 				2DCBB2811FD1000700934D92 /* LaunchScreen.storyboard in Resources */,
+
+				F9DC698C1FDF7CF5007D384D /* Mine.plist in Resources */,
+
 				2D4B1E3B1FDE717C0034B708 /* newBack@3x.png in Resources */,
 				2D4B1E761FDF684E0034B708 /* fenleixian@3x.png in Resources */,
 				2D4B1E6D1FDF684E0034B708 /* duibiao@3x.png in Resources */,
@@ -1031,12 +1092,16 @@
 				2D4B1E781FDF684E0034B708 /* home_defealt@3x.png in Resources */,
 				2D4B1E7B1FDF684E0034B708 /* quanzi_defealt@2x.png in Resources */,
 				2DDEDC111FD4DC03007AEBF7 /* GroupViewController.xib in Resources */,
+				F9DC69A01FDF88E5007D384D /* IntegralMallViewController.xib in Resources */,
 				2DDEDE771FD568C9007AEBF7 /* README.md in Resources */,
 				2D4B1E201FD8C9180034B708 /* ad_home1.png in Resources */,
 				2D4B1E951FDF7BD20034B708 /* NewsListCell.xib in Resources */,
 				2D4B1E1C1FD8C8080034B708 /* launchImage@2x.png in Resources */,
 				2D4B1E811FDF684E0034B708 /* wode_defealt@2x.png in Resources */,
 				2DDEDC161FD4DC16007AEBF7 /* MineViewController.xib in Resources */,
+
+				F9DC69961FDF878D007D384D /* MyOrderListViewController.xib in Resources */,
+
 				2D4B1E401FDF652C0034B708 /* HomeMenuItemView.xib in Resources */,
 				2D4B1E791FDF684E0034B708 /* home_select@2x.png in Resources */,
 				2D4B1E6B1FDF684E0034B708 /* bifenzhibo@2x.png in Resources */,
@@ -1052,6 +1117,7 @@
 				2D4B1E6C1FDF684E0034B708 /* bifenzhibo@3x.png in Resources */,
 				2D4B1E371FDE241F0034B708 /* JCZQPlayViewController.xib in Resources */,
 				2D4B1E731FDF684E0034B708 /* fengkuangjingcai@2x.png in Resources */,
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1077,6 +1143,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DDEDE611FD568C9007AEBF7 /* SDWebImageDecoder.m in Sources */,
+				F9DC69AE1FDF898A007D384D /* MySettingViewController.m in Sources */,
+				F9DC69A41FDF8929007D384D /* MyShareViewController.m in Sources */,
 				2DDEDE781FD568C9007AEBF7 /* AFAutoPurgingImageCache.m in Sources */,
 				2DDEDC441FD5254C007AEBF7 /* User.m in Sources */,
 				2DDEDE6D1FD568C9007AEBF7 /* AFHTTPRequestOperation.m in Sources */,
@@ -1114,6 +1182,8 @@
 				2DDEDE6E1FD568C9007AEBF7 /* AFHTTPRequestOperationManager.m in Sources */,
 				2DDEDC0B1FD4DBF1007AEBF7 /* DiscoverViewController.m in Sources */,
 				2DDEDC2F1FD51C8B007AEBF7 /* SOAPRequest.m in Sources */,
+				F9DC69A91FDF8957007D384D /* MyHelpViewController.m in Sources */,
+				F9DC699A1FDF888F007D384D /* MyFavoriteViewController.m in Sources */,
 				2DCBB2BF1FD108B900934D92 /* BaseViewController.m in Sources */,
 				2DDEDE631FD568C9007AEBF7 /* SDWebImageDownloaderOperation.m in Sources */,
 				2DDEDC4A1FD56849007AEBF7 /* Manager.m in Sources */,
@@ -1123,10 +1193,12 @@
 				2DDEDE691FD568C9007AEBF7 /* UIImage+WebP.m in Sources */,
 				2DDEDE641FD568C9007AEBF7 /* SDWebImageManager.m in Sources */,
 				2DDEDE5E1FD568C9007AEBF7 /* NSData+ImageContentType.m in Sources */,
+				F9DC699F1FDF88E5007D384D /* IntegralMallViewController.m in Sources */,
 				2DDEDC061FD4DBD8007AEBF7 /* BuyLotteryViewController.m in Sources */,
 				2DDEDE701FD568C9007AEBF7 /* AFNetworkReachabilityManager.m in Sources */,
 				2DCBB2761FD1000700934D92 /* AppDelegate.m in Sources */,
 				2DDEDC391FD521A0007AEBF7 /* XMLDictionary.m in Sources */,
+				F9DC69951FDF878D007D384D /* MyOrderListViewController.m in Sources */,
 				2DDEDC151FD4DC16007AEBF7 /* MineViewController.m in Sources */,
 				2DDEDC411FD52513007AEBF7 /* LotteryManager.m in Sources */,
 				2D4B1E3F1FDF652C0034B708 /* HomeMenuItemView.m in Sources */,
