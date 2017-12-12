@@ -24,6 +24,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
   
+    [self setNavigationBack];
+    
+}
+
+-(void)setNavigationBack{
+    
+    UIBarButtonItem *backBarButton = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed: @"newBack"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(navigationBackToLastPage)];
+    if (self.navigationController.viewControllers.count == 1) {
+    }else{
+        self.navigationItem.leftBarButtonItem = backBarButton;
+    }
+    
+}
+-(void)navigationBackToLastPage{
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
 -(BOOL)isIphoneX{

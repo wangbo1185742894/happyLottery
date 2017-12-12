@@ -79,8 +79,9 @@
         aniTime = 0.5;
     }
     index = index % _imgUrls.count;
-    [self updataPageCtl];
+    
     [UIView animateWithDuration:aniTime animations:^{
+        [self updataPageCtl];
         scrContentView.contentOffset = CGPointMake(KscreenWidth * index, scrContentView.contentOffset.y);
     }];
     
