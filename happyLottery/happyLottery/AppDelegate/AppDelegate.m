@@ -103,8 +103,8 @@
     tabBarControllerMain.view.frame = CGRectMake(0, 0, self.window.bounds.size.width, self.window.bounds.size.height);
     
     
-    
-    tabBarControllerMain.tabBar.barTintColor =  SystemGray;
+    tabBarControllerMain.tabBar.backgroundColor =  [UIColor blackColor];
+    tabBarControllerMain.tabBar.barTintColor =  [UIColor blackColor];
     
 }
 

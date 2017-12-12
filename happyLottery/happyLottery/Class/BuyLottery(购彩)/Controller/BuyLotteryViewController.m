@@ -11,6 +11,7 @@
 #import "JCZQPlayViewController.h"
 #import "HomeMenuItemView.h"
 #import "NewsListCell.h"
+#import "MyOrderListViewController.h"
 
 #define KNewsListCell @"NewsListCell"
 @interface BuyLotteryViewController ()<WBAdsImgViewDelegate,HomeMenuItemViewDelegate,UITableViewDelegate,UITableViewDataSource>
@@ -39,8 +40,6 @@
    
 }
 
-
-
 -(void)setTableView{
 
     tabForecaseList.delegate = self;
@@ -49,7 +48,13 @@
     tabForecaseList.rowHeight = 117;
     [tabForecaseList reloadData];
     tabForecastListHeight.constant = tabForecaseList.rowHeight * 3;
-    homeViewHeight.constant = tabForecaseList.mj_y + tabForecaseList.rowHeight * 3;
+    CGFloat height = 0;
+    if ([self isIphoneX]) {
+        height = tabForecaseList.mj_y + tabForecaseList.rowHeight * 3 + 20;
+    }else{
+        height = tabForecaseList.mj_y + tabForecaseList.rowHeight * 3;
+    }
+    homeViewHeight.constant = height;
     tabForecaseList.bounces = NO;
 }
 
@@ -63,7 +68,7 @@
     
 }
 -(void)setMenu{
-    curY = adsView.mj_y + adsView.mj_h;
+    curY = adsView.mj_y + adsView.mj_h ;
     menuView = [[UIView alloc]initWithFrame:CGRectMake(0, curY, KscreenWidth, 83)];
     [scrContentView addSubview:menuView];
     
@@ -79,11 +84,14 @@
         menuView.backgroundColor = [UIColor whiteColor];
         [menuView addSubview:menuItem];
     }
-    curY = menuView.mj_h + menuView.mj_y + 5;
+     curY = menuView.mj_h + menuView.mj_y + 10;
+   
 }
 
 -(void)setADSUI{
-    adsView = [[WBAdsImgView alloc]initWithFrame:CGRectMake(0,0, KscreenWidth, 175)];
+
+    adsView = [[WBAdsImgView alloc]initWithFrame:CGRectMake(0,[self isIphoneX]?20:0, KscreenWidth, 175.0/667.0 * KscreenHeight)];
+
     adsView.delegate = self;
     [scrContentView addSubview:adsView];
     [adsView setImageUrlArray:@[@"",@"http://oy9n5uzrj.bkt.clouddn.com/ms/20171205/25b8ff0a955c475bbaf1aa1055dee4a9",@"http://oy9n5uzrj.bkt.clouddn.com/ms/20171128/6d6a844b31f8411e936c91c86ceb1a60"]];
@@ -137,6 +145,9 @@
 }
 
 - (IBAction)actionMoreNews:(UIButton *)sender {
+    MyOrderListViewController * orderVC = [[MyOrderListViewController alloc]init];
+    orderVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:orderVC animated:YES];
 }
 
 @end
