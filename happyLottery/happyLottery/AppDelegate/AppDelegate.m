@@ -72,39 +72,39 @@
     NSMutableDictionary *tabAttrs = [NSMutableDictionary dictionaryWithCapacity: 3];
     tabAttrs[@"tabTitle"] = @"购彩";
     tabAttrs[@"title"] = @"彩票";
-    tabAttrs[@"itemNormal"] = @"selected_icon_goucai";
-    tabAttrs[@"itemSelected"] = @"unselected_icon_goucai";
+    tabAttrs[@"itemNormal"] = @"home_defealt";
+    tabAttrs[@"itemSelected"] = @"home_select";
     tabAttrs[@"rootVC"] = @"BuyLotteryViewController";
     UINavigationController *homeNavVC = [self tabNavVCWithAttr: tabAttrs];
     
     tabAttrs[@"tabTitle"] = @"圈子";
     tabAttrs[@"title"] = @"圈子";
-    tabAttrs[@"itemNormal"] = @"selected_icon_kaijiang";
-    tabAttrs[@"itemSelected"] = @"unselected_icon_kaijiang";
+    tabAttrs[@"itemNormal"] = @"quanzi_defealt";
+    tabAttrs[@"itemSelected"] = @"quanzi_select";
     tabAttrs[@"rootVC"] = @"GroupViewController";
     UINavigationController *gouCaiNavVC = [self tabNavVCWithAttr: tabAttrs];
     
     tabAttrs[@"tabTitle"] = @"发现";
     tabAttrs[@"title"] = @"发现";
-    tabAttrs[@"itemNormal"] = @"selected_icon_faxian";
-    tabAttrs[@"itemSelected"] = @"unselected_icon_faxian";
+    tabAttrs[@"itemNormal"] = @"faxian_defealt";
+    tabAttrs[@"itemSelected"] = @"faxian_select";
     tabAttrs[@"rootVC"] = @"DiscoverViewController";
     UINavigationController *faXianNavVC = [self tabNavVCWithAttr: tabAttrs];
     
     
     tabAttrs[@"tabTitle"] = @"我的";
     tabAttrs[@"title"] = @"我的";
-    tabAttrs[@"itemNormal"] = @"selected_icon_wode";
-    tabAttrs[@"itemSelected"] = @"unselected_icon_wode";
+    tabAttrs[@"itemNormal"] = @"wode_defealt";
+    tabAttrs[@"itemSelected"] = @"wode_select";
     tabAttrs[@"rootVC"] = @"MineViewController";
     UINavigationController *memberNavVC = [self tabNavVCWithAttr: tabAttrs];
     tabBarControllerMain = [[UITabBarController alloc] init];
     tabBarControllerMain.viewControllers = @[homeNavVC,gouCaiNavVC,faXianNavVC, memberNavVC];
     tabBarControllerMain.view.frame = CGRectMake(0, 0, self.window.bounds.size.width, self.window.bounds.size.height);
     
-    tabBarControllerMain.view.backgroundColor = [UIColor whiteColor];
     
-    tabBarControllerMain.tabBar.barTintColor = [UIColor whiteColor];
+    
+    tabBarControllerMain.tabBar.barTintColor =  SystemGray;
     
 }
 
@@ -113,10 +113,10 @@
     UIImage *selectedImage = [[UIImage imageNamed: attrs[@"itemSelected"]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     UITabBarItem *tabBarItem = [[UITabBarItem alloc] initWithTitle: attrs[@"tabTitle"] image: normalImage selectedImage: selectedImage];
-    NSDictionary *normalAttributes = @{NSFontAttributeName: [UIFont systemFontOfSize:12], NSForegroundColorAttributeName: RGBCOLOR(72, 72, 72)};
+    NSDictionary *normalAttributes = @{NSFontAttributeName: [UIFont systemFontOfSize:12], NSForegroundColorAttributeName: SystemLightGray};
     [tabBarItem setTitleTextAttributes: normalAttributes forState:UIControlStateNormal];
     
-    NSDictionary *selectedAttributes = @{NSFontAttributeName: [UIFont systemFontOfSize:12], NSForegroundColorAttributeName: TextCharColor};
+    NSDictionary *selectedAttributes = @{NSFontAttributeName: [UIFont systemFontOfSize:12], NSForegroundColorAttributeName: SystemGreen};
     [tabBarItem setTitleTextAttributes: selectedAttributes forState:UIControlStateSelected];
     NSString *rootVCClassName = attrs[@"rootVC"];
     
@@ -125,7 +125,7 @@
     
     rootVC.title = attrs[@"title"];
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController: rootVC];
-    navVC.navigationBar.barTintColor = [Utility colorFromHexString:@"e4431c"];
+    navVC.navigationBar.barTintColor = SystemGreen;
     navVC.tabBarItem = tabBarItem;
     
     

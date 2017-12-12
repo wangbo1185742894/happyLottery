@@ -10,8 +10,7 @@
 #define TitleTextFont [UIFont systemFontOfSize: 18]
 #define StrFromFloat(F)     [NSString stringWithFormat : @ "%f", F]
 #define StrFromInt(I)       [NSString stringWithFormat : @ "%d", I]
-#define StrFromFloat(F)     [NSString stringWithFormat : @ "%f", F]
-#define StrFromInt(I)       [NSString stringWithFormat : @ "%d", I]
+
 
 #define NumFromBOOL(B)      [NSNumber numberWithBool : B]
 #define NumFromInt(I)       [NSNumber numberWithInt : I]
@@ -60,65 +59,18 @@
 #endif
 
 
-//{ 以下是2.0 版本所需要用到的  颜色 素材。
-
-//用于所有界面的 背景色
-#define MAINBGC RGBCOLOR(245, 245, 245)
-
-
-
-#define KTUIJIANCELLHEIGHT 35.0
-#define KTUIJIANCELLWIDTH 65.0
-#define YUCEREDCOlOR RGBCOLOR(231 , 94, 61)
-//分割线颜色
-#define ISIOS11 [[[UIDevice currentDevice] systemVersion] floatValue] >= 11
-#ifdef ISIOS11
-#define SEPCOLOR RGBCOLOR(240, 240, 240)
-#else
-#define SEPCOLOR RGBCOLOR(218, 218, 218)
-#endif
-
-#define SEPHEIGHT 0.5
-#define SEPLEADING 15
+#define MAINBGC             RGBCOLOR(245, 245, 245)
+#define SystemGray          RGBCOLOR(38, 38, 38)
+#define SystemGreen         RGBCOLOR(18, 199, 146)
+#define SystemBlue          RGBCOLOR(49, 137, 253)
+#define SystemLightGray     RGBCOLOR(141, 141, 141)
 
 //这是 NavigationBar 的背景颜色
-#define NAVORANGECOLOR RGBCOLOR(200, 85, 62)
+
 
 #define kDegreesToRadian(x) (M_PI * (x) / 180.0)
 
 #define kRadianToDegrees(radian) (radian*180.0)/(M_PI)
-
-//所有tableviewCell的选中颜色 使用下列语句设定
-//cell.selectedBackgroundView.backgroundColor = CellSelectedColor;
-#define CellSelectedColor RGBCOLOR(247, 247, 247)
-
-//橘黄色字体颜色(橘色button nor 字色)
-#define TextCharColor RGBCOLOR(232, 79, 42)
-// 倒计时字体橘黄色颜色
-#define TextTimeColor RGBCOLOR(239, 132, 85)
-//橘色button high 字色
-#define TextOrangeColor RGBCOLOR(232, 79, 42)
-
-//一种字体颜色，显示在主背景颜色上的 普通字体颜色  灰色btn nor字色
-#define TEXTGRAYCOLOR RGBCOLOR(72, 72, 72) //偏黑色
-// 灰色btn high 字色
-#define TextLightgrayColor [UIColor lightGrayColor]
-// 开奖结果显示背景的颜色
-#define TextCTZQGreen RGBCOLOR(71, 153, 106)
-//推送中开奖结果显示颜色
-#define TextCTZQBlue  RGBCOLOR(79, 155, 234)
-
-//时间显示的颜色
-#define TIMECOLOR RGBCOLOR(174, 174, 174)
-
-
-#define TextCharColorNomal RGBCOLOR(232, 79, 42)
-
-#define SystemRed  RGBCOLOR(209, 57, 34)
-#define SystemGreen  RGBCOLOR(73, 165, 29)
-#define SystemBlue  RGBCOLOR(94, 154, 210)
-#define SystemGray RGBCOLOR(213, 213, 213)
-#define Systemorange RGBCOLOR(188, 126, 24)
 
 //视图左边留白距离
 #define LEFTPADDING 15
@@ -140,14 +92,6 @@
 
 #define FirstObjectOfArray(A) ([A count] > 0) ? [A objectAtIndex : 0] : nil
 
-//#define LegalString(str)     if (str == nil) { return @ ""; } \
-//    return str;
-//#define isLegalString(str)   if ( (str == nil) ||[str length] < 1 ) { return NO; } \
-//    return YES;
-
-
-
-//debug stuff
 #define ShowCurrentPosition(button) NSLog(@ "\n Function: %s\n Pretty function: %s\n Line: %d\n File: %s\n Object: %@", __func__, __PRETTY_FUNCTION__, __LINE__, __FILE__, button)
 
 #define ShowCurrentLocation NSLog(@ "Current selector: %@, Object class: %@, Filename: %@", NSStringFromSelector(_cmd), NSStringFromClass([self class ]), [[NSString stringWithUTF8String : __FILE__] lastPathComponent])
