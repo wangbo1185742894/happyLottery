@@ -23,9 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  
     [self setNavigationBack];
-    
 }
 
 -(void)setNavigationBack{
@@ -46,6 +44,9 @@
 -(BOOL)isIphoneX{
     return [Utility isIphoneX];
 }
+
+
+
 -(void)viewWillAppear:(BOOL)animated{
     
     [self afnReachabilityTest];

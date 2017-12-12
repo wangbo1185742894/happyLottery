@@ -11,6 +11,7 @@
 #import "JCZQPlayViewController.h"
 #import "HomeMenuItemView.h"
 #import "NewsListCell.h"
+#import "MyOrderListViewController.h"
 
 #define KNewsListCell @"NewsListCell"
 @interface BuyLotteryViewController ()<WBAdsImgViewDelegate,HomeMenuItemViewDelegate,UITableViewDelegate,UITableViewDataSource>
@@ -88,7 +89,9 @@
 }
 
 -(void)setADSUI{
+
     adsView = [[WBAdsImgView alloc]initWithFrame:CGRectMake(0,[self isIphoneX]?20:0, KscreenWidth, 175.0/667.0 * KscreenHeight)];
+
     adsView.delegate = self;
     [scrContentView addSubview:adsView];
     [adsView setImageUrlArray:@[@"",@"http://oy9n5uzrj.bkt.clouddn.com/ms/20171205/25b8ff0a955c475bbaf1aa1055dee4a9",@"http://oy9n5uzrj.bkt.clouddn.com/ms/20171128/6d6a844b31f8411e936c91c86ceb1a60"]];
@@ -142,6 +145,9 @@
 }
 
 - (IBAction)actionMoreNews:(UIButton *)sender {
+    MyOrderListViewController * orderVC = [[MyOrderListViewController alloc]init];
+    orderVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:orderVC animated:YES];
 }
 
 @end

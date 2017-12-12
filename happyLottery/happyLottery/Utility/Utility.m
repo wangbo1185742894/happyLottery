@@ -437,6 +437,7 @@
 
 +(BOOL)isIphoneX{
     if ([[self iphoneType] isEqualToString:@"iPhone X"]) {
+        
         return YES;
     }else{
         if (KscreenHeight == 812) {
