@@ -23,7 +23,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  
+   
+        self.view.frame = CGRectMake(0,[self isIphoneX]?20:0, KscreenWidth, [self isIphoneX]?812:KscreenHeight);
+   
     [self setNavigationBack];
     
 }
@@ -46,6 +48,9 @@
 -(BOOL)isIphoneX{
     return [Utility isIphoneX];
 }
+
+
+
 -(void)viewWillAppear:(BOOL)animated{
     
     [self afnReachabilityTest];

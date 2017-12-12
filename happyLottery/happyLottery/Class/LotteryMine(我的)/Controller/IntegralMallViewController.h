@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IntegralMallViewController : UIViewController
+@interface IntegralMallViewController : BaseViewController
 
 @end

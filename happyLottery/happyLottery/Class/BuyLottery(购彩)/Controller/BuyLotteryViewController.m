@@ -83,7 +83,7 @@
 }
 
 -(void)setADSUI{
-    adsView = [[WBAdsImgView alloc]initWithFrame:CGRectMake(0,[self isIphoneX]?20:0, KscreenWidth, 175)];
+    adsView = [[WBAdsImgView alloc]initWithFrame:CGRectMake(0,0, KscreenWidth, 175)];
     adsView.delegate = self;
     [scrContentView addSubview:adsView];
     [adsView setImageUrlArray:@[@"",@"http://oy9n5uzrj.bkt.clouddn.com/ms/20171205/25b8ff0a955c475bbaf1aa1055dee4a9",@"http://oy9n5uzrj.bkt.clouddn.com/ms/20171128/6d6a844b31f8411e936c91c86ceb1a60"]];

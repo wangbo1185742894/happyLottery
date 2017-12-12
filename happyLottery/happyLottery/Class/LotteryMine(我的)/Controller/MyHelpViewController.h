@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MyHelpViewController : UIViewController
+@interface MyHelpViewController : BaseViewController
 
 @end
