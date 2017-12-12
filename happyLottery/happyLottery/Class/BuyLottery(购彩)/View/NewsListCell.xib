@@ -83,9 +83,6 @@
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
                         <state key="selected" image="yuce_select.png"/>
-                        <connections>
-                            <action selector="actionHomeWin:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="m7A-iV-cGD"/>
-                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ah-Cw-H57">
                         <rect key="frame" x="284" y="93.5" width="71" height="24"/>

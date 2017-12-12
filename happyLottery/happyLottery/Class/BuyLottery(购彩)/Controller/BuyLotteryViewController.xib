@@ -153,7 +153,7 @@
                                                 <color key="titleColor" red="0.070588235289999995" green="0.78039215689999997" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
                                             <connections>
-                                                <action selector="actionMoreNews:" destination="-1" eventType="touchUpInside" id="wJS-gm-1vK"/>
+                                                <action selector="actionMoreForeCast:" destination="-1" eventType="touchUpInside" id="jBt-ba-TEL"/>
                                             </connections>
                                         </button>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fenleixian.png" translatesAutoresizingMaskIntoConstraints="NO" id="Elc-1B-kSE">

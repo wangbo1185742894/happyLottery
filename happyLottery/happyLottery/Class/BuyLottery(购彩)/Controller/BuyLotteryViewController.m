@@ -11,7 +11,8 @@
 #import "JCZQPlayViewController.h"
 #import "HomeMenuItemView.h"
 #import "NewsListCell.h"
-#import "MyOrderListViewController.h"
+#import "NewsViewController.h"
+#import "ForecastViewController.h"
 
 #define KNewsListCell @"NewsListCell"
 @interface BuyLotteryViewController ()<WBAdsImgViewDelegate,HomeMenuItemViewDelegate,UITableViewDelegate,UITableViewDataSource>
@@ -90,7 +91,7 @@
 
 -(void)setADSUI{
 
-    adsView = [[WBAdsImgView alloc]initWithFrame:CGRectMake(0,[self isIphoneX]?20:0, KscreenWidth, 175.0/667.0 * KscreenHeight)];
+    adsView = [[WBAdsImgView alloc]initWithFrame:CGRectMake(0,[self isIphoneX]?20:0, KscreenWidth, 175.0/375 * KscreenWidth)];
 
     adsView.delegate = self;
     [scrContentView addSubview:adsView];
@@ -145,9 +146,14 @@
 }
 
 - (IBAction)actionMoreNews:(UIButton *)sender {
-    MyOrderListViewController * orderVC = [[MyOrderListViewController alloc]init];
-    orderVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:orderVC animated:YES];
+    NewsViewController *newsVC = [[NewsViewController alloc]init];
+    newsVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:newsVC animated:YES];
+}
+- (IBAction)actionMoreForeCast:(UIButton *)sender {
+    ForecastViewController *forecastVC = [[ForecastViewController alloc]init];
+    forecastVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:forecastVC animated:YES];
 }
 
 @end
