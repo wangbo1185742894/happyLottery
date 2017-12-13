@@ -129,6 +129,12 @@
 		F9581A771FE0B765009753AA /* MineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9581A751FE0B765009753AA /* MineTableViewCell.m */; };
 		F9581A781FE0B765009753AA /* MineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9581A761FE0B765009753AA /* MineTableViewCell.xib */; };
 		F9581A7B1FE0C6FD009753AA /* UIImage+RandomSize.m in Sources */ = {isa = PBXBuildFile; fileRef = F9581A7A1FE0C6FC009753AA /* UIImage+RandomSize.m */; };
+		F9581A7F1FE0FA01009753AA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9581A7D1FE0FA01009753AA /* LoginViewController.m */; };
+		F9581A801FE0FA01009753AA /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9581A7E1FE0FA01009753AA /* LoginViewController.xib */; };
+		F9581A881FE120E9009753AA /* password_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9581A821FE120E7009753AA /* password_icon@2x.png */; };
+		F9581A891FE120E9009753AA /* zhanghu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9581A831FE120E7009753AA /* zhanghu@3x.png */; };
+		F9581A8A1FE120E9009753AA /* zhanghu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9581A841FE120E7009753AA /* zhanghu@2x.png */; };
+		F9581A8C1FE120E9009753AA /* password_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9581A861FE120E8009753AA /* password_icon@3x.png */; };
 		F9DC698C1FDF7CF5007D384D /* Mine.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9DC698B1FDF7CF5007D384D /* Mine.plist */; };
 		F9DC69951FDF878D007D384D /* MyOrderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DC69931FDF878D007D384D /* MyOrderListViewController.m */; };
 		F9DC69961FDF878D007D384D /* MyOrderListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9DC69941FDF878D007D384D /* MyOrderListViewController.xib */; };
@@ -412,6 +418,13 @@
 		F9581A761FE0B765009753AA /* MineTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MineTableViewCell.xib; path = "happyLottery/Class/LotteryMine(我的)/Controller/MineTableViewCell.xib"; sourceTree = SOURCE_ROOT; };
 		F9581A791FE0C6FC009753AA /* UIImage+RandomSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RandomSize.h"; sourceTree = "<group>"; };
 		F9581A7A1FE0C6FC009753AA /* UIImage+RandomSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RandomSize.m"; sourceTree = "<group>"; };
+		F9581A7C1FE0FA01009753AA /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		F9581A7D1FE0FA01009753AA /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		F9581A7E1FE0FA01009753AA /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		F9581A821FE120E7009753AA /* password_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "password_icon@2x.png"; sourceTree = "<group>"; };
+		F9581A831FE120E7009753AA /* zhanghu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zhanghu@3x.png"; sourceTree = "<group>"; };
+		F9581A841FE120E7009753AA /* zhanghu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zhanghu@2x.png"; sourceTree = "<group>"; };
+		F9581A861FE120E8009753AA /* password_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "password_icon@3x.png"; sourceTree = "<group>"; };
 		F9DC698B1FDF7CF5007D384D /* Mine.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Mine.plist; sourceTree = "<group>"; };
 		F9DC69921FDF878D007D384D /* MyOrderListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyOrderListViewController.h; sourceTree = "<group>"; };
 		F9DC69931FDF878D007D384D /* MyOrderListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyOrderListViewController.m; sourceTree = "<group>"; };
@@ -808,6 +821,9 @@
 				F9DC69AB1FDF898A007D384D /* MySettingViewController.h */,
 				F9DC69AC1FDF898A007D384D /* MySettingViewController.m */,
 				F9DC69AD1FDF898A007D384D /* MySettingViewController.xib */,
+				F9581A7C1FE0FA01009753AA /* LoginViewController.h */,
+				F9581A7D1FE0FA01009753AA /* LoginViewController.m */,
+				F9581A7E1FE0FA01009753AA /* LoginViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1057,6 +1073,10 @@
 		F9DC69B01FDFB3FE007D384D /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				F9581A821FE120E7009753AA /* password_icon@2x.png */,
+				F9581A861FE120E8009753AA /* password_icon@3x.png */,
+				F9581A841FE120E7009753AA /* zhanghu@2x.png */,
+				F9581A831FE120E7009753AA /* zhanghu@3x.png */,
 				F9DC6A1E1FDFCC71007D384D /* attendance_label _icon_default@2x.png */,
 				F9DC6A1D1FDFCC70007D384D /* attendance_label _icon_default@3x.png */,
 				F9DC6A1F1FDFCC71007D384D /* attendance_label _icon_pressed@2x.png */,
@@ -1233,10 +1253,12 @@
 				2D4B1E751FDF684E0034B708 /* fenleixian@2x.png in Resources */,
 				2D4B1E6F1FDF684E0034B708 /* faxian_defealt@2x.png in Resources */,
 				F9DC6A011FDFB451007D384D /* me_label _icon_pressed@2x.png in Resources */,
+				F9581A801FE0FA01009753AA /* LoginViewController.xib in Resources */,
 				2DDEDC0C1FD4DBF1007AEBF7 /* DiscoverViewController.xib in Resources */,
 				2D4B1E871FDF684E0034B708 /* yuce@2x.png in Resources */,
 				2D4B1E7F1FDF684E0034B708 /* weishoucang@2x.png in Resources */,
 				2D4B1E7C1FDF684E0034B708 /* quanzi_defealt@3x.png in Resources */,
+				F9581A8C1FE120E9009753AA /* password_icon@3x.png in Resources */,
 				2D4B1E7E1FDF684E0034B708 /* quanzi_select@3x.png in Resources */,
 				2D4B1E831FDF684E0034B708 /* wode_select@2x.png in Resources */,
 				2D4B1E221FD8C9180034B708 /* ad_home2.png in Resources */,
@@ -1247,6 +1269,7 @@
 				F9DC69E61FDFB451007D384D /* caipiao_ _icon_default@2x.png in Resources */,
 				F9DC6A051FDFB451007D384D /* faxian_label _icon_pressed@3x.png in Resources */,
 				2D4B1E8D1FDF684E0034B708 /* yucezhanji@2x.png in Resources */,
+				F9581A8A1FE120E9009753AA /* zhanghu@2x.png in Resources */,
 				F9DC69FF1FDFB451007D384D /* me_label _icon_default@3x.png in Resources */,
 				F9DC69FD1FDFB451007D384D /* news_ _bj_default@2x.png in Resources */,
 				2DCBB2811FD1000700934D92 /* LaunchScreen.storyboard in Resources */,
@@ -1255,6 +1278,7 @@
 				2D4B1E761FDF684E0034B708 /* fenleixian@3x.png in Resources */,
 				2D4B1E6D1FDF684E0034B708 /* duibiao@3x.png in Resources */,
 				F9DC69E11FDFB451007D384D /* quanzi_label _icon_pressed@2x.png in Resources */,
+				F9581A891FE120E9009753AA /* zhanghu@3x.png in Resources */,
 				F9DC69F51FDFB451007D384D /* Integral_ _icon_default@2x.png in Resources */,
 				F9581A781FE0B765009753AA /* MineTableViewCell.xib in Resources */,
 				2D4B1E8B1FDF684E0034B708 /* yuce_select@2x.png in Resources */,
@@ -1330,6 +1354,7 @@
 				2D4B1E6C1FDF684E0034B708 /* bifenzhibo@3x.png in Resources */,
 				2D4B1E371FDE241F0034B708 /* JCZQPlayViewController.xib in Resources */,
 				F9DC6A231FDFCC72007D384D /* attendance_label _icon_pressed@2x.png in Resources */,
+				F9581A881FE120E9009753AA /* password_icon@2x.png in Resources */,
 				2D4B1E731FDF684E0034B708 /* fengkuangjingcai@2x.png in Resources */,
 				F9DC69E21FDFB451007D384D /* home_label _icon_pressed@2x.png in Resources */,
 			);
@@ -1360,6 +1385,7 @@
 				F9DC69AE1FDF898A007D384D /* MySettingViewController.m in Sources */,
 				F9DC69A41FDF8929007D384D /* MyShareViewController.m in Sources */,
 				2DDEDE781FD568C9007AEBF7 /* AFAutoPurgingImageCache.m in Sources */,
+				F9581A7F1FE0FA01009753AA /* LoginViewController.m in Sources */,
 				2DDEDC441FD5254C007AEBF7 /* User.m in Sources */,
 				2DDEDE6D1FD568C9007AEBF7 /* AFHTTPRequestOperation.m in Sources */,
 				2DDEDE5D1FD568C9007AEBF7 /* MKAnnotationView+WebCache.m in Sources */,

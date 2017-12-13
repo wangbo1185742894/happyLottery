@@ -9,6 +9,7 @@
 #import "MineViewController.h"
 #import "MineTableViewCell.h"
 #import "UIImage+RandomSize.h"
+#import "LoginViewController.h"
 
 @interface MineViewController () <UITableViewDelegate, UITableViewDataSource>{
     NSArray *listArray;
@@ -77,6 +78,9 @@
 }
 
 - (IBAction)loginBtnClick:(id)sender {
+
+    LoginViewController * loginVC = [[LoginViewController alloc]init];
+    [self.navigationController pushViewController: loginVC animated: YES];
 }
 - (IBAction)signInBtnClick:(id)sender {
 }
