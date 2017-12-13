@@ -12,7 +12,8 @@
 
 @interface MineViewController () <UITableViewDelegate, UITableViewDataSource>{
     NSArray *listArray;
-    
+    UIButton *noticeBtn;
+    UILabel *label;
 }
 @property (weak, nonatomic) IBOutlet UIButton *personSetBtn;
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
@@ -39,13 +40,39 @@
      listArray = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Mine" ofType: @"plist"]];
     [_tableview registerClass:[MineTableViewCell class] forCellReuseIdentifier:@"MineTableViewCell"];
     _tableview.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    _tableview.separatorColor = RGBCOLOR(240, 240, 240);
+    //_tableview.separatorColor = RGBCOLOR(240, 240, 240);
     _tableview.backgroundColor = [UIColor clearColor];
     _tableview.delegate = self;
     _tableview.dataSource = self;
+    [self noticeCenterSet];
    // _tableview.hidden = YES;
     [_tableview reloadData];
 }
+
+-(void)noticeCenterSet{
+    noticeBtn = [UIButton buttonWithType: UIButtonTypeCustom];
+    noticeBtn.frame = CGRectMake(0, 0, 35, 30);
+    label = [[UILabel alloc]init];
+    label.frame =CGRectMake(25, 0,10, 10);
+    label.layer.cornerRadius = label.bounds.size.width/2;
+    label.layer.masksToBounds = YES;
+    label.text = @"2";
+    label.font = [UIFont systemFontOfSize:10];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.backgroundColor = [UIColor redColor];
+    label.textColor = [UIColor whiteColor];
+    [noticeBtn addSubview:label];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView: noticeBtn];
+    //[noticeBtn setTitle:@"发起合买" forState:UIControlStateNormal];
+    [noticeBtn setImage:[UIImage imageNamed:@"news_ _bj_default@2x.png"] forState:UIControlStateNormal];
+    [noticeBtn addTarget: self action: @selector(noticeBtnClick) forControlEvents: UIControlEventTouchUpInside];
+}
+
+-(void)noticeBtnClick{
+    
+    
+}
+
 - (IBAction)personSetClick:(id)sender {
 }
 
