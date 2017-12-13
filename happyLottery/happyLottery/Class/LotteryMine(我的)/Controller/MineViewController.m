@@ -7,21 +7,189 @@
 //  我的
 
 #import "MineViewController.h"
+#import "MineTableViewCell.h"
+#import "UIImage+RandomSize.h"
 
-@interface MineViewController ()
+@interface MineViewController () <UITableViewDelegate, UITableViewDataSource>{
+    NSArray *listArray;
+    
+}
+@property (weak, nonatomic) IBOutlet UIButton *personSetBtn;
+@property (weak, nonatomic) IBOutlet UIButton *loginBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *userImage;
+@property (weak, nonatomic) IBOutlet UIButton *signInBtn;//签到
+@property (weak, nonatomic) IBOutlet UILabel *balanceLab;//余额
+@property (weak, nonatomic) IBOutlet UIButton *balanceBtn;
+@property (weak, nonatomic) IBOutlet UILabel *integralLab;//积分
+@property (weak, nonatomic) IBOutlet UIButton *integralBtn;
+@property (weak, nonatomic) IBOutlet UIButton *redPacketBtn;
+@property (weak, nonatomic) IBOutlet UILabel *redPacketLab;
+@property (weak, nonatomic) IBOutlet UIButton *rechargeBtn;//充值
+@property (weak, nonatomic) IBOutlet UIButton *withdrawalsBtn;//提现
 
+@property (weak, nonatomic) IBOutlet UITableView *tableview;
+
+@property(strong, nonatomic) NSString * memberSubFunctionClass;
 @end
 
 @implementation MineViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+     listArray = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Mine" ofType: @"plist"]];
+    [_tableview registerClass:[MineTableViewCell class] forCellReuseIdentifier:@"MineTableViewCell"];
+    _tableview.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    _tableview.separatorColor = RGBCOLOR(240, 240, 240);
+    _tableview.backgroundColor = [UIColor clearColor];
+    _tableview.delegate = self;
+    _tableview.dataSource = self;
+   // _tableview.hidden = YES;
+    [_tableview reloadData];
+}
+- (IBAction)personSetClick:(id)sender {
+}
+
+- (IBAction)loginBtnClick:(id)sender {
+}
+- (IBAction)signInBtnClick:(id)sender {
+}
+- (IBAction)blanceBtnClick:(id)sender {
+}
+- (IBAction)integralBtnClick:(id)sender {
+}
+- (IBAction)redPacketBtnClick:(id)sender {
+}
+- (IBAction)rechargeBtnClick:(id)sender {
+}
+- (IBAction)withdrawalsBtnClick:(id)sender {
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
+}
+
+
+#pragma UITableViewDataSource methods
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return listArray.count;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSArray* array = listArray[section];
+    
+    return array.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableiew heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 44;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    //[self.tableView registerClass :[YourTableCell class] forCellReuseIdentifier:@"txTableCell"];
+    static NSString *CellIdentifier = @"TabViewCell";
+    //自定义cell类
+    MineTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        //通过xib的名称加载自定义的cell
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"MineTableViewCell" owner:self options:nil] lastObject];
+    }
+    NSDictionary *optionDic = listArray[indexPath.section][indexPath.row];
+    
+    cell.image.image = [UIImage reSizeImageName:optionDic[@"icon"] andMinWidth:18];
+    
+    //    cell.imageView.image = [UIImage imageNamed: optionDic[@"icon"]];
+    
+    cell.lable.text = optionDic[@"title"];
+    cell.lable.font = [UIFont systemFontOfSize:15];
+ 
+    
+   
+    
+    
+    
+    //    _UITableViewCellSeparatorView
+    
+    //    UIView *sep = [[UIView alloc] initWithFrame:CGRectMake(0, 13, 23, 2)];
+    //    sep.backgroundColor = [UIColor redColor];
+    
+   
+       
+        
+  
+    
+    
+    return cell;
+}
+- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    tableView.backgroundColor = [UIColor clearColor];
+    NSString *sectionTitle;
+    if ([self respondsToSelector:@selector(tableView)]) {
+        sectionTitle = [self tableView:tableView titleForHeaderInSection:section];
+    }else{
+        sectionTitle = nil;
+    }
+    
+    if (sectionTitle == nil) {
+        UIView * sectionView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 20)] ;
+        [sectionView setBackgroundColor:[UIColor clearColor]];
+        return  sectionView;
+    }
+    
+    UILabel * label = [[UILabel alloc] init] ;
+    label.frame = CGRectMake(15, 0, 320, 40);
+    label.backgroundColor = [UIColor clearColor];
+    label.font=[UIFont systemFontOfSize:15];
+    label.text = sectionTitle;
+    
+    UIView * sectionView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 40)] ;
+    [sectionView setBackgroundColor:[UIColor clearColor]];
+    [sectionView addSubview:label];
+    return sectionView;
+}
+
+#pragma UITableViewDelegate methods
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    //    if (section == 0) {
+    //        return 0;
+    //    }
+    return 10;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0.5;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath: indexPath animated: YES];
+    
+    NSDictionary *optionDic = listArray[indexPath.section][indexPath.row];
+    
+    self.memberSubFunctionClass = optionDic[@"actionClassName"];
+//    if ([optionDic[@"title"] isEqualToString:@"身份认证"] || [optionDic[@"title"] isEqualToString:@"密码修改"]) {
+//       // [self showInputPopView];
+//        return;
+//    }else if ([optionDic[@"title"] isEqualToString:@"分享彩运宝"]){
+//
+//        //        self.navigationItem.rightBarButtonItem.enabled = NO;
+//        [self showShareView];
+//    }else{
+//
+//        UIViewController *vc = [[NSClassFromString(_memberSubFunctionClass) alloc] initWithNibName: _memberSubFunctionClass bundle: nil];
+//        vc.hidesBottomBarWhenPushed = YES;
+//
+//        if ([vc isKindOfClass:[SetPayPwdViewController class]]) {
+//            SetPayPwdViewController * setPayPwdVC = (SetPayPwdViewController *)vc;
+//            setPayPwdVC.setPayPwdType = SetPayPwdTypeReset;
+//        }
+//
+//        if ([vc isKindOfClass:[MyHemaiSchemeViewController class]]) {
+//            MyHemaiSchemeViewController * hemaiVC = (MyHemaiSchemeViewController *)vc;
+//            hemaiVC.isSponsor = YES;
+//        }
+//        [self.navigationController pushViewController: vc animated: YES];
+//
+//    }
 }
 
 /*
