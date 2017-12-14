@@ -60,13 +60,12 @@
 
 -(UITableViewCell * )tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NewsListCell * cell = [tableView dequeueReusableCellWithIdentifier:KNewsListCell];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    
-    
     
     TableHeaderView *header = [[[NSBundle mainBundle]loadNibNamed:@"TableHeaderView" owner:nil options:nil] lastObject];
     header.backgroundColor =RGBCOLOR(245, 245, 245);
@@ -86,16 +85,18 @@
 }
 
 -(void)headerViewClick:(UIButton *)btn{
-    
-    BOOL isOpen = [self.arrayTableSectionIsOpen[btn.tag] boolValue];
-    if (isOpen == YES) {
-        [self.arrayTableSectionIsOpen removeObjectAtIndex:btn.tag];
-        [self.arrayTableSectionIsOpen insertObject:@(NO) atIndex:btn.tag];
-    }else{
-        [self.arrayTableSectionIsOpen removeObjectAtIndex:btn.tag];
-        [self.arrayTableSectionIsOpen insertObject:@(YES) atIndex:btn.tag];
-    }
-    [tabForecastListView reloadData];
+    [UIView animateWithDuration:1.0 animations:^{
+        
+        BOOL isOpen = [self.arrayTableSectionIsOpen[btn.tag] boolValue];
+        if (isOpen == YES) {
+            [self.arrayTableSectionIsOpen removeObjectAtIndex:btn.tag];
+            [self.arrayTableSectionIsOpen insertObject:@(NO) atIndex:btn.tag];
+        }else{
+            [self.arrayTableSectionIsOpen removeObjectAtIndex:btn.tag];
+            [self.arrayTableSectionIsOpen insertObject:@(YES) atIndex:btn.tag];
+        }
+        [tabForecastListView reloadData];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

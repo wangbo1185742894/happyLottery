@@ -54,7 +54,7 @@
 
 -(UITableViewCell * )tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NewsTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:KNewsTableViewCell];
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 

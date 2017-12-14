@@ -42,7 +42,7 @@
 }
 
 -(void)setTableView{
-
+    curY +=151;
     tabForecaseList.delegate = self;
     tabForecaseList.dataSource = self;
     [tabForecaseList registerClass:[NewsListCell class] forCellReuseIdentifier:KNewsListCell];
@@ -51,9 +51,9 @@
     tabForecastListHeight.constant = tabForecaseList.rowHeight * 3;
     CGFloat height = 0;
     if ([self isIphoneX]) {
-        height = tabForecaseList.mj_y + tabForecaseList.rowHeight * 3 + 20;
+        height = curY  + tabForecaseList.rowHeight * 3 + 20;
     }else{
-        height = tabForecaseList.mj_y + tabForecaseList.rowHeight * 3;
+        height = curY  + tabForecaseList.rowHeight * 3;
     }
     homeViewHeight.constant = height;
     tabForecaseList.bounces = NO;
@@ -61,6 +61,7 @@
 
 -(void)setNewsView{
     newsViewMarginTop.constant = curY;
+    
 }
 
 -(void)setViewFeature{
