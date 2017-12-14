@@ -141,7 +141,6 @@
 		F924BA921FE252CF00830BF4 /* password@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA7A1FE252CA00830BF4 /* password@3x.png */; };
 		F924BA931FE252CF00830BF4 /* checkBox_checked@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA7B1FE252CA00830BF4 /* checkBox_checked@3x.png */; };
 		F924BA941FE252CF00830BF4 /* agreement_checkBox_default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA7C1FE252CA00830BF4 /* agreement_checkBox_default@3x.png */; };
-		F924BA951FE252CF00830BF4 /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA7D1FE252CA00830BF4 /* close@2x.png */; };
 		F924BA961FE252CF00830BF4 /* hide@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA7E1FE252CB00830BF4 /* hide@2x.png */; };
 		F924BA971FE252CF00830BF4 /* phone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA7F1FE252CB00830BF4 /* phone@2x.png */; };
 		F924BA981FE252CF00830BF4 /* phone@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA801FE252CB00830BF4 /* phone@3x.png */; };
@@ -152,7 +151,6 @@
 		F924BA9D1FE252CF00830BF4 /* stick@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA851FE252CC00830BF4 /* stick@3x.png */; };
 		F924BA9E1FE252CF00830BF4 /* user@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA861FE252CC00830BF4 /* user@3x.png */; };
 		F924BA9F1FE252CF00830BF4 /* agreement_checkBox_default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA871FE252CC00830BF4 /* agreement_checkBox_default@2x.png */; };
-		F924BAA01FE252CF00830BF4 /* close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA881FE252CC00830BF4 /* close@3x.png */; };
 		F924BAA11FE252CF00830BF4 /* line@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA891FE252CD00830BF4 /* line@3x.png */; };
 		F924BAA21FE252CF00830BF4 /* password@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA8A1FE252CD00830BF4 /* password@2x.png */; };
 		F924BAA31FE252CF00830BF4 /* recommend@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA8B1FE252CD00830BF4 /* recommend@3x.png */; };
@@ -450,7 +448,6 @@
 		F924BA7A1FE252CA00830BF4 /* password@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "password@3x.png"; sourceTree = "<group>"; };
 		F924BA7B1FE252CA00830BF4 /* checkBox_checked@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkBox_checked@3x.png"; sourceTree = "<group>"; };
 		F924BA7C1FE252CA00830BF4 /* agreement_checkBox_default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "agreement_checkBox_default@3x.png"; sourceTree = "<group>"; };
-		F924BA7D1FE252CA00830BF4 /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@2x.png"; sourceTree = "<group>"; };
 		F924BA7E1FE252CB00830BF4 /* hide@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hide@2x.png"; sourceTree = "<group>"; };
 		F924BA7F1FE252CB00830BF4 /* phone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone@2x.png"; sourceTree = "<group>"; };
 		F924BA801FE252CB00830BF4 /* phone@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone@3x.png"; sourceTree = "<group>"; };
@@ -461,7 +458,6 @@
 		F924BA851FE252CC00830BF4 /* stick@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stick@3x.png"; sourceTree = "<group>"; };
 		F924BA861FE252CC00830BF4 /* user@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user@3x.png"; sourceTree = "<group>"; };
 		F924BA871FE252CC00830BF4 /* agreement_checkBox_default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "agreement_checkBox_default@2x.png"; sourceTree = "<group>"; };
-		F924BA881FE252CC00830BF4 /* close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@3x.png"; sourceTree = "<group>"; };
 		F924BA891FE252CD00830BF4 /* line@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "line@3x.png"; sourceTree = "<group>"; };
 		F924BA8A1FE252CD00830BF4 /* password@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "password@2x.png"; sourceTree = "<group>"; };
 		F924BA8B1FE252CD00830BF4 /* recommend@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "recommend@3x.png"; sourceTree = "<group>"; };
@@ -1146,9 +1142,7 @@
 				F924BA7B1FE252CA00830BF4 /* checkBox_checked@3x.png */,
 				F924BA8C1FE252CD00830BF4 /* checkBox_default@2x.png */,
 				F924BA821FE252CB00830BF4 /* checkBox_default@3x.png */,
-				F924BA7D1FE252CA00830BF4 /* close@2x.png */,
 				F924BAB31FE274D700830BF4 /* close@3x.png */,
-				F924BA881FE252CC00830BF4 /* close@3x.png */,
 				F924BA7E1FE252CB00830BF4 /* hide@2x.png */,
 				F924BA8D1FE252CD00830BF4 /* hide@3x.png */,
 				F924BA831FE252CB00830BF4 /* line@2x.png */,
@@ -1380,7 +1374,6 @@
 				2D4B1E741FDF684E0034B708 /* fengkuangjingcai@3x.png in Resources */,
 				2D4B1E8C1FDF684E0034B708 /* yuce_select@3x.png in Resources */,
 				F9DC69F61FDFB451007D384D /* collect_ _icon_default@3x.png in Resources */,
-				F924BAA01FE252CF00830BF4 /* close@3x.png in Resources */,
 				F9DC6A091FDFB451007D384D /* arrows_ _icon_default@3x.png in Resources */,
 				F9DC69EC1FDFB451007D384D /* caipiao_ _icon_default@3x.png in Resources */,
 				2D4B1EB01FDFCDA00034B708 /* arrow_down@3x.png in Resources */,
@@ -1427,7 +1420,6 @@
 				2DDEDC161FD4DC16007AEBF7 /* MineViewController.xib in Resources */,
 				F9DC69961FDF878D007D384D /* MyOrderListViewController.xib in Resources */,
 				F924BAA91FE252CF00830BF4 /* stick@2x.png in Resources */,
-				F924BA951FE252CF00830BF4 /* close@2x.png in Resources */,
 				2D4B1E401FDF652C0034B708 /* HomeMenuItemView.xib in Resources */,
 				F9DC69F31FDFB451007D384D /* withdraw Deposit_button_default@3x.png in Resources */,
 				F9DC69F41FDFB451007D384D /* install_ _icon_default@2x.png in Resources */,
