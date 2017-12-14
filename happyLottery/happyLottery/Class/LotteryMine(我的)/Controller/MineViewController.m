@@ -66,7 +66,7 @@
     
     navVC.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor], NSFontAttributeName: [UIFont systemFontOfSize:18]};
     navVC.navigationBar.tintColor = [UIColor whiteColor];
-    [self presentViewController:navVC animated:YES completion:nil];
+    [self presentViewController:navVC animated:NO completion:nil];
 }
 
 -(void)noticeCenterSet{
@@ -98,7 +98,11 @@
 }
 
 - (IBAction)loginBtnClick:(id)sender {
-
+//    LoginViewController *loginVc =[[LoginViewController alloc]init];
+//    loginVc.hidesBottomBarWhenPushed = YES;
+//    //[self.navigationController pushViewController:loginVc animated:NO];
+//    [ self presentViewController:loginVc animated: NO completion:nil];
+    [self notLogin];
 }
 
 - (IBAction)signInBtnClick:(id)sender {
