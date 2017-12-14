@@ -67,7 +67,7 @@
     
     navVC.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor], NSFontAttributeName: [UIFont systemFontOfSize:18]};
     navVC.navigationBar.tintColor = [UIColor whiteColor];
-    [self presentViewController:navVC animated:YES completion:nil];
+    [self presentViewController:navVC animated:NO completion:nil];
 }
 
 -(void)noticeCenterSet{
@@ -99,8 +99,9 @@
 }
 
 - (IBAction)loginBtnClick:(id)sender {
+
     [self notLogin];
- 
+
 }
 
 - (IBAction)signInBtnClick:(id)sender {
