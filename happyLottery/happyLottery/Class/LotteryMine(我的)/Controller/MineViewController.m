@@ -10,6 +10,7 @@
 #import "MineTableViewCell.h"
 #import "UIImage+RandomSize.h"
 #import "LoginViewController.h"
+#import "RegisterViewController.h"
 
 @interface MineViewController () <UITableViewDelegate, UITableViewDataSource,MemberManagerDelegate>{
     NSArray *listArray;
@@ -98,7 +99,8 @@
 }
 
 - (IBAction)loginBtnClick:(id)sender {
-
+    [self notLogin];
+ 
 }
 
 - (IBAction)signInBtnClick:(id)sender {

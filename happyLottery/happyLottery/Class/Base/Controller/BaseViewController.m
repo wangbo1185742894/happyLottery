@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.memberMan = [[MemberManager alloc]init];
-    
+    [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
     [self setNavigationBack];
 }
 
