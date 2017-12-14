@@ -23,6 +23,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.memberMan = [[MemberManager alloc]init];
+    
     [self setNavigationBack];
 }
 

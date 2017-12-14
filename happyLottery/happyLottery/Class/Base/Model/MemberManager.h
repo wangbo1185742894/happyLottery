@@ -7,7 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Manager.h"
+@protocol MemberManagerDelegate
+- (void) registerUser:(NSDictionary *)userInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) loginUser:(NSDictionary *)userInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+@end
 
 @interface MemberManager : Manager
+
+@property(weak,nonatomic)id<MemberManagerDelegate>delegate;
 - (void) loginCurUser;
+- (void) registerUser;
 @end

@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MemberManager.h"
 
 @interface BaseViewController : UIViewController
-
+@property (nonatomic,strong)MemberManager * memberMan;
 - (void) showPromptText: (NSString *) text hideAfterDelay: (NSTimeInterval) interval;
 - (void) showLoadingViewWithText: (NSString *) text
                   withDetailText: (NSString *) sText;

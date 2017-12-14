@@ -11,7 +11,7 @@
 #import "UIImage+RandomSize.h"
 #import "LoginViewController.h"
 
-@interface MineViewController () <UITableViewDelegate, UITableViewDataSource>{
+@interface MineViewController () <UITableViewDelegate, UITableViewDataSource,MemberManagerDelegate>{
     NSArray *listArray;
     UIButton *noticeBtn;
     UILabel *label;
@@ -38,8 +38,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
+    self.memberMan.delegate = self;
+ 
      listArray = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Mine" ofType: @"plist"]];
     [_tableview registerClass:[MineTableViewCell class] forCellReuseIdentifier:@"MineTableViewCell"];
     _tableview.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
@@ -51,6 +51,11 @@
     [self noticeCenterSet];
    
     [_tableview reloadData];
+}
+
+-(void)loginUser:(NSDictionary *)userInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    NSLog(@"%@",userInfo);
+    
 }
 
 - (void) notLogin{
@@ -94,8 +99,9 @@
 
 - (IBAction)loginBtnClick:(id)sender {
 
-    [self notLogin];
+    [self .memberMan registerUser];
 }
+
 - (IBAction)signInBtnClick:(id)sender {
 }
 - (IBAction)blanceBtnClick:(id)sender {
@@ -113,7 +119,10 @@
     [super didReceiveMemoryWarning];
     
 }
-
+-(void)registerUser:(NSDictionary *)userInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    
+    NSLog(@"%@",userInfo);
+}
 
 #pragma UITableViewDataSource methods
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

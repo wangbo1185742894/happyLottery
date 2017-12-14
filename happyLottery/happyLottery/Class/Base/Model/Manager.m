@@ -31,7 +31,7 @@
 
     NSString * soapMessage = [request getSOAPMessage];
 
-    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL: [NSURL URLWithString:@"http://124.89.85.110:17082/ms/Caipiao/front/"]];
+    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL: WSServerURL];
 
     NSString *msgLength = [NSString stringWithFormat:@"%lu", (unsigned long)[soapMessage length]];
     NSLog(@"22334%@",msgLength);
@@ -105,11 +105,11 @@
 {
 
 }
-
+//加密
 - (NSString *) actionEncrypt: (NSString *) string {
     return [AESUtility encryptStr: string];
 }
-
+//解密
 - (NSString *) actionDecrypt: (NSString *) string {
     return [AESUtility decryptStr: string];
 }

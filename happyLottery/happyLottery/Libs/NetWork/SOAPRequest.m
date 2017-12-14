@@ -21,7 +21,7 @@
 @implementation SOAPRequest
 
 - (NSString *) modifyTemplate: (NSString *) template {
-    return [template stringByReplacingOccurrencesOfString: @"NameSpaceURI" withString: @"http://webService.only.com/"];
+    return [template stringByReplacingOccurrencesOfString: @"NameSpaceURI" withString: NameSpaceURI];
 }
 
 - (NSString *) getClient {
