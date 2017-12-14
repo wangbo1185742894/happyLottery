@@ -64,6 +64,10 @@
 #define SystemGreen         RGBCOLOR(18, 199, 146)
 #define SystemBlue          RGBCOLOR(49, 137, 253)
 #define SystemLightGray     RGBCOLOR(141, 141, 141)
+#define BtnDisAbleBackColor RGBCOLOR(238,238,238)
+#define BtnDisAbleTitleColor RGBCOLOR(158,158,158)
+#define TFBorderColor        RGBCOLOR(227,227,227)
+
 
 //这是 NavigationBar 的背景颜色
 

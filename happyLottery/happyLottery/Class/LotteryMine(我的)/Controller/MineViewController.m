@@ -10,6 +10,7 @@
 #import "MineTableViewCell.h"
 #import "UIImage+RandomSize.h"
 #import "LoginViewController.h"
+#import "RegisterViewController.h"
 
 @interface MineViewController () <UITableViewDelegate, UITableViewDataSource,MemberManagerDelegate>{
     NSArray *listArray;
@@ -98,11 +99,9 @@
 }
 
 - (IBAction)loginBtnClick:(id)sender {
-//    LoginViewController *loginVc =[[LoginViewController alloc]init];
-//    loginVc.hidesBottomBarWhenPushed = YES;
-//    //[self.navigationController pushViewController:loginVc animated:NO];
-//    [ self presentViewController:loginVc animated: NO completion:nil];
+
     [self notLogin];
+
 }
 
 - (IBAction)signInBtnClick:(id)sender {

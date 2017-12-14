@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "RegisterViewController.h"
 
 @interface LoginViewController (){
     
@@ -82,7 +83,8 @@
 }
 
 -(void)registerBtnClick{
-    
+    RegisterViewController *registerVC = [[RegisterViewController alloc]init];
+    [self.navigationController pushViewController:registerVC animated:YES];
     
 }
 - (IBAction)loginBtnClick:(id)sender {
