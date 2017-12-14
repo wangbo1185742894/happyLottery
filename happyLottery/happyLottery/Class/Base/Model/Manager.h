@@ -15,24 +15,15 @@
 #import "SOAPResponse.h"
 
 
-
-
-@protocol ManagerDelegate <NSObject>
-@optional
-- (void) needUserLogin;
-- (void) systemError;
-@end
-
 @interface Manager : NSObject {
     NSMutableArray *requests;
     NSString * ipaName;
 }
 
-@property (nonatomic, weak) id<ManagerDelegate> delegate;
 
 - (NSString*) JsonFromId: (id) obj;
 - (id) objFromJson: (NSString*) jsonStr;
-- (BOOL) checkResponse: (NSDictionary *) responseDic;
+
 - (NSMutableDictionary *) paramsDicForAPI: (NSString *) apiName withAuth: (BOOL) auth;
 
 
@@ -42,8 +33,10 @@
 - (NSString *) actionDecrypt: (NSString *) string;
 - (SOAPRequest *) requestForAPI: (NSString *) apiName withParam: (NSDictionary *) paramDic;
 - (AFHTTPRequestOperation *) newRequestWithRequest: (SOAPRequest*)request
+                                            subAPI:(NSString *)subApi
                          constructingBodyWithBlock: (void (^)(id <AFMultipartFormData> formData))block
                                            success: (void (^)(AFHTTPRequestOperation *operation, id responseObject))successBlock
-                                           failure: (void (^)(AFHTTPRequestOperation *operation, NSError *error))failureBlock;
+                                           failure: (void (^)(AFHTTPRequestOperation *operation, NSError *error))failureBlock
+;
 - (SOAPResponse *) wrapSOAPResponse: (NSString *) responseXML;
 @end

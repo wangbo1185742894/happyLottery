@@ -67,7 +67,6 @@
     navVC.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor], NSFontAttributeName: [UIFont systemFontOfSize:18]};
     navVC.navigationBar.tintColor = [UIColor whiteColor];
     [self presentViewController:navVC animated:YES completion:nil];
-    
 }
 
 -(void)noticeCenterSet{
@@ -95,24 +94,30 @@
 }
 
 - (IBAction)personSetClick:(id)sender {
+    
 }
 
 - (IBAction)loginBtnClick:(id)sender {
 
-    [self .memberMan registerUser];
 }
 
 - (IBAction)signInBtnClick:(id)sender {
+    
 }
 - (IBAction)blanceBtnClick:(id)sender {
+    
 }
 - (IBAction)integralBtnClick:(id)sender {
+    
 }
 - (IBAction)redPacketBtnClick:(id)sender {
+    
 }
 - (IBAction)rechargeBtnClick:(id)sender {
+    
 }
 - (IBAction)withdrawalsBtnClick:(id)sender {
+    
 }
 
 - (void)didReceiveMemoryWarning {

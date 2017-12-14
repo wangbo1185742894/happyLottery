@@ -12,7 +12,16 @@
 #define NameSpaceURI @"http://webservice.onlytest.com/"
 
 
-//#define WSServerURL [NSURL URLWithString: @"http://192.168.88.244:28000/services/member"]    //
+//#define WSServerURL @"http://192.168.88.244:28000/services%@"    //
 
-#define WSServerURL [NSURL URLWithString: @"http://192.168.88.105:28000/services/member"]
+#define WSServerURL @"http://192.168.88.105:28000/services%@"
+
+
+#define SUBAPIMember @"/member"
+
+#define APILogin  @"login"
+#define APIRegister  @"register"
+
+
+
 #endif /* API_h */

@@ -9,25 +9,25 @@
 #import "MemberManager.h"
 
 @implementation MemberManager
-//网络请求实例
-- (void) loginCurUser {
+//* mobile 手机号 必填项  pwd 密码 加密的 必填, channelCode 渠道号 必填
+//* @return
+//*/
+//@WebMethod
+//String login(@WebParam(name = "params")String params) throws BizException;
+
+- (void) loginCurUser:(NSDictionary *)paraDic {
     void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
     {
         SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
         NSString *responseJsonStr = [response getAPIResponse];
         if (response.succeed) {
             NSDictionary *userInfo = [self objFromJson: responseJsonStr];
-            if ([userInfo isKindOfClass: [NSDictionary class]]  && [Utility isLegalString: userInfo[@"user"]]) {
-                [self.delegate loginUser:userInfo IsSuccess:YES errorMsg:response.errorMsg];
-                //成功的代理方法
-            }else
-            {
-                [self.delegate loginUser:nil IsSuccess:NO errorMsg:response.errorMsg];
-                //失败的代理方法
-            }
+            
+            [self.delegate loginUser:userInfo IsSuccess:YES errorMsg:response.errorMsg];
+           
         } else {
             [self.delegate loginUser:nil IsSuccess:NO errorMsg:response.errorMsg];
-            //失败的代理方法
+            
         }
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -35,17 +35,13 @@
         [self.delegate loginUser:nil IsSuccess:NO errorMsg:@"服务器错误"];
         //失败的代理方法
     };
-    NSMutableDictionary *loginDic = [NSMutableDictionary dictionaryWithCapacity: 2];
-//    * mobile 手机号 必填项  pwd 密码 加密的 必填, channelCode 渠道号 必填
-    loginDic[@"channelCode"]=@"TBZ";
-    loginDic[@"mobile"] = @"15929443992";
-    loginDic[@"pwd"] = @"npSPTG1vMjk=";
-    
-    SOAPRequest *request = [self requestForAPI: @"login" withParam:@{@"params":[self actionEncrypt:[self JsonFromId:loginDic]]} ];
-    [self newRequestWithRequest: request
-      constructingBodyWithBlock: nil
-                        success: succeedBlock
-                        failure: failureBlock];
+
+    SOAPRequest *request = [self requestForAPI: APILogin withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]} ];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
 }
 
 /**
@@ -56,25 +52,18 @@
  */
 //@WebMethod
 //String register(@WebParam(name = "params")String params) throws BizException;
-//网络请求实例
-- (void) registerUser{
+
+- (void) registerUser:(NSDictionary *)paraDic{
     void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
     {
         SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
         NSString *responseJsonStr = [response getAPIResponse];
         if (response.succeed) {
             NSDictionary *userInfo = [self objFromJson: responseJsonStr];
-            if ([userInfo isKindOfClass: [NSDictionary class]]  && [Utility isLegalString: userInfo[@"user"]]) {
-                [self.delegate loginUser:userInfo IsSuccess:YES errorMsg:response.errorMsg];
-                //成功的代理方法
-            }else
-            {
-                [self.delegate loginUser:nil IsSuccess:NO errorMsg:response.errorMsg];
-                //失败的代理方法
-            }
+            [self.delegate loginUser:userInfo IsSuccess:YES errorMsg:response.errorMsg];
         } else {
             [self.delegate loginUser:nil IsSuccess:NO errorMsg:response.errorMsg];
-            //失败的代理方法
+            
         }
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -82,18 +71,13 @@
         [self.delegate loginUser:nil IsSuccess:NO errorMsg:@"服务器错误"];
         //失败的代理方法
     };
-    NSMutableDictionary *loginDic = [NSMutableDictionary dictionaryWithCapacity: 2];
-    //    * mobile 手机号 必填项  pwd 密码 加密的 必填, channelCode 渠道号 必填
-    loginDic[@"channelCode"]=@"TBZ";
-    loginDic[@"mobile"] = @"15929443994";
-    loginDic[@"pwd"] = @"npSPTG1vMjk=";
     
-    
-    SOAPRequest *request = [self requestForAPI: @"register" withParam:@{@"params":[self actionEncrypt:[self JsonFromId:loginDic]]} ];
-    [self newRequestWithRequest: request
-      constructingBodyWithBlock: nil
-                        success: succeedBlock
-                        failure: failureBlock];
+    SOAPRequest *request = [self requestForAPI: APIRegister withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]} ];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
 }
 
 @end

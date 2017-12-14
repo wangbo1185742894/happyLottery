@@ -11,8 +11,6 @@
 
 
 @implementation Manager
-@synthesize delegate;
-
 
 - (id) init {
     if (self = [super init]) {
@@ -22,8 +20,8 @@
     return nil;
 }
 
-
 - (AFHTTPRequestOperation *) newRequestWithRequest: (SOAPRequest*)request
+                                            subAPI:(NSString *)subApi
                             constructingBodyWithBlock: (void (^)(id <AFMultipartFormData> formData))block
                                               success: (void (^)(AFHTTPRequestOperation *operation, id responseObject))successBlock
                                               failure: (void (^)(AFHTTPRequestOperation *operation, NSError *error))failureBlock
@@ -31,7 +29,7 @@
 
     NSString * soapMessage = [request getSOAPMessage];
 
-    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL: WSServerURL];
+    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL: [NSURL URLWithString:[NSString stringWithFormat:WSServerURL,subApi]]];
 
     NSString *msgLength = [NSString stringWithFormat:@"%lu", (unsigned long)[soapMessage length]];
     NSLog(@"22334%@",msgLength);
@@ -57,18 +55,6 @@
     return paramDic;
 }
 
-- (BOOL) checkResponse: (NSDictionary *) responseDic
-{
-    if ([responseDic isKindOfClass: [NSDictionary class]])
-    {
-        if ([responseDic[@"status_code"] intValue] == 2)
-        {
-            [self.delegate needUserLogin];
-            return NO;
-        }
-    }
-    return YES;
-}
 
 
 - (NSString*) JsonFromId: (id) obj {
