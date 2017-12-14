@@ -38,6 +38,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
      listArray = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Mine" ofType: @"plist"]];
     [_tableview registerClass:[MineTableViewCell class] forCellReuseIdentifier:@"MineTableViewCell"];
     _tableview.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
@@ -47,42 +49,20 @@
     _tableview.dataSource = self;
     
     [self noticeCenterSet];
-   // _tableview.hidden = YES;
+   
     [_tableview reloadData];
+}
+
+- (void) notLogin{
+    
     LoginViewController * loginVC = [[LoginViewController alloc]init];
-    [self presentViewController:loginVC animated:NO completion:nil];
-}
-
--(void)notLogin{
-    
-    
-    
-}
-
-- (UINavigationController *) tabNavVCWithAttr: (NSDictionary*) attrs {
-    UIImage *normalImage = [[UIImage imageNamed: attrs[@"itemNormal"]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    UIImage *selectedImage = [[UIImage imageNamed: attrs[@"itemSelected"]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    
-    UITabBarItem *tabBarItem = [[UITabBarItem alloc] initWithTitle: attrs[@"tabTitle"] image: normalImage selectedImage: selectedImage];
-    NSDictionary *normalAttributes = @{NSFontAttributeName: [UIFont systemFontOfSize:12], NSForegroundColorAttributeName: SystemLightGray};
-    [tabBarItem setTitleTextAttributes: normalAttributes forState:UIControlStateNormal];
-    
-    NSDictionary *selectedAttributes = @{NSFontAttributeName: [UIFont systemFontOfSize:12], NSForegroundColorAttributeName: SystemGreen};
-    [tabBarItem setTitleTextAttributes: selectedAttributes forState:UIControlStateSelected];
-    NSString *rootVCClassName = attrs[@"rootVC"];
-    
-    UIViewController *rootVC = [[NSClassFromString(rootVCClassName) alloc] initWithNibName: rootVCClassName bundle: nil];
-    
-    
-    rootVC.title = attrs[@"title"];
-    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController: rootVC];
+    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController: loginVC];
     navVC.navigationBar.barTintColor = SystemGreen;
-    navVC.tabBarItem = tabBarItem;
-    
     
     navVC.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor], NSFontAttributeName: [UIFont systemFontOfSize:18]};
     navVC.navigationBar.tintColor = [UIColor whiteColor];
-    return navVC;
+    [self presentViewController:navVC animated:YES completion:nil];
+    
 }
 
 -(void)noticeCenterSet{
@@ -114,8 +94,7 @@
 
 - (IBAction)loginBtnClick:(id)sender {
 
-    LoginViewController * loginVC = [[LoginViewController alloc]init];
-    [self.navigationController pushViewController: loginVC animated: YES];
+    [self notLogin];
 }
 - (IBAction)signInBtnClick:(id)sender {
 }

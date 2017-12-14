@@ -26,6 +26,7 @@
     [super viewDidLoad];
     self.title = @"登陆";
     [self registerBtnSet];
+    [self setNavigationBack];
 }
 
 -(void)registerBtnSet{
@@ -35,6 +36,24 @@
     [registerBtn setTitle:@"注册" forState:UIControlStateNormal];
    // [registerBtn setImage:[UIImage imageNamed:@"news_ _bj_default@2x.png"] forState:UIControlStateNormal];
     [registerBtn addTarget: self action: @selector(registerBtnClick) forControlEvents: UIControlEventTouchUpInside];
+}
+
+-(void)setNavigationBack{
+    
+    UIBarButtonItem *backBarButton = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed: @"newBack"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(navigationBackToLastPage)];
+    
+    self.navigationItem.leftBarButtonItem = backBarButton;
+}
+
+-(void)navigationBackToLastPage{
+    if (self.navigationController.viewControllers.count == 1) {
+        [self dismissViewControllerAnimated:YES completion:^{
+            
+            
+        }];
+    }else{
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 -(void)registerBtnClick{
