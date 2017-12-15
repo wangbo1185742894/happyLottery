@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "happyLottery/Class/Base/Model/MemberManager.m"
-            timestampString = "534997551.100338"
+            timestampString = "535008281.113189"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "21"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "happyLottery/Class/Base/Model/MemberManager.m"
-            timestampString = "534997551.100435"
+            timestampString = "535008281.113357"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
@@ -58,7 +58,7 @@
                   moduleName = "happyLottery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wangbo/Desktop/happyLottery/happyLottery/happyLottery/Class/Base/Model/MemberManager.m"
-                  timestampString = "534997551.21296"
+                  timestampString = "535008171.42623"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "32"
@@ -73,7 +73,7 @@
                   moduleName = "happyLottery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wangbo/Desktop/happyLottery/happyLottery/happyLottery/Class/Base/Model/MemberManager.m"
-                  timestampString = "534997551.216686"
+                  timestampString = "535008171.428633"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "32"
@@ -88,7 +88,7 @@
                   moduleName = "happyLottery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wangbo/Desktop/happyLottery/happyLottery/happyLottery/Class/Base/Model/MemberManager.m"
-                  timestampString = "534997551.220354"
+                  timestampString = "535008171.431121"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "32"
@@ -137,11 +137,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "happyLottery/Class/LotteryMine(&#x6211;&#x7684;)/Controller/RegisterViewController.m"
-            timestampString = "534997551.100681"
+            timestampString = "535008281.113711"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
             landmarkName = "-registerUser:IsSuccess:errorMsg:"
             landmarkType = "7">
          </BreakpointContent>
@@ -153,7 +153,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "happyLottery/Class/Base/Model/MemberManager.m"
-            timestampString = "534997551.10076"
+            timestampString = "535008281.114538"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "61"
@@ -169,7 +169,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "happyLottery/Class/Base/Model/MemberManager.m"
-            timestampString = "534997551.100833"
+            timestampString = "535008281.114694"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "81"
@@ -184,13 +184,77 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "happyLottery/Class/Base/Model/Manager.m"
-            timestampString = "534997551.100907"
+            filePath = "happyLottery/Class/LotteryMine(&#x6211;&#x7684;)/Controller/RegisterViewController.m"
+            timestampString = "535008281.11486"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "-newRequestWithRequest:subAPI:constructingBodyWithBlock:success:failure:"
+            startingLineNumber = "277"
+            endingLineNumber = "277"
+            landmarkName = "-checkRegisterSmsIsSuccess:errorMsg:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/Base/Model/MemberManager.m"
+            timestampString = "535008281.115336"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "-checkRegisterSms:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/LotteryMine(&#x6211;&#x7684;)/Controller/RegisterViewController.m"
+            timestampString = "535008281.115487"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "247"
+            endingLineNumber = "247"
+            landmarkName = "-textField:shouldChangeCharactersInRange:replacementString:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/LotteryMine(&#x6211;&#x7684;)/Controller/RegisterViewController.m"
+            timestampString = "535008281.115976"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "244"
+            endingLineNumber = "244"
+            landmarkName = "-textField:shouldChangeCharactersInRange:replacementString:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/LotteryMine(&#x6211;&#x7684;)/Controller/RegisterViewController.m"
+            timestampString = "535008281.116386"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "257"
+            endingLineNumber = "257"
+            landmarkName = "-textField:shouldChangeCharactersInRange:replacementString:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -12,7 +12,7 @@
 //* mobile 手机号 必填项  pwd 密码 加密的 必填, channelCode 渠道号 必填
 //* @return
 //*/
-//@WebMethod
+//WebMethod
 //String login(@WebParam(name = "params")String params) throws BizException;
 
 - (void) loginCurUser:(NSDictionary *)paraDic {
@@ -46,12 +46,10 @@
 
 /**
  * 注册用户
- * @param {"mobile":"xxx", "pwd":"xxxx","channelCode":"xxx","shareCode":"xxx"}
+ * param {"mobile":"xxx", "pwd":"xxxx","channelCode":"xxx","shareCode":"xxx"}
  * mobile 手机号 必填项  pwd 密码 加密的 必填, channelCode 渠道号 必填 shareCode 分享码 可以不填
- * @return
+ *
  */
-//@WebMethod
-//String register(@WebParam(name = "params")String params) throws BizException;
 
 - (void) registerUser:(NSDictionary *)paraDic{
     void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
@@ -78,6 +76,72 @@
         itemParaDic = @{@"mobile":paraDic[@"userTel"], @"pwd":[self actionDecrypt:paraDic[@"userPwd"]],@"channelCode":@"TBZ",@"shareCode":paraDic[@"shareCode"]};
     }
     SOAPRequest *request = [self requestForAPI: APIRegister withParam:@{@"params":[self actionEncrypt:[self JsonFromId:itemParaDic]]} ];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+
+/**
+ * 注册时发送短信验证码
+ * param {"mobile":"xxx", "channelCode":"xxx"}
+ * return 是否成功
+ * @throws BizException
+ */
+
+- (void) sendRegisterSms:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        if (response.succeed) {
+            
+            [self.delegate sendRegisterSmsIsSuccess:YES errorMsg:response.errorMsg];
+        } else {
+            [self.delegate sendRegisterSmsIsSuccess:NO errorMsg:response.errorMsg];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate sendRegisterSmsIsSuccess:NO errorMsg:@"服务器错误"];
+        //失败的代理方法
+    };
+    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ"};
+  
+    SOAPRequest *request = [self requestForAPI: APISendRegisterSms withParam:@{@"params":[self actionEncrypt:[self JsonFromId:itemParaDic]]} ];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+/**
+ * 验证注册时发送短信验证码
+ * param {"mobile":"xxx", "channelCode":"xxx", "checkCode":"xxxxx"}
+ * return 是否成功
+ * @throws BizException
+ */
+- (void) checkRegisterSms:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        if (response.succeed) {
+            
+            [self.delegate checkRegisterSmsIsSuccess:YES errorMsg:response.errorMsg];
+        } else {
+            [self.delegate checkRegisterSmsIsSuccess:NO errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate checkRegisterSmsIsSuccess:NO errorMsg:@"服务器错误"];
+        //失败的代理方法
+    };
+    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
+    
+    SOAPRequest *request = [self requestForAPI: APICheckRegisterSms withParam:@{@"params":[self actionEncrypt:[self JsonFromId:itemParaDic]]} ];
     [self newRequestWithRequest:request
                          subAPI:SUBAPIMember
       constructingBodyWithBlock:nil

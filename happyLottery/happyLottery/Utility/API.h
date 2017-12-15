@@ -12,16 +12,16 @@
 #define NameSpaceURI @"http://webservice.onlytest.com/"
 
 
-#define WSServerURL @"http://192.168.88.244:28000/services%@"    
+//#define WSServerURL @"http://192.168.88.244:28000/services%@"
 
-//#define WSServerURL @"http://192.168.88.105:28000/services%@"
-
-
-#define SUBAPIMember @"/member"
-
-#define APILogin  @"login"
-#define APIRegister  @"register"
+#define WSServerURL @"http://192.168.88.105:28000/services%@"
 
 
+#define SUBAPIMember               @"/member"
+
+#define APILogin                   @"login"
+#define APIRegister                @"register"
+#define APISendRegisterSms         @"sendRegisterSms"
+#define APICheckRegisterSms        @"checkRegisterSms"
 
 #endif /* API_h */

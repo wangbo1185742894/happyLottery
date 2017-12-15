@@ -31,7 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.memberMan.delegate = self;
-    disMarginTop.constant =  [self isIphoneX]?94 + 44:94;
+    disMarginTop.constant =  [self isIphoneX]?44 + 44:64;
     
     [self setTFViewLRView];
     [self setBtnBackImgWithCol];
@@ -56,7 +56,10 @@
     [self setBoaderColor:tfCheckCode color:TFBorderColor];
     [self setBoaderColor:tfUserPwd color:TFBorderColor];
     
-    [tfCheckCode setLeftView:@"captcha" rightView:nil];
+    [tfCheckCode setLeftView:@"captcha" rightView:@"checksuccess"];
+    
+    tfCheckCode.rightViewMode = UITextFieldViewModeAlways;
+    tfCheckCode.rightView.hidden = YES;
     tfCheckCode.leftViewMode=UITextFieldViewModeAlways;
     
     [tfUserPwd setLeftView:@"password" rightView:nil];
@@ -86,12 +89,28 @@
 
 }
 
-
+-(BOOL)checkTelNum{
+    
+    NSString *phoneNumber = [tfUserTel text];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", REG_PHONENUM_STR];
+    if (![predicate evaluateWithObject: phoneNumber]) {
+        [self showPromptText: @"请输入合法的手机号码" hideAfterDelay: 1.7];
+        return NO;
+    }
+    return YES;
+    
+}
 
 - (IBAction)actionSendCheckCode:(id)sender {
     
-    [btnSendCheckCode setEnabled:NO];
+    if ([self checkTelNum] == NO) {
+        return;
+    }
     
+    [self.memberMan sendRegisterSms:@{@"mobile":tfUserTel.text}];
+    
+    [btnSendCheckCode setEnabled:NO];
+
     [btnSendCheckCode setTitle:[NSString stringWithFormat:@"重新发送(%lds)",checkSec] forState:UIControlStateDisabled];
     
     if (@available(iOS 10.0, *)) {
@@ -110,17 +129,22 @@
     } else {
         
     }
-    
 }
+
+-(void)sendRegisterSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    if ([msg isEqualToString:@"执行成功"]) {
+        [self showPromptText: @"发送成功" hideAfterDelay: 1.7];
+    }else{
+        [self showPromptText: msg hideAfterDelay: 1.7];
+    }
+}
+
 - (IBAction)actionRegister:(id)sender {
-    NSString *phoneNumber = [tfUserTel text];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", REG_PHONENUM_STR];
-    if (![predicate evaluateWithObject: phoneNumber]) {
-        [self showPromptText: @"请输入合法的手机号码" hideAfterDelay: 1.7];
+    if ([self checkTelNum] == NO) {
         return;
     }
     
-    if (tfCheckCode.text.length < 4) {
+    if (tfCheckCode.text.length < 5) {
         [self showPromptText: @"请输入有效的验证码" hideAfterDelay: 1.7];
         return;
     }
@@ -147,9 +171,18 @@
 
 -(void)registerUser:(NSDictionary *)userInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     [self hideLoadingView];
+    if ([msg isEqualToString:@"执行成功"]) {
+        [self showPromptText:@"注册成功" hideAfterDelay:1.7];
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
+        
+        [self showPromptText:msg hideAfterDelay:1.7];
+        
+    }
 }
 
 - (IBAction)actionIsGreenRule:(id)sender {
+    
 }
 - (IBAction)actionLookRule:(id)sender {
     
@@ -190,32 +223,47 @@
         
     }
     
-    NSString *str = [NSString stringWithFormat:textField.text,string];
+    NSString *str = [NSString stringWithFormat:@"%@%@",textField.text,string];
     if (textField == tfUserTel) {
-        if (str.length >10) {
+        if (str.length >11) {
             [self showPromptText: @"手机号码不能超过11位" hideAfterDelay: 1.7];
             return NO;
         }
     }
     
     if (textField == tfUserPwd) {
-        [self showPromptText: @"密码不能超过16位" hideAfterDelay: 1.7];
-        if (str.length >15) {
+        
+        if (str.length >16) {
+            [self showPromptText: @"密码不能超过16位" hideAfterDelay: 1.7];
             return NO;
         }
     }
     
     if (textField == tfCheckCode) {
+        tfCheckCode.rightView.hidden = YES;
+        if (str.length == 6) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                
+                if (tfUserTel.text.length <11) {
+                    [self showPromptText: @"请先输入有效的手机号码" hideAfterDelay: 1.7];
+                    
+                }else{
+                    
+                    [self.memberMan checkRegisterSms:@{@"mobile":tfUserTel.text,@"checkCode":str}];
+                }
+            });
+        }
         
-        if (str.length >3) {
-            [self showPromptText: @"验证码不能超过4位" hideAfterDelay: 1.7];
+        if (str.length >6) {
+            [self showPromptText: @"验证码不能超过6位" hideAfterDelay: 1.7];
             return NO;
         }
+      
     }
     
     if (textField == tfRecomCode) {
         
-        if (str.length >7) {
+        if (str.length >8) {
             [self showPromptText: @"分享码不能超过8位" hideAfterDelay: 1.7];
             return NO;
         }
@@ -223,7 +271,17 @@
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
     BOOL isMatch = [pred evaluateWithObject:string];
     return isMatch;
-    
+}
+
+-(void)checkRegisterSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    tfCheckCode.rightView.hidden = !success;
+    if ([msg isEqualToString:@"执行成功"]) {
+        [self showPromptText:@"验证成功" hideAfterDelay:1.7];
+    }else{
+        
+        [self showPromptText:msg hideAfterDelay:1.7];
+        
+    }
 }
 
 - (IBAction)actionNeedShareCode:(UIButton *)sender {

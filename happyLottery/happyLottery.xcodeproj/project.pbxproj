@@ -100,6 +100,8 @@
 		2D739C451FE369DE00264044 /* checkBox_checked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D739C3F1FE369DC00264044 /* checkBox_checked@2x.png */; };
 		2D739C461FE369DE00264044 /* checkBox_default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D739C401FE369DD00264044 /* checkBox_default@2x.png */; };
 		2D739C471FE369DE00264044 /* agreement_checkBox_default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D739C411FE369DE00264044 /* agreement_checkBox_default@3x.png */; };
+		2D739C4A1FE37E5100264044 /* checksuccess@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D739C481FE37E5000264044 /* checksuccess@2x.png */; };
+		2D739C4B1FE37E5100264044 /* checksuccess@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D739C491FE37E5100264044 /* checksuccess@3x.png */; };
 		2DCBB2761FD1000700934D92 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCBB2751FD1000700934D92 /* AppDelegate.m */; };
 		2DCBB27E1FD1000700934D92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DCBB27D1FD1000700934D92 /* Assets.xcassets */; };
 		2DCBB2811FD1000700934D92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DCBB27F1FD1000700934D92 /* LaunchScreen.storyboard */; };
@@ -376,6 +378,8 @@
 		2D739C3F1FE369DC00264044 /* checkBox_checked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkBox_checked@2x.png"; sourceTree = "<group>"; };
 		2D739C401FE369DD00264044 /* checkBox_default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkBox_default@2x.png"; sourceTree = "<group>"; };
 		2D739C411FE369DE00264044 /* agreement_checkBox_default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "agreement_checkBox_default@3x.png"; sourceTree = "<group>"; };
+		2D739C481FE37E5000264044 /* checksuccess@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checksuccess@2x.png"; sourceTree = "<group>"; };
+		2D739C491FE37E5100264044 /* checksuccess@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checksuccess@3x.png"; sourceTree = "<group>"; };
 		2DCBB2711FD1000700934D92 /* happyLottery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = happyLottery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DCBB2741FD1000700934D92 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2DCBB2751FD1000700934D92 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -1281,6 +1285,8 @@
 		F924BA791FE2528B00830BF4 /* login&registe */ = {
 			isa = PBXGroup;
 			children = (
+				2D739C481FE37E5000264044 /* checksuccess@2x.png */,
+				2D739C491FE37E5100264044 /* checksuccess@3x.png */,
 				2D739C3D1FE369DB00264044 /* agreement_checkBox_default@2x.png */,
 				2D739C411FE369DE00264044 /* agreement_checkBox_default@3x.png */,
 				2D739C3F1FE369DC00264044 /* checkBox_checked@2x.png */,
@@ -1492,6 +1498,7 @@
 				2D4B1E8A1FDF684E0034B708 /* yuce_defealt@3x.png in Resources */,
 				F924BAA51FE252CF00830BF4 /* hide@3x.png in Resources */,
 				F9DC69FC1FDFB451007D384D /* redPacketme_icon_default@3x.png in Resources */,
+				2D739C4A1FE37E5100264044 /* checksuccess@2x.png in Resources */,
 				F9DC69E61FDFB451007D384D /* caipiao_ _icon_default@2x.png in Resources */,
 				2D4B1E8D1FDF684E0034B708 /* yucezhanji@2x.png in Resources */,
 				F9581A8A1FE120E9009753AA /* zhanghu@2x.png in Resources */,
@@ -1568,6 +1575,7 @@
 				2D4B1E401FDF652C0034B708 /* HomeMenuItemView.xib in Resources */,
 				F9DC69F31FDFB451007D384D /* withdraw Deposit_button_default@3x.png in Resources */,
 				F9DC69F41FDFB451007D384D /* install_ _icon_default@2x.png in Resources */,
+				2D739C4B1FE37E5100264044 /* checksuccess@3x.png in Resources */,
 				2D739C421FE369DE00264044 /* checkBox_checked@3x.png in Resources */,
 				2D4B1E791FDF684E0034B708 /* home_select@2x.png in Resources */,
 				2D4B1E6B1FDF684E0034B708 /* bifenzhibo@2x.png in Resources */,
