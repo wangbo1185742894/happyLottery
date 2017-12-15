@@ -32,6 +32,10 @@
     self.PWDTextField.delegate = self;
     self.PWDTextAgainField.delegate = self;
     [self setIcon];
+    if ([self isIphoneX]) {
+       // self.bigView.translatesAutoresizingMaskIntoConstraints = NO;
+        self.viewTop.constant = 88;
+    }
 }
 - (IBAction)getVerifyCodeBtnClick:(id)sender {
     
@@ -82,8 +86,8 @@
         
     } else if (textField == _VerificationCodeTextField) {
         
-        if (_VerificationCodeTextField.text.length >4) {
-            [self showPromptText: @"验证码不能超过4位" hideAfterDelay: 1.7];
+        if (_VerificationCodeTextField.text.length >6) {
+            [self showPromptText: @"验证码不能超过6位" hideAfterDelay: 1.7];
             self.VerificationCodeTextField.text= @"";
             return ;
         }

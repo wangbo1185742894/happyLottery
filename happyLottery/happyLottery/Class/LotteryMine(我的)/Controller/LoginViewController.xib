@@ -118,7 +118,6 @@
                                 <color key="titleColor" red="0.067504443230000002" green="0.78096091749999996" blue="0.57203906770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
-                                <action selector="forgetBtnClick:" destination="-1" eventType="touchUpInside" id="aIy-wD-9Ah"/>
                                 <action selector="registerBtnClick:" destination="-1" eventType="touchUpInside" id="ibG-uQ-24Y"/>
                             </connections>
                         </button>

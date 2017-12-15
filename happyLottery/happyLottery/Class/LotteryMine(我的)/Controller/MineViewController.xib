@@ -48,7 +48,7 @@
                                         <action selector="personSetClick:" destination="-1" eventType="touchUpInside" id="ACC-4O-dDx"/>
                                     </connections>
                                 </button>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="picture_label _icon_default.png" translatesAutoresizingMaskIntoConstraints="NO" id="9X8-Z4-jzu">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user.png" translatesAutoresizingMaskIntoConstraints="NO" id="9X8-Z4-jzu">
                                     <rect key="frame" x="12" y="13" width="58" height="58"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="58" id="Dsg-ij-tZp"/>
@@ -74,7 +74,7 @@
                                         <constraint firstAttribute="height" constant="60" id="51y-9G-OFp"/>
                                         <constraint firstAttribute="width" constant="77" id="C4b-3q-tjN"/>
                                     </constraints>
-                                    <state key="normal" backgroundImage="attendance_label _icon_default.png"/>
+                                    <state key="normal" backgroundImage="attendance.png"/>
                                     <state key="selected" backgroundImage="attendance_label _icon_pressed.png"/>
                                     <state key="highlighted" backgroundImage="attendance_label _icon_pressed.png"/>
                                     <connections>
@@ -104,7 +104,7 @@
                                     <rect key="frame" x="125" y="0.0" width="125" height="66"/>
                                     <inset key="contentEdgeInsets" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
                                     <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    <state key="normal" title="积分（分）" image="jifen_icon_default.png">
+                                    <state key="normal" title="积分（分）" image="integral.png">
                                         <color key="titleColor" red="0.53725490200000003" green="0.53725490200000003" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                     <connections>
@@ -131,7 +131,7 @@
                                     <rect key="frame" x="250" y="0.0" width="125" height="66"/>
                                     <inset key="contentEdgeInsets" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
                                     <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    <state key="normal" title="红包（券）" image="redPacketme_icon_default.png">
+                                    <state key="normal" title="礼券（张）" image="ticket.png">
                                         <color key="titleColor" red="0.53725490200000003" green="0.53725490200000003" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                     <connections>
@@ -151,7 +151,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="125" height="66"/>
                                     <inset key="contentEdgeInsets" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
                                     <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    <state key="normal" title="余额（元）" image="money_icon_default.png">
+                                    <state key="normal" title="余额（元）" image="balance.png">
                                         <color key="titleColor" red="0.53725490196078429" green="0.53725490196078429" blue="0.53725490196078429" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                     <connections>
@@ -279,13 +279,13 @@
         </view>
     </objects>
     <resources>
-        <image name="attendance_label _icon_default.png" width="38" height="30"/>
+        <image name="attendance.png" width="77" height="31"/>
         <image name="attendance_label _icon_pressed.png" width="38" height="30"/>
-        <image name="jifen_icon_default.png" width="14" height="18"/>
-        <image name="money_icon_default.png" width="18" height="16"/>
-        <image name="picture_label _icon_default.png" width="58" height="58"/>
+        <image name="balance.png" width="20" height="20"/>
+        <image name="integral.png" width="20" height="20"/>
         <image name="recharge_button_default.png" width="125" height="38"/>
-        <image name="redPacketme_icon_default.png" width="14" height="16"/>
+        <image name="ticket.png" width="20" height="20"/>
+        <image name="user.png" width="10" height="10"/>
         <image name="withdraw Deposit_button_default.png" width="125" height="38"/>
     </resources>
 </document>

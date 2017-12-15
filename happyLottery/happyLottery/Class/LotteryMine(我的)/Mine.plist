@@ -7,7 +7,7 @@
 			<key>title</key>
 			<string>我的订单</string>
 			<key>icon</key>
-			<string>caipiao_ _icon_default@2x.png</string>
+			<string>lottery@2x.png</string>
 			<key>actionClassName</key>
 			<string>MyOrderListViewController</string>
 			<key>ShowIconRight</key>
@@ -17,17 +17,27 @@
 			<key>title</key>
 			<string>我的收藏</string>
 			<key>icon</key>
-			<string>collect_ _icon_default@2x.png</string>
+			<string>collect@2x.png</string>
 			<key>actionClassName</key>
 			<string>MyFavoriteViewController</string>
 			<key>ShowIconRight</key>
 			<true/>
 		</dict>
 		<dict>
+			<key>ShowIconRight</key>
+			<false/>
+			<key>actionClassName</key>
+			<string></string>
+			<key>icon</key>
+			<string>packet@2x</string>
+			<key>title</key>
+			<string>我的红包</string>
+		</dict>
+		<dict>
 			<key>title</key>
 			<string>积分商城</string>
 			<key>icon</key>
-			<string>Integral_ _icon_default@2x.png</string>
+			<string> integration@2x</string>
 			<key>actionClassName</key>
 			<string>IntegralMallViewController</string>
 			<key>ShowIconRight</key>
@@ -39,7 +49,7 @@
 			<key>title</key>
 			<string>分享</string>
 			<key>icon</key>
-			<string>share_ _icon_default@2x.png</string>
+			<string>share@2x</string>
 			<key>actionClassName</key>
 			<string>MyShareViewController</string>
 			<key>ShowIconRight</key>
@@ -51,7 +61,7 @@
 			<key>title</key>
 			<string>帮助</string>
 			<key>icon</key>
-			<string>help_ _icon_default@2x.png</string>
+			<string>assist@2x</string>
 			<key>actionClassName</key>
 			<string>MyHelpViewController</string>
 			<key>ShowIconRight</key>
@@ -61,7 +71,7 @@
 			<key>title</key>
 			<string>设置</string>
 			<key>icon</key>
-			<string>install_ _icon_default@2x.png</string>
+			<string>set@2x</string>
 			<key>actionClassName</key>
 			<string>MySettingViewController</string>
 			<key>ShowIconRight</key>
