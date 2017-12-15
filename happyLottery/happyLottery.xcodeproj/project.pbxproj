@@ -177,6 +177,8 @@
 		F924BAA91FE252CF00830BF4 /* stick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA911FE252CF00830BF4 /* stick@2x.png */; };
 		F957C1CD1FE36B3F0090B19B /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F957C1CB1FE36B3F0090B19B /* close@2x.png */; };
 		F957C1CE1FE36B3F0090B19B /* close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F957C1CC1FE36B3F0090B19B /* close@3x.png */; };
+		F957C1D21FE379590090B19B /* ForgetPWDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F957C1D01FE379590090B19B /* ForgetPWDViewController.m */; };
+		F957C1D31FE379590090B19B /* ForgetPWDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F957C1D11FE379590090B19B /* ForgetPWDViewController.xib */; };
 		F9581A771FE0B765009753AA /* MineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9581A751FE0B765009753AA /* MineTableViewCell.m */; };
 		F9581A781FE0B765009753AA /* MineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9581A761FE0B765009753AA /* MineTableViewCell.xib */; };
 		F9581A7B1FE0C6FD009753AA /* UIImage+RandomSize.m in Sources */ = {isa = PBXBuildFile; fileRef = F9581A7A1FE0C6FC009753AA /* UIImage+RandomSize.m */; };
@@ -519,6 +521,9 @@
 		F924BA911FE252CF00830BF4 /* stick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stick@2x.png"; sourceTree = "<group>"; };
 		F957C1CB1FE36B3F0090B19B /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@2x.png"; sourceTree = "<group>"; };
 		F957C1CC1FE36B3F0090B19B /* close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@3x.png"; sourceTree = "<group>"; };
+		F957C1CF1FE379590090B19B /* ForgetPWDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ForgetPWDViewController.h; sourceTree = "<group>"; };
+		F957C1D01FE379590090B19B /* ForgetPWDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ForgetPWDViewController.m; sourceTree = "<group>"; };
+		F957C1D11FE379590090B19B /* ForgetPWDViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForgetPWDViewController.xib; sourceTree = "<group>"; };
 		F9581A741FE0B765009753AA /* MineTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MineTableViewCell.h; path = "happyLottery/Class/LotteryMine(我的)/Controller/MineTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		F9581A751FE0B765009753AA /* MineTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MineTableViewCell.m; path = "happyLottery/Class/LotteryMine(我的)/Controller/MineTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		F9581A761FE0B765009753AA /* MineTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MineTableViewCell.xib; path = "happyLottery/Class/LotteryMine(我的)/Controller/MineTableViewCell.xib"; sourceTree = SOURCE_ROOT; };
@@ -1012,6 +1017,9 @@
 				2D739C371FE365BE00264044 /* WebShowViewController.h */,
 				2D739C381FE365BE00264044 /* WebShowViewController.m */,
 				2D739C391FE365BE00264044 /* WebShowViewController.xib */,
+				F957C1CF1FE379590090B19B /* ForgetPWDViewController.h */,
+				F957C1D01FE379590090B19B /* ForgetPWDViewController.m */,
+				F957C1D11FE379590090B19B /* ForgetPWDViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1481,6 +1489,7 @@
 				F924BAA51FE252CF00830BF4 /* hide@3x.png in Resources */,
 				F9DC69FC1FDFB451007D384D /* redPacketme_icon_default@3x.png in Resources */,
 				F9DC69E61FDFB451007D384D /* caipiao_ _icon_default@2x.png in Resources */,
+				F957C1D31FE379590090B19B /* ForgetPWDViewController.xib in Resources */,
 				2D4B1E8D1FDF684E0034B708 /* yucezhanji@2x.png in Resources */,
 				F9581A8A1FE120E9009753AA /* zhanghu@2x.png in Resources */,
 				F924BAA61FE252CF00830BF4 /* user@2x.png in Resources */,
@@ -1648,6 +1657,7 @@
 				F9581A7B1FE0C6FD009753AA /* UIImage+RandomSize.m in Sources */,
 				2DDEDC471FD52562007AEBF7 /* GlobalInstance.m in Sources */,
 				2D739C181FE2611C00264044 /* IQUITextFieldView+Additions.m in Sources */,
+				F957C1D21FE379590090B19B /* ForgetPWDViewController.m in Sources */,
 				2D739BEF1FE2555E00264044 /* RegisterViewController.m in Sources */,
 				2DDEDE6E1FD568C9007AEBF7 /* AFHTTPRequestOperationManager.m in Sources */,
 				2DDEDC0B1FD4DBF1007AEBF7 /* DiscoverViewController.m in Sources */,

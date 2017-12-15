@@ -8,8 +8,10 @@
 
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
+#import "ForgetPWDViewController.h"
+#import "AESUtility.h"
 
-@interface LoginViewController ()<MemberManagerDelegate>{
+@interface LoginViewController ()<MemberManagerDelegate,UITextFieldDelegate>{
     
     UIButton *registerBtn;
 }
@@ -31,6 +33,8 @@
     [super viewDidLoad];
     self.title = @"登陆";
     self.memberMan.delegate = self;
+    self.userTextField.delegate = self;
+    self.passwordTextField.delegate = self;
    self.grayImage.frame =CGRectMake(0,[self isIphoneX]?88:0, KscreenWidth, 175.0/375 * KscreenWidth);
     if ([self isIphoneX]) {
         self.bigView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -54,11 +58,12 @@
     if (success) {
        // [[GlobalInstance instance] userInfoUpdated];
 
-        [self loginUserClient];
+       
         
-        
+        [self showPromptText: @"请求服务器成功"];
         //上传手机信息
-        
+          // [self.view resignFirstResponder];
+           [self.navigationController popViewControllerAnimated:NO];
     }else{
         
         [self showPromptText:msg];
@@ -69,8 +74,11 @@
 
     NSDictionary *loginInfo;
     @try {
-        loginInfo = @{@"mobile":self.userTextField.text==nil?@"":self.userTextField.text,
-                       @"pwd":self.passwordTextField.text,
+        NSString *mobile = self.userTextField.text;
+        NSString *pwd = self.passwordTextField.text;
+        
+        loginInfo = @{@"mobile":mobile,
+                       @"pwd": [AESUtility encryptStr: pwd],
                        @"channelCode":CHANNEL_CODE
                        };
         
@@ -87,8 +95,10 @@
     
     [self.userTextField setLeftView:@"user" rightView:nil];
     self.userTextField.leftViewMode = UITextFieldViewModeAlways;
+    self.userTextField.keyboardType =UIKeyboardTypeNumberPad;
     [self.passwordTextField setLeftView:@"password" rightView:nil];
     self.passwordTextField.leftViewMode = UITextFieldViewModeAlways;
+    self.passwordTextField.keyboardType =  UIKeyboardTypeNumbersAndPunctuation;
 }
 
 -(void)setNavigationBack{
@@ -110,10 +120,11 @@
 }
 
 - (IBAction)loginBtnClick:(id)sender {
-    
+    [self loginUserClient];
 }
 - (IBAction)forgetBtnClick:(id)sender {
-    
+    ForgetPWDViewController *forgetVC = [[ForgetPWDViewController alloc]init];
+    [self.navigationController pushViewController:forgetVC animated:YES];
 }
 - (IBAction)registerBtnClick:(id)sender {
     RegisterViewController *registerVC = [[RegisterViewController alloc]init];
@@ -123,29 +134,38 @@
 //11.02 检测键盘输入位数
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+//     if (textField == self.userTextField) {
+//     NSString *regex = @"[~`!@#$%^&*()_+-=[]|{};':\",./<>?]{,}/";
+//    NSPredicate *   pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+//    if ([pred evaluateWithObject:string]) {
+//             return NO;
+//    }
     
-    if (textField == _userTextField) {
-        if(range.length == 1){
-            return YES;
-        }else if (range.length == 0){
-            NSString * regex;
-            regex = @"^[0-9]";
-            NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
-            BOOL isMatch = [pred evaluateWithObject:string];
-            if (!isMatch) {
-                return NO;
-            }
-        }
-        
-        
-        if (range.location == 11) {
-            return NO;
-        }
-        
-    }
-    return YES;
+//}
+    return YES ;
 }
-
+#pragma mark 判断密码
+-(BOOL)checkPassWord:(NSString *)passWords
+{
+    //6-20位数字和字母组成
+    //NSString *regex = @"^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$";
+    NSPredicate *   pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", REG_PASSWORD_STR];
+    if ([pred evaluateWithObject:passWords]) {
+        return YES ;
+    }else
+        return NO;
+}
+#pragma mark 判断电话号码
+-(BOOL)checkPhoneNumber:(NSString *)phone
+{
+    //正则表达式
+    //NSString *pattern = @"^1+[3578]+\\d{9}$";
+    //创建一个谓词,一个匹配条件
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", REG_PHONENUM_STR];
+    //评估是否匹配正则表达式
+    BOOL isMatch = [pred evaluateWithObject:phone];
+    return isMatch;
+}
 
 
 #pragma UITextFieldDelegate
@@ -155,7 +175,22 @@
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{
     [self setBoaderColor:textField color:TFBorderColor];
-    
+    if (textField == _userTextField) {
+        if (![self checkPhoneNumber:self.userTextField.text]) {
+            [self showPromptText: @"请输入合法的手机号码" hideAfterDelay: 1.7];
+            self.userTextField.text= @"";
+            return;
+        }
+        
+    } else  if (textField == _passwordTextField) {
+        if (![self checkPassWord:self.passwordTextField.text]) {
+            [self showPromptText: @"请输入6-16密码，由英文字母或数字组成" hideAfterDelay: 1.7];
+             self.passwordTextField.text= @"";
+            return;
+        }
+        
+    }
+    [self.view resignFirstResponder];
 }
 
 -(void)setBoaderColor:(UITextField *)textField color:(UIColor*)color{
