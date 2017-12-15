@@ -60,11 +60,12 @@
 
        
         
-        [self showPromptText: @"请求服务器成功"];
+        [self showPromptText: @"登陆成功"  hideAfterDelay: 1.7];
         //上传手机信息
           // [self.view resignFirstResponder];
            [self.navigationController popViewControllerAnimated:NO];
     }else{
+        [self showPromptText: @"登陆失败"  hideAfterDelay: 1.7];
         
         [self showPromptText:msg];
     }

@@ -11,7 +11,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ForgetPWDViewController">
             <connections>
+                <outlet property="HeadportraitImage" destination="Fhl-A9-0DH" id="9it-aN-3fT"/>
+                <outlet property="PWDTextAgainField" destination="e4h-dl-T5E" id="Ko0-cj-uYT"/>
+                <outlet property="PWDTextField" destination="QiC-Yu-9mW" id="i59-XN-Yi8"/>
+                <outlet property="VerificationCodeTextField" destination="Nca-AP-Rbk" id="iOH-Tx-3Wu"/>
+                <outlet property="commitBtn" destination="D7r-KI-R3i" id="QhL-xe-3qR"/>
+                <outlet property="getVerifyCodeBtn" destination="7As-j1-POj" id="Tkq-lN-6y3"/>
+                <outlet property="imageView" destination="cGs-1k-twS" id="6I0-Xy-cJI"/>
+                <outlet property="phoneTextField" destination="95u-mZ-rYP" id="j8b-lp-cfb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewTop" destination="Def-at-ntR" id="mQk-mr-nbe"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -50,7 +59,7 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                         </textField>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="设置密码（6-16位字符）" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QiC-Yu-9mW">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入新密码（6-16位字符）" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QiC-Yu-9mW">
                             <rect key="frame" x="45" y="282" width="285" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="285" id="d8n-1F-yRZ"/>
@@ -62,6 +71,7 @@
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7As-j1-POj">
                             <rect key="frame" x="234" y="208" width="103" height="40"/>
+                            <color key="backgroundColor" red="0.067504443230000002" green="0.78096091749999996" blue="0.57203906770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="103" id="4nx-DO-7Lx"/>
                                 <constraint firstAttribute="height" constant="40" id="LOy-Hi-gfA"/>
@@ -71,8 +81,11 @@
                             <state key="disabled">
                                 <color key="titleColor" red="0.61960784310000006" green="0.61960784310000006" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
+                            <connections>
+                                <action selector="getVerifyCodeBtnClick:" destination="-1" eventType="touchUpInside" id="h7Y-Cb-zfq"/>
+                            </connections>
                         </button>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="推荐码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e4h-dl-T5E">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="再次输入新密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e4h-dl-T5E">
                             <rect key="frame" x="45" y="356" width="285" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="285" id="L8Q-T5-XJ5"/>
@@ -89,6 +102,9 @@
                                 <constraint firstAttribute="width" constant="285" id="hlH-GG-mIZ"/>
                             </constraints>
                             <state key="normal" title="提交"/>
+                            <connections>
+                                <action selector="commitBtnClick:" destination="-1" eventType="touchUpInside" id="FhN-ev-820"/>
+                            </connections>
                         </button>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nca-AP-Rbk">
                             <rect key="frame" x="45" y="208" width="152" height="44"/>
@@ -135,7 +151,7 @@
                 <constraint firstItem="xbe-5A-waB" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Def-at-ntR"/>
                 <constraint firstAttribute="bottom" secondItem="xbe-5A-waB" secondAttribute="bottom" id="KOl-IJ-hGo"/>
             </constraints>
-            <point key="canvasLocation" x="33.5" y="54.5"/>
+            <point key="canvasLocation" x="-181" y="104"/>
         </view>
     </objects>
 </document>
