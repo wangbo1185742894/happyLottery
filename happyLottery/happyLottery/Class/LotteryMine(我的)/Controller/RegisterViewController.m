@@ -38,6 +38,7 @@
     checkSec = KCheckSec;
     self.view.backgroundColor = MAINBGC;
     self.title = @"注册";
+    
 }
 
 -(void)setTFViewLRView{

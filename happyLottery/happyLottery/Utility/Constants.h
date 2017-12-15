@@ -148,7 +148,7 @@ sizeWithFont:font constrainedToSize:maxSize lineBreakMode:mode] : CGSizeZero;
 #define REG_LOGINNAME_STR   @"^[a-zA-Z0-9_\u4e00-\u9fa5]{4,16}+$"
 // 真实姓名验证：汉字 [\u4e00-\u9fa5]
 #define REG_NICKNAME_STR    @"^([\u4e00-\u9fa5]){0,}$"
-// 密码验证：6到16位数字和英文
+// 密码验证：6到16位数字和英文@"^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$";
 #define REG_PASSWORD_STR    @"^[A-Za-z0-9]{6,16}+$"
 // 邮箱验证
 #define REG_MAIL_STR        @"\\b([a-zA-Z0-9%_.+\\-]+)@([a-zA-Z0-9.\\-]+?\\.[a-zA-Z]{2,6})\\b"

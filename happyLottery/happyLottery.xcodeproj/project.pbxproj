@@ -94,6 +94,7 @@
 		2D739C2A1FE26EA700264044 /* UIImage+ImageWithColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D739C291FE26EA700264044 /* UIImage+ImageWithColor.m */; };
 		2D739C3A1FE365BE00264044 /* WebShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D739C381FE365BE00264044 /* WebShowViewController.m */; };
 		2D739C3B1FE365BE00264044 /* WebShowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D739C391FE365BE00264044 /* WebShowViewController.xib */; };
+
 		2D739C421FE369DE00264044 /* checkBox_checked@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D739C3C1FE369DB00264044 /* checkBox_checked@3x.png */; };
 		2D739C431FE369DE00264044 /* agreement_checkBox_default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D739C3D1FE369DB00264044 /* agreement_checkBox_default@2x.png */; };
 		2D739C441FE369DE00264044 /* checkBox_default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D739C3E1FE369DC00264044 /* checkBox_default@3x.png */; };
@@ -102,6 +103,7 @@
 		2D739C471FE369DE00264044 /* agreement_checkBox_default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D739C411FE369DE00264044 /* agreement_checkBox_default@3x.png */; };
 		2D739C4A1FE37E5100264044 /* checksuccess@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D739C481FE37E5000264044 /* checksuccess@2x.png */; };
 		2D739C4B1FE37E5100264044 /* checksuccess@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D739C491FE37E5100264044 /* checksuccess@3x.png */; };
+
 		2DCBB2761FD1000700934D92 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCBB2751FD1000700934D92 /* AppDelegate.m */; };
 		2DCBB27E1FD1000700934D92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DCBB27D1FD1000700934D92 /* Assets.xcassets */; };
 		2DCBB2811FD1000700934D92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DCBB27F1FD1000700934D92 /* LaunchScreen.storyboard */; };
@@ -183,6 +185,10 @@
 		F924BAA61FE252CF00830BF4 /* user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA8E1FE252CE00830BF4 /* user@2x.png */; };
 		F924BAA81FE252CF00830BF4 /* captcha@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA901FE252CE00830BF4 /* captcha@2x.png */; };
 		F924BAA91FE252CF00830BF4 /* stick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA911FE252CF00830BF4 /* stick@2x.png */; };
+		F957C1CD1FE36B3F0090B19B /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F957C1CB1FE36B3F0090B19B /* close@2x.png */; };
+		F957C1CE1FE36B3F0090B19B /* close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F957C1CC1FE36B3F0090B19B /* close@3x.png */; };
+		F957C1D21FE379590090B19B /* ForgetPWDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F957C1D01FE379590090B19B /* ForgetPWDViewController.m */; };
+		F957C1D31FE379590090B19B /* ForgetPWDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F957C1D11FE379590090B19B /* ForgetPWDViewController.xib */; };
 		F9581A771FE0B765009753AA /* MineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9581A751FE0B765009753AA /* MineTableViewCell.m */; };
 		F9581A781FE0B765009753AA /* MineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9581A761FE0B765009753AA /* MineTableViewCell.xib */; };
 		F9581A7B1FE0C6FD009753AA /* UIImage+RandomSize.m in Sources */ = {isa = PBXBuildFile; fileRef = F9581A7A1FE0C6FC009753AA /* UIImage+RandomSize.m */; };
@@ -372,6 +378,7 @@
 		2D739C371FE365BE00264044 /* WebShowViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebShowViewController.h; sourceTree = "<group>"; };
 		2D739C381FE365BE00264044 /* WebShowViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebShowViewController.m; sourceTree = "<group>"; };
 		2D739C391FE365BE00264044 /* WebShowViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebShowViewController.xib; sourceTree = "<group>"; };
+
 		2D739C3C1FE369DB00264044 /* checkBox_checked@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkBox_checked@3x.png"; sourceTree = "<group>"; };
 		2D739C3D1FE369DB00264044 /* agreement_checkBox_default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "agreement_checkBox_default@2x.png"; sourceTree = "<group>"; };
 		2D739C3E1FE369DC00264044 /* checkBox_default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkBox_default@3x.png"; sourceTree = "<group>"; };
@@ -380,6 +387,7 @@
 		2D739C411FE369DE00264044 /* agreement_checkBox_default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "agreement_checkBox_default@3x.png"; sourceTree = "<group>"; };
 		2D739C481FE37E5000264044 /* checksuccess@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checksuccess@2x.png"; sourceTree = "<group>"; };
 		2D739C491FE37E5100264044 /* checksuccess@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checksuccess@3x.png"; sourceTree = "<group>"; };
+
 		2DCBB2711FD1000700934D92 /* happyLottery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = happyLottery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DCBB2741FD1000700934D92 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2DCBB2751FD1000700934D92 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -531,6 +539,11 @@
 		F924BA8E1FE252CE00830BF4 /* user@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user@2x.png"; sourceTree = "<group>"; };
 		F924BA901FE252CE00830BF4 /* captcha@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "captcha@2x.png"; sourceTree = "<group>"; };
 		F924BA911FE252CF00830BF4 /* stick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stick@2x.png"; sourceTree = "<group>"; };
+		F957C1CB1FE36B3F0090B19B /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@2x.png"; sourceTree = "<group>"; };
+		F957C1CC1FE36B3F0090B19B /* close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@3x.png"; sourceTree = "<group>"; };
+		F957C1CF1FE379590090B19B /* ForgetPWDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ForgetPWDViewController.h; sourceTree = "<group>"; };
+		F957C1D01FE379590090B19B /* ForgetPWDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ForgetPWDViewController.m; sourceTree = "<group>"; };
+		F957C1D11FE379590090B19B /* ForgetPWDViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForgetPWDViewController.xib; sourceTree = "<group>"; };
 		F9581A741FE0B765009753AA /* MineTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MineTableViewCell.h; path = "happyLottery/Class/LotteryMine(我的)/Controller/MineTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		F9581A751FE0B765009753AA /* MineTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MineTableViewCell.m; path = "happyLottery/Class/LotteryMine(我的)/Controller/MineTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		F9581A761FE0B765009753AA /* MineTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MineTableViewCell.xib; path = "happyLottery/Class/LotteryMine(我的)/Controller/MineTableViewCell.xib"; sourceTree = SOURCE_ROOT; };
@@ -1024,6 +1037,9 @@
 				2D739C371FE365BE00264044 /* WebShowViewController.h */,
 				2D739C381FE365BE00264044 /* WebShowViewController.m */,
 				2D739C391FE365BE00264044 /* WebShowViewController.xib */,
+				F957C1CF1FE379590090B19B /* ForgetPWDViewController.h */,
+				F957C1D01FE379590090B19B /* ForgetPWDViewController.m */,
+				F957C1D11FE379590090B19B /* ForgetPWDViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1285,6 +1301,7 @@
 		F924BA791FE2528B00830BF4 /* login&registe */ = {
 			isa = PBXGroup;
 			children = (
+
 				2D739C481FE37E5000264044 /* checksuccess@2x.png */,
 				2D739C491FE37E5100264044 /* checksuccess@3x.png */,
 				2D739C3D1FE369DB00264044 /* agreement_checkBox_default@2x.png */,
@@ -1293,6 +1310,10 @@
 				2D739C3C1FE369DB00264044 /* checkBox_checked@3x.png */,
 				2D739C401FE369DD00264044 /* checkBox_default@2x.png */,
 				2D739C3E1FE369DC00264044 /* checkBox_default@3x.png */,
+
+				F957C1CB1FE36B3F0090B19B /* close@2x.png */,
+				F957C1CC1FE36B3F0090B19B /* close@3x.png */,
+
 				F924BA901FE252CE00830BF4 /* captcha@2x.png */,
 				F924BA811FE252CB00830BF4 /* captcha@3x.png */,
 				F924BA7E1FE252CB00830BF4 /* hide@2x.png */,
@@ -1461,7 +1482,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D739C431FE369DE00264044 /* agreement_checkBox_default@2x.png in Resources */,
 				F924BA9E1FE252CF00830BF4 /* user@3x.png in Resources */,
 				F9DC6A0E1FDFB451007D384D /* jifen_icon_default@2x.png in Resources */,
 				F9DC6A041FDFB451007D384D /* share_ _icon_default@3x.png in Resources */,
@@ -1470,6 +1490,7 @@
 				F9DC6A0C1FDFB451007D384D /* numble_ _bj_default@2x.png in Resources */,
 				F9DC69A51FDF8929007D384D /* MyShareViewController.xib in Resources */,
 				F9DC699B1FDF888F007D384D /* MyFavoriteViewController.xib in Resources */,
+				F957C1CE1FE36B3F0090B19B /* close@3x.png in Resources */,
 				F9DC6A031FDFB451007D384D /* arrows_icon_default@2x.png in Resources */,
 				2D739BF01FE2555E00264044 /* RegisterViewController.xib in Resources */,
 				F9DC69AF1FDF898A007D384D /* MySettingViewController.xib in Resources */,
@@ -1500,6 +1521,7 @@
 				F9DC69FC1FDFB451007D384D /* redPacketme_icon_default@3x.png in Resources */,
 				2D739C4A1FE37E5100264044 /* checksuccess@2x.png in Resources */,
 				F9DC69E61FDFB451007D384D /* caipiao_ _icon_default@2x.png in Resources */,
+				F957C1D31FE379590090B19B /* ForgetPWDViewController.xib in Resources */,
 				2D4B1E8D1FDF684E0034B708 /* yucezhanji@2x.png in Resources */,
 				F9581A8A1FE120E9009753AA /* zhanghu@2x.png in Resources */,
 				F924BAA61FE252CF00830BF4 /* user@2x.png in Resources */,
@@ -1509,7 +1531,6 @@
 				F924BAA11FE252CF00830BF4 /* line@3x.png in Resources */,
 				2D4B1E3B1FDE717C0034B708 /* newBack@3x.png in Resources */,
 				2D4B1E761FDF684E0034B708 /* fenleixian@3x.png in Resources */,
-				2D739C461FE369DE00264044 /* checkBox_default@2x.png in Resources */,
 				2D4B1E6D1FDF684E0034B708 /* duibiao@3x.png in Resources */,
 				F9581A891FE120E9009753AA /* zhanghu@3x.png in Resources */,
 				F9DC69F51FDFB451007D384D /* Integral_ _icon_default@2x.png in Resources */,
@@ -1549,12 +1570,11 @@
 				F9DC69F11FDFB451007D384D /* collect_ _icon_default@2x.png in Resources */,
 				2D4B1E781FDF684E0034B708 /* home_defealt@3x.png in Resources */,
 				F9DC6A061FDFB451007D384D /* recharge_button_default@3x.png in Resources */,
-				2D739C471FE369DE00264044 /* agreement_checkBox_default@3x.png in Resources */,
+				F957C1CD1FE36B3F0090B19B /* close@2x.png in Resources */,
 				2D4B1E7B1FDF684E0034B708 /* quanzi_defealt@2x.png in Resources */,
 				2DDEDC111FD4DC03007AEBF7 /* GroupViewController.xib in Resources */,
 				F9DC69A01FDF88E5007D384D /* IntegralMallViewController.xib in Resources */,
 				2D4B1EAF1FDFCDA00034B708 /* arrow_down@2x.png in Resources */,
-				2D739C441FE369DE00264044 /* checkBox_default@3x.png in Resources */,
 				F924BAA31FE252CF00830BF4 /* recommend@3x.png in Resources */,
 				F9DC69ED1FDFB451007D384D /* share_ _icon_default@2x.png in Resources */,
 				2DDEDE771FD568C9007AEBF7 /* README.md in Resources */,
@@ -1571,12 +1591,13 @@
 				2DDEDC161FD4DC16007AEBF7 /* MineViewController.xib in Resources */,
 				F9DC69961FDF878D007D384D /* MyOrderListViewController.xib in Resources */,
 				F924BAA91FE252CF00830BF4 /* stick@2x.png in Resources */,
-				2D739C451FE369DE00264044 /* checkBox_checked@2x.png in Resources */,
 				2D4B1E401FDF652C0034B708 /* HomeMenuItemView.xib in Resources */,
 				F9DC69F31FDFB451007D384D /* withdraw Deposit_button_default@3x.png in Resources */,
 				F9DC69F41FDFB451007D384D /* install_ _icon_default@2x.png in Resources */,
+
 				2D739C4B1FE37E5100264044 /* checksuccess@3x.png in Resources */,
 				2D739C421FE369DE00264044 /* checkBox_checked@3x.png in Resources */,
+
 				2D4B1E791FDF684E0034B708 /* home_select@2x.png in Resources */,
 				2D4B1E6B1FDF684E0034B708 /* bifenzhibo@2x.png in Resources */,
 				2D4B1E3A1FDE717C0034B708 /* newBack@2x.png in Resources */,
@@ -1672,6 +1693,7 @@
 				F9581A7B1FE0C6FD009753AA /* UIImage+RandomSize.m in Sources */,
 				2DDEDC471FD52562007AEBF7 /* GlobalInstance.m in Sources */,
 				2D739C181FE2611C00264044 /* IQUITextFieldView+Additions.m in Sources */,
+				F957C1D21FE379590090B19B /* ForgetPWDViewController.m in Sources */,
 				2D739BEF1FE2555E00264044 /* RegisterViewController.m in Sources */,
 				2DDEDE6E1FD568C9007AEBF7 /* AFHTTPRequestOperationManager.m in Sources */,
 				2DDEDC0B1FD4DBF1007AEBF7 /* DiscoverViewController.m in Sources */,
