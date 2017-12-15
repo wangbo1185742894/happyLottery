@@ -11,6 +11,7 @@
 @interface RegisterViewController ()<UITextFieldDelegate>
 {
     
+    __weak IBOutlet NSLayoutConstraint *disMarginTop;
     __weak IBOutlet UIButton *btnIsNeedRecomCode;
     __weak IBOutlet UITextField *tfRecomCode;
     __weak IBOutlet UITextField *tfUserPwd;
@@ -28,6 +29,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    disMarginTop.constant =  [self isIphoneX]?94 + 44:94;
+    
     [self setTFViewLRView];
     [self setBtnBackImgWithCol];
     checkSec = KCheckSec;

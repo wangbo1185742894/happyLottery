@@ -55,7 +55,7 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
         if ([self socketReachabilityTest]) {
-            [self showPromptText:@"连接服务器成功" hideAfterDelay:1.8];
+//            [self showPromptText:@"连接服务器成功" hideAfterDelay:1.8];
         }else{
             [self showPromptText:@"服务器连接失败" hideAfterDelay:1.8];
             
@@ -92,17 +92,17 @@
                 NSLog(@"AFNetworkReachability Not Reachable");
                 break;
             case AFNetworkReachabilityStatusReachableViaWWAN:
-                [self showPromptText:@"WWAN" hideAfterDelay:1.8];
-                NSLog(@"AFNetworkReachability Reachable via WWAN");
+//                [self showPromptText:@"WWAN" hideAfterDelay:1.8];
+//                NSLog(@"AFNetworkReachability Reachable via WWAN");
                 break;
             case AFNetworkReachabilityStatusReachableViaWiFi:
-                [self showPromptText:@"WiFi" hideAfterDelay:1.8];
-                NSLog(@"AFNetworkReachability Reachable via WiFi");
+//                [self showPromptText:@"WiFi" hideAfterDelay:1.8];
+//                NSLog(@"AFNetworkReachability Reachable via WiFi");
                 break;
             case AFNetworkReachabilityStatusUnknown:
             default:
-                [self showPromptText:@"Unknown" hideAfterDelay:1.8];
-                NSLog(@"AFNetworkReachability Unknown");
+//                [self showPromptText:@"Unknown" hideAfterDelay:1.8];
+//                NSLog(@"AFNetworkReachability Unknown");
                 break;
         }
     }];

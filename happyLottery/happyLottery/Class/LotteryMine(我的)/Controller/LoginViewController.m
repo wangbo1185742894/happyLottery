@@ -75,8 +75,10 @@
 }
 
 - (IBAction)loginBtnClick:(id)sender {
+    
 }
 - (IBAction)forgetBtnClick:(id)sender {
+    
 }
 - (IBAction)registerBtnClick:(id)sender {
     RegisterViewController *registerVC = [[RegisterViewController alloc]init];
