@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -41,7 +41,7 @@
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="      登陆密码" minimumFontSize="17" background="faxian_label _icon_default.png" translatesAutoresizingMaskIntoConstraints="NO" id="yly-Qy-srD">
+                        <textField opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="登陆密码" minimumFontSize="17" background="faxian_label _icon_default.png" translatesAutoresizingMaskIntoConstraints="NO" id="yly-Qy-srD">
                             <rect key="frame" x="43.5" y="208" width="288" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="SR4-i0-OYD"/>
@@ -111,9 +111,7 @@
                             <rect key="frame" x="232" y="341" width="99" height="24"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="24" id="HOt-9O-7g0"/>
-                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="q3F-8i-jRf"/>
                                 <constraint firstAttribute="width" constant="99" id="qO5-ll-Kek"/>
-                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="99" id="qPb-Uw-xHN"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="注 册">

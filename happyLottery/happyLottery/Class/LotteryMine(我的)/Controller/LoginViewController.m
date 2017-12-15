@@ -33,7 +33,6 @@
    self.grayImage.frame =CGRectMake(0,[self isIphoneX]?88:0, KscreenWidth, 175.0/375 * KscreenWidth);
     if ([self isIphoneX]) {
         self.bigView.translatesAutoresizingMaskIntoConstraints = NO;
-//        _bigViewTop =[NSLayoutConstraint constraintWithItem:self.bigView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1 constant:40];
         self.bigViewTop.constant = 88;
     }
     [self setIcon];
@@ -50,18 +49,11 @@
 }
 
 -(void)setIcon{
-    UIImage *image = [UIImage imageNamed:@"user"];
-    UIImageView *userimage = [[UIImageView alloc]initWithImage:image];
-    userimage.frame = CGRectMake(10, 0, 20, 20);
-   // userimage.image = [UIImage imageNamed:@"user"];
+    
+    [self.userTextField setLeftView:@"user" rightView:nil];
     self.userTextField.leftViewMode = UITextFieldViewModeAlways;
-    self.userTextField.leftView = userimage;
-    
-    UIImageView *pwdimage = [[UIImageView alloc]init];
-    userimage.image = [UIImage imageNamed:@"password"];
+    [self.passwordTextField setLeftView:@"password" rightView:nil];
     self.passwordTextField.leftViewMode = UITextFieldViewModeAlways;
-    self.passwordTextField.leftView = pwdimage;
-    
 }
 
 -(void)setNavigationBack{
@@ -82,31 +74,21 @@
     }
 }
 
--(void)registerBtnClick{
-    RegisterViewController *registerVC = [[RegisterViewController alloc]init];
-    [self.navigationController pushViewController:registerVC animated:YES];
+- (IBAction)loginBtnClick:(id)sender {
     
 }
-- (IBAction)loginBtnClick:(id)sender {
-}
 - (IBAction)forgetBtnClick:(id)sender {
+    
 }
 - (IBAction)registerBtnClick:(id)sender {
+    RegisterViewController *registerVC = [[RegisterViewController alloc]init];
+    [self.navigationController pushViewController:registerVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

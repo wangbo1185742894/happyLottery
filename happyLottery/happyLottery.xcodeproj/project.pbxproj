@@ -179,8 +179,6 @@
 		F924BAA61FE252CF00830BF4 /* user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA8E1FE252CE00830BF4 /* user@2x.png */; };
 		F924BAA81FE252CF00830BF4 /* captcha@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA901FE252CE00830BF4 /* captcha@2x.png */; };
 		F924BAA91FE252CF00830BF4 /* stick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA911FE252CF00830BF4 /* stick@2x.png */; };
-		F924BAB41FE274D700830BF4 /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BAB21FE274D700830BF4 /* close@2x.png */; };
-		F924BAB51FE274D700830BF4 /* close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BAB31FE274D700830BF4 /* close@3x.png */; };
 		F9581A771FE0B765009753AA /* MineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9581A751FE0B765009753AA /* MineTableViewCell.m */; };
 		F9581A781FE0B765009753AA /* MineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9581A761FE0B765009753AA /* MineTableViewCell.xib */; };
 		F9581A7B1FE0C6FD009753AA /* UIImage+RandomSize.m in Sources */ = {isa = PBXBuildFile; fileRef = F9581A7A1FE0C6FC009753AA /* UIImage+RandomSize.m */; };
@@ -509,7 +507,6 @@
 		2DDEDC991FD568A4007AEBF7 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		2DDEDC9A1FD568A4007AEBF7 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		F924BA7A1FE252CA00830BF4 /* password@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "password@3x.png"; sourceTree = "<group>"; };
-		F924BA7B1FE252CA00830BF4 /* checkBox_checked@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkBox_checked@3x.png"; sourceTree = "<group>"; };
 		F924BA7E1FE252CB00830BF4 /* hide@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hide@2x.png"; sourceTree = "<group>"; };
 		F924BA7F1FE252CB00830BF4 /* phone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone@2x.png"; sourceTree = "<group>"; };
 		F924BA801FE252CB00830BF4 /* phone@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone@3x.png"; sourceTree = "<group>"; };
@@ -525,8 +522,6 @@
 		F924BA8E1FE252CE00830BF4 /* user@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user@2x.png"; sourceTree = "<group>"; };
 		F924BA901FE252CE00830BF4 /* captcha@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "captcha@2x.png"; sourceTree = "<group>"; };
 		F924BA911FE252CF00830BF4 /* stick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stick@2x.png"; sourceTree = "<group>"; };
-		F924BAB21FE274D700830BF4 /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "close@2x.png"; path = "../../../../../../Library/Application Support/RTXC/accounts/lyj/sessionPhoto/close/close@2x.png"; sourceTree = "<group>"; };
-		F924BAB31FE274D700830BF4 /* close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "close@3x.png"; path = "../../../../../../Library/Application Support/RTXC/accounts/lyj/sessionPhoto/close/close@3x.png"; sourceTree = "<group>"; };
 		F9581A741FE0B765009753AA /* MineTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MineTableViewCell.h; path = "happyLottery/Class/LotteryMine(我的)/Controller/MineTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		F9581A751FE0B765009753AA /* MineTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MineTableViewCell.m; path = "happyLottery/Class/LotteryMine(我的)/Controller/MineTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		F9581A761FE0B765009753AA /* MineTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MineTableViewCell.xib; path = "happyLottery/Class/LotteryMine(我的)/Controller/MineTableViewCell.xib"; sourceTree = SOURCE_ROOT; };
@@ -1286,8 +1281,6 @@
 				2D739C2B1FE27CE000264044 /* checkBox_default@3x.png */,
 				F924BA901FE252CE00830BF4 /* captcha@2x.png */,
 				F924BA811FE252CB00830BF4 /* captcha@3x.png */,
-				F924BA7B1FE252CA00830BF4 /* checkBox_checked@3x.png */,
-				F924BAB31FE274D700830BF4 /* close@3x.png */,
 				F924BA7E1FE252CB00830BF4 /* hide@2x.png */,
 				F924BA8D1FE252CD00830BF4 /* hide@3x.png */,
 				F924BA831FE252CB00830BF4 /* line@2x.png */,
@@ -1302,7 +1295,6 @@
 				F924BA851FE252CC00830BF4 /* stick@3x.png */,
 				F924BA8E1FE252CE00830BF4 /* user@2x.png */,
 				F924BA861FE252CC00830BF4 /* user@3x.png */,
-				F924BAB21FE274D700830BF4 /* close@2x.png */,
 			);
 			path = "login&registe";
 			sourceTree = "<group>";
@@ -1463,7 +1455,6 @@
 				F924BA9C1FE252CF00830BF4 /* recommend@2x.png in Resources */,
 				F9DC6A0C1FDFB451007D384D /* numble_ _bj_default@2x.png in Resources */,
 				F9DC69A51FDF8929007D384D /* MyShareViewController.xib in Resources */,
-				F924BAB51FE274D700830BF4 /* close@3x.png in Resources */,
 				F9DC699B1FDF888F007D384D /* MyFavoriteViewController.xib in Resources */,
 				F9DC6A031FDFB451007D384D /* arrows_icon_default@2x.png in Resources */,
 				2D739BF01FE2555E00264044 /* RegisterViewController.xib in Resources */,
@@ -1542,7 +1533,6 @@
 				F9DC69F11FDFB451007D384D /* collect_ _icon_default@2x.png in Resources */,
 				2D739C331FE27CE600264044 /* checkBox_checked@3x.png in Resources */,
 				2D4B1E781FDF684E0034B708 /* home_defealt@3x.png in Resources */,
-				F924BAB41FE274D700830BF4 /* close@2x.png in Resources */,
 				F9DC6A061FDFB451007D384D /* recharge_button_default@3x.png in Resources */,
 				2D4B1E7B1FDF684E0034B708 /* quanzi_defealt@2x.png in Resources */,
 				2DDEDC111FD4DC03007AEBF7 /* GroupViewController.xib in Resources */,
