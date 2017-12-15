@@ -58,10 +58,8 @@
 //            [self showPromptText:@"连接服务器成功" hideAfterDelay:1.8];
         }else{
             [self showPromptText:@"服务器连接失败" hideAfterDelay:1.8];
-            
         }
     });
-    
 }
 //判断服务器是否可达
 - (BOOL)socketReachabilityTest {

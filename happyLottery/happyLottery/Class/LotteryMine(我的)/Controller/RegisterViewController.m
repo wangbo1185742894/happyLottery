@@ -7,8 +7,9 @@
 //
 
 #import "RegisterViewController.h"
+#import "WebShowViewController.h"
 #define KCheckSec 5
-@interface RegisterViewController ()<UITextFieldDelegate>
+@interface RegisterViewController ()<UITextFieldDelegate,MemberManagerDelegate>
 {
     
     __weak IBOutlet NSLayoutConstraint *disMarginTop;
@@ -29,6 +30,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.memberMan.delegate = self;
     disMarginTop.constant =  [self isIphoneX]?94 + 44:94;
     
     [self setTFViewLRView];
@@ -39,6 +41,8 @@
 }
 
 -(void)setTFViewLRView{
+    
+    tfRecomCode.hidden = YES;
     
     tfUserTel.delegate = self;
     tfRecomCode.delegate = self;
@@ -109,11 +113,50 @@
     
 }
 - (IBAction)actionRegister:(id)sender {
+    NSString *phoneNumber = [tfUserTel text];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", REG_PHONENUM_STR];
+    if (![predicate evaluateWithObject: phoneNumber]) {
+        [self showPromptText: @"请输入合法的手机号码" hideAfterDelay: 1.7];
+        return;
+    }
+    
+    if (tfCheckCode.text.length < 4) {
+        [self showPromptText: @"请输入有效的验证码" hideAfterDelay: 1.7];
+        return;
+    }
+    
+    if (tfUserPwd.text.length < 6 || tfUserPwd.text.length > 16) {
+        [self showPromptText: @"请输入有效的密码" hideAfterDelay: 1.7];
+        return;
+    }
+    
+    if (tfRecomCode.hidden == NO && tfRecomCode.text.length < 7) {
+        [self showPromptText: @"请输入有效推荐码" hideAfterDelay: 1.7];
+        return;
+    }
+    NSDictionary *paraDic;
+    if (tfRecomCode.hidden == NO) {
+        paraDic = @{@"userTel":tfUserTel.text,@"userPwd":tfUserPwd.text,@"checkCode":tfCheckCode.text ,@"shareCode":tfRecomCode.text};
+    }else{
+        paraDic = @{@"userTel":tfUserTel.text,@"userPwd":tfUserPwd.text,@"checkCode":tfCheckCode.text};
+    }
+    [self.memberMan registerUser:paraDic];
+    [self showLoadingText:@"正在提交信息"];
+    
+}
+
+-(void)registerUser:(NSDictionary *)userInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    [self hideLoadingView];
 }
 
 - (IBAction)actionIsGreenRule:(id)sender {
 }
 - (IBAction)actionLookRule:(id)sender {
+    
+    WebShowViewController *showViewVC = [[WebShowViewController alloc]init];
+    showViewVC.title = @"用户注册协议";
+    [self.navigationController pushViewController:showViewVC animated:YES];
+    
 }
 
 
@@ -131,12 +174,65 @@
     textField.layer.borderWidth = 1;
     textField.layer.cornerRadius = 5;
     textField.layer.masksToBounds = YES;
+}
+
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if ([string isEqualToString:@""]) {
+        return YES;
+    }
     
+    NSString * regex;
+    if (textField == tfUserPwd) {
+        regex = @"^[A-Za-z0-9]";
+        
+    }else{
+        regex = @"^[0-9]";
+        
+    }
+    
+    NSString *str = [NSString stringWithFormat:textField.text,string];
+    if (textField == tfUserTel) {
+        if (str.length >10) {
+            [self showPromptText: @"手机号码不能超过11位" hideAfterDelay: 1.7];
+            return NO;
+        }
+    }
+    
+    if (textField == tfUserPwd) {
+        [self showPromptText: @"密码不能超过16位" hideAfterDelay: 1.7];
+        if (str.length >15) {
+            return NO;
+        }
+    }
+    
+    if (textField == tfCheckCode) {
+        
+        if (str.length >3) {
+            [self showPromptText: @"验证码不能超过4位" hideAfterDelay: 1.7];
+            return NO;
+        }
+    }
+    
+    if (textField == tfRecomCode) {
+        
+        if (str.length >7) {
+            [self showPromptText: @"分享码不能超过8位" hideAfterDelay: 1.7];
+            return NO;
+        }
+    }
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    BOOL isMatch = [pred evaluateWithObject:string];
+    return isMatch;
+    
+}
+
+- (IBAction)actionNeedShareCode:(UIButton *)sender {
+    sender.selected = !sender.selected;
+    tfRecomCode.hidden =  !sender.selected;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    
 }
 
 @end
