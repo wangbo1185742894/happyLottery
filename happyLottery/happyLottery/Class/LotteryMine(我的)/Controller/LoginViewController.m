@@ -49,7 +49,7 @@
     NSLog(@"%@",userInfo);
     if (success) {
         [self showPromptText: @"登陆成功"  hideAfterDelay: 1.7];
-        [self.navigationController popViewControllerAnimated:NO];
+        [self.navigationController dismissViewControllerAnimated:NO completion:nil];
     }else{
         [self showPromptText: @"登陆失败"  hideAfterDelay: 1.7];
         [self showPromptText:msg];
@@ -94,8 +94,7 @@
 -(void)navigationBackToLastPage{
     if (self.navigationController.viewControllers.count == 1) {
         [self dismissViewControllerAnimated:NO completion:^{
-            
-            
+
         }];
     }else{
         [self.navigationController popViewControllerAnimated:NO];
