@@ -159,3 +159,7 @@ sizeWithFont:font constrainedToSize:maxSize lineBreakMode:mode] : CGSizeZero;
 
 //银行卡号 11.17   16位或19位
 #define REG_BANKCARD_STR    @"\\d{16}|\\d{19}"
+
+//channelCode
+#define CHANNEL_CODE    @"TBZ"
+

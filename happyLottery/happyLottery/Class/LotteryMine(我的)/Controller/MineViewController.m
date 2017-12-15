@@ -54,10 +54,10 @@
     [_tableview reloadData];
 }
 
--(void)loginUser:(NSDictionary *)userInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
-    NSLog(@"%@",userInfo);
-    
-}
+//-(void)loginUser:(NSDictionary *)userInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+//    NSLog(@"%@",userInfo);
+//    
+//}
 
 - (void) notLogin{
     
