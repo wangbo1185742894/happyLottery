@@ -63,7 +63,7 @@
         [self showPromptText: @"登陆成功"  hideAfterDelay: 1.7];
         //上传手机信息
           // [self.view resignFirstResponder];
-           [self.navigationController popViewControllerAnimated:NO];
+           [self.navigationController dismissViewControllerAnimated:NO completion:nil];
     }else{
         [self showPromptText: @"登陆失败"  hideAfterDelay: 1.7];
         
