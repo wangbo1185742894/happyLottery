@@ -60,19 +60,24 @@
         NSString *responseJsonStr = [response getAPIResponse];
         if (response.succeed) {
             NSDictionary *userInfo = [self objFromJson: responseJsonStr];
-            [self.delegate loginUser:userInfo IsSuccess:YES errorMsg:response.errorMsg];
+            [self.delegate registerUser:userInfo IsSuccess:YES errorMsg:response.errorMsg];
         } else {
-            [self.delegate loginUser:nil IsSuccess:NO errorMsg:response.errorMsg];
+            [self.delegate registerUser:nil IsSuccess:NO errorMsg:response.errorMsg];
             
         }
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate loginUser:nil IsSuccess:NO errorMsg:@"服务器错误"];
+        [self.delegate registerUser:nil IsSuccess:NO errorMsg:@"服务器错误"];
         //失败的代理方法
     };
-    
-    SOAPRequest *request = [self requestForAPI: APIRegister withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]} ];
+    NSDictionary *itemParaDic;
+    if (paraDic[@"shareCode"] == nil) {
+         itemParaDic = @{@"mobile":paraDic[@"userTel"], @"pwd":[self actionEncrypt:paraDic[@"userPwd"]],@"channelCode":@"TBZ"};
+    }else{
+        itemParaDic = @{@"mobile":paraDic[@"userTel"], @"pwd":[self actionDecrypt:paraDic[@"userPwd"]],@"channelCode":@"TBZ",@"shareCode":paraDic[@"shareCode"]};
+    }
+    SOAPRequest *request = [self requestForAPI: APIRegister withParam:@{@"params":[self actionEncrypt:[self JsonFromId:itemParaDic]]} ];
     [self newRequestWithRequest:request
                          subAPI:SUBAPIMember
       constructingBodyWithBlock:nil
