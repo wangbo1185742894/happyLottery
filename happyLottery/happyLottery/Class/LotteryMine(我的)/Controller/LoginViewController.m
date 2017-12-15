@@ -56,15 +56,11 @@
 -(void)loginUser:(NSDictionary *)userInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     NSLog(@"%@",userInfo);
     if (success) {
-       
-
-       
+        [self showPromptText: @"登陆成功"  hideAfterDelay: 1.7];
         
-        [self showPromptText: @"请求服务器成功"];
-        
-        
-           [self.navigationController popViewControllerAnimated:NO];
+        [self.navigationController popViewControllerAnimated:NO];
     }else{
+        [self showPromptText: @"登陆失败"  hideAfterDelay: 1.7];
         
         [self showPromptText:msg];
     }
