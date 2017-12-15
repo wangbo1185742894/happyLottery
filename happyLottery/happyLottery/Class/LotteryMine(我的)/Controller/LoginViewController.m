@@ -56,14 +56,13 @@
 -(void)loginUser:(NSDictionary *)userInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     NSLog(@"%@",userInfo);
     if (success) {
-       // [[GlobalInstance instance] userInfoUpdated];
-
-       
-        
         [self showPromptText: @"登陆成功"  hideAfterDelay: 1.7];
+
         //上传手机信息
           // [self.view resignFirstResponder];
            [self.navigationController dismissViewControllerAnimated:NO completion:nil];
+
+
     }else{
         [self showPromptText: @"登陆失败"  hideAfterDelay: 1.7];
         
@@ -89,7 +88,6 @@
         [self.memberMan loginCurUser:loginInfo];
     }
     
-    
 }
 
 -(void)setIcon{
@@ -103,9 +101,7 @@
 }
 
 -(void)setNavigationBack{
-    
     UIBarButtonItem *backBarButton = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed: @"close"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(navigationBackToLastPage)];
-    
     self.navigationItem.leftBarButtonItem = backBarButton;
 }
 
@@ -135,21 +131,12 @@
 //11.02 检测键盘输入位数
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-//     if (textField == self.userTextField) {
-//     NSString *regex = @"[~`!@#$%^&*()_+-=[]|{};':\",./<>?]{,}/";
-//    NSPredicate *   pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
-//    if ([pred evaluateWithObject:string]) {
-//             return NO;
-//    }
-    
-//}
     return YES ;
 }
 #pragma mark 判断密码
 -(BOOL)checkPassWord:(NSString *)passWords
 {
-    //6-20位数字和字母组成
-    //NSString *regex = @"^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$";
+   
     NSPredicate *   pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", REG_PASSWORD_STR];
     if ([pred evaluateWithObject:passWords]) {
         return YES ;
