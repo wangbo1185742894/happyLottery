@@ -67,7 +67,6 @@
     tfUserPwd.leftViewMode=UITextFieldViewModeAlways;
     [tfRecomCode setLeftView:@"recommend" rightView:nil];
     tfRecomCode.leftViewMode=UITextFieldViewModeAlways;
-    
 }
 
 -(void)setBtnBackImgWithCol{
@@ -192,7 +191,6 @@
     [self.navigationController pushViewController:showViewVC animated:YES];
     
 }
-
 
 #pragma UITextFieldDelegate
 -(void)textFieldDidBeginEditing:(UITextField *)textField{

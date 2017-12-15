@@ -58,6 +58,9 @@
 
 
 - (NSString*) JsonFromId: (id) obj {
+    if (obj == nil) {
+        return nil;
+    }
     NSError *error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject: obj
                                                        options: NSJSONWritingPrettyPrinted
