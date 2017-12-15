@@ -13,7 +13,6 @@
 
 @interface AppDelegate ()<NewFeatureViewDelegate>
 {
-    
     UITabBarController *tabBarControllerMain;
     NSUserDefaults *defaults;
     NSString * lastVersion;//应用内保存的版本号

@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "User.h"
 
 @interface GlobalInstance : NSObject
+
+@property(nonatomic,strong)User *curUser;
 
 @end

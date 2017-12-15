@@ -13,7 +13,7 @@
 
 @interface LoginViewController ()<MemberManagerDelegate,UITextFieldDelegate>{
     
-    UIButton *registerBtn;
+    
 }
 @property (weak, nonatomic) IBOutlet UIImageView *fimageView;
 @property (weak, nonatomic) IBOutlet UITextField *userTextField;
@@ -44,24 +44,14 @@
     [self setNavigationBack];
 }
 
--(void)registerBtnSet{
-    registerBtn = [UIButton buttonWithType: UIButtonTypeCustom];
-    registerBtn.frame = CGRectMake(0, 0, 35, 30);
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView: registerBtn];
-    [registerBtn setTitle:@"注册" forState:UIControlStateNormal];
-    [registerBtn setImage:[UIImage imageNamed:@"news_ _bj_default@2x.png"] forState:UIControlStateNormal];
-//    [registerBtn addTarget: self action: @selector(registerBtnClick) forControlEvents: UIControlEventTouchUpInside];
-}
 //登陆接口请求服务器
 -(void)loginUser:(NSDictionary *)userInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     NSLog(@"%@",userInfo);
     if (success) {
         [self showPromptText: @"登陆成功"  hideAfterDelay: 1.7];
-        
         [self.navigationController popViewControllerAnimated:NO];
     }else{
         [self showPromptText: @"登陆失败"  hideAfterDelay: 1.7];
-        
         [self showPromptText:msg];
     }
 }

@@ -8,6 +8,28 @@
 
 #import "GlobalInstance.h"
 
+static GlobalInstance *instance = NULL;
+
+@interface GlobalInstance()
+
+@end
+
 @implementation GlobalInstance
+
++ (GlobalInstance *) instance {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[GlobalInstance alloc]init];
+    });
+    return instance;
+}
+
+- (id)init{
+    if (instance == NULL) {
+        self = [super init];
+        instance = self;
+    }
+    return instance;
+}
 
 @end
