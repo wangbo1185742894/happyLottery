@@ -40,24 +40,56 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.memberMan.delegate = self;
- 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(actionUserLoginSuccess:) name:NotificationNameUserLogin object:nil];
      listArray = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Mine" ofType: @"plist"]];
     [_tableview registerClass:[MineTableViewCell class] forCellReuseIdentifier:@"MineTableViewCell"];
     _tableview.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    //_tableview.separatorColor = RGBCOLOR(240, 240, 240);
+    
     _tableview.backgroundColor = [UIColor clearColor];
     _tableview.delegate = self;
     _tableview.dataSource = self;
     
     [self noticeCenterSet];
-   
+    [self autoLogin];
+  
     [_tableview reloadData];
 }
 
-//-(void)loginUser:(NSDictionary *)userInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
-//    NSLog(@"%@",userInfo);
-//    
-//}
+-(void)autoLogin{
+    
+    BOOL isLogin = NO;
+    
+    if ([self .fmdb open]) {
+        FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_user_info"];
+        if ([result next] && [result stringForColumn:@"mobile"] != nil) {
+            isLogin = [[result stringForColumn:@"isLogin"] boolValue];
+            if (isLogin ) {
+                [self loadUserInfo];
+            }
+        }
+    }
+    [self.fmdb close];
+    
+}
+
+-(void)actionUserLoginSuccess:(NSNotification *)notification{
+    
+    [self loadUserInfo];
+}
+
+-(void)loadUserInfo{
+    _loginBtn.enabled = NO;
+    NSString *userName;
+    if (self.curUser.nickname.length == 0) {
+        userName = self.curUser.mobile;
+    }else{
+        userName = self.curUser.nickname;
+    }
+    [_loginBtn setTitle:userName forState:UIControlStateDisabled];
+    [_userImage sd_setImageWithURL:[NSURL URLWithString:self.curUser.headUrl]];
+    
+}
+
 
 - (void) notLogin{
     

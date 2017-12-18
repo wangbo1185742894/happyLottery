@@ -13,7 +13,7 @@
 
 @interface LoginViewController ()<MemberManagerDelegate,UITextFieldDelegate>{
     
-    UIButton *registerBtn;
+    
 }
 @property (weak, nonatomic) IBOutlet UIImageView *fimageView;
 @property (weak, nonatomic) IBOutlet UITextField *userTextField;
@@ -31,42 +31,63 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.title = @"登陆";
     self.memberMan.delegate = self;
     self.userTextField.delegate = self;
     self.passwordTextField.delegate = self;
-   self.grayImage.frame =CGRectMake(0,[self isIphoneX]?88:0, KscreenWidth, 175.0/375 * KscreenWidth);
+    self.grayImage.frame =CGRectMake(0,[self isIphoneX]?88:0, KscreenWidth, 175.0/375 * KscreenWidth);
     if ([self isIphoneX]) {
         self.bigView.translatesAutoresizingMaskIntoConstraints = NO;
         self.bigViewTop.constant = 88;
     }
     [self setIcon];
     [self setNavigationBack];
+    if ([self .fmdb open]) {
+        FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_user_info"];
+        if ([result next] && [result stringForColumn:@"mobile"] != nil) {
+            self.userTextField.text =[result stringForColumn:@"mobile"];
+        }
+    }
 }
 
--(void)registerBtnSet{
-    registerBtn = [UIButton buttonWithType: UIButtonTypeCustom];
-    registerBtn.frame = CGRectMake(0, 0, 35, 30);
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView: registerBtn];
-    [registerBtn setTitle:@"注册" forState:UIControlStateNormal];
-    [registerBtn setImage:[UIImage imageNamed:@"news_ _bj_default@2x.png"] forState:UIControlStateNormal];
-//    [registerBtn addTarget: self action: @selector(registerBtnClick) forControlEvents: UIControlEventTouchUpInside];
-}
 //登陆接口请求服务器
 -(void)loginUser:(NSDictionary *)userInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     NSLog(@"%@",userInfo);
+    User *user = [[User alloc]initWith:userInfo];
+    user.loginPwd = self.passwordTextField.text;
+    user.isLogin = YES;
+    [GlobalInstance instance].curUser = user;
+    
     if (success) {
         [self showPromptText: @"登陆成功"  hideAfterDelay: 1.7];
-
-        //上传手机信息
-          // [self.view resignFirstResponder];
-           [self.navigationController dismissViewControllerAnimated:NO completion:nil];
-
-
+        [self saveUserInfo];
+        [self.navigationController dismissViewControllerAnimated:NO completion:nil];
     }else{
         [self showPromptText: @"登陆失败"  hideAfterDelay: 1.7];
-        
         [self showPromptText:msg];
+    }
+}
+
+-(void)saveUserInfo{
+    
+    if ([self.fmdb open]) {
+        User *user = [GlobalInstance instance].curUser;
+        FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_user_info"];
+        NSLog(@"%@",result);
+        BOOL issuccess = NO;
+        
+        do {
+            NSString *mobile = [result stringForColumn:@"mobile"];
+          
+            issuccess= [self.fmdb executeUpdate:@"delete from t_user_info where mobile = ? ",mobile];
+
+        } while ([result next]);
+        
+        [self.fmdb executeUpdate:@"insert into t_user_info (cardCode , loginPwd , isLogin , mobile) values ( ?,?,?,? )  ",user.cardCode,user.loginPwd,@(1),user.mobile];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NotificationNameUserLogin object:nil];
+        [result close];
+        [self.fmdb close];
     }
 }
 
@@ -108,8 +129,7 @@
 -(void)navigationBackToLastPage{
     if (self.navigationController.viewControllers.count == 1) {
         [self dismissViewControllerAnimated:NO completion:^{
-            
-            
+
         }];
     }else{
         [self.navigationController popViewControllerAnimated:NO];
