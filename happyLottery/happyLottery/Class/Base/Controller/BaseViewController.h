@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "MemberManager.h"
+#import "FMDB.h"
 
 @interface BaseViewController : UIViewController
 @property (nonatomic,strong)MemberManager * memberMan;
+
+@property (nonatomic,strong) FMDatabase *fmdb;
+@property(nonatomic,strong)User *curUser;
 - (void) showPromptText: (NSString *) text hideAfterDelay: (NSTimeInterval) interval;
 - (void) showLoadingViewWithText: (NSString *) text
                   withDetailText: (NSString *) sText;
@@ -22,5 +26,7 @@
 - (void) showPromptText: (NSString *) text;
 - (void) hidePromptText ;
 - (void) hideLoadingView;
+
+
 -(BOOL)isIphoneX;
 @end

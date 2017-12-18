@@ -94,16 +94,15 @@
 		2D739C2A1FE26EA700264044 /* UIImage+ImageWithColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D739C291FE26EA700264044 /* UIImage+ImageWithColor.m */; };
 		2D739C3A1FE365BE00264044 /* WebShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D739C381FE365BE00264044 /* WebShowViewController.m */; };
 		2D739C3B1FE365BE00264044 /* WebShowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D739C391FE365BE00264044 /* WebShowViewController.xib */; };
-
 		2D739C421FE369DE00264044 /* checkBox_checked@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D739C3C1FE369DB00264044 /* checkBox_checked@3x.png */; };
-		2D739C431FE369DE00264044 /* agreement_checkBox_default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D739C3D1FE369DB00264044 /* agreement_checkBox_default@2x.png */; };
-		2D739C441FE369DE00264044 /* checkBox_default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D739C3E1FE369DC00264044 /* checkBox_default@3x.png */; };
-		2D739C451FE369DE00264044 /* checkBox_checked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D739C3F1FE369DC00264044 /* checkBox_checked@2x.png */; };
-		2D739C461FE369DE00264044 /* checkBox_default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D739C401FE369DD00264044 /* checkBox_default@2x.png */; };
-		2D739C471FE369DE00264044 /* agreement_checkBox_default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D739C411FE369DE00264044 /* agreement_checkBox_default@3x.png */; };
 		2D739C4A1FE37E5100264044 /* checksuccess@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D739C481FE37E5000264044 /* checksuccess@2x.png */; };
 		2D739C4B1FE37E5100264044 /* checksuccess@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D739C491FE37E5100264044 /* checksuccess@3x.png */; };
-
+		2D739C4E1FE3AF9500264044 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D739C4D1FE3AF9500264044 /* BaseModel.m */; };
+		2D739C5B1FE3B31500264044 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D739C511FE3B31400264044 /* FMDatabase.m */; };
+		2D739C5C1FE3B31500264044 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D739C531FE3B31400264044 /* FMDatabaseAdditions.m */; };
+		2D739C5D1FE3B31500264044 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D739C551FE3B31400264044 /* FMDatabasePool.m */; };
+		2D739C5E1FE3B31500264044 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D739C571FE3B31400264044 /* FMDatabaseQueue.m */; };
+		2D739C5F1FE3B31500264044 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D739C5A1FE3B31400264044 /* FMResultSet.m */; };
 		2DCBB2761FD1000700934D92 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCBB2751FD1000700934D92 /* AppDelegate.m */; };
 		2DCBB27E1FD1000700934D92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DCBB27D1FD1000700934D92 /* Assets.xcassets */; };
 		2DCBB2811FD1000700934D92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DCBB27F1FD1000700934D92 /* LaunchScreen.storyboard */; };
@@ -378,7 +377,6 @@
 		2D739C371FE365BE00264044 /* WebShowViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebShowViewController.h; sourceTree = "<group>"; };
 		2D739C381FE365BE00264044 /* WebShowViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebShowViewController.m; sourceTree = "<group>"; };
 		2D739C391FE365BE00264044 /* WebShowViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebShowViewController.xib; sourceTree = "<group>"; };
-
 		2D739C3C1FE369DB00264044 /* checkBox_checked@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkBox_checked@3x.png"; sourceTree = "<group>"; };
 		2D739C3D1FE369DB00264044 /* agreement_checkBox_default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "agreement_checkBox_default@2x.png"; sourceTree = "<group>"; };
 		2D739C3E1FE369DC00264044 /* checkBox_default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkBox_default@3x.png"; sourceTree = "<group>"; };
@@ -387,7 +385,19 @@
 		2D739C411FE369DE00264044 /* agreement_checkBox_default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "agreement_checkBox_default@3x.png"; sourceTree = "<group>"; };
 		2D739C481FE37E5000264044 /* checksuccess@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checksuccess@2x.png"; sourceTree = "<group>"; };
 		2D739C491FE37E5100264044 /* checksuccess@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checksuccess@3x.png"; sourceTree = "<group>"; };
-
+		2D739C4C1FE3AF9500264044 /* BaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
+		2D739C4D1FE3AF9500264044 /* BaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
+		2D739C501FE3B31400264044 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		2D739C511FE3B31400264044 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		2D739C521FE3B31400264044 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		2D739C531FE3B31400264044 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		2D739C541FE3B31400264044 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		2D739C551FE3B31400264044 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		2D739C561FE3B31400264044 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		2D739C571FE3B31400264044 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		2D739C581FE3B31400264044 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		2D739C591FE3B31400264044 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		2D739C5A1FE3B31400264044 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		2DCBB2711FD1000700934D92 /* happyLottery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = happyLottery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DCBB2741FD1000700934D92 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2DCBB2751FD1000700934D92 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -783,6 +793,24 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		2D739C4F1FE3B31400264044 /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				2D739C501FE3B31400264044 /* FMDatabase.h */,
+				2D739C511FE3B31400264044 /* FMDatabase.m */,
+				2D739C521FE3B31400264044 /* FMDatabaseAdditions.h */,
+				2D739C531FE3B31400264044 /* FMDatabaseAdditions.m */,
+				2D739C541FE3B31400264044 /* FMDatabasePool.h */,
+				2D739C551FE3B31400264044 /* FMDatabasePool.m */,
+				2D739C561FE3B31400264044 /* FMDatabaseQueue.h */,
+				2D739C571FE3B31400264044 /* FMDatabaseQueue.m */,
+				2D739C581FE3B31400264044 /* FMDB.h */,
+				2D739C591FE3B31400264044 /* FMResultSet.h */,
+				2D739C5A1FE3B31400264044 /* FMResultSet.m */,
+			);
+			path = FMDB;
+			sourceTree = "<group>";
+		};
 		2DCBB2681FD1000700934D92 = {
 			isa = PBXGroup;
 			children = (
@@ -904,6 +932,7 @@
 		2DCBB2BB1FD107F100934D92 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				2D739C4F1FE3B31400264044 /* FMDB */,
 				2D739BF11FE2611C00264044 /* IQKeyboardManager */,
 				2D4B1DB41FD7D1F90034B708 /* MBHUD */,
 				2DDEDC6D1FD568A4007AEBF7 /* AFNetworking */,
@@ -955,6 +984,8 @@
 				2DDEDC431FD5254C007AEBF7 /* User.m */,
 				2DDEDC451FD52562007AEBF7 /* GlobalInstance.h */,
 				2DDEDC461FD52562007AEBF7 /* GlobalInstance.m */,
+				2D739C4C1FE3AF9500264044 /* BaseModel.h */,
+				2D739C4D1FE3AF9500264044 /* BaseModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1301,7 +1332,6 @@
 		F924BA791FE2528B00830BF4 /* login&registe */ = {
 			isa = PBXGroup;
 			children = (
-
 				2D739C481FE37E5000264044 /* checksuccess@2x.png */,
 				2D739C491FE37E5100264044 /* checksuccess@3x.png */,
 				2D739C3D1FE369DB00264044 /* agreement_checkBox_default@2x.png */,
@@ -1310,10 +1340,8 @@
 				2D739C3C1FE369DB00264044 /* checkBox_checked@3x.png */,
 				2D739C401FE369DD00264044 /* checkBox_default@2x.png */,
 				2D739C3E1FE369DC00264044 /* checkBox_default@3x.png */,
-
 				F957C1CB1FE36B3F0090B19B /* close@2x.png */,
 				F957C1CC1FE36B3F0090B19B /* close@3x.png */,
-
 				F924BA901FE252CE00830BF4 /* captcha@2x.png */,
 				F924BA811FE252CB00830BF4 /* captcha@3x.png */,
 				F924BA7E1FE252CB00830BF4 /* hide@2x.png */,
@@ -1594,10 +1622,8 @@
 				2D4B1E401FDF652C0034B708 /* HomeMenuItemView.xib in Resources */,
 				F9DC69F31FDFB451007D384D /* withdraw Deposit_button_default@3x.png in Resources */,
 				F9DC69F41FDFB451007D384D /* install_ _icon_default@2x.png in Resources */,
-
 				2D739C4B1FE37E5100264044 /* checksuccess@3x.png in Resources */,
 				2D739C421FE369DE00264044 /* checkBox_checked@3x.png in Resources */,
-
 				2D4B1E791FDF684E0034B708 /* home_select@2x.png in Resources */,
 				2D4B1E6B1FDF684E0034B708 /* bifenzhibo@2x.png in Resources */,
 				2D4B1E3A1FDE717C0034B708 /* newBack@2x.png in Resources */,
@@ -1643,11 +1669,13 @@
 				2D739C161FE2611C00264044 /* IQNSArray+Sort.m in Sources */,
 				2D739C1F1FE2611C00264044 /* IQBarButtonItem.m in Sources */,
 				2DDEDE611FD568C9007AEBF7 /* SDWebImageDecoder.m in Sources */,
+				2D739C5E1FE3B31500264044 /* FMDatabaseQueue.m in Sources */,
 				2D739C221FE2611C00264044 /* IQToolbar.m in Sources */,
 				F9DC69AE1FDF898A007D384D /* MySettingViewController.m in Sources */,
 				F9DC69A41FDF8929007D384D /* MyShareViewController.m in Sources */,
 				2DDEDE781FD568C9007AEBF7 /* AFAutoPurgingImageCache.m in Sources */,
 				F9581A7F1FE0FA01009753AA /* LoginViewController.m in Sources */,
+				2D739C5D1FE3B31500264044 /* FMDatabasePool.m in Sources */,
 				2DDEDC441FD5254C007AEBF7 /* User.m in Sources */,
 				2DDEDE6D1FD568C9007AEBF7 /* AFHTTPRequestOperation.m in Sources */,
 				2DDEDE5D1FD568C9007AEBF7 /* MKAnnotationView+WebCache.m in Sources */,
@@ -1663,6 +1691,7 @@
 				2DDEDC1D1FD4DEFF007AEBF7 /* UIView+MJExtension.m in Sources */,
 				2DCBB2841FD1000700934D92 /* main.m in Sources */,
 				2DDEDE731FD568C9007AEBF7 /* AFURLRequestSerialization.m in Sources */,
+				2D739C5C1FE3B31500264044 /* FMDatabaseAdditions.m in Sources */,
 				2DDEDE7C1FD568C9007AEBF7 /* UIAlertView+AFNetworking.m in Sources */,
 				2D4B1E941FDF7BD20034B708 /* NewsListCell.m in Sources */,
 				2DDEDE6F1FD568C9007AEBF7 /* AFHTTPSessionManager.m in Sources */,
@@ -1698,6 +1727,7 @@
 				2DDEDE6E1FD568C9007AEBF7 /* AFHTTPRequestOperationManager.m in Sources */,
 				2DDEDC0B1FD4DBF1007AEBF7 /* DiscoverViewController.m in Sources */,
 				2DDEDC2F1FD51C8B007AEBF7 /* SOAPRequest.m in Sources */,
+				2D739C5B1FE3B31500264044 /* FMDatabase.m in Sources */,
 				F9DC69A91FDF8957007D384D /* MyHelpViewController.m in Sources */,
 				F9DC699A1FDF888F007D384D /* MyFavoriteViewController.m in Sources */,
 				2DCBB2BF1FD108B900934D92 /* BaseViewController.m in Sources */,
@@ -1722,6 +1752,7 @@
 				2DDEDC411FD52513007AEBF7 /* LotteryManager.m in Sources */,
 				2D4B1E3F1FDF652C0034B708 /* HomeMenuItemView.m in Sources */,
 				2D739C271FE265D800264044 /* UITextField+WbSetLRView.m in Sources */,
+				2D739C4E1FE3AF9500264044 /* BaseModel.m in Sources */,
 				2DDEDE6C1FD568C9007AEBF7 /* UIView+WebCacheOperation.m in Sources */,
 				2D4B1E361FDE241F0034B708 /* JCZQPlayViewController.m in Sources */,
 				F9581A771FE0B765009753AA /* MineTableViewCell.m in Sources */,
@@ -1731,6 +1762,7 @@
 				2DDEDE811FD568C9007AEBF7 /* UIWebView+AFNetworking.m in Sources */,
 				2DDEDC221FD4F57F007AEBF7 /* NewFeatureViewController.m in Sources */,
 				2D739C191FE2611C00264044 /* IQUIView+Hierarchy.m in Sources */,
+				2D739C5F1FE3B31500264044 /* FMResultSet.m in Sources */,
 				2DDEDE7D1FD568C9007AEBF7 /* UIButton+AFNetworking.m in Sources */,
 				2DDEDE751FD568C9007AEBF7 /* AFURLSessionManager.m in Sources */,
 			);

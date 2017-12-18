@@ -8,16 +8,20 @@
 
 #import "AppDelegate.h"
 #import "NewFeatureViewController.h"
+#import "AESUtility.h"
 #define KEYAPPVERSION @"appVersion"
 #define KEYCURAPPVERSION @"CFBundleShortVersionString"
 
-@interface AppDelegate ()<NewFeatureViewDelegate>
+@interface AppDelegate ()<NewFeatureViewDelegate,MemberManagerDelegate>
 {
     UITabBarController *tabBarControllerMain;
     NSUserDefaults *defaults;
     NSString * lastVersion;//应用内保存的版本号
     NSString * curVersion; //当前版本号
+    MemberManager *memberMan;
 }
+
+@property(nonatomic,strong)FMDatabase* fmdb;
 @end
 
 @implementation AppDelegate
@@ -25,12 +29,67 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self loadTabVC];
-    
+    memberMan = [[MemberManager alloc]init];
+    memberMan.delegate = self;
     [self setKeyWindow];
     
     [self setNewFeature];
-    
+    [self dataSave];
+    [self autoLogin];
     return YES;
+}
+
+-(void)autoLogin{
+   
+    BOOL isLogin = NO;
+    
+    if ([self .fmdb open]) {
+         FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_user_info"];
+        if ([result next] && [result stringForColumn:@"mobile"] != nil) {
+            isLogin = [[result stringForColumn:@"isLogin"] boolValue];
+            if (isLogin == NO) {
+                return;
+            }
+            NSDictionary *loginInfo;
+            @try {
+                NSString *mobile = [result stringForColumn:@"mobile"];
+                NSString *pwd = [result stringForColumn: @"loginPwd"];
+                
+                loginInfo = @{@"mobile":mobile,
+                              @"pwd": [AESUtility encryptStr: pwd],
+                              @"channelCode":CHANNEL_CODE
+                              };
+                
+            } @catch (NSException *exception) {
+                loginInfo = nil;
+            } @finally {
+                [memberMan loginCurUser:loginInfo];
+            }
+        }
+    }
+    [self.fmdb close];
+
+}
+
+-(void)loginUser:(NSDictionary *)userInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    NSLog(@"%@",userInfo);
+    User *user = [[User alloc]initWith:userInfo];
+    
+    user.isLogin = YES;
+    [GlobalInstance instance].curUser = user;
+}
+
+-(void)dataSave{
+    
+    NSString *doc=[NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *fileName=[doc stringByAppendingPathComponent:@"userInfo.sqlite"];
+    self.fmdb =[FMDatabase databaseWithPath:fileName];
+    if ([self .fmdb open]) {
+        BOOL iscreate = [self.fmdb executeUpdate:@"create table if not exists t_user_info(id integer primary key, cardCode text, mobile text ,loginPwd text, isLogin text)"];
+        if (iscreate) {
+            [self.fmdb close];
+        }
+    }
 }
 
 -(void)setKeyWindow{
@@ -120,7 +179,6 @@
     NSString *rootVCClassName = attrs[@"rootVC"];
     
     UIViewController *rootVC = [[NSClassFromString(rootVCClassName) alloc] initWithNibName: rootVCClassName bundle: nil];
-    
     
     rootVC.title = attrs[@"title"];
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController: rootVC];

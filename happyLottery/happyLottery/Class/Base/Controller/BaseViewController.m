@@ -26,6 +26,15 @@
     self.memberMan = [[MemberManager alloc]init];
     [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
     [self setNavigationBack];
+    NSString *doc=[NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *fileName=[doc stringByAppendingPathComponent:@"userInfo.sqlite"];
+    self.fmdb =[FMDatabase databaseWithPath:fileName];
+
+    
+}
+
+-(User *)curUser{
+    return [GlobalInstance instance ].curUser;
 }
 
 -(void)setNavigationBack{

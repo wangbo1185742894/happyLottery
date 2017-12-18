@@ -12,5 +12,5 @@
 @interface GlobalInstance : NSObject
 
 @property(nonatomic,strong)User *curUser;
-
++ (GlobalInstance *) instance;
 @end
