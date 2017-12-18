@@ -16,6 +16,7 @@
 
 //#define WSServerURL @"http://192.168.88.105:28000/services%@"
 
+//#define WSServerURL @"http://192.168.88.116:28000/services%@"
 
 #define SUBAPIMember               @"/member"
 

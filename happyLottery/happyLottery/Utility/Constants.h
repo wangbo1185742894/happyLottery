@@ -67,7 +67,7 @@
 #define BtnDisAbleBackColor RGBCOLOR(238,238,238)
 #define BtnDisAbleTitleColor RGBCOLOR(158,158,158)
 #define TFBorderColor        RGBCOLOR(227,227,227)
-
+#define TEXTGRAYCOLOR       RGBCOLOR(72, 72, 72) //偏黑色
 
 //这是 NavigationBar 的背景颜色
 

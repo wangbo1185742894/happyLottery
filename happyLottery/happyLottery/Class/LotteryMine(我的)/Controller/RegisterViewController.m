@@ -108,6 +108,7 @@
     }
     
     [self.memberMan sendRegisterSms:@{@"mobile":tfUserTel.text}];
+  
     
     [btnSendCheckCode setEnabled:NO];
 

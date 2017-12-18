@@ -149,5 +149,36 @@
                         success:succeedBlock
                         failure:failureBlock];
 }
-
+/**
+ * 验证注册时发送短信验证码
+ * param {"mobile":"xxx", "channelCode":"xxx", "checkCode":"xxxxx"}
+ * return 是否成功
+ * @throws BizException
+ */
+- (void) forgetPWDSms:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        if (response.succeed) {
+            
+            [self.delegate checkRegisterSmsIsSuccess:YES errorMsg:response.errorMsg];
+        } else {
+            [self.delegate checkRegisterSmsIsSuccess:NO errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate checkRegisterSmsIsSuccess:NO errorMsg:@"服务器错误"];
+        //失败的代理方法
+    };
+//    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
+    
+    SOAPRequest *request = [self requestForAPI: APICheckRegisterSms withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]} ];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
 @end

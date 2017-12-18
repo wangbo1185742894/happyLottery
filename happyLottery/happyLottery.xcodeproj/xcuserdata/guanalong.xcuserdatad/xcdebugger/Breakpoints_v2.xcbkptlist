@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "happyLottery/Class/LotteryMine(&#x6211;&#x7684;)/Controller/MineViewController.m"
-            timestampString = "535016790.643988"
+            timestampString = "535020446.241447"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "128"
@@ -22,64 +22,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "happyLottery/Class/Base/Model/MemberManager.m"
-            timestampString = "535001259.657983"
+            filePath = "happyLottery/Class/LotteryMine(&#x6211;&#x7684;)/Controller/MineViewController.m"
+            timestampString = "535020446.241691"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "-registerUser:"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "-loginUser:IsSuccess:errorMsg:"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__30-[MemberManager registerUser:]_block_invoke"
-                  moduleName = "happyLottery"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/guanalong/Desktop/workspace/happyLottery/happyLottery/Class/Base/Model/MemberManager.m"
-                  timestampString = "535016790.778836"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "67"
-                  endingLineNumber = "67"
-                  offsetFromSymbolStart = "555">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__copy_helper_block_.41"
-                  moduleName = "happyLottery"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/guanalong/Desktop/workspace/happyLottery/happyLottery/Class/Base/Model/MemberManager.m"
-                  timestampString = "535016790.782782"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "67"
-                  endingLineNumber = "67"
-                  offsetFromSymbolStart = "51">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_.42"
-                  moduleName = "happyLottery"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/guanalong/Desktop/workspace/happyLottery/happyLottery/Class/Base/Model/MemberManager.m"
-                  timestampString = "535016790.785211"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "67"
-                  endingLineNumber = "67"
-                  offsetFromSymbolStart = "29">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -88,13 +41,29 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "happyLottery/Class/LotteryMine(&#x6211;&#x7684;)/Controller/MineViewController.m"
-            timestampString = "535016790.644178"
+            filePath = "happyLottery/Class/LotteryMine(&#x6211;&#x7684;)/Controller/ForgetPWDViewController.m"
+            timestampString = "535262243.728003"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "-loginUser:IsSuccess:errorMsg:"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "-getVerifyCodeBtnClick:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/LotteryMine(&#x6211;&#x7684;)/Controller/ForgetPWDViewController.m"
+            timestampString = "535262243.728772"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
+            landmarkName = "-textField:shouldChangeCharactersInRange:replacementString:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
