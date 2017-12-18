@@ -78,7 +78,7 @@
 }
 
 -(void)loadUserInfo{
-    _loginBtn.enabled = NO;
+    //_loginBtn.enabled = NO;
     NSString *userName;
     if (self.curUser.nickname.length == 0) {
         userName = self.curUser.mobile;

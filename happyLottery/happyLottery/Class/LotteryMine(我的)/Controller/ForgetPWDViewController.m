@@ -41,7 +41,7 @@
     self.PWDTextAgainField.delegate = self;
      checkSec = KCheckSec;
      labelCountDown = [[UILabel alloc] init];
-    //self.commitBtn.enabled = YES;
+    //self.commitBtn.enabled = NO;
     [self setIcon];
     if ([self isIphoneX]) {
        // self.bigView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -49,14 +49,14 @@
     }
 }
 
--(void)sendRegisterSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+-(void)sendForgetPWDSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     if ([msg isEqualToString:@"执行成功"]) {
         [self showPromptText: @"发送成功" hideAfterDelay: 1.7];
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
     }
 }
--(void)checkRegisterSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+-(void)checkForgetPWDSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     _VerificationCodeTextField.rightView.hidden = !success;
     if ([msg isEqualToString:@"执行成功"]) {
         [self showPromptText:@"验证成功" hideAfterDelay:1.7];
@@ -71,6 +71,7 @@
     _VerificationCodeTextField.rightView.hidden = !success;
     if ([msg isEqualToString:@"执行成功"]) {
         [self showPromptText:@"重置密码成功" hideAfterDelay:1.7];
+        [self.navigationController popViewControllerAnimated:YES];
     }else{
         
         [self showPromptText:msg hideAfterDelay:1.7];
@@ -92,7 +93,7 @@
     
     //[self showLoadingViewWithText:@"正在加载..."];
     
-    [self.memberMan sendRegisterSms:@{@"mobile":phoneNumber}];
+    [self.memberMan sendForgetPWDSms:@{@"mobile":phoneNumber}];
     _getVerifyCodeBtn.enabled = NO;
     seconds = checkSec;
 //  
@@ -142,7 +143,31 @@
 //    labelCountDown.text = [NSString stringWithFormat: @"%d", seconds];
 //}
 - (IBAction)commitBtnClick:(id)sender {
-    [self commitClient];
+    if(![_PWDTextAgainField.text isEqualToString:_PWDTextField.text]){
+        [self showPromptText: @"两次输入的密码不一致！" hideAfterDelay: 1.7];
+        _PWDTextAgainField.text=@"";
+        _PWDTextField.text=@"";
+        return ;
+    }else if (_VerificationCodeTextField.text.length < 5) {
+        [self showPromptText: @"请输入有效的验证码" hideAfterDelay: 1.7];
+        return;
+    }
+    
+    else if (_PWDTextField.text.length < 6 || _PWDTextAgainField.text.length > 16) {
+        [self showPromptText: @"请输入有效的密码" hideAfterDelay: 1.7];
+        return;
+    }
+    
+   else if (_phoneTextField.text.length < 11) {
+        [self showPromptText: @"请输入有效手机号" hideAfterDelay: 1.7];
+        return;
+    }else{
+        
+        
+       
+        [self commitClient];
+    }
+
 }
 
 -(void)commitClient{
@@ -223,7 +248,7 @@
                     
                 }else{
                     
-                    [self.memberMan checkRegisterSms:@{@"mobile":_phoneTextField.text,@"checkCode":str}];
+                    [self.memberMan checkForgetPWDSms:@{@"mobile":_phoneTextField.text,@"checkCode":str}];
                 }
             });
         }
@@ -232,19 +257,16 @@
             [self showPromptText: @"验证码不能超过6位" hideAfterDelay: 1.7];
             return NO;
         }
-        if (textField == _PWDTextAgainField) {
-            
-            if (str.length >16) {
-                [self showPromptText: @"密码不能超过16位" hideAfterDelay: 1.7];
-                return NO;
-            }else{
-                
-                self.commitBtn.enabled = YES;
-            }
-        }
+      
         
     }
-    
+    if (textField == _PWDTextAgainField) {
+
+        if (str.length >16) {
+            [self showPromptText: @"密码不能超过16位" hideAfterDelay: 1.7];
+            return NO;
+        }
+    }
    
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
     BOOL isMatch = [pred evaluateWithObject:string];

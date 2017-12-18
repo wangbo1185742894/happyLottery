@@ -150,9 +150,9 @@
                         failure:failureBlock];
 }
 /**
- * 验证注册时发送短信验证码
- * param {"mobile":"xxx", "channelCode":"xxx", "checkCode":"xxxxx"}
- * return 是否成功
+ * 重置登录密码
+ * @param {"mobile":"xxx","newPwd":"xxx","channelCode":"xxx"} mobile 手机号 必填
+ * newPwd 新密码 必填 channelCode 渠道号 必填
  * @throws BizException
  */
 - (void) forgetPWDSms:(NSDictionary *)paraDic{
@@ -161,20 +161,85 @@
         SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
         if (response.succeed) {
             
-            [self.delegate checkRegisterSmsIsSuccess:YES errorMsg:response.errorMsg];
+            [self.delegate forgetPWDSmsIsSuccess:YES errorMsg:response.errorMsg];
         } else {
-            [self.delegate checkRegisterSmsIsSuccess:NO errorMsg:response.errorMsg];
+            [self.delegate forgetPWDSmsIsSuccess:NO errorMsg:response.errorMsg];
             
         }
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate checkRegisterSmsIsSuccess:NO errorMsg:@"服务器错误"];
+        [self.delegate forgetPWDSmsIsSuccess:NO errorMsg:@"服务器错误"];
         //失败的代理方法
     };
 //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
     
-    SOAPRequest *request = [self requestForAPI: APICheckRegisterSms withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]} ];
+    SOAPRequest *request = [self requestForAPI: APIForgetPWDSms withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]} ];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+/**
+ * 重置登录密码时发送短信验证码
+ * @param params {"mobile":"xxx", "channelCode":"xxx"}
+ * @return 是否成功
+ * @throws BizException
+ */
+
+- (void) sendForgetPWDSms:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        if (response.succeed) {
+            
+            [self.delegate sendForgetPWDSmsIsSuccess:YES errorMsg:response.errorMsg];
+        } else {
+            [self.delegate sendForgetPWDSmsIsSuccess:NO errorMsg:response.errorMsg];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate sendForgetPWDSmsIsSuccess:NO errorMsg:@"服务器错误"];
+        //失败的代理方法
+    };
+    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ"};
+    
+    SOAPRequest *request = [self requestForAPI: APISendForgetPWDSms withParam:@{@"params":[self actionEncrypt:[self JsonFromId:itemParaDic]]} ];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+/**
+ * 验证重置登录密码时发送短信验证码
+ * @param params {"mobile":"xxx", "channelCode":"xxx", "checkCode":"xxxxx"}
+ * @return 是否成功
+ * @throws BizException
+ */
+- (void) checkForgetPWDSms:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        if (response.succeed) {
+            
+            [self.delegate checkForgetPWDSmsIsSuccess:YES errorMsg:response.errorMsg];
+        } else {
+            [self.delegate checkForgetPWDSmsIsSuccess:NO errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate checkForgetPWDSmsIsSuccess:NO errorMsg:@"服务器错误"];
+        //失败的代理方法
+    };
+    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
+    
+    SOAPRequest *request = [self requestForAPI: APICheckForgetPWDSms withParam:@{@"params":[self actionEncrypt:[self JsonFromId:itemParaDic]]} ];
     [self newRequestWithRequest:request
                          subAPI:SUBAPIMember
       constructingBodyWithBlock:nil

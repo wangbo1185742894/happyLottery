@@ -15,6 +15,8 @@
 - (void) sendRegisterSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) checkRegisterSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) forgetPWDSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) sendForgetPWDSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) checkForgetPWDSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 @end
 
 @interface MemberManager : Manager
@@ -25,5 +27,7 @@
 - (void) sendRegisterSms:(NSDictionary *)paraDic;
 - (void) checkRegisterSms:(NSDictionary *)paraDic;
 - (void) forgetPWDSms:(NSDictionary *)paraDic;
+- (void) sendForgetPWDSms:(NSDictionary *)paraDic;
+- (void) checkForgetPWDSms:(NSDictionary *)paraDic;
 @end
 
