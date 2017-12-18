@@ -11,6 +11,7 @@
 #import "UIImage+RandomSize.h"
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
+#import "PersonnalCenterViewController.h"
 
 @interface MineViewController () <UITableViewDelegate, UITableViewDataSource,MemberManagerDelegate>{
     NSArray *listArray;
@@ -127,7 +128,9 @@
 }
 
 - (IBAction)personSetClick:(id)sender {
-    
+    PersonnalCenterViewController * pcVC = [[PersonnalCenterViewController alloc]init];
+    self.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:pcVC animated:YES];
 }
 
 - (IBAction)loginBtnClick:(id)sender {

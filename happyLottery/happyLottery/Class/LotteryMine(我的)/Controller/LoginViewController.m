@@ -137,7 +137,19 @@
 }
 
 - (IBAction)loginBtnClick:(id)sender {
-    [self loginUserClient];
+    if (_passwordTextField.text.length < 6 || _passwordTextField.text.length > 16) {
+        [self showPromptText: @"请输入有效的密码" hideAfterDelay: 1.7];
+        return;
+    }
+    
+    else if (_userTextField.text.length < 11) {
+        [self showPromptText: @"请输入有效手机号" hideAfterDelay: 1.7];
+        return;
+    }else{
+        
+          [self loginUserClient];
+    }
+ 
 }
 - (IBAction)forgetBtnClick:(id)sender {
     ForgetPWDViewController *forgetVC = [[ForgetPWDViewController alloc]init];
@@ -148,11 +160,7 @@
     [self.navigationController pushViewController:registerVC animated:YES];
 }
 
-//11.02 检测键盘输入位数
--(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-    return YES ;
-}
+
 #pragma mark 判断密码
 -(BOOL)checkPassWord:(NSString *)passWords
 {
@@ -199,6 +207,42 @@
         
     }
     [self.view resignFirstResponder];
+}
+
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if ([string isEqualToString:@""]) {
+        return YES;
+    }
+    
+    NSString * regex;
+    if (textField == _passwordTextField ) {
+        regex = @"^[A-Za-z0-9]";
+        
+    }else{
+        regex = @"^[0-9]";
+        
+    }
+    
+    NSString *str = [NSString stringWithFormat:@"%@%@",textField.text,string];
+    if (textField == _userTextField) {
+        if (str.length >11) {
+            [self showPromptText: @"手机号码不能超过11位" hideAfterDelay: 1.7];
+            return NO;
+        }
+    }
+    
+    if (textField == _passwordTextField ) {
+        
+        if (str.length >16) {
+            [self showPromptText: @"密码不能超过16位" hideAfterDelay: 1.7];
+            return NO;
+        }
+    }
+    
+    
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    BOOL isMatch = [pred evaluateWithObject:string];
+    return isMatch;
 }
 
 -(void)setBoaderColor:(UITextField *)textField color:(UIColor*)color{

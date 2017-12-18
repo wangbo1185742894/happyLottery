@@ -48,7 +48,7 @@
                                         <action selector="personSetClick:" destination="-1" eventType="touchUpInside" id="ACC-4O-dDx"/>
                                     </connections>
                                 </button>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user.png" translatesAutoresizingMaskIntoConstraints="NO" id="9X8-Z4-jzu">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="usermine.png" translatesAutoresizingMaskIntoConstraints="NO" id="9X8-Z4-jzu">
                                     <rect key="frame" x="12" y="13" width="58" height="58"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="58" id="Dsg-ij-tZp"/>
@@ -56,9 +56,9 @@
                                     </constraints>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XsK-Vt-gZZ">
-                                    <rect key="frame" x="78" y="13" width="82" height="58"/>
+                                    <rect key="frame" x="78" y="24" width="70" height="37"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="58" id="BhB-Mg-yBi"/>
+                                        <constraint firstAttribute="height" constant="37" id="BhB-Mg-yBi"/>
                                     </constraints>
                                     <state key="normal" title="登陆/注册">
                                         <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -84,14 +84,14 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="43O-Jm-2Qq" firstAttribute="top" secondItem="nX3-at-4OK" secondAttribute="top" id="1b7-qX-9Pu"/>
-                                <constraint firstItem="nRI-P4-Eje" firstAttribute="leading" secondItem="XsK-Vt-gZZ" secondAttribute="trailing" constant="138" id="C61-fb-GZa"/>
+                                <constraint firstItem="nRI-P4-Eje" firstAttribute="leading" secondItem="XsK-Vt-gZZ" secondAttribute="trailing" constant="150" id="C61-fb-GZa"/>
                                 <constraint firstItem="XsK-Vt-gZZ" firstAttribute="leading" secondItem="9X8-Z4-jzu" secondAttribute="trailing" constant="8" id="CZC-yq-fPj"/>
                                 <constraint firstItem="nRI-P4-Eje" firstAttribute="top" secondItem="nX3-at-4OK" secondAttribute="top" constant="13" id="EfI-Kj-JLZ"/>
                                 <constraint firstAttribute="trailing" secondItem="43O-Jm-2Qq" secondAttribute="trailing" id="FqU-Zd-yhn"/>
                                 <constraint firstItem="43O-Jm-2Qq" firstAttribute="leading" secondItem="nX3-at-4OK" secondAttribute="leading" id="NF4-pz-jcN"/>
                                 <constraint firstItem="9X8-Z4-jzu" firstAttribute="leading" secondItem="nX3-at-4OK" secondAttribute="leading" constant="12" id="YAz-2O-qAu"/>
                                 <constraint firstAttribute="bottom" secondItem="43O-Jm-2Qq" secondAttribute="bottom" id="ak0-Br-578"/>
-                                <constraint firstItem="XsK-Vt-gZZ" firstAttribute="top" secondItem="nX3-at-4OK" secondAttribute="top" constant="13" id="b5q-dr-HB8"/>
+                                <constraint firstItem="XsK-Vt-gZZ" firstAttribute="top" secondItem="nX3-at-4OK" secondAttribute="top" constant="24" id="b5q-dr-HB8"/>
                                 <constraint firstAttribute="trailing" secondItem="nRI-P4-Eje" secondAttribute="trailing" id="bgC-Ne-pmW"/>
                                 <constraint firstAttribute="height" constant="85" id="eZ6-fO-Ia5"/>
                                 <constraint firstItem="9X8-Z4-jzu" firstAttribute="top" secondItem="nX3-at-4OK" secondAttribute="top" constant="13" id="jux-Nu-03J"/>
@@ -285,7 +285,7 @@
         <image name="integral.png" width="20" height="20"/>
         <image name="recharge_button_default.png" width="125" height="38"/>
         <image name="ticket.png" width="20" height="20"/>
-        <image name="user.png" width="10" height="10"/>
+        <image name="usermine.png" width="58" height="58"/>
         <image name="withdraw Deposit_button_default.png" width="125" height="38"/>
     </resources>
 </document>

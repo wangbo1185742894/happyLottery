@@ -143,25 +143,29 @@
 //    labelCountDown.text = [NSString stringWithFormat: @"%d", seconds];
 //}
 - (IBAction)commitBtnClick:(id)sender {
-    if(![_PWDTextAgainField.text isEqualToString:_PWDTextField.text]){
-        [self showPromptText: @"两次输入的密码不一致！" hideAfterDelay: 1.7];
-        _PWDTextAgainField.text=@"";
-        _PWDTextField.text=@"";
-        return ;
-    }else if (_VerificationCodeTextField.text.length < 5) {
+    if (_VerificationCodeTextField.text.length < 5) {
         [self showPromptText: @"请输入有效的验证码" hideAfterDelay: 1.7];
         return;
     }
     
-    else if (_PWDTextField.text.length < 6 || _PWDTextAgainField.text.length > 16) {
+    else if (_PWDTextField.text.length < 6 || _PWDTextField.text.length > 16) {
         [self showPromptText: @"请输入有效的密码" hideAfterDelay: 1.7];
         return;
     }
-    
+    else if (_PWDTextAgainField.text.length < 6 || _PWDTextAgainField.text.length > 16) {
+        [self showPromptText: @"请输入有效的密码" hideAfterDelay: 1.7];
+        return;
+    }
    else if (_phoneTextField.text.length < 11) {
         [self showPromptText: @"请输入有效手机号" hideAfterDelay: 1.7];
         return;
-    }else{
+   }else if(![_PWDTextAgainField.text isEqualToString:_PWDTextField.text]){
+       [self showPromptText: @"两次输入的密码不一致！" hideAfterDelay: 1.7];
+       _PWDTextAgainField.text=@"";
+       _PWDTextField.text=@"";
+       return ;
+   }
+   else{
         
         
        
