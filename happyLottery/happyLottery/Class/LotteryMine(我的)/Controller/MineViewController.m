@@ -44,7 +44,7 @@
      listArray = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Mine" ofType: @"plist"]];
     [_tableview registerClass:[MineTableViewCell class] forCellReuseIdentifier:@"MineTableViewCell"];
     _tableview.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    //_tableview.separatorColor = RGBCOLOR(240, 240, 240);
+    
     _tableview.backgroundColor = [UIColor clearColor];
     _tableview.delegate = self;
     _tableview.dataSource = self;
@@ -90,10 +90,6 @@
     
 }
 
-//-(void)loginUser:(NSDictionary *)userInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
-//    NSLog(@"%@",userInfo);
-//    
-//}
 
 - (void) notLogin{
     

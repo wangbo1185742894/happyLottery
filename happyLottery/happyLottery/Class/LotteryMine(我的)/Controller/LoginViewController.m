@@ -79,13 +79,12 @@
         
         do {
             NSString *mobile = [result stringForColumn:@"mobile"];
-            if ([mobile isEqualToString:user.mobile]) {
-                
-                issuccess= [self.fmdb executeUpdate:@"update t_user_info set cardCode = ? ,loginPwd = ?,isLogin = ? where mobile = ? ",user.cardCode,user.loginPwd,@(user.isLogin),user.mobile];
-            }else{
-                issuccess= [self.fmdb executeUpdate:@"delete from t_user_info where mobile = ? ",mobile];
-            }
+          
+            issuccess= [self.fmdb executeUpdate:@"delete from t_user_info where mobile = ? ",mobile];
+
         } while ([result next]);
+        
+        [self.fmdb executeUpdate:@"insert into t_user_info (cardCode , loginPwd , isLogin , mobile) values ( ?,?,?,? )  ",user.cardCode,user.loginPwd,@(1),user.mobile];
         [[NSNotificationCenter defaultCenter] postNotificationName:NotificationNameUserLogin object:nil];
         [result close];
         [self.fmdb close];

@@ -29,6 +29,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self loadTabVC];
+    NSString *doc=[NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *fileName=[doc stringByAppendingPathComponent:@"userInfo.sqlite"];
+    self.fmdb =[FMDatabase databaseWithPath:fileName];
     memberMan = [[MemberManager alloc]init];
     memberMan.delegate = self;
     [self setKeyWindow];
@@ -81,9 +84,7 @@
 
 -(void)dataSave{
     
-    NSString *doc=[NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    NSString *fileName=[doc stringByAppendingPathComponent:@"userInfo.sqlite"];
-    self.fmdb =[FMDatabase databaseWithPath:fileName];
+
     if ([self .fmdb open]) {
         BOOL iscreate = [self.fmdb executeUpdate:@"create table if not exists t_user_info(id integer primary key, cardCode text, mobile text ,loginPwd text, isLogin text)"];
         if (iscreate) {
