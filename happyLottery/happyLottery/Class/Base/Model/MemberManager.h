@@ -17,6 +17,7 @@
 - (void) forgetPWDSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) sendForgetPWDSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) checkForgetPWDSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) resetNickSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 @end
 
 @interface MemberManager : Manager
@@ -29,5 +30,6 @@
 - (void) forgetPWDSms:(NSDictionary *)paraDic;
 - (void) sendForgetPWDSms:(NSDictionary *)paraDic;
 - (void) checkForgetPWDSms:(NSDictionary *)paraDic;
+- (void) resetNickSms:(NSDictionary *)paraDic;
 @end
 

@@ -246,4 +246,37 @@
                         success:succeedBlock
                         failure:failureBlock];
 }
+
+/**
+ * 重置昵称
+ * @param {"mobile":"xxx","newPwd":"xxx","channelCode":"xxx"} mobile 手机号 必填
+ * newPwd 新密码 必填 channelCode 渠道号 必填
+ * @throws BizException
+ */
+- (void) resetNickSms:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        if (response.succeed) {
+            
+            [self.delegate resetNickSmsIsSuccess:YES errorMsg:response.errorMsg];
+        } else {
+            [self.delegate resetNickSmsIsSuccess:NO errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate resetNickSmsIsSuccess:NO errorMsg:@"服务器错误"];
+        //失败的代理方法
+    };
+    //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
+    
+    SOAPRequest *request = [self requestForAPI: APIResetNickSms withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]} ];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
 @end

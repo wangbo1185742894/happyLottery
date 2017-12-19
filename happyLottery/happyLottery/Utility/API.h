@@ -12,11 +12,11 @@
 #define NameSpaceURI @"http://webservice.onlytest.com/"
 
 
-//#define WSServerURL @"http://192.168.88.244:28000/services%@"
+#define WSServerURL @"http://192.168.88.244:28000/services%@"
 
 //#define WSServerURL @"http://192.168.88.105:28000/services%@"
 
-#define WSServerURL @"http://192.168.88.116:28000/services%@"
+//#define WSServerURL @"http://192.168.88.116:28000/services%@"
 
 #define SUBAPIMember               @"/member"
 
@@ -27,5 +27,6 @@
 #define APISendForgetPWDSms        @"sendResetPwdSms"
 #define APICheckForgetPWDSms       @"checkResetPwdSms"
 #define APIForgetPWDSms            @"resetMemberPwd"
+#define APIResetNickSms            @"modifyNickname"
 
 #endif /* API_h */

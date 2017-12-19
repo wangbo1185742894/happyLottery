@@ -17,6 +17,7 @@
     NSArray *listArray;
     UIButton *noticeBtn;
     UILabel *label;
+    BOOL isLogin ;
 }
 @property (weak, nonatomic) IBOutlet UIButton *personSetBtn;
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
@@ -32,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *withdrawalsBtn;//提现
 
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
+
 
 @property(strong, nonatomic) NSString * memberSubFunctionClass;
 @end
@@ -52,13 +54,12 @@
     
     [self noticeCenterSet];
     [self autoLogin];
-  
     [_tableview reloadData];
 }
 
 -(void)autoLogin{
     
-    BOOL isLogin = NO;
+    isLogin = NO;
     
     if ([self .fmdb open]) {
         FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_user_info"];
@@ -118,7 +119,7 @@
     [noticeBtn addSubview:label];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView: noticeBtn];
     //[noticeBtn setTitle:@"发起合买" forState:UIControlStateNormal];
-    [noticeBtn setImage:[UIImage imageNamed:@"news_ _bj_default@2x.png"] forState:UIControlStateNormal];
+    [noticeBtn setImage:[UIImage imageNamed:@"news@2x.png"] forState:UIControlStateNormal];
     [noticeBtn addTarget: self action: @selector(noticeBtnClick) forControlEvents: UIControlEventTouchUpInside];
 }
 

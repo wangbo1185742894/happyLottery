@@ -54,6 +54,19 @@
 //登陆接口请求服务器
 -(void)loginUser:(NSDictionary *)userInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     NSLog(@"%@",userInfo);
+    /* userInfo: balance = 0;
+    cardCode = 10000004;
+    channelCode = TBZ;
+    couponCount = 0;
+    id = 0;
+    memberType = "FREEDOM_PERSON";
+    mobile = 15591986891;
+    notCash = 0;
+    parentId = 0;
+    registerTime = 1513568027000;
+    score = 0;
+    sendBalance = 0;
+    whitelist = 0;*/
     User *user = [[User alloc]initWith:userInfo];
     user.loginPwd = self.passwordTextField.text;
     user.isLogin = YES;

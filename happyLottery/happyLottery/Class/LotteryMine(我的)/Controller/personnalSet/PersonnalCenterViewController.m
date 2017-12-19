@@ -7,6 +7,7 @@
 //
 
 #import "PersonnalCenterViewController.h"
+#import "MyNickSetViewController.h"
 
 @interface PersonnalCenterViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollerView;
@@ -23,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *paySetBtn;
 @property (weak, nonatomic) IBOutlet UIButton *updateLoginPWDBtn;
 @property (weak, nonatomic) IBOutlet UIButton *updatePayPWDBtn;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottom;
 
 @end
 
@@ -31,6 +33,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"个人信息";
+    if ([self isIphoneX]) {
+        // self.bigView.translatesAutoresizingMaskIntoConstraints = NO;
+        self.top.constant = 88;
+        self.bottom.constant = 34;
+    }
 }
 
 - (IBAction)updateImage:(id)sender {
@@ -39,6 +46,9 @@
 - (IBAction)setMember:(id)sender {
 }
 - (IBAction)setNick:(id)sender {
+    MyNickSetViewController * nickVC = [[MyNickSetViewController alloc]init];
+   // self.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:nickVC animated:YES];
 }
 - (IBAction)addCard:(id)sender {
 }

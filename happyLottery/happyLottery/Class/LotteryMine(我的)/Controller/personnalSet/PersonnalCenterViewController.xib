@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PersonnalCenterViewController">
             <connections>
+                <outlet property="bottom" destination="1LS-6c-c8a" id="qjE-6d-9nb"/>
                 <outlet property="contentView" destination="kM9-wg-Ohd" id="N9X-pO-Nz6"/>
                 <outlet property="memberBtn" destination="Dde-1n-JQP" id="qir-GS-cGD"/>
                 <outlet property="memberLab" destination="9Q2-Cy-YyE" id="v35-0N-H4m"/>
@@ -60,11 +61,11 @@
                                         <constraint firstAttribute="width" constant="35" id="N6R-SF-Rnc"/>
                                     </constraints>
                                 </imageView>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fje-zc-LwQ">
-                                    <rect key="frame" x="356" y="47" width="11" height="21"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Fje-zc-LwQ">
+                                    <rect key="frame" x="354" y="47" width="13" height="23"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="11" id="2XO-xp-Gy8"/>
-                                        <constraint firstAttribute="height" constant="21" id="cmL-Ro-XbK"/>
+                                        <constraint firstAttribute="width" constant="13" id="2XO-xp-Gy8"/>
+                                        <constraint firstAttribute="height" constant="23" id="cmL-Ro-XbK"/>
                                     </constraints>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dde-1n-JQP">
@@ -87,7 +88,7 @@
                                         <constraint firstAttribute="width" constant="142" id="CGJ-SZ-vsx"/>
                                         <constraint firstAttribute="height" constant="21" id="lMr-pF-mgN"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" red="0.1960784314" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -105,7 +106,7 @@
                                         <action selector="setNick:" destination="-1" eventType="touchUpInside" id="th7-ox-YGC"/>
                                     </connections>
                                 </button>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="knJ-h6-DCr">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="knJ-h6-DCr">
                                     <rect key="frame" x="356" y="155" width="11" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="11" id="1CZ-l7-sRC"/>
@@ -120,7 +121,7 @@
                                         <constraint firstAttribute="height" constant="21" id="8bx-Cd-xJ2"/>
                                         <constraint firstAttribute="width" constant="142" id="zwN-D1-xZW"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" red="0.1960784314" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -138,7 +139,7 @@
                                         <action selector="addCard:" destination="-1" eventType="touchUpInside" id="8dc-h3-PfZ"/>
                                     </connections>
                                 </button>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jFA-Hx-XqN">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="jFA-Hx-XqN">
                                     <rect key="frame" x="356" y="214" width="11" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="11" id="0mY-It-gZq"/>
@@ -157,7 +158,7 @@
                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="142" id="VIH-sW-eFI"/>
                                         <constraint firstAttribute="height" constant="21" id="tgh-co-Qtl"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" red="0.99607843137254903" green="0.6588235294117647" blue="0.074509803921568626" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -176,7 +177,7 @@
                                         <action selector="cardPaySet:" destination="-1" eventType="touchUpInside" id="M9H-Ld-L4z"/>
                                     </connections>
                                 </button>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kpe-1W-adt">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="kpe-1W-adt">
                                     <rect key="frame" x="356" y="253" width="11" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="21" id="4Ol-IS-7aZ"/>
@@ -205,7 +206,7 @@
                                         <action selector="changePayPWD:" destination="-1" eventType="touchUpInside" id="yyT-NN-BLX"/>
                                     </connections>
                                 </button>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zxD-pb-FKY">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="zxD-pb-FKY">
                                     <rect key="frame" x="356" y="294" width="11" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="11" id="34a-JK-Pef"/>
@@ -237,7 +238,7 @@
                                         <action selector="changeLoginPWD:" destination="-1" eventType="touchUpInside" id="9fB-DZ-9jQ"/>
                                     </connections>
                                 </button>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LNp-zr-1kR">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="LNp-zr-1kR">
                                     <rect key="frame" x="356" y="334" width="11" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="21" id="1LN-w9-NQ0"/>
@@ -301,15 +302,36 @@
                                 <constraint firstAttribute="trailing" secondItem="Sg6-wk-CbC" secondAttribute="trailing" constant="36" id="zob-qm-8JW"/>
                             </constraints>
                         </view>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="nfP-Uw-wht">
+                            <rect key="frame" x="157.5" y="542" width="60" height="60"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="60" id="abz-mX-YnA"/>
+                                <constraint firstAttribute="width" constant="60" id="znx-lj-Ley"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="客服电话 400-688-0778" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jal-Z6-OFJ">
+                            <rect key="frame" x="61" y="616" width="253" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="253" id="Esc-rx-SpN"/>
+                                <constraint firstAttribute="height" constant="21" id="orf-61-ggy"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.19607843137254902" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" red="0.96444731950759888" green="0.96840888261795044" blue="0.98488038778305054" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="kM9-wg-Ohd" firstAttribute="centerY" secondItem="yWn-8Y-LpU" secondAttribute="centerY" id="75S-fb-TBX"/>
+                        <constraint firstAttribute="bottom" secondItem="jal-Z6-OFJ" secondAttribute="bottom" constant="30" id="Bsq-cT-3mZ"/>
                         <constraint firstAttribute="trailing" secondItem="kM9-wg-Ohd" secondAttribute="trailing" id="CAX-J4-I7u"/>
                         <constraint firstItem="kM9-wg-Ohd" firstAttribute="centerX" secondItem="yWn-8Y-LpU" secondAttribute="centerX" id="CU5-O5-GvK"/>
                         <constraint firstItem="kM9-wg-Ohd" firstAttribute="top" secondItem="yWn-8Y-LpU" secondAttribute="top" id="V7E-uE-BHi"/>
+                        <constraint firstAttribute="bottom" secondItem="nfP-Uw-wht" secondAttribute="bottom" constant="65" id="Y2r-qU-qsl"/>
                         <constraint firstItem="kM9-wg-Ohd" firstAttribute="leading" secondItem="yWn-8Y-LpU" secondAttribute="leading" id="Zwo-Mm-woQ"/>
                         <constraint firstAttribute="bottom" secondItem="kM9-wg-Ohd" secondAttribute="bottom" id="oyI-9G-mXV"/>
+                        <constraint firstItem="nfP-Uw-wht" firstAttribute="centerX" secondItem="yWn-8Y-LpU" secondAttribute="centerX" id="r5G-F7-t4B"/>
+                        <constraint firstItem="jal-Z6-OFJ" firstAttribute="centerX" secondItem="yWn-8Y-LpU" secondAttribute="centerX" id="xE7-Lp-dSw"/>
                     </constraints>
                 </scrollView>
             </subviews>
@@ -324,6 +346,8 @@
         </view>
     </objects>
     <resources>
+        <image name="logo.png" width="30" height="30"/>
+        <image name="rightIcon.png" width="22" height="22"/>
         <image name="usermine.png" width="58" height="58"/>
     </resources>
 </document>

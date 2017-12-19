@@ -227,6 +227,18 @@
 		F9581A801FE0FA01009753AA /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9581A7E1FE0FA01009753AA /* LoginViewController.xib */; };
 		F95C69F11FE7AD0200126C6A /* PersonnalCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F95C69EF1FE7AD0200126C6A /* PersonnalCenterViewController.m */; };
 		F95C69F21FE7AD0200126C6A /* PersonnalCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F95C69F01FE7AD0200126C6A /* PersonnalCenterViewController.xib */; };
+		F9BD1B441FE8A27100C1C71A /* rightIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9BD1B401FE8A27000C1C71A /* rightIcon@3x.png */; };
+		F9BD1B451FE8A27100C1C71A /* rightIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9BD1B411FE8A27000C1C71A /* rightIcon@2x.png */; };
+		F9BD1B461FE8A27100C1C71A /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9BD1B421FE8A27100C1C71A /* logo@2x.png */; };
+		F9BD1B471FE8A27100C1C71A /* logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9BD1B431FE8A27100C1C71A /* logo@3x.png */; };
+		F9BD1B4C1FE8A95000C1C71A /* BankCardSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BD1B4A1FE8A95000C1C71A /* BankCardSettingViewController.m */; };
+		F9BD1B4D1FE8A95000C1C71A /* BankCardSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9BD1B4B1FE8A95000C1C71A /* BankCardSettingViewController.xib */; };
+		F9BD1B511FE8B21600C1C71A /* FirstBankCardSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BD1B4F1FE8B21600C1C71A /* FirstBankCardSetViewController.m */; };
+		F9BD1B521FE8B21600C1C71A /* FirstBankCardSetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9BD1B501FE8B21600C1C71A /* FirstBankCardSetViewController.xib */; };
+		F9BD1B561FE8B22800C1C71A /* AddBankCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BD1B541FE8B22800C1C71A /* AddBankCardViewController.m */; };
+		F9BD1B571FE8B22800C1C71A /* AddBankCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9BD1B551FE8B22800C1C71A /* AddBankCardViewController.xib */; };
+		F9BD1B5B1FE8B41900C1C71A /* MyNickSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BD1B591FE8B41900C1C71A /* MyNickSetViewController.m */; };
+		F9BD1B5C1FE8B41900C1C71A /* MyNickSetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9BD1B5A1FE8B41900C1C71A /* MyNickSetViewController.xib */; };
 		F9DC698C1FDF7CF5007D384D /* Mine.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9DC698B1FDF7CF5007D384D /* Mine.plist */; };
 		F9DC69951FDF878D007D384D /* MyOrderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DC69931FDF878D007D384D /* MyOrderListViewController.m */; };
 		F9DC69961FDF878D007D384D /* MyOrderListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9DC69941FDF878D007D384D /* MyOrderListViewController.xib */; };
@@ -244,6 +256,8 @@
 		F9DC69F31FDFB451007D384D /* withdraw Deposit_button_default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9DC69C31FDFB44D007D384D /* withdraw Deposit_button_default@3x.png */; };
 		F9DC6A061FDFB451007D384D /* recharge_button_default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9DC69D61FDFB450007D384D /* recharge_button_default@3x.png */; };
 		F9DC6A0D1FDFB451007D384D /* recharge_button_default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9DC69DD1FDFB451007D384D /* recharge_button_default@2x.png */; };
+		F9F2629C1FE8D7D000C2E60F /* closeperson@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F2629A1FE8D7D000C2E60F /* closeperson@2x.png */; };
+		F9F2629D1FE8D7D000C2E60F /* closeperson@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F2629B1FE8D7D000C2E60F /* closeperson@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -601,6 +615,22 @@
 		F95C69EE1FE7AD0200126C6A /* PersonnalCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonnalCenterViewController.h; sourceTree = "<group>"; };
 		F95C69EF1FE7AD0200126C6A /* PersonnalCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonnalCenterViewController.m; sourceTree = "<group>"; };
 		F95C69F01FE7AD0200126C6A /* PersonnalCenterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonnalCenterViewController.xib; sourceTree = "<group>"; };
+		F9BD1B401FE8A27000C1C71A /* rightIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rightIcon@3x.png"; sourceTree = "<group>"; };
+		F9BD1B411FE8A27000C1C71A /* rightIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rightIcon@2x.png"; sourceTree = "<group>"; };
+		F9BD1B421FE8A27100C1C71A /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
+		F9BD1B431FE8A27100C1C71A /* logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@3x.png"; sourceTree = "<group>"; };
+		F9BD1B491FE8A95000C1C71A /* BankCardSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BankCardSettingViewController.h; sourceTree = "<group>"; };
+		F9BD1B4A1FE8A95000C1C71A /* BankCardSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BankCardSettingViewController.m; sourceTree = "<group>"; };
+		F9BD1B4B1FE8A95000C1C71A /* BankCardSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BankCardSettingViewController.xib; sourceTree = "<group>"; };
+		F9BD1B4E1FE8B21600C1C71A /* FirstBankCardSetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstBankCardSetViewController.h; sourceTree = "<group>"; };
+		F9BD1B4F1FE8B21600C1C71A /* FirstBankCardSetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstBankCardSetViewController.m; sourceTree = "<group>"; };
+		F9BD1B501FE8B21600C1C71A /* FirstBankCardSetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstBankCardSetViewController.xib; sourceTree = "<group>"; };
+		F9BD1B531FE8B22800C1C71A /* AddBankCardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddBankCardViewController.h; sourceTree = "<group>"; };
+		F9BD1B541FE8B22800C1C71A /* AddBankCardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddBankCardViewController.m; sourceTree = "<group>"; };
+		F9BD1B551FE8B22800C1C71A /* AddBankCardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddBankCardViewController.xib; sourceTree = "<group>"; };
+		F9BD1B581FE8B41900C1C71A /* MyNickSetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyNickSetViewController.h; sourceTree = "<group>"; };
+		F9BD1B591FE8B41900C1C71A /* MyNickSetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyNickSetViewController.m; sourceTree = "<group>"; };
+		F9BD1B5A1FE8B41900C1C71A /* MyNickSetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyNickSetViewController.xib; sourceTree = "<group>"; };
 		F9DC698B1FDF7CF5007D384D /* Mine.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Mine.plist; sourceTree = "<group>"; };
 		F9DC69921FDF878D007D384D /* MyOrderListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyOrderListViewController.h; sourceTree = "<group>"; };
 		F9DC69931FDF878D007D384D /* MyOrderListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyOrderListViewController.m; sourceTree = "<group>"; };
@@ -624,6 +654,8 @@
 		F9DC69C31FDFB44D007D384D /* withdraw Deposit_button_default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "withdraw Deposit_button_default@3x.png"; sourceTree = "<group>"; };
 		F9DC69D61FDFB450007D384D /* recharge_button_default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "recharge_button_default@3x.png"; sourceTree = "<group>"; };
 		F9DC69DD1FDFB451007D384D /* recharge_button_default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "recharge_button_default@2x.png"; sourceTree = "<group>"; };
+		F9F2629A1FE8D7D000C2E60F /* closeperson@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closeperson@2x.png"; sourceTree = "<group>"; };
+		F9F2629B1FE8D7D000C2E60F /* closeperson@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closeperson@3x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -892,6 +924,7 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				F9BD1B3F1FE8A24E00C1C71A /* personalSte */,
 				F957C1D41FE3B2570090B19B /* MineIcon */,
 				F924BA791FE2528B00830BF4 /* login&registe */,
 				2D4B1E441FDF684E0034B708 /* homeres */,
@@ -1080,9 +1113,7 @@
 				F957C1CF1FE379590090B19B /* ForgetPWDViewController.h */,
 				F957C1D01FE379590090B19B /* ForgetPWDViewController.m */,
 				F957C1D11FE379590090B19B /* ForgetPWDViewController.xib */,
-				F95C69EE1FE7AD0200126C6A /* PersonnalCenterViewController.h */,
-				F95C69EF1FE7AD0200126C6A /* PersonnalCenterViewController.m */,
-				F95C69F01FE7AD0200126C6A /* PersonnalCenterViewController.xib */,
+				F9BD1B481FE8A91500C1C71A /* personnalSet */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1417,6 +1448,41 @@
 			path = MineIcon;
 			sourceTree = "<group>";
 		};
+		F9BD1B3F1FE8A24E00C1C71A /* personalSte */ = {
+			isa = PBXGroup;
+			children = (
+				F9F2629A1FE8D7D000C2E60F /* closeperson@2x.png */,
+				F9F2629B1FE8D7D000C2E60F /* closeperson@3x.png */,
+				F9BD1B421FE8A27100C1C71A /* logo@2x.png */,
+				F9BD1B431FE8A27100C1C71A /* logo@3x.png */,
+				F9BD1B411FE8A27000C1C71A /* rightIcon@2x.png */,
+				F9BD1B401FE8A27000C1C71A /* rightIcon@3x.png */,
+			);
+			path = personalSte;
+			sourceTree = "<group>";
+		};
+		F9BD1B481FE8A91500C1C71A /* personnalSet */ = {
+			isa = PBXGroup;
+			children = (
+				F95C69EE1FE7AD0200126C6A /* PersonnalCenterViewController.h */,
+				F95C69EF1FE7AD0200126C6A /* PersonnalCenterViewController.m */,
+				F95C69F01FE7AD0200126C6A /* PersonnalCenterViewController.xib */,
+				F9BD1B491FE8A95000C1C71A /* BankCardSettingViewController.h */,
+				F9BD1B4A1FE8A95000C1C71A /* BankCardSettingViewController.m */,
+				F9BD1B4B1FE8A95000C1C71A /* BankCardSettingViewController.xib */,
+				F9BD1B4E1FE8B21600C1C71A /* FirstBankCardSetViewController.h */,
+				F9BD1B4F1FE8B21600C1C71A /* FirstBankCardSetViewController.m */,
+				F9BD1B501FE8B21600C1C71A /* FirstBankCardSetViewController.xib */,
+				F9BD1B531FE8B22800C1C71A /* AddBankCardViewController.h */,
+				F9BD1B541FE8B22800C1C71A /* AddBankCardViewController.m */,
+				F9BD1B551FE8B22800C1C71A /* AddBankCardViewController.xib */,
+				F9BD1B581FE8B41900C1C71A /* MyNickSetViewController.h */,
+				F9BD1B591FE8B41900C1C71A /* MyNickSetViewController.m */,
+				F9BD1B5A1FE8B41900C1C71A /* MyNickSetViewController.xib */,
+			);
+			path = personnalSet;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1536,9 +1602,11 @@
 				F9DC69AF1FDF898A007D384D /* MySettingViewController.xib in Resources */,
 				F924BAA81FE252CF00830BF4 /* captcha@2x.png in Resources */,
 				2DDEDC071FD4DBD8007AEBF7 /* BuyLotteryViewController.xib in Resources */,
+				F9F2629C1FE8D7D000C2E60F /* closeperson@2x.png in Resources */,
 				F957C2041FE3B28D0090B19B /* usermine@3x.png in Resources */,
 				F9DC69AA1FDF8957007D384D /* MyHelpViewController.xib in Resources */,
 				F924BA9D1FE252CF00830BF4 /* stick@3x.png in Resources */,
+				F9F2629D1FE8D7D000C2E60F /* closeperson@3x.png in Resources */,
 				F957C1F81FE3B28D0090B19B /* packet@2x.png in Resources */,
 				2D4B1E751FDF684E0034B708 /* fenleixian@2x.png in Resources */,
 				F957C2011FE3B28D0090B19B /* news@3x.png in Resources */,
@@ -1569,6 +1637,7 @@
 				F924BAA61FE252CF00830BF4 /* user@2x.png in Resources */,
 				2DCBB2811FD1000700934D92 /* LaunchScreen.storyboard in Resources */,
 				F9DC698C1FDF7CF5007D384D /* Mine.plist in Resources */,
+				F9BD1B441FE8A27100C1C71A /* rightIcon@3x.png in Resources */,
 				F924BAA11FE252CF00830BF4 /* line@3x.png in Resources */,
 				2D4B1E3B1FDE717C0034B708 /* newBack@3x.png in Resources */,
 				2D4B1E761FDF684E0034B708 /* fenleixian@3x.png in Resources */,
@@ -1591,6 +1660,7 @@
 				2D4B1EB01FDFCDA00034B708 /* arrow_down@3x.png in Resources */,
 				F957C20B1FE3B28D0090B19B /*  integration@2x.png in Resources */,
 				F957C1F91FE3B28D0090B19B /* ticket@2x.png in Resources */,
+				F9BD1B471FE8A27100C1C71A /* logo@3x.png in Resources */,
 				2DDEDE761FD568C9007AEBF7 /* LICENSE in Resources */,
 				F957C1F71FE3B28D0090B19B /* collect@2x.png in Resources */,
 				2D4B1EB31FDFCDAF0034B708 /* arrow_up@2x.png in Resources */,
@@ -1605,6 +1675,7 @@
 				2D4B1EAC1FDFCCD30034B708 /* TableHeaderView.xib in Resources */,
 				2D4B1E7A1FDF684E0034B708 /* home_select@3x.png in Resources */,
 				F924BA9B1FE252CF00830BF4 /* line@2x.png in Resources */,
+				F9BD1B4D1FE8A95000C1C71A /* BankCardSettingViewController.xib in Resources */,
 				F957C1FA1FE3B28D0090B19B /* share@3x.png in Resources */,
 				2D4B1E901FDF684E0034B708 /* yuyuefangan@3x.png in Resources */,
 				F9DC6A0D1FDFB451007D384D /* recharge_button_default@2x.png in Resources */,
@@ -1627,6 +1698,7 @@
 				F924BA971FE252CF00830BF4 /* phone@2x.png in Resources */,
 				F957C2131FE3B28D0090B19B /* collect@3x.png in Resources */,
 				2D739C241FE2611C00264044 /* IQKeyboardManager.bundle in Resources */,
+				F9BD1B5C1FE8B41900C1C71A /* MyNickSetViewController.xib in Resources */,
 				2D4B1E1C1FD8C8080034B708 /* launchImage@2x.png in Resources */,
 				2D4B1E811FDF684E0034B708 /* wode_defealt@2x.png in Resources */,
 				2DDEDC161FD4DC16007AEBF7 /* MineViewController.xib in Resources */,
@@ -1638,6 +1710,7 @@
 				F9DC69F31FDFB451007D384D /* withdraw Deposit_button_default@3x.png in Resources */,
 				2D739C4B1FE37E5100264044 /* checksuccess@3x.png in Resources */,
 				F957C2071FE3B28D0090B19B /* news@2x.png in Resources */,
+				F9BD1B461FE8A27100C1C71A /* logo@2x.png in Resources */,
 				2D739C421FE369DE00264044 /* checkBox_checked@3x.png in Resources */,
 				2D4B1E791FDF684E0034B708 /* home_select@2x.png in Resources */,
 				2D4B1E6B1FDF684E0034B708 /* bifenzhibo@2x.png in Resources */,
@@ -1648,13 +1721,16 @@
 				2D4B1E701FDF684E0034B708 /* faxian_defealt@3x.png in Resources */,
 				2D4B1E771FDF684E0034B708 /* home_defealt@2x.png in Resources */,
 				2D4B1E891FDF684E0034B708 /* yuce_defealt@2x.png in Resources */,
+				F9BD1B521FE8B21600C1C71A /* FirstBankCardSetViewController.xib in Resources */,
 				F95C69F21FE7AD0200126C6A /* PersonnalCenterViewController.xib in Resources */,
+				F9BD1B571FE8B22800C1C71A /* AddBankCardViewController.xib in Resources */,
 				2D4B1E8E1FDF684E0034B708 /* yucezhanji@3x.png in Resources */,
 				2D4B1E431FDF65480034B708 /* HomeMenuItemsConfig.plist in Resources */,
 				2D4B1E8F1FDF684E0034B708 /* yuyuefangan@2x.png in Resources */,
 				F957C1F61FE3B28D0090B19B /* return@2x.png in Resources */,
 				2D4B1E7D1FDF684E0034B708 /* quanzi_select@2x.png in Resources */,
 				2D4B1E6C1FDF684E0034B708 /* bifenzhibo@3x.png in Resources */,
+				F9BD1B451FE8A27100C1C71A /* rightIcon@2x.png in Resources */,
 				F957C2051FE3B28D0090B19B /* Withdraw@2x.png in Resources */,
 				2D4B1E371FDE241F0034B708 /* JCZQPlayViewController.xib in Resources */,
 				F924BA991FE252CF00830BF4 /* captcha@3x.png in Resources */,
@@ -1683,6 +1759,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9BD1B511FE8B21600C1C71A /* FirstBankCardSetViewController.m in Sources */,
 				2D739C161FE2611C00264044 /* IQNSArray+Sort.m in Sources */,
 				2D739C1F1FE2611C00264044 /* IQBarButtonItem.m in Sources */,
 				2DDEDE611FD568C9007AEBF7 /* SDWebImageDecoder.m in Sources */,
@@ -1699,6 +1776,7 @@
 				2DDEDE7E1FD568C9007AEBF7 /* UIImageView+AFNetworking.m in Sources */,
 				2DDEDC101FD4DC03007AEBF7 /* GroupViewController.m in Sources */,
 				2D4B1DC31FD7D6030034B708 /* MBProgressHUD.m in Sources */,
+				F9BD1B4C1FE8A95000C1C71A /* BankCardSettingViewController.m in Sources */,
 				2DDEDE801FD568C9007AEBF7 /* UIRefreshControl+AFNetworking.m in Sources */,
 				2D739C1E1FE2611C00264044 /* IQTextView.m in Sources */,
 				2D739C3A1FE365BE00264044 /* WebShowViewController.m in Sources */,
@@ -1707,6 +1785,7 @@
 				2D739C1D1FE2611C00264044 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				2DDEDC1D1FD4DEFF007AEBF7 /* UIView+MJExtension.m in Sources */,
 				2DCBB2841FD1000700934D92 /* main.m in Sources */,
+				F9BD1B5B1FE8B41900C1C71A /* MyNickSetViewController.m in Sources */,
 				2DDEDE731FD568C9007AEBF7 /* AFURLRequestSerialization.m in Sources */,
 				2D739C5C1FE3B31500264044 /* FMDatabaseAdditions.m in Sources */,
 				2DDEDE7C1FD568C9007AEBF7 /* UIAlertView+AFNetworking.m in Sources */,
@@ -1781,6 +1860,7 @@
 				2DDEDC221FD4F57F007AEBF7 /* NewFeatureViewController.m in Sources */,
 				2D739C191FE2611C00264044 /* IQUIView+Hierarchy.m in Sources */,
 				2D739C5F1FE3B31500264044 /* FMResultSet.m in Sources */,
+				F9BD1B561FE8B22800C1C71A /* AddBankCardViewController.m in Sources */,
 				2DDEDE7D1FD568C9007AEBF7 /* UIButton+AFNetworking.m in Sources */,
 				2DDEDE751FD568C9007AEBF7 /* AFURLSessionManager.m in Sources */,
 			);
