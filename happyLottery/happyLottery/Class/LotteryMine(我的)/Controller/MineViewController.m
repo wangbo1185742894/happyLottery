@@ -130,7 +130,7 @@
 
 - (IBAction)personSetClick:(id)sender {
     PersonnalCenterViewController * pcVC = [[PersonnalCenterViewController alloc]init];
-    self.hidesBottomBarWhenPushed = YES;
+    pcVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:pcVC animated:YES];
 }
 

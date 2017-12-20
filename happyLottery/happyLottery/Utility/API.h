@@ -28,5 +28,7 @@
 #define APICheckForgetPWDSms       @"checkResetPwdSms"
 #define APIForgetPWDSms            @"resetMemberPwd"
 #define APIResetNickSms            @"modifyNickname"
+#define APIBandPayPWDSms           @"bindMemberPaypwd"
+#define APIResetPayPWDSms          @"updateMemberPaypwd"
 
 #endif /* API_h */

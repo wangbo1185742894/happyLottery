@@ -168,6 +168,10 @@
 		2DDEDE7F1FD568C9007AEBF7 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDEDC961FD568A4007AEBF7 /* UIProgressView+AFNetworking.m */; };
 		2DDEDE801FD568C9007AEBF7 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDEDC981FD568A4007AEBF7 /* UIRefreshControl+AFNetworking.m */; };
 		2DDEDE811FD568C9007AEBF7 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDEDC9A1FD568A4007AEBF7 /* UIWebView+AFNetworking.m */; };
+		F91C262E1FEA0CF00056CBDD /* SetPayPWDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F91C262C1FEA0CF00056CBDD /* SetPayPWDViewController.m */; };
+		F91C262F1FEA0CF00056CBDD /* SetPayPWDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F91C262D1FEA0CF00056CBDD /* SetPayPWDViewController.xib */; };
+		F91C26331FEA0D7C0056CBDD /* ChangePayPWDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F91C26311FEA0D7C0056CBDD /* ChangePayPWDViewController.m */; };
+		F91C26341FEA0D7C0056CBDD /* ChangePayPWDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F91C26321FEA0D7C0056CBDD /* ChangePayPWDViewController.xib */; };
 		F924BA921FE252CF00830BF4 /* password@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA7A1FE252CA00830BF4 /* password@3x.png */; };
 		F924BA961FE252CF00830BF4 /* hide@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA7E1FE252CB00830BF4 /* hide@2x.png */; };
 		F924BA971FE252CF00830BF4 /* phone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA7F1FE252CB00830BF4 /* phone@2x.png */; };
@@ -258,6 +262,16 @@
 		F9DC6A0D1FDFB451007D384D /* recharge_button_default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9DC69DD1FDFB451007D384D /* recharge_button_default@2x.png */; };
 		F9F2629C1FE8D7D000C2E60F /* closeperson@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F2629A1FE8D7D000C2E60F /* closeperson@2x.png */; };
 		F9F2629D1FE8D7D000C2E60F /* closeperson@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F2629B1FE8D7D000C2E60F /* closeperson@3x.png */; };
+		F9F262B01FE8F4AE00C2E60F /* CGGeometry+RSKImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F262A01FE8F4AE00C2E60F /* CGGeometry+RSKImageCropper.m */; };
+		F9F262B11FE8F4AE00C2E60F /* RSKImageCropperStrings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F9F262A21FE8F4AE00C2E60F /* RSKImageCropperStrings.bundle */; };
+		F9F262B21FE8F4AE00C2E60F /* RSKImageCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F262A51FE8F4AE00C2E60F /* RSKImageCropViewController.m */; };
+		F9F262B31FE8F4AE00C2E60F /* RSKImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F262A71FE8F4AE00C2E60F /* RSKImageScrollView.m */; };
+		F9F262B41FE8F4AE00C2E60F /* RSKInternalUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F262A91FE8F4AE00C2E60F /* RSKInternalUtility.m */; };
+		F9F262B51FE8F4AE00C2E60F /* RSKTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F262AB1FE8F4AE00C2E60F /* RSKTouchView.m */; };
+		F9F262B61FE8F4AE00C2E60F /* UIApplication+RSKImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F262AD1FE8F4AE00C2E60F /* UIApplication+RSKImageCropper.m */; };
+		F9F262B71FE8F4AE00C2E60F /* UIImage+RSKImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F262AF1FE8F4AE00C2E60F /* UIImage+RSKImageCropper.m */; };
+		F9F262BB1FE9072400C2E60F /* PaySetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F262B91FE9072400C2E60F /* PaySetViewController.m */; };
+		F9F262BC1FE9072400C2E60F /* PaySetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9F262BA1FE9072400C2E60F /* PaySetViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -551,6 +565,12 @@
 		2DDEDC981FD568A4007AEBF7 /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		2DDEDC991FD568A4007AEBF7 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		2DDEDC9A1FD568A4007AEBF7 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		F91C262B1FEA0CF00056CBDD /* SetPayPWDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetPayPWDViewController.h; sourceTree = "<group>"; };
+		F91C262C1FEA0CF00056CBDD /* SetPayPWDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetPayPWDViewController.m; sourceTree = "<group>"; };
+		F91C262D1FEA0CF00056CBDD /* SetPayPWDViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetPayPWDViewController.xib; sourceTree = "<group>"; };
+		F91C26301FEA0D7C0056CBDD /* ChangePayPWDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangePayPWDViewController.h; sourceTree = "<group>"; };
+		F91C26311FEA0D7C0056CBDD /* ChangePayPWDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangePayPWDViewController.m; sourceTree = "<group>"; };
+		F91C26321FEA0D7C0056CBDD /* ChangePayPWDViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePayPWDViewController.xib; sourceTree = "<group>"; };
 		F924BA7A1FE252CA00830BF4 /* password@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "password@3x.png"; sourceTree = "<group>"; };
 		F924BA7E1FE252CB00830BF4 /* hide@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hide@2x.png"; sourceTree = "<group>"; };
 		F924BA7F1FE252CB00830BF4 /* phone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone@2x.png"; sourceTree = "<group>"; };
@@ -656,6 +676,26 @@
 		F9DC69DD1FDFB451007D384D /* recharge_button_default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "recharge_button_default@2x.png"; sourceTree = "<group>"; };
 		F9F2629A1FE8D7D000C2E60F /* closeperson@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closeperson@2x.png"; sourceTree = "<group>"; };
 		F9F2629B1FE8D7D000C2E60F /* closeperson@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closeperson@3x.png"; sourceTree = "<group>"; };
+		F9F2629F1FE8F4AE00C2E60F /* CGGeometry+RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGGeometry+RSKImageCropper.h"; sourceTree = "<group>"; };
+		F9F262A01FE8F4AE00C2E60F /* CGGeometry+RSKImageCropper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CGGeometry+RSKImageCropper.m"; sourceTree = "<group>"; };
+		F9F262A11FE8F4AE00C2E60F /* RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKImageCropper.h; sourceTree = "<group>"; };
+		F9F262A21FE8F4AE00C2E60F /* RSKImageCropperStrings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = RSKImageCropperStrings.bundle; sourceTree = "<group>"; };
+		F9F262A31FE8F4AE00C2E60F /* RSKImageCropViewController+Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RSKImageCropViewController+Protected.h"; sourceTree = "<group>"; };
+		F9F262A41FE8F4AE00C2E60F /* RSKImageCropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKImageCropViewController.h; sourceTree = "<group>"; };
+		F9F262A51FE8F4AE00C2E60F /* RSKImageCropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSKImageCropViewController.m; sourceTree = "<group>"; };
+		F9F262A61FE8F4AE00C2E60F /* RSKImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKImageScrollView.h; sourceTree = "<group>"; };
+		F9F262A71FE8F4AE00C2E60F /* RSKImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSKImageScrollView.m; sourceTree = "<group>"; };
+		F9F262A81FE8F4AE00C2E60F /* RSKInternalUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKInternalUtility.h; sourceTree = "<group>"; };
+		F9F262A91FE8F4AE00C2E60F /* RSKInternalUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSKInternalUtility.m; sourceTree = "<group>"; };
+		F9F262AA1FE8F4AE00C2E60F /* RSKTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKTouchView.h; sourceTree = "<group>"; };
+		F9F262AB1FE8F4AE00C2E60F /* RSKTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSKTouchView.m; sourceTree = "<group>"; };
+		F9F262AC1FE8F4AE00C2E60F /* UIApplication+RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+RSKImageCropper.h"; sourceTree = "<group>"; };
+		F9F262AD1FE8F4AE00C2E60F /* UIApplication+RSKImageCropper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+RSKImageCropper.m"; sourceTree = "<group>"; };
+		F9F262AE1FE8F4AE00C2E60F /* UIImage+RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RSKImageCropper.h"; sourceTree = "<group>"; };
+		F9F262AF1FE8F4AE00C2E60F /* UIImage+RSKImageCropper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RSKImageCropper.m"; sourceTree = "<group>"; };
+		F9F262B81FE9072400C2E60F /* PaySetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaySetViewController.h; sourceTree = "<group>"; };
+		F9F262B91FE9072400C2E60F /* PaySetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaySetViewController.m; sourceTree = "<group>"; };
+		F9F262BA1FE9072400C2E60F /* PaySetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaySetViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -974,6 +1014,7 @@
 		2DCBB2BB1FD107F100934D92 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				F9F2629E1FE8F4AE00C2E60F /* RSKImageCropper */,
 				2D739C4F1FE3B31400264044 /* FMDB */,
 				2D739BF11FE2611C00264044 /* IQKeyboardManager */,
 				2D4B1DB41FD7D1F90034B708 /* MBHUD */,
@@ -1479,8 +1520,41 @@
 				F9BD1B581FE8B41900C1C71A /* MyNickSetViewController.h */,
 				F9BD1B591FE8B41900C1C71A /* MyNickSetViewController.m */,
 				F9BD1B5A1FE8B41900C1C71A /* MyNickSetViewController.xib */,
+				F9F262B81FE9072400C2E60F /* PaySetViewController.h */,
+				F9F262B91FE9072400C2E60F /* PaySetViewController.m */,
+				F9F262BA1FE9072400C2E60F /* PaySetViewController.xib */,
+				F91C262B1FEA0CF00056CBDD /* SetPayPWDViewController.h */,
+				F91C262C1FEA0CF00056CBDD /* SetPayPWDViewController.m */,
+				F91C262D1FEA0CF00056CBDD /* SetPayPWDViewController.xib */,
+				F91C26301FEA0D7C0056CBDD /* ChangePayPWDViewController.h */,
+				F91C26311FEA0D7C0056CBDD /* ChangePayPWDViewController.m */,
+				F91C26321FEA0D7C0056CBDD /* ChangePayPWDViewController.xib */,
 			);
 			path = personnalSet;
+			sourceTree = "<group>";
+		};
+		F9F2629E1FE8F4AE00C2E60F /* RSKImageCropper */ = {
+			isa = PBXGroup;
+			children = (
+				F9F2629F1FE8F4AE00C2E60F /* CGGeometry+RSKImageCropper.h */,
+				F9F262A01FE8F4AE00C2E60F /* CGGeometry+RSKImageCropper.m */,
+				F9F262A11FE8F4AE00C2E60F /* RSKImageCropper.h */,
+				F9F262A21FE8F4AE00C2E60F /* RSKImageCropperStrings.bundle */,
+				F9F262A31FE8F4AE00C2E60F /* RSKImageCropViewController+Protected.h */,
+				F9F262A41FE8F4AE00C2E60F /* RSKImageCropViewController.h */,
+				F9F262A51FE8F4AE00C2E60F /* RSKImageCropViewController.m */,
+				F9F262A61FE8F4AE00C2E60F /* RSKImageScrollView.h */,
+				F9F262A71FE8F4AE00C2E60F /* RSKImageScrollView.m */,
+				F9F262A81FE8F4AE00C2E60F /* RSKInternalUtility.h */,
+				F9F262A91FE8F4AE00C2E60F /* RSKInternalUtility.m */,
+				F9F262AA1FE8F4AE00C2E60F /* RSKTouchView.h */,
+				F9F262AB1FE8F4AE00C2E60F /* RSKTouchView.m */,
+				F9F262AC1FE8F4AE00C2E60F /* UIApplication+RSKImageCropper.h */,
+				F9F262AD1FE8F4AE00C2E60F /* UIApplication+RSKImageCropper.m */,
+				F9F262AE1FE8F4AE00C2E60F /* UIImage+RSKImageCropper.h */,
+				F9F262AF1FE8F4AE00C2E60F /* UIImage+RSKImageCropper.m */,
+			);
+			path = RSKImageCropper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1599,6 +1673,7 @@
 				F9DC699B1FDF888F007D384D /* MyFavoriteViewController.xib in Resources */,
 				F957C1CE1FE36B3F0090B19B /* close@3x.png in Resources */,
 				2D739BF01FE2555E00264044 /* RegisterViewController.xib in Resources */,
+				F9F262BC1FE9072400C2E60F /* PaySetViewController.xib in Resources */,
 				F9DC69AF1FDF898A007D384D /* MySettingViewController.xib in Resources */,
 				F924BAA81FE252CF00830BF4 /* captcha@2x.png in Resources */,
 				2DDEDC071FD4DBD8007AEBF7 /* BuyLotteryViewController.xib in Resources */,
@@ -1642,6 +1717,7 @@
 				2D4B1E3B1FDE717C0034B708 /* newBack@3x.png in Resources */,
 				2D4B1E761FDF684E0034B708 /* fenleixian@3x.png in Resources */,
 				F957C20C1FE3B28D0090B19B /* set@3x.png in Resources */,
+				F91C26341FEA0D7C0056CBDD /* ChangePayPWDViewController.xib in Resources */,
 				2D4B1E6D1FDF684E0034B708 /* duibiao@3x.png in Resources */,
 				F9581A781FE0B765009753AA /* MineTableViewCell.xib in Resources */,
 				F957C1FD1FE3B28D0090B19B /* attendance@2x.png in Resources */,
@@ -1667,6 +1743,7 @@
 				2DCBB27E1FD1000700934D92 /* Assets.xcassets in Resources */,
 				2D4B1E721FDF684E0034B708 /* faxian_select@3x.png in Resources */,
 				F924BAA21FE252CF00830BF4 /* password@2x.png in Resources */,
+				F9F262B11FE8F4AE00C2E60F /* RSKImageCropperStrings.bundle in Resources */,
 				2D4B1E821FDF684E0034B708 /* wode_defealt@3x.png in Resources */,
 				2D4B1E851FDF684E0034B708 /* yishoucang@2x.png in Resources */,
 				2D4B1E801FDF684E0034B708 /* weishoucang@3x.png in Resources */,
@@ -1680,6 +1757,7 @@
 				2D4B1E901FDF684E0034B708 /* yuyuefangan@3x.png in Resources */,
 				F9DC6A0D1FDFB451007D384D /* recharge_button_default@2x.png in Resources */,
 				2D4B1E781FDF684E0034B708 /* home_defealt@3x.png in Resources */,
+				F91C262F1FEA0CF00056CBDD /* SetPayPWDViewController.xib in Resources */,
 				F9DC6A061FDFB451007D384D /* recharge_button_default@3x.png in Resources */,
 				F957C1CD1FE36B3F0090B19B /* close@2x.png in Resources */,
 				2D4B1E7B1FDF684E0034B708 /* quanzi_defealt@2x.png in Resources */,
@@ -1763,6 +1841,7 @@
 				2D739C161FE2611C00264044 /* IQNSArray+Sort.m in Sources */,
 				2D739C1F1FE2611C00264044 /* IQBarButtonItem.m in Sources */,
 				2DDEDE611FD568C9007AEBF7 /* SDWebImageDecoder.m in Sources */,
+				F9F262B41FE8F4AE00C2E60F /* RSKInternalUtility.m in Sources */,
 				2D739C5E1FE3B31500264044 /* FMDatabaseQueue.m in Sources */,
 				2D739C221FE2611C00264044 /* IQToolbar.m in Sources */,
 				F9DC69AE1FDF898A007D384D /* MySettingViewController.m in Sources */,
@@ -1778,11 +1857,13 @@
 				2D4B1DC31FD7D6030034B708 /* MBProgressHUD.m in Sources */,
 				F9BD1B4C1FE8A95000C1C71A /* BankCardSettingViewController.m in Sources */,
 				2DDEDE801FD568C9007AEBF7 /* UIRefreshControl+AFNetworking.m in Sources */,
+				F91C262E1FEA0CF00056CBDD /* SetPayPWDViewController.m in Sources */,
 				2D739C1E1FE2611C00264044 /* IQTextView.m in Sources */,
 				2D739C3A1FE365BE00264044 /* WebShowViewController.m in Sources */,
 				2D739C2A1FE26EA700264044 /* UIImage+ImageWithColor.m in Sources */,
 				2D4B1E981FDF98600034B708 /* LoopProgressView.m in Sources */,
 				2D739C1D1FE2611C00264044 /* IQKeyboardReturnKeyHandler.m in Sources */,
+				F9F262B61FE8F4AE00C2E60F /* UIApplication+RSKImageCropper.m in Sources */,
 				2DDEDC1D1FD4DEFF007AEBF7 /* UIView+MJExtension.m in Sources */,
 				2DCBB2841FD1000700934D92 /* main.m in Sources */,
 				F9BD1B5B1FE8B41900C1C71A /* MyNickSetViewController.m in Sources */,
@@ -1790,6 +1871,7 @@
 				2D739C5C1FE3B31500264044 /* FMDatabaseAdditions.m in Sources */,
 				2DDEDE7C1FD568C9007AEBF7 /* UIAlertView+AFNetworking.m in Sources */,
 				2D4B1E941FDF7BD20034B708 /* NewsListCell.m in Sources */,
+				F9F262B21FE8F4AE00C2E60F /* RSKImageCropViewController.m in Sources */,
 				2DDEDE6F1FD568C9007AEBF7 /* AFHTTPSessionManager.m in Sources */,
 				2DDEDC321FD520FF007AEBF7 /* MemberManager.m in Sources */,
 				2DDEDC351FD52178007AEBF7 /* AESUtility.m in Sources */,
@@ -1798,6 +1880,7 @@
 				2DDEDE601FD568C9007AEBF7 /* SDWebImageCompat.m in Sources */,
 				2DDEDE5F1FD568C9007AEBF7 /* SDImageCache.m in Sources */,
 				2D739C1A1FE2611C00264044 /* IQUIViewController+Additions.m in Sources */,
+				F91C26331FEA0D7C0056CBDD /* ChangePayPWDViewController.m in Sources */,
 				F95C69F11FE7AD0200126C6A /* PersonnalCenterViewController.m in Sources */,
 				2DDEDE681FD568C9007AEBF7 /* UIImage+MultiFormat.m in Sources */,
 				2DDEDE671FD568C9007AEBF7 /* UIImage+GIF.m in Sources */,
@@ -1820,11 +1903,14 @@
 				2DDEDC471FD52562007AEBF7 /* GlobalInstance.m in Sources */,
 				2D739C181FE2611C00264044 /* IQUITextFieldView+Additions.m in Sources */,
 				F957C1D21FE379590090B19B /* ForgetPWDViewController.m in Sources */,
+				F9F262B01FE8F4AE00C2E60F /* CGGeometry+RSKImageCropper.m in Sources */,
 				2D739BEF1FE2555E00264044 /* RegisterViewController.m in Sources */,
 				2DDEDE6E1FD568C9007AEBF7 /* AFHTTPRequestOperationManager.m in Sources */,
 				2DDEDC0B1FD4DBF1007AEBF7 /* DiscoverViewController.m in Sources */,
 				2DDEDC2F1FD51C8B007AEBF7 /* SOAPRequest.m in Sources */,
 				2D739C5B1FE3B31500264044 /* FMDatabase.m in Sources */,
+				F9F262BB1FE9072400C2E60F /* PaySetViewController.m in Sources */,
+				F9F262B71FE8F4AE00C2E60F /* UIImage+RSKImageCropper.m in Sources */,
 				F9DC69A91FDF8957007D384D /* MyHelpViewController.m in Sources */,
 				F9DC699A1FDF888F007D384D /* MyFavoriteViewController.m in Sources */,
 				2DCBB2BF1FD108B900934D92 /* BaseViewController.m in Sources */,
@@ -1842,7 +1928,9 @@
 				2DDEDE701FD568C9007AEBF7 /* AFNetworkReachabilityManager.m in Sources */,
 				2DCBB2761FD1000700934D92 /* AppDelegate.m in Sources */,
 				2DDEDC391FD521A0007AEBF7 /* XMLDictionary.m in Sources */,
+				F9F262B51FE8F4AE00C2E60F /* RSKTouchView.m in Sources */,
 				2D4B1EAB1FDFCCD30034B708 /* TableHeaderView.m in Sources */,
+				F9F262B31FE8F4AE00C2E60F /* RSKImageScrollView.m in Sources */,
 				2D739C201FE2611C00264044 /* IQPreviousNextView.m in Sources */,
 				F9DC69951FDF878D007D384D /* MyOrderListViewController.m in Sources */,
 				2DDEDC151FD4DC16007AEBF7 /* MineViewController.m in Sources */,

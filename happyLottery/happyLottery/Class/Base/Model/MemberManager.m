@@ -279,4 +279,69 @@
                         success:succeedBlock
                         failure:failureBlock];
 }
+
+/**
+ * 绑定支付密码
+ params - {"mobile":"xxx","newPaypwd":"xxxx","channelCode":"xxx"} mobile 手机号 必填 newPaypwd 新密码 必填 channelCode 渠道号 必填
+ * @throws BizException
+ */
+- (void) bandPayPWDSms:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        if (response.succeed) {
+            
+            [self.delegate bandPayPWDSmsIsSuccess:YES errorMsg:response.errorMsg];
+        } else {
+            [self.delegate bandPayPWDSmsIsSuccess:NO errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate bandPayPWDSmsIsSuccess:NO errorMsg:@"服务器错误"];
+        //失败的代理方法
+    };
+    //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
+    
+    SOAPRequest *request = [self requestForAPI: APIBandPayPWDSms withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]} ];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+/**
+ * 重置支付密码
+ params - {"mobile":"xxx","oldPaypwd":"xxx","newPaypwd":"xxx","channelCode":"xxx"} mobile 手机号 必填 oldPaypwd 旧密码 newPaypwd 新密码 channelCode 渠道号
+
+ * @throws BizException
+ */
+- (void) resetPayPWDSms:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        if (response.succeed) {
+            
+            [self.delegate resetPayPWDSmsIsSuccess:YES errorMsg:response.errorMsg];
+        } else {
+            [self.delegate resetPayPWDSmsIsSuccess:NO errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate resetPayPWDSmsIsSuccess:NO errorMsg:@"服务器错误"];
+        //失败的代理方法
+    };
+    //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
+    
+    SOAPRequest *request = [self requestForAPI: APIResetPayPWDSms withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]} ];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
 @end

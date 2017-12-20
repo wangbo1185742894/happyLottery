@@ -8,7 +8,7 @@
 
 #import "RegisterViewController.h"
 #import "WebShowViewController.h"
-#define KCheckSec 5
+#define KCheckSec 60
 @interface RegisterViewController ()<UITextFieldDelegate,MemberManagerDelegate>
 {
     

@@ -33,6 +33,9 @@
     self.memberMan.delegate = self;
     self.nickField.layer.borderColor = [[UIColor grayColor] CGColor];
     self.nickField.layer.borderWidth = 0.5f;
+    if (![self.curUser.nickname isEqualToString:@""]) {
+        self.nickField.text = self.curUser.nickname;
+    }
     [self navBarItemSet];
 }
 
@@ -64,6 +67,7 @@
 }
 
 - (IBAction)closeBtnClick:(id)sender {
+    self.nickField.text =@"";
 }
 
 -(void)commitClient{
@@ -88,6 +92,7 @@
    
     if ([msg isEqualToString:@"执行成功"]) {
         [self showPromptText:@"重置昵称成功" hideAfterDelay:1.7];
+        self.curUser.nickname = self.nickField.text;
         [self.navigationController popViewControllerAnimated:YES];
     }else{
         
@@ -106,7 +111,7 @@
     NSString *str = [NSString stringWithFormat:@"%@%@",textField.text,string];
         
         if (str.length >7) {
-            [self showPromptText: @"验证码不能超过6位" hideAfterDelay: 1.7];
+            [self showPromptText: @"昵称不能超过7位" hideAfterDelay: 1.7];
             return NO;
         }
     

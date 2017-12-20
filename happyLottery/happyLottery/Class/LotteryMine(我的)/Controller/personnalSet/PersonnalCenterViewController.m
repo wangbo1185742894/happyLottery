@@ -8,8 +8,12 @@
 
 #import "PersonnalCenterViewController.h"
 #import "MyNickSetViewController.h"
+#import "RSKImageCropper.h"
+#import "PaySetViewController.h"
+#import "SetPayPWDViewController.h"
+#import "ChangePayPWDViewController.h"
 
-@interface PersonnalCenterViewController ()
+@interface PersonnalCenterViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate,RSKImageCropViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollerView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
@@ -40,9 +44,34 @@
     }
 }
 
+
 - (IBAction)updateImage:(id)sender {
+    UIActionSheet *choseSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照",@"从相册中获取",nil];
+    [choseSheet showInView:self.view];
+    
+//    [self changePhotoImg];
 }
 
+- (void)changePhotoImg {
+    UIAlertController * sheetController = [UIAlertController alertControllerWithTitle:@"请选择照片"
+                                                                              message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction * Cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+    
+    UIAlertAction * Done = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        //[self selectImageSourceType:UIImagePickerControllerSourceTypeCamera];
+    }];
+    
+    UIAlertAction * Destructive = [UIAlertAction actionWithTitle:@"从相册选择头像" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+       // [self selectImageSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    }];
+    
+    [sheetController addAction:Cancel];
+    [sheetController addAction:Done];
+    [sheetController addAction:Destructive];
+    [self presentViewController:sheetController animated:YES completion:nil];
+}
 - (IBAction)setMember:(id)sender {
 }
 - (IBAction)setNick:(id)sender {
@@ -53,16 +82,177 @@
 - (IBAction)addCard:(id)sender {
 }
 - (IBAction)cardPaySet:(id)sender {
+    PaySetViewController *pvc = [[PaySetViewController alloc]init];
+    [self.navigationController pushViewController:pvc animated:YES];
 }
 - (IBAction)changePayPWD:(id)sender {
+     if (self.curUser.paypwdSetting == 1) {
+        SetPayPWDViewController *spvc = [[SetPayPWDViewController alloc]init];
+        [self.navigationController pushViewController:spvc animated:YES];
+    } else {
+        ChangePayPWDViewController *cpvc = [[ChangePayPWDViewController alloc]init];
+        [self.navigationController pushViewController:cpvc animated:YES];
+    }
 }
 - (IBAction)changeLoginPWD:(id)sender {
+}
+
+#pragma mark UIActionSheetDelegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {
+        // 拍照
+        if ([self isCameraAvailable] && [self doesCameraSupportTakingPhotos]) {
+            UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+            controller.sourceType = UIImagePickerControllerSourceTypeCamera;
+            if ([self isFrontCameraAvailable]) {
+                controller.cameraDevice = UIImagePickerControllerCameraDeviceFront;
+            }
+            NSMutableArray *mediaTypes = [[NSMutableArray alloc] init];
+            [mediaTypes addObject:(__bridge NSString *)kUTTypeImage];
+            controller.mediaTypes = mediaTypes;
+            controller.delegate = self;
+            [self presentViewController:controller
+                               animated:YES
+                             completion:^(void){
+                                 NSLog(@"Picker View Controller is presented");
+                             }];
+        }
+        else
+        {
+            NSLog(@"不支持拍照！");
+        }
+       
+        
+        
+        //        if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        //            [self.view makeToast:@"该设备不支持相机" duration:3 position:@"center"];
+        //            return ;
+        //        }
+        //        UIImagePickerController* picker = [[UIImagePickerController alloc] init];
+        //        picker.delegate = self;
+        //        picker.allowsEditing = YES;
+        //        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        //
+        //        [self presentViewController:picker animated:YES completion:nil];
+        
+    } else if (buttonIndex == 1) {
+        // 从相册中选取
+        if ([self isPhotoLibraryAvailable]) {
+            UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+            controller.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            NSMutableArray *mediaTypes = [[NSMutableArray alloc] init];
+            [mediaTypes addObject:(__bridge NSString *)kUTTypeImage];
+            controller.mediaTypes = mediaTypes;
+            controller.delegate = self;
+            [self presentViewController:controller
+                               animated:YES
+                             completion:^(void){
+                                 NSLog(@"Picker View Controller is presented");
+                             }];
+        }
+        
+        //        UIImagePickerController* picker = [[UIImagePickerController alloc] init];
+        //        picker.delegate = self;
+        //        picker.allowsEditing = YES;
+        //        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        //
+        //        [self presentViewController:picker animated:YES completion:nil];
+    }
+}
+
+#pragma mark camera utility
+- (BOOL) isCameraAvailable{
+    return [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
+}
+
+- (BOOL) isRearCameraAvailable{
+    return [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear];
+}
+
+- (BOOL) isFrontCameraAvailable {
+    return [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront];
+}
+
+- (BOOL) doesCameraSupportTakingPhotos {
+    return [self cameraSupportsMedia:(__bridge NSString *)kUTTypeImage sourceType:UIImagePickerControllerSourceTypeCamera];
+}
+
+- (BOOL) isPhotoLibraryAvailable{
+    return [UIImagePickerController isSourceTypeAvailable:
+            UIImagePickerControllerSourceTypePhotoLibrary];
+}
+- (BOOL) canUserPickVideosFromPhotoLibrary{
+    return [self
+            cameraSupportsMedia:(__bridge NSString *)kUTTypeMovie sourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+}
+- (BOOL) canUserPickPhotosFromPhotoLibrary{
+    return [self
+            cameraSupportsMedia:(__bridge NSString *)kUTTypeImage sourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+}
+
+- (BOOL) cameraSupportsMedia:(NSString *)paramMediaType sourceType:(UIImagePickerControllerSourceType)paramSourceType{
+    __block BOOL result = NO;
+    if ([paramMediaType length] == 0) {
+        return NO;
+    }
+    NSArray *availableMediaTypes = [UIImagePickerController availableMediaTypesForSourceType:paramSourceType];
+    [availableMediaTypes enumerateObjectsUsingBlock: ^(id obj, NSUInteger idx, BOOL *stop) {
+        NSString *mediaType = (NSString *)obj;
+        if ([mediaType isEqualToString:paramMediaType]){
+            result = YES;
+            *stop= YES;
+        }
+    }];
+    return result;
+}
+
+#pragma 相册选择
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo NS_DEPRECATED_IOS(2_0, 3_0)
+{
+    //
+    
+    //上传，等待回传设置
+    //[self updateFaceRequest:image];
+    RSKImageCropViewController *imageCropVC = [[RSKImageCropViewController alloc] initWithImage:image cropMode:RSKImageCropModeCircle];
+    imageCropVC.delegate = self;
+    [self.navigationController pushViewController:imageCropVC animated:YES];
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - RSKImageCropViewControllerDelegate
+
+- (void)imageCropViewControllerDidCancelCrop:(RSKImageCropViewController *)controller
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)imageCropViewController:(RSKImageCropViewController *)controller didCropImage:(UIImage *)croppedImage usingCropRect:(CGRect)cropRect
+{
+    //[self.addPhotoButton setImage:croppedImage forState:UIControlStateNormal];
+    //上传，等待回传设置
+    [self updateFaceRequest:croppedImage];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    //NSLog(@"222222");
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+-(void)updateFaceRequest:(UIImage*)faceImg
+{
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 /*
 #pragma mark - Navigation

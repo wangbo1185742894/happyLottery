@@ -24,6 +24,12 @@
 	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
+		<key>Privacy - Photo Library Usage Description</key>
+		<string>需要照片更换头像</string>
+		<key>Privacy - Camera Usage Description</key>
+		<string>需要拍照更换头像</string>
+		<key>Privacy - Media Library Usage Description</key>
+		<string>需要照片更换头像</string>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>

@@ -8,7 +8,7 @@
 
 #import "ForgetPWDViewController.h"
 #import "AESUtility.h"
-#define KCheckSec 5
+#define KCheckSec 60
 @interface ForgetPWDViewController()<MemberManagerDelegate,UITextFieldDelegate>{
     
    

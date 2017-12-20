@@ -14,6 +14,9 @@
 @interface User : BaseModel
 
 @property(nonatomic,assign)BOOL isLogin;
+@property(nonatomic,assign)BOOL bankBinding;
+@property(nonatomic,assign)BOOL paypwdSetting;
+@property(nonatomic,assign)int  payPWDThreshold;
 @property(nonatomic,strong)NSString * loginPwd;
 @property(nonatomic,strong)NSString *nickname;
 @property(nonatomic,strong)NSString *name;
@@ -23,6 +26,8 @@
 @property(nonatomic,strong)NSString * sendBalance;
 @property(nonatomic,strong)NSString * cardCode;
 @property(nonatomic,strong)NSString * mobile;
+@property(nonatomic,strong)NSString *shareCode;
+@property(nonatomic,strong)NSString *lockStatus;
 // CIRCLE_MASTER("圈主"), CIRCLE_PERSON("圈民"), FREEDOM_PERSON("自由人");
 @property(nonatomic,assign)NSString * memberType;
 @property(nonatomic,strong)NSString * balance;
