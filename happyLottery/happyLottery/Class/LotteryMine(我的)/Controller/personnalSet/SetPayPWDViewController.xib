@@ -15,7 +15,6 @@
                 <outlet property="payPWDAgainTextField" destination="IEW-Qq-A27" id="nPV-NS-xpe"/>
                 <outlet property="payPWDTextField" destination="zxl-fa-Nbx" id="ZF7-fs-cRv"/>
                 <outlet property="top" destination="YPk-Uh-qBx" id="hra-m1-2Pd"/>
-                <outlet property="verifyTexField" destination="ZtB-OC-WQT" id="7Wg-nT-k2o"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -45,17 +44,7 @@
                             </constraints>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                        </textField>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZtB-OC-WQT">
-                            <rect key="frame" x="133" y="95" width="118" height="30"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="30" id="9QC-wH-Hxq"/>
-                                <constraint firstAttribute="width" constant="118" id="Uca-UF-3v0"/>
-                            </constraints>
-                            <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
                         </textField>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="    支付密码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kjb-RJ-bwk">
                             <rect key="frame" x="0.0" y="90" width="375" height="40"/>
@@ -128,18 +117,19 @@
                                     <integer key="value" value="5"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="commitBtnClick:" destination="-1" eventType="touchUpInside" id="jRR-RE-jAH"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.96444731950759888" green="0.96840888261795044" blue="0.98488038778305054" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="kjb-RJ-bwk" secondAttribute="trailing" id="1MH-5O-cDn"/>
                         <constraint firstItem="kjb-RJ-bwk" firstAttribute="top" secondItem="VcD-pD-hew" secondAttribute="bottom" constant="20" id="2QN-vc-b3y"/>
-                        <constraint firstItem="ZtB-OC-WQT" firstAttribute="leading" secondItem="Zcd-Bw-gpu" secondAttribute="leading" id="3tN-kp-jo4"/>
                         <constraint firstItem="Zcd-Bw-gpu" firstAttribute="leading" secondItem="nTA-hH-JQa" secondAttribute="leading" constant="133" id="5bP-TX-0Yn"/>
                         <constraint firstItem="86r-Dp-nw3" firstAttribute="top" secondItem="ALf-3X-KgZ" secondAttribute="bottom" constant="15" id="8ub-5x-Gvs"/>
                         <constraint firstItem="kjb-RJ-bwk" firstAttribute="leading" secondItem="nTA-hH-JQa" secondAttribute="leading" id="Fbt-UE-fx9"/>
                         <constraint firstItem="eW5-Sm-JQY" firstAttribute="top" secondItem="86r-Dp-nw3" secondAttribute="bottom" constant="15" id="FzC-Vu-mdC"/>
-                        <constraint firstItem="ZtB-OC-WQT" firstAttribute="top" secondItem="VcD-pD-hew" secondAttribute="bottom" constant="25" id="H9E-rW-Noo"/>
                         <constraint firstItem="VcD-pD-hew" firstAttribute="leading" secondItem="nTA-hH-JQa" secondAttribute="leading" id="HvP-Ud-gwL"/>
                         <constraint firstItem="86r-Dp-nw3" firstAttribute="centerX" secondItem="nTA-hH-JQa" secondAttribute="centerX" id="NXn-os-WES"/>
                         <constraint firstAttribute="trailing" secondItem="ALf-3X-KgZ" secondAttribute="trailing" id="OFN-VB-BQf"/>

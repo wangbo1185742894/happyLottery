@@ -9,5 +9,5 @@
 #import "BaseViewController.h"
 
 @interface SetPayPWDViewController : BaseViewController
-
+@property(strong,nonatomic) NSString* titleStr;
 @end

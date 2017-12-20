@@ -86,8 +86,9 @@
     [self.navigationController pushViewController:pvc animated:YES];
 }
 - (IBAction)changePayPWD:(id)sender {
-     if (self.curUser.paypwdSetting == 1) {
+     if (self.curUser.paypwdSetting == 0) {
         SetPayPWDViewController *spvc = [[SetPayPWDViewController alloc]init];
+        spvc.titleStr = @"设置支付密码";
         [self.navigationController pushViewController:spvc animated:YES];
     } else {
         ChangePayPWDViewController *cpvc = [[ChangePayPWDViewController alloc]init];
