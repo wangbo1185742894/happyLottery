@@ -12,6 +12,9 @@
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
 #import "PersonnalCenterViewController.h"
+#import "TopUpsViewController.h"
+#import "WithdrawalsViewController.h"
+
 
 @interface MineViewController () <UITableViewDelegate, UITableViewDataSource,MemberManagerDelegate>{
     NSArray *listArray;
@@ -153,10 +156,14 @@
     
 }
 - (IBAction)rechargeBtnClick:(id)sender {
-    
+    TopUpsViewController *t = [[TopUpsViewController alloc]init];
+    t.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:t animated:YES];
 }
 - (IBAction)withdrawalsBtnClick:(id)sender {
-    
+    WithdrawalsViewController *w = [[WithdrawalsViewController alloc]init];
+    w.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:w animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

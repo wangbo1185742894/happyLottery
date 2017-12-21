@@ -77,7 +77,7 @@
         [self saveUserInfo];
         [self.navigationController dismissViewControllerAnimated:NO completion:nil];
     }else{
-        [self showPromptText: @"登陆失败"  hideAfterDelay: 1.7];
+        //[self showPromptText: @"登陆失败"  hideAfterDelay: 1.7];
         [self showPromptText:msg];
     }
 }

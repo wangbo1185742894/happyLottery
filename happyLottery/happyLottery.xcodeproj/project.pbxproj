@@ -188,6 +188,32 @@
 		F924BAA61FE252CF00830BF4 /* user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA8E1FE252CE00830BF4 /* user@2x.png */; };
 		F924BAA81FE252CF00830BF4 /* captcha@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA901FE252CE00830BF4 /* captcha@2x.png */; };
 		F924BAA91FE252CF00830BF4 /* stick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA911FE252CF00830BF4 /* stick@2x.png */; };
+		F94AA99C1FEB46770021B980 /* TopUpsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F94AA99A1FEB46770021B980 /* TopUpsViewController.m */; };
+		F94AA99D1FEB46770021B980 /* TopUpsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F94AA99B1FEB46770021B980 /* TopUpsViewController.xib */; };
+		F94AA9B31FEB59DA0021B980 /* checked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AA99F1FEB59D50021B980 /* checked@2x.png */; };
+		F94AA9B41FEB59DA0021B980 /* unchecked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AA9A01FEB59D50021B980 /* unchecked@2x.png */; };
+		F94AA9B81FEB59DA0021B980 /* eliminate@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AA9A41FEB59D50021B980 /* eliminate@3x.png */; };
+		F94AA9BA1FEB59DA0021B980 /* list@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AA9A61FEB59D60021B980 /* list@3x.png */; };
+		F94AA9BD1FEB59DA0021B980 /* checked@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AA9A91FEB59D70021B980 /* checked@3x.png */; };
+		F94AA9BE1FEB59DA0021B980 /* eliminate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AA9AA1FEB59D70021B980 /* eliminate@2x.png */; };
+		F94AA9BF1FEB59DA0021B980 /* authentication@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AA9AB1FEB59D70021B980 /* authentication@2x.png */; };
+		F94AA9C01FEB59DA0021B980 /* hint@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AA9AC1FEB59D70021B980 /* hint@2x.png */; };
+		F94AA9C21FEB59DA0021B980 /* list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AA9AE1FEB59D80021B980 /* list@2x.png */; };
+		F94AA9C31FEB59DA0021B980 /* unchecked@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AA9AF1FEB59D80021B980 /* unchecked@3x.png */; };
+		F94AA9C41FEB59DA0021B980 /* authentication@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AA9B01FEB59D80021B980 /* authentication@3x.png */; };
+		F94AA9C61FEB59DA0021B980 /* hint@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AA9B21FEB59D90021B980 /* hint@3x.png */; };
+		F94AA9CD1FEB5A7D0021B980 /* ok@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AA9C91FEB5A7D0021B980 /* ok@3x.png */; };
+		F94AA9CE1FEB5A7D0021B980 /* ok@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AA9CA1FEB5A7D0021B980 /* ok@2x.png */; };
+		F94AA9D21FEB66FF0021B980 /* WithdrawalsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F94AA9D01FEB66FF0021B980 /* WithdrawalsViewController.m */; };
+		F94AA9D31FEB66FF0021B980 /* WithdrawalsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F94AA9D11FEB66FF0021B980 /* WithdrawalsViewController.xib */; };
+		F94AA9DC1FEB7B780021B980 /* weixin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AA9D41FEB7B770021B980 /* weixin@2x.png */; };
+		F94AA9DD1FEB7B780021B980 /* bank@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AA9D51FEB7B770021B980 /* bank@3x.png */; };
+		F94AA9DE1FEB7B780021B980 /* zfb@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AA9D61FEB7B770021B980 /* zfb@3x.png */; };
+		F94AA9DF1FEB7B780021B980 /* kuaijie@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AA9D71FEB7B770021B980 /* kuaijie@3x.png */; };
+		F94AA9E01FEB7B780021B980 /* kuaijie@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AA9D81FEB7B770021B980 /* kuaijie@2x.png */; };
+		F94AA9E11FEB7B780021B980 /* weixin@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AA9D91FEB7B780021B980 /* weixin@3x.png */; };
+		F94AA9E21FEB7B780021B980 /* bank@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AA9DA1FEB7B780021B980 /* bank@2x.png */; };
+		F94AA9E31FEB7B780021B980 /* zfb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AA9DB1FEB7B780021B980 /* zfb@2x.png */; };
 		F957C1CD1FE36B3F0090B19B /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F957C1CB1FE36B3F0090B19B /* close@2x.png */; };
 		F957C1CE1FE36B3F0090B19B /* close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F957C1CC1FE36B3F0090B19B /* close@3x.png */; };
 		F957C1D21FE379590090B19B /* ForgetPWDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F957C1D01FE379590090B19B /* ForgetPWDViewController.m */; };
@@ -587,6 +613,34 @@
 		F924BA8E1FE252CE00830BF4 /* user@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user@2x.png"; sourceTree = "<group>"; };
 		F924BA901FE252CE00830BF4 /* captcha@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "captcha@2x.png"; sourceTree = "<group>"; };
 		F924BA911FE252CF00830BF4 /* stick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stick@2x.png"; sourceTree = "<group>"; };
+		F94AA9991FEB46770021B980 /* TopUpsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopUpsViewController.h; sourceTree = "<group>"; };
+		F94AA99A1FEB46770021B980 /* TopUpsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopUpsViewController.m; sourceTree = "<group>"; };
+		F94AA99B1FEB46770021B980 /* TopUpsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopUpsViewController.xib; sourceTree = "<group>"; };
+		F94AA99F1FEB59D50021B980 /* checked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checked@2x.png"; sourceTree = "<group>"; };
+		F94AA9A01FEB59D50021B980 /* unchecked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unchecked@2x.png"; sourceTree = "<group>"; };
+		F94AA9A41FEB59D50021B980 /* eliminate@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eliminate@3x.png"; sourceTree = "<group>"; };
+		F94AA9A61FEB59D60021B980 /* list@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list@3x.png"; sourceTree = "<group>"; };
+		F94AA9A91FEB59D70021B980 /* checked@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checked@3x.png"; sourceTree = "<group>"; };
+		F94AA9AA1FEB59D70021B980 /* eliminate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eliminate@2x.png"; sourceTree = "<group>"; };
+		F94AA9AB1FEB59D70021B980 /* authentication@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "authentication@2x.png"; sourceTree = "<group>"; };
+		F94AA9AC1FEB59D70021B980 /* hint@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hint@2x.png"; sourceTree = "<group>"; };
+		F94AA9AE1FEB59D80021B980 /* list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list@2x.png"; sourceTree = "<group>"; };
+		F94AA9AF1FEB59D80021B980 /* unchecked@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unchecked@3x.png"; sourceTree = "<group>"; };
+		F94AA9B01FEB59D80021B980 /* authentication@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "authentication@3x.png"; sourceTree = "<group>"; };
+		F94AA9B21FEB59D90021B980 /* hint@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hint@3x.png"; sourceTree = "<group>"; };
+		F94AA9C91FEB5A7D0021B980 /* ok@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ok@3x.png"; sourceTree = "<group>"; };
+		F94AA9CA1FEB5A7D0021B980 /* ok@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ok@2x.png"; sourceTree = "<group>"; };
+		F94AA9CF1FEB66FF0021B980 /* WithdrawalsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WithdrawalsViewController.h; sourceTree = "<group>"; };
+		F94AA9D01FEB66FF0021B980 /* WithdrawalsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WithdrawalsViewController.m; sourceTree = "<group>"; };
+		F94AA9D11FEB66FF0021B980 /* WithdrawalsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithdrawalsViewController.xib; sourceTree = "<group>"; };
+		F94AA9D41FEB7B770021B980 /* weixin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weixin@2x.png"; sourceTree = "<group>"; };
+		F94AA9D51FEB7B770021B980 /* bank@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bank@3x.png"; sourceTree = "<group>"; };
+		F94AA9D61FEB7B770021B980 /* zfb@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zfb@3x.png"; sourceTree = "<group>"; };
+		F94AA9D71FEB7B770021B980 /* kuaijie@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kuaijie@3x.png"; sourceTree = "<group>"; };
+		F94AA9D81FEB7B770021B980 /* kuaijie@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kuaijie@2x.png"; sourceTree = "<group>"; };
+		F94AA9D91FEB7B780021B980 /* weixin@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weixin@3x.png"; sourceTree = "<group>"; };
+		F94AA9DA1FEB7B780021B980 /* bank@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bank@2x.png"; sourceTree = "<group>"; };
+		F94AA9DB1FEB7B780021B980 /* zfb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zfb@2x.png"; sourceTree = "<group>"; };
 		F957C1CB1FE36B3F0090B19B /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@2x.png"; sourceTree = "<group>"; };
 		F957C1CC1FE36B3F0090B19B /* close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@3x.png"; sourceTree = "<group>"; };
 		F957C1CF1FE379590090B19B /* ForgetPWDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ForgetPWDViewController.h; sourceTree = "<group>"; };
@@ -964,6 +1018,7 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				F94AA99E1FEB597C0021B980 /* topups&Withdrawals */,
 				F9BD1B3F1FE8A24E00C1C71A /* personalSte */,
 				F957C1D41FE3B2570090B19B /* MineIcon */,
 				F924BA791FE2528B00830BF4 /* login&registe */,
@@ -1154,6 +1209,12 @@
 				F957C1CF1FE379590090B19B /* ForgetPWDViewController.h */,
 				F957C1D01FE379590090B19B /* ForgetPWDViewController.m */,
 				F957C1D11FE379590090B19B /* ForgetPWDViewController.xib */,
+				F94AA9991FEB46770021B980 /* TopUpsViewController.h */,
+				F94AA99A1FEB46770021B980 /* TopUpsViewController.m */,
+				F94AA99B1FEB46770021B980 /* TopUpsViewController.xib */,
+				F94AA9CF1FEB66FF0021B980 /* WithdrawalsViewController.h */,
+				F94AA9D01FEB66FF0021B980 /* WithdrawalsViewController.m */,
+				F94AA9D11FEB66FF0021B980 /* WithdrawalsViewController.xib */,
 				F9BD1B481FE8A91500C1C71A /* personnalSet */,
 			);
 			path = Controller;
@@ -1446,6 +1507,35 @@
 			path = "login&registe";
 			sourceTree = "<group>";
 		};
+		F94AA99E1FEB597C0021B980 /* topups&Withdrawals */ = {
+			isa = PBXGroup;
+			children = (
+				F94AA9DA1FEB7B780021B980 /* bank@2x.png */,
+				F94AA9D51FEB7B770021B980 /* bank@3x.png */,
+				F94AA9D81FEB7B770021B980 /* kuaijie@2x.png */,
+				F94AA9D71FEB7B770021B980 /* kuaijie@3x.png */,
+				F94AA9D41FEB7B770021B980 /* weixin@2x.png */,
+				F94AA9D91FEB7B780021B980 /* weixin@3x.png */,
+				F94AA9DB1FEB7B780021B980 /* zfb@2x.png */,
+				F94AA9D61FEB7B770021B980 /* zfb@3x.png */,
+				F94AA9CA1FEB5A7D0021B980 /* ok@2x.png */,
+				F94AA9C91FEB5A7D0021B980 /* ok@3x.png */,
+				F94AA9AB1FEB59D70021B980 /* authentication@2x.png */,
+				F94AA9B01FEB59D80021B980 /* authentication@3x.png */,
+				F94AA99F1FEB59D50021B980 /* checked@2x.png */,
+				F94AA9A91FEB59D70021B980 /* checked@3x.png */,
+				F94AA9AA1FEB59D70021B980 /* eliminate@2x.png */,
+				F94AA9A41FEB59D50021B980 /* eliminate@3x.png */,
+				F94AA9AC1FEB59D70021B980 /* hint@2x.png */,
+				F94AA9B21FEB59D90021B980 /* hint@3x.png */,
+				F94AA9AE1FEB59D80021B980 /* list@2x.png */,
+				F94AA9A61FEB59D60021B980 /* list@3x.png */,
+				F94AA9A01FEB59D50021B980 /* unchecked@2x.png */,
+				F94AA9AF1FEB59D80021B980 /* unchecked@3x.png */,
+			);
+			path = "topups&Withdrawals";
+			sourceTree = "<group>";
+		};
 		F957C1D41FE3B2570090B19B /* MineIcon */ = {
 			isa = PBXGroup;
 			children = (
@@ -1667,6 +1757,7 @@
 				F924BA9E1FE252CF00830BF4 /* user@3x.png in Resources */,
 				F924BA961FE252CF00830BF4 /* hide@2x.png in Resources */,
 				F957C20E1FE3B28D0090B19B /* assist@3x.png in Resources */,
+				F94AA9C01FEB59DA0021B980 /* hint@2x.png in Resources */,
 				F957C2081FE3B28D0090B19B /* balance@3x.png in Resources */,
 				F924BA9C1FE252CF00830BF4 /* recommend@2x.png in Resources */,
 				F9DC69A51FDF8929007D384D /* MyShareViewController.xib in Resources */,
@@ -1681,9 +1772,13 @@
 				F957C2041FE3B28D0090B19B /* usermine@3x.png in Resources */,
 				F9DC69AA1FDF8957007D384D /* MyHelpViewController.xib in Resources */,
 				F924BA9D1FE252CF00830BF4 /* stick@3x.png in Resources */,
+				F94AA9DE1FEB7B780021B980 /* zfb@3x.png in Resources */,
+				F94AA9C41FEB59DA0021B980 /* authentication@3x.png in Resources */,
 				F9F2629D1FE8D7D000C2E60F /* closeperson@3x.png in Resources */,
 				F957C1F81FE3B28D0090B19B /* packet@2x.png in Resources */,
 				2D4B1E751FDF684E0034B708 /* fenleixian@2x.png in Resources */,
+				F94AA9B31FEB59DA0021B980 /* checked@2x.png in Resources */,
+				F94AA9B81FEB59DA0021B980 /* eliminate@3x.png in Resources */,
 				F957C2011FE3B28D0090B19B /* news@3x.png in Resources */,
 				F957C2031FE3B28D0090B19B /* ticket@3x.png in Resources */,
 				2D4B1E6F1FDF684E0034B708 /* faxian_defealt@2x.png in Resources */,
@@ -1709,11 +1804,14 @@
 				2D739C4A1FE37E5100264044 /* checksuccess@2x.png in Resources */,
 				F957C1D31FE379590090B19B /* ForgetPWDViewController.xib in Resources */,
 				2D4B1E8D1FDF684E0034B708 /* yucezhanji@2x.png in Resources */,
+				F94AA9CE1FEB5A7D0021B980 /* ok@2x.png in Resources */,
 				F924BAA61FE252CF00830BF4 /* user@2x.png in Resources */,
+				F94AA9C31FEB59DA0021B980 /* unchecked@3x.png in Resources */,
 				2DCBB2811FD1000700934D92 /* LaunchScreen.storyboard in Resources */,
 				F9DC698C1FDF7CF5007D384D /* Mine.plist in Resources */,
 				F9BD1B441FE8A27100C1C71A /* rightIcon@3x.png in Resources */,
 				F924BAA11FE252CF00830BF4 /* line@3x.png in Resources */,
+				F94AA9CD1FEB5A7D0021B980 /* ok@3x.png in Resources */,
 				2D4B1E3B1FDE717C0034B708 /* newBack@3x.png in Resources */,
 				2D4B1E761FDF684E0034B708 /* fenleixian@3x.png in Resources */,
 				F957C20C1FE3B28D0090B19B /* set@3x.png in Resources */,
@@ -1722,14 +1820,17 @@
 				F9581A781FE0B765009753AA /* MineTableViewCell.xib in Resources */,
 				F957C1FD1FE3B28D0090B19B /* attendance@2x.png in Resources */,
 				2D4B1E8B1FDF684E0034B708 /* yuce_select@2x.png in Resources */,
+				F94AA9BF1FEB59DA0021B980 /* authentication@2x.png in Resources */,
 				2D4B1E861FDF684E0034B708 /* yishoucang@3x.png in Resources */,
 				F957C2061FE3B28D0090B19B /* integral@2x.png in Resources */,
 				2D4B1EA21FDFC5F30034B708 /* NewsTableViewCell.xib in Resources */,
 				2D4B1E9D1FDFC4E10034B708 /* NewsViewController.xib in Resources */,
 				F957C2091FE3B28D0090B19B /* lottery@3x.png in Resources */,
 				2D4B1E711FDF684E0034B708 /* faxian_select@2x.png in Resources */,
+				F94AA9DC1FEB7B780021B980 /* weixin@2x.png in Resources */,
 				F957C1F51FE3B28D0090B19B /* usermine@2x.png in Resources */,
 				F957C1FB1FE3B28D0090B19B /* recharge@2x.png in Resources */,
+				F94AA9C21FEB59DA0021B980 /* list@2x.png in Resources */,
 				2D4B1E6E1FDF684E0034B708 /* duibiao@x2.png in Resources */,
 				2D4B1E741FDF684E0034B708 /* fengkuangjingcai@3x.png in Resources */,
 				2D4B1E8C1FDF684E0034B708 /* yuce_select@3x.png in Resources */,
@@ -1739,7 +1840,10 @@
 				F9BD1B471FE8A27100C1C71A /* logo@3x.png in Resources */,
 				2DDEDE761FD568C9007AEBF7 /* LICENSE in Resources */,
 				F957C1F71FE3B28D0090B19B /* collect@2x.png in Resources */,
+				F94AA9BD1FEB59DA0021B980 /* checked@3x.png in Resources */,
 				2D4B1EB31FDFCDAF0034B708 /* arrow_up@2x.png in Resources */,
+				F94AA9E21FEB7B780021B980 /* bank@2x.png in Resources */,
+				F94AA9E31FEB7B780021B980 /* zfb@2x.png in Resources */,
 				2DCBB27E1FD1000700934D92 /* Assets.xcassets in Resources */,
 				2D4B1E721FDF684E0034B708 /* faxian_select@3x.png in Resources */,
 				F924BAA21FE252CF00830BF4 /* password@2x.png in Resources */,
@@ -1751,11 +1855,13 @@
 				2D4B1E211FD8C9180034B708 /* ad_home3.png in Resources */,
 				2D4B1EAC1FDFCCD30034B708 /* TableHeaderView.xib in Resources */,
 				2D4B1E7A1FDF684E0034B708 /* home_select@3x.png in Resources */,
+				F94AA9C61FEB59DA0021B980 /* hint@3x.png in Resources */,
 				F924BA9B1FE252CF00830BF4 /* line@2x.png in Resources */,
 				F9BD1B4D1FE8A95000C1C71A /* BankCardSettingViewController.xib in Resources */,
 				F957C1FA1FE3B28D0090B19B /* share@3x.png in Resources */,
 				2D4B1E901FDF684E0034B708 /* yuyuefangan@3x.png in Resources */,
 				F9DC6A0D1FDFB451007D384D /* recharge_button_default@2x.png in Resources */,
+				F94AA9E01FEB7B780021B980 /* kuaijie@2x.png in Resources */,
 				2D4B1E781FDF684E0034B708 /* home_defealt@3x.png in Resources */,
 				F91C262F1FEA0CF00056CBDD /* SetPayPWDViewController.xib in Resources */,
 				F9DC6A061FDFB451007D384D /* recharge_button_default@3x.png in Resources */,
@@ -1765,7 +1871,9 @@
 				F9DC69A01FDF88E5007D384D /* IntegralMallViewController.xib in Resources */,
 				2D4B1EAF1FDFCDA00034B708 /* arrow_down@2x.png in Resources */,
 				F924BAA31FE252CF00830BF4 /* recommend@3x.png in Resources */,
+				F94AA9DF1FEB7B780021B980 /* kuaijie@3x.png in Resources */,
 				2DDEDE771FD568C9007AEBF7 /* README.md in Resources */,
+				F94AA9B41FEB59DA0021B980 /* unchecked@2x.png in Resources */,
 				F957C2121FE3B28D0090B19B /* balance@2x.png in Resources */,
 				F9DC69EB1FDFB451007D384D /* withdraw Deposit_button_default@2x.png in Resources */,
 				F957C20F1FE3B28D0090B19B /* lottery@2x.png in Resources */,
@@ -1776,9 +1884,12 @@
 				F924BA971FE252CF00830BF4 /* phone@2x.png in Resources */,
 				F957C2131FE3B28D0090B19B /* collect@3x.png in Resources */,
 				2D739C241FE2611C00264044 /* IQKeyboardManager.bundle in Resources */,
+				F94AA9DD1FEB7B780021B980 /* bank@3x.png in Resources */,
+				F94AA9BA1FEB59DA0021B980 /* list@3x.png in Resources */,
 				F9BD1B5C1FE8B41900C1C71A /* MyNickSetViewController.xib in Resources */,
 				2D4B1E1C1FD8C8080034B708 /* launchImage@2x.png in Resources */,
 				2D4B1E811FDF684E0034B708 /* wode_defealt@2x.png in Resources */,
+				F94AA9E11FEB7B780021B980 /* weixin@3x.png in Resources */,
 				2DDEDC161FD4DC16007AEBF7 /* MineViewController.xib in Resources */,
 				F9DC69961FDF878D007D384D /* MyOrderListViewController.xib in Resources */,
 				F924BAA91FE252CF00830BF4 /* stick@2x.png in Resources */,
@@ -1793,10 +1904,12 @@
 				2D4B1E791FDF684E0034B708 /* home_select@2x.png in Resources */,
 				2D4B1E6B1FDF684E0034B708 /* bifenzhibo@2x.png in Resources */,
 				2D4B1E3A1FDE717C0034B708 /* newBack@2x.png in Resources */,
+				F94AA9D31FEB66FF0021B980 /* WithdrawalsViewController.xib in Resources */,
 				2D4B1E841FDF684E0034B708 /* wode_select@3x.png in Resources */,
 				F957C2021FE3B28D0090B19B /* set@2x.png in Resources */,
 				F957C20A1FE3B28D0090B19B /* attendance@3x.png in Resources */,
 				2D4B1E701FDF684E0034B708 /* faxian_defealt@3x.png in Resources */,
+				F94AA99D1FEB46770021B980 /* TopUpsViewController.xib in Resources */,
 				2D4B1E771FDF684E0034B708 /* home_defealt@2x.png in Resources */,
 				2D4B1E891FDF684E0034B708 /* yuce_defealt@2x.png in Resources */,
 				F9BD1B521FE8B21600C1C71A /* FirstBankCardSetViewController.xib in Resources */,
@@ -1809,6 +1922,7 @@
 				2D4B1E7D1FDF684E0034B708 /* quanzi_select@2x.png in Resources */,
 				2D4B1E6C1FDF684E0034B708 /* bifenzhibo@3x.png in Resources */,
 				F9BD1B451FE8A27100C1C71A /* rightIcon@2x.png in Resources */,
+				F94AA9BE1FEB59DA0021B980 /* eliminate@2x.png in Resources */,
 				F957C2051FE3B28D0090B19B /* Withdraw@2x.png in Resources */,
 				2D4B1E371FDE241F0034B708 /* JCZQPlayViewController.xib in Resources */,
 				F924BA991FE252CF00830BF4 /* captcha@3x.png in Resources */,
@@ -1916,9 +2030,11 @@
 				2DCBB2BF1FD108B900934D92 /* BaseViewController.m in Sources */,
 				2DDEDE631FD568C9007AEBF7 /* SDWebImageDownloaderOperation.m in Sources */,
 				2DDEDC4A1FD56849007AEBF7 /* Manager.m in Sources */,
+				F94AA9D21FEB66FF0021B980 /* WithdrawalsViewController.m in Sources */,
 				2DDEDC1A1FD4DE97007AEBF7 /* Utility.m in Sources */,
 				2DDEDE711FD568C9007AEBF7 /* AFSecurityPolicy.m in Sources */,
 				2DDEDE651FD568C9007AEBF7 /* SDWebImagePrefetcher.m in Sources */,
+				F94AA99C1FEB46770021B980 /* TopUpsViewController.m in Sources */,
 				2DDEDE691FD568C9007AEBF7 /* UIImage+WebP.m in Sources */,
 				2DDEDE641FD568C9007AEBF7 /* SDWebImageManager.m in Sources */,
 				2DDEDE5E1FD568C9007AEBF7 /* NSData+ImageContentType.m in Sources */,
