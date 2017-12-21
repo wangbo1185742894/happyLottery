@@ -29,7 +29,7 @@
     [super viewDidLoad];
     self.title = @"充值";
     if ([self isIphoneX]) {
-        // self.bigView.translatesAutoresizingMaskIntoConstraints = NO;
+    
         self.top.constant = 88;
      
     }

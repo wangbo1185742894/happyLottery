@@ -12,8 +12,13 @@
 #import "PaySetViewController.h"
 #import "SetPayPWDViewController.h"
 #import "ChangePayPWDViewController.h"
+#import "FirstBankCardSetViewController.h"
+#import "BankCardSettingViewController.h"
 
-@interface PersonnalCenterViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate,RSKImageCropViewControllerDelegate>
+@interface PersonnalCenterViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate,RSKImageCropViewControllerDelegate>{
+    
+     NSString *titleStr;
+}
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollerView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
@@ -34,6 +39,11 @@
 
 @implementation PersonnalCenterViewController
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    [self loadUserInfo];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"个人信息";
@@ -42,8 +52,29 @@
         self.top.constant = 88;
         self.bottom.constant = 34;
     }
+    
+     if (self.curUser.bankBinding == 0) {
+        titleStr = @"银行卡设置";
+        self.myCardLab.hidden = NO;
+    } else {
+          //titleStr = @"银行卡添加";
+        self.myCardLab.hidden = YES;
+    }
 }
 
+-(void)loadUserInfo{
+   
+    NSString *userName;
+    if (self.curUser.nickname.length == 0) {
+        userName = self.curUser.mobile;
+    }else{
+        userName = self.curUser.nickname;
+    }
+    self.myNickLab.text = userName;
+    self.memberLab.text = self.curUser.cardCode;
+    //[_userImage sd_setImageWithURL:[NSURL URLWithString:self.curUser.headUrl]];
+    
+}
 
 - (IBAction)updateImage:(id)sender {
     UIActionSheet *choseSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照",@"从相册中获取",nil];
@@ -80,6 +111,19 @@
     [self.navigationController pushViewController:nickVC animated:YES];
 }
 - (IBAction)addCard:(id)sender {
+     if (self.curUser.bankBinding == 1) {
+        FirstBankCardSetViewController *fvc = [[FirstBankCardSetViewController alloc]init];
+        fvc.titleStr=titleStr;
+        [self.navigationController pushViewController:fvc animated:YES];
+    
+    } else {
+        BankCardSettingViewController *bvc = [[BankCardSettingViewController alloc]init];
+       
+        [self.navigationController pushViewController:bvc animated:YES];
+         
+      
+    }
+    
 }
 - (IBAction)cardPaySet:(id)sender {
     PaySetViewController *pvc = [[PaySetViewController alloc]init];

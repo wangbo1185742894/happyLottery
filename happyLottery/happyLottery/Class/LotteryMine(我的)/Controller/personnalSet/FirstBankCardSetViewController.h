@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface FirstBankCardSetViewController : BaseViewController
-
+@property(strong,nonatomic) NSString* titleStr;
 @end

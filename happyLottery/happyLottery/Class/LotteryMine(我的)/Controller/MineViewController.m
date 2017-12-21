@@ -43,6 +43,11 @@
 
 @implementation MineViewController
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+        [self loadUserInfo];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.memberMan.delegate = self;
@@ -83,7 +88,7 @@
 }
 
 -(void)loadUserInfo{
-    //_loginBtn.enabled = NO;
+    _loginBtn.enabled = NO;
     NSString *userName;
     if (self.curUser.nickname.length == 0) {
         userName = self.curUser.mobile;
@@ -91,7 +96,7 @@
         userName = self.curUser.nickname;
     }
     [_loginBtn setTitle:userName forState:UIControlStateDisabled];
-    [_userImage sd_setImageWithURL:[NSURL URLWithString:self.curUser.headUrl]];
+    //[_userImage sd_setImageWithURL:[NSURL URLWithString:self.curUser.headUrl]];
     
 }
 

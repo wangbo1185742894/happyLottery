@@ -110,7 +110,7 @@
     
     NSString *str = [NSString stringWithFormat:@"%@%@",textField.text,string];
         
-        if (str.length >7) {
+        if (str.length >14) {
             [self showPromptText: @"昵称不能超过7位" hideAfterDelay: 1.7];
             return NO;
         }

@@ -9,14 +9,30 @@
 #import "FirstBankCardSetViewController.h"
 
 @interface FirstBankCardSetViewController ()
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
+@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
+@property (weak, nonatomic) IBOutlet UIButton *getBankBtn;
+@property (weak, nonatomic) IBOutlet UITextField *bankCodeTextField;
+@property (weak, nonatomic) IBOutlet UIButton *commitBtn;
 
 @end
 
 @implementation FirstBankCardSetViewController
+@synthesize titleStr;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"银行卡设置";
+    if ([self isIphoneX]) {
+        
+        self.top.constant = 88;
+        
+    }
+}
+- (IBAction)getBankClick:(id)sender {
+}
+
+- (IBAction)commitBtnClick:(id)sender {
 }
 
 - (void)didReceiveMemoryWarning {

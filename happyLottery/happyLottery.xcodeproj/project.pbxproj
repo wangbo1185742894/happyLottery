@@ -214,6 +214,14 @@
 		F94AA9E11FEB7B780021B980 /* weixin@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AA9D91FEB7B780021B980 /* weixin@3x.png */; };
 		F94AA9E21FEB7B780021B980 /* bank@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AA9DA1FEB7B780021B980 /* bank@2x.png */; };
 		F94AA9E31FEB7B780021B980 /* zfb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AA9DB1FEB7B780021B980 /* zfb@2x.png */; };
+		F94AA9EA1FEB9BD50021B980 /* banker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AA9E41FEB9BD10021B980 /* banker@2x.png */; };
+		F94AA9EB1FEB9BD50021B980 /* add@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AA9E51FEB9BD20021B980 /* add@3x.png */; };
+		F94AA9EC1FEB9BD50021B980 /* add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AA9E61FEB9BD30021B980 /* add@2x.png */; };
+		F94AA9ED1FEB9BD50021B980 /* banker@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AA9E71FEB9BD40021B980 /* banker@3x.png */; };
+		F94AA9EE1FEB9BD50021B980 /* attention@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AA9E81FEB9BD40021B980 /* attention@2x.png */; };
+		F94AA9EF1FEB9BD50021B980 /* attention@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AA9E91FEB9BD50021B980 /* attention@3x.png */; };
+		F94AA9F31FEBBFE00021B980 /* BankCardSetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F94AA9F11FEBBFE00021B980 /* BankCardSetTableViewCell.m */; };
+		F94AA9F41FEBBFE00021B980 /* BankCardSetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F94AA9F21FEBBFE00021B980 /* BankCardSetTableViewCell.xib */; };
 		F957C1CD1FE36B3F0090B19B /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F957C1CB1FE36B3F0090B19B /* close@2x.png */; };
 		F957C1CE1FE36B3F0090B19B /* close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F957C1CC1FE36B3F0090B19B /* close@3x.png */; };
 		F957C1D21FE379590090B19B /* ForgetPWDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F957C1D01FE379590090B19B /* ForgetPWDViewController.m */; };
@@ -641,6 +649,15 @@
 		F94AA9D91FEB7B780021B980 /* weixin@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weixin@3x.png"; sourceTree = "<group>"; };
 		F94AA9DA1FEB7B780021B980 /* bank@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bank@2x.png"; sourceTree = "<group>"; };
 		F94AA9DB1FEB7B780021B980 /* zfb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zfb@2x.png"; sourceTree = "<group>"; };
+		F94AA9E41FEB9BD10021B980 /* banker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "banker@2x.png"; path = "../../../../../银行卡/ios-银行设置-切图/banker@2x.png"; sourceTree = "<group>"; };
+		F94AA9E51FEB9BD20021B980 /* add@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add@3x.png"; sourceTree = "<group>"; };
+		F94AA9E61FEB9BD30021B980 /* add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add@2x.png"; sourceTree = "<group>"; };
+		F94AA9E71FEB9BD40021B980 /* banker@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "banker@3x.png"; path = "../../../../../银行卡/ios-银行设置-切图/banker@3x.png"; sourceTree = "<group>"; };
+		F94AA9E81FEB9BD40021B980 /* attention@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "attention@2x.png"; sourceTree = "<group>"; };
+		F94AA9E91FEB9BD50021B980 /* attention@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "attention@3x.png"; sourceTree = "<group>"; };
+		F94AA9F01FEBBFE00021B980 /* BankCardSetTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BankCardSetTableViewCell.h; sourceTree = "<group>"; };
+		F94AA9F11FEBBFE00021B980 /* BankCardSetTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BankCardSetTableViewCell.m; sourceTree = "<group>"; };
+		F94AA9F21FEBBFE00021B980 /* BankCardSetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BankCardSetTableViewCell.xib; sourceTree = "<group>"; };
 		F957C1CB1FE36B3F0090B19B /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@2x.png"; sourceTree = "<group>"; };
 		F957C1CC1FE36B3F0090B19B /* close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@3x.png"; sourceTree = "<group>"; };
 		F957C1CF1FE379590090B19B /* ForgetPWDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ForgetPWDViewController.h; sourceTree = "<group>"; };
@@ -1230,6 +1247,9 @@
 		2DDEDBFA1FD4DBB5007AEBF7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F94AA9F01FEBBFE00021B980 /* BankCardSetTableViewCell.h */,
+				F94AA9F11FEBBFE00021B980 /* BankCardSetTableViewCell.m */,
+				F94AA9F21FEBBFE00021B980 /* BankCardSetTableViewCell.xib */,
 				F9581A741FE0B765009753AA /* MineTableViewCell.h */,
 				F9581A751FE0B765009753AA /* MineTableViewCell.m */,
 				F9581A761FE0B765009753AA /* MineTableViewCell.xib */,
@@ -1510,8 +1530,14 @@
 		F94AA99E1FEB597C0021B980 /* topups&Withdrawals */ = {
 			isa = PBXGroup;
 			children = (
+				F94AA9E61FEB9BD30021B980 /* add@2x.png */,
+				F94AA9E51FEB9BD20021B980 /* add@3x.png */,
+				F94AA9E81FEB9BD40021B980 /* attention@2x.png */,
+				F94AA9E91FEB9BD50021B980 /* attention@3x.png */,
 				F94AA9DA1FEB7B780021B980 /* bank@2x.png */,
 				F94AA9D51FEB7B770021B980 /* bank@3x.png */,
+				F94AA9E41FEB9BD10021B980 /* banker@2x.png */,
+				F94AA9E71FEB9BD40021B980 /* banker@3x.png */,
 				F94AA9D81FEB7B770021B980 /* kuaijie@2x.png */,
 				F94AA9D71FEB7B770021B980 /* kuaijie@3x.png */,
 				F94AA9D41FEB7B770021B980 /* weixin@2x.png */,
@@ -1786,6 +1812,8 @@
 				2DDEDC0C1FD4DBF1007AEBF7 /* DiscoverViewController.xib in Resources */,
 				2D4B1E871FDF684E0034B708 /* yuce@2x.png in Resources */,
 				2D4B1E7F1FDF684E0034B708 /* weishoucang@2x.png in Resources */,
+				F94AA9ED1FEB9BD50021B980 /* banker@3x.png in Resources */,
+				F94AA9EC1FEB9BD50021B980 /* add@2x.png in Resources */,
 				2D4B1EA71FDFCA520034B708 /* ForecastViewController.xib in Resources */,
 				2D739C3B1FE365BE00264044 /* WebShowViewController.xib in Resources */,
 				F957C1FF1FE3B28D0090B19B /* return@3x.png in Resources */,
@@ -1805,6 +1833,7 @@
 				F957C1D31FE379590090B19B /* ForgetPWDViewController.xib in Resources */,
 				2D4B1E8D1FDF684E0034B708 /* yucezhanji@2x.png in Resources */,
 				F94AA9CE1FEB5A7D0021B980 /* ok@2x.png in Resources */,
+				F94AA9EF1FEB9BD50021B980 /* attention@3x.png in Resources */,
 				F924BAA61FE252CF00830BF4 /* user@2x.png in Resources */,
 				F94AA9C31FEB59DA0021B980 /* unchecked@3x.png in Resources */,
 				2DCBB2811FD1000700934D92 /* LaunchScreen.storyboard in Resources */,
@@ -1843,6 +1872,7 @@
 				F94AA9BD1FEB59DA0021B980 /* checked@3x.png in Resources */,
 				2D4B1EB31FDFCDAF0034B708 /* arrow_up@2x.png in Resources */,
 				F94AA9E21FEB7B780021B980 /* bank@2x.png in Resources */,
+				F94AA9EE1FEB9BD50021B980 /* attention@2x.png in Resources */,
 				F94AA9E31FEB7B780021B980 /* zfb@2x.png in Resources */,
 				2DCBB27E1FD1000700934D92 /* Assets.xcassets in Resources */,
 				2D4B1E721FDF684E0034B708 /* faxian_select@3x.png in Resources */,
@@ -1856,10 +1886,12 @@
 				2D4B1EAC1FDFCCD30034B708 /* TableHeaderView.xib in Resources */,
 				2D4B1E7A1FDF684E0034B708 /* home_select@3x.png in Resources */,
 				F94AA9C61FEB59DA0021B980 /* hint@3x.png in Resources */,
+				F94AA9F41FEBBFE00021B980 /* BankCardSetTableViewCell.xib in Resources */,
 				F924BA9B1FE252CF00830BF4 /* line@2x.png in Resources */,
 				F9BD1B4D1FE8A95000C1C71A /* BankCardSettingViewController.xib in Resources */,
 				F957C1FA1FE3B28D0090B19B /* share@3x.png in Resources */,
 				2D4B1E901FDF684E0034B708 /* yuyuefangan@3x.png in Resources */,
+				F94AA9EB1FEB9BD50021B980 /* add@3x.png in Resources */,
 				F9DC6A0D1FDFB451007D384D /* recharge_button_default@2x.png in Resources */,
 				F94AA9E01FEB7B780021B980 /* kuaijie@2x.png in Resources */,
 				2D4B1E781FDF684E0034B708 /* home_defealt@3x.png in Resources */,
@@ -1900,6 +1932,7 @@
 				2D739C4B1FE37E5100264044 /* checksuccess@3x.png in Resources */,
 				F957C2071FE3B28D0090B19B /* news@2x.png in Resources */,
 				F9BD1B461FE8A27100C1C71A /* logo@2x.png in Resources */,
+				F94AA9EA1FEB9BD50021B980 /* banker@2x.png in Resources */,
 				2D739C421FE369DE00264044 /* checkBox_checked@3x.png in Resources */,
 				2D4B1E791FDF684E0034B708 /* home_select@2x.png in Resources */,
 				2D4B1E6B1FDF684E0034B708 /* bifenzhibo@2x.png in Resources */,
@@ -1986,6 +2019,7 @@
 				2DDEDE7C1FD568C9007AEBF7 /* UIAlertView+AFNetworking.m in Sources */,
 				2D4B1E941FDF7BD20034B708 /* NewsListCell.m in Sources */,
 				F9F262B21FE8F4AE00C2E60F /* RSKImageCropViewController.m in Sources */,
+				F94AA9F31FEBBFE00021B980 /* BankCardSetTableViewCell.m in Sources */,
 				2DDEDE6F1FD568C9007AEBF7 /* AFHTTPSessionManager.m in Sources */,
 				2DDEDC321FD520FF007AEBF7 /* MemberManager.m in Sources */,
 				2DDEDC351FD52178007AEBF7 /* AESUtility.m in Sources */,
