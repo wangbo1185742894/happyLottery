@@ -97,7 +97,7 @@
 
         } while ([result next]);
         
-        [self.fmdb executeUpdate:@"insert into t_user_info (cardCode , loginPwd , isLogin , mobile) values ( ?,?,?,? )  ",user.cardCode,user.loginPwd,@(1),user.mobile];
+        [self.fmdb executeUpdate:@"insert into t_user_info (cardCode , loginPwd , isLogin , mobile,payVerifyType) values ( ?,?,?,?,?)  ",user.cardCode,user.loginPwd,@(1),user.mobile,@(1)];
         [[NSNotificationCenter defaultCenter] postNotificationName:NotificationNameUserLogin object:nil];
         [result close];
         [self.fmdb close];

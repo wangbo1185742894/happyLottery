@@ -98,12 +98,13 @@
         userName = self.curUser.nickname;
     }
     [_loginBtn setTitle:userName forState:UIControlStateDisabled];
+    self.curUser.payVerifyType = [NSNumber numberWithInt:1];
     //[_userImage sd_setImageWithURL:[NSURL URLWithString:self.curUser.headUrl]];
     
 }
 
 
-- (void) notLogin{
+- (void) Login{
     
     LoginViewController * loginVC = [[LoginViewController alloc]init];
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController: loginVC];
@@ -135,42 +136,81 @@
 
 -(void)noticeBtnClick{
     
-    
+    if (isLogin == NO) {
+        [self Login];
+    } else {
+   
+    }
 }
 
 - (IBAction)personSetClick:(id)sender {
-    PersonnalCenterViewController * pcVC = [[PersonnalCenterViewController alloc]init];
-    pcVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:pcVC animated:YES];
+    if (isLogin == NO) {
+        [self Login];
+    } else {
+        PersonnalCenterViewController * pcVC = [[PersonnalCenterViewController alloc]init];
+        pcVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:pcVC animated:YES];
+    }
+
 }
 
 - (IBAction)loginBtnClick:(id)sender {
 
-    [self notLogin];
+    [self Login];
 
 }
 
 - (IBAction)signInBtnClick:(id)sender {
+    if (isLogin == NO) {
+        [self Login];
+    } else {
+        
+    }
     
 }
 - (IBAction)blanceBtnClick:(id)sender {
+    if (isLogin == NO) {
+        [self Login];
+    } else {
+        
+    }
     
 }
 - (IBAction)integralBtnClick:(id)sender {
+    if (isLogin == NO) {
+        [self Login];
+    } else {
+        
+    }
     
 }
 - (IBAction)redPacketBtnClick:(id)sender {
+    if (isLogin == NO) {
+        [self Login];
+    } else {
+        
+    }
     
 }
 - (IBAction)rechargeBtnClick:(id)sender {
-    TopUpsViewController *t = [[TopUpsViewController alloc]init];
-    t.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:t animated:YES];
+    if (isLogin == NO) {
+        [self Login];
+    } else {
+        TopUpsViewController *t = [[TopUpsViewController alloc]init];
+        t.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:t animated:YES];
+    }
+ 
 }
 - (IBAction)withdrawalsBtnClick:(id)sender {
-    WithdrawalsViewController *w = [[WithdrawalsViewController alloc]init];
-    w.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:w animated:YES];
+    if (isLogin == NO) {
+        [self Login];
+    } else {
+        WithdrawalsViewController *w = [[WithdrawalsViewController alloc]init];
+        w.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:w animated:YES];
+    }
+ 
 }
 
 - (void)didReceiveMemoryWarning {
@@ -278,6 +318,11 @@
     NSDictionary *optionDic = listArray[indexPath.section][indexPath.row];
     
     self.memberSubFunctionClass = optionDic[@"actionClassName"];
+    if (isLogin == NO) {
+        [self Login];
+    } else {
+        
+    }
 //    if ([optionDic[@"title"] isEqualToString:@"身份认证"] || [optionDic[@"title"] isEqualToString:@"密码修改"]) {
 //       // [self showInputPopView];
 //        return;

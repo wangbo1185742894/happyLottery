@@ -34,8 +34,29 @@
         self.top.constant = 88;
         
     }
+    [self updateSwitchStatus];
 }
+
+-(void)updateSwitchStatus{
+   
+        int payVerifyType = [self.curUser.payVerifyType intValue];
+        if (payVerifyType == PayVerifyTypeLessThanOneHundred) {
+            self.switch2.on=YES;
+        } else  if (payVerifyType == PayVerifyTypeLessThanFiveHundred){
+            self.switch3.on=YES;
+        }else  if (payVerifyType == PayVerifyTypeLessThanThousand){
+             self.switch4.on=YES;
+        }else  if (payVerifyType == PayVerifyTypeAlways){
+                self.mianMiSwitch.on=YES;
+        }else  if (payVerifyType == PayVerifyTypeAlwaysNo){
+            self.switch1.on=YES;
+        }
+ 
+    
+}
+
 - (IBAction)switch1Chose:(id)sender {
+   self.switch1.on=YES;
     if (self.switch1.on==YES) {
         self.curUser.payPWDThreshold = 100;
         self.switch2.on=NO;
@@ -48,6 +69,7 @@
     }
 }
 - (IBAction)switch2Chose:(id)sender {
+    self.switch2.on=YES;
     if (self.switch2.on==YES) {
         self.curUser.payPWDThreshold = 100;
         self.switch1.on=NO;
@@ -61,7 +83,8 @@
     
 }
 - (IBAction)switch3Chose:(id)sender {
-    if (self.switch2.on==YES) {
+    self.switch3.on=YES;
+    if (self.switch3.on==YES) {
         self.curUser.payPWDThreshold = 500;
         self.switch1.on=NO;
         self.switch2.on=NO;
@@ -74,6 +97,7 @@
    
 }
 - (IBAction)switch4Chose:(id)sender {
+    self.switch4.on=YES;
     if (self.switch4.on==YES) {
         self.curUser.payPWDThreshold = 1000;
         self.switch3.on=NO;
@@ -87,6 +111,7 @@
   
 }
 - (IBAction)mianMiSwitch:(id)sender {
+    self.mianMiSwitch.on=YES;
     if (self.mianMiSwitch.on==YES) {
         self.curUser.payPWDThreshold = 0;
         self.switch4.on=NO;
@@ -102,13 +127,10 @@
 -(void)savePayVerifyType{
     
     if ([self.fmdb open]) {
-        FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_user_info"];
-        NSLog(@"%@",result);
-
+        NSString *mobile =self.curUser.mobile;
+        NSString * verify = [NSString stringWithFormat:@"%d", verifyType];
         //update t_student set score = age where name = ‘jack’ ;
-        [self.fmdb executeUpdate:@"update  t_user_info set payVerifyType = ? where mobile = ?",verifyType,self.curUser.mobile ];
-        [[NSNotificationCenter defaultCenter] postNotificationName:NotificationNameUserLogin object:nil];
-        [result close];
+        [self.fmdb executeUpdate:@"update  t_user_info set payVerifyType = ? where mobile = ?",verify, mobile];
         [self.fmdb close];
     }
 }

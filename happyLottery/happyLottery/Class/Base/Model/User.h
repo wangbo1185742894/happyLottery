@@ -11,8 +11,8 @@
 
 typedef enum {
     
-    PayVerifyTypeAlways =1,
-    PayVerifyTypeAlwaysNo,
+    PayVerifyTypeAlwaysNo =1,
+    PayVerifyTypeAlways,
     PayVerifyTypeLessThanOneHundred,
     PayVerifyTypeLessThanFiveHundred,
     PayVerifyTypeLessThanThousand,

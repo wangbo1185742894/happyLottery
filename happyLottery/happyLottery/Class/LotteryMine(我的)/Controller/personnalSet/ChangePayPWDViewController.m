@@ -46,15 +46,18 @@
     }
 }
 - (IBAction)commitBtnClick:(id)sender {
-    if ( self.PWD1.text.length < 6 ||  self.PWD1.text.length > 16) {
-        [self showPromptText: @"请输入有效的密码" hideAfterDelay: 1.7];
+    if ( self.PWD1.text.length == 0||  self.PWD1.text.length < 6) {
+        self.PWD1.text=@"";
+        [self showPromptText: @"请输入6位初始密码" hideAfterDelay: 1.7];
         return;
     }
-    else if (self.PWD2.text.length < 6 || self.PWD2.text.length > 16) {
-        [self showPromptText: @"请输入有效的密码" hideAfterDelay: 1.7];
+    else if (self.PWD2.text.length == 0 || self.PWD2.text.length < 6) {
+        self.PWD2.text=@"";
+        [self showPromptText: @"请输入6位新密码" hideAfterDelay: 1.7];
         return;
-    } else if (self.PWD3.text.length < 6 || self.PWD3.text.length > 16) {
-        [self showPromptText: @"请输入有效的密码" hideAfterDelay: 1.7];
+    } else if (self.PWD3.text.length == 0 || self.PWD3.text.length < 6) {
+        self.PWD3.text=@"";
+        [self showPromptText: @"请输入6位确认密码" hideAfterDelay: 1.7];
         return;
     }
     else if(![_PWD2.text isEqualToString:_PWD3.text]){
@@ -118,24 +121,24 @@
   
     if (textField ==  self.PWD1) {
         
-        if (str.length >16 ) {
-            [self showPromptText: @"密码不能超过16位" hideAfterDelay: 1.7];
+        if (str.length >6 ) {
+            [self showPromptText: @"初始密码不能超过6位" hideAfterDelay: 1.7];
             return NO;
         }
     }
     if (textField ==  self.PWD2 ) {
         
-        if (str.length >16 ) {
-            [self showPromptText: @"密码不能超过16位" hideAfterDelay: 1.7];
+        if (str.length >6 ) {
+            [self showPromptText: @"新密码不能超过6位" hideAfterDelay: 1.7];
             return NO;
         }
     }
     
    
-    if (textField ==  self.PWD3 ||str.length < 6) {
+    if (textField ==  self.PWD3 ) {
         
-        if (str.length >16) {
-            [self showPromptText: @"密码在6-16位" hideAfterDelay: 1.7];
+        if (str.length >6) {
+            [self showPromptText: @"确认密码不能超过6位" hideAfterDelay: 1.7];
             return NO;
         }
     }
@@ -150,28 +153,28 @@
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{
-    if (textField == self.PWD1 ) {
-        if (![self checkPassWord:self.PWD1.text]) {
-            [self showPromptText: @"请输入6-16密码，由英文字母或数字组成" hideAfterDelay: 1.7];
-            self.PWD1.text= @"";
-            return;
-        }
-        
-    }else  if (textField == self.PWD2 ) {
-        if (![self checkPassWord:self.PWD2.text]) {
-            [self showPromptText: @"请输入6-16密码，由英文字母或数字组成" hideAfterDelay: 1.7];
-            self.PWD2.text= @"";
-            return;
-        }
-        
-    } else if (textField == self.PWD3) {
-        
-        if (![self checkPassWord:self.PWD3.text]) {
-            [self showPromptText: @"请输入6-16密码，由英文字母或数字组成" hideAfterDelay: 1.7];
-            self.PWD3.text= @"";
-            return;
-        }
-    }
+//    if (textField == self.PWD1 ) {
+//        if (![self checkPassWord:self.PWD1.text]) {
+//            [self showPromptText: @"请输入6-16密码，由英文字母或数字组成" hideAfterDelay: 1.7];
+//            self.PWD1.text= @"";
+//            return;
+//        }
+//
+//    }else  if (textField == self.PWD2 ) {
+//        if (![self checkPassWord:self.PWD2.text]) {
+//            [self showPromptText: @"请输入6-16密码，由英文字母或数字组成" hideAfterDelay: 1.7];
+//            self.PWD2.text= @"";
+//            return;
+//        }
+//
+//    } else if (textField == self.PWD3) {
+//
+//        if (![self checkPassWord:self.PWD3.text]) {
+//            [self showPromptText: @"请输入6-16密码，由英文字母或数字组成" hideAfterDelay: 1.7];
+//            self.PWD3.text= @"";
+//            return;
+//        }
+//    }
     [self.view resignFirstResponder];
 }
 

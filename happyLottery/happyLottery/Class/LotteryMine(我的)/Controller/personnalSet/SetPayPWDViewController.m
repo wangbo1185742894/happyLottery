@@ -36,7 +36,7 @@
     self.mobileTextField.delegate = self;
     self.payPWDTextField.delegate = self;
     self.payPWDAgainTextField.delegate = self;
-    
+    self.mobileTextField.text = self.curUser.mobile;
 }
 
 -(void)bandPayPWDSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
@@ -54,18 +54,20 @@
     NSString *pwd1 = self.payPWDTextField.text;
     NSString *pwd2 = self.payPWDAgainTextField.text;
     
-    if (_payPWDTextField.text.length < 6 || _payPWDTextField.text.length > 16) {
-        [self showPromptText: @"请输入有效的密码" hideAfterDelay: 1.7];
+    if (_payPWDTextField.text.length == 0 || _payPWDTextField.text.length < 6) {
+        self.payPWDTextField.text=@"";
+        [self showPromptText: @"请输入6位支付密码" hideAfterDelay: 1.7];
         return;
     }
-    else if (_payPWDAgainTextField.text.length < 6 || _payPWDAgainTextField.text.length > 16) {
-        [self showPromptText: @"请输入有效的密码" hideAfterDelay: 1.7];
+    else if (_payPWDAgainTextField.text.length == 0  || _payPWDAgainTextField.text.length < 6) {
+        self.payPWDTextField.text=@"";
+        [self showPromptText: @"请输入6位确认密码" hideAfterDelay: 1.7];
         return;
     }
-    else if (_mobileTextField.text.length < 11) {
-        [self showPromptText: @"请输入有效手机号" hideAfterDelay: 1.7];
-        return;
-    }
+//    else if (_mobileTextField.text.length < 11) {
+//        [self showPromptText: @"请输入11位手机号" hideAfterDelay: 1.7];
+//        return;
+//    }
     else if(![pwd1 isEqualToString:pwd2]){
         [self showPromptText: @"两次输入的密码不一致！" hideAfterDelay: 1.7];
          self.payPWDTextField.text=@"";
@@ -122,30 +124,26 @@
     
     if (textField ==  self.payPWDTextField) {
         
-        if (str.length >16 ) {
-            [self showPromptText: @"密码不能超过16位" hideAfterDelay: 1.7];
+        if (str.length >6 ) {
+            [self showPromptText: @"设置密码不能超过6位" hideAfterDelay: 1.7];
             return NO;
         }
     }
     if (textField ==  self.payPWDAgainTextField ) {
         
-        if (str.length >16 ) {
-            [self showPromptText: @"密码不能超过16位" hideAfterDelay: 1.7];
+        if (str.length >6 ) {
+            [self showPromptText: @"确认密码不能超过6位" hideAfterDelay: 1.7];
             return NO;
         }
     }
-    if (textField == _mobileTextField) {
-        if (str.length >11) {
-            [self showPromptText: @"手机号码不能超过11位" hideAfterDelay: 1.7];
-            return NO;
-        }
-    }
+
     
     
     
-    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
-    BOOL isMatch = [pred evaluateWithObject:string];
-    return isMatch;
+//    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+//    BOOL isMatch = [pred evaluateWithObject:string];
+//    return isMatch;
+    return YES;
 }
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
@@ -153,21 +151,21 @@
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{
-    if (textField == self.payPWDTextField ) {
-        if (![self checkPassWord:self.payPWDTextField.text]) {
-            [self showPromptText: @"请输入6-16密码，由英文字母或数字组成" hideAfterDelay: 1.7];
-            self.payPWDTextField.text= @"";
-            return;
-        }
-        
-    }else  if (textField == self.payPWDAgainTextField ) {
-        if (![self checkPassWord:self.payPWDAgainTextField.text]) {
-            [self showPromptText: @"请输入6-16密码，由英文字母或数字组成" hideAfterDelay: 1.7];
-            self.payPWDAgainTextField.text= @"";
-            return;
-        }
-        
-    }
+//    if (textField == self.payPWDTextField ) {
+//        if (![self checkPassWord:self.payPWDTextField.text]) {
+//            [self showPromptText: @"请输入6-16密码，由英文字母或数字组成" hideAfterDelay: 1.7];
+//            self.payPWDTextField.text= @"";
+//            return;
+//        }
+//
+//    }else  if (textField == self.payPWDAgainTextField ) {
+//        if (![self checkPassWord:self.payPWDAgainTextField.text]) {
+//            [self showPromptText: @"请输入6-16密码，由英文字母或数字组成" hideAfterDelay: 1.7];
+//            self.payPWDAgainTextField.text= @"";
+//            return;
+//        }
+//
+//    }
     [self.view resignFirstResponder];
 }
 

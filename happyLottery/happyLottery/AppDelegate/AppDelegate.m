@@ -86,7 +86,7 @@
     
 
     if ([self .fmdb open]) {
-        BOOL iscreate = [self.fmdb executeUpdate:@"create table if not exists t_user_info(id integer primary key, cardCode text, mobile text ,loginPwd text, isLogin text,payVerifyType integer)"];
+        BOOL iscreate = [self.fmdb executeUpdate:@"create table if not exists t_user_info(id integer primary key, cardCode text, mobile text ,loginPwd text, isLogin text,payVerifyType text)"];
         if (iscreate) {
             [self.fmdb close];
         }

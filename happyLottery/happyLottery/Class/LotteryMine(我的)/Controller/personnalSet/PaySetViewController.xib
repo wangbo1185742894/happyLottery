@@ -38,7 +38,7 @@
                             <color key="textColor" red="0.1960784314" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5et-ZN-JXg">
+                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5et-ZN-JXg">
                             <rect key="frame" x="308" y="29" width="49" height="31"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="47" id="YR0-hv-KZW"/>
@@ -135,7 +135,6 @@
                             </constraints>
                             <connections>
                                 <action selector="mianMiSwitch:" destination="-1" eventType="valueChanged" id="5YY-sz-YzK"/>
-                                <action selector="switch2Chose:" destination="-1" eventType="valueChanged" id="0cq-Yf-99j"/>
                             </connections>
                         </switch>
                     </subviews>
