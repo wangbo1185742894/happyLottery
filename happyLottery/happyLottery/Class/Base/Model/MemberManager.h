@@ -44,6 +44,7 @@
 - (void) checkForgetPWDSms:(NSDictionary *)paraDic;
 - (void) resetNickSms:(NSDictionary *)paraDic;
 - (void) bandPayPWDSms:(NSDictionary *)paraDic;
+- (void) resetPayPWDSms:(NSDictionary *)paraDic;
 - (void) bindNameSms:(NSDictionary *)paraDic;
 - (void) addBankCardSms:(NSDictionary *)paraDic;
 - (void) getBankListSms:(NSDictionary *)paraDic;

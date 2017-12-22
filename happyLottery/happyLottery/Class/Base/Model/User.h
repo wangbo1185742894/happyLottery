@@ -9,7 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "BaseModel.h"
 
-
+typedef enum {
+    
+    PayVerifyTypeAlways =1,
+    PayVerifyTypeAlwaysNo,
+    PayVerifyTypeLessThanOneHundred,
+    PayVerifyTypeLessThanFiveHundred,
+    PayVerifyTypeLessThanThousand,
+    
+}PayVerifyType;
 
 @interface User : BaseModel
 
@@ -38,6 +46,7 @@
 @property(nonatomic,strong)NSString * registerTime;
 @property(nonatomic,strong)NSString * score;
 @property(nonatomic,strong)NSString * parentId;
+@property (nonatomic, strong) NSNumber *payVerifyType;
 
 @end
 

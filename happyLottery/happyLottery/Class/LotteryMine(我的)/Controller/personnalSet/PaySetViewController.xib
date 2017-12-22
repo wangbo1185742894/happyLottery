@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PaySetViewController">
             <connections>
+                <outlet property="mianMiSwitch" destination="shV-n5-dca" id="aYk-4q-skl"/>
                 <outlet property="switch1" destination="5et-ZN-JXg" id="Brx-DB-e2c"/>
                 <outlet property="switch2" destination="6fd-Nl-cQE" id="nBc-jw-sKS"/>
                 <outlet property="switch3" destination="Cb6-hk-iRk" id="a3o-IV-6xj"/>
@@ -48,7 +49,7 @@
                             </connections>
                         </switch>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="    &lt;=100元免密支付" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcf-Ii-lS6">
-                            <rect key="frame" x="0.0" y="84" width="375" height="40"/>
+                            <rect key="frame" x="0.0" y="125" width="375" height="40"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="5o6-Lb-nhq"/>
@@ -59,7 +60,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6fd-Nl-cQE">
-                            <rect key="frame" x="308" y="89" width="49" height="31"/>
+                            <rect key="frame" x="308" y="130" width="49" height="31"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="31" id="Bec-cf-G5n"/>
                                 <constraint firstAttribute="width" constant="47" id="qkh-Z2-GNY"/>
@@ -69,7 +70,7 @@
                             </connections>
                         </switch>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="    &lt;=500元免密支付" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mEp-bd-Gdj">
-                            <rect key="frame" x="0.0" y="125" width="375" height="40"/>
+                            <rect key="frame" x="0.0" y="166" width="375" height="40"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="9E0-AI-8qz"/>
@@ -80,8 +81,8 @@
                             <color key="textColor" red="0.1960784314" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Cb6-hk-iRk">
-                            <rect key="frame" x="308" y="130" width="49" height="31"/>
+                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Cb6-hk-iRk">
+                            <rect key="frame" x="308" y="171" width="49" height="31"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="31" id="1Ak-Kn-AtE"/>
                                 <constraint firstAttribute="width" constant="47" id="gou-EB-YJM"/>
@@ -91,7 +92,7 @@
                             </connections>
                         </switch>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="    &lt;=1000元免密支付" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9f-20-lvD">
-                            <rect key="frame" x="0.0" y="166" width="375" height="40"/>
+                            <rect key="frame" x="0.0" y="207" width="375" height="40"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="14M-EJ-Av7"/>
@@ -103,8 +104,8 @@
                             <color key="textColor" red="0.1960784314" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5MW-a9-9JE">
-                            <rect key="frame" x="308" y="171" width="49" height="31"/>
+                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5MW-a9-9JE">
+                            <rect key="frame" x="308" y="212" width="49" height="31"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="47" id="0yn-tA-mVz"/>
                                 <constraint firstAttribute="height" constant="31" id="IrW-DN-exX"/>
@@ -113,17 +114,45 @@
                                 <action selector="switch4Chose:" destination="-1" eventType="valueChanged" id="Hbr-LU-VFa"/>
                             </connections>
                         </switch>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="    免密支付" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4I-Jl-E9X">
+                            <rect key="frame" x="0.0" y="65" width="375" height="40"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="OdA-fy-Vkl"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="SR8-BA-R4C"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.1960784314" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="shV-n5-dca">
+                            <rect key="frame" x="308" y="74" width="49" height="31"/>
+                            <constraints>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="47" id="3A3-kw-SQj"/>
+                                <constraint firstAttribute="width" constant="47" id="SOs-nA-X1s"/>
+                                <constraint firstAttribute="height" constant="31" id="kDl-wc-JYC"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="31" id="uFf-HU-bo6"/>
+                            </constraints>
+                            <connections>
+                                <action selector="mianMiSwitch:" destination="-1" eventType="valueChanged" id="5YY-sz-YzK"/>
+                                <action selector="switch2Chose:" destination="-1" eventType="valueChanged" id="0cq-Yf-99j"/>
+                            </connections>
+                        </switch>
                     </subviews>
                     <color key="backgroundColor" red="0.96052604913711548" green="0.96448701620101929" blue="0.98095923662185669" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
+                        <constraint firstItem="shV-n5-dca" firstAttribute="top" secondItem="1GF-fL-FvZ" secondAttribute="bottom" constant="10" id="3WS-MC-iQn"/>
                         <constraint firstAttribute="trailing" secondItem="6fd-Nl-cQE" secondAttribute="trailing" constant="20" id="AMf-Nj-KjT"/>
                         <constraint firstItem="c9f-20-lvD" firstAttribute="top" secondItem="mEp-bd-Gdj" secondAttribute="bottom" constant="1" id="EUM-Gt-1oQ"/>
-                        <constraint firstItem="6fd-Nl-cQE" firstAttribute="top" secondItem="1GF-fL-FvZ" secondAttribute="bottom" constant="25" id="Fqb-Dv-5GX"/>
+                        <constraint firstItem="6fd-Nl-cQE" firstAttribute="top" secondItem="1GF-fL-FvZ" secondAttribute="bottom" constant="66" id="Fqb-Dv-5GX"/>
                         <constraint firstAttribute="trailing" secondItem="c9f-20-lvD" secondAttribute="trailing" id="JoJ-fc-NcV"/>
                         <constraint firstItem="mEp-bd-Gdj" firstAttribute="top" secondItem="hcf-Ii-lS6" secondAttribute="bottom" constant="1" id="Mgf-eh-0K6"/>
                         <constraint firstAttribute="trailing" secondItem="Cb6-hk-iRk" secondAttribute="trailing" constant="20" id="NY6-cs-O91"/>
+                        <constraint firstItem="6fd-Nl-cQE" firstAttribute="trailing" secondItem="shV-n5-dca" secondAttribute="trailing" id="S9k-8P-oC0"/>
                         <constraint firstItem="5et-ZN-JXg" firstAttribute="top" secondItem="OBF-pS-Vlr" secondAttribute="top" constant="29" id="St6-oC-Frt"/>
+                        <constraint firstAttribute="trailing" secondItem="v4I-Jl-E9X" secondAttribute="trailing" id="TpF-fX-YBy"/>
                         <constraint firstAttribute="trailing" secondItem="hcf-Ii-lS6" secondAttribute="trailing" id="Ty8-g0-S9h"/>
+                        <constraint firstItem="v4I-Jl-E9X" firstAttribute="leading" secondItem="OBF-pS-Vlr" secondAttribute="leading" id="Ub8-Da-e5x"/>
                         <constraint firstItem="hcf-Ii-lS6" firstAttribute="leading" secondItem="OBF-pS-Vlr" secondAttribute="leading" id="UyP-Mr-vBH"/>
                         <constraint firstAttribute="trailing" secondItem="mEp-bd-Gdj" secondAttribute="trailing" id="aLG-Z4-xPE"/>
                         <constraint firstAttribute="trailing" secondItem="1GF-fL-FvZ" secondAttribute="trailing" id="cQv-wQ-80A"/>
@@ -131,8 +160,9 @@
                         <constraint firstItem="1GF-fL-FvZ" firstAttribute="leading" secondItem="OBF-pS-Vlr" secondAttribute="leading" id="gP8-O7-jYW"/>
                         <constraint firstItem="mEp-bd-Gdj" firstAttribute="leading" secondItem="OBF-pS-Vlr" secondAttribute="leading" id="iuL-g7-9FS"/>
                         <constraint firstItem="c9f-20-lvD" firstAttribute="leading" secondItem="OBF-pS-Vlr" secondAttribute="leading" id="izh-i6-k3R"/>
-                        <constraint firstItem="hcf-Ii-lS6" firstAttribute="top" secondItem="1GF-fL-FvZ" secondAttribute="bottom" constant="20" id="jZC-Ah-Ow0"/>
+                        <constraint firstItem="hcf-Ii-lS6" firstAttribute="top" secondItem="1GF-fL-FvZ" secondAttribute="bottom" constant="61" id="jZC-Ah-Ow0"/>
                         <constraint firstItem="1GF-fL-FvZ" firstAttribute="top" secondItem="OBF-pS-Vlr" secondAttribute="top" constant="24" id="psM-oT-CHc"/>
+                        <constraint firstItem="v4I-Jl-E9X" firstAttribute="top" secondItem="1GF-fL-FvZ" secondAttribute="bottom" constant="1" id="seR-h1-SFc"/>
                         <constraint firstAttribute="trailing" secondItem="5et-ZN-JXg" secondAttribute="trailing" constant="20" id="t1t-hO-SPY"/>
                         <constraint firstAttribute="trailing" secondItem="5MW-a9-9JE" secondAttribute="trailing" constant="20" id="uxB-xC-tHy"/>
                         <constraint firstItem="5MW-a9-9JE" firstAttribute="top" secondItem="mEp-bd-Gdj" secondAttribute="bottom" constant="6" id="zM7-Vg-eNu"/>

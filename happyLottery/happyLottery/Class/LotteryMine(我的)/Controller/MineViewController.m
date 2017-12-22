@@ -45,7 +45,8 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
-        [self loadUserInfo];
+       // [self loadUserInfo];
+    [self autoLogin];
 }
 
 - (void)viewDidLoad {
@@ -61,7 +62,7 @@
     _tableview.dataSource = self;
     
     [self noticeCenterSet];
-    [self autoLogin];
+    
     [_tableview reloadData];
 }
 
@@ -74,6 +75,7 @@
         if ([result next] && [result stringForColumn:@"mobile"] != nil) {
             isLogin = [[result stringForColumn:@"isLogin"] boolValue];
             if (isLogin ) {
+                _loginBtn.enabled = NO;
                 [self loadUserInfo];
             }
         }
@@ -88,7 +90,7 @@
 }
 
 -(void)loadUserInfo{
-    _loginBtn.enabled = NO;
+  
     NSString *userName;
     if (self.curUser.nickname.length == 0) {
         userName = self.curUser.mobile;

@@ -4,16 +4,24 @@
 //
 //  Created by LYJ on 2017/12/19.
 //  Copyright © 2017年 onlytechnology. All rights reserved.
-//
+//PayVerifyTypeAlways =1,
+//PayVerifyTypeAlwaysNo,
+//PayVerifyTypeLessThanOneHundred,
+//PayVerifyTypeLessThanFiveHundred,
+//PayVerifyTypeLessThanThousand,
 
 #import "PaySetViewController.h"
 
-@interface PaySetViewController ()
+@interface PaySetViewController (){
+      PayVerifyType verifyType;
+    
+}
 @property (weak, nonatomic) IBOutlet UISwitch *switch1;
 @property (weak, nonatomic) IBOutlet UISwitch *switch2;
 @property (weak, nonatomic) IBOutlet UISwitch *switch3;
 @property (weak, nonatomic) IBOutlet UISwitch *switch4;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
+@property (weak, nonatomic) IBOutlet UISwitch *mianMiSwitch;
 
 @end
 
@@ -28,30 +36,81 @@
     }
 }
 - (IBAction)switch1Chose:(id)sender {
+    if (self.switch1.on==YES) {
+        self.curUser.payPWDThreshold = 100;
+        self.switch2.on=NO;
+        self.switch3.on=NO;
+        self.switch4.on=NO;
+        self.mianMiSwitch.on=NO;
+        verifyType = PayVerifyTypeAlwaysNo;
+        self.curUser.payVerifyType = [NSNumber numberWithInt:verifyType];
+        [self savePayVerifyType];
+    }
 }
 - (IBAction)switch2Chose:(id)sender {
     if (self.switch2.on==YES) {
         self.curUser.payPWDThreshold = 100;
+        self.switch1.on=NO;
         self.switch3.on=NO;
         self.switch4.on=NO;
+        self.mianMiSwitch.on=NO;
+        verifyType = PayVerifyTypeLessThanOneHundred;
+        self.curUser.payVerifyType = [NSNumber numberWithInt:verifyType];
+        [self savePayVerifyType];
     }
     
 }
 - (IBAction)switch3Chose:(id)sender {
     if (self.switch2.on==YES) {
         self.curUser.payPWDThreshold = 500;
+        self.switch1.on=NO;
         self.switch2.on=NO;
         self.switch4.on=NO;
+        self.mianMiSwitch.on=NO;
+        verifyType = PayVerifyTypeLessThanFiveHundred;
+        self.curUser.payVerifyType = [NSNumber numberWithInt:verifyType];
+        [self savePayVerifyType];
     }
    
 }
 - (IBAction)switch4Chose:(id)sender {
-    if (self.switch2.on==YES) {
+    if (self.switch4.on==YES) {
         self.curUser.payPWDThreshold = 1000;
         self.switch3.on=NO;
         self.switch2.on=NO;
+        self.switch1.on=NO;
+        self.mianMiSwitch.on=NO;
+        verifyType = PayVerifyTypeLessThanThousand;
+        self.curUser.payVerifyType = [NSNumber numberWithInt:verifyType];
+        [self savePayVerifyType];
     }
   
+}
+- (IBAction)mianMiSwitch:(id)sender {
+    if (self.mianMiSwitch.on==YES) {
+        self.curUser.payPWDThreshold = 0;
+        self.switch4.on=NO;
+        self.switch3.on=NO;
+        self.switch2.on=NO;
+        self.switch1.on=NO;
+        verifyType = PayVerifyTypeAlways;
+        self.curUser.payVerifyType = [NSNumber numberWithInt:verifyType];
+        [self savePayVerifyType];
+    }
+}
+
+-(void)savePayVerifyType{
+    
+    if ([self.fmdb open]) {
+        FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_user_info"];
+        NSLog(@"%@",result);
+
+        //update t_student set score = age where name = ‘jack’ ;
+        [self.fmdb executeUpdate:@"update  t_user_info set payVerifyType = ? where mobile = ?",verifyType,self.curUser.mobile ];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NotificationNameUserLogin object:nil];
+        [result close];
+        [self.fmdb close];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

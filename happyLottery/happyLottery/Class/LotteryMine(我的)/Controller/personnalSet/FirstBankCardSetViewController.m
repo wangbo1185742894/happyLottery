@@ -22,7 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"银行卡设置";
+    self.title = titleStr;
     if ([self isIphoneX]) {
         
         self.top.constant = 88;
