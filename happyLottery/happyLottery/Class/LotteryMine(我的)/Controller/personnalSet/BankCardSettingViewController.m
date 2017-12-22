@@ -8,6 +8,7 @@
 
 #import "BankCardSettingViewController.h"
 #import "BankCardSetTableViewCell.h"
+#import "FirstBankCardSetViewController.h"
 
 @interface BankCardSettingViewController  ()<UITableViewDelegate, UITableViewDataSource,MemberManagerDelegate>{
         NSArray *listArray;
@@ -39,7 +40,9 @@
     self.memberMan.delegate =self;
 }
 - (IBAction)addBankCardClick:(id)sender {
-    
+    FirstBankCardSetViewController *fvc = [[FirstBankCardSetViewController alloc]init];
+    fvc.titleStr=@"添加银行卡";
+    [self.navigationController pushViewController:fvc animated:YES];
 }
 
 #pragma UITableViewDataSource methods

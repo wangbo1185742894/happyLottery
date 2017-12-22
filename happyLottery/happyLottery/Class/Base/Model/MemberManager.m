@@ -344,4 +344,292 @@
                         success:succeedBlock
                         failure:failureBlock];
 }
+/**
+ * 修改支付密码时发送短信验证码
+ 参数:
+ params - {"mobile":"xxx", "channelCode":"xxx"}
+
+ */
+- (void) sendUpdatePaypwdSms:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        if (response.succeed) {
+            
+            [self.delegate sendUpdatePaypwdSmsIsSuccess:YES errorMsg:response.errorMsg];
+        } else {
+            [self.delegate sendUpdatePaypwdSmsIsSuccess:NO errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate sendUpdatePaypwdSmsIsSuccess:NO errorMsg:@"服务器错误"];
+        //失败的代理方法
+    };
+    //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
+    
+    SOAPRequest *request = [self requestForAPI: APIsendUpdatePaypwdSms withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]} ];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+/**
+ * 验证修改支付密码时发送短信验证码
+ 参数:
+ params - {"mobile":"xxx", "channelCode":"xxx", "checkCode":"xxxxx"}
+ */
+- (void) checkUpdatePaypwdSms:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        if (response.succeed) {
+            
+            [self.delegate checkUpdatePaypwdSmsIsSuccess:YES errorMsg:response.errorMsg];
+        } else {
+            [self.delegate checkUpdatePaypwdSmsIsSuccess:NO errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate checkUpdatePaypwdSmsIsSuccess:NO errorMsg:@"服务器错误"];
+        //失败的代理方法
+    };
+    //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
+    
+    SOAPRequest *request = [self requestForAPI: APIcheckUpdatePaypwdSms withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]} ];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+/**
+ * 获得支持的银行
+ */
+- (void) getSupportBankSms:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        if (response.succeed) {
+            
+            [self.delegate getSupportBankSmsIsSuccess:YES errorMsg:response.errorMsg];
+        } else {
+            [self.delegate getSupportBankSmsIsSuccess:NO errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate getSupportBankSmsIsSuccess:NO errorMsg:@"服务器错误"];
+        //失败的代理方法
+    };
+    //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
+    
+    SOAPRequest *request = [self requestForAPI: APIgetSupportBank withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]} ];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+/**
+ * 实名认证
+ 参数:
+ params - {"cardCode":"xxx","name":"xxx"} cardCode 会员卡号 name 会员真实姓名
+ */
+- (void) bindNameSms:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        if (response.succeed) {
+            
+            [self.delegate bindNameSmsIsSuccess:YES errorMsg:response.errorMsg];
+        } else {
+            [self.delegate bindNameSmsIsSuccess:NO errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate bindNameSmsIsSuccess:NO errorMsg:@"服务器错误"];
+        //失败的代理方法
+    };
+    //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
+    
+    SOAPRequest *request = [self requestForAPI: APIbindName withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]} ];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+/**
+ * 添加银行卡
+ 参数:
+ params - {"cardCode":"xxx","bankNumber":"xxx","bankName":"xxx", "bankUserName":"xxx","bankEposit":"xxx"} cardCode 会员卡号 bankNumber 银行卡号 bankName 银行名称 bankUserName 银行卡用户姓名 bankEposit 银行卡简称
+ */
+- (void) addBankCardSms:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        if (response.succeed) {
+            
+            [self.delegate addBankCardSmsIsSuccess:YES errorMsg:response.errorMsg];
+        } else {
+            [self.delegate addBankCardSmsIsSuccess:NO errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate addBankCardSmsIsSuccess:NO errorMsg:@"服务器错误"];
+        //失败的代理方法
+    };
+    //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
+    
+    SOAPRequest *request = [self requestForAPI: APIaddBankCard withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]} ];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+/**
+ * 获得会员已绑定的银行卡列表
+ 参数:
+ params - {"cardCode":"xxx"} cardCode 会员卡号
+ */
+- (void) getBankListSms:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        if (response.succeed) {
+            
+            [self.delegate getBankListSmsIsSuccess:YES errorMsg:response.errorMsg];
+        } else {
+            [self.delegate getBankListSmsIsSuccess:NO errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate getBankListSmsIsSuccess:NO errorMsg:@"服务器错误"];
+        //失败的代理方法
+    };
+    //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
+    
+    SOAPRequest *request = [self requestForAPI: APIgetBankList withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]} ];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+/**
+ * 解绑银行卡
+ 参数:
+ params - {"cardCode":"xxx","bankNumber":"xxx","payPwd":"xxx"} cardCode 会员卡号 bankNumber 银行卡号 payPwd 支付密码
+ */
+- (void) unBindBankCardSms:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        if (response.succeed) {
+            
+            [self.delegate unBindBankCardSmsIsSuccess:YES errorMsg:response.errorMsg];
+        } else {
+            [self.delegate unBindBankCardSmsIsSuccess:NO errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate unBindBankCardSmsIsSuccess:NO errorMsg:@"服务器错误"];
+        //失败的代理方法
+    };
+    //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
+    
+    SOAPRequest *request = [self requestForAPI: APIunBindBankCard withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]} ];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+/**
+ * 会员充值 {"cardCode":"xxxxx", "channel":"xxxx", "amounts":10}
+ 参数:
+ params - String cardCode 会员卡号, RechargeChannel channel 充值渠道, BigDecimal amounts 充值金额
+ */
+- (void) rechargeSms:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        if (response.succeed) {
+            
+            [self.delegate rechargeSmsIsSuccess:YES errorMsg:response.errorMsg];
+        } else {
+            [self.delegate rechargeSmsIsSuccess:NO errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate rechargeSmsIsSuccess:NO errorMsg:@"服务器错误"];
+        //失败的代理方法
+    };
+    //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
+    
+    SOAPRequest *request = [self requestForAPI: APIrecharge withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]} ];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+
+/**
+ * 会员提现 {"cardCode":"xxxxx", "paypwd":"xxxx", "bankId":"123123", "amounts":10}
+ 参数:
+ params - String cardCode 会员卡号 , String paypwd 支付密码 , Long bankId 绑定的银行卡ID, BigDecimal amounts 金额
+ */
+- (void) withdrawSms:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        if (response.succeed) {
+            
+            [self.delegate withdrawSmsIsSuccess:YES errorMsg:response.errorMsg];
+        } else {
+            [self.delegate withdrawSmsIsSuccess:NO errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate withdrawSmsIsSuccess:NO errorMsg:@"服务器错误"];
+        //失败的代理方法
+    };
+    //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
+    
+    SOAPRequest *request = [self requestForAPI: APIwithdraw withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]} ];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
 @end

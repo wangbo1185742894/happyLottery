@@ -20,6 +20,16 @@
 - (void) resetNickSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) bandPayPWDSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) resetPayPWDSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) bindNameSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) addBankCardSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) getBankListSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) unBindBankCardSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) rechargeSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) withdrawSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) sendUpdatePaypwdSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) checkUpdatePaypwdSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) getSupportBankSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+
 @end
 
 @interface MemberManager : Manager
@@ -34,6 +44,15 @@
 - (void) checkForgetPWDSms:(NSDictionary *)paraDic;
 - (void) resetNickSms:(NSDictionary *)paraDic;
 - (void) bandPayPWDSms:(NSDictionary *)paraDic;
-- (void) resetPayPWDSms:(NSDictionary *)paraDic;
+- (void) bindNameSms:(NSDictionary *)paraDic;
+- (void) addBankCardSms:(NSDictionary *)paraDic;
+- (void) getBankListSms:(NSDictionary *)paraDic;
+- (void) unBindBankCardSms:(NSDictionary *)paraDic;
+- (void) rechargeSms:(NSDictionary *)paraDic;
+- (void) withdrawSms:(NSDictionary *)paraDic;
+- (void) sendUpdatePaypwdSms:(NSDictionary *)paraDic;
+- (void) checkUpdatePaypwdSms:(NSDictionary *)paraDic;
+- (void) getSupportBankSms:(NSDictionary *)paraDic;
+
 @end
 

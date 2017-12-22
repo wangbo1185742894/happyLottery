@@ -30,5 +30,15 @@
 #define APIResetNickSms            @"modifyNickname"
 #define APIBandPayPWDSms           @"bindMemberPaypwd"
 #define APIResetPayPWDSms          @"updateMemberPaypwd"
+#define APIsendUpdatePaypwdSms     @"sendUpdatePaypwdSms"
+#define APIcheckUpdatePaypwdSms    @"checkUpdatePaypwdSms"
+#define APIgetSupportBank          @"getSupportBank"
+#define APIbindName                @"bindName"
+#define APIaddBankCard             @"addBankCard"
+#define APIgetBankList             @"getBankList"
+#define APIunBindBankCard          @"unBindBankCard"
+#define APIrecharge                @"recharge"
+#define APIwithdraw                @"withdraw"
+
 
 #endif /* API_h */

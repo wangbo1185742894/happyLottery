@@ -56,10 +56,11 @@
                                     </constraints>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XsK-Vt-gZZ">
-                                    <rect key="frame" x="78" y="24" width="70" height="37"/>
+                                    <rect key="frame" x="78" y="24" width="102" height="37"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="37" id="BhB-Mg-yBi"/>
                                     </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <state key="normal" title="登录/注册">
                                         <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
@@ -84,7 +85,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="43O-Jm-2Qq" firstAttribute="top" secondItem="nX3-at-4OK" secondAttribute="top" id="1b7-qX-9Pu"/>
-                                <constraint firstItem="nRI-P4-Eje" firstAttribute="leading" secondItem="XsK-Vt-gZZ" secondAttribute="trailing" constant="150" id="C61-fb-GZa"/>
+                                <constraint firstItem="nRI-P4-Eje" firstAttribute="leading" secondItem="XsK-Vt-gZZ" secondAttribute="trailing" constant="118" id="C61-fb-GZa"/>
                                 <constraint firstItem="XsK-Vt-gZZ" firstAttribute="leading" secondItem="9X8-Z4-jzu" secondAttribute="trailing" constant="8" id="CZC-yq-fPj"/>
                                 <constraint firstItem="nRI-P4-Eje" firstAttribute="top" secondItem="nX3-at-4OK" secondAttribute="top" constant="13" id="EfI-Kj-JLZ"/>
                                 <constraint firstAttribute="trailing" secondItem="43O-Jm-2Qq" secondAttribute="trailing" id="FqU-Zd-yhn"/>
