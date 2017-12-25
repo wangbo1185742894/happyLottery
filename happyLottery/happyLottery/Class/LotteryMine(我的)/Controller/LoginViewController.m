@@ -199,6 +199,7 @@
 
 #pragma UITextFieldDelegate
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
+    textField.text=@"";
     [self setBoaderColor:textField color:SystemGreen];
 }
 

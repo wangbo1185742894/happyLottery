@@ -69,15 +69,6 @@
                                 <action selector="addBankCardClick:" destination="-1" eventType="touchUpInside" id="y39-Om-xeI"/>
                             </connections>
                         </button>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add.png" translatesAutoresizingMaskIntoConstraints="NO" id="JxW-V9-CzH">
-                            <rect key="frame" x="17" y="142" width="40" height="40"/>
-                            <constraints>
-                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="SXz-u7-d2e"/>
-                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="YtA-Yj-kQj"/>
-                                <constraint firstAttribute="height" constant="40" id="gEu-pS-8oF"/>
-                                <constraint firstAttribute="width" constant="40" id="o2D-xG-dwC"/>
-                            </constraints>
-                        </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="qRf-kH-TAX">
                             <rect key="frame" x="329" y="151" width="23" height="23"/>
                             <constraints>
@@ -91,11 +82,21 @@
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="23" id="zCv-bI-GKF"/>
                             </constraints>
                         </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add.png" translatesAutoresizingMaskIntoConstraints="NO" id="JxW-V9-CzH">
+                            <rect key="frame" x="21" y="147" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="SXz-u7-d2e"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="YtA-Yj-kQj"/>
+                                <constraint firstAttribute="height" constant="30" id="gEu-pS-8oF"/>
+                                <constraint firstAttribute="width" constant="30" id="o2D-xG-dwC"/>
+                            </constraints>
+                        </imageView>
                     </subviews>
+                    <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="A12-JT-uy4" firstAttribute="top" secondItem="3Gg-gI-PhF" secondAttribute="bottom" constant="1" id="1yo-0r-03c"/>
                         <constraint firstItem="cgz-92-ZPJ" firstAttribute="top" secondItem="kvC-R1-5AH" secondAttribute="top" constant="30" id="7NN-3M-hPt"/>
-                        <constraint firstItem="JxW-V9-CzH" firstAttribute="leading" secondItem="kvC-R1-5AH" secondAttribute="leading" constant="17" id="B4d-kM-DYf"/>
+                        <constraint firstItem="JxW-V9-CzH" firstAttribute="leading" secondItem="kvC-R1-5AH" secondAttribute="leading" constant="21" id="B4d-kM-DYf"/>
                         <constraint firstItem="qRf-kH-TAX" firstAttribute="top" secondItem="3Gg-gI-PhF" secondAttribute="bottom" constant="10" id="VUW-26-7ay"/>
                         <constraint firstItem="cgz-92-ZPJ" firstAttribute="leading" secondItem="kvC-R1-5AH" secondAttribute="leading" constant="78" id="XO6-qt-Z0P"/>
                         <constraint firstItem="A12-JT-uy4" firstAttribute="leading" secondItem="kvC-R1-5AH" secondAttribute="leading" id="cDp-9n-PCU"/>
@@ -106,11 +107,12 @@
                         <constraint firstAttribute="trailing" secondItem="qRf-kH-TAX" secondAttribute="trailing" constant="23" id="qSd-Cy-Yyh"/>
                         <constraint firstItem="ar5-FL-1Gg" firstAttribute="leading" secondItem="kvC-R1-5AH" secondAttribute="leading" id="qb9-f9-K58"/>
                         <constraint firstItem="3Gg-gI-PhF" firstAttribute="leading" secondItem="kvC-R1-5AH" secondAttribute="leading" id="veT-gN-Nzj"/>
-                        <constraint firstItem="JxW-V9-CzH" firstAttribute="top" secondItem="3Gg-gI-PhF" secondAttribute="bottom" constant="1" id="wEA-e1-wiO"/>
+                        <constraint firstItem="JxW-V9-CzH" firstAttribute="top" secondItem="3Gg-gI-PhF" secondAttribute="bottom" constant="6" id="wEA-e1-wiO"/>
                         <constraint firstAttribute="trailing" secondItem="3Gg-gI-PhF" secondAttribute="trailing" id="zg2-87-Trg"/>
                     </constraints>
                 </view>
             </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="kvC-R1-5AH" secondAttribute="bottom" id="Emt-41-pcH"/>
                 <constraint firstItem="kvC-R1-5AH" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="62" id="Olo-uN-mFw"/>

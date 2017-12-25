@@ -7,8 +7,9 @@
 //
 
 #import "WithdrawalsViewController.h"
+#import "AESUtility.h"
 
-@interface WithdrawalsViewController ()
+@interface WithdrawalsViewController ()<MemberManagerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *retainLab;
 @property (weak, nonatomic) IBOutlet UILabel *topUpsLab;
 @property (weak, nonatomic) IBOutlet UITextField *withdrawTextField;
@@ -31,10 +32,41 @@
         self.bottom.constant = 34;
     }
 }
+
+-(void)withdrawSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    if ([msg isEqualToString:@"执行成功"]) {
+        [self showPromptText: @"会员提现成功 " hideAfterDelay: 1.7];
+    }else{
+        [self showPromptText: msg hideAfterDelay: 1.7];
+    }
+    
+}
+
 - (IBAction)bankBtnClick:(id)sender {
     
 }
 - (IBAction)commitBtnClick:(id)sender {
+    [self commitClient];
+}
+
+-(void)commitClient{
+    
+    NSDictionary *withdrawInfo;
+    @try {
+        NSString *cardCode = self.curUser.cardCode;
+        NSString *paypwd = self.withdrawTextField.text;
+        
+        withdrawInfo = @{@"cardCode":cardCode,
+                         @"paypwd": [AESUtility encryptStr: paypwd],
+                         @"bankId":CHANNEL_CODE,
+                         @"amounts":@"10",
+                         };
+        
+    } @catch (NSException *exception) {
+        withdrawInfo = nil;
+    } @finally {
+        [self.memberMan rechargeSms:withdrawInfo];
+    }
     
 }
 

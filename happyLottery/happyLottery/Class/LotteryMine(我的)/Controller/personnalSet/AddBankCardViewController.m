@@ -8,7 +8,7 @@
 
 #import "AddBankCardViewController.h"
 
-@interface AddBankCardViewController ()
+@interface AddBankCardViewController ()<MemberManagerDelegate>
 
 @end
 

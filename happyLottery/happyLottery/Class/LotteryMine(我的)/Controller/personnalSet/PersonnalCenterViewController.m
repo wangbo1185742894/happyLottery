@@ -42,6 +42,13 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
     [self loadUserInfo];
+     if (self.curUser.bankBinding == 0) {
+        titleStr = @"银行卡设置";
+        self.myCardLab.hidden = NO;
+    } else {
+        //titleStr = @"银行卡添加";
+        self.myCardLab.hidden = YES;
+    }
 }
 
 - (void)viewDidLoad {
@@ -53,13 +60,7 @@
         self.bottom.constant = 34;
     }
     
-     if (self.curUser.bankBinding == 0) {
-        titleStr = @"银行卡设置";
-        self.myCardLab.hidden = NO;
-    } else {
-          //titleStr = @"银行卡添加";
-        self.myCardLab.hidden = YES;
-    }
+   
 }
 
 -(void)loadUserInfo{
@@ -111,7 +112,7 @@
     [self.navigationController pushViewController:nickVC animated:YES];
 }
 - (IBAction)addCard:(id)sender {
-     if (self.curUser.bankBinding == 1) {
+     if (self.curUser.bankBinding == 0) {
         FirstBankCardSetViewController *fvc = [[FirstBankCardSetViewController alloc]init];
         fvc.titleStr=titleStr;
         [self.navigationController pushViewController:fvc animated:YES];

@@ -9,9 +9,13 @@
 #import "BankCardSettingViewController.h"
 #import "BankCardSetTableViewCell.h"
 #import "FirstBankCardSetViewController.h"
+#import "AESUtility.h"
+#import "WBInputPopView.h"
+#import "BankCard.h"
 
 @interface BankCardSettingViewController  ()<UITableViewDelegate, UITableViewDataSource,MemberManagerDelegate>{
-        NSArray *listArray;
+        NSMutableArray *listBankArray;
+        BankCard *bankCard;
 }
 
 
@@ -38,6 +42,8 @@
     _tableView.delegate = self;
     _tableView.dataSource = self;
     self.memberMan.delegate =self;
+    listBankArray = [[NSMutableArray alloc]init];
+    [self getBankListClient];
 }
 - (IBAction)addBankCardClick:(id)sender {
     FirstBankCardSetViewController *fvc = [[FirstBankCardSetViewController alloc]init];
@@ -45,14 +51,98 @@
     [self.navigationController pushViewController:fvc animated:YES];
 }
 
+#pragma MemberManagerDelegate
+
+
+-(void)getBankListSms:(NSDictionary *)bankInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    
+    if ([msg isEqualToString:@"执行成功"]) {
+         NSLog(@"%@",bankInfo);
+        [self showPromptText: @"获得会员已绑定的银行卡列表成功" hideAfterDelay: 1.7];
+        for (id object in bankInfo) {
+            NSLog(@"listBankArray=%@", object);
+            BankCard *bankCard = [[BankCard alloc]initWith:object];
+            [listBankArray addObject:bankCard];
+        }
+        if (listBankArray.count>0) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                self.tvHeight.constant = listBankArray.count*80;
+            });
+            [self.tableView reloadData];
+        }else{
+            self.tvHeight.constant = 0;
+        }
+    }else{
+        [self showPromptText: msg hideAfterDelay: 1.7];
+    }
+}
+
+-(void)unBindBankCardSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    
+    if ([msg isEqualToString:@"执行成功"]) {
+        [self showPromptText: @"解绑银行卡成功" hideAfterDelay: 1.7];
+        [self getBankListClient];
+    }else{
+        [self showPromptText: msg hideAfterDelay: 1.7];
+    }
+}
+
+
+-(void)getBankListClient{
+    
+    NSDictionary *Info;
+    @try {
+        NSString *cardCode = self.curUser.cardCode;
+        
+        Info = @{@"cardCode":cardCode
+                         };
+        
+    } @catch (NSException *exception) {
+        Info = nil;
+    } @finally {
+        [self.memberMan getBankListSms:Info];
+    }
+    
+}
+
+-(void)unBindBankCardClient{
+    
+   
+    
+}
+
+-(void)btnAction:(UIButton *)btn{
+    int n = (int)btn.tag ;
+    bankCard = listBankArray[n];
+    NSDictionary *Info;
+    @try {
+        NSString *cardCode = self.curUser.cardCode;
+        NSString *paypwd =@"123456";
+        
+        Info = @{@"cardCode":cardCode,
+                 @"bankNumber":bankCard.bankNumber,
+                 @"payPwd": [AESUtility encryptStr: paypwd]
+                 };
+        
+    } @catch (NSException *exception) {
+        Info = nil;
+    } @finally {
+        [self.memberMan unBindBankCardSms:Info];
+    }
+}
+
 #pragma UITableViewDataSource methods
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return listArray.count;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (listBankArray.count > 0) {
+        return listBankArray.count;
+    }
+    return 0;
 }
 
 
 - (CGFloat)tableView:(UITableView *)tableiew heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 44;
+    return 80;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -65,16 +155,12 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:@"BankCardSetTableViewCell" owner:self options:nil] lastObject];
     }
   
+    BankCard *bk = listBankArray[indexPath.row];
     
-    
-//    cell.lable.text = optionDic[@"title"];
-//    cell.lable.font = [UIFont systemFontOfSize:15];
-    
-    
-    
-    
-    
-    
+    cell.bankName.text = bk.bankName;
+    cell.bankNum.text = bk.tempBankNumber;
+    cell.unBindBtn.tag = indexPath.row;
+    [cell.unBindBtn addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
 

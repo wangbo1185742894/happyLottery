@@ -75,7 +75,7 @@
         if ([result next] && [result stringForColumn:@"mobile"] != nil) {
             isLogin = [[result stringForColumn:@"isLogin"] boolValue];
             if (isLogin ) {
-                _loginBtn.enabled = NO;
+               // _loginBtn.enabled = NO;
                 [self loadUserInfo];
             }
         }
@@ -97,7 +97,9 @@
     }else{
         userName = self.curUser.nickname;
     }
-    [_loginBtn setTitle:userName forState:UIControlStateDisabled];
+    //[_loginBtn setTitle:userName forState:UIControlStateDisabled];
+    self.loginBtn.titleLabel.text = userName;
+    self.loginBtn.enabled = NO;
     self.curUser.payVerifyType = [NSNumber numberWithInt:1];
     //[_userImage sd_setImageWithURL:[NSURL URLWithString:self.curUser.headUrl]];
     

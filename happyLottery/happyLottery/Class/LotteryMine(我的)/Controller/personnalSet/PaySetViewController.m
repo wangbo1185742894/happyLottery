@@ -11,10 +11,13 @@
 //PayVerifyTypeLessThanThousand,
 
 #import "PaySetViewController.h"
+#import "WBInputPopView.h"
+#import "BankCard.h"
+#import "AESUtility.h"
 
-@interface PaySetViewController (){
+@interface PaySetViewController ()<WBInputPopViewDelegate,MemberManagerDelegate>{
       PayVerifyType verifyType;
-    
+      WBInputPopView *passInput;
 }
 @property (weak, nonatomic) IBOutlet UISwitch *switch1;
 @property (weak, nonatomic) IBOutlet UISwitch *switch2;
@@ -34,6 +37,7 @@
         self.top.constant = 88;
         
     }
+    self.memberMan.delegate=self;
     [self updateSwitchStatus];
 }
 
@@ -55,8 +59,53 @@
     
 }
 
+- (void)showPayPopView{
+    if (nil == passInput) {
+        //        popInputView = [[PopInputView alloc] initWithFrame:self.navigationController.view.bounds];
+        //        popInputView.delegate = self;
+        //        popInputView.popViewResource = @"zhifu";
+        
+        passInput = [[WBInputPopView alloc]init];
+        passInput.delegate = self;
+        passInput.labTitle.text = @"请输入支付密码";
+        
+        
+    }
+    //    [popInputView showInView:self.navigationController.view withTitle:TextComfirmPayPwdForPay tfPlaceHolder:TextPasswrodRule];
+    [self.view addSubview:passInput];
+    passInput.delegate = self;
+    [passInput.txtInput becomeFirstResponder];
+    [passInput createBlock:^(NSString *text) {
+        
+        if (nil == passInput) {
+            [self showPromptText:@"请输入支付密码" hideAfterDelay:2.7];
+            return;
+        }
+        
+        NSDictionary *cardInfo= @{@"cardCode":self.curUser.cardCode,
+                                  @"payPwd":[AESUtility encryptStr:text]};
+        [self.memberMan validatePaypwdSms:cardInfo];
+        
+        self.switch1.on=YES;
+    }];
+    
+}
+
+
+-(void)validatePaypwdSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    
+    if ([msg isEqualToString:@"执行成功"]) {
+        [self showPromptText:@"支付密码验证成功" hideAfterDelay:1.7];
+       [passInput removeFromSuperview];
+    }else{
+        
+        [self showPromptText:msg hideAfterDelay:1.7];
+        
+    }
+}
+
 - (IBAction)switch1Chose:(id)sender {
-   self.switch1.on=YES;
+    [self showPayPopView];
     if (self.switch1.on==YES) {
         self.curUser.payPWDThreshold = 100;
         self.switch2.on=NO;
@@ -69,6 +118,7 @@
     }
 }
 - (IBAction)switch2Chose:(id)sender {
+      [self showPayPopView];
     self.switch2.on=YES;
     if (self.switch2.on==YES) {
         self.curUser.payPWDThreshold = 100;

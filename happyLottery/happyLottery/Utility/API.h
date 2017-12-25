@@ -39,6 +39,7 @@
 #define APIunBindBankCard          @"unBindBankCard"
 #define APIrecharge                @"recharge"
 #define APIwithdraw                @"withdraw"
+#define APIvalidatePaypwd          @"validatePaypwd"
 
 
 #endif /* API_h */
