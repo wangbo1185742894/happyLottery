@@ -12,10 +12,12 @@
 #import "AESUtility.h"
 #import "WBInputPopView.h"
 #import "BankCard.h"
+#import "WBInputPopView.h"
 
-@interface BankCardSettingViewController  ()<UITableViewDelegate, UITableViewDataSource,MemberManagerDelegate>{
+@interface BankCardSettingViewController  ()<UITableViewDelegate, UITableViewDataSource,MemberManagerDelegate,WBInputPopViewDelegate>{
         NSMutableArray *listBankArray;
         BankCard *bankCard;
+        WBInputPopView *passInput;
 }
 
 
@@ -61,8 +63,8 @@
         [self showPromptText: @"获得会员已绑定的银行卡列表成功" hideAfterDelay: 1.7];
         for (id object in bankInfo) {
             NSLog(@"listBankArray=%@", object);
-            BankCard *bankCard = [[BankCard alloc]initWith:object];
-            [listBankArray addObject:bankCard];
+            BankCard *bankCards = [[BankCard alloc]initWith:object];
+            [listBankArray addObject:bankCards];
         }
         if (listBankArray.count>0) {
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -89,6 +91,51 @@
 }
 
 
+-(void)validatePaypwdSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    
+    if ([msg isEqualToString:@"执行成功"]) {
+        [self showPromptText:@"支付密码验证成功" hideAfterDelay:1.7];
+        [self unBindBankCardClient];
+        [passInput removeFromSuperview];
+    }else{
+        
+        [self showPromptText:msg hideAfterDelay:1.7];
+        
+    }
+}
+
+- (void)showPayPopView{
+    if (nil == passInput) {
+        //        popInputView = [[PopInputView alloc] initWithFrame:self.navigationController.view.bounds];
+        //        popInputView.delegate = self;
+        //        popInputView.popViewResource = @"zhifu";
+        
+        passInput = [[WBInputPopView alloc]init];
+        passInput.delegate = self;
+        passInput.labTitle.text = @"请输入支付密码";
+        
+        
+    }
+    //    [popInputView showInView:self.navigationController.view withTitle:TextComfirmPayPwdForPay tfPlaceHolder:TextPasswrodRule];
+    [self.view addSubview:passInput];
+    passInput.delegate = self;
+    [passInput.txtInput becomeFirstResponder];
+    [passInput createBlock:^(NSString *text) {
+        
+        if (nil == passInput) {
+            [self showPromptText:@"请输入支付密码" hideAfterDelay:2.7];
+            return;
+        }
+        
+        NSDictionary *cardInfo= @{@"cardCode":self.curUser.cardCode,
+                                  @"payPwd":[AESUtility encryptStr:text]};
+        [self.memberMan validatePaypwdSms:cardInfo];
+    }];
+    
+}
+
+
+
 -(void)getBankListClient{
     
     NSDictionary *Info;
@@ -107,15 +154,7 @@
 }
 
 -(void)unBindBankCardClient{
-    
-   
-    
-}
-
--(void)btnAction:(UIButton *)btn{
-    int n = (int)btn.tag ;
-    bankCard = listBankArray[n];
-    NSDictionary *Info;
+      NSDictionary *Info;
     @try {
         NSString *cardCode = self.curUser.cardCode;
         NSString *paypwd =@"123456";
@@ -130,6 +169,14 @@
     } @finally {
         [self.memberMan unBindBankCardSms:Info];
     }
+    
+}
+
+-(void)btnAction:(UIButton *)btn{
+    int n = (int)btn.tag ;
+    bankCard = listBankArray[n];
+    [self showPayPopView];
+   
 }
 
 #pragma UITableViewDataSource methods
