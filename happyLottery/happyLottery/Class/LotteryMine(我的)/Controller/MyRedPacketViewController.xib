@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyRedPacketViewController">
+            <connections>
+                <outlet property="bottom" destination="hJW-Bn-1qa" id="0et-A8-v2L"/>
+                <outlet property="segment" destination="nxJ-0N-nxh" id="OP6-1D-FZV"/>
+                <outlet property="tableView1" destination="gjz-mI-itb" id="HJv-zF-zDB"/>
+                <outlet property="top" destination="Xo9-Vc-jEl" id="3yg-bA-zXT"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WJC-OB-vbd">
+                    <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gjz-mI-itb">
+                            <rect key="frame" x="0.0" y="56" width="375" height="547"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </tableView>
+                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nxJ-0N-nxh">
+                            <rect key="frame" x="21" y="8" width="332" height="29"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="28" id="8n5-L3-kz3"/>
+                                <constraint firstAttribute="width" constant="332" id="Z8o-zh-JaJ"/>
+                            </constraints>
+                            <segments>
+                                <segment title="可用"/>
+                                <segment title="已过期"/>
+                            </segments>
+                            <color key="tintColor" red="0.067504443230000002" green="0.78096091749999996" blue="0.57203906770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="segmentClick:" destination="-1" eventType="valueChanged" id="ovu-85-L0p"/>
+                            </connections>
+                        </segmentedControl>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="gjz-mI-itb" secondAttribute="bottom" id="3dS-55-n9z"/>
+                        <constraint firstItem="nxJ-0N-nxh" firstAttribute="top" secondItem="WJC-OB-vbd" secondAttribute="top" constant="8" id="AcQ-3w-Q5d"/>
+                        <constraint firstItem="nxJ-0N-nxh" firstAttribute="centerX" secondItem="WJC-OB-vbd" secondAttribute="centerX" id="C6i-zL-nPg"/>
+                        <constraint firstAttribute="trailing" secondItem="gjz-mI-itb" secondAttribute="trailing" id="UVB-HI-jhm"/>
+                        <constraint firstItem="gjz-mI-itb" firstAttribute="top" secondItem="nxJ-0N-nxh" secondAttribute="bottom" constant="20" id="cta-2N-cj4"/>
+                        <constraint firstItem="gjz-mI-itb" firstAttribute="leading" secondItem="WJC-OB-vbd" secondAttribute="leading" id="xYw-aZ-9bs"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="WJC-OB-vbd" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="Xo9-Vc-jEl"/>
+                <constraint firstItem="WJC-OB-vbd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="eP5-10-SQz"/>
+                <constraint firstAttribute="bottom" secondItem="WJC-OB-vbd" secondAttribute="bottom" id="hJW-Bn-1qa"/>
+                <constraint firstAttribute="trailing" secondItem="WJC-OB-vbd" secondAttribute="trailing" id="ves-vk-3yS"/>
+            </constraints>
+            <point key="canvasLocation" x="7.5" y="-29.5"/>
+        </view>
+    </objects>
+</document>

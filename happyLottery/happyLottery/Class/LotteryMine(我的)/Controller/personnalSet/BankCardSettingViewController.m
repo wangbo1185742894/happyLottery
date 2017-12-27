@@ -45,8 +45,15 @@
     _tableView.dataSource = self;
     self.memberMan.delegate =self;
     listBankArray = [[NSMutableArray alloc]init];
-    [self getBankListClient];
+  
 }
+
+-(void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:YES];
+      [self getBankListClient];
+}
+
 - (IBAction)addBankCardClick:(id)sender {
     FirstBankCardSetViewController *fvc = [[FirstBankCardSetViewController alloc]init];
     fvc.titleStr=@"添加银行卡";
@@ -60,7 +67,7 @@
     
     if ([msg isEqualToString:@"执行成功"]) {
          NSLog(@"%@",bankInfo);
-        [self showPromptText: @"获得会员已绑定的银行卡列表成功" hideAfterDelay: 1.7];
+        //[self showPromptText: @"获得会员已绑定的银行卡列表成功" hideAfterDelay: 1.7];
         for (id object in bankInfo) {
             NSLog(@"listBankArray=%@", object);
             BankCard *bankCards = [[BankCard alloc]initWith:object];

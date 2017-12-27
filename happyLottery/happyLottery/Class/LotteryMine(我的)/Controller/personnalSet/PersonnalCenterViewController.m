@@ -143,6 +143,24 @@
 - (IBAction)changeLoginPWD:(id)sender {
 }
 
+- (IBAction)quiteLogin:(id)sender {
+    self.curUser.isLogin = NO;
+    [self updateLoginStatus];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)updateLoginStatus{
+    
+    if ([self.fmdb open]) {
+        NSString *mobile =self.curUser.mobile;
+        NSString * isLogin =@"0";
+        //update t_student set score = age where name = ‘jack’ ;
+        [self.fmdb executeUpdate:@"update  t_user_info set isLogin = ? where mobile = ?",isLogin, mobile];
+        [self.fmdb close];
+    }
+}
+
+
 #pragma mark UIActionSheetDelegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0) {

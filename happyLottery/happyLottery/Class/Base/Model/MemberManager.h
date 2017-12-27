@@ -30,6 +30,12 @@
 - (void) checkUpdatePaypwdSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) getSupportBankSms:(NSDictionary *)supportBankInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) validatePaypwdSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) getCashBlotterSms:(NSDictionary *)boltterInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) getScoreBlotterSms:(NSDictionary *)scoreInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) getMemberByCardCodeSms:(NSDictionary *)memberInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) getRedPacketByStateSms:(NSDictionary *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) openRedPacketSms:(NSDictionary *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+
 
 @end
 
@@ -56,6 +62,11 @@
 - (void) checkUpdatePaypwdSms:(NSDictionary *)paraDic;
 - (void) getSupportBankSms;
 - (void) validatePaypwdSms:(NSDictionary *)paraDic;
+- (void) getCashBlotterSms:(NSDictionary *)paraDic;
+- (void) getScoreBlotterSms:(NSDictionary *)paraDic;
+- (void) getMemberByCardCodeSms:(NSDictionary *)paraDic;
+- (void) getRedPacketByStateSms:(NSDictionary *)paraDic;
+- (void) openRedPacketSms:(NSDictionary *)paraDic;
 
 @end
 

@@ -14,7 +14,8 @@
 #import "PersonnalCenterViewController.h"
 #import "TopUpsViewController.h"
 #import "WithdrawalsViewController.h"
-
+#import "CashAndIntegrationWaterViewController.h"
+#import "MyRedPacketViewController.h"
 
 @interface MineViewController () <UITableViewDelegate, UITableViewDataSource,MemberManagerDelegate>{
     NSArray *listArray;
@@ -47,6 +48,7 @@
     [super viewWillAppear:YES];
        // [self loadUserInfo];
     [self autoLogin];
+    self.memberMan.delegate = self;
 }
 
 - (void)viewDidLoad {
@@ -62,7 +64,7 @@
     _tableview.dataSource = self;
     
     [self noticeCenterSet];
-    
+     // [self loadUserInfo];
     [_tableview reloadData];
 }
 
@@ -74,9 +76,16 @@
         FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_user_info"];
         if ([result next] && [result stringForColumn:@"mobile"] != nil) {
             isLogin = [[result stringForColumn:@"isLogin"] boolValue];
-            if (isLogin ) {
+            if (isLogin ==YES ) {
                // _loginBtn.enabled = NO;
-                [self loadUserInfo];
+                NSDictionary *MemberInfo;
+                NSString *cardCode =self.curUser.cardCode;
+                    MemberInfo = @{@"cardCode":cardCode
+                    };
+                [self.memberMan getMemberByCardCodeSms:(NSDictionary *)MemberInfo];
+            }else{
+                [self.loginBtn setTitle:@"登录/注册" forState:UIControlStateNormal];
+                self.loginBtn.enabled = YES;
             }
         }
     }
@@ -84,9 +93,22 @@
     
 }
 
+
 -(void)actionUserLoginSuccess:(NSNotification *)notification{
     
     [self loadUserInfo];
+}
+
+-(void)getMemberByCardCodeSms:(NSDictionary *)memberInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    
+    NSLog(@"memberInfo%@",memberInfo);
+    if ([msg isEqualToString:@"执行成功"]) {
+      // [self showPromptText: @"memberInfo成功" hideAfterDelay: 1.7];
+        [self loadUserInfo];
+        
+    }else{
+        [self showPromptText: msg hideAfterDelay: 1.7];
+    }
 }
 
 -(void)loadUserInfo{
@@ -97,9 +119,9 @@
     }else{
         userName = self.curUser.nickname;
     }
-    //[_loginBtn setTitle:userName forState:UIControlStateDisabled];
-    self.loginBtn.titleLabel.text = userName;
+    [self.loginBtn setTitle:userName forState:UIControlStateNormal];
     self.loginBtn.enabled = NO;
+  
     self.curUser.payVerifyType = [NSNumber numberWithInt:1];
     //[_userImage sd_setImageWithURL:[NSURL URLWithString:self.curUser.headUrl]];
     
@@ -174,7 +196,10 @@
     if (isLogin == NO) {
         [self Login];
     } else {
-        
+        CashAndIntegrationWaterViewController * pcVC = [[CashAndIntegrationWaterViewController alloc]init];
+        pcVC.select = 0;
+        pcVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:pcVC animated:YES];
     }
     
 }
@@ -182,7 +207,10 @@
     if (isLogin == NO) {
         [self Login];
     } else {
-        
+        CashAndIntegrationWaterViewController * pcVC = [[CashAndIntegrationWaterViewController alloc]init];
+        pcVC.select = 1;
+        pcVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:pcVC animated:YES];
     }
     
 }
@@ -257,22 +285,6 @@
     cell.lable.text = optionDic[@"title"];
     cell.lable.font = [UIFont systemFontOfSize:15];
  
-    
-   
-    
-    
-    
-    //    _UITableViewCellSeparatorView
-    
-    //    UIView *sep = [[UIView alloc] initWithFrame:CGRectMake(0, 13, 23, 2)];
-    //    sep.backgroundColor = [UIColor redColor];
-    
-   
-       
-        
-  
-    
-    
     return cell;
 }
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -323,7 +335,12 @@
     if (isLogin == NO) {
         [self Login];
     } else {
-        
+        if ([optionDic[@"title"] isEqualToString:@"我的红包"]){
+            MyRedPacketViewController * mpVC = [[MyRedPacketViewController alloc]init];
+            mpVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:mpVC animated:YES];
+            
+        }
     }
 //    if ([optionDic[@"title"] isEqualToString:@"身份认证"] || [optionDic[@"title"] isEqualToString:@"密码修改"]) {
 //       // [self showInputPopView];

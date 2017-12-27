@@ -19,6 +19,7 @@
 //#define WSServerURL @"http://192.168.88.116:28000/services%@"
 
 #define SUBAPIMember               @"/member"
+#define SUBAPIActivity              @"/activity"
 
 #define APILogin                   @"login"
 #define APIRegister                @"register"
@@ -40,6 +41,10 @@
 #define APIrecharge                @"recharge"
 #define APIwithdraw                @"withdraw"
 #define APIvalidatePaypwd          @"validatePaypwd"
-
+#define APIgetCashBlotter           @"getCashBlotter"
+#define APIgetScoreBlotter          @"getScoreBlotter"
+#define APIgetMemberByCardCode      @"getMemberByCardCode"
+#define APIgetRedPacketByState      @"getRedPacketByState"
+#define APIopenRedPacket            @"openRedPacket"
 
 #endif /* API_h */

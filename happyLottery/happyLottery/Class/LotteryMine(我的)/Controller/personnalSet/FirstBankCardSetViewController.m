@@ -63,7 +63,7 @@
     }
     
     else if (_bankCodeTextField.text.length < 16) {
-        [self showPromptText: @"请输入16或19位银行卡号" hideAfterDelay: 1.7];
+        [self showPromptText: @"请输入正确银行卡号" hideAfterDelay: 1.7];
         return;
     }else{
         [self bindNameClient];
@@ -94,7 +94,7 @@
 -(void)getSupportBankSms:(NSDictionary *)supportBankInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
        // NSLog(@"%@",supportBankInfo);
     if ([msg isEqualToString:@"执行成功"]) {
-        [self showPromptText: @"获得支持的银行成功" hideAfterDelay: 1.7];
+      //  [self showPromptText: @"获得支持的银行成功" hideAfterDelay: 1.7];
        
         for (id object in supportBankInfo) {
             NSLog(@"listBankArray=%@", object);

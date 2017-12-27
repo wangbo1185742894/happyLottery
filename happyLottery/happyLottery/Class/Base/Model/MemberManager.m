@@ -669,4 +669,184 @@
                         failure:failureBlock];
 }
 
+/**
+ * 获得现金流水
+ * @param {"cardCode":"xxx","page":"xxx","pageSize":"xxx","type":"xxx"} cardCode 卡号 必填
+ * page 当前页数 (默认 0 ) pageSize 分页大小 默认（10） type 流水类型 不填默认全部
+ * 认购": SUBSCRIPTION,认购退款":SUBSCRIPTION_REFUND,奖金":BONUS，提现": CASH，"提现退款":CASH_REFUND,充值": RECHARGE"
+ * 彩金":HANDSEL
+ * @return orderType:会员的订单类型,amounts:账户交易金额,remBalance:变化后总余额,createTime:创建时间
+ */
+
+- (void) getCashBlotterSms:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed) {
+            NSDictionary *Info = [self objFromJson: responseJsonStr];
+            
+            [self.delegate getCashBlotterSms:Info IsSuccess:YES errorMsg:response.errorMsg];
+        } else {
+            [self.delegate getCashBlotterSms:nil IsSuccess:NO errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate getCashBlotterSms:nil IsSuccess:NO errorMsg:@"服务器错误"];
+        //失败的代理方法
+    };
+    //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
+    
+    SOAPRequest *request = [self requestForAPI: APIgetCashBlotter withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}  ];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+
+/**
+ * 获得积分流水
+ * @param {"cardCode":"xxx","page":"xxx","pageSize":"xxx","type":"xxx"} cardCode 卡号 必填
+ * page 当前页数 (默认 0 ) pageSize 分页大小 默认（10） type 流水类型 不填默认全部
+ *"认购":SUBSCRIPTION "活动赠送":ACTIVITY"签到":SIGN "奖金":BONUS "方案保底":BAODI "保底转认购":BAODI_TURN "合买提成": TOGETHER_COMMISSION
+ * @return  orderType:会员的订单类型,amounts:账户交易金额,remBalance:变化后总余额,createTime:创建时间
+ */
+- (void) getScoreBlotterSms:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed) {
+            NSDictionary *Info = [self objFromJson: responseJsonStr];
+            
+            [self.delegate getScoreBlotterSms:Info IsSuccess:YES errorMsg:response.errorMsg];
+        } else {
+            [self.delegate getScoreBlotterSms:nil IsSuccess:NO errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate getScoreBlotterSms:nil IsSuccess:NO errorMsg:@"服务器错误"];
+        //失败的代理方法
+    };
+    //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
+    
+    SOAPRequest *request = [self requestForAPI: APIgetScoreBlotter withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}  ];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+/**
+ * 根据卡号获取会员信息
+ * @param params @param {"cardCode":"xxx"} cardCode 会员帐号
+ * @return  会员信息
+ * @throws BizException
+ */
+- (void) getMemberByCardCodeSms:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed) {
+            NSDictionary *Info = [self objFromJson: responseJsonStr];
+            
+            [self.delegate getMemberByCardCodeSms:Info IsSuccess:YES errorMsg:response.errorMsg];
+        } else {
+            [self.delegate getMemberByCardCodeSms:nil IsSuccess:NO errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate getMemberByCardCodeSms:nil IsSuccess:NO errorMsg:@"服务器错误"];
+        //失败的代理方法
+    };
+    //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
+    
+    SOAPRequest *request = [self requestForAPI: APIgetMemberByCardCode withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}  ];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+/**
+ * 根据是否有效  获得红包
+ * @param params {"cardCode":"xxx","isValid":"xxx"} cardCode 会员卡号 isValid 是否有效 true:锁定或解锁 false:失效
+ * @return
+ * @throws BizException
+ */
+- (void) getRedPacketByStateSms:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed) {
+            NSDictionary *Info = [self objFromJson: responseJsonStr];
+            
+            [self.delegate getRedPacketByStateSms:Info IsSuccess:YES errorMsg:response.errorMsg];
+        } else {
+            [self.delegate getRedPacketByStateSms:nil IsSuccess:NO errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate getRedPacketByStateSms:nil IsSuccess:NO errorMsg:@"服务器错误"];
+        //失败的代理方法
+    };
+    //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
+    
+    SOAPRequest *request = [self requestForAPI: APIgetRedPacketByState withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}  ];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIActivity
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+/**
+ * 打开红包
+ * @param params {"id":"xxxx"} id 红包id
+ * @return
+ * @throws BizException
+ */
+- (void) openRedPacketSms:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed) {
+            NSDictionary *Info = [self objFromJson: responseJsonStr];
+            
+            [self.delegate openRedPacketSms:Info IsSuccess:YES errorMsg:response.errorMsg];
+        } else {
+            [self.delegate openRedPacketSms:nil IsSuccess:NO errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate openRedPacketSms:nil IsSuccess:NO errorMsg:@"服务器错误"];
+        //失败的代理方法
+    };
+    //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
+    
+    SOAPRequest *request = [self requestForAPI: APIopenRedPacket withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}  ];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIActivity
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
 @end

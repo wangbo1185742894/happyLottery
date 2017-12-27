@@ -10,6 +10,7 @@
 #import "AESUtility.h"
 #import "SetPayPWDViewController.h"
 
+
 @interface ChangePayPWDViewController ()<MemberManagerDelegate,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
 @property (weak, nonatomic) IBOutlet UITextField *PWD1;

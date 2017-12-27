@@ -231,7 +231,7 @@
                                         <constraint firstAttribute="height" constant="39" id="sX1-Q9-XFa"/>
                                     </constraints>
                                     <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    <state key="normal" title="修改登陆密码">
+                                    <state key="normal" title="修改登录密码">
                                         <color key="titleColor" red="0.1960784314" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                     <connections>
@@ -265,6 +265,21 @@
                                     <color key="textColor" red="0.19607843137254902" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gPz-Tq-kNo">
+                                    <rect key="frame" x="42" y="393" width="290" height="40"/>
+                                    <color key="backgroundColor" red="0.067504443230000002" green="0.78096091749999996" blue="0.57203906770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="290" id="2oX-dB-Raj"/>
+                                        <constraint firstAttribute="height" constant="40" id="jyj-jR-run"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <state key="normal" title="退出登录">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="quiteLogin:" destination="-1" eventType="touchUpInside" id="Kwr-Dz-vcG"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" red="0.96444731950759888" green="0.96840888261795044" blue="0.98488038778305054" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
@@ -301,6 +316,7 @@
                                 <constraint firstItem="NW2-s7-a0m" firstAttribute="leading" secondItem="kM9-wg-Ohd" secondAttribute="leading" id="c6D-IL-VxV"/>
                                 <constraint firstItem="knJ-h6-DCr" firstAttribute="top" secondItem="Dde-1n-JQP" secondAttribute="bottom" constant="11" id="fOH-kC-VRX"/>
                                 <constraint firstItem="baM-s6-aZF" firstAttribute="leading" secondItem="kM9-wg-Ohd" secondAttribute="leading" id="fvz-kC-Xol"/>
+                                <constraint firstItem="gPz-Tq-kNo" firstAttribute="centerX" secondItem="kM9-wg-Ohd" secondAttribute="centerX" id="hYi-G9-wdm"/>
                                 <constraint firstItem="506-C9-ngo" firstAttribute="centerX" secondItem="kM9-wg-Ohd" secondAttribute="centerX" id="hsc-9e-v4C"/>
                                 <constraint firstAttribute="trailing" secondItem="LNp-zr-1kR" secondAttribute="trailing" constant="8" id="i0f-iT-qa9"/>
                                 <constraint firstItem="Egz-s1-yZu" firstAttribute="leading" secondItem="kM9-wg-Ohd" secondAttribute="leading" id="jCV-nA-BEU"/>
@@ -311,6 +327,7 @@
                                 <constraint firstItem="ddE-fh-p3u" firstAttribute="top" secondItem="kM9-wg-Ohd" secondAttribute="top" constant="40" id="ptn-cv-5hg"/>
                                 <constraint firstItem="kpe-1W-adt" firstAttribute="top" secondItem="nUL-uR-TWn" secondAttribute="bottom" constant="10" id="qVh-c4-34c"/>
                                 <constraint firstAttribute="trailing" secondItem="nUL-uR-TWn" secondAttribute="trailing" id="tfJ-L7-P8s"/>
+                                <constraint firstItem="gPz-Tq-kNo" firstAttribute="top" secondItem="5zp-W4-ebq" secondAttribute="bottom" constant="30" id="uOy-3q-wYs"/>
                                 <constraint firstAttribute="trailing" secondItem="Sg6-wk-CbC" secondAttribute="trailing" constant="36" id="zob-qm-8JW"/>
                             </constraints>
                         </view>
