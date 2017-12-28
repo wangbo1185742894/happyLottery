@@ -53,8 +53,6 @@
         self.segment.selectedSegmentIndex = 1;
          self.title = @"积分明细";
          [self getScoreBlotterClient];
-    }else{
-         [self getCashBlotterClient];
     }
     
 }
@@ -64,10 +62,16 @@
     {
     case 0:
             self.title = @"现金明细";
+            self.tableView1.hidden = NO;
+            self.tableView2.hidden = YES;
+            [listCashBlotterArray removeAllObjects];
             [self getCashBlotterClient];
            
     case 1:
               self.title = @"积分明细";
+            self.tableView2.hidden = NO;
+            self.tableView1.hidden = YES;
+                [listScoreBlotterArray removeAllObjects];
             [self getScoreBlotterClient];
     default:
         break;
@@ -202,15 +206,17 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     //[self.tableView registerClass :[YourTableCell class] forCellReuseIdentifier:@"txTableCell"];
-    static NSString *CellIdentifier = @"TabViewCell";
+    static NSString *CellIdentifier1 = @"TabViewCell1";
+    static NSString *CellIdentifier2= @"TabViewCell2";
     //自定义cell类
-    CashAndIntegrationWaterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        //通过xib的名称加载自定义的cell
-        cell = [[[NSBundle mainBundle] loadNibNamed:@"CashAndIntegrationWaterTableViewCell" owner:self options:nil] lastObject];
-    }
-    
+  
+    CashAndIntegrationWaterTableViewCell *cell ;
     if (tableView ==self.tableView1) {
+ cell= [tableView dequeueReusableCellWithIdentifier:CellIdentifier1];
+        if (cell == nil) {
+            //通过xib的名称加载自定义的cell
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"CashAndIntegrationWaterTableViewCell" owner:self options:nil] lastObject];
+        }
         if (listScoreBlotterArray.count > 0) {
             CashBoltter *cashBoltter = listScoreBlotterArray[indexPath.row];
             cell.nameLab.text = cashBoltter.orderType;
@@ -219,13 +225,19 @@
             int amounts =[cashBoltter.amounts intValue];
             if (amounts>0) {
                 cell.priceLab.textColor = SystemGreen;
+                cell.image.image = [UIImage imageNamed:@"add"];
                 cell.priceLab.text = [NSString stringWithFormat:@"+%@元",cashBoltter.amounts];
             }else{
-                
-                   cell.priceLab.text = [NSString stringWithFormat:@"%@元",cashBoltter.amounts];
+                cell.image.image = [UIImage imageNamed:@"lessen"];
+                cell.priceLab.text = [NSString stringWithFormat:@"%@元",cashBoltter.amounts];
             }
         }
     } else if (tableView ==self.tableView2) {
+      cell= [tableView dequeueReusableCellWithIdentifier:CellIdentifier2];
+        if (cell == nil) {
+            //通过xib的名称加载自定义的cell
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"CashAndIntegrationWaterTableViewCell" owner:self options:nil] lastObject];
+        }
         if (listCashBlotterArray.count > 0) {
             CashBoltter *cashBoltter = listCashBlotterArray[indexPath.row];
             cell.nameLab.text = cashBoltter.orderType;
@@ -233,9 +245,10 @@
             int amounts =[cashBoltter.amounts intValue];
             if (amounts>0) {
                 cell.priceLab.textColor = SystemGreen;
+                cell.image.image = [UIImage imageNamed:@"decrease"];
                 cell.priceLab.text = [NSString stringWithFormat:@"+%@元",cashBoltter.amounts];
             }else{
-                
+                cell.image.image = [UIImage imageNamed:@"increase"];
                 cell.priceLab.text = [NSString stringWithFormat:@"%@元",cashBoltter.amounts];
             }
         }

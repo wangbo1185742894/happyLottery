@@ -35,7 +35,7 @@
 - (void) getMemberByCardCodeSms:(NSDictionary *)memberInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) getRedPacketByStateSms:(NSDictionary *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) openRedPacketSms:(NSDictionary *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
-
+- (void) getCouponByStateSms:(NSDictionary *)couponInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 
 @end
 
@@ -67,6 +67,7 @@
 - (void) getMemberByCardCodeSms:(NSDictionary *)paraDic;
 - (void) getRedPacketByStateSms:(NSDictionary *)paraDic;
 - (void) openRedPacketSms:(NSDictionary *)paraDic;
+- (void) getCouponByStateSms:(NSDictionary *)paraDic;
 
 @end
 

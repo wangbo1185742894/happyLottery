@@ -849,4 +849,41 @@
                         failure:failureBlock];
 }
 
+/**
+ * 根据状态分页查询优惠券
+ * @param params {"cardCode":"xxx","isValid":"xxx"} cardCode 会员卡号 isValid 优惠券状态 true：可使用 false：失效或已使用
+ *               NOT_USE("未使用"),USE("使用"),INVALID("失效");
+ * @return  couponCode:优惠卷的卡号 status:优惠卷状态 quota:使用限额(消费多少钱可以使用)
+ *          deduction:抵扣金额  invalidTime:失效时间(过期时间)
+ * @throws BizException
+ */
+- (void) getCouponByStateSms:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed) {
+            NSDictionary *Info = [self objFromJson: responseJsonStr];
+            
+            [self.delegate getCouponByStateSms:Info IsSuccess:YES errorMsg:response.errorMsg];
+        } else {
+            [self.delegate getCouponByStateSms:nil IsSuccess:NO errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate getCouponByStateSms:nil IsSuccess:NO errorMsg:@"服务器错误"];
+        //失败的代理方法
+    };
+    //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
+    
+    SOAPRequest *request = [self requestForAPI: APIgetCouponByState withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}  ];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
 @end

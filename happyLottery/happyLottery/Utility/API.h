@@ -46,5 +46,6 @@
 #define APIgetMemberByCardCode      @"getMemberByCardCode"
 #define APIgetRedPacketByState      @"getRedPacketByState"
 #define APIopenRedPacket            @"openRedPacket"
+#define APIgetCouponByState            @"getCouponByState"
 
 #endif /* API_h */

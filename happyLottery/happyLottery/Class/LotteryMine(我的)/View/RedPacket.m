@@ -14,6 +14,9 @@
     if ([key isEqualToString:@"id"]) {
         key = @"_id";
     }
+    if ([key isEqualToString:@"description"]) {
+        key = @"_description";
+    }
     [super setValue:value forKey:key];
 }
 

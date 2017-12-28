@@ -14,6 +14,7 @@
                 <outlet property="bottom" destination="hJW-Bn-1qa" id="0et-A8-v2L"/>
                 <outlet property="segment" destination="nxJ-0N-nxh" id="OP6-1D-FZV"/>
                 <outlet property="tableView1" destination="gjz-mI-itb" id="HJv-zF-zDB"/>
+                <outlet property="tableView2" destination="BWA-Y9-8s5" id="K8X-49-tgI"/>
                 <outlet property="top" destination="Xo9-Vc-jEl" id="3yg-bA-zXT"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -45,14 +46,22 @@
                                 <action selector="segmentClick:" destination="-1" eventType="valueChanged" id="ovu-85-L0p"/>
                             </connections>
                         </segmentedControl>
+                        <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BWA-Y9-8s5">
+                            <rect key="frame" x="0.0" y="56" width="375" height="547"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </tableView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="gjz-mI-itb" secondAttribute="bottom" id="3dS-55-n9z"/>
+                        <constraint firstItem="BWA-Y9-8s5" firstAttribute="leading" secondItem="WJC-OB-vbd" secondAttribute="leading" id="4Sp-rR-M2x"/>
                         <constraint firstItem="nxJ-0N-nxh" firstAttribute="top" secondItem="WJC-OB-vbd" secondAttribute="top" constant="8" id="AcQ-3w-Q5d"/>
                         <constraint firstItem="nxJ-0N-nxh" firstAttribute="centerX" secondItem="WJC-OB-vbd" secondAttribute="centerX" id="C6i-zL-nPg"/>
+                        <constraint firstAttribute="trailing" secondItem="BWA-Y9-8s5" secondAttribute="trailing" id="FAo-Ku-diy"/>
                         <constraint firstAttribute="trailing" secondItem="gjz-mI-itb" secondAttribute="trailing" id="UVB-HI-jhm"/>
+                        <constraint firstItem="BWA-Y9-8s5" firstAttribute="top" secondItem="nxJ-0N-nxh" secondAttribute="bottom" constant="20" id="ZXP-mx-AqE"/>
                         <constraint firstItem="gjz-mI-itb" firstAttribute="top" secondItem="nxJ-0N-nxh" secondAttribute="bottom" constant="20" id="cta-2N-cj4"/>
+                        <constraint firstAttribute="bottom" secondItem="BWA-Y9-8s5" secondAttribute="bottom" id="pvL-M2-LvN"/>
                         <constraint firstItem="gjz-mI-itb" firstAttribute="leading" secondItem="WJC-OB-vbd" secondAttribute="leading" id="xYw-aZ-9bs"/>
                     </constraints>
                 </view>

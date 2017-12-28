@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottom;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segment;
 @property (weak, nonatomic) IBOutlet UITableView *tableView1;
+@property (weak, nonatomic) IBOutlet UITableView *tableView2;
 
 
 @end
@@ -31,7 +32,8 @@
     self.memberMan.delegate = self;
     self.tableView1.delegate = self;
     self.tableView1.dataSource = self;
-   
+    self.tableView2.delegate = self;
+    self.tableView2.dataSource = self;
     if ([self isIphoneX]) {
         self.top.constant = 88;
         self.bottom.constant = 34;
@@ -47,13 +49,17 @@
     switch( self.segment.selectedSegmentIndex)
     {
         case 0:
-     
+            self.tableView1.hidden=NO;
+            self.tableView2.hidden=YES;
+               [listUnUseRedPacketArray removeAllObjects];
         [self getRedPacketByStateClient:@"true"];
-            
+             break;
         case 1:
-      
+            self.tableView2.hidden=NO;
+            self.tableView1.hidden=YES;
+                  [listUseRedPacketArray removeAllObjects];
         [self getRedPacketByStateClient:@"false"];
-            
+             break;
         default:
             break;
     }
@@ -66,14 +72,20 @@
     if ([msg isEqualToString:@"执行成功"]) {
         // [self showPromptText: @"memberInfo成功" hideAfterDelay: 1.7];
         if (redPacketInfo!=nil) {
-            [listUseRedPacketArray removeAllObjects];
+      
+         
             NSArray *array = redPacketInfo;
             for (int i=0; i<array.count; i++) {
                 RedPacket *redPacket = [[RedPacket alloc]initWith:array[i]];
+                  NSLog(@"redPacket%@",redPacket.redPacketStatus);
+                if (self.segment.selectedSegmentIndex == 0) {
                 [listUseRedPacketArray addObject:redPacket];
-                
+                }else if(self.segment.selectedSegmentIndex==1){
+                [listUnUseRedPacketArray addObject:redPacket];
+                }
             }
             [self.tableView1 reloadData];
+            [self.tableView2 reloadData];
         }
       
         
@@ -133,6 +145,11 @@
         if (listUseRedPacketArray.count > 0) {
             return listUseRedPacketArray.count;
         }
+    }else if (tableView ==self.tableView2){
+        
+        if (listUnUseRedPacketArray.count > 0) {
+            return listUnUseRedPacketArray.count;
+        }
     }
     
     return 0;
@@ -152,22 +169,76 @@
         //通过xib的名称加载自定义的cell
         cell = [[[NSBundle mainBundle] loadNibNamed:@"MyRedPacketTableViewCell" owner:self options:nil] lastObject];
     }
-    
-    
+    //            REGISTER_CHANNEL("注册渠道"),
+    //            LOGIN_CHANNEL("登录渠道"),
+    //            SIGN_IN_CHANNEL("签到渠道"),
+    //            RECHARGE_CHANNEL("充值渠道"),
+    //            CONSUME_CHANNEL("消费渠道"),
+    //            WIN_CHANNEL("中奖渠道");
+    RedPacket *redPacket = [[RedPacket alloc]init];
+    if (tableView ==self.tableView1) {
         if (listUseRedPacketArray.count > 0) {
-            RedPacket *redPacket = listUseRedPacketArray[indexPath.row];
-           
-            if (self.segment.selectedSegmentIndex == 0) {
-                 cell.packetImage.image = [UIImage imageNamed:@"click"];
-                cell.endImage.hidden = YES;
-            }else if(self.segment.selectedSegmentIndex==1){
-                 cell.packetImage.image = [UIImage imageNamed:@"not"];
-                cell.endImage.hidden = NO;
+           redPacket = listUseRedPacketArray[indexPath.row];
+             NSString *redPacketStatus = redPacket.redPacketStatus;
+            if ([redPacketStatus isEqualToString:@"解锁"]) {
+                cell.packetImage.image = [UIImage imageNamed:@"click"];
+                
+            }else if([redPacketStatus isEqualToString:@"锁定"]){
+                cell.packetImage.image = [UIImage imageNamed:@"not"];
+                
             }
-            cell.nameLab.text = redPacket.redPacketContent;
-            cell.sourceLab.text = redPacket.redPacketChannel;
+            cell.endImage.hidden = YES;
+            cell.nameLab.text = redPacket._description;
+            
+            NSString *redPacketChannel =redPacket.redPacketChannel;
+            NSString *sourecs;
+            if ([redPacketChannel isEqualToString:@"REGISTER_CHANNEL"]) {
+                sourecs = @"来源： 系统注册赠送";
+            } else if ([redPacketChannel isEqualToString:@"LOGIN_CHANNEL"]){
+                sourecs = @"来源： 系统登录赠送";
+            }else if ([redPacketChannel isEqualToString:@"SIGN_IN_CHANNEL"]){
+                sourecs = @"来源： 系统签到赠送";
+            }else if ([redPacketChannel isEqualToString:@"RECHARGE_CHANNEL"]){
+                sourecs = @"来源： 系统充值赠送";
+            }else if ([redPacketChannel isEqualToString:@"CONSUME_CHANNEL"]){
+                sourecs = @"来源： 系统消费赠送";
+            }else if ([redPacketChannel isEqualToString:@"WIN_CHANNEL"]){
+                sourecs = @"来源： 系统中奖赠送";
+            }
+            cell.sourceLab.text = sourecs;
             cell.endTimeLab.text = [NSString stringWithFormat:@"%@过期",redPacket.endValidTime];
         }
+      
+    }else if (tableView ==self.tableView2){
+        
+        if (listUnUseRedPacketArray.count > 0) {
+           redPacket = listUnUseRedPacketArray[indexPath.row];
+            cell.packetImage.image = [UIImage imageNamed:@"not"];
+            cell.endImage.hidden = NO;
+            cell.nameLab.text = redPacket._description;
+            
+            NSString *redPacketChannel =redPacket.redPacketChannel;
+            NSString *sourecs;
+            if ([redPacketChannel isEqualToString:@"REGISTER_CHANNEL"]) {
+                sourecs = @"来源： 系统注册赠送";
+            } else if ([redPacketChannel isEqualToString:@"LOGIN_CHANNEL"]){
+                sourecs = @"来源： 系统登录赠送";
+            }else if ([redPacketChannel isEqualToString:@"SIGN_IN_CHANNEL"]){
+                sourecs = @"来源： 系统签到赠送";
+            }else if ([redPacketChannel isEqualToString:@"RECHARGE_CHANNEL"]){
+                sourecs = @"来源： 系统充值赠送";
+            }else if ([redPacketChannel isEqualToString:@"CONSUME_CHANNEL"]){
+                sourecs = @"来源： 系统消费赠送";
+            }else if ([redPacketChannel isEqualToString:@"WIN_CHANNEL"]){
+                sourecs = @"来源： 系统中奖赠送";
+            }
+            cell.sourceLab.text = sourecs;
+            cell.endTimeLab.text = [NSString stringWithFormat:@"%@过期",redPacket.endValidTime];
+        }
+    }
+   
+    
+   
     
  
     

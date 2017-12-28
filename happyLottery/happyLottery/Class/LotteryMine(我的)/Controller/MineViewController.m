@@ -16,6 +16,7 @@
 #import "WithdrawalsViewController.h"
 #import "CashAndIntegrationWaterViewController.h"
 #import "MyRedPacketViewController.h"
+#import "MyCouponViewController.h"
 
 @interface MineViewController () <UITableViewDelegate, UITableViewDataSource,MemberManagerDelegate>{
     NSArray *listArray;
@@ -218,7 +219,9 @@
     if (isLogin == NO) {
         [self Login];
     } else {
-        
+        MyCouponViewController * mcVC = [[MyCouponViewController alloc]init];
+        mcVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:mcVC animated:YES];
     }
     
 }
