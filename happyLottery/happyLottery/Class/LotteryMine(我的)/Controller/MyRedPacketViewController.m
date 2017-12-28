@@ -9,11 +9,15 @@
 #import "MyRedPacketViewController.h"
 #import "MyRedPacketTableViewCell.h"
 #import "RedPacket.h"
+#import "OpenRedPopView.h"
+#define AnimationDur 0.3
 
-@interface MyRedPacketViewController ()<MemberManagerDelegate,UITableViewDelegate,UITableViewDataSource>{
+@interface MyRedPacketViewController ()<MemberManagerDelegate,UITableViewDelegate,UITableViewDataSource,OpenRedPopViewDelegate>{
     
     NSMutableArray *listUseRedPacketArray;
     NSMutableArray *listUnUseRedPacketArray;
+    NSString *packetId;
+    RedPacket *r;
 }
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottom;
@@ -40,7 +44,7 @@
     }
     listUseRedPacketArray = [[NSMutableArray alloc]init];
     listUnUseRedPacketArray = [[NSMutableArray alloc]init];
-    
+    r = [[RedPacket alloc]init];
     [self getRedPacketByStateClient:@"true"];
     //[self openRedPacketClient];
 }
@@ -99,10 +103,59 @@
     NSLog(@"redPacketInfo%@",redPacketInfo);
     if ([msg isEqualToString:@"执行成功"]) {
         // [self showPromptText: @"memberInfo成功" hideAfterDelay: 1.7];
+        UIImageView *image = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"redpacket"]];
         
+        image.frame  = CGRectMake(self.view.mj_w/2-105, 200, 210,294);
+        [self.view addSubview:image];
+        float width = image.mj_w/2;
+        [self rotation360repeatCount:2 view:image andHalf:width andCaijin:@"5"];
         
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
+    }
+    
+}
+
+-(void)rotation360repeatCount:(int)repeatCount view:(UIView *)view andHalf:(float)width andCaijin:(NSString *)caijin{
+    
+    if (repeatCount == 0) {
+        [UIView animateWithDuration:AnimationDur animations:^{
+            view.mj_x += width;
+            view.mj_w = 0;
+            
+        } completion:^(BOOL finished) {
+            [view removeFromSuperview];
+            OpenRedPopView *popView = [[OpenRedPopView alloc]initWithFrame:self.view.frame];
+            popView.delegate = self;
+            popView.labJiangjin.text =[NSString stringWithFormat:@"%@元",caijin];
+            popView.alpha = 0.2;
+            popView.layer.cornerRadius = 10;
+            popView.layer.masksToBounds = YES;
+            
+            [self.view addSubview:popView];
+            [UIView animateWithDuration:AnimationDur animations:^{
+              
+                popView.alpha = 1.0;
+            }];
+            
+        }];
+        
+    }else{
+        
+        repeatCount --;
+        [UIView animateWithDuration:AnimationDur animations:^{
+            view.mj_x += width;
+            view.mj_w = 0;
+            
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:AnimationDur animations:^{
+                view.mj_x-= width;
+                view.mj_w = 210;
+            } completion:^(BOOL finished) {
+                
+                [self rotation360repeatCount:repeatCount view:view andHalf:width andCaijin:caijin];
+            }];
+        }];
     }
     
 }
@@ -127,7 +180,7 @@
 -(void)openRedPacketClient{
     NSDictionary *Info;
     @try {
-        NSString *cardCode = self.curUser.cardCode;
+        NSString *cardCode = r._id;
         Info = @{@"id":cardCode
                  };
         
@@ -180,13 +233,9 @@
         if (listUseRedPacketArray.count > 0) {
            redPacket = listUseRedPacketArray[indexPath.row];
              NSString *redPacketStatus = redPacket.redPacketStatus;
-            if ([redPacketStatus isEqualToString:@"解锁"]) {
+     
                 cell.packetImage.image = [UIImage imageNamed:@"click"];
-                
-            }else if([redPacketStatus isEqualToString:@"锁定"]){
-                cell.packetImage.image = [UIImage imageNamed:@"not"];
-                
-            }
+         
             cell.endImage.hidden = YES;
             cell.nameLab.text = redPacket._description;
             
@@ -213,7 +262,7 @@
         
         if (listUnUseRedPacketArray.count > 0) {
            redPacket = listUnUseRedPacketArray[indexPath.row];
-            cell.packetImage.image = [UIImage imageNamed:@"not"];
+            cell.packetImage.image = [UIImage imageNamed:@"cannot"];
             cell.endImage.hidden = NO;
             cell.nameLab.text = redPacket._description;
             
@@ -236,13 +285,6 @@
             cell.endTimeLab.text = [NSString stringWithFormat:@"%@过期",redPacket.endValidTime];
         }
     }
-   
-    
-   
-    
- 
-    
-    
     return cell;
 }
 
@@ -260,6 +302,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath: indexPath animated: YES];
+    if (tableView ==self.tableView1){
+        r = listUseRedPacketArray[indexPath.row];
+        
+    [self openRedPacketClient];
+    }
 }
 
 

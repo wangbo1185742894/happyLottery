@@ -200,9 +200,9 @@
 //            }else if ([redPacketChannel isEqualToString:@"WIN_CHANNEL"]){
 //                sourecs = @"来源： 系统中奖赠送";
 //            }
-//            cell.sourceLab.text = sourecs;
+            cell.sourceLab.text = [NSString stringWithFormat:@"来源：%@",coupon.couponSource];
             cell.dateLab.text = [NSString stringWithFormat:@"有效期：%@",coupon.invalidTime];
-            cell.descriptionLab.text=[NSString stringWithFormat:@"单笔订单满：%@可用",coupon.quota];
+            cell.descriptionLab.text=[NSString stringWithFormat:@"单笔订单满%@可用",coupon.quota];
         }
 
     }else if (tableView ==self.tableView2){
@@ -229,9 +229,9 @@
             //            }else if ([redPacketChannel isEqualToString:@"WIN_CHANNEL"]){
             //                sourecs = @"来源： 系统中奖赠送";
             //            }
-            //            cell.sourceLab.text = sourecs;
+            cell.sourceLab.text = [NSString stringWithFormat:@"来源：%@",coupon.couponSource];
             cell.dateLab.text = [NSString stringWithFormat:@"有效期：%@",coupon.invalidTime];
-            cell.descriptionLab.text=[NSString stringWithFormat:@"单笔订单满：%@可用",coupon.quota];
+            cell.descriptionLab.text=[NSString stringWithFormat:@"单笔订单满%@可用",coupon.quota];
         }
     }
 

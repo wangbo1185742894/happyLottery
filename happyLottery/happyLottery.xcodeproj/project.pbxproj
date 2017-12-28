@@ -179,11 +179,7 @@
 		F90FCD7D1FF3810F00BD807C /* stale@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F90FCD6D1FF3810E00BD807C /* stale@3x.png */; };
 		F90FCD8D1FF396F700BD807C /* redpacket@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F90FCD811FF396F400BD807C /* redpacket@2x.png */; };
 		F90FCD8E1FF396F700BD807C /* redpacket_open@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F90FCD821FF396F400BD807C /* redpacket_open@2x.png */; };
-		F90FCD8F1FF396F700BD807C /* click@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F90FCD831FF396F500BD807C /* click@2x.png */; };
 		F90FCD901FF396F700BD807C /* fly@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F90FCD841FF396F500BD807C /* fly@3x.png */; };
-		F90FCD911FF396F700BD807C /* click@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F90FCD851FF396F600BD807C /* click@3x.png */; };
-		F90FCD921FF396F700BD807C /* not@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F90FCD861FF396F600BD807C /* not@2x.png */; };
-		F90FCD931FF396F700BD807C /* not@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F90FCD871FF396F600BD807C /* not@3x.png */; };
 		F90FCD941FF396F700BD807C /* fly@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F90FCD881FF396F600BD807C /* fly@2x.png */; };
 		F90FCD971FF396F700BD807C /* redpacket@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F90FCD8B1FF396F600BD807C /* redpacket@3x.png */; };
 		F90FCD981FF396F700BD807C /* redpacket_open@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F90FCD8C1FF396F700BD807C /* redpacket_open@3x.png */; };
@@ -333,6 +329,13 @@
 		F9BD1B5B1FE8B41900C1C71A /* MyNickSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BD1B591FE8B41900C1C71A /* MyNickSetViewController.m */; };
 		F9BD1B5C1FE8B41900C1C71A /* MyNickSetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9BD1B5A1FE8B41900C1C71A /* MyNickSetViewController.xib */; };
 		F9C332D81FF4C30700779197 /* Coupon.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C332D71FF4C30700779197 /* Coupon.m */; };
+		F9C332DC1FF4D5EF00779197 /* cannot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9C332D91FF4D5EE00779197 /* cannot@2x.png */; };
+		F9C332DD1FF4D5EF00779197 /* click@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9C332DA1FF4D5EF00779197 /* click@3x.png */; };
+		F9C332DE1FF4D5EF00779197 /* click@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9C332DB1FF4D5EF00779197 /* click@2x.png */; };
+		F9C332E21FF4DE1C00779197 /* OpenRedPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9C332DF1FF4DE1B00779197 /* OpenRedPopView.xib */; };
+		F9C332E31FF4DE1C00779197 /* OpenRedPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C332E11FF4DE1B00779197 /* OpenRedPopView.m */; };
+		F9C332E61FF4E5B500779197 /* guanbi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9C332E41FF4E5B400779197 /* guanbi@2x.png */; };
+		F9C332E71FF4E5B500779197 /* guanbi@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9C332E51FF4E5B500779197 /* guanbi@3x.png */; };
 		F9D9F2A81FF22640006434DC /* CashAndIntegrationWaterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9D9F2A61FF22640006434DC /* CashAndIntegrationWaterViewController.m */; };
 		F9D9F2A91FF22640006434DC /* CashAndIntegrationWaterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9D9F2A71FF22640006434DC /* CashAndIntegrationWaterViewController.xib */; };
 		F9D9F2AD1FF22C54006434DC /* CashAndIntegrationWaterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9D9F2AB1FF22C54006434DC /* CashAndIntegrationWaterTableViewCell.m */; };
@@ -674,11 +677,7 @@
 		F90FCD6D1FF3810E00BD807C /* stale@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stale@3x.png"; sourceTree = "<group>"; };
 		F90FCD811FF396F400BD807C /* redpacket@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redpacket@2x.png"; sourceTree = "<group>"; };
 		F90FCD821FF396F400BD807C /* redpacket_open@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redpacket_open@2x.png"; sourceTree = "<group>"; };
-		F90FCD831FF396F500BD807C /* click@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "click@2x.png"; sourceTree = "<group>"; };
 		F90FCD841FF396F500BD807C /* fly@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fly@3x.png"; sourceTree = "<group>"; };
-		F90FCD851FF396F600BD807C /* click@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "click@3x.png"; sourceTree = "<group>"; };
-		F90FCD861FF396F600BD807C /* not@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "not@2x.png"; sourceTree = "<group>"; };
-		F90FCD871FF396F600BD807C /* not@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "not@3x.png"; sourceTree = "<group>"; };
 		F90FCD881FF396F600BD807C /* fly@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fly@2x.png"; sourceTree = "<group>"; };
 		F90FCD8B1FF396F600BD807C /* redpacket@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redpacket@3x.png"; sourceTree = "<group>"; };
 		F90FCD8C1FF396F700BD807C /* redpacket_open@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redpacket_open@3x.png"; sourceTree = "<group>"; };
@@ -847,6 +846,14 @@
 		F9BD1B5A1FE8B41900C1C71A /* MyNickSetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyNickSetViewController.xib; sourceTree = "<group>"; };
 		F9C332D61FF4C30700779197 /* Coupon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Coupon.h; path = "happyLottery/Class/LotteryMine(我的)/View/Coupon.h"; sourceTree = SOURCE_ROOT; };
 		F9C332D71FF4C30700779197 /* Coupon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Coupon.m; path = "happyLottery/Class/LotteryMine(我的)/View/Coupon.m"; sourceTree = SOURCE_ROOT; };
+		F9C332D91FF4D5EE00779197 /* cannot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cannot@2x.png"; sourceTree = "<group>"; };
+		F9C332DA1FF4D5EF00779197 /* click@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "click@3x.png"; sourceTree = "<group>"; };
+		F9C332DB1FF4D5EF00779197 /* click@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "click@2x.png"; sourceTree = "<group>"; };
+		F9C332DF1FF4DE1B00779197 /* OpenRedPopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpenRedPopView.xib; sourceTree = "<group>"; };
+		F9C332E01FF4DE1B00779197 /* OpenRedPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenRedPopView.h; sourceTree = "<group>"; };
+		F9C332E11FF4DE1B00779197 /* OpenRedPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenRedPopView.m; sourceTree = "<group>"; };
+		F9C332E41FF4E5B400779197 /* guanbi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guanbi@2x.png"; sourceTree = "<group>"; };
+		F9C332E51FF4E5B500779197 /* guanbi@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guanbi@3x.png"; sourceTree = "<group>"; };
 		F9D9F2A51FF22640006434DC /* CashAndIntegrationWaterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CashAndIntegrationWaterViewController.h; sourceTree = "<group>"; };
 		F9D9F2A61FF22640006434DC /* CashAndIntegrationWaterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CashAndIntegrationWaterViewController.m; sourceTree = "<group>"; };
 		F9D9F2A71FF22640006434DC /* CashAndIntegrationWaterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CashAndIntegrationWaterViewController.xib; sourceTree = "<group>"; };
@@ -1401,6 +1408,9 @@
 		2DDEDBFA1FD4DBB5007AEBF7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F9C332E01FF4DE1B00779197 /* OpenRedPopView.h */,
+				F9C332E11FF4DE1B00779197 /* OpenRedPopView.m */,
+				F9C332DF1FF4DE1B00779197 /* OpenRedPopView.xib */,
 				F94AA9F01FEBBFE00021B980 /* BankCardSetTableViewCell.h */,
 				F94AA9F11FEBBFE00021B980 /* BankCardSetTableViewCell.m */,
 				F94AA9F21FEBBFE00021B980 /* BankCardSetTableViewCell.xib */,
@@ -1660,18 +1670,19 @@
 		F90FCD601FF380F000BD807C /* RedPacket */ = {
 			isa = PBXGroup;
 			children = (
+				F9C332E41FF4E5B400779197 /* guanbi@2x.png */,
+				F9C332E51FF4E5B500779197 /* guanbi@3x.png */,
+				F9C332D91FF4D5EE00779197 /* cannot@2x.png */,
+				F9C332DB1FF4D5EF00779197 /* click@2x.png */,
+				F9C332DA1FF4D5EF00779197 /* click@3x.png */,
 				F928C68C1FF49AB2001F1A32 /* empty@2x.png */,
 				F928C68B1FF49AB2001F1A32 /* empty@3x.png */,
 				F928C6871FF48DB2001F1A32 /* bj@2x.png */,
 				F928C6881FF48DB2001F1A32 /* bj@3x.png */,
 				F928C6841FF48BE4001F1A32 /* bj_@2x.png */,
 				F928C6831FF48BE3001F1A32 /* bj_@3x.png */,
-				F90FCD831FF396F500BD807C /* click@2x.png */,
-				F90FCD851FF396F600BD807C /* click@3x.png */,
 				F90FCD881FF396F600BD807C /* fly@2x.png */,
 				F90FCD841FF396F500BD807C /* fly@3x.png */,
-				F90FCD861FF396F600BD807C /* not@2x.png */,
-				F90FCD871FF396F600BD807C /* not@3x.png */,
 				F90FCD821FF396F400BD807C /* redpacket_open@2x.png */,
 				F90FCD8C1FF396F700BD807C /* redpacket_open@3x.png */,
 				F90FCD811FF396F400BD807C /* redpacket@2x.png */,
@@ -2023,6 +2034,7 @@
 				F957C20E1FE3B28D0090B19B /* assist@3x.png in Resources */,
 				F94AA9C01FEB59DA0021B980 /* hint@2x.png in Resources */,
 				F957C2081FE3B28D0090B19B /* balance@3x.png in Resources */,
+				F9C332E21FF4DE1C00779197 /* OpenRedPopView.xib in Resources */,
 				F924BA9C1FE252CF00830BF4 /* recommend@2x.png in Resources */,
 				F9DC69A51FDF8929007D384D /* MyShareViewController.xib in Resources */,
 				F928C69A1FF4A137001F1A32 /* bjCoupon@2x.png in Resources */,
@@ -2039,6 +2051,7 @@
 				2DDEDC071FD4DBD8007AEBF7 /* BuyLotteryViewController.xib in Resources */,
 				F9F2629C1FE8D7D000C2E60F /* closeperson@2x.png in Resources */,
 				F9D9F2A91FF22640006434DC /* CashAndIntegrationWaterViewController.xib in Resources */,
+				F9C332DE1FF4D5EF00779197 /* click@2x.png in Resources */,
 				F957C2041FE3B28D0090B19B /* usermine@3x.png in Resources */,
 				F9DC69AA1FDF8957007D384D /* MyHelpViewController.xib in Resources */,
 				F924BA9D1FE252CF00830BF4 /* stick@3x.png in Resources */,
@@ -2076,6 +2089,7 @@
 				2D4B1E831FDF684E0034B708 /* wode_select@2x.png in Resources */,
 				2D4B1E221FD8C9180034B708 /* ad_home2.png in Resources */,
 				2D4B1E881FDF684E0034B708 /* yuce@3x.png in Resources */,
+				F9C332E61FF4E5B500779197 /* guanbi@2x.png in Resources */,
 				F924BA981FE252CF00830BF4 /* phone@3x.png in Resources */,
 				F924BA921FE252CF00830BF4 /* password@3x.png in Resources */,
 				2D4B1E8A1FDF684E0034B708 /* yuce_defealt@3x.png in Resources */,
@@ -2106,7 +2120,6 @@
 				F94AA9BF1FEB59DA0021B980 /* authentication@2x.png in Resources */,
 				2D4B1E861FDF684E0034B708 /* yishoucang@3x.png in Resources */,
 				F957C2061FE3B28D0090B19B /* integral@2x.png in Resources */,
-				F90FCD911FF396F700BD807C /* click@3x.png in Resources */,
 				F928C6B41FF4BA40001F1A32 /* increase@3x.png in Resources */,
 				2D4B1EA21FDFC5F30034B708 /* NewsTableViewCell.xib in Resources */,
 				F928C69D1FF4A137001F1A32 /* stale@2x.png in Resources */,
@@ -2196,12 +2209,10 @@
 				2D4B1E811FDF684E0034B708 /* wode_defealt@2x.png in Resources */,
 				F94AA9E11FEB7B780021B980 /* weixin@3x.png in Resources */,
 				2DDEDC161FD4DC16007AEBF7 /* MineViewController.xib in Resources */,
-				F90FCD8F1FF396F700BD807C /* click@2x.png in Resources */,
 				F928C6861FF48BE4001F1A32 /* bj_@2x.png in Resources */,
 				F9DC69961FDF878D007D384D /* MyOrderListViewController.xib in Resources */,
 				F924BAA91FE252CF00830BF4 /* stick@2x.png in Resources */,
 				2D4B1E401FDF652C0034B708 /* HomeMenuItemView.xib in Resources */,
-				F90FCD931FF396F700BD807C /* not@3x.png in Resources */,
 				F90FCD981FF396F700BD807C /* redpacket_open@3x.png in Resources */,
 				F957C2141FE3B28D0090B19B /* packet@3x.png in Resources */,
 				F957C20D1FE3B28D0090B19B /* share@2x.png in Resources */,
@@ -2213,7 +2224,6 @@
 				F94AA9EA1FEB9BD50021B980 /* banker@2x.png in Resources */,
 				2D739C421FE369DE00264044 /* checkBox_checked@3x.png in Resources */,
 				2D4B1E791FDF684E0034B708 /* home_select@2x.png in Resources */,
-				F90FCD921FF396F700BD807C /* not@2x.png in Resources */,
 				2D4B1E6B1FDF684E0034B708 /* bifenzhibo@2x.png in Resources */,
 				2D4B1E3A1FDE717C0034B708 /* newBack@2x.png in Resources */,
 				F94AA9D31FEB66FF0021B980 /* WithdrawalsViewController.xib in Resources */,
@@ -2227,6 +2237,7 @@
 				F93204F51FECF98C00E22A27 /* WBInputPopView.xib in Resources */,
 				2D4B1E771FDF684E0034B708 /* home_defealt@2x.png in Resources */,
 				F928C6991FF4A137001F1A32 /* dotted@3x.png in Resources */,
+				F9C332E71FF4E5B500779197 /* guanbi@3x.png in Resources */,
 				F928C6981FF4A137001F1A32 /* dotted@2x.png in Resources */,
 				2D4B1E891FDF684E0034B708 /* yuce_defealt@2x.png in Resources */,
 				F9BD1B521FE8B21600C1C71A /* FirstBankCardSetViewController.xib in Resources */,
@@ -2241,8 +2252,10 @@
 				2D4B1E7D1FDF684E0034B708 /* quanzi_select@2x.png in Resources */,
 				2D4B1E6C1FDF684E0034B708 /* bifenzhibo@3x.png in Resources */,
 				F928C68A1FF48DB3001F1A32 /* bj@3x.png in Resources */,
+				F9C332DD1FF4D5EF00779197 /* click@3x.png in Resources */,
 				F9BD1B451FE8A27100C1C71A /* rightIcon@2x.png in Resources */,
 				F94AA9BE1FEB59DA0021B980 /* eliminate@2x.png in Resources */,
+				F9C332DC1FF4D5EF00779197 /* cannot@2x.png in Resources */,
 				F957C2051FE3B28D0090B19B /* Withdraw@2x.png in Resources */,
 				2D4B1E371FDE241F0034B708 /* JCZQPlayViewController.xib in Resources */,
 				F924BA991FE252CF00830BF4 /* captcha@3x.png in Resources */,
@@ -2335,6 +2348,7 @@
 				2DDEDE791FD568C9007AEBF7 /* AFImageDownloader.m in Sources */,
 				2D739C211FE2611C00264044 /* IQTitleBarButtonItem.m in Sources */,
 				2D4B174E1FD7B9270034B708 /* WBAdsImgView.m in Sources */,
+				F9C332E31FF4DE1C00779197 /* OpenRedPopView.m in Sources */,
 				2D739C1C1FE2611C00264044 /* IQKeyboardManager.m in Sources */,
 				F93204F41FECF98C00E22A27 /* WBInputPopView.m in Sources */,
 				2DDEDC3D1FD521D0007AEBF7 /* GTMBase64.m in Sources */,

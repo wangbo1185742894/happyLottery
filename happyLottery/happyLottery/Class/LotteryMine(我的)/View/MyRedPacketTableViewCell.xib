@@ -22,7 +22,7 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bj.png" translatesAutoresizingMaskIntoConstraints="NO" id="qkB-iF-EdM">
                         <rect key="frame" x="8" y="2" width="304" height="98"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="q0V-sZ-6Wh">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="q0V-sZ-6Wh">
                         <rect key="frame" x="16" y="16" width="69" height="68"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="68" id="B69-9C-bWj"/>
@@ -40,7 +40,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="来自： 活动赠送" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPa-IS-U8G">
-                        <rect key="frame" x="93" y="36" width="165" height="21"/>
+                        <rect key="frame" x="93" y="41" width="165" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="caK-k4-QtX"/>
                             <constraint firstAttribute="width" constant="165" id="ria-Q2-5hg"/>
@@ -50,7 +50,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017.12.25到期" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qmD-YM-XlR">
-                        <rect key="frame" x="93" y="63" width="156" height="21"/>
+                        <rect key="frame" x="93" y="68" width="156" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="156" id="6N1-Hg-1Hv"/>
                             <constraint firstAttribute="height" constant="21" id="hpf-5m-fa3"/>
@@ -71,7 +71,7 @@
                     <constraint firstItem="AoG-vV-PWc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="2lN-GD-uXc"/>
                     <constraint firstItem="qmD-YM-XlR" firstAttribute="leading" secondItem="q0V-sZ-6Wh" secondAttribute="trailing" constant="8" id="8x9-WW-7QP"/>
                     <constraint firstAttribute="trailing" secondItem="G3Y-YP-4ch" secondAttribute="trailing" constant="24" id="Mb4-RG-lDl"/>
-                    <constraint firstItem="TPa-IS-U8G" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="25" id="TAy-Co-Kfe"/>
+                    <constraint firstItem="TPa-IS-U8G" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="30" id="TAy-Co-Kfe"/>
                     <constraint firstItem="q0V-sZ-6Wh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="ZJR-z5-LAO"/>
                     <constraint firstAttribute="trailing" secondItem="qkB-iF-EdM" secondAttribute="trailing" constant="8" id="cOP-p7-MHa"/>
                     <constraint firstItem="qkB-iF-EdM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="epW-rB-faQ"/>

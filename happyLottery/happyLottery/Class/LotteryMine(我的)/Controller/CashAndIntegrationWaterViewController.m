@@ -66,13 +66,14 @@
             self.tableView2.hidden = YES;
             [listCashBlotterArray removeAllObjects];
             [self getCashBlotterClient];
-           
+           break;
     case 1:
               self.title = @"积分明细";
             self.tableView2.hidden = NO;
             self.tableView1.hidden = YES;
                 [listScoreBlotterArray removeAllObjects];
             [self getScoreBlotterClient];
+            break;
     default:
         break;
     }
