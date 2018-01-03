@@ -32,7 +32,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"登陆";
+    self.title = @"登录";
     self.memberMan.delegate = self;
     self.userTextField.delegate = self;
     self.passwordTextField.delegate = self;
@@ -73,11 +73,11 @@
     [GlobalInstance instance].curUser = user;
     
     if (success) {
-        [self showPromptText: @"登陆成功"  hideAfterDelay: 1.7];
+        [self showPromptText: @"登录成功"  hideAfterDelay: 1.7];
         [self saveUserInfo];
         [self.navigationController dismissViewControllerAnimated:NO completion:nil];
     }else{
-        //[self showPromptText: @"登陆失败"  hideAfterDelay: 1.7];
+        //[self showPromptText: @"登录失败"  hideAfterDelay: 1.7];
         [self showPromptText:msg];
     }
 }

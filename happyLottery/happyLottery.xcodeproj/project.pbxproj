@@ -168,6 +168,15 @@
 		2DDEDE7F1FD568C9007AEBF7 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDEDC961FD568A4007AEBF7 /* UIProgressView+AFNetworking.m */; };
 		2DDEDE801FD568C9007AEBF7 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDEDC981FD568A4007AEBF7 /* UIRefreshControl+AFNetworking.m */; };
 		2DDEDE811FD568C9007AEBF7 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDEDC9A1FD568A4007AEBF7 /* UIWebView+AFNetworking.m */; };
+		F90058DE1FF61327009C8E1C /* NoticeCenterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F90058DC1FF61327009C8E1C /* NoticeCenterTableViewCell.m */; };
+		F90058DF1FF61327009C8E1C /* NoticeCenterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F90058DD1FF61327009C8E1C /* NoticeCenterTableViewCell.xib */; };
+		F90058E51FF61619009C8E1C /* noticedelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F90058E11FF61618009C8E1C /* noticedelete@2x.png */; };
+		F90058E61FF61619009C8E1C /* noticedelete@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F90058E21FF61618009C8E1C /* noticedelete@3x.png */; };
+		F90058E71FF61619009C8E1C /* noticeempty@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F90058E31FF61619009C8E1C /* noticeempty@3x.png */; };
+		F90058E81FF61619009C8E1C /* noticeempty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F90058E41FF61619009C8E1C /* noticeempty@2x.png */; };
+		F90058EC1FF61AEC009C8E1C /* NoticeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F90058EA1FF61AEC009C8E1C /* NoticeDetailViewController.m */; };
+		F90058ED1FF61AEC009C8E1C /* NoticeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F90058EB1FF61AEC009C8E1C /* NoticeDetailViewController.xib */; };
+		F9085B051FFB20D500DC0531 /* LoadData.m in Sources */ = {isa = PBXBuildFile; fileRef = F9085B031FFB20D500DC0531 /* LoadData.m */; };
 		F90FCD551FF34D1C00BD807C /* MyRedPacketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F90FCD531FF34D1C00BD807C /* MyRedPacketViewController.m */; };
 		F90FCD561FF34D1C00BD807C /* MyRedPacketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F90FCD541FF34D1C00BD807C /* MyRedPacketViewController.xib */; };
 		F90FCD5A1FF34D5000BD807C /* MyRedPacketTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F90FCD581FF34D5000BD807C /* MyRedPacketTableViewCell.m */; };
@@ -370,6 +379,22 @@
 		F9F262B71FE8F4AE00C2E60F /* UIImage+RSKImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F262AF1FE8F4AE00C2E60F /* UIImage+RSKImageCropper.m */; };
 		F9F262BB1FE9072400C2E60F /* PaySetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F262B91FE9072400C2E60F /* PaySetViewController.m */; };
 		F9F262BC1FE9072400C2E60F /* PaySetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9F262BA1FE9072400C2E60F /* PaySetViewController.xib */; };
+		F9F6CA961FF5D6B100A49F71 /* inform@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F6CA8A1FF5D6AD00A49F71 /* inform@3x.png */; };
+		F9F6CA971FF5D6B100A49F71 /* voice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F6CA8B1FF5D6AD00A49F71 /* voice@2x.png */; };
+		F9F6CA981FF5D6B100A49F71 /* about@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F6CA8C1FF5D6AD00A49F71 /* about@2x.png */; };
+		F9F6CA991FF5D6B100A49F71 /* button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F6CA8D1FF5D6AD00A49F71 /* button@3x.png */; };
+		F9F6CA9A1FF5D6B100A49F71 /* about@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F6CA8E1FF5D6AE00A49F71 /* about@3x.png */; };
+		F9F6CA9B1FF5D6B100A49F71 /* button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F6CA8F1FF5D6AE00A49F71 /* button@2x.png */; };
+		F9F6CA9C1FF5D6B100A49F71 /* arrows@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F6CA901FF5D6AE00A49F71 /* arrows@3x.png */; };
+		F9F6CA9D1FF5D6B100A49F71 /* voice@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F6CA911FF5D6AE00A49F71 /* voice@3x.png */; };
+		F9F6CA9E1FF5D6B100A49F71 /* download@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F6CA921FF5D6AF00A49F71 /* download@3x.png */; };
+		F9F6CA9F1FF5D6B100A49F71 /* arrows@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F6CA931FF5D6B000A49F71 /* arrows@2x.png */; };
+		F9F6CAA01FF5D6B100A49F71 /* inform@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F6CA941FF5D6B000A49F71 /* inform@2x.png */; };
+		F9F6CAA11FF5D6B100A49F71 /* download@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F6CA951FF5D6B100A49F71 /* download@2x.png */; };
+		F9F6CAA51FF5D80900A49F71 /* SystemSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F6CAA31FF5D80900A49F71 /* SystemSetViewController.m */; };
+		F9F6CAA61FF5D80900A49F71 /* SystemSetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9F6CAA41FF5D80900A49F71 /* SystemSetViewController.xib */; };
+		F9F6CAAA1FF60BCF00A49F71 /* NoticeCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F6CAA81FF60BCF00A49F71 /* NoticeCenterViewController.m */; };
+		F9F6CAAB1FF60BCF00A49F71 /* NoticeCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9F6CAA91FF60BCF00A49F71 /* NoticeCenterViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -663,6 +688,18 @@
 		2DDEDC981FD568A4007AEBF7 /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		2DDEDC991FD568A4007AEBF7 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		2DDEDC9A1FD568A4007AEBF7 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		F90058DB1FF61327009C8E1C /* NoticeCenterTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeCenterTableViewCell.h; sourceTree = "<group>"; };
+		F90058DC1FF61327009C8E1C /* NoticeCenterTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeCenterTableViewCell.m; sourceTree = "<group>"; };
+		F90058DD1FF61327009C8E1C /* NoticeCenterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoticeCenterTableViewCell.xib; sourceTree = "<group>"; };
+		F90058E11FF61618009C8E1C /* noticedelete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "noticedelete@2x.png"; sourceTree = "<group>"; };
+		F90058E21FF61618009C8E1C /* noticedelete@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "noticedelete@3x.png"; sourceTree = "<group>"; };
+		F90058E31FF61619009C8E1C /* noticeempty@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "noticeempty@3x.png"; sourceTree = "<group>"; };
+		F90058E41FF61619009C8E1C /* noticeempty@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "noticeempty@2x.png"; sourceTree = "<group>"; };
+		F90058E91FF61AEC009C8E1C /* NoticeDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeDetailViewController.h; sourceTree = "<group>"; };
+		F90058EA1FF61AEC009C8E1C /* NoticeDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeDetailViewController.m; sourceTree = "<group>"; };
+		F90058EB1FF61AEC009C8E1C /* NoticeDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoticeDetailViewController.xib; sourceTree = "<group>"; };
+		F9085B031FFB20D500DC0531 /* LoadData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadData.m; sourceTree = "<group>"; };
+		F9085B041FFB20D500DC0531 /* LoadData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadData.h; sourceTree = "<group>"; };
 		F90FCD521FF34D1C00BD807C /* MyRedPacketViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyRedPacketViewController.h; sourceTree = "<group>"; };
 		F90FCD531FF34D1C00BD807C /* MyRedPacketViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyRedPacketViewController.m; sourceTree = "<group>"; };
 		F90FCD541FF34D1C00BD807C /* MyRedPacketViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyRedPacketViewController.xib; sourceTree = "<group>"; };
@@ -907,6 +944,24 @@
 		F9F262B81FE9072400C2E60F /* PaySetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaySetViewController.h; sourceTree = "<group>"; };
 		F9F262B91FE9072400C2E60F /* PaySetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaySetViewController.m; sourceTree = "<group>"; };
 		F9F262BA1FE9072400C2E60F /* PaySetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaySetViewController.xib; sourceTree = "<group>"; };
+		F9F6CA8A1FF5D6AD00A49F71 /* inform@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inform@3x.png"; sourceTree = "<group>"; };
+		F9F6CA8B1FF5D6AD00A49F71 /* voice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "voice@2x.png"; sourceTree = "<group>"; };
+		F9F6CA8C1FF5D6AD00A49F71 /* about@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about@2x.png"; sourceTree = "<group>"; };
+		F9F6CA8D1FF5D6AD00A49F71 /* button@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button@3x.png"; sourceTree = "<group>"; };
+		F9F6CA8E1FF5D6AE00A49F71 /* about@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about@3x.png"; sourceTree = "<group>"; };
+		F9F6CA8F1FF5D6AE00A49F71 /* button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button@2x.png"; sourceTree = "<group>"; };
+		F9F6CA901FF5D6AE00A49F71 /* arrows@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrows@3x.png"; sourceTree = "<group>"; };
+		F9F6CA911FF5D6AE00A49F71 /* voice@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "voice@3x.png"; sourceTree = "<group>"; };
+		F9F6CA921FF5D6AF00A49F71 /* download@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "download@3x.png"; sourceTree = "<group>"; };
+		F9F6CA931FF5D6B000A49F71 /* arrows@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrows@2x.png"; sourceTree = "<group>"; };
+		F9F6CA941FF5D6B000A49F71 /* inform@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inform@2x.png"; sourceTree = "<group>"; };
+		F9F6CA951FF5D6B100A49F71 /* download@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "download@2x.png"; sourceTree = "<group>"; };
+		F9F6CAA21FF5D80900A49F71 /* SystemSetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SystemSetViewController.h; sourceTree = "<group>"; };
+		F9F6CAA31FF5D80900A49F71 /* SystemSetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SystemSetViewController.m; sourceTree = "<group>"; };
+		F9F6CAA41FF5D80900A49F71 /* SystemSetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SystemSetViewController.xib; sourceTree = "<group>"; };
+		F9F6CAA71FF60BCF00A49F71 /* NoticeCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeCenterViewController.h; sourceTree = "<group>"; };
+		F9F6CAA81FF60BCF00A49F71 /* NoticeCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeCenterViewController.m; sourceTree = "<group>"; };
+		F9F6CAA91FF60BCF00A49F71 /* NoticeCenterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoticeCenterViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1175,6 +1230,9 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				F91565D81FFC7BCE00E254CE /* guidePage */,
+				F90058E01FF61609009C8E1C /* notice */,
+				F9F6CA891FF5D69800A49F71 /* systemSet */,
 				F928C6AA1FF4BA24001F1A32 /* water */,
 				F928C68F1FF4A0B1001F1A32 /* Coupon */,
 				F90FCD601FF380F000BD807C /* RedPacket */,
@@ -1385,6 +1443,15 @@
 				F928C6A01FF4A190001F1A32 /* MyCouponViewController.h */,
 				F928C6A11FF4A190001F1A32 /* MyCouponViewController.m */,
 				F928C6A21FF4A190001F1A32 /* MyCouponViewController.xib */,
+				F9F6CAA21FF5D80900A49F71 /* SystemSetViewController.h */,
+				F9F6CAA31FF5D80900A49F71 /* SystemSetViewController.m */,
+				F9F6CAA41FF5D80900A49F71 /* SystemSetViewController.xib */,
+				F9F6CAA71FF60BCF00A49F71 /* NoticeCenterViewController.h */,
+				F9F6CAA81FF60BCF00A49F71 /* NoticeCenterViewController.m */,
+				F9F6CAA91FF60BCF00A49F71 /* NoticeCenterViewController.xib */,
+				F90058E91FF61AEC009C8E1C /* NoticeDetailViewController.h */,
+				F90058EA1FF61AEC009C8E1C /* NoticeDetailViewController.m */,
+				F90058EB1FF61AEC009C8E1C /* NoticeDetailViewController.xib */,
 				F9BD1B481FE8A91500C1C71A /* personnalSet */,
 			);
 			path = Controller;
@@ -1426,6 +1493,9 @@
 				F928C6A51FF4A268001F1A32 /* MyCouponTableViewCell.h */,
 				F928C6A61FF4A268001F1A32 /* MyCouponTableViewCell.m */,
 				F928C6A71FF4A268001F1A32 /* MyCouponTableViewCell.xib */,
+				F90058DB1FF61327009C8E1C /* NoticeCenterTableViewCell.h */,
+				F90058DC1FF61327009C8E1C /* NoticeCenterTableViewCell.m */,
+				F90058DD1FF61327009C8E1C /* NoticeCenterTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1545,6 +1615,8 @@
 		2DDEDC3E1FD52206007AEBF7 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				F9085B041FFB20D500DC0531 /* LoadData.h */,
+				F9085B031FFB20D500DC0531 /* LoadData.m */,
 				2D4B1E961FDF98600034B708 /* LoopProgressView.h */,
 				2D4B1E971FDF98600034B708 /* LoopProgressView.m */,
 				2DDEDC3A1FD521CF007AEBF7 /* GTMBase64.h */,
@@ -1667,6 +1739,17 @@
 			path = "UIKit+AFNetworking";
 			sourceTree = "<group>";
 		};
+		F90058E01FF61609009C8E1C /* notice */ = {
+			isa = PBXGroup;
+			children = (
+				F90058E11FF61618009C8E1C /* noticedelete@2x.png */,
+				F90058E21FF61618009C8E1C /* noticedelete@3x.png */,
+				F90058E41FF61619009C8E1C /* noticeempty@2x.png */,
+				F90058E31FF61619009C8E1C /* noticeempty@3x.png */,
+			);
+			name = notice;
+			sourceTree = "<group>";
+		};
 		F90FCD601FF380F000BD807C /* RedPacket */ = {
 			isa = PBXGroup;
 			children = (
@@ -1693,6 +1776,13 @@
 				F90FCD6D1FF3810E00BD807C /* stale@3x.png */,
 			);
 			name = RedPacket;
+			sourceTree = "<group>";
+		};
+		F91565D81FFC7BCE00E254CE /* guidePage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = guidePage;
 			sourceTree = "<group>";
 		};
 		F924BA791FE2528B00830BF4 /* login&registe */ = {
@@ -1921,6 +2011,25 @@
 			path = RSKImageCropper;
 			sourceTree = "<group>";
 		};
+		F9F6CA891FF5D69800A49F71 /* systemSet */ = {
+			isa = PBXGroup;
+			children = (
+				F9F6CA8C1FF5D6AD00A49F71 /* about@2x.png */,
+				F9F6CA8E1FF5D6AE00A49F71 /* about@3x.png */,
+				F9F6CA931FF5D6B000A49F71 /* arrows@2x.png */,
+				F9F6CA901FF5D6AE00A49F71 /* arrows@3x.png */,
+				F9F6CA8F1FF5D6AE00A49F71 /* button@2x.png */,
+				F9F6CA8D1FF5D6AD00A49F71 /* button@3x.png */,
+				F9F6CA951FF5D6B100A49F71 /* download@2x.png */,
+				F9F6CA921FF5D6AF00A49F71 /* download@3x.png */,
+				F9F6CA941FF5D6B000A49F71 /* inform@2x.png */,
+				F9F6CA8A1FF5D6AD00A49F71 /* inform@3x.png */,
+				F9F6CA8B1FF5D6AD00A49F71 /* voice@2x.png */,
+				F9F6CA911FF5D6AE00A49F71 /* voice@3x.png */,
+			);
+			name = systemSet;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2040,6 +2149,7 @@
 				F928C69A1FF4A137001F1A32 /* bjCoupon@2x.png in Resources */,
 				F9DC699B1FDF888F007D384D /* MyFavoriteViewController.xib in Resources */,
 				F957C1CE1FE36B3F0090B19B /* close@3x.png in Resources */,
+				F9F6CA9B1FF5D6B100A49F71 /* button@2x.png in Resources */,
 				F928C69B1FF4A137001F1A32 /* bjCoupon@3x.png in Resources */,
 				F90FCD5B1FF34D5000BD807C /* MyRedPacketTableViewCell.xib in Resources */,
 				2D739BF01FE2555E00264044 /* RegisterViewController.xib in Resources */,
@@ -2059,10 +2169,12 @@
 				F94AA9C41FEB59DA0021B980 /* authentication@3x.png in Resources */,
 				F9F2629D1FE8D7D000C2E60F /* closeperson@3x.png in Resources */,
 				F957C1F81FE3B28D0090B19B /* packet@2x.png in Resources */,
+				F9F6CAA11FF5D6B100A49F71 /* download@2x.png in Resources */,
 				2D4B1E751FDF684E0034B708 /* fenleixian@2x.png in Resources */,
 				F93204EF1FECF98B00E22A27 /* pass2.png in Resources */,
 				F94AA9B31FEB59DA0021B980 /* checked@2x.png in Resources */,
 				F94AA9B81FEB59DA0021B980 /* eliminate@3x.png in Resources */,
+				F9F6CAAB1FF60BCF00A49F71 /* NoticeCenterViewController.xib in Resources */,
 				F957C2011FE3B28D0090B19B /* news@3x.png in Resources */,
 				F957C2031FE3B28D0090B19B /* ticket@3x.png in Resources */,
 				2D4B1E6F1FDF684E0034B708 /* faxian_defealt@2x.png in Resources */,
@@ -2079,6 +2191,7 @@
 				F957C1FF1FE3B28D0090B19B /* return@3x.png in Resources */,
 				2D4B1E7C1FDF684E0034B708 /* quanzi_defealt@3x.png in Resources */,
 				F928C68D1FF49AB3001F1A32 /* empty@3x.png in Resources */,
+				F9F6CA991FF5D6B100A49F71 /* button@3x.png in Resources */,
 				F957C2001FE3B28D0090B19B /* integral@3x.png in Resources */,
 				2D4B1E7E1FDF684E0034B708 /* quanzi_select@3x.png in Resources */,
 				F928C6A41FF4A190001F1A32 /* MyCouponViewController.xib in Resources */,
@@ -2110,6 +2223,7 @@
 				2D4B1E3B1FDE717C0034B708 /* newBack@3x.png in Resources */,
 				2D4B1E761FDF684E0034B708 /* fenleixian@3x.png in Resources */,
 				F928C6B81FF4BA40001F1A32 /* decrease@3x.png in Resources */,
+				F90058E81FF61619009C8E1C /* noticeempty@2x.png in Resources */,
 				F957C20C1FE3B28D0090B19B /* set@3x.png in Resources */,
 				F91C26341FEA0D7C0056CBDD /* ChangePayPWDViewController.xib in Resources */,
 				2D4B1E6D1FDF684E0034B708 /* duibiao@3x.png in Resources */,
@@ -2119,6 +2233,7 @@
 				2D4B1E8B1FDF684E0034B708 /* yuce_select@2x.png in Resources */,
 				F94AA9BF1FEB59DA0021B980 /* authentication@2x.png in Resources */,
 				2D4B1E861FDF684E0034B708 /* yishoucang@3x.png in Resources */,
+				F9F6CA971FF5D6B100A49F71 /* voice@2x.png in Resources */,
 				F957C2061FE3B28D0090B19B /* integral@2x.png in Resources */,
 				F928C6B41FF4BA40001F1A32 /* increase@3x.png in Resources */,
 				2D4B1EA21FDFC5F30034B708 /* NewsTableViewCell.xib in Resources */,
@@ -2138,6 +2253,7 @@
 				2D4B1EB01FDFCDA00034B708 /* arrow_down@3x.png in Resources */,
 				F957C20B1FE3B28D0090B19B /*  integration@2x.png in Resources */,
 				F957C1F91FE3B28D0090B19B /* ticket@2x.png in Resources */,
+				F90058E71FF61619009C8E1C /* noticeempty@3x.png in Resources */,
 				F9BD1B471FE8A27100C1C71A /* logo@3x.png in Resources */,
 				2DDEDE761FD568C9007AEBF7 /* LICENSE in Resources */,
 				F90FCD941FF396F700BD807C /* fly@2x.png in Resources */,
@@ -2146,7 +2262,9 @@
 				F928C68E1FF49AB3001F1A32 /* empty@2x.png in Resources */,
 				F94AA9BD1FEB59DA0021B980 /* checked@3x.png in Resources */,
 				2D4B1EB31FDFCDAF0034B708 /* arrow_up@2x.png in Resources */,
+				F9F6CA9A1FF5D6B100A49F71 /* about@3x.png in Resources */,
 				F93204ED1FECF98B00E22A27 /* pass1.png in Resources */,
+				F9F6CA9C1FF5D6B100A49F71 /* arrows@3x.png in Resources */,
 				F94AA9E21FEB7B780021B980 /* bank@2x.png in Resources */,
 				F94AA9EE1FEB9BD50021B980 /* attention@2x.png in Resources */,
 				F94AA9E31FEB7B780021B980 /* zfb@2x.png in Resources */,
@@ -2154,6 +2272,7 @@
 				2D4B1E721FDF684E0034B708 /* faxian_select@3x.png in Resources */,
 				F924BAA21FE252CF00830BF4 /* password@2x.png in Resources */,
 				F9F262B11FE8F4AE00C2E60F /* RSKImageCropperStrings.bundle in Resources */,
+				F9F6CA961FF5D6B100A49F71 /* inform@3x.png in Resources */,
 				2D4B1E821FDF684E0034B708 /* wode_defealt@3x.png in Resources */,
 				2D4B1E851FDF684E0034B708 /* yishoucang@2x.png in Resources */,
 				2D4B1E801FDF684E0034B708 /* weishoucang@3x.png in Resources */,
@@ -2182,8 +2301,10 @@
 				2DDEDC111FD4DC03007AEBF7 /* GroupViewController.xib in Resources */,
 				F928C69F1FF4A137001F1A32 /* stale@3x.png in Resources */,
 				F9DC69A01FDF88E5007D384D /* IntegralMallViewController.xib in Resources */,
+				F9F6CA9D1FF5D6B100A49F71 /* voice@3x.png in Resources */,
 				2D4B1EAF1FDFCDA00034B708 /* arrow_down@2x.png in Resources */,
 				F924BAA31FE252CF00830BF4 /* recommend@3x.png in Resources */,
+				F90058DF1FF61327009C8E1C /* NoticeCenterTableViewCell.xib in Resources */,
 				F94AA9DF1FEB7B780021B980 /* kuaijie@3x.png in Resources */,
 				F928C6B61FF4BA40001F1A32 /* decrease@2x.png in Resources */,
 				2DDEDE771FD568C9007AEBF7 /* README.md in Resources */,
@@ -2196,7 +2317,9 @@
 				2D4B1E201FD8C9180034B708 /* ad_home1.png in Resources */,
 				F928C6B71FF4BA40001F1A32 /* add@2x.png in Resources */,
 				2D4B1EB41FDFCDAF0034B708 /* arrow_up@3x.png in Resources */,
+				F9F6CAA01FF5D6B100A49F71 /* inform@2x.png in Resources */,
 				F957C1FC1FE3B28D0090B19B /* assist@2x.png in Resources */,
+				F9F6CAA61FF5D80900A49F71 /* SystemSetViewController.xib in Resources */,
 				2D4B1E951FDF7BD20034B708 /* NewsListCell.xib in Resources */,
 				F924BA971FE252CF00830BF4 /* phone@2x.png in Resources */,
 				F957C2131FE3B28D0090B19B /* collect@3x.png in Resources */,
@@ -2205,9 +2328,11 @@
 				F94AA9BA1FEB59DA0021B980 /* list@3x.png in Resources */,
 				F9BD1B5C1FE8B41900C1C71A /* MyNickSetViewController.xib in Resources */,
 				F928C6B31FF4BA40001F1A32 /* lessen@3x.png in Resources */,
+				F9F6CA9F1FF5D6B100A49F71 /* arrows@2x.png in Resources */,
 				2D4B1E1C1FD8C8080034B708 /* launchImage@2x.png in Resources */,
 				2D4B1E811FDF684E0034B708 /* wode_defealt@2x.png in Resources */,
 				F94AA9E11FEB7B780021B980 /* weixin@3x.png in Resources */,
+				F90058ED1FF61AEC009C8E1C /* NoticeDetailViewController.xib in Resources */,
 				2DDEDC161FD4DC16007AEBF7 /* MineViewController.xib in Resources */,
 				F928C6861FF48BE4001F1A32 /* bj_@2x.png in Resources */,
 				F9DC69961FDF878D007D384D /* MyOrderListViewController.xib in Resources */,
@@ -2234,6 +2359,7 @@
 				2D4B1E701FDF684E0034B708 /* faxian_defealt@3x.png in Resources */,
 				F94AA99D1FEB46770021B980 /* TopUpsViewController.xib in Resources */,
 				F90FCD8E1FF396F700BD807C /* redpacket_open@2x.png in Resources */,
+				F9F6CA981FF5D6B100A49F71 /* about@2x.png in Resources */,
 				F93204F51FECF98C00E22A27 /* WBInputPopView.xib in Resources */,
 				2D4B1E771FDF684E0034B708 /* home_defealt@2x.png in Resources */,
 				F928C6991FF4A137001F1A32 /* dotted@3x.png in Resources */,
@@ -2242,6 +2368,7 @@
 				2D4B1E891FDF684E0034B708 /* yuce_defealt@2x.png in Resources */,
 				F9BD1B521FE8B21600C1C71A /* FirstBankCardSetViewController.xib in Resources */,
 				F90FCD8D1FF396F700BD807C /* redpacket@2x.png in Resources */,
+				F90058E61FF61619009C8E1C /* noticedelete@3x.png in Resources */,
 				F95C69F21FE7AD0200126C6A /* PersonnalCenterViewController.xib in Resources */,
 				F9BD1B571FE8B22800C1C71A /* AddBankCardViewController.xib in Resources */,
 				F90FCD901FF396F700BD807C /* fly@3x.png in Resources */,
@@ -2251,10 +2378,12 @@
 				F957C1F61FE3B28D0090B19B /* return@2x.png in Resources */,
 				2D4B1E7D1FDF684E0034B708 /* quanzi_select@2x.png in Resources */,
 				2D4B1E6C1FDF684E0034B708 /* bifenzhibo@3x.png in Resources */,
+				F90058E51FF61619009C8E1C /* noticedelete@2x.png in Resources */,
 				F928C68A1FF48DB3001F1A32 /* bj@3x.png in Resources */,
 				F9C332DD1FF4D5EF00779197 /* click@3x.png in Resources */,
 				F9BD1B451FE8A27100C1C71A /* rightIcon@2x.png in Resources */,
 				F94AA9BE1FEB59DA0021B980 /* eliminate@2x.png in Resources */,
+				F9F6CA9E1FF5D6B100A49F71 /* download@3x.png in Resources */,
 				F9C332DC1FF4D5EF00779197 /* cannot@2x.png in Resources */,
 				F957C2051FE3B28D0090B19B /* Withdraw@2x.png in Resources */,
 				2D4B1E371FDE241F0034B708 /* JCZQPlayViewController.xib in Resources */,
@@ -2286,12 +2415,15 @@
 			files = (
 				F9BD1B511FE8B21600C1C71A /* FirstBankCardSetViewController.m in Sources */,
 				2D739C161FE2611C00264044 /* IQNSArray+Sort.m in Sources */,
+				F9F6CAA51FF5D80900A49F71 /* SystemSetViewController.m in Sources */,
 				2D739C1F1FE2611C00264044 /* IQBarButtonItem.m in Sources */,
+				F90058DE1FF61327009C8E1C /* NoticeCenterTableViewCell.m in Sources */,
 				2DDEDE611FD568C9007AEBF7 /* SDWebImageDecoder.m in Sources */,
 				F9F262B41FE8F4AE00C2E60F /* RSKInternalUtility.m in Sources */,
 				2D739C5E1FE3B31500264044 /* FMDatabaseQueue.m in Sources */,
 				2D739C221FE2611C00264044 /* IQToolbar.m in Sources */,
 				F9DC69AE1FDF898A007D384D /* MySettingViewController.m in Sources */,
+				F9F6CAAA1FF60BCF00A49F71 /* NoticeCenterViewController.m in Sources */,
 				F9DC69A41FDF8929007D384D /* MyShareViewController.m in Sources */,
 				2DDEDE781FD568C9007AEBF7 /* AFAutoPurgingImageCache.m in Sources */,
 				F9581A7F1FE0FA01009753AA /* LoginViewController.m in Sources */,
@@ -2393,6 +2525,7 @@
 				2D4B1EAB1FDFCCD30034B708 /* TableHeaderView.m in Sources */,
 				F9F262B31FE8F4AE00C2E60F /* RSKImageScrollView.m in Sources */,
 				2D739C201FE2611C00264044 /* IQPreviousNextView.m in Sources */,
+				F90058EC1FF61AEC009C8E1C /* NoticeDetailViewController.m in Sources */,
 				F9DC69951FDF878D007D384D /* MyOrderListViewController.m in Sources */,
 				2DDEDC151FD4DC16007AEBF7 /* MineViewController.m in Sources */,
 				2DDEDC411FD52513007AEBF7 /* LotteryManager.m in Sources */,
@@ -2413,6 +2546,7 @@
 				F9BD1B561FE8B22800C1C71A /* AddBankCardViewController.m in Sources */,
 				2DDEDE7D1FD568C9007AEBF7 /* UIButton+AFNetworking.m in Sources */,
 				2DDEDE751FD568C9007AEBF7 /* AFURLSessionManager.m in Sources */,
+				F9085B051FFB20D500DC0531 /* LoadData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

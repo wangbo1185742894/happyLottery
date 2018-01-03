@@ -47,5 +47,6 @@
 #define APIgetRedPacketByState      @"getRedPacketByState"
 #define APIopenRedPacket            @"openRedPacket"
 #define APIgetCouponByState            @"getCouponByState"
+#define APIupdateImage              @"headUrl"
 
 #endif /* API_h */

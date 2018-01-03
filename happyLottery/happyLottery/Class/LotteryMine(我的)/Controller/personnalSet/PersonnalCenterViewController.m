@@ -14,8 +14,10 @@
 #import "ChangePayPWDViewController.h"
 #import "FirstBankCardSetViewController.h"
 #import "BankCardSettingViewController.h"
+#import "LoadData.h"
 
-@interface PersonnalCenterViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate,RSKImageCropViewControllerDelegate>{
+
+@interface PersonnalCenterViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate,RSKImageCropViewControllerDelegate,MemberManagerDelegate>{
     
      NSString *titleStr;
 }
@@ -35,6 +37,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *updatePayPWDBtn;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottom;
 
+@property(nonatomic,strong)LoadData *loadDataTool;
 @end
 
 @implementation PersonnalCenterViewController
@@ -59,7 +62,7 @@
         self.top.constant = 88;
         self.bottom.constant = 34;
     }
-    
+    self.memberMan.delegate = self;
    
 }
 
@@ -75,6 +78,17 @@
     self.memberLab.text = self.curUser.cardCode;
     //[_userImage sd_setImageWithURL:[NSURL URLWithString:self.curUser.headUrl]];
     
+}
+
+-(void)updateImage:(BOOL)success errorMsg:(NSString *)msg{
+    
+    if ([msg isEqualToString:@"执行成功"]) {
+       // NSLog(@"%@",bankInfo);
+        //[self showPromptText: @"获得会员已绑定的银行卡列表成功" hideAfterDelay: 1.7];
+       
+    }else{
+        [self showPromptText: msg hideAfterDelay: 1.7];
+    }
 }
 
 - (IBAction)updateImage:(id)sender {
@@ -143,85 +157,50 @@
 - (IBAction)changeLoginPWD:(id)sender {
 }
 
-- (IBAction)quiteLogin:(id)sender {
-    self.curUser.isLogin = NO;
-    [self updateLoginStatus];
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
--(void)updateLoginStatus{
-    
-    if ([self.fmdb open]) {
-        NSString *mobile =self.curUser.mobile;
-        NSString * isLogin =@"0";
-        //update t_student set score = age where name = ‘jack’ ;
-        [self.fmdb executeUpdate:@"update  t_user_info set isLogin = ? where mobile = ?",isLogin, mobile];
-        [self.fmdb close];
-    }
-}
+
 
 
 #pragma mark UIActionSheetDelegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 0) {
-        // 拍照
-        if ([self isCameraAvailable] && [self doesCameraSupportTakingPhotos]) {
-            UIImagePickerController *controller = [[UIImagePickerController alloc] init];
-            controller.sourceType = UIImagePickerControllerSourceTypeCamera;
-            if ([self isFrontCameraAvailable]) {
-                controller.cameraDevice = UIImagePickerControllerCameraDeviceFront;
-            }
-            NSMutableArray *mediaTypes = [[NSMutableArray alloc] init];
-            [mediaTypes addObject:(__bridge NSString *)kUTTypeImage];
-            controller.mediaTypes = mediaTypes;
-            controller.delegate = self;
-            [self presentViewController:controller
-                               animated:YES
-                             completion:^(void){
-                                 NSLog(@"Picker View Controller is presented");
-                             }];
+         NSUInteger sourceType = 0;
+    // 判断是否支持相机
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        switch (buttonIndex) {
+            case 2:
+                // 取消
+                return;
+            case 0:
+                // 相机
+                sourceType =  UIImagePickerControllerSourceTypeCamera;
+                break;
+                
+            case 1:
+                // 相册
+                sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                break;
         }
-        else
-        {
-            NSLog(@"不支持拍照！");
-        }
-       
-        
-        
-        //        if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        //            [self.view makeToast:@"该设备不支持相机" duration:3 position:@"center"];
-        //            return ;
-        //        }
-        //        UIImagePickerController* picker = [[UIImagePickerController alloc] init];
-        //        picker.delegate = self;
-        //        picker.allowsEditing = YES;
-        //        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        //
-        //        [self presentViewController:picker animated:YES completion:nil];
-        
-    } else if (buttonIndex == 1) {
-        // 从相册中选取
-        if ([self isPhotoLibraryAvailable]) {
-            UIImagePickerController *controller = [[UIImagePickerController alloc] init];
-            controller.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-            NSMutableArray *mediaTypes = [[NSMutableArray alloc] init];
-            [mediaTypes addObject:(__bridge NSString *)kUTTypeImage];
-            controller.mediaTypes = mediaTypes;
-            controller.delegate = self;
-            [self presentViewController:controller
-                               animated:YES
-                             completion:^(void){
-                                 NSLog(@"Picker View Controller is presented");
-                             }];
-        }
-        
-        //        UIImagePickerController* picker = [[UIImagePickerController alloc] init];
-        //        picker.delegate = self;
-        //        picker.allowsEditing = YES;
-        //        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        //
-        //        [self presentViewController:picker animated:YES completion:nil];
     }
+    else {
+        if (buttonIndex == 2) {
+            
+            return;
+        } else {
+            sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+        }
+    }
+    
+    // 跳转到相机或相册页面
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    
+    imagePickerController.delegate = self;
+    
+    imagePickerController.allowsEditing = YES;
+    
+    imagePickerController.sourceType = sourceType;
+    
+    [self presentViewController:imagePickerController animated:YES completion:^{}];
+    
 }
 
 #pragma mark camera utility
@@ -271,18 +250,162 @@
 }
 
 #pragma 相册选择
+
+
+
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo NS_DEPRECATED_IOS(2_0, 3_0)
 {
     //
     
     //上传，等待回传设置
     //[self updateFaceRequest:image];
-    RSKImageCropViewController *imageCropVC = [[RSKImageCropViewController alloc] initWithImage:image cropMode:RSKImageCropModeCircle];
-    imageCropVC.delegate = self;
-    [self.navigationController pushViewController:imageCropVC animated:YES];
     
-    [picker dismissViewControllerAnimated:YES completion:nil];
+//
+//    NSString * BASE_URL = @"http://192.168.88.244:8086";
+////    UIImage * chosenImage = editingInfo[UIImagePickerControllerEditedImage];
+//    UIImageView * picImageView = (UIImageView *)[self.view viewWithTag:500];
+//    picImageView.image = image;
+//    // chosenImage = [self imageWithImageSimple:chosenImage scaledToSize:CGSizeMake(60, 60)];
+//
+//    NSData * imageData = UIImageJPEGRepresentation(image, 0.9);
+//     NSDictionary* uploadFaceDic=@{@"memberAvatar":@[imageData]};
+//    //    [self saveImage:chosenImage withName:@"avatar.png"];
+//    //    NSURL * filePath = [NSURL fileURLWithPath:[self documentFolderPath]];
+//    //将图片上传到服务器
+//    //    --------------------------------------------------------
+//    AFHTTPRequestOperationManager * manager = [[AFHTTPRequestOperationManager alloc]initWithBaseURL:nil];
+//    //[manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+//    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+//   //manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",@"text/javascript",@"text/json", nil];
+//    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/xml; charset=utf-8"];
+//    NSString * urlString = [NSString stringWithFormat:@"%@/app/head/url?",BASE_URL];
+//    NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
+//    NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithCapacity:1];
+//    //[dict setObject:[userDefaults objectForKey:@"user_id"] forKey:@"user_id"];
+//    [manager POST:urlString parameters:dict constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+//        //通过post请求上传用户头像图片,name和fileName传的参数需要跟后台协商,看后台要传的参数名
+//        [formData appendPartWithFileData:imageData name:@"photo" fileName:@"img.jpg" mimeType:@"image/jpg"];
+//
+//    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        //解析后台返回的结果,如果不做一下处理,打印结果可能是一些二进制流数据
+//        NSError *error;
+//        NSDictionary * imageDict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:&error];
+//        //上传成功后更新数据
+//        //  self.personModel.adperurl = imageDict[@"adperurl"];
+//        NSLog(@"上传图片成功0---%@",imageDict);
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        NSLog(@"上传图片-- 失败  -%@",error);
+//    }];
+//    [picker dismissViewControllerAnimated:YES completion:^{
+//        
+//    }];
+   
+//    RSKImageCropViewController *imageCropVC = [[RSKImageCropViewController alloc] initWithImage:image cropMode:RSKImageCropModeCircle];
+//    imageCropVC.delegate = self;
+//    [self.navigationController pushViewController:imageCropVC animated:YES];
+//
+//    [picker dismissViewControllerAnimated:YES completion:nil];
+
+    
+    
 }
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+            NSLog(@"info: %@", info);
+    [picker dismissViewControllerAnimated:YES completion:^{}];
+    
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    
+    //01.21 应该在提交成功后再保存到沙盒，下次进来直接去沙盒路径取
+    // 保存图片至本地，方法见下文
+    [self saveImage:image withName:@"currentImage.png"];
+    //读取路径进行上传
+    NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"currentImage.png"];
+    UIImage *savedImage = [[UIImage alloc] initWithContentsOfFile:fullPath];
+    
+//    isFullScreen = NO;
+//    self.headImgV.tag = 100;
+//    [self.headImgV setImage:savedImage];//图片赋值显示
+    
+ 
+//        RSKImageCropViewController *imageCropVC = [[RSKImageCropViewController alloc] initWithImage:image cropMode:RSKImageCropModeCircle];
+//        imageCropVC.delegate = self;
+//        [self.navigationController pushViewController:imageCropVC animated:YES];
+    //进到次方法时 调 UploadImage 方法上传服务端
+    NSDictionary *dic = @{@"image":fullPath}; //重点再次 fullPath 为路径
+    [self UploadImage:dic];
+      //  [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+//头像上传
+-(void)UploadImage:(NSDictionary *)dic
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];//请求
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];//响应
+    
+    //网址
+//    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain; charset=utf-8"];
+      manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",@"text/javascript",@"text/json", nil];
+    NSString * imgpath = [NSString stringWithFormat:@"%@",dic[@"image"]];
+    UIImage *image = [UIImage imageWithContentsOfFile:imgpath];
+    NSData *data = UIImageJPEGRepresentation(image,0.7);
+   // NSDictionary *parameters =@{@"photo":data};
+    NSString *urlString =@"http://192.168.88.109:8086/app/head/url";
+   // urlString=[urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    [manager POST:urlString parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        //01.21 测试
+     
+        
+    
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"yyyyMMddHHmmss";
+        NSString *str = [formatter stringFromDate:[NSDate date]];
+        NSString *fileName = [NSString stringWithFormat:@"%@.jpg", str];
+        [formData appendPartWithFileData:data name:@"photo" fileName:fileName mimeType:@"image/jpg"];
+//         NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"currentImage.png"];
+         //  NSString *theImagePath = [[NSBundle mainBundle] pathForResource:@"currentImage.png" ofType:@"jpg"];
+       // [formData appendPartWithFileURL:[NSURL fileURLWithPath:fullPath] name:@"file" error:nil];
+    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        //成功 后处理。
+        NSLog(@"Success: %@", responseObject);
+//        NSString * str = [responseObject objectForKey:@"fileId"];
+//        if (str != nil) {
+//            //            [self.delegate uploadImgFinish:str];
+//        }
+        
+        SOAPResponse *response = [SOAPResponse responseWithXML: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if ([responseJsonStr isEqualToString: @"执行成功"]) {
+//            NSDictionary * info = [self objFromJson:infoString];
+//            [self.delegate passAllValueWithDictionary:info];
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        //失败
+        NSLog(@"Error: %@", error);
+    }];
+    
+
+    
+}
+
+#pragma mark - 保存图片至沙盒（应该是提交后再保存到沙盒,下次直接去沙盒取）
+- (void) saveImage:(UIImage *)currentImage withName:(NSString *)imageName
+{
+    
+    NSData *imageData = UIImageJPEGRepresentation(currentImage, 0.5);
+    // 获取沙盒目录
+    
+    NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:imageName];
+    // 将图片写入文件
+    
+    [imageData writeToFile:fullPath atomically:NO];
+}
+
+
 
 #pragma mark - RSKImageCropViewControllerDelegate
 
@@ -295,8 +418,10 @@
 {
     //[self.addPhotoButton setImage:croppedImage forState:UIControlStateNormal];
     //上传，等待回传设置
-    [self updateFaceRequest:croppedImage];
+    //[self updateFaceRequest:croppedImage];
+    
     [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
 
@@ -309,6 +434,59 @@
 
 -(void)updateFaceRequest:(UIImage*)faceImg
 {
+    NSString * BASE_URL = @"http://192.168.88.244:8086";
+    NSData* imageData = UIImageJPEGRepresentation(faceImg, 0.8);
+    NSDictionary* uploadFaceDic=@{@"memberAvatar":@[imageData]};
+//    UIImage * chosenImage = info[UIImagePickerControllerEditedImage];
+//    UIImageView * picImageView = (UIImageView *)[self.view viewWithTag:500];
+//    picImageView.image = chosenImage;
+//    chosenImage = [self imageWithImageSimple:chosenImage scaledToSize:CGSizeMake(60, 60)];
+   // NSData * imageData = UIImageJPEGRepresentation(chosenImage, 0.9);
+    //    [self saveImage:chosenImage withName:@"avatar.png"];
+    //    NSURL * filePath = [NSURL fileURLWithPath:[self documentFolderPath]];
+    //将图片上传到服务器
+    //    --------------------------------------------------------
+    AFHTTPRequestOperationManager * manager = [[AFHTTPRequestOperationManager alloc]initWithBaseURL:nil];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",@"text/javascript",@"text/json", nil];
+    NSString * urlString = [NSString stringWithFormat:@"%@/app/head/url",BASE_URL];
+    NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
+    NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithCapacity:1];
+   // [dict setObject:[userDefaults objectForKey:@"user_id"] forKey:@"user_id"];
+    [manager POST:urlString parameters:dict constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        //通过post请求上传用户头像图片,name和fileName传的参数需要跟后台协商,看后台要传的参数名
+        [formData appendPartWithFileData:imageData name:@"img" fileName:@"img.jpg" mimeType:@"image/jpeg"];
+        
+    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        //解析后台返回的结果,如果不做一下处理,打印结果可能是一些二进制流数据
+        NSError *error;
+        NSDictionary * imageDict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:&error];
+        //上传成功后更新数据
+//        self.personModel.adperurl = imageDict[@"adperurl"];
+        NSLog(@"上传图片成功0---%@",imageDict);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"上传图片-- 失败  -%@",error);
+    }];
+  
+     // [self.memberMan updateImage:uploadFaceDic];
+//    NSString *theRequest;
+//    theRequest  = @"http://192.168.88.244:8086";
+//    [self.loadDataTool RequestWithString:[NSString stringWithFormat:@"%@/app/head/url?",theRequest] isPost:NO andPara:nil andComplete:^(id data, BOOL isSuccess) {
+//        [self hideLoadingView];
+//        if (isSuccess) {
+//            NSString *resultStr = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+//            NSData *jsonData = [resultStr dataUsingEncoding:NSUTF8StringEncoding];
+//            NSDictionary  *resultDic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
+//            if ([resultDic[@"code"] integerValue] != 0) {
+//                return ;
+//            }
+//            NSArray *resultArr =  resultDic[@"result"];
+//
+//
+//        }else{
+//             [self showPromptText: @"服务器连接失败" hideAfterDelay: 1.7];
+//        }
+//    }];
     
 }
 

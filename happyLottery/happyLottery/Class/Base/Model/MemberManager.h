@@ -36,6 +36,7 @@
 - (void) getRedPacketByStateSms:(NSDictionary *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) openRedPacketSms:(NSDictionary *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) getCouponByStateSms:(NSDictionary *)couponInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) updateImage:(BOOL)success errorMsg:(NSString *)msg;
 
 @end
 
@@ -68,6 +69,7 @@
 - (void) getRedPacketByStateSms:(NSDictionary *)paraDic;
 - (void) openRedPacketSms:(NSDictionary *)paraDic;
 - (void) getCouponByStateSms:(NSDictionary *)paraDic;
+- (void)updateImage:(NSDictionary<NSString*,NSArray<NSData*>*>* _Nullable)apkFile;
 
 @end
 

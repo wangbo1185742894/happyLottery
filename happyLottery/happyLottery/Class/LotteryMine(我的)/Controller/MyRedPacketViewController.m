@@ -109,7 +109,7 @@
         [self.view addSubview:image];
         float width = image.mj_w/2;
         [self rotation360repeatCount:2 view:image andHalf:width andCaijin:@"5"];
-        
+        [self getRedPacketByStateClient:@"true"];
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
     }

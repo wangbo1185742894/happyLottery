@@ -17,6 +17,8 @@
 #import "CashAndIntegrationWaterViewController.h"
 #import "MyRedPacketViewController.h"
 #import "MyCouponViewController.h"
+#import "SystemSetViewController.h"
+#import "NoticeCenterViewController.h"
 
 @interface MineViewController () <UITableViewDelegate, UITableViewDataSource,MemberManagerDelegate>{
     NSArray *listArray;
@@ -164,7 +166,9 @@
     if (isLogin == NO) {
         [self Login];
     } else {
-   
+        NoticeCenterViewController * nVC = [[NoticeCenterViewController alloc]init];
+        nVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:nVC animated:YES];
     }
 }
 
@@ -340,6 +344,11 @@
     } else {
         if ([optionDic[@"title"] isEqualToString:@"我的红包"]){
             MyRedPacketViewController * mpVC = [[MyRedPacketViewController alloc]init];
+            mpVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:mpVC animated:YES];
+            
+        }else  if ([optionDic[@"title"] isEqualToString:@"设置"]){
+            SystemSetViewController * mpVC = [[SystemSetViewController alloc]init];
             mpVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:mpVC animated:YES];
             

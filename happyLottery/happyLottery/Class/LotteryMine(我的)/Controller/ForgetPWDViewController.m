@@ -33,7 +33,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"登陆密码重置";
+    self.title = @"忘记密码";
     self.memberMan.delegate = self;
     self.phoneTextField.delegate = self;
     self.VerificationCodeTextField.delegate = self;

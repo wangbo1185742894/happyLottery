@@ -24,6 +24,8 @@
     NSTimer *timer;
     NSInteger checkSec;
 }
+@property (weak, nonatomic) IBOutlet UIButton *checkBtn;
+
 @end
 
 @implementation RegisterViewController
