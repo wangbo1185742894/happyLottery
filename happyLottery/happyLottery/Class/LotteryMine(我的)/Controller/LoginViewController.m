@@ -32,7 +32,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"登陆";
+    self.title = @"登录";
     self.memberMan.delegate = self;
     self.userTextField.delegate = self;
     self.passwordTextField.delegate = self;
@@ -54,17 +54,30 @@
 //登陆接口请求服务器
 -(void)loginUser:(NSDictionary *)userInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     NSLog(@"%@",userInfo);
+    /* userInfo: balance = 0;
+    cardCode = 10000004;
+    channelCode = TBZ;
+    couponCount = 0;
+    id = 0;
+    memberType = "FREEDOM_PERSON";
+    mobile = 15591986891;
+    notCash = 0;
+    parentId = 0;
+    registerTime = 1513568027000;
+    score = 0;
+    sendBalance = 0;
+    whitelist = 0;*/
     User *user = [[User alloc]initWith:userInfo];
     user.loginPwd = self.passwordTextField.text;
     user.isLogin = YES;
     [GlobalInstance instance].curUser = user;
     
     if (success) {
-        [self showPromptText: @"登陆成功"  hideAfterDelay: 1.7];
+        [self showPromptText: @"登录成功"  hideAfterDelay: 1.7];
         [self saveUserInfo];
         [self.navigationController dismissViewControllerAnimated:NO completion:nil];
     }else{
-        [self showPromptText: @"登陆失败"  hideAfterDelay: 1.7];
+        //[self showPromptText: @"登录失败"  hideAfterDelay: 1.7];
         [self showPromptText:msg];
     }
 }
@@ -84,7 +97,7 @@
 
         } while ([result next]);
         
-        [self.fmdb executeUpdate:@"insert into t_user_info (cardCode , loginPwd , isLogin , mobile) values ( ?,?,?,? )  ",user.cardCode,user.loginPwd,@(1),user.mobile];
+        [self.fmdb executeUpdate:@"insert into t_user_info (cardCode , loginPwd , isLogin , mobile,payVerifyType) values ( ?,?,?,?,?)  ",user.cardCode,user.loginPwd,@(1),user.mobile,@(1)];
         [[NSNotificationCenter defaultCenter] postNotificationName:NotificationNameUserLogin object:nil];
         [result close];
         [self.fmdb close];
@@ -137,7 +150,19 @@
 }
 
 - (IBAction)loginBtnClick:(id)sender {
-    [self loginUserClient];
+    if (_passwordTextField.text.length < 6 || _passwordTextField.text.length > 16) {
+        [self showPromptText: @"请输入有效的密码" hideAfterDelay: 1.7];
+        return;
+    }
+    
+    else if (_userTextField.text.length < 11) {
+        [self showPromptText: @"请输入有效手机号" hideAfterDelay: 1.7];
+        return;
+    }else{
+        
+          [self loginUserClient];
+    }
+ 
 }
 - (IBAction)forgetBtnClick:(id)sender {
     ForgetPWDViewController *forgetVC = [[ForgetPWDViewController alloc]init];
@@ -148,11 +173,7 @@
     [self.navigationController pushViewController:registerVC animated:YES];
 }
 
-//11.02 检测键盘输入位数
--(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-    return YES ;
-}
+
 #pragma mark 判断密码
 -(BOOL)checkPassWord:(NSString *)passWords
 {
@@ -178,6 +199,7 @@
 
 #pragma UITextFieldDelegate
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
+    textField.text=@"";
     [self setBoaderColor:textField color:SystemGreen];
 }
 
@@ -199,6 +221,42 @@
         
     }
     [self.view resignFirstResponder];
+}
+
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if ([string isEqualToString:@""]) {
+        return YES;
+    }
+    
+    NSString * regex;
+    if (textField == _passwordTextField ) {
+        regex = @"^[A-Za-z0-9]";
+        
+    }else{
+        regex = @"^[0-9]";
+        
+    }
+    
+    NSString *str = [NSString stringWithFormat:@"%@%@",textField.text,string];
+    if (textField == _userTextField) {
+        if (str.length >11) {
+            [self showPromptText: @"手机号码不能超过11位" hideAfterDelay: 1.7];
+            return NO;
+        }
+    }
+    
+    if (textField == _passwordTextField ) {
+        
+        if (str.length >16) {
+            [self showPromptText: @"密码不能超过16位" hideAfterDelay: 1.7];
+            return NO;
+        }
+    }
+    
+    
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    BOOL isMatch = [pred evaluateWithObject:string];
+    return isMatch;
 }
 
 -(void)setBoaderColor:(UITextField *)textField color:(UIColor*)color{

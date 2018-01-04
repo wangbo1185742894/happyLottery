@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,6 +15,7 @@
                 <outlet property="btnMemberIcon" destination="vmv-ta-z0k" id="3hF-QC-Css"/>
                 <outlet property="btnRegister" destination="xSU-cp-BE8" id="kXr-sS-Rbc"/>
                 <outlet property="btnSendCheckCode" destination="7zc-ax-eN3" id="hBS-yw-zfj"/>
+                <outlet property="checkBtn" destination="qqt-lV-RwY" id="t4w-w5-hFF"/>
                 <outlet property="disMarginTop" destination="Zcr-nl-G9w" id="BW8-gJ-LfJ"/>
                 <outlet property="tfCheckCode" destination="wAq-Vo-G2v" id="Qtb-oO-0lQ"/>
                 <outlet property="tfRecomCode" destination="2Sb-QQ-e6I" id="Dxg-XR-YDh"/>
@@ -57,14 +58,14 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                         </textField>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="设置密码（6-16位字符）" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V6p-pz-MPc">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="设置密码（6-16位字母或数字）" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V6p-pz-MPc">
                             <rect key="frame" x="45" y="320" width="285" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="lIp-eB-ZHl"/>
                             </constraints>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" secureTextEntry="YES"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7zc-ax-eN3">
                             <rect key="frame" x="227" y="260" width="103" height="40"/>
@@ -116,26 +117,32 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qqt-lV-RwY">
-                            <rect key="frame" x="45" y="599" width="18" height="18"/>
+                            <rect key="frame" x="45" y="597" width="20" height="20"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="18" id="249-dD-LTU"/>
-                                <constraint firstAttribute="width" constant="18" id="sMq-M0-wAL"/>
+                                <constraint firstAttribute="height" constant="20" id="249-dD-LTU"/>
+                                <constraint firstAttribute="width" constant="20" id="sMq-M0-wAL"/>
                             </constraints>
-                            <state key="normal" backgroundImage="agreement_checkBox_default.png"/>
+                            <state key="normal" image="checkBox_checked.png" backgroundImage="checkBox_checked.png"/>
+                            <state key="selected" image="checkBox_checked.png" backgroundImage="checkBox_checked.png"/>
                             <connections>
                                 <action selector="actionIsGreenRule:" destination="-1" eventType="touchUpInside" id="h3V-jL-n3O"/>
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="注册即表示你已阅读，并同意" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HRK-W5-6rx">
-                            <rect key="frame" x="71" y="601" width="159.5" height="15"/>
+                            <rect key="frame" x="73" y="600" width="159.5" height="15"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="159.5" id="2li-0y-LjB"/>
+                                <constraint firstAttribute="height" constant="15" id="Hcu-p5-VAe"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.76078431372549016" green="0.76078431372549016" blue="0.76078431372549016" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wGZ-5K-8gj">
-                            <rect key="frame" x="230.5" y="596" width="107" height="24"/>
+                            <rect key="frame" x="232.5" y="595" width="107" height="24"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="24" id="7yG-Wm-NNX"/>
+                                <constraint firstAttribute="width" constant="107" id="iSm-R5-RLi"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <state key="normal" title="《用户注册协议》">
@@ -164,11 +171,11 @@
                         <constraint firstItem="wAq-Vo-G2v" firstAttribute="leading" secondItem="4An-tM-23E" secondAttribute="leading" constant="45" id="73z-sY-dxo"/>
                         <constraint firstItem="xSU-cp-BE8" firstAttribute="leading" secondItem="4An-tM-23E" secondAttribute="leading" constant="45" id="BrC-Uj-TuA"/>
                         <constraint firstItem="2Sb-QQ-e6I" firstAttribute="leading" secondItem="wAq-Vo-G2v" secondAttribute="leading" id="ENY-9e-uyZ"/>
+                        <constraint firstAttribute="bottom" secondItem="wGZ-5K-8gj" secondAttribute="bottom" constant="48" id="F5U-bw-PYc"/>
                         <constraint firstItem="vmv-ta-z0k" firstAttribute="top" secondItem="xED-JT-sDo" secondAttribute="bottom" constant="30" id="GX8-I7-RmS"/>
                         <constraint firstAttribute="trailing" secondItem="mJu-Ot-853" secondAttribute="trailing" constant="45" id="Hd3-z3-Obq"/>
+                        <constraint firstAttribute="bottom" secondItem="HRK-W5-6rx" secondAttribute="bottom" constant="52" id="HlQ-SN-CZm"/>
                         <constraint firstItem="7zc-ax-eN3" firstAttribute="leading" secondItem="wAq-Vo-G2v" secondAttribute="trailing" constant="30" id="J54-V4-2v1"/>
-                        <constraint firstItem="wGZ-5K-8gj" firstAttribute="leading" secondItem="HRK-W5-6rx" secondAttribute="trailing" id="JBe-LI-Rjq"/>
-                        <constraint firstItem="HRK-W5-6rx" firstAttribute="centerY" secondItem="qqt-lV-RwY" secondAttribute="centerY" id="JqA-Pj-qOX"/>
                         <constraint firstItem="2Sb-QQ-e6I" firstAttribute="width" secondItem="wAq-Vo-G2v" secondAttribute="width" id="Ll5-hw-kq7"/>
                         <constraint firstItem="Sus-RG-efP" firstAttribute="centerY" secondItem="2Sb-QQ-e6I" secondAttribute="centerY" id="QxX-2t-pjQ"/>
                         <constraint firstItem="HRK-W5-6rx" firstAttribute="leading" secondItem="qqt-lV-RwY" secondAttribute="trailing" constant="8" id="YqV-mi-6vB"/>
@@ -177,17 +184,17 @@
                         <constraint firstItem="mJu-Ot-853" firstAttribute="top" secondItem="vmv-ta-z0k" secondAttribute="bottom" constant="27" id="axT-Kk-XSy"/>
                         <constraint firstAttribute="trailing" secondItem="7zc-ax-eN3" secondAttribute="trailing" constant="45" id="doh-lX-Heu"/>
                         <constraint firstAttribute="bottom" secondItem="qqt-lV-RwY" secondAttribute="bottom" constant="50" id="dwV-Fn-Cfa"/>
+                        <constraint firstItem="qqt-lV-RwY" firstAttribute="leading" secondItem="4An-tM-23E" secondAttribute="leading" constant="45" id="fZg-U5-l8q"/>
                         <constraint firstItem="mJu-Ot-853" firstAttribute="leading" secondItem="4An-tM-23E" secondAttribute="leading" constant="45" id="j76-EJ-ruh"/>
                         <constraint firstItem="wAq-Vo-G2v" firstAttribute="top" secondItem="mJu-Ot-853" secondAttribute="bottom" constant="20" id="jcH-Ei-CkO"/>
                         <constraint firstItem="7zc-ax-eN3" firstAttribute="top" secondItem="mJu-Ot-853" secondAttribute="bottom" constant="20" id="kcM-lY-ZHK"/>
                         <constraint firstAttribute="trailing" secondItem="V6p-pz-MPc" secondAttribute="trailing" constant="45" id="kg7-lZ-eue"/>
                         <constraint firstAttribute="trailing" secondItem="xED-JT-sDo" secondAttribute="trailing" id="m7X-03-kVt"/>
-                        <constraint firstItem="qqt-lV-RwY" firstAttribute="leading" secondItem="4An-tM-23E" secondAttribute="leading" constant="45" id="rKD-bk-OkE"/>
                         <constraint firstItem="2Sb-QQ-e6I" firstAttribute="top" secondItem="V6p-pz-MPc" secondAttribute="bottom" constant="20" id="rpi-b5-mp5"/>
                         <constraint firstItem="Sus-RG-efP" firstAttribute="trailing" secondItem="V6p-pz-MPc" secondAttribute="trailing" id="tmd-a4-MAM"/>
-                        <constraint firstItem="wGZ-5K-8gj" firstAttribute="centerY" secondItem="HRK-W5-6rx" secondAttribute="centerY" id="u86-ab-ng0"/>
                         <constraint firstItem="xSU-cp-BE8" firstAttribute="top" secondItem="2Sb-QQ-e6I" secondAttribute="bottom" constant="20" id="uNU-be-My4"/>
                         <constraint firstItem="2Sb-QQ-e6I" firstAttribute="height" secondItem="wAq-Vo-G2v" secondAttribute="height" id="vaJ-TG-Gd0"/>
+                        <constraint firstItem="wGZ-5K-8gj" firstAttribute="leading" secondItem="HRK-W5-6rx" secondAttribute="trailing" id="x51-sp-zDa"/>
                         <constraint firstAttribute="trailing" secondItem="xSU-cp-BE8" secondAttribute="trailing" constant="45" id="yjJ-JM-nbf"/>
                     </constraints>
                 </view>
@@ -203,7 +210,6 @@
         </view>
     </objects>
     <resources>
-        <image name="agreement_checkBox_default.png" width="14" height="14"/>
         <image name="checkBox_checked.png" width="16" height="16"/>
         <image name="checkBox_default.png" width="16" height="16"/>
     </resources>

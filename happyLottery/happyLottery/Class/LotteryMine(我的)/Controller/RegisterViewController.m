@@ -8,7 +8,7 @@
 
 #import "RegisterViewController.h"
 #import "WebShowViewController.h"
-#define KCheckSec 5
+#define KCheckSec 60
 @interface RegisterViewController ()<UITextFieldDelegate,MemberManagerDelegate>
 {
     
@@ -24,6 +24,8 @@
     NSTimer *timer;
     NSInteger checkSec;
 }
+@property (weak, nonatomic) IBOutlet UIButton *checkBtn;
+
 @end
 
 @implementation RegisterViewController
@@ -108,6 +110,7 @@
     }
     
     [self.memberMan sendRegisterSms:@{@"mobile":tfUserTel.text}];
+  
     
     [btnSendCheckCode setEnabled:NO];
 
@@ -194,6 +197,7 @@
 
 #pragma UITextFieldDelegate
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
+    textField.text=@"";
     [self setBoaderColor:textField color:SystemGreen];
 }
 

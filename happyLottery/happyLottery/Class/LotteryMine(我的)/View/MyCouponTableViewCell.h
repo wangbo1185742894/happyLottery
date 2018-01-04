@@ -1,0 +1,20 @@
+//
+//  MyCouponTableViewCell.h
+//  happyLottery
+//
+//  Created by LYJ on 2017/12/28.
+//  Copyright © 2017年 onlytechnology. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface MyCouponTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *priceLab;
+@property (weak, nonatomic) IBOutlet UILabel *sourceLab;
+@property (weak, nonatomic) IBOutlet UILabel *nameLab;
+@property (weak, nonatomic) IBOutlet UILabel *dateLab;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLab;
+@property (weak, nonatomic) IBOutlet UIImageView *endImage;
+@property (weak, nonatomic) IBOutlet UILabel *yuanLab;
+
+@end

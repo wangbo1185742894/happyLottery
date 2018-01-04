@@ -67,7 +67,7 @@
 #define BtnDisAbleBackColor RGBCOLOR(238,238,238)
 #define BtnDisAbleTitleColor RGBCOLOR(158,158,158)
 #define TFBorderColor        RGBCOLOR(227,227,227)
-
+#define TEXTGRAYCOLOR       RGBCOLOR(72, 72, 72) //偏黑色
 
 //这是 NavigationBar 的背景颜色
 
@@ -155,7 +155,7 @@ sizeWithFont:font constrainedToSize:maxSize lineBreakMode:mode] : CGSizeZero;
 // 邮箱验证
 #define REG_MAIL_STR        @"\\b([a-zA-Z0-9%_.+\\-]+)@([a-zA-Z0-9.\\-]+?\\.[a-zA-Z]{2,6})\\b"
 // 手机号码验证
-#define REG_PHONENUM_STR    @"^((13[0-9])|(147)|(15[^4,\\D])|(17[^4,\\D])|(18[0-9]))\\d{8}$"
+#define REG_PHONENUM_STR    @"^((13[0-9])|(166)|(199)|(147)|(15[^4,\\D])|(17[^4,\\D])|(18[0-9]))\\d{8}$"
 // 身份证验证：15或18位
 #define REG_IDCARDNUM_STR   @"\\d{15}|\\d{18}"
 

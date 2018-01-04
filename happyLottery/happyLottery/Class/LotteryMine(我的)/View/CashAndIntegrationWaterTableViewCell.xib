@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="CashAndIntegrationWaterTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="69.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i6B-iL-vZH">
+                        <rect key="frame" x="15" y="16" width="36" height="36"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="36" id="o8w-sN-eZM"/>
+                            <constraint firstAttribute="height" constant="36" id="vr9-Cx-p7H"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="竞彩足球" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xtc-wv-hdt">
+                        <rect key="frame" x="69" y="11" width="118" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="JM4-3U-brD"/>
+                            <constraint firstAttribute="width" constant="118" id="g9s-hY-bO3"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="0.1960784314" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017-11-09 00：00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yx4-ap-Edo">
+                        <rect key="frame" x="69" y="40" width="138" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="cxX-r8-QbL"/>
+                            <constraint firstAttribute="width" constant="138" id="mLL-j9-e1p"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+520.00元" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PN2-VO-LRV">
+                        <rect key="frame" x="179" y="11" width="125" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="jgP-Wl-1WD"/>
+                            <constraint firstAttribute="width" constant="125" id="pHL-gI-Cvr"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="0.1960784314" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="PN2-VO-LRV" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="2vf-rh-JYc"/>
+                    <constraint firstItem="yx4-ap-Edo" firstAttribute="leading" secondItem="i6B-iL-vZH" secondAttribute="trailing" constant="18" id="5n1-Rs-uCj"/>
+                    <constraint firstItem="Xtc-wv-hdt" firstAttribute="leading" secondItem="i6B-iL-vZH" secondAttribute="trailing" constant="18" id="EbP-Ng-d2L"/>
+                    <constraint firstItem="Xtc-wv-hdt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="EuE-kN-hfl"/>
+                    <constraint firstItem="i6B-iL-vZH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="GK0-pq-Wb2"/>
+                    <constraint firstItem="yx4-ap-Edo" firstAttribute="top" secondItem="Xtc-wv-hdt" secondAttribute="bottom" constant="8" id="Wmf-nB-ICP"/>
+                    <constraint firstItem="PN2-VO-LRV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="ZQK-OB-hg3"/>
+                    <constraint firstItem="i6B-iL-vZH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="o1x-2a-4w4"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="dateLab" destination="yx4-ap-Edo" id="hai-fC-iRq"/>
+                <outlet property="image" destination="i6B-iL-vZH" id="5rH-rh-rzv"/>
+                <outlet property="nameLab" destination="Xtc-wv-hdt" id="NSV-6f-HIk"/>
+                <outlet property="priceLab" destination="PN2-VO-LRV" id="2iO-QT-i7Y"/>
+            </connections>
+            <point key="canvasLocation" x="-113" y="97"/>
+        </tableViewCell>
+    </objects>
+</document>

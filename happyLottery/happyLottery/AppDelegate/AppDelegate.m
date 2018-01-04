@@ -9,6 +9,17 @@
 #import "AppDelegate.h"
 #import "NewFeatureViewController.h"
 #import "AESUtility.h"
+
+
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKConnector/ShareSDKConnector.h>
+
+//微信SDK头文件
+#import "WXApi.h"
+
+//新浪微博SDK头文件
+#import "WeiboSDK.h"
+
 #define KEYAPPVERSION @"appVersion"
 #define KEYCURAPPVERSION @"CFBundleShortVersionString"
 
@@ -86,7 +97,7 @@
     
 
     if ([self .fmdb open]) {
-        BOOL iscreate = [self.fmdb executeUpdate:@"create table if not exists t_user_info(id integer primary key, cardCode text, mobile text ,loginPwd text, isLogin text)"];
+        BOOL iscreate = [self.fmdb executeUpdate:@"create table if not exists t_user_info(id integer primary key, cardCode text, mobile text ,loginPwd text, isLogin text,payVerifyType text)"];
         if (iscreate) {
             [self.fmdb close];
         }

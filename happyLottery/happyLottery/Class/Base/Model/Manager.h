@@ -38,5 +38,12 @@
                                            success: (void (^)(AFHTTPRequestOperation *operation, id responseObject))successBlock
                                            failure: (void (^)(AFHTTPRequestOperation *operation, NSError *error))failureBlock
 ;
+
 - (SOAPResponse *) wrapSOAPResponse: (NSString *) responseXML;
+
+- (AFHTTPRequestOperation *) newRequestWithRequest: (SOAPRequest*)request
+                         constructingBodyWithBlock: (void (^)(id <AFMultipartFormData> formData))block
+                                           success: (void (^)(AFHTTPRequestOperation *operation, id responseObject))successBlock
+                                           failure: (void (^)(AFHTTPRequestOperation *operation, NSError *error))failureBlock;
 @end
+

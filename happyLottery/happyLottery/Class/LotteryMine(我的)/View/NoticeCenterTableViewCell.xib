@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="NoticeCenterTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="中奖通知" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rpk-h4-rJ5">
+                        <rect key="frame" x="16" y="19" width="175" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="175" id="Lch-bX-Rle"/>
+                            <constraint firstAttribute="height" constant="21" id="fhZ-Yv-6JO"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.14509803921568626" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018-01-01 06:25" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgZ-Y7-ce7">
+                        <rect key="frame" x="206" y="19" width="98" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="6qT-Rn-Me8"/>
+                            <constraint firstAttribute="width" constant="98" id="TRd-Uy-1yV"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" red="0.78431372549019607" green="0.78431372549019607" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="你收藏的赛事;" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KcE-dZ-ZHV">
+                        <rect key="frame" x="16" y="48" width="288" height="41"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="288" id="Vxi-yV-6fx"/>
+                            <constraint firstAttribute="height" constant="41" id="kkm-An-bnZ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" red="0.5607843137254902" green="0.5607843137254902" blue="0.5607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="qgZ-Y7-ce7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="2Am-rS-4l0"/>
+                    <constraint firstItem="qgZ-Y7-ce7" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="IJM-55-x54"/>
+                    <constraint firstItem="Rpk-h4-rJ5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Kqz-OF-aDI"/>
+                    <constraint firstItem="KcE-dZ-ZHV" firstAttribute="top" secondItem="Rpk-h4-rJ5" secondAttribute="bottom" constant="8" id="Pky-u1-nZA"/>
+                    <constraint firstItem="KcE-dZ-ZHV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="byP-ch-QMI"/>
+                    <constraint firstItem="Rpk-h4-rJ5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="rva-bm-OL3"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="dateLab" destination="qgZ-Y7-ce7" id="TPx-wx-OZR"/>
+                <outlet property="nameLab" destination="Rpk-h4-rJ5" id="pdf-6q-f2d"/>
+                <outlet property="noticeLab" destination="KcE-dZ-ZHV" id="KHD-gx-HGi"/>
+            </connections>
+            <point key="canvasLocation" x="-259" y="64"/>
+        </tableViewCell>
+    </objects>
+</document>

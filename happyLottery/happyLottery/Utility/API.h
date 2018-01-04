@@ -21,11 +21,43 @@
 //#define WSServerURL @"http://192.168.88.105:28000/services%@"
 
 
+//#define WSServerURL @"http://192.168.88.116:28000/services%@"
+
+
+
+
+
+#define SUBAPIActivity       @"/activity"
+#define APIopenRedPacket           @"openRedPacket"
+#define APIgetRedPacketByState     @"getRedPacketByState"
+
+
 #define SUBAPIMember         @"/member"
 #define APILogin                   @"login"
 #define APIRegister                @"register"
 #define APISendRegisterSms         @"sendRegisterSms"
 #define APICheckRegisterSms        @"checkRegisterSms"
+#define APISendForgetPWDSms        @"sendResetPwdSms"
+#define APICheckForgetPWDSms       @"checkResetPwdSms"
+#define APIForgetPWDSms            @"resetMemberPwd"
+#define APIResetNickSms            @"modifyNickname"
+#define APIBandPayPWDSms           @"bindMemberPaypwd"
+#define APIResetPayPWDSms          @"updateMemberPaypwd"
+#define APIsendUpdatePaypwdSms     @"sendUpdatePaypwdSms"
+#define APIcheckUpdatePaypwdSms    @"checkUpdatePaypwdSms"
+#define APIgetSupportBank          @"getSupportBank"
+#define APIbindName                @"bindName"
+#define APIaddBankCard             @"addBankCard"
+#define APIgetBankList             @"getBankList"
+#define APIunBindBankCard          @"unBindBankCard"
+#define APIrecharge                @"recharge"
+#define APIwithdraw                @"withdraw"
+#define APIvalidatePaypwd          @"validatePaypwd"
+#define APIgetCashBlotter          @"getCashBlotter"
+#define APIgetScoreBlotter         @"getScoreBlotter"
+#define APIgetMemberByCardCode     @"getMemberByCardCode"
+#define APIgetCouponByState        @"getCouponByState"
+#define APIupdateImage             @"headUrl"
 #define APIgetMemberByCardCode     @"getMemberByCardCode"
 
 
@@ -53,6 +85,8 @@
 
 #define SUBAPITicketService   @"/ticket"
 #define APIGetJczqTicketOrderDetail @"getJczqTicketOrderDetail"
+
+
 
 
 #endif /* API_h */

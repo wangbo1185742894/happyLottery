@@ -11,11 +11,21 @@
 #import "UIImage+RandomSize.h"
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
+#import "PersonnalCenterViewController.h"
+#import "TopUpsViewController.h"
+#import "WithdrawalsViewController.h"
+#import "CashAndIntegrationWaterViewController.h"
+#import "MyRedPacketViewController.h"
+#import "MyCouponViewController.h"
+#import "SystemSetViewController.h"
+#import "NoticeCenterViewController.h"
+#import "ShareViewController.h"
 
 @interface MineViewController () <UITableViewDelegate, UITableViewDataSource,MemberManagerDelegate>{
     NSArray *listArray;
     UIButton *noticeBtn;
     UILabel *label;
+    BOOL isLogin ;
 }
 @property (weak, nonatomic) IBOutlet UIButton *personSetBtn;
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
@@ -32,10 +42,18 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 
+
 @property(strong, nonatomic) NSString * memberSubFunctionClass;
 @end
 
 @implementation MineViewController
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+       // [self loadUserInfo];
+    [self autoLogin];
+    self.memberMan.delegate = self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -50,22 +68,28 @@
     _tableview.dataSource = self;
     
     [self noticeCenterSet];
-    [self autoLogin];
-  
+     // [self loadUserInfo];
     [_tableview reloadData];
 }
 
 -(void)autoLogin{
     
-    
-    BOOL isLogin = NO;
-    
+    isLogin = NO;
+
     if ([self .fmdb open]) {
         FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_user_info"];
         if ([result next] && [result stringForColumn:@"mobile"] != nil) {
             isLogin = [[result stringForColumn:@"isLogin"] boolValue];
-            if (isLogin ) {
-                [self loadUserInfo];
+            if (isLogin ==YES ) {
+               // _loginBtn.enabled = NO;
+                NSDictionary *MemberInfo;
+                NSString *cardCode =self.curUser.cardCode;
+                    MemberInfo = @{@"cardCode":cardCode
+                    };
+                [self.memberMan getMemberByCardCodeSms:(NSDictionary *)MemberInfo];
+            }else{
+                [self.loginBtn setTitle:@"登录/注册" forState:UIControlStateNormal];
+                self.loginBtn.enabled = YES;
             }
         }
     }
@@ -73,26 +97,42 @@
     
 }
 
+
 -(void)actionUserLoginSuccess:(NSNotification *)notification{
     
     [self loadUserInfo];
 }
 
+-(void)getMemberByCardCodeSms:(NSDictionary *)memberInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    
+    NSLog(@"memberInfo%@",memberInfo);
+    if ([msg isEqualToString:@"执行成功"]) {
+      // [self showPromptText: @"memberInfo成功" hideAfterDelay: 1.7];
+        [self loadUserInfo];
+        
+    }else{
+        [self showPromptText: msg hideAfterDelay: 1.7];
+    }
+}
+
 -(void)loadUserInfo{
-    _loginBtn.enabled = NO;
+  
     NSString *userName;
     if (self.curUser.nickname.length == 0) {
         userName = self.curUser.mobile;
     }else{
         userName = self.curUser.nickname;
     }
-    [_loginBtn setTitle:userName forState:UIControlStateDisabled];
-    [_userImage sd_setImageWithURL:[NSURL URLWithString:self.curUser.headUrl]];
+    [self.loginBtn setTitle:userName forState:UIControlStateNormal];
+    self.loginBtn.enabled = NO;
+  
+    self.curUser.payVerifyType = [NSNumber numberWithInt:1];
+    //[_userImage sd_setImageWithURL:[NSURL URLWithString:self.curUser.headUrl]];
     
 }
 
 
-- (void) notLogin{
+- (void) Login{
     
     LoginViewController * loginVC = [[LoginViewController alloc]init];
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController: loginVC];
@@ -118,42 +158,97 @@
     [noticeBtn addSubview:label];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView: noticeBtn];
     //[noticeBtn setTitle:@"发起合买" forState:UIControlStateNormal];
-    [noticeBtn setImage:[UIImage imageNamed:@"news_ _bj_default@2x.png"] forState:UIControlStateNormal];
+    [noticeBtn setImage:[UIImage imageNamed:@"news@2x.png"] forState:UIControlStateNormal];
     [noticeBtn addTarget: self action: @selector(noticeBtnClick) forControlEvents: UIControlEventTouchUpInside];
 }
 
 -(void)noticeBtnClick{
     
-    
+    if (isLogin == NO) {
+        [self Login];
+    } else {
+        NoticeCenterViewController * nVC = [[NoticeCenterViewController alloc]init];
+        nVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:nVC animated:YES];
+    }
 }
 
 - (IBAction)personSetClick:(id)sender {
-    
+    if (isLogin == NO) {
+        [self Login];
+    } else {
+        PersonnalCenterViewController * pcVC = [[PersonnalCenterViewController alloc]init];
+        pcVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:pcVC animated:YES];
+    }
+
 }
 
 - (IBAction)loginBtnClick:(id)sender {
 
-    [self notLogin];
+    [self Login];
 
 }
 
 - (IBAction)signInBtnClick:(id)sender {
+    if (isLogin == NO) {
+        [self Login];
+    } else {
+        
+    }
     
 }
 - (IBAction)blanceBtnClick:(id)sender {
+    if (isLogin == NO) {
+        [self Login];
+    } else {
+        CashAndIntegrationWaterViewController * pcVC = [[CashAndIntegrationWaterViewController alloc]init];
+        pcVC.select = 0;
+        pcVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:pcVC animated:YES];
+    }
     
 }
 - (IBAction)integralBtnClick:(id)sender {
+    if (isLogin == NO) {
+        [self Login];
+    } else {
+        CashAndIntegrationWaterViewController * pcVC = [[CashAndIntegrationWaterViewController alloc]init];
+        pcVC.select = 1;
+        pcVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:pcVC animated:YES];
+    }
     
 }
 - (IBAction)redPacketBtnClick:(id)sender {
+    if (isLogin == NO) {
+        [self Login];
+    } else {
+        MyCouponViewController * mcVC = [[MyCouponViewController alloc]init];
+        mcVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:mcVC animated:YES];
+    }
     
 }
 - (IBAction)rechargeBtnClick:(id)sender {
-    
+    if (isLogin == NO) {
+        [self Login];
+    } else {
+        TopUpsViewController *t = [[TopUpsViewController alloc]init];
+        t.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:t animated:YES];
+    }
+ 
 }
 - (IBAction)withdrawalsBtnClick:(id)sender {
-    
+    if (isLogin == NO) {
+        [self Login];
+    } else {
+        WithdrawalsViewController *w = [[WithdrawalsViewController alloc]init];
+        w.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:w animated:YES];
+    }
+ 
 }
 
 - (void)didReceiveMemoryWarning {
@@ -198,22 +293,6 @@
     cell.lable.text = optionDic[@"title"];
     cell.lable.font = [UIFont systemFontOfSize:15];
  
-    
-   
-    
-    
-    
-    //    _UITableViewCellSeparatorView
-    
-    //    UIView *sep = [[UIView alloc] initWithFrame:CGRectMake(0, 13, 23, 2)];
-    //    sep.backgroundColor = [UIColor redColor];
-    
-   
-       
-        
-  
-    
-    
     return cell;
 }
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -269,8 +348,28 @@
     self.memberSubFunctionClass = optionDic[@"actionClassName"];
     BaseViewController *vc = [[NSClassFromString(_memberSubFunctionClass) alloc] initWithNibName: _memberSubFunctionClass bundle: nil];
     vc.hidesBottomBarWhenPushed = YES;
-
     [self.navigationController pushViewController: vc animated: YES];
+
+    if (isLogin == NO) {
+        [self Login];
+    } else {
+        if ([optionDic[@"title"] isEqualToString:@"我的红包"]){
+            MyRedPacketViewController * mpVC = [[MyRedPacketViewController alloc]init];
+            mpVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:mpVC animated:YES];
+            
+        }else  if ([optionDic[@"title"] isEqualToString:@"设置"]){
+            SystemSetViewController * mpVC = [[SystemSetViewController alloc]init];
+            mpVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:mpVC animated:YES];
+            
+        }else  if ([optionDic[@"title"] isEqualToString:@"分享"]){
+            ShareViewController * mpVC = [[ShareViewController alloc]init];
+            mpVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:mpVC animated:YES];
+        }
+    }
+    
 }
 
 @end

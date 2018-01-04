@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AboutViewController">
+            <connections>
+                <outlet property="bottom" destination="dZe-fa-eE1" id="dgw-X9-RhH"/>
+                <outlet property="imageView" destination="8hI-x1-Jde" id="Fer-hD-P4q"/>
+                <outlet property="top" destination="3nO-zw-F54" id="6JG-g0-XBN"/>
+                <outlet property="versionLab" destination="f0Z-aF-u0m" id="0nk-uv-6fj"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="COY-fB-Sqv">
+                    <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo1.png" translatesAutoresizingMaskIntoConstraints="NO" id="8hI-x1-Jde">
+                            <rect key="frame" x="123" y="80" width="128" height="128"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="128" id="0Uy-5K-8HV"/>
+                                <constraint firstAttribute="height" constant="128" id="dq6-Pr-bRH"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当前版本  V1.0.1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f0Z-aF-u0m">
+                            <rect key="frame" x="123" y="238" width="128" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="128" id="FO5-hI-0HT"/>
+                                <constraint firstAttribute="height" constant="21" id="ZNP-qw-76T"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="客服热线：400-688-0778" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TaG-uc-ET8">
+                            <rect key="frame" x="49" y="541" width="277" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="277" id="lrC-z0-6wJ"/>
+                                <constraint firstAttribute="height" constant="21" id="mpW-7x-ZaK"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                            <color key="textColor" red="0.19607843137254902" green="0.19607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="8hI-x1-Jde" firstAttribute="top" secondItem="COY-fB-Sqv" secondAttribute="top" constant="80" id="6Qw-Y0-nXh"/>
+                        <constraint firstItem="f0Z-aF-u0m" firstAttribute="centerX" secondItem="COY-fB-Sqv" secondAttribute="centerX" id="8RP-fV-oor"/>
+                        <constraint firstItem="TaG-uc-ET8" firstAttribute="centerX" secondItem="COY-fB-Sqv" secondAttribute="centerX" id="8iu-cD-8zx"/>
+                        <constraint firstAttribute="bottom" secondItem="TaG-uc-ET8" secondAttribute="bottom" constant="41" id="Itw-Xd-Ngc"/>
+                        <constraint firstItem="8hI-x1-Jde" firstAttribute="centerX" secondItem="COY-fB-Sqv" secondAttribute="centerX" id="soy-G0-YPB"/>
+                        <constraint firstItem="f0Z-aF-u0m" firstAttribute="top" secondItem="8hI-x1-Jde" secondAttribute="bottom" constant="30" id="u4l-gK-8FS"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="COY-fB-Sqv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="3nO-zw-F54"/>
+                <constraint firstItem="COY-fB-Sqv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="O5G-dl-6UC"/>
+                <constraint firstAttribute="trailing" secondItem="COY-fB-Sqv" secondAttribute="trailing" id="WQX-T4-ati"/>
+                <constraint firstAttribute="bottom" secondItem="COY-fB-Sqv" secondAttribute="bottom" id="dZe-fa-eE1"/>
+            </constraints>
+            <point key="canvasLocation" x="34.5" y="54.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="logo1.png" width="128" height="114"/>
+    </resources>
+</document>

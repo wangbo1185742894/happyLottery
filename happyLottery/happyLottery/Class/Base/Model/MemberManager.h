@@ -14,7 +14,34 @@
 - (void) loginUser:(NSDictionary *)userInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) sendRegisterSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) checkRegisterSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+
 - (void) gotMemberByCardCode:(NSDictionary*)userInfo errorMsg:(NSString *)msg;
+
+- (void) forgetPWDSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) sendForgetPWDSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) checkForgetPWDSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) resetNickSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) bandPayPWDSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) resetPayPWDSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) bindNameSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) addBankCardSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) getBankListSms:(NSDictionary *)bankInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) unBindBankCardSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) rechargeSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) withdrawSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) sendUpdatePaypwdSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) checkUpdatePaypwdSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) getSupportBankSms:(NSDictionary *)supportBankInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) validatePaypwdSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) getCashBlotterSms:(NSDictionary *)boltterInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) getScoreBlotterSms:(NSDictionary *)scoreInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) getMemberByCardCodeSms:(NSDictionary *)memberInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) getRedPacketByStateSms:(NSDictionary *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) openRedPacketSms:(NSDictionary *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) getCouponByStateSms:(NSDictionary *)couponInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) updateImage:(BOOL)success errorMsg:(NSString *)msg;
+
+
 @end
 
 @interface MemberManager : Manager
@@ -24,6 +51,31 @@
 - (void) registerUser:(NSDictionary *)paraDic;
 - (void) sendRegisterSms:(NSDictionary *)paraDic;
 - (void) checkRegisterSms:(NSDictionary *)paraDic;
+
 - (void) getMemberByCardCode:(NSDictionary *)paraDic;
+
+- (void) forgetPWDSms:(NSDictionary *)paraDic;
+- (void) sendForgetPWDSms:(NSDictionary *)paraDic;
+- (void) checkForgetPWDSms:(NSDictionary *)paraDic;
+- (void) resetNickSms:(NSDictionary *)paraDic;
+- (void) bandPayPWDSms:(NSDictionary *)paraDic;
+- (void) resetPayPWDSms:(NSDictionary *)paraDic;
+- (void) bindNameSms:(NSDictionary *)paraDic;
+- (void) addBankCardSms:(NSDictionary *)paraDic;
+- (void) getBankListSms:(NSDictionary *)paraDic;
+- (void) unBindBankCardSms:(NSDictionary *)paraDic;
+- (void) rechargeSms:(NSDictionary *)paraDic;
+- (void) withdrawSms:(NSDictionary *)paraDic;
+- (void) sendUpdatePaypwdSms:(NSDictionary *)paraDic;
+- (void) checkUpdatePaypwdSms:(NSDictionary *)paraDic;
+- (void) getSupportBankSms;
+- (void) validatePaypwdSms:(NSDictionary *)paraDic;
+- (void) getCashBlotterSms:(NSDictionary *)paraDic;
+- (void) getScoreBlotterSms:(NSDictionary *)paraDic;
+- (void) getMemberByCardCodeSms:(NSDictionary *)paraDic;
+- (void) getRedPacketByStateSms:(NSDictionary *)paraDic;
+- (void) openRedPacketSms:(NSDictionary *)paraDic;
+- (void) getCouponByStateSms:(NSDictionary *)paraDic;
+- (void)updateImage:(NSDictionary<NSString*,NSArray<NSData*>*>* _Nullable)apkFile;
 @end
 
