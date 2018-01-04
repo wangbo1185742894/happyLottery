@@ -26,6 +26,9 @@
     if (jsonStr == nil) {
         return nil;
     }
+    if (![jsonStr isKindOfClass:[NSString class]]) {
+        return jsonStr;
+    }
     NSData * jsonData = [jsonStr dataUsingEncoding: NSUTF8StringEncoding];
     NSError * error=nil;
     NSDictionary * parsedData = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&error];
@@ -381,6 +384,42 @@
 
 + (double) timeintervalForDate: (NSDate *) date {
     return [date timeIntervalSince1970];
+}
+
++ (NSString *)weekDayGetForTimeDate:(NSDate *)date{
+    
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    NSInteger unitFlags =NSCalendarUnitWeekday;
+    comps = [calendar components:unitFlags fromDate:date];
+    NSUInteger week = [comps weekday];
+    NSString * weekString;
+    switch (week) {
+        case 1:
+            weekString = @"周日";
+            break;
+        case 2:
+            weekString = @"周一";
+            break;
+        case 3:
+            weekString = @"周二";
+            break;
+        case 4:
+            weekString = @"周三";
+            break;
+        case 5:
+            weekString = @"周四";
+            break;
+        case 6:
+            weekString = @"周五";
+            break;
+        case 7:
+            weekString = @"周六";
+            break;
+        default:
+            break;
+    }
+    return weekString;
 }
 
 + (NSString *)weekDayGetForTimeString:(NSString *)time{

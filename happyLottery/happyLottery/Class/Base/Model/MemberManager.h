@@ -14,6 +14,7 @@
 - (void) loginUser:(NSDictionary *)userInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) sendRegisterSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) checkRegisterSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) gotMemberByCardCode:(NSDictionary*)userInfo errorMsg:(NSString *)msg;
 @end
 
 @interface MemberManager : Manager
@@ -23,6 +24,6 @@
 - (void) registerUser:(NSDictionary *)paraDic;
 - (void) sendRegisterSms:(NSDictionary *)paraDic;
 - (void) checkRegisterSms:(NSDictionary *)paraDic;
-
+- (void) getMemberByCardCode:(NSDictionary *)paraDic;
 @end
 

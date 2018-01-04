@@ -9,10 +9,13 @@
 #import "ForecastViewController.h"
 #import "NewsListCell.h"
 #import "TableHeaderView.h"
+#import "JczqShortcutModel.h"
+#import "UMChongZhiViewController.h"
+
 #define KNewsListCell @"NewsListCell"
-@interface ForecastViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface ForecastViewController ()<UITableViewDataSource,UITableViewDelegate,LotteryManagerDelegate>
 {
-    
+    NSMutableArray *JczqShortcutList;
     __weak IBOutlet UITableView *tabForecastListView;
 }
 @property(nonatomic,strong)NSMutableArray *arrayTableSectionIsOpen;
@@ -24,6 +27,25 @@
     [super viewDidLoad];
     [self setViewController];
     [self setTableView];
+    [self getJczqShortcut];
+}
+
+-(void)getJczqShortcut{
+    JczqShortcutList = [NSMutableArray arrayWithCapacity:0];
+    self.lotteryMan.delegate = self ;
+    [self.lotteryMan getJczqShortcut];
+}
+
+-(void)gotJczqShortcut:(NSArray *)dataArray errorMsg:(NSString *)msg{
+    if (dataArray == nil) {
+        [self showPromptText:msg hideAfterDelay:1.7];
+        return;
+    }
+    for (NSDictionary* infoDic in dataArray) {
+        JczqShortcutModel *model =  [[JczqShortcutModel alloc]initWith:infoDic];
+        [JczqShortcutList addObject:model];
+    }
+    [tabForecastListView reloadData];
 }
 
 -(void)setViewController{
@@ -44,64 +66,71 @@
 
 #pragma UITableViewDelegate,UITableViewDataSource
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-
-    BOOL isOpen = [self.arrayTableSectionIsOpen[section] boolValue];
-    if (isOpen ) {
-        return 10;
-    }else{
-        return 0;
-        
-    }
     
-}
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 4;
+    return JczqShortcutList.count;
 }
 
--(UITableViewCell * )tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NewsListCell * cell = [tableView dequeueReusableCellWithIdentifier:KNewsListCell];
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    NewsListCell *cell = [tableView dequeueReusableCellWithIdentifier:KNewsListCell];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+    [cell refreshData:JczqShortcutList[indexPath.row]];
     return cell;
+    
 }
 
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    
-    TableHeaderView *header = [[[NSBundle mainBundle]loadNibNamed:@"TableHeaderView" owner:nil options:nil] lastObject];
-    header.backgroundColor =RGBCOLOR(245, 245, 245);
-    
-    header.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 30);
+//-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+//
+//    TableHeaderView *header = [[[NSBundle mainBundle]loadNibNamed:@"TableHeaderView" owner:nil options:nil] lastObject];
+//    header.backgroundColor =RGBCOLOR(245, 245, 245);
+//
+//    header.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 30);
+//
+//    header.btnActionClick.tag = section;
+//    [header.btnActionClick addTarget:self action:@selector(headerViewClick:) forControlEvents:UIControlEventTouchUpInside];
+//
+//    if ([self.arrayTableSectionIsOpen [section] boolValue] == YES) {
+//        [header.imgDir setImage:[UIImage imageNamed:@"arrow_up"]];
+//
+//    }else{
+//        [header.imgDir setImage:[UIImage imageNamed:@"arrow_down"]];
+//    }
+//    return header;
+//}
 
-    header.btnActionClick.tag = section;
-    [header.btnActionClick addTarget:self action:@selector(headerViewClick:) forControlEvents:UIControlEventTouchUpInside];
-    
-    if ([self.arrayTableSectionIsOpen [section] boolValue] == YES) {
-        [header.imgDir setImage:[UIImage imageNamed:@"arrow_up"]];
-        
-    }else{
-        [header.imgDir setImage:[UIImage imageNamed:@"arrow_down"]];
-    }
-    return header;
-}
-
--(void)headerViewClick:(UIButton *)btn{
-    [UIView animateWithDuration:1.0 animations:^{
-        
-        BOOL isOpen = [self.arrayTableSectionIsOpen[btn.tag] boolValue];
-        if (isOpen == YES) {
-            [self.arrayTableSectionIsOpen removeObjectAtIndex:btn.tag];
-            [self.arrayTableSectionIsOpen insertObject:@(NO) atIndex:btn.tag];
-        }else{
-            [self.arrayTableSectionIsOpen removeObjectAtIndex:btn.tag];
-            [self.arrayTableSectionIsOpen insertObject:@(YES) atIndex:btn.tag];
-        }
-        [tabForecastListView reloadData];
-    }];
-}
+//-(void)headerViewClick:(UIButton *)btn{
+//    [UIView animateWithDuration:1.0 animations:^{
+//
+//        BOOL isOpen = [self.arrayTableSectionIsOpen[btn.tag] boolValue];
+//        if (isOpen == YES) {
+//            [self.arrayTableSectionIsOpen removeObjectAtIndex:btn.tag];
+//            [self.arrayTableSectionIsOpen insertObject:@(NO) atIndex:btn.tag];
+//        }else{
+//            [self.arrayTableSectionIsOpen removeObjectAtIndex:btn.tag];
+//            [self.arrayTableSectionIsOpen insertObject:@(YES) atIndex:btn.tag];
+//        }
+//        [tabForecastListView reloadData];
+//    }];
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    UMChongZhiViewController *matchDetailVC = [[UMChongZhiViewController alloc]init];
+    JczqShortcutModel * model =JczqShortcutList[indexPath.row];
+    
+    matchDetailVC.model = model ;//[model jCZQScoreZhiboToJcForecastOptions];
+    if ([matchDetailVC.model.spfSingle boolValue] == YES) {
+        matchDetailVC.isHis = YES;
+    }else{
+        
+        matchDetailVC.isHis = NO;
+    }
+    matchDetailVC.hidesBottomBarWhenPushed = YES;
+    matchDetailVC.curPlayType =@"jczq";
+    [self.navigationController pushViewController:matchDetailVC animated:YES];
 }
 
 

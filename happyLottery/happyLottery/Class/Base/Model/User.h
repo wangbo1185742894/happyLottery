@@ -9,7 +9,25 @@
 #import <Foundation/Foundation.h>
 #import "BaseModel.h"
 
-
+//{
+//    balance = 999996; *
+//    bankBinding = 0; *
+//    cardCode = 10000001;
+//    channelCode = TBZ;
+//    couponCount = 0;
+//    id = 1;
+//    lockStatus = "UN_LOCK";
+//    memberType = "FREEDOM_PERSON";
+//    mobile = 15929443992;
+//    notCash = 0;
+//    parentId = 0;
+//    paypwdSetting = 0;
+//    registerTime = 1513315447000;
+//    score = 0;
+//    sendBalance = 0;
+//    shareCode = E13608C5;
+//    whitelist = 1;
+//}
 
 @interface User : BaseModel
 
@@ -32,6 +50,8 @@
 @property(nonatomic,strong)NSString * couponCount;
 @property(nonatomic,strong)NSString * registerTime;
 @property(nonatomic,strong)NSString * score;
+// UN_LOCK("未锁定"), LOCK("锁定");
+@property(nonatomic,assign)NSString * lockStatus;
 @property(nonatomic,strong)NSString * parentId;
 
 @end

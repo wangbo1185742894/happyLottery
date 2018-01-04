@@ -142,6 +142,8 @@ sizeWithFont:font constrainedToSize:maxSize lineBreakMode:mode] : CGSizeZero;
 
 #define NotificationNameUserLogin @"user_login_notification"
 #define OrderPaySuccessNotification @"OrderPaySuccessNotification"
+#define KSELECTMATCHCLEAN @"touZhuSelectMatchDelete"
+
 #define KscreenWidth CGRectGetWidth([UIScreen mainScreen].bounds)
 #define KscreenHeight CGRectGetHeight([UIScreen mainScreen].bounds)
 // 登录名验证：4到16位，数字或英文或下划线

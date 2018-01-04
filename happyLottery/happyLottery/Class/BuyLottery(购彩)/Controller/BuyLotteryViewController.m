@@ -13,11 +13,18 @@
 #import "NewsListCell.h"
 #import "NewsViewController.h"
 #import "ForecastViewController.h"
+#import "JCZQPlayViewController.h"
+#import "JczqShortcutModel.h"
+#import "YuCeSchemeCreateViewController.h"
+#import "WBHomeJCYCViewController.h"
+#import "WBBifenZhiboViewController.h"
+
+#import "UMChongZhiViewController.h"
 
 #define KNewsListCell @"NewsListCell"
-@interface BuyLotteryViewController ()<WBAdsImgViewDelegate,HomeMenuItemViewDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface BuyLotteryViewController ()<WBAdsImgViewDelegate,HomeMenuItemViewDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate>
 {
-    
+    NSMutableArray *JczqShortcutList;
     __weak IBOutlet UIView *scrContentView;
     __weak IBOutlet NSLayoutConstraint *homeViewHeight;
     WBAdsImgView *adsView;
@@ -38,7 +45,37 @@
     [self setMenu];
     [self setNewsView];
     [self setTableView];
-   
+    
+}
+
+
+-(void)getJczqShortcut{
+    JczqShortcutList = [NSMutableArray arrayWithCapacity:0];
+    self.lotteryMan.delegate = self ;
+    [self.lotteryMan getJczqShortcut];
+}
+
+-(void)gotJczqShortcut:(NSArray *)dataArray errorMsg:(NSString *)msg{
+    if (dataArray == nil) {
+        [self showPromptText:msg hideAfterDelay:1.7];
+        return;
+    }
+    
+    for (NSDictionary* infoDic in dataArray) {
+        JczqShortcutModel *model =  [[JczqShortcutModel alloc]initWith:infoDic];
+        [JczqShortcutList addObject:model];
+    }
+    NSInteger count = JczqShortcutList.count > 5 ?5:JczqShortcutList.count;
+    CGFloat height;
+    if ([self isIphoneX]) {
+        height = curY  + tabForecaseList.rowHeight * count + 20;
+    }else{
+        height = curY  + tabForecaseList.rowHeight * count;
+    }
+    homeViewHeight.constant = height;
+    tabForecastListHeight.constant = tabForecaseList.rowHeight * count;
+    [tabForecaseList reloadData];
+    
 }
 
 -(void)setTableView{
@@ -107,6 +144,8 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self getJczqShortcut];
     self.navigationController.navigationBar.hidden = YES;
     
     
@@ -120,26 +159,62 @@
 
 #pragma HomeMenuItemViewDelegate
 -(void)itemClick:(NSInteger)index{
+    if (index == 1000) {
+        JCZQPlayViewController * playViewVC = [[JCZQPlayViewController alloc]init];
+        playViewVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:playViewVC animated:YES];
+    }
     
+    if (index == 1001) {
+        WBHomeJCYCViewController *playVC = [[WBHomeJCYCViewController alloc]init];
+        playVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:playVC animated:YES];
+    }
     
+    if (index == 1002) {
+        YuCeSchemeCreateViewController *playVC = [[YuCeSchemeCreateViewController alloc]init];
+        playVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:playVC animated:YES];
+    }
+    
+    if (index == 1003) {
+        WBBifenZhiboViewController * wbBifenVC = [[WBBifenZhiboViewController alloc]init];
+        wbBifenVC.title = @"比分直播";
+        wbBifenVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:wbBifenVC animated:YES];
+    }
 }
 
 #pragma UITableViewDelegate,UITableViewDataSource
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    
-    return 1;
-}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 3;
+    return JczqShortcutList.count > 5 ?5:JczqShortcutList.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NewsListCell *cell = [tableView dequeueReusableCellWithIdentifier:KNewsListCell];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+    [cell refreshData:JczqShortcutList[indexPath.row]];
     return cell;
+    
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    UMChongZhiViewController *matchDetailVC = [[UMChongZhiViewController alloc]init];
+    JczqShortcutModel * model =JczqShortcutList[indexPath.row];
+
+    matchDetailVC.model = model ;//[model jCZQScoreZhiboToJcForecastOptions];
+    if ([matchDetailVC.model.spfSingle boolValue] == YES) {
+        matchDetailVC.isHis = YES;
+    }else{
+        
+        matchDetailVC.isHis = NO;
+    }
+    matchDetailVC.hidesBottomBarWhenPushed = YES;
+    matchDetailVC.curPlayType =@"jczq";
+    [self.navigationController pushViewController:matchDetailVC animated:YES];
     
 }
 

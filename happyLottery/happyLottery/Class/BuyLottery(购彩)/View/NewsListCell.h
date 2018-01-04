@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JczqShortcutModel.h"
 
 @interface NewsListCell : UITableViewCell
-
+-(void)refreshData:(JczqShortcutModel * )model;
 @end

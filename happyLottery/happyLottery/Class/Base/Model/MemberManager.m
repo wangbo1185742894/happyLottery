@@ -150,4 +150,33 @@
                         failure:failureBlock];
 }
 
+- (void) getMemberByCardCode:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed) {
+            NSDictionary *userInfo = [self objFromJson: responseJsonStr];
+            [self.delegate gotMemberByCardCode:userInfo errorMsg:response.errorMsg];
+        } else {
+            [self.delegate gotMemberByCardCode:nil errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        [self.delegate gotMemberByCardCode:nil errorMsg:@"服务器错误"];
+        //失败的代理方法
+    };
+    NSDictionary *itemParaDic = @{@"cardCode":paraDic[@"cardCode"]};
+    
+    SOAPRequest *request = [self requestForAPI: APIgetMemberByCardCode withParam:@{@"params":[self actionEncrypt:[self JsonFromId:itemParaDic]]} ];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
 @end
