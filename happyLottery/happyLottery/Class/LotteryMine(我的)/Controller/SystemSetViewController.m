@@ -7,6 +7,7 @@
 //
 
 #import "SystemSetViewController.h"
+#import "AboutViewController.h"
 
 @interface SystemSetViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottom;
@@ -31,8 +32,11 @@
 - (IBAction)switch2Click:(id)sender {
 }
 - (IBAction)aboutBtnClick:(id)sender {
+    AboutViewController *ab = [[AboutViewController alloc]init];
+    [self.navigationController pushViewController:ab animated:YES];
 }
 - (IBAction)versionBtnClick:(id)sender {
+
 }
 - (IBAction)quitBtnClick:(id)sender {
     self.curUser.isLogin = NO;

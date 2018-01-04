@@ -19,6 +19,7 @@
 #import "MyCouponViewController.h"
 #import "SystemSetViewController.h"
 #import "NoticeCenterViewController.h"
+#import "ShareViewController.h"
 
 @interface MineViewController () <UITableViewDelegate, UITableViewDataSource,MemberManagerDelegate>{
     NSArray *listArray;
@@ -349,6 +350,11 @@
             
         }else  if ([optionDic[@"title"] isEqualToString:@"设置"]){
             SystemSetViewController * mpVC = [[SystemSetViewController alloc]init];
+            mpVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:mpVC animated:YES];
+            
+        }else  if ([optionDic[@"title"] isEqualToString:@"分享"]){
+            ShareViewController * mpVC = [[ShareViewController alloc]init];
             mpVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:mpVC animated:YES];
             

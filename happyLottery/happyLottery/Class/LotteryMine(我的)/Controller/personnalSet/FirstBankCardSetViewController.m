@@ -49,16 +49,16 @@
 - (IBAction)getBankClick:(id)sender {
     self.backView.hidden = NO;
     self.tableView.hidden = NO;
-    if (listBankArray.count > 0) {
-       self.tableViewHeight.constant = listBankArray.count *40;
-    }
+//    if (listBankArray.count > 0) {
+//       self.tableViewHeight.constant = listBankArray.count *40;
+//    }
    
     [self.tableView reloadData];
 }
 
 - (IBAction)commitBtnClick:(id)sender {
     if (_nameTextField.text.length ==0 || _nameTextField.text==nil) {
-        [self showPromptText: @"请输入有效的实名" hideAfterDelay: 1.7];
+        [self showPromptText: @"请输入真实姓名" hideAfterDelay: 1.7];
         return;
     }
     

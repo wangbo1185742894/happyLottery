@@ -9,6 +9,17 @@
 #import "AppDelegate.h"
 #import "NewFeatureViewController.h"
 #import "AESUtility.h"
+
+
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKConnector/ShareSDKConnector.h>
+
+//微信SDK头文件
+#import "WXApi.h"
+
+//新浪微博SDK头文件
+#import "WeiboSDK.h"
+
 #define KEYAPPVERSION @"appVersion"
 #define KEYCURAPPVERSION @"CFBundleShortVersionString"
 
