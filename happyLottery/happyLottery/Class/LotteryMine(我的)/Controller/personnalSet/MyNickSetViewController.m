@@ -54,10 +54,16 @@
 }
 
 -(void)completeBtnClick{
-  
+  NSString *nickname = self.nickField.text;
+    if(nickname.length==0){
+         [self showPromptText:@"昵称不能为空！" hideAfterDelay:1.7];
+        return;
+    }else{
         
         [self commitClient];
 
+    }
+    
     
 }
 
@@ -110,7 +116,7 @@
     
     NSString *str = [NSString stringWithFormat:@"%@%@",textField.text,string];
         
-        if (str.length >14) {
+        if (str.length >7) {
             [self showPromptText: @"昵称不能超过7位" hideAfterDelay: 1.7];
             return NO;
         }
