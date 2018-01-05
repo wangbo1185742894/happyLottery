@@ -14,6 +14,9 @@
 - (void) loginUser:(NSDictionary *)userInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) sendRegisterSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) checkRegisterSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+
+- (void) gotMemberByCardCode:(NSDictionary*)userInfo errorMsg:(NSString *)msg;
+
 - (void) forgetPWDSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) sendForgetPWDSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) checkForgetPWDSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
@@ -38,6 +41,7 @@
 - (void) getCouponByStateSms:(NSDictionary *)couponInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) updateImage:(BOOL)success errorMsg:(NSString *)msg;
 
+
 @end
 
 @interface MemberManager : Manager
@@ -47,6 +51,9 @@
 - (void) registerUser:(NSDictionary *)paraDic;
 - (void) sendRegisterSms:(NSDictionary *)paraDic;
 - (void) checkRegisterSms:(NSDictionary *)paraDic;
+
+- (void) getMemberByCardCode:(NSDictionary *)paraDic;
+
 - (void) forgetPWDSms:(NSDictionary *)paraDic;
 - (void) sendForgetPWDSms:(NSDictionary *)paraDic;
 - (void) checkForgetPWDSms:(NSDictionary *)paraDic;
@@ -70,7 +77,10 @@
 - (void) openRedPacketSms:(NSDictionary *)paraDic;
 - (void) getCouponByStateSms:(NSDictionary *)paraDic;
 - (void)updateImage:(NSDictionary<NSString*,NSArray<NSData*>*>* _Nullable)apkFile;
+
 //11.23 活动公告
 - (void)getActivetyMessage:(NSString *)strId;
+
+
 @end
 

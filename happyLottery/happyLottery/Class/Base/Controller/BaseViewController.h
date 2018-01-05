@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "MemberManager.h"
+#import "LotteryManager.h"
 #import "FMDB.h"
 
 @interface BaseViewController : UIViewController
+
 @property (nonatomic,strong)MemberManager * memberMan;
+@property (nonatomic,strong)LotteryManager * lotteryMan;
 
 @property (nonatomic,strong) FMDatabase *fmdb;
 @property(nonatomic,strong)User *curUser;
@@ -24,9 +27,14 @@
                         autoHide: (NSTimeInterval) interval;
 - (void) showLoadingViewWithText: (NSString *) text;
 - (void) showPromptText: (NSString *) text;
-- (void) hidePromptText ;
+- (void) hidePromptText;
 - (void) hideLoadingView;
 
 
 -(BOOL)isIphoneX;
+
+-(void)navigationBackToLastPage;
+
+-(void)needLogin;
+
 @end

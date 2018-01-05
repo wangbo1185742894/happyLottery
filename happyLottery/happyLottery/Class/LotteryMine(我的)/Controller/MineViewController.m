@@ -75,7 +75,7 @@
 -(void)autoLogin{
     
     isLogin = NO;
-    
+
     if ([self .fmdb open]) {
         FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_user_info"];
         if ([result next] && [result stringForColumn:@"mobile"] != nil) {
@@ -336,10 +336,20 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath: indexPath animated: YES];
+    if (!self.curUser.isLogin) {
+        
+        [self needLogin];
+        return;
+    }
+    
     
     NSDictionary *optionDic = listArray[indexPath.section][indexPath.row];
     
     self.memberSubFunctionClass = optionDic[@"actionClassName"];
+    BaseViewController *vc = [[NSClassFromString(_memberSubFunctionClass) alloc] initWithNibName: _memberSubFunctionClass bundle: nil];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController: vc animated: YES];
+
     if (isLogin == NO) {
         [self Login];
     } else {
@@ -357,43 +367,9 @@
             ShareViewController * mpVC = [[ShareViewController alloc]init];
             mpVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:mpVC animated:YES];
-            
         }
     }
-//    if ([optionDic[@"title"] isEqualToString:@"身份认证"] || [optionDic[@"title"] isEqualToString:@"密码修改"]) {
-//       // [self showInputPopView];
-//        return;
-//    }else if ([optionDic[@"title"] isEqualToString:@"分享彩运宝"]){
-//
-//        //        self.navigationItem.rightBarButtonItem.enabled = NO;
-//        [self showShareView];
-//    }else{
-//
-//        UIViewController *vc = [[NSClassFromString(_memberSubFunctionClass) alloc] initWithNibName: _memberSubFunctionClass bundle: nil];
-//        vc.hidesBottomBarWhenPushed = YES;
-//
-//        if ([vc isKindOfClass:[SetPayPwdViewController class]]) {
-//            SetPayPwdViewController * setPayPwdVC = (SetPayPwdViewController *)vc;
-//            setPayPwdVC.setPayPwdType = SetPayPwdTypeReset;
-//        }
-//
-//        if ([vc isKindOfClass:[MyHemaiSchemeViewController class]]) {
-//            MyHemaiSchemeViewController * hemaiVC = (MyHemaiSchemeViewController *)vc;
-//            hemaiVC.isSponsor = YES;
-//        }
-//        [self.navigationController pushViewController: vc animated: YES];
-//
-//    }
+    
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

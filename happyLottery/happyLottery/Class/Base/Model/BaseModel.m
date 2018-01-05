@@ -23,13 +23,15 @@
 -(void)setValue:(id)value forKey:(NSString *)key{
     
     NSString *strValue = [NSString stringWithFormat:@"%@",value];
-    
+    if ([key isEqualToString:@"id"]) {
+        key = @"_id";
+    }
     [super setValue:strValue forKey:key];
     
 }
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key
 {
-    NSLog(@"* %@,",key);
+    NSLog(@"@property(nonatomic,copy)NSString * %@;",key);
 }
 
 @end

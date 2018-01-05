@@ -9,6 +9,7 @@
 #import "BaseViewController.h"
 #import <arpa/inet.h>
 #import <netdb.h>
+#import "LoginViewController.h"
 
 
 
@@ -24,6 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.memberMan = [[MemberManager alloc]init];
+    self.lotteryMan = [[LotteryManager alloc]init];
     [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
     [self setNavigationBack];
     NSString *doc=[NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
@@ -66,7 +68,7 @@
         if ([self socketReachabilityTest]) {
 //            [self showPromptText:@"连接服务器成功" hideAfterDelay:1.8];
         }else{
-            [self showPromptText:@"服务器连接失败" hideAfterDelay:1.8];
+         //   [self showPromptText:@"服务器连接失败" hideAfterDelay:1.8];
         }
     });
 }
@@ -79,7 +81,7 @@
     
     serverAddress.sin_family = AF_INET;
     
-    serverAddress.sin_addr.s_addr = inet_addr("202.108.22.5");
+    serverAddress.sin_addr.s_addr = inet_addr("192.168.88.244");
     
     serverAddress.sin_port = htons(80);
     if (connect(socketNumber, (const struct sockaddr *)&serverAddress, sizeof(serverAddress)) == 0) {
@@ -231,5 +233,22 @@
     }
 }
 
+-(void)needLogin{
+    ZLAlertView *alert = [[ZLAlertView alloc] initWithTitle:@"请登录" message:@"您尚未登录,请先登录"];
+    [alert addBtnTitle:@"取消" action:^{
+        
+    }];
+    [alert addBtnTitle:@"确定" action:^{
+        //登录成功后跳回
+        LoginViewController * loginVC = [[LoginViewController alloc]init];
+        UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController: loginVC];
+        navVC.navigationBar.barTintColor = SystemGreen;
+        
+        navVC.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor], NSFontAttributeName: [UIFont systemFontOfSize:18]};
+        navVC.navigationBar.tintColor = [UIColor whiteColor];
+        [self presentViewController:navVC animated:NO completion:nil];
+    }];
+    [alert showAlertWithSender:self];
+}
 
 @end

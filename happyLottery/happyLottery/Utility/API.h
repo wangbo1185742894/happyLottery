@@ -11,19 +11,29 @@
 
 #define NameSpaceURI @"http://webservice.onlytest.com/"
 
-
+//244服务
 #define WSServerURL @"http://192.168.88.244:28000/services%@"
 
+//史少鹏服务
+//#define WSServerURL @"http://192.168.88.116:28000/services%@"
+
+//程家宗服务
 //#define WSServerURL @"http://192.168.88.105:28000/services%@"
+
 
 //#define WSServerURL @"http://192.168.88.116:28000/services%@"
 
-#define SUBAPIMember               @"/member"
 
 
 
-#define SUBAPIActivity              @"/activity"
 
+
+#define SUBAPIActivity       @"/activity"
+#define APIopenRedPacket           @"openRedPacket"
+#define APIgetRedPacketByState     @"getRedPacketByState"
+
+
+#define SUBAPIMember         @"/member"
 #define APILogin                   @"login"
 #define APIRegister                @"register"
 #define APISendRegisterSms         @"sendRegisterSms"
@@ -44,6 +54,7 @@
 #define APIrecharge                @"recharge"
 #define APIwithdraw                @"withdraw"
 #define APIvalidatePaypwd          @"validatePaypwd"
+
 #define APIgetCashBlotter           @"getCashBlotter"
 #define APIgetScoreBlotter          @"getScoreBlotter"
 #define APIgetMemberByCardCode      @"getMemberByCardCode"
@@ -51,5 +62,34 @@
 #define APIopenRedPacket            @"openRedPacket"
 #define APIgetCouponByState           @"getCouponByState"
 #define APIupdateImage              @"headUrl"
+
+
+#define SUBAPIDATA           @"/data"
+#define APIgetJczqMatch             @"getJczqMatch"
+#define APIgetJczqSp                @"getJczqSp"
+#define APIgetJczqLeague            @"getJczqLeague"
+#define APIgetJczqShortcut          @"getJczqShortcut"
+#define APIgetForecastByMatch       @"getForecastByMatch"
+#define APIgetJczqPairingMatch      @"getJczqPairingMatch"
+#define APIlistByForecast           @"listByForecast"
+#define APIlistByHisForecast        @"listByHisForecast"
+#define APIlistByJclqScore          @"listByJclqScore"
+#define APIlistByJczqScore          @"listByJczqScore"
+#define APIlistByRecScheme          @"listByRecScheme"
+#define APIGetBFZBInfo              @"getBFZBInfo"
+
+
+#define SUBAPISchemeService   @"/scheme"
+#define APIBetLotteryScheme         @"betLotteryScheme"
+#define APISchemeCashPayment        @"schemeCashPayment"
+#define APISchemeScorePayment       @"schemeScorePayment"
+#define APIGetSchemeRecord          @"getSchemeRecord"
+
+
+#define SUBAPITicketService   @"/ticket"
+#define APIGetJczqTicketOrderDetail @"getJczqTicketOrderDetail"
+
+
+
 
 #endif /* API_h */

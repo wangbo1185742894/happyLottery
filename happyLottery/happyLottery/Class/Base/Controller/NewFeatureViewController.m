@@ -20,7 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSArray<UIColor*> * colors = @[[UIColor redColor],[UIColor greenColor],[UIColor yellowColor]];
+    
     newFeatureView = [[UIScrollView alloc]initWithFrame:[UIScreen mainScreen].bounds];
     newFeatureView.contentSize = CGSizeMake(self.view.mj_w * 3, self.view.mj_h);
     newFeatureView.delegate  =self;
@@ -31,16 +31,20 @@
         UIImageView * imgItem = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.mj_w * i , 0, self.view.mj_w, self.view.mj_h)];
         [newFeatureView addSubview:imgItem];
         imgItem.userInteractionEnabled = NO;
-        imgItem.backgroundColor = colors[i];
+        NSString *imageName = [NSString stringWithFormat:@"newFeatureView-%d",i+1];
+        [imgItem setImage:[UIImage imageNamed:imageName]];
         if (i == 2) {
             UIButton * btnExperience = [UIButton buttonWithType:UIButtonTypeCustom];
             [btnExperience setTitle:@"立即体验" forState:0];
+            [btnExperience setTitleColor:SystemGreen forState:0];
             [btnExperience addTarget:self action:@selector(actionExperience) forControlEvents:UIControlEventTouchUpInside];
-            btnExperience.frame = CGRectMake( (imgItem.mj_w * 2)+(imgItem.mj_w - 80) / 2, imgItem.mj_h - 100, 80, 40);
+            btnExperience.frame = CGRectMake( (imgItem.mj_w * 2)+(imgItem.mj_w - 120) / 2, imgItem.mj_h - 100, 120, 40);
+            btnExperience.layer.cornerRadius = 20;
+            btnExperience.layer.masksToBounds = YES;
+            btnExperience.layer.borderColor = SystemGreen.CGColor;
+            btnExperience.layer.borderWidth = 1;
             [newFeatureView addSubview:btnExperience];
-            btnExperience.backgroundColor = [UIColor redColor];
         }
-        
     }
     
     newFeatureView.pagingEnabled = YES;
