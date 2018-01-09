@@ -38,7 +38,7 @@
                                     <rect key="frame" x="0.0" y="268" width="375" height="110"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ePc-jk-gqe">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
+                                            <rect key="frame" x="0.0" y="31" width="375" height="79"/>
                                             <connections>
                                                 <action selector="actionNewDetail:" destination="-1" eventType="touchUpInside" id="fW8-HM-zny"/>
                                             </connections>
@@ -133,7 +133,7 @@
                                         <constraint firstItem="0bv-xy-gKZ" firstAttribute="leading" secondItem="n3D-0u-3ol" secondAttribute="trailing" constant="19" id="bUp-Hf-TOL"/>
                                         <constraint firstItem="PU0-vs-Lxv" firstAttribute="top" secondItem="3HX-tS-NpW" secondAttribute="top" constant="7" id="bhN-Sc-aaO"/>
                                         <constraint firstItem="0bv-xy-gKZ" firstAttribute="leading" secondItem="F0Z-M8-KCF" secondAttribute="trailing" constant="8" id="e7G-0j-ciC"/>
-                                        <constraint firstItem="ePc-jk-gqe" firstAttribute="top" secondItem="3HX-tS-NpW" secondAttribute="top" id="gJa-jT-QJt"/>
+                                        <constraint firstItem="ePc-jk-gqe" firstAttribute="top" secondItem="3HX-tS-NpW" secondAttribute="top" constant="31" id="gJa-jT-QJt"/>
                                         <constraint firstItem="omF-Vc-f2U" firstAttribute="leading" secondItem="3HX-tS-NpW" secondAttribute="leading" constant="15" id="lSw-z3-w9U"/>
                                         <constraint firstAttribute="height" constant="110" id="msD-a0-Mo1"/>
                                         <constraint firstItem="z8C-dm-7Tm" firstAttribute="top" secondItem="1qR-Yj-AZ6" secondAttribute="bottom" constant="7" id="oPj-fo-9kn"/>
