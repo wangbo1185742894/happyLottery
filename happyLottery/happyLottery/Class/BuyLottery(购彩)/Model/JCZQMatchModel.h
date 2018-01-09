@@ -47,6 +47,22 @@
 @property(nonatomic,assign)BOOL isDanGuan;
 @property(nonatomic,assign)BOOL isSelect;
 
+@property (nonatomic , strong) NSString * odd_SPF_Select;
+@property (nonatomic , strong) NSString * odd_RQSPF_Select;
+@property (nonatomic , strong) NSString * odd_BF_Select;
+@property (nonatomic , strong) NSString * odd_JQS_Select;
+@property (nonatomic , strong) NSString * odd_BQC_Select;
+@property (nonatomic , strong) NSArray * odd_max_zuhe_HHGG;
+
+@property (nonatomic , strong) NSString * odd_SPF_Select_min;
+@property (nonatomic , strong) NSString * odd_RQSPF_Select_min;
+@property (nonatomic , strong) NSString * odd_BF_Select_min;
+@property (nonatomic , strong) NSString * odd_JQS_Select_min;
+@property (nonatomic , strong) NSString * odd_BQC_Select_min;
+@property (nonatomic , strong) NSArray * odd_min_zuhe_HHGG;
+
+
+@property (nonatomic,strong)NSMutableArray *matchBetArray;
 
 /*
  一场赛事5个玩法 对应 每个玩法4种状态 0 1 2 3
@@ -71,5 +87,7 @@
 -(NSString *)getTouzhuAppearTitleByTypeNoSp:(NSString *)type;
 
 -(CGFloat)getHeight;
+
+-(void)refreshPrize;
 
 @end

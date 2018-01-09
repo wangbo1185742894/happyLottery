@@ -397,7 +397,7 @@
         SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
         NSString *responseJsonStr = [response getAPIResponse];
         if (response.succeed) {
-            NSDictionary *dataDic = [Utility objFromJson:responseJsonStr];
+            NSArray  *dataDic = [Utility objFromJson:responseJsonStr];
             [self.delegate gotSchemeRecord:dataDic errorMsg:response.errorMsg];
         } else {
             [self.delegate gotSchemeRecord:nil errorMsg:response.errorMsg];
@@ -424,7 +424,7 @@
         SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
         NSString *responseJsonStr = [response getAPIResponse];
         if (response.succeed) {
-            NSArray  *dataArray = [Utility objFromJson:responseJsonStr];
+            NSDictionary  *dataArray = [Utility objFromJson:responseJsonStr];
             [self.delegate gotJczqTicketOrderDetail:dataArray errorMsg:response.errorMsg];
         } else {
             [self.delegate gotJczqTicketOrderDetail:nil errorMsg:response.errorMsg];
@@ -443,6 +443,36 @@
                         success:succeedBlock
                         failure:failureBlock];
 }
+
+
+- (void)getSchemeRecordBySchemeNo:(NSDictionary *)paraDic{
+    
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed) {
+            NSDictionary  *dataArray = [Utility objFromJson:responseJsonStr];
+            [self.delegate gotSchemeRecordBySchemeNo:dataArray errorMsg:response.errorMsg];
+        } else {
+            [self.delegate gotSchemeRecordBySchemeNo:nil errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate gotSchemeRecordBySchemeNo:nil errorMsg:@"服务器错误"];
+    };
+    
+    SOAPRequest *request = [self requestForAPI: APIGetSchemeRecordBySchemeNo withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPISchemeService
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+
 
 - (NSString *)getStringformfeid :(EarningsType)defaultFeid{
     NSString *str;

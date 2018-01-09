@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="381" height="98"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="381" height="98"/>
+                <rect key="frame" x="0.0" y="0.0" width="381" height="97.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11-27" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9S-Rj-o0t">
@@ -51,6 +51,10 @@
                             <constraint firstAttribute="width" constant="108" id="D5d-qe-vcQ"/>
                         </constraints>
                     </imageView>
+                    <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="TKe-2F-jTQ">
+                        <rect key="frame" x="275" y="30" width="39" height="37"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </pageControl>
                 </subviews>
                 <constraints>
                     <constraint firstItem="QyG-cZ-EP2" firstAttribute="leading" secondItem="N4w-Lj-CIq" secondAttribute="trailing" constant="8" id="CmE-Vs-xQe"/>

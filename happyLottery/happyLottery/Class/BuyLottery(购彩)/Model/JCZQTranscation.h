@@ -20,6 +20,7 @@
 @property(nonatomic,strong)NSString *chuanFa;
 @property(nonatomic,strong)NSString * beitou;
 
+
 @property(nonatomic,strong)NSMutableArray *selectItems;
 
 #pragma 投注内容
@@ -32,7 +33,15 @@
 @property(nonatomic,assign)NSInteger maxChuanNumber;
 
 @property(nonatomic,strong)NSMutableArray <JCZQMatchModel *>*selectMatchArray;
+
+
+@property(nonatomic,strong)NSString * mostBounds;
+@property(nonatomic,strong)NSString * minBounds;
+
 - (NSInteger)hhggHasBetMatchNumWithPlayCode:(NSString *)playCd;
+
+
+
 
 - (void)updataBetCount;
 @end

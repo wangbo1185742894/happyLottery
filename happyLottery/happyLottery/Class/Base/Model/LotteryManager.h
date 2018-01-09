@@ -29,8 +29,9 @@ typedef enum EarningsType{
 - (void) gotjcycScoreZhibo:(NSArray *)infoArray  errorMsg:(NSString *)msg;
 - (void) gotListByRecScheme:(NSArray *)infoArr errorMsg:(NSString *)errorMsg;
 - (void) gotBFZBInfo:(NSArray*)dataArray;
-- (void) gotSchemeRecord:(NSDictionary *)infoDic  errorMsg:(NSString *)msg;
-- (void) gotJczqTicketOrderDetail:(NSArray *)infoArray  errorMsg:(NSString *)msg;
+- (void) gotSchemeRecord:(NSArray *)infoDic  errorMsg:(NSString *)msg;
+- (void) gotJczqTicketOrderDetail:(NSDictionary *)infoArray  errorMsg:(NSString *)msg;
+- (void) gotSchemeRecordBySchemeNo:(NSDictionary *)infoArray errorMsg:(NSString *)msg;
 
 @end
 
@@ -57,5 +58,7 @@ typedef enum EarningsType{
 - (void) getBFZBInfo;
 - (void) getSchemeRecord:(NSDictionary *)paraDic;
 - (void) getJczqTicketOrderDetail:(NSDictionary *)paraDic;
+- (void)getSchemeRecordBySchemeNo:(NSDictionary *)paraDic;
+
 @end
 

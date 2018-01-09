@@ -18,7 +18,6 @@
 
 #import "BiFenZhiboModel.h"
 @interface WBBifenZhiboViewController ()<UIWebViewDelegate,LotteryManagerDelegate>
-
 {
 
     LotteryManager *lotteryMan;

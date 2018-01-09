@@ -23,6 +23,12 @@
 @property(nonatomic,copy)NSString * schemeNO;
 @property(nonatomic,copy)NSString * won;
 @property(nonatomic,copy)NSString * lotteryIcon;
+@property(nonatomic,copy)NSString * ticketCount;
+@property(nonatomic,copy)NSString * printCount;
+@property(nonatomic,copy)NSString * schemeStatus;
+@property(nonatomic,copy)NSString * bonus;
+-(NSString *)getSchemeState;
+-(CGFloat)getJCZQCellHeight;
 @end
 
 @interface JCZQSchemeModel : BaseModel

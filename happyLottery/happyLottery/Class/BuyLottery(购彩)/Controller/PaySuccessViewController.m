@@ -7,6 +7,7 @@
 //
 
 #import "PaySuccessViewController.h"
+#import "SchemeDetailViewController.h"
 
 @interface PaySuccessViewController ()
 
@@ -24,6 +25,9 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)actionLookOrder:(id)sender {
+    SchemeDetailViewController *schemeVC = [[SchemeDetailViewController alloc]init];
+    schemeVC.schemeNO = self.schemeNO;
+    [self.navigationController pushViewController:schemeVC animated:YES];
 }
 - (IBAction)actionBackHome:(id)sender {
     [self.navigationController popToRootViewControllerAnimated:YES];

@@ -9,5 +9,5 @@
 #import "BaseViewController.h"
 
 @interface PaySuccessViewController : BaseViewController
-
+@property(nonatomic,strong)NSString *schemeNO;
 @end

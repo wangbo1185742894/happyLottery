@@ -37,11 +37,19 @@
 -(void)refreshData:(JCZQSchemeItem*)model{
     labSchemeCost.text = [NSString stringWithFormat:@"%@元",model.betCost] ;
     labSchemeDate.text = [[model.createTime componentsSeparatedByString:@" "] firstObject];
-    labSchemeLottery.text = model.lottery;
+    
+    labSchemeLottery.text = [self getLotteryByCode:model.lottery];
     imgLotteryIcon.image = [UIImage imageNamed:model.lotteryIcon];
     imgWinState.hidden = ![model.won boolValue];
     
-//    labSchemeState.text = model.
+    labSchemeState.text = [model getSchemeState];
+}
+
+-(NSString *)getLotteryByCode:(NSString *)code{
+    if ([code isEqualToString:@"JCZQ"]) {
+        return @"竞彩足球";
+    } //以后加彩种 在这加
+    return @"彩票";
 }
 
 @end

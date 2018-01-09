@@ -86,16 +86,16 @@
         return;
     }
     sender.selected = !sender.selected;
-    if (sender.selected == YES) {
-        [self.selectItemPlay addObject:[NSString stringWithFormat:@"%ld",sender.tag]];
-    }else{
-        for (NSString *strTag in self.selectItemPlay) {
-            if ([strTag integerValue] == sender.tag) {
-                [self.selectItemPlay removeObject:strTag];
-                break;
-            }
-        }
-    }
+//    if (sender.selected == YES) {
+//        [self.selectItemPlay addObject:[NSString stringWithFormat:@"%ld",sender.tag]];
+//    }else{
+//        for (NSString *strTag in self.selectItemPlay) {
+//            if ([strTag integerValue] == sender.tag) {
+//                [self.selectItemPlay removeObject:strTag];
+//                break;
+//            }
+//        }
+//    }
 }
 
 - (IBAction)actionCancel:(id)sender {
@@ -106,10 +106,44 @@
     
     [self.curModel cleanAll];
     
+   
+    
+    for (UIButton *item in _jczqBFCellItem) {
+        if (item.selected == YES) {
+            [self.selectItemPlay addObject:@(item.tag)];
+        }
+    }
+    
+    for (UIButton *item in _jczqSPFCellItem) {
+        if (item.selected == YES) {
+            [self.selectItemPlay addObject:@(item.tag)];
+        }
+    }
+    
+    for (UIButton *item in _jczqRQSPFCellItem) {
+        if (item.selected == YES) {
+            [self.selectItemPlay addObject:@(item.tag)];
+        }
+        
+    }
+    
+    for (UIButton *item in _jczqBQCCellItem) {
+        if (item.selected == YES) {
+            [self.selectItemPlay addObject:@(item.tag)];
+        }
+    }
+    
+    for (UIButton *item in _jczqJQSCellItem) {
+        if (item.selected == YES) {
+            [self.selectItemPlay addObject:@(item.tag)];
+        }
+    }
+    
     for (NSString *str in self.selectItemPlay) {
         
         [self jczqCellItemClickBase:[str integerValue]];
     }
+    
     [self removeFromSuperview];
     [self.delegate JCZQPlayViewSelected];
 }
