@@ -600,11 +600,6 @@
 		F97FD9CB2003026300B35A7C /* inputbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F97FD9C92003026200B35A7C /* inputbox@2x.png */; };
 		F999275D2003223000023F8F /* bj_overdue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F99927572003222E00023F8F /* bj_overdue@2x.png */; };
 		F999275E2003223000023F8F /* bj_overdue@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F99927582003222E00023F8F /* bj_overdue@3x.png */; };
-		F999275F2003223000023F8F /* bjCoupon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F99927592003222F00023F8F /* bjCoupon@3x.png */; };
-		F99927602003223000023F8F /* dotted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F999275A2003222F00023F8F /* dotted@2x.png */; };
-		F99927612003223000023F8F /* dotted@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F999275B2003222F00023F8F /* dotted@3x.png */; };
-		F99927622003223000023F8F /* bjCoupon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F999275C2003222F00023F8F /* bjCoupon@2x.png */; };
-		F9992767200335DC00023F8F /* redpacket@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9992763200335DB00023F8F /* redpacket@3x.png */; };
 		F9992768200335DC00023F8F /* redpacket_open@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9992764200335DB00023F8F /* redpacket_open@2x.png */; };
 		F9992769200335DC00023F8F /* guanbi@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9992765200335DB00023F8F /* guanbi@3x.png */; };
 		F999276A200335DC00023F8F /* guanbi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9992766200335DC00023F8F /* guanbi@2x.png */; };
@@ -1513,11 +1508,6 @@
 		F97FD9C92003026200B35A7C /* inputbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inputbox@2x.png"; sourceTree = "<group>"; };
 		F99927572003222E00023F8F /* bj_overdue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bj_overdue@2x.png"; sourceTree = "<group>"; };
 		F99927582003222E00023F8F /* bj_overdue@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bj_overdue@3x.png"; sourceTree = "<group>"; };
-		F99927592003222F00023F8F /* bjCoupon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bjCoupon@3x.png"; path = "../../../../优惠券 2/优惠券-切图-ios/bjCoupon@3x.png"; sourceTree = "<group>"; };
-		F999275A2003222F00023F8F /* dotted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dotted@2x.png"; path = "../../../../优惠券 2/优惠券-切图-ios/dotted@2x.png"; sourceTree = "<group>"; };
-		F999275B2003222F00023F8F /* dotted@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dotted@3x.png"; path = "../../../../优惠券 2/优惠券-切图-ios/dotted@3x.png"; sourceTree = "<group>"; };
-		F999275C2003222F00023F8F /* bjCoupon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bjCoupon@2x.png"; path = "../../../../优惠券 2/优惠券-切图-ios/bjCoupon@2x.png"; sourceTree = "<group>"; };
-		F9992763200335DB00023F8F /* redpacket@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "redpacket@3x.png"; path = "../../../../../Library/Application Support/RTXC/accounts/lyj/sessionPhoto/ios 13/redpacket@3x.png"; sourceTree = "<group>"; };
 		F9992764200335DB00023F8F /* redpacket_open@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redpacket_open@2x.png"; sourceTree = "<group>"; };
 		F9992765200335DB00023F8F /* guanbi@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guanbi@3x.png"; sourceTree = "<group>"; };
 		F9992766200335DC00023F8F /* guanbi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guanbi@2x.png"; sourceTree = "<group>"; };
@@ -2936,7 +2926,6 @@
 				F9992766200335DC00023F8F /* guanbi@2x.png */,
 				F9992765200335DB00023F8F /* guanbi@3x.png */,
 				F9992764200335DB00023F8F /* redpacket_open@2x.png */,
-				F9992763200335DB00023F8F /* redpacket@3x.png */,
 				F9C332D91FF4D5EE00779197 /* cannot@2x.png */,
 				F9C332DB1FF4D5EF00779197 /* click@2x.png */,
 				F9C332DA1FF4D5EF00779197 /* click@3x.png */,
@@ -3030,10 +3019,6 @@
 				F99927742003511000023F8F /* bluecoupon@3x.png */,
 				F99927572003222E00023F8F /* bj_overdue@2x.png */,
 				F99927582003222E00023F8F /* bj_overdue@3x.png */,
-				F999275C2003222F00023F8F /* bjCoupon@2x.png */,
-				F99927592003222F00023F8F /* bjCoupon@3x.png */,
-				F999275A2003222F00023F8F /* dotted@2x.png */,
-				F999275B2003222F00023F8F /* dotted@3x.png */,
 			);
 			name = Coupon;
 			sourceTree = "<group>";
@@ -3368,7 +3353,6 @@
 				F924BA961FE252CF00830BF4 /* hide@2x.png in Resources */,
 				2D739CE01FEB45E300264044 /* matchcleanall@2x.png in Resources */,
 				2D739CE71FEB462B00264044 /* danguan@2x.png in Resources */,
-				F99927622003223000023F8F /* bjCoupon@2x.png in Resources */,
 				2D628B3F1FECAA9A0013D0E1 /* fengkuangjingcai-monitouzhu-xuanze@3x.png in Resources */,
 				2D8CBFB11FF328D800CC367F /* paysuccess@3x.png in Resources */,
 				2D2060231FFCB71E0086E266 /* icon_tongyi_weixuanze@2x.png in Resources */,
@@ -3379,7 +3363,6 @@
 				F9C332E21FF4DE1C00779197 /* OpenRedPopView.xib in Resources */,
 				F924BA9C1FE252CF00830BF4 /* recommend@2x.png in Resources */,
 				F9DC69A51FDF8929007D384D /* MyShareViewController.xib in Resources */,
-				F9992767200335DC00023F8F /* redpacket@3x.png in Resources */,
 				2D2060301FFCB71E0086E266 /* icon_zhifu_selceted@3x.png in Resources */,
 				2D739CED1FEB490900264044 /* fangkuangjingcainomal@3x.png in Resources */,
 				2D2060311FFCB71E0086E266 /* icon_zhifu_selcetes@2x.png in Resources */,
@@ -3490,7 +3473,6 @@
 				2D628B271FECA9C40013D0E1 /* touzhubeishujia@2x.png in Resources */,
 				2D0600511FFE061D009E7568 /* JCLQOrderDetailViewCell.xib in Resources */,
 				F94AA9CE1FEB5A7D0021B980 /* ok@2x.png in Resources */,
-				F999275F2003223000023F8F /* bjCoupon@3x.png in Resources */,
 				F91565F31FFCBDAE00E254CE /* Moments@3x.png in Resources */,
 				F999277E2003597E00023F8F /* addcrease@2x.png in Resources */,
 				F94AA9EF1FEB9BD50021B980 /* attention@3x.png in Resources */,
@@ -3627,14 +3609,10 @@
 				2D4B1E801FDF684E0034B708 /* weishoucang@3x.png in Resources */,
 				2D2060251FFCB71E0086E266 /* icon_weimingzhong@3x.png in Resources */,
 				F957C2101FE3B28D0090B19B /*  integration@3x.png in Resources */,
-
 				2D06008D1FFF4BAF009E7568 /* SchemeDetailViewCell.xib in Resources */,
-
 				F9992769200335DC00023F8F /* guanbi@3x.png in Resources */,
-
 				2D06FFE91FFDC9EB009E7568 /* football@2x.png in Resources */,
 				F94913431FFF260F00D30AE7 /* banker@3x.png in Resources */,
-				F99927602003223000023F8F /* dotted@2x.png in Resources */,
 				2D4B1E211FD8C9180034B708 /* ad_home3.png in Resources */,
 				2D06FFE61FFDC9EB009E7568 /* arrows@2x.png in Resources */,
 				2D739CFE1FEB68B800264044 /* backViewYuanJiao@2x.png in Resources */,
@@ -3698,7 +3676,6 @@
 				F957C2121FE3B28D0090B19B /* balance@2x.png in Resources */,
 				F90FCD7D1FF3810F00BD807C /* stale@3x.png in Resources */,
 				F91565F71FFCBDAE00E254CE /* wechat@3x.png in Resources */,
-				F99927612003223000023F8F /* dotted@3x.png in Resources */,
 				F9DC69EB1FDFB451007D384D /* withdraw Deposit_button_default@2x.png in Resources */,
 				F957C20F1FE3B28D0090B19B /* lottery@2x.png in Resources */,
 				2D06FFEA1FFDC9EB009E7568 /* football@3x.png in Resources */,
