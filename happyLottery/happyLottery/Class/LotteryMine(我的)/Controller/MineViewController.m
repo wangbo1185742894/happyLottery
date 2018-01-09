@@ -131,7 +131,18 @@
   
     self.curUser.payVerifyType = [NSNumber numberWithInt:1];
     //[_userImage sd_setImageWithURL:[NSURL URLWithString:self.curUser.headUrl]];
-    
+    int balance = [self.curUser.balance intValue];
+    int notCash = [self.curUser.notCash intValue];
+    int sendBalance = [self.curUser.sendBalance intValue];
+    int total = balance+notCash+sendBalance;
+    NSString *totalstr = [NSString stringWithFormat:@"%d",total];
+    self.balanceLab.text = totalstr;
+    int score =  [self.curUser.score intValue];
+    NSString *scorestr = [NSString stringWithFormat:@"%d",score];
+    self.integralLab.text = scorestr;
+    int couponCount = [self.curUser.couponCount intValue];
+    NSString *couponCountstr = [NSString stringWithFormat:@"%d",couponCount];
+    self.redPacketLab.text = couponCountstr;
 }
 
 
@@ -347,11 +358,7 @@
     
     
     NSDictionary *optionDic = listArray[indexPath.section][indexPath.row];
-    
-    self.memberSubFunctionClass = optionDic[@"actionClassName"];
-    BaseViewController *vc = [[NSClassFromString(_memberSubFunctionClass) alloc] initWithNibName: _memberSubFunctionClass bundle: nil];
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController: vc animated: YES];
+  
 
     if (isLogin == NO) {
         [self Login];
@@ -370,6 +377,11 @@
             ShareViewController * mpVC = [[ShareViewController alloc]init];
             mpVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:mpVC animated:YES];
+        }else{
+            self.memberSubFunctionClass = optionDic[@"actionClassName"];
+            BaseViewController *vc = [[NSClassFromString(_memberSubFunctionClass) alloc] initWithNibName: _memberSubFunctionClass bundle: nil];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController: vc animated: YES];
         }
     }
     

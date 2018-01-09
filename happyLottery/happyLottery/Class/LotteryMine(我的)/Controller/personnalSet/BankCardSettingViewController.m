@@ -45,7 +45,7 @@
     _tableView.dataSource = self;
     self.memberMan.delegate =self;
     listBankArray = [[NSMutableArray alloc]init];
-  
+    self.name.text = self.curUser.name;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -67,21 +67,25 @@
     
     if ([msg isEqualToString:@"执行成功"]) {
          NSLog(@"%@",bankInfo);
+        
         //[self showPromptText: @"获得会员已绑定的银行卡列表成功" hideAfterDelay: 1.7];
-        for (id object in bankInfo) {
-            NSLog(@"listBankArray=%@", object);
-            BankCard *bankCards = [[BankCard alloc]initWith:object];
-            [listBankArray addObject:bankCards];
-        }
-        if (listBankArray.count>0) {
-            dispatch_async(dispatch_get_main_queue(), ^{
+        [listBankArray removeAllObjects];
+        if (bankInfo !=nil) {
+            for (id object in bankInfo) {
+                NSLog(@"listBankArray=%@", object);
+                BankCard *bankCards = [[BankCard alloc]initWith:object];
+                [listBankArray addObject:bankCards];
+            }
+            if (listBankArray.count>0) {
                 
                 self.tvHeight.constant = listBankArray.count*80;
-            });
+                
+            }else{
+                self.tvHeight.constant = 0;
+            }
             [self.tableView reloadData];
-        }else{
-            self.tvHeight.constant = 0;
         }
+       
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
     }
@@ -90,6 +94,7 @@
 -(void)unBindBankCardSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     
     if ([msg isEqualToString:@"执行成功"]) {
+        self.curUser.bankBinding = 0;
         [self showPromptText: @"解绑银行卡成功" hideAfterDelay: 1.7];
         [self getBankListClient];
     }else{

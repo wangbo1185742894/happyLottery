@@ -68,14 +68,13 @@
         if ([self socketReachabilityTest]) {
 //            [self showPromptText:@"连接服务器成功" hideAfterDelay:1.8];
         }else{
+
             dispatch_async(dispatch_get_main_queue(), ^{
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                
-                
+
                         [self showPromptText:@"连接服务器失败，请检查网络设置" hideAfterDelay:1.8];
                     });
             });
-            
         }
     });
     

@@ -7,6 +7,7 @@
 //
 
 #import "ShareViewController.h"
+#import "ConversionCodeViewController.h"
 
 @interface ShareViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottom;
@@ -35,6 +36,9 @@
 - (IBAction)shareBtnClick:(id)sender {
 }
 - (IBAction)codeBtnClick:(id)sender {
+    ConversionCodeViewController *w = [[ConversionCodeViewController alloc]init];
+    w.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:w animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

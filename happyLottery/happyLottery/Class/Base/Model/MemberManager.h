@@ -33,12 +33,12 @@
 - (void) checkUpdatePaypwdSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) getSupportBankSms:(NSDictionary *)supportBankInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) validatePaypwdSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
-- (void) getCashBlotterSms:(NSDictionary *)boltterInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
-- (void) getScoreBlotterSms:(NSDictionary *)scoreInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) getCashBlotterSms:(NSArray *)boltterInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) getScoreBlotterSms:(NSArray *)scoreInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) getMemberByCardCodeSms:(NSDictionary *)memberInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
-- (void) getRedPacketByStateSms:(NSDictionary *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) getRedPacketByStateSms:(NSArray *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) openRedPacketSms:(NSDictionary *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
-- (void) getCouponByStateSms:(NSDictionary *)couponInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) getCouponByStateSms:(NSArray *)couponInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) updateImage:(BOOL)success errorMsg:(NSString *)msg;
 
 
@@ -77,5 +77,10 @@
 - (void) openRedPacketSms:(NSDictionary *)paraDic;
 - (void) getCouponByStateSms:(NSDictionary *)paraDic;
 - (void)updateImage:(NSDictionary<NSString*,NSArray<NSData*>*>* _Nullable)apkFile;
+
+//11.23 活动公告
+- (void)getActivetyMessage:(NSString *)strId;
+
+
 @end
 

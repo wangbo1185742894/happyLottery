@@ -72,14 +72,22 @@
     user.isLogin = YES;
     [GlobalInstance instance].curUser = user;
     
+   
+    
     if (success) {
-        [self showPromptText: @"登录成功"  hideAfterDelay: 1.7];
+         [self showPromptText: @"登录成功"  hideAfterDelay: 1.7];
+        [self performSelector:@selector(delayMethod) withObject:nil afterDelay:1];
+       
         [self saveUserInfo];
-        [self.navigationController dismissViewControllerAnimated:NO completion:nil];
+        
     }else{
         //[self showPromptText: @"登录失败"  hideAfterDelay: 1.7];
         [self showPromptText:msg];
     }
+}
+
+- (void)delayMethod{
+    [self.navigationController dismissViewControllerAnimated:NO completion:nil];
 }
 
 -(void)saveUserInfo{

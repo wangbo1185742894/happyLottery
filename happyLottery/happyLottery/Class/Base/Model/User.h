@@ -52,15 +52,15 @@ typedef enum {
 @property(nonatomic,strong)NSString *channelName;
 @property(nonatomic,strong)NSString *sex;
 @property(nonatomic,strong)NSString *headUrl;
-@property(nonatomic,strong)NSString * sendBalance;
+@property(nonatomic,strong)NSNumber * sendBalance;
 @property(nonatomic,strong)NSString * cardCode;
 @property(nonatomic,strong)NSString * mobile;
 @property(nonatomic,strong)NSString *shareCode;
 @property(nonatomic,strong)NSString *lockStatus;
 // CIRCLE_MASTER("圈主"), CIRCLE_PERSON("圈民"), FREEDOM_PERSON("自由人");
 @property(nonatomic,assign)NSString * memberType;
-@property(nonatomic,strong)NSString * balance;
-@property(nonatomic,strong)NSString * notCash;
+@property(nonatomic,strong)NSNumber * balance;
+@property(nonatomic,strong)NSNumber * notCash;
 @property(nonatomic,strong)NSString * whitelist;
 @property(nonatomic,strong)NSString * channelCode;
 @property(nonatomic,strong)NSString * couponCount;

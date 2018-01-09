@@ -42,12 +42,17 @@
 -(void)bandPayPWDSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     if ([msg isEqualToString:@"执行成功"]) {
         [self showPromptText:@"设置支付密码" hideAfterDelay:1.7];
-        [self.navigationController popViewControllerAnimated:YES];
+           [self performSelector:@selector(delayMethod) withObject:nil afterDelay:1.0];
+        
     }else{
         
         [self showPromptText:msg hideAfterDelay:1.7];
         
     }
+}
+
+- (void)delayMethod{
+   [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)commitBtnClick:(id)sender {

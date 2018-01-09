@@ -27,6 +27,7 @@
 
 
 
+
 #define SUBAPIActivity       @"/activity"
 #define APIopenRedPacket           @"openRedPacket"
 #define APIgetRedPacketByState     @"getRedPacketByState"
@@ -53,12 +54,14 @@
 #define APIrecharge                @"recharge"
 #define APIwithdraw                @"withdraw"
 #define APIvalidatePaypwd          @"validatePaypwd"
-#define APIgetCashBlotter          @"getCashBlotter"
-#define APIgetScoreBlotter         @"getScoreBlotter"
-#define APIgetMemberByCardCode     @"getMemberByCardCode"
-#define APIgetCouponByState        @"getCouponByState"
-#define APIupdateImage             @"headUrl"
-#define APIgetMemberByCardCode     @"getMemberByCardCode"
+
+#define APIgetCashBlotter           @"getCashBlotter"
+#define APIgetScoreBlotter          @"getScoreBlotter"
+#define APIgetMemberByCardCode      @"getMemberByCardCode"
+#define APIgetRedPacketByState      @"getRedPacketByState"
+#define APIopenRedPacket            @"openRedPacket"
+#define APIgetCouponByState           @"getCouponByState"
+#define APIupdateImage              @"headUrl"
 
 
 #define SUBAPIDATA           @"/data"

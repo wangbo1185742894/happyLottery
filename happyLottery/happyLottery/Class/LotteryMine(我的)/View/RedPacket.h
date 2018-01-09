@@ -26,5 +26,4 @@
 @property(nonatomic,strong)NSString *createTime;
 @property(nonatomic,strong)NSString *activityName;
 
-
 @end

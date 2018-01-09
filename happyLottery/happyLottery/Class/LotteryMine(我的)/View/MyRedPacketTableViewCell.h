@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *endTimeLab;
 @property (weak, nonatomic) IBOutlet UIImageView *endImage;
 @property (weak, nonatomic) IBOutlet UIImageView *packetImage;
+@property (weak, nonatomic) IBOutlet UILabel *day;
 
 
 @end

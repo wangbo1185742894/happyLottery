@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -38,17 +38,20 @@
                             <rect key="frame" x="20" y="60" width="359" height="45"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="45" id="2Dk-6f-eJK"/>
+                                <constraint firstAttribute="width" constant="359" id="ReO-GT-f8m"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="cv1-Q8-t7b"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                         </textField>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pass0.png" translatesAutoresizingMaskIntoConstraints="NO" id="4P0-Xh-ZYg">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pass0.png" translatesAutoresizingMaskIntoConstraints="NO" id="4P0-Xh-ZYg">
                             <rect key="frame" x="20" y="60" width="359" height="45"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="45" id="FC9-Hx-11n"/>
+                                <constraint firstAttribute="width" constant="359" id="eaH-41-d2O"/>
                             </constraints>
                         </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tD5-Eb-W0x">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tD5-Eb-W0x">
                             <rect key="frame" x="302" y="112" width="77" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="W3F-pH-Ot3"/>
@@ -62,17 +65,15 @@
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="9Ke-oQ-87b" firstAttribute="leading" secondItem="rOa-Sd-lAV" secondAttribute="leading" constant="20" id="1cj-1e-NII"/>
                         <constraint firstAttribute="height" constant="150" id="3TH-d4-bUK"/>
-                        <constraint firstAttribute="trailing" secondItem="4P0-Xh-ZYg" secondAttribute="trailing" constant="20" id="DiU-Fb-p2J"/>
+                        <constraint firstItem="9Ke-oQ-87b" firstAttribute="centerX" secondItem="rOa-Sd-lAV" secondAttribute="centerX" id="AIe-gP-DSW"/>
                         <constraint firstItem="uz2-Z7-5FO" firstAttribute="leading" secondItem="rOa-Sd-lAV" secondAttribute="leading" constant="10" id="EDG-KJ-ULy"/>
                         <constraint firstAttribute="trailing" secondItem="uz2-Z7-5FO" secondAttribute="trailing" constant="10" id="KR7-9N-ect"/>
                         <constraint firstItem="uz2-Z7-5FO" firstAttribute="top" secondItem="rOa-Sd-lAV" secondAttribute="top" constant="10" id="LXB-bZ-93u"/>
                         <constraint firstItem="4P0-Xh-ZYg" firstAttribute="top" secondItem="uz2-Z7-5FO" secondAttribute="bottom" constant="15" id="W1T-ad-cca"/>
-                        <constraint firstAttribute="trailing" secondItem="9Ke-oQ-87b" secondAttribute="trailing" constant="20" id="ahd-Ma-sMF"/>
+                        <constraint firstItem="4P0-Xh-ZYg" firstAttribute="centerX" secondItem="rOa-Sd-lAV" secondAttribute="centerX" id="a2E-aD-gdx"/>
                         <constraint firstItem="9Ke-oQ-87b" firstAttribute="top" secondItem="uz2-Z7-5FO" secondAttribute="bottom" constant="15" id="b82-rp-6j9"/>
                         <constraint firstItem="tD5-Eb-W0x" firstAttribute="top" secondItem="4P0-Xh-ZYg" secondAttribute="bottom" constant="7" id="lnq-Tu-c6O"/>
-                        <constraint firstItem="4P0-Xh-ZYg" firstAttribute="leading" secondItem="rOa-Sd-lAV" secondAttribute="leading" constant="20" id="qfn-gg-qUr"/>
                         <constraint firstAttribute="trailing" secondItem="tD5-Eb-W0x" secondAttribute="trailing" constant="20" id="yIi-BF-bQf"/>
                     </constraints>
                 </view>
@@ -93,7 +94,7 @@
                 <outlet property="labTitle" destination="uz2-Z7-5FO" id="1Mh-zs-X7f"/>
                 <outlet property="txtInput" destination="9Ke-oQ-87b" id="SF0-YG-RRE"/>
             </connections>
-            <point key="canvasLocation" x="-576" y="-165"/>
+            <point key="canvasLocation" x="-576.5" y="-165"/>
         </view>
     </objects>
     <resources>

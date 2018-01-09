@@ -103,17 +103,9 @@
     
 }
 
-- (IBAction)actionSendCheckCode:(id)sender {
-    
-    if ([self checkTelNum] == NO) {
-        return;
-    }
-    
-    [self.memberMan sendRegisterSms:@{@"mobile":tfUserTel.text}];
-  
-    
+-(void)startTimer{
     [btnSendCheckCode setEnabled:NO];
-
+    
     [btnSendCheckCode setTitle:[NSString stringWithFormat:@"重新发送(%lds)",checkSec] forState:UIControlStateDisabled];
     
     if (@available(iOS 10.0, *)) {
@@ -132,20 +124,32 @@
     } else {
         
     }
+    
+}
+
+- (IBAction)actionSendCheckCode:(id)sender {
+    
+//    if ([self checkTelNum] == NO) {
+//        return;
+//    }
+    
+    [self.memberMan sendRegisterSms:@{@"mobile":tfUserTel.text}];
+
 }
 
 -(void)sendRegisterSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     if ([msg isEqualToString:@"执行成功"]) {
         [self showPromptText: @"发送成功" hideAfterDelay: 1.7];
+        [self startTimer];
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
     }
 }
 
 - (IBAction)actionRegister:(id)sender {
-    if ([self checkTelNum] == NO) {
-        return;
-    }
+//    if ([self checkTelNum] == NO) {
+//        return;
+//    }
     
     if (tfCheckCode.text.length < 5) {
         [self showPromptText: @"请输入有效的验证码" hideAfterDelay: 1.7];
@@ -176,12 +180,17 @@
     [self hideLoadingView];
     if ([msg isEqualToString:@"执行成功"]) {
         [self showPromptText:@"注册成功" hideAfterDelay:1.7];
-        [self.navigationController popViewControllerAnimated:YES];
+          [self performSelector:@selector(delayMethod) withObject:nil afterDelay:1.0];
+       
     }else{
         
         [self showPromptText:msg hideAfterDelay:1.7];
         
     }
+}
+
+- (void)delayMethod{
+   [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)actionIsGreenRule:(id)sender {
@@ -248,7 +257,7 @@
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 
                 if (tfUserTel.text.length <11) {
-                    [self showPromptText: @"请先输入有效的手机号码" hideAfterDelay: 1.7];
+                    [self showPromptText: @"请先输入11位手机号码" hideAfterDelay: 1.7];
                     
                 }else{
                     

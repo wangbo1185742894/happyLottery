@@ -18,12 +18,14 @@
     NSMutableArray *listUnUseRedPacketArray;
     NSString *packetId;
     RedPacket *r;
+    int page;
 }
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottom;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segment;
 @property (weak, nonatomic) IBOutlet UITableView *tableView1;
 @property (weak, nonatomic) IBOutlet UITableView *tableView2;
+@property (weak, nonatomic) IBOutlet UIView *emptyView;
 
 
 @end
@@ -45,9 +47,59 @@
     listUseRedPacketArray = [[NSMutableArray alloc]init];
     listUnUseRedPacketArray = [[NSMutableArray alloc]init];
     r = [[RedPacket alloc]init];
-    [self getRedPacketByStateClient:@"true"];
-    //[self openRedPacketClient];
+   // [self getRedPacketByStateClient:@"true"];
+    page=1;
+    if ( self.segment.selectedSegmentIndex == 0) {
+        
+        [self initRefresh1];
+        
+        self.tableView1.hidden = NO;
+        self.tableView2.hidden = YES;
+    }else  if (self.segment.selectedSegmentIndex == 1) {
+        
+        [self initRefresh2];
+        self.tableView2.hidden = NO;
+        self.tableView1.hidden = YES;
+    }
 }
+-(void)initRefresh1{
+    __weak typeof(self) weakSelf = self;
+    
+    // 设置回调（一旦进入刷新状态就会调用这个refreshingBlock）
+    self.tableView1.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        page=1;
+        [weakSelf getRedPacketByStateClient:@"true"];
+        [self.tableView1.mj_header endRefreshing];
+    }];
+    self.tableView1.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        page++;
+        ///[self.tableView1.mj_footer beginRefreshing];
+        [weakSelf getRedPacketByStateClient:@"true"];
+        
+    }];
+    // 马上进入刷新状态
+    [self.tableView1.mj_header beginRefreshing];
+}
+-(void)initRefresh2{
+    __weak typeof(self) weakSelf = self;
+    
+    self.tableView2.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        page=1;
+        [weakSelf getRedPacketByStateClient:@"false"];
+        [self.tableView2.mj_header endRefreshing];
+    }];
+    self.tableView2.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        page++;
+        //[self.tableView2.mj_header beginRefreshing];
+        [weakSelf getRedPacketByStateClient:@"false"];
+        
+    }];
+    
+    // 马上进入刷新状态
+    
+    [self.tableView2.mj_header beginRefreshing];
+}
+
 - (IBAction)segmentClick:(id)sender {
     
     switch( self.segment.selectedSegmentIndex)
@@ -56,41 +108,157 @@
             self.tableView1.hidden=NO;
             self.tableView2.hidden=YES;
                [listUnUseRedPacketArray removeAllObjects];
-        [self getRedPacketByStateClient:@"true"];
+            page=1;
+            
+            [self initRefresh1];
              break;
         case 1:
             self.tableView2.hidden=NO;
             self.tableView1.hidden=YES;
                   [listUseRedPacketArray removeAllObjects];
-        [self getRedPacketByStateClient:@"false"];
+            page=1;
+            
+            [self initRefresh2];
              break;
         default:
             break;
     }
 }
 
--(void)getRedPacketByStateSms:(NSDictionary *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+-(void)getRedPacketByStateSms:(NSArray *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     
     
     NSLog(@"redPacketInfo%@",redPacketInfo);
     if ([msg isEqualToString:@"执行成功"]) {
         // [self showPromptText: @"memberInfo成功" hideAfterDelay: 1.7];
-        if (redPacketInfo!=nil) {
-      
-         
+       
+        NSEnumerator *enumerator = [redPacketInfo objectEnumerator];
+        id object;
+        if ((object = [enumerator nextObject]) != nil) {
             NSArray *array = redPacketInfo;
-            for (int i=0; i<array.count; i++) {
-                RedPacket *redPacket = [[RedPacket alloc]initWith:array[i]];
-                  NSLog(@"redPacket%@",redPacket.redPacketStatus);
-                if (self.segment.selectedSegmentIndex == 0) {
-                [listUseRedPacketArray addObject:redPacket];
-                }else if(self.segment.selectedSegmentIndex==1){
-                [listUnUseRedPacketArray addObject:redPacket];
+           
+            
+            if (self.segment.selectedSegmentIndex == 0) {
+          
+                if (page == 1) {
+                    [listUseRedPacketArray removeAllObjects];
+                    if (array.count>0) {
+                        for (int i=0; i<array.count; i++) {
+                            
+                             RedPacket *redPacket = [[RedPacket alloc]initWith:array[i]];
+                            [listUseRedPacketArray addObject:redPacket];
+                           
+                            
+                        }
+                        [self.tableView1.mj_footer endRefreshing];
+                        self.tableView1.hidden = NO;
+                        self.tableView2.hidden = YES;
+                        [self.tableView1 reloadData];
+                       self.emptyView.hidden=YES;
+                    } else{
+                        
+                        self.emptyView.hidden=NO;
+                        self.tableView2.hidden = YES;
+                        self.tableView1.hidden = YES;
+                    }
+                }else{
+                    if (array.count>0) {
+                        //
+                        for (int i=0; i<array.count; i++) {
+                            
+                            RedPacket *redPacket = [[RedPacket alloc]initWith:array[i]];
+                            [listUseRedPacketArray addObject:redPacket];
+                        
+                            
+                        }
+                        if (listUseRedPacketArray.count>0) {
+                            self.tableView1.hidden = NO;
+                            self.tableView2.hidden = YES;
+                            [self.tableView1 reloadData];
+                            [self.tableView1.mj_footer endRefreshing];
+                        }else{
+                            [self.tableView1.mj_footer endRefreshingWithNoMoreData];
+                            
+                        }
+                        
+                    }
+                }
+            }else if(self.segment.selectedSegmentIndex==1){
+      
+                if (page == 1) {
+                    [listUnUseRedPacketArray removeAllObjects];
+                    if (array.count>0) {
+                        for (int i=0; i<array.count; i++) {
+                            
+                             RedPacket *redPacket = [[RedPacket alloc]initWith:array[i]];
+                            [listUnUseRedPacketArray addObject:redPacket];
+                       
+                            
+                        }
+                        self.tableView2.hidden = NO;
+                        self.tableView1.hidden = YES;
+                        [self.tableView2 reloadData];
+                        self.emptyView.hidden=YES;
+                        [self.tableView2.mj_footer endRefreshing];
+                    } else{
+                        
+                        self.emptyView.hidden=NO;
+                        self.tableView2.hidden = YES;
+                        self.tableView1.hidden = YES;
+                    }
+                }else{
+                    if (array.count>0) {
+                        //
+                        for (int i=0; i<array.count; i++) {
+                            
+                             RedPacket *redPacket = [[RedPacket alloc]initWith:array[i]];
+                            [listUnUseRedPacketArray addObject:redPacket];
+                         
+                            
+                        }
+                        if (listUnUseRedPacketArray.count>0) {
+                            self.tableView2.hidden = NO;
+                            self.tableView1.hidden = YES;
+                            [self.tableView2 reloadData];
+                            [self.tableView2.mj_footer endRefreshing];
+                        }else{
+                            [self.tableView2.mj_footer endRefreshingWithNoMoreData];
+                            
+                        }
+                        
+                    }
                 }
             }
-            [self.tableView1 reloadData];
-            [self.tableView2 reloadData];
+            
+        }else{
+            if (page == 1){
+                
+                self.emptyView.hidden=NO;
+                self.tableView2.hidden = YES;
+                self.tableView1.hidden = YES;
+            }
+            [self.tableView1.mj_footer endRefreshingWithNoMoreData];
+            [self.tableView2.mj_footer endRefreshingWithNoMoreData];
         }
+           
+//            for (int i=0; i<array.count; i++) {
+//                RedPacket *redPacket = [[RedPacket alloc]initWith:array[i]];
+//                  NSLog(@"redPacket%@",redPacket.redPacketStatus);
+//                if (self.segment.selectedSegmentIndex == 0) {
+//                [listUseRedPacketArray addObject:redPacket];
+//                }else if(self.segment.selectedSegmentIndex==1){
+//                [listUnUseRedPacketArray addObject:redPacket];
+//                }
+//            }
+//            self.emptyView.hidden=YES;
+//            [self.tableView1 reloadData];
+//            [self.tableView2 reloadData];
+//        }else{
+//            self.emptyView.hidden=NO;
+//            self.tableView2.hidden = YES;
+//            self.tableView1.hidden = YES;
+//
+//        }
       
         
     }else{
@@ -103,12 +271,22 @@
     NSLog(@"redPacketInfo%@",redPacketInfo);
     if ([msg isEqualToString:@"执行成功"]) {
         // [self showPromptText: @"memberInfo成功" hideAfterDelay: 1.7];
+        RedPacket *red = [[RedPacket alloc]initWith:redPacketInfo];
         UIImageView *image = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"redpacket"]];
         
         image.frame  = CGRectMake(self.view.mj_w/2-105, 200, 210,294);
         [self.view addSubview:image];
         float width = image.mj_w/2;
-        [self rotation360repeatCount:2 view:image andHalf:width andCaijin:@"5"];
+        NSString *redPacketType = red.redPacketType;
+        NSString *sourecs;
+        if ([redPacketType isEqualToString:@"彩金红包"]) {
+            sourecs = [NSString stringWithFormat:@"恭喜您获得了%@",red.redPacketContent];
+        } else if ([redPacketType isEqualToString:@"积分红包"]){
+            sourecs = [NSString stringWithFormat:@"恭喜您获得了%@",red.redPacketContent];
+        }else if ([redPacketType isEqualToString:@"优惠卷红包"]){
+            sourecs = [NSString stringWithFormat:@"恭喜您获得了%@",red.redPacketContent];
+        }
+        [self rotation360repeatCount:2 view:image andHalf:width andCaijin:red.redPacketContent];
         [self getRedPacketByStateClient:@"true"];
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
@@ -127,7 +305,7 @@
             [view removeFromSuperview];
             OpenRedPopView *popView = [[OpenRedPopView alloc]initWithFrame:self.view.frame];
             popView.delegate = self;
-            popView.labJiangjin.text =[NSString stringWithFormat:@"%@元",caijin];
+            popView.labJiangjin.text =caijin;
             popView.alpha = 0.2;
             popView.layer.cornerRadius = 10;
             popView.layer.masksToBounds = YES;
@@ -163,10 +341,12 @@
 -(void)getRedPacketByStateClient:(NSString*)isValid{
     NSDictionary *Info;
     @try {
-        
+         NSString *pagestr=[NSString stringWithFormat:@"%d",page];
         NSString *cardCode = self.curUser.cardCode;
         Info = @{@"cardCode":cardCode,
-                 @"isValid":isValid
+                 @"isValid":isValid,
+                 @"page":pagestr,
+                 @"pageSize":@"5"
                  };
         
     } @catch (NSException *exception) {
@@ -210,7 +390,7 @@
 
 
 - (CGFloat)tableView:(UITableView *)tableiew heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 101;
+    return 111;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -218,10 +398,7 @@
     static NSString *CellIdentifier = @"TabViewCell";
     //自定义cell类
     MyRedPacketTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        //通过xib的名称加载自定义的cell
-        cell = [[[NSBundle mainBundle] loadNibNamed:@"MyRedPacketTableViewCell" owner:self options:nil] lastObject];
-    }
+  
     //            REGISTER_CHANNEL("注册渠道"),
     //            LOGIN_CHANNEL("登录渠道"),
     //            SIGN_IN_CHANNEL("签到渠道"),
@@ -230,6 +407,10 @@
     //            WIN_CHANNEL("中奖渠道");
     RedPacket *redPacket = [[RedPacket alloc]init];
     if (tableView ==self.tableView1) {
+        if (cell == nil) {
+            //通过xib的名称加载自定义的cell
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"MyRedPacketTableViewCell" owner:self options:nil] lastObject];
+        }
         if (listUseRedPacketArray.count > 0) {
            redPacket = listUseRedPacketArray[indexPath.row];
              NSString *redPacketStatus = redPacket.redPacketStatus;
@@ -241,25 +422,36 @@
             
             NSString *redPacketChannel =redPacket.redPacketChannel;
             NSString *sourecs;
-            if ([redPacketChannel isEqualToString:@"REGISTER_CHANNEL"]) {
-                sourecs = @"来源： 系统注册赠送";
-            } else if ([redPacketChannel isEqualToString:@"LOGIN_CHANNEL"]){
-                sourecs = @"来源： 系统登录赠送";
-            }else if ([redPacketChannel isEqualToString:@"SIGN_IN_CHANNEL"]){
-                sourecs = @"来源： 系统签到赠送";
-            }else if ([redPacketChannel isEqualToString:@"RECHARGE_CHANNEL"]){
-                sourecs = @"来源： 系统充值赠送";
-            }else if ([redPacketChannel isEqualToString:@"CONSUME_CHANNEL"]){
-                sourecs = @"来源： 系统消费赠送";
-            }else if ([redPacketChannel isEqualToString:@"WIN_CHANNEL"]){
-                sourecs = @"来源： 系统中奖赠送";
-            }
-            cell.sourceLab.text = sourecs;
-            cell.endTimeLab.text = [NSString stringWithFormat:@"%@过期",redPacket.endValidTime];
+//            if ([redPacketChannel isEqualToString:@"注册渠道"]) {
+//                sourecs = @"来源： 系统注册赠送";
+//            } else if ([redPacketChannel isEqualToString:@"登录渠道"]){
+//                sourecs = @"来源： 系统登录赠送";
+//            }else if ([redPacketChannel isEqualToString:@"签到渠道"]){
+//                sourecs = @"来源： 系统签到赠送";
+//            }else if ([redPacketChannel isEqualToString:@"充值渠道"]){
+//                sourecs = @"来源： 系统充值赠送";
+//            }else if ([redPacketChannel isEqualToString:@"消费渠道"]){
+//                sourecs = @"来源： 系统消费赠送";
+//            }else if ([redPacketChannel isEqualToString:@"中奖渠道"]){
+//                sourecs = @"来源： 系统中奖赠送";
+//            }else if ([redPacketChannel isEqualToString:@"系统赠送"]){
+//                sourecs = @"来源： 系统赠送";
+//            }
+            cell.sourceLab.text =  [NSString stringWithFormat:@"来源：%@",redPacket.activityName];
+            NSString *date=[redPacket.endValidTime substringWithRange:NSMakeRange(0,10)];
+            cell.endTimeLab.text = [NSString stringWithFormat:@"有效期至：%@",date];
+            const long long  dayInteger = [self getDifferenceByDate:redPacket.endValidTime];
+            NSNumber *longlongNumber = [NSNumber numberWithLongLong:dayInteger];
+        
+            NSString *daystr = [longlongNumber stringValue];
+            cell.day.text=[NSString stringWithFormat:@"还有%@天过期",daystr];
         }
       
     }else if (tableView ==self.tableView2){
-        
+        if (cell == nil) {
+            //通过xib的名称加载自定义的cell
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"MyRedPacketTableViewCell" owner:self options:nil] lastObject];
+        }
         if (listUnUseRedPacketArray.count > 0) {
            redPacket = listUnUseRedPacketArray[indexPath.row];
             cell.packetImage.image = [UIImage imageNamed:@"cannot"];
@@ -268,21 +460,25 @@
             
             NSString *redPacketChannel =redPacket.redPacketChannel;
             NSString *sourecs;
-            if ([redPacketChannel isEqualToString:@"REGISTER_CHANNEL"]) {
-                sourecs = @"来源： 系统注册赠送";
-            } else if ([redPacketChannel isEqualToString:@"LOGIN_CHANNEL"]){
-                sourecs = @"来源： 系统登录赠送";
-            }else if ([redPacketChannel isEqualToString:@"SIGN_IN_CHANNEL"]){
-                sourecs = @"来源： 系统签到赠送";
-            }else if ([redPacketChannel isEqualToString:@"RECHARGE_CHANNEL"]){
-                sourecs = @"来源： 系统充值赠送";
-            }else if ([redPacketChannel isEqualToString:@"CONSUME_CHANNEL"]){
-                sourecs = @"来源： 系统消费赠送";
-            }else if ([redPacketChannel isEqualToString:@"WIN_CHANNEL"]){
-                sourecs = @"来源： 系统中奖赠送";
-            }
-            cell.sourceLab.text = sourecs;
-            cell.endTimeLab.text = [NSString stringWithFormat:@"%@过期",redPacket.endValidTime];
+//            if ([redPacketChannel isEqualToString:@"注册渠道"]) {
+//                sourecs = @"来源： 系统注册赠送";
+//            } else if ([redPacketChannel isEqualToString:@"登录渠道"]){
+//                sourecs = @"来源： 系统登录赠送";
+//            }else if ([redPacketChannel isEqualToString:@"签到渠道"]){
+//                sourecs = @"来源： 系统签到赠送";
+//            }else if ([redPacketChannel isEqualToString:@"充值渠道"]){
+//                sourecs = @"来源： 系统充值赠送";
+//            }else if ([redPacketChannel isEqualToString:@"消费渠道"]){
+//                sourecs = @"来源： 系统消费赠送";
+//            }else if ([redPacketChannel isEqualToString:@"中奖渠道"]){
+//                sourecs = @"来源： 系统中奖赠送";
+//            }else if ([redPacketChannel isEqualToString:@"系统赠送"]){
+//                sourecs = @"来源： 系统赠送";
+//            }
+            cell.sourceLab.text =  [NSString stringWithFormat:@"来源：%@",redPacket.activityName];;
+            NSString *date=[redPacket.endValidTime substringWithRange:NSMakeRange(0,10)];
+            cell.day.text = [NSString stringWithFormat:@"%@到期",date];
+            cell.endTimeLab.hidden = YES;
         }
     }
     return cell;
@@ -294,7 +490,7 @@
     //    if (section == 0) {
     //        return 0;
     //    }
-    return 10;
+    return 0.5;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 0.5;
@@ -308,6 +504,23 @@
     [self openRedPacketClient];
     }
 }
+
+- (NSInteger)getDifferenceByDate:(NSString *)date {
+    //获得当前时间
+    NSDate *now = [NSDate date];
+    //实例化一个NSDateFormatter对象
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //设定时间格式
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *oldDate = [dateFormatter dateFromString:date];
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    unsigned int unitFlags = NSDayCalendarUnit;
+    NSDateComponents *comps = [gregorian components:unitFlags fromDate:now  toDate:oldDate  options:0];
+//    NSInteger era = [comps day];
+//    NSLog(@"era:%d",era);
+    return [comps day];
+}
+
 
 
 - (void)didReceiveMemoryWarning {

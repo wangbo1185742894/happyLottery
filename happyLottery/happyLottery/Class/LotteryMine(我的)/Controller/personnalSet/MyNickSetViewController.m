@@ -54,11 +54,32 @@
 }
 
 -(void)completeBtnClick{
-  
+  NSString *nickname = self.nickField.text;
+
+    if(nickname.length==0){
+         [self showPromptText:@"昵称不能为空！" hideAfterDelay:1.7];
+        return;
+    }else if (nickname.length >8) {
+        [self showPromptText: @"昵称不能超过8位" hideAfterDelay: 1.7];
+        return;
+    }
+    else{
         
         [self commitClient];
 
+    }
     
+    
+}
+
+#pragma mark Regex
+//姓名一般只允许包含中文或英文字母
+- (BOOL)isValidateName:(NSString *)name
+{
+    //NSString *nameRegex = @"^[\u4E00-\u9FA5A-Za-z]{2,16}";
+    NSPredicate *namePredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",REG_NICKNAME_STR];
+    
+    return [namePredicate evaluateWithObject:name];
 }
 
 -(void)cancleBtnClick{
@@ -108,12 +129,7 @@
         return YES;
     }
     
-    NSString *str = [NSString stringWithFormat:@"%@%@",textField.text,string];
-        
-        if (str.length >14) {
-            [self showPromptText: @"昵称不能超过7位" hideAfterDelay: 1.7];
-            return NO;
-        }
+   
     
 
     return YES;
@@ -125,6 +141,14 @@
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{
    
+    if (textField == self.nickField) {
+        if (![self isValidateName:self.nickField.text]) {
+            [self showPromptText: @"请输入真实姓名" hideAfterDelay: 1.7];
+            self.nickField.text= @"";
+            return;
+        }
+        
+    }
     [self.view resignFirstResponder];
 }
 

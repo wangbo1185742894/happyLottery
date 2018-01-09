@@ -38,10 +38,10 @@
         
     }
     self.memberMan.delegate=self;
-    [self updateSwitchStatus];
+    [self initSwitchStatus];
 }
 
--(void)updateSwitchStatus{
+-(void)initSwitchStatus{
    
         int payVerifyType = [self.curUser.payVerifyType intValue];
         if (payVerifyType == PayVerifyTypeLessThanOneHundred) {
@@ -57,6 +57,46 @@
         }
  
     
+}
+
+-(void)updateSwitchStatus{
+    if (verifyType == PayVerifyTypeLessThanOneHundred) {
+        self.switch2.on=YES;
+        self.curUser.payPWDThreshold = 100;
+        self.switch1.on=NO;
+        self.switch3.on=NO;
+        self.switch4.on=NO;
+        self.mianMiSwitch.on=NO;
+    } else  if (verifyType == PayVerifyTypeLessThanFiveHundred){
+        self.switch3.on=YES;
+        self.curUser.payPWDThreshold = 500;
+        self.switch1.on=NO;
+        self.switch2.on=NO;
+        self.switch4.on=NO;
+        self.mianMiSwitch.on=NO;
+    }else  if (verifyType == PayVerifyTypeLessThanThousand){
+        self.switch4.on=YES;
+        self.curUser.payPWDThreshold = 1000;
+        self.switch3.on=NO;
+        self.switch2.on=NO;
+        self.switch1.on=NO;
+        self.mianMiSwitch.on=NO;
+    }else  if (verifyType == PayVerifyTypeAlways){
+        self.mianMiSwitch.on=YES;
+        self.curUser.payPWDThreshold = 0;
+        self.switch4.on=NO;
+        self.switch3.on=NO;
+        self.switch2.on=NO;
+        self.switch1.on=NO;
+    }else  if (verifyType == PayVerifyTypeAlwaysNo){
+        self.switch1.on=YES;
+        self.curUser.payPWDThreshold = 100;
+        self.switch2.on=NO;
+        self.switch3.on=NO;
+        self.switch4.on=NO;
+        self.mianMiSwitch.on=NO;
+        
+    }
 }
 
 - (void)showPayPopView{
@@ -86,7 +126,7 @@
                                   @"payPwd":[AESUtility encryptStr:text]};
         [self.memberMan validatePaypwdSms:cardInfo];
         
-        self.switch1.on=YES;
+      
     }];
     
 }
@@ -97,81 +137,48 @@
     if ([msg isEqualToString:@"执行成功"]) {
         [self showPromptText:@"支付密码验证成功" hideAfterDelay:1.7];
        [passInput removeFromSuperview];
+        [self updateSwitchStatus];
     }else{
-        
+         [passInput removeFromSuperview];
         [self showPromptText:msg hideAfterDelay:1.7];
         
     }
 }
 
 - (IBAction)switch1Chose:(id)sender {
+    verifyType = PayVerifyTypeAlwaysNo;
+    self.curUser.payVerifyType = [NSNumber numberWithInt:verifyType];
+    [self savePayVerifyType];
     [self showPayPopView];
-    if (self.switch1.on==YES) {
-        self.curUser.payPWDThreshold = 100;
-        self.switch2.on=NO;
-        self.switch3.on=NO;
-        self.switch4.on=NO;
-        self.mianMiSwitch.on=NO;
-        verifyType = PayVerifyTypeAlwaysNo;
-        self.curUser.payVerifyType = [NSNumber numberWithInt:verifyType];
-        [self savePayVerifyType];
-    }
+    self.switch1.on=NO;
 }
 - (IBAction)switch2Chose:(id)sender {
+    verifyType = PayVerifyTypeLessThanOneHundred;
+    self.curUser.payVerifyType = [NSNumber numberWithInt:verifyType];
+    [self savePayVerifyType];
       [self showPayPopView];
-    self.switch2.on=YES;
-    if (self.switch2.on==YES) {
-        self.curUser.payPWDThreshold = 100;
-        self.switch1.on=NO;
-        self.switch3.on=NO;
-        self.switch4.on=NO;
-        self.mianMiSwitch.on=NO;
-        verifyType = PayVerifyTypeLessThanOneHundred;
-        self.curUser.payVerifyType = [NSNumber numberWithInt:verifyType];
-        [self savePayVerifyType];
-    }
-    
+    self.switch2.on=NO;
 }
 - (IBAction)switch3Chose:(id)sender {
-    self.switch3.on=YES;
-    if (self.switch3.on==YES) {
-        self.curUser.payPWDThreshold = 500;
-        self.switch1.on=NO;
-        self.switch2.on=NO;
-        self.switch4.on=NO;
-        self.mianMiSwitch.on=NO;
-        verifyType = PayVerifyTypeLessThanFiveHundred;
-        self.curUser.payVerifyType = [NSNumber numberWithInt:verifyType];
-        [self savePayVerifyType];
-    }
-   
+    verifyType = PayVerifyTypeLessThanFiveHundred;
+    self.curUser.payVerifyType = [NSNumber numberWithInt:verifyType];
+    [self savePayVerifyType];
+     [self showPayPopView];
+   self.switch3.on=NO;
 }
 - (IBAction)switch4Chose:(id)sender {
-    self.switch4.on=YES;
-    if (self.switch4.on==YES) {
-        self.curUser.payPWDThreshold = 1000;
-        self.switch3.on=NO;
-        self.switch2.on=NO;
-        self.switch1.on=NO;
-        self.mianMiSwitch.on=NO;
-        verifyType = PayVerifyTypeLessThanThousand;
-        self.curUser.payVerifyType = [NSNumber numberWithInt:verifyType];
-        [self savePayVerifyType];
-    }
-  
+    verifyType = PayVerifyTypeLessThanThousand;
+    self.curUser.payVerifyType = [NSNumber numberWithInt:verifyType];
+    [self savePayVerifyType];
+     [self showPayPopView];
+  self.switch4.on=NO;
 }
 - (IBAction)mianMiSwitch:(id)sender {
-    self.mianMiSwitch.on=YES;
-    if (self.mianMiSwitch.on==YES) {
-        self.curUser.payPWDThreshold = 0;
-        self.switch4.on=NO;
-        self.switch3.on=NO;
-        self.switch2.on=NO;
-        self.switch1.on=NO;
-        verifyType = PayVerifyTypeAlways;
-        self.curUser.payVerifyType = [NSNumber numberWithInt:verifyType];
-        [self savePayVerifyType];
-    }
+    verifyType = PayVerifyTypeAlways;
+    self.curUser.payVerifyType = [NSNumber numberWithInt:verifyType];
+    [self savePayVerifyType];
+    [self showPayPopView];
+    self.mianMiSwitch.on=NO;
 }
 
 -(void)savePayVerifyType{

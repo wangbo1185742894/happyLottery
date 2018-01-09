@@ -684,7 +684,7 @@
         SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
         NSString *responseJsonStr = [response getAPIResponse];
         if (response.succeed) {
-            NSDictionary *Info = [self objFromJson: responseJsonStr];
+            NSArray *Info = [self objFromJson: responseJsonStr];
             
             [self.delegate getCashBlotterSms:Info IsSuccess:YES errorMsg:response.errorMsg];
         } else {
@@ -721,7 +721,7 @@
         SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
         NSString *responseJsonStr = [response getAPIResponse];
         if (response.succeed) {
-            NSDictionary *Info = [self objFromJson: responseJsonStr];
+            NSArray *Info = [self objFromJson: responseJsonStr];
             
             [self.delegate getScoreBlotterSms:Info IsSuccess:YES errorMsg:response.errorMsg];
         } else {
@@ -791,7 +791,7 @@
         SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
         NSString *responseJsonStr = [response getAPIResponse];
         if (response.succeed) {
-            NSDictionary *Info = [self objFromJson: responseJsonStr];
+            NSArray *Info = [self objFromJson: responseJsonStr];
             
             [self.delegate getRedPacketByStateSms:Info IsSuccess:YES errorMsg:response.errorMsg];
         } else {
@@ -863,7 +863,7 @@
         SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
         NSString *responseJsonStr = [response getAPIResponse];
         if (response.succeed) {
-            NSDictionary *Info = [self objFromJson: responseJsonStr];
+            NSArray *Info = [self objFromJson: responseJsonStr];
             
             [self.delegate getCouponByStateSms:Info IsSuccess:YES errorMsg:response.errorMsg];
         } else {
@@ -917,6 +917,7 @@
                         success: succeedBlock
                         failure: failureBlock];
 }
+
 
 - (void) getMemberByCardCode:(NSDictionary *)paraDic{
     void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)

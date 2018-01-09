@@ -57,8 +57,12 @@
 }
 
 - (IBAction)commitBtnClick:(id)sender {
+    NSString *bankname = self.getBankBtn.titleLabel.text;
     if (_nameTextField.text.length ==0 || _nameTextField.text==nil) {
         [self showPromptText: @"请输入真实姓名" hideAfterDelay: 1.7];
+        return;
+    } else if ([bankname isEqualToString:@"点击获取银行卡列表"]) {
+        [self showPromptText: @"请选择开户行" hideAfterDelay: 1.7];
         return;
     }
     
@@ -75,6 +79,7 @@
 -(void)bindNameSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     if ([msg isEqualToString:@"执行成功"]) {
         //[self showPromptText: @"实名认证成功" hideAfterDelay: 1.7];
+        self.curUser.name =_nameTextField.text;
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
     }
@@ -83,6 +88,7 @@
 
 -(void)addBankCardSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     if ([msg isEqualToString:@"执行成功"]) {
+        self.curUser.bankBinding =1;
         [self showPromptText: @"添加银行卡成功" hideAfterDelay: 1.7];
         [self.navigationController popViewControllerAnimated:YES];
     }else{
@@ -284,6 +290,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+      [self.view resignFirstResponder];
     [tableView deselectRowAtIndexPath: indexPath animated: YES];
     bankCard= listBankArray[indexPath.row];
     self.getBankBtn.titleLabel.text = bankCard.bankName;

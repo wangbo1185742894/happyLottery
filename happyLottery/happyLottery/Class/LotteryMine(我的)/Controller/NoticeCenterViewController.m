@@ -9,6 +9,7 @@
 #import "NoticeCenterViewController.h"
 #import "NoticeCenterTableViewCell.h"
 #import "NoticeDetailViewController.h"
+#import "LoadData.h"
 
 @interface NoticeCenterViewController ()<MemberManagerDelegate,UITableViewDelegate,UITableViewDataSource>{
     
@@ -26,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView2;
 @property (weak, nonatomic) IBOutlet UIImageView *enptyImage;
 @property (weak, nonatomic) IBOutlet UILabel *emptyLab;
+@property(nonatomic,strong)  LoadData  *loadDataTool;
 
 @end
 
@@ -45,6 +47,8 @@
     }
     listSystemNoticeArray = [[NSMutableArray alloc]init];
     listPersonNoticeArray = [[NSMutableArray alloc]init];
+    self.loadDataTool = [LoadData singleLoadData];
+    [self getSystemNoticeClient];
 }
 
 - (IBAction)systemBtnClick:(id)sender {
@@ -63,6 +67,32 @@
     self.line1.hidden = YES;
     self.tableView2.hidden=NO;
     self.tableView1.hidden = YES;
+}
+
+-(void)getSystemNoticeClient{
+    NSString *theRequest;
+//    theRequest= [GlobalInstance instance].h5Url;
+//    theRequest = [[theRequest componentsSeparatedByString:@"/h5"] firstObject];
+//
+//    theRequest = [[theRequest componentsSeparatedByString:@"/ms"] firstObject];
+        theRequest  = @"http://192.168.88.109:8086";
+    [self.loadDataTool RequestWithString:[NSString stringWithFormat:@"%@/app/inform/byChannel?usageChannel=3",theRequest] isPost:YES andPara:nil andComplete:^(id data, BOOL isSuccess) {
+       // [self hideLoadingView];
+        if (isSuccess) {
+            NSString *resultStr = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+            NSData *jsonData = [resultStr dataUsingEncoding:NSUTF8StringEncoding];
+            NSDictionary  *resultDic1 = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
+            if ([resultDic1[@"code"] integerValue] != 0) {
+                return ;
+            }
+            NSDictionary  *resultDic =  resultDic1[@"result"];
+      
+            
+        }else{
+            [self showPromptText: @"服务器连接失败" hideAfterDelay: 1.7];
+        }
+    }];
+    
 }
 
 #pragma UITableViewDataSource methods
