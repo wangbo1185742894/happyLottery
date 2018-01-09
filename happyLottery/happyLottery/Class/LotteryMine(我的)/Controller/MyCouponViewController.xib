@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyCouponViewController">
             <connections>
                 <outlet property="bottom" destination="PBj-r8-h8Q" id="N9h-xK-Py6"/>
+                <outlet property="enptyView" destination="A0v-Yn-j0p" id="JSn-dT-zY5"/>
                 <outlet property="segment" destination="btd-9W-XWq" id="VvQ-kS-8ET"/>
                 <outlet property="tableView1" destination="jbz-Iz-6wy" id="bjP-hV-pSY"/>
                 <outlet property="tableView2" destination="Kqb-gJ-XVC" id="FZ9-AA-OGC"/>
@@ -42,18 +43,51 @@
                                 <action selector="segmetClick:" destination="-1" eventType="valueChanged" id="ELP-5o-INZ"/>
                             </connections>
                         </segmentedControl>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jbz-Iz-6wy">
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jbz-Iz-6wy">
                             <rect key="frame" x="0.0" y="58" width="375" height="545"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tableView>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kqb-gJ-XVC">
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kqb-gJ-XVC">
                             <rect key="frame" x="0.0" y="58" width="375" height="545"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tableView>
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A0v-Yn-j0p">
+                            <rect key="frame" x="47" y="199" width="281" height="205"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty_youhuiquan.png" translatesAutoresizingMaskIntoConstraints="NO" id="rPe-XY-QPP">
+                                    <rect key="frame" x="31" y="16" width="219" height="120"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="120" id="8CY-0Z-mCw"/>
+                                        <constraint firstAttribute="width" constant="219" id="ahM-wi-5PZ"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无可用优惠券" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agw-3A-bqf">
+                                    <rect key="frame" x="58" y="154" width="164" height="32"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="164" id="ITf-1w-ACl"/>
+                                        <constraint firstAttribute="height" constant="32" id="VJw-XW-hhe"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="281" id="FYi-S1-hmj"/>
+                                <constraint firstItem="agw-3A-bqf" firstAttribute="top" secondItem="rPe-XY-QPP" secondAttribute="bottom" constant="18" id="KQP-fF-f8l"/>
+                                <constraint firstItem="rPe-XY-QPP" firstAttribute="centerX" secondItem="A0v-Yn-j0p" secondAttribute="centerX" id="Mx6-B0-7YO"/>
+                                <constraint firstItem="rPe-XY-QPP" firstAttribute="centerX" secondItem="A0v-Yn-j0p" secondAttribute="centerX" id="Ndu-Bm-Vjm"/>
+                                <constraint firstAttribute="height" constant="205" id="W2s-ar-6Rh"/>
+                                <constraint firstItem="agw-3A-bqf" firstAttribute="centerX" secondItem="A0v-Yn-j0p" secondAttribute="centerX" id="erh-ji-Z1v"/>
+                                <constraint firstItem="rPe-XY-QPP" firstAttribute="top" secondItem="A0v-Yn-j0p" secondAttribute="top" constant="16" id="jf5-op-LEk"/>
+                            </constraints>
+                        </view>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" red="0.96444731950759888" green="0.96840888261795044" blue="0.98488038778305054" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="btd-9W-XWq" firstAttribute="top" secondItem="zpS-jU-IFe" secondAttribute="top" constant="10" id="7qJ-oM-GJP"/>
+                        <constraint firstItem="A0v-Yn-j0p" firstAttribute="centerX" secondItem="zpS-jU-IFe" secondAttribute="centerX" id="9Wx-3n-ioz"/>
                         <constraint firstAttribute="trailing" secondItem="Kqb-gJ-XVC" secondAttribute="trailing" id="ADa-R7-uRi"/>
                         <constraint firstAttribute="bottom" secondItem="Kqb-gJ-XVC" secondAttribute="bottom" id="Fwd-zT-FTR"/>
                         <constraint firstItem="jbz-Iz-6wy" firstAttribute="leading" secondItem="zpS-jU-IFe" secondAttribute="leading" id="Kvc-8N-tPh"/>
@@ -63,6 +97,7 @@
                         <constraint firstItem="btd-9W-XWq" firstAttribute="centerX" secondItem="zpS-jU-IFe" secondAttribute="centerX" id="dap-R8-e3V"/>
                         <constraint firstItem="Kqb-gJ-XVC" firstAttribute="top" secondItem="btd-9W-XWq" secondAttribute="bottom" constant="20" id="egT-ID-HuE"/>
                         <constraint firstItem="jbz-Iz-6wy" firstAttribute="top" secondItem="btd-9W-XWq" secondAttribute="bottom" constant="20" id="rFd-gO-B8d"/>
+                        <constraint firstItem="A0v-Yn-j0p" firstAttribute="centerY" secondItem="zpS-jU-IFe" secondAttribute="centerY" id="spj-9X-ZOe"/>
                     </constraints>
                 </view>
             </subviews>
@@ -76,4 +111,7 @@
             <point key="canvasLocation" x="33.5" y="54.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="empty_youhuiquan.png" width="215" height="87"/>
+    </resources>
 </document>

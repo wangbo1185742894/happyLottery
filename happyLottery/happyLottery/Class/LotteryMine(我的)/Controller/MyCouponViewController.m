@@ -22,12 +22,14 @@
     int pageSize2;
     int totalCount2;
     int totalPage2;
+    int page;
 }
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottom;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segment;
 @property (weak, nonatomic) IBOutlet UITableView *tableView1;
 @property (weak, nonatomic) IBOutlet UITableView *tableView2;
+@property (weak, nonatomic) IBOutlet UIView *enptyView;
 
 @end
 
@@ -47,7 +49,19 @@
     }
     listUseCouponArray = [[NSMutableArray alloc]init];
     listUnUseCouponArray = [[NSMutableArray alloc]init];
-     [self getCouponByStateClient:@"true"];
+    page=1;
+    if ( self.segment.selectedSegmentIndex == 0) {
+    
+        [self initRefresh1];
+        
+        self.tableView1.hidden = NO;
+        self.tableView2.hidden = YES;
+    }else  if (self.segment.selectedSegmentIndex == 1) {
+    
+        [self initRefresh2];
+        self.tableView2.hidden = NO;
+        self.tableView1.hidden = YES;
+    }
 }
 - (IBAction)segmetClick:(id)sender {
     switch( self.segment.selectedSegmentIndex)
@@ -55,73 +69,172 @@
         case 0:
             self.tableView1.hidden=NO;
             self.tableView2.hidden=YES;
-            [listUseCouponArray removeAllObjects];
-            [self getCouponByStateClient:@"true"];
+            
+            [listUnUseCouponArray removeAllObjects];
+            //[self getCouponByStateClient:@"true"];
+            page=1;
+              [self initRefresh1];
             break;
         case 1:
             self.tableView2.hidden=NO;
             self.tableView1.hidden=YES;
-            [listUnUseCouponArray removeAllObjects];
-            [self getCouponByStateClient:@"false"];
+            page=1;
+            [listUseCouponArray removeAllObjects];
+//            [self getCouponByStateClient:@"false"];
+              [self initRefresh2];
             break;
         default:
             break;
     }
 }
 
--(void)getCouponByStateSms:(NSDictionary *)couponInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
-    NSLog(@"redPacketInfo%@",couponInfo);
+-(void)initRefresh1{
+    __weak typeof(self) weakSelf = self;
+  
+    // 设置回调（一旦进入刷新状态就会调用这个refreshingBlock）
+    self.tableView1.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        page=1;
+        [weakSelf getCouponByStateClient:@"true"];
+         [self.tableView1.mj_header endRefreshing];
+    }];
+    self.tableView1.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        page++;
+         ///[self.tableView1.mj_footer beginRefreshing];
+        [weakSelf getCouponByStateClient:@"true"];
+        
+    }];
+    // 马上进入刷新状态
+    [self.tableView1.mj_header beginRefreshing];
+}
+-(void)initRefresh2{
+    __weak typeof(self) weakSelf = self;
+    
+    self.tableView2.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        page=1;
+        [weakSelf getCouponByStateClient:@"false"];
+         [self.tableView2.mj_header endRefreshing];
+    }];
+    self.tableView2.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        page++;
+          //[self.tableView2.mj_header beginRefreshing];
+        [weakSelf getCouponByStateClient:@"false"];
+        
+    }];
+    
+    // 马上进入刷新状态
+  
+     [self.tableView2.mj_header beginRefreshing];
+}
+
+-(void)getCouponByStateSms:(NSArray *)couponInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    NSLog(@"couponInfo%@",couponInfo);
     if ([msg isEqualToString:@"执行成功"]) {
         // [self showPromptText: @"memberInfo成功" hideAfterDelay: 1.7];
-        if (couponInfo!=nil) {
+        NSEnumerator *enumerator = [couponInfo objectEnumerator];
+        id object;
+        if ((object = [enumerator nextObject]) != nil){
             
                 if (self.segment.selectedSegmentIndex == 0) {
-                    currPage1 =(int)[couponInfo valueForKey:@"currPage"];
-                    pageSize1 = (int)[couponInfo valueForKey:@"pageSize"];
-                    totalCount1 = (int)[couponInfo valueForKey:@"totalCount"];
-                    totalPage1 = (int)[couponInfo valueForKey:@"totalPage"];
-                    NSArray *array =[couponInfo valueForKey:@"list"];
-                    if (array.count>0) {
-                        [listUseCouponArray removeAllObjects];
+                    
+                    NSArray *array =couponInfo ;
+                   
+                        
+                        if (page == 1) {
+                            [listUseCouponArray removeAllObjects];
+                             if (array.count>0) {
+                                 for (int i=0; i<array.count; i++) {
+                                     
+                                     Coupon *coupon = [[Coupon alloc]initWith:array[i]];
+                                     [listUseCouponArray addObject:coupon];
+                                     NSLog(@"redPacket%@",coupon.status);
+                                     
+                                 }
+                                 [self.tableView1.mj_footer endRefreshing];
+                                 self.tableView1.hidden = NO;
+                                 self.tableView2.hidden = YES;
+                                 [self.tableView1 reloadData];
+                                 self.enptyView.hidden=YES;
+                             }
+                        }else{
+                         if (array.count>0) {
+//
                         for (int i=0; i<array.count; i++) {
                             
                             Coupon *coupon = [[Coupon alloc]initWith:array[i]];
                             [listUseCouponArray addObject:coupon];
                              NSLog(@"redPacket%@",coupon.status);
-                            if (listUseCouponArray.count>0) {
-                                self.tableView1.hidden = NO;
-                                self.tableView2.hidden = YES;
-                                [self.tableView1 reloadData];
-                            }
+                           
                         }
-                        
+                             if (listUseCouponArray.count>0) {
+                                 self.tableView1.hidden = NO;
+                                 self.tableView2.hidden = YES;
+                                 [self.tableView1 reloadData];
+                                 [self.tableView1.mj_footer endRefreshing];
+                             }else{
+                                [self.tableView1.mj_footer endRefreshingWithNoMoreData];
+                                 
+                             }
+                             
                     }
-  
+                        }
                 }else if(self.segment.selectedSegmentIndex==1){
-                    currPage2 =(int)[couponInfo valueForKey:@"currPage"];
-                    pageSize2 = (int)[couponInfo valueForKey:@"pageSize"];
-                    totalCount2 = (int)[couponInfo valueForKey:@"totalCount"];
-                    totalPage2 = (int)[couponInfo valueForKey:@"totalPage"];
-                    NSArray *array =[couponInfo valueForKey:@"list"];
-                    if (array.count>0) {
+                    NSArray *array =couponInfo;
+
+                    if (page == 1) {
                         [listUnUseCouponArray removeAllObjects];
-                        for (int i=0; i<array.count; i++) {
+                        if (array.count>0) {
+                            for (int i=0; i<array.count; i++) {
+                                
+                                Coupon *coupon = [[Coupon alloc]initWith:array[i]];
+                                [listUnUseCouponArray addObject:coupon];
+                                NSLog(@"redPacket%@",coupon.status);
+                                
+                            }
+                            self.tableView2.hidden = NO;
+                            self.tableView1.hidden = YES;
+                              [self.tableView2 reloadData];
+                            self.enptyView.hidden=YES;
+                            [self.tableView2.mj_footer endRefreshing];
+                        } else{
                             
-                            Coupon *coupon = [[Coupon alloc]initWith:array[i]];
-                            [listUnUseCouponArray addObject:coupon];
-                            NSLog(@"redPacket%@",coupon.status);
+                            self.enptyView.hidden=NO;
+                            self.tableView2.hidden = YES;
+                            self.tableView1.hidden = YES;
+                        }
+                    }else{
+                        if (array.count>0) {
+                            //
+                            for (int i=0; i<array.count; i++) {
+                                
+                                Coupon *coupon = [[Coupon alloc]initWith:array[i]];
+                                [listUnUseCouponArray addObject:coupon];
+                                NSLog(@"redPacket%@",coupon.status);
+                                
+                            }
                             if (listUnUseCouponArray.count>0) {
                                 self.tableView2.hidden = NO;
                                 self.tableView1.hidden = YES;
                                 [self.tableView2 reloadData];
+                                [self.tableView2.mj_footer endRefreshing];
+                            }else{
+                                [self.tableView2.mj_footer endRefreshingWithNoMoreData];
+                                
                             }
+                            
                         }
-                }
-            }
-    
+                    }
         }
         
-        
+        }else{
+            if (page == 1){
+                
+                self.enptyView.hidden=NO;
+                self.tableView2.hidden = YES;
+                self.tableView1.hidden = YES;
+            }
+              [self.tableView1.mj_footer endRefreshingWithNoMoreData];
+            [self.tableView2.mj_footer endRefreshingWithNoMoreData];
+        }
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
     }
@@ -132,8 +245,11 @@
     @try {
         
         NSString *cardCode = self.curUser.cardCode;
+        NSString *pagestr=[NSString stringWithFormat:@"%d",page];
         Info = @{@"cardCode":cardCode,
-                 @"isValid":isValid
+                 @"isValid":isValid,
+                 @"page":pagestr,
+                 @"pageSize":@"10"
                  };
         
     } @catch (NSException *exception) {
@@ -162,7 +278,7 @@
 
 
 - (CGFloat)tableView:(UITableView *)tableiew heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 101;
+    return 111;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -170,43 +286,36 @@
     static NSString *CellIdentifier = @"TabViewCell";
     //自定义cell类
     MyCouponTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        //通过xib的名称加载自定义的cell
-        cell = [[[NSBundle mainBundle] loadNibNamed:@"MyCouponTableViewCell" owner:self options:nil] lastObject];
-    }
+   
 //    SCORE_CONVERT("积分兑换"),
 //    LUCKY_DRAW("抽奖"),
 //    SYSTEM("系统赠送"),
 //    ACTIVITY("活动");
     Coupon *coupon = [[Coupon alloc]init];
     if (tableView ==self.tableView1) {
+        if (cell == nil) {
+            //通过xib的名称加载自定义的cell
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"MyCouponTableViewCell" owner:self options:nil] lastObject];
+        }
         if (listUseCouponArray.count > 0) {
             coupon = listUseCouponArray[indexPath.row];
             cell.endImage.hidden = YES;
-            cell.priceLab.text = coupon.deduction;
-            cell.nameLab.text =[NSString stringWithFormat:@"¥%@元优惠券",coupon.deduction];
-            NSString *status =coupon.status;
-            NSString *sourecs;
-//            if ([redPacketChannel isEqualToString:@"REGISTER_CHANNEL"]) {
-//                sourecs = @"来源： 系统注册赠送";
-//            } else if ([redPacketChannel isEqualToString:@"LOGIN_CHANNEL"]){
-//                sourecs = @"来源： 系统登录赠送";
-//            }else if ([redPacketChannel isEqualToString:@"SIGN_IN_CHANNEL"]){
-//                sourecs = @"来源： 系统签到赠送";
-//            }else if ([redPacketChannel isEqualToString:@"RECHARGE_CHANNEL"]){
-//                sourecs = @"来源： 系统充值赠送";
-//            }else if ([redPacketChannel isEqualToString:@"CONSUME_CHANNEL"]){
-//                sourecs = @"来源： 系统消费赠送";
-//            }else if ([redPacketChannel isEqualToString:@"WIN_CHANNEL"]){
-//                sourecs = @"来源： 系统中奖赠送";
-//            }
+             NSString *deduction =coupon.deduction;
+            cell.priceLab.text = deduction;
+            cell.nameLab.text =[NSString stringWithFormat:@"¥%@元优惠券",deduction];
+         
+
             cell.sourceLab.text = [NSString stringWithFormat:@"来源：%@",coupon.couponSource];
-            cell.dateLab.text = [NSString stringWithFormat:@"有效期：%@",coupon.invalidTime];
+            cell.dateLab.text = [NSString stringWithFormat:@"截止时间：%@",coupon.invalidTime];
             cell.descriptionLab.text=[NSString stringWithFormat:@"单笔订单满%@可用",coupon.quota];
+            cell.bjImage.image = [UIImage imageNamed:@"bjCoupon"];
         }
 
     }else if (tableView ==self.tableView2){
-
+        if (cell == nil) {
+            //通过xib的名称加载自定义的cell
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"MyCouponTableViewCell" owner:self options:nil] lastObject];
+        }
         if (listUnUseCouponArray.count > 0) {
             coupon = listUnUseCouponArray[indexPath.row];
             cell.endImage.hidden = NO;
@@ -216,31 +325,15 @@
             cell.yuanLab.textColor =[UIColor lightGrayColor];
             NSString *status =coupon.status;
             NSString *sourecs;
-            //            if ([redPacketChannel isEqualToString:@"REGISTER_CHANNEL"]) {
-            //                sourecs = @"来源： 系统注册赠送";
-            //            } else if ([redPacketChannel isEqualToString:@"LOGIN_CHANNEL"]){
-            //                sourecs = @"来源： 系统登录赠送";
-            //            }else if ([redPacketChannel isEqualToString:@"SIGN_IN_CHANNEL"]){
-            //                sourecs = @"来源： 系统签到赠送";
-            //            }else if ([redPacketChannel isEqualToString:@"RECHARGE_CHANNEL"]){
-            //                sourecs = @"来源： 系统充值赠送";
-            //            }else if ([redPacketChannel isEqualToString:@"CONSUME_CHANNEL"]){
-            //                sourecs = @"来源： 系统消费赠送";
-            //            }else if ([redPacketChannel isEqualToString:@"WIN_CHANNEL"]){
-            //                sourecs = @"来源： 系统中奖赠送";
-            //            }
+         
             cell.sourceLab.text = [NSString stringWithFormat:@"来源：%@",coupon.couponSource];
-            cell.dateLab.text = [NSString stringWithFormat:@"有效期：%@",coupon.invalidTime];
+            cell.dateLab.text = [NSString stringWithFormat:@"截止时间：%@",coupon.invalidTime];
             cell.descriptionLab.text=[NSString stringWithFormat:@"单笔订单满%@可用",coupon.quota];
+            cell.bjImage.image = [UIImage imageNamed:@"bj_overdue"];
         }
     }
 
-    
-    
-    
-    
-    
-    
+
     return cell;
 }
 
@@ -250,16 +343,46 @@
     //    if (section == 0) {
     //        return 0;
     //    }
-    return 10;
+    return 1;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 0.5;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath: indexPath animated: YES];
+   
+    if (tableView ==self.tableView1){
+        MyCouponTableViewCell  *selectCell = [tableView cellForRowAtIndexPath:indexPath];
+        if (selectCell.selected==YES) {
+            selectCell.bjImage.image = [UIImage imageNamed:@"bluecoupon"];
+        }else{
+             selectCell.bjImage.image = [UIImage imageNamed:@"bjCoupon"];
+        }
+       
+    }else if (tableView ==self.tableView1){
+        [tableView deselectRowAtIndexPath: indexPath animated: YES];
+    }
+//    }else if (tableView ==self.tableView1){
+//        MyCouponTableViewCell  *selectCell = [self.tableView1 cellForRowAtIndexPath:indexPath];
+//        if (selectCell.selected==YES) {
+//            selectCell.bjImage.image = [UIImage imageNamed:@"bluecoupon"];
+//        }else{
+//            selectCell.bjImage.image = [UIImage imageNamed:@"bj_overdue"];
+//        }
+//    }
 }
-
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (tableView ==self.tableView1){
+        MyCouponTableViewCell  *selectCell = [tableView cellForRowAtIndexPath:indexPath];
+        if (selectCell.selected==NO) {
+            selectCell.bjImage.image = [UIImage imageNamed:@"bjCoupon"];
+        }else{
+            selectCell.bjImage.image = [UIImage imageNamed:@"bluecoupon"];
+        }
+        
+    }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

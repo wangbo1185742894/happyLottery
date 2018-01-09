@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyRedPacketViewController">
             <connections>
                 <outlet property="bottom" destination="hJW-Bn-1qa" id="0et-A8-v2L"/>
+                <outlet property="emptyView" destination="Bro-bQ-oDL" id="cee-hP-Ad6"/>
                 <outlet property="segment" destination="nxJ-0N-nxh" id="OP6-1D-FZV"/>
                 <outlet property="tableView1" destination="gjz-mI-itb" id="HJv-zF-zDB"/>
                 <outlet property="tableView2" destination="BWA-Y9-8s5" id="K8X-49-tgI"/>
@@ -27,7 +28,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WJC-OB-vbd">
                     <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                     <subviews>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gjz-mI-itb">
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gjz-mI-itb">
                             <rect key="frame" x="0.0" y="56" width="375" height="547"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tableView>
@@ -46,13 +47,46 @@
                                 <action selector="segmentClick:" destination="-1" eventType="valueChanged" id="ovu-85-L0p"/>
                             </connections>
                         </segmentedControl>
-                        <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BWA-Y9-8s5">
+                        <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BWA-Y9-8s5">
                             <rect key="frame" x="0.0" y="56" width="375" height="547"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tableView>
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bro-bQ-oDL">
+                            <rect key="frame" x="47" y="199" width="281" height="205"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty_hongbao.png" translatesAutoresizingMaskIntoConstraints="NO" id="sVV-vC-eJJ">
+                                    <rect key="frame" x="31" y="16" width="219" height="120"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="219" id="8Z3-Kn-DPS"/>
+                                        <constraint firstAttribute="height" constant="120" id="iwC-8l-caw"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无可用红包" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yMr-tu-ZY8">
+                                    <rect key="frame" x="58" y="154" width="164" height="32"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="32" id="bNT-Jc-nl1"/>
+                                        <constraint firstAttribute="width" constant="164" id="oRN-Qg-GMq"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="205" id="6ke-DF-DxL"/>
+                                <constraint firstAttribute="width" constant="281" id="NIi-ad-14S"/>
+                                <constraint firstItem="yMr-tu-ZY8" firstAttribute="top" secondItem="sVV-vC-eJJ" secondAttribute="bottom" constant="18" id="Vxc-bE-Jbn"/>
+                                <constraint firstItem="sVV-vC-eJJ" firstAttribute="centerX" secondItem="Bro-bQ-oDL" secondAttribute="centerX" id="cLN-5R-Ctb"/>
+                                <constraint firstItem="sVV-vC-eJJ" firstAttribute="top" secondItem="Bro-bQ-oDL" secondAttribute="top" constant="16" id="qzQ-cz-77I"/>
+                                <constraint firstItem="sVV-vC-eJJ" firstAttribute="centerX" secondItem="Bro-bQ-oDL" secondAttribute="centerX" id="see-Cu-zJd"/>
+                                <constraint firstItem="yMr-tu-ZY8" firstAttribute="centerX" secondItem="Bro-bQ-oDL" secondAttribute="centerX" id="xhN-FV-ckO"/>
+                            </constraints>
+                        </view>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" red="0.96444731950759888" green="0.96840888261795044" blue="0.98488038778305054" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
+                        <constraint firstItem="Bro-bQ-oDL" firstAttribute="centerX" secondItem="WJC-OB-vbd" secondAttribute="centerX" id="2s3-Go-55y"/>
                         <constraint firstAttribute="bottom" secondItem="gjz-mI-itb" secondAttribute="bottom" id="3dS-55-n9z"/>
                         <constraint firstItem="BWA-Y9-8s5" firstAttribute="leading" secondItem="WJC-OB-vbd" secondAttribute="leading" id="4Sp-rR-M2x"/>
                         <constraint firstItem="nxJ-0N-nxh" firstAttribute="top" secondItem="WJC-OB-vbd" secondAttribute="top" constant="8" id="AcQ-3w-Q5d"/>
@@ -62,6 +96,7 @@
                         <constraint firstItem="BWA-Y9-8s5" firstAttribute="top" secondItem="nxJ-0N-nxh" secondAttribute="bottom" constant="20" id="ZXP-mx-AqE"/>
                         <constraint firstItem="gjz-mI-itb" firstAttribute="top" secondItem="nxJ-0N-nxh" secondAttribute="bottom" constant="20" id="cta-2N-cj4"/>
                         <constraint firstAttribute="bottom" secondItem="BWA-Y9-8s5" secondAttribute="bottom" id="pvL-M2-LvN"/>
+                        <constraint firstItem="Bro-bQ-oDL" firstAttribute="centerY" secondItem="WJC-OB-vbd" secondAttribute="centerY" id="wQs-ug-Uen"/>
                         <constraint firstItem="gjz-mI-itb" firstAttribute="leading" secondItem="WJC-OB-vbd" secondAttribute="leading" id="xYw-aZ-9bs"/>
                     </constraints>
                 </view>
@@ -76,4 +111,7 @@
             <point key="canvasLocation" x="7.5" y="-29.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="empty_hongbao.png" width="180" height="116"/>
+    </resources>
 </document>

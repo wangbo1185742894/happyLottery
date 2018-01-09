@@ -13,20 +13,15 @@
 @interface CashAndIntegrationWaterViewController ()<UITableViewDataSource,UITableViewDelegate,MemberManagerDelegate>{
     NSMutableArray *listScoreBlotterArray;
       NSMutableArray *listCashBlotterArray;
-    int currPage1;
-    int pageSize1;
-    int totalCount1;
-    int totalPage1;
-    int currPage2;
-    int pageSize2;
-    int totalCount2;
-    int totalPage2;
+     int page;
+   
 }
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottom;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segment;
 @property (weak, nonatomic) IBOutlet UITableView *tableView1;
 @property (weak, nonatomic) IBOutlet UITableView *tableView2;
+@property (weak, nonatomic) IBOutlet UIView *emptyView;
 
 @end
 
@@ -45,17 +40,62 @@
     self.memberMan.delegate = self;
     listScoreBlotterArray = [[NSMutableArray alloc]init];
     listCashBlotterArray = [[NSMutableArray alloc]init];
+    page =1;
+  
+   
     if (self.select == 0) {
         self.segment.selectedSegmentIndex = 0;
         self.title = @"现金明细";
-         [self getCashBlotterClient];
+        [self initCashRefresh];
+       
+        self.tableView1.hidden = NO;
+        self.tableView2.hidden = YES;
     }else  if (self.select == 1) {
         self.segment.selectedSegmentIndex = 1;
          self.title = @"积分明细";
-         [self getScoreBlotterClient];
+         [self initScoreRefresh];
+        self.tableView2.hidden = NO;
+        self.tableView1.hidden = YES;
     }
     
 }
+-(void)initCashRefresh{
+    __weak typeof(self) weakSelf = self;
+    
+    // 设置回调（一旦进入刷新状态就会调用这个refreshingBlock）
+    self.tableView1.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        page=1;
+        [weakSelf getCashBlotterClient];
+        [self.tableView1.mj_header endRefreshing];
+    }];
+    self.tableView1.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        page++;
+        ///[self.tableView1.mj_footer beginRefreshing];
+        [weakSelf getCashBlotterClient];
+        
+    }];
+    // 马上进入刷新状态
+    [self.tableView1.mj_header beginRefreshing];
+}
+    -(void)initScoreRefresh{
+           __weak typeof(self) weakSelf = self;
+    self.tableView2.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        page=1;
+        [weakSelf getScoreBlotterClient];
+        [self.tableView2.mj_header endRefreshing];
+    }];
+    self.tableView2.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        page++;
+        //[self.tableView2.mj_header beginRefreshing];
+        [weakSelf getScoreBlotterClient];
+        
+    }];
+    
+    // 马上进入刷新状态
+    
+    [self.tableView2.mj_header beginRefreshing];
+}
+
 
 - (IBAction)segmentClick:(id)sender {
     switch( self.segment.selectedSegmentIndex)
@@ -65,14 +105,16 @@
             self.tableView1.hidden = NO;
             self.tableView2.hidden = YES;
             [listCashBlotterArray removeAllObjects];
-            [self getCashBlotterClient];
+            page=1;
+            [self initCashRefresh];
            break;
     case 1:
               self.title = @"积分明细";
             self.tableView2.hidden = NO;
             self.tableView1.hidden = YES;
                 [listScoreBlotterArray removeAllObjects];
-            [self getScoreBlotterClient];
+            page=1;
+           [self initScoreRefresh];
             break;
     default:
         break;
@@ -83,8 +125,9 @@
     NSDictionary *Info;
     @try {
         NSString *cardCode = self.curUser.cardCode;
+        NSString *pagestr=[NSString stringWithFormat:@"%d",page];
         Info = @{@"cardCode":cardCode,
-                 @"page":@"0",
+                 @"page":pagestr,
                  @"pageSize":@"10",
                  @"type":@" "
                  };
@@ -101,8 +144,9 @@
     NSDictionary *Info;
     @try {
         NSString *cardCode = self.curUser.cardCode;
+        NSString *pagestr=[NSString stringWithFormat:@"%d",page];
         Info = @{@"cardCode":cardCode,
-                 @"page":@"0",
+                 @"page":pagestr,
                  @"pageSize":@"10",
                  @"type":@" "
                  };
@@ -115,32 +159,64 @@
     
 }
 //现金流水
--(void)getCashBlotterSms:(NSDictionary *)boltterInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+-(void)getCashBlotterSms:(NSArray *)boltterInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
      NSLog(@"现金流水%@",boltterInfo);
     if ([msg isEqualToString:@"执行成功"]) {
         //[self showPromptText: @"现金流水成功" hideAfterDelay: 1.7];
-        if (boltterInfo != nil) {
-            currPage1 =(int)[boltterInfo valueForKey:@"currPage"];
-            pageSize1 = (int)[boltterInfo valueForKey:@"pageSize"];
-            totalCount1 = (int)[boltterInfo valueForKey:@"totalCount"];
-            totalPage1 = (int)[boltterInfo valueForKey:@"totalPage"];
-            NSArray *array =[boltterInfo valueForKey:@"list"];
-            if (array.count>0) {
-                  [listScoreBlotterArray removeAllObjects];
-                for (int i=0; i<array.count; i++) {
+        NSEnumerator *enumerator = [boltterInfo objectEnumerator];
+        id object;
+        if ((object = [enumerator nextObject]) != nil)  {
+
+                        NSArray *array =boltterInfo;
+            
+            
+            if (page == 1) {
+                [listScoreBlotterArray removeAllObjects];
+                if (array.count>0) {
+                    for (int i=0; i<array.count; i++) {
+                        CashBoltter *cashBoltter = [[CashBoltter alloc]initWith:array[i]];
+                        [listScoreBlotterArray addObject:cashBoltter];
+
+                    }
+                    [self.tableView1.mj_footer endRefreshing];
+                    self.tableView1.hidden = NO;
+                    self.tableView2.hidden = YES;
+                    [self.tableView1 reloadData];
+                    self.emptyView.hidden=YES;
+                } else{
                     
-                    CashBoltter *cashBoltter = [[CashBoltter alloc]initWith:array[i]];
-                    [listScoreBlotterArray addObject:cashBoltter];
-                   
+                    self.emptyView.hidden=NO;
+                    self.tableView2.hidden = YES;
+                    self.tableView1.hidden = YES;
+                }
+            }else{
+                if (array.count>0) {
+                    //
+                    for (int i=0; i<array.count; i++) {
+                        
+                        CashBoltter *cashBoltter = [[CashBoltter alloc]initWith:array[i]];
+                        [listScoreBlotterArray addObject:cashBoltter];
+        
+                    }
                     if (listScoreBlotterArray.count>0) {
                         self.tableView1.hidden = NO;
                         self.tableView2.hidden = YES;
                         [self.tableView1 reloadData];
+                        [self.tableView1.mj_footer endRefreshing];
                     }else{
-                        // self.tvHeight.constant = 0;
+                        [self.tableView1.mj_footer endRefreshingWithNoMoreData];
+                        
                     }
+                    
                 }
+            }
+        }else{
+            [self.tableView1.mj_footer endRefreshingWithNoMoreData];
+            if (page == 1){
                 
+                self.emptyView.hidden=NO;
+                self.tableView2.hidden = YES;
+                self.tableView1.hidden = YES;
             }
         }
        
@@ -151,31 +227,78 @@
     
 }
 //积分流水
--(void)getScoreBlotterSms:(NSDictionary *)scoreInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+-(void)getScoreBlotterSms:(NSArray *)scoreInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
      NSLog(@"积分流水%@",scoreInfo);
     if ([msg isEqualToString:@"执行成功"]) {
        // [self showPromptText: @"积分流水成功" hideAfterDelay: 1.7];
-        if (scoreInfo != nil) {
-            currPage1 =(int)[scoreInfo valueForKey:@"currPage"];
-            pageSize1 = (int)[scoreInfo valueForKey:@"pageSize"];
-            totalCount1 = (int)[scoreInfo valueForKey:@"totalCount"];
-            totalPage1 = (int)[scoreInfo valueForKey:@"totalPage"];
-            NSArray *array =[scoreInfo valueForKey:@"list"];
-            if (array.count>0) {
+        NSEnumerator *enumerator = [scoreInfo objectEnumerator];
+        id object;
+        if ((object = [enumerator nextObject]) != nil)  {
+            NSArray *array =scoreInfo ;
+//            if (array.count>0) {
+//                [listCashBlotterArray removeAllObjects];
+//                for (int i=0; i<array.count; i++) {
+//                    NSDictionary *info = array[i];
+//                        CashBoltter *cashBoltter = [[CashBoltter alloc]initWith:info];
+//                        [listCashBlotterArray addObject:cashBoltter];
+//                    if (listCashBlotterArray.count>0) {
+//                        self.tableView2.hidden = NO;
+//                        self.tableView1.hidden = YES;
+//
+//                        [self.tableView2 reloadData];
+//                    }
+//                }
+//
+//            }
+//            self.emptyView.hidden=YES;
+            if (page == 1) {
                 [listCashBlotterArray removeAllObjects];
-                for (int i=0; i<array.count; i++) {
-                    NSDictionary *info = array[i];
+                if (array.count>0) {
+                    for (int i=0; i<array.count; i++) {
+                        NSDictionary *info = array[i];
                         CashBoltter *cashBoltter = [[CashBoltter alloc]initWith:info];
                         [listCashBlotterArray addObject:cashBoltter];
+                        
+                    }
+                    self.tableView2.hidden = NO;
+                    self.tableView1.hidden = YES;
+                    [self.tableView2 reloadData];
+                    self.emptyView.hidden=YES;
+                    [self.tableView2.mj_footer endRefreshing];
+                } else{
+                    
+                    self.emptyView.hidden=NO;
+                    self.tableView2.hidden = YES;
+                    self.tableView1.hidden = YES;
+                }
+            }else{
+                if (array.count>0) {
+                    //
+                    for (int i=0; i<array.count; i++) {
+                        NSDictionary *info = array[i];
+                        CashBoltter *cashBoltter = [[CashBoltter alloc]initWith:info];
+                        [listCashBlotterArray addObject:cashBoltter];
+                    }
                     if (listCashBlotterArray.count>0) {
                         self.tableView2.hidden = NO;
                         self.tableView1.hidden = YES;
                         [self.tableView2 reloadData];
+                        [self.tableView2.mj_footer endRefreshing];
                     }else{
-                        // self.tvHeight.constant = 0;
+                        [self.tableView2.mj_footer endRefreshingWithNoMoreData];
+                        
                     }
+                    
                 }
+            }
+        
+        }else{
+         [self.tableView2.mj_footer endRefreshingWithNoMoreData];
+            if (page == 1){
                 
+                self.emptyView.hidden=NO;
+                self.tableView2.hidden = YES;
+                self.tableView1.hidden = YES;
             }
         }
         
@@ -226,12 +349,14 @@
             int amounts =[cashBoltter.amounts intValue];
             if (amounts>0) {
                 cell.priceLab.textColor = SystemGreen;
-                cell.image.image = [UIImage imageNamed:@"add"];
+                cell.image.image = [UIImage imageNamed:@"addcrease"];
                 cell.priceLab.text = [NSString stringWithFormat:@"+%@元",cashBoltter.amounts];
             }else{
                 cell.image.image = [UIImage imageNamed:@"lessen"];
                 cell.priceLab.text = [NSString stringWithFormat:@"%@元",cashBoltter.amounts];
+                
             }
+            cell.retainLab.text =[NSString stringWithFormat:@"余额：%@",cashBoltter.remBalance];
         }
     } else if (tableView ==self.tableView2) {
       cell= [tableView dequeueReusableCellWithIdentifier:CellIdentifier2];
@@ -246,12 +371,13 @@
             int amounts =[cashBoltter.amounts intValue];
             if (amounts>0) {
                 cell.priceLab.textColor = SystemGreen;
-                cell.image.image = [UIImage imageNamed:@"decrease"];
-                cell.priceLab.text = [NSString stringWithFormat:@"+%@元",cashBoltter.amounts];
-            }else{
                 cell.image.image = [UIImage imageNamed:@"increase"];
-                cell.priceLab.text = [NSString stringWithFormat:@"%@元",cashBoltter.amounts];
+                cell.priceLab.text = [NSString stringWithFormat:@"+%@分",cashBoltter.amounts];
+            }else{
+                cell.image.image = [UIImage imageNamed:@"decrease"];
+                cell.priceLab.text = [NSString stringWithFormat:@"%@分",cashBoltter.amounts];
             }
+            cell.retainLab.text =[NSString stringWithFormat:@"余额：%@",cashBoltter.remBalance];
         }
     }
     

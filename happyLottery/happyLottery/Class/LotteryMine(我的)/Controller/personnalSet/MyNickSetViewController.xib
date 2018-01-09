@@ -25,18 +25,19 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="thJ-pL-DPa">
                     <rect key="frame" x="-1" y="64" width="377" height="603"/>
                     <subviews>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请设置昵称" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Gh-go-58l">
-                            <rect key="frame" x="0.0" y="20" width="377" height="39"/>
+                        <textField opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="leading" contentVerticalAlignment="center" placeholder="请输入昵称" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Gh-go-58l">
+                            <rect key="frame" x="2" y="20" width="373" height="60"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="39" id="TgQ-xo-Ljn"/>
+                                <constraint firstAttribute="height" constant="60" id="TgQ-xo-Ljn"/>
                             </constraints>
                             <color key="textColor" red="0.1960784314" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WBt-gj-yta">
-                            <rect key="frame" x="347" y="30" width="22" height="22"/>
+                            <rect key="frame" x="347" y="39" width="22" height="22"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="22" id="7h5-Iq-1JM"/>
                                 <constraint firstAttribute="height" constant="22" id="VT9-Y8-SCv"/>
@@ -49,11 +50,11 @@
                     </subviews>
                     <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstItem="8Gh-go-58l" firstAttribute="leading" secondItem="thJ-pL-DPa" secondAttribute="leading" id="ECQ-1J-noP"/>
+                        <constraint firstItem="8Gh-go-58l" firstAttribute="leading" secondItem="thJ-pL-DPa" secondAttribute="leading" constant="2" id="ECQ-1J-noP"/>
                         <constraint firstAttribute="trailing" secondItem="WBt-gj-yta" secondAttribute="trailing" constant="8" id="RUy-tG-yvL"/>
                         <constraint firstItem="8Gh-go-58l" firstAttribute="top" secondItem="thJ-pL-DPa" secondAttribute="top" constant="20" id="b7F-zZ-Htp"/>
-                        <constraint firstAttribute="trailing" secondItem="8Gh-go-58l" secondAttribute="trailing" id="khB-9B-Rlr"/>
-                        <constraint firstItem="WBt-gj-yta" firstAttribute="top" secondItem="thJ-pL-DPa" secondAttribute="top" constant="30" id="p2e-bF-NrO"/>
+                        <constraint firstAttribute="trailing" secondItem="8Gh-go-58l" secondAttribute="trailing" constant="2" id="khB-9B-Rlr"/>
+                        <constraint firstItem="WBt-gj-yta" firstAttribute="top" secondItem="thJ-pL-DPa" secondAttribute="top" constant="39" id="p2e-bF-NrO"/>
                     </constraints>
                 </view>
             </subviews>

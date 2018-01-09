@@ -11,8 +11,6 @@
 #define KCheckSec 60
 @interface ForgetPWDViewController()<MemberManagerDelegate,UITextFieldDelegate>{
     
-   
-    int checkSec;
     int seconds;
     UILabel * labelCountDown;
     NSTimer * countDownTimer;
@@ -39,7 +37,6 @@
     self.VerificationCodeTextField.delegate = self;
     self.PWDTextField.delegate = self;
     self.PWDTextAgainField.delegate = self;
-     checkSec = KCheckSec;
      labelCountDown = [[UILabel alloc] init];
     //self.commitBtn.enabled = NO;
     [self setIcon];
@@ -51,7 +48,9 @@
 
 -(void)sendForgetPWDSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     if ([msg isEqualToString:@"执行成功"]) {
+         [self startCountDown];
         [self showPromptText: @"发送成功" hideAfterDelay: 1.7];
+       
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
     }
@@ -95,7 +94,7 @@
     
     [self.memberMan sendForgetPWDSms:@{@"mobile":phoneNumber}];
     _getVerifyCodeBtn.enabled = NO;
-    seconds = checkSec;
+    seconds = KCheckSec;
 //  
 //        labelCountDown.frame =_getVerifyCodeBtn.frame;
 //        [_getVerifyCodeBtn.superview addSubview: labelCountDown];
@@ -106,17 +105,22 @@
 //  
 //    labelCountDown.text = [NSString stringWithFormat: @"%d", seconds];
 //    labelCountDown.hidden = NO;
-    [_getVerifyCodeBtn setTitle: @"" forState: UIControlStateNormal];
+
+}
+
+
+- (void) startCountDown {
+    [_getVerifyCodeBtn setTitle:[NSString stringWithFormat:@"重新发送(%ds)",KCheckSec] forState:UIControlStateDisabled];
     if (@available(iOS 10.0, *)) {
         countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 repeats:YES block:^(NSTimer * _Nonnull timer) {
             if (seconds > 0) {
                 seconds --;
-                [_getVerifyCodeBtn setTitle:[NSString stringWithFormat:@"重新发送(%ds)",checkSec] forState:UIControlStateDisabled];
+                [_getVerifyCodeBtn setTitle:[NSString stringWithFormat:@"重新发送(%ds)",seconds] forState:UIControlStateDisabled];
             }else{
-                seconds = checkSec;
+                seconds = KCheckSec;
                 [countDownTimer invalidate];
                 [_getVerifyCodeBtn setTitle:@"获取验证码" forState:0];
-                [_getVerifyCodeBtn setTitle:[NSString stringWithFormat:@"重新发送(%ds)",checkSec] forState:UIControlStateDisabled];
+                [_getVerifyCodeBtn setTitle:[NSString stringWithFormat:@"重新发送(%ds)",seconds] forState:UIControlStateDisabled];
                 [_getVerifyCodeBtn setEnabled: YES];
             }
         }];
@@ -125,23 +129,6 @@
     }
 }
 
-//- (void) doneCountDown {
-//    [_countDownTimer invalidate];
-//    _countDownTimer = nil;
-//    labelCountDown.hidden = YES;
-//    [_getVerifyCodeBtn setEnabled: YES];
-//    [_getVerifyCodeBtn setTitle: @"获取验证码"
-//                          forState: UIControlStateNormal];
-//}
-//
-//- (void) startCountDown {
-//    seconds--;
-//    if (seconds == 0) {
-//        [self doneCountDown];
-//        return;
-//    }
-//    labelCountDown.text = [NSString stringWithFormat: @"%d", seconds];
-//}
 - (IBAction)commitBtnClick:(id)sender {
     if (_VerificationCodeTextField.text.length < 5) {
         [self showPromptText: @"请输入有效的验证码" hideAfterDelay: 1.7];
