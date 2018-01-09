@@ -7,9 +7,15 @@
 //  Copyright © 2016年 AMP. All rights reserved.
 //
 
+
+
 #import "JCLQOrderDetailViewCell.h"
 
-
+@interface JCLQOrderDetailViewCell()
+{
+    NSDictionary *itemDic;
+}
+@end
 
 @implementation JCLQOrderDetailViewCell
 {
@@ -29,10 +35,6 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
-    //4006668800
-    //w562873913
-    //100043177518
 }
 
 
@@ -55,7 +57,7 @@
 //    /**	 * 中奖	 */[8]    (null)    @"passType" : @"P2_1"
 //    LOTTERY("中奖");[2]    (null)    @"ticketContent" : @"[{\"matchId\":\"周一003\",\"matchKey\":\"102865\",\"options\":[\"3\",\"1\",\"0\"],\"playType\":1},{\"matchId\":\"周一005\",\"matchKey\":\"102867\",\"options\":[\"3\",\"1\"],\"playType\":1}]"
 -(void)reloadData:(NSDictionary *)dic{
-
+    itemDic = dic;
     self.labTouzhuneirong.layer.borderWidth = 1;
     self.labTouzhuneirong.layer.borderColor =TFBorderColor.CGColor;
     
@@ -155,7 +157,7 @@
 
 }
 
--(NSString *)reloadDataWithRec:(NSArray *)option type:(NSString *)playType andMatchLine:(NSString *)matchLine{
+-(NSString *)reloadDataWithRec:(NSArray *)option type:(NSString *)playType andMatchLine:(NSString *)matchLine andMatchkey:(NSString *)matchKey{
     
     NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"JingCaiOrderCode" ofType: @"plist"]] ;
     NSDictionary *contentArray;
@@ -196,8 +198,8 @@
     for (NSString *op in option) {
         
         NSString*type = [self getContent:contentArray andOption:op];
-        [content appendFormat:@"%@",type];
-        [content appendString:@", "];
+        NSString *odd = [self getOddWithOption:op matchKey:matchKey];
+        [content appendFormat:@"【%@:%@】",type,odd];
     }
     
     if (content.length >1) {
@@ -234,7 +236,7 @@
     
     for (NSDictionary  *itemDic in arr) {
         
-        NSString *str = [self reloadDataWithRec:itemDic[@"options"] type:itemDic[@"playType"] andMatchLine:itemDic[@"matchId"]];
+        NSString *str = [self reloadDataWithRec:itemDic[@"options"] type:itemDic[@"playType"] andMatchLine:itemDic[@"matchId"] andMatchkey:itemDic[@"matchKey"]];
         [marr addObject:str];
     }
     return marr;
@@ -263,5 +265,20 @@
     
 }
 
+-(NSString *)getOddWithOption:(NSString *)option matchKey:(NSString *)matchKey{
+    if (itemDic[@"odds"] == nil) {
+        return @"";
+    }
+    NSDictionary *itemOddsDic = [Utility objFromJson:itemDic[@"odds"]];
+    NSArray *oddsArray =itemOddsDic[@"itemsOdds"];
+    for (NSDictionary *itemDic in oddsArray) {
+        if ([itemDic[@"matchKey"] integerValue] == [matchKey integerValue]) {
+            NSDictionary *odds = [Utility objFromJson:itemDic[@"odds"]];
+            return odds[option];
+        }
+    }
+    return @"";
+    
+}
 
 @end

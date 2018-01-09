@@ -37,4 +37,6 @@
 
 -(void)needLogin;
 
+-(id)transFomatJson:(NSString *)strJson;
+
 @end

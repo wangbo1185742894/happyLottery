@@ -9,13 +9,16 @@
 #import "NewsViewController.h"
 
 #import "NewsTableViewCell.h"
-
+#import "LoadData.h"
+#import "NewsModel.h"
+#import "WebShowViewController.h"
 #define KNewsTableViewCell @"NewsTableViewCell"
 @interface NewsViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     
     __weak IBOutlet UITableView *tabNewListView;
-    
+    LoadData * singleLoad;
+    NSMutableArray <NewsModel *> *newArray;
 }
 @end
 
@@ -25,7 +28,29 @@
     [super viewDidLoad];
     [self setViewController];
     [self setTableView];
+    [self loadNews];
 }
+
+-(void)loadNews{
+    singleLoad = [LoadData singleLoadData];
+    newArray = [NSMutableArray arrayWithCapacity:0];
+    NSString *strUlr = [NSString stringWithFormat:@"%@/app/news/moreNews?usageChannel=3",ServerAddress];
+    [singleLoad RequestWithString:strUlr isPost:NO andPara:nil andComplete:^(id data, BOOL isSuccess) {
+        if (isSuccess == NO) {
+            return ;
+        }
+        NSDictionary *dicItem = [self transFomatJson:[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]];
+        
+         NSArray *itemArray = dicItem[@"result"];
+        for (NSDictionary *dic in itemArray) {
+            NewsModel *model = [[NewsModel alloc]initWith:dic];
+            [newArray addObject:model];
+        }
+        [tabNewListView reloadData];
+    }];
+    
+}
+
 -(void)setViewController{
     
     self.title = @"竞彩资讯";
@@ -45,7 +70,7 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
 
-    return 10;
+    return newArray.count;
     
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -55,14 +80,16 @@
 -(UITableViewCell * )tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NewsTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:KNewsTableViewCell];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [cell loadData:newArray[indexPath.row]];
     return cell;
 }
 
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    WebShowViewController *showViewVC = [[WebShowViewController alloc]init];
+    showViewVC.title = newArray[indexPath.row].title;
+    showViewVC.pageUrl = [NSURL URLWithString:newArray[indexPath.row].linkUrl];
+    showViewVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:showViewVC animated:YES];
 }
 
 @end

@@ -374,16 +374,7 @@
         
         //成功 后处理。
         NSLog(@"Success: %@", responseObject);
-//        NSString * str = [responseObject objectForKey:@"fileId"];
-//        if (str != nil) {
-//            //            [self.delegate uploadImgFinish:str];
-//        }
-        
-        
-        NSString*string = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
-        string = [string stringByReplacingOccurrencesOfString:@"\\" withString:@""];
-        string = [string substringWithRange:NSMakeRange(1, string.length - 2)];
-        NSDictionary *itemInfo = [Utility objFromJson:string];
+        NSDictionary *itemInfo = [self transFomatJson:[[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding]];
         if ([itemInfo[@"code"] isEqualToString:@"0000"]) {
             [self showPromptText:@"修改成功" hideAfterDelay:1.8];
             NSString *iconUrl = itemInfo[@"result"];  //图片url

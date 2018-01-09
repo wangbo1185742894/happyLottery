@@ -28,7 +28,7 @@
     
     self.title = @"订单详情";
 
-    self.page = 0;
+    self.page = 1;
     self.tabListDetail.dataSource = self;
     self.tabListDetail.delegate = self;
     self.dataArray = [NSMutableArray arrayWithCapacity:0];
@@ -41,7 +41,7 @@
     self.tabListDetail.mj_header  = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
         
-        self.page = 0;
+        self.page = 1;
         [self loadData];
         [self.tabListDetail.mj_header endRefreshing];
     }];
@@ -64,7 +64,7 @@
         [self showPromptText:msg hideAfterDelay:1.7];
         return;
     }
-    if (self.page == 0) {
+    if (self.page == 1) {
         [self.dataArray removeAllObjects];
     }
     [self.dataArray addObjectsFromArray:infoArray];
@@ -97,7 +97,7 @@
 
 - (void) gotJCLQOrderInfoDetail:(NSArray *)dataArray{
 
-    if (self.page == 0) {
+    if (self.page == 1) {
         [self.dataArray removeAllObjects];
     }
     
