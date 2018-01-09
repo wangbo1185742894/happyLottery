@@ -102,6 +102,7 @@
 
 -(void)paySuccess{
     PaySuccessViewController * paySuccessVC = [[PaySuccessViewController alloc]init];
+    paySuccessVC.schemeNO = self.cashPayMemt.schemeNo;
     [self.navigationController pushViewController:paySuccessVC animated:YES];
 }
 

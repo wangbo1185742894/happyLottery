@@ -50,43 +50,35 @@
 
 //    /**	 * 等待开奖	 */
 //    WAIT_LOTTERY("等待开奖"),
-//    /**	 * 未中奖	 */
+//    /**	 * 未中奖	 */[10]    (null)    @"afterTaxBonus" : (no summary)
 //    NOT_LOTTERY("未中奖"),
-//    /**	 * 中奖	 */
-//    LOTTERY("中奖");
+//    /**	 * 中奖	 */[8]    (null)    @"passType" : @"P2_1"
+//    LOTTERY("中奖");[2]    (null)    @"ticketContent" : @"[{\"matchId\":\"周一003\",\"matchKey\":\"102865\",\"options\":[\"3\",\"1\",\"0\"],\"playType\":1},{\"matchId\":\"周一005\",\"matchKey\":\"102867\",\"options\":[\"3\",\"1\"],\"playType\":1}]"
 -(void)reloadData:(NSDictionary *)dic{
 
-   
-    self.labNumber.adjustsFontSizeToFitWidth = YES;
-     self.labTouzhuneirong.adjustsFontSizeToFitWidth = YES;
-     self.labBetCount.adjustsFontSizeToFitWidth = YES;
-     self.labBeishu.adjustsFontSizeToFitWidth = YES;
-     self.labChupiao.adjustsFontSizeToFitWidth = YES;
-     self.labJiangjin.adjustsFontSizeToFitWidth = YES;
-
-    self.labBeishu.text = [NSString stringWithFormat:@"%@元",dic[@"subCost"]];
+    self.labTouzhuneirong.layer.borderWidth = 1;
+    self.labTouzhuneirong.layer.borderColor =TFBorderColor.CGColor;
     
-    NSArray *titleArray = dic[@"betContent"];
-
-        // 其它彩种
-            content = [NSMutableString string];
-        for (NSString *item in titleArray) {
-            [content appendString:item];
-            [content appendString:@"\n"];
-        }
-         content  = [content substringToIndex:content.length -1];
+    self.labPassType.text = [self getPasstype:dic[@"passType"]];
     
-
    
+    
+    self.viewSubContent.layer.borderColor = TFBorderColor.CGColor;
+    self.viewSubContent.layer.borderWidth = 1;
+    
+    self.labBetCost.text = [NSString stringWithFormat:@"%@元",dic[@"subscription"]];
+    NSArray *titleArray = [Utility objFromJson:dic[@"ticketContent"]];
+    titleArray = [self getBetcontent:titleArray];
+    content  = [titleArray componentsJoinedByString:@"\n"];
     
     self.labTouzhuneirong.text = content ;
-    self.labNumber.text = [NSString stringWithFormat:@"投注内容 %@注%@倍",dic[@"unit"],dic[@"multiple"]];
+    self.labNumber.text = [NSString stringWithFormat:@"%@注%@倍",dic[@"unit"],dic[@"multiple"]];
     
     [self setNumberColor:self.labNumber];
     NSString *orderStatus = dic[@"orderStatus"];
     NSString *winningStatus = dic[@"winningStatus"];
-    NSString *subCost =[NSString stringWithFormat:@"%@元",dic[@"subCost"]] ;
-    self.labBetCount.text = subCost == nil?@"0":subCost;
+    NSString *subCost =[NSString stringWithFormat:@"%@元",dic[@"subscription"]] ;
+    
     [self setLabTextColor:SystemGray];
     
     
@@ -99,7 +91,6 @@
             }else{
                 
             }
-            self.labRemark.adjustsFontSizeToFitWidth = YES;
             
         }else{
             self.labChupiao.text = @"出票中";
@@ -125,22 +116,29 @@
 
 }
 
+-(NSString *)getPasstype:(NSString *)type{
+    
+    if (type == nil || type .length == 0) {
+        return @"";
+    }
+    if ([type isEqualToString:@"P1"]) {
+        return @"单关";
+    }
+    return  [[type substringFromIndex:1] stringByReplacingOccurrencesOfString:@"_" withString:@"串"];
+}
+
 -(void)setLabTextColor:(UIColor *)color{
 
-    
-    self.labBeishu.textColor = color;
     self.labTouzhuneirong.textColor = color;
     self.labJiangjin.textColor = color;
-    self.labPlayType.textColor = color;
-    self.labBetCount.textColor = color;
-
+  
+    
 }
 
 
 -(CGFloat)getCellHeight:(NSDictionary*)dic{
-
+    NSArray *titleArray = [Utility objFromJson:dic[@"ticketContent"]] ;
     
-    NSArray *titleArray = dic[@"betContent"];
     titleArray = [self getBetcontent:titleArray];
     NSString * content = [titleArray componentsJoinedByString:@"\n"];
     
@@ -153,19 +151,96 @@
 
 
    float width = [UIScreen mainScreen].bounds.size.width;
-   return [content boundingRectWithSize:CGSizeMake(165, 0) options:opts attributes:attributes context:nil].size.height + 60;
+   return [content boundingRectWithSize:CGSizeMake(KscreenWidth - 40, 0) options:opts attributes:attributes context:nil].size.height + 130;
 
 }
+
+-(NSString *)reloadDataWithRec:(NSArray *)option type:(NSString *)playType andMatchLine:(NSString *)matchLine{
+    
+    NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"JingCaiOrderCode" ofType: @"plist"]] ;
+    NSDictionary *contentArray;
+    NSInteger index;
+    NSMutableString*content = [NSMutableString string];
+    [content appendString:matchLine];
+    [content appendString:@":"];
+    switch ([playType integerValue]) {
+        case 1:
+            index = 100;
+            contentArray = dic[@"SPF"];
+            
+            break;
+        case 5:
+            index = 200;
+            contentArray = dic[@"RQSPF"];
+            
+            break;
+        case 4:
+            index = 400;
+            contentArray = dic[@"BQC"];
+            
+            break;
+        case 2:
+            index = 300;
+            contentArray = dic[@"JQS"];
+            
+            break;
+        case 3:
+            index = 500;
+            contentArray = dic[@"BF"];
+            
+            break;
+        default:
+            break;
+    }
+    
+    for (NSString *op in option) {
+        
+        NSString*type = [self getContent:contentArray andOption:op];
+        [content appendFormat:@"%@",type];
+        [content appendString:@", "];
+    }
+    
+    if (content.length >1) {
+        return content;
+    }
+    return @"";
+}
+
+-(NSString*)getContent:(NSDictionary*)contentArray andOption:(NSString*)option{
+    for (NSDictionary *dic in contentArray.allValues) {
+//        NSInteger type =  [dic[@"code"] integerValue]%100;
+//        if (type == [option integerValue]) {
+//            return dic[@"appear"];
+//        }
+                if (dic[option] != nil) {
+                    return dic[option];
+                }
+    }
+    return @"";
+}
+
+-(NSString*)getContentJCZQ:(NSDictionary*)contentArray andOption:(NSString*)option{
+    for (NSDictionary *dic in contentArray.allValues) {
+        if ([dic[@"code"] integerValue]  == [option integerValue]) {
+            return dic[@"appear"];
+        }
+    }
+    return nil;
+}
+
 -(NSArray* )getBetcontent:(NSArray  *)arr{
 
     NSMutableArray *marr = [NSMutableArray arrayWithCapacity:0];
-    for (NSString  *betDic in arr) {
+    
+    for (NSDictionary  *itemDic in arr) {
         
-        NSString *str = @"";
+        NSString *str = [self reloadDataWithRec:itemDic[@"options"] type:itemDic[@"playType"] andMatchLine:itemDic[@"matchId"]];
         [marr addObject:str];
     }
     return marr;
 }
+
+
 
 - (void)setNumberColor:(UILabel *)contentLabel{
     NSMutableAttributedString  *attStr = [[NSMutableAttributedString alloc] initWithString:contentLabel.text];

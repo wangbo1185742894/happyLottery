@@ -15,4 +15,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *labTime;
 @property (weak, nonatomic) IBOutlet UILabel *labMatchInfo;
 
+
 @end

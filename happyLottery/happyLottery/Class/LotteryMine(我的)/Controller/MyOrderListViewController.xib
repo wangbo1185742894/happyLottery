@@ -31,6 +31,7 @@
                             </segments>
                             <color key="tintColor" red="0.070588235289999995" green="0.78039215689999997" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
+                                <action selector="actionCostTypeSelect:" destination="-1" eventType="valueChanged" id="nYN-Oc-5fL"/>
                                 <action selector="actionSelectSchemeTpye:" destination="-1" eventType="valueChanged" id="aND-vk-D5O"/>
                             </connections>
                         </segmentedControl>

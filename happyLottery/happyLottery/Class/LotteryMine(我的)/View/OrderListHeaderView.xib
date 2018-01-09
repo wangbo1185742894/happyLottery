@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="OrderListHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="31"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="h1x-L6-IfM">
+                    <rect key="frame" x="90" y="4" width="200" height="23"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="200" id="nMj-Bk-mEV"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.28235294117647058" green="0.28235294117647058" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开奖号码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KQh-0A-134">
+                    <rect key="frame" x="15" y="4" width="70" height="23"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="70" id="fXb-s8-XcQ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.28235294117647058" green="0.28235294117647058" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6s-wB-aMn">
+                    <rect key="frame" x="5" y="7.5" width="2" height="16"/>
+                    <color key="backgroundColor" red="1" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="2" id="PT9-Qc-goF"/>
+                        <constraint firstAttribute="height" constant="16" id="kM9-NW-drt"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="KQh-0A-134" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="7kX-uN-xqg"/>
+                <constraint firstAttribute="bottom" secondItem="KQh-0A-134" secondAttribute="bottom" constant="4" id="H85-lx-Fzz"/>
+                <constraint firstItem="KQh-0A-134" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="4" id="J08-KY-27R"/>
+                <constraint firstItem="P6s-wB-aMn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="K93-m3-X2I"/>
+                <constraint firstItem="h1x-L6-IfM" firstAttribute="leading" secondItem="KQh-0A-134" secondAttribute="trailing" constant="5" id="ag2-AE-b6u"/>
+                <constraint firstItem="h1x-L6-IfM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="4" id="mjF-uY-GwP"/>
+                <constraint firstAttribute="bottom" secondItem="h1x-L6-IfM" secondAttribute="bottom" constant="4" id="pha-iz-AMD"/>
+                <constraint firstItem="P6s-wB-aMn" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="r4y-dK-j7y"/>
+                <constraint firstItem="KQh-0A-134" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="x00-7b-cIk"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="betInfoLa" destination="h1x-L6-IfM" id="vly-WT-KQy"/>
+                <outlet property="titleLa" destination="KQh-0A-134" id="nPO-X3-0Tq"/>
+            </connections>
+            <point key="canvasLocation" x="-45" y="-57.5"/>
+        </view>
+    </objects>
+</document>

@@ -60,6 +60,7 @@
 
 
 #define MAINBGC             RGBCOLOR(245, 245, 245)
+#define SystemRed           RGBCOLOR(209, 57, 34)
 #define SystemGray          RGBCOLOR(38, 38, 38)
 #define SystemGreen         RGBCOLOR(18, 199, 146)
 #define SystemBlue          RGBCOLOR(49, 137, 253)

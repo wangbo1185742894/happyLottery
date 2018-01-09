@@ -84,7 +84,7 @@
 #define APISchemeCashPayment        @"schemeCashPayment"
 #define APISchemeScorePayment       @"schemeScorePayment"
 #define APIGetSchemeRecord          @"getSchemeRecord"
-
+#define APIGetSchemeRecordBySchemeNo @"getSchemeRecordBySchemeNo"
 
 #define SUBAPITicketService   @"/ticket"
 #define APIGetJczqTicketOrderDetail @"getJczqTicketOrderDetail"

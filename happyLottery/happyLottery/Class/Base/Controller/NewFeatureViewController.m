@@ -25,6 +25,9 @@
     newFeatureView.contentSize = CGSizeMake(self.view.mj_w * 3, self.view.mj_h);
     newFeatureView.delegate  =self;
     pageCtr = [[UIPageControl alloc]initWithFrame:CGRectMake((self.view.mj_w - 80) / 2, self.view.mj_h - 55, 80, 20)];
+    pageCtr.currentPageIndicatorTintColor =SystemGreen;
+    pageCtr.pageIndicatorTintColor = SystemGray;
+    
     pageCtr.numberOfPages  =3;
     pageCtr.currentPage = 0;
     for (int i = 0; i < 3; i ++ ) {

@@ -56,7 +56,7 @@
 }
 
 -(void)loadData{
-    [self.lotteryMan getJczqTicketOrderDetail:@{@"schemeNo":self.schemeNO}];
+    [self.lotteryMan getJczqTicketOrderDetail:@{@"schemeNo":self.schemeNO,@"page":@(_page),@"pageSize":@(10)}];
 }
 
 -(void)gotJczqTicketOrderDetail:(NSArray *)infoArray errorMsg:(NSString *)msg{
@@ -64,7 +64,10 @@
         [self showPromptText:msg hideAfterDelay:1.7];
         return;
     }
-    self.dataArray = infoArray;
+    if (self.page == 0) {
+        [self.dataArray removeAllObjects];
+    }
+    [self.dataArray addObjectsFromArray:infoArray];
     [self.tabListDetail reloadData];
 }
 
@@ -88,7 +91,7 @@
     NSDictionary *dic = self.dataArray[indexPath.row];
    JCLQOrderDetailViewCell *cell = [[JCLQOrderDetailViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:JCLQOrderCell];
     
-    return [cell getCellHeight:dic]+35;
+    return [cell getCellHeight:dic];
 
 }
 

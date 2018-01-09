@@ -84,6 +84,9 @@
                // _loginBtn.enabled = NO;
                 NSDictionary *MemberInfo;
                 NSString *cardCode =self.curUser.cardCode;
+                if (cardCode == nil) {
+                    return;
+                }
                     MemberInfo = @{@"cardCode":cardCode
                     };
                 [self.memberMan getMemberByCardCodeSms:(NSDictionary *)MemberInfo];

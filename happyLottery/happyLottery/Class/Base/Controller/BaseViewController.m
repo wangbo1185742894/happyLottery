@@ -63,14 +63,22 @@
 -(void)viewWillAppear:(BOOL)animated{
     
     [self afnReachabilityTest];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
         if ([self socketReachabilityTest]) {
 //            [self showPromptText:@"连接服务器成功" hideAfterDelay:1.8];
         }else{
-         //   [self showPromptText:@"服务器连接失败" hideAfterDelay:1.8];
+
+            dispatch_async(dispatch_get_main_queue(), ^{
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+
+                        [self showPromptText:@"连接服务器失败，请检查网络设置" hideAfterDelay:1.8];
+                    });
+            });
         }
     });
+    
+
 }
 //判断服务器是否可达
 - (BOOL)socketReachabilityTest {
@@ -81,7 +89,7 @@
     
     serverAddress.sin_family = AF_INET;
     
-    serverAddress.sin_addr.s_addr = inet_addr("192.168.88.244");
+    serverAddress.sin_addr.s_addr = inet_addr("124.89.85.110");
     
     serverAddress.sin_port = htons(80);
     if (connect(socketNumber, (const struct sockaddr *)&serverAddress, sizeof(serverAddress)) == 0) {
@@ -183,7 +191,12 @@
 }
 
 - (void) showPromptText: (NSString *) text hideAfterDelay: (NSTimeInterval) interval {
-    
+    if ([text isEqualToString:@""] ||text == nil ) {
+        return;
+    }
+    if ([text isEqualToString:@"执行成功"] ) {
+        text = @"数据请求成功";
+    }
     //当提示出现时，屏幕键盘收起，不会挡住提示。
     
     [self.view endEditing:YES];

@@ -18,6 +18,7 @@
     CostType curSchemeType;
     __weak IBOutlet UITableView *tabSchemeList;
     JCZQSchemeModel* schemeModel;
+    NSMutableArray <JCZQSchemeItem *> *dataArray;
     NSInteger page;
 }
 
@@ -27,9 +28,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    dataArray = [NSMutableArray arrayWithCapacity:0];
+    self.title = @"我的方案";
     page = 0;
     curSchemeType = CostTypeCASH;
+    [self setTableViewLoadRefresh];
     [self setTableView];
+    [self loadData];
+}
+- (IBAction)actionCostTypeSelect:(UISegmentedControl *)sender {
+    if (sender.selectedSegmentIndex == 0) {
+        curSchemeType = CostTypeCASH;
+    }else if (sender.selectedSegmentIndex == 1){
+        curSchemeType = CostTypeSCORE;
+    }
     [self loadData];
 }
 
@@ -67,37 +79,48 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 
-    return schemeModel.list.count;
+    return dataArray.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     SchemListCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemListCell];
-    [cell refreshData:schemeModel.list[indexPath.row]];
+    [cell refreshData:dataArray[indexPath.row]];
     cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
 -(void)loadData{
-    [self.lotteryMan getSchemeRecord:@{@"cardCode":self.curUser.cardCode}];
+    NSString *costType = @"CASH";
+    if (curSchemeType == CostTypeCASH) {
+        costType = @"CASH";
+    }else if(curSchemeType == CostTypeSCORE){
+        costType  = @"SCORE";
+    }
+    [self.lotteryMan getSchemeRecord:@{@"cardCode":self.curUser.cardCode,@"page":@(page),@"pageSize":@(10),@"costType":costType}];
 }
 
--(void)gotSchemeRecord:(NSDictionary *)infoDic errorMsg:(NSString *)msg{
+-(void)gotSchemeRecord:(NSArray *)infoDic errorMsg:(NSString *)msg{
     [tabSchemeList.mj_header endRefreshing];
     [tabSchemeList.mj_footer endRefreshing];
     if (infoDic == nil) {
         [self showPromptText:msg hideAfterDelay:17];
         return;
     }
-    schemeModel = [[JCZQSchemeModel alloc]initWith:infoDic];
+    if (page == 0) {
+        [dataArray removeAllObjects];
+    }
+    
+    for (NSDictionary *itemDic in infoDic) {
+        JCZQSchemeItem *model = [[JCZQSchemeItem alloc]initWith:itemDic];
+        [dataArray addObject:model];
+    }
     [tabSchemeList reloadData];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     SchemeDetailViewController *schemeVC = [[SchemeDetailViewController alloc]init];
-    schemeVC.schemeNO = schemeModel.list[indexPath.row].schemeNO;
+    schemeVC.schemeNO = dataArray[indexPath.row].schemeNO;
     [self.navigationController pushViewController:schemeVC animated:YES];
-    
-    
 }
 
 @end

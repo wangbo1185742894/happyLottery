@@ -30,7 +30,24 @@
     _BQC_SelectMatch = [[NSMutableArray alloc]initWithArray:@[@"0",@"0",@"0",@"0",@"0",@"0",@"0",@"0",@"0"]];
     _BF_SelectMatch = [[NSMutableArray alloc]initWithArray:@[@"0",@"0",@"0",@"0",@"0",@"0",@"0",@"0",@"0",@"0",@"0",@"0",@"0",@"0",@"0",@"0",@"0",@"0",@"0",@"0",@"0",@"0",@"0",@"0",@"0",@"0",@"0",@"0",@"0",@"0",@"0"]];
     _isSelect = NO;
+    [self refreshPrize];
     
+}
+
+-(void)refreshPrize{
+    [_matchBetArray removeAllObjects];
+    _odd_SPF_Select = @"";
+    _odd_RQSPF_Select = @"";
+    _odd_BF_Select = @"";
+    _odd_JQS_Select = @"";
+    _odd_BQC_Select = @"";
+    _odd_max_zuhe_HHGG = nil;
+    _odd_SPF_Select_min = @"";
+    _odd_RQSPF_Select_min = @"";
+    _odd_BF_Select_min = @"";
+    _odd_JQS_Select_min = @"";
+    _odd_BQC_Select_min = @"";
+    _odd_min_zuhe_HHGG = nil;
 }
 
 -(void)setValue:(id)value forKey:(NSString *)key{
@@ -75,7 +92,15 @@
         }
     }
     return selectNum;
+}
+
+-(void)getNumberPlayTypeNum:(NSArray *)itemArray andBaseIndex:(NSInteger )baseIndex{
     
+    for (int i = 0; i < itemArray.count; i ++) {
+        if ([itemArray[i] integerValue] == 1) {
+            [_matchBetArray addObject:@(baseIndex + i)];
+        }
+    }
 }
 
 -(NSString *)getTouzhuAppearTitleByTypeAndSp:(NSString *)type{
@@ -170,6 +195,18 @@
         
     }
     return curY + 10;
+}
+
+-(NSMutableArray *)matchBetArray{
+    if (_matchBetArray == nil) {
+        _matchBetArray = [NSMutableArray arrayWithCapacity:0];
+    }
+    [self getNumberPlayTypeNum:self.SPF_SelectMatch andBaseIndex:100];
+    [self getNumberPlayTypeNum:self.RQSPF_SelectMatch andBaseIndex:200];
+    [self getNumberPlayTypeNum:self.BF_SelectMatch andBaseIndex:300];
+    [self getNumberPlayTypeNum:self.BQC_SelectMatch andBaseIndex:400];
+    [self getNumberPlayTypeNum:self.JQS_SelectMatch andBaseIndex:500];
+    return  _matchBetArray;
 }
 
 @end

@@ -228,6 +228,7 @@
     btnMoniTouzhu.selected = NO;
     btnZhenShiTouzhu.selected = NO;
     sender.selected = YES;
+    
 }
 
 
@@ -276,10 +277,17 @@
         totalUnit += self.transction.betCount;
     }
     self.transction.betCount = totalUnit;
-    self.transction.betCost = self.transction.betCount * 2;
     self.transction.betCost  =self.transction.betCount * [self.transction.beitou integerValue] * 2;
-    self.labZhuInfo.text = [NSString stringWithFormat:@"%ld注,%@倍,共%.0f元",self.transction.betCount,self.transction.beitou,self.transction.betCost];
-    self.labPrizeInfo.text = [NSString stringWithFormat:@"最大可中%.2f",self.transction.maxPrize];
+    if (btnMoniTouzhu.selected == YES) {
+            self.labZhuInfo.text = [NSString stringWithFormat:@"%ld注,%@倍,共%d积分",self.transction.betCount,self.transction.beitou,self.transction.betCost *100];
+        self.labPrizeInfo.text = [NSString stringWithFormat:@"可中%@积分~%@积分",self.transction.minBounds,[self.transction.mostBounds integerValue] * 100];
+    }else{
+            self.labZhuInfo.text = [NSString stringWithFormat:@"%ld注,%@倍,共%d元",self.transction.betCount,self.transction.beitou,self.transction.betCost];
+        self.labPrizeInfo.text = [NSString stringWithFormat:@"可中%@元~%@元",self.transction.minBounds,self.transction.mostBounds];
+    }
+
+    
+    
     
 }
 

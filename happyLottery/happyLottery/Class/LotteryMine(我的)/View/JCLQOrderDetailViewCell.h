@@ -11,18 +11,13 @@
 @interface JCLQOrderDetailViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *labNumber;
 @property (weak, nonatomic) IBOutlet UILabel *labTouzhuneirong;
-@property (weak, nonatomic) IBOutlet UILabel *labBetCount;
-@property (weak, nonatomic) IBOutlet UILabel *labBeishu;
+@property (weak, nonatomic) IBOutlet UILabel *labBetCost;
 @property (weak, nonatomic) IBOutlet UILabel *labChupiao;
 @property (weak, nonatomic) IBOutlet UILabel *labJiangjin;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *lbaTitlewidth;
+@property (weak, nonatomic) IBOutlet UILabel *labPassType;
+@property (weak, nonatomic) IBOutlet UIView *viewSubContent;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *labPlayTypeWidth;
-@property (weak, nonatomic) IBOutlet UILabel *labPlayType;
-@property (weak, nonatomic) IBOutlet UILabel *labRemark;
 
-@property(assign,nonatomic)BOOL isX115;
-@property(assign,nonatomic)BOOL isP3P5;
 -(void)reloadData:(NSDictionary *)dic;
 
 -(CGFloat)getCellHeight:(NSDictionary*)dic;
