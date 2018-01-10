@@ -417,6 +417,7 @@
 		2DE109492003423E0020343A /* hometeam@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE109472003423C0020343A /* hometeam@2x.png */; };
 		2DE1094A2003423E0020343A /* hometeam@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE109482003423C0020343A /* hometeam@3x.png */; };
 		2DE10950200356350020343A /* JingCaiOrderCode.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DE1094F200356350020343A /* JingCaiOrderCode.plist */; };
+		2DE109532004E6690020343A /* NewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE109522004E6690020343A /* NewsModel.m */; };
 		F90058DE1FF61327009C8E1C /* NoticeCenterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F90058DC1FF61327009C8E1C /* NoticeCenterTableViewCell.m */; };
 		F90058DF1FF61327009C8E1C /* NoticeCenterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F90058DD1FF61327009C8E1C /* NoticeCenterTableViewCell.xib */; };
 		F90058E51FF61619009C8E1C /* noticedelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F90058E11FF61618009C8E1C /* noticedelete@2x.png */; };
@@ -1307,6 +1308,8 @@
 		2DE109472003423C0020343A /* hometeam@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hometeam@2x.png"; sourceTree = "<group>"; };
 		2DE109482003423C0020343A /* hometeam@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hometeam@3x.png"; sourceTree = "<group>"; };
 		2DE1094F200356350020343A /* JingCaiOrderCode.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = JingCaiOrderCode.plist; sourceTree = "<group>"; };
+		2DE109512004E6690020343A /* NewsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsModel.h; sourceTree = "<group>"; };
+		2DE109522004E6690020343A /* NewsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsModel.m; sourceTree = "<group>"; };
 		F90058DB1FF61327009C8E1C /* NoticeCenterTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeCenterTableViewCell.h; sourceTree = "<group>"; };
 		F90058DC1FF61327009C8E1C /* NoticeCenterTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeCenterTableViewCell.m; sourceTree = "<group>"; };
 		F90058DD1FF61327009C8E1C /* NoticeCenterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoticeCenterTableViewCell.xib; sourceTree = "<group>"; };
@@ -2694,6 +2697,8 @@
 				2D8CC0121FF48EBB00CC367F /* WBSelectDateButtom.m */,
 				2D06FFDD1FFDB7D8009E7568 /* JCZQSchemeModel.h */,
 				2D06FFDE1FFDB7D8009E7568 /* JCZQSchemeModel.m */,
+				2DE109512004E6690020343A /* NewsModel.h */,
+				2DE109522004E6690020343A /* NewsModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3926,6 +3931,7 @@
 				2D8CBFAC1FF326F200CC367F /* PaySuccessViewController.m in Sources */,
 				2D205FEA1FFC6E950086E266 /* WBBifenZhiboViewController.m in Sources */,
 				2D739CF81FEB5D1900264044 /* JCZQSelectBFVIew.m in Sources */,
+				2DE109532004E6690020343A /* NewsModel.m in Sources */,
 				2D739C1A1FE2611C00264044 /* IQUIViewController+Additions.m in Sources */,
 				2D739C8B1FE7E0F700264044 /* WBButton.m in Sources */,
 				2D0600501FFE061D009E7568 /* JCLQOrderDetailViewCell.m in Sources */,

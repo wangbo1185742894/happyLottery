@@ -20,8 +20,11 @@
 #import "WBBifenZhiboViewController.h"
 
 #import "UMChongZhiViewController.h"
-
+#import "LoadData.h"
+#import "NewsModel.h"
+#import "WebShowViewController.h"
 #define KNewsListCell @"NewsListCell"
+
 @interface BuyLotteryViewController ()<WBAdsImgViewDelegate,HomeMenuItemViewDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate>
 {
     NSMutableArray *JczqShortcutList;
@@ -33,6 +36,14 @@
     __weak IBOutlet NSLayoutConstraint *newsViewMarginTop;
     __weak IBOutlet NSLayoutConstraint *tabForecastListHeight;
     __weak IBOutlet UITableView *tabForecaseList;
+    LoadData *singleLoad;
+    NewsModel *newsModel;
+    
+    __weak IBOutlet UIImageView *imgNewIcon;
+    __weak IBOutlet UILabel *labNewTitle;
+    __weak IBOutlet UILabel *labLookNum;
+    __weak IBOutlet UILabel *labNewDate;
+    
 }
 @end
 
@@ -48,6 +59,25 @@
     
 }
 
+-(void)loadNews{
+    singleLoad = [LoadData singleLoadData];
+    
+    NSString *strUlr = [NSString stringWithFormat:@"%@/app/news/showNews?usageChannel=3",ServerAddress];
+    [singleLoad RequestWithString:strUlr isPost:NO andPara:nil andComplete:^(id data, BOOL isSuccess) {
+        NSDictionary *dicItem = [self transFomatJson:[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]];
+        newsModel = [[NewsModel alloc]initWith: dicItem[@"result"]];
+        [self showNew];
+    }];
+    
+}
+
+-(void)showNew{
+    
+    [imgNewIcon sd_setImageWithURL:[NSURL URLWithString:newsModel.titleImgUrl]];
+    labNewTitle.text = newsModel.title;
+    labNewDate.text = newsModel.newsTime;
+    labLookNum.text = [NSString stringWithFormat:@"%@浏览",newsModel.visitNum];
+}
 
 -(void)getJczqShortcut{
     JczqShortcutList = [NSMutableArray arrayWithCapacity:0];
@@ -146,6 +176,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self getJczqShortcut];
+    [self loadNews];
     self.navigationController.navigationBar.hidden = YES;
     
     
@@ -227,6 +258,13 @@
     ForecastViewController *forecastVC = [[ForecastViewController alloc]init];
     forecastVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:forecastVC animated:YES];
+}
+- (IBAction)actionNewDetail:(id)sender {
+    WebShowViewController *showViewVC = [[WebShowViewController alloc]init];
+    showViewVC.title = newsModel.title;
+    showViewVC.pageUrl = [NSURL URLWithString:newsModel.linkUrl];
+    showViewVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:showViewVC animated:YES];
 }
 
 @end

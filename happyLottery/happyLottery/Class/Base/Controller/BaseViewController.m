@@ -72,7 +72,7 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 
-                        [self showPromptText:@"连接服务器失败，请检查网络设置" hideAfterDelay:1.8];
+//                        [self showPromptText:@"连接服务器失败，请检查网络设置" hideAfterDelay:1.8];
                     });
             });
         }
@@ -262,6 +262,20 @@
         [self presentViewController:navVC animated:NO completion:nil];
     }];
     [alert showAlertWithSender:self];
+}
+
+-(id)transFomatJson:(NSString *)strJson{
+    if (strJson.length == 0 || strJson == nil) {
+        return nil;
+    }
+    
+    if ([Utility objFromJson:strJson] != nil) {
+        return [Utility objFromJson:strJson];
+    }
+   
+    strJson = [strJson stringByReplacingOccurrencesOfString:@"\\" withString:@""];
+    strJson = [strJson substringWithRange:NSMakeRange(1, strJson.length - 2)];
+    return  [Utility objFromJson:strJson];
 }
 
 @end

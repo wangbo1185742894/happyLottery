@@ -228,6 +228,7 @@
     btnMoniTouzhu.selected = NO;
     btnZhenShiTouzhu.selected = NO;
     sender.selected = YES;
+    [self updataTouzhuInfo];
     
 }
 
@@ -279,10 +280,10 @@
     self.transction.betCount = totalUnit;
     self.transction.betCost  =self.transction.betCount * [self.transction.beitou integerValue] * 2;
     if (btnMoniTouzhu.selected == YES) {
-            self.labZhuInfo.text = [NSString stringWithFormat:@"%ld注,%@倍,共%d积分",self.transction.betCount,self.transction.beitou,self.transction.betCost *100];
-        self.labPrizeInfo.text = [NSString stringWithFormat:@"可中%@积分~%@积分",self.transction.minBounds,[self.transction.mostBounds integerValue] * 100];
+            self.labZhuInfo.text = [NSString stringWithFormat:@"%ld注,%@倍,共%ld积分",self.transction.betCount,self.transction.beitou,self.transction.betCost *100];
+        self.labPrizeInfo.text = [NSString stringWithFormat:@"可中%.0f积分~%.0f积分",[self.transction.minBounds doubleValue]  * 100,[self.transction.mostBounds doubleValue] * 100];
     }else{
-            self.labZhuInfo.text = [NSString stringWithFormat:@"%ld注,%@倍,共%d元",self.transction.betCount,self.transction.beitou,self.transction.betCost];
+            self.labZhuInfo.text = [NSString stringWithFormat:@"%ld注,%@倍,共%ld元",self.transction.betCount,self.transction.beitou,self.transction.betCost];
         self.labPrizeInfo.text = [NSString stringWithFormat:@"可中%@元~%@元",self.transction.minBounds,self.transction.mostBounds];
     }
 
@@ -295,6 +296,11 @@
     
     if (self.curUser == nil || self.curUser.isLogin == NO) {
         [self needLogin];
+        return;
+    }
+    
+    if (self.transction.selectItems .count == 0) {
+        [self showPromptText:@"请选择过关方式" hideAfterDelay:1.7];
         return;
     }
     

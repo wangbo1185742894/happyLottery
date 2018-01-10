@@ -8,7 +8,7 @@
 
 #ifndef API_h
 #define API_h
-
+#define ServerAddress @"http://192.168.88.244:8086"  //资讯  轮播图 用户图像
 #define NameSpaceURI @"http://webservice.onlytest.com/"
 
 //244服务
@@ -23,6 +23,9 @@
 
 //#define WSServerURL @"http://192.168.88.116:28000/services%@"
 
+
+//杨芳
+//#define WSServerURL @"http://192.168.88.109:28000/services%@"
 
 
 

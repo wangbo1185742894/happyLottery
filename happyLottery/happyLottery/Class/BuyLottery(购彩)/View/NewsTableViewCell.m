@@ -31,11 +31,12 @@
     return self;
     
 }
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+-(void)loadData:(NewsModel *)model{
+    
+    self.labNewTitle.text = model.title;
+    self.labLookNum.text = [NSString stringWithFormat:@"%ld浏览",[model.visitNum integerValue]];
+    self.labNewTime.text = model.newsTime;
+    [self.imgNewIcon sd_setImageWithURL:[NSURL URLWithString:model.titleImgUrl]];
+    
 }
-
 @end

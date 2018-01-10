@@ -30,7 +30,7 @@
     [super viewDidLoad];
     dataArray = [NSMutableArray arrayWithCapacity:0];
     self.title = @"我的方案";
-    page = 0;
+    page = 1;
     curSchemeType = CostTypeCASH;
     [self setTableViewLoadRefresh];
     [self setTableView];
@@ -54,7 +54,7 @@
     }];
     
     tabSchemeList.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        page = 0;
+        page = 1;
         [self loadData];
         [tabSchemeList reloadData];
     }];
@@ -106,7 +106,7 @@
         [self showPromptText:msg hideAfterDelay:17];
         return;
     }
-    if (page == 0) {
+    if (page == 1) {
         [dataArray removeAllObjects];
     }
     

@@ -347,12 +347,15 @@
     
     //网址
 //    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain; charset=utf-8"];
-      manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",@"text/javascript",@"text/json", nil];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",@"text/javascript",@"text/json", nil];
     NSString * imgpath = [NSString stringWithFormat:@"%@",dic[@"image"]];
     UIImage *image = [UIImage imageWithContentsOfFile:imgpath];
     NSData *data = UIImageJPEGRepresentation(image,0.7);
    // NSDictionary *parameters =@{@"photo":data};
-    NSString *urlString =@"http://192.168.88.109:8086/app/head/url";
+    
+    
+    NSString *urlString =[NSString stringWithFormat:@"%@/app/head/url",ServerAddress];
+    
    // urlString=[urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     [manager POST:urlString parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         //01.21 测试
@@ -371,20 +374,14 @@
         
         //成功 后处理。
         NSLog(@"Success: %@", responseObject);
-//        NSString * str = [responseObject objectForKey:@"fileId"];
-//        if (str != nil) {
-//            //            [self.delegate uploadImgFinish:str];
-//        }
-        
-        SOAPResponse *response = [SOAPResponse responseWithXML: operation.responseString];
-        NSString *responseJsonStr = [response getAPIResponse];
-        if ([responseJsonStr isEqualToString: @"执行成功"]) {
-//            NSDictionary * info = [self objFromJson:infoString];
-//            [self.delegate passAllValueWithDictionary:info];
+        NSDictionary *itemInfo = [self transFomatJson:[[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding]];
+        if ([itemInfo[@"code"] isEqualToString:@"0000"]) {
+            [self showPromptText:@"修改成功" hideAfterDelay:1.8];
+            NSString *iconUrl = itemInfo[@"result"];  //图片url
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        //失败
+        
         NSLog(@"Error: %@", error);
     }];
     
