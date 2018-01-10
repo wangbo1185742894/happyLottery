@@ -55,11 +55,17 @@
                                     </connections>
                                 </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="usermine.png" translatesAutoresizingMaskIntoConstraints="NO" id="ddE-fh-p3u">
-                                    <rect key="frame" x="304" y="40" width="35" height="35"/>
+                                    <rect key="frame" x="303" y="40" width="36" height="36"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="35" id="7It-ha-ddz"/>
-                                        <constraint firstAttribute="width" constant="35" id="N6R-SF-Rnc"/>
+                                        <constraint firstAttribute="height" constant="36" id="7It-ha-ddz"/>
+                                        <constraint firstAttribute="width" constant="36" id="N6R-SF-Rnc"/>
                                     </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="18"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
                                 </imageView>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Fje-zc-LwQ">
                                     <rect key="frame" x="354" y="47" width="13" height="23"/>

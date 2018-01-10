@@ -265,7 +265,7 @@
                     [self.tableView2 reloadData];
                     self.emptyView.hidden=YES;
                     [self.tableView2.mj_footer endRefreshing];
-                } else{
+                }else{
                     
                     self.emptyView.hidden=NO;
                     self.tableView2.hidden = YES;
@@ -356,7 +356,9 @@
                 cell.priceLab.text = [NSString stringWithFormat:@"%@元",cashBoltter.amounts];
                 
             }
-            cell.retainLab.text =[NSString stringWithFormat:@"余额：%@",cashBoltter.remBalance];
+            float b=[cashBoltter.remBalance floatValue];
+            
+            cell.retainLab.text =[NSString stringWithFormat:@"余额：%.2f",b];
         }
     } else if (tableView ==self.tableView2) {
       cell= [tableView dequeueReusableCellWithIdentifier:CellIdentifier2];
@@ -377,7 +379,8 @@
                 cell.image.image = [UIImage imageNamed:@"decrease"];
                 cell.priceLab.text = [NSString stringWithFormat:@"%@分",cashBoltter.amounts];
             }
-            cell.retainLab.text =[NSString stringWithFormat:@"余额：%@",cashBoltter.remBalance];
+            float b=[cashBoltter.remBalance floatValue];
+            cell.retainLab.text =[NSString stringWithFormat:@"余额：%.2f",b];
         }
     }
     

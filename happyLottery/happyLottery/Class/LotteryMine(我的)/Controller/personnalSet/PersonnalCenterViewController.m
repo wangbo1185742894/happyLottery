@@ -18,7 +18,7 @@
 
 
 @interface PersonnalCenterViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate,RSKImageCropViewControllerDelegate,MemberManagerDelegate>{
-    
+     NSString *headUrl;
      NSString *titleStr;
 }
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollerView;
@@ -63,7 +63,8 @@
         self.bottom.constant = 34;
     }
     self.memberMan.delegate = self;
-   
+    self.myImage.layer.cornerRadius = self.myImage.mj_h/2;
+    self.myImage.layer.masksToBounds = YES;
 }
 
 -(void)loadUserInfo{
@@ -78,18 +79,15 @@
     self.memberLab.text = self.curUser.cardCode;
     //[_userImage sd_setImageWithURL:[NSURL URLWithString:self.curUser.headUrl]];
     
-}
-
--(void)updateImage:(BOOL)success errorMsg:(NSString *)msg{
-    
-    if ([msg isEqualToString:@"执行成功"]) {
-       // NSLog(@"%@",bankInfo);
-        //[self showPromptText: @"获得会员已绑定的银行卡列表成功" hideAfterDelay: 1.7];
-       
+    if ([self.curUser.headUrl isEqualToString:@""]) {
+        self.myImage.image = [UIImage imageNamed:@"usermine"];
     }else{
-        [self showPromptText: msg hideAfterDelay: 1.7];
+        
+        self.myImage.image =[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.curUser.headUrl]]];
     }
 }
+
+
 
 - (IBAction)updateImage:(id)sender {
     UIActionSheet *choseSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照",@"从相册中获取",nil];
@@ -376,8 +374,9 @@
         NSLog(@"Success: %@", responseObject);
         NSDictionary *itemInfo = [self transFomatJson:[[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding]];
         if ([itemInfo[@"code"] isEqualToString:@"0000"]) {
-            [self showPromptText:@"修改成功" hideAfterDelay:1.8];
-            NSString *iconUrl = itemInfo[@"result"];  //图片url
+            //[self showPromptText:@"修改成功" hideAfterDelay:1.8];
+            headUrl = itemInfo[@"result"];  //图片url
+            [self updateHeadImageClient];
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -387,6 +386,33 @@
     
 
     
+}
+
+-(void)updateHeadImageClient{
+    NSDictionary *Info;
+    @try {
+        NSString *cardCode =self.curUser.cardCode;
+        Info = @{@"cardCode":cardCode,
+                 @"headUrl":headUrl
+                 };
+       
+    } @catch (NSException *exception) {
+        Info = nil;
+    } @finally {
+      [self.memberMan updateImage:Info];
+    }
+    
+}
+
+-(void)updateImage:(BOOL)success errorMsg:(NSString *)msg{
+    
+    if ([msg isEqualToString:@"执行成功"]) {
+        // NSLog(@"%@",bankInfo);
+        [self showPromptText: @"修改会员头像成功" hideAfterDelay: 1.7];
+        self.myImage.image =[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:headUrl]]];
+    }else{
+        [self showPromptText: msg hideAfterDelay: 1.7];
+    }
 }
 
 #pragma mark - 保存图片至沙盒（应该是提交后再保存到沙盒,下次直接去沙盒取）
@@ -457,10 +483,17 @@
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //解析后台返回的结果,如果不做一下处理,打印结果可能是一些二进制流数据
         NSError *error;
-        NSDictionary * imageDict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:&error];
+        NSString *string = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
+        string =[string stringByReplacingOccurrencesOfString:@"\\" withString:@""];
+        string=[string substringWithRange:NSMakeRange(1, string.length-2)];
+        NSDictionary *itemInfo=[Utility objFromJson:string];
+        if ([itemInfo[@"code"] isEqualToString:@"0000"]) {
+          //  [self showPromptText:@"修改成功" hideAfterDelay:1.8];
+            NSString *iconUrl = itemInfo[@"result"];  //图片url
+        }
         //上传成功后更新数据
 //        self.personModel.adperurl = imageDict[@"adperurl"];
-        NSLog(@"上传图片成功0---%@",imageDict);
+        NSLog(@"上传图片成功0---%@");
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"上传图片-- 失败  -%@",error);
     }];
