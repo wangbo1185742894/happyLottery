@@ -20,6 +20,7 @@
 #import "SystemSetViewController.h"
 #import "NoticeCenterViewController.h"
 #import "ShareViewController.h"
+#import "FeedbackViewController.h"
 
 @interface MineViewController () <UITableViewDelegate, UITableViewDataSource,MemberManagerDelegate>{
     NSArray *listArray;
@@ -373,8 +374,12 @@
             mpVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:mpVC animated:YES];
             
-        }else  if ([optionDic[@"title"] isEqualToString:@"分享"]){
+        }else  if ([optionDic[@"title"] isEqualToString:@"邀请好友"]){
             ShareViewController * mpVC = [[ShareViewController alloc]init];
+            mpVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:mpVC animated:YES];
+        }else  if ([optionDic[@"title"] isEqualToString:@"意见反馈"]){
+            FeedbackViewController * mpVC = [[FeedbackViewController alloc]init];
             mpVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:mpVC animated:YES];
         }else{

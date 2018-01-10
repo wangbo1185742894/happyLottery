@@ -1,22 +1,22 @@
 //
-//  MySettingViewController.m
+//  FootBallPlayViewController.m
 //  happyLottery
 //
-//  Created by LYJ on 2017/12/12.
-//  Copyright © 2017年 onlytechnology. All rights reserved.
-//  设置
+//  Created by LYJ on 2018/1/10.
+//  Copyright © 2018年 onlytechnology. All rights reserved.
+//
 
-#import "MySettingViewController.h"
+#import "FootBallPlayViewController.h"
 
-@interface MySettingViewController ()
+@interface FootBallPlayViewController ()
 
 @end
 
-@implementation MySettingViewController
+@implementation FootBallPlayViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    self.title = @"竞足玩法介绍";
 }
 
 - (void)didReceiveMemoryWarning {

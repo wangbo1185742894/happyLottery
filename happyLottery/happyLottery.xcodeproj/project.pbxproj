@@ -504,6 +504,16 @@
 		F92D03DB2005A8F000C26E7A /* lock_cannot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F92D03D72005A8EF00C26E7A /* lock_cannot@2x.png */; };
 		F92D03DC2005A8F000C26E7A /* unlock_cannot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F92D03D82005A8EF00C26E7A /* unlock_cannot@2x.png */; };
 		F92D03DD2005A8F000C26E7A /* lock_cannot@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F92D03D92005A8EF00C26E7A /* lock_cannot@3x.png */; };
+		F92D03E12005E76600C26E7A /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F92D03DF2005E76600C26E7A /* FeedbackViewController.m */; };
+		F92D03E22005E76600C26E7A /* FeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F92D03E02005E76600C26E7A /* FeedbackViewController.xib */; };
+		F92D03ED2005F3B400C26E7A /* lotteryhelp@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F92D03E52005F3B300C26E7A /* lotteryhelp@3x.png */; };
+		F92D03EE2005F3B400C26E7A /* lotteryhelp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F92D03E62005F3B300C26E7A /* lotteryhelp@2x.png */; };
+		F92D03EF2005F3B400C26E7A /* arrowshelp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F92D03E72005F3B300C26E7A /* arrowshelp@2x.png */; };
+		F92D03F02005F3B400C26E7A /* assisthelp@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F92D03E82005F3B300C26E7A /* assisthelp@3x.png */; };
+		F92D03F12005F3B400C26E7A /* integralhelp@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F92D03E92005F3B400C26E7A /* integralhelp@3x.png */; };
+		F92D03F22005F3B400C26E7A /* assisthelp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F92D03EA2005F3B400C26E7A /* assisthelp@2x.png */; };
+		F92D03F32005F3B400C26E7A /* logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F92D03EB2005F3B400C26E7A /* logo@3x.png */; };
+		F92D03F42005F3B400C26E7A /* integralhelp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F92D03EC2005F3B400C26E7A /* integralhelp@2x.png */; };
 		F93204ED1FECF98B00E22A27 /* pass1.png in Resources */ = {isa = PBXBuildFile; fileRef = F93204E31FECF98800E22A27 /* pass1.png */; };
 		F93204EE1FECF98B00E22A27 /* pass0.png in Resources */ = {isa = PBXBuildFile; fileRef = F93204E41FECF98900E22A27 /* pass0.png */; };
 		F93204EF1FECF98B00E22A27 /* pass2.png in Resources */ = {isa = PBXBuildFile; fileRef = F93204E51FECF98900E22A27 /* pass2.png */; };
@@ -639,6 +649,13 @@
 		F9C332DC1FF4D5EF00779197 /* cannot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9C332D91FF4D5EE00779197 /* cannot@2x.png */; };
 		F9C332E21FF4DE1C00779197 /* OpenRedPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9C332DF1FF4DE1B00779197 /* OpenRedPopView.xib */; };
 		F9C332E31FF4DE1C00779197 /* OpenRedPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C332E11FF4DE1B00779197 /* OpenRedPopView.m */; };
+		F9D7C54E20060C1A00415B4E /* CouponGuidViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9D7C54C20060C1A00415B4E /* CouponGuidViewController.m */; };
+		F9D7C54F20060C1A00415B4E /* CouponGuidViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9D7C54D20060C1A00415B4E /* CouponGuidViewController.xib */; };
+		F9D7C55220061E7300415B4E /* UILabel+ChangeLineSpaceAndWordSpace.m in Sources */ = {isa = PBXBuildFile; fileRef = F9D7C55120061E7300415B4E /* UILabel+ChangeLineSpaceAndWordSpace.m */; };
+		F9D7C556200620FF00415B4E /* GetIntegralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9D7C554200620FF00415B4E /* GetIntegralViewController.m */; };
+		F9D7C557200620FF00415B4E /* GetIntegralViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9D7C555200620FF00415B4E /* GetIntegralViewController.xib */; };
+		F9D7C55B2006276900415B4E /* FootBallPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9D7C5592006276900415B4E /* FootBallPlayViewController.m */; };
+		F9D7C55C2006276900415B4E /* FootBallPlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9D7C55A2006276900415B4E /* FootBallPlayViewController.xib */; };
 		F9D9F2A81FF22640006434DC /* CashAndIntegrationWaterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9D9F2A61FF22640006434DC /* CashAndIntegrationWaterViewController.m */; };
 		F9D9F2A91FF22640006434DC /* CashAndIntegrationWaterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9D9F2A71FF22640006434DC /* CashAndIntegrationWaterViewController.xib */; };
 		F9D9F2AD1FF22C54006434DC /* CashAndIntegrationWaterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9D9F2AB1FF22C54006434DC /* CashAndIntegrationWaterTableViewCell.m */; };
@@ -651,8 +668,6 @@
 		F9DC699B1FDF888F007D384D /* MyFavoriteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9DC69991FDF888F007D384D /* MyFavoriteViewController.xib */; };
 		F9DC699F1FDF88E5007D384D /* IntegralMallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DC699D1FDF88E5007D384D /* IntegralMallViewController.m */; };
 		F9DC69A01FDF88E5007D384D /* IntegralMallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9DC699E1FDF88E5007D384D /* IntegralMallViewController.xib */; };
-		F9DC69A41FDF8929007D384D /* MyShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DC69A21FDF8929007D384D /* MyShareViewController.m */; };
-		F9DC69A51FDF8929007D384D /* MyShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9DC69A31FDF8929007D384D /* MyShareViewController.xib */; };
 		F9DC69A91FDF8957007D384D /* MyHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DC69A71FDF8957007D384D /* MyHelpViewController.m */; };
 		F9DC69AA1FDF8957007D384D /* MyHelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9DC69A81FDF8957007D384D /* MyHelpViewController.xib */; };
 		F9DC69AE1FDF898A007D384D /* MySettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DC69AC1FDF898A007D384D /* MySettingViewController.m */; };
@@ -1411,6 +1426,17 @@
 		F92D03D72005A8EF00C26E7A /* lock_cannot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lock_cannot@2x.png"; sourceTree = "<group>"; };
 		F92D03D82005A8EF00C26E7A /* unlock_cannot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unlock_cannot@2x.png"; sourceTree = "<group>"; };
 		F92D03D92005A8EF00C26E7A /* lock_cannot@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lock_cannot@3x.png"; sourceTree = "<group>"; };
+		F92D03DE2005E76600C26E7A /* FeedbackViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
+		F92D03DF2005E76600C26E7A /* FeedbackViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
+		F92D03E02005E76600C26E7A /* FeedbackViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedbackViewController.xib; sourceTree = "<group>"; };
+		F92D03E52005F3B300C26E7A /* lotteryhelp@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lotteryhelp@3x.png"; sourceTree = "<group>"; };
+		F92D03E62005F3B300C26E7A /* lotteryhelp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lotteryhelp@2x.png"; sourceTree = "<group>"; };
+		F92D03E72005F3B300C26E7A /* arrowshelp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrowshelp@2x.png"; sourceTree = "<group>"; };
+		F92D03E82005F3B300C26E7A /* assisthelp@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "assisthelp@3x.png"; sourceTree = "<group>"; };
+		F92D03E92005F3B400C26E7A /* integralhelp@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "integralhelp@3x.png"; sourceTree = "<group>"; };
+		F92D03EA2005F3B400C26E7A /* assisthelp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "assisthelp@2x.png"; sourceTree = "<group>"; };
+		F92D03EB2005F3B400C26E7A /* logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@3x.png"; sourceTree = "<group>"; };
+		F92D03EC2005F3B400C26E7A /* integralhelp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "integralhelp@2x.png"; sourceTree = "<group>"; };
 		F93204E31FECF98800E22A27 /* pass1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pass1.png; sourceTree = "<group>"; };
 		F93204E41FECF98900E22A27 /* pass0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pass0.png; sourceTree = "<group>"; };
 		F93204E51FECF98900E22A27 /* pass2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pass2.png; sourceTree = "<group>"; };
@@ -1563,6 +1589,17 @@
 		F9C332DF1FF4DE1B00779197 /* OpenRedPopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpenRedPopView.xib; sourceTree = "<group>"; };
 		F9C332E01FF4DE1B00779197 /* OpenRedPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenRedPopView.h; sourceTree = "<group>"; };
 		F9C332E11FF4DE1B00779197 /* OpenRedPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenRedPopView.m; sourceTree = "<group>"; };
+		F9D7C54B20060C1A00415B4E /* CouponGuidViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CouponGuidViewController.h; sourceTree = "<group>"; };
+		F9D7C54C20060C1A00415B4E /* CouponGuidViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CouponGuidViewController.m; sourceTree = "<group>"; };
+		F9D7C54D20060C1A00415B4E /* CouponGuidViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CouponGuidViewController.xib; sourceTree = "<group>"; };
+		F9D7C55020061E7300415B4E /* UILabel+ChangeLineSpaceAndWordSpace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+ChangeLineSpaceAndWordSpace.h"; sourceTree = "<group>"; };
+		F9D7C55120061E7300415B4E /* UILabel+ChangeLineSpaceAndWordSpace.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+ChangeLineSpaceAndWordSpace.m"; sourceTree = "<group>"; };
+		F9D7C553200620FF00415B4E /* GetIntegralViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetIntegralViewController.h; sourceTree = "<group>"; };
+		F9D7C554200620FF00415B4E /* GetIntegralViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetIntegralViewController.m; sourceTree = "<group>"; };
+		F9D7C555200620FF00415B4E /* GetIntegralViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GetIntegralViewController.xib; sourceTree = "<group>"; };
+		F9D7C5582006276900415B4E /* FootBallPlayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FootBallPlayViewController.h; sourceTree = "<group>"; };
+		F9D7C5592006276900415B4E /* FootBallPlayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FootBallPlayViewController.m; sourceTree = "<group>"; };
+		F9D7C55A2006276900415B4E /* FootBallPlayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FootBallPlayViewController.xib; sourceTree = "<group>"; };
 		F9D9F2A51FF22640006434DC /* CashAndIntegrationWaterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CashAndIntegrationWaterViewController.h; sourceTree = "<group>"; };
 		F9D9F2A61FF22640006434DC /* CashAndIntegrationWaterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CashAndIntegrationWaterViewController.m; sourceTree = "<group>"; };
 		F9D9F2A71FF22640006434DC /* CashAndIntegrationWaterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CashAndIntegrationWaterViewController.xib; sourceTree = "<group>"; };
@@ -1581,9 +1618,6 @@
 		F9DC699C1FDF88E5007D384D /* IntegralMallViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntegralMallViewController.h; sourceTree = "<group>"; };
 		F9DC699D1FDF88E5007D384D /* IntegralMallViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntegralMallViewController.m; sourceTree = "<group>"; };
 		F9DC699E1FDF88E5007D384D /* IntegralMallViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntegralMallViewController.xib; sourceTree = "<group>"; };
-		F9DC69A11FDF8929007D384D /* MyShareViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyShareViewController.h; sourceTree = "<group>"; };
-		F9DC69A21FDF8929007D384D /* MyShareViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyShareViewController.m; sourceTree = "<group>"; };
-		F9DC69A31FDF8929007D384D /* MyShareViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyShareViewController.xib; sourceTree = "<group>"; };
 		F9DC69A61FDF8957007D384D /* MyHelpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyHelpViewController.h; sourceTree = "<group>"; };
 		F9DC69A71FDF8957007D384D /* MyHelpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyHelpViewController.m; sourceTree = "<group>"; };
 		F9DC69A81FDF8957007D384D /* MyHelpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyHelpViewController.xib; sourceTree = "<group>"; };
@@ -2261,6 +2295,7 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				F92D03E42005F39600C26E7A /* myhelp */,
 				2D205FF51FFCB71E0086E266 /* yuceres */,
 				2D205FEE1FFC7AE50086E266 /* newFeatureView */,
 				2D739CC51FEB44E200264044 /* jingcaires */,
@@ -2447,12 +2482,6 @@
 				F9DC699C1FDF88E5007D384D /* IntegralMallViewController.h */,
 				F9DC699D1FDF88E5007D384D /* IntegralMallViewController.m */,
 				F9DC699E1FDF88E5007D384D /* IntegralMallViewController.xib */,
-				F9DC69A11FDF8929007D384D /* MyShareViewController.h */,
-				F9DC69A21FDF8929007D384D /* MyShareViewController.m */,
-				F9DC69A31FDF8929007D384D /* MyShareViewController.xib */,
-				F9DC69A61FDF8957007D384D /* MyHelpViewController.h */,
-				F9DC69A71FDF8957007D384D /* MyHelpViewController.m */,
-				F9DC69A81FDF8957007D384D /* MyHelpViewController.xib */,
 				F9DC69AB1FDF898A007D384D /* MySettingViewController.h */,
 				F9DC69AC1FDF898A007D384D /* MySettingViewController.m */,
 				F9DC69AD1FDF898A007D384D /* MySettingViewController.xib */,
@@ -2504,6 +2533,10 @@
 				F94913441FFF642800D30AE7 /* ConversionCodeViewController.h */,
 				F94913451FFF642800D30AE7 /* ConversionCodeViewController.m */,
 				F94913461FFF642800D30AE7 /* ConversionCodeViewController.xib */,
+				F92D03DE2005E76600C26E7A /* FeedbackViewController.h */,
+				F92D03DF2005E76600C26E7A /* FeedbackViewController.m */,
+				F92D03E02005E76600C26E7A /* FeedbackViewController.xib */,
+				F92D03E32005F0FA00C26E7A /* MyHelp */,
 				F9BD1B481FE8A91500C1C71A /* personnalSet */,
 			);
 			path = Controller;
@@ -2820,6 +2853,8 @@
 				2DDEDC241FD514DF007AEBF7 /* API.h */,
 				2DDEDC171FD4DE78007AEBF7 /* Constants.h */,
 				2DDEDC1E1FD4DFDE007AEBF7 /* Macro.h */,
+				F9D7C55020061E7300415B4E /* UILabel+ChangeLineSpaceAndWordSpace.h */,
+				F9D7C55120061E7300415B4E /* UILabel+ChangeLineSpaceAndWordSpace.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -3072,6 +3107,40 @@
 				F928C6AB1FF4BA3E001F1A32 /* lessen@3x.png */,
 			);
 			name = water;
+			sourceTree = "<group>";
+		};
+		F92D03E32005F0FA00C26E7A /* MyHelp */ = {
+			isa = PBXGroup;
+			children = (
+				F9DC69A61FDF8957007D384D /* MyHelpViewController.h */,
+				F9DC69A71FDF8957007D384D /* MyHelpViewController.m */,
+				F9DC69A81FDF8957007D384D /* MyHelpViewController.xib */,
+				F9D7C54B20060C1A00415B4E /* CouponGuidViewController.h */,
+				F9D7C54C20060C1A00415B4E /* CouponGuidViewController.m */,
+				F9D7C54D20060C1A00415B4E /* CouponGuidViewController.xib */,
+				F9D7C553200620FF00415B4E /* GetIntegralViewController.h */,
+				F9D7C554200620FF00415B4E /* GetIntegralViewController.m */,
+				F9D7C555200620FF00415B4E /* GetIntegralViewController.xib */,
+				F9D7C5582006276900415B4E /* FootBallPlayViewController.h */,
+				F9D7C5592006276900415B4E /* FootBallPlayViewController.m */,
+				F9D7C55A2006276900415B4E /* FootBallPlayViewController.xib */,
+			);
+			name = MyHelp;
+			sourceTree = "<group>";
+		};
+		F92D03E42005F39600C26E7A /* myhelp */ = {
+			isa = PBXGroup;
+			children = (
+				F92D03E72005F3B300C26E7A /* arrowshelp@2x.png */,
+				F92D03EA2005F3B400C26E7A /* assisthelp@2x.png */,
+				F92D03E82005F3B300C26E7A /* assisthelp@3x.png */,
+				F92D03EC2005F3B400C26E7A /* integralhelp@2x.png */,
+				F92D03E92005F3B400C26E7A /* integralhelp@3x.png */,
+				F92D03EB2005F3B400C26E7A /* logo@3x.png */,
+				F92D03E62005F3B300C26E7A /* lotteryhelp@2x.png */,
+				F92D03E52005F3B300C26E7A /* lotteryhelp@3x.png */,
+			);
+			name = myhelp;
 			sourceTree = "<group>";
 		};
 		F93204E21FECF96500E22A27 /* WBInputPopView */ = {
@@ -3395,7 +3464,6 @@
 				F957C2081FE3B28D0090B19B /* balance@3x.png in Resources */,
 				F9C332E21FF4DE1C00779197 /* OpenRedPopView.xib in Resources */,
 				F924BA9C1FE252CF00830BF4 /* recommend@2x.png in Resources */,
-				F9DC69A51FDF8929007D384D /* MyShareViewController.xib in Resources */,
 				2D2060301FFCB71E0086E266 /* icon_zhifu_selceted@3x.png in Resources */,
 				2D739CED1FEB490900264044 /* fangkuangjingcainomal@3x.png in Resources */,
 				2D2060311FFCB71E0086E266 /* icon_zhifu_selcetes@2x.png in Resources */,
@@ -3435,6 +3503,7 @@
 				F94AA9DE1FEB7B780021B980 /* zfb@3x.png in Resources */,
 				F999276A200335DC00023F8F /* guanbi@2x.png in Resources */,
 				F94AA9C41FEB59DA0021B980 /* authentication@3x.png in Resources */,
+				F92D03E22005E76600C26E7A /* FeedbackViewController.xib in Resources */,
 				F9F2629D1FE8D7D000C2E60F /* closeperson@3x.png in Resources */,
 				F957C1F81FE3B28D0090B19B /* packet@2x.png in Resources */,
 				F9F6CAA11FF5D6B100A49F71 /* download@2x.png in Resources */,
@@ -3484,6 +3553,7 @@
 				2D4B1E221FD8C9180034B708 /* ad_home2.png in Resources */,
 				2D739CF01FEB4B0E00264044 /* xiala@3x.png in Resources */,
 				2D8CBFB01FF328D800CC367F /* paysuccess@2x.png in Resources */,
+				F92D03F12005F3B400C26E7A /* integralhelp@3x.png in Resources */,
 				2D4B1E881FDF684E0034B708 /* yuce@3x.png in Resources */,
 				F924BA981FE252CF00830BF4 /* phone@3x.png in Resources */,
 				2D2060141FFCB71E0086E266 /* btn_huanyige@2x.png in Resources */,
@@ -3523,6 +3593,7 @@
 				2D06FFE81FFDC9EB009E7568 /* arrows@3x.png in Resources */,
 				2D4B1E761FDF684E0034B708 /* fenleixian@3x.png in Resources */,
 				2D628B431FECAA9A0013D0E1 /* fengkuangjingcai-zhenshitouzhu-xuanze@2x.png in Resources */,
+				F9D7C557200620FF00415B4E /* GetIntegralViewController.xib in Resources */,
 				2D0600421FFDDD51009E7568 /* schemedetailpic@3x.png in Resources */,
 				F928C6B81FF4BA40001F1A32 /* decrease@3x.png in Resources */,
 				F90058E81FF61619009C8E1C /* noticeempty@2x.png in Resources */,
@@ -3556,6 +3627,7 @@
 				2D4B1E9D1FDFC4E10034B708 /* NewsViewController.xib in Resources */,
 				F957C2091FE3B28D0090B19B /* lottery@3x.png in Resources */,
 				F9992768200335DC00023F8F /* redpacket_open@2x.png in Resources */,
+				F92D03F32005F3B400C26E7A /* logo@3x.png in Resources */,
 				2D628B281FECA9C40013D0E1 /* touzhusaishijia@3x.png in Resources */,
 				2D20602E1FFCB71E0086E266 /* icon_zhifu_normal@2x.png in Resources */,
 				F92D03DD2005A8F000C26E7A /* lock_cannot@3x.png in Resources */,
@@ -3573,6 +3645,7 @@
 				F957C1FB1FE3B28D0090B19B /* recharge@2x.png in Resources */,
 				2D20602C1FFCB71E0086E266 /* icon_zhanbaotongji@2x.png in Resources */,
 				2D8CBFAD1FF326F200CC367F /* PaySuccessViewController.xib in Resources */,
+				F92D03EF2005F3B400C26E7A /* arrowshelp@2x.png in Resources */,
 				F93204F01FECF98B00E22A27 /* pass3.png in Resources */,
 				F94AA9DC1FEB7B780021B980 /* weixin@2x.png in Resources */,
 				F957C1F51FE3B28D0090B19B /* usermine@2x.png in Resources */,
@@ -3615,6 +3688,7 @@
 				2DDEDE761FD568C9007AEBF7 /* LICENSE in Resources */,
 				F999278920037AA200023F8F /* empty_zhmx@2x.png in Resources */,
 				F90FCD941FF396F700BD807C /* fly@2x.png in Resources */,
+				F92D03F22005F3B400C26E7A /* assisthelp@2x.png in Resources */,
 				F9664B9E2004B23A000A27CA /* feedback@3x.png in Resources */,
 				F93204F11FECF98B00E22A27 /* pass6.png in Resources */,
 				F957C1F71FE3B28D0090B19B /* collect@2x.png in Resources */,
@@ -3713,6 +3787,7 @@
 				F92D03CD2005A14D00C26E7A /* dottedcoupon@2x.png in Resources */,
 				F90FCD7D1FF3810F00BD807C /* stale@3x.png in Resources */,
 				F91565F71FFCBDAE00E254CE /* wechat@3x.png in Resources */,
+				F92D03ED2005F3B400C26E7A /* lotteryhelp@3x.png in Resources */,
 				F9DC69EB1FDFB451007D384D /* withdraw Deposit_button_default@2x.png in Resources */,
 				F957C20F1FE3B28D0090B19B /* lottery@2x.png in Resources */,
 				2D06FFEA1FFDC9EB009E7568 /* football@3x.png in Resources */,
@@ -3755,6 +3830,7 @@
 				F94AA9E11FEB7B780021B980 /* weixin@3x.png in Resources */,
 				F90058ED1FF61AEC009C8E1C /* NoticeDetailViewController.xib in Resources */,
 				2DDEDC161FD4DC16007AEBF7 /* MineViewController.xib in Resources */,
+				F9D7C55C2006276900415B4E /* FootBallPlayViewController.xib in Resources */,
 				F94913421FFF260F00D30AE7 /* banker@2x.png in Resources */,
 				F928C6861FF48BE4001F1A32 /* bj_@2x.png in Resources */,
 				F9DC69961FDF878D007D384D /* MyOrderListViewController.xib in Resources */,
@@ -3768,10 +3844,12 @@
 				F957C20D1FE3B28D0090B19B /* share@2x.png in Resources */,
 				2D739CD91FEB44F400264044 /* liansaixuanze@2x.png in Resources */,
 				F9DC69F31FDFB451007D384D /* withdraw Deposit_button_default@3x.png in Resources */,
+				F92D03F02005F3B400C26E7A /* assisthelp@3x.png in Resources */,
 				2D739CD41FEB44F400264044 /* yuanjiaowukuangselect@2x.png in Resources */,
 				F93204F31FECF98C00E22A27 /* pass5.png in Resources */,
 				2D739C4B1FE37E5100264044 /* checksuccess@3x.png in Resources */,
 				2D8CC00B1FF3958D00CC367F /* icon_normal@3x.png in Resources */,
+				F92D03F42005F3B400C26E7A /* integralhelp@2x.png in Resources */,
 				F9664BA92004D64A000A27CA /* bjCoupon@3x.png in Resources */,
 				F957C2071FE3B28D0090B19B /* news@2x.png in Resources */,
 				F91565F91FFCBDAE00E254CE /* 2@2x.png in Resources */,
@@ -3805,6 +3883,7 @@
 				2D0600291FFDCD9F009E7568 /* MJRefresh.bundle in Resources */,
 				2D4B1E8E1FDF684E0034B708 /* yucezhanji@3x.png in Resources */,
 				2D4B1E431FDF65480034B708 /* HomeMenuItemsConfig.plist in Resources */,
+				F9D7C54F20060C1A00415B4E /* CouponGuidViewController.xib in Resources */,
 				2D4B1E8F1FDF684E0034B708 /* yuyuefangan@2x.png in Resources */,
 				2D8CC0021FF3868A00CC367F /* youkuangbtnback@3x.png in Resources */,
 				F91565FA1FFCBDAE00E254CE /* 1@2x.png in Resources */,
@@ -3821,6 +3900,7 @@
 				2D4B1E8E1FDF684E0034B708 /* yucezhanji@3x.png in Resources */,
 				2D4B1E431FDF65480034B708 /* HomeMenuItemsConfig.plist in Resources */,
 				F92D03CC2005A14D00C26E7A /* dottedcoupon@3x.png in Resources */,
+				F92D03EE2005F3B400C26E7A /* lotteryhelp@2x.png in Resources */,
 				F99927762003511000023F8F /* bluecoupon@3x.png in Resources */,
 				2D4B1E8F1FDF684E0034B708 /* yuyuefangan@2x.png in Resources */,
 				F957C1F61FE3B28D0090B19B /* return@2x.png in Resources */,
@@ -3885,7 +3965,6 @@
 				2D8CBFBF1FF3483900CC367F /* JcPairingMatchModel.m in Sources */,
 				F9DC69AE1FDF898A007D384D /* MySettingViewController.m in Sources */,
 				F9F6CAAA1FF60BCF00A49F71 /* NoticeCenterViewController.m in Sources */,
-				F9DC69A41FDF8929007D384D /* MyShareViewController.m in Sources */,
 				2D8CBFBC1FF3482600CC367F /* JcForecastOptions.m in Sources */,
 				2DDEDE781FD568C9007AEBF7 /* AFAutoPurgingImageCache.m in Sources */,
 				2D8CBFB41FF32ECC00CC367F /* ZLAlertView.m in Sources */,
@@ -3916,6 +3995,8 @@
 				2D8CBFF71FF37D0800CC367F /* MGLabel.m in Sources */,
 				2D06002E1FFDCD9F009E7568 /* UIView+MJExtension.m in Sources */,
 				2D739C1D1FE2611C00264044 /* IQKeyboardReturnKeyHandler.m in Sources */,
+				F9D7C556200620FF00415B4E /* GetIntegralViewController.m in Sources */,
+				F9D7C55220061E7300415B4E /* UILabel+ChangeLineSpaceAndWordSpace.m in Sources */,
 				2D8CC0131FF48EBB00CC367F /* WBSelectDateButtom.m in Sources */,
 				F9F262B61FE8F4AE00C2E60F /* UIApplication+RSKImageCropper.m in Sources */,
 				2DDEDC1D1FD4DEFF007AEBF7 /* UIView+MJExtension.m in Sources */,
@@ -3965,6 +4046,7 @@
 				2DDEDE7F1FD568C9007AEBF7 /* UIProgressView+AFNetworking.m in Sources */,
 				2DDEDE6B1FD568C9007AEBF7 /* UIImageView+WebCache.m in Sources */,
 				2D739C631FE7878100264044 /* JCZQTouZhuViewController.m in Sources */,
+				F9D7C55B2006276900415B4E /* FootBallPlayViewController.m in Sources */,
 				2DDEDE741FD568C9007AEBF7 /* AFURLResponseSerialization.m in Sources */,
 				2DDEDE661FD568C9007AEBF7 /* UIButton+WebCache.m in Sources */,
 				2DDEDC2D1FD51C8B007AEBF7 /* SOAPResponse.m in Sources */,
@@ -4032,6 +4114,7 @@
 				F9DC699F1FDF88E5007D384D /* IntegralMallViewController.m in Sources */,
 				F9D9F2A81FF22640006434DC /* CashAndIntegrationWaterViewController.m in Sources */,
 				2DDEDC061FD4DBD8007AEBF7 /* BuyLotteryViewController.m in Sources */,
+				F9D7C54E20060C1A00415B4E /* CouponGuidViewController.m in Sources */,
 				2D4B1EA11FDFC5F30034B708 /* NewsTableViewCell.m in Sources */,
 				2DDEDE701FD568C9007AEBF7 /* AFNetworkReachabilityManager.m in Sources */,
 				2D739C681FE787EF00264044 /* PayOrderViewController.m in Sources */,
@@ -4067,6 +4150,7 @@
 				2D9847B11FF5E1EB00038690 /* UMChongZhiViewController.m in Sources */,
 				F9581A771FE0B765009753AA /* MineTableViewCell.m in Sources */,
 				2DDEDE6A1FD568C9007AEBF7 /* UIImageView+HighlightedWebCache.m in Sources */,
+				F92D03E12005E76600C26E7A /* FeedbackViewController.m in Sources */,
 				2D4B1E9C1FDFC4E10034B708 /* NewsViewController.m in Sources */,
 				2D739C1B1FE2611C00264044 /* IQUIWindow+Hierarchy.m in Sources */,
 				2DDEDE811FD568C9007AEBF7 /* UIWebView+AFNetworking.m in Sources */,
