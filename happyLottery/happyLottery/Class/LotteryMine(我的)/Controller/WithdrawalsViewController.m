@@ -49,13 +49,13 @@
     passInput.delegate = self;
     listBankArray = [[NSMutableArray alloc]init];
     self.memberMan.delegate = self;
-    int balance= [self.curUser.balance intValue];
-    int notCash= [self.curUser.notCash intValue];
-    int sendBalance= [self.curUser.sendBalance intValue];
-    int total = balance+notCash+sendBalance;
-    NSString *totalStr = [NSString stringWithFormat:@"%d元", total];
+    long long balance = [self.curUser.balance longLongValue];
+    long long notCash = [self.curUser.notCash longLongValue];
+    long long sendBalance = [self.curUser.sendBalance longLongValue];
+    long long total = balance+notCash+sendBalance;
+    NSString *totalStr = [NSString stringWithFormat:@"%lld元", total];
     self.retainLab.text = totalStr;
-    NSString *balanceStr = [NSString stringWithFormat:@"%d元", balance];
+    NSString *balanceStr = [NSString stringWithFormat:@"%lld元", balance];
     self.topUpsLab.text = balanceStr;
 }
 

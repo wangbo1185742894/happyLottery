@@ -132,11 +132,11 @@
   
     self.curUser.payVerifyType = [NSNumber numberWithInt:1];
     //[_userImage sd_setImageWithURL:[NSURL URLWithString:self.curUser.headUrl]];
-    int balance = [self.curUser.balance intValue];
-    int notCash = [self.curUser.notCash intValue];
-    int sendBalance = [self.curUser.sendBalance intValue];
-    int total = balance+notCash+sendBalance;
-    NSString *totalstr = [NSString stringWithFormat:@"%d",total];
+    long long balance = [self.curUser.balance longLongValue];
+    long long notCash = [self.curUser.notCash longLongValue];
+    long long sendBalance = [self.curUser.sendBalance longLongValue];
+    long long total = balance+notCash+sendBalance;
+    NSString *totalstr = [NSString stringWithFormat:@"%lld",total];
     self.balanceLab.text = totalstr;
     int score =  [self.curUser.score intValue];
     NSString *scorestr = [NSString stringWithFormat:@"%d",score];
