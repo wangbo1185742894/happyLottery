@@ -7,8 +7,12 @@
 //
 
 #import "MatchLeagueSelectView.h"
+#import "MGLabel.h"
+
 
 @interface MatchLeagueSelectView()
+
+
 
 @property (weak, nonatomic) IBOutlet UIButton *btnSelectAll;
 
@@ -16,12 +20,14 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnFiveMatch;
 @property (weak, nonatomic) IBOutlet UIView *viewMatchLeagueItem;
 @property (weak, nonatomic) IBOutlet UIButton *btnCancel;
-@property (weak, nonatomic) IBOutlet UILabel *labSelectNum;
+@property (weak, nonatomic) IBOutlet MGLabel *labSelectNum;
 @property (weak, nonatomic) IBOutlet UIButton *btnSubmit;
 @property (weak, nonatomic) IBOutlet UILabel *labSelectMatchBottom;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightViewContent;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightVewFatherVIew;
 @property(strong,nonatomic)NSMutableArray *arrayItemLea;
+
+@property(nonatomic,copy)GetLeaMatchNum getLeaMatchNum;
 @end
 
 @implementation MatchLeagueSelectView
@@ -64,6 +70,7 @@
             }
         }
     }
+    [self jczqCellItemClick:nil];
 }
 
 - (IBAction)actionCancel:(id)sender {
@@ -81,8 +88,10 @@
 }
 
 -(void)loadMatchLeagueInfo:(NSArray <JCZQLeaModel *> *) leaArray{
+   
     float curX = 0;
     float curY = 0;
+    
     float width = ( KscreenWidth - 26 - 110)/3;
     float height = 30;
     float sumHeight = 0;
@@ -101,9 +110,10 @@
         self.heightViewContent.constant = sumHeight + 5;
         
     }else{
-        self.heightVewFatherVIew.constant = sumHeight + 170;
+        self.heightVewFatherVIew.constant = sumHeight + 200;
         self.heightViewContent.constant = sumHeight + 5;
     }
+    
     
 }
 -(UIButton *)creatBtnWithFrame:(CGRect)frame normal:(NSDictionary *)dic andTag:(NSInteger )tag andSelect:(NSString *)isselect{
@@ -124,13 +134,29 @@
     [self.viewMatchLeagueItem addSubview:item];
     
     [item addTarget:self action:@selector(jczqCellItemClick:) forControlEvents:UIControlEventTouchUpInside];
-    
     return item;
-    
 }
 
 -(void)jczqCellItemClick:(UIButton *)sender{
     sender.selected = !sender.selected;
+    NSMutableArray *selectArray = [NSMutableArray arrayWithCapacity:0];
+    for (UIButton *btn in self.arrayItemLea) {
+        if (btn.selected == YES) {
+            [selectArray addObject:btn.currentTitle];
+        }
+    }
+    [self.delegate selectedLeagueItem:selectArray andGetNum:^(NSInteger num) {
+        self.labSelectNum.text = [NSString stringWithFormat:@"共%ld场比赛",num];
+        self.labSelectNum.keyWord =[NSString stringWithFormat:@"%ld",num];
+        self.labSelectNum.keyWordColor = TEXTGRAYOrange;
+        
+    }];
+}
+
+-(void)setLabSelectNumText:(NSInteger)num{
+    self.labSelectNum.text = [NSString stringWithFormat:@"共%ld场比赛",num];
+    self.labSelectNum.keyWord =[NSString stringWithFormat:@"%ld",num];
+    self.labSelectNum.keyWordColor = TEXTGRAYOrange;
     
 }
 

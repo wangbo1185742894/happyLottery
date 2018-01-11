@@ -63,7 +63,7 @@
         return @"未中奖";
     }
     if ([winstu isEqualToString:@"LOTTERY"]) {
-        labBetCost.text =SystemRed;
+        labBetCost.textColor =SystemRed;
         return @"中奖";
     }
     return @"";

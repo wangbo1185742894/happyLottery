@@ -15,7 +15,7 @@
     
 }
 @property (weak, nonatomic) IBOutlet UILabel *labGuestName;
-@property (weak, nonatomic) IBOutlet UILabel *labHomeName;
+@property (weak, nonatomic) IBOutlet MGLabel *labHomeName;
 @property (weak, nonatomic) IBOutlet UIButton *btnCancel;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnSubmit;
@@ -37,7 +37,12 @@
 
 -(void)loadAllItemTitle:(JCZQMatchModel *)model andTitleDic:(NSDictionary *)titleDic{
     self.curModel = model;
-    self.labHomeName.text = self.curModel.homeName;
+    self.labHomeName.text = [NSString stringWithFormat:@"%@(主)",model.homeName];
+    
+    self.labHomeName.keyWord = @"(主)";
+    self.labHomeName.keyWordFont = [UIFont systemFontOfSize:12];
+    self.labHomeName.keyWordColor = SystemBlue;
+    self.labGuestName.text = model.guestName;
     self.labGuestName.text = self.curModel.guestName;
     
     for (UIButton *itemBtn in self.jczqCellBfItem) {

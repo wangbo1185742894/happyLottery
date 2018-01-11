@@ -9,14 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "JCZQLeaModel.h"
 
+typedef void (^GetLeaMatchNum)(NSInteger num);
+
 @protocol MatchLeagueSelectViewDelegate
 
 -(void)selectedLeagueItem:(NSArray *)leaTitleArray;
+-(void)selectedLeagueItem:(NSArray *)leaTitleArray andGetNum:(GetLeaMatchNum )block;
 
 @end
 
 @interface MatchLeagueSelectView : UIView
 @property(weak,nonatomic)id<MatchLeagueSelectViewDelegate> delegate;
 -(void)loadMatchLeagueInfo:(NSArray <JCZQLeaModel *> *) leaArray;
+-(void)setLabSelectNumText:(NSInteger)num;
 
 @end

@@ -383,7 +383,7 @@
     
     
     if (self.curUser .isLogin == NO) {
-   
+        [self needLogin];
         return;
     }
     

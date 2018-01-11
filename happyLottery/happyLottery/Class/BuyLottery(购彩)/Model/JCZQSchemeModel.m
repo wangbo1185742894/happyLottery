@@ -107,7 +107,7 @@
             }
         }
     }
-    return height + 177;
+    return height + 157;
 }
 
 @end

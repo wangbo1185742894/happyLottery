@@ -27,6 +27,16 @@
 @property(nonatomic,copy)NSString * printCount;
 @property(nonatomic,copy)NSString * schemeStatus;
 @property(nonatomic,copy)NSString * bonus;
+@property(nonatomic,copy)NSString * finished;
+@property(nonatomic,copy)NSString * deduction;
+@property(nonatomic,copy)NSString * cardCode;
+@property(nonatomic,copy)NSString * realSubAmounts;
+@property(nonatomic,copy)NSString * useCoupon;
+@property(nonatomic,copy)NSString * finishedTime;
+
+
+
+
 -(NSString *)getSchemeState;
 -(CGFloat)getJCZQCellHeight;
 @end

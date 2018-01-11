@@ -8,13 +8,14 @@
 
 #import "JCZQSelectAllPlayTypeVIew.h"
 
+
 @interface JCZQSelectAllPlayTypeVIew()
 {
     JCZQMatchModel *_model;
     
 }
 @property (weak, nonatomic) IBOutlet UILabel *labGuestName;
-@property (weak, nonatomic) IBOutlet UILabel *labHomeName;
+@property (weak, nonatomic) IBOutlet  MGLabel*labHomeName;
 @property (weak, nonatomic) IBOutlet UIButton *btnCancel;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnSubmit;
@@ -49,6 +50,13 @@
 
 -(void)loadSubItemTitle:(JCZQMatchModel *)model andTitleDic:(NSDictionary *)titleDic andBtnArray:(NSArray *)btnArray andSelectAr:(NSArray *)selectArray andOddArray:(NSArray *)oddArray {
     self.curModel = model;
+    self.labHomeName.text = [NSString stringWithFormat:@"%@(主)",model.homeName];
+    
+    self.labHomeName.keyWord = @"(主)";
+    self.labHomeName.keyWordFont = [UIFont systemFontOfSize:12];
+    self.labHomeName.keyWordColor = SystemBlue;
+    self.labGuestName.text = model.guestName;
+    
     self.labRangQiuNum.text = self.curModel.handicap;
     self.labRangQiuNum.textColor = [UIColor whiteColor];
     if ([self.curModel.handicap integerValue] >0) {

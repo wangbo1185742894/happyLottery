@@ -16,9 +16,13 @@
 #import "TableHeaderView.h"
 #import "OrderListHeaderView.h"
 #import "SchemeCashPayment.h"
+#import "SchemeInfoViewCell.h"
+
+
 #define  KSchemeDetailMatchViewCell     @"SchemeDetailMatchViewCell"
 #define  KSchemeDetailViewCell          @"SchemeDetailViewCell"
 #define  KTableHeaderView               @"TableHeaderView"
+#define  KSchemeInfoViewCell            @"SchemeInfoViewCell"
 @interface SchemeDetailViewController ()<LotteryManagerDelegate,UITableViewDelegate,UITableViewDataSource>
 {
     
@@ -49,6 +53,7 @@
     
     [tabMatchListVIew registerClass:[SchemeDetailMatchViewCell class] forCellReuseIdentifier: KSchemeDetailMatchViewCell];
     [tabMatchListVIew registerClass:[SchemeDetailViewCell class] forCellReuseIdentifier:KSchemeDetailViewCell];
+    [tabMatchListVIew registerClass:[SchemeInfoViewCell class] forCellReuseIdentifier:KSchemeInfoViewCell];
 
 }
 
@@ -90,7 +95,7 @@
     schemeCashModel.cardCode = self.curUser.cardCode;
     schemeCashModel.schemeNo =schemeDetail.schemeNO;
     schemeCashModel.subCopies = 1;
-    if ([schemeDetail.costType isEqualToString:@"现金"]) {
+    if ([schemeDetail.costType isEqualToString:@"CASH"]) {
         schemeCashModel.costType = CostTypeCASH;
     }else{
         schemeCashModel.costType = CostTypeSCORE;
@@ -114,6 +119,8 @@
         }
         NSArray *betMatches = betContent[@"betMatches"];
         return betMatches.count;
+    }else if (section == 2){
+        return 1;
     }
     return 0;
 
@@ -121,7 +128,7 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 2;
+    return 3;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -139,6 +146,12 @@
             [matchCell refreshData:betMatches[indexPath.row]];
         }
         cell = matchCell;
+    }else if (indexPath.section == 2){
+        SchemeInfoViewCell * infoCell = [tableView dequeueReusableCellWithIdentifier:KSchemeInfoViewCell];
+        if (schemeDetail != nil) {
+            [infoCell loadData:schemeDetail];
+        }
+        cell = infoCell;
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
@@ -162,7 +175,9 @@
             curY += height;
         }
         
-        return curY + 55;
+        return curY + 70;
+    }else if (indexPath.section ==2){
+        return 110;
     }
     return 0;
 }
@@ -230,17 +245,29 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
-    return 30;
+    if (section == 1) {
+        if ([NSString stringWithFormat:@"%@",schemeDetail.ticketCount].integerValue > 0) {
+           return 60;
+        }else{
+          return 30;
+        }
+        
+    }else{
+        return  30;
+    }
+    
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     
     OrderListHeaderView *header = [[[NSBundle mainBundle] loadNibNamed:@"OrderListHeaderView" owner:nil options:nil] lastObject];
-    header.backgroundColor = RGBCOLOR(245, 245, 245);
+    header.backgroundColor = RGBCOLOR(253 , 252, 245);
     if (section == 0) {
         header.titleLa.text = @"方案信息";
     }else if (section == 1){
         [self showMySchemeHeader:header];
+    }else if (section == 2){
+        header.titleLa.text = @"认购信息";
     }
     return header;
     
@@ -249,7 +276,7 @@
 -(void)showMySchemeHeader:(OrderListHeaderView *)header{
     
     header.titleLa.text = @"方案内容";
-
+    
     UIButton  *ticketLa = [UIButton buttonWithType:UIButtonTypeCustom];
     ticketLa.frame = CGRectMake(KscreenWidth - 80, 5, 70, 25);
     
@@ -258,12 +285,16 @@
     ticketLa.titleLabel.adjustsFontSizeToFitWidth = YES;
     if ([NSString stringWithFormat:@"%@",schemeDetail.ticketCount].integerValue > 0) {
         [ticketLa setTitle:@"订单详情>" forState:UIControlStateNormal];
+        header.viewPeiLvInfo.hidden = NO;
         ticketLa.enabled = YES;
     }else{
+        header.viewPeiLvInfo.hidden = YES;
         ticketLa.enabled = NO;
     }
+    
     [header addSubview:ticketLa];
     [ticketLa addTarget:self action:@selector(actionOrderDetail:) forControlEvents:UIControlEventTouchUpInside];
+    [header.btnOrderDetail addTarget:self action:@selector(actionOrderDetail:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 @end
