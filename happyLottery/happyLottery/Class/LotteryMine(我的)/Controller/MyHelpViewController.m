@@ -8,8 +8,13 @@
 
 
 #import "MyHelpViewController.h"
+#import "CouponGuidViewController.h"
+#import "GetIntegralViewController.h"
 
 @interface MyHelpViewController ()
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottom;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollerview;
 
 @end
 
@@ -17,7 +22,35 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    self.title = @"帮助";
+    if ([self isIphoneX]) {
+        self.top.constant = 88;
+        self.bottom.constant = 34;
+    }
+}
+
+- (IBAction)footballPlay:(id)sender {
+}
+
+- (IBAction)getIntegral:(id)sender {
+  
+    GetIntegralViewController * mpVC = [[GetIntegralViewController alloc]init];
+    [self.navigationController pushViewController:mpVC animated:YES];
+}
+- (IBAction)integralChange:(id)sender {
+}
+//功能指南
+- (IBAction)FunctionalGuide:(id)sender {
+}
+
+//优惠券指南
+
+- (IBAction)CouponGuide:(id)sender {
+    CouponGuidViewController * mpVC = [[CouponGuidViewController alloc]init];
+    [self.navigationController pushViewController:mpVC animated:YES];
+}
+
+- (IBAction)question:(id)sender {
 }
 
 - (void)didReceiveMemoryWarning {

@@ -14,6 +14,7 @@
     
     __weak IBOutlet NSLayoutConstraint *disMarginTop;
     __weak IBOutlet UIButton *btnIsNeedRecomCode;
+  
     __weak IBOutlet UITextField *tfRecomCode;
     __weak IBOutlet UITextField *tfUserPwd;
     __weak IBOutlet UITextField *tfUserTel;
@@ -40,7 +41,7 @@
     checkSec = KCheckSec;
     self.view.backgroundColor = MAINBGC;
     self.title = @"注册";
-    
+    tfRecomCode.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
 }
 
 -(void)setTFViewLRView{

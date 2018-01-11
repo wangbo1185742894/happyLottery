@@ -76,7 +76,7 @@
 - (void) getRedPacketByStateSms:(NSDictionary *)paraDic;
 - (void) openRedPacketSms:(NSDictionary *)paraDic;
 - (void) getCouponByStateSms:(NSDictionary *)paraDic;
-- (void)updateImage:(NSDictionary<NSString*,NSArray<NSData*>*>* _Nullable)apkFile;
+- (void)updateImage:(NSDictionary*)paramDic;
 
 //11.23 活动公告
 - (void)getActivetyMessage:(NSString *)strId;

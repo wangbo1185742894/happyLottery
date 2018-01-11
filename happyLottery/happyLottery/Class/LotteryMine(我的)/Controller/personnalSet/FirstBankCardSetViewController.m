@@ -47,12 +47,14 @@
     [self.memberMan getSupportBankSms];
 }
 - (IBAction)getBankClick:(id)sender {
-    self.backView.hidden = NO;
-    self.tableView.hidden = NO;
+  
 //    if (listBankArray.count > 0) {
 //       self.tableViewHeight.constant = listBankArray.count *40;
 //    }
-   
+  [_nameTextField resignFirstResponder];
+   // [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
+    self.backView.hidden = NO;
+    self.tableView.hidden = NO;
     [self.tableView reloadData];
 }
 
@@ -181,7 +183,9 @@
     return [namePredicate evaluateWithObject:name];
 }
 
-
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    return [textField resignFirstResponder];
+}
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     if ([string isEqualToString:@""]) {
@@ -290,8 +294,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-      [self.view resignFirstResponder];
-    [tableView deselectRowAtIndexPath: indexPath animated: YES];
+    
+     [tableView deselectRowAtIndexPath: indexPath animated: YES];
     bankCard= listBankArray[indexPath.row];
     self.getBankBtn.titleLabel.text = bankCard.bankName;
     self.tableView.hidden=YES;

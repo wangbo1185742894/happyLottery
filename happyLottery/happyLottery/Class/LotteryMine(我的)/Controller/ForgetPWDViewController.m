@@ -61,8 +61,10 @@
         [self showPromptText:@"验证成功" hideAfterDelay:1.7];
     }else{
         
-        [self showPromptText:msg hideAfterDelay:1.7];
-        
+        //[self showPromptText:msg hideAfterDelay:1.7];
+          [self showPromptText:@"验证码错误！" hideAfterDelay:1.7];
+        _VerificationCodeTextField.text = @"";
+      
     }
 }
 

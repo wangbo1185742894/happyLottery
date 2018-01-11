@@ -41,7 +41,7 @@
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="登陆密码" minimumFontSize="17" background="faxian_label _icon_default.png" translatesAutoresizingMaskIntoConstraints="NO" id="yly-Qy-srD">
+                        <textField opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="登录密码" minimumFontSize="17" background="faxian_label _icon_default.png" translatesAutoresizingMaskIntoConstraints="NO" id="yly-Qy-srD">
                             <rect key="frame" x="43.5" y="208" width="288" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="SR4-i0-OYD"/>

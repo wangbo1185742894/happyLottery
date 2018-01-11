@@ -112,7 +112,8 @@
     }else{
         
         [self showPromptText:msg hideAfterDelay:1.7];
-        
+        [passInput removeFromSuperview];
+        [self showPayPopView];
     }
 }
 

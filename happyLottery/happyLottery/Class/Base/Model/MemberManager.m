@@ -887,14 +887,14 @@
 }
 
 //上传头像
-- (void)updateImage:(NSDictionary<NSString*,NSArray<NSData*>*>* _Nullable)apkFile {
+- (void)updateImage:(NSDictionary *)paramDic{
     void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
     {
         SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
         NSString * infoString = [response getAPIResponse];
         if (response.succeed) {
             NSDictionary * info = [self objFromJson:infoString];
-            [self.delegate updateImage:YES errorMsg:response.errorMsg];
+            [self.delegate updateImage:info errorMsg:response.errorMsg];
         }else{
            [self.delegate updateImage:NO errorMsg:response.errorMsg];
         }
@@ -903,19 +903,14 @@
         NSLog(@"%@", error);
        [self.delegate updateImage:YES errorMsg:@"服务器错误"];
     };
-    NSDictionary *paramDic = apkFile;
-//     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:paramDic options:NSJSONWritingPrettyPrinted error:nil];
-//     NSString *str = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
-//    NSMutableDictionary * jsonparamDic = [NSMutableDictionary dictionaryWithCapacity:1];
-//    jsonparamDic[@"type"] = @"0";
-//    jsonparamDic[@"pageStart"] = @"0";
-//    jsonparamDic[@"cardCode"] =strId;
-    SOAPRequest *request = [self requestForAPI:APIupdateImage withParam:@{@"arg1":[self actionEncrypt:[self JsonFromId:paramDic]]}];
+
+    SOAPRequest *request = [self requestForAPI:APIupdateImage withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paramDic]]}];
     
-    [self newRequestWithRequest: request
-      constructingBodyWithBlock: nil
-                        success: succeedBlock
-                        failure: failureBlock];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
 }
 
 

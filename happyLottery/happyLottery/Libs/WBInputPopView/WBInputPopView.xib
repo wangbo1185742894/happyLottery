@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="WBInputPopView">
+        <view contentMode="scaleAspectFit" id="iN0-l3-epB" customClass="WBInputPopView">
             <rect key="frame" x="0.0" y="0.0" width="439" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -35,20 +35,18 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Ke-oQ-87b">
-                            <rect key="frame" x="20" y="60" width="359" height="45"/>
+                            <rect key="frame" x="11" y="60" width="376" height="45"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="45" id="2Dk-6f-eJK"/>
-                                <constraint firstAttribute="width" constant="359" id="ReO-GT-f8m"/>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="cv1-Q8-t7b"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                         </textField>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pass0.png" translatesAutoresizingMaskIntoConstraints="NO" id="4P0-Xh-ZYg">
-                            <rect key="frame" x="20" y="60" width="359" height="45"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pass0.png" translatesAutoresizingMaskIntoConstraints="NO" id="4P0-Xh-ZYg">
+                            <rect key="frame" x="10" y="60" width="379" height="52"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="45" id="FC9-Hx-11n"/>
-                                <constraint firstAttribute="width" constant="359" id="eaH-41-d2O"/>
+                                <constraint firstAttribute="height" constant="52" id="FC9-Hx-11n"/>
                             </constraints>
                         </imageView>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tD5-Eb-W0x">
@@ -65,15 +63,19 @@
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
+                        <constraint firstItem="4P0-Xh-ZYg" firstAttribute="leading" secondItem="rOa-Sd-lAV" secondAttribute="leading" constant="10" id="0UA-dO-H4X"/>
                         <constraint firstAttribute="height" constant="150" id="3TH-d4-bUK"/>
                         <constraint firstItem="9Ke-oQ-87b" firstAttribute="centerX" secondItem="rOa-Sd-lAV" secondAttribute="centerX" id="AIe-gP-DSW"/>
                         <constraint firstItem="uz2-Z7-5FO" firstAttribute="leading" secondItem="rOa-Sd-lAV" secondAttribute="leading" constant="10" id="EDG-KJ-ULy"/>
+                        <constraint firstItem="9Ke-oQ-87b" firstAttribute="leading" secondItem="rOa-Sd-lAV" secondAttribute="leading" constant="11" id="KPt-yu-mmc"/>
                         <constraint firstAttribute="trailing" secondItem="uz2-Z7-5FO" secondAttribute="trailing" constant="10" id="KR7-9N-ect"/>
                         <constraint firstItem="uz2-Z7-5FO" firstAttribute="top" secondItem="rOa-Sd-lAV" secondAttribute="top" constant="10" id="LXB-bZ-93u"/>
                         <constraint firstItem="4P0-Xh-ZYg" firstAttribute="top" secondItem="uz2-Z7-5FO" secondAttribute="bottom" constant="15" id="W1T-ad-cca"/>
+                        <constraint firstAttribute="trailing" secondItem="9Ke-oQ-87b" secondAttribute="trailing" constant="12" id="XZJ-Qp-uKZ"/>
                         <constraint firstItem="4P0-Xh-ZYg" firstAttribute="centerX" secondItem="rOa-Sd-lAV" secondAttribute="centerX" id="a2E-aD-gdx"/>
                         <constraint firstItem="9Ke-oQ-87b" firstAttribute="top" secondItem="uz2-Z7-5FO" secondAttribute="bottom" constant="15" id="b82-rp-6j9"/>
-                        <constraint firstItem="tD5-Eb-W0x" firstAttribute="top" secondItem="4P0-Xh-ZYg" secondAttribute="bottom" constant="7" id="lnq-Tu-c6O"/>
+                        <constraint firstItem="tD5-Eb-W0x" firstAttribute="top" secondItem="4P0-Xh-ZYg" secondAttribute="bottom" id="lnq-Tu-c6O"/>
+                        <constraint firstAttribute="trailing" secondItem="4P0-Xh-ZYg" secondAttribute="trailing" constant="10" id="vrv-hB-9Uo"/>
                         <constraint firstAttribute="trailing" secondItem="tD5-Eb-W0x" secondAttribute="trailing" constant="20" id="yIi-BF-bQf"/>
                     </constraints>
                 </view>

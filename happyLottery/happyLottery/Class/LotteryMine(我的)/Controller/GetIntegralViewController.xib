@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GetIntegralViewController">
+            <connections>
+                <outlet property="label" destination="PK3-HJ-RMu" id="fvl-PV-TOx"/>
+                <outlet property="top" destination="dQv-gb-Z03" id="nwu-47-gyX"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="efQ-6Y-QT0">
+                    <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="htq-Uw-cxG">
+                            <rect key="frame" x="0.0" y="30" width="375" height="413"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dotted.png" translatesAutoresizingMaskIntoConstraints="NO" id="K96-8C-eQo">
+                                    <rect key="frame" x="8" y="59" width="359" height="1"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="359" id="P6k-UN-Fx9"/>
+                                        <constraint firstAttribute="height" constant="1" id="rgO-aL-vnG"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="14" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PK3-HJ-RMu">
+                                    <rect key="frame" x="8" y="68" width="359" height="337"/>
+                                    <mutableString key="text">1. 新用户第一次注册可获得10000积分；
+2. 第一日1000，第二日1200，第三日1400，第四日  1600，第五日1800，第六日2000，第七日2000，连续七天送积分，七天一轮回，只要中断签到，从1000开始；
+3. 若用户选择积分投注，投注后中奖可获得相应奖金积分。
+4. 每天用户第一次通过“我的分享”分享至微信好友或者朋友圈，可获得100积分，重复分享不得积分。
+5. 用户通过“我的分享”分享至微信好友或者朋友圈，会带有一个兑换码，好友通过用户分享的链接下载使用后，在“兑换码”处输入此兑换码，双方即可获得500积分。</mutableString>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" red="0.1450980392" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="积分获取途径：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="64W-Eo-IlI">
+                                    <rect key="frame" x="8" y="15" width="252" height="34"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="252" id="Dp4-JC-cYE"/>
+                                        <constraint firstAttribute="height" constant="34" id="YE1-Ql-3DA"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" red="0.067504443230000002" green="0.78096091749999996" blue="0.57203906770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="PK3-HJ-RMu" firstAttribute="top" secondItem="K96-8C-eQo" secondAttribute="bottom" constant="8" symbolic="YES" id="1Ms-ls-CRh"/>
+                                <constraint firstItem="64W-Eo-IlI" firstAttribute="leading" secondItem="htq-Uw-cxG" secondAttribute="leading" constant="8" id="ACm-i4-wYT"/>
+                                <constraint firstItem="K96-8C-eQo" firstAttribute="top" secondItem="64W-Eo-IlI" secondAttribute="bottom" constant="10" id="LXS-2I-5T1"/>
+                                <constraint firstAttribute="height" constant="413" id="QK5-zP-3Zf"/>
+                                <constraint firstItem="64W-Eo-IlI" firstAttribute="top" secondItem="htq-Uw-cxG" secondAttribute="top" constant="15" id="TNK-lr-ct2"/>
+                                <constraint firstAttribute="bottom" secondItem="PK3-HJ-RMu" secondAttribute="bottom" constant="8" id="W7K-JJ-PgA"/>
+                                <constraint firstItem="K96-8C-eQo" firstAttribute="centerX" secondItem="htq-Uw-cxG" secondAttribute="centerX" id="mfl-Vp-TR0"/>
+                                <constraint firstItem="PK3-HJ-RMu" firstAttribute="leading" secondItem="htq-Uw-cxG" secondAttribute="leading" constant="8" id="oQs-Zc-nxd"/>
+                                <constraint firstItem="PK3-HJ-RMu" firstAttribute="centerX" secondItem="htq-Uw-cxG" secondAttribute="centerX" id="rUS-Ql-VPy"/>
+                                <constraint firstAttribute="trailing" secondItem="PK3-HJ-RMu" secondAttribute="trailing" constant="8" id="v4H-0Z-e9S"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.96444731950759888" green="0.96840888261795044" blue="0.98488038778305054" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="htq-Uw-cxG" secondAttribute="trailing" id="MM5-5E-nve"/>
+                        <constraint firstItem="htq-Uw-cxG" firstAttribute="top" secondItem="efQ-6Y-QT0" secondAttribute="top" constant="30" id="TBT-3p-GoB"/>
+                        <constraint firstItem="htq-Uw-cxG" firstAttribute="leading" secondItem="efQ-6Y-QT0" secondAttribute="leading" id="qVk-qc-5AT"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="efQ-6Y-QT0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Jsz-Jb-nwD"/>
+                <constraint firstAttribute="trailing" secondItem="efQ-6Y-QT0" secondAttribute="trailing" id="OEe-6P-zlv"/>
+                <constraint firstItem="efQ-6Y-QT0" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="dQv-gb-Z03"/>
+                <constraint firstAttribute="bottom" secondItem="efQ-6Y-QT0" secondAttribute="bottom" id="x6f-RZ-HVL"/>
+            </constraints>
+            <point key="canvasLocation" x="34.5" y="54.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="dotted.png" width="1" height="1"/>
+    </resources>
+</document>

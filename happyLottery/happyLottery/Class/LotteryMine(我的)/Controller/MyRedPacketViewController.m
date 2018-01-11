@@ -280,14 +280,15 @@
         NSString *redPacketType = red.redPacketType;
         NSString *sourecs;
         if ([redPacketType isEqualToString:@"彩金红包"]) {
-            sourecs = [NSString stringWithFormat:@"恭喜您获得了%@",red.redPacketContent];
+            sourecs = [NSString stringWithFormat:@"恭喜您获得了%@元",red.redPacketContent];
         } else if ([redPacketType isEqualToString:@"积分红包"]){
             sourecs = [NSString stringWithFormat:@"恭喜您获得了%@",red.redPacketContent];
         }else if ([redPacketType isEqualToString:@"优惠卷红包"]){
             sourecs = [NSString stringWithFormat:@"恭喜您获得了%@",red.redPacketContent];
         }
         [self rotation360repeatCount:2 view:image andHalf:width andCaijin:red.redPacketContent];
-        [self getRedPacketByStateClient:@"true"];
+        page=1;
+       [self initRefresh1];
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
     }
@@ -346,7 +347,7 @@
         Info = @{@"cardCode":cardCode,
                  @"isValid":isValid,
                  @"page":pagestr,
-                 @"pageSize":@"5"
+                 @"pageSize":@"10"
                  };
         
     } @catch (NSException *exception) {
@@ -414,8 +415,11 @@
         if (listUseRedPacketArray.count > 0) {
            redPacket = listUseRedPacketArray[indexPath.row];
              NSString *redPacketStatus = redPacket.redPacketStatus;
-     
-                cell.packetImage.image = [UIImage imageNamed:@"click"];
+            if ([redPacketStatus isEqualToString:@"锁定"]) {
+                cell.packetImage.image = [UIImage imageNamed:@"lockredpacket"];
+            } else  if ([redPacketStatus isEqualToString:@"解锁"]) {
+                cell.packetImage.image = [UIImage imageNamed:@"unlockredpacket"];
+            }
          
             cell.endImage.hidden = YES;
             cell.nameLab.text = redPacket._description;
@@ -454,11 +458,16 @@
         }
         if (listUnUseRedPacketArray.count > 0) {
            redPacket = listUnUseRedPacketArray[indexPath.row];
-            cell.packetImage.image = [UIImage imageNamed:@"cannot"];
+          
             cell.endImage.hidden = NO;
             cell.nameLab.text = redPacket._description;
             
-            NSString *redPacketChannel =redPacket.redPacketChannel;
+            NSString *redPacketStatus =redPacket.redPacketStatus;
+            if ([redPacketStatus isEqualToString:@"锁定"]) {
+                cell.packetImage.image = [UIImage imageNamed:@"lock_cannot"];
+            } else  if ([redPacketStatus isEqualToString:@"解锁"]) {
+                cell.packetImage.image = [UIImage imageNamed:@"unlock_cannot"];
+            }
             NSString *sourecs;
 //            if ([redPacketChannel isEqualToString:@"注册渠道"]) {
 //                sourecs = @"来源： 系统注册赠送";
