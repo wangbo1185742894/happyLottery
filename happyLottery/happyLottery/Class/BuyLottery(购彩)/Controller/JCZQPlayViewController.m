@@ -489,7 +489,7 @@
     
     JCZQMatchViewCell * cell = [tableView dequeueReusableCellWithIdentifier:KJCZQMatchViewCell];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
+    
     [cell reloadDataMatch:self.showArray[indexPath.section][indexPath.row] andProfileTitle:self.trancation.curProfile.Desc andGuoguanType:self.trancation.playType];
     cell.delegate = self;
     return cell;

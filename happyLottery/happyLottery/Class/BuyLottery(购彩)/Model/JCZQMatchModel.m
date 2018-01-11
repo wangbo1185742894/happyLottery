@@ -41,13 +41,13 @@
     _odd_BF_Select = @"";
     _odd_JQS_Select = @"";
     _odd_BQC_Select = @"";
-    _odd_max_zuhe_HHGG = nil;
+    _odd_max_zuhe_HHGG =@[];
     _odd_SPF_Select_min = @"";
     _odd_RQSPF_Select_min = @"";
     _odd_BF_Select_min = @"";
     _odd_JQS_Select_min = @"";
     _odd_BQC_Select_min = @"";
-    _odd_min_zuhe_HHGG = nil;
+    _odd_min_zuhe_HHGG = @[];
 }
 
 -(void)setValue:(id)value forKey:(NSString *)key{

@@ -747,8 +747,11 @@
         //        NSDictionary * hunheBfPeiDuiDic = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"HHGGPeilvTable" ofType:@"plist"]];
         //        NSMutableArray * oddNumArray_temp = [NSMutableArray array];
         for (int i=0;i<self.selectMatchArray.count;i++){
+            
             JCZQMatchModel* match = self.selectMatchArray[i];
-    
+            if (match.matchBetArray .count == 0) {
+                return;
+            }
             NSArray * allZuheArray =   [self matchCodeFenZu:match.matchBetArray  match:match];
             
             NSArray * zuheValid;

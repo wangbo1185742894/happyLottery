@@ -83,7 +83,7 @@
 -(void)loadMatchLeagueInfo:(NSArray <JCZQLeaModel *> *) leaArray{
     float curX = 0;
     float curY = 0;
-    float width = ( self.viewMatchLeagueItem.mj_w - 110)/3;
+    float width = ( KscreenWidth - 26 - 110)/3;
     float height = 30;
     float sumHeight = 0;
     for (int i = 0; i < leaArray.count; i ++) {

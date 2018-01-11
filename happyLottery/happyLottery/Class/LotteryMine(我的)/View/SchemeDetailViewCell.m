@@ -36,18 +36,42 @@
     }
     return self;
 }
-
+//_winningStatus    __NSCFString *    @"WAIT_LOTTERY"    0x00000001c462a140
 -(void)reloadDataModel:(JCZQSchemeItem*)model{
     scheme = model;
     labSchemeState.text = [model getSchemeState];
     labTicketCount.text = [NSString stringWithFormat:@"出票%@/%@单",model.printCount,model.ticketCount];
     labSchemeTime.text = model.createTime;
-    labLottery.text = model.lottery;
+    labLottery.text = [self getLotteryByCode:model.lottery];
     labSchemeNo.text = model.schemeNO;
     labBetCount.text = [NSString stringWithFormat:@"%@注%@倍   %@元",model.units,model.multiple,model.betCost];
-    labBetCost.text = @"mmp又没中";
+    labBetCost.text = [self getWinningStatus:model.winningStatus];
     labChuanFa.text = [self getChuanFa];
 }
+
+//    /**     * 等待开奖     */
+//    WAIT_LOTTERY("等待开奖"),
+//    /**     * 未中奖     */[10]    (null)    @"afterTaxBonus" : (no summary)
+//    NOT_LOTTERY("未中奖"),
+//    /**     * 中奖     */[8]    (null)    @"passType" : @"P2_1"
+//    LOTTERY("中奖");[2]    (n
+-(NSString *)getWinningStatus:(NSString *)winstu{
+    if ([winstu isEqualToString:@"WAIT_LOTTERY"]) {
+        return @"等待开奖";
+    }
+    if ([winstu isEqualToString:@"NOT_LOTTERY"]) {
+        return @"未中奖";
+    }
+    if ([winstu isEqualToString:@"LOTTERY"]) {
+        labBetCost.text =SystemRed;
+        return @"中奖";
+    }
+    return @"";
+    
+}
+
+
+
 
 -(NSString *)getChuanFa{
     NSString *chuanfa;
@@ -117,5 +141,11 @@
     
 }
 
+-(NSString *)getLotteryByCode:(NSString *)code{
+    if ([code isEqualToString:@"JCZQ"]) {
+        return @"竞彩足球";
+    } //以后加彩种 在这加
+    return @"彩票";
+}
 
 @end

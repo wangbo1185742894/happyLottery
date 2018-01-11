@@ -86,11 +86,18 @@
 }
 
 -(void)loginUser:(NSDictionary *)userInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
-    NSLog(@"%@",userInfo);
-    User *user = [[User alloc]initWith:userInfo];
+    if (success == YES) {
+        NSLog(@"%@",userInfo);
+        User *user = [[User alloc]initWith:userInfo];
+        
+        user.isLogin = YES;
+        [GlobalInstance instance].curUser = user;
+    }else{
+        User *user = [[User alloc]initWith:userInfo];
+        [GlobalInstance instance].curUser = user;
+        user.isLogin = NO;
+    }
     
-    user.isLogin = YES;
-    [GlobalInstance instance].curUser = user;
 }
 
 -(void)dataSave{
