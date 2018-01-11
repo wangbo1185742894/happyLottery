@@ -61,7 +61,7 @@
     float marginTop = 5;
     float curX;
     float curY;
-    float width =( _playItemContentView.mj_w - 75 ) / 3;
+    float width =( KscreenWidth - 135 ) / 3;
     float height = (_playItemContentView.mj_h - 15 ) / 2;
     NSDictionary *titRQDic = self.titleDic[@"RQSPF"];
     NSDictionary *titDic = self.titleDic[@"SPF"];
@@ -81,10 +81,10 @@
     }
     if ([curModel selectItemNum] == 0) {
         
-        [self creatBtnWithFrame:CGRectMake(self.playItemContentView.mj_w - 37, 0, 30, self.playItemContentView.mj_h - 10) normal:@{@"nTitle":@"全部玩法",@"nImage":@"yuanjiaowubiankuangnomal",@"sImage":@"yuanjiaowukuangselect"} andTag:1000 andSelect:@"0"];
+        [self creatBtnWithFrame:CGRectMake(KscreenWidth - 97, 0, 30, self.playItemContentView.mj_h - 10) normal:@{@"nTitle":@"全部玩法",@"nImage":@"yuanjiaowubiankuangnomal",@"sImage":@"yuanjiaowukuangselect"} andTag:1000 andSelect:@"0"];
     }else{
         
-        [self creatBtnWithFrame:CGRectMake(self.playItemContentView.mj_w - 37, 0, 30, self.playItemContentView.mj_h - 10) normal:@{@"nTitle":[NSString stringWithFormat:@"已选%ld项",[curModel selectItemNum]],@"nImage":@"yuanjiaowubiankuangnomal",@"sImage":@"yuanjiaowukuangselect"} andTag:1000 andSelect:@"1"];
+        [self creatBtnWithFrame:CGRectMake(KscreenWidth - 97, 0, 30, self.playItemContentView.mj_h - 10) normal:@{@"nTitle":[NSString stringWithFormat:@"已选%ld项",[curModel selectItemNum]],@"nImage":@"yuanjiaowubiankuangnomal",@"sImage":@"yuanjiaowukuangselect"} andTag:1000 andSelect:@"1"];
     }
 }
 
@@ -286,7 +286,7 @@
     float marginTop = 5;
     float curX;
     float curY;
-    float width =( _playItemContentView.mj_w - 45 ) / 3;
+    float width =( KscreenWidth - 106 ) / 3;
     float height = 40;
     NSDictionary *titDic = self.titleDic[@"RQSPF"];
     for (int i = 0; i < 3; i ++ ) {
@@ -304,7 +304,7 @@
     float marginTop = 5;
     float curX;
     float curY;
-    float width =( _playItemContentView.mj_w - 20 ) / 3;
+    float width =( KscreenWidth - 80 ) / 3;
     float height = 40;
     
     for (int i = 0; i < 3; i ++ ) {
@@ -322,7 +322,7 @@
     float marginTop = 5;
     float curX;
     float curY;
-    float width =( _playItemContentView.mj_w - 24 ) / 4;
+    float width =( KscreenWidth - 84 ) / 4;
     float height = (_playItemContentView.mj_h - 20 ) / 2;
     
     for (int i = 0; i < 8; i ++ ) {
@@ -337,7 +337,7 @@
     self.widthLabRangqiu.constant = 0;
     float curX = 3;
     float curY = 10;
-    float width =_playItemContentView.mj_w - 13;
+    float width =KscreenWidth - 73;
     float height = 37;
     if ([curModel selectItemNum] == 0) {
             [self creatBtnWithFrame:CGRectMake(curX, curY, width, height) normal:@{@"nTitle":@"点击展开全部",@"nImage":@"jczqshowallback",@"sImage":@"wukuangwuyuanjiaoselect"} andTag:2000 andSelect:@"0"];
@@ -351,7 +351,7 @@
     self.widthLabRangqiu.constant = 0;
     float curX = 3;
     float curY = 10;
-    float width =_playItemContentView.mj_w - 13;
+    float width =KscreenWidth - 73;
     float height = 37;
     
     if ([curModel selectItemNum] == 0) {

@@ -26,8 +26,8 @@
                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="VbK-Dq-f7l">
                             <rect key="frame" x="12" y="16.5" width="351" height="29"/>
                             <segments>
-                                <segment title="预测投注"/>
-                                <segment title="积分投注"/>
+                                <segment title="预约投注"/>
+                                <segment title="模拟投注"/>
                             </segments>
                             <color key="tintColor" red="0.070588235289999995" green="0.78039215689999997" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -50,7 +50,7 @@
                 </tableView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbb-a5-ZQ6">
                     <rect key="frame" x="0.0" y="125" width="375" height="1"/>
-                    <color key="backgroundColor" red="0.61960784310000006" green="0.61960784310000006" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.76078431369999999" green="0.76078431369999999" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="GZz-NE-XE6"/>
                     </constraints>
