@@ -20,13 +20,16 @@
 
 #import "JCZQSelectBQCVIew.h"
 #import "JCZQSelectBFVIew.h"
+#import "OptionSelectedView.h"
+
 #define KJCZQMatchViewCell @"JCZQMatchViewCell"
-@interface JCZQPlayViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryProfileSelectViewDelegate,LotteryManagerDelegate,JCZQMatchViewCellDelegate,JCZQSelectVIewDelegate,MatchLeagueSelectViewDelegate>
+@interface JCZQPlayViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryProfileSelectViewDelegate,LotteryManagerDelegate,JCZQMatchViewCellDelegate,JCZQSelectVIewDelegate,MatchLeagueSelectViewDelegate,OptionSelectedViewDelegate>
 
 {
     NSInteger numBackNum;
     MatchLeagueSelectView * matchSelectView;
     LotteryProfileSelectView *profileSelectView;
+    OptionSelectedView *optionView;
 }
 @property (weak, nonatomic) IBOutlet UILabel *labSelectInfo;
 @property (weak, nonatomic) IBOutlet UITableView *tabJCZQListView;
@@ -166,7 +169,7 @@
                 [self.showArray addObject:showArray];
             }
         }
-        
+        [matchSelectView setLabSelectNumText:[self getMatchNum:self.showArray]];
         [self loadMatchSP];
     }
   
@@ -289,6 +292,7 @@
     if (profileSelectView == nil) {
         profileSelectView = [[LotteryProfileSelectView alloc]initWithFrame:CGRectMake(0, 64, KscreenWidth, KscreenHeight - 64)];
     }
+    profileSelectView.frame = CGRectMake(0, 64, KscreenWidth, KscreenHeight - 64);
     profileSelectView.delegate = self;
     [self getCurlotteryProfiles];
     profileSelectView.lotteryPros = self.profiles;
@@ -297,7 +301,6 @@
     self.trancation.curProfile = self.profiles[4];
     [self.view addSubview:profileSelectView];
     self.navigationItem.titleView = titleBtn;
-    
 }
 
 -(void)showProfileType{
@@ -325,7 +328,6 @@
     [btnItem addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
     btnItem.frame = frame;
     if (title != nil) {
-        
         [btnItem setTitle:title forState:0];
     }
     
@@ -338,19 +340,20 @@
 
 -(void)actionPlayTypeRecom{
     
-   
+    [self optionRightButtonAction];
 }
 
 -(void)createUI{
     if (matchSelectView == nil) {
          matchSelectView = [[MatchLeagueSelectView alloc]initWithFrame:[UIScreen mainScreen].bounds];
     }
-    
     [matchSelectView loadMatchLeagueInfo:self.leaArray];
     matchSelectView.delegate = self;
     matchSelectView.hidden = YES;
     [[UIApplication sharedApplication].keyWindow addSubview:matchSelectView];
 }
+
+
 
 -(void)actionSelectLeague{
    
@@ -379,6 +382,19 @@
     [self.tabJCZQListView reloadData];
 }
 
+-(void)selectedLeagueItem:(NSArray *)leaTitleArray andGetNum:(GetLeaMatchNum)block{
+    [self selectedLeagueItem:leaTitleArray];
+   
+    block([self getMatchNum:self.showArray]);
+}
+
+-(NSInteger)getMatchNum:(NSMutableArray *)showArray{
+    NSInteger numMatch = 0;
+    for (NSMutableArray *matchArray in showArray) {
+        numMatch +=matchArray.count;
+    }
+    return numMatch;
+}
 
 -(void)setVCInfo{
 
@@ -494,6 +510,22 @@
     cell.delegate = self;
     return cell;
 }
+
+
+
+- (void)optionRightButtonAction{
+    //    NSLog(@"haha");
+    NSArray *titleArr = @[@"玩法说明",@"开奖信息"];
+    CGFloat optionviewWidth = 80;
+    CGFloat optionviewCellheight = 38;
+    CGSize mainSize = [UIScreen mainScreen].bounds.size;
+    if (!optionView) {
+        optionView = [[OptionSelectedView alloc] initWithFrame:CGRectMake(KscreenWidth - optionviewWidth, 64, optionviewWidth, optionviewCellheight * titleArr.count) andTitleArr:titleArr];
+        optionView.delegate = self;
+    }
+    [[UIApplication sharedApplication].keyWindow addSubview:optionView];
+}
+
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 120;
@@ -639,6 +671,10 @@
     [self cleanAllSelectMatch];
     [self updataSummary];
     [self.tabJCZQListView reloadData];
+}
+
+-(void)optionDidSelacted:(OptionSelectedView *)optionSelectedView andIndex:(NSInteger)index{
+    
 }
 
 @end

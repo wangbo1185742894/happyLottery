@@ -24,6 +24,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.mj_w = KscreenWidth;
+    self.view.mj_h = KscreenHeight;
     self.memberMan = [[MemberManager alloc]init];
     self.lotteryMan = [[LotteryManager alloc]init];
     [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;

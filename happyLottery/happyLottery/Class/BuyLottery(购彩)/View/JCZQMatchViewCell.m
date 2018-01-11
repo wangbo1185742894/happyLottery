@@ -9,6 +9,7 @@
 //
 
 #import "JCZQMatchViewCell.h"
+#import "MGLabel.h"
 
 @interface  JCZQMatchViewCell ()
 {
@@ -18,7 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labMatchLine;
 @property (weak, nonatomic) IBOutlet UILabel *labDeadLine;
 @property (weak, nonatomic) IBOutlet UIButton *btBottom;
-@property (weak, nonatomic) IBOutlet UILabel *labHomeName;
+@property (weak, nonatomic) IBOutlet MGLabel *labHomeName;
 @property (weak, nonatomic) IBOutlet UILabel *labGuestName;
 @property (weak, nonatomic) IBOutlet UIView *playItemContentView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthLabRangqiu;
@@ -262,7 +263,11 @@
         self.labDeadLine.text =[NSString stringWithFormat:@"截止%@",[match.stopBuyTime substringWithRange:NSMakeRange(11, 5)]];
     }
     
-    self.labHomeName.text = match.homeName;
+    self.labHomeName.text = [NSString stringWithFormat:@"%@(主)",match.homeName];
+
+    self.labHomeName.keyWord = @"(主)";
+    self.labHomeName.keyWordFont = [UIFont systemFontOfSize:12];
+    self.labHomeName.keyWordColor = SystemBlue;
     self.labGuestName.text = match.guestName;
     self.labMatchLine .text = match.lineId;
     NSString *funname = [NSString stringWithFormat:@"init%@CellSubItem",title];

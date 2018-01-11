@@ -11,5 +11,7 @@
 @interface OrderListHeaderView : UIView
 @property (weak, nonatomic) IBOutlet UILabel *titleLa;
 @property (weak, nonatomic) IBOutlet UILabel *betInfoLa;
+@property (weak, nonatomic) IBOutlet UIView *viewPeiLvInfo;
+@property (weak, nonatomic) IBOutlet UIButton *btnOrderDetail;
 
 @end

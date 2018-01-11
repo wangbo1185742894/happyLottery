@@ -231,6 +231,7 @@
                 <constraint firstItem="fQU-b5-TNF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="sV4-Xl-FXT"/>
                 <constraint firstAttribute="trailing" secondItem="0WI-oX-CFv" secondAttribute="trailing" id="v6j-WW-Gg9"/>
             </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="lotteryProfileItemView" destination="0WI-oX-CFv" id="SnL-8a-wQC"/>
                 <outletCollection property="profileSelectArray" destination="JzH-5P-KMx" id="q2E-bI-Z8x"/>

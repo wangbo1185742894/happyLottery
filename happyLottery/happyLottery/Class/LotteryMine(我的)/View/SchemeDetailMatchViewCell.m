@@ -69,7 +69,7 @@
     
     labResult.textColor = SystemRed;
     labResult.keyWord = @"赛果:";
-    labResult.text = @"赛果:3:1";
+    labResult.text = @"赛果:待知";
     labResult.keyWordColor = SystemBlue;
 }
 

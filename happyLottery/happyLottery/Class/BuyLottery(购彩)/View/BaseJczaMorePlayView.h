@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "JCZQMatchModel.h"
-
+#import "MGLabel.h"
 
 @protocol JCZQSelectVIewDelegate
 

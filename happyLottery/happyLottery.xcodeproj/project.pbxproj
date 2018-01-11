@@ -177,6 +177,9 @@
 		2D4B1EB01FDFCDA00034B708 /* arrow_down@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D4B1EAE1FDFCDA00034B708 /* arrow_down@3x.png */; };
 		2D4B1EB31FDFCDAF0034B708 /* arrow_up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D4B1EB11FDFCDAE0034B708 /* arrow_up@2x.png */; };
 		2D4B1EB41FDFCDAF0034B708 /* arrow_up@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D4B1EB21FDFCDAF0034B708 /* arrow_up@3x.png */; };
+		2D5171AF2006F37500C3CD7F /* OptionSelectedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5171AD2006F37400C3CD7F /* OptionSelectedView.m */; };
+		2D5171B32007110D00C3CD7F /* SchemeInfoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5171B12007110D00C3CD7F /* SchemeInfoViewCell.m */; };
+		2D5171B42007110D00C3CD7F /* SchemeInfoViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D5171B22007110D00C3CD7F /* SchemeInfoViewCell.xib */; };
 		2D628B181FEB9E290013D0E1 /* BaseJczaMorePlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D628B171FEB9E290013D0E1 /* BaseJczaMorePlayView.m */; };
 		2D628B231FECA9C40013D0E1 /* touzhubeishujian@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D628B191FECA9C00013D0E1 /* touzhubeishujian@2x.png */; };
 		2D628B241FECA9C40013D0E1 /* touzhuxuanzezhifuselect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D628B1A1FECA9C00013D0E1 /* touzhuxuanzezhifuselect@2x.png */; };
@@ -940,6 +943,11 @@
 		2D4B1EAE1FDFCDA00034B708 /* arrow_down@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_down@3x.png"; sourceTree = "<group>"; };
 		2D4B1EB11FDFCDAE0034B708 /* arrow_up@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_up@2x.png"; sourceTree = "<group>"; };
 		2D4B1EB21FDFCDAF0034B708 /* arrow_up@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_up@3x.png"; sourceTree = "<group>"; };
+		2D5171AD2006F37400C3CD7F /* OptionSelectedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionSelectedView.m; sourceTree = "<group>"; };
+		2D5171AE2006F37500C3CD7F /* OptionSelectedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionSelectedView.h; sourceTree = "<group>"; };
+		2D5171B02007110D00C3CD7F /* SchemeInfoViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SchemeInfoViewCell.h; sourceTree = "<group>"; };
+		2D5171B12007110D00C3CD7F /* SchemeInfoViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SchemeInfoViewCell.m; sourceTree = "<group>"; };
+		2D5171B22007110D00C3CD7F /* SchemeInfoViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SchemeInfoViewCell.xib; sourceTree = "<group>"; };
 		2D628B161FEB9E290013D0E1 /* BaseJczaMorePlayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseJczaMorePlayView.h; sourceTree = "<group>"; };
 		2D628B171FEB9E290013D0E1 /* BaseJczaMorePlayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseJczaMorePlayView.m; sourceTree = "<group>"; };
 		2D628B191FECA9C00013D0E1 /* touzhubeishujian@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "touzhubeishujian@2x.png"; sourceTree = "<group>"; };
@@ -2596,6 +2604,9 @@
 				2D06008E1FFF4BDD009E7568 /* SchemeDetailMatchViewCell.h */,
 				2D06008F1FFF4BDD009E7568 /* SchemeDetailMatchViewCell.m */,
 				2D0600901FFF4BDD009E7568 /* SchemeDetailMatchViewCell.xib */,
+				2D5171B02007110D00C3CD7F /* SchemeInfoViewCell.h */,
+				2D5171B12007110D00C3CD7F /* SchemeInfoViewCell.m */,
+				2D5171B22007110D00C3CD7F /* SchemeInfoViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2747,6 +2758,8 @@
 		2DDEDC021FD4DBB6007AEBF7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2D5171AE2006F37500C3CD7F /* OptionSelectedView.h */,
+				2D5171AD2006F37400C3CD7F /* OptionSelectedView.m */,
 				2D0600811FFE2035009E7568 /* TableHeaderView.h */,
 				2D0600801FFE2035009E7568 /* TableHeaderView.m */,
 				2D06007F1FFE2034009E7568 /* TableHeaderView.xib */,
@@ -3611,6 +3624,7 @@
 				F9664BAA2004D64A000A27CA /* bjCoupon@2x.png in Resources */,
 				2D4B1E8B1FDF684E0034B708 /* yuce_select@2x.png in Resources */,
 				F94AA9BF1FEB59DA0021B980 /* authentication@2x.png in Resources */,
+				2D5171B42007110D00C3CD7F /* SchemeInfoViewCell.xib in Resources */,
 				F91565ED1FFCBDAE00E254CE /* 1@3x.png in Resources */,
 				2D4B1E861FDF684E0034B708 /* yishoucang@3x.png in Resources */,
 				F9F6CA971FF5D6B100A49F71 /* voice@2x.png in Resources */,
@@ -3969,6 +3983,7 @@
 				2DDEDE781FD568C9007AEBF7 /* AFAutoPurgingImageCache.m in Sources */,
 				2D8CBFB41FF32ECC00CC367F /* ZLAlertView.m in Sources */,
 				2D628B181FEB9E290013D0E1 /* BaseJczaMorePlayView.m in Sources */,
+				2D5171AF2006F37500C3CD7F /* OptionSelectedView.m in Sources */,
 				F9581A7F1FE0FA01009753AA /* LoginViewController.m in Sources */,
 				2D8CC00F1FF487CF00CC367F /* WBHomeJCYCViewController.m in Sources */,
 				2D739C5D1FE3B31500264044 /* FMDatabasePool.m in Sources */,
@@ -4111,6 +4126,7 @@
 				F94913471FFF642800D30AE7 /* ConversionCodeViewController.m in Sources */,
 				2DDEDE5E1FD568C9007AEBF7 /* NSData+ImageContentType.m in Sources */,
 				2D739C7B1FE7A3B400264044 /* BaseProfile.m in Sources */,
+				2D5171B32007110D00C3CD7F /* SchemeInfoViewCell.m in Sources */,
 				F9DC699F1FDF88E5007D384D /* IntegralMallViewController.m in Sources */,
 				F9D9F2A81FF22640006434DC /* CashAndIntegrationWaterViewController.m in Sources */,
 				2DDEDC061FD4DBD8007AEBF7 /* BuyLotteryViewController.m in Sources */,

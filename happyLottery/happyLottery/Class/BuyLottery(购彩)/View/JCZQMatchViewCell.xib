@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="373" height="122"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="373" height="121.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="373" height="122"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vq0-at-Z4d">
@@ -116,8 +116,8 @@
                                 <color key="textColor" red="0.55294117649999996" green="0.55294117649999996" blue="0.55294117649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q41-BS-Wzr">
-                                <rect key="frame" x="28" y="0.0" width="123.5" height="44"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q41-BS-Wzr" customClass="MGLabel">
+                                <rect key="frame" x="28" y="0.0" width="123" height="44"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -174,7 +174,7 @@
                 <outlet property="iconIsDanGuan" destination="Qnt-IQ-zIr" id="WT7-Q0-vLy"/>
                 <outlet property="labDeadLine" destination="shx-lb-Y5f" id="zck-IZ-Sn4"/>
                 <outlet property="labGuestName" destination="h46-E4-a5g" id="P0e-vK-lzJ"/>
-                <outlet property="labHomeName" destination="Q41-BS-Wzr" id="CAP-7k-ppS"/>
+                <outlet property="labHomeName" destination="Q41-BS-Wzr" id="Ch0-yX-eyF"/>
                 <outlet property="labLeaName" destination="kt4-Us-M6d" id="yRD-JK-VWJ"/>
                 <outlet property="labMatchLine" destination="ZB1-c8-T4W" id="XV0-NU-YsN"/>
                 <outlet property="playItemContentView" destination="DBf-Kr-4qs" id="0CS-ci-66J"/>
