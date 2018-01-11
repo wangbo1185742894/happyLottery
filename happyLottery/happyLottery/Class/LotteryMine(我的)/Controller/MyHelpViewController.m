@@ -10,6 +10,7 @@
 #import "MyHelpViewController.h"
 #import "CouponGuidViewController.h"
 #import "GetIntegralViewController.h"
+#import "FootBallPlayViewController.h"
 
 @interface MyHelpViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
@@ -30,6 +31,8 @@
 }
 
 - (IBAction)footballPlay:(id)sender {
+    FootBallPlayViewController * mpVC = [[FootBallPlayViewController alloc]init];
+    [self.navigationController pushViewController:mpVC animated:YES];
 }
 
 - (IBAction)getIntegral:(id)sender {
