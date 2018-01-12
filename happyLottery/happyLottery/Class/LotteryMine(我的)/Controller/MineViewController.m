@@ -107,11 +107,35 @@
     [self loadUserInfo];
 }
 
+-(void)saveUserInfo{
+    
+    if ([self.fmdb open]) {
+        User *user = [GlobalInstance instance].curUser;
+        FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_user_info"];
+        NSLog(@"%@",result);
+        BOOL issuccess = NO;
+        
+        do {
+            NSString *mobile = [result stringForColumn:@"mobile"];
+            
+            issuccess= [self.fmdb executeUpdate:@"delete from t_user_info where mobile = ? ",mobile];
+            
+        } while ([result next]);
+        
+        [self.fmdb executeUpdate:@"insert into t_user_info (cardCode , loginPwd , isLogin , mobile,payVerifyType) values ( ?,?,?,?,?)  ",user.cardCode,user.loginPwd,@(1),user.mobile,@(1)];
+        [result close];
+        [self.fmdb close];
+    }
+}
+
 -(void)getMemberByCardCodeSms:(NSDictionary *)memberInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     
     NSLog(@"memberInfo%@",memberInfo);
     if ([msg isEqualToString:@"执行成功"]) {
       // [self showPromptText: @"memberInfo成功" hideAfterDelay: 1.7];
+        User *user = [[User alloc]initWith:memberInfo];
+        [GlobalInstance instance].curUser = user;
+         [self saveUserInfo];
         [self loadUserInfo];
         
     }else{
