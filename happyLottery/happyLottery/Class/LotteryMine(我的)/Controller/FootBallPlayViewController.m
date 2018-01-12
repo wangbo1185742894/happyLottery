@@ -9,9 +9,8 @@
 #import "FootBallPlayViewController.h"
 #import "LotteryProfileSelectView.h"
 
-@interface FootBallPlayViewController ()<LotteryProfileSelectViewDelegate>{
+@interface FootBallPlayViewController (){
     UIButton * titleBtn;
-     LotteryProfileSelectView *profileSelectView;
 }
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UIView *selectView;
@@ -33,8 +32,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
    // self.title = @"竞足玩法介绍";
+    [self loadHtml:@"jingcaizuqiu_shengpingfu"];
     [self setTitleView];
- [self loadHtml:@"jingcaizuqiu_shengpingfu"];
+    if ([self isIphoneX]) {
+        self.top.constant = 88;
+        self.bottom.constant = 34;
+    }
 }
 
 -(void)loadHtml:(NSString*)htmlname{
@@ -58,7 +61,7 @@
     titleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     titleBtn.frame = CGRectMake(0, 10, 150, 40);
     [titleBtn addTarget:self action:@selector(showProfileType) forControlEvents:UIControlEventTouchUpInside];
-    [titleBtn setTitle:@"竞足玩法介绍" forState:0];
+    [titleBtn setTitle:@"胜平负" forState:0];
     [titleBtn setImage:[UIImage imageNamed:@""] forState:0];
     titleBtn.titleLabel.font = [UIFont systemFontOfSize:18];
 //    if (profileSelectView == nil) {
@@ -74,19 +77,17 @@
 
 -(void)showProfileType{
     _selectView.hidden = !_selectView.hidden;
-    if (_selectView.hidden==YES) {
-          self.bfBtn.selected=NO;
-        self.spfBtn.selected=NO;
-        self.rqspfBtn.selected=NO;
-         self.jqsBtn.selected=NO;
-        self.bqcBtn.selected=NO;
-         self.hhggNtm.selected=NO;
-    }
+
 }
 
 - (IBAction)BFClick:(id)sender {
      [titleBtn setTitle:@"比分" forState:0];
     self.bfBtn.selected=YES;
+    self.spfBtn.selected=NO;
+    self.rqspfBtn.selected=NO;
+    self.jqsBtn.selected=NO;
+    self.bqcBtn.selected=NO;
+    self.hhggNtm.selected=NO;
      [self loadHtml:@"jingcaizuqiu_bifen"];
         [self showProfileType];
 }
@@ -94,31 +95,55 @@
 - (IBAction)SPFClick:(id)sender {
       [titleBtn setTitle:@"胜平负" forState:0];
     self.spfBtn.selected=YES;
-  
+    self.bfBtn.selected=NO;
+    self.rqspfBtn.selected=NO;
+    self.jqsBtn.selected=NO;
+    self.bqcBtn.selected=NO;
+    self.hhggNtm.selected=NO;
     [self loadHtml:@"jingcaizuqiu_shengpingfu"];
       [self showProfileType];
 }
 - (IBAction)RQSPFClick:(id)sender {
       [titleBtn setTitle:@"让球胜平负" forState:0];
     self.rqspfBtn.selected=YES;
+    self.bfBtn.selected=NO;
+    self.spfBtn.selected=NO;
+    self.jqsBtn.selected=NO;
+    self.bqcBtn.selected=NO;
+    self.hhggNtm.selected=NO;
     [self loadHtml:@"jingcaizuqiu_rangqiushengpingfu"];
      [self showProfileType];
 }
 - (IBAction)JQSClick:(id)sender {
       [titleBtn setTitle:@"进球数" forState:0];
     self.jqsBtn.selected=YES;
+    self.bfBtn.selected=NO;
+    self.spfBtn.selected=NO;
+    self.rqspfBtn.selected=NO;
+    self.bqcBtn.selected=NO;
+    self.hhggNtm.selected=NO;
     [self loadHtml:@"jingcaizuqiu_zongjinqiushu"];
      [self showProfileType];
 }
 - (IBAction)BQCClick:(id)sender {
       [titleBtn setTitle:@"半全场" forState:0];
     self.bqcBtn.selected=YES;
+    self.bfBtn.selected=NO;
+    self.spfBtn.selected=NO;
+    self.rqspfBtn.selected=NO;
+    self.jqsBtn.selected=NO;
+    self.hhggNtm.selected=NO;
      [self loadHtml:@"jingcaizuqiu_banquanchang"];
      [self showProfileType];
 }
 - (IBAction)HHGGClick:(id)sender {
       [titleBtn setTitle:@"混合过关" forState:0];
     self.hhggNtm.selected=YES;
+    self.bfBtn.selected=NO;
+    self.spfBtn.selected=NO;
+    self.rqspfBtn.selected=NO;
+    self.jqsBtn.selected=NO;
+    self.bqcBtn.selected=NO;
     [self loadHtml:@"jingcaizuqiu_hunheguoguan"];
      [self showProfileType];
 }

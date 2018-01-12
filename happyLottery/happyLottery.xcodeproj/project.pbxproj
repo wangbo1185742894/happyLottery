@@ -465,6 +465,8 @@
 		F91C262F1FEA0CF00056CBDD /* SetPayPWDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F91C262D1FEA0CF00056CBDD /* SetPayPWDViewController.xib */; };
 		F91C26331FEA0D7C0056CBDD /* ChangePayPWDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F91C26311FEA0D7C0056CBDD /* ChangePayPWDViewController.m */; };
 		F91C26341FEA0D7C0056CBDD /* ChangePayPWDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F91C26321FEA0D7C0056CBDD /* ChangePayPWDViewController.xib */; };
+		F91F35CC20084DCD00B23170 /* ChangeLoginPWDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F91F35CA20084DCD00B23170 /* ChangeLoginPWDViewController.m */; };
+		F91F35CD20084DCD00B23170 /* ChangeLoginPWDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F91F35CB20084DCD00B23170 /* ChangeLoginPWDViewController.xib */; };
 		F924BA921FE252CF00830BF4 /* password@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA7A1FE252CA00830BF4 /* password@3x.png */; };
 		F924BA961FE252CF00830BF4 /* hide@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA7E1FE252CB00830BF4 /* hide@2x.png */; };
 		F924BA971FE252CF00830BF4 /* phone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA7F1FE252CB00830BF4 /* phone@2x.png */; };
@@ -1396,6 +1398,9 @@
 		F91C26301FEA0D7C0056CBDD /* ChangePayPWDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangePayPWDViewController.h; sourceTree = "<group>"; };
 		F91C26311FEA0D7C0056CBDD /* ChangePayPWDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangePayPWDViewController.m; sourceTree = "<group>"; };
 		F91C26321FEA0D7C0056CBDD /* ChangePayPWDViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePayPWDViewController.xib; sourceTree = "<group>"; };
+		F91F35C920084DCD00B23170 /* ChangeLoginPWDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangeLoginPWDViewController.h; sourceTree = "<group>"; };
+		F91F35CA20084DCD00B23170 /* ChangeLoginPWDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangeLoginPWDViewController.m; sourceTree = "<group>"; };
+		F91F35CB20084DCD00B23170 /* ChangeLoginPWDViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangeLoginPWDViewController.xib; sourceTree = "<group>"; };
 		F924BA7A1FE252CA00830BF4 /* password@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "password@3x.png"; sourceTree = "<group>"; };
 		F924BA7E1FE252CB00830BF4 /* hide@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hide@2x.png"; sourceTree = "<group>"; };
 		F924BA7F1FE252CB00830BF4 /* phone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone@2x.png"; sourceTree = "<group>"; };
@@ -3312,6 +3317,9 @@
 		F9BD1B481FE8A91500C1C71A /* personnalSet */ = {
 			isa = PBXGroup;
 			children = (
+				F91F35C920084DCD00B23170 /* ChangeLoginPWDViewController.h */,
+				F91F35CA20084DCD00B23170 /* ChangeLoginPWDViewController.m */,
+				F91F35CB20084DCD00B23170 /* ChangeLoginPWDViewController.xib */,
 				F95C69EE1FE7AD0200126C6A /* PersonnalCenterViewController.h */,
 				F95C69EF1FE7AD0200126C6A /* PersonnalCenterViewController.m */,
 				F95C69F01FE7AD0200126C6A /* PersonnalCenterViewController.xib */,
@@ -3683,6 +3691,7 @@
 				2D0600821FFE2036009E7568 /* TableHeaderView.xib in Resources */,
 				2D20602B1FFCB71E0086E266 /* icon_yue@3x.png in Resources */,
 				2D2060271FFCB71E0086E266 /* icon_weixin_@3x.png in Resources */,
+				F91F35CD20084DCD00B23170 /* ChangeLoginPWDViewController.xib in Resources */,
 				2D628B421FECAA9A0013D0E1 /* fengkuangjingcai-chuanguanwanfaqiehuanbeijing@3x.png in Resources */,
 				F957C1FB1FE3B28D0090B19B /* recharge@2x.png in Resources */,
 				2D20602C1FFCB71E0086E266 /* icon_zhanbaotongji@2x.png in Resources */,
@@ -4104,6 +4113,7 @@
 				2D739CA41FEA0A2E00264044 /* JCZQMatchModel.m in Sources */,
 				2D4B174E1FD7B9270034B708 /* WBAdsImgView.m in Sources */,
 				2D739CA71FEA0A4000264044 /* JCZQTranscation.m in Sources */,
+				F91F35CC20084DCD00B23170 /* ChangeLoginPWDViewController.m in Sources */,
 				F9C332E31FF4DE1C00779197 /* OpenRedPopView.m in Sources */,
 				2D739C1C1FE2611C00264044 /* IQKeyboardManager.m in Sources */,
 				F93204F41FECF98C00E22A27 /* WBInputPopView.m in Sources */,

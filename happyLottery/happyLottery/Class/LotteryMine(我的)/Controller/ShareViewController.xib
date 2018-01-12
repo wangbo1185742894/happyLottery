@@ -45,7 +45,7 @@
                             <color key="textColor" red="0.14509803921568626" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qrcode.png" translatesAutoresizingMaskIntoConstraints="NO" id="nuu-w9-LUU">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nuu-w9-LUU">
                             <rect key="frame" x="112" y="115" width="151" height="151"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="151" id="9ej-wD-cbc"/>
@@ -241,7 +241,6 @@
     <resources>
         <image name="1.png" width="12" height="15"/>
         <image name="2.png" width="12" height="15"/>
-        <image name="qrcode.png" width="151" height="151"/>
         <image name="scancode.png" width="17" height="17"/>
         <image name="tilde.png" width="20" height="7"/>
     </resources>

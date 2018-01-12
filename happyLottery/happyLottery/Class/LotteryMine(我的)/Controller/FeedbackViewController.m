@@ -8,7 +8,7 @@
 
 #import "FeedbackViewController.h"
 
-@interface FeedbackViewController ()<UITextViewDelegate>
+@interface FeedbackViewController ()<UITextViewDelegate,MemberManagerDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottom;
 @property (weak, nonatomic) IBOutlet UILabel *placeHolder1;
@@ -28,6 +28,8 @@
         self.top.constant = 88;
         self.bottom.constant = 34;
     }
+    
+    self.memberMan.delegate = self;
     self.feedBackTextView.delegate = self;
     self.placeHolder1.userInteractionEnabled = NO;
     self.placeHolder2.userInteractionEnabled = NO;
@@ -83,6 +85,41 @@
 
 - (IBAction)commitClick:(id)sender {
     
+    [self FeedBackClient];
+    
+}
+-(void)FeedBack:(BOOL)success errorMsg:(NSString *)msg{
+    
+    if ([msg isEqualToString:@"执行成功"]) {
+        [self showPromptText:@"意见反馈成功！" hideAfterDelay:1.7];
+        [self performSelector:@selector(delayMethod) withObject:nil afterDelay:1.0];
+        
+    }else{
+        
+        [self showPromptText:msg hideAfterDelay:1.7];
+        
+    }
+}
+
+- (void)delayMethod{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)FeedBackClient{
+    NSString *text = self.feedBackTextView.text;
+    NSDictionary *Info;
+    @try {
+        
+        Info = @{@"cardCode":self.curUser.cardCode,
+                 @"feedbackContent":text,
+                  @"fkscore":@""
+                 };
+        
+    } @catch (NSException *exception) {
+        Info = nil;
+    } @finally {
+        [self.memberMan FeedBack:Info];
+    }
     
 }
 

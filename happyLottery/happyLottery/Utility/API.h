@@ -49,6 +49,7 @@
 #define APIResetNickSms            @"modifyNickname"
 #define APIBandPayPWDSms           @"bindMemberPaypwd"
 #define APIResetPayPWDSms          @"updateMemberPaypwd"
+#define APIChangeLoginPWDSms          @"updateMemberPwd"
 #define APIsendUpdatePaypwdSms     @"sendUpdatePaypwdSms"
 #define APIcheckUpdatePaypwdSms    @"checkUpdatePaypwdSms"
 #define APIgetSupportBank          @"getSupportBank"
@@ -67,6 +68,8 @@
 #define APIopenRedPacket            @"openRedPacket"
 #define APIgetCouponByState           @"getCouponByState"
 #define APIupdateImage              @"modifyHeadUrl"
+#define APIfeedBack                @"feedBack"
+
 
 
 #define SUBAPIDATA           @"/data"
@@ -82,6 +85,7 @@
 #define APIlistByJczqScore          @"listByJczqScore"
 #define APIlistByRecScheme          @"listByRecScheme"
 #define APIGetBFZBInfo              @"getBFZBInfo"
+#define APIgetClientDownLoadUrl       @"getClientDownLoadUrl"
 
 
 #define SUBAPISchemeService   @"/scheme"

@@ -15,6 +15,7 @@
 #import "FirstBankCardSetViewController.h"
 #import "BankCardSettingViewController.h"
 #import "LoadData.h"
+#import "ChangeLoginPWDViewController.h"
 
 
 @interface PersonnalCenterViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate,RSKImageCropViewControllerDelegate,MemberManagerDelegate>{
@@ -153,6 +154,8 @@
     }
 }
 - (IBAction)changeLoginPWD:(id)sender {
+    ChangeLoginPWDViewController *spvc = [[ChangeLoginPWDViewController alloc]init];
+    [self.navigationController pushViewController:spvc animated:YES];
 }
 
 
