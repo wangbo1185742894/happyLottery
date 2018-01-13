@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FeedBackHistory.h"
 
 @interface FeedBackHistoryTableViewCell : UITableViewCell
+
+@property (nonatomic, strong) FeedBackHistory *model;
 
 @end

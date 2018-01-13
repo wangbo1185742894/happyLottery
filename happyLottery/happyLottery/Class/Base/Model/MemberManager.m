@@ -1046,4 +1046,40 @@
                         failure:failureBlock];
 }
 
+/**
+ 
+ 获得会员意见反馈列表
+ 参数:
+ params - {"cardCode":"xxx","page":"xxx","pageSize":"xxx"}
+ */
+- (void) getFeedbackListSms:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed) {
+            NSArray *Info = [self objFromJson: responseJsonStr];
+            
+            [self.delegate getFeedbackListSms:Info IsSuccess:YES errorMsg:response.errorMsg];
+        } else {
+            [self.delegate getFeedbackListSms:nil IsSuccess:NO errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate getFeedbackListSms:nil IsSuccess:NO errorMsg:@"服务器错误"];
+        //失败的代理方法
+    };
+    //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
+    
+    SOAPRequest *request = [self requestForAPI: APIgetFeedbackList withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}  ];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+
 @end
