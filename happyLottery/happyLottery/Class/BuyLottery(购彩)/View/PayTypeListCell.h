@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ChannelModel.h"
 
 @interface PayTypeListCell : UITableViewCell
-
+-(void)loadDataWithModel:(ChannelModel *)model;
+-(void)chongzhiLoadDataWithModel:(ChannelModel *)model;
 @end

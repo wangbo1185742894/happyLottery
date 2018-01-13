@@ -22,5 +22,5 @@ typedef void (^GetLeaMatchNum)(NSInteger num);
 @property(weak,nonatomic)id<MatchLeagueSelectViewDelegate> delegate;
 -(void)loadMatchLeagueInfo:(NSArray <JCZQLeaModel *> *) leaArray;
 -(void)setLabSelectNumText:(NSInteger)num;
-
+-(void)refreshItemState;
 @end

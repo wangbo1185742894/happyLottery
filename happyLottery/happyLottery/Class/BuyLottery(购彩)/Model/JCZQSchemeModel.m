@@ -87,6 +87,12 @@
 
 -(CGFloat)getJCZQCellHeight{
     float height = 0;
+    NSInteger rownum;
+    if (KscreenHeight == 568) {
+        rownum = 5;
+    }else{
+        rownum = 7;
+    }
     
     if ([self.lottery isEqualToString:@"JCZQ"]) {
         NSDictionary *dic = [Utility objFromJson:self.betContent];
@@ -95,10 +101,10 @@
             if ([dic isKindOfClass:[NSDictionary class]]) {
                 NSArray *passTypes = (NSArray*)dic[@"passTypes"];
                 
-                if (passTypes.count %7 == 0) {
-                    height += passTypes.count/7 *20;
+                if (passTypes.count %rownum == 0) {
+                    height += passTypes.count/rownum *20;
                 }else{
-                    height += (passTypes.count/7 + 1) *18;
+                    height += (passTypes.count/rownum + 1) *18;
                 }
             }
         }else{

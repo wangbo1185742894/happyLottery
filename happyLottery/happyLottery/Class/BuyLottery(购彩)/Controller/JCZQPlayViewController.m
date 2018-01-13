@@ -169,7 +169,7 @@
                 [self.showArray addObject:showArray];
             }
         }
-        [matchSelectView setLabSelectNumText:[self getMatchNum:self.showArray]];
+        
         [self loadMatchSP];
     }
   
@@ -361,7 +361,7 @@
 }
 
 -(void)selectedLeagueItem:(NSArray *)leaTitleArray{
-    [self lotteryProfileSelectViewDelegate:self.trancation.curProfile andPlayType:self.trancation.playType];
+    [self lotteryProfileSelectViewDelegate:self.trancation.curProfile andPlayType:self.trancation.playType andRes:@"2"];
 //    for (NSMutableArray *marray in self.showArray) {
     for (int i = 0; i < self.showArray.count; i++ ) {
         NSMutableArray *marray = self.showArray[i];
@@ -417,7 +417,10 @@
 
 #pragma  LotteryProfileSelectViewDelegate
 
--(void)lotteryProfileSelectViewDelegate:(JCZQProfile *)lotteryPros andPlayType:(JCZQPlayType)playType{
+-(void)lotteryProfileSelectViewDelegate:(JCZQProfile *)lotteryPros andPlayType:(JCZQPlayType)playType andRes:(NSString *)res{
+    if ([res isEqualToString:@"1"]) {
+        [matchSelectView refreshItemState];
+    }
     WBButton * titleBtn = (WBButton*)self.navigationItem.titleView;
    
     if (![self.trancation.curProfile.Title isEqualToString:lotteryPros.Title] || self.trancation.playType != playType) {
@@ -468,6 +471,7 @@
         NSLog(@"当前过关方式！过关！！！");
     }
     
+    [matchSelectView setLabSelectNumText:[self getMatchNum:self.showArray]];
     
     [self updataSummary];
     
@@ -475,6 +479,7 @@
 }
 
 -(void)cleanAllSelectMatch{
+    self.trancation.beitou = @"1";
     for (NSMutableArray *marrya in self.matchArray) {
         for (JCZQMatchModel *model in marrya) {
             if (model.isSelect == YES) {
@@ -511,7 +516,10 @@
     return cell;
 }
 
-
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self updataSummary];
+}
 
 - (void)optionRightButtonAction{
     //    NSLog(@"haha");
@@ -572,6 +580,7 @@
 
 - (IBAction)actionTouzhu:(id)sender {
     
+    
     [self.trancation.selectMatchArray removeAllObjects];
     JCZQTouZhuViewController *touzhuVC = [[JCZQTouZhuViewController alloc]init];
     for (NSMutableArray *marray in self.showArray) {
@@ -581,17 +590,10 @@
             }
         }
     }
-    
-    if (self.trancation.playType == JCZQPlayTypeGuoGuan) {
-        if (self.trancation.selectMatchArray.count <2) {
-            [self showPromptText:@"过关模式至少选择两场比赛" hideAfterDelay:1.7];
-            return;
-        }
-    }else if (self.trancation.playType == JCZQPlayTypeDanGuan){
-        if (self.trancation.selectMatchArray.count <1) {
-            [self showPromptText:@"过关模式至少选择一场比赛" hideAfterDelay:1.7];
-            return;
-        }
+    NSString *errorMsg = [self couldTouzhu];
+    if (errorMsg) {
+        [self showPromptText:errorMsg hideAfterDelay:2.0];
+        return;
     }
     
     touzhuVC.transction = self.trancation;
@@ -601,6 +603,33 @@
 - (IBAction)actionCleanAll:(id)sender {
     
     
+}
+
+-(NSString *)couldTouzhu{
+    if (self.trancation.playType == JCZQPlayTypeDanGuan) {
+        if (self.trancation.selectMatchArray.count < 1) {
+            return  @"单关模式下，至少保留一场比赛";
+            
+        }
+    }
+    if (self.trancation.playType == JCZQPlayTypeGuoGuan) {
+        if (self.trancation.selectMatchArray.count < 2 ) {
+            if(self.trancation.selectMatchArray.count ==1){
+                JCZQMatchModel *model = [self.trancation.selectMatchArray firstObject];
+                if (model.isDanGuan == YES) {
+                    self.trancation.chuanFa = @"单场";
+                    return nil;
+                }
+                return  @"过关模式下，至少保留两场比赛";
+                
+            }else{
+                return  @"过关模式下，至少保留两场比赛";
+                
+            }
+            
+        }
+    }
+    return nil;
 }
 
 #pragma JCZQMatchViewCellDelegate

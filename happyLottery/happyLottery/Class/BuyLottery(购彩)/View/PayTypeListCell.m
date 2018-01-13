@@ -9,7 +9,12 @@
 
 #import "PayTypeListCell.h"
 
+
 @interface PayTypeListCell ()
+@property (weak, nonatomic) IBOutlet UIButton *btnSelectState;
+@property (weak, nonatomic) IBOutlet UILabel *labPayTypeTitle;
+@property (weak, nonatomic) IBOutlet UIImageView *labPayTypeIcon;
+@property (weak, nonatomic) IBOutlet UILabel *labPayTypeDes;
 
 @end
 
@@ -22,6 +27,25 @@
     return self;
 }
 
+-(void)loadDataWithModel:(ChannelModel *)model{
+    if ([model.channel isEqualToString:@"YUE"]) {
+    self.labPayTypeDes.text = model.descValue;
+    }else{
+        self.labPayTypeDes.hidden = YES;
+    }
+    
+    self.labPayTypeIcon.image = [UIImage imageNamed:model.channelIcon];
+    self.labPayTypeTitle.text = model.channelTitle;
+    self.btnSelectState.selected = model.isSelect;
+}
+-(void)chongzhiLoadDataWithModel:(ChannelModel *)model{
+    
+    self.labPayTypeDes.text = model.descValue;
+    
+    self.labPayTypeIcon.image = [UIImage imageNamed:model.channelIcon];
+    self.labPayTypeTitle.text = model.channelTitle;
+    self.btnSelectState.selected = model.isSelect;
+}
 
 
 @end

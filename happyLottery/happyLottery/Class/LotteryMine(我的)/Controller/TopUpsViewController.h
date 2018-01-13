@@ -7,6 +7,8 @@
 //
 
 #import "BaseViewController.h"
+#import "ChannelModel.h"
+#import "PayTypeListCell.h"
 
 @interface TopUpsViewController : BaseViewController
 

@@ -9,6 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "JczqShortcutModel.h"
 
+@protocol NewsListCellDelegate
+
+-(void)newScollectMatch:(JczqShortcutModel *)model andIsSelect:(BOOL)isSelect;
+
+@end
+
 @interface NewsListCell : UITableViewCell
--(void)refreshData:(JczqShortcutModel * )model;
+@property(nonatomic,weak)id<NewsListCellDelegate >delegate;
+-(void)refreshData:(JczqShortcutModel * )model andSelect:(BOOL)isSelect;
 @end

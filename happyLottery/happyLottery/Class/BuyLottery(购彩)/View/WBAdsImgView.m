@@ -8,6 +8,7 @@
 
 #import "WBAdsImgView.h"
 
+
 @interface WBAdsImgView()<UIScrollViewDelegate>
 {
     
@@ -31,7 +32,7 @@
     return self;
 }
 
--(void)setImageUrlArray:(NSArray *)imgUrls{
+-(void)setImageUrlArray:(NSArray<ADSModel *> *)imgUrls{
     _imgUrls = imgUrls;
     
     pageCtl.numberOfPages = imgUrls.count;
@@ -57,7 +58,7 @@
         itemImg.adjustsImageWhenHighlighted = NO;
         [itemImg setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"ad_home%d.png",i + 1]] forState:0];
         
-        [itemImg sd_setImageWithURL:[NSURL URLWithString:imgUrls[i]] forState:0];
+        [itemImg sd_setImageWithURL:[NSURL URLWithString:imgUrls[i].imgUrl] forState:0];
     }
     [self addSubview:pageCtl];
     

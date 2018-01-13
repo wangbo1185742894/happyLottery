@@ -18,7 +18,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"预约支付";
+    
+    
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -30,7 +34,9 @@
     [self.navigationController pushViewController:schemeVC animated:YES];
 }
 - (IBAction)actionBackHome:(id)sender {
+    
     [self.navigationController popToRootViewControllerAnimated:YES];
+    
 }
 
 -(void)navigationBackToLastPage{

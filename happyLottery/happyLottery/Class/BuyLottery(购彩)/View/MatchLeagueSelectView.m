@@ -73,9 +73,19 @@
     [self jczqCellItemClick:nil];
 }
 
+-(void)refreshItemState{
+    _btnSelectAll.selected = YES;
+    _btnSelectInvert.selected = NO;
+    _btnFiveMatch.selected = NO;
+    for (UIButton *btn in self.arrayItemLea) {
+        btn.selected = YES;
+    }
+}
+
 - (IBAction)actionCancel:(id)sender {
     self.hidden = YES;
 }
+
 - (IBAction)btnSubmit:(id)sender {
     NSMutableArray *selectArray = [NSMutableArray arrayWithCapacity:0];
     for (UIButton *btn in self.arrayItemLea) {

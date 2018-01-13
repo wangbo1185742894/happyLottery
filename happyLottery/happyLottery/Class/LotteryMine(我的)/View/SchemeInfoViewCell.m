@@ -20,14 +20,20 @@
 
 -(void)loadData:(JCZQSchemeItem*)model{
     if ([model.useCoupon boolValue] == YES) {
-        
         self.labIsYouhui.text = @"使用优惠券";
     }else{
         self.labIsYouhui.text = @"未使用优惠券";
     }
-    self.labZheKouJinE.text = [NSString stringWithFormat:@"%.2f",[model.deduction doubleValue]];
-    self.labShiFujine.text =[NSString stringWithFormat:@"%.2f",[model.betCost doubleValue] - [model.deduction doubleValue]];
-    self.labZhifuShijian.text = model.finishedTime;
+    if ([model.costType isEqualToString:@"CASH"]) {
+        self.labZheKouJinE.text = [NSString stringWithFormat:@"%.2f元",[model.deduction doubleValue]];
+        self.labShiFujine.text =[NSString stringWithFormat:@"%.2f元",[model.betCost doubleValue] - [model.deduction doubleValue]];
+        self.labZhifuShijian.text = model.finishedTime;
+    }else{
+        self.labZheKouJinE.text = [NSString stringWithFormat:@"%.2f积分",[model.deduction doubleValue]];
+        self.labShiFujine.text =[NSString stringWithFormat:@"%.2f积分",[model.betCost doubleValue] - [model.deduction doubleValue]];
+        self.labZhifuShijian.text = model.finishedTime;
+    }
+
 }
 
 @end

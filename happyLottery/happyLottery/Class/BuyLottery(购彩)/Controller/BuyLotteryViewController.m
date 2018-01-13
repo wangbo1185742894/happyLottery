@@ -22,12 +22,13 @@
 #import "UMChongZhiViewController.h"
 #import "LoadData.h"
 #import "NewsModel.h"
+#import "ADSModel.h"
 #import "WebShowViewController.h"
 #define KNewsListCell @"NewsListCell"
 
-@interface BuyLotteryViewController ()<WBAdsImgViewDelegate,HomeMenuItemViewDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate>
+@interface BuyLotteryViewController ()<WBAdsImgViewDelegate,HomeMenuItemViewDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,NewsListCellDelegate>
 {
-    NSMutableArray *JczqShortcutList;
+    NSMutableArray  <JczqShortcutModel *>*JczqShortcutList;
     __weak IBOutlet UIView *scrContentView;
     __weak IBOutlet NSLayoutConstraint *homeViewHeight;
     WBAdsImgView *adsView;
@@ -38,11 +39,12 @@
     __weak IBOutlet UITableView *tabForecaseList;
     LoadData *singleLoad;
     NewsModel *newsModel;
-    
+    NSMutableArray <ADSModel *>*adsArray;
     __weak IBOutlet UIImageView *imgNewIcon;
     __weak IBOutlet UILabel *labNewTitle;
     __weak IBOutlet UILabel *labLookNum;
     __weak IBOutlet UILabel *labNewDate;
+    JczqShortcutModel *curModel;
     
 }
 @end
@@ -51,20 +53,55 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSString *doc=[NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *fileName=[doc stringByAppendingPathComponent:@"userInfo.sqlite"];
+    self.fmdb =[FMDatabase databaseWithPath:fileName];
+     singleLoad = [LoadData singleLoadData];
     [self setViewFeature];
     [self setADSUI];
     [self setMenu];
     [self setNewsView];
     [self setTableView];
+    [self loadAdsImg];
+}
+
+-(void)loadAdsImg{
+    adsArray = [NSMutableArray arrayWithCapacity:0];
+    NSString *strUlr = [NSString stringWithFormat:@"%@/app/banner/byChannel?usageChannel=3",ServerAddress];
+    [singleLoad RequestWithString:strUlr isPost:NO andPara:nil andComplete:^(id data, BOOL isSuccess) {
+        if (isSuccess == NO || data == nil) {
+            return ;
+        }
+        NSString *resultStr = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+        NSData *jsonData = [resultStr dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
+        
+        if ([resultDic[@"code"] integerValue] != 0) {
+            return ;
+        }
+        for (NSDictionary *dic in resultDic[@"result"]) {
+            ADSModel *model = [[ADSModel alloc]initWith:dic];
+            [adsArray addObject:model];
+        }
     
+        [adsView setImageUrlArray:adsArray];
+        
+    }];
 }
 
 -(void)loadNews{
-    singleLoad = [LoadData singleLoadData];
+   
     
     NSString *strUlr = [NSString stringWithFormat:@"%@/app/news/showNews?usageChannel=3",ServerAddress];
     [singleLoad RequestWithString:strUlr isPost:NO andPara:nil andComplete:^(id data, BOOL isSuccess) {
-        NSDictionary *dicItem = [self transFomatJson:[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]];
+        
+        if (isSuccess == NO) {
+            return ;
+        }
+        NSString *resultStr = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+        NSData *jsonData = [resultStr dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *dicItem = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
+        
         newsModel = [[NewsModel alloc]initWith: dicItem[@"result"]];
         [self showNew];
     }];
@@ -160,7 +197,7 @@
     adsView = [[WBAdsImgView alloc]initWithFrame:CGRectMake(0,[self isIphoneX]?20:0, KscreenWidth, 175.0/375 * KscreenWidth)];
     adsView.delegate = self;
     [scrContentView addSubview:adsView];
-    [adsView setImageUrlArray:@[@"",@"http://oy9n5uzrj.bkt.clouddn.com/ms/20171205/25b8ff0a955c475bbaf1aa1055dee4a9",@"http://oy9n5uzrj.bkt.clouddn.com/ms/20171128/6d6a844b31f8411e936c91c86ceb1a60"]];
+
 }
 
 -(void)adsImgViewClick:(NSInteger)itemIndex{
@@ -226,7 +263,21 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NewsListCell *cell = [tableView dequeueReusableCellWithIdentifier:KNewsListCell];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell refreshData:JczqShortcutList[indexPath.row]];
+    BOOL isSelect = NO;
+    
+    if ([self .fmdb open]) {
+        FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_collect_match"];
+        do {
+            if ([[result stringForColumn:@"matchKey"] isEqualToString:JczqShortcutList[indexPath.row].matchKey]) {
+                isSelect = YES;
+                break;
+            }
+        } while ([result next]);
+        [self.fmdb close];
+    }
+    
+    [cell refreshData:JczqShortcutList[indexPath.row] andSelect:isSelect];
+    cell.delegate = self;
     return cell;
     
 }
@@ -265,6 +316,57 @@
     showViewVC.pageUrl = [NSURL URLWithString:newsModel.linkUrl];
     showViewVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:showViewVC animated:YES];
+}
+
+//"cardCode":"xxx","matchId":"x","isCollect":"x"
+-(void)newScollectMatch:(JczqShortcutModel *)model andIsSelect:(BOOL)isSelect{
+    if (self.curUser == nil || self.curUser.isLogin == NO) {
+        [self needLogin];
+        return;
+    }
+    curModel = model;
+    [self.lotteryMan collectMatch:@{@"cardCode":self.curUser.cardCode,@"matchKey":model.matchKey,@"isCollect":@(isSelect)}];
+}
+
+-(void)collectedMatch:(BOOL)isSuccess errorMsg:(NSString *)msg andIsSelect:(BOOL)isSelect{
+    if (isSuccess) {
+        if (isSelect) {
+            [self showPromptText:@"收藏成功" hideAfterDelay:1.7];
+        }else{
+            [self showPromptText:@"已取消收藏" hideAfterDelay:1.7];
+        }
+        [self saveCollectMatchInfoToloaction:isSelect];
+    }
+}
+
+//issuccess= [self.fmdb executeUpdate:@"delete from t_user_info where mobile = ? ",mobile];
+//
+//} while ([result next]);
+//
+//[self.fmdb executeUpdate:@"insert into t_user_info (cardCode , loginPwd , isLogin , mobile,payVerifyType) values ( ?,?,?,?,?)  ",user.cardCode,user.loginPwd,@(1),user.mobile,@(1)];
+
+-(void)saveCollectMatchInfoToloaction:(BOOL)isSelect{
+ 
+    BOOL issuccess;
+    if ([self .fmdb open]) {
+        
+        if (isSelect) {
+           issuccess=  [self.fmdb executeUpdate:@"insert into t_collect_match (matchKey) values (?)  ",curModel.matchKey];
+        }else{
+            FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_collect_match"];
+            
+            do {
+                if ([[result stringForColumn:@"matchKey"] isEqualToString:curModel.matchKey]) {
+                   issuccess= [self.fmdb executeUpdate:@"delete from t_collect_match where matchKey = ? ",curModel.matchKey];
+                    break;
+                }
+            } while ([result next]);
+        }
+       
+    }
+    if (issuccess) {
+        [self.fmdb close];
+    }
 }
 
 @end

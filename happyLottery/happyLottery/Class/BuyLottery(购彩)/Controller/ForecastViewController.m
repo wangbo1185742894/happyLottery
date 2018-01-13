@@ -15,7 +15,7 @@
 #define KNewsListCell @"NewsListCell"
 @interface ForecastViewController ()<UITableViewDataSource,UITableViewDelegate,LotteryManagerDelegate>
 {
-    NSMutableArray *JczqShortcutList;
+    NSMutableArray <JczqShortcutModel *> *JczqShortcutList;
     __weak IBOutlet UITableView *tabForecastListView;
 }
 @property(nonatomic,strong)NSMutableArray *arrayTableSectionIsOpen;
@@ -25,6 +25,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSString *doc=[NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *fileName=[doc stringByAppendingPathComponent:@"userInfo.sqlite"];
+    self.fmdb =[FMDatabase databaseWithPath:fileName];
     [self setViewController];
     [self setTableView];
     [self getJczqShortcut];
@@ -73,7 +76,20 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NewsListCell *cell = [tableView dequeueReusableCellWithIdentifier:KNewsListCell];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell refreshData:JczqShortcutList[indexPath.row]];
+    BOOL isSelect = NO;
+    
+    if ([self .fmdb open]) {
+        FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_collect_match"];
+        do {
+            if ([[result stringForColumn:@"matchKey"] isEqualToString:JczqShortcutList[indexPath.row].matchKey]) {
+                isSelect = YES;
+                break;
+            }
+        } while ([result next]);
+        [self.fmdb close];
+    }
+    
+    [cell refreshData:JczqShortcutList[indexPath.row] andSelect:isSelect];
     return cell;
     
 }

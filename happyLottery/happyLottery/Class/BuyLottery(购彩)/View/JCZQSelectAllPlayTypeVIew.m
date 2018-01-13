@@ -26,6 +26,7 @@
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *jczqJQSCellItem;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *jczqBQCCellItem;
 @property (weak, nonatomic) IBOutlet UILabel *labRangQiuNum;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *disItemViewToTop;
 
 @end
 
@@ -37,6 +38,9 @@
     }
     self.selectItemPlay = [NSMutableArray arrayWithCapacity:0];
     self.frame = frame;
+    if (frame.size.height == 568) {
+        self.disItemViewToTop.constant = 15;
+    }
     return self;
 }
 

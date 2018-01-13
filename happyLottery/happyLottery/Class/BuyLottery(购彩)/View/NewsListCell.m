@@ -49,16 +49,23 @@
 }
 - (IBAction)actionCollect:(UIButton *)sender {
     sender.selected = !sender.selected;
+    [self.delegate newScollectMatch:self.model andIsSelect:sender.selected];
 }
 
--(void)refreshData:(JczqShortcutModel * )model{
+
+
+-(void)refreshData:(JczqShortcutModel * )model andSelect:(BOOL)isSelect{
     
+    self.btnCollection.selected = isSelect;
     self.model = model;
     self.labMatchLine.text = model.lineId;
 
     self.labDeadLine.text =[NSString stringWithFormat:@"截止:%@", [model.dealLine substringWithRange:NSMakeRange(5, 11)]];
+    [self.imgHomeIcon sd_setImageWithURL:[NSURL URLWithString:model.homeImageUrl]];
+    [self.imgGuestIcon sd_setImageWithURL:[NSURL URLWithString:model.guestImageUrl]];
     self.labHomeName.text =[NSString stringWithFormat:@"%@",model.homeName] ;
     self.labGuestName.text = [NSString stringWithFormat:@"%@",model.guestName];
+    
     progressView.progress = [model.predictIndex doubleValue] / 100.0;
     for (JcForecastOptions  * op in model.forecastOptions) {
         BOOL isselect = [op.forecast boolValue];

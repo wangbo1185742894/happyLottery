@@ -29,7 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     dataArray = [NSMutableArray arrayWithCapacity:0];
-    self.title = @"我的方案";
+    self.title = @"我的彩票";
     page = 1;
     curSchemeType = CostTypeCASH;
     [self setTableViewLoadRefresh];

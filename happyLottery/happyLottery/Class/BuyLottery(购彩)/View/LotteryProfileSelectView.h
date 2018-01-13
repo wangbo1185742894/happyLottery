@@ -12,7 +12,7 @@
 
 @protocol LotteryProfileSelectViewDelegate
 
--(void)lotteryProfileSelectViewDelegate:(JCZQProfile *)lotteryPros andPlayType:(JCZQPlayType)playType;
+-(void)lotteryProfileSelectViewDelegate:(JCZQProfile *)lotteryPros andPlayType:(JCZQPlayType)playType andRes:(NSString *)res; //1 从代理调用  2  从控制器调用
 
 @end
 

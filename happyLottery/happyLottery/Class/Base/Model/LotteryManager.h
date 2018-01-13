@@ -32,7 +32,9 @@ typedef enum EarningsType{
 - (void) gotSchemeRecord:(NSArray *)infoDic  errorMsg:(NSString *)msg;
 - (void) gotJczqTicketOrderDetail:(NSDictionary *)infoArray  errorMsg:(NSString *)msg;
 - (void) gotSchemeRecordBySchemeNo:(NSDictionary *)infoArray errorMsg:(NSString *)msg;
-
+- (void) gotListByRechargeChannel:(NSArray *)infoArray  errorMsg:(NSString *)msg;
+- (void) collectedMatch:(BOOL )isSuccess errorMsg:(NSString *)msg andIsSelect:(BOOL)isSelect;
+- (void) gotCollectedMatchList:(NSArray *)infoArray  errorMsg:(NSString *)msg;
 @end
 
 @interface LotteryManager : Manager
@@ -59,6 +61,9 @@ typedef enum EarningsType{
 - (void) getSchemeRecord:(NSDictionary *)paraDic;
 - (void) getJczqTicketOrderDetail:(NSDictionary *)paraDic;
 - (void)getSchemeRecordBySchemeNo:(NSDictionary *)paraDic;
+- (void)listByRechargeChannel:(NSDictionary *)paraDic;
+- (void)collectMatch:(NSDictionary *)paraDic;
+- (void)getCollectedMatchList:(NSDictionary *)paraDic;
 
 @end
 

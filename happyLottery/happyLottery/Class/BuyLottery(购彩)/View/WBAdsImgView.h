@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "ADSModel.h"
 @protocol WBAdsImgViewDelegate
 
 -(void)adsImgViewClick:(NSInteger)itemIndex;
@@ -19,7 +20,7 @@
 
 
 @property(nonatomic,weak)id<WBAdsImgViewDelegate>delegate;
--(void)setImageUrlArray:(NSArray *)imgUrls;
+-(void)setImageUrlArray:(NSArray<ADSModel *> *)imgUrls;
 
 
 @end
