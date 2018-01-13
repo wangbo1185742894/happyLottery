@@ -38,13 +38,19 @@
 }
 //_winningStatus    __NSCFString *    @"WAIT_LOTTERY"    0x00000001c462a140
 -(void)reloadDataModel:(JCZQSchemeItem*)model{
+    labTicketCount.adjustsFontSizeToFitWidth = YES;
     scheme = model;
     labSchemeState.text = [model getSchemeState];
     labTicketCount.text = [NSString stringWithFormat:@"出票%@/%@单",model.printCount,model.ticketCount];
     labSchemeTime.text = model.createTime;
     labLottery.text = [self getLotteryByCode:model.lottery];
     labSchemeNo.text = model.schemeNO;
-    labBetCount.text = [NSString stringWithFormat:@"%@注%@倍   %@元",model.units,model.multiple,model.betCost];
+    if ([model.costType isEqualToString:@"CASH"]) {
+        labBetCount.text = [NSString stringWithFormat:@"%@注%@倍   %@元",model.units,model.multiple,model.betCost];
+    }else{
+        labBetCount.text = [NSString stringWithFormat:@"%@注%@倍   %@积分",model.units,model.multiple,model.betCost];
+    }
+    
     labBetCost.text = [self getWinningStatus:model.winningStatus];
     labChuanFa.text = [self getChuanFa];
 }
@@ -75,6 +81,12 @@
 
 -(NSString *)getChuanFa{
     NSString *chuanfa;
+    NSInteger rownum;
+    if (KscreenWidth == 568) {
+        rownum = 5;
+    }else{
+        rownum = 7;
+    }
     
     if ([scheme.lottery isEqualToString:@"JCZQ"]) {
         NSDictionary *dic = [Utility objFromJson:scheme.betContent];
@@ -86,10 +98,10 @@
                 item = [types componentsJoinedByString:@","];
                 NSArray *passTypes =  (NSArray*)dic[@"passTypes"];
                 
-                if (passTypes.count %7 == 0) {
-                    height += passTypes.count/7 *20;
+                if (passTypes.count %rownum == 0) {
+                    height += passTypes.count/rownum *20;
                 }else{
-                    height += (passTypes.count/7 + 1) *18;
+                    height += (passTypes.count/rownum + 1) *18;
                 }
                 
             }else{

@@ -472,6 +472,92 @@
                         failure:failureBlock];
 }
 
+- (void)listByRechargeChannel:(NSDictionary *)paraDic{
+    
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed) {
+            NSArray  *dataArray = [Utility objFromJson:responseJsonStr];
+            [self.delegate gotListByRechargeChannel:dataArray errorMsg:response.errorMsg];
+        } else {
+            [self.delegate gotListByRechargeChannel:nil errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate gotListByRechargeChannel:nil errorMsg:@"服务器错误"];
+    };
+//
+    SOAPRequest *request = [self requestForAPI: APIlistByRechargeChannel withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIDATA
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+
+//参数:
+//params - {"cardCode":"xxxx","page":"xxx","pageSize":"xxx"} 卡号 和 分页信息
+
+- (void)getCollectedMatchList:(NSDictionary *)paraDic{
+    
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed) {
+            NSArray  *dataArray = [Utility objFromJson:responseJsonStr];
+            [self.delegate gotCollectedMatchList:dataArray errorMsg:response.errorMsg];
+        } else {
+            [self.delegate gotCollectedMatchList:nil errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate gotCollectedMatchList:nil errorMsg:@"服务器错误"];
+    };
+    //
+    SOAPRequest *request = [self requestForAPI: APIGetCollectedMatchList withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIDATA
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+
+//params - {"cardCode":"xxx","matchId":"x","isCollect":"x"} cardCode:会员卡号;matchId:赛事Id;isCollect: 收藏:1/true 取消收藏:0/false
+- (void)collectMatch:(NSDictionary *)paraDic{
+    
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        
+        if (response.succeed) {
+            
+            [self.delegate collectedMatch:YES errorMsg:response.errorMsg andIsSelect:[paraDic[@"isCollect"] boolValue]];
+        } else {
+            [self.delegate collectedMatch:NO errorMsg:response.errorMsg andIsSelect:[paraDic[@"isCollect"] boolValue]] ;
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate collectedMatch:NO errorMsg:@"服务器错误" andIsSelect:[paraDic[@"isCollect"] boolValue]];
+    };
+    //
+    SOAPRequest *request = [self requestForAPI: APICollectMatch withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIDATA
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
 
 
 - (NSString *)getStringformfeid :(EarningsType)defaultFeid{

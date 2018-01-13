@@ -14,10 +14,10 @@
 #define NameSpaceURI @"http://webservice.onlytest.com/"
 
 //244服务
-#define WSServerURL @"http://192.168.88.244:28000/services%@"
+//#define WSServerURL @"http://192.168.88.244:28000/services%@"
 
 //史少鹏服务
-//#define WSServerURL @"http://192.168.88.116:28000/services%@"
+#define WSServerURL @"http://192.168.88.116:28000/services%@"
 
 //程家宗服务
 //#define WSServerURL @"http://192.168.88.105:28000/services%@"
@@ -86,7 +86,11 @@
 #define APIlistByJczqScore          @"listByJczqScore"
 #define APIlistByRecScheme          @"listByRecScheme"
 #define APIGetBFZBInfo              @"getBFZBInfo"
+#define APIlistByRechargeChannel    @"listByRechargeChannel"
+#define APICollectMatch             @"collectMatch"
+#define APIGetCollectedMatchList    @"getCollectedMatchList"
 #define APIgetClientDownLoadUrl       @"getClientDownLoadUrl"
+
 
 
 #define SUBAPISchemeService   @"/scheme"

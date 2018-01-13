@@ -15,7 +15,7 @@
 #define KTZSelectMatchCell @"TZSelectMatchCell"
 
 
-@interface JCZQTouZhuViewController ()<UITableViewDelegate,UITableViewDataSource,JingCaiChaunFaSelectViewDelegate,LotteryManagerDelegate>
+@interface JCZQTouZhuViewController ()<UITableViewDelegate,UITableViewDataSource,JingCaiChaunFaSelectViewDelegate,LotteryManagerDelegate,SelectViewDelegate>
 {
     SelectView * peiSelectView;
     NSInteger beiCount;
@@ -43,11 +43,8 @@
     [self setTableView];
     [self setWBSelectView];
     [self setChuanfa];
-    
     [self updataTouzhuInfo];
-    
 }
-
 
 -(void)cleanMatch:(NSNotification*)notification{
     
@@ -58,7 +55,7 @@
             }
         }else{
             if (self.transction.selectMatchArray.count <= 1) {
-                [self showPromptText:@"单关关至少选择一场比赛" hideAfterDelay:1.7];
+                [self showPromptText:@"单关至少选择一场比赛" hideAfterDelay:1.7];
                 return;
             }
         }
@@ -79,12 +76,19 @@
       
             int chuanfakey;
             if ([self.transction.curProfile.Desc isEqualToString:@"BQC"] || [self.transction.curProfile.Desc isEqualToString:@"BF"]) {
-                self.transction.chuanFa = [NSString stringWithFormat:@"%ld串1",self.transction.selectMatchArray.count>4?4:self.transction.selectMatchArray.count];
-                
+                if (self.transction.selectMatchArray.count == 1) {
+                    self.transction.chuanFa = @"单场";
+                }else{
+                    self.transction.chuanFa = [NSString stringWithFormat:@"%ld串1",self.transction.selectMatchArray.count>4?4:self.transction.selectMatchArray.count];
+                }
                 chuanfakey = 4;
             }else if ([self.transction.curProfile.Desc isEqualToString:@"JQS"]) {
+                if (self.transction.selectMatchArray.count == 1) {
+                    self.transction.chuanFa = @"单场";
+                }else{
+                    
                 self.transction.chuanFa = [NSString stringWithFormat:@"%ld串1",self.transction.selectMatchArray.count>6?6:self.transction.selectMatchArray.count];
-                
+                }
                 chuanfakey = 6;
             }else if([self.transction.curProfile.Desc isEqualToString:@"HHGG"]){
                 
@@ -112,19 +116,20 @@
                     }
                 }
                 
-                if (num4 == 0) {
+                
+                if (num6 != 0) {
+                      self.transction.chuanFa = [NSString stringWithFormat:@"%ld串1",self.transction.selectMatchArray.count>6?6 :self.transction.selectMatchArray.count];
+              
+                    
+                }else if(num4 != 0){
+                     self.transction.chuanFa = [NSString stringWithFormat:@"%ld串1",self.transction.selectMatchArray.count>4?4:self.transction.selectMatchArray.count];
+                }else{
                     self.transction.chuanFa = [NSString stringWithFormat:@"%ld串1",self.transction.selectMatchArray.count>8?8:self.transction.selectMatchArray.count];
                     chuanfakey = 8;
-                }else{
-                    self.transction.chuanFa = [NSString stringWithFormat:@"%ld串1",self.transction.selectMatchArray.count>4?4:self.transction.selectMatchArray.count];
                 }
                 
-                if (num6 == 0) {
-                    self.transction.chuanFa = [NSString stringWithFormat:@"%ld串1",self.transction.selectMatchArray.count>8?8:self.transction.selectMatchArray.count];
-                    chuanfakey = 8;
-                }else{
-                    self.transction.chuanFa = [NSString stringWithFormat:@"%ld串1",self.transction.selectMatchArray.count>6?6 :self.transction.selectMatchArray.count];
-                }
+                
+                
             }else{
                 
                 self.transction.chuanFa = [NSString stringWithFormat:@"%ld串1",self.transction.selectMatchArray.count>8?8:self.transction.selectMatchArray.count];
@@ -153,15 +158,21 @@
         self.transction.chuanFa = @"单场";
         if (_transction.selectItems ==nil) {
             _transction.selectItems = [NSMutableArray arrayWithCapacity:0];
-            [_transction.selectItems addObject:_transction.chuanFa];
+            
+        }else{
+            [_transction.selectItems removeAllObjects];
         }
+        
+        [_transction.selectItems addObject:_transction.chuanFa];
     }
 }
 
 -(void)setWBSelectView{
     if (peiSelectView  == nil) {
-         peiSelectView= [[SelectView alloc]initWithFrame:CGRectMake(self.view.mj_w -180, 56, 162, 32) andRightTitle:@"投" andLeftTitle:@"倍"];
+         peiSelectView= [[SelectView alloc]initWithFrame:CGRectMake(KscreenWidth -180, 56, 162, 32) andRightTitle:@"投" andLeftTitle:@"倍"];
     }
+    _viewBottom.mj_w = KscreenWidth;
+    peiSelectView.delegate = self;
     [_viewBottom addSubview:peiSelectView];
     peiSelectView.beiShuLimit = 9999;
     if ([self.transction.beitou isEqualToString:@""] || self.transction.beitou == nil) {
@@ -241,9 +252,9 @@
     
     if (self.transction.selectItems ==nil) {
         self.transction.selectItems = [NSMutableArray arrayWithCapacity:0];
-        [self.transction.selectItems addObject:_transction.chuanFa];
+        
     }
-    
+//    [self.transction.selectItems addObject:_transction.chuanFa];
     jingcaiSelect.selectedItems = self.transction.selectItems;
     jingcaiSelect.transation = self.transction;
     jingcaiSelect.delegate = self;
@@ -281,18 +292,16 @@
     self.transction.betCost  =self.transction.betCount * [self.transction.beitou integerValue] * 2;
     if (btnMoniTouzhu.selected == YES) {
             self.labZhuInfo.text = [NSString stringWithFormat:@"%ld注,%@倍,共%ld积分",self.transction.betCount,self.transction.beitou,self.transction.betCost *100];
-        self.labPrizeInfo.text = [NSString stringWithFormat:@"可中%.0f积分~%.0f积分",[self.transction.minBounds doubleValue]  * 100,[self.transction.mostBounds doubleValue] * 100];
+        self.labPrizeInfo.text = [NSString stringWithFormat:@"可中%.0f积分",[self.transction.mostBounds doubleValue] * 100];
     }else{
-            self.labZhuInfo.text = [NSString stringWithFormat:@"%ld注,%@倍,共%ld元",self.transction.betCount,self.transction.beitou,self.transction.betCost];
-        self.labPrizeInfo.text = [NSString stringWithFormat:@"可中%@元~%@元",self.transction.minBounds,self.transction.mostBounds];
+        self.labZhuInfo.text = [NSString stringWithFormat:@"%ld注,%@倍,共%ld元",self.transction.betCount,self.transction.beitou,self.transction.betCost];
+        self.labPrizeInfo.text = [NSString stringWithFormat:@"最大可中%@元",self.transction.mostBounds];
     }
-
-    
-    
-    
 }
 
 - (IBAction)actionTouzhu:(id)sender {
+    
+  
     
     if (self.curUser == nil || self.curUser.isLogin == NO) {
         [self needLogin];
@@ -304,16 +313,10 @@
         return;
     }
     
-    if (self.transction.playType == JCZQPlayTypeGuoGuan) {
-        if (self.transction.selectMatchArray.count < 2) {
-            [self showPromptText:@"串关至少选择两场比赛" hideAfterDelay:1.7];
-            return;
-        }
-    }else{
-        if (self.transction.selectMatchArray.count < 2) {
-            [self showPromptText:@"单关关至少选择一场比赛" hideAfterDelay:1.7];
-            return;
-        }
+    NSString *errorMsg = [self couldTouzhu];
+    if (errorMsg) {
+        [self showPromptText:errorMsg hideAfterDelay:2.0];
+        return;
     }
     
     self.transction.maxPrize = 1.00;
@@ -331,6 +334,33 @@
     [self.lotteryMan betLotteryScheme:self.transction];
 }
 
+-(NSString *)couldTouzhu{
+    if (self.transction.playType == JCZQPlayTypeDanGuan) {
+        if (self.transction.selectMatchArray.count < 1) {
+            return  @"单关模式下，至少保留一场比赛";
+            
+        }
+    }
+    if (self.transction.playType == JCZQPlayTypeGuoGuan) {
+        if (self.transction.selectMatchArray.count < 2 ) {
+            if(self.transction.selectMatchArray.count ==1){
+                JCZQMatchModel *model = [self.transction.selectMatchArray firstObject];
+                if (model.isDanGuan == YES) {
+                    self.transction.chuanFa = @"单场";
+                    return nil;
+                }
+                return  @"过关模式下，至少保留两场比赛";
+                
+            }else{
+                return  @"过关模式下，至少保留两场比赛";
+                
+            }
+            
+        }
+    }
+    return nil;
+}
+
 - (void) betedLotteryScheme:(NSString *)schemeNO errorMsg:(NSString *)msg{
     if (schemeNO == nil || schemeNO.length == 0) {
         [self showPromptText:msg hideAfterDelay:1.7];
@@ -343,8 +373,16 @@
     schemeCashModel.subCopies = 1;
     if (btnMoniTouzhu.selected == YES) {
         schemeCashModel.costType = CostTypeSCORE;
+        if (self.transction.betCost  > 30000000) {
+            [self showPromptText:@"单笔总积分不能超过3千万积分" hideAfterDelay:1.7];
+            return;
+        }
     }else{
         schemeCashModel.costType = CostTypeCASH;
+        if (self.transction.betCost  > 300000) {
+            [self showPromptText:@"单笔总金额不能超过30万元" hideAfterDelay:1.7];
+            return;
+        }
     }
     schemeCashModel.subscribed = self.transction.betCost;
     schemeCashModel.realSubscribed = self.transction.betCost;
@@ -377,7 +415,7 @@
     }];
     [alert addBtnTitle:@"确定" action:^{
          [[NSNotificationCenter defaultCenter]postNotificationName:KSELECTMATCHCLEAN object:nil];
-        [super navigationBackToLastPage];
+         [super navigationBackToLastPage];
         
     }];
     [alert showAlertWithSender:self];
@@ -385,6 +423,14 @@
 
 -(void)viewDidDisappear:(BOOL)animated{
     [[NSNotificationCenter defaultCenter]removeObserver:self name:KSELECTMATCHCLEAN object:nil];
+}
+
+-(void)update{
+    
+    beiCount =[peiSelectView.labContent.text integerValue]==0?1:[peiSelectView.labContent.text integerValue];
+    self.transction.beitou = [NSString stringWithFormat:@"%zd",beiCount];
+    [self updataTouzhuInfo];
+    
 }
 
 @end

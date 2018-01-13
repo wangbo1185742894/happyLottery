@@ -49,12 +49,13 @@
     NSString *playType;
     NSString *option;
     float curY = 5;
+    viewBetContent.mj_w = KscreenWidth - 20;
     for (NSDictionary *itemDic in modelDic[@"betPlayTypes"]) {
         
         option = [self reloadDataWithRec:itemDic[@"options"] type:itemDic[@"playType"]];
-        float height = [option boundingRectWithSize:CGSizeMake(KscreenWidth - 90, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:13]} context:nil].size.height;
+        float height = [option boundingRectWithSize:CGSizeMake(KscreenWidth - 110, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14]} context:nil].size.height;
         height  = height > 25 ? height:25;
-        UILabel * labOption = [self creactLab:option andFrame:CGRectMake(90, curY, viewBetContent.mj_w - 90, height)];
+        UILabel * labOption = [self creactLab:option andFrame:CGRectMake(90, curY, KscreenWidth - 110, height)];
         labOption.textColor = SystemRed;
         [viewBetContent addSubview:labOption];
         

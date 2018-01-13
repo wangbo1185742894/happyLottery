@@ -35,10 +35,10 @@
 //    1  spf   2 rqspf  3 bf   4  bqc 5hhgg 6jqs 
     JCZQProfile *selectProfile = self.lotteryPros[sender.tag % 100];
     if (sender.tag / 100 == 1) {  //过关
-        [self.delegate lotteryProfileSelectViewDelegate:selectProfile andPlayType:JCZQPlayTypeGuoGuan];
+        [self.delegate lotteryProfileSelectViewDelegate:selectProfile andPlayType:JCZQPlayTypeGuoGuan andRes:@"1"];
     }
     if (sender.tag / 100 == 2) {  // 单关
-        [self.delegate lotteryProfileSelectViewDelegate:selectProfile andPlayType:JCZQPlayTypeDanGuan];
+        [self.delegate lotteryProfileSelectViewDelegate:selectProfile andPlayType:JCZQPlayTypeDanGuan andRes:@"1"];
     }
     [UIView animateWithDuration:0.5 animations:^{
         

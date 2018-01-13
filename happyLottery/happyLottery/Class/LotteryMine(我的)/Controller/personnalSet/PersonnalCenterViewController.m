@@ -372,12 +372,13 @@
          //  NSString *theImagePath = [[NSBundle mainBundle] pathForResource:@"currentImage.png" ofType:@"jpg"];
        // [formData appendPartWithFileURL:[NSURL fileURLWithPath:fullPath] name:@"file" error:nil];
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    
         
-        //成功 后处理。
-        NSLog(@"Success: %@", responseObject);
-        NSDictionary *itemInfo = [self transFomatJson:[[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding]];
+        NSString *resultStr = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+        NSData *jsonData = [resultStr dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *itemInfo = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
+        
         if ([itemInfo[@"code"] isEqualToString:@"0000"]) {
-            //[self showPromptText:@"修改成功" hideAfterDelay:1.8];
             headUrl = itemInfo[@"result"];  //图片url
             [self updateHeadImageClient];
         }

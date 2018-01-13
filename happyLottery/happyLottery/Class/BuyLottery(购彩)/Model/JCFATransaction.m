@@ -12,7 +12,7 @@
 -(NSMutableDictionary*)submitParaDicScheme{
     NSMutableDictionary *submitParaDic = [[NSMutableDictionary alloc]init];
     
-    submitParaDic[@"channelCode"] = @"TBZ";
+    submitParaDic[@"channelCode"] = CHANNEL_CODE;
     submitParaDic[@"schemeType"] = @(self.schemeType);
     submitParaDic[@"secretType"] =@(self.secretType);
     submitParaDic[@"costType"] = @(self.costType);

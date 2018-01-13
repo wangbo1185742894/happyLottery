@@ -20,6 +20,9 @@
 *matchKey,
 *predictIndex,
 *spfSingle,
+ * guestImageUrl,
+ * h5Url,
+ * homeImageUrl,
 *hotspot;
 @property(nonatomic,strong)NSMutableArray<JcForecastOptions*> *forecastOptions;
 @property(nonatomic,strong)JcPairingMatchModel * jcPairingMatchDto;

@@ -97,12 +97,16 @@
     schemeCashModel.subCopies = 1;
     if ([schemeDetail.costType isEqualToString:@"CASH"]) {
         schemeCashModel.costType = CostTypeCASH;
+        
+        schemeCashModel.subscribed = [schemeDetail.betCost integerValue];
+        schemeCashModel.realSubscribed = [schemeDetail.betCost integerValue];
     }else{
         schemeCashModel.costType = CostTypeSCORE;
+        
+        schemeCashModel.subscribed = [schemeDetail.betCost integerValue] /100;
+        schemeCashModel.realSubscribed = [schemeDetail.betCost integerValue]/100;
     }
-    
-    schemeCashModel.subscribed = [schemeDetail.betCost integerValue];
-    schemeCashModel.realSubscribed = [schemeDetail.betCost integerValue];
+   
     payVC.cashPayMemt = schemeCashModel;
     [self.navigationController pushViewController:payVC animated:YES];
 }
@@ -170,12 +174,12 @@
         for (NSDictionary *itemDic in itemArray) {
             
             option = [self reloadDataWithRec:itemDic[@"options"] type:itemDic[@"playType"]];
-            float height =  [option boundingRectWithSize:CGSizeMake(KscreenWidth - 90, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:13]} context:nil].size.height;
+            float height =  [option boundingRectWithSize:CGSizeMake(KscreenWidth - 90, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14]} context:nil].size.height;
             height  = height > 25 ? height:25;
             curY += height;
         }
         
-        return curY + 70;
+        return curY + 80;
     }else if (indexPath.section ==2){
         return 110;
     }

@@ -35,7 +35,13 @@
 }
 
 -(void)refreshData:(JCZQSchemeItem*)model{
-    labSchemeCost.text = [NSString stringWithFormat:@"%@元",model.betCost] ;
+    if ([model.costType isEqualToString:@"CASH"]) {
+        labSchemeCost.text = [NSString stringWithFormat:@"%@元",model.betCost] ;
+
+    }else{
+        
+        labSchemeCost.text = [NSString stringWithFormat:@"%@分",model.betCost] ;
+    }
     labSchemeDate.text = [[model.createTime componentsSeparatedByString:@" "] firstObject];
     
     labSchemeLottery.text = [self getLotteryByCode:model.lottery];

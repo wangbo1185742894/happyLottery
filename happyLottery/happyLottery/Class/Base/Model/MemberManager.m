@@ -613,17 +613,19 @@
     void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
     {
         SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        
         if (response.succeed) {
-            
-            [self.delegate rechargeSmsIsSuccess:YES errorMsg:response.errorMsg];
+            NSDictionary *Info = [self objFromJson: responseJsonStr];
+            [self.delegate rechargeSmsIsSuccess:YES andPayInfo:Info errorMsg:response.errorMsg];
         } else {
-            [self.delegate rechargeSmsIsSuccess:NO errorMsg:response.errorMsg];
+            [self.delegate rechargeSmsIsSuccess:NO andPayInfo:nil errorMsg:response.errorMsg];
             
         }
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate rechargeSmsIsSuccess:NO errorMsg:@"服务器错误"];
+        [self.delegate rechargeSmsIsSuccess:NO andPayInfo:nil errorMsg:@"服务器错误"];
         //失败的代理方法
     };
     //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};

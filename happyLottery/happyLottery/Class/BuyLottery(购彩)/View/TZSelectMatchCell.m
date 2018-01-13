@@ -7,12 +7,13 @@
 //
 
 #import "TZSelectMatchCell.h"
+#import "MGLabel.h"
 @interface TZSelectMatchCell ()
 
 @property (weak, nonatomic) IBOutlet UIView *viewSelectItemContentView;
 @property(strong,nonatomic) JCZQMatchModel *model;
 @property (weak, nonatomic) IBOutlet UILabel *labLineId;
-@property (weak, nonatomic) IBOutlet UILabel *labHomeName;
+@property (weak, nonatomic) IBOutlet MGLabel *labHomeName;
 @property (weak, nonatomic) IBOutlet UILabel *labGuestName;
 
 @end
@@ -28,7 +29,11 @@
 
 -(void)loadData:(JCZQMatchModel *)model{
     self.model = model;
-    self.labHomeName.text = model.homeName;
+    self.labHomeName.text = [NSString stringWithFormat:@"%@(主)",model.homeName];
+    
+    self.labHomeName.keyWord = @"(主)";
+    self.labHomeName.keyWordFont = [UIFont systemFontOfSize:12];
+    self.labHomeName.keyWordColor = SystemBlue;
     self.labGuestName.text = model.guestName;
     self.labLineId.text = model.lineId;
     

@@ -27,7 +27,7 @@
 - (void) addBankCardSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) getBankListSms:(NSDictionary *)bankInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) unBindBankCardSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
-- (void) rechargeSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) rechargeSmsIsSuccess:(BOOL)success andPayInfo:(NSDictionary *)payInfo errorMsg:(NSString *)msg;
 - (void) withdrawSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) sendUpdatePaypwdSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) checkUpdatePaypwdSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;

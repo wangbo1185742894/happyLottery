@@ -14,7 +14,7 @@
     NSMutableDictionary *submitParaDic = [[NSMutableDictionary alloc]init];
     submitParaDic[@"cardCode"] =[[[GlobalInstance instance] curUser] cardCode];
     
-    submitParaDic[@"channelCode"] = @"TBZ";
+    submitParaDic[@"channelCode"] = CHANNEL_CODE;
     submitParaDic[@"costType"] = @(self.costType);
     
     submitParaDic[@"maxPrize"]  = @(100);

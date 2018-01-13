@@ -159,9 +159,6 @@
     
     if(_transation.playType  == JCZQPlayTypeDanGuan)
     {
-        
-        if ([_transation.curProfile.Desc isEqualToString:@"BF"])
-        {
             NSArray * array = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"JingCaiChuanTypeDic" ofType:@"plist"]];
             NSMutableArray * temp = [NSMutableArray array];
             int chuanFaKey = 0;
@@ -274,8 +271,6 @@
             }
             [temp addObjectsFromArray:sortResult];
             self.dataSource = temp;
-            
-        }
         
     }else{
         NSArray * array = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"JingCaiChuanTypeDic" ofType:@"plist"]];
@@ -385,18 +380,31 @@
             }
         }];
         [temp removeAllObjects];
+        BOOL isDanGuan = YES;
+        if(![_transation.curProfile.Desc isEqualToString:@"BF"]&& (_transation.playType == JCZQPlayTypeGuoGuan)){
+            for (JCZQMatchModel *model in self.transation.selectMatchArray) {
+                if (model.isDanGuan == NO) {
+                    isDanGuan = NO;
+                    break;
+                }
+            }
+            
+            if (isDanGuan == YES) {
+                [temp addObject:@"单场"];
+            }
+        }
         
-        if(![_transation.curProfile.Desc isEqualToString:@"BF"]&& (_transation.playType == JCZQPlayTypeDanGuan))
-        {
-            
-            [temp addObject:@"单场"];
-            
-        }
-        //过关玩法若选中场次都支持单关，则玩法支持单关
-        if(![_transation.curProfile.Desc isEqualToString:@"BF"]&& _supportDanguan)
-        {
-            [temp addObject:@"单场"];
-        }
+//        if(![_transation.curProfile.Desc isEqualToString:@"BF"]&& (_transation.playType == JCZQPlayTypeDanGuan))
+//        {
+//
+//
+//
+//        }
+//        //过关玩法若选中场次都支持单关，则玩法支持单关
+//        if(![_transation.curProfile.Desc isEqualToString:@"BF"]&& _supportDanguan)
+//        {
+//            [temp addObject:@"单场"];
+//        }
         
         [temp addObjectsFromArray:sortResult];
         self.dataSource = temp;
