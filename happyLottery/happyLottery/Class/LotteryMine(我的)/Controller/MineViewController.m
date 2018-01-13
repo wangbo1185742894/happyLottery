@@ -49,10 +49,16 @@
 
 @implementation MineViewController
 
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:YES];
-       // [self loadUserInfo];
-    [self autoLogin];
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:YES];
+       //
+    if (isLogin==YES) {
+           [self updateMemberClinet];
+        
+    } else {
+       [self autoLogin];
+    }
+   
     self.memberMan.delegate = self;
 }
 
@@ -75,7 +81,6 @@
 
 -(void)autoLogin{
     
-    isLogin = NO;
 
     if ([self .fmdb open]) {
         FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_user_info"];
@@ -83,14 +88,7 @@
             isLogin = [[result stringForColumn:@"isLogin"] boolValue];
             if (isLogin ==YES ) {
                // _loginBtn.enabled = NO;
-                NSDictionary *MemberInfo;
-                NSString *cardCode =self.curUser.cardCode;
-                if (cardCode == nil) {
-                    return;
-                }
-                    MemberInfo = @{@"cardCode":cardCode
-                    };
-                [self.memberMan getMemberByCardCodeSms:(NSDictionary *)MemberInfo];
+                [self updateMemberClinet];
             }else{
                 [self.loginBtn setTitle:@"登录/注册" forState:UIControlStateNormal];
                 self.loginBtn.enabled = YES;
@@ -100,7 +98,17 @@
     [self.fmdb close];
     
 }
-
+-(void)updateMemberClinet{
+    
+    NSDictionary *MemberInfo;
+    NSString *cardCode =self.curUser.cardCode;
+    if (cardCode == nil) {
+        return;
+    }
+    MemberInfo = @{@"cardCode":cardCode
+                   };
+    [self.memberMan getMemberByCardCodeSms:(NSDictionary *)MemberInfo];
+}
 
 -(void)actionUserLoginSuccess:(NSNotification *)notification{
     
@@ -135,6 +143,7 @@
       // [self showPromptText: @"memberInfo成功" hideAfterDelay: 1.7];
         User *user = [[User alloc]initWith:memberInfo];
         [GlobalInstance instance].curUser = user;
+        [GlobalInstance instance].curUser.isLogin = YES;
          [self saveUserInfo];
         [self loadUserInfo];
         
@@ -168,6 +177,14 @@
     int couponCount = [self.curUser.couponCount intValue];
     NSString *couponCountstr = [NSString stringWithFormat:@"%d",couponCount];
     self.redPacketLab.text = couponCountstr;
+    self.userImage.layer.cornerRadius = 29;
+    self.userImage.layer.masksToBounds = YES;
+    if ([self.curUser.headUrl isEqualToString:@""]) {
+        self.userImage.image = [UIImage imageNamed:@"usermine.png"];
+    }else{
+        
+        self.userImage.image =[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.curUser.headUrl]]];
+    }
 }
 
 
@@ -377,7 +394,7 @@
     [tableView deselectRowAtIndexPath: indexPath animated: YES];
     if (!self.curUser.isLogin) {
         
-        [self needLogin];
+       [self Login];
         return;
     }
     
