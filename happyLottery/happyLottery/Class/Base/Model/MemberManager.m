@@ -344,6 +344,39 @@
                         success:succeedBlock
                         failure:failureBlock];
 }
+
+/**
+ * 修改登录密码密码
+ params - {"mobile":"xxx","oldPaypwd":"xxx","newPaypwd":"xxx","channelCode":"xxx"} mobile 手机号 必填 oldPaypwd 旧密码 newPaypwd 新密码 channelCode 渠道号
+ 
+ * @throws BizException
+ */
+- (void) changeLoginPWDSms:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        if (response.succeed) {
+            
+            [self.delegate changeLoginPWDSmsIsSuccess:YES errorMsg:response.errorMsg];
+        } else {
+            [self.delegate changeLoginPWDSmsIsSuccess:NO errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate changeLoginPWDSmsIsSuccess:NO errorMsg:@"服务器错误"];
+        //失败的代理方法
+    };
+    //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
+    
+    SOAPRequest *request = [self requestForAPI: APIChangeLoginPWDSms withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]} ];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
 /**
  * 修改支付密码时发送短信验证码
  参数:
@@ -938,6 +971,74 @@
     NSDictionary *itemParaDic = @{@"cardCode":paraDic[@"cardCode"]};
     
     SOAPRequest *request = [self requestForAPI: APIgetMemberByCardCode withParam:@{@"params":[self actionEncrypt:[self JsonFromId:itemParaDic]]} ];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+/**
+ * 获取二维码的地址
+ * @param params {"clientType" : "IOS", "channelCode" : "xxxx"}
+ * @return 结果json
+ * @throws BizException
+ */
+- (void) getQRCode:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+         NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed) {
+             //NSDictionary *userInfo = [self objFromJson: responseJsonStr];
+              [self.delegate getQRCodeStateSms:responseJsonStr IsSuccess:YES errorMsg:response.errorMsg];
+        } else {
+            [self.delegate getQRCodeStateSms:nil IsSuccess:YES errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+         [self.delegate getQRCodeStateSms:nil IsSuccess:YES errorMsg:@"服务器错误"];
+        //失败的代理方法
+    };
+    //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
+    
+    SOAPRequest *request = [self requestForAPI: APIgetClientDownLoadUrl withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]} ];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIDATA
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+
+/**
+ * 意见反馈
+ * @param params {"cardCode":"xxx","feedbackContent":"xxx","fkscore":"xxx"}
+ *               cardCode卡号  ；    feedbackContent  反馈内容    ；     fkscore    打分 (可以不填)
+ * @return
+ * @throws BizException
+ */
+- (void)FeedBack:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString * infoString = [response getAPIResponse];
+        if (response.succeed) {
+            NSDictionary * info = [self objFromJson:infoString];
+            [self.delegate FeedBack:info errorMsg:response.errorMsg];
+        }else{
+            [self.delegate FeedBack:NO errorMsg:response.errorMsg];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate FeedBack:YES errorMsg:@"服务器错误"];
+    };
+    
+    SOAPRequest *request = [self requestForAPI:APIfeedBack withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
+    
     [self newRequestWithRequest:request
                          subAPI:SUBAPIMember
       constructingBodyWithBlock:nil

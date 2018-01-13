@@ -40,7 +40,9 @@
 - (void) openRedPacketSms:(NSDictionary *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) getCouponByStateSms:(NSArray *)couponInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) updateImage:(BOOL)success errorMsg:(NSString *)msg;
-
+- (void) getQRCodeStateSms:(NSString *)Info IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) FeedBack:(BOOL)success errorMsg:(NSString *)msg;
+- (void) changeLoginPWDSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 
 @end
 
@@ -60,6 +62,7 @@
 - (void) resetNickSms:(NSDictionary *)paraDic;
 - (void) bandPayPWDSms:(NSDictionary *)paraDic;
 - (void) resetPayPWDSms:(NSDictionary *)paraDic;
+- (void) changeLoginPWDSms:(NSDictionary *)paraDic;
 - (void) bindNameSms:(NSDictionary *)paraDic;
 - (void) addBankCardSms:(NSDictionary *)paraDic;
 - (void) getBankListSms:(NSDictionary *)paraDic;
@@ -77,6 +80,8 @@
 - (void) openRedPacketSms:(NSDictionary *)paraDic;
 - (void) getCouponByStateSms:(NSDictionary *)paraDic;
 - (void)updateImage:(NSDictionary*)paramDic;
+- (void)getQRCode:(NSDictionary*)paraDic;
+- (void)FeedBack:(NSDictionary*)paraDic;
 
 //11.23 活动公告
 - (void)getActivetyMessage:(NSString *)strId;

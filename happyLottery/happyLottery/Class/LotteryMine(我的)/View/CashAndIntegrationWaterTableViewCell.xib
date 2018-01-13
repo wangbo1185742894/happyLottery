@@ -56,12 +56,10 @@
                         <color key="textColor" red="0.1960784314" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="余额" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFa-Xh-bf2">
-                        <rect key="frame" x="69" y="40" width="86" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="余额 :1234567123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFa-Xh-bf2">
+                        <rect key="frame" x="69" y="40" width="118" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="86" id="6cC-Tx-QUe"/>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="86" id="Yyj-2L-jPI"/>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="qmo-vM-5CC"/>
+                            <constraint firstAttribute="width" constant="118" id="dvP-Ae-zco"/>
                             <constraint firstAttribute="height" constant="21" id="uIm-A3-Hdd"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
