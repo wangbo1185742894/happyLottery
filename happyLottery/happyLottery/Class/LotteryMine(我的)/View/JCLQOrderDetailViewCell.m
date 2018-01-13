@@ -100,10 +100,10 @@
         }
     
     if ([winningStatus isEqualToString:@"LOTTERY"]) {
-        float jingjin =[dic[@"bonus"] floatValue];
+        float jingjin =[dic[@"afterTaxBonus"] floatValue];
         self.labJiangjin.text = [NSString stringWithFormat:@"%.2f元",jingjin];
         
-        [self setLabTextColor:SystemGreen];
+        [self setLabTextColor:SystemRed];
         //                self.labJiangjin.text = [NSString stringWithFormat:@"%.2f",jingjin];
     }else if([winningStatus isEqualToString:@"NOT_LOTTERY"]){
         

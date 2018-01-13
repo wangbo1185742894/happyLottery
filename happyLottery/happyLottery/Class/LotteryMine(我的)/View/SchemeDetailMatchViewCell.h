@@ -10,5 +10,5 @@
 #import "JCZQSchemeModel.h"
 
 @interface SchemeDetailMatchViewCell : UITableViewCell
--(void)refreshData:(NSDictionary  *)modelDic;
+-(void)refreshData:(NSDictionary  *)modelDic andResult:(NSArray<OpenResult *> *)resultArray;
 @end

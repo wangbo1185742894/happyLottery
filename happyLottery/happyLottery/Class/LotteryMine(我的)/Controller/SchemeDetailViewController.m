@@ -72,7 +72,6 @@
         heightZhifuView.constant = 60;
     }else{
         heightZhifuView.constant = 0;
-        
     }
     [tabMatchListVIew reloadData];
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -147,7 +146,7 @@
         NSDictionary *betContent = [Utility objFromJson: schemeDetail.betContent];
         if (schemeDetail != nil) {
             NSArray *betMatches = betContent[@"betMatches"];
-            [matchCell refreshData:betMatches[indexPath.row]];
+            [matchCell refreshData:betMatches[indexPath.row] andResult:schemeDetail.trOpenResult];
         }
         cell = matchCell;
     }else if (indexPath.section == 2){

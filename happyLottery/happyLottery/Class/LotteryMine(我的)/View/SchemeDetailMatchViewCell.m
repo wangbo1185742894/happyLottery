@@ -35,10 +35,17 @@
     }
     return self;
 }
--(void)refreshData:(NSDictionary  *)modelDic{
+-(void)refreshData:(NSDictionary  *)modelDic andResult:(NSArray<OpenResult *> *)resultArray{
     for (UIView *subView in viewBetContent.subviews) {
         [subView removeFromSuperview];
         
+    }
+    
+    OpenResult *open;
+    for (OpenResult *openItem in resultArray) {
+        if ([openItem.matchKey isEqualToString:modelDic[@"matchKey"]]) {
+            open = openItem;
+        }
     }
     
     labMatchLine.text = modelDic[@"matchId"];
@@ -48,29 +55,44 @@
     viewBetContent.layer.borderWidth = 1;
     NSString *playType;
     NSString *option;
+    NSString *result;
     float curY = 5;
     viewBetContent.mj_w = KscreenWidth - 20;
     for (NSDictionary *itemDic in modelDic[@"betPlayTypes"]) {
         
         option = [self reloadDataWithRec:itemDic[@"options"] type:itemDic[@"playType"]];
+//        NSString *
+        NSString *funcName = [self getPlayTypeRecEn:itemDic[@"playType"]] ;
+        SEL func = NSSelectorFromString(funcName);
+        if ([open respondsToSelector:func]) {
+            result = [self reloadDataWithRecResult:@[[open performSelector:func withObject:nil]] type:itemDic[@"playType"]];
+        }
+        
+        
         float height = [option boundingRectWithSize:CGSizeMake(KscreenWidth - 110, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14]} context:nil].size.height;
         height  = height > 25 ? height:25;
-        UILabel * labOption = [self creactLab:option andFrame:CGRectMake(90, curY, KscreenWidth - 110, height)];
-        labOption.textColor = SystemRed;
+        MGLabel * labOption = [self creactLab:option andFrame:CGRectMake(90, curY, KscreenWidth - 110, height)];
+//        labOption.textColor = TEXTGRAYCOLOR;
+        labOption.keyWord = result;
+        labOption.keyWordColor = SystemRed;
         [viewBetContent addSubview:labOption];
         
         playType = [self getPlayTypeRec:itemDic[@"playType"]];
-        UILabel * labPlayType = [self creactLab:playType andFrame:CGRectMake(5, curY, 80, height)];
+        MGLabel * labPlayType = [self creactLab:playType andFrame:CGRectMake(5, curY, 80, height)];
         labPlayType.textColor = SystemBlue;
         [viewBetContent addSubview:labPlayType];
-        
 
         curY += height;
     }
     
     labResult.textColor = SystemRed;
     labResult.keyWord = @"赛果:";
-    labResult.text = @"赛果:待知";
+    if (open == nil) {
+        labResult.text = @"赛果:未知";
+    }else{
+        labResult.text = [NSString stringWithFormat:@"赛果:%@:%@",open.homeScore,open.guestScore];
+    }
+    
     labResult.keyWordColor = SystemBlue;
 }
 
@@ -88,9 +110,9 @@
     
 }
 
--(UILabel*)creactLab:(NSString *)title andFrame:(CGRect)frame{
+-(MGLabel*)creactLab:(NSString *)title andFrame:(CGRect)frame{
     
-    UILabel *tempLab = [[UILabel alloc]initWithFrame:frame];
+    MGLabel *tempLab = [[MGLabel alloc]initWithFrame:frame];
   
         tempLab.text = title;
     
@@ -101,6 +123,37 @@
     
 }
 
+-(NSString *)getPlayTypeRecEn:(NSString *)playType{
+    
+    NSString*playTypeStr ;
+    switch ([playType integerValue]) {
+        case 1:
+            playTypeStr = @"SPF";
+            
+            break;
+        case 5:
+            playTypeStr = @"RQSPF";
+            
+            
+            break;
+        case 4:
+            playTypeStr = @"BQC";
+            break;
+        case 2:
+            
+            playTypeStr = @"JQS";
+            
+            break;
+        case 3:
+            
+            playTypeStr = @"BF";
+            
+            break;
+        default:
+            break;
+    }
+    return playTypeStr;
+}
 
 -(NSString *)getPlayTypeRec:(NSString *)playType{
     
@@ -132,6 +185,58 @@
             break;
     }
     return playTypeStr;
+}
+
+-(NSString *)reloadDataWithRecResult:(NSArray *)option type:(NSString *)playType{
+    
+    NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"JingCaiOrderCode" ofType: @"plist"]] ;
+    NSDictionary *contentArray;
+    NSInteger index;
+    NSMutableString*content = [NSMutableString string];
+    switch ([playType integerValue]) {
+        case 1:
+            index = 100;
+            contentArray = dic[@"SPF"];
+            
+            break;
+        case 5:
+            index = 200;
+            contentArray = dic[@"RQSPF"];
+            
+            break;
+        case 4:
+            index = 400;
+            contentArray = dic[@"BQC"];
+            
+            break;
+        case 2:
+            index = 300;
+            contentArray = dic[@"JQS"];
+            
+            break;
+        case 3:
+            index = 500;
+            contentArray = dic[@"BF"];
+            
+            break;
+        default:
+            break;
+    }
+    
+    for (NSString *op in option) {
+        
+        NSString*type = [self getContent:contentArray andOption:op];
+        [content appendFormat:@"%@",type];
+        [content appendString:@", "];
+        self.num ++;
+    }
+    
+    
+    
+    if (content.length >1) {
+        return content;
+    }
+    return @"";
 }
 
 -(NSString *)reloadDataWithRec:(NSArray *)option type:(NSString *)playType{
@@ -194,4 +299,14 @@
     }
     return nil;
 }
+
+-(NSString*)getContent:(NSDictionary*)contentArray andOption:(NSString*)option{
+    for (NSDictionary *dic in contentArray.allValues) {
+        if (dic[option] != nil) {
+            return dic[option];
+        }
+    }
+    return @"";
+}
+
 @end
