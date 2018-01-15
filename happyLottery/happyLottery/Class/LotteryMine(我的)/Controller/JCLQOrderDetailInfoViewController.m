@@ -84,8 +84,7 @@
     NSDictionary *dic = self.dataArray[indexPath.row];
     [cell reloadData:dic];
     return cell;
-}
-
+}  
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     NSDictionary *dic = self.dataArray[indexPath.row];

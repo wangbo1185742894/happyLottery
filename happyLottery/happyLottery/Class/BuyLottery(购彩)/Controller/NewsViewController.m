@@ -86,7 +86,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     WebShowViewController *showViewVC = [[WebShowViewController alloc]init];
-    showViewVC.title = newArray[indexPath.row].title;
+    showViewVC.title = @"资讯详情";
     showViewVC.pageUrl = [NSURL URLWithString:newArray[indexPath.row].linkUrl];
     showViewVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:showViewVC animated:YES];

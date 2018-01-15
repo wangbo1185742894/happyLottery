@@ -29,6 +29,7 @@
 @interface BuyLotteryViewController ()<WBAdsImgViewDelegate,HomeMenuItemViewDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,NewsListCellDelegate>
 {
     NSMutableArray  <JczqShortcutModel *>*JczqShortcutList;
+    __weak IBOutlet UIView *viewNews;
     __weak IBOutlet UIView *scrContentView;
     __weak IBOutlet NSLayoutConstraint *homeViewHeight;
     WBAdsImgView *adsView;
@@ -46,6 +47,7 @@
     __weak IBOutlet UILabel *labNewDate;
     JczqShortcutModel *curModel;
     
+    __weak IBOutlet NSLayoutConstraint *yucViewDisTop;
 }
 @end
 
@@ -95,10 +97,15 @@
     NSString *strUlr = [NSString stringWithFormat:@"%@/app/news/showNews?usageChannel=3",ServerAddress];
     [singleLoad RequestWithString:strUlr isPost:NO andPara:nil andComplete:^(id data, BOOL isSuccess) {
         
-        if (isSuccess == NO) {
+        if (isSuccess == NO || data == nil) {
+            [self isHideNewView:YES];
             return ;
         }
         NSString *resultStr = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+        if (resultStr .length == 0 || resultStr == nil) {
+            [self isHideNewView:YES];
+            return;
+        }
         NSData *jsonData = [resultStr dataUsingEncoding:NSUTF8StringEncoding];
         NSDictionary *dicItem = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
         
@@ -108,11 +115,21 @@
     
 }
 
+-(void)isHideNewView:(BOOL )isHide{
+    if (isHide) {
+        yucViewDisTop.constant = -120;
+        viewNews.hidden = YES;
+    }else{
+        yucViewDisTop.constant = 10;
+        viewNews.hidden = NO;
+    }
+}
+
 -(void)showNew{
     
     [imgNewIcon sd_setImageWithURL:[NSURL URLWithString:newsModel.titleImgUrl]];
     labNewTitle.text = newsModel.title;
-    labNewDate.text = newsModel.newsTime;
+    labNewDate.text = [[newsModel.newsTime componentsSeparatedByString:@" "] firstObject];
     labLookNum.text = [NSString stringWithFormat:@"%@浏览",newsModel.visitNum];
 }
 
@@ -265,15 +282,19 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     BOOL isSelect = NO;
     
-    if ([self .fmdb open]) {
-        FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_collect_match"];
-        do {
-            if ([[result stringForColumn:@"matchKey"] isEqualToString:JczqShortcutList[indexPath.row].matchKey]) {
-                isSelect = YES;
-                break;
-            }
-        } while ([result next]);
-        [self.fmdb close];
+    if (self.curUser .isLogin == YES) {
+        if ([self .fmdb open]) {
+            FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_collect_match"];
+            do {
+                if ([[result stringForColumn:@"matchKey"] isEqualToString:JczqShortcutList[indexPath.row].matchKey] && [[result stringForColumn:@"cardCode"]isEqualToString:self.curUser.cardCode]) {
+                    isSelect = YES;
+                    JczqShortcutList[indexPath.row].isCollect = YES;
+                    break;
+                }
+            } while ([result next]);
+            [self.fmdb close];
+        }
+        
     }
     
     [cell refreshData:JczqShortcutList[indexPath.row] andSelect:isSelect];
@@ -312,7 +333,7 @@
 }
 - (IBAction)actionNewDetail:(id)sender {
     WebShowViewController *showViewVC = [[WebShowViewController alloc]init];
-    showViewVC.title = newsModel.title;
+    showViewVC.title = @"资讯详情";
     showViewVC.pageUrl = [NSURL URLWithString:newsModel.linkUrl];
     showViewVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:showViewVC animated:YES];
@@ -351,13 +372,13 @@
     if ([self .fmdb open]) {
         
         if (isSelect) {
-           issuccess=  [self.fmdb executeUpdate:@"insert into t_collect_match (matchKey) values (?)  ",curModel.matchKey];
+           issuccess=  [self.fmdb executeUpdate:@"insert into t_collect_match (matchKey,cardCode) values (?,?)  ",curModel.matchKey,self.curUser.cardCode];
         }else{
             FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_collect_match"];
             
             do {
-                if ([[result stringForColumn:@"matchKey"] isEqualToString:curModel.matchKey]) {
-                   issuccess= [self.fmdb executeUpdate:@"delete from t_collect_match where matchKey = ? ",curModel.matchKey];
+                if ([[result stringForColumn:@"matchKey"] isEqualToString:curModel.matchKey] &&[[result stringForColumn:@"cardCode"]isEqualToString:self.curUser.cardCode]) {
+                   issuccess= [self.fmdb executeUpdate:@"delete from t_collect_match where matchKey = ? and cardCode = ? ",curModel.matchKey,self.curUser.cardCode];
                     break;
                 }
             } while ([result next]);
@@ -367,6 +388,7 @@
     if (issuccess) {
         [self.fmdb close];
     }
+    [tabForecaseList reloadData];
 }
 
 @end

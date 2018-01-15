@@ -184,6 +184,8 @@
 		2D5171BA2008545F00C3CD7F /* ChannelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5171B92008545F00C3CD7F /* ChannelModel.m */; };
 		2D5171C52008654800C3CD7F /* icon_zhifubao@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D5171C32008654700C3CD7F /* icon_zhifubao@2x.png */; };
 		2D5171C62008654800C3CD7F /* icon_zhifubao@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D5171C42008654700C3CD7F /* icon_zhifubao@3x.png */; };
+		2D5171C92009C3B500C3CD7F /* button_checked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D5171C72009C3B400C3CD7F /* button_checked@2x.png */; };
+		2D5171CA2009C3B500C3CD7F /* button_checked@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D5171C82009C3B400C3CD7F /* button_checked@3x.png */; };
 		2D628B181FEB9E290013D0E1 /* BaseJczaMorePlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D628B171FEB9E290013D0E1 /* BaseJczaMorePlayView.m */; };
 		2D628B231FECA9C40013D0E1 /* touzhubeishujian@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D628B191FECA9C00013D0E1 /* touzhubeishujian@2x.png */; };
 		2D628B241FECA9C40013D0E1 /* touzhuxuanzezhifuselect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D628B1A1FECA9C00013D0E1 /* touzhuxuanzezhifuselect@2x.png */; };
@@ -992,6 +994,8 @@
 		2D5171B92008545F00C3CD7F /* ChannelModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChannelModel.m; sourceTree = "<group>"; };
 		2D5171C32008654700C3CD7F /* icon_zhifubao@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_zhifubao@2x.png"; sourceTree = "<group>"; };
 		2D5171C42008654700C3CD7F /* icon_zhifubao@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_zhifubao@3x.png"; sourceTree = "<group>"; };
+		2D5171C72009C3B400C3CD7F /* button_checked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_checked@2x.png"; sourceTree = "<group>"; };
+		2D5171C82009C3B400C3CD7F /* button_checked@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_checked@3x.png"; sourceTree = "<group>"; };
 		2D628B161FEB9E290013D0E1 /* BaseJczaMorePlayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseJczaMorePlayView.h; sourceTree = "<group>"; };
 		2D628B171FEB9E290013D0E1 /* BaseJczaMorePlayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseJczaMorePlayView.m; sourceTree = "<group>"; };
 		2D628B191FECA9C00013D0E1 /* touzhubeishujian@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "touzhubeishujian@2x.png"; sourceTree = "<group>"; };
@@ -2243,6 +2247,9 @@
 		2D739CC51FEB44E200264044 /* jingcaires */ = {
 			isa = PBXGroup;
 			children = (
+
+				2D5171C72009C3B400C3CD7F /* button_checked@2x.png */,
+				2D5171C82009C3B400C3CD7F /* button_checked@3x.png */,
 				2D8CC0041FF3958C00CC367F /* icon_selected@2x.png */,
 				2D8CC0061FF3958D00CC367F /* icon_normal@2x.png */,
 				2D8CC0071FF3958D00CC367F /* icon_normal@3x.png */,
@@ -3881,6 +3888,7 @@
 				F99927752003511000023F8F /* bluecoupon@2x.png in Resources */,
 				F9F6CA9A1FF5D6B100A49F71 /* about@3x.png in Resources */,
 				F93204ED1FECF98B00E22A27 /* pass1.png in Resources */,
+				2D5171C92009C3B500C3CD7F /* button_checked@2x.png in Resources */,
 				F9F6CA9C1FF5D6B100A49F71 /* arrows@3x.png in Resources */,
 				F94AA9E21FEB7B780021B980 /* bank@2x.png in Resources */,
 				F94AA9EE1FEB9BD50021B980 /* attention@2x.png in Resources */,
@@ -3946,6 +3954,7 @@
 				F93AC8171FFDF035003DF05C /* AboutViewController.xib in Resources */,
 				F9DC69A01FDF88E5007D384D /* IntegralMallViewController.xib in Resources */,
 				F9F6CA9D1FF5D6B100A49F71 /* voice@3x.png in Resources */,
+				2D5171CA2009C3B500C3CD7F /* button_checked@3x.png in Resources */,
 				2D4B1EAF1FDFCDA00034B708 /* arrow_down@2x.png in Resources */,
 				F924BAA31FE252CF00830BF4 /* recommend@3x.png in Resources */,
 				2D739CD81FEB44F400264044 /* yuanjiaowubiankuangnomal@3x.png in Resources */,

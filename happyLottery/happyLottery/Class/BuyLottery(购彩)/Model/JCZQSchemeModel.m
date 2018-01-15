@@ -41,8 +41,19 @@
 
 @implementation JCZQSchemeItem
 -(void)setValue:(id)value forKey:(NSString *)key{
-    self.lotteryIcon = @"football";
-    [super setValue:value forKey:key];
+    if ([key isEqualToString:@"trOpenResult"]) {
+        NSMutableArray *trOpenResult = [[NSMutableArray  alloc]initWithCapacity:0];
+        NSArray *resArray = [Utility objFromJson:value];
+        for (NSDictionary *item in resArray) {
+            OpenResult *result = [[OpenResult alloc]initWith:item];
+            [trOpenResult addObject:result];
+        }
+        self.trOpenResult = trOpenResult;
+    }else{
+        
+        self.lotteryIcon = @"football";
+        [super setValue:value forKey:key];
+    }
     
 }
 
@@ -115,5 +126,9 @@
     }
     return height + 157;
 }
+
+@end
+
+@implementation OpenResult
 
 @end

@@ -11,12 +11,13 @@
 #import "TableHeaderView.h"
 #import "JczqShortcutModel.h"
 #import "UMChongZhiViewController.h"
-
+#import "NewsModel.h"
 #define KNewsListCell @"NewsListCell"
-@interface ForecastViewController ()<UITableViewDataSource,UITableViewDelegate,LotteryManagerDelegate>
+@interface ForecastViewController ()<UITableViewDataSource,UITableViewDelegate,LotteryManagerDelegate,NewsListCellDelegate>
 {
     NSMutableArray <JczqShortcutModel *> *JczqShortcutList;
     __weak IBOutlet UITableView *tabForecastListView;
+    JczqShortcutModel *curModel;
 }
 @property(nonatomic,strong)NSMutableArray *arrayTableSectionIsOpen;
 @end
@@ -81,14 +82,14 @@
     if ([self .fmdb open]) {
         FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_collect_match"];
         do {
-            if ([[result stringForColumn:@"matchKey"] isEqualToString:JczqShortcutList[indexPath.row].matchKey]) {
+            if ([[result stringForColumn:@"matchKey"] isEqualToString:JczqShortcutList[indexPath.row].matchKey] && [[result stringForColumn:@"cardCode"]isEqualToString:self.curUser.cardCode]) {
                 isSelect = YES;
                 break;
             }
         } while ([result next]);
         [self.fmdb close];
     }
-    
+    cell.delegate = self;
     [cell refreshData:JczqShortcutList[indexPath.row] andSelect:isSelect];
     return cell;
     
@@ -149,5 +150,50 @@
     [self.navigationController pushViewController:matchDetailVC animated:YES];
 }
 
+//"cardCode":"xxx","matchId":"x","isCollect":"x"
+-(void)newScollectMatch:(JczqShortcutModel *)model andIsSelect:(BOOL)isSelect{
+    if (self.curUser == nil || self.curUser.isLogin == NO) {
+        [self needLogin];
+        return;
+    }
+    curModel = model;
+    [self.lotteryMan collectMatch:@{@"cardCode":self.curUser.cardCode,@"matchKey":model.matchKey,@"isCollect":@(isSelect)}];
+}
+
+-(void)collectedMatch:(BOOL)isSuccess errorMsg:(NSString *)msg andIsSelect:(BOOL)isSelect{
+    if (isSuccess) {
+        if (isSelect) {
+            [self showPromptText:@"收藏成功" hideAfterDelay:1.7];
+        }else{
+            [self showPromptText:@"已取消收藏" hideAfterDelay:1.7];
+        }
+        [self saveCollectMatchInfoToloaction:isSelect];
+    }
+}
+
+-(void)saveCollectMatchInfoToloaction:(BOOL)isSelect{
+    
+    BOOL issuccess;
+    if ([self .fmdb open]) {
+        
+        if (isSelect) {
+            issuccess=  [self.fmdb executeUpdate:@"insert into t_collect_match (matchKey,cardCode) values (?,?)  ",curModel.matchKey,self.curUser.cardCode];
+        }else{
+            FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_collect_match"];
+            
+            do {
+                if ([[result stringForColumn:@"matchKey"] isEqualToString:curModel.matchKey] &&[[result stringForColumn:@"cardCode"]isEqualToString:self.curUser.cardCode]) {
+                    issuccess= [self.fmdb executeUpdate:@"delete from t_collect_match where matchKey = ? and cardCode = ? ",curModel.matchKey,self.curUser.cardCode];
+                    break;
+                }
+            } while ([result next]);
+        }
+        
+    }
+    if (issuccess) {
+        [self.fmdb close];
+    }
+    [tabForecastListView reloadData];
+}
 
 @end

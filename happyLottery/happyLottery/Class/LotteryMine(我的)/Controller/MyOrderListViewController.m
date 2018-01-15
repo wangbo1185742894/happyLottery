@@ -37,6 +37,7 @@
     [self loadData];
 }
 - (IBAction)actionCostTypeSelect:(UISegmentedControl *)sender {
+    page = 1;
     if (sender.selectedSegmentIndex == 0) {
         curSchemeType = CostTypeCASH;
     }else if (sender.selectedSegmentIndex == 1){
@@ -107,7 +108,18 @@
         return;
     }
     if (page == 1) {
-        [dataArray removeAllObjects];
+         [dataArray removeAllObjects];
+//        NSString *costType = @"CASH";
+//        if (curSchemeType == CostTypeCASH) {
+//            costType = @"CASH";
+//        }else if(curSchemeType == CostTypeSCORE){
+//            costType  = @"SCORE";
+//        }
+//       JCZQSchemeItem *item = [dataArray firstObject];
+//        if ([item.costType isEqualToString:costType]) {
+//
+//        }
+        
     }
     
     for (NSDictionary *itemDic in infoDic) {

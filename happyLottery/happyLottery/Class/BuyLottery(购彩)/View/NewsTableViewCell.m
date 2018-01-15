@@ -35,7 +35,7 @@
     
     self.labNewTitle.text = model.title;
     self.labLookNum.text = [NSString stringWithFormat:@"%ld浏览",[model.visitNum integerValue]];
-    self.labNewTime.text = model.newsTime;
+    self.labNewTime.text = [[model.newsTime componentsSeparatedByString:@" "] firstObject];
     [self.imgNewIcon sd_setImageWithURL:[NSURL URLWithString:model.titleImgUrl]];
     
 }

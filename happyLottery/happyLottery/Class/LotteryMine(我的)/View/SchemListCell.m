@@ -46,9 +46,10 @@
     
     labSchemeLottery.text = [self getLotteryByCode:model.lottery];
     imgLotteryIcon.image = [UIImage imageNamed:model.lotteryIcon];
-    imgWinState.hidden = ![model.won boolValue];
+    
     
     labSchemeState.text = [model getSchemeState];
+    imgWinState.hidden = ![[model getSchemeState] isEqualToString:@"已中奖"];
 }
 
 -(NSString *)getLotteryByCode:(NSString *)code{

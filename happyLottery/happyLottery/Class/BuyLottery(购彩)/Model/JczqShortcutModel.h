@@ -24,6 +24,7 @@
  * h5Url,
  * homeImageUrl,
 *hotspot;
+@property(assign,nonatomic)BOOL isCollect;
 @property(nonatomic,strong)NSMutableArray<JcForecastOptions*> *forecastOptions;
 @property(nonatomic,strong)JcPairingMatchModel * jcPairingMatchDto;
 

@@ -98,17 +98,14 @@
         return;
     }
     curModel = model;
-    [self.lotteryMan collectMatch:@{@"cardCode":self.curUser.cardCode,@"matchKey":model.matchKey,@"isCollect":@(isSelect)}];
+    [self.lotteryMan collectMatch:@{@"cardCode":self.curUser.cardCode,@"matchKey":model.matchKey,@"isCollect":@(NO)}];
 }
 
 -(void)collectedMatch:(BOOL)isSuccess errorMsg:(NSString *)msg andIsSelect:(BOOL)isSelect{
     if (isSuccess) {
-        if (isSelect) {
-            [self showPromptText:@"收藏成功" hideAfterDelay:1.7];
-        }else{
-            [self showPromptText:@"已取消收藏" hideAfterDelay:1.7];
-        }
-        [self saveCollectMatchInfoToloaction:isSelect];
+        [self showPromptText:@"已取消收藏" hideAfterDelay:1.7];
+        [self getJczqShortcut];
+        [self saveCollectMatchInfoToloaction:NO];
     }
 }
 
@@ -118,13 +115,13 @@
     if ([self .fmdb open]) {
         
         if (isSelect) {
-            issuccess=  [self.fmdb executeUpdate:@"insert into t_collect_match (matchKey) values (?)  ",curModel.matchKey];
+            issuccess=  [self.fmdb executeUpdate:@"insert into t_collect_match (matchKeym,cardCode) values (?,?)  ",curModel.matchKey,self.curUser.cardCode];
         }else{
             FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_collect_match"];
             
             do {
-                if ([[result stringForColumn:@"matchKey"] isEqualToString:curModel.matchKey]) {
-                    issuccess= [self.fmdb executeUpdate:@"delete from t_collect_match where matchKey = ? ",curModel.matchKey];
+                if ([[result stringForColumn:@"matchKey"] isEqualToString:curModel.matchKey] && [[result stringForColumn:@"cardCode"]isEqualToString:self.curUser.cardCode]) {
+                    issuccess= [self.fmdb executeUpdate:@"delete from t_collect_match where matchKey = ? and cardCode = ? ",curModel.matchKey,self.curUser.cardCode];
                     break;
                 }
             } while ([result next]);
@@ -134,6 +131,7 @@
     if (issuccess) {
         [self.fmdb close];
     }
+    [self.tabCollectMatchList reloadData];
 }
 
 
