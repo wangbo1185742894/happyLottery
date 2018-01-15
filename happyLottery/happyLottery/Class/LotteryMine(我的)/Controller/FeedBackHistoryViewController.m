@@ -8,6 +8,7 @@
 
 #import "FeedBackHistoryViewController.h"
 #import "FeedBackHistoryTableViewCell.h"
+#import "FeedBackHistory.h"
 
 static NSString * const ReuseIdentifier = @"cell";
 @interface FeedBackHistoryViewController ()<MemberManagerDelegate,UITableViewDelegate,UITableViewDataSource>{
@@ -34,10 +35,32 @@ static NSString * const ReuseIdentifier = @"cell";
       self.memberMan.delegate = self;
     self.tableview.delegate=self;
     self.tableview.dataSource=self;
+    self.tableview.estimatedRowHeight = 120;//很重要保障滑动流畅性
+      self.tableview.rowHeight = UITableViewAutomaticDimension;
      [self.tableview registerNib:[UINib nibWithNibName:NSStringFromClass([FeedBackHistoryTableViewCell class]) bundle:nil] forCellReuseIdentifier:ReuseIdentifier];
     page=1;
-    [self FeedBackHistoryClient];
+    self.dataArray = [[NSMutableArray alloc]init];
+    [self initRefresh];
     
+}
+
+-(void)initRefresh{
+    __weak typeof(self) weakSelf = self;
+    self.tableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        page=1;
+        [weakSelf FeedBackHistoryClient];
+        [self.tableview.mj_header endRefreshing];
+    }];
+    self.tableview.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        page++;
+        //[self.tableView2.mj_header beginRefreshing];
+        [weakSelf FeedBackHistoryClient];
+        
+    }];
+    
+    // 马上进入刷新状态
+    
+    [self.tableview.mj_header beginRefreshing];
 }
 
 -(void)FeedBackHistoryClient{
@@ -47,7 +70,7 @@ static NSString * const ReuseIdentifier = @"cell";
         NSString *cardCode = self.curUser.cardCode;
         Info = @{@"cardCode":cardCode,
                  @"page":pagestr,
-                 @"pageSize":@"10"
+                 @"pageSize":@"5"
                  };
         
     } @catch (NSException *exception) {
@@ -62,63 +85,59 @@ static NSString * const ReuseIdentifier = @"cell";
     NSLog(@"getFeedbackList%@",redPacketInfo);
     if ([msg isEqualToString:@"执行成功"]) {
         //[self showPromptText: @"现金流水成功" hideAfterDelay: 1.7];
-//        NSEnumerator *enumerator = [boltterInfo objectEnumerator];
-//        id object;
-//        if ((object = [enumerator nextObject]) != nil)  {
-//            
-//            NSArray *array =boltterInfo;
-//            
-//            
-//            if (page == 1) {
-//                [listScoreBlotterArray removeAllObjects];
-//                if (array.count>0) {
-//                    for (int i=0; i<array.count; i++) {
-//                        CashBoltter *cashBoltter = [[CashBoltter alloc]initWith:array[i]];
-//                        [listScoreBlotterArray addObject:cashBoltter];
-//                        
-//                    }
-//                    [self.tableView1.mj_footer endRefreshing];
-//                    self.tableView1.hidden = NO;
-//                    self.tableView2.hidden = YES;
-//                    [self.tableView1 reloadData];
-//                    self.emptyView.hidden=YES;
-//                } else{
-//                    
-//                    self.emptyView.hidden=NO;
-//                    self.tableView2.hidden = YES;
-//                    self.tableView1.hidden = YES;
-//                }
-//            }else{
-//                if (array.count>0) {
-//                    //
-//                    for (int i=0; i<array.count; i++) {
-//                        
-//                        CashBoltter *cashBoltter = [[CashBoltter alloc]initWith:array[i]];
-//                        [listScoreBlotterArray addObject:cashBoltter];
-//                        
-//                    }
-//                    if (listScoreBlotterArray.count>0) {
-//                        self.tableView1.hidden = NO;
-//                        self.tableView2.hidden = YES;
-//                        [self.tableView1 reloadData];
-//                        [self.tableView1.mj_footer endRefreshing];
-//                    }else{
-//                        [self.tableView1.mj_footer endRefreshingWithNoMoreData];
-//                        
-//                    }
-//                    
-//                }
-//            }
-//        }else{
-//            [self.tableView1.mj_footer endRefreshingWithNoMoreData];
-//            if (page == 1){
-//                
-//                self.emptyView.hidden=NO;
-//                self.tableView2.hidden = YES;
-//                self.tableView1.hidden = YES;
-//            }
-//        }
-//        
+        NSEnumerator *enumerator = [redPacketInfo objectEnumerator];
+        id object;
+        if ((object = [enumerator nextObject]) != nil)  {
+            
+            NSArray *array =redPacketInfo;
+            
+            
+            if (page == 1) {
+                [_dataArray removeAllObjects];
+                if (array.count>0) {
+                    for (int i=0; i<array.count; i++) {
+                        FeedBackHistory *feedBackHistory = [[FeedBackHistory alloc]initWith:array[i]];
+                        [_dataArray addObject:feedBackHistory];
+                        
+                    }
+                    [self.tableview.mj_footer endRefreshing];
+                    self.tableview.hidden = NO;
+                    [self.tableview reloadData];
+                    //self.emptyView.hidden=YES;
+                } else{
+                    
+                    //self.emptyView.hidden=NO;
+                    self.tableview.hidden = YES;
+                }
+            }else{
+                if (array.count>0) {
+                    //
+                    for (int i=0; i<array.count; i++) {
+                        
+                        FeedBackHistory *feedBackHistory = [[FeedBackHistory alloc]initWith:array[i]];
+                        [_dataArray addObject:feedBackHistory];
+                        
+                    }
+                    if (_dataArray.count>0) {
+                        self.tableview.hidden = NO;
+                        [self.tableview reloadData];
+                        [self.tableview.mj_footer endRefreshing];
+                    }else{
+                        [self.tableview.mj_footer endRefreshingWithNoMoreData];
+                        
+                    }
+                    
+                }
+            }
+        }else{
+            [self.tableview.mj_footer endRefreshingWithNoMoreData];
+            if (page == 1){
+                
+                //self.emptyView.hidden=NO;
+                self.tableview.hidden = YES;
+            }
+        }
+        
         
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
@@ -127,6 +146,15 @@ static NSString * const ReuseIdentifier = @"cell";
 }
 
 #pragma mark - UITableViewDelegate
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    //    if (section == 0) {
+    //        return 0;
+    //    }
+    return 1;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 10;
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.dataArray.count;
@@ -151,11 +179,11 @@ static NSString * const ReuseIdentifier = @"cell";
         return 120;
     }
 }
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return UITableViewAutomaticDimension;
-}
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return 120;
+//}
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {

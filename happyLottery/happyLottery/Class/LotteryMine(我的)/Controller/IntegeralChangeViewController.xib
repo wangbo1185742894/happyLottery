@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IntegeralChangeViewController">
+            <connections>
+                <outlet property="label" destination="XyD-uM-4hi" id="Y57-JI-W1I"/>
+                <outlet property="top" destination="axb-8p-2Dm" id="YYX-Qg-mCW"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Egk-Ra-NbM">
+                    <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wmB-qm-cHA">
+                            <rect key="frame" x="0.0" y="30" width="375" height="378"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dotted.png" translatesAutoresizingMaskIntoConstraints="NO" id="eWJ-r8-GZJ">
+                                    <rect key="frame" x="8" y="59" width="359" height="1"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="359" id="RTM-Ux-jU0"/>
+                                        <constraint firstAttribute="height" constant="1" id="kce-lZ-jgt"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="14" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XyD-uM-4hi">
+                                    <rect key="frame" x="8" y="68" width="359" height="301"/>
+                                    <string key="text">1.300积分可换1元优惠券，每周可兑换5次，满20元可用，有效期7天；
+ 
+2.800积分可换3元优惠券，每周可兑换5次，满60可用，有效期7天；
+ 
+3.1200积分可换5元优惠券，每周可兑换2次，满100可用，有效期7天；
+ 
+4.2100积分可换10元优惠券，每周可兑换2次，满150可用，有效期7天。
+ 
+5.单个订单仅可用一张彩金券进行抵扣。</string>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" red="0.1450980392" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="积分获取途径：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZwR-zF-cZs">
+                                    <rect key="frame" x="8" y="15" width="252" height="34"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="34" id="WgG-sA-s5K"/>
+                                        <constraint firstAttribute="width" constant="252" id="f59-mI-9f0"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" red="0.067504443230000002" green="0.78096091749999996" blue="0.57203906770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="XyD-uM-4hi" secondAttribute="bottom" constant="9" id="1z3-R1-4Oa"/>
+                                <constraint firstItem="XyD-uM-4hi" firstAttribute="leading" secondItem="wmB-qm-cHA" secondAttribute="leading" constant="8" id="24j-Jh-ydL"/>
+                                <constraint firstAttribute="height" constant="378" id="9b9-15-dRd"/>
+                                <constraint firstItem="XyD-uM-4hi" firstAttribute="top" secondItem="eWJ-r8-GZJ" secondAttribute="bottom" constant="8" symbolic="YES" id="Dep-HH-6u8"/>
+                                <constraint firstItem="eWJ-r8-GZJ" firstAttribute="centerX" secondItem="wmB-qm-cHA" secondAttribute="centerX" id="VH6-L9-tki"/>
+                                <constraint firstItem="ZwR-zF-cZs" firstAttribute="leading" secondItem="wmB-qm-cHA" secondAttribute="leading" constant="8" id="Xey-R9-Jte"/>
+                                <constraint firstItem="ZwR-zF-cZs" firstAttribute="top" secondItem="wmB-qm-cHA" secondAttribute="top" constant="15" id="cAV-nL-vNN"/>
+                                <constraint firstAttribute="trailing" secondItem="XyD-uM-4hi" secondAttribute="trailing" constant="8" id="nyC-e2-kLo"/>
+                                <constraint firstItem="XyD-uM-4hi" firstAttribute="centerX" secondItem="wmB-qm-cHA" secondAttribute="centerX" id="xVO-bL-p7b"/>
+                                <constraint firstItem="eWJ-r8-GZJ" firstAttribute="top" secondItem="ZwR-zF-cZs" secondAttribute="bottom" constant="10" id="zu9-HR-TbX"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.96444731949999996" green="0.96840888260000002" blue="0.98488038779999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="wmB-qm-cHA" firstAttribute="top" secondItem="Egk-Ra-NbM" secondAttribute="top" constant="30" id="eUZ-Gj-CTK"/>
+                        <constraint firstItem="wmB-qm-cHA" firstAttribute="leading" secondItem="Egk-Ra-NbM" secondAttribute="leading" id="ifj-sW-MvB"/>
+                        <constraint firstAttribute="trailing" secondItem="wmB-qm-cHA" secondAttribute="trailing" id="jFs-lN-dTA"/>
+                        <constraint firstItem="wmB-qm-cHA" firstAttribute="centerX" secondItem="Egk-Ra-NbM" secondAttribute="centerX" id="oyy-A8-GHe"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Egk-Ra-NbM" secondAttribute="bottom" id="Mte-pw-wW3"/>
+                <constraint firstItem="Egk-Ra-NbM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="axb-8p-2Dm"/>
+                <constraint firstItem="Egk-Ra-NbM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="oUG-gr-7wU"/>
+                <constraint firstAttribute="trailing" secondItem="Egk-Ra-NbM" secondAttribute="trailing" id="ut2-fI-bVJ"/>
+            </constraints>
+            <point key="canvasLocation" x="33.5" y="53.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="dotted.png" width="1" height="1"/>
+    </resources>
+</document>

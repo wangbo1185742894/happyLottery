@@ -14,7 +14,6 @@
                 <outlet property="bottom" destination="E4v-Uo-Uty" id="fBf-Y9-jfk"/>
                 <outlet property="codeImage" destination="nuu-w9-LUU" id="8aM-QM-6Fx"/>
                 <outlet property="codeLab" destination="Xai-M1-Rz2" id="h1b-YQ-653"/>
-                <outlet property="coedBtn" destination="Wnx-Zl-meu" id="b2C-oy-w0W"/>
                 <outlet property="shareBtn" destination="yfL-8d-kSf" id="zsq-hZ-4fl"/>
                 <outlet property="top" destination="E9b-Cq-O18" id="mKX-NU-rWK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -127,19 +126,6 @@
                                 <action selector="shareBtnClick:" destination="-1" eventType="touchUpInside" id="sEH-l9-kpQ"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wnx-Zl-meu">
-                            <rect key="frame" x="302" y="444" width="65" height="30"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="65" id="Lmi-YU-vNI"/>
-                                <constraint firstAttribute="height" constant="30" id="xuE-hm-LlZ"/>
-                            </constraints>
-                            <state key="normal" title="推荐码&gt;&gt;">
-                                <color key="titleColor" red="0.067504443230000002" green="0.78096091749999996" blue="0.57203906770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </state>
-                            <connections>
-                                <action selector="codeBtnClick:" destination="-1" eventType="touchUpInside" id="sQd-FZ-FYn"/>
-                            </connections>
-                        </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="每天首次分享成功可获得100积分，分享后好友通过推荐码注册成功，可获得500积分。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ezj-dc-1SP">
                             <rect key="frame" x="16" y="550" width="343" height="43"/>
                             <constraints>
@@ -199,11 +185,8 @@
                         <constraint firstItem="Xeh-en-nrC" firstAttribute="leading" secondItem="idc-Y6-Gsz" secondAttribute="leading" constant="10" id="3Zu-W8-EvH"/>
                         <constraint firstItem="Ezj-dc-1SP" firstAttribute="centerX" secondItem="idc-Y6-Gsz" secondAttribute="centerX" id="3kE-Rw-Jhb"/>
                         <constraint firstItem="apu-dd-ldN" firstAttribute="top" secondItem="nuu-w9-LUU" secondAttribute="bottom" constant="47" id="4yu-4C-1b3"/>
-                        <constraint firstItem="Ezj-dc-1SP" firstAttribute="top" secondItem="Wnx-Zl-meu" secondAttribute="bottom" constant="76" id="A5t-eX-Whp"/>
                         <constraint firstItem="nuu-w9-LUU" firstAttribute="top" secondItem="Tdi-Vp-Nnx" secondAttribute="bottom" constant="67" id="D4v-Q2-itf"/>
                         <constraint firstItem="8iE-UX-WYE" firstAttribute="top" secondItem="yTV-cG-La2" secondAttribute="bottom" constant="37" id="DBQ-PW-NJz"/>
-                        <constraint firstItem="yTV-cG-La2" firstAttribute="top" secondItem="Wnx-Zl-meu" secondAttribute="bottom" constant="2" id="FYy-Jz-9Ie"/>
-                        <constraint firstItem="Wnx-Zl-meu" firstAttribute="trailing" secondItem="yfL-8d-kSf" secondAttribute="trailing" id="JnW-Bn-BZn"/>
                         <constraint firstItem="RQz-Um-ohi" firstAttribute="centerX" secondItem="idc-Y6-Gsz" secondAttribute="centerX" constant="1" id="Kb1-sg-kvj"/>
                         <constraint firstItem="Tdi-Vp-Nnx" firstAttribute="top" secondItem="idc-Y6-Gsz" secondAttribute="top" constant="27" id="MUM-ih-Vlo"/>
                         <constraint firstItem="yTV-cG-La2" firstAttribute="leading" secondItem="idc-Y6-Gsz" secondAttribute="leading" id="NVO-Th-nBl"/>
@@ -211,17 +194,18 @@
                         <constraint firstItem="Tdi-Vp-Nnx" firstAttribute="leading" secondItem="Xeh-en-nrC" secondAttribute="trailing" constant="8" id="Rwm-kB-Jtw"/>
                         <constraint firstItem="Yvp-Xw-msZ" firstAttribute="top" secondItem="nuu-w9-LUU" secondAttribute="bottom" constant="8" id="U2W-Ng-KnX"/>
                         <constraint firstAttribute="trailing" secondItem="yTV-cG-La2" secondAttribute="trailing" id="Za6-fN-pyq"/>
+                        <constraint firstItem="Ezj-dc-1SP" firstAttribute="top" secondItem="RQz-Um-ohi" secondAttribute="bottom" constant="8" symbolic="YES" id="aky-Je-8hK"/>
                         <constraint firstItem="Xeh-en-nrC" firstAttribute="top" secondItem="idc-Y6-Gsz" secondAttribute="top" constant="30" id="bFw-HB-Hyp"/>
                         <constraint firstItem="apu-dd-ldN" firstAttribute="leading" secondItem="ei7-je-zCf" secondAttribute="trailing" constant="3" id="c8g-ea-JIP"/>
                         <constraint firstItem="yfL-8d-kSf" firstAttribute="centerX" secondItem="idc-Y6-Gsz" secondAttribute="centerX" id="e8S-nx-vzJ"/>
                         <constraint firstItem="yfL-8d-kSf" firstAttribute="top" secondItem="Xai-M1-Rz2" secondAttribute="bottom" constant="22" id="eFJ-NK-cFl"/>
                         <constraint firstItem="zIb-Zg-dfj" firstAttribute="centerX" secondItem="idc-Y6-Gsz" secondAttribute="centerX" id="ecp-is-sDL"/>
-                        <constraint firstItem="Wnx-Zl-meu" firstAttribute="top" secondItem="yfL-8d-kSf" secondAttribute="bottom" constant="15" id="egc-RA-VOp"/>
                         <constraint firstItem="Xai-M1-Rz2" firstAttribute="centerX" secondItem="idc-Y6-Gsz" secondAttribute="centerX" id="erY-Mw-gr2"/>
                         <constraint firstItem="8iE-UX-WYE" firstAttribute="leading" secondItem="RQz-Um-ohi" secondAttribute="trailing" constant="8" id="fur-O4-DQ0"/>
                         <constraint firstItem="nuu-w9-LUU" firstAttribute="centerX" secondItem="idc-Y6-Gsz" secondAttribute="centerX" id="ghK-Gj-EMc"/>
                         <constraint firstItem="ei7-je-zCf" firstAttribute="leading" secondItem="idc-Y6-Gsz" secondAttribute="leading" constant="10" id="h25-I3-mKV"/>
                         <constraint firstItem="ei7-je-zCf" firstAttribute="top" secondItem="Xeh-en-nrC" secondAttribute="bottom" constant="260" id="jt6-o4-4sT"/>
+                        <constraint firstAttribute="bottom" secondItem="Ezj-dc-1SP" secondAttribute="bottom" constant="10" id="kvS-r2-TcM"/>
                         <constraint firstItem="zIb-Zg-dfj" firstAttribute="top" secondItem="Tdi-Vp-Nnx" secondAttribute="bottom" constant="31" id="o8b-9B-Hjr"/>
                         <constraint firstItem="RQz-Um-ohi" firstAttribute="leading" secondItem="4k1-25-5kQ" secondAttribute="trailing" constant="8" id="tR5-YB-77z"/>
                         <constraint firstItem="RQz-Um-ohi" firstAttribute="top" secondItem="yTV-cG-La2" secondAttribute="bottom" constant="30" id="uAn-t5-43i"/>

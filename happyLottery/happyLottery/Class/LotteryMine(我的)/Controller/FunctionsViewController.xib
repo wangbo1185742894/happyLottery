@@ -9,11 +9,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FeedBackHistoryViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FunctionsViewController">
             <connections>
-                <outlet property="bottom" destination="1Ny-Qz-eEh" id="m3N-k0-oJU"/>
-                <outlet property="tableview" destination="VYR-YE-Hep" id="Hjv-80-Zd4"/>
-                <outlet property="top" destination="8FA-Yu-uI3" id="xbV-Sg-2ee"/>
+                <outlet property="bottom" destination="QQL-xc-ajl" id="fa6-XK-2km"/>
+                <outlet property="tableview" destination="17k-pH-UMz" id="501-iv-dAW"/>
+                <outlet property="top" destination="bmE-Cj-hA5" id="kUZ-j8-2kg"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,18 +22,17 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VYR-YE-Hep">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="17k-pH-UMz">
                     <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <color key="sectionIndexBackgroundColor" red="0.96444731950759888" green="0.96840888261795044" blue="0.98488038778305054" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.8977997899055481" green="0.90181249380111694" blue="0.91414159536361694" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="VYR-YE-Hep" secondAttribute="bottom" id="1Ny-Qz-eEh"/>
-                <constraint firstItem="VYR-YE-Hep" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="7cz-aV-iwo"/>
-                <constraint firstItem="VYR-YE-Hep" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="8FA-Yu-uI3"/>
-                <constraint firstAttribute="trailing" secondItem="VYR-YE-Hep" secondAttribute="trailing" id="Eu4-j9-hWj"/>
+                <constraint firstAttribute="trailing" secondItem="17k-pH-UMz" secondAttribute="trailing" id="ETj-MW-Jyf"/>
+                <constraint firstAttribute="bottom" secondItem="17k-pH-UMz" secondAttribute="bottom" id="QQL-xc-ajl"/>
+                <constraint firstItem="17k-pH-UMz" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="bmE-Cj-hA5"/>
+                <constraint firstItem="17k-pH-UMz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="xAk-Ot-NIV"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="54.5"/>
         </view>

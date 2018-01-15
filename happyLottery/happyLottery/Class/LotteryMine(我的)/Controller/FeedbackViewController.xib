@@ -59,10 +59,10 @@
                             <color key="textColor" red="0.1450980392" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBv-95-3lI">
-                            <rect key="frame" x="301" y="186" width="64" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="200/200" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBv-95-3lI">
+                            <rect key="frame" x="286" y="186" width="79" height="21"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="64" id="L3X-98-BnV"/>
+                                <constraint firstAttribute="width" constant="79" id="L3X-98-BnV"/>
                                 <constraint firstAttribute="height" constant="21" id="zEL-87-n57"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -79,6 +79,11 @@
                             <state key="normal" title="发送">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="commitClick:" destination="-1" eventType="touchUpInside" id="7Fv-LB-Mtf"/>
                             </connections>
