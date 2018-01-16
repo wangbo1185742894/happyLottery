@@ -58,6 +58,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"个人信息";
+    self.viewControllerNo = @"";
     if ([self isIphoneX]) {
         // self.bigView.translatesAutoresizingMaskIntoConstraints = NO;
         self.top.constant = 88;

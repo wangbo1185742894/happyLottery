@@ -32,6 +32,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"充值";
+    self.viewControllerNo = @"A105";
     self.payWebView.delegate = self;
     self.memberMan.delegate = self;
     self.lotteryMan.delegate =self;

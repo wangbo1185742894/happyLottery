@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *labZheKouJinE;
 @property (weak, nonatomic) IBOutlet UILabel *labShiFujine;
 @property (weak, nonatomic) IBOutlet UILabel *labZhifuShijian;
+@property (weak, nonatomic) IBOutlet UILabel *labWaitPay;
 -(void)loadData:(JCZQSchemeItem*)model;
 @end

@@ -531,6 +531,33 @@
 }
 
 
+- (void)getlistByHisGains:(NSDictionary *)paraDic{
+    
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed) {
+            NSArray  *dataArray = [Utility objFromJson:responseJsonStr];
+            [self.delegate gotlistByHisGains:dataArray errorMsg:response.errorMsg];
+        } else {
+            [self.delegate gotlistByHisGains:nil errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate gotlistByHisGains:nil errorMsg:@"服务器错误"];
+    };
+    //
+    SOAPRequest *request = [self requestForAPI: APIlistByHisGains withParam:nil];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPISchemeService
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
 //params - {"cardCode":"xxx","matchId":"x","isCollect":"x"} cardCode:会员卡号;matchId:赛事Id;isCollect: 收藏:1/true 取消收藏:0/false
 - (void)collectMatch:(NSDictionary *)paraDic{
     

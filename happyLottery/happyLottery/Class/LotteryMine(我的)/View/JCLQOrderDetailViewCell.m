@@ -199,7 +199,12 @@
         
         NSString*type = [self getContent:contentArray andOption:op];
         NSString *odd = [self getOddWithOption:op matchKey:matchKey];
-        [content appendFormat:@"【%@@%@】",type,odd];
+        
+        if (odd.length == 0 || odd == nil) {
+            [content appendFormat:@"【%@】",type,odd];
+        }else{
+            [content appendFormat:@"【%@@%@】",type,odd];
+        }
     }
     
     if (content.length >1) {

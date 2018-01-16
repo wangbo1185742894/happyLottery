@@ -180,7 +180,12 @@
         
         return curY + 80;
     }else if (indexPath.section ==2){
-        return 110;
+        if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) {
+            return 60;
+        }else{
+            
+            return 110;
+        }
     }
     return 0;
 }

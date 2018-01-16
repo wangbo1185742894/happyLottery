@@ -19,6 +19,10 @@
 }
 
 -(void)loadData:(JCZQSchemeItem*)model{
+    if ([model.schemeStatus isEqualToString:@"INIT"]) {
+        self.labWaitPay.hidden = NO;
+        return;
+    }
     if ([model.useCoupon boolValue] == YES) {
         self.labIsYouhui.text = @"使用优惠券";
     }else{

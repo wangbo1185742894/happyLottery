@@ -29,17 +29,24 @@
     self.YuCeZJTableView.delegate = self;
     self.YuCeZJTableView.dataSource = self;
     [self setLotteryManager];
-    [self showLoadingViewWithText:@"正在加载"];
     
+    [self showLoadingViewWithText:@"正在加载"];
+    [self loadData];
 }
 
-- (void)gotListByHisGains:(NSArray *)infoArr errorMsg:(NSString *)errorMsg{
+-(void)loadData{
+    [self.lotteryMan getlistByHisGains:nil];
+}
+
+
+
+-(void)gotlistByHisGains:(NSArray *)infoArray errorMsg:(NSString *)msg{
     [self hideLoadingView];
-    if (infoArr != nil) {
+    if (infoArray != nil) {
         if (self.dataArr != nil) {
             [self.dataArr removeAllObjects];
         }
-        for (NSDictionary *dic in infoArr) {
+        for (NSDictionary *dic in infoArray) {
             yucezjModel *model = [[yucezjModel alloc]initWith:dic];
             [self.dataArr addObject:model];
         }

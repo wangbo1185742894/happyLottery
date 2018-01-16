@@ -28,6 +28,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.viewControllerNo = @"A204";
     dataArray = [NSMutableArray arrayWithCapacity:0];
     self.title = @"我的彩票";
     page = 1;

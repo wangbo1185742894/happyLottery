@@ -52,12 +52,13 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.viewControllerNo = @"A016";
     page = 0;
     
     self.transaction = [[JCFATransaction alloc]init];
     self.transaction.beiTou = 1;
     self.dataArr = [NSMutableArray arrayWithCapacity:0];
-    self.navigationItem.title = @"竞彩方案";
+    self.title = @"竞彩方案";
     [self.SchemeCreateTableView registerNib:[UINib nibWithNibName:@"YuCeSchemeCreateCell" bundle:nil] forCellReuseIdentifier:@"YuCeSchemeCreateCell"];
     
     self.SchemeCreateTableView.delegate = self;
@@ -86,7 +87,6 @@
 //    [self setTableViewLoadRefresh];
 
 }
-
 
 -(void)setLotteryManager{
     self.curUser = [GlobalInstance instance].curUser;

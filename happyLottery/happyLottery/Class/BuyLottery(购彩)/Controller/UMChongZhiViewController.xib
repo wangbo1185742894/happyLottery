@@ -46,10 +46,10 @@
                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="upg-8Q-WSj">
-                    <rect key="frame" x="0.0" y="627" width="375" height="40"/>
+                    <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z8Q-Ne-OIA">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kxX-FU-XW9">
                                     <rect key="frame" x="10" y="3" width="60" height="25"/>
@@ -209,14 +209,14 @@
                                 <constraint firstItem="kxX-FU-XW9" firstAttribute="top" secondItem="z8Q-Ne-OIA" secondAttribute="top" constant="3" id="kbf-I2-nUO"/>
                                 <constraint firstItem="q1O-r8-yki" firstAttribute="top" secondItem="mf5-XG-cDM" secondAttribute="bottom" constant="10" id="kd2-Nn-XOd"/>
                                 <constraint firstItem="mf5-XG-cDM" firstAttribute="leading" secondItem="z8Q-Ne-OIA" secondAttribute="leading" constant="3" id="oFl-7V-Y4F"/>
-                                <constraint firstAttribute="height" constant="100" id="tbR-Cu-y3k"/>
+                                <constraint firstAttribute="height" constant="110" id="tbR-Cu-y3k"/>
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0cQ-s6-QPm">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                             <color key="backgroundColor" red="0.070588235289999995" green="0.78039215689999997" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="40" id="WsP-f6-Vwj"/>
+                                <constraint firstAttribute="height" constant="50" id="WsP-f6-Vwj"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal" title="预约投注">
@@ -229,7 +229,7 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="3mC-vy-0EA"/>
+                        <constraint firstAttribute="height" constant="50" id="3mC-vy-0EA"/>
                         <constraint firstItem="z8Q-Ne-OIA" firstAttribute="leading" secondItem="upg-8Q-WSj" secondAttribute="leading" id="Bia-9J-9YG"/>
                         <constraint firstAttribute="trailing" secondItem="0cQ-s6-QPm" secondAttribute="trailing" id="I6e-EW-uBc"/>
                         <constraint firstItem="z8Q-Ne-OIA" firstAttribute="top" secondItem="upg-8Q-WSj" secondAttribute="top" id="Jq4-Om-ysf"/>

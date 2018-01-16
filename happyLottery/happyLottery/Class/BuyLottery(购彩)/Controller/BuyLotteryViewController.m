@@ -34,6 +34,7 @@
     __weak IBOutlet NSLayoutConstraint *homeViewHeight;
     WBAdsImgView *adsView;
     UIView  *menuView;
+    __weak IBOutlet UIView *viewNewDefault;
     CGFloat curY;
     __weak IBOutlet NSLayoutConstraint *newsViewMarginTop;
     __weak IBOutlet NSLayoutConstraint *tabForecastListHeight;
@@ -56,6 +57,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSString *doc=[NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    
     NSString *fileName=[doc stringByAppendingPathComponent:@"userInfo.sqlite"];
     self.fmdb =[FMDatabase databaseWithPath:fileName];
      singleLoad = [LoadData singleLoadData];
@@ -117,11 +119,11 @@
 
 -(void)isHideNewView:(BOOL )isHide{
     if (isHide) {
-        yucViewDisTop.constant = -120;
-        viewNews.hidden = YES;
+        
+        viewNewDefault.hidden = NO;
     }else{
-        yucViewDisTop.constant = 10;
-        viewNews.hidden = NO;
+        viewNewDefault.hidden = YES;
+        
     }
 }
 
@@ -383,7 +385,6 @@
                 }
             } while ([result next]);
         }
-       
     }
     if (issuccess) {
         [self.fmdb close];

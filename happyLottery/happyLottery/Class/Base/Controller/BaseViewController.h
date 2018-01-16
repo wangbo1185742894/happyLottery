@@ -12,7 +12,7 @@
 #import "FMDB.h"
 
 @interface BaseViewController : UIViewController
-
+@property (nonatomic ,strong)NSString *viewControllerNo;
 @property (nonatomic,strong)MemberManager * memberMan;
 @property (nonatomic,strong)LotteryManager * lotteryMan;
 

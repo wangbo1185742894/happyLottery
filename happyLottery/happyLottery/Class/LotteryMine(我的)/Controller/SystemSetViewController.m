@@ -22,6 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.viewControllerNo = @"A208";
     self.title = @"系统设置";
     if ([self isIphoneX]) {
         self.top.constant = 88;

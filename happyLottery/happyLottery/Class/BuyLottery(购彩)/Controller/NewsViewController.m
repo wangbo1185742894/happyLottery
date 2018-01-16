@@ -26,6 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.viewControllerNo = @"A017";
     [self setViewController];
     [self setTableView];
     [self loadNews];

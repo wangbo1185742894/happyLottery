@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="72"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="72"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="71.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OdR-gB-P0r">
@@ -56,17 +56,16 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rxt-1o-nFr">
-                        <rect key="frame" x="250" y="40" width="60" height="15"/>
+                        <rect key="frame" x="310" y="40" width="0.0" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="9AX-1m-OnT"/>
-                            <constraint firstAttribute="width" constant="60" id="tMe-0h-y6w"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.070588235289999995" green="0.78039215689999997" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="win.png" translatesAutoresizingMaskIntoConstraints="NO" id="xgh-pu-bHw">
-                        <rect key="frame" x="212" y="30" width="35" height="35"/>
+                        <rect key="frame" x="272" y="30" width="35" height="35"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="35" id="1Yy-cS-KQo"/>
                             <constraint firstAttribute="height" constant="35" id="aop-kJ-3fr"/>
