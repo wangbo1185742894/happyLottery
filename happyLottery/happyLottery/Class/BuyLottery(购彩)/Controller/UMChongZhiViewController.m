@@ -60,7 +60,7 @@
     if (self.isHis == YES) {
         self.webViewdisBottom.constant = 0;
     }else{
-        self.webViewdisBottom.constant =40;
+        self.webViewdisBottom.constant = 50;
         
     }
     self.viewBottom.hidden = self.isHis;

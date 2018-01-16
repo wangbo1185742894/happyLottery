@@ -35,6 +35,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.viewControllerNo  = @"A107";
     self.title = @"我的消息";
     self.memberMan.delegate = self;
     self.tableView1.delegate = self;

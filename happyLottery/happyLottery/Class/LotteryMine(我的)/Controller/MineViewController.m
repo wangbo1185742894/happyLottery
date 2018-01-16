@@ -57,12 +57,12 @@
         if ([result next] && [result stringForColumn:@"mobile"] != nil) {
             isLogin = [[result stringForColumn:@"isLogin"] boolValue];
     if (isLogin==YES) {
-           [self updateMemberClinet];
+        [self updateMemberClinet];
         
     } else {
-       [self autoLogin];
+        [self autoLogin];
     }
-    
+
         }
     }
     [self.fmdb close];
@@ -71,6 +71,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.viewControllerNo = @"A201";
     self.memberMan.delegate = self;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(actionUserLoginSuccess:) name:NotificationNameUserLogin object:nil];
      listArray = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Mine" ofType: @"plist"]];
@@ -82,6 +83,7 @@
     _tableview.dataSource = self;
     
     [self noticeCenterSet];
+    
      // [self loadUserInfo];
     [_tableview reloadData];
 }
@@ -106,7 +108,14 @@
     }
     MemberInfo = @{@"cardCode":cardCode
                    };
+    
     [self.memberMan getMemberByCardCodeSms:(NSDictionary *)MemberInfo];
+}
+
+-(void)gotisSignInToday:(NSArray *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    if (success ) {
+        
+    }
 }
 
 -(void)actionUserLoginSuccess:(NSNotification *)notification{
@@ -145,7 +154,7 @@
         [GlobalInstance instance].curUser.isLogin = YES;
          [self saveUserInfo];
         [self loadUserInfo];
-        
+        [self.memberMan isSignInToday:@{@"cardCode":self.curUser.cardCode}];
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
     }
@@ -249,10 +258,18 @@
     if (!self.curUser.isLogin) {
         [self Login];
     } else {
-        
+        [self.memberMan signIn:@{@"cardCode":self.curUser.cardCode,@"activityId":@"1"}];
     }
-    
 }
+
+-(void)signInIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    if (success) {
+        [self showPromptText:@"签到成功" hideAfterDelay:1.7];
+    }
+}
+
+
+
 - (IBAction)blanceBtnClick:(id)sender {
      if (!self.curUser.isLogin) {
         [self Login];

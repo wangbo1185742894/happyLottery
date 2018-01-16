@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="390" height="112"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="390" height="111.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="390" height="112"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="实付金额：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KHB-Tp-M3j">
@@ -91,9 +91,18 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂未支付，请立即支付" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ojk-9c-2S3">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="112"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="1" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Zah-fj-fCv" firstAttribute="top" secondItem="KHB-Tp-M3j" secondAttribute="bottom" constant="8" id="141-kj-g5F"/>
+                    <constraint firstItem="Ojk-9c-2S3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="6vr-Ag-K4o"/>
+                    <constraint firstAttribute="bottom" secondItem="Ojk-9c-2S3" secondAttribute="bottom" id="B8n-AS-hMM"/>
                     <constraint firstItem="E0v-Le-rOM" firstAttribute="leading" secondItem="Zah-fj-fCv" secondAttribute="trailing" constant="7.5" id="C6l-b4-Y3H"/>
                     <constraint firstItem="v0m-pB-yE4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="CK8-v4-8gE"/>
                     <constraint firstItem="6wn-pg-INB" firstAttribute="top" secondItem="Syj-Ln-iPa" secondAttribute="bottom" constant="8" id="Cdb-i2-X44"/>
@@ -111,7 +120,9 @@
                     <constraint firstItem="6wn-pg-INB" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="co0-tE-hsg"/>
                     <constraint firstItem="KHB-Tp-M3j" firstAttribute="top" secondItem="myZ-2J-i2W" secondAttribute="bottom" constant="8" id="dmt-7f-dQW"/>
                     <constraint firstItem="myZ-2J-i2W" firstAttribute="top" secondItem="v0m-pB-yE4" secondAttribute="bottom" constant="8" id="gYR-Tg-8f9"/>
+                    <constraint firstItem="Ojk-9c-2S3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="haQ-nC-ZQt"/>
                     <constraint firstItem="E0v-Le-rOM" firstAttribute="top" secondItem="6wn-pg-INB" secondAttribute="bottom" constant="8" id="jiI-5g-1ZK"/>
+                    <constraint firstAttribute="trailing" secondItem="Ojk-9c-2S3" secondAttribute="trailing" id="kce-aY-Fjz"/>
                     <constraint firstItem="Syj-Ln-iPa" firstAttribute="leading" secondItem="myZ-2J-i2W" secondAttribute="trailing" constant="8" id="l66-0s-tUs"/>
                     <constraint firstItem="KHB-Tp-M3j" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="t2G-HE-bF6"/>
                     <constraint firstItem="Zah-fj-fCv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="xGD-eS-h7T"/>
@@ -120,6 +131,7 @@
             <connections>
                 <outlet property="labIsYouhui" destination="gtm-Rc-EO2" id="DXW-gY-z3g"/>
                 <outlet property="labShiFujine" destination="6wn-pg-INB" id="zBm-Pq-hUc"/>
+                <outlet property="labWaitPay" destination="Ojk-9c-2S3" id="sI5-fe-mPW"/>
                 <outlet property="labZheKouJinE" destination="Syj-Ln-iPa" id="GPo-q9-Cju"/>
                 <outlet property="labZhifuShijian" destination="E0v-Le-rOM" id="9Bt-JN-rgT"/>
             </connections>

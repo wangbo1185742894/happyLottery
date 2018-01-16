@@ -44,8 +44,11 @@
 - (void) FeedBack:(BOOL)success errorMsg:(NSString *)msg;
 - (void) changeLoginPWDSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) getFeedbackListSms:(NSArray *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+
 - (void) upMemberShareSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 
+- (void) signInIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) gotisSignInToday:(NSArray *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 @end
 
 @interface MemberManager : Manager
@@ -89,6 +92,8 @@
 
 //11.23 活动公告
 - (void)getActivetyMessage:(NSString *)strId;
+- (void) signIn:(NSDictionary *)paraDic;
+- (void) isSignInToday:(NSDictionary *)paraDic;
 
 
 @end

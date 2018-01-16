@@ -728,7 +728,7 @@
 //
 //        }
         
-        self.mostBounds = [NSString stringWithFormat:@"%.2f",temp*[self.beitou integerValue] *2];
+        self.mostBounds = [NSString stringWithFormat:@"%.2f",temp*[self.beitou integerValue]];
 //        self.minBounds = [NSString stringWithFormat:@"%.2f",tempMin*[self.beitou integerValue]];
         return;
     }
@@ -828,7 +828,7 @@
                 bouns_temp += value;
             }
         }
-        float total_bounds = bouns_temp * [_beitou intValue] * 2;
+        float total_bounds = bouns_temp * [_beitou intValue];
         self.mostBounds = [NSString stringWithFormat:@"%.2f",total_bounds];
         
 //        bouns_temp = 0;
@@ -911,7 +911,7 @@
             singleMaxBounds = 1000000;
         }
         float bounds = [self calculateBetCount:match_valid_odd_array baseNumArray:baseNumArray];
-        float total_bounds = bounds * [_beitou intValue] * 2;
+        float total_bounds = bounds * [_beitou intValue];
         self.mostBounds = [NSString stringWithFormat:@"%.2f",total_bounds];
 //        bounds = [self calculateBetCount:match_min_valid_odd_array baseNumArray:baseNumArray];
 //        total_bounds = bounds * [_beitou intValue];

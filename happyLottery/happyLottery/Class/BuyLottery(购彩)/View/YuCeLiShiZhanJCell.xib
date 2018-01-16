@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="93.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="membericon.png" translatesAutoresizingMaskIntoConstraints="NO" id="HHw-BY-eNk">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="buddha.png" translatesAutoresizingMaskIntoConstraints="NO" id="HHw-BY-eNk">
                         <rect key="frame" x="8" y="8" width="34" height="34"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="34" id="9no-uh-qk8"/>
@@ -71,7 +71,7 @@
                             <constraint firstAttribute="width" constant="100" id="vU7-74-hW3"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                        <color key="textColor" red="0.90588235289999997" green="0.36862745099999999" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="textColor" red="0.87450980389999999" green="0.22352941179999999" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="明天的天气" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pr2-jp-tSz">
@@ -83,7 +83,7 @@
                         <color key="textColor" red="0.28235294117647058" green="0.28235294117647058" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="win_img_history.png" translatesAutoresizingMaskIntoConstraints="NO" id="YDv-4a-ett">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="win.png" translatesAutoresizingMaskIntoConstraints="NO" id="YDv-4a-ett">
                         <rect key="frame" x="260" y="35" width="50" height="50"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="50" id="AS4-7z-C6q"/>
@@ -123,7 +123,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="membericon.png" width="55" height="55"/>
-        <image name="win_img_history.png" width="50" height="50"/>
+        <image name="buddha.png" width="35" height="35"/>
+        <image name="win.png" width="35" height="31"/>
     </resources>
 </document>

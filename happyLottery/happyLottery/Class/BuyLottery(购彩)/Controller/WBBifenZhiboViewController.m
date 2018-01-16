@@ -40,7 +40,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.viewControllerNo = @"A108";
     self.dataArray = [NSMutableArray arrayWithCapacity:0];
     
     lotteryMan = [[LotteryManager alloc] init];

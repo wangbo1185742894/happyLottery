@@ -21,6 +21,7 @@
                 <outlet property="tabForecaseList" destination="Jpl-IJ-OIq" id="U9k-tj-3Ve"/>
                 <outlet property="tabForecastListHeight" destination="gwE-md-6LI" id="NOv-5r-PIo"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewNewDefault" destination="Lu8-xj-pXr" id="yBp-C6-81F"/>
                 <outlet property="viewNews" destination="3HX-tS-NpW" id="RNJ-nD-cuE"/>
                 <outlet property="yucViewDisTop" destination="IKD-Lz-KGT" id="Qj1-F1-yre"/>
             </connections>
@@ -114,11 +115,43 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lu8-xj-pXr">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="newicon_default.png" translatesAutoresizingMaskIntoConstraints="NO" id="wEH-lA-tLB">
+                                                    <rect key="frame" x="255" y="0.0" width="120" height="110"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="120" id="vNV-Pz-yqg"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="掌握最新资讯，知晓最佳推荐" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IDx-af-X38">
+                                                    <rect key="frame" x="0.0" y="43" width="255" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25" id="Lqs-lT-QL7"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="wEH-lA-tLB" firstAttribute="top" secondItem="Lu8-xj-pXr" secondAttribute="top" id="QiR-GT-Iyo"/>
+                                                <constraint firstItem="wEH-lA-tLB" firstAttribute="leading" secondItem="IDx-af-X38" secondAttribute="trailing" id="S9I-ln-ewN"/>
+                                                <constraint firstItem="IDx-af-X38" firstAttribute="centerY" secondItem="Lu8-xj-pXr" secondAttribute="centerY" id="SpC-Dt-Abz"/>
+                                                <constraint firstAttribute="bottom" secondItem="wEH-lA-tLB" secondAttribute="bottom" id="aOO-O6-TQJ"/>
+                                                <constraint firstAttribute="trailing" secondItem="wEH-lA-tLB" secondAttribute="trailing" id="gbP-yP-yXE"/>
+                                                <constraint firstItem="IDx-af-X38" firstAttribute="leading" secondItem="Lu8-xj-pXr" secondAttribute="leading" id="maa-Ns-Fn2"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
+                                        <constraint firstItem="Lu8-xj-pXr" firstAttribute="leading" secondItem="3HX-tS-NpW" secondAttribute="leading" id="254-zi-Edf"/>
                                         <constraint firstItem="omF-Vc-f2U" firstAttribute="top" secondItem="3HX-tS-NpW" secondAttribute="top" constant="7" id="2Eu-uI-w1X"/>
                                         <constraint firstAttribute="bottom" secondItem="8Ef-KL-waD" secondAttribute="bottom" constant="5" id="2gL-jb-Gr6"/>
+                                        <constraint firstItem="Lu8-xj-pXr" firstAttribute="top" secondItem="3HX-tS-NpW" secondAttribute="top" id="2gt-44-a1w"/>
+                                        <constraint firstAttribute="bottom" secondItem="Lu8-xj-pXr" secondAttribute="bottom" id="88f-bG-ATJ"/>
                                         <constraint firstAttribute="trailing" secondItem="PU0-vs-Lxv" secondAttribute="trailing" constant="8" id="8Ph-Ue-ETK"/>
                                         <constraint firstItem="1qR-Yj-AZ6" firstAttribute="top" secondItem="3HX-tS-NpW" secondAttribute="top" constant="7" id="BcC-ks-AKx"/>
                                         <constraint firstAttribute="trailing" secondItem="0bv-xy-gKZ" secondAttribute="trailing" constant="5" id="CPy-pD-cON"/>
@@ -135,6 +168,7 @@
                                         <constraint firstItem="0bv-xy-gKZ" firstAttribute="leading" secondItem="n3D-0u-3ol" secondAttribute="trailing" constant="19" id="bUp-Hf-TOL"/>
                                         <constraint firstItem="PU0-vs-Lxv" firstAttribute="top" secondItem="3HX-tS-NpW" secondAttribute="top" constant="7" id="bhN-Sc-aaO"/>
                                         <constraint firstItem="0bv-xy-gKZ" firstAttribute="leading" secondItem="F0Z-M8-KCF" secondAttribute="trailing" constant="8" id="e7G-0j-ciC"/>
+                                        <constraint firstAttribute="trailing" secondItem="Lu8-xj-pXr" secondAttribute="trailing" id="fIm-b8-Otg"/>
                                         <constraint firstItem="ePc-jk-gqe" firstAttribute="top" secondItem="3HX-tS-NpW" secondAttribute="top" constant="31" id="gJa-jT-QJt"/>
                                         <constraint firstItem="omF-Vc-f2U" firstAttribute="leading" secondItem="3HX-tS-NpW" secondAttribute="leading" constant="15" id="lSw-z3-w9U"/>
                                         <constraint firstAttribute="height" constant="110" id="msD-a0-Mo1"/>
@@ -269,5 +303,6 @@
     </objects>
     <resources>
         <image name="fenleixian.png" width="3" height="12"/>
+        <image name="newicon_default.png" width="118" height="78"/>
     </resources>
 </document>

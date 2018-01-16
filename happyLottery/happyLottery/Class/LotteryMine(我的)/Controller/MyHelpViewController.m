@@ -27,6 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"帮助";
+    self.viewControllerNo = @"A207";
     if ([self isIphoneX]) {
         self.top.constant = 88;
         self.bottom.constant = 34;

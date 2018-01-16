@@ -1,4 +1,4 @@
- //
+  //
 //  MemberManager.m
 //  happyLottery
 //
@@ -781,8 +781,8 @@
 
 /**
  * 根据卡号获取会员信息
- * @param params @param {"cardCode":"xxx"} cardCode 会员帐号
- * @return  会员信息
+ * @param @param {"cardCode":"xxx"} cardCode 会员帐号
+ * 会员信息
  * @throws BizException
  */
 - (void) getMemberByCardCodeSms:(NSDictionary *)paraDic{
@@ -1074,6 +1074,62 @@
     //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
     
     SOAPRequest *request = [self requestForAPI: APIgetFeedbackList withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}  ];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+- (void) signIn:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        if (response.succeed) {
+            
+            [self.delegate signInIsSuccess:YES errorMsg:response.errorMsg];
+        } else {
+            [self.delegate signInIsSuccess:NO errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate signInIsSuccess:NO errorMsg:@"服务器错误"];
+        //失败的代理方法
+    };
+    //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
+    
+    SOAPRequest *request = [self requestForAPI: APIsignIn withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]} ];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+- (void) isSignInToday:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed) {
+            NSArray *Info = [self objFromJson: responseJsonStr];
+            
+            [self.delegate gotisSignInToday:Info IsSuccess:YES errorMsg:response.errorMsg];
+        } else {
+            [self.delegate gotisSignInToday:nil IsSuccess:NO errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate gotisSignInToday:nil IsSuccess:NO errorMsg:@"服务器错误"];
+        //失败的代理方法
+    };
+    //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
+    
+    SOAPRequest *request = [self requestForAPI: APIisSignInToday withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}  ];
     [self newRequestWithRequest:request
                          subAPI:SUBAPIMember
       constructingBodyWithBlock:nil

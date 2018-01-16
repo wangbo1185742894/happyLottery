@@ -10,6 +10,7 @@
 #import "PayOrderViewController.h"
 #import "SchemeCashPayment.h"
 #import "SelectView.h"
+#import "MGLabel.h"
 @interface WBYCMatchDetailViewController ()<LotteryManagerDelegate,SelectViewDelegate>
 {
     NSInteger beiCount;
@@ -44,7 +45,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"对战详情";
-    self.view.backgroundColor = [UIColor whiteColor];
+    
     self.curUser = [GlobalInstance instance].curUser;
     self.lotteryMan.delegate = self;
     self.labPossbleBouns.adjustsFontSizeToFitWidth = YES;
@@ -121,22 +122,30 @@
             strPlay=  @"让球";
         }
             CGFloat height = self.viewPeiMatchItem.mj_h;
-            CGFloat width = 250 / self.model.jcPairingMatchDto.options.count;
-            CGFloat curX = width * i;
-            UILabel *labitem = [[UILabel alloc]initWithFrame:CGRectMake(curX, 0, width, height)];
+            CGFloat width = 200 / self.model.jcPairingMatchDto.options.count;
+            CGFloat curX = (width + 30) * i + 10;
+            MGLabel *labitem = [[MGLabel alloc]initWithFrame:CGRectMake(curX, 0, width, height)];
             labitem.textAlignment = NSTextAlignmentCenter;
             labitem.backgroundColor =  self.viewPeiMatchItem.backgroundColor;
             labitem.font = [UIFont systemFontOfSize:13];
-            labitem.textColor = [UIColor whiteColor];
+            labitem.backgroundColor = RGBCOLOR(250, 250,250);
+            labitem.layer.cornerRadius = 4;
+            labitem.layer.borderColor = TFBorderColor.CGColor;
+            labitem.layer.borderWidth = 1;
+        labitem.keyWordColor  = TEXTGRAYOrange;
+            labitem.textColor = SystemGray;
             switch ([op.options integerValue]) {
                 case 0:
                     labitem.text = [NSString stringWithFormat:@"%@胜 %.2f",strPlay,[op.sp doubleValue]];
+                    labitem.keyWord = [NSString stringWithFormat:@"%@胜",strPlay];
                     break;
                 case 1:
                     labitem.text = [NSString stringWithFormat:@"%@平 %.2f",strPlay,[op.sp doubleValue]];
+                    labitem.keyWord = [NSString stringWithFormat:@"%@平",strPlay];
                     break;
                 case 2:
                     labitem.text = [NSString stringWithFormat:@"%@负 %.2f",strPlay,[op.sp doubleValue]];
+                    labitem.keyWord = [NSString stringWithFormat:@"%@负",strPlay];
                     break;
                     
                 default:
@@ -291,13 +300,18 @@
         if ([op.forecast boolValue] == YES) {
           
             CGFloat height = self.viewSelectItem.mj_h;
-            CGFloat width = 250 / selectNum;
-            CGFloat curX = width * i;
-            UILabel *labitem = [[UILabel alloc]initWithFrame:CGRectMake(curX, 0, width, height)];
+       
+            CGFloat width = 200 / selectNum;
+            CGFloat curX = (width + 30) * i + 10;
+            MGLabel *labitem = [[MGLabel alloc]initWithFrame:CGRectMake(curX, 0, width, height)];
             labitem.textAlignment = NSTextAlignmentCenter;
-            labitem.backgroundColor = self.viewPeiMatchItem.backgroundColor;
+            labitem.backgroundColor = RGBCOLOR(250, 250,250);
+            labitem.layer.cornerRadius = 4;
+            labitem.layer.borderColor = TFBorderColor.CGColor;
+            labitem.layer.borderWidth = 1;
             labitem.font = [UIFont systemFontOfSize:13];
-            labitem.textColor = [UIColor whiteColor];
+            labitem.keyWordColor = TEXTGRAYOrange;
+            labitem.textColor = SystemGray;
             if ([self.curPlayType isEqualToString:@"jclq"]) {
                 switch ([op.options integerValue]) {
                     case 0:
@@ -316,13 +330,16 @@
                 
                 switch ([op.options integerValue]) {
                     case 0:
-                        labitem.text = [NSString stringWithFormat:@"胜 %.2f",[op.sp doubleValue]];
+                        labitem.text = [NSString stringWithFormat:@"主胜 %.2f",[op.sp doubleValue]];
+                        labitem.keyWord = @"主胜";
                         break;
                     case 1:
                         labitem.text = [NSString stringWithFormat:@"平 %.2f",[op.sp doubleValue]];
+                        labitem.keyWord = @"平";
                         break;
                     case 2:
-                        labitem.text = [NSString stringWithFormat:@"负 %.2f",[op.sp doubleValue]];
+                        labitem.text = [NSString stringWithFormat:@"主负 %.2f",[op.sp doubleValue]];
+                        labitem.keyWord = @"主负";
                         break;
                         
                     default:

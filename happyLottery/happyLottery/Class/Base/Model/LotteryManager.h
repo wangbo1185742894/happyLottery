@@ -35,6 +35,7 @@ typedef enum EarningsType{
 - (void) gotListByRechargeChannel:(NSArray *)infoArray  errorMsg:(NSString *)msg;
 - (void) collectedMatch:(BOOL )isSuccess errorMsg:(NSString *)msg andIsSelect:(BOOL)isSelect;
 - (void) gotCollectedMatchList:(NSArray *)infoArray  errorMsg:(NSString *)msg;
+- (void) gotlistByHisGains:(NSArray *)infoArray  errorMsg:(NSString *)msg;
 @end
 
 @interface LotteryManager : Manager
@@ -64,6 +65,7 @@ typedef enum EarningsType{
 - (void)listByRechargeChannel:(NSDictionary *)paraDic;
 - (void)collectMatch:(NSDictionary *)paraDic;
 - (void)getCollectedMatchList:(NSDictionary *)paraDic;
+- (void)getlistByHisGains:(NSDictionary *)paraDic;
 
 @end
 

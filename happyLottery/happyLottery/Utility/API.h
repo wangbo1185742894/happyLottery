@@ -49,7 +49,7 @@
 #define APIResetNickSms            @"modifyNickname"
 #define APIBandPayPWDSms           @"bindMemberPaypwd"
 #define APIResetPayPWDSms          @"updateMemberPaypwd"
-#define APIChangeLoginPWDSms          @"updateMemberPwd"
+#define APIChangeLoginPWDSms       @"updateMemberPwd"
 #define APIsendUpdatePaypwdSms     @"sendUpdatePaypwdSms"
 #define APIcheckUpdatePaypwdSms    @"checkUpdatePaypwdSms"
 #define APIgetSupportBank          @"getSupportBank"
@@ -60,6 +60,8 @@
 #define APIrecharge                @"recharge"
 #define APIwithdraw                @"withdraw"
 #define APIvalidatePaypwd          @"validatePaypwd"
+#define APIsignIn                  @"signIn"
+#define APIisSignInToday           @"isSignInToday"
 
 #define APIgetCashBlotter           @"getCashBlotter"
 #define APIgetScoreBlotter          @"getScoreBlotter"
@@ -92,14 +94,13 @@
 #define APIGetCollectedMatchList    @"getCollectedMatchList"
 #define APIgetClientDownLoadUrl       @"getClientDownLoadUrl"
 
-
-
 #define SUBAPISchemeService   @"/scheme"
 #define APIBetLotteryScheme         @"betLotteryScheme"
 #define APISchemeCashPayment        @"schemeCashPayment"
 #define APISchemeScorePayment       @"schemeScorePayment"
 #define APIGetSchemeRecord          @"getSchemeRecord"
 #define APIGetSchemeRecordBySchemeNo @"getSchemeRecordBySchemeNo"
+#define APIlistByHisGains           @"listByHisGains"
 
 #define SUBAPITicketService   @"/ticket"
 #define APIGetJczqTicketOrderDetail @"getJczqTicketOrderDetail"

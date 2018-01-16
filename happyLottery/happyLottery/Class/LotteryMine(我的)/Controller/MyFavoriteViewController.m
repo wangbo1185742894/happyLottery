@@ -25,6 +25,7 @@
 
 - (void)viewDidLoad {
     self.title = @"我的收藏";
+    self.viewControllerNo = @"A212";
     [super viewDidLoad];
     page = 1;
     [self setTableView];

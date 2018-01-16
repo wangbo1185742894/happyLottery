@@ -49,6 +49,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     numBackNum = 0;
+    self.viewControllerNo = @"A001";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cleanMatch:) name:KSELECTMATCHCLEAN object:nil];
     self.matchArray = [NSMutableArray arrayWithCapacity:0];
     self.showArray = [NSMutableArray arrayWithCapacity:0];

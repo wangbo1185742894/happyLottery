@@ -31,5 +31,8 @@
 @property(nonatomic,strong)NSString * matchDate;
 @property(nonatomic,strong)NSString * predictIndex;
 @property(nonatomic,strong)NSString * startTime;
+
+@property(nonatomic,strong)NSString * guestImageUrl;
+@property(nonatomic,strong)NSString * homeImageUrl;
 -(JczqShortcutModel *)jCZQScoreZhiboToJcForecastOptions;
 @end

@@ -38,6 +38,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.viewControllerNo = @"A119";
     self.dateButtons = [NSMutableArray arrayWithCapacity:0];
     self.lotteryMan.delegate = self;
     self.scoreArray = [NSMutableArray arrayWithCapacity:0];
