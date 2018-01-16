@@ -523,6 +523,7 @@
 		F92D03F22005F3B400C26E7A /* assisthelp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F92D03EA2005F3B400C26E7A /* assisthelp@2x.png */; };
 		F92D03F32005F3B400C26E7A /* logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F92D03EB2005F3B400C26E7A /* logo@3x.png */; };
 		F92D03F42005F3B400C26E7A /* integralhelp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F92D03EC2005F3B400C26E7A /* integralhelp@2x.png */; };
+		F92F4B6D200DADA6005E33AC /* NNValidationCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F92F4B6B200DADA5005E33AC /* NNValidationCodeView.m */; };
 		F93204ED1FECF98B00E22A27 /* pass1.png in Resources */ = {isa = PBXBuildFile; fileRef = F93204E31FECF98800E22A27 /* pass1.png */; };
 		F93204EE1FECF98B00E22A27 /* pass0.png in Resources */ = {isa = PBXBuildFile; fileRef = F93204E41FECF98900E22A27 /* pass0.png */; };
 		F93204EF1FECF98B00E22A27 /* pass2.png in Resources */ = {isa = PBXBuildFile; fileRef = F93204E51FECF98900E22A27 /* pass2.png */; };
@@ -1494,6 +1495,8 @@
 		F92D03EA2005F3B400C26E7A /* assisthelp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "assisthelp@2x.png"; sourceTree = "<group>"; };
 		F92D03EB2005F3B400C26E7A /* logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@3x.png"; sourceTree = "<group>"; };
 		F92D03EC2005F3B400C26E7A /* integralhelp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "integralhelp@2x.png"; sourceTree = "<group>"; };
+		F92F4B6B200DADA5005E33AC /* NNValidationCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNValidationCodeView.m; sourceTree = "<group>"; };
+		F92F4B6C200DADA5005E33AC /* NNValidationCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NNValidationCodeView.h; sourceTree = "<group>"; };
 		F93204E31FECF98800E22A27 /* pass1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pass1.png; sourceTree = "<group>"; };
 		F93204E41FECF98900E22A27 /* pass0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pass0.png; sourceTree = "<group>"; };
 		F93204E51FECF98900E22A27 /* pass2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pass2.png; sourceTree = "<group>"; };
@@ -2247,7 +2250,6 @@
 		2D739CC51FEB44E200264044 /* jingcaires */ = {
 			isa = PBXGroup;
 			children = (
-
 				2D5171C72009C3B400C3CD7F /* button_checked@2x.png */,
 				2D5171C82009C3B400C3CD7F /* button_checked@3x.png */,
 				2D8CC0041FF3958C00CC367F /* icon_selected@2x.png */,
@@ -2953,6 +2955,8 @@
 		2DDEDC3E1FD52206007AEBF7 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				F92F4B6C200DADA5005E33AC /* NNValidationCodeView.h */,
+				F92F4B6B200DADA5005E33AC /* NNValidationCodeView.m */,
 				2D8CBFF51FF37D0800CC367F /* MGLabel.h */,
 				2D8CBFF61FF37D0800CC367F /* MGLabel.m */,
 				2D8CBFB31FF32ECC00CC367F /* ZLAlertView.h */,
@@ -4339,6 +4343,7 @@
 				2D8CC01B1FF4B62100CC367F /* WBHomeYuceListCell.m in Sources */,
 				2DDEDC391FD521A0007AEBF7 /* XMLDictionary.m in Sources */,
 				2D739C731FE79E8E00264044 /* LotteryProfileSelectView.m in Sources */,
+				F92F4B6D200DADA6005E33AC /* NNValidationCodeView.m in Sources */,
 				2D8CBFD91FF376CA00CC367F /* yucezjModel.m in Sources */,
 				2D06FFDF1FFDB7D8009E7568 /* JCZQSchemeModel.m in Sources */,
 				2D0600831FFE2036009E7568 /* TableHeaderView.m in Sources */,

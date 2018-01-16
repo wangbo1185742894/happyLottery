@@ -219,7 +219,7 @@
 
 -(void)noticeBtnClick{
     
-    if (isLogin == NO) {
+     if (!self.curUser.isLogin){
         [self Login];
     } else {
         NoticeCenterViewController * nVC = [[NoticeCenterViewController alloc]init];
@@ -229,7 +229,7 @@
 }
 
 - (IBAction)personSetClick:(id)sender {
-    if (isLogin == NO) {
+   if (!self.curUser.isLogin){
         [self Login];
     } else {
         PersonnalCenterViewController * pcVC = [[PersonnalCenterViewController alloc]init];
@@ -246,7 +246,7 @@
 }
 
 - (IBAction)signInBtnClick:(id)sender {
-    if (isLogin == NO) {
+    if (!self.curUser.isLogin) {
         [self Login];
     } else {
         
@@ -254,7 +254,7 @@
     
 }
 - (IBAction)blanceBtnClick:(id)sender {
-    if (isLogin == NO) {
+     if (!self.curUser.isLogin) {
         [self Login];
     } else {
         CashAndIntegrationWaterViewController * pcVC = [[CashAndIntegrationWaterViewController alloc]init];
@@ -265,7 +265,7 @@
     
 }
 - (IBAction)integralBtnClick:(id)sender {
-    if (isLogin == NO) {
+     if (!self.curUser.isLogin) {
         [self Login];
     } else {
         CashAndIntegrationWaterViewController * pcVC = [[CashAndIntegrationWaterViewController alloc]init];
@@ -276,7 +276,7 @@
     
 }
 - (IBAction)redPacketBtnClick:(id)sender {
-    if (isLogin == NO) {
+     if (!self.curUser.isLogin) {
         [self Login];
     } else {
         MyCouponViewController * mcVC = [[MyCouponViewController alloc]init];
@@ -286,7 +286,7 @@
     
 }
 - (IBAction)rechargeBtnClick:(id)sender {
-    if (isLogin == NO) {
+    if (!self.curUser.isLogin){
         [self Login];
     } else {
         TopUpsViewController *t = [[TopUpsViewController alloc]init];
@@ -296,7 +296,7 @@
  
 }
 - (IBAction)withdrawalsBtnClick:(id)sender {
-    if (isLogin == NO) {
+     if (!self.curUser.isLogin) {
         [self Login];
     } else {
         WithdrawalsViewController *w = [[WithdrawalsViewController alloc]init];

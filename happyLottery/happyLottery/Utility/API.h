@@ -70,6 +70,7 @@
 #define APIupdateImage              @"modifyHeadUrl"
 #define APIfeedBack                @"feedBack"
 #define APIgetFeedbackList           @"getFeedbackList"
+#define APIMemberShare               @"memberShare"
 
 
 

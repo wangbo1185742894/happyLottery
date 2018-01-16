@@ -122,7 +122,7 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Kw-f5-ZTp">
-                                    <rect key="frame" x="125" y="8.5" width="125" height="22.5"/>
+                                    <rect key="frame" x="125" y="9" width="125" height="22"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -241,11 +241,11 @@
                                 <constraint firstItem="K9m-13-mCb" firstAttribute="height" secondItem="nGQ-9Q-TVZ" secondAttribute="height" id="xHE-bM-rOB"/>
                             </constraints>
                         </view>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MTg-dn-YWb">
-                            <rect key="frame" x="0.0" y="257" width="375" height="410"/>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MTg-dn-YWb">
+                            <rect key="frame" x="0.0" y="257" width="375" height="440"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="410" id="8Ao-dh-UyC"/>
+                                <constraint firstAttribute="height" constant="440" id="vgB-f7-EbJ"/>
                             </constraints>
                         </tableView>
                     </subviews>

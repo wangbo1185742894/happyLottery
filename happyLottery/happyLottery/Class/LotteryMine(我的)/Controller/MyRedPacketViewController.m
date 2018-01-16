@@ -282,11 +282,11 @@
         if ([redPacketType isEqualToString:@"彩金红包"]) {
             sourecs = [NSString stringWithFormat:@"恭喜您获得了%@元",red.redPacketContent];
         } else if ([redPacketType isEqualToString:@"积分红包"]){
-            sourecs = [NSString stringWithFormat:@"恭喜您获得了%@",red.redPacketContent];
+            sourecs = [NSString stringWithFormat:@"恭喜您获得了%@积分",red.redPacketContent];
         }else if ([redPacketType isEqualToString:@"优惠卷红包"]){
-            sourecs = [NSString stringWithFormat:@"恭喜您获得了%@",red.redPacketContent];
+            sourecs = [NSString stringWithFormat:@"恭喜您获得了%@张优惠券",red.redPacketContent];
         }
-        [self rotation360repeatCount:2 view:image andHalf:width andCaijin:red.redPacketContent];
+        [self rotation360repeatCount:2 view:image andHalf:width andCaijin:sourecs];
         page=1;
        [self initRefresh1];
     }else{

@@ -44,6 +44,7 @@
 - (void) FeedBack:(BOOL)success errorMsg:(NSString *)msg;
 - (void) changeLoginPWDSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) getFeedbackListSms:(NSArray *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) upMemberShareSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 
 @end
 
@@ -84,6 +85,7 @@
 - (void)getQRCode:(NSDictionary*)paraDic;
 - (void)FeedBack:(NSDictionary*)paraDic;
 - (void) getFeedbackListSms:(NSDictionary *)paraDic;
+- (void) upMemberShareSms:(NSDictionary *)paraDic;
 
 //11.23 活动公告
 - (void)getActivetyMessage:(NSString *)strId;
