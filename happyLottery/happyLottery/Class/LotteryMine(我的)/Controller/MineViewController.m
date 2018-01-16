@@ -52,12 +52,21 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:YES];
        //
+    if ([self .fmdb open]) {
+        FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_user_info"];
+        if ([result next] && [result stringForColumn:@"mobile"] != nil) {
+            isLogin = [[result stringForColumn:@"isLogin"] boolValue];
     if (isLogin==YES) {
         [self updateMemberClinet];
         
     } else {
         [self autoLogin];
     }
+
+        }
+    }
+    [self.fmdb close];
+    self.memberMan.delegate = self;
 }
 
 - (void)viewDidLoad {
@@ -81,11 +90,6 @@
 
 -(void)autoLogin{
     
-
-    if ([self .fmdb open]) {
-        FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_user_info"];
-        if ([result next] && [result stringForColumn:@"mobile"] != nil) {
-            isLogin = [[result stringForColumn:@"isLogin"] boolValue];
             if (isLogin ==YES ) {
                // _loginBtn.enabled = NO;
                 [self updateMemberClinet];
@@ -93,10 +97,7 @@
                 [self.loginBtn setTitle:@"登录/注册" forState:UIControlStateNormal];
                 self.loginBtn.enabled = YES;
             }
-        }
-    }
-    [self.fmdb close];
-    
+
 }
 -(void)updateMemberClinet{
     

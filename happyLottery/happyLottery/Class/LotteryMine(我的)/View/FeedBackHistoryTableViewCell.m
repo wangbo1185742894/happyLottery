@@ -36,7 +36,7 @@
     if ([model.reply isEqualToString:@"1"]) {
         [self.answerBtn setBackgroundImage:[UIImage  imageNamed:@"answer.png"]  forState:UIControlStateNormal];
         self.answerLab.text=model.replyContent;
-    }else if ([model.reply isEqualToString:@"0"]){
+    }else{
           [self.answerBtn setBackgroundImage:[UIImage imageNamed:@"response.png"]  forState:UIControlStateNormal];
         self.answerLab.text = @"平台会尽快回复您，请您耐心等待，也可拨打客服电话400-668-0778";
         

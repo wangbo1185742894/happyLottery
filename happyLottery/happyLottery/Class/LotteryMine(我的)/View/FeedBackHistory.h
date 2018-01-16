@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FeedBackHistory : NSObject
+@interface FeedBackHistory : BaseModel
 
 @property(nonatomic,strong)NSString * memberId;
 @property(nonatomic,strong)NSString *cardCode;

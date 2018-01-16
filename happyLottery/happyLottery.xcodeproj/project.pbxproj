@@ -605,6 +605,10 @@
 		F94AA9EF1FEB9BD50021B980 /* attention@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AA9E91FEB9BD50021B980 /* attention@3x.png */; };
 		F94AA9F31FEBBFE00021B980 /* BankCardSetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F94AA9F11FEBBFE00021B980 /* BankCardSetTableViewCell.m */; };
 		F94AA9F41FEBBFE00021B980 /* BankCardSetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F94AA9F21FEBBFE00021B980 /* BankCardSetTableViewCell.xib */; };
+		F954D517200C498C00CD3B2B /* QuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F954D515200C498C00CD3B2B /* QuestionsViewController.m */; };
+		F954D518200C498C00CD3B2B /* QuestionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F954D516200C498C00CD3B2B /* QuestionsViewController.xib */; };
+		F954D51C200C49A600CD3B2B /* FunctionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F954D51A200C49A600CD3B2B /* FunctionsViewController.m */; };
+		F954D51D200C49A600CD3B2B /* FunctionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F954D51B200C49A600CD3B2B /* FunctionsViewController.xib */; };
 		F957C1CD1FE36B3F0090B19B /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F957C1CB1FE36B3F0090B19B /* close@2x.png */; };
 		F957C1CE1FE36B3F0090B19B /* close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F957C1CC1FE36B3F0090B19B /* close@3x.png */; };
 		F957C1D21FE379590090B19B /* ForgetPWDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F957C1D01FE379590090B19B /* ForgetPWDViewController.m */; };
@@ -648,6 +652,13 @@
 		F9581A801FE0FA01009753AA /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9581A7E1FE0FA01009753AA /* LoginViewController.xib */; };
 		F95C69F11FE7AD0200126C6A /* PersonnalCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F95C69EF1FE7AD0200126C6A /* PersonnalCenterViewController.m */; };
 		F95C69F21FE7AD0200126C6A /* PersonnalCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F95C69F01FE7AD0200126C6A /* PersonnalCenterViewController.xib */; };
+		F9632F4B200C86EC00F69D23 /* LYJHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9632F4A200C86EC00F69D23 /* LYJHeaderView.m */; };
+		F9632F4E200C8C9800F69D23 /* arrowup@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9632F4C200C8C9700F69D23 /* arrowup@3x.png */; };
+		F9632F4F200C8C9800F69D23 /* arrowup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9632F4D200C8C9800F69D23 /* arrowup@2x.png */; };
+		F9632F52200C8CC100F69D23 /* arrowdown@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9632F50200C8CC000F69D23 /* arrowdown@3x.png */; };
+		F9632F53200C8CC100F69D23 /* arrowdown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9632F51200C8CC000F69D23 /* arrowdown@2x.png */; };
+		F9632F57200C9A8B00F69D23 /* IntegeralChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9632F55200C9A8B00F69D23 /* IntegeralChangeViewController.m */; };
+		F9632F58200C9A8B00F69D23 /* IntegeralChangeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9632F56200C9A8B00F69D23 /* IntegeralChangeViewController.xib */; };
 		F9664B9D2004B23A000A27CA /* feedback@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9664B992004B239000A27CA /* feedback@2x.png */; };
 		F9664B9E2004B23A000A27CA /* feedback@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9664B9A2004B239000A27CA /* feedback@3x.png */; };
 		F9664B9F2004B23A000A27CA /* recommend@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9664B9B2004B239000A27CA /* recommend@2x.png */; };
@@ -1595,6 +1606,12 @@
 		F94AA9F01FEBBFE00021B980 /* BankCardSetTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BankCardSetTableViewCell.h; sourceTree = "<group>"; };
 		F94AA9F11FEBBFE00021B980 /* BankCardSetTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BankCardSetTableViewCell.m; sourceTree = "<group>"; };
 		F94AA9F21FEBBFE00021B980 /* BankCardSetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BankCardSetTableViewCell.xib; sourceTree = "<group>"; };
+		F954D514200C498C00CD3B2B /* QuestionsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuestionsViewController.h; sourceTree = "<group>"; };
+		F954D515200C498C00CD3B2B /* QuestionsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuestionsViewController.m; sourceTree = "<group>"; };
+		F954D516200C498C00CD3B2B /* QuestionsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionsViewController.xib; sourceTree = "<group>"; };
+		F954D519200C49A600CD3B2B /* FunctionsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FunctionsViewController.h; sourceTree = "<group>"; };
+		F954D51A200C49A600CD3B2B /* FunctionsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FunctionsViewController.m; sourceTree = "<group>"; };
+		F954D51B200C49A600CD3B2B /* FunctionsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FunctionsViewController.xib; sourceTree = "<group>"; };
 		F957C1CB1FE36B3F0090B19B /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@2x.png"; sourceTree = "<group>"; };
 		F957C1CC1FE36B3F0090B19B /* close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@3x.png"; sourceTree = "<group>"; };
 		F957C1CF1FE379590090B19B /* ForgetPWDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ForgetPWDViewController.h; sourceTree = "<group>"; };
@@ -1643,6 +1660,15 @@
 		F95C69EE1FE7AD0200126C6A /* PersonnalCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonnalCenterViewController.h; sourceTree = "<group>"; };
 		F95C69EF1FE7AD0200126C6A /* PersonnalCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonnalCenterViewController.m; sourceTree = "<group>"; };
 		F95C69F01FE7AD0200126C6A /* PersonnalCenterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonnalCenterViewController.xib; sourceTree = "<group>"; };
+		F9632F49200C86EC00F69D23 /* LYJHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LYJHeaderView.h; sourceTree = "<group>"; };
+		F9632F4A200C86EC00F69D23 /* LYJHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LYJHeaderView.m; sourceTree = "<group>"; };
+		F9632F4C200C8C9700F69D23 /* arrowup@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrowup@3x.png"; sourceTree = "<group>"; };
+		F9632F4D200C8C9800F69D23 /* arrowup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrowup@2x.png"; sourceTree = "<group>"; };
+		F9632F50200C8CC000F69D23 /* arrowdown@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrowdown@3x.png"; sourceTree = "<group>"; };
+		F9632F51200C8CC000F69D23 /* arrowdown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrowdown@2x.png"; sourceTree = "<group>"; };
+		F9632F54200C9A8B00F69D23 /* IntegeralChangeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntegeralChangeViewController.h; sourceTree = "<group>"; };
+		F9632F55200C9A8B00F69D23 /* IntegeralChangeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntegeralChangeViewController.m; sourceTree = "<group>"; };
+		F9632F56200C9A8B00F69D23 /* IntegeralChangeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntegeralChangeViewController.xib; sourceTree = "<group>"; };
 		F9664B992004B239000A27CA /* feedback@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feedback@2x.png"; sourceTree = "<group>"; };
 		F9664B9A2004B239000A27CA /* feedback@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feedback@3x.png"; sourceTree = "<group>"; };
 		F9664B9B2004B239000A27CA /* recommend@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "recommend@2x.png"; sourceTree = "<group>"; };
@@ -2287,6 +2313,7 @@
 		2D739CC51FEB44E200264044 /* jingcaires */ = {
 			isa = PBXGroup;
 			children = (
+
 				2D5171C72009C3B400C3CD7F /* button_checked@2x.png */,
 				2D5171C82009C3B400C3CD7F /* button_checked@3x.png */,
 				2D8CC0041FF3958C00CC367F /* icon_selected@2x.png */,
@@ -3288,6 +3315,17 @@
 				F9D7C5582006276900415B4E /* FootBallPlayViewController.h */,
 				F9D7C5592006276900415B4E /* FootBallPlayViewController.m */,
 				F9D7C55A2006276900415B4E /* FootBallPlayViewController.xib */,
+				F954D514200C498C00CD3B2B /* QuestionsViewController.h */,
+				F954D515200C498C00CD3B2B /* QuestionsViewController.m */,
+				F954D516200C498C00CD3B2B /* QuestionsViewController.xib */,
+				F954D519200C49A600CD3B2B /* FunctionsViewController.h */,
+				F954D51A200C49A600CD3B2B /* FunctionsViewController.m */,
+				F954D51B200C49A600CD3B2B /* FunctionsViewController.xib */,
+				F9632F49200C86EC00F69D23 /* LYJHeaderView.h */,
+				F9632F4A200C86EC00F69D23 /* LYJHeaderView.m */,
+				F9632F54200C9A8B00F69D23 /* IntegeralChangeViewController.h */,
+				F9632F55200C9A8B00F69D23 /* IntegeralChangeViewController.m */,
+				F9632F56200C9A8B00F69D23 /* IntegeralChangeViewController.xib */,
 			);
 			name = MyHelp;
 			sourceTree = "<group>";
@@ -3295,6 +3333,10 @@
 		F92D03E42005F39600C26E7A /* myhelp */ = {
 			isa = PBXGroup;
 			children = (
+				F9632F51200C8CC000F69D23 /* arrowdown@2x.png */,
+				F9632F50200C8CC000F69D23 /* arrowdown@3x.png */,
+				F9632F4D200C8C9800F69D23 /* arrowup@2x.png */,
+				F9632F4C200C8C9700F69D23 /* arrowup@3x.png */,
 				F92D03E72005F3B300C26E7A /* arrowshelp@2x.png */,
 				F92D03EA2005F3B400C26E7A /* assisthelp@2x.png */,
 				F92D03E82005F3B300C26E7A /* assisthelp@3x.png */,
@@ -3677,6 +3719,7 @@
 				F94770C1200706BC0091729E /* jingcaizuqiu_hunheguoguan.html in Resources */,
 				2D0600751FFE1DB2009E7568 /* ShareSDKUI.bundle in Resources */,
 				2D628B6B1FF2278F0013D0E1 /* icon_danguan@3x.png in Resources */,
+				F9632F53200C8CC100F69D23 /* arrowdown@2x.png in Resources */,
 				2D739BF01FE2555E00264044 /* RegisterViewController.xib in Resources */,
 				F9C3BA2020088E3800916F3C /* star_light@3x.png in Resources */,
 				F94770BF200706BC0091729E /* jingcaizuqiu_banquanchang.html in Resources */,
@@ -3724,6 +3767,7 @@
 				F957C2011FE3B28D0090B19B /* news@3x.png in Resources */,
 				F957C2031FE3B28D0090B19B /* ticket@3x.png in Resources */,
 				2D628B411FECAA9A0013D0E1 /* fengkuangjingcai-gengduoshuoming@2x.png in Resources */,
+				F954D518200C498C00CD3B2B /* QuestionsViewController.xib in Resources */,
 				2D4B1E6F1FDF684E0034B708 /* faxian_defealt@2x.png in Resources */,
 				F9581A801FE0FA01009753AA /* LoginViewController.xib in Resources */,
 				2D5171EC200C72DA00C3CD7F /* icon_weizhong_@3x.png in Resources */,
@@ -3752,6 +3796,7 @@
 				2D739D071FEB853500264044 /* btnbackimgNomal@3x.png in Resources */,
 				2D4B1E7C1FDF684E0034B708 /* quanzi_defealt@3x.png in Resources */,
 				2D0600921FFF4BDD009E7568 /* SchemeDetailMatchViewCell.xib in Resources */,
+				F954D51D200C49A600CD3B2B /* FunctionsViewController.xib in Resources */,
 				2D205FF21FFC7AF30086E266 /* newFeatureView-1.png in Resources */,
 				F9F6CA991FF5D6B100A49F71 /* button@3x.png in Resources */,
 				2D5171F0200C72E700C3CD7F /* icon_daizhi_@3x.png in Resources */,
@@ -3891,6 +3936,7 @@
 				2D2060201FFCB71E0086E266 /* icon_tongyi_normal@2x.png in Resources */,
 				2D739CEB1FEB48B600264044 /* wukuangwuyuanjiaoselect@3x.png in Resources */,
 				2D628B3A1FECAA9A0013D0E1 /* fengkuangjingcai-monitouzhu-weixuanze@3x.png in Resources */,
+				F9632F4F200C8C9800F69D23 /* arrowup@2x.png in Resources */,
 				2D739D061FEB853500264044 /* btnbackimgNomal@2x.png in Resources */,
 				2D739CDD1FEB44F400264044 /* wanfajieshao@2x.png in Resources */,
 				2D739CD51FEB44F400264044 /* rangqiuzheng@3x.png in Resources */,
@@ -3910,11 +3956,13 @@
 				2DDEDE761FD568C9007AEBF7 /* LICENSE in Resources */,
 				2D628B231FECA9C40013D0E1 /* touzhubeishujian@2x.png in Resources */,
 				F90058E71FF61619009C8E1C /* noticeempty@3x.png in Resources */,
+				F9632F52200C8CC100F69D23 /* arrowdown@3x.png in Resources */,
 				F9BD1B471FE8A27100C1C71A /* logo@3x.png in Resources */,
 				2DDEDE761FD568C9007AEBF7 /* LICENSE in Resources */,
 				F999278920037AA200023F8F /* empty_zhmx@2x.png in Resources */,
 				F90FCD941FF396F700BD807C /* fly@2x.png in Resources */,
 				F92D03F22005F3B400C26E7A /* assisthelp@2x.png in Resources */,
+				F9632F58200C9A8B00F69D23 /* IntegeralChangeViewController.xib in Resources */,
 				F9664B9E2004B23A000A27CA /* feedback@3x.png in Resources */,
 				F93204F11FECF98B00E22A27 /* pass6.png in Resources */,
 				F957C1F71FE3B28D0090B19B /* collect@2x.png in Resources */,
@@ -4085,6 +4133,7 @@
 				F93204F31FECF98C00E22A27 /* pass5.png in Resources */,
 				2D739C4B1FE37E5100264044 /* checksuccess@3x.png in Resources */,
 				2D8CC00B1FF3958D00CC367F /* icon_normal@3x.png in Resources */,
+				F9632F4E200C8C9800F69D23 /* arrowup@3x.png in Resources */,
 				F9C3BA31200894ED00916F3C /* ask@2x.png in Resources */,
 				F92D03F42005F3B400C26E7A /* integralhelp@2x.png in Resources */,
 				F9664BA92004D64A000A27CA /* bjCoupon@3x.png in Resources */,
@@ -4202,6 +4251,7 @@
 				2D739C1F1FE2611C00264044 /* IQBarButtonItem.m in Sources */,
 				F90058DE1FF61327009C8E1C /* NoticeCenterTableViewCell.m in Sources */,
 				2DDEDE611FD568C9007AEBF7 /* SDWebImageDecoder.m in Sources */,
+				F954D517200C498C00CD3B2B /* QuestionsViewController.m in Sources */,
 				2D0600261FFDCD9F009E7568 /* MJRefreshGifHeader.m in Sources */,
 				F9F262B41FE8F4AE00C2E60F /* RSKInternalUtility.m in Sources */,
 				2D739C5E1FE3B31500264044 /* FMDatabaseQueue.m in Sources */,
@@ -4231,6 +4281,7 @@
 				F9BD1B4C1FE8A95000C1C71A /* BankCardSettingViewController.m in Sources */,
 				2DDEDE801FD568C9007AEBF7 /* UIRefreshControl+AFNetworking.m in Sources */,
 				F93AC8161FFDF035003DF05C /* AboutViewController.m in Sources */,
+				F954D51C200C49A600CD3B2B /* FunctionsViewController.m in Sources */,
 				F9C332D81FF4C30700779197 /* Coupon.m in Sources */,
 				F91C262E1FEA0CF00056CBDD /* SetPayPWDViewController.m in Sources */,
 				2D739C1E1FE2611C00264044 /* IQTextView.m in Sources */,
@@ -4307,6 +4358,7 @@
 				2D739C211FE2611C00264044 /* IQTitleBarButtonItem.m in Sources */,
 				2D739CA41FEA0A2E00264044 /* JCZQMatchModel.m in Sources */,
 				2D4B174E1FD7B9270034B708 /* WBAdsImgView.m in Sources */,
+				F9632F4B200C86EC00F69D23 /* LYJHeaderView.m in Sources */,
 				F9C3BA29200893D600916F3C /* FeedBackHistoryTableViewCell.m in Sources */,
 				2D739CA71FEA0A4000264044 /* JCZQTranscation.m in Sources */,
 				F91F35CC20084DCD00B23170 /* ChangeLoginPWDViewController.m in Sources */,
@@ -4340,6 +4392,7 @@
 				2DDEDE6E1FD568C9007AEBF7 /* AFHTTPRequestOperationManager.m in Sources */,
 				F928C6A81FF4A268001F1A32 /* MyCouponTableViewCell.m in Sources */,
 				2DDEDC0B1FD4DBF1007AEBF7 /* DiscoverViewController.m in Sources */,
+				F9632F57200C9A8B00F69D23 /* IntegeralChangeViewController.m in Sources */,
 				2DDEDC2F1FD51C8B007AEBF7 /* SOAPRequest.m in Sources */,
 				2D06002B1FFDCD9F009E7568 /* NSBundle+MJRefresh.m in Sources */,
 				2D739C5B1FE3B31500264044 /* FMDatabase.m in Sources */,

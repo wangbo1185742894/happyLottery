@@ -82,7 +82,7 @@
         
     }else{
         //[self showPromptText: @"登录失败"  hideAfterDelay: 1.7];
-        [self showPromptText:msg];
+        [self showPromptText:msg  hideAfterDelay: 1.7];
     }
 }
 

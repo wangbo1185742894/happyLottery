@@ -11,6 +11,9 @@
 #import "CouponGuidViewController.h"
 #import "GetIntegralViewController.h"
 #import "FootBallPlayViewController.h"
+#import "QuestionsViewController.h"
+#import "FunctionsViewController.h"
+#import "IntegeralChangeViewController.h"
 
 @interface MyHelpViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
@@ -42,9 +45,13 @@
     [self.navigationController pushViewController:mpVC animated:YES];
 }
 - (IBAction)integralChange:(id)sender {
+    IntegeralChangeViewController * mpVC = [[IntegeralChangeViewController alloc]init];
+    [self.navigationController pushViewController:mpVC animated:YES];
 }
 //功能指南
 - (IBAction)FunctionalGuide:(id)sender {
+    FunctionsViewController * mpVC = [[FunctionsViewController alloc]init];
+    [self.navigationController pushViewController:mpVC animated:YES];
 }
 
 //优惠券指南
@@ -55,6 +62,8 @@
 }
 
 - (IBAction)question:(id)sender {
+    QuestionsViewController * mpVC = [[QuestionsViewController alloc]init];
+    [self.navigationController pushViewController:mpVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

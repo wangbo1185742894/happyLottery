@@ -38,18 +38,18 @@
 }
 
 - (IBAction)commitBtnClick:(id)sender {
-    if ( self.PWD1.text.length == 0||  self.PWD1.text.length < 6) {
+    if ( self.PWD1.text.length == 0||  self.PWD1.text.length < 6 || self.PWD1.text.length > 16) {
         self.PWD1.text=@"";
-        [self showPromptText: @"请输入6位初始密码" hideAfterDelay: 1.7];
+        [self showPromptText: @"请输入6-16位初始密码" hideAfterDelay: 1.7];
         return;
     }
-    else if (self.PWD2.text.length == 0 || self.PWD2.text.length < 6) {
+    else if (self.PWD2.text.length == 0 || self.PWD2.text.length < 6 || self.PWD2.text.length > 16) {
         self.PWD2.text=@"";
-        [self showPromptText: @"请输入6位新密码" hideAfterDelay: 1.7];
+        [self showPromptText: @"请输入6-16位新密码" hideAfterDelay: 1.7];
         return;
-    } else if (self.PWD3.text.length == 0 || self.PWD3.text.length < 6) {
+    } else if (self.PWD3.text.length == 0 || self.PWD3.text.length < 6 || self.PWD3.text.length > 16) {
         self.PWD3.text=@"";
-        [self showPromptText: @"请输入6位确认密码" hideAfterDelay: 1.7];
+        [self showPromptText: @"请输入6-16位确认密码" hideAfterDelay: 1.7];
         return;
     }
     else if(![_PWD2.text isEqualToString:_PWD3.text]){
@@ -121,15 +121,15 @@
     
     if (textField ==  self.PWD1) {
         
-        if (str.length >6 ) {
-            [self showPromptText: @"初始密码不能超过6位" hideAfterDelay: 1.7];
+        if (str.length >16 ) {
+            [self showPromptText: @"初始密码不能超过16位" hideAfterDelay: 1.7];
             return NO;
         }
     }
     if (textField ==  self.PWD2 ) {
         
-        if (str.length >6 ) {
-            [self showPromptText: @"新密码不能超过6位" hideAfterDelay: 1.7];
+        if (str.length >16 ) {
+            [self showPromptText: @"新密码不能超过16位" hideAfterDelay: 1.7];
             return NO;
         }
     }
@@ -137,8 +137,8 @@
     
     if (textField ==  self.PWD3 ) {
         
-        if (str.length >6) {
-            [self showPromptText: @"确认密码不能超过6位" hideAfterDelay: 1.7];
+        if (str.length >16) {
+            [self showPromptText: @"确认密码不能超过16位" hideAfterDelay: 1.7];
             return NO;
         }
     }
