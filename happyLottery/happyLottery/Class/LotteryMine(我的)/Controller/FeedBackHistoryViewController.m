@@ -33,14 +33,14 @@ static NSString * const ReuseIdentifier = @"cell";
         self.bottom.constant = 34;
     }
       self.memberMan.delegate = self;
-    self.tableview.delegate=self;
-    self.tableview.dataSource=self;
-    self.tableview.estimatedRowHeight = 120;//很重要保障滑动流畅性
+      self.tableview.delegate=self;
+      self.tableview.dataSource=self;
+      self.tableview.estimatedRowHeight = 120;//很重要保障滑动流畅性
       self.tableview.rowHeight = UITableViewAutomaticDimension;
-     [self.tableview registerNib:[UINib nibWithNibName:NSStringFromClass([FeedBackHistoryTableViewCell class]) bundle:nil] forCellReuseIdentifier:ReuseIdentifier];
-    page=1;
-    self.dataArray = [[NSMutableArray alloc]init];
-    [self initRefresh];
+      [self.tableview registerNib:[UINib nibWithNibName:NSStringFromClass([FeedBackHistoryTableViewCell class]) bundle:nil] forCellReuseIdentifier:ReuseIdentifier];
+      page=1;
+      self.dataArray = [[NSMutableArray alloc]init];
+      [self initRefresh];
     
 }
 
@@ -96,15 +96,17 @@ static NSString * const ReuseIdentifier = @"cell";
                 [_dataArray removeAllObjects];
                 if (array.count>0) {
                     for (int i=0; i<array.count; i++) {
-                        FeedBackHistory *feedBackHistory = [[FeedBackHistory alloc]initWith:array[i]];
+                        NSDictionary *dic = [[NSDictionary alloc]init];
+                        dic = array[i];
+                        FeedBackHistory *feedBackHistory =  [[FeedBackHistory alloc]initWith:dic];
+                        //feedBackHistory = array[i];
                         [_dataArray addObject:feedBackHistory];
-                        
                     }
                     [self.tableview.mj_footer endRefreshing];
                     self.tableview.hidden = NO;
                     [self.tableview reloadData];
                     //self.emptyView.hidden=YES;
-                } else{
+                }else{
                     
                     //self.emptyView.hidden=NO;
                     self.tableview.hidden = YES;
@@ -163,7 +165,18 @@ static NSString * const ReuseIdentifier = @"cell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     FeedBackHistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ReuseIdentifier forIndexPath:indexPath];
-    cell.model = self.dataArray[indexPath.row];
+    
+    FeedBackHistory *f = self.dataArray[indexPath.row];
+    NSString *feedbackContent = f.feedbackContent;
+    cell.askLab.text =feedbackContent;
+    if (f.reply ==YES){
+        [cell.answerBtn setBackgroundImage:[UIImage  imageNamed:@"answer.png"]  forState:UIControlStateNormal];
+        cell.answerLab.text=f.replyContent;
+    }else{
+        [cell.answerBtn setBackgroundImage:[UIImage imageNamed:@"response.png"]  forState:UIControlStateNormal];
+        cell.answerLab.text = @"平台会尽快回复您，请您耐心等待，也可拨打客服电话400-668-0778";
+        
+    }
     return cell;
 }
 

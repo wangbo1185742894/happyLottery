@@ -9,5 +9,12 @@
 #import "FeedBackHistory.h"
 
 @implementation FeedBackHistory
-
+-(void)setValue:(id)value forKey:(NSString *)key{
+    if ([key isEqualToString:@"id"]) {
+        key = @"_id";
+    }if ([key isEqualToString:@"version"]) {
+        key = @"_version";
+    }
+    [super setValue:value forKey:key];
+}
 @end

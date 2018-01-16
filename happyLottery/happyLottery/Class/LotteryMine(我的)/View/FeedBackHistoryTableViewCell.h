@@ -10,7 +10,10 @@
 #import "FeedBackHistory.h"
 
 @interface FeedBackHistoryTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *askLab;
 
 @property (nonatomic, strong) FeedBackHistory *model;
+@property (weak, nonatomic) IBOutlet UIButton *answerBtn;
+@property (weak, nonatomic) IBOutlet UILabel *answerLab;
 
 @end

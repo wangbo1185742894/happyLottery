@@ -94,9 +94,10 @@
     } else if (textField.text.length >= self.labelCount) {
         return NO;
     } else {
-        NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
-        BOOL isMatch = [pred evaluateWithObject:string];
-        return isMatch;
+//        NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+//        BOOL isMatch = [pred evaluateWithObject:string];
+//        return isMatch;
+          return YES;
     }
 }
 
@@ -111,7 +112,7 @@
         _codeTextField.tintColor = [UIColor clearColor];
         _codeTextField.delegate = self;
         _codeTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-        _codeTextField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+        _codeTextField.keyboardType = UIKeyboardTypeNumberPad;
         _codeTextField.layer.borderColor = [[UIColor grayColor] CGColor];
         [_codeTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
         [self addSubview:_codeTextField];
