@@ -249,11 +249,6 @@
 }
 
 -(void)needLogin{
-    ZLAlertView *alert = [[ZLAlertView alloc] initWithTitle:@"请登录" message:@"您尚未登录,请先登录"];
-    [alert addBtnTitle:@"取消" action:^{
-        
-    }];
-    [alert addBtnTitle:@"确定" action:^{
         //登录成功后跳回
         LoginViewController * loginVC = [[LoginViewController alloc]init];
         UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController: loginVC];
@@ -262,14 +257,9 @@
         navVC.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor], NSFontAttributeName: [UIFont systemFontOfSize:18]};
         navVC.navigationBar.tintColor = [UIColor whiteColor];
         [self presentViewController:navVC animated:NO completion:nil];
-    }];
-    [alert showAlertWithSender:self];
+    
 }
 
-// @"{\"betMatches\":[{\"betPlayTypes\":[{\"options\":[\"0\"],\"playType\":5}],\"clash\":\"韩国23VS越南23\",\"dan\":false,\"matchId\":\"周四002\",\"matchKey\":\"102929\"},{\"betPlayTypes\":[{\"options\":[\"1\"],\"playType\":5}],\"clash\":\"塞维利亚VS加的斯\",\"dan\":false,\"matchId\":\"周四003\",\"matchKey\":\"102930\"},{\"betPlayTypes\":[{\"options\":[\"1\"],\"playType\":5}],\"clash\":\"莱万特VS西班牙人\",\"dan\":false,\"matchId\":\"周四004\",\"matchKey\":\"102931\"},{\"betPlayTypes\":[{\"options\":[\"1\"],\"playType\":5}],\"clash\":\"巴萨VS塞尔塔\",\"dan\":false,\"matchId\":\"周四005\",\"matchKey\":\"102932\"},{\"betPlayTypes\":[{\"options\":[\"1\"],\"playType\":5}],\"clash\":\"摩雷伦斯VS波尔图\",\"dan\":false,\"matchId\":\"周四006\",\"matchKey\":\"102933\"},{\"betPlayTypes\":[{\"options\":[\"1\"],\"playType\":5}],\"clash\":\"纽喷气机VS布里斯班\",\"dan\":false,\"matchId\":\"周五002\",\"matchKey\":\"102962\"},{\"betPlayTypes\":[{\"options\":[\"1\"],\"playType\":5}],\"clash\":\"欧塞尔VS勒阿弗尔\",\"dan\":false,\"matchId\":\"周五004\",\"matchKey\":\"102964\"},{\"betPlayTypes\":[{\"options\":[\"1\"],\"playType\":5}],\"clash\":\"尼奥尔VS南锡\",\"dan\":false,\"matchId\":\"周五005\",\"matchKey\":\"102965\"},{\"betPlayTypes\":[{\"options\":[\"1\"],\"playType\":1}],\"c"...    0x000000014a9c9000
-
-
-// @"{\"code\":\"0000\",\"message\":\"执行成功\",\"resType\":\"list\",\"result\":[{\"createTime\":\"2017-12-07 17:25:58\",\"creator\":15,\"editorContent\":\"<p><img src=\"http://oy9n5uzrj.bkt.clouddn.com/ms/20171207/edf36953bb5145a293a7c24ee9e2dfbf\" title=\"测试图片\"/></p>\",\"id\":959,\"imageContentIntroduce\":\"发现页面修改链接\",\"imageContentType\":\"EDITOR\",\"imgUrl\":\"http://oy9n5uzrj.bkt.clouddn.com/ms/20171207/01cf53529fe74152b61eee1e560cfac9\",\"lastModifyTime\":\"2018-01-03 10:35:49\",\"linkUrl\":\"http://oy9n5uzrj.bkt.clouddn.com/ms/20171207/7da3f0a8c94a4047a50a34a73e65b03a\",\"title\":\"发现页面修改链接\",\"usageChannel\":\"TBZ\",\"usageStatus\":\"ENABLE\",\"version\":2},{\"createTime\":\"2017-11-28 14:31:42\",\"creator\":14,\"id\":958,\"imageContentType\":\"H5PAGE\",\"imgUrl\":\"http://oy9n5uzrj.bkt.clouddn.com/ms/20171128/42a9f55c2af5478f9c4f6be8da798eba\",\"linkUrl\":\"http://192.168.88.244:8086/\",\"title\":\"测试\",\"usageChannel\":\"TBZ\",\"usageStatus\":\"ENABLE\",\"version\":0},{\"createTime\":\"2017-11-28 14:29:25\",\"creator\":1,\"editorContent\":\"<p style=\"text-align: left;\"><img src=\"http://oy9n5uzrj.bkt.clouddn.com"...    0x000000014a845a00
 -(id)transFomatJson:(NSString *)strJson{
     if (strJson.length == 0 || strJson == nil) {
         return nil;

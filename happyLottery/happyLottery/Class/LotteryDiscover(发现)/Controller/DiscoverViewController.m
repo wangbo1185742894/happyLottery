@@ -20,7 +20,7 @@
     [super viewDidLoad];
     
     [self.faxianWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.88.193:18086/app/find/index"]]];
-
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{

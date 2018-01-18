@@ -54,9 +54,7 @@
 }
 
 -(void)autoLogin{
-   
     BOOL isLogin = NO;
-    
     if ([self .fmdb open]) {
          FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_user_info"];
         if ([result next] && [result stringForColumn:@"mobile"] != nil) {

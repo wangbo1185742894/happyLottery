@@ -26,7 +26,6 @@
     NSArray *listArray;
     UIButton *noticeBtn;
     UILabel *label;
-    BOOL isLogin ;
 }
 @property (weak, nonatomic) IBOutlet UIButton *personSetBtn;
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
@@ -51,7 +50,6 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
-    
     if (self.curUser.isLogin==YES) {
         [self updateMemberClinet];
     } else {
@@ -76,13 +74,11 @@
     
     [self noticeCenterSet];
     
-     // [self loadUserInfo];
     [_tableview reloadData];
 }
 //////
 -(void)notLogin{
     [self.loginBtn setTitle:@"登录/注册" forState:UIControlStateNormal];
-    self.
     self.loginBtn.enabled = YES;
 }
 -(void)updateMemberClinet{
@@ -194,17 +190,16 @@
     }
 }
 
-
-- (void) Login{
-    
-    LoginViewController * loginVC = [[LoginViewController alloc]init];
-    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController: loginVC];
-    navVC.navigationBar.barTintColor = SystemGreen;
-    
-    navVC.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor], NSFontAttributeName: [UIFont systemFontOfSize:18]};
-    navVC.navigationBar.tintColor = [UIColor whiteColor];
-    [self presentViewController:navVC animated:NO completion:nil];
-}
+//- (void) Login{
+//
+//    LoginViewController * loginVC = [[LoginViewController alloc]init];
+//    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController: loginVC];
+//    navVC.navigationBar.barTintColor = SystemGreen;
+//
+//    navVC.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor], NSFontAttributeName: [UIFont systemFontOfSize:18]};
+//    navVC.navigationBar.tintColor = [UIColor whiteColor];
+//    [self presentViewController:navVC animated:NO completion:nil];
+//}
 
 -(void)noticeCenterSet{
     noticeBtn = [UIButton buttonWithType: UIButtonTypeCustom];
@@ -228,7 +223,7 @@
 -(void)noticeBtnClick{
     
      if (!self.curUser.isLogin){
-        [self Login];
+        [self needLogin];
     } else {
         NoticeCenterViewController * nVC = [[NoticeCenterViewController alloc]init];
         nVC.hidesBottomBarWhenPushed = YES;
@@ -238,7 +233,7 @@
 
 - (IBAction)personSetClick:(id)sender {
    if (!self.curUser.isLogin){
-        [self Login];
+        [self needLogin];
     } else {
         PersonnalCenterViewController * pcVC = [[PersonnalCenterViewController alloc]init];
         pcVC.hidesBottomBarWhenPushed = YES;
@@ -248,14 +243,12 @@
 }
 
 - (IBAction)loginBtnClick:(id)sender {
-
-    [self Login];
-
+    [self needLogin];
 }
 
 - (IBAction)signInBtnClick:(id)sender {
     if (!self.curUser.isLogin) {
-        [self Login];
+        [self needLogin];
     } else {
         [self.memberMan signIn:@{@"cardCode":self.curUser.cardCode,@"activityId":@"1"}];
     }
@@ -272,7 +265,7 @@
 
 - (IBAction)blanceBtnClick:(id)sender {
      if (!self.curUser.isLogin) {
-        [self Login];
+        [self needLogin];
     } else {
         CashAndIntegrationWaterViewController * pcVC = [[CashAndIntegrationWaterViewController alloc]init];
         pcVC.select = 0;
@@ -283,7 +276,7 @@
 }
 - (IBAction)integralBtnClick:(id)sender {
      if (!self.curUser.isLogin) {
-        [self Login];
+        [self needLogin];
     } else {
         CashAndIntegrationWaterViewController * pcVC = [[CashAndIntegrationWaterViewController alloc]init];
         pcVC.select = 1;
@@ -294,7 +287,7 @@
 }
 - (IBAction)redPacketBtnClick:(id)sender {
      if (!self.curUser.isLogin) {
-        [self Login];
+        [self needLogin];
     } else {
         MyCouponViewController * mcVC = [[MyCouponViewController alloc]init];
         mcVC.hidesBottomBarWhenPushed = YES;
@@ -304,7 +297,7 @@
 }
 - (IBAction)rechargeBtnClick:(id)sender {
     if (!self.curUser.isLogin){
-        [self Login];
+        [self needLogin];
     } else {
         TopUpsViewController *t = [[TopUpsViewController alloc]init];
         t.hidesBottomBarWhenPushed = YES;
@@ -314,7 +307,7 @@
 }
 - (IBAction)withdrawalsBtnClick:(id)sender {
      if (!self.curUser.isLogin) {
-        [self Login];
+        [self notLogin];
     } else {
         WithdrawalsViewController *w = [[WithdrawalsViewController alloc]init];
         w.hidesBottomBarWhenPushed = YES;
@@ -353,18 +346,13 @@
     //自定义cell类
     MineTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        //通过xib的名称加载自定义的cell
         cell = [[[NSBundle mainBundle] loadNibNamed:@"MineTableViewCell" owner:self options:nil] lastObject];
     }
     NSDictionary *optionDic = listArray[indexPath.section][indexPath.row];
     
     cell.image.image = [UIImage reSizeImageName:optionDic[@"icon"] andMinWidth:18];
-    
-    //    cell.imageView.image = [UIImage imageNamed: optionDic[@"icon"]];
-    
     cell.lable.text = optionDic[@"title"];
     cell.lable.font = [UIFont systemFontOfSize:15];
- 
     return cell;
 }
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -397,11 +385,9 @@
 
 #pragma UITableViewDelegate methods
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    //    if (section == 0) {
-    //        return 0;
-    //    }
     return 10;
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 0.5;
 }
@@ -409,28 +395,22 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath: indexPath animated: YES];
     if (!self.curUser.isLogin) {
-        
-       [self Login];
+       [self needLogin];
         return;
     }
     
-    
     NSDictionary *optionDic = listArray[indexPath.section][indexPath.row];
-  
-
-    if (isLogin == NO) {
-        [self Login];
+    if (self.curUser.isLogin == NO) {
+        [self needLogin];
     } else {
         if ([optionDic[@"title"] isEqualToString:@"我的红包"]){
             MyRedPacketViewController * mpVC = [[MyRedPacketViewController alloc]init];
             mpVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:mpVC animated:YES];
-            
         }else  if ([optionDic[@"title"] isEqualToString:@"设置"]){
             SystemSetViewController * mpVC = [[SystemSetViewController alloc]init];
             mpVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:mpVC animated:YES];
-            
         }else  if ([optionDic[@"title"] isEqualToString:@"邀请好友"]){
             ShareViewController * mpVC = [[ShareViewController alloc]init];
             mpVC.hidesBottomBarWhenPushed = YES;
@@ -446,7 +426,6 @@
             [self.navigationController pushViewController: vc animated: YES];
         }
     }
-    
 }
 
 @end

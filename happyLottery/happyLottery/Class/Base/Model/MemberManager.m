@@ -34,10 +34,9 @@
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
         [self.delegate loginUser:nil IsSuccess:NO errorMsg:@"服务器错误"];
-        //失败的代理方法
     };
     
-    SOAPRequest *request = [self requestForAPI: APILogin withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]} ];
+    SOAPRequest *request = [self requestForAPI: APILogin withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
     [self newRequestWithRequest:request
                          subAPI:SUBAPIMember
       constructingBodyWithBlock:nil
