@@ -152,10 +152,10 @@ static NSString * const ReuseIdentifier = @"cell";
     //    if (section == 0) {
     //        return 0;
     //    }
-    return 1;
+    return 10;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 10;
+    return 0.5;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

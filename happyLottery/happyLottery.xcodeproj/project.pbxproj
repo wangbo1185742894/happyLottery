@@ -735,8 +735,6 @@
 		F9DC69A01FDF88E5007D384D /* IntegralMallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9DC699E1FDF88E5007D384D /* IntegralMallViewController.xib */; };
 		F9DC69A91FDF8957007D384D /* MyHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DC69A71FDF8957007D384D /* MyHelpViewController.m */; };
 		F9DC69AA1FDF8957007D384D /* MyHelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9DC69A81FDF8957007D384D /* MyHelpViewController.xib */; };
-		F9DC69AE1FDF898A007D384D /* MySettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DC69AC1FDF898A007D384D /* MySettingViewController.m */; };
-		F9DC69AF1FDF898A007D384D /* MySettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9DC69AD1FDF898A007D384D /* MySettingViewController.xib */; };
 		F9DC69EB1FDFB451007D384D /* withdraw Deposit_button_default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9DC69BB1FDFB44C007D384D /* withdraw Deposit_button_default@2x.png */; };
 		F9DC69F31FDFB451007D384D /* withdraw Deposit_button_default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9DC69C31FDFB44D007D384D /* withdraw Deposit_button_default@3x.png */; };
 		F9DC6A061FDFB451007D384D /* recharge_button_default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9DC69D61FDFB450007D384D /* recharge_button_default@3x.png */; };
@@ -769,6 +767,20 @@
 		F9F6CAA61FF5D80900A49F71 /* SystemSetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9F6CAA41FF5D80900A49F71 /* SystemSetViewController.xib */; };
 		F9F6CAAA1FF60BCF00A49F71 /* NoticeCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F6CAA81FF60BCF00A49F71 /* NoticeCenterViewController.m */; };
 		F9F6CAAB1FF60BCF00A49F71 /* NoticeCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9F6CAA91FF60BCF00A49F71 /* NoticeCenterViewController.xib */; };
+		F9F91B59200EF4C20036DD2A /* jcore-ios-1.1.7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F91B54200EF4C20036DD2A /* jcore-ios-1.1.7.a */; };
+		F9F91B5A200EF4C20036DD2A /* jpush-extension-ios-1.1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F91B55200EF4C20036DD2A /* jpush-extension-ios-1.1.0.a */; };
+		F9F91B5B200EF4C20036DD2A /* jpush-ios-3.0.8.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F91B56200EF4C20036DD2A /* jpush-ios-3.0.8.a */; };
+		F9F91B5D200EF7B00036DD2A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F91B5C200EF7B00036DD2A /* CFNetwork.framework */; };
+		F9F91B5F200EF7BD0036DD2A /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F91B5E200EF7BD0036DD2A /* CoreFoundation.framework */; };
+		F9F91B61200EF7D50036DD2A /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F91B60200EF7D50036DD2A /* CoreTelephony.framework */; };
+		F9F91B63200EF7DE0036DD2A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F91B62200EF7DE0036DD2A /* SystemConfiguration.framework */; };
+		F9F91B65200EF7E90036DD2A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F91B64200EF7E90036DD2A /* CoreGraphics.framework */; };
+		F9F91B67200EF7F50036DD2A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F91B66200EF7F50036DD2A /* Foundation.framework */; };
+		F9F91B69200EF8000036DD2A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F91B68200EF8000036DD2A /* UIKit.framework */; };
+		F9F91B6B200EF80A0036DD2A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F91B6A200EF80A0036DD2A /* Security.framework */; };
+		F9F91B6D200EF81C0036DD2A /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F91B6C200EF81C0036DD2A /* AdSupport.framework */; };
+		F9F91B6F200EF82B0036DD2A /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F91B6E200EF82A0036DD2A /* UserNotifications.framework */; };
+		F9F91B71200EF83A0036DD2A /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F91B70200EF83A0036DD2A /* libresolv.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1765,9 +1777,6 @@
 		F9DC69A61FDF8957007D384D /* MyHelpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyHelpViewController.h; sourceTree = "<group>"; };
 		F9DC69A71FDF8957007D384D /* MyHelpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyHelpViewController.m; sourceTree = "<group>"; };
 		F9DC69A81FDF8957007D384D /* MyHelpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyHelpViewController.xib; sourceTree = "<group>"; };
-		F9DC69AB1FDF898A007D384D /* MySettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MySettingViewController.h; sourceTree = "<group>"; };
-		F9DC69AC1FDF898A007D384D /* MySettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MySettingViewController.m; sourceTree = "<group>"; };
-		F9DC69AD1FDF898A007D384D /* MySettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MySettingViewController.xib; sourceTree = "<group>"; };
 		F9DC69BB1FDFB44C007D384D /* withdraw Deposit_button_default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "withdraw Deposit_button_default@2x.png"; sourceTree = "<group>"; };
 		F9DC69C31FDFB44D007D384D /* withdraw Deposit_button_default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "withdraw Deposit_button_default@3x.png"; sourceTree = "<group>"; };
 		F9DC69D61FDFB450007D384D /* recharge_button_default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "recharge_button_default@3x.png"; sourceTree = "<group>"; };
@@ -1812,6 +1821,23 @@
 		F9F6CAA71FF60BCF00A49F71 /* NoticeCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeCenterViewController.h; sourceTree = "<group>"; };
 		F9F6CAA81FF60BCF00A49F71 /* NoticeCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeCenterViewController.m; sourceTree = "<group>"; };
 		F9F6CAA91FF60BCF00A49F71 /* NoticeCenterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoticeCenterViewController.xib; sourceTree = "<group>"; };
+		F9F91B54200EF4C20036DD2A /* jcore-ios-1.1.7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jcore-ios-1.1.7.a"; sourceTree = "<group>"; };
+		F9F91B55200EF4C20036DD2A /* jpush-extension-ios-1.1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-extension-ios-1.1.0.a"; sourceTree = "<group>"; };
+		F9F91B56200EF4C20036DD2A /* jpush-ios-3.0.8.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-3.0.8.a"; sourceTree = "<group>"; };
+		F9F91B57200EF4C20036DD2A /* JPushNotificationExtensionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPushNotificationExtensionService.h; sourceTree = "<group>"; };
+		F9F91B58200EF4C20036DD2A /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
+		F9F91B5C200EF7B00036DD2A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		F9F91B5E200EF7BD0036DD2A /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		F9F91B60200EF7D50036DD2A /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		F9F91B62200EF7DE0036DD2A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		F9F91B64200EF7E90036DD2A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F9F91B66200EF7F50036DD2A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F9F91B68200EF8000036DD2A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F9F91B6A200EF80A0036DD2A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		F9F91B6C200EF81C0036DD2A /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		F9F91B6E200EF82A0036DD2A /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		F9F91B70200EF83A0036DD2A /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		F9F91B72200EF8EE0036DD2A /* happyLottery.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = happyLottery.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1819,11 +1845,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9F91B71200EF83A0036DD2A /* libresolv.tbd in Frameworks */,
+				F9F91B6F200EF82B0036DD2A /* UserNotifications.framework in Frameworks */,
+				F9F91B6D200EF81C0036DD2A /* AdSupport.framework in Frameworks */,
+				F9F91B6B200EF80A0036DD2A /* Security.framework in Frameworks */,
+				F9F91B69200EF8000036DD2A /* UIKit.framework in Frameworks */,
+				F9F91B67200EF7F50036DD2A /* Foundation.framework in Frameworks */,
+				F9F91B65200EF7E90036DD2A /* CoreGraphics.framework in Frameworks */,
+				F9F91B63200EF7DE0036DD2A /* SystemConfiguration.framework in Frameworks */,
+				F9F91B61200EF7D50036DD2A /* CoreTelephony.framework in Frameworks */,
+				F9F91B5F200EF7BD0036DD2A /* CoreFoundation.framework in Frameworks */,
+				F9F91B5D200EF7B00036DD2A /* CFNetwork.framework in Frameworks */,
 				2D0600761FFE1DB2009E7568 /* ShareSDKUI.framework in Frameworks */,
+				F9F91B59200EF4C20036DD2A /* jcore-ios-1.1.7.a in Frameworks */,
 				F93AC8121FFDC63B003DF05C /* libsqlite3.tbd in Frameworks */,
 				2D0600731FFE1DB2009E7568 /* ShareSDKConfigFile.framework in Frameworks */,
 				2D0600791FFE1DB2009E7568 /* libWeiboSDK.a in Frameworks */,
 				F93AC8101FFDC62E003DF05C /* ImageIO.framework in Frameworks */,
+				F9F91B5B200EF4C20036DD2A /* jpush-ios-3.0.8.a in Frameworks */,
 				2D0600771FFE1DB2009E7568 /* SinaWeiboConnector.framework in Frameworks */,
 				F93AC80E1FFDC620003DF05C /* JavaScriptCore.framework in Frameworks */,
 				2D06007E1FFE1DB2009E7568 /* ShareSDKConnector.framework in Frameworks */,
@@ -1833,6 +1872,7 @@
 				F93AC80A1FFDC603003DF05C /* libz.tbd in Frameworks */,
 				2D0600741FFE1DB2009E7568 /* ShareSDKExtension.framework in Frameworks */,
 				F93AC8081FFDC5F5003DF05C /* libicucore.tbd in Frameworks */,
+				F9F91B5A200EF4C20036DD2A /* jpush-extension-ios-1.1.0.a in Frameworks */,
 				2D0600701FFE1DB2009E7568 /* MOBFoundation.framework in Frameworks */,
 				2D06007B1FFE1DB2009E7568 /* libWeChatSDK.a in Frameworks */,
 			);
@@ -2410,6 +2450,7 @@
 		2DCBB2731FD1000700934D92 /* happyLottery */ = {
 			isa = PBXGroup;
 			children = (
+				F9F91B72200EF8EE0036DD2A /* happyLottery.entitlements */,
 				2D4B1E411FDF65380034B708 /* Config */,
 				2DDEDC3E1FD52206007AEBF7 /* Utility */,
 				2DCBB2B91FD107F100934D92 /* AppDelegate */,
@@ -2524,6 +2565,7 @@
 		2DCBB2BB1FD107F100934D92 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				F9F91B53200EF4C20036DD2A /* JPUSHLib */,
 				2D0600521FFE1DB1009E7568 /* SHARESDK */,
 				2D06FFEC1FFDCD9E009E7568 /* MJRefresh */,
 				F93204E21FECF96500E22A27 /* WBInputPopView */,
@@ -2649,9 +2691,6 @@
 				F9DC699C1FDF88E5007D384D /* IntegralMallViewController.h */,
 				F9DC699D1FDF88E5007D384D /* IntegralMallViewController.m */,
 				F9DC699E1FDF88E5007D384D /* IntegralMallViewController.xib */,
-				F9DC69AB1FDF898A007D384D /* MySettingViewController.h */,
-				F9DC69AC1FDF898A007D384D /* MySettingViewController.m */,
-				F9DC69AD1FDF898A007D384D /* MySettingViewController.xib */,
 				F9581A7C1FE0FA01009753AA /* LoginViewController.h */,
 				F9581A7D1FE0FA01009753AA /* LoginViewController.m */,
 				F9581A7E1FE0FA01009753AA /* LoginViewController.xib */,
@@ -3367,6 +3406,17 @@
 		F93AC8061FFDC5F4003DF05C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F9F91B70200EF83A0036DD2A /* libresolv.tbd */,
+				F9F91B6E200EF82A0036DD2A /* UserNotifications.framework */,
+				F9F91B6C200EF81C0036DD2A /* AdSupport.framework */,
+				F9F91B6A200EF80A0036DD2A /* Security.framework */,
+				F9F91B68200EF8000036DD2A /* UIKit.framework */,
+				F9F91B66200EF7F50036DD2A /* Foundation.framework */,
+				F9F91B64200EF7E90036DD2A /* CoreGraphics.framework */,
+				F9F91B62200EF7DE0036DD2A /* SystemConfiguration.framework */,
+				F9F91B60200EF7D50036DD2A /* CoreTelephony.framework */,
+				F9F91B5E200EF7BD0036DD2A /* CoreFoundation.framework */,
+				F9F91B5C200EF7B00036DD2A /* CFNetwork.framework */,
 				F93AC8111FFDC63B003DF05C /* libsqlite3.tbd */,
 				F93AC80F1FFDC62E003DF05C /* ImageIO.framework */,
 				F93AC80D1FFDC620003DF05C /* JavaScriptCore.framework */,
@@ -3580,6 +3630,18 @@
 			name = systemSet;
 			sourceTree = "<group>";
 		};
+		F9F91B53200EF4C20036DD2A /* JPUSHLib */ = {
+			isa = PBXGroup;
+			children = (
+				F9F91B54200EF4C20036DD2A /* jcore-ios-1.1.7.a */,
+				F9F91B55200EF4C20036DD2A /* jpush-extension-ios-1.1.0.a */,
+				F9F91B56200EF4C20036DD2A /* jpush-ios-3.0.8.a */,
+				F9F91B57200EF4C20036DD2A /* JPushNotificationExtensionService.h */,
+				F9F91B58200EF4C20036DD2A /* JPUSHService.h */,
+			);
+			path = JPUSHLib;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -3648,6 +3710,11 @@
 					2DCBB2701FD1000700934D92 = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					2DCBB2881FD1000700934D92 = {
 						CreatedOnToolsVersion = 9.1;
@@ -3729,7 +3796,6 @@
 				F9C3BA2120088E3800916F3C /* starUnselecte@2x.png in Resources */,
 				F928C6851FF48BE4001F1A32 /* bj_@3x.png in Resources */,
 				F90FCD561FF34D1C00BD807C /* MyRedPacketViewController.xib in Resources */,
-				F9DC69AF1FDF898A007D384D /* MySettingViewController.xib in Resources */,
 				F924BAA81FE252CF00830BF4 /* captcha@2x.png in Resources */,
 				2D8CC01A1FF4B62100CC367F /* WBHomeYuceListCell.xib in Resources */,
 				2D5171E7200C72C100C3CD7F /* icon_mingzhong_@3x.png in Resources */,
@@ -4254,7 +4320,6 @@
 				2D739C221FE2611C00264044 /* IQToolbar.m in Sources */,
 				2D06002D1FFDCD9F009E7568 /* UIScrollView+MJRefresh.m in Sources */,
 				2D8CBFBF1FF3483900CC367F /* JcPairingMatchModel.m in Sources */,
-				F9DC69AE1FDF898A007D384D /* MySettingViewController.m in Sources */,
 				F9F6CAAA1FF60BCF00A49F71 /* NoticeCenterViewController.m in Sources */,
 				2D8CBFBC1FF3482600CC367F /* JcForecastOptions.m in Sources */,
 				2DDEDE781FD568C9007AEBF7 /* AFAutoPurgingImageCache.m in Sources */,
@@ -4546,7 +4611,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: aolikeji@xaonly.com (93Y3V24TMT)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -4625,6 +4690,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = happyLottery/happyLottery.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer: aolikeji@xaonly.com (93Y3V24TMT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TSK429FVKW;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -4641,9 +4709,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/happyLottery/Libs/SHARESDK/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
 					"$(PROJECT_DIR)/happyLottery/Libs/SHARESDK/ShareSDK/Support/PlatformSDK/WeChatSDK",
+					"$(PROJECT_DIR)/happyLottery/Libs/JPUSHLib",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.only.happyLottery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -4652,6 +4723,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = happyLottery/happyLottery.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: XI'AN ONLY TECHNOLOGY DEVELOPMENT CO., LTD.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TSK429FVKW;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -4668,9 +4742,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/happyLottery/Libs/SHARESDK/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
 					"$(PROJECT_DIR)/happyLottery/Libs/SHARESDK/ShareSDK/Support/PlatformSDK/WeChatSDK",
+					"$(PROJECT_DIR)/happyLottery/Libs/JPUSHLib",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.only.happyLottery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

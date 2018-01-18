@@ -25,7 +25,7 @@
                     <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="htq-Uw-cxG">
-                            <rect key="frame" x="0.0" y="30" width="375" height="413"/>
+                            <rect key="frame" x="0.0" y="30" width="375" height="268"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dotted.png" translatesAutoresizingMaskIntoConstraints="NO" id="K96-8C-eQo">
                                     <rect key="frame" x="8" y="59" width="359" height="1"/>
@@ -35,12 +35,12 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="14" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PK3-HJ-RMu">
-                                    <rect key="frame" x="8" y="68" width="359" height="337"/>
-                                    <mutableString key="text">1. 新用户第一次注册可获得10000积分；
-2. 第一日1000，第二日1200，第三日1400，第四日  1600，第五日1800，第六日2000，第七日2000，连续七天送积分，七天一轮回，只要中断签到，从1000开始；
-3. 若用户选择积分投注，投注后中奖可获得相应奖金积分。
-4. 每天用户第一次通过“我的分享”分享至微信好友或者朋友圈，可获得100积分，重复分享不得积分。
-5. 用户通过“我的分享”分享至微信好友或者朋友圈，会带有一个兑换码，好友通过用户分享的链接下载使用后，在“兑换码”处输入此兑换码，双方即可获得500积分。</mutableString>
+                                    <rect key="frame" x="8" y="68" width="359" height="192"/>
+                                    <string key="text">1.注册赠送。新用户注册成功，系统自动赠送10000积分
+
+2.签到获取。用户在登录后，到【我的】中进行签到可获得积分
+
+3.推过分享和邀请好友获得奖励积分。用户在登录后，到【我的】-【邀请好友】分享至社交平台即可获得相应奖励。</string>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" red="0.1450980392" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -61,7 +61,7 @@
                                 <constraint firstItem="PK3-HJ-RMu" firstAttribute="top" secondItem="K96-8C-eQo" secondAttribute="bottom" constant="8" symbolic="YES" id="1Ms-ls-CRh"/>
                                 <constraint firstItem="64W-Eo-IlI" firstAttribute="leading" secondItem="htq-Uw-cxG" secondAttribute="leading" constant="8" id="ACm-i4-wYT"/>
                                 <constraint firstItem="K96-8C-eQo" firstAttribute="top" secondItem="64W-Eo-IlI" secondAttribute="bottom" constant="10" id="LXS-2I-5T1"/>
-                                <constraint firstAttribute="height" constant="413" id="QK5-zP-3Zf"/>
+                                <constraint firstAttribute="height" constant="268" id="QK5-zP-3Zf"/>
                                 <constraint firstItem="64W-Eo-IlI" firstAttribute="top" secondItem="htq-Uw-cxG" secondAttribute="top" constant="15" id="TNK-lr-ct2"/>
                                 <constraint firstAttribute="bottom" secondItem="PK3-HJ-RMu" secondAttribute="bottom" constant="8" id="W7K-JJ-PgA"/>
                                 <constraint firstItem="K96-8C-eQo" firstAttribute="centerX" secondItem="htq-Uw-cxG" secondAttribute="centerX" id="mfl-Vp-TR0"/>

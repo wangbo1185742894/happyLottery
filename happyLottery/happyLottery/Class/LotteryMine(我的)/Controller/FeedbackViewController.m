@@ -132,6 +132,7 @@
 - (IBAction)commitClick:(id)sender {
      NSString *text = self.feedBackTextView.text;
     if (text.length==0) {
+         [self showPromptText:@"请输入您的宝贵意见！" hideAfterDelay:1.7];
         return;
     }else{
        

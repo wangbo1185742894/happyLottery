@@ -10,6 +10,7 @@
 #import "RegisterViewController.h"
 #import "ForgetPWDViewController.h"
 #import "AESUtility.h"
+#import "JPUSHService.h"
 
 @interface LoginViewController ()<MemberManagerDelegate,UITextFieldDelegate>{
     
@@ -28,7 +29,7 @@
 @end
 
 @implementation LoginViewController
-
+static NSInteger seq = 0;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -49,6 +50,10 @@
             self.userTextField.text =[result stringForColumn:@"mobile"];
         }
     }
+}
+
+- (NSInteger)seq {
+    return ++ seq;
 }
 
 //登陆接口请求服务器
@@ -79,11 +84,16 @@
         [self performSelector:@selector(delayMethod) withObject:nil afterDelay:1];
        
         [self saveUserInfo];
-        
+        [JPUSHService setTags:nil alias:self.curUser.cardCode callbackSelector:@selector(tagsAliasCallback:tags:alias:) object:self];
+     
     }else{
         //[self showPromptText: @"登录失败"  hideAfterDelay: 1.7];
         [self showPromptText:msg  hideAfterDelay: 1.7];
     }
+}
+
+- (void)tagsAliasCallback:(int)iResCode tags:(NSSet*)tags alias:(NSString*)alias {
+    NSLog(@"rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, tags , alias);
 }
 
 - (void)delayMethod{

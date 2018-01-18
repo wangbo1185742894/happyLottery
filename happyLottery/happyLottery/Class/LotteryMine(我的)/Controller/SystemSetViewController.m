@@ -8,6 +8,7 @@
 
 #import "SystemSetViewController.h"
 #import "AboutViewController.h"
+#import "JPUSHService.h"
 
 @interface SystemSetViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottom;
@@ -39,10 +40,16 @@
 - (IBAction)versionBtnClick:(id)sender {
 
 }
+//退出登录
 - (IBAction)quitBtnClick:(id)sender {
     self.curUser.isLogin = NO;
     [self updateLoginStatus];
+     [JPUSHService setTags:nil alias:@"" callbackSelector:@selector(tagsAliasCallback:tags:alias:) object:self];
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)tagsAliasCallback:(int)iResCode tags:(NSSet*)tags alias:(NSString*)alias {
+    NSLog(@"rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, tags , alias);
 }
 
 -(void)updateLoginStatus{

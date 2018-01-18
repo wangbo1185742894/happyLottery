@@ -37,16 +37,15 @@
 }
 
 - (void)creatArr {
-    NSString *s1=@"充值后，即时到账，根据规定，为避免洗钱行为，充值金额的30%只能用于购彩，不能提现。";
-    NSString *s2=@"提现前需要设置好支付密码，实名认证并且添加银行卡，若银行卡开户名和认证姓名不一致，将无法提现成功，提现金额会原来返回账户。";
-    NSString *s3=@"1.预测结果是根据大数据计算得出的，有些预测有双选，双选有利于稳定收益；\n2.目前只有竞彩足球胜平负和让球胜平负玩法有预测；\n3.精准预测是经过大数据分析之后，命中率较高比赛；\n4.预测数据是根据大数据变化而动态分析每一场比赛，当数据发生较大变化时，预测结果可能会跟着变化。" ;
-    NSString *s4=@"1.方案每次最多十个，选择概率最高的推荐给彩民；\n2.对于高风险的方案，系统会自动给予屏蔽，因此有时候可能会无法显示生成方案。\n";
-    _arr = [@[@[s1],@[s2],@[s3],@[s4]]mutableCopy];
+    NSString *s1=@"通常情况下，充值后您的资金将会立即到账。若出现银行卡已经扣费，但资金并未到账，请拨打客服热线400-668-0778";
+    NSString *s2=@"根据相关规定充值金额的30%只能用于购彩，不能提现。其中彩金是投必中发送给用户的专属购彩金，也是无法提现。";
+    NSString *s3=@"预测结果通过多维度的大数据分析，进行数学建模和多维度的数据模型匹配，从而智能分析出比赛结果。" ;
+ 
+    _arr = [@[@[s1],@[s2],@[s3]]mutableCopy];
     _foldInfoDic = [NSMutableDictionary dictionaryWithDictionary:@{
                                                                    @"0":@"1",
                                                                    @"1":@"1",
-                                                                   @"2":@"1",
-                                                                   @"3":@"1"
+                                                                   @"2":@"1"
                                                                    }];
 }
 //
@@ -67,7 +66,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 4;
+    return 3;
 }
 
 
@@ -79,13 +78,11 @@
     }
     
     if (section == 0) {
-        [headerView setFoldSectionHeaderViewWithTitle:@"充值问题"  type: HerderStyleTotal section:0 canFold:YES];
+        [headerView setFoldSectionHeaderViewWithTitle:@"充值未及时到账怎么办？"  type: HerderStyleTotal section:0 canFold:YES];
     } else if (section == 1) {
-        [headerView setFoldSectionHeaderViewWithTitle:@"提现问题"  type:HerderStyleTotal section:1 canFold:YES];
+        [headerView setFoldSectionHeaderViewWithTitle:@"账户有余额为什么不能提现？"  type:HerderStyleTotal section:1 canFold:YES];
     } else if (section == 2){
-        [headerView setFoldSectionHeaderViewWithTitle:@"预测问题"  type:HerderStyleNone section:2 canFold:YES];
-    } else {
-        [headerView setFoldSectionHeaderViewWithTitle:@"方案问题" type:HerderStyleTotal section:3 canFold:YES];
+        [headerView setFoldSectionHeaderViewWithTitle:@"预测结果有什么依据吗？"  type:HerderStyleNone section:2 canFold:YES];
     }
     headerView.delegate = self;
     NSString *key = [NSString stringWithFormat:@"%d", (int)section];

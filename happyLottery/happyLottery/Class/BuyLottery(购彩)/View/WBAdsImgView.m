@@ -53,7 +53,7 @@
         UIButton *itemImg = [[UIButton alloc]initWithFrame:CGRectMake(KscreenWidth * i, 0, self.mj_w, scrContentView.mj_h)];
         itemImg.imageView.contentMode = UIViewContentModeScaleToFill;
         [scrContentView addSubview:itemImg];
-        itemImg.backgroundColor = colors[i];
+//        itemImg.backgroundColor = colors[i];
         [itemImg addTarget:self action:@selector(imgItemClick) forControlEvents:UIControlEventTouchUpInside];
         itemImg.adjustsImageWhenHighlighted = NO;
         [itemImg setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"ad_home%d.png",i + 1]] forState:0];

@@ -34,7 +34,7 @@
                                 <constraint firstAttribute="height" constant="15" id="QyE-ca-I3x"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="足球玩起来，模拟真实均可购彩，您的幸运之旅将在此开启！" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tdi-Vp-Nnx">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="推荐好友扫码下载投必中" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tdi-Vp-Nnx">
                             <rect key="frame" x="30" y="27" width="332" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="332" id="dqy-9g-1gz"/>
@@ -91,16 +91,6 @@
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="12" id="wQa-EM-ckw"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="好友打开投必中，进入个人中心——分享，输入以下兑换码激活" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="apu-dd-ldN">
-                            <rect key="frame" x="25" y="313" width="343" height="21"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="21" id="8CD-XY-8Ml"/>
-                                <constraint firstAttribute="width" constant="343" id="9k0-x8-rbw"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <color key="textColor" red="0.1450980392" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="C6KU2NSC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xai-M1-Rz2">
                             <rect key="frame" x="112" y="342" width="151" height="21"/>
                             <constraints>
@@ -126,10 +116,10 @@
                                 <action selector="shareBtnClick:" destination="-1" eventType="touchUpInside" id="sEH-l9-kpQ"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="每天首次分享成功可获得100积分，分享后好友通过推荐码注册成功，可获得500积分。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ezj-dc-1SP">
-                            <rect key="frame" x="16" y="550" width="343" height="43"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用户分享此页面，即可获得相对应奖励。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ezj-dc-1SP">
+                            <rect key="frame" x="16" y="550" width="343" height="21"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="43" id="57q-r4-wSM"/>
+                                <constraint firstAttribute="height" constant="21" id="57q-r4-wSM"/>
                                 <constraint firstAttribute="width" constant="343" id="E5J-3O-DQi"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -177,14 +167,24 @@
                             <color key="textColor" red="0.1450980392" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="好友可在【兑换码】处，输入以下兑换码并激活" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="apu-dd-ldN">
+                            <rect key="frame" x="25" y="302" width="343" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="8CD-XY-8Ml"/>
+                                <constraint firstAttribute="width" constant="343" id="9k0-x8-rbw"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.1450980392" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="Yvp-Xw-msZ" firstAttribute="centerX" secondItem="idc-Y6-Gsz" secondAttribute="centerX" id="01f-Mc-R7V"/>
-                        <constraint firstItem="Xai-M1-Rz2" firstAttribute="top" secondItem="apu-dd-ldN" secondAttribute="bottom" constant="8" id="0gG-cN-Pkb"/>
+                        <constraint firstItem="Xai-M1-Rz2" firstAttribute="top" secondItem="apu-dd-ldN" secondAttribute="bottom" constant="19" id="0gG-cN-Pkb"/>
                         <constraint firstItem="Xeh-en-nrC" firstAttribute="leading" secondItem="idc-Y6-Gsz" secondAttribute="leading" constant="10" id="3Zu-W8-EvH"/>
                         <constraint firstItem="Ezj-dc-1SP" firstAttribute="centerX" secondItem="idc-Y6-Gsz" secondAttribute="centerX" id="3kE-Rw-Jhb"/>
-                        <constraint firstItem="apu-dd-ldN" firstAttribute="top" secondItem="nuu-w9-LUU" secondAttribute="bottom" constant="47" id="4yu-4C-1b3"/>
+                        <constraint firstItem="apu-dd-ldN" firstAttribute="top" secondItem="nuu-w9-LUU" secondAttribute="bottom" constant="36" id="4yu-4C-1b3"/>
                         <constraint firstItem="nuu-w9-LUU" firstAttribute="top" secondItem="Tdi-Vp-Nnx" secondAttribute="bottom" constant="67" id="D4v-Q2-itf"/>
                         <constraint firstItem="8iE-UX-WYE" firstAttribute="top" secondItem="yTV-cG-La2" secondAttribute="bottom" constant="37" id="DBQ-PW-NJz"/>
                         <constraint firstItem="RQz-Um-ohi" firstAttribute="centerX" secondItem="idc-Y6-Gsz" secondAttribute="centerX" constant="1" id="Kb1-sg-kvj"/>
@@ -205,7 +205,7 @@
                         <constraint firstItem="nuu-w9-LUU" firstAttribute="centerX" secondItem="idc-Y6-Gsz" secondAttribute="centerX" id="ghK-Gj-EMc"/>
                         <constraint firstItem="ei7-je-zCf" firstAttribute="leading" secondItem="idc-Y6-Gsz" secondAttribute="leading" constant="10" id="h25-I3-mKV"/>
                         <constraint firstItem="ei7-je-zCf" firstAttribute="top" secondItem="Xeh-en-nrC" secondAttribute="bottom" constant="260" id="jt6-o4-4sT"/>
-                        <constraint firstAttribute="bottom" secondItem="Ezj-dc-1SP" secondAttribute="bottom" constant="10" id="kvS-r2-TcM"/>
+                        <constraint firstAttribute="bottom" secondItem="Ezj-dc-1SP" secondAttribute="bottom" constant="32" id="kvS-r2-TcM"/>
                         <constraint firstItem="zIb-Zg-dfj" firstAttribute="top" secondItem="Tdi-Vp-Nnx" secondAttribute="bottom" constant="31" id="o8b-9B-Hjr"/>
                         <constraint firstItem="RQz-Um-ohi" firstAttribute="leading" secondItem="4k1-25-5kQ" secondAttribute="trailing" constant="8" id="tR5-YB-77z"/>
                         <constraint firstItem="RQz-Um-ohi" firstAttribute="top" secondItem="yTV-cG-La2" secondAttribute="bottom" constant="30" id="uAn-t5-43i"/>

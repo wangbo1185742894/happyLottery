@@ -36,23 +36,21 @@
     [self creatArr];
 }
 - (void)creatArr {
-    NSString *s1=@"进入登录页面-点击忘记密码-输入手机号-获取验证码-重新设置登录密码";
-    NSString *s2=@"点击头像进入个人设置页面-点击修改登录密码-输旧密码-输入新设置的密码";
-    NSString *s3=@"点击头像进入个人设置页面-点击修改支付密码-输旧密码-输入新设置的密码\n如果旧密码已经忘记，需要点击支付设置页面的忘记密码，然后输入账户绑定的手机号，获取验证码，最后重新设置支付密码\n" ;
-    NSString *s4=@"进入充值界面后，输入充值金额，选择充值方式进行充值\n";
-    NSString *s5=@"用户设置了支付密码，认证姓名并且添加银行卡之后，输入提现金额小于等于可提现金额时，用户申请提现，资金将会在一个工作日之内转入用户提现的银行卡，如果提现失败，提现金额将原路返回账户。";
-    NSString *s6=@"用户可以选择积分和现金进行投注，积分投注赔率以提交订单时的赔率为准，现金投注赔率以出票票面赔率为准\n";
-    NSString *s7=@"彩民中奖后，五万元（含五万元）一下的中奖奖金直接进入中奖者的指定账户，超过五万元，客户会主动联系大奖客户，引导客户携带身份资料至体彩中心领奖\n";
-    _arr = [@[@[s1],@[s2],@[s3],@[s4],@[s5],@[s6],@[s7]]mutableCopy];
+    NSString *s1=@"找回步骤：如果您不小心忘记了登录密码，可通过绑定的手机号码召回。在【登录】页点击【忘记密码】，进入该页面后通过绑定的手机号和验证码，即可设置新的登录密码。";
+    NSString *s2=@"进入【我的】页面，点击【充值】。进入该页面后输入充值金额，选择支付方式后点击充值按钮即可。";
+    NSString *s3=@"提现的银行账户，点击【申请提现】即可完成。注：您的提现审核通过后，资金将在5个工作日内转入银行账户。不排除因通讯或银行方面原因造成延迟的可能。若审核未通过或银行转账失败，则资金将会退回您的投必中账户。" ;
+    NSString *s4=@"你可通过充值到投必中账户进行余额投注，也可在投注是选择第三方支付方式进行投注。";
+    NSString *s5=@"彩民中奖后，由系统直接将中奖金额自动转至该彩民账户中。注：根据相关规定单注中奖金额超过1万元，应缴纳个人所得税，由彩票中心代扣代缴。选择倍投投注时，只要开奖后单注奖金不超过1万元，就算翻倍后奖金超过1万元，也无须缴纳个人所得税。";
+//    NSString *s6=@"用户可以选择积分和现金进行投注，积分投注赔率以提交订单时的赔率为准，现金投注赔率以出票票面赔率为准\n";
+//    NSString *s7=@"彩民中奖后，五万元（含五万元）一下的中奖奖金直接进入中奖者的指定账户，超过五万元，客户会主动联系大奖客户，引导客户携带身份资料至体彩中心领奖\n";
+    _arr = [@[@[s1],@[s2],@[s3],@[s4],@[s5]]mutableCopy];
     _foldInfoDic = [NSMutableDictionary dictionaryWithDictionary:@{
                                                                    @"0":@"1",
                                                                    @"1":@"1",
                                                                    @"2":@"1",
                                                                    @"3":@"1",
-                                                                   @"4":@"1",
-                                                                   @"5":@"1",
-                                                                   @"6":@"1"
-                                                                   }];
+                                                                   @"4":@"1"
+                           }];
 }
 //
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -66,7 +64,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 7;
+    return 5;
 }
 
 
@@ -78,19 +76,15 @@
     }
     
     if (section == 0) {
-        [headerView setFoldSectionHeaderViewWithTitle:@"忘记登录密码"  type: HerderStyleTotal section:0 canFold:YES];
+        [headerView setFoldSectionHeaderViewWithTitle:@"忘记密码"  type: HerderStyleTotal section:0 canFold:YES];
     } else if (section == 1) {
-        [headerView setFoldSectionHeaderViewWithTitle:@"修改登录密码"  type:HerderStyleTotal section:1 canFold:YES];
+        [headerView setFoldSectionHeaderViewWithTitle:@"账户充值"  type:HerderStyleTotal section:1 canFold:YES];
     } else if (section == 2){
-        [headerView setFoldSectionHeaderViewWithTitle:@"修改支付密码"  type:HerderStyleNone section:2 canFold:YES];
+        [headerView setFoldSectionHeaderViewWithTitle:@"账户提现"  type:HerderStyleNone section:2 canFold:YES];
     } else if (section == 3){
-        [headerView setFoldSectionHeaderViewWithTitle:@"账户充值"  type:HerderStyleNone section:3 canFold:YES];
+        [headerView setFoldSectionHeaderViewWithTitle:@"投注"  type:HerderStyleNone section:3 canFold:YES];
     }else if (section == 4){
-        [headerView setFoldSectionHeaderViewWithTitle:@"账户提现"  type:HerderStyleNone section:4 canFold:YES];
-    }else if (section == 5){
-        [headerView setFoldSectionHeaderViewWithTitle:@"投注"  type:HerderStyleNone section:5 canFold:YES];
-    }else {
-        [headerView setFoldSectionHeaderViewWithTitle:@"领奖" type:HerderStyleTotal section:6 canFold:YES];
+        [headerView setFoldSectionHeaderViewWithTitle:@"兑奖"  type:HerderStyleNone section:4 canFold:YES];
     }
     headerView.delegate = self;
     NSString *key = [NSString stringWithFormat:@"%d", (int)section];
