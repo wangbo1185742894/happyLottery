@@ -39,10 +39,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *redPacketLab;
 @property (weak, nonatomic) IBOutlet UIButton *rechargeBtn;//充值
 @property (weak, nonatomic) IBOutlet UIButton *withdrawalsBtn;//提现
-
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
-
-
 @property(strong, nonatomic) NSString * memberSubFunctionClass;
 @end
 
@@ -76,10 +73,13 @@
     
     [_tableview reloadData];
 }
-//////
+
 -(void)notLogin{
     [self.loginBtn setTitle:@"登录/注册" forState:UIControlStateNormal];
     self.loginBtn.enabled = YES;
+    self.balanceLab.text = @"0";
+    self.integralLab.text = @"0";
+    self.redPacketLab.text =  @"0";
 }
 -(void)updateMemberClinet{
     
@@ -109,34 +109,6 @@
     [self loadUserInfo];
 }
 
-
-//-(void)saveUserInfo{
-//
-//    if ([self.fmdb open]) {
-//        User *user = [GlobalInstance instance].curUser;
-//        FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_user_info"];
-//        NSLog(@"%@",result);
-//        BOOL issuccess = NO;
-//        NSInteger payVerifyType = 1;
-//        do {
-//            NSString *mobile = [result stringForColumn:@"mobile"];
-//
-//            if ([mobile isEqualToString: self.curUser.mobile]) {
-//                payVerifyType = [[result stringForColumn:@"payVerifyType"] integerValue];
-//                issuccess= [self.fmdb executeUpdate:@"delete from t_user_info where mobile = ? ",mobile];
-//
-//            }else{
-//                issuccess= [self.fmdb executeUpdate:@"delete from t_user_info where mobile = ? ",mobile];
-//            }
-//
-//        } while ([result next]);
-//
-//        [self.fmdb executeUpdate:@"insert into t_user_info (cardCode , loginPwd , isLogin , mobile , payVerifyType) values ( ?,?,?,?,?)  ",user.cardCode,user.loginPwd,@"1",user.mobile,[NSString stringWithFormat:@"%ld",payVerifyType]];
-//        [[NSNotificationCenter defaultCenter] postNotificationName:NotificationNameUserLogin object:nil];
-//        [result close];
-//        [self.fmdb close];
-//    }
-//}
 
 -(void)getMemberByCardCodeSms:(NSDictionary *)memberInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     
@@ -190,17 +162,6 @@
     }
 }
 
-//- (void) Login{
-//
-//    LoginViewController * loginVC = [[LoginViewController alloc]init];
-//    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController: loginVC];
-//    navVC.navigationBar.barTintColor = SystemGreen;
-//
-//    navVC.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor], NSFontAttributeName: [UIFont systemFontOfSize:18]};
-//    navVC.navigationBar.tintColor = [UIColor whiteColor];
-//    [self presentViewController:navVC animated:NO completion:nil];
-//}
-
 -(void)noticeCenterSet{
     noticeBtn = [UIButton buttonWithType: UIButtonTypeCustom];
     noticeBtn.frame = CGRectMake(0, 0, 35, 30);
@@ -215,7 +176,6 @@
     label.textColor = [UIColor whiteColor];
     [noticeBtn addSubview:label];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView: noticeBtn];
-    //[noticeBtn setTitle:@"发起合买" forState:UIControlStateNormal];
     [noticeBtn setImage:[UIImage imageNamed:@"news@2x.png"] forState:UIControlStateNormal];
     [noticeBtn addTarget: self action: @selector(noticeBtnClick) forControlEvents: UIControlEventTouchUpInside];
 }
@@ -398,7 +358,6 @@
        [self needLogin];
         return;
     }
-    
     NSDictionary *optionDic = listArray[indexPath.section][indexPath.row];
     if (self.curUser.isLogin == NO) {
         [self needLogin];

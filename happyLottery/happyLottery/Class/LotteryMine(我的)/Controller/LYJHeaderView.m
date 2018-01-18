@@ -38,7 +38,7 @@
     _created = YES;
     
     //标题
-    _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 150, 40)];
+    _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 250, 40)];
    // _titleLabel.backgroundColor = [UIColor grayColor];
    _titleLabel.font = [UIFont systemFontOfSize:18];
     [self.contentView addSubview:_titleLabel];

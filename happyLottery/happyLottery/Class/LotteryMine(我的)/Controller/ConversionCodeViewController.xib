@@ -51,7 +51,7 @@
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xQ6-kI-d1O">
-                            <rect key="frame" x="32" y="400" width="310" height="136"/>
+                            <rect key="frame" x="32" y="400" width="310" height="79"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="活动规则" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5wa-BF-dO3">
                                     <rect key="frame" x="124" y="14" width="63" height="21"/>
@@ -83,10 +83,10 @@
                                         <constraint firstAttribute="height" constant="7" id="rpE-ss-WMz"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="第一次被好友邀请来注册的用户，可输入好友邀请时的推荐码，输入此推荐码即可获得500积分。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gq-c9-5dv">
-                                    <rect key="frame" x="8" y="47" width="294" height="60"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="注释：输入推荐码，激活后可获得相应奖励" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gq-c9-5dv">
+                                    <rect key="frame" x="8" y="47" width="294" height="32"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="60" id="zpe-hX-fLs"/>
+                                        <constraint firstAttribute="height" constant="32" id="zpe-hX-fLs"/>
                                         <constraint firstAttribute="width" constant="294" id="zuo-4a-dfH"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -107,7 +107,7 @@
                                 <constraint firstItem="JFA-Bc-6Ok" firstAttribute="top" secondItem="xQ6-kI-d1O" secondAttribute="top" constant="21" id="mOs-4I-pke"/>
                                 <constraint firstAttribute="width" constant="310" id="t6Y-oL-EVR"/>
                                 <constraint firstItem="4gq-c9-5dv" firstAttribute="centerX" secondItem="xQ6-kI-d1O" secondAttribute="centerX" id="xqQ-Sz-09F"/>
-                                <constraint firstAttribute="height" constant="136" id="yI3-5o-CLt"/>
+                                <constraint firstAttribute="height" constant="79" id="yI3-5o-CLt"/>
                             </constraints>
                         </view>
                     </subviews>

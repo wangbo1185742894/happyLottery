@@ -38,16 +38,18 @@
 }
 
 - (IBAction)commitBtnClick:(id)sender {
-    if ( self.PWD1.text.length == 0||  self.PWD1.text.length < 6 || self.PWD1.text.length > 16) {
+    if ( self.PWD1.text.length == 0||  self.PWD1.text.length < 6 ) {
         self.PWD1.text=@"";
         [self showPromptText: @"请输入6-16位初始密码" hideAfterDelay: 1.7];
         return;
     }
-    else if (self.PWD2.text.length == 0 || self.PWD2.text.length < 6 || self.PWD2.text.length > 16) {
+    else if (self.PWD2.text.length == 0 || self.PWD2.text.length < 6 ) {
         self.PWD2.text=@"";
+          self.PWD3.text=@"";
         [self showPromptText: @"请输入6-16位新密码" hideAfterDelay: 1.7];
         return;
-    } else if (self.PWD3.text.length == 0 || self.PWD3.text.length < 6 || self.PWD3.text.length > 16) {
+    } else if (self.PWD3.text.length == 0 || self.PWD3.text.length < 6 ) {
+           self.PWD2.text=@"";
         self.PWD3.text=@"";
         [self showPromptText: @"请输入6-16位确认密码" hideAfterDelay: 1.7];
         return;
@@ -91,13 +93,27 @@
 -(void)changeLoginPWDSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     
     if ([msg isEqualToString:@"执行成功"]) {
-        [self showPromptText:@"修改支付密码" hideAfterDelay:1.7];
-        [self performSelector:@selector(delayMethod) withObject:nil afterDelay:1.0];
+        [self showPromptText:@"修改登录密码" hideAfterDelay:1.7];
+        self.curUser.isLogin = NO;
+        [self updateLoginStatus];
+      
+     [self.navigationController popViewControllerAnimated:YES];
         
     }else{
         
         [self showPromptText:msg hideAfterDelay:1.7];
         
+    }
+}
+
+-(void)updateLoginStatus{
+    
+    if ([self.fmdb open]) {
+        NSString *mobile =self.curUser.mobile;
+        NSString * isLogin =@"0";
+        //update t_student set score = age where name = ‘jack’ ;
+        [self.fmdb executeUpdate:@"update  t_user_info set isLogin = ? where mobile = ?",isLogin, mobile];
+        [self.fmdb close];
     }
 }
 

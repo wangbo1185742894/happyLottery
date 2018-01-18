@@ -58,11 +58,11 @@
 
     if(nickname.length==0){
          [self showPromptText:@"昵称不能为空！" hideAfterDelay:1.7];
-        return;
-    }else if (nickname.length >8) {
-        [self showPromptText: @"昵称不能超过8位" hideAfterDelay: 1.7];
-        return;
-    }
+        return;}
+//    }else if (nickname.length >8) {
+//        [self showPromptText: @"昵称不能超过8位" hideAfterDelay: 1.7];
+//        return;
+//    }
     else{
         
         [self commitClient];
@@ -76,7 +76,7 @@
 //姓名一般只允许包含中文或英文字母
 - (BOOL)isValidateName:(NSString *)name
 {
-    //NSString *nameRegex = @"^[\u4E00-\u9FA5A-Za-z]{2,16}";
+    //NSString *nameRegex = @"^[\u4E00-\u9FA5A-Za-z0-9]{2,16}";
     NSPredicate *namePredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",REG_NICKNAME_STR];
     
     return [namePredicate evaluateWithObject:name];
@@ -125,10 +125,13 @@
 #pragma UITextFieldDelegate
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    if ([string isEqualToString:@""]) {
-        return YES;
+     NSString *str = [NSString stringWithFormat:@"%@%@",textField.text,string];
+     if (textField == self.nickField) {
+    if (str.length>8) {
+               [self showPromptText: @"昵称不能超过8位" hideAfterDelay: 1.7];
+         return NO;
     }
-    
+     }
    
     
 
@@ -143,7 +146,7 @@
    
     if (textField == self.nickField) {
         if (![self isValidateName:self.nickField.text]) {
-            [self showPromptText: @"请输入真实姓名" hideAfterDelay: 1.7];
+            [self showPromptText: @"请输入正确的昵称" hideAfterDelay: 1.7];
             self.nickField.text= @"";
             return;
         }
