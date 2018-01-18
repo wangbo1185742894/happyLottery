@@ -25,6 +25,7 @@
 
 - (void)viewDidLoad {
     self.title = @"我的收藏";
+    JczqShortcutList = [NSMutableArray arrayWithCapacity:0];
     self.viewControllerNo = @"A212";
     [super viewDidLoad];
     page = 1;
@@ -58,16 +59,19 @@
 }
 //{"cardCode":"xxxx","page":"xxx","pageSize":"xxx"}
 -(void)getJczqShortcut{
-    JczqShortcutList = [NSMutableArray arrayWithCapacity:0];
+    
     self.lotteryMan.delegate = self ;
     [self.lotteryMan getCollectedMatchList:@{@"cardCode":self.curUser.cardCode,@"page":@(page),@"pageSize":@"10"}];
 }
 
 -(void)gotCollectedMatchList:(NSArray *)infoArray errorMsg:(NSString *)msg{
+    [self.tabCollectMatchList.mj_header endRefreshing];
+    [self.tabCollectMatchList.mj_footer endRefreshing];
     if (infoArray == nil) {
         [self showPromptText:msg hideAfterDelay:1.7];
         return;
     }
+    
     if (page == 1) {
         [JczqShortcutList removeAllObjects];
     }
@@ -87,7 +91,7 @@
     NewsListCell *cell = [tableView dequeueReusableCellWithIdentifier:KNewsListCell];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    [cell refreshData:JczqShortcutList[indexPath.row] andSelect:YES];
+    [cell refreshDataCollect:JczqShortcutList[indexPath.row] andSelect:YES];
     cell.delegate = self;
     return cell;
     
@@ -141,13 +145,25 @@
     UMChongZhiViewController *matchDetailVC = [[UMChongZhiViewController alloc]init];
     JczqShortcutModel * model =JczqShortcutList[indexPath.row];
     
-    matchDetailVC.model = model ;//[model jCZQScoreZhiboToJcForecastOptions];
-    if ([matchDetailVC.model.spfSingle boolValue] == YES) {
-        matchDetailVC.isHis = YES;
+    matchDetailVC.model = model ;
+    
+    NSDate *matchDate = [Utility dateFromDateStr:model.dealLine withFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *curDate= [NSDate date];
+    NSInteger res = [matchDate compare:curDate];
+    
+    //[model jCZQScoreZhiboToJcForecastOptions];
+//    if ([matchDetailVC.model.spfSingle boolValue] == YES) {
+//        matchDetailVC.isHis = YES;
+//    }else{
+//        
+//       
+//    }
+    if (res != 1) {
+    matchDetailVC.isHis = YES;
     }else{
-        
         matchDetailVC.isHis = NO;
     }
+    
     matchDetailVC.hidesBottomBarWhenPushed = YES;
     matchDetailVC.curPlayType =@"jczq";
     [self.navigationController pushViewController:matchDetailVC animated:YES];

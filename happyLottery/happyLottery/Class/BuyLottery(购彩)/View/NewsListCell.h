@@ -18,4 +18,5 @@
 @interface NewsListCell : UITableViewCell
 @property(nonatomic,weak)id<NewsListCellDelegate >delegate;
 -(void)refreshData:(JczqShortcutModel * )model andSelect:(BOOL)isSelect;
+-(void)refreshDataCollect:(JczqShortcutModel * )model andSelect:(BOOL)isSelect;
 @end

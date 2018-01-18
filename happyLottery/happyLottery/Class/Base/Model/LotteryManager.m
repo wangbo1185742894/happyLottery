@@ -222,12 +222,13 @@
         
         [self.delegate gotlistByForecast:nil  errorMsg:@"服务器错误"];
     };
-    NSString * strPara = [self JsonFromId:@{@"lotteryCode":infoDic[@"lotteryCode"],@"screenTime":infoDic[@"screenTime"]}];
+    NSString *strPara;
     SOAPRequest *request;
     if (isHis) {
+        strPara = [self JsonFromId:@{@"lotteryCode":infoDic[@"lotteryCode"],@"screenTime":infoDic[@"screenTime"]}];
         request = [self requestForAPI: APIlistByHisForecast withParam: @{@"params":[self actionEncrypt:strPara]}];
     }else{
-        
+        strPara = [self JsonFromId:@{@"lotteryCode":infoDic[@"lotteryCode"]}];
         request = [self requestForAPI: APIlistByForecast withParam: @{@"params":[self actionEncrypt:strPara]}];
     }
     

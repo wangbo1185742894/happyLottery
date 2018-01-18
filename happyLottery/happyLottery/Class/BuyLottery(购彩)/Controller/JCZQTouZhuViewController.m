@@ -162,7 +162,6 @@
         }else{
             [_transction.selectItems removeAllObjects];
         }
-        
         [_transction.selectItems addObject:_transction.chuanFa];
     }
 }
@@ -181,7 +180,7 @@
     }else{
         peiSelectView.labContent.text = self.transction.beitou;
     }
-     [peiSelectView setTarget:self rightAction:@selector(actionAdd) leftAction:@selector(actionSub)];
+    [peiSelectView setTarget:self rightAction:@selector(actionAdd) leftAction:@selector(actionSub)];
     
 }
 

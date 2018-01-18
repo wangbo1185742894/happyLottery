@@ -638,6 +638,61 @@
                         failure:failureBlock];
 }
 
+- (void) getAvailableCoupon:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        
+        if (response.succeed) {
+            NSDictionary *Info = [self objFromJson: responseJsonStr];
+            [self.delegate gotAvailableCoupon:YES andPayInfo:Info errorMsg:response.errorMsg];
+        } else {
+            [self.delegate gotAvailableCoupon:NO andPayInfo:nil errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate gotAvailableCoupon:NO andPayInfo:nil errorMsg:@"服务器错误"];
+        //失败的代理方法
+    };
+    //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
+    
+    SOAPRequest *request = [self requestForAPI: APIgetAvailableCoupon withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]} ];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+- (void) queryRecharge:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        
+        if (response.succeed) {
+            NSDictionary *Info = [self objFromJson: responseJsonStr];
+            [self.delegate queryRecharge:Info IsSuccess:YES errorMsg:response.errorMsg];
+        } else {
+            [self.delegate queryRecharge:nil IsSuccess:NO errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate queryRecharge:nil IsSuccess:NO errorMsg:@"服务器错误"];
+    };
+    
+    SOAPRequest *request = [self requestForAPI: APIqueryRecharge withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]} ];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
 
 /**
  * 会员提现 {"cardCode":"xxxxx", "paypwd":"xxxx", "bankId":"123123", "amounts":10}
@@ -1114,9 +1169,7 @@
         SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
         NSString *responseJsonStr = [response getAPIResponse];
         if (response.succeed) {
-            NSArray *Info = [self objFromJson: responseJsonStr];
-            
-            [self.delegate gotisSignInToday:Info IsSuccess:YES errorMsg:response.errorMsg];
+            [self.delegate gotisSignInToday:responseJsonStr IsSuccess:YES errorMsg:response.errorMsg];
         } else {
             [self.delegate gotisSignInToday:nil IsSuccess:NO errorMsg:response.errorMsg];
             

@@ -11,7 +11,7 @@
 #import "ADSModel.h"
 @protocol WBAdsImgViewDelegate
 
--(void)adsImgViewClick:(NSInteger)itemIndex;
+-(void)adsImgViewClick:(ADSModel*)itemIndex;
 
 @end
 

@@ -14,6 +14,7 @@
 {
     NSMutableArray <ChannelModel *>*channelList;
     ChannelModel *itemModel;
+    NSString *orderNO;
 }
 @property (weak, nonatomic) IBOutlet UILabel *labBanlence;
 @property (weak, nonatomic) IBOutlet UITextField *txtChongZhiJIne;
@@ -32,6 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"充值";
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkSchemePayState:) name:@"NSNotificationapplicationWillEnterForeground" object:nil];
     self.viewControllerNo = @"A105";
     self.payWebView.delegate = self;
     self.memberMan.delegate = self;
@@ -88,8 +90,10 @@
     if (success) {
         if ([itemModel.channel isEqualToString:@"SDALI"]) {
             [self.payWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:payInfo[@"qrCode"]]]];
+            orderNO = payInfo[@"orderNo"];
         }else if ([itemModel.channel isEqualToString:@"WFTWX"]){
             [self.payWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:payInfo[@"payInfo"]]]];
+            orderNO = payInfo[@"orderNo"];
         }
         
     }else{
@@ -98,6 +102,7 @@
 }
 
 - (IBAction)haveead:(id)sender {
+    
 }
 - (IBAction)memberDetail:(id)sender{
 }
@@ -118,11 +123,14 @@
                 break;
             }
         }
+        if (itemModel == nil) {
+            [self showPromptText:@"请选择支付方式" hideAfterDelay:1.7];
+            return;
+        }
         rechargeInfo = @{@"cardCode":cardCode,
                           @"channel":itemModel.channel,
                           @"amounts":checkCode,
-                          };
-        
+                        };
     } @catch (NSException *exception) {
         rechargeInfo = nil;
     } @finally {
@@ -194,6 +202,32 @@
         [[UIApplication sharedApplication] openURL:request.URL];
     }
     return YES;
+}
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"NSNotificationapplicationWillEnterForeground" object:nil];
+}
+
+-(void)checkSchemePayState:(NSNotification *)notification{
+    
+    if (orderNO == nil) {
+        return;
+    }
+    [self showLoadingText:@"正在查询充值结果，请稍等"];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        [self.memberMan queryRecharge:@{@"channel":itemModel.channel, @"orderNo":orderNO}];
+    });
+}
+
+-(void)queryRecharge:(NSDictionary *)Info IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    [self hideLoadingView];
+    if (success == YES) {
+        
+    }else{
+        [self showPromptText:msg hideAfterDelay:1.7];
+    }
 }
 
 @end

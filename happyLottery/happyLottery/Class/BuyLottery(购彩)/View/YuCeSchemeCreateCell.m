@@ -14,6 +14,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *fanganNoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *jiezhiLabel;
 @property (weak, nonatomic) IBOutlet UILabel *kezhongLabel;
+@property (weak, nonatomic) IBOutlet UILabel *labFollowCount;
+
 - (IBAction)actionTouZhu:(UIButton *)sender;
 
 @end
@@ -39,11 +41,18 @@
     self.scheme = scheme;
     int tag = [string intValue];
 
+    if (tag == 300) {
+        self.shouyiLabel.textColor = TEXTGRAYOrange;
+        self.mingzhonglvLabel.textColor = TEXTGRAYCOLOR;
+    }else if (tag == 301){
+        self.shouyiLabel.textColor = TEXTGRAYCOLOR;
+        self.mingzhonglvLabel.textColor =  TEXTGRAYOrange;
+    }
     self.shouyiLabel.keyWordFont = [UIFont systemFontOfSize:10];
     self.shouyiLabel.text = [NSString stringWithFormat:@"%.2f倍",[scheme.earnings doubleValue]];
     self.shouyiLabel.keyWord = @"倍";
     
-  
+    self.labFollowCount.text = [NSString stringWithFormat:@"认购人次：%@",scheme.recommendCount];
     self.mingzhonglvLabel.text = [NSString stringWithFormat:@"%@%%",scheme.predictIndex];
     self.mingzhonglvLabel.keyWordFont = [UIFont systemFontOfSize:10];
     self.mingzhonglvLabel.keyWordColor = SystemLightGray;

@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labJiangjin;
 @property (weak, nonatomic) IBOutlet UILabel *labPassType;
 @property (weak, nonatomic) IBOutlet UIView *viewSubContent;
+@property (weak, nonatomic) IBOutlet UIImageView *imgWinIcon;
 
 
 -(void)reloadData:(NSDictionary *)dic;

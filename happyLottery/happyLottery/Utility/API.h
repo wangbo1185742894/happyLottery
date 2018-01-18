@@ -62,17 +62,17 @@
 #define APIvalidatePaypwd          @"validatePaypwd"
 #define APIsignIn                  @"signIn"
 #define APIisSignInToday           @"isSignInToday"
-
-#define APIgetCashBlotter           @"getCashBlotter"
-#define APIgetScoreBlotter          @"getScoreBlotter"
-#define APIgetMemberByCardCode      @"getMemberByCardCode"
-#define APIgetRedPacketByState      @"getRedPacketByState"
-#define APIopenRedPacket            @"openRedPacket"
-#define APIgetCouponByState           @"getCouponByState"
-#define APIupdateImage              @"modifyHeadUrl"
+#define APIgetCashBlotter          @"getCashBlotter"
+#define APIgetScoreBlotter         @"getScoreBlotter"
+#define APIgetMemberByCardCode     @"getMemberByCardCode"
+#define APIgetRedPacketByState     @"getRedPacketByState"
+#define APIopenRedPacket           @"openRedPacket"
+#define APIgetCouponByState        @"getCouponByState"
+#define APIupdateImage             @"modifyHeadUrl"
 #define APIfeedBack                @"feedBack"
-#define APIgetFeedbackList           @"getFeedbackList"
-
+#define APIgetFeedbackList         @"getFeedbackList"
+#define APIqueryRecharge           @"queryRecharge"
+#define APIgetAvailableCoupon      @"getAvailableCoupon"
 
 
 #define SUBAPIDATA           @"/data"
@@ -91,7 +91,8 @@
 #define APIlistByRechargeChannel    @"listByRechargeChannel"
 #define APICollectMatch             @"collectMatch"
 #define APIGetCollectedMatchList    @"getCollectedMatchList"
-#define APIgetClientDownLoadUrl       @"getClientDownLoadUrl"
+#define APIgetClientDownLoadUrl     @"getClientDownLoadUrl"
+
 
 #define SUBAPISchemeService   @"/scheme"
 #define APIBetLotteryScheme         @"betLotteryScheme"
@@ -100,6 +101,7 @@
 #define APIGetSchemeRecord          @"getSchemeRecord"
 #define APIGetSchemeRecordBySchemeNo @"getSchemeRecordBySchemeNo"
 #define APIlistByHisGains           @"listByHisGains"
+
 
 #define SUBAPITicketService   @"/ticket"
 #define APIGetJczqTicketOrderDetail @"getJczqTicketOrderDetail"

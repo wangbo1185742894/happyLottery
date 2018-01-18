@@ -43,7 +43,7 @@
 
 -(void)initSwitchStatus{
    
-        int payVerifyType = [self.curUser.payVerifyType intValue];
+        int payVerifyType = self.curUser.payVerifyType;
         if (payVerifyType == PayVerifyTypeLessThanOneHundred) {
             self.switch2.on=YES;
         } else  if (payVerifyType == PayVerifyTypeLessThanFiveHundred){
@@ -147,35 +147,36 @@
 
 - (IBAction)switch1Chose:(id)sender {
     verifyType = PayVerifyTypeAlwaysNo;
-    self.curUser.payVerifyType = [NSNumber numberWithInt:verifyType];
+    self.curUser.payVerifyType = verifyType;
     [self savePayVerifyType];
     [self showPayPopView];
     self.switch1.on=NO;
 }
 - (IBAction)switch2Chose:(id)sender {
     verifyType = PayVerifyTypeLessThanOneHundred;
-    self.curUser.payVerifyType = [NSNumber numberWithInt:verifyType];
+    self.curUser.payVerifyType = verifyType;
     [self savePayVerifyType];
       [self showPayPopView];
     self.switch2.on=NO;
 }
 - (IBAction)switch3Chose:(id)sender {
     verifyType = PayVerifyTypeLessThanFiveHundred;
-    self.curUser.payVerifyType = [NSNumber numberWithInt:verifyType];
+    self.curUser.payVerifyType = verifyType;
     [self savePayVerifyType];
      [self showPayPopView];
    self.switch3.on=NO;
 }
 - (IBAction)switch4Chose:(id)sender {
     verifyType = PayVerifyTypeLessThanThousand;
-    self.curUser.payVerifyType = [NSNumber numberWithInt:verifyType];
+    self.curUser.payVerifyType = verifyType;
     [self savePayVerifyType];
-     [self showPayPopView];
-  self.switch4.on=NO;
+    [self showPayPopView];
+    self.switch4.on=NO;
 }
+
 - (IBAction)mianMiSwitch:(id)sender {
     verifyType = PayVerifyTypeAlways;
-    self.curUser.payVerifyType = [NSNumber numberWithInt:verifyType];
+    self.curUser.payVerifyType = verifyType;
     [self savePayVerifyType];
     [self showPayPopView];
     self.mianMiSwitch.on=NO;

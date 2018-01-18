@@ -46,7 +46,7 @@
     self.zhongjiangLabel.keyWord = @"元";
     self.zhongjiangLabel.keyWordColor = [UIColor grayColor];
     self.timeLabel.text = [scheme.createTime substringWithRange:NSMakeRange(0,10)];
-    NSString *nickStr = [scheme.cardCode stringByReplacingCharactersInRange:NSMakeRange(2, 3) withString:@"***"];
+    NSString *nickStr = [scheme.tel stringByReplacingCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
     self.memberName.text = scheme.memberName ? scheme.memberName : nickStr;
 }
 

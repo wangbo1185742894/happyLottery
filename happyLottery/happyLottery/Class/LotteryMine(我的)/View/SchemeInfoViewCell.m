@@ -31,11 +31,11 @@
     if ([model.costType isEqualToString:@"CASH"]) {
         self.labZheKouJinE.text = [NSString stringWithFormat:@"%.2f元",[model.deduction doubleValue]];
         self.labShiFujine.text =[NSString stringWithFormat:@"%.2f元",[model.betCost doubleValue] - [model.deduction doubleValue]];
-        self.labZhifuShijian.text = model.finishedTime;
+        self.labZhifuShijian.text = model.subTime;
     }else{
         self.labZheKouJinE.text = [NSString stringWithFormat:@"%.2f积分",[model.deduction doubleValue]];
         self.labShiFujine.text =[NSString stringWithFormat:@"%.2f积分",[model.betCost doubleValue] - [model.deduction doubleValue]];
-        self.labZhifuShijian.text = model.finishedTime;
+        self.labZhifuShijian.text = model.subTime;
     }
 
 }

@@ -254,7 +254,8 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
     if (section == 1) {
-        if ([NSString stringWithFormat:@"%@",schemeDetail.ticketCount].integerValue > 0) {
+        
+        if ([NSString stringWithFormat:@"%@",schemeDetail.ticketCount].integerValue > 0 && [schemeDetail.costType isEqualToString:@"CASH"]) {
            return 60;
         }else{
           return 30;
@@ -273,7 +274,12 @@
     if (section == 0) {
         header.titleLa.text = @"方案信息";
     }else if (section == 1){
-        [self showMySchemeHeader:header];
+        if (![schemeDetail.costType isEqualToString:@"CASH"]) {
+            header.titleLa.text = @"方案内容";
+        }else{
+            [self showMySchemeHeader:header];
+        }
+        
     }else if (section == 2){
         header.titleLa.text = @"认购信息";
     }
@@ -291,7 +297,7 @@
     ticketLa.titleLabel.font = [UIFont systemFontOfSize:13];
     [ticketLa setTitleColor:SystemGreen forState:UIControlStateNormal];
     ticketLa.titleLabel.adjustsFontSizeToFitWidth = YES;
-    if ([NSString stringWithFormat:@"%@",schemeDetail.ticketCount].integerValue > 0) {
+    if ([NSString stringWithFormat:@"%@",schemeDetail.ticketCount].integerValue > 0 ) {
         [ticketLa setTitle:@"订单详情>" forState:UIControlStateNormal];
         header.viewPeiLvInfo.hidden = NO;
         ticketLa.enabled = YES;

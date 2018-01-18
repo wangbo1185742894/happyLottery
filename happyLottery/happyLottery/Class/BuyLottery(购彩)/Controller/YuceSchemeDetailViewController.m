@@ -115,6 +115,9 @@
     self.lotteryMan.delegate = self;
 }
 - (void)setUpUI{
+    
+   
+    
     self.beilvLabel.keyWordFont = [UIFont systemFontOfSize:10];
     self.beilvLabel.text = [NSString stringWithFormat:@"%.2f倍",[self.scheme.earnings doubleValue]];
     self.beilvLabel.keyWord = @"倍";
@@ -126,12 +129,12 @@
     self.fanganLabel.text = self.scheme.recSchemeNo;
     self.fanganLabel.adjustsFontSizeToFitWidth = YES;
     
-    if ([self.xuQiuBtnTag intValue] == 301) {
-//        self.beilvLabel.textColor = TEXTGRAYCOLOR;
-//        self.mingzhonglvLabel.textColor = TextCharColor;
-    }else{
-//        self.beilvLabel.textColor = TextCharColor;
-//        self.mingzhonglvLabel.textColor = TEXTGRAYCOLOR;
+    if ([self.xuQiuBtnTag integerValue] == 300) {
+        self.beilvLabel.textColor = TEXTGRAYOrange;
+        self.mingzhonglvLabel.textColor = TEXTGRAYCOLOR;
+    }else if ([self.xuQiuBtnTag integerValue] == 301){
+        self.beilvLabel.textColor = TEXTGRAYCOLOR;
+        self.mingzhonglvLabel.textColor =  TEXTGRAYOrange;
     }
     
     self.timeLabel.text = [self.scheme.dealLine substringWithRange:NSMakeRange(5, 11)];
@@ -236,7 +239,7 @@
     if (self.curUser.isLogin) {
          [self showTouzhuInfo];
         self.transaction.betCount = selectnum;
-        self.transaction.beiTou = beiCount;
+        
         self.transaction.schemeSource = SchemeSourceFORECAST_SCHEME;
         self.transaction.betSource = @"2";
         self.transaction.yuceScheme = self.scheme;
@@ -251,7 +254,19 @@
         self.transaction.costType = CostTypeCASH;
         
         self.transaction.secretType = SecretTypeFullOpen;
-        self.transaction.betCost = self.transaction.betCount * 2  * self.transaction.beiTou;
+        
+        NSString *maxPrizeStr =  [self.money substringToIndex:(self.money.length -1)];
+        NSInteger maxPrize = [maxPrizeStr integerValue];
+        NSInteger betCount = maxPrize / 2;
+        self.transaction.beiTou = beiCount * betCount;
+        
+        beiCount = [self.beiSelectView.labContent.text integerValue];
+        if (beiCount == 0) {
+            beiCount = 1;
+        }
+
+        
+        self.transaction.betCost = maxPrize * beiCount;
         self.transaction.units = self.transaction.betCount;
         [self.lotteryMan betLotteryScheme:self.transaction];
        

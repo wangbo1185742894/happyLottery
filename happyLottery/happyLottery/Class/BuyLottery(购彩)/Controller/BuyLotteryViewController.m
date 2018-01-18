@@ -151,15 +151,15 @@
         JczqShortcutModel *model =  [[JczqShortcutModel alloc]initWith:infoDic];
         [JczqShortcutList addObject:model];
     }
-    NSInteger count = JczqShortcutList.count > 5 ?5:JczqShortcutList.count;
+    
     CGFloat height;
     if ([self isIphoneX]) {
-        height = curY  + tabForecaseList.rowHeight * count + 20;
+        height = curY  + tabForecaseList.rowHeight * JczqShortcutList.count + 20;
     }else{
-        height = curY  + tabForecaseList.rowHeight * count;
+        height = curY  + tabForecaseList.rowHeight * JczqShortcutList.count;
     }
     homeViewHeight.constant = height;
-    tabForecastListHeight.constant = tabForecaseList.rowHeight * count;
+    tabForecastListHeight.constant = tabForecaseList.rowHeight * JczqShortcutList.count;
     [tabForecaseList reloadData];
     
 }
@@ -219,9 +219,65 @@
 
 }
 
--(void)adsImgViewClick:(NSInteger)itemIndex{
-    [self showPromptText:[NSString stringWithFormat:@"点击了%ld",itemIndex] hideAfterDelay:1.9];
+-(void)goToYunshiWithInfo:(ADSModel *)itemIndex{
+    NSString *keyStr = itemIndex.thumbnailCode;
     
+    if (keyStr == nil) {
+        return;
+    }
+    
+    if (itemIndex.trLoadStatus!= nil) {
+        if ([itemIndex.trLoadStatus isEqualToString:@"ENABLE"] && self.curUser.isLogin == NO) {
+            [self needLogin];
+            return;
+        }
+    }
+    BaseViewController *baseVC;
+    NSDictionary * vcDic = [NSDictionary dictionaryWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"pageCodeConfig" ofType:@"plist"]];
+    if (keyStr == nil || [keyStr isEqualToString:@""]) {
+        return;
+    }
+    NSString *vcName = vcDic[keyStr];
+    if (vcName==nil) {
+        return;
+    }
+    Class class = NSClassFromString(vcName);
+    
+    baseVC =[[class alloc] init];
+    
+    
+    baseVC.hidesBottomBarWhenPushed = YES;
+    
+    [self.navigationController pushViewController:baseVC animated:YES];
+}
+
+
+-(void)adsImgViewClick:(ADSModel *)itemIndex{
+    NSString *jumpType;
+    
+    return;
+    
+    if (itemIndex.imageContentType != nil) {
+        
+        jumpType = [NSString stringWithFormat:@"%@",itemIndex.imageContentType];
+    }else{
+        jumpType = @"";
+    }
+    
+    
+    if ([jumpType isEqualToString:@"NOJUMP"]) {
+        return;
+    }else if ([jumpType isEqualToString:@"APP"]) {//内部视图跳转
+        
+        [self goToYunshiWithInfo:itemIndex];
+        
+    }else if([jumpType isEqualToString:@"EDITOR"]||[jumpType isEqualToString:@"H5PAGE"]){
+//        HomeJumpViewController *jumpVC = [[HomeJumpViewController alloc] initWithNibName:@"HomeJumpViewController" bundle:nil];
+//
+//        jumpVC.info = info;
+//        jumpVC.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:jumpVC animated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -276,7 +332,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return JczqShortcutList.count > 5 ?5:JczqShortcutList.count;
+    return JczqShortcutList.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -287,14 +343,17 @@
     if (self.curUser .isLogin == YES) {
         if ([self .fmdb open]) {
             FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_collect_match"];
-            do {
-                if ([[result stringForColumn:@"matchKey"] isEqualToString:JczqShortcutList[indexPath.row].matchKey] && [[result stringForColumn:@"cardCode"]isEqualToString:self.curUser.cardCode]) {
-                    isSelect = YES;
-                    JczqShortcutList[indexPath.row].isCollect = YES;
-                    break;
-                }
-            } while ([result next]);
-            [self.fmdb close];
+            if (JczqShortcutList.count != 0) {
+                do {
+                    if ([[result stringForColumn:@"matchKey"] isEqualToString:JczqShortcutList[indexPath.row].matchKey] && [[result stringForColumn:@"cardCode"]isEqualToString:self.curUser.cardCode]) {
+                        isSelect = YES;
+                        JczqShortcutList[indexPath.row].isCollect = YES;
+                        break;
+                    }
+                } while ([result next]);
+                [self.fmdb close];
+            }
+           
         }
         
     }
@@ -306,17 +365,20 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    if (indexPath.row > JczqShortcutList.count) {
+        return;
+    }
     UMChongZhiViewController *matchDetailVC = [[UMChongZhiViewController alloc]init];
     JczqShortcutModel * model =JczqShortcutList[indexPath.row];
 
     matchDetailVC.model = model ;//[model jCZQScoreZhiboToJcForecastOptions];
-    if ([matchDetailVC.model.spfSingle boolValue] == YES) {
-        matchDetailVC.isHis = YES;
-    }else{
-        
-        matchDetailVC.isHis = NO;
-    }
+//    if ([matchDetailVC.model.spfSingle boolValue] == YES) {
+//        matchDetailVC.isHis = YES;
+//    }else{
+//        
+//       
+//    }
+     matchDetailVC.isHis = NO;
     matchDetailVC.hidesBottomBarWhenPushed = YES;
     matchDetailVC.curPlayType =@"jczq";
     [self.navigationController pushViewController:matchDetailVC animated:YES];

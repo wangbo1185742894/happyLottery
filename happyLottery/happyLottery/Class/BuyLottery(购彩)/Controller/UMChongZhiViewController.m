@@ -48,15 +48,7 @@
         self.topWebView.constant = 20;
     }
     self.title = @"预测详情";
-//    [self showLoadingViewWithText:@"正在加载"];
-    
-    if ([self.model.spfSingle boolValue] == NO) {
-        self.viewBottom.hidden = YES;
-    }else{
-        
-        self.viewBottom.hidden = NO;
-    }
-    
+
     if (self.isHis == YES) {
         self.webViewdisBottom.constant = 0;
     }else{
@@ -65,11 +57,11 @@
     }
     self.viewBottom.hidden = self.isHis;
 
-//    NSURL *strUrl =[NSURL URLWithString:self.model.h5Url];
+    NSURL *strUrl =[NSURL URLWithString:self.model.h5Url];
     
-//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL: strUrl];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL: strUrl];
     self.webView.delegate = self;
-//    [self.webView loadRequest:request];
+    [self.webView loadRequest:request];
     [self refreshData];
 }
 
@@ -87,12 +79,13 @@
                 case 0:
                     self.imgSheng.hidden = ![ops.forecast boolValue];
                     self.btnSheng.selected = [ops.forecast boolValue];
-                    [self.btnSheng setTitle:[NSString stringWithFormat:@"主负%@",ops.sp] forState:0];
+                    
+                    [self.btnSheng setTitle:[NSString stringWithFormat:@"主负%.2f",[ops.sp doubleValue]] forState:0];
                     break;
                 case 1:
                     self.imgPing.hidden = ![ops.forecast boolValue];
                     self.btnPing.selected = [ops.forecast boolValue];
-                    [self.btnPing setTitle:[NSString stringWithFormat:@"主胜%@",ops.sp] forState:0];
+                    [self.btnPing setTitle:[NSString stringWithFormat:@"主胜%.2f",[ops.sp doubleValue]] forState:0];
                     break;
                
                 default:
@@ -109,18 +102,18 @@
                 case 0:
                     self.imgSheng.hidden = ![ops.forecast boolValue];
                     self.btnSheng.selected = [ops.forecast boolValue];
-                    [self.btnSheng setTitle:[NSString stringWithFormat:@"主胜%@",ops.sp] forState:0];
+                    [self.btnSheng setTitle:[NSString stringWithFormat:@"主胜%.2f",[ops.sp doubleValue]] forState:0];
                     break;
                 case 1:
                     self.imgPing.hidden = ![ops.forecast boolValue];
                     self.btnPing.selected = [ops.forecast boolValue];
-                    [self.btnPing setTitle:[NSString stringWithFormat:@"平局%@",ops.sp] forState:0];
+                    [self.btnPing setTitle:[NSString stringWithFormat:@"平局%.2f",[ops.sp doubleValue]] forState:0];
                     break;
                 case 2:
                     
                     self.imgFu.hidden = ![ops.forecast boolValue];
                     self.btnFu.selected = [ops.forecast boolValue];
-                    [self.btnFu setTitle:[NSString stringWithFormat:@"主负%@",ops.sp] forState:0];
+                    [self.btnFu setTitle:[NSString stringWithFormat:@"主负%.2f",[ops.sp doubleValue]] forState:0];
                     break;
                     
                 default:
@@ -151,7 +144,11 @@
 }
 - (IBAction)actionTouzhu:(UIButton *)sender {
     
+    
+    
     if (self.viewBottom.mj_h == 150) {
+    
+        
         [self touzhu];
         
     }else{
@@ -199,6 +196,18 @@
     JczqShortcutModel* model = [detailVC.model copyNojcforecastOptions];
     model.forecastOptions = itemArray;
 
+    NSInteger selectNum = 0;
+    for (JcForecastOptions * op in model.forecastOptions) {
+        if ([op.forecast boolValue] == YES) {
+            selectNum ++ ;
+        }
+    }
+    
+    if (selectNum == 0) {
+        [self showPromptText:@"请选择投注结果" hideAfterDelay:1.7];
+        return;
+    }
+    
     detailVC.isFromYC = YES;
     detailVC.model = model;
     [self.navigationController pushViewController:detailVC animated:YES];

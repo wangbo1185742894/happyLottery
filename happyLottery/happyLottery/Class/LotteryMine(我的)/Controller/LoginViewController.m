@@ -97,15 +97,22 @@
         FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_user_info"];
         NSLog(@"%@",result);
         BOOL issuccess = NO;
-        
+        NSInteger payVerifyType = 1;
         do {
             NSString *mobile = [result stringForColumn:@"mobile"];
           
-            issuccess= [self.fmdb executeUpdate:@"delete from t_user_info where mobile = ? ",mobile];
+            if ([mobile isEqualToString: self.curUser.mobile]) {
+                payVerifyType = [[result stringForColumn:@"payVerifyType"] integerValue];
+                issuccess= [self.fmdb executeUpdate:@"delete from t_user_info where mobile = ? ",mobile];
+                
+            }else{
+                issuccess= [self.fmdb executeUpdate:@"delete from t_user_info where mobile = ? ",mobile];
+            }
+           
 
         } while ([result next]);
         
-        [self.fmdb executeUpdate:@"insert into t_user_info (cardCode , loginPwd , isLogin , mobile,payVerifyType) values ( ?,?,?,?,?)  ",user.cardCode,user.loginPwd,@(1),user.mobile,@(1)];
+        [self.fmdb executeUpdate:@"insert into t_user_info (cardCode , loginPwd , isLogin , mobile , payVerifyType) values ( ?,?,?,?,?)  ",user.cardCode,user.loginPwd,@"1",user.mobile,[NSString stringWithFormat:@"%ld",payVerifyType]];
         [[NSNotificationCenter defaultCenter] postNotificationName:NotificationNameUserLogin object:nil];
         [result close];
         [self.fmdb close];
@@ -120,8 +127,8 @@
         NSString *pwd = self.passwordTextField.text;
         
         loginInfo = @{@"mobile":mobile,
-                       @"pwd": [AESUtility encryptStr: pwd],
-                       @"channelCode":CHANNEL_CODE
+                    @"pwd": [AESUtility encryptStr: pwd],
+                    @"channelCode":CHANNEL_CODE
                        };
         
     } @catch (NSException *exception) {

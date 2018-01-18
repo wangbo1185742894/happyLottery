@@ -49,23 +49,15 @@
 
 @implementation MineViewController
 
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:YES];
-       //
-    if ([self .fmdb open]) {
-        FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_user_info"];
-        if ([result next] && [result stringForColumn:@"mobile"] != nil) {
-            isLogin = [[result stringForColumn:@"isLogin"] boolValue];
-    if (isLogin==YES) {
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    
+    if (self.curUser.isLogin==YES) {
         [self updateMemberClinet];
-        
     } else {
-        [self autoLogin];
+        //显示未登录时的状态
+        [self notLogin];
     }
-
-        }
-    }
-    [self.fmdb close];
     self.memberMan.delegate = self;
 }
 
@@ -87,17 +79,11 @@
      // [self loadUserInfo];
     [_tableview reloadData];
 }
-
--(void)autoLogin{
-    
-            if (isLogin ==YES ) {
-               // _loginBtn.enabled = NO;
-                [self updateMemberClinet];
-            }else{
-                [self.loginBtn setTitle:@"登录/注册" forState:UIControlStateNormal];
-                self.loginBtn.enabled = YES;
-            }
-
+//////
+-(void)notLogin{
+    [self.loginBtn setTitle:@"登录/注册" forState:UIControlStateNormal];
+    self.
+    self.loginBtn.enabled = YES;
 }
 -(void)updateMemberClinet{
     
@@ -112,9 +98,13 @@
     [self.memberMan getMemberByCardCodeSms:(NSDictionary *)MemberInfo];
 }
 
--(void)gotisSignInToday:(NSArray *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+-(void)gotisSignInToday:(NSString *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     if (success ) {
-        
+        if ([redPacketInfo boolValue] == NO) { // 未签
+            self.signInBtn.enabled = YES;
+        }else{
+            self.signInBtn.enabled = NO;
+        }
     }
 }
 
@@ -123,26 +113,34 @@
     [self loadUserInfo];
 }
 
--(void)saveUserInfo{
-    
-    if ([self.fmdb open]) {
-        User *user = [GlobalInstance instance].curUser;
-        FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_user_info"];
-        NSLog(@"%@",result);
-        BOOL issuccess = NO;
-        
-        do {
-            NSString *mobile = [result stringForColumn:@"mobile"];
-            
-            issuccess= [self.fmdb executeUpdate:@"delete from t_user_info where mobile = ? ",mobile];
-            
-        } while ([result next]);
-        
-        [self.fmdb executeUpdate:@"insert into t_user_info (cardCode , loginPwd , isLogin , mobile,payVerifyType) values ( ?,?,?,?,?)  ",user.cardCode,user.loginPwd,@(1),user.mobile,@(1)];
-        [result close];
-        [self.fmdb close];
-    }
-}
+
+//-(void)saveUserInfo{
+//
+//    if ([self.fmdb open]) {
+//        User *user = [GlobalInstance instance].curUser;
+//        FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_user_info"];
+//        NSLog(@"%@",result);
+//        BOOL issuccess = NO;
+//        NSInteger payVerifyType = 1;
+//        do {
+//            NSString *mobile = [result stringForColumn:@"mobile"];
+//
+//            if ([mobile isEqualToString: self.curUser.mobile]) {
+//                payVerifyType = [[result stringForColumn:@"payVerifyType"] integerValue];
+//                issuccess= [self.fmdb executeUpdate:@"delete from t_user_info where mobile = ? ",mobile];
+//
+//            }else{
+//                issuccess= [self.fmdb executeUpdate:@"delete from t_user_info where mobile = ? ",mobile];
+//            }
+//
+//        } while ([result next]);
+//
+//        [self.fmdb executeUpdate:@"insert into t_user_info (cardCode , loginPwd , isLogin , mobile , payVerifyType) values ( ?,?,?,?,?)  ",user.cardCode,user.loginPwd,@"1",user.mobile,[NSString stringWithFormat:@"%ld",payVerifyType]];
+//        [[NSNotificationCenter defaultCenter] postNotificationName:NotificationNameUserLogin object:nil];
+//        [result close];
+//        [self.fmdb close];
+//    }
+//}
 
 -(void)getMemberByCardCodeSms:(NSDictionary *)memberInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     
@@ -152,7 +150,7 @@
         User *user = [[User alloc]initWith:memberInfo];
         [GlobalInstance instance].curUser = user;
         [GlobalInstance instance].curUser.isLogin = YES;
-         [self saveUserInfo];
+//        [self saveUserInfo];
         [self loadUserInfo];
         [self.memberMan isSignInToday:@{@"cardCode":self.curUser.cardCode}];
     }else{
@@ -172,6 +170,7 @@
     self.loginBtn.enabled = NO;
   
     self.curUser.payVerifyType = [NSNumber numberWithInt:1];
+    
     //[_userImage sd_setImageWithURL:[NSURL URLWithString:self.curUser.headUrl]];
     long long balance = [self.curUser.balance longLongValue];
     long long notCash = [self.curUser.notCash longLongValue];
@@ -265,6 +264,7 @@
 -(void)signInIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     if (success) {
         [self showPromptText:@"签到成功" hideAfterDelay:1.7];
+        self.signInBtn.enabled = NO;
     }
 }
 

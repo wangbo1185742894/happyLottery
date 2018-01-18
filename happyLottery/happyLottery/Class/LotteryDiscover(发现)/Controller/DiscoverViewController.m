@@ -10,6 +10,7 @@
 
 
 @interface DiscoverViewController ()
+@property (weak, nonatomic) IBOutlet UIWebView *faxianWebView;
 
 @end
 
@@ -17,7 +18,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self.faxianWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.88.193:18086/app/find/index"]]];
 
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = YES;
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBar.hidden = NO;
 }
 
 - (void)didReceiveMemoryWarning {

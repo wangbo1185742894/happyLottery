@@ -22,6 +22,7 @@
                 <outlet property="labOrderCost" destination="piZ-wn-3UL" id="cYi-oL-xdR"/>
                 <outlet property="labYouhuifangan" destination="VeF-Cl-6yM" id="wrA-jo-fJb"/>
                 <outlet property="labZheKou" destination="vNy-cd-kXy" id="160-hC-HcA"/>
+                <outlet property="payWebView" destination="Kk9-pn-yBS" id="k39-zp-opR"/>
                 <outlet property="tabPayTypeList" destination="e6Y-uh-Paq" id="3uF-L1-CZV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewPayList" destination="FiE-Ik-7AA" id="Sb0-ah-1j5"/>
@@ -33,6 +34,11 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kk9-pn-yBS">
+                    <rect key="frame" x="67" y="269" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </webView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pbf-rQ-5hH">
                     <rect key="frame" x="0.0" y="64" width="375" height="176"/>
                     <subviews>

@@ -1,4 +1,4 @@
-//
+ //
 //  AppDelegate.m
 //  happyLottery
 //
@@ -75,10 +75,10 @@
                               };
                 
             } @catch (NSException *exception) {
-                loginInfo = nil;
-            } @finally {
-                [memberMan loginCurUser:loginInfo];
+                 loginInfo = nil;
+                
             }
+             [memberMan loginCurUser:loginInfo];
         }
     }
     [self.fmdb close];
@@ -224,7 +224,7 @@
 
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+     [[NSNotificationCenter defaultCenter] postNotificationName:@"NSNotificationapplicationWillEnterForeground" object:nil];
 }
 
 
