@@ -345,15 +345,14 @@
             CashBoltter *cashBoltter = listScoreBlotterArray[indexPath.row];
             cell.nameLab.text = cashBoltter.orderType;
             cell.dateLab.text = cashBoltter.createTime;
-         
-            int amounts =[cashBoltter.amounts intValue];
+           float amounts=[cashBoltter.amounts floatValue];
             if (amounts>0) {
                 cell.priceLab.textColor = SystemGreen;
                 cell.image.image = [UIImage imageNamed:@"addcrease"];
-                cell.priceLab.text = [NSString stringWithFormat:@"+%@元",cashBoltter.amounts];
+                cell.priceLab.text = [NSString stringWithFormat:@"+%.2f元",amounts];
             }else{
                 cell.image.image = [UIImage imageNamed:@"lessen"];
-                cell.priceLab.text = [NSString stringWithFormat:@"%@元",cashBoltter.amounts];
+                cell.priceLab.text = [NSString stringWithFormat:@"%.2f元",amounts];
                 
             }
             float b=[cashBoltter.remBalance floatValue];

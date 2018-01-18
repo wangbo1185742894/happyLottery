@@ -73,6 +73,10 @@
 #define APIgetFeedbackList         @"getFeedbackList"
 #define APIqueryRecharge           @"queryRecharge"
 #define APIgetAvailableCoupon      @"getAvailableCoupon"
+#define APIgetFeedbackList           @"getFeedbackList"
+#define APIMemberShare               @"memberShare"
+
+
 
 
 #define SUBAPIDATA           @"/data"

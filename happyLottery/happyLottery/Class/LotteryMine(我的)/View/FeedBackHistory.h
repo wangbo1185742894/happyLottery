@@ -15,9 +15,12 @@
 @property(nonatomic,strong)NSString *feedbackContent;/** 会员提出的反馈内容 */
 @property(nonatomic,strong)NSString* replyContent; /** 回馈内容*/
 @property(nonatomic,strong)NSData *replyTime;
-@property(nonatomic)NSInteger editor;
+@property(nonatomic)NSString* editor;
 @property(nonatomic,strong)NSString* useTime;
-@property(nonatomic,strong)NSString * reply;
+@property(nonatomic)Boolean  reply;
 @property(nonatomic)NSInteger fkscore;
 @property(nonatomic)Boolean readed;
+@property(nonatomic,strong)NSData* createTime;
+@property(nonatomic)long id;
+@property(nonatomic)long version;
 @end

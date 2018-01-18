@@ -118,8 +118,8 @@
     //取消按钮点击权限，并显示提示文字
     if (textView.text.length == 0) {
         
-        self.placeHolder1.hidden = NO;
-         self.placeHolder2.hidden = NO;
+//        self.placeHolder1.hidden = NO;
+//         self.placeHolder2.hidden = NO;
         self.commitButton.userInteractionEnabled = NO;
         self.commitButton.backgroundColor = [UIColor lightGrayColor];
         
@@ -223,36 +223,36 @@
     }
 }
 #pragma mark - 滑动的坐标
--(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
-    UITouch *touch = [touches anyObject];
-    CGPoint touchPoint = [touch locationInView:self.scoerView];
-    UIImageView *imageTouch;
-    for(int i = 0;i < 5 ; i++){
-        imageTouch = self.allStar[i];
-        if ((touchPoint.x > 80)&&(touchPoint.x < 230)&&(touchPoint.y > 0)&&(touchPoint.y < 80)) {
-            NSString *myscore;
-            if (touchPoint.x > 90 && touchPoint.x < 119) {
-                myscore = [NSString stringWithFormat:@"%d",1];
-            } else if (touchPoint.x > 119 && touchPoint.x < 143) {
-                myscore = [NSString stringWithFormat:@"%d",2];
-            }else if (touchPoint.x > 143 && touchPoint.x < 172) {
-                myscore = [NSString stringWithFormat:@"%d",3];
-            }else if (touchPoint.x > 172 && touchPoint.x < 201) {
-                myscore = [NSString stringWithFormat:@"%d",4];
-            }else if (touchPoint.x > 201 && touchPoint.x < 230) {
-                myscore = [NSString stringWithFormat:@"%d",5];
-            }
-            
-            [self.contentDictionary setValue:myscore forKey:@"fkscore"];
-            
-            if (imageTouch.frame.origin.x > touchPoint.x) {
-                imageTouch.image =[UIImage imageNamed:@"starUnselecte"];
-            }else{
-                imageTouch.image =[UIImage imageNamed:@"star_light"];
-            }
-        }
-    }
-}
+//-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
+//    UITouch *touch = [touches anyObject];
+//    CGPoint touchPoint = [touch locationInView:self.scoerView];
+//    UIImageView *imageTouch;
+//    for(int i = 0;i < 5 ; i++){
+//        imageTouch = self.allStar[i];
+//        if ((touchPoint.x > 80)&&(touchPoint.x < 230)&&(touchPoint.y > 0)&&(touchPoint.y < 80)) {
+//            NSString *myscore;
+//            if (touchPoint.x > 90 && touchPoint.x < 119) {
+//                myscore = [NSString stringWithFormat:@"%d",1];
+//            } else if (touchPoint.x > 119 && touchPoint.x < 143) {
+//                myscore = [NSString stringWithFormat:@"%d",2];
+//            }else if (touchPoint.x > 143 && touchPoint.x < 172) {
+//                myscore = [NSString stringWithFormat:@"%d",3];
+//            }else if (touchPoint.x > 172 && touchPoint.x < 201) {
+//                myscore = [NSString stringWithFormat:@"%d",4];
+//            }else if (touchPoint.x > 201 && touchPoint.x < 230) {
+//                myscore = [NSString stringWithFormat:@"%d",5];
+//            }
+//            
+//            [self.contentDictionary setValue:myscore forKey:@"fkscore"];
+//            
+//            if (imageTouch.frame.origin.x > touchPoint.x) {
+//                imageTouch.image =[UIImage imageNamed:@"starUnselecte"];
+//            }else{
+//                imageTouch.image =[UIImage imageNamed:@"star_light"];
+//            }
+//        }
+//    }
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

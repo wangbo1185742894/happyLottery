@@ -188,10 +188,8 @@
 		2D5171DC200C729A00C3CD7F /* icon_yingli_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D5171DA200C729900C3CD7F /* icon_yingli_@2x.png */; };
 		2D5171DF200C72A700C3CD7F /* icon_time_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D5171DD200C72A500C3CD7F /* icon_time_@2x.png */; };
 		2D5171E0200C72A700C3CD7F /* icon_time_@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D5171DE200C72A600C3CD7F /* icon_time_@3x.png */; };
-		2D5171E5200C72C100C3CD7F /* icon_mingzhong@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D5171E1200C72BE00C3CD7F /* icon_mingzhong@2x.png */; };
 		2D5171E6200C72C100C3CD7F /* icon_mingzhong_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D5171E2200C72BE00C3CD7F /* icon_mingzhong_@2x.png */; };
 		2D5171E7200C72C100C3CD7F /* icon_mingzhong_@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D5171E3200C72BF00C3CD7F /* icon_mingzhong_@3x.png */; };
-		2D5171E8200C72C100C3CD7F /* icon_mingzhong@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D5171E4200C72C000C3CD7F /* icon_mingzhong@3x.png */; };
 		2D5171EB200C72DA00C3CD7F /* icon_weizhong_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D5171E9200C72D900C3CD7F /* icon_weizhong_@2x.png */; };
 		2D5171EC200C72DA00C3CD7F /* icon_weizhong_@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D5171EA200C72D900C3CD7F /* icon_weizhong_@3x.png */; };
 		2D5171EF200C72E700C3CD7F /* icon_daizhi_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D5171ED200C72E600C3CD7F /* icon_daizhi_@2x.png */; };
@@ -553,6 +551,7 @@
 		F92D03F22005F3B400C26E7A /* assisthelp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F92D03EA2005F3B400C26E7A /* assisthelp@2x.png */; };
 		F92D03F32005F3B400C26E7A /* logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F92D03EB2005F3B400C26E7A /* logo@3x.png */; };
 		F92D03F42005F3B400C26E7A /* integralhelp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F92D03EC2005F3B400C26E7A /* integralhelp@2x.png */; };
+		F92F4B6D200DADA6005E33AC /* NNValidationCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F92F4B6B200DADA5005E33AC /* NNValidationCodeView.m */; };
 		F93204ED1FECF98B00E22A27 /* pass1.png in Resources */ = {isa = PBXBuildFile; fileRef = F93204E31FECF98800E22A27 /* pass1.png */; };
 		F93204EE1FECF98B00E22A27 /* pass0.png in Resources */ = {isa = PBXBuildFile; fileRef = F93204E41FECF98900E22A27 /* pass0.png */; };
 		F93204EF1FECF98B00E22A27 /* pass2.png in Resources */ = {isa = PBXBuildFile; fileRef = F93204E51FECF98900E22A27 /* pass2.png */; };
@@ -1029,10 +1028,8 @@
 		2D5171DA200C729900C3CD7F /* icon_yingli_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_yingli_@2x.png"; sourceTree = "<group>"; };
 		2D5171DD200C72A500C3CD7F /* icon_time_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_time_@2x.png"; sourceTree = "<group>"; };
 		2D5171DE200C72A600C3CD7F /* icon_time_@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_time_@3x.png"; sourceTree = "<group>"; };
-		2D5171E1200C72BE00C3CD7F /* icon_mingzhong@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_mingzhong@2x.png"; path = "../../../../../剩余界面切图-ios/icon_mingzhong@2x.png"; sourceTree = "<group>"; };
 		2D5171E2200C72BE00C3CD7F /* icon_mingzhong_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_mingzhong_@2x.png"; sourceTree = "<group>"; };
 		2D5171E3200C72BF00C3CD7F /* icon_mingzhong_@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_mingzhong_@3x.png"; sourceTree = "<group>"; };
-		2D5171E4200C72C000C3CD7F /* icon_mingzhong@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_mingzhong@3x.png"; path = "../../../../../剩余界面切图-ios/icon_mingzhong@3x.png"; sourceTree = "<group>"; };
 		2D5171E9200C72D900C3CD7F /* icon_weizhong_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_weizhong_@2x.png"; sourceTree = "<group>"; };
 		2D5171EA200C72D900C3CD7F /* icon_weizhong_@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_weizhong_@3x.png"; sourceTree = "<group>"; };
 		2D5171ED200C72E600C3CD7F /* icon_daizhi_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_daizhi_@2x.png"; sourceTree = "<group>"; };
@@ -1556,6 +1553,8 @@
 		F92D03EA2005F3B400C26E7A /* assisthelp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "assisthelp@2x.png"; sourceTree = "<group>"; };
 		F92D03EB2005F3B400C26E7A /* logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@3x.png"; sourceTree = "<group>"; };
 		F92D03EC2005F3B400C26E7A /* integralhelp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "integralhelp@2x.png"; sourceTree = "<group>"; };
+		F92F4B6B200DADA5005E33AC /* NNValidationCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNValidationCodeView.m; sourceTree = "<group>"; };
+		F92F4B6C200DADA5005E33AC /* NNValidationCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NNValidationCodeView.h; sourceTree = "<group>"; };
 		F93204E31FECF98800E22A27 /* pass1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pass1.png; sourceTree = "<group>"; };
 		F93204E41FECF98900E22A27 /* pass0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pass0.png; sourceTree = "<group>"; };
 		F93204E51FECF98900E22A27 /* pass2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pass2.png; sourceTree = "<group>"; };
@@ -2092,8 +2091,6 @@
 				2D5171EA200C72D900C3CD7F /* icon_weizhong_@3x.png */,
 				2D5171E2200C72BE00C3CD7F /* icon_mingzhong_@2x.png */,
 				2D5171E3200C72BF00C3CD7F /* icon_mingzhong_@3x.png */,
-				2D5171E1200C72BE00C3CD7F /* icon_mingzhong@2x.png */,
-				2D5171E4200C72C000C3CD7F /* icon_mingzhong@3x.png */,
 				2D5171DD200C72A500C3CD7F /* icon_time_@2x.png */,
 				2D5171DE200C72A600C3CD7F /* icon_time_@3x.png */,
 				2D5171DA200C729900C3CD7F /* icon_yingli_@2x.png */,
@@ -3040,8 +3037,13 @@
 		2DDEDC3E1FD52206007AEBF7 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+
 				2D92A81C200F1D2F0038E165 /* WBLoopProgressView.h */,
 				2D92A81D200F1D2F0038E165 /* WBLoopProgressView.m */,
+
+				F92F4B6C200DADA5005E33AC /* NNValidationCodeView.h */,
+				F92F4B6B200DADA5005E33AC /* NNValidationCodeView.m */,
+
 				2D8CBFF51FF37D0800CC367F /* MGLabel.h */,
 				2D8CBFF61FF37D0800CC367F /* MGLabel.m */,
 				2D8CBFB31FF32ECC00CC367F /* ZLAlertView.h */,
@@ -4133,7 +4135,6 @@
 				2D4B1E811FDF684E0034B708 /* wode_defealt@2x.png in Resources */,
 				2D0600471FFDDD51009E7568 /* schemedetailticket_bj@3x.png in Resources */,
 				2D739C641FE7878100264044 /* JCZQTouZhuViewController.xib in Resources */,
-				2D5171E8200C72C100C3CD7F /* icon_mingzhong@3x.png in Resources */,
 				2DDEDC161FD4DC16007AEBF7 /* MineViewController.xib in Resources */,
 				2D628B3C1FECAA9A0013D0E1 /* fengkuangjingcai-monitouzhu-xuanze@2x.png in Resources */,
 				2D0600881FFF1365009E7568 /* HHGGPeilvTable.plist in Resources */,
@@ -4191,7 +4192,6 @@
 				2D4B1E771FDF684E0034B708 /* home_defealt@2x.png in Resources */,
 				2D8CBFD31FF3769F00CC367F /* YuCeSchemeCreateViewController.xib in Resources */,
 				F94770C3200706BC0091729E /* jingcaizuqiu_zongjinqiushu.html in Resources */,
-				2D5171E5200C72C100C3CD7F /* icon_mingzhong@2x.png in Resources */,
 				2D4B1E891FDF684E0034B708 /* yuce_defealt@2x.png in Resources */,
 				2D739C901FE899AC00264044 /* MatchLeagueSelectView.xib in Resources */,
 				2D8CBFC41FF3632600CC367F /* btn_delate_@2x.png in Resources */,
@@ -4461,6 +4461,7 @@
 				2D8CC01B1FF4B62100CC367F /* WBHomeYuceListCell.m in Sources */,
 				2DDEDC391FD521A0007AEBF7 /* XMLDictionary.m in Sources */,
 				2D739C731FE79E8E00264044 /* LotteryProfileSelectView.m in Sources */,
+				F92F4B6D200DADA6005E33AC /* NNValidationCodeView.m in Sources */,
 				2D8CBFD91FF376CA00CC367F /* yucezjModel.m in Sources */,
 				2D06FFDF1FFDB7D8009E7568 /* JCZQSchemeModel.m in Sources */,
 				2D92A81E200F1D2F0038E165 /* WBLoopProgressView.m in Sources */,

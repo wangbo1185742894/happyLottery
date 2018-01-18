@@ -44,6 +44,9 @@
 - (void) FeedBack:(BOOL)success errorMsg:(NSString *)msg;
 - (void) changeLoginPWDSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) getFeedbackListSms:(NSArray *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+
+- (void) upMemberShareSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+
 - (void) signInIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) gotisSignInToday:(NSString  *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) queryRecharge:(NSDictionary *)Info IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
@@ -88,7 +91,11 @@
 - (void)getQRCode:(NSDictionary*)paraDic;
 - (void)FeedBack:(NSDictionary*)paraDic;
 - (void) getFeedbackListSms:(NSDictionary *)paraDic;
+
 - (void) getAvailableCoupon:(NSDictionary *)paraDic;
+
+- (void) upMemberShareSms:(NSDictionary *)paraDic;
+
 
 //11.23 活动公告
 - (void)getActivetyMessage:(NSString *)strId;

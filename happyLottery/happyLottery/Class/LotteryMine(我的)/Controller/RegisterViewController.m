@@ -41,7 +41,7 @@
     checkSec = KCheckSec;
     self.view.backgroundColor = MAINBGC;
     self.title = @"注册";
-    tfRecomCode.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+    tfRecomCode.keyboardType = UIKeyboardTypeNumberPad;
 }
 
 -(void)setTFViewLRView{

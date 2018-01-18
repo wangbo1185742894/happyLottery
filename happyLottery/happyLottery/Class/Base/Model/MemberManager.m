@@ -74,7 +74,7 @@
     if (paraDic[@"shareCode"] == nil) {
          itemParaDic = @{@"mobile":paraDic[@"userTel"], @"pwd":[self actionEncrypt:paraDic[@"userPwd"]],@"channelCode":@"TBZ"};
     }else{
-        itemParaDic = @{@"mobile":paraDic[@"userTel"], @"pwd":[self actionDecrypt:paraDic[@"userPwd"]],@"channelCode":@"TBZ",@"shareCode":paraDic[@"shareCode"]};
+        itemParaDic = @{@"mobile":paraDic[@"userTel"], @"pwd":[self actionEncrypt:paraDic[@"userPwd"]],@"channelCode":@"TBZ",@"shareCode":paraDic[@"shareCode"]};
     }
     SOAPRequest *request = [self requestForAPI: APIRegister withParam:@{@"params":[self actionEncrypt:[self JsonFromId:itemParaDic]]} ];
     [self newRequestWithRequest:request
@@ -1190,5 +1190,39 @@
                         failure:failureBlock];
 }
 
+
+/**
+ * 获取二维码的地址
+ * @param params {"clientType" : "IOS", "channelCode" : "xxxx"}
+ * @return 结果json
+ * @throws BizException
+ */
+- (void) upMemberShareSms:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed) {
+            //NSDictionary *userInfo = [self objFromJson: responseJsonStr];
+            [self.delegate upMemberShareSmsIsSuccess: YES errorMsg:response.errorMsg];
+        } else {
+            [self.delegate upMemberShareSmsIsSuccess:YES errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate upMemberShareSmsIsSuccess:YES errorMsg:@"服务器错误"];
+        //失败的代理方法
+    };
+    //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
+    
+    SOAPRequest *request = [self requestForAPI: APIMemberShare withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]} ];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
 
 @end

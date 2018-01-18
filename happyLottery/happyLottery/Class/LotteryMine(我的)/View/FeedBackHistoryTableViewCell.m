@@ -12,10 +12,6 @@
 
 @interface FeedBackHistoryTableViewCell ()
 
-@property (weak, nonatomic) IBOutlet UILabel *askLab;
-
-@property (weak, nonatomic) IBOutlet UILabel *answerLab;
-@property (weak, nonatomic) IBOutlet UIButton *answerBtn;
 
 @end
 
@@ -29,19 +25,19 @@
 
 }
 
-- (void)setModel:(FeedBackHistory *)model
-{
-    _model = model;
-    self.askLab.text=model.feedbackContent;
-    if ([model.reply isEqualToString:@"1"]) {
-        [self.answerBtn setBackgroundImage:[UIImage  imageNamed:@"answer.png"]  forState:UIControlStateNormal];
-        self.answerLab.text=model.replyContent;
-    }else{
-          [self.answerBtn setBackgroundImage:[UIImage imageNamed:@"response.png"]  forState:UIControlStateNormal];
-        self.answerLab.text = @"平台会尽快回复您，请您耐心等待，也可拨打客服电话400-668-0778";
-        
-    }
-}
+//- (void)setModel:(FeedBackHistory *)model
+//{
+//    _model = model;
+//    self.askLab.text=_model.feedbackContent;
+//    if ([_model.reply isEqualToString:@"1"]) {
+//        [self.answerBtn setBackgroundImage:[UIImage  imageNamed:@"answer.png"]  forState:UIControlStateNormal];
+//        self.answerLab.text=model.replyContent;
+//    }else{
+//          [self.answerBtn setBackgroundImage:[UIImage imageNamed:@"response.png"]  forState:UIControlStateNormal];
+//        self.answerLab.text = @"平台会尽快回复您，请您耐心等待，也可拨打客服电话400-668-0778";
+//        
+//    }
+//}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

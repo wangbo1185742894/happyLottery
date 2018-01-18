@@ -33,10 +33,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"支付设置";
+    
     if ([self isIphoneX]) {
         self.top.constant = 88;
-        
     }
+    
     self.memberMan.delegate=self;
     [self initSwitchStatus];
 }
