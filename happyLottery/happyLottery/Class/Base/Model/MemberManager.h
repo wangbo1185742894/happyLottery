@@ -48,7 +48,10 @@
 - (void) upMemberShareSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 
 - (void) signInIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
-- (void) gotisSignInToday:(NSArray *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) gotisSignInToday:(NSString  *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) queryRecharge:(NSDictionary *)Info IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) gotAvailableCoupon:(BOOL)success andPayInfo:(NSDictionary *)payInfo errorMsg:(NSString *)msg;
+
 @end
 
 @interface MemberManager : Manager
@@ -88,12 +91,17 @@
 - (void)getQRCode:(NSDictionary*)paraDic;
 - (void)FeedBack:(NSDictionary*)paraDic;
 - (void) getFeedbackListSms:(NSDictionary *)paraDic;
+
+- (void) getAvailableCoupon:(NSDictionary *)paraDic;
+
 - (void) upMemberShareSms:(NSDictionary *)paraDic;
+
 
 //11.23 活动公告
 - (void)getActivetyMessage:(NSString *)strId;
 - (void) signIn:(NSDictionary *)paraDic;
 - (void) isSignInToday:(NSDictionary *)paraDic;
+- (void) queryRecharge:(NSDictionary *)paraDic;
 
 
 @end

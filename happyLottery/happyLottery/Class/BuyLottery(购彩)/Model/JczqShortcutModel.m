@@ -36,6 +36,14 @@
             [marray addObject:mode];
         }
         self.forecastOptions = marray;
+    }else if([key isEqualToString:@"predict"]){
+        NSArray *items = [Utility objFromJson:value];
+        NSMutableArray *marray = [[NSMutableArray alloc]initWithCapacity:0];
+        for (NSDictionary *dic in items) {
+            JcForecastOptions *mode = [[JcForecastOptions alloc]initWith:dic];
+            [marray addObject:mode];
+        }
+        self.predict = marray;
     }else{
         NSString *strValue = [NSString stringWithFormat:@"%@",value];
         

@@ -9,11 +9,15 @@
 #import "PayOrderViewController.h"
 #import "PaySuccessViewController.h"
 #import "ChannelModel.h"
+#import "JCZQSchemeModel.h"
 #define KPayTypeListCell @"PayTypeListCell"
-@interface PayOrderViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,MemberManagerDelegate>
+@interface PayOrderViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,MemberManagerDelegate,UIWebViewDelegate>
 {
     NSMutableArray <ChannelModel *>*channelList;
+    ChannelModel *itemModel;
+    JCZQSchemeItem * schemeDetail;
 }
+@property (weak, nonatomic) IBOutlet UIWebView *payWebView;
 @property (weak, nonatomic) IBOutlet UILabel *labLotteryName;
 @property (weak, nonatomic) IBOutlet UILabel *labOrderCost;
 @property (weak, nonatomic) IBOutlet UILabel *labBanlance;
@@ -37,14 +41,20 @@
     [super viewDidLoad];
     self.title = @"预约支付";
     [self setTableView];
-    
+    self.payWebView.delegate = self;
     self.memberMan.delegate = self;
     [self.memberMan getMemberByCardCode:@{@"cardCode":self.curUser.cardCode}];
     [self showLoadingText:@"正在提交订单"];
     self.lotteryMan.delegate = self;
-    
+    [self.memberMan getAvailableCoupon:@{@"cardCode":@"xxx",@"amount":@"xxxx"}];
     [self getListByChannel];
 }
+
+-(void)gotAvailableCoupon:(BOOL)success andPayInfo:(NSDictionary *)payInfo errorMsg:(NSString *)msg{
+    
+}
+
+
 -(void)gotMemberByCardCode:(NSDictionary *)userInfo errorMsg:(NSString *)msg{
     [self hideLoadingView];
     User *user = [[User alloc]initWith:userInfo];
@@ -53,7 +63,7 @@
     self.curUser.score = user.score;
     
     if (self.cashPayMemt.costType == CostTypeCASH) {
-        self.labBanlance.text = [NSString stringWithFormat:@"%@ 元",self.curUser.balance] ;
+        self.labBanlance.text = [NSString stringWithFormat:@"%.2f",[self.curUser.balance doubleValue] + [self.curUser.notCash doubleValue] + [self.curUser.sendBalance doubleValue]] ;
         self.labOrderCost.text = [NSString stringWithFormat:@"%ld 元",self.cashPayMemt.realSubscribed] ;
         self.heightIViewJinE.constant = 176;
         self.labYouhuifangan.hidden = NO;
@@ -110,11 +120,28 @@
 }
 - (IBAction)actionTouzhu:(id)sender {
     
+    for (ChannelModel *model in channelList) {
+        if (model.isSelect == YES) {
+            itemModel= model;
+            break;
+        }
+    }
     
+    if (self.curUser.payVerifyType == PayVerifyTypeAlwaysNo) {
+        
+    }else{
+        
+    }
     
     if (self.cashPayMemt.costType == CostTypeCASH) {
         
-        if (self.cashPayMemt.realSubscribed > [self.curUser.balance integerValue]) {
+        if (![itemModel.channel isEqualToString:@"YUE"]) {
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkSchemePayState:) name:@"NSNotificationapplicationWillEnterForeground" object:nil];
+            [self commitClient];
+            return;
+        }
+        
+        if (self.cashPayMemt.realSubscribed > [self.curUser.balance doubleValue] + [self.curUser.notCash doubleValue] + [self.curUser.sendBalance doubleValue]) {
             [self showPromptText:@"余额不足" hideAfterDelay:1.7];
             return;
         }
@@ -139,6 +166,29 @@
             return;
         }
     }
+}
+
+-(void)gotSchemeRecordBySchemeNo:(NSDictionary *)infoArray errorMsg:(NSString *)msg{
+    [self hideLoadingView];
+    if (infoArray == nil) {
+        [self showPromptText:msg hideAfterDelay:1.7];
+        return;
+    }
+    
+    schemeDetail = [[JCZQSchemeItem alloc]initWith:infoArray];
+    if ([schemeDetail.schemeStatus isEqualToString:@"INIT"] || [schemeDetail.schemeStatus isEqualToString:@"CANCEL"] || [schemeDetail.schemeStatus isEqualToString:@"REPEAL"]) {
+        [self showPromptText:@"支付失败" hideAfterDelay:1.7];
+    }else{
+        [self paySuccess];
+    }
+}
+
+-(void)checkSchemePayState:(NSNotification *)notification{
+    [self showLoadingText:@"正在查询支付结果，请稍等"];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.lotteryMan getSchemeRecordBySchemeNo:@{@"schemeNo":self.cashPayMemt.schemeNo}];
+    });
 }
 
 -(void)paySuccess{
@@ -205,6 +255,66 @@
     }
     channelList[indexPath.row].isSelect = YES;
     [self.tabPayTypeList reloadData];
+}
+
+-(void)rechargeSmsIsSuccess:(BOOL)success andPayInfo:(NSDictionary *)payInfo errorMsg:(NSString *)msg{
+    
+    if (success) {
+        if ([itemModel.channel isEqualToString:@"SDALI"]) {
+            [self.payWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:payInfo[@"qrCode"]]]];
+        }else if ([itemModel.channel isEqualToString:@"WFTWX"]){
+            [self.payWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:payInfo[@"payInfo"]]]];
+        }
+        
+    }else{
+        [self showPromptText: msg hideAfterDelay: 1.7];
+    }
+}
+
+//params - String cardCode 会员卡号, RechargeChannel channel 充值渠道, BigDecimal amounts 充值金额
+-(void)commitClient{
+    
+    NSDictionary *rechargeInfo;
+    @try {
+        NSString *cardCode = self.curUser.cardCode;
+        NSString *checkCode = [NSString stringWithFormat:@"%ld",self.cashPayMemt.realSubscribed];
+        
+        for (ChannelModel *model in channelList) {
+            if (model.isSelect == YES) {
+                itemModel= model;
+                break;
+            }
+        }
+        rechargeInfo = @{@"cardCode":cardCode,
+                         @"channel":itemModel.channel,
+                         @"amounts":checkCode,
+                         @"schemeSub":@{@"cardCode":self.cashPayMemt.cardCode,
+                                        @"schemeNo":self.cashPayMemt.schemeNo,
+                                        @"subCopies":@(self.cashPayMemt.subCopies),
+                                        @"subscribed":@(self.cashPayMemt.subscribed),
+                                        @"realSubscribed":@(self.cashPayMemt.realSubscribed),
+                                        @"isSponsor":@(true)
+                                        }
+                         };
+    } @catch (NSException *exception) {
+        rechargeInfo = nil;
+        return;
+    } @finally {
+        [self.memberMan rechargeSms:rechargeInfo];
+    }
+    
+}
+
+-(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+    NSString *strUrl = [NSString stringWithFormat:@"%@",request.URL];
+    if ([strUrl hasPrefix:@"alipays"] || [strUrl hasPrefix:@"weixin"] ) {
+        [[UIApplication sharedApplication] openURL:request.URL];
+    }
+    return YES;
+}
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"NSNotificationapplicationWillEnterForeground" object:nil];
 }
 
 @end

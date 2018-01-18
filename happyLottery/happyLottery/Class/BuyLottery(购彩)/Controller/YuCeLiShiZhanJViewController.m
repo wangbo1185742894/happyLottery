@@ -38,8 +38,6 @@
     [self.lotteryMan getlistByHisGains:nil];
 }
 
-
-
 -(void)gotlistByHisGains:(NSArray *)infoArray errorMsg:(NSString *)msg{
     [self hideLoadingView];
     if (infoArray != nil) {

@@ -27,7 +27,6 @@
         key = @"_id";
     }
     [super setValue:strValue forKey:key];
-    
 }
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key
 {

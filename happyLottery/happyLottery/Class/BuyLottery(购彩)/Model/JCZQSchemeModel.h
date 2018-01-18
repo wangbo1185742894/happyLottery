@@ -51,6 +51,7 @@
 @property(nonatomic,copy)NSString * realSubAmounts;
 @property(nonatomic,copy)NSString * useCoupon;
 @property(nonatomic,copy)NSString * finishedTime;
+@property(nonatomic,copy)NSString * subTime;
 @property(nonatomic,copy)NSMutableArray <OpenResult *> * trOpenResult;
 
 

@@ -63,6 +63,7 @@
 @property (nonatomic,copy)   NSString *trSchemeStatus;
 @property (nonatomic,copy)   NSString *drawTime;
 @property (nonatomic,copy)   NSString *schemeSource;
+@property (nonatomic,copy)   NSString *tel;
 
 
 -(id)initWith:(NSDictionary*)dic;

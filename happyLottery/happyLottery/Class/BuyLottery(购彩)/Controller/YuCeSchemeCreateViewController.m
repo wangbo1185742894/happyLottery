@@ -58,7 +58,7 @@
     self.transaction = [[JCFATransaction alloc]init];
     self.transaction.beiTou = 1;
     self.dataArr = [NSMutableArray arrayWithCapacity:0];
-    self.title = @"竞彩方案";
+    self.title = @"预约方案";
     [self.SchemeCreateTableView registerNib:[UINib nibWithNibName:@"YuCeSchemeCreateCell" bundle:nil] forCellReuseIdentifier:@"YuCeSchemeCreateCell"];
     
     self.SchemeCreateTableView.delegate = self;
@@ -68,16 +68,16 @@
     
     
     
-    UIButton *btn =  self.selectMoneyBtn[0];
+    UIButton *btn =  self.selectMoneyBtn[1];
     btn.selected = YES;
-    UIButton *btn1 = self.selectBetBtn[0];
+    UIButton *btn1 = self.selectBetBtn[1];
     btn1.selected = YES;
     UIButton *btn2 = self.selectXuqiuBtn[0];
     btn2.selected = YES;
     self.SchemeCreateTableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
-    self.earningsType = @"STEADY";
+    self.earningsType = @"LOW_RISK";
     self.orderName = @"earnings";
-    self.moneyStr = @"10元";
+    self.moneyStr = @"20元";
     self.xuQiuBtnTag = @"300";
     [self updateBtnState];
     [self setRightBtn];
@@ -96,8 +96,8 @@
 - (void)setRightBtn{
     UIButton *rightBtn = [UIButton buttonWithType:0];
     rightBtn.frame = CGRectMake(0, 0,30, 44);
-    [rightBtn setImage:[UIImage imageNamed:@"history_icon_default_fangan"] forState:0];
-    [rightBtn setImage:[UIImage imageNamed:@"history_icon_pressed_fangan"] forState:UIControlStateHighlighted];
+    [rightBtn setImage:[UIImage imageNamed:@"win_tag"] forState:0];
+    [rightBtn setImage:[UIImage imageNamed:@"win_tag"] forState:UIControlStateHighlighted];
     [rightBtn addTarget:self action:@selector(rightAction) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightBtn];
     self.navigationItem.rightBarButtonItem = rightItem;

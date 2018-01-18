@@ -36,7 +36,6 @@
     _imgUrls = imgUrls;
     
     pageCtl.numberOfPages = imgUrls.count;
-    NSArray *colors = @[[UIColor redColor],[UIColor greenColor],[UIColor redColor],[UIColor greenColor]];
     
     scrContentView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth,self.mj_h)];
     scrContentView.delegate = self;
@@ -53,7 +52,7 @@
         UIButton *itemImg = [[UIButton alloc]initWithFrame:CGRectMake(KscreenWidth * i, 0, self.mj_w, scrContentView.mj_h)];
         itemImg.imageView.contentMode = UIViewContentModeScaleToFill;
         [scrContentView addSubview:itemImg];
-//        itemImg.backgroundColor = colors[i];
+
         [itemImg addTarget:self action:@selector(imgItemClick) forControlEvents:UIControlEventTouchUpInside];
         itemImg.adjustsImageWhenHighlighted = NO;
         [itemImg setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"ad_home%d.png",i + 1]] forState:0];
@@ -96,7 +95,7 @@
 
 -(void)imgItemClick{
     
-    [self.delegate adsImgViewClick:index];
+    [self.delegate adsImgViewClick:_imgUrls[index]];
 }
 
 

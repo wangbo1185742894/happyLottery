@@ -10,26 +10,33 @@
 #import "WBHomeYuceListCell.h"
 #import "UMChongZhiViewController.h"
 #import "HomeYCModel.h"
+#import "WBLoopProgressView.h"
 //#import "WBYCMatchDetailViewController.h"
 //#import "JCZQScoreZhibo.h"
 //#import "JCLQScoreZhibo.h"
+
 @interface WBHomeJCYCViewController ()<UITableViewDelegate,UITableViewDataSource ,LotteryManagerDelegate,WBHomeYuceListCellDelegate>
 {
     UIButton *_btnBendian;
     UIButton *_btnZongbiao;
+    WBLoopProgressView *progressView;
     
 }
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollViewContent;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollViewHeight;
 @property (weak, nonatomic) IBOutlet UITableView *btnZuixinYuce;
 @property (weak, nonatomic) IBOutlet UIView *selectDateView;
 @property (weak, nonatomic) IBOutlet UIButton *btnLishiYuce;
 @property (weak, nonatomic) IBOutlet UITableView *tabYuceList;
 @property(strong,nonatomic)NSString *lotteryTpey;
 
+@property (weak, nonatomic) IBOutlet UIView *viewHeader;
 @property (strong,nonatomic)NSMutableArray <WBSelectDateButtom *> * dateButtons;
 
 @property(nonatomic,strong)NSMutableArray <HomeYCModel *> *dataArray;
 @property(nonatomic,strong)NSMutableArray *scoreArray;
 @property(nonatomic,strong)NSMutableArray *arrayTableSectionIsOpen;
+
 @property(assign,nonatomic)BOOL isHis;
 
 @end
@@ -51,12 +58,24 @@
     NSDate* curDate = [NSDate  dateWithTimeIntervalSinceNow:0];
     NSString *dateTtile = [Utility timeStringFromFormat:@"yyyy-MM-dd" withDate:curDate];
     [self loadData:dateTtile];
+    
+    progressView = [[WBLoopProgressView alloc]initWithFrame:CGRectMake(20,40, 150, 150)];
+    progressView.color1 = [UIColor whiteColor];
+    progressView.progress = 0.5;
+    progressView.color2 = SystemLightGray;
+    
+    
+    [self.viewHeader addSubview:progressView];
+    
 }
 
 -(void)setTableView{
     [self.tabYuceList registerClass:[WBHomeYuceListCell class] forCellReuseIdentifier:@"WBHomeYuceListCell"];
     self.tabYuceList.delegate = self;
+    self.scrollViewContent.delegate = self;
     self.tabYuceList.dataSource = self;
+    self.tabYuceList.bounces = NO;
+    
     self.tabYuceList.rowHeight = 130;
     self.tabYuceList.tableFooterView = [[UIView alloc]init];
     
@@ -76,6 +95,22 @@
 
 }
 
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    if (scrollView == self.tabYuceList) {
+        if (self.scrollViewContent.contentSize.height>KscreenHeight) {
+          
+        }
+    }else{
+        if (scrollView.contentOffset.y >= scrollView.contentSize.height - KscreenHeight-5) {
+            [self.tabYuceList setValue:@(YES) forKey:@"scrollEnabled"];
+        }
+        if (scrollView.contentOffset.y <= -60) {
+            [self.tabYuceList setValue:@(NO) forKey:@"scrollEnabled"];
+        }
+    }
+}
+
+
 -(void)gotlistByForecast:(NSArray *)infoArray errorMsg:(NSString *)msg{
     [self hideLoadingView];
     [self.dataArray removeAllObjects];
@@ -92,6 +127,18 @@
         [self.dataArray addObject:model];
     }
 
+    if (self.dataArray.count * 130 + 175 + 66 >KscreenHeight) {
+        if (self.dataArray.count * 130 + 175 + 66 - KscreenHeight > 175) {
+            self.scrollViewHeight.constant = 175 - 64;
+        }else{
+            self.scrollViewHeight.constant =self.dataArray.count * 130 + 175 + 66 - KscreenHeight - 64;
+        }
+        [self.tabYuceList setValue:@(NO) forKey:@"scrollEnabled"];
+        
+        
+    }else{
+        self.scrollViewHeight.constant = -64;
+    }
     [self.tabYuceList reloadData];
 }
 
@@ -119,13 +166,14 @@
     
     UMChongZhiViewController *matchDetailVC = [[UMChongZhiViewController alloc]init];
     matchDetailVC.model = self.dataArray[indexPath.row];
-    if ([matchDetailVC.model.spfSingle boolValue] == NO) {
-         matchDetailVC.isHis = YES;
-    }else{
+//    if ([matchDetailVC.model.spfSingle boolValue] == NO) {
+//         matchDetailVC.isHis = YES;
+//    }else{
+//
+//        
+//    }
 
-         matchDetailVC.isHis = self.isHis;
-    }
-
+    matchDetailVC.isHis = self.isHis;
     matchDetailVC.curPlayType = self.lotteryTpey;
     [self.navigationController pushViewController:matchDetailVC animated:YES];
     

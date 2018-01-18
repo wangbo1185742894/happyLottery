@@ -68,7 +68,8 @@ typedef enum {
 @property(nonatomic,strong)NSString * score;
 // UN_LOCK("未锁定"), LOCK("锁定");
 @property(nonatomic,strong)NSString * parentId;
-@property (nonatomic, strong) NSNumber *payVerifyType;
+@property (nonatomic, assign) PayVerifyType payVerifyType;
+
 
 @end
 

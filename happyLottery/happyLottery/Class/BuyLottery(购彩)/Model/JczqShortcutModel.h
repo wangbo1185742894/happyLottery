@@ -20,11 +20,21 @@
 *matchKey,
 *predictIndex,
 *spfSingle,
- * guestImageUrl,
- * h5Url,
- * homeImageUrl,
+* guestImageUrl,
+* h5Url,
+* homeImageUrl,
+* matchResult,
+* guestRank,
+* lottery,
+* status,
+* matchDate,
+* cardCode,
+* homeRank,
+* hit,
+* startTime,
 *hotspot;
 @property(assign,nonatomic)BOOL isCollect;
+@property(nonatomic,strong)NSMutableArray<JcForecastOptions*> * predict;
 @property(nonatomic,strong)NSMutableArray<JcForecastOptions*> *forecastOptions;
 @property(nonatomic,strong)JcPairingMatchModel * jcPairingMatchDto;
 

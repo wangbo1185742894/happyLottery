@@ -13,6 +13,7 @@
 @interface SchemeDetailViewCell()
 {
     __weak IBOutlet UILabel *labSchemeState;
+    __weak IBOutlet UILabel *labSchemeInfo;
     
     __weak IBOutlet UILabel *labSchemeTime;
     __weak IBOutlet MGLabel *labTicketCount;
@@ -41,7 +42,15 @@
     labTicketCount.adjustsFontSizeToFitWidth = YES;
     scheme = model;
     labSchemeState.text = [model getSchemeState];
-    labTicketCount.text = [NSString stringWithFormat:@"出票%@/%@单",model.printCount,model.ticketCount];
+    
+    if ([model.costType isEqualToString:@"CASH"]) {
+        labSchemeInfo.text = @"订单状态";
+        labTicketCount.text = [NSString stringWithFormat:@"出票%@/%@单",model.printCount,model.ticketCount];
+    }else{
+        labSchemeInfo.text = @"方案状态";
+        labTicketCount.text = @"";
+    }
+    
     labSchemeTime.text = model.createTime;
     labLottery.text = [self getLotteryByCode:model.lottery];
     labSchemeNo.text = model.schemeNO;
@@ -51,7 +60,8 @@
         labBetCount.text = [NSString stringWithFormat:@"%@注%@倍   %@积分",model.units,model.multiple,model.betCost];
     }
     
-    labBetCost.text = [self getWinningStatus:model.winningStatus];
+    labBetCost.text = [self getWinningStatus:model];
+
     labChuanFa.text = [self getChuanFa];
 }
 
@@ -61,16 +71,18 @@
 //    NOT_LOTTERY("未中奖"),
 //    /**     * 中奖     */[8]    (null)    @"passType" : @"P2_1"
 //    LOTTERY("中奖");[2]    (n
--(NSString *)getWinningStatus:(NSString *)winstu{
-    if ([winstu isEqualToString:@"WAIT_LOTTERY"]) {
-        return @"等待开奖";
+-(NSString *)getWinningStatus:( JCZQSchemeItem*)model{
+    
+    if ([model.winningStatus isEqualToString:@"WAIT_LOTTERY"]) {
+        return @"待开奖";
     }
-    if ([winstu isEqualToString:@"NOT_LOTTERY"]) {
+    if ([model.winningStatus isEqualToString:@"NOT_LOTTERY"]) {
         return @"未中奖";
     }
-    if ([winstu isEqualToString:@"LOTTERY"]) {
-        labBetCost.textColor =SystemRed;
-        return @"中奖";
+    if ([model.bonus doubleValue] != 0) {
+        return [NSString stringWithFormat:@"%.2f",[model.bonus doubleValue]];
+        labBetCost.textColor = SystemRed;
+        
     }
     return @"";
     

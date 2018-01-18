@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="338" height="141"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="338" height="141"/>
+                <rect key="frame" x="0.0" y="0.0" width="338" height="140.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="周二 ----" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zl4-H4-38X">
@@ -154,6 +154,13 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G2k-Z6-Z5k">
                         <rect key="frame" x="218" y="50" width="120" height="27"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qaV-9J-20i">
+                                <rect key="frame" x="0.0" y="0.0" width="70" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="gYk-Fg-Wfn"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="icon_won_tatus.png"/>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pel-vn-VMQ">
                                 <rect key="frame" x="60" y="0.0" width="60" height="27"/>
                                 <constraints>
@@ -161,13 +168,6 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" backgroundImage="icon_daizhi_.png"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qaV-9J-20i">
-                                <rect key="frame" x="0.0" y="0.0" width="70" height="27"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="gYk-Fg-Wfn"/>
-                                </constraints>
-                                <state key="normal" backgroundImage="icon_won_tatus.png"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IuW-kI-0FB">
                                 <rect key="frame" x="13" y="3" width="44" height="21.5"/>

@@ -15,10 +15,10 @@
 #define KNewsListCell @"NewsListCell"
 @interface ForecastViewController ()<UITableViewDataSource,UITableViewDelegate,LotteryManagerDelegate,NewsListCellDelegate>
 {
-    NSMutableArray <JczqShortcutModel *> *JczqShortcutList;
     __weak IBOutlet UITableView *tabForecastListView;
     JczqShortcutModel *curModel;
 }
+@property(nonatomic,strong)NSMutableArray <NSMutableArray<HomeYCModel *> *> *dataArray;
 @property(nonatomic,strong)NSMutableArray *arrayTableSectionIsOpen;
 @end
 
@@ -26,7 +26,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.arrayTableSectionIsOpen = [NSMutableArray arrayWithCapacity:0];
     self.viewControllerNo = @"A015";
+    self.dataArray = [NSMutableArray arrayWithCapacity:0];
     NSString *doc=[NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString *fileName=[doc stringByAppendingPathComponent:@"userInfo.sqlite"];
     self.fmdb =[FMDatabase databaseWithPath:fileName];
@@ -36,22 +38,45 @@
 }
 
 -(void)getJczqShortcut{
-    JczqShortcutList = [NSMutableArray arrayWithCapacity:0];
     self.lotteryMan.delegate = self ;
-    [self.lotteryMan getJczqShortcut];
+    [self.lotteryMan listByForecast:@{@"lotteryCode":@"jczq"} isHis:NO];
 }
 
--(void)gotJczqShortcut:(NSArray *)dataArray errorMsg:(NSString *)msg{
-    if (dataArray == nil) {
+-(void)gotlistByForecast:(NSArray *)infoArray errorMsg:(NSString *)msg{
+    if (infoArray == nil || infoArray.count == 0) {
         [self showPromptText:msg hideAfterDelay:1.7];
         return;
     }
-    for (NSDictionary* infoDic in dataArray) {
-        JczqShortcutModel *model =  [[JczqShortcutModel alloc]initWith:infoDic];
-        [JczqShortcutList addObject:model];
+    
+    
+    [self.dataArray removeAllObjects];
+    
+    for (NSDictionary *itemDic in infoArray) {
+        BOOL isExit = NO;
+        HomeYCModel *model = [[HomeYCModel alloc]initWithDic:itemDic];
+        for (NSMutableArray *itemArray in self.dataArray) {
+            HomeYCModel *firstModel = [itemArray firstObject];
+            if (firstModel == nil || model.matchDate == nil) {
+                break;
+            }
+            if ([firstModel.matchDate isEqualToString:model.matchDate]) {
+                [itemArray addObject:model];
+                isExit = YES;
+                break;
+            }
+        }
+        
+        if (isExit == NO) {
+            NSMutableArray  *marray = [NSMutableArray arrayWithCapacity:0];
+            [self.arrayTableSectionIsOpen addObject:@(YES)];
+            [marray addObject:model];
+            [self.dataArray addObject:marray];
+        }
     }
     [tabForecastListView reloadData];
+    
 }
+
 
 -(void)setViewController{
     
@@ -70,11 +95,20 @@
 }
 
 #pragma UITableViewDelegate,UITableViewDataSource
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
-    return JczqShortcutList.count;
+
+-(NSInteger )numberOfSectionsInTableView:(UITableView *)tableView{
+    return self.dataArray.count;
 }
 
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    BOOL isOpen = [self.arrayTableSectionIsOpen[section] boolValue];
+    if (isOpen == YES) {
+        return self.dataArray[section].count;
+    }else{
+        return 0;
+    }
+}
+   
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NewsListCell *cell = [tableView dequeueReusableCellWithIdentifier:KNewsListCell];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -83,7 +117,7 @@
     if ([self .fmdb open]) {
         FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_collect_match"];
         do {
-            if ([[result stringForColumn:@"matchKey"] isEqualToString:JczqShortcutList[indexPath.row].matchKey] && [[result stringForColumn:@"cardCode"]isEqualToString:self.curUser.cardCode]) {
+            if ([[result stringForColumn:@"matchKey"] isEqualToString:self.dataArray[indexPath.section][indexPath.row].matchKey] && [[result stringForColumn:@"cardCode"]isEqualToString:self.curUser.cardCode]) {
                 isSelect = YES;
                 break;
             }
@@ -91,44 +125,10 @@
         [self.fmdb close];
     }
     cell.delegate = self;
-    [cell refreshData:JczqShortcutList[indexPath.row] andSelect:isSelect];
+    [cell refreshData:[ _dataArray[indexPath.section][indexPath.row] jCZQScoreZhiboToJcForecastOptions] andSelect:isSelect];
     return cell;
     
 }
-
-//-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-//
-//    TableHeaderView *header = [[[NSBundle mainBundle]loadNibNamed:@"TableHeaderView" owner:nil options:nil] lastObject];
-//    header.backgroundColor =RGBCOLOR(245, 245, 245);
-//
-//    header.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 30);
-//
-//    header.btnActionClick.tag = section;
-//    [header.btnActionClick addTarget:self action:@selector(headerViewClick:) forControlEvents:UIControlEventTouchUpInside];
-//
-//    if ([self.arrayTableSectionIsOpen [section] boolValue] == YES) {
-//        [header.imgDir setImage:[UIImage imageNamed:@"arrow_up"]];
-//
-//    }else{
-//        [header.imgDir setImage:[UIImage imageNamed:@"arrow_down"]];
-//    }
-//    return header;
-//}
-
-//-(void)headerViewClick:(UIButton *)btn{
-//    [UIView animateWithDuration:1.0 animations:^{
-//
-//        BOOL isOpen = [self.arrayTableSectionIsOpen[btn.tag] boolValue];
-//        if (isOpen == YES) {
-//            [self.arrayTableSectionIsOpen removeObjectAtIndex:btn.tag];
-//            [self.arrayTableSectionIsOpen insertObject:@(NO) atIndex:btn.tag];
-//        }else{
-//            [self.arrayTableSectionIsOpen removeObjectAtIndex:btn.tag];
-//            [self.arrayTableSectionIsOpen insertObject:@(YES) atIndex:btn.tag];
-//        }
-//        [tabForecastListView reloadData];
-//    }];
-//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -137,15 +137,16 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     UMChongZhiViewController *matchDetailVC = [[UMChongZhiViewController alloc]init];
-    JczqShortcutModel * model =JczqShortcutList[indexPath.row];
+    JczqShortcutModel * model =[self.dataArray[indexPath.section][indexPath.row] jCZQScoreZhiboToJcForecastOptions];
     
     matchDetailVC.model = model ;//[model jCZQScoreZhiboToJcForecastOptions];
-    if ([matchDetailVC.model.spfSingle boolValue] == YES) {
-        matchDetailVC.isHis = YES;
-    }else{
-        
-        matchDetailVC.isHis = NO;
-    }
+//    if ([matchDetailVC.model.spfSingle boolValue] == YES) {
+//        
+//    }else{
+//        
+//        matchDetailVC.isHis = NO;
+//    }
+    matchDetailVC.isHis = NO;
     matchDetailVC.hidesBottomBarWhenPushed = YES;
     matchDetailVC.curPlayType =@"jczq";
     [self.navigationController pushViewController:matchDetailVC animated:YES];
@@ -193,6 +194,43 @@
     }
     if (issuccess) {
         [self.fmdb close];
+    }
+    [tabForecastListView reloadData];
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    
+    NSArray*array= self.dataArray[section];
+    
+    TableHeaderView *header = [[[NSBundle mainBundle]loadNibNamed:@"TableHeaderView" owner:nil options:nil] lastObject];
+    header.backgroundColor =RGBCOLOR(245, 245, 245);
+    
+    header.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 30);
+    HomeYCModel *model = [array firstObject];
+    header.labTime.text = model.matchDate;
+    
+    
+    header.btnActionClick.tag = section;
+    [header.btnActionClick addTarget:self action:@selector(headerViewClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    if ([self.arrayTableSectionIsOpen [section] boolValue] == YES) {
+        [header.imgDir setImage:[UIImage imageNamed:@"arrow_up"]];
+        
+    }else{
+        [header.imgDir setImage:[UIImage imageNamed:@"arrow_down"]];
+    }
+    return header;
+}
+
+-(void)headerViewClick:(UIButton *)btn{
+    
+    BOOL isOpen = [self.arrayTableSectionIsOpen[btn.tag] boolValue];
+    if (isOpen == YES) {
+        [self.arrayTableSectionIsOpen removeObjectAtIndex:btn.tag];
+        [self.arrayTableSectionIsOpen insertObject:@(NO) atIndex:btn.tag];
+    }else{
+        [self.arrayTableSectionIsOpen removeObjectAtIndex:btn.tag];
+        [self.arrayTableSectionIsOpen insertObject:@(YES) atIndex:btn.tag];
     }
     [tabForecastListView reloadData];
 }

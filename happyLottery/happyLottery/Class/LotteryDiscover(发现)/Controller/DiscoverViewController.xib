@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DiscoverViewController">
             <connections>
+                <outlet property="faxianWebView" destination="EVq-Si-eYF" id="Ud4-xQ-Gzc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,7 +19,19 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EVq-Si-eYF">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" red="0.76078431369999999" green="0.76078431369999999" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                </webView>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="EVq-Si-eYF" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="S4Q-EZ-et7"/>
+                <constraint firstAttribute="trailing" secondItem="EVq-Si-eYF" secondAttribute="trailing" id="TVK-eb-Zpi"/>
+                <constraint firstItem="EVq-Si-eYF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dui-Hn-NSx"/>
+                <constraint firstAttribute="bottom" secondItem="EVq-Si-eYF" secondAttribute="bottom" id="jSY-4g-7vt"/>
+            </constraints>
         </view>
     </objects>
 </document>

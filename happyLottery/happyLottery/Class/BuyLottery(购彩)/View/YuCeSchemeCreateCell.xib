@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="94"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="93.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="94"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="方案号:2432435432532452345234" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pvz-X2-2yf">
@@ -62,22 +62,20 @@
                         <color key="textColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LKG-D0-5Oi">
-                        <rect key="frame" x="250" y="41.5" width="60" height="27"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="60" id="IwU-0z-kDz"/>
-                            <constraint firstAttribute="height" constant="27" id="taW-9z-uuC"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <state key="normal" title="预约投注"/>
-                        <connections>
-                            <action selector="actionTouZhu:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Jjy-3E-8yg"/>
-                        </connections>
-                    </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="命中率" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6rV-Td-MgJ">
                         <rect key="frame" x="142" y="69" width="37" height="15"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5UH-bA-Yb4">
+                        <rect key="frame" x="215" y="42.5" width="100" height="23"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="23" id="JSK-ow-Ls4"/>
+                            <constraint firstAttribute="width" constant="100" id="vvh-1D-yjz"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -88,13 +86,13 @@
                     <constraint firstItem="68A-FM-9bO" firstAttribute="top" secondItem="Pvz-X2-2yf" secondAttribute="bottom" constant="14" id="LjA-AJ-04u"/>
                     <constraint firstItem="6rV-Td-MgJ" firstAttribute="centerX" secondItem="68A-FM-9bO" secondAttribute="centerX" id="Mgn-Va-Izr"/>
                     <constraint firstItem="ELd-W6-BGG" firstAttribute="centerX" secondItem="pds-zg-Np5" secondAttribute="centerX" id="NKg-Ps-jbn"/>
-                    <constraint firstAttribute="trailing" secondItem="LKG-D0-5Oi" secondAttribute="trailing" constant="10" id="Z1o-W2-xHg"/>
+                    <constraint firstItem="5UH-bA-Yb4" firstAttribute="top" secondItem="DcZ-Ha-ThT" secondAttribute="bottom" constant="18" id="PBI-gD-2Xg"/>
+                    <constraint firstItem="ELd-W6-BGG" firstAttribute="top" secondItem="Pvz-X2-2yf" secondAttribute="bottom" constant="42.5" id="SaC-tP-vSn"/>
                     <constraint firstItem="6rV-Td-MgJ" firstAttribute="top" secondItem="68A-FM-9bO" secondAttribute="bottom" constant="1" id="Zb6-Bi-nDS"/>
                     <constraint firstItem="Pvz-X2-2yf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="aDf-yJ-ANa"/>
                     <constraint firstItem="Pvz-X2-2yf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="eiT-Us-wLt"/>
+                    <constraint firstAttribute="trailing" secondItem="5UH-bA-Yb4" secondAttribute="trailing" constant="5" id="gpe-RO-Zn8"/>
                     <constraint firstItem="DcZ-Ha-ThT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="n88-Tq-LBP"/>
-                    <constraint firstItem="LKG-D0-5Oi" firstAttribute="top" secondItem="DcZ-Ha-ThT" secondAttribute="bottom" constant="17" id="qel-kk-E80"/>
-                    <constraint firstItem="ELd-W6-BGG" firstAttribute="top" secondItem="LKG-D0-5Oi" secondAttribute="bottom" id="sBW-Mb-twv"/>
                     <constraint firstItem="pds-zg-Np5" firstAttribute="top" secondItem="Pvz-X2-2yf" secondAttribute="bottom" constant="16" id="xDT-rb-bWk"/>
                 </constraints>
             </tableViewCellContentView>
@@ -103,6 +101,7 @@
                 <outlet property="fanganNoLabel" destination="Pvz-X2-2yf" id="Tr1-eU-5hQ"/>
                 <outlet property="jiezhiLabel" destination="DcZ-Ha-ThT" id="8Jh-oM-NJj"/>
                 <outlet property="kezhongLabel" destination="ELd-W6-BGG" id="eOh-7I-bDn"/>
+                <outlet property="labFollowCount" destination="5UH-bA-Yb4" id="px1-3T-mfz"/>
                 <outlet property="mingzhonglvLabel" destination="68A-FM-9bO" id="SM9-x9-aZv"/>
                 <outlet property="shouyiLabel" destination="pds-zg-Np5" id="LkH-Vj-hW2"/>
             </connections>

@@ -120,11 +120,20 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="win.png" translatesAutoresizingMaskIntoConstraints="NO" id="NF1-eg-TeB">
+                                        <rect key="frame" x="366" y="0.0" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="XMr-WB-qLj"/>
+                                            <constraint firstAttribute="height" constant="44" id="hyx-PR-T4J"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="NF1-eg-TeB" firstAttribute="top" secondItem="kZU-w0-dwo" secondAttribute="top" id="0tH-iV-oZr"/>
                                     <constraint firstItem="zdS-6p-b4c" firstAttribute="leading" secondItem="HFF-fg-65L" secondAttribute="trailing" id="1FC-bf-hmf"/>
                                     <constraint firstItem="es6-mP-Iq6" firstAttribute="leading" secondItem="MU9-If-Mya" secondAttribute="trailing" id="1Ih-WX-Fl1"/>
                                     <constraint firstItem="zdS-6p-b4c" firstAttribute="width" secondItem="tPR-Kn-5Cr" secondAttribute="width" id="1X5-EV-L6Q"/>
+                                    <constraint firstAttribute="trailing" secondItem="NF1-eg-TeB" secondAttribute="trailing" id="3KF-za-KDI"/>
                                     <constraint firstItem="tPR-Kn-5Cr" firstAttribute="leading" secondItem="kZU-w0-dwo" secondAttribute="leading" id="4uc-7H-oRn"/>
                                     <constraint firstAttribute="trailing" secondItem="eOZ-XX-bI8" secondAttribute="trailing" id="5ra-kb-eiZ"/>
                                     <constraint firstItem="eOZ-XX-bI8" firstAttribute="width" secondItem="mWW-P0-k5I" secondAttribute="width" id="8Je-6X-KWy"/>
@@ -243,6 +252,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="imgWinIcon" destination="NF1-eg-TeB" id="Tad-0d-eeU"/>
                 <outlet property="labBetCost" destination="xmk-5l-IIi" id="Gkj-8C-YMX"/>
                 <outlet property="labChupiao" destination="6us-No-ThF" id="HR1-QH-y3k"/>
                 <outlet property="labJiangjin" destination="eOZ-XX-bI8" id="j9D-as-spV"/>
@@ -254,4 +264,7 @@
             <point key="canvasLocation" x="20" y="-58"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="win.png" width="35" height="31"/>
+    </resources>
 </document>
