@@ -26,13 +26,6 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="COY-fB-Sqv">
                     <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo1.png" translatesAutoresizingMaskIntoConstraints="NO" id="8hI-x1-Jde">
-                            <rect key="frame" x="123" y="80" width="128" height="128"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="128" id="0Uy-5K-8HV"/>
-                                <constraint firstAttribute="height" constant="128" id="dq6-Pr-bRH"/>
-                            </constraints>
-                        </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当前版本  V1.0.1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f0Z-aF-u0m">
                             <rect key="frame" x="123" y="238" width="128" height="21"/>
                             <constraints>
@@ -53,6 +46,13 @@
                             <color key="textColor" red="0.19607843137254902" green="0.19607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo120.png" translatesAutoresizingMaskIntoConstraints="NO" id="8hI-x1-Jde">
+                            <rect key="frame" x="127" y="80" width="120" height="120"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="120" id="0Uy-5K-8HV"/>
+                                <constraint firstAttribute="height" constant="120" id="dq6-Pr-bRH"/>
+                            </constraints>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -61,7 +61,7 @@
                         <constraint firstItem="TaG-uc-ET8" firstAttribute="centerX" secondItem="COY-fB-Sqv" secondAttribute="centerX" id="8iu-cD-8zx"/>
                         <constraint firstAttribute="bottom" secondItem="TaG-uc-ET8" secondAttribute="bottom" constant="41" id="Itw-Xd-Ngc"/>
                         <constraint firstItem="8hI-x1-Jde" firstAttribute="centerX" secondItem="COY-fB-Sqv" secondAttribute="centerX" id="soy-G0-YPB"/>
-                        <constraint firstItem="f0Z-aF-u0m" firstAttribute="top" secondItem="8hI-x1-Jde" secondAttribute="bottom" constant="30" id="u4l-gK-8FS"/>
+                        <constraint firstItem="f0Z-aF-u0m" firstAttribute="top" secondItem="8hI-x1-Jde" secondAttribute="bottom" constant="38" id="u4l-gK-8FS"/>
                     </constraints>
                 </view>
             </subviews>
@@ -72,10 +72,10 @@
                 <constraint firstAttribute="trailing" secondItem="COY-fB-Sqv" secondAttribute="trailing" id="WQX-T4-ati"/>
                 <constraint firstAttribute="bottom" secondItem="COY-fB-Sqv" secondAttribute="bottom" id="dZe-fa-eE1"/>
             </constraints>
-            <point key="canvasLocation" x="34.5" y="54.5"/>
+            <point key="canvasLocation" x="616" y="-144"/>
         </view>
     </objects>
     <resources>
-        <image name="logo1.png" width="128" height="114"/>
+        <image name="logo120.png" width="60" height="60"/>
     </resources>
 </document>

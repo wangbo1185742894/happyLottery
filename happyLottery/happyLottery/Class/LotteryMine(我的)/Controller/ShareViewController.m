@@ -36,7 +36,9 @@
         self.codeLab.text=code;
     }
     self.memberMan.delegate = self;
-    [self getQRCodeClient];
+   // [self getQRCodeClient];
+    codeurl = @"tfi.11max.com/Tbz/DownLoad";
+    [self initCode];
 }
 
 - (IBAction)shareBtnClick:(id)sender {
