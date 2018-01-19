@@ -118,6 +118,36 @@
     [super didReceiveMemoryWarning];
     
 }
+
+-(BOOL)checkPayPassword{
+
+    if(self.curUser.payVerifyType == PayVerifyTypeAlways){
+        return YES;
+    }else if(self.curUser.payVerifyType == PayVerifyTypeLessThanOneHundred){
+        if (self.cashPayMemt.realSubscribed >= 100 ) {
+            return YES;
+        }else{
+            return NO;
+        }
+    }else if(self.curUser.payVerifyType == PayVerifyTypeLessThanFiveHundred){
+        
+        if (self.cashPayMemt.realSubscribed >= 500 ) {
+            return YES;
+        }else{
+            return NO;
+        }
+        
+    }else if(self.curUser.payVerifyType == PayVerifyTypeLessThanThousand){
+        if (self.cashPayMemt.realSubscribed >= 1000 ) {
+            return YES;
+        }else{
+            return NO;
+        }
+    }else{
+        return NO;
+    }
+}
+
 - (IBAction)actionTouzhu:(id)sender {
     
     for (ChannelModel *model in channelList) {
@@ -126,13 +156,7 @@
             break;
         }
     }
-    
-    if (self.curUser.payVerifyType == PayVerifyTypeAlwaysNo) {
-        
-    }else{
-        
-    }
-    
+
     if (self.cashPayMemt.costType == CostTypeCASH) {
         
         if (![itemModel.channel isEqualToString:@"YUE"]) {
