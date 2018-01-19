@@ -47,7 +47,7 @@
     __weak IBOutlet UILabel *labNewTitle;
     __weak IBOutlet UILabel *labLookNum;
     __weak IBOutlet UILabel *labNewDate;
-    JczqShortcutModel *curModel;
+    
     
     __weak IBOutlet NSLayoutConstraint *yucViewDisTop;
 }
@@ -366,16 +366,13 @@
     BOOL isSelect = NO;
     
     if (self.curUser .isLogin == YES) {
-        if (JczqShortcutList[indexPath.row].isCollect == YES) {
-            isSelect = YES;
-        }else{
+        
             for (JczqShortcutModel *model in colloectList) {
-                if ([model.matchKey isEqualToString:JczqShortcutList[indexPath.row].matchKey] && model.isCollect == YES) {
+                if ([model.matchKey isEqualToString:JczqShortcutList[indexPath.row].matchKey]) {
                     isSelect = YES;
                     break;
                 }
             }
-        }
     }
     
     [cell refreshData:JczqShortcutList[indexPath.row] andSelect:isSelect];
@@ -429,7 +426,6 @@
         [self needLogin];
         return;
     }
-    curModel = model;
     [self.lotteryMan collectMatch:@{@"cardCode":self.curUser.cardCode,@"matchKey":model.matchKey,@"isCollect":@(isSelect)}];
 }
 
@@ -437,20 +433,13 @@
     if (isSuccess) {
         if (isSelect) {
             [self showPromptText:@"收藏成功" hideAfterDelay:1.7];
-            curModel.isCollect = YES;
+
         }else{
             [self showPromptText:@"已取消收藏" hideAfterDelay:1.7];
-            curModel.isCollect = NO;
-        }
-        
-    }
-    for (JczqShortcutModel *model in colloectList) {
-        if ([model.matchKey isEqualToString:curModel.matchKey]) {
-            model.isCollect = isSelect;
-            break;
+            
         }
     }
-    [tabForecaseList reloadData];
+    [self getCollected];
 }
 
 

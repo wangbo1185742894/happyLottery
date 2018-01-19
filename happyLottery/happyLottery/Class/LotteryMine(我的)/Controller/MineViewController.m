@@ -306,9 +306,11 @@
     if (cell == nil) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"MineTableViewCell" owner:self options:nil] lastObject];
     }
-    NSDictionary *optionDic = listArray[indexPath.section][indexPath.row];
-    
+    NSDictionary *optionDic = listArray[indexPath.section][indexPath.row];    
     cell.image.image = [UIImage reSizeImageName:optionDic[@"icon"] andMinWidth:18];
+    //    cell.imageView.image = [UIImage imageNamed: optionDic[@"icon"]];
+    
+
     cell.lable.text = optionDic[@"title"];
     cell.lable.font = [UIFont systemFontOfSize:15];
     return cell;

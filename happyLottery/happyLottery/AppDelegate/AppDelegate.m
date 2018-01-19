@@ -20,7 +20,7 @@
 
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDKConnector/ShareSDKConnector.h>
-
+#import <ShareSDK/ShareSDK+Base.h>
 //微信SDK头文件
 #import "WXApi.h"
 
@@ -60,11 +60,11 @@
     [self setNewFeature];
     [self dataSave];
     [self autoLogin];
-    
+  
     // Optional
     // 获取IDFA
     // 如需使用IDFA功能请添加此代码并在初始化方法的advertisingIdentifier参数中填写对应值
-    NSString *advertisingId = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+  //  NSString *advertisingId = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
     
     // Required
     // init Push
@@ -77,66 +77,52 @@
     //获取自定义消息推送内容
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
     [defaultCenter addObserver:self selector:@selector(networkDidReceiveMessage:) name:kJPFNetworkDidReceiveMessageNotification object:nil];
-    
+      [self initShareSDK];
     return YES;
 }
 -(void)initShareSDK{
-    /**初始化ShareSDK应用
-     
-     @param activePlatforms
-     
-     使用的分享平台集合
-     
-     @param importHandler (onImport)
-     
-     导入回调处理，当某个平台的功能需要依赖原平台提供的SDK支持时，需要在此方法中对原平台SDK进行导入操作
-     
-     @param configurationHandler (onConfiguration)
-     
-     配置回调处理，在此方法中根据设置的platformType来填充应用配置信息
-     
-     */
-    
-    [ShareSDK registerActivePlatforms:@[
-                                        @(SSDKPlatformTypeSinaWeibo),
-                                        @(SSDKPlatformTypeWechat)
-                                        ]
-                             onImport:^(SSDKPlatformType platformType)
-     {
-         switch (platformType)
-         {
-             case SSDKPlatformTypeWechat:
-                 [ShareSDKConnector connectWeChat:[WXApi class]];
-                 break;
-             case SSDKPlatformTypeSinaWeibo:
-                 [ShareSDKConnector connectWeibo:[WeiboSDK class]];
-                 break;
-          
-             default:
-                 break;
-         }
-     }
-                      onConfiguration:^(SSDKPlatformType platformType, NSMutableDictionary *appInfo)
-     {
-         
-         switch (platformType)
-         {
-             case SSDKPlatformTypeSinaWeibo:
-                 //设置新浪微博应用信息,其中authType设置为使用SSO＋Web形式授权
-                 [appInfo SSDKSetupSinaWeiboByAppKey:@"568898243"
-                                           appSecret:@"38a4f8204cc784f81f9f0daaf31e02e3"
-                                         redirectUri:@"http://www.sharesdk.cn"
-                                            authType:SSDKAuthTypeBoth];
-                 break;
-             case SSDKPlatformTypeWechat:
-                 [appInfo SSDKSetupWeChatByAppId:@"wx4868b35061f87885"
-                                       appSecret:@"64020361b8ec4c99936c0e3999a9f249"];
-                 break;
-             default:
-                 break;
-         }
-     }];
-    
+
+     [ShareSDK registerActivePlatforms:@[
+//                            @(SSDKPlatformTypeSinaWeibo),
+                  @(SSDKPlatformSubTypeWechatSession),
+                    @(SSDKPlatformSubTypeWechatTimeline)
+                           // @(SSDKPlatformTypeWechat)
+                            ]
+                        onImport:^(SSDKPlatformType platformType) {                                             
+                        switch (platformType)
+                        {
+                            case SSDKPlatformTypeWechat:
+                                                     [ShareSDKConnector connectWeChat:[WXApi class]];
+                       // [ShareSDKConnector connectWeChat:[WXApi class] delegate:self];
+                            break;
+                       
+//                                                                      case SSDKPlatformTypeSinaWeibo:
+//                                                                          [ShareSDKConnector connectWeibo:[WeiboSDK class]];
+//                                                                   break;
+                        default:
+                        break;
+                                        }
+                                    }
+                        onConfiguration:^(SSDKPlatformType platformType, NSMutableDictionary *appInfo) {
+                                             
+                        switch (platformType)
+                        {
+//                        case SSDKPlatformTypeSinaWeibo:
+//                       // 设置新浪微博应用信息,其中authType设置为使用SSO＋Web形式授权
+//                       [appInfo SSDKSetupSinaWeiboByAppKey:@"568898243"
+//                        appSecret:@"38a4f8204cc784f81f9f0daaf31e02e3"
+//                     redirectUri:@"http://www.sharesdk.cn"
+//                         authType:SSDKAuthTypeBoth];
+//                                                                   break;
+                                
+                case SSDKPlatformTypeWechat:
+                    [appInfo SSDKSetupWeChatByAppId:@"wx4868b35061f87885"
+                                                                                         appSecret:@"64020361b8ec4c99936c0e3999a9f249"];
+                    break;
+                    default:
+                    break;
+                                }
+                            }];
 }
 
 -(void)initJpush{

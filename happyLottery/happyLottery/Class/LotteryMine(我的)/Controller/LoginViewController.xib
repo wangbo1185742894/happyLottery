@@ -72,19 +72,13 @@
                                 <action selector="loginBtnClick:" destination="-1" eventType="touchUpInside" id="6ba-b4-w7M"/>
                             </connections>
                         </button>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HBy-UF-LA8">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo120.png" translatesAutoresizingMaskIntoConstraints="NO" id="HBy-UF-LA8">
                             <rect key="frame" x="158" y="44" width="60" height="60"/>
                             <color key="backgroundColor" red="0.067504443230000002" green="0.78096091749999996" blue="0.57203906770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="60" id="ik0-9I-YD5"/>
                                 <constraint firstAttribute="width" constant="60" id="j6C-Os-6OY"/>
                             </constraints>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="30"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="NO"/>
-                            </userDefinedRuntimeAttributes>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9YU-eH-13t">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="14"/>
@@ -154,5 +148,6 @@
     </objects>
     <resources>
         <image name="faxian_label _icon_default.png" width="21" height="21"/>
+        <image name="logo120.png" width="60" height="60"/>
     </resources>
 </document>

@@ -33,12 +33,12 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vmv-ta-z0k">
-                            <rect key="frame" x="154.5" y="108" width="65" height="65"/>
-                            <color key="backgroundColor" red="0.070588235289999995" green="0.78039215689999997" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
+                            <rect key="frame" x="155" y="108" width="65" height="65"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="65" id="kme-eM-awm"/>
                                 <constraint firstAttribute="height" constant="65" id="sna-ch-ZS4"/>
                             </constraints>
+                            <state key="normal" image="logo120.png"/>
                         </button>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="手机号码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mJu-Ot-853">
                             <rect key="frame" x="45" y="200" width="285" height="40"/>
@@ -212,5 +212,6 @@
     <resources>
         <image name="checkBox_checked.png" width="16" height="16"/>
         <image name="checkBox_default.png" width="16" height="16"/>
+        <image name="logo120.png" width="60" height="60"/>
     </resources>
 </document>
