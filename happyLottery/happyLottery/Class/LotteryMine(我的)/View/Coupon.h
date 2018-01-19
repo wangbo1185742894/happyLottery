@@ -13,8 +13,8 @@
 @property(nonatomic,strong)NSString * couponCode;
 @property(nonatomic,strong)NSString *status;
 @property(nonatomic,strong)NSString *quota;
-@property(nonatomic,strong)NSString* deduction;
-@property(nonatomic,strong)NSString * invalidTime;
+@property(nonatomic,strong)NSString*deduction;
+@property(nonatomic,strong)NSString* invalidTime;
 @property(nonatomic,strong)NSString *createTime;
 @property(nonatomic,strong)NSString *couponSource;
 @property(nonatomic,strong)NSString* useTime;

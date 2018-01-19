@@ -84,7 +84,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return JczqShortcutList.count > 5 ?5:JczqShortcutList.count;
+    return JczqShortcutList.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -103,6 +103,7 @@
         return;
     }
     curModel = model;
+    page = 1;
     [self.lotteryMan collectMatch:@{@"cardCode":self.curUser.cardCode,@"matchKey":model.matchKey,@"isCollect":@(NO)}];
 }
 
@@ -110,33 +111,7 @@
     if (isSuccess) {
         [self showPromptText:@"已取消收藏" hideAfterDelay:1.7];
         [self getJczqShortcut];
-        [self saveCollectMatchInfoToloaction:NO];
     }
-}
-
--(void)saveCollectMatchInfoToloaction:(BOOL)isSelect{
-    
-    BOOL issuccess;
-    if ([self .fmdb open]) {
-        
-        if (isSelect) {
-            issuccess=  [self.fmdb executeUpdate:@"insert into t_collect_match (matchKeym,cardCode) values (?,?)  ",curModel.matchKey,self.curUser.cardCode];
-        }else{
-            FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_collect_match"];
-            
-            do {
-                if ([[result stringForColumn:@"matchKey"] isEqualToString:curModel.matchKey] && [[result stringForColumn:@"cardCode"]isEqualToString:self.curUser.cardCode]) {
-                    issuccess= [self.fmdb executeUpdate:@"delete from t_collect_match where matchKey = ? and cardCode = ? ",curModel.matchKey,self.curUser.cardCode];
-                    break;
-                }
-            } while ([result next]);
-        }
-        
-    }
-    if (issuccess) {
-        [self.fmdb close];
-    }
-    [self.tabCollectMatchList reloadData];
 }
 
 
@@ -146,6 +121,7 @@
     JczqShortcutModel * model =JczqShortcutList[indexPath.row];
     
     matchDetailVC.model = model ;
+    model.forecastOptions = model.predict;
     
     NSDate *matchDate = [Utility dateFromDateStr:model.dealLine withFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSDate *curDate= [NSDate date];
@@ -173,6 +149,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    return [[UIView alloc]init];
 }
 
 @end

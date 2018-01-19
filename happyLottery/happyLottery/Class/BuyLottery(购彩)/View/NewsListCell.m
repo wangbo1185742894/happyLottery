@@ -39,14 +39,7 @@
         self = [[[NSBundle mainBundle]loadNibNamed:@"NewsListCell" owner:nil options:nil] lastObject];
         
     }
-    if (progressView == nil) {
-        progressView = [[LoopProgressView alloc]initWithFrame:CGRectMake(KscreenWidth-124,20, 55, 55)];
-        progressView.color1 = SystemBlue;
-        progressView.color2 = SystemLightGray;
-        
-        
-        [self addSubview:progressView];
-    }
+   
     return self;
 }
 - (IBAction)actionCollect:(UIButton *)sender {
@@ -57,7 +50,14 @@
 
 
 -(void)refreshDataCollect:(JczqShortcutModel * )model andSelect:(BOOL)isSelect{
-    
+    if (progressView == nil) {
+        progressView = [[LoopProgressView alloc]initWithFrame:CGRectMake(KscreenWidth-124,20, 55, 55)];
+        progressView.color1 = SystemBlue;
+        progressView.color2 = SystemLightGray;
+        
+        
+        [self addSubview:progressView];
+    }
     self.btnCollection.selected = isSelect;
     self.model = model;
     self.labMatchLine.text = model.lineId;
@@ -117,7 +117,14 @@
 }
 
 -(void)refreshData:(JczqShortcutModel * )model andSelect:(BOOL)isSelect{
-    
+    if (progressView == nil) {
+        progressView = [[LoopProgressView alloc]initWithFrame:CGRectMake(KscreenWidth-124,20, 55, 55)];
+        progressView.color1 = SystemBlue;
+        progressView.color2 = SystemLightGray;
+        
+        
+        [self addSubview:progressView];
+    }
     self.btnCollection.selected = isSelect;
     self.model = model;
     self.labMatchLine.text = model.lineId;

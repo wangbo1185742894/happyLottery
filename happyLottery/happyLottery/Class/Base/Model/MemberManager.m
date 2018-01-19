@@ -644,7 +644,7 @@
         NSString *responseJsonStr = [response getAPIResponse];
         
         if (response.succeed) {
-            NSDictionary *Info = [self objFromJson: responseJsonStr];
+            NSArray *Info = [self objFromJson: responseJsonStr];
             [self.delegate gotAvailableCoupon:YES andPayInfo:Info errorMsg:response.errorMsg];
         } else {
             [self.delegate gotAvailableCoupon:NO andPayInfo:nil errorMsg:response.errorMsg];

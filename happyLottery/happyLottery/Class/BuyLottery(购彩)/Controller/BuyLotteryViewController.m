@@ -29,6 +29,7 @@
 @interface BuyLotteryViewController ()<WBAdsImgViewDelegate,HomeMenuItemViewDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,NewsListCellDelegate>
 {
     NSMutableArray  <JczqShortcutModel *>*JczqShortcutList;
+    NSMutableArray  <JczqShortcutModel *>*colloectList;
     __weak IBOutlet UIView *viewNews;
     __weak IBOutlet UIView *scrContentView;
     __weak IBOutlet NSLayoutConstraint *homeViewHeight;
@@ -56,6 +57,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(itemClick:) name:@"NSNotificationBuyVCJump" object:nil];
+    JczqShortcutList = [NSMutableArray arrayWithCapacity:0];
+    colloectList = [NSMutableArray arrayWithCapacity:0];
     NSString *doc=[NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     
     NSString *fileName=[doc stringByAppendingPathComponent:@"userInfo.sqlite"];
@@ -66,7 +71,12 @@
     [self setMenu];
     [self setNewsView];
     [self setTableView];
-    [self loadAdsImg];
+    
+}
+
+-(void)notificationJump:(NSNotification*)notif{
+    NSInteger index = [notif.object integerValue];
+    [self itemClick:index];
 }
 
 -(void)loadAdsImg{
@@ -104,14 +114,17 @@
             return ;
         }
         NSString *resultStr = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-        if (resultStr .length == 0 || resultStr == nil) {
-            [self isHideNewView:YES];
-            return;
-        }
+        
+        
         NSData *jsonData = [resultStr dataUsingEncoding:NSUTF8StringEncoding];
         NSDictionary *dicItem = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
-        
+        if (dicItem[@"result"] == nil) {
+                [self isHideNewView:YES];
+                return;
+        }
+        [self isHideNewView:NO];
         newsModel = [[NewsModel alloc]initWith: dicItem[@"result"]];
+       
         [self showNew];
     }];
     
@@ -136,12 +149,17 @@
 }
 
 -(void)getJczqShortcut{
-    JczqShortcutList = [NSMutableArray arrayWithCapacity:0];
+   
     self.lotteryMan.delegate = self ;
     [self.lotteryMan getJczqShortcut];
 }
 
 -(void)gotJczqShortcut:(NSArray *)dataArray errorMsg:(NSString *)msg{
+    
+    if (self.curUser.isLogin) {
+         [self getCollected];
+    }
+    
     if (dataArray == nil) {
         [self showPromptText:msg hideAfterDelay:1.7];
         return;
@@ -194,6 +212,9 @@
 }
 -(void)setMenu{
     curY = adsView.mj_y + adsView.mj_h ;
+    if (menuView != nil) {
+        return;
+    }
     menuView = [[UIView alloc]initWithFrame:CGRectMake(0, curY, KscreenWidth, 83)];
     [scrContentView addSubview:menuView];
     
@@ -213,9 +234,11 @@
 }
 
 -(void)setADSUI{
-    adsView = [[WBAdsImgView alloc]initWithFrame:CGRectMake(0,[self isIphoneX]?20:0, KscreenWidth, 175.0/375 * KscreenWidth)];
-    adsView.delegate = self;
-    [scrContentView addSubview:adsView];
+    if (adsView == nil) {
+        adsView = [[WBAdsImgView alloc]initWithFrame:CGRectMake(0,[self isIphoneX]?20:0, KscreenWidth, 175.0/375 * KscreenWidth)];
+        adsView.delegate = self;
+        [scrContentView addSubview:adsView];
+    }
 
 }
 
@@ -288,7 +311,9 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self getJczqShortcut];
+    [self loadAdsImg];
     [self loadNews];
+    [self getJczqShortcut];
     self.navigationController.navigationBar.hidden = YES;
     
     
@@ -341,21 +366,16 @@
     BOOL isSelect = NO;
     
     if (self.curUser .isLogin == YES) {
-        if ([self .fmdb open]) {
-            FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_collect_match"];
-            if (JczqShortcutList.count != 0) {
-                do {
-                    if ([[result stringForColumn:@"matchKey"] isEqualToString:JczqShortcutList[indexPath.row].matchKey] && [[result stringForColumn:@"cardCode"]isEqualToString:self.curUser.cardCode]) {
-                        isSelect = YES;
-                        JczqShortcutList[indexPath.row].isCollect = YES;
-                        break;
-                    }
-                } while ([result next]);
-                [self.fmdb close];
+        if (JczqShortcutList[indexPath.row].isCollect == YES) {
+            isSelect = YES;
+        }else{
+            for (JczqShortcutModel *model in colloectList) {
+                if ([model.matchKey isEqualToString:JczqShortcutList[indexPath.row].matchKey] && model.isCollect == YES) {
+                    isSelect = YES;
+                    break;
+                }
             }
-           
         }
-        
     }
     
     [cell refreshData:JczqShortcutList[indexPath.row] andSelect:isSelect];
@@ -417,39 +437,38 @@
     if (isSuccess) {
         if (isSelect) {
             [self showPromptText:@"收藏成功" hideAfterDelay:1.7];
+            curModel.isCollect = YES;
         }else{
             [self showPromptText:@"已取消收藏" hideAfterDelay:1.7];
+            curModel.isCollect = NO;
         }
-        [self saveCollectMatchInfoToloaction:isSelect];
+        
     }
+    for (JczqShortcutModel *model in colloectList) {
+        if ([model.matchKey isEqualToString:curModel.matchKey]) {
+            model.isCollect = isSelect;
+            break;
+        }
+    }
+    [tabForecaseList reloadData];
 }
 
-//issuccess= [self.fmdb executeUpdate:@"delete from t_user_info where mobile = ? ",mobile];
-//
-//} while ([result next]);
-//
-//[self.fmdb executeUpdate:@"insert into t_user_info (cardCode , loginPwd , isLogin , mobile,payVerifyType) values ( ?,?,?,?,?)  ",user.cardCode,user.loginPwd,@(1),user.mobile,@(1)];
 
--(void)saveCollectMatchInfoToloaction:(BOOL)isSelect{
- 
-    BOOL issuccess;
-    if ([self .fmdb open]) {
-        
-        if (isSelect) {
-           issuccess=  [self.fmdb executeUpdate:@"insert into t_collect_match (matchKey,cardCode) values (?,?)  ",curModel.matchKey,self.curUser.cardCode];
-        }else{
-            FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_collect_match"];
-            
-            do {
-                if ([[result stringForColumn:@"matchKey"] isEqualToString:curModel.matchKey] &&[[result stringForColumn:@"cardCode"]isEqualToString:self.curUser.cardCode]) {
-                   issuccess= [self.fmdb executeUpdate:@"delete from t_collect_match where matchKey = ? and cardCode = ? ",curModel.matchKey,self.curUser.cardCode];
-                    break;
-                }
-            } while ([result next]);
-        }
+-(void)getCollected{
+    [self.lotteryMan getCollectedMatchList:@{@"cardCode":self.curUser.cardCode,@"page":@(1),@"pageSize":@"100"}];
+}
+
+-(void)gotCollectedMatchList:(NSArray *)infoArray errorMsg:(NSString *)msg{
+
+    if (infoArray == nil) {
+        [self showPromptText:msg hideAfterDelay:1.7];
+        return;
     }
-    if (issuccess) {
-        [self.fmdb close];
+    [colloectList removeAllObjects];
+
+    for (NSDictionary* infoDic in infoArray) {
+        JczqShortcutModel *model =  [[JczqShortcutModel alloc]initWith:infoDic];
+        [colloectList addObject:model];
     }
     [tabForecaseList reloadData];
 }

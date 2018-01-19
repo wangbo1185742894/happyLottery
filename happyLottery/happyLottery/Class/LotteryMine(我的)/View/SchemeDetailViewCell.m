@@ -44,7 +44,7 @@
     labSchemeState.text = [model getSchemeState];
     
     if ([model.costType isEqualToString:@"CASH"]) {
-        labSchemeInfo.text = @"订单状态";
+        labSchemeInfo.text = @"方案状态";
         labTicketCount.text = [NSString stringWithFormat:@"出票%@/%@单",model.printCount,model.ticketCount];
     }else{
         labSchemeInfo.text = @"方案状态";

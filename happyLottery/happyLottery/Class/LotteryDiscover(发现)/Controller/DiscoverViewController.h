@@ -7,6 +7,16 @@
 //
 
 #import "BaseViewController.h"
+#import <JavaScriptCore/JavaScriptCore.h>
+
+@protocol JSObjcDelegate <JSExport>
+
+- (void)SharingLinks:(NSString *)code;
+-(void)goToJczq;
+-(NSString *)getCardCode;
+-(void)goToLogin;
+
+@end
 
 @interface DiscoverViewController : BaseViewController
 

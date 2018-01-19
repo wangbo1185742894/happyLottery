@@ -1081,15 +1081,16 @@
         }else if (codeValue> 199 && codeValue < 203){
             odds_source_array = match.RQSPF_OddArray;
             code_select_array = odd_rqspf;
-        }else if (codeValue> 299 && codeValue < 308){
-            odds_source_array = match.JQS_OddArray;
-            code_select_array = odd_jqs;
+        }else if (codeValue> 299 && codeValue < 331){
+            odds_source_array = match.BF_OddArray;
+            code_select_array = odd_bf;
+           
         }else if (codeValue> 399 && codeValue < 409){
             odds_source_array = match.BQC_OddArray;
             code_select_array = odd_bqc;
-        }else if (codeValue> 499 && codeValue < 531){
-            odds_source_array = match.BF_OddArray;
-            code_select_array = odd_bf;
+        }else if (codeValue> 499 && codeValue < 508){
+            odds_source_array = match.JQS_OddArray;
+            code_select_array = odd_jqs;
         }
         
         int codeIndex = codeValue %100;

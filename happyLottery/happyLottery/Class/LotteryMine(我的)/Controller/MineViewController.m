@@ -278,10 +278,9 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    
 }
+
 -(void)registerUser:(NSDictionary *)userInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
-    
     NSLog(@"%@",userInfo);
 }
 
@@ -292,7 +291,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSArray* array = listArray[section];
-    
     return array.count;
 }
 

@@ -515,7 +515,6 @@
             [self.delegate gotCollectedMatchList:dataArray errorMsg:response.errorMsg];
         } else {
             [self.delegate gotCollectedMatchList:nil errorMsg:response.errorMsg];
-            
         }
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {

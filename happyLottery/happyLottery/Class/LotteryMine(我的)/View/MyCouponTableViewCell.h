@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Coupon.h"
 
 @interface MyCouponTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *priceLab;
@@ -17,5 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *endImage;
 @property (weak, nonatomic) IBOutlet UILabel *yuanLab;
 @property (weak, nonatomic) IBOutlet UIImageView *bjImage;
+
+-(void)loadData:(Coupon *)model;
 
 @end

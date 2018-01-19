@@ -147,7 +147,6 @@
                                      Coupon *coupon = [[Coupon alloc]initWith:array[i]];
                                      [listUseCouponArray addObject:coupon];
                                      NSLog(@"redPacket%@",coupon.status);
-                                     
                                  }
                                  [self.tableView1.mj_footer endRefreshing];
                                  self.tableView1.hidden = NO;

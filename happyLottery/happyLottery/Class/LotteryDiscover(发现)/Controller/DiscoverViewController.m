@@ -9,7 +9,11 @@
 #import "DiscoverViewController.h"
 
 
-@interface DiscoverViewController ()
+@interface DiscoverViewController ()<JSObjcDelegate,UIWebViewDelegate>
+{
+    JSContext *context;
+}
+
 @property (weak, nonatomic) IBOutlet UIWebView *faxianWebView;
 
 @end
@@ -18,7 +22,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.faxianWebView.scrollView.bounces = NO;
+    self.faxianWebView.delegate = self;
     [self.faxianWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.88.193:18086/app/find/index"]]];
     
 }
@@ -38,14 +43,51 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    context = [webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
+    context[@"appObj"] = self;
+    context.exceptionHandler = ^(JSContext *context, JSValue *exceptionValue) {
+        context.exception = exceptionValue;
+        
+    };
+    
+    [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitUserSelect='none';"];
+    [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitTouchCallout='none';"];
+    
 }
-*/
+
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    NSURL *URL = request.URL;
+    NSString *scheme = [NSString stringWithFormat:@"%@",URL];
+    return YES;
+}
+
+
+#pragma JSObjcDelegate
+-(void)SharingLinks:(NSString *)code{
+    [self showPromptText:code hideAfterDelay:1.8];
+}
+
+-(void)goToJczq{
+    
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"NSNotificationBuyVCJump" object:@1000];
+    self.tabBarController.selectedIndex = 0;
+}
+
+-(NSString *)getCardCode{
+    if (self.curUser .isLogin == YES) {
+        return self.curUser.cardCode;
+    }else{
+        return @"";
+    }
+}
+
+-(void)goToLogin{
+    
+}
 
 @end

@@ -320,6 +320,20 @@
         return;
     }
     
+    if (btnMoniTouzhu.selected == YES) {
+        if (self.transction.betCost  > 30000000) {
+            [self showPromptText:@"单笔总积分不能超过3千万积分" hideAfterDelay:1.7];
+            return;
+        }
+    }else{
+        if (self.transction.betCost  > 300000) {
+            [self showPromptText:@"单笔总金额不能超过30万元" hideAfterDelay:1.7];
+            return;
+        }
+    }
+    
+    [self showLoadingText:@"正在提交订单"];
+    
     self.transction.maxPrize = 1.00;
     self.transction.schemeType = SchemeTypeZigou;
     self.transction.units = self.transction.betCount;
@@ -385,6 +399,9 @@
             return;
         }
     }
+    
+    [self hideLoadingView];
+    
     schemeCashModel.subscribed = self.transction.betCost;
     schemeCashModel.realSubscribed = self.transction.betCost;
     payVC.cashPayMemt = schemeCashModel;

@@ -34,5 +34,7 @@
 
 @property(nonatomic,strong)NSString * guestImageUrl;
 @property(nonatomic,strong)NSString * homeImageUrl;
+
+@property(nonatomic,assign)BOOL isCollect;
 -(JczqShortcutModel *)jCZQScoreZhiboToJcForecastOptions;
 @end

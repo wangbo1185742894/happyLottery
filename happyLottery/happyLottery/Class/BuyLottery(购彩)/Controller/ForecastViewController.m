@@ -16,6 +16,7 @@
 @interface ForecastViewController ()<UITableViewDataSource,UITableViewDelegate,LotteryManagerDelegate,NewsListCellDelegate>
 {
     __weak IBOutlet UITableView *tabForecastListView;
+    NSMutableArray  <JczqShortcutModel *>*colloectList;
     JczqShortcutModel *curModel;
 }
 @property(nonatomic,strong)NSMutableArray <NSMutableArray<HomeYCModel *> *> *dataArray;
@@ -27,6 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.arrayTableSectionIsOpen = [NSMutableArray arrayWithCapacity:0];
+    colloectList = [NSMutableArray arrayWithCapacity:0];
     self.viewControllerNo = @"A015";
     self.dataArray = [NSMutableArray arrayWithCapacity:0];
     NSString *doc=[NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
@@ -43,6 +45,8 @@
 }
 
 -(void)gotlistByForecast:(NSArray *)infoArray errorMsg:(NSString *)msg{
+    
+    
     if (infoArray == nil || infoArray.count == 0) {
         [self showPromptText:msg hideAfterDelay:1.7];
         return;
@@ -73,8 +77,11 @@
             [self.dataArray addObject:marray];
         }
     }
-    [tabForecastListView reloadData];
-    
+    if (self.curUser.isLogin) {
+        [self getCollected];
+    }else{
+        [tabForecastListView reloadData];
+    }
 }
 
 
@@ -114,15 +121,17 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     BOOL isSelect = NO;
     
-    if ([self .fmdb open]) {
-        FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_collect_match"];
-        do {
-            if ([[result stringForColumn:@"matchKey"] isEqualToString:self.dataArray[indexPath.section][indexPath.row].matchKey] && [[result stringForColumn:@"cardCode"]isEqualToString:self.curUser.cardCode]) {
-                isSelect = YES;
-                break;
+    if (self.curUser .isLogin == YES) {
+        if (self.dataArray[indexPath.section][indexPath.row].isCollect == YES) {
+            isSelect = YES;
+        }else{
+            for (JczqShortcutModel *model in colloectList) {
+                if ([model.matchKey isEqualToString:self.dataArray[indexPath.section][indexPath.row].matchKey] && model.isCollect == YES) {
+                    isSelect = YES;
+                    break;
+                }
             }
-        } while ([result next]);
-        [self.fmdb close];
+        }
     }
     cell.delegate = self;
     [cell refreshData:[ _dataArray[indexPath.section][indexPath.row] jCZQScoreZhiboToJcForecastOptions] andSelect:isSelect];
@@ -166,34 +175,18 @@
     if (isSuccess) {
         if (isSelect) {
             [self showPromptText:@"收藏成功" hideAfterDelay:1.7];
+            curModel.isCollect = YES;
         }else{
             [self showPromptText:@"已取消收藏" hideAfterDelay:1.7];
-        }
-        [self saveCollectMatchInfoToloaction:isSelect];
-    }
-}
-
--(void)saveCollectMatchInfoToloaction:(BOOL)isSelect{
-    
-    BOOL issuccess;
-    if ([self .fmdb open]) {
-        
-        if (isSelect) {
-            issuccess=  [self.fmdb executeUpdate:@"insert into t_collect_match (matchKey,cardCode) values (?,?)  ",curModel.matchKey,self.curUser.cardCode];
-        }else{
-            FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_collect_match"];
-            
-            do {
-                if ([[result stringForColumn:@"matchKey"] isEqualToString:curModel.matchKey] &&[[result stringForColumn:@"cardCode"]isEqualToString:self.curUser.cardCode]) {
-                    issuccess= [self.fmdb executeUpdate:@"delete from t_collect_match where matchKey = ? and cardCode = ? ",curModel.matchKey,self.curUser.cardCode];
-                    break;
-                }
-            } while ([result next]);
+            curModel.isCollect = NO;
         }
         
     }
-    if (issuccess) {
-        [self.fmdb close];
+    for (HomeYCModel *model in colloectList) {
+        if ([model.matchKey isEqualToString:curModel.matchKey]) {
+            model.isCollect = isSelect;
+            break;
+        }
     }
     [tabForecastListView reloadData];
 }
@@ -234,5 +227,26 @@
     }
     [tabForecastListView reloadData];
 }
+
+
+-(void)getCollected{
+    [self.lotteryMan getCollectedMatchList:@{@"cardCode":self.curUser.cardCode,@"page":@(1),@"pageSize":@"100"}];
+}
+
+-(void)gotCollectedMatchList:(NSArray *)infoArray errorMsg:(NSString *)msg{
+    
+    if (infoArray == nil) {
+        [self showPromptText:msg hideAfterDelay:1.7];
+        return;
+    }
+    [colloectList removeAllObjects];
+    
+    for (NSDictionary* infoDic in infoArray) {
+        JczqShortcutModel *model =  [[JczqShortcutModel alloc]initWith:infoDic];
+        [colloectList addObject:model];
+    }
+    [tabForecastListView reloadData];
+}
+
 
 @end

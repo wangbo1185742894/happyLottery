@@ -10,28 +10,45 @@
 #import "PaySuccessViewController.h"
 #import "ChannelModel.h"
 #import "JCZQSchemeModel.h"
+#import "WBInputPopView.h"
+#import "AESUtility.h"
+#import "PayOrderYouhunViewController.h"
+
 #define KPayTypeListCell @"PayTypeListCell"
-@interface PayOrderViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,MemberManagerDelegate,UIWebViewDelegate>
+@interface PayOrderViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,MemberManagerDelegate,UIWebViewDelegate,WBInputPopViewDelegate>
 {
     NSMutableArray <ChannelModel *>*channelList;
     ChannelModel *itemModel;
+    WBInputPopView *passInput;
     JCZQSchemeItem * schemeDetail;
+    __weak IBOutlet UILabel *labCanUseYouhuiquan;
+    
+    
 }
 @property (weak, nonatomic) IBOutlet UIWebView *payWebView;
 @property (weak, nonatomic) IBOutlet UILabel *labLotteryName;
 @property (weak, nonatomic) IBOutlet UILabel *labOrderCost;
-@property (weak, nonatomic) IBOutlet UILabel *labBanlance;
+@property (weak, nonatomic) IBOutlet UILabel *labRealCost;
 @property (weak, nonatomic) IBOutlet UITableView *tabPayTypeList;
 @property (weak, nonatomic) IBOutlet UIButton *btnTouzhuRule;
 @property (weak, nonatomic) IBOutlet UIButton *btnSelectRule;
 @property (weak, nonatomic) IBOutlet UIButton *btnTouzhu;
 @property (weak, nonatomic) IBOutlet UILabel *labZheKou;
-@property (weak, nonatomic) IBOutlet UILabel *labNeedInfo;
+
 @property (weak, nonatomic) IBOutlet UILabel *labBanlenceInfo;
 @property (weak, nonatomic) IBOutlet UIView *viewPaychannalInfo;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightIViewJinE;
 @property (weak, nonatomic) IBOutlet UILabel *labYouhuifangan;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewPayList;
+
+@property(strong,nonatomic)NSMutableArray <Coupon *> *couponList;
+
+@property (weak, nonatomic) IBOutlet UIView *labScoreInfoContent;
+
+@property (weak, nonatomic) IBOutlet UILabel *labScoreBanlence;
+@property (weak, nonatomic) IBOutlet UILabel *labScoreNeed;
+@property (weak, nonatomic) IBOutlet UILabel *labScoreBanlenceNum;
+@property (weak, nonatomic) IBOutlet UILabel *labSocreNeedNum;
 
 @end
 
@@ -39,6 +56,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if (self.cashPayMemt.costType == CostTypeCASH) {
+        self.labScoreInfoContent.hidden = YES;
+        
+    }else{
+        self.labScoreInfoContent.hidden = NO;
+    }
+    self.couponList = [NSMutableArray arrayWithCapacity:0];
     self.title = @"预约支付";
     [self setTableView];
     self.payWebView.delegate = self;
@@ -46,12 +70,49 @@
     [self.memberMan getMemberByCardCode:@{@"cardCode":self.curUser.cardCode}];
     [self showLoadingText:@"正在提交订单"];
     self.lotteryMan.delegate = self;
-    [self.memberMan getAvailableCoupon:@{@"cardCode":@"xxx",@"amount":@"xxxx"}];
+    [self.memberMan getAvailableCoupon:@{@"cardCode":self.curUser.cardCode,@"amount":@(self.cashPayMemt.realSubscribed)}];
     [self getListByChannel];
+   
 }
 
--(void)gotAvailableCoupon:(BOOL)success andPayInfo:(NSDictionary *)payInfo errorMsg:(NSString *)msg{
-    
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    if (self.curSelectCoupon != nil) {
+//
+        labCanUseYouhuiquan.text = [NSString stringWithFormat:@"￥%@元优惠券",self.curSelectCoupon.deduction];
+        self.labZheKou.text = [NSString stringWithFormat:@"-%.2f元",[self.curSelectCoupon.deduction doubleValue]];
+        self.labZheKou.textColor = SystemRed;
+        self.labRealCost.text = [NSString stringWithFormat:@"%.2f 元",self.cashPayMemt.realSubscribed - [self.curSelectCoupon.deduction doubleValue]] ;
+    }else{
+          labCanUseYouhuiquan.text = [NSString stringWithFormat:@"暂无可用优惠券"];
+          self.labZheKou.text = [NSString stringWithFormat:@"-0.00元"];
+          self.labZheKou.textColor = SystemGray;
+    }
+    if (self.cashPayMemt.costType == CostTypeCASH) {
+           [self.btnTouzhu setTitle:[NSString stringWithFormat:@"确认支付 ￥%.2f",self.cashPayMemt.realSubscribed - [self.curSelectCoupon.deduction doubleValue]] forState:0];
+        
+    }else{
+           [self.btnTouzhu setTitle:@"预约支付" forState:0];
+    }
+ 
+}
+
+-(void)gotAvailableCoupon:(BOOL)success andPayInfo:(NSArray *)payInfo errorMsg:(NSString *)msg{
+    if (success == NO || payInfo == nil ) {
+        [self showPromptText:msg hideAfterDelay:1.7];
+        labCanUseYouhuiquan.text = @"暂无可用优惠券";
+        return;
+    }
+    if (payInfo.count ==0) {
+        
+    }else{
+         labCanUseYouhuiquan.text = @"请选择优惠券";
+    }
+   
+    for (NSDictionary *itemDic in payInfo) {
+        Coupon *model = [[Coupon alloc]initWith:itemDic];
+        [self.couponList addObject:model];
+    }
 }
 
 
@@ -63,20 +124,19 @@
     self.curUser.score = user.score;
     
     if (self.cashPayMemt.costType == CostTypeCASH) {
-        self.labBanlance.text = [NSString stringWithFormat:@"%.2f",[self.curUser.balance doubleValue] + [self.curUser.notCash doubleValue] + [self.curUser.sendBalance doubleValue]] ;
-        self.labOrderCost.text = [NSString stringWithFormat:@"%ld 元",self.cashPayMemt.realSubscribed] ;
-        self.heightIViewJinE.constant = 176;
+        
+        self.labRealCost.text = [NSString stringWithFormat:@"%.2f 元",self.cashPayMemt.realSubscribed - [self.curSelectCoupon.deduction doubleValue]] ;
+        self.labOrderCost.text = [NSString stringWithFormat:@"%ld.00 元",self.cashPayMemt.realSubscribed] ;
+        self.heightIViewJinE.constant = 185;
         self.labYouhuifangan.hidden = NO;
     }else{
+        
         self.cashPayMemt.realSubscribed  = self.cashPayMemt.realSubscribed  * 100;
         self.cashPayMemt.subscribed = self.cashPayMemt.subscribed * 100;
-        self.viewPaychannalInfo.hidden = YES;
-        self.labNeedInfo.text = @"所需积分";
-        self.labBanlenceInfo.text = @"剩余积分";
-        self.labYouhuifangan.hidden = YES;
-        self.labBanlance.text = [NSString stringWithFormat:@"%@ 积分",self.curUser.score] ;
-        self.labOrderCost.text = [NSString stringWithFormat:@"%ld 积分",self.cashPayMemt.realSubscribed] ;
-        self.heightIViewJinE.constant = 143;
+        self.labScoreNeed.text = @"订单所需积分";
+        self.labScoreBanlence.text = @"剩余积分";
+        self.labScoreBanlenceNum.text = [NSString stringWithFormat:@"%@ 积分",self.curUser.score];
+        self.labSocreNeedNum.text = [NSString stringWithFormat:@"%ld 积分",self.cashPayMemt.realSubscribed];
     }
 }
 
@@ -148,6 +208,41 @@
     }
 }
 
+- (void)showPayPopView{
+    if (nil == passInput) {
+        
+        passInput = [[WBInputPopView alloc]init];
+        passInput.delegate = self;
+        passInput.labTitle.text = @"请输入支付密码";
+    }
+
+    [self.view addSubview:passInput];
+    passInput.delegate = self;
+    [passInput.txtInput becomeFirstResponder];
+    [passInput createBlock:^(NSString *text) {
+        
+        if (nil == passInput) {
+            [self showPromptText:@"请输入支付密码" hideAfterDelay:2.7];
+            return;
+        }
+
+        NSDictionary *cardInfo= @{@"cardCode":self.curUser.cardCode,
+                                  @"payPwd":[AESUtility encryptStr:text]};
+        [self.memberMan validatePaypwdSms:cardInfo];
+    }];
+    
+}
+
+-(void)validatePaypwdSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    
+    if (success == YES) {
+        [self showLoadingText:@"正在提交订单"];
+        [self actionPay];
+    }else{
+        [self showPromptText:msg hideAfterDelay:1.7];
+    }
+}
+
 - (IBAction)actionTouzhu:(id)sender {
     
     for (ChannelModel *model in channelList) {
@@ -157,8 +252,21 @@
         }
     }
 
+    if ([self checkPayPassword]) {
+        [self showPayPopView];
+        return;
+    }
+
+    [self actionPay];
+}
+
+-(void)actionPay{
+    
     if (self.cashPayMemt.costType == CostTypeCASH) {
         
+        if (self.curSelectCoupon != nil) {
+            self.cashPayMemt.realSubscribed =self.cashPayMemt.subscribed - [self.curSelectCoupon.deduction doubleValue];
+        }
         if (![itemModel.channel isEqualToString:@"YUE"]) {
             [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkSchemePayState:) name:@"NSNotificationapplicationWillEnterForeground" object:nil];
             [self commitClient];
@@ -170,21 +278,15 @@
             return;
         }
         
-        [self.lotteryMan schemeCashPayment:@{@"cardCode":self.cashPayMemt.cardCode,
-                                             @"schemeNo":self.cashPayMemt.schemeNo,
-                                             @"subCopies":@(self.cashPayMemt.subCopies),
-                                             @"subscribed":@(self.cashPayMemt.subscribed),
-                                             @"realSubscribed":@(self.cashPayMemt.realSubscribed),
-                                             @"isSponsor":@(true)
-                                             }];
+        [self.lotteryMan schemeCashPayment:[self getTouzhuParams:self.curSelectCoupon != nil]];
     }else{
         [self.lotteryMan schemeScorePayment:@{@"cardCode":self.cashPayMemt.cardCode,
-                                             @"schemeNo":self.cashPayMemt.schemeNo,
-                                             @"subCopies":@(self.cashPayMemt.subCopies),
-                                             @"subscribed":@(self.cashPayMemt.subscribed),
-                                             @"realSubscribed":@(self.cashPayMemt.realSubscribed),
-                                             @"isSponsor":@(true)
-                                             }];
+                                              @"schemeNo":self.cashPayMemt.schemeNo,
+                                              @"subCopies":@(self.cashPayMemt.subCopies),
+                                              @"subscribed":@(self.cashPayMemt.subscribed),
+                                              @"realSubscribed":@(self.cashPayMemt.realSubscribed),
+                                              @"isSponsor":@(true)
+                                              }];
         if (self.cashPayMemt.realSubscribed > [self.curUser.score integerValue]) {
             [self showPromptText:@"积分不足" hideAfterDelay:1.7];
             return;
@@ -222,6 +324,7 @@
 }
 
 -(void)gotSchemeCashPayment:(BOOL)isSuccess errorMsg:(NSString *)msg{
+    [self hideLoadingView];
     if (isSuccess) {
         [self paySuccess];
     }else{
@@ -312,13 +415,7 @@
         rechargeInfo = @{@"cardCode":cardCode,
                          @"channel":itemModel.channel,
                          @"amounts":checkCode,
-                         @"schemeSub":@{@"cardCode":self.cashPayMemt.cardCode,
-                                        @"schemeNo":self.cashPayMemt.schemeNo,
-                                        @"subCopies":@(self.cashPayMemt.subCopies),
-                                        @"subscribed":@(self.cashPayMemt.subscribed),
-                                        @"realSubscribed":@(self.cashPayMemt.realSubscribed),
-                                        @"isSponsor":@(true)
-                                        }
+                         @"schemeSub":[self getTouzhuParams:self.curSelectCoupon != nil]
                          };
     } @catch (NSException *exception) {
         rechargeInfo = nil;
@@ -326,7 +423,27 @@
     } @finally {
         [self.memberMan rechargeSms:rechargeInfo];
     }
-    
+}
+
+-(NSDictionary *)getTouzhuParams:(BOOL)isCoupon{
+    if (isCoupon) {
+        return @{@"cardCode":self.cashPayMemt.cardCode,
+                 @"schemeNo":self.cashPayMemt.schemeNo,
+                 @"subCopies":@(self.cashPayMemt.subCopies),
+                 @"subscribed":@(self.cashPayMemt.subscribed),
+                 @"realSubscribed":@(self.cashPayMemt.realSubscribed),
+                 @"isSponsor":@(true),
+                 @"couponCode":self.curSelectCoupon.couponCode
+                 };
+    }else{
+        return @{@"cardCode":self.cashPayMemt.cardCode,
+          @"schemeNo":self.cashPayMemt.schemeNo,
+          @"subCopies":@(self.cashPayMemt.subCopies),
+          @"subscribed":@(self.cashPayMemt.subscribed),
+          @"realSubscribed":@(self.cashPayMemt.realSubscribed),
+          @"isSponsor":@(true)
+                 };
+    }
 }
 
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
@@ -339,6 +456,21 @@
 
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"NSNotificationapplicationWillEnterForeground" object:nil];
+}
+
+-(void)findPayPwd{
+    
+}
+
+- (IBAction)actionShowYouHuiquan:(UIButton *)sender {
+    if (self.couponList.count == 0) {
+        [self showPromptText:@"暂无可用优惠券" hideAfterDelay:1.7];
+        return;
+    }
+    PayOrderYouhunViewController *youhuanquanVC = [[PayOrderYouhunViewController alloc]init];
+    youhuanquanVC.payOrderVC = self;
+    youhuanquanVC.couponList = self.couponList;
+    [self.navigationController pushViewController:youhuanquanVC animated:YES];
 }
 
 @end

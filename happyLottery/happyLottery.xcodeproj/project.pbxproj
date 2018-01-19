@@ -379,6 +379,10 @@
 		2D92A81A200EF91D0038E165 /* win_tag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D92A818200EF91D0038E165 /* win_tag@2x.png */; };
 		2D92A81B200EF91D0038E165 /* win_tag@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D92A819200EF91D0038E165 /* win_tag@3x.png */; };
 		2D92A81E200F1D2F0038E165 /* WBLoopProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D92A81D200F1D2F0038E165 /* WBLoopProgressView.m */; };
+		2D92A8212010545D0038E165 /* btn_jinru@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D92A81F2010545C0038E165 /* btn_jinru@3x.png */; };
+		2D92A8222010545D0038E165 /* btn_jinru@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D92A8202010545D0038E165 /* btn_jinru@2x.png */; };
+		2D92A826201068590038E165 /* PayOrderYouhunViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D92A824201068590038E165 /* PayOrderYouhunViewController.m */; };
+		2D92A827201068590038E165 /* PayOrderYouhunViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D92A825201068590038E165 /* PayOrderYouhunViewController.xib */; };
 		2D9847B11FF5E1EB00038690 /* UMChongZhiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9847AF1FF5E1E900038690 /* UMChongZhiViewController.m */; };
 		2D9847B21FF5E1EB00038690 /* UMChongZhiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D9847B01FF5E1EA00038690 /* UMChongZhiViewController.xib */; };
 		2D9847B61FF5EC9500038690 /* WBYCMatchDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D9847B41FF5EC9500038690 /* WBYCMatchDetailViewController.xib */; };
@@ -1306,6 +1310,11 @@
 		2D92A819200EF91D0038E165 /* win_tag@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "win_tag@3x.png"; sourceTree = "<group>"; };
 		2D92A81C200F1D2F0038E165 /* WBLoopProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBLoopProgressView.h; sourceTree = "<group>"; };
 		2D92A81D200F1D2F0038E165 /* WBLoopProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBLoopProgressView.m; sourceTree = "<group>"; };
+		2D92A81F2010545C0038E165 /* btn_jinru@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_jinru@3x.png"; sourceTree = "<group>"; };
+		2D92A8202010545D0038E165 /* btn_jinru@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_jinru@2x.png"; sourceTree = "<group>"; };
+		2D92A823201068590038E165 /* PayOrderYouhunViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayOrderYouhunViewController.h; sourceTree = "<group>"; };
+		2D92A824201068590038E165 /* PayOrderYouhunViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayOrderYouhunViewController.m; sourceTree = "<group>"; };
+		2D92A825201068590038E165 /* PayOrderYouhunViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PayOrderYouhunViewController.xib; sourceTree = "<group>"; };
 		2D9847AE1FF5E1E900038690 /* UMChongZhiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMChongZhiViewController.h; sourceTree = "<group>"; };
 		2D9847AF1FF5E1E900038690 /* UMChongZhiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMChongZhiViewController.m; sourceTree = "<group>"; };
 		2D9847B01FF5E1EA00038690 /* UMChongZhiViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UMChongZhiViewController.xib; sourceTree = "<group>"; };
@@ -2209,6 +2218,8 @@
 		2D4B1E441FDF684E0034B708 /* homeres */ = {
 			isa = PBXGroup;
 			children = (
+				2D92A8202010545D0038E165 /* btn_jinru@2x.png */,
+				2D92A81F2010545C0038E165 /* btn_jinru@3x.png */,
 				2D92A818200EF91D0038E165 /* win_tag@2x.png */,
 				2D92A819200EF91D0038E165 /* win_tag@3x.png */,
 				2D517207200D9E7500C3CD7F /* buddha@2x.png */,
@@ -2928,6 +2939,9 @@
 				2D8CBFA91FF326F200CC367F /* PaySuccessViewController.h */,
 				2D8CBFAA1FF326F200CC367F /* PaySuccessViewController.m */,
 				2D8CBFAB1FF326F200CC367F /* PaySuccessViewController.xib */,
+				2D92A823201068590038E165 /* PayOrderYouhunViewController.h */,
+				2D92A824201068590038E165 /* PayOrderYouhunViewController.m */,
+				2D92A825201068590038E165 /* PayOrderYouhunViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3076,13 +3090,10 @@
 		2DDEDC3E1FD52206007AEBF7 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-
 				2D92A81C200F1D2F0038E165 /* WBLoopProgressView.h */,
 				2D92A81D200F1D2F0038E165 /* WBLoopProgressView.m */,
-
 				F92F4B6C200DADA5005E33AC /* NNValidationCodeView.h */,
 				F92F4B6B200DADA5005E33AC /* NNValidationCodeView.m */,
-
 				2D8CBFF51FF37D0800CC367F /* MGLabel.h */,
 				2D8CBFF61FF37D0800CC367F /* MGLabel.m */,
 				2D8CBFB31FF32ECC00CC367F /* ZLAlertView.h */,
@@ -3848,6 +3859,7 @@
 				F94AA9C41FEB59DA0021B980 /* authentication@3x.png in Resources */,
 				F92D03E22005E76600C26E7A /* FeedbackViewController.xib in Resources */,
 				F9F2629D1FE8D7D000C2E60F /* closeperson@3x.png in Resources */,
+				2D92A827201068590038E165 /* PayOrderYouhunViewController.xib in Resources */,
 				F957C1F81FE3B28D0090B19B /* packet@2x.png in Resources */,
 				F9F6CAA11FF5D6B100A49F71 /* download@2x.png in Resources */,
 				2D4B1E751FDF684E0034B708 /* fenleixian@2x.png in Resources */,
@@ -3862,6 +3874,7 @@
 				2D4B1E6F1FDF684E0034B708 /* faxian_defealt@2x.png in Resources */,
 				F9581A801FE0FA01009753AA /* LoginViewController.xib in Resources */,
 				2D5171EC200C72DA00C3CD7F /* icon_weizhong_@3x.png in Resources */,
+				2D92A8222010545D0038E165 /* btn_jinru@2x.png in Resources */,
 				2D517214200DD69E00C3CD7F /* sigln_orange@3x.png in Resources */,
 				2D20601F1FFCB71E0086E266 /* icon_shijian@2x.png in Resources */,
 				2DDEDC0C1FD4DBF1007AEBF7 /* DiscoverViewController.xib in Resources */,
@@ -3957,6 +3970,7 @@
 				F999275D2003223000023F8F /* bj_overdue@2x.png in Resources */,
 				2D4B1E6D1FDF684E0034B708 /* duibiao@3x.png in Resources */,
 				2D628B2B1FECA9C40013D0E1 /* touzhusaishijia@2x.png in Resources */,
+				2D92A8212010545D0038E165 /* btn_jinru@3x.png in Resources */,
 				F91565F21FFCBDAE00E254CE /* Moments@2x.png in Resources */,
 				F928C6BA1FF4BA40001F1A32 /* increase@2x.png in Resources */,
 				F9581A781FE0B765009753AA /* MineTableViewCell.xib in Resources */,
@@ -4462,6 +4476,7 @@
 				F90FCD5E1FF36B9900BD807C /* RedPacket.m in Sources */,
 				2D4B1EA61FDFCA520034B708 /* ForecastViewController.m in Sources */,
 				2DDEDE7B1FD568C9007AEBF7 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				2D92A826201068590038E165 /* PayOrderYouhunViewController.m in Sources */,
 				2D739C6D1FE7898900264044 /* JCZQMatchViewCell.m in Sources */,
 				2D8CBFE71FF376DA00CC367F /* YuCeSchemeDetailCell.m in Sources */,
 				2D0600861FFE206F009E7568 /* IQPreviousNextView.m in Sources */,

@@ -36,17 +36,24 @@
     _imgUrls = imgUrls;
     
     pageCtl.numberOfPages = imgUrls.count;
-    
-    scrContentView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth,self.mj_h)];
-    scrContentView.delegate = self;
-    scrContentView.pagingEnabled = YES;
-    scrContentView.showsHorizontalScrollIndicator = NO;
-    scrContentView.showsVerticalScrollIndicator = NO;
-    scrContentView.bounces = NO;
+    if (scrContentView == nil) {
+        scrContentView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth,self.mj_h)];
+        scrContentView.delegate = self;
+        scrContentView.pagingEnabled = YES;
+        scrContentView.showsHorizontalScrollIndicator = NO;
+        scrContentView.showsVerticalScrollIndicator = NO;
+        scrContentView.bounces = NO;
+        [self addSubview:scrContentView];
+    }else{
+        for (UIView *subView in scrContentView.subviews) {
+            [subView removeFromSuperview];
+        }
+    }
+
     
     scrContentView.contentSize = CGSizeMake(KscreenWidth * imgUrls.count, scrContentView.mj_h);
     
-    [self addSubview:scrContentView];
+   
     
     for (int i = 0; i < imgUrls.count; i ++ ) {
         UIButton *itemImg = [[UIButton alloc]initWithFrame:CGRectMake(KscreenWidth * i, 0, self.mj_w, scrContentView.mj_h)];
