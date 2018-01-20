@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *endImage;
 @property (weak, nonatomic) IBOutlet UILabel *yuanLab;
 @property (weak, nonatomic) IBOutlet UIImageView *bjImage;
+@property (weak, nonatomic) IBOutlet UILabel *countLab;
 
 -(void)loadData:(Coupon *)model;
 

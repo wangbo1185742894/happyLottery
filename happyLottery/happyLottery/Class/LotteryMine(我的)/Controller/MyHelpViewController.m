@@ -29,8 +29,8 @@
     self.title = @"帮助";
     self.viewControllerNo = @"A207";
     if ([self isIphoneX]) {
-        self.top.constant = 88;
-        self.bottom.constant = 34;
+        self.top.constant = 24;
+       // self.bottom.constant = 34;
     }
 }
 

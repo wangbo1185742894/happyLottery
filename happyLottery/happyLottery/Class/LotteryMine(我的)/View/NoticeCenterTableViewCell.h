@@ -13,5 +13,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLab;
 @property (weak, nonatomic) IBOutlet UILabel *noticeLab;
 
+@property (weak, nonatomic) IBOutlet UIImageView *redPoint;
 
 @end

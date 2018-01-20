@@ -8,6 +8,7 @@
 
 #import "User.h"
 #import "FMDatabase.h"
+#import <AudioToolbox/AudioToolbox.h>//添加推送声音lala
 
 @interface User()
    @property(nonatomic,strong)FMDatabase* fmdb;
@@ -36,5 +37,6 @@
    
     return PayVerifyTypeAlwaysNo;
 }
+
 
 @end

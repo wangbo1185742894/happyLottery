@@ -10,6 +10,7 @@
 #import "NoticeCenterTableViewCell.h"
 #import "NoticeDetailViewController.h"
 #import "LoadData.h"
+#import "Notice.h"
 
 @interface NoticeCenterViewController ()<MemberManagerDelegate,UITableViewDelegate,UITableViewDataSource>{
     
@@ -86,9 +87,15 @@
             if ([resultDic1[@"code"] integerValue] != 0) {
                 return ;
             }
-            NSArray  *resultDic =  resultDic1[@"result"];
-      
-            
+            NSArray  *array =  resultDic1[@"result"];
+            for (int i=0; i<array.count; i++) {
+                
+                Notice *notice = [[Notice alloc]initWith:array[i]];
+                [listSystemNoticeArray addObject:notice];
+                NSLog(@"redPacket%@",notice.content);
+                
+            }
+            [self.tableView1 reloadData];
         }else{
             [self showPromptText: @"服务器连接失败" hideAfterDelay: 1.7];
         }
@@ -130,18 +137,15 @@
     //    LUCKY_DRAW("抽奖"),
     //    SYSTEM("系统赠送"),
     //    ACTIVITY("活动");
-   // Coupon *coupon = [[Coupon alloc]init];
+    Notice *notice = [[Notice alloc]init];
     if (tableView ==self.tableView1) {
         if (listSystemNoticeArray.count > 0) {
-//            coupon = listSystemNoticeArray[indexPath.row];
-//            cell.endImage.hidden = YES;
-//            cell.priceLab.text = coupon.deduction;
-//            cell.nameLab.text =[NSString stringWithFormat:@"¥%@元优惠券",coupon.deduction];
-           // NSString *status =coupon.status;
-       
-//            cell.sourceLab.text = [NSString stringWithFormat:@"来源：%@",coupon.couponSource];
-//            cell.dateLab.text = [NSString stringWithFormat:@"有效期：%@",coupon.invalidTime];
-//            cell.descriptionLab.text=[NSString stringWithFormat:@"单笔订单满%@可用",coupon.quota];
+            notice = listSystemNoticeArray[indexPath.row];
+            //cell.endImage.hidden = YES;
+            cell.nameLab.text = notice.title;
+            cell.noticeLab.text =notice.content;
+             NSString *date=[notice.endTime substringWithRange:NSMakeRange(0,10)];
+            cell.dateLab.text =date;
         }
         
     }else if (tableView ==self.tableView2){
@@ -178,6 +182,25 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath: indexPath animated: YES];
+    NoticeCenterTableViewCell  *selectCell = [tableView cellForRowAtIndexPath:indexPath];
+     Notice* notice = listSystemNoticeArray[indexPath.row];
+    NSString *type = notice.type;
+    if ([type isEqualToString:@"APP"]) {
+          NSString *pageCode=notice.thumbnailCode;
+    }else if ([type isEqualToString:@"H5PAGE"]) {
+      
+    }else if ([type isEqualToString:@"TEXT"]) {
+        NoticeDetailViewController *vc = [[NoticeDetailViewController alloc] init];
+        if (tableView ==self.tableView1) {
+            vc.notice = listSystemNoticeArray[indexPath.row];
+        }else if (tableView ==self.tableView2){
+            
+            vc.notice = listPersonNoticeArray[indexPath.row];
+        }
+        [self.navigationController pushViewController: vc animated: YES];
+    }
+  
+   
 }
 
 - (void)didReceiveMemoryWarning {

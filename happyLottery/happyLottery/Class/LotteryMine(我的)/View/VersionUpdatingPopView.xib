@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="VersionUpdatingPopView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WbW-vB-FQS">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <connections>
+                        <action selector="actionGuanbi:" destination="iN0-l3-epB" eventType="touchUpInside" id="m77-Lp-N8A"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ftq-bV-ZKC">
+                    <rect key="frame" x="40" y="70" width="295" height="350"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IYc-ly-RDU">
+                            <rect key="frame" x="265" y="10" width="20" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="Bni-oS-D1s"/>
+                                <constraint firstAttribute="width" constant="20" id="m8C-mO-Wwb"/>
+                            </constraints>
+                            <state key="normal" backgroundImage="zhuihaopushcolse.png"/>
+                            <connections>
+                                <action selector="actionGuanbi:" destination="iN0-l3-epB" eventType="touchUpInside" id="gJy-Pt-m5K"/>
+                            </connections>
+                        </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="genxinpopview.png" translatesAutoresizingMaskIntoConstraints="NO" id="Lst-L9-kyS">
+                            <rect key="frame" x="0.0" y="50" width="295" height="300"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RV5-tu-VRh">
+                            <rect key="frame" x="50" y="290" width="195" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="eFU-BQ-Ihd"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal" title="立即更新" backgroundImage="lijigenxin.png"/>
+                            <connections>
+                                <action selector="actionLijigenxin:" destination="iN0-l3-epB" eventType="touchUpInside" id="DdM-o1-p5q"/>
+                            </connections>
+                        </button>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="1.修改bug" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oa7-W9-WGY">
+                            <rect key="frame" x="25" y="190" width="245" height="92"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="Oa7-W9-WGY" firstAttribute="top" secondItem="ftq-bV-ZKC" secondAttribute="top" constant="190" id="0ag-8m-A4O"/>
+                        <constraint firstItem="Lst-L9-kyS" firstAttribute="top" secondItem="ftq-bV-ZKC" secondAttribute="top" constant="50" id="1aO-wQ-Mbx"/>
+                        <constraint firstAttribute="height" constant="350" id="4NU-FW-LGb"/>
+                        <constraint firstItem="Lst-L9-kyS" firstAttribute="leading" secondItem="ftq-bV-ZKC" secondAttribute="leading" id="5iZ-q1-a47"/>
+                        <constraint firstAttribute="trailing" secondItem="Oa7-W9-WGY" secondAttribute="trailing" constant="25" id="AED-zq-VcD"/>
+                        <constraint firstItem="RV5-tu-VRh" firstAttribute="leading" secondItem="ftq-bV-ZKC" secondAttribute="leading" constant="50" id="EEF-LW-TbJ"/>
+                        <constraint firstAttribute="trailing" secondItem="IYc-ly-RDU" secondAttribute="trailing" constant="10" id="MSg-Wh-gOh"/>
+                        <constraint firstAttribute="trailing" secondItem="Lst-L9-kyS" secondAttribute="trailing" id="Oam-cL-c2m"/>
+                        <constraint firstItem="Oa7-W9-WGY" firstAttribute="leading" secondItem="ftq-bV-ZKC" secondAttribute="leading" constant="25" id="TSp-4G-Wgb"/>
+                        <constraint firstItem="RV5-tu-VRh" firstAttribute="top" secondItem="Oa7-W9-WGY" secondAttribute="bottom" constant="8" id="UGC-XY-KJ0"/>
+                        <constraint firstAttribute="bottom" secondItem="RV5-tu-VRh" secondAttribute="bottom" constant="25" id="c93-MK-spV"/>
+                        <constraint firstAttribute="bottom" secondItem="Lst-L9-kyS" secondAttribute="bottom" id="dFg-37-qW3"/>
+                        <constraint firstAttribute="trailing" secondItem="RV5-tu-VRh" secondAttribute="trailing" constant="50" id="jw4-mp-wPJ"/>
+                        <constraint firstItem="IYc-ly-RDU" firstAttribute="top" secondItem="ftq-bV-ZKC" secondAttribute="top" constant="10" id="m2n-Jg-iDg"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="WbW-vB-FQS" secondAttribute="bottom" id="3wE-Eo-E3a"/>
+                <constraint firstAttribute="trailing" secondItem="WbW-vB-FQS" secondAttribute="trailing" id="7xc-0K-ilA"/>
+                <constraint firstAttribute="trailing" secondItem="ftq-bV-ZKC" secondAttribute="trailing" constant="40" id="DNd-Qg-1s4"/>
+                <constraint firstItem="WbW-vB-FQS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="OPy-nQ-0pB"/>
+                <constraint firstItem="ftq-bV-ZKC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="fYO-eb-tJY"/>
+                <constraint firstItem="WbW-vB-FQS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="gKd-0d-Ral"/>
+                <constraint firstItem="ftq-bV-ZKC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="70" id="lJQ-80-BOA"/>
+            </constraints>
+            <connections>
+                <outlet property="content" destination="Oa7-W9-WGY" id="8yr-qs-9or"/>
+                <outlet property="guanbibtn" destination="WbW-vB-FQS" id="u9A-km-Qdf"/>
+                <outlet property="heightContstraints" destination="4NU-FW-LGb" id="OeO-MD-Tzp"/>
+                <outlet property="lijigenxinBtn" destination="RV5-tu-VRh" id="JCj-WU-z7u"/>
+                <outlet property="topContstraints" destination="lJQ-80-BOA" id="BHL-ZB-fgC"/>
+                <outlet property="xiaochachaBtn" destination="IYc-ly-RDU" id="2EE-jJ-1fS"/>
+            </connections>
+            <point key="canvasLocation" x="5" y="-106"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="genxinpopview.png" width="284" height="327"/>
+        <image name="lijigenxin.png" width="152" height="36"/>
+        <image name="zhuihaopushcolse.png" width="83" height="76"/>
+    </resources>
+</document>

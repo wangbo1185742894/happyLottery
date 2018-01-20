@@ -11,6 +11,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NoticeDetailViewController">
             <connections>
+                <outlet property="dateLab" destination="Cam-kk-xjY" id="jCw-Lu-wzc"/>
+                <outlet property="noticeLab" destination="bh8-sC-tVG" id="F6a-jk-75S"/>
+                <outlet property="titleLab" destination="XeK-eS-dFR" id="RNe-R6-kBY"/>
+                <outlet property="top" destination="VIP-bt-SdF" id="V7n-8S-YKy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

@@ -85,6 +85,10 @@
     }else{
         aniTime = 0.5;
     }
+    
+    if (_imgUrls == nil) {
+        return ;
+    }
     index = index % _imgUrls.count;
     
     [UIView animateWithDuration:aniTime animations:^{

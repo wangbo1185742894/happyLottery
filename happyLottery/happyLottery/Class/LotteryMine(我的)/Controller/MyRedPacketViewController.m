@@ -107,7 +107,8 @@
         case 0:
             self.tableView1.hidden=NO;
             self.tableView2.hidden=YES;
-               [listUnUseRedPacketArray removeAllObjects];
+            [listUnUseRedPacketArray removeAllObjects];
+            [listUseRedPacketArray removeAllObjects];
             page=1;
             
             [self initRefresh1];
@@ -115,7 +116,8 @@
         case 1:
             self.tableView2.hidden=NO;
             self.tableView1.hidden=YES;
-                  [listUseRedPacketArray removeAllObjects];
+            [listUnUseRedPacketArray removeAllObjects];
+            [listUseRedPacketArray removeAllObjects];
             page=1;
             
             [self initRefresh2];
@@ -241,24 +243,7 @@
             [self.tableView2.mj_footer endRefreshingWithNoMoreData];
         }
            
-//            for (int i=0; i<array.count; i++) {
-//                RedPacket *redPacket = [[RedPacket alloc]initWith:array[i]];
-//                  NSLog(@"redPacket%@",redPacket.redPacketStatus);
-//                if (self.segment.selectedSegmentIndex == 0) {
-//                [listUseRedPacketArray addObject:redPacket];
-//                }else if(self.segment.selectedSegmentIndex==1){
-//                [listUnUseRedPacketArray addObject:redPacket];
-//                }
-//            }
-//            self.emptyView.hidden=YES;
-//            [self.tableView1 reloadData];
-//            [self.tableView2 reloadData];
-//        }else{
-//            self.emptyView.hidden=NO;
-//            self.tableView2.hidden = YES;
-//            self.tableView1.hidden = YES;
-//
-//        }
+
       
         
     }else{
@@ -398,7 +383,7 @@
     //[self.tableView registerClass :[YourTableCell class] forCellReuseIdentifier:@"txTableCell"];
     static NSString *CellIdentifier = @"TabViewCell";
     //自定义cell类
-    MyRedPacketTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    MyRedPacketTableViewCell *cell ;
   
     //            REGISTER_CHANNEL("注册渠道"),
     //            LOGIN_CHANNEL("登录渠道"),
@@ -408,6 +393,8 @@
     //            WIN_CHANNEL("中奖渠道");
     RedPacket *redPacket = [[RedPacket alloc]init];
     if (tableView ==self.tableView1) {
+        static NSString *CellIdentifier = @"TabViewCell1";
+        cell= [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {
             //通过xib的名称加载自定义的cell
             cell = [[[NSBundle mainBundle] loadNibNamed:@"MyRedPacketTableViewCell" owner:self options:nil] lastObject];
@@ -452,6 +439,8 @@
         }
       
     }else if (tableView ==self.tableView2){
+        static NSString *CellIdentifier = @"TabViewCell2";
+        cell= [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {
             //通过xib的名称加载自定义的cell
             cell = [[[NSBundle mainBundle] loadNibNamed:@"MyRedPacketTableViewCell" owner:self options:nil] lastObject];

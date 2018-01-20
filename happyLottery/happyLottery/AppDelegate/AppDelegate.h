@@ -11,7 +11,10 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
-
+@property(nonatomic, assign)BOOL versionFlag;
+@property(nonatomic, retain)NSMutableDictionary   *Dic;
+@property (assign, nonatomic)NSUserDefaults       *userDefaultes;
++ (AppDelegate*) shareDelegate;
+-(void) playSound;
 @end
 
