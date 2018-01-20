@@ -38,12 +38,13 @@
     AppDelegate *myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     if (_switch2.on) {
         [myDelegate.Dic setObject:@"MsgMusicOpen" forKey:@"MsgMusicSwitch"];
+         [myDelegate playSound];
     }else{
         [myDelegate.Dic setObject:@"MsgMusicOff" forKey:@"MsgMusicSwitch"];
     }
     
     [self saveNSUserDefaults:myDelegate.Dic];
-    [myDelegate playSound];
+   
 }
 - (IBAction)aboutBtnClick:(id)sender {
     AboutViewController *ab = [[AboutViewController alloc]init];
@@ -64,18 +65,6 @@
     }
 }
 
--(void)winSwitchupdateAtIndexPath:(id)event {
-    AppDelegate *myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-
-    if (_switch2.on) {
-        [myDelegate.Dic setObject:@"WinnoticeOpen" forKey:@"winnoticeradioSwitch"];
-    }else{
-        [myDelegate.Dic setObject:@"WinnoticeOff" forKey:@"winnoticeradioSwitch"];
-    }
-    
-    [self saveNSUserDefaults:myDelegate.Dic];
-    
-}
 
 #pragma  mark - checkUpdateNetWork
 - (void)checkUpdateNetWork {
