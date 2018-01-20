@@ -7,7 +7,12 @@
 //
 
 #import "BaseViewController.h"
+#import <JavaScriptCore/JavaScriptCore.h>
 
+@protocol JSObjcDelegate <JSExport>
+
+- (void)telPhone;
+@end
 @interface GroupViewController : BaseViewController
 
 @end

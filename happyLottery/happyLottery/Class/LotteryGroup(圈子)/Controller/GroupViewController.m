@@ -7,8 +7,11 @@
 //
 
 #import "GroupViewController.h"
+#import <JavaScriptCore/JavaScriptCore.h>
 
-@interface GroupViewController ()
+@interface GroupViewController ()<JSObjcDelegate,UIWebViewDelegate>{
+    JSContext *context;
+}
 @property (weak, nonatomic) IBOutlet UIWebView *groupWebView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *webDisBottom;
 
@@ -19,6 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.groupWebView.scrollView.bounces = NO;
+      self.groupWebView.delegate = self;
     [self.groupWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.88.193:18086/app/circle/index"]]];
     [self setWebView];
 }
@@ -29,6 +33,46 @@
     }else{
         self.webDisBottom.constant = 44;
     }
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    context = [webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
+    context[@"appObj"] = self;
+    
+    context.exceptionHandler = ^(JSContext *context, JSValue *exceptionValue) {
+        context.exception = exceptionValue;
+    };
+    [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitUserSelect='none';"];
+    [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitTouchCallout='none';"];
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    context = [webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
+    context[@"appObj"] = self;
+    context.exceptionHandler = ^(JSContext *context, JSValue *exceptionValue) {
+        context.exception = exceptionValue;
+    };
+    [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitUserSelect='none';"];
+    [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitTouchCallout='none';"];
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    NSURL *URL = request.URL;
+    NSString *scheme = [NSString stringWithFormat:@"%@",URL];
+    return YES;
+}
+
+#pragma JSObjcDelegate
+-(void)telPhone{
+    //    [self showPromptText:code hideAfterDelay:1.8];
+     [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"tel://4006005558"]];
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//       
+//       
+//    });
 }
 
 - (void)didReceiveMemoryWarning {
