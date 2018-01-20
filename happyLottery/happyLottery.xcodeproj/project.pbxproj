@@ -802,6 +802,7 @@
 		F9FDFAE82012F70F0029ACC7 /* netWorkHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FDFAE62012F70E0029ACC7 /* netWorkHelper.m */; };
 		F9FDFAEC2012F8DC0029ACC7 /* VersionUpdatingPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9FDFAE92012F8DB0029ACC7 /* VersionUpdatingPopView.xib */; };
 		F9FDFAED2012F8DC0029ACC7 /* VersionUpdatingPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FDFAEB2012F8DC0029ACC7 /* VersionUpdatingPopView.m */; };
+		F9FDFAEF2013223F0029ACC7 /* msg_come.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F9FDFAEE2013223E0029ACC7 /* msg_come.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1886,6 +1887,7 @@
 		F9FDFAE92012F8DB0029ACC7 /* VersionUpdatingPopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VersionUpdatingPopView.xib; sourceTree = "<group>"; };
 		F9FDFAEA2012F8DB0029ACC7 /* VersionUpdatingPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionUpdatingPopView.h; sourceTree = "<group>"; };
 		F9FDFAEB2012F8DC0029ACC7 /* VersionUpdatingPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionUpdatingPopView.m; sourceTree = "<group>"; };
+		F9FDFAEE2013223E0029ACC7 /* msg_come.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = msg_come.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2454,6 +2456,7 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				F9FDFAEE2013223E0029ACC7 /* msg_come.mp3 */,
 				F9C3BA1920088E2600916F3C /* feedback */,
 				F94770B82007065F0091729E /* Introduction to football games Html */,
 				F92D03E42005F39600C26E7A /* myhelp */,
@@ -4321,6 +4324,7 @@
 				2D0600291FFDCD9F009E7568 /* MJRefresh.bundle in Resources */,
 				F94770C2200706BC0091729E /* jingcaizuqiu_rangqiushengpingfu.html in Resources */,
 				2D4B1E8E1FDF684E0034B708 /* yucezhanji@3x.png in Resources */,
+				F9FDFAEF2013223F0029ACC7 /* msg_come.mp3 in Resources */,
 				2D4B1E431FDF65480034B708 /* HomeMenuItemsConfig.plist in Resources */,
 				F9D7C54F20060C1A00415B4E /* CouponGuidViewController.xib in Resources */,
 				2D4B1E8F1FDF684E0034B708 /* yuyuefangan@2x.png in Resources */,

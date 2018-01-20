@@ -187,6 +187,7 @@
     NSString *type = notice.type;
     if ([type isEqualToString:@"APP"]) {
           NSString *pageCode=notice.thumbnailCode;
+        [self goToYunshiWithInfo:notice];
     }else if ([type isEqualToString:@"H5PAGE"]) {
       
     }else if ([type isEqualToString:@"TEXT"]) {
@@ -201,6 +202,39 @@
     }
   
    
+}
+
+
+-(void)goToYunshiWithInfo:(Notice *)itemIndex{
+    NSString *keyStr = itemIndex.thumbnailCode;
+    
+    if (keyStr == nil) {
+        return;
+    }
+    
+    if (itemIndex.status!= nil) {
+        if ([itemIndex.status isEqualToString:@"ENABLE"] && self.curUser.isLogin == NO) {
+            [self needLogin];
+            return;
+        }
+    }
+    BaseViewController *baseVC;
+    NSDictionary * vcDic = [NSDictionary dictionaryWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"pageCodeConfig" ofType:@"plist"]];
+    if (keyStr == nil || [keyStr isEqualToString:@""]) {
+        return;
+    }
+    NSString *vcName = vcDic[keyStr];
+    if (vcName==nil) {
+        return;
+    }
+    Class class = NSClassFromString(vcName);
+    
+    baseVC =[[class alloc] init];
+    
+    
+    baseVC.hidesBottomBarWhenPushed = YES;
+    
+    [self.navigationController pushViewController:baseVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
