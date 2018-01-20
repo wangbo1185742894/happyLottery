@@ -189,8 +189,8 @@
 
     if ([self .fmdb open]) {
         BOOL iscreate = [self.fmdb executeUpdate:@"create table if not exists t_user_info(id integer primary key, cardCode text, mobile text ,loginPwd text, isLogin text,payVerifyType text)"];
-        BOOL iscreateMatch = [self.fmdb executeUpdate:@"create table if not exists t_collect_match(id integer primary key, cardCode text,matchKey text)"];
-        if (iscreate && iscreateMatch) {
+        BOOL resultVC = [self.fmdb executeUpdate:@"create table if not exists vcUserActiveInfo(id integer primary key autoincrement, vcNo text,updateDate text, visitCount integer , visitTime integer)"];
+        if (iscreate && resultVC) {
             [self.fmdb close];
         }
     }

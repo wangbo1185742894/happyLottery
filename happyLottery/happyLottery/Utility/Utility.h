@@ -59,7 +59,7 @@
 +(double)timeintervalForDate : (NSDate *)date;
 + (NSString *)weekDayGetForTimeString:(NSString *)time;
 + (NSString*) JsonFromId: (id) obj;
-
++(BOOL)isIOS11After;
 +(BOOL)isIphoneX;
 + (NSString *)weekDayGetForTimeDate:(NSDate *)date;
 + (NSString*)iphoneType;

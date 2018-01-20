@@ -18,7 +18,7 @@
 #import "YuCeSchemeCreateViewController.h"
 #import "WBHomeJCYCViewController.h"
 #import "WBBifenZhiboViewController.h"
-
+#import "HomeJumpViewController.h"
 #import "UMChongZhiViewController.h"
 #import "LoadData.h"
 #import "NewsModel.h"
@@ -71,6 +71,17 @@
     [self setMenu];
     [self setNewsView];
     [self setTableView];
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self getJczqShortcut];
+    [self loadAdsImg];
+    [self loadNews];
+    [self getJczqShortcut];
+    self.navigationController.navigationBar.hidden = YES;
+    
     
 }
 
@@ -156,15 +167,13 @@
 
 -(void)gotJczqShortcut:(NSArray *)dataArray errorMsg:(NSString *)msg{
     
-    if (self.curUser.isLogin) {
-         [self getCollected];
-    }
+   
     
     if (dataArray == nil) {
         [self showPromptText:msg hideAfterDelay:1.7];
         return;
     }
-    
+    [JczqShortcutList removeAllObjects];
     for (NSDictionary* infoDic in dataArray) {
         JczqShortcutModel *model =  [[JczqShortcutModel alloc]initWith:infoDic];
         [JczqShortcutList addObject:model];
@@ -178,7 +187,11 @@
     }
     homeViewHeight.constant = height;
     tabForecastListHeight.constant = tabForecaseList.rowHeight * JczqShortcutList.count;
-    [tabForecaseList reloadData];
+    if (self.curUser.isLogin) {
+        [self getCollected];
+    }else{
+        [tabForecaseList reloadData];
+    }
     
 }
 
@@ -278,7 +291,6 @@
 -(void)adsImgViewClick:(ADSModel *)itemIndex{
     NSString *jumpType;
     
-    return;
     
     if (itemIndex.imageContentType != nil) {
         
@@ -295,11 +307,11 @@
         [self goToYunshiWithInfo:itemIndex];
         
     }else if([jumpType isEqualToString:@"EDITOR"]||[jumpType isEqualToString:@"H5PAGE"]){
-//        HomeJumpViewController *jumpVC = [[HomeJumpViewController alloc] initWithNibName:@"HomeJumpViewController" bundle:nil];
-//
-//        jumpVC.info = info;
-//        jumpVC.hidesBottomBarWhenPushed = YES;
-//        [self.navigationController pushViewController:jumpVC animated:YES];
+        HomeJumpViewController *jumpVC = [[HomeJumpViewController alloc] initWithNibName:@"HomeJumpViewController" bundle:nil];
+
+        jumpVC.infoModel = itemIndex;
+        jumpVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:jumpVC animated:YES];
     }
 }
 
@@ -308,16 +320,6 @@
     
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    [self getJczqShortcut];
-    [self loadAdsImg];
-    [self loadNews];
-    [self getJczqShortcut];
-    self.navigationController.navigationBar.hidden = YES;
-    
-    
-}
 
 -(void)viewWillDisappear:(BOOL)animated{
     

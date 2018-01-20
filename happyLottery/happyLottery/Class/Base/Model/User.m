@@ -37,4 +37,8 @@
     return PayVerifyTypeAlwaysNo;
 }
 
+-(NSString *)totalBanlece{
+    return [NSString stringWithFormat:@"%.2f",[self.balance doubleValue] + [self.sendBalance doubleValue] + [self .notCash doubleValue]];
+}
+
 @end

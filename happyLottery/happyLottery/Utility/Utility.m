@@ -131,6 +131,24 @@
     
 }
 
++(BOOL)isIOS11After{
+    NSString *osVersionStr = [[UIDevice currentDevice] systemVersion];
+    if ([osVersionStr floatValue] < 11.0) {
+        return YES;
+    }else{
+        return NO;
+    }
+}
+
++(BOOL)isIOS10Later{
+    NSString *osVersionStr = [[UIDevice currentDevice] systemVersion];
+    if ([osVersionStr floatValue] > 10.0 || [osVersionStr floatValue] == 10.0) {
+        return YES;
+    }else{
+        return NO;
+    }
+}
+
 +(BOOL)isIOS11Later{
     NSString *osVersionStr = [[UIDevice currentDevice] systemVersion];
     if ([osVersionStr floatValue] > 11.0 || [osVersionStr floatValue] == 11.0) {

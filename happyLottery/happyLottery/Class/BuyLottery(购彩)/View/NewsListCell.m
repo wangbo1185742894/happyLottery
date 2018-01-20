@@ -43,8 +43,7 @@
     return self;
 }
 - (IBAction)actionCollect:(UIButton *)sender {
-    self.model.isCollect = !self.model.isCollect;
-    [self.delegate newScollectMatch:self.model andIsSelect:self.model.isCollect ];
+    [self.delegate newScollectMatch:self.model andIsSelect:!self.btnCollection.selected ];
 }
 
 

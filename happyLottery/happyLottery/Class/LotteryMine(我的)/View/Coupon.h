@@ -20,6 +20,6 @@
 @property(nonatomic,strong)NSString* useTime;
 @property(nonatomic,strong)NSString * subOrderNo;
 @property(nonatomic,strong)NSString *remark;
-
+@property(assign,nonatomic)BOOL isSelect;
 
 @end
