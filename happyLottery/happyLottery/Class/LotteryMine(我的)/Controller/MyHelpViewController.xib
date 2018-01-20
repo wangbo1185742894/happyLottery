@@ -22,8 +22,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="szg-ac-ykd">
-                    <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="szg-ac-ykd">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P04-ey-P1M">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
@@ -207,9 +207,8 @@
                                         <constraint firstAttribute="width" constant="8" id="vRp-3e-hhd"/>
                                     </constraints>
                                 </imageView>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pJs-QG-MHf">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_45.png" translatesAutoresizingMaskIntoConstraints="NO" id="pJs-QG-MHf">
                                     <rect key="frame" x="165" y="476" width="45" height="45"/>
-                                    <color key="backgroundColor" red="0.067504443230000002" green="0.78096091749999996" blue="0.57203906770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="45" id="MLg-RX-pJh"/>
                                         <constraint firstAttribute="height" constant="45" id="Wq3-0A-F3Q"/>
@@ -275,7 +274,7 @@
                                 <constraint firstItem="2Og-h0-FHO" firstAttribute="top" secondItem="9nP-gZ-f82" secondAttribute="bottom" constant="1" id="xZv-nF-bkI"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="客服热线：400-668-0778" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ja4-kI-pk2">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="客服热线：400-600-5558" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ja4-kI-pk2">
                             <rect key="frame" x="49" y="537" width="276" height="33"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="33" id="ayR-Bh-3PV"/>
@@ -303,7 +302,7 @@
                 <constraint firstItem="szg-ac-ykd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="1az-Wc-zma"/>
                 <constraint firstAttribute="bottom" secondItem="szg-ac-ykd" secondAttribute="bottom" id="4Dr-JK-ho7"/>
                 <constraint firstAttribute="trailing" secondItem="szg-ac-ykd" secondAttribute="trailing" id="89t-3F-OAZ"/>
-                <constraint firstItem="szg-ac-ykd" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="A1V-T4-NF7"/>
+                <constraint firstItem="szg-ac-ykd" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="A1V-T4-NF7"/>
                 <constraint firstItem="szg-ac-ykd" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="VTT-ZR-kv6"/>
             </constraints>
             <point key="canvasLocation" x="35.5" y="53.5"/>
@@ -313,6 +312,7 @@
         <image name="arrowshelp.png" width="8" height="15"/>
         <image name="assisthelp.png" width="16" height="18"/>
         <image name="integralhelp.png" width="17" height="19"/>
+        <image name="logo_45.png" width="22" height="22"/>
         <image name="lotteryhelp.png" width="18" height="18"/>
     </resources>
 </document>

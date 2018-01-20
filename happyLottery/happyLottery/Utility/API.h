@@ -29,7 +29,7 @@
 //杨芳
 //#define WSServerURL @"http://192.168.88.109:28000/services%@"
 
-
+#define APPUPDATAURL @"http://t.11max.com/altc/"
 
 
 

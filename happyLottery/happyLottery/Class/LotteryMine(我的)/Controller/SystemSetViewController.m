@@ -9,8 +9,11 @@
 #import "SystemSetViewController.h"
 #import "AboutViewController.h"
 #import "JPUSHService.h"
+#import "netWorkHelper.h"
+#import "VersionUpdatingPopView.h"
+#import "AppDelegate.h"
 
-@interface SystemSetViewController ()
+@interface SystemSetViewController ()<NetWorkingHelperDelegate,VersionUpdatingPopViewDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottom;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
 @property (weak, nonatomic) IBOutlet UISwitch *switch2;
@@ -32,13 +35,103 @@
 }
 
 - (IBAction)switch2Click:(id)sender {
+    AppDelegate *myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    if (_switch2.on) {
+        [myDelegate.Dic setObject:@"MsgMusicOpen" forKey:@"MsgMusicSwitch"];
+    }else{
+        [myDelegate.Dic setObject:@"MsgMusicOff" forKey:@"MsgMusicSwitch"];
+    }
+    
+    [self saveNSUserDefaults:myDelegate.Dic];
+    [myDelegate playSound];
 }
 - (IBAction)aboutBtnClick:(id)sender {
     AboutViewController *ab = [[AboutViewController alloc]init];
     [self.navigationController pushViewController:ab animated:YES];
 }
 - (IBAction)versionBtnClick:(id)sender {
+    [self checkUpdateNetWork];
+}
 
+#pragma mark 将设置存储在本地
+-(void)saveNSUserDefaults:(NSMutableDictionary *)Dictionary
+{
+    AppDelegate *myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    if(Dictionary.count)
+    {
+        [myDelegate.userDefaultes setObject:Dictionary forKey:@"MutableDict"];
+        [myDelegate.userDefaultes synchronize];
+    }
+}
+
+-(void)winSwitchupdateAtIndexPath:(id)event {
+    AppDelegate *myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+
+    if (_switch2.on) {
+        [myDelegate.Dic setObject:@"WinnoticeOpen" forKey:@"winnoticeradioSwitch"];
+    }else{
+        [myDelegate.Dic setObject:@"WinnoticeOff" forKey:@"winnoticeradioSwitch"];
+    }
+    
+    [self saveNSUserDefaults:myDelegate.Dic];
+    
+}
+
+#pragma  mark - checkUpdateNetWork
+- (void)checkUpdateNetWork {
+    NSString *version = @"release";
+    NSString * string = [NSString stringWithFormat:@"http://ct.11max.com/ClientVersion/CheckUpdate?versionCode=%@&mobileos=ios&appname=com.xaonly.tbz.ios",version];
+    netWorkHelper *helper = [[netWorkHelper alloc] init];
+    [helper getRequestMethodWithUrlstring:string parameter:nil];
+    helper.delegate = self;
+}
+
+
+#pragma mark - netWorkHelperDelegate
+-(void)passValueWithDic:(NSDictionary *)value{
+    if([value isKindOfClass:[NSDictionary class]])
+    {
+        if ([value[@"ForceUpgrade"] isEqualToString:@"true"]) {
+            
+            
+            //            ZLAlertView *alert = [[ZLAlertView alloc] initWithTitle:@"更新提示" message:value[@"VersionDesc"]];
+            //            [alert addBtnTitle:@"立即更新" action:^{
+            //                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:APPUPDATAURL]];
+            //            }];
+            //
+            //            [alert showAlertWithSender:self];
+            VersionUpdatingPopView *vuView = [[VersionUpdatingPopView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+            vuView.delegate = self;
+            vuView.guanbibtn.userInteractionEnabled = NO;
+            vuView.xiaochachaBtn.hidden = YES;
+            vuView.content.text = value[@"VersionDesc"];
+            [[UIApplication sharedApplication].keyWindow addSubview:vuView];
+        }else
+        {
+            
+            //            ZLAlertView *alert = [[ZLAlertView alloc] initWithTitle:@"更新提示" message:value[@"VersionDesc"]];
+            //            [alert addBtnTitle:@"立即更新" action:^{
+            //                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:APPUPDATAURL]];
+            //            }];
+            //            [alert addBtnTitle:@"以后再说" action:^{
+            //
+            //            }];
+            //
+            //            [alert showAlertWithSender:self];
+            VersionUpdatingPopView *vuView = [[VersionUpdatingPopView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+            vuView.delegate = self;
+            vuView.content.text = value[@"VersionDesc"];
+            [[UIApplication sharedApplication].keyWindow addSubview:vuView];
+        }
+    }
+    else
+    {
+        [self showPromptText:@"当前版本为最新版本!" hideAfterDelay:1.7];
+    }
+}
+
+- (void)lijigenxin{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:APPUPDATAURL]];
 }
 //退出登录
 - (IBAction)quitBtnClick:(id)sender {

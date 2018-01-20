@@ -34,7 +34,7 @@
                     <subviews>
                         <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Pd-Dn-eEv">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
-                            <color key="backgroundColor" red="0.067504443230000002" green="0.78096091749999996" blue="0.57203906770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </webView>
                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sHV-6G-eZv">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="135"/>

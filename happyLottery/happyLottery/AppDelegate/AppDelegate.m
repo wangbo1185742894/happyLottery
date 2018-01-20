@@ -30,6 +30,9 @@
 #define KEYAPPVERSION @"appVersion"
 #define KEYCURAPPVERSION @"CFBundleShortVersionString"
 
+#import <AudioToolbox/AudioToolbox.h>//添加推送声音lala
+
+
 @interface AppDelegate ()<NewFeatureViewDelegate,MemberManagerDelegate,JPUSHRegisterDelegate>
 {
     UITabBarController *tabBarControllerMain;
@@ -42,6 +45,7 @@
 
 @property(nonatomic,strong)FMDatabase* fmdb;
 @end
+static SystemSoundID shake_sound_male_id = 0;
 
 @implementation AppDelegate
 
@@ -228,6 +232,27 @@
     _window.rootViewController = newFeatureVC;
     
 }
+
+-(void) playSound
+{
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"msg_come" ofType:@"mp3"];
+    
+    if (path) {
+        //注册声音到系统
+        AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:path],&shake_sound_male_id);
+        //        AudioServicesPlaySystemSound(shake_sound_male_id);
+        //AudioServicesPlaySystemSound(shake_sound_male_id);//如果无法再下面播放，可以尝试在此播放
+    }
+    
+    NSString *myString =  [self.Dic objectForKey:@"MsgMusicSwitch"];
+    if([myString isEqualToString:@"MsgMusicOpen"]){
+        AudioServicesPlaySystemSound(shake_sound_male_id);   //播放注册的声音，（此句代码，可以在本类中的任意位置调用，不限于本方法中）
+    }else{
+        ;
+    }
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);   //让手机震动
+}
+
 
 - (void) loadTabVC {
     

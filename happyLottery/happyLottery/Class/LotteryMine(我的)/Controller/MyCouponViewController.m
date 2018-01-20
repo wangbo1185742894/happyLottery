@@ -69,7 +69,7 @@
         case 0:
             self.tableView1.hidden=NO;
             self.tableView2.hidden=YES;
-            
+             [listUseCouponArray removeAllObjects];
             [listUnUseCouponArray removeAllObjects];
             //[self getCouponByStateClient:@"true"];
             page=1;
@@ -80,6 +80,7 @@
             self.tableView1.hidden=YES;
             page=1;
             [listUseCouponArray removeAllObjects];
+            [listUnUseCouponArray removeAllObjects];
 //            [self getCouponByStateClient:@"false"];
               [self initRefresh2];
             break;
@@ -302,7 +303,7 @@
              NSString *deduction =coupon.deduction;
             cell.priceLab.text = deduction;
             cell.nameLab.text =[NSString stringWithFormat:@"¥%@元优惠券",deduction];
-         
+            cell.countLab.text = coupon.count;
 
             cell.sourceLab.text = [NSString stringWithFormat:@"来源：%@",coupon.couponSource];
             cell.dateLab.text = [NSString stringWithFormat:@"截止时间：%@",coupon.invalidTime];
@@ -324,7 +325,8 @@
             cell.yuanLab.textColor =[UIColor lightGrayColor];
             NSString *status =coupon.status;
             NSString *sourecs;
-         
+           cell.countLab.text = coupon.count;
+            cell.countLab.textColor=[UIColor blackColor];
             cell.sourceLab.text = [NSString stringWithFormat:@"来源：%@",coupon.couponSource];
             cell.dateLab.text = [NSString stringWithFormat:@"截止时间：%@",coupon.invalidTime];
             cell.descriptionLab.text=[NSString stringWithFormat:@"单笔订单满%@可用",coupon.quota];

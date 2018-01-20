@@ -8,6 +8,7 @@
 
 #import "User.h"
 #import "FMDatabase.h"
+#import <AudioToolbox/AudioToolbox.h>//添加推送声音lala
 
 @interface User()
    @property(nonatomic,strong)FMDatabase* fmdb;
@@ -40,5 +41,6 @@
 -(NSString *)totalBanlece{
     return [NSString stringWithFormat:@"%.2f",[self.balance doubleValue] + [self.sendBalance doubleValue] + [self .notCash doubleValue]];
 }
+
 
 @end

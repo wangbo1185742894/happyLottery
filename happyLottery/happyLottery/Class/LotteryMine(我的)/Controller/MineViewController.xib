@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -107,7 +107,10 @@
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sO0-Mz-jY7">
                                     <rect key="frame" x="125" y="0.0" width="125" height="66"/>
-                                    <inset key="contentEdgeInsets" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="66" id="YID-ic-JZD"/>
+                                    </constraints>
+                                    <inset key="contentEdgeInsets" minX="2" minY="20" maxX="0.0" maxY="0.0"/>
                                     <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <state key="normal" title="积分（分）" image="integral.png">
                                         <color key="titleColor" red="0.53725490200000003" green="0.53725490200000003" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -127,14 +130,17 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Kw-f5-ZTp">
-                                    <rect key="frame" x="125" y="9" width="125" height="22"/>
+                                    <rect key="frame" x="125" y="13" width="125" height="18"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2R9-DO-gvq">
                                     <rect key="frame" x="250" y="0.0" width="125" height="66"/>
-                                    <inset key="contentEdgeInsets" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="66" id="Kfs-Y4-J5h"/>
+                                    </constraints>
+                                    <inset key="contentEdgeInsets" minX="2" minY="20" maxX="0.0" maxY="0.0"/>
                                     <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <state key="normal" title="礼券（张）" image="ticket.png">
                                         <color key="titleColor" red="0.53725490200000003" green="0.53725490200000003" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -154,7 +160,10 @@
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E6j-k7-LS0">
                                     <rect key="frame" x="0.0" y="0.0" width="125" height="66"/>
-                                    <inset key="contentEdgeInsets" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="66" id="cKg-YS-p4o"/>
+                                    </constraints>
+                                    <inset key="contentEdgeInsets" minX="2" minY="20" maxX="0.0" maxY="0.0"/>
                                     <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <state key="normal" title="余额（元）" image="balance.png">
                                         <color key="titleColor" red="0.53725490196078429" green="0.53725490196078429" blue="0.53725490196078429" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -184,7 +193,6 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="UoB-tJ-jh8" firstAttribute="leading" secondItem="sO0-Mz-jY7" secondAttribute="trailing" id="03B-93-cI1"/>
-                                <constraint firstItem="UoB-tJ-jh8" firstAttribute="top" secondItem="ut7-e6-ow1" secondAttribute="top" constant="10" id="1fK-if-2hN"/>
                                 <constraint firstItem="E6j-k7-LS0" firstAttribute="leading" secondItem="ut7-e6-ow1" secondAttribute="leading" id="3AW-l6-TFL"/>
                                 <constraint firstItem="E6j-k7-LS0" firstAttribute="baseline" secondItem="2R9-DO-gvq" secondAttribute="baseline" id="4tk-Yj-iUd"/>
                                 <constraint firstItem="2Kw-f5-ZTp" firstAttribute="baseline" secondItem="hRu-RF-G1I" secondAttribute="baseline" id="7rx-Do-l71"/>
@@ -200,7 +208,6 @@
                                 <constraint firstItem="2R9-DO-gvq" firstAttribute="leading" secondItem="sO0-Mz-jY7" secondAttribute="trailing" id="acN-Oo-TGo"/>
                                 <constraint firstItem="iwZ-xu-gbf" firstAttribute="top" secondItem="ut7-e6-ow1" secondAttribute="top" constant="8" id="dpb-jg-9Zv"/>
                                 <constraint firstItem="2R9-DO-gvq" firstAttribute="leading" secondItem="2Kw-f5-ZTp" secondAttribute="trailing" id="fJ9-MU-DAj"/>
-                                <constraint firstItem="2Kw-f5-ZTp" firstAttribute="firstBaseline" secondItem="hRu-RF-G1I" secondAttribute="firstBaseline" id="fnz-gh-f8g"/>
                                 <constraint firstItem="UoB-tJ-jh8" firstAttribute="width" secondItem="hRu-RF-G1I" secondAttribute="width" id="hbf-Wo-tRs"/>
                                 <constraint firstItem="sO0-Mz-jY7" firstAttribute="width" secondItem="E6j-k7-LS0" secondAttribute="width" id="jzr-QH-DNx"/>
                                 <constraint firstItem="hRu-RF-G1I" firstAttribute="top" secondItem="ut7-e6-ow1" secondAttribute="top" constant="10" id="lBV-Ke-s7d"/>
@@ -212,6 +219,7 @@
                                 <constraint firstItem="sO0-Mz-jY7" firstAttribute="leading" secondItem="g8r-1F-mg3" secondAttribute="trailing" id="vfg-2Y-rKD"/>
                                 <constraint firstItem="2R9-DO-gvq" firstAttribute="height" secondItem="E6j-k7-LS0" secondAttribute="height" id="x7w-VJ-MYI"/>
                                 <constraint firstAttribute="bottom" secondItem="E6j-k7-LS0" secondAttribute="bottom" id="xUQ-2u-jDQ"/>
+                                <constraint firstItem="UoB-tJ-jh8" firstAttribute="top" secondItem="hRu-RF-G1I" secondAttribute="top" id="yo1-w7-lzM"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kk5-rP-XGf">

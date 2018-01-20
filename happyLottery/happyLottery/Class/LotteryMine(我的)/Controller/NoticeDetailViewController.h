@@ -7,7 +7,8 @@
 //
 
 #import "BaseViewController.h"
+#import "Notice.h"
 
 @interface NoticeDetailViewController : BaseViewController
-
+@property (weak, nonatomic)  Notice *notice;
 @end

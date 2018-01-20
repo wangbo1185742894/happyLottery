@@ -34,7 +34,7 @@
 //        self.answerLab.text=model.replyContent;
 //    }else{
 //          [self.answerBtn setBackgroundImage:[UIImage imageNamed:@"response.png"]  forState:UIControlStateNormal];
-//        self.answerLab.text = @"平台会尽快回复您，请您耐心等待，也可拨打客服电话400-668-0778";
+//        self.answerLab.text = @"平台会尽快回复您，请您耐心等待，也可拨打客服电话400-600-5558";
 //        
 //    }
 //}
