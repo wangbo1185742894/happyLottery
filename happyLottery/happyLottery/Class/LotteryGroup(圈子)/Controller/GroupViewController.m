@@ -68,11 +68,11 @@
 #pragma JSObjcDelegate
 -(void)telPhone{
     //    [self showPromptText:code hideAfterDelay:1.8];
-     [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"tel://4006005558"]];
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//       
-//       
-//    });
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+       [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"tel://4006005558"]];
+       
+    });
 }
 
 - (void)didReceiveMemoryWarning {
