@@ -9,6 +9,7 @@
 #import "BaseViewController.h"
 #import <arpa/inet.h>
 #import <netdb.h>
+#import "AppDelegate.h"
 #import "LoginViewController.h"
 
 
@@ -26,6 +27,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    AppDelegate *delegate  = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    delegate.curNavVC = self.navigationController;
     self.view.mj_w = KscreenWidth;
     self.view.mj_h = KscreenHeight;
     self.memberMan = [[MemberManager alloc]init];
@@ -36,7 +39,6 @@
     NSString *fileName=[doc stringByAppendingPathComponent:@"userInfo.sqlite"];
     self.fmdb =[FMDatabase databaseWithPath:fileName];
 
-    
 }
 
 -(User *)curUser{

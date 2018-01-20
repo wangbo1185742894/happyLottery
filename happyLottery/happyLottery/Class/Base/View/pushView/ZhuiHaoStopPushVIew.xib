@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ZhuiHaoStopPushVIew">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DWe-K7-mvm">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <connections>
+                        <action selector="actionColse:" destination="iN0-l3-epB" eventType="touchUpInside" id="Iyp-ls-9ZP"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trophy.png" translatesAutoresizingMaskIntoConstraints="NO" id="xmi-IF-vSS">
+                    <rect key="frame" x="102.5" y="128" width="170" height="190"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="170" id="JaP-xh-Lgy"/>
+                        <constraint firstAttribute="height" constant="190" id="URM-fZ-Xta"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="etn-7d-OcS">
+                    <rect key="frame" x="320" y="128" width="35" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="35" id="LNm-DI-dEO"/>
+                        <constraint firstAttribute="height" constant="35" id="taQ-Ya-n7C"/>
+                    </constraints>
+                    <state key="normal" image="turnoff.png"/>
+                    <connections>
+                        <action selector="actionColse:" destination="iN0-l3-epB" eventType="touchUpInside" id="dG4-et-2u1"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mcb-2V-zw0">
+                    <rect key="frame" x="62.5" y="446" width="250" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="Q6K-pR-Yjx"/>
+                        <constraint firstAttribute="width" constant="250" id="voV-y6-v3r"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <state key="normal" title="立即查看" backgroundImage="button_trophy.png"/>
+                    <connections>
+                        <action selector="actionToDetail:" destination="iN0-l3-epB" eventType="touchUpInside" id="YpI-gV-cyM"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="恭喜中奖，智能追号自动停追" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Co2-WD-N2S">
+                    <rect key="frame" x="10" y="378" width="355" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="gjC-hP-Eud"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <color key="textColor" red="1" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="中奖啦" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jCk-ya-9bf">
+                    <rect key="frame" x="10" y="328" width="355" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="UdW-g1-Gqf"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="37"/>
+                    <color key="textColor" red="1" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <constraints>
+                <constraint firstItem="DWe-K7-mvm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="2R6-pa-Gcg"/>
+                <constraint firstAttribute="trailing" secondItem="jCk-ya-9bf" secondAttribute="trailing" constant="10" id="Da5-bg-xYt"/>
+                <constraint firstItem="etn-7d-OcS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="128" id="FGP-54-DLD"/>
+                <constraint firstItem="jCk-ya-9bf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="H1T-Qf-0J4"/>
+                <constraint firstItem="mcb-2V-zw0" firstAttribute="top" secondItem="Co2-WD-N2S" secondAttribute="bottom" constant="8" id="IDN-Xo-t02"/>
+                <constraint firstAttribute="bottom" secondItem="DWe-K7-mvm" secondAttribute="bottom" id="Ivb-qp-j6R"/>
+                <constraint firstItem="mcb-2V-zw0" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="KFD-CU-5FT"/>
+                <constraint firstItem="DWe-K7-mvm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Lqx-NL-1gt"/>
+                <constraint firstItem="Co2-WD-N2S" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="Vz2-TQ-87x"/>
+                <constraint firstItem="jCk-ya-9bf" firstAttribute="top" secondItem="xmi-IF-vSS" secondAttribute="bottom" constant="10" id="ZcU-Ez-cR3"/>
+                <constraint firstItem="xmi-IF-vSS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="128" id="bQU-Kk-Mdv"/>
+                <constraint firstItem="Co2-WD-N2S" firstAttribute="top" secondItem="jCk-ya-9bf" secondAttribute="bottom" constant="10" id="eRO-Z2-fsq"/>
+                <constraint firstItem="xmi-IF-vSS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="f9n-5n-bnw"/>
+                <constraint firstAttribute="trailing" secondItem="Co2-WD-N2S" secondAttribute="trailing" constant="10" id="lzV-Mw-6ZX"/>
+                <constraint firstAttribute="trailing" secondItem="DWe-K7-mvm" secondAttribute="trailing" id="viM-vA-LFF"/>
+                <constraint firstAttribute="trailing" secondItem="etn-7d-OcS" secondAttribute="trailing" constant="20" id="xEE-oQ-Nyd"/>
+            </constraints>
+            <connections>
+                <outlet property="imgBack" destination="xmi-IF-vSS" id="kco-QM-ngL"/>
+                <outlet property="labContent" destination="Co2-WD-N2S" id="KAh-b3-OIR"/>
+                <outlet property="labTitle" destination="jCk-ya-9bf" id="poW-Kv-NLl"/>
+            </connections>
+            <point key="canvasLocation" x="35.5" y="54.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="button_trophy.png" width="278" height="43"/>
+        <image name="trophy.png" width="156" height="180"/>
+        <image name="turnoff.png" width="29" height="29"/>
+    </resources>
+</document>

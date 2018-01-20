@@ -31,7 +31,7 @@
     
     self.faxianWebView.scrollView.bounces = NO;
     self.faxianWebView.delegate = self;
-    [self.faxianWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.88.193:18086/app/find/index"]]];
+    [self.faxianWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/app/find/index",H5BaseAddress]]]];
     [self setWebView];
 }
 
@@ -191,14 +191,12 @@
 }
 
 -(NSString *)getCardCode{
-    [self showPromptText:@"getCardCode来啦" hideAfterDelay:1.9];
-    
     return self.curUser.cardCode;
     
 }
 
 -(void)goToLogin{
-    [self showPromptText:@"goToLogin来啦" hideAfterDelay:1.9];
+    [self needLogin];
 }
 
 @end

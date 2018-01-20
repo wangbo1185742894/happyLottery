@@ -10,7 +10,7 @@
 #import "MemberManager.h"
 #import "LotteryManager.h"
 #import "FMDB.h"
-
+#import "AppDelegate.h"
 @interface BaseViewController : UIViewController
 @property (nonatomic ,strong)NSString *viewControllerNo;
 @property (nonatomic,strong)MemberManager * memberMan;

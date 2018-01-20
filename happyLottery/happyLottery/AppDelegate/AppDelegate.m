@@ -27,6 +27,10 @@
 //新浪微博SDK头文件
 #import "WeiboSDK.h"
 
+#import "ZhuiHaoStopPushVIew.h"
+
+#import "MyOrderListViewController.h"
+
 #define KEYAPPVERSION @"appVersion"
 #define KEYCURAPPVERSION @"CFBundleShortVersionString"
 
@@ -41,6 +45,7 @@
     NSString * curVersion; //当前版本号
     MemberManager *memberMan;
     NSMutableArray *_messageContents;
+    ZhuiHaoStopPushVIew *winPushView;
 }
 
 @property(nonatomic,strong)FMDatabase* fmdb;
@@ -55,12 +60,13 @@ static SystemSoundID shake_sound_male_id = 0;
     NSString *doc=[NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString *fileName=[doc stringByAppendingPathComponent:@"userInfo.sqlite"];
     self.fmdb =[FMDatabase databaseWithPath:fileName];
+  
+    
     memberMan = [[MemberManager alloc]init];
     memberMan.delegate = self;
      _messageContents = [[NSMutableArray alloc] initWithCapacity:6];
     [self setKeyWindow];
     [self initJpush];
-    
     [self setNewFeature];
     [self dataSave];
     [self autoLogin];
@@ -166,7 +172,7 @@ static SystemSoundID shake_sound_male_id = 0;
                  loginInfo = nil;
                 
             }
-             [memberMan loginCurUser:loginInfo];
+            [memberMan loginCurUser:loginInfo];
         }
     }
     [self.fmdb close];
@@ -194,7 +200,8 @@ static SystemSoundID shake_sound_male_id = 0;
     if ([self .fmdb open]) {
         BOOL iscreate = [self.fmdb executeUpdate:@"create table if not exists t_user_info(id integer primary key, cardCode text, mobile text ,loginPwd text, isLogin text,payVerifyType text)"];
         BOOL resultVC = [self.fmdb executeUpdate:@"create table if not exists vcUserActiveInfo(id integer primary key autoincrement, vcNo text,updateDate text, visitCount integer , visitTime integer)"];
-        if (iscreate && resultVC) {
+        BOOL resultMsgInfo = [self.fmdb executeUpdate:@"create table if not exists vcUserPushMsg(id integer primary key autoincrement, title text,content text, msgTime text,t1 text)"];
+        if (iscreate && resultVC && resultMsgInfo) {
             [self.fmdb close];
         }
     }
@@ -395,38 +402,38 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 - (void)networkDidReceiveMessage:(NSNotification *)notification {
     NSDictionary * userInfo = [notification userInfo];
-      NSString *title = [userInfo valueForKey:@"title"];
+    NSString *title = [userInfo valueForKey:@"title"];
     NSString *content = [userInfo valueForKey:@"content"];
     NSDictionary *extra = [userInfo valueForKey:@"extras"];
     NSString *customizeField1 = [extra valueForKey:@"customizeField1"]; //服务端传递的Extras附加字段，key是自己定义的
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     
-    [dateFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+      NSString *time = [Utility timeStringFromFormat:@"yyyy-MM-dd HH:mm:ss" withDate:[NSDate date]];
     
-    NSString *currentContent = [NSString
-                                stringWithFormat:
-                                @"收到自定义消息:%@\ntitle:%@\ncontent:%@\nextra:%@\n",
-                                [NSDateFormatter localizedStringFromDate:[NSDate date]
-                                                               dateStyle:NSDateFormatterNoStyle
-                                                               timeStyle:NSDateFormatterMediumStyle],
-                                title, content, [self logDic:extra]];
-    NSLog(@"%@", currentContent);
     
-    [_messageContents insertObject:currentContent atIndex:0];
+    if ([self.fmdb open]) {
+        BOOL result =  [self.fmdb executeUpdate:[NSString stringWithFormat:@"insert into vcUserPushMsg (title,content, time) values ('%@', '%@', '%@');",title,content,time]];
+        if (result) {
+            [self.fmdb close];
+        }
+    }
     
-    NSString *allContent = [NSString
-                            stringWithFormat:@"%@收到消息:\n%@\nextra:%@",
-                            [NSDateFormatter
-                             localizedStringFromDate:[NSDate date]
-                             dateStyle:NSDateFormatterNoStyle
-                             timeStyle:NSDateFormatterMediumStyle],
-                            [_messageContents componentsJoinedByString:nil],
-                            [self logDic:extra]];
-    
-//    _messageContentView.text = allContent;
-//    _messageCount++;
-//    [self reloadMessageCountLabel];
-//    
+    if ([extra[@"pageCode"] isEqualToString:@"A204"]) { //中奖推送
+        if (winPushView !=nil) {
+            [winPushView removeFromSuperview];
+            winPushView = nil;
+        }
+        BOOL isPlay = YES;//是否响声 
+        if (isPlay) {
+            [self playSound];
+        }
+        
+        winPushView = [[ZhuiHaoStopPushVIew alloc]initWithFrame:[UIScreen  mainScreen].bounds];
+        [winPushView refreshInfo:title andContent:content];
+        [[UIApplication sharedApplication].keyWindow addSubview:winPushView];
+    }else if ([extra[@"pageCode"] isEqualToString:@""]){
+        
+    }
 }
 
 // log NSSet with UTF8
@@ -462,6 +469,14 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
     // Required,For systems with less than or equal to iOS6
     [JPUSHService handleRemoteNotification:userInfo];
+}
+
+
+- (void)showZhuihaoDetail:(NSString*) ordernumber{
+    MyOrderListViewController * myOrderListVC = [[MyOrderListViewController alloc]init];
+    myOrderListVC.hidesBottomBarWhenPushed = YES;
+    AppDelegate *delegate  = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    [delegate.curNavVC pushViewController:myOrderListVC animated:YES];
 }
 
 @end
