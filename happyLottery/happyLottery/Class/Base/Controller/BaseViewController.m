@@ -1,4 +1,4 @@
-//
+ //
 //  BaseViewController.m
 //  happyLottery
 //
@@ -18,6 +18,8 @@
     MBProgressHUD *loadingView;
     UIView *loadingParentView;
 }
+@property(nonatomic,strong)NSDate *openDate;
+@property(nonatomic,strong)NSDate *closeDate;
 @end
 
 @implementation BaseViewController
@@ -63,7 +65,8 @@
 
 
 -(void)viewWillAppear:(BOOL)animated{
-    
+    [super viewWillAppear:animated];
+    self.openDate = [NSDate date];
     [self afnReachabilityTest];
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
@@ -272,6 +275,76 @@
     strJson = [strJson stringByReplacingOccurrencesOfString:@"\\" withString:@""];
     strJson = [strJson substringWithRange:NSMakeRange(1, strJson.length - 2)];
     return  [Utility objFromJson:strJson];
+}
+
+-(void)saveInfo{
+    //@"create table if not exists vcUserActiveInfo(id integer primary key, vcNo text,updateDate text, visitCount integer , visitTime integer)"
+    NSInteger visitTime = [self.closeDate timeIntervalSinceDate:self.openDate];
+    if (self.viewControllerNo == nil || self.viewControllerNo.length == 0) {
+        return;
+    }
+    if ([self.fmdb open]) {
+        
+        FMResultSet*  result = [self.fmdb executeQuery:@"select * from vcUserActiveInfo where vcNo = ?",self.viewControllerNo];
+        NSLog(@"%@",result);
+        BOOL issuccess = NO;
+        if ([result next]) {
+            NSInteger visitCount = 0;
+            NSInteger oldVisitTime = 0;
+            
+            visitCount = [result intForColumn:@"visitCount"];
+            oldVisitTime = [result intForColumn:@"visitTime"];
+            
+            issuccess= [self.fmdb executeUpdate:@"update vcUserActiveInfo set visitCount = ?,visitTime = ? where vcNo = ?",@(visitCount + 1) ,@(visitTime + oldVisitTime),self.viewControllerNo];
+        }else{
+            issuccess= [self.fmdb executeUpdate:@"insert into vcUserActiveInfo (vcNo,updateDate,visitCount,visitTime) values (?,?,?,?)",self.viewControllerNo,@"",@1,@(visitTime)];
+        }
+        [result close];
+        [self.fmdb close];
+    }
+}
+
+//{"code":"xxxxx", "visitCount":xxxxxx, "visitTime":xx, "source":"ios"}]
+-(void)uploadVisit{
+    if ([self.fmdb open]) {
+        FMResultSet*  result = [self.fmdb executeQuery:@"select * from vcUserActiveInfo"];
+        NSMutableArray *mVisitArray = [[NSMutableArray alloc]init];
+        while ([result next]) {
+            [mVisitArray addObject:@{@"code":[result stringForColumn:@"vcNo"] == nil?@"":[result stringForColumn:@"vcNo"],@"visitCount":@([result intForColumn:@"visitCount"]),@"visitTime":@([result intForColumn:@"visitTime"]),@"source":@"iOS"}];
+        }
+        //[self.memMan saveVisit:mVisitArray];
+        [result close];
+        [self.fmdb close];
+    }
+}
+
+-(void)saveVisited:(BOOL)issuccess{
+    
+    if (issuccess == YES) {
+        if ([self.fmdb open]) {
+            FMResultSet*  result = [self.fmdb executeQuery:@"select * from vcUserActiveInfo"];
+            while ([result next]) {
+                [self.fmdb executeUpdate:@"delete from vcUserActiveInfo where vcNo = ?",[result stringForColumn:@"vcNo"]];
+            }
+            [result close];
+            [self.fmdb close];
+        }
+    }
+}
+
+-(void)showAllInfo{
+    FMResultSet*  result = [self.fmdb executeQuery:@"select * from vcUserActiveInfo"];
+    while ([result next]) {
+        NSLog(@"%@",[NSString stringWithFormat:@"*************%@页面---点击%d次---总共%d秒\n",[result stringForColumn:@"vcNo"],[result intForColumn:@"visitCount"],[result intForColumn:@"visitTime"]]);
+    }
+    [result close];
+}
+
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    self.closeDate = [NSDate date];
+    [self saveInfo];
 }
 
 @end

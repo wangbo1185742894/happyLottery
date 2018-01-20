@@ -12,7 +12,8 @@
 
 
 @property (strong,nonatomic)NSString *cardCode , *schemeNo,*couponCode;
-@property (assign,nonatomic)NSInteger subCopies,subscribed,realSubscribed,baodiCopies,baodiCost;
+@property (assign,nonatomic)NSInteger subCopies,baodiCopies,baodiCost;
+@property(assign,nonatomic)double subscribed,realSubscribed;
 @property(assign,nonatomic)BOOL isSponsor;
 
 @property(assign,nonatomic)CostType costType;

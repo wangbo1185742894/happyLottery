@@ -40,6 +40,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if ([Utility isIOS11After]) {
+        self.wbContentViewTop.constant = -44;
+    }
     self.viewControllerNo = @"A108";
     self.dataArray = [NSMutableArray arrayWithCapacity:0];
     
@@ -166,7 +169,7 @@
         if (IS_IOS11) {
            self.wbContentViewTop.constant = -39;
         }else{
-           self.wbContentViewTop.constant = 20;
+           self.wbContentViewTop.constant = -39;
         }
         
         self.wbContentViewBottom.constant = -80;

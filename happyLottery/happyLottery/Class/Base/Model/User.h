@@ -30,9 +30,8 @@
 //}
 
 typedef enum {
-    
-    PayVerifyTypeAlwaysNo =1,
-    PayVerifyTypeAlways,
+    PayVerifyTypeAlways = 1,
+    PayVerifyTypeAlwaysNo,
     PayVerifyTypeLessThanOneHundred,
     PayVerifyTypeLessThanFiveHundred,
     PayVerifyTypeLessThanThousand,
@@ -68,6 +67,8 @@ typedef enum {
 @property(nonatomic,strong)NSString * score;
 // UN_LOCK("未锁定"), LOCK("锁定");
 @property(nonatomic,strong)NSString * parentId;
+
+@property(nonatomic,strong)NSString *totalBanlece;
 @property (nonatomic, assign) PayVerifyType payVerifyType;
 
 

@@ -45,7 +45,7 @@
     if (IS_IOS11) {
         self.topWebView.constant = -44;
     }else{
-        self.topWebView.constant = 20;
+        self.topWebView.constant = -44;
     }
     self.title = @"预测详情";
 

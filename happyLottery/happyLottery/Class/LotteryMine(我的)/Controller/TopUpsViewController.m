@@ -7,7 +7,7 @@
 //
 
 #import "TopUpsViewController.h"
-
+#import "WXApi.h"
 
 #define KPayTypeListCell @"PayTypeListCell"
 @interface TopUpsViewController ()<MemberManagerDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,UITextFieldDelegate,UIWebViewDelegate>
@@ -38,6 +38,7 @@
     self.payWebView.delegate = self;
     self.memberMan.delegate = self;
     self.lotteryMan.delegate =self;
+    self.labBanlence.text = [NSString stringWithFormat:@"%@元",self.curUser.totalBanlece];
     [self setTableView];
     if ([self isIphoneX]) {
         self.top.constant = 88;
@@ -86,7 +87,7 @@
 }
 
 -(void)rechargeSmsIsSuccess:(BOOL)success andPayInfo:(NSDictionary *)payInfo errorMsg:(NSString *)msg{
-    
+    [self hideLoadingView];
     if (success) {
         if ([itemModel.channel isEqualToString:@"SDALI"]) {
             [self.payWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:payInfo[@"qrCode"]]]];
@@ -113,29 +114,31 @@
 -(void)commitClient{
     
     NSDictionary *rechargeInfo;
+    for (ChannelModel *model in channelList) {
+        if (model.isSelect == YES) {
+            itemModel= model;
+            break;
+        }
+    }
+    if (itemModel == nil) {
+        [self showPromptText:@"请选择支付方式" hideAfterDelay:1.7];
+        return;
+    }
     @try {
         NSString *cardCode = self.curUser.cardCode;
         NSString *checkCode = self.txtChongZhiJIne.text;
         
-        for (ChannelModel *model in channelList) {
-            if (model.isSelect == YES) {
-                itemModel= model;
-                break;
-            }
-        }
-        if (itemModel == nil) {
-            [self showPromptText:@"请选择支付方式" hideAfterDelay:1.7];
-            return;
-        }
+      
         rechargeInfo = @{@"cardCode":cardCode,
                           @"channel":itemModel.channel,
                           @"amounts":checkCode,
                         };
     } @catch (NSException *exception) {
         rechargeInfo = nil;
-    } @finally {
-        [self.memberMan rechargeSms:rechargeInfo];
     }
+    [self showLoadingText:@"正在提交订单"];
+    [self.memberMan rechargeSms:rechargeInfo];
+    
     
 }
 
@@ -193,13 +196,45 @@
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     [self setItem:nil];
-    return YES;
+    if (range.location == 10) {
+        return NO;
+    }
+    if ([string isEqualToString:@""]) {
+        return YES;
+    }
+    
+    NSString * regex;
+    regex = @"^[0-9.]";
+    
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    BOOL isMatch = [pred evaluateWithObject:string];
+    if (isMatch) {
+        NSString *stringRegex = @"(\\+|\\-)?(([0]|(0[.]\\d{0,2}))|([1-9]\\d{0,4}(([.]\\d{0,2})?)))?";
+        NSPredicate *pred1 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", stringRegex];
+        BOOL isMatch1 = [pred1 evaluateWithObject:[NSString stringWithFormat:@"%@%@",textField.text,string]];
+        
+        return isMatch1;
+    }else{
+
+        return NO;
+    }
+
 }
 
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     NSString *strUrl = [NSString stringWithFormat:@"%@",request.URL];
-    if ([strUrl hasPrefix:@"alipays"] || [strUrl hasPrefix:@"weixin"] ) {
-        [[UIApplication sharedApplication] openURL:request.URL];
+    if ([strUrl hasPrefix:@"alipays"]) {
+        if ([[UIApplication sharedApplication] canOpenURL: [NSURL URLWithString:@"alipay://"]] == YES) {
+            [[UIApplication sharedApplication] openURL:request.URL];
+        }else{
+            [self showPromptText:@"装支付宝去" hideAfterDelay:1.7];
+        }
+    }
+    
+    if ([strUrl hasPrefix:@"weixin"]) {
+        if ([[UIApplication sharedApplication] canOpenURL: [NSURL URLWithString:@"weixin://"]] == YES) {
+            [[UIApplication sharedApplication] openURL:request.URL];
+        }
     }
     return YES;
 }
@@ -224,7 +259,10 @@
 -(void)queryRecharge:(NSDictionary *)Info IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     [self hideLoadingView];
     if (success == YES) {
-        
+        [self showPromptText:@"充值成功" hideAfterDelay:1.7];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.navigationController popViewControllerAnimated:YES];
+        });
     }else{
         [self showPromptText:msg hideAfterDelay:1.7];
     }

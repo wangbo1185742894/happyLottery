@@ -17,7 +17,7 @@
 {
     __weak IBOutlet UITableView *tabForecastListView;
     NSMutableArray  <JczqShortcutModel *>*colloectList;
-    JczqShortcutModel *curModel;
+    
 }
 @property(nonatomic,strong)NSMutableArray <NSMutableArray<HomeYCModel *> *> *dataArray;
 @property(nonatomic,strong)NSMutableArray *arrayTableSectionIsOpen;
@@ -122,16 +122,13 @@
     BOOL isSelect = NO;
     
     if (self.curUser .isLogin == YES) {
-        if (self.dataArray[indexPath.section][indexPath.row].isCollect == YES) {
-            isSelect = YES;
-        }else{
+    
             for (JczqShortcutModel *model in colloectList) {
-                if ([model.matchKey isEqualToString:self.dataArray[indexPath.section][indexPath.row].matchKey] && model.isCollect == YES) {
+                if ([model.matchKey isEqualToString:self.dataArray[indexPath.section][indexPath.row].matchKey]) {
                     isSelect = YES;
                     break;
                 }
             }
-        }
     }
     cell.delegate = self;
     [cell refreshData:[ _dataArray[indexPath.section][indexPath.row] jCZQScoreZhiboToJcForecastOptions] andSelect:isSelect];
@@ -167,7 +164,6 @@
         [self needLogin];
         return;
     }
-    curModel = model;
     [self.lotteryMan collectMatch:@{@"cardCode":self.curUser.cardCode,@"matchKey":model.matchKey,@"isCollect":@(isSelect)}];
 }
 
@@ -175,20 +171,14 @@
     if (isSuccess) {
         if (isSelect) {
             [self showPromptText:@"收藏成功" hideAfterDelay:1.7];
-            curModel.isCollect = YES;
+            
         }else{
             [self showPromptText:@"已取消收藏" hideAfterDelay:1.7];
-            curModel.isCollect = NO;
+            
         }
         
     }
-    for (HomeYCModel *model in colloectList) {
-        if ([model.matchKey isEqualToString:curModel.matchKey]) {
-            model.isCollect = isSelect;
-            break;
-        }
-    }
-    [tabForecastListView reloadData];
+    [self getCollected];
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{

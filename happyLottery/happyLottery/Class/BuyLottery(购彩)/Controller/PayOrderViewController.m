@@ -87,6 +87,7 @@
           labCanUseYouhuiquan.text = [NSString stringWithFormat:@"暂无可用优惠券"];
           self.labZheKou.text = [NSString stringWithFormat:@"-0.00元"];
           self.labZheKou.textColor = SystemGray;
+           self.labRealCost.text = [NSString stringWithFormat:@"%.2f 元",self.cashPayMemt.realSubscribed] ;
     }
     if (self.cashPayMemt.costType == CostTypeCASH) {
            [self.btnTouzhu setTitle:[NSString stringWithFormat:@"确认支付 ￥%.2f",self.cashPayMemt.realSubscribed - [self.curSelectCoupon.deduction doubleValue]] forState:0];
@@ -126,7 +127,7 @@
     if (self.cashPayMemt.costType == CostTypeCASH) {
         
         self.labRealCost.text = [NSString stringWithFormat:@"%.2f 元",self.cashPayMemt.realSubscribed - [self.curSelectCoupon.deduction doubleValue]] ;
-        self.labOrderCost.text = [NSString stringWithFormat:@"%ld.00 元",self.cashPayMemt.realSubscribed] ;
+        self.labOrderCost.text = [NSString stringWithFormat:@"%.2f 元",self.cashPayMemt.realSubscribed] ;
         self.heightIViewJinE.constant = 185;
         self.labYouhuifangan.hidden = NO;
     }else{
@@ -136,7 +137,7 @@
         self.labScoreNeed.text = @"订单所需积分";
         self.labScoreBanlence.text = @"剩余积分";
         self.labScoreBanlenceNum.text = [NSString stringWithFormat:@"%@ 积分",self.curUser.score];
-        self.labSocreNeedNum.text = [NSString stringWithFormat:@"%ld 积分",self.cashPayMemt.realSubscribed];
+        self.labSocreNeedNum.text = [NSString stringWithFormat:@"%.2f 积分",self.cashPayMemt.realSubscribed];
     }
 }
 
@@ -252,9 +253,11 @@
         }
     }
 
-    if ([self checkPayPassword]) {
-        [self showPayPopView];
-        return;
+    if (self.cashPayMemt.costType == CostTypeCASH) {
+        if ([self checkPayPassword]) {
+            [self showPayPopView];
+            return;
+        }
     }
 
     [self actionPay];
@@ -334,6 +337,7 @@
 }
 
 -(void)gotSchemeScorePayment:(BOOL)isSuccess  errorMsg:(NSString *)msg{
+    [self hideLoadingView];
     if (isSuccess) {
         [self paySuccess];
     }else{
@@ -356,7 +360,7 @@
     model.channelTitle = @"余额支付";
     model.channelIcon = @"icon_yue";
     model.isSelect = YES;
-    model.descValue = [NSString stringWithFormat:@"可用余额为：%@",self.curUser.balance];
+    model.descValue = [NSString stringWithFormat:@"可用余额为：%@",self.curUser.totalBanlece];
     [channelList addObject:model];
     
     if (infoArray == nil || infoArray.count == 0) {
@@ -404,7 +408,7 @@
     NSDictionary *rechargeInfo;
     @try {
         NSString *cardCode = self.curUser.cardCode;
-        NSString *checkCode = [NSString stringWithFormat:@"%ld",self.cashPayMemt.realSubscribed];
+        NSNumber *checkCode = @([[NSString stringWithFormat:@"%.2f",self.cashPayMemt.realSubscribed] doubleValue]);
         
         for (ChannelModel *model in channelList) {
             if (model.isSelect == YES) {
@@ -426,12 +430,13 @@
 }
 
 -(NSDictionary *)getTouzhuParams:(BOOL)isCoupon{
+    NSNumber *real = @([[NSString stringWithFormat:@"%.2f",self.cashPayMemt.realSubscribed] doubleValue]);
     if (isCoupon) {
         return @{@"cardCode":self.cashPayMemt.cardCode,
                  @"schemeNo":self.cashPayMemt.schemeNo,
                  @"subCopies":@(self.cashPayMemt.subCopies),
                  @"subscribed":@(self.cashPayMemt.subscribed),
-                 @"realSubscribed":@(self.cashPayMemt.realSubscribed),
+                 @"realSubscribed":real,
                  @"isSponsor":@(true),
                  @"couponCode":self.curSelectCoupon.couponCode
                  };
@@ -440,7 +445,7 @@
           @"schemeNo":self.cashPayMemt.schemeNo,
           @"subCopies":@(self.cashPayMemt.subCopies),
           @"subscribed":@(self.cashPayMemt.subscribed),
-          @"realSubscribed":@(self.cashPayMemt.realSubscribed),
+          @"realSubscribed":real,
           @"isSponsor":@(true)
                  };
     }

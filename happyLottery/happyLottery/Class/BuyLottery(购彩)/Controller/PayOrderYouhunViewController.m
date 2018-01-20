@@ -39,7 +39,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -54,6 +53,17 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     selectCoupon = self.couponList[indexPath.row];
+    for (Coupon * model in self.couponList) {
+        if (selectCoupon == model) {
+            selectCoupon.isSelect = !selectCoupon.isSelect;
+            if (selectCoupon.isSelect == NO) {
+                selectCoupon = nil;
+            }
+        }else{
+            model.isSelect = NO;
+        }
+    }
+    [self.tabYouhuiquanLIst reloadData];
     
 }
 - (IBAction)actionSubmitCoupon:(UIButton *)sender {

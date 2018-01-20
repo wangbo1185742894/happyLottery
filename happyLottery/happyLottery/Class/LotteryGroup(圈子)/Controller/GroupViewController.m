@@ -10,6 +10,7 @@
 
 @interface GroupViewController ()
 @property (weak, nonatomic) IBOutlet UIWebView *groupWebView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *webDisBottom;
 
 @end
 
@@ -19,6 +20,15 @@
     [super viewDidLoad];
     self.groupWebView.scrollView.bounces = NO;
     [self.groupWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.88.193:18086/app/circle/index"]]];
+    [self setWebView];
+}
+
+-(void)setWebView{
+    if ([Utility isIOS11After]) {
+        self.webDisBottom.constant = 0;
+    }else{
+        self.webDisBottom.constant = 44;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

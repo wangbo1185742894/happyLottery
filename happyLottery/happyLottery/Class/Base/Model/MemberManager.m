@@ -22,7 +22,8 @@
         NSString *responseJsonStr = [response getAPIResponse];
         if (response.succeed) {
             NSDictionary *userInfo = [self objFromJson: responseJsonStr];
-            
+    
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"NSNotificationUserLoginSuccess" object:nil];
             [self.delegate loginUser:userInfo IsSuccess:YES errorMsg:response.errorMsg];
            
         } else {

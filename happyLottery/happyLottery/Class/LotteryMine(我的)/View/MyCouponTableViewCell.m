@@ -22,6 +22,8 @@
 
 -(void)loadData:(Coupon *)model{
     self.endImage.hidden = YES;
+    self.btnSelect.hidden = NO;
+    self.btnSelect.selected = model.isSelect;
     NSString *deduction =model.deduction;
     self.priceLab.text = deduction;
     self.nameLab.text =[NSString stringWithFormat:@"¥%@元优惠券",deduction];

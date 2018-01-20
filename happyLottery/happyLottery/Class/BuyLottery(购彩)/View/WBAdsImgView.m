@@ -14,11 +14,12 @@
     
     UIScrollView *scrContentView;
     NSTimer *timer;
-    NSArray * _imgUrls;
+   
     NSInteger index;
     UIPageControl *pageCtl;
     
 }
+@property(nonatomic,strong)NSArray * imgUrls;
 @end
 
 @implementation WBAdsImgView
@@ -27,6 +28,7 @@
     if (self == [super initWithFrame:frame]) {
         timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(autoScrImg) userInfo:nil repeats:YES];
         index = 0;
+        _imgUrls = nil;
         pageCtl = [[UIPageControl alloc]initWithFrame:CGRectMake((KscreenWidth - 80) / 2, self.mj_h - 50, 80, 40)];
     }
     return self;

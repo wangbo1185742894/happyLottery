@@ -15,7 +15,9 @@
 
 @interface DiscoverViewController ()<JSObjcDelegate,UIWebViewDelegate>
 {
+    __weak IBOutlet NSLayoutConstraint *webDisTop;
     JSContext *context;
+    __weak IBOutlet NSLayoutConstraint *webDisBottom;
 }
 
 @property (weak, nonatomic) IBOutlet UIWebView *faxianWebView;
@@ -26,10 +28,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.faxianWebView.scrollView.bounces = NO;
     self.faxianWebView.delegate = self;
     [self.faxianWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.88.193:18086/app/find/index"]]];
-    
+    [self setWebView];
+}
+
+-(void)setWebView{
+    if ([Utility isIOS11After]) {
+        webDisTop.constant = 0;
+        webDisBottom.constant = 0;
+    }else{
+        webDisTop.constant = 20;
+        webDisBottom.constant = 44;
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -48,20 +61,28 @@
 }
 
 
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    context = [webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
+    context[@"appObj"] = self;
+    
+    context.exceptionHandler = ^(JSContext *context, JSValue *exceptionValue) {
+        context.exception = exceptionValue;
+    };
+    [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitUserSelect='none';"];
+    [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitTouchCallout='none';"];
+}
+
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     context = [webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
     context[@"appObj"] = self;
     context.exceptionHandler = ^(JSContext *context, JSValue *exceptionValue) {
         context.exception = exceptionValue;
-        
     };
-    
     [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitUserSelect='none';"];
     [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitTouchCallout='none';"];
-    
 }
-
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
@@ -69,7 +90,6 @@
     NSString *scheme = [NSString stringWithFormat:@"%@",URL];
     return YES;
 }
-
 
 #pragma JSObjcDelegate
 -(void)SharingLinks:(NSString *)code{
@@ -171,15 +191,14 @@
 }
 
 -(NSString *)getCardCode{
-    if (self.curUser .isLogin == YES) {
-        return self.curUser.cardCode;
-    }else{
-        return @"";
-    }
+    [self showPromptText:@"getCardCode来啦" hideAfterDelay:1.9];
+    
+    return self.curUser.cardCode;
+    
 }
 
 -(void)goToLogin{
-    
+    [self showPromptText:@"goToLogin来啦" hideAfterDelay:1.9];
 }
 
 @end
