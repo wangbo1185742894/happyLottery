@@ -76,7 +76,8 @@
 #define APIgetAvailableCoupon      @"getAvailableCoupon"
 #define APIgetFeedbackList           @"getFeedbackList"
 #define APIMemberShare               @"memberShare"
-
+#define APIfeedBackUnReadNum                @"feedBackUnReadNum"
+#define APIresetFeedBackReadStatus                @"resetFeedBackReadStatus"
 
 
 

@@ -11,6 +11,7 @@
 #import "NoticeDetailViewController.h"
 #import "LoadData.h"
 #import "Notice.h"
+#import "FMDB.h"
 
 @interface NoticeCenterViewController ()<MemberManagerDelegate,UITableViewDelegate,UITableViewDataSource>{
     
@@ -29,6 +30,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *enptyImage;
 @property (weak, nonatomic) IBOutlet UILabel *emptyLab;
 @property(nonatomic,strong)  LoadData  *loadDataTool;
+@property (nonatomic, strong) FMDatabaseQueue *queue;
+
 
 @end
 
@@ -51,9 +54,69 @@
     listPersonNoticeArray = [[NSMutableArray alloc]init];
     self.loadDataTool = [LoadData singleLoadData];
     [self getSystemNoticeClient];
+   // [self getDB];
+    [self searchDB];
 }
 
-- (IBAction)systemBtnClick:(id)sender {
+-(void)getDB{
+    //    // 0.获得沙盒中的数据库文件名
+    NSString *doc=[NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *fileName=[doc stringByAppendingPathComponent:@"userInfo.sqlite"];
+    NSError *error;
+    
+    NSBundle *bundle = [NSBundle mainBundle];
+   // NSString *filenameAgo = [bundle pathForResource:@"userInfo" ofType:@"sqlite"];
+   // NSLog(@"filenameAgo>>>>%@",filenameAgo);
+    NSLog(@"filename%@",fileName);
+//    NSFileManager *fileManager = [NSFileManager defaultManager];
+//    [fileManager copyItemAtPath:filenameAgo toPath:fileName error:&error];
+//
+    // 1.创建数据库队列
+    self.queue = [FMDatabaseQueue databaseQueueWithPath:fileName];
+//    // 2.创表
+//    [self.queue inDatabase:^(FMDatabase *db) {
+//        BOOL result = [db executeUpdate:@"create table if not exists vcUserPushMsg(id integer primary key autoincrement, title text,content text, msgTime text,t1 text);"];
+//        if (result) {
+//            NSLog(@"创表成功");
+//        } else {
+//            NSLog(@"创表失败");
+//        }
+//    }];
+}
+
+-(void)searchDB{
+    
+
+//    NSString *doc=[NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+//    NSString *fileName=[doc stringByAppendingPathComponent:@"userInfo.sqlite"];
+//    self.fmdb =[FMDatabase databaseWithPath:fileName];
+    
+//    [self.queue inDatabase:^(FMDatabase *db) {
+    
+        NSMutableArray *array = [NSMutableArray array];
+        // 1.查询数据
+            if ([self.fmdb open]) {
+//        FMResultSet *rs = [db executeQuery:@"select * from vcUserPushMsg ;"];
+       //    FMResultSet *rs = [self.fmdb executeQuery:@"select * from vcUserPushMsg"];
+        // 2.遍历结果集
+           
+                    FMResultSet*  rs = [self.fmdb executeQuery:@"select * from vcUserPushMsg where cardcode = ?",self.curUser.cardCode];
+                
+                        while (rs.next) {
+                            Notice *notice =  [[Notice alloc] init];
+                            notice.title = [rs stringForColumn:@"title"];
+                            notice.content = [rs stringForColumn:@"content"];
+                            notice.cardcode = [rs stringForColumn:@"cardcode"];
+                            //            [self goImage:student.photo];
+                            [array addObject: notice];
+                        }
+
+            listPersonNoticeArray = array;
+//    }];
+            }
+}
+
+- (IBAction)IBActistudentsemBtnClick:(id)sender {
     self.systemBtn.selected = YES;
     self.personBtn.selected = NO;
     self.line1.hidden = NO;

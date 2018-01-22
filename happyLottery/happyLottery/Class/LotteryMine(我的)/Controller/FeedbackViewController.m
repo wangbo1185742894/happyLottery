@@ -13,6 +13,7 @@
        NSString *myscore;
     UIButton *noticeBtn;
     UILabel *label;
+    long rednum;
 }
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottom;
@@ -44,41 +45,57 @@
         self.top.constant = 88;
         self.bottom.constant = 34;
     }
-    [self noticeCenterSet];
     myscore=@"5";
     self.memberMan.delegate = self;
     self.feedBackTextView.delegate = self;
     self.placeHolder1.userInteractionEnabled = NO;
     self.placeHolder2.userInteractionEnabled = NO;
     self.commitButton.userInteractionEnabled = NO;
-    
+   [self noticeCenterSet];
     self.feedBackTextView.layer.borderWidth = 0.5;
     self.feedBackTextView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     [self creatStarUI];
     self.contentDictionary =  [[NSMutableArray alloc]init];
+   
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+     [self CheckFeedBackRedNumClient];
 }
 
 -(void)noticeCenterSet{
     noticeBtn = [UIButton buttonWithType: UIButtonTypeCustom];
     noticeBtn.frame = CGRectMake(0, 0, 35, 30);
-//    label = [[UILabel alloc]init];
-//    label.frame =CGRectMake(25, 0,10, 10);
-//    label.layer.cornerRadius = label.bounds.size.width/2;
-//    label.layer.masksToBounds = YES;
-//    label.text = @"2";
-//    label.font = [UIFont systemFontOfSize:10];
-//    label.textAlignment = NSTextAlignmentCenter;
-//    label.backgroundColor = [UIColor redColor];
-//    label.textColor = [UIColor whiteColor];
-//    [noticeBtn addSubview:label];
+    label = [[UILabel alloc]init];
+    label.frame =CGRectMake(25, 0,10, 10);
+    label.layer.cornerRadius = label.bounds.size.width/2;
+    label.layer.masksToBounds = YES;
+   
+    label.font = [UIFont systemFontOfSize:10];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.backgroundColor = [UIColor redColor];
+    label.textColor = [UIColor whiteColor];
+    [noticeBtn addSubview:label];
+    label.hidden = YES;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView: noticeBtn];
     [noticeBtn setImage:[UIImage imageNamed:@"dialogfeedback@2x.png"] forState:UIControlStateNormal];
     [noticeBtn addTarget: self action: @selector(noticeBtnClick) forControlEvents: UIControlEventTouchUpInside];
 }
 
+-(void)updateRed{
+    NSString *red = [NSString stringWithFormat: @"%ld",rednum];
+    label.text = red;
+    if ([red isEqualToString:@"0"]) {
+        label.hidden = YES;
+    }else{
+        label.hidden = NO;
+    }
+}
+
 -(void)noticeBtnClick{
     
-    
+        [self ResetFeedBackReadStatusClient];
         FeedBackHistoryViewController * nVC = [[FeedBackHistoryViewController alloc]init];
         [self.navigationController pushViewController:nVC animated:YES];
 }
@@ -173,6 +190,61 @@
         Info = nil;
     } @finally {
         [self.memberMan FeedBack:Info];
+    }
+    
+}
+
+-(void)FeedBackUnReadNum:(NSDictionary *)Info IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    if ([msg isEqualToString:@"执行成功"]) {
+       // [self showPromptText:@"获取意见反馈小红点成功！" hideAfterDelay:1.7];
+        rednum = [[Info valueForKey:@"unReadNum"] longValue];
+        [self updateRed];
+    }else{
+        
+        [self showPromptText:msg hideAfterDelay:1.7];
+        
+    }
+    
+}
+
+-(void)CheckFeedBackRedNumClient{
+    NSDictionary *Info;
+    @try {
+        
+        Info = @{@"cardCode":self.curUser.cardCode
+                 };
+        
+    } @catch (NSException *exception) {
+        Info = nil;
+    } @finally {
+        [self.memberMan FeedBackUnReadNum:Info];
+    }
+    
+}
+
+-(void)ResetFeedBackReadStatusClient{
+    NSDictionary *Info;
+    @try {
+        
+        Info = @{@"cardCode":self.curUser.cardCode
+                 };
+        
+    } @catch (NSException *exception) {
+        Info = nil;
+    } @finally {
+        [self.memberMan ResetFeedBackReadStatus:Info];
+    }
+    
+}
+
+-(void)ResetFeedBackReadStatusSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    if ([msg isEqualToString:@"执行成功"]) {
+       // [self showPromptText:@"更新意见反馈小红点成功！" hideAfterDelay:1.7];
+     
+    }else{
+        
+        [self showPromptText:msg hideAfterDelay:1.7];
+        
     }
     
 }

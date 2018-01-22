@@ -51,6 +51,8 @@
 - (void) gotisSignInToday:(NSString  *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) queryRecharge:(NSDictionary *)Info IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) gotAvailableCoupon:(BOOL)success andPayInfo:(NSArray *)payInfo errorMsg:(NSString *)msg;
+- (void) FeedBackUnReadNum:(NSDictionary *)Info IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) ResetFeedBackReadStatusSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 
 @end
 
@@ -95,7 +97,8 @@
 - (void) getAvailableCoupon:(NSDictionary *)paraDic;
 
 - (void) upMemberShareSms:(NSDictionary *)paraDic;
-
+- (void)FeedBackUnReadNum:(NSDictionary*)paraDic;
+- (void)ResetFeedBackReadStatus:(NSDictionary*)paraDic;
 
 //11.23 活动公告
 - (void)getActivetyMessage:(NSString *)strId;
