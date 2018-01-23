@@ -268,7 +268,7 @@
             sourecs = [NSString stringWithFormat:@"恭喜您获得了%@元",red.redPacketContent];
         } else if ([redPacketType isEqualToString:@"积分红包"]){
             sourecs = [NSString stringWithFormat:@"恭喜您获得了%@积分",red.redPacketContent];
-        }else if ([redPacketType isEqualToString:@"优惠卷红包"]){
+        }else if ([redPacketType isEqualToString:@"优惠券红包"]){
             sourecs = [NSString stringWithFormat:@"恭喜您获得了%@张优惠券",red.redPacketContent];
         }
         [self rotation360repeatCount:2 view:image andHalf:width andCaijin:sourecs];
@@ -450,13 +450,14 @@
           
             cell.endImage.hidden = NO;
             cell.nameLab.text = redPacket._description;
-            
+            //已过期 全都是失效
             NSString *redPacketStatus =redPacket.redPacketStatus;
-            if ([redPacketStatus isEqualToString:@"锁定"]) {
-                cell.packetImage.image = [UIImage imageNamed:@"lock_cannot"];
-            } else  if ([redPacketStatus isEqualToString:@"解锁"]) {
-                cell.packetImage.image = [UIImage imageNamed:@"unlock_cannot"];
-            }
+//            if ([redPacketStatus isEqualToString:@"锁定"]) {
+//                cell.packetImage.image = [UIImage imageNamed:@"lock_cannot"];
+//            } else  if ([redPacketStatus isEqualToString:@"解锁"]) {
+//                cell.packetImage.image = [UIImage imageNamed:@"unlock_cannot"];
+//            }
+            cell.packetImage.image = [UIImage imageNamed:@"lock_cannot"];
             NSString *sourecs;
 //            if ([redPacketChannel isEqualToString:@"注册渠道"]) {
 //                sourecs = @"来源： 系统注册赠送";

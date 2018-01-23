@@ -24,9 +24,12 @@
 #import "NewsModel.h"
 #import "ADSModel.h"
 #import "WebShowViewController.h"
+#import "RedPacket.h"
+#import "OpenRedPopView.h"
 #define KNewsListCell @"NewsListCell"
+#define AnimationDur 0.3
 
-@interface BuyLotteryViewController ()<WBAdsImgViewDelegate,HomeMenuItemViewDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,NewsListCellDelegate>
+@interface BuyLotteryViewController ()<WBAdsImgViewDelegate,HomeMenuItemViewDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,NewsListCellDelegate,OpenRedPopViewDelegate,MemberManagerDelegate>
 {
     NSMutableArray  <JczqShortcutModel *>*JczqShortcutList;
     NSMutableArray  <JczqShortcutModel *>*colloectList;
@@ -35,6 +38,8 @@
     __weak IBOutlet NSLayoutConstraint *homeViewHeight;
     WBAdsImgView *adsView;
     UIView  *menuView;
+     NSMutableArray *listUseRedPacketArray;
+       RedPacket *r;
     __weak IBOutlet UIView *viewNewDefault;
     CGFloat curY;
     __weak IBOutlet NSLayoutConstraint *newsViewMarginTop;
@@ -57,12 +62,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+          listUseRedPacketArray = [[NSMutableArray alloc]init];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(itemClick:) name:@"NSNotificationBuyVCJump" object:nil];
     JczqShortcutList = [NSMutableArray arrayWithCapacity:0];
     colloectList = [NSMutableArray arrayWithCapacity:0];
     NSString *doc=[NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    
+    self.memberMan.delegate =  self;
     NSString *fileName=[doc stringByAppendingPathComponent:@"userInfo.sqlite"];
     self.fmdb =[FMDatabase databaseWithPath:fileName];
      singleLoad = [LoadData singleLoadData];
@@ -71,6 +76,7 @@
     [self setMenu];
     [self setNewsView];
     [self setTableView];
+
     
 }
 
@@ -83,7 +89,7 @@
     [self loadNews];
     [self getJczqShortcut];
     self.navigationController.navigationBar.hidden = YES;
-    
+     [self getRedPacketByStateClient:@"true"];
     
 }
 
@@ -478,6 +484,140 @@
         [colloectList addObject:model];
     }
     [tabForecaseList reloadData];
+}
+
+#pragma 打开红包
+-(void)openRedPacketSms:(NSDictionary *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    
+    NSLog(@"redPacketInfo%@",redPacketInfo);
+    if ([msg isEqualToString:@"执行成功"]) {
+        // [self showPromptText: @"memberInfo成功" hideAfterDelay: 1.7];
+        RedPacket *red = [[RedPacket alloc]initWith:redPacketInfo];
+        UIImageView *image = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"redpacket"]];
+        
+        image.frame  = CGRectMake(self.view.mj_w/2-105, 200, 210,294);
+        [self.view addSubview:image];
+        float width = image.mj_w/2;
+        NSString *redPacketType = red.redPacketType;
+        NSString *sourecs;
+        if ([redPacketType isEqualToString:@"彩金红包"]) {
+            sourecs = [NSString stringWithFormat:@"恭喜您获得了%@元",red.redPacketContent];
+        } else if ([redPacketType isEqualToString:@"积分红包"]){
+            sourecs = [NSString stringWithFormat:@"恭喜您获得了%@积分",red.redPacketContent];
+        }else if ([redPacketType isEqualToString:@"优惠券红包"]){
+            sourecs = [NSString stringWithFormat:@"恭喜您获得了%@张优惠券",red.redPacketContent];
+        }
+        [self rotation360repeatCount:2 view:image andHalf:width andCaijin:sourecs];
+    
+    }else{
+        [self showPromptText: msg hideAfterDelay: 1.7];
+    }
+    
+}
+
+-(void)rotation360repeatCount:(int)repeatCount view:(UIView *)view andHalf:(float)width andCaijin:(NSString *)caijin{
+    
+    if (repeatCount == 0) {
+        [UIView animateWithDuration:AnimationDur animations:^{
+            view.mj_x += width;
+            view.mj_w = 0;
+            
+        } completion:^(BOOL finished) {
+            [view removeFromSuperview];
+            OpenRedPopView *popView = [[OpenRedPopView alloc]initWithFrame:self.view.frame];
+            popView.delegate = self;
+            popView.labJiangjin.text =caijin;
+            popView.alpha = 0.2;
+            popView.layer.cornerRadius = 10;
+            popView.layer.masksToBounds = YES;
+            
+            [self.view addSubview:popView];
+            [UIView animateWithDuration:AnimationDur animations:^{
+                
+                popView.alpha = 1.0;
+            }];
+            
+        }];
+        
+    }else{
+        
+        repeatCount --;
+        [UIView animateWithDuration:AnimationDur animations:^{
+            view.mj_x += width;
+            view.mj_w = 0;
+            
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:AnimationDur animations:^{
+                view.mj_x-= width;
+                view.mj_w = 210;
+            } completion:^(BOOL finished) {
+                
+                [self rotation360repeatCount:repeatCount view:view andHalf:width andCaijin:caijin];
+            }];
+        }];
+    }
+    
+}
+
+-(void)getRedPacketByStateClient:(NSString*)isValid{
+    NSDictionary *Info;
+    @try {
+        NSString *cardCode = self.curUser.cardCode;
+        Info = @{@"cardCode":cardCode,
+                 @"isValid":isValid,
+                 @"page":@"1",
+                 @"pageSize":@"10"
+                 };
+        
+    } @catch (NSException *exception) {
+        Info = nil;
+    } @finally {
+        [self.memberMan getRedPacketByStateSms:Info];
+    }
+    
+}
+
+-(void)openRedPacketClient{
+    NSDictionary *Info;
+    @try {
+        NSString *cardCode = r._id;
+        Info = @{@"id":cardCode
+                 };
+        
+    } @catch (NSException *exception) {
+        Info = nil;
+    } @finally {
+        [self.memberMan openRedPacketSms:Info];
+    }
+    
+}
+
+-(void)getRedPacketByStateSms:(NSArray *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    
+    
+    NSLog(@"redPacketInfo%@",redPacketInfo);
+    if ([msg isEqualToString:@"执行成功"]) {
+        // [self showPromptText: @"memberInfo成功" hideAfterDelay: 1.7];
+           [listUseRedPacketArray removeAllObjects];
+        NSEnumerator *enumerator = [redPacketInfo objectEnumerator];
+        id object;
+        if ((object = [enumerator nextObject]) != nil) {
+            NSArray *array = redPacketInfo;
+            
+            
+        
+                        for (int i=0; i<array.count; i++) {
+                            
+                            RedPacket *redPacket = [[RedPacket alloc]initWith:array[i]];
+                            [listUseRedPacketArray addObject:redPacket];
+        }
+            r = listUseRedPacketArray[0] ;
+            [self openRedPacketClient];
+        }
+        
+    }else{
+        [self showPromptText: msg hideAfterDelay: 1.7];
+    }
 }
 
 @end

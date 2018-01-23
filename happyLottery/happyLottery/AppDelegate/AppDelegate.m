@@ -200,11 +200,13 @@ static SystemSoundID shake_sound_male_id = 0;
     if ([self .fmdb open]) {
         BOOL iscreate = [self.fmdb executeUpdate:@"create table if not exists t_user_info(id integer primary key, cardCode text, mobile text ,loginPwd text, isLogin text,payVerifyType text)"];
         BOOL resultVC = [self.fmdb executeUpdate:@"create table if not exists vcUserActiveInfo(id integer primary key autoincrement, vcNo text,updateDate text, visitCount integer , visitTime integer)"];
-        BOOL resultMsgInfo = [self.fmdb executeUpdate:@"create table if not exists vcUserPushMsg(id integer primary key autoincrement, title text,content text, msgTime text,t1 text)"];
+        BOOL resultMsgInfo = [self.fmdb executeUpdate:@"create table if not exists vcUserPushMsg(id integer primary key autoincrement, title text,content text, msgTime text,cardcode text)"];
         if (iscreate && resultVC && resultMsgInfo) {
             [self.fmdb close];
         }
     }
+    
+  
 }
 
 -(void)setKeyWindow{
@@ -393,6 +395,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     if (@available(iOS 10.0, *)) {
         if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
             [JPUSHService handleRemoteNotification:userInfo];
+
         }
     } else {
         // Fallback on earlier versions
@@ -407,26 +410,29 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSDictionary *extra = [userInfo valueForKey:@"extras"];
     NSString *customizeField1 = [extra valueForKey:@"customizeField1"]; //服务端传递的Extras附加字段，key是自己定义的
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    
-      NSString *time = [Utility timeStringFromFormat:@"yyyy-MM-dd HH:mm:ss" withDate:[NSDate date]];
-    
-    
+//
+     NSString *time = [Utility timeStringFromFormat:@"yyyy-MM-dd HH:mm:ss" withDate:[NSDate date]];
+
+    //
+    //
     if ([self.fmdb open]) {
-        BOOL result =  [self.fmdb executeUpdate:[NSString stringWithFormat:@"insert into vcUserPushMsg (title,content, time) values ('%@', '%@', '%@');",title,content,time]];
+        NSString *cardcode=[GlobalInstance instance ].curUser.cardCode;
+        if ([cardcode isEqualToString:@""]) {
+            cardcode = @"cardcode";
+        }
+        
+        BOOL result =  [self.fmdb executeUpdate:[NSString stringWithFormat:@"insert into vcUserPushMsg (title,content, msgTime , cardcode) values ('%@', '%@', '%@', '%@');",title,content,time,cardcode]];
         if (result) {
             [self.fmdb close];
         }
     }
     
-    if ([extra[@"pageCode"] isEqualToString:@"A204"]) { //中奖推送
+    if ([extra[@"appCode"] isEqualToString:@"A204"]) { //中奖推送
         if (winPushView !=nil) {
             [winPushView removeFromSuperview];
             winPushView = nil;
         }
-        BOOL isPlay = YES;//是否响声 
-        if (isPlay) {
             [self playSound];
-        }
         
         winPushView = [[ZhuiHaoStopPushVIew alloc]initWithFrame:[UIScreen  mainScreen].bounds];
         [winPushView refreshInfo:title andContent:content];

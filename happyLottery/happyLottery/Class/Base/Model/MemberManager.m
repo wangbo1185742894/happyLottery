@@ -1102,6 +1102,70 @@
 }
 
 /**
+ 意见反馈--未读消息条数
+ 参数:
+ params - {"cardCode":"10000001" }
+ */
+- (void)FeedBackUnReadNum:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString * infoString = [response getAPIResponse];
+        if (response.succeed) {
+            NSDictionary * info = [self objFromJson:infoString];
+            [self.delegate FeedBackUnReadNum:info IsSuccess:YES errorMsg:response.errorMsg];
+        }else{
+             [self.delegate FeedBackUnReadNum:nil IsSuccess:NO errorMsg:response.errorMsg];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+         [self.delegate FeedBackUnReadNum:nil IsSuccess:NO errorMsg:@"服务器错误"];
+   
+    };
+    
+    SOAPRequest *request = [self requestForAPI:APIfeedBackUnReadNum withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
+    
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+/**
+ 意见反馈--更新会员所有意见为已读
+ 参数:
+ params - {"cardCode":"10000001" }
+ */
+- (void)ResetFeedBackReadStatus:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString * infoString = [response getAPIResponse];
+        if (response.succeed) {
+     
+            [self.delegate ResetFeedBackReadStatusSmsIsSuccess: YES errorMsg:response.errorMsg];
+        }else{
+            [self.delegate ResetFeedBackReadStatusSmsIsSuccess: NO errorMsg:response.errorMsg];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+          [self.delegate ResetFeedBackReadStatusSmsIsSuccess: YES errorMsg:@"服务器错误"];
+        
+    };
+    
+    SOAPRequest *request = [self requestForAPI:APIresetFeedBackReadStatus withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
+    
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+/**
  
  获得会员意见反馈列表
  参数:

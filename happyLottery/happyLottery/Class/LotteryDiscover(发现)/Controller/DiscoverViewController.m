@@ -31,7 +31,12 @@
     self.viewControllerNo = @"A401";
     self.faxianWebView.scrollView.bounces = NO;
     self.faxianWebView.delegate = self;
-    [self.faxianWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/app/find/index",@"http://192.168.88.193:18086"]]]];
+    if (self.curUser.isLogin == YES) {
+            [self.faxianWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/app/find/index?cardCode=%@",H5BaseAddress,self.curUser.cardCode]]]];
+    }else{
+        [self.faxianWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/app/find/index?cardCode=%@",H5BaseAddress,@""]]]];
+    }
+
     [self setWebView];
 }
 
@@ -86,6 +91,7 @@
 -(void)SharingLinks:(NSString *)code{
 //    [self showPromptText:code hideAfterDelay:1.8];
     dispatch_async(dispatch_get_main_queue(), ^{
+        
         [self initshare:code];
     });
 }

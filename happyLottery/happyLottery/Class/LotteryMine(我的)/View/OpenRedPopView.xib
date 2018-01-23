@@ -19,6 +19,17 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q5l-gu-ZP7">
                     <rect key="frame" x="83" y="186.5" width="210" height="294"/>
                     <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b6G-1d-Vid">
+                            <rect key="frame" x="188" y="0.0" width="22" height="22"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="22" id="SGd-wI-dMx"/>
+                                <constraint firstAttribute="width" constant="22" id="hwh-2c-OEH"/>
+                            </constraints>
+                            <state key="normal" image="guanbi.png"/>
+                            <connections>
+                                <action selector="actionClose:" destination="iN0-l3-epB" eventType="touchUpInside" id="4Em-oF-0vN"/>
+                            </connections>
+                        </button>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="redpacket_open.png" translatesAutoresizingMaskIntoConstraints="NO" id="Opz-cn-ghm">
                             <rect key="frame" x="0.0" y="0.0" width="210" height="294"/>
                         </imageView>
@@ -81,51 +92,41 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="恭喜您获得了3.20元" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DWw-zc-uUL">
+                            <rect key="frame" x="10" y="122" width="190" height="72"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="72" id="Dmi-xH-cLE"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="72" id="KhH-2M-yup"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="DWw-zc-uUL" secondAttribute="trailing" constant="10" id="6o9-g5-SOe"/>
                         <constraint firstItem="Cuw-Hj-8Wc" firstAttribute="leading" secondItem="Q5l-gu-ZP7" secondAttribute="leading" constant="8" id="EF1-BX-5aU"/>
                         <constraint firstItem="Opz-cn-ghm" firstAttribute="top" secondItem="Q5l-gu-ZP7" secondAttribute="top" id="Hbx-HN-lvX"/>
                         <constraint firstAttribute="bottom" secondItem="2wt-Na-bPG" secondAttribute="bottom" constant="8" id="Iq2-A9-x9J"/>
                         <constraint firstAttribute="trailing" secondItem="Opz-cn-ghm" secondAttribute="trailing" id="N3h-SA-i5k"/>
+                        <constraint firstItem="DWw-zc-uUL" firstAttribute="leading" secondItem="Q5l-gu-ZP7" secondAttribute="leading" constant="10" id="Qiy-JK-idU"/>
                         <constraint firstItem="2wt-Na-bPG" firstAttribute="top" secondItem="Cuw-Hj-8Wc" secondAttribute="bottom" constant="8" id="atS-09-jNf"/>
+                        <constraint firstItem="b6G-1d-Vid" firstAttribute="top" secondItem="Q5l-gu-ZP7" secondAttribute="top" id="bW1-BB-xal"/>
                         <constraint firstAttribute="bottom" secondItem="Opz-cn-ghm" secondAttribute="bottom" id="fpW-Q4-Y3x"/>
                         <constraint firstAttribute="trailing" secondItem="2wt-Na-bPG" secondAttribute="trailing" constant="8" id="int-Jr-n3U"/>
                         <constraint firstItem="Opz-cn-ghm" firstAttribute="leading" secondItem="Q5l-gu-ZP7" secondAttribute="leading" id="jjw-nO-5VE"/>
+                        <constraint firstItem="DWw-zc-uUL" firstAttribute="top" secondItem="Q5l-gu-ZP7" secondAttribute="top" constant="122" id="mKy-FR-hxX"/>
                         <constraint firstAttribute="trailing" secondItem="Cuw-Hj-8Wc" secondAttribute="trailing" constant="8" id="rEZ-2P-na9"/>
                         <constraint firstItem="2wt-Na-bPG" firstAttribute="leading" secondItem="Q5l-gu-ZP7" secondAttribute="leading" constant="10" id="v7j-nT-FoG"/>
+                        <constraint firstAttribute="trailing" secondItem="b6G-1d-Vid" secondAttribute="trailing" id="yOL-R7-TP5"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b6G-1d-Vid">
-                    <rect key="frame" x="282" y="162" width="25" height="25"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="25" id="SGd-wI-dMx"/>
-                        <constraint firstAttribute="width" constant="25" id="hwh-2c-OEH"/>
-                    </constraints>
-                    <state key="normal" image="guanbi.png"/>
-                    <connections>
-                        <action selector="actionClose:" destination="iN0-l3-epB" eventType="touchUpInside" id="4Em-oF-0vN"/>
-                    </connections>
-                </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="恭喜您获得了3.20元" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DWw-zc-uUL">
-                    <rect key="frame" x="93" y="297" width="190" height="72"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="72" id="Dmi-xH-cLE"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <constraints>
                 <constraint firstAttribute="width" secondItem="Q5l-gu-ZP7" secondAttribute="height" multiplier="5:4" constant="7.5" id="6bh-KT-0bO"/>
                 <constraint firstItem="Q5l-gu-ZP7" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="10:29" constant="-20.000000000000028" id="I6r-hW-d2C"/>
-                <constraint firstAttribute="trailing" secondItem="DWw-zc-uUL" secondAttribute="trailing" constant="92" id="WSr-pc-hzG"/>
                 <constraint firstItem="Q5l-gu-ZP7" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ea9-gj-hZY"/>
-                <constraint firstAttribute="trailing" secondItem="b6G-1d-Vid" secondAttribute="trailing" constant="68" id="jcr-A2-4JN"/>
-                <constraint firstItem="b6G-1d-Vid" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="162" id="m1q-PL-T4R"/>
                 <constraint firstItem="Q5l-gu-ZP7" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" constant="0.5" id="oLs-te-y78"/>
-                <constraint firstItem="DWw-zc-uUL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="93" id="rYQ-v1-9XJ"/>
-                <constraint firstItem="DWw-zc-uUL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="297" id="z9a-TD-oRV"/>
             </constraints>
             <connections>
                 <outlet property="labJiangjin" destination="DWw-zc-uUL" id="SLB-fi-2EV"/>

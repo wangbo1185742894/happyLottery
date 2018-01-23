@@ -26,4 +26,5 @@
 @property(nonatomic,strong)NSString *usageChannel;
 @property(nonatomic,strong)NSString *linversionkUrl;
 @property(nonatomic,strong)NSString *thumbnailCode;
+@property(nonatomic,strong)NSString *cardcode;
 @end
