@@ -77,7 +77,9 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self getJczqShortcut];
+    [adsView setImageUrlArray:nil];
     [self loadAdsImg];
+    
     [self loadNews];
     [self getJczqShortcut];
     self.navigationController.navigationBar.hidden = YES;
@@ -104,11 +106,14 @@
         if ([resultDic[@"code"] integerValue] != 0) {
             return ;
         }
-        for (NSDictionary *dic in resultDic[@"result"]) {
+        
+        NSArray  *modelList = resultDic[@"result"];
+        for (int i = 0; i < ( modelList.count > 5?5:modelList.count); i++) {
+            NSDictionary *dic = modelList[i];
             ADSModel *model = [[ADSModel alloc]initWith:dic];
             [adsArray addObject:model];
         }
-    
+
         [adsView setImageUrlArray:adsArray];
         
     }];
@@ -262,6 +267,14 @@
         return;
     }
     
+    if([keyStr isEqualToString:@"A401"]){
+        self.tabBarController.selectedIndex = 2;
+        return;
+    }else if([keyStr isEqualToString:@"A402"]){
+        self.tabBarController.selectedIndex = 1;
+        return;
+    }
+    
     if (itemIndex.trLoadStatus!= nil) {
         if ([itemIndex.trLoadStatus isEqualToString:@"ENABLE"] && self.curUser.isLogin == NO) {
             [self needLogin];
@@ -293,12 +306,10 @@
     
     
     if (itemIndex.imageContentType != nil) {
-        
         jumpType = [NSString stringWithFormat:@"%@",itemIndex.imageContentType];
     }else{
         jumpType = @"";
     }
-    
     
     if ([jumpType isEqualToString:@"NOJUMP"]) {
         return;
@@ -414,6 +425,7 @@
     forecastVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:forecastVC animated:YES];
 }
+
 - (IBAction)actionNewDetail:(id)sender {
     WebShowViewController *showViewVC = [[WebShowViewController alloc]init];
     showViewVC.title = @"资讯详情";
@@ -426,6 +438,10 @@
 -(void)newScollectMatch:(JczqShortcutModel *)model andIsSelect:(BOOL)isSelect{
     if (self.curUser == nil || self.curUser.isLogin == NO) {
         [self needLogin];
+        return;
+    }
+    if (colloectList.count >20) {
+        [self showPromptText:@"最多收藏20场比赛，请先取消已收藏的比赛" hideAfterDelay:1.7];
         return;
     }
     [self.lotteryMan collectMatch:@{@"cardCode":self.curUser.cardCode,@"matchKey":model.matchKey,@"isCollect":@(isSelect)}];

@@ -12,13 +12,42 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IntegralMallViewController">
             <connections>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="webContentView" destination="qKt-s4-Ka6" id="pYG-9H-6nW"/>
+                <outlet property="webDisBottom" destination="N0u-8O-4MD" id="lW2-jm-ehs"/>
+                <outlet property="webDisTop" destination="3Ed-CM-Cql" id="5qA-43-gJe"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qKt-s4-Ka6">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </webView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Djd-n5-DEg">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
+                    <color key="backgroundColor" red="0.20288130639999999" green="0.77987009289999998" blue="0.57245916129999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="ywK-K1-bPS"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="qKt-s4-Ka6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="3Ed-CM-Cql"/>
+                <constraint firstAttribute="trailing" secondItem="Djd-n5-DEg" secondAttribute="trailing" id="81Y-Pa-hr4"/>
+                <constraint firstItem="Djd-n5-DEg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="HQF-bd-cgx"/>
+                <constraint firstAttribute="trailing" secondItem="qKt-s4-Ka6" secondAttribute="trailing" id="HcA-l7-eUh"/>
+                <constraint firstAttribute="bottom" secondItem="qKt-s4-Ka6" secondAttribute="bottom" id="N0u-8O-4MD"/>
+                <constraint firstItem="qKt-s4-Ka6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="VgI-Fn-p5q"/>
+                <constraint firstItem="Djd-n5-DEg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ct8-nO-md9"/>
+            </constraints>
+            <point key="canvasLocation" x="35.5" y="54.5"/>
         </view>
     </objects>
 </document>

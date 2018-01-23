@@ -170,7 +170,6 @@
     };
     
     
-    
     SOAPRequest *request = [self requestForAPI: APISchemeScorePayment withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
     [self newRequestWithRequest:request
                          subAPI:SUBAPISchemeService
@@ -579,6 +578,34 @@
     };
     //
     SOAPRequest *request = [self requestForAPI: APICollectMatch withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIDATA
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+- (void)getForecastTotal:(NSDictionary *)paraDic{
+    
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        
+        if (response.succeed) {
+            NSString *responseJsonStr = [response getAPIResponse];
+            NSDictionary  *infoDic = [Utility objFromJson:responseJsonStr];
+            [self.delegate gotForecastTotal:infoDic errorMsg:response.errorMsg];
+        } else {
+           [self.delegate gotForecastTotal:nil errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate gotForecastTotal:nil errorMsg:@"服务器错误"];
+    };
+    //
+    SOAPRequest *request = [self requestForAPI: APIgetForecastTotal withParam:nil];
     [self newRequestWithRequest:request
                          subAPI:SUBAPIDATA
       constructingBodyWithBlock:nil

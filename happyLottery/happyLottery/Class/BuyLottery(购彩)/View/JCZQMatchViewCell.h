@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "JCZQTranscation.h"
 #import "JCZQMatchModel.h"
-
+#import "HomeYCModel.h"
 @protocol JCZQMatchViewCellDelegate
 
 -(void)showAllPlayType:(JCZQMatchModel *)model :(NSDictionary *)titleDic;
@@ -20,11 +20,19 @@
 
 -(void)showSPFARQSPFSelecedMsg:(NSString *)msg;
 
+-(void)showForecastDetailForCellBottom:(JCZQMatchModel *)model;//显示cell下面部分view
+
+-(void)showMatchDetailWith:(HomeYCModel *)model;
+
+-(void)showSchemeRecom;
+
 @end
 
 @interface JCZQMatchViewCell : UITableViewCell
 
 @property(nonatomic,weak)id<JCZQMatchViewCellDelegate>delegate;
+
+-(void)refreshWithYcInfo:(HomeYCModel *)homeModel;
 
 -(void)reloadDataMatch:(JCZQMatchModel * )match andProfileTitle:(NSString *)title andGuoguanType:(JCZQPlayType )playType;
 @end

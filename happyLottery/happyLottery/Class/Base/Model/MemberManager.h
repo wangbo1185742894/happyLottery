@@ -51,7 +51,7 @@
 - (void) gotisSignInToday:(NSString  *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) queryRecharge:(NSDictionary *)Info IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) gotAvailableCoupon:(BOOL)success andPayInfo:(NSArray *)payInfo errorMsg:(NSString *)msg;
-
+- (void)saveVisited:(BOOL)issuccess;
 @end
 
 @interface MemberManager : Manager
@@ -102,6 +102,7 @@
 - (void) signIn:(NSDictionary *)paraDic;
 - (void) isSignInToday:(NSDictionary *)paraDic;
 - (void) queryRecharge:(NSDictionary *)paraDic;
+- (void)saveVisit:(NSArray  *)infoArray;
 
 
 @end

@@ -145,12 +145,21 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_mingzhong.png" translatesAutoresizingMaskIntoConstraints="NO" id="Joc-3N-ewE">
-                        <rect key="frame" x="345" y="8" width="30" height="30"/>
+                        <rect key="frame" x="204" y="36.5" width="30" height="30"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="Fxr-v7-AwO"/>
                             <constraint firstAttribute="height" constant="30" id="QjW-6p-VbB"/>
                         </constraints>
                     </imageView>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NWN-qO-Dtt">
+                        <rect key="frame" x="336" y="8" width="31" height="12"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="12" id="itc-68-OWk"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.20288130639999999" green="0.77987009289999998" blue="0.57245916129999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="O9m-Q4-ncO" firstAttribute="top" secondItem="RlU-qA-C4u" secondAttribute="bottom" constant="7" id="0IQ-1J-YlV"/>
@@ -167,21 +176,23 @@
                     <constraint firstItem="5Ah-Cw-H57" firstAttribute="leading" secondItem="zAr-Sk-jFT" secondAttribute="trailing" constant="10" id="CjK-mm-fXg"/>
                     <constraint firstItem="aQp-RS-tS2" firstAttribute="top" secondItem="O9m-Q4-ncO" secondAttribute="bottom" constant="8" id="DAt-sO-o1y"/>
                     <constraint firstItem="zAr-Sk-jFT" firstAttribute="height" secondItem="rq1-dM-SjC" secondAttribute="height" id="DS1-5z-J8s"/>
-                    <constraint firstItem="Joc-3N-ewE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="DVZ-j0-c1a"/>
                     <constraint firstItem="uRn-pv-HDi" firstAttribute="leading" secondItem="O9m-Q4-ncO" secondAttribute="trailing" constant="7" id="Dgs-g8-Ga4"/>
-                    <constraint firstAttribute="trailing" secondItem="Joc-3N-ewE" secondAttribute="trailing" id="DhT-80-zj4"/>
                     <constraint firstItem="p7R-OW-kJR" firstAttribute="top" secondItem="UGq-8h-dd8" secondAttribute="bottom" constant="6" id="Dvy-wo-b5D"/>
                     <constraint firstItem="UGq-8h-dd8" firstAttribute="top" secondItem="uak-MD-pfT" secondAttribute="bottom" id="EMo-YR-pMM"/>
                     <constraint firstItem="RlU-qA-C4u" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="IoF-dc-YdQ"/>
                     <constraint firstAttribute="trailing" secondItem="UGq-8h-dd8" secondAttribute="trailing" id="LBU-5n-600"/>
                     <constraint firstAttribute="trailing" secondItem="uak-MD-pfT" secondAttribute="trailing" id="N8m-8W-osw"/>
+                    <constraint firstItem="Joc-3N-ewE" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="-10" id="NsV-JH-JDR"/>
                     <constraint firstItem="p7R-OW-kJR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="OyI-aK-jy5"/>
                     <constraint firstItem="G2M-Iz-M3E" firstAttribute="centerY" secondItem="aQp-RS-tS2" secondAttribute="centerY" id="Pwb-1p-svI"/>
+                    <constraint firstAttribute="trailing" secondItem="NWN-qO-Dtt" secondAttribute="trailing" constant="8" id="UHV-ic-e4R"/>
+                    <constraint firstItem="NWN-qO-Dtt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="UrZ-iU-gYg"/>
                     <constraint firstAttribute="bottom" secondItem="zAr-Sk-jFT" secondAttribute="bottom" constant="5" id="UtF-to-cZk"/>
                     <constraint firstItem="G2M-Iz-M3E" firstAttribute="height" secondItem="uRn-pv-HDi" secondAttribute="height" id="VRe-bT-aUO"/>
                     <constraint firstItem="5Ah-Cw-H57" firstAttribute="height" secondItem="rq1-dM-SjC" secondAttribute="height" id="VWc-yR-Ibj"/>
                     <constraint firstItem="vk1-j6-eNp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="cPs-L7-T7p"/>
                     <constraint firstItem="zAr-Sk-jFT" firstAttribute="top" secondItem="UGq-8h-dd8" secondAttribute="bottom" constant="5" id="d8S-lP-yvA"/>
+                    <constraint firstItem="vk1-j6-eNp" firstAttribute="centerX" secondItem="Joc-3N-ewE" secondAttribute="centerX" constant="-20" id="eOx-Nm-XTN"/>
                     <constraint firstAttribute="trailing" secondItem="hcs-EW-SGY" secondAttribute="trailing" id="fS2-8a-9Pu"/>
                     <constraint firstItem="rq1-dM-SjC" firstAttribute="top" secondItem="UGq-8h-dd8" secondAttribute="bottom" constant="5" id="g5Y-kG-iVV"/>
                     <constraint firstItem="O9m-Q4-ncO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="gqM-15-JFg"/>
@@ -209,6 +220,7 @@
                 <outlet property="labGuestName" destination="G2M-Iz-M3E" id="DWT-VN-06c"/>
                 <outlet property="labHomeName" destination="uRn-pv-HDi" id="fKK-tt-Z63"/>
                 <outlet property="labMatchLine" destination="RlU-qA-C4u" id="Zys-oh-5ON"/>
+                <outlet property="labMatchResult" destination="NWN-qO-Dtt" id="3e0-fp-b8f"/>
             </connections>
             <point key="canvasLocation" x="62.5" y="93.5"/>
         </tableViewCell>

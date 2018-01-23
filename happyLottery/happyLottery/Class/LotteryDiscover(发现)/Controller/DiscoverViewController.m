@@ -28,10 +28,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.viewControllerNo = @"A401";
     self.faxianWebView.scrollView.bounces = NO;
     self.faxianWebView.delegate = self;
-    [self.faxianWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/app/find/index",H5BaseAddress]]]];
+    [self.faxianWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/app/find/index",@"http://192.168.88.193:18086"]]]];
     [self setWebView];
 }
 
@@ -61,17 +61,6 @@
 }
 
 
-- (void)webViewDidStartLoad:(UIWebView *)webView
-{
-    context = [webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
-    context[@"appObj"] = self;
-    
-    context.exceptionHandler = ^(JSContext *context, JSValue *exceptionValue) {
-        context.exception = exceptionValue;
-    };
-    [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitUserSelect='none';"];
-    [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitTouchCallout='none';"];
-}
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
@@ -91,11 +80,12 @@
     return YES;
 }
 
+
 #pragma JSObjcDelegate
+
 -(void)SharingLinks:(NSString *)code{
 //    [self showPromptText:code hideAfterDelay:1.8];
     dispatch_async(dispatch_get_main_queue(), ^{
-        
         [self initshare:code];
     });
 }

@@ -70,8 +70,12 @@
         NSLog(@"Got an error: %@", error);
     } else {
         NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding: NSUTF8StringEncoding];
+        jsonString =  [jsonString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+        jsonString =  [jsonString stringByReplacingOccurrencesOfString:@"\t" withString:@""];
+        jsonString =  [jsonString stringByReplacingOccurrencesOfString:@" " withString:@""];
         return jsonString;
     }
+    
     return nil;
 }
 

@@ -21,6 +21,8 @@
 #import "JCZQSelectBQCVIew.h"
 #import "JCZQSelectBFVIew.h"
 #import "OptionSelectedView.h"
+#import "UMChongZhiViewController.h"
+#import "YuCeSchemeCreateViewController.h"
 
 #define KJCZQMatchViewCell @"JCZQMatchViewCell"
 @interface JCZQPlayViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryProfileSelectViewDelegate,LotteryManagerDelegate,JCZQMatchViewCellDelegate,JCZQSelectVIewDelegate,MatchLeagueSelectViewDelegate,OptionSelectedViewDelegate>
@@ -30,6 +32,7 @@
     MatchLeagueSelectView * matchSelectView;
     LotteryProfileSelectView *profileSelectView;
     OptionSelectedView *optionView;
+    JCZQMatchModel *curShowModel;
 }
 @property (weak, nonatomic) IBOutlet UILabel *labSelectInfo;
 @property (weak, nonatomic) IBOutlet UITableView *tabJCZQListView;
@@ -324,20 +327,7 @@
     self.navigationItem.rightBarButtonItems = @[itemQuery,itemCleanLeague];
 }
 
--(UIBarButtonItem *)creatBarItem:(NSString *)title icon:(NSString *)imgName andFrame:(CGRect)frame andAction:(SEL)action{
-    UIButton *btnItem = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btnItem addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
-    btnItem.frame = frame;
-    if (title != nil) {
-        [btnItem setTitle:title forState:0];
-    }
-    
-    if (imgName != nil) {
-        [btnItem setImage:[UIImage imageNamed:imgName] forState:0];
-    }
-    UIBarButtonItem *barItem = [[UIBarButtonItem alloc]initWithCustomView:btnItem];
-    return barItem;
-}
+
 
 -(void)actionPlayTypeRecom{
     
@@ -513,6 +503,9 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     [cell reloadDataMatch:self.showArray[indexPath.section][indexPath.row] andProfileTitle:self.trancation.curProfile.Desc andGuoguanType:self.trancation.playType];
+    if (self.showArray[indexPath.section][indexPath.row].isShow == YES) {
+        [cell refreshWithYcInfo:self.showArray[indexPath.section][indexPath.row].ycModel];
+    }
     cell.delegate = self;
     return cell;
 }
@@ -537,7 +530,12 @@
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 120;
+    if (_matchArray[indexPath.section][indexPath.row].isShow == YES) {
+        return 230;
+    }else{
+        
+        return 120;
+    }
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -706,5 +704,46 @@
 -(void)optionDidSelacted:(OptionSelectedView *)optionSelectedView andIndex:(NSInteger)index{
     
 }
+
+-(void)showForecastDetailForCellBottom:(JCZQMatchModel *)model{
+    [self.tabJCZQListView reloadData];
+    curShowModel = model;
+    if (model.isShow) {
+        if (model.matchKey == nil) {
+            [self showPromptText:@"该场比赛暂无预测信息" hideAfterDelay:1.7];
+            return;
+        }
+        [self.lotteryMan getForecastByMatch:@{@"lotteryCode":@"jczq",@"matchKey":model.matchKey}];
+    }
+}
+
+-(void)gotForecastByMatch:(NSDictionary *)resDic errorMsg:(NSString *)msg{
+    if (resDic == nil) {
+        [self showPromptText:@"该场比赛暂无预测信息" hideAfterDelay:1.7];
+        return;
+    }
+    HomeYCModel *model = [[HomeYCModel alloc]initWithDic:resDic];
+    curShowModel.ycModel = model;
+    [self.tabJCZQListView reloadData];
+    
+}
+
+
+-(void)showMatchDetailWith:(HomeYCModel *)model{
+    UMChongZhiViewController *matchDetailVC = [[UMChongZhiViewController alloc]init];
+    matchDetailVC.model = [model jCZQScoreZhiboToJcForecastOptions]  ;
+    if (model == nil) {
+        [self showPromptText:@"暂无详情" hideAfterDelay:1.7];
+        return;
+    }
+    [self.navigationController pushViewController:matchDetailVC animated:YES];
+}
+
+-(void)showSchemeRecom{
+    YuCeSchemeCreateViewController *vc = [[YuCeSchemeCreateViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+
 
 @end

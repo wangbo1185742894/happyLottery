@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HomeYCModel.h"
 
 @interface JCZQMatchModel : BaseModel
 @property(nonatomic,copy)NSString * _id;
@@ -60,9 +61,10 @@
 @property (nonatomic , strong) NSString * odd_JQS_Select_min;
 @property (nonatomic , strong) NSString * odd_BQC_Select_min;
 @property (nonatomic , strong) NSArray * odd_min_zuhe_HHGG;
-
+@property(assign,nonatomic)BOOL isShow;
 
 @property (nonatomic,strong)NSMutableArray *matchBetArray;
+@property(nonatomic,strong)HomeYCModel *ycModel;
 
 /*
  一场赛事5个玩法 对应 每个玩法4种状态 0 1 2 3

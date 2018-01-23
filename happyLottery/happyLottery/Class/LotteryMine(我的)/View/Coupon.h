@@ -22,6 +22,7 @@
 @property(nonatomic,strong)NSString *remark;
 
 @property(assign,nonatomic)BOOL isSelect;
+@property(assign,nonatomic)BOOL isShow;
 
 @property(nonatomic,strong)NSString *count;
 

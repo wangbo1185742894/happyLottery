@@ -8,8 +8,12 @@
 
 #ifndef API_h
 #define API_h
+
+
 #define ServerAddress @"http://192.168.88.244:8086"  //资讯  轮播图 用户图像
-#define H5BaseAddress @"http://192.168.88.244:18086"
+//#define H5BaseAddress @"http://192.168.88.244:18086"
+#define H5BaseAddress @"http://192.168.88.193:18086"  //谢青服务
+
 //杨芳本地
 //#define ServerAddress @"http://192.168.88.109:8086"
 #define NameSpaceURI @"http://webservice.onlytest.com/"
@@ -97,6 +101,8 @@
 #define APICollectMatch             @"collectMatch"
 #define APIGetCollectedMatchList    @"getCollectedMatchList"
 #define APIgetClientDownLoadUrl     @"getClientDownLoadUrl"
+#define APIsaveVisit                @"saveVisit"
+#define APIgetForecastTotal         @"getForecastTotal"
 
 
 #define SUBAPISchemeService   @"/scheme"

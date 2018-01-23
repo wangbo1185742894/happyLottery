@@ -80,11 +80,15 @@
                    
                     state = @"待开奖";
                     
-                }else if ([self.winningStatus isEqualToString:@"NOT_LOTTERY"]) {
-                   state = @"未中奖";
                 }else{
+                    
                     if ([self.won boolValue]) {
-                        state = @"已中奖";
+                        if (![self.winningStatus isEqualToString:@"SEND_PRIZE"]||![self.winningStatus isEqualToString:@"BIG_GAIN_TICKET"]) {
+                            state = @"已中奖(派奖中)";
+                        }else{
+                            state = @"已中奖";
+                        }
+                        
                     }else{
                         state = @"未中奖";
                     }

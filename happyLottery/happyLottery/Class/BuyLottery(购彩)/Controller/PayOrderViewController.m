@@ -77,18 +77,28 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    if (self.curSelectCoupon != nil) {
-//
-        labCanUseYouhuiquan.text = [NSString stringWithFormat:@"￥%@元优惠券",self.curSelectCoupon.deduction];
-        self.labZheKou.text = [NSString stringWithFormat:@"-%.2f元",[self.curSelectCoupon.deduction doubleValue]];
-        self.labZheKou.textColor = SystemRed;
-        self.labRealCost.text = [NSString stringWithFormat:@"%.2f 元",self.cashPayMemt.realSubscribed - [self.curSelectCoupon.deduction doubleValue]] ;
-    }else{
-          labCanUseYouhuiquan.text = [NSString stringWithFormat:@"暂无可用优惠券"];
-          self.labZheKou.text = [NSString stringWithFormat:@"-0.00元"];
-          self.labZheKou.textColor = SystemGray;
-           self.labRealCost.text = [NSString stringWithFormat:@"%.2f 元",self.cashPayMemt.realSubscribed] ;
+    
+    if(self.couponList.count == 0){
+        labCanUseYouhuiquan.text = [NSString stringWithFormat:@"暂无可用优惠券"];
+        self.labZheKou.text = [NSString stringWithFormat:@"-0.00元"];
+        self.labZheKou.textColor = SystemGray;
+        self.labRealCost.text = [NSString stringWithFormat:@"%.2f 元",self.cashPayMemt.realSubscribed] ;
+    }else {
+        if (self.curSelectCoupon != nil) {
+            //
+            labCanUseYouhuiquan.text = [NSString stringWithFormat:@"￥%@元优惠券",self.curSelectCoupon.deduction];
+            self.labZheKou.text = [NSString stringWithFormat:@"-%.2f元",[self.curSelectCoupon.deduction doubleValue]];
+            self.labZheKou.textColor = SystemRed;
+            self.labRealCost.text = [NSString stringWithFormat:@"%.2f 元",self.cashPayMemt.realSubscribed - [self.curSelectCoupon.deduction doubleValue]] ;
+        }else{
+            labCanUseYouhuiquan.text = [NSString stringWithFormat:@"%ld张可用优惠券",self.couponList.count];
+            self.labZheKou.text = [NSString stringWithFormat:@"-0.00元"];
+            self.labZheKou.textColor = SystemGray;
+            self.labRealCost.text = [NSString stringWithFormat:@"%.2f 元",self.cashPayMemt.realSubscribed] ;
+        }
     }
+    
+ 
     if (self.cashPayMemt.costType == CostTypeCASH) {
            [self.btnTouzhu setTitle:[NSString stringWithFormat:@"确认支付 ￥%.2f",self.cashPayMemt.realSubscribed - [self.curSelectCoupon.deduction doubleValue]] forState:0];
         
@@ -105,9 +115,9 @@
         return;
     }
     if (payInfo.count ==0) {
-        
+         labCanUseYouhuiquan.text = @"暂无可用优惠券";
     }else{
-         labCanUseYouhuiquan.text = @"请选择优惠券";
+         labCanUseYouhuiquan.text = [NSString stringWithFormat:@"%ld张可用优惠券",payInfo.count];
     }
    
     for (NSDictionary *itemDic in payInfo) {

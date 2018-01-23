@@ -35,9 +35,7 @@
 }
 
 -(void)setImageUrlArray:(NSArray<ADSModel *> *)imgUrls{
-    _imgUrls = imgUrls;
     
-    pageCtl.numberOfPages = imgUrls.count;
     if (scrContentView == nil) {
         scrContentView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth,self.mj_h)];
         scrContentView.delegate = self;
@@ -51,8 +49,29 @@
             [subView removeFromSuperview];
         }
     }
-
     
+    if (imgUrls == nil) {//网络状态不好  或者数据未回来  预先加载本地banner图
+        scrContentView.contentSize = CGSizeMake(KscreenWidth * 3, scrContentView.mj_h);
+        
+        
+        
+        for (int i = 0; i < 3; i ++ ) {
+            UIButton *itemImg = [[UIButton alloc]initWithFrame:CGRectMake(KscreenWidth * i, 0, self.mj_w, scrContentView.mj_h)];
+            itemImg.imageView.contentMode = UIViewContentModeScaleToFill;
+            [scrContentView addSubview:itemImg];
+            
+            [itemImg addTarget:self action:@selector(imgItemClick) forControlEvents:UIControlEventTouchUpInside];
+            itemImg.adjustsImageWhenHighlighted = NO;
+            [itemImg setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"ad_home%d",i + 1]] forState:0];
+        }
+        
+        [self addSubview:pageCtl];
+        pageCtl.numberOfPages = 3;
+        return;
+    }
+    
+    _imgUrls = imgUrls;
+
     scrContentView.contentSize = CGSizeMake(KscreenWidth * imgUrls.count, scrContentView.mj_h);
     
    
@@ -65,13 +84,11 @@
         [itemImg addTarget:self action:@selector(imgItemClick) forControlEvents:UIControlEventTouchUpInside];
         itemImg.adjustsImageWhenHighlighted = NO;
         [itemImg setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"ad_home%d.png",i + 1]] forState:0];
-        
-        [itemImg sd_setImageWithURL:[NSURL URLWithString:imgUrls[i].imgUrl] forState:0];
+        [itemImg sd_setBackgroundImageWithURL:[NSURL URLWithString:imgUrls[i].imgUrl] forState:0];
     }
+    pageCtl.numberOfPages = 5;
+
     [self addSubview:pageCtl];
-    
-    
-   
 }
 
 -(void)updataPageCtl{
@@ -80,18 +97,22 @@
 
 -(void)autoScrImg{
    
+    NSInteger count = 0;
+    if (_imgUrls == nil) {
+        count = 3;
+    }else{
+        count = _imgUrls.count;
+    }
+    
     CGFloat aniTime;
     index ++ ;
-    if (index == _imgUrls.count) {
+    if (index == count) {
         aniTime = 0.1;
     }else{
         aniTime = 0.5;
     }
-    
-    if (_imgUrls == nil) {
-        return ;
-    }
-    index = index % _imgUrls.count;
+
+    index = index % count;
     
     [UIView animateWithDuration:aniTime animations:^{
         [self updataPageCtl];

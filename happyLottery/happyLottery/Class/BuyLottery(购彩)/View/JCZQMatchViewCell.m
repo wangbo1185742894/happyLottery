@@ -11,6 +11,7 @@
 #import "JCZQMatchViewCell.h"
 #import "MGLabel.h"
 
+
 @interface  JCZQMatchViewCell ()
 {
     JCZQMatchModel *curModel;
@@ -25,6 +26,13 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthLabRangqiu;
 @property(nonatomic,strong)NSDictionary *titleDic;
 @property (weak, nonatomic) IBOutlet UIImageView *iconIsDanGuan;
+@property (weak, nonatomic) IBOutlet UIButton *btnForecastItem1;
+@property (weak, nonatomic) IBOutlet UIButton *btnForecastItem2;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthPreNum;
+@property (weak, nonatomic) IBOutlet UILabel *labPreBack;
+@property (weak, nonatomic) IBOutlet UILabel *labPre;
+@property (weak, nonatomic) IBOutlet UILabel *labPreIndex;
+@property (weak, nonatomic) IBOutlet UIView *viewForecastContent;
 
 
 @end
@@ -250,6 +258,17 @@
         [subView removeFromSuperview];
     }
     
+    if (match.isShow == YES) {
+        self.viewForecastContent.hidden = NO;
+    }else{
+        self.viewForecastContent.hidden = YES;
+    }
+    
+    self.labPre.layer.cornerRadius = 2;
+    self.labPre.layer.masksToBounds = YES;
+    self.labPreBack.layer.cornerRadius = 2;
+    self.labPreBack.layer.masksToBounds = YES;
+    
     curModel = match;
     if (curModel.isDanGuan == YES) {
         self.iconIsDanGuan. hidden = NO;
@@ -368,6 +387,12 @@
 //    [self creatBtnWithFrame:CGRectMake(curX, curY, width, height) normal:@{@"nTitle":@"点击展开全部",@"nImage":@"jczqshowallback",@"sImage":@"wukuangwuyuanjiaoselect"} andTag:3000 andSelect:@"0"] ;
     
 }
+- (IBAction)actionForecastDetail:(UIButton *)sender {
+    [self.delegate showMatchDetailWith:curModel.ycModel];
+}
+- (IBAction)labSchemeRecom:(UIButton *)sender {
+    [self.delegate showSchemeRecom];
+}
 
 -(NSString *)getSpNOTitle:(NSArray *)oddArray index:(NSInteger)i{
     float sp = 0.00;
@@ -377,5 +402,60 @@
     NSString *itemStr = [NSString stringWithFormat:@"%.2f",sp];
     return itemStr;
 }
+- (IBAction)actionShowForecastDetail:(UIButton *)sender {
+    
+    curModel.isShow = !curModel.isShow;
+    self.viewForecastContent.hidden = !curModel.isShow;
+    [self.delegate showForecastDetailForCellBottom:curModel];
+}
+
+-(void)refreshWithYcInfo:(HomeYCModel *)homeModel{
+    
+    if (homeModel == nil) {
+        return;
+    }
+    self.widthPreNum.constant = [homeModel.predictIndex doubleValue] * self.labPreBack.mj_w;
+    self.labPreIndex.text = [NSString stringWithFormat:@"%.0f%%",[homeModel.predictIndex doubleValue] * 100];
+    self.btnForecastItem1.hidden = YES;
+    self.btnForecastItem1.hidden = YES;
+    
+    for (JcForecastOptions  * op in homeModel.predict) {
+        NSString *title;
+        BOOL isselect = [op.forecast boolValue];
+        if (!isselect) {
+            continue;
+        }
+        switch ([op.options integerValue]) {
+            case 0:
+                
+                title = [NSString stringWithFormat:@"胜 %@",op.sp];
+                
+                break;
+                
+            case 1:
+                title = [NSString stringWithFormat:@"平 %@",op.sp];
+                
+                break;
+                
+                
+            case 2:
+                title = [NSString stringWithFormat:@"负 %@",op.sp];
+                
+                break;
+            default:
+                break;
+        }
+        if (_btnForecastItem1.hidden == YES) {
+            [_btnForecastItem1 setTitle:title forState:0];
+            _btnForecastItem1.hidden = NO;
+        }else{
+            [_btnForecastItem2 setTitle:title forState:0];
+            _btnForecastItem2.hidden = NO;
+        }
+    }
+    
+}
+
+
 
 @end

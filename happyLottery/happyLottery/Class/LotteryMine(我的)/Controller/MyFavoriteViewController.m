@@ -75,10 +75,23 @@
     if (page == 1) {
         [JczqShortcutList removeAllObjects];
     }
+    
     for (NSDictionary* infoDic in infoArray) {
         JczqShortcutModel *model =  [[JczqShortcutModel alloc]initWith:infoDic];
         [JczqShortcutList addObject:model];
     }
+    [JczqShortcutList sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        JczqShortcutModel * m1 = (JczqShortcutModel *)obj1;
+        JczqShortcutModel * m2 = (JczqShortcutModel *)obj2;
+        NSDate *date1 = [Utility dateFromDateStr:m1.dealLine withFormat:@"yyyy-MM-dd HH:mm:ss"];
+        NSDate *date2 = [Utility dateFromDateStr:m2.dealLine withFormat:@"yyyy-MM-dd HH:mm:ss"];
+        if([date1 compare: date2] == -1){
+            
+            return YES;
+        }else{
+            return NO;
+        }
+    }];
     [self.tabCollectMatchList reloadData];
 }
 

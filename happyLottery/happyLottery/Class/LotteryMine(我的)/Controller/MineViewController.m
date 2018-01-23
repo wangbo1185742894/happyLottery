@@ -157,7 +157,6 @@
     if ([self.curUser.headUrl isEqualToString:@""]) {
         self.userImage.image = [UIImage imageNamed:@"usermine.png"];
     }else{
-        
         self.userImage.image =[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.curUser.headUrl]]];
     }
 }
