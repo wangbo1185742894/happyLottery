@@ -38,9 +38,11 @@
     __weak IBOutlet NSLayoutConstraint *homeViewHeight;
     WBAdsImgView *adsView;
     UIView  *menuView;
+
      NSMutableArray *listUseRedPacketArray;
-       RedPacket *r;
+     RedPacket *r;
      int j;
+
     __weak IBOutlet UIView *viewNewDefault;
     CGFloat curY;
     __weak IBOutlet NSLayoutConstraint *newsViewMarginTop;
@@ -85,7 +87,9 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self getJczqShortcut];
+    [adsView setImageUrlArray:nil];
     [self loadAdsImg];
+    
     [self loadNews];
     [self getJczqShortcut];
     self.navigationController.navigationBar.hidden = YES;
@@ -115,11 +119,14 @@
         if ([resultDic[@"code"] integerValue] != 0) {
             return ;
         }
-        for (NSDictionary *dic in resultDic[@"result"]) {
+        
+        NSArray  *modelList = resultDic[@"result"];
+        for (int i = 0; i < ( modelList.count > 5?5:modelList.count); i++) {
+            NSDictionary *dic = modelList[i];
             ADSModel *model = [[ADSModel alloc]initWith:dic];
             [adsArray addObject:model];
         }
-    
+
         [adsView setImageUrlArray:adsArray];
         
     }];
@@ -146,7 +153,7 @@
         }
         [self isHideNewView:NO];
         newsModel = [[NewsModel alloc]initWith: dicItem[@"result"]];
-       
+
         [self showNew];
     }];
     
@@ -203,7 +210,6 @@
     }else{
         [tabForecaseList reloadData];
     }
-    
 }
 
 -(void)setTableView{
@@ -273,6 +279,14 @@
         return;
     }
     
+    if([keyStr isEqualToString:@"A401"]){
+        self.tabBarController.selectedIndex = 2;
+        return;
+    }else if([keyStr isEqualToString:@"A402"]){
+        self.tabBarController.selectedIndex = 1;
+        return;
+    }
+    
     if (itemIndex.trLoadStatus!= nil) {
         if ([itemIndex.trLoadStatus isEqualToString:@"ENABLE"] && self.curUser.isLogin == NO) {
             [self needLogin];
@@ -304,12 +318,10 @@
     
     
     if (itemIndex.imageContentType != nil) {
-        
         jumpType = [NSString stringWithFormat:@"%@",itemIndex.imageContentType];
     }else{
         jumpType = @"";
     }
-    
     
     if ([jumpType isEqualToString:@"NOJUMP"]) {
         return;
@@ -425,6 +437,7 @@
     forecastVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:forecastVC animated:YES];
 }
+
 - (IBAction)actionNewDetail:(id)sender {
     WebShowViewController *showViewVC = [[WebShowViewController alloc]init];
     showViewVC.title = @"资讯详情";

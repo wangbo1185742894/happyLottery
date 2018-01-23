@@ -29,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnHomeWin;
 @property (weak, nonatomic) IBOutlet UIButton *btnHomePing;
 @property (weak, nonatomic) IBOutlet UIButton *btnHomeLose;
+@property (weak, nonatomic) IBOutlet UILabel *labMatchResult;
 
 @end
 
@@ -57,11 +58,20 @@
         
         [self addSubview:progressView];
     }
+    
+    self.labMatchResult.hidden = NO;
+    if (model.matchResult  == nil || model.matchResult.length ==0 || [model.matchResult isEqualToString:@"(null)"]) {
+        self.labMatchResult.text  = [NSString stringWithFormat:@"赛果:待知"];
+    }else{
+        self.labMatchResult.text  = [NSString stringWithFormat:@"赛果:%@",model.matchResult];
+    }
+    
+
     self.btnCollection.selected = isSelect;
     self.model = model;
     self.labMatchLine.text = model.lineId;
     
-    self.labDeadLine.text =[NSString stringWithFormat:@"截止:%@", [model.dealLine substringWithRange:NSMakeRange(5, 11)]];
+    self.labDeadLine.text =[NSString stringWithFormat:@"%@", [model.dealLine substringWithRange:NSMakeRange(5, 11)]];
     [self.imgHomeIcon sd_setImageWithURL:[NSURL URLWithString:model.homeImageUrl]];
     [self.imgGuestIcon sd_setImageWithURL:[NSURL URLWithString:model.guestImageUrl]];
     self.labHomeName.text =[NSString stringWithFormat:@"%@(主)",model.homeName] ;
@@ -128,7 +138,7 @@
     self.model = model;
     self.labMatchLine.text = model.lineId;
 
-    self.labDeadLine.text =[NSString stringWithFormat:@"截止:%@", [model.dealLine substringWithRange:NSMakeRange(5, 11)]];
+    self.labDeadLine.text =[NSString stringWithFormat:@"%@", [model.dealLine substringWithRange:NSMakeRange(5, 11)]];
     [self.imgHomeIcon sd_setImageWithURL:[NSURL URLWithString:model.homeImageUrl]];
     [self.imgGuestIcon sd_setImageWithURL:[NSURL URLWithString:model.guestImageUrl]];
     self.labHomeName.text =[NSString stringWithFormat:@"%@(主)",model.homeName] ;

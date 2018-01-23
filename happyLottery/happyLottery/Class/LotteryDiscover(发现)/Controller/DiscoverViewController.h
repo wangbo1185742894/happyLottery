@@ -11,13 +11,19 @@
 
 @protocol JSObjcDelegate <JSExport>
 
-- (void)SharingLinks:(NSString *)code;
+-(void)SharingLinks:(NSString *)code;
 -(void)goToJczq;
 -(NSString *)getCardCode;
 -(void)goToLogin;
 
+
 @end
 
 @interface DiscoverViewController : BaseViewController
+
+//-(void)SharingLinks:(NSString *)code;
+//-(void)goToJczq;
+//-(NSString *)getCardCode;
+//-(void)goToLogin;
 
 @end

@@ -202,7 +202,15 @@
     }
 }
 
-
+-(void)setMatchResult:(NSString *)result{
+    if (result == nil || result .length ==0) {
+    self.labMatchState.text  = [NSString stringWithFormat:@"赛果:待知"];
+    }else{
+        self.labMatchState.text  = [NSString stringWithFormat:@"赛果:%@",self.model.matchResult];
+    }
+    
+    self.labMatchState.textColor = SystemGreen;
+}
 
 
 @end

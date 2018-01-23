@@ -22,6 +22,8 @@
 
 -(void)loadData:(Coupon *)model{
     self.endImage.hidden = YES;
+    self.labX.hidden = YES;
+    self.labNum.hidden = YES;
     self.btnSelect.hidden = NO;
     self.btnSelect.selected = model.isSelect;
     NSString *deduction =model.deduction;

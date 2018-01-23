@@ -11,9 +11,9 @@
 #import "UMChongZhiViewController.h"
 #import "HomeYCModel.h"
 #import "WBLoopProgressView.h"
-//#import "WBYCMatchDetailViewController.h"
-//#import "JCZQScoreZhibo.h"
-//#import "JCLQScoreZhibo.h"
+#import "YCSchemeViewCell.h"
+
+#define KYCSchemeViewCell @"YCSchemeViewCell"
 
 @interface WBHomeJCYCViewController ()<UITableViewDelegate,UITableViewDataSource ,LotteryManagerDelegate,WBHomeYuceListCellDelegate>
 {
@@ -25,17 +25,21 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollViewContent;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollViewHeight;
 @property (weak, nonatomic) IBOutlet UITableView *btnZuixinYuce;
-@property (weak, nonatomic) IBOutlet UIView *selectDateView;
+@property (strong, nonatomic) UIView *selectDateView;
 @property (weak, nonatomic) IBOutlet UIButton *btnLishiYuce;
+
+
 @property (weak, nonatomic) IBOutlet UITableView *tabYuceList;
 @property(strong,nonatomic)NSString *lotteryTpey;
 
-@property (weak, nonatomic) IBOutlet UIView *viewHeader;
+
 @property (strong,nonatomic)NSMutableArray <WBSelectDateButtom *> * dateButtons;
 
 @property(nonatomic,strong)NSMutableArray <HomeYCModel *> *dataArray;
 @property(nonatomic,strong)NSMutableArray *scoreArray;
 @property(nonatomic,strong)NSMutableArray *arrayTableSectionIsOpen;
+
+@property(nonatomic,strong)NSDictionary *infoDic;
 
 @property(assign,nonatomic)BOOL isHis;
 
@@ -58,28 +62,61 @@
     NSDate* curDate = [NSDate  dateWithTimeIntervalSinceNow:0];
     NSString *dateTtile = [Utility timeStringFromFormat:@"yyyy-MM-dd" withDate:curDate];
     [self loadData:dateTtile];
+    [self getForecastTotal];
     
-    progressView = [[WBLoopProgressView alloc]initWithFrame:CGRectMake(20,40, 150, 150)];
-    progressView.color1 = [UIColor whiteColor];
-    progressView.progress = 0.5;
-    progressView.color2 = SystemLightGray;
+}
+
+-(void)getForecastTotal{
+    [self.lotteryMan getForecastTotal:nil];
+}
+
+-(void)gotForecastTotal:(NSDictionary *)infoDic errorMsg:(NSString *)msg{
+    if (infoDic == nil) {
+        [self showPromptText:msg hideAfterDelay:1.7];
+        return;
+    }
     
-    
-    [self.viewHeader addSubview:progressView];
-    
+    self.infoDic = infoDic;
+    [self .tabYuceList reloadData];
 }
 
 -(void)setTableView{
     [self.tabYuceList registerClass:[WBHomeYuceListCell class] forCellReuseIdentifier:@"WBHomeYuceListCell"];
+    [self.tabYuceList registerClass:[YCSchemeViewCell class] forCellReuseIdentifier:KYCSchemeViewCell];
+    
     self.tabYuceList.delegate = self;
     self.scrollViewContent.delegate = self;
     self.tabYuceList.dataSource = self;
-    self.tabYuceList.bounces = NO;
     
-    self.tabYuceList.rowHeight = 130;
+
     self.tabYuceList.tableFooterView = [[UIView alloc]init];
     
     
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0) {
+        
+        return  self.tabYuceList.rowHeight = 180;
+    }else{
+        
+      return   self.tabYuceList.rowHeight = 130;
+    }
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if (section == 0) {
+        return 0;
+    }else{
+        return 80;
+    }
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if (section == 1) {
+        return [self createWeekView];
+    }else{
+        return [[UIView alloc]init];
+    }
 }
 
 /**
@@ -95,21 +132,6 @@
 
 }
 
--(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-    if (scrollView == self.tabYuceList) {
-        if (self.scrollViewContent.contentSize.height>KscreenHeight) {
-          
-        }
-    }else{
-        if (scrollView.contentOffset.y >= scrollView.contentSize.height - KscreenHeight-5) {
-            [self.tabYuceList setValue:@(YES) forKey:@"scrollEnabled"];
-        }
-        if (scrollView.contentOffset.y <= -60) {
-            [self.tabYuceList setValue:@(NO) forKey:@"scrollEnabled"];
-        }
-    }
-}
-
 
 -(void)gotlistByForecast:(NSArray *)infoArray errorMsg:(NSString *)msg{
     [self hideLoadingView];
@@ -118,8 +140,6 @@
         [self showPromptText:msg hideAfterDelay:1.7];
         
     }
-    
-   
 
     for (NSDictionary *itemDic in infoArray) {
 
@@ -127,18 +147,6 @@
         [self.dataArray addObject:model];
     }
 
-    if (self.dataArray.count * 130 + 175 + 66 >KscreenHeight) {
-        if (self.dataArray.count * 130 + 175 + 66 - KscreenHeight > 175) {
-            self.scrollViewHeight.constant = 175 - 64;
-        }else{
-            self.scrollViewHeight.constant =self.dataArray.count * 130 + 175 + 66 - KscreenHeight - 64;
-        }
-        [self.tabYuceList setValue:@(NO) forKey:@"scrollEnabled"];
-        
-        
-    }else{
-        self.scrollViewHeight.constant = -64;
-    }
     [self.tabYuceList reloadData];
 }
 
@@ -146,37 +154,51 @@
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    WBHomeYuceListCell * cell = [tableView dequeueReusableCellWithIdentifier:@"WBHomeYuceListCell"];
-    [cell refreshCellWithModel:self.dataArray[indexPath.row] isZuiXin:!self.isHis];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.delegate = self;
-    return cell;
+    if (indexPath.section == 0) {
+        YCSchemeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KYCSchemeViewCell];
+        if (self.infoDic != nil) {
+            
+            [cell loadData:self.infoDic];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    }else{
+        
+        WBHomeYuceListCell * cell = [tableView dequeueReusableCellWithIdentifier:@"WBHomeYuceListCell"];
+        [cell refreshCellWithModel:self.dataArray[indexPath.row] isZuiXin:!self.isHis];
+        [cell setMatchResult:self.dataArray[indexPath.row].matchResult];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.delegate = self;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    }
 }
 
-
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 2;
+}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
-    return self.dataArray.count;
+    if (section == 0) {
+        return 1;
+    }else{
+        
+        return self.dataArray.count;
+    }
    
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
-    UMChongZhiViewController *matchDetailVC = [[UMChongZhiViewController alloc]init];
-    matchDetailVC.model = self.dataArray[indexPath.row];
-//    if ([matchDetailVC.model.spfSingle boolValue] == NO) {
-//         matchDetailVC.isHis = YES;
-//    }else{
-//
-//        
-//    }
+    if (indexPath.section == 1) {
+        UMChongZhiViewController *matchDetailVC = [[UMChongZhiViewController alloc]init];
+        matchDetailVC.model = self.dataArray[indexPath.row];
+        matchDetailVC.isHis = YES;
+        matchDetailVC.curPlayType = self.lotteryTpey;
+        [self.navigationController pushViewController:matchDetailVC animated:YES];
+        
+    }
 
-    matchDetailVC.isHis = self.isHis;
-    matchDetailVC.curPlayType = self.lotteryTpey;
-    [self.navigationController pushViewController:matchDetailVC animated:YES];
-    
 }
 
 
@@ -208,29 +230,38 @@
 
 }
 
--(void)createWeekView{
+-(UIView *)createWeekView{
     float curX = 24;
     float width = (KscreenWidth - 48) /7;
-    
-    for (int i = 0; i < 7; i ++ ) {
+    if (self.selectDateView == nil) {
+        self.selectDateView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, 80)];
+        self.selectDateView .backgroundColor = [UIColor whiteColor];
         
-        
-        NSDate* curDate = [NSDate  dateWithTimeIntervalSinceNow:-(6-i) * 24 * 60 *60];
-        NSString *dateTtile = [Utility timeStringFromFormat:@"dd" withDate:curDate];
-        NSString *week = [Utility weekDayGetForTimeDate:curDate];
-        WBSelectDateButtom *itemDate = [[WBSelectDateButtom alloc]initWithFrame:CGRectMake(curX, 0, width, self.selectDateView.mj_h - 1 )];
-        itemDate.tag = 100+(6-i);
-        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(selectDate:)];
-        [itemDate addGestureRecognizer:tapGesture];
-        
-        [itemDate setTitle:dateTtile week:week];
-        [self.dateButtons addObject:itemDate];
-        [self.selectDateView addSubview:itemDate];
-        if (i == 6) {
-            [itemDate setIsSelect: YES];
+        for (int i = 0; i < 7; i ++ ) {
+            
+            
+            NSDate* curDate = [NSDate  dateWithTimeIntervalSinceNow:-(6-i) * 24 * 60 *60];
+            NSString *dateTtile = [Utility timeStringFromFormat:@"dd" withDate:curDate];
+            NSString *week = [Utility weekDayGetForTimeDate:curDate];
+            WBSelectDateButtom *itemDate = [[WBSelectDateButtom alloc]initWithFrame:CGRectMake(curX, 0, width, self.selectDateView.mj_h - 1 )];
+            itemDate.tag = 100+(6-i);
+            UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(selectDate:)];
+            [itemDate addGestureRecognizer:tapGesture];
+            
+            [itemDate setTitle:dateTtile week:week];
+            [self.dateButtons addObject:itemDate];
+            [self.selectDateView addSubview:itemDate];
+            if (i == 6) {
+                [itemDate setIsSelect: YES];
+            }
+            curX += width;
         }
-        curX += width;
+        UILabel *lab = [[UILabel alloc]initWithFrame:CGRectMake(0, 79, KscreenWidth, 1)];
+        lab.backgroundColor = TFBorderColor;
+        [self.selectDateView addSubview:lab];
     }
+
+    return self.selectDateView;
 }
 
 -(void)selectDate:(UIPanGestureRecognizer  *)gesture{

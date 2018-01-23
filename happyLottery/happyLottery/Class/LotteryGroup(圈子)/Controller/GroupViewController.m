@@ -9,7 +9,7 @@
 #import "GroupViewController.h"
 #import <JavaScriptCore/JavaScriptCore.h>
 
-@interface GroupViewController ()<JSObjcDelegate,UIWebViewDelegate>{
+@interface GroupViewController ()<JSObjcGourpDelegate,UIWebViewDelegate>{
     JSContext *context;
 }
 @property (weak, nonatomic) IBOutlet UIWebView *groupWebView;
@@ -22,12 +22,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.groupWebView.scrollView.bounces = NO;
-
+    self.viewControllerNo = @"A402";
+   self.groupWebView.delegate = self;
     [self.groupWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/app/circle/index",H5BaseAddress]]]];
-
-      self.groupWebView.delegate = self;
-   
-
     [self setWebView];
 }
 
@@ -39,17 +36,6 @@
     }
 }
 
-- (void)webViewDidStartLoad:(UIWebView *)webView
-{
-    context = [webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
-    context[@"appObj"] = self;
-    
-    context.exceptionHandler = ^(JSContext *context, JSValue *exceptionValue) {
-        context.exception = exceptionValue;
-    };
-    [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitUserSelect='none';"];
-    [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitTouchCallout='none';"];
-}
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
@@ -72,7 +58,6 @@
 #pragma JSObjcDelegate
 -(void)telPhone{
     //    [self showPromptText:code hideAfterDelay:1.8];
-    
     dispatch_async(dispatch_get_main_queue(), ^{
        [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"tel://4006005558"]];
        

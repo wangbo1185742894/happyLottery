@@ -49,8 +49,8 @@
     
     
     labSchemeState.text = [model getSchemeState];
-    imgWinState.hidden = ![[model getSchemeState] isEqualToString:@"已中奖"];
-    if ([[model getSchemeState] isEqualToString:@"已中奖"]) {
+    imgWinState.hidden = ![[model getSchemeState] containsString:@"已中奖"];
+    if ([[model getSchemeState] containsString:@"已中奖"]) {
         labSchemeState.textColor = SystemRed;
         if ([model.costType isEqualToString:@"CASH"]) {
             labSchemeState.text = [NSString stringWithFormat:@"中奖%.2f元",[model.bonus doubleValue]];

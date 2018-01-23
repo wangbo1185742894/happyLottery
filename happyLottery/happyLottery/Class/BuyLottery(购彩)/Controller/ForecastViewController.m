@@ -164,6 +164,7 @@
         [self needLogin];
         return;
     }
+
     [self.lotteryMan collectMatch:@{@"cardCode":self.curUser.cardCode,@"matchKey":model.matchKey,@"isCollect":@(isSelect)}];
 }
 

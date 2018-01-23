@@ -37,6 +37,8 @@
 
 -(void)needLogin;
 
+-(UIBarButtonItem *)creatBarItem:(NSString *)title icon:(NSString *)imgName andFrame:(CGRect)frame andAction:(SEL)action;
+
 -(id)transFomatJson:(NSString *)strJson;
 
 @end

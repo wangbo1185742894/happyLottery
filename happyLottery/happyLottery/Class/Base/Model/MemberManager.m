@@ -1289,4 +1289,25 @@
                         failure:failureBlock];
 }
 
+- (void)saveVisit:(NSArray  *)infoArray{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        [self .delegate saveVisited:response.succeed];
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self .delegate saveVisited:NO];
+    };
+    
+    NSMutableDictionary * paramDic1 = [NSMutableDictionary dictionaryWithCapacity:1];
+    paramDic1[@"params"] = [self actionEncrypt:[self JsonFromId:infoArray]];
+    
+    SOAPRequest *request = [self requestForAPI:APIsaveVisit withParam:paramDic1];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIDATA
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
 @end

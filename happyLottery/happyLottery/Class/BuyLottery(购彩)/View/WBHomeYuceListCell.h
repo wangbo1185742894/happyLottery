@@ -21,4 +21,5 @@
 
 @property(nonatomic,weak)id< WBHomeYuceListCellDelegate> delegate;
 -(void)refreshCellWithModel:(HomeYCModel *)model isZuiXin:(BOOL )isZuixin;
+-(void)setMatchResult:(NSString *)result;
 @end

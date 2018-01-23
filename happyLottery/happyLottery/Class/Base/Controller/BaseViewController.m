@@ -27,6 +27,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(uploadVisit) name:@"NSNotificationUserLoginSuccess" object:nil];
+        
+    });
     AppDelegate *delegate  = (AppDelegate *)[UIApplication sharedApplication].delegate;
     delegate.curNavVC = self.navigationController;
     self.view.mj_w = KscreenWidth;
@@ -314,7 +319,7 @@
         while ([result next]) {
             [mVisitArray addObject:@{@"code":[result stringForColumn:@"vcNo"] == nil?@"":[result stringForColumn:@"vcNo"],@"visitCount":@([result intForColumn:@"visitCount"]),@"visitTime":@([result intForColumn:@"visitTime"]),@"source":@"iOS"}];
         }
-        //[self.memMan saveVisit:mVisitArray];
+        [self.memberMan saveVisit:mVisitArray];
         [result close];
         [self.fmdb close];
     }
@@ -347,6 +352,21 @@
     [super viewWillDisappear:animated];
     self.closeDate = [NSDate date];
     [self saveInfo];
+}
+
+-(UIBarButtonItem *)creatBarItem:(NSString *)title icon:(NSString *)imgName andFrame:(CGRect)frame andAction:(SEL)action{
+    UIButton *btnItem = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btnItem addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
+    btnItem.frame = frame;
+    if (title != nil) {
+        [btnItem setTitle:title forState:0];
+    }
+    
+    if (imgName != nil) {
+        [btnItem setImage:[UIImage imageNamed:imgName] forState:0];
+    }
+    UIBarButtonItem *barItem = [[UIBarButtonItem alloc]initWithCustomView:btnItem];
+    return barItem;
 }
 
 @end
