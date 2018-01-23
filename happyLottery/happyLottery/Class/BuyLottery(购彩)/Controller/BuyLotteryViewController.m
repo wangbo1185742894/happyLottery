@@ -38,8 +38,8 @@
     __weak IBOutlet NSLayoutConstraint *homeViewHeight;
     WBAdsImgView *adsView;
     UIView  *menuView;
-     NSMutableArray *listUseRedPacketArray;
-       RedPacket *r;
+    NSMutableArray *listUseRedPacketArray;
+    RedPacket *r;
     __weak IBOutlet UIView *viewNewDefault;
     CGFloat curY;
     __weak IBOutlet NSLayoutConstraint *newsViewMarginTop;
@@ -146,7 +146,7 @@
         }
         [self isHideNewView:NO];
         newsModel = [[NewsModel alloc]initWith: dicItem[@"result"]];
-       
+
         [self showNew];
     }];
     
@@ -203,7 +203,6 @@
     }else{
         [tabForecaseList reloadData];
     }
-    
 }
 
 -(void)setTableView{
@@ -444,10 +443,6 @@
 -(void)newScollectMatch:(JczqShortcutModel *)model andIsSelect:(BOOL)isSelect{
     if (self.curUser == nil || self.curUser.isLogin == NO) {
         [self needLogin];
-        return;
-    }
-    if (colloectList.count >20) {
-        [self showPromptText:@"最多收藏20场比赛，请先取消已收藏的比赛" hideAfterDelay:1.7];
         return;
     }
     [self.lotteryMan collectMatch:@{@"cardCode":self.curUser.cardCode,@"matchKey":model.matchKey,@"isCollect":@(isSelect)}];

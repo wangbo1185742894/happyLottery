@@ -164,10 +164,7 @@
         [self needLogin];
         return;
     }
-    if (colloectList.count >20) {
-        [self showPromptText:@"最多收藏20场比赛，请先取消已收藏的比赛" hideAfterDelay:1.7];
-        return;
-    }
+
     [self.lotteryMan collectMatch:@{@"cardCode":self.curUser.cardCode,@"matchKey":model.matchKey,@"isCollect":@(isSelect)}];
 }
 

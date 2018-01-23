@@ -85,13 +85,12 @@
     return YES;
 }
 
-
 #pragma JSObjcDelegate
 
 -(void)SharingLinks:(NSString *)code{
 //    [self showPromptText:code hideAfterDelay:1.8];
     dispatch_async(dispatch_get_main_queue(), ^{
-        
+
         [self initshare:code];
     });
 }
