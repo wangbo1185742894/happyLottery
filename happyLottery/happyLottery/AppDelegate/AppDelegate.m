@@ -140,6 +140,7 @@ static SystemSoundID shake_sound_male_id = 0;
     //notice: 3.0.0及以后版本注册可以这样写，也可以继续用之前的注册方式
     JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
     entity.types = JPAuthorizationOptionAlert|JPAuthorizationOptionBadge|JPAuthorizationOptionSound;
+    
     if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
         // 可以添加自定义categories
         // NSSet<UNNotificationCategory *> *categories for iOS10 or later
@@ -357,6 +358,8 @@ static SystemSoundID shake_sound_male_id = 0;
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
      [[NSNotificationCenter defaultCenter] postNotificationName:@"NSNotificationapplicationWillEnterForeground" object:nil];
+    [application setApplicationIconBadgeNumber:0];   //清除角标
+    [application cancelAllLocalNotifications];
 }
 
 
@@ -400,6 +403,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     } else {
         // Fallback on earlier versions
     } // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以选择设置
+  
+   
 }
 
 // iOS 10 Support
@@ -414,6 +419,16 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     } else {
         // Fallback on earlier versions
     }
+    NSLog(@"尼玛的推送消息呢===%@",userInfo);
+    // 取得 APNs 标准信息内容，如果没需要可以不取
+    NSDictionary *aps = [userInfo valueForKey:@"aps"];
+    NSString *content = [aps valueForKey:@"alert"]; //推送显示的内容
+    NSInteger badge = [[aps valueForKey:@"badge"] integerValue];
+    NSString *sound = [aps valueForKey:@"sound"]; //播放的声音
+    // 取得自定义字段内容，userInfo就是后台返回的JSON数据，是一个字典
+    NSString *appCode =  [userInfo valueForKey:@"appCode"];
+    //    [APService handleRemoteNotification:userInfo];
+      [self goToYunshiWithInfo:appCode];
     completionHandler();  // 系统要求执行这个方法
 }
 
@@ -439,6 +454,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
             [self.fmdb close];
         }
     }
+    NSString *appCode =extra[@"appCode"] ;
     if ([extra[@"appCode"] isEqualToString:@"A204"]) { //中奖推送
         if (winPushView !=nil) {
             [winPushView removeFromSuperview];
@@ -449,9 +465,36 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         winPushView = [[ZhuiHaoStopPushVIew alloc]initWithFrame:[UIScreen  mainScreen].bounds];
         [winPushView refreshInfo:title andContent:content];
         [[UIApplication sharedApplication].keyWindow addSubview:winPushView];
-    }else if ([extra[@"pageCode"] isEqualToString:@""]){
-        
+    }else{
+        [self goToYunshiWithInfo:appCode];
     }
+}
+
+-(void)goToYunshiWithInfo:(NSString *)appcode{
+    NSString *keyStr = appcode;
+    
+    if (keyStr == nil) {
+        return;
+    }
+    
+
+    BaseViewController *baseVC;
+    NSDictionary * vcDic = [NSDictionary dictionaryWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"pageCodeConfig" ofType:@"plist"]];
+    if (keyStr == nil || [keyStr isEqualToString:@""]) {
+        return;
+    }
+    NSString *vcName = vcDic[keyStr];
+    if (vcName==nil) {
+        return;
+    }
+    Class class = NSClassFromString(vcName);
+    
+    baseVC =[[class alloc] init];
+    
+    
+    baseVC.hidesBottomBarWhenPushed = YES;
+    
+    [self.window.rootViewController.navigationController pushViewController:baseVC animated:YES];
 }
 
 // log NSSet with UTF8
@@ -487,6 +530,10 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
     // Required,For systems with less than or equal to iOS6
     [JPUSHService handleRemoteNotification:userInfo];
+    
+     application.applicationIconBadgeNumber = 0;
+    
+
 }
 
 
