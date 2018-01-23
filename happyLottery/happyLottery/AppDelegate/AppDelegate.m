@@ -200,13 +200,27 @@ static SystemSoundID shake_sound_male_id = 0;
     if ([self .fmdb open]) {
         BOOL iscreate = [self.fmdb executeUpdate:@"create table if not exists t_user_info(id integer primary key, cardCode text, mobile text ,loginPwd text, isLogin text,payVerifyType text)"];
         BOOL resultVC = [self.fmdb executeUpdate:@"create table if not exists vcUserActiveInfo(id integer primary key autoincrement, vcNo text,updateDate text, visitCount integer , visitTime integer)"];
-        BOOL resultMsgInfo = [self.fmdb executeUpdate:@"create table if not exists vcUserPushMsg(id integer primary key autoincrement, title text,content text, msgTime text,cardcode text)"];
-        if (iscreate && resultVC && resultMsgInfo) {
+        BOOL resultMsgInfo = [self.fmdb executeUpdate:@"create table if not exists vcUserPushMsg(id integer primary key autoincrement, title text,content text, msgTime text,cardcode text,ieread text)"];
+        BOOL resultSystemNoticeInfo = [self.fmdb executeUpdate:@"create table if not exists SystemNotice(id integer primary key autoincrement, title text,content text, msgTime text,cardcode text,ieread text)"];
+        if (iscreate && resultVC && resultMsgInfo && resultSystemNoticeInfo) {
             [self.fmdb close];
         }
     }
     
-  
+    NSString *time = [Utility timeStringFromFormat:@"yyyy-MM-dd HH:mm:ss" withDate:[NSDate date]];
+    //
+    //
+//    if ([self.fmdb open]) {
+//        NSString *cardcode=[GlobalInstance instance ].curUser.cardCode;
+//        if ([cardcode isEqualToString:@""]) {
+//            cardcode = @"cardcode";
+//        }
+//
+//        BOOL result =  [self.fmdb executeUpdate:[NSString stringWithFormat:@"insert into vcUserPushMsg (title,content, msgTime , cardcode) values ('%@', '%@', '%@', '%@');",@"title",@"content",time,@"123"]];
+//        if (result) {
+//            [self.fmdb close];
+//        }
+//    }
 }
 
 -(void)setKeyWindow{
@@ -412,21 +426,19 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 //
      NSString *time = [Utility timeStringFromFormat:@"yyyy-MM-dd HH:mm:ss" withDate:[NSDate date]];
-
-    //
-    //
+//
+//
     if ([self.fmdb open]) {
         NSString *cardcode=[GlobalInstance instance ].curUser.cardCode;
         if ([cardcode isEqualToString:@""]) {
             cardcode = @"cardcode";
         }
-        
-        BOOL result =  [self.fmdb executeUpdate:[NSString stringWithFormat:@"insert into vcUserPushMsg (title,content, msgTime , cardcode) values ('%@', '%@', '%@', '%@');",title,content,time,cardcode]];
+        NSString *isread = @"1";
+        BOOL result =  [self.fmdb executeUpdate:[NSString stringWithFormat:@"insert into vcUserPushMsg (title,content, msgTime , cardcode ,ieread) values ('%@', '%@', '%@', '%@', '%@');",title,content,time,cardcode,isread]];
         if (result) {
             [self.fmdb close];
         }
     }
-    
     if ([extra[@"appCode"] isEqualToString:@"A204"]) { //中奖推送
         if (winPushView !=nil) {
             [winPushView removeFromSuperview];

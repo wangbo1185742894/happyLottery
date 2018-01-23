@@ -92,7 +92,7 @@
 //    self.fmdb =[FMDatabase databaseWithPath:fileName];
     
 //    [self.queue inDatabase:^(FMDatabase *db) {
-    
+    [listPersonNoticeArray removeAllObjects];
         NSMutableArray *array = [NSMutableArray array];
         // 1.查询数据
             if ([self.fmdb open]) {
@@ -100,29 +100,34 @@
        //    FMResultSet *rs = [self.fmdb executeQuery:@"select * from vcUserPushMsg"];
         // 2.遍历结果集
            
-                    FMResultSet*  rs = [self.fmdb executeQuery:@"select * from vcUserPushMsg where cardcode = ?",self.curUser.cardCode];
+                    FMResultSet*  rs = [self.fmdb executeQuery:@"select * from vcUserPushMsg where cardcode=?",self.curUser.cardCode];
                 
                         while (rs.next) {
                             Notice *notice =  [[Notice alloc] init];
                             notice.title = [rs stringForColumn:@"title"];
                             notice.content = [rs stringForColumn:@"content"];
                             notice.cardcode = [rs stringForColumn:@"cardcode"];
+                            notice.endTime = [rs stringForColumn:@"msgTime"];
                             //            [self goImage:student.photo];
                             [array addObject: notice];
                         }
 
             listPersonNoticeArray = array;
+                [self.tableView2 reloadData];
 //    }];
             }
 }
 
-- (IBAction)IBActistudentsemBtnClick:(id)sender {
+- (IBAction)systemBtnClick:(id)sender {
     self.systemBtn.selected = YES;
     self.personBtn.selected = NO;
     self.line1.hidden = NO;
     self.line2.hidden = YES;
     self.tableView1.hidden=NO;
     self.tableView2.hidden = YES;
+    [listPersonNoticeArray removeAllObjects];
+    [listSystemNoticeArray removeAllObjects];
+       [self getSystemNoticeClient];
 }
 
 - (IBAction)personBtnClick:(id)sender {
@@ -132,6 +137,9 @@
     self.line1.hidden = YES;
     self.tableView2.hidden=NO;
     self.tableView1.hidden = YES;
+    [listPersonNoticeArray removeAllObjects];
+    [listSystemNoticeArray removeAllObjects];
+     [self searchDB];
 }
 
 -(void)getSystemNoticeClient{
@@ -154,7 +162,20 @@
             for (int i=0; i<array.count; i++) {
                 
                 Notice *notice = [[Notice alloc]initWith:array[i]];
+             
                 [listSystemNoticeArray addObject:notice];
+                if ([self.fmdb open]) {
+                    NSString *cardcode=[GlobalInstance instance ].curUser.cardCode;
+                    if ([cardcode isEqualToString:@""]) {
+                        cardcode = @"cardcode";
+                    }
+                    NSString *isread = @"0";
+                    NSString *nid =[NSString stringWithFormat:@"A%d",i];
+                    BOOL result =  [self.fmdb executeUpdate:[NSString stringWithFormat:@"insert into SystemNotice (title,content, msgTime , cardcode ,ieread,id) values ('%@', '%@', '%@', '%@', '%@', '%@');",notice.title,notice.content,notice.endTime,cardcode,isread,notice._id]];
+                    if (result) {
+                        [self.fmdb close];
+                    }
+                }
                 NSLog(@"redPacket%@",notice.content);
                 
             }
@@ -202,6 +223,10 @@
     //    ACTIVITY("活动");
     Notice *notice = [[Notice alloc]init];
     if (tableView ==self.tableView1) {
+        if (cell == nil) {
+            //通过xib的名称加载自定义的cell
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"NoticeCenterTableViewCell" owner:self options:nil] lastObject];
+        }
         if (listSystemNoticeArray.count > 0) {
             notice = listSystemNoticeArray[indexPath.row];
             //cell.endImage.hidden = YES;
@@ -212,19 +237,17 @@
         }
         
     }else if (tableView ==self.tableView2){
-        
+        if (cell == nil) {
+            //通过xib的名称加载自定义的cell
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"NoticeCenterTableViewCell" owner:self options:nil] lastObject];
+        }
         if (listPersonNoticeArray.count > 0) {
-//            coupon = listPersonNoticeArray[indexPath.row];
-//            cell.endImage.hidden = NO;
-//            cell.priceLab.text = coupon.deduction;
-//            cell.nameLab.text =[NSString stringWithFormat:@"¥%@元优惠券",coupon.deduction];
-//            cell.priceLab.textColor = [UIColor lightGrayColor];
-//            cell.yuanLab.textColor =[UIColor lightGrayColor];
-            //NSString *status =coupon.status;
-          
-//            cell.sourceLab.text = [NSString stringWithFormat:@"来源：%@",coupon.couponSource];
-//            cell.dateLab.text = [NSString stringWithFormat:@"有效期：%@",coupon.invalidTime];
-//            cell.descriptionLab.text=[NSString stringWithFormat:@"单笔订单满%@可用",coupon.quota];
+            notice = listPersonNoticeArray[indexPath.row];
+            //cell.endImage.hidden = YES;
+            cell.nameLab.text = notice.title;
+            cell.noticeLab.text =notice.content;
+            NSString *date=[notice.endTime substringWithRange:NSMakeRange(0,10)];
+            cell.dateLab.text =date;
         }
     }
      
@@ -246,7 +269,35 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath: indexPath animated: YES];
     NoticeCenterTableViewCell  *selectCell = [tableView cellForRowAtIndexPath:indexPath];
+    if (tableView ==self.tableView1) {
      Notice* notice = listSystemNoticeArray[indexPath.row];
+        if ([self.fmdb open]) {
+            NSString *cardcode=[GlobalInstance instance ].curUser.cardCode;
+            if ([cardcode isEqualToString:@""]) {
+                cardcode = @"cardcode";
+            }
+            NSString *isread = @"1";
+            NSString *nid =[NSString stringWithFormat:@"A%ld",(long)indexPath.row];
+            BOOL result =  [self.fmdb executeUpdate:[NSString stringWithFormat:@"update SystemNotice set ieread = '%@' where id = '%@';",isread,nid]];
+            FMResultSet*  rs = [self.fmdb executeQuery:@"select * from vcUserPushMsg where id=?",nid];
+            [listSystemNoticeArray removeAllObjects];
+            
+            while (rs.next) {
+                Notice *notice =  [[Notice alloc] init];
+                notice.title = [rs stringForColumn:@"title"];
+                notice.content = [rs stringForColumn:@"content"];
+                notice.cardcode = [rs stringForColumn:@"cardcode"];
+                notice.endTime = [rs stringForColumn:@"msgTime"];
+                 notice.isread = [rs stringForColumn:@"isread"];
+                //            [self goImage:student.photo];
+                [listSystemNoticeArray addObject: notice];
+            }
+            
+            [self.tableView2 reloadData];
+            if (result) {
+                [self.fmdb close];
+            }
+        }
     NSString *type = notice.type;
     if ([type isEqualToString:@"APP"]) {
           NSString *pageCode=notice.thumbnailCode;
@@ -255,15 +306,15 @@
       
     }else if ([type isEqualToString:@"TEXT"]) {
         NoticeDetailViewController *vc = [[NoticeDetailViewController alloc] init];
-        if (tableView ==self.tableView1) {
             vc.notice = listSystemNoticeArray[indexPath.row];
-        }else if (tableView ==self.tableView2){
-            
-            vc.notice = listPersonNoticeArray[indexPath.row];
-        }
+       
         [self.navigationController pushViewController: vc animated: YES];
     }
-  
+    }else if (tableView ==self.tableView2){
+         NoticeDetailViewController *vc = [[NoticeDetailViewController alloc] init];
+         vc.notice = listPersonNoticeArray[indexPath.row];
+         [self.navigationController pushViewController: vc animated: YES];
+    }
    
 }
 

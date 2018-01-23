@@ -16,6 +16,7 @@
      WBInputPopView *passInput;
      NSMutableArray *listBankArray;
      BankCard *bankCard;
+    long long balance;
 }
 @property (weak, nonatomic) IBOutlet UILabel *retainLab;
 @property (weak, nonatomic) IBOutlet UILabel *topUpsLab;
@@ -49,7 +50,7 @@
     passInput.delegate = self;
     listBankArray = [[NSMutableArray alloc]init];
     self.memberMan.delegate = self;
-    long long balance = [self.curUser.balance longLongValue];
+    balance = [self.curUser.balance longLongValue];
     long long notCash = [self.curUser.notCash longLongValue];
     long long sendBalance = [self.curUser.sendBalance longLongValue];
     long long total = balance+notCash+sendBalance;
@@ -57,6 +58,7 @@
     self.retainLab.text = totalStr;
     NSString *balanceStr = [NSString stringWithFormat:@"%lld元", balance];
     self.topUpsLab.text = balanceStr;
+    self.nameLab.text = self.curUser.name;
 }
 
 -(void)withdrawSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
@@ -102,7 +104,7 @@
 -(void)validatePaypwdSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     
     if ([msg isEqualToString:@"执行成功"]) {
-        [self showPromptText:@"支付密码验证成功" hideAfterDelay:1.7];
+        //[self showPromptText:@"支付密码验证成功" hideAfterDelay:1.7];
         [self commitClient];
         [passInput removeFromSuperview];
     }else{
@@ -168,8 +170,14 @@
 
 
 -(void)commitClient{
-    if (self.withdrawTextField.text==nil||self.withdrawTextField.text.length==0) {
-        [self showPromptText: @"请输入取现金额" hideAfterDelay: 1.7];
+    if ([self.withdrawTextField.text isEqualToString:@"" ]) {
+        [self showPromptText: @"请输入取现金额" hideAfterDelay: 2.7];
+        return;
+    }
+    long long text =[self.withdrawTextField.text longLongValue];
+    if (text>balance) {
+        [self showPromptText: @"取现金额不能大于可用余额！" hideAfterDelay: 3.7];
+        self.withdrawTextField.text=@"";
         return;
     }
     NSDictionary *withdrawInfo;
