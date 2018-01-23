@@ -38,8 +38,11 @@
     __weak IBOutlet NSLayoutConstraint *homeViewHeight;
     WBAdsImgView *adsView;
     UIView  *menuView;
-    NSMutableArray *listUseRedPacketArray;
-    RedPacket *r;
+
+     NSMutableArray *listUseRedPacketArray;
+     RedPacket *r;
+     int j;
+
     __weak IBOutlet UIView *viewNewDefault;
     CGFloat curY;
     __weak IBOutlet NSLayoutConstraint *newsViewMarginTop;
@@ -68,6 +71,7 @@
     colloectList = [NSMutableArray arrayWithCapacity:0];
     NSString *doc=[NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     self.memberMan.delegate =  self;
+    j=0;
     NSString *fileName=[doc stringByAppendingPathComponent:@"userInfo.sqlite"];
     self.fmdb =[FMDatabase databaseWithPath:fileName];
      singleLoad = [LoadData singleLoadData];
@@ -89,7 +93,10 @@
     [self loadNews];
     [self getJczqShortcut];
     self.navigationController.navigationBar.hidden = YES;
-     [self getRedPacketByStateClient:@"true"];
+    if (self.curUser.isLogin==YES) {
+           [self getRedPacketByStateClient:@"true"];
+    }
+  
     
 }
 
@@ -605,13 +612,26 @@
                             
                             RedPacket *redPacket = [[RedPacket alloc]initWith:array[i]];
                             [listUseRedPacketArray addObject:redPacket];
+                            
+                          
         }
-            r = listUseRedPacketArray[0] ;
-            [self openRedPacketClient];
+         
+         [self openReadPacket];
         }
         
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
+    }
+}
+-(void)openReadPacket{
+   
+    r = listUseRedPacketArray[j] ;
+    NSString *redPacketStatus = r.redPacketStatus;
+    if ([redPacketStatus isEqualToString:@"锁定"]) {
+        r = listUseRedPacketArray[j++] ;
+        [self openReadPacket];
+    } else  if ([redPacketStatus isEqualToString:@"解锁"]) {
+        [self openRedPacketClient];
     }
 }
 

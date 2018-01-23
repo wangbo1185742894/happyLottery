@@ -21,11 +21,13 @@
 #import "NoticeCenterViewController.h"
 #import "ShareViewController.h"
 #import "FeedbackViewController.h"
+#import "Notice.h"
 
 @interface MineViewController () <UITableViewDelegate, UITableViewDataSource,MemberManagerDelegate>{
     NSArray *listArray;
     UIButton *noticeBtn;
     UILabel *label;
+    long num;
 }
 @property (weak, nonatomic) IBOutlet UIButton *personSetBtn;
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
@@ -49,6 +51,7 @@
     [super viewWillAppear:YES];
     if (self.curUser.isLogin==YES) {
         [self updateMemberClinet];
+        [self searchNoticeDB];
     } else {
         //显示未登录时的状态
         [self notLogin];
@@ -72,6 +75,36 @@
     [self noticeCenterSet];
     
     [_tableview reloadData];
+}
+
+-(void)searchNoticeDB{
+    NSMutableArray *array = [NSMutableArray array];
+    // 1.查询数据
+    if ([self.fmdb open]) {
+        //        FMResultSet *rs = [db executeQuery:@"select * from vcUserPushMsg ;"];
+        //    FMResultSet *rs = [self.fmdb executeQuery:@"select * from vcUserPushMsg"];
+        // 2.遍历结果集
+        
+        FMResultSet*  rs = [self.fmdb executeQuery:@"select * from vcUserPushMsg where isread=?",@"0"];
+        
+        while (rs.next) {
+            Notice *notice =  [[Notice alloc] init];
+            notice.title = [rs stringForColumn:@"title"];
+            notice.content = [rs stringForColumn:@"content"];
+            notice.cardcode = [rs stringForColumn:@"cardcode"];
+            notice.endTime = [rs stringForColumn:@"msgTime"];
+            //            [self goImage:student.photo];
+            [array addObject: notice];
+        }
+        num = array.count;
+        if (num==0) {
+            label.hidden=YES;
+        }else{
+             label.hidden=NO;
+        }
+     
+        //    }];
+    }
 }
 
 -(void)notLogin{
@@ -168,7 +201,8 @@
     label.frame =CGRectMake(25, 0,10, 10);
     label.layer.cornerRadius = label.bounds.size.width/2;
     label.layer.masksToBounds = YES;
-    label.text = @"2";
+    
+    label.text = [NSString stringWithFormat:@"%ld",num];
     label.font = [UIFont systemFontOfSize:10];
     label.textAlignment = NSTextAlignmentCenter;
     label.backgroundColor = [UIColor redColor];

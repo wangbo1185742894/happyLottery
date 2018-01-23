@@ -63,7 +63,7 @@
                                 <color key="titleColor" red="0.067504443230000002" green="0.78096091749999996" blue="0.57203906770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
-                                <action selector="systemBtnClick:" destination="-1" eventType="touchUpInside" id="tTp-qu-gmE"/>
+                                <action selector="systemBtnClick:" destination="-1" eventType="touchUpInside" id="db0-ll-Ack"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djI-Zq-miP">

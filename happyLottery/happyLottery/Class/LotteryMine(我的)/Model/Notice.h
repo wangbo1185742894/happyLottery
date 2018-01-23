@@ -27,4 +27,5 @@
 @property(nonatomic,strong)NSString *linversionkUrl;
 @property(nonatomic,strong)NSString *thumbnailCode;
 @property(nonatomic,strong)NSString *cardcode;
+@property(nonatomic,strong)NSString *isread;
 @end
