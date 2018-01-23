@@ -526,7 +526,16 @@
 }
 
 -(void)BtnClick{
-     [self openRedPacketClient];
+    if (listUseRedPacketArray.count>1) {
+        [redPacketbutton removeFromSuperview];
+        MyRedPacketViewController * pcVC = [[MyRedPacketViewController alloc]init];
+        pcVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:pcVC animated:YES];
+    }else if (listUseRedPacketArray.count==1) {
+        r =listUseRedPacketArray[0];
+           [self openRedPacketClient];
+    }
+  
     
   
   
@@ -633,19 +642,15 @@
                             }
                             
            }
-            if (listUseRedPacketArray.count>1) {
-                MyRedPacketViewController * pcVC = [[MyRedPacketViewController alloc]init];
-                pcVC.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:pcVC animated:YES];
-            }else if (listUseRedPacketArray.count==1) {
+          
                 redPacketbutton= [[UIButton alloc]init];
                 [redPacketbutton setBackgroundImage:[UIImage imageNamed:@"redpacket"] forState:UIControlStateNormal];
                 [redPacketbutton addTarget: self action: @selector(BtnClick) forControlEvents: UIControlEventTouchUpInside];
                 redPacketbutton.frame  = CGRectMake(self.view.mj_w/2-105, 200, 210,294);
                 [self.view addSubview:redPacketbutton];
-                r =listUseRedPacketArray[0];
-               
-            }
+         
+                
+         
         }
         
     }else{
