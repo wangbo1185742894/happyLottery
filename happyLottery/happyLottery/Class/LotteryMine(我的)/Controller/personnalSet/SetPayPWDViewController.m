@@ -8,14 +8,23 @@
 
 #import "SetPayPWDViewController.h"
 #import "AESUtility.h"
-
+#import "PersonnalCenterViewController.h"
+#define KCheckSec 60
 @interface SetPayPWDViewController ()<MemberManagerDelegate,UITextFieldDelegate>
-
+{
+    NSTimer *timer;
+    NSInteger checkSec;
+}
 @property (weak, nonatomic) IBOutlet UITextField *mobileTextField;
 @property (weak, nonatomic) IBOutlet UITextField *payPWDTextField;
 @property (weak, nonatomic) IBOutlet UITextField *payPWDAgainTextField;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
+@property (weak, nonatomic) IBOutlet UIButton *btnSubmit;
+@property (weak, nonatomic) IBOutlet UIButton *btnSendCheckCode;
+@property (weak, nonatomic) IBOutlet UIView *viewCheckContent;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *disContentViewTop;
 
+@property (weak, nonatomic) IBOutlet UITextField *tfCheckCode;
 
 @end
 
@@ -24,6 +33,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if (self.isForeget == YES) {
+        self.viewCheckContent.hidden = NO;
+        self.disContentViewTop.constant = 20;
+        _payPWDTextField.enabled = NO;
+    }else{
+        self.disContentViewTop.constant = -40;
+        self.viewCheckContent.hidden = YES;
+        _payPWDTextField.enabled = YES;
+    }
+    
     if (![self.titleStr isEqualToString:@""]) {
          self.title =  titleStr;
     }
@@ -32,7 +52,17 @@
         self.top.constant = 88;
       
     }
+    checkSec = KCheckSec;
+    
+    _btnSendCheckCode.layer.cornerRadius = 3;
+    _btnSendCheckCode.layer.masksToBounds = YES;
+    
+    [_btnSendCheckCode setBackgroundImage:[UIImage imageWithColor:SystemGreen] forState:0];
+    [_btnSendCheckCode setBackgroundImage:[UIImage imageWithColor:BtnDisAbleBackColor] forState:UIControlStateDisabled];
+    
+    
     self.memberMan.delegate = self;
+    self.tfCheckCode.delegate = self;
     self.mobileTextField.delegate = self;
     self.payPWDTextField.delegate = self;
     self.payPWDAgainTextField.delegate = self;
@@ -41,7 +71,8 @@
 
 -(void)bandPayPWDSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     if ([msg isEqualToString:@"执行成功"]) {
-        [self showPromptText:@"设置支付密码" hideAfterDelay:1.7];
+        [self showPromptText:@"设置支付密码成功" hideAfterDelay:1.7];
+        self.curUser.paypwdSetting = YES;
            [self performSelector:@selector(delayMethod) withObject:nil afterDelay:1.0];
         
     }else{
@@ -50,9 +81,19 @@
         
     }
 }
-
 - (void)delayMethod{
-   [self.navigationController popViewControllerAnimated:YES];
+    if (self.isForeget) {
+        for (BaseViewController *baseVC in self.navigationController.viewControllers) {
+            if ([baseVC isKindOfClass:[PersonnalCenterViewController class]]) {
+                [self.navigationController popToViewController:baseVC animated:YES];
+                break;
+            }
+        }
+    }else{
+        
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
 }
 
 - (IBAction)commitBtnClick:(id)sender {
@@ -104,7 +145,6 @@
     } @finally {
         [self.memberMan bandPayPWDSms:resetPayPWDInfo];
     }
-    
 }
 
 
@@ -112,6 +152,30 @@
 #pragma UITextFieldDelegate
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        if (self.isForeget == YES) {
+            __weak typeof(self) WeakSelf = self;
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                if (WeakSelf.tfCheckCode.text.length == 6 && self.payPWDTextField.enabled == NO) {
+                        [WeakSelf.memberMan checkUpdatePaypwdSms:@{@"mobile":WeakSelf.curUser.mobile,@"checkCode":WeakSelf.tfCheckCode.text}];
+                }
+            });
+         
+        }
+        if (_payPWDTextField.text.length >=6) {
+            _payPWDAgainTextField.enabled = YES;
+        }else{
+            _payPWDAgainTextField.enabled = NO;
+        }
+        if (_payPWDAgainTextField.text.length >= 6 && _payPWDTextField.text.length >= 6) {
+            _btnSubmit.enabled = YES;
+        }else{
+            _btnSubmit.enabled = NO;
+        }
+    });
+
+    
     if ([string isEqualToString:@""]) {
         return YES;
     }
@@ -122,7 +186,6 @@
         
     }else{
         regex = @"^[0-9]";
-        
     }
     
     NSString *str = [NSString stringWithFormat:@"%@%@",textField.text,string];
@@ -142,13 +205,20 @@
         }
     }
 
-    
-    
-    
 //    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
 //    BOOL isMatch = [pred evaluateWithObject:string];
 //    return isMatch;
     return YES;
+}
+
+-(void)checkUpdatePaypwdSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    if (success == YES) {
+        _payPWDTextField.enabled = YES;
+        [self showPromptText:@"验证码验证成功" hideAfterDelay:1.7];
+        
+    }else{
+        [self showPromptText:msg hideAfterDelay:1.8];
+    }
 }
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
@@ -190,14 +260,46 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)actionSendCheckCode:(UIButton *)sender {
+    if (self.curUser.mobile == nil) {
+        return;
+    }
+    [self.memberMan sendUpdatePaypwdSms:@{@"mobile":self.curUser.mobile}];
 }
-*/
+
+-(void)sendUpdatePaypwdSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    if (success == YES) {
+        [self showPromptText:@"发送成功" hideAfterDelay:1.7];
+        _tfCheckCode.enabled = YES;
+        [self startTimer];
+    }else{
+        [self showPromptText:msg hideAfterDelay:1.7];
+    }
+}
+
+-(void)startTimer{
+    [_btnSendCheckCode setEnabled:NO];
+    
+    [_btnSendCheckCode setTitle:[NSString stringWithFormat:@"重新发送(%lds)",checkSec] forState:UIControlStateDisabled];
+    
+    if (@available(iOS 10.0, *)) {
+        timer = [NSTimer scheduledTimerWithTimeInterval:1.0 repeats:YES block:^(NSTimer * _Nonnull timer) {
+            if (checkSec > 0) {
+                checkSec --;
+                [_btnSendCheckCode setTitle:[NSString stringWithFormat:@"重新发送(%lds)",checkSec] forState:UIControlStateDisabled];
+            }else{
+                checkSec = KCheckSec;
+                [timer invalidate];
+                [_btnSendCheckCode setTitle:@"获取验证码" forState:0];
+                [_btnSendCheckCode setTitle:[NSString stringWithFormat:@"重新发送(%lds)",checkSec] forState:UIControlStateDisabled];
+                [_btnSendCheckCode setEnabled: YES];
+            }
+        }];
+    } else {
+        
+    }
+    
+}
+
 
 @end

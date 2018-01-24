@@ -68,6 +68,10 @@
 		2D0E239F20181C790098DA40 /* checkBox_default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D0E239D20181C780098DA40 /* checkBox_default@2x.png */; };
 		2D0E23A220182EB60098DA40 /* usermine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D0E23A020182EB50098DA40 /* usermine@2x.png */; };
 		2D0E23A320182EB60098DA40 /* usermine@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D0E23A120182EB60098DA40 /* usermine@3x.png */; };
+		2D0E23A82018833E0098DA40 /* switch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D0E23A4201883390098DA40 /* switch@2x.png */; };
+		2D0E23A92018833E0098DA40 /* switch@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D0E23A5201883390098DA40 /* switch@3x.png */; };
+		2D0E23AA2018833E0098DA40 /* switchbackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D0E23A62018833B0098DA40 /* switchbackground@2x.png */; };
+		2D0E23AB2018833E0098DA40 /* switchbackground@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D0E23A72018833D0098DA40 /* switchbackground@3x.png */; };
 		2D0EEA742011DE9600B0769C /* unselected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D0EEA702011DE9100B0769C /* unselected@3x.png */; };
 		2D0EEA752011DE9600B0769C /* selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D0EEA712011DE9200B0769C /* selected@2x.png */; };
 		2D0EEA762011DE9600B0769C /* selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D0EEA722011DE9400B0769C /* selected@3x.png */; };
@@ -946,6 +950,10 @@
 		2D0E239D20181C780098DA40 /* checkBox_default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "checkBox_default@2x.png"; path = "login&registe/checkBox_default@2x.png"; sourceTree = "<group>"; };
 		2D0E23A020182EB50098DA40 /* usermine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "usermine@2x.png"; path = "MineIcon/usermine@2x.png"; sourceTree = "<group>"; };
 		2D0E23A120182EB60098DA40 /* usermine@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "usermine@3x.png"; path = "MineIcon/usermine@3x.png"; sourceTree = "<group>"; };
+		2D0E23A4201883390098DA40 /* switch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch@2x.png"; sourceTree = "<group>"; };
+		2D0E23A5201883390098DA40 /* switch@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch@3x.png"; sourceTree = "<group>"; };
+		2D0E23A62018833B0098DA40 /* switchbackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switchbackground@2x.png"; sourceTree = "<group>"; };
+		2D0E23A72018833D0098DA40 /* switchbackground@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switchbackground@3x.png"; sourceTree = "<group>"; };
 		2D0EEA702011DE9100B0769C /* unselected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unselected@3x.png"; sourceTree = "<group>"; };
 		2D0EEA712011DE9200B0769C /* selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selected@2x.png"; sourceTree = "<group>"; };
 		2D0EEA722011DE9400B0769C /* selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selected@3x.png"; sourceTree = "<group>"; };
@@ -2225,6 +2233,10 @@
 		2D4B1E441FDF684E0034B708 /* homeres */ = {
 			isa = PBXGroup;
 			children = (
+				2D0E23A4201883390098DA40 /* switch@2x.png */,
+				2D0E23A5201883390098DA40 /* switch@3x.png */,
+				2D0E23A62018833B0098DA40 /* switchbackground@2x.png */,
+				2D0E23A72018833D0098DA40 /* switchbackground@3x.png */,
 				2D0EEAB42015F79700B0769C /* ad_home1@2x.png */,
 				2D0EEAB32015F79700B0769C /* ad_home1@3x.png */,
 				2D0EEAAC2015DCFB00B0769C /* ad_home2@2x.png */,
@@ -2548,7 +2560,6 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-
 				2D0E23A020182EB50098DA40 /* usermine@2x.png */,
 				2D0E23A120182EB60098DA40 /* usermine@3x.png */,
 				2D0E239D20181C780098DA40 /* checkBox_default@2x.png */,
@@ -3963,6 +3974,7 @@
 				2D739CED1FEB490900264044 /* fangkuangjingcainomal@3x.png in Resources */,
 				2D2060311FFCB71E0086E266 /* icon_zhifu_selcetes@2x.png in Resources */,
 				2D517215200DD69E00C3CD7F /* sigln_gray@2x.png in Resources */,
+				2D0E23AB2018833E0098DA40 /* switchbackground@3x.png in Resources */,
 				F9DC699B1FDF888F007D384D /* MyFavoriteViewController.xib in Resources */,
 				2D0EEA752011DE9600B0769C /* selected@2x.png in Resources */,
 				2D517209200D9E7600C3CD7F /* buddha@2x.png in Resources */,
@@ -4013,6 +4025,7 @@
 				2D0EEAB52015F79800B0769C /* ad_home1@3x.png in Resources */,
 				F92D03E22005E76600C26E7A /* FeedbackViewController.xib in Resources */,
 				F9F2629D1FE8D7D000C2E60F /* closeperson@3x.png in Resources */,
+				2D0E23A92018833E0098DA40 /* switch@3x.png in Resources */,
 				2D92A827201068590038E165 /* PayOrderYouhunViewController.xib in Resources */,
 				F957C1F81FE3B28D0090B19B /* packet@2x.png in Resources */,
 				F9F6CAA11FF5D6B100A49F71 /* download@2x.png in Resources */,
@@ -4126,6 +4139,7 @@
 				2D0EEA902013280500B0769C /* trophy@3x.png in Resources */,
 				2D0600421FFDDD51009E7568 /* schemedetailpic@3x.png in Resources */,
 				F928C6B81FF4BA40001F1A32 /* decrease@3x.png in Resources */,
+				2D0E23AA2018833E0098DA40 /* switchbackground@2x.png in Resources */,
 				2D5171DB200C729A00C3CD7F /* icon_yingli_@3x.png in Resources */,
 				F90058E81FF61619009C8E1C /* noticeempty@2x.png in Resources */,
 				2D51720A200D9E7600C3CD7F /* buddha@3x.png in Resources */,
@@ -4149,6 +4163,7 @@
 				2D5171E6200C72C100C3CD7F /* icon_mingzhong_@2x.png in Resources */,
 				2D4B1E8B1FDF684E0034B708 /* yuce_select@2x.png in Resources */,
 				F94AA9BF1FEB59DA0021B980 /* authentication@2x.png in Resources */,
+				2D0E23A82018833E0098DA40 /* switch@2x.png in Resources */,
 				2D5171B42007110D00C3CD7F /* SchemeInfoViewCell.xib in Resources */,
 				F9418F502010991200454109 /* ShareSDK.bundle in Resources */,
 				F91565ED1FFCBDAE00E254CE /* 1@3x.png in Resources */,

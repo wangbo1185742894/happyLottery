@@ -33,9 +33,13 @@
 
 -(BOOL)isIphoneX;
 
+-(void)actionTelMe;
+
 -(void)navigationBackToLastPage;
 
 -(void)needLogin;
+
+-(void)needLoginCompletion:(void (^ __nullable)(void))completion;
 
 -(UIBarButtonItem *)creatBarItem:(NSString *)title icon:(NSString *)imgName andFrame:(CGRect)frame andAction:(SEL)action;
 

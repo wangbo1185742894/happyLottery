@@ -39,25 +39,21 @@
 
 - (IBAction)commitBtnClick:(id)sender {
     if ( self.PWD1.text.length == 0||  self.PWD1.text.length < 6 ) {
-        self.PWD1.text=@"";
+
         [self showPromptText: @"请输入6-16位初始密码" hideAfterDelay: 1.7];
         return;
     }
     else if (self.PWD2.text.length == 0 || self.PWD2.text.length < 6 ) {
-        self.PWD2.text=@"";
-          self.PWD3.text=@"";
+       
         [self showPromptText: @"请输入6-16位新密码" hideAfterDelay: 1.7];
         return;
     } else if (self.PWD3.text.length == 0 || self.PWD3.text.length < 6 ) {
-           self.PWD2.text=@"";
-        self.PWD3.text=@"";
+        
         [self showPromptText: @"请输入6-16位确认密码" hideAfterDelay: 1.7];
         return;
     }
     else if(![_PWD2.text isEqualToString:_PWD3.text]){
         [self showPromptText: @"两次输入的密码不一致！" hideAfterDelay: 1.7];
-        _PWD2.text=@"";
-        _PWD3.text=@"";
         return ;
     }
     else{
@@ -73,7 +69,7 @@
     @try {
         NSString *pwd1 = self.PWD1.text;
         NSString *pwd2 = self.PWD2.text;
-        NSString *pwd3 = self.PWD3.text;
+        
         NSString *mobile = self.curUser.mobile;
         
         resetPWDInfo = @{@"mobile":mobile,
@@ -93,11 +89,13 @@
 -(void)changeLoginPWDSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     
     if ([msg isEqualToString:@"执行成功"]) {
-        [self showPromptText:@"修改登录密码" hideAfterDelay:1.7];
+        [self showPromptText:@"修改登录密码成功" hideAfterDelay:1.7];
         self.curUser.isLogin = NO;
         [self updateLoginStatus];
+        [self needLoginCompletion:^{
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }];
       
-     [self.navigationController popViewControllerAnimated:YES];
         
     }else{
         
@@ -120,6 +118,22 @@
 #pragma UITextFieldDelegate
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (self.PWD1.text.length > 0) {
+            self.PWD2.enabled = YES;
+        }
+        
+        if (self.PWD2.text.length >0) {
+            self.PWD3.enabled = YES;
+        }
+        if (self.PWD3.text.length >= 6 && self.PWD2.text.length >=6  && self.PWD1.text.length >= 6) {
+            self.commitBtn.enabled = YES;
+        }else{
+            self.commitBtn.enabled = NO;
+        }
+    });
+    
     if ([string isEqualToString:@""]) {
         return YES;
     }

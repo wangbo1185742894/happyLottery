@@ -77,7 +77,7 @@
            [self bindNameClient];
     }
       NSString *bankname = self.getBankBtn.titleLabel.text;
-   if ([bankname isEqualToString:@"点击获取银行卡列表"]) {
+   if ([bankname isEqualToString:@"请选择开户行"]) {
         [self showPromptText: @"请选择开户行" hideAfterDelay: 1.7];
         return;
     }
@@ -312,7 +312,7 @@
      [tableView deselectRowAtIndexPath: indexPath animated: YES];
     bankCard= listBankArray[indexPath.row];
     self.getBankBtn.titleLabel.text = bankCard.bankName;
-    self.tableView.hidden=YES;
+    
     self.backView.hidden = YES;
 }
 
@@ -321,15 +321,10 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)actionCancel:(UIButton *)sender {
+    self.backView.hidden = YES;
 }
-*/
+
+
 
 @end

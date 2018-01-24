@@ -54,23 +54,21 @@
 
 - (IBAction)commitBtnClick:(id)sender {
     if ( self.PWD1.text.length == 0||  self.PWD1.text.length < 6) {
-        self.PWD1.text=@"";
+        
         [self showPromptText: @"请输入6位初始密码" hideAfterDelay: 1.7];
         return;
     }
     else if (self.PWD2.text.length == 0 || self.PWD2.text.length < 6) {
-        self.PWD2.text=@"";
+        
         [self showPromptText: @"请输入6位新密码" hideAfterDelay: 1.7];
         return;
     } else if (self.PWD3.text.length == 0 || self.PWD3.text.length < 6) {
-        self.PWD3.text=@"";
+        
         [self showPromptText: @"请输入6位确认密码" hideAfterDelay: 1.7];
         return;
     }
     else if(![_PWD2.text isEqualToString:_PWD3.text]){
         [self showPromptText: @"两次输入的密码不一致！" hideAfterDelay: 1.7];
-        _PWD2.text=@"";
-        _PWD3.text=@"";
         return ;
     }
     else{
@@ -85,7 +83,7 @@
     @try {
         NSString *pwd1 = self.PWD1.text;
         NSString *pwd2 = self.PWD2.text;
-        NSString *pwd3 = self.PWD3.text;
+        
            NSString *mobile = self.curUser.mobile;
         
         resetPayPWDInfo = @{@"mobile":mobile,
@@ -104,6 +102,7 @@
 - (IBAction)forgetBtnClick:(id)sender {
     SetPayPWDViewController *spvc = [[SetPayPWDViewController alloc]init];
     spvc.titleStr = @"忘记支付密码";
+    spvc.isForeget = YES;
     [self.navigationController pushViewController:spvc animated:YES];
 }
 
@@ -111,6 +110,26 @@
 #pragma UITextFieldDelegate
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (_PWD1.text.length >= 6) {
+            _PWD2.enabled = YES;
+        }else{
+            _PWD2.enabled = NO;
+        }
+        
+        if (_PWD2.text.length >= 6){
+            _PWD3.enabled = YES;
+        }else{
+            _PWD3.enabled = NO;
+        }
+        
+        if (_PWD1.text.length >= 6 &&_PWD2.text.length >= 6&&_PWD3.text.length >= 6 ) {
+            _commitBtn.enabled = YES;
+        }else{
+            _commitBtn.enabled = NO;
+        }
+    });
     if ([string isEqualToString:@""]) {
         return YES;
     }

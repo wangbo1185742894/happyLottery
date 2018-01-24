@@ -51,8 +51,15 @@ static NSInteger seq = 0;
         FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_user_info"];
         if ([result next] && [result stringForColumn:@"mobile"] != nil) {
             self.userTextField.text =[result stringForColumn:@"mobile"];
-            self.userTextField .enabled = YES;
+            
         }
+    }
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    if (_userTextField.text.length == 11) {
+        _passwordTextField.enabled = YES;
     }
 }
 
@@ -125,7 +132,6 @@ static NSInteger seq = 0;
            
 
         } while ([result next]);
-        
         [self.fmdb executeUpdate:@"insert into t_user_info (cardCode , loginPwd , isLogin , mobile , payVerifyType) values ( ?,?,?,?,?)  ",user.cardCode,user.loginPwd,@"1",user.mobile,[NSString stringWithFormat:@"%ld",payVerifyType]];
         [[NSNotificationCenter defaultCenter] postNotificationName:NotificationNameUserLogin object:nil];
         [result close];

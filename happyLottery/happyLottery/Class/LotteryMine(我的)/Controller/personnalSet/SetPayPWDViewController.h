@@ -10,4 +10,6 @@
 
 @interface SetPayPWDViewController : BaseViewController
 @property(strong,nonatomic) NSString* titleStr;
+
+@property(assign,nonatomic)BOOL isForeget;
 @end

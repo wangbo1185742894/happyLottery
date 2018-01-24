@@ -13,6 +13,7 @@
 #import "WBInputPopView.h"
 #import "BankCard.h"
 #import "WBInputPopView.h"
+#import "SetPayPWDViewController.h"
 
 @interface BankCardSettingViewController  ()<UITableViewDelegate, UITableViewDataSource,MemberManagerDelegate,WBInputPopViewDelegate>{
         NSMutableArray *listBankArray;
@@ -37,7 +38,6 @@
     [super viewDidLoad];
     self.title = @"银行卡设置";
     if ([self isIphoneX]) {
-        
         self.top.constant = 88;
         self.bottom.constant = 34;
     }
@@ -49,9 +49,8 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    
     [super viewWillAppear:YES];
-      [self getBankListClient];
+    [self getBankListClient];
 }
 
 - (IBAction)addBankCardClick:(id)sender {
@@ -188,7 +187,16 @@
 -(void)btnAction:(UIButton *)btn{
     int n = (int)btn.tag ;
     bankCard = listBankArray[n];
-    [self showPayPopView];
+    
+    if(self.curUser.paypwdSetting == NO) {
+        SetPayPWDViewController *spvc = [[SetPayPWDViewController alloc]init];
+        spvc.titleStr = @"设置支付密码";
+        [self.navigationController pushViewController:spvc animated:YES];
+        return;
+    }else{
+        [self showPayPopView];
+    }
+    
    
 }
 

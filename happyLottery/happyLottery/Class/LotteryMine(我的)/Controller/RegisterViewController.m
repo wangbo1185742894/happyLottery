@@ -326,6 +326,8 @@
 -(void)checkRegisterSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     
     if ([msg isEqualToString:@"执行成功"]) {
+        tfCheckCode.enabled = NO;
+        tfUserTel.enabled = NO;
         tfCheckCode.rightView.hidden = NO;
         tfUserTel.rightView.hidden = NO;
         [self showPromptText:@"验证成功" hideAfterDelay:1.7];

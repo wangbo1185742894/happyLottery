@@ -115,6 +115,7 @@
 
 -(void)notLogin{
     [self.loginBtn setTitle:@"登录/注册" forState:UIControlStateNormal];
+    [self .userImage setImage:[UIImage imageNamed:@"usermine"]];
     self.loginBtn.enabled = YES;
     self.balanceLab.text = @"0";
     self.integralLab.text = @"0";

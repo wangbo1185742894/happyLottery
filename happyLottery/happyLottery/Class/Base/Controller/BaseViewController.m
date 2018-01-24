@@ -273,6 +273,18 @@
     
 }
 
+-(void)needLoginCompletion:(void (^ __nullable)(void))completion{
+    //登录成功后跳回
+    LoginViewController * loginVC = [[LoginViewController alloc]init];
+    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController: loginVC];
+    navVC.navigationBar.barTintColor = SystemGreen;
+    
+    navVC.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor], NSFontAttributeName: [UIFont systemFontOfSize:18]};
+    navVC.navigationBar.tintColor = [UIColor whiteColor];
+    [self presentViewController:navVC animated:YES completion:completion];
+    
+}
+
 -(id)transFomatJson:(NSString *)strJson{
     if (strJson.length == 0 || strJson == nil) {
         return nil;
@@ -370,6 +382,13 @@
     }
     UIBarButtonItem *barItem = [[UIBarButtonItem alloc]initWithCustomView:btnItem];
     return barItem;
+}
+
+-(void)actionTelMe{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"tel://4006005558"]];
+        
+    });
 }
 
 @end
