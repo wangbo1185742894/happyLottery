@@ -695,6 +695,10 @@
 		F9581A7B1FE0C6FD009753AA /* UIImage+RandomSize.m in Sources */ = {isa = PBXBuildFile; fileRef = F9581A7A1FE0C6FC009753AA /* UIImage+RandomSize.m */; };
 		F9581A7F1FE0FA01009753AA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9581A7D1FE0FA01009753AA /* LoginViewController.m */; };
 		F9581A801FE0FA01009753AA /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9581A7E1FE0FA01009753AA /* LoginViewController.xib */; };
+		F95BC7CE201724A6006D6243 /* OpenRedPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F95BC7CB201724A5006D6243 /* OpenRedPopView.xib */; };
+		F95BC7CF201724A6006D6243 /* OpenRedPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = F95BC7CD201724A6006D6243 /* OpenRedPopView.m */; };
+		F95BC7D220172AF7006D6243 /* redpacket_open@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F95BC7D020172AF6006D6243 /* redpacket_open@2x.png */; };
+		F95BC7D320172AF7006D6243 /* redpacket_open@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F95BC7D120172AF6006D6243 /* redpacket_open@3x.png */; };
 		F95C69F11FE7AD0200126C6A /* PersonnalCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F95C69EF1FE7AD0200126C6A /* PersonnalCenterViewController.m */; };
 		F95C69F21FE7AD0200126C6A /* PersonnalCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F95C69F01FE7AD0200126C6A /* PersonnalCenterViewController.xib */; };
 		F9632F4B200C86EC00F69D23 /* LYJHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9632F4A200C86EC00F69D23 /* LYJHeaderView.m */; };
@@ -708,7 +712,6 @@
 		F9664B9E2004B23A000A27CA /* feedback@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9664B9A2004B239000A27CA /* feedback@3x.png */; };
 		F9664B9F2004B23A000A27CA /* recommend@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9664B9B2004B239000A27CA /* recommend@2x.png */; };
 		F9664BA02004B23A000A27CA /* recommend@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9664B9C2004B23A000A27CA /* recommend@3x.png */; };
-		F9664BA22004D58C000A27CA /* redpacket_open3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9664BA12004D58C000A27CA /* redpacket_open3x.png */; };
 		F9664BA92004D64A000A27CA /* bjCoupon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9664BA52004D649000A27CA /* bjCoupon@3x.png */; };
 		F9664BAA2004D64A000A27CA /* bjCoupon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9664BA62004D64A000A27CA /* bjCoupon@2x.png */; };
 		F96658F41FF0D26A001DE8B9 /* BankCard.m in Sources */ = {isa = PBXBuildFile; fileRef = F96658F31FF0D26A001DE8B9 /* BankCard.m */; };
@@ -718,7 +721,6 @@
 		F97FD9CB2003026300B35A7C /* inputbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F97FD9C92003026200B35A7C /* inputbox@2x.png */; };
 		F999275D2003223000023F8F /* bj_overdue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F99927572003222E00023F8F /* bj_overdue@2x.png */; };
 		F999275E2003223000023F8F /* bj_overdue@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F99927582003222E00023F8F /* bj_overdue@3x.png */; };
-		F9992768200335DC00023F8F /* redpacket_open@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9992764200335DB00023F8F /* redpacket_open@2x.png */; };
 		F9992769200335DC00023F8F /* guanbi@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9992765200335DB00023F8F /* guanbi@3x.png */; };
 		F999276A200335DC00023F8F /* guanbi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9992766200335DC00023F8F /* guanbi@2x.png */; };
 		F99927752003511000023F8F /* bluecoupon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F99927732003510F00023F8F /* bluecoupon@2x.png */; };
@@ -741,8 +743,6 @@
 		F9BD1B5C1FE8B41900C1C71A /* MyNickSetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9BD1B5A1FE8B41900C1C71A /* MyNickSetViewController.xib */; };
 		F9C332D81FF4C30700779197 /* Coupon.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C332D71FF4C30700779197 /* Coupon.m */; };
 		F9C332DC1FF4D5EF00779197 /* cannot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9C332D91FF4D5EE00779197 /* cannot@2x.png */; };
-		F9C332E21FF4DE1C00779197 /* OpenRedPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9C332DF1FF4DE1B00779197 /* OpenRedPopView.xib */; };
-		F9C332E31FF4DE1C00779197 /* OpenRedPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C332E11FF4DE1B00779197 /* OpenRedPopView.m */; };
 		F9C3BA1720088D0100916F3C /* FeedBackHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C3BA1520088D0100916F3C /* FeedBackHistoryViewController.m */; };
 		F9C3BA1820088D0100916F3C /* FeedBackHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9C3BA1620088D0100916F3C /* FeedBackHistoryViewController.xib */; };
 		F9C3BA1E20088E3800916F3C /* starUnselecte@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9C3BA1A20088E3700916F3C /* starUnselecte@3x.png */; };
@@ -1774,6 +1774,11 @@
 		F9581A7C1FE0FA01009753AA /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		F9581A7D1FE0FA01009753AA /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		F9581A7E1FE0FA01009753AA /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		F95BC7CB201724A5006D6243 /* OpenRedPopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpenRedPopView.xib; sourceTree = "<group>"; };
+		F95BC7CC201724A5006D6243 /* OpenRedPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenRedPopView.h; sourceTree = "<group>"; };
+		F95BC7CD201724A6006D6243 /* OpenRedPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenRedPopView.m; sourceTree = "<group>"; };
+		F95BC7D020172AF6006D6243 /* redpacket_open@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redpacket_open@2x.png"; sourceTree = "<group>"; };
+		F95BC7D120172AF6006D6243 /* redpacket_open@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redpacket_open@3x.png"; sourceTree = "<group>"; };
 		F95C69EE1FE7AD0200126C6A /* PersonnalCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonnalCenterViewController.h; sourceTree = "<group>"; };
 		F95C69EF1FE7AD0200126C6A /* PersonnalCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonnalCenterViewController.m; sourceTree = "<group>"; };
 		F95C69F01FE7AD0200126C6A /* PersonnalCenterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonnalCenterViewController.xib; sourceTree = "<group>"; };
@@ -1790,7 +1795,6 @@
 		F9664B9A2004B239000A27CA /* feedback@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feedback@3x.png"; sourceTree = "<group>"; };
 		F9664B9B2004B239000A27CA /* recommend@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "recommend@2x.png"; sourceTree = "<group>"; };
 		F9664B9C2004B23A000A27CA /* recommend@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "recommend@3x.png"; sourceTree = "<group>"; };
-		F9664BA12004D58C000A27CA /* redpacket_open3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redpacket_open3x.png; sourceTree = "<group>"; };
 		F9664BA52004D649000A27CA /* bjCoupon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bjCoupon@3x.png"; sourceTree = "<group>"; };
 		F9664BA62004D64A000A27CA /* bjCoupon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bjCoupon@2x.png"; sourceTree = "<group>"; };
 		F96658F21FF0D26A001DE8B9 /* BankCard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BankCard.h; path = "happyLottery/Class/LotteryMine(我的)/Controller/personnalSet/BankCard.h"; sourceTree = SOURCE_ROOT; };
@@ -1801,7 +1805,6 @@
 		F97FD9C92003026200B35A7C /* inputbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inputbox@2x.png"; sourceTree = "<group>"; };
 		F99927572003222E00023F8F /* bj_overdue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bj_overdue@2x.png"; sourceTree = "<group>"; };
 		F99927582003222E00023F8F /* bj_overdue@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bj_overdue@3x.png"; sourceTree = "<group>"; };
-		F9992764200335DB00023F8F /* redpacket_open@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redpacket_open@2x.png"; sourceTree = "<group>"; };
 		F9992765200335DB00023F8F /* guanbi@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guanbi@3x.png"; sourceTree = "<group>"; };
 		F9992766200335DC00023F8F /* guanbi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guanbi@2x.png"; sourceTree = "<group>"; };
 		F99927732003510F00023F8F /* bluecoupon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bluecoupon@2x.png"; sourceTree = "<group>"; };
@@ -1828,9 +1831,6 @@
 		F9C332D61FF4C30700779197 /* Coupon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Coupon.h; path = "happyLottery/Class/LotteryMine(我的)/View/Coupon.h"; sourceTree = SOURCE_ROOT; };
 		F9C332D71FF4C30700779197 /* Coupon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Coupon.m; path = "happyLottery/Class/LotteryMine(我的)/View/Coupon.m"; sourceTree = SOURCE_ROOT; };
 		F9C332D91FF4D5EE00779197 /* cannot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cannot@2x.png"; sourceTree = "<group>"; };
-		F9C332DF1FF4DE1B00779197 /* OpenRedPopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpenRedPopView.xib; sourceTree = "<group>"; };
-		F9C332E01FF4DE1B00779197 /* OpenRedPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenRedPopView.h; sourceTree = "<group>"; };
-		F9C332E11FF4DE1B00779197 /* OpenRedPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenRedPopView.m; sourceTree = "<group>"; };
 		F9C3BA1420088D0100916F3C /* FeedBackHistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedBackHistoryViewController.h; sourceTree = "<group>"; };
 		F9C3BA1520088D0100916F3C /* FeedBackHistoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedBackHistoryViewController.m; sourceTree = "<group>"; };
 		F9C3BA1620088D0100916F3C /* FeedBackHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedBackHistoryViewController.xib; sourceTree = "<group>"; };
@@ -2548,10 +2548,13 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+
 				2D0E23A020182EB50098DA40 /* usermine@2x.png */,
 				2D0E23A120182EB60098DA40 /* usermine@3x.png */,
 				2D0E239D20181C780098DA40 /* checkBox_default@2x.png */,
 				2D0E239C20181C780098DA40 /* checkBox_default@3x.png */,
+				F95BC7D020172AF6006D6243 /* redpacket_open@2x.png */,
+				F95BC7D120172AF6006D6243 /* redpacket_open@3x.png */,
 				F9FDFAEE2013223E0029ACC7 /* msg_come.mp3 */,
 				F9C3BA1920088E2600916F3C /* feedback */,
 				F94770B82007065F0091729E /* Introduction to football games Html */,
@@ -2839,6 +2842,9 @@
 		2DDEDBFA1FD4DBB5007AEBF7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F95BC7CC201724A5006D6243 /* OpenRedPopView.h */,
+				F95BC7CD201724A6006D6243 /* OpenRedPopView.m */,
+				F95BC7CB201724A5006D6243 /* OpenRedPopView.xib */,
 				F9FDFAEA2012F8DB0029ACC7 /* VersionUpdatingPopView.h */,
 				F9FDFAEB2012F8DC0029ACC7 /* VersionUpdatingPopView.m */,
 				F9FDFAE92012F8DB0029ACC7 /* VersionUpdatingPopView.xib */,
@@ -2851,9 +2857,6 @@
 				2D2060321FFCCB380086E266 /* SchemListCell.h */,
 				2D2060331FFCCB380086E266 /* SchemListCell.m */,
 				2D2060341FFCCB380086E266 /* SchemListCell.xib */,
-				F9C332E01FF4DE1B00779197 /* OpenRedPopView.h */,
-				F9C332E11FF4DE1B00779197 /* OpenRedPopView.m */,
-				F9C332DF1FF4DE1B00779197 /* OpenRedPopView.xib */,
 				F94AA9F01FEBBFE00021B980 /* BankCardSetTableViewCell.h */,
 				F94AA9F11FEBBFE00021B980 /* BankCardSetTableViewCell.m */,
 				F94AA9F21FEBBFE00021B980 /* BankCardSetTableViewCell.xib */,
@@ -3303,8 +3306,6 @@
 				F92D03CE2005A4CE00C26E7A /* lockredpacket@3x.png */,
 				F92D03CF2005A4CF00C26E7A /* unlockredpacket@2x.png */,
 				F92D03D12005A4CF00C26E7A /* unlockredpacket@3x.png */,
-				F9664BA12004D58C000A27CA /* redpacket_open3x.png */,
-				F9992764200335DB00023F8F /* redpacket_open@2x.png */,
 				F999278020037A7000023F8F /* empty_hongbao@2x.png */,
 				F999277F20037A7000023F8F /* empty_hongbao@3x.png */,
 				F9992766200335DC00023F8F /* guanbi@2x.png */,
@@ -3939,6 +3940,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F95BC7D220172AF7006D6243 /* redpacket_open@2x.png in Resources */,
 				F924BA9E1FE252CF00830BF4 /* user@3x.png in Resources */,
 				F91565FD1FFCC73800E254CE /* qrcode@3x.png in Resources */,
 				F90FCD731FF3810F00BD807C /* dotted@3x.png in Resources */,
@@ -3956,7 +3958,6 @@
 				F957C20E1FE3B28D0090B19B /* assist@3x.png in Resources */,
 				F94AA9C01FEB59DA0021B980 /* hint@2x.png in Resources */,
 				F957C2081FE3B28D0090B19B /* balance@3x.png in Resources */,
-				F9C332E21FF4DE1C00779197 /* OpenRedPopView.xib in Resources */,
 				F924BA9C1FE252CF00830BF4 /* recommend@2x.png in Resources */,
 				2D2060301FFCB71E0086E266 /* icon_zhifu_selceted@3x.png in Resources */,
 				2D739CED1FEB490900264044 /* fangkuangjingcainomal@3x.png in Resources */,
@@ -4135,6 +4136,7 @@
 				2D4B1E6D1FDF684E0034B708 /* duibiao@3x.png in Resources */,
 				2D628B2B1FECA9C40013D0E1 /* touzhusaishijia@2x.png in Resources */,
 				2D92A8212010545D0038E165 /* btn_jinru@3x.png in Resources */,
+				F95BC7CE201724A6006D6243 /* OpenRedPopView.xib in Resources */,
 				F91565F21FFCBDAE00E254CE /* Moments@2x.png in Resources */,
 				F928C6BA1FF4BA40001F1A32 /* increase@2x.png in Resources */,
 				F9581A781FE0B765009753AA /* MineTableViewCell.xib in Resources */,
@@ -4168,7 +4170,6 @@
 				2D5171EB200C72DA00C3CD7F /* icon_weizhong_@2x.png in Resources */,
 				2D4B1E9D1FDFC4E10034B708 /* NewsViewController.xib in Resources */,
 				F957C2091FE3B28D0090B19B /* lottery@3x.png in Resources */,
-				F9992768200335DC00023F8F /* redpacket_open@2x.png in Resources */,
 				2D5171FC200C73D900C3CD7F /* icon_won_tatus@3x.png in Resources */,
 				2D628B281FECA9C40013D0E1 /* touzhusaishijia@3x.png in Resources */,
 				2D20602E1FFCB71E0086E266 /* icon_zhifu_normal@2x.png in Resources */,
@@ -4398,6 +4399,7 @@
 				2DDEDC161FD4DC16007AEBF7 /* MineViewController.xib in Resources */,
 				F9D7C55C2006276900415B4E /* FootBallPlayViewController.xib in Resources */,
 				F94913421FFF260F00D30AE7 /* banker@2x.png in Resources */,
+				F95BC7D320172AF7006D6243 /* redpacket_open@3x.png in Resources */,
 				F928C6861FF48BE4001F1A32 /* bj_@2x.png in Resources */,
 				F9DC69961FDF878D007D384D /* MyOrderListViewController.xib in Resources */,
 				2D628B3D1FECAA9A0013D0E1 /* fengkuangjingcai-gengduoshuoming@3x.png in Resources */,
@@ -4466,7 +4468,6 @@
 				F999278620037A8C00023F8F /* empty_youhuiquan@3x.png in Resources */,
 				F91565FE1FFCC73800E254CE /* qrcode@2x.png in Resources */,
 				2D4B1E891FDF684E0034B708 /* yuce_defealt@2x.png in Resources */,
-				F9664BA22004D58C000A27CA /* redpacket_open3x.png in Resources */,
 				F9BD1B521FE8B21600C1C71A /* FirstBankCardSetViewController.xib in Resources */,
 				2D5171FB200C73D900C3CD7F /* icon_won_tatus@2x.png in Resources */,
 				F91565F11FFCBDAE00E254CE /* microblog@3x.png in Resources */,
@@ -4561,6 +4562,7 @@
 				2DDEDE6D1FD568C9007AEBF7 /* AFHTTPRequestOperation.m in Sources */,
 				2D628B561FECCE4C0013D0E1 /* TZSelectMatchCell.m in Sources */,
 				2DDEDE5D1FD568C9007AEBF7 /* MKAnnotationView+WebCache.m in Sources */,
+				F95BC7CF201724A6006D6243 /* OpenRedPopView.m in Sources */,
 				F9D9F2AD1FF22C54006434DC /* CashAndIntegrationWaterTableViewCell.m in Sources */,
 				2DDEDE7E1FD568C9007AEBF7 /* UIImageView+AFNetworking.m in Sources */,
 				2DDEDC101FD4DC03007AEBF7 /* GroupViewController.m in Sources */,
@@ -4654,7 +4656,6 @@
 				F9C3BA29200893D600916F3C /* FeedBackHistoryTableViewCell.m in Sources */,
 				2D739CA71FEA0A4000264044 /* JCZQTranscation.m in Sources */,
 				F91F35CC20084DCD00B23170 /* ChangeLoginPWDViewController.m in Sources */,
-				F9C332E31FF4DE1C00779197 /* OpenRedPopView.m in Sources */,
 				2D739C1C1FE2611C00264044 /* IQKeyboardManager.m in Sources */,
 				F93204F41FECF98C00E22A27 /* WBInputPopView.m in Sources */,
 				2DDEDC3D1FD521D0007AEBF7 /* GTMBase64.m in Sources */,

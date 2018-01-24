@@ -11,9 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FeedBackHistoryViewController">
             <connections>
-                <outlet property="bottom" destination="1Ny-Qz-eEh" id="m3N-k0-oJU"/>
+                <outlet property="bottom" destination="65B-ky-po7" id="S22-0r-fPc"/>
                 <outlet property="tableview" destination="VYR-YE-Hep" id="Hjv-80-Zd4"/>
-                <outlet property="top" destination="8FA-Yu-uI3" id="xbV-Sg-2ee"/>
+                <outlet property="top" destination="duU-dJ-teS" id="TJP-In-4Vs"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -27,15 +27,51 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="sectionIndexBackgroundColor" red="0.96444731950759888" green="0.96840888261795044" blue="0.98488038778305054" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </tableView>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hkD-g6-Cc0">
+                    <rect key="frame" x="47" y="231" width="281" height="205"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty_hongbao.png" translatesAutoresizingMaskIntoConstraints="NO" id="3YL-Dw-gK2">
+                            <rect key="frame" x="31" y="16" width="219" height="120"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="120" id="LGQ-iW-Nfu"/>
+                                <constraint firstAttribute="width" constant="219" id="gZy-3d-NrN"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无可用红包" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fb3-6V-0OF">
+                            <rect key="frame" x="59" y="154" width="164" height="32"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="164" id="OGF-Yc-LVn"/>
+                                <constraint firstAttribute="height" constant="32" id="XOa-ga-OBq"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="205" id="4EV-yH-GqB"/>
+                        <constraint firstItem="fb3-6V-0OF" firstAttribute="top" secondItem="3YL-Dw-gK2" secondAttribute="bottom" constant="18" id="9XI-JR-z9r"/>
+                        <constraint firstAttribute="width" constant="281" id="PpB-IT-XTc"/>
+                        <constraint firstItem="3YL-Dw-gK2" firstAttribute="centerX" secondItem="hkD-g6-Cc0" secondAttribute="centerX" id="S4V-Bb-3MD"/>
+                        <constraint firstItem="3YL-Dw-gK2" firstAttribute="centerX" secondItem="fb3-6V-0OF" secondAttribute="centerX" id="haF-7B-q5B"/>
+                        <constraint firstItem="3YL-Dw-gK2" firstAttribute="top" secondItem="hkD-g6-Cc0" secondAttribute="top" constant="16" id="q3A-51-KFJ"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="VYR-YE-Hep" secondAttribute="bottom" id="1Ny-Qz-eEh"/>
-                <constraint firstItem="VYR-YE-Hep" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="7cz-aV-iwo"/>
-                <constraint firstItem="VYR-YE-Hep" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="8FA-Yu-uI3"/>
-                <constraint firstAttribute="trailing" secondItem="VYR-YE-Hep" secondAttribute="trailing" id="Eu4-j9-hWj"/>
+                <constraint firstAttribute="bottom" secondItem="VYR-YE-Hep" secondAttribute="bottom" id="65B-ky-po7"/>
+                <constraint firstItem="hkD-g6-Cc0" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="8OD-br-Ik7"/>
+                <constraint firstAttribute="trailing" secondItem="VYR-YE-Hep" secondAttribute="trailing" id="beO-rA-0c3"/>
+                <constraint firstItem="VYR-YE-Hep" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="duU-dJ-teS"/>
+                <constraint firstItem="hkD-g6-Cc0" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="gZn-Or-F3A"/>
+                <constraint firstItem="VYR-YE-Hep" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="snx-lM-hQg"/>
             </constraints>
-            <point key="canvasLocation" x="33.5" y="54.5"/>
+            <point key="canvasLocation" x="35.5" y="43.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="empty_hongbao.png" width="180" height="116"/>
+    </resources>
 </document>

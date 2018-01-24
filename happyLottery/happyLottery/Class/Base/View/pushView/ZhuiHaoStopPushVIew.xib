@@ -40,22 +40,10 @@
                         <action selector="actionColse:" destination="iN0-l3-epB" eventType="touchUpInside" id="dG4-et-2u1"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mcb-2V-zw0">
-                    <rect key="frame" x="62.5" y="446" width="250" height="44"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="恭喜中奖，智能追号自动停追" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Co2-WD-N2S">
+                    <rect key="frame" x="10" y="378" width="355" height="102"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="44" id="Q6K-pR-Yjx"/>
-                        <constraint firstAttribute="width" constant="250" id="voV-y6-v3r"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <state key="normal" title="立即查看" backgroundImage="button_trophy.png"/>
-                    <connections>
-                        <action selector="actionToDetail:" destination="iN0-l3-epB" eventType="touchUpInside" id="YpI-gV-cyM"/>
-                    </connections>
-                </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="恭喜中奖，智能追号自动停追" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Co2-WD-N2S">
-                    <rect key="frame" x="10" y="378" width="355" height="60"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="60" id="gjC-hP-Eud"/>
+                        <constraint firstAttribute="height" constant="102" id="gjC-hP-Eud"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <color key="textColor" red="1" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -70,13 +58,25 @@
                     <color key="textColor" red="1" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mcb-2V-zw0">
+                    <rect key="frame" x="62" y="501" width="250" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="Q6K-pR-Yjx"/>
+                        <constraint firstAttribute="width" constant="250" id="voV-y6-v3r"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <state key="normal" title="立即查看" backgroundImage="button_trophy.png"/>
+                    <connections>
+                        <action selector="actionToDetail:" destination="iN0-l3-epB" eventType="touchUpInside" id="YpI-gV-cyM"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="DWe-K7-mvm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="2R6-pa-Gcg"/>
                 <constraint firstAttribute="trailing" secondItem="jCk-ya-9bf" secondAttribute="trailing" constant="10" id="Da5-bg-xYt"/>
                 <constraint firstItem="etn-7d-OcS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="128" id="FGP-54-DLD"/>
                 <constraint firstItem="jCk-ya-9bf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="H1T-Qf-0J4"/>
-                <constraint firstItem="mcb-2V-zw0" firstAttribute="top" secondItem="Co2-WD-N2S" secondAttribute="bottom" constant="8" id="IDN-Xo-t02"/>
+                <constraint firstItem="mcb-2V-zw0" firstAttribute="top" secondItem="Co2-WD-N2S" secondAttribute="bottom" constant="21" id="IDN-Xo-t02"/>
                 <constraint firstAttribute="bottom" secondItem="DWe-K7-mvm" secondAttribute="bottom" id="Ivb-qp-j6R"/>
                 <constraint firstItem="mcb-2V-zw0" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="KFD-CU-5FT"/>
                 <constraint firstItem="DWe-K7-mvm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Lqx-NL-1gt"/>

@@ -27,8 +27,10 @@
 #import "WebShowViewController.h"
 #import "RedPacket.h"
 #import "OpenRedPopView.h"
+#import "MyRedPacketViewController.h"
 #define KNewsListCell @"NewsListCell"
 #define AnimationDur 0.3
+
 
 @interface BuyLotteryViewController ()<WBAdsImgViewDelegate,HomeMenuItemViewDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,NewsListCellDelegate,OpenRedPopViewDelegate,MemberManagerDelegate>
 {
@@ -43,7 +45,8 @@
      NSMutableArray *listUseRedPacketArray;
      RedPacket *r;
      int j;
-
+    UIButton  *redPacketbutton;
+    RedPacket *red ;
     __weak IBOutlet UIView *viewNewDefault;
     CGFloat curY;
     __weak IBOutlet NSLayoutConstraint *newsViewMarginTop;
@@ -81,7 +84,7 @@
     [self setMenu];
     [self setNewsView];
     [self setTableView];
-
+    [self initRedButton];
     
 }
 
@@ -502,12 +505,10 @@
     NSLog(@"redPacketInfo%@",redPacketInfo);
     if ([msg isEqualToString:@"执行成功"]) {
         // [self showPromptText: @"memberInfo成功" hideAfterDelay: 1.7];
-        RedPacket *red = [[RedPacket alloc]initWith:redPacketInfo];
-        UIImageView *image = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"redpacket"]];
-        
-        image.frame  = CGRectMake(self.view.mj_w/2-105, 200, 210,294);
-        [self.view addSubview:image];
-        float width = image.mj_w/2;
+     
+        float width = redPacketbutton.mj_w/2;
+       
+        red = [[RedPacket alloc]initWith:redPacketInfo];
         NSString *redPacketType = red.redPacketType;
         NSString *sourecs;
         if ([redPacketType isEqualToString:@"彩金红包"]) {
@@ -516,13 +517,37 @@
             sourecs = [NSString stringWithFormat:@"恭喜您获得了%@积分",red.redPacketContent];
         }else if ([redPacketType isEqualToString:@"优惠券红包"]){
             sourecs = [NSString stringWithFormat:@"恭喜您获得了%@张优惠券",red.redPacketContent];
+        }else{
+            sourecs = @"恭喜您获得了红包！";
+            
         }
-        [self rotation360repeatCount:2 view:image andHalf:width andCaijin:sourecs];
+        
+        [self rotation360repeatCount:2 view:redPacketbutton andHalf:width andCaijin:sourecs];
+       
+        
     
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
+        redPacketbutton.hidden=YES;
     }
     
+}
+
+-(void)BtnClick{
+    if (listUseRedPacketArray.count>1) {
+        [redPacketbutton removeFromSuperview];
+        MyRedPacketViewController * pcVC = [[MyRedPacketViewController alloc]init];
+        pcVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:pcVC animated:YES];
+    }else if (listUseRedPacketArray.count==1) {
+        r =listUseRedPacketArray[0];
+           [self openRedPacketClient];
+    }
+  
+    
+  
+  
+
 }
 
 -(void)rotation360repeatCount:(int)repeatCount view:(UIView *)view andHalf:(float)width andCaijin:(NSString *)caijin{
@@ -533,14 +558,15 @@
             view.mj_w = 0;
             
         } completion:^(BOOL finished) {
-            [view removeFromSuperview];
+            //[redPacketbutton removeFromSuperview];
+            redPacketbutton.hidden=YES;
             OpenRedPopView *popView = [[OpenRedPopView alloc]initWithFrame:self.view.frame];
             popView.delegate = self;
             popView.labJiangjin.text =caijin;
             popView.alpha = 0.2;
             popView.layer.cornerRadius = 10;
             popView.layer.masksToBounds = YES;
-            
+            // redPacketbutton.hidden=YES;
             [self.view addSubview:popView];
             [UIView animateWithDuration:AnimationDur animations:^{
                 
@@ -587,6 +613,15 @@
     
 }
 
+-(void)initRedButton{
+    redPacketbutton= [[UIButton alloc]init];
+    [redPacketbutton setBackgroundImage:[UIImage imageNamed:@"redpacket"] forState:UIControlStateNormal];
+    [redPacketbutton addTarget: self action: @selector(BtnClick) forControlEvents: UIControlEventTouchUpInside];
+    redPacketbutton.frame  = CGRectMake(self.view.mj_w/2-105, 200, 210,294);
+    [self.view addSubview:redPacketbutton];
+    redPacketbutton.hidden=YES;
+}
+
 -(void)openRedPacketClient{
     NSDictionary *Info;
     @try {
@@ -618,12 +653,15 @@
                         for (int i=0; i<array.count; i++) {
                             
                             RedPacket *redPacket = [[RedPacket alloc]initWith:array[i]];
-                            [listUseRedPacketArray addObject:redPacket];
+                            NSString *redPacketStatus = redPacket.redPacketStatus;
+                          if ([redPacketStatus isEqualToString:@"解锁"]) {
+                                  [listUseRedPacketArray addObject:redPacket];
+                            }
                             
-                          
-        }
-         
-         [self openReadPacket];
+           }
+            if (listUseRedPacketArray.count>0) {
+                redPacketbutton.hidden=NO;
+            }
         }
         
     }else{
