@@ -43,9 +43,20 @@
                             <constraint firstAttribute="width" constant="11" id="Hpo-Ke-23y"/>
                         </constraints>
                     </imageView>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="number_bj" translatesAutoresizingMaskIntoConstraints="NO" id="ULD-Sd-zlC">
+                        <rect key="frame" x="155" y="17" width="10" height="10"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="10" id="CZR-cR-BCg"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="10" id="CvM-eD-b8y"/>
+                            <constraint firstAttribute="width" constant="10" id="eCF-Y8-aiW"/>
+                            <constraint firstAttribute="height" constant="10" id="wY7-ab-h3t"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="bY5-Wk-YL5" secondAttribute="trailing" constant="8" id="5St-mR-p6r"/>
+                    <constraint firstItem="ULD-Sd-zlC" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="77Y-k2-n2r"/>
+                    <constraint firstItem="ULD-Sd-zlC" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="BWF-jG-2u1"/>
                     <constraint firstItem="wka-2w-17j" firstAttribute="leading" secondItem="eDA-88-Ain" secondAttribute="trailing" constant="8" id="WV0-cc-HoW"/>
                     <constraint firstItem="eDA-88-Ain" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="a6M-U4-2D7"/>
                     <constraint firstItem="eDA-88-Ain" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9" id="brO-Tv-uhH"/>
@@ -57,6 +68,7 @@
             <connections>
                 <outlet property="image" destination="eDA-88-Ain" id="OJn-AT-ExH"/>
                 <outlet property="lable" destination="wka-2w-17j" id="dEA-rY-GzA"/>
+                <outlet property="redPoint" destination="ULD-Sd-zlC" id="eL4-46-X7J"/>
                 <outlet property="rightIcon" destination="bY5-Wk-YL5" id="gKt-3z-NOW"/>
             </connections>
             <point key="canvasLocation" x="-211" y="62"/>
@@ -64,5 +76,6 @@
     </objects>
     <resources>
         <image name="arrows_ _icon_default.png" width="5" height="10"/>
+        <image name="number_bj" width="16" height="16"/>
     </resources>
 </document>

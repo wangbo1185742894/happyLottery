@@ -197,12 +197,11 @@
                             </constraints>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Pg-1N-0Pf">
-                            <rect key="frame" x="125" y="218" width="168" height="30"/>
+                            <rect key="frame" x="125" y="218" width="212" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="AOT-D1-9OR"/>
-                                <constraint firstAttribute="width" constant="168" id="Wpn-BV-dgS"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
                             <state key="normal" title="请选择银行卡号">
                                 <color key="titleColor" red="0.1960784314" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
@@ -211,11 +210,9 @@
                             </connections>
                         </button>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="M5B-Mx-01Y">
-                            <rect key="frame" x="330" y="222" width="23" height="23"/>
+                            <rect key="frame" x="342" y="222" width="23" height="23"/>
                             <constraints>
-                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="23" id="CjB-Jk-EHp"/>
                                 <constraint firstAttribute="height" constant="23" id="a4t-jL-pKs"/>
-                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="23" id="d0h-qh-xUF"/>
                                 <constraint firstAttribute="width" constant="23" id="giw-5Y-U58"/>
                             </constraints>
                         </imageView>
@@ -223,17 +220,17 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                             <subviews>
                                 <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8hT-zt-wca">
-                                    <rect key="frame" x="0.0" y="327" width="375" height="276"/>
+                                    <rect key="frame" x="0.0" y="327" width="375" height="243"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="276" id="COU-gX-hLx"/>
+                                        <constraint firstAttribute="height" constant="243" id="COU-gX-hLx"/>
                                     </constraints>
                                 </tableView>
                             </subviews>
                             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="8hT-zt-wca" firstAttribute="leading" secondItem="7kM-RY-IjU" secondAttribute="leading" id="1nh-C9-5rh"/>
-                                <constraint firstAttribute="bottom" secondItem="8hT-zt-wca" secondAttribute="bottom" id="7sn-4V-6SQ"/>
+                                <constraint firstAttribute="bottom" secondItem="8hT-zt-wca" secondAttribute="bottom" constant="33" id="7sn-4V-6SQ"/>
                                 <constraint firstAttribute="trailing" secondItem="8hT-zt-wca" secondAttribute="trailing" id="nKx-0K-8L2"/>
                             </constraints>
                         </view>
@@ -269,6 +266,7 @@
                         <constraint firstItem="X80-5a-cfc" firstAttribute="leading" secondItem="sDy-8f-ej1" secondAttribute="leading" id="eaF-OY-Lsx"/>
                         <constraint firstAttribute="trailing" secondItem="QKW-xO-HkW" secondAttribute="trailing" id="hUR-20-ZEK"/>
                         <constraint firstItem="MQE-vU-wJj" firstAttribute="top" secondItem="PDa-vb-Ojo" secondAttribute="bottom" constant="6" id="ihk-d4-ACk"/>
+                        <constraint firstItem="M5B-Mx-01Y" firstAttribute="leading" secondItem="0Pg-1N-0Pf" secondAttribute="trailing" constant="5" id="j2i-U0-3vj"/>
                         <constraint firstAttribute="trailing" secondItem="yvO-IM-SLG" secondAttribute="trailing" id="j4A-di-ApE"/>
                         <constraint firstItem="dV2-cF-8T5" firstAttribute="top" secondItem="Aav-Gy-4MI" secondAttribute="bottom" constant="20" id="kqk-Wc-d4l"/>
                         <constraint firstItem="MQE-vU-wJj" firstAttribute="leading" secondItem="sDy-8f-ej1" secondAttribute="leading" id="mzC-tm-MHl"/>
@@ -276,7 +274,7 @@
                         <constraint firstAttribute="trailing" secondItem="6P6-Qa-k2g" secondAttribute="trailing" id="od3-fB-PHp"/>
                         <constraint firstItem="PDa-vb-Ojo" firstAttribute="top" secondItem="6P6-Qa-k2g" secondAttribute="bottom" constant="30" id="qD7-dU-4jo"/>
                         <constraint firstAttribute="trailing" secondItem="XHx-sb-TWu" secondAttribute="trailing" constant="22" id="r9e-Er-Ew0"/>
-                        <constraint firstAttribute="trailing" secondItem="M5B-Mx-01Y" secondAttribute="trailing" constant="22" id="rh2-xG-UsS"/>
+                        <constraint firstAttribute="trailing" secondItem="M5B-Mx-01Y" secondAttribute="trailing" constant="10" id="rh2-xG-UsS"/>
                         <constraint firstItem="XHx-sb-TWu" firstAttribute="leading" secondItem="Dp0-Pq-6MR" secondAttribute="trailing" constant="7" id="riH-lt-yeN"/>
                         <constraint firstItem="6P6-Qa-k2g" firstAttribute="leading" secondItem="mDe-GP-TMa" secondAttribute="leading" id="uR9-7y-XGf"/>
                         <constraint firstAttribute="trailing" secondItem="7kM-RY-IjU" secondAttribute="trailing" id="vCs-ic-ETE"/>

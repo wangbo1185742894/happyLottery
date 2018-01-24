@@ -22,12 +22,15 @@
 #import "ShareViewController.h"
 #import "FeedbackViewController.h"
 #import "Notice.h"
+#import "RedPacket.h"
 
 @interface MineViewController () <UITableViewDelegate, UITableViewDataSource,MemberManagerDelegate>{
     NSArray *listArray;
     UIButton *noticeBtn;
     UILabel *label;
     long num;
+    long rednum;
+       NSMutableArray *listUseRedPacketArray;
 }
 @property (weak, nonatomic) IBOutlet UIButton *personSetBtn;
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
@@ -52,6 +55,8 @@
     if (self.curUser.isLogin==YES) {
         [self updateMemberClinet];
         [self searchNoticeDB];
+         [self getRedPacketByStateClient:@"true"];
+        [self CheckFeedBackRedNumClient];
     } else {
         //显示未登录时的状态
         [self notLogin];
@@ -63,6 +68,7 @@
     [super viewDidLoad];
     self.viewControllerNo = @"A201";
     self.memberMan.delegate = self;
+    listUseRedPacketArray = [[NSMutableArray alloc]init];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(actionUserLoginSuccess:) name:NotificationNameUserLogin object:nil];
      listArray = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Mine" ofType: @"plist"]];
     [_tableview registerClass:[MineTableViewCell class] forCellReuseIdentifier:@"MineTableViewCell"];
@@ -345,6 +351,13 @@
     
 
     cell.lable.text = optionDic[@"title"];
+    if (listUseRedPacketArray.count>0 && [optionDic[@"title"] isEqualToString:@"我的红包"]) {
+        cell.redPoint.hidden=NO;
+    }else  if (rednum>0 && [optionDic[@"title"] isEqualToString:@"意见反馈"]) {
+        cell.redPoint.hidden=NO;
+    }else{
+         cell.redPoint.hidden=YES;
+    }
     cell.lable.font = [UIFont systemFontOfSize:15];
     return cell;
 }
@@ -418,6 +431,85 @@
             [self.navigationController pushViewController: vc animated: YES];
         }
     }
+}
+
+#pragma 获取红包是否显示小红点
+
+-(void)getRedPacketByStateClient:(NSString*)isValid{
+    NSDictionary *Info;
+    @try {
+        NSString *cardCode = self.curUser.cardCode;
+        Info = @{@"cardCode":cardCode,
+                 @"isValid":isValid,
+                 @"page":@"1",
+                 @"pageSize":@"10"
+                 };
+        
+    } @catch (NSException *exception) {
+        Info = nil;
+    } @finally {
+        [self.memberMan getRedPacketByStateSms:Info];
+    }
+    
+}
+
+-(void)getRedPacketByStateSms:(NSArray *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    
+    
+    NSLog(@"redPacketInfo%@",redPacketInfo);
+    if ([msg isEqualToString:@"执行成功"]) {
+        // [self showPromptText: @"memberInfo成功" hideAfterDelay: 1.7];
+        [listUseRedPacketArray removeAllObjects];
+        NSEnumerator *enumerator = [redPacketInfo objectEnumerator];
+        id object;
+        if ((object = [enumerator nextObject]) != nil) {
+            NSArray *array = redPacketInfo;
+            
+            
+            
+            for (int i=0; i<array.count; i++) {
+                
+                RedPacket *redPacket = [[RedPacket alloc]initWith:array[i]];
+                NSString *redPacketStatus = redPacket.redPacketStatus;
+                if ([redPacketStatus isEqualToString:@"解锁"]) {
+                    [listUseRedPacketArray addObject:redPacket];
+                }
+            }
+            [self.tableview reloadData];
+        }
+        
+    }else{
+        [self showPromptText: msg hideAfterDelay: 1.7];
+    }
+}
+
+#pragma 获取意见反馈是否显示小红点
+-(void)FeedBackUnReadNum:(NSDictionary *)Info IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    if ([msg isEqualToString:@"执行成功"]) {
+        // [self showPromptText:@"获取意见反馈小红点成功！" hideAfterDelay:1.7];
+        rednum = [[Info valueForKey:@"unReadNum"] longValue];
+        [self.tableview reloadData];
+    }else{
+        
+        [self showPromptText:msg hideAfterDelay:1.7];
+        
+    }
+    
+}
+
+-(void)CheckFeedBackRedNumClient{
+    NSDictionary *Info;
+    @try {
+        
+        Info = @{@"cardCode":self.curUser.cardCode
+                 };
+        
+    } @catch (NSException *exception) {
+        Info = nil;
+    } @finally {
+        [self.memberMan FeedBackUnReadNum:Info];
+    }
+    
 }
 
 @end

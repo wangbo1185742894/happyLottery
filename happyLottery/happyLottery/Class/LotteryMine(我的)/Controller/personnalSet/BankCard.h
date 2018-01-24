@@ -18,5 +18,6 @@
 @property(nonatomic,strong)NSString *cardCode;
 @property(nonatomic,strong)NSString *memberId;
 @property(nonatomic,strong)NSString *tempBankNumber;
+@property(nonatomic,strong)NSString *_id;
 
 @end

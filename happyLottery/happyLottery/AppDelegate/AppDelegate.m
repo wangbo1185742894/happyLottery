@@ -426,7 +426,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSInteger badge = [[aps valueForKey:@"badge"] integerValue];
     NSString *sound = [aps valueForKey:@"sound"]; //播放的声音
     // 取得自定义字段内容，userInfo就是后台返回的JSON数据，是一个字典
-    NSString *appCode =  [userInfo valueForKey:@"appCode"];
+    NSString *appCode =  [userInfo valueForKey:@"pageCode"];
     //    [APService handleRemoteNotification:userInfo];
       [self goToYunshiWithInfo:appCode];
     completionHandler();  // 系统要求执行这个方法
@@ -454,8 +454,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
             [self.fmdb close];
         }
     }
-    NSString *appCode =extra[@"appCode"] ;
-    if ([extra[@"appCode"] isEqualToString:@"A204"]) { //中奖推送
+    NSString *pageCode =extra[@"pageCode"] ;
+    if ([extra[@"pageCode"] isEqualToString:@"A204"]) { //中奖推送
         if (winPushView !=nil) {
             [winPushView removeFromSuperview];
             winPushView = nil;
@@ -466,12 +466,12 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         [winPushView refreshInfo:title andContent:content];
         [[UIApplication sharedApplication].keyWindow addSubview:winPushView];
     }else{
-        [self goToYunshiWithInfo:appCode];
+        [self goToYunshiWithInfo:pageCode];
     }
 }
 
--(void)goToYunshiWithInfo:(NSString *)appcode{
-    NSString *keyStr = appcode;
+-(void)goToYunshiWithInfo:(NSString *)pageCode{
+    NSString *keyStr = pageCode;
     
     if (keyStr == nil) {
         return;
@@ -494,7 +494,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
     baseVC.hidesBottomBarWhenPushed = YES;
     
-    [self.window.rootViewController.navigationController pushViewController:baseVC animated:YES];
+    AppDelegate *delegate  = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    [delegate.curNavVC pushViewController:baseVC animated:YES];
 }
 
 // log NSSet with UTF8

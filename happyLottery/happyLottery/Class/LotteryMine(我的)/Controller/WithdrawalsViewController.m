@@ -10,6 +10,7 @@
 #import "AESUtility.h"
 #import "WBInputPopView.h"
 #import "BankCard.h"
+#import "FirstBankCardSetViewController.h"
 
 @interface WithdrawalsViewController ()<MemberManagerDelegate,WBInputPopViewDelegate,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>{
       NSString *pwd;
@@ -64,10 +65,15 @@
 -(void)withdrawSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     if ([msg isEqualToString:@"执行成功"]) {
         [self showPromptText: @"会员提现成功" hideAfterDelay: 1.7];
+          [self performSelector:@selector(delayMethod) withObject:nil afterDelay:1.0];
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
     }
     
+}
+
+- (void)delayMethod{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)getBankListSms:(NSDictionary *)bankInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
@@ -75,7 +81,8 @@
     if ([msg isEqualToString:@"执行成功"]) {
      
         NSLog(@"%@",bankInfo);
-        [self showPromptText: @" 获取支持的银行卡成功" hideAfterDelay: 1.7];
+        [listBankArray removeAllObjects];
+       // [self showPromptText: @" 获取支持的银行卡成功" hideAfterDelay: 1.7];
         for (id object in bankInfo) {
             NSLog(@"listBankArray=%@", object);
             BankCard *bankCards = [[BankCard alloc]initWith:object];
@@ -94,7 +101,10 @@
             self.tvHeight.constant = 0;
             self.tableView.hidden=YES;
             self.backView.hidden = YES;
-            self.bankBtn.titleLabel.text=@"请前往银行卡页面添加银行卡";
+            //self.bankBtn.titleLabel.text=@"请前往银行卡页面添加银行卡";
+            [self.bankBtn setTitle:@"请前往银行卡页面添加银行卡" forState:UIControlStateNormal];
+            FirstBankCardSetViewController * pcVC = [[FirstBankCardSetViewController alloc]init];
+            [self.navigationController pushViewController:pcVC animated:YES];
         }
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
@@ -140,6 +150,21 @@
 
 
 - (void)showPayPopView{
+    if ([self.withdrawTextField.text isEqualToString:@"" ]) {
+        [self showPromptText: @"请输入取现金额" hideAfterDelay: 2.7];
+        return;
+    }
+    long long text =[self.withdrawTextField.text longLongValue];
+    if (text>balance) {
+        [self showPromptText: @"取现金额不能大于可用余额！" hideAfterDelay: 3.7];
+        self.withdrawTextField.text=@"";
+        return;
+    }
+    NSString *bankname=self.bankBtn.titleLabel.text;
+    if ([bankname isEqualToString:@"请选择银行卡号"]) {
+        [self showPromptText: @"请选择银行卡号" hideAfterDelay: 1.7];
+        return;
+    }
     if (nil == passInput) {
         //        popInputView = [[PopInputView alloc] initWithFrame:self.navigationController.view.bounds];
         //        popInputView.delegate = self;
@@ -170,24 +195,15 @@
 
 
 -(void)commitClient{
-    if ([self.withdrawTextField.text isEqualToString:@"" ]) {
-        [self showPromptText: @"请输入取现金额" hideAfterDelay: 2.7];
-        return;
-    }
-    long long text =[self.withdrawTextField.text longLongValue];
-    if (text>balance) {
-        [self showPromptText: @"取现金额不能大于可用余额！" hideAfterDelay: 3.7];
-        self.withdrawTextField.text=@"";
-        return;
-    }
+  
     NSDictionary *withdrawInfo;
     @try {
         NSString *cardCode = self.curUser.cardCode;
         NSString *paypwd = self.withdrawTextField.text;
         
         withdrawInfo = @{@"cardCode":cardCode,
-                         @"paypwd": [AESUtility encryptStr: pwd],
-                         @"bankId":CHANNEL_CODE,
+                         @"payPwd": [AESUtility encryptStr: pwd],
+                         @"bankId":bankCard._id,
                          @"amounts":self.withdrawTextField.text,
                          };
         
@@ -223,7 +239,7 @@
         
     }
     BankCard* bankCards = listBankArray[indexPath.row];
-    cell.textLabel.text =bankCards.bankName;
+    cell.textLabel.text =bankCards.bankNumber;
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
     return cell;
 }
@@ -243,9 +259,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath: indexPath animated: YES];
     bankCard= listBankArray[indexPath.row];
-    self.bankBtn.titleLabel.text = bankCard.bankName;
+    //self.bankBtn.titleLabel.text = bankCard.bankNumber;
     self.tableView.hidden=YES;
     self.backView.hidden = YES;
+    [self.bankBtn setTitle:bankCard.bankNumber forState:UIControlStateNormal];
 }
 
 

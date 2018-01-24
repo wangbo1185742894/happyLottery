@@ -169,7 +169,7 @@ static NSString * const ReuseIdentifier = @"cell";
     FeedBackHistory *f = self.dataArray[indexPath.row];
     NSString *feedbackContent = f.feedbackContent;
     cell.askLab.text =feedbackContent;
-    if (f.reply ==YES){
+    if ([f.reply isEqualToString:@"1"]){
         [cell.answerBtn setBackgroundImage:[UIImage  imageNamed:@"answer.png"]  forState:UIControlStateNormal];
         cell.answerLab.text=f.replyContent;
     }else{

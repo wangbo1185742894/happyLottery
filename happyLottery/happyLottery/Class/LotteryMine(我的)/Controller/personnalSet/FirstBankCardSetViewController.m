@@ -13,6 +13,7 @@
 @interface FirstBankCardSetViewController ()<MemberManagerDelegate,UITableViewDelegate, UITableViewDataSource,UITextFieldDelegate>{
     NSMutableArray *listBankArray;
     BankCard *bankCard;
+    NSString *name;
 }
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
@@ -44,6 +45,13 @@
           self.backViewBottom.constant = 34;
     }
     listBankArray = [[NSMutableArray alloc]init];
+    name= self.curUser.name;
+    if ([name isEqualToString:@""]||name ==nil) {
+        self.nameTextField.enabled=YES;
+    }else{
+        self.nameTextField.enabled=NO;
+        self.nameTextField.text=name;
+    }
     [self.memberMan getSupportBankSms];
 }
 - (IBAction)getBankClick:(id)sender {
@@ -59,11 +67,17 @@
 }
 
 - (IBAction)commitBtnClick:(id)sender {
-    NSString *bankname = self.getBankBtn.titleLabel.text;
-    if (_nameTextField.text.length ==0 || _nameTextField.text==nil) {
-        [self showPromptText: @"请输入真实姓名" hideAfterDelay: 1.7];
-        return;
-    } else if ([bankname isEqualToString:@"点击获取银行卡列表"]) {
+ 
+    if ([name isEqualToString:@""]||name ==nil) {
+      
+        if (_nameTextField.text.length ==0 || _nameTextField.text==nil) {
+            [self showPromptText: @"请输入真实姓名" hideAfterDelay: 1.7];
+            return;
+        }
+           [self bindNameClient];
+    }
+      NSString *bankname = self.getBankBtn.titleLabel.text;
+   if ([bankname isEqualToString:@"点击获取银行卡列表"]) {
         [self showPromptText: @"请选择开户行" hideAfterDelay: 1.7];
         return;
     }
@@ -72,7 +86,7 @@
         [self showPromptText: @"请输入正确银行卡号" hideAfterDelay: 1.7];
         return;
     }else{
-        [self bindNameClient];
+     
         [self addBankCardClient];
     }
     
@@ -103,7 +117,7 @@
        // NSLog(@"%@",supportBankInfo);
     if ([msg isEqualToString:@"执行成功"]) {
       //  [self showPromptText: @"获得支持的银行成功" hideAfterDelay: 1.7];
-       
+        [listBankArray removeAllObjects];
         for (id object in supportBankInfo) {
             NSLog(@"listBankArray=%@", object);
            BankCard *bankCard = [[BankCard alloc]initWith:object];

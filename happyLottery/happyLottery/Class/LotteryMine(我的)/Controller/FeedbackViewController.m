@@ -117,6 +117,23 @@
     
 }
 
+
+//-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+//    if ([text isEqualToString:@""]) {
+//        return YES;
+//    }
+//
+//   /// NSString * regex=@"^[A-Za-z0-9\u4E00-\u9FA5_-]+$";
+//     NSString * regex=@".";
+//    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+//    BOOL isMatch = [pred evaluateWithObject:text];
+//    if (isMatch==NO) {
+//
+//    }
+//    return isMatch;
+//
+//}
+
 - (void)textViewDidChange:(UITextView *)textView
 {
     NSLog(@"%@", textView.text);
@@ -148,7 +165,9 @@
 
 - (IBAction)commitClick:(id)sender {
      NSString *text = self.feedBackTextView.text;
-    if (text.length==0) {
+    text = [text stringByReplacingOccurrencesOfString:@"\r" withString:@""];
+    text = [text stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    if (text.length==0||[text isEqualToString:@""]) {
          [self showPromptText:@"请输入您的宝贵意见！" hideAfterDelay:1.7];
         return;
     }else{
@@ -178,6 +197,7 @@
 
 -(void)FeedBackClient{
     NSString *text = self.feedBackTextView.text;
+
     NSDictionary *Info;
     @try {
         

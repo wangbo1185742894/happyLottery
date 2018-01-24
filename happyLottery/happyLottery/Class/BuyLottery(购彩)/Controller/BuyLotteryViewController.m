@@ -83,7 +83,7 @@
     [self setMenu];
     [self setNewsView];
     [self setTableView];
-
+    [self initRedButton];
     
 }
 
@@ -550,7 +550,8 @@
             view.mj_w = 0;
             
         } completion:^(BOOL finished) {
-            [redPacketbutton removeFromSuperview];
+            //[redPacketbutton removeFromSuperview];
+            redPacketbutton.hidden=YES;
             OpenRedPopView *popView = [[OpenRedPopView alloc]initWithFrame:self.view.frame];
             popView.delegate = self;
             popView.labJiangjin.text =caijin;
@@ -604,6 +605,15 @@
     
 }
 
+-(void)initRedButton{
+    redPacketbutton= [[UIButton alloc]init];
+    [redPacketbutton setBackgroundImage:[UIImage imageNamed:@"redpacket"] forState:UIControlStateNormal];
+    [redPacketbutton addTarget: self action: @selector(BtnClick) forControlEvents: UIControlEventTouchUpInside];
+    redPacketbutton.frame  = CGRectMake(self.view.mj_w/2-105, 200, 210,294);
+    [self.view addSubview:redPacketbutton];
+    redPacketbutton.hidden=YES;
+}
+
 -(void)openRedPacketClient{
     NSDictionary *Info;
     @try {
@@ -642,15 +652,9 @@
                             }
                             
            }
-          
-                redPacketbutton= [[UIButton alloc]init];
-                [redPacketbutton setBackgroundImage:[UIImage imageNamed:@"redpacket"] forState:UIControlStateNormal];
-                [redPacketbutton addTarget: self action: @selector(BtnClick) forControlEvents: UIControlEventTouchUpInside];
-                redPacketbutton.frame  = CGRectMake(self.view.mj_w/2-105, 200, 210,294);
-                [self.view addSubview:redPacketbutton];
-         
-                
-         
+            if (listUseRedPacketArray.count>0) {
+                redPacketbutton.hidden=NO;
+            }
         }
         
     }else{
