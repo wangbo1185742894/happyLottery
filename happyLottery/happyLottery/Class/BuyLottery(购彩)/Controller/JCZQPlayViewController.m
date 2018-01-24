@@ -23,6 +23,7 @@
 #import "OptionSelectedView.h"
 #import "UMChongZhiViewController.h"
 #import "YuCeSchemeCreateViewController.h"
+#import "FootBallPlayViewController.h"
 
 #define KJCZQMatchViewCell @"JCZQMatchViewCell"
 @interface JCZQPlayViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryProfileSelectViewDelegate,LotteryManagerDelegate,JCZQMatchViewCellDelegate,JCZQSelectVIewDelegate,MatchLeagueSelectViewDelegate,OptionSelectedViewDelegate>
@@ -96,7 +97,7 @@
 }
 
 -(void)getLeaArray{
-    
+    [self showLoadingText:@"正在请求数据"];
     [self.lotteryMan getJczqLeague:nil];
     
 }
@@ -251,7 +252,7 @@
                     if ([model respondsToSelector:function]) {
                         [model performSelector:function withObject:sps];
                     }
-//                    SPF_ChangeArray
+
                     NSString *funname1 = [NSString stringWithFormat:@"set%@_ChangeArray:",spDic[@"playType"]];
                     NSArray *sps1 = [Utility objFromJson:spDic[@"changed"]];
                     SEL function1 = NSSelectorFromString(funname1);
@@ -262,6 +263,7 @@
             }
         }
     }
+    [self hideLoadingView];
     [self. tabJCZQListView reloadData];
 }
 
@@ -330,8 +332,9 @@
 
 
 -(void)actionPlayTypeRecom{
+    FootBallPlayViewController *footBallPlayVC = [[FootBallPlayViewController alloc]init];
+    [self.navigationController pushViewController:footBallPlayVC animated:YES];
     
-    [self optionRightButtonAction];
 }
 
 -(void)createUI{
@@ -515,18 +518,18 @@
     [self updataSummary];
 }
 
-- (void)optionRightButtonAction{
-    //    NSLog(@"haha");
-    NSArray *titleArr = @[@"玩法说明",@"开奖信息"];
-    CGFloat optionviewWidth = 80;
-    CGFloat optionviewCellheight = 38;
-    CGSize mainSize = [UIScreen mainScreen].bounds.size;
-    if (!optionView) {
-        optionView = [[OptionSelectedView alloc] initWithFrame:CGRectMake(KscreenWidth - optionviewWidth, 64, optionviewWidth, optionviewCellheight * titleArr.count) andTitleArr:titleArr];
-        optionView.delegate = self;
-    }
-    [[UIApplication sharedApplication].keyWindow addSubview:optionView];
-}
+//- (void)optionRightButtonAction{
+//    //    NSLog(@"haha");
+//    NSArray *titleArr = @[@"玩法说明"];
+//    CGFloat optionviewWidth = 130;
+//    CGFloat optionviewCellheight = 44;
+//    CGSize mainSize = [UIScreen mainScreen].bounds.size;
+//    if (!optionView) {
+//        optionView = [[OptionSelectedView alloc] initWithFrame:CGRectMake(KscreenWidth - optionviewWidth, 64, optionviewWidth, optionviewCellheight * titleArr.count) andTitleArr:titleArr];
+//        optionView.delegate = self;
+//    }
+//    [[UIApplication sharedApplication].keyWindow addSubview:optionView];
+//}
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

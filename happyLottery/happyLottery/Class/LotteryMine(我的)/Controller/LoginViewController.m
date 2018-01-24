@@ -34,6 +34,9 @@ static NSInteger seq = 0;
     [super viewDidLoad];
     
     self.title = @"登录";
+    self.fimageView.layer.cornerRadius = 4;
+    self.loginBtn.enabled = NO;
+    self.fimageView.layer.masksToBounds = YES;
     self.memberMan.delegate = self;
     self.userTextField.delegate = self;
     self.passwordTextField.delegate = self;
@@ -48,6 +51,7 @@ static NSInteger seq = 0;
         FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_user_info"];
         if ([result next] && [result stringForColumn:@"mobile"] != nil) {
             self.userTextField.text =[result stringForColumn:@"mobile"];
+            self.userTextField .enabled = YES;
         }
     }
 }
@@ -97,7 +101,7 @@ static NSInteger seq = 0;
 }
 
 - (void)delayMethod{
-    [self.navigationController dismissViewControllerAnimated:NO completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)saveUserInfo{
@@ -129,6 +133,22 @@ static NSInteger seq = 0;
     }
 }
 
+-(void)loginUserBySuccessReg:(NSString *)mobile andPwd:(NSString *)pwd{
+    
+    NSDictionary *loginInfo;
+    @try {
+        loginInfo = @{@"mobile":mobile,
+                      @"pwd": [AESUtility encryptStr: pwd],
+                      @"channelCode":CHANNEL_CODE
+                      };
+        
+    } @catch (NSException *exception) {
+        loginInfo = nil;
+    } @finally {
+        [self.memberMan loginCurUser:loginInfo];
+    }
+}
+
 -(void)loginUserClient{
 
     NSDictionary *loginInfo;
@@ -146,7 +166,6 @@ static NSInteger seq = 0;
     } @finally {
         [self.memberMan loginCurUser:loginInfo];
     }
-    
 }
 
 -(void)setIcon{
@@ -195,6 +214,7 @@ static NSInteger seq = 0;
 }
 - (IBAction)registerBtnClick:(id)sender {
     RegisterViewController *registerVC = [[RegisterViewController alloc]init];
+    registerVC.loginVC = self;
     [self.navigationController pushViewController:registerVC animated:YES];
 }
 
@@ -224,31 +244,30 @@ static NSInteger seq = 0;
 
 #pragma UITextFieldDelegate
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
-    textField.text=@"";
     [self setBoaderColor:textField color:SystemGreen];
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{
     [self setBoaderColor:textField color:TFBorderColor];
-    if (textField == _userTextField) {
-        if (![self checkPhoneNumber:self.userTextField.text]) {
-            [self showPromptText: @"请输入合法的手机号码" hideAfterDelay: 1.7];
-            self.userTextField.text= @"";
-            return;
-        }
-        
-    } else  if (textField == _passwordTextField) {
-        if (![self checkPassWord:self.passwordTextField.text]) {
-            [self showPromptText: @"请输入6-16密码，由英文字母或数字组成" hideAfterDelay: 1.7];
-             self.passwordTextField.text= @"";
-            return;
-        }
-        
-    }
-    [self.view resignFirstResponder];
 }
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        if (_userTextField.text.length == 11) {
+            _passwordTextField.enabled = YES;
+        }else{
+            _passwordTextField.enabled = NO;
+        }
+        
+        if (_userTextField.text.length == 11 && _passwordTextField.text.length >=6) {
+            _loginBtn.enabled = YES;
+        }else{
+            _loginBtn.enabled = NO;
+        }
+    });
+    
     if ([string isEqualToString:@""]) {
         return YES;
     }
@@ -277,7 +296,7 @@ static NSInteger seq = 0;
             return NO;
         }
     }
-    
+  
     
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
     BOOL isMatch = [pred evaluateWithObject:string];

@@ -55,7 +55,7 @@
                                         <constraint firstAttribute="height" constant="58" id="bbe-QK-a1X"/>
                                     </constraints>
                                 </imageView>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XsK-Vt-gZZ">
+                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XsK-Vt-gZZ">
                                     <rect key="frame" x="78" y="24" width="62" height="37"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="37" id="BhB-Mg-yBi"/>
@@ -64,9 +64,6 @@
                                     <state key="normal" title="登录/注册">
                                         <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
-                                    <connections>
-                                        <action selector="loginBtnClick:" destination="-1" eventType="touchUpInside" id="Je8-Z3-rhO"/>
-                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nRI-P4-Eje">
                                     <rect key="frame" x="295" y="25" width="80" height="35"/>

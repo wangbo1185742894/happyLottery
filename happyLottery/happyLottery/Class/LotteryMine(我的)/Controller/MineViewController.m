@@ -151,7 +151,6 @@
         User *user = [[User alloc]initWith:memberInfo];
         [GlobalInstance instance].curUser = user;
         [GlobalInstance instance].curUser.isLogin = YES;
-//        [self saveUserInfo];
         [self loadUserInfo];
         [self.memberMan isSignInToday:@{@"cardCode":self.curUser.cardCode}];
     }else{
@@ -187,7 +186,7 @@
     self.redPacketLab.text = couponCountstr;
     self.userImage.layer.cornerRadius = 29;
     self.userImage.layer.masksToBounds = YES;
-    if ([self.curUser.headUrl isEqualToString:@""]) {
+    if ([self.curUser.headUrl isEqualToString:@""] || self.curUser.headUrl == nil) {
         self.userImage.image = [UIImage imageNamed:@"usermine.png"];
     }else{
         self.userImage.image =[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.curUser.headUrl]]];
@@ -233,10 +232,6 @@
         [self.navigationController pushViewController:pcVC animated:YES];
     }
 
-}
-
-- (IBAction)loginBtnClick:(id)sender {
-    [self needLogin];
 }
 
 - (IBAction)signInBtnClick:(id)sender {

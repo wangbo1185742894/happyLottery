@@ -320,7 +320,7 @@
                                 <constraint firstAttribute="trailing" secondItem="Sg6-wk-CbC" secondAttribute="trailing" constant="36" id="zob-qm-8JW"/>
                             </constraints>
                         </view>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="nfP-Uw-wht">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nfP-Uw-wht">
                             <rect key="frame" x="157" y="472" width="60" height="60"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="60" id="abz-mX-YnA"/>
@@ -352,7 +352,6 @@
         </view>
     </objects>
     <resources>
-        <image name="logo.png" width="30" height="30"/>
         <image name="rightIcon.png" width="22" height="22"/>
         <image name="usermine.png" width="58" height="58"/>
     </resources>

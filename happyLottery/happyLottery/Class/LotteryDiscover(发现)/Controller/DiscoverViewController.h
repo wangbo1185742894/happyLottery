@@ -21,6 +21,8 @@
 
 @interface DiscoverViewController : BaseViewController
 
+
+@property(nonatomic,strong)NSString *pageUrl;
 //-(void)SharingLinks:(NSString *)code;
 //-(void)goToJczq;
 //-(NSString *)getCardCode;

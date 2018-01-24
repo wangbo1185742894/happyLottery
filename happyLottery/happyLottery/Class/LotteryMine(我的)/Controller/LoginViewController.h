@@ -10,4 +10,6 @@
 
 @interface LoginViewController : BaseViewController
 
+-(void)loginUserBySuccessReg:(NSString *)mobile andPwd:(NSString *)pwd;
+
 @end

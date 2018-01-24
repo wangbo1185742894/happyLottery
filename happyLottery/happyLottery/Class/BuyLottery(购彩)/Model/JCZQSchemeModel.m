@@ -83,8 +83,10 @@
                 }else{
                     
                     if ([self.won boolValue]) {
-                        if (![self.winningStatus isEqualToString:@"SEND_PRIZE"]||![self.winningStatus isEqualToString:@"BIG_GAIN_TICKET"]) {
+                        if (![self.winningStatus isEqualToString:@"SEND_PRIZE"]) {
                             state = @"已中奖(派奖中)";
+                        }else if([self.winningStatus isEqualToString:@"BIG_GAIN_TICKET"]){
+                            state = @"中奖(已取票)";
                         }else{
                             state = @"已中奖";
                         }

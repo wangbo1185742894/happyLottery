@@ -211,7 +211,10 @@
     }
     //当提示出现时，屏幕键盘收起，不会挡住提示。
     
-    [self.view endEditing:YES];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [self.view endEditing:YES];
+    });
     if (nil != loadingView) {
         [loadingView hide: YES];
     }
@@ -266,7 +269,7 @@
         
         navVC.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor], NSFontAttributeName: [UIFont systemFontOfSize:18]};
         navVC.navigationBar.tintColor = [UIColor whiteColor];
-        [self presentViewController:navVC animated:NO completion:nil];
+        [self presentViewController:navVC animated:YES completion:nil];
     
 }
 

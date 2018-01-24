@@ -41,7 +41,7 @@
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="登录密码" minimumFontSize="17" background="faxian_label _icon_default.png" translatesAutoresizingMaskIntoConstraints="NO" id="yly-Qy-srD">
+                        <textField opaque="NO" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="登录密码" minimumFontSize="17" background="faxian_label _icon_default.png" translatesAutoresizingMaskIntoConstraints="NO" id="yly-Qy-srD">
                             <rect key="frame" x="43.5" y="208" width="288" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="SR4-i0-OYD"/>
@@ -51,7 +51,7 @@
                             <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                             <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                         </textField>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E2J-lh-Hog">
+                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E2J-lh-Hog">
                             <rect key="frame" x="43" y="282" width="288" height="40"/>
                             <color key="backgroundColor" red="0.067504443228244781" green="0.78096091747283936" blue="0.57203906774520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
@@ -61,6 +61,9 @@
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <state key="normal" title="登录">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="disabled" backgroundImage="button_forbidden.png">
+                                <color key="titleColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -82,7 +85,7 @@
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9YU-eH-13t">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="14"/>
-                            <color key="backgroundColor" red="0.85490196080000003" green="0.85490196080000003" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="14" id="WKk-FD-eJi"/>
                             </constraints>
@@ -147,6 +150,7 @@
         </view>
     </objects>
     <resources>
+        <image name="button_forbidden.png" width="143" height="20"/>
         <image name="faxian_label _icon_default.png" width="21" height="21"/>
         <image name="logo120.png" width="60" height="60"/>
     </resources>
