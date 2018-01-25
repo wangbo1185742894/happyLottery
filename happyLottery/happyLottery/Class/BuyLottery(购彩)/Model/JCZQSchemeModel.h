@@ -54,7 +54,7 @@
 @property(nonatomic,copy)NSString * subTime;
 @property(nonatomic,copy)NSMutableArray <OpenResult *> * trOpenResult;
 
-
+-(NSString *)getSchemeImgState;
 
 -(NSString *)getSchemeState;
 -(CGFloat)getJCZQCellHeight;

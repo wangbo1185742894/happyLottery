@@ -595,10 +595,10 @@
                  };
         
     } @catch (NSException *exception) {
-        Info = nil;
-    } @finally {
-        [self.memberMan getRedPacketByStateSms:Info];
+        return;
     }
+        [self.memberMan getRedPacketByStateSms:Info];
+    
     
 }
 
@@ -618,10 +618,10 @@
         Info = @{@"id":cardCode
                  };
     } @catch (NSException *exception) {
-        Info = nil;
-    } @finally {
-        [self.memberMan openRedPacketSms:Info];
+        return;
     }
+        [self.memberMan openRedPacketSms:Info];
+    
     
 }
 

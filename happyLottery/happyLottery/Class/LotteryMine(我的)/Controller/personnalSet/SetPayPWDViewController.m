@@ -141,10 +141,9 @@
                             };
         
     } @catch (NSException *exception) {
-        resetPayPWDInfo = nil;
-    } @finally {
-        [self.memberMan bandPayPWDSms:resetPayPWDInfo];
+        return;
     }
+        [self.memberMan bandPayPWDSms:resetPayPWDInfo];
 }
 
 

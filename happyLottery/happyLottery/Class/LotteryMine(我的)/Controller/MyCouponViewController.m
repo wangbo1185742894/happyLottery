@@ -12,8 +12,8 @@
 
 @interface MyCouponViewController ()<MemberManagerDelegate,UITableViewDelegate,UITableViewDataSource>{
     
-    NSMutableArray *listUseCouponArray;
-    NSMutableArray *listUnUseCouponArray;
+    NSMutableArray <Coupon *>*listUseCouponArray;
+    NSMutableArray  <Coupon *>*  listUnUseCouponArray;
     int currPage1;
     int pageSize1;
     int totalCount1;
@@ -128,115 +128,52 @@
 }
 
 -(void)getCouponByStateSms:(NSArray *)couponInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
-    NSLog(@"couponInfo%@",couponInfo);
-    if ([msg isEqualToString:@"执行成功"]) {
-        // [self showPromptText: @"memberInfo成功" hideAfterDelay: 1.7];
-        NSEnumerator *enumerator = [couponInfo objectEnumerator];
-        id object;
-        if ((object = [enumerator nextObject]) != nil){
-            
-                if (self.segment.selectedSegmentIndex == 0) {
-                    
-                    NSArray *array =couponInfo ;
-                   
-                          [listUseCouponArray removeAllObjects];
-                        if (page == 1) {
-                            [listUseCouponArray removeAllObjects];
-                             if (array.count>0) {
-                                 for (int i=0; i<array.count; i++) {
-                                     
-                                     Coupon *coupon = [[Coupon alloc]initWith:array[i]];
-                                     [listUseCouponArray addObject:coupon];
-                                     NSLog(@"redPacket%@",coupon.status);
-                                 }
-                                 [self.tableView1.mj_footer endRefreshing];
-                                 self.tableView1.hidden = NO;
-                                 self.tableView2.hidden = YES;
-                                 [self.tableView1 reloadData];
-                                 self.enptyView.hidden=YES;
-                             }
-                        }else{
-                         if (array.count>0) {
-//
-                        for (int i=0; i<array.count; i++) {
-                            
-                            Coupon *coupon = [[Coupon alloc]initWith:array[i]];
-                            [listUseCouponArray addObject:coupon];
-                             NSLog(@"redPacket%@",coupon.status);
-                           
-                        }
-                             if (listUseCouponArray.count>0) {
-                                 self.tableView1.hidden = NO;
-                                 self.tableView2.hidden = YES;
-                                 [self.tableView1 reloadData];
-                                 [self.tableView1.mj_footer endRefreshing];
-                             }else{
-                                [self.tableView1.mj_footer endRefreshingWithNoMoreData];
-                                 
-                             }
-                             
-                    }
-                        }
-                }else if(self.segment.selectedSegmentIndex==1){
-                    NSArray *array =couponInfo;
 
-                    if (page == 1) {
-                        [listUnUseCouponArray removeAllObjects];
-                        if (array.count>0) {
-                            for (int i=0; i<array.count; i++) {
-                                
-                                Coupon *coupon = [[Coupon alloc]initWith:array[i]];
-                                [listUnUseCouponArray addObject:coupon];
-                                NSLog(@"redPacket%@",coupon.status);
-                                
-                            }
-                            self.tableView2.hidden = NO;
-                            self.tableView1.hidden = YES;
-                              [self.tableView2 reloadData];
-                            self.enptyView.hidden=YES;
-                            [self.tableView2.mj_footer endRefreshing];
-                        } else{
-                            
-                            self.enptyView.hidden=NO;
-                            self.tableView2.hidden = YES;
-                            self.tableView1.hidden = YES;
-                        }
-                    }else{
-                        if (array.count>0) {
-                            //
-                            for (int i=0; i<array.count; i++) {
-                                
-                                Coupon *coupon = [[Coupon alloc]initWith:array[i]];
-                                [listUnUseCouponArray addObject:coupon];
-                                NSLog(@"redPacket%@",coupon.status);
-                                
-                            }
-                            if (listUnUseCouponArray.count>0) {
-                                self.tableView2.hidden = NO;
-                                self.tableView1.hidden = YES;
-                                [self.tableView2 reloadData];
-                                [self.tableView2.mj_footer endRefreshing];
-                            }else{
-                                [self.tableView2.mj_footer endRefreshingWithNoMoreData];
-                                
-                            }
-                            
-                        }
-                    }
+  
+    
+    if (success == YES && couponInfo != nil) {
+
+        
+        if (couponInfo.count != 10) {
+            if (self.segment.selectedSegmentIndex == 0) {
+                [self.tableView1.mj_footer endRefreshingWithNoMoreData];
+            }else{
+                [self.tableView2.mj_footer endRefreshingWithNoMoreData];
+            }
+        }else{
+            if (self.segment.selectedSegmentIndex == 0) {
+                [self.tableView1.mj_footer endRefreshing];
+            }else{
+                [self.tableView2.mj_footer endRefreshing];
+            }
         }
         
+        UITableView *itemTableView;
+        NSMutableArray *itemDataArray;
+        if (self.segment.selectedSegmentIndex == 0) {
+            itemTableView = self.tableView1;
+            itemDataArray = listUseCouponArray;
         }else{
-            if (page == 1){
-                
-                self.enptyView.hidden=NO;
-                self.tableView2.hidden = YES;
-                self.tableView1.hidden = YES;
-            }
-              [self.tableView1.mj_footer endRefreshingWithNoMoreData];
-            [self.tableView2.mj_footer endRefreshingWithNoMoreData];
+            itemTableView = self.tableView2;
+            itemDataArray = listUnUseCouponArray;
         }
+        
+        if (page == 1) {
+            [itemDataArray removeAllObjects];
+        }
+        
+        for (NSDictionary *itemDic in couponInfo) {
+            Coupon *coupon = [[Coupon alloc]initWith:itemDic];
+            [itemDataArray addObject:coupon];
+        }
+        self.tableView1.hidden = YES;
+        self.tableView2.hidden = YES;
+        itemTableView .hidden = NO;
+        
+        [itemTableView reloadData];
+
     }else{
-        [self showPromptText: msg hideAfterDelay: 1.7];
+        [self showPromptText:msg hideAfterDelay:1.7];
     }
 }
 
@@ -253,10 +190,10 @@
                  };
         
     } @catch (NSException *exception) {
-        Info = nil;
-    } @finally {
-        [self.memberMan getCouponByStateSms:Info];
+        return;
     }
+        [self.memberMan getCouponByStateSms:Info];
+    
     
 }
 

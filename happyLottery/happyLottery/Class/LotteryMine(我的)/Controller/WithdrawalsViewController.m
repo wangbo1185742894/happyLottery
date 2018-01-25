@@ -151,11 +151,9 @@
                  };
         
     } @catch (NSException *exception) {
-        Info = nil;
-    } @finally {
-        [self.memberMan getBankListSms:Info];
+        return;
     }
-    
+        [self.memberMan getBankListSms:Info];
 }
 
 - (IBAction)bankBtnClick:(id)sender {
@@ -226,10 +224,9 @@
                          };
         
     } @catch (NSException *exception) {
-        withdrawInfo = nil;
-    } @finally {
-        [self.memberMan withdrawSms:withdrawInfo];
+       return;
     }
+        [self.memberMan withdrawSms:withdrawInfo];
 }
 
 #pragma UITableViewDataSource methods

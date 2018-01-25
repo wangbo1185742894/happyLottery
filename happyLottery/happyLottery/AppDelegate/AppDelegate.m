@@ -170,7 +170,7 @@ static SystemSoundID shake_sound_male_id = 0;
                               };
                 
             } @catch (NSException *exception) {
-                 loginInfo = nil;
+                return;
                 
             }
             [memberMan loginCurUser:loginInfo];

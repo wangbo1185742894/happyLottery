@@ -74,11 +74,10 @@ static NSString * const ReuseIdentifier = @"cell";
                  };
         
     } @catch (NSException *exception) {
-        Info = nil;
-    } @finally {
+        return;
+    } 
         [self.memberMan getFeedbackListSms:Info];
-    }
-    
+
 }
 
 -(void)getFeedbackListSms:(NSArray *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{

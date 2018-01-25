@@ -79,11 +79,10 @@
                             };
         
     } @catch (NSException *exception) {
-        resetPWDInfo = nil;
-    } @finally {
-        [self.memberMan changeLoginPWDSms:resetPWDInfo];
+       return;
     }
-    
+        [self.memberMan changeLoginPWDSms:resetPWDInfo];
+  
 }
 
 -(void)changeLoginPWDSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{

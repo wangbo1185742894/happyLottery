@@ -408,11 +408,10 @@
                  };
        
     } @catch (NSException *exception) {
-        Info = nil;
-    } @finally {
-      [self.memberMan updateImage:Info];
+        return;
     }
-    
+      [self.memberMan updateImage:Info];
+ 
 }
 
 -(void)updateImage:(BOOL)success errorMsg:(NSString *)msg{

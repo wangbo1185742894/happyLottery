@@ -145,7 +145,7 @@
                           @"amounts":checkCode,
                         };
     } @catch (NSException *exception) {
-        rechargeInfo = nil;
+       return;
     }
     [self showLoadingText:@"正在提交订单"];
     [self.memberMan rechargeSms:rechargeInfo];

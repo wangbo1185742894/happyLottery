@@ -32,7 +32,7 @@
 static NSInteger seq = 0;
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    NSLog( @"LoginViewController___viewDidLoad%d",CFAbsoluteTimeGetCurrent());
     self.title = @"登录";
     self.fimageView.layer.cornerRadius = 4;
     self.loginBtn.enabled = NO;
@@ -149,10 +149,10 @@ static NSInteger seq = 0;
                       };
         
     } @catch (NSException *exception) {
-        loginInfo = nil;
-    } @finally {
-        [self.memberMan loginCurUser:loginInfo];
+        return;
     }
+        [self.memberMan loginCurUser:loginInfo];
+  
 }
 
 -(void)loginUserClient{
@@ -168,10 +168,10 @@ static NSInteger seq = 0;
                        };
         
     } @catch (NSException *exception) {
-        loginInfo = nil;
-    } @finally {
-        [self.memberMan loginCurUser:loginInfo];
+       return;
     }
+        [self.memberMan loginCurUser:loginInfo];
+ 
 }
 
 -(void)setIcon{

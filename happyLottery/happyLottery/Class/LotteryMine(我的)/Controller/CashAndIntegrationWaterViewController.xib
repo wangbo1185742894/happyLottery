@@ -12,7 +12,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CashAndIntegrationWaterViewController">
             <connections>
                 <outlet property="bottom" destination="UVh-cv-nOY" id="AkJ-ag-iTW"/>
-                <outlet property="emptyView" destination="4Lz-oW-kgy" id="3GZ-Ig-zkq"/>
                 <outlet property="segment" destination="jZD-Fc-YyM" id="5FD-4X-r5n"/>
                 <outlet property="tableView1" destination="EIa-5v-MRM" id="MHZ-Lv-OxB"/>
                 <outlet property="tableView2" destination="jc0-Sj-Ftj" id="AtT-a1-kae"/>
@@ -66,52 +65,15 @@
                         <constraint firstItem="jc0-Sj-Ftj" firstAttribute="top" secondItem="jZD-Fc-YyM" secondAttribute="bottom" constant="20" id="w80-lT-4tw"/>
                     </constraints>
                 </view>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Lz-oW-kgy">
-                    <rect key="frame" x="47" y="231" width="281" height="205"/>
-                    <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty_youhuiquan.png" translatesAutoresizingMaskIntoConstraints="NO" id="oGg-7g-JGa">
-                            <rect key="frame" x="31" y="16" width="219" height="120"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="120" id="Qbb-9u-dpd"/>
-                                <constraint firstAttribute="width" constant="219" id="azm-xl-K7g"/>
-                            </constraints>
-                        </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无明细记录" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fl4-td-RM4">
-                            <rect key="frame" x="58" y="154" width="164" height="32"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="32" id="ZTq-Rl-gUm"/>
-                                <constraint firstAttribute="width" constant="164" id="r2p-ik-9lh"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="281" id="02k-EM-6zE"/>
-                        <constraint firstItem="oGg-7g-JGa" firstAttribute="centerX" secondItem="4Lz-oW-kgy" secondAttribute="centerX" id="Bof-Y9-l0R"/>
-                        <constraint firstItem="oGg-7g-JGa" firstAttribute="centerX" secondItem="4Lz-oW-kgy" secondAttribute="centerX" id="NT9-Y6-vPh"/>
-                        <constraint firstItem="oGg-7g-JGa" firstAttribute="top" secondItem="4Lz-oW-kgy" secondAttribute="top" constant="16" id="c2k-A0-2Jj"/>
-                        <constraint firstItem="Fl4-td-RM4" firstAttribute="top" secondItem="oGg-7g-JGa" secondAttribute="bottom" constant="18" id="h5H-el-ico"/>
-                        <constraint firstAttribute="height" constant="205" id="r7k-F5-jpA"/>
-                        <constraint firstItem="Fl4-td-RM4" firstAttribute="centerX" secondItem="4Lz-oW-kgy" secondAttribute="centerX" id="xzV-oV-k7h"/>
-                    </constraints>
-                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="gOu-uf-x4P" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="BCc-X5-5OL"/>
                 <constraint firstItem="gOu-uf-x4P" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="DJF-Z7-hBe"/>
                 <constraint firstAttribute="bottom" secondItem="gOu-uf-x4P" secondAttribute="bottom" id="UVh-cv-nOY"/>
-                <constraint firstItem="4Lz-oW-kgy" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="c08-8J-UY9"/>
-                <constraint firstItem="4Lz-oW-kgy" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="kBl-sO-W2T"/>
                 <constraint firstAttribute="trailing" secondItem="gOu-uf-x4P" secondAttribute="trailing" id="yvh-YC-wtM"/>
             </constraints>
             <point key="canvasLocation" x="35.5" y="54.5"/>
         </view>
     </objects>
-    <resources>
-        <image name="empty_youhuiquan.png" width="215" height="87"/>
-    </resources>
 </document>

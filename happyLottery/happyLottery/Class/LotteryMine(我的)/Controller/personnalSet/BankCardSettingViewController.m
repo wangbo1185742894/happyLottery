@@ -158,11 +158,10 @@
                          };
         
     } @catch (NSException *exception) {
-        Info = nil;
-    } @finally {
-        [self.memberMan getBankListSms:Info];
+        return;
     }
-    
+        [self.memberMan getBankListSms:Info];
+ 
 }
 
 -(void)unBindBankCardClient{
@@ -177,11 +176,10 @@
                  };
         
     } @catch (NSException *exception) {
-        Info = nil;
-    } @finally {
-        [self.memberMan unBindBankCardSms:Info];
+        return;
     }
-    
+        [self.memberMan unBindBankCardSms:Info];
+
 }
 
 -(void)btnAction:(UIButton *)btn{

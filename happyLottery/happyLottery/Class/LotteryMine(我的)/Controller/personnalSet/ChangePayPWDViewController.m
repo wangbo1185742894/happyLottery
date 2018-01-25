@@ -93,14 +93,18 @@
                           };
         
     } @catch (NSException *exception) {
-        resetPayPWDInfo = nil;
-    } @finally {
-        [self.memberMan resetPayPWDSms:resetPayPWDInfo];
+        return;
     }
+    
+    [self.memberMan resetPayPWDSms:resetPayPWDInfo];
+
     
 }
 - (IBAction)forgetBtnClick:(id)sender {
     SetPayPWDViewController *spvc = [[SetPayPWDViewController alloc]init];
+    self.PWD1.text = @"";
+    self.PWD2.text = @"";
+    self.PWD3.text = @"";
     spvc.titleStr = @"忘记支付密码";
     spvc.isForeget = YES;
     [self.navigationController pushViewController:spvc animated:YES];
@@ -108,7 +112,6 @@
 
 
 #pragma UITextFieldDelegate
-
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

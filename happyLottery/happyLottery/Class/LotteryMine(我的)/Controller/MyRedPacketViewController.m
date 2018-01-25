@@ -14,8 +14,8 @@
 
 @interface MyRedPacketViewController ()<MemberManagerDelegate,UITableViewDelegate,UITableViewDataSource,OpenRedPopViewDelegate>{
     
-    NSMutableArray *listUseRedPacketArray;
-    NSMutableArray *listUnUseRedPacketArray;
+    NSMutableArray <RedPacket *> *listUseRedPacketArray;
+    NSMutableArray <RedPacket *> *listUnUseRedPacketArray;
     NSString *packetId;
     RedPacket *r;
     int page;
@@ -129,119 +129,48 @@
 
 -(void)getRedPacketByStateSms:(NSArray *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     
-    
-    NSLog(@"redPacketInfo%@",redPacketInfo);
-    if ([msg isEqualToString:@"执行成功"]) {
-        // [self showPromptText: @"memberInfo成功" hideAfterDelay: 1.7];
-       
-        NSEnumerator *enumerator = [redPacketInfo objectEnumerator];
-        id object;
-        if ((object = [enumerator nextObject]) != nil) {
-            NSArray *array = redPacketInfo;
-           
-            
+    if (success == YES && redPacketInfo != nil) {
+        
+        if (redPacketInfo.count != 10) {
             if (self.segment.selectedSegmentIndex == 0) {
-          
-                if (page == 1) {
-                    [listUseRedPacketArray removeAllObjects];
-                    if (array.count>0) {
-                        for (int i=0; i<array.count; i++) {
-                            
-                             RedPacket *redPacket = [[RedPacket alloc]initWith:array[i]];
-                            [listUseRedPacketArray addObject:redPacket];
-
-                        }
-                        [self.tableView1.mj_footer endRefreshing];
-                        self.tableView1.hidden = NO;
-                        self.tableView2.hidden = YES;
-                        [self.tableView1 reloadData];
-                       self.emptyView.hidden=YES;
-                    }else{
-                        self.emptyView.hidden=NO;
-                        self.tableView2.hidden = YES;
-                        self.tableView1.hidden = YES;
-                    }
-                }else{
-                    if (array.count>0) {
-                        for (int i=0; i<array.count; i++) {
-                            RedPacket *redPacket = [[RedPacket alloc]initWith:array[i]];
-                            [listUseRedPacketArray addObject:redPacket];
-                        }
-                        if (listUseRedPacketArray.count>0) {
-                            self.tableView1.hidden = NO;
-                            self.tableView2.hidden = YES;
-                            [self.tableView1 reloadData];
-                            [self.tableView1.mj_footer endRefreshing];
-                        }else{
-                            [self.tableView1.mj_footer endRefreshingWithNoMoreData];
-                            
-                        }
-                        
-                    }
-                }
-            }else if(self.segment.selectedSegmentIndex==1){
-      
-                if (page == 1) {
-                    [listUnUseRedPacketArray removeAllObjects];
-                    if (array.count>0) {
-                        for (int i=0; i<array.count; i++) {
-                            
-                             RedPacket *redPacket = [[RedPacket alloc]initWith:array[i]];
-                            [listUnUseRedPacketArray addObject:redPacket];
-                       
-                            
-                        }
-                        self.tableView2.hidden = NO;
-                        self.tableView1.hidden = YES;
-                        [self.tableView2 reloadData];
-                        self.emptyView.hidden=YES;
-                        [self.tableView2.mj_footer endRefreshing];
-                    } else{
-                        
-                        self.emptyView.hidden=NO;
-                        self.tableView2.hidden = YES;
-                        self.tableView1.hidden = YES;
-                    }
-                }else{
-                    if (array.count>0) {
-                        //
-                        for (int i=0; i<array.count; i++) {
-                            
-                             RedPacket *redPacket = [[RedPacket alloc]initWith:array[i]];
-                            [listUnUseRedPacketArray addObject:redPacket];
-                         
-                            
-                        }
-                        if (listUnUseRedPacketArray.count>0) {
-                            self.tableView2.hidden = NO;
-                            self.tableView1.hidden = YES;
-                            [self.tableView2 reloadData];
-                            [self.tableView2.mj_footer endRefreshing];
-                        }else{
-                            [self.tableView2.mj_footer endRefreshingWithNoMoreData];
-                            
-                        }
-                        
-                    }
-                }
+                [self.tableView1.mj_footer endRefreshingWithNoMoreData];
+            }else{
+                [self.tableView2.mj_footer endRefreshingWithNoMoreData];
             }
-            
         }else{
-            if (page == 1){
-                
-                self.emptyView.hidden=NO;
-                self.tableView2.hidden = YES;
-                self.tableView1.hidden = YES;
+            if (self.segment.selectedSegmentIndex == 0) {
+                [self.tableView1.mj_footer endRefreshing];
+            }else{
+                [self.tableView2.mj_footer endRefreshing];
             }
-            [self.tableView1.mj_footer endRefreshingWithNoMoreData];
-            [self.tableView2.mj_footer endRefreshingWithNoMoreData];
         }
-           
-
-      
+        
+        UITableView *itemTableView;
+        NSMutableArray *itemDataArray;
+        if (self.segment.selectedSegmentIndex == 0) {
+            itemTableView = self.tableView1;
+            itemDataArray = listUseRedPacketArray;
+        }else{
+            itemTableView = self.tableView2;
+            itemDataArray = listUnUseRedPacketArray;
+        }
+        
+        if (page == 1) {
+            [itemDataArray removeAllObjects];
+        }
+        
+        for (NSDictionary *itemDic in redPacketInfo) {
+            RedPacket *coupon = [[RedPacket alloc]initWith:itemDic];
+            [itemDataArray addObject:coupon];
+        }
+        self.tableView1.hidden = YES;
+        self.tableView2.hidden = YES;
+        itemTableView .hidden = NO;
+        
+        [itemTableView reloadData];
         
     }else{
-        [self showPromptText: msg hideAfterDelay: 1.7];
+        [self showPromptText:msg hideAfterDelay:1.7];
     }
 }
 
@@ -329,11 +258,10 @@
                  };
         
     } @catch (NSException *exception) {
-        Info = nil;
-    } @finally {
-        [self.memberMan getRedPacketByStateSms:Info];
+       return;
     }
-    
+        [self.memberMan getRedPacketByStateSms:Info];
+ 
 }
 
 -(void)openRedPacketClient{
@@ -344,11 +272,10 @@
                  };
         
     } @catch (NSException *exception) {
-        Info = nil;
-    } @finally {
-        [self.memberMan openRedPacketSms:Info];
+       return;
     }
-    
+        [self.memberMan openRedPacketSms:Info];
+
 }
 
 #pragma UITableViewDataSource methods
@@ -374,7 +301,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     //[self.tableView registerClass :[YourTableCell class] forCellReuseIdentifier:@"txTableCell"];
-    static NSString *CellIdentifier = @"TabViewCell";
     //自定义cell类
     MyRedPacketTableViewCell *cell ;
   
@@ -389,7 +315,6 @@
         static NSString *CellIdentifier = @"TabViewCell1";
         cell= [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {
-            //通过xib的名称加载自定义的cell
             cell = [[[NSBundle mainBundle] loadNibNamed:@"MyRedPacketTableViewCell" owner:self options:nil] lastObject];
         }
         if (listUseRedPacketArray.count > 0) {
@@ -450,13 +375,9 @@
           
             cell.endImage.hidden = NO;
             cell.nameLab.text = redPacket._description;
-            //已过期 全都是失效
+            
             NSString *redPacketStatus =redPacket.redPacketStatus;
-//            if ([redPacketStatus isEqualToString:@"锁定"]) {
-//                cell.packetImage.image = [UIImage imageNamed:@"lock_cannot"];
-//            } else  if ([redPacketStatus isEqualToString:@"解锁"]) {
-//                cell.packetImage.image = [UIImage imageNamed:@"unlock_cannot"];
-//            }
+
             cell.packetImage.image = [UIImage imageNamed:@"lock_cannot"];
             NSString *sourecs;
 //            if ([redPacketChannel isEqualToString:@"注册渠道"]) {

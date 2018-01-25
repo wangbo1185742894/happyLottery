@@ -56,6 +56,45 @@
     }
     
 }
+-(NSString *)getSchemeImgState{
+    
+    NSString *state;
+    if ([self.schemeStatus isEqualToString:@"INIT"]) {
+        state = @"unpaid";
+    }else if([self.schemeStatus isEqualToString:@"CANCEL"]){
+        state = @"failure";
+    }else if([self.schemeStatus isEqualToString:@"REPEAL"]){
+        state = @"failure";
+    }else{
+        if ([self.ticketStatus isEqualToString:@"FAIL_TICKET"]) {
+            state = @"failure";
+            
+        }else if ([self.ticketStatus isEqualToString:@"WAIT_PAY"]) {
+            state = @"unpaid";
+            
+        }else{
+            
+            if ([self.winningStatus isEqualToString:@"WAIT_LOTTERY"]) {
+                
+                state = @"wait_lottery";
+                
+            }else{
+                
+                if ([self.won boolValue]) {
+                    
+                    state = @"winning";
+                 
+                    
+                }else{
+                    state = @"losing_lottery";
+                }
+            }
+            
+        }
+    }
+    return state;
+    
+}
 
 -(NSString *)getSchemeState{
     
