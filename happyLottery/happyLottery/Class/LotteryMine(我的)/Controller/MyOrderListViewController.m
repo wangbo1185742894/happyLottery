@@ -136,4 +136,8 @@
     [self.navigationController pushViewController:schemeVC animated:YES];
 }
 
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    return [[UIView alloc]init];
+}
+
 @end

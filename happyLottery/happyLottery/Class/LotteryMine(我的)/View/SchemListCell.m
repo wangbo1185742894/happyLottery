@@ -49,8 +49,11 @@
     
     
     labSchemeState.text = [model getSchemeState];
-    imgWinState.hidden = ![[model getSchemeState] containsString:@"已中奖"];
-    if ([[model getSchemeState] containsString:@"已中奖"]) {
+    
+    BOOL isWon = [[model getSchemeState] containsString:@"已中奖"] || [[model getSchemeState] containsString:@"中奖(已取票)"];
+    
+    imgWinState.hidden = !isWon;
+    if (isWon) {
         labSchemeState.textColor = SystemRed;
         if ([model.costType isEqualToString:@"CASH"]) {
             labSchemeState.text = [NSString stringWithFormat:@"中奖%.2f元",[model.bonus doubleValue]];

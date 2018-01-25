@@ -38,7 +38,7 @@
                                 <constraint firstAttribute="width" constant="65" id="kme-eM-awm"/>
                                 <constraint firstAttribute="height" constant="65" id="sna-ch-ZS4"/>
                             </constraints>
-                            <state key="normal" image="logo120.png"/>
+                            <state key="normal" backgroundImage="logo120.png"/>
                         </button>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="手机号码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mJu-Ot-853">
                             <rect key="frame" x="45" y="200" width="285" height="40"/>
@@ -49,7 +49,7 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                         </textField>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wAq-Vo-G2v">
+                        <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wAq-Vo-G2v">
                             <rect key="frame" x="45" y="260" width="152" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="9f3-hi-wwm"/>
@@ -58,7 +58,7 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                         </textField>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="设置密码（6-16位字母或数字）" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V6p-pz-MPc">
+                        <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="设置密码（6-16位字母或数字）" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V6p-pz-MPc">
                             <rect key="frame" x="45" y="320" width="285" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="lIp-eB-ZHl"/>
@@ -67,7 +67,7 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" secureTextEntry="YES"/>
                         </textField>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7zc-ax-eN3">
+                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7zc-ax-eN3">
                             <rect key="frame" x="227" y="260" width="103" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="103" id="MdH-eZ-BKJ"/>
@@ -100,18 +100,21 @@
                                 <action selector="actionNeedShareCode:" destination="-1" eventType="touchUpInside" id="7Aq-yK-ExE"/>
                             </connections>
                         </button>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="推荐码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Sb-QQ-e6I">
+                        <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="推荐码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Sb-QQ-e6I">
                             <rect key="frame" x="45" y="380" width="152" height="40"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                         </textField>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xSU-cp-BE8">
+                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xSU-cp-BE8">
                             <rect key="frame" x="45" y="440" width="285" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="VN9-jP-P3O"/>
                             </constraints>
                             <state key="normal" title="立即注册"/>
+                            <state key="disabled">
+                                <color key="titleColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
                             <connections>
                                 <action selector="actionRegister:" destination="-1" eventType="touchUpInside" id="YkC-yA-oBk"/>
                             </connections>

@@ -13,7 +13,7 @@
 #import "WBInputPopView.h"
 #import "AESUtility.h"
 #import "PayOrderYouhunViewController.h"
-
+#import "SetPayPWDViewController.h"
 #define KPayTypeListCell @"PayTypeListCell"
 @interface PayOrderViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,MemberManagerDelegate,UIWebViewDelegate,WBInputPopViewDelegate>
 {
@@ -264,10 +264,20 @@
     }
 
     if (self.cashPayMemt.costType == CostTypeCASH) {
-        if ([self checkPayPassword]) {
-            [self showPayPopView];
+         //先判断是否需要设置支付密码  如果没有设置 先设置支付密码   如果已设置  再判断是否需要输入密码
+        if(self.curUser.paypwdSetting == NO) {
+            SetPayPWDViewController *spvc = [[SetPayPWDViewController alloc]init];
+            spvc.titleStr = @"设置支付密码";
+            [self.navigationController pushViewController:spvc animated:YES];
             return;
+        }else{
+            if ([self checkPayPassword]) {
+                [self showPayPopView];
+                return;
+            }
         }
+        
+       
     }
 
     [self actionPay];

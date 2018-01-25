@@ -88,6 +88,7 @@
 
 -(void)notLogin{
     [self.loginBtn setTitle:@"登录/注册" forState:UIControlStateNormal];
+    [self .userImage setImage:[UIImage imageNamed:@"usermine"]];
     self.loginBtn.enabled = YES;
     self.balanceLab.text = @"0";
     self.integralLab.text = @"0";
@@ -130,7 +131,6 @@
         User *user = [[User alloc]initWith:memberInfo];
         [GlobalInstance instance].curUser = user;
         [GlobalInstance instance].curUser.isLogin = YES;
-//        [self saveUserInfo];
         [self loadUserInfo];
         [self.memberMan isSignInToday:@{@"cardCode":self.curUser.cardCode}];
     }else{
@@ -166,7 +166,7 @@
     self.redPacketLab.text = couponCountstr;
     self.userImage.layer.cornerRadius = 29;
     self.userImage.layer.masksToBounds = YES;
-    if ([self.curUser.headUrl isEqualToString:@""]) {
+    if ([self.curUser.headUrl isEqualToString:@""] || self.curUser.headUrl == nil) {
         self.userImage.image = [UIImage imageNamed:@"usermine.png"];
     }else{
         self.userImage.image =[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.curUser.headUrl]]];
@@ -214,10 +214,6 @@
 
 }
 
-- (IBAction)loginBtnClick:(id)sender {
-    [self needLogin];
-}
-
 - (IBAction)signInBtnClick:(id)sender {
     if (!self.curUser.isLogin) {
         [self needLogin];
@@ -230,6 +226,8 @@
     if (success) {
         [self showPromptText:@"签到成功" hideAfterDelay:1.7];
         self.signInBtn.enabled = NO;
+    }else{
+        [self showPromptText:msg hideAfterDelay:1.7];
     }
 }
 

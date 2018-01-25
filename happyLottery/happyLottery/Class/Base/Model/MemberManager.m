@@ -400,9 +400,9 @@
         [self.delegate sendUpdatePaypwdSmsIsSuccess:NO errorMsg:@"服务器错误"];
         //失败的代理方法
     };
-    //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
+    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":CHANNEL_CODE};
     
-    SOAPRequest *request = [self requestForAPI: APIsendUpdatePaypwdSms withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]} ];
+    SOAPRequest *request = [self requestForAPI: APIsendUpdatePaypwdSms withParam:@{@"params":[self actionEncrypt:[self JsonFromId:itemParaDic]]} ];
     [self newRequestWithRequest:request
                          subAPI:SUBAPIMember
       constructingBodyWithBlock:nil
@@ -758,15 +758,6 @@
                         success:succeedBlock
                         failure:failureBlock];
 }
-
-/**
- * 获得现金流水
- * @param {"cardCode":"xxx","page":"xxx","pageSize":"xxx","type":"xxx"} cardCode 卡号 必填
- * page 当前页数 (默认 0 ) pageSize 分页大小 默认（10） type 流水类型 不填默认全部
- * 认购": SUBSCRIPTION,认购退款":SUBSCRIPTION_REFUND,奖金":BONUS，提现": CASH，"提现退款":CASH_REFUND,充值": RECHARGE"
- * 彩金":HANDSEL
- * @return orderType:会员的订单类型,amounts:账户交易金额,remBalance:变化后总余额,createTime:创建时间
- */
 
 - (void) getCashBlotterSms:(NSDictionary *)paraDic{
     void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)

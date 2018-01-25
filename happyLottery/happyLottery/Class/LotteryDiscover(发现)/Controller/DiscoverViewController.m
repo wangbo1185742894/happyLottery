@@ -31,11 +31,7 @@
     self.viewControllerNo = @"A401";
     self.faxianWebView.scrollView.bounces = NO;
     self.faxianWebView.delegate = self;
-    if (self.curUser.isLogin == YES) {
-            [self.faxianWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/app/find/index?cardCode=%@",H5BaseAddress,self.curUser.cardCode]]]];
-    }else{
-        [self.faxianWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/app/find/index?cardCode=%@",H5BaseAddress,@""]]]];
-    }
+
 
     [self setWebView];
 }
@@ -52,17 +48,28 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
+    if (self.pageUrl != nil) {
+        [self.faxianWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.pageUrl]]];
+    }else{
+        NSString *cardCode = @"";
+        if (self.curUser.isLogin == YES) {
+            cardCode = self.curUser.cardCode;
+        }
+        [self.faxianWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/app/find/index?cardCode=%@",H5BaseAddress,cardCode]]]];
+    }
     self.navigationController.navigationBar.hidden = YES;
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+    self.pageUrl = nil;
     self.navigationController.navigationBar.hidden = NO;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
 }
 
 

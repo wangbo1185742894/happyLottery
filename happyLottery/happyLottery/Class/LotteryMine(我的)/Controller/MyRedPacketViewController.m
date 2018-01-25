@@ -149,29 +149,23 @@
                             
                              RedPacket *redPacket = [[RedPacket alloc]initWith:array[i]];
                             [listUseRedPacketArray addObject:redPacket];
-                           
-                            
+
                         }
                         [self.tableView1.mj_footer endRefreshing];
                         self.tableView1.hidden = NO;
                         self.tableView2.hidden = YES;
                         [self.tableView1 reloadData];
                        self.emptyView.hidden=YES;
-                    } else{
-                        
+                    }else{
                         self.emptyView.hidden=NO;
                         self.tableView2.hidden = YES;
                         self.tableView1.hidden = YES;
                     }
                 }else{
                     if (array.count>0) {
-                        //
                         for (int i=0; i<array.count; i++) {
-                            
                             RedPacket *redPacket = [[RedPacket alloc]initWith:array[i]];
                             [listUseRedPacketArray addObject:redPacket];
-                        
-                            
                         }
                         if (listUseRedPacketArray.count>0) {
                             self.tableView1.hidden = NO;
@@ -277,7 +271,6 @@
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
     }
-    
 }
 
 -(void)rotation360repeatCount:(int)repeatCount view:(UIView *)view andHalf:(float)width andCaijin:(NSString *)caijin{

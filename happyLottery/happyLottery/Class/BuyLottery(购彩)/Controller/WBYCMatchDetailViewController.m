@@ -431,7 +431,7 @@
     }
     [self showLoadingViewWithText:@"正在加载"];
     
-    self.transaction.schemeSource = SchemeSourceFORECAST_SHORTCUT;
+    self.transaction.schemeSource = SchemeSourceFORECAST;
     self.transaction.costType = CostTypeCASH;
     
      [self.lotteryMan betLotteryScheme:self.transaction];

@@ -22,6 +22,7 @@
      NSString *headUrl;
      NSString *titleStr;
 }
+@property (weak, nonatomic) IBOutlet UIImageView *labMemberIcon;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollerView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
@@ -67,6 +68,8 @@
     self.memberMan.delegate = self;
     self.myImage.layer.cornerRadius = self.myImage.mj_h/2;
     self.myImage.layer.masksToBounds = YES;
+    self.labMemberIcon.layer.cornerRadius = 5;
+    self.labMemberIcon.layer.masksToBounds = YES;
 }
 
 -(void)loadUserInfo{
@@ -81,7 +84,7 @@
     self.memberLab.text = self.curUser.cardCode;
     //[_userImage sd_setImageWithURL:[NSURL URLWithString:self.curUser.headUrl]];
     
-    if ([self.curUser.headUrl isEqualToString:@""]) {
+    if ([self.curUser.headUrl isEqualToString:@""] || self.curUser.headUrl == nil) {
         self.myImage.image = [UIImage imageNamed:@"usermine.png"];
     }else{
         
@@ -140,12 +143,14 @@
     }
     
 }
+
 - (IBAction)cardPaySet:(id)sender {
     PaySetViewController *pvc = [[PaySetViewController alloc]init];
     [self.navigationController pushViewController:pvc animated:YES];
 }
+
 - (IBAction)changePayPWD:(id)sender {
-     if (self.curUser.paypwdSetting == 0) {
+    if(self.curUser.paypwdSetting == NO) {
         SetPayPWDViewController *spvc = [[SetPayPWDViewController alloc]init];
         spvc.titleStr = @"设置支付密码";
         [self.navigationController pushViewController:spvc animated:YES];
@@ -375,9 +380,10 @@
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
     
         
-        NSString *resultStr = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+        NSString *resultStr = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         NSData *jsonData = [resultStr dataUsingEncoding:NSUTF8StringEncoding];
         NSDictionary *itemInfo = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
+        
         
         if ([itemInfo[@"code"] isEqualToString:@"0000"]) {
             headUrl = itemInfo[@"result"];  //图片url
@@ -530,15 +536,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)actionTel:(id)sender {
+    [self actionTelMe];
 }
-*/
+
 
 @end

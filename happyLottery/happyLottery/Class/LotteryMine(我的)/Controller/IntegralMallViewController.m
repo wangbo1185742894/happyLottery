@@ -9,9 +9,9 @@
 #import "IntegralMallViewController.h"
 #import "MyCouponViewController.h"
 
-@interface IntegralMallViewController ()<UIWebViewDelegate>
+@interface IntegralMallViewController ()<UIWebViewDelegate,JSObjcIntegralDelegate>
 {
-    
+    JSContext *context;
     __weak IBOutlet NSLayoutConstraint *webDisBottom;
     __weak IBOutlet NSLayoutConstraint *webDisTop;
 }
@@ -28,8 +28,13 @@
     self.title = @"积分商城";
     self.webContentView.scrollView.bounces = NO;
     self.webContentView.delegate = self;
-//    [NSString stringWithFormat:@"%@/app/find/index",H5BaseAddress]
-    [self.webContentView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.88.193:18086/app/mall/index"]]];
+
+    NSString *cardCode = @"";
+    if (self.curUser.isLogin == YES) {
+        cardCode = self.curUser.cardCode;
+    }
+    
+    [self.webContentView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/app/mall/index?cardCode=%@",H5BaseAddress,cardCode]]]];
     [self setWebView];
 }
 
@@ -39,16 +44,24 @@
     NSString *requsetIngUrlStr =[NSString stringWithFormat:@"%@",request.URL];
     if ([requsetIngUrlStr containsString:@"/index"]) {
         self.navigationController.navigationBar.hidden = NO;
+        webDisTop.constant = 64;
     }else{
         self.navigationController.navigationBar.hidden = YES;
+        webDisTop.constant = 20;
     }
     return YES;
 }
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
     [self hideLoadingView];
+    context = [webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
+    context[@"appObj"] = self;
+    context.exceptionHandler = ^(JSContext *context, JSValue *exceptionValue) {
+        context.exception = exceptionValue;
+    };
+    [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitUserSelect='none';"];
+    [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitTouchCallout='none';"];
 }
-
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
@@ -77,5 +90,9 @@
         webDisBottom.constant = 0;
     }
 }
+-(void)exchangeToast:(NSString *)msg{
+    [self showPromptText:msg hideAfterDelay:1.7];
+}
+
 
 @end

@@ -53,7 +53,9 @@
     tfCheckCode.delegate = self;
     tfUserPwd.delegate = self;
     
-    [tfUserTel setLeftView:@"phone" rightView:nil];
+    [tfUserTel setLeftView:@"phone" rightView:@"checksuccess"];
+    tfUserTel.rightViewMode = UITextFieldViewModeAlways;
+    tfUserTel.rightView.hidden = YES;
     tfUserTel.leftViewMode=UITextFieldViewModeAlways;
     [self setBoaderColor:tfUserTel color:TFBorderColor];
     [self setBoaderColor:tfRecomCode color:TFBorderColor];
@@ -74,7 +76,7 @@
 
 -(void)setBtnBackImgWithCol{
     
-    btnMemberIcon.layer.cornerRadius = btnMemberIcon.mj_h/2;
+    btnMemberIcon.layer.cornerRadius = 4;
     btnMemberIcon.layer.masksToBounds = YES;
     
     btnRegister.layer.cornerRadius = 3;
@@ -129,11 +131,7 @@
 }
 
 - (IBAction)actionSendCheckCode:(id)sender {
-    
-//    if ([self checkTelNum] == NO) {
-//        return;
-//    }
-    
+
     [self.memberMan sendRegisterSms:@{@"mobile":tfUserTel.text}];
 
 }
@@ -142,15 +140,17 @@
     if ([msg isEqualToString:@"执行成功"]) {
         [self showPromptText: @"发送成功" hideAfterDelay: 1.7];
         [self startTimer];
+        tfCheckCode.enabled = YES;
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
     }
 }
 
 - (IBAction)actionRegister:(id)sender {
-//    if ([self checkTelNum] == NO) {
-//        return;
-//    }
+    if (tfUserTel.text.length != 11) {
+        [self showPromptText: @"请输入有效的手机号" hideAfterDelay: 1.7];
+        return;
+    }
     
     if (tfCheckCode.text.length < 5) {
         [self showPromptText: @"请输入有效的验证码" hideAfterDelay: 1.7];
@@ -191,7 +191,9 @@
 }
 
 - (void)delayMethod{
-   [self.navigationController popViewControllerAnimated:YES];
+    
+    [self.loginVC loginUserBySuccessReg:tfUserTel.text andPwd:tfUserPwd.text];
+
 }
 
 - (IBAction)actionIsGreenRule:(id)sender {
@@ -207,7 +209,7 @@
 
 #pragma UITextFieldDelegate
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
-    textField.text=@"";
+    
     [self setBoaderColor:textField color:SystemGreen];
 }
 
@@ -223,6 +225,41 @@
 }
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        if (tfCheckCode == textField || tfUserTel == textField) {
+            tfUserTel.rightView.hidden = YES;
+            tfCheckCode.rightView.hidden = YES;
+        }
+        
+        if (tfUserTel.text.length!= 11) {
+           
+            btnSendCheckCode.enabled = NO;
+            tfCheckCode.enabled = NO;
+            tfUserPwd.enabled = NO;
+        }else{
+            btnSendCheckCode.enabled = YES;
+        }
+        
+        if (tfUserPwd.text.length >=6) {
+            tfRecomCode.enabled = YES;
+            if (tfRecomCode.hidden == NO) {
+                if (tfRecomCode.text.length >0) {
+                    btnRegister.enabled = YES;
+                }else{
+                    btnRegister.enabled = NO;
+                }
+            }else{
+                
+                btnRegister.enabled = YES;
+            }
+        }else{
+            tfRecomCode.enabled = NO;
+            btnRegister.enabled = NO;
+        }
+    });
+   
+    
     if ([string isEqualToString:@""]) {
         return YES;
     }
@@ -287,9 +324,14 @@
 }
 
 -(void)checkRegisterSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
-    tfCheckCode.rightView.hidden = !success;
+    
     if ([msg isEqualToString:@"执行成功"]) {
+        tfCheckCode.enabled = NO;
+        tfUserTel.enabled = NO;
+        tfCheckCode.rightView.hidden = NO;
+        tfUserTel.rightView.hidden = NO;
         [self showPromptText:@"验证成功" hideAfterDelay:1.7];
+        tfUserPwd.enabled = YES;
     }else{
         
         [self showPromptText:msg hideAfterDelay:1.7];
@@ -300,10 +342,16 @@
 - (IBAction)actionNeedShareCode:(UIButton *)sender {
     sender.selected = !sender.selected;
     tfRecomCode.hidden =  !sender.selected;
+    if ((tfRecomCode.hidden == NO && tfRecomCode.text.length > 0) || tfRecomCode.hidden == YES) {
+        btnRegister.enabled = YES;
+    }else{
+        btnRegister.enabled = NO;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+
 
 @end

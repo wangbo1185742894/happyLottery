@@ -38,7 +38,17 @@
     self.PWDTextField.delegate = self;
     self.PWDTextAgainField.delegate = self;
      labelCountDown = [[UILabel alloc] init];
-    //self.commitBtn.enabled = NO;
+    
+    self.HeadportraitImage.layer.cornerRadius = 4;
+    self.HeadportraitImage.layer.masksToBounds = YES;
+    
+    self.getVerifyCodeBtn.layer.cornerRadius = 4;
+    self.getVerifyCodeBtn.layer.masksToBounds = YES;
+    
+    self.commitBtn.layer.cornerRadius = 4;
+    self.commitBtn.layer.masksToBounds = YES;
+    
+    
     [self setIcon];
     if ([self isIphoneX]) {
        // self.bigView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -49,6 +59,7 @@
 -(void)sendForgetPWDSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     if ([msg isEqualToString:@"执行成功"]) {
          [self startCountDown];
+        _VerificationCodeTextField.enabled = YES;
         [self showPromptText: @"发送成功" hideAfterDelay: 1.7];
        
     }else{
@@ -59,6 +70,13 @@
     _VerificationCodeTextField.rightView.hidden = !success;
     if ([msg isEqualToString:@"执行成功"]) {
         [self showPromptText:@"验证成功" hideAfterDelay:1.7];
+        
+        _phoneTextField.enabled = NO;
+        _VerificationCodeTextField.enabled = NO;
+        _phoneTextField.rightView.hidden = NO;
+        _VerificationCodeTextField.rightView.hidden = NO;
+        
+        _PWDTextField.enabled = YES;
     }else{
         
         //[self showPromptText:msg hideAfterDelay:1.7];
@@ -72,7 +90,9 @@
     _VerificationCodeTextField.rightView.hidden = !success;
     if ([msg isEqualToString:@"执行成功"]) {
         [self showPromptText:@"重置密码成功" hideAfterDelay:1.7];
-        [self.navigationController popViewControllerAnimated:YES];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.navigationController popViewControllerAnimated:YES];
+        });
     }else{
         
         [self showPromptText:msg hideAfterDelay:1.7];
@@ -185,7 +205,10 @@
     
 }
 -(void)setIcon{
-    [self.phoneTextField setLeftView:@"phone" rightView:nil];
+    
+    [self.phoneTextField setLeftView:@"phone" rightView:@"checksuccess"];
+    self.phoneTextField.rightViewMode = UITextFieldViewModeAlways;
+    self.phoneTextField.rightView.hidden = YES;
     self.phoneTextField.leftViewMode = UITextFieldViewModeAlways;
     [self.VerificationCodeTextField setLeftView:@"captcha" rightView:@"checksuccess"];
     self.VerificationCodeTextField.leftViewMode = UITextFieldViewModeAlways;
@@ -202,6 +225,30 @@
 #pragma UITextFieldDelegate
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (self.phoneTextField.text.length == 11) {
+            _getVerifyCodeBtn.enabled = YES;
+        }else{
+            _getVerifyCodeBtn.enabled = NO;
+        }
+        
+        
+        if (_PWDTextField.text.length >= 6) {
+            _PWDTextAgainField.enabled = YES;
+        }else{
+            _PWDTextAgainField.enabled = NO;
+        }
+        
+        if (_PWDTextField.text.length >= 6 && _PWDTextAgainField.text.length >= 6) {
+            _commitBtn.enabled = YES;
+        }else{
+            _commitBtn.enabled = NO;
+        }
+        
+        
+    });
+    
     if ([string isEqualToString:@""]) {
         return YES;
     }
@@ -272,36 +319,6 @@
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{
     [self setBoaderColor:textField color:TFBorderColor];
-    if (textField == self.phoneTextField) {
-        if (![self checkPhoneNumber:self.phoneTextField.text]) {
-            [self showPromptText: @"请输入合法的手机号码" hideAfterDelay: 1.7];
-            self.phoneTextField.text= @"";
-            return;
-        }
-
-    } else  if (textField == _PWDTextField ) {
-        if (![self checkPassWord:self.PWDTextField.text]) {
-            [self showPromptText: @"请输入6-16密码，由英文字母或数字组成" hideAfterDelay: 1.7];
-            self.PWDTextField.text= @"";
-            return;
-        }
-
-    }else  if (textField == _PWDTextAgainField ) {
-        if (![self checkPassWord:self.PWDTextAgainField.text]) {
-            [self showPromptText: @"请输入6-16密码，由英文字母或数字组成" hideAfterDelay: 1.7];
-            self.PWDTextAgainField.text= @"";
-            return;
-        }
-        
-    } else if (textField == _VerificationCodeTextField) {
-        
-        if (_VerificationCodeTextField.text.length >6) {
-            [self showPromptText: @"验证码不能超过6位" hideAfterDelay: 1.7];
-            self.VerificationCodeTextField.text= @"";
-            return ;
-        }
-    }
-    [self.view resignFirstResponder];
 }
 
 #pragma mark 判断密码

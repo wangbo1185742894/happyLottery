@@ -7,6 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <JavaScriptCore/JavaScriptCore.h>
+
+@protocol JSObjcIntegralDelegate <JSExport>
+
+-(void)exchangeToast:(NSString *)msg;
+
+@end
 
 @interface IntegralMallViewController : BaseViewController
 

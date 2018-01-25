@@ -59,6 +59,22 @@
     hModel.hotspot = self.hotspot;
     hModel.spfSingle = self.spfSingle;
     
+    hModel. guestImageUrl = self.guestImageUrl;
+    hModel. h5Url = self.h5Url;
+    
+    hModel. homeImageUrl = self.homeImageUrl;
+    hModel.matchResult = self.matchResult;
+    
+    
+    hModel. guestRank = self.guestRank;
+    hModel. lottery = self.lottery;
+    
+    hModel. matchDate = self.matchDate;
+    
+    hModel. homeRank = self.homeRank;
+    hModel.hit = self.hit;
+    hModel. startTime = self.startTime;
+    hModel. hotspot = self.hotspot;
     return hModel;
     
 }

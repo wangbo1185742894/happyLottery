@@ -7,7 +7,8 @@
 //
 
 #import "BaseViewController.h"
+#import "LoginViewController.h"
 
 @interface RegisterViewController : BaseViewController
-
+@property(nonatomic,weak)LoginViewController *loginVC;
 @end
