@@ -351,8 +351,8 @@
             NSString *date=[redPacket.endValidTime substringWithRange:NSMakeRange(0,10)];
             
             cell.endTimeLab.text = [NSString stringWithFormat:@"有效期至：%@",date];
-//            const long long  dayInteger = [self getDifferenceByDate:redPacket.endValidTime];
-            const long long  dayInteger = [self getDifferenceByDate:@"2018-01-26 09:24:57"]; 
+           const long long  dayInteger = [self getDifferenceByDate:redPacket.endValidTime];
+//            const long long  dayInteger = [self getDifferenceByDate:@"2018-01-26 09:24:57"]; 
             NSNumber *longlongNumber = [NSNumber numberWithLongLong:dayInteger];
             NSString *time=[redPacket.endValidTime substringFromIndex:8];
             NSString *daystr = [longlongNumber stringValue];
@@ -379,7 +379,7 @@
             
             NSString *redPacketStatus =redPacket.redPacketStatus;
 
-            cell.packetImage.image = [UIImage imageNamed:@"lock_cannot"];
+            cell.packetImage.image = [UIImage imageNamed:@"unlock_cannot"];
             NSString *sourecs;
 //            if ([redPacketChannel isEqualToString:@"注册渠道"]) {
 //                sourecs = @"来源： 系统注册赠送";
