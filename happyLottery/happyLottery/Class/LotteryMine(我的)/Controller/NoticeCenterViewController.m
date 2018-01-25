@@ -9,7 +9,7 @@
 #import "NoticeCenterViewController.h"
 #import "NoticeCenterTableViewCell.h"
 #import "NoticeDetailViewController.h"
-#import "LoadData.h"
+
 #import "Notice.h"
 #import "FMDB.h"
 #import "JumpWebViewController.h"
@@ -30,7 +30,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView2;
 @property (weak, nonatomic) IBOutlet UIImageView *enptyImage;
 @property (weak, nonatomic) IBOutlet UILabel *emptyLab;
-@property(nonatomic,strong)  LoadData  *loadDataTool;
+
 @property (nonatomic, strong) FMDatabaseQueue *queue;
 
 
@@ -53,8 +53,8 @@
     }
     listSystemNoticeArray = [[NSMutableArray alloc]init];
     listPersonNoticeArray = [[NSMutableArray alloc]init];
-    self.loadDataTool = [LoadData singleLoadData];
-    [self getSystemNoticeClient];
+ 
+     [self searchSystemDB];
    // [self getDB];
     [self searchPersonDB];
 }
@@ -108,7 +108,7 @@
                             notice.title = [rs stringForColumn:@"title"];
                             notice.content = [rs stringForColumn:@"content"];
                             notice.cardcode = [rs stringForColumn:@"cardcode"];
-                            notice.endTime = [rs stringForColumn:@"msgTime"];
+                            notice.releaseTime = [rs stringForColumn:@"msgTime"];
                             //            [self goImage:student.photo];
                             [array addObject: notice];
                         }
@@ -141,9 +141,12 @@
             notice.title = [rs stringForColumn:@"title"];
             notice.content = [rs stringForColumn:@"content"];
             notice.cardcode = [rs stringForColumn:@"cardcode"];
-            notice.endTime = [rs stringForColumn:@"msgTime"];
+            notice.releaseTime = [rs stringForColumn:@"msgTime"];
             notice.isread = [rs stringForColumn:@"isread"];
             notice._id = [rs stringForColumn:@"id"];
+              notice.type = [rs stringForColumn:@"type"];
+               notice.thumbnailCode = [rs stringForColumn:@"pagecode"];
+               notice.linkUrl = [rs stringForColumn:@"url"];
             //            [self goImage:student.photo];
             [listSystemNoticeArray addObject: notice];
         }
@@ -162,7 +165,7 @@
     self.tableView2.hidden = YES;
     [listPersonNoticeArray removeAllObjects];
     [listSystemNoticeArray removeAllObjects];
-       [self getSystemNoticeClient];
+       [self searchSystemDB];
 }
 
 - (IBAction)personBtnClick:(id)sender {
@@ -177,66 +180,7 @@
      [self searchPersonDB];
 }
 
--(void)getSystemNoticeClient{
-    NSString *theRequest;
-//    theRequest= [GlobalInstance instance].h5Url;
-//    theRequest = [[theRequest componentsSeparatedByString:@"/h5"] firstObject];
-//
-//    theRequest = [[theRequest componentsSeparatedByString:@"/ms"] firstObject];
-        theRequest  = @"http://192.168.88.244:8086";
-    [self.loadDataTool RequestWithString:[NSString stringWithFormat:@"%@/app/inform/byChannel?usageChannel=3",theRequest] isPost:YES andPara:nil andComplete:^(id data, BOOL isSuccess) {
-       // [self hideLoadingView];
-        if (isSuccess) {
-            NSString *resultStr = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-            NSData *jsonData = [resultStr dataUsingEncoding:NSUTF8StringEncoding];
-            NSDictionary  *resultDic1 = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
-            if ([resultDic1[@"code"] integerValue] != 0) {
-                return ;
-            }
-            NSArray  *array =  resultDic1[@"result"];
-            for (int i=0; i<array.count; i++) {
-                
-                Notice *notice = [[Notice alloc]initWith:array[i]];
-             
-                [listSystemNoticeArray addObject:notice];
-                if ([self.fmdb open]) {
-                    NSString *cardcode=[GlobalInstance instance ].curUser.cardCode;
-                    if ([cardcode isEqualToString:@""]) {
-                        cardcode = @"cardcode";
-                    }
-                    NSString *isread = @"0";
-                    NSString *nid =[NSString stringWithFormat:@"A%d",i];
-                  
-                       FMResultSet*  rs = [self.fmdb executeQuery:@"select * from SystemNotice where id=?",notice._id];
-                    BOOL isExit = NO;
-                    do {
-                        NSString *itemId = [rs stringForColumn:@"id"];
-                        if ([itemId isEqualToString:notice._id]) {
-                            isExit = YES;
-                            break;
-                        }
-                    } while (rs.next);
-                    
-                    
-                    if (!isExit) {
-                        
-                        BOOL result =  [self.fmdb executeUpdate:[NSString stringWithFormat:@"insert into SystemNotice (title,content, msgTime , cardcode ,isread,id) values ('%@', '%@', '%@', '%@', '%@', '%@');",notice.title,notice.content,notice.endTime,cardcode,isread,notice._id]];
-                        if (result) {
-                            [self.fmdb close];
-                        }
-                    }
-                }
-               
-                NSLog(@"redPacket%@",notice.content);
-                         }
-              //[self.fmdb close];
-              [self searchSystemDB];
-        }else{
-            [self showPromptText: @"服务器连接失败" hideAfterDelay: 1.7];
-        }
-    }];
-    
-}
+
 
 #pragma UITableViewDataSource methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -284,7 +228,7 @@
             //cell.endImage.hidden = YES;
             cell.nameLab.text = notice.title;
             cell.noticeLab.text =notice.content;
-             NSString *date=[notice.endTime substringWithRange:NSMakeRange(0,10)];
+             NSString *date=[notice.releaseTime substringWithRange:NSMakeRange(0,10)];
             cell.dateLab.text =date;
             if ([notice.isread isEqualToString:@"0"]) {
                 cell.redPoint.hidden=NO;
@@ -304,7 +248,7 @@
             //cell.endImage.hidden = YES;
             cell.nameLab.text = notice.title;
             cell.noticeLab.text =notice.content;
-            NSString *date=[notice.endTime substringWithRange:NSMakeRange(0,10)];
+            NSString *date=[notice.releaseTime substringWithRange:NSMakeRange(0,10)];
             cell.dateLab.text =date;
             if ([notice.isread isEqualToString:@"0"]) {
                 cell.redPoint.hidden=NO;

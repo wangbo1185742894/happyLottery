@@ -202,7 +202,7 @@ static SystemSoundID shake_sound_male_id = 0;
         BOOL iscreate = [self.fmdb executeUpdate:@"create table if not exists t_user_info(id integer primary key, cardCode text, mobile text ,loginPwd text, isLogin text,payVerifyType text)"];
         BOOL resultVC = [self.fmdb executeUpdate:@"create table if not exists vcUserActiveInfo(id integer primary key autoincrement, vcNo text,updateDate text, visitCount integer , visitTime integer)"];
         BOOL resultMsgInfo = [self.fmdb executeUpdate:@"create table if not exists vcUserPushMsg(id integer primary key autoincrement, title text,content text, msgTime text,cardcode text,isread text)"];
-        BOOL resultSystemNoticeInfo = [self.fmdb executeUpdate:@"create table if not exists SystemNotice(id integer primary key autoincrement, title text,content text, msgTime text,cardcode text,isread text)"];
+        BOOL resultSystemNoticeInfo = [self.fmdb executeUpdate:@"create table if not exists SystemNotice(id integer primary key autoincrement, title text,content text, msgTime text,cardcode text,isread text,type text, pagecode text,url text)"];
         if (iscreate && resultVC && resultMsgInfo && resultSystemNoticeInfo) {
             [self.fmdb close];
         }

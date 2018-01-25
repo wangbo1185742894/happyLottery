@@ -23,6 +23,7 @@
 #import "FeedbackViewController.h"
 #import "Notice.h"
 #import "RedPacket.h"
+#import "LoadData.h"
 
 @interface MineViewController () <UITableViewDelegate, UITableViewDataSource,MemberManagerDelegate>{
     NSArray *listArray;
@@ -46,6 +47,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *withdrawalsBtn;//提现
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 @property(strong, nonatomic) NSString * memberSubFunctionClass;
+@property(nonatomic,strong)  LoadData  *loadDataTool;
 @end
 
 @implementation MineViewController
@@ -54,7 +56,7 @@
     [super viewWillAppear:YES];
     if (self.curUser.isLogin==YES) {
         [self updateMemberClinet];
-        [self searchSystemDB];
+        [self getSystemNoticeClient];
          [self getRedPacketByStateClient:@"true"];
         [self CheckFeedBackRedNumClient];
     } else {
@@ -78,7 +80,7 @@
     _tableview.backgroundColor = [UIColor clearColor];
     _tableview.delegate = self;
     _tableview.dataSource = self;
-  
+     self.loadDataTool = [LoadData singleLoadData];
     [self noticeCenterSet];
     
     [_tableview reloadData];
@@ -92,6 +94,7 @@
     self.integralLab.text = @"0";
     self.redPacketLab.text =  @"0";
     self.signInBtn.enabled = YES;
+    label.hidden=YES;
 }
 
 -(void)updateMemberClinet{
@@ -398,6 +401,70 @@
         }
     }
 }
+
+#pragma 查询系统消息
+
+-(void)getSystemNoticeClient{
+    NSString *theRequest;
+    //    theRequest= [GlobalInstance instance].h5Url;
+    //    theRequest = [[theRequest componentsSeparatedByString:@"/h5"] firstObject];
+    //
+    //    theRequest = [[theRequest componentsSeparatedByString:@"/ms"] firstObject];
+    theRequest  = @"http://192.168.88.244:8086";
+    [self.loadDataTool RequestWithString:[NSString stringWithFormat:@"%@/app/inform/byChannel?usageChannel=3",theRequest] isPost:YES andPara:nil andComplete:^(id data, BOOL isSuccess) {
+        // [self hideLoadingView];
+        if (isSuccess) {
+            NSString *resultStr = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+            NSData *jsonData = [resultStr dataUsingEncoding:NSUTF8StringEncoding];
+            NSDictionary  *resultDic1 = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
+            if ([resultDic1[@"code"] integerValue] != 0) {
+                return ;
+            }
+            NSArray  *array =  resultDic1[@"result"];
+            for (int i=0; i<array.count; i++) {
+                
+                Notice *notice = [[Notice alloc]initWith:array[i]];
+                
+               
+                if ([self.fmdb open]) {
+                    NSString *cardcode=[GlobalInstance instance ].curUser.cardCode;
+                    if ([cardcode isEqualToString:@""]) {
+                        cardcode = @"cardcode";
+                    }
+                    NSString *isread = @"0";
+                    NSString *nid =[NSString stringWithFormat:@"A%d",i];
+                    
+                    FMResultSet*  rs = [self.fmdb executeQuery:@"select * from SystemNotice where id=?",notice._id];
+                    BOOL isExit = NO;
+                    do {
+                        NSString *itemId = [rs stringForColumn:@"id"];
+                        if ([itemId isEqualToString:notice._id]) {
+                            isExit = YES;
+                            break;
+                        }
+                    } while (rs.next);
+                    
+                    
+                    if (!isExit) {
+                        
+                        BOOL result =  [self.fmdb executeUpdate:[NSString stringWithFormat:@"insert into SystemNotice (title,content, msgTime , cardcode ,isread,id,type,pagecode,url) values ('%@', '%@', '%@', '%@', '%@', '%@','%@', '%@', '%@');",notice.title,notice.content,notice.releaseTime,cardcode,isread,notice._id,notice.type,notice.thumbnailCode,notice.linkUrl]];
+                        if (result) {
+                            [self.fmdb close];
+                        }
+                    }
+                }
+                
+                NSLog(@"redPacket%@",notice.content);
+            }
+            //[self.fmdb close];
+            [self searchSystemDB];
+        }else{
+            [self showPromptText: @"服务器连接失败" hideAfterDelay: 1.7];
+        }
+    }];
+    
+}
+
 -(void)searchSystemDB{
     num=0;
     // 1.查询数据
