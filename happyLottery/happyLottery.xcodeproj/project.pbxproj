@@ -427,7 +427,6 @@
 		2DDEDC101FD4DC03007AEBF7 /* GroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDEDC0E1FD4DC03007AEBF7 /* GroupViewController.m */; };
 		2DDEDC111FD4DC03007AEBF7 /* GroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DDEDC0F1FD4DC03007AEBF7 /* GroupViewController.xib */; };
 		2DDEDC151FD4DC16007AEBF7 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDEDC131FD4DC16007AEBF7 /* MineViewController.m */; };
-		2DDEDC161FD4DC16007AEBF7 /* MineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DDEDC141FD4DC16007AEBF7 /* MineViewController.xib */; };
 		2DDEDC1A1FD4DE97007AEBF7 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDEDC181FD4DE96007AEBF7 /* Utility.m */; };
 		2DDEDC1D1FD4DEFF007AEBF7 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDEDC1C1FD4DEFF007AEBF7 /* UIView+MJExtension.m */; };
 		2DDEDC221FD4F57F007AEBF7 /* NewFeatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDEDC201FD4F57F007AEBF7 /* NewFeatureViewController.m */; };
@@ -597,6 +596,8 @@
 		F93AC8121FFDC63B003DF05C /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F93AC8111FFDC63B003DF05C /* libsqlite3.tbd */; };
 		F93AC8161FFDF035003DF05C /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F93AC8141FFDF035003DF05C /* AboutViewController.m */; };
 		F93AC8171FFDF035003DF05C /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F93AC8151FFDF035003DF05C /* AboutViewController.xib */; };
+		F94027DF2018929700CF7A2B /* redpacketKong@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94027DD2018929600CF7A2B /* redpacketKong@2x.png */; };
+		F94027E02018929700CF7A2B /* redpacketKong@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94027DE2018929700CF7A2B /* redpacketKong@3x.png */; };
 		F9418EF6201038DF00454109 /* logo120@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9418EF4201038DE00454109 /* logo120@2x.png */; };
 		F9418EF7201038DF00454109 /* logo120@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9418EF5201038DF00454109 /* logo120@3x.png */; };
 		F9418F432010991200454109 /* MOBFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9418F272010991200454109 /* MOBFoundation.framework */; };
@@ -787,6 +788,7 @@
 		F9DC69F31FDFB451007D384D /* withdraw Deposit_button_default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9DC69C31FDFB44D007D384D /* withdraw Deposit_button_default@3x.png */; };
 		F9DC6A061FDFB451007D384D /* recharge_button_default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9DC69D61FDFB450007D384D /* recharge_button_default@3x.png */; };
 		F9DC6A0D1FDFB451007D384D /* recharge_button_default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9DC69DD1FDFB451007D384D /* recharge_button_default@2x.png */; };
+		F9E0DF1D2019695C0089F51D /* MineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9E0DF1C2019695B0089F51D /* MineViewController.xib */; };
 		F9F2629C1FE8D7D000C2E60F /* closeperson@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F2629A1FE8D7D000C2E60F /* closeperson@2x.png */; };
 		F9F2629D1FE8D7D000C2E60F /* closeperson@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F2629B1FE8D7D000C2E60F /* closeperson@3x.png */; };
 		F9F262B01FE8F4AE00C2E60F /* CGGeometry+RSKImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F262A01FE8F4AE00C2E60F /* CGGeometry+RSKImageCropper.m */; };
@@ -1420,7 +1422,6 @@
 		2DDEDC0F1FD4DC03007AEBF7 /* GroupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupViewController.xib; sourceTree = "<group>"; };
 		2DDEDC121FD4DC16007AEBF7 /* MineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
 		2DDEDC131FD4DC16007AEBF7 /* MineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
-		2DDEDC141FD4DC16007AEBF7 /* MineViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineViewController.xib; sourceTree = "<group>"; };
 		2DDEDC171FD4DE78007AEBF7 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		2DDEDC181FD4DE96007AEBF7 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		2DDEDC191FD4DE96007AEBF7 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
@@ -1664,6 +1665,8 @@
 		F93AC8131FFDF035003DF05C /* AboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		F93AC8141FFDF035003DF05C /* AboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		F93AC8151FFDF035003DF05C /* AboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
+		F94027DD2018929600CF7A2B /* redpacketKong@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redpacketKong@2x.png"; sourceTree = "<group>"; };
+		F94027DE2018929700CF7A2B /* redpacketKong@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redpacketKong@3x.png"; sourceTree = "<group>"; };
 		F9418EF4201038DE00454109 /* logo120@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo120@2x.png"; sourceTree = "<group>"; };
 		F9418EF5201038DF00454109 /* logo120@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo120@3x.png"; sourceTree = "<group>"; };
 		F9418F272010991200454109 /* MOBFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOBFoundation.framework; sourceTree = "<group>"; };
@@ -1893,6 +1896,7 @@
 		F9DC69C31FDFB44D007D384D /* withdraw Deposit_button_default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "withdraw Deposit_button_default@3x.png"; sourceTree = "<group>"; };
 		F9DC69D61FDFB450007D384D /* recharge_button_default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "recharge_button_default@3x.png"; sourceTree = "<group>"; };
 		F9DC69DD1FDFB451007D384D /* recharge_button_default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "recharge_button_default@2x.png"; sourceTree = "<group>"; };
+		F9E0DF1C2019695B0089F51D /* MineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineViewController.xib; sourceTree = "<group>"; };
 		F9F2629A1FE8D7D000C2E60F /* closeperson@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closeperson@2x.png"; sourceTree = "<group>"; };
 		F9F2629B1FE8D7D000C2E60F /* closeperson@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closeperson@3x.png"; sourceTree = "<group>"; };
 		F9F2629F1FE8F4AE00C2E60F /* CGGeometry+RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGGeometry+RSKImageCropper.h"; sourceTree = "<group>"; };
@@ -2759,7 +2763,7 @@
 				2D06004A1FFE0605009E7568 /* JCLQOrderDetailInfoViewController.xib */,
 				2DDEDC121FD4DC16007AEBF7 /* MineViewController.h */,
 				2DDEDC131FD4DC16007AEBF7 /* MineViewController.m */,
-				2DDEDC141FD4DC16007AEBF7 /* MineViewController.xib */,
+				F9E0DF1C2019695B0089F51D /* MineViewController.xib */,
 				F9DC69921FDF878D007D384D /* MyOrderListViewController.h */,
 				F9DC69931FDF878D007D384D /* MyOrderListViewController.m */,
 				F9DC69941FDF878D007D384D /* MyOrderListViewController.xib */,
@@ -3309,6 +3313,8 @@
 		F90FCD601FF380F000BD807C /* RedPacket */ = {
 			isa = PBXGroup;
 			children = (
+				F94027DD2018929600CF7A2B /* redpacketKong@2x.png */,
+				F94027DE2018929700CF7A2B /* redpacketKong@3x.png */,
 				F92D03D72005A8EF00C26E7A /* lock_cannot@2x.png */,
 				F92D03D92005A8EF00C26E7A /* lock_cannot@3x.png */,
 				F92D03D62005A8EE00C26E7A /* unlock_cannot@3x.png */,
@@ -4003,6 +4009,7 @@
 				2D8CC0031FF3868A00CC367F /* youkuangbtnback@2x.png in Resources */,
 				2D8CBFD21FF3769F00CC367F /* YuceSchemeDetailViewController.xib in Resources */,
 				2D5171C62008654800C3CD7F /* icon_zhifubao@3x.png in Resources */,
+				F94027E02018929700CF7A2B /* redpacketKong@3x.png in Resources */,
 				2D739C951FE8A4DE00264044 /* JCZQSelectAllPlayTypeVIew.xib in Resources */,
 				2D0EEA922013280500B0769C /* button_trophy@2x.png in Resources */,
 				2D8CC0101FF487CF00CC367F /* WBHomeJCYCViewController.xib in Resources */,
@@ -4405,13 +4412,11 @@
 				2D4B1E811FDF684E0034B708 /* wode_defealt@2x.png in Resources */,
 				2D0600471FFDDD51009E7568 /* schemedetailticket_bj@3x.png in Resources */,
 				2D739C641FE7878100264044 /* JCZQTouZhuViewController.xib in Resources */,
-				2DDEDC161FD4DC16007AEBF7 /* MineViewController.xib in Resources */,
 				2D628B3C1FECAA9A0013D0E1 /* fengkuangjingcai-monitouzhu-xuanze@2x.png in Resources */,
 				2D0600881FFF1365009E7568 /* HHGGPeilvTable.plist in Resources */,
 				2D205FE91FFC6E950086E266 /* WBBifenZhiboViewController.xib in Resources */,
 				F94AA9E11FEB7B780021B980 /* weixin@3x.png in Resources */,
 				F90058ED1FF61AEC009C8E1C /* NoticeDetailViewController.xib in Resources */,
-				2DDEDC161FD4DC16007AEBF7 /* MineViewController.xib in Resources */,
 				F9D7C55C2006276900415B4E /* FootBallPlayViewController.xib in Resources */,
 				F94913421FFF260F00D30AE7 /* banker@2x.png in Resources */,
 				F95BC7D320172AF7006D6243 /* redpacket_open@3x.png in Resources */,
@@ -4449,6 +4454,7 @@
 				2D4B1E3A1FDE717C0034B708 /* newBack@2x.png in Resources */,
 				2D739CD61FEB44F400264044 /* rangqiufu@3x.png in Resources */,
 				2D628B571FECCE4C0013D0E1 /* TZSelectMatchCell.xib in Resources */,
+				F94027DF2018929700CF7A2B /* redpacketKong@2x.png in Resources */,
 				F94AA9D31FEB66FF0021B980 /* WithdrawalsViewController.xib in Resources */,
 				2D4B1E841FDF684E0034B708 /* wode_select@3x.png in Resources */,
 				F957C2021FE3B28D0090B19B /* set@2x.png in Resources */,
@@ -4511,6 +4517,7 @@
 				2D5171FE200C942400C3CD7F /* pageCodeConfig.plist in Resources */,
 				F957C2051FE3B28D0090B19B /* Withdraw@2x.png in Resources */,
 				2D739CE11FEB45E300264044 /* matchcleanall@3x.png in Resources */,
+				F9E0DF1D2019695C0089F51D /* MineViewController.xib in Resources */,
 				2D2060211FFCB71E0086E266 /* icon_tongyi_normal@3x.png in Resources */,
 				2D4B1E371FDE241F0034B708 /* JCZQPlayViewController.xib in Resources */,
 				2D739CE61FEB462B00264044 /* guoguan@3x.png in Resources */,

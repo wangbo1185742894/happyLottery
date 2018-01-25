@@ -11,12 +11,17 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BuyLotteryViewController">
             <connections>
+                <outlet property="goRedPacket" destination="qdU-kT-Mtt" id="Ayw-Of-3il"/>
                 <outlet property="homeViewHeight" destination="Gty-Is-B4q" id="lAg-Py-XUa"/>
                 <outlet property="imgNewIcon" destination="0bv-xy-gKZ" id="CFZ-dE-RpY"/>
                 <outlet property="labLookNum" destination="n3D-0u-3ol" id="yoF-JF-3Pm"/>
                 <outlet property="labNewDate" destination="8Ef-KL-waD" id="xFI-Oi-6bL"/>
                 <outlet property="labNewTitle" destination="F0Z-M8-KCF" id="ukG-rO-0m9"/>
                 <outlet property="newsViewMarginTop" destination="ajg-Sr-wB2" id="ted-fp-f4a"/>
+                <outlet property="openRedpacketButton" destination="HFI-cN-b9n" id="ByJ-o2-R0e"/>
+                <outlet property="redpacketCancel" destination="hSn-fT-7n5" id="Qn1-0X-dac"/>
+                <outlet property="redpacketLab" destination="dIV-Bb-Uy1" id="1Xa-eY-gXe"/>
+                <outlet property="redpacketView" destination="Ay4-Ts-Dy5" id="KhA-LD-DBL"/>
                 <outlet property="scrContentView" destination="0Aq-6s-ooa" id="LvL-Ta-7jo"/>
                 <outlet property="tabForecaseList" destination="Jpl-IJ-OIq" id="U9k-tj-3Ve"/>
                 <outlet property="tabForecastListHeight" destination="gwE-md-6LI" id="NOv-5r-PIo"/>
@@ -264,13 +269,72 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wQZ-h9-Ovz">
-                                    <rect key="frame" x="109" y="222" width="146" height="184"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal">
-                                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </state>
-                                </button>
+                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ay4-Ts-Dy5">
+                                    <rect key="frame" x="82" y="313" width="210" height="294"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HFI-cN-b9n">
+                                            <rect key="frame" x="0.0" y="22" width="210" height="272"/>
+                                            <connections>
+                                                <action selector="openRedPacketClick:" destination="-1" eventType="touchUpInside" id="1Mj-Ym-DfB"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hSn-fT-7n5">
+                                            <rect key="frame" x="190" y="0.0" width="20" height="20"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="20" id="FJd-Zc-Ofm"/>
+                                                <constraint firstAttribute="width" constant="20" id="evA-gc-LxI"/>
+                                            </constraints>
+                                            <state key="normal" image="guanbi.png"/>
+                                            <connections>
+                                                <action selector="cancelRedpacketClick:" destination="-1" eventType="touchUpInside" id="3sf-T4-bd4"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdU-kT-Mtt">
+                                            <rect key="frame" x="59" y="200" width="93" height="38"/>
+                                            <color key="backgroundColor" red="1" green="0.8689085841178894" blue="0.078907929360866547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="93" id="NJx-lC-c7Z"/>
+                                                <constraint firstAttribute="height" constant="38" id="fyV-xS-xMW"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                            <state key="normal" title="去领取">
+                                                <color key="titleColor" red="0.8666666666666667" green="0.2196078431372549" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="15"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="goRedpacketClick:" destination="-1" eventType="touchUpInside" id="mzi-3F-tB3"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="恭喜发财" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dIV-Bb-Uy1">
+                                            <rect key="frame" x="10" y="82" width="190" height="72"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="72" id="rSg-eo-CQt"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="dIV-Bb-Uy1" secondAttribute="trailing" constant="10" id="11T-Td-7Y2"/>
+                                        <constraint firstAttribute="width" constant="210" id="2pZ-jB-GxU"/>
+                                        <constraint firstAttribute="height" constant="294" id="5Op-dA-3Mk"/>
+                                        <constraint firstItem="hSn-fT-7n5" firstAttribute="top" secondItem="Ay4-Ts-Dy5" secondAttribute="top" id="5wY-rT-1Ty"/>
+                                        <constraint firstItem="HFI-cN-b9n" firstAttribute="leading" secondItem="Ay4-Ts-Dy5" secondAttribute="leading" id="Fs1-4R-ZdF"/>
+                                        <constraint firstItem="qdU-kT-Mtt" firstAttribute="top" secondItem="dIV-Bb-Uy1" secondAttribute="bottom" constant="46" id="NVF-X0-3Ob"/>
+                                        <constraint firstItem="HFI-cN-b9n" firstAttribute="top" secondItem="hSn-fT-7n5" secondAttribute="bottom" constant="2" id="TMY-6Q-d1T"/>
+                                        <constraint firstItem="dIV-Bb-Uy1" firstAttribute="top" secondItem="hSn-fT-7n5" secondAttribute="bottom" constant="62" id="UdI-vK-SOg"/>
+                                        <constraint firstAttribute="trailing" secondItem="hSn-fT-7n5" secondAttribute="trailing" id="c1j-BJ-7Pw"/>
+                                        <constraint firstItem="qdU-kT-Mtt" firstAttribute="centerX" secondItem="Ay4-Ts-Dy5" secondAttribute="centerX" id="e5S-V7-YbO"/>
+                                        <constraint firstAttribute="bottom" secondItem="HFI-cN-b9n" secondAttribute="bottom" id="iUX-cY-dbt"/>
+                                        <constraint firstAttribute="trailing" secondItem="HFI-cN-b9n" secondAttribute="trailing" id="kpo-wr-l7e"/>
+                                        <constraint firstItem="dIV-Bb-Uy1" firstAttribute="leading" secondItem="Ay4-Ts-Dy5" secondAttribute="leading" constant="10" id="ufy-mC-PBA"/>
+                                    </constraints>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -281,6 +345,8 @@
                                 <constraint firstAttribute="height" constant="700" id="Gty-Is-B4q"/>
                                 <constraint firstItem="hl5-MZ-Qii" firstAttribute="top" secondItem="3HX-tS-NpW" secondAttribute="bottom" constant="10" id="IKD-Lz-KGT"/>
                                 <constraint firstAttribute="trailing" secondItem="hl5-MZ-Qii" secondAttribute="trailing" id="QHp-tk-Vty"/>
+                                <constraint firstItem="Ay4-Ts-Dy5" firstAttribute="centerX" secondItem="0Aq-6s-ooa" secondAttribute="centerX" id="SCh-hr-tdO"/>
+                                <constraint firstAttribute="bottom" secondItem="Ay4-Ts-Dy5" secondAttribute="bottom" constant="93" id="U8r-JQ-Aef"/>
                                 <constraint firstItem="Jpl-IJ-OIq" firstAttribute="top" secondItem="hl5-MZ-Qii" secondAttribute="bottom" constant="1" id="aWT-XG-iMj"/>
                                 <constraint firstItem="3HX-tS-NpW" firstAttribute="top" secondItem="0Aq-6s-ooa" secondAttribute="top" constant="268" id="ajg-Sr-wB2"/>
                                 <constraint firstItem="hl5-MZ-Qii" firstAttribute="leading" secondItem="0Aq-6s-ooa" secondAttribute="leading" id="bY2-hh-mYE"/>
@@ -311,6 +377,7 @@
     </objects>
     <resources>
         <image name="fenleixian.png" width="3" height="12"/>
+        <image name="guanbi.png" width="29" height="29"/>
         <image name="newicon_default.png" width="118" height="78"/>
     </resources>
 </document>

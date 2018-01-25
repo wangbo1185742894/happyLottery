@@ -32,6 +32,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tvHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *backViewBottom;
+@property (weak, nonatomic) IBOutlet UIButton *cancelBUtton;
+@property (weak, nonatomic) IBOutlet UIButton *addBankCard;
 
 @end
 
@@ -71,6 +73,16 @@
     }
     
 }
+- (IBAction)cancelButtonClick:(id)sender {
+    self.backView.hidden=YES;
+}
+
+- (IBAction)addBankCardClick:(id)sender {
+
+    FirstBankCardSetViewController * pcVC = [[FirstBankCardSetViewController alloc]init];
+    [self.navigationController pushViewController:pcVC animated:YES];
+}
+
 
 - (void)delayMethod{
     [self.navigationController popViewControllerAnimated:YES];
@@ -92,8 +104,14 @@
             self.tableView.hidden=NO;
             self.backView.hidden = NO;
             dispatch_async(dispatch_get_main_queue(), ^{
-                
-                self.tvHeight.constant = listBankArray.count*40;
+                  if (listBankArray.count==1) {
+                      self.tvHeight.constant = 60;
+                      self.tableView.scrollEnabled=NO;
+                  }else{
+                        self.tableView.scrollEnabled=YES;
+                       self.tvHeight.constant = listBankArray.count*44+20;
+                  }
+             
             });
             [self.tableView reloadData];
             self.commitBtn.enabled = YES;
@@ -224,7 +242,7 @@
 
 
 - (CGFloat)tableView:(UITableView *)tableiew heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 40;
+    return 44;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -239,7 +257,10 @@
         
     }
     BankCard* bankCards = listBankArray[indexPath.row];
-    cell.textLabel.text =bankCards.bankNumber;
+    NSString *num =bankCards.bankNumber;
+    NSString *num4 = [num substringFromIndex:num.length- 4 ];
+    NSString *bank =  [NSString stringWithFormat:@"%@ (尾号%@)--%@",bankCards.bankName,num4,self.curUser.name];
+    cell.textLabel.text =bank;
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
     return cell;
 }
@@ -262,7 +283,10 @@
     //self.bankBtn.titleLabel.text = bankCard.bankNumber;
     self.tableView.hidden=YES;
     self.backView.hidden = YES;
-    [self.bankBtn setTitle:bankCard.bankNumber forState:UIControlStateNormal];
+    NSString *num =bankCard.bankNumber;
+    NSString *num4 = [num substringFromIndex:num.length- 4 ];
+   NSString *bank =  [NSString stringWithFormat:@"%@ (尾号%@)--%@",bankCard.bankName,num4,self.curUser.name];
+    [self.bankBtn setTitle:bank forState:UIControlStateNormal];
 }
 
 
