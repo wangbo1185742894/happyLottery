@@ -49,16 +49,17 @@
     }
     listUseCouponArray = [[NSMutableArray alloc]init];
     listUnUseCouponArray = [[NSMutableArray alloc]init];
-    page=1;
+     [self initRefresh2];
+         [self initRefresh1];
     if ( self.segment.selectedSegmentIndex == 0) {
     
-        [self initRefresh1];
+        [self loadTrueNewData];
         
         self.tableView1.hidden = NO;
         self.tableView2.hidden = YES;
     }else  if (self.segment.selectedSegmentIndex == 1) {
-    
-        [self initRefresh2];
+        [self loadFalseNewData];
+       
         self.tableView2.hidden = NO;
         self.tableView1.hidden = YES;
     }
@@ -71,18 +72,16 @@
             self.tableView2.hidden=YES;
              [listUseCouponArray removeAllObjects];
             [listUnUseCouponArray removeAllObjects];
-            //[self getCouponByStateClient:@"true"];
-            page=1;
-              [self initRefresh1];
+            
+            
+            [self loadTrueNewData];
             break;
         case 1:
             self.tableView2.hidden=NO;
             self.tableView1.hidden=YES;
-            page=1;
+            [self loadFalseNewData];
             [listUseCouponArray removeAllObjects];
             [listUnUseCouponArray removeAllObjects];
-//            [self getCouponByStateClient:@"false"];
-              [self initRefresh2];
             break;
         default:
             break;
@@ -90,59 +89,39 @@
 }
 
 -(void)initRefresh1{
-    __weak typeof(self) weakSelf = self;
-  
-    // 设置回调（一旦进入刷新状态就会调用这个refreshingBlock）
-    self.tableView1.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        page=1;
-        [weakSelf getCouponByStateClient:@"true"];
-         [self.tableView1.mj_header endRefreshing];
-    }];
-    self.tableView1.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        page++;
-         ///[self.tableView1.mj_footer beginRefreshing];
-        [weakSelf getCouponByStateClient:@"true"];
-        
-    }];
-    // 马上进入刷新状态
-    [self.tableView1.mj_header beginRefreshing];
+    
+    [UITableView refreshHelperWithScrollView:self.tableView1 target:self loadNewData:@selector(loadTrueNewData) loadMoreData:@selector(loadTrueMoreData) isBeginRefresh:NO];
+    
 }
 -(void)initRefresh2{
-    __weak typeof(self) weakSelf = self;
-    
-    self.tableView2.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        page=1;
-        [weakSelf getCouponByStateClient:@"false"];
-         [self.tableView2.mj_header endRefreshing];
-    }];
-    self.tableView2.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        page++;
-          //[self.tableView2.mj_header beginRefreshing];
-        [weakSelf getCouponByStateClient:@"false"];
-        
-    }];
-    
-    // 马上进入刷新状态
-  
-     [self.tableView2.mj_header beginRefreshing];
+    [UITableView refreshHelperWithScrollView:self.tableView2 target:self loadNewData:@selector(loadFalseNewData) loadMoreData:@selector(loadFalseMoreData) isBeginRefresh:NO];
+}
+
+
+-(void)loadTrueNewData{
+    [self getCouponNewData:@"true"];
+}
+
+-(void)loadFalseNewData{
+    [self getCouponNewData:@"false"];
+}
+
+-(void)loadTrueMoreData{
+    [self getCouponMoreData:@"true"];
+}
+
+-(void)loadFalseMoreData{
+    [self getCouponMoreData:@"false"];
 }
 
 -(void)getCouponByStateSms:(NSArray *)couponInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     
     if (success == YES && couponInfo != nil) {
         
-        if (couponInfo.count != 10) {
-            if (self.segment.selectedSegmentIndex == 0) {
-                [self.tableView1.mj_footer endRefreshingWithNoMoreData];
-            }else{
-                [self.tableView2.mj_footer endRefreshingWithNoMoreData];
-            }
+        if (self.segment.selectedSegmentIndex == 0) {
+            [self.tableView1 tableViewEndRefreshCurPageCount:couponInfo.count];
         }else{
-            if (self.segment.selectedSegmentIndex == 0) {
-                [self.tableView1.mj_footer endRefreshing];
-            }else{
-                [self.tableView2.mj_footer endRefreshing];
-            }
+            [self.tableView2 tableViewEndRefreshCurPageCount:couponInfo.count];
         }
         
         UITableView *itemTableView;
@@ -174,7 +153,8 @@
     }
 }
 
--(void)getCouponByStateClient:(NSString*)isValid{
+-(void)getCouponMoreData:(NSString*)isValid{
+    page++;
     NSDictionary *Info;
     @try {
         
@@ -183,15 +163,32 @@
         Info = @{@"cardCode":cardCode,
                  @"isValid":isValid,
                  @"page":pagestr,
-                 @"pageSize":@"10"
+                 @"pageSize":@(KpageSize)
                  };
         
     } @catch (NSException *exception) {
-        Info = nil;
-    } @finally {
-        [self.memberMan getCouponByStateSms:Info];
+        return;
     }
-    
+        [self.memberMan getCouponByStateSms:Info];
+}
+
+-(void)getCouponNewData:(NSString*)isValid{
+    page = 1;
+    NSDictionary *Info;
+    @try {
+        
+        NSString *cardCode = self.curUser.cardCode;
+        NSString *pagestr=[NSString stringWithFormat:@"%d",page];
+        Info = @{@"cardCode":cardCode,
+                 @"isValid":isValid,
+                 @"page":pagestr,
+                 @"pageSize":@(KpageSize)
+                 };
+        
+    } @catch (NSException *exception) {
+        
+    }
+        [self.memberMan getCouponByStateSms:Info];
 }
 
 #pragma UITableViewDataSource methods

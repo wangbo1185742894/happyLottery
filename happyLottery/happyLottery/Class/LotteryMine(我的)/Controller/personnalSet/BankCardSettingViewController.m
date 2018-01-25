@@ -77,7 +77,7 @@
             }
             if (listBankArray.count>0) {
                 
-                self.tvHeight.constant = listBankArray.count*80;
+                self.tvHeight.constant = listBankArray.count*82;
                 
             }else{
                 self.tvHeight.constant = 0;
@@ -135,7 +135,7 @@
     [passInput createBlock:^(NSString *text) {
         
         if (nil == passInput) {
-            [self showPromptText:@"请输入支付密码" hideAfterDelay:2.7];
+            [self showPromptText:@"请输入支付密码" hideAfterDelay:1.7];
             return;
         }
         

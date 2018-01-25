@@ -35,7 +35,8 @@
     curSchemeType = CostTypeCASH;
     [self setTableViewLoadRefresh];
     [self setTableView];
-    [self loadData];
+    
+    [self loadNewData];
 }
 - (IBAction)actionCostTypeSelect:(UISegmentedControl *)sender {
     page = 1;
@@ -44,22 +45,13 @@
     }else if (sender.selectedSegmentIndex == 1){
         curSchemeType = CostTypeSCORE;
     }
-    [self loadData];
+    [self loadNewData];
 }
 
 -(void)setTableViewLoadRefresh{
     
-    tabSchemeList.mj_footer = [MJRefreshAutoStateFooter footerWithRefreshingBlock:^{
-        page ++ ;
-        [self loadData];
-        [tabSchemeList reloadData];
-    }];
-    
-    tabSchemeList.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        page = 1;
-        [self loadData];
-        [tabSchemeList reloadData];
-    }];
+    [UITableView refreshHelperWithScrollView:tabSchemeList target:self loadNewData:@selector(loadNewData) loadMoreData:@selector(loadMoreData) isBeginRefresh:NO];
+
 }
 
 -(void)setTableView{
@@ -91,7 +83,8 @@
     return cell;
 }
 
--(void)loadData{
+-(void)loadNewData{
+    page = 1;
     NSString *costType = @"CASH";
     if (curSchemeType == CostTypeCASH) {
         costType = @"CASH";
@@ -101,9 +94,20 @@
     [self.lotteryMan getSchemeRecord:@{@"cardCode":self.curUser.cardCode,@"page":@(page),@"pageSize":@(10),@"costType":costType}];
 }
 
+-(void)loadMoreData{
+    page++;
+    NSString *costType = @"CASH";
+    if (curSchemeType == CostTypeCASH) {
+        costType = @"CASH";
+    }else if(curSchemeType == CostTypeSCORE){
+        costType  = @"SCORE";
+    }
+    [self.lotteryMan getSchemeRecord:@{@"cardCode":self.curUser.cardCode,@"page":@(page),@"pageSize":@(KpageSize),@"costType":costType}];
+}
+
 -(void)gotSchemeRecord:(NSArray *)infoDic errorMsg:(NSString *)msg{
-    [tabSchemeList.mj_header endRefreshing];
-    [tabSchemeList.mj_footer endRefreshing];
+
+    [tabSchemeList tableViewEndRefreshCurPageCount:infoDic.count];
     if (infoDic == nil) {
         [self showPromptText:msg hideAfterDelay:17];
         return;

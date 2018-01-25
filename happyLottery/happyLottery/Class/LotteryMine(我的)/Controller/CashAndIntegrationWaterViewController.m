@@ -19,8 +19,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottom;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segment;
-@property (weak, nonatomic) IBOutlet UITableView *tableView1;
-@property (weak, nonatomic) IBOutlet UITableView *tableView2;
+@property (weak, nonatomic) IBOutlet UITableView *tabCashList;
+@property (weak, nonatomic) IBOutlet UITableView *tabScoreList;
 
 
 
@@ -34,67 +34,38 @@
         self.top.constant = 88;
         self.bottom.constant = 34;
     }
-    self.tableView1.delegate = self;
-    self.tableView1.dataSource = self;
-    self.tableView2.delegate = self;
-    self.tableView2.dataSource = self;
+    self.tabCashList.delegate = self;
+    self.tabCashList.dataSource = self;
+    self.tabScoreList.delegate = self;
+    self.tabScoreList.dataSource = self;
     self.memberMan.delegate = self;
     listScoreBlotterArray = [[NSMutableArray alloc]init];
     listCashBlotterArray = [[NSMutableArray alloc]init];
-    page =1;
   
-   
+    [self initCashRefresh];
+    [self initScoreRefresh];
+    
     if (self.select == 0) {
         self.segment.selectedSegmentIndex = 0;
         self.title = @"现金明细";
-        [self initCashRefresh];
-       
-        self.tableView1.hidden = NO;
-        self.tableView2.hidden = YES;
+        self.tabCashList.hidden = NO;
+        self.tabScoreList.hidden = YES;
+        [self getCashNewData];
     }else  if (self.select == 1) {
         self.segment.selectedSegmentIndex = 1;
          self.title = @"积分明细";
-         [self initScoreRefresh];
-        self.tableView2.hidden = NO;
-        self.tableView1.hidden = YES;
+        
+        self.tabScoreList.hidden = NO;
+        self.tabCashList.hidden = YES;
+        [self getScoreNewData];
     }
-    
 }
 -(void)initCashRefresh{
-    __weak typeof(self) weakSelf = self;
     
-    // 设置回调（一旦进入刷新状态就会调用这个refreshingBlock）
-    self.tableView1.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        page=1;
-        [weakSelf getCashBlotterClient];
-        [self.tableView1.mj_header endRefreshing];
-    }];
-    self.tableView1.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        page++;
-        ///[self.tableView1.mj_footer beginRefreshing];
-        [weakSelf getCashBlotterClient];
-        
-    }];
-    // 马上进入刷新状态
-    [self.tableView1.mj_header beginRefreshing];
+    [UITableView refreshHelperWithScrollView:self.tabCashList target:self loadNewData:@selector(getCashNewData) loadMoreData:@selector(getCashMoreData) isBeginRefresh:NO];
 }
 -(void)initScoreRefresh{
-           __weak typeof(self) weakSelf = self;
-    self.tableView2.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        page=1;
-        [weakSelf getScoreBlotterClient];
-        [self.tableView2.mj_header endRefreshing];
-    }];
-    self.tableView2.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        page++;
-        //[self.tableView2.mj_header beginRefreshing];
-        [weakSelf getScoreBlotterClient];
-        
-    }];
-    
-    // 马上进入刷新状态
-    
-    [self.tableView2.mj_header beginRefreshing];
+     [UITableView refreshHelperWithScrollView:self.tabScoreList target:self loadNewData:@selector(getScoreNewData) loadMoreData:@selector(getScoreMoreData) isBeginRefresh:NO];
 }
 
 
@@ -103,69 +74,102 @@
     {
     case 0:
             self.title = @"现金明细";
-            self.tableView1.hidden = NO;
-            self.tableView2.hidden = YES;
-            [listCashBlotterArray removeAllObjects];
-            page=1;
-            [self initCashRefresh];
+            self.tabCashList.hidden = NO;
+            self.tabScoreList.hidden = YES;
+            
+            [self getCashNewData];
            break;
     case 1:
               self.title = @"积分明细";
-            self.tableView2.hidden = NO;
-            self.tableView1.hidden = YES;
-            [listScoreBlotterArray removeAllObjects];
-            page=1;
-           [self initScoreRefresh];
+            self.tabScoreList.hidden = NO;
+            self.tabCashList.hidden = YES;
+
+            [self getScoreNewData];
+           
             break;
     default:
         break;
     }
 }
 
--(void)getScoreBlotterClient{
+-(void)getScoreNewData{
+    page = 1;
     NSDictionary *Info;
     @try {
         NSString *cardCode = self.curUser.cardCode;
         NSString *pagestr=[NSString stringWithFormat:@"%d",page];
         Info = @{@"cardCode":cardCode,
                  @"page":pagestr,
-                 @"pageSize":@"10",
+                 @"pageSize":@(KpageSize),
                  @"type":@" "
                  };
         
     } @catch (NSException *exception) {
-        Info = nil;
-    } @finally {
-        [self.memberMan getScoreBlotterSms:Info];
+        return;
     }
+    [self.memberMan getScoreBlotterSms:Info];
+    
     
 }
 
--(void)getCashBlotterClient{
+-(void)getScoreMoreData{
+    page++;
     NSDictionary *Info;
     @try {
         NSString *cardCode = self.curUser.cardCode;
         NSString *pagestr=[NSString stringWithFormat:@"%d",page];
         Info = @{@"cardCode":cardCode,
                  @"page":pagestr,
-                 @"pageSize":@"10",
+                 @"pageSize":@(KpageSize),
                  @"type":@" "
                  };
         
     } @catch (NSException *exception) {
-        Info = nil;
-    } @finally {
-        [self.memberMan getCashBlotterSms:Info];
+        return;
     }
+    [self.memberMan getScoreBlotterSms:Info];
     
+    
+}
+
+-(void)getCashNewData{
+    NSDictionary *Info;
+    page = 1;
+    @try {
+        NSString *cardCode = self.curUser.cardCode;
+        NSString *pagestr=[NSString stringWithFormat:@"%d",page];
+        Info = @{@"cardCode":cardCode,
+                 @"page":pagestr,
+                 @"pageSize":@(KpageSize),
+                 @"type":@" "
+                 };
+        
+    } @catch (NSException *exception) {
+        return;
+    }
+    [self.memberMan getCashBlotterSms:Info];
+}
+
+-(void)getCashMoreData{
+    page ++;
+    NSDictionary *Info;
+    @try {
+        NSString *cardCode = self.curUser.cardCode;
+        NSString *pagestr=[NSString stringWithFormat:@"%d",page];
+        Info = @{@"cardCode":cardCode,
+                 @"page":pagestr,
+                 @"pageSize":@(KpageSize),
+                 @"type":@" "
+                 };
+        
+    } @catch (NSException *exception) {
+        return;
+    }
+    [self.memberMan getCashBlotterSms:Info];
 }
 //现金流水
 -(void)getCashBlotterSms:(NSArray *)boltterInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
-    if (boltterInfo.count != 10) {
-        [self.tableView1.mj_footer endRefreshingWithNoMoreData];
-    }else{
-        [self.tableView1.mj_footer endRefreshing];
-    }
+    [self.tabCashList tableViewEndRefreshCurPageCount:boltterInfo.count];
     
     if (success == YES && boltterInfo != nil) {
         if (page == 1) {
@@ -175,9 +179,9 @@
             CashBoltter *cashBoltter = [[CashBoltter alloc]initWith:info];
             [listCashBlotterArray addObject:cashBoltter];
         }
-        self.tableView1.hidden = NO;
-        self.tableView2.hidden = YES;
-        [self.tableView1 reloadData];
+        self.tabCashList.hidden = NO;
+        self.tabScoreList.hidden = YES;
+        [self.tabCashList reloadData];
         
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
@@ -185,11 +189,7 @@
 }
 //积分流水
 -(void)getScoreBlotterSms:(NSArray *)scoreInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
-    if (scoreInfo.count != 10) {
-        [self.tableView2.mj_footer endRefreshingWithNoMoreData];
-    }else{
-        [self.tableView2.mj_footer endRefreshing];
-    }
+    [self.tabScoreList tableViewEndRefreshCurPageCount:scoreInfo.count];
 
     if (success == YES && scoreInfo != nil) {
         if (page == 1) {
@@ -199,9 +199,9 @@
             CashBoltter *cashBoltter = [[CashBoltter alloc]initWith:info];
             [listScoreBlotterArray addObject:cashBoltter];
         }
-        self.tableView2.hidden = NO;
-        self.tableView1.hidden = YES;
-        [self.tableView2 reloadData];
+        self.tabScoreList.hidden = NO;
+        self.tabCashList.hidden = YES;
+        [self.tabScoreList reloadData];
         
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
@@ -210,11 +210,11 @@
 
 #pragma UITableViewDataSource methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (tableView ==self.tableView1) {
+    if (tableView ==self.tabScoreList) {
             if (listScoreBlotterArray.count > 0) {
                 return listScoreBlotterArray.count;
             }
-    } else if (tableView ==self.tableView2) {
+    } else if (tableView ==self.tabCashList) {
         if (listCashBlotterArray.count > 0) {
             return listCashBlotterArray.count;
         }
@@ -233,40 +233,16 @@
     static NSString *CellIdentifier1 = @"TabViewCell1";
     static NSString *CellIdentifier2= @"TabViewCell2";
     //自定义cell类
-  
+    
     CashAndIntegrationWaterTableViewCell *cell ;
-    if (tableView ==self.tableView1) {
- cell= [tableView dequeueReusableCellWithIdentifier:CellIdentifier1];
+    if (tableView ==self.tabScoreList) {
+    cell= [tableView dequeueReusableCellWithIdentifier:CellIdentifier1];
         if (cell == nil) {
             //通过xib的名称加载自定义的cell
             cell = [[[NSBundle mainBundle] loadNibNamed:@"CashAndIntegrationWaterTableViewCell" owner:self options:nil] lastObject];
         }
         if (listScoreBlotterArray.count > 0) {
             CashBoltter *cashBoltter = listScoreBlotterArray[indexPath.row];
-            cell.nameLab.text = cashBoltter.orderType;
-            cell.dateLab.text = cashBoltter.createTime;
-           float amounts=[cashBoltter.amounts floatValue];
-            if (amounts>0) {
-                cell.priceLab.textColor = SystemGreen;
-                cell.image.image = [UIImage imageNamed:@"addcrease"];
-                cell.priceLab.text = [NSString stringWithFormat:@"+%.2f元",amounts];
-            }else{
-                cell.image.image = [UIImage imageNamed:@"lessen"];
-                cell.priceLab.text = [NSString stringWithFormat:@"%.2f元",amounts];
-                
-            }
-            float b=[cashBoltter.remBalance floatValue];
-            
-            cell.retainLab.text =[NSString stringWithFormat:@"余额：%.2f",b];
-        }
-    } else if (tableView ==self.tableView2) {
-      cell= [tableView dequeueReusableCellWithIdentifier:CellIdentifier2];
-        if (cell == nil) {
-            //通过xib的名称加载自定义的cell
-            cell = [[[NSBundle mainBundle] loadNibNamed:@"CashAndIntegrationWaterTableViewCell" owner:self options:nil] lastObject];
-        }
-        if (listCashBlotterArray.count > 0) {
-            CashBoltter *cashBoltter = listCashBlotterArray[indexPath.row];
             cell.nameLab.text = cashBoltter.orderType;
             cell.dateLab.text = cashBoltter.createTime;
             int amounts =[cashBoltter.amounts intValue];
@@ -281,6 +257,31 @@
             float b=[cashBoltter.remBalance floatValue];
             cell.retainLab.text =[NSString stringWithFormat:@"余额：%.2f",b];
         }
+    } else if (tableView ==self.tabCashList) {
+      cell= [tableView dequeueReusableCellWithIdentifier:CellIdentifier2];
+        if (cell == nil) {
+            //通过xib的名称加载自定义的cell
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"CashAndIntegrationWaterTableViewCell" owner:self options:nil] lastObject];
+        }
+    
+        if (listCashBlotterArray.count > 0) {
+            CashBoltter *cashBoltter = listCashBlotterArray[indexPath.row];
+            cell.nameLab.text = cashBoltter.orderType;
+            cell.dateLab.text = cashBoltter.createTime;
+            float amounts=[cashBoltter.amounts floatValue];
+            if (amounts>0) {
+                cell.priceLab.textColor = SystemGreen;
+                cell.image.image = [UIImage imageNamed:@"addcrease"];
+                cell.priceLab.text = [NSString stringWithFormat:@"+%.2f元",amounts];
+            }else{
+                cell.image.image = [UIImage imageNamed:@"lessen"];
+                cell.priceLab.text = [NSString stringWithFormat:@"%.2f元",amounts];
+                
+            }
+            float b=[cashBoltter.remBalance floatValue];
+            
+            cell.retainLab.text =[NSString stringWithFormat:@"余额：%.2f",b];
+        }
     }
     
   
@@ -289,12 +290,6 @@
 
 
 #pragma UITableViewDelegate methods
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    //    if (section == 0) {
-    //        return 0;
-    //    }
-    return 10;
-}
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 0.5;
 }

@@ -42,28 +42,15 @@ static NSString * const ReuseIdentifier = @"cell";
       self.dataArray = [[NSMutableArray alloc]init];
       [self initRefresh];
     
+    
 }
 
 -(void)initRefresh{
-    __weak typeof(self) weakSelf = self;
-    self.tableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        page=1;
-        [weakSelf FeedBackHistoryClient];
-        [self.tableview.mj_header endRefreshing];
-    }];
-    self.tableview.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        page++;
-        //[self.tableView2.mj_header beginRefreshing];
-        [weakSelf FeedBackHistoryClient];
-        
-    }];
-    
-    // 马上进入刷新状态
-    
-    [self.tableview.mj_header beginRefreshing];
+    [UITableView refreshHelperWithScrollView:self.tableview target:self loadNewData:@selector(FeedBackNewData) loadMoreData:@selector(FeedBackMoreData) isBeginRefresh:YES];
 }
 
--(void)FeedBackHistoryClient{
+-(void)FeedBackNewData{
+    page = 1;
     NSDictionary *Info;
     @try {
         NSString *pagestr=[NSString stringWithFormat:@"%d",page];
@@ -74,77 +61,47 @@ static NSString * const ReuseIdentifier = @"cell";
                  };
         
     } @catch (NSException *exception) {
-        Info = nil;
-    } @finally {
-        [self.memberMan getFeedbackListSms:Info];
+        return;
     }
+    [self.memberMan getFeedbackListSms:Info];
     
 }
 
--(void)getFeedbackListSms:(NSArray *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
-    NSLog(@"getFeedbackList%@",redPacketInfo);
-    if ([msg isEqualToString:@"执行成功"]) {
-        //[self showPromptText: @"现金流水成功" hideAfterDelay: 1.7];
-        NSEnumerator *enumerator = [redPacketInfo objectEnumerator];
-        id object;
-        if ((object = [enumerator nextObject]) != nil)  {
-            
-            NSArray *array =redPacketInfo;
-            
-            
-            if (page == 1) {
-                [_dataArray removeAllObjects];
-                if (array.count>0) {
-                    for (int i=0; i<array.count; i++) {
-                        NSDictionary *dic = [[NSDictionary alloc]init];
-                        dic = array[i];
-                        FeedBackHistory *feedBackHistory =  [[FeedBackHistory alloc]initWith:dic];
-                        //feedBackHistory = array[i];
-                        [_dataArray addObject:feedBackHistory];
-                    }
-                    [self.tableview.mj_footer endRefreshing];
-                    self.tableview.hidden = NO;
-                    [self.tableview reloadData];
-                    //self.emptyView.hidden=YES;
-                }else{
-                    
-                    //self.emptyView.hidden=NO;
-                    self.tableview.hidden = YES;
-                }
-            }else{
-                if (array.count>0) {
-                    //
-                    for (int i=0; i<array.count; i++) {
-                        
-                        FeedBackHistory *feedBackHistory = [[FeedBackHistory alloc]initWith:array[i]];
-                        [_dataArray addObject:feedBackHistory];
-                        
-                    }
-                    if (_dataArray.count>0) {
-                        self.tableview.hidden = NO;
-                        [self.tableview reloadData];
-                        [self.tableview.mj_footer endRefreshing];
-                    }else{
-                        [self.tableview.mj_footer endRefreshingWithNoMoreData];
-                        
-                    }
-                    
-                }
-            }
-        }else{
-            [self.tableview.mj_footer endRefreshingWithNoMoreData];
-            if (page == 1){
-                
-                //self.emptyView.hidden=NO;
-                self.tableview.hidden = YES;
-            }
-        }
+-(void)FeedBackMoreData{
+    page ++;
+    NSDictionary *Info;
+    @try {
+        NSString *pagestr=[NSString stringWithFormat:@"%d",page];
+        NSString *cardCode = self.curUser.cardCode;
+        Info = @{@"cardCode":cardCode,
+                 @"page":pagestr,
+                 @"pageSize":@(KpageSize)
+                 };
         
+    } @catch (NSException *exception) {
+        return;
+    }
+    [self.memberMan getFeedbackListSms:Info];
+
+}
+
+-(void)getFeedbackListSms:(NSArray *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+
+    if (success == YES && redPacketInfo != nil) {
+        [self.tableview tableViewEndRefreshCurPageCount:redPacketInfo.count];
+        if (page == 1) {
+            [_dataArray removeAllObjects];
+        }
+        for (NSDictionary *itemDic in redPacketInfo) {
+            FeedBackHistory *feedBackHistory =  [[FeedBackHistory alloc]initWith:itemDic];
+
+            [_dataArray addObject:feedBackHistory];
+        }
+        [self.tableview reloadData];
         
     }else{
-        [self showPromptText: msg hideAfterDelay: 1.7];
+        [self showPromptText:msg hideAfterDelay:1.7];
     }
-    
 }
 
 #pragma mark - UITableViewDelegate

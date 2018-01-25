@@ -11,6 +11,9 @@
 #import "LotteryManager.h"
 #import "FMDB.h"
 #import "AppDelegate.h"
+
+
+
 @interface BaseViewController : UIViewController
 @property (nonatomic ,strong)NSString *viewControllerNo;
 @property (nonatomic,strong)MemberManager * memberMan;
@@ -44,5 +47,7 @@
 -(UIBarButtonItem *)creatBarItem:(NSString *)title icon:(NSString *)imgName andFrame:(CGRect)frame andAction:(SEL)action;
 
 -(id)transFomatJson:(NSString *)strJson;
+
+
 
 @end
