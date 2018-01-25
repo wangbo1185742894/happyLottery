@@ -149,10 +149,10 @@ static NSInteger seq = 0;
                       };
         
     } @catch (NSException *exception) {
-        loginInfo = nil;
-    } @finally {
-        [self.memberMan loginCurUser:loginInfo];
+        return;
     }
+        [self.memberMan loginCurUser:loginInfo];
+  
 }
 
 -(void)loginUserClient{
@@ -168,10 +168,10 @@ static NSInteger seq = 0;
                        };
         
     } @catch (NSException *exception) {
-        loginInfo = nil;
-    } @finally {
-        [self.memberMan loginCurUser:loginInfo];
+       return;
     }
+        [self.memberMan loginCurUser:loginInfo];
+ 
 }
 
 -(void)setIcon{

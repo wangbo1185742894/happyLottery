@@ -585,6 +585,8 @@
 		F924BAA61FE252CF00830BF4 /* user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA8E1FE252CE00830BF4 /* user@2x.png */; };
 		F924BAA81FE252CF00830BF4 /* captcha@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA901FE252CE00830BF4 /* captcha@2x.png */; };
 		F924BAA91FE252CF00830BF4 /* stick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA911FE252CF00830BF4 /* stick@2x.png */; };
+		F9281D1B201979BE00C42A37 /* one_redpacket@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9281D19201979BE00C42A37 /* one_redpacket@2x.png */; };
+		F9281D1C201979BE00C42A37 /* one_redpacket@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9281D1A201979BE00C42A37 /* one_redpacket@3x.png */; };
 		F928C6851FF48BE4001F1A32 /* bj_@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F928C6831FF48BE3001F1A32 /* bj_@3x.png */; };
 		F928C6861FF48BE4001F1A32 /* bj_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F928C6841FF48BE4001F1A32 /* bj_@2x.png */; };
 		F928C6891FF48DB3001F1A32 /* bj@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F928C6871FF48DB2001F1A32 /* bj@2x.png */; };
@@ -799,6 +801,8 @@
 		F9DC69A91FDF8957007D384D /* MyHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DC69A71FDF8957007D384D /* MyHelpViewController.m */; };
 		F9DC69AA1FDF8957007D384D /* MyHelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9DC69A81FDF8957007D384D /* MyHelpViewController.xib */; };
 		F9E0DF1D2019695C0089F51D /* MineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9E0DF1C2019695B0089F51D /* MineViewController.xib */; };
+		F9E0DF21201972570089F51D /* JumpWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9E0DF1F201972570089F51D /* JumpWebViewController.m */; };
+		F9E0DF22201972570089F51D /* JumpWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9E0DF20201972570089F51D /* JumpWebViewController.xib */; };
 		F9F2629C1FE8D7D000C2E60F /* closeperson@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F2629A1FE8D7D000C2E60F /* closeperson@2x.png */; };
 		F9F2629D1FE8D7D000C2E60F /* closeperson@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F2629B1FE8D7D000C2E60F /* closeperson@3x.png */; };
 		F9F262B01FE8F4AE00C2E60F /* CGGeometry+RSKImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F262A01FE8F4AE00C2E60F /* CGGeometry+RSKImageCropper.m */; };
@@ -1658,6 +1662,8 @@
 		F924BA8E1FE252CE00830BF4 /* user@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user@2x.png"; sourceTree = "<group>"; };
 		F924BA901FE252CE00830BF4 /* captcha@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "captcha@2x.png"; sourceTree = "<group>"; };
 		F924BA911FE252CF00830BF4 /* stick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stick@2x.png"; sourceTree = "<group>"; };
+		F9281D19201979BE00C42A37 /* one_redpacket@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "one_redpacket@2x.png"; sourceTree = "<group>"; };
+		F9281D1A201979BE00C42A37 /* one_redpacket@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "one_redpacket@3x.png"; sourceTree = "<group>"; };
 		F928C6831FF48BE3001F1A32 /* bj_@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bj_@3x.png"; sourceTree = "<group>"; };
 		F928C6841FF48BE4001F1A32 /* bj_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bj_@2x.png"; sourceTree = "<group>"; };
 		F928C6871FF48DB2001F1A32 /* bj@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bj@2x.png"; sourceTree = "<group>"; };
@@ -1917,6 +1923,9 @@
 		F9DC69A71FDF8957007D384D /* MyHelpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyHelpViewController.m; sourceTree = "<group>"; };
 		F9DC69A81FDF8957007D384D /* MyHelpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyHelpViewController.xib; sourceTree = "<group>"; };
 		F9E0DF1C2019695B0089F51D /* MineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineViewController.xib; sourceTree = "<group>"; };
+		F9E0DF1E201972570089F51D /* JumpWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpWebViewController.h; sourceTree = "<group>"; };
+		F9E0DF1F201972570089F51D /* JumpWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpWebViewController.m; sourceTree = "<group>"; };
+		F9E0DF20201972570089F51D /* JumpWebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JumpWebViewController.xib; sourceTree = "<group>"; };
 		F9F2629A1FE8D7D000C2E60F /* closeperson@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closeperson@2x.png"; sourceTree = "<group>"; };
 		F9F2629B1FE8D7D000C2E60F /* closeperson@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closeperson@3x.png"; sourceTree = "<group>"; };
 		F9F2629F1FE8F4AE00C2E60F /* CGGeometry+RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGGeometry+RSKImageCropper.h"; sourceTree = "<group>"; };
@@ -3345,6 +3354,8 @@
 		F90FCD601FF380F000BD807C /* RedPacket */ = {
 			isa = PBXGroup;
 			children = (
+				F9281D19201979BE00C42A37 /* one_redpacket@2x.png */,
+				F9281D1A201979BE00C42A37 /* one_redpacket@3x.png */,
 				F94027DD2018929600CF7A2B /* redpacketKong@2x.png */,
 				F94027DE2018929700CF7A2B /* redpacketKong@3x.png */,
 				F92D03D72005A8EF00C26E7A /* lock_cannot@2x.png */,
@@ -3499,6 +3510,9 @@
 				F9632F54200C9A8B00F69D23 /* IntegeralChangeViewController.h */,
 				F9632F55200C9A8B00F69D23 /* IntegeralChangeViewController.m */,
 				F9632F56200C9A8B00F69D23 /* IntegeralChangeViewController.xib */,
+				F9E0DF1E201972570089F51D /* JumpWebViewController.h */,
+				F9E0DF1F201972570089F51D /* JumpWebViewController.m */,
+				F9E0DF20201972570089F51D /* JumpWebViewController.xib */,
 			);
 			name = MyHelp;
 			sourceTree = "<group>";
@@ -4052,6 +4066,10 @@
 				2DDEDC071FD4DBD8007AEBF7 /* BuyLotteryViewController.xib in Resources */,
 				2D0E23DA2019A66D0098DA40 /* lottery@3x.png in Resources */,
 				F9F2629C1FE8D7D000C2E60F /* closeperson@2x.png in Resources */,
+
+				F9664B9D2004B23A000A27CA /* feedback@2x.png in Resources */,
+				F9281D1B201979BE00C42A37 /* one_redpacket@2x.png in Resources */,
+
 				2D5171F3200C72F300C3CD7F /* btn_change_@2x.png in Resources */,
 				F9D9F2A91FF22640006434DC /* CashAndIntegrationWaterViewController.xib in Resources */,
 				F92D03D32005A4D000C26E7A /* unlockredpacket@2x.png in Resources */,
@@ -4444,6 +4462,7 @@
 				F9BD1B5C1FE8B41900C1C71A /* MyNickSetViewController.xib in Resources */,
 				F928C6B31FF4BA40001F1A32 /* lessen@3x.png in Resources */,
 				F9F6CA9F1FF5D6B100A49F71 /* arrows@2x.png in Resources */,
+				F9E0DF22201972570089F51D /* JumpWebViewController.xib in Resources */,
 				2D4B1E1C1FD8C8080034B708 /* launchImage@2x.png in Resources */,
 				2D4B1E811FDF684E0034B708 /* wode_defealt@2x.png in Resources */,
 				2D0600471FFDDD51009E7568 /* schemedetailticket_bj@3x.png in Resources */,
@@ -4559,6 +4578,7 @@
 				2D739CE61FEB462B00264044 /* guoguan@3x.png in Resources */,
 				2D8CC0081FF3958D00CC367F /* icon_selected@2x.png in Resources */,
 				F94770C0200706BC0091729E /* jingcaizuqiu_bifen.html in Resources */,
+				F9281D1C201979BE00C42A37 /* one_redpacket@3x.png in Resources */,
 				F924BA991FE252CF00830BF4 /* captcha@3x.png in Resources */,
 				2D4B1E731FDF684E0034B708 /* fengkuangjingcai@2x.png in Resources */,
 				2D739CC41FEA7B4E00264044 /* JingCaiCode.plist in Resources */,
@@ -4650,6 +4670,7 @@
 				2D5171CE200C567D00C3CD7F /* WonSchemeListController.m in Sources */,
 				F9BD1B5B1FE8B41900C1C71A /* MyNickSetViewController.m in Sources */,
 				2DDEDE731FD568C9007AEBF7 /* AFURLRequestSerialization.m in Sources */,
+				F9E0DF21201972570089F51D /* JumpWebViewController.m in Sources */,
 				2D739C5C1FE3B31500264044 /* FMDatabaseAdditions.m in Sources */,
 				2DDEDE7C1FD568C9007AEBF7 /* UIAlertView+AFNetworking.m in Sources */,
 				F9C3BA1720088D0100916F3C /* FeedBackHistoryViewController.m in Sources */,

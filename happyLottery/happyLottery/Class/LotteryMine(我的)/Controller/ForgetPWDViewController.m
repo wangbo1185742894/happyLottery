@@ -198,11 +198,10 @@
                       };
         
     } @catch (NSException *exception) {
-        forgetPWDInfo = nil;
-    } @finally {
-        [self.memberMan forgetPWDSms:forgetPWDInfo];
+      return;
     }
-    
+        [self.memberMan forgetPWDSms:forgetPWDInfo];
+ 
 }
 -(void)setIcon{
     

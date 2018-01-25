@@ -202,11 +202,10 @@
                  };
         
     } @catch (NSException *exception) {
-        Info = nil;
-    } @finally {
-        [self.memberMan getQRCode:Info];
+        return;
     }
-    
+        [self.memberMan getQRCode:Info];
+
 }
 
 -(void)getQRCodeStateSms:(NSString *)Info IsSuccess:(BOOL)success errorMsg:(NSString *)msg{

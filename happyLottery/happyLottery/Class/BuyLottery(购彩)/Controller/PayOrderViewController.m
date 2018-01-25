@@ -442,11 +442,10 @@
                          @"schemeSub":[self getTouzhuParams:self.curSelectCoupon != nil]
                          };
     } @catch (NSException *exception) {
-        rechargeInfo = nil;
         return;
-    } @finally {
-        [self.memberMan rechargeSms:rechargeInfo];
     }
+        [self.memberMan rechargeSms:rechargeInfo];
+    
 }
 
 -(NSDictionary *)getTouzhuParams:(BOOL)isCoupon{

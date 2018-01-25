@@ -242,7 +242,7 @@
         return;
     }
         [self.memberMan getRedPacketByStateSms:Info];
-    
+
 }
 
 -(void)getRedPacketNewData:(NSString*)isValid{
@@ -272,11 +272,10 @@
                  };
         
     } @catch (NSException *exception) {
-        Info = nil;
-    } @finally {
-        [self.memberMan openRedPacketSms:Info];
+       return;
     }
-    
+        [self.memberMan openRedPacketSms:Info];
+
 }
 
 #pragma UITableViewDataSource methods
@@ -350,12 +349,19 @@
 //            }
             cell.sourceLab.text =  [NSString stringWithFormat:@"来源：%@",redPacket.activityName];
             NSString *date=[redPacket.endValidTime substringWithRange:NSMakeRange(0,10)];
+            
             cell.endTimeLab.text = [NSString stringWithFormat:@"有效期至：%@",date];
-            const long long  dayInteger = [self getDifferenceByDate:redPacket.endValidTime];
+//            const long long  dayInteger = [self getDifferenceByDate:redPacket.endValidTime];
+            const long long  dayInteger = [self getDifferenceByDate:@"2018-01-26 09:24:57"]; 
             NSNumber *longlongNumber = [NSNumber numberWithLongLong:dayInteger];
-        
+            NSString *time=[redPacket.endValidTime substringFromIndex:8];
             NSString *daystr = [longlongNumber stringValue];
-            cell.day.text=[NSString stringWithFormat:@"还有%@天过期",daystr];
+            if (dayInteger==0) {
+                cell.day.text=[NSString stringWithFormat:@"截止%@过期",time];
+            }else{
+                cell.day.text=[NSString stringWithFormat:@"还有%@天过期",daystr];
+            }
+            
         }
       
     }else if (tableView ==self.tableView2){

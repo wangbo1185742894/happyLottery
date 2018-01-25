@@ -115,8 +115,11 @@
 }
 
 -(void)getCouponByStateSms:(NSArray *)couponInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+
+  
     
     if (success == YES && couponInfo != nil) {
+
         
         if (self.segment.selectedSegmentIndex == 0) {
             [self.tableView1 tableViewEndRefreshCurPageCount:couponInfo.count];
@@ -169,7 +172,7 @@
     } @catch (NSException *exception) {
         return;
     }
-        [self.memberMan getCouponByStateSms:Info];
+    [self.memberMan getCouponByStateSms:Info];
 }
 
 -(void)getCouponNewData:(NSString*)isValid{
@@ -188,7 +191,8 @@
     } @catch (NSException *exception) {
         
     }
-        [self.memberMan getCouponByStateSms:Info];
+    [self.memberMan getCouponByStateSms:Info];
+
 }
 
 #pragma UITableViewDataSource methods

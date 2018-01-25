@@ -178,7 +178,7 @@
     label.frame =CGRectMake(25, 0,10, 10);
     label.layer.cornerRadius = label.bounds.size.width/2;
     label.layer.masksToBounds = YES;
-    
+    label.hidden=YES;
  
     label.font = [UIFont systemFontOfSize:7];
     label.textAlignment = NSTextAlignmentCenter;
@@ -438,10 +438,10 @@
                  };
         
     } @catch (NSException *exception) {
-        Info = nil;
-    } @finally {
-        [self.memberMan getRedPacketByStateSms:Info];
+        return;
     }
+        [self.memberMan getRedPacketByStateSms:Info];
+  
     
 }
 
@@ -497,11 +497,9 @@
                  };
         
     } @catch (NSException *exception) {
-        Info = nil;
-    } @finally {
-        [self.memberMan FeedBackUnReadNum:Info];
+        return;
     }
-    
+        [self.memberMan FeedBackUnReadNum:Info];
 }
 
 -(void)needLogin{

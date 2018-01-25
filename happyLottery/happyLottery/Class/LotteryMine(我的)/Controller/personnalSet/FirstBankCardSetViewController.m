@@ -141,11 +141,10 @@
                          };
         
     } @catch (NSException *exception) {
-        Info = nil;
-    } @finally {
-        [self.memberMan bindNameSms:Info];
+       return;
     }
-    
+        [self.memberMan bindNameSms:Info];
+
 }
 
 -(void)addBankCardClient{
@@ -163,11 +162,10 @@
                          };
         
     } @catch (NSException *exception) {
-        Info = nil;
-    } @finally {
-        [self.memberMan addBankCardSms:Info];
+        return;
     }
-    
+        [self.memberMan addBankCardSms:Info];
+
 }
 
 #pragma UITextFieldDelegate

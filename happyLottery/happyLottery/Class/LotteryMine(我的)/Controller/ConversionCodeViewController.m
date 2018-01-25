@@ -58,11 +58,10 @@
                  };
         
     } @catch (NSException *exception) {
-        Info = nil;
-    } @finally {
-        [self.memberMan upMemberShareSms:Info];
+     return;
     }
-    
+        [self.memberMan upMemberShareSms:Info];
+
 }
 
 -(void)upMemberShareSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{

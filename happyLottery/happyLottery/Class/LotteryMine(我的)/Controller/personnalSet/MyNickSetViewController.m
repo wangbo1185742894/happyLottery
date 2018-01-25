@@ -102,11 +102,10 @@
                           };
         
     } @catch (NSException *exception) {
-        resetNickInfo = nil;
-    } @finally {
-        [self.memberMan resetNickSms:resetNickInfo];
+       return;
     }
-    
+        [self.memberMan resetNickSms:resetNickInfo];
+
 }
 
 -(void)resetNickSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{

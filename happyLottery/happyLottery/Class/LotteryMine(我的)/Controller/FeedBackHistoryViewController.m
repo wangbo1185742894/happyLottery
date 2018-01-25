@@ -64,7 +64,6 @@ static NSString * const ReuseIdentifier = @"cell";
         return;
     }
     [self.memberMan getFeedbackListSms:Info];
-    
 }
 
 -(void)FeedBackMoreData{

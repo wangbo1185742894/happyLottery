@@ -107,8 +107,8 @@
     } @catch (NSException *exception) {
         return;
     }
+
     [self.memberMan getScoreBlotterSms:Info];
-    
     
 }
 
@@ -128,7 +128,6 @@
         return;
     }
     [self.memberMan getScoreBlotterSms:Info];
-    
     
 }
 

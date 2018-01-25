@@ -12,6 +12,7 @@
 #import "LoadData.h"
 #import "Notice.h"
 #import "FMDB.h"
+#import "JumpWebViewController.h"
 
 @interface NoticeCenterViewController ()<MemberManagerDelegate,UITableViewDelegate,UITableViewDataSource>{
     
@@ -353,7 +354,10 @@
           NSString *pageCode=notice.thumbnailCode;
         [self goToYunshiWithInfo:notice];
     }else if ([type isEqualToString:@"H5PAGE"]) {
-      
+        JumpWebViewController *jumpVC = [[JumpWebViewController alloc] initWithNibName:@"JumpWebViewController" bundle:nil];
+        
+        jumpVC.URL = notice.linkUrl;
+        [self.navigationController pushViewController:jumpVC animated:YES];
     }else if ([type isEqualToString:@"TEXT"]) {
         NoticeDetailViewController *vc = [[NoticeDetailViewController alloc] init];
             vc.notice = listSystemNoticeArray[indexPath.row];

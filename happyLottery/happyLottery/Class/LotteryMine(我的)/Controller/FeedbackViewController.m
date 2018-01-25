@@ -159,6 +159,7 @@
         
     }else{
          self.commitButton.userInteractionEnabled = YES;
+         [self.commitButton setBackgroundColor: SystemGreen];
     }
     
 }
@@ -207,11 +208,10 @@
                  };
         
     } @catch (NSException *exception) {
-        Info = nil;
-    } @finally {
-        [self.memberMan FeedBack:Info];
+      return;
     }
-    
+        [self.memberMan FeedBack:Info];
+
 }
 
 -(void)FeedBackUnReadNum:(NSDictionary *)Info IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
@@ -235,11 +235,9 @@
                  };
         
     } @catch (NSException *exception) {
-        Info = nil;
-    } @finally {
-        [self.memberMan FeedBackUnReadNum:Info];
+      return;
     }
-    
+        [self.memberMan FeedBackUnReadNum:Info];
 }
 
 -(void)ResetFeedBackReadStatusClient{
@@ -250,11 +248,10 @@
                  };
         
     } @catch (NSException *exception) {
-        Info = nil;
-    } @finally {
-        [self.memberMan ResetFeedBackReadStatus:Info];
+       return;
     }
-    
+        [self.memberMan ResetFeedBackReadStatus:Info];
+
 }
 
 -(void)ResetFeedBackReadStatusSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
