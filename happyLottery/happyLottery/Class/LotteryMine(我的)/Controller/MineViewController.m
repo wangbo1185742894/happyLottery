@@ -25,7 +25,7 @@
 #import "RedPacket.h"
 
 @interface MineViewController () <UITableViewDelegate, UITableViewDataSource,MemberManagerDelegate>{
-    NSArray *listArray;
+    NSArray <NSArray *>*listArray;
     UIButton *noticeBtn;
     UILabel *label;
     long num;
@@ -52,6 +52,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
+      listArray = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Mine" ofType: @"plist"]];
     if (self.curUser.isLogin==YES) {
         [self updateMemberClinet];
         [self searchSystemDB];
@@ -60,6 +61,7 @@
     } else {
         //显示未登录时的状态
         [self notLogin];
+        [self.tableview reloadData];
     }
     self.memberMan.delegate = self;
 }
@@ -71,7 +73,9 @@
     self.memberMan.delegate = self;
     listUseRedPacketArray = [[NSMutableArray alloc]init];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(actionUserLoginSuccess:) name:NotificationNameUserLogin object:nil];
-     listArray = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Mine" ofType: @"plist"]];
+   
+    
+ 
     [_tableview registerClass:[MineTableViewCell class] forCellReuseIdentifier:@"MineTableViewCell"];
     _tableview.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     
@@ -132,6 +136,7 @@
         [GlobalInstance instance].curUser = user;
         [GlobalInstance instance].curUser.isLogin = YES;
         [self loadUserInfo];
+        
         [self.memberMan isSignInToday:@{@"cardCode":self.curUser.cardCode}];
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
@@ -139,7 +144,12 @@
 }
 
 -(void)loadUserInfo{
-  
+    
+    if (![self.curUser.memberType isEqualToString:@"FREEDOM_PERSON"] && self.curUser.isLogin == YES) {
+        listArray = @[listArray[0],@[listArray[1][0]],listArray[2]];
+        [self.tableview reloadData];
+    }
+    
     NSString *userName;
     if (self.curUser.nickname.length == 0) {
         userName = self.curUser.mobile;
@@ -219,10 +229,9 @@
         [self.memberMan signIn:@{@"cardCode":self.curUser.cardCode,@"activityId":@"1"}];
     }
 }
-
--(void)signInIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+-(void)signInIsSuccess:(NSDictionary *)info isSuccess:(BOOL)success errorMsg:(NSString *)msg{
     if (success) {
-        [self showPromptText:@"签到成功" hideAfterDelay:1.7];
+        [self showPromptText:[NSString stringWithFormat:@"您已连续签到%@天,恭喜您获得%@积分!",info[@"severalDays"],info[@"gainScore"]] hideAfterDelay:1.7];
         self.signInBtn.enabled = NO;
     }else{
         [self showPromptText:msg hideAfterDelay:1.7];
@@ -274,8 +283,8 @@
  
 }
 - (IBAction)withdrawalsBtnClick:(id)sender {
-     if (!self.curUser.isLogin) {
-        [self notLogin];
+     if (self.curUser.isLogin == NO) {
+        [self needLogin];
     } else {
         WithdrawalsViewController *w = [[WithdrawalsViewController alloc]init];
         w.hidesBottomBarWhenPushed = YES;
@@ -371,31 +380,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   
     NSDictionary *optionDic = listArray[indexPath.section][indexPath.row];
-    if (self.curUser.isLogin == NO) {
+    if ([optionDic[@"needLogin"] boolValue] == YES && self.curUser.isLogin == NO) {
         [self needLogin];
     } else {
-        if ([optionDic[@"title"] isEqualToString:@"我的红包"]){
-            MyRedPacketViewController * mpVC = [[MyRedPacketViewController alloc]init];
-            mpVC.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:mpVC animated:YES];
-        }else  if ([optionDic[@"title"] isEqualToString:@"设置"]){
-            SystemSetViewController * mpVC = [[SystemSetViewController alloc]init];
-            mpVC.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:mpVC animated:YES];
-        }else  if ([optionDic[@"title"] isEqualToString:@"邀请好友"]){
-            ShareViewController * mpVC = [[ShareViewController alloc]init];
-            mpVC.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:mpVC animated:YES];
-        }else  if ([optionDic[@"title"] isEqualToString:@"意见反馈"]){
-            FeedbackViewController * mpVC = [[FeedbackViewController alloc]init];
-            mpVC.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:mpVC animated:YES];
-        }else{
             self.memberSubFunctionClass = optionDic[@"actionClassName"];
             BaseViewController *vc = [[NSClassFromString(_memberSubFunctionClass) alloc] initWithNibName: _memberSubFunctionClass bundle: nil];
             vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController: vc animated: YES];
-        }
     }
 }
 -(void)searchSystemDB{

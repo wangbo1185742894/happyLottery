@@ -1195,17 +1195,19 @@
     void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
     {
         SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+ 
         if (response.succeed) {
-            
-            [self.delegate signInIsSuccess:YES errorMsg:response.errorMsg];
+            NSDictionary *Info = [self objFromJson: responseJsonStr];
+            [self.delegate signInIsSuccess:Info isSuccess:YES errorMsg:response.errorMsg];
         } else {
-            [self.delegate signInIsSuccess:NO errorMsg:response.errorMsg];
+            [self.delegate signInIsSuccess:nil isSuccess:NO errorMsg:response.errorMsg];
             
         }
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate signInIsSuccess:NO errorMsg:@"服务器错误"];
+        [self.delegate signInIsSuccess:nil isSuccess:NO errorMsg:@"服务器错误"];
         //失败的代理方法
     };
     //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};

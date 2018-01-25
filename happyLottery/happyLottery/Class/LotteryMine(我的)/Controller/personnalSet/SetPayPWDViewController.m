@@ -136,14 +136,13 @@
         
         resetPayPWDInfo = @{@"mobile":mobile,
                             @"newPaypwd": [AESUtility encryptStr: pwd1],
-
                             @"channelCode":CHANNEL_CODE
                             };
         
     } @catch (NSException *exception) {
         return;
     }
-        [self.memberMan bandPayPWDSms:resetPayPWDInfo];
+    [self.memberMan bandPayPWDSms:resetPayPWDInfo];
 }
 
 

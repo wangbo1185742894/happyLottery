@@ -100,39 +100,6 @@
         [self.navigationController pushViewController:nVC animated:YES];
 }
 
-// 开始编辑
-- (void)textViewDidBeginEditing:(UITextView *)textView{
-    
-    
-    self.placeHolder1.hidden = YES;
-    self.placeHolder2.hidden = YES;
-}
-
-// 结束编辑
-- (void)textViewDidEndEditing:(UITextView *)textView{
-    
-    [self.feedBackTextView resignFirstResponder];
-    //允许提交按钮点击操作
-    
-    
-}
-
-
-//-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-//    if ([text isEqualToString:@""]) {
-//        return YES;
-//    }
-//
-//   /// NSString * regex=@"^[A-Za-z0-9\u4E00-\u9FA5_-]+$";
-//     NSString * regex=@".";
-//    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
-//    BOOL isMatch = [pred evaluateWithObject:text];
-//    if (isMatch==NO) {
-//
-//    }
-//    return isMatch;
-//
-//}
 
 - (void)textViewDidChange:(UITextView *)textView
 {
@@ -151,9 +118,7 @@
     }
     //取消按钮点击权限，并显示提示文字
     if (textView.text.length == 0) {
-        
-//        self.placeHolder1.hidden = NO;
-//         self.placeHolder2.hidden = NO;
+    
         self.commitButton.userInteractionEnabled = NO;
         self.commitButton.backgroundColor = [UIColor lightGrayColor];
         
@@ -164,10 +129,100 @@
     
 }
 
+-(void)textViewDidBeginEditing:(UITextView *)textView{
+    self.placeHolder1.hidden = YES;
+    self.placeHolder2.hidden = YES;
+}
+
+- (BOOL)isContainsTwoEmoji:(NSString *)string
+{
+    __block BOOL isEomji = NO;
+    [string enumerateSubstringsInRange:NSMakeRange(0, [string length]) options:NSStringEnumerationByComposedCharacterSequences usingBlock:
+     ^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
+         const unichar hs = [substring characterAtIndex:0];
+         
+         
+         
+         if (0xd800 <= hs && hs <= 0xdbff) {
+             if (substring.length > 1) {
+                 const unichar ls = [substring characterAtIndex:1];
+                 const int uc = ((hs - 0xd800) * 0x400) + (ls - 0xdc00) + 0x10000;
+                 if (0x1d000 <= uc && uc <= 0x1ffff)
+                 {
+                     isEomji = YES;
+                 }
+                 //                 NSLog(@"uc++++++++%04x",uc);
+             }
+         } else if (substring.length > 1) {
+             const unichar ls = [substring characterAtIndex:1];
+             if (ls == 0x20e3|| ls ==0xfe0f) {
+                 isEomji = YES;
+             }
+             //             NSLog(@"ls++++++++%04x",ls);
+         } else {
+             if (0x2100 <= hs && hs <= 0x27ff && hs != 0x263b) {
+                 isEomji = YES;
+             } else if (0x2B05 <= hs && hs <= 0x2b07) {
+                 isEomji = YES;
+             } else if (0x2934 <= hs && hs <= 0x2935) {
+                 isEomji = YES;
+             } else if (0x3297 <= hs && hs <= 0x3299) {
+                 isEomji = YES;
+             } else if (hs == 0xa9 || hs == 0xae || hs == 0x303d || hs == 0x3030 || hs == 0x2b55 || hs == 0x2b1c || hs == 0x2b1b || hs == 0x2b50|| hs == 0x231a ) {
+                 isEomji = YES;
+             }
+         }
+         
+     }];
+    return isEomji;
+}
+
+
+- (BOOL)stringContainsEmoji:(NSString *)string {
+    
+    __block BOOL returnValue = NO;
+    
+    [string enumerateSubstringsInRange:NSMakeRange(0, [string length])
+                               options:NSStringEnumerationByComposedCharacterSequences
+                            usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
+                                const unichar hs = [substring characterAtIndex:0];
+                                if (0xd800 <= hs && hs <= 0xdbff) {
+                                    if (substring.length > 1) {
+                                        const unichar ls = [substring characterAtIndex:1];
+                                        const int uc = ((hs - 0xd800) * 0x400) + (ls - 0xdc00) + 0x10000;
+                                        if (0x1d000 <= uc && uc <= 0x1f77f) {
+                                            returnValue = YES;
+                                        }
+                                    }
+                                } else if (substring.length > 1) {
+                                    const unichar ls = [substring characterAtIndex:1];
+                                    if (ls == 0x20e3) {
+                                        returnValue = YES;
+                                    }
+                                } else {
+                                    if (0x2100 <= hs && hs <= 0x27ff) {
+                                        returnValue = YES;
+                                    } else if (0x2B05 <= hs && hs <= 0x2b07) {
+                                        returnValue = YES;
+                                    } else if (0x2934 <= hs && hs <= 0x2935) {
+                                        returnValue = YES;
+                                    } else if (0x3297 <= hs && hs <= 0x3299) {
+                                        returnValue = YES;
+                                    } else if (hs == 0xa9 || hs == 0xae || hs == 0x303d || hs == 0x3030 || hs == 0x2b55 || hs == 0x2b1c || hs == 0x2b1b || hs == 0x2b50) {
+                                        returnValue = YES;
+                                    }
+                                }
+                            }];
+    
+    return returnValue;
+}
+
+
 - (IBAction)commitClick:(id)sender {
      NSString *text = self.feedBackTextView.text;
     text = [text stringByReplacingOccurrencesOfString:@"\r" withString:@""];
     text = [text stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    text = [text stringByReplacingOccurrencesOfString:@" " withString:@""];
     if (text.length==0||[text isEqualToString:@""]) {
          [self showPromptText:@"请输入您的宝贵意见！" hideAfterDelay:1.7];
         return;
@@ -225,6 +280,14 @@
         
     }
     
+}
+
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    if ([self isContainsTwoEmoji:text]) {
+        return NO;
+    }else{
+        return YES;
+    }
 }
 
 -(void)CheckFeedBackRedNumClient{
