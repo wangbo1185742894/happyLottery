@@ -98,7 +98,7 @@
     }
     
     //  使用自带的
-    UIImage  *img   = nil;
+    UIImage  *img   = [UIImage imageNamed:@"pic_zanwushuju"];
     NSString *msg   = @"暂无数据";
     UIColor  *color = [UIColor lightGrayColor];
     CGFloat  offset = 0;

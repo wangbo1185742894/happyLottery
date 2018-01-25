@@ -84,16 +84,16 @@
     [_tableview reloadData];
 }
 
-
-
 -(void)notLogin{
     [self.loginBtn setTitle:@"登录/注册" forState:UIControlStateNormal];
-    [self .userImage setImage:[UIImage imageNamed:@"usermine"]];
+    [self.userImage setImage:[UIImage imageNamed:@"usermine"]];
     self.loginBtn.enabled = YES;
     self.balanceLab.text = @"0";
     self.integralLab.text = @"0";
     self.redPacketLab.text =  @"0";
+    self.signInBtn.enabled = YES;
 }
+
 -(void)updateMemberClinet{
     
     NSDictionary *MemberInfo;
@@ -148,8 +148,6 @@
     }
     [self.loginBtn setTitle:userName forState:UIControlStateNormal];
     self.loginBtn.enabled = NO;
-  
-    self.curUser.payVerifyType = [NSNumber numberWithInt:1];
     
     //[_userImage sd_setImageWithURL:[NSURL URLWithString:self.curUser.headUrl]];
     long long balance = [self.curUser.balance longLongValue];
@@ -329,6 +327,7 @@
     }else{
          cell.redPoint.hidden=YES;
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.lable.font = [UIFont systemFontOfSize:15];
     return cell;
 }
@@ -370,11 +369,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath: indexPath animated: YES];
-    if (!self.curUser.isLogin) {
-       [self needLogin];
-        return;
-    }
+  
     NSDictionary *optionDic = listArray[indexPath.section][indexPath.row];
     if (self.curUser.isLogin == NO) {
         [self needLogin];
@@ -417,6 +412,7 @@
         while (rs.next) {
             num++;
         }
+        [rs close];
         [self.fmdb close];
      
         //    }];
@@ -506,6 +502,10 @@
         [self.memberMan FeedBackUnReadNum:Info];
     }
     
+}
+
+-(void)needLogin{
+    [super needLogin];
 }
 
 @end

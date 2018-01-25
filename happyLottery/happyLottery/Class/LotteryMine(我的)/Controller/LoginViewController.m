@@ -32,7 +32,7 @@
 static NSInteger seq = 0;
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    NSLog( @"LoginViewController___viewDidLoad%d",CFAbsoluteTimeGetCurrent());
     self.title = @"登录";
     self.fimageView.layer.cornerRadius = 4;
     self.loginBtn.enabled = NO;

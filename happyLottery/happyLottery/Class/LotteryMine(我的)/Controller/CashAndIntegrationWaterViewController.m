@@ -21,7 +21,8 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segment;
 @property (weak, nonatomic) IBOutlet UITableView *tableView1;
 @property (weak, nonatomic) IBOutlet UITableView *tableView2;
-@property (weak, nonatomic) IBOutlet UIView *emptyView;
+
+
 
 @end
 
@@ -77,7 +78,7 @@
     // 马上进入刷新状态
     [self.tableView1.mj_header beginRefreshing];
 }
-    -(void)initScoreRefresh{
+-(void)initScoreRefresh{
            __weak typeof(self) weakSelf = self;
     self.tableView2.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         page=1;
@@ -112,7 +113,7 @@
               self.title = @"积分明细";
             self.tableView2.hidden = NO;
             self.tableView1.hidden = YES;
-                [listScoreBlotterArray removeAllObjects];
+            [listScoreBlotterArray removeAllObjects];
             page=1;
            [self initScoreRefresh];
             break;
@@ -160,148 +161,47 @@
 }
 //现金流水
 -(void)getCashBlotterSms:(NSArray *)boltterInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
-     NSLog(@"现金流水%@",boltterInfo);
-    if ([msg isEqualToString:@"执行成功"]) {
-        //[self showPromptText: @"现金流水成功" hideAfterDelay: 1.7];
-        NSEnumerator *enumerator = [boltterInfo objectEnumerator];
-        id object;
-        if ((object = [enumerator nextObject]) != nil)  {
-
-                        NSArray *array =boltterInfo;
-            
-            
-            if (page == 1) {
-                [listScoreBlotterArray removeAllObjects];
-                if (array.count>0) {
-                    for (int i=0; i<array.count; i++) {
-                        CashBoltter *cashBoltter = [[CashBoltter alloc]initWith:array[i]];
-                        [listScoreBlotterArray addObject:cashBoltter];
-
-                    }
-                    [self.tableView1.mj_footer endRefreshing];
-                    self.tableView1.hidden = NO;
-                    self.tableView2.hidden = YES;
-                    [self.tableView1 reloadData];
-                    self.emptyView.hidden=YES;
-                } else{
-                    
-                    self.emptyView.hidden=NO;
-                    self.tableView2.hidden = YES;
-                    self.tableView1.hidden = YES;
-                }
-            }else{
-                if (array.count>0) {
-                    //
-                    for (int i=0; i<array.count; i++) {
-                        
-                        CashBoltter *cashBoltter = [[CashBoltter alloc]initWith:array[i]];
-                        [listScoreBlotterArray addObject:cashBoltter];
-        
-                    }
-                    if (listScoreBlotterArray.count>0) {
-                        self.tableView1.hidden = NO;
-                        self.tableView2.hidden = YES;
-                        [self.tableView1 reloadData];
-                        [self.tableView1.mj_footer endRefreshing];
-                    }else{
-                        [self.tableView1.mj_footer endRefreshingWithNoMoreData];
-                        
-                    }
-                    
-                }
-            }
-        }else{
-            [self.tableView1.mj_footer endRefreshingWithNoMoreData];
-            if (page == 1){
-                
-                self.emptyView.hidden=NO;
-                self.tableView2.hidden = YES;
-                self.tableView1.hidden = YES;
-            }
+    if (boltterInfo.count != 10) {
+        [self.tableView1.mj_footer endRefreshingWithNoMoreData];
+    }else{
+        [self.tableView1.mj_footer endRefreshing];
+    }
+    
+    if (success == YES && boltterInfo != nil) {
+        if (page == 1) {
+            [listCashBlotterArray removeAllObjects];
         }
-       
-       
+        for (NSDictionary *info in boltterInfo) {
+            CashBoltter *cashBoltter = [[CashBoltter alloc]initWith:info];
+            [listCashBlotterArray addObject:cashBoltter];
+        }
+        self.tableView1.hidden = NO;
+        self.tableView2.hidden = YES;
+        [self.tableView1 reloadData];
+        
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
     }
-    
 }
 //积分流水
 -(void)getScoreBlotterSms:(NSArray *)scoreInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
-     NSLog(@"积分流水%@",scoreInfo);
-    if ([msg isEqualToString:@"执行成功"]) {
-       // [self showPromptText: @"积分流水成功" hideAfterDelay: 1.7];
-        NSEnumerator *enumerator = [scoreInfo objectEnumerator];
-        id object;
-        if ((object = [enumerator nextObject]) != nil)  {
-            NSArray *array =scoreInfo ;
-//            if (array.count>0) {
-//                [listCashBlotterArray removeAllObjects];
-//                for (int i=0; i<array.count; i++) {
-//                    NSDictionary *info = array[i];
-//                        CashBoltter *cashBoltter = [[CashBoltter alloc]initWith:info];
-//                        [listCashBlotterArray addObject:cashBoltter];
-//                    if (listCashBlotterArray.count>0) {
-//                        self.tableView2.hidden = NO;
-//                        self.tableView1.hidden = YES;
-//
-//                        [self.tableView2 reloadData];
-//                    }
-//                }
-//
-//            }
-//            self.emptyView.hidden=YES;
-            if (page == 1) {
-                [listCashBlotterArray removeAllObjects];
-                if (array.count>0) {
-                    for (int i=0; i<array.count; i++) {
-                        NSDictionary *info = array[i];
-                        CashBoltter *cashBoltter = [[CashBoltter alloc]initWith:info];
-                        [listCashBlotterArray addObject:cashBoltter];
-                        
-                    }
-                    self.tableView2.hidden = NO;
-                    self.tableView1.hidden = YES;
-                    [self.tableView2 reloadData];
-                    self.emptyView.hidden=YES;
-                    [self.tableView2.mj_footer endRefreshing];
-                }else{
-                    
-                    self.emptyView.hidden=NO;
-                    self.tableView2.hidden = YES;
-                    self.tableView1.hidden = YES;
-                }
-            }else{
-                if (array.count>0) {
-                    //
-                    for (int i=0; i<array.count; i++) {
-                        NSDictionary *info = array[i];
-                        CashBoltter *cashBoltter = [[CashBoltter alloc]initWith:info];
-                        [listCashBlotterArray addObject:cashBoltter];
-                    }
-                    if (listCashBlotterArray.count>0) {
-                        self.tableView2.hidden = NO;
-                        self.tableView1.hidden = YES;
-                        [self.tableView2 reloadData];
-                        [self.tableView2.mj_footer endRefreshing];
-                    }else{
-                        [self.tableView2.mj_footer endRefreshingWithNoMoreData];
-                        
-                    }
-                    
-                }
-            }
-        
-        }else{
-         [self.tableView2.mj_footer endRefreshingWithNoMoreData];
-            if (page == 1){
-                
-                self.emptyView.hidden=NO;
-                self.tableView2.hidden = YES;
-                self.tableView1.hidden = YES;
-            }
+    if (scoreInfo.count != 10) {
+        [self.tableView2.mj_footer endRefreshingWithNoMoreData];
+    }else{
+        [self.tableView2.mj_footer endRefreshing];
+    }
+
+    if (success == YES && scoreInfo != nil) {
+        if (page == 1) {
+            [listScoreBlotterArray removeAllObjects];
         }
-        
+        for (NSDictionary *info in scoreInfo) {
+            CashBoltter *cashBoltter = [[CashBoltter alloc]initWith:info];
+            [listScoreBlotterArray addObject:cashBoltter];
+        }
+        self.tableView2.hidden = NO;
+        self.tableView1.hidden = YES;
+        [self.tableView2 reloadData];
         
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];

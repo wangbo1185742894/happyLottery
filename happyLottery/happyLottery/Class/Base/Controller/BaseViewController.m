@@ -270,7 +270,6 @@
         navVC.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor], NSFontAttributeName: [UIFont systemFontOfSize:18]};
         navVC.navigationBar.tintColor = [UIColor whiteColor];
         [self presentViewController:navVC animated:YES completion:nil];
-    
 }
 
 -(void)needLoginCompletion:(void (^ __nullable)(void))completion{
@@ -282,7 +281,6 @@
     navVC.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor], NSFontAttributeName: [UIFont systemFontOfSize:18]};
     navVC.navigationBar.tintColor = [UIColor whiteColor];
     [self presentViewController:navVC animated:YES completion:completion];
-    
 }
 
 -(id)transFomatJson:(NSString *)strJson{
@@ -305,9 +303,11 @@
     if (self.viewControllerNo == nil || self.viewControllerNo.length == 0) {
         return;
     }
+    
     if ([self.fmdb open]) {
         
         FMResultSet*  result = [self.fmdb executeQuery:@"select * from vcUserActiveInfo where vcNo = ?",self.viewControllerNo];
+        
         NSLog(@"%@",result);
         BOOL issuccess = NO;
         if ([result next]) {
@@ -316,14 +316,18 @@
             
             visitCount = [result intForColumn:@"visitCount"];
             oldVisitTime = [result intForColumn:@"visitTime"];
-            
-            issuccess= [self.fmdb executeUpdate:@"update vcUserActiveInfo set visitCount = ?,visitTime = ? where vcNo = ?",@(visitCount + 1) ,@(visitTime + oldVisitTime),self.viewControllerNo];
+            [self.fmdb open];
+            [self.fmdb executeUpdate:@"update vcUserActiveInfo set visitCount = ?,visitTime = ? where vcNo = ?",@(visitCount + 1) ,@(visitTime + oldVisitTime),self.viewControllerNo];
+
         }else{
-            issuccess= [self.fmdb executeUpdate:@"insert into vcUserActiveInfo (vcNo,updateDate,visitCount,visitTime) values (?,?,?,?)",self.viewControllerNo,@"",@1,@(visitTime)];
+      
+            [self.fmdb executeUpdate:@"insert into vcUserActiveInfo (vcNo,updateDate,visitCount,visitTime) values (?,?,?,?)",self.viewControllerNo,@"",@1,@(visitTime)];
+            
         }
-        [result close];
-        [self.fmdb close];
+          [self.fmdb close];
     }
+       
+       
 }
 
 //{"code":"xxxxx", "visitCount":xxxxxx, "visitTime":xx, "source":"ios"}]
@@ -366,7 +370,10 @@
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     self.closeDate = [NSDate date];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
     [self saveInfo];
+    });
+    
 }
 
 -(UIBarButtonItem *)creatBarItem:(NSString *)title icon:(NSString *)imgName andFrame:(CGRect)frame andAction:(SEL)action{
@@ -387,7 +394,6 @@
 -(void)actionTelMe{
     dispatch_async(dispatch_get_main_queue(), ^{
         [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"tel://4006005558"]];
-        
     });
 }
 

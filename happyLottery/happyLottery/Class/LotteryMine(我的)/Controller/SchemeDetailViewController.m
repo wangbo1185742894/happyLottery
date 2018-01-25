@@ -47,6 +47,14 @@
     [self loadData];
 }
 
+
+-(void)setSchemeStateImg{
+    
+   [imgSchemeTopView setImage:[UIImage imageNamed: [schemeDetail getSchemeImgState]]];
+
+    
+}
+
 -(void)setTableView{
     tabMatchListVIew.delegate = self;
     tabMatchListVIew.dataSource = self;
@@ -68,6 +76,7 @@
     }
 
     schemeDetail = [[JCZQSchemeItem alloc]initWith:infoArray];
+    [self setSchemeStateImg];
     if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) {
         heightZhifuView.constant = 60;
     }else{

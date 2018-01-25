@@ -45,6 +45,11 @@
     
     if ([model.costType isEqualToString:@"CASH"]) {
         labSchemeInfo.text = @"方案状态";
+        if ([model.ticketCount integerValue] == 0) {
+             labTicketCount.text = @"";
+        }else{
+        labTicketCount.text = [NSString stringWithFormat:@"出票%@/%@单",model.printCount,model.ticketCount];
+        }
         labTicketCount.text = [NSString stringWithFormat:@"出票%@/%@单",model.printCount,model.ticketCount];
     }else{
         labSchemeInfo.text = @"方案状态";
