@@ -30,23 +30,13 @@
     [super viewDidLoad];
     page = 1;
     [self setTableView];
-    [self getJczqShortcut];
+    [self loadNewData];
     [self setTableViewLoadRefresh];
 }
 
 -(void)setTableViewLoadRefresh{
     
-    _tabCollectMatchList.mj_footer = [MJRefreshAutoStateFooter footerWithRefreshingBlock:^{
-        page ++ ;
-        [self getJczqShortcut];
-        [_tabCollectMatchList reloadData];
-    }];
-    
-    _tabCollectMatchList.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        page = 1;
-        [self getJczqShortcut];
-        [_tabCollectMatchList reloadData];
-    }];
+    [UITableView refreshHelperWithScrollView:_tabCollectMatchList target:self loadNewData:@selector(loadNewData) loadMoreData:@selector(loadMoreData) isBeginRefresh:NO];
 }
 
 -(void)setTableView{
@@ -58,15 +48,20 @@
     [_tabCollectMatchList reloadData];
 }
 //{"cardCode":"xxxx","page":"xxx","pageSize":"xxx"}
--(void)getJczqShortcut{
-    
+-(void)loadMoreData{
+    page ++;
     self.lotteryMan.delegate = self ;
-    [self.lotteryMan getCollectedMatchList:@{@"cardCode":self.curUser.cardCode,@"page":@(page),@"pageSize":@"10"}];
+    [self.lotteryMan getCollectedMatchList:@{@"cardCode":self.curUser.cardCode,@"page":@(page),@"pageSize":@(KpageSize)}];
+}
+
+-(void)loadNewData{
+    page =  1;
+    self.lotteryMan.delegate = self ;
+    [self.lotteryMan getCollectedMatchList:@{@"cardCode":self.curUser.cardCode,@"page":@(page),@"pageSize":@(KpageSize)}];
 }
 
 -(void)gotCollectedMatchList:(NSArray *)infoArray errorMsg:(NSString *)msg{
-    [self.tabCollectMatchList.mj_header endRefreshing];
-    [self.tabCollectMatchList.mj_footer endRefreshing];
+    [_tabCollectMatchList tableViewEndRefreshCurPageCount:infoArray.count];
     if (infoArray == nil) {
         [self showPromptText:msg hideAfterDelay:1.7];
         return;
@@ -123,7 +118,7 @@
 -(void)collectedMatch:(BOOL)isSuccess errorMsg:(NSString *)msg andIsSelect:(BOOL)isSelect{
     if (isSuccess) {
         [self showPromptText:@"已取消收藏" hideAfterDelay:1.7];
-        [self getJczqShortcut];
+        [self loadNewData];
     }
 }
 

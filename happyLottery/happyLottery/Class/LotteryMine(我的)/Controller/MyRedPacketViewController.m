@@ -47,57 +47,29 @@
     listUseRedPacketArray = [[NSMutableArray alloc]init];
     listUnUseRedPacketArray = [[NSMutableArray alloc]init];
     r = [[RedPacket alloc]init];
-   // [self getRedPacketByStateClient:@"true"];
-    page=1;
+    
+     [self initRefresh1];
+    [self initRefresh2];
     if ( self.segment.selectedSegmentIndex == 0) {
         
-        [self initRefresh1];
-        
+       
+        [self loadTrueNewData];
         self.tableView1.hidden = NO;
         self.tableView2.hidden = YES;
     }else  if (self.segment.selectedSegmentIndex == 1) {
         
-        [self initRefresh2];
+        [self loadFalseNewData];
         self.tableView2.hidden = NO;
         self.tableView1.hidden = YES;
     }
 }
 -(void)initRefresh1{
-    __weak typeof(self) weakSelf = self;
     
-    // 设置回调（一旦进入刷新状态就会调用这个refreshingBlock）
-    self.tableView1.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        page=1;
-        [weakSelf getRedPacketByStateClient:@"true"];
-        [self.tableView1.mj_header endRefreshing];
-    }];
-    self.tableView1.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        page++;
-        ///[self.tableView1.mj_footer beginRefreshing];
-        [weakSelf getRedPacketByStateClient:@"true"];
-        
-    }];
-    // 马上进入刷新状态
-    [self.tableView1.mj_header beginRefreshing];
+    [UITableView refreshHelperWithScrollView:self.tableView1 target:self loadNewData:@selector(loadTrueNewData) loadMoreData:@selector(loadTrueMoreData) isBeginRefresh:NO];
+
 }
 -(void)initRefresh2{
-    __weak typeof(self) weakSelf = self;
-    
-    self.tableView2.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        page=1;
-        [weakSelf getRedPacketByStateClient:@"false"];
-        [self.tableView2.mj_header endRefreshing];
-    }];
-    self.tableView2.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        page++;
-        //[self.tableView2.mj_header beginRefreshing];
-        [weakSelf getRedPacketByStateClient:@"false"];
-        
-    }];
-    
-    // 马上进入刷新状态
-    
-    [self.tableView2.mj_header beginRefreshing];
+   [UITableView refreshHelperWithScrollView:self.tableView2 target:self loadNewData:@selector(loadFalseNewData) loadMoreData:@selector(loadFalseMoreData) isBeginRefresh:NO];
 }
 
 - (IBAction)segmentClick:(id)sender {
@@ -109,18 +81,18 @@
             self.tableView2.hidden=YES;
             [listUnUseRedPacketArray removeAllObjects];
             [listUseRedPacketArray removeAllObjects];
-            page=1;
             
-            [self initRefresh1];
+            
+            [self loadTrueNewData];
              break;
         case 1:
             self.tableView2.hidden=NO;
             self.tableView1.hidden=YES;
             [listUnUseRedPacketArray removeAllObjects];
             [listUseRedPacketArray removeAllObjects];
-            page=1;
             
-            [self initRefresh2];
+            
+            [self loadFalseNewData];
              break;
         default:
             break;
@@ -131,18 +103,10 @@
     
     if (success == YES && redPacketInfo != nil) {
         
-        if (redPacketInfo.count != 10) {
-            if (self.segment.selectedSegmentIndex == 0) {
-                [self.tableView1.mj_footer endRefreshingWithNoMoreData];
-            }else{
-                [self.tableView2.mj_footer endRefreshingWithNoMoreData];
-            }
+        if (self.segment.selectedSegmentIndex == 0) {
+            [self.tableView1 tableViewEndRefreshCurPageCount:redPacketInfo.count];
         }else{
-            if (self.segment.selectedSegmentIndex == 0) {
-                [self.tableView1.mj_footer endRefreshing];
-            }else{
-                [self.tableView2.mj_footer endRefreshing];
-            }
+            [self.tableView2 tableViewEndRefreshCurPageCount:redPacketInfo.count];
         }
         
         UITableView *itemTableView;
@@ -246,7 +210,24 @@
     
 }
 
--(void)getRedPacketByStateClient:(NSString*)isValid{
+-(void)loadTrueNewData{
+    [self getRedPacketNewData:@"true"];
+}
+
+-(void)loadFalseNewData{
+    [self getRedPacketNewData:@"false"];
+}
+
+-(void)loadTrueMoreData{
+    [self getRedPacketMoreData:@"true"];
+}
+
+-(void)loadFalseMoreData{
+    [self getRedPacketMoreData:@"false"];
+}
+
+-(void)getRedPacketMoreData:(NSString*)isValid{
+    page++;
     NSDictionary *Info;
     @try {
          NSString *pagestr=[NSString stringWithFormat:@"%d",page];
@@ -254,14 +235,33 @@
         Info = @{@"cardCode":cardCode,
                  @"isValid":isValid,
                  @"page":pagestr,
-                 @"pageSize":@"10"
+                 @"pageSize":@(KpageSize)
                  };
         
     } @catch (NSException *exception) {
-       return;
+        return;
     }
         [self.memberMan getRedPacketByStateSms:Info];
- 
+
+}
+
+-(void)getRedPacketNewData:(NSString*)isValid{
+    page = 1;
+    NSDictionary *Info;
+    @try {
+        NSString *pagestr=[NSString stringWithFormat:@"%d",page];
+        NSString *cardCode = self.curUser.cardCode;
+        Info = @{@"cardCode":cardCode,
+                 @"isValid":isValid,
+                 @"page":pagestr,
+                 @"pageSize":@(KpageSize)
+                 };
+        
+    } @catch (NSException *exception) {
+        return;
+    }
+        [self.memberMan getRedPacketByStateSms:Info];
+
 }
 
 -(void)openRedPacketClient{
@@ -312,6 +312,7 @@
     //            WIN_CHANNEL("中奖渠道");
     RedPacket *redPacket = [[RedPacket alloc]init];
     if (tableView ==self.tableView1) {
+        
         static NSString *CellIdentifier = @"TabViewCell1";
         cell= [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {

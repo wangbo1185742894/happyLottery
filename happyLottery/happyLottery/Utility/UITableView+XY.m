@@ -216,6 +216,35 @@ static NSString * const kXYTableViewPropertyInitFinish = @"kXYTableViewPropertyI
     NSLog(@"TableView + XY 视图正常销毁");
 }
 
++(void)refreshHelperWithScrollView:(UIScrollView *)scrollView target:(id)target loadNewData:(SEL)loadNewData loadMoreData:(SEL)loadMoreData isBeginRefresh:(BOOL)beginRefreshing{
+    
+    if (loadNewData) {
+        
+        MJRefreshNormalHeader *mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:target refreshingAction:loadNewData];
+        mj_header.automaticallyChangeAlpha = YES;
+        
+        if (beginRefreshing) {
+        
+            [mj_header beginRefreshing];
+        }
+        
+        scrollView.mj_header = mj_header;
+    }
+    if (loadMoreData) {
+        
+        MJRefreshBackNormalFooter *mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:target refreshingAction:loadMoreData ];
+        mj_footer.automaticallyChangeAlpha = YES;
+        scrollView.mj_footer = mj_footer;
+    }
+}
 
+-(void)tableViewEndRefreshCurPageCount:(NSInteger )count{
+    [self.mj_header endRefreshing];
+    if (count == KpageSize) {
+        [self.mj_footer endRefreshing];
+    }else{
+        [self.mj_footer endRefreshingWithNoMoreData];
+    }
+}
 
 @end

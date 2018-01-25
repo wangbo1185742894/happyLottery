@@ -37,29 +37,21 @@
     
     
     self.lotteryMan.delegate = self;
+    [UITableView refreshHelperWithScrollView:self.tabListDetail target:self loadNewData:@selector(loadNewData) loadMoreData:@selector(loadMoreData) isBeginRefresh:NO];
     
-    self.tabListDetail.mj_header  = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        
-        
-        self.page = 1;
-        [self loadData];
-        [self.tabListDetail.mj_header endRefreshing];
-    }];
-    
-    self.tabListDetail.mj_footer  = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        self.page ++;
-        [self loadData];
-        [self.tabListDetail.mj_footer endRefreshing];
-    }];
-    
-    [self loadData];
+    [self loadNewData];
 }
 
--(void)loadData{
-    [self.lotteryMan getJczqTicketOrderDetail:@{@"schemeNo":self.schemeNO,@"page":@(_page),@"pageSize":@(10)}];
+-(void)loadNewData{
+    [self.lotteryMan getJczqTicketOrderDetail:@{@"schemeNo":self.schemeNO,@"page":@(_page),@"pageSize":@(KpageSize)}];
+}
+
+-(void)loadMoreData{
+    [self.lotteryMan getJczqTicketOrderDetail:@{@"schemeNo":self.schemeNO,@"page":@(_page),@"pageSize":@(KpageSize)}];
 }
 
 -(void)gotJczqTicketOrderDetail:(NSArray *)infoArray errorMsg:(NSString *)msg{
+    [self.tabListDetail tableViewEndRefreshCurPageCount:infoArray.count];
     if (infoArray == nil || infoArray .count == 0) {
         [self showPromptText:msg hideAfterDelay:1.7];
         return;

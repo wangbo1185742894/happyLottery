@@ -284,8 +284,7 @@
 
 - (void)gotListByRecScheme:(NSArray *)infoArr errorMsg:(NSString *)errorMsg{
     [self hideLoadingView];
-//    [self.SchemeCreateTableView.mj_footer endRefreshing];
-//    [self.SchemeCreateTableView.mj_header endRefreshing];
+
     if (infoArr == nil) {
         if (self.dataArr != nil ) {
             [self.dataArr removeAllObjects];
@@ -392,25 +391,5 @@
     self.transaction.betCost = self.transaction.betCount * 2 * self.transaction.beiTou;
 }
 
-//-(void)gotLotteryCurRoundTimeout {
-//    [self hideLoadingView];
-//    [self showPromptText:requestTimeOut hideAfterDelay:3.0];
-//
-//}
-//
-//-(void)setTableViewLoadRefresh{
-//
-//    self.SchemeCreateTableView.mj_footer = [MJRefreshAutoStateFooter footerWithRefreshingBlock:^{
-//
-//        page ++;
-//        [self loadData];
-//    }];
-//
-//    self.SchemeCreateTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-//
-//        page = 0;
-//
-//        [self loadData];
-//    }];
-//}
+
 @end
