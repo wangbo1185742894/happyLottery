@@ -654,14 +654,16 @@
                     [openRedpacketButton setBackgroundImage:[UIImage imageNamed:@"redpacketKong.png"] forState:UIControlStateNormal];
                     goRedPacket.hidden=NO;
                     redpacketLab.hidden=NO;
-                   
+                    NSString *s=[NSString stringWithFormat:@"%lu",(unsigned long)listUseRedPacketArray.count ];
+                     redpacketLab.text=[NSString stringWithFormat:@"恭喜您获得%@个红包！",s];
                 }else if (listUseRedPacketArray.count==1) {
                     
                     
                     
-                    [openRedpacketButton setBackgroundImage:[UIImage imageNamed:@"redpacket.png"] forState:UIControlStateNormal];
+                    [openRedpacketButton setBackgroundImage:[UIImage imageNamed:@"one_redpacket.png"] forState:UIControlStateNormal];
                     goRedPacket.hidden=YES;
-                    redpacketLab.hidden=YES;
+                    redpacketLab.hidden=NO;
+                    redpacketLab.text=@"恭喜您获得一个红包！";
                     r =listUseRedPacketArray[0];
                    
                 }

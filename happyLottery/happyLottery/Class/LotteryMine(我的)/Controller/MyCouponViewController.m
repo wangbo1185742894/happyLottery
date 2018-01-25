@@ -139,7 +139,7 @@
                     
                     NSArray *array =couponInfo ;
                    
-                        
+                          [listUseCouponArray removeAllObjects];
                         if (page == 1) {
                             [listUseCouponArray removeAllObjects];
                              if (array.count>0) {

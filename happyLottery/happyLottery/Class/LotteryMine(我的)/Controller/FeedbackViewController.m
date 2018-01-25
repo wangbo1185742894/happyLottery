@@ -159,6 +159,7 @@
         
     }else{
          self.commitButton.userInteractionEnabled = YES;
+         [self.commitButton setBackgroundColor: SystemGreen];
     }
     
 }

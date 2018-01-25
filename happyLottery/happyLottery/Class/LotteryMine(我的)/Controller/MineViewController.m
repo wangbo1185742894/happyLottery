@@ -180,7 +180,7 @@
     label.frame =CGRectMake(25, 0,10, 10);
     label.layer.cornerRadius = label.bounds.size.width/2;
     label.layer.masksToBounds = YES;
-    
+    label.hidden=YES;
  
     label.font = [UIFont systemFontOfSize:7];
     label.textAlignment = NSTextAlignmentCenter;
