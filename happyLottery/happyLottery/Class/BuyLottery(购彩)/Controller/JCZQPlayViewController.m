@@ -533,7 +533,7 @@
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (_matchArray[indexPath.section][indexPath.row].isShow == YES) {
+    if (_showArray[indexPath.section][indexPath.row].isShow == YES) {
         return 230;
     }else{
         
