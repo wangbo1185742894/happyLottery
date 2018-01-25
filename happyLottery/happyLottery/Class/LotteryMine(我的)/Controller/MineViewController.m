@@ -54,7 +54,7 @@
     [super viewWillAppear:YES];
     if (self.curUser.isLogin==YES) {
         [self updateMemberClinet];
-        [self searchNoticeDB];
+        [self searchSystemDB];
          [self getRedPacketByStateClient:@"true"];
         [self CheckFeedBackRedNumClient];
     } else {
@@ -67,6 +67,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.viewControllerNo = @"A201";
+      num=0;
     self.memberMan.delegate = self;
     listUseRedPacketArray = [[NSMutableArray alloc]init];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(actionUserLoginSuccess:) name:NotificationNameUserLogin object:nil];
@@ -77,41 +78,13 @@
     _tableview.backgroundColor = [UIColor clearColor];
     _tableview.delegate = self;
     _tableview.dataSource = self;
-    
+  
     [self noticeCenterSet];
     
     [_tableview reloadData];
 }
 
--(void)searchNoticeDB{
-    NSMutableArray *array = [NSMutableArray array];
-    // 1.查询数据
-    if ([self.fmdb open]) {
-        //        FMResultSet *rs = [db executeQuery:@"select * from vcUserPushMsg ;"];
-        //    FMResultSet *rs = [self.fmdb executeQuery:@"select * from vcUserPushMsg"];
-        // 2.遍历结果集
-        
-        FMResultSet*  rs = [self.fmdb executeQuery:@"select * from vcUserPushMsg where isread=?",@"0"];
-        
-        while (rs.next) {
-            Notice *notice =  [[Notice alloc] init];
-            notice.title = [rs stringForColumn:@"title"];
-            notice.content = [rs stringForColumn:@"content"];
-            notice.cardcode = [rs stringForColumn:@"cardcode"];
-            notice.endTime = [rs stringForColumn:@"msgTime"];
-            //            [self goImage:student.photo];
-            [array addObject: notice];
-        }
-        num = array.count;
-        if (num==0) {
-            label.hidden=YES;
-        }else{
-             label.hidden=NO;
-        }
-     
-        //    }];
-    }
-}
+
 
 -(void)notLogin{
     [self.loginBtn setTitle:@"登录/注册" forState:UIControlStateNormal];
@@ -208,8 +181,8 @@
     label.layer.cornerRadius = label.bounds.size.width/2;
     label.layer.masksToBounds = YES;
     
-    label.text = [NSString stringWithFormat:@"%ld",num];
-    label.font = [UIFont systemFontOfSize:10];
+ 
+    label.font = [UIFont systemFontOfSize:7];
     label.textAlignment = NSTextAlignmentCenter;
     label.backgroundColor = [UIColor redColor];
     label.textColor = [UIColor whiteColor];
@@ -430,6 +403,31 @@
             vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController: vc animated: YES];
         }
+    }
+}
+-(void)searchSystemDB{
+    num=0;
+    // 1.查询数据
+    if ([self.fmdb open]) {
+        //        FMResultSet *rs = [db executeQuery:@"select * from vcUserPushMsg ;"];
+        //    FMResultSet *rs = [self.fmdb executeQuery:@"select * from vcUserPushMsg"];
+        // 2.遍历结果集
+        
+        FMResultSet*  rs = [self.fmdb executeQuery:@"select * from SystemNotice where isread=?",@"0"];
+   
+        
+        while (rs.next) {
+            num++;
+        }
+        [self.fmdb close];
+     
+        //    }];
+    }
+    if (num==0) {
+        label.hidden=YES;
+    }else{
+        label.hidden=NO;
+        label.text = [NSString stringWithFormat:@"%ld",num];
     }
 }
 

@@ -585,6 +585,8 @@
 		F93AC8121FFDC63B003DF05C /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F93AC8111FFDC63B003DF05C /* libsqlite3.tbd */; };
 		F93AC8161FFDF035003DF05C /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F93AC8141FFDF035003DF05C /* AboutViewController.m */; };
 		F93AC8171FFDF035003DF05C /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F93AC8151FFDF035003DF05C /* AboutViewController.xib */; };
+		F94027DF2018929700CF7A2B /* redpacketKong@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94027DD2018929600CF7A2B /* redpacketKong@2x.png */; };
+		F94027E02018929700CF7A2B /* redpacketKong@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94027DE2018929700CF7A2B /* redpacketKong@3x.png */; };
 		F9418EF6201038DF00454109 /* logo120@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9418EF4201038DE00454109 /* logo120@2x.png */; };
 		F9418EF7201038DF00454109 /* logo120@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9418EF5201038DF00454109 /* logo120@3x.png */; };
 		F9418F432010991200454109 /* MOBFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9418F272010991200454109 /* MOBFoundation.framework */; };
@@ -1642,6 +1644,8 @@
 		F93AC8131FFDF035003DF05C /* AboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		F93AC8141FFDF035003DF05C /* AboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		F93AC8151FFDF035003DF05C /* AboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
+		F94027DD2018929600CF7A2B /* redpacketKong@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redpacketKong@2x.png"; sourceTree = "<group>"; };
+		F94027DE2018929700CF7A2B /* redpacketKong@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redpacketKong@3x.png"; sourceTree = "<group>"; };
 		F9418EF4201038DE00454109 /* logo120@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo120@2x.png"; sourceTree = "<group>"; };
 		F9418EF5201038DF00454109 /* logo120@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo120@3x.png"; sourceTree = "<group>"; };
 		F9418F272010991200454109 /* MOBFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOBFoundation.framework; sourceTree = "<group>"; };
@@ -2536,8 +2540,6 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				F95BC7D020172AF6006D6243 /* redpacket_open@2x.png */,
-				F95BC7D120172AF6006D6243 /* redpacket_open@3x.png */,
 				F9FDFAEE2013223E0029ACC7 /* msg_come.mp3 */,
 				F9C3BA1920088E2600916F3C /* feedback */,
 				F94770B82007065F0091729E /* Introduction to football games Html */,
@@ -3275,6 +3277,10 @@
 		F90FCD601FF380F000BD807C /* RedPacket */ = {
 			isa = PBXGroup;
 			children = (
+				F94027DD2018929600CF7A2B /* redpacketKong@2x.png */,
+				F94027DE2018929700CF7A2B /* redpacketKong@3x.png */,
+				F95BC7D020172AF6006D6243 /* redpacket_open@2x.png */,
+				F95BC7D120172AF6006D6243 /* redpacket_open@3x.png */,
 				F92D03D72005A8EF00C26E7A /* lock_cannot@2x.png */,
 				F92D03D92005A8EF00C26E7A /* lock_cannot@3x.png */,
 				F92D03D62005A8EE00C26E7A /* unlock_cannot@3x.png */,
@@ -3972,6 +3978,7 @@
 				2D8CC0031FF3868A00CC367F /* youkuangbtnback@2x.png in Resources */,
 				2D8CBFD21FF3769F00CC367F /* YuceSchemeDetailViewController.xib in Resources */,
 				2D5171C62008654800C3CD7F /* icon_zhifubao@3x.png in Resources */,
+				F94027E02018929700CF7A2B /* redpacketKong@3x.png in Resources */,
 				2D739C951FE8A4DE00264044 /* JCZQSelectAllPlayTypeVIew.xib in Resources */,
 				2D0EEA922013280500B0769C /* button_trophy@2x.png in Resources */,
 				2D8CC0101FF487CF00CC367F /* WBHomeJCYCViewController.xib in Resources */,
@@ -4412,6 +4419,7 @@
 				2D4B1E3A1FDE717C0034B708 /* newBack@2x.png in Resources */,
 				2D739CD61FEB44F400264044 /* rangqiufu@3x.png in Resources */,
 				2D628B571FECCE4C0013D0E1 /* TZSelectMatchCell.xib in Resources */,
+				F94027DF2018929700CF7A2B /* redpacketKong@2x.png in Resources */,
 				F94AA9D31FEB66FF0021B980 /* WithdrawalsViewController.xib in Resources */,
 				2D4B1E841FDF684E0034B708 /* wode_select@3x.png in Resources */,
 				F957C2021FE3B28D0090B19B /* set@2x.png in Resources */,

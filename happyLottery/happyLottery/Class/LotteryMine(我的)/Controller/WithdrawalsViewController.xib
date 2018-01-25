@@ -11,9 +11,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WithdrawalsViewController">
             <connections>
+                <outlet property="addBankCard" destination="Oph-js-7L0" id="7Gw-Bs-MUT"/>
                 <outlet property="backView" destination="7kM-RY-IjU" id="51A-uf-3tZ"/>
+                <outlet property="backViewBottom" destination="7sn-4V-6SQ" id="AtU-9u-iPA"/>
                 <outlet property="bankBtn" destination="0Pg-1N-0Pf" id="1QE-61-Czy"/>
                 <outlet property="bottom" destination="RT3-BG-0Wl" id="aej-TQ-PUz"/>
+                <outlet property="cancelBUtton" destination="jRC-7V-nvo" id="RGQ-J0-9qC"/>
                 <outlet property="commitBtn" destination="bUA-00-VZf" id="ZDg-xt-tfN"/>
                 <outlet property="nameLab" destination="X80-5a-cfc" id="yTg-Mn-11s"/>
                 <outlet property="retainLab" destination="sDy-8f-ej1" id="9i6-8h-3cQ"/>
@@ -163,7 +166,7 @@
 
 为了防止一切洗钱行为，投必中做出提现规定：即网上充值金额的70%可提现，30%只能用于购彩，不可提现。
 
-提现申请成功后，提现资金最快可1小时到账，节假日期间体现业务正常进行。</string>
+提现申请成功后，提现资金最快可1小时到账，节假日期间提现业务正常进行。</string>
                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -216,22 +219,65 @@
                                 <constraint firstAttribute="width" constant="23" id="giw-5Y-U58"/>
                             </constraints>
                         </imageView>
-                        <view hidden="YES" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7kM-RY-IjU">
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7kM-RY-IjU">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                             <subviews>
+                                <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="baL-NQ-70i">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </button>
                                 <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8hT-zt-wca">
-                                    <rect key="frame" x="0.0" y="327" width="375" height="243"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <rect key="frame" x="0.0" y="206" width="375" height="238"/>
+                                    <color key="backgroundColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="243" id="COU-gX-hLx"/>
+                                        <constraint firstAttribute="height" constant="238" id="COU-gX-hLx"/>
                                     </constraints>
                                 </tableView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jRC-7V-nvo">
+                                    <rect key="frame" x="0.0" y="520" width="375" height="46"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="46" id="gOP-aL-AiX"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="取消">
+                                        <color key="titleColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="cancelButtonClick:" destination="-1" eventType="touchUpInside" id="47A-lG-j9r"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oph-js-7L0">
+                                    <rect key="frame" x="0.0" y="445" width="375" height="46"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="46" id="7Cr-jb-gT4"/>
+                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="E5N-Fj-hvE"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="点击添加银行卡">
+                                        <color key="titleColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="addBankCardClick:" destination="-1" eventType="touchUpInside" id="esc-YN-RhV"/>
+                                        <action selector="cancelButtonClick:" destination="-1" eventType="touchUpInside" id="g3R-Vz-ez7"/>
+                                    </connections>
+                                </button>
                             </subviews>
-                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
+                                <constraint firstItem="jRC-7V-nvo" firstAttribute="leading" secondItem="7kM-RY-IjU" secondAttribute="leading" id="1kh-GW-O4S"/>
                                 <constraint firstItem="8hT-zt-wca" firstAttribute="leading" secondItem="7kM-RY-IjU" secondAttribute="leading" id="1nh-C9-5rh"/>
-                                <constraint firstAttribute="bottom" secondItem="8hT-zt-wca" secondAttribute="bottom" constant="33" id="7sn-4V-6SQ"/>
+                                <constraint firstAttribute="trailing" secondItem="Oph-js-7L0" secondAttribute="trailing" id="2m2-x3-xIc"/>
+                                <constraint firstAttribute="bottom" secondItem="8hT-zt-wca" secondAttribute="bottom" constant="159" id="7sn-4V-6SQ"/>
+                                <constraint firstAttribute="trailing" secondItem="baL-NQ-70i" secondAttribute="trailing" id="8Uz-fm-X7M"/>
+                                <constraint firstItem="baL-NQ-70i" firstAttribute="leading" secondItem="7kM-RY-IjU" secondAttribute="leading" id="H8X-mg-5JM"/>
+                                <constraint firstItem="Oph-js-7L0" firstAttribute="top" secondItem="8hT-zt-wca" secondAttribute="bottom" constant="1" id="NYB-dW-myh"/>
+                                <constraint firstAttribute="trailing" secondItem="jRC-7V-nvo" secondAttribute="trailing" id="O3j-zJ-G13"/>
+                                <constraint firstAttribute="bottom" secondItem="baL-NQ-70i" secondAttribute="bottom" id="YI3-78-eIm"/>
                                 <constraint firstAttribute="trailing" secondItem="8hT-zt-wca" secondAttribute="trailing" id="nKx-0K-8L2"/>
+                                <constraint firstItem="Oph-js-7L0" firstAttribute="leading" secondItem="7kM-RY-IjU" secondAttribute="leading" id="rRP-xE-sQe"/>
+                                <constraint firstItem="jRC-7V-nvo" firstAttribute="top" secondItem="8hT-zt-wca" secondAttribute="bottom" constant="76" id="xdD-KZ-ynp"/>
+                                <constraint firstItem="baL-NQ-70i" firstAttribute="top" secondItem="7kM-RY-IjU" secondAttribute="top" id="yo1-mb-3Hu"/>
                             </constraints>
                         </view>
                     </subviews>
