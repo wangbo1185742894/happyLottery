@@ -130,8 +130,13 @@
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    
-    return 3;
+    if ([schemeDetail.costType isEqualToString:@"CASH"]) {
+        return 3;
+
+    }else{
+        
+        return 2;
+    }
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

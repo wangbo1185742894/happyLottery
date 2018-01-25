@@ -253,6 +253,8 @@
     if (success) {
         [self showPromptText:@"签到成功" hideAfterDelay:1.7];
         self.signInBtn.enabled = NO;
+    }else{
+        [self showPromptText:msg hideAfterDelay:1.7];
     }
 }
 

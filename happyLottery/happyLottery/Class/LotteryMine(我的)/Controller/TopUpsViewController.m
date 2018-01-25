@@ -45,7 +45,12 @@
     }
     self.txtChongZhiJIne.delegate = self;
     [self getListByChannel];
-    [self setItem:nil];
+    for (UIButton *selectItem in _chongZhiSelectItem) {
+        if (selectItem.tag == 100) {
+             [self setItem:selectItem];
+        }
+    }
+   
 }
 -(void)setTableView{
     self.tabChannelList.dataSource =self;
@@ -124,6 +129,12 @@
         [self showPromptText:@"请选择支付方式" hideAfterDelay:1.7];
         return;
     }
+    
+    if ([self.txtChongZhiJIne.text doubleValue] <= 0) {
+        [self showPromptText:@"请输入合法的金额" hideAfterDelay:1.7];
+        return;
+    }
+    
     @try {
         NSString *cardCode = self.curUser.cardCode;
         NSString *checkCode = self.txtChongZhiJIne.text;
@@ -169,6 +180,7 @@
             [channelList addObject:model];
         }
     }
+    [channelList firstObject].isSelect = YES;
     self.tabPayListHeight.constant = channelList.count * self.tabChannelList.rowHeight;
     [self.tabChannelList reloadData];
 }
@@ -227,7 +239,7 @@
         if ([[UIApplication sharedApplication] canOpenURL: [NSURL URLWithString:@"alipay://"]] == YES) {
             [[UIApplication sharedApplication] openURL:request.URL];
         }else{
-            [self showPromptText:@"装支付宝去" hideAfterDelay:1.7];
+            [self showPromptText:@"亲，你好像没装支付宝！" hideAfterDelay:1.7];
         }
     }
     
