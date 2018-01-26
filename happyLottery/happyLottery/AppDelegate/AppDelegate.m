@@ -87,6 +87,29 @@ static SystemSoundID shake_sound_male_id = 0;
     //获取自定义消息推送内容
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
     [defaultCenter addObserver:self selector:@selector(networkDidReceiveMessage:) name:kJPFNetworkDidReceiveMessageNotification object:nil];
+
+    if (launchOptions) {
+        NSDictionary * remoteNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+        //这个判断是在程序没有运行的情况下收到通知，点击通知跳转页面
+//        if (remoteNotification) {
+//            NSLog(@"推送消息==== %@",remoteNotification);
+//            //NSLog(@"尼玛的推送消息呢===%@",userInfo);
+//            // 取得 APNs 标准信息内容，如果没需要可以不取
+//            NSDictionary *aps = [remoteNotification valueForKey:@"aps"];
+//            NSString *content = [aps valueForKey:@"alert"]; //推送显示的内容
+//            NSInteger badge = [[aps valueForKey:@"badge"] integerValue];
+//            NSString *sound = [aps valueForKey:@"sound"]; //播放的声音
+//            // 取得自定义字段内容，userInfo就是后台返回的JSON数据，是一个字典
+//            NSString *appCode =  [remoteNotification valueForKey:@"pageCode"];
+//            //    [APService handleRemoteNotification:userInfo];
+//            
+//            
+//       
+//                [self goToYunshiWithInfo:appCode];
+//          
+//        }
+    }
+
       [self initShareSDK];
     return YES;
 }
@@ -370,6 +393,7 @@ static SystemSoundID shake_sound_male_id = 0;
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    
 }
 //注册APNs成功并上报DeviceToken
 - (void)application:(UIApplication *)application
@@ -419,16 +443,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     } else {
         // Fallback on earlier versions
     }
-    NSLog(@"尼玛的推送消息呢===%@",userInfo);
-    // 取得 APNs 标准信息内容，如果没需要可以不取
-    NSDictionary *aps = [userInfo valueForKey:@"aps"];
-    NSString *content = [aps valueForKey:@"alert"]; //推送显示的内容
-    NSInteger badge = [[aps valueForKey:@"badge"] integerValue];
-    NSString *sound = [aps valueForKey:@"sound"]; //播放的声音
-    // 取得自定义字段内容，userInfo就是后台返回的JSON数据，是一个字典
-    NSString *appCode =  [userInfo valueForKey:@"pageCode"];
-    //    [APService handleRemoteNotification:userInfo];
-      [self goToYunshiWithInfo:appCode];
+   
     completionHandler();  // 系统要求执行这个方法
 }
 
@@ -465,9 +480,9 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         winPushView = [[ZhuiHaoStopPushVIew alloc]initWithFrame:[UIScreen  mainScreen].bounds];
         [winPushView refreshInfo:title andContent:content];
         [[UIApplication sharedApplication].keyWindow addSubview:winPushView];
-    }else{
-        [self goToYunshiWithInfo:pageCode];
+
     }
+
 }
 
 -(void)goToYunshiWithInfo:(NSString *)pageCode{
@@ -505,7 +520,12 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     }
     
     AppDelegate *delegate  = (AppDelegate*)[UIApplication sharedApplication].delegate;
-    [delegate.curNavVC pushViewController:baseVC animated:YES];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        UITabBarController *homebar = (UITabBarController *)_window.rootViewController;
+        delegate.curNavVC = (UINavigationController *)homebar.childViewControllers[homebar.selectedIndex];
+        [delegate.curNavVC pushViewController:baseVC animated:YES];
+    });
 }
 
 // log NSSet with UTF8
@@ -535,6 +555,36 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     // Required, iOS 7 Support
     [JPUSHService handleRemoteNotification:userInfo];
     completionHandler(UIBackgroundFetchResultNewData);
+    //    NSLog(@"%@",userInfo);
+    if (userInfo) {
+        NSLog(@"推送消息==== %@",userInfo);
+        //NSLog(@"尼玛的推送消息呢===%@",userInfo);
+        // 取得 APNs 标准信息内容，如果没需要可以不取
+        NSDictionary *aps = [userInfo valueForKey:@"aps"];
+        NSString *content = [aps valueForKey:@"alert"]; //推送显示的内容
+        NSInteger badge = [[aps valueForKey:@"badge"] integerValue];
+        NSString *sound = [aps valueForKey:@"sound"]; //播放的声音
+        // 取得自定义字段内容，userInfo就是后台返回的JSON数据，是一个字典
+        NSString *appCode =  [userInfo valueForKey:@"pageCode"];
+        //    [APService handleRemoteNotification:userInfo];
+       
+  
+    //判断应用是在前台还是后台
+    if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
+        
+        //第一种情况前台运行
+        NSString *apnCount = userInfo[@"aps"][@"alert"];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"推送信息" message:apnCount delegate:self cancelButtonTitle:@"查看" otherButtonTitles:@"取消", nil];
+        alert.delegate = self;
+        [alert show];
+        
+    }else{
+        
+        //第二种情况后台挂起时
+//        [[NSNotificationCenter defaultCenter]postNotificationName:KJPUSHNOT object:nil userInfo:_notDic];
+         [self goToYunshiWithInfo:appCode];
+    }
+    }
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {

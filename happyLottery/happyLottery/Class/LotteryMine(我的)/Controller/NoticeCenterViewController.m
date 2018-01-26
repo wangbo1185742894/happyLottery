@@ -224,7 +224,7 @@
         }
         if (listSystemNoticeArray.count > 0) {
                Notice *notice = [[Notice alloc]init];
-            long i=listSystemNoticeArray.count-indexPath.row;
+            long i=listSystemNoticeArray.count-indexPath.row-1;
             notice = listSystemNoticeArray[i];
             //cell.endImage.hidden = YES;
             cell.nameLab.text = notice.title;
