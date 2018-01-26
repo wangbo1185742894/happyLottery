@@ -7,10 +7,11 @@
 //
 
 #import "ConversionCodeViewController.h"
-#import "NNValidationCodeView.h"
 
-@interface ConversionCodeViewController ()<MemberManagerDelegate>
-@property (weak, nonatomic) IBOutlet NNValidationCodeView *codeview;
+
+@interface ConversionCodeViewController ()<MemberManagerDelegate,UITextFieldDelegate>
+
+@property (weak, nonatomic) IBOutlet UITextField *tfRecommCode;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottom;
 @property (weak, nonatomic) IBOutlet UIButton *commitButton;
@@ -23,22 +24,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"推荐码";
+    self.tfRecommCode.delegate = self;
     if ([self isIphoneX]) {
         self.top.constant = 88;
         self.bottom.constant = 34;
     }
     self.memberMan.delegate= self;
-    NNValidationCodeView *view = [[NNValidationCodeView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH-300)/2, 230, 300, 42) andLabelCount:8 andLabelDistance:0];
-    
-    //    NNValidationCodeView *view = [[NNValidationCodeView alloc] initWithFrame:CGRectMake(80, 100, 300, 45) andLabelCount:4 andLabelDistance:10];
-    [self.codeview addSubview:view];
-    //    view.changedColor = [UIColor yellowColor];
-    view.codeBlock = ^(NSString *codeString) {
-        self.shareCode = codeString;
-        NSLog(@"验证码:%@", codeString);
-    };
 }
 - (IBAction)commitBtnClick:(id)sender {
+    
+    self.shareCode = self.tfRecommCode.text;
+    
     if ([self.shareCode isEqualToString:@""]) {
            [self showPromptText: @"请输入推荐码！" hideAfterDelay: 1.7];
         return;
@@ -60,7 +56,7 @@
     } @catch (NSException *exception) {
      return;
     }
-        [self.memberMan upMemberShareSms:Info];
+    [self.memberMan upMemberShareSms:Info];
 
 }
 
@@ -86,14 +82,18 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if (textField.text.length + string.length > 8) {
+        return NO;
+        
+    }
+    
+    NSString * regex = @"^[A-Za-z0-9]";
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    return  [pred evaluateWithObject:string];
+    
 }
-*/
+
+
 
 @end

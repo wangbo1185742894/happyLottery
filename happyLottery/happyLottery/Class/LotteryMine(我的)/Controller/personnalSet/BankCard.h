@@ -19,5 +19,6 @@
 @property(nonatomic,strong)NSString *memberId;
 @property(nonatomic,strong)NSString *tempBankNumber;
 @property(nonatomic,strong)NSString *_id;
+@property(nonatomic,strong)NSString *useDefault;
 
 @end

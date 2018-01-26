@@ -62,6 +62,7 @@
     NSString *balanceStr = [NSString stringWithFormat:@"%lld元", balance];
     self.topUpsLab.text = balanceStr;
     self.nameLab.text = self.curUser.name;
+    [self getBankListClient];
 }
 
 -(void)withdrawSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
@@ -98,22 +99,28 @@
         for (id object in bankInfo) {
             NSLog(@"listBankArray=%@", object);
             BankCard *bankCards = [[BankCard alloc]initWith:object];
+            if ([bankCards.useDefault boolValue] == YES) {
+                bankCard = bankCards;
+                NSString *num =bankCard.bankNumber;
+                NSString *num4 = [num substringFromIndex:num.length- 4 ];
+                NSString *bank =  [NSString stringWithFormat:@"%@ (尾号%@)--%@",bankCard.bankName,num4,self.curUser.name];
+                [self.bankBtn setTitle:bank forState:UIControlStateNormal];
+            }
             [listBankArray addObject:bankCards];
         }
         if (listBankArray.count>0) {
-            self.tableView.hidden=NO;
-            self.backView.hidden = NO;
+        
             dispatch_async(dispatch_get_main_queue(), ^{
                   if (listBankArray.count==1) {
                       self.tvHeight.constant = 60;
                       self.tableView.scrollEnabled=NO;
                   }else{
                         self.tableView.scrollEnabled=YES;
-                       self.tvHeight.constant = listBankArray.count*44+20;
+                      self.tvHeight.constant = listBankArray.count*44+20 < KscreenHeight -200?listBankArray.count*44+20 : KscreenHeight -200;
                   }
              
             });
-            [self.tableView reloadData];
+
             self.commitBtn.enabled = YES;
         }else{
             self.tvHeight.constant = 0;
@@ -157,7 +164,9 @@
 }
 
 - (IBAction)bankBtnClick:(id)sender {
-    [self getBankListClient];
+    self.tableView.hidden=NO;
+    self.backView.hidden = NO;
+    [self.tableView reloadData];
   
 }
 - (IBAction)commitBtnClick:(id)sender {
@@ -254,6 +263,11 @@
         
     }
     BankCard* bankCards = listBankArray[indexPath.row];
+    if ([bankCards.useDefault boolValue] == YES) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }else{
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
     NSString *num =bankCards.bankNumber;
     NSString *num4 = [num substringFromIndex:num.length- 4 ];
     NSString *bank =  [NSString stringWithFormat:@"%@ (尾号%@)--%@",bankCards.bankName,num4,self.curUser.name];
