@@ -33,7 +33,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = titleStr;
+    
+    if (self.popTitle != nil) {
+        [self showPromptText:self.popTitle hideAfterDelay:2.0];
+    }
+    if (titleStr == nil) {
+        self.title = @"添加银行卡";
+    }else{
+        self.title = titleStr;
+    }
+    
     self.memberMan.delegate = self;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -74,11 +83,11 @@
             [self showPromptText: @"请输入真实姓名" hideAfterDelay: 1.7];
             return;
         }
-           [self bindNameClient];
+        [self bindNameClient];
     }
       NSString *bankname = self.getBankBtn.titleLabel.text;
-   if ([bankname isEqualToString:@"请选择开户行"]) {
-        [self showPromptText: @"请选择开户行" hideAfterDelay: 1.7];
+   if ([bankname isEqualToString:@"请选择开户银行"]) {
+        [self showPromptText: @"请选择开户银行" hideAfterDelay: 1.7];
         return;
     }
     
@@ -94,8 +103,9 @@
 
 -(void)bindNameSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     if ([msg isEqualToString:@"执行成功"]) {
-        //[self showPromptText: @"实名认证成功" hideAfterDelay: 1.7];
+        [self showPromptText: @"实名认证成功" hideAfterDelay: 1.7];
         self.curUser.name =_nameTextField.text;
+        _nameTextField.enabled = NO;
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
     }
@@ -106,7 +116,9 @@
     if ([msg isEqualToString:@"执行成功"]) {
         self.curUser.bankBinding =1;
         [self showPromptText: @"添加银行卡成功" hideAfterDelay: 1.7];
-        [self.navigationController popViewControllerAnimated:YES];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.7 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.navigationController popViewControllerAnimated:YES];
+        });
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
     }
@@ -205,12 +217,16 @@
     }
     
     NSString * regex;
-    if (textField == self.nameTextField ) {
-        regex = @"^[A-Za-z]";
-        
-    }else{
+    if (textField == self.bankCodeTextField ) {
+    
         regex = @"^[0-9]";
         
+    }
+    
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    BOOL isMatch = [pred evaluateWithObject:string];
+    if (isMatch == NO) {
+        return NO;
     }
     
     NSString *str = [NSString stringWithFormat:@"%@%@",textField.text,string];
@@ -247,10 +263,8 @@
           return YES;
     }
     
-    
-//    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
-//    BOOL isMatch = [pred evaluateWithObject:string];
-    return YES;
+   
+    return isMatch;
 }
 
 #pragma UITableViewDataSource methods
