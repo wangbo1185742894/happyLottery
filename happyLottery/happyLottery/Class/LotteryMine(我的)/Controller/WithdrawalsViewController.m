@@ -53,13 +53,19 @@
     passInput.delegate = self;
     listBankArray = [[NSMutableArray alloc]init];
     self.memberMan.delegate = self;
-    balance = [self.curUser.balance longLongValue];
-    long long notCash = [self.curUser.notCash longLongValue];
-    long long sendBalance = [self.curUser.sendBalance longLongValue];
-    long long total = balance+notCash+sendBalance;
-    NSString *totalStr = [NSString stringWithFormat:@"%lld元", total];
+    NSDecimalNumber *myDecimalObj1 = [[NSDecimalNumber alloc] initWithString:self.curUser.balance];
+    NSLog(@"myDecimalObj doubleValue=%6.2f",[myDecimalObj1 doubleValue]);
+    double balance = [myDecimalObj1 doubleValue];
+    NSDecimalNumber *myDecimalObj2 = [[NSDecimalNumber alloc] initWithString:self.curUser.notCash];
+    NSLog(@"myDecimalObj doubleValue=%6.2f",[myDecimalObj1 doubleValue]);
+    double notCash = [myDecimalObj2 doubleValue];
+    NSDecimalNumber *myDecimalObj3 = [[NSDecimalNumber alloc] initWithString:self.curUser.sendBalance];
+    NSLog(@"myDecimalObj doubleValue=%6.2f",[myDecimalObj3 doubleValue]);
+    double sendBalance = [myDecimalObj3 doubleValue];
+     double total = balance+notCash+sendBalance;
+    NSString *totalStr = [NSString stringWithFormat:@"%.2f元", total];
     self.retainLab.text = totalStr;
-    NSString *balanceStr = [NSString stringWithFormat:@"%lld元", balance];
+    NSString *balanceStr = [NSString stringWithFormat:@"%.2f元", balance];
     self.topUpsLab.text = balanceStr;
     self.nameLab.text = self.curUser.name;
     

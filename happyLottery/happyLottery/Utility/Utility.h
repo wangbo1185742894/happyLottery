@@ -44,6 +44,7 @@
 
 + (NSNumber *)stringToNumber:(NSString *)string;
 + (NSString *)NumberToString:(NSNumber *)number;
++(NSString*)getTheCorrectNum:(NSString*)tempString;
 @end
 
 @interface Utility (Date)
