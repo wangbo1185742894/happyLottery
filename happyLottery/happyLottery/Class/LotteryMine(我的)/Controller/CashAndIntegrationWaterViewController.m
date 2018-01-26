@@ -253,8 +253,10 @@
                 cell.image.image = [UIImage imageNamed:@"decrease"];
                 cell.priceLab.text = [NSString stringWithFormat:@"%@分",cashBoltter.amounts];
             }
-            float b=[cashBoltter.remBalance floatValue];
-            cell.retainLab.text =[NSString stringWithFormat:@"余额：%.2f",b];
+            NSDecimalNumber *myDecimalObj1 = [[NSDecimalNumber alloc] initWithString:cashBoltter.remBalance];
+            NSLog(@"myDecimalObj doubleValue=%6.2f",[myDecimalObj1 doubleValue]);
+          double remBalance = [myDecimalObj1 doubleValue];
+            cell.retainLab.text =[NSString stringWithFormat:@"余额:%.2f",remBalance];
         }
     } else if (tableView ==self.tabCashList) {
       cell= [tableView dequeueReusableCellWithIdentifier:CellIdentifier2];
@@ -279,7 +281,7 @@
             }
             float b=[cashBoltter.remBalance floatValue];
             
-            cell.retainLab.text =[NSString stringWithFormat:@"余额：%.2f",b];
+            cell.retainLab.text =[NSString stringWithFormat:@"余额:%.2f",b];
         }
     }
     

@@ -37,10 +37,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017-11-09 00：00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yx4-ap-Edo">
-                        <rect key="frame" x="155" y="40" width="149" height="21"/>
+                        <rect key="frame" x="173" y="40" width="132" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="cxX-r8-QbL"/>
-                            <constraint firstAttribute="width" constant="149" id="mLL-j9-e1p"/>
+                            <constraint firstAttribute="width" constant="132" id="mLL-j9-e1p"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
@@ -57,9 +57,8 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="余额 :1234567123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFa-Xh-bf2">
-                        <rect key="frame" x="69" y="40" width="118" height="21"/>
+                        <rect key="frame" x="69" y="40" width="119" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="118" id="dvP-Ae-zco"/>
                             <constraint firstAttribute="height" constant="21" id="uIm-A3-Hdd"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -74,10 +73,11 @@
                     <constraint firstItem="Xtc-wv-hdt" firstAttribute="leading" secondItem="i6B-iL-vZH" secondAttribute="trailing" constant="18" id="EbP-Ng-d2L"/>
                     <constraint firstItem="Xtc-wv-hdt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="EuE-kN-hfl"/>
                     <constraint firstItem="i6B-iL-vZH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="GK0-pq-Wb2"/>
+                    <constraint firstItem="yx4-ap-Edo" firstAttribute="leading" secondItem="dFa-Xh-bf2" secondAttribute="trailing" constant="-15" id="V72-d9-Bi3"/>
                     <constraint firstItem="PN2-VO-LRV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="ZQK-OB-hg3"/>
                     <constraint firstItem="yx4-ap-Edo" firstAttribute="baseline" secondItem="dFa-Xh-bf2" secondAttribute="baseline" id="kzx-I2-vAu"/>
                     <constraint firstItem="i6B-iL-vZH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="o1x-2a-4w4"/>
-                    <constraint firstAttribute="trailing" secondItem="yx4-ap-Edo" secondAttribute="trailing" constant="16" id="oNE-bb-Wwb"/>
+                    <constraint firstAttribute="trailing" secondItem="yx4-ap-Edo" secondAttribute="trailing" constant="15" id="oNE-bb-Wwb"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

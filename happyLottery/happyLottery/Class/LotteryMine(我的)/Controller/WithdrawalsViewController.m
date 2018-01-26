@@ -186,6 +186,11 @@
         return;
     }
     long long text =[self.withdrawTextField.text longLongValue];
+    if (text==0) {
+        [self showPromptText: @"取现金额大于0元！" hideAfterDelay: 3.7];
+        self.withdrawTextField.text=@"";
+        return;
+    }
     if (text>balance) {
         [self showPromptText: @"取现金额不能大于可用余额！" hideAfterDelay: 3.7];
         self.withdrawTextField.text=@"";
