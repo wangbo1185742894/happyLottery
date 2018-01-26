@@ -68,7 +68,7 @@
     NSString *balanceStr = [NSString stringWithFormat:@"%.2f元", balance];
     self.topUpsLab.text = balanceStr;
     self.nameLab.text = self.curUser.name;
-    [self getBankListClient];
+    
 }
 
 -(void)withdrawSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
@@ -80,6 +80,13 @@
     }
     
 }
+
+-(void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    [self getBankListClient];
+}
+
 - (IBAction)cancelButtonClick:(id)sender {
     self.backView.hidden=YES;
 }
@@ -115,7 +122,7 @@
             [listBankArray addObject:bankCards];
         }
         if (listBankArray.count>0) {
-        
+           [self.bankBtn setTitle:@"请选择银行卡" forState:UIControlStateNormal];
             dispatch_async(dispatch_get_main_queue(), ^{
                   if (listBankArray.count==1) {
                       self.tvHeight.constant = 60;
@@ -132,10 +139,9 @@
             self.tvHeight.constant = 0;
             self.tableView.hidden=YES;
             self.backView.hidden = YES;
-            //self.bankBtn.titleLabel.text=@"请前往银行卡页面添加银行卡";
-            [self.bankBtn setTitle:@"请前往银行卡页面添加银行卡" forState:UIControlStateNormal];
-            FirstBankCardSetViewController * pcVC = [[FirstBankCardSetViewController alloc]init];
-            [self.navigationController pushViewController:pcVC animated:YES];
+            
+            [self.bankBtn setTitle:@"请先添加银行卡" forState:UIControlStateNormal];
+    
         }
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
@@ -170,9 +176,15 @@
 }
 
 - (IBAction)bankBtnClick:(id)sender {
-    self.tableView.hidden=NO;
-    self.backView.hidden = NO;
-    [self.tableView reloadData];
+    if (listBankArray.count == 0) {
+        FirstBankCardSetViewController * pcVC = [[FirstBankCardSetViewController alloc]init];
+        [self.navigationController pushViewController:pcVC animated:YES];
+    }else{
+        self.tableView.hidden=NO;
+        self.backView.hidden = NO;
+        [self.tableView reloadData];
+    }
+
   
 }
 - (IBAction)commitBtnClick:(id)sender {
@@ -338,26 +350,29 @@
     if ([string isEqualToString:@""]) {
         return YES;
     }
-    
-    NSString * regex;
-    if (textField == self.withdrawTextField ){
-        regex = @"^[0-9]";
-        
-    }
-    
-    NSString *str = [NSString stringWithFormat:@"%@%@",textField.text,string];
     if (textField == self.withdrawTextField ) {
-        if (str.length >15) {
+        if (textField.text.length + string.length >15) {
             [self showPromptText: @"金额不能超过15位" hideAfterDelay: 1.7];
             return NO;
         }
     }
     
     
+    NSString * regex;
+    regex = @"^[0-9.]";
     
-        NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
-        BOOL isMatch = [pred evaluateWithObject:string];
-    return YES;
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    BOOL isMatch = [pred evaluateWithObject:string];
+    if (isMatch) {
+        NSString *stringRegex = @"(\\+|\\-)?(([0]|(0[.]\\d{0,2}))|([1-9]\\d{0,4}(([.]\\d{0,2})?)))?";
+        NSPredicate *pred1 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", stringRegex];
+        BOOL isMatch1 = [pred1 evaluateWithObject:[NSString stringWithFormat:@"%@%@",textField.text,string]];
+        
+        return isMatch1;
+    }else{
+        
+        return NO;
+    }
 }
 
 

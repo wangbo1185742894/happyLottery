@@ -19,5 +19,6 @@
 @interface OpenRedPopView : UIView
 @property (weak, nonatomic) IBOutlet UILabel *labJiangjin;
 @property (weak, nonatomic) IBOutlet UIView *viewContent;
+@property (weak, nonatomic) IBOutlet UILabel *labRedPacketInfo;
 @property(weak,nonatomic)id <OpenRedPopViewDelegate>delegate;
 @end

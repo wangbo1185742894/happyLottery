@@ -147,7 +147,7 @@
              if (substring.length > 1) {
                  const unichar ls = [substring characterAtIndex:1];
                  const int uc = ((hs - 0xd800) * 0x400) + (ls - 0xdc00) + 0x10000;
-                 if (0x1d000 <= uc && uc <= 0x1ffff)
+                 if (0x1d000 <= uc && uc <= 0x1f77f)
                  {
                      isEomji = YES;
                  }

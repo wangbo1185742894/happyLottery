@@ -10,4 +10,5 @@
 
 @interface FirstBankCardSetViewController : BaseViewController
 @property(strong,nonatomic) NSString* titleStr;
+@property(strong,nonatomic)NSString *popTitle;
 @end

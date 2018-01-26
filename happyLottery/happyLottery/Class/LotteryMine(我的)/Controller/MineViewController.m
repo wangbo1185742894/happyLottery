@@ -23,6 +23,7 @@
 #import "FeedbackViewController.h"
 #import "Notice.h"
 #import "RedPacket.h"
+#import "FirstBankCardSetViewController.h"
 #import "LoadData.h"
 #import "Utility.h"
 
@@ -298,9 +299,18 @@
      if (self.curUser.isLogin == NO) {
         [self needLogin];
     } else {
-        WithdrawalsViewController *w = [[WithdrawalsViewController alloc]init];
-        w.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:w animated:YES];
+        if (self.curUser.name == nil || self.curUser.name.length == 0) {
+            FirstBankCardSetViewController *fvc = [[FirstBankCardSetViewController alloc]init];
+            fvc.titleStr=@"绑定银行卡";
+            fvc.popTitle = @"尚未实名认证，请先实名认证再绑定银行卡";
+            [self.navigationController pushViewController:fvc animated:YES];
+            
+        }else{
+            WithdrawalsViewController *w = [[WithdrawalsViewController alloc]init];
+            w.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:w animated:YES];
+        }
+      
     }
  
 }

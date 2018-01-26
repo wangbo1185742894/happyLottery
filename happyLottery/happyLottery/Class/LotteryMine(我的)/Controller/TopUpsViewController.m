@@ -239,7 +239,7 @@
         if ([[UIApplication sharedApplication] canOpenURL: [NSURL URLWithString:@"alipay://"]] == YES) {
             [[UIApplication sharedApplication] openURL:request.URL];
         }else{
-            [self showPromptText:@"亲，你好像没装支付宝！" hideAfterDelay:1.7];
+            [self showPromptText:@"您未安装支付宝客服端，请先安装！" hideAfterDelay:1.7];
         }
     }
     

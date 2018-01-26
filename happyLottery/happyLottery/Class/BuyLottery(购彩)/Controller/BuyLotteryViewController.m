@@ -60,6 +60,8 @@
     __weak IBOutlet UILabel *labNewDate;
     
     
+    __weak IBOutlet UIView *redPacketContent;
+    __weak IBOutlet NSLayoutConstraint *redPacketWidth;
     __weak IBOutlet NSLayoutConstraint *yucViewDisTop;
     
     __weak IBOutlet UIView *redpacketView;
@@ -68,6 +70,7 @@
     
     __weak IBOutlet UIButton *redpacketCancel;
     
+    __weak IBOutlet NSLayoutConstraint *disBottom;
     __weak IBOutlet UILabel *redpacketLab;
     __weak IBOutlet UIButton *goRedPacket;
 }
@@ -513,23 +516,29 @@
     if ([msg isEqualToString:@"执行成功"]) {
         // [self showPromptText: @"memberInfo成功" hideAfterDelay: 1.7];
      
-        float width = redpacketView.mj_w/2;
+        float width = openRedpacketButton.mj_w/2;
        
         red = [[RedPacket alloc]initWith:redPacketInfo];
         NSString *redPacketType = red.redPacketType;
         NSString *sourecs;
+        NSString *subSource;
         if ([redPacketType isEqualToString:@"彩金红包"]) {
             sourecs = [NSString stringWithFormat:@"恭喜您获得了%@元",red.redPacketContent];
+            subSource= @"红包已存入我的余额";
         } else if ([redPacketType isEqualToString:@"积分红包"]){
             sourecs = [NSString stringWithFormat:@"恭喜您获得了%@积分",red.redPacketContent];
+            subSource= @"红包已存入我的积分";
         }else if ([redPacketType isEqualToString:@"优惠券红包"]){
             sourecs = [NSString stringWithFormat:@"恭喜您获得了%@张优惠券",red.redPacketContent];
+            subSource= @"红包已存入我的优惠券";
         }else{
             sourecs = @"恭喜您获得了红包！";
+            subSource= @"红包已存入我的账户";
             
         }
         
-        [self rotation360repeatCount:2 view:redpacketView andHalf:width andCaijin:sourecs];
+        
+        [self rotation360repeatCount:2 view:openRedpacketButton andHalf:width andCaijin:sourecs andSubTitle:subSource];
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
         redpacketView.hidden=YES;
@@ -538,13 +547,15 @@
 }
 
 
--(void)rotation360repeatCount:(int)repeatCount view:(UIView *)view andHalf:(float)width andCaijin:(NSString *)caijin{
+-(void)rotation360repeatCount:(int)repeatCount view:(UIView *)view andHalf:(float)width andCaijin:(NSString *)caijin andSubTitle:(NSString*)subTitle{
     
     if (repeatCount == 0) {
+         [redpacketView layoutIfNeeded];
         [UIView animateWithDuration:AnimationDur animations:^{
-            [redpacketView layoutIfNeeded];
+           
             view.mj_x += width;
-            view.mj_w = 0;
+            openRedpacketButton.mj_w = 0;
+            
             
         } completion:^(BOOL finished) {
             //[redPacketbutton removeFromSuperview];
@@ -552,6 +563,8 @@
             OpenRedPopView *popView = [[OpenRedPopView alloc]initWithFrame:self.view.frame];
             popView.delegate = self;
             popView.labJiangjin.text =caijin;
+            popView.labRedPacketInfo.adjustsFontSizeToFitWidth = YES;
+            popView.labRedPacketInfo.text = subTitle;
             popView.alpha = 0.2;
             popView.layer.cornerRadius = 10;
             popView.layer.masksToBounds = YES;
@@ -567,17 +580,23 @@
     }else{
         
         repeatCount --;
+        [redpacketView layoutIfNeeded];
         [UIView animateWithDuration:AnimationDur animations:^{
             view.mj_x += width;
-            view.mj_w = 0;
+            openRedpacketButton.mj_w = 0;
+            redpacketLab.alpha = 0;
+            goRedPacket.alpha = 0;
+            
             
         } completion:^(BOOL finished) {
             [UIView animateWithDuration:AnimationDur animations:^{
                 view.mj_x-= width;
-                view.mj_w = 210;
+                redpacketLab.alpha = 1;
+                goRedPacket.alpha = 1;
+                openRedpacketButton.mj_w = 148;
             } completion:^(BOOL finished) {
                 
-                [self rotation360repeatCount:repeatCount view:view andHalf:width andCaijin:caijin];
+                [self rotation360repeatCount:repeatCount view:view andHalf:width andCaijin:caijin andSubTitle:subTitle];
             }];
         }];
     }
@@ -650,7 +669,7 @@
                 openRedpacketButton.hidden = NO;
                 redpacketView.hidden=NO;
                 if (listUseRedPacketArray.count>1) {
-                    
+                    disBottom.constant = 16;
                     [openRedpacketButton setBackgroundImage:[UIImage imageNamed:@"redpacketKong.png"] forState:UIControlStateNormal];
                     goRedPacket.hidden=NO;
                     redpacketLab.hidden=NO;
@@ -661,9 +680,10 @@
                     
                     
                     [openRedpacketButton setBackgroundImage:[UIImage imageNamed:@"one_redpacket.png"] forState:UIControlStateNormal];
+                    disBottom.constant = 45;
                     goRedPacket.hidden=YES;
                     redpacketLab.hidden=NO;
-                    redpacketLab.text=@"恭喜您获得一个红包！";
+                    redpacketLab.text=@"恭喜您获得1个红包！";
                     r =listUseRedPacketArray[0];
                    
                 }
