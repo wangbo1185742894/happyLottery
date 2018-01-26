@@ -24,6 +24,7 @@
 #import "Notice.h"
 #import "RedPacket.h"
 #import "LoadData.h"
+#import "Utility.h"
 
 @interface MineViewController () <UITableViewDelegate, UITableViewDataSource,MemberManagerDelegate>{
     NSArray <NSArray *>*listArray;
@@ -163,11 +164,18 @@
     self.loginBtn.enabled = NO;
     
     //[_userImage sd_setImageWithURL:[NSURL URLWithString:self.curUser.headUrl]];
-    long long balance = [self.curUser.balance longLongValue];
-    long long notCash = [self.curUser.notCash longLongValue];
-    long long sendBalance = [self.curUser.sendBalance longLongValue];
-    long long total = balance+notCash+sendBalance;
-    NSString *totalstr = [NSString stringWithFormat:@"%lld",total];
+    //浮点数值使用CGFloat,NSDecimalNumber对象进行处理:
+    NSDecimalNumber *myDecimalObj1 = [[NSDecimalNumber alloc] initWithString:self.curUser.balance];
+    NSLog(@"myDecimalObj doubleValue=%6.2f",[myDecimalObj1 doubleValue]);
+    double balance = [myDecimalObj1 doubleValue];
+    NSDecimalNumber *myDecimalObj2 = [[NSDecimalNumber alloc] initWithString:self.curUser.notCash];
+    NSLog(@"myDecimalObj doubleValue=%6.2f",[myDecimalObj1 doubleValue]);
+    double notCash = [myDecimalObj2 doubleValue];
+    NSDecimalNumber *myDecimalObj3 = [[NSDecimalNumber alloc] initWithString:self.curUser.sendBalance];
+    NSLog(@"myDecimalObj doubleValue=%6.2f",[myDecimalObj3 doubleValue]);
+    double sendBalance = [myDecimalObj3 doubleValue];
+    double total = balance+notCash+sendBalance;
+    NSString *totalstr = [NSString stringWithFormat:@"%.2f",total];
     self.balanceLab.text = totalstr;
     int score =  [self.curUser.score intValue];
     NSString *scorestr = [NSString stringWithFormat:@"%d",score];
@@ -183,6 +191,7 @@
         self.userImage.image =[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.curUser.headUrl]]];
     }
 }
+
 
 -(void)noticeCenterSet{
     noticeBtn = [UIButton buttonWithType: UIButtonTypeCustom];

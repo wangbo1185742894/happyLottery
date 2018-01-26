@@ -453,24 +453,18 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSString *content = [userInfo valueForKey:@"content"];
     NSDictionary *extra = [userInfo valueForKey:@"extras"];
     NSString *customizeField1 = [extra valueForKey:@"customizeField1"]; //服务端传递的Extras附加字段，key是自己定义的
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-//
-     NSString *time = [Utility timeStringFromFormat:@"yyyy-MM-dd HH:mm:ss" withDate:[NSDate date]];
+
 //
 //
-    if ([self.fmdb open]) {
-        NSString *cardcode=[GlobalInstance instance ].curUser.cardCode;
-        if ([cardcode isEqualToString:@""]) {
-            cardcode = @"cardcode";
-        }
-        NSString *isread = @"1";
-        BOOL result =  [self.fmdb executeUpdate:[NSString stringWithFormat:@"insert into vcUserPushMsg (title,content, msgTime , cardcode ,ieread) values ('%@', '%@', '%@', '%@', '%@');",title,content,time,cardcode,isread]];
-        if (result) {
-            [self.fmdb close];
-        }
-    }
+   
     NSString *pageCode =extra[@"pageCode"] ;
-    if ([extra[@"pageCode"] isEqualToString:@"A204"]) { //中奖推送
+    NSString *messageType=extra[@"messageType"] ;
+//    DRAW_MESSAGE("中奖消息"),
+//    FORECAST_LOTTERY_MESSAGE("预测开奖消息"),
+//    ACTIVITY_MESSAGE("活动消息"),
+//    SYSTEM_MESSAGE("系统消息"),
+//    COUPON_EXPIRATION_MESSAGE("优惠卷到期提醒");messageType
+    if ([extra[@"pageCode"] isEqualToString:@"A204"]&&[extra[@"messageType"] isEqualToString:@"DRAW_MESSAGE"]) { //中奖推送
         if (winPushView !=nil) {
             [winPushView removeFromSuperview];
             winPushView = nil;
@@ -561,22 +555,36 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         //NSLog(@"尼玛的推送消息呢===%@",userInfo);
         // 取得 APNs 标准信息内容，如果没需要可以不取
         NSDictionary *aps = [userInfo valueForKey:@"aps"];
+         NSString *title = [userInfo valueForKey:@"title"];
         NSString *content = [aps valueForKey:@"alert"]; //推送显示的内容
         NSInteger badge = [[aps valueForKey:@"badge"] integerValue];
         NSString *sound = [aps valueForKey:@"sound"]; //播放的声音
         // 取得自定义字段内容，userInfo就是后台返回的JSON数据，是一个字典
         NSString *appCode =  [userInfo valueForKey:@"pageCode"];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        //
+        NSString *time = [Utility timeStringFromFormat:@"yyyy-MM-dd HH:mm:ss" withDate:[NSDate date]];
         //    [APService handleRemoteNotification:userInfo];
-       
+        if ([self.fmdb open]) {
+            NSString *cardcode=[GlobalInstance instance ].curUser.cardCode;
+            if ([cardcode isEqualToString:@""]) {
+                cardcode = @"cardcode";
+            }
+            NSString *isread = @"1";
+            BOOL result =  [self.fmdb executeUpdate:[NSString stringWithFormat:@"insert into vcUserPushMsg (title,content, msgTime , cardcode ,ieread) values ('%@', '%@', '%@', '%@', '%@');",title,content,time,cardcode,isread]];
+            if (result) {
+                [self.fmdb close];
+            }
+        }
   
     //判断应用是在前台还是后台
     if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
         
         //第一种情况前台运行
-        NSString *apnCount = userInfo[@"aps"][@"alert"];
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"推送信息" message:apnCount delegate:self cancelButtonTitle:@"查看" otherButtonTitles:@"取消", nil];
-        alert.delegate = self;
-        [alert show];
+//        NSString *apnCount = userInfo[@"aps"][@"alert"];
+//        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"推送信息" message:apnCount delegate:self cancelButtonTitle:@"查看" otherButtonTitles:@"取消", nil];
+//        alert.delegate = self;
+//        [alert show];
         
     }else{
         
