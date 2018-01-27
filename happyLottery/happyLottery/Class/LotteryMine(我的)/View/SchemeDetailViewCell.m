@@ -98,6 +98,7 @@
         return @"待开奖";
     }
     if ([model.winningStatus isEqualToString:@"NOT_LOTTERY"]) {
+        
         return @"未中奖";
     }
     if ([model.bonus doubleValue] != 0) {
