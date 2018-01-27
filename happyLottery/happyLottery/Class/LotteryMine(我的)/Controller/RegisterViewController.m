@@ -168,9 +168,9 @@
     }
     NSDictionary *paraDic;
     if (tfRecomCode.hidden == NO) {
-        paraDic = @{@"userTel":tfUserTel.text,@"userPwd":tfUserPwd.text,@"checkCode":tfCheckCode.text ,@"shareCode":tfRecomCode.text};
+        paraDic = @{@"userTel":tfUserTel.text,@"userPwd":[tfUserPwd.text lowercaseString],@"checkCode":tfCheckCode.text ,@"shareCode":tfRecomCode.text};
     }else{
-        paraDic = @{@"userTel":tfUserTel.text,@"userPwd":tfUserPwd.text,@"checkCode":tfCheckCode.text};
+        paraDic = @{@"userTel":tfUserTel.text,@"userPwd":[tfUserPwd.text lowercaseString],@"checkCode":tfCheckCode.text};
     }
     [self.memberMan registerUser:paraDic];
     [self showLoadingText:@"正在提交信息"];
@@ -192,7 +192,7 @@
 
 - (void)delayMethod{
     
-    [self.loginVC loginUserBySuccessReg:tfUserTel.text andPwd:tfUserPwd.text];
+    [self.loginVC loginUserBySuccessReg:tfUserTel.text andPwd:[tfUserPwd.text lowercaseString]];
 
 }
 
@@ -276,7 +276,7 @@
     NSString *str = [NSString stringWithFormat:@"%@%@",textField.text,string];
     if (textField == tfUserTel) {
         if (str.length >11) {
-            [self showPromptText: @"手机号码不能超过11位" hideAfterDelay: 1.7];
+            
             return NO;
         }
     }
@@ -284,7 +284,7 @@
     if (textField == tfUserPwd) {
         
         if (str.length >16) {
-            [self showPromptText: @"密码不能超过16位" hideAfterDelay: 1.7];
+            
             return NO;
         }
     }
@@ -305,7 +305,7 @@
         }
         
         if (str.length >6) {
-            [self showPromptText: @"验证码不能超过6位" hideAfterDelay: 1.7];
+            
             return NO;
         }
       
@@ -328,6 +328,11 @@
     if ([msg isEqualToString:@"执行成功"]) {
         tfCheckCode.enabled = NO;
         tfUserTel.enabled = NO;
+        
+        btnSendCheckCode.enabled = NO;
+        [btnSendCheckCode setTitle:@"获取验证码" forState:UIControlStateDisabled];
+        [timer invalidate];
+        
         tfCheckCode.rightView.hidden = NO;
         tfUserTel.rightView.hidden = NO;
         [self showPromptText:@"验证成功" hideAfterDelay:1.7];

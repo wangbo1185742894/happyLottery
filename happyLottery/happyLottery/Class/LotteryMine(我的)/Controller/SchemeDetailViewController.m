@@ -17,6 +17,7 @@
 #import "OrderListHeaderView.h"
 #import "SchemeCashPayment.h"
 #import "SchemeInfoViewCell.h"
+#import "MyOrderListViewController.h"
 
 
 #define  KSchemeDetailMatchViewCell     @"SchemeDetailMatchViewCell"
@@ -176,7 +177,10 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
+        
         return [schemeDetail getJCZQCellHeight];
+        
+        
     }else if (indexPath.section ==1){
         NSDictionary *betContent = [Utility objFromJson: schemeDetail.betContent];
         NSArray *betMatches = betContent[@"betMatches"];
@@ -185,14 +189,17 @@
         float curY = 0;
         NSString *option;
         for (NSDictionary *itemDic in itemArray) {
-            
             option = [self reloadDataWithRec:itemDic[@"options"] type:itemDic[@"playType"]];
             float height =  [option boundingRectWithSize:CGSizeMake(KscreenWidth - 90, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14]} context:nil].size.height;
             height  = height > 25 ? height:25;
             curY += height;
         }
-        
-        return curY + 80;
+        if (KscreenWidth == 667) {
+             return curY + 60;
+        }else{
+             return curY + 100;
+        }
+       
     }else if (indexPath.section ==2){
         if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) {
             return 60;
@@ -323,6 +330,17 @@
     [header addSubview:ticketLa];
     [ticketLa addTarget:self action:@selector(actionOrderDetail:) forControlEvents:UIControlEventTouchUpInside];
     [header.btnOrderDetail addTarget:self action:@selector(actionOrderDetail:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+-(void)navigationBackToLastPage{
+    
+    for (BaseViewController *baseVC in self.navigationController.viewControllers) {
+        if ([baseVC isKindOfClass:[MyOrderListViewController class]]) {
+            [self.navigationController popToViewController:baseVC animated:YES];
+            return;
+        }
+    }
+    [super navigationBackToLastPage];
 }
 
 @end

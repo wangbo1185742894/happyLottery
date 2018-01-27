@@ -64,12 +64,11 @@
     
     if ([msg isEqualToString:@"执行成功"]) {
         //NSLog(@"Info%@",Info);
-         [self showPromptText: @"兑换推荐码成功" hideAfterDelay: 1.7];
+         [self showPromptText: @"恭喜您，获得500积分" hideAfterDelay: 1.7];
           [self performSelector:@selector(delayMethod) withObject:nil afterDelay:1.0];
     
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
-         [self performSelector:@selector(delayMethod) withObject:nil afterDelay:1.0];
     }
 }
 
@@ -79,10 +78,15 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
 }
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    if ([string isEqualToString:@""]) {
+        return YES;
+    }
+    
     if (textField.text.length + string.length > 8) {
         return NO;
         

@@ -32,7 +32,7 @@
 #define AnimationDur 0.3
 
 
-@interface BuyLotteryViewController ()<WBAdsImgViewDelegate,HomeMenuItemViewDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,NewsListCellDelegate,OpenRedPopViewDelegate,MemberManagerDelegate>
+@interface BuyLotteryViewController ()<WBAdsImgViewDelegate,HomeMenuItemViewDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,NewsListCellDelegate,OpenRedPopViewDelegate,MemberManagerDelegate,VersionUpdatingPopViewDelegate,NetWorkingHelperDelegate>
 {
     NSMutableArray  <JczqShortcutModel *>*JczqShortcutList;
     NSMutableArray  <JczqShortcutModel *>*colloectList;
@@ -80,7 +80,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-          listUseRedPacketArray = [[NSMutableArray alloc]init];
+    [self checkUpdateNetWork];
+    listUseRedPacketArray = [[NSMutableArray alloc]init];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(itemClick:) name:@"NSNotificationBuyVCJump" object:nil];
     JczqShortcutList = [NSMutableArray arrayWithCapacity:0];
     colloectList = [NSMutableArray arrayWithCapacity:0];
@@ -101,6 +102,7 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self getJczqShortcut];
+    
     [adsView setImageUrlArray:nil];
     [self loadAdsImg];
     
@@ -306,6 +308,7 @@
         if (self.curUser.isLogin == YES && self.curUser.cardCode != nil) {
             disVC.pageUrl = [NSString stringWithFormat:@"%@/app/find/turntable?activityId=5&cardCode=%@",H5BaseAddress,self.curUser.cardCode];
         }
+        return;
     }
     
     if (itemIndex.trLoadStatus!= nil) {
@@ -364,9 +367,13 @@
     
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+}
 
 -(void)viewWillDisappear:(BOOL)animated{
-    
+    [super viewWillDisappear: animated];
     self.navigationController.navigationBar.hidden = NO;
     
 }
@@ -709,5 +716,46 @@
     redpacketView.hidden=YES;
 
 }
+
+
+#pragma  mark - checkUpdateNetWork
+- (void)checkUpdateNetWork {
+    NSString *subversion = @"release";
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey];
+    NSString *curVerSion = version;
+    NSString * string = [NSString stringWithFormat:@"http://ct.11max.com//ClientVersion/CheckUpdate?versionCode=%@&mobileos=ios&appname=com.xaonly.tbz.ios&subversion=%@",curVerSion,subversion];
+    netWorkHelper *helper = [[netWorkHelper alloc] init];
+    [helper getRequestMethodWithUrlstring:string parameter:nil];
+    helper.delegate = self;
+}
+
+
+#pragma mark - netWorkHelperDelegate
+-(void)passValueWithDic:(NSDictionary *)value{
+    if([value isKindOfClass:[NSDictionary class]])
+    {
+        if ([value[@"ForceUpgrade"] isEqualToString:@"true"]) {
+            
+            VersionUpdatingPopView *vuView = [[VersionUpdatingPopView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+            vuView.delegate = self;
+            vuView.guanbibtn.userInteractionEnabled = NO;
+            vuView.xiaochachaBtn.hidden = YES;
+            vuView.content.text = value[@"VersionDesc"];
+            [[UIApplication sharedApplication].keyWindow addSubview:vuView];
+        }else
+        {
+            
+            VersionUpdatingPopView *vuView = [[VersionUpdatingPopView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+            vuView.delegate = self;
+            vuView.content.text = value[@"VersionDesc"];
+            [[UIApplication sharedApplication].keyWindow addSubview:vuView];
+        }
+    }
+}
+
+- (void)lijigenxin{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:APPUPDATAURL]];
+}
+
 
 @end

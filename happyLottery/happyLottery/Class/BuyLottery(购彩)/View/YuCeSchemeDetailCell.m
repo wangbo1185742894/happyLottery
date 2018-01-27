@@ -28,7 +28,10 @@
 -(void)refreshData:(jcBetContent *)scheme{
 
     NSArray *array = [scheme.clash componentsSeparatedByString:@"VS"];
-    self.zhuDuiLabel.text = array[0];
+    self.zhuDuiLabel.text = [NSString stringWithFormat:@"%@(主)",array[0]] ;
+    self.zhuDuiLabel.keyWord = @"(主)";
+    self.zhuDuiLabel.keyWordFont = [UIFont systemFontOfSize:13];
+    self.zhuDuiLabel.keyWordColor = SystemLightGray;
     self.keDuiLabel.text = array[1];
     NSString *weekStr = [scheme.matchId substringWithRange:NSMakeRange(0, 2)];
     NSString *numStr = [scheme.matchId substringWithRange:NSMakeRange(2, 3)];

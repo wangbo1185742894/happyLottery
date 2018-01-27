@@ -17,7 +17,7 @@
      WBInputPopView *passInput;
      NSMutableArray *listBankArray;
      BankCard *bankCard;
-    long long balance;
+    
 }
 @property (weak, nonatomic) IBOutlet UILabel *retainLab;
 @property (weak, nonatomic) IBOutlet UILabel *topUpsLab;
@@ -53,25 +53,15 @@
     passInput.delegate = self;
     listBankArray = [[NSMutableArray alloc]init];
     self.memberMan.delegate = self;
-    NSDecimalNumber *myDecimalObj1 = [[NSDecimalNumber alloc] initWithString:self.curUser.balance];
-    NSLog(@"myDecimalObj doubleValue=%6.2f",[myDecimalObj1 doubleValue]);
-    double balance = [myDecimalObj1 doubleValue];
-    NSDecimalNumber *myDecimalObj2 = [[NSDecimalNumber alloc] initWithString:self.curUser.notCash];
-    NSLog(@"myDecimalObj doubleValue=%6.2f",[myDecimalObj1 doubleValue]);
-    double notCash = [myDecimalObj2 doubleValue];
-    NSDecimalNumber *myDecimalObj3 = [[NSDecimalNumber alloc] initWithString:self.curUser.sendBalance];
-    NSLog(@"myDecimalObj doubleValue=%6.2f",[myDecimalObj3 doubleValue]);
-    double sendBalance = [myDecimalObj3 doubleValue];
-     double total = balance+notCash+sendBalance;
-    NSString *totalStr = [NSString stringWithFormat:@"%.2f元", total];
-    self.retainLab.text = totalStr;
-    NSString *balanceStr = [NSString stringWithFormat:@"%.2f元", balance];
+    self.retainLab.text =[NSString stringWithFormat:@"%.2f元", [self.curUser.totalBanlece doubleValue]] ;
+    NSString *balanceStr = [NSString stringWithFormat:@"%.2f元", [self.curUser.balance doubleValue]];
     self.topUpsLab.text = balanceStr;
     self.nameLab.text = self.curUser.name;
     
 }
 
 -(void)withdrawSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    [self hideLoadingView];
     if ([msg isEqualToString:@"执行成功"]) {
         [self showPromptText: @"会员提现成功" hideAfterDelay: 1.7];
           [self performSelector:@selector(delayMethod) withObject:nil afterDelay:1.0];
@@ -103,7 +93,7 @@
 }
 
 -(void)getBankListSms:(NSDictionary *)bankInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
-    
+    bankCard = nil;
     if ([msg isEqualToString:@"执行成功"]) {
      
         NSLog(@"%@",bankInfo);
@@ -119,10 +109,23 @@
                 NSString *bank =  [NSString stringWithFormat:@"%@ (尾号%@)--%@",bankCard.bankName,num4,self.curUser.name];
                 [self.bankBtn setTitle:bank forState:UIControlStateNormal];
             }
+            
             [listBankArray addObject:bankCards];
+        
         }
+        
+     
+        
         if (listBankArray.count>0) {
-           [self.bankBtn setTitle:@"请选择银行卡" forState:UIControlStateNormal];
+            if (bankCard == nil) {
+                
+                bankCard = [listBankArray lastObject];
+                bankCard.useDefault = @"1";
+                NSString *num =bankCard.bankNumber;
+                NSString *num4 = [num substringFromIndex:num.length- 4 ];
+                NSString *bank =  [NSString stringWithFormat:@"%@ (尾号%@)--%@",bankCard.bankName,num4,self.curUser.name];
+                [self.bankBtn setTitle:bank forState:UIControlStateNormal];
+            }
             dispatch_async(dispatch_get_main_queue(), ^{
                   if (listBankArray.count==1) {
                       self.tvHeight.constant = 60;
@@ -197,8 +200,8 @@
         [self showPromptText: @"请输入取现金额" hideAfterDelay: 2.7];
         return;
     }
-    long long text =[self.withdrawTextField.text longLongValue];
-    if (text>balance) {
+    double text =[self.withdrawTextField.text doubleValue];
+    if (text>[self.curUser.balance doubleValue]) {
         [self showPromptText: @"取现金额不能大于可用余额！" hideAfterDelay: 3.7];
         self.withdrawTextField.text=@"";
         return;
@@ -253,6 +256,7 @@
     } @catch (NSException *exception) {
        return;
     }
+        [self showLoadingText:@"正在提交订单"];
         [self.memberMan withdrawSms:withdrawInfo];
 }
 
@@ -321,7 +325,7 @@
 
 #pragma UITextFieldDelegate
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
-    textField.text=@"";
+    
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{
@@ -359,7 +363,7 @@
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
     BOOL isMatch = [pred evaluateWithObject:string];
     if (isMatch) {
-        NSString *stringRegex = @"(\\+|\\-)?(([0]|(0[.]\\d{0,2}))|([1-9]\\d{0,4}(([.]\\d{0,2})?)))?";
+        NSString *stringRegex = @"(\\+|\\-)?(([0]|(0[.]\\d{0,2}))|([1-9]\\d{0,100}(([.]\\d{0,2})?)))?";
         NSPredicate *pred1 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", stringRegex];
         BOOL isMatch1 = [pred1 evaluateWithObject:[NSString stringWithFormat:@"%@%@",textField.text,string]];
         

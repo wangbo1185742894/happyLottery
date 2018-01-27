@@ -51,7 +51,7 @@
     self.lotteryMan.delegate = self;
     self.labPossbleBouns.adjustsFontSizeToFitWidth = YES;
         self.transaction = [[JCYCTransaction alloc]init];
-    self.transaction.beiTou = 1;
+    self.transaction.beiTou = 5;
     
     
     [self showMatchDetailInfo];

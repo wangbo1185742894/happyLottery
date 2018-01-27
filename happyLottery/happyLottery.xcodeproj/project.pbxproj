@@ -177,9 +177,9 @@
 		2D2060311FFCB71E0086E266 /* icon_zhifu_selcetes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D2060131FFCB71E0086E266 /* icon_zhifu_selcetes@2x.png */; };
 		2D2060351FFCCB380086E266 /* SchemListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2060331FFCCB380086E266 /* SchemListCell.m */; };
 		2D2060361FFCCB380086E266 /* SchemListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D2060341FFCCB380086E266 /* SchemListCell.xib */; };
+		2D206F8C201C1878008A610F /* launchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D206F8B201C1877008A610F /* launchImage.png */; };
 		2D4B174E1FD7B9270034B708 /* WBAdsImgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B174D1FD7B9270034B708 /* WBAdsImgView.m */; };
 		2D4B1DC31FD7D6030034B708 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B1DC21FD7D6030034B708 /* MBProgressHUD.m */; };
-		2D4B1E1C1FD8C8080034B708 /* launchImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D4B1E1B1FD8C8070034B708 /* launchImage@2x.png */; };
 		2D4B1E361FDE241F0034B708 /* JCZQPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B1E341FDE241F0034B708 /* JCZQPlayViewController.m */; };
 		2D4B1E371FDE241F0034B708 /* JCZQPlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4B1E351FDE241F0034B708 /* JCZQPlayViewController.xib */; };
 		2D4B1E3A1FDE717C0034B708 /* newBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D4B1E381FDE717C0034B708 /* newBack@2x.png */; };
@@ -1082,11 +1082,11 @@
 		2D2060321FFCCB380086E266 /* SchemListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SchemListCell.h; sourceTree = "<group>"; };
 		2D2060331FFCCB380086E266 /* SchemListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SchemListCell.m; sourceTree = "<group>"; };
 		2D2060341FFCCB380086E266 /* SchemListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SchemListCell.xib; sourceTree = "<group>"; };
+		2D206F8B201C1877008A610F /* launchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchImage.png; sourceTree = "<group>"; };
 		2D4B174C1FD7B9270034B708 /* WBAdsImgView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBAdsImgView.h; sourceTree = "<group>"; };
 		2D4B174D1FD7B9270034B708 /* WBAdsImgView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBAdsImgView.m; sourceTree = "<group>"; };
 		2D4B1DC11FD7D6030034B708 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		2D4B1DC21FD7D6030034B708 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		2D4B1E1B1FD8C8070034B708 /* launchImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launchImage@2x.png"; sourceTree = "<group>"; };
 		2D4B1E331FDE241F0034B708 /* JCZQPlayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCZQPlayViewController.h; sourceTree = "<group>"; };
 		2D4B1E341FDE241F0034B708 /* JCZQPlayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCZQPlayViewController.m; sourceTree = "<group>"; };
 		2D4B1E351FDE241F0034B708 /* JCZQPlayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JCZQPlayViewController.xib; sourceTree = "<group>"; };
@@ -2593,6 +2593,7 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				2D206F8B201C1877008A610F /* launchImage.png */,
 				2D0E24052019AC730098DA40 /* pic_zanwushuju@2x.png */,
 				2D0E24042019AC720098DA40 /* pic_zanwushuju@3x.png */,
 				2D0E23B120196B540098DA40 /* failure@2x.png */,
@@ -2647,7 +2648,6 @@
 				2D0EEA732011DE9400B0769C /* unselected@2x.png */,
 				2D0EEA702011DE9100B0769C /* unselected@3x.png */,
 				2DCBB27D1FD1000700934D92 /* Assets.xcassets */,
-				2D4B1E1B1FD8C8070034B708 /* launchImage@2x.png */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -4057,6 +4057,7 @@
 				2D8CBFD21FF3769F00CC367F /* YuceSchemeDetailViewController.xib in Resources */,
 				2D5171C62008654800C3CD7F /* icon_zhifubao@3x.png in Resources */,
 				F94027E02018929700CF7A2B /* redpacketKong@3x.png in Resources */,
+				2D206F8C201C1878008A610F /* launchImage.png in Resources */,
 				2D739C951FE8A4DE00264044 /* JCZQSelectAllPlayTypeVIew.xib in Resources */,
 				2D0EEA922013280500B0769C /* button_trophy@2x.png in Resources */,
 				2D8CC0101FF487CF00CC367F /* WBHomeJCYCViewController.xib in Resources */,
@@ -4066,10 +4067,7 @@
 				2DDEDC071FD4DBD8007AEBF7 /* BuyLotteryViewController.xib in Resources */,
 				2D0E23DA2019A66D0098DA40 /* lottery@3x.png in Resources */,
 				F9F2629C1FE8D7D000C2E60F /* closeperson@2x.png in Resources */,
-
-				F9664B9D2004B23A000A27CA /* feedback@2x.png in Resources */,
 				F9281D1B201979BE00C42A37 /* one_redpacket@2x.png in Resources */,
-
 				2D5171F3200C72F300C3CD7F /* btn_change_@2x.png in Resources */,
 				F9D9F2A91FF22640006434DC /* CashAndIntegrationWaterViewController.xib in Resources */,
 				F92D03D32005A4D000C26E7A /* unlockredpacket@2x.png in Resources */,
@@ -4463,7 +4461,6 @@
 				F928C6B31FF4BA40001F1A32 /* lessen@3x.png in Resources */,
 				F9F6CA9F1FF5D6B100A49F71 /* arrows@2x.png in Resources */,
 				F9E0DF22201972570089F51D /* JumpWebViewController.xib in Resources */,
-				2D4B1E1C1FD8C8080034B708 /* launchImage@2x.png in Resources */,
 				2D4B1E811FDF684E0034B708 /* wode_defealt@2x.png in Resources */,
 				2D0600471FFDDD51009E7568 /* schemedetailticket_bj@3x.png in Resources */,
 				2D739C641FE7878100264044 /* JCZQTouZhuViewController.xib in Resources */,

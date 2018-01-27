@@ -208,6 +208,9 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="disTopBetBouns" destination="7Wb-Re-yoc" id="KBG-2H-XTu"/>
+                <outlet property="disTopBetBounsInfo" destination="XnI-io-tgY" id="978-gW-8qH"/>
+                <outlet property="labBetBouns" destination="n6g-Os-Y2r" id="rHz-dG-JZo"/>
                 <outlet property="labBetCost" destination="QkX-SO-2Jo" id="orl-gS-oyH"/>
                 <outlet property="labBetCount" destination="mvR-xO-pkC" id="VGD-g2-3iS"/>
                 <outlet property="labChuanFa" destination="pB5-lE-lD3" id="fgK-6u-2f4"/>

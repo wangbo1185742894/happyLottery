@@ -144,4 +144,9 @@
     return [[UIView alloc]init];
 }
 
+-(void)navigationBackToLastPage{
+    self.tabBarController.selectedIndex = 3;
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
 @end

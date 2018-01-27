@@ -8,6 +8,7 @@
 
 #import "PaySuccessViewController.h"
 #import "SchemeDetailViewController.h"
+#import "MyOrderListViewController.h"
 
 @interface PaySuccessViewController ()
 
@@ -31,6 +32,10 @@
 - (IBAction)actionLookOrder:(id)sender {
     SchemeDetailViewController *schemeVC = [[SchemeDetailViewController alloc]init];
     schemeVC.schemeNO = self.schemeNO;
+    MyOrderListViewController *myOrderListVC = [[MyOrderListViewController alloc]init];
+    NSMutableArray * vcS = [[NSMutableArray alloc]initWithArray:self.navigationController.viewControllers];
+    [vcS addObject:myOrderListVC];
+    self.navigationController.viewControllers = vcS;
     [self.navigationController pushViewController:schemeVC animated:YES];
 }
 - (IBAction)actionBackHome:(id)sender {

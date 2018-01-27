@@ -91,7 +91,7 @@
 }
 
 -(void)unBindBankCardSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
-    
+    [passInput removeFromSuperview];
     if ([msg isEqualToString:@"执行成功"]) {
         self.curUser.bankBinding = 0;
         [self showPromptText: @"解绑银行卡成功" hideAfterDelay: 1.7];
@@ -112,7 +112,7 @@
         
         [self showPromptText:msg hideAfterDelay:1.7];
         [passInput removeFromSuperview];
-        [self showPayPopView];
+        
     }
 }
 

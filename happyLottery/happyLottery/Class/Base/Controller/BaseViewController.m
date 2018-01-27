@@ -10,7 +10,10 @@
 #import <arpa/inet.h>
 #import <netdb.h>
 #import "AppDelegate.h"
+
 #import "LoginViewController.h"
+
+
 
 
 
@@ -73,6 +76,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
     self.openDate = [NSDate date];
     [self afnReachabilityTest];
     
@@ -396,6 +400,5 @@
         [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"tel://4006005558"]];
     });
 }
-
 
 @end

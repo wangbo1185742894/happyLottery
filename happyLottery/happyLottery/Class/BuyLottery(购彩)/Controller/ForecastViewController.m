@@ -86,10 +86,8 @@
 
 
 -(void)setViewController{
-    
     self.title = @"精准预测";
     self.arrayTableSectionIsOpen = [NSMutableArray arrayWithArray:@[@(YES),@(YES),@(YES),@(YES)]];
-    
 }
 
 -(void)setTableView{

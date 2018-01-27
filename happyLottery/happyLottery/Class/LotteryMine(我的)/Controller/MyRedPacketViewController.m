@@ -347,14 +347,23 @@
 //            }else if ([redPacketChannel isEqualToString:@"系统赠送"]){
 //                sourecs = @"来源： 系统赠送";
 //            }
+            
             cell.sourceLab.text =  [NSString stringWithFormat:@"来源：%@",redPacket.activityName];
-            NSString *date=[redPacket.endValidTime substringWithRange:NSMakeRange(0,10)];
+            NSString *date = @"";
+            
+            if (redPacket.endValidTime.length != 0) {
+                date=[redPacket.endValidTime substringWithRange:NSMakeRange(0,10)];
+            }
             
             cell.endTimeLab.text = [NSString stringWithFormat:@"有效期至：%@",date];
            const long long  dayInteger = [self getDifferenceByDate:redPacket.endValidTime];
 //            const long long  dayInteger = [self getDifferenceByDate:@"2018-01-26 09:24:57"]; 
             NSNumber *longlongNumber = [NSNumber numberWithLongLong:dayInteger];
-            NSString *time=[redPacket.endValidTime substringFromIndex:8];
+            NSString *time = @"";
+            if (redPacket.endValidTime .length!=0) {
+                time=[redPacket.endValidTime substringFromIndex:10];
+            }
+
             NSString *daystr = [longlongNumber stringValue];
             if (dayInteger==0) {
                 cell.day.text=[NSString stringWithFormat:@"截止%@过期",time];

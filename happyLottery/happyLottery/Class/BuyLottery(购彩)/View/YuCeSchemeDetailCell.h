@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "YuCeScheme.h"
 #import "jcBetContent.h"
+#import "MGLabel.h"
 @interface YuCeSchemeDetailCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *zhuDuiLabel;
+@property (weak, nonatomic) IBOutlet MGLabel *zhuDuiLabel;
 @property (weak, nonatomic) IBOutlet UILabel *keDuiLabel;
 @property (weak, nonatomic) IBOutlet UILabel *weekLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numLabel;

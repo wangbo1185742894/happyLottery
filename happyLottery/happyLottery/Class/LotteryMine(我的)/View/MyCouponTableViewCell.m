@@ -22,6 +22,7 @@
 
 -(void)loadData:(Coupon *)model{
     self.endImage.hidden = YES;
+    self.priceLab.adjustsFontSizeToFitWidth = YES;
     self.labX.hidden = YES;
     self.labNum.hidden = YES;
     self.btnSelect.hidden = NO;

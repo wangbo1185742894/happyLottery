@@ -9,8 +9,10 @@
 #import "AppDelegate.h"
 #import "NewFeatureViewController.h"
 #import "AESUtility.h"
+#import "netWorkHelper.h"
 // 引入JPush功能所需头文件
 #import "JPUSHService.h"
+#import "VersionUpdatingPopView.h"
 // iOS10注册APNs所需头文件
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
@@ -39,7 +41,9 @@
 #import "Notice.h"
 #import "JumpWebViewController.h"
 
-@interface AppDelegate ()<NewFeatureViewDelegate,MemberManagerDelegate,JPUSHRegisterDelegate,UIAlertViewDelegate>
+
+@interface AppDelegate ()<NewFeatureViewDelegate,MemberManagerDelegate,JPUSHRegisterDelegate,VersionUpdatingPopViewDelegate,NetWorkingHelperDelegate>
+
 {
     UITabBarController *tabBarControllerMain;
     NSUserDefaults *defaults;
@@ -176,7 +180,6 @@ static SystemSoundID shake_sound_male_id = 0;
         // NSSet<UIUserNotificationCategory *> *categories for iOS8 and iOS9
     }
     [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
-
 }
 
 -(void)autoLogin{
@@ -715,5 +718,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     AppDelegate *delegate  = (AppDelegate*)[UIApplication sharedApplication].delegate;
     [delegate.curNavVC pushViewController:myOrderListVC animated:YES];
 }
+
+
 
 @end

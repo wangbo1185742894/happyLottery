@@ -48,7 +48,7 @@
                                         <action selector="personSetClick:" destination="-1" eventType="touchUpInside" id="ACC-4O-dDx"/>
                                     </connections>
                                 </button>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="usermine.png" translatesAutoresizingMaskIntoConstraints="NO" id="9X8-Z4-jzu">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="usermine.png" translatesAutoresizingMaskIntoConstraints="NO" id="9X8-Z4-jzu">
                                     <rect key="frame" x="12" y="13" width="58" height="58"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="58" id="Dsg-ij-tZp"/>

@@ -113,28 +113,29 @@
             }else if ([self.ticketStatus isEqualToString:@"WAIT_PAY"]) {
                 state = @"待支付";
                 
-            }else{
-                
-                if ([self.winningStatus isEqualToString:@"WAIT_LOTTERY"]) {
-                   
-                    state = @"待开奖";
-                    
-                }else{
-                    
-                    if ([self.won boolValue]) {
-                        if (![self.winningStatus isEqualToString:@"SEND_PRIZE"]) {
-                            state = @"已中奖(派奖中)";
-                        }else if([self.winningStatus isEqualToString:@"BIG_GAIN_TICKET"]){
-                            state = @"中奖(已取票)";
-                        }else{
-                            state = @"已中奖";
-                        }
+            }else if ([self.ticketStatus isEqualToString:@"SUC_TICKET"]) {
+
+                    if ([self.winningStatus isEqualToString:@"WAIT_LOTTERY"]) {
+                        
+                        state = @"待开奖";
                         
                     }else{
-                        state = @"未中奖";
+                        
+                        if ([self.won boolValue]) {
+                            if (![self.winningStatus isEqualToString:@"SEND_PRIZE"]) {
+                                state = @"已中奖(派奖中)";
+                            }else if([self.winningStatus isEqualToString:@"BIG_GAIN_TICKET"]){
+                                state = @"中奖(已取票)";
+                            }else{
+                                state = @"已中奖";
+                            }
+                            
+                        }else{
+                            state = @"未中奖";
+                        }
                     }
-                }
-                
+            }else{
+                state = @"出票中";
             }
     }
     return state;
@@ -169,7 +170,14 @@
             }
         }
     }
-    return height + 157;
+    
+    if ([self.schemeStatus isEqualToString:@"CANCEL"]||[self.schemeStatus isEqualToString:@"REPEAL"]) {
+        return height + 138;
+    }else{
+        return height + 157;
+    }
+    
+    
 }
 
 @end

@@ -38,7 +38,7 @@
 
 -(void)resetPayPWDSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     if ([msg isEqualToString:@"执行成功"]) {
-        [self showPromptText:@"修改支付密码" hideAfterDelay:1.7];
+        [self showPromptText:@"设置成功" hideAfterDelay:1.7];
         [self performSelector:@selector(delayMethod) withObject:nil afterDelay:1.0];
      
     }else{
@@ -151,14 +151,14 @@
     if (textField ==  self.PWD1) {
         
         if (str.length >6 ) {
-            [self showPromptText: @"初始密码不能超过6位" hideAfterDelay: 1.7];
+            
             return NO;
         }
     }
     if (textField ==  self.PWD2 ) {
         
         if (str.length >6 ) {
-            [self showPromptText: @"新密码不能超过6位" hideAfterDelay: 1.7];
+            
             return NO;
         }
     }
@@ -167,7 +167,7 @@
     if (textField ==  self.PWD3 ) {
         
         if (str.length >6) {
-            [self showPromptText: @"确认密码不能超过6位" hideAfterDelay: 1.7];
+            
             return NO;
         }
     }

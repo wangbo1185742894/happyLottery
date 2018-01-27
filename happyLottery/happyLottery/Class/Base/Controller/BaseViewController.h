@@ -48,6 +48,8 @@
 
 -(id)transFomatJson:(NSString *)strJson;
 
+- (void)checkUpdateNetWork;
+
 
 
 @end

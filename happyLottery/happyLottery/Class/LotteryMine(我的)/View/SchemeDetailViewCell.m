@@ -12,9 +12,12 @@
 
 @interface SchemeDetailViewCell()
 {
+    __weak IBOutlet NSLayoutConstraint *disTopBetBouns;
+    __weak IBOutlet NSLayoutConstraint *disTopBetBounsInfo;
     __weak IBOutlet UILabel *labSchemeState;
     __weak IBOutlet UILabel *labSchemeInfo;
     
+    __weak IBOutlet UILabel *labBetBouns;
     __weak IBOutlet UILabel *labSchemeTime;
     __weak IBOutlet MGLabel *labTicketCount;
     __weak IBOutlet UILabel *labLottery;
@@ -37,11 +40,13 @@
     }
     return self;
 }
-//_winningStatus    __NSCFString *    @"WAIT_LOTTERY"    0x00000001c462a140
+
 -(void)reloadDataModel:(JCZQSchemeItem*)model{
     labTicketCount.adjustsFontSizeToFitWidth = YES;
     scheme = model;
     labSchemeState.text = [model getSchemeState];
+    
+    labChuanFa.contentMode = UIViewContentModeTop;
     
     if ([model.costType isEqualToString:@"CASH"]) {
         labSchemeInfo.text = @"方案状态";
@@ -50,10 +55,21 @@
         }else{
         labTicketCount.text = [NSString stringWithFormat:@"出票%@/%@单",model.printCount,model.ticketCount];
         }
-        labTicketCount.text = [NSString stringWithFormat:@"出票%@/%@单",model.printCount,model.ticketCount];
+        
     }else{
         labSchemeInfo.text = @"方案状态";
         labTicketCount.text = @"";
+    }
+    
+    if ([model.schemeStatus isEqualToString:@"CANCEL"]||[model.schemeStatus isEqualToString:@"REPEAL"]) {
+        labBetBouns.text = @"";
+        labBetBouns.mj_h = 0;
+        labBetCost.text = @"";
+        labBetCost.mj_h = 0;
+        labBetCost.hidden = YES;
+        labBetBouns.hidden = YES;
+        disTopBetBouns.constant = -17;
+        disTopBetBounsInfo.constant = -17;
     }
     
     labSchemeTime.text = model.createTime;
@@ -85,8 +101,9 @@
         return @"未中奖";
     }
     if ([model.bonus doubleValue] != 0) {
-        return [NSString stringWithFormat:@"%.2f",[model.bonus doubleValue]];
         labBetCost.textColor = SystemRed;
+        return [NSString stringWithFormat:@"%.2f",[model.bonus doubleValue]];
+        
         
     }
     return @"";

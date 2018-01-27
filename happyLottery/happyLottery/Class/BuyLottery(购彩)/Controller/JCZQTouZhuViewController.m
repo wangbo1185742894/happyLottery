@@ -175,8 +175,8 @@
     [_viewBottom addSubview:peiSelectView];
     peiSelectView.beiShuLimit = 9999;
     if ([self.transction.beitou isEqualToString:@""] || self.transction.beitou == nil) {
-        peiSelectView.labContent.text = @"1";
-        self.transction.beitou = @"1";
+        peiSelectView.labContent.text = @"5";
+        self.transction.beitou = @"5";
     }else{
         peiSelectView.labContent.text = self.transction.beitou;
     }
