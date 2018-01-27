@@ -41,7 +41,9 @@
 #import "Notice.h"
 #import "JumpWebViewController.h"
 
+
 @interface AppDelegate ()<NewFeatureViewDelegate,MemberManagerDelegate,JPUSHRegisterDelegate,VersionUpdatingPopViewDelegate,NetWorkingHelperDelegate>
+
 {
     UITabBarController *tabBarControllerMain;
     NSUserDefaults *defaults;
@@ -50,6 +52,10 @@
     MemberManager *memberMan;
     NSMutableArray *_messageContents;
     ZhuiHaoStopPushVIew *winPushView;
+    UIAlertView *alert;
+    NSString *pageCodeNotice;
+    NSString *linkUrlNotice;
+    NSString *titleNotice;
 }
 
 @property(nonatomic,strong)FMDatabase* fmdb;
@@ -384,7 +390,8 @@ static SystemSoundID shake_sound_male_id = 0;
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
      [[NSNotificationCenter defaultCenter] postNotificationName:@"NSNotificationapplicationWillEnterForeground" object:nil];
-    [application setApplicationIconBadgeNumber:0];   //清除角标
+    [application setApplicationIconBadgeNumber:0];
+   //清除角标
     [application cancelAllLocalNotifications];
 }
 
@@ -446,7 +453,23 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     } else {
         // Fallback on earlier versions
     }
-   
+    if (pageCodeNotice!=nil) {
+        
+        [self goToYunshiWithInfo:pageCodeNotice];
+        
+    }
+    if (linkUrlNotice!=nil) {
+        
+        UITabBarController *tab = (UITabBarController *)_window.rootViewController;
+        UINavigationController *nav = tab.viewControllers[tab.selectedIndex];
+        JumpWebViewController *jumpVC = [[JumpWebViewController alloc] initWithNibName:@"JumpWebViewController" bundle:nil];
+        jumpVC.title = @"消息详情";
+        jumpVC.URL = linkUrlNotice;
+        jumpVC.hidesBottomBarWhenPushed = YES;
+        [nav pushViewController:jumpVC animated:YES];
+        
+        
+    }
     completionHandler();  // 系统要求执行这个方法
 }
 
@@ -496,24 +519,24 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         return;
     }
    
-    if (![pageCode isEqualToString:@""]) {
-      
-        [self goToYunshiWithInfo:pageCode];
-        return;
-    }
-    if (![linkUrl isEqualToString:@""]) {
-        JumpWebViewController *jumpVC = [[JumpWebViewController alloc] initWithNibName:@"JumpWebViewController" bundle:nil];
-        
-        jumpVC.URL = linkUrl;
-        AppDelegate *delegate  = (AppDelegate*)[UIApplication sharedApplication].delegate;
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            UITabBarController *homebar = (UITabBarController *)_window.rootViewController;
-            delegate.curNavVC = (UINavigationController *)homebar.childViewControllers[homebar.selectedIndex];
-            [delegate.curNavVC pushViewController:jumpVC animated:YES];
-        });
-        return;
-    }
+//    if (![pageCode isEqualToString:@""]) {
+//      
+//        [self goToYunshiWithInfo:pageCode];
+//        return;
+//    }
+//    if (![linkUrl isEqualToString:@""]) {
+//        JumpWebViewController *jumpVC = [[JumpWebViewController alloc] initWithNibName:@"JumpWebViewController" bundle:nil];
+//        
+//        jumpVC.URL = linkUrl;
+//        AppDelegate *delegate  = (AppDelegate*)[UIApplication sharedApplication].delegate;
+//        
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            UITabBarController *homebar = (UITabBarController *)_window.rootViewController;
+//            delegate.curNavVC = (UINavigationController *)homebar.childViewControllers[homebar.selectedIndex];
+//            [delegate.curNavVC pushViewController:jumpVC animated:YES];
+//        });
+//        return;
+//    }
   
 
 }
@@ -559,6 +582,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         delegate.curNavVC = (UINavigationController *)homebar.childViewControllers[homebar.selectedIndex];
         [delegate.curNavVC pushViewController:baseVC animated:YES];
     });
+//    return;
 }
 
 // log NSSet with UTF8
@@ -594,46 +618,88 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         //NSLog(@"尼玛的推送消息呢===%@",userInfo);
         // 取得 APNs 标准信息内容，如果没需要可以不取
         NSDictionary *aps = [userInfo valueForKey:@"aps"];
-         NSString *title = [aps valueForKey:@"content-available"];
+        titleNotice = [aps valueForKey:@"content-available"];
         NSString *content = [aps valueForKey:@"alert"]; //推送显示的内容
         NSInteger badge = [[aps valueForKey:@"badge"] integerValue];
         NSString *sound = [aps valueForKey:@"sound"]; //播放的声音
         // 取得自定义字段内容，userInfo就是后台返回的JSON数据，是一个字典
-        NSString *appCode =  [userInfo valueForKey:@"pageCode"];
-        
+       pageCodeNotice =  [userInfo valueForKey:@"pageCode"];
+      linkUrlNotice=[userInfo valueForKey:@"linkUrl"];
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         //
         NSString *time = [Utility timeStringFromFormat:@"yyyy-MM-dd HH:mm:ss" withDate:[NSDate date]];
-        //    [APService handleRemoteNotification:userInfo];
-//        if ([self.fmdb open]) {
-//            NSString *cardcode=[GlobalInstance instance ].curUser.cardCode;
-//            if ([cardcode isEqualToString:@""]) {
-//                cardcode = @"cardcode";
-//            }
-//            NSString *isread = @"1";
-//            BOOL result =  [self.fmdb executeUpdate:[NSString stringWithFormat:@"insert into vcUserPushMsg (title,content, msgTime , cardcode ,ieread) values ('%@', '%@', '%@', '%@', '%@');",title,content,time,cardcode,isread]];
-//            if (result) {
-//                [self.fmdb close];
-//            }
-//        }
-  
+     
+ 
     //判断应用是在前台还是后台
     if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
         
-        //第一种情况前台运行
-//        NSString *apnCount = userInfo[@"aps"][@"alert"];
-//        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"推送信息" message:apnCount delegate:self cancelButtonTitle:@"查看" otherButtonTitles:@"取消", nil];
+//        //第一种情况前台运行
+//        alert = [[UIAlertView alloc]initWithTitle:titleNotice message:content delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"查看", nil];
 //        alert.delegate = self;
 //        [alert show];
-        
+//
     }else{
         
         //第二种情况后台挂起时
-//        [[NSNotificationCenter defaultCenter]postNotificationName:KJPUSHNOT object:nil userInfo:_notDic];
-         [self goToYunshiWithInfo:appCode];
+//
+        if (pageCodeNotice!=nil) {
+            
+            [self goToYunshiWithInfo:pageCodeNotice];
+            
+        }
+        if (linkUrlNotice!=nil) {
+           
+                    UITabBarController *tab = (UITabBarController *)_window.rootViewController;
+            UINavigationController *nav = tab.viewControllers[tab.selectedIndex];
+            JumpWebViewController *jumpVC = [[JumpWebViewController alloc] initWithNibName:@"JumpWebViewController" bundle:nil];
+            jumpVC.title = @"消息详情";
+            jumpVC.URL = linkUrlNotice;
+            jumpVC.hidesBottomBarWhenPushed = YES;
+            [nav pushViewController:jumpVC animated:YES];
+//            AppDelegate *delegate  = (AppDelegate*)[UIApplication sharedApplication].delegate;
+
+//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                UITabBarController *homebar = (UITabBarController *)_window.rootViewController;
+//                delegate.curNavVC = (UINavigationController *)homebar.childViewControllers[homebar.selectedIndex];
+//                [delegate.curNavVC pushViewController:jumpVC animated:YES];
+//           });
+            
+        }
+       
     }
     }
 }
+
+#pragma marks -- UIAlertViewDelegate --
+//根据被点击按钮的索引处理点击事件
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *btnTitle = [alertView buttonTitleAtIndex:buttonIndex];
+        if ([btnTitle isEqualToString:@"取消"]) {
+            [alert removeFromSuperview];
+         }else if ([btnTitle isEqualToString:@"确定"] ) {
+             if (![pageCodeNotice isEqualToString:@"(null)"]) {
+                 
+                 [self goToYunshiWithInfo:pageCodeNotice];
+                 
+             }
+             if (![linkUrlNotice isEqualToString:@"(null)"]) {
+                 JumpWebViewController *jumpVC = [[JumpWebViewController alloc] initWithNibName:@"JumpWebViewController" bundle:nil];
+                 jumpVC.title = titleNotice;
+                 jumpVC.URL = linkUrlNotice;
+                 AppDelegate *delegate  = (AppDelegate*)[UIApplication sharedApplication].delegate;
+                 
+//                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                     UITabBarController *homebar = (UITabBarController *)_window.rootViewController;
+                     delegate.curNavVC = (UINavigationController *)homebar.childViewControllers[homebar.selectedIndex];
+                     [delegate.curNavVC pushViewController:jumpVC animated:YES];
+//                 });
+             }
+           
+               }
+}
+
+
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     

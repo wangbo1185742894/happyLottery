@@ -10,4 +10,5 @@
 
 @interface JumpWebViewController : BaseViewController
 @property(strong, nonatomic) NSString* URL;
+@property(strong, nonatomic) NSString* title;
 @end

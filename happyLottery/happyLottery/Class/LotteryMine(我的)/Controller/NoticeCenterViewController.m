@@ -13,6 +13,7 @@
 #import "Notice.h"
 #import "FMDB.h"
 #import "JumpWebViewController.h"
+#import "DiscoverViewController.h"
 
 @interface NoticeCenterViewController ()<MemberManagerDelegate,UITableViewDelegate,UITableViewDataSource>{
     
@@ -301,7 +302,7 @@
         [self goToYunshiWithInfo:notice];
     }else if ([type isEqualToString:@"H5PAGE"]||[type isEqualToString:@"EDITOR"]) {
         JumpWebViewController *jumpVC = [[JumpWebViewController alloc] initWithNibName:@"JumpWebViewController" bundle:nil];
-        
+         jumpVC.title = notice.title;
         jumpVC.URL = notice.linkUrl;
         [self.navigationController pushViewController:jumpVC animated:YES];
     }else if ([type isEqualToString:@"TEXT"]) {
@@ -314,19 +315,20 @@
     }else if (tableView ==self.tableView2){
          Notice* notice = listPersonNoticeArray[indexPath.row];
            NSString *linkUrl=notice.linkUrl;
-        if (![notice.thumbnailCode isEqualToString:@""]) {
+        if (![notice.thumbnailCode isEqualToString:@"(null)"]) {
             NSString *pageCode=notice.thumbnailCode;
             [self goToYunshiWithInfo:notice];
-            return;
+           
         }
-        if (![linkUrl isEqualToString:@""]) {
+        if (![linkUrl isEqualToString:@"(null)"]) {
             JumpWebViewController *jumpVC = [[JumpWebViewController alloc] initWithNibName:@"JumpWebViewController" bundle:nil];
             
             jumpVC.URL = linkUrl;
+             jumpVC.title = notice.title;
             [self.navigationController pushViewController:jumpVC animated:YES];
-            return;
+       
         }
-        if ([notice.thumbnailCode isEqualToString:@""]&&[linkUrl isEqualToString:@""]){
+        if ([notice.thumbnailCode isEqualToString:@"(null)"]&&[linkUrl isEqualToString:@"(null)"]){
          NoticeDetailViewController *vc = [[NoticeDetailViewController alloc] init];
          vc.notice = listPersonNoticeArray[indexPath.row];
          [self.navigationController pushViewController: vc animated: YES];
@@ -363,69 +365,37 @@
     
     baseVC =[[class alloc] init];
     
+
+    
     if([keyStr isEqualToString:@"A401"]){
-        baseVC.hidesBottomBarWhenPushed = NO;
-        [self backNav:baseVC];
+
+        self.tabBarController.selectedIndex = 2;
+        return;
     }else if([keyStr isEqualToString:@"A402"]){
-        baseVC.hidesBottomBarWhenPushed = NO;
-         [self backNav:baseVC];
+
+        self.tabBarController.selectedIndex = 1;
+        return;
     }else if ([keyStr isEqualToString:@"A201"]){
-        baseVC.hidesBottomBarWhenPushed = NO;
-         [self backNav:baseVC];
+
+             self.tabBarController.selectedIndex = 4;
     }else if([keyStr isEqualToString:@"A000"]){
-        baseVC.hidesBottomBarWhenPushed = NO;
-         [self backNav:baseVC];
-    }else{
+
+             self.tabBarController.selectedIndex = 0;
+    }else if ([keyStr isEqualToString:@"A403"]){
+        self.tabBarController.selectedIndex = 2;
+        UINavigationController *discoverNavVC = self.tabBarController.viewControllers[2];
+        DiscoverViewController *disVC = [discoverNavVC.viewControllers firstObject];
+        if (self.curUser.isLogin == YES && self.curUser.cardCode != nil) {
+            disVC.pageUrl = [NSString stringWithFormat:@"%@/app/find/turntable?activityId=5&cardCode=%@",H5BaseAddress,self.curUser.cardCode];
+        }
+    }{
         baseVC.hidesBottomBarWhenPushed = YES;
          [self.navigationController pushViewController:baseVC animated:YES];
     }
+  
    
 }
 
-- (void)backNav:(UIViewController*)CourseTableController
-
-{
-//
-//    UINavigationController *navigationVC = self.navigationController;
-//
-//    NSMutableArray *viewControllers = [[NSMutableArray alloc] init];
-//
-//        //遍历导航控制器中的控制器
-//
-//    for (UIViewController *vc in navigationVC.viewControllers) {
-//
-//        [viewControllers addObject:vc];
-//
-//        //        CourseTableController就是你需要返回到指定的控制器名称，这里我需要跳转到CourseTableController这个控制器
-//
-//        if ([vc isKindOfClass:[CourseTableController class]]) {
-//  [self.navigationController popToViewController:vc animated:YES];
-//            break;
-//
-//        }
-//
-//    }
-    UIViewController *viewController=nil;
-    
-    for (UIViewController *tempVc in self.navigationController.viewControllers) {
-        
-        if ([tempVc isKindOfClass:[CourseTableController class]]) {
-            
-            viewController=tempVc;
-            
-        }
-        
-    }
-    
-    [self.navigationController popToViewController:viewController animated:YES];
-    
-
-    
-    //    把控制器重新添加到导航控制器
-    
- 
-    
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
