@@ -38,6 +38,8 @@
 
 #import <AudioToolbox/AudioToolbox.h>//添加推送声音lala
 #import "DiscoverViewController.h"
+#import "Notice.h"
+#import "JumpWebViewController.h"
 
 @interface AppDelegate ()<NewFeatureViewDelegate,MemberManagerDelegate,JPUSHRegisterDelegate,VersionUpdatingPopViewDelegate,NetWorkingHelperDelegate>
 {
@@ -225,7 +227,7 @@ static SystemSoundID shake_sound_male_id = 0;
     if ([self .fmdb open]) {
         BOOL iscreate = [self.fmdb executeUpdate:@"create table if not exists t_user_info(id integer primary key, cardCode text, mobile text ,loginPwd text, isLogin text,payVerifyType text)"];
         BOOL resultVC = [self.fmdb executeUpdate:@"create table if not exists vcUserActiveInfo(id integer primary key autoincrement, vcNo text,updateDate text, visitCount integer , visitTime integer)"];
-        BOOL resultMsgInfo = [self.fmdb executeUpdate:@"create table if not exists vcUserPushMsg(id integer primary key autoincrement, title text,content text, msgTime text,cardcode text,isread text)"];
+        BOOL resultMsgInfo = [self.fmdb executeUpdate:@"create table if not exists vcUserPushMsg(id integer primary key autoincrement, title text,content text, msgTime text,cardcode text,isread text, pagecode text,url text)"];
         BOOL resultSystemNoticeInfo = [self.fmdb executeUpdate:@"create table if not exists SystemNotice(id integer primary key autoincrement, title text,content text, msgTime text,cardcode text,isread text,type text, pagecode text,url text)"];
         if (iscreate && resultVC && resultMsgInfo && resultSystemNoticeInfo) {
             [self.fmdb close];
@@ -241,7 +243,7 @@ static SystemSoundID shake_sound_male_id = 0;
 //            cardcode = @"cardcode";
 //        }
 //
-//        BOOL result =  [self.fmdb executeUpdate:[NSString stringWithFormat:@"insert into vcUserPushMsg (title,content, msgTime , cardcode) values ('%@', '%@', '%@', '%@');",@"title",@"content",time,@"123"]];
+//        BOOL result =  [self.fmdb executeUpdate:[NSString stringWithFormat:@"insert into vcUserPushMsg (title,content, msgTime , cardcode  ,isread) values ('%@', '%@', '%@', '%@', '%@');",@"title",@"content",time,@"123",@"123"]];
 //        if (result) {
 //            [self.fmdb close];
 //        }
@@ -449,17 +451,33 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 }
 
 - (void)networkDidReceiveMessage:(NSNotification *)notification {
+    
     NSDictionary * userInfo = [notification userInfo];
+    NSLog(@"推送消息==== %@",userInfo);
     NSString *title = [userInfo valueForKey:@"title"];
     NSString *content = [userInfo valueForKey:@"content"];
     NSDictionary *extra = [userInfo valueForKey:@"extras"];
     NSString *customizeField1 = [extra valueForKey:@"customizeField1"]; //服务端传递的Extras附加字段，key是自己定义的
-
-//
-//
-   
     NSString *pageCode =extra[@"pageCode"] ;
-    NSString *messageType=extra[@"messageType"] ;
+    NSString *linkUrl=extra[@"linkUrl"] ;
+//
+//
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //
+    NSString *time = [Utility timeStringFromFormat:@"yyyy-MM-dd HH:mm:ss" withDate:[NSDate date]];
+    //    [APService handleRemoteNotification:userInfo];
+    if ([self.fmdb open]) {
+        NSString *cardcode=[GlobalInstance instance ].curUser.cardCode;
+        if ([cardcode isEqualToString:@""]) {
+            cardcode = @"cardcode";
+        }
+        
+        BOOL result =  [self.fmdb executeUpdate:[NSString stringWithFormat:@"insert into vcUserPushMsg (title,content, msgTime , cardcode  ,isread, pagecode ,url ) values ('%@', '%@', '%@', '%@', '%@', '%@', '%@');",title,content,time,cardcode,@"1",pageCode,linkUrl]];
+        if (result) {
+            [self.fmdb close];
+        }
+    }
+   
 //    DRAW_MESSAGE("中奖消息"),
 //    FORECAST_LOTTERY_MESSAGE("预测开奖消息"),
 //    ACTIVITY_MESSAGE("活动消息"),
@@ -475,8 +493,28 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         winPushView = [[ZhuiHaoStopPushVIew alloc]initWithFrame:[UIScreen  mainScreen].bounds];
         [winPushView refreshInfo:title andContent:content];
         [[UIApplication sharedApplication].keyWindow addSubview:winPushView];
-
+        return;
     }
+   
+    if (![pageCode isEqualToString:@""]) {
+      
+        [self goToYunshiWithInfo:pageCode];
+        return;
+    }
+    if (![linkUrl isEqualToString:@""]) {
+        JumpWebViewController *jumpVC = [[JumpWebViewController alloc] initWithNibName:@"JumpWebViewController" bundle:nil];
+        
+        jumpVC.URL = linkUrl;
+        AppDelegate *delegate  = (AppDelegate*)[UIApplication sharedApplication].delegate;
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            UITabBarController *homebar = (UITabBarController *)_window.rootViewController;
+            delegate.curNavVC = (UINavigationController *)homebar.childViewControllers[homebar.selectedIndex];
+            [delegate.curNavVC pushViewController:jumpVC animated:YES];
+        });
+        return;
+    }
+  
 
 }
 
@@ -556,27 +594,28 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         //NSLog(@"尼玛的推送消息呢===%@",userInfo);
         // 取得 APNs 标准信息内容，如果没需要可以不取
         NSDictionary *aps = [userInfo valueForKey:@"aps"];
-         NSString *title = [userInfo valueForKey:@"title"];
+         NSString *title = [aps valueForKey:@"content-available"];
         NSString *content = [aps valueForKey:@"alert"]; //推送显示的内容
         NSInteger badge = [[aps valueForKey:@"badge"] integerValue];
         NSString *sound = [aps valueForKey:@"sound"]; //播放的声音
         // 取得自定义字段内容，userInfo就是后台返回的JSON数据，是一个字典
         NSString *appCode =  [userInfo valueForKey:@"pageCode"];
+        
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         //
         NSString *time = [Utility timeStringFromFormat:@"yyyy-MM-dd HH:mm:ss" withDate:[NSDate date]];
         //    [APService handleRemoteNotification:userInfo];
-        if ([self.fmdb open]) {
-            NSString *cardcode=[GlobalInstance instance ].curUser.cardCode;
-            if ([cardcode isEqualToString:@""]) {
-                cardcode = @"cardcode";
-            }
-            NSString *isread = @"1";
-            BOOL result =  [self.fmdb executeUpdate:[NSString stringWithFormat:@"insert into vcUserPushMsg (title,content, msgTime , cardcode ,ieread) values ('%@', '%@', '%@', '%@', '%@');",title,content,time,cardcode,isread]];
-            if (result) {
-                [self.fmdb close];
-            }
-        }
+//        if ([self.fmdb open]) {
+//            NSString *cardcode=[GlobalInstance instance ].curUser.cardCode;
+//            if ([cardcode isEqualToString:@""]) {
+//                cardcode = @"cardcode";
+//            }
+//            NSString *isread = @"1";
+//            BOOL result =  [self.fmdb executeUpdate:[NSString stringWithFormat:@"insert into vcUserPushMsg (title,content, msgTime , cardcode ,ieread) values ('%@', '%@', '%@', '%@', '%@');",title,content,time,cardcode,isread]];
+//            if (result) {
+//                [self.fmdb close];
+//            }
+//        }
   
     //判断应用是在前台还是后台
     if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {

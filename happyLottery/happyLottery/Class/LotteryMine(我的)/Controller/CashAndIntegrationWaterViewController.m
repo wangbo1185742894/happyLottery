@@ -285,7 +285,7 @@
             }
             float b=[cashBoltter.remBalance floatValue];
             
-            cell.retainLab.text =[NSString stringWithFormat:@"余额：%.2f",b];
+            cell.retainLab.text =[NSString stringWithFormat:@"余额:%.2f",b];
         }
     }
     

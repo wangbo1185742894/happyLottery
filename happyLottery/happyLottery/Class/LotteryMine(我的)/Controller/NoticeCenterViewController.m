@@ -109,7 +109,9 @@
                             notice.content = [rs stringForColumn:@"content"];
                             notice.cardcode = [rs stringForColumn:@"cardcode"];
                             notice.releaseTime = [rs stringForColumn:@"msgTime"];
-                            //            [self goImage:student.photo];
+                            notice.isread = [rs stringForColumn:@"isread"];
+                            notice.thumbnailCode = [rs stringForColumn:@"pagecode"];
+                            notice.linkUrl = [rs stringForColumn:@"url"];
                             [array addObject: notice];
                         }
 
@@ -144,7 +146,7 @@
             notice.releaseTime = [rs stringForColumn:@"msgTime"];
             notice.isread = [rs stringForColumn:@"isread"];
             notice._id = [rs stringForColumn:@"id"];
-              notice.type = [rs stringForColumn:@"type"];
+            notice.type = [rs stringForColumn:@"type"];
                notice.thumbnailCode = [rs stringForColumn:@"pagecode"];
                notice.linkUrl = [rs stringForColumn:@"url"];
             //            [self goImage:student.photo];
@@ -276,7 +278,8 @@
     [tableView deselectRowAtIndexPath: indexPath animated: YES];
     NoticeCenterTableViewCell  *selectCell = [tableView cellForRowAtIndexPath:indexPath];
     if (tableView ==self.tableView1) {
-     Notice* notice = listSystemNoticeArray[indexPath.row];
+            long i=listSystemNoticeArray.count-indexPath.row-1;
+     Notice* notice = listSystemNoticeArray[i];
         if ([self.fmdb open]) {
             NSString *cardcode=[GlobalInstance instance ].curUser.cardCode;
             if ([cardcode isEqualToString:@""]) {
@@ -296,7 +299,7 @@
     if ([type isEqualToString:@"APP"]) {
           NSString *pageCode=notice.thumbnailCode;
         [self goToYunshiWithInfo:notice];
-    }else if ([type isEqualToString:@"H5PAGE"]) {
+    }else if ([type isEqualToString:@"H5PAGE"]||[type isEqualToString:@"EDITOR"]) {
         JumpWebViewController *jumpVC = [[JumpWebViewController alloc] initWithNibName:@"JumpWebViewController" bundle:nil];
         
         jumpVC.URL = notice.linkUrl;
@@ -309,9 +312,25 @@
     }
         
     }else if (tableView ==self.tableView2){
+         Notice* notice = listPersonNoticeArray[indexPath.row];
+           NSString *linkUrl=notice.linkUrl;
+        if (![notice.thumbnailCode isEqualToString:@""]) {
+            NSString *pageCode=notice.thumbnailCode;
+            [self goToYunshiWithInfo:notice];
+            return;
+        }
+        if (![linkUrl isEqualToString:@""]) {
+            JumpWebViewController *jumpVC = [[JumpWebViewController alloc] initWithNibName:@"JumpWebViewController" bundle:nil];
+            
+            jumpVC.URL = linkUrl;
+            [self.navigationController pushViewController:jumpVC animated:YES];
+            return;
+        }
+        if ([notice.thumbnailCode isEqualToString:@""]&&[linkUrl isEqualToString:@""]){
          NoticeDetailViewController *vc = [[NoticeDetailViewController alloc] init];
          vc.notice = listPersonNoticeArray[indexPath.row];
          [self.navigationController pushViewController: vc animated: YES];
+        }
     }
    
 }
@@ -331,6 +350,7 @@
         }
     }
     BaseViewController *baseVC;
+   
     NSDictionary * vcDic = [NSDictionary dictionaryWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"pageCodeConfig" ofType:@"plist"]];
     if (keyStr == nil || [keyStr isEqualToString:@""]) {
         return;
@@ -343,10 +363,68 @@
     
     baseVC =[[class alloc] init];
     
+    if([keyStr isEqualToString:@"A401"]){
+        baseVC.hidesBottomBarWhenPushed = NO;
+        [self backNav:baseVC];
+    }else if([keyStr isEqualToString:@"A402"]){
+        baseVC.hidesBottomBarWhenPushed = NO;
+         [self backNav:baseVC];
+    }else if ([keyStr isEqualToString:@"A201"]){
+        baseVC.hidesBottomBarWhenPushed = NO;
+         [self backNav:baseVC];
+    }else if([keyStr isEqualToString:@"A000"]){
+        baseVC.hidesBottomBarWhenPushed = NO;
+         [self backNav:baseVC];
+    }else{
+        baseVC.hidesBottomBarWhenPushed = YES;
+         [self.navigationController pushViewController:baseVC animated:YES];
+    }
+   
+}
+
+- (void)backNav:(UIViewController*)CourseTableController
+
+{
+//
+//    UINavigationController *navigationVC = self.navigationController;
+//
+//    NSMutableArray *viewControllers = [[NSMutableArray alloc] init];
+//
+//        //遍历导航控制器中的控制器
+//
+//    for (UIViewController *vc in navigationVC.viewControllers) {
+//
+//        [viewControllers addObject:vc];
+//
+//        //        CourseTableController就是你需要返回到指定的控制器名称，这里我需要跳转到CourseTableController这个控制器
+//
+//        if ([vc isKindOfClass:[CourseTableController class]]) {
+//  [self.navigationController popToViewController:vc animated:YES];
+//            break;
+//
+//        }
+//
+//    }
+    UIViewController *viewController=nil;
     
-    baseVC.hidesBottomBarWhenPushed = YES;
+    for (UIViewController *tempVc in self.navigationController.viewControllers) {
+        
+        if ([tempVc isKindOfClass:[CourseTableController class]]) {
+            
+            viewController=tempVc;
+            
+        }
+        
+    }
     
-    [self.navigationController pushViewController:baseVC animated:YES];
+    [self.navigationController popToViewController:viewController animated:YES];
+    
+
+    
+    //    把控制器重新添加到导航控制器
+    
+ 
+    
 }
 
 - (void)didReceiveMemoryWarning {

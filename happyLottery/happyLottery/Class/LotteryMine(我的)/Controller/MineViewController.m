@@ -60,6 +60,7 @@
     if (self.curUser.isLogin==YES) {
         [self updateMemberClinet];
         [self getSystemNoticeClient];
+        [self searchSystemDB];
          [self getRedPacketByStateClient:@"true"];
         [self CheckFeedBackRedNumClient];
     } else {
@@ -467,7 +468,7 @@
                 NSLog(@"redPacket%@",notice.content);
             }
             //[self.fmdb close];
-            [self searchSystemDB];
+        
         }else{
             [self showPromptText: @"服务器连接失败" hideAfterDelay: 1.7];
         }

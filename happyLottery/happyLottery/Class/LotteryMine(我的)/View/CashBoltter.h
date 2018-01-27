@@ -13,6 +13,6 @@
 @property(nonatomic,strong)NSString * amounts;
 @property(nonatomic,strong)NSString *createTime;
 @property(nonatomic,strong)NSString *orderType;
-@property(nonatomic,strong)NSNumber* remBalance;
+@property(nonatomic,strong)NSString* remBalance;
 
 @end
