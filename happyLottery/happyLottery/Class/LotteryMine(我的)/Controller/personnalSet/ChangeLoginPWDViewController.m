@@ -51,7 +51,7 @@
         
         [self showPromptText: @"请输入6-16位确认密码" hideAfterDelay: 1.7];
         return;
-    }else if(![self.PWD2.text isEqualToString:self.PWD3.text]){
+    }else if(![[self.PWD2.text lowercaseString] isEqualToString:[self.PWD3.text lowercaseString]]){
         [self showPromptText: @"两次输入的密码不一致！" hideAfterDelay: 1.7];
         return ;
     }
@@ -65,8 +65,8 @@
     
     NSDictionary *resetPWDInfo;
     @try {
-        NSString *pwd1 = self.PWD1.text;
-        NSString *pwd2 = self.PWD2.text;
+        NSString *pwd1 = [self.PWD1.text lowercaseString];
+        NSString *pwd2 = [self.PWD2.text lowercaseString];
         
         NSString *mobile = self.curUser.mobile;
         
@@ -107,7 +107,7 @@
     if ([self.fmdb open]) {
         NSString *mobile =self.curUser.mobile;
         NSString * isLogin =@"0";
-        //update t_student set score = age where name = ‘jack’ ;
+        
         [self.fmdb executeUpdate:@"update  t_user_info set isLogin = ? where mobile = ?",isLogin, mobile];
         [self.fmdb close];
     }
@@ -150,14 +150,14 @@
     if (textField ==  self.PWD1) {
         
         if (str.length >16 ) {
-            [self showPromptText: @"初始密码不能超过16位" hideAfterDelay: 1.7];
+            
             return NO;
         }
     }
     if (textField ==  self.PWD2 ) {
         
         if (str.length >16 ) {
-            [self showPromptText: @"新密码不能超过16位" hideAfterDelay: 1.7];
+            
             return NO;
         }
     }
@@ -177,7 +177,7 @@
 }
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
-    //    [self setBoaderColor:textField color:SystemGreen];
+//        [self setBoaderColor:textField color:SystemGreen];
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{

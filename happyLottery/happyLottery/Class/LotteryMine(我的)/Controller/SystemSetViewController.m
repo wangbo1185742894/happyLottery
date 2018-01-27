@@ -69,7 +69,7 @@
 #pragma  mark - checkUpdateNetWork
 - (void)checkUpdateNetWork {
     NSString *version = @"release";
-    NSString * string = [NSString stringWithFormat:@"http://ct.11max.com/ClientVersion/CheckUpdate?versionCode=%@&mobileos=ios&appname=com.xaonly.tbz.ios",version];
+    NSString * string = [NSString stringWithFormat:@"http://ct.11max.com//ClientVersion/CheckUpdate?versionCode=%@&mobileos=ios&appname=com.xaonly.tbz.ios&subversion=%@",@"1",version];
     netWorkHelper *helper = [[netWorkHelper alloc] init];
     [helper getRequestMethodWithUrlstring:string parameter:nil];
     helper.delegate = self;
@@ -80,7 +80,7 @@
 -(void)passValueWithDic:(NSDictionary *)value{
     if([value isKindOfClass:[NSDictionary class]])
     {
-        if ([value[@"ForceUpgrade"] isEqualToString:@"true"]) {
+        if (! [value[@"ForceUpgrade"] isEqualToString:@"true"]) {
             
             
             //            ZLAlertView *alert = [[ZLAlertView alloc] initWithTitle:@"更新提示" message:value[@"VersionDesc"]];

@@ -22,10 +22,9 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bjCoupon.png" translatesAutoresizingMaskIntoConstraints="NO" id="rRi-kK-ZrV">
                         <rect key="frame" x="3" y="12" width="369" height="95.5"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="914-IS-JxN">
-                        <rect key="frame" x="23" y="16" width="50" height="58"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10.00" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="914-IS-JxN">
+                        <rect key="frame" x="23" y="16" width="65" height="58"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="50" id="10P-d3-qtX"/>
                             <constraint firstAttribute="height" constant="58" id="d2r-Ep-jXC"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="46"/>
@@ -137,6 +136,7 @@
                     <constraint firstAttribute="trailing" secondItem="fXC-VY-q4R" secondAttribute="trailing" constant="8" id="9mP-HQ-L8C"/>
                     <constraint firstItem="fFT-Ew-h70" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="54" id="9qx-0x-WcJ"/>
                     <constraint firstItem="2IU-d9-Fcp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="14" id="CFx-EF-tdW"/>
+                    <constraint firstItem="okE-oS-qMb" firstAttribute="leading" secondItem="914-IS-JxN" secondAttribute="trailing" constant="5" id="Dj6-0M-Pmk"/>
                     <constraint firstItem="IZ9-4Q-ZzL" firstAttribute="leading" secondItem="GfK-Ng-TFz" secondAttribute="trailing" constant="21" id="EPW-S3-yx0"/>
                     <constraint firstAttribute="trailingMargin" secondItem="pir-Lm-6FQ" secondAttribute="trailing" constant="33" id="FMY-xJ-a9v"/>
                     <constraint firstItem="r2Q-iv-1sF" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="HZ1-Ig-gOZ"/>

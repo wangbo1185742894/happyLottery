@@ -14,6 +14,7 @@
     NSMutableArray *listBankArray;
     BankCard *bankCard;
     NSString *name;
+    BOOL _canedit;
 }
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
@@ -33,7 +34,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFiledEditChanged:)name:UITextFieldTextDidChangeNotification object:self.nameTextField];
+
     if (self.popTitle != nil) {
         [self showPromptText:self.popTitle hideAfterDelay:2.0];
     }
@@ -63,6 +65,7 @@
     }
     [self.memberMan getSupportBankSms];
 }
+
 - (IBAction)getBankClick:(id)sender {
   
 //    if (listBankArray.count > 0) {
@@ -83,8 +86,12 @@
             [self showPromptText: @"请输入真实姓名" hideAfterDelay: 1.7];
             return;
         }
-        [self bindNameClient];
+        if (self.curUser.name == nil || self.curUser.name.length == 0) {
+            
+            [self bindNameClient];
+        }
     }
+    
       NSString *bankname = self.getBankBtn.titleLabel.text;
    if ([bankname isEqualToString:@"请选择开户银行"]) {
         [self showPromptText: @"请选择开户银行" hideAfterDelay: 1.7];
@@ -182,7 +189,6 @@
 
 #pragma UITextFieldDelegate
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
-    textField.text=@"";
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{
@@ -216,21 +222,15 @@
         return YES;
     }
     
-    NSString * regex;
-    if (textField == self.bankCodeTextField ) {
-    
-        regex = @"^[0-9]";
-        
-    }
-    
-    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
-    BOOL isMatch = [pred evaluateWithObject:string];
-    if (isMatch == NO) {
-        return NO;
-    }
-    
+
     NSString *str = [NSString stringWithFormat:@"%@%@",textField.text,string];
     if (textField == self.nameTextField ) {
+        NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"[^\u4e00-\u9fa5]"];
+        BOOL isMatch = [pred evaluateWithObject:string];
+        if (isMatch == YES) {
+            return NO;
+        }
+        
         if (str.length >15) {
             [self showPromptText: @"姓名不能超过15位" hideAfterDelay: 1.7];
             return NO;
@@ -238,6 +238,19 @@
     }
     
     if (textField == self.bankCodeTextField ) {
+        
+        NSString * regex;
+        
+        
+        regex = @"^[0-9]";
+        
+        
+        NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+        BOOL isMatch = [pred evaluateWithObject:string];
+        if (isMatch == NO) {
+            return NO;
+        }
+        
         // 四位加一个空格
         if ([string isEqualToString:@""]) {
             
@@ -257,14 +270,14 @@
         
       
         if (str.length >24) {
-            [self showPromptText: @"银行卡号码不能超过19位" hideAfterDelay: 1.7];
+            
             return NO;
         }
           return YES;
     }
     
    
-    return isMatch;
+    return YES;
 }
 
 #pragma UITableViewDataSource methods
@@ -337,6 +350,52 @@
     self.backView.hidden = YES;
 }
 
+-(void)textFiledEditChanged:(NSNotification *)obj{
+    
+    UITextField *textField = (UITextField *)obj.object;
+    NSString *toBeString = textField.text;
+    NSString *lang = [[UITextInputMode currentInputMode] primaryLanguage]; // 键盘输入模式
+    if ([lang isEqualToString:@"zh-Hans"]) { // 简体中文输入，包括简体拼音，健体五笔，简体手写
+        
+        UITextRange *selectedRange = [textField markedTextRange];
+        //获取高亮部分
+        UITextPosition *position = [textField positionFromPosition:selectedRange.start offset:0];
+        // 没有高亮选择的字，则对已输入的文字进行字数统计和限制
+        int chNum =0;
+        for (int i=0; i<toBeString.length; ++i)
+        {
+            NSRange range = NSMakeRange(i, 1);
+            NSString *subString = [toBeString substringWithRange:range];
+            const char *cString = [subString UTF8String];
+            if (strlen(cString) == 3)
+            {
+                NSLog(@"汉字:%@",subString);
+                chNum ++;
+            }
+        }
+        
+        if (chNum>=9) {
+            _canedit =NO;
+        }
+        
+        if (!position) {
+            if (toBeString.length > 10) {
+                textField.text = [toBeString substringToIndex:10];
+                _canedit =YES;
+            }
+        }
+        
+        else{
+        }
+    }
+    
+    else{
+        if (toBeString.length > 20) {
+            textField.text = [toBeString substringToIndex:20];
+            _canedit =NO;
+        }
+    }
+}
 
 
 @end

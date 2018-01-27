@@ -32,7 +32,6 @@
 static NSInteger seq = 0;
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog( @"LoginViewController___viewDidLoad%d",CFAbsoluteTimeGetCurrent());
     self.title = @"登录";
     self.fimageView.layer.cornerRadius = 4;
     self.loginBtn.enabled = NO;
@@ -84,7 +83,7 @@ static NSInteger seq = 0;
     sendBalance = 0;
     whitelist = 0;*/
     User *user = [[User alloc]initWith:userInfo];
-    user.loginPwd = self.passwordTextField.text;
+    user.loginPwd = [self.passwordTextField.text lowercaseString];
     user.isLogin = YES;
     [GlobalInstance instance].curUser = user;
     
@@ -160,7 +159,7 @@ static NSInteger seq = 0;
     NSDictionary *loginInfo;
     @try {
         NSString *mobile = self.userTextField.text;
-        NSString *pwd = self.passwordTextField.text;
+        NSString *pwd = [self.passwordTextField.text lowercaseString];
         
         loginInfo = @{@"mobile":mobile,
                     @"pwd": [AESUtility encryptStr: pwd],
@@ -216,6 +215,7 @@ static NSInteger seq = 0;
 }
 - (IBAction)forgetBtnClick:(id)sender {
     ForgetPWDViewController *forgetVC = [[ForgetPWDViewController alloc]init];
+    forgetVC.strTel = self.userTextField.text;
     [self.navigationController pushViewController:forgetVC animated:YES];
 }
 - (IBAction)registerBtnClick:(id)sender {
@@ -290,7 +290,7 @@ static NSInteger seq = 0;
     NSString *str = [NSString stringWithFormat:@"%@%@",textField.text,string];
     if (textField == _userTextField) {
         if (str.length >11) {
-            [self showPromptText: @"手机号码不能超过11位" hideAfterDelay: 1.7];
+            
             return NO;
         }
     }
@@ -298,7 +298,7 @@ static NSInteger seq = 0;
     if (textField == _passwordTextField ) {
         
         if (str.length >16) {
-            [self showPromptText: @"密码不能超过16位" hideAfterDelay: 1.7];
+            
             return NO;
         }
     }

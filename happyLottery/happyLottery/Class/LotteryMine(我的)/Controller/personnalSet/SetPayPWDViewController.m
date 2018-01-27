@@ -191,14 +191,14 @@
     if (textField ==  self.payPWDTextField) {
         
         if (str.length >6 ) {
-            [self showPromptText: @"设置密码不能超过6位" hideAfterDelay: 1.7];
+            
             return NO;
         }
     }
     if (textField ==  self.payPWDAgainTextField ) {
         
         if (str.length >6 ) {
-            [self showPromptText: @"确认密码不能超过6位" hideAfterDelay: 1.7];
+            
             return NO;
         }
     }

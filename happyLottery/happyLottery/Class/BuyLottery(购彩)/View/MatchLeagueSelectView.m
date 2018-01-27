@@ -63,7 +63,7 @@
         }
     }else if(sender.tag == 1002){
         for (UIButton *btn in self.arrayItemLea) {
-            if ([btn.currentTitle isEqualToString:@"英超"]||[btn.currentTitle isEqualToString:@"英超"]||[btn.currentTitle isEqualToString:@"英超"]||[btn.currentTitle isEqualToString:@"英超"]||[btn.currentTitle isEqualToString:@"英超"]) {
+            if ([btn.currentTitle isEqualToString:@"意甲"]||[btn.currentTitle isEqualToString:@"英超"]||[btn.currentTitle isEqualToString:@"西甲"]||[btn.currentTitle isEqualToString:@"德甲"]||[btn.currentTitle isEqualToString:@"法甲"]) {
                 btn.selected = YES;
             }else{
                 btn.selected = NO;

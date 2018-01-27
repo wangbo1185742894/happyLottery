@@ -74,6 +74,7 @@
     content  = [titleArray componentsJoinedByString:@"\n"];
     
     self.labTouzhuneirong.text = content ;
+    self.labTouzhuneirong.adjustsFontSizeToFitWidth = YES;
     self.labNumber.text = [NSString stringWithFormat:@"%@注%@倍",dic[@"unit"],dic[@"multiple"]];
     
     [self setNumberColor:self.labNumber];
@@ -149,11 +150,11 @@
     
 //    [style setLineBreakMode:NSLineBreakByCharWrapping];
     
-    NSDictionary *attributes = @{ NSFontAttributeName : [UIFont systemFontOfSize:14]};
+    NSDictionary *attributes = @{ NSFontAttributeName : [UIFont systemFontOfSize:15]};
 
 
    float width = [UIScreen mainScreen].bounds.size.width;
-   return [content boundingRectWithSize:CGSizeMake(KscreenWidth - 40, 0) options:opts attributes:attributes context:nil].size.height + 130;
+   return [content boundingRectWithSize:CGSizeMake(KscreenWidth - 50, 0) options:opts attributes:attributes context:nil].size.height + 150;
 
 }
 

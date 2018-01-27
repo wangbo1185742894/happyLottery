@@ -473,7 +473,7 @@
 }
 
 -(void)cleanAllSelectMatch{
-    self.trancation.beitou = @"1";
+    self.trancation.beitou = @"5";
     for (NSMutableArray *marrya in self.matchArray) {
         for (JCZQMatchModel *model in marrya) {
             if (model.isSelect == YES) {

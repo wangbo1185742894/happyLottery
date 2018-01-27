@@ -32,6 +32,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"忘记密码";
+    self.phoneTextField.text = self.strTel;
     self.memberMan.delegate = self;
     self.phoneTextField.delegate = self;
     self.VerificationCodeTextField.delegate = self;
@@ -54,6 +55,9 @@
        // self.bigView.translatesAutoresizingMaskIntoConstraints = NO;
         self.viewTop.constant = 88;
     }
+    if (self.phoneTextField.text.length == 11) {
+        self.getVerifyCodeBtn.enabled = YES;
+    }
 }
 
 -(void)sendForgetPWDSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
@@ -72,6 +76,11 @@
         [self showPromptText:@"验证成功" hideAfterDelay:1.7];
         
         _phoneTextField.enabled = NO;
+        
+        _getVerifyCodeBtn.enabled = NO;
+        [_getVerifyCodeBtn setTitle:@"获取验证码" forState:UIControlStateDisabled];
+        [countDownTimer invalidate];
+        
         _VerificationCodeTextField.enabled = NO;
         _phoneTextField.rightView.hidden = NO;
         _VerificationCodeTextField.rightView.hidden = NO;
@@ -168,7 +177,7 @@
    else if (_phoneTextField.text.length < 11) {
         [self showPromptText: @"请输入有效手机号" hideAfterDelay: 1.7];
         return;
-   }else if(![_PWDTextAgainField.text isEqualToString:_PWDTextField.text]){
+   }else if(![[_PWDTextAgainField.text lowercaseString] isEqualToString:[_PWDTextField.text lowercaseString]]){
        [self showPromptText: @"两次输入的密码不一致！" hideAfterDelay: 1.7];
        _PWDTextAgainField.text=@"";
        _PWDTextField.text=@"";
@@ -188,7 +197,7 @@
     NSDictionary *forgetPWDInfo;
     @try {
         NSString *mobile = self.phoneTextField.text;
-        NSString *pwd = self.PWDTextAgainField.text;
+        NSString *pwd = [self.PWDTextAgainField.text lowercaseString];
         NSString *checkCode = self.VerificationCodeTextField.text;
         
         forgetPWDInfo = @{@"mobile":mobile,
@@ -264,7 +273,7 @@
     NSString *str = [NSString stringWithFormat:@"%@%@",textField.text,string];
     if (textField == _phoneTextField) {
         if (str.length >11) {
-            [self showPromptText: @"手机号码不能超过11位" hideAfterDelay: 1.7];
+            
             return NO;
         }
     }
@@ -272,7 +281,7 @@
     if (textField == _PWDTextField ) {
         
         if (str.length >16) {
-            [self showPromptText: @"密码不能超过16位" hideAfterDelay: 1.7];
+            
             return NO;
         }
     }

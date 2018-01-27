@@ -10,4 +10,6 @@
 
 @interface ForgetPWDViewController : BaseViewController
 
+@property(nonatomic,strong)NSString *strTel;
+
 @end

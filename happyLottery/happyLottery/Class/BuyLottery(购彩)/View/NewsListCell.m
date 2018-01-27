@@ -147,9 +147,9 @@
     if ([curDateM isEqualToString:matchDateM]) {
         NSInteger dayNum = [matchDateD integerValue] - [curDateD integerValue];
         if (dayNum == 0) {  // == 0 今天  ==1 明天   == 2  后天   == 3 大后天 哈哈 后面俩 逗测试玩玩
-              self.labDeadLine.text =[NSString stringWithFormat:@"今天 %@", [model.dealLine substringWithRange:NSMakeRange(11, 5)]];
+              self.labDeadLine.text =[NSString stringWithFormat:@"今日 %@", [model.dealLine substringWithRange:NSMakeRange(11, 5)]];
         }else if (dayNum == 1){
-            self.labDeadLine.text =[NSString stringWithFormat:@"明天 %@", [model.dealLine substringWithRange:NSMakeRange(11, 5)]];
+            self.labDeadLine.text =[NSString stringWithFormat:@"明日 %@", [model.dealLine substringWithRange:NSMakeRange(11, 5)]];
         }else{
         self.labDeadLine.text =[NSString stringWithFormat:@"%@", [model.dealLine substringWithRange:NSMakeRange(5, 11)]];
         }

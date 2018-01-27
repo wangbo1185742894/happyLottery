@@ -138,7 +138,7 @@
 }
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
-    textField.text =@"";
+    
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{

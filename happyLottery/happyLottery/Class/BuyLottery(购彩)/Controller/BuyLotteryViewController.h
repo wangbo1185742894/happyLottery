@@ -7,6 +7,8 @@
 //
 
 #import "BaseViewController.h"
+#import "netWorkHelper.h"
+#import "VersionUpdatingPopView.h"
 
 @interface BuyLotteryViewController : BaseViewController
 

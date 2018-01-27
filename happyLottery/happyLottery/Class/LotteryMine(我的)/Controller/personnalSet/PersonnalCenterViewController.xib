@@ -55,7 +55,7 @@
                                         <action selector="updateImage:" destination="-1" eventType="touchUpInside" id="EPX-wa-trb"/>
                                     </connections>
                                 </button>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="usermine.png" translatesAutoresizingMaskIntoConstraints="NO" id="ddE-fh-p3u">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="usermine.png" translatesAutoresizingMaskIntoConstraints="NO" id="ddE-fh-p3u">
                                     <rect key="frame" x="303" y="40" width="36" height="36"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="36" id="7It-ha-ddz"/>

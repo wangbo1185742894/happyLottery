@@ -258,17 +258,15 @@
             }
         }
     }
-     
     return cell;
 }
-
 
 #pragma UITableViewDelegate methods
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     //    if (section == 0) {
     //        return 0;
     //    }
-    return 10;
+    return 0.5;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 0.5;

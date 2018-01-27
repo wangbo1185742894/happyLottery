@@ -240,6 +240,10 @@
             //通过xib的名称加载自定义的cell
             cell = [[[NSBundle mainBundle] loadNibNamed:@"CashAndIntegrationWaterTableViewCell" owner:self options:nil] lastObject];
         }
+        
+        cell.retainLab.adjustsFontSizeToFitWidth = YES;
+        cell.priceLab.adjustsFontSizeToFitWidth = YES;
+        
         if (listScoreBlotterArray.count > 0) {
             CashBoltter *cashBoltter = listScoreBlotterArray[indexPath.row];
             cell.nameLab.text = cashBoltter.orderType;
@@ -254,7 +258,7 @@
                 cell.priceLab.text = [NSString stringWithFormat:@"%@分",cashBoltter.amounts];
             }
             float b=[cashBoltter.remBalance floatValue];
-            cell.retainLab.text =[NSString stringWithFormat:@"余额：%.2f",b];
+            cell.retainLab.text =[NSString stringWithFormat:@"积分：%.2f",b];
         }
     } else if (tableView ==self.tabCashList) {
       cell= [tableView dequeueReusableCellWithIdentifier:CellIdentifier2];
@@ -263,6 +267,8 @@
             cell = [[[NSBundle mainBundle] loadNibNamed:@"CashAndIntegrationWaterTableViewCell" owner:self options:nil] lastObject];
         }
     
+        cell.retainLab.adjustsFontSizeToFitWidth = YES;
+        cell.priceLab.adjustsFontSizeToFitWidth = YES;
         if (listCashBlotterArray.count > 0) {
             CashBoltter *cashBoltter = listCashBlotterArray[indexPath.row];
             cell.nameLab.text = cashBoltter.orderType;

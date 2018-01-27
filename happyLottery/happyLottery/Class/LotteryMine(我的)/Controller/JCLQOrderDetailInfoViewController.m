@@ -43,10 +43,12 @@
 }
 
 -(void)loadNewData{
+    _page = 1;
     [self.lotteryMan getJczqTicketOrderDetail:@{@"schemeNo":self.schemeNO,@"page":@(_page),@"pageSize":@(KpageSize)}];
 }
 
 -(void)loadMoreData{
+    _page ++;
     [self.lotteryMan getJczqTicketOrderDetail:@{@"schemeNo":self.schemeNO,@"page":@(_page),@"pageSize":@(KpageSize)}];
 }
 

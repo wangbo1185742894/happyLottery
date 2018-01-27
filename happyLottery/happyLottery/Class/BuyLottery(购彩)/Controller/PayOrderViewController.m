@@ -195,21 +195,21 @@
     if(self.curUser.payVerifyType == PayVerifyTypeAlways){
         return YES;
     }else if(self.curUser.payVerifyType == PayVerifyTypeLessThanOneHundred){
-        if (self.cashPayMemt.realSubscribed >= 100 ) {
+        if (self.cashPayMemt.realSubscribed > 100 ) {
             return YES;
         }else{
             return NO;
         }
     }else if(self.curUser.payVerifyType == PayVerifyTypeLessThanFiveHundred){
         
-        if (self.cashPayMemt.realSubscribed >= 500 ) {
+        if (self.cashPayMemt.realSubscribed > 500 ) {
             return YES;
         }else{
             return NO;
         }
         
     }else if(self.curUser.payVerifyType == PayVerifyTypeLessThanThousand){
-        if (self.cashPayMemt.realSubscribed >= 1000 ) {
+        if (self.cashPayMemt.realSubscribed > 1000 ) {
             return YES;
         }else{
             return NO;
@@ -303,6 +303,10 @@
         
         [self.lotteryMan schemeCashPayment:[self getTouzhuParams:self.curSelectCoupon != nil]];
     }else{
+        if (self.cashPayMemt.realSubscribed > [self.curUser.score integerValue]) {
+            [self showPromptText:@"积分不足" hideAfterDelay:1.7];
+            return;
+        }
         [self.lotteryMan schemeScorePayment:@{@"cardCode":self.cashPayMemt.cardCode,
                                               @"schemeNo":self.cashPayMemt.schemeNo,
                                               @"subCopies":@(self.cashPayMemt.subCopies),
@@ -310,10 +314,7 @@
                                               @"realSubscribed":@(self.cashPayMemt.realSubscribed),
                                               @"isSponsor":@(true)
                                               }];
-        if (self.cashPayMemt.realSubscribed > [self.curUser.score integerValue]) {
-            [self showPromptText:@"积分不足" hideAfterDelay:1.7];
-            return;
-        }
+      
     }
 }
 
