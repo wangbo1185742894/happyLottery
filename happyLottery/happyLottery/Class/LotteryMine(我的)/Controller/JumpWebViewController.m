@@ -16,13 +16,14 @@
 @end
 
 @implementation JumpWebViewController
-@synthesize URL;
+@synthesize URL,title;
 - (void)viewDidLoad {
     [super viewDidLoad];
     if ([self isIphoneX]) {
         self.top.constant = 88;
         self.bottom.constant = 34;
     }
+    self.title=title;
     [self showWeb];
 }
 
