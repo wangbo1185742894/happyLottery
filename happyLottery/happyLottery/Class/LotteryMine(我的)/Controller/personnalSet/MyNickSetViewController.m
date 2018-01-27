@@ -76,8 +76,8 @@
 //姓名一般只允许包含中文或英文字母
 - (BOOL)isValidateName:(NSString *)name
 {
-    //NSString *nameRegex = @"^[\u4E00-\u9FA5A-Za-z0-9]{2,16}";
-    NSPredicate *namePredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",REG_NICKNAME_STR];
+    
+    NSPredicate *namePredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",REG_NICKNAME1_STR];
     
     return [namePredicate evaluateWithObject:name];
 }
@@ -85,6 +85,33 @@
 -(void)cancleBtnClick{
     [self.navigationController popViewControllerAnimated:YES];
     
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if (textView.text.length + text.length > 8){
+        [self showPromptText:@"字数不能超过8个字!" hideAfterDelay:1.7];
+        return NO;
+    }
+    if ([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+    }
+    
+    if ([textView isFirstResponder]) {
+        
+        if ([[[textView textInputMode] primaryLanguage] isEqualToString:@"emoji"] || ![[textView textInputMode] primaryLanguage]) {
+            return NO;
+        }
+        
+        //判断键盘是不是九宫格键盘
+        if ([self isNineKeyBoard:text] ){
+            return YES;
+        }else{
+            if ([self hasEmoji:text] || [self stringContainsEmoji:text]){
+                return NO;
+            }
+        }
+    }
+    return YES;
 }
 
 - (IBAction)closeBtnClick:(id)sender {
@@ -124,16 +151,14 @@
 #pragma UITextFieldDelegate
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-     NSString *str = [NSString stringWithFormat:@"%@%@",textField.text,string];
-     if (textField == self.nickField) {
-    if (str.length>8) {
-               [self showPromptText: @"昵称不能超过8位" hideAfterDelay: 1.7];
-         return NO;
+    if ([string isEqualToString:@""]) {
+        return YES;
     }
+     if (textField == self.nickField) {
+         if (![self isValidateName:string]) {
+             return NO;
+         }
      }
-   
-    
-
     return YES;
 }
 
@@ -141,18 +166,6 @@
     
 }
 
--(void)textFieldDidEndEditing:(UITextField *)textField{
-   
-    if (textField == self.nickField) {
-        if (![self isValidateName:self.nickField.text]) {
-            [self showPromptText: @"请输入正确的昵称" hideAfterDelay: 1.7];
-            self.nickField.text= @"";
-            return;
-        }
-        
-    }
-    [self.view resignFirstResponder];
-}
 
 
 - (void)didReceiveMemoryWarning {

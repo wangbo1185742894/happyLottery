@@ -304,6 +304,7 @@
             FirstBankCardSetViewController *fvc = [[FirstBankCardSetViewController alloc]init];
             fvc.titleStr=@"绑定银行卡";
             fvc.popTitle = @"尚未实名认证，请先实名认证再绑定银行卡";
+            fvc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:fvc animated:YES];
             
         }else{

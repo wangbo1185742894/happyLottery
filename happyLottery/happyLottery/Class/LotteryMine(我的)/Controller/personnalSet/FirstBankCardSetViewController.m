@@ -228,7 +228,7 @@
         NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"[^\u4e00-\u9fa5]"];
         BOOL isMatch = [pred evaluateWithObject:string];
         if (isMatch == YES) {
-            return NO;
+            return YES;
         }
         
         if (str.length >15) {

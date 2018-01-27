@@ -107,7 +107,7 @@
     [passInput.txtInput becomeFirstResponder];
     [passInput createBlock:^(NSString *text) {
         
-        if (nil == passInput) {
+        if (nil == text) {
             [self showPromptText:@"请输入支付密码" hideAfterDelay:2.7];
             return;
         }

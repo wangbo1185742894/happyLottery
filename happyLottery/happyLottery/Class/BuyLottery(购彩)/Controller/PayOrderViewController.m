@@ -232,7 +232,7 @@
     [passInput.txtInput becomeFirstResponder];
     [passInput createBlock:^(NSString *text) {
         
-        if (nil == passInput) {
+        if (nil == text) {
             [self showPromptText:@"请输入支付密码" hideAfterDelay:2.7];
             return;
         }
@@ -245,7 +245,7 @@
 }
 
 -(void)validatePaypwdSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
-    
+    [passInput removeFromSuperview];
     if (success == YES) {
         [self showLoadingText:@"正在提交订单"];
         [self actionPay];
