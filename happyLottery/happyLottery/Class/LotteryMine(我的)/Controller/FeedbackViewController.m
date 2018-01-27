@@ -105,7 +105,6 @@
 {
     NSLog(@"%@", textView.text);
     
-   
     //实时显示字数
     self.stirngLenghLabel.text = [NSString stringWithFormat:@"%lu/200", (unsigned long)textView.text.length];
     
@@ -134,95 +133,17 @@
     self.placeHolder2.hidden = YES;
 }
 
-- (BOOL)isContainsTwoEmoji:(NSString *)string
-{
-    __block BOOL isEomji = NO;
-    [string enumerateSubstringsInRange:NSMakeRange(0, [string length]) options:NSStringEnumerationByComposedCharacterSequences usingBlock:
-     ^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
-         const unichar hs = [substring characterAtIndex:0];
-         
-         
-         
-         if (0xd800 <= hs && hs <= 0xdbff) {
-             if (substring.length > 1) {
-                 const unichar ls = [substring characterAtIndex:1];
-                 const int uc = ((hs - 0xd800) * 0x400) + (ls - 0xdc00) + 0x10000;
-                 if (0x1d000 <= uc && uc <= 0x1f77f)
-                 {
-                     isEomji = YES;
-                 }
-                 //                 NSLog(@"uc++++++++%04x",uc);
-             }
-         } else if (substring.length > 1) {
-             const unichar ls = [substring characterAtIndex:1];
-             if (ls == 0x20e3|| ls ==0xfe0f) {
-                 isEomji = YES;
-             }
-             //             NSLog(@"ls++++++++%04x",ls);
-         } else {
-             if (0x2100 <= hs && hs <= 0x27ff && hs != 0x263b) {
-                 isEomji = YES;
-             } else if (0x2B05 <= hs && hs <= 0x2b07) {
-                 isEomji = YES;
-             } else if (0x2934 <= hs && hs <= 0x2935) {
-                 isEomji = YES;
-             } else if (0x3297 <= hs && hs <= 0x3299) {
-                 isEomji = YES;
-             } else if (hs == 0xa9 || hs == 0xae || hs == 0x303d || hs == 0x3030 || hs == 0x2b55 || hs == 0x2b1c || hs == 0x2b1b || hs == 0x2b50|| hs == 0x231a ) {
-                 isEomji = YES;
-             }
-         }
-         
-     }];
-    return isEomji;
-}
-
-
-- (BOOL)stringContainsEmoji:(NSString *)string {
-    
-    __block BOOL returnValue = NO;
-    
-    [string enumerateSubstringsInRange:NSMakeRange(0, [string length])
-                               options:NSStringEnumerationByComposedCharacterSequences
-                            usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
-                                const unichar hs = [substring characterAtIndex:0];
-                                if (0xd800 <= hs && hs <= 0xdbff) {
-                                    if (substring.length > 1) {
-                                        const unichar ls = [substring characterAtIndex:1];
-                                        const int uc = ((hs - 0xd800) * 0x400) + (ls - 0xdc00) + 0x10000;
-                                        if (0x1d000 <= uc && uc <= 0x1f77f) {
-                                            returnValue = YES;
-                                        }
-                                    }
-                                } else if (substring.length > 1) {
-                                    const unichar ls = [substring characterAtIndex:1];
-                                    if (ls == 0x20e3) {
-                                        returnValue = YES;
-                                    }
-                                } else {
-                                    if (0x2100 <= hs && hs <= 0x27ff) {
-                                        returnValue = YES;
-                                    } else if (0x2B05 <= hs && hs <= 0x2b07) {
-                                        returnValue = YES;
-                                    } else if (0x2934 <= hs && hs <= 0x2935) {
-                                        returnValue = YES;
-                                    } else if (0x3297 <= hs && hs <= 0x3299) {
-                                        returnValue = YES;
-                                    } else if (hs == 0xa9 || hs == 0xae || hs == 0x303d || hs == 0x3030 || hs == 0x2b55 || hs == 0x2b1c || hs == 0x2b1b || hs == 0x2b50) {
-                                        returnValue = YES;
-                                    }
-                                }
-                            }];
-    
-    return returnValue;
-}
-
-
 - (IBAction)commitClick:(id)sender {
      NSString *text = self.feedBackTextView.text;
     text = [text stringByReplacingOccurrencesOfString:@"\r" withString:@""];
     text = [text stringByReplacingOccurrencesOfString:@"\n" withString:@""];
     text = [text stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    if (text.length < 10) {
+        [self showPromptText:@"最少输入十个字！" hideAfterDelay:1.7];
+        return;
+    }
+    
     if (text.length==0||[text isEqualToString:@""]) {
          [self showPromptText:@"请输入您的宝贵意见！" hideAfterDelay:1.7];
         return;
@@ -275,19 +196,44 @@
         rednum = [[Info valueForKey:@"unReadNum"] longValue];
         [self updateRed];
     }else{
-        
         [self showPromptText:msg hideAfterDelay:1.7];
-        
     }
-    
 }
 
--(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-    if ([self isContainsTwoEmoji:text]) {
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (textView.text.length >= 10) {
+            _commitButton.enabled = YES;
+        }else{
+            _commitButton.enabled = NO;
+        }
+    });
+    
+    if (textView.text.length + text.length > 200){
+        [self showPromptText:@"字数不能超过200个字!" hideAfterDelay:1.7];
         return NO;
-    }else{
-        return YES;
     }
+    if ([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+    }
+    
+    if ([textView isFirstResponder]) {
+        
+        if ([[[textView textInputMode] primaryLanguage] isEqualToString:@"emoji"] || ![[textView textInputMode] primaryLanguage]) {
+            return NO;
+        }
+        
+        //判断键盘是不是九宫格键盘
+        if ([self isNineKeyBoard:text] ){
+            return YES;
+        }else{
+            if ([self hasEmoji:text] || [self stringContainsEmoji:text]){
+                return NO;
+            }
+        }
+    }
+    return YES;
 }
 
 -(void)CheckFeedBackRedNumClient{
@@ -411,15 +357,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

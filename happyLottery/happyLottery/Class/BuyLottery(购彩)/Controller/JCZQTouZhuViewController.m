@@ -280,23 +280,23 @@
 -(void)updataTouzhuInfo{
     
     totalUnit = 0;
-    NSInteger maxPrize = 0;
+    double maxPrize = 0.00;
     for (NSString *chuanfa in _transction.selectItems) {
         self.transction.betCount = 0;
         self.transction.chuanFa = chuanfa;
         [self.transction updataBetCount];
         totalUnit += self.transction.betCount;
-        maxPrize +=[self.transction.mostBounds integerValue];
+        maxPrize +=[self.transction.mostBounds doubleValue];
         
     }
     self.transction.betCount = totalUnit;
     self.transction.betCost  =self.transction.betCount * [self.transction.beitou integerValue] * 2;
     if (btnMoniTouzhu.selected == YES) {
             self.labZhuInfo.text = [NSString stringWithFormat:@"%ld注,%@倍,共%ld积分",self.transction.betCount,self.transction.beitou,self.transction.betCost *100];
-        self.labPrizeInfo.text = [NSString stringWithFormat:@"可中%ld积分",maxPrize * 100];
+        self.labPrizeInfo.text = [NSString stringWithFormat:@"可中%.0f积分",maxPrize * 100];
     }else{
         self.labZhuInfo.text = [NSString stringWithFormat:@"%ld注,%@倍,共%ld元",self.transction.betCount,self.transction.beitou,self.transction.betCost];
-        self.labPrizeInfo.text = [NSString stringWithFormat:@"最大可中%ld元",maxPrize];
+        self.labPrizeInfo.text = [NSString stringWithFormat:@"最大可中%.2f元",maxPrize];
     }
 }
 

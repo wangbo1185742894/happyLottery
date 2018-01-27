@@ -103,15 +103,15 @@
 
 
 -(void)validatePaypwdSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
-    
+      [passInput removeFromSuperview];
     if ([msg isEqualToString:@"执行成功"]) {
         [self showPromptText:@"支付密码验证成功" hideAfterDelay:1.7];
         [self unBindBankCardClient];
-        [passInput removeFromSuperview];
+      
     }else{
         
         [self showPromptText:msg hideAfterDelay:1.7];
-        [passInput removeFromSuperview];
+        
         
     }
 }

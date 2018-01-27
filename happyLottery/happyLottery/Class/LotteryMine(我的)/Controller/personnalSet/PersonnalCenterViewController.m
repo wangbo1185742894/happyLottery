@@ -98,29 +98,8 @@
     UIActionSheet *choseSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照",@"从相册中获取",nil];
     [choseSheet showInView:self.view];
     
-//    [self changePhotoImg];
 }
 
-- (void)changePhotoImg {
-    UIAlertController * sheetController = [UIAlertController alertControllerWithTitle:@"请选择照片"
-                                                                              message:nil preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction * Cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
-    
-    UIAlertAction * Done = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
-        //[self selectImageSourceType:UIImagePickerControllerSourceTypeCamera];
-    }];
-    
-    UIAlertAction * Destructive = [UIAlertAction actionWithTitle:@"从相册选择头像" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
-       // [self selectImageSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
-    }];
-    
-    [sheetController addAction:Cancel];
-    [sheetController addAction:Done];
-    [sheetController addAction:Destructive];
-    [self presentViewController:sheetController animated:YES completion:nil];
-}
 - (IBAction)setMember:(id)sender {
 }
 - (IBAction)setNick:(id)sender {

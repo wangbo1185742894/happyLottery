@@ -66,14 +66,10 @@
         self.labMatchResult.text  = [NSString stringWithFormat:@"赛果:%@",model.matchResult];
     }
     
-
     self.btnCollection.selected = isSelect;
     self.model = model;
     self.labMatchLine.text = [NSString stringWithFormat:@"%@ %@",model.leagueName, model.lineId];
-    
-  
-    
-    self.labDeadLine.text =[NSString stringWithFormat:@"%@", [model.dealLine substringWithRange:NSMakeRange(5, 11)]];
+
     [self.imgHomeIcon sd_setImageWithURL:[NSURL URLWithString:model.homeImageUrl]];
     [self.imgGuestIcon sd_setImageWithURL:[NSURL URLWithString:model.guestImageUrl]];
     self.labHomeName.text =[NSString stringWithFormat:@"%@(主)",model.homeName] ;
@@ -81,6 +77,8 @@
     self.labHomeName.keyWordFont = [UIFont systemFontOfSize:12];
     self.labHomeName.keyWordColor = BtnDisAbleTitleColor;
     self.labGuestName.text = [NSString stringWithFormat:@"%@",model.guestName];
+    
+    [self setMatchData:model];
     
         self.imgWinIcon.hidden =  ![self.model.hit boolValue];
 
@@ -138,25 +136,7 @@
     }
     self.btnCollection.selected = isSelect;
     self.model = model;
-    
-    NSString *curDateM = [Utility timeStringFromFormat:@"MM" withDate:[NSDate date]];
-    NSString *curDateD = [Utility timeStringFromFormat:@"dd" withDate:[NSDate date]];
-    NSString *matchDateM =[[[model.dealLine componentsSeparatedByString:@" "] firstObject] componentsSeparatedByString:@"-"][1];
-    NSString *matchDateD =[[[[model.dealLine componentsSeparatedByString:@" "] firstObject] componentsSeparatedByString:@"-"] lastObject];
-    
-    if ([curDateM isEqualToString:matchDateM]) {
-        NSInteger dayNum = [matchDateD integerValue] - [curDateD integerValue];
-        if (dayNum == 0) {  // == 0 今天  ==1 明天   == 2  后天   == 3 大后天 哈哈 后面俩 逗测试玩玩
-              self.labDeadLine.text =[NSString stringWithFormat:@"今日 %@", [model.dealLine substringWithRange:NSMakeRange(11, 5)]];
-        }else if (dayNum == 1){
-            self.labDeadLine.text =[NSString stringWithFormat:@"明日 %@", [model.dealLine substringWithRange:NSMakeRange(11, 5)]];
-        }else{
-        self.labDeadLine.text =[NSString stringWithFormat:@"%@", [model.dealLine substringWithRange:NSMakeRange(5, 11)]];
-        }
-    }else{
-        self.labDeadLine.text =[NSString stringWithFormat:@"%@", [model.dealLine substringWithRange:NSMakeRange(5, 11)]];
-    }
-    
+    [self setMatchData:model];
     self.labMatchLine.text = [NSString stringWithFormat:@"%@ %@",model.leagueName, model.lineId];
     [self.imgHomeIcon sd_setImageWithURL:[NSURL URLWithString:model.homeImageUrl]];
     [self.imgGuestIcon sd_setImageWithURL:[NSURL URLWithString:model.guestImageUrl]];
@@ -192,5 +172,27 @@
                 break;
         }
     }
+}
+
+-(void)setMatchData:(JczqShortcutModel *)model{
+    
+    NSString *curDateM = [Utility timeStringFromFormat:@"MM" withDate:[NSDate date]];
+    NSString *curDateD = [Utility timeStringFromFormat:@"dd" withDate:[NSDate date]];
+    NSString *matchDateM =[[[model.dealLine componentsSeparatedByString:@" "] firstObject] componentsSeparatedByString:@"-"][1];
+    NSString *matchDateD =[[[[model.dealLine componentsSeparatedByString:@" "] firstObject] componentsSeparatedByString:@"-"] lastObject];
+    
+    if ([curDateM isEqualToString:matchDateM]) {
+        NSInteger dayNum = [matchDateD integerValue] - [curDateD integerValue];
+        if (dayNum == 0) {  // == 0 今天  ==1 明天   == 2  后天   == 3 大后天 哈哈 后面俩 逗测试玩玩
+            self.labDeadLine.text =[NSString stringWithFormat:@"今日 %@", [model.dealLine substringWithRange:NSMakeRange(11, 5)]];
+        }else if (dayNum == 1){
+            self.labDeadLine.text =[NSString stringWithFormat:@"明日 %@", [model.dealLine substringWithRange:NSMakeRange(11, 5)]];
+        }else{
+            self.labDeadLine.text =[NSString stringWithFormat:@"%@", [model.dealLine substringWithRange:NSMakeRange(5, 11)]];
+        }
+    }else{
+        self.labDeadLine.text =[NSString stringWithFormat:@"%@", [model.dealLine substringWithRange:NSMakeRange(5, 11)]];
+    }
+    
 }
 @end

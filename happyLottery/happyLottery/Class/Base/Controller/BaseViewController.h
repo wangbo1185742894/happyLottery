@@ -49,7 +49,9 @@
 -(id)transFomatJson:(NSString *)strJson;
 
 - (void)checkUpdateNetWork;
-
+- (BOOL)stringContainsEmoji:(NSString *)string ;
+- (BOOL)hasEmoji:(NSString*)string;
+-(BOOL)isNineKeyBoard:(NSString *)string;
 
 
 @end
