@@ -19,28 +19,17 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="中奖通知" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rpk-h4-rJ5">
-                        <rect key="frame" x="16" y="19" width="175" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="中奖通知" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rpk-h4-rJ5">
+                        <rect key="frame" x="16" y="19" width="184" height="38"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="175" id="Lch-bX-Rle"/>
-                            <constraint firstAttribute="height" constant="21" id="fhZ-Yv-6JO"/>
+                            <constraint firstAttribute="height" constant="38" id="fhZ-Yv-6JO"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.14509803921568626" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018-01-01 06:25" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgZ-Y7-ce7">
-                        <rect key="frame" x="188" y="19" width="98" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="6qT-Rn-Me8"/>
-                            <constraint firstAttribute="width" constant="98" id="TRd-Uy-1yV"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                        <color key="textColor" red="0.78431372549019607" green="0.78431372549019607" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="你收藏的赛事;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KcE-dZ-ZHV">
-                        <rect key="frame" x="16" y="48" width="293" height="41"/>
+                        <rect key="frame" x="16" y="65" width="286" height="24"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" red="0.5607843137254902" green="0.5607843137254902" blue="0.5607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -52,16 +41,27 @@
                             <constraint firstAttribute="width" constant="10" id="vWE-dE-PC8"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018-01-01 06:25" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgZ-Y7-ce7">
+                        <rect key="frame" x="208" y="28" width="78" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="6qT-Rn-Me8"/>
+                            <constraint firstAttribute="width" constant="78" id="TRd-Uy-1yV"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" red="0.78431372549019607" green="0.78431372549019607" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="qgZ-Y7-ce7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="2Am-rS-4l0"/>
+                    <constraint firstItem="qgZ-Y7-ce7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="17" id="2Am-rS-4l0"/>
                     <constraint firstItem="qgZ-Y7-ce7" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="-18" id="IJM-55-x54"/>
                     <constraint firstItem="suU-hr-b5i" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="14" id="JNn-fH-Y80"/>
                     <constraint firstItem="Rpk-h4-rJ5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Kqz-OF-aDI"/>
                     <constraint firstItem="KcE-dZ-ZHV" firstAttribute="top" secondItem="Rpk-h4-rJ5" secondAttribute="bottom" constant="8" id="Pky-u1-nZA"/>
                     <constraint firstAttribute="bottom" secondItem="KcE-dZ-ZHV" secondAttribute="bottom" constant="10.5" id="Pvg-sU-drr"/>
+                    <constraint firstItem="qgZ-Y7-ce7" firstAttribute="leading" secondItem="Rpk-h4-rJ5" secondAttribute="trailing" constant="8" id="REf-My-fLM"/>
                     <constraint firstItem="KcE-dZ-ZHV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="byP-ch-QMI"/>
-                    <constraint firstAttribute="trailing" secondItem="KcE-dZ-ZHV" secondAttribute="trailing" constant="11" id="nJH-S8-JZZ"/>
+                    <constraint firstAttribute="trailing" secondItem="KcE-dZ-ZHV" secondAttribute="trailing" constant="18" id="nJH-S8-JZZ"/>
                     <constraint firstItem="Rpk-h4-rJ5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="rva-bm-OL3"/>
                     <constraint firstAttribute="trailingMargin" secondItem="suU-hr-b5i" secondAttribute="trailing" constant="2" id="t88-lR-jfp"/>
                 </constraints>
