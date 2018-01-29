@@ -40,6 +40,7 @@
 #import "DiscoverViewController.h"
 #import "Notice.h"
 #import "JumpWebViewController.h"
+#import "LoginViewController.h"
 
 
 @interface AppDelegate ()<NewFeatureViewDelegate,MemberManagerDelegate,JPUSHRegisterDelegate,VersionUpdatingPopViewDelegate,NetWorkingHelperDelegate>
@@ -550,6 +551,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         return;
     }
     BaseViewController *baseVC;
+       NSDictionary * loginDic = [NSDictionary dictionaryWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"PageCodeIsLogin" ofType:@"plist"]];
     NSDictionary * vcDic = [NSDictionary dictionaryWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"pageCodeConfig" ofType:@"plist"]];
     if (keyStr == nil || [keyStr isEqualToString:@""]) {
         return;
@@ -558,6 +560,12 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     if (vcName==nil) {
         return;
     }
+        NSString *loginName = loginDic[keyStr];
+    if ([loginName isEqualToString:@"1"]) {
+        vcName =@"LoginViewController";
+         //return;
+    }
+ 
     Class class = NSClassFromString(vcName);
     
     baseVC =[[class alloc] init];
