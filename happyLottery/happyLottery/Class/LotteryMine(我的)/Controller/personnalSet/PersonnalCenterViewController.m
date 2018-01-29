@@ -309,7 +309,8 @@
     //读取路径进行上传
     NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"currentImage.png"];
     UIImage *savedImage = [[UIImage alloc] initWithContentsOfFile:fullPath];
-    
+    NSDictionary *dic = @{@"image":fullPath}; //重点再次 fullPath 为路径
+    [self UploadImage:dic];
 //    isFullScreen = NO;
 //    self.headImgV.tag = 100;
 //    [self.headImgV setImage:savedImage];//图片赋值显示
@@ -319,8 +320,7 @@
 //        imageCropVC.delegate = self;
 //        [self.navigationController pushViewController:imageCropVC animated:YES];
     //进到次方法时 调 UploadImage 方法上传服务端
-    NSDictionary *dic = @{@"image":fullPath}; //重点再次 fullPath 为路径
-    [self UploadImage:dic];
+   
       //  [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -353,9 +353,7 @@
         NSString *str = [formatter stringFromDate:[NSDate date]];
         NSString *fileName = [NSString stringWithFormat:@"%@.jpg", str];
         [formData appendPartWithFileData:data name:@"photo" fileName:fileName mimeType:@"image/jpg"];
-//         NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"currentImage.png"];
-         //  NSString *theImagePath = [[NSBundle mainBundle] pathForResource:@"currentImage.png" ofType:@"jpg"];
-       // [formData appendPartWithFileURL:[NSURL fileURLWithPath:fullPath] name:@"file" error:nil];
+
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
     
         

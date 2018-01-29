@@ -137,7 +137,7 @@
         // 2.遍历结果集
         
         FMResultSet*  rs = [self.fmdb executeQuery:@"select * from SystemNotice where cardcode=?",self.curUser.cardCode];
-        [listSystemNoticeArray removeAllObjects];
+     
         
         while (rs.next) {
             Notice *notice =  [[Notice alloc] init];
