@@ -321,10 +321,6 @@
     }
     
     if (btnMoniTouzhu.selected == YES) {
-        if (self.transction.betCost  > 30000000) {
-            [self showPromptText:@"单笔总积分不能超过3千万积分" hideAfterDelay:1.7];
-            return;
-        }
     }else{
         if (self.transction.betCost  > 300000) {
             [self showPromptText:@"单笔总金额不能超过30万元" hideAfterDelay:1.7];

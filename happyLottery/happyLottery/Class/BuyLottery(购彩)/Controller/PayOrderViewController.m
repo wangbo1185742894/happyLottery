@@ -366,8 +366,6 @@
     }
 }
 
-
-
 -(void)getListByChannel{
     
     [self.lotteryMan listByRechargeChannel:@{@"channelCode":CHANNEL_CODE}];
