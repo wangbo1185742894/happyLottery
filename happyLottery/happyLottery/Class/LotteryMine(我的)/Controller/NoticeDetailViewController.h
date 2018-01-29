@@ -10,5 +10,5 @@
 #import "Notice.h"
 
 @interface NoticeDetailViewController : BaseViewController
-@property (weak, nonatomic)  Notice *notice;
+@property (strong, nonatomic)  Notice *notice;
 @end

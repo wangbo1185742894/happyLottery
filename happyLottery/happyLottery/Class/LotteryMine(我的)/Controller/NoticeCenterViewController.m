@@ -17,8 +17,8 @@
 
 @interface NoticeCenterViewController ()<MemberManagerDelegate,UITableViewDelegate,UITableViewDataSource>{
     
-    NSMutableArray *listSystemNoticeArray;
-    NSMutableArray *listPersonNoticeArray;
+    NSMutableArray <Notice *>*listSystemNoticeArray;
+    NSMutableArray <Notice *>*listPersonNoticeArray;
   
 }
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottom;
@@ -248,7 +248,8 @@
         }
         if (listPersonNoticeArray.count > 0) {
                Notice *notice = [[Notice alloc]init];
-            notice = listPersonNoticeArray[indexPath.row];
+             long j=listPersonNoticeArray.count-indexPath.row-1;
+            notice = listPersonNoticeArray[j];
             //cell.endImage.hidden = YES;
             cell.nameLab.text = notice.title;
             cell.noticeLab.text =notice.content;
@@ -280,7 +281,8 @@
     NoticeCenterTableViewCell  *selectCell = [tableView cellForRowAtIndexPath:indexPath];
     if (tableView ==self.tableView1) {
             long i=listSystemNoticeArray.count-indexPath.row-1;
-     Notice* notice = listSystemNoticeArray[i];
+        Notice *notice = [[Notice alloc]init];
+         notice = listSystemNoticeArray[i];
         if ([self.fmdb open]) {
             NSString *cardcode=[GlobalInstance instance ].curUser.cardCode;
             if ([cardcode isEqualToString:@""]) {
@@ -307,13 +309,15 @@
         [self.navigationController pushViewController:jumpVC animated:YES];
     }else if ([type isEqualToString:@"TEXT"]) {
         NoticeDetailViewController *vc = [[NoticeDetailViewController alloc] init];
-            vc.notice = listSystemNoticeArray[indexPath.row];
+            vc.notice = notice;
        
         [self.navigationController pushViewController: vc animated: YES];
     }
         
     }else if (tableView ==self.tableView2){
-         Notice* notice = listPersonNoticeArray[indexPath.row];
+        long j=listPersonNoticeArray.count-indexPath.row-1;
+         Notice *notice = [[Notice alloc]init];
+         notice = listPersonNoticeArray[j];
            NSString *linkUrl=notice.linkUrl;
         if (![notice.thumbnailCode isEqualToString:@"(null)"]) {
             NSString *pageCode=notice.thumbnailCode;
@@ -330,7 +334,7 @@
         }
         if ([notice.thumbnailCode isEqualToString:@"(null)"]&&[linkUrl isEqualToString:@"(null)"]){
          NoticeDetailViewController *vc = [[NoticeDetailViewController alloc] init];
-         vc.notice = listPersonNoticeArray[indexPath.row];
+         vc.notice = notice;
          [self.navigationController pushViewController: vc animated: YES];
         }
     }
@@ -370,17 +374,23 @@
     if([keyStr isEqualToString:@"A401"]){
 
         self.tabBarController.selectedIndex = 2;
+        [self.navigationController popToRootViewControllerAnimated:YES];
         return;
     }else if([keyStr isEqualToString:@"A402"]){
 
         self.tabBarController.selectedIndex = 1;
+        [self.navigationController popToRootViewControllerAnimated:YES];
         return;
     }else if ([keyStr isEqualToString:@"A201"]){
 
-             self.tabBarController.selectedIndex = 4;
+             self.tabBarController.selectedIndex = 3;
+        [self.navigationController popToRootViewControllerAnimated:YES];
+         return;
     }else if([keyStr isEqualToString:@"A000"]){
 
              self.tabBarController.selectedIndex = 0;
+        [self.navigationController popToRootViewControllerAnimated:YES];
+         return;
     }else if ([keyStr isEqualToString:@"A403"]){
         self.tabBarController.selectedIndex = 2;
         UINavigationController *discoverNavVC = self.tabBarController.viewControllers[2];

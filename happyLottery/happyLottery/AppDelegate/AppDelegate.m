@@ -119,6 +119,7 @@ static SystemSoundID shake_sound_male_id = 0;
 //                [self goToYunshiWithInfo:appCode];
 //          
 //        }
+        
     }
 
       [self initShareSDK];
@@ -450,7 +451,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     if (@available(iOS 10.0, *)) {
         if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
             [JPUSHService handleRemoteNotification:userInfo];
-            
+            [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];
+            [JPUSHService setBadge:0];//清空JPush服务器中存储的badge值
             if (pageCodeNotice!=nil) {
                 
                 [self goToYunshiWithInfo:pageCodeNotice];
@@ -549,26 +551,50 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
     baseVC =[[class alloc] init];
     
+//    if([keyStr isEqualToString:@"A401"]){
+//      baseVC.hidesBottomBarWhenPushed = NO;
+//
+//    }else if([keyStr isEqualToString:@"A402"]){
+//          baseVC.hidesBottomBarWhenPushed = NO;
+//
+//    }else if ([keyStr isEqualToString:@"A201"]){
+//          baseVC.hidesBottomBarWhenPushed = NO;
+//    }else if([keyStr isEqualToString:@"A000"]){
+//        baseVC.hidesBottomBarWhenPushed = NO;
+//
+//    }else
+       AppDelegate *delegate  = (AppDelegate*)[UIApplication sharedApplication].delegate;
+      UITabBarController *tabBarController = (UITabBarController *)_window.rootViewController;
+      delegate.curNavVC = (UINavigationController *)tabBarController.childViewControllers[tabBarController.selectedIndex];
     if([keyStr isEqualToString:@"A401"]){
-      baseVC.hidesBottomBarWhenPushed = NO;
-       
-    }else if([keyStr isEqualToString:@"A402"]){
-          baseVC.hidesBottomBarWhenPushed = NO;
-       
-    }else if ([keyStr isEqualToString:@"A201"]){
-          baseVC.hidesBottomBarWhenPushed = NO;
-    }else if([keyStr isEqualToString:@"A000"]){
-        baseVC.hidesBottomBarWhenPushed = NO;
         
-    }else{
+        tabBarController.selectedIndex = 2;
+        [ delegate.curNavVC  popToRootViewControllerAnimated:YES];
+        return;
+    }else if([keyStr isEqualToString:@"A402"]){
+        
+       tabBarController.selectedIndex = 1;
+        [ delegate.curNavVC  popToRootViewControllerAnimated:YES];
+        return;
+    }else if ([keyStr isEqualToString:@"A201"]){
+        
+        tabBarController.selectedIndex = 3;
+        [ delegate.curNavVC  popToRootViewControllerAnimated:YES];
+        return;
+    }else if([keyStr isEqualToString:@"A000"]){
+        
+        tabBarController.selectedIndex = 0;
+        [ delegate.curNavVC  popToRootViewControllerAnimated:YES];
+        return;
+    }{
           baseVC.hidesBottomBarWhenPushed = YES;
     }
     
-    AppDelegate *delegate  = (AppDelegate*)[UIApplication sharedApplication].delegate;
+ 
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        UITabBarController *homebar = (UITabBarController *)_window.rootViewController;
-        delegate.curNavVC = (UINavigationController *)homebar.childViewControllers[homebar.selectedIndex];
+      
+      
         [delegate.curNavVC pushViewController:baseVC animated:YES];
     });
 //    return;
@@ -630,7 +656,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     }else{
         
         //第二种情况后台挂起时
-//
+        [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];
+        [JPUSHService setBadge:0];//清空JPush服务器中存储的badge值
         if (pageCodeNotice!=nil) {
             
             [self goToYunshiWithInfo:pageCodeNotice];

@@ -24,9 +24,10 @@
     if ([self isIphoneX]) {
         self.top.constant = 88;
     }
-    [self lode];
+    //notice =[[Notice alloc]init];
+    [self loade];
 }
--(void)lode{
+-(void)loade{
     
     self.titleLab.text = notice.title;
     self.noticeLab.text = notice.content;
