@@ -716,6 +716,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 
 
+
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     
     // Required,For systems with less than or equal to iOS6
@@ -742,6 +743,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     }
 
 }
+
 
 
 - (void)showZhuihaoDetail:(NSString*) ordernumber{

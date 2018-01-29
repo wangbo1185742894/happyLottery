@@ -50,14 +50,20 @@
 
 
 -(void)refreshDataCollect:(JczqShortcutModel * )model andSelect:(BOOL)isSelect{
-    if (progressView == nil) {
+    for (UIView *subView in self.subviews) {
+        if ([subView isKindOfClass:[LoopProgressView class]]) {
+            [subView removeFromSuperview];
+            break;
+        }
+    }
+
         progressView = [[LoopProgressView alloc]initWithFrame:CGRectMake(KscreenWidth-124,20, 55, 55)];
         progressView.color1 = SystemBlue;
         progressView.color2 = SystemLightGray;
-        
-        
+
+
         [self addSubview:progressView];
-    }
+
     
     self.labMatchResult.hidden = NO;
     if (model.matchResult  == nil || model.matchResult.length ==0 || [model.matchResult isEqualToString:@"(null)"]) {
@@ -126,14 +132,20 @@
 }
 
 -(void)refreshData:(JczqShortcutModel * )model andSelect:(BOOL)isSelect{
-    if (progressView == nil) {
-        progressView = [[LoopProgressView alloc]initWithFrame:CGRectMake(KscreenWidth-124,20, 55, 55)];
-        progressView.color1 = SystemBlue;
-        progressView.color2 = SystemLightGray;
-        
-        
-        [self addSubview:progressView];
+    for (UIView *subView in self.subviews) {
+        if ([subView isKindOfClass:[LoopProgressView class]]) {
+            [subView removeFromSuperview];
+            break;
+        }
     }
+    
+    progressView = [[LoopProgressView alloc]initWithFrame:CGRectMake(KscreenWidth-124,20, 55, 55)];
+    progressView.color1 = SystemBlue;
+    progressView.color2 = SystemLightGray;
+    
+    
+    [self addSubview:progressView];
+
     self.btnCollection.selected = isSelect;
     self.model = model;
     [self setMatchData:model];

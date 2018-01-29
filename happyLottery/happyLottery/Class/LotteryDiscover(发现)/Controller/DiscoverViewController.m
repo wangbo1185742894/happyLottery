@@ -89,6 +89,13 @@
 {
     NSURL *URL = request.URL;
     NSString *scheme = [NSString stringWithFormat:@"%@",URL];
+    if ([scheme containsString:@"index"]) {
+        self.tabBarController.tabBar.hidden = NO;
+        webDisBottom.constant = 44;
+    }else{
+        self.tabBarController.tabBar.hidden = YES;
+        webDisBottom.constant = 0;
+    }
     return YES;
 }
 
@@ -179,9 +186,18 @@
     self.tabBarController.selectedIndex = 0;
 }
 
--(NSString *)getCardCode{
-    return self.curUser.cardCode;
-    
+
+
+-(void)hiddenFooter:(BOOL )isHiden{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.tabBarController.tabBar .hidden =isHiden;
+        if (isHiden == YES) {
+            webDisBottom.constant = -100;
+
+        }else{
+            webDisBottom.constant = -100;
+        }
+    });
 }
 
 -(void)goToLogin{

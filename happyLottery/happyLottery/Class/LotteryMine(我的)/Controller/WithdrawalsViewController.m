@@ -285,11 +285,7 @@
         
     }
     BankCard* bankCards = listBankArray[indexPath.row];
-    if ([bankCards.useDefault boolValue] == YES) {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    }else{
-        cell.accessoryType = UITableViewCellAccessoryNone;
-    }
+
     NSString *num =bankCards.bankNumber;
     NSString *num4 = [num substringFromIndex:num.length- 4 ];
     NSString *bank =  [NSString stringWithFormat:@"%@ (尾号%@)--%@",bankCards.bankName,num4,self.curUser.name];

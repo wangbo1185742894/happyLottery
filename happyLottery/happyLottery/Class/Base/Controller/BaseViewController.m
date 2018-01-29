@@ -343,7 +343,7 @@
         FMResultSet*  result = [self.fmdb executeQuery:@"select * from vcUserActiveInfo"];
         NSMutableArray *mVisitArray = [[NSMutableArray alloc]init];
         while ([result next]) {
-            [mVisitArray addObject:@{@"code":[result stringForColumn:@"vcNo"] == nil?@"":[result stringForColumn:@"vcNo"],@"visitCount":@([result intForColumn:@"visitCount"]),@"visitTime":@([result intForColumn:@"visitTime"]),@"source":@"iOS"}];
+            [mVisitArray addObject:@{@"code":[result stringForColumn:@"vcNo"] == nil?@"":[result stringForColumn:@"vcNo"],@"visitCount":@([result intForColumn:@"visitCount"]),@"visitTime":@([result intForColumn:@"visitTime"]),@"source":@"iOS",@"channelCode":CHANNEL_CODE}];
         }
         [self.memberMan saveVisit:mVisitArray];
         [result close];
@@ -564,6 +564,7 @@
     
     return [outstring uppercaseString];
 }
+
 
 
 @end

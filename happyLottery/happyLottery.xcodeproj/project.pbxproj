@@ -186,6 +186,8 @@
 		2D40CAAA201EDE5700DDCFE3 /* dot@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40CAA0201EDE5600DDCFE3 /* dot@3x.png */; };
 		2D40CAAD201EE15400DDCFE3 /* usermine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40CAAB201EE15200DDCFE3 /* usermine@2x.png */; };
 		2D40CAAE201EE15400DDCFE3 /* usermine@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40CAAC201EE15300DDCFE3 /* usermine@3x.png */; };
+		2D40CAB1201EEDC700DDCFE3 /* pic@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40CAAF201EEDC500DDCFE3 /* pic@3x.png */; };
+		2D40CAB2201EEDC700DDCFE3 /* pic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40CAB0201EEDC600DDCFE3 /* pic@2x.png */; };
 		2D4B174E1FD7B9270034B708 /* WBAdsImgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B174D1FD7B9270034B708 /* WBAdsImgView.m */; };
 		2D4B1DC31FD7D6030034B708 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B1DC21FD7D6030034B708 /* MBProgressHUD.m */; };
 		2D4B1E361FDE241F0034B708 /* JCZQPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B1E341FDE241F0034B708 /* JCZQPlayViewController.m */; };
@@ -1100,6 +1102,8 @@
 		2D40CAA0201EDE5600DDCFE3 /* dot@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dot@3x.png"; sourceTree = "<group>"; };
 		2D40CAAB201EE15200DDCFE3 /* usermine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "usermine@2x.png"; sourceTree = "<group>"; };
 		2D40CAAC201EE15300DDCFE3 /* usermine@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "usermine@3x.png"; sourceTree = "<group>"; };
+		2D40CAAF201EEDC500DDCFE3 /* pic@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pic@3x.png"; sourceTree = "<group>"; };
+		2D40CAB0201EEDC600DDCFE3 /* pic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pic@2x.png"; sourceTree = "<group>"; };
 		2D4B174C1FD7B9270034B708 /* WBAdsImgView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBAdsImgView.h; sourceTree = "<group>"; };
 		2D4B174D1FD7B9270034B708 /* WBAdsImgView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBAdsImgView.m; sourceTree = "<group>"; };
 		2D4B1DC11FD7D6030034B708 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -2612,6 +2616,8 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				2D40CAB0201EEDC600DDCFE3 /* pic@2x.png */,
+				2D40CAAF201EEDC500DDCFE3 /* pic@3x.png */,
 				2D40CAAB201EE15200DDCFE3 /* usermine@2x.png */,
 				2D40CAAC201EE15300DDCFE3 /* usermine@3x.png */,
 				2D40CA9A201EDE5100DDCFE3 /* bj_down@2x.png */,
@@ -4211,6 +4217,7 @@
 				2DCBB2811FD1000700934D92 /* LaunchScreen.storyboard in Resources */,
 				F92D03D52005A4D000C26E7A /* unlockredpacket@3x.png in Resources */,
 				F9DC698C1FDF7CF5007D384D /* Mine.plist in Resources */,
+				2D40CAB1201EEDC700DDCFE3 /* pic@3x.png in Resources */,
 				F928C6B91FF4BA40001F1A32 /* addmoney@3x.png in Resources */,
 				2D0E23DB2019A66D0098DA40 /* lottery@2x.png in Resources */,
 				F9BD1B441FE8A27100C1C71A /* rightIcon@3x.png in Resources */,
@@ -4530,6 +4537,7 @@
 				F9664BA92004D64A000A27CA /* bjCoupon@3x.png in Resources */,
 				2D0EEAA52015D47400B0769C /* coupon@2x.png in Resources */,
 				F957C2071FE3B28D0090B19B /* news@2x.png in Resources */,
+				2D40CAB2201EEDC700DDCFE3 /* pic@2x.png in Resources */,
 				F91565F91FFCBDAE00E254CE /* 2@2x.png in Resources */,
 				2D739C421FE369DE00264044 /* checkBox_checked@3x.png in Resources */,
 				2D4B1E791FDF684E0034B708 /* home_select@2x.png in Resources */,
