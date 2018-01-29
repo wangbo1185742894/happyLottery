@@ -10,7 +10,10 @@
 #import <arpa/inet.h>
 #import <netdb.h>
 #import "AppDelegate.h"
-
+#include <sys/sysctl.h>
+#include <net/if.h>
+#include <net/if_dl.h>
+#import <sys/utsname.h>
 #import "LoginViewController.h"
 
 
@@ -442,6 +445,23 @@
     return returnValue;
 }
 
+- (BOOL)isValidateName:(NSString *)name
+{
+    
+    NSPredicate *namePredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",REG_NICKNAME1_STR];
+    
+    return [namePredicate evaluateWithObject:name];
+}
+
+- (BOOL)isValidateRealName:(NSString *)name
+{
+    
+    NSPredicate *namePredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",REG_NICKNAME_STR];
+    
+    return [namePredicate evaluateWithObject:name];
+}
+
+
 /**
  *  判断字符串中是否存在emoji
  * @param string 字符串
@@ -470,5 +490,80 @@
     }
     return YES;
 }
+
+-(void)upLoadClientInfo{
+    //应用版本号
+    NSString *versionStringPGY = [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*)kCFBundleVersionKey];
+    
+    struct utsname systemInfo;
+    uname(&systemInfo);
+    NSString * deviceString = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
+    NSString * bindTime = [Utility timeStringFromFormat:@"yyyy-MM-dd" withDate:[NSDate date]];
+    
+    NSDictionary *clientInfo;
+    @try {
+        clientInfo = @{@"cardCode":@([self.curUser.cardCode integerValue]),
+                       @"imeiId":@"0000000",
+                       @"brand":@"apple",
+                       @"model":deviceString,
+                       @"phoneno":self.curUser.mobile==nil?@"":self.curUser.mobile,
+                       @"appVersion":versionStringPGY,
+                       @"subversion":[UIDevice currentDevice].systemVersion,
+                       @"bindTime":bindTime,
+                       @"mac":[self getMacAddress]
+                       };
+    } @catch (NSException *exception) {
+        clientInfo = nil;
+    } @finally {
+        [self.memberMan upLoadClientInfo:clientInfo];
+    }
+}
+
+- (NSString *)getMacAddress {
+    int mib[6];
+    size_t len;
+    char *buf;
+    unsigned char *ptr;
+    struct if_msghdr *ifm;
+    struct sockaddr_dl *sdl;
+    
+    mib[0] = CTL_NET;
+    mib[1] = AF_ROUTE;
+    mib[2] = 0;
+    mib[3] = AF_LINK;
+    mib[4] = NET_RT_IFLIST;
+    
+    if ((mib[5] = if_nametoindex("en0")) == 0) {
+        printf("Error: if_nametoindex error/n");
+        return NULL;
+    }
+    
+    if (sysctl(mib, 6, NULL, &len, NULL, 0) < 0) {
+        printf("Error: sysctl, take 1/n");
+        return NULL;
+    }
+    
+    if ((buf = malloc(len)) == NULL) {
+        printf("Could not allocate memory. error!/n");
+        return NULL;
+    }
+    
+    if (sysctl(mib, 6, buf, &len, NULL, 0) < 0) {
+        free(buf);
+        printf("Error: sysctl, take 2");
+        return NULL;
+    }
+    
+    ifm = (struct if_msghdr *)buf;
+    sdl = (struct sockaddr_dl *)(ifm + 1);
+    ptr = (unsigned char *)LLADDR(sdl);
+    NSString *outstring = [NSString
+                           stringWithFormat:@"%02x:%02x:%02x:%02x:%02x:%02x", *ptr, *(ptr + 1), *(ptr + 2), *(ptr + 3), *(ptr + 4), *(ptr + 5)];
+    
+    free(buf);
+    
+    return [outstring uppercaseString];
+}
+
 
 @end

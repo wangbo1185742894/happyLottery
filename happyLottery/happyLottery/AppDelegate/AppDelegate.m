@@ -514,34 +514,13 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
             [winPushView removeFromSuperview];
             winPushView = nil;
         }
-            [self playSound];
+        [self playSound];
         
         winPushView = [[ZhuiHaoStopPushVIew alloc]initWithFrame:[UIScreen  mainScreen].bounds];
         [winPushView refreshInfo:title andContent:content];
         [[UIApplication sharedApplication].keyWindow addSubview:winPushView];
         return;
     }
-   
-//    if (![pageCode isEqualToString:@""]) {
-//      
-//        [self goToYunshiWithInfo:pageCode];
-//        return;
-//    }
-//    if (![linkUrl isEqualToString:@""]) {
-//        JumpWebViewController *jumpVC = [[JumpWebViewController alloc] initWithNibName:@"JumpWebViewController" bundle:nil];
-//        
-//        jumpVC.URL = linkUrl;
-//        AppDelegate *delegate  = (AppDelegate*)[UIApplication sharedApplication].delegate;
-//        
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//            UITabBarController *homebar = (UITabBarController *)_window.rootViewController;
-//            delegate.curNavVC = (UINavigationController *)homebar.childViewControllers[homebar.selectedIndex];
-//            [delegate.curNavVC pushViewController:jumpVC animated:YES];
-//        });
-//        return;
-//    }
-  
-
 }
 
 -(void)goToYunshiWithInfo:(NSString *)pageCode{

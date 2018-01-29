@@ -6,6 +6,8 @@
 //  Copyright © 2017年 onlytechnology. All rights reserved.
 //
 
+
+
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
 #import "ForgetPWDViewController.h"
@@ -33,7 +35,7 @@ static NSInteger seq = 0;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"登录";
-    self.fimageView.layer.cornerRadius = 4;
+    self.fimageView.layer.cornerRadius = 30;
     self.loginBtn.enabled = NO;
     self.fimageView.layer.masksToBounds = YES;
     self.memberMan.delegate = self;
@@ -86,7 +88,7 @@ static NSInteger seq = 0;
     user.loginPwd = [self.passwordTextField.text lowercaseString];
     user.isLogin = YES;
     [GlobalInstance instance].curUser = user;
-    
+    [self upLoadClientInfo];
    
     
     if (success) {

@@ -747,6 +747,24 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-
+-(BOOL)canBuyThisMatch:(JCZQMatchModel *)model andIndex:(NSInteger)ind{
+    NSString* flag = [model.openFlag substringWithRange:NSMakeRange(ind, 1)];
+    if (self.trancation.playType ==JCZQPlayTypeDanGuan ) {
+        if ([flag isEqualToString:@"1"]||[flag isEqualToString:@"0"]) {
+            return YES;
+        }else{
+            return NO;
+        }
+    }else{
+        if ([flag isEqualToString:@"2"]||[flag isEqualToString:@"0"]) {
+            
+            return YES;
+        }else{
+            return NO;
+        }
+        
+    }
+    
+}
 
 @end

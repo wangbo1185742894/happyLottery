@@ -45,6 +45,7 @@
 }
 
 -(void)loadAllItemTitle:(JCZQMatchModel *)model andTitleDic:(NSDictionary *)titleDic{
+    _model = model;
     [self loadSubItemTitle:model andTitleDic:titleDic[@"SPF"] andBtnArray:self.jczqSPFCellItem andSelectAr:model.SPF_SelectMatch andOddArray:model.SPF_OddArray];
     [self loadSubItemTitle:model andTitleDic:titleDic[@"RQSPF"] andBtnArray:self.jczqRQSPFCellItem andSelectAr:model.RQSPF_SelectMatch andOddArray:model.RQSPF_OddArray] ;
     [self loadSubItemTitle:model andTitleDic:titleDic[@"BF"] andBtnArray:self.jczqBFCellItem andSelectAr:model.BF_SelectMatch andOddArray:model.BF_OddArray];
@@ -94,9 +95,47 @@
     if (sender.tag == 0) {
         return;
     }
+    
+    NSInteger playType = sender.tag / 100;
+    BOOL isCanBuy = YES;
+    switch (playType) {
+        case 1:
+            isCanBuy = [self.delegate canBuyThisMatch:_model andIndex:0];
+            
+            break;
+        case 2:
+            
+            isCanBuy = [self.delegate canBuyThisMatch:_model andIndex:4];
+            
+            break;
+        case 3:
+            
+            isCanBuy = [self.delegate canBuyThisMatch:_model andIndex:2];
+            
+            break;
+        case 4:
+            
+            isCanBuy = [self.delegate canBuyThisMatch:_model andIndex:3];
+            
+            break;
+        case 5:
+            
+            isCanBuy = [self.delegate canBuyThisMatch:_model andIndex:1];
+            
+            break;
+        default:
+            break;
+    }
+    
+    if (isCanBuy == NO) {
+        
+        return;
+    }
+    
     if (![self checkThisItemCanBuy:sender]) {
         return;
     }
+
     sender.selected = !sender.selected;
 //    if (sender.selected == YES) {
 //        [self.selectItemPlay addObject:[NSString stringWithFormat:@"%ld",sender.tag]];

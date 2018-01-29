@@ -40,7 +40,7 @@
     self.PWDTextAgainField.delegate = self;
      labelCountDown = [[UILabel alloc] init];
     
-    self.HeadportraitImage.layer.cornerRadius = 4;
+    self.HeadportraitImage.layer.cornerRadius = 30;
     self.HeadportraitImage.layer.masksToBounds = YES;
     
     self.getVerifyCodeBtn.layer.cornerRadius = 4;

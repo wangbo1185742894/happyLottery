@@ -58,12 +58,11 @@
 
     if(nickname.length==0){
          [self showPromptText:@"昵称不能为空！" hideAfterDelay:1.7];
-        return;}
-//    }else if (nickname.length >8) {
-//        [self showPromptText: @"昵称不能超过8位" hideAfterDelay: 1.7];
-//        return;
-//    }
-    else{
+        return;
+    }else if (nickname.length >8) {
+        [self showPromptText: @"昵称不能超过8位" hideAfterDelay: 1.7];
+        return;
+    }else{
         
         [self commitClient];
 
@@ -74,44 +73,10 @@
 
 #pragma mark Regex
 //姓名一般只允许包含中文或英文字母
-- (BOOL)isValidateName:(NSString *)name
-{
-    
-    NSPredicate *namePredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",REG_NICKNAME1_STR];
-    
-    return [namePredicate evaluateWithObject:name];
-}
 
 -(void)cancleBtnClick{
     [self.navigationController popViewControllerAnimated:YES];
     
-}
-
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
-    if (textView.text.length + text.length > 8){
-        [self showPromptText:@"字数不能超过8个字!" hideAfterDelay:1.7];
-        return NO;
-    }
-    if ([text isEqualToString:@"\n"]) {
-        [textView resignFirstResponder];
-    }
-    
-    if ([textView isFirstResponder]) {
-        
-        if ([[[textView textInputMode] primaryLanguage] isEqualToString:@"emoji"] || ![[textView textInputMode] primaryLanguage]) {
-            return NO;
-        }
-        
-        //判断键盘是不是九宫格键盘
-        if ([self isNineKeyBoard:text] ){
-            return YES;
-        }else{
-            if ([self hasEmoji:text] || [self stringContainsEmoji:text]){
-                return NO;
-            }
-        }
-    }
-    return YES;
 }
 
 - (IBAction)closeBtnClick:(id)sender {
@@ -142,9 +107,16 @@
         self.curUser.nickname = self.nickField.text;
         [self.navigationController popViewControllerAnimated:YES];
     }else{
-        
         [self showPromptText:msg hideAfterDelay:1.7];
-        
+    }
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    if (textField ==  _nickField) {
+        if (_nickField.text.length > 8) {
+            [self showPromptText:@"昵称不能超过8位" hideAfterDelay:2];
+            
+        }
     }
 }
 
@@ -154,6 +126,27 @@
     if ([string isEqualToString:@""]) {
         return YES;
     }
+    
+  
+    if ([string isEqualToString:@"\n"]) {
+        
+    }
+    
+    if ([textField isFirstResponder]) {
+        
+        if ([[[textField textInputMode] primaryLanguage] isEqualToString:@"emoji"] || ![[textField textInputMode] primaryLanguage]) {
+            return NO;
+        }
+        
+        //判断键盘是不是九宫格键盘
+        if ([self isNineKeyBoard:string] ){
+            return YES;
+        }else{
+            if ([self hasEmoji:string] || [self stringContainsEmoji:string]){
+                return NO;
+            }
+        }
+     }
      if (textField == self.nickField) {
          if (![self isValidateName:string]) {
              return NO;
@@ -166,20 +159,8 @@
     
 }
 
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

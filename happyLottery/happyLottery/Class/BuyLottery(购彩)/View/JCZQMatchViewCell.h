@@ -26,6 +26,8 @@
 
 -(void)showSchemeRecom;
 
+-(BOOL)canBuyThisMatch:(JCZQMatchModel *)model andIndex:(NSInteger)ind;
+
 @end
 
 @interface JCZQMatchViewCell : UITableViewCell
