@@ -176,28 +176,39 @@
     NSInteger playType = sender.tag / 100;
     NSInteger index = sender.tag % 100;
     NSString *title;
+    BOOL isCanBuy = YES;
     switch (playType) {
         case 1:
+            isCanBuy = [self.delegate canBuyThisMatch:curModel andIndex:0];
              title = [self getSpNOTitle:curModel.SPF_OddArray index:index];
             break;
         case 2:
             title = [self getSpNOTitle:curModel.RQSPF_OddArray index:index];
+            isCanBuy = [self.delegate canBuyThisMatch:curModel andIndex:4];
          
             break;
         case 3:
             title = [self getSpNOTitle:curModel.BF_OddArray index:index];
+            isCanBuy = [self.delegate canBuyThisMatch:curModel andIndex:2];
            
             break;
         case 4:
             title = [self getSpNOTitle:curModel.BQC_OddArray index:index];
+            isCanBuy = [self.delegate canBuyThisMatch:curModel andIndex:3];
             
             break;
         case 5:
             title = [self getSpNOTitle:curModel.JQS_OddArray index:index];
+            isCanBuy = [self.delegate canBuyThisMatch:curModel andIndex:1];
         
             break;
         default:
             break;
+    }
+    
+    if (isCanBuy == NO) {
+        [self.delegate showSPFARQSPFSelecedMsg:@"该玩法暂不支持投注"];
+        return;
     }
     
     if ([title doubleValue] == 0) {
@@ -402,6 +413,9 @@
     NSString *itemStr = [NSString stringWithFormat:@"%.2f",sp];
     return itemStr;
 }
+
+
+
 - (IBAction)actionShowForecastDetail:(UIButton *)sender {
     
     curModel.isShow = !curModel.isShow;
@@ -456,6 +470,8 @@
     
 }
 
-
+-(void)canBuy{
+    
+}
 
 @end

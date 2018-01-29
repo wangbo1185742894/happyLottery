@@ -13,6 +13,7 @@
 @protocol JCZQSelectVIewDelegate
 
 -(void)JCZQPlayViewSelected;
+-(BOOL)canBuyThisMatch:(JCZQMatchModel *)model andIndex:(NSInteger)ind;
 
 @end
 

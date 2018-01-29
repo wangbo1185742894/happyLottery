@@ -87,6 +87,7 @@
 
 
 #define SUBAPIDATA           @"/data"
+#define APISaveClientInfo           @"saveClientInfo"
 #define APIgetJczqMatch             @"getJczqMatch"
 #define APIgetJczqSp                @"getJczqSp"
 #define APIgetJczqLeague            @"getJczqLeague"

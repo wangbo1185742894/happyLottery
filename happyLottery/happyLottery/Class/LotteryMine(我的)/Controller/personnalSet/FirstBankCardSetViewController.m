@@ -82,6 +82,10 @@
  
     if ([name isEqualToString:@""]||name ==nil) {
       
+        if (self.nameTextField.text.length > 15) {
+            [self showPromptText:@"姓名不能超过15位" hideAfterDelay:2];
+            return;
+        }
         if (_nameTextField.text.length ==0 || _nameTextField.text==nil) {
             [self showPromptText: @"请输入真实姓名" hideAfterDelay: 1.7];
             return;
@@ -116,7 +120,6 @@
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
     }
-    
 }
 
 -(void)addBankCardSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
@@ -193,7 +196,13 @@
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{
     if (textField == self.nameTextField) {
+        if (self.nameTextField.text.length > 15) {
+            [self showPromptText:@"姓名不能超过15位" hideAfterDelay:2];
+            return;
+        }
+        
         if (![self isValidateName:self.nameTextField.text]) {
+           
             [self showPromptText: @"请输入真实姓名" hideAfterDelay: 1.7];
             self.nameTextField.text= @"";
             return;
@@ -225,15 +234,25 @@
 
     NSString *str = [NSString stringWithFormat:@"%@%@",textField.text,string];
     if (textField == self.nameTextField ) {
-        NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"[^\u4e00-\u9fa5]"];
-        BOOL isMatch = [pred evaluateWithObject:string];
-        if (isMatch == YES) {
-            return YES;
+        if ([textField isFirstResponder]) {
+            
+            if ([[[textField textInputMode] primaryLanguage] isEqualToString:@"emoji"] || ![[textField textInputMode] primaryLanguage]) {
+                return NO;
+            }
+            
+            //判断键盘是不是九宫格键盘
+            if ([self isNineKeyBoard:string] ){
+                return YES;
+            }else{
+                if ([self hasEmoji:string] || [self stringContainsEmoji:string]){
+                    return NO;
+                }
+            }
         }
-        
-        if (str.length >15) {
-            [self showPromptText: @"姓名不能超过15位" hideAfterDelay: 1.7];
-            return NO;
+        if (textField == self.nameTextField) {
+            if (![self isValidateRealName:string]) {
+                return NO;
+            }
         }
     }
     
@@ -367,11 +386,16 @@
             NSRange range = NSMakeRange(i, 1);
             NSString *subString = [toBeString substringWithRange:range];
             const char *cString = [subString UTF8String];
-            if (strlen(cString) == 3)
-            {
-                NSLog(@"汉字:%@",subString);
-                chNum ++;
+            if (cString == NULL) {
+                _canedit = NO;
+            }else{
+                if (strlen(cString) == 3)
+                {
+                    NSLog(@"汉字:%@",subString);
+                    chNum ++;
+                }
             }
+          
         }
         
         if (chNum>=9) {

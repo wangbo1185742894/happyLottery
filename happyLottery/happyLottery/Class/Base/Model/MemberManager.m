@@ -1303,4 +1303,29 @@
                         failure:failureBlock];
 }
 
+-(void)upLoadClientInfo:(NSDictionary *)clientInfo{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        if (response.succeed == YES) {
+            NSLog(@"yes");
+        }
+        
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+    };
+    
+    NSMutableDictionary * paramDic1 = [NSMutableDictionary dictionaryWithCapacity:1];
+    paramDic1[@"arg1"] = [self actionEncrypt:[self JsonFromId:clientInfo]];
+    
+    SOAPRequest *request = [self requestForAPI:APISaveClientInfo withParam:paramDic1];
+    
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIDATA
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
 @end

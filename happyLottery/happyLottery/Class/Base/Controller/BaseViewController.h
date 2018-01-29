@@ -14,6 +14,7 @@
 
 
 
+
 @interface BaseViewController : UIViewController
 @property (nonatomic ,strong)NSString *viewControllerNo;
 @property (nonatomic,strong)MemberManager * memberMan;
@@ -52,6 +53,10 @@
 - (BOOL)stringContainsEmoji:(NSString *)string ;
 - (BOOL)hasEmoji:(NSString*)string;
 -(BOOL)isNineKeyBoard:(NSString *)string;
+-(void)upLoadClientInfo;
+
+- (BOOL)isValidateName:(NSString *)name;
+- (BOOL)isValidateRealName:(NSString *)name;
 
 
 @end

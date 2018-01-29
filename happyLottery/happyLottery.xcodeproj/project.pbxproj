@@ -66,8 +66,6 @@
 		2D0E239B201817190098DA40 /* button_forbidden@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D0E2399201817180098DA40 /* button_forbidden@2x.png */; };
 		2D0E239E20181C790098DA40 /* checkBox_default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D0E239C20181C780098DA40 /* checkBox_default@3x.png */; };
 		2D0E239F20181C790098DA40 /* checkBox_default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D0E239D20181C780098DA40 /* checkBox_default@2x.png */; };
-		2D0E23A220182EB60098DA40 /* usermine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D0E23A020182EB50098DA40 /* usermine@2x.png */; };
-		2D0E23A320182EB60098DA40 /* usermine@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D0E23A120182EB60098DA40 /* usermine@3x.png */; };
 		2D0E23A82018833E0098DA40 /* switch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D0E23A4201883390098DA40 /* switch@2x.png */; };
 		2D0E23A92018833E0098DA40 /* switch@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D0E23A5201883390098DA40 /* switch@3x.png */; };
 		2D0E23AA2018833E0098DA40 /* switchbackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D0E23A62018833B0098DA40 /* switchbackground@2x.png */; };
@@ -178,6 +176,18 @@
 		2D2060351FFCCB380086E266 /* SchemListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2060331FFCCB380086E266 /* SchemListCell.m */; };
 		2D2060361FFCCB380086E266 /* SchemListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D2060341FFCCB380086E266 /* SchemListCell.xib */; };
 		2D206F8C201C1878008A610F /* launchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D206F8B201C1877008A610F /* launchImage.png */; };
+		2D40CAA1201EDE5700DDCFE3 /* button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40CA97201EDE4E00DDCFE3 /* button@3x.png */; };
+		2D40CAA2201EDE5700DDCFE3 /* shut@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40CA98201EDE4E00DDCFE3 /* shut@2x.png */; };
+		2D40CAA3201EDE5700DDCFE3 /* button_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40CA99201EDE4F00DDCFE3 /* button_line@2x.png */; };
+		2D40CAA4201EDE5700DDCFE3 /* bj_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40CA9A201EDE5100DDCFE3 /* bj_down@2x.png */; };
+		2D40CAA5201EDE5700DDCFE3 /* button_line@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40CA9B201EDE5200DDCFE3 /* button_line@3x.png */; };
+		2D40CAA6201EDE5700DDCFE3 /* dot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40CA9C201EDE5400DDCFE3 /* dot@2x.png */; };
+		2D40CAA7201EDE5700DDCFE3 /* shut@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40CA9D201EDE5400DDCFE3 /* shut@3x.png */; };
+		2D40CAA8201EDE5700DDCFE3 /* bj_down@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40CA9E201EDE5500DDCFE3 /* bj_down@3x.png */; };
+		2D40CAA9201EDE5700DDCFE3 /* button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40CA9F201EDE5600DDCFE3 /* button@2x.png */; };
+		2D40CAAA201EDE5700DDCFE3 /* dot@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40CAA0201EDE5600DDCFE3 /* dot@3x.png */; };
+		2D40CAAD201EE15400DDCFE3 /* usermine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40CAAB201EE15200DDCFE3 /* usermine@2x.png */; };
+		2D40CAAE201EE15400DDCFE3 /* usermine@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40CAAC201EE15300DDCFE3 /* usermine@3x.png */; };
 		2D4B174E1FD7B9270034B708 /* WBAdsImgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B174D1FD7B9270034B708 /* WBAdsImgView.m */; };
 		2D4B1DC31FD7D6030034B708 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B1DC21FD7D6030034B708 /* MBProgressHUD.m */; };
 		2D4B1E361FDE241F0034B708 /* JCZQPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B1E341FDE241F0034B708 /* JCZQPlayViewController.m */; };
@@ -964,8 +974,6 @@
 		2D0E2399201817180098DA40 /* button_forbidden@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_forbidden@2x.png"; sourceTree = "<group>"; };
 		2D0E239C20181C780098DA40 /* checkBox_default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "checkBox_default@3x.png"; path = "login&registe/checkBox_default@3x.png"; sourceTree = "<group>"; };
 		2D0E239D20181C780098DA40 /* checkBox_default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "checkBox_default@2x.png"; path = "login&registe/checkBox_default@2x.png"; sourceTree = "<group>"; };
-		2D0E23A020182EB50098DA40 /* usermine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "usermine@2x.png"; path = "MineIcon/usermine@2x.png"; sourceTree = "<group>"; };
-		2D0E23A120182EB60098DA40 /* usermine@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "usermine@3x.png"; path = "MineIcon/usermine@3x.png"; sourceTree = "<group>"; };
 		2D0E23A4201883390098DA40 /* switch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch@2x.png"; sourceTree = "<group>"; };
 		2D0E23A5201883390098DA40 /* switch@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch@3x.png"; sourceTree = "<group>"; };
 		2D0E23A62018833B0098DA40 /* switchbackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switchbackground@2x.png"; sourceTree = "<group>"; };
@@ -1083,6 +1091,18 @@
 		2D2060331FFCCB380086E266 /* SchemListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SchemListCell.m; sourceTree = "<group>"; };
 		2D2060341FFCCB380086E266 /* SchemListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SchemListCell.xib; sourceTree = "<group>"; };
 		2D206F8B201C1877008A610F /* launchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchImage.png; sourceTree = "<group>"; };
+		2D40CA97201EDE4E00DDCFE3 /* button@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button@3x.png"; path = "../../../../../Library/Application Support/RTXC/accounts/wangbo01/sessionPhoto/版本升级-切图_ios/button@3x.png"; sourceTree = "<group>"; };
+		2D40CA98201EDE4E00DDCFE3 /* shut@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shut@2x.png"; sourceTree = "<group>"; };
+		2D40CA99201EDE4F00DDCFE3 /* button_line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_line@2x.png"; sourceTree = "<group>"; };
+		2D40CA9A201EDE5100DDCFE3 /* bj_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bj_down@2x.png"; sourceTree = "<group>"; };
+		2D40CA9B201EDE5200DDCFE3 /* button_line@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_line@3x.png"; sourceTree = "<group>"; };
+		2D40CA9C201EDE5400DDCFE3 /* dot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dot@2x.png"; sourceTree = "<group>"; };
+		2D40CA9D201EDE5400DDCFE3 /* shut@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shut@3x.png"; sourceTree = "<group>"; };
+		2D40CA9E201EDE5500DDCFE3 /* bj_down@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bj_down@3x.png"; sourceTree = "<group>"; };
+		2D40CA9F201EDE5600DDCFE3 /* button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button@2x.png"; path = "../../../../../Library/Application Support/RTXC/accounts/wangbo01/sessionPhoto/版本升级-切图_ios/button@2x.png"; sourceTree = "<group>"; };
+		2D40CAA0201EDE5600DDCFE3 /* dot@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dot@3x.png"; sourceTree = "<group>"; };
+		2D40CAAB201EE15200DDCFE3 /* usermine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "usermine@2x.png"; sourceTree = "<group>"; };
+		2D40CAAC201EE15300DDCFE3 /* usermine@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "usermine@3x.png"; sourceTree = "<group>"; };
 		2D4B174C1FD7B9270034B708 /* WBAdsImgView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBAdsImgView.h; sourceTree = "<group>"; };
 		2D4B174D1FD7B9270034B708 /* WBAdsImgView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBAdsImgView.m; sourceTree = "<group>"; };
 		2D4B1DC11FD7D6030034B708 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -2593,6 +2613,18 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				2D40CAAB201EE15200DDCFE3 /* usermine@2x.png */,
+				2D40CAAC201EE15300DDCFE3 /* usermine@3x.png */,
+				2D40CA9A201EDE5100DDCFE3 /* bj_down@2x.png */,
+				2D40CA9E201EDE5500DDCFE3 /* bj_down@3x.png */,
+				2D40CA99201EDE4F00DDCFE3 /* button_line@2x.png */,
+				2D40CA9B201EDE5200DDCFE3 /* button_line@3x.png */,
+				2D40CA9F201EDE5600DDCFE3 /* button@2x.png */,
+				2D40CA97201EDE4E00DDCFE3 /* button@3x.png */,
+				2D40CA9C201EDE5400DDCFE3 /* dot@2x.png */,
+				2D40CAA0201EDE5600DDCFE3 /* dot@3x.png */,
+				2D40CA98201EDE4E00DDCFE3 /* shut@2x.png */,
+				2D40CA9D201EDE5400DDCFE3 /* shut@3x.png */,
 				2D206F8B201C1877008A610F /* launchImage.png */,
 				2D0E24052019AC730098DA40 /* pic_zanwushuju@2x.png */,
 				2D0E24042019AC720098DA40 /* pic_zanwushuju@3x.png */,
@@ -2606,8 +2638,6 @@
 				2D0E23AF20196B530098DA40 /* wait_lottery@3x.png */,
 				2D0E23AC20196B510098DA40 /* winning@2x.png */,
 				2D0E23B420196B570098DA40 /* winning@3x.png */,
-				2D0E23A020182EB50098DA40 /* usermine@2x.png */,
-				2D0E23A120182EB60098DA40 /* usermine@3x.png */,
 				2D0E239D20181C780098DA40 /* checkBox_default@2x.png */,
 				2D0E239C20181C780098DA40 /* checkBox_default@3x.png */,
 				F95BC7D020172AF6006D6243 /* redpacket_open@2x.png */,
@@ -4002,6 +4032,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F95BC7D220172AF7006D6243 /* redpacket_open@2x.png in Resources */,
+				2D40CAAD201EE15400DDCFE3 /* usermine@2x.png in Resources */,
 				F924BA9E1FE252CF00830BF4 /* user@3x.png in Resources */,
 				F91565FD1FFCC73800E254CE /* qrcode@3x.png in Resources */,
 				F90FCD731FF3810F00BD807C /* dotted@3x.png in Resources */,
@@ -4032,10 +4063,12 @@
 				2D517209200D9E7600C3CD7F /* buddha@2x.png in Resources */,
 				2D0600451FFDDD51009E7568 /* schemedetailbutton@2x.png in Resources */,
 				F957C1CE1FE36B3F0090B19B /* close@3x.png in Resources */,
+				2D40CAA9201EDE5700DDCFE3 /* button@2x.png in Resources */,
 				2D0E23F72019A8520098DA40 /* invite@3x.png in Resources */,
 				2D5171F4200C72F300C3CD7F /* btn_change_@3x.png in Resources */,
 				2D8CBFFE1FF3857E00CC367F /* kuangyuanjiaolvse@3x.png in Resources */,
 				F94770C1200706BC0091729E /* jingcaizuqiu_hunheguoguan.html in Resources */,
+				2D40CAAE201EE15400DDCFE3 /* usermine@3x.png in Resources */,
 				2D0EEA9A201582C300B0769C /* yuce_detail@3x.png in Resources */,
 				2D628B6B1FF2278F0013D0E1 /* icon_danguan@3x.png in Resources */,
 				F9632F53200C8CC100F69D23 /* arrowdown@2x.png in Resources */,
@@ -4061,8 +4094,8 @@
 				2D739C951FE8A4DE00264044 /* JCZQSelectAllPlayTypeVIew.xib in Resources */,
 				2D0EEA922013280500B0769C /* button_trophy@2x.png in Resources */,
 				2D8CC0101FF487CF00CC367F /* WBHomeJCYCViewController.xib in Resources */,
+				2D40CAAA201EDE5700DDCFE3 /* dot@3x.png in Resources */,
 				2D20602D1FFCB71E0086E266 /* icon_zhanbaotongji@3x.png in Resources */,
-				2D0E23A320182EB60098DA40 /* usermine@3x.png in Resources */,
 				2D739CDA1FEB44F400264044 /* yuanjiaowubiankuangnomal@2x.png in Resources */,
 				2DDEDC071FD4DBD8007AEBF7 /* BuyLotteryViewController.xib in Resources */,
 				2D0E23DA2019A66D0098DA40 /* lottery@3x.png in Resources */,
@@ -4110,7 +4143,6 @@
 				2D4B1E871FDF684E0034B708 /* yuce@2x.png in Resources */,
 				2D0EEA9D201582C300B0769C /* yuce_detail_recom@2x.png in Resources */,
 				2D205FF41FFC7AF30086E266 /* newFeatureView-3.png in Resources */,
-				2D0E23A220182EB60098DA40 /* usermine@2x.png in Resources */,
 				2D4B1E7F1FDF684E0034B708 /* weishoucang@2x.png in Resources */,
 				2D2060291FFCB71E0086E266 /* icon_yinlian@3x.png in Resources */,
 				2D0E23C320196B590098DA40 /* wait_lottery@2x.png in Resources */,
@@ -4144,6 +4176,7 @@
 				2D739CF01FEB4B0E00264044 /* xiala@3x.png in Resources */,
 				2D8CBFB01FF328D800CC367F /* paysuccess@2x.png in Resources */,
 				F92D03F12005F3B400C26E7A /* integralhelp@3x.png in Resources */,
+				2D40CAA7201EDE5700DDCFE3 /* shut@3x.png in Resources */,
 				2D4B1E881FDF684E0034B708 /* yuce@3x.png in Resources */,
 				F924BA981FE252CF00830BF4 /* phone@3x.png in Resources */,
 				2D2060141FFCB71E0086E266 /* btn_huanyige@2x.png in Resources */,
@@ -4223,6 +4256,7 @@
 				2D4B1E8B1FDF684E0034B708 /* yuce_select@2x.png in Resources */,
 				F94AA9BF1FEB59DA0021B980 /* authentication@2x.png in Resources */,
 				2D0E23A82018833E0098DA40 /* switch@2x.png in Resources */,
+				2D40CAA8201EDE5700DDCFE3 /* bj_down@3x.png in Resources */,
 				2D5171B42007110D00C3CD7F /* SchemeInfoViewCell.xib in Resources */,
 				F9418F502010991200454109 /* ShareSDK.bundle in Resources */,
 				F91565ED1FFCBDAE00E254CE /* 1@3x.png in Resources */,
@@ -4289,6 +4323,7 @@
 				2D2060201FFCB71E0086E266 /* icon_tongyi_normal@2x.png in Resources */,
 				2D0E23E22019A6990098DA40 /* balance@3x.png in Resources */,
 				2D739CEB1FEB48B600264044 /* wukuangwuyuanjiaoselect@3x.png in Resources */,
+				2D40CAA2201EDE5700DDCFE3 /* shut@2x.png in Resources */,
 				2D0E23F62019A8520098DA40 /* invite@2x.png in Resources */,
 				2D628B3A1FECAA9A0013D0E1 /* fengkuangjingcai-monitouzhu-weixuanze@3x.png in Resources */,
 				F9418F452010991200454109 /* ShareSDKConfigFile.bundle in Resources */,
@@ -4344,6 +4379,7 @@
 				2DCBB27E1FD1000700934D92 /* Assets.xcassets in Resources */,
 				2D4B1E721FDF684E0034B708 /* faxian_select@3x.png in Resources */,
 				2D739C691FE787EF00264044 /* PayOrderViewController.xib in Resources */,
+				2D40CAA6201EDE5700DDCFE3 /* dot@2x.png in Resources */,
 				F924BAA21FE252CF00830BF4 /* password@2x.png in Resources */,
 				2D739D031FEB835D00264044 /* btnbackimgSelect@3x.png in Resources */,
 				F9F262B11FE8F4AE00C2E60F /* RSKImageCropperStrings.bundle in Resources */,
@@ -4358,6 +4394,7 @@
 				2D06008D1FFF4BAF009E7568 /* SchemeDetailViewCell.xib in Resources */,
 				F9992769200335DC00023F8F /* guanbi@3x.png in Resources */,
 				2D06FFE91FFDC9EB009E7568 /* football@2x.png in Resources */,
+				2D40CAA4201EDE5700DDCFE3 /* bj_down@2x.png in Resources */,
 				2D0E23B920196B590098DA40 /* failure@3x.png in Resources */,
 				F94913431FFF260F00D30AE7 /* banker@3x.png in Resources */,
 				2D06FFE61FFDC9EB009E7568 /* arrows@2x.png in Resources */,
@@ -4440,6 +4477,7 @@
 				2D739CFF1FEB68B800264044 /* backViewYuanJiao@3x.png in Resources */,
 				2D739C751FE79EAA00264044 /* LotteryProfileSelectView.xib in Resources */,
 				2D8CBFE61FF376DA00CC367F /* YuCeLiShiZhanJCell.xib in Resources */,
+				2D40CAA3201EDE5700DDCFE3 /* button_line@2x.png in Resources */,
 				F91565EE1FFCBDAE00E254CE /* scancode@2x.png in Resources */,
 				F928C6B71FF4BA40001F1A32 /* addmoney@2x.png in Resources */,
 				2D4B1EB41FDFCDAF0034B708 /* arrow_up@3x.png in Resources */,
@@ -4499,6 +4537,7 @@
 				2D739C421FE369DE00264044 /* checkBox_checked@3x.png in Resources */,
 				2D4B1E791FDF684E0034B708 /* home_select@2x.png in Resources */,
 				2D4B1E6B1FDF684E0034B708 /* bifenzhibo@2x.png in Resources */,
+				2D40CAA5201EDE5700DDCFE3 /* button_line@3x.png in Resources */,
 				2D06FFE71FFDC9EB009E7568 /* win@3x.png in Resources */,
 				2D4B1E3A1FDE717C0034B708 /* newBack@2x.png in Resources */,
 				2D0E23D62019A63E0098DA40 /* recharge@3x.png in Resources */,
@@ -4548,6 +4587,7 @@
 				F90058E61FF61619009C8E1C /* noticedelete@3x.png in Resources */,
 				F95C69F21FE7AD0200126C6A /* PersonnalCenterViewController.xib in Resources */,
 				F90FCD901FF396F700BD807C /* fly@3x.png in Resources */,
+				2D40CAA1201EDE5700DDCFE3 /* button@3x.png in Resources */,
 				2D4B1E8E1FDF684E0034B708 /* yucezhanji@3x.png in Resources */,
 				2D0EEA802012F7AF00B0769C /* icon_mingzhong@3x.png in Resources */,
 				2D4B1E431FDF65480034B708 /* HomeMenuItemsConfig.plist in Resources */,

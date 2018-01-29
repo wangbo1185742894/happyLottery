@@ -359,7 +359,13 @@
 }
 
 -(void)loadDanGuanPeiMatch{
-    if (self.model.matchKey == nil ||[self.model.spfSingle boolValue] == YES) {
+    
+    if ([self.model.spfSingle boolValue] == YES) {
+        self.labMatchPeiDefault.backgroundColor = RGBCOLOR(250, 250, 250);
+        self.labMatchPeiDefault.text = @"";
+    }
+    
+    if (self.model.matchKey == nil ) {
         return;
     }
     

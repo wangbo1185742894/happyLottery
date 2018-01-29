@@ -111,6 +111,8 @@
 - (void) queryRecharge:(NSDictionary *)paraDic;
 - (void)saveVisit:(NSArray  *)infoArray;
 
+-(void)upLoadClientInfo:(NSDictionary *)clientInfo;
+
 
 @end
 
