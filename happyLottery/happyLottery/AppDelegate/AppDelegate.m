@@ -644,7 +644,6 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         //
         NSString *time = [Utility timeStringFromFormat:@"yyyy-MM-dd HH:mm:ss" withDate:[NSDate date]];
      
- application.applicationIconBadgeNumber = 0;
     //判断应用是在前台还是后台
     if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
         
@@ -722,7 +721,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     // Required,For systems with less than or equal to iOS6
     [JPUSHService handleRemoteNotification:userInfo];
     
-     application.applicationIconBadgeNumber = 0;
+    [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];
+    [JPUSHService setBadge:0];//清空JPush服务器中存储的badge值
     if (pageCodeNotice!=nil) {
         
         [self goToYunshiWithInfo:pageCodeNotice];
