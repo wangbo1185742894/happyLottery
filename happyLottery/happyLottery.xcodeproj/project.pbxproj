@@ -864,6 +864,7 @@
 		F9FDFAEC2012F8DC0029ACC7 /* VersionUpdatingPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9FDFAE92012F8DB0029ACC7 /* VersionUpdatingPopView.xib */; };
 		F9FDFAED2012F8DC0029ACC7 /* VersionUpdatingPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FDFAEB2012F8DC0029ACC7 /* VersionUpdatingPopView.m */; };
 		F9FDFAEF2013223F0029ACC7 /* msg_come.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F9FDFAEE2013223E0029ACC7 /* msg_come.mp3 */; };
+		F9FF4388201EE37C00179211 /* PageCodeIsLogin.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9FF4387201EE37C00179211 /* PageCodeIsLogin.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -2015,6 +2016,7 @@
 		F9FDFAEA2012F8DB0029ACC7 /* VersionUpdatingPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionUpdatingPopView.h; sourceTree = "<group>"; };
 		F9FDFAEB2012F8DC0029ACC7 /* VersionUpdatingPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionUpdatingPopView.m; sourceTree = "<group>"; };
 		F9FDFAEE2013223E0029ACC7 /* msg_come.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = msg_come.mp3; sourceTree = "<group>"; };
+		F9FF4387201EE37C00179211 /* PageCodeIsLogin.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PageCodeIsLogin.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2279,6 +2281,7 @@
 				2D739CC31FEA7B4D00264044 /* JingCaiCode.plist */,
 				2D4B1E421FDF65480034B708 /* HomeMenuItemsConfig.plist */,
 				2D739C6F1FE79DBB00264044 /* LotteryProfilesConfig.plist */,
+				F9FF4387201EE37C00179211 /* PageCodeIsLogin.plist */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -4289,6 +4292,7 @@
 				2D0600401FFDDD51009E7568 /* schemedetailarrowsgreen@2x.png in Resources */,
 				2D9847B21FF5E1EB00038690 /* UMChongZhiViewController.xib in Resources */,
 				2D0E23CF2019A5F30098DA40 /* set@2x.png in Resources */,
+				F9FF4388201EE37C00179211 /* PageCodeIsLogin.plist in Resources */,
 				2D0E23BE20196B590098DA40 /* unpaid@2x.png in Resources */,
 				2D628B4D1FECB2EB0013D0E1 /* JingCaiChuanTypeDic.plist in Resources */,
 				2D0600821FFE2036009E7568 /* TableHeaderView.xib in Resources */,

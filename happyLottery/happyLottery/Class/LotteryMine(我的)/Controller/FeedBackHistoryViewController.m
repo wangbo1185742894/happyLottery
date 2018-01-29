@@ -57,7 +57,7 @@ static NSString * const ReuseIdentifier = @"cell";
         NSString *cardCode = self.curUser.cardCode;
         Info = @{@"cardCode":cardCode,
                  @"page":pagestr,
-                 @"pageSize":@"5"
+                 @"pageSize":@"10"
                  };
         
     } @catch (NSException *exception) {
@@ -74,7 +74,7 @@ static NSString * const ReuseIdentifier = @"cell";
         NSString *cardCode = self.curUser.cardCode;
         Info = @{@"cardCode":cardCode,
                  @"page":pagestr,
-                 @"pageSize":@(KpageSize)
+                 @"pageSize":@"10"//@(KpageSize)
                  };
         
     } @catch (NSException *exception) {
