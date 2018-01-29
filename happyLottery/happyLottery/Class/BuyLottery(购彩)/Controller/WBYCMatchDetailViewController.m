@@ -359,7 +359,7 @@
 }
 
 -(void)loadDanGuanPeiMatch{
-    if (self.model.matchKey == nil) {
+    if (self.model.matchKey == nil ||[self.model.spfSingle boolValue] == YES) {
         return;
     }
     

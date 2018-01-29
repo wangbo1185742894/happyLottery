@@ -99,7 +99,7 @@
     }
     if ([model.winningStatus isEqualToString:@"NOT_LOTTERY"]) {
         
-        return @"未中奖";
+        return @"0.00元";
     }
     if ([model.bonus doubleValue] != 0) {
         labBetCost.textColor = SystemRed;
@@ -107,7 +107,7 @@
         
         
     }
-    return @"";
+    return @"0.00元";
     
 }
 
