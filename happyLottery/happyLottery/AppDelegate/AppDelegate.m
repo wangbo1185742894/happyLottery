@@ -434,10 +434,11 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     }
     if (@available(iOS 10.0, *)) {
         completionHandler(UNNotificationPresentationOptionAlert);
+     
     } else {
         // Fallback on earlier versions
-    } // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以选择设置
-  
+    }   // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以选择设置
+   
    
 }
 
@@ -448,28 +449,29 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     if (@available(iOS 10.0, *)) {
         if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
             [JPUSHService handleRemoteNotification:userInfo];
-
+            
+            if (pageCodeNotice!=nil) {
+                
+                [self goToYunshiWithInfo:pageCodeNotice];
+                
+            }
+            if (linkUrlNotice!=nil) {
+                
+                UITabBarController *tab = (UITabBarController *)_window.rootViewController;
+                UINavigationController *nav = tab.viewControllers[tab.selectedIndex];
+                JumpWebViewController *jumpVC = [[JumpWebViewController alloc] initWithNibName:@"JumpWebViewController" bundle:nil];
+                jumpVC.title = @"消息详情";
+                jumpVC.URL = linkUrlNotice;
+                jumpVC.hidesBottomBarWhenPushed = YES;
+                [nav pushViewController:jumpVC animated:YES];
+                
+                
+            }
         }
     } else {
         // Fallback on earlier versions
     }
-    if (pageCodeNotice!=nil) {
-        
-        [self goToYunshiWithInfo:pageCodeNotice];
-        
-    }
-    if (linkUrlNotice!=nil) {
-        
-        UITabBarController *tab = (UITabBarController *)_window.rootViewController;
-        UINavigationController *nav = tab.viewControllers[tab.selectedIndex];
-        JumpWebViewController *jumpVC = [[JumpWebViewController alloc] initWithNibName:@"JumpWebViewController" bundle:nil];
-        jumpVC.title = @"消息详情";
-        jumpVC.URL = linkUrlNotice;
-        jumpVC.hidesBottomBarWhenPushed = YES;
-        [nav pushViewController:jumpVC animated:YES];
-        
-        
-    }
+
     completionHandler();  // 系统要求执行这个方法
 }
 
@@ -629,7 +631,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         //
         NSString *time = [Utility timeStringFromFormat:@"yyyy-MM-dd HH:mm:ss" withDate:[NSDate date]];
      
- 
+ application.applicationIconBadgeNumber = 0;
     //判断应用是在前台还是后台
     if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
         
@@ -707,7 +709,23 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [JPUSHService handleRemoteNotification:userInfo];
     
      application.applicationIconBadgeNumber = 0;
-    
+    if (pageCodeNotice!=nil) {
+        
+        [self goToYunshiWithInfo:pageCodeNotice];
+        
+    }
+    if (linkUrlNotice!=nil) {
+        
+        UITabBarController *tab = (UITabBarController *)_window.rootViewController;
+        UINavigationController *nav = tab.viewControllers[tab.selectedIndex];
+        JumpWebViewController *jumpVC = [[JumpWebViewController alloc] initWithNibName:@"JumpWebViewController" bundle:nil];
+        jumpVC.title = @"消息详情";
+        jumpVC.URL = linkUrlNotice;
+        jumpVC.hidesBottomBarWhenPushed = YES;
+        [nav pushViewController:jumpVC animated:YES];
+        
+        
+    }
 
 }
 

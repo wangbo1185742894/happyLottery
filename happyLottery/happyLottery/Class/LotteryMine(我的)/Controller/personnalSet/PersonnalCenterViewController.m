@@ -336,7 +336,8 @@
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",@"text/javascript",@"text/json", nil];
     NSString * imgpath = [NSString stringWithFormat:@"%@",dic[@"image"]];
     UIImage *image = [UIImage imageWithContentsOfFile:imgpath];
-    NSData *data = UIImageJPEGRepresentation(image,0.7);
+    [image drawInRect:CGRectMake(0, 0, 60, 60)];
+    NSData *data = UIImageJPEGRepresentation(image,0.5);
    // NSDictionary *parameters =@{@"photo":data};
     
     
