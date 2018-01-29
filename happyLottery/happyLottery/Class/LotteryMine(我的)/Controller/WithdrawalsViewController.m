@@ -289,6 +289,7 @@
     NSString *num =bankCards.bankNumber;
     NSString *num4 = [num substringFromIndex:num.length- 4 ];
     NSString *bank =  [NSString stringWithFormat:@"%@ (尾号%@)--%@",bankCards.bankName,num4,self.curUser.name];
+    cell.textLabel.font=[UIFont systemFontOfSize:18]; 
     cell.textLabel.text =bank;
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
     return cell;
