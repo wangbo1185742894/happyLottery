@@ -14,6 +14,7 @@
 #import "FMDB.h"
 #import "JumpWebViewController.h"
 #import "DiscoverViewController.h"
+#import "HomeJumpViewController.h"
 
 @interface NoticeCenterViewController ()<MemberManagerDelegate,UITableViewDelegate,UITableViewDataSource>{
     
@@ -381,19 +382,24 @@
     }else if([keyStr isEqualToString:@"A000"]){
 
              self.tabBarController.selectedIndex = 0;
-    }else if ([keyStr isEqualToString:@"A403"]){
-        self.tabBarController.selectedIndex = 2;
-        UINavigationController *discoverNavVC = self.tabBarController.viewControllers[2];
-        DiscoverViewController *disVC = [discoverNavVC.viewControllers firstObject];
+    }else  if ([keyStr isEqualToString:@"A403"]){
+        
         if (self.curUser.isLogin == YES && self.curUser.cardCode != nil) {
-            disVC.pageUrl = [NSString stringWithFormat:@"%@/app/find/turntable?activityId=5&cardCode=%@",H5BaseAddress,self.curUser.cardCode];
+            HomeJumpViewController *disVC = [[HomeJumpViewController alloc]init];
+            disVC.navigationController.navigationBar.hidden = YES;
+            ADSModel *model = [[ADSModel alloc]init];
+            model.linkUrl = [NSString stringWithFormat:@"%@/app/find/turntable?activityId=5&cardCode=%@",H5BaseAddress,self.curUser.cardCode];
+            disVC.infoModel = model;
+            disVC.isNeedBack = YES;
+            [self.navigationController pushViewController:disVC animated:disVC];
+        }else{
+            [self needLogin];
         }
-    }{
-        baseVC.hidesBottomBarWhenPushed = YES;
+        return;
+    }else{
+         baseVC.hidesBottomBarWhenPushed = YES;
          [self.navigationController pushViewController:baseVC animated:YES];
     }
-  
-   
 }
 
 

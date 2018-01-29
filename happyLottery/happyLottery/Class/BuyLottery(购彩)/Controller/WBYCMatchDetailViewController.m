@@ -21,7 +21,12 @@
     
     NSInteger beiNum;
 }
-@property (weak, nonatomic) IBOutlet UILabel *labMatchPeiDefault;
+@property (weak, nonatomic) IBOutlet UILabel *defaultDes;
+@property (weak, nonatomic) IBOutlet UIImageView *defaultImg;
+@property (weak, nonatomic) IBOutlet UIView *viewMatchPeiDefault;
+@property (weak, nonatomic) IBOutlet UILabel *defaultPipei;
+
+
 
 @property (weak, nonatomic) IBOutlet UILabel *labMatchTime;
 @property (weak, nonatomic) IBOutlet UILabel *labMatchHomeName;
@@ -101,10 +106,10 @@
 -(void)showPeiMatchInfo{
 
     if (self.model.jcPairingMatchDto == nil) {
-        self.labMatchPeiDefault.hidden = NO;
+        self.viewMatchPeiDefault.hidden = NO;
         return;
     }else{
-        self.labMatchPeiDefault.hidden = YES;
+        self.viewMatchPeiDefault.hidden = YES;
     }
     for (UIView *subView in self.viewPeiMatchItem.subviews) {
         [subView removeFromSuperview];
@@ -113,7 +118,7 @@
    
     self.labPeiMatchHomeName.attributedText = [self getAttStrFromStr:[NSString stringWithFormat:@"%@(主)",self.model.jcPairingMatchDto.homeName]];
     
-    self.labPeiMatchGuestName.attributedText = [self getAttStrFromStr:[NSString stringWithFormat:@"%@(客)",self.model.jcPairingMatchDto.guestName]];
+    self.labPeiMatchGuestName.text = self.model.jcPairingMatchDto.guestName;
     
     NSInteger selectNum = self.model.jcPairingMatchDto.options.count;
     
@@ -289,7 +294,7 @@
 
     self.labMatchTime.text = self.model.lineId;
     self.labMatchHomeName.attributedText = [self getAttStrFromStr:[NSString stringWithFormat:@"%@(主)",self.model.homeName]] ;
-    self.labMatchGuest.attributedText =[self getAttStrFromStr:[NSString stringWithFormat:@"%@(客)",self.model.guestName]] ;
+    self.labMatchGuest.text =self.model.guestName ;
     NSInteger selectNum = 0;
     for (JcForecastOptions * op in self.model.forecastOptions) {
         if ([op.forecast boolValue] == YES) {
@@ -361,11 +366,18 @@
 -(void)loadDanGuanPeiMatch{
     
     if ([self.model.spfSingle boolValue] == YES) {
-        self.labMatchPeiDefault.backgroundColor = RGBCOLOR(250, 250, 250);
-        self.labMatchPeiDefault.text = @"";
+        self.viewMatchPeiDefault.hidden = NO;
+        self.defaultImg.hidden = YES;
+        self.defaultDes.hidden = YES;
+        self.defaultPipei.hidden = YES;
+        return;
     }
     
     if (self.model.matchKey == nil ) {
+        self.viewMatchPeiDefault.hidden = NO;
+        self.defaultImg.hidden = NO;
+        self.defaultDes.hidden = NO;
+        self.defaultPipei.hidden = NO;
         return;
     }
     
@@ -375,12 +387,13 @@
 
 -(void)gotJczqPairingMatch:(NSDictionary *)infoDic errorMsg:(NSString *)msg{
     [self hideLoadingView];
+    
     if (infoDic == nil) {
-        self.labMatchPeiDefault.hidden = NO;
+        self.viewMatchPeiDefault.hidden = NO;
         [self showPromptText:msg hideAfterDelay:1.7];
         return;
     }
-    self.labMatchPeiDefault.hidden = YES;
+    self.viewMatchPeiDefault.hidden = YES;
     JcPairingMatchModel * model = [[JcPairingMatchModel alloc]initWith:infoDic];
     self.model.jcPairingMatchDto = model;
     [self showPeiMatchInfo];

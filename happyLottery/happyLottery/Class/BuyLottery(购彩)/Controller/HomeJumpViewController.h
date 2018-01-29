@@ -11,4 +11,5 @@
 
 @interface HomeJumpViewController : BaseViewController
 @property(strong , nonatomic)ADSModel *infoModel;
+@property(assign,nonatomic)BOOL isNeedBack;
 @end

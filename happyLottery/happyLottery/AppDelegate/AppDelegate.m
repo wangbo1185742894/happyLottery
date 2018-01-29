@@ -682,31 +682,31 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 
 
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    
-    // Required,For systems with less than or equal to iOS6
-    [JPUSHService handleRemoteNotification:userInfo];
-    
-     application.applicationIconBadgeNumber = 0;
-    if (pageCodeNotice!=nil) {
-        
-        [self goToYunshiWithInfo:pageCodeNotice];
-        
-    }
-    if (linkUrlNotice!=nil) {
-        
-        UITabBarController *tab = (UITabBarController *)_window.rootViewController;
-        UINavigationController *nav = tab.viewControllers[tab.selectedIndex];
-        JumpWebViewController *jumpVC = [[JumpWebViewController alloc] initWithNibName:@"JumpWebViewController" bundle:nil];
-        jumpVC.title = @"消息详情";
-        jumpVC.URL = linkUrlNotice;
-        jumpVC.hidesBottomBarWhenPushed = YES;
-        [nav pushViewController:jumpVC animated:YES];
-        
-        
-    }
-
-}
+//- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+//
+//    // Required,For systems with less than or equal to iOS6
+//    [JPUSHService handleRemoteNotification:userInfo];
+//
+//     application.applicationIconBadgeNumber = 0;
+//    if (pageCodeNotice!=nil) {
+//
+//        [self goToYunshiWithInfo:pageCodeNotice];
+//
+//    }
+//    if (linkUrlNotice!=nil) {
+//
+//        UITabBarController *tab = (UITabBarController *)_window.rootViewController;
+//        UINavigationController *nav = tab.viewControllers[tab.selectedIndex];
+//        JumpWebViewController *jumpVC = [[JumpWebViewController alloc] initWithNibName:@"JumpWebViewController" bundle:nil];
+//        jumpVC.title = @"消息详情";
+//        jumpVC.URL = linkUrlNotice;
+//        jumpVC.hidesBottomBarWhenPushed = YES;
+//        [nav pushViewController:jumpVC animated:YES];
+//
+//
+//    }
+//
+//}
 
 
 - (void)showZhuihaoDetail:(NSString*) ordernumber{

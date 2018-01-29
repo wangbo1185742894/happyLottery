@@ -11,7 +11,9 @@
 #import "UIImageView+WebCache.h"
 
 #define LEFTPADDING 15
-@interface HomeJumpViewController ()
+@interface HomeJumpViewController ()<UIWebViewDelegate>
+@property (weak, nonatomic) IBOutlet UIButton *btnBack;
+@property (weak, nonatomic) IBOutlet UILabel *labBack;
 
 @end
 
@@ -21,9 +23,30 @@
     [super viewDidLoad];
     
     self.title = @"活动信息";
+    if (_isNeedBack) {
+        
+    }
+    
     self.title = self.infoModel.title;
     [self showWeb];
+    
 
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    if (_isNeedBack) {
+        
+        self .navigationController.navigationBar.hidden = YES;
+    }
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    if (_isNeedBack) {
+        
+        self .navigationController.navigationBar.hidden = NO;
+    }
 }
 
 - (void)showWeb{
@@ -42,13 +65,30 @@
     }else{
         linkUrl = [NSURL URLWithString:_infoModel.linkUrl];
     }
+    UIWebView *webView;
+    if (_isNeedBack) {
+        webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 20, KscreenWidth, KscreenHeight - 20)];
+    }else{
+        webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64, KscreenWidth, KscreenHeight - 64)];
+    }
+    webView.delegate = self;
     
-    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64, KscreenWidth, KscreenHeight - 64)];
     [self.view addSubview:webView];
+    webView.scrollView.bounces = NO;
     
+    [self.view bringSubviewToFront:_btnBack];
     [webView loadRequest:[NSURLRequest requestWithURL:linkUrl]];
 }
 
+- (IBAction)actionBack:(id)sender {
+    [super navigationBackToLastPage];
+}
 
+-(void)webViewDidFinishLoad:(UIWebView *)webView{
+    if (_isNeedBack) {
+        self.btnBack.hidden = NO;
+        self.labBack.hidden = NO;
+    }
+}
 
 @end
