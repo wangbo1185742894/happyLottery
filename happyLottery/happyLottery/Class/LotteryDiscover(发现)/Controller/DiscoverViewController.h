@@ -12,7 +12,7 @@
 @protocol JSObjcDelegate <JSExport>
 -(void)SharingLinks:(NSString *)code;
 -(void)goToJczq;
-
+- (void)telPhone;
 -(void)goToLogin;
 -(void)hiddenFooter:(BOOL )isHiden;
 @end

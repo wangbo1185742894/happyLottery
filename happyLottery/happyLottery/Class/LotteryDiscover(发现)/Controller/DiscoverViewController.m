@@ -37,7 +37,9 @@
 }
 
 -(void)setWebView{
-    if ([Utility isIOS11After]) {
+     if(KscreenWidth == 320){
+        webDisBottom.constant = -100;
+     }else if ([Utility isIOS11After]) {
         webDisTop.constant = 0;
         webDisBottom.constant = 0;
     }else{
@@ -202,6 +204,10 @@
 
 -(void)goToLogin{
     [self needLogin];
+}
+
+- (void)telPhone{
+    [self actionTelMe];
 }
 
 @end

@@ -175,7 +175,6 @@
 		2D2060311FFCB71E0086E266 /* icon_zhifu_selcetes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D2060131FFCB71E0086E266 /* icon_zhifu_selcetes@2x.png */; };
 		2D2060351FFCCB380086E266 /* SchemListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2060331FFCCB380086E266 /* SchemListCell.m */; };
 		2D2060361FFCCB380086E266 /* SchemListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D2060341FFCCB380086E266 /* SchemListCell.xib */; };
-		2D206F8C201C1878008A610F /* launchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D206F8B201C1877008A610F /* launchImage.png */; };
 		2D40CAA2201EDE5700DDCFE3 /* shut@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40CA98201EDE4E00DDCFE3 /* shut@2x.png */; };
 		2D40CAA3201EDE5700DDCFE3 /* button_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40CA99201EDE4F00DDCFE3 /* button_line@2x.png */; };
 		2D40CAA4201EDE5700DDCFE3 /* bj_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40CA9A201EDE5100DDCFE3 /* bj_down@2x.png */; };
@@ -188,6 +187,7 @@
 		2D40CAAE201EE15400DDCFE3 /* usermine@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40CAAC201EE15300DDCFE3 /* usermine@3x.png */; };
 		2D40CAB1201EEDC700DDCFE3 /* pic@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40CAAF201EEDC500DDCFE3 /* pic@3x.png */; };
 		2D40CAB2201EEDC700DDCFE3 /* pic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40CAB0201EEDC600DDCFE3 /* pic@2x.png */; };
+		2D40CAB4201F2BB100DDCFE3 /* launchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40CAB3201F2BB000DDCFE3 /* launchImage.png */; };
 		2D4B174E1FD7B9270034B708 /* WBAdsImgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B174D1FD7B9270034B708 /* WBAdsImgView.m */; };
 		2D4B1DC31FD7D6030034B708 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B1DC21FD7D6030034B708 /* MBProgressHUD.m */; };
 		2D4B1E361FDE241F0034B708 /* JCZQPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B1E341FDE241F0034B708 /* JCZQPlayViewController.m */; };
@@ -1091,7 +1091,6 @@
 		2D2060321FFCCB380086E266 /* SchemListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SchemListCell.h; sourceTree = "<group>"; };
 		2D2060331FFCCB380086E266 /* SchemListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SchemListCell.m; sourceTree = "<group>"; };
 		2D2060341FFCCB380086E266 /* SchemListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SchemListCell.xib; sourceTree = "<group>"; };
-		2D206F8B201C1877008A610F /* launchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchImage.png; sourceTree = "<group>"; };
 		2D40CA98201EDE4E00DDCFE3 /* shut@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shut@2x.png"; sourceTree = "<group>"; };
 		2D40CA99201EDE4F00DDCFE3 /* button_line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_line@2x.png"; sourceTree = "<group>"; };
 		2D40CA9A201EDE5100DDCFE3 /* bj_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bj_down@2x.png"; sourceTree = "<group>"; };
@@ -1104,6 +1103,7 @@
 		2D40CAAC201EE15300DDCFE3 /* usermine@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "usermine@3x.png"; sourceTree = "<group>"; };
 		2D40CAAF201EEDC500DDCFE3 /* pic@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pic@3x.png"; sourceTree = "<group>"; };
 		2D40CAB0201EEDC600DDCFE3 /* pic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pic@2x.png"; sourceTree = "<group>"; };
+		2D40CAB3201F2BB000DDCFE3 /* launchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchImage.png; sourceTree = "<group>"; };
 		2D4B174C1FD7B9270034B708 /* WBAdsImgView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBAdsImgView.h; sourceTree = "<group>"; };
 		2D4B174D1FD7B9270034B708 /* WBAdsImgView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBAdsImgView.m; sourceTree = "<group>"; };
 		2D4B1DC11FD7D6030034B708 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -2616,6 +2616,7 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				2D40CAB3201F2BB000DDCFE3 /* launchImage.png */,
 				2D40CAB0201EEDC600DDCFE3 /* pic@2x.png */,
 				2D40CAAF201EEDC500DDCFE3 /* pic@3x.png */,
 				2D40CAAB201EE15200DDCFE3 /* usermine@2x.png */,
@@ -2628,7 +2629,6 @@
 				2D40CAA0201EDE5600DDCFE3 /* dot@3x.png */,
 				2D40CA98201EDE4E00DDCFE3 /* shut@2x.png */,
 				2D40CA9D201EDE5400DDCFE3 /* shut@3x.png */,
-				2D206F8B201C1877008A610F /* launchImage.png */,
 				2D0E24052019AC730098DA40 /* pic_zanwushuju@2x.png */,
 				2D0E24042019AC720098DA40 /* pic_zanwushuju@3x.png */,
 				2D0E23B120196B540098DA40 /* failure@2x.png */,
@@ -4092,7 +4092,6 @@
 				2D8CBFD21FF3769F00CC367F /* YuceSchemeDetailViewController.xib in Resources */,
 				2D5171C62008654800C3CD7F /* icon_zhifubao@3x.png in Resources */,
 				F94027E02018929700CF7A2B /* redpacketKong@3x.png in Resources */,
-				2D206F8C201C1878008A610F /* launchImage.png in Resources */,
 				2D739C951FE8A4DE00264044 /* JCZQSelectAllPlayTypeVIew.xib in Resources */,
 				2D0EEA922013280500B0769C /* button_trophy@2x.png in Resources */,
 				2D8CC0101FF487CF00CC367F /* WBHomeJCYCViewController.xib in Resources */,
@@ -4410,6 +4409,7 @@
 				F91565F41FFCBDAE00E254CE /* scancode@3x.png in Resources */,
 				2D5171C52008654800C3CD7F /* icon_zhifubao@2x.png in Resources */,
 				2D0EEA912013280500B0769C /* turnoff@2x.png in Resources */,
+				2D40CAB4201F2BB100DDCFE3 /* launchImage.png in Resources */,
 				F924BA9B1FE252CF00830BF4 /* line@2x.png in Resources */,
 				2D0E23B820196B590098DA40 /* winning@2x.png in Resources */,
 				F999278A20037AA200023F8F /* empty_zhmx@3x.png in Resources */,

@@ -216,6 +216,8 @@
     CGFloat height;
     if ([self isIphoneX]) {
         height = curY  + tabForecaseList.rowHeight * JczqShortcutList.count + 20;
+    }else if(KscreenWidth == 320){
+        height = curY  + tabForecaseList.rowHeight * JczqShortcutList.count;
     }else{
         height = curY  + tabForecaseList.rowHeight * JczqShortcutList.count;
     }
