@@ -123,7 +123,7 @@
 
 -(void)loadAdsImg{
     adsArray = [NSMutableArray arrayWithCapacity:0];
-    NSString *strUlr = [NSString stringWithFormat:@"%@/app/banner/byChannel?usageChannel=3",ServerAddress];
+    NSString *strUlr = [NSString stringWithFormat:@"%@/app/banner/byChannel?usageChannel=3",[GlobalInstance instance].homeUrl];
     [singleLoad RequestWithString:strUlr isPost:NO andPara:nil andComplete:^(id data, BOOL isSuccess) {
         if (isSuccess == NO || data == nil) {
             return ;
@@ -151,7 +151,7 @@
 -(void)loadNews{
    
     
-    NSString *strUlr = [NSString stringWithFormat:@"%@/app/news/showNews?usageChannel=3",ServerAddress];
+    NSString *strUlr = [NSString stringWithFormat:@"%@/app/news/showNews?usageChannel=3",[GlobalInstance instance].homeUrl];
     [singleLoad RequestWithString:strUlr isPost:NO andPara:nil andComplete:^(id data, BOOL isSuccess) {
         
         if (isSuccess == NO || data == nil) {

@@ -341,7 +341,7 @@
    // NSDictionary *parameters =@{@"photo":data};
     
     
-    NSString *urlString =[NSString stringWithFormat:@"%@/app/head/url",ServerAddress];
+    NSString *urlString =[NSString stringWithFormat:@"%@/app/head/url",[GlobalInstance instance].homeUrl];
     
    // urlString=[urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     [manager POST:urlString parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {

@@ -69,6 +69,7 @@ static SystemSoundID shake_sound_male_id = 0;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self loadTabVC];
+    [GlobalInstance instance].homeUrl = ServerAddress;
     NSString *doc=[NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString *fileName=[doc stringByAppendingPathComponent:@"userInfo.sqlite"];
     self.fmdb =[FMDatabase databaseWithPath:fileName];
@@ -76,6 +77,7 @@ static SystemSoundID shake_sound_male_id = 0;
     
     memberMan = [[MemberManager alloc]init];
     memberMan.delegate = self;
+    [memberMan getVueHttpUrl];
      _messageContents = [[NSMutableArray alloc] initWithCapacity:6];
     [self setKeyWindow];
     [self initJpush];
@@ -760,6 +762,13 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [delegate.curNavVC pushViewController:myOrderListVC animated:YES];
 }
 
+-(void)gotVueHttpUrl:(NSString *)baseUrl errorMsg:(NSString *)msg{
+    if (baseUrl == nil || baseUrl.length == YES) {
+        [GlobalInstance instance].homeUrl = ServerAddress;
+    }else{
+        [GlobalInstance instance].homeUrl = baseUrl;
+    }
+}
 
 
 @end

@@ -35,7 +35,7 @@
 -(void)loadNews{
     singleLoad = [LoadData singleLoadData];
     newArray = [NSMutableArray arrayWithCapacity:0];
-    NSString *strUlr = [NSString stringWithFormat:@"%@/app/news/moreNews?usageChannel=3",ServerAddress];
+    NSString *strUlr = [NSString stringWithFormat:@"%@/app/news/moreNews?usageChannel=3",[GlobalInstance instance].homeUrl];
     [singleLoad RequestWithString:strUlr isPost:NO andPara:nil andComplete:^(id data, BOOL isSuccess) {
         if (isSuccess == NO) {
             return ;
