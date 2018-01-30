@@ -57,6 +57,7 @@
     NSString *pageCodeNotice;
     NSString *linkUrlNotice;
     NSString *titleNotice;
+    BOOL isLogin ;
 }
 
 @property(nonatomic,strong)FMDatabase* fmdb;
@@ -119,7 +120,9 @@ static SystemSoundID shake_sound_male_id = 0;
 //                [self goToYunshiWithInfo:appCode];
 //          
 //        }
-        
+       // [application setApplicationIconBadgeNumber:0];
+        //清除角标
+       // [application cancelAllLocalNotifications];
     }
 
       [self initShareSDK];
@@ -185,7 +188,7 @@ static SystemSoundID shake_sound_male_id = 0;
 }
 
 -(void)autoLogin{
-    BOOL isLogin = NO;
+    isLogin = NO;
     if ([self .fmdb open]) {
          FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_user_info"];
         if ([result next] && [result stringForColumn:@"mobile"] != nil) {
@@ -389,7 +392,7 @@ static SystemSoundID shake_sound_male_id = 0;
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
-
+//从后台点击icon进入时清除角标
 - (void)applicationWillEnterForeground:(UIApplication *)application {
      [[NSNotificationCenter defaultCenter] postNotificationName:@"NSNotificationapplicationWillEnterForeground" object:nil];
     [application setApplicationIconBadgeNumber:0];
@@ -430,6 +433,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     if (@available(iOS 10.0, *)) {
         if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
             [JPUSHService handleRemoteNotification:userInfo];
+          
         }
     } else {
         // Fallback on earlier versions
@@ -451,15 +455,15 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     if (@available(iOS 10.0, *)) {
         if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
             [JPUSHService handleRemoteNotification:userInfo];
-            [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];
-            [JPUSHService setBadge:0];//清空JPush服务器中存储的badge值
+//            [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];
+//            [JPUSHService setBadge:0];//清空JPush服务器中存储的badge值
             if (pageCodeNotice!=nil) {
-                
+
                 [self goToYunshiWithInfo:pageCodeNotice];
-                
+
             }
             if (linkUrlNotice!=nil) {
-                
+
                 UITabBarController *tab = (UITabBarController *)_window.rootViewController;
                 UINavigationController *nav = tab.viewControllers[tab.selectedIndex];
                 JumpWebViewController *jumpVC = [[JumpWebViewController alloc] initWithNibName:@"JumpWebViewController" bundle:nil];
@@ -467,8 +471,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
                 jumpVC.URL = linkUrlNotice;
                 jumpVC.hidesBottomBarWhenPushed = YES;
                 [nav pushViewController:jumpVC animated:YES];
-                
-                
+
+
             }
         }
     } else {
@@ -542,10 +546,13 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         return;
     }
         NSString *loginName = loginDic[keyStr];
-    if ([loginName isEqualToString:@"1"]) {
-        vcName =@"LoginViewController";
-         //return;
+    if (isLogin==NO) {
+        if ([loginName isEqualToString:@"1"]) {
+            vcName =@"LoginViewController";
+            //return;
+        }
     }
+  
  
     Class class = NSClassFromString(vcName);
     
@@ -655,8 +662,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     }else{
         
         //第二种情况后台挂起时
-        [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];
-        [JPUSHService setBadge:0];//清空JPush服务器中存储的badge值
+//        [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];
+//        [JPUSHService setBadge:0];//清空JPush服务器中存储的badge值
         if (pageCodeNotice!=nil) {
             
             [self goToYunshiWithInfo:pageCodeNotice];
@@ -722,8 +729,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     // Required,For systems with less than or equal to iOS6
     [JPUSHService handleRemoteNotification:userInfo];
     
-    [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];
-    [JPUSHService setBadge:0];//清空JPush服务器中存储的badge值
+//    [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];
+//    [JPUSHService setBadge:0];//清空JPush服务器中存储的badge值
     if (pageCodeNotice!=nil) {
         
         [self goToYunshiWithInfo:pageCodeNotice];
