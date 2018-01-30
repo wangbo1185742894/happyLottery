@@ -61,7 +61,7 @@
         labTicketCount.text = @"";
     }
     
-    if ([model.schemeStatus isEqualToString:@"CANCEL"]||[model.schemeStatus isEqualToString:@"REPEAL"]) {
+    if ([model.schemeStatus isEqualToString:@"CANCEL"]||[model.schemeStatus isEqualToString:@"REPEAL"] ||[model.schemeStatus isEqualToString:@"INIT"] ) {
         labBetBouns.text = @"";
         labBetBouns.mj_h = 0;
         labBetCost.text = @"";

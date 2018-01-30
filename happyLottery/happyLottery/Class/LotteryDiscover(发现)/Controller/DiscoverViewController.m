@@ -11,13 +11,15 @@
 #import <ShareSDKUI/ShareSDK+SSUI.h>
 #import <ShareSDK/NSMutableDictionary+SSDKShare.h>
 #import <MOBFoundation/MOBFoundation.h>
-
+#import "JWCacheURLProtocol.h"
+#import <WebKit/WebKit.h>
 
 @interface DiscoverViewController ()<JSObjcDelegate,UIWebViewDelegate>
 {
     __weak IBOutlet NSLayoutConstraint *webDisTop;
     JSContext *context;
     __weak IBOutlet NSLayoutConstraint *webDisBottom;
+    BOOL _pageCacheDisable;
 }
 
 @property (weak, nonatomic) IBOutlet UIWebView *faxianWebView;
@@ -28,10 +30,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [JWCacheURLProtocol startListeningNetWorking];
+     _pageCacheDisable = YES;
     self.viewControllerNo = @"A401";
     self.faxianWebView.scrollView.bounces = NO;
     self.faxianWebView.delegate = self;
-
 
     [self setWebView];
 }
@@ -58,13 +61,18 @@
         if (self.curUser.isLogin == YES) {
             cardCode = self.curUser.cardCode;
         }
-        [self.faxianWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/app/find/index?cardCode=%@",H5BaseAddress,cardCode]]]];
+        
+        NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/app/find/index?cardCode=%@",H5BaseAddress,cardCode]] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:20];
+        
+        
+        [self.faxianWebView loadRequest:request];
     }
     self.navigationController.navigationBar.hidden = YES;
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+    [JWCacheURLProtocol cancelListeningNetWorking];
     self.pageUrl = nil;
     self.navigationController.navigationBar.hidden = NO;
 }
@@ -78,6 +86,7 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
+    
     context = [webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
     context[@"appObj"] = self;
     context.exceptionHandler = ^(JSContext *context, JSValue *exceptionValue) {
@@ -85,6 +94,10 @@
     };
     [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitUserSelect='none';"];
     [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitTouchCallout='none';"];
+    
+}
+
+-(void)webViewDidStartLoad:(UIWebView *)webView{
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
@@ -98,6 +111,7 @@
         self.tabBarController.tabBar.hidden = YES;
         webDisBottom.constant = 0;
     }
+    [self removeWebCache];
     return YES;
 }
 
@@ -183,9 +197,14 @@
 }
 
 -(void)goToJczq{
-    
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"NSNotificationBuyVCJump" object:@1000];
-    self.tabBarController.selectedIndex = 0;
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.tabBarController.selectedIndex = 0;
+        
+       [[NSNotificationCenter defaultCenter]postNotificationName:@"NSNotificationBuyVCJump" object:@1000];
+        
+    });
+
 }
 
 
@@ -209,5 +228,7 @@
 - (void)telPhone{
     [self actionTelMe];
 }
+
+
 
 @end

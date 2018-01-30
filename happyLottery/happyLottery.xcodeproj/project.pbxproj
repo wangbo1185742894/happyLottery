@@ -533,6 +533,7 @@
 		2DE1094A2003423E0020343A /* hometeam@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE109482003423C0020343A /* hometeam@3x.png */; };
 		2DE10950200356350020343A /* JingCaiOrderCode.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DE1094F200356350020343A /* JingCaiOrderCode.plist */; };
 		2DE109532004E6690020343A /* NewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE109522004E6690020343A /* NewsModel.m */; };
+		2DE892A02020724C008926A6 /* JWCacheURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE8929F2020724B008926A6 /* JWCacheURLProtocol.m */; };
 		F90058DE1FF61327009C8E1C /* NoticeCenterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F90058DC1FF61327009C8E1C /* NoticeCenterTableViewCell.m */; };
 		F90058DF1FF61327009C8E1C /* NoticeCenterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F90058DD1FF61327009C8E1C /* NoticeCenterTableViewCell.xib */; };
 		F90058E51FF61619009C8E1C /* noticedelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F90058E11FF61618009C8E1C /* noticedelete@2x.png */; };
@@ -1611,6 +1612,8 @@
 		2DE1094F200356350020343A /* JingCaiOrderCode.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = JingCaiOrderCode.plist; sourceTree = "<group>"; };
 		2DE109512004E6690020343A /* NewsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsModel.h; sourceTree = "<group>"; };
 		2DE109522004E6690020343A /* NewsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsModel.m; sourceTree = "<group>"; };
+		2DE8929E2020724B008926A6 /* JWCacheURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWCacheURLProtocol.h; sourceTree = "<group>"; };
+		2DE8929F2020724B008926A6 /* JWCacheURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWCacheURLProtocol.m; sourceTree = "<group>"; };
 		F90058DB1FF61327009C8E1C /* NoticeCenterTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeCenterTableViewCell.h; sourceTree = "<group>"; };
 		F90058DC1FF61327009C8E1C /* NoticeCenterTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeCenterTableViewCell.m; sourceTree = "<group>"; };
 		F90058DD1FF61327009C8E1C /* NoticeCenterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoticeCenterTableViewCell.xib; sourceTree = "<group>"; };
@@ -3229,6 +3232,8 @@
 		2DDEDC3E1FD52206007AEBF7 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				2DE8929E2020724B008926A6 /* JWCacheURLProtocol.h */,
+				2DE8929F2020724B008926A6 /* JWCacheURLProtocol.m */,
 				2D0E2394201713250098DA40 /* UITableView+XY.h */,
 				2D0E2393201713240098DA40 /* UITableView+XY.m */,
 				2D0E2395201713260098DA40 /* XYNoDataView.h */,
@@ -4758,6 +4763,7 @@
 				2D739C231FE2611C00264044 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				2D0600231FFDCD9F009E7568 /* MJRefreshBackGifFooter.m in Sources */,
 				2DDEDE7F1FD568C9007AEBF7 /* UIProgressView+AFNetworking.m in Sources */,
+				2DE892A02020724C008926A6 /* JWCacheURLProtocol.m in Sources */,
 				2DDEDE6B1FD568C9007AEBF7 /* UIImageView+WebCache.m in Sources */,
 				2D739C631FE7878100264044 /* JCZQTouZhuViewController.m in Sources */,
 				F9D7C55B2006276900415B4E /* FootBallPlayViewController.m in Sources */,

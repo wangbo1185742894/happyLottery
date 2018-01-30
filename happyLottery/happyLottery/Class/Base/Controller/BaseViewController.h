@@ -58,5 +58,6 @@
 - (BOOL)isValidateName:(NSString *)name;
 - (BOOL)isValidateRealName:(NSString *)name;
 
-
+-(void)cleanWebviewCache;
+- (void)removeWebCache;
 @end
