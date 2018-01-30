@@ -12,5 +12,6 @@
 @interface GlobalInstance : NSObject
 
 @property(nonatomic,strong)User *curUser;
+@property (nonatomic,strong)NSString * homeUrl;
 + (GlobalInstance *) instance;
 @end

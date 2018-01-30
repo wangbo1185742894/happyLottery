@@ -34,7 +34,9 @@
         cardCode = self.curUser.cardCode;
     }
     
-    [self.webContentView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/app/mall/index?cardCode=%@",H5BaseAddress,cardCode]]]];
+    NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/app/mall/index?cardCode=%@",H5BaseAddress,cardCode]] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:20];
+    
+    [self.webContentView loadRequest:request];
     [self setWebView];
 }
 
@@ -49,7 +51,12 @@
         self.navigationController.navigationBar.hidden = YES;
         webDisTop.constant = 20;
     }
+    [self removeWebCache];
     return YES;
+}
+
+-(void)webViewDidStartLoad:(UIWebView *)webView{
+    [self cleanWebviewCache];
 }
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView{

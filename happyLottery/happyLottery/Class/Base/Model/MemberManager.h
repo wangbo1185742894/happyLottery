@@ -56,7 +56,7 @@
 
 - (void) FeedBackUnReadNum:(NSDictionary *)Info IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) ResetFeedBackReadStatusSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
-
+- (void) gotVueHttpUrl:(NSString  *)baseUrl errorMsg:(NSString *)msg;
 
 @end
 
@@ -112,6 +112,8 @@
 - (void)saveVisit:(NSArray  *)infoArray;
 
 -(void)upLoadClientInfo:(NSDictionary *)clientInfo;
+
+- (void)getVueHttpUrl;
 
 
 @end

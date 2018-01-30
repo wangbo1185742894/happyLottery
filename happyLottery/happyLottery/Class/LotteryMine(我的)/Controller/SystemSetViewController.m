@@ -80,7 +80,7 @@
 -(void)passValueWithDic:(NSDictionary *)value{
     if([value isKindOfClass:[NSDictionary class]])
     {
-        if (! [value[@"ForceUpgrade"] isEqualToString:@"true"]) {
+        if ([value[@"ForceUpgrade"] isEqualToString:@"true"]) {
             
             
             //            ZLAlertView *alert = [[ZLAlertView alloc] initWithTitle:@"更新提示" message:value[@"VersionDesc"]];

@@ -51,8 +51,12 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
     NSURL *URL = request.URL;
+    
     NSString *scheme = [NSString stringWithFormat:@"%@",URL];
     return YES;
+}
+-(void)webViewDidStartLoad:(UIWebView *)webView{
+    [self cleanWebviewCache];
 }
 
 #pragma JSObjcDelegate

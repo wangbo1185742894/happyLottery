@@ -32,8 +32,8 @@ typedef enum{
     SchemeSourceBet = 0,
     SchemeSourceRECOMMEND, //推荐
     SchemeSourceFORECAST,  //预测
-    SchemeSourceFORECAST_SCHEME, //方案
-    SchemeSourceFORECAST_SHORTCUT //首页
+    SchemeSourceFORECAST_SHORTCUT, //首页
+    SchemeSourceFORECAST_SCHEME //方案
 }SchemeSource;
 
 typedef enum : NSUInteger {

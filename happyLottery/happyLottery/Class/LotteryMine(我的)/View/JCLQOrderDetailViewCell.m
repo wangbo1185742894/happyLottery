@@ -111,7 +111,7 @@
         self.labJiangjin.text = @"未中奖";
     }else{
        
-        self.labJiangjin.text = @"";
+        self.labJiangjin.text = @"待开奖";
     }
 
  //   [5]	(null)	@"winningStatus" : @"WAIT_LOTTERY"  NOT_LOTTERY  LOTTERY

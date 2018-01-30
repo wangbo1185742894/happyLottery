@@ -42,7 +42,8 @@
     WBAdsImgView *adsView;
     UIView  *menuView;
 
-     NSMutableArray *listUseRedPacketArray;
+    __weak IBOutlet NSLayoutConstraint *contentViewDisTop;
+    NSMutableArray *listUseRedPacketArray;
      RedPacket *r;
      int j;
     RedPacket *red ;
@@ -82,7 +83,7 @@
     [super viewDidLoad];
     [self checkUpdateNetWork];
     listUseRedPacketArray = [[NSMutableArray alloc]init];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(itemClick:) name:@"NSNotificationBuyVCJump" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(itemNotification:) name:@"NSNotificationBuyVCJump" object:nil];
     JczqShortcutList = [NSMutableArray arrayWithCapacity:0];
     colloectList = [NSMutableArray arrayWithCapacity:0];
     NSString *doc=[NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
@@ -99,21 +100,9 @@
     
 }
 
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    [self getJczqShortcut];
-    
-    [adsView setImageUrlArray:nil];
-    [self loadAdsImg];
-    
-    [self loadNews];
-    [self getJczqShortcut];
-    self.navigationController.navigationBar.hidden = YES;
-    if (self.curUser.isLogin==YES) {
-           [self getRedPacketByStateClient:@"true"];
-    }
-  
-    
+-(void)itemNotification:(NSNotification *)notification{
+    NSInteger index = [notification.object integerValue];
+    [self itemClick:index];
 }
 
 -(void)notificationJump:(NSNotification*)notif{
@@ -123,7 +112,7 @@
 
 -(void)loadAdsImg{
     adsArray = [NSMutableArray arrayWithCapacity:0];
-    NSString *strUlr = [NSString stringWithFormat:@"%@/app/banner/byChannel?usageChannel=3",ServerAddress];
+    NSString *strUlr = [NSString stringWithFormat:@"%@/app/banner/byChannel?usageChannel=3",[GlobalInstance instance].homeUrl];
     [singleLoad RequestWithString:strUlr isPost:NO andPara:nil andComplete:^(id data, BOOL isSuccess) {
         if (isSuccess == NO || data == nil) {
             return ;
@@ -151,7 +140,7 @@
 -(void)loadNews{
    
     
-    NSString *strUlr = [NSString stringWithFormat:@"%@/app/news/showNews?usageChannel=3",ServerAddress];
+    NSString *strUlr = [NSString stringWithFormat:@"%@/app/news/showNews?usageChannel=3",[GlobalInstance instance].homeUrl];
     [singleLoad RequestWithString:strUlr isPost:NO andPara:nil andComplete:^(id data, BOOL isSuccess) {
         
         if (isSuccess == NO || data == nil) {
@@ -216,8 +205,6 @@
     CGFloat height;
     if ([self isIphoneX]) {
         height = curY  + tabForecaseList.rowHeight * JczqShortcutList.count + 20;
-    }else if(KscreenWidth == 320){
-        height = curY  + tabForecaseList.rowHeight * JczqShortcutList.count;
     }else{
         height = curY  + tabForecaseList.rowHeight * JczqShortcutList.count;
     }
@@ -283,7 +270,7 @@
 
 -(void)setADSUI{
     if (adsView == nil) {
-        adsView = [[WBAdsImgView alloc]initWithFrame:CGRectMake(0,[self isIphoneX]?20:0, KscreenWidth, 175.0/375 * KscreenWidth)];
+        adsView = [[WBAdsImgView alloc]initWithFrame:CGRectMake(0,[self isIphoneX]?20:-20, KscreenWidth, 175.0/375 * KscreenWidth)];
         adsView.delegate = self;
         [scrContentView addSubview:adsView];
     }
@@ -304,7 +291,7 @@
         self.tabBarController.selectedIndex = 1;
         return;
     }else if ([keyStr isEqualToString:@"A403"]){
-        self.tabBarController.selectedIndex = 2;
+        
         
         
         if (self.curUser.isLogin == YES && self.curUser.cardCode != nil) {
@@ -312,6 +299,7 @@
             ADSModel *model = [[ADSModel alloc]init];
             model.linkUrl = [NSString stringWithFormat:@"%@/app/find/turntable?activityId=5&cardCode=%@",H5BaseAddress,self.curUser.cardCode];
             disVC.infoModel = model;
+            disVC.hidesBottomBarWhenPushed = YES;
             disVC.isNeedBack = YES;
             [self.navigationController pushViewController:disVC animated:disVC];
         }else{
@@ -378,6 +366,19 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = YES;
+    [self getJczqShortcut];
+    
+    [adsView setImageUrlArray:nil];
+    [self loadAdsImg];
+    
+    [self loadNews];
+    [self getJczqShortcut];
+    
+    if (self.curUser.isLogin==YES) {
+        [self getRedPacketByStateClient:@"true"];
+    }
+    
     
 }
 

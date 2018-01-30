@@ -1329,4 +1329,32 @@
                         failure:failureBlock];
 }
 
+- (void)getVueHttpUrl{
+    
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        
+        if (response.succeed) {
+            NSString *responseJsonStr = [response getAPIResponse];
+            
+            [self.delegate gotVueHttpUrl:responseJsonStr errorMsg:response.errorMsg];
+        } else {
+            [self.delegate gotVueHttpUrl:nil errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate gotVueHttpUrl:nil errorMsg:@"服务器错误"];
+    };
+    //
+    SOAPRequest *request = [self requestForAPI: APIGetVueHttpUrl withParam:nil];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIDATA
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
 @end

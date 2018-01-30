@@ -56,7 +56,7 @@
     NSURL *linkUrl;
     if (self.curUser.isLogin == YES) {
        NSString * slinkUrl = _infoModel.linkUrl;
-        if (self.curUser.cardCode != nil) {
+        if (self.curUser.cardCode != nil && self.isNeedBack == NO) {
             linkUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@?cardCode=%@",slinkUrl,self.curUser.cardCode]];
         }else{
             linkUrl = [NSURL URLWithString:_infoModel.linkUrl];
