@@ -355,8 +355,7 @@
     
      [tableView deselectRowAtIndexPath: indexPath animated: YES];
     bankCard= listBankArray[indexPath.row];
-    self.getBankBtn.titleLabel.text = bankCard.bankName;
-    
+    [self.getBankBtn setTitle:bankCard.bankName forState:UIControlStateNormal];
     self.backView.hidden = YES;
 }
 

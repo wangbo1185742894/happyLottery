@@ -41,13 +41,13 @@
 
 -(void)navBarItemSet{
     completeBtn = [UIButton buttonWithType: UIButtonTypeCustom];
-    completeBtn.frame = CGRectMake(0, 0, 35, 30);
+    completeBtn.frame = CGRectMake(0, 0, 40, 30);
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView: completeBtn];
     [completeBtn setTitle:@"完成" forState:UIControlStateNormal];
     [completeBtn addTarget: self action: @selector(completeBtnClick) forControlEvents: UIControlEventTouchUpInside];
     
     cancleBtn = [UIButton buttonWithType: UIButtonTypeCustom];
-    cancleBtn.frame = CGRectMake(0, 0, 35, 30);
+    cancleBtn.frame = CGRectMake(0, 0, 40, 30);
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView: cancleBtn];
     [cancleBtn setTitle:@"取消" forState:UIControlStateNormal];
     [cancleBtn addTarget: self action: @selector(cancleBtnClick) forControlEvents: UIControlEventTouchUpInside];
