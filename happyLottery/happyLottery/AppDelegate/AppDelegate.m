@@ -84,16 +84,7 @@ static SystemSoundID shake_sound_male_id = 0;
     [self setNewFeature];
     [self dataSave];
     [self autoLogin];
-  
-    // Optional
-    // 获取IDFA
-    // 如需使用IDFA功能请添加此代码并在初始化方法的advertisingIdentifier参数中填写对应值
-  //  NSString *advertisingId = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
-    
-    // Required
-    // init Push
-    // notice: 2.1.5版本的SDK新增的注册方法，改成可上报IDFA，如果没有使用IDFA直接传nil
-    // 如需继续使用pushConfig.plist文件声明appKey等配置内容，请依旧使用[JPUSHService setupWithOption:launchOptions]方式初始化。
+ 
     [JPUSHService setupWithOption:launchOptions appKey:@"5dd3abce8e0e840e6158b8e1"
                           channel:@"App Store"
                  apsForProduction:0
@@ -101,30 +92,12 @@ static SystemSoundID shake_sound_male_id = 0;
     //获取自定义消息推送内容
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
     [defaultCenter addObserver:self selector:@selector(networkDidReceiveMessage:) name:kJPFNetworkDidReceiveMessageNotification object:nil];
-
+    [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];
+    [JPUSHService setBadge:0];//清空JPush服务器中存储的badge值
     if (launchOptions) {
         NSDictionary * remoteNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
-        //这个判断是在程序没有运行的情况下收到通知，点击通知跳转页面
-//        if (remoteNotification) {
-//            NSLog(@"推送消息==== %@",remoteNotification);
-//            //NSLog(@"尼玛的推送消息呢===%@",userInfo);
-//            // 取得 APNs 标准信息内容，如果没需要可以不取
-//            NSDictionary *aps = [remoteNotification valueForKey:@"aps"];
-//            NSString *content = [aps valueForKey:@"alert"]; //推送显示的内容
-//            NSInteger badge = [[aps valueForKey:@"badge"] integerValue];
-//            NSString *sound = [aps valueForKey:@"sound"]; //播放的声音
-//            // 取得自定义字段内容，userInfo就是后台返回的JSON数据，是一个字典
-//            NSString *appCode =  [remoteNotification valueForKey:@"pageCode"];
-//            //    [APService handleRemoteNotification:userInfo];
-//            
-//            
-//       
-//                [self goToYunshiWithInfo:appCode];
-//          
-//        }
-       // [application setApplicationIconBadgeNumber:0];
         //清除角标
-       // [application cancelAllLocalNotifications];
+        [application cancelAllLocalNotifications];
     }
 
       [self initShareSDK];
@@ -248,19 +221,7 @@ static SystemSoundID shake_sound_male_id = 0;
     }
     
     NSString *time = [Utility timeStringFromFormat:@"yyyy-MM-dd HH:mm:ss" withDate:[NSDate date]];
-    //
-    //
-//    if ([self.fmdb open]) {
-//        NSString *cardcode=[GlobalInstance instance ].curUser.cardCode;
-//        if ([cardcode isEqualToString:@""]) {
-//            cardcode = @"cardcode";
-//        }
-//
-//        BOOL result =  [self.fmdb executeUpdate:[NSString stringWithFormat:@"insert into vcUserPushMsg (title,content, msgTime , cardcode  ,isread) values ('%@', '%@', '%@', '%@', '%@');",@"title",@"content",time,@"123",@"123"]];
-//        if (result) {
-//            [self.fmdb close];
-//        }
-//    }
+
 }
 
 -(void)setKeyWindow{
@@ -397,7 +358,8 @@ static SystemSoundID shake_sound_male_id = 0;
 //从后台点击icon进入时清除角标
 - (void)applicationWillEnterForeground:(UIApplication *)application {
      [[NSNotificationCenter defaultCenter] postNotificationName:@"NSNotificationapplicationWillEnterForeground" object:nil];
-    [application setApplicationIconBadgeNumber:0];
+    //    [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];
+    //    [JPUSHService setBadge:0];//清空JPush服务器中存储的badge值
    //清除角标
     [application cancelAllLocalNotifications];
 }
@@ -459,6 +421,10 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
             [JPUSHService handleRemoteNotification:userInfo];
 //            [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];
 //            [JPUSHService setBadge:0];//清空JPush服务器中存储的badge值
+            if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground ) {
+                return;
+            }
+              if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive ||[UIApplication sharedApplication].applicationState == UIApplicationStateInactive) {
             if (pageCodeNotice!=nil) {
 
                 [self goToYunshiWithInfo:pageCodeNotice];
@@ -474,7 +440,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
                 jumpVC.hidesBottomBarWhenPushed = YES;
                 [nav pushViewController:jumpVC animated:YES];
 
-
+            }
             }
         }
     } else {
@@ -511,24 +477,27 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
             [self.fmdb close];
         }
     }
-   
-//    DRAW_MESSAGE("中奖消息"),
-//    FORECAST_LOTTERY_MESSAGE("预测开奖消息"),
-//    ACTIVITY_MESSAGE("活动消息"),
-//    SYSTEM_MESSAGE("系统消息"),
-//    COUPON_EXPIRATION_MESSAGE("优惠卷到期提醒");messageType
-    if ([extra[@"pageCode"] isEqualToString:@"A204"]&&[extra[@"messageType"] isEqualToString:@"DRAW_MESSAGE"]) { //中奖推送
-        if (winPushView !=nil) {
-            [winPushView removeFromSuperview];
-            winPushView = nil;
+    if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
+        //    DRAW_MESSAGE("中奖消息"),
+        //    FORECAST_LOTTERY_MESSAGE("预测开奖消息"),
+        //    ACTIVITY_MESSAGE("活动消息"),
+        //    SYSTEM_MESSAGE("系统消息"),
+        //    COUPON_EXPIRATION_MESSAGE("优惠卷到期提醒");messageType
+        if ([extra[@"pageCode"] isEqualToString:@"A204"]&&[extra[@"messageType"] isEqualToString:@"DRAW_MESSAGE"]) { //中奖推送
+            if (winPushView !=nil) {
+                [winPushView removeFromSuperview];
+                winPushView = nil;
+            }
+            [self playSound];
+            
+            winPushView = [[ZhuiHaoStopPushVIew alloc]initWithFrame:[UIScreen  mainScreen].bounds];
+         
+            [winPushView refreshInfo:title andContent:content];
+            [[UIApplication sharedApplication].keyWindow addSubview:winPushView];
+            return;
         }
-        [self playSound];
-        
-        winPushView = [[ZhuiHaoStopPushVIew alloc]initWithFrame:[UIScreen  mainScreen].bounds];
-        [winPushView refreshInfo:title andContent:content];
-        [[UIApplication sharedApplication].keyWindow addSubview:winPushView];
-        return;
     }
+
 }
 
 -(void)goToYunshiWithInfo:(NSString *)pageCode{
@@ -559,19 +528,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     Class class = NSClassFromString(vcName);
     
     baseVC =[[class alloc] init];
-    
-//    if([keyStr isEqualToString:@"A401"]){
-//      baseVC.hidesBottomBarWhenPushed = NO;
-//
-//    }else if([keyStr isEqualToString:@"A402"]){
-//          baseVC.hidesBottomBarWhenPushed = NO;
-//
-//    }else if ([keyStr isEqualToString:@"A201"]){
-//          baseVC.hidesBottomBarWhenPushed = NO;
-//    }else if([keyStr isEqualToString:@"A000"]){
-//        baseVC.hidesBottomBarWhenPushed = NO;
-//
-//    }else
+
        AppDelegate *delegate  = (AppDelegate*)[UIApplication sharedApplication].delegate;
       UITabBarController *tabBarController = (UITabBarController *)_window.rootViewController;
       delegate.curNavVC = (UINavigationController *)tabBarController.childViewControllers[tabBarController.selectedIndex];
@@ -643,88 +600,18 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         // 取得 APNs 标准信息内容，如果没需要可以不取
         NSDictionary *aps = [userInfo valueForKey:@"aps"];
         titleNotice = [aps valueForKey:@"content-available"];
-        NSString *content = [aps valueForKey:@"alert"]; //推送显示的内容
+    
         NSInteger badge = [[aps valueForKey:@"badge"] integerValue];
-        NSString *sound = [aps valueForKey:@"sound"]; //播放的声音
+
         // 取得自定义字段内容，userInfo就是后台返回的JSON数据，是一个字典
        pageCodeNotice =  [userInfo valueForKey:@"pageCode"];
       linkUrlNotice=[userInfo valueForKey:@"linkUrl"];
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        //
-        NSString *time = [Utility timeStringFromFormat:@"yyyy-MM-dd HH:mm:ss" withDate:[NSDate date]];
+ 
      
-    //判断应用是在前台还是后台
-    if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
-        
-//        //第一种情况前台运行
-//        alert = [[UIAlertView alloc]initWithTitle:titleNotice message:content delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"查看", nil];
-//        alert.delegate = self;
-//        [alert show];
-//
-    }else{
-        
-        //第二种情况后台挂起时
-//        [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];
-//        [JPUSHService setBadge:0];//清空JPush服务器中存储的badge值
-        if (pageCodeNotice!=nil) {
-            
-            [self goToYunshiWithInfo:pageCodeNotice];
-            
-        }
-        if (linkUrlNotice!=nil) {
-           
-                    UITabBarController *tab = (UITabBarController *)_window.rootViewController;
-            UINavigationController *nav = tab.viewControllers[tab.selectedIndex];
-            JumpWebViewController *jumpVC = [[JumpWebViewController alloc] initWithNibName:@"JumpWebViewController" bundle:nil];
-            jumpVC.title = @"消息详情";
-            jumpVC.URL = linkUrlNotice;
-            jumpVC.hidesBottomBarWhenPushed = YES;
-            [nav pushViewController:jumpVC animated:YES];
-//            AppDelegate *delegate  = (AppDelegate*)[UIApplication sharedApplication].delegate;
-
-//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//                UITabBarController *homebar = (UITabBarController *)_window.rootViewController;
-//                delegate.curNavVC = (UINavigationController *)homebar.childViewControllers[homebar.selectedIndex];
-//                [delegate.curNavVC pushViewController:jumpVC animated:YES];
-//           });
-            
-        }
-       
-    }
+           [[UIApplication sharedApplication]setApplicationIconBadgeNumber:badge/2];
+        //    [JPUSHService setBadge:0];//清空JPush服务器中存储的badge值
     }
 }
-
-#pragma marks -- UIAlertViewDelegate --
-//根据被点击按钮的索引处理点击事件
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    NSString *btnTitle = [alertView buttonTitleAtIndex:buttonIndex];
-        if ([btnTitle isEqualToString:@"取消"]) {
-            [alert removeFromSuperview];
-         }else if ([btnTitle isEqualToString:@"确定"] ) {
-             if (![pageCodeNotice isEqualToString:@"(null)"]) {
-                 
-                 [self goToYunshiWithInfo:pageCodeNotice];
-                 
-             }
-             if (![linkUrlNotice isEqualToString:@"(null)"]) {
-                 JumpWebViewController *jumpVC = [[JumpWebViewController alloc] initWithNibName:@"JumpWebViewController" bundle:nil];
-                 jumpVC.title = titleNotice;
-                 jumpVC.URL = linkUrlNotice;
-                 AppDelegate *delegate  = (AppDelegate*)[UIApplication sharedApplication].delegate;
-                 
-//                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                     UITabBarController *homebar = (UITabBarController *)_window.rootViewController;
-                     delegate.curNavVC = (UINavigationController *)homebar.childViewControllers[homebar.selectedIndex];
-                     [delegate.curNavVC pushViewController:jumpVC animated:YES];
-//                 });
-             }
-           
-               }
-}
-
-
-
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     
@@ -759,7 +646,12 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     MyOrderListViewController * myOrderListVC = [[MyOrderListViewController alloc]init];
     myOrderListVC.hidesBottomBarWhenPushed = YES;
     AppDelegate *delegate  = (AppDelegate*)[UIApplication sharedApplication].delegate;
-    [delegate.curNavVC pushViewController:myOrderListVC animated:YES];
+    UITabBarController *tabBarController = (UITabBarController *)_window.rootViewController;
+    delegate.curNavVC = (UINavigationController *)tabBarController.childViewControllers[tabBarController.selectedIndex];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+     [delegate.curNavVC pushViewController:myOrderListVC animated:YES];
+    });
+   
 }
 
 -(void)gotVueHttpUrl:(NSString *)baseUrl errorMsg:(NSString *)msg{

@@ -336,8 +336,9 @@
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",@"text/javascript",@"text/json", nil];
     NSString * imgpath = [NSString stringWithFormat:@"%@",dic[@"image"]];
     UIImage *image = [UIImage imageWithContentsOfFile:imgpath];
-    [image drawInRect:CGRectMake(0, 0, 60, 60)];
-    NSData *data = UIImageJPEGRepresentation(image,0.5);
+    UIImage *newImage=[self imageFromImage:image inRect:CGRectMake(0, 100, SCREEN_WIDTH, SCREEN_WIDTH)];
+    //[newImage drawInRect:CGRectMake(0, 0, 60, 60)];
+    NSData *data = UIImageJPEGRepresentation(newImage,0.7);
    // NSDictionary *parameters =@{@"photo":data};
     
     
@@ -376,6 +377,27 @@
 
     
 }
+
+/**
+ *从图片中按指定的位置大小截取图片的一部分
+ * UIImage image 原始的图片
+ * CGRect rect 要截取的区域
+ */
+-(UIImage *)imageFromImage:(UIImage *)image inRect:(CGRect)rect{
+    
+    //将UIImage转换成CGImageRef
+    CGImageRef sourceImageRef = [image CGImage];
+    
+    //按照给定的矩形区域进行剪裁
+    CGImageRef newImageRef = CGImageCreateWithImageInRect(sourceImageRef, rect);
+    
+    //将CGImageRef转换成UIImage
+    UIImage *newImage = [UIImage imageWithCGImage:newImageRef];
+    
+    //返回剪裁后的图片
+    return newImage;
+}
+
 
 -(void)updateHeadImageClient{
     NSDictionary *Info;
