@@ -295,11 +295,14 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ay4-Ts-Dy5">
                             <rect key="frame" x="106" y="214.5" width="163" height="238"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HFI-cN-b9n">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="HFI-cN-b9n">
                                     <rect key="frame" x="0.5" y="32" width="148" height="206"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="148" id="g9I-AX-Sfy"/>
                                     </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="55"/>
+                                    <state key="normal" title="恭喜发财。童话里都是劝人的"/>
                                     <connections>
                                         <action selector="openRedPacketClick:" destination="-1" eventType="touchUpInside" id="1Mj-Ym-DfB"/>
                                     </connections>
@@ -335,7 +338,7 @@
                                         <action selector="goRedpacketClick:" destination="-1" eventType="touchUpInside" id="mzi-3F-tB3"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="恭喜发财" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dIV-Bb-Uy1">
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="恭喜发财" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dIV-Bb-Uy1">
                                     <rect key="frame" x="11" y="84" width="128" height="55"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="128" id="prM-1R-ou4"/>

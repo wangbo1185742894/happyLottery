@@ -98,6 +98,7 @@
     [self setMenu];
     [self setNewsView];
     [self setTableView];
+    openRedpacketButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     
 //    [self.view bringSubviewToFront:redpacketView];
 //    [self.view insertSubview:redpacketView aboveSubview:self.tabBarController.tabBar];
@@ -609,14 +610,12 @@
         [UIView animateWithDuration:AnimationDur animations:^{
             view.mj_x += width;
             openRedpacketButton.mj_w = 0;
-            redpacketLab.alpha = 0;
             goRedPacket.alpha = 0;
             
             
         } completion:^(BOOL finished) {
             [UIView animateWithDuration:AnimationDur animations:^{
                 view.mj_x-= width;
-                redpacketLab.alpha = 1;
                 goRedPacket.alpha = 1;
                 openRedpacketButton.mj_w = 148;
             } completion:^(BOOL finished) {
@@ -696,6 +695,7 @@
                 openRedpacketButton.mj_w = 147;
                 redpacketView.hidden=NO;
                 if (listUseRedPacketArray.count>1) {
+                    [openRedpacketButton setTitle:@"" forState:0];
                     disBottom.constant = 16;
                     [openRedpacketButton setBackgroundImage:[UIImage imageNamed:@"redpacketKong.png"] forState:UIControlStateNormal];
                     goRedPacket.hidden=NO;
@@ -709,8 +709,9 @@
                     [openRedpacketButton setBackgroundImage:[UIImage imageNamed:@"one_redpacket.png"] forState:UIControlStateNormal];
                     disBottom.constant = 45;
                     goRedPacket.hidden=YES;
-                    redpacketLab.hidden=NO;
-                    redpacketLab.text=@"恭喜您获得1个红包！";
+                    redpacketLab.hidden = YES;
+                    [openRedpacketButton setTitle:@"恭喜您获得1个红包！" forState:0];
+//                    redpacketLab.text=@"恭喜您获得1个红包！";
                     r =listUseRedPacketArray[0];
                    
                 }
