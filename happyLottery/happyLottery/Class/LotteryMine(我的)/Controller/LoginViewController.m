@@ -133,7 +133,7 @@ static NSInteger seq = 0;
            
 
         } while ([result next]);
-        [self.fmdb executeUpdate:@"insert into t_user_info (cardCode , loginPwd , isLogin , mobile , payVerifyType) values ( ?,?,?,?,?)  ",user.cardCode,user.loginPwd,@"1",user.mobile,[NSString stringWithFormat:@"%ld",payVerifyType]];
+        [self.fmdb executeUpdate:@"insert into t_user_info (cardCode , loginPwd , isLogin , mobile , payVerifyType) values ( ?,?,?,?,?)  ",user.cardCode,user.loginPwd,@"2",user.mobile,[NSString stringWithFormat:@"%ld",payVerifyType]];
         [[NSNotificationCenter defaultCenter] postNotificationName:NotificationNameUserLogin object:nil];
         [result close];
         [self.fmdb close];

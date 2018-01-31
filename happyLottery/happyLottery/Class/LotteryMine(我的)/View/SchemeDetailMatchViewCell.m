@@ -43,7 +43,7 @@
     
     OpenResult *open;
     for (OpenResult *openItem in resultArray) {
-        if ([openItem.matchKey isEqualToString:modelDic[@"matchKey"]]) {
+        if ([openItem.matchKey integerValue] == [modelDic[@"matchKey"] integerValue]) {
             open = openItem;
         }
     }

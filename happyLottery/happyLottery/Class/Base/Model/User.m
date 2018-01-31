@@ -35,7 +35,7 @@
     }
     
    
-    return PayVerifyTypeAlways;
+    return PayVerifyTypeAlwaysNo;
 }
 
 -(NSString *)totalBanlece{

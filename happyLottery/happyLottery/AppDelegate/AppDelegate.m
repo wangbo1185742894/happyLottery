@@ -68,8 +68,8 @@ static SystemSoundID shake_sound_male_id = 0;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    sleep(2);
     [self loadTabVC];
+    
     [GlobalInstance instance].homeUrl = ServerAddress;
     NSString *doc=[NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString *fileName=[doc stringByAppendingPathComponent:@"userInfo.sqlite"];
@@ -102,6 +102,7 @@ static SystemSoundID shake_sound_male_id = 0;
     }
 
       [self initShareSDK];
+    sleep(1.5);
     return YES;
 }
 -(void)initShareSDK{
@@ -484,8 +485,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         //    ACTIVITY_MESSAGE("活动消息"),
         //    SYSTEM_MESSAGE("系统消息"),
         //    COUPON_EXPIRATION_MESSAGE("优惠卷到期提醒");messageType
-//        [extra[@"pageCode"] isEqualToString:@"A204"]&&[extra[@"messageType"] isEqualToString:@"DRAW_MESSAGE"]
-        if (1) { //中奖推送
+//
+        if ([extra[@"pageCode"] isEqualToString:@"A204"]&&[extra[@"messageType"] isEqualToString:@"DRAW_MESSAGE"]) { //中奖推送
             if (winPushView !=nil) {
                 [winPushView removeFromSuperview];
                 winPushView = nil;
@@ -645,6 +646,10 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 
 - (void)showZhuihaoDetail:(NSString*) ordernumber{
+    if (isLogin == NO) {
+        return;
+    }
+    
     MyOrderListViewController * myOrderListVC = [[MyOrderListViewController alloc]init];
     myOrderListVC.hidesBottomBarWhenPushed = YES;
     AppDelegate *delegate  = (AppDelegate*)[UIApplication sharedApplication].delegate;

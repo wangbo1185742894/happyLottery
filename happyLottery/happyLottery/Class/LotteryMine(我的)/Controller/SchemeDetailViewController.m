@@ -210,7 +210,6 @@
     return 0;
 }
 
-
 -(NSString *)reloadDataWithRec:(NSArray *)option type:(NSString *)playType{
     
     NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"JingCaiCode" ofType: @"plist"]] ;

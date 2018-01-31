@@ -78,7 +78,7 @@
         _phoneTextField.enabled = NO;
         
         _getVerifyCodeBtn.enabled = NO;
-        [_getVerifyCodeBtn setTitle:@"获取验证码" forState:UIControlStateDisabled];
+        [_getVerifyCodeBtn setTitle:@"验证已通过" forState:UIControlStateDisabled];
         [countDownTimer invalidate];
         
         _VerificationCodeTextField.enabled = NO;

@@ -330,7 +330,7 @@
         tfUserTel.enabled = NO;
         
         btnSendCheckCode.enabled = NO;
-        [btnSendCheckCode setTitle:@"获取验证码" forState:UIControlStateDisabled];
+        [btnSendCheckCode setTitle:@"验证已通过" forState:UIControlStateDisabled];
         [timer invalidate];
         
         tfCheckCode.rightView.hidden = NO;
