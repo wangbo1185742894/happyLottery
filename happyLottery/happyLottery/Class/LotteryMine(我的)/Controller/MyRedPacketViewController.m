@@ -160,7 +160,7 @@
         }
         [self rotation360repeatCount:2 view:image andHalf:width andCaijin:sourecs];
         page=1;
-       [self initRefresh1];
+        [self loadTrueNewData];
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
     }

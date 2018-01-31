@@ -36,32 +36,41 @@
                             <color key="textColor" red="0.19607843137254902" green="0.19607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo120.png" translatesAutoresizingMaskIntoConstraints="NO" id="8hI-x1-Jde">
-                            <rect key="frame" x="127" y="80" width="120" height="120"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当前版本  V1.0.1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f0Z-aF-u0m">
+                            <rect key="frame" x="103" y="267" width="169" height="29"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="120" id="0Uy-5K-8HV"/>
-                                <constraint firstAttribute="height" constant="120" id="dq6-Pr-bRH"/>
-                            </constraints>
-                        </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="当前版本  V1.0.1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f0Z-aF-u0m">
-                            <rect key="frame" x="123" y="291" width="128" height="21"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="128" id="FO5-hI-0HT"/>
-                                <constraint firstAttribute="height" constant="21" id="ZNP-qw-76T"/>
+                                <constraint firstAttribute="width" constant="169" id="FO5-hI-0HT"/>
+                                <constraint firstAttribute="height" constant="29" id="ZNP-qw-76T"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.58823529411764708" green="0.58823529411764708" blue="0.58823529411764708" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="about_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="8hI-x1-Jde">
+                            <rect key="frame" x="127" y="60" width="120" height="120"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="120" id="0Uy-5K-8HV"/>
+                                <constraint firstAttribute="height" constant="120" id="dq6-Pr-bRH"/>
+                            </constraints>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="about_slogan.png" translatesAutoresizingMaskIntoConstraints="NO" id="5hH-6X-7YA">
+                            <rect key="frame" x="99" y="196" width="176" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="176" id="W1z-4l-XBu"/>
+                                <constraint firstAttribute="height" constant="40" id="ehr-Z2-hA3"/>
+                            </constraints>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="8hI-x1-Jde" firstAttribute="top" secondItem="COY-fB-Sqv" secondAttribute="top" constant="80" id="6Qw-Y0-nXh"/>
+                        <constraint firstItem="8hI-x1-Jde" firstAttribute="top" secondItem="COY-fB-Sqv" secondAttribute="top" constant="60" id="6Qw-Y0-nXh"/>
                         <constraint firstItem="f0Z-aF-u0m" firstAttribute="centerX" secondItem="COY-fB-Sqv" secondAttribute="centerX" id="8RP-fV-oor"/>
                         <constraint firstItem="TaG-uc-ET8" firstAttribute="centerX" secondItem="COY-fB-Sqv" secondAttribute="centerX" id="8iu-cD-8zx"/>
+                        <constraint firstItem="5hH-6X-7YA" firstAttribute="centerX" secondItem="COY-fB-Sqv" secondAttribute="centerX" id="92m-6n-erS"/>
+                        <constraint firstItem="5hH-6X-7YA" firstAttribute="top" secondItem="8hI-x1-Jde" secondAttribute="bottom" constant="16" id="BLy-ua-9l7"/>
                         <constraint firstAttribute="bottom" secondItem="TaG-uc-ET8" secondAttribute="bottom" constant="41" id="Itw-Xd-Ngc"/>
                         <constraint firstItem="8hI-x1-Jde" firstAttribute="centerX" secondItem="COY-fB-Sqv" secondAttribute="centerX" id="soy-G0-YPB"/>
-                        <constraint firstItem="f0Z-aF-u0m" firstAttribute="top" secondItem="8hI-x1-Jde" secondAttribute="bottom" constant="38" id="u4l-gK-8FS"/>
+                        <constraint firstItem="f0Z-aF-u0m" firstAttribute="top" secondItem="8hI-x1-Jde" secondAttribute="bottom" constant="87" id="u4l-gK-8FS"/>
                     </constraints>
                 </view>
             </subviews>
@@ -72,10 +81,11 @@
                 <constraint firstAttribute="trailing" secondItem="COY-fB-Sqv" secondAttribute="trailing" id="WQX-T4-ati"/>
                 <constraint firstAttribute="bottom" secondItem="COY-fB-Sqv" secondAttribute="bottom" id="dZe-fa-eE1"/>
             </constraints>
-            <point key="canvasLocation" x="616" y="-144"/>
+            <point key="canvasLocation" x="615.5" y="-144.5"/>
         </view>
     </objects>
     <resources>
-        <image name="logo120.png" width="60" height="60"/>
+        <image name="about_logo.png" width="62" height="62"/>
+        <image name="about_slogan.png" width="88" height="20"/>
     </resources>
 </document>

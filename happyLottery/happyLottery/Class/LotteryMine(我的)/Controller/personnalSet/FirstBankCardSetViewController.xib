@@ -119,10 +119,10 @@
                                         <constraint firstAttribute="width" constant="40" id="ZXd-bM-VuE"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="为保证您提现和领奖成功，请如实填写相应信息，姓名只可填写一次，过后不可修改！" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPH-j7-edN">
-                                    <rect key="frame" x="56" y="150" width="311" height="55"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="为保证您提现和领奖成功，请如实填写相应信息，姓名只可填写一次，过后不可修改！" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPH-j7-edN">
+                                    <rect key="frame" x="56" y="150" width="311" height="65"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="55" id="fYZ-W2-gtu"/>
+                                        <constraint firstAttribute="height" constant="65" id="fYZ-W2-gtu"/>
                                         <constraint firstAttribute="width" constant="311" id="kAJ-V5-Twa"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -130,7 +130,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lbu-f4-Wcp">
-                                    <rect key="frame" x="22" y="235" width="331" height="40"/>
+                                    <rect key="frame" x="22" y="245" width="331" height="40"/>
                                     <color key="backgroundColor" red="0.067504443230000002" green="0.78096091749999996" blue="0.57203906770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="331" id="sbs-sO-YGX"/>
@@ -193,6 +193,7 @@
                                 <constraint firstItem="Y9U-KW-EMP" firstAttribute="top" secondItem="6EN-hk-slj" secondAttribute="bottom" constant="10" id="0dT-oZ-ewv"/>
                                 <constraint firstAttribute="trailing" secondItem="6EN-hk-slj" secondAttribute="trailing" id="1O1-gq-6nD"/>
                                 <constraint firstAttribute="bottom" secondItem="JZt-P7-wUr" secondAttribute="bottom" id="3CV-b6-0ex"/>
+                                <constraint firstItem="TPH-j7-edN" firstAttribute="leading" secondItem="dNL-xi-aeu" secondAttribute="trailing" constant="8" id="4g9-At-ihL"/>
                                 <constraint firstItem="O5t-q9-9Bj" firstAttribute="leading" secondItem="u7s-4W-noo" secondAttribute="leading" id="8gj-aj-93T"/>
                                 <constraint firstItem="0XD-gV-CkV" firstAttribute="leading" secondItem="u7s-4W-noo" secondAttribute="leading" id="A2C-f3-2mm"/>
                                 <constraint firstItem="HgA-UC-Hx3" firstAttribute="leading" secondItem="wBT-Dj-GQb" secondAttribute="leading" id="Bbl-F6-0vV"/>
