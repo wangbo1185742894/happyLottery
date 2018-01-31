@@ -1357,4 +1357,37 @@
                         failure:failureBlock];
 }
 
+/**
+ 意见反馈--更新会员所有意见为已读
+ 参数:
+ params - {"cardCode":"10000001" }
+ */
+- (void)giveShareScore:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+//        NSString * infoString = [response getAPIResponse];
+        if (response.succeed) {
+            
+            [self.delegate giveShareScore : YES errorMsg:response.errorMsg];
+        }else{
+            [self.delegate giveShareScore: NO errorMsg:response.errorMsg];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate ResetFeedBackReadStatusSmsIsSuccess: YES errorMsg:@"服务器错误"];
+        
+    };
+    
+    SOAPRequest *request = [self requestForAPI:APIgiveShareScore withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
+    
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+
 @end

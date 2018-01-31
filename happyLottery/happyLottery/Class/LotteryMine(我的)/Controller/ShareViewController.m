@@ -43,6 +43,7 @@
     self.memberMan.delegate = self;
    // [self getQRCodeClient];
     codeurl = @"http://t.11max.com/Tbz";
+    
     [self initCode];
 }
 
@@ -51,37 +52,19 @@
 }
 
 -(void)initshare{
-    
+    NSString *code=self.curUser.shareCode;
+//    if (code.length>0) {
+              NSString *url = [NSString stringWithFormat:@"tfi.11max.com/Tbz/ShareByCode?shareCode=%@",code];
+ 
+//    }
     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
     NSArray* imageArray = @[[[NSBundle mainBundle] pathForResource:@"logo120@2x" ofType:@"png"]];
-    [shareParams SSDKSetupShareParamsByText:@"投必中"
+    [shareParams SSDKSetupShareParamsByText:@"千万大奖集聚地，新用户即享188元豪礼。积分商城优惠享不停！"
                                      images:imageArray
-                                        url:[NSURL URLWithString:@"tfi.11max.com/Tbz/Share?shareCode=8888"]
-                                      title:@"分享投必中"
-                                       type:SSDKContentTypeImage];
-    //优先使用平台客户端分享
-    //    [shareParams SSDKEnableUseClientShare];
-    //设置微博使用高级接口
-    //2017年6月30日后需申请高级权限
-    //    [shareParams SSDKEnableAdvancedInterfaceShare];
-    //    设置显示平台 只能分享视频的YouTube MeiPai 不显示
-    //    NSArray *items = @[
-    //                       @(SSDKPlatformTypeFacebook),
-    ////                       @(SSDKPlatformTypeFacebookMessenger),
-    ////                       @(SSDKPlatformTypeInstagram),
-    ////                       @(SSDKPlatformTypeTwitter),
-    //                       @(SSDKPlatformTypeLine),
-    //                       @(SSDKPlatformTypeQQ),
-    //                       @(SSDKPlatformTypeWechat),
-    //                       @(SSDKPlatformTypeSinaWeibo),
-    //                       @(SSDKPlatformTypeSMS),
-    //                       @(SSDKPlatformTypeMail),
-    //                       @(SSDKPlatformTypeCopy)
-    //                       ];
-    
-    //设置简介版UI 需要  #import <ShareSDKUI/SSUIShareActionSheetStyle.h>
-    //    [SSUIShareActionSheetStyle setShareActionSheetStyle:ShareActionSheetStyleSimple];
-    //    [ShareSDK setWeiboURL:@"http://www.mob.com"];
+                                        url:[NSURL URLWithString:url]
+                                      title:@"送您188元新人大礼包！点击领取"
+                                       type:SSDKContentTypeWebPage];
+
     [ShareSDK showShareActionSheet:nil
                              items:@[@(SSDKPlatformSubTypeWechatSession),@(SSDKPlatformSubTypeWechatTimeline)]
                        shareParams:shareParams
@@ -92,15 +75,17 @@
                        case SSDKResponseStateBegin:
                        {
                            //设置UI等操作
+                           //Instagram、Line等平台捕获不到分享成功或失败的状态，最合适的方式就是对这些平台区别对待
+                           if (platformType == SSDKPlatformSubTypeWechatSession)
+                           {
+                               [self giveShareScoreClient];
+                               break;
+                           }
                            break;
                        }
                        case SSDKResponseStateSuccess:
                        {
-                           //Instagram、Line等平台捕获不到分享成功或失败的状态，最合适的方式就是对这些平台区别对待
-                           if (platformType == SSDKPlatformTypeInstagram)
-                           {
-                               break;
-                           }
+                       
                            
                            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
                                                                                message:nil
@@ -108,6 +93,11 @@
                                                                      cancelButtonTitle:@"确定"
                                                                      otherButtonTitles:nil];
                            [alertView show];
+                           if (platformType == SSDKPlatformSubTypeWechatTimeline)
+                           {
+                               [self giveShareScoreClient];
+                        
+                           }
                            break;
                        }
                        case SSDKResponseStateFail:
@@ -135,6 +125,7 @@
                            break;
                    }
                }];
+        
 }
 
 - (IBAction)codeBtnClick:(id)sender {
@@ -215,6 +206,30 @@
         
         codeurl = [Info substringWithRange:NSMakeRange(1,Info.length-2)];
         [self initCode];
+    }else{
+        [self showPromptText: msg hideAfterDelay: 1.7];
+    }
+    
+}
+
+-(void)giveShareScoreClient{
+    NSDictionary *Info;
+    @try {
+        
+        Info = @{@"cardCode":self.curUser.cardCode
+                 };
+        
+    } @catch (NSException *exception) {
+        return;
+    }
+    [self.memberMan giveShareScore:Info];
+    
+}
+
+-(void)giveShareScore:(BOOL)success errorMsg:(NSString *)msg{
+    if ([msg isEqualToString:@"执行成功"]) {
+          [self showPromptText: @"积分赠送成功" hideAfterDelay: 1.7];
+        
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
     }

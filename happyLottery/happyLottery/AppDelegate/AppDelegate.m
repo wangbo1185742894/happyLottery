@@ -41,6 +41,7 @@
 #import "Notice.h"
 #import "JumpWebViewController.h"
 #import "LoginViewController.h"
+#import "BaseViewController.h"
 
 
 @interface AppDelegate ()<NewFeatureViewDelegate,MemberManagerDelegate,JPUSHRegisterDelegate,VersionUpdatingPopViewDelegate,NetWorkingHelperDelegate>
@@ -141,8 +142,8 @@ static SystemSoundID shake_sound_male_id = 0;
 //                                                                   break;
                                 
                 case SSDKPlatformTypeWechat:
-                    [appInfo SSDKSetupWeChatByAppId:@"wx4868b35061f87885"
-                                                                                         appSecret:@"64020361b8ec4c99936c0e3999a9f249"];
+                    [appInfo SSDKSetupWeChatByAppId:@"wxe640eb18da420c3b"
+                    appSecret:@"6ad481ed34390f25f4c930befb0e4abb"];
                     break;
                     default:
                     break;
@@ -191,7 +192,6 @@ static SystemSoundID shake_sound_male_id = 0;
         }
     }
     [self.fmdb close];
-
 }
 
 -(void)loginUser:(NSDictionary *)userInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
@@ -200,6 +200,7 @@ static SystemSoundID shake_sound_male_id = 0;
         User *user = [[User alloc]initWith:userInfo];
         
         user.isLogin = YES;
+        
         [GlobalInstance instance].curUser = user;
     }else{
         User *user = [[User alloc]initWith:userInfo];
@@ -415,18 +416,19 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 }
 
 // iOS 10 Support
-- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler {
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler {
     // Required
     NSDictionary * userInfo = response.notification.request.content.userInfo;
-    if (@available(iOS 10.0, *)) {
-        if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+    //if (@available(iOS 10.0, *)) {
+     //   if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
             [JPUSHService handleRemoteNotification:userInfo];
 //            [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];
 //            [JPUSHService setBadge:0];//清空JPush服务器中存储的badge值
            
 //              if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive ||[UIApplication sharedApplication].applicationState == UIApplicationStateInactive) {
             if (pageCodeNotice!=nil) {
-
+       
+  [(BaseViewController*)self.window.rootViewController showPromptText: @"go前后台都回调的方法" hideAfterDelay: 1.7];
                 [self goToYunshiWithInfo:pageCodeNotice];
 
             }
@@ -442,10 +444,10 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
             }
           //  }
-        }
-    } else {
+       // }
+    //} else {
         // Fallback on earlier versions
-    }
+   // }
 
     completionHandler();  // 系统要求执行这个方法
 }
@@ -518,7 +520,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         return;
     }
         NSString *loginName = loginDic[keyStr];
-    if (isLogin==NO) {
+    if ([GlobalInstance instance].curUser.isLogin==NO) {
         if ([loginName isEqualToString:@"1"]) {
             vcName =@"LoginViewController";
             //return;
@@ -532,7 +534,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
        AppDelegate *delegate  = (AppDelegate*)[UIApplication sharedApplication].delegate;
       UITabBarController *tabBarController = (UITabBarController *)_window.rootViewController;
-      delegate.curNavVC = (UINavigationController *)tabBarController.childViewControllers[tabBarController.selectedIndex];
+     tabBarController.selectedIndex = 0;
+//      delegate.curNavVC = (UINavigationController *)tabBarController.childViewControllers[tabBarController.selectedIndex];
     if([keyStr isEqualToString:@"A401"]){
         
         tabBarController.selectedIndex = 2;
@@ -558,11 +561,13 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     }
     
  
-    
+
+    [(BaseViewController*)self.window.rootViewController showPromptText: @"go跳转的方法" hideAfterDelay: 1.7];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
       
-      
+      [baseVC showPromptText: @"go跳转延时的方法" hideAfterDelay: 1.7];
         [delegate.curNavVC pushViewController:baseVC animated:YES];
+        [baseVC showPromptText: @"go跳转后的方法" hideAfterDelay: 1.7];
     });
 //    return;
 }
@@ -611,6 +616,27 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
      
            [[UIApplication sharedApplication]setApplicationIconBadgeNumber:badge/2];
         //    [JPUSHService setBadge:0];//清空JPush服务器中存储的badge值
+         if ([UIApplication sharedApplication].applicationState != UIApplicationStateActive) {
+         
+             [(BaseViewController*)self.window.rootViewController showPromptText: @"go非前台的方法" hideAfterDelay: 1.7];
+             if (pageCodeNotice!=nil) {
+                 
+                 [self goToYunshiWithInfo:pageCodeNotice];
+                 
+             }
+             if (linkUrlNotice!=nil) {
+                 
+                 UITabBarController *tab = (UITabBarController *)_window.rootViewController;
+                 UINavigationController *nav = tab.viewControllers[tab.selectedIndex];
+                 JumpWebViewController *jumpVC = [[JumpWebViewController alloc] initWithNibName:@"JumpWebViewController" bundle:nil];
+                 jumpVC.title = @"消息详情";
+                 jumpVC.URL = linkUrlNotice;
+                 jumpVC.hidesBottomBarWhenPushed = YES;
+                 [nav pushViewController:jumpVC animated:YES];
+                 
+                 
+             }
+         }
     }
 }
 
@@ -644,7 +670,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 
 - (void)showZhuihaoDetail:(NSString*) ordernumber{
-    if (isLogin == NO) {
+    if ([GlobalInstance instance].curUser.isLogin == NO) {
         return;
     }
     
