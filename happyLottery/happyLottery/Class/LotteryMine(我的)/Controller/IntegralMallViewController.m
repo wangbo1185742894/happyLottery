@@ -14,6 +14,7 @@
     JSContext *context;
     __weak IBOutlet NSLayoutConstraint *webDisBottom;
     __weak IBOutlet NSLayoutConstraint *webDisTop;
+    BOOL isBack;
 }
 @property (weak, nonatomic) IBOutlet UIWebView *webContentView;
 
@@ -42,6 +43,12 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     
+    if (navigationType == UIWebViewNavigationTypeBackForward) {
+        isBack = YES;
+    }else{
+        isBack =NO;
+    }
+    
     [self showLoadingViewWithText:@"正在加载"];
     NSString *requsetIngUrlStr =[NSString stringWithFormat:@"%@",request.URL];
     if ([requsetIngUrlStr containsString:@"/index"]) {
@@ -51,15 +58,17 @@
         self.navigationController.navigationBar.hidden = YES;
         webDisTop.constant = 20;
     }
-    [self removeWebCache];
     return YES;
 }
 
 -(void)webViewDidStartLoad:(UIWebView *)webView{
-    [self cleanWebviewCache];
+    
 }
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
+    if (isBack) {
+        [self.webContentView reload];
+    }
     [self hideLoadingView];
     context = [webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
     context[@"appObj"] = self;

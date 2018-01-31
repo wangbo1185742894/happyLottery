@@ -45,15 +45,26 @@
     [self setTableView];
     self.lotteryMan.delegate = self;
     heightZhifuView.constant = 0;
+    if ([self.imageName isEqualToString:@"winning"]) {
+        self.navigationController.navigationBar.barTintColor  = RGBCOLOR(249, 91, 97);
+    }else{
+        self.navigationController.navigationBar.barTintColor = SystemGreen;
+    }
     [self loadData];
 }
 
 
 -(void)setSchemeStateImg{
     
-   [imgSchemeTopView setImage:[UIImage imageNamed: [schemeDetail getSchemeImgState]]];
-
+    NSString *imgName =[schemeDetail getSchemeImgState];
     
+   [imgSchemeTopView setImage:[UIImage imageNamed: imgName]];
+
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBar.barTintColor = SystemGreen;
 }
 
 -(void)setTableView{

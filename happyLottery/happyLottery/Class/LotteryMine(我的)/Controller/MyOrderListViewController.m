@@ -137,6 +137,8 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     SchemeDetailViewController *schemeVC = [[SchemeDetailViewController alloc]init];
     schemeVC.schemeNO = dataArray[indexPath.row].schemeNO;
+    NSString *imageName = [dataArray[indexPath.row] getSchemeImgState];
+    schemeVC.imageName = imageName;
     [self.navigationController pushViewController:schemeVC animated:YES];
 }
 

@@ -50,19 +50,24 @@
 
 
 -(void)refreshDataCollect:(JczqShortcutModel * )model andSelect:(BOOL)isSelect{
+    BOOL isExit = NO;
     for (UIView *subView in self.subviews) {
         if ([subView isKindOfClass:[LoopProgressView class]]) {
-            [subView removeFromSuperview];
+            isExit = YES;
             break;
         }
     }
 
+    if (isExit == NO) {
         progressView = [[LoopProgressView alloc]initWithFrame:CGRectMake(KscreenWidth-124,20, 55, 55)];
         progressView.color1 = SystemBlue;
         progressView.color2 = SystemLightGray;
-
-
+        progressView.progress = [model.predictIndex doubleValue] / 100.0;
+        
         [self addSubview:progressView];
+    }
+    
+
 
     
     self.labMatchResult.hidden = NO;
@@ -103,7 +108,7 @@
         }
     }
     
-    progressView.progress = [model.predictIndex doubleValue] / 100.0;
+    
     for (JcForecastOptions  * op in model.predict) {
         BOOL isselect = [op.forecast boolValue];
         switch ([op.options integerValue]) {
@@ -132,19 +137,24 @@
 }
 
 -(void)refreshData:(JczqShortcutModel * )model andSelect:(BOOL)isSelect{
+    BOOL isExit = NO;
     for (UIView *subView in self.subviews) {
         if ([subView isKindOfClass:[LoopProgressView class]]) {
-            [subView removeFromSuperview];
+            isExit = YES;
             break;
         }
     }
     
-    progressView = [[LoopProgressView alloc]initWithFrame:CGRectMake(KscreenWidth-124,20, 55, 55)];
-    progressView.color1 = SystemBlue;
-    progressView.color2 = SystemLightGray;
+    if (isExit == NO) {
+        progressView = [[LoopProgressView alloc]initWithFrame:CGRectMake(KscreenWidth-124,20, 55, 55)];
+        progressView.color1 = SystemBlue;
+        progressView.color2 = SystemLightGray;
+        progressView.progress = [model.predictIndex doubleValue] / 100.0;
+        
+        [self addSubview:progressView];
+    }
     
-    
-    [self addSubview:progressView];
+
 
     self.btnCollection.selected = isSelect;
     self.model = model;
@@ -158,7 +168,7 @@
     self.labHomeName.keyWordColor = BtnDisAbleTitleColor;
     self.labGuestName.text = [NSString stringWithFormat:@"%@",model.guestName];
     
-    progressView.progress = [model.predictIndex doubleValue] / 100.0;
+    
     for (JcForecastOptions  * op in model.forecastOptions) {
         BOOL isselect = [op.forecast boolValue];
         switch ([op.options integerValue]) {

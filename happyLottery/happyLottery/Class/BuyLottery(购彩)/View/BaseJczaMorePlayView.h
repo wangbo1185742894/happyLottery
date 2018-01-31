@@ -28,4 +28,5 @@
 -(NSString *)getSpTitle:(NSArray *)oddArray index:(NSInteger)i;
 -(NSString *)getSpNOTitle:(NSArray *)oddArray index:(NSInteger)i;
 -(BOOL)checkThisItemCanBuy:(UIButton *)sender;
+
 @end

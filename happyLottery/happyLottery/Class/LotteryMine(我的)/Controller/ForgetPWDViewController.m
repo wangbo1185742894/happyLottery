@@ -235,7 +235,7 @@
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        if (self.phoneTextField.text.length == 11) {
+        if (self.phoneTextField.text.length == 11 && _phoneTextField.enabled == YES) {
             _getVerifyCodeBtn.enabled = YES;
         }else{
             _getVerifyCodeBtn.enabled = NO;

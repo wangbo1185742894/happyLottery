@@ -137,9 +137,29 @@
     item.frame =  frame;
     item.tag = tag;
     item.selected = [isselect boolValue];
-    [item setTitle:dic[@"nTitle"] forState:UIControlStateNormal];
-    [item setTitleColor:RGBCOLOR(72, 72, 72) forState:0];
-    [item setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    NSMutableAttributedString *attrStrN = [[NSMutableAttributedString alloc] initWithString:dic[@"nTitle"]];
+    NSMutableAttributedString *attrStrS = [[NSMutableAttributedString alloc] initWithString:dic[@"nTitle"]];
+    if ([self isCanBuyThisType:item]) {
+        NSDictionary * firstAttributesN = @{ NSFontAttributeName:[UIFont systemFontOfSize:13],NSForegroundColorAttributeName:RGBCOLOR(72, 72, 72)};
+        [attrStrN setAttributes:firstAttributesN range:NSMakeRange(0, attrStrN.string.length)];
+        
+        
+        NSDictionary * firstAttributesS = @{ NSFontAttributeName:[UIFont systemFontOfSize:13],NSForegroundColorAttributeName:[UIColor whiteColor]};
+        [attrStrS setAttributes:firstAttributesS range:NSMakeRange(0, attrStrS.string.length)];
+        
+    }else{
+        NSDictionary * firstAttributesN = @{ NSFontAttributeName:[UIFont systemFontOfSize:13],NSForegroundColorAttributeName:RGBCOLOR(72, 72, 72),NSStrikethroughStyleAttributeName : @(NSUnderlineStyleSingle)};
+        [attrStrN setAttributes:firstAttributesN range:NSMakeRange(0, attrStrN.string.length)];
+        [item setAttributedTitle:attrStrN forState:0];
+        
+        NSDictionary * firstAttributesS = @{ NSFontAttributeName:[UIFont systemFontOfSize:13],NSForegroundColorAttributeName:RGBCOLOR(72, 72, 72),NSStrikethroughStyleAttributeName : @(NSUnderlineStyleSingle)};
+        [attrStrS setAttributes:firstAttributesS range:NSMakeRange(0, attrStrS.string.length)];
+        [item setAttributedTitle:attrStrS forState:0];
+    }
+    [item setAttributedTitle:attrStrS forState:UIControlStateSelected];
+    [item setAttributedTitle:attrStrN forState:0];
+//    [item setTitleColor:RGBCOLOR(72, 72, 72) forState:0];
+//    [item setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
     item.titleLabel.numberOfLines = 0;
     item.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     item.titleLabel.font = [UIFont systemFontOfSize:13];
@@ -152,6 +172,81 @@
     
     return item;
     
+}
+
+-(BOOL)isCanBuyThisType:(UIButton *)sender{
+    
+    if (sender.tag == 0) {  //无效button
+        
+        return YES;
+    }
+    
+    if (sender.tag == 1000) {  //全部玩法 展开
+        
+        return YES;
+    }
+    if (sender.tag == 2000) { //半全场  展开
+        
+        return YES;
+    }
+    if (sender.tag == 3000) { // 比分展开
+        
+        return YES;
+    }
+    
+    NSInteger playType = sender.tag / 100;
+    NSInteger index = sender.tag % 100;
+    NSString *title;
+    BOOL isCanBuy = YES;
+    switch (playType) {
+        case 1:
+            isCanBuy = [self.delegate canBuyThisMatch:curModel andIndex:0];
+            title = [self getSpNOTitle:curModel.SPF_OddArray index:index];
+            break;
+        case 2:
+            title = [self getSpNOTitle:curModel.RQSPF_OddArray index:index];
+            isCanBuy = [self.delegate canBuyThisMatch:curModel andIndex:4];
+            
+            break;
+        case 3:
+            title = [self getSpNOTitle:curModel.BF_OddArray index:index];
+            isCanBuy = [self.delegate canBuyThisMatch:curModel andIndex:2];
+            
+            break;
+        case 4:
+            title = [self getSpNOTitle:curModel.BQC_OddArray index:index];
+            isCanBuy = [self.delegate canBuyThisMatch:curModel andIndex:3];
+            
+            break;
+        case 5:
+            title = [self getSpNOTitle:curModel.JQS_OddArray index:index];
+            isCanBuy = [self.delegate canBuyThisMatch:curModel andIndex:1];
+            
+            break;
+        default:
+            break;
+    }
+    
+    if (isCanBuy == NO || [title doubleValue] == 0) {
+        return NO;
+    }else{
+        if ([curModel.status isEqualToString:@"ENDED"]) {
+            
+            return NO;
+        }
+        
+        if ([curModel.status isEqualToString:@"CANCLE"]) {
+            
+            return NO;
+        }
+        
+        if ([curModel.status isEqualToString:@"PAUSE"]) {
+            
+            return NO;
+        }
+        return YES;
+        
+    }
 }
 
 -(void)jczqCellItemClick:(UIButton *)sender{

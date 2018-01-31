@@ -232,14 +232,22 @@
             tfCheckCode.rightView.hidden = YES;
         }
         
-        if (tfUserTel.text.length!= 11) {
-           
-            btnSendCheckCode.enabled = NO;
-            tfCheckCode.enabled = NO;
-            tfUserPwd.enabled = NO;
-        }else{
-            btnSendCheckCode.enabled = YES;
-        }
+        
+            if (tfUserTel.text.length!= 11 || tfUserTel.enabled == NO) {
+                
+                btnSendCheckCode.enabled = NO;
+                tfCheckCode.enabled = NO;
+                if (tfUserTel.enabled == NO) {
+                    tfUserPwd.enabled = YES;
+                }else{
+                    tfUserPwd.enabled = NO;
+                }
+                
+            }else{
+                btnSendCheckCode.enabled = YES;
+            }
+        
+       
         
         if (tfUserPwd.text.length >=6) {
             tfRecomCode.enabled = YES;

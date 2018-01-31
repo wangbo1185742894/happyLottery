@@ -65,31 +65,37 @@
     NSInteger playType = sender.tag / 100;
     NSInteger index = sender.tag % 100;
     NSString *title;
+    BOOL isCanBuy = YES;
     switch (playType) {
         case 1:
             title = [self getSpNOTitle:_curModel.SPF_OddArray index:index];
+            isCanBuy = [self.delegate canBuyThisMatch:_curModel andIndex:0];
             break;
         case 2:
             title = [self getSpNOTitle:_curModel.RQSPF_OddArray index:index];
+            isCanBuy = [self.delegate canBuyThisMatch:_curModel andIndex:4];
             
             break;
         case 3:
             title = [self getSpNOTitle:_curModel.BF_OddArray index:index];
+            isCanBuy = [self.delegate canBuyThisMatch:_curModel andIndex:2];
             
             break;
         case 4:
             title = [self getSpNOTitle:_curModel.BQC_OddArray index:index];
+            isCanBuy = [self.delegate canBuyThisMatch:_curModel andIndex:3];
             
             break;
         case 5:
             title = [self getSpNOTitle:_curModel.JQS_OddArray index:index];
+            isCanBuy = [self.delegate canBuyThisMatch:_curModel andIndex:1];
             
             break;
         default:
             break;
     }
     
-    if ([title doubleValue] == 0) {
+    if ([title doubleValue] == 0 || isCanBuy == NO) {
         
         return NO;
     }else{
@@ -112,5 +118,7 @@
     }
     
 }
+
+
 
 @end
