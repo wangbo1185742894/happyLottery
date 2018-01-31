@@ -14,6 +14,7 @@
 -(void)goToJczq;
 - (void)telPhone;
 -(void)goToLogin;
+-(void)exchangeToast:(NSString *)msg;
 -(void)hiddenFooter:(BOOL )isHiden;
 @end
 

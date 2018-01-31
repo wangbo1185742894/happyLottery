@@ -535,7 +535,7 @@
 		2DE109532004E6690020343A /* NewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE109522004E6690020343A /* NewsModel.m */; };
 		2DE892A02020724C008926A6 /* JWCacheURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE8929F2020724B008926A6 /* JWCacheURLProtocol.m */; };
 		2DE892A3202150AC008926A6 /* tbz_recharge.html in Resources */ = {isa = PBXBuildFile; fileRef = 2DE892A1202150AB008926A6 /* tbz_recharge.html */; };
-		2DE892A4202150AC008926A6 /* tbz_useragreement.html in Resources */ = {isa = PBXBuildFile; fileRef = 2DE892A2202150AC008926A6 /* tbz_useragreement.html */; };
+		2DE892A6202171AB008926A6 /* tbz_useragreement.html in Resources */ = {isa = PBXBuildFile; fileRef = 2DE892A5202171AA008926A6 /* tbz_useragreement.html */; };
 		F90058DE1FF61327009C8E1C /* NoticeCenterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F90058DC1FF61327009C8E1C /* NoticeCenterTableViewCell.m */; };
 		F90058DF1FF61327009C8E1C /* NoticeCenterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F90058DD1FF61327009C8E1C /* NoticeCenterTableViewCell.xib */; };
 		F90058E51FF61619009C8E1C /* noticedelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F90058E11FF61618009C8E1C /* noticedelete@2x.png */; };
@@ -588,12 +588,10 @@
 		F924BA981FE252CF00830BF4 /* phone@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA801FE252CB00830BF4 /* phone@3x.png */; };
 		F924BA991FE252CF00830BF4 /* captcha@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA811FE252CB00830BF4 /* captcha@3x.png */; };
 		F924BA9B1FE252CF00830BF4 /* line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA831FE252CB00830BF4 /* line@2x.png */; };
-		F924BA9C1FE252CF00830BF4 /* recommend@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA841FE252CC00830BF4 /* recommend@2x.png */; };
 		F924BA9D1FE252CF00830BF4 /* stick@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA851FE252CC00830BF4 /* stick@3x.png */; };
 		F924BA9E1FE252CF00830BF4 /* user@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA861FE252CC00830BF4 /* user@3x.png */; };
 		F924BAA11FE252CF00830BF4 /* line@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA891FE252CD00830BF4 /* line@3x.png */; };
 		F924BAA21FE252CF00830BF4 /* password@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA8A1FE252CD00830BF4 /* password@2x.png */; };
-		F924BAA31FE252CF00830BF4 /* recommend@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA8B1FE252CD00830BF4 /* recommend@3x.png */; };
 		F924BAA51FE252CF00830BF4 /* hide@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA8D1FE252CD00830BF4 /* hide@3x.png */; };
 		F924BAA61FE252CF00830BF4 /* user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA8E1FE252CE00830BF4 /* user@2x.png */; };
 		F924BAA81FE252CF00830BF4 /* captcha@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA901FE252CE00830BF4 /* captcha@2x.png */; };
@@ -1621,7 +1619,7 @@
 		2DE8929E2020724B008926A6 /* JWCacheURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWCacheURLProtocol.h; sourceTree = "<group>"; };
 		2DE8929F2020724B008926A6 /* JWCacheURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWCacheURLProtocol.m; sourceTree = "<group>"; };
 		2DE892A1202150AB008926A6 /* tbz_recharge.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = tbz_recharge.html; sourceTree = "<group>"; };
-		2DE892A2202150AC008926A6 /* tbz_useragreement.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = tbz_useragreement.html; sourceTree = "<group>"; };
+		2DE892A5202171AA008926A6 /* tbz_useragreement.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = tbz_useragreement.html; sourceTree = "<group>"; };
 		F90058DB1FF61327009C8E1C /* NoticeCenterTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeCenterTableViewCell.h; sourceTree = "<group>"; };
 		F90058DC1FF61327009C8E1C /* NoticeCenterTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeCenterTableViewCell.m; sourceTree = "<group>"; };
 		F90058DD1FF61327009C8E1C /* NoticeCenterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoticeCenterTableViewCell.xib; sourceTree = "<group>"; };
@@ -1684,12 +1682,10 @@
 		F924BA801FE252CB00830BF4 /* phone@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone@3x.png"; sourceTree = "<group>"; };
 		F924BA811FE252CB00830BF4 /* captcha@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "captcha@3x.png"; sourceTree = "<group>"; };
 		F924BA831FE252CB00830BF4 /* line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "line@2x.png"; sourceTree = "<group>"; };
-		F924BA841FE252CC00830BF4 /* recommend@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "recommend@2x.png"; sourceTree = "<group>"; };
 		F924BA851FE252CC00830BF4 /* stick@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stick@3x.png"; sourceTree = "<group>"; };
 		F924BA861FE252CC00830BF4 /* user@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user@3x.png"; sourceTree = "<group>"; };
 		F924BA891FE252CD00830BF4 /* line@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "line@3x.png"; sourceTree = "<group>"; };
 		F924BA8A1FE252CD00830BF4 /* password@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "password@2x.png"; sourceTree = "<group>"; };
-		F924BA8B1FE252CD00830BF4 /* recommend@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "recommend@3x.png"; sourceTree = "<group>"; };
 		F924BA8D1FE252CD00830BF4 /* hide@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hide@3x.png"; sourceTree = "<group>"; };
 		F924BA8E1FE252CE00830BF4 /* user@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user@2x.png"; sourceTree = "<group>"; };
 		F924BA901FE252CE00830BF4 /* captcha@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "captcha@2x.png"; sourceTree = "<group>"; };
@@ -2290,7 +2286,7 @@
 			isa = PBXGroup;
 			children = (
 				2DE892A1202150AB008926A6 /* tbz_recharge.html */,
-				2DE892A2202150AC008926A6 /* tbz_useragreement.html */,
+				2DE892A5202171AA008926A6 /* tbz_useragreement.html */,
 				2D5171FD200C942300C3CD7F /* pageCodeConfig.plist */,
 				2DE1094F200356350020343A /* JingCaiOrderCode.plist */,
 				2D0600871FFF1365009E7568 /* HHGGPeilvTable.plist */,
@@ -3490,8 +3486,6 @@
 				F924BA7A1FE252CA00830BF4 /* password@3x.png */,
 				F924BA7F1FE252CB00830BF4 /* phone@2x.png */,
 				F924BA801FE252CB00830BF4 /* phone@3x.png */,
-				F924BA841FE252CC00830BF4 /* recommend@2x.png */,
-				F924BA8B1FE252CD00830BF4 /* recommend@3x.png */,
 				F924BA911FE252CF00830BF4 /* stick@2x.png */,
 				F924BA851FE252CC00830BF4 /* stick@3x.png */,
 				F924BA8E1FE252CE00830BF4 /* user@2x.png */,
@@ -4013,7 +4007,7 @@
 				TargetAttributes = {
 					2DCBB2701FD1000700934D92 = {
 						CreatedOnToolsVersion = 9.1;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -4074,7 +4068,6 @@
 				2D5171DC200C729A00C3CD7F /* icon_yingli_@2x.png in Resources */,
 				2D628B2A1FECA9C40013D0E1 /* touzhuxuanzezhifuselect@3x.png in Resources */,
 				F94AA9C01FEB59DA0021B980 /* hint@2x.png in Resources */,
-				F924BA9C1FE252CF00830BF4 /* recommend@2x.png in Resources */,
 				2D2060301FFCB71E0086E266 /* icon_zhifu_selceted@3x.png in Resources */,
 				2D0E23E72019A6BE0098DA40 /* assist@2x.png in Resources */,
 				2D0E23D32019A6210098DA40 /* packet@2x.png in Resources */,
@@ -4268,6 +4261,7 @@
 				2D0E23EE2019A7480098DA40 /* feedback@3x.png in Resources */,
 				2D628B2B1FECA9C40013D0E1 /* touzhusaishijia@2x.png in Resources */,
 				2D92A8212010545D0038E165 /* btn_jinru@3x.png in Resources */,
+				2DE892A6202171AB008926A6 /* tbz_useragreement.html in Resources */,
 				F95BC7CE201724A6006D6243 /* OpenRedPopView.xib in Resources */,
 				F91565F21FFCBDAE00E254CE /* Moments@2x.png in Resources */,
 				F928C6BA1FF4BA40001F1A32 /* increase@2x.png in Resources */,
@@ -4472,7 +4466,6 @@
 				F9F6CA9D1FF5D6B100A49F71 /* voice@3x.png in Resources */,
 				2D5171CA2009C3B500C3CD7F /* button_checked@3x.png in Resources */,
 				2D4B1EAF1FDFCDA00034B708 /* arrow_down@2x.png in Resources */,
-				F924BAA31FE252CF00830BF4 /* recommend@3x.png in Resources */,
 				2D739CD81FEB44F400264044 /* yuanjiaowubiankuangnomal@3x.png in Resources */,
 				2D628B461FECAA9A0013D0E1 /* fengkuangjingcai-chuanguanwanfaqiehuanbeijing@2x.png in Resources */,
 				2D5171EF200C72E700C3CD7F /* icon_daizhi_@2x.png in Resources */,
@@ -4500,7 +4493,6 @@
 				2D06FFEA1FFDC9EB009E7568 /* football@3x.png in Resources */,
 				F9C3BA1E20088E3800916F3C /* starUnselecte@3x.png in Resources */,
 				2D628B4B1FECAE980013D0E1 /* JingCaiChaunFaSelectView.xib in Resources */,
-				2DE892A4202150AC008926A6 /* tbz_useragreement.html in Resources */,
 				F9C3BA2520088FA400916F3C /* dialogfeedback@3x.png in Resources */,
 				2D4B1EB41FDFCDAF0034B708 /* arrow_up@3x.png in Resources */,
 				2D739CFF1FEB68B800264044 /* backViewYuanJiao@3x.png in Resources */,
@@ -5085,8 +5077,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = happyLottery/happyLottery.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: aolikeji@xaonly.com (93Y3V24TMT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TSK429FVKW;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/happyLottery/Libs/SHARESDK/Required",
@@ -5112,8 +5104,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.only.happyLottery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8e8f087e-3932-4af6-a0a4-4455cbd1ef4a";
-				PROVISIONING_PROFILE_SPECIFIER = TBZ_Dis_profiles;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -5124,8 +5116,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = happyLottery/happyLottery.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: XI'AN ONLY TECHNOLOGY DEVELOPMENT CO., LTD.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TSK429FVKW;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/happyLottery/Libs/SHARESDK/Required",
@@ -5151,8 +5143,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.only.happyLottery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8e8f087e-3932-4af6-a0a4-4455cbd1ef4a";
-				PROVISIONING_PROFILE_SPECIFIER = TBZ_Dis_profiles;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

@@ -18,6 +18,8 @@
 {
     __weak IBOutlet NSLayoutConstraint *webDisTop;
     JSContext *context;
+    BOOL isBack;
+    
     __weak IBOutlet NSLayoutConstraint *webDisBottom;
     BOOL _pageCacheDisable;
 }
@@ -30,7 +32,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [JWCacheURLProtocol startListeningNetWorking];
+    isBack = NO;
      _pageCacheDisable = YES;
     self.viewControllerNo = @"A401";
     self.faxianWebView.scrollView.bounces = NO;
@@ -62,7 +64,7 @@
             cardCode = self.curUser.cardCode;
         }
         
-        NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/app/find/index?cardCode=%@",H5BaseAddress,cardCode]] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:20];
+        NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/app/find/index?cardCode=%@",H5BaseAddress,cardCode]] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:100];
         
         
         [self.faxianWebView loadRequest:request];
@@ -86,7 +88,9 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    
+    if (isBack == YES) {
+        [self.faxianWebView reload];
+    }
     context = [webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
     context[@"appObj"] = self;
     context.exceptionHandler = ^(JSContext *context, JSValue *exceptionValue) {
@@ -95,13 +99,26 @@
     [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitUserSelect='none';"];
     [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitTouchCallout='none';"];
     
+    
 }
 
 -(void)webViewDidStartLoad:(UIWebView *)webView{
+    
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
+    [self removeWebCache];
+    [self cleanWebviewCache];
+    if (navigationType == UIWebViewNavigationTypeBackForward) {
+        isBack = YES;
+    }else{
+        isBack =NO;
+    }
+    
+    request = [NSURLRequest requestWithURL:request.URL cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:100];
+    
+    
     NSURL *URL = request.URL;
     NSString *scheme = [NSString stringWithFormat:@"%@",URL];
     if ([scheme containsString:@"index"]) {
@@ -111,7 +128,7 @@
         self.tabBarController.tabBar.hidden = YES;
         webDisBottom.constant = 0;
     }
-    [self removeWebCache];
+      [self removeWebCache];
     return YES;
 }
 
@@ -207,8 +224,6 @@
 
 }
 
-
-
 -(void)hiddenFooter:(BOOL )isHiden{
     dispatch_async(dispatch_get_main_queue(), ^{
         self.tabBarController.tabBar .hidden =isHiden;
@@ -229,6 +244,59 @@
     [self actionTelMe];
 }
 
+-(void)exchangeToast:(NSString *)msg{
+    [self showPromptText:msg hideAfterDelay:1.7];
+}
+
+- (void)removeWebCache{
+    if ([[UIDevice currentDevice].systemVersion floatValue] >= 9.0) {
+        NSSet *websiteDataTypes= [NSSet setWithArray:@[
+                                                       WKWebsiteDataTypeDiskCache,
+                                                       //WKWebsiteDataTypeOfflineWebApplication
+                                                       WKWebsiteDataTypeMemoryCache,
+                                                       //WKWebsiteDataTypeLocal
+                                                       WKWebsiteDataTypeCookies,
+                                                       //WKWebsiteDataTypeSessionStorage,
+                                                       //WKWebsiteDataTypeIndexedDBDatabases,
+                                                       //WKWebsiteDataTypeWebSQLDatabases
+                                                       ]];
+        
+        // All kinds of data
+        //NSSet *websiteDataTypes = [WKWebsiteDataStore allWebsiteDataTypes];
+        NSDate *dateFrom = [NSDate dateWithTimeIntervalSince1970:0];
+        [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:websiteDataTypes modifiedSince:dateFrom completionHandler:^{
+            
+        }];
+        [[NSURLCache sharedURLCache] removeAllCachedResponses];
+        
+    } else {
+        //先删除cookie
+        NSHTTPCookie *cookie;
+        NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+        for (cookie in [storage cookies])
+        {
+            [storage deleteCookie:cookie];
+        }
+        
+        NSString *libraryDir = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        NSString *bundleId = [[[NSBundle mainBundle] infoDictionary]
+                              objectForKey:@"CFBundleIdentifier"];
+        NSString *webkitFolderInLib = [NSString stringWithFormat:@"%@/WebKit",libraryDir];
+        NSString *webKitFolderInCaches = [NSString
+                                          stringWithFormat:@"%@/Caches/%@/WebKit",libraryDir,bundleId];
+        NSString *webKitFolderInCachesfs = [NSString
+                                            stringWithFormat:@"%@/Caches/%@/fsCachedData",libraryDir,bundleId];
+        NSError *error;
+        /* iOS8.0 WebView Cache的存放路径 */
+        [[NSFileManager defaultManager] removeItemAtPath:webKitFolderInCaches error:&error];
+        [[NSFileManager defaultManager] removeItemAtPath:webkitFolderInLib error:nil];
+        /* iOS7.0 WebView Cache的存放路径 */
+        [[NSFileManager defaultManager] removeItemAtPath:webKitFolderInCachesfs error:&error];
+        NSString *cookiesFolderPath = [libraryDir stringByAppendingString:@"/Cookies"];
+        [[NSFileManager defaultManager] removeItemAtPath:cookiesFolderPath error:&error];
+        [[NSURLCache sharedURLCache] removeAllCachedResponses];
+    }
+}
 
 
 @end

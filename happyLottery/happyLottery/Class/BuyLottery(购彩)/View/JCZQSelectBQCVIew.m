@@ -46,9 +46,32 @@
     for (UIButton *itemBtn in self.jczqCellBQCitem) {
         NSString *tag = [NSString stringWithFormat:@"%ld",itemBtn.tag];
         NSString *title = [NSString stringWithFormat:@"%@%@",titleDic[tag][@"appear"],[self getSpTitle:model.BQC_OddArray index:itemBtn.tag %100]];
-        [itemBtn setTitleColor:RGBCOLOR(72, 72, 72) forState:0];
+
         itemBtn.selected = [model.BQC_SelectMatch[itemBtn.tag %100] boolValue];
-        [itemBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+        
+        NSMutableAttributedString *attrStrN = [[NSMutableAttributedString alloc] initWithString:title];
+        NSMutableAttributedString *attrStrS = [[NSMutableAttributedString alloc] initWithString:title];
+        if ([self checkThisItemCanBuy:itemBtn]) {
+            NSDictionary * firstAttributesN = @{ NSFontAttributeName:[UIFont systemFontOfSize:13],NSForegroundColorAttributeName:RGBCOLOR(72, 72, 72)};
+            [attrStrN setAttributes:firstAttributesN range:NSMakeRange(0, attrStrN.string.length)];
+            
+            
+            NSDictionary * firstAttributesS = @{ NSFontAttributeName:[UIFont systemFontOfSize:13],NSForegroundColorAttributeName:[UIColor whiteColor]};
+            [attrStrS setAttributes:firstAttributesS range:NSMakeRange(0, attrStrS.string.length)];
+            
+        }else{
+            NSDictionary * firstAttributesN = @{ NSFontAttributeName:[UIFont systemFontOfSize:13],NSForegroundColorAttributeName:RGBCOLOR(72, 72, 72),NSStrikethroughStyleAttributeName : @(NSUnderlineStyleSingle)};
+            [attrStrN setAttributes:firstAttributesN range:NSMakeRange(0, attrStrN.string.length)];
+            [itemBtn setAttributedTitle:attrStrN forState:0];
+            
+            NSDictionary * firstAttributesS = @{ NSFontAttributeName:[UIFont systemFontOfSize:13],NSForegroundColorAttributeName:RGBCOLOR(72, 72, 72),NSStrikethroughStyleAttributeName : @(NSUnderlineStyleSingle)};
+            [attrStrS setAttributes:firstAttributesS range:NSMakeRange(0, attrStrS.string.length)];
+            [itemBtn setAttributedTitle:attrStrS forState:0];
+        }
+        [itemBtn setAttributedTitle:attrStrS forState:UIControlStateSelected];
+        [itemBtn setAttributedTitle:attrStrN forState:0];
+        
+        
         [itemBtn setBackgroundImage:[UIImage imageWithColor:SystemGreen] forState:UIControlStateSelected];
         [itemBtn setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:0];
         [itemBtn setTitle:title forState:0];

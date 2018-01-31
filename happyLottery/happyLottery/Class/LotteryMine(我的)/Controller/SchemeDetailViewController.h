@@ -9,7 +9,7 @@
 #import "BaseViewController.h"
 
 @interface SchemeDetailViewController : BaseViewController
-
+@property(nonatomic,strong)NSString *imageName;
 @property(nonatomic,strong)NSString *schemeNO;
 
 @end

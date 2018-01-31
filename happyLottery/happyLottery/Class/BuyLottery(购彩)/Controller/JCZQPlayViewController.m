@@ -507,12 +507,12 @@
     
     JCZQMatchViewCell * cell = [tableView dequeueReusableCellWithIdentifier:KJCZQMatchViewCell];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+    cell.delegate = self;
     [cell reloadDataMatch:self.showArray[indexPath.section][indexPath.row] andProfileTitle:self.trancation.curProfile.Desc andGuoguanType:self.trancation.playType];
     if (self.showArray[indexPath.section][indexPath.row].isShow == YES) {
         [cell refreshWithYcInfo:self.showArray[indexPath.section][indexPath.row].ycModel];
     }
-    cell.delegate = self;
+   
     return cell;
 }
 

@@ -99,6 +99,10 @@
     [self setNewsView];
     [self setTableView];
     
+//    [self.view bringSubviewToFront:redpacketView];
+//    [self.view insertSubview:redpacketView aboveSubview:self.tabBarController.tabBar];
+    
+    
 }
 
 -(void)itemNotification:(NSNotification *)notification{
@@ -293,16 +297,14 @@
         return;
     }else if ([keyStr isEqualToString:@"A403"]){
         
-        
-        
-        if (self.curUser.isLogin == YES && self.curUser.cardCode != nil) {
+        if (self.curUser.isLogin == YES || self.curUser.cardCode != nil) {
             HomeJumpViewController *disVC = [[HomeJumpViewController alloc]init];
             ADSModel *model = [[ADSModel alloc]init];
             model.linkUrl = [NSString stringWithFormat:@"%@/app/find/turntable?activityId=5&cardCode=%@",H5BaseAddress,self.curUser.cardCode];
             disVC.infoModel = model;
             disVC.hidesBottomBarWhenPushed = YES;
             disVC.isNeedBack = YES;
-            [self.navigationController pushViewController:disVC animated:disVC];
+            [self.navigationController pushViewController:disVC animated:YES];
         }else{
             [self needLogin];
         }
@@ -577,7 +579,7 @@
            
             view.mj_x += width;
             openRedpacketButton.mj_w = 0;
-            
+
             
         } completion:^(BOOL finished) {
             //[redPacketbutton removeFromSuperview];
@@ -712,9 +714,12 @@
                     r =listUseRedPacketArray[0];
                    
                 }
+            }else{
+                redpacketView .hidden = YES;
             }
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
+        redpacketView .hidden = YES;
     }
 }
 
