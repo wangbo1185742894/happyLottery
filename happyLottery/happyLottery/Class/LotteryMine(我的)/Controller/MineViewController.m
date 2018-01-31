@@ -417,11 +417,10 @@
 
 -(void)getSystemNoticeClient{
     NSString *theRequest;
-    //    theRequest= [GlobalInstance instance].h5Url;
+      theRequest= [GlobalInstance instance].homeUrl;
     //    theRequest = [[theRequest componentsSeparatedByString:@"/h5"] firstObject];
     //
     //    theRequest = [[theRequest componentsSeparatedByString:@"/ms"] firstObject];
-    theRequest  = @"http://192.168.88.244:8086";
     [self.loadDataTool RequestWithString:[NSString stringWithFormat:@"%@/app/inform/byChannel?usageChannel=3",theRequest] isPost:YES andPara:nil andComplete:^(id data, BOOL isSuccess) {
         // [self hideLoadingView];
         if (isSuccess) {

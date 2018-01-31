@@ -57,6 +57,8 @@
 - (void) FeedBackUnReadNum:(NSDictionary *)Info IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) ResetFeedBackReadStatusSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) gotVueHttpUrl:(NSString  *)baseUrl errorMsg:(NSString *)msg;
+- (void) giveShareScore:(BOOL)success errorMsg:(NSString *)msg;
+
 
 @end
 
@@ -103,6 +105,8 @@
 - (void) upMemberShareSms:(NSDictionary *)paraDic;
 - (void)FeedBackUnReadNum:(NSDictionary*)paraDic;
 - (void)ResetFeedBackReadStatus:(NSDictionary*)paraDic;
+- (void)giveShareScore:(NSDictionary*)paraDic;
+
 
 //11.23 活动公告
 - (void)getActivetyMessage:(NSString *)strId;

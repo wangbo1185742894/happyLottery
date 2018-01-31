@@ -149,15 +149,17 @@
                            case SSDKResponseStateBegin:
                            {
                                //设置UI等操作
+                               //Instagram、Line等平台捕获不到分享成功或失败的状态，最合适的方式就是对这些平台区别对待
+                               if (platformType == SSDKPlatformSubTypeWechatSession)
+                               {
+                                   [self giveShareScoreClient];
+                                   break;
+                               }
                                break;
                            }
                            case SSDKResponseStateSuccess:
                            {
-                               //Instagram、Line等平台捕获不到分享成功或失败的状态，最合适的方式就是对这些平台区别对待
-                               if (platformType == SSDKPlatformTypeInstagram)
-                               {
-                                   break;
-                               }
+                               
                                
                                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
                                                                                    message:nil
@@ -165,6 +167,11 @@
                                                                          cancelButtonTitle:@"确定"
                                                                          otherButtonTitles:nil];
                                [alertView show];
+                               if (platformType == SSDKPlatformSubTypeWechatTimeline)
+                               {
+                                   [self giveShareScoreClient];
+                                   
+                               }
                                break;
                            }
                            case SSDKResponseStateFail:
@@ -196,6 +203,30 @@
         return;
     }
    
+    
+}
+
+-(void)giveShareScoreClient{
+    NSDictionary *Info;
+    @try {
+        
+        Info = @{@"cardCode":self.curUser.cardCode
+                 };
+        
+    } @catch (NSException *exception) {
+        return;
+    }
+    [self.memberMan giveShareScore:Info];
+    
+}
+
+-(void)giveShareScore:(BOOL)success errorMsg:(NSString *)msg{
+    if ([msg isEqualToString:@"执行成功"]) {
+        [self showPromptText: @"积分赠送成功" hideAfterDelay: 1.7];
+        
+    }else{
+        [self showPromptText: msg hideAfterDelay: 1.7];
+    }
     
 }
 
