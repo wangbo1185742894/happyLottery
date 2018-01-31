@@ -28,9 +28,8 @@
                     <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                     <subviews>
                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jZD-Fc-YyM">
-                            <rect key="frame" x="9" y="20" width="356" height="28"/>
+                            <rect key="frame" x="10" y="20" width="355" height="28"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="356" id="Mho-gq-Zpx"/>
                                 <constraint firstAttribute="height" constant="27" id="cbV-KC-8HG"/>
                             </constraints>
                             <segments>
@@ -58,10 +57,11 @@
                         <constraint firstItem="jc0-Sj-Ftj" firstAttribute="leading" secondItem="gOu-uf-x4P" secondAttribute="leading" id="NI0-Be-DkM"/>
                         <constraint firstAttribute="bottom" secondItem="jc0-Sj-Ftj" secondAttribute="bottom" id="THA-Pv-UgN"/>
                         <constraint firstItem="EIa-5v-MRM" firstAttribute="leading" secondItem="gOu-uf-x4P" secondAttribute="leading" id="Xk6-rF-GiI"/>
+                        <constraint firstItem="jZD-Fc-YyM" firstAttribute="leading" secondItem="gOu-uf-x4P" secondAttribute="leading" constant="10" id="bHx-Sb-cqs"/>
                         <constraint firstItem="jZD-Fc-YyM" firstAttribute="top" secondItem="gOu-uf-x4P" secondAttribute="top" constant="20" id="dWE-fp-OER"/>
                         <constraint firstItem="EIa-5v-MRM" firstAttribute="top" secondItem="jZD-Fc-YyM" secondAttribute="bottom" constant="10" id="fi3-6z-AMJ"/>
-                        <constraint firstItem="jZD-Fc-YyM" firstAttribute="centerX" secondItem="gOu-uf-x4P" secondAttribute="centerX" id="hDY-Ii-qTU"/>
                         <constraint firstAttribute="trailing" secondItem="jc0-Sj-Ftj" secondAttribute="trailing" id="kln-g3-H1I"/>
+                        <constraint firstAttribute="trailing" secondItem="jZD-Fc-YyM" secondAttribute="trailing" constant="10" id="mQ4-ck-gsf"/>
                         <constraint firstItem="jc0-Sj-Ftj" firstAttribute="top" secondItem="jZD-Fc-YyM" secondAttribute="bottom" constant="10" id="w80-lT-4tw"/>
                     </constraints>
                 </view>

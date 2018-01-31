@@ -25,7 +25,7 @@
                     <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="htq-Uw-cxG">
-                            <rect key="frame" x="0.0" y="30" width="375" height="268"/>
+                            <rect key="frame" x="0.0" y="10" width="375" height="268"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dotted.png" translatesAutoresizingMaskIntoConstraints="NO" id="K96-8C-eQo">
                                     <rect key="frame" x="8" y="59" width="359" height="1"/>
@@ -74,7 +74,7 @@
                     <color key="backgroundColor" red="0.96444731950759888" green="0.96840888261795044" blue="0.98488038778305054" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="htq-Uw-cxG" secondAttribute="trailing" id="MM5-5E-nve"/>
-                        <constraint firstItem="htq-Uw-cxG" firstAttribute="top" secondItem="efQ-6Y-QT0" secondAttribute="top" constant="30" id="TBT-3p-GoB"/>
+                        <constraint firstItem="htq-Uw-cxG" firstAttribute="top" secondItem="efQ-6Y-QT0" secondAttribute="top" constant="10" id="TBT-3p-GoB"/>
                         <constraint firstItem="htq-Uw-cxG" firstAttribute="leading" secondItem="efQ-6Y-QT0" secondAttribute="leading" id="qVk-qc-5AT"/>
                     </constraints>
                 </view>

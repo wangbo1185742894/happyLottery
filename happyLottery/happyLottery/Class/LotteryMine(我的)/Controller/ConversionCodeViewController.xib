@@ -46,14 +46,13 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入8位推荐码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0HD-cr-h7I">
                             <rect key="frame" x="8" y="15" width="116.5" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Jf-kG-mGV">
-                            <rect key="frame" x="117.5" y="159" width="140" height="44"/>
+                            <rect key="frame" x="127.5" y="159" width="120" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="hij-Ro-AYu"/>
-                                <constraint firstAttribute="width" constant="140" id="tdP-YV-Q7B"/>
+                                <constraint firstAttribute="width" constant="120" id="tdP-YV-Q7B"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <state key="normal" title="激活" backgroundImage="yuanjiaowukuangselect">

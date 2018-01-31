@@ -23,7 +23,7 @@
                         <rect key="frame" x="8" y="12" width="304" height="97.5"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="还有16天过期" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Sr-x5-1J3">
-                        <rect key="frame" x="93" y="74" width="63" height="21"/>
+                        <rect key="frame" x="95" y="74" width="63" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="63" id="OaG-A5-Lt6"/>
                             <constraint firstAttribute="height" constant="21" id="lqt-Z4-lNe"/>
@@ -33,14 +33,14 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="q0V-sZ-6Wh">
-                        <rect key="frame" x="16" y="26" width="64" height="69"/>
+                        <rect key="frame" x="18" y="26" width="64" height="69"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="69" id="B69-9C-bWj"/>
                             <constraint firstAttribute="width" constant="64" id="Rgt-hs-qCf"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="来自： 活动赠送" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPa-IS-U8G">
-                        <rect key="frame" x="93" y="50" width="165" height="21"/>
+                        <rect key="frame" x="95" y="50" width="165" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="caK-k4-QtX"/>
                             <constraint firstAttribute="width" constant="165" id="ria-Q2-5hg"/>
@@ -67,7 +67,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新用户注册送红包" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AoG-vV-PWc">
-                        <rect key="frame" x="93" y="26" width="210" height="28"/>
+                        <rect key="frame" x="95" y="26" width="210" height="28"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="210" id="9hS-lO-N87"/>
                             <constraint firstAttribute="height" constant="28" id="lEa-l5-aB2"/>
@@ -87,7 +87,7 @@
                     <constraint firstItem="q0V-sZ-6Wh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="15" id="ZJR-z5-LAO"/>
                     <constraint firstAttribute="trailing" secondItem="qkB-iF-EdM" secondAttribute="trailing" constant="8" id="cOP-p7-MHa"/>
                     <constraint firstItem="qkB-iF-EdM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="epW-rB-faQ"/>
-                    <constraint firstItem="q0V-sZ-6Wh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="fsr-Sf-Z9R"/>
+                    <constraint firstItem="q0V-sZ-6Wh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="fsr-Sf-Z9R"/>
                     <constraint firstItem="TPa-IS-U8G" firstAttribute="leading" secondItem="q0V-sZ-6Wh" secondAttribute="trailing" constant="13" id="hHQ-OB-RL8"/>
                     <constraint firstItem="qmD-YM-XlR" firstAttribute="top" secondItem="TPa-IS-U8G" secondAttribute="bottom" constant="3" id="mEf-5x-pop"/>
                     <constraint firstAttribute="bottom" secondItem="G3Y-YP-4ch" secondAttribute="bottom" constant="3.5" id="pz0-zJ-tVt"/>

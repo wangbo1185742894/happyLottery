@@ -42,7 +42,7 @@
     }
     self.memberMan.delegate = self;
    // [self getQRCodeClient];
-    codeurl = @"tfi.11max.com/Tbz/DownLoad";
+    codeurl = @"http://t.11max.com/Tbz";
     [self initCode];
 }
 
