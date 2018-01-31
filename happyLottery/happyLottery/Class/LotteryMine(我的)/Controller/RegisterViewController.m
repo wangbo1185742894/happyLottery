@@ -314,7 +314,7 @@
     if (textField == tfRecomCode) {
         
         if (str.length >8) {
-            [self showPromptText: @"分享码不能超过8位" hideAfterDelay: 1.7];
+           // [self showPromptText: @"分享码不能超过8位" hideAfterDelay: 1.7];
             return NO;
         }
     }

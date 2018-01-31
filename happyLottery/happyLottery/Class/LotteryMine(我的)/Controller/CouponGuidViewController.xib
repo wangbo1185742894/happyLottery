@@ -31,7 +31,6 @@
                                     <rect key="frame" x="15" y="8" width="345" height="152"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="152" id="4L2-Nx-ycc"/>
-                                        <constraint firstAttribute="width" constant="345" id="dhZ-i3-hAj"/>
                                     </constraints>
                                     <string key="text">1.优惠券是投必中发行和认可的抵扣券，可在购彩下单并满足优惠券条件时使用，可抵扣相应的金额。
 2.优惠券使用有时间、满减等限制，用户满足相对应条件才可使用。
@@ -44,6 +43,8 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="MBi-JX-3KK" firstAttribute="centerX" secondItem="p12-8H-D7E" secondAttribute="centerX" id="1QV-ts-nwT"/>
+                                <constraint firstAttribute="trailing" secondItem="MBi-JX-3KK" secondAttribute="trailing" constant="15" id="SXL-9N-PHt"/>
+                                <constraint firstItem="MBi-JX-3KK" firstAttribute="leading" secondItem="p12-8H-D7E" secondAttribute="leading" constant="15" id="duA-sh-mZg"/>
                                 <constraint firstAttribute="height" constant="176" id="ged-dy-a5Y"/>
                                 <constraint firstItem="MBi-JX-3KK" firstAttribute="centerY" secondItem="p12-8H-D7E" secondAttribute="centerY" constant="-4" id="hck-gw-Yrz"/>
                             </constraints>

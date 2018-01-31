@@ -102,7 +102,6 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="CE9-Et-a6i"/>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="Tt6-oh-f9N"/>
-                                <constraint firstAttribute="width" constant="347" id="bKz-TS-Exw"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <state key="normal" title="退出登录">
@@ -125,10 +124,12 @@
                     <color key="backgroundColor" red="0.96444731950759888" green="0.96840888261795044" blue="0.98488038778305054" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="lad-1e-gqO" firstAttribute="top" secondItem="KSF-Fn-yNf" secondAttribute="bottom" constant="16" id="0Dh-Dl-3Xd"/>
+                        <constraint firstItem="C0s-gL-V1d" firstAttribute="leading" secondItem="bNh-2p-otX" secondAttribute="leading" constant="14" id="0Np-cO-zk6"/>
                         <constraint firstItem="C0s-gL-V1d" firstAttribute="centerX" secondItem="bNh-2p-otX" secondAttribute="centerX" id="4t3-bN-ZES"/>
                         <constraint firstItem="Lrc-ex-krA" firstAttribute="top" secondItem="KSF-Fn-yNf" secondAttribute="bottom" constant="1" id="5zw-Wv-qvN"/>
                         <constraint firstItem="ORM-bA-VIC" firstAttribute="leading" secondItem="bNh-2p-otX" secondAttribute="leading" id="6Y3-BK-RXG"/>
                         <constraint firstAttribute="trailing" secondItem="Lrc-ex-krA" secondAttribute="trailing" id="Bg8-4j-ttH"/>
+                        <constraint firstAttribute="trailing" secondItem="C0s-gL-V1d" secondAttribute="trailing" constant="14" id="ExD-Pn-Ekw"/>
                         <constraint firstAttribute="trailing" secondItem="ORM-bA-VIC" secondAttribute="trailing" id="IdL-Pt-kMv"/>
                         <constraint firstItem="wbb-gD-KMN" firstAttribute="centerY" secondItem="ORM-bA-VIC" secondAttribute="centerY" id="L0u-uB-2at"/>
                         <constraint firstItem="KSF-Fn-yNf" firstAttribute="top" secondItem="ORM-bA-VIC" secondAttribute="bottom" constant="1" id="NvH-E8-Uel"/>

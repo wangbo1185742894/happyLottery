@@ -94,7 +94,6 @@
                             <color key="backgroundColor" red="0.067504443230000002" green="0.78096091749999996" blue="0.57203906770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="F1u-6J-ZKN"/>
-                                <constraint firstAttribute="width" constant="347" id="eAP-ml-kbv"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <state key="normal" title="确认">
@@ -121,8 +120,10 @@
                         <constraint firstItem="Le4-74-80q" firstAttribute="leading" secondItem="U8W-xo-qfQ" secondAttribute="leading" id="HSU-di-Wz6"/>
                         <constraint firstItem="UDS-oO-kpa" firstAttribute="leading" secondItem="QNT-Ax-eY8" secondAttribute="leading" id="JI7-Tw-DaR"/>
                         <constraint firstItem="cZJ-gP-Gas" firstAttribute="top" secondItem="1Qs-kd-Ums" secondAttribute="bottom" constant="1" id="NvJ-fS-DI7"/>
+                        <constraint firstAttribute="trailing" secondItem="e9j-T7-gBv" secondAttribute="trailing" constant="14" id="OZG-Wy-FcD"/>
                         <constraint firstItem="e9j-T7-gBv" firstAttribute="top" secondItem="Le4-74-80q" secondAttribute="bottom" constant="35" id="SIg-5f-paq"/>
                         <constraint firstItem="QNT-Ax-eY8" firstAttribute="top" secondItem="U8W-xo-qfQ" secondAttribute="top" constant="23" id="X4v-aM-A0R"/>
+                        <constraint firstItem="e9j-T7-gBv" firstAttribute="leading" secondItem="U8W-xo-qfQ" secondAttribute="leading" constant="14" id="aGx-cy-l8Y"/>
                         <constraint firstItem="1Qs-kd-Ums" firstAttribute="leading" secondItem="U8W-xo-qfQ" secondAttribute="leading" id="drM-7B-SQX"/>
                         <constraint firstItem="jJH-2b-puv" firstAttribute="leading" secondItem="QNT-Ax-eY8" secondAttribute="leading" id="gEt-aL-LYV"/>
                         <constraint firstItem="1Qs-kd-Ums" firstAttribute="top" secondItem="U8W-xo-qfQ" secondAttribute="top" constant="20" id="hnJ-3C-4oB"/>

@@ -27,15 +27,14 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WJC-OB-vbd">
                     <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                     <subviews>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gjz-mI-itb">
-                            <rect key="frame" x="0.0" y="56" width="375" height="547"/>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gjz-mI-itb">
+                            <rect key="frame" x="0.0" y="46" width="375" height="557"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tableView>
                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nxJ-0N-nxh">
-                            <rect key="frame" x="21" y="8" width="332" height="29"/>
+                            <rect key="frame" x="22" y="8" width="331" height="29"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="28" id="8n5-L3-kz3"/>
-                                <constraint firstAttribute="width" constant="332" id="Z8o-zh-JaJ"/>
                             </constraints>
                             <segments>
                                 <segment title="可用"/>
@@ -46,21 +45,22 @@
                                 <action selector="segmentClick:" destination="-1" eventType="valueChanged" id="ovu-85-L0p"/>
                             </connections>
                         </segmentedControl>
-                        <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BWA-Y9-8s5">
-                            <rect key="frame" x="0.0" y="56" width="375" height="547"/>
+                        <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BWA-Y9-8s5">
+                            <rect key="frame" x="0.0" y="46" width="375" height="557"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tableView>
                     </subviews>
                     <color key="backgroundColor" red="0.96444731950759888" green="0.96840888261795044" blue="0.98488038778305054" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
+                        <constraint firstItem="nxJ-0N-nxh" firstAttribute="leading" secondItem="WJC-OB-vbd" secondAttribute="leading" constant="22" id="3bY-g0-wLb"/>
                         <constraint firstAttribute="bottom" secondItem="gjz-mI-itb" secondAttribute="bottom" id="3dS-55-n9z"/>
                         <constraint firstItem="BWA-Y9-8s5" firstAttribute="leading" secondItem="WJC-OB-vbd" secondAttribute="leading" id="4Sp-rR-M2x"/>
                         <constraint firstItem="nxJ-0N-nxh" firstAttribute="top" secondItem="WJC-OB-vbd" secondAttribute="top" constant="8" id="AcQ-3w-Q5d"/>
-                        <constraint firstItem="nxJ-0N-nxh" firstAttribute="centerX" secondItem="WJC-OB-vbd" secondAttribute="centerX" id="C6i-zL-nPg"/>
+                        <constraint firstAttribute="trailing" secondItem="nxJ-0N-nxh" secondAttribute="trailing" constant="22" id="D0A-UX-8KR"/>
                         <constraint firstAttribute="trailing" secondItem="BWA-Y9-8s5" secondAttribute="trailing" id="FAo-Ku-diy"/>
+                        <constraint firstItem="gjz-mI-itb" firstAttribute="top" secondItem="BWA-Y9-8s5" secondAttribute="top" id="IR4-9S-rTj"/>
                         <constraint firstAttribute="trailing" secondItem="gjz-mI-itb" secondAttribute="trailing" id="UVB-HI-jhm"/>
-                        <constraint firstItem="BWA-Y9-8s5" firstAttribute="top" secondItem="nxJ-0N-nxh" secondAttribute="bottom" constant="20" id="ZXP-mx-AqE"/>
-                        <constraint firstItem="gjz-mI-itb" firstAttribute="top" secondItem="nxJ-0N-nxh" secondAttribute="bottom" constant="20" id="cta-2N-cj4"/>
+                        <constraint firstItem="gjz-mI-itb" firstAttribute="top" secondItem="nxJ-0N-nxh" secondAttribute="bottom" constant="10" id="W8q-1E-Qin"/>
                         <constraint firstAttribute="bottom" secondItem="BWA-Y9-8s5" secondAttribute="bottom" id="pvL-M2-LvN"/>
                         <constraint firstItem="gjz-mI-itb" firstAttribute="leading" secondItem="WJC-OB-vbd" secondAttribute="leading" id="xYw-aZ-9bs"/>
                     </constraints>

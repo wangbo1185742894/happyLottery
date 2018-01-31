@@ -792,6 +792,8 @@
 		F9C4EED4202063D300CDCDBA /* about_slogan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9C4EED0202063D200CDCDBA /* about_slogan@3x.png */; };
 		F9C4EED5202063D300CDCDBA /* about_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9C4EED1202063D300CDCDBA /* about_logo@2x.png */; };
 		F9C4EED6202063D300CDCDBA /* about_slogan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9C4EED2202063D300CDCDBA /* about_slogan@2x.png */; };
+		F9C4EED92020897D00CDCDBA /* logo20@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9C4EED72020897B00CDCDBA /* logo20@3x.png */; };
+		F9C4EEDA2020897D00CDCDBA /* logo120@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9C4EED82020897C00CDCDBA /* logo120@2x.png */; };
 		F9D7C54E20060C1A00415B4E /* CouponGuidViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9D7C54C20060C1A00415B4E /* CouponGuidViewController.m */; };
 		F9D7C54F20060C1A00415B4E /* CouponGuidViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9D7C54D20060C1A00415B4E /* CouponGuidViewController.xib */; };
 		F9D7C55220061E7300415B4E /* UILabel+ChangeLineSpaceAndWordSpace.m in Sources */ = {isa = PBXBuildFile; fileRef = F9D7C55120061E7300415B4E /* UILabel+ChangeLineSpaceAndWordSpace.m */; };
@@ -1918,6 +1920,8 @@
 		F9C4EED0202063D200CDCDBA /* about_slogan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about_slogan@3x.png"; sourceTree = "<group>"; };
 		F9C4EED1202063D300CDCDBA /* about_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about_logo@2x.png"; sourceTree = "<group>"; };
 		F9C4EED2202063D300CDCDBA /* about_slogan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about_slogan@2x.png"; sourceTree = "<group>"; };
+		F9C4EED72020897B00CDCDBA /* logo20@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo20@3x.png"; sourceTree = "<group>"; };
+		F9C4EED82020897C00CDCDBA /* logo120@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo120@2x.png"; sourceTree = "<group>"; };
 		F9D7C54B20060C1A00415B4E /* CouponGuidViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CouponGuidViewController.h; sourceTree = "<group>"; };
 		F9D7C54C20060C1A00415B4E /* CouponGuidViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CouponGuidViewController.m; sourceTree = "<group>"; };
 		F9D7C54D20060C1A00415B4E /* CouponGuidViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CouponGuidViewController.xib; sourceTree = "<group>"; };
@@ -2651,6 +2655,8 @@
 				F95BC7D020172AF6006D6243 /* redpacket_open@2x.png */,
 				F95BC7D120172AF6006D6243 /* redpacket_open@3x.png */,
 				F9FDFAEE2013223E0029ACC7 /* msg_come.mp3 */,
+				F9C4EED72020897B00CDCDBA /* logo20@3x.png */,
+				F9C4EED82020897C00CDCDBA /* logo120@2x.png */,
 				F9C3BA1920088E2600916F3C /* feedback */,
 				F94770B82007065F0091729E /* Introduction to football games Html */,
 				F92D03E42005F39600C26E7A /* myhelp */,
@@ -4499,6 +4505,7 @@
 				F9F6CAA01FF5D6B100A49F71 /* inform@2x.png in Resources */,
 				F9F6CAA61FF5D80900A49F71 /* SystemSetViewController.xib in Resources */,
 				2D0EEA7B2012CEF900B0769C /* HomeJumpViewController.xib in Resources */,
+				F9C4EED92020897D00CDCDBA /* logo20@3x.png in Resources */,
 				2D4B1E951FDF7BD20034B708 /* NewsListCell.xib in Resources */,
 				F97FD9CA2003026300B35A7C /* inputbox@3x.png in Resources */,
 				F924BA971FE252CF00830BF4 /* phone@2x.png in Resources */,
@@ -4543,6 +4550,7 @@
 				2D8CC00B1FF3958D00CC367F /* icon_normal@3x.png in Resources */,
 				F9632F4E200C8C9800F69D23 /* arrowup@3x.png in Resources */,
 				F9C3BA31200894ED00916F3C /* ask@2x.png in Resources */,
+				F9C4EEDA2020897D00CDCDBA /* logo120@2x.png in Resources */,
 				F92D03F42005F3B400C26E7A /* integralhelp@2x.png in Resources */,
 				2D0E239B201817190098DA40 /* button_forbidden@2x.png in Resources */,
 				F9664BA92004D64A000A27CA /* bjCoupon@3x.png in Resources */,
