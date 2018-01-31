@@ -52,7 +52,7 @@
     
     newFeatureView.pagingEnabled = YES;
     [self.view addSubview:newFeatureView];
-    [self.view addSubview:pageCtr];
+//    [self.view addSubview:pageCtr];
 }
 
 -(void)actionExperience{

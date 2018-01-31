@@ -124,7 +124,6 @@
         self.heightViewContent.constant = sumHeight + 5;
     }
     
-    
 }
 -(UIButton *)creatBtnWithFrame:(CGRect)frame normal:(NSDictionary *)dic andTag:(NSInteger )tag andSelect:(NSString *)isselect{
     
@@ -149,6 +148,11 @@
 
 -(void)jczqCellItemClick:(UIButton *)sender{
     sender.selected = !sender.selected;
+    [self showSelectNum];
+
+}
+
+-(void)showSelectNum{
     NSMutableArray *selectArray = [NSMutableArray arrayWithCapacity:0];
     for (UIButton *btn in self.arrayItemLea) {
         if (btn.selected == YES) {
@@ -159,7 +163,6 @@
         self.labSelectNum.text = [NSString stringWithFormat:@"共%ld场比赛",num];
         self.labSelectNum.keyWord =[NSString stringWithFormat:@"%ld",num];
         self.labSelectNum.keyWordColor = TEXTGRAYOrange;
-        
     }];
 }
 

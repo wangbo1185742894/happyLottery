@@ -156,7 +156,6 @@
         [detailCell reloadDataModel:schemeDetail];
         cell = detailCell;
     }else if (indexPath.section == 1){ // 显示方案投注内容
-        
         SchemeDetailMatchViewCell *matchCell = [tableView dequeueReusableCellWithIdentifier:KSchemeDetailMatchViewCell];
         NSDictionary *betContent = [Utility objFromJson: schemeDetail.betContent];
         if (schemeDetail != nil) {

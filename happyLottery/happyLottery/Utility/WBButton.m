@@ -20,8 +20,8 @@
 
 -(CGRect)imageRectForContentRect:(CGRect)contentRect{
 
-    float imageX = self.mj_w - 35;
-    float imageY = 0;
+    float imageX = self.mj_w - 45;
+    float imageY = 7;
     float imageW = 35;
     float imageH = self.mj_h;
     

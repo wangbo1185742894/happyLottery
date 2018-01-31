@@ -9,6 +9,8 @@
 #ifndef API_h
 #define API_h
 
+#define NameSpaceURI @"http://webservice.onlytest.com/"
+#define APPUPDATAURL @"http://t.11max.com/Tbz"
 
 #define WSServerURL @"http://118.190.43.29:28000/services%@"
 
@@ -22,7 +24,7 @@
 
 //杨芳本地
 //#define ServerAddress @"http://192.168.88.109:8086"
-#define NameSpaceURI @"http://webservice.onlytest.com/"
+
 
 //外网
 
@@ -43,7 +45,7 @@
 //杨芳
 //#define WSServerURL @"http://192.168.88.109:28000/services%@"
 
-#define APPUPDATAURL @"http://t.11max.com/altc/"
+
 
 
 

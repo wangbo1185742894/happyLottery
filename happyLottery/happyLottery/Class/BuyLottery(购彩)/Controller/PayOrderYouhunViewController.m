@@ -14,6 +14,8 @@
 @interface PayOrderYouhunViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     Coupon *selectCoupon;
+    Coupon *oldCoupon;
+    NSInteger selectIndex;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tabYouhuiquanLIst;
 @property (weak, nonatomic) IBOutlet UIButton *actionSubmit;
@@ -25,6 +27,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"可用优惠券";
+    
+    for (Coupon * model in self.couponList) {
+        if (model.isSelect == YES) {
+            oldCoupon = model;
+        }
+    }
+    
     [self setTableView];
     [self.tabYouhuiquanLIst reloadData];
 }
@@ -52,6 +61,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    selectIndex = indexPath.row;
     selectCoupon = self.couponList[indexPath.row];
     for (Coupon * model in self.couponList) {
         if (selectCoupon == model) {
@@ -69,6 +79,18 @@
 - (IBAction)actionSubmitCoupon:(UIButton *)sender {
     self.payOrderVC.curSelectCoupon = selectCoupon;
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)navigationBackToLastPage{
+    for (Coupon * model in self.couponList) {
+        if (model == oldCoupon) {
+            model.isSelect = YES;
+        }else{
+            model.isSelect = NO;
+        }
+    }
+    self.payOrderVC.curSelectCoupon = oldCoupon;
+    [super navigationBackToLastPage];
 }
 
 @end

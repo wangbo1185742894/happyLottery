@@ -42,6 +42,7 @@
     WBAdsImgView *adsView;
     UIView  *menuView;
 
+    OpenRedPopView *popView;
     __weak IBOutlet NSLayoutConstraint *contentViewDisTop;
     NSMutableArray *listUseRedPacketArray;
      RedPacket *r;
@@ -367,6 +368,9 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
+    if (self.tabBarController.tabBar.hidden == YES) {
+        self.tabBarController.tabBar.hidden = NO;
+    }
     [self getJczqShortcut];
     
     [adsView setImageUrlArray:nil];
@@ -528,7 +532,8 @@
 
 #pragma 打开红包
 -(void)openRedPacketSms:(NSDictionary *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
-    
+    openRedpacketButton.mj_w = 147;
+    openRedpacketButton.hidden = NO;
     NSLog(@"redPacketInfo%@",redPacketInfo);
     if ([msg isEqualToString:@"执行成功"]) {
         // [self showPromptText: @"memberInfo成功" hideAfterDelay: 1.7];
@@ -576,8 +581,9 @@
             
         } completion:^(BOOL finished) {
             //[redPacketbutton removeFromSuperview];
+            
             redpacketView.hidden=YES;
-            OpenRedPopView *popView = [[OpenRedPopView alloc]initWithFrame:self.view.frame];
+            popView = [[OpenRedPopView alloc]initWithFrame:self.view.frame];
             popView.delegate = self;
             popView.labJiangjin.text =caijin;
             popView.labRedPacketInfo.adjustsFontSizeToFitWidth = YES;
@@ -666,9 +672,6 @@
     if ([msg isEqualToString:@"执行成功"]) {
         // [self showPromptText: @"memberInfo成功" hideAfterDelay: 1.7];
            [listUseRedPacketArray removeAllObjects];
-        NSEnumerator *enumerator = [redPacketInfo objectEnumerator];
-        id object;
-        if ((object = [enumerator nextObject]) != nil) {
             NSArray *array = redPacketInfo;
             
             
@@ -677,13 +680,18 @@
                             
                             RedPacket *redPacket = [[RedPacket alloc]initWith:array[i]];
                             NSString *redPacketStatus = redPacket.redPacketStatus;
-                          if ([redPacketStatus isEqualToString:@"解锁"]) {
+                            if ([redPacketStatus isEqualToString:@"解锁"]) {
                                   [listUseRedPacketArray addObject:redPacket];
                             }
                             
            }
             if (listUseRedPacketArray.count>0) {
+                if (popView != nil) {
+                    [popView removeFromSuperview];
+                }
                 openRedpacketButton.hidden = NO;
+                openRedpacketButton.mj_x = 0;
+                openRedpacketButton.mj_w = 147;
                 redpacketView.hidden=NO;
                 if (listUseRedPacketArray.count>1) {
                     disBottom.constant = 16;
@@ -705,8 +713,6 @@
                    
                 }
             }
-        }
-        
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
     }
