@@ -416,11 +416,11 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 }
 
 // iOS 10 Support
-- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler {
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler {
     // Required
     NSDictionary * userInfo = response.notification.request.content.userInfo;
-    //if (@available(iOS 10.0, *)) {
-     //   if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+    if (@available(iOS 10.0, *)) {
+       if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
             [JPUSHService handleRemoteNotification:userInfo];
 //            [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];
 //            [JPUSHService setBadge:0];//清空JPush服务器中存储的badge值
@@ -428,7 +428,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 //              if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive ||[UIApplication sharedApplication].applicationState == UIApplicationStateInactive) {
             if (pageCodeNotice!=nil) {
        
-  [(BaseViewController*)self.window.rootViewController showPromptText: @"go前后台都回调的方法" hideAfterDelay: 1.7];
+
                 [self goToYunshiWithInfo:pageCodeNotice];
 
             }
@@ -444,10 +444,10 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
             }
           //  }
-       // }
-    //} else {
+        }
+    } else {
         // Fallback on earlier versions
-   // }
+    }
 
     completionHandler();  // 系统要求执行这个方法
 }
@@ -562,7 +562,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
  
 
-    [(BaseViewController*)self.window.rootViewController showPromptText: @"go跳转的方法" hideAfterDelay: 1.7];
+//    [(BaseViewController*)self.window.rootViewController showPromptText: @"go跳转的方法" hideAfterDelay: 1.7];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
       
       [baseVC showPromptText: @"go跳转延时的方法" hideAfterDelay: 1.7];
