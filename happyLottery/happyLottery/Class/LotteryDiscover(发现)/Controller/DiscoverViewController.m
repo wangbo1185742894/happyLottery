@@ -126,16 +126,19 @@
 }
 
 -(void)initshare:(NSString *)code{
-    NSURL *url;
+    
+   
+    
     if (![code isEqualToString:@""]) {
-       url  =  [NSURL URLWithString:code];
+      NSString *url = [NSString stringWithFormat:@"tfi.11max.com/Tbz/Share?shareCode=%@",code];
+      
         NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
         NSArray* imageArray = @[[[NSBundle mainBundle] pathForResource:@"logo120@2x" ofType:@"png"]];
-        [shareParams SSDKSetupShareParamsByText:@"投必中"
+        [shareParams SSDKSetupShareParamsByText:@"千万大奖集聚地，新用户即享188元豪礼。积分商城优惠享不停！"
                                          images:imageArray
-                                            url:url
-                                          title:@"分享投必中"
-                                           type:SSDKContentTypeImage];
+                                            url:[NSURL URLWithString:url]
+                                          title:@"送您188元新人大礼包！点击领取"
+                                           type:SSDKContentTypeWebPage];
         [ShareSDK showShareActionSheet:nil
                                  items:@[@(SSDKPlatformSubTypeWechatSession),@(SSDKPlatformSubTypeWechatTimeline)]
                            shareParams:shareParams
