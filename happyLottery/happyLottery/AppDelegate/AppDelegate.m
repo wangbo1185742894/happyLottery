@@ -422,10 +422,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
             [JPUSHService handleRemoteNotification:userInfo];
 //            [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];
 //            [JPUSHService setBadge:0];//清空JPush服务器中存储的badge值
-            if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground ) {
-                return;
-            }
-              if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive ||[UIApplication sharedApplication].applicationState == UIApplicationStateInactive) {
+           
+//              if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive ||[UIApplication sharedApplication].applicationState == UIApplicationStateInactive) {
             if (pageCodeNotice!=nil) {
 
                 [self goToYunshiWithInfo:pageCodeNotice];
@@ -442,7 +440,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
                 [nav pushViewController:jumpVC animated:YES];
 
             }
-            }
+          //  }
         }
     } else {
         // Fallback on earlier versions
