@@ -40,8 +40,8 @@
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(uploadVisit) name:@"NSNotificationUserLoginSuccess" object:nil];
         
     });
-    AppDelegate *delegate  = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    delegate.curNavVC = self.navigationController;
+   
+    
     self.view.mj_w = KscreenWidth;
     self.view.mj_h = KscreenHeight;
     self.memberMan = [[MemberManager alloc]init];
@@ -81,7 +81,9 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+     AppDelegate *delegate  = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
+    delegate.curNavVC = self.navigationController;
     self.openDate = [NSDate date];
     [self afnReachabilityTest];
     

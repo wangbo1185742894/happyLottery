@@ -251,14 +251,14 @@
     }
     
     if (min == 10000000000) {
-        self.labPossbleBouns.text = [NSString stringWithFormat:@"可中--元~--元"];
+        self.labPossbleBouns.text = [NSString stringWithFormat:@"预计可中--元~--元"];
     }else{
         if (max == min) {
-            self.labPossbleBouns.text = [NSString stringWithFormat:@"可中%.2f元",min *self.transaction.beiTou  * 2 * beiNum];
+            self.labPossbleBouns.text = [NSString stringWithFormat:@"预计可中%.2f元",min *self.transaction.beiTou  * 2 * beiNum];
 
         }else{
             
-            self.labPossbleBouns.text = [NSString stringWithFormat:@"可中%.2f元~%.2f元",min *self.transaction.beiTou  * 2 * beiNum  ,max * self.transaction.beiTou  * 2 * beiNum];
+            self.labPossbleBouns.text = [NSString stringWithFormat:@"预计可中%.2f元~%.2f元",min *self.transaction.beiTou  * 2 * beiNum  ,max * self.transaction.beiTou  * 2 * beiNum];
         
             
         }

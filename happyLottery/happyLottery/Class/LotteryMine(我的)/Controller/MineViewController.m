@@ -233,7 +233,6 @@
         pcVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:pcVC animated:YES];
     }
-
 }
 
 - (IBAction)signInBtnClick:(id)sender {

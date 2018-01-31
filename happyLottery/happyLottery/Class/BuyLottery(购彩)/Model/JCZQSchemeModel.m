@@ -171,7 +171,7 @@
         }
     }
     
-    if ([self.schemeStatus isEqualToString:@"CANCEL"]||[self.schemeStatus isEqualToString:@"REPEAL"]) {
+    if ([self.schemeStatus isEqualToString:@"CANCEL"]||[self.schemeStatus isEqualToString:@"REPEAL"] || [self.schemeStatus isEqualToString:@"INIT"]) {
         return height + 138;
     }else{
         return height + 157;

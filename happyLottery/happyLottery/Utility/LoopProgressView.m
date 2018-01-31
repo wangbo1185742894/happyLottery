@@ -109,7 +109,7 @@
 -(void)newThread
 {
     @autoreleasepool {
-        progressTimer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(timeLabel) userInfo:nil repeats:YES];
+        progressTimer = [NSTimer scheduledTimerWithTimeInterval:0.0 target:self selector:@selector(timeLabel) userInfo:nil repeats:YES];
         [[NSRunLoop currentRunLoop] run];
     }
 }
@@ -139,7 +139,7 @@
 -(void)drawLineAnimation:(CALayer*)layer
 {
     CABasicAnimation *bas=[CABasicAnimation animationWithKeyPath:@"strokeEnd"];
-    bas.duration=self.progress;//动画时间
+    //动画时间
     bas.delegate=self;
     bas.fromValue=[NSNumber numberWithInteger:0];
     bas.toValue=[NSNumber numberWithInteger:1];

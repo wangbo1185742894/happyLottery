@@ -293,7 +293,7 @@
     titleBtn.frame = CGRectMake(0, 10, 150, 40);
     [titleBtn addTarget:self action:@selector(showProfileType) forControlEvents:UIControlEventTouchUpInside];
     [titleBtn setTitle:@"混合过关" forState:0];
-    [titleBtn setImage:[UIImage imageNamed:@""] forState:0];
+    [titleBtn setImage:[UIImage imageNamed:@"wanfaxiala"] forState:0];
     titleBtn.titleLabel.font = [UIFont systemFontOfSize:18];
     if (profileSelectView == nil) {
         profileSelectView = [[LotteryProfileSelectView alloc]initWithFrame:CGRectMake(0, 64, KscreenWidth, KscreenHeight - 64)];
@@ -341,8 +341,9 @@
     if (matchSelectView == nil) {
          matchSelectView = [[MatchLeagueSelectView alloc]initWithFrame:[UIScreen mainScreen].bounds];
     }
-    [matchSelectView loadMatchLeagueInfo:self.leaArray];
     matchSelectView.delegate = self;
+    [matchSelectView loadMatchLeagueInfo:self.leaArray];
+    
     matchSelectView.hidden = YES;
     [[UIApplication sharedApplication].keyWindow addSubview:matchSelectView];
 }
@@ -352,6 +353,8 @@
 -(void)actionSelectLeague{
    
     matchSelectView.hidden = NO;
+    [matchSelectView setLabSelectNumText: [self getMatchNum:self.showArray] ];
+    
 }
 
 -(void)selectedLeagueItem:(NSArray *)leaTitleArray{

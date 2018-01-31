@@ -68,6 +68,7 @@ static SystemSoundID shake_sound_male_id = 0;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    sleep(2);
     [self loadTabVC];
     [GlobalInstance instance].homeUrl = ServerAddress;
     NSString *doc=[NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
@@ -483,7 +484,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         //    ACTIVITY_MESSAGE("活动消息"),
         //    SYSTEM_MESSAGE("系统消息"),
         //    COUPON_EXPIRATION_MESSAGE("优惠卷到期提醒");messageType
-        if ([extra[@"pageCode"] isEqualToString:@"A204"]&&[extra[@"messageType"] isEqualToString:@"DRAW_MESSAGE"]) { //中奖推送
+//        [extra[@"pageCode"] isEqualToString:@"A204"]&&[extra[@"messageType"] isEqualToString:@"DRAW_MESSAGE"]
+        if (1) { //中奖推送
             if (winPushView !=nil) {
                 [winPushView removeFromSuperview];
                 winPushView = nil;
@@ -646,8 +648,6 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     MyOrderListViewController * myOrderListVC = [[MyOrderListViewController alloc]init];
     myOrderListVC.hidesBottomBarWhenPushed = YES;
     AppDelegate *delegate  = (AppDelegate*)[UIApplication sharedApplication].delegate;
-    UITabBarController *tabBarController = (UITabBarController *)_window.rootViewController;
-    delegate.curNavVC = (UINavigationController *)tabBarController.childViewControllers[tabBarController.selectedIndex];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
      [delegate.curNavVC pushViewController:myOrderListVC animated:YES];
     });
