@@ -358,5 +358,12 @@
     [super didReceiveMemoryWarning];
 }
 
+- (IBAction)showRuler:(UIButton *)sender {
+    NSURL *pathUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"tbz_useragreement" ofType:@"html"]];
+    WebShowViewController *webShow = [[WebShowViewController alloc]init];
+    webShow.pageUrl = pathUrl;
+    webShow.title = @"用户服务协议";
+    [self.navigationController pushViewController:webShow animated:YES];
+}
 
 @end

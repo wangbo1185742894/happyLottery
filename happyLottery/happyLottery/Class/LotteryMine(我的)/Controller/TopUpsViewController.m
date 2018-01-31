@@ -8,7 +8,7 @@
 
 #import "TopUpsViewController.h"
 #import "WXApi.h"
-
+#import "WebShowViewController.h"
 #define KPayTypeListCell @"PayTypeListCell"
 @interface TopUpsViewController ()<MemberManagerDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,UITextFieldDelegate,UIWebViewDelegate>
 {
@@ -109,8 +109,15 @@
 
 - (IBAction)haveead:(id)sender {
     
+  
+    
 }
 - (IBAction)memberDetail:(id)sender{
+    NSURL *pathUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"tbz_recharge" ofType:@"html"]];
+    WebShowViewController *webShow = [[WebShowViewController alloc]init];
+    webShow.pageUrl = pathUrl;
+    webShow.title = @"会员充值说明";
+    [self.navigationController pushViewController:webShow animated:YES];
 }
 - (IBAction)commitBtnClick:(id)sender {
     [self commitClient];

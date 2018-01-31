@@ -534,6 +534,8 @@
 		2DE10950200356350020343A /* JingCaiOrderCode.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DE1094F200356350020343A /* JingCaiOrderCode.plist */; };
 		2DE109532004E6690020343A /* NewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE109522004E6690020343A /* NewsModel.m */; };
 		2DE892A02020724C008926A6 /* JWCacheURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE8929F2020724B008926A6 /* JWCacheURLProtocol.m */; };
+		2DE892A3202150AC008926A6 /* tbz_recharge.html in Resources */ = {isa = PBXBuildFile; fileRef = 2DE892A1202150AB008926A6 /* tbz_recharge.html */; };
+		2DE892A4202150AC008926A6 /* tbz_useragreement.html in Resources */ = {isa = PBXBuildFile; fileRef = 2DE892A2202150AC008926A6 /* tbz_useragreement.html */; };
 		F90058DE1FF61327009C8E1C /* NoticeCenterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F90058DC1FF61327009C8E1C /* NoticeCenterTableViewCell.m */; };
 		F90058DF1FF61327009C8E1C /* NoticeCenterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F90058DD1FF61327009C8E1C /* NoticeCenterTableViewCell.xib */; };
 		F90058E51FF61619009C8E1C /* noticedelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F90058E11FF61618009C8E1C /* noticedelete@2x.png */; };
@@ -1616,6 +1618,8 @@
 		2DE109522004E6690020343A /* NewsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsModel.m; sourceTree = "<group>"; };
 		2DE8929E2020724B008926A6 /* JWCacheURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWCacheURLProtocol.h; sourceTree = "<group>"; };
 		2DE8929F2020724B008926A6 /* JWCacheURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWCacheURLProtocol.m; sourceTree = "<group>"; };
+		2DE892A1202150AB008926A6 /* tbz_recharge.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = tbz_recharge.html; sourceTree = "<group>"; };
+		2DE892A2202150AC008926A6 /* tbz_useragreement.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = tbz_useragreement.html; sourceTree = "<group>"; };
 		F90058DB1FF61327009C8E1C /* NoticeCenterTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeCenterTableViewCell.h; sourceTree = "<group>"; };
 		F90058DC1FF61327009C8E1C /* NoticeCenterTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeCenterTableViewCell.m; sourceTree = "<group>"; };
 		F90058DD1FF61327009C8E1C /* NoticeCenterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoticeCenterTableViewCell.xib; sourceTree = "<group>"; };
@@ -2281,6 +2285,8 @@
 		2D4B1E411FDF65380034B708 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				2DE892A1202150AB008926A6 /* tbz_recharge.html */,
+				2DE892A2202150AC008926A6 /* tbz_useragreement.html */,
 				2D5171FD200C942300C3CD7F /* pageCodeConfig.plist */,
 				2DE1094F200356350020343A /* JingCaiOrderCode.plist */,
 				2D0600871FFF1365009E7568 /* HHGGPeilvTable.plist */,
@@ -4091,6 +4097,7 @@
 				2D628B291FECA9C40013D0E1 /* touzhuxuanzezhifu@3x.png in Resources */,
 				F9F6CA9B1FF5D6B100A49F71 /* button@2x.png in Resources */,
 				F90FCD5B1FF34D5000BD807C /* MyRedPacketTableViewCell.xib in Resources */,
+				2DE892A3202150AC008926A6 /* tbz_recharge.html in Resources */,
 				2D739BF01FE2555E00264044 /* RegisterViewController.xib in Resources */,
 				F9F262BC1FE9072400C2E60F /* PaySetViewController.xib in Resources */,
 				F9C3BA2120088E3800916F3C /* starUnselecte@2x.png in Resources */,
@@ -4487,6 +4494,7 @@
 				2D06FFEA1FFDC9EB009E7568 /* football@3x.png in Resources */,
 				F9C3BA1E20088E3800916F3C /* starUnselecte@3x.png in Resources */,
 				2D628B4B1FECAE980013D0E1 /* JingCaiChaunFaSelectView.xib in Resources */,
+				2DE892A4202150AC008926A6 /* tbz_useragreement.html in Resources */,
 				F9C3BA2520088FA400916F3C /* dialogfeedback@3x.png in Resources */,
 				2D4B1EB41FDFCDAF0034B708 /* arrow_up@3x.png in Resources */,
 				2D739CFF1FEB68B800264044 /* backViewYuanJiao@3x.png in Resources */,
