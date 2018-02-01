@@ -42,7 +42,12 @@
     if (_isNeedBack) {
         
         self .navigationController.navigationBar.hidden = YES;
+        if (self.curUser.isLogin == YES) {
+            self.infoModel.linkUrl = [NSString stringWithFormat:@"%@/app/find/turntable?activityId=5&cardCode=%@",H5BaseAddress,[GlobalInstance instance].curUser.cardCode];
+            [self showWeb];
+        }
     }
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -103,7 +108,9 @@
 }
 
 -(void)goToLogin{
-    [self needLogin];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self needLogin];
+    });
 }
 
 -(void)goToJczq{

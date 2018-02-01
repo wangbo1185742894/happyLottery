@@ -281,7 +281,9 @@
 }
 
 -(void)goToLogin{
-    [self needLogin];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self needLogin];
+    });
 }
 
 

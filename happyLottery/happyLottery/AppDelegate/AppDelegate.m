@@ -587,16 +587,18 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         [ delegate.curNavVC  popToRootViewControllerAnimated:YES];
         return;
     }else if ([keyStr isEqualToString:@"A403"]){
-        
-        if ([GlobalInstance instance].curUser.isLogin== YES || [GlobalInstance instance].curUser.cardCode != nil) {
-            HomeJumpViewController *disVC = [[HomeJumpViewController alloc]init];
-            ADSModel *model = [[ADSModel alloc]init];
+        HomeJumpViewController *disVC = [[HomeJumpViewController alloc]init];
+        ADSModel *model = [[ADSModel alloc]init];
+        if ([GlobalInstance instance].curUser.isLogin== YES && [GlobalInstance instance].curUser.cardCode != nil) {
             model.linkUrl = [NSString stringWithFormat:@"%@/app/find/turntable?activityId=5&cardCode=%@",H5BaseAddress,[GlobalInstance instance].curUser.cardCode];
-            disVC.infoModel = model;
-            disVC.hidesBottomBarWhenPushed = YES;
-            disVC.isNeedBack = YES;
-            baseVC = disVC;
+        }else{
+            model.linkUrl = [NSString stringWithFormat:@"%@/app/find/turntable?activityId=5&cardCode=%@",H5BaseAddress,@""];
         }
+        disVC.infoModel = model;
+        disVC.hidesBottomBarWhenPushed = YES;
+        disVC.isNeedBack = YES;
+        baseVC = disVC;
+        
     }else{
           baseVC.hidesBottomBarWhenPushed = YES;
     }

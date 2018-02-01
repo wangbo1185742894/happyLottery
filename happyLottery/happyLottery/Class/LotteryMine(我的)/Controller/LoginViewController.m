@@ -93,7 +93,7 @@ static NSInteger seq = 0;
     
     if (success) {
          [self showPromptText: @"登录成功"  hideAfterDelay: 1.7];
-        [self performSelector:@selector(delayMethod) withObject:nil afterDelay:1];
+        [self performSelector:@selector(delayMethod) withObject:nil afterDelay:0.7];
        
         [self saveUserInfo];
         [JPUSHService setTags:nil alias:self.curUser.cardCode callbackSelector:@selector(tagsAliasCallback:tags:alias:) object:self];

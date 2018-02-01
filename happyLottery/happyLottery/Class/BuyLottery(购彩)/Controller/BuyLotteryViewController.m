@@ -118,7 +118,7 @@
 
 -(void)loadAdsImg{
     adsArray = [NSMutableArray arrayWithCapacity:0];
-    NSString *strUlr = [NSString stringWithFormat:@"%@/app/banner/byChannel?usageChannel=3",ServerAddress];
+    NSString *strUlr = [NSString stringWithFormat:@"%@/app/banner/byChannel?usageChannel=3",[GlobalInstance instance].homeUrl];
     [singleLoad RequestWithString:strUlr isPost:NO andPara:nil andComplete:^(id data, BOOL isSuccess) {
         if (isSuccess == NO || data == nil) {
             return ;
@@ -303,18 +303,19 @@
         self.tabBarController.selectedIndex = 3;
         return;
     }else if ([keyStr isEqualToString:@"A403"]){
-        
+        HomeJumpViewController *disVC = [[HomeJumpViewController alloc]init];
+        ADSModel *model = [[ADSModel alloc]init];
         if (self.curUser.isLogin == YES && self.curUser.cardCode != nil) {
-            HomeJumpViewController *disVC = [[HomeJumpViewController alloc]init];
-            ADSModel *model = [[ADSModel alloc]init];
+          
             model.linkUrl = [NSString stringWithFormat:@"%@/app/find/turntable?activityId=5&cardCode=%@",H5BaseAddress,self.curUser.cardCode];
-            disVC.infoModel = model;
-            disVC.hidesBottomBarWhenPushed = YES;
-            disVC.isNeedBack = YES;
-            [self.navigationController pushViewController:disVC animated:YES];
+            
         }else{
-            [self needLogin];
+            model.linkUrl = [NSString stringWithFormat:@"%@/app/find/turntable?activityId=5&cardCode=%@",H5BaseAddress,@""];
         }
+        disVC.infoModel = model;
+        disVC.hidesBottomBarWhenPushed = YES;
+        disVC.isNeedBack = YES;
+        [self.navigationController pushViewController:disVC animated:YES];
         return;
     }
     
@@ -390,6 +391,8 @@
     
     if (self.curUser.isLogin==YES) {
         [self getRedPacketByStateClient:@"true"];
+    }else{
+        redpacketView.hidden = YES;
     }
     
     

@@ -44,17 +44,13 @@
         self.top.constant = 88;
         self.bottom.constant = 34;
     }else if ([Utility isIOS11After]) {
-        
-    }else{
-        
+        self.automaticallyAdjustsScrollViewInsets = NO; // tableView 莫名其妙  contentOffset.y 成-64了  MMP
     }
     
     listUseRedPacketArray = [[NSMutableArray alloc]init];
     listUnUseRedPacketArray = [[NSMutableArray alloc]init];
     r = [[RedPacket alloc]init];
     
-     [self initRefresh1];
-    [self initRefresh2];
     
     if ( self.segment.selectedSegmentIndex == 0) {
         
@@ -68,6 +64,9 @@
         self.tableView2.hidden = NO;
         self.tableView1.hidden = YES;
     }
+    [self initRefresh1];
+    [self initRefresh2];
+    
 }
 -(void)initRefresh1{
     
