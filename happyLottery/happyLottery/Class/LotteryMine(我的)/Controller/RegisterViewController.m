@@ -79,7 +79,7 @@
     btnMemberIcon.layer.cornerRadius = 4;
     btnMemberIcon.layer.masksToBounds = YES;
     
-    btnRegister.layer.cornerRadius = 3;
+    btnRegister.layer.cornerRadius = 4;
     btnRegister.layer.masksToBounds = YES;
     btnSendCheckCode.layer.cornerRadius = 3;
     btnSendCheckCode.layer.masksToBounds = YES;

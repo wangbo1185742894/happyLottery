@@ -120,10 +120,10 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qqt-lV-RwY">
-                            <rect key="frame" x="45" y="597" width="20" height="20"/>
+                            <rect key="frame" x="45" y="602" width="15" height="15"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="20" id="249-dD-LTU"/>
-                                <constraint firstAttribute="width" constant="20" id="sMq-M0-wAL"/>
+                                <constraint firstAttribute="height" constant="15" id="249-dD-LTU"/>
+                                <constraint firstAttribute="width" constant="15" id="sMq-M0-wAL"/>
                             </constraints>
                             <state key="normal" image="checkBox_checked.png" backgroundImage="checkBox_checked.png"/>
                             <state key="selected" image="checkBox_checked.png" backgroundImage="checkBox_checked.png"/>
@@ -132,7 +132,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="注册即表示你已阅读，并同意" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HRK-W5-6rx">
-                            <rect key="frame" x="73" y="600" width="159.5" height="15"/>
+                            <rect key="frame" x="68" y="600" width="159.5" height="15"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="159.5" id="2li-0y-LjB"/>
                                 <constraint firstAttribute="height" constant="15" id="Hcu-p5-VAe"/>
@@ -142,7 +142,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wGZ-5K-8gj">
-                            <rect key="frame" x="232.5" y="595" width="107" height="24"/>
+                            <rect key="frame" x="227.5" y="595" width="107" height="24"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="24" id="7yG-Wm-NNX"/>
                                 <constraint firstAttribute="width" constant="107" id="iSm-R5-RLi"/>

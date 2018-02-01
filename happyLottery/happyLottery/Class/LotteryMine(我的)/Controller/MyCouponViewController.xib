@@ -61,9 +61,9 @@
                             </constraints>
                         </view>
                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="btd-9W-XWq">
-                            <rect key="frame" x="28" y="10" width="319" height="29"/>
+                            <rect key="frame" x="28" y="10" width="319" height="33"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="28" id="FtS-rA-KJo"/>
+                                <constraint firstAttribute="height" constant="32" id="FtS-rA-KJo"/>
                             </constraints>
                             <segments>
                                 <segment title="可用"/>
@@ -75,11 +75,11 @@
                             </connections>
                         </segmentedControl>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jbz-Iz-6wy">
-                            <rect key="frame" x="0.0" y="48" width="375" height="555"/>
+                            <rect key="frame" x="0.0" y="52" width="375" height="551"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tableView>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kqb-gJ-XVC">
-                            <rect key="frame" x="0.0" y="48" width="375" height="555"/>
+                            <rect key="frame" x="0.0" y="52" width="375" height="551"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tableView>
                     </subviews>

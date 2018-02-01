@@ -60,7 +60,7 @@
     if (self.curUser.isLogin==YES) {
         [self updateMemberClinet];
         [self getSystemNoticeClient];
-        [self searchSystemDB];
+       
          [self getRedPacketByStateClient:@"true"];
         [self CheckFeedBackRedNumClient];
     } else {
@@ -197,7 +197,7 @@
 
 -(void)noticeCenterSet{
     noticeBtn = [UIButton buttonWithType: UIButtonTypeCustom];
-    noticeBtn.frame = CGRectMake(0, 0, 35, 30);
+    noticeBtn.frame = CGRectMake(0, 0, 40, 35);
     label = [[UILabel alloc]init];
     label.frame =CGRectMake(25, 0,10, 10);
     label.layer.cornerRadius = label.bounds.size.width/2;
@@ -221,6 +221,7 @@
     } else {
         NoticeCenterViewController * nVC = [[NoticeCenterViewController alloc]init];
         nVC.hidesBottomBarWhenPushed = YES;
+        [self showLoadingViewWithText:@"正在加载数据.." ];
         [self.navigationController pushViewController:nVC animated:YES];
     }
 }
@@ -467,8 +468,9 @@
                 NSLog(@"redPacket%@",notice.content);
             }
             //[self.fmdb close];
-        
+         [self searchSystemDB];
         }else{
+             [self searchSystemDB];
             [self showPromptText: @"服务器连接失败" hideAfterDelay: 1.7];
         }
     }];
@@ -583,4 +585,8 @@
     [super needLogin];
 }
 
-@end
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+     [self hideLoadingView];
+}
+@end  

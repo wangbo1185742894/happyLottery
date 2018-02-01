@@ -59,6 +59,7 @@
      [self searchSystemDB];
    // [self getDB];
     [self searchPersonDB];
+   
 }
 
 -(void)getDB{
