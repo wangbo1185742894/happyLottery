@@ -55,8 +55,11 @@
                                 <constraint firstAttribute="width" constant="120" id="tdP-YV-Q7B"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <state key="normal" title="激活" backgroundImage="yuanjiaowukuangselect">
+                            <state key="normal" title="激活" backgroundImage="wukuangwuyuanjiaoselect.png">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <state key="highlighted">
+                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
                                 <action selector="commitBtnClick:" destination="-1" eventType="touchUpInside" id="Pxv-2z-udo"/>
@@ -88,6 +91,6 @@
         </view>
     </objects>
     <resources>
-        <image name="yuanjiaowukuangselect" width="45" height="23"/>
+        <image name="wukuangwuyuanjiaoselect.png" width="83" height="35"/>
     </resources>
 </document>

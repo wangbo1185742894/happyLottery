@@ -5,7 +5,6 @@
 //  Created by 王博 on 2017/12/4.
 //  Copyright © 2017年 onlytechnology. All rights reserved.
 //
-
 #ifndef API_h
 #define API_h
 
@@ -23,7 +22,7 @@
 //#define H5BaseAddress @"http://192.168.88.116:18086"  //史少鹏服务
 
 //杨芳本地
-//#define ServerAddress @"http://192.168.88.109:8086"
+#define ServerAddress @"http://192.168.88.109:8086"
 
 
 //外网

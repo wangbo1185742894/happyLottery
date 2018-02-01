@@ -37,10 +37,9 @@
     
     if ([self.shareCode isEqualToString:@""]) {
            [self showPromptText: @"请输入推荐码！" hideAfterDelay: 1.7];
-        return;
+           return;
     }else{
-        
-        [self shareCodeClient];
+           [self shareCodeClient];
     }
 }
 

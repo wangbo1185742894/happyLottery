@@ -118,7 +118,7 @@
 
 -(void)loadAdsImg{
     adsArray = [NSMutableArray arrayWithCapacity:0];
-    NSString *strUlr = [NSString stringWithFormat:@"%@/app/banner/byChannel?usageChannel=3",[GlobalInstance instance].homeUrl];
+    NSString *strUlr = [NSString stringWithFormat:@"%@/app/banner/byChannel?usageChannel=3",ServerAddress];
     [singleLoad RequestWithString:strUlr isPost:NO andPara:nil andComplete:^(id data, BOOL isSuccess) {
         if (isSuccess == NO || data == nil) {
             return ;
@@ -289,6 +289,9 @@
     if (keyStr == nil) {
         return;
     }
+    if ([keyStr isEqualToString:@"A000"]) {
+        return;
+    }
     
     if([keyStr isEqualToString:@"A401"]){
         self.tabBarController.selectedIndex = 2;
@@ -296,9 +299,12 @@
     }else if([keyStr isEqualToString:@"A402"]){
         self.tabBarController.selectedIndex = 1;
         return;
+    }else if([keyStr isEqualToString:@"A201"]){
+        self.tabBarController.selectedIndex = 3;
+        return;
     }else if ([keyStr isEqualToString:@"A403"]){
         
-        if (self.curUser.isLogin == YES || self.curUser.cardCode != nil) {
+        if (self.curUser.isLogin == YES && self.curUser.cardCode != nil) {
             HomeJumpViewController *disVC = [[HomeJumpViewController alloc]init];
             ADSModel *model = [[ADSModel alloc]init];
             model.linkUrl = [NSString stringWithFormat:@"%@/app/find/turntable?activityId=5&cardCode=%@",H5BaseAddress,self.curUser.cardCode];

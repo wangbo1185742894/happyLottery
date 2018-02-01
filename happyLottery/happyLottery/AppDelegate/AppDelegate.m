@@ -36,6 +36,8 @@
 #define KEYAPPVERSION @"appVersion"
 #define KEYCURAPPVERSION @"CFBundleShortVersionString"
 
+#define KTimeJumpAfter 0.3
+
 #import <AudioToolbox/AudioToolbox.h>//添加推送声音lala
 #import "DiscoverViewController.h"
 #import "Notice.h"
@@ -72,6 +74,7 @@ static SystemSoundID shake_sound_male_id = 0;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [self loadTabVC];
+    [[UITextField appearance]setTintColor:SystemGreen];
     
     [GlobalInstance instance].homeUrl = ServerAddress;
     NSString *doc=[NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
@@ -303,7 +306,6 @@ static SystemSoundID shake_sound_male_id = 0;
     if([myString isEqualToString:@"MsgMusicOpen"]){
         AudioServicesPlaySystemSound(shake_sound_male_id);   //播放注册的声音，（此句代码，可以在本类中的任意位置调用，不限于本方法中）
     }else{
-        ;
     }
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);   //让手机震动
 }
@@ -456,7 +458,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 //              if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive ||[UIApplication sharedApplication].applicationState == UIApplicationStateInactive) {
             if (pageCodeNotice!=nil) {
        
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(KTimeJumpAfter * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     
                     [self goToYunshiWithInfo:pageCodeNotice];
                 });
@@ -600,7 +602,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     }
     
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(KTimeJumpAfter * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
         [delegate.curNavVC pushViewController:baseVC animated:YES];
     });
@@ -672,7 +674,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     [JPUSHService handleRemoteNotification:userInfo];
     if (pageCodeNotice!=nil) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(KTimeJumpAfter * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
             [self goToYunshiWithInfo:pageCodeNotice];
         });
@@ -700,7 +702,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     MyOrderListViewController * myOrderListVC = [[MyOrderListViewController alloc]init];
     myOrderListVC.hidesBottomBarWhenPushed = YES;
     AppDelegate *delegate  = (AppDelegate*)[UIApplication sharedApplication].delegate;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(KTimeJumpAfter * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
      [delegate.curNavVC pushViewController:myOrderListVC animated:YES];
     });
    

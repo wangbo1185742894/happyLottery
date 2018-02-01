@@ -65,14 +65,14 @@
         state = @"failure";
     }else if([self.schemeStatus isEqualToString:@"REPEAL"]){
         state = @"failure";
-    }else{
+    }else {
         if ([self.ticketStatus isEqualToString:@"FAIL_TICKET"]) {
             state = @"failure";
             
         }else if ([self.ticketStatus isEqualToString:@"WAIT_PAY"]) {
             state = @"unpaid";
             
-        }else{
+        }else if ([self.ticketStatus isEqualToString:@"SUC_TICKET"]) {
             
             if ([self.winningStatus isEqualToString:@"WAIT_LOTTERY"]) {
                 
@@ -90,6 +90,8 @@
                 }
             }
             
+        }else{
+            state = @"schemeticket";
         }
     }
     return state;

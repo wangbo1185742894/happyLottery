@@ -43,13 +43,19 @@
     if ([self isIphoneX]) {
         self.top.constant = 88;
         self.bottom.constant = 34;
+    }else if ([Utility isIOS11After]) {
+        
+    }else{
+        
     }
+    
     listUseRedPacketArray = [[NSMutableArray alloc]init];
     listUnUseRedPacketArray = [[NSMutableArray alloc]init];
     r = [[RedPacket alloc]init];
     
      [self initRefresh1];
     [self initRefresh2];
+    
     if ( self.segment.selectedSegmentIndex == 0) {
         
        
@@ -416,10 +422,6 @@
 
 
 #pragma UITableViewDelegate methods
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-  
-    return 1;
-}
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 0.5;
 }

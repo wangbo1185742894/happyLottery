@@ -9,9 +9,13 @@
 #import "HomeJumpViewController.h"
 #import "UIImage+RandomSize.h"
 #import "UIImageView+WebCache.h"
+#import <JavaScriptCore/JavaScriptCore.h>
 
 #define LEFTPADDING 15
-@interface HomeJumpViewController ()<UIWebViewDelegate>
+@interface HomeJumpViewController ()<JSJumpDelegate,UIWebViewDelegate>
+{
+    JSContext *context;
+}
 @property (weak, nonatomic) IBOutlet UIButton *btnBack;
 @property (weak, nonatomic) IBOutlet UILabel *labBack;
 
@@ -89,6 +93,31 @@
         self.btnBack.hidden = NO;
         self.labBack.hidden = NO;
     }
+    context = [webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
+    context[@"appObj"] = self;
+    context.exceptionHandler = ^(JSContext *context, JSValue *exceptionValue) {
+        context.exception = exceptionValue;
+    };
+    [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitUserSelect='none';"];
+    [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitTouchCallout='none';"];
+}
+
+-(void)goToLogin{
+    [self needLogin];
+}
+
+-(void)goToJczq{
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"NSNotificationBuyVCJump" object:@1000];
+        
+    });
+    
+}
+-(void)exchangeToast:(NSString *)msg{
+    [self showPromptText:msg hideAfterDelay:1.7];
 }
 
 @end

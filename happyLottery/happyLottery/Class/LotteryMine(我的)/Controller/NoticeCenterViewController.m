@@ -324,7 +324,6 @@
         if (![notice.thumbnailCode isEqualToString:@"(null)"]) {
             NSString *pageCode=notice.thumbnailCode;
             [self goToYunshiWithInfo:notice];
-           
         }
         if (![linkUrl isEqualToString:@"(null)"]) {
             JumpWebViewController *jumpVC = [[JumpWebViewController alloc] initWithNibName:@"JumpWebViewController" bundle:nil];
@@ -391,6 +390,7 @@
     }else if([keyStr isEqualToString:@"A000"]){
 
         self.tabBarController.selectedIndex = 0;
+        [self.navigationController popToRootViewControllerAnimated:YES];
 
     }else  if ([keyStr isEqualToString:@"A403"]){
         

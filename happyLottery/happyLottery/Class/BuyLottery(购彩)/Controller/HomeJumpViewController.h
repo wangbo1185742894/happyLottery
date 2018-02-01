@@ -8,6 +8,16 @@
 
 #import "BaseViewController.h"
 #import "ADSModel.h"
+#import <JavaScriptCore/JavaScriptCore.h>
+
+@protocol JSJumpDelegate <JSExport>
+
+-(void)goToJczq;
+
+-(void)goToLogin;
+-(void)exchangeToast:(NSString *)msg;
+
+@end
 
 @interface HomeJumpViewController : BaseViewController
 @property(strong , nonatomic)ADSModel *infoModel;
