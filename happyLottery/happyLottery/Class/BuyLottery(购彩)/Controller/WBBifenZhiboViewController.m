@@ -40,9 +40,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if ([Utility isIOS11After]) {
-        self.wbContentViewTop.constant = -44;
-    }
     self.viewControllerNo = @"A108";
     self.dataArray = [NSMutableArray arrayWithCapacity:0];
     
@@ -140,10 +137,25 @@
     sender.selected = YES;
 }
 
+-(void)webViewDidStartLoad:(UIWebView *)webView{
+    webView.hidden = YES;
+}
+
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
 
-//    [self performSelector:@selector(addview) withObject:nil afterDelay:0.1];
+    // 1.获取页面标题
+    NSString *string = @"document.title";
+    [webView stringByEvaluatingJavaScriptFromString:string];
+    // 2.去掉页面标题
+    NSMutableString *str = [NSMutableString string];
+    // 4.去掉footer一栏
+    [str appendString:@"var header = document.getElementsByClassName(\"header\")[0];"];
+    [str appendString:@"header.parentNode.removeChild(header);"];
+    [str appendString:@"var footer = document.getElementsByClassName(\"footer\")[0];"];
+    [str appendString:@"footer.parentNode.removeChild(footer);"];
+    [webView stringByEvaluatingJavaScriptFromString:str];
     [self hideLoadingView];
+    webView.hidden = NO;
 }
 
 -(void)addview{
@@ -164,27 +176,22 @@
     
     
     if ([requsetIngUrlStr rangeOfString:@"?m="].length == 0 ) {
-//        self.imgWebBottom.hidden = NO;
         
+                   self.wbContentViewTop.constant = 0;
         if (IS_IOS11) {
-           self.wbContentViewTop.constant = -39;
+//           self.wbContentViewTop.constant = -39;
         }else{
-           self.wbContentViewTop.constant = -39;
+//           self.wbContentViewTop.constant = -39;
         }
-        
-        self.wbContentViewBottom.constant = -80;
-        
+//        self.wbContentViewBottom.constant = -80;
         self.backBtn.userInteractionEnabled= NO;
-        self.topViewHeight.constant = 96;
+//        self.topViewHeight.constant = 96;
         return YES;
     }else{
-//
-//        self.topViewHeight.constant = -20;
-      
-        self.wbContentViewTop.constant = -22;
+                   self.wbContentViewTop.constant = -120;
+//        self.wbContentViewTop.constant = -22;
         self.backBtn.userInteractionEnabled = YES;
-        self.wbContentViewBottom.constant = 0;
-//        self.imgWebBottom.hidden = YES;
+//        self.wbContentViewBottom.constant = 0;
         return YES;
     }
 }

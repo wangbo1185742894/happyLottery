@@ -24,6 +24,7 @@
 @property(nonatomic,copy)NSString * home;
 @property(nonatomic,copy)NSString * guest;
 @property(nonatomic,copy)NSString * status;
+@property(nonatomic,copy)NSString * matchStatus;
 @end
 
 @interface JCZQSchemeItem : BaseModel

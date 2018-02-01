@@ -353,12 +353,14 @@
     
 
     cell.lable.text = optionDic[@"title"];
+    
     if (listUseRedPacketArray.count>0 && [optionDic[@"title"] isEqualToString:@"我的红包"]) {
-        cell.redPoint.hidden=NO;
+        
+        cell.redPoint.hidden=  !self.curUser.isLogin;
     }else  if (rednum>0 && [optionDic[@"title"] isEqualToString:@"意见反馈"]) {
-        cell.redPoint.hidden=NO;
+        cell.redPoint.hidden= !self.curUser.isLogin;
     }else{
-         cell.redPoint.hidden=YES;
+         cell.redPoint.hidden= YES;
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.lable.font = [UIFont systemFontOfSize:15];

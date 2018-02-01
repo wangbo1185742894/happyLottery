@@ -88,9 +88,16 @@
     labResult.textColor = SystemRed;
     labResult.keyWord = @"赛果:";
     if (open == nil) {
-        labResult.text = @"赛果:未知";
+        labResult.text = @"赛果:待知";
     }else{
-        labResult.text = [NSString stringWithFormat:@"赛果:%@:%@",open.homeScore,open.guestScore];
+        if ([open.matchStatus isEqualToString:@"CANCLE"]) {
+            labResult.text = @"赛果:取消";
+        }else if ([open.matchStatus isEqualToString:@"PAUSE"]){
+            labResult.text = @"赛果:暂停";
+        }else{
+            labResult.text = [NSString stringWithFormat:@"赛果:%@:%@",open.homeScore,open.guestScore];
+        }
+        
     }
     
     labResult.keyWordColor = SystemBlue;
