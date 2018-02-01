@@ -314,7 +314,7 @@ static NSInteger seq = 0;
 -(void)setBoaderColor:(UITextField *)textField color:(UIColor*)color{
     textField.layer.borderColor = color.CGColor;
     textField.layer.borderWidth = 1;
-    textField.layer.cornerRadius = 5;
+    textField.layer.cornerRadius = 4;
     textField.layer.masksToBounds = YES;
     
 }

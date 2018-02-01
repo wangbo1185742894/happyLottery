@@ -27,14 +27,14 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WJC-OB-vbd">
                     <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                     <subviews>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gjz-mI-itb">
-                            <rect key="frame" x="0.0" y="46" width="375" height="557"/>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gjz-mI-itb">
+                            <rect key="frame" x="0.0" y="50" width="375" height="553"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tableView>
                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nxJ-0N-nxh">
-                            <rect key="frame" x="22" y="8" width="331" height="29"/>
+                            <rect key="frame" x="22" y="8" width="331" height="33"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="28" id="8n5-L3-kz3"/>
+                                <constraint firstAttribute="height" constant="32" id="8n5-L3-kz3"/>
                             </constraints>
                             <segments>
                                 <segment title="可用"/>
@@ -45,8 +45,8 @@
                                 <action selector="segmentClick:" destination="-1" eventType="valueChanged" id="ovu-85-L0p"/>
                             </connections>
                         </segmentedControl>
-                        <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BWA-Y9-8s5">
-                            <rect key="frame" x="0.0" y="46" width="375" height="557"/>
+                        <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BWA-Y9-8s5">
+                            <rect key="frame" x="0.0" y="50" width="375" height="553"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tableView>
                     </subviews>

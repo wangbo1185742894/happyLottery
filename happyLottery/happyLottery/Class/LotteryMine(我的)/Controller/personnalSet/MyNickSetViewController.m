@@ -31,8 +31,8 @@
     }
     self.nickField.delegate = self;
     self.memberMan.delegate = self;
-    self.nickField.layer.borderColor = [[UIColor grayColor] CGColor];
-    self.nickField.layer.borderWidth = 0.5f;
+//    self.nickField.layer.borderColor = [[UIColor grayColor] CGColor];
+//    self.nickField.layer.borderWidth = 0.5f;
     if (![self.curUser.nickname isEqualToString:@""]) {
         self.nickField.text = self.curUser.nickname;
     }

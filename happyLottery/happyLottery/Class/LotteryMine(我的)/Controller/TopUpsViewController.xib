@@ -53,12 +53,20 @@
                             <rect key="frame" x="0.0" y="210" width="375" height="393"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ND2-YG-fwX">
-                                    <rect key="frame" x="10" y="314" width="355" height="34"/>
+                                    <rect key="frame" x="10" y="314" width="355" height="44"/>
                                     <color key="backgroundColor" red="0.067504443230000002" green="0.78096091749999996" blue="0.57203906770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="44" id="LXW-VV-2Sq"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                     <state key="normal" title="充值">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="4"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="commitBtnClick:" destination="-1" eventType="touchUpInside" id="Qgj-gm-sq5"/>
                                     </connections>

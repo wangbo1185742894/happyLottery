@@ -228,7 +228,7 @@
 
 -(void)giveShareScore:(BOOL)success errorMsg:(NSString *)msg{
     if ([msg isEqualToString:@"执行成功"]) {
-          [self showPromptText: @"积分赠送成功" hideAfterDelay: 1.7];
+         // [self showPromptText: @"积分赠送成功" hideAfterDelay: 1.7];
         
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];

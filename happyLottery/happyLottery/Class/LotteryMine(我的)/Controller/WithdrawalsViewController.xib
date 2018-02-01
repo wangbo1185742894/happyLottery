@@ -138,22 +138,27 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUA-00-VZf">
-                            <rect key="frame" x="22" y="283" width="331" height="40"/>
+                            <rect key="frame" x="22" y="283" width="331" height="44"/>
                             <color key="backgroundColor" red="0.067504443230000002" green="0.78096091749999996" blue="0.57203906770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="331" id="LJK-Le-XSW"/>
-                                <constraint firstAttribute="height" constant="40" id="QIe-RL-cgj"/>
+                                <constraint firstAttribute="height" constant="44" id="QIe-RL-cgj"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <state key="normal" title="申请提现">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="commitBtnClick:" destination="-1" eventType="touchUpInside" id="pcf-yw-Mcv"/>
                             </connections>
                         </button>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XHx-sb-TWu">
-                            <rect key="frame" x="65" y="346" width="288" height="207"/>
+                            <rect key="frame" x="65" y="350" width="288" height="207"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="207" id="Gwo-Hc-0OB"/>
@@ -171,28 +176,28 @@
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hint.png" translatesAutoresizingMaskIntoConstraints="NO" id="Dp0-Pq-6MR">
-                            <rect key="frame" x="35" y="353" width="23" height="23"/>
+                            <rect key="frame" x="35" y="357" width="23" height="23"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="23" id="KDC-1Y-5qQ"/>
                                 <constraint firstAttribute="height" constant="23" id="N7n-Kn-vnu"/>
                             </constraints>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list.png" translatesAutoresizingMaskIntoConstraints="NO" id="rD0-ft-AXb">
-                            <rect key="frame" x="46" y="394" width="5" height="5"/>
+                            <rect key="frame" x="46" y="398" width="5" height="5"/>
                             <constraints>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="5" id="fHr-qc-AYT"/>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="5" id="nZ5-7I-ISy"/>
                             </constraints>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list.png" translatesAutoresizingMaskIntoConstraints="NO" id="10g-PD-E13">
-                            <rect key="frame" x="46" y="445" width="5" height="5"/>
+                            <rect key="frame" x="46" y="449" width="5" height="5"/>
                             <constraints>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="5" id="Cr7-AI-t0K"/>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="5" id="zkP-sz-iXH"/>
                             </constraints>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list.png" translatesAutoresizingMaskIntoConstraints="NO" id="XbL-Yx-ymu">
-                            <rect key="frame" x="46" y="510" width="5" height="5"/>
+                            <rect key="frame" x="46" y="514" width="5" height="5"/>
                             <constraints>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="5" id="gzl-gu-zVZ"/>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="5" id="lw3-TT-qSR"/>

@@ -106,13 +106,13 @@
     NSLog(@"%@", textView.text);
     
     //实时显示字数
-    self.stirngLenghLabel.text = [NSString stringWithFormat:@"%lu/200", (unsigned long)textView.text.length];
+    self.stirngLenghLabel.text = [NSString stringWithFormat:@"字数%lu/200字", (unsigned long)textView.text.length];
     
     //字数限制操作
     if (textView.text.length >= 200) {
         
         textView.text = [textView.text substringToIndex:200];
-        self.stirngLenghLabel.text = @"200/200";
+        self.stirngLenghLabel.text = @"字数200/200字";
         
     }
     //取消按钮点击权限，并显示提示文字

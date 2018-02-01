@@ -80,8 +80,8 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
                         </textField>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付密码必须为6位数字" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAn-YK-DD5">
-                            <rect key="frame" x="12" y="162" width="351" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付密码必须为6位数字" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAn-YK-DD5">
+                            <rect key="frame" x="14" y="162" width="351" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="351" id="v0X-cm-tLH"/>
                                 <constraint firstAttribute="height" constant="21" id="yng-qp-aqd"/>
@@ -91,11 +91,11 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sOo-kB-HY0">
-                            <rect key="frame" x="14" y="213" width="347" height="40"/>
+                            <rect key="frame" x="14" y="213" width="347" height="44"/>
                             <color key="backgroundColor" red="0.067504443230000002" green="0.78096091749999996" blue="0.57203906770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="347" id="2KD-jo-W9F"/>
-                                <constraint firstAttribute="height" constant="40" id="PSJ-xr-AbP"/>
+                                <constraint firstAttribute="height" constant="44" id="PSJ-xr-AbP"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <state key="normal" title="确认">
@@ -106,7 +106,7 @@
                             </state>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="5"/>
+                                    <integer key="value" value="4"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                             <connections>
@@ -114,13 +114,13 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GNZ-he-Ozd">
-                            <rect key="frame" x="281" y="273" width="80" height="30"/>
+                            <rect key="frame" x="281" y="277" width="80" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="B3X-Xb-9pZ"/>
                                 <constraint firstAttribute="width" constant="80" id="pVD-Nr-ob1"/>
                             </constraints>
                             <state key="normal" title="忘记密码？">
-                                <color key="titleColor" red="0.1960784314" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleColor" red="0.067504443230000002" green="0.78096091749999996" blue="0.57203906770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
                                 <action selector="forgetBtnClick:" destination="-1" eventType="touchUpInside" id="esK-S7-xwy"/>
@@ -143,7 +143,6 @@
                         <constraint firstItem="F0Q-vO-98g" firstAttribute="top" secondItem="a3v-T9-Hdy" secondAttribute="bottom" constant="8" id="3zt-xx-qm6"/>
                         <constraint firstItem="EkC-sX-hym" firstAttribute="leading" secondItem="EIl-nb-Ji1" secondAttribute="leading" id="59Q-Ah-gue"/>
                         <constraint firstItem="F0Q-vO-98g" firstAttribute="leading" secondItem="OVN-jK-xbo" secondAttribute="leading" id="6sq-gH-Xg8"/>
-                        <constraint firstItem="YAn-YK-DD5" firstAttribute="centerX" secondItem="EIl-nb-Ji1" secondAttribute="centerX" id="8nV-4g-DRn"/>
                         <constraint firstItem="59L-fB-HhV" firstAttribute="top" secondItem="EkC-sX-hym" secondAttribute="bottom" constant="8" id="AN3-YB-XpG"/>
                         <constraint firstItem="GNZ-he-Ozd" firstAttribute="trailing" secondItem="sOo-kB-HY0" secondAttribute="trailing" id="G1L-2S-Njq"/>
                         <constraint firstItem="a3v-T9-Hdy" firstAttribute="top" secondItem="EIl-nb-Ji1" secondAttribute="top" constant="20" id="Hbe-UU-cS6"/>
@@ -159,6 +158,7 @@
                         <constraint firstAttribute="trailing" secondItem="EkC-sX-hym" secondAttribute="trailing" id="jF4-Lt-cZ7"/>
                         <constraint firstItem="sOo-kB-HY0" firstAttribute="centerX" secondItem="EIl-nb-Ji1" secondAttribute="centerX" id="pM3-PN-hoS"/>
                         <constraint firstItem="wjN-xB-AtU" firstAttribute="leading" secondItem="EIl-nb-Ji1" secondAttribute="leading" id="w8h-ll-bnc"/>
+                        <constraint firstItem="YAn-YK-DD5" firstAttribute="leading" secondItem="EIl-nb-Ji1" secondAttribute="leading" constant="14" id="woR-ks-8wX"/>
                         <constraint firstAttribute="trailing" secondItem="a3v-T9-Hdy" secondAttribute="trailing" id="xQ8-bd-C8w"/>
                     </constraints>
                 </view>

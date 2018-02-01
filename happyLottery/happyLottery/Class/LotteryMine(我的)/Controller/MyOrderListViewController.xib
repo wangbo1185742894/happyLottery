@@ -24,7 +24,10 @@
                     <rect key="frame" x="0.0" y="64" width="375" height="61"/>
                     <subviews>
                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="VbK-Dq-f7l">
-                            <rect key="frame" x="12" y="16.5" width="351" height="29"/>
+                            <rect key="frame" x="12" y="14.5" width="351" height="33"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="32" id="v0U-FC-88s"/>
+                            </constraints>
                             <segments>
                                 <segment title="预约投注"/>
                                 <segment title="模拟投注"/>

@@ -240,7 +240,7 @@
             cell.nameLab.text =[NSString stringWithFormat:@"¥%@元优惠券",deduction];
             cell.countLab.text = coupon.count;
 
-            cell.sourceLab.text = [NSString stringWithFormat:@"来源：%@",coupon.couponSource];
+            cell.sourceLab.text = [NSString stringWithFormat:@"%@",coupon.couponSource];
             cell.dateLab.text = [NSString stringWithFormat:@"截止时间：%@",coupon.invalidTime];
             cell.descriptionLab.text=[NSString stringWithFormat:@"单笔订单满%@可用",coupon.quota];
             cell.bjImage.image = [UIImage imageNamed:@"bjCoupon"];
@@ -262,7 +262,7 @@
             NSString *sourecs;
            cell.countLab.text = coupon.count;
             cell.countLab.textColor=[UIColor blackColor];
-            cell.sourceLab.text = [NSString stringWithFormat:@"来源：%@",coupon.couponSource];
+            cell.sourceLab.text = [NSString stringWithFormat:@"%@",coupon.couponSource];
             cell.dateLab.text = [NSString stringWithFormat:@"截止时间：%@",coupon.invalidTime];
             cell.descriptionLab.text=[NSString stringWithFormat:@"单笔订单满%@可用",coupon.quota];
             cell.bjImage.image = [UIImage imageNamed:@"bj_overdue"];
