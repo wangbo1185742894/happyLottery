@@ -144,7 +144,7 @@
                             <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
                         </textField>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付密码为6位数的数字" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="86r-Dp-nw3">
-                            <rect key="frame" x="20" y="231" width="250" height="39"/>
+                            <rect key="frame" x="18" y="231" width="250" height="39"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="250" id="OZU-h0-dMI"/>
                                 <constraint firstAttribute="height" constant="39" id="adi-Dc-bde"/>
@@ -154,10 +154,10 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eW5-Sm-JQY">
-                            <rect key="frame" x="20" y="285" width="335" height="40"/>
+                            <rect key="frame" x="15" y="285" width="345" height="44"/>
                             <color key="backgroundColor" red="0.067504443230000002" green="0.78096091749999996" blue="0.57203906770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="40" id="CkZ-t6-0jF"/>
+                                <constraint firstAttribute="height" constant="44" id="CkZ-t6-0jF"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal" title="确认">
@@ -168,7 +168,7 @@
                             </state>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="5"/>
+                                    <integer key="value" value="4"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                             <connections>
@@ -178,9 +178,9 @@
                     </subviews>
                     <color key="backgroundColor" red="0.96444731950759888" green="0.96840888261795044" blue="0.98488038778305054" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="86r-Dp-nw3" firstAttribute="leading" secondItem="nTA-hH-JQa" secondAttribute="leading" constant="20" id="0TK-iI-DK9"/>
+                        <constraint firstItem="86r-Dp-nw3" firstAttribute="leading" secondItem="nTA-hH-JQa" secondAttribute="leading" constant="18" id="0TK-iI-DK9"/>
                         <constraint firstAttribute="trailing" secondItem="kjb-RJ-bwk" secondAttribute="trailing" id="1MH-5O-cDn"/>
-                        <constraint firstAttribute="trailing" secondItem="eW5-Sm-JQY" secondAttribute="trailing" constant="20" id="3u1-3A-Nh6"/>
+                        <constraint firstAttribute="trailing" secondItem="eW5-Sm-JQY" secondAttribute="trailing" constant="15" id="3u1-3A-Nh6"/>
                         <constraint firstItem="Zcd-Bw-gpu" firstAttribute="leading" secondItem="nTA-hH-JQa" secondAttribute="leading" constant="133" id="5bP-TX-0Yn"/>
                         <constraint firstItem="86r-Dp-nw3" firstAttribute="top" secondItem="ALf-3X-KgZ" secondAttribute="bottom" constant="15" id="8ub-5x-Gvs"/>
                         <constraint firstItem="kjb-RJ-bwk" firstAttribute="leading" secondItem="nTA-hH-JQa" secondAttribute="leading" id="Fbt-UE-fx9"/>
@@ -197,7 +197,7 @@
                         <constraint firstItem="ALf-3X-KgZ" firstAttribute="top" secondItem="kjb-RJ-bwk" secondAttribute="bottom" constant="1" id="gKV-GX-eNm"/>
                         <constraint firstAttribute="trailing" secondItem="fQ3-1X-gse" secondAttribute="trailing" id="gMT-n5-8VM"/>
                         <constraint firstItem="ALf-3X-KgZ" firstAttribute="leading" secondItem="nTA-hH-JQa" secondAttribute="leading" id="jaY-2P-DtJ"/>
-                        <constraint firstItem="eW5-Sm-JQY" firstAttribute="leading" secondItem="nTA-hH-JQa" secondAttribute="leading" constant="20" id="kpy-Y2-5gs"/>
+                        <constraint firstItem="eW5-Sm-JQY" firstAttribute="leading" secondItem="nTA-hH-JQa" secondAttribute="leading" constant="15" id="kpy-Y2-5gs"/>
                         <constraint firstItem="Zcd-Bw-gpu" firstAttribute="top" secondItem="nTA-hH-JQa" secondAttribute="top" constant="35" id="msc-fL-0CX"/>
                         <constraint firstItem="eW5-Sm-JQY" firstAttribute="centerX" secondItem="nTA-hH-JQa" secondAttribute="centerX" id="q8G-cI-BWk"/>
                         <constraint firstItem="IEW-Qq-A27" firstAttribute="leading" secondItem="Zcd-Bw-gpu" secondAttribute="leading" id="vCe-lu-lE5"/>

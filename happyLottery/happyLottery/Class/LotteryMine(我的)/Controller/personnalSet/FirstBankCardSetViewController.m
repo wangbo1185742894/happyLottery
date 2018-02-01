@@ -324,8 +324,8 @@
             
         }
     BankCard* bankCards = listBankArray[indexPath.row];
-    cell.textLabel.text =bankCards.bankName;
-    cell.textLabel.textAlignment = NSTextAlignmentCenter;
+    cell.textLabel.text =[NSString stringWithFormat:@"  %@ ", bankCards.bankName];
+    cell.textLabel.textAlignment = NSTextAlignmentLeft;
     
     
     //    cell.lable.text = optionDic[@"title"];

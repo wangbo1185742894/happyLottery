@@ -44,8 +44,8 @@
     _arr = [@[@[s1],@[s2],@[s3]]mutableCopy];
     _foldInfoDic = [NSMutableDictionary dictionaryWithDictionary:@{
                                                                    @"0":@"1",
-                                                                   @"1":@"1",
-                                                                   @"2":@"1"
+                                                                   @"1":@"0",
+                                                                   @"2":@"0"
                                                                    }];
 }
 //

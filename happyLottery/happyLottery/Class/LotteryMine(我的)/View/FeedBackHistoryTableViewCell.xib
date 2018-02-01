@@ -20,10 +20,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EQu-ga-WpO">
-                        <rect key="frame" x="16" y="11" width="20" height="21"/>
+                        <rect key="frame" x="16" y="11" width="22" height="24"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="21" id="1fu-Th-JfZ"/>
-                            <constraint firstAttribute="width" constant="20" id="yas-0z-aUt"/>
+                            <constraint firstAttribute="height" constant="24" id="1fu-Th-JfZ"/>
+                            <constraint firstAttribute="width" constant="22" id="yas-0z-aUt"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <state key="normal" title="问" backgroundImage="ask.png">
@@ -31,19 +31,19 @@
                         </state>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fks-ba-83C">
-                        <rect key="frame" x="46" y="11" width="258" height="16"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <rect key="frame" x="48" y="11" width="256" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d9o-DV-mgx">
-                        <rect key="frame" x="16" y="40" width="297" height="69"/>
+                        <rect key="frame" x="16" y="42" width="297" height="67"/>
                         <subviews>
                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zbf-ld-Wmz">
-                                <rect key="frame" x="4" y="5" width="20" height="21"/>
+                                <rect key="frame" x="4" y="5" width="22" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="20" id="75f-fx-R4T"/>
-                                    <constraint firstAttribute="height" constant="21" id="clW-0d-ZSt"/>
+                                    <constraint firstAttribute="width" constant="22" id="75f-fx-R4T"/>
+                                    <constraint firstAttribute="height" constant="24" id="clW-0d-ZSt"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="答" backgroundImage="answer.png">
@@ -51,8 +51,8 @@
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sW9-b4-JyC">
-                                <rect key="frame" x="37" y="5" width="260" height="64"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <rect key="frame" x="39" y="5" width="258" height="62"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.55686274509803924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>

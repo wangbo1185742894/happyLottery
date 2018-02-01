@@ -139,29 +139,39 @@
                                     <state key="normal" title="确认">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="4"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="commitBtnClick:" destination="-1" eventType="touchUpInside" id="jSh-Ls-7jz"/>
                                     </connections>
                                 </button>
-                                <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JZt-P7-wUr">
-                                    <rect key="frame" x="0.0" y="145" width="375" height="458"/>
+                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JZt-P7-wUr">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                     <subviews>
-                                        <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1YR-l7-Acs">
-                                            <rect key="frame" x="0.0" y="203" width="375" height="400"/>
+                                        <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1YR-l7-Acs">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="0"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </button>
                                         <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aPj-8w-11j">
-                                            <rect key="frame" x="0.0" y="239" width="375" height="300"/>
+                                            <rect key="frame" x="0.0" y="103" width="375" height="448"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="300" id="5fi-8L-861"/>
+                                                <constraint firstAttribute="height" constant="448" id="5fi-8L-861"/>
                                             </constraints>
                                         </tableView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J4e-aJ-ogW">
-                                            <rect key="frame" x="0.0" y="559" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="554" width="375" height="49"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="44" id="fCG-Hr-9dy"/>
+                                                <constraint firstAttribute="height" constant="49" id="fCG-Hr-9dy"/>
                                             </constraints>
                                             <state key="normal" title="取消">
                                                 <color key="titleColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -176,7 +186,7 @@
                                         <constraint firstItem="1YR-l7-Acs" firstAttribute="top" secondItem="JZt-P7-wUr" secondAttribute="top" id="3ih-X5-hcX"/>
                                         <constraint firstItem="J4e-aJ-ogW" firstAttribute="leading" secondItem="JZt-P7-wUr" secondAttribute="leading" id="8Y7-CK-9Q4"/>
                                         <constraint firstAttribute="trailing" secondItem="aPj-8w-11j" secondAttribute="trailing" id="GhC-sQ-ZPa"/>
-                                        <constraint firstAttribute="bottom" secondItem="aPj-8w-11j" secondAttribute="bottom" constant="64" id="Hxn-hC-ERt"/>
+                                        <constraint firstAttribute="bottom" secondItem="aPj-8w-11j" secondAttribute="bottom" constant="52" id="Hxn-hC-ERt"/>
                                         <constraint firstAttribute="trailing" secondItem="1YR-l7-Acs" secondAttribute="trailing" id="Jzf-LL-I58"/>
                                         <constraint firstAttribute="bottom" secondItem="J4e-aJ-ogW" secondAttribute="bottom" id="fFg-we-Rxg"/>
                                         <constraint firstItem="aPj-8w-11j" firstAttribute="leading" secondItem="JZt-P7-wUr" secondAttribute="leading" id="niQ-Eu-bnN"/>
@@ -240,7 +250,7 @@
         </view>
     </objects>
     <resources>
-        <image name="attention.png" width="30" height="30"/>
+        <image name="attention.png" width="20" height="20"/>
         <image name="rightIcon.png" width="22" height="22"/>
     </resources>
 </document>

@@ -20,25 +20,25 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="交通银行" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1u4-yB-NwS">
-                        <rect key="frame" x="81" y="11" width="172" height="21"/>
+                        <rect key="frame" x="71" y="11" width="172" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="172" id="Cjq-j9-KuZ"/>
                             <constraint firstAttribute="height" constant="21" id="kfl-Cl-Qcr"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6222***********5678" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RWw-6u-hBV">
-                        <rect key="frame" x="81" y="40" width="172" height="21"/>
+                        <rect key="frame" x="71" y="40" width="172" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="155" id="4bs-G1-EpI"/>
                             <constraint firstAttribute="width" constant="172" id="FFk-sk-29X"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="r2N-gV-c0V"/>
                             <constraint firstAttribute="height" constant="21" id="tEL-IG-r6P"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aYb-Xi-GFU">
@@ -47,7 +47,7 @@
                             <constraint firstAttribute="height" constant="30" id="DW1-RZ-w0R"/>
                             <constraint firstAttribute="width" constant="52" id="kvX-Pm-Ded"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <state key="normal" title="解绑">
                             <color key="titleColor" red="0.99607843137254903" green="0.22745098039215686" blue="0.31764705882352939" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
@@ -56,20 +56,20 @@
                         </connections>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banker.png" translatesAutoresizingMaskIntoConstraints="NO" id="IYR-BF-mUB">
-                        <rect key="frame" x="20" y="25" width="40" height="29"/>
+                        <rect key="frame" x="20" y="28" width="30" height="22"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="40" id="Ah8-KQ-ppB"/>
-                            <constraint firstAttribute="height" constant="29" id="bms-xW-RdG"/>
+                            <constraint firstAttribute="width" constant="30" id="Ah8-KQ-ppB"/>
+                            <constraint firstAttribute="height" constant="22" id="bms-xW-RdG"/>
                         </constraints>
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="IYR-BF-mUB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="3bm-Bl-Ja6"/>
                     <constraint firstItem="1u4-yB-NwS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="6eb-eb-2eG"/>
                     <constraint firstItem="aYb-Xi-GFU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="24" id="M07-Rm-d9K"/>
                     <constraint firstItem="RWw-6u-hBV" firstAttribute="leading" secondItem="IYR-BF-mUB" secondAttribute="trailing" constant="21" id="Pdi-4C-7n5"/>
                     <constraint firstAttribute="trailing" secondItem="aYb-Xi-GFU" secondAttribute="trailing" constant="20" id="Ucw-NW-12Y"/>
                     <constraint firstItem="IYR-BF-mUB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Xk1-bw-q0E"/>
+                    <constraint firstItem="IYR-BF-mUB" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="kSE-ct-XLE"/>
                     <constraint firstItem="1u4-yB-NwS" firstAttribute="leading" secondItem="IYR-BF-mUB" secondAttribute="trailing" constant="21" id="nOK-3h-KJX"/>
                     <constraint firstItem="RWw-6u-hBV" firstAttribute="top" secondItem="1u4-yB-NwS" secondAttribute="bottom" constant="8" id="tO0-mh-rNu"/>
                 </constraints>
@@ -82,6 +82,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="banker.png" width="40" height="29"/>
+        <image name="banker.png" width="30" height="22"/>
     </resources>
 </document>

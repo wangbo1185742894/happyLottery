@@ -30,7 +30,7 @@
     [super viewDidLoad];
     self.viewControllerNo = @"A204";
     dataArray = [NSMutableArray arrayWithCapacity:0];
-    self.title = @"我的彩票";
+    self.title = @"我的订单";
     page = 1;
     curSchemeType = CostTypeCASH;
     [self setTableViewLoadRefresh];
