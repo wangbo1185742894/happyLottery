@@ -252,6 +252,7 @@
             cell = [[[NSBundle mainBundle] loadNibNamed:@"MyCouponTableViewCell" owner:self options:nil] lastObject];
         }
         if (listUnUseCouponArray.count > 0) {
+            
             coupon = listUnUseCouponArray[indexPath.row];
             cell.endImage.hidden = NO;
             cell.priceLab.text = coupon.deduction;
@@ -269,7 +270,7 @@
         }
     }
 
-
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 

@@ -76,11 +76,13 @@
                         </segmentedControl>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jbz-Iz-6wy">
                             <rect key="frame" x="0.0" y="52" width="375" height="551"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" red="0.96444731950759888" green="0.96840888261795044" blue="0.98488038778305054" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="sectionIndexBackgroundColor" red="0.96444731950759888" green="0.96840888261795044" blue="0.98488038778305054" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </tableView>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kqb-gJ-XVC">
                             <rect key="frame" x="0.0" y="52" width="375" height="551"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" red="0.96444731949999996" green="0.96840888260000002" blue="0.98488038779999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="sectionIndexBackgroundColor" red="0.96444731949999996" green="0.96840888260000002" blue="0.98488038779999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </tableView>
                     </subviews>
                     <color key="backgroundColor" red="0.96444731950759888" green="0.96840888261795044" blue="0.98488038778305054" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
