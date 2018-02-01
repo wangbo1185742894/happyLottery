@@ -616,14 +616,6 @@
 		F928C6BA1FF4BA40001F1A32 /* increase@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F928C6B21FF4BA40001F1A32 /* increase@2x.png */; };
 		F92D03CC2005A14D00C26E7A /* dottedcoupon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F92D03CA2005A14C00C26E7A /* dottedcoupon@3x.png */; };
 		F92D03CD2005A14D00C26E7A /* dottedcoupon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F92D03CB2005A14D00C26E7A /* dottedcoupon@2x.png */; };
-		F92D03D22005A4D000C26E7A /* lockredpacket@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F92D03CE2005A4CE00C26E7A /* lockredpacket@3x.png */; };
-		F92D03D32005A4D000C26E7A /* unlockredpacket@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F92D03CF2005A4CF00C26E7A /* unlockredpacket@2x.png */; };
-		F92D03D42005A4D000C26E7A /* lockredpacket@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F92D03D02005A4CF00C26E7A /* lockredpacket@2x.png */; };
-		F92D03D52005A4D000C26E7A /* unlockredpacket@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F92D03D12005A4CF00C26E7A /* unlockredpacket@3x.png */; };
-		F92D03DA2005A8F000C26E7A /* unlock_cannot@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F92D03D62005A8EE00C26E7A /* unlock_cannot@3x.png */; };
-		F92D03DB2005A8F000C26E7A /* lock_cannot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F92D03D72005A8EF00C26E7A /* lock_cannot@2x.png */; };
-		F92D03DC2005A8F000C26E7A /* unlock_cannot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F92D03D82005A8EF00C26E7A /* unlock_cannot@2x.png */; };
-		F92D03DD2005A8F000C26E7A /* lock_cannot@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F92D03D92005A8EF00C26E7A /* lock_cannot@3x.png */; };
 		F92D03E12005E76600C26E7A /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F92D03DF2005E76600C26E7A /* FeedbackViewController.m */; };
 		F92D03E22005E76600C26E7A /* FeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F92D03E02005E76600C26E7A /* FeedbackViewController.xib */; };
 		F92D03ED2005F3B400C26E7A /* lotteryhelp@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F92D03E52005F3B300C26E7A /* lotteryhelp@3x.png */; };
@@ -651,6 +643,12 @@
 		F93AC8121FFDC63B003DF05C /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F93AC8111FFDC63B003DF05C /* libsqlite3.tbd */; };
 		F93AC8161FFDF035003DF05C /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F93AC8141FFDF035003DF05C /* AboutViewController.m */; };
 		F93AC8171FFDF035003DF05C /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F93AC8151FFDF035003DF05C /* AboutViewController.xib */; };
+		F93EEEE02021D388001C635A /* lockredpacket@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F93EEED82021D386001C635A /* lockredpacket@2x.png */; };
+		F93EEEE22021D388001C635A /* lockredpacket@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F93EEEDA2021D387001C635A /* lockredpacket@3x.png */; };
+		F93EEEE52021D78D001C635A /* unlock_cannot@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F93EEEE32021D78C001C635A /* unlock_cannot@3x.png */; };
+		F93EEEE62021D78D001C635A /* unlock_cannot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F93EEEE42021D78D001C635A /* unlock_cannot@2x.png */; };
+		F93EEEE92021D8EC001C635A /* unlockredpacket@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F93EEEE72021D8EB001C635A /* unlockredpacket@2x.png */; };
+		F93EEEEA2021D8EC001C635A /* unlockredpacket@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F93EEEE82021D8EB001C635A /* unlockredpacket@3x.png */; };
 		F94027DF2018929700CF7A2B /* redpacketKong@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94027DD2018929600CF7A2B /* redpacketKong@2x.png */; };
 		F94027E02018929700CF7A2B /* redpacketKong@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94027DE2018929700CF7A2B /* redpacketKong@3x.png */; };
 		F9418F432010991200454109 /* MOBFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9418F272010991200454109 /* MOBFoundation.framework */; };
@@ -1712,14 +1710,6 @@
 		F928C6B21FF4BA40001F1A32 /* increase@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "increase@2x.png"; sourceTree = "<group>"; };
 		F92D03CA2005A14C00C26E7A /* dottedcoupon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dottedcoupon@3x.png"; sourceTree = "<group>"; };
 		F92D03CB2005A14D00C26E7A /* dottedcoupon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dottedcoupon@2x.png"; sourceTree = "<group>"; };
-		F92D03CE2005A4CE00C26E7A /* lockredpacket@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lockredpacket@3x.png"; sourceTree = "<group>"; };
-		F92D03CF2005A4CF00C26E7A /* unlockredpacket@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unlockredpacket@2x.png"; sourceTree = "<group>"; };
-		F92D03D02005A4CF00C26E7A /* lockredpacket@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lockredpacket@2x.png"; sourceTree = "<group>"; };
-		F92D03D12005A4CF00C26E7A /* unlockredpacket@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unlockredpacket@3x.png"; sourceTree = "<group>"; };
-		F92D03D62005A8EE00C26E7A /* unlock_cannot@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unlock_cannot@3x.png"; sourceTree = "<group>"; };
-		F92D03D72005A8EF00C26E7A /* lock_cannot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lock_cannot@2x.png"; sourceTree = "<group>"; };
-		F92D03D82005A8EF00C26E7A /* unlock_cannot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unlock_cannot@2x.png"; sourceTree = "<group>"; };
-		F92D03D92005A8EF00C26E7A /* lock_cannot@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lock_cannot@3x.png"; sourceTree = "<group>"; };
 		F92D03DE2005E76600C26E7A /* FeedbackViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
 		F92D03DF2005E76600C26E7A /* FeedbackViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
 		F92D03E02005E76600C26E7A /* FeedbackViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedbackViewController.xib; sourceTree = "<group>"; };
@@ -1751,6 +1741,12 @@
 		F93AC8131FFDF035003DF05C /* AboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		F93AC8141FFDF035003DF05C /* AboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		F93AC8151FFDF035003DF05C /* AboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
+		F93EEED82021D386001C635A /* lockredpacket@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lockredpacket@2x.png"; sourceTree = "<group>"; };
+		F93EEEDA2021D387001C635A /* lockredpacket@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lockredpacket@3x.png"; sourceTree = "<group>"; };
+		F93EEEE32021D78C001C635A /* unlock_cannot@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unlock_cannot@3x.png"; sourceTree = "<group>"; };
+		F93EEEE42021D78D001C635A /* unlock_cannot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unlock_cannot@2x.png"; sourceTree = "<group>"; };
+		F93EEEE72021D8EB001C635A /* unlockredpacket@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unlockredpacket@2x.png"; sourceTree = "<group>"; };
+		F93EEEE82021D8EB001C635A /* unlockredpacket@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unlockredpacket@3x.png"; sourceTree = "<group>"; };
 		F94027DD2018929600CF7A2B /* redpacketKong@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redpacketKong@2x.png"; sourceTree = "<group>"; };
 		F94027DE2018929700CF7A2B /* redpacketKong@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redpacketKong@3x.png"; sourceTree = "<group>"; };
 		F9418F272010991200454109 /* MOBFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOBFoundation.framework; sourceTree = "<group>"; };
@@ -3402,18 +3398,16 @@
 		F90FCD601FF380F000BD807C /* RedPacket */ = {
 			isa = PBXGroup;
 			children = (
+				F93EEEE72021D8EB001C635A /* unlockredpacket@2x.png */,
+				F93EEEE82021D8EB001C635A /* unlockredpacket@3x.png */,
+				F93EEEE42021D78D001C635A /* unlock_cannot@2x.png */,
+				F93EEEE32021D78C001C635A /* unlock_cannot@3x.png */,
+				F93EEED82021D386001C635A /* lockredpacket@2x.png */,
+				F93EEEDA2021D387001C635A /* lockredpacket@3x.png */,
 				F9281D19201979BE00C42A37 /* one_redpacket@2x.png */,
 				F9281D1A201979BE00C42A37 /* one_redpacket@3x.png */,
 				F94027DD2018929600CF7A2B /* redpacketKong@2x.png */,
 				F94027DE2018929700CF7A2B /* redpacketKong@3x.png */,
-				F92D03D72005A8EF00C26E7A /* lock_cannot@2x.png */,
-				F92D03D92005A8EF00C26E7A /* lock_cannot@3x.png */,
-				F92D03D62005A8EE00C26E7A /* unlock_cannot@3x.png */,
-				F92D03D82005A8EF00C26E7A /* unlock_cannot@2x.png */,
-				F92D03D02005A4CF00C26E7A /* lockredpacket@2x.png */,
-				F92D03CE2005A4CE00C26E7A /* lockredpacket@3x.png */,
-				F92D03CF2005A4CF00C26E7A /* unlockredpacket@2x.png */,
-				F92D03D12005A4CF00C26E7A /* unlockredpacket@3x.png */,
 				F999278020037A7000023F8F /* empty_hongbao@2x.png */,
 				F999277F20037A7000023F8F /* empty_hongbao@3x.png */,
 				F9992766200335DC00023F8F /* guanbi@2x.png */,
@@ -4061,7 +4055,6 @@
 				2D739CE01FEB45E300264044 /* matchcleanall@2x.png in Resources */,
 				2D5171CF200C567D00C3CD7F /* WonSchemeListController.xib in Resources */,
 				2D739CE71FEB462B00264044 /* danguan@2x.png in Resources */,
-				F92D03DB2005A8F000C26E7A /* lock_cannot@2x.png in Resources */,
 				2D628B3F1FECAA9A0013D0E1 /* fengkuangjingcai-monitouzhu-xuanze@3x.png in Resources */,
 				2D8CBFB11FF328D800CC367F /* paysuccess@3x.png in Resources */,
 				2D2060231FFCB71E0086E266 /* icon_tongyi_weixuanze@2x.png in Resources */,
@@ -4121,7 +4114,6 @@
 				F9281D1B201979BE00C42A37 /* one_redpacket@2x.png in Resources */,
 				2D5171F3200C72F300C3CD7F /* btn_change_@2x.png in Resources */,
 				F9D9F2A91FF22640006434DC /* CashAndIntegrationWaterViewController.xib in Resources */,
-				F92D03D32005A4D000C26E7A /* unlockredpacket@2x.png in Resources */,
 				F9DC69AA1FDF8957007D384D /* MyHelpViewController.xib in Resources */,
 				F94913481FFF642800D30AE7 /* ConversionCodeViewController.xib in Resources */,
 				2D0EEA9B201582C300B0769C /* yuce_detail_recom@3x.png in Resources */,
@@ -4145,6 +4137,7 @@
 				2D628B411FECAA9A0013D0E1 /* fengkuangjingcai-gengduoshuoming@2x.png in Resources */,
 				F954D518200C498C00CD3B2B /* QuestionsViewController.xib in Resources */,
 				2D4B1E6F1FDF684E0034B708 /* faxian_defealt@2x.png in Resources */,
+				F93EEEE22021D388001C635A /* lockredpacket@3x.png in Resources */,
 				F9581A801FE0FA01009753AA /* LoginViewController.xib in Resources */,
 				2D5171EC200C72DA00C3CD7F /* icon_weizhong_@3x.png in Resources */,
 				2D92A8222010545D0038E165 /* btn_jinru@2x.png in Resources */,
@@ -4208,7 +4201,6 @@
 				2D0600331FFDD2A1009E7568 /* SchemeDetailViewController.xib in Resources */,
 				F924BAA51FE252CF00830BF4 /* hide@3x.png in Resources */,
 				2D739CFA1FEB5D1900264044 /* JCZQSelectBFVIew.xib in Resources */,
-				F92D03DC2005A8F000C26E7A /* unlock_cannot@2x.png in Resources */,
 				2D739C4A1FE37E5100264044 /* checksuccess@2x.png in Resources */,
 				F957C1D31FE379590090B19B /* ForgetPWDViewController.xib in Resources */,
 				2D0600411FFDDD51009E7568 /* schemedetailarrowsgreen@3x.png in Resources */,
@@ -4231,7 +4223,6 @@
 				F924BAA61FE252CF00830BF4 /* user@2x.png in Resources */,
 				F94AA9C31FEB59DA0021B980 /* unchecked@3x.png in Resources */,
 				2DCBB2811FD1000700934D92 /* LaunchScreen.storyboard in Resources */,
-				F92D03D52005A4D000C26E7A /* unlockredpacket@3x.png in Resources */,
 				F9DC698C1FDF7CF5007D384D /* Mine.plist in Resources */,
 				2D40CAB1201EEDC700DDCFE3 /* pic@3x.png in Resources */,
 				F928C6B91FF4BA40001F1A32 /* addmoney@3x.png in Resources */,
@@ -4300,7 +4291,6 @@
 				2D628B281FECA9C40013D0E1 /* touzhusaishijia@3x.png in Resources */,
 				2D20602E1FFCB71E0086E266 /* icon_zhifu_normal@2x.png in Resources */,
 				2D0E24062019AC750098DA40 /* pic_zanwushuju@3x.png in Resources */,
-				F92D03DD2005A8F000C26E7A /* lock_cannot@3x.png in Resources */,
 				2D0E23DF2019A6840098DA40 /* collect@3x.png in Resources */,
 				2D205FF31FFC7AF30086E266 /* newFeatureView-2.png in Resources */,
 				2D4B1E711FDF684E0034B708 /* faxian_select@2x.png in Resources */,
@@ -4377,6 +4367,7 @@
 				F9632F58200C9A8B00F69D23 /* IntegeralChangeViewController.xib in Resources */,
 				2D0EEAB22015DCFC00B0769C /* ad_home2@2x.png in Resources */,
 				2D0E23C120196B590098DA40 /* losing_lottery@3x.png in Resources */,
+				F93EEEE62021D78D001C635A /* unlock_cannot@2x.png in Resources */,
 				F93204F11FECF98B00E22A27 /* pass6.png in Resources */,
 				F94AA9BD1FEB59DA0021B980 /* checked@3x.png in Resources */,
 				2D4B1EB31FDFCDAF0034B708 /* arrow_up@2x.png in Resources */,
@@ -4404,6 +4395,7 @@
 				2D739D031FEB835D00264044 /* btnbackimgSelect@3x.png in Resources */,
 				F9F262B11FE8F4AE00C2E60F /* RSKImageCropperStrings.bundle in Resources */,
 				2D0E23EB2019A6D90098DA40 /* integral@3x.png in Resources */,
+				F93EEEEA2021D8EC001C635A /* unlockredpacket@3x.png in Resources */,
 				F9F6CA961FF5D6B100A49F71 /* inform@3x.png in Resources */,
 				2D4B1E821FDF684E0034B708 /* wode_defealt@3x.png in Resources */,
 				2D4B1E851FDF684E0034B708 /* yishoucang@2x.png in Resources */,
@@ -4417,6 +4409,7 @@
 				2D40CAA4201EDE5700DDCFE3 /* bj_down@2x.png in Resources */,
 				2D0E23B920196B590098DA40 /* failure@3x.png in Resources */,
 				F94913431FFF260F00D30AE7 /* banker@3x.png in Resources */,
+				F93EEEE92021D8EC001C635A /* unlockredpacket@2x.png in Resources */,
 				2D06FFE61FFDC9EB009E7568 /* arrows@2x.png in Resources */,
 				2D739CFE1FEB68B800264044 /* backViewYuanJiao@2x.png in Resources */,
 				2D4B1E7A1FDF684E0034B708 /* home_select@3x.png in Resources */,
@@ -4425,6 +4418,7 @@
 				F94AA9F41FEBBFE00021B980 /* BankCardSetTableViewCell.xib in Resources */,
 				F91565F41FFCBDAE00E254CE /* scancode@3x.png in Resources */,
 				2D5171C52008654800C3CD7F /* icon_zhifubao@2x.png in Resources */,
+				F93EEEE52021D78D001C635A /* unlock_cannot@3x.png in Resources */,
 				2D0EEA912013280500B0769C /* turnoff@2x.png in Resources */,
 				2D40CAB4201F2BB100DDCFE3 /* launchImage.png in Resources */,
 				F924BA9B1FE252CF00830BF4 /* line@2x.png in Resources */,
@@ -4443,7 +4437,6 @@
 				F90FCD711FF3810F00BD807C /* dotted@2x.png in Resources */,
 				F94AA9E01FEB7B780021B980 /* kuaijie@2x.png in Resources */,
 				F91566011FFCCBEF00E254CE /* tilde@3x.png in Resources */,
-				F92D03D22005A4D000C26E7A /* lockredpacket@3x.png in Resources */,
 				2D4B1E781FDF684E0034B708 /* home_defealt@3x.png in Resources */,
 				2D739C6E1FE7898900264044 /* JCZQMatchViewCell.xib in Resources */,
 				F9C3BA1F20088E3800916F3C /* star_light@2x.png in Resources */,
@@ -4541,7 +4534,6 @@
 				2D4B1E401FDF652C0034B708 /* HomeMenuItemView.xib in Resources */,
 				2D92A81A200EF91D0038E165 /* win_tag@2x.png in Resources */,
 				2D2060221FFCB71E0086E266 /* icon_tongyi_weixuanze@3x.png in Resources */,
-				F92D03DA2005A8F000C26E7A /* unlock_cannot@3x.png in Resources */,
 				2D739CD91FEB44F400264044 /* liansaixuanze@2x.png in Resources */,
 				F92D03F02005F3B400C26E7A /* assisthelp@3x.png in Resources */,
 				2D739CD41FEB44F400264044 /* yuanjiaowukuangselect@2x.png in Resources */,
@@ -4606,6 +4598,7 @@
 				2D4B1E891FDF684E0034B708 /* yuce_defealt@2x.png in Resources */,
 				F9BD1B521FE8B21600C1C71A /* FirstBankCardSetViewController.xib in Resources */,
 				2D5171FB200C73D900C3CD7F /* icon_won_tatus@2x.png in Resources */,
+				F93EEEE02021D388001C635A /* lockredpacket@2x.png in Resources */,
 				F91565F11FFCBDAE00E254CE /* microblog@3x.png in Resources */,
 				2D0E23C72019A5C20098DA40 /* withdraw@2x.png in Resources */,
 				F90FCD8D1FF396F700BD807C /* redpacket@2x.png in Resources */,
@@ -4649,7 +4642,6 @@
 				F91565F01FFCBDAE00E254CE /* 2@3x.png in Resources */,
 				F999278220037A7000023F8F /* empty_hongbao@2x.png in Resources */,
 				F9664B9F2004B23A000A27CA /* recommend@2x.png in Resources */,
-				F92D03D42005A4D000C26E7A /* lockredpacket@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
