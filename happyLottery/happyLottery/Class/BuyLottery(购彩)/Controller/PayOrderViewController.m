@@ -125,8 +125,38 @@
         Coupon *model = [[Coupon alloc]initWith:itemDic];
         [self.couponList addObject:model];
     }
+    _curSelectCoupon = [self getMaxCoupon];
+    if (self.curSelectCoupon != nil) {
+        //
+        _curSelectCoupon.isSelect = YES;
+        labCanUseYouhuiquan.text = [NSString stringWithFormat:@"￥%@元优惠券",self.curSelectCoupon.deduction];
+        self.labZheKou.text = [NSString stringWithFormat:@"-%.2f元",[self.curSelectCoupon.deduction doubleValue]];
+        self.labZheKou.textColor = SystemRed;
+        self.labRealCost.text = [NSString stringWithFormat:@"%.2f 元",self.cashPayMemt.realSubscribed - [self.curSelectCoupon.deduction doubleValue]] ;
+    }else{
+        labCanUseYouhuiquan.text = [NSString stringWithFormat:@"%ld张可用优惠券",self.couponList.count];
+        self.labZheKou.text = [NSString stringWithFormat:@"-0.00元"];
+        self.labZheKou.textColor = SystemGray;
+        self.labRealCost.text = [NSString stringWithFormat:@"%.2f 元",self.cashPayMemt.realSubscribed] ;
+    }
 }
 
+-(Coupon *)getMaxCoupon{
+    Coupon *curMaxCoupon  = [self.couponList firstObject];
+    for (Coupon *model in self.couponList) {
+        if ([model.deduction doubleValue] > [curMaxCoupon.deduction doubleValue]) {
+            curMaxCoupon = model;
+        }else if ([model.deduction doubleValue] == [curMaxCoupon.deduction doubleValue]){
+            NSDate *curDate = [Utility dateFromDateStr:curMaxCoupon.invalidTime withFormat:@"yyyy-MM-dd HH:mm:ss"];
+            NSDate *mDate = [Utility dateFromDateStr:model.invalidTime withFormat:@"yyyy-MM-dd HH:mm:ss"];
+            if ([mDate compare:curDate] == -1) {
+                curMaxCoupon = model;
+            }
+        }
+    }
+    return curMaxCoupon;
+    
+}
 
 -(void)gotMemberByCardCode:(NSDictionary *)userInfo errorMsg:(NSString *)msg{
     [self hideLoadingView];

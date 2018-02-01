@@ -20,7 +20,7 @@
 @property(nonatomic,strong)NSString* useTime;
 @property(nonatomic,strong)NSString * subOrderNo;
 @property(nonatomic,strong)NSString *remark;
-
+@property(nonatomic,copy)NSString * cardCode;
 @property(assign,nonatomic)BOOL isSelect;
 @property(assign,nonatomic)BOOL isShow;
 

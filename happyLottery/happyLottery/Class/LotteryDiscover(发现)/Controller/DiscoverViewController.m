@@ -42,12 +42,11 @@
 }
 
 -(void)setWebView{
-     if(KscreenWidth == 320){
-        webDisBottom.constant = -100;
-     }else if ([Utility isIOS11After]) {
+
+     if ([Utility isIOS11After]) {
         webDisTop.constant = 0;
         webDisBottom.constant = 0;
-    }else{
+     }else{
         webDisTop.constant = 20;
         webDisBottom.constant = 44;
     }
@@ -56,26 +55,23 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    if (self.pageUrl != nil) {
-        [self.faxianWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.pageUrl]]];
-    }else{
-        NSString *cardCode = @"";
-        if (self.curUser.isLogin == YES) {
-            cardCode = self.curUser.cardCode;
-        }
-        
-        NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/app/find/index?cardCode=%@",H5BaseAddress,cardCode]] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:100];
-        
-        
-        [self.faxianWebView loadRequest:request];
+
+    NSString *cardCode = @"";
+    if (self.curUser.isLogin == YES) {
+        cardCode = self.curUser.cardCode;
     }
+        
+    NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/app/find/index?cardCode=%@",H5BaseAddress,cardCode]] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:100];
+        
+        
+    [self.faxianWebView loadRequest:request];
+    
     self.navigationController.navigationBar.hidden = YES;
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [JWCacheURLProtocol cancelListeningNetWorking];
-    self.pageUrl = nil;
     self.navigationController.navigationBar.hidden = NO;
 }
 
@@ -123,10 +119,24 @@
     NSString *scheme = [NSString stringWithFormat:@"%@",URL];
     if ([scheme containsString:@"index"]) {
         self.tabBarController.tabBar.hidden = NO;
-        webDisBottom.constant = 44;
+        
+        if ([Utility isIOS11After]) {
+            webDisBottom.constant = 0;
+
+        }else{
+            
+            webDisBottom.constant = 44;
+        }
     }else{
         self.tabBarController.tabBar.hidden = YES;
-        webDisBottom.constant = 0;
+        if ([Utility isIOS11After]) {
+            webDisBottom.constant = -50;
+            
+        }else{
+            
+            webDisBottom.constant = 0;
+        }
+        
     }
       [self removeWebCache];
     return YES;
@@ -274,9 +284,11 @@
     [self needLogin];
 }
 
+
 - (void)telPhone{
     [self actionTelMe];
 }
+
 
 -(void)exchangeToast:(NSString *)msg{
     [self showPromptText:msg hideAfterDelay:1.7];

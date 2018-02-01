@@ -62,6 +62,15 @@
 
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    if ([self.imageName isEqualToString:@"winning"]) {
+        self.navigationController.navigationBar.barTintColor  = RGBCOLOR(249, 91, 97);
+    }else{
+        self.navigationController.navigationBar.barTintColor = SystemGreen;
+    }
+}
+
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     self.navigationController.navigationBar.barTintColor = SystemGreen;
