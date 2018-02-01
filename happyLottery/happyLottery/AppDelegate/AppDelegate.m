@@ -42,6 +42,7 @@
 #import "JumpWebViewController.h"
 #import "LoginViewController.h"
 #import "BaseViewController.h"
+#import "HomeJumpViewController.h"
 
 
 @interface AppDelegate ()<NewFeatureViewDelegate,MemberManagerDelegate,JPUSHRegisterDelegate,VersionUpdatingPopViewDelegate,NetWorkingHelperDelegate>
@@ -69,6 +70,7 @@ static SystemSoundID shake_sound_male_id = 0;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
     [self loadTabVC];
     
     [GlobalInstance instance].homeUrl = ServerAddress;
@@ -91,7 +93,7 @@ static SystemSoundID shake_sound_male_id = 0;
                           channel:@"App Store"
                  apsForProduction:0
             advertisingIdentifier:nil];
-    //获取自定义消息推送内容
+    
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
     [defaultCenter addObserver:self selector:@selector(networkDidReceiveMessage:) name:kJPFNetworkDidReceiveMessageNotification object:nil];
     [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];
@@ -102,17 +104,45 @@ static SystemSoundID shake_sound_male_id = 0;
         [application cancelAllLocalNotifications];
     }
 
+    if(!launchOptions)  
+    {  
+        NSLog(@"用户点击app启动");  
+    }  
+    else  
+    {  
+        NSURL *url = [launchOptions objectForKey:UIApplicationLaunchOptionsURLKey];  
+        //app 通过urlscheme启动  
+        if (url) {  
+            NSLog(@"app 通过urlscheme启动 url = %@",url);  
+        }  
+        UILocalNotification *localNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];  
+        //通过本地通知启动  
+        if(localNotification)  
+        {  
+            NSLog(@"app 通过本地通知启动 localNotification = %@",localNotification);  
+        }  
+        NSDictionary *remoteCotificationDic = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];  
+        //远程通知启动  
+        if(remoteCotificationDic)  
+        {
+           NSDictionary * userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+            pageCodeNotice =  [userInfo valueForKey:@"pageCode"];
+            linkUrlNotice=[userInfo valueForKey:@"linkUrl"];
+            
+        }  
+        
+    }  
+    
       [self initShareSDK];
     sleep(1.5);
+    
     return YES;
 }
 -(void)initShareSDK{
 
      [ShareSDK registerActivePlatforms:@[
-//                            @(SSDKPlatformTypeSinaWeibo),
                   @(SSDKPlatformSubTypeWechatSession),
                     @(SSDKPlatformSubTypeWechatTimeline)
-                           // @(SSDKPlatformTypeWechat)
                             ]
                         onImport:^(SSDKPlatformType platformType) {                                             
                         switch (platformType)
@@ -186,7 +216,6 @@ static SystemSoundID shake_sound_male_id = 0;
                 
             } @catch (NSException *exception) {
                 return;
-                
             }
             [memberMan loginCurUser:loginInfo];
         }
@@ -270,7 +299,6 @@ static SystemSoundID shake_sound_male_id = 0;
         //        AudioServicesPlaySystemSound(shake_sound_male_id);
         //AudioServicesPlaySystemSound(shake_sound_male_id);//如果无法再下面播放，可以尝试在此播放
     }
-    
     NSString *myString =  [self.Dic objectForKey:@"MsgMusicSwitch"];
     if([myString isEqualToString:@"MsgMusicOpen"]){
         AudioServicesPlaySystemSound(shake_sound_male_id);   //播放注册的声音，（此句代码，可以在本类中的任意位置调用，不限于本方法中）
@@ -361,9 +389,6 @@ static SystemSoundID shake_sound_male_id = 0;
 //从后台点击icon进入时清除角标
 - (void)applicationWillEnterForeground:(UIApplication *)application {
      [[NSNotificationCenter defaultCenter] postNotificationName:@"NSNotificationapplicationWillEnterForeground" object:nil];
-    //    [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];
-    //    [JPUSHService setBadge:0];//清空JPush服务器中存储的badge值
-   //清除角标
     [application cancelAllLocalNotifications];
 }
 
@@ -380,7 +405,7 @@ static SystemSoundID shake_sound_male_id = 0;
 //注册APNs成功并上报DeviceToken
 - (void)application:(UIApplication *)application
 didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    
+
     /// Required - 注册 DeviceToken
     [JPUSHService registerDeviceToken:deviceToken];
 }
@@ -416,20 +441,25 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 }
 
 // iOS 10 Support
-- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler {
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^__strong)(void))completionHandler {
     // Required
+    
     NSDictionary * userInfo = response.notification.request.content.userInfo;
     if (@available(iOS 10.0, *)) {
        if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
             [JPUSHService handleRemoteNotification:userInfo];
+           pageCodeNotice =  [userInfo valueForKey:@"pageCode"];
+           linkUrlNotice=[userInfo valueForKey:@"linkUrl"];
 //            [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];
 //            [JPUSHService setBadge:0];//清空JPush服务器中存储的badge值
            
 //              if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive ||[UIApplication sharedApplication].applicationState == UIApplicationStateInactive) {
             if (pageCodeNotice!=nil) {
        
-
-                [self goToYunshiWithInfo:pageCodeNotice];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    
+                    [self goToYunshiWithInfo:pageCodeNotice];
+                });
 
             }
             if (linkUrlNotice!=nil) {
@@ -446,7 +476,6 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
           //  }
         }
     } else {
-        // Fallback on earlier versions
     }
 
     completionHandler();  // 系统要求执行这个方法
@@ -505,7 +534,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 -(void)goToYunshiWithInfo:(NSString *)pageCode{
     NSString *keyStr = pageCode;
-    
+    pageCodeNotice = nil;
     if (keyStr == nil) {
         return;
     }
@@ -535,7 +564,6 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
        AppDelegate *delegate  = (AppDelegate*)[UIApplication sharedApplication].delegate;
       UITabBarController *tabBarController = (UITabBarController *)_window.rootViewController;
      tabBarController.selectedIndex = 0;
-//      delegate.curNavVC = (UINavigationController *)tabBarController.childViewControllers[tabBarController.selectedIndex];
     if([keyStr isEqualToString:@"A401"]){
         
         tabBarController.selectedIndex = 2;
@@ -556,24 +584,28 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         tabBarController.selectedIndex = 0;
         [ delegate.curNavVC  popToRootViewControllerAnimated:YES];
         return;
-    }{
+    }else if ([keyStr isEqualToString:@"A403"]){
+        
+        if ([GlobalInstance instance].curUser.isLogin== YES || [GlobalInstance instance].curUser.cardCode != nil) {
+            HomeJumpViewController *disVC = [[HomeJumpViewController alloc]init];
+            ADSModel *model = [[ADSModel alloc]init];
+            model.linkUrl = [NSString stringWithFormat:@"%@/app/find/turntable?activityId=5&cardCode=%@",H5BaseAddress,[GlobalInstance instance].curUser.cardCode];
+            disVC.infoModel = model;
+            disVC.hidesBottomBarWhenPushed = YES;
+            disVC.isNeedBack = YES;
+            baseVC = disVC;
+        }
+    }else{
           baseVC.hidesBottomBarWhenPushed = YES;
     }
     
- 
-
-//    [(BaseViewController*)self.window.rootViewController showPromptText: @"go跳转的方法" hideAfterDelay: 1.7];
+    
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-      
-      [baseVC showPromptText: @"go跳转延时的方法" hideAfterDelay: 1.7];
+        
         [delegate.curNavVC pushViewController:baseVC animated:YES];
-        [baseVC showPromptText: @"go跳转后的方法" hideAfterDelay: 1.7];
     });
-//    return;
 }
 
-// log NSSet with UTF8
-// if not ,log will be \Uxxx
 - (NSString *)logDic:(NSDictionary *)dic {
     if (![dic count]) {
         return nil;
@@ -595,8 +627,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-    
-    // Required, iOS 7 Support
+
     [JPUSHService handleRemoteNotification:userInfo];
     completionHandler(UIBackgroundFetchResultNewData);
     //    NSLog(@"%@",userInfo);
@@ -613,44 +644,38 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
        pageCodeNotice =  [userInfo valueForKey:@"pageCode"];
       linkUrlNotice=[userInfo valueForKey:@"linkUrl"];
  
-     
-           [[UIApplication sharedApplication]setApplicationIconBadgeNumber:badge/2];
+    [[UIApplication sharedApplication]setApplicationIconBadgeNumber:badge/2];
         //    [JPUSHService setBadge:0];//清空JPush服务器中存储的badge值
-         if ([UIApplication sharedApplication].applicationState != UIApplicationStateActive) {
-         
-             [(BaseViewController*)self.window.rootViewController showPromptText: @"go非前台的方法" hideAfterDelay: 1.7];
-             if (pageCodeNotice!=nil) {
-                 
-                 [self goToYunshiWithInfo:pageCodeNotice];
-                 
-             }
-             if (linkUrlNotice!=nil) {
-                 
-                 UITabBarController *tab = (UITabBarController *)_window.rootViewController;
-                 UINavigationController *nav = tab.viewControllers[tab.selectedIndex];
-                 JumpWebViewController *jumpVC = [[JumpWebViewController alloc] initWithNibName:@"JumpWebViewController" bundle:nil];
-                 jumpVC.title = @"消息详情";
-                 jumpVC.URL = linkUrlNotice;
-                 jumpVC.hidesBottomBarWhenPushed = YES;
-                 [nav pushViewController:jumpVC animated:YES];
-                 
-                 
-             }
-         }
+//         if ([UIApplication sharedApplication].applicationState != UIApplicationStateActive) {
+//
+//             if (pageCodeNotice!=nil) {
+//
+//                 [self goToYunshiWithInfo:pageCodeNotice];
+//
+//             }
+//             if (linkUrlNotice!=nil) {
+//
+//                 UITabBarController *tab = (UITabBarController *)_window.rootViewController;
+//                 UINavigationController *nav = tab.viewControllers[tab.selectedIndex];
+//                 JumpWebViewController *jumpVC = [[JumpWebViewController alloc] initWithNibName:@"JumpWebViewController" bundle:nil];
+//                 jumpVC.title = @"消息详情";
+//                 jumpVC.URL = linkUrlNotice;
+//                 jumpVC.hidesBottomBarWhenPushed = YES;
+//                 [nav pushViewController:jumpVC animated:YES];
+//
+//
+//             }
+//         }
     }
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    
-    // Required,For systems with less than or equal to iOS6
     [JPUSHService handleRemoteNotification:userInfo];
-    
-//    [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];
-//    [JPUSHService setBadge:0];//清空JPush服务器中存储的badge值
     if (pageCodeNotice!=nil) {
-        
-        [self goToYunshiWithInfo:pageCodeNotice];
-        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [self goToYunshiWithInfo:pageCodeNotice];
+        });
     }
     if (linkUrlNotice!=nil) {
         
@@ -661,8 +686,6 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         jumpVC.URL = linkUrlNotice;
         jumpVC.hidesBottomBarWhenPushed = YES;
         [nav pushViewController:jumpVC animated:YES];
-        
-        
     }
 
 }
