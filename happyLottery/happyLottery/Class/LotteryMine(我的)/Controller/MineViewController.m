@@ -152,7 +152,7 @@
 -(void)loadUserInfo{
     
     if (![self.curUser.memberType isEqualToString:@"FREEDOM_PERSON"] && self.curUser.isLogin == YES) {
-        listArray = @[listArray[0],@[listArray[1][0]],listArray[2]];
+        listArray = @[listArray[0],@[listArray[1][0],listArray[1][2]],listArray[2]];
         [self.tableview reloadData];
     }
     

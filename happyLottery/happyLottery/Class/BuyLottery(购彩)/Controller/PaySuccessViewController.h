@@ -9,5 +9,7 @@
 #import "BaseViewController.h"
 
 @interface PaySuccessViewController : BaseViewController
+@property (weak, nonatomic) IBOutlet UILabel *labChuPiaoimg;
+@property(assign,nonatomic) BOOL isMoni;
 @property(nonatomic,strong)NSString *schemeNO;
 @end
