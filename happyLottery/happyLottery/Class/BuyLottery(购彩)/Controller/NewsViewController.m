@@ -29,6 +29,7 @@
     self.viewControllerNo = @"A017";
     [self setViewController];
     [self setTableView];
+    [UITableView refreshHelperWithScrollView:tabNewListView target:self loadNewData:@selector(loadNews) loadMoreData:@selector(loadNews) isBeginRefresh:NO];
     [self loadNews];
 }
 
@@ -37,6 +38,7 @@
     newArray = [NSMutableArray arrayWithCapacity:0];
     NSString *strUlr = [NSString stringWithFormat:@"%@/app/news/moreNews?usageChannel=3",[GlobalInstance instance].homeUrl];
     [singleLoad RequestWithString:strUlr isPost:NO andPara:nil andComplete:^(id data, BOOL isSuccess) {
+        [tabNewListView tableViewEndRefreshCurPageCount:100];
         if (isSuccess == NO) {
             return ;
         }
@@ -65,6 +67,10 @@
     [tabNewListView registerClass:[NewsTableViewCell class] forCellReuseIdentifier:KNewsTableViewCell];
     tabNewListView.rowHeight = 102;
     [tabNewListView reloadData];
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0.1;
 }
 
 #pragma UITableViewDelegate,UITableViewDataSource

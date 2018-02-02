@@ -21,6 +21,7 @@
     UIButton *_btnZongbiao;
     WBLoopProgressView *progressView;
     
+    __weak IBOutlet UIButton *tabNoDataImg;
 }
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollViewContent;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollViewHeight;
@@ -49,6 +50,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    tabNoDataImg.adjustsImageWhenHighlighted = YES;
+    tabNoDataImg.userInteractionEnabled = NO;
     self.viewControllerNo = @"A119";
     self.dateButtons = [NSMutableArray arrayWithCapacity:0];
     self.lotteryMan.delegate = self;
@@ -147,6 +150,15 @@
         [self.dataArray addObject:model];
     }
 
+    
+    tabNoDataImg.hidden = !(self.dataArray.count == 0);
+    if (self.dataArray.count == 0) {
+        self.tabYuceList.bounces = NO;
+    }else{
+        self.tabYuceList.bounces = YES;
+    }
+   
+    
     [self.tabYuceList reloadData];
 }
 

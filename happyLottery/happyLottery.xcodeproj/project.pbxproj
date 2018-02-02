@@ -537,6 +537,8 @@
 		2DE892AD2022C1FA008926A6 /* jczq_hhgg_img.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2DE892AB2022C1F9008926A6 /* jczq_hhgg_img.jpg */; };
 		2DE892AE2022C1FA008926A6 /* jczq_hhgg_table.html in Resources */ = {isa = PBXBuildFile; fileRef = 2DE892AC2022C1FA008926A6 /* jczq_hhgg_table.html */; };
 		2DE892B02022C7A9008926A6 /* jczq_table_spf.html in Resources */ = {isa = PBXBuildFile; fileRef = 2DE892AF2022C7A8008926A6 /* jczq_table_spf.html */; };
+		2DE892B32024069F008926A6 /* pic_kongbaifangan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE892B12024069D008926A6 /* pic_kongbaifangan@2x.png */; };
+		2DE892B42024069F008926A6 /* pic_kongbaifangan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE892B22024069E008926A6 /* pic_kongbaifangan@3x.png */; };
 		F90058DE1FF61327009C8E1C /* NoticeCenterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F90058DC1FF61327009C8E1C /* NoticeCenterTableViewCell.m */; };
 		F90058DF1FF61327009C8E1C /* NoticeCenterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F90058DD1FF61327009C8E1C /* NoticeCenterTableViewCell.xib */; };
 		F90058E51FF61619009C8E1C /* noticedelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F90058E11FF61618009C8E1C /* noticedelete@2x.png */; };
@@ -1632,6 +1634,8 @@
 		2DE892AB2022C1F9008926A6 /* jczq_hhgg_img.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jczq_hhgg_img.jpg; sourceTree = "<group>"; };
 		2DE892AC2022C1FA008926A6 /* jczq_hhgg_table.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = jczq_hhgg_table.html; sourceTree = "<group>"; };
 		2DE892AF2022C7A8008926A6 /* jczq_table_spf.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = jczq_table_spf.html; sourceTree = "<group>"; };
+		2DE892B12024069D008926A6 /* pic_kongbaifangan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pic_kongbaifangan@2x.png"; sourceTree = "<group>"; };
+		2DE892B22024069E008926A6 /* pic_kongbaifangan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pic_kongbaifangan@3x.png"; sourceTree = "<group>"; };
 		F90058DB1FF61327009C8E1C /* NoticeCenterTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeCenterTableViewCell.h; sourceTree = "<group>"; };
 		F90058DC1FF61327009C8E1C /* NoticeCenterTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeCenterTableViewCell.m; sourceTree = "<group>"; };
 		F90058DD1FF61327009C8E1C /* NoticeCenterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoticeCenterTableViewCell.xib; sourceTree = "<group>"; };
@@ -2651,6 +2655,8 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				2DE892B12024069D008926A6 /* pic_kongbaifangan@2x.png */,
+				2DE892B22024069E008926A6 /* pic_kongbaifangan@3x.png */,
 				2D40CAB3201F2BB000DDCFE3 /* launchImage.png */,
 				2D40CAB0201EEDC600DDCFE3 /* pic@2x.png */,
 				2D40CAAF201EEDC500DDCFE3 /* pic@3x.png */,
@@ -4387,6 +4393,7 @@
 				2D0E23F32019A83C0098DA40 /* points@3x.png in Resources */,
 				2D0E239E20181C790098DA40 /* checkBox_default@3x.png in Resources */,
 				2D739D061FEB853500264044 /* btnbackimgNomal@2x.png in Resources */,
+				2DE892B32024069F008926A6 /* pic_kongbaifangan@2x.png in Resources */,
 				2D739CDD1FEB44F400264044 /* wanfajieshao@2x.png in Resources */,
 				2D739CD51FEB44F400264044 /* rangqiuzheng@3x.png in Resources */,
 				2D06003E1FFDDD51009E7568 /* schemedetailsymbol@3x.png in Resources */,
@@ -4588,6 +4595,7 @@
 				2D739CD91FEB44F400264044 /* liansaixuanze@2x.png in Resources */,
 				F92D03F02005F3B400C26E7A /* assisthelp@3x.png in Resources */,
 				2D739CD41FEB44F400264044 /* yuanjiaowukuangselect@2x.png in Resources */,
+				2DE892B42024069F008926A6 /* pic_kongbaifangan@3x.png in Resources */,
 				F93204F31FECF98C00E22A27 /* pass5.png in Resources */,
 				2D8CC00B1FF3958D00CC367F /* icon_normal@3x.png in Resources */,
 				F9632F4E200C8C9800F69D23 /* arrowup@3x.png in Resources */,

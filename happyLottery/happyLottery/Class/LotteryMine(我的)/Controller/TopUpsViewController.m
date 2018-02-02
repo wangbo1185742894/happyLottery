@@ -77,14 +77,15 @@
         
         if (item.selected == YES) {
          item.layer.borderColor = SystemGreen.CGColor;
-        [item setBackgroundImage:[UIImage imageWithColor:RGBCOLOR(208, 244, 233)] forState:UIControlStateSelected];
+        [item setBackgroundImage:[UIImage imageWithColor:SystemGreen] forState:UIControlStateSelected];
+            [item setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 
         }else{
             item.layer.borderColor = TFBorderColor.CGColor;
             [item setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateSelected];
+            [item setTitleColor:SystemLightGray forState:UIControlStateNormal];
         }
         item.layer.borderWidth = 1;
-        
         item.layer.cornerRadius = 4;
         item.layer.masksToBounds = YES;
     }
