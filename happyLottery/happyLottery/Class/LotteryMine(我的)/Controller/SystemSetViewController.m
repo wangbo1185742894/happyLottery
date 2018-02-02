@@ -68,8 +68,10 @@
 
 #pragma  mark - checkUpdateNetWork
 - (void)checkUpdateNetWork {
-    NSString *version = @"release";
-    NSString * string = [NSString stringWithFormat:@"http://ct.11max.com//ClientVersion/CheckUpdate?versionCode=%@&mobileos=ios&appname=com.xaonly.tbz.ios&subversion=%@",@"1",version];
+    NSString *subversion = @"release";
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey];
+    NSString *curVerSion = version;
+    NSString * string = [NSString stringWithFormat:@"http://ct.11max.com//ClientVersion/CheckUpdate?versionCode=%@&mobileos=ios&appname=com.xaonly.tbz.ios&subversion=%@",curVerSion,subversion];
     netWorkHelper *helper = [[netWorkHelper alloc] init];
     [helper getRequestMethodWithUrlstring:string parameter:nil];
     helper.delegate = self;
