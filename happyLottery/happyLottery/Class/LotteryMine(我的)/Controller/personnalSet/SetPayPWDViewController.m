@@ -83,11 +83,16 @@
 }
 - (void)delayMethod{
     if (self.isForeget) {
+        BOOL isPop = NO;
         for (BaseViewController *baseVC in self.navigationController.viewControllers) {
             if ([baseVC isKindOfClass:[PersonnalCenterViewController class]]) {
                 [self.navigationController popToViewController:baseVC animated:YES];
+                isPop = YES;
                 break;
             }
+        }
+        if (isPop == NO) {
+            [self.navigationController popToRootViewControllerAnimated:YES];
         }
     }else{
         

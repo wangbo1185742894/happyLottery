@@ -261,4 +261,8 @@
 }
 */
 
+-(void)findPayPwd{
+    [self forgetPayPwd];
+}
+
 @end

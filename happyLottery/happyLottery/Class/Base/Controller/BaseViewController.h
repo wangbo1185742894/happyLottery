@@ -60,4 +60,5 @@
 
 -(void)cleanWebviewCache;
 - (void)removeWebCache;
+-(void)forgetPayPwd;
 @end

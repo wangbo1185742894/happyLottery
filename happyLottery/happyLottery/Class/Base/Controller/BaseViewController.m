@@ -15,7 +15,7 @@
 #include <net/if_dl.h>
 #import <sys/utsname.h>
 #import "LoginViewController.h"
-
+#import "SetPayPWDViewController.h"
 #import <WebKit/WebKit.h>
 
 
@@ -589,7 +589,12 @@
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
 }
 
-
+-(void)forgetPayPwd{
+    SetPayPWDViewController *spvc = [[SetPayPWDViewController alloc]init];
+    spvc.titleStr = @"忘记支付密码";
+    spvc.isForeget = YES;
+    [self.navigationController pushViewController:spvc animated:YES];
+}
 
 
 @end
