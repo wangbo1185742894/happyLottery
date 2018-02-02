@@ -42,7 +42,7 @@
                             <constraint firstAttribute="width" constant="25" id="sgl-kz-5do"/>
                         </constraints>
                         <state key="normal" image="icon_zhifu_normal.png"/>
-                        <state key="selected" image="icon_zhifu_selceted.png" backgroundImage="chongzhichecked.png"/>
+                        <state key="selected" image="zhifuchecked.png" backgroundImage="chongzhichecked.png"/>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E0H-kw-DDo">
                         <rect key="frame" x="56" y="42" width="353" height="12"/>
@@ -78,6 +78,6 @@
     <resources>
         <image name="chongzhichecked.png" width="17" height="17"/>
         <image name="icon_zhifu_normal.png" width="21" height="21"/>
-        <image name="icon_zhifu_selceted.png" width="21" height="21"/>
+        <image name="zhifuchecked.png" width="17" height="17"/>
     </resources>
 </document>
