@@ -447,10 +447,10 @@
                     NSString *isread = @"0";
                     NSString *nid =[NSString stringWithFormat:@"A%d",i];
                     
-                    FMResultSet*  rs = [self.fmdb executeQuery:@"select * from SystemNotice where id=?",notice._id];
+                    FMResultSet*  rs = [self.fmdb executeQuery:@"select * from SystemNotice where noticeid=? and cardcode=?",notice._id,cardcode];
                     BOOL isExit = NO;
                     do {
-                        NSString *itemId = [rs stringForColumn:@"id"];
+                        NSString *itemId = [rs stringForColumn:@"noticeid"];
                         if ([itemId isEqualToString:notice._id]) {
                             isExit = YES;
                             break;
@@ -460,7 +460,7 @@
                     
                     if (!isExit) {
                         
-                        BOOL result =  [self.fmdb executeUpdate:[NSString stringWithFormat:@"insert into SystemNotice (title,content, msgTime , cardcode ,isread,id,type,pagecode,url) values ('%@', '%@', '%@', '%@', '%@', '%@','%@', '%@', '%@');",notice.title,notice.content,notice.releaseTime,cardcode,isread,notice._id,notice.type,notice.thumbnailCode,notice.linkUrl]];
+                        BOOL result =  [self.fmdb executeUpdate:[NSString stringWithFormat:@"insert into SystemNotice (title,content, msgTime , cardcode ,isread,noticeid,type,pagecode,url) values ('%@', '%@', '%@', '%@', '%@', '%@','%@', '%@', '%@');",notice.title,notice.content,notice.releaseTime,cardcode,isread,notice._id,notice.type,notice.thumbnailCode,notice.linkUrl]];
                         if (result) {
                             [self.fmdb close];
                         }
@@ -487,7 +487,7 @@
         //    FMResultSet *rs = [self.fmdb executeQuery:@"select * from vcUserPushMsg"];
         // 2.遍历结果集
         
-        FMResultSet*  rs = [self.fmdb executeQuery:@"select * from SystemNotice where isread=? ",@"0"];
+        FMResultSet*  rs = [self.fmdb executeQuery:@"select * from SystemNotice where isread=? and cardcode=?",@"0",self.curUser.cardCode];
    
         
         while (rs.next) {

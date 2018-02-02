@@ -148,7 +148,7 @@
             notice.cardcode = [rs stringForColumn:@"cardcode"];
             notice.releaseTime = [rs stringForColumn:@"msgTime"];
             notice.isread = [rs stringForColumn:@"isread"];
-            notice._id = [rs stringForColumn:@"id"];
+            notice._id = [rs stringForColumn:@"noticeid"];
             notice.type = [rs stringForColumn:@"type"];
                notice.thumbnailCode = [rs stringForColumn:@"pagecode"];
                notice.linkUrl = [rs stringForColumn:@"url"];
@@ -291,7 +291,7 @@
                 cardcode = @"cardcode";
             }
             NSString *isread = @"1";
-            BOOL result =  [self.fmdb executeUpdate:[NSString stringWithFormat:@"update SystemNotice set isread = '%@' where id = '%@';",isread,notice._id]];
+            BOOL result =  [self.fmdb executeUpdate:[NSString stringWithFormat:@"update SystemNotice set isread = '%@' where noticeid = '%@';",isread,notice._id]];
            
             if (result) {
                 [self.fmdb close];

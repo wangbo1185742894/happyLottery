@@ -53,7 +53,7 @@
                             <rect key="frame" x="0.0" y="210" width="375" height="393"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ND2-YG-fwX">
-                                    <rect key="frame" x="10" y="314" width="355" height="44"/>
+                                    <rect key="frame" x="10" y="309" width="355" height="44"/>
                                     <color key="backgroundColor" red="0.067504443230000002" green="0.78096091749999996" blue="0.57203906770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="44" id="LXW-VV-2Sq"/>
@@ -72,10 +72,10 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="skG-lF-dea">
-                                    <rect key="frame" x="15" y="254" width="30" height="30"/>
+                                    <rect key="frame" x="15" y="254" width="25" height="25"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="30" id="W1X-Zn-7sM"/>
-                                        <constraint firstAttribute="height" constant="30" id="Zg9-at-Tyu"/>
+                                        <constraint firstAttribute="width" constant="25" id="W1X-Zn-7sM"/>
+                                        <constraint firstAttribute="height" constant="25" id="Zg9-at-Tyu"/>
                                     </constraints>
                                     <state key="normal" image="ok.png"/>
                                     <state key="selected" image="ok.png"/>
@@ -84,7 +84,7 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我已阅读并同意" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5qn-p2-5L9">
-                                    <rect key="frame" x="45" y="260.5" width="100" height="17"/>
+                                    <rect key="frame" x="40" y="258" width="100" height="17"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" red="0.72148895260000001" green="0.72161453959999999" blue="0.72148102520000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
@@ -107,7 +107,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W5P-de-GC4">
-                                    <rect key="frame" x="145" y="254" width="123" height="30"/>
+                                    <rect key="frame" x="140" y="251.5" width="123" height="30"/>
                                     <state key="normal" title="《会员充值说明》">
                                         <color key="titleColor" red="0.067504443230000002" green="0.78096091749999996" blue="0.57203906770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
