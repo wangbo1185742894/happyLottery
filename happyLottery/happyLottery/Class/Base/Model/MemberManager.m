@@ -1318,7 +1318,7 @@
     };
     
     NSMutableDictionary * paramDic1 = [NSMutableDictionary dictionaryWithCapacity:1];
-    paramDic1[@"arg1"] = [self actionEncrypt:[self JsonFromId:clientInfo]];
+    paramDic1[@"params"] = [self actionEncrypt:[self JsonFromId:clientInfo]];
     
     SOAPRequest *request = [self requestForAPI:APISaveClientInfo withParam:paramDic1];
     

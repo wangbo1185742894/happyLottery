@@ -88,10 +88,9 @@
     
     if (textField.text.length + string.length > 8) {
         return NO;
-        
     }
     
-    NSString * regex = @"^[A-Za-z0-9]";
+    NSString * regex = @"^[A-Za-z0-9]{0,}$";
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
     return  [pred evaluateWithObject:string];
     
