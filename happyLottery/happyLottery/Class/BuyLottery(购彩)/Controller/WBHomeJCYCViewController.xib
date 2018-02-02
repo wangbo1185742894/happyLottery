@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WBHomeJCYCViewController">
             <connections>
+                <outlet property="tabNoDataImg" destination="XRs-43-RG1" id="QVa-8t-oTB"/>
                 <outlet property="tabYuceList" destination="L2G-eB-JQK" id="Qep-fC-uIS"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -24,15 +25,33 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XRs-43-RG1">
+                    <rect key="frame" x="50" y="387" width="275" height="200"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="c5t-G8-WZ3"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <inset key="titleEdgeInsets" minX="-80" minY="100" maxX="20" maxY="0.0"/>
+                    <inset key="imageEdgeInsets" minX="90" minY="-60" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="战报未出，请先查看往期战绩" image="pic_kongbaifangan.png">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="L2G-eB-JQK" secondAttribute="bottom" id="2QQ-ti-Q5S"/>
                 <constraint firstAttribute="trailing" secondItem="L2G-eB-JQK" secondAttribute="trailing" id="CTU-eQ-aUa"/>
                 <constraint firstItem="L2G-eB-JQK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="KrI-E7-CJI"/>
+                <constraint firstItem="XRs-43-RG1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="TXg-yn-PhN"/>
+                <constraint firstAttribute="bottom" secondItem="XRs-43-RG1" secondAttribute="bottom" constant="80" id="ipx-SX-TDU"/>
+                <constraint firstAttribute="trailing" secondItem="XRs-43-RG1" secondAttribute="trailing" constant="50" id="oXY-k2-10H"/>
                 <constraint firstItem="L2G-eB-JQK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="vcB-Xx-hnH"/>
             </constraints>
             <point key="canvasLocation" x="35.5" y="60.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="pic_kongbaifangan.png" width="86" height="89"/>
+    </resources>
 </document>
