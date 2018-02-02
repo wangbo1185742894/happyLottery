@@ -89,6 +89,20 @@
 			<key>title</key>
 			<string>推荐码</string>
 		</dict>
+        <dict>
+            <key>showRedPoint</key>
+            <false/>
+            <key>needLogin</key>
+            <true/>
+            <key>ShowIconRight</key>
+            <true/>
+            <key>actionClassName</key>
+            <string>FeedbackViewController</string>
+            <key>icon</key>
+            <string>feedback</string>
+            <key>title</key>
+            <string>意见反馈</string>
+        </dict>
 	</array>
 	<array>
 		<dict>
@@ -104,20 +118,6 @@
 			<string>MyHelpViewController</string>
 			<key>ShowIconRight</key>
 			<true/>
-		</dict>
-		<dict>
-			<key>showRedPoint</key>
-			<false/>
-			<key>needLogin</key>
-			<true/>
-			<key>ShowIconRight</key>
-			<true/>
-			<key>actionClassName</key>
-			<string>FeedbackViewController</string>
-			<key>icon</key>
-			<string>feedback</string>
-			<key>title</key>
-			<string>意见反馈</string>
 		</dict>
 		<dict>
 			<key>title</key>
