@@ -264,7 +264,7 @@
                                     <rect key="frame" x="134" y="220" width="107" height="14"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <state key="normal" title="《用户服务协议》">
-                                        <color key="titleColor" red="0.23836529249999999" green="0.37659788129999999" blue="0.90302807090000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="titleColor" red="0.20288130639999999" green="0.77987009289999998" blue="0.57245916129999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                     <connections>
                                         <action selector="showRuler:" destination="-1" eventType="touchUpInside" id="P9J-vv-Q9O"/>
@@ -320,8 +320,8 @@
                         <action selector="actionTouzhu:" destination="-1" eventType="touchUpInside" id="aVa-IM-DzU"/>
                     </connections>
                 </button>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jqd-nv-tAE">
-                    <rect key="frame" x="0.0" y="111" width="375" height="512"/>
+                <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jqd-nv-tAE">
+                    <rect key="frame" x="0.0" y="111" width="375" height="370"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rUH-9e-nVj">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>

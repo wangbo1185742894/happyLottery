@@ -742,6 +742,7 @@
         [self showPromptText:@"暂无详情" hideAfterDelay:1.7];
         return;
     }
+    matchDetailVC.curPlayType = @"jczq";
     [self.navigationController pushViewController:matchDetailVC animated:YES];
 }
 

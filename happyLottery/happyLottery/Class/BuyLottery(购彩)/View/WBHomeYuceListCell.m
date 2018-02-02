@@ -66,13 +66,13 @@
     self.labTextYuce.layer.cornerRadius = 2;
     
     self.labMatchProce.hidden = NO;
-    [self.btnSheng setTitleColor:SystemGreen forState:UIControlStateNormal];
-    [self.btnPing setTitleColor:SystemGreen forState:UIControlStateNormal];
-    [self.btnFu setTitleColor:SystemGreen forState:UIControlStateNormal];
+    [self.btnSheng setTitleColor:SystemGray forState:UIControlStateNormal];
+    [self.btnPing setTitleColor:SystemGray forState:UIControlStateNormal];
+    [self.btnFu setTitleColor:SystemGray forState:UIControlStateNormal];
     
-    [self.btnSheng setTitleColor:RGBCOLOR(51, 153, 204) forState:UIControlStateSelected];
-    [self.btnPing setTitleColor:RGBCOLOR(51, 153, 204) forState:UIControlStateSelected];
-    [self.btnFu setTitleColor:RGBCOLOR(51, 153, 204) forState:UIControlStateSelected];
+    [self.btnSheng setTitleColor:SystemGray forState:UIControlStateSelected];
+    [self.btnPing setTitleColor:SystemGray forState:UIControlStateSelected];
+    [self.btnFu setTitleColor:SystemGray forState:UIControlStateSelected];
     
     self.labMatchState.adjustsFontSizeToFitWidth = YES;
     self.leaName.text = model.leagueName;

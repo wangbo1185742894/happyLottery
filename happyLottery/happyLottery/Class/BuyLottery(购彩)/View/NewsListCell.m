@@ -62,10 +62,21 @@
         progressView = [[LoopProgressView alloc]initWithFrame:CGRectMake(KscreenWidth-124,20, 55, 55)];
         progressView.color1 = SystemBlue;
         progressView.color2 = SystemLightGray;
-        progressView.progress = [model.predictIndex doubleValue] / 100.0;
+      progressView.progress = [model.predictIndex doubleValue] / 100.0;
         
         [self addSubview:progressView];
+    }else{
+        if (progressView.progress !=[model.predictIndex doubleValue]/100) {
+            [progressView removeFromSuperview];
+            progressView = [[LoopProgressView alloc]initWithFrame:CGRectMake(KscreenWidth-124,20, 55, 55)];
+            progressView.color1 = SystemBlue;
+            progressView.color2 = SystemLightGray;
+            
+            progressView.progress = [model.predictIndex doubleValue] / 100.0;
+            [self addSubview:progressView];
+        }
     }
+    
     
 
 
@@ -149,9 +160,19 @@
         progressView = [[LoopProgressView alloc]initWithFrame:CGRectMake(KscreenWidth-124,20, 55, 55)];
         progressView.color1 = SystemBlue;
         progressView.color2 = SystemLightGray;
-        progressView.progress = [model.predictIndex doubleValue] / 100.0;
         
+        progressView.progress = [model.predictIndex doubleValue] / 100.0;
         [self addSubview:progressView];
+    }else{
+        if (progressView.progress !=[model.predictIndex doubleValue]/100) {
+            [progressView removeFromSuperview];
+            progressView = [[LoopProgressView alloc]initWithFrame:CGRectMake(KscreenWidth-124,20, 55, 55)];
+            progressView.color1 = SystemBlue;
+            progressView.color2 = SystemLightGray;
+            
+            progressView.progress = [model.predictIndex doubleValue] / 100.0;
+            [self addSubview:progressView];
+        }
     }
     
 

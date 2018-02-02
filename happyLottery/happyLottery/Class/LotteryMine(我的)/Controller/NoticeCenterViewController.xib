@@ -12,8 +12,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NoticeCenterViewController">
             <connections>
                 <outlet property="bottom" destination="PLf-or-RSe" id="ZxW-c7-n5W"/>
-                <outlet property="emptyLab" destination="dNI-hf-De8" id="8XC-Iu-xlH"/>
-                <outlet property="enptyImage" destination="74Y-7C-VAy" id="Bp3-sJ-Dln"/>
                 <outlet property="line1" destination="OTy-UM-qO9" id="BSF-fx-U3m"/>
                 <outlet property="line2" destination="dw6-Y1-ygD" id="Pc0-Sq-Jeh"/>
                 <outlet property="personBtn" destination="djI-Zq-miP" id="n5T-RS-BGY"/>
@@ -32,23 +30,6 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BUB-xI-OYZ">
                     <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                     <subviews>
-                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noticeempty.png" translatesAutoresizingMaskIntoConstraints="NO" id="74Y-7C-VAy">
-                            <rect key="frame" x="120" y="244" width="134" height="115"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="134" id="Cqt-Fa-H5U"/>
-                                <constraint firstAttribute="height" constant="115" id="ueY-mw-2NC"/>
-                            </constraints>
-                        </imageView>
-                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="空空如也，暂无消息。" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dNI-hf-De8">
-                            <rect key="frame" x="83" y="406" width="209" height="21"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="21" id="5VH-NT-wEt"/>
-                                <constraint firstAttribute="width" constant="209" id="bja-BM-jeF"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mof-MB-mho">
                             <rect key="frame" x="0.0" y="0.0" width="187.5" height="40"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -97,8 +78,8 @@
                                 <constraint firstAttribute="height" constant="3" id="1sI-er-Dmd"/>
                             </constraints>
                         </imageView>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2NO-vu-8JA">
-                            <rect key="frame" x="0.0" y="313" width="375" height="290"/>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2NO-vu-8JA">
+                            <rect key="frame" x="0.0" y="50" width="375" height="553"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="553" id="dXg-Hy-8tv"/>
@@ -116,7 +97,6 @@
                     <constraints>
                         <constraint firstItem="dw6-Y1-ygD" firstAttribute="width" secondItem="OTy-UM-qO9" secondAttribute="width" id="8qB-PS-Kep"/>
                         <constraint firstItem="eWp-Yc-wfr" firstAttribute="leading" secondItem="BUB-xI-OYZ" secondAttribute="leading" id="BTV-13-Hsk"/>
-                        <constraint firstItem="dNI-hf-De8" firstAttribute="centerX" secondItem="BUB-xI-OYZ" secondAttribute="centerX" id="F13-zv-78x"/>
                         <constraint firstItem="eWp-Yc-wfr" firstAttribute="top" secondItem="OTy-UM-qO9" secondAttribute="bottom" constant="6" id="F49-vR-Wi6"/>
                         <constraint firstItem="OTy-UM-qO9" firstAttribute="leading" secondItem="BUB-xI-OYZ" secondAttribute="leading" id="F7e-7H-twU"/>
                         <constraint firstItem="mof-MB-mho" firstAttribute="top" secondItem="BUB-xI-OYZ" secondAttribute="top" id="Fht-Lc-uuf"/>
@@ -133,9 +113,6 @@
                         <constraint firstItem="2NO-vu-8JA" firstAttribute="leading" secondItem="BUB-xI-OYZ" secondAttribute="leading" id="cyd-iI-qzw"/>
                         <constraint firstItem="djI-Zq-miP" firstAttribute="top" secondItem="BUB-xI-OYZ" secondAttribute="top" id="djV-IC-Myf"/>
                         <constraint firstAttribute="bottom" secondItem="eWp-Yc-wfr" secondAttribute="bottom" id="e7M-1X-GWr"/>
-                        <constraint firstItem="74Y-7C-VAy" firstAttribute="centerX" secondItem="BUB-xI-OYZ" secondAttribute="centerX" id="g6C-ye-jWe"/>
-                        <constraint firstItem="dNI-hf-De8" firstAttribute="top" secondItem="74Y-7C-VAy" secondAttribute="bottom" constant="47" id="hQu-54-je8"/>
-                        <constraint firstItem="74Y-7C-VAy" firstAttribute="centerY" secondItem="BUB-xI-OYZ" secondAttribute="centerY" id="lkX-xf-Pdy"/>
                         <constraint firstItem="dw6-Y1-ygD" firstAttribute="top" secondItem="BUB-xI-OYZ" secondAttribute="top" constant="41" id="ub4-J6-7wI"/>
                         <constraint firstAttribute="trailing" secondItem="dw6-Y1-ygD" secondAttribute="trailing" id="ukc-vC-lpN"/>
                     </constraints>
@@ -151,7 +128,4 @@
             <point key="canvasLocation" x="34.5" y="54.5"/>
         </view>
     </objects>
-    <resources>
-        <image name="noticeempty.png" width="134" height="115"/>
-    </resources>
 </document>

@@ -30,13 +30,12 @@
     self.webContentView.scrollView.bounces = NO;
     self.webContentView.delegate = self;
 
+    
     NSString *cardCode = @"";
     if (self.curUser.isLogin == YES) {
         cardCode = self.curUser.cardCode;
     }
-    
     NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/app/mall/index?cardCode=%@",H5BaseAddress,cardCode]] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:20];
-    
     [self.webContentView loadRequest:request];
     [self setWebView];
 }
@@ -45,6 +44,7 @@
     
     if (navigationType == UIWebViewNavigationTypeBackForward) {
         isBack = YES;
+        webView.hidden = YES;
     }else{
         isBack =NO;
     }
@@ -53,10 +53,20 @@
     NSString *requsetIngUrlStr =[NSString stringWithFormat:@"%@",request.URL];
     if ([requsetIngUrlStr containsString:@"/index"]) {
         self.navigationController.navigationBar.hidden = NO;
-        webDisTop.constant = 64;
+        if ([Utility isIOS11After]) {
+            webDisTop.constant = 0;
+        }else{
+            webDisTop.constant = 64;
+        }
+        
     }else{
         self.navigationController.navigationBar.hidden = YES;
-        webDisTop.constant = 20;
+        if ([Utility isIOS11After]) {
+            webDisTop.constant = 0;
+        }else{
+             webDisTop.constant = 20;
+        }
+       
     }
     return YES;
 }
@@ -67,7 +77,11 @@
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
     if (isBack) {
+        
         [self.webContentView reload];
+        
+    }else{
+        webView.hidden = NO;
     }
     [self hideLoadingView];
     context = [webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
