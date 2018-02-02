@@ -37,14 +37,14 @@
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="bY5-Wk-YL5">
-                        <rect key="frame" x="285" y="11" width="11" height="21"/>
+                        <rect key="frame" x="274" y="11" width="22" height="22"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="21" id="Glv-wu-Lgh"/>
-                            <constraint firstAttribute="width" constant="11" id="Hpo-Ke-23y"/>
+                            <constraint firstAttribute="height" constant="22" id="Glv-wu-Lgh"/>
+                            <constraint firstAttribute="width" constant="22" id="Hpo-Ke-23y"/>
                         </constraints>
                     </imageView>
                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="number_bj" translatesAutoresizingMaskIntoConstraints="NO" id="ULD-Sd-zlC">
-                        <rect key="frame" x="265" y="17" width="10" height="10"/>
+                        <rect key="frame" x="254" y="17" width="10" height="10"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="10" id="eCF-Y8-aiW"/>
                             <constraint firstAttribute="height" constant="10" id="wY7-ab-h3t"/>

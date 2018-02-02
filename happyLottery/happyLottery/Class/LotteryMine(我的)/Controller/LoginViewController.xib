@@ -52,10 +52,10 @@
                             <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E2J-lh-Hog">
-                            <rect key="frame" x="43" y="282" width="288" height="40"/>
+                            <rect key="frame" x="43" y="282" width="288" height="44"/>
                             <color key="backgroundColor" red="0.067504443228244781" green="0.78096091747283936" blue="0.57203906774520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="40" id="0dZ-9D-iM9"/>
+                                <constraint firstAttribute="height" constant="44" id="0dZ-9D-iM9"/>
                                 <constraint firstAttribute="width" constant="288" id="8uc-uE-Hgf"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -63,7 +63,7 @@
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <state key="disabled" backgroundImage="button_forbidden.png">
-                                <color key="titleColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleColor" red="0.61960784313725492" green="0.61960784313725492" blue="0.61960784313725492" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -90,7 +90,7 @@
                             </constraints>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K7I-hi-8zm">
-                            <rect key="frame" x="43" y="342" width="99" height="24"/>
+                            <rect key="frame" x="43" y="346" width="99" height="24"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="24" id="7Cj-Nq-CnZ"/>
                                 <constraint firstAttribute="width" constant="99" id="WGe-o3-EU7"/>
@@ -104,7 +104,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iIV-1h-bv9">
-                            <rect key="frame" x="232" y="341" width="99" height="24"/>
+                            <rect key="frame" x="232" y="345" width="99" height="24"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="24" id="HOt-9O-7g0"/>
                                 <constraint firstAttribute="width" constant="99" id="qO5-ll-Kek"/>
