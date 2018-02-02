@@ -27,7 +27,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wmB-qm-cHA">
                             <rect key="frame" x="0.0" y="30" width="375" height="293"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dotted.png" translatesAutoresizingMaskIntoConstraints="NO" id="eWJ-r8-GZJ">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="linehelp.png" translatesAutoresizingMaskIntoConstraints="NO" id="eWJ-r8-GZJ">
                                     <rect key="frame" x="8" y="59" width="359" height="1"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="359" id="RTM-Ux-jU0"/>
@@ -93,6 +93,6 @@
         </view>
     </objects>
     <resources>
-        <image name="dotted.png" width="1" height="1"/>
+        <image name="linehelp.png" width="362" height="1"/>
     </resources>
 </document>
