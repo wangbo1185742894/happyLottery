@@ -70,7 +70,7 @@
     
     [tfUserPwd setLeftView:@"password" rightView:nil];
     tfUserPwd.leftViewMode=UITextFieldViewModeAlways;
-    [tfRecomCode setLeftView:@"recommend" rightView:nil];
+    [tfRecomCode setLeftView:@"registerCode" rightView:nil];
     tfRecomCode.leftViewMode=UITextFieldViewModeAlways;
 }
 

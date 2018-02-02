@@ -113,14 +113,14 @@
                                     </connections>
                                 </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="attention.png" translatesAutoresizingMaskIntoConstraints="NO" id="dNL-xi-aeu">
-                                    <rect key="frame" x="14" y="168" width="30" height="30"/>
+                                    <rect key="frame" x="14" y="160" width="26" height="26"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="30" id="hGz-4Q-Rhv"/>
-                                        <constraint firstAttribute="height" constant="30" id="t47-bM-ZsQ"/>
+                                        <constraint firstAttribute="width" constant="26" id="hGz-4Q-Rhv"/>
+                                        <constraint firstAttribute="height" constant="26" id="t47-bM-ZsQ"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="为保证您提现和领奖成功，请如实填写相应信息，姓名只可填写一次，过后不可修改！" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPH-j7-edN">
-                                    <rect key="frame" x="56" y="150" width="311" height="65"/>
+                                    <rect key="frame" x="52" y="142" width="311" height="65"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="65" id="fYZ-W2-gtu"/>
                                         <constraint firstAttribute="width" constant="311" id="kAJ-V5-Twa"/>
@@ -130,7 +130,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lbu-f4-Wcp">
-                                    <rect key="frame" x="22" y="245" width="331" height="40"/>
+                                    <rect key="frame" x="22" y="227" width="331" height="40"/>
                                     <color key="backgroundColor" red="0.067504443230000002" green="0.78096091749999996" blue="0.57203906770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="vjr-yy-G4J"/>
@@ -206,13 +206,13 @@
                                 <constraint firstItem="HgA-UC-Hx3" firstAttribute="leading" secondItem="wBT-Dj-GQb" secondAttribute="leading" id="Bbl-F6-0vV"/>
                                 <constraint firstAttribute="trailing" secondItem="Y9U-KW-EMP" secondAttribute="trailing" constant="15" id="Bd5-pg-A0x"/>
                                 <constraint firstItem="6EN-hk-slj" firstAttribute="top" secondItem="wBT-Dj-GQb" secondAttribute="top" constant="20" id="JiR-HE-Ips"/>
-                                <constraint firstItem="Lbu-f4-Wcp" firstAttribute="top" secondItem="TPH-j7-edN" secondAttribute="bottom" constant="30" id="KX0-gI-8uR"/>
+                                <constraint firstItem="Lbu-f4-Wcp" firstAttribute="top" secondItem="TPH-j7-edN" secondAttribute="bottom" constant="20" id="KX0-gI-8uR"/>
                                 <constraint firstItem="Lbu-f4-Wcp" firstAttribute="leading" secondItem="wBT-Dj-GQb" secondAttribute="leading" constant="22" id="MbQ-Va-CR8"/>
                                 <constraint firstItem="6EN-hk-slj" firstAttribute="leading" secondItem="wBT-Dj-GQb" secondAttribute="leading" id="NHU-Wg-z6X"/>
-                                <constraint firstItem="TPH-j7-edN" firstAttribute="top" secondItem="uSj-SE-VpE" secondAttribute="bottom" constant="8" id="NpO-Li-2y9"/>
+                                <constraint firstItem="TPH-j7-edN" firstAttribute="top" secondItem="uSj-SE-VpE" secondAttribute="bottom" id="NpO-Li-2y9"/>
                                 <constraint firstItem="uSj-SE-VpE" firstAttribute="leading" secondItem="wBT-Dj-GQb" secondAttribute="leading" id="OJY-q3-wtN"/>
                                 <constraint firstItem="dNL-xi-aeu" firstAttribute="leading" secondItem="wBT-Dj-GQb" secondAttribute="leading" constant="14" id="PiS-10-rzU"/>
-                                <constraint firstItem="dNL-xi-aeu" firstAttribute="top" secondItem="uSj-SE-VpE" secondAttribute="bottom" constant="26" id="QkH-BU-9qk"/>
+                                <constraint firstItem="dNL-xi-aeu" firstAttribute="top" secondItem="uSj-SE-VpE" secondAttribute="bottom" constant="18" id="QkH-BU-9qk"/>
                                 <constraint firstItem="Y9U-KW-EMP" firstAttribute="leading" secondItem="0XD-gV-CkV" secondAttribute="trailing" constant="10" id="Ux8-Om-Tu1"/>
                                 <constraint firstItem="u7s-4W-noo" firstAttribute="top" secondItem="wBT-Dj-GQb" secondAttribute="top" constant="25" id="Xsp-i9-c2S"/>
                                 <constraint firstItem="HgA-UC-Hx3" firstAttribute="top" secondItem="6EN-hk-slj" secondAttribute="bottom" constant="1" id="aMr-bp-gaF"/>
