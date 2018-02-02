@@ -36,7 +36,7 @@
                             <constraint firstAttribute="width" constant="25" id="xpO-lk-hGR"/>
                         </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrows_ _icon_default.png" translatesAutoresizingMaskIntoConstraints="NO" id="bY5-Wk-YL5">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="bY5-Wk-YL5">
                         <rect key="frame" x="285" y="11" width="11" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="Glv-wu-Lgh"/>
@@ -73,7 +73,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="arrows_ _icon_default.png" width="5" height="10"/>
         <image name="number_bj" width="16" height="16"/>
+        <image name="rightIcon.png" width="22" height="22"/>
     </resources>
 </document>

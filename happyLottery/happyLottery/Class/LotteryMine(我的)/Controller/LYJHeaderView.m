@@ -56,7 +56,8 @@
     
     //线
     UIImageView *line = [[UIImageView alloc] initWithFrame:CGRectMake(10, 44, KscreenWidth-20, 1)];
-    line.image = [UIImage imageNamed:@"dotted.png"];
+    line.image = [UIImage imageNamed:@"linehelp.png"];
+    //line.backgroundColor = [UIColor grayColor];
     [self.contentView addSubview:line];
     self.contentView.backgroundColor=[UIColor whiteColor];
 }

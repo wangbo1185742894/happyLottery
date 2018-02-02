@@ -29,7 +29,7 @@
                             <rect key="frame" x="0.0" y="29" width="377" height="62"/>
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="leading" contentVerticalAlignment="center" placeholder="请输入昵称" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Gh-go-58l">
-                                    <rect key="frame" x="40" y="2" width="327" height="60"/>
+                                    <rect key="frame" x="20" y="2" width="347" height="60"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
                                     <constraints>
@@ -54,7 +54,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="8Gh-go-58l" secondAttribute="trailing" constant="10" id="1WB-KG-Ste"/>
-                                <constraint firstItem="8Gh-go-58l" firstAttribute="leading" secondItem="mwZ-Xu-lrg" secondAttribute="leading" constant="40" id="4Q0-y3-8RQ"/>
+                                <constraint firstItem="8Gh-go-58l" firstAttribute="leading" secondItem="mwZ-Xu-lrg" secondAttribute="leading" constant="20" id="4Q0-y3-8RQ"/>
                                 <constraint firstAttribute="height" constant="62" id="768-Fs-lmH"/>
                                 <constraint firstItem="8Gh-go-58l" firstAttribute="top" secondItem="mwZ-Xu-lrg" secondAttribute="top" constant="2" id="8RB-UR-rZA"/>
                                 <constraint firstAttribute="trailing" secondItem="WBt-gj-yta" secondAttribute="trailing" constant="21" id="DUU-iB-ial"/>

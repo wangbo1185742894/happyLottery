@@ -25,16 +25,16 @@
                     <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wmB-qm-cHA">
-                            <rect key="frame" x="0.0" y="30" width="375" height="293"/>
+                            <rect key="frame" x="0.0" y="30" width="375" height="161"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dotted.png" translatesAutoresizingMaskIntoConstraints="NO" id="eWJ-r8-GZJ">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="linehelp.png" translatesAutoresizingMaskIntoConstraints="NO" id="eWJ-r8-GZJ">
                                     <rect key="frame" x="8" y="59" width="359" height="1"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="359" id="RTM-Ux-jU0"/>
                                         <constraint firstAttribute="height" constant="1" id="kce-lZ-jgt"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="积分获取途径：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZwR-zF-cZs">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="积分兑换：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZwR-zF-cZs">
                                     <rect key="frame" x="8" y="15" width="252" height="34"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="34" id="WgG-sA-s5K"/>
@@ -44,15 +44,8 @@
                                     <color key="textColor" red="0.067504443230000002" green="0.78096091749999996" blue="0.57203906770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="14" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XyD-uM-4hi">
-                                    <rect key="frame" x="8" y="57" width="359" height="200"/>
-                                    <string key="text">1.300积分可兑换一张1元优惠券，每周可兑换5次。
-
-2.800积分可兑换一张3元优惠券，每周可兑换5次。
-
-3.1200积分可兑换一张5元优惠券，每周可兑换2次。
-
-4.2100积分可兑换一张10元优惠券，每周可兑换2次。</string>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用户通过注册赠送、获取得到的积分，都可在积分商城进行兑换商品。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="14" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XyD-uM-4hi">
+                                    <rect key="frame" x="8" y="57" width="359" height="84"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" red="0.1450980392" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -60,9 +53,9 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="bottom" secondItem="XyD-uM-4hi" secondAttribute="bottom" constant="36" id="1z3-R1-4Oa"/>
+                                <constraint firstAttribute="bottom" secondItem="XyD-uM-4hi" secondAttribute="bottom" constant="20" id="1z3-R1-4Oa"/>
                                 <constraint firstItem="XyD-uM-4hi" firstAttribute="leading" secondItem="wmB-qm-cHA" secondAttribute="leading" constant="8" id="24j-Jh-ydL"/>
-                                <constraint firstAttribute="height" constant="293" id="9b9-15-dRd"/>
+                                <constraint firstAttribute="height" constant="161" id="9b9-15-dRd"/>
                                 <constraint firstItem="XyD-uM-4hi" firstAttribute="top" secondItem="eWJ-r8-GZJ" secondAttribute="bottom" constant="-3" id="Dep-HH-6u8"/>
                                 <constraint firstItem="eWJ-r8-GZJ" firstAttribute="centerX" secondItem="wmB-qm-cHA" secondAttribute="centerX" id="VH6-L9-tki"/>
                                 <constraint firstItem="ZwR-zF-cZs" firstAttribute="leading" secondItem="wmB-qm-cHA" secondAttribute="leading" constant="8" id="Xey-R9-Jte"/>
@@ -93,6 +86,6 @@
         </view>
     </objects>
     <resources>
-        <image name="dotted.png" width="1" height="1"/>
+        <image name="linehelp.png" width="362" height="1"/>
     </resources>
 </document>

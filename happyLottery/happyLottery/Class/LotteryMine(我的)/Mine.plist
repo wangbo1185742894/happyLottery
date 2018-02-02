@@ -15,7 +15,7 @@
 			<key>actionClassName</key>
 			<string>MyOrderListViewController</string>
 			<key>ShowIconRight</key>
-			<true/>
+			<string>1</string>
 		</dict>
 		<dict>
 			<key>showRedPoint</key>
@@ -29,7 +29,7 @@
 			<key>actionClassName</key>
 			<string>MyFavoriteViewController</string>
 			<key>ShowIconRight</key>
-			<true/>
+			<string>1</string>
 		</dict>
 		<dict>
 			<key>showRedPoint</key>
@@ -37,7 +37,7 @@
 			<key>needLogin</key>
 			<true/>
 			<key>ShowIconRight</key>
-			<false/>
+			<string>1</string>
 			<key>actionClassName</key>
 			<string>MyRedPacketViewController</string>
 			<key>icon</key>
@@ -57,7 +57,7 @@
 			<key>actionClassName</key>
 			<string>IntegralMallViewController</string>
 			<key>ShowIconRight</key>
-			<true/>
+			<string>1</string>
 		</dict>
 	</array>
 	<array>
@@ -73,7 +73,7 @@
 			<key>actionClassName</key>
 			<string>ShareViewController</string>
 			<key>ShowIconRight</key>
-			<true/>
+			<string>0</string>
 		</dict>
 		<dict>
 			<key>showRedPoint</key>
@@ -81,13 +81,27 @@
 			<key>needLogin</key>
 			<true/>
 			<key>ShowIconRight</key>
-			<true/>
+			<string>0</string>
 			<key>icon</key>
 			<string>tuijianma</string>
 			<key>actionClassName</key>
 			<string>ConversionCodeViewController</string>
 			<key>title</key>
 			<string>推荐码</string>
+		</dict>
+		<dict>
+			<key>showRedPoint</key>
+			<false/>
+			<key>needLogin</key>
+			<true/>
+			<key>ShowIconRight</key>
+			<string>0</string>
+			<key>actionClassName</key>
+			<string>FeedbackViewController</string>
+			<key>icon</key>
+			<string>feedback</string>
+			<key>title</key>
+			<string>意见反馈</string>
 		</dict>
 	</array>
 	<array>
@@ -103,21 +117,7 @@
 			<key>actionClassName</key>
 			<string>MyHelpViewController</string>
 			<key>ShowIconRight</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>showRedPoint</key>
-			<false/>
-			<key>needLogin</key>
-			<true/>
-			<key>ShowIconRight</key>
-			<true/>
-			<key>actionClassName</key>
-			<string>FeedbackViewController</string>
-			<key>icon</key>
-			<string>feedback</string>
-			<key>title</key>
-			<string>意见反馈</string>
+			<string>1</string>
 		</dict>
 		<dict>
 			<key>title</key>
@@ -129,7 +129,7 @@
 			<key>actionClassName</key>
 			<string>SystemSetViewController</string>
 			<key>ShowIconRight</key>
-			<true/>
+			<string>1</string>
 		</dict>
 	</array>
 </array>

@@ -63,7 +63,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="客服电话：" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WuO-GL-GQp">
-                            <rect key="frame" x="99.5" y="496" width="76.5" height="21"/>
+                            <rect key="frame" x="99.5" y="552" width="76.5" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="Djf-h8-dUp"/>
                             </constraints>
@@ -72,10 +72,10 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AjU-1C-cVj">
-                            <rect key="frame" x="176" y="496" width="113" height="21"/>
+                            <rect key="frame" x="176" y="552" width="113" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <state key="normal" title="400-600-5558">
-                                <color key="titleColor" red="0.20288130639999999" green="0.77987009289999998" blue="0.57245916129999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <connections>
                                 <action selector="actionTel:" destination="-1" eventType="touchUpInside" id="18Z-kF-NfW"/>
@@ -94,7 +94,7 @@
                         <constraint firstItem="AjU-1C-cVj" firstAttribute="centerY" secondItem="WuO-GL-GQp" secondAttribute="centerY" id="Q2D-tP-Pr9"/>
                         <constraint firstItem="ohn-Bf-8wa" firstAttribute="centerX" secondItem="COY-fB-Sqv" secondAttribute="centerX" id="Wv6-2a-Zv9"/>
                         <constraint firstItem="AjU-1C-cVj" firstAttribute="leading" secondItem="WuO-GL-GQp" secondAttribute="trailing" id="Z0U-Nw-hvL"/>
-                        <constraint firstAttribute="bottom" secondItem="WuO-GL-GQp" secondAttribute="bottom" constant="86" id="dl0-Hk-Vpu"/>
+                        <constraint firstAttribute="bottom" secondItem="WuO-GL-GQp" secondAttribute="bottom" constant="30" id="dl0-Hk-Vpu"/>
                         <constraint firstItem="AjU-1C-cVj" firstAttribute="bottom" secondItem="WuO-GL-GQp" secondAttribute="bottom" id="fTI-ih-PLA"/>
                         <constraint firstItem="AjU-1C-cVj" firstAttribute="height" secondItem="WuO-GL-GQp" secondAttribute="height" id="sGz-oa-bLg"/>
                         <constraint firstItem="8hI-x1-Jde" firstAttribute="centerX" secondItem="COY-fB-Sqv" secondAttribute="centerX" id="soy-G0-YPB"/>
