@@ -364,6 +364,12 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.lable.font = [UIFont systemFontOfSize:15];
+    NSString *ShowIconRight =optionDic[@"ShowIconRight"];
+    if ([ShowIconRight isEqualToString:@"1"]) {
+        cell.rightIcon.hidden=NO;
+    }else{
+         cell.rightIcon.hidden=YES;
+    }
     return cell;
 }
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
