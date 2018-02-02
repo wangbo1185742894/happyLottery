@@ -100,7 +100,7 @@ static SystemSoundID shake_sound_male_id = 0;
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
     [defaultCenter addObserver:self selector:@selector(networkDidReceiveMessage:) name:kJPFNetworkDidReceiveMessageNotification object:nil];
     [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];
-    [JPUSHService setBadge:0];//清空JPush服务器中存储的badge值
+    [JPUSHService setBadge:0];
     if (launchOptions) {
         NSDictionary * remoteNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
         //清除角标
@@ -131,7 +131,10 @@ static SystemSoundID shake_sound_male_id = 0;
            NSDictionary * userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
             pageCodeNotice =  [userInfo valueForKey:@"pageCode"];
             linkUrlNotice=[userInfo valueForKey:@"linkUrl"];
-            
+            NSDictionary *aps = [userInfo valueForKey:@"aps"];
+            NSInteger badge = [[aps valueForKey:@"badge"] integerValue];
+            [[UIApplication sharedApplication]setApplicationIconBadgeNumber:badge/2];
+            [JPUSHService setBadge:badge/2];//清空JPush服务器中存储的badge值
         }  
         
     }  
@@ -392,6 +395,8 @@ static SystemSoundID shake_sound_male_id = 0;
 - (void)applicationWillEnterForeground:(UIApplication *)application {
      [[NSNotificationCenter defaultCenter] postNotificationName:@"NSNotificationapplicationWillEnterForeground" object:nil];
     [application cancelAllLocalNotifications];
+//    [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];
+//    [JPUSHService setBadge:0];//清空JPush服务器中存储的badge值
 }
 
 
@@ -649,7 +654,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
       linkUrlNotice=[userInfo valueForKey:@"linkUrl"];
  
     [[UIApplication sharedApplication]setApplicationIconBadgeNumber:badge/2];
-        //    [JPUSHService setBadge:0];//清空JPush服务器中存储的badge值
+    [JPUSHService setBadge:badge/2 ];//清空JPush服务器中存储的badge值
 //         if ([UIApplication sharedApplication].applicationState != UIApplicationStateActive) {
 //
 //             if (pageCodeNotice!=nil) {
