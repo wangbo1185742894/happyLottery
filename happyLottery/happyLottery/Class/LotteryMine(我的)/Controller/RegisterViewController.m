@@ -199,13 +199,7 @@
 - (IBAction)actionIsGreenRule:(id)sender {
     
 }
-- (IBAction)actionLookRule:(id)sender {
-    
-    WebShowViewController *showViewVC = [[WebShowViewController alloc]init];
-    showViewVC.title = @"用户注册协议";
-    [self.navigationController pushViewController:showViewVC animated:YES];
-    
-}
+
 
 #pragma UITextFieldDelegate
 -(void)textFieldDidBeginEditing:(UITextField *)textField{

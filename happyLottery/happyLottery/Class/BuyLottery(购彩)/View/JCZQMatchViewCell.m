@@ -523,10 +523,10 @@
     if (homeModel == nil) {
         return;
     }
-    self.widthPreNum.constant = [homeModel.predictIndex doubleValue] * self.labPreBack.mj_w;
-    self.labPreIndex.text = [NSString stringWithFormat:@"%.0f%%",[homeModel.predictIndex doubleValue] * 100];
+    self.widthPreNum.constant = [homeModel.predictIndex doubleValue] / 100 * self.labPreBack.mj_w;
+    self.labPreIndex.text = [NSString stringWithFormat:@"%.0f%%",[homeModel.predictIndex doubleValue]];
     self.btnForecastItem1.hidden = YES;
-    self.btnForecastItem1.hidden = YES;
+    self.btnForecastItem2.hidden = YES;
     
     for (JcForecastOptions  * op in homeModel.predict) {
         NSString *title;

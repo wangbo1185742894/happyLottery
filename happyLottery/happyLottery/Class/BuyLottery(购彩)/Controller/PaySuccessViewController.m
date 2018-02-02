@@ -20,7 +20,11 @@
     [super viewDidLoad];
     self.title = @"预约支付";
     
-    
+    if (self.isMoni) {
+        self.labChuPiaoimg.text = @"";
+    }else{
+        self.labChuPiaoimg.text = @"正在出票，祝您好运连连";
+    }
 }
 
 

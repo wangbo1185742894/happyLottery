@@ -412,13 +412,13 @@
         [self.navigationController pushViewController:playViewVC animated:YES];
     }
     
-    if (index == 1001) {
+    if (index == 1002) {
         WBHomeJCYCViewController *playVC = [[WBHomeJCYCViewController alloc]init];
         playVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:playVC animated:YES];
     }
     
-    if (index == 1002) {
+    if (index == 1001) {
         YuCeSchemeCreateViewController *playVC = [[YuCeSchemeCreateViewController alloc]init];
         playVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:playVC animated:YES];
