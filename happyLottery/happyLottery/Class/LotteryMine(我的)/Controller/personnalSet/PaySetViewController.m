@@ -174,5 +174,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)findPayPwd{
+    [self forgetPayPwd];
+}
+
 
 @end

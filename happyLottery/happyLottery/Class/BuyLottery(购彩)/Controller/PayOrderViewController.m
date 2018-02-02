@@ -513,7 +513,7 @@
 }
 
 -(void)findPayPwd{
-    
+    [self forgetPayPwd];
 }
 
 - (IBAction)actionShowYouHuiquan:(UIButton *)sender {
@@ -533,5 +533,6 @@
     webShow.title = @"用户服务协议";
     [self.navigationController pushViewController:webShow animated:YES];
 }
+
 
 @end

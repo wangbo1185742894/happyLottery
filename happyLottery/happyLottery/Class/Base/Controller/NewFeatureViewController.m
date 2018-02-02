@@ -41,7 +41,7 @@
             [btnExperience setTitle:@"立即体验" forState:0];
             [btnExperience setTitleColor:SystemGreen forState:0];
             [btnExperience addTarget:self action:@selector(actionExperience) forControlEvents:UIControlEventTouchUpInside];
-            btnExperience.frame = CGRectMake( (imgItem.mj_w * 2)+(imgItem.mj_w - 120) / 2, imgItem.mj_h - 100, 120, 40);
+            btnExperience.frame = CGRectMake( (imgItem.mj_w * 2)+(imgItem.mj_w - 120) / 2, imgItem.mj_h - 90, 120, 40);
             btnExperience.layer.cornerRadius = 20;
             btnExperience.layer.masksToBounds = YES;
             btnExperience.layer.borderColor = SystemGreen.CGColor;

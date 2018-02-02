@@ -11,6 +11,7 @@
 #import "SchemListCell.h"
 #import "SchemeDetailViewController.h"
 #import "MJRefresh.h"
+#import "NoticeCenterViewController.h"
 #define KSchemListCell @"SchemListCell"
 @interface MyOrderListViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate>
 
@@ -147,6 +148,12 @@
 }
 
 -(void)navigationBackToLastPage{
+    for (BaseViewController *baseVC in self.navigationController.viewControllers) {
+        if ([baseVC isKindOfClass:[NoticeCenterViewController class]]) {
+            [self.navigationController popToViewController:baseVC animated:YES];
+            return;
+        }
+    }
     self.tabBarController.selectedIndex = 3;
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
