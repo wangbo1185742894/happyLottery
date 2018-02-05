@@ -353,7 +353,7 @@
 //                sourecs = @"来源： 系统赠送";
 //            }
             
-            cell.sourceLab.text =  [NSString stringWithFormat:@"来源：%@",redPacket.activityName];
+            cell.sourceLab.text =  [NSString stringWithFormat:@"%@",redPacket.activityName];
             NSString *date = @"";
             
             if (redPacket.endValidTime.length != 0) {
@@ -416,6 +416,7 @@
             cell.endTimeLab.hidden = YES;
         }
     }
+    cell.sourceLab.adjustsFontSizeToFitWidth = YES;
     return cell;
 }
 

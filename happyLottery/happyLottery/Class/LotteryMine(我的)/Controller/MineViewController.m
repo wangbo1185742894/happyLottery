@@ -243,6 +243,7 @@
         [self.memberMan signIn:@{@"cardCode":self.curUser.cardCode,@"activityId":@"1"}];
     }
 }
+
 -(void)signInIsSuccess:(NSDictionary *)info isSuccess:(BOOL)success errorMsg:(NSString *)msg{
     if (success) {
         [self showPromptText:[NSString stringWithFormat:@"您已连续签到%@天,恭喜您获得%@积分!",info[@"severalDays"],info[@"gainScore"]] hideAfterDelay:1.7];

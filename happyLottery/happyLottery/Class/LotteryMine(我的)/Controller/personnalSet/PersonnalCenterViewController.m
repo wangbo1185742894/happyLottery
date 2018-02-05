@@ -22,6 +22,7 @@
      NSString *headUrl;
      NSString *titleStr;
 }
+@property (weak, nonatomic) IBOutlet UIWebView *web123;
 @property (weak, nonatomic) IBOutlet UIImageView *labMemberIcon;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollerView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
@@ -87,8 +88,8 @@
     if ([self.curUser.headUrl isEqualToString:@""] || self.curUser.headUrl == nil) {
         self.myImage.image = [UIImage imageNamed:@"usermine.png"];
     }else{
-        
-        self.myImage.image =[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.curUser.headUrl]]];
+        [self.myImage sd_setImageWithURL:[NSURL URLWithString:self.curUser.headUrl]];
+//        self.myImage.image =[UIImage imageWithData:[NSData dataWithContentsOfURL:]];
     }
 }
 
@@ -327,7 +328,9 @@
 //头像上传
 -(void)UploadImage:(NSDictionary *)dic
 {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];//请求
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];//响应
     
@@ -344,20 +347,17 @@
     
     NSString *urlString =[NSString stringWithFormat:@"%@/app/head/url",[GlobalInstance instance].homeUrl];
     
-   // urlString=[urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    [manager POST:urlString parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        //01.21 测试
-     
-        
+//    urlString=[urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     
+    [manager POST:urlString parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         formatter.dateFormat = @"yyyyMMddHHmmss";
         NSString *str = [formatter stringFromDate:[NSDate date]];
         NSString *fileName = [NSString stringWithFormat:@"%@.jpg", str];
         [formData appendPartWithFileData:data name:@"photo" fileName:fileName mimeType:@"image/jpg"];
-
-    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
-    
+        
+    }  progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
         
         NSString *resultStr = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         NSData *jsonData = [resultStr dataUsingEncoding:NSUTF8StringEncoding];
@@ -365,15 +365,45 @@
         
         
         if ([itemInfo[@"code"] isEqualToString:@"0000"]) {
-            headUrl = itemInfo[@"result"];  //图片url
+             headUrl = itemInfo[@"result"];  //图片url
             NSLog(@"headUrl: %@", headUrl);
             [self updateHeadImageClient];
         }
         
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
         NSLog(@"Error: %@", error);
     }];
+    
+//    [manager POST:urlString parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+//        //01.21 测试
+//
+//
+//
+//        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//        formatter.dateFormat = @"yyyyMMddHHmmss";
+//        NSString *str = [formatter stringFromDate:[NSDate date]];
+//        NSString *fileName = [NSString stringWithFormat:@"%@.jpg", str];
+//        [formData appendPartWithFileData:data name:@"photo" fileName:fileName mimeType:@"image/jpg"];
+//
+//    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//
+//
+//        NSString *resultStr = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+//        NSData *jsonData = [resultStr dataUsingEncoding:NSUTF8StringEncoding];
+//        NSDictionary *itemInfo = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
+//
+//
+//        if ([itemInfo[@"code"] isEqualToString:@"0000"]) {
+//            headUrl = itemInfo[@"result"];  //图片url
+//            NSLog(@"headUrl: %@", headUrl);
+//            [self updateHeadImageClient];
+//        }
+//
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//
+//        NSLog(@"Error: %@", error);
+//    }];
     
 
     

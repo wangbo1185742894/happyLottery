@@ -24,7 +24,6 @@
     JCZQSchemeItem * schemeDetail;
     __weak IBOutlet UILabel *labCanUseYouhuiquan;
     
-    
 }
 @property (weak, nonatomic) IBOutlet UIWebView *payWebView;
 @property (weak, nonatomic) IBOutlet UILabel *labLotteryName;
@@ -76,9 +75,7 @@
    
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    
+-(void)showCoupon{
     if(self.couponList.count == 0){
         labCanUseYouhuiquan.text = [NSString stringWithFormat:@"暂无可用优惠券"];
         self.labZheKou.text = [NSString stringWithFormat:@"-0.00元"];
@@ -98,15 +95,17 @@
             self.labRealCost.text = [NSString stringWithFormat:@"%.2f 元",self.cashPayMemt.realSubscribed] ;
         }
     }
-    
- 
     if (self.cashPayMemt.costType == CostTypeCASH) {
-           [self.btnTouzhu setTitle:[NSString stringWithFormat:@"确认支付 ￥%.2f",self.cashPayMemt.realSubscribed - [self.curSelectCoupon.deduction doubleValue]] forState:0];
-        
+        [self.btnTouzhu setTitle:[NSString stringWithFormat:@"确认支付 ￥%.2f",self.cashPayMemt.realSubscribed - [self.curSelectCoupon.deduction doubleValue]] forState:0];
     }else{
-           [self.btnTouzhu setTitle:@"预约支付" forState:0];
+        [self.btnTouzhu setTitle:@"预约支付" forState:0];
     }
- 
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    [self showCoupon];
 }
 
 -(void)gotAvailableCoupon:(BOOL)success andPayInfo:(NSArray *)payInfo errorMsg:(NSString *)msg{
@@ -126,19 +125,7 @@
         [self.couponList addObject:model];
     }
     _curSelectCoupon = [self getMaxCoupon];
-    if (self.curSelectCoupon != nil) {
-        //
-        _curSelectCoupon.isSelect = YES;
-        labCanUseYouhuiquan.text = [NSString stringWithFormat:@"￥%@元优惠券",self.curSelectCoupon.deduction];
-        self.labZheKou.text = [NSString stringWithFormat:@"-%.2f元",[self.curSelectCoupon.deduction doubleValue]];
-        self.labZheKou.textColor = SystemRed;
-        self.labRealCost.text = [NSString stringWithFormat:@"%.2f 元",self.cashPayMemt.realSubscribed - [self.curSelectCoupon.deduction doubleValue]] ;
-    }else{
-        labCanUseYouhuiquan.text = [NSString stringWithFormat:@"%ld张可用优惠券",self.couponList.count];
-        self.labZheKou.text = [NSString stringWithFormat:@"-0.00元"];
-        self.labZheKou.textColor = SystemGray;
-        self.labRealCost.text = [NSString stringWithFormat:@"%.2f 元",self.cashPayMemt.realSubscribed] ;
-    }
+    [self showCoupon];
 }
 
 -(Coupon *)getMaxCoupon{
@@ -278,7 +265,6 @@
 -(void)validatePaypwdSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     [passInput removeFromSuperview];
     if (success == YES) {
-        [self showLoadingText:@"正在提交订单"];
         [self actionPay];
     }else{
         [self showPromptText:msg hideAfterDelay:1.7];
@@ -315,7 +301,7 @@
 }
 
 -(void)actionPay{
-    
+    [self showLoadingText:@"正在提交订单"];
     if (self.cashPayMemt.costType == CostTypeCASH) {
         
         if (self.curSelectCoupon != nil) {
@@ -375,7 +361,7 @@
 -(void)paySuccess{
     PaySuccessViewController * paySuccessVC = [[PaySuccessViewController alloc]init];
     paySuccessVC.schemeNO = self.cashPayMemt.schemeNo;
-    paySuccessVC.isMoni = YES;
+    paySuccessVC.isMoni = self.cashPayMemt.costType == CostTypeSCORE;
     [self.navigationController pushViewController:paySuccessVC animated:YES];
 }
 
@@ -386,7 +372,6 @@
     }else{
         [self showPromptText:msg hideAfterDelay:1.7];
     }
-    
 }
 
 -(void)gotSchemeScorePayment:(BOOL)isSuccess  errorMsg:(NSString *)msg{

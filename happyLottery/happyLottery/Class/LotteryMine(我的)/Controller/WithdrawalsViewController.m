@@ -11,7 +11,7 @@
 #import "WBInputPopView.h"
 #import "BankCard.h"
 #import "FirstBankCardSetViewController.h"
-
+#import "SetPayPWDViewController.h"
 @interface WithdrawalsViewController ()<MemberManagerDelegate,WBInputPopViewDelegate,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>{
       NSString *pwd;
      WBInputPopView *passInput;
@@ -191,6 +191,13 @@
   
 }
 - (IBAction)commitBtnClick:(id)sender {
+    if (self.curUser.paypwdSetting== NO) {
+        SetPayPWDViewController *spvc = [[SetPayPWDViewController alloc]init];
+        spvc.titleStr = @"设置支付密码";
+        [self.navigationController pushViewController:spvc animated:YES];
+        return;
+        return;
+    }
     [self showPayPopView];
 }
 
