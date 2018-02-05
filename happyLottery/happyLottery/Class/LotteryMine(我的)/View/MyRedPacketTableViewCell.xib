@@ -23,7 +23,9 @@
                         <rect key="frame" x="11" y="7" width="355" height="102.5"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="还有16天过期" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Sr-x5-1J3">
+
                         <rect key="frame" x="87" y="44" width="63" height="21"/>
+
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="lqt-Z4-lNe"/>
                         </constraints>
@@ -31,9 +33,11 @@
                         <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="活动赠送" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPa-IS-U8G">
                         <rect key="frame" x="23" y="75" width="50" height="13.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
+
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -44,8 +48,10 @@
                             <constraint firstAttribute="height" constant="55" id="dEE-Lz-mtj"/>
                         </constraints>
                     </imageView>
+
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新用户注册送红包" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AoG-vV-PWc">
                         <rect key="frame" x="87" y="22" width="210" height="20"/>
+
                         <constraints>
                             <constraint firstAttribute="width" constant="210" id="9hS-lO-N87"/>
                             <constraint firstAttribute="height" constant="20" id="lEa-l5-aB2"/>
@@ -54,8 +60,10 @@
                         <color key="textColor" red="0.14509803921568626" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="q0V-sZ-6Wh">
                         <rect key="frame" x="28" y="22" width="40" height="43"/>
+
                         <constraints>
                             <constraint firstAttribute="height" constant="43" id="B69-9C-bWj"/>
                             <constraint firstAttribute="width" constant="40" id="Rgt-hs-qCf"/>
@@ -73,6 +81,7 @@
                     </label>
                 </subviews>
                 <constraints>
+
                     <constraint firstItem="TPa-IS-U8G" firstAttribute="top" secondItem="q0V-sZ-6Wh" secondAttribute="bottom" constant="10" id="D1W-Ux-jTX"/>
                     <constraint firstAttribute="trailing" secondItem="G3Y-YP-4ch" secondAttribute="trailing" constant="24" id="Mb4-RG-lDl"/>
                     <constraint firstItem="qmD-YM-XlR" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="Y0f-IE-nMA"/>
@@ -91,6 +100,7 @@
                     <constraint firstItem="q0V-sZ-6Wh" firstAttribute="leading" secondItem="qkB-iF-EdM" secondAttribute="leading" constant="17" id="weU-TT-ePb"/>
                     <constraint firstItem="8Sr-x5-1J3" firstAttribute="leading" secondItem="AoG-vV-PWc" secondAttribute="leading" id="xiJ-FN-mJo"/>
                     <constraint firstAttribute="bottom" secondItem="qkB-iF-EdM" secondAttribute="bottom" constant="7" id="yXL-V3-0ke"/>
+
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

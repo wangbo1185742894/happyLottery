@@ -25,7 +25,7 @@
                     <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="htq-Uw-cxG">
-                            <rect key="frame" x="0.0" y="10" width="375" height="268"/>
+                            <rect key="frame" x="0.0" y="10" width="375" height="299"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="linehelp.png" translatesAutoresizingMaskIntoConstraints="NO" id="K96-8C-eQo">
                                     <rect key="frame" x="8" y="59" width="359" height="1"/>
@@ -35,7 +35,7 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="14" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PK3-HJ-RMu">
-                                    <rect key="frame" x="8" y="68" width="359" height="192"/>
+                                    <rect key="frame" x="8" y="68" width="359" height="231"/>
                                     <string key="text">1.注册赠送。新用户注册成功，系统自动赠送10000积分
 
 2.签到获取。用户在登录后，到【我的】中进行签到可获得积分
@@ -61,9 +61,9 @@
                                 <constraint firstItem="PK3-HJ-RMu" firstAttribute="top" secondItem="K96-8C-eQo" secondAttribute="bottom" constant="8" symbolic="YES" id="1Ms-ls-CRh"/>
                                 <constraint firstItem="64W-Eo-IlI" firstAttribute="leading" secondItem="htq-Uw-cxG" secondAttribute="leading" constant="8" id="ACm-i4-wYT"/>
                                 <constraint firstItem="K96-8C-eQo" firstAttribute="top" secondItem="64W-Eo-IlI" secondAttribute="bottom" constant="10" id="LXS-2I-5T1"/>
-                                <constraint firstAttribute="height" constant="268" id="QK5-zP-3Zf"/>
+                                <constraint firstAttribute="height" constant="299" id="QK5-zP-3Zf"/>
                                 <constraint firstItem="64W-Eo-IlI" firstAttribute="top" secondItem="htq-Uw-cxG" secondAttribute="top" constant="15" id="TNK-lr-ct2"/>
-                                <constraint firstAttribute="bottom" secondItem="PK3-HJ-RMu" secondAttribute="bottom" constant="8" id="W7K-JJ-PgA"/>
+                                <constraint firstAttribute="bottom" secondItem="PK3-HJ-RMu" secondAttribute="bottom" id="W7K-JJ-PgA"/>
                                 <constraint firstItem="K96-8C-eQo" firstAttribute="centerX" secondItem="htq-Uw-cxG" secondAttribute="centerX" id="mfl-Vp-TR0"/>
                                 <constraint firstItem="PK3-HJ-RMu" firstAttribute="leading" secondItem="htq-Uw-cxG" secondAttribute="leading" constant="8" id="oQs-Zc-nxd"/>
                                 <constraint firstItem="PK3-HJ-RMu" firstAttribute="centerX" secondItem="htq-Uw-cxG" secondAttribute="centerX" id="rUS-Ql-VPy"/>
