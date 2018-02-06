@@ -114,7 +114,7 @@
 
 -(void)bindNameSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     if ([msg isEqualToString:@"执行成功"]) {
-        [self showPromptText: @"实名认证成功" hideAfterDelay: 1.7];
+       // [self showPromptText: @"实名认证成功" hideAfterDelay: 1.7];
         self.curUser.name =_nameTextField.text;
         _nameTextField.enabled = NO;
     }else{
@@ -125,7 +125,7 @@
 -(void)addBankCardSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     if ([msg isEqualToString:@"执行成功"]) {
         self.curUser.bankBinding =1;
-        [self showPromptText: @"添加银行卡成功" hideAfterDelay: 1.7];
+        [self showPromptText: @"设置成功" hideAfterDelay: 1.7];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.7 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self.navigationController popViewControllerAnimated:YES];
         });
