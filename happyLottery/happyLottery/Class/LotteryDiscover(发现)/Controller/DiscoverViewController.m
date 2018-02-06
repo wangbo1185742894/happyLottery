@@ -70,7 +70,9 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    
     [super viewWillAppear:animated];
+    
     NSString *cardCode = @"";
     if (self.curUser.isLogin == YES) {
         cardCode = self.curUser.cardCode;

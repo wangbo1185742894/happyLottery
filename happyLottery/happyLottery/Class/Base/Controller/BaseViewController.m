@@ -22,7 +22,7 @@
 
 
 
-@interface BaseViewController ()
+@interface BaseViewController ()<LisentNetStateDelegate>
 {
     MBProgressHUD *loadingView;
     UIView *loadingParentView;
@@ -49,6 +49,8 @@
     self.view.mj_h = KscreenHeight;
     self.memberMan = [[MemberManager alloc]init];
     self.lotteryMan = [[LotteryManager alloc]init];
+    self.memberMan.netDelegate = self;
+    self.lotteryMan.netDelegate = self;
     [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
     [self setNavigationBack];
     NSString *doc=[NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
@@ -89,21 +91,6 @@
     delegate.curNavVC = self.navigationController;
     self.openDate = [NSDate date];
     [self afnReachabilityTest];
-    
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        if ([self socketReachabilityTest]) {
-//            [self showPromptText:@"连接服务器成功" hideAfterDelay:1.8];
-        }else{
-
-            dispatch_async(dispatch_get_main_queue(), ^{
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-
-//                        [self showPromptText:@"连接服务器失败，请检查网络设置" hideAfterDelay:1.8];
-                    });
-            });
-        }
-    });
-    
 
 }
 //判断服务器是否可达
@@ -131,7 +118,7 @@
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         switch (status) {
             case AFNetworkReachabilityStatusNotReachable:
-                [self showPromptText:@"网络不可用" hideAfterDelay:1.8];
+//                [self showPromptText:@"网络不可用" hideAfterDelay:1.8];
                 NSLog(@"AFNetworkReachability Not Reachable");
                 break;
             case AFNetworkReachabilityStatusReachableViaWWAN:
@@ -594,6 +581,24 @@
     spvc.titleStr = @"忘记支付密码";
     spvc.isForeget = YES;
     [self.navigationController pushViewController:spvc animated:YES];
+}
+-(void)netIsNotEnable{
+    
+}
+-(void)serverIsNotConnect{
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        if ([self socketReachabilityTest]) {
+            //            [self showPromptText:@"连接服务器成功" hideAfterDelay:1.8];
+        }else{
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [self showPromptText:@"连接服务器失败，请检查网络设置" hideAfterDelay:2];
+                });
+            });
+        }
+    });
+    
 }
 
 
