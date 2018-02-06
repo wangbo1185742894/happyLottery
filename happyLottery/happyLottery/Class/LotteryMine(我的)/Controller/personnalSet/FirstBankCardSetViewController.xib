@@ -65,17 +65,6 @@
                                     <color key="textColor" red="0.1960784314" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Y9U-KW-EMP">
-                                    <rect key="frame" x="337" y="70" width="23" height="23"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="23" id="PUO-Te-GV6"/>
-                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="23" id="ZMB-ua-6p3"/>
-                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="23" id="aDi-fP-pb9"/>
-                                        <constraint firstAttribute="height" constant="23" id="kWN-pb-qEq"/>
-                                        <constraint firstAttribute="width" constant="23" id="njD-Iq-OvE"/>
-                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="23" id="yCZ-GV-CS7"/>
-                                    </constraints>
-                                </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="    银行卡号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uSj-SE-VpE">
                                     <rect key="frame" x="0.0" y="102" width="375" height="40"/>
                                     <color key="backgroundColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -100,7 +89,7 @@
                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0XD-gV-CkV">
-                                    <rect key="frame" x="103" y="66" width="224" height="30"/>
+                                    <rect key="frame" x="103" y="66" width="259" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="Bm3-Qb-6bd"/>
                                     </constraints>
@@ -129,6 +118,17 @@
                                     <color key="textColor" red="1" green="0.31764705882352939" blue="0.32156862745098036" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Y9U-KW-EMP">
+                                    <rect key="frame" x="337" y="70" width="23" height="23"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="23" id="PUO-Te-GV6"/>
+                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="23" id="ZMB-ua-6p3"/>
+                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="23" id="aDi-fP-pb9"/>
+                                        <constraint firstAttribute="height" constant="23" id="kWN-pb-qEq"/>
+                                        <constraint firstAttribute="width" constant="23" id="njD-Iq-OvE"/>
+                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="23" id="yCZ-GV-CS7"/>
+                                    </constraints>
+                                </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lbu-f4-Wcp">
                                     <rect key="frame" x="22" y="227" width="331" height="40"/>
                                     <color key="backgroundColor" red="0.067504443230000002" green="0.78096091749999996" blue="0.57203906770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -213,7 +213,7 @@
                                 <constraint firstItem="uSj-SE-VpE" firstAttribute="leading" secondItem="wBT-Dj-GQb" secondAttribute="leading" id="OJY-q3-wtN"/>
                                 <constraint firstItem="dNL-xi-aeu" firstAttribute="leading" secondItem="wBT-Dj-GQb" secondAttribute="leading" constant="14" id="PiS-10-rzU"/>
                                 <constraint firstItem="dNL-xi-aeu" firstAttribute="top" secondItem="uSj-SE-VpE" secondAttribute="bottom" constant="18" id="QkH-BU-9qk"/>
-                                <constraint firstItem="Y9U-KW-EMP" firstAttribute="leading" secondItem="0XD-gV-CkV" secondAttribute="trailing" constant="10" id="Ux8-Om-Tu1"/>
+                                <constraint firstItem="Y9U-KW-EMP" firstAttribute="leading" secondItem="0XD-gV-CkV" secondAttribute="trailing" constant="-25" id="Ux8-Om-Tu1"/>
                                 <constraint firstItem="u7s-4W-noo" firstAttribute="top" secondItem="wBT-Dj-GQb" secondAttribute="top" constant="25" id="Xsp-i9-c2S"/>
                                 <constraint firstItem="HgA-UC-Hx3" firstAttribute="top" secondItem="6EN-hk-slj" secondAttribute="bottom" constant="1" id="aMr-bp-gaF"/>
                                 <constraint firstAttribute="trailing" secondItem="HgA-UC-Hx3" secondAttribute="trailing" id="b0S-WB-Zrh"/>
