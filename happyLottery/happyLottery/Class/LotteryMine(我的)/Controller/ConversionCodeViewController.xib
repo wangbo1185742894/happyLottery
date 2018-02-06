@@ -44,12 +44,13 @@
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Jf-kG-mGV">
                             <rect key="frame" x="128" y="168" width="120" height="44"/>
+                            <color key="backgroundColor" red="0.067504443230000002" green="0.78096091749999996" blue="0.57203906770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="hij-Ro-AYu"/>
                                 <constraint firstAttribute="width" constant="120" id="tdP-YV-Q7B"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <state key="normal" title="激活" backgroundImage="wukuangwuyuanjiaoselect.png">
+                            <state key="normal" title="激活">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <state key="highlighted">
@@ -59,6 +60,7 @@
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                     <integer key="value" value="4"/>
                                 </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="NO"/>
                             </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="commitBtnClick:" destination="-1" eventType="touchUpInside" id="Pxv-2z-udo"/>
@@ -110,6 +112,5 @@
     </objects>
     <resources>
         <image name="annotation.png" width="10" height="12"/>
-        <image name="wukuangwuyuanjiaoselect.png" width="83" height="35"/>
     </resources>
 </document>
