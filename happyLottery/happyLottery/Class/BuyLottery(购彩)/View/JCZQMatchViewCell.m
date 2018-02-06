@@ -59,7 +59,7 @@
 -(void)initHHGGCellSubItem{
     self.widthLabRangqiu.constant = 28;
     [self creatBtnWithFrame:CGRectMake(0.5, 0, 24, self.playItemContentView.mj_h / 2 - 5 ) normal:@{@"nTitle":@"0",@"nImage":@"yuanjiaowubiankuangnomal",@"sImage":@""} andTag:0 andSelect:@"0"];
-    UIButton *handicap = [self creatBtnWithFrame:CGRectMake(0,self.playItemContentView.mj_h / 2 - 5, 25, self.playItemContentView.mj_h / 2 -5) normal:@{@"nTitle":curModel.handicap,@"nImage":@"",@"sImage":@""} andTag:0 andSelect:@"0"];
+    UIButton *handicap = [self creatBtnWithFrame:CGRectMake(0,self.playItemContentView.mj_h / 2 - 5, 25, self.playItemContentView.mj_h / 2 -5) normal:@{@"nTitle":curModel.handicap == nil?@"0":curModel.handicap,@"nImage":@"",@"sImage":@""} andTag:0 andSelect:@"0"];
     [handicap setTitleColor:[UIColor whiteColor] forState:0];
     if ([curModel.handicap integerValue] >0) {
         [handicap setBackgroundImage:[UIImage imageNamed:@"rangqiuzheng"] forState:0];

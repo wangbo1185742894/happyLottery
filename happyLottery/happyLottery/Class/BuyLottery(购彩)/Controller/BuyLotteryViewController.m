@@ -82,7 +82,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+#ifdef APPSTORE
+    [self appStoreUpadata];
+#else
     [self checkUpdateNetWork];
+#endif
     listUseRedPacketArray = [[NSMutableArray alloc]init];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(itemNotification:) name:@"NSNotificationBuyVCJump" object:nil];
     JczqShortcutList = [NSMutableArray arrayWithCapacity:0];
@@ -760,6 +764,36 @@
     helper.delegate = self;
 }
 
+-(void)appStoreUpadata{
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    // app版本
+    NSString *app_Version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+    [[LoadData singleLoadData]RequestWithString:@"https://itunes.apple.com/cn/lookup" isPost:YES andPara:@{@"id":@"1334494277"} andComplete:^(id data, BOOL isSuccess) {
+        if (isSuccess) {
+            NSString*string = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+            
+            NSDictionary *resultDic = [Utility objFromJson:string];
+            NSString *resultCount = resultDic[@"resultCount"];
+            if ([resultCount integerValue]>=1) {
+                
+                NSDictionary *results =[resultDic[@"results"] firstObject];
+                NSString *lastVersion = results[@"version"];
+                NSString *updataInfo = results[@"releaseNotes"];
+                
+                if ([lastVersion doubleValue] > [app_Version doubleValue]) {
+                    ZLAlertView *alert = [[ZLAlertView alloc] initWithTitle:@"更新提示" message:updataInfo];
+                    [alert addBtnTitle:@"立即更新" action:^{
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:APPUPDATAURL]];
+                    }];
+                    [alert addBtnTitle:@"以后再说" action:^{
+                        
+                    }];
+                    [alert showAlertWithSender:self];
+                }
+            }
+        }
+    }];
+}
 
 #pragma mark - netWorkHelperDelegate
 -(void)passValueWithDic:(NSDictionary *)value{

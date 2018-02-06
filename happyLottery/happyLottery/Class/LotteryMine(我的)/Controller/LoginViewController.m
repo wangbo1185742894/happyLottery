@@ -84,15 +84,17 @@ static NSInteger seq = 0;
     score = 0;
     sendBalance = 0;
     whitelist = 0;*/
-    User *user = [[User alloc]initWith:userInfo];
-    user.loginPwd = [self.passwordTextField.text lowercaseString];
-    user.isLogin = YES;
-    [GlobalInstance instance].curUser = user;
-    [self upLoadClientInfo];
-   
+
     
     if (success) {
-         [self showPromptText: @"登录成功"  hideAfterDelay: 1.7];
+        
+        User *user = [[User alloc]initWith:userInfo];
+        user.loginPwd = [self.passwordTextField.text lowercaseString];
+        user.isLogin = YES;
+        [GlobalInstance instance].curUser = user;
+        [self upLoadClientInfo];
+        
+        [self showPromptText: @"登录成功"  hideAfterDelay: 1.7];
         [self performSelector:@selector(delayMethod) withObject:nil afterDelay:0.7];
        
         [self saveUserInfo];
@@ -119,7 +121,7 @@ static NSInteger seq = 0;
         FMResultSet*  result = [self.fmdb executeQuery:@"select * from t_user_info"];
         NSLog(@"%@",result);
         BOOL issuccess = NO;
-        NSInteger payVerifyType = 1;
+        NSInteger payVerifyType = 2;
         do {
             NSString *mobile = [result stringForColumn:@"mobile"];
           
@@ -133,7 +135,7 @@ static NSInteger seq = 0;
            
 
         } while ([result next]);
-        [self.fmdb executeUpdate:@"insert into t_user_info (cardCode , loginPwd , isLogin , mobile , payVerifyType) values ( ?,?,?,?,?)  ",user.cardCode,user.loginPwd,@"2",user.mobile,[NSString stringWithFormat:@"%ld",payVerifyType]];
+        [self.fmdb executeUpdate:@"insert into t_user_info (cardCode , loginPwd , isLogin , mobile , payVerifyType) values ( ?,?,?,?,?)  ",user.cardCode,user.loginPwd,@"1",user.mobile,[NSString stringWithFormat:@"%ld",payVerifyType]];
         [[NSNotificationCenter defaultCenter] postNotificationName:NotificationNameUserLogin object:nil];
         [result close];
         [self.fmdb close];

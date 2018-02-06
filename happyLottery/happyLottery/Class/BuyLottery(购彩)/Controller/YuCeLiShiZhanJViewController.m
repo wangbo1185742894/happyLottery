@@ -30,6 +30,10 @@
     self.YuCeZJTableView.dataSource = self;
     [self setLotteryManager];
     
+    if ([Utility isIOS11After]) {
+        self.automaticallyAdjustsScrollViewInsets = NO; // tableView 莫名其妙  contentOffset.y 成-64了  MMP
+    }
+    
     [self showLoadingViewWithText:@"正在加载"];
     [self loadData];
 }

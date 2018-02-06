@@ -19,7 +19,9 @@
     __weak IBOutlet NSLayoutConstraint *webDisTop;
     JSContext *context;
     BOOL isBack;
-    
+    BOOL isIndex;
+    BOOL lastLoginState;
+    NSString *_cardCode;
     __weak IBOutlet NSLayoutConstraint *webDisBottom;
     BOOL _pageCacheDisable;
 }
@@ -33,11 +35,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     isBack = NO;
+    isIndex = YES;
+    
+    lastLoginState = self.curUser.isLogin;
+    
      _pageCacheDisable = YES;
     self.viewControllerNo = @"A401";
     self.faxianWebView.scrollView.bounces = NO;
     self.faxianWebView.delegate = self;
-
+    NSString *cardCode = @"";
+    if (self.curUser.isLogin == YES) {
+        cardCode = self.curUser.cardCode;
+        _cardCode = self.curUser.cardCode;
+    }else{
+        _cardCode = @"";
+    }
+    
+    NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/app/find/index?cardCode=%@",H5BaseAddress,cardCode]] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:100];
+    
+    
+    [self.faxianWebView loadRequest:request];
     [self setWebView];
 }
 
@@ -54,24 +71,32 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
-
     NSString *cardCode = @"";
     if (self.curUser.isLogin == YES) {
         cardCode = self.curUser.cardCode;
     }
+    if (lastLoginState != self.curUser.isLogin || ![_cardCode isEqualToString:self.curUser.cardCode]) {
+        NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/app/find/index?cardCode=%@",H5BaseAddress,cardCode]] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:100];
         
-    NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/app/find/index?cardCode=%@",H5BaseAddress,cardCode]] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:100];
         
-        
-    [self.faxianWebView loadRequest:request];
+        [self.faxianWebView loadRequest:request];
+    }
     
     self.navigationController.navigationBar.hidden = YES;
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [JWCacheURLProtocol cancelListeningNetWorking];
+    if (self.curUser.isLogin == YES) {
+        
+        _cardCode = self.curUser.cardCode;
+    }else{
+        _cardCode = @"";
+    }
+    
+    lastLoginState = self.curUser.isLogin;
     self.navigationController.navigationBar.hidden = NO;
 }
 
@@ -84,7 +109,7 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    if (isBack == YES) {
+    if (isBack == YES && self.tabBarController.tabBar.hidden == YES) {
         [self.faxianWebView reload];
     }
     context = [webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
@@ -94,8 +119,6 @@
     };
     [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitUserSelect='none';"];
     [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitTouchCallout='none';"];
-    
-    
 }
 
 -(void)webViewDidStartLoad:(UIWebView *)webView{
@@ -153,8 +176,6 @@
 }
 
 -(void)initshare:(NSString *)code{
-    
-   
     
     if (![code isEqualToString:@""]) {
       NSString *url = [NSString stringWithFormat:@"tfi.11max.com/Tbz/Share?shareCode=%@",code];
@@ -345,6 +366,5 @@
         [[NSURLCache sharedURLCache] removeAllCachedResponses];
     }
 }
-
 
 @end

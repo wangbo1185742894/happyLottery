@@ -288,8 +288,7 @@
             cell.retainLab.text =[NSString stringWithFormat:@"余额:%.2f",b];
         }
     }
-    
-  
+    cell.dateLab.adjustsFontSizeToFitWidth = YES;
     return cell;
 }
 

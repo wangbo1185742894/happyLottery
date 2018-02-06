@@ -15,7 +15,7 @@
 #import "WBBifenZhiboViewController.h"
 
 #import "LotteryManager.h"
-
+#import "Utility.h"
 #import "BiFenZhiboModel.h"
 @interface WBBifenZhiboViewController ()<UIWebViewDelegate,LotteryManagerDelegate>
 {
@@ -60,6 +60,11 @@
     self.wbContentView.scrollView.bounces = NO;
     self.btnBiFenIng.selected = YES;
     self.wbContentView.delegate = self;
+    if ([Utility isIOS11After]) {
+        _wbContentViewTop.constant = -55;
+    }else{
+        _wbContentViewTop.constant = 4;
+    }
 }
 
 -(void)gotBFZBInfo:(NSArray *)dataArray{
@@ -177,18 +182,17 @@
     
     if ([requsetIngUrlStr rangeOfString:@"?m="].length == 0 ) {
         
-                   self.wbContentViewTop.constant = 0;
-        if (IS_IOS11) {
-//           self.wbContentViewTop.constant = -39;
+        if ([Utility isIOS11After]) {
+            self.wbContentViewTop.constant = -55;
         }else{
-//           self.wbContentViewTop.constant = -39;
+            self.wbContentViewTop.constant = 4;
         }
-//        self.wbContentViewBottom.constant = -80;
+
         self.backBtn.userInteractionEnabled= NO;
 //        self.topViewHeight.constant = 96;
         return YES;
     }else{
-                   self.wbContentViewTop.constant = -120;
+        self.wbContentViewTop.constant = -120;
 //        self.wbContentViewTop.constant = -22;
         self.backBtn.userInteractionEnabled = YES;
 //        self.wbContentViewBottom.constant = 0;

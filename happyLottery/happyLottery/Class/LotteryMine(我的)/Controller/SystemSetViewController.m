@@ -26,6 +26,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+#ifdef APPSTORE
+    self.versionBtn.hidden = YES;
+#else
+    self.versionBtn.hidden = NO;
+#endif
     self.viewControllerNo = @"A208";
     self.title = @"系统设置";
     if ([self isIphoneX]) {

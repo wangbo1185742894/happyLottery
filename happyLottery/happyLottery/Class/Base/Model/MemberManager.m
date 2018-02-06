@@ -71,11 +71,18 @@
         [self.delegate registerUser:nil IsSuccess:NO errorMsg:@"服务器错误"];
         //失败的代理方法
     };
+    NSString *platformCode;
+#ifdef APPSTORE
+    platformCode = @"APPSTORE";
+#else
+    platformCode = @"ONLY";
+#endif
+    
     NSDictionary *itemParaDic;
     if (paraDic[@"shareCode"] == nil) {
-         itemParaDic = @{@"mobile":paraDic[@"userTel"], @"pwd":[self actionEncrypt:paraDic[@"userPwd"]],@"channelCode":@"TBZ",@"platformCode":@"ONLY"};
+         itemParaDic = @{@"mobile":paraDic[@"userTel"], @"pwd":[self actionEncrypt:paraDic[@"userPwd"]],@"channelCode":@"TBZ",@"platformCode":platformCode};
     }else{
-        itemParaDic = @{@"mobile":paraDic[@"userTel"], @"pwd":[self actionEncrypt:paraDic[@"userPwd"]],@"channelCode":@"TBZ",@"shareCode":paraDic[@"shareCode"],@"platformCode":@"ONLY"};
+        itemParaDic = @{@"mobile":paraDic[@"userTel"], @"pwd":[self actionEncrypt:paraDic[@"userPwd"]],@"channelCode":@"TBZ",@"shareCode":paraDic[@"shareCode"],@"platformCode":platformCode};
     }
     SOAPRequest *request = [self requestForAPI: APIRegister withParam:@{@"params":[self actionEncrypt:[self JsonFromId:itemParaDic]]} ];
     [self newRequestWithRequest:request

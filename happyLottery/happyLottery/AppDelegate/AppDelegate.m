@@ -92,7 +92,14 @@ static SystemSoundID shake_sound_male_id = 0;
     [self dataSave];
     [self autoLogin];
  
-    [JPUSHService setupWithOption:launchOptions appKey:@"5dd3abce8e0e840e6158b8e1"
+    NSString  *pushKey;
+#ifdef APPSTORE
+    pushKey = @"fbb09610ec798e722175c54d";
+#else
+    pushKey = @"5dd3abce8e0e840e6158b8e1";
+#endif
+
+    [JPUSHService setupWithOption:launchOptions appKey:pushKey
                           channel:@"App Store"
                  apsForProduction:0
             advertisingIdentifier:nil];

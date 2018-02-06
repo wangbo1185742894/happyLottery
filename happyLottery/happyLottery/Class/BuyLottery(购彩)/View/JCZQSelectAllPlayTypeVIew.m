@@ -62,7 +62,7 @@
     self.labHomeName.keyWordColor = SystemBlue;
     self.labGuestName.text = model.guestName;
     
-    self.labRangQiuNum.text = self.curModel.handicap;
+    self.labRangQiuNum.text = [NSString stringWithFormat:@"%ld",[self.curModel.handicap integerValue]];
     self.labRangQiuNum.textColor = [UIColor whiteColor];
     if ([self.curModel.handicap integerValue] >0) {
         self.labRangQiuNum.backgroundColor = ColorFromImage(@"rangqiuzheng");
