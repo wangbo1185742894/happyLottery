@@ -115,19 +115,29 @@
 
 - (IBAction)actionMatchResult:(UIButton *)sender {
     
+ 
     [self setBtnSState:sender];
+    if (self.dataArray == nil || self.dataArray.count == 0) {
+        return;
+    }
     BiFenZhiboModel *model  = self.dataArray[2];
     
     [self.wbContentView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:model.url]]];
 }
 - (IBAction)actionBiFenIng:(UIButton *)sender {
     [self setBtnSState:sender];
+    if (self.dataArray == nil || self.dataArray.count == 0) {
+        return;
+    }
     BiFenZhiboModel *model  = self.dataArray[1];
     
     [self.wbContentView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:model.url]]];
 }
 - (IBAction)actionCareMatch:(UIButton *)sender {
     [self setBtnSState:sender];
+    if (self.dataArray == nil || self.dataArray.count == 0) {
+        return;
+    }
     BiFenZhiboModel *model  = self.dataArray[0];
     
     [self.wbContentView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:model.url]]];

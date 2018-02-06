@@ -38,6 +38,8 @@
     if ([self isIphoneX]) {
         self.top.constant = 88;
         self.bottom.constant = 34;
+    }else  if ([Utility isIOS11After]) {
+        self.automaticallyAdjustsScrollViewInsets = NO; // tableView 莫名其妙  contentOffset.y 成-64了  MMP
     }
 }
 

@@ -8,7 +8,12 @@
 
 #import "Manager.h"
 #import "AESUtility.h"
-
+#import <arpa/inet.h>
+#import <netdb.h>
+#include <sys/sysctl.h>
+#include <net/if.h>
+#include <net/if_dl.h>
+#import <sys/utsname.h>
 
 @implementation Manager
 
@@ -20,13 +25,66 @@
     return nil;
 }
 
+//判断服务器是否可达
+- (BOOL)socketReachabilityTest {
+    
+    int socketNumber = socket(AF_INET, SOCK_STREAM, 0);
+    
+    struct sockaddr_in serverAddress;
+    
+    serverAddress.sin_family = AF_INET;
+    
+    serverAddress.sin_addr.s_addr = inet_addr("124.89.85.110");
+    
+    serverAddress.sin_port = htons(80);
+    if (connect(socketNumber, (const struct sockaddr *)&serverAddress, sizeof(serverAddress)) == 0) {
+        close(socketNumber);
+        return true;
+    }
+    close(socketNumber);;
+    return false;
+}
+
+//判断网络状态
+- (void)afnReachabilityTest {
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        switch (status) {
+            case AFNetworkReachabilityStatusNotReachable:
+                [self.netDelegate netIsNotEnable];
+                break;
+            case AFNetworkReachabilityStatusReachableViaWWAN:
+                //                [self showPromptText:@"WWAN" hideAfterDelay:1.8];
+                //                NSLog(@"AFNetworkReachability Reachable via WWAN");
+                break;
+            case AFNetworkReachabilityStatusReachableViaWiFi:
+                //                [self showPromptText:@"WiFi" hideAfterDelay:1.8];
+                //                NSLog(@"AFNetworkReachability Reachable via WiFi");
+                break;
+            case AFNetworkReachabilityStatusUnknown:
+            default:
+                //                [self showPromptText:@"Unknown" hideAfterDelay:1.8];
+                //                NSLog(@"AFNetworkReachability Unknown");
+                break;
+        }
+    }];
+    
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+}
+
+
 - (AFHTTPRequestOperation *) newRequestWithRequest: (SOAPRequest*)request
                                             subAPI:(NSString *)subApi
                             constructingBodyWithBlock: (void (^)(id <AFMultipartFormData> formData))block
                                               success: (void (^)(AFHTTPRequestOperation *operation, id responseObject))successBlock
                                               failure: (void (^)(AFHTTPRequestOperation *operation, NSError *error))failureBlock
 {
+    
 
+    if (![self socketReachabilityTest ]) {
+        [self .netDelegate serverIsNotConnect];
+        return nil;
+    }
+    [self afnReachabilityTest];
     NSString * soapMessage = [request getSOAPMessage];
 
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL: [NSURL URLWithString:[NSString stringWithFormat:WSServerURL,subApi]]];

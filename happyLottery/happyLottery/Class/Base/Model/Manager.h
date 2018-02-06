@@ -14,12 +14,19 @@
 #import "SOAPRequest.h"
 #import "SOAPResponse.h"
 
+@protocol LisentNetStateDelegate
+
+-(void)netIsNotEnable;
+-(void)serverIsNotConnect;
+
+@end
 
 @interface Manager : NSObject {
     NSMutableArray *requests;
     NSString * ipaName;
 }
 
+@property(nonatomic,strong)id<LisentNetStateDelegate> netDelegate;
 
 - (NSString*) JsonFromId: (id) obj;
 - (id) objFromJson: (NSString*) jsonStr;
