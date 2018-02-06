@@ -35,16 +35,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+  
     [self.navigationController.navigationBar setShadowImage:[UIImage imageWithColor:[UIColor clearColor]]]; //去掉导航栏 下面黑线线
 
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(uploadVisit) name:@"NSNotificationUserLoginSuccess" object:nil];
-        
     });
    
-    
     self.view.mj_w = KscreenWidth;
     self.view.mj_h = KscreenHeight;
     self.memberMan = [[MemberManager alloc]init];
