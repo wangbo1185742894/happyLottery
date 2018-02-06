@@ -73,14 +73,8 @@
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="qRf-kH-TAX">
                                     <rect key="frame" x="329" y="151" width="23" height="23"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="23" id="2dE-xH-AMA"/>
-                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="23" id="AWk-Io-9EQ"/>
                                         <constraint firstAttribute="width" constant="23" id="HwT-6H-KR1"/>
-                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="23" id="Xzf-4G-Dh0"/>
-                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="23" id="ctu-JN-6fz"/>
-                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="23" id="nS3-WY-ell"/>
                                         <constraint firstAttribute="height" constant="23" id="s4N-7w-d1e"/>
-                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="23" id="zCv-bI-GKF"/>
                                     </constraints>
                                 </imageView>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add.png" translatesAutoresizingMaskIntoConstraints="NO" id="JxW-V9-CzH">
