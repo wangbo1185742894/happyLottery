@@ -45,6 +45,7 @@
     }
     self.txtChongZhiJIne.delegate = self;
     [self getListByChannel];
+    
     for (UIButton *selectItem in _chongZhiSelectItem) {
         if (selectItem.tag == 100) {
              [self setItem:selectItem];
@@ -177,7 +178,6 @@
     
     if (infoArray == nil || infoArray.count == 0) {
         [self showPromptText:msg hideAfterDelay:1.7 ];
-        [self.tabChannelList reloadData];
         self.tabPayListHeight.constant = channelList.count * self.tabChannelList.rowHeight;
         return;
     }

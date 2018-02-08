@@ -72,7 +72,6 @@
     self.lotteryMan.delegate = self;
     [self.memberMan getAvailableCoupon:@{@"cardCode":self.curUser.cardCode,@"amount":@(self.cashPayMemt.realSubscribed)}];
     [self getListByChannel];
-   
 }
 
 -(void)showCoupon{
@@ -141,6 +140,7 @@
             }
         }
     }
+    curMaxCoupon.isSelect = YES;
     return curMaxCoupon;
     
 }
