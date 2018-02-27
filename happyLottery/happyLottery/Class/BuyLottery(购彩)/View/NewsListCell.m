@@ -83,7 +83,7 @@
     
     self.labMatchResult.hidden = NO;
     if (model.matchResult  == nil || model.matchResult.length ==0 || [model.matchResult isEqualToString:@"(null)"]) {
-        self.labMatchResult.text  = [NSString stringWithFormat:@"赛果:待知"];
+        self.labMatchResult.text  = [NSString stringWithFormat:@"赛果:--:--"];
     }else{
         self.labMatchResult.text  = [NSString stringWithFormat:@"赛果:%@",model.matchResult];
     }

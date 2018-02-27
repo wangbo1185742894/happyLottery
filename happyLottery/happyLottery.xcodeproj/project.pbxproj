@@ -468,6 +468,8 @@
 		2DCBB28E1FD1000700934D92 /* happyLotteryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCBB28D1FD1000700934D92 /* happyLotteryTests.m */; };
 		2DCBB2991FD1000700934D92 /* happyLotteryUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCBB2981FD1000700934D92 /* happyLotteryUITests.m */; };
 		2DCBB2BF1FD108B900934D92 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCBB2BE1FD108B900934D92 /* BaseViewController.m */; };
+		2DCD4D60202FD505007E544D /* scheme_corner_mark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCD4D5E202FD504007E544D /* scheme_corner_mark@2x.png */; };
+		2DCD4D61202FD505007E544D /* scheme_corner_mark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCD4D5F202FD505007E544D /* scheme_corner_mark@3x.png */; };
 		2DDEDC061FD4DBD8007AEBF7 /* BuyLotteryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDEDC041FD4DBD8007AEBF7 /* BuyLotteryViewController.m */; };
 		2DDEDC071FD4DBD8007AEBF7 /* BuyLotteryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DDEDC051FD4DBD8007AEBF7 /* BuyLotteryViewController.xib */; };
 		2DDEDC0B1FD4DBF1007AEBF7 /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDEDC091FD4DBF1007AEBF7 /* DiscoverViewController.m */; };
@@ -1508,6 +1510,8 @@
 		2DCBB2BD1FD108B900934D92 /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		2DCBB2BE1FD108B900934D92 /* BaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		2DCBB2C61FD1098300934D92 /* HappyLottery.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HappyLottery.pch; sourceTree = "<group>"; };
+		2DCD4D5E202FD504007E544D /* scheme_corner_mark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scheme_corner_mark@2x.png"; sourceTree = "<group>"; };
+		2DCD4D5F202FD505007E544D /* scheme_corner_mark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scheme_corner_mark@3x.png"; sourceTree = "<group>"; };
 		2DDEDC031FD4DBD8007AEBF7 /* BuyLotteryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BuyLotteryViewController.h; sourceTree = "<group>"; };
 		2DDEDC041FD4DBD8007AEBF7 /* BuyLotteryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BuyLotteryViewController.m; sourceTree = "<group>"; };
 		2DDEDC051FD4DBD8007AEBF7 /* BuyLotteryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BuyLotteryViewController.xib; sourceTree = "<group>"; };
@@ -2667,6 +2671,8 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				2DCD4D5E202FD504007E544D /* scheme_corner_mark@2x.png */,
+				2DCD4D5F202FD505007E544D /* scheme_corner_mark@3x.png */,
 				F9CD01FC2024456500E54E79 /* annotation@2x.png */,
 				F9CD01FD2024456500E54E79 /* annotation@3x.png */,
 				2DE892B12024069D008926A6 /* pic_kongbaifangan@2x.png */,
@@ -4430,6 +4436,7 @@
 				2D739CE81FEB462B00264044 /* guoguan@2x.png in Resources */,
 				2D20602A1FFCB71E0086E266 /* icon_yue@2x.png in Resources */,
 				2D20601E1FFCB71E0086E266 /* icon_shijian@3x.png in Resources */,
+				2DCD4D61202FD505007E544D /* scheme_corner_mark@3x.png in Resources */,
 				2D2060281FFCB71E0086E266 /* icon_yinlian@2x.png in Resources */,
 				2DDEDE761FD568C9007AEBF7 /* LICENSE in Resources */,
 				2D628B231FECA9C40013D0E1 /* touzhubeishujian@2x.png in Resources */,
@@ -4707,6 +4714,7 @@
 				F9F6CA9E1FF5D6B100A49F71 /* download@3x.png in Resources */,
 				2D0E23D72019A63E0098DA40 /* recharge@2x.png in Resources */,
 				F9C332DC1FF4D5EF00779197 /* cannot@2x.png in Resources */,
+				2DCD4D60202FD505007E544D /* scheme_corner_mark@2x.png in Resources */,
 				F94A10702022C3E3006C3695 /* logo125@2x.png in Resources */,
 				2D5171FE200C942400C3CD7F /* pageCodeConfig.plist in Resources */,
 				2D739CE11FEB45E300264044 /* matchcleanall@3x.png in Resources */,

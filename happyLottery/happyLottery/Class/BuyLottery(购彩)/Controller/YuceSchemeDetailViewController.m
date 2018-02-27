@@ -271,12 +271,13 @@
         [self.lotteryMan betLotteryScheme:self.transaction];
        
         [self showLoadingViewWithText:@"正在加载"];
-        
+        if (self.scheme.recSchemeNo != nil) {
+            [self.lotteryMan updateRecSchemeRecCount:@{@"recSchemeNo":self.scheme.recSchemeNo}];
+        }
     }else{
         [self needLogin];
         return;
     }
-    
     
 }
 

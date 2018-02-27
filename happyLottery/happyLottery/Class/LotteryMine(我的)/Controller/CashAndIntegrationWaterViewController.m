@@ -257,8 +257,8 @@
                 cell.image.image = [UIImage imageNamed:@"decrease"];
                 cell.priceLab.text = [NSString stringWithFormat:@"%@分",cashBoltter.amounts];
             }
-            float b=[cashBoltter.remBalance floatValue];
-            cell.retainLab.text =[NSString stringWithFormat:@"积分：%.2f",b];
+            
+            cell.retainLab.text =[NSString stringWithFormat:@"积分：%@",cashBoltter.remBalance];
         }
     } else if (tableView ==self.tabCashList) {
       cell= [tableView dequeueReusableCellWithIdentifier:CellIdentifier2];
@@ -273,7 +273,7 @@
             CashBoltter *cashBoltter = listCashBlotterArray[indexPath.row];
             cell.nameLab.text = cashBoltter.orderType;
             cell.dateLab.text = cashBoltter.createTime;
-            float amounts=[cashBoltter.amounts floatValue];
+            double amounts=[cashBoltter.amounts doubleValue];
             if (amounts>0) {
                 cell.priceLab.textColor = SystemGreen;
                 cell.image.image = [UIImage imageNamed:@"addcrease"];
@@ -283,7 +283,7 @@
                 cell.priceLab.text = [NSString stringWithFormat:@"%.2f元",amounts];
                 
             }
-            float b=[cashBoltter.remBalance floatValue];
+            double b=[cashBoltter.remBalance doubleValue];
             
             cell.retainLab.text =[NSString stringWithFormat:@"余额:%.2f",b];
         }

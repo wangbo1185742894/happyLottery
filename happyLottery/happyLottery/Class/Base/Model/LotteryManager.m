@@ -472,6 +472,25 @@
                         failure:failureBlock];
 }
 
+- (void)updateRecSchemeRecCount:(NSDictionary *)paraDic{
+    
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        
+    
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    };
+    
+    SOAPRequest *request = [self requestForAPI: APIupdateRecSchemeRecCount withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIDATA
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
 - (void)listByRechargeChannel:(NSDictionary *)paraDic{
     
     void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)

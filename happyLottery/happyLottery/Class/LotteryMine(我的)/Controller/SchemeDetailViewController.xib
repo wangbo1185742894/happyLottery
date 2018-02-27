@@ -14,8 +14,7 @@
                 <outlet property="heightZhifuView" destination="sbn-pK-K9A" id="rlJ-l4-7uC"/>
                 <outlet property="imgSchemeTopView" destination="61u-sy-qC0" id="KcQ-Ml-Jgh"/>
                 <outlet property="mainViewHeight" destination="b66-5V-q7H" id="fLh-bo-mqk"/>
-                <outlet property="tabMatchListVIew" destination="ima-rv-PXo" id="7UR-Mw-fd0"/>
-                <outlet property="tabSchemeDetailList" destination="ima-rv-PXo" id="QtG-oO-CTi"/>
+                <outlet property="tabMatchListVIew" destination="ima-rv-PXo" id="D37-fy-SPo"/>
                 <outlet property="tabviewHeight" destination="fpy-6h-beh" id="Me1-QE-eW0"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -56,7 +55,7 @@
                                         <constraint firstAttribute="height" constant="80" id="4G8-kz-YGQ"/>
                                     </constraints>
                                 </imageView>
-                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ima-rv-PXo">
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ima-rv-PXo">
                                     <rect key="frame" x="0.0" y="80" width="375" height="400"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>

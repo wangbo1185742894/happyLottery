@@ -30,10 +30,11 @@
     __weak IBOutlet NSLayoutConstraint *heightZhifuView;
     __weak IBOutlet NSLayoutConstraint *mainViewHeight;
     __weak IBOutlet NSLayoutConstraint *tabviewHeight;
-    __weak IBOutlet UITableView *tabSchemeDetailList;
+    
     JCZQSchemeItem *schemeDetail;
     __weak IBOutlet UIImageView *imgSchemeTopView;
     __weak IBOutlet UITableView *tabMatchListVIew;
+    NSMutableArray  <JcBetContent * >*matchList;
 }
 @end
 
@@ -41,7 +42,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    tabMatchListVIew.hidden  =YES;
     self.title = @"方案详情";
+    matchList = [NSMutableArray arrayWithCapacity:0];
     [self setTableView];
     self.lotteryMan.delegate = self;
     heightZhifuView.constant = 0;
@@ -87,6 +90,7 @@
 }
 
 -(void)loadData{
+    [self showLoadingText:@"正在加载"];
     [self.lotteryMan getSchemeRecordBySchemeNo:@{@"schemeNo":self.schemeNO}];
 }
 
@@ -97,6 +101,31 @@
     }
 
     schemeDetail = [[JCZQSchemeItem alloc]initWith:infoArray];
+    NSInteger itemIndex = 1;
+    for (NSDictionary *matchDic in [Utility objFromJson:schemeDetail.betContent]) {
+        NSArray *matchArray = [Utility objFromJson:matchDic[@"betMatches"]];
+        for (int i  = 0; i < matchArray.count; i++) {
+            JcBetContent *betContent = [[JcBetContent alloc]init];
+            betContent.isLast = NO;
+            betContent.index = itemIndex;
+            if (i == 0) {
+                
+                betContent.isShow = YES;
+                betContent.multiple = matchDic[@"multiple"];
+                betContent.passTypes = matchDic[@"passTypes"];
+                itemIndex ++ ;
+            }else{
+                betContent.isShow = NO;
+                if (i == matchArray.count - 1) {
+                    betContent.isLast = YES;
+                }
+            }
+            betContent.virtualSp = schemeDetail.virtualSp;
+            betContent.matchInfo = matchArray[i];
+            [matchList addObject:betContent];
+        }
+    }
+    
     [self setSchemeStateImg];
     if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) {
         heightZhifuView.constant = 60;
@@ -104,12 +133,9 @@
         heightZhifuView.constant = 0;
     }
     [tabMatchListVIew reloadData];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
-        tabviewHeight.constant = tabMatchListVIew.contentSize.height;
-        mainViewHeight.constant = tabMatchListVIew.contentSize .height + 80;
-        tabMatchListVIew.bounces = NO;
-    });
+
+    [self hideLoadingView];
+    tabMatchListVIew.hidden = NO;
 }
 
 - (IBAction)actionOrderDetail:(UIButton *)sender {
@@ -143,18 +169,32 @@
 #pragma UITableViewDelegate,UITableViewDataSource
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (section == 0) {
-        return 1;
-    }else if (section == 1){
-        NSDictionary *betContent = [Utility objFromJson: schemeDetail.betContent];
-        if (betContent == nil) {
-            return 0;
+    if ([schemeDetail.costType isEqualToString:@"CASH"]) {
+        if (section == 0) {
+            return 1;
+        }else if (section == 2){
+            NSDictionary *betContent = [Utility objFromJson: schemeDetail.betContent];
+            if (betContent == nil) {
+                return 0;
+            }
+            
+            return matchList.count;
+        }else if (section == 1){
+            return 1;
         }
-        NSArray *betMatches = betContent[@"betMatches"];
-        return betMatches.count;
-    }else if (section == 2){
-        return 1;
+    }else{
+        if (section == 0) {
+            return 1;
+        }else if (section == 1){
+            NSDictionary *betContent = [Utility objFromJson: schemeDetail.betContent];
+            if (betContent == nil) {
+                return 0;
+            }
+            
+            return matchList.count;
+        }
     }
+  
     return 0;
 
 }
@@ -162,71 +202,143 @@
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     if ([schemeDetail.costType isEqualToString:@"CASH"]) {
         return 3;
-
     }else{
-        
         return 2;
     }
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell;
-    if (indexPath.section == 0) { // 显示 方案信息
-        SchemeDetailViewCell *detailCell = [tableView dequeueReusableCellWithIdentifier:KSchemeDetailViewCell];
-        [detailCell reloadDataModel:schemeDetail];
-        cell = detailCell;
-    }else if (indexPath.section == 1){ // 显示方案投注内容
-        SchemeDetailMatchViewCell *matchCell = [tableView dequeueReusableCellWithIdentifier:KSchemeDetailMatchViewCell];
-        NSDictionary *betContent = [Utility objFromJson: schemeDetail.betContent];
-        if (schemeDetail != nil) {
-            NSArray *betMatches = betContent[@"betMatches"];
-            [matchCell refreshData:betMatches[indexPath.row] andResult:schemeDetail.trOpenResult];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        tabviewHeight.constant = tabMatchListVIew.contentSize.height;
+        mainViewHeight.constant = tabMatchListVIew.contentSize .height + 80;
+        tabMatchListVIew.bounces = NO;
+    });
+    if ([schemeDetail.costType isEqualToString:@"CASH"]) {
+        if (indexPath.section == 0) { // 显示 方案信息
+            SchemeDetailViewCell *detailCell = [tableView dequeueReusableCellWithIdentifier:KSchemeDetailViewCell];
+            [detailCell reloadDataModel:schemeDetail];
+            cell = detailCell;
+        }else if (indexPath.section == 2){ // 显示方案投注内容
+            SchemeDetailMatchViewCell *matchCell = [tableView dequeueReusableCellWithIdentifier:KSchemeDetailMatchViewCell];
+            
+            if (schemeDetail != nil) {
+                [matchCell refreshData:matchList[indexPath.row] andResult:schemeDetail.trOpenResult];
+            }
+            cell = matchCell;
+        }else if (indexPath.section == 1){
+            SchemeInfoViewCell * infoCell = [tableView dequeueReusableCellWithIdentifier:KSchemeInfoViewCell];
+            if (schemeDetail != nil) {
+                [infoCell loadData:schemeDetail];
+            }
+            cell = infoCell;
         }
-        cell = matchCell;
-    }else if (indexPath.section == 2){
-        SchemeInfoViewCell * infoCell = [tableView dequeueReusableCellWithIdentifier:KSchemeInfoViewCell];
-        if (schemeDetail != nil) {
-            [infoCell loadData:schemeDetail];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    }else{
+        if (indexPath.section == 0) { // 显示 方案信息
+            SchemeDetailViewCell *detailCell = [tableView dequeueReusableCellWithIdentifier:KSchemeDetailViewCell];
+            [detailCell reloadDataModel:schemeDetail];
+            cell = detailCell;
+        }else if (indexPath.section == 1){ // 显示方案投注内容
+            SchemeDetailMatchViewCell *matchCell = [tableView dequeueReusableCellWithIdentifier:KSchemeDetailMatchViewCell];
+            
+            if (schemeDetail != nil) {
+                [matchCell refreshData:matchList[indexPath.row] andResult:schemeDetail.trOpenResult];
+            }
+            cell = matchCell;
         }
-        cell = infoCell;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
     }
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    return cell;
+    
+  
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section == 0) {
-        
-        return [schemeDetail getJCZQCellHeight];
-        
-        
-    }else if (indexPath.section ==1){
-        NSDictionary *betContent = [Utility objFromJson: schemeDetail.betContent];
-        NSArray *betMatches = betContent[@"betMatches"];
-        NSDictionary *dic = betMatches[indexPath.row];
-        NSArray *itemArray = dic[@"betPlayTypes"];
-        float curY = 0;
-        NSString *option;
-        for (NSDictionary *itemDic in itemArray) {
-            option = [self reloadDataWithRec:itemDic[@"options"] type:itemDic[@"playType"]];
-            float height =  [option boundingRectWithSize:CGSizeMake(KscreenWidth - 90, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14]} context:nil].size.height;
-            height  = height > 25 ? height:25;
-            curY += height;
-        }
-        if (KscreenWidth == 667) {
-             return curY + 60;
-        }else{
-             return curY + 100;
-        }
-       
-    }else if (indexPath.section ==2){
-        if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) {
-            return 60;
-        }else{
+    
+    if ([schemeDetail.costType isEqualToString:@"CASH"]) {
+        if (indexPath.section == 0) {
+            return [schemeDetail getJCZQCellHeight];
+        }else if (indexPath.section ==2){
             
-            return 110;
+            NSDictionary *dic = matchList[indexPath.row].matchInfo;
+            NSArray *itemArray = dic[@"betPlayTypes"];
+            float curY = 0;
+            NSString *option;
+            for (NSDictionary *itemDic in itemArray) {
+                option = [self reloadDataWithRec:itemDic[@"options"] type:itemDic[@"playType"]];
+                float height =  [option boundingRectWithSize:CGSizeMake(KscreenWidth - 90, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14]} context:nil].size.height;
+                height  = height > 25 ? height:25;
+                curY += height;
+            }
+            if (KscreenWidth == 667) {
+                if (matchList[indexPath.row].isShow) {
+                    NSArray *passType = [Utility objFromJson:matchList[indexPath.row].passTypes];
+                    ;
+                    return curY + 90 + ((passType.count / 7) + 1) * 15;
+                }else{
+                    
+                    return curY + 40;
+                }
+            }else{
+                if (matchList[indexPath.row].isShow) {
+                    NSArray *passType = [Utility objFromJson:matchList[indexPath.row].passTypes];
+                    ;
+                    return curY + 130 + ((passType.count / 7) + 1) * 15;
+                }else{
+                    return curY + 80;
+                }
+            }
+            
+        }else if (indexPath.section ==1){
+            if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) {
+                return 110;
+            }else{
+                
+                return 110;
+            }
+        }
+    }else{
+        if (indexPath.section == 0) {
+            return [schemeDetail getJCZQCellHeight];
+        }else if (indexPath.section ==1){
+            
+            NSDictionary *dic = matchList[indexPath.row].matchInfo;
+            NSArray *itemArray = dic[@"betPlayTypes"];
+            float curY = 0;
+            NSString *option;
+            for (NSDictionary *itemDic in itemArray) {
+                option = [self reloadDataWithRec:itemDic[@"options"] type:itemDic[@"playType"]];
+                float height =  [option boundingRectWithSize:CGSizeMake(KscreenWidth - 90, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14]} context:nil].size.height;
+                height  = height > 25 ? height:25;
+                curY += height;
+            }
+            if (KscreenWidth == 667) {
+                if (matchList[indexPath.row].isShow) {
+                    NSArray *passType = [Utility objFromJson:matchList[indexPath.row].passTypes];
+                    ;
+                    return curY + 90 + ((passType.count / 7) + 1) * 15;
+                }else{
+                    
+                    return curY + 40;
+                }
+            }else{
+                if (matchList[indexPath.row].isShow) {
+                    NSArray *passType = [Utility objFromJson:matchList[indexPath.row].passTypes];
+                    ;
+                    return curY + 130 + ((passType.count / 7) + 1) * 15;
+                }else{
+                    return curY + 80;
+                }
+            }
+            
         }
     }
+    
+  
     return 0;
 }
 
@@ -291,18 +403,34 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    
-    if (section == 1) {
+    if ([schemeDetail.costType isEqualToString:@"CASH"]) {
         
-        if ([NSString stringWithFormat:@"%@",schemeDetail.ticketCount].integerValue > 0 && [schemeDetail.costType isEqualToString:@"CASH"]) {
-           return 60;
+        if (section == 2) {
+            
+            if ([NSString stringWithFormat:@"%@",schemeDetail.ticketCount].integerValue > 0 && [schemeDetail.costType isEqualToString:@"CASH"]) {
+                return 60;
+            }else{
+                return 30;
+            }
+            
         }else{
-          return 30;
+            return  30;
         }
-        
     }else{
-        return  30;
+        
+        if (section == 1) {
+            
+            if ([NSString stringWithFormat:@"%@",schemeDetail.ticketCount].integerValue > 0 && [schemeDetail.costType isEqualToString:@"CASH"]) {
+                return 60;
+            }else{
+                return 30;
+            }
+            
+        }else{
+            return  30;
+        }
     }
+   
     
 }
 
@@ -310,19 +438,37 @@
     
     OrderListHeaderView *header = [[[NSBundle mainBundle] loadNibNamed:@"OrderListHeaderView" owner:nil options:nil] lastObject];
     header.backgroundColor = RGBCOLOR(253 , 252, 245);
-    if (section == 0) {
-        header.titleLa.text = @"方案信息";
-    }else if (section == 1){
-        if (![schemeDetail.costType isEqualToString:@"CASH"]) {
-            header.titleLa.text = @"方案内容";
-        }else{
-            [self showMySchemeHeader:header];
-        }
+    
+    if ([schemeDetail.costType isEqualToString:@"CASH"]) {
         
-    }else if (section == 2){
-        header.titleLa.text = @"认购信息";
+        if (section == 0) {
+            header.titleLa.text = @"方案信息";
+        }else if (section == 2){
+            if (![schemeDetail.costType isEqualToString:@"CASH"]) {
+                header.titleLa.text = @"方案内容";
+            }else{
+                [self showMySchemeHeader:header];
+            }
+            
+        }else if (section == 1){
+            header.titleLa.text = @"认购信息";
+        }
+        return header;
+    }else{
+        
+        if (section == 0) {
+            header.titleLa.text = @"方案信息";
+        }else if (section == 1){
+            if (![schemeDetail.costType isEqualToString:@"CASH"]) {
+                header.titleLa.text = @"方案内容";
+            }else{
+                [self showMySchemeHeader:header];
+            }
+            
+        }
+        return header;
     }
-    return header;
+  
     
 }
 

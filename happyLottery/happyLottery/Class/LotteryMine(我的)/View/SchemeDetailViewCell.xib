@@ -44,7 +44,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="订单号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GYP-iX-1at">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="方案号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GYP-iX-1at">
                                 <rect key="frame" x="12" y="46" width="60" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="3IH-E2-gjR"/>
@@ -54,7 +54,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="投注倍数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZF2-vN-z32">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="中奖金额" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZF2-vN-z32">
                                 <rect key="frame" x="12" y="68" width="60" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="9fx-Fq-U5Z"/>
@@ -88,7 +88,7 @@
                                     <constraint firstAttribute="height" constant="17" id="asP-32-hGW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.97831910850000003" green="0.35592132809999999" blue="0.38220286370000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QkX-SO-2Jo">
@@ -97,30 +97,14 @@
                                     <constraint firstAttribute="height" constant="17" id="hCh-zD-Eb1"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" red="0.35257309679999999" green="0.62924289700000002" blue="0.99314433339999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="中奖金额" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6g-Os-Y2r">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="投注注数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6g-Os-Y2r">
                                 <rect key="frame" x="12" y="90" width="60" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="6IW-AM-sVB"/>
                                     <constraint firstAttribute="width" constant="60" id="V5v-dZ-Fgt"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pB5-lE-lD3">
-                                <rect key="frame" x="77" y="112" width="224" height="42.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="投注方式" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U3V-iW-3W5">
-                                <rect key="frame" x="12" y="112" width="60" height="17"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="17" id="f1G-YA-yFl"/>
-                                    <constraint firstAttribute="width" constant="60" id="pPX-6k-r02"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
@@ -136,40 +120,59 @@
                                 <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xdq-QT-KFQ">
+                                <rect key="frame" x="77" y="112" width="224" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="17" id="8aU-jr-QVj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.35257309679999999" green="0.62924289700000002" blue="0.99314433339999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="投注金额" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Qp-oo-1fr">
+                                <rect key="frame" x="12" y="112" width="60" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="17" id="ttB-85-VBi"/>
+                                    <constraint firstAttribute="width" constant="60" id="ucO-za-pYo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="rVI-XA-O8s" firstAttribute="top" secondItem="Ihf-ll-qMP" secondAttribute="bottom" constant="5" id="1W8-RZ-Ouf"/>
                             <constraint firstItem="Lc4-qw-MU2" firstAttribute="leading" secondItem="AVQ-fR-WGI" secondAttribute="leading" constant="12" id="4Gz-kv-kcE"/>
                             <constraint firstItem="z5s-LJ-nNt" firstAttribute="leading" secondItem="Ihf-ll-qMP" secondAttribute="trailing" constant="10" id="54d-gx-P5e"/>
+                            <constraint firstItem="2Qp-oo-1fr" firstAttribute="leading" secondItem="AVQ-fR-WGI" secondAttribute="leading" constant="12" id="7Ed-4E-Zf9"/>
                             <constraint firstItem="QkX-SO-2Jo" firstAttribute="top" secondItem="mvR-xO-pkC" secondAttribute="bottom" constant="5" id="7Wb-Re-yoc"/>
                             <constraint firstItem="GYP-iX-1at" firstAttribute="top" secondItem="Lc4-qw-MU2" secondAttribute="bottom" constant="5" id="A8x-fG-6i6"/>
                             <constraint firstAttribute="bottom" secondItem="aVO-61-BBa" secondAttribute="bottom" id="B8Y-s1-W9x"/>
-                            <constraint firstItem="pB5-lE-lD3" firstAttribute="leading" secondItem="U3V-iW-3W5" secondAttribute="trailing" constant="5" id="CzA-ez-FyW"/>
                             <constraint firstItem="n6g-Os-Y2r" firstAttribute="leading" secondItem="AVQ-fR-WGI" secondAttribute="leading" constant="12" id="D1j-nB-zZM"/>
                             <constraint firstItem="ZF2-vN-z32" firstAttribute="leading" secondItem="AVQ-fR-WGI" secondAttribute="leading" constant="12" id="DIq-v3-VwX"/>
                             <constraint firstItem="QkX-SO-2Jo" firstAttribute="leading" secondItem="n6g-Os-Y2r" secondAttribute="trailing" constant="5" id="ERK-Tq-9zE"/>
-                            <constraint firstItem="U3V-iW-3W5" firstAttribute="leading" secondItem="AVQ-fR-WGI" secondAttribute="leading" constant="12" id="Hgq-3I-JtI"/>
                             <constraint firstItem="aVO-61-BBa" firstAttribute="top" secondItem="AVQ-fR-WGI" secondAttribute="top" id="L8V-Cc-b9f"/>
                             <constraint firstAttribute="trailing" secondItem="mvR-xO-pkC" secondAttribute="trailing" constant="15" id="PYc-lm-BvH"/>
                             <constraint firstItem="aVO-61-BBa" firstAttribute="leading" secondItem="AVQ-fR-WGI" secondAttribute="leading" id="SbL-Ta-04B"/>
                             <constraint firstAttribute="trailing" secondItem="QkX-SO-2Jo" secondAttribute="trailing" constant="15" id="UDc-FE-6Tx"/>
+                            <constraint firstItem="Xdq-QT-KFQ" firstAttribute="top" secondItem="QkX-SO-2Jo" secondAttribute="bottom" constant="5" id="XOz-vu-642"/>
                             <constraint firstItem="n6g-Os-Y2r" firstAttribute="top" secondItem="ZF2-vN-z32" secondAttribute="bottom" constant="5" id="XnI-io-tgY"/>
                             <constraint firstItem="GYP-iX-1at" firstAttribute="leading" secondItem="AVQ-fR-WGI" secondAttribute="leading" constant="12" id="Xu6-mH-vJE"/>
                             <constraint firstItem="ZF2-vN-z32" firstAttribute="top" secondItem="GYP-iX-1at" secondAttribute="bottom" constant="5" id="YQf-MO-dnL"/>
-                            <constraint firstItem="pB5-lE-lD3" firstAttribute="top" secondItem="QkX-SO-2Jo" secondAttribute="bottom" constant="5" id="cg5-xi-SnL"/>
+                            <constraint firstItem="2Qp-oo-1fr" firstAttribute="top" secondItem="n6g-Os-Y2r" secondAttribute="bottom" constant="5" id="aIb-tW-Rb8"/>
+                            <constraint firstItem="Xdq-QT-KFQ" firstAttribute="leading" secondItem="2Qp-oo-1fr" secondAttribute="trailing" constant="5" id="au2-KA-LOQ"/>
                             <constraint firstItem="mvR-xO-pkC" firstAttribute="leading" secondItem="ZF2-vN-z32" secondAttribute="trailing" constant="5" id="eKl-CA-NeB"/>
-                            <constraint firstItem="mvR-xO-pkC" firstAttribute="top" secondItem="ZF2-vN-z32" secondAttribute="top" id="exr-Mf-vuu"/>
                             <constraint firstAttribute="trailing" secondItem="rVI-XA-O8s" secondAttribute="trailing" constant="15" id="fCJ-Hp-1nb"/>
-                            <constraint firstAttribute="bottom" secondItem="pB5-lE-lD3" secondAttribute="bottom" constant="7" id="h3d-fl-t4B"/>
+                            <constraint firstItem="2Qp-oo-1fr" firstAttribute="top" secondItem="n6g-Os-Y2r" secondAttribute="bottom" constant="5" id="jTk-0d-USo"/>
                             <constraint firstAttribute="trailing" secondItem="aVO-61-BBa" secondAttribute="trailing" id="lXd-js-fa3"/>
-                            <constraint firstAttribute="trailing" secondItem="pB5-lE-lD3" secondAttribute="trailing" constant="15" id="lya-lb-qsA"/>
                             <constraint firstItem="z5s-LJ-nNt" firstAttribute="top" secondItem="AVQ-fR-WGI" secondAttribute="top" constant="24" id="mOQ-M4-XcO"/>
                             <constraint firstItem="Lc4-qw-MU2" firstAttribute="top" secondItem="AVQ-fR-WGI" secondAttribute="top" constant="24" id="mQ7-IA-Ab1"/>
                             <constraint firstItem="Ihf-ll-qMP" firstAttribute="leading" secondItem="Lc4-qw-MU2" secondAttribute="trailing" constant="5" id="mje-He-kfp"/>
                             <constraint firstItem="Ihf-ll-qMP" firstAttribute="top" secondItem="AVQ-fR-WGI" secondAttribute="top" constant="24" id="qOk-OT-O4v"/>
                             <constraint firstAttribute="trailing" secondItem="z5s-LJ-nNt" secondAttribute="trailing" constant="15" id="rq2-Gd-NGD"/>
-                            <constraint firstItem="U3V-iW-3W5" firstAttribute="top" secondItem="n6g-Os-Y2r" secondAttribute="bottom" constant="5" id="wYn-Jw-Pw6"/>
+                            <constraint firstAttribute="trailing" secondItem="Xdq-QT-KFQ" secondAttribute="trailing" constant="15" id="trQ-jb-Qkr"/>
+                            <constraint firstItem="mvR-xO-pkC" firstAttribute="top" secondItem="rVI-XA-O8s" secondAttribute="bottom" constant="5" id="xJp-Tn-uFm"/>
                             <constraint firstItem="rVI-XA-O8s" firstAttribute="leading" secondItem="GYP-iX-1at" secondAttribute="trailing" constant="5" id="zcA-Cd-g7r"/>
                         </constraints>
                     </view>
@@ -208,18 +211,18 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="disTopBetBouns" destination="7Wb-Re-yoc" id="KBG-2H-XTu"/>
-                <outlet property="disTopBetBounsInfo" destination="XnI-io-tgY" id="978-gW-8qH"/>
-                <outlet property="labBetBouns" destination="n6g-Os-Y2r" id="rHz-dG-JZo"/>
-                <outlet property="labBetCost" destination="QkX-SO-2Jo" id="orl-gS-oyH"/>
-                <outlet property="labBetCount" destination="mvR-xO-pkC" id="VGD-g2-3iS"/>
-                <outlet property="labChuanFa" destination="pB5-lE-lD3" id="fgK-6u-2f4"/>
+                <outlet property="disTopBetBouns" destination="xJp-Tn-uFm" id="q8h-1P-9si"/>
+                <outlet property="disTopBetBounsInfo" destination="YQf-MO-dnL" id="7G6-95-xqr"/>
+                <outlet property="labBetBouns" destination="ZF2-vN-z32" id="ndf-eW-cj2"/>
+                <outlet property="labBetCost" destination="Xdq-QT-KFQ" id="ybk-zn-uJ0"/>
+                <outlet property="labBouns" destination="mvR-xO-pkC" id="9Lj-HE-Lr4"/>
                 <outlet property="labLottery" destination="Ihf-ll-qMP" id="uEV-ek-nDt"/>
                 <outlet property="labSchemeInfo" destination="vnS-Jo-z4J" id="uaM-Yn-Tgx"/>
                 <outlet property="labSchemeNo" destination="rVI-XA-O8s" id="jEG-yP-7XD"/>
                 <outlet property="labSchemeState" destination="htY-dA-CFV" id="qaw-8l-fRb"/>
                 <outlet property="labSchemeTime" destination="77l-uV-2uH" id="sce-06-AQY"/>
                 <outlet property="labTicketCount" destination="z5s-LJ-nNt" id="Xjj-Hi-XfV"/>
+                <outlet property="labUnit" destination="QkX-SO-2Jo" id="G9N-ap-7CM"/>
             </connections>
             <point key="canvasLocation" x="37" y="131"/>
         </tableViewCell>

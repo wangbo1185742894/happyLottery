@@ -76,6 +76,7 @@
         
         
         [itemBtn setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:0];
+        [itemBtn setBackgroundImage:[UIImage imageWithColor:SystemGreen] forState:UIControlStateSelected];
         [itemBtn setTitle:title forState:0];
     }
 }

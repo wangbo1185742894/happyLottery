@@ -69,6 +69,7 @@ typedef enum EarningsType{
 - (void)getCollectedMatchList:(NSDictionary *)paraDic;
 - (void)getlistByHisGains:(NSDictionary *)paraDic;
 - (void)getForecastTotal:(NSDictionary *)paraDic;
+- (void)updateRecSchemeRecCount:(NSDictionary *)paraDic;
 
 
 @end

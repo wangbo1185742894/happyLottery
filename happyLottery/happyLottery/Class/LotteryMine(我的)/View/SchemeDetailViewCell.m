@@ -22,9 +22,9 @@
     __weak IBOutlet MGLabel *labTicketCount;
     __weak IBOutlet UILabel *labLottery;
     __weak IBOutlet UILabel *labSchemeNo;
-    __weak IBOutlet UILabel *labBetCount;
+    __weak IBOutlet UILabel *labBouns;
     __weak IBOutlet UILabel *labBetCost;
-    __weak IBOutlet UILabel *labChuanFa;
+    __weak IBOutlet UILabel *labUnit;
     JCZQSchemeItem *scheme;
 }
 @end
@@ -46,7 +46,6 @@
     scheme = model;
     labSchemeState.text = [model getSchemeState];
     
-    labChuanFa.contentMode = UIViewContentModeTop;
     
     if ([model.costType isEqualToString:@"CASH"]) {
         labSchemeInfo.text = @"方案状态";
@@ -64,9 +63,8 @@
     if ([model.schemeStatus isEqualToString:@"CANCEL"]||[model.schemeStatus isEqualToString:@"REPEAL"] ||[model.schemeStatus isEqualToString:@"INIT"] ) {
         labBetBouns.text = @"";
         labBetBouns.mj_h = 0;
-        labBetCost.text = @"";
-        labBetCost.mj_h = 0;
-        labBetCost.hidden = YES;
+        labBouns.text = @"";
+        labBouns.hidden = YES;
         labBetBouns.hidden = YES;
         disTopBetBouns.constant = -17;
         disTopBetBounsInfo.constant = -17;
@@ -76,14 +74,14 @@
     labLottery.text = [self getLotteryByCode:model.lottery];
     labSchemeNo.text = model.schemeNO;
     if ([model.costType isEqualToString:@"CASH"]) {
-        labBetCount.text = [NSString stringWithFormat:@"%@注%@倍   %@元",model.units,model.multiple,model.betCost];
+        labBetCost.text = [NSString stringWithFormat:@"%@元",model.betCost];
     }else{
-        labBetCount.text = [NSString stringWithFormat:@"%@注%@倍   %@积分",model.units,model.multiple,model.betCost];
+        labBetCost.text = [NSString stringWithFormat:@"%@积分",model.betCost];
     }
-    
-    labBetCost.text = [self getWinningStatus:model];
+    labUnit.text = [NSString stringWithFormat:@"%@注",model.units];
+    labBouns.text = [self getWinningStatus:model];
 
-    labChuanFa.text = [self getChuanFa];
+//    labChuanFa.text = [self getChuanFa];
 }
 
 //    /**     * 等待开奖     */
@@ -102,8 +100,12 @@
         return @"0.00元";
     }
     if ([model.bonus doubleValue] != 0) {
-        labBetCost.textColor = SystemRed;
-        return [NSString stringWithFormat:@"%.2f",[model.bonus doubleValue]];
+        labBouns.textColor = SystemRed;
+        if ([model.costType isEqualToString:@"CASH"]) {
+            return [NSString stringWithFormat:@"%.2f元",[model.bonus doubleValue]];
+        }else{
+            return [NSString stringWithFormat:@"%.2f积分",[model.bonus doubleValue]];
+        }
         
         
     }
@@ -111,82 +113,6 @@
     
 }
 
-
-
-
--(NSString *)getChuanFa{
-    NSString *chuanfa;
-    NSInteger rownum;
-    if (KscreenWidth == 568) {
-        rownum = 5;
-    }else{
-        rownum = 7;
-    }
-    
-    if ([scheme.lottery isEqualToString:@"JCZQ"]) {
-        NSDictionary *dic = [Utility objFromJson:scheme.betContent];
-        NSString *item;
-        float height = 0;
-        if ([[dic allKeys] containsObject:@"passTypes"]) {
-            if ([dic isKindOfClass:[NSDictionary class]]) {
-                NSArray *types = (NSArray*)dic[@"passTypes"];
-                item = [types componentsJoinedByString:@","];
-                NSArray *passTypes =  (NSArray*)dic[@"passTypes"];
-                
-                if (passTypes.count %rownum == 0) {
-                    height += passTypes.count/rownum *20;
-                }else{
-                    height += (passTypes.count/rownum + 1) *18;
-                }
-                
-            }else{
-                
-                item = @"";
-            }
-        }else{
-            if ([dic isKindOfClass:[NSDictionary class]]) {
-                item = dic[@"passType"];
-                height = 20;
-            }else{
-                
-                item = @"";
-            }
-        }
-        
-        chuanfa =[self getPassType:item];
-    }
-    return chuanfa;
-}
-
--(NSString *)getPassType:(NSString *)passType{
-    
-    
-    
-    @try {
-        NSArray *passTypes = [passType componentsSeparatedByString:@","];
-        NSString *trPassType;
-        NSMutableArray *types = [NSMutableArray arrayWithCapacity:0];
-        
-        for (NSString *type in passTypes) {
-            if ([type isEqualToString:@"P1"]) {
-                [types addObject: @"单场"];
-            }else{
-                
-                NSString * temp  = [type stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:@""];
-                
-                [types addObject:[temp stringByReplacingOccurrencesOfString:@"_" withString:@"串"]];
-            }
-        }
-        
-        trPassType = [types componentsJoinedByString:@","];
-        
-        
-        return trPassType;
-    } @catch (NSException *exception) {
-        return @"";
-    }
-    
-}
 
 -(NSString *)getLotteryByCode:(NSString *)code{
     if ([code isEqualToString:@"JCZQ"]) {

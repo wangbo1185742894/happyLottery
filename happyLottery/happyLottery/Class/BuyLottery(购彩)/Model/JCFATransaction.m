@@ -23,7 +23,7 @@
     
     submitParaDic[@"issueNumber"] = @"2018";
     submitParaDic[@"units"] = [NSString stringWithFormat:@"%ld",(long)self.betCount];
-    submitParaDic[@"multiple"] =@(self.beiTou);
+    
     submitParaDic[@"betCost"] =[NSString stringWithFormat:@"%ld",(long)self.betCost];
     submitParaDic[@"betSource"] = self.betSource;
     
@@ -63,13 +63,11 @@
                                      };
         [betMatches addObject:dicMatches];
     }
-    
-
-    NSDictionary *betContent  = @{
+    NSDictionary *betContent  = @[@{
                                   @"betMatches":betMatches,
-                                  @"passTypes":passTypes
-                                  };
-                                 
+                                  @"passTypes":passTypes,
+                                  @"multiple":@(self.beiTou)
+                                  }];
     return betContent;
 
 }

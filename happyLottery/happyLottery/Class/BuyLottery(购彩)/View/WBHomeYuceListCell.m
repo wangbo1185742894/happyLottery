@@ -190,7 +190,7 @@
     }else{
         if (self.model.matchResult == nil) {
             [self.btnWonStatus setBackgroundImage:[UIImage imageNamed:@"icon_daizhi_"] forState:0];
-            [self.btnWonStatus setTitle:@"待知" forState:0];
+            [self.btnWonStatus setTitle:@"--:--" forState:0];
             
             
             
@@ -204,7 +204,7 @@
 
 -(void)setMatchResult:(NSString *)result{
     if (result == nil || result .length ==0) {
-    self.labMatchState.text  = [NSString stringWithFormat:@"赛果:待知"];
+    self.labMatchState.text  = [NSString stringWithFormat:@"赛果:--:--"];
     }else{
         self.labMatchState.text  = [NSString stringWithFormat:@"赛果:%@",self.model.matchResult];
     }

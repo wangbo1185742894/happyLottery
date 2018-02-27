@@ -91,7 +91,7 @@ static SystemSoundID shake_sound_male_id = 0;
     [self setNewFeature];
     [self dataSave];
     [self autoLogin];
- 
+  
     NSString  *pushKey;
 #ifdef APPSTORE
     pushKey = @"fbb09610ec798e722175c54d";

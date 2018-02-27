@@ -13,12 +13,23 @@
 @interface SchemeDetailMatchViewCell ()
 {
     
+    __weak IBOutlet NSLayoutConstraint *disBottomL;
+    __weak IBOutlet UIButton *btnNumIndex;
+    __weak IBOutlet UILabel *labBottom;
+    __weak IBOutlet NSLayoutConstraint *disTopL;
+    __weak IBOutlet NSLayoutConstraint *disBottomR;
+    __weak IBOutlet UIView *topInfoView;
     __weak IBOutlet UIView *viewBetContent;
     __weak IBOutlet UILabel *labGuestName;
     __weak IBOutlet UILabel *labHomeName;
     __weak IBOutlet UILabel *labMatchLine;
     
+    __weak IBOutlet NSLayoutConstraint *topInfoViewHeight;
     __weak IBOutlet MGLabel *labResult;
+    __weak IBOutlet UILabel *labBeiCount;
+    __weak IBOutlet UILabel *labPassType;
+    NSArray *itemDic;
+    __weak IBOutlet NSLayoutConstraint *disTopR;
 }
 
 @property(nonatomic,assign)NSInteger num;
@@ -35,44 +46,87 @@
     }
     return self;
 }
--(void)refreshData:(NSDictionary  *)modelDic andResult:(NSArray<OpenResult *> *)resultArray{
+-(void)refreshData:(JcBetContent  *)modelDic andResult:(NSArray<OpenResult *> *)resultArray{
     for (UIView *subView in viewBetContent.subviews) {
         [subView removeFromSuperview];
         
     }
     
+    if (modelDic.isShow) {
+        topInfoView.hidden = NO;
+        [btnNumIndex setTitle:[NSString stringWithFormat:@"%ld",modelDic.index] forState:0];
+        NSArray *passType = [Utility objFromJson:modelDic.passTypes];
+        topInfoViewHeight.constant =  ((passType.count / 7) + 1) * 15 + 50;
+        labBeiCount.text = [NSString stringWithFormat:@"%@倍",modelDic.multiple];
+        labPassType.text = [self getChuanFa:modelDic.passTypes];
+        
+        disTopL.constant = 8;
+        disTopR.constant = 8;
+        
+        disBottomL.constant = 0;
+        disBottomR.constant = 0;
+        labBottom.hidden = YES;
+        
+    }else{
+        topInfoView.hidden = YES;
+        topInfoViewHeight.constant = 0;
+        
+        if (modelDic.isLast == YES) {
+            disTopL.constant = 0;
+            disTopR.constant = 0;
+            
+            disBottomL.constant = 7;
+            disBottomR.constant = 7;
+            labBottom.hidden = NO;
+        }else{
+            disTopL.constant = 0;
+            disTopR.constant = 0;
+            
+            disBottomL.constant = 0;
+            disBottomR.constant = 0;
+            labBottom.hidden = YES;
+        }
+        
+      
+    }
+    
     OpenResult *open;
     for (OpenResult *openItem in resultArray) {
-        if ([openItem.matchKey integerValue] == [modelDic[@"matchKey"] integerValue]) {
+        if ([openItem.matchKey integerValue] == [modelDic.matchInfo[@"matchKey"] integerValue]) {
             open = openItem;
         }
     }
     
-    labMatchLine.text = modelDic[@"matchId"];
-    labHomeName.text = [[modelDic[@"clash"] componentsSeparatedByString:@"VS"] firstObject];
-    labGuestName.text = [[modelDic[@"clash"] componentsSeparatedByString:@"VS"] lastObject];
-    viewBetContent.layer.borderColor = TFBorderColor.CGColor;
-    viewBetContent.layer.borderWidth = 1;
+    labMatchLine.text = modelDic.matchInfo[@"matchId"];
+    labHomeName.text = [[modelDic.matchInfo[@"clash"] componentsSeparatedByString:@"VS"] firstObject];
+    labGuestName.text = [[modelDic.matchInfo[@"clash"] componentsSeparatedByString:@"VS"] lastObject];
+    
+    if (modelDic.virtualSp != nil) {
+        itemDic = [Utility objFromJson:modelDic.virtualSp];
+    }else{
+        itemDic = nil;
+    }
+    
     NSString *playType;
     NSString *option;
     NSString *result;
     float curY = 5;
+    
     viewBetContent.mj_w = KscreenWidth - 20;
-    for (NSDictionary *itemDic in modelDic[@"betPlayTypes"]) {
+    for (NSDictionary *itemDic in modelDic.matchInfo[@"betPlayTypes"]) {
         
-        option = [self reloadDataWithRec:itemDic[@"options"] type:itemDic[@"playType"]];
-//        NSString *
+        option = [self reloadDataWithRec:itemDic[@"options"] type:itemDic[@"playType"] andMatchKey:modelDic.matchInfo[@"matchKey"]];
+
+       
         NSString *funcName = [self getPlayTypeRecEn:itemDic[@"playType"]] ;
         SEL func = NSSelectorFromString(funcName);
         if ([open respondsToSelector:func]) {
             result = [self reloadDataWithRecResult:@[[open performSelector:func withObject:nil]] type:itemDic[@"playType"]];
         }
         
-        
         float height = [option boundingRectWithSize:CGSizeMake(KscreenWidth - 110, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14]} context:nil].size.height;
         height  = height > 25 ? height:25;
         MGLabel * labOption = [self creactLab:option andFrame:CGRectMake(90, curY, KscreenWidth - 110, height)];
-//        labOption.textColor = TEXTGRAYCOLOR;
         labOption.keyWord = result;
         labOption.keyWordColor = SystemRed;
         [viewBetContent addSubview:labOption];
@@ -88,7 +142,7 @@
     labResult.textColor = SystemRed;
     labResult.keyWord = @"赛果:";
     if (open == nil) {
-        labResult.text = @"赛果:待知";
+        labResult.text = @"赛果:--:--";
     }else{
         if ([open.matchStatus isEqualToString:@"CANCLE"]) {
             labResult.text = @"赛果:取消";
@@ -103,6 +157,23 @@
     labResult.keyWordColor = SystemBlue;
 }
 
+-(NSString *)getOddWithOption:(NSString *)option matchKey:(NSString *)matchKey andPlayType:(NSInteger )playType{
+    
+    NSArray *oddsArray = itemDic;
+    for (NSDictionary *itemDic in oddsArray) {
+        if ([itemDic[@"matchKey"] integerValue] == [matchKey integerValue]) {
+            NSArray *oddsList = [Utility objFromJson:itemDic[@"jcBetOddsList"]];
+            for (NSDictionary *odds in oddsList) {
+                if ([odds[@"playType"] integerValue] == playType) {
+                    NSDictionary *itemOdds = odds[@"odds"];
+                    return itemOdds[option];
+                }
+            }
+       
+        }
+    }
+    return @"";
+}
 
 -(MGLabel*)creactMGLab:(NSString *)title andFrame:(CGRect)frame{
     
@@ -121,9 +192,9 @@
     
     MGLabel *tempLab = [[MGLabel alloc]initWithFrame:frame];
   
-        tempLab.text = title;
+    tempLab.text = title;
     
-        tempLab.font = [UIFont systemFontOfSize:13];
+    tempLab.font = [UIFont systemFontOfSize:13];
     tempLab.textColor = TEXTGRAYCOLOR;
     tempLab.numberOfLines = 0;
     return tempLab;
@@ -234,7 +305,7 @@
         
         NSString*type = [self getContent:contentArray andOption:op];
         [content appendFormat:@"%@",type];
-        [content appendString:@", "];
+        
         self.num ++;
     }
     
@@ -246,7 +317,7 @@
     return @"";
 }
 
--(NSString *)reloadDataWithRec:(NSArray *)option type:(NSString *)playType{
+-(NSString *)reloadDataWithRec:(NSArray *)option type:(NSString *)playType andMatchKey:(NSString *)matchKey{
     
     NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"JingCaiCode" ofType: @"plist"]] ;
     NSDictionary *contentArray;
@@ -286,6 +357,10 @@
         
         NSString*type = [self getContentJCZQ:contentArray andOption:op];
         [content appendFormat:@"%@",type];
+        
+        if (itemDic != nil) {
+            [content appendString:[NSString stringWithFormat:@"(%.2f)",[[self getOddWithOption:op matchKey:matchKey andPlayType:[playType integerValue]] doubleValue] ]];
+        }
         [content appendString:@", "];
         self.num ++;
     }
@@ -314,6 +389,62 @@
         }
     }
     return @"";
+}
+
+-(NSString *)getChuanFa:(NSString *)strChuanfa{
+    NSString *chuanfa;
+    NSInteger rownum;
+    if (KscreenWidth == 568) {
+        rownum = 5;
+    }else{
+        rownum = 7;
+    }
+    
+    
+        NSString *item;
+        float height = 0;
+    
+                NSArray *passTypes = [Utility objFromJson:strChuanfa];
+                item = [passTypes componentsJoinedByString:@","];
+    
+                if (passTypes.count %rownum == 0) {
+                    height += passTypes.count/rownum *20;
+                }else{
+                    height += (passTypes.count/rownum + 1) *18;
+                }
+        
+        chuanfa =[self getPassType:item];
+    return chuanfa;
+}
+
+-(NSString *)getPassType:(NSString *)passType{
+    
+    
+    
+    @try {
+        NSArray *passTypes = [passType componentsSeparatedByString:@","];
+        NSString *trPassType;
+        NSMutableArray *types = [NSMutableArray arrayWithCapacity:0];
+        
+        for (NSString *type in passTypes) {
+            if ([type isEqualToString:@"P1"]) {
+                [types addObject: @"单场"];
+            }else{
+                
+                NSString * temp  = [type stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:@""];
+                
+                [types addObject:[temp stringByReplacingOccurrencesOfString:@"_" withString:@"串"]];
+            }
+        }
+        
+        trPassType = [types componentsJoinedByString:@","];
+        
+        
+        return trPassType;
+    } @catch (NSException *exception) {
+        return @"";
+    }
+    
 }
 
 @end

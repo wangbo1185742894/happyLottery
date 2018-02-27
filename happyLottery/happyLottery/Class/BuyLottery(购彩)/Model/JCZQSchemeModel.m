@@ -91,11 +91,15 @@
             }
             
         }else{
-            state = @"schemeticket";
+            if ([self.costType isEqualToString:@"CASH"]) {
+                state = @"schemeticket";
+            }else{
+                state = @"wait_lottery";
+            }
+            
         }
     }
     return state;
-    
 }
 
 -(NSString *)getSchemeState{
@@ -137,7 +141,12 @@
                         }
                     }
             }else{
+                if ([self.costType isEqualToString:@"CASH"]) {
                 state = @"出票中";
+                }else{
+                    state = @"待开奖";
+                }
+                
             }
     }
     return state;
@@ -153,37 +162,19 @@
         rownum = 7;
     }
     
-    if ([self.lottery isEqualToString:@"JCZQ"]) {
-        NSDictionary *dic = [Utility objFromJson:self.betContent];
-
-        if ([[dic allKeys] containsObject:@"passTypes"]) {
-            if ([dic isKindOfClass:[NSDictionary class]]) {
-                NSArray *passTypes = (NSArray*)dic[@"passTypes"];
-                
-                if (passTypes.count %rownum == 0) {
-                    height += passTypes.count/rownum *20;
-                }else{
-                    height += (passTypes.count/rownum + 1) *18;
-                }
-            }
-        }else{
-            if ([dic isKindOfClass:[NSDictionary class]]) {
-                height = 20;
-            }
-        }
-    }
-    
     if ([self.schemeStatus isEqualToString:@"CANCEL"]||[self.schemeStatus isEqualToString:@"REPEAL"] || [self.schemeStatus isEqualToString:@"INIT"]) {
-        return height + 138;
+        return height + 168;
     }else{
-        return height + 157;
+        return height + 187;
     }
-    
-    
 }
 
 @end
 
 @implementation OpenResult
+
+@end
+
+@implementation JcBetContent
 
 @end
