@@ -723,7 +723,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 }
 
 -(void)gotVueHttpUrl:(NSString *)baseUrl errorMsg:(NSString *)msg{
-    if (baseUrl == nil || baseUrl.length == YES) {
+    if (baseUrl == nil || baseUrl.length == 0) {
         [GlobalInstance instance].homeUrl = ServerAddress;
     }else{
         [GlobalInstance instance].homeUrl = baseUrl;

@@ -227,6 +227,7 @@
             if (schemeDetail != nil) {
                 [matchCell refreshData:matchList[indexPath.row] andResult:schemeDetail.trOpenResult];
             }
+           [matchCell setBtnNumIndexShow:![self showNum]];
             cell = matchCell;
         }else if (indexPath.section == 1){
             SchemeInfoViewCell * infoCell = [tableView dequeueReusableCellWithIdentifier:KSchemeInfoViewCell];
@@ -248,13 +249,29 @@
             if (schemeDetail != nil) {
                 [matchCell refreshData:matchList[indexPath.row] andResult:schemeDetail.trOpenResult];
             }
+            
+            [matchCell setBtnNumIndexShow:![self showNum]];
+        
             cell = matchCell;
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
-    
-  
+
+}
+
+-(BOOL)showNum{
+    NSInteger tempNum = 0;
+    for (JcBetContent *model in matchList) {
+        if (model.isShow == YES) {
+            tempNum ++;
+        }
+    }
+    if (tempNum == 1) {
+        return NO;
+    }else{
+        return YES;
+    }
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

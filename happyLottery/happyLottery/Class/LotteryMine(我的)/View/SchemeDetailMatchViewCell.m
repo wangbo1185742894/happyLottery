@@ -46,11 +46,19 @@
     }
     return self;
 }
+
+-(void)setBtnNumIndexShow:(BOOL)isShow{
+    btnNumIndex.hidden = isShow;
+}
+
+
 -(void)refreshData:(JcBetContent  *)modelDic andResult:(NSArray<OpenResult *> *)resultArray{
     for (UIView *subView in viewBetContent.subviews) {
         [subView removeFromSuperview];
         
     }
+    
+    
     
     if (modelDic.isShow) {
         topInfoView.hidden = NO;

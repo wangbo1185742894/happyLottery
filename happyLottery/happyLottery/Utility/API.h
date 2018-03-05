@@ -25,6 +25,8 @@
 
 //#define ServerAddress @"http://192.168.88.244:8086"  //资讯  轮播图 用户图像
 //#define H5BaseAddress @"http://192.168.88.244:18086"
+
+
 //#define H5BaseAddress @"http://192.168.88.193:18086"  //谢青服务
 //#define H5BaseAddress @"http://192.168.88.116:18086"  //史少鹏服务
 
@@ -127,6 +129,7 @@
 #define APIupdateRecSchemeRecCount  @"updateRecSchemeRecCount"
 
 
+
 #define SUBAPISchemeService   @"/scheme"
 #define APIBetLotteryScheme         @"betLotteryScheme"
 #define APISchemeCashPayment        @"schemeCashPayment"
@@ -134,6 +137,7 @@
 #define APIGetSchemeRecord          @"getSchemeRecord"
 #define APIGetSchemeRecordBySchemeNo @"getSchemeRecordBySchemeNo"
 #define APIlistByHisGains           @"listByHisGains"
+#define APIbonusOptimize            @"bonusOptimize"
 
 
 #define SUBAPITicketService   @"/ticket"

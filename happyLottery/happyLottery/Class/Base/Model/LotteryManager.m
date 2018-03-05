@@ -93,6 +93,39 @@
                         failure:failureBlock];
 }
 
+
+- (void) betLotterySchemeOpti:(BaseTransaction *)transcation schemeList:(NSArray *)schemeList{
+    
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed) {
+            
+            [self.delegate betedLotteryScheme:responseJsonStr errorMsg:response.errorMsg];
+        } else {
+            [self.delegate betedLotteryScheme:nil errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        [self.delegate betedLotteryScheme:nil errorMsg:response.errorMsg];
+    };
+    
+    NSMutableDictionary *subSchemeDic = [transcation submitParaDicScheme];
+    
+    subSchemeDic[@"betContent"] = [self JsonFromId:schemeList];
+    
+    SOAPRequest *request = [self requestForAPI: APIBetLotteryScheme withParam:@{@"params":[self actionEncrypt:[self JsonFromId:subSchemeDic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPISchemeService
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
 - (void) betLotteryScheme:(BaseTransaction *)transcation{
     
     void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
@@ -631,8 +664,62 @@
                         success:succeedBlock
                         failure:failureBlock];
 }
-
-
+//{
+//    bonusOptimizeSingleList =     (
+//                                   {
+//                                       clash = "AFC\U6e29\U5e03\U5c14\U767bVS\U5e03\U83b1\U514b\U672c";
+//                                       matchId = "\U5468\U4e8c003";
+//                                       matchKey = 104567;
+//                                       odds = "3.97";
+//                                       option = 0;
+//                                       playType = 1;
+//                                   },
+//                                   {
+//                                       clash = "\U5f17\U62c9\U95e8\U6208VS\U6cb3\U5e8a";
+//                                       matchId = "\U5468\U4e09018";
+//                                       matchKey = 104601;
+//                                       odds = "1.9";
+//                                       option = 0;
+//                                       playType = 1;
+//                                   }
+//                                   );
+//    forecastBonus = "15.09";
+//    passType = "P2_1";
+//}
+- (void)getbonusOptimize:(BaseTransaction *)transcation{
+    
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        
+        if (response.succeed) {
+            NSString *responseJsonStr = [response getAPIResponse];
+            NSArray  *infoDic = [Utility objFromJson:responseJsonStr];
+            [self.delegate gotbonusOptimize:infoDic errorMsg:response.errorMsg];
+        } else {
+            [self.delegate gotbonusOptimize:nil errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate gotbonusOptimize:nil errorMsg:@"服务器错误"];
+    };
+    
+    NSArray *betContentDic = [transcation lottDataScheme];
+    NSMutableDictionary *subSchemeDic = [NSMutableDictionary dictionaryWithCapacity:0];
+    subSchemeDic[@"betMatches"] = [betContentDic firstObject][@"betMatches"];
+    subSchemeDic[@"passTypes"] = [betContentDic firstObject][@"passTypes"];
+//[1]    (null)    @"betMatches" : @"2 elements"    [2]    (null)    @"passTypes" : @"1 element"
+//    subSchemeDic[@"betContent"] = [self JsonFromId:betContentDic];
+    
+    SOAPRequest *request = [self requestForAPI: APIbonusOptimize withParam:@{@"params":[self actionEncrypt:[self JsonFromId:subSchemeDic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPISchemeService
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
 
 
 - (NSString *)getStringformfeid :(EarningsType)defaultFeid{

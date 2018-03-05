@@ -37,6 +37,7 @@ typedef enum EarningsType{
 - (void) gotCollectedMatchList:(NSArray *)infoArray  errorMsg:(NSString *)msg;
 - (void) gotlistByHisGains:(NSArray *)infoArray  errorMsg:(NSString *)msg;
 - (void) gotForecastTotal:(NSDictionary *)infoDic  errorMsg:(NSString *)msg;
+- (void) gotbonusOptimize:(NSArray *)infoList  errorMsg:(NSString *)msg;
 
 @end
 
@@ -70,6 +71,9 @@ typedef enum EarningsType{
 - (void)getlistByHisGains:(NSDictionary *)paraDic;
 - (void)getForecastTotal:(NSDictionary *)paraDic;
 - (void)updateRecSchemeRecCount:(NSDictionary *)paraDic;
+- (void)getbonusOptimize:(BaseTransaction *)transcation;
+- (void) betLotterySchemeOpti:(NSArray *)schemeList;
+- (void) betLotterySchemeOpti:(BaseTransaction *)transcation schemeList:(NSArray *)schemeList;
 
 
 @end

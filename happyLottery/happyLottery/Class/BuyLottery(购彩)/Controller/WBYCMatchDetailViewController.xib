@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WBYCMatchDetailViewController">
             <connections>
+                <outlet property="btnOptimiz" destination="wEh-cT-vd2" id="WoF-2A-nIQ"/>
                 <outlet property="defaultDes" destination="9lD-Xw-WJ5" id="dt6-mS-KdN"/>
                 <outlet property="defaultImg" destination="hnd-Jr-1dS" id="GP7-b7-tkI"/>
                 <outlet property="defaultPipei" destination="aF9-YH-UVM" id="ghe-V5-7Sl"/>
@@ -441,6 +442,22 @@
                                 <constraint firstAttribute="height" constant="44" id="b0p-u0-l5O"/>
                             </constraints>
                         </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wEh-cT-vd2">
+                            <rect key="frame" x="17" y="9" width="90" height="31"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="31" id="8Lx-K3-HDb"/>
+                                <constraint firstAttribute="width" constant="90" id="ydM-h8-L16"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="5" maxY="0.0"/>
+                            <state key="normal" title="奖金优化" image="bunsoptimnormal.png">
+                                <color key="titleColor" red="0.1450980392" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <state key="selected" image="bunsoptimseleced.png"/>
+                            <connections>
+                                <action selector="actionBounsOptimize:" destination="-1" eventType="touchUpInside" id="FLw-aC-Eve"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -451,7 +468,9 @@
                         <constraint firstAttribute="bottom" secondItem="5by-Cg-Zfr" secondAttribute="bottom" id="asa-oN-fVV"/>
                         <constraint firstAttribute="trailing" secondItem="MT2-34-ZOy" secondAttribute="trailing" id="bNu-bb-0Ip"/>
                         <constraint firstItem="MT2-34-ZOy" firstAttribute="leading" secondItem="vDH-bF-uVN" secondAttribute="leading" id="caB-c9-All"/>
+                        <constraint firstItem="wEh-cT-vd2" firstAttribute="leading" secondItem="vDH-bF-uVN" secondAttribute="leading" constant="17" id="eVv-Ho-Nfb"/>
                         <constraint firstItem="5by-Cg-Zfr" firstAttribute="leading" secondItem="vDH-bF-uVN" secondAttribute="leading" id="fd1-nS-msy"/>
+                        <constraint firstItem="wEh-cT-vd2" firstAttribute="top" secondItem="MT2-34-ZOy" secondAttribute="bottom" constant="8" id="hP7-jE-GdW"/>
                         <constraint firstItem="MT2-34-ZOy" firstAttribute="top" secondItem="vDH-bF-uVN" secondAttribute="top" id="mjQ-PG-KNg"/>
                     </constraints>
                 </view>
@@ -473,6 +492,8 @@
     </objects>
     <resources>
         <image name="btn_huanyige.png" width="14" height="12"/>
+        <image name="bunsoptimnormal.png" width="13" height="13"/>
+        <image name="bunsoptimseleced.png" width="13" height="13"/>
         <image name="pic.png" width="125" height="133"/>
         <image name="smartfollow_add_pressed.png" width="44" height="44"/>
         <image name="smartfollow_sub_press.png" width="44" height="44"/>

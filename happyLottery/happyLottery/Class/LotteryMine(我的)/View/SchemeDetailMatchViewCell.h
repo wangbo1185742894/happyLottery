@@ -10,5 +10,6 @@
 #import "JCZQSchemeModel.h"
 
 @interface SchemeDetailMatchViewCell : UITableViewCell
+-(void)setBtnNumIndexShow:(BOOL)isShow;
 -(void)refreshData:(JcBetContent  *)modelDic andResult:(NSArray<OpenResult *> *)resultArray;
 @end

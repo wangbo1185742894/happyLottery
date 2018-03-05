@@ -11,6 +11,8 @@
 #import "SchemeCashPayment.h"
 #import "SelectView.h"
 #import "MGLabel.h"
+#import "OptimizeItemModel.h"
+#import "BonusOptimize.h"
 @interface WBYCMatchDetailViewController ()<LotteryManagerDelegate,SelectViewDelegate>
 {
     NSInteger beiCount;
@@ -25,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *defaultImg;
 @property (weak, nonatomic) IBOutlet UIView *viewMatchPeiDefault;
 @property (weak, nonatomic) IBOutlet UILabel *defaultPipei;
+@property (weak, nonatomic) IBOutlet UIButton *btnOptimiz;
 
 
 
@@ -44,29 +47,29 @@
 
 @property (strong,nonatomic)JCYCTransaction * transaction;
 @property(nonatomic,strong)UIToolbar *toolBar;
+
+@property(nonatomic,copy)NSMutableArray <OptimizeItemModel *>*bounsOptimizeList;
 @end
 
 @implementation WBYCMatchDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"对战详情";
     
+    _bounsOptimizeList = [NSMutableArray arrayWithCapacity:0];
+    self.title = @"对战详情";
     self.curUser = [GlobalInstance instance].curUser;
     self.lotteryMan.delegate = self;
     self.labPossbleBouns.adjustsFontSizeToFitWidth = YES;
         self.transaction = [[JCYCTransaction alloc]init];
     self.transaction.beiTou = 5;
     
-    
     [self showMatchDetailInfo];
     [self showPeiMatchInfo];
     if (self.isFromYC == NO) {
         [self.viewSelectBei setRightTitle:@"购" andLeftTitle:@"份"];
-        
         self.viewSelectBei.beiShuLimit = 999;
-    }else
-    {
+    }else{
         self.viewSelectBei.beiShuLimit = 9999;
     }
     
@@ -400,7 +403,7 @@
 }
 
 - (IBAction)actionChangMatch:(UIButton *)sender {
-    
+    self.btnOptimiz.selected = NO;
     [self loadDanGuanPeiMatch];
 }
 
@@ -452,8 +455,30 @@
     
     self.transaction.schemeSource = SchemeSourceFORECAST;
     self.transaction.costType = CostTypeCASH;
+    if (self.btnOptimiz.selected == YES) {
+        
+        NSMutableArray *betContent = [NSMutableArray arrayWithCapacity:0];
+        @try {
+            for (OptimizeItemModel * oModel in _bounsOptimizeList) {
+                NSMutableArray *betMatches = [NSMutableArray arrayWithCapacity:0];
+                for (BounsOptimizeSingleModel *model in oModel.bonusOptimizeSingleList) {
+                    NSDictionary * itemDic = @{@"betPlayTypes":@[@{@"options":@[model.option],@"playType":model.playType}],@"clash":model.clash,@"dan":@"0",@"matchId":model.matchId,@"matchKey":model.matchKey};
+                    ;
+                    [betMatches addObject:itemDic];
+                }
+                
+                [betContent addObject:@{@"betMatches":betMatches,@"passTypes":@[oModel.passType],@"multiple":@(oModel.multiple)}];
+            }
+        } @catch (NSException *exception) {
+            [self showPromptText:@"奖金优化失败" hideAfterDelay:1.9];
+            return;
+        }
+        
+        [self.lotteryMan betLotterySchemeOpti:self.transaction schemeList:betContent];
+    }else{
+        [self.lotteryMan betLotteryScheme:self.transaction];
+    }
     
-     [self.lotteryMan betLotteryScheme:self.transaction];
 
 }
 
@@ -536,6 +561,7 @@
 
     NSInteger beiShu = [self.viewSelectBei.labContent.text integerValue] < 1 ?1:[self.viewSelectBei.labContent.text integerValue];
     self.transaction.beiTou = beiShu;
+    self.btnOptimiz.selected = NO;
     [self showTouzhuInfo];
     
 }
@@ -587,4 +613,115 @@
     payVC.cashPayMemt = schemeCashModel;
     [self.navigationController pushViewController:payVC animated:YES];
 }
+- (IBAction)actionBounsOptimize:(UIButton *)sender {
+    
+    sender.selected = !sender.selected;
+    
+    if (sender.selected == NO) {
+        [self showTouzhuInfo];
+        return;
+    }
+    
+    if (self.curUser .isLogin == NO) {
+        [self needLogin];
+        return;
+    }
+    
+    self.transaction.betSource = @"2";
+    self.transaction.shortCutModel = self.model;
+    if ([self.curPlayType isEqualToString:@"jclq"]) {
+        
+        self.transaction.identifier = @"JCLQ";
+    }else{
+        self.transaction.identifier = @"JCZQ";
+    }
+    [self showTouzhuInfo];
+    if ([self.viewSelectBei.labContent .text integerValue] < 1) {
+        self.transaction.beiTou = 1 * beiNum;
+    }else{
+        self.transaction.beiTou = [self.viewSelectBei.labContent .text integerValue] * beiNum;
+    }
+    
+    
+    if ([self.model.spfSingle boolValue] == NO && self.model.jcPairingMatchDto == nil) {
+        [self showPromptText:@"该场比赛不支持单关投注" hideAfterDelay:1.7];
+        return;
+    }
+    [self showLoadingViewWithText:@"正在优化..."];
+    
+    self.transaction.schemeSource = SchemeSourceFORECAST;
+    self.transaction.costType = CostTypeCASH;
+    
+    [self.lotteryMan getbonusOptimize:self.transaction];
+}
+
+-(void)gotbonusOptimize:(NSArray *)infoList errorMsg:(NSString *)msg{
+    
+    if (infoList == nil) {
+        [self hideLoadingView];
+        return;
+    }
+    [_bounsOptimizeList removeAllObjects];
+    for (NSDictionary *itemDic in infoList) {
+        OptimizeItemModel *model = [[OptimizeItemModel alloc]initWith:itemDic];
+        [_bounsOptimizeList addObject:model];
+    }
+    [self bonusOptimize];
+}
+
+-(void)bonusOptimize{
+    CGFloat avgSp =[BonusOptimize getMincCommonDivisor:[self getAllSp]];
+    CGFloat subOptimize = 0;
+    for (OptimizeItemModel * model in _bounsOptimizeList) {
+        subOptimize += avgSp / [model.forecastBonus doubleValue];
+    }
+    NSInteger totalBei =[self getZhuCount] * self.transaction.beiTou;
+    for (OptimizeItemModel * model in _bounsOptimizeList) {
+         model.multiple = (avgSp / [model.forecastBonus doubleValue]) / subOptimize * [self getZhuCount] * self.transaction.beiTou;
+        totalBei -= model.multiple;
+    }
+    for (NSInteger i = totalBei; i > 0; i--) {
+        OptimizeItemModel *minBounsModel = [_bounsOptimizeList firstObject];
+        for (OptimizeItemModel * model in _bounsOptimizeList) {
+            if ([model.forecastBonus doubleValue] * model.multiple < [minBounsModel.forecastBonus doubleValue] * minBounsModel.multiple) {
+                minBounsModel = model;
+            }
+        }
+        minBounsModel .multiple ++;
+    }
+    float min = CGFLOAT_MAX;
+    float max = CGFLOAT_MIN;
+    
+    for (OptimizeItemModel * model in _bounsOptimizeList) {
+        if (min > model.multiple * [model.forecastBonus doubleValue]) {
+            min =model.multiple * [model.forecastBonus doubleValue];
+        }
+        if (max < model.multiple * [model.forecastBonus doubleValue]) {
+            max =model.multiple * [model.forecastBonus doubleValue];
+        }
+    }
+    if (min == CGFLOAT_MAX) {
+        self.labPossbleBouns.text = [NSString stringWithFormat:@"预计可中--元~--元"];
+    }else{
+        if (max == min) {
+            self.labPossbleBouns.text = [NSString stringWithFormat:@"预计可中%.2f元",min];
+            
+        }else{
+            
+            self.labPossbleBouns.text = [NSString stringWithFormat:@"预计可中%.2f元~%.2f元",min,max];
+            
+            
+        }
+    }
+    [self hideLoadingView];
+}
+
+-(NSArray *)getAllSp{
+    NSMutableArray *spList = [NSMutableArray arrayWithCapacity:0];
+    for (OptimizeItemModel *model in _bounsOptimizeList) {
+        [spList addObject:model.forecastBonus];
+    }
+    return spList;
+}
+
 @end
