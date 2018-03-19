@@ -38,6 +38,12 @@ typedef enum EarningsType{
 - (void) gotlistByHisGains:(NSArray *)infoArray  errorMsg:(NSString *)msg;
 - (void) gotForecastTotal:(NSDictionary *)infoDic  errorMsg:(NSString *)msg;
 - (void) gotbonusOptimize:(NSArray *)infoList  errorMsg:(NSString *)msg;
+- (void) gotlistJcgjSellItem:(NSArray *)infoArray  errorMsg:(NSString *)msg;
+- (void) gotlistJcgyjSellItem:(NSArray *)infoArray  errorMsg:(NSString *)msg;
+- (void) gotlistJcgjItem:(NSArray *)infoArray  errorMsg:(NSString *)msg;
+- (void) gotlistJcgyjItem:(NSArray *)infoArray  errorMsg:(NSString *)msg;
+- (void) gotJcgjTicketOrderDetail:(NSDictionary *)infoArray  errorMsg:(NSString *)msg;
+- (void) gotJcgyjTicketOrderDetail:(NSDictionary *)infoArray  errorMsg:(NSString *)msg;
 
 @end
 
@@ -75,6 +81,13 @@ typedef enum EarningsType{
 - (void) betLotterySchemeOpti:(NSArray *)schemeList;
 - (void) betLotterySchemeOpti:(BaseTransaction *)transcation schemeList:(NSArray *)schemeList;
 
+#pragma mark 竞猜冠亚军
+- (void)listJcgjSellItem:(NSDictionary *)infoDic; //获取冠军选项
+- (void)listJcgyjSellItem:(NSDictionary *)infoDic; //获取冠亚军选项
+- (void)listJcgjItem:(NSDictionary *)infoDic; //获取冠军选项（包含不在售的）
+- (void)listJcgyjItem:(NSDictionary *)infoDic; //获取冠亚军选项（包含不在售的）
+- (void)getJcgjTicketOrderDetail:(NSDictionary *)paraDic;//查询冠军订单详情
+- (void)getJcgyjTicketOrderDetail:(NSDictionary *)paraDic;//查询冠亚军订单详情
 
 @end
 

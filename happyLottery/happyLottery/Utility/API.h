@@ -128,6 +128,10 @@
 #define APIGetVueHttpUrl            @"getVueHttpUrl"
 #define APIupdateRecSchemeRecCount  @"updateRecSchemeRecCount"
 
+#define APIlistJcgjSellItem           @"listJcgjSellItem" //获取冠军选项
+#define APIlistJcgyjSellItem          @"listJcgyjSellItem"//获取冠亚军选项
+#define APIlistJcgjItem               @"listJcgjItem"//获取冠军选项（包含不在售的）
+#define APIlistJcgyjItem              @"listJcgyjItem"//获取冠亚军选项（包含不在售的）
 
 
 #define SUBAPISchemeService   @"/scheme"
@@ -144,6 +148,8 @@
 #define APIGetJczqTicketOrderDetail @"getJczqTicketOrderDetail"
 
 
+#define APIGetJcgjTicketOrderDetail   @"getJcgjTicketOrderDetail"//查询冠军订单详情
+#define APIGetJcgyjTicketOrderDetail  @"getJcgyjTicketOrderDetail"//查询冠亚军订单详情
 
 
 #endif /* API_h */
