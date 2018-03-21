@@ -1066,4 +1066,162 @@
     return round;
 }
 
+
+#pragma mark 竞猜冠亚军
+- (void)listJcgjSellItem:(NSDictionary *)infoDic
+{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed  && responseJsonStr!= nil && responseJsonStr.length>0) {
+            NSArray  * dataArray = [self objFromJson:responseJsonStr];
+            [self.delegate gotlistJcgjItem:dataArray errorMsg:response.errorMsg];
+        }else{
+            [self.delegate gotlistJcgjItem:nil errorMsg:response.errorMsg];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.delegate gotlistJcgjItem:nil errorMsg:@"服务器错误"];
+    };
+    SOAPRequest* request = [self requestForAPI:APIlistJcgjSellItem  withParam: @{@"params":[self actionEncrypt:[self JsonFromId:infoDic]]}];
+    [self newRequestWithRequest:request
+                          subAPI:SUBAPIDATA
+       constructingBodyWithBlock:nil
+                         success:succeedBlock
+                         failure:failureBlock];
+}
+
+- (void)listJcgyjSellItem:(NSDictionary *)infoDic
+{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed  && responseJsonStr!= nil && responseJsonStr.length>0) {
+            NSArray  * dataArray = [self objFromJson:responseJsonStr];
+            [self.delegate gotlistJcgyjItem:dataArray errorMsg:response.errorMsg];
+        }else{
+            [self.delegate gotlistJcgyjItem:nil  errorMsg:response.errorMsg];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+            [self.delegate gotlistJcgyjItem:nil  errorMsg:@"服务器错误"];
+    };
+    SOAPRequest* request = [self requestForAPI:APIlistJcgyjSellItem  withParam: @{@"params":[self actionEncrypt:[self JsonFromId:infoDic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIDATA
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+    
+}
+
+- (void)listJcgjItem:(NSDictionary *)infoDic
+{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed  && responseJsonStr!= nil && responseJsonStr.length>0) {
+            NSArray  * dataArray = [self objFromJson:responseJsonStr];
+            [self.delegate gotlistJcgjItem:dataArray errorMsg:response.errorMsg];
+        }else{
+            [self.delegate gotlistJcgjItem:nil  errorMsg:response.errorMsg];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+             [self.delegate gotlistJcgjItem:nil  errorMsg:@"服务器错误"];
+    };
+    SOAPRequest* request = [self requestForAPI:APIlistJcgjItem  withParam: @{@"params":[self actionEncrypt:[self JsonFromId:infoDic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIDATA
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+    
+}
+
+- (void)listJcgyjItem:(NSDictionary *)infoDic
+{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed  && responseJsonStr!= nil && responseJsonStr.length>0) {
+            NSArray  * dataArray = [self objFromJson:responseJsonStr];
+            [self.delegate gotlistJcgyjItem:dataArray errorMsg:response.errorMsg];
+        }else{
+            [self.delegate gotlistJcgyjItem:nil  errorMsg:response.errorMsg];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+                [self.delegate gotlistJcgyjItem:nil  errorMsg:@"服务器错误"];
+    };
+    SOAPRequest* request = [self requestForAPI:APIlistJcgyjItem  withParam: @{@"params":[self actionEncrypt:[self JsonFromId:infoDic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIDATA
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+- (void)getJcgjTicketOrderDetail:(NSDictionary *)paraDic
+{
+        
+        void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+        {
+            SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+            NSString *responseJsonStr = [response getAPIResponse];
+            if (response.succeed) {
+                NSDictionary  *dataArray = [Utility objFromJson:responseJsonStr];
+                [self.delegate gotJcgjTicketOrderDetail:dataArray errorMsg:response.errorMsg];
+            } else {
+                [self.delegate gotJcgjTicketOrderDetail:nil errorMsg:response.errorMsg];
+                
+            }
+        };
+        void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"%@", error);
+            [self.delegate gotJcgjTicketOrderDetail:nil errorMsg:@"服务器错误"];
+        };
+        
+        SOAPRequest *request = [self requestForAPI: APIGetJcgjTicketOrderDetail withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
+        [self newRequestWithRequest:request
+                             subAPI:SUBAPITicketService 
+          constructingBodyWithBlock:nil
+                            success:succeedBlock
+                            failure:failureBlock];
+}
+
+- (void)getJcgyjTicketOrderDetail:(NSDictionary *)paraDic
+{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed) {
+                NSDictionary  *dataArray = [Utility objFromJson:responseJsonStr];
+                [self.delegate gotJcgyjTicketOrderDetail:dataArray errorMsg:response.errorMsg];
+        } else {
+                [self.delegate gotJcgyjTicketOrderDetail:nil errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+            [self.delegate gotJcgyjTicketOrderDetail:nil errorMsg:@"服务器错误"];
+    };
+    
+    SOAPRequest *request = [self requestForAPI: APIGetJcgyjTicketOrderDetail withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPITicketService
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+    
+}
+
+
+
 @end

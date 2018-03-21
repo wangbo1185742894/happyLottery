@@ -39,6 +39,7 @@ typedef enum EarningsType{
 - (void) gotlistByHisGains:(NSArray *)infoArray  errorMsg:(NSString *)msg;
 - (void) gotForecastTotal:(NSDictionary *)infoDic  errorMsg:(NSString *)msg;
 - (void) gotbonusOptimize:(NSArray *)infoList  errorMsg:(NSString *)msg;
+<<<<<<< HEAD
 - (void) gotSellIssueList:(NSArray *)infoDic  errorMsg:(NSString *)msg;
 - (void) gotListZcMatchSp:(NSArray *)infoDic  errorMsg:(NSString *)msg;
 - (void) listChaseSchemeForApp:(NSArray *)infoDic  errorMsg:(NSString *)msg;
@@ -47,6 +48,15 @@ typedef enum EarningsType{
 - (void) gotListHisIssue:(NSArray *)infoDic  errorMsg:(NSString *)msg;
 - (void) gotListHisPageIssue:(NSArray *)infoDic  errorMsg:(NSString *)msg;
 - (void)gotStopChaseScheme:(BOOL)isSuccess errorMsg:(NSString *)errorMsg;
+=======
+- (void) gotlistJcgjSellItem:(NSArray *)infoArray  errorMsg:(NSString *)msg;
+- (void) gotlistJcgyjSellItem:(NSArray *)infoArray  errorMsg:(NSString *)msg;
+- (void) gotlistJcgjItem:(NSArray *)infoArray  errorMsg:(NSString *)msg;
+- (void) gotlistJcgyjItem:(NSArray *)infoArray  errorMsg:(NSString *)msg;
+- (void) gotJcgjTicketOrderDetail:(NSDictionary *)infoArray  errorMsg:(NSString *)msg;
+- (void) gotJcgyjTicketOrderDetail:(NSDictionary *)infoArray  errorMsg:(NSString *)msg;
+
+>>>>>>> 17a83d0d21f6a1081744376a0e4a984d6e53d5b7
 @end
 
 @interface LotteryManager : Manager
@@ -80,6 +90,7 @@ typedef enum EarningsType{
 - (void)getbonusOptimize:(BaseTransaction *)transcation;
 - (void) betLotterySchemeOpti:(NSArray *)schemeList;
 - (void) betLotterySchemeOpti:(BaseTransaction *)transcation schemeList:(NSArray *)schemeList;
+
 - (NSArray*) getAllLottery ;
 - (void)getSellIssueList:(NSDictionary *)paraDic;
 - (void)getListZcMatchSp:(NSDictionary *)paraDic;
@@ -89,5 +100,13 @@ typedef enum EarningsType{
 - (void)getListHisIssue:(NSDictionary *)paraDic;
 - (void)getListHisPageIssue:(NSDictionary *)paraDic;
 - (void)getStopChaseScheme:(NSDictionary *)paraDic;
+#pragma mark 竞猜冠亚军
+- (void)listJcgjSellItem:(NSDictionary *)infoDic; //获取冠军选项
+- (void)listJcgyjSellItem:(NSDictionary *)infoDic; //获取冠亚军选项
+- (void)listJcgjItem:(NSDictionary *)infoDic; //获取冠军选项（包含不在售的）
+- (void)listJcgyjItem:(NSDictionary *)infoDic; //获取冠亚军选项（包含不在售的）
+- (void)getJcgjTicketOrderDetail:(NSDictionary *)paraDic;//查询冠军订单详情
+- (void)getJcgyjTicketOrderDetail:(NSDictionary *)paraDic;//查询冠亚军订单详情
+
 @end
 
