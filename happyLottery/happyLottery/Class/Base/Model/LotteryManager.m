@@ -744,7 +744,7 @@
 }
 
 #pragma mark 竞猜冠亚军
-- (void)listJcgjSellItem:(NSDictionary *)infoDic
+- (void) listJcgjSellItem:(NSDictionary *)infoDic
 {
     void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
     {
@@ -752,15 +752,15 @@
         NSString *responseJsonStr = [response getAPIResponse];
         if (response.succeed  && responseJsonStr!= nil && responseJsonStr.length>0) {
             NSArray  * dataArray = [self objFromJson:responseJsonStr];
-            [self.delegate gotlistJcgjItem:dataArray errorMsg:response.errorMsg];
+            [self.delegate gotlistJcgjSellItem:dataArray errorMsg:response.errorMsg];
         }else{
-            [self.delegate gotlistJcgjItem:nil errorMsg:response.errorMsg];
+            [self.delegate gotlistJcgjSellItem:nil errorMsg:response.errorMsg];
         }
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.delegate gotlistJcgjItem:nil errorMsg:@"服务器错误"];
+        [self.delegate gotlistJcgjSellItem:nil errorMsg:@"服务器错误"];
     };
-    SOAPRequest* request = [self requestForAPI:APIlistJcgjSellItem  withParam: @{@"params":[self actionEncrypt:[self JsonFromId:infoDic]]}];
+    SOAPRequest* request = [self requestForAPI:APIlistJcgjSellItem  withParam: nil];
     [self newRequestWithRequest:request
                           subAPI:SUBAPIDATA
        constructingBodyWithBlock:nil
@@ -776,15 +776,15 @@
         NSString *responseJsonStr = [response getAPIResponse];
         if (response.succeed  && responseJsonStr!= nil && responseJsonStr.length>0) {
             NSArray  * dataArray = [self objFromJson:responseJsonStr];
-            [self.delegate gotlistJcgyjItem:dataArray errorMsg:response.errorMsg];
+            [self.delegate gotlistJcgyjSellItem:dataArray errorMsg:response.errorMsg];
         }else{
-            [self.delegate gotlistJcgyjItem:nil  errorMsg:response.errorMsg];
+            [self.delegate gotlistJcgyjSellItem:nil  errorMsg:response.errorMsg];
         }
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
-            [self.delegate gotlistJcgyjItem:nil  errorMsg:@"服务器错误"];
+            [self.delegate gotlistJcgyjSellItem:nil  errorMsg:@"服务器错误"];
     };
-    SOAPRequest* request = [self requestForAPI:APIlistJcgyjSellItem  withParam: @{@"params":[self actionEncrypt:[self JsonFromId:infoDic]]}];
+    SOAPRequest* request = [self requestForAPI:APIlistJcgyjSellItem  withParam:nil];
     [self newRequestWithRequest:request
                          subAPI:SUBAPIDATA
       constructingBodyWithBlock:nil
@@ -809,7 +809,7 @@
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
              [self.delegate gotlistJcgjItem:nil  errorMsg:@"服务器错误"];
     };
-    SOAPRequest* request = [self requestForAPI:APIlistJcgjItem  withParam: @{@"params":[self actionEncrypt:[self JsonFromId:infoDic]]}];
+    SOAPRequest* request = [self requestForAPI:APIlistJcgjItem  withParam:nil];
     [self newRequestWithRequest:request
                          subAPI:SUBAPIDATA
       constructingBodyWithBlock:nil

@@ -61,6 +61,26 @@
     return [GlobalInstance instance ].curUser;
 }
 
+//- (void) useBackButton:(BOOL)HasCondition{
+//    BOOL isToAdd;
+//    if (HasCondition) {
+//        if (self.navigationItem != nil && self.navigationController.viewControllers.count > 1) {
+//            isToAdd = YES;
+//        }else{
+//            isToAdd = NO;
+//        }
+//    }else{
+//        isToAdd = YES;
+//    }
+//    if (isToAdd) {
+//
+//        UIBarButtonItem *backBarButton = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed: @"newBack"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(navigationBackToLastPage)];
+//
+//        self.navigationItem.leftBarButtonItem = backBarButton;
+//
+//    }
+//}
+
 -(void)setNavigationBack{
     
     UIBarButtonItem *backBarButton = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed: @"newBack"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(navigationBackToLastPage)];

@@ -132,12 +132,12 @@
 -(void)loadData:(NSString *)date{
     [self showLoadingViewWithText:@"正在加载"];
     [self.lotteryMan listByForecast:@{@"lotteryCode":@"jczq",@"screenTime":date} isHis:YES];
-
 }
 
 
+
 -(void)gotlistByForecast:(NSArray *)infoArray errorMsg:(NSString *)msg{
-    [self hideLoadingView];
+    [self hideLoadingView];   
     [self.dataArray removeAllObjects];
     if (infoArray == nil) {
         [self showPromptText:msg hideAfterDelay:1.7];

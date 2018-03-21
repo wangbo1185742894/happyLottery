@@ -25,6 +25,7 @@
 #import "NewsModel.h"
 #import "ADSModel.h"
 #import "WebShowViewController.h"
+#import "GYJPlayViewController.h"
 #import "RedPacket.h"
 #import "OpenRedPopView.h"
 #import "MyRedPacketViewController.h"
@@ -502,6 +503,14 @@
     showViewVC.pageUrl = [NSURL URLWithString:newsModel.linkUrl];
     showViewVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:showViewVC animated:YES];
+}
+
+//进入冠亚军竞猜
+- (IBAction)actionJcgyj:(id)sender {
+    GYJPlayViewController *gyjPlayVc = [[GYJPlayViewController alloc]init];
+    gyjPlayVc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:gyjPlayVc animated:YES];
+    
 }
 
 //"cardCode":"xxx","matchId":"x","isCollect":"x"

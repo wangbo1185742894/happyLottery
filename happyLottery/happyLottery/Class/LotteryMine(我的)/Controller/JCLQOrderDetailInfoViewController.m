@@ -13,7 +13,7 @@
 
 @interface JCLQOrderDetailInfoViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *labTotalNumbe;
-@property(nonatomic,strong)NSMutableArray *dataArray;
+@property(nonatomic,strong)NSMutableArray <NSMutableArray<HomeYCModel *> *> *dataArray;
 @property (nonatomic,assign)NSInteger page;
 @property (weak, nonatomic) IBOutlet UIImageView *imgLotteryIcon;
 @property (weak, nonatomic) IBOutlet UILabel *labLotteryName;
