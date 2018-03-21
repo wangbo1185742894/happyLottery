@@ -250,7 +250,7 @@
                     NSArray *sps = [Utility objFromJson:spDic[@"sp"]];
                     SEL function = NSSelectorFromString(funname);
                     if ([model respondsToSelector:function]) {
-                        [model performSelector:function withObject:sps];
+                         [model performSelector:function withObject:sps];
                     }
 
                     NSString *funname1 = [NSString stringWithFormat:@"set%@_ChangeArray:",spDic[@"playType"]];

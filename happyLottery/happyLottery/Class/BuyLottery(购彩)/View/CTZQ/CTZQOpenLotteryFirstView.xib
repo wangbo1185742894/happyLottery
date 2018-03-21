@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CTZQOpenLotteryFirstView">
+            <rect key="frame" x="0.0" y="0.0" width="410" height="80"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBo-7N-ZCG">
+                    <rect key="frame" x="10" y="10" width="390" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="U8Y-IA-1oo"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.28235294117647058" green="0.28235294117647058" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o9q-oA-WBa">
+                    <rect key="frame" x="10" y="43" width="390" height="29"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="o9q-oA-WBa" secondAttribute="trailing" constant="10" id="30U-xS-m2A"/>
+                <constraint firstAttribute="trailing" secondItem="VBo-7N-ZCG" secondAttribute="trailing" constant="10" id="BI5-B1-Iot"/>
+                <constraint firstItem="o9q-oA-WBa" firstAttribute="top" secondItem="VBo-7N-ZCG" secondAttribute="bottom" constant="8" id="SWk-ku-DwP"/>
+                <constraint firstAttribute="bottom" secondItem="o9q-oA-WBa" secondAttribute="bottom" constant="8" id="b6g-Y4-1Dj"/>
+                <constraint firstItem="o9q-oA-WBa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="cGV-ek-piK"/>
+                <constraint firstItem="VBo-7N-ZCG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="tzc-Ao-tiF"/>
+                <constraint firstItem="VBo-7N-ZCG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="xow-xC-iet"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="labTime" destination="VBo-7N-ZCG" id="gRQ-xP-PpQ"/>
+                <outlet property="viewContentResult" destination="o9q-oA-WBa" id="jCl-p8-0WX"/>
+            </connections>
+            <point key="canvasLocation" x="364" y="274"/>
+        </view>
+    </objects>
+</document>

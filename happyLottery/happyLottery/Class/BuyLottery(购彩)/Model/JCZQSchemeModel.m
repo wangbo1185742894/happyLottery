@@ -34,7 +34,6 @@
     }else{
         [super setValue:value forKey:key];
     }
-    
 }
 
 @end
@@ -42,6 +41,8 @@
 @implementation JCZQSchemeItem
 -(void)setValue:(id)value forKey:(NSString *)key{
     if ([key isEqualToString:@"trOpenResult"]) {
+        self.trDltOpenResult = value;
+        
         NSMutableArray *trOpenResult = [[NSMutableArray  alloc]initWithCapacity:0];
         NSArray *resArray = [Utility objFromJson:value];
         for (NSDictionary *item in resArray) {
@@ -51,10 +52,9 @@
         self.trOpenResult = trOpenResult;
     }else{
         
-        self.lotteryIcon = @"football";
+        
         [super setValue:value forKey:key];
     }
-    
 }
 -(NSString *)getSchemeImgState{
     
@@ -167,6 +167,19 @@
     }else{
         return height + 187;
     }
+}
+
+-(NSString *)lotteryIcon{
+    if ([self.lottery isEqualToString:@"DLT"]) {
+        return @"daletou.png";
+    }
+    if ([self.lottery isEqualToString:@"SFC"] || [self.lottery isEqualToString:@"RJC"]) {
+        return @"shengfucai.png";
+    }
+    if ([self.lottery isEqualToString:@"JCZQ"]) {
+        return @"footerball.png";
+    }
+    return @"";
 }
 
 @end

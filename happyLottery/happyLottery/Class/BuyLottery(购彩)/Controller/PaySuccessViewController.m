@@ -9,6 +9,7 @@
 #import "PaySuccessViewController.h"
 #import "SchemeDetailViewController.h"
 #import "MyOrderListViewController.h"
+#import "CTZQSchemeDetailViewController.h"
 
 @interface PaySuccessViewController ()
 
@@ -34,13 +35,24 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)actionLookOrder:(id)sender {
-    SchemeDetailViewController *schemeVC = [[SchemeDetailViewController alloc]init];
-    schemeVC.schemeNO = self.schemeNO;
     MyOrderListViewController *myOrderListVC = [[MyOrderListViewController alloc]init];
     NSMutableArray * vcS = [[NSMutableArray alloc]initWithArray:self.navigationController.viewControllers];
     [vcS addObject:myOrderListVC];
     self.navigationController.viewControllers = vcS;
-    [self.navigationController pushViewController:schemeVC animated:YES];
+    if ([self.lotteryName isEqualToString:@"胜负14场"] || [self.lotteryName isEqualToString:@"任选9场"]) {
+        CTZQSchemeDetailViewController *schemeVC = [[CTZQSchemeDetailViewController alloc]init];
+        schemeVC.schemeNO = self.schemeNO;
+        
+        
+        [self.navigationController pushViewController:schemeVC animated:YES];
+    }else{
+        SchemeDetailViewController *schemeVC = [[SchemeDetailViewController alloc]init];
+        schemeVC.schemeNO = self.schemeNO;
+        
+        
+        [self.navigationController pushViewController:schemeVC animated:YES];
+    }
+
 }
 - (IBAction)actionBackHome:(id)sender {
     

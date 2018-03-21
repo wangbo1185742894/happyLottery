@@ -11,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SchemeDetailViewController">
             <connections>
+                <outlet property="btnPay" destination="elk-D4-DdO" id="uZY-Jc-OKO"/>
+                <outlet property="btnReBuy" destination="3Pg-3A-JNl" id="wXL-tQ-rIt"/>
                 <outlet property="heightZhifuView" destination="sbn-pK-K9A" id="rlJ-l4-7uC"/>
                 <outlet property="imgSchemeTopView" destination="61u-sy-qC0" id="KcQ-Ml-Jgh"/>
                 <outlet property="mainViewHeight" destination="b66-5V-q7H" id="fLh-bo-mqk"/>
@@ -32,6 +34,14 @@
                             <state key="normal" title="立即支付" backgroundImage="schemedetailbutton.png"/>
                             <connections>
                                 <action selector="actionGotoTouzhu:" destination="-1" eventType="touchUpInside" id="RO2-ev-okT"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Pg-3A-JNl">
+                            <rect key="frame" x="10" y="0.0" width="355" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="再来一单" backgroundImage="schemedetailbutton.png"/>
+                            <connections>
+                                <action selector="actionReBuy:" destination="-1" eventType="touchUpInside" id="yEd-pB-xC6"/>
                             </connections>
                         </button>
                     </subviews>

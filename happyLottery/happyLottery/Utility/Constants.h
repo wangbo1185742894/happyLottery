@@ -57,6 +57,45 @@
 #define IFLog(fmt, ...)
 #define EFLog(fmt, ...)
 #endif
+#define LEFTPADDING 15
+#define SEPHEIGHT 0.5
+#define SEPLEADING 15
+#define SEPCOLOR RGBCOLOR(240, 240, 240)
+
+//分割线的颜色
+#define COLORSEP RGBCOLOR(220, 220, 220)
+//橘色按钮的文字和边框颜色
+#define COLORORANBUTTON RGBCOLOR(222, 57, 33)
+//灰色按钮的文字和边框颜色
+#define COLORGRAYBUTTON RGBCOLOR(202, 202, 202)
+//主背景颜色
+#define COLORBACKGROUND RGBCOLOR(244, 244, 244)
+//区块颜色
+#define COLORSESSION RGBCOLOR(220, 220, 220)
+#define CellSelectedColor RGBCOLOR(247, 247, 247)
+
+//橘黄色字体颜色(橘色button nor 字色)
+#define TextCharColor RGBCOLOR(232, 79, 42)
+// 倒计时字体橘黄色颜色
+#define TextTimeColor RGBCOLOR(239, 132, 85)
+//橘色button high 字色
+#define TextOrangeColor RGBCOLOR(232, 79, 42)
+
+//一种字体颜色，显示在主背景颜色上的 普通字体颜色  灰色btn nor字色
+#define TEXTGRAYCOLOR RGBCOLOR(72, 72, 72) //偏黑色
+// 灰色btn high 字色
+#define TextLightgrayColor [UIColor lightGrayColor]
+// 开奖结果显示背景的颜色
+#define TextCTZQGreen RGBCOLOR(71, 153, 106)
+//推送中开奖结果显示颜色
+#define TextCTZQBlue  RGBCOLOR(79, 155, 234)
+
+//时间显示的颜色
+#define TIMECOLOR RGBCOLOR(174, 174, 174)
+
+
+#define TextCharColorNomal RGBCOLOR(232, 79, 42)
+
 
 
 #define MAINBGC             RGBCOLOR(245, 245, 245)
@@ -168,4 +207,13 @@ sizeWithFont:font constrainedToSize:maxSize lineBreakMode:mode] : CGSizeZero;
 
 //channelCode
 #define CHANNEL_CODE    @"TBZ"
+
+
+typedef enum {
+    CTZQWinResultHomeWin = 3,
+    CTZQWinResultHomeDraw = 1,
+    CTZQWinResultHomeLose = 0,
+    CTZQWinResultEmpty = -1,
+} CTZQWinResultType;
+
 

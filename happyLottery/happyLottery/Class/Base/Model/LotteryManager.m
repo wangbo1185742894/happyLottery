@@ -8,9 +8,47 @@
 
 #import "LotteryManager.h"
 #import "JCZQTranscation.h"
+#import "Lottery.h"
 
 @implementation LotteryManager
 
+- (NSArray*) getAllLottery {
+    NSArray *lotteryDStemp;
+    NSArray *lotteryDSSource;
+    
+#ifdef betaVersion
+    //    lotteryDSSource = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"LotteryConfig_" ofType: @"plist"]];
+    
+    lotteryDStemp = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"LotteryConfig" ofType: @"plist"]];
+    lotteryDSSource = @[lotteryDStemp[0],lotteryDStemp[2],lotteryDStemp[1],lotteryDStemp[7],lotteryDStemp[8],lotteryDStemp[9],lotteryDStemp[4],lotteryDStemp[5]];
+    
+#else
+    lotteryDSSource = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"LotteryConfig" ofType: @"plist"]];
+#endif
+    
+    NSMutableArray *lotteryDS = [NSMutableArray arrayWithCapacity: [lotteryDSSource count]];
+    for (NSDictionary *lotteryDic in lotteryDSSource) {
+        Lottery *lottery = [[Lottery alloc] init];
+        
+        NSArray *allKeys = [lotteryDic allKeys];
+        for (NSString *key in allKeys) {
+            SEL selector = NSSelectorFromString([NSString stringWithFormat: @"set%@:", key]);
+            
+            if ([key isEqualToString: @"Type"]) {
+                lottery.type = (LotteryType) [lotteryDic[key] intValue];
+            } else if ([lottery respondsToSelector: selector]) {
+                [lottery performSelector: selector withObject: lotteryDic[key]];
+            }
+        }
+        
+        [lotteryDS addObject: lottery];
+    }
+    
+    
+    
+    return @[lotteryDS[0],lotteryDS[2],lotteryDS[3],lotteryDS[1],lotteryDS[4],lotteryDS[6],lotteryDS[5],lotteryDS[7]];
+    
+}
 
 - (void) getJczqMatch:(NSDictionary *)paraDic{
     void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
@@ -137,7 +175,6 @@
             [self.delegate betedLotteryScheme:responseJsonStr errorMsg:response.errorMsg];
         } else {
             [self.delegate betedLotteryScheme:nil errorMsg:response.errorMsg];
-            
         }
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -145,7 +182,7 @@
         SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
         [self.delegate betedLotteryScheme:nil errorMsg:response.errorMsg];
     };
-    
+//    [0]    (null)    @"betContent" : @"[{\"betMatches\":[{\"dan\":false,\"matchId\":\"1\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"2\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"3\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"4\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"5\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"6\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"7\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"8\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"9\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"10\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"11\",\"options\":[\"*\"]},{\"dan\":false,\"matchId\":\"12\",\"options\":[\"*\"]},{\"dan\":false,\"matchId\":\"13\",\"options\":[\"*\"]},{\"dan\":false,\"matchId\":\"14\",\"options\":[\"*\"]}]}]"
     NSDictionary *betContentDic = [transcation lottDataScheme];
     NSMutableDictionary *subSchemeDic = [transcation submitParaDicScheme];
     
@@ -158,6 +195,38 @@
                         success:succeedBlock
                         failure:failureBlock];
 }
+
+- (void) betChaseScheme:(LotteryTransaction *)transcation{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed) {
+            [self.delegate betedChaseScheme:responseJsonStr errorMsg:response.errorMsg];
+        } else {
+            [self.delegate betedChaseScheme:nil errorMsg:response.errorMsg];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        [self.delegate betedLotteryScheme:nil errorMsg:response.errorMsg];
+    };
+    
+    NSDictionary *chaseContent = [transcation lottDataScheme];
+    
+    NSMutableDictionary *subSchemeDic = [transcation getDLTChaseScheme];
+    
+    subSchemeDic[@"chaseContent"] = [self JsonFromId:chaseContent];
+    
+    SOAPRequest *request = [self requestForAPI: APIbetChaseScheme withParam:@{@"params":[self actionEncrypt:[self JsonFromId:subSchemeDic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPISchemeService
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
 
 - (void) schemeCashPayment:(NSDictionary *)paraDic{
     
@@ -450,7 +519,7 @@
                         failure:failureBlock];
 }
 
-- (void) getJczqTicketOrderDetail:(NSDictionary *)paraDic{
+- (void) getJczqTicketOrderDetail:(NSDictionary *)paraDic andLottery:(NSString *)lotteryCode{
     
     void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
     {
@@ -468,15 +537,23 @@
         NSLog(@"%@", error);
         [self.delegate gotJczqTicketOrderDetail:nil errorMsg:@"服务器错误"];
     };
-    
-    SOAPRequest *request = [self requestForAPI: APIGetJczqTicketOrderDetail withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
+    NSString *url;
+    if([lotteryCode isEqualToString:@"DLT"]){
+        url = APIGetDltTicketOrderDetail;
+    }else  if([lotteryCode isEqualToString:@"RJC"]){
+        url = APIgetRjcTicketOrderDetail;
+    }else  if([lotteryCode isEqualToString:@"SFC"]){
+        url = APIgetSfcTicketOrderDetail;
+    }else {
+        url = APIGetJczqTicketOrderDetail;
+    }
+    SOAPRequest *request = [self requestForAPI: url withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
     [self newRequestWithRequest:request
                          subAPI:SUBAPITicketService
       constructingBodyWithBlock:nil
                         success:succeedBlock
                         failure:failureBlock];
 }
-
 
 - (void)getSchemeRecordBySchemeNo:(NSDictionary *)paraDic{
     
@@ -722,6 +799,207 @@
 }
 
 
+- (void)getSellIssueList:(NSDictionary *)paraDic{
+    
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        
+        if (response.succeed) {
+            NSString *responseJsonStr = [response getAPIResponse];
+                NSArray *roundInfoArray = [self objFromJson: responseJsonStr];
+                if ([roundInfoArray isKindOfClass: [NSArray class]]) {
+                    NSMutableArray *rounds = [NSMutableArray arrayWithCapacity: roundInfoArray.count];
+                    
+                    for (NSDictionary *roundInfoDic in roundInfoArray) {
+                        LotteryRound *round = [self getLotteryRoundFromDic: roundInfoDic];
+                        if ([roundInfoDic.allKeys containsObject:@"sellStatus"]) {
+                            round.sellStatus = roundInfoDic[@"sellStatus"];
+                        }
+                        [round isExpire];
+                        [rounds addObject: round];
+                    }
+                    [self.delegate gotSellIssueList:rounds errorMsg:response.errorMsg];
+                }
+        } else {
+            [self.delegate gotSellIssueList:nil errorMsg:response.errorMsg];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate gotSellIssueList:nil errorMsg:@"服务器错误"];
+    };
+    //
+    SOAPRequest *request = [self requestForAPI: APIgetSellIssueList withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIDATA
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+- (void)getListHisPageIssue:(NSDictionary *)paraDic{
+    
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        if (response.succeed) {
+            NSString *responseJsonStr = [response getAPIResponse];
+            NSArray *dataArray = [Utility objFromJson:responseJsonStr];
+            [self.delegate gotListHisPageIssue:dataArray errorMsg:response.errorMsg];
+        } else {
+            [self.delegate gotListHisPageIssue:nil errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate gotListHisPageIssue:nil errorMsg:@"服务器错误"];
+    };
+    
+    SOAPRequest *request = [self requestForAPI: APIlistHisPageIssue withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIDATA
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+- (void)getListHisIssue:(NSDictionary *)paraDic{
+    
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        if (response.succeed) {
+            NSString *responseJsonStr = [response getAPIResponse];
+            NSArray *dataArray = [Utility objFromJson:responseJsonStr];
+            [self.delegate gotListHisIssue:dataArray errorMsg:response.errorMsg];
+        } else {
+            [self.delegate gotListHisIssue:nil errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate gotListHisIssue:nil errorMsg:@"服务器错误"];
+    };
+    
+    SOAPRequest *request = [self requestForAPI: APIListHisIssue withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIDATA
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+- (void)getChaseDetailForApp:(NSDictionary *)paraDic{
+    
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        if (response.succeed) {
+            NSString *responseJsonStr = [response getAPIResponse];
+            NSDictionary *dataDic = [Utility objFromJson:responseJsonStr];
+            [self.delegate gotChaseDetailForApp:dataDic errorMsg:response.errorMsg];
+        } else {
+            [self.delegate gotChaseDetailForApp:nil errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate gotChaseDetailForApp:nil errorMsg:@"服务器错误"];
+    };
+    
+    SOAPRequest *request = [self requestForAPI: APIgetChaseDetailForApp withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPISchemeService
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+- (void)listChaseSchemeForApp:(NSDictionary *)paraDic{
+    
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        if (response.succeed) {
+            NSString *responseJsonStr = [response getAPIResponse];
+            NSArray   *dataList = [Utility objFromJson:responseJsonStr];
+            [self.delegate listChaseSchemeForApp:dataList errorMsg:response.errorMsg];
+        } else {
+            [self.delegate listChaseSchemeForApp:nil errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate listChaseSchemeForApp:nil errorMsg:@"服务器错误"];
+    };
+    
+    SOAPRequest *request = [self requestForAPI: APIlistChaseSchemeForApp withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPISchemeService
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+- (void)getStopChaseScheme:(NSDictionary *)paraDic{
+    
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        if (response.succeed) {
+
+            [self.delegate gotStopChaseScheme:response.succeed errorMsg:response.errorMsg];
+        } else {
+            [self.delegate gotStopChaseScheme:response.succeed errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate gotStopChaseScheme:NO errorMsg:@"网络异常"];
+    };
+    //
+    SOAPRequest *request = [self requestForAPI: APIchaseWhenStop withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPISchemeService
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+- (void)getListZcMatchSp:(NSDictionary *)paraDic{
+    
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        if (response.succeed) {
+            NSString *responseJsonStr = [response getAPIResponse];
+            NSDictionary  *infoDic = [Utility objFromJson:responseJsonStr];
+            [self.delegate gotListZcMatchSp:infoDic errorMsg:response.errorMsg];
+        } else {
+            [self.delegate gotListZcMatchSp:nil errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate gotListZcMatchSp:nil errorMsg:@"服务器错误"];
+    };
+    //
+    SOAPRequest *request = [self requestForAPI: APIlistZcMatchSp withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIDATA
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+
 - (NSString *)getStringformfeid :(EarningsType)defaultFeid{
     NSString *str;
     switch (defaultFeid) {
@@ -741,6 +1019,51 @@
     
     return str;
     
+}
+
+- (LotteryRound *) getLotteryRoundFromDic: (NSDictionary *) roundDic {
+    
+    NSArray * dicKeys = @[@"stopTime",@"startTime",@"issueNumber",@"serverTime",@"lotteryCode",@"openResult"];
+    NSArray * roundPropertys = @[@"stopTime",@"startTime",@"issueNumber",@"serverTime",@"lotteryCode",@"openResult"];
+    
+    LotteryRound *round = [[LotteryRound alloc] init];
+    for (int i=0;i<dicKeys.count;i++) {
+        NSString *key = dicKeys[i];
+        NSString *value = [Utility legalString: roundDic[key]];
+        if (![key isEqualToString:@"openResult"]) {
+            NSString *property = roundPropertys[i];
+            NSString *capFirst =[[property substringToIndex: 1] uppercaseString];
+            NSString *selectorName = [NSString stringWithFormat: @"set%@%@:", capFirst,[property substringFromIndex: 1]];
+            SEL selector = NSSelectorFromString(selectorName);
+            if ([round respondsToSelector: selector]) {
+                [round performSelector: selector withObject: value];
+            }
+        }else{
+            NSString * temp = [value stringByReplacingOccurrencesOfString:@"," withString:@" "];
+            NSRange rang = [temp rangeOfString:@"#"];
+            if (rang.location == NSNotFound) {
+                round.mainRes = temp;
+                if([roundDic[@"lotteryCode"] isEqualToString:@"X115"]){
+                    NSArray * numArray = [temp componentsSeparatedByString:@" "];
+                    NSMutableArray * newNumTemp = [NSMutableArray array];
+                    for (NSString * num in numArray) {
+                        if ([num intValue] < 10 && num.length == 1) {
+                            [newNumTemp addObject:[NSString stringWithFormat:@"0%@",num]];
+                        }else{
+                            [newNumTemp addObject:num];
+                        }
+                    }
+                    round.mainRes = [newNumTemp componentsJoinedByString:@" "];
+                }
+            }else{
+                NSString * mainRes = [temp substringToIndex:rang.location];
+                NSString * subRes = [temp substringFromIndex:(rang.location+1)];
+                round.mainRes = mainRes;
+                round.subRes = subRes;
+            }
+        }
+    }
+    return round;
 }
 
 @end

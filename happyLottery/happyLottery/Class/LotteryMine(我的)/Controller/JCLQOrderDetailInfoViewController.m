@@ -27,7 +27,19 @@
     [super viewDidLoad];
     
     self.title = @"订单详情";
-
+    if([self.lotteryCode isEqualToString:@"DLT"]){
+        self.labLotteryName.text  = @"大乐透";
+        self.imgLotteryIcon.image = [UIImage imageNamed:@"daletou.png"];
+    }else if([self.lotteryCode isEqualToString:@"JCZQ"]){
+        self.labLotteryName.text = @"竞彩足球";
+        self.imgLotteryIcon.image = [UIImage imageNamed:@"footerball.png"];
+    }else if([self.lotteryCode isEqualToString:@"RJC"]){
+        self.labLotteryName.text = @"任9场";
+        self.imgLotteryIcon.image = [UIImage imageNamed:@"shengfucai.png"];
+    }else if([self.lotteryCode isEqualToString:@"SFC"]){
+        self.labLotteryName.text = @"14场";
+        self.imgLotteryIcon.image = [UIImage imageNamed:@"shengfucai.png"];
+    }
     self.page = 1;
     self.tabListDetail.dataSource = self;
     self.tabListDetail.delegate = self;
@@ -44,12 +56,14 @@
 
 -(void)loadNewData{
     _page = 1;
-    [self.lotteryMan getJczqTicketOrderDetail:@{@"schemeNo":self.schemeNO,@"page":@(_page),@"pageSize":@(KpageSize)}];
+
+    [self.lotteryMan getJczqTicketOrderDetail:@{@"schemeNo":self.schemeNO,@"page":@(_page),@"pageSize":@(KpageSize)} andLottery:self.lotteryCode];
 }
 
 -(void)loadMoreData{
     _page ++;
-    [self.lotteryMan getJczqTicketOrderDetail:@{@"schemeNo":self.schemeNO,@"page":@(_page),@"pageSize":@(KpageSize)}];
+
+    [self.lotteryMan getJczqTicketOrderDetail:@{@"schemeNo":self.schemeNO,@"page":@(_page),@"pageSize":@(KpageSize)} andLottery:self.lotteryCode];
 }
 
 -(void)gotJczqTicketOrderDetail:(NSArray *)infoArray errorMsg:(NSString *)msg{

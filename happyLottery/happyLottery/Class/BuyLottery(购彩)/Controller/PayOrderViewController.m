@@ -62,6 +62,9 @@
     }else{
         self.labScoreInfoContent.hidden = NO;
     }
+    
+    self.labLotteryName.text = self.cashPayMemt.lotteryName;
+    
     self.couponList = [NSMutableArray arrayWithCapacity:0];
     self.title = @"预约支付";
     [self setTableView];
@@ -360,6 +363,7 @@
 
 -(void)paySuccess{
     PaySuccessViewController * paySuccessVC = [[PaySuccessViewController alloc]init];
+    paySuccessVC.lotteryName = self.cashPayMemt.lotteryName;
     paySuccessVC.schemeNO = self.cashPayMemt.schemeNo;
     paySuccessVC.isMoni = self.cashPayMemt.costType == CostTypeSCORE;
     [self.navigationController pushViewController:paySuccessVC animated:YES];

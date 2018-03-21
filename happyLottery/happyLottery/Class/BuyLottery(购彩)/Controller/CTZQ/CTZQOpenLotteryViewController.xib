@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CTZQOpenLotteryViewController">
+            <connections>
+                <outlet property="btnView" destination="pXC-3N-hQt" id="MBc-xc-RQU"/>
+                <outlet property="tabContentlist" destination="umw-9y-diG" id="b8h-Lw-Wu5"/>
+                <outlet property="tableBottom" destination="aIx-8X-X1J" id="UnZ-KJ-gHC"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="567"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pXC-3N-hQt">
+                    <rect key="frame" x="0.0" y="516" width="320" height="51"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YW0-OP-Iq8">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                            <color key="backgroundColor" red="0.85490196078431369" green="0.85490196078431369" blue="0.85490196078431369" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="0.5" id="UBp-OP-taO"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nhe-9C-QLb">
+                            <rect key="frame" x="20" y="6" width="280" height="40"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="立即投注" backgroundImage="buttonBG_orange.png">
+                                <color key="titleColor" red="0.90980392156862744" green="0.30980392156862746" blue="0.16470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <state key="highlighted" backgroundImage="buttonBG_orange_selected.png">
+                                <color key="titleColor" red="0.90980392156862744" green="0.30980392156862746" blue="0.16470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="actionGotoPay:" destination="-1" eventType="touchUpInside" id="sqT-n9-Q7n"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="51" id="8CO-wb-qK9"/>
+                        <constraint firstItem="YW0-OP-Iq8" firstAttribute="top" secondItem="pXC-3N-hQt" secondAttribute="top" id="Jar-Cg-iOG"/>
+                        <constraint firstAttribute="bottom" secondItem="Nhe-9C-QLb" secondAttribute="bottom" constant="5" id="c6H-Aq-g63"/>
+                        <constraint firstItem="Nhe-9C-QLb" firstAttribute="top" secondItem="YW0-OP-Iq8" secondAttribute="bottom" constant="5" id="h4L-tz-wa1"/>
+                        <constraint firstItem="Nhe-9C-QLb" firstAttribute="leading" secondItem="pXC-3N-hQt" secondAttribute="leading" constant="20" id="qZX-2r-N89"/>
+                        <constraint firstItem="YW0-OP-Iq8" firstAttribute="leading" secondItem="pXC-3N-hQt" secondAttribute="leading" id="sBI-TH-srL"/>
+                        <constraint firstAttribute="trailing" secondItem="Nhe-9C-QLb" secondAttribute="trailing" constant="20" id="v41-YZ-wGm"/>
+                        <constraint firstAttribute="trailing" secondItem="YW0-OP-Iq8" secondAttribute="trailing" id="z3s-oO-Cht"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="umw-9y-diG">
+                    <rect key="frame" x="0.0" y="64" width="320" height="452"/>
+                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="umw-9y-diG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="BM7-CF-T6z"/>
+                <constraint firstAttribute="bottom" secondItem="pXC-3N-hQt" secondAttribute="bottom" id="CsN-0i-xN2"/>
+                <constraint firstAttribute="bottom" secondItem="umw-9y-diG" secondAttribute="bottom" constant="51" id="aIx-8X-X1J"/>
+                <constraint firstItem="umw-9y-diG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dFh-jH-xT4"/>
+                <constraint firstAttribute="trailing" secondItem="pXC-3N-hQt" secondAttribute="trailing" id="im7-9N-PKd"/>
+                <constraint firstAttribute="trailing" secondItem="umw-9y-diG" secondAttribute="trailing" id="j8O-yd-gA9"/>
+                <constraint firstItem="pXC-3N-hQt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="taR-8n-qUm"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="buttonBG_orange.png" width="284" height="32"/>
+        <image name="buttonBG_orange_selected.png" width="284" height="32"/>
+    </resources>
+</document>

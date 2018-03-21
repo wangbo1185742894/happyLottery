@@ -7,6 +7,10 @@
 //
 
 #import "BuyLotteryViewController.h"
+#import "WebShowViewController.h"
+#import "WebCTZQHisViewController.h"
+#import "DLTPlayViewController.h"
+#import "CTZQPlayViewController.h"
 #import "DiscoverViewController.h"
 #import "WBAdsImgView.h"
 #import "JCZQPlayViewController.h"
@@ -82,6 +86,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(jumpToPlayVC:) name:@"NSNotificationJumpToPlayVC" object:nil];
 #ifdef APPSTORE
     [self appStoreUpadata];
 #else
@@ -228,7 +233,7 @@
 }
 
 -(void)setTableView{
-    curY +=151;
+    curY +=272;
     tabForecaseList.delegate = self;
     tabForecaseList.dataSource = self;
     [tabForecaseList registerClass:[NewsListCell class] forCellReuseIdentifier:KNewsListCell];
@@ -411,7 +416,9 @@
 #pragma HomeMenuItemViewDelegate
 -(void)itemClick:(NSInteger)index{
     if (index == 1000) {
-        JCZQPlayViewController * playViewVC = [[JCZQPlayViewController alloc]init];
+        WebCTZQHisViewController * playViewVC = [[WebCTZQHisViewController alloc]init];
+        NSString *strUrl = [NSString stringWithFormat:@"%@/app/award/openAward",H5BaseAddress];
+        playViewVC.pageUrl = [NSURL URLWithString:strUrl];
         playViewVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:playViewVC animated:YES];
     }
@@ -820,6 +827,42 @@
 
 - (void)lijigenxin{
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:APPUPDATAURL]];
+}
+- (IBAction)actionDLT:(id)sender {
+    NSArray * lotteryDS = [self.lotteryMan getAllLottery];
+    
+    DLTPlayViewController *playVC = [[DLTPlayViewController alloc] init];
+    playVC.hidesBottomBarWhenPushed = YES;
+    //    _lotterySelected.currentRound = round;
+    playVC.lottery = lotteryDS[1];
+    [self.navigationController pushViewController:playVC animated:YES];
+    
+}
+
+- (IBAction)actionSFC:(id)sender {
+    NSArray * lotteryDS = [self.lotteryMan getAllLottery];
+    
+    CTZQPlayViewController *playVC = [[CTZQPlayViewController alloc] init];
+    playVC.hidesBottomBarWhenPushed = YES;
+    playVC.lottery = lotteryDS[7];
+    [self.navigationController pushViewController:playVC animated:YES];
+}
+
+- (IBAction)actionJCZQ:(id)sender {
+    JCZQPlayViewController * playViewVC = [[JCZQPlayViewController alloc]init];
+    playViewVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:playViewVC animated:YES];
+}
+
+-(void)jumpToPlayVC:(NSNotification *)notifi{
+    self.tabBarController.selectedIndex = 0;
+    NSString *playType = notifi.object;
+    if ([playType isEqualToString:@"SFC"] || [playType isEqualToString:@"SFC"]) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [self actionSFC:nil];
+        });
+    }
 }
 
 

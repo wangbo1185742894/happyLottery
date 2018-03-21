@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -67,25 +67,25 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="投注方式" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tPR-Kn-5Cr">
-                                        <rect key="frame" x="0.0" y="8.5" width="102.5" height="13.5"/>
+                                        <rect key="frame" x="0.0" y="8" width="102.5" height="14"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="投注倍数" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Qv-gD-q5l">
-                                        <rect key="frame" x="102.5" y="8.5" width="102.5" height="13.5"/>
+                                        <rect key="frame" x="102" y="8" width="103" height="13.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="投注金额" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFF-fg-65L">
-                                        <rect key="frame" x="205" y="8.5" width="102.5" height="13.5"/>
+                                        <rect key="frame" x="205" y="8" width="102.5" height="13.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="中奖金额" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdS-6p-b4c">
-                                        <rect key="frame" x="307.5" y="8.5" width="102.5" height="13.5"/>
+                                        <rect key="frame" x="307.5" y="8" width="102.5" height="13.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -252,12 +252,15 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="disLeftPlayType" destination="4uc-7H-oRn" id="Uxz-ub-EEJ"/>
+                <outlet property="disLeftPlayTypeContent" destination="LIQ-HE-Lfw" id="CfY-WU-RJR"/>
                 <outlet property="imgWinIcon" destination="NF1-eg-TeB" id="Tad-0d-eeU"/>
                 <outlet property="labBetCost" destination="xmk-5l-IIi" id="Gkj-8C-YMX"/>
                 <outlet property="labChupiao" destination="6us-No-ThF" id="HR1-QH-y3k"/>
                 <outlet property="labJiangjin" destination="eOZ-XX-bI8" id="j9D-as-spV"/>
                 <outlet property="labNumber" destination="es6-mP-Iq6" id="V2X-rk-jCY"/>
                 <outlet property="labPassType" destination="mWW-P0-k5I" id="WnH-H8-5t8"/>
+                <outlet property="labPlayType" destination="tPR-Kn-5Cr" id="sJP-Bd-Qd0"/>
                 <outlet property="labTouzhuneirong" destination="B8d-Ja-69L" id="zli-Tz-vUm"/>
                 <outlet property="viewSubContent" destination="I7a-yo-nRj" id="4X3-Vt-8mD"/>
             </connections>

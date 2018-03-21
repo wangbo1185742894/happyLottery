@@ -11,7 +11,7 @@
 @interface SchemeCashPayment : BaseModel
 
 
-@property (strong,nonatomic)NSString *cardCode , *schemeNo,*couponCode;
+@property (strong,nonatomic)NSString *cardCode , *schemeNo,*couponCode,*lotteryName;
 @property (assign,nonatomic)NSInteger subCopies,baodiCopies,baodiCost;
 @property(assign,nonatomic)double subscribed,realSubscribed;
 @property(assign,nonatomic)BOOL isSponsor;

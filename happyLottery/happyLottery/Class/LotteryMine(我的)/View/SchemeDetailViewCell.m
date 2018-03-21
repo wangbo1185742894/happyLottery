@@ -106,18 +106,22 @@
         }else{
             return [NSString stringWithFormat:@"%.2f积分",[model.bonus doubleValue]];
         }
-        
-        
     }
     return @"0.00元";
-    
 }
+
 
 
 -(NSString *)getLotteryByCode:(NSString *)code{
     if ([code isEqualToString:@"JCZQ"]) {
         return @"竞彩足球";
-    } //以后加彩种 在这加
+    }else if([code isEqualToString:@"DLT"]){
+        return @"超级大乐透";
+    }else if([code isEqualToString:@"RJC"]){
+        return @"任选9场";
+    }else if([code isEqualToString:@"SFC"]){
+        return @"胜负14场";
+    }
     return @"彩票";
 }
 

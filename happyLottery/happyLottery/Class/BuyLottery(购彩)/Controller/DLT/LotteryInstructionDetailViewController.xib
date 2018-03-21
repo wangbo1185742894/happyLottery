@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LotteryInstructionDetailViewController">
+            <connections>
+                <outlet property="scroViewMenu_" destination="sW0-cL-HAJ" id="Uvg-f6-Ubw"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="webTopPadding" destination="3es-ZZ-DIy" id="YU2-OW-Z7E"/>
+                <outlet property="webViewContent_" destination="392-b7-Uya" id="lGA-XR-4kI"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sW0-cL-HAJ">
+                    <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="x69-66-xrf"/>
+                    </constraints>
+                </scrollView>
+                <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="392-b7-Uya">
+                    <rect key="frame" x="0.0" y="108" width="320" height="460"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </webView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="392-b7-Uya" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="108" id="3es-ZZ-DIy"/>
+                <constraint firstItem="sW0-cL-HAJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="9P1-dM-PqC"/>
+                <constraint firstAttribute="bottom" secondItem="392-b7-Uya" secondAttribute="bottom" id="AXv-C2-69W"/>
+                <constraint firstAttribute="trailing" secondItem="392-b7-Uya" secondAttribute="trailing" id="BdS-lG-ccu"/>
+                <constraint firstItem="392-b7-Uya" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="GFm-f3-b4c"/>
+                <constraint firstAttribute="trailing" secondItem="sW0-cL-HAJ" secondAttribute="trailing" id="S0T-6t-kgP"/>
+                <constraint firstItem="sW0-cL-HAJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="rgG-HI-jL5"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+        </view>
+    </objects>
+</document>

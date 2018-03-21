@@ -17,6 +17,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *labPassType;
 @property (weak, nonatomic) IBOutlet UIView *viewSubContent;
 @property (weak, nonatomic) IBOutlet UIImageView *imgWinIcon;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *disLeftPlayType;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *disLeftPlayTypeContent;
+@property (weak, nonatomic) IBOutlet UILabel *labPlayType;
 
 
 -(void)reloadData:(NSDictionary *)dic;
