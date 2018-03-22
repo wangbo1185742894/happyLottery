@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+       
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LotteryWinNumHistoryViewController">
+            <connections>
+                <outlet property="btnView" destination="FRa-1j-PyA" id="fFl-tV-AKk"/>
+                <outlet property="buyNowBtn" destination="mWK-0t-J7b" id="yoB-9C-xV8"/>
+                <outlet property="downLine" destination="61b-fv-HOU" id="WNe-oX-K2c"/>
+                <outlet property="soureTableView" destination="aNw-Yj-EQf" id="Aeg-X5-DvL"/>
+                <outlet property="tableBottom" destination="JUq-gw-zYL" id="DWg-i8-WWO"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outletCollection property="sepHeightArr" destination="FlW-gR-gqp" id="NyB-5g-nMg"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FRa-1j-PyA">
+                    <rect key="frame" x="0.0" y="517" width="320" height="51"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="61b-fv-HOU">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                            <color key="backgroundColor" red="0.85490196078431369" green="0.85490196078431369" blue="0.85490196078431369" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="FlW-gR-gqp"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleAspectFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mWK-0t-J7b">
+                            <rect key="frame" x="15" y="6" width="290" height="40"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="U8r-Sb-eTl"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="立即投注" backgroundImage="buttonBG_orange.png">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <state key="highlighted" backgroundImage="buttonBG_orange_selected.png">
+                                <color key="titleColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="U8r-Sb-eTl"/>
+                                </mask>
+                            </variation>
+                            <connections>
+                                <action selector="buyNow:" destination="-1" eventType="touchUpInside" id="y0C-Qu-3ty"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="mWK-0t-J7b" firstAttribute="leading" secondItem="FRa-1j-PyA" secondAttribute="leading" constant="15" id="7mv-Zb-5fa"/>
+                        <constraint firstItem="61b-fv-HOU" firstAttribute="leading" secondItem="FRa-1j-PyA" secondAttribute="leading" id="Bdx-Uw-A7V"/>
+                        <constraint firstAttribute="trailing" secondItem="mWK-0t-J7b" secondAttribute="trailing" constant="15" id="CHj-ob-BCX"/>
+                        <constraint firstItem="mWK-0t-J7b" firstAttribute="top" secondItem="FRa-1j-PyA" secondAttribute="top" constant="6" id="FaE-6S-8uQ"/>
+                        <constraint firstAttribute="trailing" secondItem="61b-fv-HOU" secondAttribute="trailing" id="Zaa-os-PcM"/>
+                        <constraint firstAttribute="height" constant="51" id="csI-mD-AGH"/>
+                        <constraint firstAttribute="bottom" secondItem="mWK-0t-J7b" secondAttribute="bottom" constant="5" id="meM-Kg-6bM"/>
+                        <constraint firstItem="61b-fv-HOU" firstAttribute="top" secondItem="FRa-1j-PyA" secondAttribute="top" id="uwq-yY-3PX"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="aNw-Yj-EQf">
+                    <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="BMh-xc-ni6"/>
+                        <outlet property="delegate" destination="-1" id="i3x-mo-Hlr"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="aNw-Yj-EQf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="01u-bU-9vn"/>
+                <constraint firstItem="FRa-1j-PyA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="GW1-CR-GdQ"/>
+                <constraint firstAttribute="trailing" secondItem="aNw-Yj-EQf" secondAttribute="trailing" id="JEo-gN-w4t"/>
+                <constraint firstAttribute="bottom" secondItem="aNw-Yj-EQf" secondAttribute="bottom" id="JUq-gw-zYL"/>
+                <constraint firstAttribute="bottom" secondItem="FRa-1j-PyA" secondAttribute="bottom" id="RCB-U5-G2x"/>
+                <constraint firstItem="aNw-Yj-EQf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="thH-p2-nf4"/>
+                <constraint firstAttribute="trailing" secondItem="FRa-1j-PyA" secondAttribute="trailing" id="vjV-nt-57I"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="buttonBG_orange.png" width="284" height="32"/>
+        <image name="buttonBG_orange_selected.png" width="284" height="32"/>
+    </resources>
+</document>

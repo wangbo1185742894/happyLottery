@@ -264,7 +264,6 @@ static SystemSoundID shake_sound_male_id = 0;
             [self.fmdb close];
         }
     }
-    
     NSString *time = [Utility timeStringFromFormat:@"yyyy-MM-dd HH:mm:ss" withDate:[NSDate date]];
 
 }
@@ -726,7 +725,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     if (baseUrl == nil || baseUrl.length == 0) {
         [GlobalInstance instance].homeUrl = ServerAddress;
     }else{
-        [GlobalInstance instance].homeUrl = baseUrl;
+        [GlobalInstance instance].homeUrl = ServerAddress;
     }
 }
 

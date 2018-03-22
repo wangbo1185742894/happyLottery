@@ -60,21 +60,33 @@
     itemDic = dic;
     self.labTouzhuneirong.layer.borderWidth = 1;
     self.labTouzhuneirong.layer.borderColor =TFBorderColor.CGColor;
-    
-    self.labPassType.text = [self getPasstype:dic[@"passType"]];
-    
-   
-    
     self.viewSubContent.layer.borderColor = TFBorderColor.CGColor;
     self.viewSubContent.layer.borderWidth = 1;
     
     self.labBetCost.text = [NSString stringWithFormat:@"%@元",dic[@"subscription"]];
-    NSArray *titleArray = [Utility objFromJson:dic[@"ticketContent"]];
-    titleArray = [self getBetcontent:titleArray];
-    content  = [titleArray componentsJoinedByString:@"\n"];
-    
+    if([dic[@"lotteryCode"] isEqualToString:@"DLT"]){
+        content = dic[@"ticketContent"];
+        content = [content stringByReplacingOccurrencesOfString:@";" withString:@"\n"];
+        self.disLeftPlayType.constant = -self.labPlayType.mj_w - 20;
+        self.disLeftPlayTypeContent.constant = -self.labPlayType.mj_w - 20;
+        
+    }else if([dic[@"lotteryCode"] isEqualToString:@"RJC"] || [dic[@"lotteryCode"] isEqualToString:@"SFC"]){
+        content = dic[@"ticketContent"];
+        content = [content stringByReplacingOccurrencesOfString:@";" withString:@"\n"];
+        self.disLeftPlayType.constant = -self.labPlayType.mj_w - 20;
+        self.disLeftPlayTypeContent.constant = -self.labPlayType.mj_w - 20;
+        
+    }else{
+        self.labPassType.text = [self getPasstype:dic[@"passType"]];
+        NSArray *titleArray = [Utility objFromJson:dic[@"ticketContent"]];
+        titleArray = [self getBetcontent:titleArray];
+        content  = [titleArray componentsJoinedByString:@"\n"];
+    }
+   
     self.labTouzhuneirong.text = content ;
     self.labTouzhuneirong.adjustsFontSizeToFitWidth = YES;
+    
+    
     self.labNumber.text = [NSString stringWithFormat:@"%@注%@倍",dic[@"unit"],dic[@"multiple"]];
     
     [self setNumberColor:self.labNumber];
@@ -140,6 +152,10 @@
 
 
 -(CGFloat)getCellHeight:(NSDictionary*)dic{
+    if([dic[@"lotteryCode"] isEqualToString:@"DLT"] || [dic[@"lotteryCode"] isEqualToString:@"SFC"] || [dic[@"lotteryCode"] isEqualToString:@"RJC"]){
+        
+        return [dic[@"ticketContent"] componentsSeparatedByString:@";"].count * 12 + 150;
+    }
     NSArray *titleArray = [Utility objFromJson:dic[@"ticketContent"]] ;
     
     titleArray = [self getBetcontent:titleArray];

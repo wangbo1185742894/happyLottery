@@ -7,6 +7,7 @@
 //我的订单
 
 #import "MyOrderListViewController.h"
+#import "CTZQSchemeDetailViewController.h"
 #import "JCZQSchemeModel.h"
 #import "SchemListCell.h"
 #import "SchemeDetailViewController.h"
@@ -136,11 +137,20 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    SchemeDetailViewController *schemeVC = [[SchemeDetailViewController alloc]init];
-    schemeVC.schemeNO = dataArray[indexPath.row].schemeNO;
-    NSString *imageName = [dataArray[indexPath.row] getSchemeImgState];
-    schemeVC.imageName = imageName;
-    [self.navigationController pushViewController:schemeVC animated:YES];
+    if ([dataArray[indexPath.row].lottery isEqualToString:@"RJC"] || [dataArray[indexPath.row].lottery isEqualToString:@"SFC"]) {
+        CTZQSchemeDetailViewController*schemeVC = [[CTZQSchemeDetailViewController alloc]init];
+        schemeVC.schemeNO = dataArray[indexPath.row].schemeNO;
+        NSString *imageName = [dataArray[indexPath.row] getSchemeImgState];
+        schemeVC.imageName = imageName;
+        [self.navigationController pushViewController:schemeVC animated:YES];
+    }else{
+        SchemeDetailViewController *schemeVC = [[SchemeDetailViewController alloc]init];
+        schemeVC.schemeNO = dataArray[indexPath.row].schemeNO;
+        NSString *imageName = [dataArray[indexPath.row] getSchemeImgState];
+        schemeVC.imageName = imageName;
+        [self.navigationController pushViewController:schemeVC animated:YES];
+    }
+   
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{

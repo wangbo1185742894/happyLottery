@@ -12,5 +12,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *tabListDetail;
 
 @property(nonatomic,strong)NSString *schemeNO;
+@property (nonatomic,strong)NSString *lotteryCode;
 
 @end

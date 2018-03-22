@@ -87,9 +87,7 @@
     }
     [self afnReachabilityTest];
     NSString * soapMessage = [request getSOAPMessage];
-
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL: [NSURL URLWithString:[NSString stringWithFormat:WSServerURL,subApi]]];
-
     NSString *msgLength = [NSString stringWithFormat:@"%lu", (unsigned long)[soapMessage length]];
     NSLog(@"22334%@",msgLength);
     [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
@@ -193,9 +191,6 @@
 //    }else{
         soapMessage = [request getSOAPMessage];
 //    }
-    
-    
-    
     
     NSMutableURLRequest *theRequest;
 #ifdef bate

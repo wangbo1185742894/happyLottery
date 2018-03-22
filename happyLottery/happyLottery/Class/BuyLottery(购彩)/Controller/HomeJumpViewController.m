@@ -11,7 +11,7 @@
 #import "UIImageView+WebCache.h"
 #import <JavaScriptCore/JavaScriptCore.h>
 
-#define LEFTPADDING 15
+
 @interface HomeJumpViewController ()<JSJumpDelegate,UIWebViewDelegate>
 {
     JSContext *context;

@@ -109,6 +109,9 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="betInfoLa" destination="h1x-L6-IfM" id="vly-WT-KQy"/>
+                <outlet property="labLine" destination="8ec-KM-nnr" id="Yin-M3-fR4"/>
+                <outlet property="labOrderDetail" destination="A1M-VL-CYe" id="Vvu-MX-1IR"/>
+                <outlet property="labSpinfo" destination="5IH-SA-SV3" id="RON-Lw-Vtv"/>
                 <outlet property="titleLa" destination="KQh-0A-134" id="nPO-X3-0Tq"/>
                 <outlet property="viewPeiLvInfo" destination="e0e-sH-0xk" id="XmG-GI-KGS"/>
             </connections>

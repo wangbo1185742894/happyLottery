@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CTZQMatch.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property(assign,nonatomic)NSInteger  betlistcount;
 @property(nonatomic, assign)BOOL versionFlag;
 @property(nonatomic, retain)NSMutableDictionary   *Dic;
 @property (assign, nonatomic)NSUserDefaults       *userDefaultes;

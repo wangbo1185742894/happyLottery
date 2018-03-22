@@ -13,5 +13,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *betInfoLa;
 @property (weak, nonatomic) IBOutlet UIView *viewPeiLvInfo;
 @property (weak, nonatomic) IBOutlet UIButton *btnOrderDetail;
+@property (weak, nonatomic) IBOutlet UILabel *labLine;
+@property (weak, nonatomic) IBOutlet UILabel *labSpinfo;
+@property (weak, nonatomic) IBOutlet UIButton *labOrderDetail;
 
 @end

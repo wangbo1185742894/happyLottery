@@ -380,6 +380,7 @@
     PayOrderViewController *payVC = [[PayOrderViewController alloc]init];
     SchemeCashPayment *schemeCashModel = [[SchemeCashPayment alloc]init];
     schemeCashModel.cardCode = self.curUser.cardCode;
+    schemeCashModel.lotteryName = @"竞彩足球";
     schemeCashModel.schemeNo = schemeNO;
     schemeCashModel.subCopies = 1;
     if (btnMoniTouzhu.selected == YES) {
