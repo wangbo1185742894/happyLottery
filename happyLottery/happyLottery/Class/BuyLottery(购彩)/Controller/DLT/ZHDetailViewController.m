@@ -514,48 +514,8 @@
 }
 
 - (IBAction)toPlayGoon:(UIButton *)sender {
-    
-//    Lottery *lottery_ =[[Lottery alloc] init] ;
-//    
-//    [GlobalInstance instance].JumpToPlaylotteryIdentifier = _order.lotteryType;
-//    
-////    [GlobalInstance instance].JinCaiSubRuleDesc = _order.playType;
-//    
-//    for (Lottery  *lottery in _allLotter) {
-//        if ([lottery.identifier isEqualToString:_order.lottery]) {
-//            lottery_  = lottery;
-//            
-//        }
-//    }
-    
-    
-//    if (![_order.lotteryType isEqualToString:@"JCZQ"]) {
-//        LotteryPlayViewController *lotteryVC = [[LotteryPlayViewController alloc] init];
-//        lotteryVC.lottery  = lottery_;
-//        [self.navigationController pushViewController:lotteryVC animated:YES];
-//        return;
-//    }
-    
-//    LotteryPlayViewController *lotteryVC = [[LotteryPlayViewController alloc] init];
-//    lotteryVC.lottery = self.lottery;
-//    [self.navigationController pushViewController:lotteryVC animated:YES];
-
-    
-      NSArray * ordeArray = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"LotteryConfig_" ofType:@"plist"]];
-    
-    
-    
-    for(int i=0;i<ordeArray.count;i++)
-    {
-        NSString *lottery = [ordeArray[i] objectForKey:@"Type"];
-        if([lottery isEqualToString:_order.lottery])
-        {
-            NSString *Identifier = [ordeArray[i] objectForKey:@"Identifier"];
-           
-            [self.navigationController popToRootViewControllerAnimated:NO];
-            return;
-        }
-    }
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"NSNotificationJumpToPlayVC" object:@"DLT"];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void) shareRightButtonAction{

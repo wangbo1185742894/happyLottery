@@ -100,9 +100,7 @@
     if([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     }
-    
 
-        
     self.instance = [GlobalInstance instance];
     
     pageLoaded = NO;
@@ -131,7 +129,7 @@
     [optionButton setTitle:@" 助手" forState:UIControlStateNormal];
     [optionButton setImage:[UIImage imageNamed:@"helper.png"] forState:UIControlStateNormal];
     optionButton.titleLabel.font = [UIFont systemFontOfSize:14];
-//    [optionButton setBackgroundImage:[UIImage imageNamed:@"orangeBackground"] forState:UIControlStateNormal];
+
     [optionButton addTarget: self action: @selector(optionRightButtonAction) forControlEvents: UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView: optionButton];
     

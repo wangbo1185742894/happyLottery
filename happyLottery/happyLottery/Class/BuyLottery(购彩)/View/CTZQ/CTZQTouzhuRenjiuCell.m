@@ -36,22 +36,21 @@
  */
 - (IBAction)actionDan:(UIButton *)sender {
 
+    if (self.selectArray.count <= 9) {
+        [self .delegate showInfo:@"至少选择10场比赛才能设胆"];
+        return;
+    }
     NSInteger danNumber = [self.delegate getDanCount];
     if (danNumber<8||sender.selected == YES) {
-        
-    sender.selected = !sender.selected;
-    if (sender.selected) {
-        self.cBet.cMatch.danTuo = @"1";
+        sender.selected = !sender.selected;
+        if (sender.selected) {
+            self.cBet.cMatch.danTuo = @"1";
+        }else{
+            self.cBet.cMatch.danTuo = @"0";
+        }
+        [self.delegate refreshTouzhuVCSummary];
     }else{
-    
-        self.cBet.cMatch.danTuo = @"0";
-    }
-    [self.delegate refreshTouzhuVCSummary];
-    
-    }else{
-    
-        [self.delegate showInfo];
-    
+        [self.delegate showInfo:@"设胆场数不能超过8场"];
     }
 }
 /**
@@ -106,11 +105,8 @@
             NSMutableAttributedString *attstrS = [[NSMutableAttributedString alloc] initWithString:atterstr.string attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
             
                 [btn setAttributedTitle:attstrS forState:UIControlStateSelected];
-            
         }
     }
-    
-    
 }
 
 -(void)setSelected:(BOOL)selected animated:(BOOL)animated{

@@ -14,7 +14,7 @@
 
 -(NSInteger)getDanCount;
 
--(void)showInfo;
+-(void)showInfo:(NSString *)msg;
 
 @end
 
@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnDraw;
 @property (weak, nonatomic) IBOutlet UIButton *btnLose;
 @property (weak, nonatomic) IBOutlet UIButton *btnDan;
+@property(strong,nonatomic)NSArray *selectArray;
 @property(nonatomic,strong) CTZQBet *cBet;
 
 @property(weak,nonatomic)id<CTZQTouzhuRenjiuCellRefreshDelegate> delegate;

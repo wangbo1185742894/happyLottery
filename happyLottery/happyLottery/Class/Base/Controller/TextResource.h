@@ -90,8 +90,8 @@
 #define TextClearSelection      @"清空号码"
 #define TextLotteryWinTrend     @"开奖趋势"
 #define MatchCountLbMin         @"至少选 择1场比赛"
-#define TextPlayMethodInd       @"玩法介绍"
-#define TextLotteryWinHistory   @"开奖记录"
+#define TextPlayMethodInd       @"玩法说明"
+#define TextLotteryWinHistory   @"开奖信息"
 
 #define TextRandomBet           @"随机选一注"
 #define Textzhuihao             @"追号投注";

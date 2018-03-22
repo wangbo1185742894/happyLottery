@@ -47,6 +47,7 @@
     WBAdsImgView *adsView;
     UIView  *menuView;
 
+    __weak IBOutlet UIView *lotteryPlayView;
     OpenRedPopView *popView;
     __weak IBOutlet NSLayoutConstraint *contentViewDisTop;
     NSMutableArray *listUseRedPacketArray;
@@ -107,6 +108,7 @@
     [self setADSUI];
     [self setMenu];
     [self setNewsView];
+    [self setDLTCTZQView];
     [self setTableView];
     openRedpacketButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     
@@ -153,6 +155,9 @@
     }];
 }
 
+-(void)setDLTCTZQView{
+    curY =  lotteryPlayView.mj_y;
+}
 -(void)loadNews{
    
     
@@ -864,15 +869,31 @@
 }
 
 -(void)jumpToPlayVC:(NSNotification *)notifi{
-    self.tabBarController.selectedIndex = 0;
+    if (self.tabBarController.selectedIndex != 0) {
+        self.tabBarController.selectedIndex = 0;
+    }
+    
     NSString *playType = notifi.object;
-    if ([playType isEqualToString:@"SFC"] || [playType isEqualToString:@"SFC"]) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    if ([playType isEqualToString:@"RJC"] || [playType isEqualToString:@"SFC"]) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
             [self actionSFC:nil];
         });
     }
+    if ([playType isEqualToString:@"DLT"]) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [self actionDLT:nil];
+        });
+    }
+    if ([playType isEqualToString:@"JCZQ"]) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [self actionJCZQ:nil];
+        });
+    }
 }
+
 
 
 @end

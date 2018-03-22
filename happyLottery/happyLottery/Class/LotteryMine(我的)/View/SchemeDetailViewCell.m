@@ -78,7 +78,13 @@
     }else{
         labBetCost.text = [NSString stringWithFormat:@"%@积分",model.betCost];
     }
-    labUnit.text = [NSString stringWithFormat:@"%@注",model.units];
+    
+    if ([model.lottery isEqualToString:@"JCZQ"]) {
+         labUnit.text = [NSString stringWithFormat:@"%@注",model.units];
+    }else{
+         labUnit.text = [NSString stringWithFormat:@"%@注%@倍",model.units,model.multiple];
+    }
+  
     labBouns.text = [self getWinningStatus:model];
 
 //    labChuanFa.text = [self getChuanFa];
@@ -116,11 +122,11 @@
     if ([code isEqualToString:@"JCZQ"]) {
         return @"竞彩足球";
     }else if([code isEqualToString:@"DLT"]){
-        return @"超级大乐透";
+        return [NSString stringWithFormat:@"超级大乐透(第%@期)",scheme.issueNumber];
     }else if([code isEqualToString:@"RJC"]){
-        return @"任选9场";
+        return [NSString stringWithFormat:@"任选9场(第%@期)",scheme.issueNumber];
     }else if([code isEqualToString:@"SFC"]){
-        return @"胜负14场";
+        return [NSString stringWithFormat:@"胜负14场(第%@期)",scheme.issueNumber];
     }
     return @"彩票";
 }

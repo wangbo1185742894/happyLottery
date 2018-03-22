@@ -11,7 +11,7 @@
 #import "WebCTZQHisViewController.h"
 
 
-@interface WebCTZQHisViewController ()<UIWebViewDelegate>
+@interface WebCTZQHisViewController ()<UIWebViewDelegate,JSObjcCTZQHisDelegate>
 {
     JSContext *context;
 }
@@ -72,7 +72,19 @@
     [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitTouchCallout='none';"];
 }
 -(void)exchangeToast:(NSString *)msg{
-    [self showPromptText:msg hideAfterDelay:1.7];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self showPromptText:msg hideAfterDelay:1.7];
+    });
+}
+-(void)goCathectic:(NSString *)lotteryCode{
+    if (lotteryCode == nil) {
+        return;
+    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self showPromptText:lotteryCode hideAfterDelay:1.8];
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"NSNotificationJumpToPlayVC" object:lotteryCode];
+        [self.navigationController popToRootViewControllerAnimated:NO];
+    });
 }
 
 @end

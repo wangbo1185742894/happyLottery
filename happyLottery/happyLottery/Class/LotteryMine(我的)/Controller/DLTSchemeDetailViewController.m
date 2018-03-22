@@ -6,12 +6,12 @@
 //  Copyright © 2018年 onlytechnology. All rights reserved.
 //
 
-#import "CTZQSchemeDetailViewController.h"
+#import "DLTSchemeDetailViewController.h"
 #import "JCLQOrderDetailInfoViewController.h"
 #import "LotteryXHSection.h"
 #import "JCZQSchemeModel.h"
+#import "WinResultTableCell.h"
 #import "PayOrderViewController.h"
-#import "CTZQWinResultCell.h"
 #import "SchemeDetailMatchViewCell.h"
 #import "SchemeDetailViewCell.h"
 #import "TableHeaderView.h"
@@ -20,15 +20,17 @@
 #import "SchemeInfoViewCell.h"
 #import "MyOrderListViewController.h"
 #import "DLTPlayViewController.h"
-#import "CTZQSchemeViewCell.h"
+
+#import "DLTSchemeViewCell.h"
+#import "DLTTouZhuViewController.h"
 
 #define  KSchemeDetailMatchViewCell     @"SchemeDetailMatchViewCell"
 #define  KSchemeDetailViewCell          @"SchemeDetailViewCell"
 #define  KTableHeaderView               @"TableHeaderView"
 #define  KSchemeInfoViewCell            @"SchemeInfoViewCell"
-#define  KCTZQSchemeViewCell             @"CTZQSchemeViewCell"
-#define     KCTZQWinResultCell                 @"CTZQWinResultCell"
-@interface CTZQSchemeDetailViewController ()<LotteryManagerDelegate,UITableViewDelegate,UITableViewDataSource>
+#define  KDLTSchemeViewCell             @"DLTSchemeViewCell"
+#define KWinResultTableCell             @"WinResultTableCell"
+@interface DLTSchemeDetailViewController ()<LotteryManagerDelegate,UITableViewDelegate,UITableViewDataSource>
 {
     
     __weak IBOutlet NSLayoutConstraint *heightZhifuView;
@@ -47,7 +49,7 @@
 @property(nonatomic,strong)NSArray *allLotter;
 @end
 
-@implementation CTZQSchemeDetailViewController
+@implementation DLTSchemeDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -93,8 +95,8 @@
     [tabMatchListVIew registerClass:[SchemeDetailMatchViewCell class] forCellReuseIdentifier: KSchemeDetailMatchViewCell];
     [tabMatchListVIew registerClass:[SchemeDetailViewCell class] forCellReuseIdentifier:KSchemeDetailViewCell];
     [tabMatchListVIew registerClass:[SchemeInfoViewCell class] forCellReuseIdentifier:KSchemeInfoViewCell];
-    [tabMatchListVIew registerNib:[UINib nibWithNibName:KCTZQWinResultCell bundle:nil] forCellReuseIdentifier:KCTZQWinResultCell];
-    [tabMatchListVIew registerClass:[CTZQSchemeViewCell class] forCellReuseIdentifier:KCTZQSchemeViewCell];
+    [tabMatchListVIew registerClass:[DLTSchemeViewCell class] forCellReuseIdentifier:KDLTSchemeViewCell];
+    [tabMatchListVIew registerNib:[UINib nibWithNibName:KWinResultTableCell bundle:nil] forCellReuseIdentifier:KWinResultTableCell];
 
 }
 
@@ -108,9 +110,13 @@
         [self showPromptText:msg hideAfterDelay:1.7];
         return;
     }
-
     schemeDetail = [[JCZQSchemeItem alloc]initWith:infoArray];
     NSInteger itemIndex = 1;
+    
+    dltBetList = [Utility objFromJson: schemeDetail.betContent];
+        
+ 
+
     
     [self setSchemeStateImg];
     if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) {
@@ -119,13 +125,11 @@
         btnReBuy.hidden = YES;
         
     }else{
-        if ([schemeDetail.lottery isEqualToString:@"SFC"] ||[schemeDetail.lottery isEqualToString:@"RJC"]){
+        
             btnPay.hidden = YES;
             btnReBuy.hidden = NO;
             heightZhifuView.constant = 60;
-        }else{
-            heightZhifuView.constant = 0;
-        }
+        
     }
     [tabMatchListVIew reloadData];
 
@@ -146,11 +150,9 @@
     schemeCashModel.cardCode = self.curUser.cardCode;
     schemeCashModel.schemeNo =schemeDetail.schemeNO;
     schemeCashModel.subCopies = 1;
-    if ([schemeDetail.lottery isEqualToString:@"RJC"]){
-        schemeCashModel.lotteryName = @"任选9场";
-    }else if ([schemeDetail.lottery isEqualToString:@"SFC"]){
-        schemeCashModel.lotteryName = @"胜负14场";
-    }
+    
+        schemeCashModel.lotteryName = @"大乐透";
+    
     if ([schemeDetail.costType isEqualToString:@"CASH"]) {
         schemeCashModel.costType = CostTypeCASH;
         
@@ -170,7 +172,60 @@
 #pragma UITableViewDelegate,UITableViewDataSource
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    
+    if (schemeDetail.trDltOpenResult == nil || schemeDetail.trDltOpenResult.length ==0){
+        if ([schemeDetail.costType isEqualToString:@"CASH"]) {
+            if (section == 2){
+                NSDictionary *betContent = [Utility objFromJson: schemeDetail.betContent];
+                if (betContent == nil) {
+                    return 0;
+                }
+                
+                return dltBetList.count;
+            }else{
+                return 1;
+            }
+        }else{
+            if (section == 1){
+                NSDictionary *betContent = [Utility objFromJson: schemeDetail.betContent];
+                if (betContent == nil) {
+                    return 0;
+                }
+                
+                return dltBetList.count;
+            }else{
+                return 1;
+            }
+        }
+    }else{
+        
+        if ([schemeDetail.costType isEqualToString:@"CASH"]) {
+            if (section == 3){
+                NSDictionary *betContent = [Utility objFromJson: schemeDetail.betContent];
+                if (betContent == nil) {
+                    return 0;
+                }
+                
+                return dltBetList.count;
+            }else{
+                return 1;
+            }
+        }else{
+            if (section == 2){
+                NSDictionary *betContent = [Utility objFromJson: schemeDetail.betContent];
+                if (betContent == nil) {
+                    return 0;
+                }
+                
+                return dltBetList.count;
+            }else{
+                return 1;
+            }
+        }
+    }
+
+
+    return 0;
 
 }
 
@@ -194,12 +249,13 @@
     UITableViewCell *cell;
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
         tabviewHeight.constant = tabMatchListVIew.contentSize.height;
         mainViewHeight.constant = tabMatchListVIew.contentSize .height + 80;
         tabMatchListVIew.bounces = NO;
     });
     
-    if (schemeDetail.trDltOpenResult == nil || schemeDetail.trDltOpenResult.length ==0) {
+    if (schemeDetail.trDltOpenResult == nil || schemeDetail.trDltOpenResult.length ==0){
         if ([schemeDetail.costType isEqualToString:@"CASH"]) {
             if (indexPath.section == 0) { // 显示 方案信息
                 SchemeDetailViewCell *detailCell = [tableView dequeueReusableCellWithIdentifier:KSchemeDetailViewCell];
@@ -207,11 +263,14 @@
                 cell = detailCell;
             }else if (indexPath.section == 2){ // 显示方案投注内容
                 
-                CTZQSchemeViewCell *matchCell = [tableView dequeueReusableCellWithIdentifier:KCTZQSchemeViewCell];
+                DLTSchemeViewCell *dltCell = [tableView dequeueReusableCellWithIdentifier:KDLTSchemeViewCell];
                 if (schemeDetail != nil) {
-                    [matchCell refreshDataWith:schemeDetail];
+                    [dltCell refreshDataWith:dltBetList[indexPath.row] andOpenResult:schemeDetail.trDltOpenResult];
                 }
-                return matchCell;
+                [dltCell setNumIndex:[NSString stringWithFormat:@"%ld",indexPath.row + 1] andIsShow:dltBetList.count == 1];
+                cell = dltCell;
+                
+                
             }else if (indexPath.section == 1){
                 SchemeInfoViewCell * infoCell = [tableView dequeueReusableCellWithIdentifier:KSchemeInfoViewCell];
                 if (schemeDetail != nil) {
@@ -228,11 +287,14 @@
                 cell = detailCell;
             }else if (indexPath.section == 1){ // 显示方案投注内容
                 
-                CTZQSchemeViewCell *matchCell = [tableView dequeueReusableCellWithIdentifier:KCTZQSchemeViewCell];
+                DLTSchemeViewCell *dltCell = [tableView dequeueReusableCellWithIdentifier:KDLTSchemeViewCell];
                 if (schemeDetail != nil) {
-                    [matchCell refreshDataWith:schemeDetail];
+                    [dltCell refreshDataWith:dltBetList[indexPath.row] andOpenResult:schemeDetail.trDltOpenResult];
                 }
-                cell = matchCell;
+                [dltCell setNumIndex:[NSString stringWithFormat:@"%ld",indexPath.row] andIsShow:dltBetList.count == 1];
+                cell = dltCell;
+                
+                
             }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
@@ -243,24 +305,26 @@
                 SchemeDetailViewCell *detailCell = [tableView dequeueReusableCellWithIdentifier:KSchemeDetailViewCell];
                 [detailCell reloadDataModel:schemeDetail];
                 cell = detailCell;
-            }else if(indexPath.section == 1){
-                CTZQWinResultCell *resultCell =[tableView dequeueReusableCellWithIdentifier:KCTZQWinResultCell];
-                [resultCell refreshWithInfo:schemeDetail.trDltOpenResult];
-                cell = resultCell;
-                
             }else if (indexPath.section == 3){ // 显示方案投注内容
                 
-                CTZQSchemeViewCell *matchCell = [tableView dequeueReusableCellWithIdentifier:KCTZQSchemeViewCell];
+                DLTSchemeViewCell *dltCell = [tableView dequeueReusableCellWithIdentifier:KDLTSchemeViewCell];
                 if (schemeDetail != nil) {
-                    [matchCell refreshDataWith:schemeDetail];
+                    [dltCell refreshDataWith:dltBetList[indexPath.row] andOpenResult:schemeDetail.trDltOpenResult];
                 }
-                return matchCell;
+                [dltCell setNumIndex:[NSString stringWithFormat:@"%ld",indexPath.row + 1] andIsShow:dltBetList.count == 1];
+                cell = dltCell;
+                
+                
             }else if (indexPath.section == 2){
                 SchemeInfoViewCell * infoCell = [tableView dequeueReusableCellWithIdentifier:KSchemeInfoViewCell];
                 if (schemeDetail != nil) {
                     [infoCell loadData:schemeDetail];
                 }
                 cell = infoCell;
+            }else if(indexPath.section == 1){
+                WinResultTableCell * winCell = [tableView dequeueReusableCellWithIdentifier:KWinResultTableCell];
+                [winCell refreshWithInfo:schemeDetail.trDltOpenResult];
+                cell = winCell;
             }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
@@ -269,38 +333,55 @@
                 SchemeDetailViewCell *detailCell = [tableView dequeueReusableCellWithIdentifier:KSchemeDetailViewCell];
                 [detailCell reloadDataModel:schemeDetail];
                 cell = detailCell;
-            }else if(indexPath.section == 1){
-                CTZQWinResultCell *resultCell =[tableView dequeueReusableCellWithIdentifier:KCTZQWinResultCell];
-                [resultCell refreshWithInfo:schemeDetail.trDltOpenResult];
-                cell = resultCell;
-                
             }else if (indexPath.section == 2){ // 显示方案投注内容
                 
-                CTZQSchemeViewCell *matchCell = [tableView dequeueReusableCellWithIdentifier:KCTZQSchemeViewCell];
+                DLTSchemeViewCell *dltCell = [tableView dequeueReusableCellWithIdentifier:KDLTSchemeViewCell];
                 if (schemeDetail != nil) {
-                    [matchCell refreshDataWith:schemeDetail];
+                    [dltCell refreshDataWith:dltBetList[indexPath.row] andOpenResult:schemeDetail.trDltOpenResult];
                 }
-                cell = matchCell;
+                [dltCell setNumIndex:[NSString stringWithFormat:@"%ld",indexPath.row] andIsShow:dltBetList.count == 1];
+                cell = dltCell;
+ 
+            }else if(indexPath.section ==  1){
+                WinResultTableCell * winCell = [tableView dequeueReusableCellWithIdentifier:KWinResultTableCell];
+                [winCell refreshWithInfo:schemeDetail.trDltOpenResult];
+                cell = winCell;
             }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
         }
     }
-    return nil;
+    
+   
+
+}
+
+-(BOOL)showNum{
+    NSInteger tempNum = 0;
+    for (JcBetContent *model in matchList) {
+        if (model.isShow == YES) {
+            tempNum ++;
+        }
+    }
+    if (tempNum == 1) {
+        return NO;
+    }else{
+        return YES;
+    }
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
-    
-    
     if (schemeDetail.trDltOpenResult == nil || schemeDetail.trDltOpenResult.length ==0){
-        
         if ([schemeDetail.costType isEqualToString:@"CASH"]) {
             if (indexPath.section == 0) {
                 return [schemeDetail getJCZQCellHeight];
             }else if (indexPath.section ==2){
-                return 200;
+                
+                DLTSchemeViewCell *temp = [[DLTSchemeViewCell alloc]init];
+                return [temp getCellHeightWith:dltBetList[indexPath.row]];
+                
+                
             }else if (indexPath.section ==1){
                 if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) {
                     return 110;
@@ -313,19 +394,26 @@
             if (indexPath.section == 0) {
                 return [schemeDetail getJCZQCellHeight];
             }else if (indexPath.section ==1){
-                return 200;
+                
+                DLTSchemeViewCell *temp = [[DLTSchemeViewCell alloc]init];
+                return [temp getCellHeightWith:dltBetList[indexPath.row]];
             }
         }
-    } else{
+    }else{
         if ([schemeDetail.costType isEqualToString:@"CASH"]) {
             if (indexPath.section == 0) {
                 return [schemeDetail getJCZQCellHeight];
             }else if (indexPath.section ==3){
-                return 200;
+                
+                DLTSchemeViewCell *temp = [[DLTSchemeViewCell alloc]init];
+                return [temp getCellHeightWith:dltBetList[indexPath.row]];
+                
+                
             }else if (indexPath.section ==2){
                 if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) {
                     return 110;
                 }else{
+                    
                     return 110;
                 }
             }else if(indexPath.section == 1){
@@ -335,24 +423,17 @@
             if (indexPath.section == 0) {
                 return [schemeDetail getJCZQCellHeight];
             }else if (indexPath.section ==2){
-                return 200;
+                
+                DLTSchemeViewCell *temp = [[DLTSchemeViewCell alloc]init];
+                return [temp getCellHeightWith:dltBetList[indexPath.row]];
             }else if(indexPath.section == 1){
                 return 50;
             }
         }
     }
-
     return 0;
 }
 
--(NSString*)getContentJCZQ:(NSDictionary*)contentArray andOption:(NSString*)option{
-    for (NSDictionary *dic in contentArray.allValues) {
-        if ([dic[@"code"] integerValue]  == [option integerValue]) {
-            return dic[@"appear"];
-        }
-    }
-    return nil;
-}
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if (schemeDetail.trDltOpenResult == nil || schemeDetail.trDltOpenResult.length ==0) {
@@ -412,7 +493,7 @@
             }
         }
     }
-   
+    
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -484,8 +565,8 @@
             return header;
         }
     }
-  
-  
+    
+    
     
 }
 
@@ -495,6 +576,7 @@
     header.labLine.hidden = YES;
     header.labSpinfo.hidden = YES;
     header.labOrderDetail.hidden = YES;
+    
     UIButton  *ticketLa = [UIButton buttonWithType:UIButtonTypeCustom];
     ticketLa.frame = CGRectMake(KscreenWidth - 80, 5, 70, 25);
     
@@ -526,9 +608,113 @@
     [super navigationBackToLastPage];
 }
 - (IBAction)actionReBuy:(UIButton *)sender {
-  [[NSNotificationCenter defaultCenter]postNotificationName:@"NSNotificationJumpToPlayVC" object:@"SFC"];
-    [self.navigationController popToRootViewControllerAnimated:YES];
-    
+    if ([schemeDetail.lottery isEqualToString:@"DLT"] ) {
+        for (Lottery  *lottery in _allLotter) {
+            if ([lottery.identifier isEqualToString:schemeDetail.lottery]) {
+                lottery_  = lottery;
+                
+            }
+        }
+        
+        _lotteryTransaction = [[LotteryTransaction alloc] init];
+        
+        _lotteryTransaction.beiTouCount = 1;
+        _lotteryTransaction.qiShuCount = 1;
+        _lotteryTransaction.lottery = lottery_;
+        
+        NSArray * betcontent = [Utility objFromJson: schemeDetail.betContent];
+        NSString * strbBetType;
+        for (NSDictionary *betDic in betcontent) {
+            
+            
+            
+            
+            LotteryBet * Bet = [[LotteryBet alloc] init];
+            
+            
+            Bet.sectionDataLinkSymbol = lottery_.dateSectionLinkSymbol;
+            
+            NSInteger cost = 2;
+            Bet.betType = 0;
+   
+            strbBetType = @"0";
+            if ([lottery_.identifier isEqualToString:@"DLT"]){
+                Bet.betType = 101 + (int )[betDic[@"betType"] integerValue];
+                cost = 2;
+                switch ([betDic[@"betType"] integerValue]) {
+                    case 0:
+                    Bet.betTypeDesc = @"单式";
+                    break;
+                    case 1:
+                    Bet.betTypeDesc = @"复式";
+                    break;
+                    case 2:
+                    Bet.betTypeDesc = @"胆拖";
+                    break;
+                    
+                    default:
+                    break;
+                }
+                
+                NSArray *redList = betDic[@"redList"];
+                NSArray *redDanList = betDic[@"redDanList"];
+                NSArray *blueList = betDic[@"blueList"];
+                NSArray *blueDanList = betDic[@"blueDanList"];
+                NSString *strRedList = [redList componentsJoinedByString:@","];
+                NSString *strRedDanlist =[NSString stringWithFormat:@"[胆:%@]",[redDanList componentsJoinedByString:@","]] ;
+                NSString *strBlueList = [blueList componentsJoinedByString:@","];
+                NSString *strBlueDanList =[NSString stringWithFormat:@"[胆:%@]",[blueDanList componentsJoinedByString:@","]] ;
+                NSString *betNumDesc = [NSString stringWithFormat:@"%@%@\n%@%@",strRedDanlist.length == 4?@"":strRedDanlist,strRedList,strBlueDanList.length == 4?@"":strBlueDanList,strBlueList];
+                
+                NSMutableAttributedString *numberAttributedString;
+                numberAttributedString = [[NSMutableAttributedString alloc]initWithString:betNumDesc];
+                [numberAttributedString setAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15],NSForegroundColorAttributeName:SystemRed} range:NSMakeRange(0, strRedList.length + (strRedDanlist.length== 4?0:strRedDanlist.length))];
+                [numberAttributedString setAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15],NSForegroundColorAttributeName:SystemBlue} range:NSMakeRange(strRedList.length + (strRedDanlist.length == 4?0:strRedDanlist.length) , (strBlueDanList.length== 4?0:strBlueDanList.length) + strBlueList.length +1)];
+                Bet.betNumbersDesc = numberAttributedString;
+                LotteryXHSection *l1 = [[LotteryXHSection alloc]init];
+                l1.sectionID = @"1";
+                LotteryXHSection *l2 = [[LotteryXHSection alloc]init];
+                l2.sectionID = @"2";
+                if (Bet.lotteryDetails == nil) {
+                    Bet.lotteryDetails = @[l1,l2];
+                }
+                
+                
+                Bet.betNumbers = [@{@"1":@{@"numberselected":redList,@"numberdanhao":redDanList},@"2":@{@"numberselected":blueList,@"numberdanhao":blueDanList}} mutableCopy];
+                
+            }
+            
+            [Bet setBetCount:(int )[betDic[@"units"] integerValue]];
+            [Bet setBetsCost:[betDic[@"units"] integerValue] * cost];
+            
+            if (betcontent.count >1) {
+                
+                [self.lotteryTransaction addBet:Bet];
+            }
+            
+        }
+        
+        if (betcontent.count == 1) {
+            
+            DLTPlayViewController *lpVC = [[DLTPlayViewController alloc] init];
+            lpVC.isReBuy = YES;
+            if ([schemeDetail.lottery isEqualToString:@"DLT"]){
+                lpVC.selectedNumber =betcontent;
+            }
+            
+            
+            lpVC.lottery = lottery_;
+            [self.navigationController pushViewController:lpVC animated:YES];
+        }else{
+            DLTPlayViewController *lpVC = [[DLTPlayViewController alloc] init];
+            
+            lpVC.isReBuy = NO;
+            lpVC.lotteryTransaction = _lotteryTransaction;
+            lpVC.lottery = lottery_;
+            [self.navigationController pushViewController:lpVC animated:YES];
+        }
+        
+    }
 }
 
 @end

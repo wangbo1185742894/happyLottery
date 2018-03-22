@@ -7,6 +7,7 @@
 //
 
 #import "PaySuccessViewController.h"
+#import "DLTSchemeDetailViewController.h"
 #import "SchemeDetailViewController.h"
 #import "MyOrderListViewController.h"
 #import "CTZQSchemeDetailViewController.h"
@@ -45,11 +46,13 @@
         
         
         [self.navigationController pushViewController:schemeVC animated:YES];
+    }else if([self.lotteryName isEqualToString:@"大乐透"]){
+        DLTSchemeDetailViewController *schemeVC = [[DLTSchemeDetailViewController alloc]init];
+        schemeVC.schemeNO = self.schemeNO;
+        [self.navigationController pushViewController:schemeVC animated:YES];
     }else{
         SchemeDetailViewController *schemeVC = [[SchemeDetailViewController alloc]init];
         schemeVC.schemeNO = self.schemeNO;
-        
-        
         [self.navigationController pushViewController:schemeVC animated:YES];
     }
 
