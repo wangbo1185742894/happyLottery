@@ -39,7 +39,7 @@ typedef enum EarningsType{
 - (void) gotlistByHisGains:(NSArray *)infoArray  errorMsg:(NSString *)msg;
 - (void) gotForecastTotal:(NSDictionary *)infoDic  errorMsg:(NSString *)msg;
 - (void) gotbonusOptimize:(NSArray *)infoList  errorMsg:(NSString *)msg;
-<<<<<<< HEAD
+
 - (void) gotSellIssueList:(NSArray *)infoDic  errorMsg:(NSString *)msg;
 - (void) gotListZcMatchSp:(NSArray *)infoDic  errorMsg:(NSString *)msg;
 - (void) listChaseSchemeForApp:(NSArray *)infoDic  errorMsg:(NSString *)msg;
@@ -48,7 +48,7 @@ typedef enum EarningsType{
 - (void) gotListHisIssue:(NSArray *)infoDic  errorMsg:(NSString *)msg;
 - (void) gotListHisPageIssue:(NSArray *)infoDic  errorMsg:(NSString *)msg;
 - (void)gotStopChaseScheme:(BOOL)isSuccess errorMsg:(NSString *)errorMsg;
-=======
+
 - (void) gotlistJcgjSellItem:(NSArray *)infoArray  errorMsg:(NSString *)msg;
 - (void) gotlistJcgyjSellItem:(NSArray *)infoArray  errorMsg:(NSString *)msg;
 - (void) gotlistJcgjItem:(NSArray *)infoArray  errorMsg:(NSString *)msg;
@@ -56,7 +56,7 @@ typedef enum EarningsType{
 - (void) gotJcgjTicketOrderDetail:(NSDictionary *)infoArray  errorMsg:(NSString *)msg;
 - (void) gotJcgyjTicketOrderDetail:(NSDictionary *)infoArray  errorMsg:(NSString *)msg;
 
->>>>>>> 17a83d0d21f6a1081744376a0e4a984d6e53d5b7
+
 @end
 
 @interface LotteryManager : Manager

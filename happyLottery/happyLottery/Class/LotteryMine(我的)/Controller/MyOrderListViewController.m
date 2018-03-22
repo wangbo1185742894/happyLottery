@@ -7,6 +7,7 @@
 //我的订单
 
 #import "MyOrderListViewController.h"
+#import "DLTSchemeDetailViewController.h"
 #import "CTZQSchemeDetailViewController.h"
 #import "JCZQSchemeModel.h"
 #import "SchemListCell.h"
@@ -139,6 +140,12 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([dataArray[indexPath.row].lottery isEqualToString:@"RJC"] || [dataArray[indexPath.row].lottery isEqualToString:@"SFC"]) {
         CTZQSchemeDetailViewController*schemeVC = [[CTZQSchemeDetailViewController alloc]init];
+        schemeVC.schemeNO = dataArray[indexPath.row].schemeNO;
+        NSString *imageName = [dataArray[indexPath.row] getSchemeImgState];
+        schemeVC.imageName = imageName;
+        [self.navigationController pushViewController:schemeVC animated:YES];
+    }else if([dataArray[indexPath.row].lottery isEqualToString:@"DLT"]){
+        DLTSchemeDetailViewController *schemeVC = [[DLTSchemeDetailViewController alloc]init];
         schemeVC.schemeNO = dataArray[indexPath.row].schemeNO;
         NSString *imageName = [dataArray[indexPath.row] getSchemeImgState];
         schemeVC.imageName = imageName;

@@ -667,8 +667,12 @@
         match.selectedF = @"0";
         match.danTuo = @"0";
     }
+    CTZQPlayType ctzqPlayType  = _transaction.ctzqPlayType;
+    NSString *playCode = _transaction.curPlayCode;
     _transaction = [[CTZQTransaction alloc] init];//换一个新的 transaction
     [_CTZQMatchSelectedArr removeAllObjects];
+    _transaction.ctzqPlayType = ctzqPlayType;
+    _transaction.curPlayCode = playCode;
     [_CTZQPlayTableView reloadData];
     [self updateSummary];
 }
@@ -801,7 +805,7 @@
     btnRJC = [UIButton buttonWithType:UIButtonTypeCustom];
     btnRJC.layer.cornerRadius = 16;
     btnRJC.layer.masksToBounds = YES;
-    [btnRJC setTitle:@"任九场" forState:0];
+    [btnRJC setTitle:@"任9场" forState:0];
     [btnRJC setTitleColor:SystemGreen forState:UIControlStateSelected];
     [btnRJC setTitleColor:[UIColor whiteColor] forState:0];
     [btnRJC setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateSelected];
@@ -813,7 +817,7 @@
     btnSSC.layer.cornerRadius = 16;
     btnSSC.layer.masksToBounds = YES;
     btnSSC.titleLabel.font = [UIFont systemFontOfSize:16];
-    [btnSSC setTitle:@"十四场" forState:0];
+    [btnSSC setTitle:@"14场" forState:0];
     [btnSSC setTitleColor:SystemGreen forState:UIControlStateSelected];
     [btnSSC setTitleColor:[UIColor whiteColor] forState:0];
     [btnSSC setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateSelected];

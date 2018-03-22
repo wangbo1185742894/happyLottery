@@ -354,11 +354,11 @@
         cell.frame = CGRectMake(0, 0, KscreenWidth, 90);
         CTZQBet *bet = _cTransation .cBetArray[indexPath.row];
         cell.cBet = bet;
+        cell.selectArray = _cTransation.cBetArray;
         [cell reloadData];
         cell.delegate = self;
         if (_cTransation.cBetArray.count==9) {
             cell.btnDan.selected = NO;
-            cell.btnDan.enabled = NO;
         }
          cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cellTemp = cell;
@@ -441,11 +441,8 @@
             [cellTemp addSubview:upLine];
             
         }
-        
-        
     }
     return cellTemp;
-
 }
 
 #pragma mark renjiucell 代理刷新方法
@@ -473,7 +470,7 @@
         if (betSelectArray.count !=0) {
             [seleceMacthArray addObject:betSelectArray];
         }
-            if ([itemBet .cMatch.danTuo isEqualToString:@"1"]) {
+            if ([itemBet.cMatch.danTuo isEqualToString:@"1"]) {
                 [selectDanArray addObject:betSelectArray];
             }
         
@@ -545,12 +542,11 @@
     self.cTransation.beitou = @"1";
     self.cTransation.isBackClean = @"1";
     [self.cTransation.cBetArray removeAllObjects];
-
 }
 
--(void)showInfo{
+-(void)showInfo:(NSString *)msg{
 
-    [self showPromptText:@"设胆场数不能超过8场" hideAfterDelay:1.7];
+    [self showPromptText:msg hideAfterDelay:1.7];
 
 }
 
