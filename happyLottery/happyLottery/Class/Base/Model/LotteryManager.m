@@ -20,7 +20,7 @@
     //    lotteryDSSource = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"LotteryConfig_" ofType: @"plist"]];
     
     lotteryDStemp = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"LotteryConfig" ofType: @"plist"]];
-    lotteryDSSource = @[lotteryDStemp[0],lotteryDStemp[2],lotteryDStemp[1],lotteryDStemp[7],lotteryDStemp[8],lotteryDStemp[9],lotteryDStemp[4],lotteryDStemp[5]];
+    lotteryDSSource = @[lotteryDStemp[0],lotteryDStemp[2],lotteryDStemp[1],lotteryDStemp[7],lotteryDStemp[8],lotteryDStemp[9],lotteryDStemp[4],lotteryDStemp[5],lotteryDStemp[10]];
     
 #else
     lotteryDSSource = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"LotteryConfig" ofType: @"plist"]];
@@ -40,13 +40,12 @@
                 [lottery performSelector: selector withObject: lotteryDic[key]];
             }
         }
-        
         [lotteryDS addObject: lottery];
     }
     
     
     
-    return @[lotteryDS[0],lotteryDS[2],lotteryDS[3],lotteryDS[1],lotteryDS[4],lotteryDS[6],lotteryDS[5],lotteryDS[7]];
+    return @[lotteryDS[0],lotteryDS[2],lotteryDS[3],lotteryDS[1],lotteryDS[4],lotteryDS[6],lotteryDS[5],lotteryDS[7],lotteryDS[9],lotteryDS[10]];
     
 }
 
@@ -163,6 +162,7 @@
                         success:succeedBlock
                         failure:failureBlock];
 }
+
 
 - (void) betLotteryScheme:(BaseTransaction *)transcation{
     

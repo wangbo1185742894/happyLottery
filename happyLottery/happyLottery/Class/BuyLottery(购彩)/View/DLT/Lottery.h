@@ -27,6 +27,10 @@ typedef enum {
     LotteryTypeJingCaiFootBall = 9,/*1007->9*/
     //竞彩篮球
     LotteryTypeJingCaiBasketball = 10,
+    //冠军
+    LotteryTypeJingCaiGuanJun = 11,
+    //冠亚军
+    LotteryTypeJingCaiGuanYaJun = 12,
 } LotteryType;
 
 @interface Lottery : NSObject

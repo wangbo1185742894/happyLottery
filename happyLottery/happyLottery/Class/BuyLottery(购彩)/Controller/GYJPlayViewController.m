@@ -1,4 +1,4 @@
-  //
+    //
 //  GYJPlayViewController.m
 //  Lottery
 //
@@ -14,6 +14,7 @@
 #import "GYJLeagueSelectView.h"
 #import "WebViewController.h"
 #import "GYJTransaction.h"
+#import "PayOrderViewController.h"
 
 #define KHomeGJItemViewCell @"HomeGJItemViewCell"
 #define KWCHomeGYJItemViewCell  @"WCHomeGYJItemViewCell"
@@ -43,6 +44,7 @@
 @property(strong,nonatomic)GYJTransaction *transaction;
 
 @property(nonatomic,strong)NSMutableArray <WordCupHomeItem *> * gjSelectedArray;
+@property(nonatomic,strong)Lottery *lottery;
 @end
 
 @implementation GYJPlayViewController
@@ -53,7 +55,11 @@
     self.gjSellArray = [NSMutableArray arrayWithCapacity:0];
     self.gjSelectedArray = [NSMutableArray arrayWithCapacity:0];
     self.groupList = [NSMutableArray arrayWithCapacity:0];
+    if (self.lotteryMan == nil) {
+        self.lotteryMan = [[LotteryManager alloc]init];
+    }
     self.lotteryMan.delegate = self;
+    self.lottery = [self.lotteryMan getAllLottery][8];
     [self creatTitleView];
     [self initLable];
     [self setUpRightBtn];
@@ -302,17 +308,99 @@
     }
 }
 
-- (IBAction)yuyue:(id)sender {
-    self.transaction.schemeSource = @"BET";
-    self.transaction.betSource = @"2";
-//    if (self.curUser == nil || self.curUser.isLogin == NO) {
-//        [self needLogin];
-//        return;
-//    }
-//    if (self.gjSelectedArray.count == 0) {
-//        return;
-//    }
+//奖期
+-(void)gotSellIssueList:(NSArray *)infoDic errorMsg:(NSString *)msg{
+    if (infoDic == nil || infoDic .count == 0) {
+        [self showPromptText:msg hideAfterDelay:1.9];
+        return;
+    }
+    self.lottery.currentRound = [infoDic firstObject];
+    self.transaction.lottery.currentRound = [infoDic firstObject];
+    if ([self.lottery.currentRound isExpire] ||![self.lottery.currentRound.sellStatus isEqualToString:@"ING_SELL"]) {
+        [self showPromptText:@"奖期不在售" hideAfterDelay:2.0];
+        return;
+    }
     
+    //无选项
+    if (self.gjSelectedArray.count == 0) {
+        [self showPromptText:@"请至少选择一项" hideAfterDelay:2.0];
+        return;
+    }
+    //在售有选项
+    //1.存储数据
+    self.transaction.schemeSource = SchemeSourceBet;
+    self.transaction.betSource = @"2";
+    self.transaction.beiCount = [_tfBeiCount.text integerValue];
+    if (self.transaction.beiCount == 0) {
+        self.transaction.beiCount = 1;
+    }
+    if (isShowGJ) {
+        self.transaction.playType = LotteryGJ;
+    } else {
+        self.transaction.playType = LotteryGYJ;
+    }
+    if (self.transaction.selectArray.count!=0) {
+        [self.transaction.selectArray removeAllObjects];
+    }
+    self.transaction.selectArray = [self.gjSelectedArray mutableCopy];
+    //    2.判断用户状态
+    if (self.curUser == nil || self.curUser.isLogin == NO) {
+        [self needLogin];
+        return;
+    }
+    //登陆状态
+    self.transaction.betCost = self.transaction.selectArray.count * 2 * self.transaction.beiCount;
+    self.transaction.betCount = self.transaction.selectArray.count;
+    [self showLoadingViewWithText:@"正在提交"];
+    self.transaction.schemeType = SchemeTypeZigou;
+    self.transaction.lottery = self.lottery;
+    if (self.transaction.betCost > 300000) {
+        [self showPromptText:@"单注投注金额不得超过30万" hideAfterDelay:2];
+        return;
+    }
+    [self.lotteryMan betLotteryScheme:self.transaction];
+}
+
+- (void) betedLotteryScheme:(NSString *)schemeNO errorMsg:(NSString *)msg{
+    if (schemeNO == nil || schemeNO.length == 0) {
+        [self showPromptText:msg hideAfterDelay:1.7];
+        return;
+    }
+    PayOrderViewController *payVC = [[PayOrderViewController alloc]init];
+    SchemeCashPayment *schemeCashModel = [[SchemeCashPayment alloc]init];
+    schemeCashModel.cardCode = self.curUser.cardCode;
+    if (isShowGJ) {
+        schemeCashModel.lotteryName = @"冠军";
+    } else {
+        schemeCashModel.lotteryName = @"冠亚军";
+    }
+    schemeCashModel.schemeNo = schemeNO;
+    schemeCashModel.subCopies = 1;
+    schemeCashModel.costType = CostTypeCASH;
+    if (self.transaction.betCost  > 300000) {
+        [self showPromptText:@"单笔总金额不能超过30万元" hideAfterDelay:1.7];
+        return;
+    }
+    [self hideLoadingView];
+    schemeCashModel.subscribed = self.transaction.betCost;
+    schemeCashModel.realSubscribed = self.transaction.betCost;
+    payVC.cashPayMemt = schemeCashModel;
+    [self.navigationController pushViewController:payVC animated:YES];
+}
+
+- (void)gyjCurrentRound{
+    [self showLoadingText:@"正在提交订单"];
+    [self.lotteryMan getSellIssueList:@{@"lotteryCode":self.lottery.identifier}];
+}
+
+
+
+
+//点击预约
+- (IBAction)yuyue:(id)sender {
+    // 是否在售
+    self.transaction.costType = CostTypeCASH;
+    [self gyjCurrentRound];
 }
 
 -(void)createUI{

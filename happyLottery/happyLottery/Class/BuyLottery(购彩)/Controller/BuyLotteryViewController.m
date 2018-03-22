@@ -234,7 +234,7 @@
 }
 
 -(void)setTableView{
-    curY +=272;
+    curY +=442;
     tabForecaseList.delegate = self;
     tabForecaseList.dataSource = self;
     [tabForecaseList registerClass:[NewsListCell class] forCellReuseIdentifier:KNewsListCell];

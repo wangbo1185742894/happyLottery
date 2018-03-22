@@ -210,8 +210,6 @@
 		2D23487F2049422D005AE1F2 /* bunsoptimseleced@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D23487D2049422C005AE1F2 /* bunsoptimseleced@2x.png */; };
 		2D2348822049425A005AE1F2 /* bunsoptimnormal@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D23488020494258005AE1F2 /* bunsoptimnormal@3x.png */; };
 		2D2348832049425A005AE1F2 /* bunsoptimnormal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D23488120494259005AE1F2 /* bunsoptimnormal@2x.png */; };
-		2D36175A2061E6E5003093F9 /* footerball@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D3617582061E6E5003093F9 /* footerball@2x.png */; };
-		2D36175B2061E6E5003093F9 /* footerball@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D3617592061E6E5003093F9 /* footerball@3x.png */; };
 		2D36175E2061E6F2003093F9 /* shengfucai@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D36175C2061E6F1003093F9 /* shengfucai@2x.png */; };
 		2D36175F2061E6F2003093F9 /* shengfucai@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D36175D2061E6F2003093F9 /* shengfucai@3x.png */; };
 		2D3617662061FA3D003093F9 /* dan_notWin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D3617602061FA37003093F9 /* dan_notWin@2x.png */; };
@@ -1440,8 +1438,6 @@
 		2D23487D2049422C005AE1F2 /* bunsoptimseleced@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bunsoptimseleced@2x.png"; sourceTree = "<group>"; };
 		2D23488020494258005AE1F2 /* bunsoptimnormal@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bunsoptimnormal@3x.png"; sourceTree = "<group>"; };
 		2D23488120494259005AE1F2 /* bunsoptimnormal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bunsoptimnormal@2x.png"; sourceTree = "<group>"; };
-		2D3617582061E6E5003093F9 /* footerball@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "footerball@2x.png"; path = "../../../../../../Library/Application Support/RTXC/accounts/wangbo01/sessionPhoto/ios 13/footerball@2x.png"; sourceTree = "<group>"; };
-		2D3617592061E6E5003093F9 /* footerball@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "footerball@3x.png"; path = "../../../../../../Library/Application Support/RTXC/accounts/wangbo01/sessionPhoto/ios 13/footerball@3x.png"; sourceTree = "<group>"; };
 		2D36175C2061E6F1003093F9 /* shengfucai@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shengfucai@2x.png"; sourceTree = "<group>"; };
 		2D36175D2061E6F2003093F9 /* shengfucai@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shengfucai@3x.png"; sourceTree = "<group>"; };
 		2D3617602061FA37003093F9 /* dan_notWin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dan_notWin@2x.png"; sourceTree = "<group>"; };
@@ -3405,8 +3401,6 @@
 				2D3617652061FA3C003093F9 /* dan_Win@3x.png */,
 				2D36175C2061E6F1003093F9 /* shengfucai@2x.png */,
 				2D36175D2061E6F2003093F9 /* shengfucai@3x.png */,
-				2D3617582061E6E5003093F9 /* footerball@2x.png */,
-				2D3617592061E6E5003093F9 /* footerball@3x.png */,
 				2D03F19E205A23B400C81BEF /* daletou@2x.png */,
 				2D03F19D205A23B300C81BEF /* daletou@3x.png */,
 				2D03F19B205A23B200C81BEF /* footerball@2x.png */,
@@ -5398,7 +5392,6 @@
 				F9CD01DE20240A3300E54E79 /* tuijianma@2x.png in Resources */,
 				2D0600511FFE061D009E7568 /* JCLQOrderDetailViewCell.xib in Resources */,
 				2D0E23E62019A6BE0098DA40 /* assist@3x.png in Resources */,
-				2D36175B2061E6E5003093F9 /* footerball@3x.png in Resources */,
 				F94AA9CE1FEB5A7D0021B980 /* ok@2x.png in Resources */,
 				F91565F31FFCBDAE00E254CE /* Moments@3x.png in Resources */,
 				F94A106C2022B715006C3695 /* checksuccess@3x.png in Resources */,
@@ -5765,7 +5758,6 @@
 				F9C4EED6202063D300CDCDBA /* about_slogan@2x.png in Resources */,
 				F928C6B61FF4BA40001F1A32 /* decrease@2x.png in Resources */,
 				2D03F1F62060B52500C81BEF /* ctzq_shengfushisichang.html in Resources */,
-				2D36175A2061E6E5003093F9 /* footerball@2x.png in Resources */,
 				2D7B1313204D499D0035AE89 /* ExprieRoundViewCell.xib in Resources */,
 				2DDEDE771FD568C9007AEBF7 /* README.md in Resources */,
 				F999278120037A7000023F8F /* empty_hongbao@3x.png in Resources */,
