@@ -19,7 +19,7 @@
 #define KHomeGJItemViewCell @"HomeGJItemViewCell"
 #define KWCHomeGYJItemViewCell  @"WCHomeGYJItemViewCell"
 
-@interface GYJPlayViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,GYJLeagueSelectViewDelegate>{
+@interface GYJPlayViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,GYJLeagueSelectViewDelegate,UITextFieldDelegate>{
     UIView *gyjSelectedView;
     UIButton* btnGJ;
     UIButton* btnGYJ;
@@ -62,6 +62,7 @@
         self.lotteryMan = [[LotteryManager alloc]init];
     }
     self.lotteryMan.delegate = self;
+    self.tfBeiCount.delegate = self;
     [self creatTitleView];
     self.lottery = [self.lotteryMan getAllLottery][8];
     [self actionPlayTypeSelect:btnGJ];
@@ -117,7 +118,11 @@
             }
         }
     }
-    self.alreadySelected.text = [NSString stringWithFormat:@"已选%ld场对阵",selectNum];
+    if (isShowGJ) {
+        self.alreadySelected.text = [NSString stringWithFormat:@"已选%ld场球队",selectNum];
+    } else {
+        self.alreadySelected.text = [NSString stringWithFormat:@"已选%ld场对阵",selectNum];
+    }
     self.alreadySelected.keyWord = [NSString stringWithFormat:@"%ld",selectNum];
     self.alreadySelected.keyWordColor = SystemRed;
     
@@ -252,6 +257,39 @@
     titleLabel.textColor = RGBCOLOR(141, 141, 141);
     [view addSubview:titleLabel];
     return view;
+}
+
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    NSMutableString*numStr = [[NSMutableString alloc]initWithString:textField.text];
+    [numStr appendString:string];
+    NSInteger num = [numStr integerValue];
+    NSInteger limitNum;
+    
+    limitNum = 9999;
+    if (num > limitNum) {
+        return NO;
+    }
+    
+    [self performSelector:@selector(updateTextField) withObject:nil afterDelay:0.1];
+    
+    if ([string isEqualToString:@""]) {
+        return YES;
+    }
+    
+    if ([textField.text isEqualToString:@""]&&[string isEqualToString:@"0"]) {
+        return NO;
+    }
+    
+    NSString * regex;
+    regex = @"^[0-9]";
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    BOOL isMatch = [pred evaluateWithObject:string];
+    return isMatch;
+}
+
+- (void)updateTextField{
+    [self update];
 }
 
 #pragma mark ClickAction
