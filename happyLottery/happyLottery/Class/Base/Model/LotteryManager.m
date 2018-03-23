@@ -544,6 +544,10 @@
         url = APIgetRjcTicketOrderDetail;
     }else  if([lotteryCode isEqualToString:@"SFC"]){
         url = APIgetSfcTicketOrderDetail;
+    }else   if([lotteryCode isEqualToString:@"JCGJ"]){
+        url = APIGetJcgjTicketOrderDetail;
+    }else  if([lotteryCode isEqualToString:@"JCGYJ"]){
+        url = APIGetJcgyjTicketOrderDetail;
     }else {
         url = APIGetJczqTicketOrderDetail;
     }
@@ -1158,7 +1162,7 @@
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
                 [self.delegate gotlistJcgyjItem:nil  errorMsg:@"服务器错误"];
     };
-    SOAPRequest* request = [self requestForAPI:APIlistJcgyjItem  withParam: @{@"params":[self actionEncrypt:[self JsonFromId:infoDic]]}];
+    SOAPRequest* request = [self requestForAPI:APIlistJcgyjItem  withParam:nil];
     [self newRequestWithRequest:request
                          subAPI:SUBAPIDATA
       constructingBodyWithBlock:nil

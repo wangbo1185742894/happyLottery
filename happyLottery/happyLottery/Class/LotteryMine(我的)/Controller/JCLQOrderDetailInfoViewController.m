@@ -13,7 +13,7 @@
 
 @interface JCLQOrderDetailInfoViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *labTotalNumbe;
-@property(nonatomic,strong)NSMutableArray <NSMutableArray<HomeYCModel *> *> *dataArray;
+@property(nonatomic,strong)NSMutableArray *dataArray;
 @property (nonatomic,assign)NSInteger page;
 @property (weak, nonatomic) IBOutlet UIImageView *imgLotteryIcon;
 @property (weak, nonatomic) IBOutlet UILabel *labLotteryName;
@@ -38,6 +38,12 @@
         self.imgLotteryIcon.image = [UIImage imageNamed:@"shengfucai.png"];
     }else if([self.lotteryCode isEqualToString:@"SFC"]){
         self.labLotteryName.text = @"14场";
+        self.imgLotteryIcon.image = [UIImage imageNamed:@"shengfucai.png"];
+    }else if ([self.lotteryCode isEqualToString:@"JCGJ"]){
+        self.labLotteryName.text = @"冠军";
+        self.imgLotteryIcon.image = [UIImage imageNamed:@"shengfucai.png"];
+    }else if ([self.lotteryCode isEqualToString:@"JCGYJ"]){
+        self.labLotteryName.text = @"冠亚军";
         self.imgLotteryIcon.image = [UIImage imageNamed:@"shengfucai.png"];
     }
     self.page = 1;
@@ -90,7 +96,11 @@
     JCLQOrderDetailViewCell *cell = [tableView dequeueReusableCellWithIdentifier:JCLQOrderCell];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     NSDictionary *dic = self.dataArray[indexPath.row];
-    [cell reloadData:dic];
+    if ([self.lotteryCode isEqualToString:@"JCGYJ"]||[self.lotteryCode isEqualToString:@"JCGJ"]) {
+        [cell reloadDataGYJ:dic];
+    }else{
+        [cell reloadData:dic];
+    }
     return cell;
 }  
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

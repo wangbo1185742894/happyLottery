@@ -125,9 +125,78 @@
        
         self.labJiangjin.text = @"待开奖";
     }
-
+}
  //   [5]	(null)	@"winningStatus" : @"WAIT_LOTTERY"  NOT_LOTTERY  LOTTERY
- //   [3]	(null)	@"orderStatus" : @"FAIL_TICKET"  SUC_TICKET  WAIT_PAY
+ //   [3]	(null)	@"orderStatus" : @"FAIL_TICKET"  SUC_TICKET  WAIT_PA
+
+-(void)reloadDataGYJ:(NSDictionary *)dic{
+    
+        self.labNumber.adjustsFontSizeToFitWidth = YES;
+        self.labTouzhuneirong.adjustsFontSizeToFitWidth = YES;
+    
+        self.labChupiao.adjustsFontSizeToFitWidth = YES;
+        self.labJiangjin.adjustsFontSizeToFitWidth = YES;
+        
+//        self.labBeishu.text = [NSString stringWithFormat:@"%@元",dic[@"subCost"]];
+//    [2]    (null)    @"ticketContent" : @"[\"{\\\"clash\\\":\\\"巴西\\\",\\\"index\\\":\\\"01\\\"}\",\"{\\\"clash\\\":\\\"德国\\\",\\\"index\\\":\\\"02\\\"}\"]"
+        NSArray *titleArray = [Utility objFromJson:dic[@"ticketContent"]];
+        NSMutableArray *contentArray = [NSMutableArray arrayWithCapacity:0];
+        NSMutableArray *oddsArray = [NSMutableArray arrayWithCapacity:0];
+        for (NSString *itemStr in titleArray) {
+            NSDictionary *itemDic = [Utility objFromJson:itemStr];
+            [contentArray addObject:[NSString stringWithFormat:@"%@%@",itemDic[@"index"],itemDic[@"clash"]]];
+            
+            if (itemDic[@"odds"] != nil) {
+                [oddsArray addObject:itemDic[@"odds"]];
+            }
+        }
+        self.disLeftPlayType.constant = -self.labPlayType.mj_w - 20;
+        self.disLeftPlayTypeContent.constant = -self.labPlayType.mj_w - 20;
+        self.labPlayType.text = [oddsArray componentsJoinedByString:@"\n"];
+        self.labNumber.text = [NSString stringWithFormat:@"投注内容 %ld注%@倍",titleArray.count,dic[@"multiple"]];
+        self.labTouzhuneirong.text = [contentArray componentsJoinedByString:@"\n"];
+//        self.labSpTitle.text = @"赔率";
+        [self setNumberColor:self.labNumber];
+        NSString *orderStatus = dic[@"orderStatus"];
+        NSString *winningStatus = dic[@"winningStatus"];
+        NSString *subCost =[NSString stringWithFormat:@"%@元",dic[@"subCost"]] ;
+//        self.labBetCount.text = subCost == nil?@"0":subCost;
+        [self setLabTextColor:TEXTGRAYCOLOR];
+        
+        
+        if ([orderStatus isEqualToString:@"SUC_TICKET"]){
+            self.labChupiao.text = @"出票成功";
+        }else if([orderStatus isEqualToString:@"FAIL_TICKET"]){
+            self.labChupiao.text = @"出票失败";
+            if (dic[@"remark"] != nil) {
+                self.labChupiao.text = [NSString stringWithFormat:@"出票失败(%@)",dic[@"remark"]];
+            }else{
+                
+            }
+//            self.labRemark.adjustsFontSizeToFitWidth = YES;
+            
+        }else{
+            self.labChupiao.text = @"出票中";
+            
+        }
+        
+        if ([winningStatus isEqualToString:@"LOTTERY"]) {
+            float jingjin =[dic[@"bonus"] floatValue];
+            self.labJiangjin.text = [NSString stringWithFormat:@"%.2f元",jingjin];
+            
+            [self setLabTextColor:SystemRed];
+            //                self.labJiangjin.text = [NSString stringWithFormat:@"%.2f",jingjin];
+        }else if([winningStatus isEqualToString:@"NOT_LOTTERY"]){
+            
+            self.labJiangjin.text = @"未中奖";
+        }else{
+            
+            self.labJiangjin.text = @"";
+        }
+        
+        //   [5]    (null)    @"winningStatus" : @"WAIT_LOTTERY"  NOT_LOTTERY  LOTTERY
+        //   [3]    (null)    @"orderStatus" : @"FAIL_TICKET"  SUC_TICKET  WAIT_PAY
+ 
 
 }
 
@@ -155,6 +224,9 @@
     if([dic[@"lotteryCode"] isEqualToString:@"DLT"] || [dic[@"lotteryCode"] isEqualToString:@"SFC"] || [dic[@"lotteryCode"] isEqualToString:@"RJC"]){
         
         return [dic[@"ticketContent"] componentsSeparatedByString:@";"].count * 12 + 150;
+    }else if ([dic[@"lotteryCode"] isEqualToString:@"JCGJ"] || [dic[@"lotteryCode"] isEqualToString:@"JCGYJ"]){
+           NSArray *titleArray = [Utility objFromJson:dic[@"ticketContent"]];
+        return titleArray.count * 12 + 150;
     }
     NSArray *titleArray = [Utility objFromJson:dic[@"ticketContent"]] ;
     

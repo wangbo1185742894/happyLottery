@@ -213,6 +213,7 @@
             <connections>
                 <outlet property="disTopBetBouns" destination="xJp-Tn-uFm" id="q8h-1P-9si"/>
                 <outlet property="disTopBetBounsInfo" destination="YQf-MO-dnL" id="7G6-95-xqr"/>
+                <outlet property="fanganhao" destination="GYP-iX-1at" id="neL-MI-2Cc"/>
                 <outlet property="labBetBouns" destination="ZF2-vN-z32" id="ndf-eW-cj2"/>
                 <outlet property="labBetCost" destination="Xdq-QT-KFQ" id="ybk-zn-uJ0"/>
                 <outlet property="labBouns" destination="mvR-xO-pkC" id="9Lj-HE-Lr4"/>
@@ -223,6 +224,8 @@
                 <outlet property="labSchemeTime" destination="77l-uV-2uH" id="sce-06-AQY"/>
                 <outlet property="labTicketCount" destination="z5s-LJ-nNt" id="Xjj-Hi-XfV"/>
                 <outlet property="labUnit" destination="QkX-SO-2Jo" id="G9N-ap-7CM"/>
+                <outlet property="touzhujine" destination="2Qp-oo-1fr" id="4J8-pX-LFv"/>
+                <outlet property="touzhuzhushu" destination="n6g-Os-Y2r" id="w1a-Jc-vyt"/>
             </connections>
             <point key="canvasLocation" x="37" y="131"/>
         </tableViewCell>

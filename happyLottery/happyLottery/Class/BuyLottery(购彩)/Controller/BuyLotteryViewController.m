@@ -521,8 +521,8 @@
 - (IBAction)actionJcgyj:(id)sender {
     GYJPlayViewController *gyjPlayVc = [[GYJPlayViewController alloc]init];
     gyjPlayVc.hidesBottomBarWhenPushed = YES;
+
     [self.navigationController pushViewController:gyjPlayVc animated:YES];
-    
 }
 
 //"cardCode":"xxx","matchId":"x","isCollect":"x"
