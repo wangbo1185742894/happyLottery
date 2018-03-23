@@ -32,7 +32,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="概率" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vI3-zJ-rJS">
-                        <rect key="frame" x="283" y="34" width="35" height="21"/>
+                        <rect key="frame" x="274" y="34" width="35" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="35" id="00K-8Q-obU"/>
                             <constraint firstAttribute="height" constant="21" id="xZi-hz-uXw"/>
@@ -42,12 +42,12 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rAc-TR-a9M">
-                        <rect key="frame" x="353" y="34" width="42" height="21"/>
+                        <rect key="frame" x="329.5" y="34" width="44.5" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="djr-mJ-RYM"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <color key="textColor" red="1" green="0.31764705879999999" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PqS-8m-eCU">
@@ -82,7 +82,7 @@
                 <constraints>
                     <constraint firstItem="rAc-TR-a9M" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="4y7-gr-AYl"/>
                     <constraint firstItem="fXP-fu-qzT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="5zm-Ib-6V0"/>
-                    <constraint firstItem="vI3-zJ-rJS" firstAttribute="leading" secondItem="fXP-fu-qzT" secondAttribute="trailing" constant="-117" id="6U3-7I-dvD"/>
+                    <constraint firstItem="vI3-zJ-rJS" firstAttribute="leading" secondItem="fXP-fu-qzT" secondAttribute="trailing" constant="-126" id="6U3-7I-dvD"/>
                     <constraint firstItem="tHa-C0-m49" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Cd8-Bi-eUA"/>
                     <constraint firstItem="tHa-C0-m49" firstAttribute="leading" secondItem="McJ-Le-ny7" secondAttribute="trailing" constant="12" id="DBB-3O-aGY"/>
                     <constraint firstItem="PqS-8m-eCU" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="DDH-h9-dDj"/>
@@ -101,7 +101,7 @@
                     <constraint firstAttribute="trailing" secondItem="fXP-fu-qzT" secondAttribute="trailing" id="tvo-lU-dm4"/>
                     <constraint firstItem="vI3-zJ-rJS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="23" id="ujF-ON-F6l"/>
                     <constraint firstItem="PqS-8m-eCU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="z0h-ES-0RH"/>
-                    <constraint firstAttribute="trailing" secondItem="rAc-TR-a9M" secondAttribute="trailing" constant="5" id="zyN-2c-ggk"/>
+                    <constraint firstAttribute="trailing" secondItem="rAc-TR-a9M" secondAttribute="trailing" constant="26" id="zyN-2c-ggk"/>
                     <constraint firstItem="McJ-Le-ny7" firstAttribute="centerY" secondItem="fXP-fu-qzT" secondAttribute="centerY" id="zyO-Cu-5eN"/>
                 </constraints>
             </tableViewCellContentView>

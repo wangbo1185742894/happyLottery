@@ -14,6 +14,7 @@
                 <outlet property="alreadySelected" destination="D4d-g2-J5v" id="39j-T0-k4R"/>
                 <outlet property="beiSelectView" destination="ZrO-Bt-cqu" id="1wo-hO-Rf0"/>
                 <outlet property="gyjListTableView" destination="QED-17-em7" id="JA7-bW-fji"/>
+                <outlet property="labCount" destination="h53-D6-7od" id="TsU-XW-gqJ"/>
                 <outlet property="labMaxBouns" destination="755-kp-3fT" id="8rB-j7-zGb"/>
                 <outlet property="labSchemeInfo" destination="Ggb-Pr-o5P" id="8US-oO-w08"/>
                 <outlet property="tfBeiCount" destination="OQN-qz-s0F" id="8J2-NQ-Esz"/>
@@ -70,10 +71,10 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0注5倍，共0元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ggb-Pr-o5P" customClass="MGLabel">
-                            <rect key="frame" x="70" y="7" width="120" height="17"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0注5倍，" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ggb-Pr-o5P" customClass="MGLabel">
+                            <rect key="frame" x="70" y="7" width="61" height="17"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="120" id="o81-Gn-x9n"/>
+                                <constraint firstAttribute="width" constant="61" id="o81-Gn-x9n"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -88,6 +89,12 @@
                             <color key="textColor" red="0.96444731949999996" green="0.96840888260000002" blue="0.98488038779999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="共0元" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h53-D6-7od" customClass="MGLabel">
+                            <rect key="frame" x="127" y="7" width="37.5" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -97,11 +104,13 @@
                         <constraint firstItem="Ggb-Pr-o5P" firstAttribute="top" secondItem="CBb-U1-dKf" secondAttribute="top" constant="7" id="706-hZ-0mj"/>
                         <constraint firstAttribute="trailing" secondItem="csZ-HW-1KG" secondAttribute="trailing" constant="20" id="JhJ-ae-Poe"/>
                         <constraint firstAttribute="height" constant="50" id="KzD-E4-YjA"/>
+                        <constraint firstItem="h53-D6-7od" firstAttribute="centerY" secondItem="Ggb-Pr-o5P" secondAttribute="centerY" id="RML-s2-dh0"/>
                         <constraint firstItem="Ggb-Pr-o5P" firstAttribute="leading" secondItem="ixw-Wh-VhM" secondAttribute="trailing" constant="19" id="Rgw-dc-8Xx"/>
                         <constraint firstItem="755-kp-3fT" firstAttribute="leading" secondItem="ixw-Wh-VhM" secondAttribute="trailing" constant="19" id="Uip-4d-lCy"/>
                         <constraint firstItem="755-kp-3fT" firstAttribute="top" secondItem="Ggb-Pr-o5P" secondAttribute="bottom" id="Ywj-W6-cdx"/>
                         <constraint firstItem="ixw-Wh-VhM" firstAttribute="top" secondItem="CBb-U1-dKf" secondAttribute="top" constant="10" id="m4L-Fl-Psm"/>
                         <constraint firstAttribute="bottom" secondItem="ixw-Wh-VhM" secondAttribute="bottom" constant="10" id="ueU-CJ-qtp"/>
+                        <constraint firstItem="h53-D6-7od" firstAttribute="leading" secondItem="Ggb-Pr-o5P" secondAttribute="trailing" constant="-4" id="wKy-dq-Cgw"/>
                         <constraint firstItem="Y1F-dL-QrM" firstAttribute="centerY" secondItem="CBb-U1-dKf" secondAttribute="centerY" id="xyG-gO-acn"/>
                         <constraint firstItem="ixw-Wh-VhM" firstAttribute="leading" secondItem="Y1F-dL-QrM" secondAttribute="trailing" constant="10" id="yKO-Zu-krb"/>
                     </constraints>

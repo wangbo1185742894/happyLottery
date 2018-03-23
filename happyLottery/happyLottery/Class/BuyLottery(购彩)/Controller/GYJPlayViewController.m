@@ -42,6 +42,7 @@
 @property (weak, nonatomic) IBOutlet MGLabel *labSchemeInfo;
 @property (weak, nonatomic) IBOutlet MGLabel *labMaxBouns;
 @property (weak, nonatomic) IBOutlet UITextField *tfBeiCount;
+@property (weak, nonatomic) IBOutlet MGLabel *labCount;
 @property(strong,nonatomic)GYJTransaction *transaction;
 
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
@@ -119,9 +120,13 @@
     self.alreadySelected.text = [NSString stringWithFormat:@"已选%ld场对阵",selectNum];
     self.alreadySelected.keyWord = [NSString stringWithFormat:@"%ld",selectNum];
     self.alreadySelected.keyWordColor = SystemRed;
-    self.labSchemeInfo.text = [NSString stringWithFormat:@"%ld注%ld倍,共%ld元",selectNum,[self.tfBeiCount.text integerValue],selectNum * [self.tfBeiCount.text integerValue] * 2];
-    self.labSchemeInfo.keyWord = [NSString stringWithFormat:@"%ld",selectNum * [self.tfBeiCount.text integerValue] * 2];
-    self.labSchemeInfo.keyWordColor = TEXTGRAYOrange;
+    
+    self.labSchemeInfo.text = [NSString stringWithFormat:@"%ld注%ld倍,",selectNum,[self.tfBeiCount.text integerValue]];
+    
+    self.labCount.text = [NSString stringWithFormat:@"共%ld元",selectNum * [self.tfBeiCount.text integerValue] * 2];
+    self.labCount.keyWord = [NSString stringWithFormat:@"%ld",selectNum * [self.tfBeiCount.text integerValue] * 2];
+    self.labCount.keyWordColor = TEXTGRAYOrange;
+    
     if(selectNum==0){
         self.labMaxBouns.text = [NSString stringWithFormat:@"预计奖金：0元"];
         return;
