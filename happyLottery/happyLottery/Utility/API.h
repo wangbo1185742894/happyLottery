@@ -35,7 +35,7 @@
 
 //外网
 //244服务
-#define WSServerURL @"http://192.168.88.244:28000/services%@"
+#define WSServerURL @"http://192.168.88.244:28001/services%@"
 
 //史少鹏服务
 //#define WSServerURL @"http://192.168.88.116:28000/services%@"

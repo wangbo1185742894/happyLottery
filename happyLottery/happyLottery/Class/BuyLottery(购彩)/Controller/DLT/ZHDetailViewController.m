@@ -68,7 +68,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     /*zwl*/
-    if ([self.order.chaseStatus isEqualToString:@"已取消"]) {
+    if (![self.order.chaseStatus isEqualToString:@"追号中"]) {
         self.stopChaseBtn.enabled = NO;
     }else{
         self.stopChaseBtn.enabled = YES;
@@ -222,32 +222,24 @@
 
 - (void)initLottyBetObj:(NSArray *)orderDetailInfo{
 
-    playName.text = [NSString stringWithFormat:@"超级大乐透"];
+    if ([_order.lotteryCode isEqualToString:@"DLT"]) {
+        if ([_order.playType isEqualToString:@"1"]) {
+            playName.text = [NSString stringWithFormat:@"超级大乐透(追加)"];
+        } else {
+            playName.text = [NSString stringWithFormat:@"超级大乐透"];
+        }
+    }
     
 
     if ([_order.catchResult isEqualToString:@"已中奖"]) {
         results.textColor = TextCharColor;
     }
    
-    
-//    int balance = [_order.bonus intValue];
-//    if(balance > 0)
-//    {
-//        results.text = [NSString stringWithFormat:@"%@/%@%@",_order.catchIndex,_order.totalCatch,@"已中奖"];
-//        results.textColor = TextCharColor;
-//        
-//    }
-//    else
-//    {
         results.text = [NSString stringWithFormat:@"%@/%@%@",_order.catchIndex,_order.totalCatch,_order.chaseStatus];
-//    }
     
    
     results.adjustsFontSizeToFitWidth = YES;
-//    results.text = [NSString stringWithFormat:@"%@/%@%@",_order.catchIndex,_order.totalCatch,_order.catchResult];
-    
-    //选号显示
-    
+
 //   NSString *test = @"12 22#12 34 34 23+23 23#23 54 45; 12 22#12 34 54 34 23+23 23 45 56#23 54 45; 12 22#12 34 54 34 23+23 25 56#54 45;22#14 54 34 23+23 23 56#23";
     id ZHlotteryNumber ;
     if([_order.name isEqualToString:@"11选5"]||[_order.name isEqualToString:@"陕11选5"])
@@ -452,7 +444,7 @@
     }
     }
 
-    if ([_order.bonus isEqualToString:@"(null)"]) {
+    if ([_order.sumDraw isEqualToString:@"(null)"]) {
         
         totleMoney.text = [NSString stringWithFormat:@""];
         numberWidth.constant = self.view.mj_w - 5;
@@ -461,11 +453,11 @@
       
         NSString * balance;
         //格式化
-        if ([_order.bonus doubleValue]  == 0.0) {
+        if ([_order.sumDraw doubleValue]  == 0.0) {
             numberWidth.constant = self.view.mj_w - 5;
             balance = @"";
         }else{
-         balance = [NSString stringWithFormat:@"奖金: %.2f元",[_order.bonus doubleValue]];
+         balance = [NSString stringWithFormat:@"奖金: %.2f元",[_order.sumDraw doubleValue]];
             
               numberWidth.constant = self.view.mj_w - balance.length*9;
         }
@@ -566,6 +558,7 @@
 - (void)gotStopChaseScheme:(BOOL)isSuccess errorMsg:(NSString *)errorMsg{
     
     if (isSuccess == YES) {
+        self.stopChaseBtn.enabled = NO;
         [self showPromptText:@"停追成功" hideAfterDelay:1.7];
         
     }else{
