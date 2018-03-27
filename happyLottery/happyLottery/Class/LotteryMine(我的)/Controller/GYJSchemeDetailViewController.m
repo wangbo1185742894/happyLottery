@@ -141,6 +141,8 @@
 }
 
 - (IBAction)actionGotoTouzhu:(id)sender {
+    //检查订单号是否在售
+    
     PayOrderViewController *payVC = [[PayOrderViewController alloc]init];
     SchemeCashPayment *schemeCashModel = [[SchemeCashPayment alloc]init];
     schemeCashModel.cardCode = self.curUser.cardCode;
@@ -150,6 +152,10 @@
         schemeCashModel.lotteryName = @"任选9场";
     }else if ([schemeDetail.lottery isEqualToString:@"SFC"]){
         schemeCashModel.lotteryName = @"胜负14场";
+    }else if ([schemeDetail.lottery isEqualToString:@"JCGJ"]){
+        schemeCashModel.lotteryName = @"冠军";
+    }else if ([schemeDetail.lottery isEqualToString:@"JCGYJ"]){
+        schemeCashModel.lotteryName = @"冠亚军";
     }
     if ([schemeDetail.costType isEqualToString:@"CASH"]) {
         schemeCashModel.costType = CostTypeCASH;
@@ -171,7 +177,6 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 1;
-
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -193,9 +198,14 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell;
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         tabviewHeight.constant = tabMatchListVIew.contentSize.height;
-        mainViewHeight.constant = tabMatchListVIew.contentSize .height + 80;
+        if (tabMatchListVIew.contentSize .height + 80 > KscreenHeight - 64) {
+            mainViewHeight.constant = tabMatchListVIew.contentSize .height + 80;
+        }else{
+            mainViewHeight.constant = KscreenHeight - 64;
+        }
+        
         tabMatchListVIew.bounces = NO;
     });
     
@@ -300,7 +310,8 @@
             if (indexPath.section == 0) {
                 return [schemeDetail getJCZQCellHeight];
             }else if (indexPath.section ==2){
-                return 200;
+//                return 200;
+                return [schemeDetail getGYJCellHeight];
             }else if (indexPath.section ==1){
                 if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) {
                     return 110;
@@ -313,7 +324,7 @@
             if (indexPath.section == 0) {
                 return [schemeDetail getJCZQCellHeight];
             }else if (indexPath.section ==1){
-                return 200;
+                return [schemeDetail getGYJCellHeight];
             }
         }
     } else{
@@ -321,7 +332,7 @@
             if (indexPath.section == 0) {
                 return [schemeDetail getJCZQCellHeight];
             }else if (indexPath.section ==3){
-                return 200;
+                return [schemeDetail getGYJCellHeight];
             }else if (indexPath.section ==2){
                 if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) {
                     return 110;
@@ -335,7 +346,7 @@
             if (indexPath.section == 0) {
                 return [schemeDetail getJCZQCellHeight];
             }else if (indexPath.section ==2){
-                return 200;
+                return [schemeDetail getGYJCellHeight];
             }else if(indexPath.section == 1){
                 return 50;
             }
@@ -509,7 +520,6 @@
         header.viewPeiLvInfo.hidden = YES;
         ticketLa.enabled = NO;
     }
-    
     [header addSubview:ticketLa];
     [ticketLa addTarget:self action:@selector(actionOrderDetail:) forControlEvents:UIControlEventTouchUpInside];
     [header.btnOrderDetail addTarget:self action:@selector(actionOrderDetail:) forControlEvents:UIControlEventTouchUpInside];

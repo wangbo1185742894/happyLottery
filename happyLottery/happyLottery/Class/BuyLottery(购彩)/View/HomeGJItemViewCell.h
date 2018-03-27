@@ -14,6 +14,6 @@
 
 + (instancetype)cellWithTableView:(UITableView *)tableVie;
 
--(void)loadDataWith:(WordCupHomeItem * )model strRow:(NSString *)strRow;
+-(void)loadDataWith:(WordCupHomeItem * )model;
 
 @end

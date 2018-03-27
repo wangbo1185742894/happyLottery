@@ -207,20 +207,54 @@
 
 //        self.labBeishu.text = [NSString stringWithFormat:@"%@元",dic[@"subCost"]];
 //    [2]    (null)    @"ticketContent" : @"[\"{\\\"clash\\\":\\\"巴西\\\",\\\"index\\\":\\\"01\\\"}\",\"{\\\"clash\\\":\\\"德国\\\",\\\"index\\\":\\\"02\\\"}\"]"
-        NSArray *titleArray = [Utility objFromJson:dic[@"ticketContent"]];
+        NSMutableArray *titleArray = [Utility objFromJson:dic[@"ticketContent"]];
         NSMutableArray *contentArray = [NSMutableArray arrayWithCapacity:0];
         NSMutableArray *oddsArray = [NSMutableArray arrayWithCapacity:0];
+//
+//        [contentArray sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+//            NSNumber *index1 = [NSNumber numberWithInteger:[obj1 objectForKey:@"index"].floatValue];
+//            NSNumber *index2 = [NSNumber numberWithInteger:[obj2 objectForKey:@"index"].floatValue];
+//        return [round1.issueNumber integerValue]>[round2.issueNumber integerValue];
+//    }];
+//       [titleArray sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+//          NSDictionary *itemDic
+//        
+//    }];
+
+//
         for (NSString *itemStr in titleArray) {
             NSDictionary *itemDic = [Utility objFromJson:itemStr];
-            [contentArray addObject:[NSString stringWithFormat:@"%@%@",itemDic[@"index"],itemDic[@"clash"]]];
+//            NSMutableArray *numArray = [NSMutableArray arrayWithArray:itemDic[@"index"]];
+//            [numArray sortUsingComparator: ^NSComparisonResult (NSString *str1, NSString *str2) {
+//                NSNumber *number1 = [NSNumber numberWithInteger:str1.floatValue];
+//                NSNumber *number2 = [NSNumber numberWithInteger:str2.floatValue];
+//                return [number1 compare:number2];
+//            }];
+//            NSArray *sortDesc = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"index" ascending:YES]];
+//            NSArray *sortedArr = [titleArray sortedArrayUsingDescriptors:sortDesc];
+            // NSLog(@"排序后的数组:%@",sortedArr);
+//            NSMutableArray *rounds = [[NSMutableArray alloc]initWithArray:infoDic];
+//            [rounds sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+//
+//                LotteryRound *round1 = (LotteryRound*)obj1;
+//                LotteryRound *round2 = (LotteryRound*)obj2;
+//                return [round1.issueNumber integerValue]>[round2.issueNumber integerValue];
+//            }];
+            
+            
             if (itemDic[@"odds"] != nil) {
                 [oddsArray addObject:itemDic[@"odds"]];
+            }
+            if (itemDic[@"odds"]!=nil) {
+                [contentArray addObject:[NSString stringWithFormat:@"%@%@(%@)",itemDic[@"index"],itemDic[@"clash"],itemDic[@"odds"]]];
+            }
+            else {
+                [contentArray addObject:[NSString stringWithFormat:@"%@%@",itemDic[@"index"],itemDic[@"clash"]]];
             }
         }
         self.disLeftPlayType.constant = -self.labPlayType.mj_w - 50;
         self.disLeftPlayTypeContent.constant = -self.labPlayType.mj_w - 50;
         self.labNumber.text = [NSString stringWithFormat:@"%ld注%@倍",titleArray.count,dic[@"multiple"]];
-        
         self.labTouzhuneirong.text = [contentArray componentsJoinedByString:@"\n"];
     
         if ( [self.labTouzhuneirong.text rangeOfString:@"—"].location !=NSNotFound ) {

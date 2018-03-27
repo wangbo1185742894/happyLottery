@@ -833,6 +833,10 @@
 		F93204F31FECF98C00E22A27 /* pass5.png in Resources */ = {isa = PBXBuildFile; fileRef = F93204EA1FECF98B00E22A27 /* pass5.png */; };
 		F93204F41FECF98C00E22A27 /* WBInputPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = F93204EB1FECF98B00E22A27 /* WBInputPopView.m */; };
 		F93204F51FECF98C00E22A27 /* WBInputPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F93204EC1FECF98B00E22A27 /* WBInputPopView.xib */; };
+		F9330AAA2068DF73005BFF0B /* first@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9330AA62068DF72005BFF0B /* first@3x.png */; };
+		F9330AAB2068DF73005BFF0B /* Championship@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9330AA72068DF72005BFF0B /* Championship@3x.png */; };
+		F9330AAC2068DF73005BFF0B /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9330AA82068DF73005BFF0B /* first@2x.png */; };
+		F9330AAD2068DF73005BFF0B /* Championship@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9330AA92068DF73005BFF0B /* Championship@2x.png */; };
 		F93AC8081FFDC5F5003DF05C /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F93AC8071FFDC5F5003DF05C /* libicucore.tbd */; };
 		F93AC80A1FFDC603003DF05C /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F93AC8091FFDC603003DF05C /* libz.tbd */; };
 		F93AC80C1FFDC617003DF05C /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F93AC80B1FFDC617003DF05C /* libstdc++.tbd */; };
@@ -2323,6 +2327,10 @@
 		F93204EA1FECF98B00E22A27 /* pass5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pass5.png; sourceTree = "<group>"; };
 		F93204EB1FECF98B00E22A27 /* WBInputPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBInputPopView.m; sourceTree = "<group>"; };
 		F93204EC1FECF98B00E22A27 /* WBInputPopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WBInputPopView.xib; sourceTree = "<group>"; };
+		F9330AA62068DF72005BFF0B /* first@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@3x.png"; sourceTree = "<group>"; };
+		F9330AA72068DF72005BFF0B /* Championship@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Championship@3x.png"; sourceTree = "<group>"; };
+		F9330AA82068DF73005BFF0B /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
+		F9330AA92068DF73005BFF0B /* Championship@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Championship@2x.png"; sourceTree = "<group>"; };
 		F93AC8071FFDC5F5003DF05C /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		F93AC8091FFDC603003DF05C /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		F93AC80B1FFDC617003DF05C /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
@@ -3654,6 +3662,10 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				F9330AA92068DF73005BFF0B /* Championship@2x.png */,
+				F9330AA72068DF72005BFF0B /* Championship@3x.png */,
+				F9330AA82068DF73005BFF0B /* first@2x.png */,
+				F9330AA62068DF72005BFF0B /* first@3x.png */,
 				F9FC153D20625E99009BAD68 /* gjplaytype.html */,
 				F9FC153E20625E9A009BAD68 /* gyjplaytype.html */,
 				2D7B1339204E24860035AE89 /* DLT */,
@@ -5424,6 +5436,7 @@
 				F9B5D97F2060A9DE00C9F6DC /* flag380@2x.png in Resources */,
 				2D628B271FECA9C40013D0E1 /* touzhubeishujia@2x.png in Resources */,
 				F9CD01DE20240A3300E54E79 /* tuijianma@2x.png in Resources */,
+				F9330AAC2068DF73005BFF0B /* first@2x.png in Resources */,
 				2D0600511FFE061D009E7568 /* JCLQOrderDetailViewCell.xib in Resources */,
 				2D0E23E62019A6BE0098DA40 /* assist@3x.png in Resources */,
 				F94AA9CE1FEB5A7D0021B980 /* ok@2x.png in Resources */,
@@ -5526,6 +5539,7 @@
 				2D739CDB1FEB44F400264044 /* yuanjiaowukuangselect@3x.png in Resources */,
 				F9B5D97C2060A9DE00C9F6DC /* flag375@3x.png in Resources */,
 				F928C6B41FF4BA40001F1A32 /* increase@3x.png in Resources */,
+				F9330AAB2068DF73005BFF0B /* Championship@3x.png in Resources */,
 				2D03F1F42060B51800C81BEF /* ctzq_renxuanjiuchang.html in Resources */,
 				2D0EEAA62015D47400B0769C /* coupon@3x.png in Resources */,
 				2D4B1EA21FDFC5F30034B708 /* NewsTableViewCell.xib in Resources */,
@@ -5594,6 +5608,7 @@
 				2D8CBFB61FF3385F00CC367F /* btn_delate_@3x.png in Resources */,
 				2D628B5E1FF0C1980013D0E1 /* button_default@2x.png in Resources */,
 				2D2060201FFCB71E0086E266 /* icon_tongyi_normal@2x.png in Resources */,
+				F9330AAA2068DF73005BFF0B /* first@3x.png in Resources */,
 				F9B5D9A12060A9DE00C9F6DC /* flag434@2x.png in Resources */,
 				2D0E23E22019A6990098DA40 /* balance@3x.png in Resources */,
 				2D03F1A2205A23B400C81BEF /* daletou@2x.png in Resources */,
@@ -5916,6 +5931,7 @@
 				F94AA99D1FEB46770021B980 /* TopUpsViewController.xib in Resources */,
 				F9F6CA981FF5D6B100A49F71 /* about@2x.png in Resources */,
 				F93204F51FECF98C00E22A27 /* WBInputPopView.xib in Resources */,
+				F9330AAD2068DF73005BFF0B /* Championship@2x.png in Resources */,
 				F9B5D98B2060A9DE00C9F6DC /* flag409@2x.png in Resources */,
 				2D4B1E771FDF684E0034B708 /* home_defealt@2x.png in Resources */,
 				2D7B135B204E3D700035AE89 /* bet@2x.png in Resources */,

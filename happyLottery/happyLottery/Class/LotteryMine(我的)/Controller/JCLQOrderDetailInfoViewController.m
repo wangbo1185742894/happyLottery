@@ -41,10 +41,10 @@
         self.imgLotteryIcon.image = [UIImage imageNamed:@"shengfucai.png"];
     }else if ([self.lotteryCode isEqualToString:@"JCGJ"]){
         self.labLotteryName.text = @"冠军";
-        self.imgLotteryIcon.image = [UIImage imageNamed:@"shengfucai.png"];
+        self.imgLotteryIcon.image = [UIImage imageNamed:@"first.png"];
     }else if ([self.lotteryCode isEqualToString:@"JCGYJ"]){
         self.labLotteryName.text = @"冠亚军";
-        self.imgLotteryIcon.image = [UIImage imageNamed:@"shengfucai.png"];
+        self.imgLotteryIcon.image = [UIImage imageNamed:@"Championship.png"];
     }
     self.page = 1;
     self.tabListDetail.dataSource = self;
@@ -100,7 +100,7 @@
         [cell reloadDataGYJ:dic];
     }else{
         [cell reloadData:dic];
-    }
+    } 
     return cell;
 }  
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

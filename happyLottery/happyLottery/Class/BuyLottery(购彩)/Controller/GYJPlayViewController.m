@@ -85,9 +85,9 @@
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    
+    [self showLoadingText:nil];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:SystemGreen] forBarMetrics:UIBarMetricsDefault];
-    //    [[NSNotificationCenter defaultCenter]removeObserver:self name:NotificationNameUserLogin object:nil];
+        [[NSNotificationCenter defaultCenter]removeObserver:self name:NotificationNameUserLogin object:nil];
 }
 
 
@@ -97,7 +97,7 @@
     [self.gjSellArray removeAllObjects];
     [self.groupList removeAllObjects];
     [self.gjSelectedArray removeAllObjects];
-    [self update];
+    [self initLable];
     for(int i= 0;i<infoArray.count;i++){
         NSDictionary *itemDic = infoArray[i];
         WordCupHomeItem *model = [[WordCupHomeItem alloc]initWith:itemDic];
@@ -133,18 +133,23 @@
     self.labCount.keyWordColor = TEXTGRAYOrange;
     
     if(selectNum==0){
-        self.labMaxBouns.text = [NSString stringWithFormat:@"预计奖金：0元"];
+        self.labMaxBouns.text = [NSString stringWithFormat:@"最高可中：0元"];
         return;
     }
-    self.labMaxBouns.text = [NSString stringWithFormat:@"预计奖金：%ld-%.2f元",selectNum * [self.tfBeiCount.text integerValue] * 2,maxBouns * 2 * [self.tfBeiCount.text integerValue]];
+    self.labMaxBouns.text = [NSString stringWithFormat:@"最高可中：%.2f元",maxBouns * 2 * [self.tfBeiCount.text integerValue]];
 }
 
 - (void)gotlistJcgjSellItem:(NSArray *)infoArray errorMsg:(NSString *)msg{
+    showJQ = YES;
+    [self.lotteryMan getSellIssueList:@{@"lotteryCode":self.lottery.identifier}];
     [self refreshlistArray:infoArray];
 }
 
 - (void) gotlistJcgyjSellItem:(NSArray *)infoArray  errorMsg:(NSString *)msg
+
 {
+    showJQ = YES;
+    [self.lotteryMan getSellIssueList:@{@"lotteryCode":self.lottery.identifier}];
     [self refreshlistArray:infoArray];
 }
 
@@ -158,8 +163,7 @@
 -(void) reloadDate:(BOOL)isShowGJ{
     [self showLoadingViewWithText:@"正在加载"];
     //查看奖期
-    showJQ = YES;
-    [self.lotteryMan getSellIssueList:@{@"lotteryCode":self.lottery.identifier}];
+
     if (isShowGJ) {
         [self.lotteryMan listJcgjSellItem:nil];
     } else {
@@ -169,6 +173,8 @@
 
 -(void)selectedLeagueItem:(NSArray *)leaTitleArray{
     [self.gjSellArray removeAllObjects];
+    [self.gjSelectedArray removeAllObjects];
+    [self initLable];
     if (leaTitleArray.count == 0) {
         for (WordCupHomeItem *item in self.groupList) {
             item.isSelect = NO;
@@ -214,15 +220,13 @@
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     if (isShowGJ) {
         HomeGJItemViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KHomeGJItemViewCell];
-        NSString *strRow = [NSString stringWithFormat:@"%ld",indexPath.row +1];
-        [cell loadDataWith:self.gjSellArray[indexPath.row] strRow:strRow];
+        [cell loadDataWith:self.gjSellArray[indexPath.row]];
         cell.backgroundColor = RGBCOLOR(245, 245, 245);
         return cell;
     }
     else {
         HomeGJItemViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KWCHomeGYJItemViewCell];
-        NSString *strRow = [NSString stringWithFormat:@"%ld",indexPath.row +1];
-        [cell loadDataWith:self.gjSellArray[indexPath.row] strRow:strRow];
+        [cell loadDataWith:self.gjSellArray[indexPath.row]];
         cell.backgroundColor = RGBCOLOR(245, 245, 245);
         return cell;
     }
@@ -230,7 +234,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (isShowGJ) {
-        return 75;
+        return 72;
     }
     else {
         return 82;
@@ -265,7 +269,7 @@
     [numStr appendString:string];
     NSInteger num = [numStr integerValue];
     NSInteger limitNum;
-    
+
     limitNum = 9999;
     if (num > limitNum) {
         return NO;
@@ -273,12 +277,11 @@
     
     [self performSelector:@selector(updateTextField) withObject:nil afterDelay:0.1];
     
-    if ([string isEqualToString:@""]) {
-        return YES;
-    }
-    
     if ([textField.text isEqualToString:@""]&&[string isEqualToString:@"0"]) {
         return NO;
+    }
+    if ([string isEqualToString:@""]) {
+        return YES;
     }
     
     NSString * regex;
@@ -296,6 +299,7 @@
 
 - (void)actionPlayTypeSelect:(UIButton *)button
 {
+    [self.gyjListTableView  scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
     self.transaction.beiCount = 5;
     [matchSelectView refreshItemState];
     [button setTitleColor:SystemGreen forState:0];
@@ -314,7 +318,7 @@
         [btnGJ setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]] forState:0];
     }
     [self reloadDate:[button isEqual:btnGJ]];
-    [self update];
+    [self initLable];
     [self setUpRightBtn];
 }
 
@@ -332,6 +336,9 @@
 }
 
 - (IBAction)lessButton:(id)sender {
+    if ([self.tfBeiCount.text integerValue] ==0 ) {
+        return;
+    }
     self.tfBeiCount.text = [NSString stringWithFormat:@"%ld",[self.tfBeiCount.text integerValue]-1];
     [self update];
 }
@@ -349,7 +356,7 @@
         }
         [self.gjSelectedArray removeAllObjects];
         [self.gyjListTableView reloadData];
-        [self update];
+        [self initLable];
     }
 }
 - (void)pressPlayIntroduce{
@@ -399,28 +406,34 @@
     }
 }
 
-
 //奖期
 -(void)gotSellIssueList:(NSArray *)infoDic errorMsg:(NSString *)msg{
     if (infoDic == nil || infoDic .count == 0) {
         [self showPromptText:msg hideAfterDelay:1.9];
         return;
     }
-    
     self.lottery.currentRound = [infoDic firstObject];
     self.transaction.lottery.currentRound = [infoDic firstObject];
     if (showJQ) {
-        createTime = self.lottery.currentRound.stopTime;
+        if ([self.lottery.currentRound isExpire] ||![self.lottery.currentRound.sellStatus isEqualToString:@"ING_SELL"]) {
+            createTime = @"奖期不在售";
+        } else {
+            createTime = self.lottery.currentRound.stopTime;
+        }
+        [self.gyjListTableView reloadData];
         return;
     }
     if ([self.lottery.currentRound isExpire] ||![self.lottery.currentRound.sellStatus isEqualToString:@"ING_SELL"]) {
         [self showPromptText:@"奖期不在售" hideAfterDelay:2.0];
         return;
     }
-    
     //无选项
     if (self.gjSelectedArray.count == 0) {
         [self showPromptText:@"请至少选择一项" hideAfterDelay:2.0];
+        return;
+    }
+    if ([self.tfBeiCount.text isEqualToString:@""]||[self.tfBeiCount.text isEqualToString:@"0"]) {
+        [self showPromptText:@"倍数必须为1-9999" hideAfterDelay:2.0];
         return;
     }
     //在售有选项
@@ -507,8 +520,11 @@
 -(void)initLable {
     self.alreadySelected.text = @"至少选择一种";
     self.tfBeiCount.text = @"5";
-    self.labSchemeInfo.text = [NSString stringWithFormat:@"0注%ld倍,共0元",[self.tfBeiCount.text integerValue]];
-    self.labMaxBouns.text = [NSString stringWithFormat:@"预计奖金:0元"];
+    self.labSchemeInfo.text = [NSString stringWithFormat:@"0注%ld倍,",[self.tfBeiCount.text integerValue]];
+    self.labCount.text = [NSString stringWithFormat:@"共0元"];
+    self.labMaxBouns.text = [NSString stringWithFormat:@"最高可中:0元"];
+    self.labCount.keyWord = [NSString stringWithFormat:@"0"];
+    self.labCount.keyWordColor = TEXTGRAYOrange;
 }
 
 
@@ -517,7 +533,7 @@
     if(gyjSelectedView != nil){
         return;
     }
-    gyjSelectedView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 164, 38)];
+    gyjSelectedView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 160, 40)];
     gyjSelectedView.backgroundColor = [UIColor clearColor];
     
     gyjSelectedView.layer.cornerRadius = 20;
@@ -525,18 +541,18 @@
     gyjSelectedView.layer.borderColor = [UIColor whiteColor].CGColor;
     gyjSelectedView.layer.borderWidth = 1;
     btnGJ = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnGJ.layer.cornerRadius = 18;
+    btnGJ.layer.cornerRadius = 16;
     btnGJ.layer.masksToBounds = YES;
     [btnGJ setTitle:@"冠军" forState:0];
     [btnGJ setTitleColor:SystemGreen forState:UIControlStateSelected];
     [btnGJ setTitleColor:[UIColor whiteColor] forState:0];
     [btnGJ setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateSelected];
     [btnGJ setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]] forState:UIControlStateNormal];
-    [btnGJ setFrame: CGRectMake(4, 4, 76, 29)];
+    [btnGJ setFrame: CGRectMake(4, 4, 76, 32)];
     btnGJ.titleLabel.font = [UIFont systemFontOfSize:14];
     [btnGJ addTarget: self action:@selector(actionPlayTypeSelect:) forControlEvents:UIControlEventTouchUpInside];
     btnGYJ = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnGYJ.layer.cornerRadius = 18;
+    btnGYJ.layer.cornerRadius = 16;
     btnGYJ.layer.masksToBounds = YES;
     btnGYJ.titleLabel.font = [UIFont systemFontOfSize:14];
     [btnGYJ setTitle:@"冠亚军" forState:0];
@@ -544,7 +560,7 @@
     [btnGYJ setTitleColor:[UIColor whiteColor] forState:0];
     [btnGYJ setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateSelected];
     [btnGYJ setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]] forState:UIControlStateNormal];
-    [btnGYJ setFrame: CGRectMake(84, 4, 76, 29)];
+    [btnGYJ setFrame: CGRectMake(84, 4, 76, 32)];
     [gyjSelectedView addSubview:btnGJ];
     [gyjSelectedView addSubview:btnGYJ];
     [btnGYJ addTarget: self action:@selector(actionPlayTypeSelect:) forControlEvents:UIControlEventTouchUpInside];

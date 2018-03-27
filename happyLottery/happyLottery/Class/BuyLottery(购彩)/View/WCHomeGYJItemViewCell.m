@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *pfBeiShu;
 @property (weak, nonatomic) IBOutlet UILabel *labForeCast;
 @property (weak, nonatomic) IBOutlet UILabel *xuelie;
+@property (weak, nonatomic) IBOutlet UILabel *lableVs;
 
 
 //@property (weak, nonatomic) IBOutlet UILabel *labMatchIndex;
@@ -43,7 +44,7 @@
     return cell;
 }
 
--(void)loadDataWith:(WordCupHomeItem * )model strRow:(NSString *)strRow;
+-(void)loadDataWith:(WordCupHomeItem * )model
 {
     self.labMatchBack.selected = model.isSelect;
     self.imgGroupFlag1.image = [UIImage imageNamed:model.imgGuanKey];
@@ -53,14 +54,17 @@
         NSArray *array = [model.clash componentsSeparatedByString:str];
         self.nameGroupFlag1.text = array[0];
         self.nameGroupFlag2.text = array[1];
+        self.lableVs.text = @"vs";
     } else {
-       
+        self.nameGroupFlag1.text = nil;
+        self.nameGroupFlag2.text= nil;
+        self.lableVs.text = model.clash;
     }
     self.labForeCast.text = [NSString stringWithFormat:@"%.2f%%",[model.probability doubleValue]] ;
     self.pfBeiShu.text = model.odds;
-    self.xuelie.text = strRow;
+    self.xuelie.text = model.indexNumber;
     if (model.isSelect) {
-        self.labMatchBack.backgroundColor = TEXTGRAYOrange;
+        self.labMatchBack.backgroundColor = RGBCOLOR(255,243,222);
     } else {
         self.labMatchBack.backgroundColor = [UIColor whiteColor];
     }

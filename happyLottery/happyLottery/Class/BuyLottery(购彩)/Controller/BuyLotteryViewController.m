@@ -48,6 +48,7 @@
     UIView  *menuView;
 
     __weak IBOutlet UIView *lotteryPlayView;
+    __weak IBOutlet NSLayoutConstraint *btnGyjHeight;
     OpenRedPopView *popView;
     __weak IBOutlet NSLayoutConstraint *contentViewDisTop;
     NSMutableArray *listUseRedPacketArray;
@@ -81,7 +82,11 @@
     __weak IBOutlet NSLayoutConstraint *disBottom;
     __weak IBOutlet UILabel *redpacketLab;
     __weak IBOutlet UIButton *goRedPacket;
+
+    __weak IBOutlet UIButton *gyjButton;
+    BOOL showGYJbtn;
 }
+@property(nonatomic,strong)Lottery *lottery;
 @end
 
 @implementation BuyLotteryViewController
@@ -110,12 +115,32 @@
     [self setNewsView];
     [self setDLTCTZQView];
     [self setTableView];
-    openRedpacketButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+        openRedpacketButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     
 //    [self.view bringSubviewToFront:redpacketView];
 //    [self.view insertSubview:redpacketView aboveSubview:self.tabBarController.tabBar];
     
     
+}
+
+
+//修改，，，，，，，，，，
+- (void)gyjButtonHiddenOrNot{
+
+    [self.lotteryMan getSellIssueList:@{@"lotteryCode":@"JCGJ"}];
+}
+
+-(void)gotSellIssueList:(NSArray *)infoDic errorMsg:(NSString *)msg{
+    LotteryRound * currentRound = [infoDic firstObject];
+    if ([currentRound isExpire] ||![currentRound.sellStatus isEqualToString:@"ING_SELL"]) {
+        showGYJbtn = NO;
+        if ([currentRound.lotteryCode isEqualToString:@"JCGJ"]) {
+            [self.lotteryMan getSellIssueList:@{@"lotteryCode":@"JCGYJ"}];
+        }
+    } else {
+        showGYJbtn = YES;
+        btnGyjHeight.constant = 57;
+    }
 }
 
 -(void)itemNotification:(NSNotification *)notification{
@@ -409,8 +434,7 @@
     }else{
         redpacketView.hidden = YES;
     }
-    
-    
+    [self gyjButtonHiddenOrNot];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{

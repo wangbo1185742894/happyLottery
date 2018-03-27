@@ -44,8 +44,6 @@
     if ([self.lotteryName isEqualToString:@"胜负14场"] || [self.lotteryName isEqualToString:@"任选9场"]) {
         CTZQSchemeDetailViewController *schemeVC = [[CTZQSchemeDetailViewController alloc]init];
         schemeVC.schemeNO = self.schemeNO;
-        
-        
         [self.navigationController pushViewController:schemeVC animated:YES];
     }else if([self.lotteryName isEqualToString:@"大乐透"]){
         DLTSchemeDetailViewController *schemeVC = [[DLTSchemeDetailViewController alloc]init];

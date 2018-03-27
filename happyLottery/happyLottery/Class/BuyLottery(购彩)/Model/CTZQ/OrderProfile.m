@@ -444,6 +444,12 @@
     if ([self.lotteryCode isEqualToString:@"JCZQ"]) {
         return @"footerball.png";
     }
+    if ([self.lotteryCode isEqualToString:@"JCGYJ"]) {
+        return @"Championship.png";
+    }
+    if ([self.lotteryCode isEqualToString:@"JCGJ"]) {
+        return @"first.png";
+    }
     return @"";
 }
 //[13]    (null)    @"catchContent" : @"[{\"betType\":0,\"multiple\":1,\"blueList\":[\"05\",\"07\"],\"redDanList\":[],\"units\":\"1\",\"blueDanList\":[],\"playType\":0,\"redList\":[\"02\",\"03\",\"05\",\"12\",\"32\"]}]"

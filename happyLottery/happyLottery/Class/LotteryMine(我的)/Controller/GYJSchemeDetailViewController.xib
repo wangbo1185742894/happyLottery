@@ -17,7 +17,6 @@
                 <outlet property="imgSchemeTopView" destination="61u-sy-qC0" id="KcQ-Ml-Jgh"/>
                 <outlet property="mainViewHeight" destination="b66-5V-q7H" id="fLh-bo-mqk"/>
                 <outlet property="tabMatchListVIew" destination="ima-rv-PXo" id="D37-fy-SPo"/>
-                <outlet property="tabviewHeight" destination="fpy-6h-beh" id="Me1-QE-eW0"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -36,10 +35,10 @@
                                 <action selector="actionGotoTouzhu:" destination="-1" eventType="touchUpInside" id="RO2-ev-okT"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Pg-3A-JNl">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Pg-3A-JNl">
                             <rect key="frame" x="8" y="29" width="359" height="15"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="44" id="x53-hx-43q"/>
+                                <constraint firstAttribute="height" constant="15" id="x53-hx-43q"/>
                             </constraints>
                             <state key="normal" title="继续投注" backgroundImage="schemedetailbutton.png"/>
                             <connections>
@@ -50,7 +49,7 @@
                     <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="3Pg-3A-JNl" firstAttribute="leading" secondItem="dMs-0c-A2S" secondAttribute="leading" constant="8" id="21V-X5-TU6"/>
-                        <constraint firstItem="3Pg-3A-JNl" firstAttribute="top" secondItem="dMs-0c-A2S" secondAttribute="top" id="CkA-El-mYj"/>
+                        <constraint firstItem="3Pg-3A-JNl" firstAttribute="top" secondItem="dMs-0c-A2S" secondAttribute="top" constant="29" id="CkA-El-mYj"/>
                         <constraint firstAttribute="trailing" secondItem="elk-D4-DdO" secondAttribute="trailing" constant="10" id="JyE-MD-MCH"/>
                         <constraint firstAttribute="trailing" secondItem="3Pg-3A-JNl" secondAttribute="trailing" constant="8" id="PUm-03-JKV"/>
                         <constraint firstItem="elk-D4-DdO" firstAttribute="top" secondItem="dMs-0c-A2S" secondAttribute="top" id="o9i-lA-7Ai"/>
@@ -71,15 +70,16 @@
                                     </constraints>
                                 </imageView>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ima-rv-PXo">
-                                    <rect key="frame" x="0.0" y="80" width="375" height="400"/>
+                                    <rect key="frame" x="0.0" y="80" width="375" height="453"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="400" id="fpy-6h-beh"/>
+                                        <constraint firstAttribute="height" constant="453" id="fyf-Y5-sYy"/>
                                     </constraints>
                                 </tableView>
                             </subviews>
                             <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
+                                <constraint firstAttribute="bottom" secondItem="ima-rv-PXo" secondAttribute="bottom" constant="67" id="Dch-Vu-lwI"/>
                                 <constraint firstItem="61u-sy-qC0" firstAttribute="top" secondItem="1WK-Is-UVx" secondAttribute="top" id="VcL-Dz-7vN"/>
                                 <constraint firstItem="61u-sy-qC0" firstAttribute="leading" secondItem="1WK-Is-UVx" secondAttribute="leading" id="Zy6-xq-dIw"/>
                                 <constraint firstAttribute="height" constant="600" id="b66-5V-q7H"/>

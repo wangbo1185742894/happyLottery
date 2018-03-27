@@ -74,6 +74,10 @@
         return @"任9场";
     }else if([code isEqualToString:@"SFC"]){
         return @"14场";
+    }else if([code isEqualToString:@"JCGJ"]){
+        return @"冠军";
+    }else if([code isEqualToString:@"JCGYJ"]){
+        return @"冠亚军";
     }
     return @"彩票";
 }

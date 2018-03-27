@@ -39,15 +39,16 @@
 }
 
 
--(void)loadDataWith:(WordCupHomeItem * )model strRow:(NSString *)strRow{
+-(void)loadDataWith:(WordCupHomeItem * )model{
     self.labMatchBack.selected = model.isSelect;
     self.imgGroupFlag.image = [UIImage imageNamed:model.imgGuanKey];
     self.nameGroupFlag.text = model.clash;
-    self.labForeCast.text = [NSString stringWithFormat:@"%.2f%%",[model.probability doubleValue]] ;
+
+    self.labForeCast.text = [NSString stringWithFormat:@"%.2f%%",[model.probability doubleValue]];
     self.pfBeiShu.text = model.odds;
-    self.xuHao.text = strRow;
+    self.xuHao.text = model.indexNumber;
     if (model.isSelect) {
-        self.labMatchBack.backgroundColor = TEXTGRAYOrange;
+        self.labMatchBack.backgroundColor = RGBCOLOR(255,243,222);
     } else {
         self.labMatchBack.backgroundColor = [UIColor whiteColor];
     }

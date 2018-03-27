@@ -51,7 +51,7 @@
     
     
     if ([model.costType isEqualToString:@"CASH"]) {
-        labSchemeInfo.text = @"订单状态";
+        labSchemeInfo.text = @"方案状态";
         if ([model.ticketCount integerValue] == 0) {
              labTicketCount.text = @"";
         }else{
@@ -59,7 +59,7 @@
         }
         
     }else{
-        labSchemeInfo.text = @"订单状态";
+        labSchemeInfo.text = @"方案状态";
         labTicketCount.text = @"";
     }
     
