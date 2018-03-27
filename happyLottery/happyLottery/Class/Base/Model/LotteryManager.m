@@ -998,8 +998,6 @@
                         success:succeedBlock
                         failure:failureBlock];
 }
-
-
 - (NSString *)getStringformfeid :(EarningsType)defaultFeid{
     NSString *str;
     switch (defaultFeid) {

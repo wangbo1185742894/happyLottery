@@ -188,7 +188,7 @@
         
         NSString *stry = [NSString stringWithFormat:@"%@",string];
         int  money;
-        if ([paystatus isEqualToString:@"0"] || [paystatus isEqualToString:@"2"]) {
+        if ([paystatus isEqualToString:@"NotPaid"] || [paystatus isEqualToString:@"FailedToPay"]) {
             money = 0;
         }else{
             money = [stry intValue];
@@ -471,12 +471,12 @@
 //    beginTime.text = [starttime substringToIndex:lenth-2];
      beginTime.text = [NSString stringWithFormat:@"%@",_order.createTime];
     
-    if ([_order.orderBonus isEqualToString:@"<null>"]) {
+    if ([_order.sumSub isEqualToString:@"<null>"]) {
         playMoner.text = [NSString stringWithFormat:@"投注金额：%@元",@"0"];
     }
     else
     {
-        playMoner.text = [NSString stringWithFormat:@"投注金额：%@元",_order.orderBonus];
+        playMoner.text = [NSString stringWithFormat:@"投注金额：%@元",_order.sumSub];
     }
     
     zhqishu.text = [NSString stringWithFormat:@"追期期数：%@期",_order.totalCatch];

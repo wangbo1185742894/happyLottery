@@ -40,11 +40,8 @@
     {
         
         if ([order.lotteryCode isEqualToString:@"DLT"]) {
-            if ([order.playType isEqualToString:@"1"]) {
-                lotteryTypeLb.text = [NSString stringWithFormat:@"超级大乐透(追加)"];
-            } else {
-                lotteryTypeLb.text = [NSString stringWithFormat:@"超级大乐透"];
-            }
+            lotteryTypeLb.text = [NSString stringWithFormat:@"大乐透"];
+        
         }
        
             
@@ -71,16 +68,22 @@
         }
         
         issueNumLb.textColor = TEXTGRAYCOLOR;
-        issueNumLb.text = [NSString stringWithFormat:@"%@",order.catchplaytype];
+
+        if ([order.playType isEqualToString:@"1"]) {
+            issueNumLb.text = [NSString stringWithFormat:@"超级大乐透(追加)"];
+        } else {
+            issueNumLb.text = [NSString stringWithFormat:@"超级大乐透"];
+        }
+//        issueNumLb.text = [NSString stringWithFormat:@"%@",order.catchplaytype];
         [issueNumLb setFont:[UIFont systemFontOfSize:13]];
         [priceLb setFont:[UIFont systemFontOfSize:13]];
         priceLb.text = [NSString stringWithFormat:@"开始期号%@",order.beginIssue ];
         [winningStateLb setFont:[UIFont systemFontOfSize:13]];
-        if ([order.orderBonus isEqualToString:@"<null>"]) {
+        if ([order.sumSub isEqualToString:@"<null>"]) {
             winningStateLb.text = [NSString stringWithFormat:@"投注%@元",@"0"];
         }else
         {
-            winningStateLb.text = [NSString stringWithFormat:@"投注%@元",order.orderBonus];
+            winningStateLb.text = [NSString stringWithFormat:@"投注%@元",order.sumSub];
         }
         if ([order.lotteryType isEqualToString:@"DLT"]||[order.lotteryType isEqualToString:@"dlt"]||[order.name isEqualToString:@"大乐透"]){
             issueNumLb.hidden = YES;

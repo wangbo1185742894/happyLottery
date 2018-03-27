@@ -44,8 +44,8 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0元" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l8O-UT-g7e">
-                        <rect key="frame" x="187" y="0.0" width="65" height="30"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l8O-UT-g7e">
+                        <rect key="frame" x="184" y="0.0" width="65" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="5bm-3e-ekL"/>
                             <constraint firstAttribute="width" constant="65" id="RrX-kR-8lC"/>
@@ -54,8 +54,8 @@
                         <color key="textColor" red="0.28235294117647058" green="0.28235294117647058" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0元" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5sZ-cz-NVF">
-                        <rect key="frame" x="252" y="0.0" width="79" height="30"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5sZ-cz-NVF">
+                        <rect key="frame" x="249" y="0.0" width="82" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="Kqn-ie-MCy"/>
                         </constraints>
@@ -63,8 +63,8 @@
                         <color key="textColor" red="0.28235294117647058" green="0.28235294117647058" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="开奖号码：1.2.3.4.5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r5D-sN-fa5">
-                        <rect key="frame" x="49" y="29" width="182" height="30"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r5D-sN-fa5">
+                        <rect key="frame" x="55" y="29" width="200" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="dCo-ek-9a8"/>
                             <constraint firstAttribute="width" constant="200" id="qgs-qz-d7W"/>
@@ -73,18 +73,18 @@
                         <color key="textColor" red="0.28235294117647058" green="0.28235294117647058" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="25期" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YQw-Se-wOu">
-                        <rect key="frame" x="49" y="0.0" width="32" height="30"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YQw-Se-wOu">
+                        <rect key="frame" x="55" y="0.0" width="60" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="bby-Qp-zvp"/>
-                            <constraint firstAttribute="width" constant="50" id="s7c-Df-m1F"/>
+                            <constraint firstAttribute="width" constant="60" id="s7c-Df-m1F"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.28235294117647058" green="0.28235294117647058" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0元" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TcZ-u7-R1B">
-                        <rect key="frame" x="105" y="0.0" width="74" height="30"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TcZ-u7-R1B">
+                        <rect key="frame" x="110" y="0.0" width="74" height="30"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="74" id="0Wj-3L-5z7"/>
                             <constraint firstAttribute="height" constant="30" id="mqA-zY-NoJ"/>
@@ -93,7 +93,7 @@
                         <color key="textColor" red="0.28235294117647058" green="0.28235294117647058" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="非投注状态" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwD-j1-3Pm">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwD-j1-3Pm">
                         <rect key="frame" x="255" y="30" width="76" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="t3k-Ob-TOq"/>
@@ -106,7 +106,7 @@
                 <constraints>
                     <constraint firstItem="tq6-fi-7vM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="0S6-wn-wsc"/>
                     <constraint firstItem="5sZ-cz-NVF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="1l3-nt-xV2"/>
-                    <constraint firstItem="l8O-UT-g7e" firstAttribute="leading" secondItem="TcZ-u7-R1B" secondAttribute="trailing" constant="8" id="5Ej-4s-jEA"/>
+                    <constraint firstItem="l8O-UT-g7e" firstAttribute="leading" secondItem="TcZ-u7-R1B" secondAttribute="trailing" id="5Ej-4s-jEA"/>
                     <constraint firstItem="YQw-Se-wOu" firstAttribute="leading" secondItem="tq6-fi-7vM" secondAttribute="trailing" constant="25" id="6cP-Lp-ePp"/>
                     <constraint firstItem="74b-Zm-Pig" firstAttribute="top" secondItem="Ye6-54-SSn" secondAttribute="bottom" constant="5" id="9WJ-Ap-85J"/>
                     <constraint firstItem="cwD-j1-3Pm" firstAttribute="top" secondItem="5sZ-cz-NVF" secondAttribute="bottom" id="9Z9-4C-2Xl"/>
@@ -121,7 +121,7 @@
                     <constraint firstItem="tq6-fi-7vM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="g5N-EM-6p6"/>
                     <constraint firstAttribute="trailing" secondItem="74b-Zm-Pig" secondAttribute="trailing" constant="15" id="hNt-rj-VMl"/>
                     <constraint firstItem="YQw-Se-wOu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="jMN-z8-qJJ"/>
-                    <constraint firstItem="TcZ-u7-R1B" firstAttribute="leading" secondItem="YQw-Se-wOu" secondAttribute="trailing" id="kPy-gc-vmu"/>
+                    <constraint firstItem="TcZ-u7-R1B" firstAttribute="leading" secondItem="YQw-Se-wOu" secondAttribute="trailing" constant="-5" id="kPy-gc-vmu"/>
                     <constraint firstItem="r5D-sN-fa5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="29" id="nFM-aP-6p1"/>
                     <constraint firstAttribute="trailing" secondItem="cwD-j1-3Pm" secondAttribute="trailing" id="nhe-I9-6WD"/>
                     <constraint firstAttribute="trailing" secondItem="5sZ-cz-NVF" secondAttribute="trailing" id="va0-Xx-NZs"/>
