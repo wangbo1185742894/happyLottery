@@ -44,6 +44,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *tfBeiCount;
 @property (weak, nonatomic) IBOutlet MGLabel *labCount;
 @property(strong,nonatomic)GYJTransaction *transaction;
+@property (weak, nonatomic) IBOutlet UIButton *selectTypeBtn;
+@property (weak, nonatomic) IBOutlet UINavigationItem *navigationItemView;
 
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property(nonatomic,strong)NSMutableArray <WordCupHomeItem *> * gjSelectedArray;
@@ -68,6 +70,7 @@
     [self actionPlayTypeSelect:btnGJ];
     [self initLable];
     [self setUpRightBtn];
+    [self setUpLeftBtn];
     
     self.transaction = [[GYJTransaction alloc]init];
     
@@ -80,17 +83,20 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
-//    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"pic_guanyajun_beijing"] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.hidden = YES;
+    [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"pic_guanyajun_beijing"] forBarMetrics:UIBarMetricsDefault];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self showLoadingText:nil];
-//    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:SystemGreen] forBarMetrics:UIBarMetricsDefault];
-        [[NSNotificationCenter defaultCenter]removeObserver:self name:NotificationNameUserLogin object:nil];
+    self.navigationController.navigationBar.hidden = NO;
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:NotificationNameUserLogin object:nil];
 }
 
+- (void)returnToRootView {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
 
 #pragma mark DateSource
 - (void)refreshlistArray:(NSArray *)infoArray{
@@ -105,7 +111,6 @@
         [self.gjSellArray addObject:model];
         [self.groupList addObject:model];
     }
-//    [self.gyjListTableView reloadData];
 }
 
 -(void)update{
@@ -367,6 +372,7 @@
         [self initLable];
     }
 }
+
 - (void)pressPlayIntroduce{
     WebViewController *webVC = [[WebViewController alloc]initWithNibName:@"WebViewController" bundle:nil];
     webVC.type = @"html";
@@ -406,12 +412,16 @@
 - (void)setUpRightBtn{
     UIBarButtonItem *playIntroduce = [self creatBarItem:@"" icon:@"wanfajieshao" andFrame:CGRectMake(0, 10, 25, 25) andAction:@selector(pressPlayIntroduce)];
     UIBarButtonItem *selectGroup = [self creatBarItem:@"" icon:@"liansaixuanze" andFrame:CGRectMake(0, 10, 25, 25)andAction:@selector(pressSelectGroup)];
-    
     if (isShowGJ) {
-        self.navigationItem.rightBarButtonItems = @[playIntroduce];
+        self.navigationItemView.rightBarButtonItems = @[playIntroduce];
     } else {
-        self.navigationItem.rightBarButtonItems = @[playIntroduce,selectGroup];
+        self.navigationItemView.rightBarButtonItems = @[playIntroduce,selectGroup];
     }
+}
+
+- (void)setUpLeftBtn{
+    UIBarButtonItem *returnToRoot = [self creatBarItem:@"" icon:@"common_top_bar_back" andFrame:CGRectMake(0, 10, 12,18) andAction:@selector(returnToRootView)];
+    self.navigationItemView.leftBarButtonItems = @[returnToRoot];
 }
 
 //奖期
@@ -549,26 +559,26 @@
     if(gyjSelectedView != nil){
         return;
     }
-    gyjSelectedView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 164, 40)];
+    gyjSelectedView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 164, 30)];
     gyjSelectedView.backgroundColor = [UIColor clearColor];
     
-    gyjSelectedView.layer.cornerRadius = 20;
+    gyjSelectedView.layer.cornerRadius = 17;
     gyjSelectedView.layer.masksToBounds = YES;
     gyjSelectedView.layer.borderColor = [UIColor whiteColor].CGColor;
     gyjSelectedView.layer.borderWidth = 1;
     btnGJ = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnGJ.layer.cornerRadius = 16;
+    btnGJ.layer.cornerRadius = 13;
     btnGJ.layer.masksToBounds = YES;
     [btnGJ setTitle:@"冠军" forState:0];
     [btnGJ setTitleColor:SystemGreen forState:UIControlStateSelected];
     [btnGJ setTitleColor:[UIColor whiteColor] forState:0];
     [btnGJ setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateSelected];
     [btnGJ setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]] forState:UIControlStateNormal];
-    [btnGJ setFrame: CGRectMake(4, 4, 76, 32)];
+    [btnGJ setFrame: CGRectMake(4, 4, 76, 22)];
     btnGJ.titleLabel.font = [UIFont systemFontOfSize:14];
     [btnGJ addTarget: self action:@selector(actionPlayTypeSelect:) forControlEvents:UIControlEventTouchUpInside];
     btnGYJ = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnGYJ.layer.cornerRadius = 16;
+    btnGYJ.layer.cornerRadius = 13;
     btnGYJ.layer.masksToBounds = YES;
     btnGYJ.titleLabel.font = [UIFont systemFontOfSize:14];
     [btnGYJ setTitle:@"冠亚军" forState:0];
@@ -576,11 +586,12 @@
     [btnGYJ setTitleColor:[UIColor whiteColor] forState:0];
     [btnGYJ setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateSelected];
     [btnGYJ setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]] forState:UIControlStateNormal];
-    [btnGYJ setFrame: CGRectMake(84, 4, 76, 32)];
+    [btnGYJ setFrame: CGRectMake(84, 4, 76, 22)];
     [gyjSelectedView addSubview:btnGJ];
     [gyjSelectedView addSubview:btnGYJ];
     [btnGYJ addTarget: self action:@selector(actionPlayTypeSelect:) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.titleView = gyjSelectedView;
+//    self.navigationItem.titleView = gyjSelectedView;
+    [self.selectTypeBtn addSubview:gyjSelectedView];
 }
 
 #pragma mark 工具方法

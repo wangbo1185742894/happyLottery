@@ -947,6 +947,7 @@
 		F96658F41FF0D26A001DE8B9 /* BankCard.m in Sources */ = {isa = PBXBuildFile; fileRef = F96658F31FF0D26A001DE8B9 /* BankCard.m */; };
 		F96723ED2009B12B0044DC8E /* response@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F96723EB2009B12A0044DC8E /* response@2x.png */; };
 		F96723EE2009B12B0044DC8E /* response@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F96723EC2009B12A0044DC8E /* response@3x.png */; };
+		F97D82EA206A534D00721336 /* common_top_bar_back.png in Resources */ = {isa = PBXBuildFile; fileRef = F97D82E9206A534C00721336 /* common_top_bar_back.png */; };
 		F97FD9CA2003026300B35A7C /* inputbox@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F97FD9C82003026200B35A7C /* inputbox@3x.png */; };
 		F97FD9CB2003026300B35A7C /* inputbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F97FD9C92003026200B35A7C /* inputbox@2x.png */; };
 		F98A602C20638893008C3132 /* GYJSchemeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F98A602A20638892008C3132 /* GYJSchemeDetailViewController.m */; };
@@ -2465,6 +2466,7 @@
 		F96658F31FF0D26A001DE8B9 /* BankCard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BankCard.m; path = "happyLottery/Class/LotteryMine(我的)/Controller/personnalSet/BankCard.m"; sourceTree = SOURCE_ROOT; };
 		F96723EB2009B12A0044DC8E /* response@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "response@2x.png"; sourceTree = "<group>"; };
 		F96723EC2009B12A0044DC8E /* response@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "response@3x.png"; sourceTree = "<group>"; };
+		F97D82E9206A534C00721336 /* common_top_bar_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = common_top_bar_back.png; sourceTree = "<group>"; };
 		F97FD9C82003026200B35A7C /* inputbox@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inputbox@3x.png"; sourceTree = "<group>"; };
 		F97FD9C92003026200B35A7C /* inputbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inputbox@2x.png"; sourceTree = "<group>"; };
 		F98A602920638891008C3132 /* GYJSchemeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYJSchemeDetailViewController.h; sourceTree = "<group>"; };
@@ -3670,6 +3672,7 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				F97D82E9206A534C00721336 /* common_top_bar_back.png */,
 				F9330AA92068DF73005BFF0B /* Championship@2x.png */,
 				F9330AA72068DF72005BFF0B /* Championship@3x.png */,
 				F9330AA82068DF73005BFF0B /* first@2x.png */,
@@ -6017,6 +6020,7 @@
 				2DCD4D60202FD505007E544D /* scheme_corner_mark@2x.png in Resources */,
 				F94A10702022C3E3006C3695 /* logo125@2x.png in Resources */,
 				2D7B1391204E82FD0035AE89 /* pic_jingzu_@2x.png in Resources */,
+				F97D82EA206A534D00721336 /* common_top_bar_back.png in Resources */,
 				2D5171FE200C942400C3CD7F /* pageCodeConfig.plist in Resources */,
 				2D739CE11FEB45E300264044 /* matchcleanall@3x.png in Resources */,
 				F9E0DF1D2019695C0089F51D /* MineViewController.xib in Resources */,

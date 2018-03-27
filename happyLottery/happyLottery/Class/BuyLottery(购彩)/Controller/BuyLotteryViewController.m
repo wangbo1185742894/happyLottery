@@ -548,7 +548,7 @@
 - (IBAction)actionJcgyj:(id)sender {
     GYJPlayViewController *gyjPlayVc = [[GYJPlayViewController alloc]init];
     gyjPlayVc.hidesBottomBarWhenPushed = YES;
-
+    gyjPlayVc.navigationController.navigationBar.hidden = YES;
     [self.navigationController pushViewController:gyjPlayVc animated:YES];
 }
 
