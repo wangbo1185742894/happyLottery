@@ -188,15 +188,24 @@
             item.selected = NO;
         }
     }
-    
     NSMutableString*numStr = [[NSMutableString alloc]initWithString:textField.text];
     [numStr appendString:string];
     NSInteger num = [numStr integerValue];
     NSInteger limitNum;
     if(textField == tfQiCount){
-        limitNum = 99;
+        if (self.transaction.lottery.currentRound == nil){
+            limitNum = 99;
+        }else{
+            NSInteger curQI = [[self.lottery.currentRound.issueNumber substringFromIndex:2] integerValue];
+            limitNum = 135 - curQI;
+        }
     }else{
-        limitNum = 9999;
+        if ([tfQiCount.text integerValue] == 1) {
+            limitNum = 9999;
+        }else{
+            limitNum = 99;
+        }
+        
     }
     if (num > limitNum) {
         return NO;
@@ -318,6 +327,10 @@
 }
 
 - (IBAction)actionAddRandomBet:(id)sender {
+    if(self.transaction.allBets.count >= 30){
+        [self showPromptText:@"最多投注30组号码" hideAfterDelay:1.7];
+        return;
+    }
     switch (_lottery.type) {
         case LotteryTypeDaLeTou:
         case LotteryTypeShiYiXuanWu:{
@@ -517,7 +530,7 @@
 }
 
 - (void) removeBetAction: (NSIndexPath *) indexPath {
-    if([self.transaction betCount] == 1){
+    if([self.transaction allBets].count == 1){
         [self showPromptText:@"至少选择一注" hideAfterDelay:1.7];
         return;
     }
@@ -620,71 +633,43 @@
 }
 - (IBAction)actionTouzhu:(UIButton *)sender {
     self.transaction.schemeSource = SchemeSourceBet;
-    if(self.transaction.allBets.count > 30){
-        [self showPromptText:@"最多投注30组号码" hideAfterDelay:1.7];
-        return;
-    }
+    
     [self showLoadingText:@"正在提交订单"];
     [self.lotteryMan getSellIssueList:@{@"lotteryCode":self.lottery.identifier}];
 }
 -(void)gotSellIssueList:(NSArray *)infoDic errorMsg:(NSString *)msg{
     {
         
-            if (infoDic != nil && infoDic.count != 0) {
-                _lottery.currentRound = [infoDic firstObject];
-                _transaction.lottery.currentRound = [infoDic firstObject];
-            }else{
-                [self showPromptText:ErrorLotteryRounderExpire hideAfterDelay:1.7];
-                [self hideLoadingView];
-                return;
-            }
-        if ([tfQiCount.text integerValue] != 1) {
-            if(self.curUser.paypwdSetting == NO) {
-                SetPayPWDViewController *spvc = [[SetPayPWDViewController alloc]init];
-                spvc.titleStr = @"设置支付密码";
-                [self.navigationController pushViewController:spvc animated:YES];
-                return;
-            }else{
-                if ([self checkPayPassword]) {
-                    
-                    [self showPayPopView];
-                    return;
-                }
-            }
-
-            [self actionZhuihao];
+        if (infoDic != nil && infoDic.count != 0) {
+            _lottery.currentRound = [infoDic firstObject];
+            _transaction.lottery.currentRound = [infoDic firstObject];
+        }else{
+            [self showPromptText:ErrorLotteryRounderExpire hideAfterDelay:1.7];
+            [self hideLoadingView];
             return;
         }
-      
-        if(self.transaction.needZhuiJia)
-        {
-            _transaction.needZhuiJia = YES;
-            if ([self isExceedLimitAmount]) {
-                [self showPromptText:TextzhuijiaTouzhuExceedLimit hideAfterDelay:1.7];
-                [self hideLoadingView];
+        
+        
+        
+        if ([tfQiCount.text integerValue] != 1) {
+            
+            if (self.transaction.allBets.count > 10000) {
+                [self showPromptText:@"追号投注单次不能超过1万注" hideAfterDelay:1.8];
                 return;
             }
-        }
-        
-        {
-            //不同玩法不可追
-            BOOL isZhuiLeTou = NO;
-            if ([tfQiCount.text intValue] >1) {
-                if (_transaction.allBets.count >1) {
-                    LotteryBet *bet1 = [_transaction.allBets firstObject];
-                    for (int i = 1 ;i< _transaction.allBets.count ;i++) {
-                        
-                        LotteryBet *bet = _transaction.allBets[i];
-                        if ([bet.betXHProfile.profileID integerValue] != [bet1.betXHProfile.profileID integerValue]) {
-                            [self showPromptText:@"系统暂不支持多种玩法的追号!" hideAfterDelay:1.7];
-                            isZhuiLeTou = YES;
-                            return;
-                        }
+            
+            if (self.curUser.isLogin) {
+                
+                LotteryBet *bet1 = [_transaction.allBets firstObject];
+                for (int i = 1 ;i< _transaction.allBets.count ;i++) {
+                    
+                    LotteryBet *bet = _transaction.allBets[i];
+                    if ([bet.betXHProfile.profileID integerValue] != [bet1.betXHProfile.profileID integerValue]) {
+                        [self showPromptText:@"系统暂不支持多种玩法的追号!" hideAfterDelay:1.7];
+                        return;
                     }
                 }
-            }
-            
-            if([self getIssnum] > 1){
+                
                 NSArray *betslist = [self.transaction allBets];
                 for(int i=0;i<betslist.count;i++)
                 {
@@ -707,7 +692,26 @@
                         }
                     }
                 }
+                
+                if(self.curUser.paypwdSetting == NO) {
+                    SetPayPWDViewController *spvc = [[SetPayPWDViewController alloc]init];
+                    spvc.titleStr = @"设置支付密码";
+                    [self.navigationController pushViewController:spvc animated:YES];
+                    return;
+                }else{
+                    if ([self checkPayPassword]) {
+                        
+                        [self showPayPopView];
+                        return;
+                    }
+                }
+                
+                [self actionZhuihao];
+                return;
+            }else{
+                [self needLogin];
             }
+        }else{
             if ([self isExceedLimitAmount]) {
                 [self showPromptText:TextTouzhuExceedLimit hideAfterDelay:1.7];
                 return;
@@ -721,43 +725,13 @@
                         transcation = self.transaction;
                         break;
                     }
-                        
                     default:
                         break;
+                       
                 }
-                if([self getIssnum] > 1){
-                    int qi = [tfQiCount.text intValue];
-                    int bei = [tfBeiCount.text intValue];
-                    
-                    NSString *lotteryRoundDesc= [NSString stringWithFormat:@"%@ 第%@期",_lottery.name,_lottery.currentRound.issueNumber];
-                    int betCount = 0;
-                    NSArray * betsArray = [_transaction allBets];
-                    for (LotteryBet *bet in betsArray) {
-                        betCount += [bet getBetCost];
-                    }
-                    if (qi == 0) {
-                        qi = 1;
-                    }
-                    if (bei == 0) {
-                        bei  = 1;
-                    }
-                    subscristr = [NSString stringWithFormat:@"%d",betCount*self.transaction.beiTouCount];
-                    betCount = betCount*qi;
-                    if(self.transaction.needZhuiJia)
-                    {
-                        betCount += betCount/2;
-                    }
-//                    NSDictionary * orderNeedInfo =@{@"lotteryRoundDesc":lotteryRoundDesc,@"orderCost":[NSString stringWithFormat:@"%d",betCount*self.transaction.beiTouCount]};
-                    //                [self payJudgeWithOrderInfo:orderNeedInfo andQishu:qi];
-                    
-                }
-                else
-                {
-                    transcation.schemeType = SchemeTypeZigou;
-                    
-                    
-                    [self.lotteryMan betLotteryScheme:self.transaction];
-                }
+                self.transaction.schemeType = SchemeTypeZigou;
+                
+                [self.lotteryMan betLotteryScheme:self.transaction];
             } else {
                 [self needLogin];
             }
@@ -766,6 +740,23 @@
 }
 
 -(void)actionZhuihao{
+    if (self.transaction.costType == CostTypeSCORE) {
+        [self showPromptText:@"模拟投注暂不支持追号" hideAfterDelay:1.9];
+        return;
+    }
+    float balance = [self.curUser.totalBanlece doubleValue];
+    NSString *msg = [NSString stringWithFormat:@"共追%lu期，共需%ld元,您当前余额为%.1f元,是否确定追号？",[tfQiCount.text integerValue],(long)self.transaction.betCost,balance];
+    ZLAlertView *alert = [[ZLAlertView alloc] initWithTitle:@"追号确认" message:msg];
+    [alert addBtnTitle:TitleNotDo action:^{
+        [self hideLoadingView];
+    }];
+    [alert addBtnTitle:TitleDo action:^{
+        [self zhuihao];
+    }];
+    [alert showAlertWithSender:self];
+}
+
+-(void)zhuihao{
     [self showLoadingText:@"正在提交"];
     self.transaction.qiShuCount = [tfQiCount.text intValue];
     

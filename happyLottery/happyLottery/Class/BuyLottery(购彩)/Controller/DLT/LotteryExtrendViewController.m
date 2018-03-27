@@ -110,7 +110,7 @@
     dltSectionType = DltSectionTypeNotSet;
     self.title = [NSString stringWithFormat:@"%@ 趋势图",_lottery.name];
     
-    numberForSource = 100;
+    numberForSource = 30;
     [self getLotteryRounds:numberForSource];
 }
 - (void) addOptionRighButton {

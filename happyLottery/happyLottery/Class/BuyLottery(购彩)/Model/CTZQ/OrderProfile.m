@@ -131,7 +131,10 @@
     }
     
     if ([_itemStatus isEqualToString:@"CANCEL"]) {
-        return @"已取消";
+        return @"撤销追号";
+    }
+    if ([_chaseStatus isEqualToString:@"CATCHSTOP"]) {
+        return @"停止追号";
     }
     return @"追号中";
 //    switch ([_catchStatus intValue]) {
@@ -168,9 +171,11 @@
     if ([_chaseStatus isEqualToString:@"CATCHED"]) {
         return @"已追号";
     }
-    
     if ([_chaseStatus isEqualToString:@"CANCEL"]) {
-        return @"已取消";
+        return @"撤销追号";
+    }
+    if ([_chaseStatus isEqualToString:@"CATCHSTOP"]) {
+        return @"停止追号";
     }
     return @"追号中";
     //    switch ([_catchStatus intValue]) {

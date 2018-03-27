@@ -38,32 +38,36 @@
     //追号
     if (![order.catchSchemeId isEqualToString:@""]&&![order.catchSchemeId isEqualToString:@"(null)"])
     {
-        //11.06
-        if ([order.lottery isEqualToString:@"X115"]) {
-            lotteryTypeLb.text = @"陕11选5";
-        }else{
-            lotteryTypeLb.text = order.name;
+        
+        if ([order.lotteryCode isEqualToString:@"DLT"]) {
+            if ([order.playType isEqualToString:@"1"]) {
+                lotteryTypeLb.text = [NSString stringWithFormat:@"超级大乐透(追加)"];
+            } else {
+                lotteryTypeLb.text = [NSString stringWithFormat:@"超级大乐透"];
+            }
         }
+       
+            
+        
         lotteryIconImgV.image = [UIImage imageNamed:order.iconName];
         
-        //1111
         timeLb.text = [NSString stringWithFormat:@"%@/%@%@",order.catchIndex,order.totalCatch,order.chaseStatus];
         _topConstant.constant = TOPLONG;
-        if ([order.WINST isEqualToString:@"追号中"] && [order.bonus doubleValue] > 0) {
+        
+        if ([order.WINST isEqualToString:@"追号中"] && [order.sumDraw doubleValue] > 0) {
             prizeMoney.hidden = NO;
             _topConstant.constant = TOPSHORT;
-            prizeMoney.text = [NSString stringWithFormat:@"奖金:%.2f元",[order.bonus doubleValue]];
+            prizeMoney.text = [NSString stringWithFormat:@"奖金:%.2f元",[order.sumDraw doubleValue]];
         }
         if ([order.WINST isEqualToString:@"已中奖"]) {
             timeLb.textColor = TEXTGRAYCOLOR;
             //11.23
             prizeMoney.hidden = NO;
             _topConstant.constant = TOPSHORT;
-            prizeMoney.text = [NSString stringWithFormat:@"奖金:%.2f元",[order.bonus doubleValue]];
+            prizeMoney.text = [NSString stringWithFormat:@"奖金:%.2f元",[order.sumDraw doubleValue]];
         }else
         {
             timeLb.textColor = TEXTGRAYCOLOR;
-            
         }
         
         issueNumLb.textColor = TEXTGRAYCOLOR;
@@ -125,7 +129,7 @@
             if ([order.bonus doubleValue] == 0) {
                 winningStateLb.text = @"赠票";
             }else{
-                winningStateLb.text = [NSString stringWithFormat:@"奖金:%.2f元",[order.bonus doubleValue]];
+                winningStateLb.text = [NSString stringWithFormat:@"奖金:%.2f元",[order.sumDraw doubleValue]];
             }
         }
         else{
@@ -192,14 +196,8 @@
         winningStateLb.text = @"待支付";
     }else if([order .schemeStatus isEqualToString:@"CANCEL"]){
         if ([order.ticketStatus isEqualToString:@"TICKET_FAILED"]) {
-            
             winningStateLb.text = @"方案失败";
-//            hintTitle.text = @"当前投注过多,建议提前下单";
-//            [hintTitle setFont:[UIFont systemFontOfSize:13]];
-//            hintTitle.textColor = TextCharColor;
-//            _topConstant.constant = TOPSHORT;
         }else{
-            
             winningStateLb.text = @"方案失败";
         }
     }else if([order.schemeStatus isEqualToString:@"REPEAL"]){
@@ -221,13 +219,9 @@
                             
                             winningStateLb.text = [NSString stringWithFormat:@"出票中"];
                         }else{
-                            
                             winningStateLb.text = order.trTicketStatus;
                         }
                     }
-                    
-                    
-                    
                 }else{
                     
                     if ([order.trWinningStatus isEqualToString:@"已派奖"] || [order.trWinningStatus isEqualToString:@"已开奖"]) {
@@ -237,13 +231,11 @@
                             _topConstant.constant = TOPSHORT;
                             prizeMoney.text =[NSString stringWithFormat:@"奖金:%.2f",[order.bonus doubleValue]];
                         }else{
-                        
                             winningStateLb.text = @"祝您下次好运";
                         }
                     }else{
                        winningStateLb.text = @"待开奖";
                     }
-                   
                 }
             }
         }else{

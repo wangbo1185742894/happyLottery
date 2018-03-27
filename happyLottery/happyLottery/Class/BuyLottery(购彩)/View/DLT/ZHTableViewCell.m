@@ -56,19 +56,21 @@
     leiji.text = [NSString stringWithFormat:@"%@元",touru];
     
     //中奖奖金
-    NSString * balance = [NSString stringWithFormat:@"%.2f",[order.bonus doubleValue]];
+    NSString * balance = [NSString stringWithFormat:@"%.2f",[order.trBonus doubleValue]];
     NSString * str2 = balance;
     //    NSString * str2 = [NSString stringWithFormat:@"%@",order.bonus];
-    if ([str2 isEqualToString:@"(null)"] || [str2 isEqualToString:@"0"]) {
+    if ([str2 isEqualToString:@"(null)"] || [str2 isEqualToString:@"0.00"]) {
         zhongjiang.text = @"0.0元";
+        tupian.hidden = YES;
+        
     }else{
         zhongjiang.text = [NSString stringWithFormat:@"%@元",str2];
+        kaijianghaoma.textColor = SystemRed;
+        tupian.hidden = NO;
     }
     
-    //开奖号码
     NSString * lottnum = [NSString stringWithFormat:@"%@",order.trOpenResult];
     if ([lottnum isEqualToString:@"(null)"] ||[lottnum isEqualToString:@"null"] ) {
-        
         if ([order.remark isEqualToString:@"(null)"] ||[order.remark isEqualToString:@"null"]) {
         kaijianghaoma.text = @"";
         }else{
@@ -80,9 +82,7 @@
         lottnum = [lottnum stringByReplacingOccurrencesOfString:@"#" withString:@"+"];
         kaijianghaoma.text = [NSString stringWithFormat:@"开奖号码:%@",lottnum];
     }
-//    kaijianghaoma.textColor = [UIColor orangeColor];
     
-    //结果  11.09  1111
     jieguo.adjustsFontSizeToFitWidth = YES;
 //    jieguo.textColor = [UIColor orangeColor];
     
@@ -93,7 +93,12 @@
 //    CANCLE("已取消")
   
     if (order.trOrderStatus != nil) {
-        jieguo.text = order.trOrderStatus;
+        if ([order.trOrderStatus isEqualToString:@"出票成功"]) {
+            jieguo.text = @"待开奖";
+        }else{
+            
+            jieguo.text = order.trOrderStatus;
+        }
     }else{
         NSString * result = [NSString stringWithFormat:@"%@",order.itemStatus];//
         if ([result isEqualToString:@"WAITDO"]) {
@@ -102,7 +107,7 @@
         }else if ([result isEqualToString:@"CATCHED"]) {
             if ([order.payStatus isEqualToString:@"NotPaid"]) {
                 NSString * str = [NSString stringWithFormat:@"%@",order.remark];
-                //
+            
                 if (str.length >= 6) {
                     str = @"未支付";
                 }
@@ -169,10 +174,19 @@
                 }
             }
         }else if ([result isEqualToString:@"CANCLE"]) {
-            jieguo.text = @"已取消";
+            jieguo.text = @"撤销追号";
         }
     }
-
+    
+    if ([str2 isEqualToString:@"(null)"] || [str2 isEqualToString:@"0.00"]) {
+        zhongjiang.textColor = SystemGray;
+        jieguo.textColor = SystemGray;
+        
+    }else{
+        zhongjiang.textColor = SystemRed;
+        jieguo.text = @"已中奖";
+        jieguo.textColor = SystemRed;
+    }
 }
 
 

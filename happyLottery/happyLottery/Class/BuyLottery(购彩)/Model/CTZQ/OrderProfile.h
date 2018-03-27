@@ -20,7 +20,7 @@
 @property(nonatomic,copy)NSString * schemeNO;
 @property(nonatomic,copy)NSString * lastModifyTime;
 @property(nonatomic,copy)NSString * sumSub;
-
+@property(nonatomic,copy)NSString * sumDraw;
 @property (nonatomic , strong) NSString * chaseSchemeNo;        // 追加
 @property (nonatomic , strong) NSString * cardCode;         //
 @property (nonatomic , strong) NSString * lotteryCode;      // 奖期
