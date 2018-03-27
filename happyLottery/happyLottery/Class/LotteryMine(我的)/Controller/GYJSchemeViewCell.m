@@ -103,10 +103,15 @@
         [groupList addObject:model];
     }
     
+    NSArray *groupList2 = [groupList copy];
+    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"indexNumber" ascending:YES];
+    groupList2 = [groupList2 sortedArrayUsingDescriptors:@[descriptor]];
+    groupList = [groupList2 mutableCopy];
     NSDictionary * selectArray = [[Utility objFromJson:self.scheme.betContent] firstObject][@"number"];
     CGFloat curY = 30;
-    for (NSString *num in selectArray) {
+    
         for (WordCupHomeItem *item in groupList) {
+          for (NSString *num in selectArray) {
             if ([item.indexNumber integerValue] == [num integerValue]) {
                 UILabel *lab = [self creactLab:item.indexNumber andFrame:CGRectMake(0, curY, 50, 30)];
                 // “冠军-亚军” 替换成 “冠军   VS   亚军”
