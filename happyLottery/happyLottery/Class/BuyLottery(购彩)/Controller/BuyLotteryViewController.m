@@ -119,8 +119,6 @@
     
 //    [self.view bringSubviewToFront:redpacketView];
 //    [self.view insertSubview:redpacketView aboveSubview:self.tabBarController.tabBar];
-    
-    
 }
 
 

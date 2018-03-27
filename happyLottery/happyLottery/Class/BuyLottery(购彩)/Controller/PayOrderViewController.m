@@ -56,6 +56,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if ([Utility isIOS11After]) {
+        self.automaticallyAdjustsScrollViewInsets = NO; // tableView 莫名其妙  contentOffset.y 成-64了  MMP
+    }
     if (self.cashPayMemt.costType == CostTypeCASH) {
         self.labScoreInfoContent.hidden = YES;
         

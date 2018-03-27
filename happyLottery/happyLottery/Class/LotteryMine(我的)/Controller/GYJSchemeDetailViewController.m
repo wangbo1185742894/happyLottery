@@ -64,9 +64,6 @@
         self.navigationController.navigationBar.barTintColor = SystemGreen;
     }
     [self loadData];
-    if ([Utility isIOS11After]) {
-        self.automaticallyAdjustsScrollViewInsets = NO; // tableView 莫名其妙  contentOffset.y 成-64了  MMP
-    }
 }
 
 

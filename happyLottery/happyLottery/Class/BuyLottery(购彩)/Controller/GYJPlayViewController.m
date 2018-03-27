@@ -71,6 +71,7 @@
     [self setUpRightBtn];
     
     self.transaction = [[GYJTransaction alloc]init];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -93,7 +94,7 @@
 
 #pragma mark DateSource
 - (void)refreshlistArray:(NSArray *)infoArray{
-    [self hideLoadingView];
+  
     [self.gjSellArray removeAllObjects];
     [self.groupList removeAllObjects];
     [self.gjSelectedArray removeAllObjects];
@@ -104,7 +105,7 @@
         [self.gjSellArray addObject:model];
         [self.groupList addObject:model];
     }
-    [self.gyjListTableView reloadData];
+//    [self.gyjListTableView reloadData];
 }
 
 -(void)update{
@@ -255,7 +256,10 @@
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, tableView.contentSize.width, 20)];
     //设置 title 文字内容
     if (createTime.length>0) {
-        titleLabel.text = [NSString stringWithFormat:@"%@截止",createTime];
+        if (![createTime isEqualToString:@"奖期不在售"]) {
+            createTime = [NSString stringWithFormat:@"%@截止",createTime];
+        }
+        titleLabel.text = createTime;
     }
     //设置 title 颜色
     titleLabel.textColor = RGBCOLOR(141, 141, 141);
@@ -408,22 +412,24 @@
 
 //奖期
 -(void)gotSellIssueList:(NSArray *)infoDic errorMsg:(NSString *)msg{
-    if (infoDic == nil || infoDic .count == 0) {
-        [self showPromptText:msg hideAfterDelay:1.9];
-        return;
-    }
     self.lottery.currentRound = [infoDic firstObject];
     self.transaction.lottery.currentRound = [infoDic firstObject];
+//    if (infoDic == nil || infoDic .count == 0) {
+//
+//        createTime = @"奖期不在售";
+//        [self showPromptText:msg hideAfterDelay:1.9];
+//    }
     if (showJQ) {
-        if ([self.lottery.currentRound isExpire] ||![self.lottery.currentRound.sellStatus isEqualToString:@"ING_SELL"]) {
+        if ([self.lottery.currentRound isExpire] ||![self.lottery.currentRound.sellStatus isEqualToString:@"ING_SELL"]||infoDic == nil || infoDic .count == 0) {
             createTime = @"奖期不在售";
         } else {
             createTime = self.lottery.currentRound.stopTime;
         }
         [self.gyjListTableView reloadData];
+        [self hideLoadingView];
         return;
     }
-    if ([self.lottery.currentRound isExpire] ||![self.lottery.currentRound.sellStatus isEqualToString:@"ING_SELL"]) {
+    if ([self.lottery.currentRound isExpire] ||![self.lottery.currentRound.sellStatus isEqualToString:@"ING_SELL"]||infoDic == nil || infoDic .count == 0) {
         [self showPromptText:@"奖期不在售" hideAfterDelay:2.0];
         return;
     }
@@ -533,7 +539,7 @@
     if(gyjSelectedView != nil){
         return;
     }
-    gyjSelectedView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 160, 40)];
+    gyjSelectedView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 164, 40)];
     gyjSelectedView.backgroundColor = [UIColor clearColor];
     
     gyjSelectedView.layer.cornerRadius = 20;
