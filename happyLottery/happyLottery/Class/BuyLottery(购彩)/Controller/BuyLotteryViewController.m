@@ -84,7 +84,7 @@
     __weak IBOutlet UIButton *goRedPacket;
 
     __weak IBOutlet UIButton *gyjButton;
-    BOOL showGYJbtn;
+    BOOL showGJbtn;
 }
 @property(nonatomic,strong)Lottery *lottery;
 @end
@@ -124,19 +124,21 @@
 
 //修改，，，，，，，，，，
 - (void)gyjButtonHiddenOrNot{
-
+    showGJbtn = YES;
     [self.lotteryMan getSellIssueList:@{@"lotteryCode":@"JCGJ"}];
 }
 
+//奖期不在售时，服务器返回"[]"
 -(void)gotSellIssueList:(NSArray *)infoDic errorMsg:(NSString *)msg{
     LotteryRound * currentRound = [infoDic firstObject];
-    if ([currentRound isExpire] ||![currentRound.sellStatus isEqualToString:@"ING_SELL"]) {
-        showGYJbtn = NO;
-        if ([currentRound.lotteryCode isEqualToString:@"JCGJ"]) {
+    if ([currentRound isExpire] ||![currentRound.sellStatus isEqualToString:@"ING_SELL"]||currentRound == nil) {
+//        [currentRound.lotteryCode isEqualToString:@"JCGJ"]
+        if (showGJbtn == YES) {
+            showGJbtn = NO;
             [self.lotteryMan getSellIssueList:@{@"lotteryCode":@"JCGYJ"}];
         }
     } else {
-        showGYJbtn = YES;
+        showGJbtn = YES;
         btnGyjHeight.constant = 57;
     }
 }
@@ -433,6 +435,7 @@
         redpacketView.hidden = YES;
     }
     [self gyjButtonHiddenOrNot];
+//    [self actionJcgyj:nil];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{

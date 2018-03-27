@@ -82,13 +82,13 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"pic_guanyajun_beijing"] forBarMetrics:UIBarMetricsDefault];
+//    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"pic_guanyajun_beijing"] forBarMetrics:UIBarMetricsDefault];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self showLoadingText:nil];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:SystemGreen] forBarMetrics:UIBarMetricsDefault];
+//    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:SystemGreen] forBarMetrics:UIBarMetricsDefault];
         [[NSNotificationCenter defaultCenter]removeObserver:self name:NotificationNameUserLogin object:nil];
 }
 

@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "happyLottery/Class/LotteryMine(&#x6211;&#x7684;)/Controller/GYJSchemeViewCell.m"
-            timestampString = "543816692.176481"
+            timestampString = "543825587.8421611"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "41"
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/PaySuccessViewController.m"
-            timestampString = "543816692.176798"
+            timestampString = "543825587.84253"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "47"
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/PayOrderViewController.m"
-            timestampString = "543816692.1770149"
+            timestampString = "543822991.328869"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "368"
-            endingLineNumber = "368"
+            startingLineNumber = "370"
+            endingLineNumber = "370"
             landmarkName = "-paySuccess"
             landmarkType = "7">
          </BreakpointContent>
@@ -186,12 +186,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/GYJPlayViewController.m"
-            timestampString = "543816692.177289"
+            timestampString = "543825587.84282"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "384"
-            endingLineNumber = "384"
-            landmarkName = "-pressSelectGroup"
+            startingLineNumber = "391"
+            endingLineNumber = "391"
+            landmarkName = "-creatBarItem:icon:andFrame:andAction:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -202,13 +202,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/GYJPlayViewController.m"
-            timestampString = "543816692.177968"
+            timestampString = "543825587.843088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
             landmarkName = "-selectedLeagueItem:"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[GYJPlayViewController selectedLeagueItem:]"
+                  moduleName = "happyLottery"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/guanalong/happyLottery/happyLottery/happyLottery/Class/BuyLottery(%E8%B4%AD%E5%BD%A9)/Controller/GYJPlayViewController.m"
+                  timestampString = "543825588.079711"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "181"
+                  endingLineNumber = "181"
+                  offsetFromSymbolStart = "312">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[GYJPlayViewController selectedLeagueItem:]"
+                  moduleName = "happyLottery"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/guanalong/happyLottery/happyLottery/happyLottery/Class/BuyLottery(%E8%B4%AD%E5%BD%A9)/Controller/GYJPlayViewController.m"
+                  timestampString = "543825588.0823801"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "181"
+                  endingLineNumber = "181"
+                  offsetFromSymbolStart = "328">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -244,7 +276,7 @@
                   moduleName = "happyLottery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/guanalong/happyLottery/happyLottery/happyLottery/Class/LotteryMine(%E6%88%91%E7%9A%84)/View/JCLQOrderDetailViewCell.m"
-                  timestampString = "543816692.407961"
+                  timestampString = "543825588.090392"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "217"
@@ -259,7 +291,7 @@
                   moduleName = "happyLottery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/guanalong/happyLottery/happyLottery/happyLottery/Class/LotteryMine(%E6%88%91%E7%9A%84)/View/JCLQOrderDetailViewCell.m"
-                  timestampString = "543816692.4109451"
+                  timestampString = "543825588.092873"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "217"
@@ -291,22 +323,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/PayOrderViewController.m"
-            timestampString = "543816692.17835"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "happyLottery/Class/LotteryMine(&#x6211;&#x7684;)/Controller/MyOrderListViewController.m"
             timestampString = "543815295.0377049"
             startingColumnNumber = "9223372036854775807"
@@ -323,13 +339,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "happyLottery/Utility/Utility.m"
-            timestampString = "543813519.189932"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/GYJPlayViewController.m"
+            timestampString = "543825587.8432519"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
-            landmarkName = "+isIOS11After"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
+            landmarkName = "-setTableViewCell"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -340,12 +356,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/GYJPlayViewController.m"
-            timestampString = "543816692.178455"
+            timestampString = "543825587.843335"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "-viewWillDisappear:"
+            startingLineNumber = "516"
+            endingLineNumber = "516"
+            landmarkName = "-gyjCurrentRound"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -356,12 +372,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/GYJPlayViewController.m"
-            timestampString = "543816692.178743"
+            timestampString = "543825587.8434139"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
-            landmarkName = "-gotlistJcgyjSellItem:errorMsg:"
+            startingLineNumber = "351"
+            endingLineNumber = "351"
+            landmarkName = "-plusButton:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -371,13 +387,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/GYJPlayViewController.m"
-            timestampString = "543816692.179005"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/PayOrderViewController.m"
+            timestampString = "543822991.331329"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "509"
-            endingLineNumber = "509"
-            landmarkName = "-betedLotteryScheme:errorMsg:"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "-viewWillAppear:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -387,13 +403,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/GYJPlayViewController.m"
-            timestampString = "543816692.1792721"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/BuyLotteryViewController.m"
+            timestampString = "543825587.843516"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "344"
-            endingLineNumber = "344"
-            landmarkName = "-lessButton:"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "-gotSellIssueList:errorMsg:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
