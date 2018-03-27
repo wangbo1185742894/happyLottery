@@ -66,7 +66,6 @@
     [self creatTitleView];
     self.lottery = [self.lotteryMan getAllLottery][8];
     [self actionPlayTypeSelect:btnGJ];
-    
     [self initLable];
     [self setUpRightBtn];
     
@@ -529,7 +528,13 @@
 }
 
 -(void)initLable {
-    self.alreadySelected.text = @"至少选择一种";
+    if (isShowGJ) {
+        self.alreadySelected.text = @"已选0场球队";
+    } else {
+        self.alreadySelected.text = @"已选0场对阵";
+    }
+    self.alreadySelected.keyWord =@"0";
+    self.alreadySelected.keyWordColor = SystemRed;
     self.tfBeiCount.text = @"5";
     self.labSchemeInfo.text = [NSString stringWithFormat:@"0注%ld倍,",[self.tfBeiCount.text integerValue]];
     self.labCount.text = [NSString stringWithFormat:@"共0元"];

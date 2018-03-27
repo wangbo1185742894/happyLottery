@@ -50,6 +50,7 @@
     __weak IBOutlet UIView *lotteryPlayView;
     __weak IBOutlet NSLayoutConstraint *btnGyjHeight;
     OpenRedPopView *popView;
+    __weak IBOutlet NSLayoutConstraint *spaceBtnGyj;
     __weak IBOutlet NSLayoutConstraint *contentViewDisTop;
     NSMutableArray *listUseRedPacketArray;
      RedPacket *r;
@@ -140,6 +141,7 @@
     } else {
         showGJbtn = YES;
         btnGyjHeight.constant = 57;
+        spaceBtnGyj.constant = 10;
     }
 }
 
@@ -435,7 +437,7 @@
         redpacketView.hidden = YES;
     }
     [self gyjButtonHiddenOrNot];
-//    [self actionJcgyj:nil];
+   
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
