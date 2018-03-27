@@ -84,6 +84,7 @@
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"pic_guanyajun_beijing"] forBarMetrics:UIBarMetricsDefault];
 }
+
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self showLoadingText:nil];
@@ -340,13 +341,17 @@
 }
 
 - (IBAction)lessButton:(id)sender {
-    if ([self.tfBeiCount.text integerValue] ==0 ) {
+    if ([self.tfBeiCount.text integerValue] ==1 ) {
         return;
     }
     self.tfBeiCount.text = [NSString stringWithFormat:@"%ld",[self.tfBeiCount.text integerValue]-1];
     [self update];
 }
+
 - (IBAction)plusButton:(id)sender {
+    if ([self.tfBeiCount.text integerValue] ==9999 ) {
+        return;
+    }
     self.tfBeiCount.text = [NSString stringWithFormat:@"%ld",[self.tfBeiCount.text integerValue]+1];
     [self update];
 }
