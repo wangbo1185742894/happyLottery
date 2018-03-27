@@ -90,7 +90,7 @@ typedef enum EarningsType{
 - (void)getbonusOptimize:(BaseTransaction *)transcation;
 - (void) betLotterySchemeOpti:(NSArray *)schemeList;
 - (void) betLotterySchemeOpti:(BaseTransaction *)transcation schemeList:(NSArray *)schemeList;
-
+- (void) lotteryTouZhuScheme: (Lottery *) lottery transaction: (BaseTransaction*) transaction;
 - (NSArray*) getAllLottery ;
 - (void)getSellIssueList:(NSDictionary *)paraDic;
 - (void)getListZcMatchSp:(NSDictionary *)paraDic;

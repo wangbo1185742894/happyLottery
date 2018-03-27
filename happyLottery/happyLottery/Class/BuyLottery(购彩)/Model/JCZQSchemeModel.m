@@ -152,6 +152,12 @@
     return state;
     
 }
+-(CGFloat )getGYJCellHeight{
+
+    NSArray * selectArray = [[Utility objFromJson:self.betContent] firstObject][@"number"];
+    return selectArray.count * 30 + 80;
+    
+}
 
 -(CGFloat)getJCZQCellHeight{
     float height = 0;
@@ -178,6 +184,12 @@
     }
     if ([self.lottery isEqualToString:@"JCZQ"]) {
         return @"footerball.png";
+    }
+    if ([self.lottery isEqualToString:@"JCGYJ"]) {
+        return @"Championship.png";
+    }
+    if ([self.lottery isEqualToString:@"JCGJ"]) {
+        return @"first.png";
     }
     return @"";
 }

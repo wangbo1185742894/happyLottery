@@ -57,7 +57,7 @@
 
 - (BOOL)isValidateName:(NSString *)name;
 - (BOOL)isValidateRealName:(NSString *)name;
-
+- (void) useBackButton:(BOOL)isHasCondition;
 -(void)cleanWebviewCache;
 - (void)removeWebCache;
 -(void)forgetPayPwd;

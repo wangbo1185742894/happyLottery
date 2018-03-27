@@ -72,6 +72,7 @@
 
 -(NSString *)getSchemeState;
 -(CGFloat)getJCZQCellHeight;
+-(CGFloat )getGYJCellHeight;
 @end
 
 

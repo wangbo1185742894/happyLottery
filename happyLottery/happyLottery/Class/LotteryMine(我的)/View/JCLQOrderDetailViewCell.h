@@ -24,5 +24,7 @@
 
 -(void)reloadData:(NSDictionary *)dic;
 
+-(void)reloadDataGYJ:(NSDictionary *)dic;
+
 -(CGFloat)getCellHeight:(NSDictionary*)dic;
 @end

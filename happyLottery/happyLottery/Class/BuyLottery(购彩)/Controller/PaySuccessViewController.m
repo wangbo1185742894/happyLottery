@@ -11,6 +11,7 @@
 #import "SchemeDetailViewController.h"
 #import "MyOrderListViewController.h"
 #import "CTZQSchemeDetailViewController.h"
+#import "GYJSchemeDetailViewController.h"
 
 @interface PaySuccessViewController ()
 
@@ -43,14 +44,18 @@
     if ([self.lotteryName isEqualToString:@"胜负14场"] || [self.lotteryName isEqualToString:@"任选9场"]) {
         CTZQSchemeDetailViewController *schemeVC = [[CTZQSchemeDetailViewController alloc]init];
         schemeVC.schemeNO = self.schemeNO;
-        
-        
         [self.navigationController pushViewController:schemeVC animated:YES];
     }else if([self.lotteryName isEqualToString:@"大乐透"]){
         DLTSchemeDetailViewController *schemeVC = [[DLTSchemeDetailViewController alloc]init];
         schemeVC.schemeNO = self.schemeNO;
         [self.navigationController pushViewController:schemeVC animated:YES];
-    }else{
+    }else if ([self.lotteryName isEqualToString:@"冠军"] || [self.lotteryName isEqualToString:@"冠亚军"]){
+        GYJSchemeDetailViewController *schemeVC = [[GYJSchemeDetailViewController alloc]init];
+        schemeVC.schemeNO = self.schemeNO;
+        [self.navigationController pushViewController:schemeVC animated:YES];
+    }
+    else
+    {
         SchemeDetailViewController *schemeVC = [[SchemeDetailViewController alloc]init];
         schemeVC.schemeNO = self.schemeNO;
         [self.navigationController pushViewController:schemeVC animated:YES];

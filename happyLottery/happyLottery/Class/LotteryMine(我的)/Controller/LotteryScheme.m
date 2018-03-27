@@ -308,28 +308,6 @@
     
         return YES;
     }
-//    NSString *cardCode =[NSString stringWithFormat:@"%@",[GlobalInstance instance].curUser.username];
-//    if ([self.cardCode isEqualToString:cardCode]) {
-//        return YES;
-//    }else if ([self.secretType isEqualToString:@"FULL_SECRET"]) {
-//        return NO;
-//    }else if([self.secretType isEqualToString:@"DRAWN_PUBLIC"]){
-//    
-//        if ([self.winningStatus isEqualToString:@"已开奖"]||[self.winningStatus isEqualToString:@"已派奖"]) {
-//            return YES;
-//        }else{
-//            return NO;
-//        }
-//    }else if([self.secretType isEqualToString:@"FOLLOW_PUBLIC"]){
-//        for (TogetherSub*sub in self.trTogetherSubs) {
-//            if ([sub.cardCode isEqualToString:cardCode]) {
-//                return YES;
-//            }
-//        }
-//        return NO;
-//    }else{
-//        return YES;
-//    }
 }
 
 -(NSString *)getSchemeState{

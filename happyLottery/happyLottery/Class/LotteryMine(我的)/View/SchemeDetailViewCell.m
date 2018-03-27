@@ -26,6 +26,9 @@
     __weak IBOutlet UILabel *labBetCost;
     __weak IBOutlet UILabel *labUnit;
     JCZQSchemeItem *scheme;
+    __weak IBOutlet UILabel *touzhuzhushu;
+    __weak IBOutlet UILabel *fanganhao;
+    __weak IBOutlet UILabel *touzhujine;
 }
 @end
 
@@ -79,16 +82,29 @@
         labBetCost.text = [NSString stringWithFormat:@"%@积分",model.betCost];
     }
     
-    if ([model.lottery isEqualToString:@"JCZQ"]) {
+    if ([model.lottery isEqualToString:@"JCZQ"]||[model.lottery isEqualToString:@"JCGJ"]||[model.lottery isEqualToString:@"JCGYJ"]) {
          labUnit.text = [NSString stringWithFormat:@"%@注",model.units];
     }else{
          labUnit.text = [NSString stringWithFormat:@"%@注%@倍",model.units,model.multiple];
     }
   
     labBouns.text = [self getWinningStatus:model];
-
+    
 //    labChuanFa.text = [self getChuanFa];
+//    [self reloadGYJModel:model];
 }
+
+//冠亚军设置
+//- (void)reloadGYJModel:(JCZQSchemeItem*)model{
+//    if ([model.lottery isEqualToString:@"JCGYJ"]||[model.lottery isEqualToString:@"JCGJ"]) {
+//        fanganhao.text = @"中奖金额";
+//        labBetBouns.text = @"投注注数";
+//        touzhuzhushu.text = @"投注倍数";
+//        labSchemeNo.text = labBouns.text;
+//        labBouns.text = labUnit.text;
+//        labUnit.text = model.multiple;
+//    }
+//}
 
 //    /**     * 等待开奖     */
 //    WAIT_LOTTERY("等待开奖"),
@@ -127,6 +143,10 @@
         return [NSString stringWithFormat:@"任选9场(第%@期)",scheme.issueNumber];
     }else if([code isEqualToString:@"SFC"]){
         return [NSString stringWithFormat:@"胜负14场(第%@期)",scheme.issueNumber];
+    }else if ([code isEqualToString:@"JCGYJ"]){
+        return @"冠亚军游戏";
+    }else if ([code isEqualToString:@"JCGJ"]){
+        return @"冠军游戏";
     }
     return @"彩票";
 }

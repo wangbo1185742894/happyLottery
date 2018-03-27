@@ -9,6 +9,7 @@
 #import "MyOrderListViewController.h"
 #import "DLTSchemeDetailViewController.h"
 #import "CTZQSchemeDetailViewController.h"
+#import "GYJSchemeDetailViewController.h"
 #import "JCZQSchemeModel.h"
 #import "SchemListCell.h"
 #import "SchemeDetailViewController.h"
@@ -150,7 +151,14 @@
         NSString *imageName = [dataArray[indexPath.row] getSchemeImgState];
         schemeVC.imageName = imageName;
         [self.navigationController pushViewController:schemeVC animated:YES];
-    }else{
+    }else if ([dataArray[indexPath.row].lottery isEqualToString:@"JCGJ"] || [dataArray[indexPath.row].lottery isEqualToString:@"JCGYJ"]){
+        GYJSchemeDetailViewController*schemeVC = [[GYJSchemeDetailViewController alloc]init];
+        schemeVC.schemeNO = dataArray[indexPath.row].schemeNO;
+        NSString *imageName = [dataArray[indexPath.row] getSchemeImgState];
+        schemeVC.imageName = imageName;
+        [self.navigationController pushViewController:schemeVC animated:YES];
+    }
+    else{
         SchemeDetailViewController *schemeVC = [[SchemeDetailViewController alloc]init];
         schemeVC.schemeNO = dataArray[indexPath.row].schemeNO;
         NSString *imageName = [dataArray[indexPath.row] getSchemeImgState];

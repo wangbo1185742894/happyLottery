@@ -198,5 +198,49 @@
 		<key>DateSectionLinkSymbol</key>
 		<string>$</string>
 	</dict>
+	<dict>
+		<key>Name</key>
+		<string>冠军</string>
+		<key>Identifier</key>
+		<string>JCGJ</string>
+		<key>NeedSectionRandom</key>
+		<false/>
+		<key>Desc</key>
+		<string></string>
+		<key>AvatarPictureName</key>
+		<string>champion.png</string>
+		<key>Active</key>
+		<true/>
+		<key>Type</key>
+		<string>11</string>
+		<key>RuleDesc</key>
+		<string></string>
+		<key>DanTuo</key>
+		<true/>
+		<key>DateSectionLinkSymbol</key>
+		<string>$</string>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>冠亚军</string>
+		<key>Identifier</key>
+		<string>JCGYJ</string>
+		<key>NeedSectionRandom</key>
+		<false/>
+		<key>Desc</key>
+		<string></string>
+		<key>AvatarPictureName</key>
+		<string>Championship.png</string>
+		<key>Active</key>
+		<true/>
+		<key>Type</key>
+		<string>12</string>
+		<key>RuleDesc</key>
+		<string></string>
+		<key>DanTuo</key>
+		<true/>
+		<key>DateSectionLinkSymbol</key>
+		<string>$</string>
+	</dict>
 </array>
 </plist>

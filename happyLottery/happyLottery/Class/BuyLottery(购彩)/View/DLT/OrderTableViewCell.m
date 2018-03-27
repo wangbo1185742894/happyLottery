@@ -164,8 +164,22 @@
         lotteryIconImgV.image = [UIImage imageNamed:@"jclq_icon.png"];
         lotteryTypeLb.text = @"竞彩篮球";
     }
-    
-    
+    if ([order.lotteryType isEqualToString:@"JCZQ"]) {
+        lotteryIconImgV.image = [UIImage imageNamed:@"jczq.png"];
+        lotteryTypeLb.text = @"竞彩足球";
+    }
+    if ([order.lotteryType isEqualToString:@"JCZQ"]) {
+        lotteryIconImgV.image = [UIImage imageNamed:@"jczq.png"];
+        lotteryTypeLb.text = @"竞彩足球";
+    }
+    if ([order.lotteryType isEqualToString:@"JCGJ"]){
+         lotteryTypeLb.text = @"冠军";
+         lotteryIconImgV.image = [UIImage imageNamed:@"first.png"];
+    }
+    if ([order.lotteryType isEqualToString:@"JCGYJ"]){
+         lotteryTypeLb.text = @"冠亚军";
+         lotteryIconImgV.image = [UIImage imageNamed:@"Championship.png"];
+    }
     //    if([order.winningStatus intValue] > 2){
     //        winningStateLb.textColor = [UIColor redColor];
     //    }else{

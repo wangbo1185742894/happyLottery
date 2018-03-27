@@ -177,6 +177,10 @@
         schemeCashModel.lotteryName = @"大乐透";
     }else if ([schemeDetail.lottery isEqualToString:@"DLT"]){
         schemeCashModel.lotteryName = @"竞彩足球";
+    }else if ([schemeDetail.lottery isEqualToString:@"GCGY"]){
+        schemeCashModel.lotteryName = @"冠军";
+    }else if ([schemeDetail.lottery isEqualToString:@"GCGYJ"]){
+        schemeCashModel.lotteryName = @"冠亚军";
     }
     if ([schemeDetail.costType isEqualToString:@"CASH"]) {
         schemeCashModel.costType = CostTypeCASH;
