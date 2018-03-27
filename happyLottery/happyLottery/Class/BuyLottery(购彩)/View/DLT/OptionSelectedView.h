@@ -12,7 +12,7 @@
 
 
 @interface OptionSelectedView : UIView
-
+@property (nonatomic,assign)BOOL isP3P5;
 @property(nonatomic , weak)NSObject<OptionSelectedViewDelegate>* delegate;
 - (instancetype)initWithFrame:(CGRect)frame andTitleArr:(NSArray<NSString *> *)titleArr;
 @end

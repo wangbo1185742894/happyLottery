@@ -224,6 +224,7 @@
 		2D36177920637BEA003093F9 /* WinResultTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D36177720637BE9003093F9 /* WinResultTableCell.xib */; };
 		2D36177C2064A884003093F9 /* win-zhuihao@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D36177A2064A883003093F9 /* win-zhuihao@3x.png */; };
 		2D36177D2064A884003093F9 /* win-zhuihao@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D36177B2064A884003093F9 /* win-zhuihao@2x.png */; };
+		2D3617802068DFEC003093F9 /* OptionSelectedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D36177E2068DFEB003093F9 /* OptionSelectedView.m */; };
 		2D40CAA2201EDE5700DDCFE3 /* shut@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40CA98201EDE4E00DDCFE3 /* shut@2x.png */; };
 		2D40CAA3201EDE5700DDCFE3 /* button_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40CA99201EDE4F00DDCFE3 /* button_line@2x.png */; };
 		2D40CAA4201EDE5700DDCFE3 /* bj_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40CA9A201EDE5100DDCFE3 /* bj_down@2x.png */; };
@@ -297,7 +298,6 @@
 		2D4B1EB01FDFCDA00034B708 /* arrow_down@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D4B1EAE1FDFCDA00034B708 /* arrow_down@3x.png */; };
 		2D4B1EB31FDFCDAF0034B708 /* arrow_up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D4B1EB11FDFCDAE0034B708 /* arrow_up@2x.png */; };
 		2D4B1EB41FDFCDAF0034B708 /* arrow_up@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D4B1EB21FDFCDAF0034B708 /* arrow_up@3x.png */; };
-		2D5171AF2006F37500C3CD7F /* OptionSelectedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5171AD2006F37400C3CD7F /* OptionSelectedView.m */; };
 		2D5171B32007110D00C3CD7F /* SchemeInfoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5171B12007110D00C3CD7F /* SchemeInfoViewCell.m */; };
 		2D5171B42007110D00C3CD7F /* SchemeInfoViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D5171B22007110D00C3CD7F /* SchemeInfoViewCell.xib */; };
 		2D5171B7200844AD00C3CD7F /* ADSModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5171B6200844AD00C3CD7F /* ADSModel.m */; };
@@ -1468,6 +1468,8 @@
 		2D36177720637BE9003093F9 /* WinResultTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WinResultTableCell.xib; sourceTree = "<group>"; };
 		2D36177A2064A883003093F9 /* win-zhuihao@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "win-zhuihao@3x.png"; sourceTree = "<group>"; };
 		2D36177B2064A884003093F9 /* win-zhuihao@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "win-zhuihao@2x.png"; sourceTree = "<group>"; };
+		2D36177E2068DFEB003093F9 /* OptionSelectedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionSelectedView.m; sourceTree = "<group>"; };
+		2D36177F2068DFEB003093F9 /* OptionSelectedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionSelectedView.h; sourceTree = "<group>"; };
 		2D40CA98201EDE4E00DDCFE3 /* shut@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shut@2x.png"; sourceTree = "<group>"; };
 		2D40CA99201EDE4F00DDCFE3 /* button_line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_line@2x.png"; sourceTree = "<group>"; };
 		2D40CA9A201EDE5100DDCFE3 /* bj_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bj_down@2x.png"; sourceTree = "<group>"; };
@@ -1550,8 +1552,6 @@
 		2D4B1EAE1FDFCDA00034B708 /* arrow_down@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_down@3x.png"; sourceTree = "<group>"; };
 		2D4B1EB11FDFCDAE0034B708 /* arrow_up@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_up@2x.png"; sourceTree = "<group>"; };
 		2D4B1EB21FDFCDAF0034B708 /* arrow_up@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_up@3x.png"; sourceTree = "<group>"; };
-		2D5171AD2006F37400C3CD7F /* OptionSelectedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionSelectedView.m; sourceTree = "<group>"; };
-		2D5171AE2006F37500C3CD7F /* OptionSelectedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionSelectedView.h; sourceTree = "<group>"; };
 		2D5171B02007110D00C3CD7F /* SchemeInfoViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SchemeInfoViewCell.h; sourceTree = "<group>"; };
 		2D5171B12007110D00C3CD7F /* SchemeInfoViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SchemeInfoViewCell.m; sourceTree = "<group>"; };
 		2D5171B22007110D00C3CD7F /* SchemeInfoViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SchemeInfoViewCell.xib; sourceTree = "<group>"; };
@@ -3350,6 +3350,8 @@
 		2D7B129D204D38580035AE89 /* DLT */ = {
 			isa = PBXGroup;
 			children = (
+				2D36177F2068DFEB003093F9 /* OptionSelectedView.h */,
+				2D36177E2068DFEB003093F9 /* OptionSelectedView.m */,
 				2DA39ED620523AA900A03FD1 /* ZHTableViewCell.h */,
 				2DA39ED720523AAA00A03FD1 /* ZHTableViewCell.m */,
 				2DA39ED820523AAB00A03FD1 /* ZHTableViewCell.xib */,
@@ -4274,8 +4276,6 @@
 				F9FC153120622A0F009BAD68 /* WCHomeGYJItemViewCell.xib */,
 				2D7B13B8204E875F0035AE89 /* CTZQ */,
 				2D7B129D204D38580035AE89 /* DLT */,
-				2D5171AE2006F37500C3CD7F /* OptionSelectedView.h */,
-				2D5171AD2006F37400C3CD7F /* OptionSelectedView.m */,
 				2D0600811FFE2035009E7568 /* TableHeaderView.h */,
 				2D0600801FFE2035009E7568 /* TableHeaderView.m */,
 				2D06007F1FFE2034009E7568 /* TableHeaderView.xib */,
@@ -6085,7 +6085,6 @@
 				2DDEDE781FD568C9007AEBF7 /* AFAutoPurgingImageCache.m in Sources */,
 				2D8CBFB41FF32ECC00CC367F /* ZLAlertView.m in Sources */,
 				2D628B181FEB9E290013D0E1 /* BaseJczaMorePlayView.m in Sources */,
-				2D5171AF2006F37500C3CD7F /* OptionSelectedView.m in Sources */,
 				F9581A7F1FE0FA01009753AA /* LoginViewController.m in Sources */,
 				2D8CC00F1FF487CF00CC367F /* WBHomeJCYCViewController.m in Sources */,
 				2D739C5D1FE3B31500264044 /* FMDatabasePool.m in Sources */,
@@ -6282,6 +6281,7 @@
 				2D7B1309204D47670035AE89 /* BetsListPopViewCell.m in Sources */,
 				F98A603B206395EB008C3132 /* LotteryScheme.m in Sources */,
 				F9632F57200C9A8B00F69D23 /* IntegeralChangeViewController.m in Sources */,
+				2D3617802068DFEC003093F9 /* OptionSelectedView.m in Sources */,
 				2DDEDC2F1FD51C8B007AEBF7 /* SOAPRequest.m in Sources */,
 				2D06002B1FFDCD9F009E7568 /* NSBundle+MJRefresh.m in Sources */,
 				2D739C5B1FE3B31500264044 /* FMDatabase.m in Sources */,

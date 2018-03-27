@@ -134,7 +134,7 @@
         return @"撤销追号";
     }
     if ([_chaseStatus isEqualToString:@"CATCHSTOP"]) {
-        return @"停止追号";
+        return @"已停追";
     }
     return @"追号中";
 //    switch ([_catchStatus intValue]) {
@@ -175,7 +175,7 @@
         return @"撤销追号";
     }
     if ([_chaseStatus isEqualToString:@"CATCHSTOP"]) {
-        return @"停止追号";
+        return @"已停追";
     }
     return @"追号中";
     //    switch ([_catchStatus intValue]) {
