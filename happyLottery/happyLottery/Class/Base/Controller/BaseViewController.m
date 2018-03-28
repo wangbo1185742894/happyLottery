@@ -36,8 +36,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationController.navigationBar setShadowImage:[UIImage imageWithColor:[UIColor clearColor]]]; //去掉导航栏 下面黑线线
-
-    self.navigationController.navigationBar.mj_h = 64;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(uploadVisit) name:@"NSNotificationUserLoginSuccess" object:nil];
