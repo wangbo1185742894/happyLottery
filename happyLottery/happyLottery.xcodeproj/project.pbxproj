@@ -1134,6 +1134,7 @@
 		F9F262B51FE8F4AE00C2E60F /* RSKTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F262AB1FE8F4AE00C2E60F /* RSKTouchView.m */; };
 		F9F262B61FE8F4AE00C2E60F /* UIApplication+RSKImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F262AD1FE8F4AE00C2E60F /* UIApplication+RSKImageCropper.m */; };
 		F9F262B71FE8F4AE00C2E60F /* UIImage+RSKImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F262AF1FE8F4AE00C2E60F /* UIImage+RSKImageCropper.m */; };
+		F9F5C88A206B96DB0007D7EF /* Helvetica-Condensed-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = F9F5C889206B96DB0007D7EF /* Helvetica-Condensed-Black.otf */; };
 		F9F6CA961FF5D6B100A49F71 /* inform@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F6CA8A1FF5D6AD00A49F71 /* inform@3x.png */; };
 		F9F6CA971FF5D6B100A49F71 /* voice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F6CA8B1FF5D6AD00A49F71 /* voice@2x.png */; };
 		F9F6CA981FF5D6B100A49F71 /* about@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F6CA8C1FF5D6AD00A49F71 /* about@2x.png */; };
@@ -2689,6 +2690,7 @@
 		F9F262AD1FE8F4AE00C2E60F /* UIApplication+RSKImageCropper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+RSKImageCropper.m"; sourceTree = "<group>"; };
 		F9F262AE1FE8F4AE00C2E60F /* UIImage+RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RSKImageCropper.h"; sourceTree = "<group>"; };
 		F9F262AF1FE8F4AE00C2E60F /* UIImage+RSKImageCropper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RSKImageCropper.m"; sourceTree = "<group>"; };
+		F9F5C889206B96DB0007D7EF /* Helvetica-Condensed-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica-Condensed-Black.otf"; sourceTree = "<group>"; };
 		F9F6CA8A1FF5D6AD00A49F71 /* inform@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inform@3x.png"; sourceTree = "<group>"; };
 		F9F6CA8B1FF5D6AD00A49F71 /* voice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "voice@2x.png"; sourceTree = "<group>"; };
 		F9F6CA8C1FF5D6AD00A49F71 /* about@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about@2x.png"; sourceTree = "<group>"; };
@@ -3734,6 +3736,7 @@
 				F94A106F2022C3E2006C3695 /* logo125@3x.png */,
 				F9C4EED72020897B00CDCDBA /* logo120@3x.png */,
 				F9C4EED82020897C00CDCDBA /* logo120@2x.png */,
+				F9F5C889206B96DB0007D7EF /* Helvetica-Condensed-Black.otf */,
 				F9B5D92E2060A9DD00C9F6DC /* jcgjgroupflag */,
 				F9C3BA1920088E2600916F3C /* feedback */,
 				F94770B82007065F0091729E /* Introduction to football games Html */,
@@ -5656,6 +5659,7 @@
 				2D7B133E204E24D00035AE89 /* redBall@3x.png in Resources */,
 				2DE1094A2003423E0020343A /* hometeam@3x.png in Resources */,
 				2D8CBFCE1FF3769F00CC367F /* YuCeLiShiZhanJViewController.xib in Resources */,
+				F9F5C88A206B96DB0007D7EF /* Helvetica-Condensed-Black.otf in Resources */,
 				F9B5D9A22060A9DE00C9F6DC /* flag434@3x.png in Resources */,
 				2D739CE81FEB462B00264044 /* guoguan@2x.png in Resources */,
 				2D20602A1FFCB71E0086E266 /* icon_yue@2x.png in Resources */,
