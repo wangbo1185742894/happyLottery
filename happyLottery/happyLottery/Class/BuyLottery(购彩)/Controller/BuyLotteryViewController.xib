@@ -428,7 +428,7 @@
                                     </constraints>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTv-4s-E2v">
-                                    <rect key="frame" x="0.0" y="265" width="375" height="0.0"/>
+                                    <rect key="frame" x="7" y="265" width="361" height="0.0"/>
                                     <constraints>
                                         <constraint firstAttribute="height" id="vrO-CA-0ch"/>
                                     </constraints>
@@ -450,12 +450,12 @@
                                 <constraint firstItem="Jpl-IJ-OIq" firstAttribute="top" secondItem="hl5-MZ-Qii" secondAttribute="bottom" constant="1" id="aWT-XG-iMj"/>
                                 <constraint firstItem="hl5-MZ-Qii" firstAttribute="leading" secondItem="0Aq-6s-ooa" secondAttribute="leading" id="bY2-hh-mYE"/>
                                 <constraint firstItem="H44-43-E3M" firstAttribute="top" secondItem="3HX-tS-NpW" secondAttribute="bottom" constant="10" id="bwX-9k-Mj4"/>
-                                <constraint firstItem="OTv-4s-E2v" firstAttribute="leading" secondItem="0Aq-6s-ooa" secondAttribute="leading" id="d9f-B9-ERZ"/>
                                 <constraint firstItem="hl5-MZ-Qii" firstAttribute="top" secondItem="H44-43-E3M" secondAttribute="bottom" constant="10" id="dJc-Fe-2Mr"/>
                                 <constraint firstItem="Jpl-IJ-OIq" firstAttribute="leading" secondItem="0Aq-6s-ooa" secondAttribute="leading" id="eNe-2q-Lr8"/>
                                 <constraint firstItem="H44-43-E3M" firstAttribute="leading" secondItem="0Aq-6s-ooa" secondAttribute="leading" id="fhT-yd-OOR"/>
+                                <constraint firstItem="OTv-4s-E2v" firstAttribute="leading" secondItem="0Aq-6s-ooa" secondAttribute="leading" constant="7" id="htX-bm-5I8"/>
                                 <constraint firstAttribute="trailing" secondItem="Jpl-IJ-OIq" secondAttribute="trailing" id="law-1F-H2P"/>
-                                <constraint firstAttribute="trailing" secondItem="OTv-4s-E2v" secondAttribute="trailing" id="nOU-GH-lUX"/>
+                                <constraint firstAttribute="trailing" secondItem="OTv-4s-E2v" secondAttribute="trailing" constant="7" id="ngt-yD-2LO"/>
                             </constraints>
                         </view>
                     </subviews>
