@@ -39,7 +39,7 @@
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Pg-3A-JNl">
                             <rect key="frame" x="10" y="0.0" width="355" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="再来一单" backgroundImage="schemedetailbutton.png"/>
+                            <state key="normal" title="继续投注" backgroundImage="schemedetailbutton.png"/>
                             <connections>
                                 <action selector="actionReBuy:" destination="-1" eventType="touchUpInside" id="yEd-pB-xC6"/>
                             </connections>

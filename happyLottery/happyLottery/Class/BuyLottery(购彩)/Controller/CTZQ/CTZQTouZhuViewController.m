@@ -42,11 +42,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if (_cTransation.ctzqPlayType == CTZQPlayTypeRenjiu) {
-        self.title = @"任选9投注";
-    }else if (_cTransation.ctzqPlayType == CTZQPlayTypeShiSi){
-        self.title = @"胜负14场投注";
-    }
+    self.title = @"确认预约";
 
     self.lotteryMan.delegate  = self;
     
@@ -270,10 +266,7 @@
     schemeCashModel.subCopies = 1;
     if (btnMoniTouzhu.selected == YES) {
         schemeCashModel.costType = CostTypeSCORE;
-        if (self.cTransation.betCost  > 30000000) {
-            [self showPromptText:@"单笔总积分不能超过3千万积分" hideAfterDelay:1.7];
-            return;
-        }
+ 
     }else{
         schemeCashModel.costType = CostTypeCASH;
         if (self.cTransation.betCost  > 300000) {
@@ -499,7 +492,7 @@
     [summaryAttStr addAttributes:@{NSForegroundColorAttributeName:SystemGreen} range:NSMakeRange(rang1.location+1, rang2.location-rang1.location-1)];
     [summaryAttStr addAttributes:@{NSForegroundColorAttributeName:SystemGreen} range:NSMakeRange(rang3.location+1, summaryStr.length- rang3.location-2)];
     self.labSummary.attributedText = summaryAttStr;
-    if (_cTransation.betCost > 300000) {
+    if (_cTransation.betCost > 300000 && _cTransation.costType == CostTypeCASH) {
         [self showPromptText:@"单次投注金额不得高于30万" hideAfterDelay:2.7];
     }
 }

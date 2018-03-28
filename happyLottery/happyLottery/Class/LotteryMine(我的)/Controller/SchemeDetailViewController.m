@@ -145,14 +145,10 @@
         btnReBuy.hidden = YES;
         
     }else{
-        if ([schemeDetail.lottery isEqualToString:@"DLT"]){
             btnPay.hidden = YES;
             btnReBuy.hidden = NO;
             heightZhifuView.constant = 60;
-        }else{
-            
-            heightZhifuView.constant = 0;
-        }
+       
     }
     [tabMatchListVIew reloadData];
 
@@ -595,113 +591,9 @@
     [super navigationBackToLastPage];
 }
 - (IBAction)actionReBuy:(UIButton *)sender {
-    if ([schemeDetail.lottery isEqualToString:@"X115"] ||[schemeDetail.lottery isEqualToString:@"DLT"] ) {
-        for (Lottery  *lottery in _allLotter) {
-            if ([lottery.identifier isEqualToString:schemeDetail.lottery]) {
-                lottery_  = lottery;
-                
-            }
-        }
-        
-        _lotteryTransaction = [[LotteryTransaction alloc] init];
-        
-        _lotteryTransaction.beiTouCount = 1;
-        _lotteryTransaction.qiShuCount = 1;
-        _lotteryTransaction.lottery = lottery_;
-        
-        NSArray * betcontent = [Utility objFromJson: schemeDetail.betContent];
-        NSString * strbBetType;
-        for (NSDictionary *betDic in betcontent) {
-            
-            
-            
-            
-            LotteryBet * Bet = [[LotteryBet alloc] init];
-            
-            
-            Bet.sectionDataLinkSymbol = lottery_.dateSectionLinkSymbol;
-            
-            NSInteger cost = 2;
-            Bet.betType = 0;
-   
-            strbBetType = @"0";
-            if ([lottery_.identifier isEqualToString:@"DLT"]){
-                Bet.betType = 101 + (int )[betDic[@"betType"] integerValue];
-                cost = 2;
-                switch ([betDic[@"betType"] integerValue]) {
-                    case 0:
-                    Bet.betTypeDesc = @"单式";
-                    break;
-                    case 1:
-                    Bet.betTypeDesc = @"复式";
-                    break;
-                    case 2:
-                    Bet.betTypeDesc = @"胆拖";
-                    break;
-                    
-                    default:
-                    break;
-                }
-                
-                NSArray *redList = betDic[@"redList"];
-                NSArray *redDanList = betDic[@"redDanList"];
-                NSArray *blueList = betDic[@"blueList"];
-                NSArray *blueDanList = betDic[@"blueDanList"];
-                NSString *strRedList = [redList componentsJoinedByString:@","];
-                NSString *strRedDanlist =[NSString stringWithFormat:@"[胆:%@]",[redDanList componentsJoinedByString:@","]] ;
-                NSString *strBlueList = [blueList componentsJoinedByString:@","];
-                NSString *strBlueDanList =[NSString stringWithFormat:@"[胆:%@]",[blueDanList componentsJoinedByString:@","]] ;
-                NSString *betNumDesc = [NSString stringWithFormat:@"%@%@\n%@%@",strRedDanlist.length == 4?@"":strRedDanlist,strRedList,strBlueDanList.length == 4?@"":strBlueDanList,strBlueList];
-                
-                NSMutableAttributedString *numberAttributedString;
-                numberAttributedString = [[NSMutableAttributedString alloc]initWithString:betNumDesc];
-                [numberAttributedString setAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15],NSForegroundColorAttributeName:SystemRed} range:NSMakeRange(0, strRedList.length + (strRedDanlist.length== 4?0:strRedDanlist.length))];
-                [numberAttributedString setAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15],NSForegroundColorAttributeName:SystemBlue} range:NSMakeRange(strRedList.length + (strRedDanlist.length == 4?0:strRedDanlist.length) , (strBlueDanList.length== 4?0:strBlueDanList.length) + strBlueList.length +1)];
-                Bet.betNumbersDesc = numberAttributedString;
-                LotteryXHSection *l1 = [[LotteryXHSection alloc]init];
-                l1.sectionID = @"1";
-                LotteryXHSection *l2 = [[LotteryXHSection alloc]init];
-                l2.sectionID = @"2";
-                if (Bet.lotteryDetails == nil) {
-                    Bet.lotteryDetails = @[l1,l2];
-                }
-                
-                
-                Bet.betNumbers = [@{@"1":@{@"numberselected":redList,@"numberdanhao":redDanList},@"2":@{@"numberselected":blueList,@"numberdanhao":blueDanList}} mutableCopy];
-                
-            }
-            
-            [Bet setBetCount:(int )[betDic[@"units"] integerValue]];
-            [Bet setBetsCost:[betDic[@"units"] integerValue] * cost];
-            
-            if (betcontent.count >1) {
-                
-                [self.lotteryTransaction addBet:Bet];
-            }
-            
-        }
-        
-        if (betcontent.count == 1) {
-            
-            DLTPlayViewController *lpVC = [[DLTPlayViewController alloc] init];
-            lpVC.isReBuy = YES;
-            if ([schemeDetail.lottery isEqualToString:@"DLT"]){
-                lpVC.selectedNumber =betcontent;
-            }
-            
-            
-            lpVC.lottery = lottery_;
-            [self.navigationController pushViewController:lpVC animated:YES];
-        }else{
-            DLTPlayViewController *lpVC = [[DLTPlayViewController alloc] init];
-            
-            lpVC.isReBuy = NO;
-            lpVC.lotteryTransaction = _lotteryTransaction;
-            lpVC.lottery = lottery_;
-            [self.navigationController pushViewController:lpVC animated:YES];
-        }
-        
-    }
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"NSNotificationJumpToPlayVC" object:@"JCZQ"];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    
 }
 
 @end

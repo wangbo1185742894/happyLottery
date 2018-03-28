@@ -50,17 +50,22 @@
     UIButton *xiahuaBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     xiahuaBtn.frame = CGRectMake(KscreenWidth - 100,10, 90, 20);
     [xiahuaBtn setTitleColor:TEXTGRAYCOLOR forState:0];
-    [xiahuaBtn setTitle:@"下滑查看开奖" forState:0];
+    [xiahuaBtn setTitle:@"往期开奖" forState:0];
     xiahuaBtn.titleLabel.font = [UIFont systemFontOfSize:11];
     [xiahuaBtn setImage:[UIImage imageNamed:@"arrow_down.png"] forState:0];
+
     [xiahuaBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, -120)];
     [xiahuaBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, -45, 0, 0)];
+    [xiahuaBtn addTarget:self action:@selector(lookHisOpenResult:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:xiahuaBtn];
     
     [self showCurRoundInfo];
     
-    
-    
+}
+
+-(void)lookHisOpenResult:(UIButton *)sender{
+    sender.selected = !sender.selected;
+    [self.delegate lookOpenHis:sender];
 }
 
 

@@ -15,13 +15,12 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KRK-7f-viI" id="qKF-gm-RSO">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="78.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uiq-nf-Gil">
-                        <rect key="frame" x="34" y="3" width="110" height="26"/>
+                        <rect key="frame" x="10" y="3" width="134" height="26"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="110" id="Abh-XA-Wl7"/>
                             <constraint firstAttribute="height" constant="26" id="iBN-pb-qGn"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -29,10 +28,9 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gjj-5h-tCS">
-                        <rect key="frame" x="176" y="3" width="110" height="26"/>
+                        <rect key="frame" x="176" y="3" width="134" height="26"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="26" id="Z17-U1-rzB"/>
-                            <constraint firstAttribute="width" constant="110" id="jZF-c1-bbU"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -101,10 +99,12 @@
                     <constraint firstItem="Krc-uE-EzW" firstAttribute="top" secondItem="vH8-Ce-6Sj" secondAttribute="bottom" constant="7" id="L0n-nT-EYE"/>
                     <constraint firstItem="vH8-Ce-6Sj" firstAttribute="leading" secondItem="Uiq-nf-Gil" secondAttribute="trailing" id="OTz-Dx-VZE"/>
                     <constraint firstItem="Krc-uE-EzW" firstAttribute="centerX" secondItem="qKF-gm-RSO" secondAttribute="centerX" id="WJb-UV-TGW"/>
+                    <constraint firstAttribute="trailing" secondItem="gjj-5h-tCS" secondAttribute="trailing" constant="10" id="gNX-AK-XrE"/>
                     <constraint firstItem="gjj-5h-tCS" firstAttribute="leading" secondItem="vH8-Ce-6Sj" secondAttribute="trailing" id="mXg-lt-pUv"/>
                     <constraint firstItem="Krc-uE-EzW" firstAttribute="top" secondItem="Uiq-nf-Gil" secondAttribute="bottom" constant="7" id="u5o-2v-0Yu"/>
                     <constraint firstAttribute="bottom" secondItem="Krc-uE-EzW" secondAttribute="bottom" constant="10" id="xMb-m7-hgl"/>
                     <constraint firstItem="vH8-Ce-6Sj" firstAttribute="centerX" secondItem="qKF-gm-RSO" secondAttribute="centerX" id="z4a-xv-4bh"/>
+                    <constraint firstItem="Uiq-nf-Gil" firstAttribute="leading" secondItem="qKF-gm-RSO" secondAttribute="leading" constant="10" id="zpG-35-t6o"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

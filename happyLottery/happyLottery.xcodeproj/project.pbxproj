@@ -225,6 +225,9 @@
 		2D36177C2064A884003093F9 /* win-zhuihao@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D36177A2064A883003093F9 /* win-zhuihao@3x.png */; };
 		2D36177D2064A884003093F9 /* win-zhuihao@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D36177B2064A884003093F9 /* win-zhuihao@2x.png */; };
 		2D3617802068DFEC003093F9 /* OptionSelectedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D36177E2068DFEB003093F9 /* OptionSelectedView.m */; };
+		2D3617872069D86C003093F9 /* GYJLeagueSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D3617842069D86B003093F9 /* GYJLeagueSelectView.xib */; };
+		2D3617882069D86C003093F9 /* GYJLeagueSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3617862069D86C003093F9 /* GYJLeagueSelectView.m */; };
+		2D36178B2069D8FE003093F9 /* GYJTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D36178A2069D8FE003093F9 /* GYJTransaction.m */; };
 		2D40CAA2201EDE5700DDCFE3 /* shut@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40CA98201EDE4E00DDCFE3 /* shut@2x.png */; };
 		2D40CAA3201EDE5700DDCFE3 /* button_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40CA99201EDE4F00DDCFE3 /* button_line@2x.png */; };
 		2D40CAA4201EDE5700DDCFE3 /* bj_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40CA9A201EDE5100DDCFE3 /* bj_down@2x.png */; };
@@ -1160,13 +1163,10 @@
 		F9F91B71200EF83A0036DD2A /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F91B70200EF83A0036DD2A /* libresolv.tbd */; };
 		F9FC15242062208B009BAD68 /* HomeGJItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9FC15222062208B009BAD68 /* HomeGJItemViewCell.xib */; };
 		F9FC153220622A0F009BAD68 /* WCHomeGYJItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9FC153120622A0F009BAD68 /* WCHomeGYJItemViewCell.xib */; };
-		F9FC153620623FE5009BAD68 /* GYJLeagueSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9FC153320623FE4009BAD68 /* GYJLeagueSelectView.xib */; };
-		F9FC153720623FE5009BAD68 /* GYJLeagueSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FC153420623FE4009BAD68 /* GYJLeagueSelectView.m */; };
 		F9FC153B20625815009BAD68 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9FC153820625814009BAD68 /* WebViewController.xib */; };
 		F9FC153C20625815009BAD68 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FC153A20625814009BAD68 /* WebViewController.m */; };
 		F9FC153F20625E9A009BAD68 /* gjplaytype.html in Resources */ = {isa = PBXBuildFile; fileRef = F9FC153D20625E99009BAD68 /* gjplaytype.html */; };
 		F9FC154020625E9A009BAD68 /* gyjplaytype.html in Resources */ = {isa = PBXBuildFile; fileRef = F9FC153E20625E9A009BAD68 /* gyjplaytype.html */; };
-		F9FC154620626944009BAD68 /* GYJTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FC154520626944009BAD68 /* GYJTransaction.m */; };
 		F9FDFADD2011BE300029ACC7 /* logo_45@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9FDFADB2011BE300029ACC7 /* logo_45@3x.png */; };
 		F9FDFADE2011BE300029ACC7 /* logo_45@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9FDFADC2011BE300029ACC7 /* logo_45@2x.png */; };
 		F9FDFAE12011C9750029ACC7 /* Notice.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FDFAE02011C9750029ACC7 /* Notice.m */; };
@@ -1470,6 +1470,11 @@
 		2D36177B2064A884003093F9 /* win-zhuihao@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "win-zhuihao@2x.png"; sourceTree = "<group>"; };
 		2D36177E2068DFEB003093F9 /* OptionSelectedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionSelectedView.m; sourceTree = "<group>"; };
 		2D36177F2068DFEB003093F9 /* OptionSelectedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionSelectedView.h; sourceTree = "<group>"; };
+		2D3617842069D86B003093F9 /* GYJLeagueSelectView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GYJLeagueSelectView.xib; sourceTree = "<group>"; };
+		2D3617852069D86B003093F9 /* GYJLeagueSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYJLeagueSelectView.h; sourceTree = "<group>"; };
+		2D3617862069D86C003093F9 /* GYJLeagueSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYJLeagueSelectView.m; sourceTree = "<group>"; };
+		2D3617892069D8FD003093F9 /* GYJTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYJTransaction.h; sourceTree = "<group>"; };
+		2D36178A2069D8FE003093F9 /* GYJTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYJTransaction.m; sourceTree = "<group>"; };
 		2D40CA98201EDE4E00DDCFE3 /* shut@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shut@2x.png"; sourceTree = "<group>"; };
 		2D40CA99201EDE4F00DDCFE3 /* button_line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_line@2x.png"; sourceTree = "<group>"; };
 		2D40CA9A201EDE5100DDCFE3 /* bj_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bj_down@2x.png"; sourceTree = "<group>"; };
@@ -2715,16 +2720,11 @@
 		F9F91B72200EF8EE0036DD2A /* happyLottery.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = happyLottery.entitlements; sourceTree = "<group>"; };
 		F9FC15222062208B009BAD68 /* HomeGJItemViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeGJItemViewCell.xib; sourceTree = "<group>"; };
 		F9FC153120622A0F009BAD68 /* WCHomeGYJItemViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WCHomeGYJItemViewCell.xib; sourceTree = "<group>"; };
-		F9FC153320623FE4009BAD68 /* GYJLeagueSelectView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GYJLeagueSelectView.xib; path = ../../../../../../Desktop/Lottery/Lottery/View/GYJLeagueSelectView.xib; sourceTree = "<group>"; };
-		F9FC153420623FE4009BAD68 /* GYJLeagueSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GYJLeagueSelectView.m; path = ../../../../../../Desktop/Lottery/Lottery/View/GYJLeagueSelectView.m; sourceTree = "<group>"; };
-		F9FC153520623FE5009BAD68 /* GYJLeagueSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GYJLeagueSelectView.h; path = ../../../../../../Desktop/Lottery/Lottery/View/GYJLeagueSelectView.h; sourceTree = "<group>"; };
 		F9FC153820625814009BAD68 /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
 		F9FC153920625814009BAD68 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		F9FC153A20625814009BAD68 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		F9FC153D20625E99009BAD68 /* gjplaytype.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = gjplaytype.html; sourceTree = "<group>"; };
 		F9FC153E20625E9A009BAD68 /* gyjplaytype.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = gyjplaytype.html; sourceTree = "<group>"; };
-		F9FC154420626943009BAD68 /* GYJTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GYJTransaction.h; path = ../../../../../../Desktop/Lottery/Lottery/Model/poco/GYJTransaction.h; sourceTree = "<group>"; };
-		F9FC154520626944009BAD68 /* GYJTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GYJTransaction.m; path = ../../../../../../Desktop/Lottery/Lottery/Model/poco/GYJTransaction.m; sourceTree = "<group>"; };
 		F9FDFADB2011BE300029ACC7 /* logo_45@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo_45@3x.png"; sourceTree = "<group>"; };
 		F9FDFADC2011BE300029ACC7 /* logo_45@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo_45@2x.png"; sourceTree = "<group>"; };
 		F9FDFADF2011C9750029ACC7 /* Notice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Notice.h; sourceTree = "<group>"; };
@@ -4204,10 +4204,10 @@
 		2DDEDC011FD4DBB6007AEBF7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2D3617892069D8FD003093F9 /* GYJTransaction.h */,
+				2D36178A2069D8FE003093F9 /* GYJTransaction.m */,
 				F94795AE2062749300818A1F /* BaseTransaction.h */,
 				F94795AF2062749300818A1F /* BaseTransaction.m */,
-				F9FC154420626943009BAD68 /* GYJTransaction.h */,
-				F9FC154520626944009BAD68 /* GYJTransaction.m */,
 				2DA39EDB2052685600A03FD1 /* DLT */,
 				2D7B13A8204E87240035AE89 /* CTZQ */,
 				2D205FEB1FFC6F670086E266 /* BiFenZhiboModel.h */,
@@ -4265,9 +4265,9 @@
 		2DDEDC021FD4DBB6007AEBF7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				F9FC153520623FE5009BAD68 /* GYJLeagueSelectView.h */,
-				F9FC153420623FE4009BAD68 /* GYJLeagueSelectView.m */,
-				F9FC153320623FE4009BAD68 /* GYJLeagueSelectView.xib */,
+				2D3617852069D86B003093F9 /* GYJLeagueSelectView.h */,
+				2D3617862069D86C003093F9 /* GYJLeagueSelectView.m */,
+				2D3617842069D86B003093F9 /* GYJLeagueSelectView.xib */,
 				F9B5DA672060BD2C00C9F6DC /* HomeGJItemViewCell.h */,
 				F9B5DA682060BD2D00C9F6DC /* HomeGJItemViewCell.m */,
 				F9FC15222062208B009BAD68 /* HomeGJItemViewCell.xib */,
@@ -5386,6 +5386,7 @@
 				2D06004C1FFE0606009E7568 /* JCLQOrderDetailInfoViewController.xib in Resources */,
 				F9C3BA2F200894ED00916F3C /* answer@2x.png in Resources */,
 				2D8CBFE51FF376DA00CC367F /* YuCeSchemeCreateCell.xib in Resources */,
+				2D3617872069D86C003093F9 /* GYJLeagueSelectView.xib in Resources */,
 				F957C1FF1FE3B28D0090B19B /* return@3x.png in Resources */,
 				2D739D071FEB853500264044 /* btnbackimgNomal@3x.png in Resources */,
 				2D4B1E7C1FDF684E0034B708 /* quanzi_defealt@3x.png in Resources */,
@@ -5726,7 +5727,6 @@
 				F9992769200335DC00023F8F /* guanbi@3x.png in Resources */,
 				2D06FFE91FFDC9EB009E7568 /* football@2x.png in Resources */,
 				2D40CAA4201EDE5700DDCFE3 /* bj_down@2x.png in Resources */,
-				F9FC153620623FE5009BAD68 /* GYJLeagueSelectView.xib in Resources */,
 				2D0E23B920196B590098DA40 /* failure@3x.png in Resources */,
 				F93EEEE92021D8EC001C635A /* unlockredpacket@2x.png in Resources */,
 				F9CDBEC8202306E100A1BE71 /* 1@3x.png in Resources */,
@@ -6122,6 +6122,7 @@
 				2D06002E1FFDCD9F009E7568 /* UIView+MJExtension.m in Sources */,
 				2D739C1D1FE2611C00264044 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				2D7B1334204D4BA40035AE89 /* XHSectionRandomView.m in Sources */,
+				2D3617882069D86C003093F9 /* GYJLeagueSelectView.m in Sources */,
 				F9D7C556200620FF00415B4E /* GetIntegralViewController.m in Sources */,
 				F9D7C55220061E7300415B4E /* UILabel+ChangeLineSpaceAndWordSpace.m in Sources */,
 				2D8CC0131FF48EBB00CC367F /* WBSelectDateButtom.m in Sources */,
@@ -6285,7 +6286,6 @@
 				2DDEDC2F1FD51C8B007AEBF7 /* SOAPRequest.m in Sources */,
 				2D06002B1FFDCD9F009E7568 /* NSBundle+MJRefresh.m in Sources */,
 				2D739C5B1FE3B31500264044 /* FMDatabase.m in Sources */,
-				F9FC153720623FE5009BAD68 /* GYJLeagueSelectView.m in Sources */,
 				F9B5D919205FB94700C9F6DC /* WordCupHomeItem.m in Sources */,
 				2D03F22C2060B6CE00C81BEF /* WebCTZQHisViewController.m in Sources */,
 				2D0EEA7C2012CEF900B0769C /* HomeJumpViewController.m in Sources */,
@@ -6393,12 +6393,12 @@
 				2D0600251FFDCD9F009E7568 /* MJRefreshBackStateFooter.m in Sources */,
 				2D739C5F1FE3B31500264044 /* FMResultSet.m in Sources */,
 				2DDEDE7D1FD568C9007AEBF7 /* UIButton+AFNetworking.m in Sources */,
-				F9FC154620626944009BAD68 /* GYJTransaction.m in Sources */,
 				2DDEDE751FD568C9007AEBF7 /* AFURLSessionManager.m in Sources */,
 				2D7B13C9204E877A0035AE89 /* CTZQOpenLotteryFirstView.m in Sources */,
 				F91565DC1FFCBB4A00E254CE /* ShareViewController.m in Sources */,
 				2D7B130F204D47DA0035AE89 /* XHNumberView.m in Sources */,
 				2D06008C1FFF4BAF009E7568 /* SchemeDetailViewCell.m in Sources */,
+				2D36178B2069D8FE003093F9 /* GYJTransaction.m in Sources */,
 				2D7B13CE204E877A0035AE89 /* CTZQTouzhuShisiCell.m in Sources */,
 				F9085B051FFB20D500DC0531 /* LoadData.m in Sources */,
 			);

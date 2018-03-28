@@ -10,6 +10,7 @@
 #import "JCZQMatchViewCell.h"
 #import "BaseProfile.h"
 #import "WBButton.h"
+#import "WebCTZQHisViewController.h"
 #import "MatchLeagueSelectView.h"
 #import "LotteryProfileSelectView.h"
 #import "JCZQSelectAllPlayTypeVIew.h"
@@ -324,12 +325,52 @@
 
 -(void)setRightBarItems{
 
-    UIBarButtonItem *itemQuery = [self creatBarItem:@"" icon:@"wanfajieshao" andFrame:CGRectMake(0, 10, 25, 25) andAction:@selector(actionPlayTypeRecom)];
+    UIBarButtonItem *itemQuery = [self creatBarItem:@" 助手" icon:@"helper.png" andFrame:CGRectMake(0, 10, 65, 25) andAction:@selector(optionRightButtonAction)];
     UIBarButtonItem *itemCleanLeague = [self creatBarItem:@"" icon:@"liansaixuanze" andFrame:CGRectMake(0, 10, 25, 25)andAction:@selector(actionSelectLeague)];
     self.navigationItem.rightBarButtonItems = @[itemQuery,itemCleanLeague];
 }
 
+- (void) optionRightButtonAction {
+//    if (isShowFLag) {
+//        return;
+//    }
+    
+    NSArray *titleArr = @[@" 开奖详情",
+                         @" 玩法规则"];
+    CGFloat optionviewWidth = 100;
+    CGFloat optionviewCellheight = 38;
+    CGSize mainSize = [UIScreen mainScreen].bounds.size;
+    
+    OptionSelectedView *optionView = [[OptionSelectedView alloc] initWithFrame:CGRectMake(mainSize.width - optionviewWidth, 64, optionviewWidth, optionviewCellheight * titleArr.count) andTitleArr:titleArr];
+    
+    optionView.delegate = self;
+    [self.view.window addSubview:optionView];
+    
+    
+    
+    //    [optionActionSheet showInView: self.tabBarController.view];
+}
 
+- (void)optionDidSelacted:(OptionSelectedView *)optionSelectedView andIndex:(NSInteger)index{
+    if (index == 1) {
+        //clear selection
+        [self actionPlayTypeRecom];
+        NSLog(@"玩法");
+    }else if (index == 0){
+        //        [self showExtrendViewCtr];
+        [self showWinHistoryViewCtr];
+        NSLog(@"开奖历史");
+    }else if (index == 2){
+        //
+    }
+}
+- (void) showWinHistoryViewCtr{
+    WebCTZQHisViewController * playViewVC = [[WebCTZQHisViewController alloc]init];
+    NSString *strUrl = [NSString stringWithFormat:@"%@/app/award/jzOpenAward",H5BaseAddress];
+    playViewVC.pageUrl = [NSURL URLWithString:strUrl];
+    playViewVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:playViewVC animated:YES];
+}
 
 -(void)actionPlayTypeRecom{
     FootBallPlayViewController *footBallPlayVC = [[FootBallPlayViewController alloc]init];
@@ -699,16 +740,10 @@
     
 }
 
-
-
 - (IBAction)acitonCleanAll:(id)sender {
     [self cleanAllSelectMatch];
     [self updataSummary];
     [self.tabJCZQListView reloadData];
-}
-
--(void)optionDidSelacted:(OptionSelectedView *)optionSelectedView andIndex:(NSInteger)index{
-    
 }
 
 -(void)showForecastDetailForCellBottom:(JCZQMatchModel *)model{

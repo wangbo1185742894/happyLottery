@@ -14,6 +14,7 @@
 @protocol LotteryPhaseInfoViewDelegate <LotteryBaseViewDelegate>
 
 -(void)getLotteryRoundFinish;
+-(void)lookOpenHis:(UIButton *)sender;
 
 @end
 

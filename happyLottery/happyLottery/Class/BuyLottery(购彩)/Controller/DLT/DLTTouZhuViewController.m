@@ -112,7 +112,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view layoutIfNeeded];
-
+    self.navigationController.hidesBarsWhenKeyboardAppears = NO;
+    
     tableViewContent_.delegate = self;
     tableViewContent_.dataSource = self;
     self.transaction.costType = CostTypeCASH;
@@ -120,7 +121,7 @@
     self.memberMan = [[MemberManager alloc] init];
     self.memberMan.delegate = self;
 
-    self.title = [NSString stringWithFormat: @"%@投注", self.lottery.name];
+    self.title = @"确认预约";
     betsList = [self.transaction allBets];
     
     self.lotteryMan = [[LotteryManager alloc] init];
@@ -129,6 +130,7 @@
     
     tfQiCount.delegate = self;
     tfBeiCount.delegate = self;
+    self.transaction.needZhuiJia = NO;
     if (self.transaction.needZhuiJia == YES) {
         btnAppend.selected = YES;
     }
@@ -173,10 +175,16 @@
     
 }
 
+
+
 -(void)textFieldDidEndEditing:(UITextField *)textField{
     if([textField .text integerValue] ==0){
         textField.text = @"1";
     }
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        CGFloat height = self.navigationController.navigationBar.mj_h;
+        NSLog(@"%@",self.navigationController.navigationBar);
+    });
 }
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
@@ -208,6 +216,7 @@
         
     }
     if (num > limitNum) {
+        [self showPromptText:[NSString stringWithFormat:@"最大可追%ld期",limitNum] hideAfterDelay:1.8];
         return NO;
     }
     
@@ -350,6 +359,7 @@
         default:
             break;
     }
+    [self randomRefresh];
 }
 - (void) showLastRecord {
     if (tableViewContent_.scrollEnabled) {
@@ -604,9 +614,22 @@
     for (int i = 0; i < 5 ;i ++ ) {
         [self actionAddRandomBet:sender];
     }
+    [self randomRefresh];
+}
+
+-(void)randomRefresh{
+    if (self.transaction.costType == CostTypeCASH) {
+        [self setBtnState:btnZhenShiTouzhu];
+    }else{
+        [self setBtnState:btnMoniTouzhu];
+    }
 }
 
 - (IBAction)actionGoonBuy:(UIButton *)sender {
+    if(self.transaction.allBets.count >= 30){
+        [self showPromptText:@"最多投注30组号码" hideAfterDelay:1.7];
+        return;
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (IBAction)actionAppend:(UIButton*)sender {

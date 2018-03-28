@@ -20,15 +20,19 @@
 
 -(NSMutableDictionary*)submitParaDicScheme{
     NSMutableDictionary *submitParaDic = [[NSMutableDictionary alloc]init];
-    submitParaDic[@"cardCode"] =[[[GlobalInstance instance] curUser] username];
-    submitParaDic[@"lottery"] =self.lottery.identifier;
-    submitParaDic[@"schemeType"] = self.schemeTypes[self.schemeType];
-    submitParaDic[@"issueNumber"] = self.lottery.currentRound.issueNumber;
+    submitParaDic[@"cardCode"] =[GlobalInstance instance].curUser.cardCode;
+    
     submitParaDic[@"units"] = [NSString stringWithFormat:@"%d",self.betCount];
     submitParaDic[@"multiple"] = [NSString stringWithFormat:@"%d",self.beiCount];
     submitParaDic[@"betCost"] =[NSString stringWithFormat:@"%d",self.betCost];
-    submitParaDic[@"SecretType"] =self.secretTypes[self.secretType];
-    submitParaDic[@"schemeSource"] = self.schemeSource == nil ?@"BET":self.schemeSource;;
+
+    submitParaDic[@"lottery"] = @(self.lottery.type);
+    submitParaDic[@"issueNumber"] = self.lottery.currentRound.issueNumber;
+    submitParaDic[@"schemeType"] = @(self.schemeType);
+    submitParaDic[@"channelCode"] = CHANNEL_CODE;
+    submitParaDic[@"schemeSource"] = @(0);
+    submitParaDic[@"SecretType"] = @(self.secretType);
+submitParaDic[@"costType"] = @(self.costType);
     submitParaDic[@"betSource"] = @"2";
     if (self.schemeType == SchemeTypeZigou) {
         submitParaDic[@"copies"] = @"1";
@@ -56,7 +60,7 @@
         [nums addObject:item.indexNumber];
     }
     
-    [betContent addObject:@{@"groupIndex":[self.selectArray firstObject].groupIndex,@"number":nums}];
+    [betContent addObject:@{@"groupIndex":[self.selectArray firstObject].groupIndex,@"number":nums,@"multiple":@(self.beiCount)}];
     return betContent;
 }
 

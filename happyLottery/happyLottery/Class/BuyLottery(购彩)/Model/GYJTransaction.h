@@ -5,7 +5,6 @@
 //  Created by 王博 on 2018/3/13.
 //  Copyright © 2018年 AMP. All rights reserved.
 //
-
 #import "BaseTransaction.h"
 #import "WordCupHomeItem.h"
 

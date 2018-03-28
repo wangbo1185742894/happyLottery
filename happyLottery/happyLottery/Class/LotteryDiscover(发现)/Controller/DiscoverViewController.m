@@ -281,15 +281,10 @@
 }
 
 -(void)goToJczq{
-    
     dispatch_async(dispatch_get_main_queue(), ^{
-        
         self.tabBarController.selectedIndex = 0;
         [self.faxianWebView goBack];
-       [[NSNotificationCenter defaultCenter]postNotificationName:@"NSNotificationBuyVCJump" object:@1000];
-        
     });
-
 }
 
 -(void)hiddenFooter:(BOOL )isHiden{

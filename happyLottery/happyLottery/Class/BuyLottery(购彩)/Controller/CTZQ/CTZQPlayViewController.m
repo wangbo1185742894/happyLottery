@@ -158,8 +158,8 @@
     UIButton *backBarButton = [UIButton buttonWithType: UIButtonTypeCustom];
     [backBarButton setFrame: CGRectMake(0, 0, 64, 44)];
     //lc 更改 右侧的 图标变为汉字“助手”
-    [backBarButton setTitle:@"助手" forState:UIControlStateNormal];
-    [backBarButton setImage:[UIImage imageNamed:@"zhushoubtn.png"] forState:UIControlStateNormal];
+    [backBarButton setTitle:@" 助手" forState:UIControlStateNormal];
+    [backBarButton setImage:[UIImage imageNamed:@"helper.png"] forState:UIControlStateNormal];
     backBarButton.titleLabel.font = [UIFont systemFontOfSize:14];
     backBarButton.titleLabel.textAlignment = NSTextAlignmentRight;
     
@@ -353,7 +353,6 @@
     
 }
 
-
 - (void)gotLotteryCurRoundTimeout {
     
     [self hideLoadingView];
@@ -417,7 +416,6 @@
         match.oddsFNum = @"";
         [_CTZQMatchArr addObject:match];
     }
-    
     _CTZQMatchArrShow = _CTZQMatchArr;
 }
 - (void)optionDidSelacted:(OptionSelectedView *)optionSelectedView andIndex:(NSInteger)index{
@@ -443,7 +441,6 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return _CTZQMatchArr.count;
-
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (isShowMore) {

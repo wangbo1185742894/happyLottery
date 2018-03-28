@@ -244,8 +244,9 @@
 //}
 
 -(void)actionNotificationRandomeFive:(NSNotification*)notification{
-    if (!self.lottery.currentRound) {
-        [self getCurrentRound];
+    if([_lottery.currentRound isExpire]||_lottery.currentRound == nil){
+        [self showPromptText:@"未获得有效奖期" hideAfterDelay:1.7];
+        return;
     }
 
     for (int i = 0; i < 5 ; i ++ ) {
@@ -294,6 +295,11 @@
                 break;
             }
         }
+        if([_lottery.currentRound isExpire]||_lottery.currentRound == nil){
+            [self showPromptText:@"未获得有效奖期" hideAfterDelay:1.7];
+            return;
+        }
+        
         DLTTouZhuViewController *touzhuVC = [[DLTTouZhuViewController alloc] initWithNibName: @"DLTTouZhuViewController" bundle: nil];
         touzhuVC.lottery = self.lottery;
         if (!self.lottery.currentRound) {
@@ -759,6 +765,10 @@
         return;
     }
     
+    if([_lottery.currentRound isExpire]||_lottery.currentRound == nil){
+        [self showPromptText:@"未获得有效奖期" hideAfterDelay:1.7];
+        return;
+    }
     DLTTouZhuViewController *touzhuVC = [[DLTTouZhuViewController alloc] initWithNibName: @"DLTTouZhuViewController" bundle: nil];
     touzhuVC.lottery = self.lottery;
 
@@ -928,7 +938,6 @@
 //    [self presentViewController:navCtr animated:YES completion:^{
 //    }];
     [self.navigationController pushViewController:historyViewCtr animated:YES];
-
 }
 
 #pragma mark - LotteryBetsPopViewDelegate
@@ -972,6 +981,22 @@
     [lotteryXHView addRandomBet];
     [self addBetToBasket];
     [self clearAllSelection];
+}
+
+-(void)lookOpenHis:(UIButton *)sender{
+    
+    if (scrollViewContent_.contentOffset.y != 0) {
+        // 向上
+        [UIView animateWithDuration:0.2 animations:^{
+            scrollViewContent_.contentOffset = CGPointMake(0,0);
+        }];
+        
+    }else{
+        
+        [UIView animateWithDuration:0.2 animations:^{
+            scrollViewContent_.contentOffset = CGPointMake(0,-expireTablveHeight);
+        }];
+    }
 }
 
 
