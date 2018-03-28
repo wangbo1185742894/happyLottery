@@ -88,6 +88,8 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="imagIconHeight" destination="0Q8-yC-J2h" id="Qyd-SK-TxC"/>
+                <outlet property="imageIconWidth" destination="HkJ-uU-E1V" id="In8-im-sAX"/>
                 <outlet property="imgLotteryIcon" destination="OdR-gB-P0r" id="ZIl-v9-Vkt"/>
                 <outlet property="imgWinState" destination="xgh-pu-bHw" id="8M3-ab-am5"/>
                 <outlet property="labSchemeCost" destination="YJv-c3-6xr" id="4Cj-dl-HLL"/>
