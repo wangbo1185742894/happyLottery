@@ -17,6 +17,7 @@
                 <outlet property="labCount" destination="h53-D6-7od" id="TsU-XW-gqJ"/>
                 <outlet property="labMaxBouns" destination="755-kp-3fT" id="8rB-j7-zGb"/>
                 <outlet property="labSchemeInfo" destination="Ggb-Pr-o5P" id="8US-oO-w08"/>
+                <outlet property="navigationBar" destination="2EE-rl-vdP" id="foO-es-gVk"/>
                 <outlet property="tfBeiCount" destination="OQN-qz-s0F" id="8J2-NQ-Esz"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -26,11 +27,6 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" sectionIndexMinimumDisplayRowCount="3" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QED-17-em7">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="573"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <color key="sectionIndexBackgroundColor" red="0.89779978989999998" green="0.90181249379999995" blue="0.91414159539999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CBb-U1-dKf">
                     <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                     <subviews>
@@ -215,23 +211,38 @@
                         <constraint firstItem="ZrO-Bt-cqu" firstAttribute="leading" secondItem="D4d-g2-J5v" secondAttribute="trailing" constant="52" id="sFf-z4-VDN"/>
                     </constraints>
                 </view>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2EE-rl-vdP">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="7dD-V6-KaI"/>
+                    </constraints>
+                </navigationBar>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" sectionIndexMinimumDisplayRowCount="3" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QED-17-em7">
+                    <rect key="frame" x="0.0" y="60" width="375" height="513"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="sectionIndexBackgroundColor" red="0.89779978989999998" green="0.90181249379999995" blue="0.91414159539999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="2EE-rl-vdP" secondAttribute="trailing" id="7D8-8l-Nm2"/>
                 <constraint firstItem="3EQ-b6-e9B" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="9wq-1j-ISQ"/>
                 <constraint firstItem="3EQ-b6-e9B" firstAttribute="top" secondItem="QED-17-em7" secondAttribute="bottom" id="Efg-XI-o61"/>
                 <constraint firstAttribute="trailing" secondItem="QED-17-em7" secondAttribute="trailing" id="NaQ-wK-VGr"/>
                 <constraint firstItem="CBb-U1-dKf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="OSP-aa-7Fm"/>
+                <constraint firstItem="QED-17-em7" firstAttribute="top" secondItem="2EE-rl-vdP" secondAttribute="bottom" id="Q2i-x0-fEt"/>
                 <constraint firstAttribute="trailing" secondItem="CBb-U1-dKf" secondAttribute="trailing" id="RJD-iS-8v5"/>
-                <constraint firstItem="QED-17-em7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="hgl-xB-E71"/>
+                <constraint firstItem="QED-17-em7" firstAttribute="top" secondItem="2EE-rl-vdP" secondAttribute="bottom" id="cEp-qi-1oI"/>
                 <constraint firstItem="3EQ-b6-e9B" firstAttribute="top" secondItem="QED-17-em7" secondAttribute="bottom" id="hyE-gU-xQf"/>
                 <constraint firstItem="QED-17-em7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="iBd-oh-v01"/>
                 <constraint firstAttribute="trailing" secondItem="3EQ-b6-e9B" secondAttribute="trailing" id="kY0-c7-fCf"/>
                 <constraint firstItem="CBb-U1-dKf" firstAttribute="top" secondItem="3EQ-b6-e9B" secondAttribute="bottom" id="mrQ-Dg-2xh"/>
+                <constraint firstItem="2EE-rl-vdP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="pYT-LF-7xk"/>
                 <constraint firstItem="CBb-U1-dKf" firstAttribute="top" secondItem="3EQ-b6-e9B" secondAttribute="bottom" id="u7R-6U-iM6"/>
+                <constraint firstItem="2EE-rl-vdP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="wPd-Rj-zuT"/>
                 <constraint firstAttribute="bottom" secondItem="CBb-U1-dKf" secondAttribute="bottom" id="x4K-XD-EBn"/>
             </constraints>
-            <point key="canvasLocation" x="33.5" y="54.5"/>
+            <point key="canvasLocation" x="5" y="-314"/>
         </view>
     </objects>
     <resources>

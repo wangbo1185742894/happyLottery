@@ -50,6 +50,7 @@
     __weak IBOutlet UIView *lotteryPlayView;
     __weak IBOutlet NSLayoutConstraint *btnGyjHeight;
     OpenRedPopView *popView;
+    __weak IBOutlet NSLayoutConstraint *spaceBtnGyj;
     __weak IBOutlet NSLayoutConstraint *contentViewDisTop;
     NSMutableArray *listUseRedPacketArray;
      RedPacket *r;
@@ -60,6 +61,7 @@
     __weak IBOutlet NSLayoutConstraint *newsViewMarginTop;
     __weak IBOutlet NSLayoutConstraint *tabForecastListHeight;
     __weak IBOutlet UITableView *tabForecaseList;
+    __weak IBOutlet NSLayoutConstraint *gyjMarginTop;
     LoadData *singleLoad;
     NewsModel *newsModel;
     NSMutableArray <ADSModel *>*adsArray;
@@ -84,7 +86,7 @@
     __weak IBOutlet UIButton *goRedPacket;
 
     __weak IBOutlet UIButton *gyjButton;
-    BOOL showGYJbtn;
+    BOOL showGJbtn;
 }
 @property(nonatomic,strong)Lottery *lottery;
 @end
@@ -113,33 +115,35 @@
     [self setADSUI];
     [self setMenu];
     [self setNewsView];
+    [self gyjButtonView];
     [self setDLTCTZQView];
     [self setTableView];
         openRedpacketButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     
 //    [self.view bringSubviewToFront:redpacketView];
 //    [self.view insertSubview:redpacketView aboveSubview:self.tabBarController.tabBar];
-    
-    
 }
 
 
 //修改，，，，，，，，，，
 - (void)gyjButtonHiddenOrNot{
-
+    showGJbtn = YES;
     [self.lotteryMan getSellIssueList:@{@"lotteryCode":@"JCGJ"}];
 }
 
+//奖期不在售时，服务器返回"[]"
 -(void)gotSellIssueList:(NSArray *)infoDic errorMsg:(NSString *)msg{
     LotteryRound * currentRound = [infoDic firstObject];
-    if ([currentRound isExpire] ||![currentRound.sellStatus isEqualToString:@"ING_SELL"]) {
-        showGYJbtn = NO;
-        if ([currentRound.lotteryCode isEqualToString:@"JCGJ"]) {
+    if ([currentRound isExpire] ||![currentRound.sellStatus isEqualToString:@"ING_SELL"]||currentRound == nil) {
+//        [currentRound.lotteryCode isEqualToString:@"JCGJ"]
+        if (showGJbtn == YES) {
+            showGJbtn = NO;
             [self.lotteryMan getSellIssueList:@{@"lotteryCode":@"JCGYJ"}];
         }
     } else {
-        showGYJbtn = YES;
+        showGJbtn = YES;
         btnGyjHeight.constant = 57;
+        spaceBtnGyj.constant = 10;
     }
 }
 
@@ -283,7 +287,10 @@
 
 -(void)setNewsView{
     newsViewMarginTop.constant = curY;
-    
+}
+
+-(void)gyjButtonView{
+    gyjMarginTop.constant = curY;
 }
 
 -(void)setViewFeature{
@@ -435,6 +442,7 @@
         redpacketView.hidden = YES;
     }
     [self gyjButtonHiddenOrNot];
+   
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -545,7 +553,7 @@
 - (IBAction)actionJcgyj:(id)sender {
     GYJPlayViewController *gyjPlayVc = [[GYJPlayViewController alloc]init];
     gyjPlayVc.hidesBottomBarWhenPushed = YES;
-
+    gyjPlayVc.navigationController.navigationBar.hidden = YES;
     [self.navigationController pushViewController:gyjPlayVc animated:YES];
 }
 

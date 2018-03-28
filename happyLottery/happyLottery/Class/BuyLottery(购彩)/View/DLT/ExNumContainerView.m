@@ -181,20 +181,18 @@
         CGContextMoveToPoint(context, 0, y);
         //        CGContextAddLineToPoint(context, Frame_width, y);
         CGContextStrokePath(context);
+        CGRect rect = CGRectMake(0, y, Frame_width, cellH);
         if (i % 2 == 0) {
-            CGRect rect = CGRectMake(0, y, Frame_width, cellH);
-            CGContextSetRGBFillColor(context, 245/255.0,245/255.0,245/255.0, 1.0);
-            //填充矩形
-            CGContextFillRect(context, rect);
-            CGContextStrokePath(context);
+            CGContextSetRGBFillColor(context, 246.0/255.0,246.0/255.0,246.0/255.0, 1.0);
         }
         else{   //lc  将背景颜色 全部 换成一种
-            CGContextSetRGBFillColor(context, 245/255.0,245/255.0,245/255.0, 1.0);
-            //填充矩形
-            CGContextFillRect(context, rect);
-            CGContextStrokePath(context);
+            CGContextSetRGBFillColor(context, 255.0/255.0,255.0/255.0,255.0/255.0, 1.0);
         }
+        //填充矩形
+        CGContextFillRect(context, rect);
+        CGContextStrokePath(context);
     }
+    CGContextStrokePath(context);
     //  所有竖线
     for (int i=0; i<_baseNumMaxValue+1; i++) {
         float x =  i * num_w_h;

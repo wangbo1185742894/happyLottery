@@ -36,7 +36,7 @@
         
         UIView *btnBackView = [[UIView alloc] initWithFrame:frame];
         
-        btnBackView.backgroundColor = SEPCOLOR;
+        btnBackView.backgroundColor = SEPCOLOR ;
         
         [self addSubview:btnBackView];
         

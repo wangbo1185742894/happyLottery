@@ -41,6 +41,10 @@
     [self setTableView];
     
     [self loadNewData];
+    if ([Utility isIOS11After]) {
+        self.automaticallyAdjustsScrollViewInsets = NO; // tableView 莫名其妙  contentOffset.y 成-64了  MMP
+    }
+
 }
 - (IBAction)actionCostTypeSelect:(UISegmentedControl *)sender {
     page = 1;

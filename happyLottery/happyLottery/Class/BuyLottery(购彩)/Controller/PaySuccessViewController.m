@@ -28,6 +28,10 @@
     }else{
         self.labChuPiaoimg.text = @"正在出票，祝您好运连连";
     }
+    if ([Utility isIOS11After]) {
+        self.automaticallyAdjustsScrollViewInsets = NO; // tableView 莫名其妙  contentOffset.y 成-64了  MMP
+    }
+
 }
 
 

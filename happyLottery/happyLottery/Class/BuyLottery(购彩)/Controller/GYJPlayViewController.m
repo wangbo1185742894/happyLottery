@@ -27,6 +27,9 @@
     BOOL isShowGJ;
     GYJLeagueSelectView * matchSelectView;
     BOOL showJQ;
+    UIView * gYJview;
+    UIButton *playIntroduce;
+    UIButton *selectGroup;
 }
 @property (weak, nonatomic) IBOutlet SelectView *beiSelectView;
 
@@ -63,14 +66,29 @@
     }
     self.lotteryMan.delegate = self;
     self.tfBeiCount.delegate = self;
-    [self creatTitleView];
+   
     self.lottery = [self.lotteryMan getAllLottery][8];
+    
+    [self navigationBarInit];
     [self actionPlayTypeSelect:btnGJ];
-    
+//    [self setUpRightBtn];
+//    [self setUpLeftBtn];
     [self initLable];
-    [self setUpRightBtn];
-    
     self.transaction = [[GYJTransaction alloc]init];
+    
+}
+
+//自定义navigationBar
+- (void)navigationBarInit{
+    gYJview = [[UIView alloc]initWithFrame:CGRectMake(0, 0,self.view.frame.size.width, 60)];
+    UIImageView *itemImage =[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"pic_guanyajun_beijing"]];
+    itemImage.frame = gYJview.frame;
+    itemImage.contentMode= UIViewContentModeScaleToFill;
+    [gYJview addSubview:itemImage];
+    [self.navigationBar addSubview:gYJview];
+    [self creatTitleView];
+    [self setRightButton];
+    [self setLeftButton];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,19 +99,23 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"pic_guanyajun_beijing"] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.hidden = YES;
 }
+
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self showLoadingText:nil];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:SystemGreen] forBarMetrics:UIBarMetricsDefault];
-        [[NSNotificationCenter defaultCenter]removeObserver:self name:NotificationNameUserLogin object:nil];
+    self.navigationController.navigationBar.hidden = NO;
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:NotificationNameUserLogin object:nil];
 }
 
+- (void)returnToRootView {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
 
 #pragma mark DateSource
 - (void)refreshlistArray:(NSArray *)infoArray{
-    [self hideLoadingView];
+  
     [self.gjSellArray removeAllObjects];
     [self.groupList removeAllObjects];
     [self.gjSelectedArray removeAllObjects];
@@ -104,7 +126,6 @@
         [self.gjSellArray addObject:model];
         [self.groupList addObject:model];
     }
-    [self.gyjListTableView reloadData];
 }
 
 -(void)update{
@@ -255,7 +276,10 @@
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, tableView.contentSize.width, 20)];
     //设置 title 文字内容
     if (createTime.length>0) {
-        titleLabel.text = [NSString stringWithFormat:@"%@截止",createTime];
+        if (![createTime isEqualToString:@"奖期不在售"]&&![createTime containsString:@"截止"]) {
+            createTime = [NSString stringWithFormat:@"%@截止",createTime];
+        }
+        titleLabel.text = createTime;
     }
     //设置 title 颜色
     titleLabel.textColor = RGBCOLOR(141, 141, 141);
@@ -319,7 +343,11 @@
     }
     [self reloadDate:[button isEqual:btnGJ]];
     [self initLable];
-    [self setUpRightBtn];
+    if (isShowGJ) {
+        selectGroup.hidden=YES;
+    } else {
+        selectGroup.hidden=NO;
+    }
 }
 
 -(void)actionRightItemClick{
@@ -336,13 +364,17 @@
 }
 
 - (IBAction)lessButton:(id)sender {
-    if ([self.tfBeiCount.text integerValue] ==0 ) {
+    if ([self.tfBeiCount.text integerValue] ==1 ) {
         return;
     }
     self.tfBeiCount.text = [NSString stringWithFormat:@"%ld",[self.tfBeiCount.text integerValue]-1];
     [self update];
 }
+
 - (IBAction)plusButton:(id)sender {
+    if ([self.tfBeiCount.text integerValue] ==9999 ) {
+        return;
+    }
     self.tfBeiCount.text = [NSString stringWithFormat:@"%ld",[self.tfBeiCount.text integerValue]+1];
     [self update];
 }
@@ -359,6 +391,7 @@
         [self initLable];
     }
 }
+
 - (void)pressPlayIntroduce{
     WebViewController *webVC = [[WebViewController alloc]initWithNibName:@"WebViewController" bundle:nil];
     webVC.type = @"html";
@@ -379,7 +412,22 @@
 
 #pragma mark UI设置
 
--(UIBarButtonItem *)creatBarItem:(NSString *)title icon:(NSString *)imgName andFrame:(CGRect)frame andAction:(SEL)action{
+//-(UIBarButtonItem *)creatBarItem:(NSString *)title icon:(NSString *)imgName andFrame:(CGRect)frame andAction:(SEL)action{
+//    UIButton *btnItem = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [btnItem addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
+//    btnItem.frame = frame;
+//    if (title != nil) {
+//        [btnItem setTitle:title forState:0];
+//    }
+//    
+//    if (imgName != nil) {
+//        [btnItem setImage:[UIImage imageNamed:imgName] forState:0];
+//    }
+//    UIBarButtonItem *barItem = [[UIBarButtonItem alloc]initWithCustomView:btnItem];
+//    return barItem;
+//}
+
+- (UIButton*)creatBar:(NSString *)title icon:(NSString *)imgName andFrame:(CGRect)frame andAction:(SEL)action{
     UIButton *btnItem = [UIButton buttonWithType:UIButtonTypeCustom];
     [btnItem addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
     btnItem.frame = frame;
@@ -390,40 +438,61 @@
     if (imgName != nil) {
         [btnItem setImage:[UIImage imageNamed:imgName] forState:0];
     }
-    UIBarButtonItem *barItem = [[UIBarButtonItem alloc]initWithCustomView:btnItem];
-    return barItem;
+    return btnItem;
 }
 
-
-- (void)setUpRightBtn{
-    UIBarButtonItem *playIntroduce = [self creatBarItem:@"" icon:@"wanfajieshao" andFrame:CGRectMake(0, 10, 25, 25) andAction:@selector(pressPlayIntroduce)];
-    UIBarButtonItem *selectGroup = [self creatBarItem:@"" icon:@"liansaixuanze" andFrame:CGRectMake(0, 10, 25, 25)andAction:@selector(pressSelectGroup)];
-    
+- (void)setRightButton {
+    playIntroduce = [self creatBar:@"" icon:@"wanfajieshao" andFrame:CGRectMake(self.view.frame.size.width - 35, 25, 25, 25) andAction:@selector(pressPlayIntroduce)];
+    selectGroup = [self creatBar:@"" icon:@"liansaixuanze" andFrame:CGRectMake(self.view.frame.size.width-50-20, 25, 25, 25)andAction:@selector(pressSelectGroup)];
+    [gYJview addSubview:playIntroduce];
+    [gYJview addSubview:selectGroup];
     if (isShowGJ) {
-        self.navigationItem.rightBarButtonItems = @[playIntroduce];
+        selectGroup.hidden=YES;
     } else {
-        self.navigationItem.rightBarButtonItems = @[playIntroduce,selectGroup];
+        selectGroup.hidden=YES;
     }
 }
+
+//- (void)setUpRightBtn{
+//    UIBarButtonItem *playIntroduce = [self creatBarItem:@"" icon:@"wanfajieshao" andFrame:CGRectMake(0, 10, 25, 25) andAction:@selector(pressPlayIntroduce)];
+//    UIBarButtonItem *selectGroup = [self creatBarItem:@"" icon:@"liansaixuanze" andFrame:CGRectMake(0, 10, 25, 25)andAction:@selector(pressSelectGroup)];
+//    if (isShowGJ) {
+//        self.navigationItemView.rightBarButtonItems = @[playIntroduce];
+//    } else {
+//        self.navigationItemView.rightBarButtonItems = @[playIntroduce,selectGroup];
+//    }
+//}
+
+- (void)setLeftButton{
+    UIButton *returnToRoot = [self creatBar:@"" icon:@"common_top_bar_back" andFrame:CGRectMake(20, 30, 12,18) andAction:@selector(returnToRootView)];
+    [gYJview addSubview:returnToRoot];
+}
+
+//- (void)setUpLeftBtn{
+//    UIBarButtonItem *returnToRoot = [self creatBarItem:@"" icon:@"common_top_bar_back" andFrame:CGRectMake(10, (60-18)/2, 12,18) andAction:@selector(returnToRootView)];
+//    self.navigationItemView.leftBarButtonItems = @[returnToRoot];
+//}
 
 //奖期
 -(void)gotSellIssueList:(NSArray *)infoDic errorMsg:(NSString *)msg{
-    if (infoDic == nil || infoDic .count == 0) {
-        [self showPromptText:msg hideAfterDelay:1.9];
-        return;
-    }
     self.lottery.currentRound = [infoDic firstObject];
     self.transaction.lottery.currentRound = [infoDic firstObject];
+//    if (infoDic == nil || infoDic .count == 0) {
+//
+//        createTime = @"奖期不在售";
+//        [self showPromptText:msg hideAfterDelay:1.9];
+//    }
     if (showJQ) {
-        if ([self.lottery.currentRound isExpire] ||![self.lottery.currentRound.sellStatus isEqualToString:@"ING_SELL"]) {
+        if ([self.lottery.currentRound isExpire] ||![self.lottery.currentRound.sellStatus isEqualToString:@"ING_SELL"]||infoDic == nil || infoDic .count == 0) {
             createTime = @"奖期不在售";
         } else {
             createTime = self.lottery.currentRound.stopTime;
         }
         [self.gyjListTableView reloadData];
+        [self hideLoadingView];
         return;
     }
-    if ([self.lottery.currentRound isExpire] ||![self.lottery.currentRound.sellStatus isEqualToString:@"ING_SELL"]) {
+    if ([self.lottery.currentRound isExpire] ||![self.lottery.currentRound.sellStatus isEqualToString:@"ING_SELL"]||infoDic == nil || infoDic .count == 0) {
         [self showPromptText:@"奖期不在售" hideAfterDelay:2.0];
         return;
     }
@@ -518,7 +587,13 @@
 }
 
 -(void)initLable {
-    self.alreadySelected.text = @"至少选择一种";
+    if (isShowGJ) {
+        self.alreadySelected.text = @"已选0场球队";
+    } else {
+        self.alreadySelected.text = @"已选0场对阵";
+    }
+    self.alreadySelected.keyWord =@"0";
+    self.alreadySelected.keyWordColor = SystemRed;
     self.tfBeiCount.text = @"5";
     self.labSchemeInfo.text = [NSString stringWithFormat:@"0注%ld倍,",[self.tfBeiCount.text integerValue]];
     self.labCount.text = [NSString stringWithFormat:@"共0元"];
@@ -533,26 +608,26 @@
     if(gyjSelectedView != nil){
         return;
     }
-    gyjSelectedView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 160, 40)];
+    gyjSelectedView = [[UIView alloc]initWithFrame:CGRectMake(self.view.frame.size.width/2-82,25, 164, 30)];
     gyjSelectedView.backgroundColor = [UIColor clearColor];
     
-    gyjSelectedView.layer.cornerRadius = 20;
+    gyjSelectedView.layer.cornerRadius = 17;
     gyjSelectedView.layer.masksToBounds = YES;
     gyjSelectedView.layer.borderColor = [UIColor whiteColor].CGColor;
     gyjSelectedView.layer.borderWidth = 1;
     btnGJ = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnGJ.layer.cornerRadius = 16;
+    btnGJ.layer.cornerRadius = 13;
     btnGJ.layer.masksToBounds = YES;
     [btnGJ setTitle:@"冠军" forState:0];
     [btnGJ setTitleColor:SystemGreen forState:UIControlStateSelected];
     [btnGJ setTitleColor:[UIColor whiteColor] forState:0];
     [btnGJ setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateSelected];
     [btnGJ setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]] forState:UIControlStateNormal];
-    [btnGJ setFrame: CGRectMake(4, 4, 76, 32)];
+    [btnGJ setFrame: CGRectMake(4, 4, 76, 22)];
     btnGJ.titleLabel.font = [UIFont systemFontOfSize:14];
     [btnGJ addTarget: self action:@selector(actionPlayTypeSelect:) forControlEvents:UIControlEventTouchUpInside];
     btnGYJ = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnGYJ.layer.cornerRadius = 16;
+    btnGYJ.layer.cornerRadius = 13;
     btnGYJ.layer.masksToBounds = YES;
     btnGYJ.titleLabel.font = [UIFont systemFontOfSize:14];
     [btnGYJ setTitle:@"冠亚军" forState:0];
@@ -560,11 +635,12 @@
     [btnGYJ setTitleColor:[UIColor whiteColor] forState:0];
     [btnGYJ setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateSelected];
     [btnGYJ setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]] forState:UIControlStateNormal];
-    [btnGYJ setFrame: CGRectMake(84, 4, 76, 32)];
+    [btnGYJ setFrame: CGRectMake(84, 4, 76, 22)];
     [gyjSelectedView addSubview:btnGJ];
     [gyjSelectedView addSubview:btnGYJ];
     [btnGYJ addTarget: self action:@selector(actionPlayTypeSelect:) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.titleView = gyjSelectedView;
+//    self.navigationItem.titleView = gyjSelectedView;
+    [gYJview addSubview:gyjSelectedView];
 }
 
 #pragma mark 工具方法

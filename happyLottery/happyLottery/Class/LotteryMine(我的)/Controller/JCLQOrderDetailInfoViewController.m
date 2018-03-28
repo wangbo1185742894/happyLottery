@@ -56,7 +56,9 @@
     
     self.lotteryMan.delegate = self;
     [UITableView refreshHelperWithScrollView:self.tabListDetail target:self loadNewData:@selector(loadNewData) loadMoreData:@selector(loadMoreData) isBeginRefresh:NO];
-    
+    if ([Utility isIOS11After]) {
+        self.automaticallyAdjustsScrollViewInsets = NO; // tableView 莫名其妙  contentOffset.y 成-64了  MMP
+    }
     [self loadNewData];
 }
 
