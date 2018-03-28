@@ -53,15 +53,17 @@
         CGContextMoveToPoint(context, 0, y);
 //        CGContextAddLineToPoint(context, qihao_width, y);
         CGContextStrokePath(context);
+        CGRect rect = CGRectMake(0, y, qihao_width, cellH);
         if (i % 2 == 0) {
-            CGRect rect = CGRectMake(0, y, qihao_width, cellH);
             //lc
-            CGContextSetRGBFillColor(context, 242/255.0,242/255.0,242/255.0, 1.0);
-            //填充矩形
-            CGContextFillRect(context, rect);
-            CGContextStrokePath(context);
+            CGContextSetRGBFillColor(context, 246.0/255.0,246.0/255.0,246.0/255.0, 1.0);
         }
-
+        else{
+            CGContextSetRGBFillColor(context, 255.0/255.0,255.0/255.0,255.0/255.0, 1.0);
+        }
+        //填充矩形
+        CGContextFillRect(context, rect);
+        CGContextStrokePath(context);
     }
     CGContextStrokePath(context);
     

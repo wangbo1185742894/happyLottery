@@ -796,25 +796,25 @@
     if(SelectPlayTypeTitleView != nil){
         return;
     }
-    SelectPlayTypeTitleView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 160, 40)];
+    SelectPlayTypeTitleView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 164, 30)];
     SelectPlayTypeTitleView.backgroundColor = SystemGreen;
-    SelectPlayTypeTitleView.layer.cornerRadius = 20;
+    SelectPlayTypeTitleView.layer.cornerRadius = 17;
     SelectPlayTypeTitleView.layer.masksToBounds = YES;
     SelectPlayTypeTitleView.layer.borderColor = [UIColor whiteColor].CGColor;
     SelectPlayTypeTitleView.layer.borderWidth = 1;
     btnRJC = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnRJC.layer.cornerRadius = 16;
+    btnRJC.layer.cornerRadius = 13;
     btnRJC.layer.masksToBounds = YES;
     [btnRJC setTitle:@"任9场" forState:0];
     [btnRJC setTitleColor:SystemGreen forState:UIControlStateSelected];
     [btnRJC setTitleColor:[UIColor whiteColor] forState:0];
     [btnRJC setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateSelected];
     [btnRJC setBackgroundImage:[UIImage imageWithColor:SystemGreen] forState:0];
-    [btnRJC setFrame: CGRectMake(4, 4, 76, 32)];
-    btnRJC.titleLabel.font = [UIFont systemFontOfSize:16];
+    [btnRJC setFrame: CGRectMake(4, 4, 76, 22)];
+    btnRJC.titleLabel.font = [UIFont systemFontOfSize:14];
     [btnRJC addTarget: self action:@selector(actionPlayTypeSelect:) forControlEvents:UIControlEventTouchUpInside];
     btnSSC = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnSSC.layer.cornerRadius = 16;
+    btnSSC.layer.cornerRadius = 13;
     btnSSC.layer.masksToBounds = YES;
     btnSSC.titleLabel.font = [UIFont systemFontOfSize:16];
     [btnSSC setTitle:@"14场" forState:0];
@@ -822,7 +822,7 @@
     [btnSSC setTitleColor:[UIColor whiteColor] forState:0];
     [btnSSC setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateSelected];
     [btnSSC setBackgroundImage:[UIImage imageWithColor:SystemGreen] forState:0];
-    [btnSSC setFrame: CGRectMake(80, 4, 76, 32)];
+    [btnSSC setFrame: CGRectMake(84, 4, 76, 22)];
     
     [SelectPlayTypeTitleView addSubview:btnRJC];
     [SelectPlayTypeTitleView addSubview:btnSSC];

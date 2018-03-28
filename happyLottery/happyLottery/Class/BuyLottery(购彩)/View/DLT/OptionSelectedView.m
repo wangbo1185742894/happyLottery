@@ -76,8 +76,7 @@
                 }else{
                     btn.titleLabel.font = [UIFont systemFontOfSize:12];
                     [btn setBackgroundImage:[UIImage imageNamed:@"orangeBackground"] forState:UIControlStateNormal];
-                    //字体颜色修改 lyw  whiteColor->blackColor
-                    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
                 }
                 [self addSubview:btn];
                     

@@ -18,8 +18,6 @@
                 <outlet property="labMaxBouns" destination="755-kp-3fT" id="8rB-j7-zGb"/>
                 <outlet property="labSchemeInfo" destination="Ggb-Pr-o5P" id="8US-oO-w08"/>
                 <outlet property="navigationBar" destination="2EE-rl-vdP" id="foO-es-gVk"/>
-                <outlet property="navigationItemView" destination="NI2-gA-xL8" id="D4N-vO-W0b"/>
-                <outlet property="selectTypeBtn" destination="d7Q-t2-RoL" id="Dke-cl-Jfb"/>
                 <outlet property="tfBeiCount" destination="OQN-qz-s0F" id="8J2-NQ-Esz"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -218,15 +216,6 @@
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="7dD-V6-KaI"/>
                     </constraints>
-                    <items>
-                        <navigationItem id="NI2-gA-xL8">
-                            <nil key="title"/>
-                            <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="d7Q-t2-RoL">
-                                <rect key="frame" x="112.5" y="7" width="150" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </button>
-                        </navigationItem>
-                    </items>
                 </navigationBar>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" sectionIndexMinimumDisplayRowCount="3" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QED-17-em7">
                     <rect key="frame" x="0.0" y="60" width="375" height="513"/>

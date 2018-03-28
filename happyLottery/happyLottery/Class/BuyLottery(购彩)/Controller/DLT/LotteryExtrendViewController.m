@@ -243,7 +243,7 @@
         [numScrollView addSubview:contentV];
 
         headerView = [[EXHeaderView alloc] init];
-        headerView.backgroundColor = [UIColor whiteColor];
+        headerView.backgroundColor = RGBCOLOR(240, 239, 245);
         [headerScrollView addSubview:headerView];
     }
     CGSize size_header = [headerView remakerViewFram:baseNumMaxValue];

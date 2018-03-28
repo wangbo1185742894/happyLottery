@@ -61,6 +61,7 @@
     __weak IBOutlet NSLayoutConstraint *newsViewMarginTop;
     __weak IBOutlet NSLayoutConstraint *tabForecastListHeight;
     __weak IBOutlet UITableView *tabForecaseList;
+    __weak IBOutlet NSLayoutConstraint *gyjMarginTop;
     LoadData *singleLoad;
     NewsModel *newsModel;
     NSMutableArray <ADSModel *>*adsArray;
@@ -114,6 +115,7 @@
     [self setADSUI];
     [self setMenu];
     [self setNewsView];
+    [self gyjButtonView];
     [self setDLTCTZQView];
     [self setTableView];
         openRedpacketButton.titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -285,7 +287,10 @@
 
 -(void)setNewsView{
     newsViewMarginTop.constant = curY;
-    
+}
+
+-(void)gyjButtonView{
+    gyjMarginTop.constant = curY;
 }
 
 -(void)setViewFeature{
