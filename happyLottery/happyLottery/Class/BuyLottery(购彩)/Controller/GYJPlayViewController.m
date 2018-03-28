@@ -261,7 +261,7 @@
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, tableView.contentSize.width, 20)];
     //设置 title 文字内容
     if (createTime.length>0) {
-        if (![createTime isEqualToString:@"奖期不在售"]) {
+        if (![createTime isEqualToString:@"奖期不在售"]&&![createTime containsString:@"截止"]) {
             createTime = [NSString stringWithFormat:@"%@截止",createTime];
         }
         titleLabel.text = createTime;
