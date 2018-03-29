@@ -21,6 +21,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSString *strUrl = [NSString stringWithFormat:@"%@",self.pageUrl];
+    if ([strUrl rangeOfString:@"dltOpenAward"].length > 0) {
+        self.viewControllerNo = @"A414";
+    }else if ([strUrl rangeOfString:@"jzOpenAward"].length > 0){
+        self.viewControllerNo = @"A412";
+    }else if ([strUrl rangeOfString:@"sfcOpenAward"].length > 0){
+        self.viewControllerNo = @"A415";
+    }
     self.webViewShowInfo.delegate = self;
     [self.webViewShowInfo loadRequest:[NSURLRequest requestWithURL:self.pageUrl]];
     

@@ -175,12 +175,14 @@
     
 }
 
-
-
 -(void)textFieldDidEndEditing:(UITextField *)textField{
     if([textField .text integerValue] ==0){
         textField.text = @"1";
     }
+    for (UIButton *item in qiCountItem) {
+        item.selected = NO;
+    }
+    [self update];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         CGFloat height = self.navigationController.navigationBar.mj_h;
         NSLog(@"%@",self.navigationController.navigationBar);
@@ -668,6 +670,7 @@
     [self.lotteryMan getSellIssueList:@{@"lotteryCode":self.lottery.identifier}];
 }
 -(void)gotSellIssueList:(NSArray *)infoDic errorMsg:(NSString *)msg{
+    [self hideLoadingView];
     {
         
         if (infoDic != nil && infoDic.count != 0) {
@@ -724,9 +727,11 @@
                 }
                 
                 if(self.curUser.paypwdSetting == NO) {
+                    
                     SetPayPWDViewController *spvc = [[SetPayPWDViewController alloc]init];
                     spvc.titleStr = @"设置支付密码";
                     [self.navigationController pushViewController:spvc animated:YES];
+                    
                     return;
                 }else{
                     if ([self checkPayPassword]) {

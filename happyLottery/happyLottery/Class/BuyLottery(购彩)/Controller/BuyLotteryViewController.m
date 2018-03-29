@@ -258,7 +258,7 @@
     }else{
         height = curY  + tabForecaseList.rowHeight * JczqShortcutList.count;
     }
-    homeViewHeight.constant = height;
+    homeViewHeight.constant = height - tabForecaseList.rowHeight * 2;
     tabForecastListHeight.constant = tabForecaseList.rowHeight * JczqShortcutList.count;
     if (self.curUser.isLogin) {
         [self getCollected];
@@ -274,12 +274,12 @@
     [tabForecaseList registerClass:[NewsListCell class] forCellReuseIdentifier:KNewsListCell];
     tabForecaseList.rowHeight = 117;
     [tabForecaseList reloadData];
-    tabForecastListHeight.constant = tabForecaseList.rowHeight * 3;
+    tabForecastListHeight.constant = tabForecaseList.rowHeight * 1;
     CGFloat height = 0;
     if ([self isIphoneX]) {
-        height = curY  + tabForecaseList.rowHeight * 3 + 20;
+        height = curY  + tabForecaseList.rowHeight * 1 + 20;
     }else{
-        height = curY  + tabForecaseList.rowHeight * 3;
+        height = curY  + tabForecaseList.rowHeight * 1;
     }
     homeViewHeight.constant = height;
     tabForecaseList.bounces = NO;
@@ -363,6 +363,40 @@
         disVC.hidesBottomBarWhenPushed = YES;
         disVC.isNeedBack = YES;
         [self.navigationController pushViewController:disVC animated:YES];
+        return;
+    }else if ([keyStr isEqualToString:@"A414"]){
+        WebCTZQHisViewController * playViewVC = [[WebCTZQHisViewController alloc]init];
+        NSString *strUrl = [NSString stringWithFormat:@"%@/app/award/dltOpenAward",H5BaseAddress];
+        playViewVC.pageUrl = [NSURL URLWithString:strUrl];
+        playViewVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:playViewVC animated:YES];
+        return;
+    }else if ([keyStr isEqualToString:@"A415"]){
+        WebCTZQHisViewController * playViewVC = [[WebCTZQHisViewController alloc]init];
+        NSString *strUrl = [NSString stringWithFormat:@"%@/app/award/sfcOpenAward",H5BaseAddress];
+        playViewVC.pageUrl = [NSURL URLWithString:strUrl];
+        playViewVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:playViewVC animated:YES];
+        return;
+    }else if ([keyStr isEqualToString:@"A412"]){
+        WebCTZQHisViewController * playViewVC = [[WebCTZQHisViewController alloc]init];
+        NSString *strUrl = [NSString stringWithFormat:@"%@/app/award/jzOpenAward",H5BaseAddress];
+        playViewVC.pageUrl = [NSURL URLWithString:strUrl];
+        playViewVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:playViewVC animated:YES];
+        return;
+    }else if ([keyStr isEqualToString:@"A009"]){
+        [self actionJcgyj:nil];
+        return;
+    }else if ([keyStr isEqualToString:@"A006"]){
+        
+        [self actionSFC:@"SFC"];
+        return;
+    }else if ([keyStr isEqualToString:@"A005"]){
+        [self actionSFC:@"RJC"];
+        return;
+    }else if ([keyStr isEqualToString:@"A004"]){
+        [self actionDLT:nil];
         return;
     }
     
@@ -889,6 +923,13 @@
     NSArray * lotteryDS = [self.lotteryMan getAllLottery];
     
     CTZQPlayViewController *playVC = [[CTZQPlayViewController alloc] init];
+    if ([sender isKindOfClass:[NSString class]]) {
+        if ([sender isEqualToString:@"SFC"]) {
+            playVC.playType = CTZQPlayTypeShiSi;
+        }else{
+            playVC.playType = CTZQPlayTypeRenjiu;
+        }
+    }
     playVC.hidesBottomBarWhenPushed = YES;
     playVC.lottery = lotteryDS[7];
     [self.navigationController pushViewController:playVC animated:YES];

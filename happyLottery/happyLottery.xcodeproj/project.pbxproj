@@ -6589,7 +6589,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 8RE52F5T9U;
+				DEVELOPMENT_TEAM = TSK429FVKW;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/happyLottery/Libs/SHARESDK/Required",
@@ -6613,7 +6613,7 @@
 					"-force_load",
 					"$(PROJECT_DIR)/happyLottery/Libs/SHARESDK/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/libWeiboSDK.a",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.only.happyLottery244;
+				PRODUCT_BUNDLE_IDENTIFIER = com.only.happyLottery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -6629,7 +6629,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: XI'AN ONLY TECHNOLOGY DEVELOPMENT CO., LTD.";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8RE52F5T9U;
+				DEVELOPMENT_TEAM = TSK429FVKW;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/happyLottery/Libs/SHARESDK/Required",
@@ -6653,7 +6653,7 @@
 					"-force_load",
 					"$(PROJECT_DIR)/happyLottery/Libs/SHARESDK/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/libWeiboSDK.a",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.only.happyLottery244;
+				PRODUCT_BUNDLE_IDENTIFIER = com.only.happyLottery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

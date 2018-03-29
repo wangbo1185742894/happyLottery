@@ -54,7 +54,7 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ePc-jk-gqe">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                             <connections>
-                                                <action selector="actionNewDetail:" destination="-1" eventType="touchUpInside" id="fW8-HM-zny"/>
+                                                <action selector="actionMoreNews:" destination="-1" eventType="touchUpInside" id="hds-C8-lb2"/>
                                             </connections>
                                         </button>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic_zixun.png" translatesAutoresizingMaskIntoConstraints="NO" id="RHv-1W-OIq">
@@ -96,8 +96,8 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lu8-xj-pXr">
-                                            <rect key="frame" x="0.0" y="80" width="375" height="6"/>
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lu8-xj-pXr">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="newicon_default.png" translatesAutoresizingMaskIntoConstraints="NO" id="wEH-lA-tLB">
                                                     <rect key="frame" x="255" y="0.0" width="120" height="80"/>

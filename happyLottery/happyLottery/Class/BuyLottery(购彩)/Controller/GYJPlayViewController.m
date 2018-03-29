@@ -57,6 +57,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.viewControllerNo = @"A009";
     [self setTableViewCell];
     self.gjSellArray = [NSMutableArray arrayWithCapacity:0];
     self.gjSelectedArray = [NSMutableArray arrayWithCapacity:0];

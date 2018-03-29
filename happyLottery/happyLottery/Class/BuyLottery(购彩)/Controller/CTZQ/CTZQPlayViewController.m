@@ -247,6 +247,9 @@
 
 -(void)gotSellIssueList:(NSArray *)infoDic errorMsg:(NSString *)msg{
     [self hideLoadingView];
+    if (infoDic.count == 0 || infoDic == nil) {
+        return;
+    }
     NSMutableArray *rounds = [[NSMutableArray alloc]initWithArray:infoDic];
     [rounds sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
         
@@ -260,19 +263,19 @@
         [round changeServerTime];
     }
     
-    if (rounds[0] != nil) {
+    if ( rounds.count >=1) {
         LotteryRound *round0 = rounds[0];
 
         [round01 setTitle:[NSString stringWithFormat:@"第%@期",round0.issueNumber] forState:0];
     }
     [self getMatchWithInfo:@{@"issueNumber":self.lottery.currentRound.issueNumber}];
     
-    if (rounds[1] != nil) {
+    if (rounds.count >=2) {
         LotteryRound *round0 = rounds[1];
         [round02 setTitle:[NSString stringWithFormat:@"第%@期",round0.issueNumber] forState:0];
     }
     
-    if (rounds[2] != nil) {
+    if (rounds.count >=3) {
         LotteryRound *round0 = rounds[2];
         [self.round03 setTitle:[NSString stringWithFormat:@"第%@期",round0.issueNumber] forState:0];
     }

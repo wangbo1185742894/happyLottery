@@ -8,6 +8,10 @@
 
 #import "AppDelegate.h"
 #import "NewFeatureViewController.h"
+#import "WebCTZQHisViewController.h"
+#import "DLTPlayViewController.h"
+#import "CTZQPlayViewController.h"
+#import "JCZQPlayViewController.h"
 #import "AESUtility.h"
 #import "netWorkHelper.h"
 // 引入JPush功能所需头文件
@@ -610,6 +614,27 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         disVC.isNeedBack = YES;
         baseVC = disVC;
         
+    }else if ([keyStr isEqualToString:@"A414"]){
+        WebCTZQHisViewController * playViewVC = [[WebCTZQHisViewController alloc]init];
+        NSString *strUrl = [NSString stringWithFormat:@"%@/app/award/dltOpenAward",H5BaseAddress];
+        playViewVC.pageUrl = [NSURL URLWithString:strUrl];
+        playViewVC.hidesBottomBarWhenPushed = YES;
+        [delegate.curNavVC pushViewController:playViewVC animated:YES];
+        return;
+    }else if ([keyStr isEqualToString:@"A415"]){
+        WebCTZQHisViewController * playViewVC = [[WebCTZQHisViewController alloc]init];
+        NSString *strUrl = [NSString stringWithFormat:@"%@/app/award/sfcOpenAward",H5BaseAddress];
+        playViewVC.pageUrl = [NSURL URLWithString:strUrl];
+        playViewVC.hidesBottomBarWhenPushed = YES;
+        [delegate.curNavVC pushViewController:playViewVC animated:YES];
+        return;
+    }else if ([keyStr isEqualToString:@"A412"]){
+        WebCTZQHisViewController * playViewVC = [[WebCTZQHisViewController alloc]init];
+        NSString *strUrl = [NSString stringWithFormat:@"%@/app/award/jzOpenAward",H5BaseAddress];
+        playViewVC.pageUrl = [NSURL URLWithString:strUrl];
+        playViewVC.hidesBottomBarWhenPushed = YES;
+        [delegate.curNavVC pushViewController:playViewVC animated:YES];
+        return;
     }else{
           baseVC.hidesBottomBarWhenPushed = YES;
     }
@@ -725,7 +750,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     if (baseUrl == nil || baseUrl.length == 0) {
         [GlobalInstance instance].homeUrl = ServerAddress;
     }else{
-        [GlobalInstance instance].homeUrl = ServerAddress;
+        [GlobalInstance instance].homeUrl = baseUrl;
     }
 }
 
