@@ -62,11 +62,9 @@
                                         <constraint firstAttribute="height" constant="35" id="xew-4u-0X3"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-
                                     <state key="normal" title="预约" backgroundImage="yuanjiaowukuangselect">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" 
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
-
                                     <state key="disabled" backgroundImage="buttonBG_gray.png">
                                         <color key="titleColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
