@@ -651,11 +651,9 @@
                     case 2:
                     Bet.betTypeDesc = @"胆拖";
                     break;
-                    
                     default:
                     break;
                 }
-                
                 NSArray *redList = betDic[@"redList"];
                 NSArray *redDanList = betDic[@"redDanList"];
                 NSArray *blueList = betDic[@"blueList"];

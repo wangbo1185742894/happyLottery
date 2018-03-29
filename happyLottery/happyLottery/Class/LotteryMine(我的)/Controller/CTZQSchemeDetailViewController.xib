@@ -30,17 +30,14 @@
                     <rect key="frame" x="0.0" y="607" width="375" height="60"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elk-D4-DdO">
-                            <rect key="frame" x="10" y="0.0" width="355" height="44"/>
+                            <rect key="frame" x="0.0" y="8" width="375" height="44"/>
                             <state key="normal" title="立即支付" backgroundImage="schemedetailbutton.png"/>
                             <connections>
                                 <action selector="actionGotoTouzhu:" destination="-1" eventType="touchUpInside" id="RO2-ev-okT"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Pg-3A-JNl">
-                            <rect key="frame" x="8" y="29" width="359" height="15"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="44" id="x53-hx-43q"/>
-                            </constraints>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Pg-3A-JNl">
+                            <rect key="frame" x="0.0" y="8" width="375" height="44"/>
                             <state key="normal" title="继续投注" backgroundImage="schemedetailbutton.png"/>
                             <connections>
                                 <action selector="actionReBuy:" destination="-1" eventType="touchUpInside" id="yEd-pB-xC6"/>
@@ -49,13 +46,15 @@
                     </subviews>
                     <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstItem="3Pg-3A-JNl" firstAttribute="leading" secondItem="dMs-0c-A2S" secondAttribute="leading" constant="8" id="21V-X5-TU6"/>
-                        <constraint firstItem="3Pg-3A-JNl" firstAttribute="top" secondItem="dMs-0c-A2S" secondAttribute="top" id="CkA-El-mYj"/>
-                        <constraint firstAttribute="trailing" secondItem="elk-D4-DdO" secondAttribute="trailing" constant="10" id="JyE-MD-MCH"/>
-                        <constraint firstAttribute="trailing" secondItem="3Pg-3A-JNl" secondAttribute="trailing" constant="8" id="PUm-03-JKV"/>
-                        <constraint firstItem="elk-D4-DdO" firstAttribute="top" secondItem="dMs-0c-A2S" secondAttribute="top" id="o9i-lA-7Ai"/>
+                        <constraint firstAttribute="bottom" secondItem="elk-D4-DdO" secondAttribute="bottom" constant="8" id="3tz-1k-T1V"/>
+                        <constraint firstItem="3Pg-3A-JNl" firstAttribute="leading" secondItem="dMs-0c-A2S" secondAttribute="leading" id="9VK-hD-JDS"/>
+                        <constraint firstItem="elk-D4-DdO" firstAttribute="top" secondItem="dMs-0c-A2S" secondAttribute="top" constant="8" id="WhO-jR-KY1"/>
+                        <constraint firstAttribute="trailing" secondItem="3Pg-3A-JNl" secondAttribute="trailing" id="X5Q-2m-XAR"/>
+                        <constraint firstItem="3Pg-3A-JNl" firstAttribute="top" secondItem="dMs-0c-A2S" secondAttribute="top" constant="8" id="aUH-aw-hSX"/>
+                        <constraint firstAttribute="trailing" secondItem="elk-D4-DdO" secondAttribute="trailing" id="e5X-0q-gRW"/>
+                        <constraint firstAttribute="bottom" secondItem="3Pg-3A-JNl" secondAttribute="bottom" constant="8" id="p4M-6E-4a2"/>
                         <constraint firstAttribute="height" constant="60" id="sbn-pK-K9A"/>
-                        <constraint firstItem="elk-D4-DdO" firstAttribute="leading" secondItem="dMs-0c-A2S" secondAttribute="leading" constant="10" id="xma-V7-Mv0"/>
+                        <constraint firstItem="elk-D4-DdO" firstAttribute="leading" secondItem="dMs-0c-A2S" secondAttribute="leading" id="xDx-1c-RKj"/>
                     </constraints>
                 </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l2R-z5-UWM">

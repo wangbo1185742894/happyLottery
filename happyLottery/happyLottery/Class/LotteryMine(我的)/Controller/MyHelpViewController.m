@@ -14,6 +14,7 @@
 #import "QuestionsViewController.h"
 #import "FunctionsViewController.h"
 #import "IntegeralChangeViewController.h"
+#import "LotteryInstructionDetailViewController.h"
 
 @interface MyHelpViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
@@ -30,7 +31,7 @@
     self.viewControllerNo = @"A207";
     if ([self isIphoneX]) {
         self.top.constant = 24;
-       // self.bottom.constant = 34;
+       
     }
 }
 
@@ -47,6 +48,22 @@
 - (IBAction)integralChange:(id)sender {
     IntegeralChangeViewController * mpVC = [[IntegeralChangeViewController alloc]init];
     [self.navigationController pushViewController:mpVC animated:YES];
+}
+- (IBAction)actionSFC:(UIButton *)sender {
+    NSArray *infoArr = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"LotteryInstructionConfig" ofType: @"plist"]];
+    NSDictionary *infoDic = infoArr[6];
+    LotteryInstructionDetailViewController *detailVC = [[LotteryInstructionDetailViewController alloc] initWithNibName: @"LotteryInstructionDetailViewController" bundle: nil];
+    detailVC.lotteryDetailDic = infoDic;
+    [self.navigationController pushViewController: detailVC animated: YES];
+}
+- (IBAction)actionDLT:(UIButton *)sender {
+    
+    NSArray *infoArr = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"LotteryInstructionConfig" ofType: @"plist"]];
+    NSDictionary *infoDic = infoArr[2];;
+    
+    LotteryInstructionDetailViewController *detailVC = [[LotteryInstructionDetailViewController alloc] initWithNibName: @"LotteryInstructionDetailViewController" bundle: nil];
+    detailVC.lotteryDetailDic = infoDic;
+    [self.navigationController pushViewController: detailVC animated: YES];
 }
 //功能指南
 - (IBAction)FunctionalGuide:(id)sender {

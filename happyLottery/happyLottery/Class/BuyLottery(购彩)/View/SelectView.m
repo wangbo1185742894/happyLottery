@@ -118,6 +118,12 @@
     [self.labContent setInputAccessoryView:self.toolBar];
 }
 
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    if ([textField.text integerValue] == 0) {
+        textField.text = @"1";
+    }
+}
+
 -(void)setRightTitle:(NSString*)rightTitle andLeftTitle:(NSString *)leftTitle{
 
     self.labRightText.text = rightTitle;

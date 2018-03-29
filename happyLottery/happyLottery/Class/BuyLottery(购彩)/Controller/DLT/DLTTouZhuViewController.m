@@ -188,9 +188,10 @@
 }
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    
-    
-    
+    if ([string isEqualToString:@""]) {
+        return YES;
+    }
+
     if(textField == tfQiCount){
         for (UIButton *item in qiCountItem) {
             item.selected = NO;
@@ -200,6 +201,7 @@
     [numStr appendString:string];
     NSInteger num = [numStr integerValue];
     NSInteger limitNum;
+    
     if(textField == tfQiCount){
         if (self.transaction.lottery.currentRound == nil){
             limitNum = 99;
@@ -207,18 +209,23 @@
             NSInteger curQI = [[self.lottery.currentRound.issueNumber substringFromIndex:2] integerValue];
             limitNum = 135 - curQI;
         }
+        if (num > limitNum) {
+            [self showPromptText:[NSString stringWithFormat:@"最大可追%ld期",limitNum] hideAfterDelay:1.8];
+            return NO;
+        }
     }else{
         if ([tfQiCount.text integerValue] == 1) {
             limitNum = 9999;
         }else{
             limitNum = 99;
         }
+        if (num > limitNum) {
+            [self showPromptText:[NSString stringWithFormat:@"最大可投%ld倍",limitNum] hideAfterDelay:1.8];
+            return NO;
+        }
         
     }
-    if (num > limitNum) {
-        [self showPromptText:[NSString stringWithFormat:@"最大可追%ld期",limitNum] hideAfterDelay:1.8];
-        return NO;
-    }
+  
     
     [self performSelector:@selector(update) withObject:nil afterDelay:0.1];
     
@@ -767,8 +774,15 @@
         [self showPromptText:@"模拟投注暂不支持追号" hideAfterDelay:1.9];
         return;
     }
+    
+    
+    
     float balance = [self.curUser.totalBanlece doubleValue];
     NSString *msg = [NSString stringWithFormat:@"共追%lu期，共需%ld元,您当前余额为%.1f元,是否确定追号？",[tfQiCount.text integerValue],(long)self.transaction.betCost,balance];
+    if ([tfBeiCount.text integerValue] > 99) {
+        [self showPromptText:@"追号最大可投99倍" hideAfterDelay:1.8];
+        return;
+    }
     ZLAlertView *alert = [[ZLAlertView alloc] initWithTitle:@"追号确认" message:msg];
     [alert addBtnTitle:TitleNotDo action:^{
         [self hideLoadingView];

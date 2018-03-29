@@ -182,7 +182,15 @@
                 }
             }
         }else if ([result isEqualToString:@"CANCLE"]) {
-            jieguo.text = @"撤销追号";
+            if ([order.remark isEqualToString:@"手工撤销追号"]) {
+                jieguo.text = @"已取消";
+                kaijianghaoma.text  = order.remark;
+            }else if ([order.remark isEqualToString:@"余额不足"]){
+                jieguo.text = order.trOrderStatus;
+                kaijianghaoma.text  = order.remark;
+            }else{
+                jieguo.text = @"撤销追号";
+            }
         }
     }
     

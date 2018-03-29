@@ -36,6 +36,18 @@
     prizeMoney.adjustsFontSizeToFitWidth = YES;
     winningStateLb.adjustsFontSizeToFitWidth = YES;
     //追号
+    
+    if ([order.sumDraw doubleValue]  == 0.0) {
+        
+        prizeMoney.text = @"";
+        prizeMoney.textColor = SystemGray;
+    }else{
+        prizeMoney.text = [NSString stringWithFormat:@"奖金: %.2f元",[order.sumDraw doubleValue]];
+        prizeMoney.textColor = SystemRed;
+        prizeMoney.hidden = NO;
+    }
+    
+    
     if (![order.catchSchemeId isEqualToString:@""]&&![order.catchSchemeId isEqualToString:@"(null)"])
     {
         

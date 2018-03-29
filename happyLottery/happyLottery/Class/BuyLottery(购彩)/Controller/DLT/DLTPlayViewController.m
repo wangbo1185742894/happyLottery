@@ -295,10 +295,10 @@
                 break;
             }
         }
-        if([_lottery.currentRound isExpire]||_lottery.currentRound == nil){
-            [self showPromptText:@"未获得有效奖期" hideAfterDelay:1.7];
-            return;
-        }
+//        if([_lottery.currentRound isExpire]||_lottery.currentRound == nil){
+//            [self showPromptText:@"未获得有效奖期" hideAfterDelay:1.7];
+//            return;
+//        }
         
         DLTTouZhuViewController *touzhuVC = [[DLTTouZhuViewController alloc] initWithNibName: @"DLTTouZhuViewController" bundle: nil];
         touzhuVC.lottery = self.lottery;

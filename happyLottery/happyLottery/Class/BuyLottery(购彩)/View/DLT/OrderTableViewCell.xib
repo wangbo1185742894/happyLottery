@@ -56,16 +56,6 @@
                         <color key="textColor" red="0.21866422891616821" green="0.21865770220756531" blue="0.21866145730018616" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="追号奖金:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bng-jz-aUM">
-                        <rect key="frame" x="192" y="68" width="123" height="16"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="123" id="2od-WS-2fT"/>
-                            <constraint firstAttribute="height" constant="16" id="wR8-SB-Mpc"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <color key="textColor" red="0.90980392156862744" green="0.30980392156862746" blue="0.16470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.0元" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="5CK-23-4H0">
                         <rect key="frame" x="87.5" y="44" width="124" height="16"/>
                         <constraints>
@@ -77,7 +67,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zlb-Iq-f5Q">
-                        <rect key="frame" x="87.5" y="68" width="223" height="16"/>
+                        <rect key="frame" x="88" y="68" width="223" height="16"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="223" id="Bai-Gx-J1p"/>
                             <constraint firstAttribute="height" constant="16" id="eWw-sO-LB4"/>
@@ -97,6 +87,16 @@
                         <color key="textColor" red="0.21866422891616821" green="0.21865770220756531" blue="0.21866145730018616" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="追号奖金:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bng-jz-aUM">
+                        <rect key="frame" x="192" y="64" width="123" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="123" id="2od-WS-2fT"/>
+                            <constraint firstAttribute="height" constant="16" id="wR8-SB-Mpc"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.90980392156862744" green="0.30980392156862746" blue="0.16470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="GSB-Jh-Aoc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="3ek-i1-w9E"/>
@@ -113,7 +113,7 @@
                     <constraint firstItem="5CK-23-4H0" firstAttribute="leading" secondItem="MKa-oR-6SO" secondAttribute="trailing" constant="20" id="gQS-Wn-hzb"/>
                     <constraint firstAttribute="trailing" secondItem="o3z-9i-P2R" secondAttribute="trailing" constant="5" id="jtH-tb-K8f"/>
                     <constraint firstItem="Zlb-Iq-f5Q" firstAttribute="leading" secondItem="MKa-oR-6SO" secondAttribute="trailing" constant="20" id="kv9-zc-gca"/>
-                    <constraint firstItem="bng-jz-aUM" firstAttribute="centerY" secondItem="Zlb-Iq-f5Q" secondAttribute="centerY" id="w5i-Y5-e3X"/>
+                    <constraint firstItem="bng-jz-aUM" firstAttribute="centerY" secondItem="Zlb-Iq-f5Q" secondAttribute="centerY" constant="-4" id="w5i-Y5-e3X"/>
                     <constraint firstItem="MKa-oR-6SO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="xq2-XV-h3t"/>
                 </constraints>
             </tableViewCellContentView>
@@ -128,7 +128,7 @@
                 <outlet property="topConstant" destination="3ek-i1-w9E" id="iFv-e2-1Sq"/>
                 <outlet property="winningStateLb" destination="j3j-7G-lfd" id="tbQ-MQ-Jen"/>
             </connections>
-            <point key="canvasLocation" x="-4" y="-4"/>
+            <point key="canvasLocation" x="-4" y="-4.5"/>
         </tableViewCell>
     </objects>
 </document>
