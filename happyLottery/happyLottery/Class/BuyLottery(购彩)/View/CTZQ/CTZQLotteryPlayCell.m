@@ -17,11 +17,21 @@
         [self updateBtns];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
+    [super awakeFromNib];
 }
+
+- (void)setFrame:(CGRect)frame{
+    frame.origin.y += 6;
+    frame.size.height -= 6;
+    [super setFrame:frame];
+}
+
 - (void)setUpBtn:(UIButton *)btn{
     
-    [btn setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateNormal];
+    [btn setBackgroundImage:[UIImage imageWithColor:MAINBGC] forState:UIControlStateNormal];
     [btn setBackgroundImage:[UIImage imageWithColor:SystemGreen] forState:UIControlStateSelected];
+    btn.layer.cornerRadius = 4;
+    btn.layer.masksToBounds = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -93,7 +103,7 @@
             color = SystemGreen;
             oddsArrow = @"";//↑
         }else if ([oddStr isEqualToString:@"0"]){
-            color = SystemBlue;
+            color = SystemLightGray;
         }else if ([oddStr isEqualToString:@"1"]){
             color = SystemRed;
             oddsArrow = @"";//⬇︎↓↓↓
@@ -119,6 +129,7 @@
         }else{
             btn.selected = NO;
         }
+        
     }
 }
 - (IBAction)userSelected:(UIButton *)sender {

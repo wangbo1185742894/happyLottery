@@ -450,6 +450,7 @@
     }
     
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     CTZQLotteryPlayCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CTZQLotteryPlayCell"];
     cell.delegate = self;
@@ -562,7 +563,7 @@
     }
 
     [attstr appendAttributedString:[[NSAttributedString alloc] initWithString:@"已选" attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}]];
-    [attstr appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@",@(_CTZQMatchSelectedArr.count)] attributes:@{NSForegroundColorAttributeName:SystemGreen}]];
+    [attstr appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@",@(_CTZQMatchSelectedArr.count)] attributes:@{NSForegroundColorAttributeName:TEXTGRAYOrange}]];
     [attstr appendAttributedString:[[NSAttributedString alloc] initWithString:@"场比赛" attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}]];
     if (_CTZQMatchSelectedArr.count < _matchMinNeed) {
         [attstr appendAttributedString:[[NSAttributedString alloc] initWithString:@",还需选" attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}]];
