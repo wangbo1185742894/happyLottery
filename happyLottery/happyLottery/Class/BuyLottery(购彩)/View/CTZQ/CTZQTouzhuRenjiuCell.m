@@ -27,8 +27,13 @@
         
     }
     return self;
-    
 }
+
+- (void)setFrame:(CGRect)frame{
+    frame.size.height -= 6;
+    [super setFrame:frame];
+}
+
 /**
  *  胆拖点击事件
  *
@@ -66,9 +71,11 @@
 
 
     [btn setBackgroundImage:[UIImage imageWithColor:SystemGreen] forState:UIControlStateSelected];
-    [btn setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateNormal];
+    [btn setBackgroundImage:[UIImage imageWithColor:MAINBGC] forState:UIControlStateNormal];
     
     [btn setBackgroundImage:[UIImage imageWithColor:TFBorderColor] forState:UIControlStateDisabled];
+    btn.layer.cornerRadius = 4;
+    btn.layer.masksToBounds = YES;
     
 }
 /**

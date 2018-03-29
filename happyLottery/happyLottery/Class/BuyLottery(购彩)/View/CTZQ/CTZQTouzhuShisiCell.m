@@ -28,6 +28,14 @@
     return self;
 
 }
+
+
+
+- (void)setFrame:(CGRect)frame{
+    frame.size.height -= 6;
+    [super setFrame:frame];
+}
+
 /**
  *  设置Btn的属性
  *
@@ -37,7 +45,9 @@
     [btn setTitleColor:RGBCOLOR(72, 72, 72) forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
     [btn setBackgroundImage:[UIImage imageWithColor:SystemGreen] forState:UIControlStateSelected];
-    [btn setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateNormal];
+    [btn setBackgroundImage:[UIImage imageWithColor:MAINBGC] forState:UIControlStateNormal];
+    btn.layer.cornerRadius = 4;
+    btn.layer.masksToBounds = YES;
 }
 
 -(void)reloadData{
