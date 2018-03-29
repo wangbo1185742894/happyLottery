@@ -159,7 +159,7 @@
     [backBarButton setFrame: CGRectMake(0, 0, 64, 44)];
     //lc 更改 右侧的 图标变为汉字“助手”
     [backBarButton setTitle:@" 助手" forState:UIControlStateNormal];
-    [backBarButton setImage:[UIImage imageNamed:@"helper.png"] forState:UIControlStateNormal];
+    [backBarButton setImage:[UIImage imageNamed:@"wanfajieshao"] forState:UIControlStateNormal];
     backBarButton.titleLabel.font = [UIFont systemFontOfSize:14];
     backBarButton.titleLabel.textAlignment = NSTextAlignmentRight;
     
@@ -795,12 +795,12 @@
     }
     SelectPlayTypeTitleView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 164, 30)];
     SelectPlayTypeTitleView.backgroundColor = SystemGreen;
-    SelectPlayTypeTitleView.layer.cornerRadius = 17;
+    SelectPlayTypeTitleView.layer.cornerRadius = 16;
     SelectPlayTypeTitleView.layer.masksToBounds = YES;
     SelectPlayTypeTitleView.layer.borderColor = [UIColor whiteColor].CGColor;
     SelectPlayTypeTitleView.layer.borderWidth = 1;
     btnRJC = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnRJC.layer.cornerRadius = 13;
+    btnRJC.layer.cornerRadius = 11;
     btnRJC.layer.masksToBounds = YES;
     [btnRJC setTitle:@"任9场" forState:0];
     [btnRJC setTitleColor:SystemGreen forState:UIControlStateSelected];
@@ -811,7 +811,7 @@
     btnRJC.titleLabel.font = [UIFont systemFontOfSize:14];
     [btnRJC addTarget: self action:@selector(actionPlayTypeSelect:) forControlEvents:UIControlEventTouchUpInside];
     btnSSC = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnSSC.layer.cornerRadius = 13;
+    btnSSC.layer.cornerRadius = 11;
     btnSSC.layer.masksToBounds = YES;
     btnSSC.titleLabel.font = [UIFont systemFontOfSize:16];
     [btnSSC setTitle:@"14场" forState:0];

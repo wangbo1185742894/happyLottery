@@ -612,12 +612,12 @@
     gyjSelectedView = [[UIView alloc]initWithFrame:CGRectMake(self.view.frame.size.width/2-82,25, 164, 30)];
     gyjSelectedView.backgroundColor = [UIColor clearColor];
     
-    gyjSelectedView.layer.cornerRadius = 17;
+    gyjSelectedView.layer.cornerRadius = 16;
     gyjSelectedView.layer.masksToBounds = YES;
     gyjSelectedView.layer.borderColor = [UIColor whiteColor].CGColor;
     gyjSelectedView.layer.borderWidth = 1;
     btnGJ = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnGJ.layer.cornerRadius = 13;
+    btnGJ.layer.cornerRadius = 11;
     btnGJ.layer.masksToBounds = YES;
     [btnGJ setTitle:@"冠军" forState:0];
     [btnGJ setTitleColor:SystemGreen forState:UIControlStateSelected];
@@ -628,7 +628,7 @@
     btnGJ.titleLabel.font = [UIFont systemFontOfSize:14];
     [btnGJ addTarget: self action:@selector(actionPlayTypeSelect:) forControlEvents:UIControlEventTouchUpInside];
     btnGYJ = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnGYJ.layer.cornerRadius = 13;
+    btnGYJ.layer.cornerRadius = 11;
     btnGYJ.layer.masksToBounds = YES;
     btnGYJ.titleLabel.font = [UIFont systemFontOfSize:14];
     [btnGYJ setTitle:@"冠亚军" forState:0];
