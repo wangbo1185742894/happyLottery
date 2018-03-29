@@ -595,6 +595,7 @@
     self.alreadySelected.keyWord =@"0";
     self.alreadySelected.keyWordColor = SystemRed;
     self.tfBeiCount.text = @"5";
+    self.tfBeiCount.textColor = TEXTGRAYOrange;
     self.labSchemeInfo.text = [NSString stringWithFormat:@"0注%ld倍,",[self.tfBeiCount.text integerValue]];
     self.labCount.text = [NSString stringWithFormat:@"共0元"];
     self.labMaxBouns.text = [NSString stringWithFormat:@"最高可中:0元"];

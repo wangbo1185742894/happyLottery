@@ -17,6 +17,9 @@
     __weak IBOutlet UILabel *labSchemeState;
     __weak IBOutlet UIImageView *imgLotteryIcon;
     __weak IBOutlet UIImageView *imgWinState;
+    __weak IBOutlet NSLayoutConstraint *imagIconHeight;
+    __weak IBOutlet NSLayoutConstraint *imageIconWidth;
+    
 }
 @end
 
@@ -47,6 +50,10 @@
     labSchemeLottery.text = [self getLotteryByCode:model.lottery];
     imgLotteryIcon.image = [UIImage imageNamed:model.lotteryIcon];
     
+    if ([model.lottery isEqualToString:@"JCGJ"]||[model.lotteryIcon isEqualToString:@"JCGYJ"]||[model.lottery isEqualToString:@"DLT"]) {
+        imagIconHeight.constant = 39;
+        imageIconWidth.constant = 39;
+    }
     
     labSchemeState.text = [model getSchemeState];
     

@@ -45,6 +45,7 @@
     self.nameGroupFlag.text = model.clash;
 
     self.labForeCast.text = [NSString stringWithFormat:@"%.2f%%",[model.probability doubleValue]];
+    self.labForeCast.font = [UIFont fontWithName:@"Helvetica-Condensed-Black-Se" size:18];
     self.pfBeiShu.text = model.odds;
     self.xuHao.text = model.indexNumber;
     if (model.isSelect) {

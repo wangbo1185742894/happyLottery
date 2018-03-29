@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9cJ-j6-Im9">
-                        <rect key="frame" x="0.0" y="5" width="375" height="72"/>
+                        <rect key="frame" x="0.0" y="3" width="375" height="76"/>
                         <state key="normal">
                             <color key="titleColor" red="1" green="0.95418387650000003" blue="0.87032824750000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
@@ -84,7 +84,7 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6pR-Pf-RiG">
                         <rect key="frame" x="293.5" y="47" width="69.5" height="23"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                         <color key="textColor" red="1" green="0.31764705879999999" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -96,7 +96,7 @@
                             <constraint firstAttribute="height" constant="22" id="ZXW-0a-gcs"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="owm-IK-J4q"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -124,7 +124,7 @@
                     <constraint firstItem="EzK-Pb-JOL" firstAttribute="top" secondItem="VLw-zJ-LRW" secondAttribute="bottom" constant="16" id="FtF-QB-D3P"/>
                     <constraint firstItem="kSq-Ht-Osb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="H2g-Dr-fpk"/>
                     <constraint firstItem="6pR-Pf-RiG" firstAttribute="leading" secondItem="EzK-Pb-JOL" secondAttribute="trailing" constant="14" id="ITr-HK-WLa"/>
-                    <constraint firstAttribute="bottom" secondItem="9cJ-j6-Im9" secondAttribute="bottom" constant="4.5" id="LIb-Jr-4Jd"/>
+                    <constraint firstAttribute="bottom" secondItem="9cJ-j6-Im9" secondAttribute="bottom" constant="2.5" id="LIb-Jr-4Jd"/>
                     <constraint firstItem="EzK-Pb-JOL" firstAttribute="top" secondItem="VLw-zJ-LRW" secondAttribute="bottom" constant="16" id="LsQ-Uq-dnL"/>
                     <constraint firstItem="6pR-Pf-RiG" firstAttribute="leading" secondItem="EzK-Pb-JOL" secondAttribute="trailing" constant="14" id="MB1-Ab-TL3"/>
                     <constraint firstItem="mID-ny-zbf" firstAttribute="centerY" secondItem="OfV-7a-jxm" secondAttribute="centerY" id="Nff-kE-waz"/>
@@ -142,7 +142,7 @@
                     <constraint firstItem="6pR-Pf-RiG" firstAttribute="top" secondItem="2RN-CL-lX4" secondAttribute="bottom" constant="13" id="fmo-La-JJD"/>
                     <constraint firstItem="bd5-SM-3O6" firstAttribute="top" secondItem="kSq-Ht-Osb" secondAttribute="bottom" constant="16" id="g0w-xZ-Sr5"/>
                     <constraint firstItem="mID-ny-zbf" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="hUh-ep-Gxf"/>
-                    <constraint firstItem="9cJ-j6-Im9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="keV-GV-nwm"/>
+                    <constraint firstItem="9cJ-j6-Im9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="keV-GV-nwm"/>
                     <constraint firstItem="EzK-Pb-JOL" firstAttribute="centerX" secondItem="VLw-zJ-LRW" secondAttribute="centerX" id="lEE-FG-HBj"/>
                     <constraint firstItem="6pR-Pf-RiG" firstAttribute="centerY" secondItem="bd5-SM-3O6" secondAttribute="centerY" id="obP-76-4Wt"/>
                     <constraint firstItem="6pR-Pf-RiG" firstAttribute="top" secondItem="2RN-CL-lX4" secondAttribute="bottom" constant="13" id="tg0-Sg-TAM"/>

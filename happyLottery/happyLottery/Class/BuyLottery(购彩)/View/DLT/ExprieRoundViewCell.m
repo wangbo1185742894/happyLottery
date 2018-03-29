@@ -36,7 +36,7 @@
 
 
     _qiHaoLa.text = [NSString stringWithFormat:@"第%@期",round.issueNumber];
-
+    _qiHaoLa.textColor = SystemLightGray;
     NSString *betCountStr = [NSString stringWithFormat: @"%@", round.openResult];
 
     NSArray *betnumArray = [betCountStr componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"#"]];
@@ -74,8 +74,8 @@
 
 
             UIButton *btn=(UIButton *) _ballArr[index - 1];
-            [btn setBackgroundImage:[UIImage imageNamed:@"redBall"] forState:UIControlStateNormal];
-            [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [btn setTitleColor:SystemRed forState:0];
+            
         }
 
     }else{
@@ -84,17 +84,17 @@
             NSString *tempstr;
             tempstr = [NSString stringWithFormat:@"%02d",[redNum[i] intValue]];
             UIButton *btn=(UIButton *) _ballArr[i];
-            [btn setBackgroundImage:[UIImage imageNamed:@"redBall"] forState:UIControlStateNormal];
+            [btn setTitleColor:SystemRed forState:0];
             [btn setTitle:tempstr forState:UIControlStateNormal];
-            [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            
         }
         
         NSArray *subnumArray = [[betnumArray lastObject] componentsSeparatedByString:@","];
         for (int i = 0; i<subnumArray.count; i++) {
             UIButton *btn = (UIButton*)_ballArr[5+i];
             [btn setTitle:subnumArray[i] forState:UIControlStateNormal];
-            [btn setBackgroundImage:[UIImage imageNamed:@"blueBall"] forState:UIControlStateNormal];
-            [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [btn setTitleColor:SystemBlue forState:0];
+            
         }
         NSMutableDictionary *subResNumberAttrsDictionary = [NSMutableDictionary dictionaryWithCapacity: 2];
         subResNumberAttrsDictionary[NSForegroundColorAttributeName] = [UIColor blueColor];
@@ -118,7 +118,7 @@
     NSMutableAttributedString *betInfoString = [[NSMutableAttributedString alloc] init];
 
     NSMutableDictionary *textAttrsDictionary = [NSMutableDictionary dictionaryWithCapacity: 2];
-    textAttrsDictionary[NSForegroundColorAttributeName] = TEXTGRAYCOLOR;
+    textAttrsDictionary[NSForegroundColorAttributeName] = SystemLightGray;
     //    textAttrsDictionary[NSParagraphStyleAttributeName] = paragraph;
 
     [betInfoString appendAttributedString: [[NSAttributedString alloc] initWithString: [NSString stringWithFormat:@"第%@期",round.issueNumber] attributes: textAttrsDictionary]];

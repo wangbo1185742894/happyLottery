@@ -41,9 +41,13 @@
     }
         self.backgroundColor = [UIColor whiteColor];
     
-        UIImageView *blackImage = [[UIImageView alloc]initWithFrame:CGRectMake(0,10,KscreenWidth - 140, 20)];
+        UIImageView *blackImage = [[UIImageView alloc]initWithFrame:CGRectMake(-15,10,KscreenWidth - 140, 20)];
 //        blackImage.backgroundColor = [UIColor blackColor];
-        blackImage.image = [UIImage imageNamed:@"timebackimage"];
+//        blackImage.image = [UIImage imageNamed:@"timebackimage"];
+    [blackImage setBackgroundColor:BtnDisAbleTitleColor];
+    blackImage.layer.cornerRadius = blackImage.mj_h / 2;
+    blackImage.layer.masksToBounds = YES;
+    
         // 在这里添加背景图片
         [self addSubview:blackImage];
     
@@ -121,30 +125,6 @@
         _timeCountdownView.timeCutType = TimeCutTypePlayPage;
         [_timeCountdownView startTimeCountdown:lottery.currentRound];
         [self addSubview:_timeCountdownView];
-//    }else{
-//        CGRect titleFrame = self.bounds;
-//        titleFrame.origin.x = LEFTPADDING;
-//        titleFrame.size.width = 100;
-//        labelCurRoundInfoTitle = [[UILabel alloc] initWithFrame: titleFrame];
-//        labelCurRoundInfoTitle.backgroundColor = [UIColor clearColor];
-//        labelCurRoundInfoTitle.font = [UIFont systemFontOfSize: 13];
-//        labelCurRoundInfoTitle.adjustsFontSizeToFitWidth = YES;
-//        labelCurRoundInfoTitle.textColor = TEXTGRAYCOLOR;
-//        if (lottery.currentRound) {
-//            labelCurRoundInfoTitle.text = [NSString stringWithFormat: @"第%@期", lottery.currentRound.issueNumber];
-//        }else{
-//            labelCurRoundInfoTitle.text = @"期次：未获得期次";
-//        }
-//        [self addSubview: labelCurRoundInfoTitle];
-//        if (!_timeCountdownView) {
-//            _timeCountdownView = [[LotteryTimeCountdownView alloc] initWithFrame:self.bounds];
-//        }
-//        _timeCountdownView.timeCutType = TimeCutTypePlayPage;
-//        [_timeCountdownView startTimeCountdown:lottery.currentRound];
-//        [self addSubview:_timeCountdownView];
-//    }
-//    
-    
 }
 
 - (NSString *)timeSting{
