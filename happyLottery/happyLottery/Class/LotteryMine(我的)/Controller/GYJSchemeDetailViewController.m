@@ -22,6 +22,7 @@
 #import "DLTPlayViewController.h"
 #import "GYJSchemeViewCell.h"
 
+#import "GYJPlayViewController.h"
 #define  KSchemeDetailMatchViewCell     @"SchemeDetailMatchViewCell"
 #define  KSchemeDetailViewCell          @"SchemeDetailViewCell"
 #define  KTableHeaderView               @"TableHeaderView"
@@ -536,9 +537,9 @@
     [super navigationBackToLastPage];
 }
 - (IBAction)actionReBuy:(UIButton *)sender {
-  [[NSNotificationCenter defaultCenter]postNotificationName:@"NSNotificationJumpToPlayVC" object:@"SFC"];
-    [self.navigationController popToRootViewControllerAnimated:YES];
-    
+    GYJPlayViewController *gyjPlayVc = [[GYJPlayViewController alloc]init];
+    gyjPlayVc.hidesBottomBarWhenPushed = YES;
+    gyjPlayVc.navigationController.navigationBar.hidden = YES;
+    [self.navigationController pushViewController:gyjPlayVc animated:YES];
 }
-
 @end

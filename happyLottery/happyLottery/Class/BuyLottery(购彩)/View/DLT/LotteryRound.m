@@ -78,10 +78,10 @@
             NSInteger hour = self.abortDay * 24 + self.abortHour;
             return [NSString stringWithFormat:@"   剩余时间：%ld:%02ld:%02ld",hour,self.abortMinute,self.abortSecond];
         }else{
-            return @"待销售";
+            return @"当前期次已截止销售";
         }
     }
-    return @"待销售";
+    return @"当前期次不在售";
 }
 
 - (void)roudnAbortTime{

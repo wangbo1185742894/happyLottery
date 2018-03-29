@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottom;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollerview;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *height;
 
 @end
 
@@ -33,6 +34,7 @@
         self.top.constant = 24;
        
     }
+    self.height.constant = 770;
 }
 
 - (IBAction)footballPlay:(id)sender {

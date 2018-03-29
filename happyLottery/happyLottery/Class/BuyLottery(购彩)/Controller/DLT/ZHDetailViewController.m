@@ -506,8 +506,14 @@
 }
 
 - (IBAction)toPlayGoon:(UIButton *)sender {
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"NSNotificationJumpToPlayVC" object:@"DLT"];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    NSArray * lotteryDS = [self.lotteryMan getAllLottery];
+    
+    DLTPlayViewController *playVC = [[DLTPlayViewController alloc] init];
+    playVC.hidesBottomBarWhenPushed = YES;
+    //    _lotterySelected.currentRound = round;
+    playVC.lottery = lotteryDS[1];
+    [self.navigationController pushViewController:playVC animated:YES];
+    
 }
 
 - (void) shareRightButtonAction{

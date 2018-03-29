@@ -91,6 +91,8 @@
 		2D06FFE91FFDC9EB009E7568 /* football@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D06FFE31FFDC9EA009E7568 /* football@2x.png */; };
 		2D06FFEA1FFDC9EB009E7568 /* football@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D06FFE41FFDC9EA009E7568 /* football@3x.png */; };
 		2D06FFEB1FFDC9EB009E7568 /* win@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D06FFE51FFDC9EB009E7568 /* win@2x.png */; };
+		2D08A48C206CBDF1005AFF13 /* pic_zixun@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D08A48A206CBDEF005AFF13 /* pic_zixun@3x.png */; };
+		2D08A48D206CBDF1005AFF13 /* pic_zixun@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D08A48B206CBDF0005AFF13 /* pic_zixun@2x.png */; };
 		2D0E2396201713260098DA40 /* XYNoDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0E2392201713240098DA40 /* XYNoDataView.m */; };
 		2D0E2397201713260098DA40 /* UITableView+XY.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0E2393201713240098DA40 /* UITableView+XY.m */; };
 		2D0E239A201817190098DA40 /* button_forbidden@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D0E2398201817180098DA40 /* button_forbidden@3x.png */; };
@@ -1327,6 +1329,8 @@
 		2D06FFFD1FFDCD9E009E7568 /* MJRefreshAutoNormalFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshAutoNormalFooter.h; sourceTree = "<group>"; };
 		2D06FFFE1FFDCD9E009E7568 /* MJRefreshAutoNormalFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshAutoNormalFooter.m; sourceTree = "<group>"; };
 		2D06FFFF1FFDCD9E009E7568 /* MJRefreshAutoStateFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshAutoStateFooter.h; sourceTree = "<group>"; };
+		2D08A48A206CBDEF005AFF13 /* pic_zixun@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pic_zixun@3x.png"; sourceTree = "<group>"; };
+		2D08A48B206CBDF0005AFF13 /* pic_zixun@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pic_zixun@2x.png"; sourceTree = "<group>"; };
 		2D0E2392201713240098DA40 /* XYNoDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYNoDataView.m; sourceTree = "<group>"; };
 		2D0E2393201713240098DA40 /* UITableView+XY.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+XY.m"; sourceTree = "<group>"; };
 		2D0E2394201713250098DA40 /* UITableView+XY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+XY.h"; sourceTree = "<group>"; };
@@ -3678,6 +3682,8 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				2D08A48B206CBDF0005AFF13 /* pic_zixun@2x.png */,
+				2D08A48A206CBDEF005AFF13 /* pic_zixun@3x.png */,
 				F97D82E9206A534C00721336 /* common_top_bar_back.png */,
 				F9330AA92068DF73005BFF0B /* Championship@2x.png */,
 				F9330AA72068DF72005BFF0B /* Championship@3x.png */,
@@ -5565,6 +5571,7 @@
 				2D0EEAA62015D47400B0769C /* coupon@3x.png in Resources */,
 				2D4B1EA21FDFC5F30034B708 /* NewsTableViewCell.xib in Resources */,
 				2D5171EB200C72DA00C3CD7F /* icon_weizhong_@2x.png in Resources */,
+				2D08A48C206CBDF1005AFF13 /* pic_zixun@3x.png in Resources */,
 				2D4B1E9D1FDFC4E10034B708 /* NewsViewController.xib in Resources */,
 				2D5171FC200C73D900C3CD7F /* icon_won_tatus@3x.png in Resources */,
 				2D36176A2061FA3D003093F9 /* dan_Win@2x.png in Resources */,
@@ -5681,6 +5688,7 @@
 				F9B5D9772060A9DE00C9F6DC /* flag369@2x.png in Resources */,
 				2DDEDE761FD568C9007AEBF7 /* LICENSE in Resources */,
 				2D7B13A5204E871C0035AE89 /* CTZQPlayViewController.xib in Resources */,
+				2D08A48D206CBDF1005AFF13 /* pic_zixun@2x.png in Resources */,
 				F999278920037AA200023F8F /* empty_zhmx@2x.png in Resources */,
 				F9B5D97E2060A9DE00C9F6DC /* flag377@3x.png in Resources */,
 				F90FCD941FF396F700BD807C /* fly@2x.png in Resources */,

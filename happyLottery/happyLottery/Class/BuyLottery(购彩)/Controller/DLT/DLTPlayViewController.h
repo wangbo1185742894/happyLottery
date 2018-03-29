@@ -8,6 +8,7 @@
 
 #import "BaseViewController.h"
 #import "LotteryTransaction.h"
+#import "WebCTZQHisViewController.h"
 @class Lottery;
 
 @interface DLTPlayViewController : BaseViewController

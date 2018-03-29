@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyHelpViewController">
             <connections>
                 <outlet property="bottom" destination="4Dr-JK-ho7" id="HIG-dC-40W"/>
+                <outlet property="height" destination="icg-WD-gAM" id="6ec-kD-37A"/>
                 <outlet property="scrollerview" destination="szg-ac-ykd" id="OjO-sr-KAj"/>
                 <outlet property="top" destination="A1V-T4-NF7" id="FUM-MU-lBf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -22,11 +23,11 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="szg-ac-ykd">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="szg-ac-ykd">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P04-ey-P1M">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="700"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="            玩法介绍" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOq-D5-Ime">
                                     <rect key="frame" x="0.0" y="14" width="375" height="45"/>
@@ -46,11 +47,11 @@
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <inset key="titleEdgeInsets" minX="18" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    <state key="normal" title="竞彩足球玩法">
+                                    <state key="normal" title="大乐透玩法">
                                         <color key="titleColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                     <connections>
-                                        <action selector="footballPlay:" destination="-1" eventType="touchUpInside" id="9Dz-6z-xCq"/>
+                                        <action selector="actionDLT:" destination="-1" eventType="touchUpInside" id="g9M-X0-WjC"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pjT-eU-atR">
@@ -76,11 +77,11 @@
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <inset key="titleEdgeInsets" minX="18" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    <state key="normal" title="大乐透玩法">
+                                    <state key="normal" title="竞彩足球玩法">
                                         <color key="titleColor" red="0.1450980392" green="0.1450980392" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                     <connections>
-                                        <action selector="actionDLT:" destination="-1" eventType="touchUpInside" id="z19-A0-GJI"/>
+                                        <action selector="footballPlay:" destination="-1" eventType="touchUpInside" id="fgi-BN-kjU"/>
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="            积分规则" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k6b-JL-ZvB">
@@ -245,14 +246,14 @@
                                     </constraints>
                                 </imageView>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_assist.png" translatesAutoresizingMaskIntoConstraints="NO" id="pJs-QG-MHf">
-                                    <rect key="frame" x="165" y="596" width="45" height="45"/>
+                                    <rect key="frame" x="165" y="563" width="45" height="45"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="45" id="MLg-RX-pJh"/>
                                         <constraint firstAttribute="height" constant="45" id="Wq3-0A-F3Q"/>
                                     </constraints>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fe5-1M-gcl">
-                                    <rect key="frame" x="82" y="649" width="210" height="21"/>
+                                    <rect key="frame" x="82.5" y="616" width="210" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="21" id="A19-FY-NDr"/>
                                         <constraint firstAttribute="width" constant="210" id="MgT-8i-blJ"/>
@@ -326,7 +327,7 @@
                                 <constraint firstItem="E4O-rE-g9F" firstAttribute="leading" secondItem="P04-ey-P1M" secondAttribute="leading" constant="20" id="gj0-Uj-ytM"/>
                                 <constraint firstAttribute="trailing" secondItem="bFE-lh-UcQ" secondAttribute="trailing" constant="20" id="hbd-hg-TAX"/>
                                 <constraint firstItem="k6b-JL-ZvB" firstAttribute="leading" secondItem="P04-ey-P1M" secondAttribute="leading" id="ibN-uU-VHW"/>
-                                <constraint firstAttribute="height" constant="700" id="icg-WD-gAM"/>
+                                <constraint firstAttribute="height" constant="667" id="icg-WD-gAM"/>
                                 <constraint firstItem="Fe5-1M-gcl" firstAttribute="centerX" secondItem="P04-ey-P1M" secondAttribute="centerX" id="ifs-0i-0Ao"/>
                                 <constraint firstItem="NOq-D5-Ime" firstAttribute="leading" secondItem="P04-ey-P1M" secondAttribute="leading" id="jIb-lk-lPl"/>
                                 <constraint firstItem="2Og-h0-FHO" firstAttribute="leading" secondItem="P04-ey-P1M" secondAttribute="leading" id="joM-4g-bO7"/>

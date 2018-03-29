@@ -709,7 +709,7 @@
             lpVC.isReBuy = NO;
             lpVC.lotteryTransaction = _lotteryTransaction;
             lpVC.lottery = lottery_;
-            [self.navigationController pushViewController:lpVC animated:YES];
+            [self.navigationController pushViewController:lpVC animated:NO];
         }
         
     }

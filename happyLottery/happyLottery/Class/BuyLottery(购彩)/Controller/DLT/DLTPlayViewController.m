@@ -932,13 +932,13 @@
 }
 
 - (void) showWinHistoryViewCtr{
-    LotteryWinNumHistoryViewController * historyViewCtr = [[LotteryWinNumHistoryViewController alloc] initWithNibName:@"LotteryWinNumHistoryViewController" bundle:nil];
-    historyViewCtr.lottery = _lottery;
-//    UINavigationController * navCtr = [[UINavigationController alloc] initWithRootViewController:historyViewCtr];
-//    [self presentViewController:navCtr animated:YES completion:^{
-//    }];
-    [self.navigationController pushViewController:historyViewCtr animated:YES];
+    WebCTZQHisViewController * playViewVC = [[WebCTZQHisViewController alloc]init];
+    NSString *strUrl = [NSString stringWithFormat:@"%@/app/award/dltOpenAward",H5BaseAddress];
+    playViewVC.pageUrl = [NSURL URLWithString:strUrl];
+    playViewVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:playViewVC animated:YES];
 }
+
 
 #pragma mark - LotteryBetsPopViewDelegate
 - (void) betTransactionUpdated {

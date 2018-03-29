@@ -19,6 +19,7 @@
 #import "SchemeInfoViewCell.h"
 #import "MyOrderListViewController.h"
 #import "DLTPlayViewController.h"
+#import "JCZQPlayViewController.h"
 
 #import "DLTSchemeViewCell.h"
 #import "DLTTouZhuViewController.h"
@@ -171,7 +172,7 @@
     schemeCashModel.subCopies = 1;
     if ([schemeDetail.lottery isEqualToString:@"DLT"]) {
         schemeCashModel.lotteryName = @"大乐透";
-    }else if ([schemeDetail.lottery isEqualToString:@"DLT"]){
+    }else if ([schemeDetail.lottery isEqualToString:@"JCZQ"]){
         schemeCashModel.lotteryName = @"竞彩足球";
     }else if ([schemeDetail.lottery isEqualToString:@"GCGY"]){
         schemeCashModel.lotteryName = @"冠军";
@@ -591,8 +592,9 @@
     [super navigationBackToLastPage];
 }
 - (IBAction)actionReBuy:(UIButton *)sender {
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"NSNotificationJumpToPlayVC" object:@"JCZQ"];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    JCZQPlayViewController * playViewVC = [[JCZQPlayViewController alloc]init];
+    playViewVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:playViewVC animated:YES];
     
 }
 

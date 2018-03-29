@@ -13,6 +13,7 @@
 @interface CTZQPlayViewController : BaseViewController
 @property (nonatomic, strong)Lottery *lottery;
 @property (nonatomic, strong)NSString *tempResource;
+@property (nonatomic, assign)CTZQPlayType playType;
 @property (nonatomic, strong)CTZQTransaction *transaction;
 
 @end

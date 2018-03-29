@@ -294,7 +294,7 @@
     schemeCashModel.cardCode = self.curUser.cardCode;
     schemeCashModel.schemeNo = schemeNO;
     schemeCashModel.subCopies = 1;
-    
+    schemeCashModel.lotteryName = @"竞彩足球";
     schemeCashModel.costType = CostTypeCASH;
     
     schemeCashModel.subscribed = self.transaction.betCost;

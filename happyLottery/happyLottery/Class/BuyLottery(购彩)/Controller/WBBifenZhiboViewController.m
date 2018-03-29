@@ -48,7 +48,7 @@
     
     self.lotteryMan.delegate = self;
     
-    [lotteryMan getBFZBInfo];
+    [self.lotteryMan getBFZBInfo];
     [self showLoadingViewWithText:@"正在加载"];
     
     self.backBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 90, 44)];

@@ -9,6 +9,7 @@
 #import "BaseViewController.h"
 #import "OrderProfile.h"
 #import "OrderBetsListView.h"
+#import "DLTPlayViewController.h"
 
 
 @protocol ZHDetailViewControllerDelegate <NSObject>

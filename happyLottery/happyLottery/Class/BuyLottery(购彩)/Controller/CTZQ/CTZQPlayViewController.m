@@ -87,7 +87,11 @@
         self.viewControllerNo = @"A006";
     }
     [self creatTitleView];
-    btnRJC.selected = YES;
+    if (self.playType == CTZQPlayTypeRenjiu) {
+        btnRJC.selected = YES;
+    }else{
+        btnSSC.selected = YES;
+    }
     if (self.lottery.activeProfile ==nil ) {
         NSDictionary *lotteryDetailDic = [NSDictionary dictionaryWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"LotteryProfilesConfigdlt" ofType: @"plist"]];
         NSArray *profilesArray = lotteryDetailDic[[NSString stringWithFormat:@"%d", _lottery.type]];
@@ -549,7 +553,7 @@
 //    }else
         if (![self isCanBuy]) {
         [self showPromptText:@"该期只能查看，现在还不能购买" hideAfterDelay:1.7];
-        [attstr appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"该期的赛事无法购买"] attributes:@{NSForegroundColorAttributeName:TextCharColor}]];
+        [attstr appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"该期赛事无法购买"] attributes:@{NSForegroundColorAttributeName:TextCharColor}]];
         _summaryLa.attributedText = attstr;
         
         return;

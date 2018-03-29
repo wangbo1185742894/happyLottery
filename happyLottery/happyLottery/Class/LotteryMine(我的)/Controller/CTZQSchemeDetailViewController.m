@@ -21,6 +21,7 @@
 #import "MyOrderListViewController.h"
 #import "DLTPlayViewController.h"
 #import "CTZQSchemeViewCell.h"
+#import "CTZQPlayViewController.h"
 
 #define  KSchemeDetailMatchViewCell     @"SchemeDetailMatchViewCell"
 #define  KSchemeDetailViewCell          @"SchemeDetailViewCell"
@@ -525,9 +526,20 @@
     }
     [super navigationBackToLastPage];
 }
+
 - (IBAction)actionReBuy:(UIButton *)sender {
-  [[NSNotificationCenter defaultCenter]postNotificationName:@"NSNotificationJumpToPlayVC" object:@"SFC"];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    NSArray * lotteryDS = [self.lotteryMan getAllLottery];
+    
+    CTZQPlayViewController *playVC = [[CTZQPlayViewController alloc] init];
+    playVC.hidesBottomBarWhenPushed = YES;
+    playVC.lottery = lotteryDS[7];
+    if ([schemeDetail.lottery isEqualToString:@"RJC"]) {
+        playVC.playType = CTZQPlayTypeRenjiu;
+    }else{
+        playVC.playType = CTZQPlayTypeShiSi;
+    }
+    [self.navigationController pushViewController:playVC animated:YES];
+
     
 }
 
