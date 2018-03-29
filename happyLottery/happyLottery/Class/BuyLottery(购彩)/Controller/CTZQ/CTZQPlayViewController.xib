@@ -125,7 +125,7 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iEH-ZV-sht">
                                     <rect key="frame" x="0.0" y="0.0" width="210" height="35"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="textColor" red="0.14509803921568626" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L6f-W7-njy">
@@ -137,7 +137,7 @@
                                     <inset key="titleEdgeInsets" minX="-20" minY="0.0" maxX="20" maxY="0.0"/>
                                     <inset key="imageEdgeInsets" minX="88" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <state key="normal" title="第123556期" image="arrow_down.png">
-                                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="titleColor" red="0.14509803921568626" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                     <connections>
                                         <action selector="actionSelectRound:" destination="-1" eventType="touchUpInside" id="uLx-DY-etP"/>
