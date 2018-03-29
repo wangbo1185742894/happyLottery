@@ -21,7 +21,7 @@
 }
 
 - (void)setFrame:(CGRect)frame{
-    frame.origin.y += 6;
+//    frame.origin.y += 6;
     frame.size.height -= 6;
     [super setFrame:frame];
 }
