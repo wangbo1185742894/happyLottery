@@ -5213,7 +5213,7 @@
 				TargetAttributes = {
 					2DCBB2701FD1000700934D92 = {
 						CreatedOnToolsVersion = 9.1;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -6600,8 +6600,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = happyLottery/happyLottery.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: aolikeji@xaonly.com (93Y3V24TMT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = TSK429FVKW;
 				ENABLE_BITCODE = NO;
@@ -6629,8 +6629,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.only.happyLottery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8e8f087e-3932-4af6-a0a4-4455cbd1ef4a";
-				PROVISIONING_PROFILE_SPECIFIER = TBZ_Dis_profiles;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -6641,8 +6641,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = happyLottery/happyLottery.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: XI'AN ONLY TECHNOLOGY DEVELOPMENT CO., LTD.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TSK429FVKW;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -6669,8 +6669,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.only.happyLottery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8e8f087e-3932-4af6-a0a4-4455cbd1ef4a";
-				PROVISIONING_PROFILE_SPECIFIER = TBZ_Dis_profiles;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
