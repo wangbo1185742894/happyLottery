@@ -108,7 +108,7 @@
             color = SystemRed;
             oddsArrow = @"";//⬇︎↓↓↓
         }
-        if ([oddStrNum integerValue] == 1) {
+        if ([oddStrNum integerValue] == 0) {
             oddStrNum = @"--";
         }
         oddStr = [NSString stringWithFormat:@"(%@%@)",oddStrNum,oddsArrow];

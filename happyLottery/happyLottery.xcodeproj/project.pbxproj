@@ -594,6 +594,9 @@
 		2D7B1415204E8FD50035AE89 /* CTZQWinHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D7B1413204E8FD50035AE89 /* CTZQWinHistoryTableViewCell.xib */; };
 		2D7B1418204FC7CD0035AE89 /* timebackimage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D7B1416204FC7CC0035AE89 /* timebackimage@3x.png */; };
 		2D7B1419204FC7CD0035AE89 /* timebackimage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D7B1417204FC7CD0035AE89 /* timebackimage@2x.png */; };
+		2D89D60A206CE3AE005E0209 /* WelComeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D89D608206CE3AE005E0209 /* WelComeViewController.m */; };
+		2D89D60B206CE3AE005E0209 /* WelComeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D89D609206CE3AE005E0209 /* WelComeViewController.xib */; };
+		2D89D60D206CE3E9005E0209 /* gyjweicome.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D89D60C206CE3E8005E0209 /* gyjweicome.png */; };
 		2D8CBFAC1FF326F200CC367F /* PaySuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8CBFAA1FF326F200CC367F /* PaySuccessViewController.m */; };
 		2D8CBFAD1FF326F200CC367F /* PaySuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8CBFAB1FF326F200CC367F /* PaySuccessViewController.xib */; };
 		2D8CBFB01FF328D800CC367F /* paysuccess@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D8CBFAE1FF328D800CC367F /* paysuccess@2x.png */; };
@@ -1972,6 +1975,10 @@
 		2D7B1413204E8FD50035AE89 /* CTZQWinHistoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CTZQWinHistoryTableViewCell.xib; sourceTree = "<group>"; };
 		2D7B1416204FC7CC0035AE89 /* timebackimage@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timebackimage@3x.png"; sourceTree = "<group>"; };
 		2D7B1417204FC7CD0035AE89 /* timebackimage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timebackimage@2x.png"; sourceTree = "<group>"; };
+		2D89D607206CE3AE005E0209 /* WelComeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WelComeViewController.h; sourceTree = "<group>"; };
+		2D89D608206CE3AE005E0209 /* WelComeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WelComeViewController.m; sourceTree = "<group>"; };
+		2D89D609206CE3AE005E0209 /* WelComeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelComeViewController.xib; sourceTree = "<group>"; };
+		2D89D60C206CE3E8005E0209 /* gyjweicome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gyjweicome.png; sourceTree = "<group>"; };
 		2D8CBFA91FF326F200CC367F /* PaySuccessViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaySuccessViewController.h; sourceTree = "<group>"; };
 		2D8CBFAA1FF326F200CC367F /* PaySuccessViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaySuccessViewController.m; sourceTree = "<group>"; };
 		2D8CBFAB1FF326F200CC367F /* PaySuccessViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaySuccessViewController.xib; sourceTree = "<group>"; };
@@ -3682,6 +3689,7 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				2D89D60C206CE3E8005E0209 /* gyjweicome.png */,
 				2D08A48B206CBDF0005AFF13 /* pic_zixun@2x.png */,
 				2D08A48A206CBDEF005AFF13 /* pic_zixun@3x.png */,
 				F97D82E9206A534C00721336 /* common_top_bar_back.png */,
@@ -4215,6 +4223,9 @@
 				F9B5D910205FB0AF00C9F6DC /* GYJPlayViewController.xib */,
 				F9B5D918205FB94600C9F6DC /* WordCupHomeItem.h */,
 				F9B5D917205FB94600C9F6DC /* WordCupHomeItem.m */,
+				2D89D607206CE3AE005E0209 /* WelComeViewController.h */,
+				2D89D608206CE3AE005E0209 /* WelComeViewController.m */,
+				2D89D609206CE3AE005E0209 /* WelComeViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -5202,7 +5213,7 @@
 				TargetAttributes = {
 					2DCBB2701FD1000700934D92 = {
 						CreatedOnToolsVersion = 9.1;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -5423,6 +5434,7 @@
 				2D7B1382204E70510035AE89 /* friendshake@2x.png in Resources */,
 				F928C6A91FF4A268001F1A32 /* MyCouponTableViewCell.xib in Resources */,
 				F9B5D9722060A9DE00C9F6DC /* flag23@3x.png in Resources */,
+				2D89D60B206CE3AE005E0209 /* WelComeViewController.xib in Resources */,
 				2D4B1E831FDF684E0034B708 /* wode_select@2x.png in Resources */,
 				2D739CF01FEB4B0E00264044 /* xiala@3x.png in Resources */,
 				2D7B1381204E70510035AE89 /* friendshake@3x.png in Resources */,
@@ -5430,6 +5442,7 @@
 				2D40CAA7201EDE5700DDCFE3 /* shut@3x.png in Resources */,
 				2D7B12D6204D3B550035AE89 /* LotteryExtrendViewController.xib in Resources */,
 				2D4B1E881FDF684E0034B708 /* yuce@3x.png in Resources */,
+				2D89D60D206CE3E9005E0209 /* gyjweicome.png in Resources */,
 				F924BA981FE252CF00830BF4 /* phone@3x.png in Resources */,
 				2D2060141FFCB71E0086E266 /* btn_huanyige@2x.png in Resources */,
 				2D739CE91FEB462B00264044 /* danguan@3x.png in Resources */,
@@ -6093,6 +6106,7 @@
 				2D7B132C204D4AF40035AE89 /* EXHeaderView.m in Sources */,
 				2D739C161FE2611C00264044 /* IQNSArray+Sort.m in Sources */,
 				F9F6CAA51FF5D80900A49F71 /* SystemSetViewController.m in Sources */,
+				2D89D60A206CE3AE005E0209 /* WelComeViewController.m in Sources */,
 				2D739C1F1FE2611C00264044 /* IQBarButtonItem.m in Sources */,
 				F90058DE1FF61327009C8E1C /* NoticeCenterTableViewCell.m in Sources */,
 				2DDEDE611FD568C9007AEBF7 /* SDWebImageDecoder.m in Sources */,
@@ -6586,8 +6600,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = happyLottery/happyLottery.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: aolikeji@xaonly.com (93Y3V24TMT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = TSK429FVKW;
 				ENABLE_BITCODE = NO;
@@ -6615,8 +6629,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.only.happyLottery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "8e8f087e-3932-4af6-a0a4-4455cbd1ef4a";
+				PROVISIONING_PROFILE_SPECIFIER = TBZ_Dis_profiles;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -6627,8 +6641,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = happyLottery/happyLottery.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: XI'AN ONLY TECHNOLOGY DEVELOPMENT CO., LTD.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = TSK429FVKW;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -6655,8 +6669,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.only.happyLottery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "8e8f087e-3932-4af6-a0a4-4455cbd1ef4a";
+				PROVISIONING_PROFILE_SPECIFIER = TBZ_Dis_profiles;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

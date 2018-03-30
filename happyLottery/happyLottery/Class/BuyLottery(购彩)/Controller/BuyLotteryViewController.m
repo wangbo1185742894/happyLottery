@@ -254,11 +254,17 @@
     
     CGFloat height;
     if ([self isIphoneX]) {
-        height = curY  + tabForecaseList.rowHeight * JczqShortcutList.count + 20;
+        height = tabForecaseList.mj_y  + tabForecaseList.rowHeight * JczqShortcutList.count + 20;
     }else{
-        height = curY  + tabForecaseList.rowHeight * JczqShortcutList.count;
+//        if (KscreenHeight > 667) {
+             height = tabForecaseList.mj_y  + tabForecaseList.rowHeight * JczqShortcutList.count + 70;
+//        }else{
+//                height = tabForecaseList.mj_y  + tabForecaseList.rowHeight * JczqShortcutList.count;
+//        }
+  
     }
-    homeViewHeight.constant = height - tabForecaseList.rowHeight * 2;
+    
+    homeViewHeight.constant = height;
     tabForecastListHeight.constant = tabForecaseList.rowHeight * JczqShortcutList.count;
     if (self.curUser.isLogin) {
         [self getCollected];

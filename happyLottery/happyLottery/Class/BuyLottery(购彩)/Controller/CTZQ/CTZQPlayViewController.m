@@ -163,7 +163,7 @@
     [backBarButton setFrame: CGRectMake(0, 0, 64, 44)];
     //lc 更改 右侧的 图标变为汉字“助手”
     [backBarButton setTitle:@" 助手" forState:UIControlStateNormal];
-    [backBarButton setImage:[UIImage imageNamed:@"wanfajieshao"] forState:UIControlStateNormal];
+    [backBarButton setImage:[UIImage imageNamed:@"helper.png"] forState:UIControlStateNormal];
     backBarButton.titleLabel.font = [UIFont systemFontOfSize:14];
     backBarButton.titleLabel.textAlignment = NSTextAlignmentRight;
     
@@ -248,6 +248,7 @@
 -(void)gotSellIssueList:(NSArray *)infoDic errorMsg:(NSString *)msg{
     [self hideLoadingView];
     if (infoDic.count == 0 || infoDic == nil) {
+        [self showPromptText:@"暂无可售奖期" hideAfterDelay:2.0];
         return;
     }
     NSMutableArray *rounds = [[NSMutableArray alloc]initWithArray:infoDic];

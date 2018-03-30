@@ -12,6 +12,7 @@
 #import "DLTPlayViewController.h"
 #import "CTZQPlayViewController.h"
 #import "JCZQPlayViewController.h"
+#import "WelComeViewController.h"
 #import "AESUtility.h"
 #import "netWorkHelper.h"
 // 引入JPush功能所需头文件
@@ -151,7 +152,7 @@ static SystemSoundID shake_sound_male_id = 0;
     }  
     
       [self initShareSDK];
-    sleep(1.5);
+    sleep(1.0);
     
     return YES;
 }
@@ -285,7 +286,13 @@ static SystemSoundID shake_sound_male_id = 0;
     lastVersion = [defaults objectForKey:KEYAPPVERSION];
     curVersion = [NSBundle mainBundle].infoDictionary[KEYCURAPPVERSION];
     if ([curVersion isEqualToString:lastVersion]) { //
-        _window.rootViewController = tabBarControllerMain;
+        WelComeViewController *welcomeVC = [[WelComeViewController alloc]init];
+        _window.rootViewController = welcomeVC;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            _window.rootViewController = tabBarControllerMain;
+        });
+        
+        
     }else{
         [defaults setObject:curVersion forKey:KEYAPPVERSION];
         [defaults synchronize];
