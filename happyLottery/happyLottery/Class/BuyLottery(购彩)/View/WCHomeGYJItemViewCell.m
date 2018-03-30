@@ -41,6 +41,7 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.contentView.backgroundColor= [UIColor clearColor];
     cell.backgroundColor= [UIColor clearColor];
+    
     return cell;
 }
 
@@ -61,7 +62,7 @@
         self.lableVs.text = model.clash;
     }
     self.labForeCast.text = [NSString stringWithFormat:@"%.2f%%",[model.probability doubleValue]] ;
-    self.labForeCast.font = [UIFont fontWithName:@"Helvetica-Condensed-Black-Se" size:18];
+    
     self.pfBeiShu.text = model.odds;
     self.xuelie.text = model.indexNumber;
     if (model.isSelect) {

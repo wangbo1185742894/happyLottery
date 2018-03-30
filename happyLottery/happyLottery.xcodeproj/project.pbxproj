@@ -943,6 +943,7 @@
 		F95BC7CF201724A6006D6243 /* OpenRedPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = F95BC7CD201724A6006D6243 /* OpenRedPopView.m */; };
 		F95BC7D220172AF7006D6243 /* redpacket_open@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F95BC7D020172AF6006D6243 /* redpacket_open@2x.png */; };
 		F95BC7D320172AF7006D6243 /* redpacket_open@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F95BC7D120172AF6006D6243 /* redpacket_open@3x.png */; };
+		F95C7E70206E025D005990F5 /* Helvetica-Condensed-Black-Se.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F95C7E6F206E025D005990F5 /* Helvetica-Condensed-Black-Se.ttf */; };
 		F9632F4B200C86EC00F69D23 /* LYJHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9632F4A200C86EC00F69D23 /* LYJHeaderView.m */; };
 		F9632F4E200C8C9800F69D23 /* arrowup@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9632F4C200C8C9700F69D23 /* arrowup@3x.png */; };
 		F9632F4F200C8C9800F69D23 /* arrowup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9632F4D200C8C9800F69D23 /* arrowup@2x.png */; };
@@ -1139,7 +1140,6 @@
 		F9F262B51FE8F4AE00C2E60F /* RSKTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F262AB1FE8F4AE00C2E60F /* RSKTouchView.m */; };
 		F9F262B61FE8F4AE00C2E60F /* UIApplication+RSKImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F262AD1FE8F4AE00C2E60F /* UIApplication+RSKImageCropper.m */; };
 		F9F262B71FE8F4AE00C2E60F /* UIImage+RSKImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F262AF1FE8F4AE00C2E60F /* UIImage+RSKImageCropper.m */; };
-		F9F5C88A206B96DB0007D7EF /* Helvetica-Condensed-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = F9F5C889206B96DB0007D7EF /* Helvetica-Condensed-Black.otf */; };
 		F9F6CA961FF5D6B100A49F71 /* inform@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F6CA8A1FF5D6AD00A49F71 /* inform@3x.png */; };
 		F9F6CA971FF5D6B100A49F71 /* voice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F6CA8B1FF5D6AD00A49F71 /* voice@2x.png */; };
 		F9F6CA981FF5D6B100A49F71 /* about@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F6CA8C1FF5D6AD00A49F71 /* about@2x.png */; };
@@ -2470,6 +2470,7 @@
 		F95BC7CD201724A6006D6243 /* OpenRedPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenRedPopView.m; sourceTree = "<group>"; };
 		F95BC7D020172AF6006D6243 /* redpacket_open@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redpacket_open@2x.png"; sourceTree = "<group>"; };
 		F95BC7D120172AF6006D6243 /* redpacket_open@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redpacket_open@3x.png"; sourceTree = "<group>"; };
+		F95C7E6F206E025D005990F5 /* Helvetica-Condensed-Black-Se.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica-Condensed-Black-Se.ttf"; sourceTree = "<group>"; };
 		F9632F49200C86EC00F69D23 /* LYJHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LYJHeaderView.h; sourceTree = "<group>"; };
 		F9632F4A200C86EC00F69D23 /* LYJHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LYJHeaderView.m; sourceTree = "<group>"; };
 		F9632F4C200C8C9700F69D23 /* arrowup@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrowup@3x.png"; sourceTree = "<group>"; };
@@ -2701,7 +2702,6 @@
 		F9F262AD1FE8F4AE00C2E60F /* UIApplication+RSKImageCropper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+RSKImageCropper.m"; sourceTree = "<group>"; };
 		F9F262AE1FE8F4AE00C2E60F /* UIImage+RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RSKImageCropper.h"; sourceTree = "<group>"; };
 		F9F262AF1FE8F4AE00C2E60F /* UIImage+RSKImageCropper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RSKImageCropper.m"; sourceTree = "<group>"; };
-		F9F5C889206B96DB0007D7EF /* Helvetica-Condensed-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica-Condensed-Black.otf"; sourceTree = "<group>"; };
 		F9F6CA8A1FF5D6AD00A49F71 /* inform@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inform@3x.png"; sourceTree = "<group>"; };
 		F9F6CA8B1FF5D6AD00A49F71 /* voice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "voice@2x.png"; sourceTree = "<group>"; };
 		F9F6CA8C1FF5D6AD00A49F71 /* about@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about@2x.png"; sourceTree = "<group>"; };
@@ -3689,6 +3689,7 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				F95C7E6F206E025D005990F5 /* Helvetica-Condensed-Black-Se.ttf */,
 				2D89D60C206CE3E8005E0209 /* gyjweicome.png */,
 				2D08A48B206CBDF0005AFF13 /* pic_zixun@2x.png */,
 				2D08A48A206CBDEF005AFF13 /* pic_zixun@3x.png */,
@@ -3750,7 +3751,6 @@
 				F94A106F2022C3E2006C3695 /* logo125@3x.png */,
 				F9C4EED72020897B00CDCDBA /* logo120@3x.png */,
 				F9C4EED82020897C00CDCDBA /* logo120@2x.png */,
-				F9F5C889206B96DB0007D7EF /* Helvetica-Condensed-Black.otf */,
 				F9B5D92E2060A9DD00C9F6DC /* jcgjgroupflag */,
 				F9C3BA1920088E2600916F3C /* feedback */,
 				F94770B82007065F0091729E /* Introduction to football games Html */,
@@ -5679,7 +5679,6 @@
 				2D7B133E204E24D00035AE89 /* redBall@3x.png in Resources */,
 				2DE1094A2003423E0020343A /* hometeam@3x.png in Resources */,
 				2D8CBFCE1FF3769F00CC367F /* YuCeLiShiZhanJViewController.xib in Resources */,
-				F9F5C88A206B96DB0007D7EF /* Helvetica-Condensed-Black.otf in Resources */,
 				F9B5D9A22060A9DE00C9F6DC /* flag434@3x.png in Resources */,
 				2D739CE81FEB462B00264044 /* guoguan@2x.png in Resources */,
 				2D20602A1FFCB71E0086E266 /* icon_yue@2x.png in Resources */,
@@ -5986,6 +5985,7 @@
 				2D739C901FE899AC00264044 /* MatchLeagueSelectView.xib in Resources */,
 				F9B5D99A2060A9DE00C9F6DC /* flag421@3x.png in Resources */,
 				F9418F482010991200454109 /* ShareSDKUI.bundle in Resources */,
+				F95C7E70206E025D005990F5 /* Helvetica-Condensed-Black-Se.ttf in Resources */,
 				F9B5D9902060A9DE00C9F6DC /* flag413@3x.png in Resources */,
 				F9C4EED4202063D300CDCDBA /* about_slogan@3x.png in Resources */,
 				2D8CBFC41FF3632600CC367F /* btn_delate_@2x.png in Resources */,
