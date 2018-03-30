@@ -129,7 +129,12 @@
         NSString *funcName = [self getPlayTypeRecEn:itemDic[@"playType"]] ;
         SEL func = NSSelectorFromString(funcName);
         if ([open respondsToSelector:func]) {
-            result = [self reloadDataWithRecResult:@[[open performSelector:func withObject:nil]] type:itemDic[@"playType"]];
+            if ([open performSelector:func withObject:nil] == nil) {
+                result = @"已取消";
+            }else{
+                
+                result = [self reloadDataWithRecResult:@[[open performSelector:func withObject:nil]] type:itemDic[@"playType"]];
+            }
         }
         
         float height = [option boundingRectWithSize:CGSizeMake(KscreenWidth - 110, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14]} context:nil].size.height;
