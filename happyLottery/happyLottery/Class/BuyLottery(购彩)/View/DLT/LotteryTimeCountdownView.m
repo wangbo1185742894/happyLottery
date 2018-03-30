@@ -31,7 +31,7 @@
     UILabel * lable = [[UILabel alloc] initWithFrame:fram];
     lable.font = [UIFont systemFontOfSize:11];
     lable.text = text;
-    lable.textColor = [UIColor whiteColor];
+    lable.textColor = SystemLightGray;
     
     return lable;
 }
@@ -161,7 +161,7 @@
             NSMutableAttributedString *timeString = [[NSMutableAttributedString alloc] init];
             
             NSMutableDictionary *textAttrsDictionary = [NSMutableDictionary dictionaryWithCapacity: 2];
-            textAttrsDictionary[NSForegroundColorAttributeName] = [UIColor whiteColor];
+            textAttrsDictionary[NSForegroundColorAttributeName] = SystemLightGray;
             
             NSMutableDictionary *numberAttrsDictionary = [NSMutableDictionary dictionaryWithCapacity: 2];
             numberAttrsDictionary[NSForegroundColorAttributeName] = TextTimeColor;

@@ -41,15 +41,15 @@
     }
         self.backgroundColor = [UIColor whiteColor];
     
-        UIImageView *blackImage = [[UIImageView alloc]initWithFrame:CGRectMake(-15,10,KscreenWidth - 140, 20)];
+//        UIImageView *blackImage = [[UIImageView alloc]initWithFrame:CGRectMake(-15,10,KscreenWidth - 140, 20)];
 //        blackImage.backgroundColor = [UIColor blackColor];
 //        blackImage.image = [UIImage imageNamed:@"timebackimage"];
-    [blackImage setBackgroundColor:BtnDisAbleTitleColor];
-    blackImage.layer.cornerRadius = blackImage.mj_h / 2;
-    blackImage.layer.masksToBounds = YES;
+//    [blackImage setBackgroundColor:[UIColor whiteColor]];
+//    blackImage.layer.cornerRadius = blackImage.mj_h / 2;
+//    blackImage.layer.masksToBounds = YES;
     
         // 在这里添加背景图片
-        [self addSubview:blackImage];
+//        [self addSubview:blackImage];
     
     UIButton *xiahuaBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     xiahuaBtn.frame = CGRectMake(KscreenWidth - 100,10, 90, 20);
@@ -110,7 +110,7 @@
         labelCurRoundInfoTitle.backgroundColor = [UIColor clearColor];
         labelCurRoundInfoTitle.font = [UIFont systemFontOfSize: 11];
         labelCurRoundInfoTitle.adjustsFontSizeToFitWidth = YES;
-        labelCurRoundInfoTitle.textColor = [UIColor whiteColor];
+        labelCurRoundInfoTitle.textColor = SystemLightGray;
         if (lottery.currentRound) {
             labelCurRoundInfoTitle.text = [NSString stringWithFormat: @"距离%@期 截止:", lottery.currentRound.issueNumber];
         }else{

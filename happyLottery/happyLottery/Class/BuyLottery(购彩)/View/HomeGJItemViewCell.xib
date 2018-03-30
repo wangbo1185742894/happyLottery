@@ -9,8 +9,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="HiraginoMaruGothProN.ttc">
-            <string>HiraMaruProN-W4</string>
+        <array key="Helvetica-Condensed-Black-Se.ttf">
+            <string>Helvetica-Condensed-Black-Se</string>
         </array>
     </customFonts>
     <objects>
@@ -35,7 +35,7 @@
                             <constraint firstAttribute="height" constant="21" id="cYh-gs-29M"/>
                             <constraint firstAttribute="width" constant="35" id="fmK-ge-qA7"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -45,7 +45,7 @@
                             <constraint firstAttribute="width" constant="70" id="Zj5-xA-fNf"/>
                             <constraint firstAttribute="height" constant="19" id="kMb-VQ-eVq"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="18"/>
+                        <fontDescription key="fontDescription" name="Helvetica-Condensed-Black-Se" family="Helvetica-Condensed-Black-Se" pointSize="18"/>
                         <color key="textColor" red="1" green="0.31764705879999999" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -68,7 +68,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v03-zy-95X">
-                        <rect key="frame" x="179" y="28" width="42" height="21"/>
+                        <rect key="frame" x="179.5" y="28" width="42" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="6Ql-HZ-cgM"/>
                         </constraints>

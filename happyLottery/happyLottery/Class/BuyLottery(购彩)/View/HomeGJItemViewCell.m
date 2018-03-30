@@ -20,10 +20,6 @@
 
 @implementation HomeGJItemViewCell
 
--(void)awakeFromNib{
-    [super awakeFromNib];
-}
-
 + (instancetype)cellWithTableView:(UITableView *)tableView{
     static NSString *CellID = @"HomeGJItemViewCell";
     HomeGJItemViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellID];
@@ -43,9 +39,9 @@
     self.labMatchBack.selected = model.isSelect;
     self.imgGroupFlag.image = [UIImage imageNamed:model.imgGuanKey];
     self.nameGroupFlag.text = model.clash;
-
-    self.labForeCast.text = [NSString stringWithFormat:@"%.2f%%",[model.probability doubleValue]];
-    self.labForeCast.font = [UIFont fontWithName:@"Helvetica-Condensed-Black-Se" size:18];
+    NSString *doubleStr = [NSString stringWithFormat:@"%.2f%%",[model.probability doubleValue]];
+    self.labForeCast.text = doubleStr;
+    
     self.pfBeiShu.text = model.odds;
     self.xuHao.text = model.indexNumber;
     if (model.isSelect) {
