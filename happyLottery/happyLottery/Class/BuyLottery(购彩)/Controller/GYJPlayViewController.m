@@ -288,6 +288,12 @@
     return view;
 }
 
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    if ([textField.text integerValue] ==0) {
+        textField.text = @"1";
+    }
+    [self updateTextField];
+}
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     NSMutableString*numStr = [[NSMutableString alloc]initWithString:textField.text];
@@ -299,8 +305,9 @@
     if (num > limitNum) {
         return NO;
     }
-    
-    [self performSelector:@selector(updateTextField) withObject:nil afterDelay:0.1];
+    if (num<1) {
+        return NO;
+    }
     
     if ([textField.text isEqualToString:@""]&&[string isEqualToString:@"0"]) {
         return NO;
@@ -365,7 +372,7 @@
 }
 
 - (IBAction)lessButton:(id)sender {
-    if ([self.tfBeiCount.text integerValue] ==1 ) {
+    if ([self.tfBeiCount.text integerValue] <=1 ) {
         return;
     }
     self.tfBeiCount.text = [NSString stringWithFormat:@"%ld",[self.tfBeiCount.text integerValue]-1];
