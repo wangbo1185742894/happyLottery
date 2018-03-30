@@ -68,6 +68,9 @@ typedef enum {
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    if ([Utility isIOS11After]) {
+        self.automaticallyAdjustsScrollViewInsets = NO; // tableView 莫名其妙  contentOffset.y 成-64了  MMP
+    }
     self.viewControllerNo = @"A205";
     [self hideLoadingView];
     self.page = 1;

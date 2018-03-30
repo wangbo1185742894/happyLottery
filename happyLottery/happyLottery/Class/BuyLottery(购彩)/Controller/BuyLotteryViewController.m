@@ -142,7 +142,7 @@
         }
     } else {
         showGJbtn = YES;
-        btnGyjHeight.constant = 57;
+        btnGyjHeight.constant = 67;
         spaceBtnGyj.constant = 10;
     }
 }

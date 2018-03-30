@@ -122,6 +122,7 @@
     if ([textField.text integerValue] == 0) {
         textField.text = @"1";
     }
+    [self .delegate update];
 }
 
 -(void)setRightTitle:(NSString*)rightTitle andLeftTitle:(NSString *)leftTitle{

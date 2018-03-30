@@ -192,7 +192,8 @@
     }
     
     peiSelectView.labContent.text = [NSString stringWithFormat:@"%ld",(long)beiCount];
-    self.transction.beitou = [NSString stringWithFormat:@"%ld",(long)beiCount];
+    
+    self.transction.beitou = [NSString stringWithFormat:@"%ld",(long)beiCount<=0?1:beiCount];
     [self updataTouzhuInfo];
 }
 
