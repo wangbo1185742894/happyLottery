@@ -3038,6 +3038,13 @@
 			path = yuceres;
 			sourceTree = "<group>";
 		};
+		2D2726502072282F0047DEAF /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		2D4B1DB41FD7D1F90034B708 /* MBHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -4159,6 +4166,7 @@
 		2DDEDC001FD4DBB6007AEBF7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2D2726502072282F0047DEAF /* New Group */,
 				F9FC153920625814009BAD68 /* WebViewController.h */,
 				F9FC153A20625814009BAD68 /* WebViewController.m */,
 				F9FC153820625814009BAD68 /* WebViewController.xib */,
