@@ -14,7 +14,6 @@
 #include <net/if.h>
 #include <net/if_dl.h>
 #import <sys/utsname.h>
-//洛2 测试
 
 @implementation Manager
 
