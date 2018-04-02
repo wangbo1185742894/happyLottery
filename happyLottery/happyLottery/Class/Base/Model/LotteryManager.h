@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "JCZQTranscation.h"
 #import "BaseTransaction.h"
+#import "LotteryTransaction.h"
 typedef enum EarningsType{
     EarningsTypeSTEADY,
     EarningsTypeLOW_RISK,
@@ -39,6 +40,23 @@ typedef enum EarningsType{
 - (void) gotForecastTotal:(NSDictionary *)infoDic  errorMsg:(NSString *)msg;
 - (void) gotbonusOptimize:(NSArray *)infoList  errorMsg:(NSString *)msg;
 
+- (void) gotSellIssueList:(NSArray *)infoDic  errorMsg:(NSString *)msg;
+- (void) gotListZcMatchSp:(NSArray *)infoDic  errorMsg:(NSString *)msg;
+- (void) listChaseSchemeForApp:(NSArray *)infoDic  errorMsg:(NSString *)msg;
+- (void) betedChaseScheme:(NSString *)schemeNO errorMsg:(NSString *)msg;
+- (void) gotChaseDetailForApp:(NSDictionary *)infoDic errorMsg:(NSString *)msg;
+- (void) gotListHisIssue:(NSArray *)infoDic  errorMsg:(NSString *)msg;
+- (void) gotListHisPageIssue:(NSArray *)infoDic  errorMsg:(NSString *)msg;
+- (void)gotStopChaseScheme:(BOOL)isSuccess errorMsg:(NSString *)errorMsg;
+
+- (void) gotlistJcgjSellItem:(NSArray *)infoArray  errorMsg:(NSString *)msg;
+- (void) gotlistJcgyjSellItem:(NSArray *)infoArray  errorMsg:(NSString *)msg;
+- (void) gotlistJcgjItem:(NSArray *)infoArray  errorMsg:(NSString *)msg;
+- (void) gotlistJcgyjItem:(NSArray *)infoArray  errorMsg:(NSString *)msg;
+- (void) gotJcgjTicketOrderDetail:(NSDictionary *)infoArray  errorMsg:(NSString *)msg;
+- (void) gotJcgyjTicketOrderDetail:(NSDictionary *)infoArray  errorMsg:(NSString *)msg;
+
+
 @end
 
 @interface LotteryManager : Manager
@@ -47,11 +65,9 @@ typedef enum EarningsType{
 
 - (NSString *)getStringformfeid :(EarningsType)defaultFeid;
 
-
 - (void) getJczqMatch:(NSDictionary *)paraDic;
 - (void) getJczqSp:(NSDictionary *)paraDic;
 - (void) getJczqLeague:(NSDictionary *)paraDic;
-
 - (void) betLotteryScheme:(BaseTransaction *)transcation;
 - (void) schemeCashPayment:(NSDictionary *)paraDic;
 - (void) schemeScorePayment:(NSDictionary *)paraDic;
@@ -63,7 +79,7 @@ typedef enum EarningsType{
 - (void) getListByRecScheme:(NSDictionary *)infoDic;
 - (void) getBFZBInfo;
 - (void) getSchemeRecord:(NSDictionary *)paraDic;
-- (void) getJczqTicketOrderDetail:(NSDictionary *)paraDic;
+- (void) getJczqTicketOrderDetail:(NSDictionary *)paraDic andLottery:(NSString *)lotteryCode;
 - (void)getSchemeRecordBySchemeNo:(NSDictionary *)paraDic;
 - (void)listByRechargeChannel:(NSDictionary *)paraDic;
 - (void)collectMatch:(NSDictionary *)paraDic;
@@ -74,7 +90,23 @@ typedef enum EarningsType{
 - (void)getbonusOptimize:(BaseTransaction *)transcation;
 - (void) betLotterySchemeOpti:(NSArray *)schemeList;
 - (void) betLotterySchemeOpti:(BaseTransaction *)transcation schemeList:(NSArray *)schemeList;
-
+- (void) lotteryTouZhuScheme: (Lottery *) lottery transaction: (BaseTransaction*) transaction;
+- (NSArray*) getAllLottery ;
+- (void)getSellIssueList:(NSDictionary *)paraDic;
+- (void)getListZcMatchSp:(NSDictionary *)paraDic;
+- (void) betChaseScheme:(LotteryTransaction *)transcation;
+- (void)listChaseSchemeForApp:(NSDictionary *)paraDic;
+- (void)getChaseDetailForApp:(NSDictionary *)paraDic;
+- (void)getListHisIssue:(NSDictionary *)paraDic;
+- (void)getListHisPageIssue:(NSDictionary *)paraDic;
+- (void)getStopChaseScheme:(NSDictionary *)paraDic;
+#pragma mark 竞猜冠亚军
+- (void)listJcgjSellItem:(NSDictionary *)infoDic; //获取冠军选项
+- (void)listJcgyjSellItem:(NSDictionary *)infoDic; //获取冠亚军选项
+- (void)listJcgjItem:(NSDictionary *)infoDic; //获取冠军选项（包含不在售的）
+- (void)listJcgyjItem:(NSDictionary *)infoDic; //获取冠亚军选项（包含不在售的）
+- (void)getJcgjTicketOrderDetail:(NSDictionary *)paraDic;//查询冠军订单详情
+- (void)getJcgyjTicketOrderDetail:(NSDictionary *)paraDic;//查询冠亚军订单详情
 
 @end
 

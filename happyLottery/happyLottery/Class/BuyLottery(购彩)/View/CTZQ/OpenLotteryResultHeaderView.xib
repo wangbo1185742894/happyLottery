@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="主队" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FRE-rv-0WX">
+                    <rect key="frame" x="70" y="5" width="60" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.28235294117647058" green="0.28235294117647058" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="场次" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZB-ie-cGK">
+                    <rect key="frame" x="10" y="5" width="60" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.28235294117647058" green="0.28235294117647058" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="比分" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1A4-Vx-SWu">
+                    <rect key="frame" x="130" y="5" width="60" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.28235294117647058" green="0.28235294117647058" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="客队" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bHG-V1-tvm">
+                    <rect key="frame" x="190" y="5" width="60" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.28235294117647058" green="0.28235294117647058" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="赛果" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2z8-KA-ukO">
+                    <rect key="frame" x="250" y="5" width="60" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.28235294117647058" green="0.28235294117647058" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="bHG-V1-tvm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="4fE-Ue-BQe"/>
+                <constraint firstItem="FRE-rv-0WX" firstAttribute="leading" secondItem="mZB-ie-cGK" secondAttribute="trailing" id="8HL-3L-Bao"/>
+                <constraint firstAttribute="bottom" secondItem="bHG-V1-tvm" secondAttribute="bottom" constant="5" id="Bq0-iM-z3H"/>
+                <constraint firstAttribute="bottom" secondItem="mZB-ie-cGK" secondAttribute="bottom" constant="5" id="E80-fa-ZOc"/>
+                <constraint firstAttribute="trailing" secondItem="2z8-KA-ukO" secondAttribute="trailing" constant="10" id="FUW-rh-Etp"/>
+                <constraint firstItem="1A4-Vx-SWu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="FaE-4p-df7"/>
+                <constraint firstItem="FRE-rv-0WX" firstAttribute="width" secondItem="mZB-ie-cGK" secondAttribute="width" id="Imf-yO-OWj"/>
+                <constraint firstItem="mZB-ie-cGK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="K3F-UH-xu2"/>
+                <constraint firstItem="mZB-ie-cGK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="LXu-qk-TR1"/>
+                <constraint firstItem="bHG-V1-tvm" firstAttribute="width" secondItem="mZB-ie-cGK" secondAttribute="width" id="Ovq-9Y-AH4"/>
+                <constraint firstAttribute="bottom" secondItem="2z8-KA-ukO" secondAttribute="bottom" constant="5" id="U6x-Ax-m8w"/>
+                <constraint firstItem="1A4-Vx-SWu" firstAttribute="leading" secondItem="FRE-rv-0WX" secondAttribute="trailing" id="VQk-my-4Gy"/>
+                <constraint firstItem="bHG-V1-tvm" firstAttribute="leading" secondItem="1A4-Vx-SWu" secondAttribute="trailing" id="fEn-jB-x3L"/>
+                <constraint firstAttribute="bottom" secondItem="1A4-Vx-SWu" secondAttribute="bottom" constant="5" id="gqE-Se-8rJ"/>
+                <constraint firstItem="2z8-KA-ukO" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="hoe-uR-sUh"/>
+                <constraint firstItem="2z8-KA-ukO" firstAttribute="leading" secondItem="bHG-V1-tvm" secondAttribute="trailing" id="jvD-WE-coE"/>
+                <constraint firstItem="2z8-KA-ukO" firstAttribute="width" secondItem="mZB-ie-cGK" secondAttribute="width" id="mi4-S4-4jP"/>
+                <constraint firstItem="FRE-rv-0WX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="und-c5-sVT"/>
+                <constraint firstAttribute="bottom" secondItem="FRE-rv-0WX" secondAttribute="bottom" constant="5" id="vvt-m7-ySP"/>
+                <constraint firstItem="1A4-Vx-SWu" firstAttribute="width" secondItem="mZB-ie-cGK" secondAttribute="width" id="w77-QE-g49"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="227" y="258"/>
+        </view>
+    </objects>
+</document>

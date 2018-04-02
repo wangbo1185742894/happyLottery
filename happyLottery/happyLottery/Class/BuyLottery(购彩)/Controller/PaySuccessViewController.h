@@ -10,6 +10,7 @@
 
 @interface PaySuccessViewController : BaseViewController
 @property (weak, nonatomic) IBOutlet UILabel *labChuPiaoimg;
+@property(nonatomic,strong)NSString *lotteryName;
 @property(assign,nonatomic) BOOL isMoni;
 @property(nonatomic,strong)NSString *schemeNO;
 @end

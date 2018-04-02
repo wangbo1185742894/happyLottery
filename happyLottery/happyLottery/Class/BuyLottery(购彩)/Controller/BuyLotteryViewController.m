@@ -7,6 +7,10 @@
 //
 
 #import "BuyLotteryViewController.h"
+#import "WebShowViewController.h"
+#import "WebCTZQHisViewController.h"
+#import "DLTPlayViewController.h"
+#import "CTZQPlayViewController.h"
 #import "DiscoverViewController.h"
 #import "WBAdsImgView.h"
 #import "JCZQPlayViewController.h"
@@ -25,6 +29,7 @@
 #import "NewsModel.h"
 #import "ADSModel.h"
 #import "WebShowViewController.h"
+#import "GYJPlayViewController.h"
 #import "RedPacket.h"
 #import "OpenRedPopView.h"
 #import "MyRedPacketViewController.h"
@@ -42,7 +47,10 @@
     WBAdsImgView *adsView;
     UIView  *menuView;
 
+    __weak IBOutlet UIView *lotteryPlayView;
+    __weak IBOutlet NSLayoutConstraint *btnGyjHeight;
     OpenRedPopView *popView;
+    __weak IBOutlet NSLayoutConstraint *spaceBtnGyj;
     __weak IBOutlet NSLayoutConstraint *contentViewDisTop;
     NSMutableArray *listUseRedPacketArray;
      RedPacket *r;
@@ -53,6 +61,7 @@
     __weak IBOutlet NSLayoutConstraint *newsViewMarginTop;
     __weak IBOutlet NSLayoutConstraint *tabForecastListHeight;
     __weak IBOutlet UITableView *tabForecaseList;
+    __weak IBOutlet NSLayoutConstraint *gyjMarginTop;
     LoadData *singleLoad;
     NewsModel *newsModel;
     NSMutableArray <ADSModel *>*adsArray;
@@ -75,13 +84,18 @@
     __weak IBOutlet NSLayoutConstraint *disBottom;
     __weak IBOutlet UILabel *redpacketLab;
     __weak IBOutlet UIButton *goRedPacket;
+
+    __weak IBOutlet UIButton *gyjButton;
+    BOOL showGJbtn;
 }
+@property(nonatomic,strong)Lottery *lottery;
 @end
 
 @implementation BuyLotteryViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(jumpToPlayVC:) name:@"NSNotificationJumpToPlayVC" object:nil];
 #ifdef APPSTORE
     [self appStoreUpadata];
 #else
@@ -101,13 +115,36 @@
     [self setADSUI];
     [self setMenu];
     [self setNewsView];
+    [self gyjButtonView];
+    [self setDLTCTZQView];
     [self setTableView];
-    openRedpacketButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+        openRedpacketButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     
 //    [self.view bringSubviewToFront:redpacketView];
 //    [self.view insertSubview:redpacketView aboveSubview:self.tabBarController.tabBar];
-    
-    
+}
+
+
+//修改，，，，，，，，，，
+- (void)gyjButtonHiddenOrNot{
+    showGJbtn = YES;
+    [self.lotteryMan getSellIssueList:@{@"lotteryCode":@"JCGJ"}];
+}
+
+//奖期不在售时，服务器返回"[]"
+-(void)gotSellIssueList:(NSArray *)infoDic errorMsg:(NSString *)msg{
+    LotteryRound * currentRound = [infoDic firstObject];
+    if ([currentRound isExpire] ||![currentRound.sellStatus isEqualToString:@"ING_SELL"]||currentRound == nil) {
+//        [currentRound.lotteryCode isEqualToString:@"JCGJ"]
+        if (showGJbtn == YES) {
+            showGJbtn = NO;
+            [self.lotteryMan getSellIssueList:@{@"lotteryCode":@"JCGYJ"}];
+        }
+    } else {
+        showGJbtn = YES;
+        btnGyjHeight.constant = 67;
+        spaceBtnGyj.constant = 10;
+    }
 }
 
 -(void)itemNotification:(NSNotification *)notification{
@@ -147,6 +184,9 @@
     }];
 }
 
+-(void)setDLTCTZQView{
+    curY =  lotteryPlayView.mj_y;
+}
 -(void)loadNews{
    
     
@@ -214,10 +254,16 @@
     
     CGFloat height;
     if ([self isIphoneX]) {
-        height = curY  + tabForecaseList.rowHeight * JczqShortcutList.count + 20;
+        height = tabForecaseList.mj_y  + tabForecaseList.rowHeight * JczqShortcutList.count + 20;
     }else{
-        height = curY  + tabForecaseList.rowHeight * JczqShortcutList.count;
+//        if (KscreenHeight > 667) {
+             height = tabForecaseList.mj_y  + tabForecaseList.rowHeight * JczqShortcutList.count + 70;
+//        }else{
+//                height = tabForecaseList.mj_y  + tabForecaseList.rowHeight * JczqShortcutList.count;
+//        }
+  
     }
+    
     homeViewHeight.constant = height;
     tabForecastListHeight.constant = tabForecaseList.rowHeight * JczqShortcutList.count;
     if (self.curUser.isLogin) {
@@ -228,18 +274,18 @@
 }
 
 -(void)setTableView{
-    curY +=151;
+    curY +=442;
     tabForecaseList.delegate = self;
     tabForecaseList.dataSource = self;
     [tabForecaseList registerClass:[NewsListCell class] forCellReuseIdentifier:KNewsListCell];
     tabForecaseList.rowHeight = 117;
     [tabForecaseList reloadData];
-    tabForecastListHeight.constant = tabForecaseList.rowHeight * 3;
+    tabForecastListHeight.constant = tabForecaseList.rowHeight * 1;
     CGFloat height = 0;
     if ([self isIphoneX]) {
-        height = curY  + tabForecaseList.rowHeight * 3 + 20;
+        height = curY  + tabForecaseList.rowHeight * 1 + 20;
     }else{
-        height = curY  + tabForecaseList.rowHeight * 3;
+        height = curY  + tabForecaseList.rowHeight * 1;
     }
     homeViewHeight.constant = height;
     tabForecaseList.bounces = NO;
@@ -247,7 +293,10 @@
 
 -(void)setNewsView{
     newsViewMarginTop.constant = curY;
-    
+}
+
+-(void)gyjButtonView{
+    gyjMarginTop.constant = curY;
 }
 
 -(void)setViewFeature{
@@ -320,6 +369,40 @@
         disVC.hidesBottomBarWhenPushed = YES;
         disVC.isNeedBack = YES;
         [self.navigationController pushViewController:disVC animated:YES];
+        return;
+    }else if ([keyStr isEqualToString:@"A414"]){
+        WebCTZQHisViewController * playViewVC = [[WebCTZQHisViewController alloc]init];
+        NSString *strUrl = [NSString stringWithFormat:@"%@/app/award/dltOpenAward",H5BaseAddress];
+        playViewVC.pageUrl = [NSURL URLWithString:strUrl];
+        playViewVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:playViewVC animated:YES];
+        return;
+    }else if ([keyStr isEqualToString:@"A415"]){
+        WebCTZQHisViewController * playViewVC = [[WebCTZQHisViewController alloc]init];
+        NSString *strUrl = [NSString stringWithFormat:@"%@/app/award/sfcOpenAward",H5BaseAddress];
+        playViewVC.pageUrl = [NSURL URLWithString:strUrl];
+        playViewVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:playViewVC animated:YES];
+        return;
+    }else if ([keyStr isEqualToString:@"A412"]){
+        WebCTZQHisViewController * playViewVC = [[WebCTZQHisViewController alloc]init];
+        NSString *strUrl = [NSString stringWithFormat:@"%@/app/award/jzOpenAward",H5BaseAddress];
+        playViewVC.pageUrl = [NSURL URLWithString:strUrl];
+        playViewVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:playViewVC animated:YES];
+        return;
+    }else if ([keyStr isEqualToString:@"A009"]){
+        [self actionJcgyj:nil];
+        return;
+    }else if ([keyStr isEqualToString:@"A006"]){
+        
+        [self actionSFC:@"SFC"];
+        return;
+    }else if ([keyStr isEqualToString:@"A005"]){
+        [self actionSFC:@"RJC"];
+        return;
+    }else if ([keyStr isEqualToString:@"A004"]){
+        [self actionDLT:nil];
         return;
     }
     
@@ -398,8 +481,8 @@
     }else{
         redpacketView.hidden = YES;
     }
-    
-    
+    [self gyjButtonHiddenOrNot];
+   
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -411,7 +494,9 @@
 #pragma HomeMenuItemViewDelegate
 -(void)itemClick:(NSInteger)index{
     if (index == 1000) {
-        JCZQPlayViewController * playViewVC = [[JCZQPlayViewController alloc]init];
+        WebCTZQHisViewController * playViewVC = [[WebCTZQHisViewController alloc]init];
+        NSString *strUrl = [NSString stringWithFormat:@"%@/app/award/openAward",H5BaseAddress];
+        playViewVC.pageUrl = [NSURL URLWithString:strUrl];
         playViewVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:playViewVC animated:YES];
     }
@@ -502,6 +587,14 @@
     showViewVC.pageUrl = [NSURL URLWithString:newsModel.linkUrl];
     showViewVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:showViewVC animated:YES];
+}
+
+//进入冠亚军竞猜
+- (IBAction)actionJcgyj:(id)sender {
+    GYJPlayViewController *gyjPlayVc = [[GYJPlayViewController alloc]init];
+    gyjPlayVc.hidesBottomBarWhenPushed = YES;
+    gyjPlayVc.navigationController.navigationBar.hidden = YES;
+    [self.navigationController pushViewController:gyjPlayVc animated:YES];
 }
 
 //"cardCode":"xxx","matchId":"x","isCollect":"x"
@@ -821,6 +914,65 @@
 - (void)lijigenxin{
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:APPUPDATAURL]];
 }
+- (IBAction)actionDLT:(id)sender {
+    NSArray * lotteryDS = [self.lotteryMan getAllLottery];
+    
+    DLTPlayViewController *playVC = [[DLTPlayViewController alloc] init];
+    playVC.hidesBottomBarWhenPushed = YES;
+    //    _lotterySelected.currentRound = round;
+    playVC.lottery = lotteryDS[1];
+    [self.navigationController pushViewController:playVC animated:YES];
+    
+}
+
+- (IBAction)actionSFC:(id)sender {
+    NSArray * lotteryDS = [self.lotteryMan getAllLottery];
+    
+    CTZQPlayViewController *playVC = [[CTZQPlayViewController alloc] init];
+    if ([sender isKindOfClass:[NSString class]]) {
+        if ([sender isEqualToString:@"SFC"]) {
+            playVC.playType = CTZQPlayTypeShiSi;
+        }else{
+            playVC.playType = CTZQPlayTypeRenjiu;
+        }
+    }
+    playVC.hidesBottomBarWhenPushed = YES;
+    playVC.lottery = lotteryDS[7];
+    [self.navigationController pushViewController:playVC animated:YES];
+}
+
+- (IBAction)actionJCZQ:(id)sender {
+    JCZQPlayViewController * playViewVC = [[JCZQPlayViewController alloc]init];
+    playViewVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:playViewVC animated:YES];
+}
+
+-(void)jumpToPlayVC:(NSNotification *)notifi{
+    if (self.tabBarController.selectedIndex != 0) {
+        self.tabBarController.selectedIndex = 0;
+    }
+    
+    NSString *playType = notifi.object;
+    if ([playType isEqualToString:@"RJC"] || [playType isEqualToString:@"SFC"]) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [self actionSFC:nil];
+        });
+    }
+    if ([playType isEqualToString:@"DLT"]) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [self actionDLT:nil];
+        });
+    }
+    if ([playType isEqualToString:@"JCZQ"]) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [self actionJCZQ:nil];
+        });
+    }
+}
+
 
 
 @end

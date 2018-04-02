@@ -11,7 +11,9 @@
 
 @interface GlobalInstance : NSObject
 
+@property(nonatomic,assign)NSTimeInterval serverTime;
 @property(nonatomic,strong)User *curUser;
 @property (nonatomic,strong)NSString * homeUrl;
+@property(nonatomic,assign)BOOL isFromTogeVCToThis;
 + (GlobalInstance *) instance;
 @end

@@ -15,6 +15,10 @@
 #import "JumpWebViewController.h"
 #import "DiscoverViewController.h"
 #import "HomeJumpViewController.h"
+#import "WebCTZQHisViewController.h"
+#import "DLTPlayViewController.h"
+#import "CTZQPlayViewController.h"
+#import "JCZQPlayViewController.h"
 
 @interface NoticeCenterViewController ()<MemberManagerDelegate,UITableViewDelegate,UITableViewDataSource>{
     
@@ -405,6 +409,46 @@
         }else{
             [self needLogin];
         }
+        return;
+    }else if ([keyStr isEqualToString:@"A414"]){
+        WebCTZQHisViewController * playViewVC = [[WebCTZQHisViewController alloc]init];
+        NSString *strUrl = [NSString stringWithFormat:@"%@/app/award/dltOpenAward",H5BaseAddress];
+        playViewVC.pageUrl = [NSURL URLWithString:strUrl];
+        playViewVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:playViewVC animated:YES];
+        return;
+    }else if ([keyStr isEqualToString:@"A415"]){
+        WebCTZQHisViewController * playViewVC = [[WebCTZQHisViewController alloc]init];
+        NSString *strUrl = [NSString stringWithFormat:@"%@/app/award/sfcOpenAward",H5BaseAddress];
+        playViewVC.pageUrl = [NSURL URLWithString:strUrl];
+        playViewVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:playViewVC animated:YES];
+        return;
+    }else if ([keyStr isEqualToString:@"A412"]){
+        WebCTZQHisViewController * playViewVC = [[WebCTZQHisViewController alloc]init];
+        NSString *strUrl = [NSString stringWithFormat:@"%@/app/award/jzOpenAward",H5BaseAddress];
+        playViewVC.pageUrl = [NSURL URLWithString:strUrl];
+        playViewVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:playViewVC animated:YES];
+        return;
+    }else if ([keyStr isEqualToString:@"A009"]){
+        [self .navigationController popToRootViewControllerAnimated:YES];
+        
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"NSNotificationJumpToPlayVC" object:@"GYJ"];
+        return;
+    }else if ([keyStr isEqualToString:@"A006"]){
+        [self .navigationController popToRootViewControllerAnimated:YES];
+         [[NSNotificationCenter defaultCenter]postNotificationName:@"NSNotificationJumpToPlayVC" object:@"SFC"];
+        return;
+    }else if ([keyStr isEqualToString:@"A005"]){
+        [self .navigationController popToRootViewControllerAnimated:YES];
+         [[NSNotificationCenter defaultCenter]postNotificationName:@"NSNotificationJumpToPlayVC" object:@"RJC"];
+        
+        return;
+    }else if ([keyStr isEqualToString:@"A004"]){
+        [self .navigationController popToRootViewControllerAnimated:YES];
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"NSNotificationJumpToPlayVC" object:@"DLT"];
+        
         return;
     }else{
          baseVC.hidesBottomBarWhenPushed = YES;

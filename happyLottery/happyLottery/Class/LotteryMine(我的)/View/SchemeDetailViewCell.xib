@@ -65,7 +65,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ihf-ll-qMP">
-                                <rect key="frame" x="77" y="24" width="83.5" height="17"/>
+                                <rect key="frame" x="77" y="24" width="113.5" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="74W-Jo-rps"/>
                                 </constraints>
@@ -111,9 +111,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5s-LJ-nNt" customClass="MGLabel">
-                                <rect key="frame" x="170.5" y="24" width="130" height="18"/>
+                                <rect key="frame" x="200.5" y="24" width="100" height="18"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="130" id="Dpp-Lr-jpk"/>
+                                    <constraint firstAttribute="width" constant="100" id="Dpp-Lr-jpk"/>
                                     <constraint firstAttribute="height" constant="18" id="cOn-id-xkf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -213,6 +213,7 @@
             <connections>
                 <outlet property="disTopBetBouns" destination="xJp-Tn-uFm" id="q8h-1P-9si"/>
                 <outlet property="disTopBetBounsInfo" destination="YQf-MO-dnL" id="7G6-95-xqr"/>
+                <outlet property="fanganhao" destination="GYP-iX-1at" id="neL-MI-2Cc"/>
                 <outlet property="labBetBouns" destination="ZF2-vN-z32" id="ndf-eW-cj2"/>
                 <outlet property="labBetCost" destination="Xdq-QT-KFQ" id="ybk-zn-uJ0"/>
                 <outlet property="labBouns" destination="mvR-xO-pkC" id="9Lj-HE-Lr4"/>
@@ -223,11 +224,13 @@
                 <outlet property="labSchemeTime" destination="77l-uV-2uH" id="sce-06-AQY"/>
                 <outlet property="labTicketCount" destination="z5s-LJ-nNt" id="Xjj-Hi-XfV"/>
                 <outlet property="labUnit" destination="QkX-SO-2Jo" id="G9N-ap-7CM"/>
+                <outlet property="touzhujine" destination="2Qp-oo-1fr" id="4J8-pX-LFv"/>
+                <outlet property="touzhuzhushu" destination="n6g-Os-Y2r" id="w1a-Jc-vyt"/>
             </connections>
             <point key="canvasLocation" x="37" y="131"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="schemedetailticket_bj" width="15" height="82"/>
+        <image name="schemedetailticket_bj" width="361" height="82"/>
     </resources>
 </document>

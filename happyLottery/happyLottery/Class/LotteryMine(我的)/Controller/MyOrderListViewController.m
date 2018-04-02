@@ -7,6 +7,9 @@
 //我的订单
 
 #import "MyOrderListViewController.h"
+#import "DLTSchemeDetailViewController.h"
+#import "CTZQSchemeDetailViewController.h"
+#import "GYJSchemeDetailViewController.h"
 #import "JCZQSchemeModel.h"
 #import "SchemListCell.h"
 #import "SchemeDetailViewController.h"
@@ -38,6 +41,10 @@
     [self setTableView];
     
     [self loadNewData];
+    if ([Utility isIOS11After]) {
+        self.automaticallyAdjustsScrollViewInsets = NO; // tableView 莫名其妙  contentOffset.y 成-64了  MMP
+    }
+
 }
 - (IBAction)actionCostTypeSelect:(UISegmentedControl *)sender {
     page = 1;
@@ -136,11 +143,33 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    SchemeDetailViewController *schemeVC = [[SchemeDetailViewController alloc]init];
-    schemeVC.schemeNO = dataArray[indexPath.row].schemeNO;
-    NSString *imageName = [dataArray[indexPath.row] getSchemeImgState];
-    schemeVC.imageName = imageName;
-    [self.navigationController pushViewController:schemeVC animated:YES];
+    if ([dataArray[indexPath.row].lottery isEqualToString:@"RJC"] || [dataArray[indexPath.row].lottery isEqualToString:@"SFC"]) {
+        CTZQSchemeDetailViewController*schemeVC = [[CTZQSchemeDetailViewController alloc]init];
+        schemeVC.schemeNO = dataArray[indexPath.row].schemeNO;
+        NSString *imageName = [dataArray[indexPath.row] getSchemeImgState];
+        schemeVC.imageName = imageName;
+        [self.navigationController pushViewController:schemeVC animated:YES];
+    }else if([dataArray[indexPath.row].lottery isEqualToString:@"DLT"]){
+        DLTSchemeDetailViewController *schemeVC = [[DLTSchemeDetailViewController alloc]init];
+        schemeVC.schemeNO = dataArray[indexPath.row].schemeNO;
+        NSString *imageName = [dataArray[indexPath.row] getSchemeImgState];
+        schemeVC.imageName = imageName;
+        [self.navigationController pushViewController:schemeVC animated:YES];
+    }else if ([dataArray[indexPath.row].lottery isEqualToString:@"JCGJ"] || [dataArray[indexPath.row].lottery isEqualToString:@"JCGYJ"]){
+        GYJSchemeDetailViewController*schemeVC = [[GYJSchemeDetailViewController alloc]init];
+        schemeVC.schemeNO = dataArray[indexPath.row].schemeNO;
+        NSString *imageName = [dataArray[indexPath.row] getSchemeImgState];
+        schemeVC.imageName = imageName;
+        [self.navigationController pushViewController:schemeVC animated:YES];
+    }
+    else{
+        SchemeDetailViewController *schemeVC = [[SchemeDetailViewController alloc]init];
+        schemeVC.schemeNO = dataArray[indexPath.row].schemeNO;
+        NSString *imageName = [dataArray[indexPath.row] getSchemeImgState];
+        schemeVC.imageName = imageName;
+        [self.navigationController pushViewController:schemeVC animated:YES];
+    }
+   
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{

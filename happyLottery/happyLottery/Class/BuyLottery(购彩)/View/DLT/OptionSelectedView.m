@@ -14,9 +14,16 @@
 @end
 @implementation OptionSelectedView
 
+/*
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect {
+    // Drawing code
+}
+*/
 - (instancetype)initWithFrame:(CGRect)frame andTitleArr:(NSArray<NSString *> *)titleArr{
     
-    CGFloat separateLineHeight = 1;
+    CGFloat separateLineHeight = SEPHEIGHT;
     CGFloat btnWidth = frame.size.width;
     CGFloat btnHieight = (frame.size.height - separateLineHeight * (titleArr.count - 1)) / titleArr.count;
     _titleArr = titleArr;
@@ -29,7 +36,7 @@
         
         UIView *btnBackView = [[UIView alloc] initWithFrame:frame];
         
-        btnBackView.backgroundColor = BtnDisAbleBackColor;
+        btnBackView.backgroundColor = SEPCOLOR ;
         
         [self addSubview:btnBackView];
         
@@ -39,7 +46,7 @@
 //            等待图片素材
 //        if (self.isP3P5 == NO) {
                 UIImageView * image = [[UIImageView alloc]initWithFrame:CGRectMake(frame.origin.x,frame.origin.y - 10,btnWidth ,btnHieight * titleArr.count + 20)];
-                image.image = [UIImage imageNamed:@"fengkuangjingcai-gengduoshuoming"];
+                image.image = [UIImage imageNamed:@"zhushoubg"];
         
                 // 判断是否是总表控制器
         

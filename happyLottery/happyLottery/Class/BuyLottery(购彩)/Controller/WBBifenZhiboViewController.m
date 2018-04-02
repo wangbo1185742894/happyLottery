@@ -43,12 +43,12 @@
     self.viewControllerNo = @"A108";
     self.dataArray = [NSMutableArray arrayWithCapacity:0];
     
-    lotteryMan = [[LotteryManager alloc] init];
+    
     self.title = @"比分直播";
     
-    lotteryMan.delegate = self;
+    self.lotteryMan.delegate = self;
     
-    [lotteryMan getBFZBInfo];
+    [self.lotteryMan getBFZBInfo];
     [self showLoadingViewWithText:@"正在加载"];
     
     self.backBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 90, 44)];
@@ -100,10 +100,6 @@
                 [self.btnMatchResult setTitle:model.itemName forState:0];
             }
         }
-    
-    
-    
-    
 }
 
 -(void)actionWebViewBack{

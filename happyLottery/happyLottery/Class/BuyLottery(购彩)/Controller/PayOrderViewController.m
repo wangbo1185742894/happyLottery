@@ -56,12 +56,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if ([Utility isIOS11After]) {
+        self.automaticallyAdjustsScrollViewInsets = NO; // tableView 莫名其妙  contentOffset.y 成-64了  MMP
+    }
     if (self.cashPayMemt.costType == CostTypeCASH) {
         self.labScoreInfoContent.hidden = YES;
         
     }else{
         self.labScoreInfoContent.hidden = NO;
     }
+    
+    self.labLotteryName.text = self.cashPayMemt.lotteryName;
+    
     self.couponList = [NSMutableArray arrayWithCapacity:0];
     self.title = @"预约支付";
     [self setTableView];
@@ -360,6 +366,7 @@
 
 -(void)paySuccess{
     PaySuccessViewController * paySuccessVC = [[PaySuccessViewController alloc]init];
+    paySuccessVC.lotteryName = self.cashPayMemt.lotteryName;
     paySuccessVC.schemeNO = self.cashPayMemt.schemeNo;
     paySuccessVC.isMoni = self.cashPayMemt.costType == CostTypeSCORE;
     [self.navigationController pushViewController:paySuccessVC animated:YES];

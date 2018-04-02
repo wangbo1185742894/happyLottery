@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CTZQHomeCell">
+            <rect key="frame" x="0.0" y="0.0" width="194" height="60"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ahv-1y-pY5">
+                    <rect key="frame" x="0.0" y="0.0" width="194" height="60"/>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nm6-iB-1Qf">
+                    <rect key="frame" x="8" y="10.5" width="40" height="40"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="Smc-fd-WFm"/>
+                        <constraint firstAttribute="width" constant="40" id="quB-5p-hrF"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="任选9场" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udr-kd-4Vt">
+                    <rect key="frame" x="56" y="13" width="128" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="qeC-8D-Egu"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.078431372549019607" green="0.078431372549019607" blue="0.078431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="热门场次精选投注" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CDu-EI-s2d">
+                    <rect key="frame" x="56" y="34" width="136" height="13"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="13" id="Jwn-Hs-49s"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.55686274509803924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PII-4X-BT9">
+                    <rect key="frame" x="144" y="0.0" width="50" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="OiQ-ep-uJr"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Nm6-iB-1Qf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="19h-ux-Qf0"/>
+                <constraint firstAttribute="bottom" secondItem="Ahv-1y-pY5" secondAttribute="bottom" id="7xf-y6-NNU"/>
+                <constraint firstItem="udr-kd-4Vt" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="13" id="7xm-zN-Dtn"/>
+                <constraint firstAttribute="trailing" secondItem="udr-kd-4Vt" secondAttribute="trailing" id="8em-2z-rbt"/>
+                <constraint firstAttribute="trailing" secondItem="CDu-EI-s2d" secondAttribute="trailing" constant="2" id="Chf-m3-Ohd"/>
+                <constraint firstItem="udr-kd-4Vt" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="30" id="Ejd-Cj-r87"/>
+                <constraint firstItem="CDu-EI-s2d" firstAttribute="top" secondItem="udr-kd-4Vt" secondAttribute="bottom" constant="1" id="LAO-kB-ib7"/>
+                <constraint firstItem="Ahv-1y-pY5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="P2Y-Z1-bY0"/>
+                <constraint firstAttribute="trailing" secondItem="udr-kd-4Vt" secondAttribute="trailing" constant="10" id="Tvj-7u-5b3"/>
+                <constraint firstItem="CDu-EI-s2d" firstAttribute="top" secondItem="udr-kd-4Vt" secondAttribute="bottom" constant="1" id="Zch-8W-els"/>
+                <constraint firstItem="PII-4X-BT9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="fS7-JY-DVU"/>
+                <constraint firstItem="CDu-EI-s2d" firstAttribute="leading" secondItem="Nm6-iB-1Qf" secondAttribute="trailing" constant="8" id="gJj-sR-Kqr"/>
+                <constraint firstItem="udr-kd-4Vt" firstAttribute="leading" secondItem="Nm6-iB-1Qf" secondAttribute="trailing" placeholder="YES" id="i3z-Jg-rTz"/>
+                <constraint firstItem="udr-kd-4Vt" firstAttribute="top" secondItem="PII-4X-BT9" secondAttribute="bottom" constant="-5" id="jJd-QI-Khq"/>
+                <constraint firstItem="Nm6-iB-1Qf" firstAttribute="centerY" secondItem="Ahv-1y-pY5" secondAttribute="centerY" id="mbH-Hg-tCj"/>
+                <constraint firstAttribute="trailing" secondItem="Ahv-1y-pY5" secondAttribute="trailing" id="oyG-bu-44Z"/>
+                <constraint firstItem="Ahv-1y-pY5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="qie-LS-Aep"/>
+                <constraint firstAttribute="trailing" secondItem="PII-4X-BT9" secondAttribute="trailing" id="ubl-Zz-B1t"/>
+                <constraint firstItem="udr-kd-4Vt" firstAttribute="leading" secondItem="Nm6-iB-1Qf" secondAttribute="trailing" constant="8" id="xgW-dj-ZJA"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="8em-2z-rbt"/>
+                    <exclude reference="Ejd-Cj-r87"/>
+                    <exclude reference="i3z-Jg-rTz"/>
+                    <exclude reference="Zch-8W-els"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="btnBack" destination="Ahv-1y-pY5" id="aDr-gY-ucP"/>
+                <outlet property="imgTitleIcon" destination="Nm6-iB-1Qf" id="U4N-kw-W6J"/>
+                <outlet property="labTitle" destination="udr-kd-4Vt" id="qeZ-0s-9KH"/>
+                <outlet property="labTitleDes" destination="CDu-EI-s2d" id="xMT-1f-gSL"/>
+                <outlet property="lexuanhotImage" destination="PII-4X-BT9" id="W5z-P3-cLK"/>
+            </connections>
+            <point key="canvasLocation" x="-68" y="-82"/>
+        </view>
+    </objects>
+</document>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="82" id="KGk-i7-Jjw" customClass="WinResultTableCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XFt-Wi-ng4">
+                        <rect key="frame" x="65" y="7" width="30" height="30"/>
+                        <state key="normal" backgroundImage="redBall.png">
+                            <color key="titleColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DqL-Mp-UGc">
+                        <rect key="frame" x="105" y="7" width="30" height="30"/>
+                        <state key="normal" backgroundImage="redBall.png">
+                            <color key="titleColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LNE-Lu-t8h">
+                        <rect key="frame" x="145" y="7" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="6Xd-Pa-ISv"/>
+                            <constraint firstAttribute="width" constant="30" id="CHr-61-sfL"/>
+                        </constraints>
+                        <state key="normal" backgroundImage="redBall.png">
+                            <color key="titleColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hSx-ON-paM">
+                        <rect key="frame" x="185" y="7" width="30" height="30"/>
+                        <state key="normal" backgroundImage="redBall.png">
+                            <color key="titleColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hB6-zj-vZl">
+                        <rect key="frame" x="225" y="7" width="30" height="30"/>
+                        <state key="normal" backgroundImage="blueBall.png">
+                            <color key="titleColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RSd-q4-btl">
+                        <rect key="frame" x="25" y="7" width="30" height="30"/>
+                        <state key="normal" backgroundImage="redBall.png">
+                            <color key="titleColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Bv-NG-FaB">
+                        <rect key="frame" x="265" y="7" width="30" height="30"/>
+                        <state key="normal" backgroundImage="blueBall.png">
+                            <color key="titleColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="等待开奖" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="svt-pY-QGn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                        <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                <constraints>
+                    <constraint firstItem="DqL-Mp-UGc" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="1eN-7h-QSC"/>
+                    <constraint firstItem="XFt-Wi-ng4" firstAttribute="leading" secondItem="RSd-q4-btl" secondAttribute="trailing" constant="10" id="2Y1-dJ-srp"/>
+                    <constraint firstItem="DqL-Mp-UGc" firstAttribute="height" secondItem="XFt-Wi-ng4" secondAttribute="height" id="6pA-z9-tlq"/>
+                    <constraint firstItem="hB6-zj-vZl" firstAttribute="height" secondItem="XFt-Wi-ng4" secondAttribute="height" id="7GX-Bq-5TR"/>
+                    <constraint firstItem="RSd-q4-btl" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="969-og-5pS"/>
+                    <constraint firstItem="0Bv-NG-FaB" firstAttribute="leading" secondItem="hB6-zj-vZl" secondAttribute="trailing" constant="10" id="9Fv-aP-SXs"/>
+                    <constraint firstItem="LNE-Lu-t8h" firstAttribute="height" secondItem="RSd-q4-btl" secondAttribute="height" id="9bZ-ES-N5S"/>
+                    <constraint firstItem="hB6-zj-vZl" firstAttribute="leading" secondItem="hSx-ON-paM" secondAttribute="trailing" constant="10" id="9oR-KO-zfn"/>
+                    <constraint firstItem="hSx-ON-paM" firstAttribute="leading" secondItem="LNE-Lu-t8h" secondAttribute="trailing" constant="10" id="Fay-y7-YF3"/>
+                    <constraint firstItem="DqL-Mp-UGc" firstAttribute="width" secondItem="XFt-Wi-ng4" secondAttribute="width" id="HT4-le-q7f"/>
+                    <constraint firstItem="LNE-Lu-t8h" firstAttribute="leading" secondItem="DqL-Mp-UGc" secondAttribute="trailing" constant="10" id="KVk-kZ-YPM"/>
+                    <constraint firstItem="svt-pY-QGn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="MhV-dD-FBq"/>
+                    <constraint firstItem="LNE-Lu-t8h" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Nmo-Ty-m0P"/>
+                    <constraint firstAttribute="bottom" secondItem="svt-pY-QGn" secondAttribute="bottom" id="RQH-ls-T8n"/>
+                    <constraint firstItem="hB6-zj-vZl" firstAttribute="width" secondItem="XFt-Wi-ng4" secondAttribute="width" id="SKc-hp-Zeq"/>
+                    <constraint firstItem="XFt-Wi-ng4" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="To5-Jk-Dkz"/>
+                    <constraint firstItem="hSx-ON-paM" firstAttribute="height" secondItem="XFt-Wi-ng4" secondAttribute="height" id="W5t-e1-uXm"/>
+                    <constraint firstItem="0Bv-NG-FaB" firstAttribute="width" secondItem="RSd-q4-btl" secondAttribute="width" id="XUj-gV-MEP"/>
+                    <constraint firstItem="hSx-ON-paM" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="XdT-Q1-973"/>
+                    <constraint firstItem="LNE-Lu-t8h" firstAttribute="width" secondItem="RSd-q4-btl" secondAttribute="width" id="Y4j-Je-BdM"/>
+                    <constraint firstAttribute="trailing" secondItem="svt-pY-QGn" secondAttribute="trailing" id="YlE-pf-soS"/>
+                    <constraint firstItem="LNE-Lu-t8h" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="b9D-X2-SV1"/>
+                    <constraint firstItem="LNE-Lu-t8h" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="cWl-OS-Bnp"/>
+                    <constraint firstItem="LNE-Lu-t8h" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="eY1-ad-Nn3"/>
+                    <constraint firstItem="svt-pY-QGn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="hS7-WX-tC6"/>
+                    <constraint firstItem="0Bv-NG-FaB" firstAttribute="height" secondItem="RSd-q4-btl" secondAttribute="height" id="i4r-L4-MLO"/>
+                    <constraint firstItem="hB6-zj-vZl" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="nmH-WJ-Kws"/>
+                    <constraint firstItem="LNE-Lu-t8h" firstAttribute="width" secondItem="XFt-Wi-ng4" secondAttribute="width" id="qg0-lI-8HS"/>
+                    <constraint firstItem="0Bv-NG-FaB" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="r0v-M6-gxt"/>
+                    <constraint firstItem="DqL-Mp-UGc" firstAttribute="leading" secondItem="XFt-Wi-ng4" secondAttribute="trailing" constant="10" id="ue6-n9-e4j"/>
+                    <constraint firstItem="hSx-ON-paM" firstAttribute="width" secondItem="XFt-Wi-ng4" secondAttribute="width" id="uhe-Sd-mx0"/>
+                    <constraint firstItem="LNE-Lu-t8h" firstAttribute="height" secondItem="XFt-Wi-ng4" secondAttribute="height" id="xDT-aw-enM"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="redBallCenter" destination="Nmo-Ty-m0P" id="7kJ-FS-9yv"/>
+                <outlet property="winNotLa" destination="svt-pY-QGn" id="L9W-fl-HPn"/>
+                <outletCollection property="redBallArr" destination="RSd-q4-btl" id="NUm-B0-cMz"/>
+                <outletCollection property="redBallArr" destination="XFt-Wi-ng4" id="Tgq-Uv-E0Q"/>
+                <outletCollection property="redBallArr" destination="DqL-Mp-UGc" id="3Vi-3U-HRs"/>
+                <outletCollection property="redBallArr" destination="LNE-Lu-t8h" id="1dc-zR-4mU"/>
+                <outletCollection property="redBallArr" destination="hSx-ON-paM" id="d8A-cf-kqZ"/>
+                <outletCollection property="blueBallArr" destination="hB6-zj-vZl" id="dBa-sZ-cDS"/>
+                <outletCollection property="blueBallArr" destination="0Bv-NG-FaB" id="Btm-v5-L34"/>
+            </connections>
+            <point key="canvasLocation" x="162" y="17"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="blueBall.png" width="25" height="25"/>
+        <image name="redBall.png" width="25" height="25"/>
+    </resources>
+</document>

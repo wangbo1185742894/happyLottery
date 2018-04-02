@@ -9,7 +9,7 @@
 #import "BaseModel.h"
 
 
-//_trOpenResult    __NSCFString *    @"[{\"RQSPF\":\"1\",\"homeScore\":1,\"guestScore\":0,\"BF\":\"--\",\"BQC\":\"33\",\"handicap\":-1,\"SPF\":\"3\",\"matchKey\":102989,\"guest\":\"普埃布拉\",\"JQS\":\"1\",\"home\":\"莫雷利亚\",\"status\":1},{\"RQSPF\":\"1\",\"homeScore\":1,\"guestScore\":0,\"BF\":\"--\",\"BQC\":\"33\",\"handicap\":-1,\"SPF\":\"3\",\"matchKey\":102988,\"guest\":\"内卡萨\",\"JQS\":\"1\",\"home\":\"蒂华纳\",\"status\":1}]"    0x0000000101af79c0
+//_trOpenResult    __NSCFString *    @"[{\"RQSPF\":\"1\",\"homeScore\":1,\"guestScore\":0,\"BF\":\"--\",\"BQC\":\"33\",\"handicap\":-1,\"SPF\":\"3\",\"matchKey\":102989,\"guest\":\"普埃布拉\",\"JQS\":\"1\",\"home\":\"莫雷利亚\",\"status\":1},{\"\":\"1\",\"homeScore\":1,\"guestScore\":0,\"BF\":\"--\",\"BQC\":\"33\",\"handicap\":-1,\"SPF\":\"3\",\"matchKey\":102988,\"guest\":\"内卡萨\",\"JQS\":\"1\",\"home\":\"蒂华纳\",\"status\":1}]"    0x0000000101af79c0
 
 @interface JcBetContent :NSObject
 
@@ -65,11 +65,14 @@
 @property(nonatomic,copy)NSString * finishedTime;
 @property(nonatomic,copy)NSString * subTime;
 @property(nonatomic,copy)NSMutableArray <OpenResult *> * trOpenResult;
+@property(nonatomic,copy)NSString * trDltOpenResult;
+
 @property(nonatomic,copy)NSString *virtualSp;
 -(NSString *)getSchemeImgState;
 
 -(NSString *)getSchemeState;
 -(CGFloat)getJCZQCellHeight;
+-(CGFloat )getGYJCellHeight;
 @end
 
 

@@ -8,6 +8,11 @@
 
 #import "AppDelegate.h"
 #import "NewFeatureViewController.h"
+#import "WebCTZQHisViewController.h"
+#import "DLTPlayViewController.h"
+#import "CTZQPlayViewController.h"
+#import "JCZQPlayViewController.h"
+#import "WelComeViewController.h"
 #import "AESUtility.h"
 #import "netWorkHelper.h"
 // 引入JPush功能所需头文件
@@ -147,7 +152,7 @@ static SystemSoundID shake_sound_male_id = 0;
     }  
     
       [self initShareSDK];
-    sleep(1.5);
+    sleep(1.0);
     
     return YES;
 }
@@ -264,7 +269,6 @@ static SystemSoundID shake_sound_male_id = 0;
             [self.fmdb close];
         }
     }
-    
     NSString *time = [Utility timeStringFromFormat:@"yyyy-MM-dd HH:mm:ss" withDate:[NSDate date]];
 
 }
@@ -282,7 +286,13 @@ static SystemSoundID shake_sound_male_id = 0;
     lastVersion = [defaults objectForKey:KEYAPPVERSION];
     curVersion = [NSBundle mainBundle].infoDictionary[KEYCURAPPVERSION];
     if ([curVersion isEqualToString:lastVersion]) { //
-        _window.rootViewController = tabBarControllerMain;
+        WelComeViewController *welcomeVC = [[WelComeViewController alloc]init];
+        _window.rootViewController = welcomeVC;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            _window.rootViewController = tabBarControllerMain;
+        });
+        
+        
     }else{
         [defaults setObject:curVersion forKey:KEYAPPVERSION];
         [defaults synchronize];
@@ -611,6 +621,27 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         disVC.isNeedBack = YES;
         baseVC = disVC;
         
+    }else if ([keyStr isEqualToString:@"A414"]){
+        WebCTZQHisViewController * playViewVC = [[WebCTZQHisViewController alloc]init];
+        NSString *strUrl = [NSString stringWithFormat:@"%@/app/award/dltOpenAward",H5BaseAddress];
+        playViewVC.pageUrl = [NSURL URLWithString:strUrl];
+        playViewVC.hidesBottomBarWhenPushed = YES;
+        [delegate.curNavVC pushViewController:playViewVC animated:YES];
+        return;
+    }else if ([keyStr isEqualToString:@"A415"]){
+        WebCTZQHisViewController * playViewVC = [[WebCTZQHisViewController alloc]init];
+        NSString *strUrl = [NSString stringWithFormat:@"%@/app/award/sfcOpenAward",H5BaseAddress];
+        playViewVC.pageUrl = [NSURL URLWithString:strUrl];
+        playViewVC.hidesBottomBarWhenPushed = YES;
+        [delegate.curNavVC pushViewController:playViewVC animated:YES];
+        return;
+    }else if ([keyStr isEqualToString:@"A412"]){
+        WebCTZQHisViewController * playViewVC = [[WebCTZQHisViewController alloc]init];
+        NSString *strUrl = [NSString stringWithFormat:@"%@/app/award/jzOpenAward",H5BaseAddress];
+        playViewVC.pageUrl = [NSURL URLWithString:strUrl];
+        playViewVC.hidesBottomBarWhenPushed = YES;
+        [delegate.curNavVC pushViewController:playViewVC animated:YES];
+        return;
     }else{
           baseVC.hidesBottomBarWhenPushed = YES;
     }

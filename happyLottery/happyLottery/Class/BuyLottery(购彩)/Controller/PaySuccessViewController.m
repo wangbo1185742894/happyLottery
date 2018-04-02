@@ -7,8 +7,11 @@
 //
 
 #import "PaySuccessViewController.h"
+#import "DLTSchemeDetailViewController.h"
 #import "SchemeDetailViewController.h"
 #import "MyOrderListViewController.h"
+#import "CTZQSchemeDetailViewController.h"
+#import "GYJSchemeDetailViewController.h"
 
 @interface PaySuccessViewController ()
 
@@ -25,6 +28,10 @@
     }else{
         self.labChuPiaoimg.text = @"正在出票，祝您好运连连";
     }
+    if ([Utility isIOS11After]) {
+        self.automaticallyAdjustsScrollViewInsets = NO; // tableView 莫名其妙  contentOffset.y 成-64了  MMP
+    }
+
 }
 
 
@@ -34,13 +41,30 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)actionLookOrder:(id)sender {
-    SchemeDetailViewController *schemeVC = [[SchemeDetailViewController alloc]init];
-    schemeVC.schemeNO = self.schemeNO;
     MyOrderListViewController *myOrderListVC = [[MyOrderListViewController alloc]init];
     NSMutableArray * vcS = [[NSMutableArray alloc]initWithArray:self.navigationController.viewControllers];
     [vcS addObject:myOrderListVC];
     self.navigationController.viewControllers = vcS;
-    [self.navigationController pushViewController:schemeVC animated:YES];
+    if ([self.lotteryName isEqualToString:@"胜负14场"] || [self.lotteryName isEqualToString:@"任选9场"]) {
+        CTZQSchemeDetailViewController *schemeVC = [[CTZQSchemeDetailViewController alloc]init];
+        schemeVC.schemeNO = self.schemeNO;
+        [self.navigationController pushViewController:schemeVC animated:YES];
+    }else if([self.lotteryName isEqualToString:@"大乐透"]){
+        DLTSchemeDetailViewController *schemeVC = [[DLTSchemeDetailViewController alloc]init];
+        schemeVC.schemeNO = self.schemeNO;
+        [self.navigationController pushViewController:schemeVC animated:YES];
+    }else if ([self.lotteryName isEqualToString:@"冠军"] || [self.lotteryName isEqualToString:@"冠亚军"]){
+        GYJSchemeDetailViewController *schemeVC = [[GYJSchemeDetailViewController alloc]init];
+        schemeVC.schemeNO = self.schemeNO;
+        [self.navigationController pushViewController:schemeVC animated:YES];
+    }
+    else
+    {
+        SchemeDetailViewController *schemeVC = [[SchemeDetailViewController alloc]init];
+        schemeVC.schemeNO = self.schemeNO;
+        [self.navigationController pushViewController:schemeVC animated:YES];
+    }
+
 }
 - (IBAction)actionBackHome:(id)sender {
     

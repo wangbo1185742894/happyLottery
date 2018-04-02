@@ -17,6 +17,9 @@
     __weak IBOutlet UILabel *labSchemeState;
     __weak IBOutlet UIImageView *imgLotteryIcon;
     __weak IBOutlet UIImageView *imgWinState;
+    __weak IBOutlet NSLayoutConstraint *imagIconHeight;
+    __weak IBOutlet NSLayoutConstraint *imageIconWidth;
+    
 }
 @end
 
@@ -47,6 +50,10 @@
     labSchemeLottery.text = [self getLotteryByCode:model.lottery];
     imgLotteryIcon.image = [UIImage imageNamed:model.lotteryIcon];
     
+    if ([model.lottery isEqualToString:@"JCGJ"]||[model.lotteryIcon isEqualToString:@"JCGYJ"]||[model.lottery isEqualToString:@"DLT"]) {
+        imagIconHeight.constant = 39;
+        imageIconWidth.constant = 39;
+    }
     
     labSchemeState.text = [model getSchemeState];
     
@@ -68,7 +75,17 @@
 -(NSString *)getLotteryByCode:(NSString *)code{
     if ([code isEqualToString:@"JCZQ"]) {
         return @"竞彩足球";
-    } //以后加彩种 在这加
+    }else if([code isEqualToString:@"DLT"]){
+        return @"超级大乐透";
+    }else if([code isEqualToString:@"RJC"]){
+        return @"任9场";
+    }else if([code isEqualToString:@"SFC"]){
+        return @"14场";
+    }else if([code isEqualToString:@"JCGJ"]){
+        return @"冠军";
+    }else if([code isEqualToString:@"JCGYJ"]){
+        return @"冠亚军";
+    }
     return @"彩票";
 }
 

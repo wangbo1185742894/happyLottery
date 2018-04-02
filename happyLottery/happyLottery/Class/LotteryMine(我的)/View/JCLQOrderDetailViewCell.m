@@ -60,21 +60,33 @@
     itemDic = dic;
     self.labTouzhuneirong.layer.borderWidth = 1;
     self.labTouzhuneirong.layer.borderColor =TFBorderColor.CGColor;
-    
-    self.labPassType.text = [self getPasstype:dic[@"passType"]];
-    
-   
-    
     self.viewSubContent.layer.borderColor = TFBorderColor.CGColor;
     self.viewSubContent.layer.borderWidth = 1;
     
     self.labBetCost.text = [NSString stringWithFormat:@"%@元",dic[@"subscription"]];
-    NSArray *titleArray = [Utility objFromJson:dic[@"ticketContent"]];
-    titleArray = [self getBetcontent:titleArray];
-    content  = [titleArray componentsJoinedByString:@"\n"];
-    
+    if([dic[@"lotteryCode"] isEqualToString:@"DLT"]){
+        content = dic[@"ticketContent"];
+        content = [content stringByReplacingOccurrencesOfString:@";" withString:@"\n"];
+        self.disLeftPlayType.constant = -self.labPlayType.mj_w - 20;
+        self.disLeftPlayTypeContent.constant = -self.labPlayType.mj_w - 20;
+        
+    }else if([dic[@"lotteryCode"] isEqualToString:@"RJC"] || [dic[@"lotteryCode"] isEqualToString:@"SFC"]){
+        content = dic[@"ticketContent"];
+        content = [content stringByReplacingOccurrencesOfString:@";" withString:@"\n"];
+        self.disLeftPlayType.constant = -self.labPlayType.mj_w - 20;
+        self.disLeftPlayTypeContent.constant = -self.labPlayType.mj_w - 20;
+        
+    }else{
+        self.labPassType.text = [self getPasstype:dic[@"passType"]];
+        NSArray *titleArray = [Utility objFromJson:dic[@"ticketContent"]];
+        titleArray = [self getBetcontent:titleArray];
+        content  = [titleArray componentsJoinedByString:@"\n"];
+    }
+   
     self.labTouzhuneirong.text = content ;
     self.labTouzhuneirong.adjustsFontSizeToFitWidth = YES;
+    
+    
     self.labNumber.text = [NSString stringWithFormat:@"%@注%@倍",dic[@"unit"],dic[@"multiple"]];
     
     [self setNumberColor:self.labNumber];
@@ -113,9 +125,165 @@
        
         self.labJiangjin.text = @"待开奖";
     }
-
+}
  //   [5]	(null)	@"winningStatus" : @"WAIT_LOTTERY"  NOT_LOTTERY  LOTTERY
- //   [3]	(null)	@"orderStatus" : @"FAIL_TICKET"  SUC_TICKET  WAIT_PAY
+ //   [3]	(null)	@"orderStatus" : @"FAIL_TICKET"  SUC_TICKET  WAIT_PA
+
+
+//- (void)reloadDataGYJ:(NSDictionary *)dic{
+//    self.labNumber.adjustsFontSizeToFitWidth = YES;
+//    self.labTouzhuneirong.adjustsFontSizeToFitWidth = YES;
+////    self.labBetCount.adjustsFontSizeToFitWidth = YES;
+////    self.labBeishu.adjustsFontSizeToFitWidth = YES;
+//    self.labChupiao.adjustsFontSizeToFitWidth = YES;
+//    self.labJiangjin.adjustsFontSizeToFitWidth = YES;
+//
+////    self.labBeishu.text = [NSString stringWithFormat:@"%@元",dic[@"subCost"]];
+//
+//    NSArray *titleArray = dic[@"betContent"];
+//    NSMutableArray *contentArray = [NSMutableArray arrayWithCapacity:0];
+//    NSMutableArray *oddsArray = [NSMutableArray arrayWithCapacity:0];
+//    for (NSString *itemStr in titleArray) {
+//        NSDictionary *itemDic = [Utility objFromJson:itemStr];
+//        [contentArray addObject:[NSString stringWithFormat:@"%@%@",itemDic[@"index"],itemDic[@"clash"]]];
+//
+//        if (itemDic[@"odds"] != nil) {
+//            [oddsArray addObject:itemDic[@"odds"]];
+//        }else{
+////            self.labPlayTypeWidth.constant = 0;
+////            self.lbaTitlewidth.constant = 0;
+//        }
+//    }
+//    self.labPlayType.text = [oddsArray componentsJoinedByString:@"\n"];
+//    self.labNumber.text = [NSString stringWithFormat:@"投注内容 %ld注%@倍",titleArray.count,dic[@"multiple"]];
+//    self.labTouzhuneirong.text = [contentArray componentsJoinedByString:@"\n"];
+////    self.labSpTitle.text = @"赔率";
+//    [self setNumberColor:self.labNumber];
+//    NSString *orderStatus = dic[@"orderStatus"];
+//    NSString *winningStatus = dic[@"winningStatus"];
+//    NSString *subCost =[NSString stringWithFormat:@"%@元",dic[@"subCost"]] ;
+////    self.labBetCount.text = subCost == nil?@"0":subCost;
+//    [self setLabTextColor:TEXTGRAYCOLOR];
+//
+//
+//    if ([orderStatus isEqualToString:@"SUC_TICKET"]){
+//        self.labChupiao.text = @"出票成功";
+//    }else if([orderStatus isEqualToString:@"FAIL_TICKET"]){
+//        self.labChupiao.text = @"出票失败";
+//        if (dic[@"remark"] != nil) {
+//            self.labChupiao.text = [NSString stringWithFormat:@"出票失败(%@)",dic[@"remark"]];
+//        }else{
+//
+//        }
+////        self.labRemark.adjustsFontSizeToFitWidth = YES;
+//
+//    }else{
+//        self.labChupiao.text = @"出票中";
+//
+//    }
+//
+//    if ([winningStatus isEqualToString:@"LOTTERY"]) {
+//        float jingjin =[dic[@"bonus"] floatValue];
+//        self.labJiangjin.text = [NSString stringWithFormat:@"%.2f元",jingjin];
+//
+//        [self setLabTextColor:SystemRed];
+//        //                self.labJiangjin.text = [NSString stringWithFormat:@"%.2f",jingjin];
+//    }else if([winningStatus isEqualToString:@"NOT_LOTTERY"]){
+//
+//        self.labJiangjin.text = @"未中奖";
+//    }else{
+//
+//        self.labJiangjin.text = @"";
+//    }
+//
+//}
+
+-(void)reloadDataGYJ:(NSDictionary *)dic{
+        self.labNumber.adjustsFontSizeToFitWidth = YES;
+        self.labTouzhuneirong.adjustsFontSizeToFitWidth = YES;
+
+        self.labChupiao.adjustsFontSizeToFitWidth = YES;
+        self.labJiangjin.adjustsFontSizeToFitWidth = YES;
+
+//        self.labBeishu.text = [NSString stringWithFormat:@"%@元",dic[@"subCost"]];
+        NSArray *titleArray = [Utility objFromJson:dic[@"ticketContent"]];
+        NSMutableArray *contentArray = [NSMutableArray arrayWithCapacity:0];
+        NSMutableArray *oddsArray = [NSMutableArray arrayWithCapacity:0];
+    //排序
+    NSMutableArray *arrySort = [NSMutableArray array];
+    for (NSString *itemStr in titleArray) {
+        NSDictionary *itemDic = [Utility objFromJson:itemStr];
+        [arrySort addObject:itemDic];
+    }
+    NSArray *arrySortYes = [arrySort mutableCopy];
+    NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"index" ascending:YES];
+    arrySortYes = [arrySortYes sortedArrayUsingDescriptors:@[descriptor]];
+    titleArray = [arrySortYes copy];
+    //
+        for (NSString *itemStr in titleArray) {
+            NSDictionary *itemDic = [Utility objFromJson:itemStr];
+            
+            if (itemDic[@"odds"] != nil) {
+                [oddsArray addObject:itemDic[@"odds"]];
+            }
+            if (itemDic[@"odds"]!=nil) {
+                [contentArray addObject:[NSString stringWithFormat:@"%@%@(%@)",itemDic[@"index"],itemDic[@"clash"],itemDic[@"odds"]]];
+            }
+            else {
+                [contentArray addObject:[NSString stringWithFormat:@"%@%@",itemDic[@"index"],itemDic[@"clash"]]];
+            }
+        }
+        self.disLeftPlayType.constant = -self.labPlayType.mj_w - 50;
+        self.disLeftPlayTypeContent.constant = -self.labPlayType.mj_w - 50;
+        self.labNumber.text = [NSString stringWithFormat:@"%ld注%@倍",titleArray.count,dic[@"multiple"]];
+        self.labTouzhuneirong.text = [contentArray componentsJoinedByString:@"\n"];
+    
+        if ( [self.labTouzhuneirong.text rangeOfString:@"—"].location !=NSNotFound ) {
+            self.labTouzhuneirong.text = [self.labTouzhuneirong.text stringByReplacingOccurrencesOfString:@"—" withString:@"   vs   "];
+        }
+//        self.labSpTitle.text = @"赔率";
+        [self setNumberColor:self.labNumber];
+        NSString *orderStatus = dic[@"orderStatus"];
+        NSString *winningStatus = dic[@"winningStatus"];
+        NSString *subCost =[NSString stringWithFormat:@"%@元",dic[@"subCost"]] ;
+//        self.labBetCount.text = subCost == nil?@"0":subCost;
+        [self setLabTextColor:TEXTGRAYCOLOR];
+        self.labBetCost.text = [NSString stringWithFormat:@"%@元",dic[@"subscription"]];
+
+        if ([orderStatus isEqualToString:@"SUC_TICKET"]){
+            self.labChupiao.text = @"出票成功";
+        }else if([orderStatus isEqualToString:@"FAIL_TICKET"]){
+            self.labChupiao.text = @"出票失败";
+            if (dic[@"remark"] != nil) {
+                self.labChupiao.text = [NSString stringWithFormat:@"出票失败(%@)",dic[@"remark"]];
+            }else{
+
+            }
+//            self.labRemark.adjustsFontSizeToFitWidth = YES;
+
+        }else{
+            self.labChupiao.text = @"出票中";
+
+        }
+        self.imgWinIcon.hidden = YES;
+        if ([winningStatus isEqualToString:@"LOTTERY"]) {
+            float jingjin =[dic[@"bonus"] floatValue];
+            self.labJiangjin.text = [NSString stringWithFormat:@"%.2f元",jingjin];
+            self.imgWinIcon.hidden = NO;
+            [self setLabTextColor:SystemRed];
+            //                self.labJiangjin.text = [NSString stringWithFormat:@"%.2f",jingjin];
+        }else if([winningStatus isEqualToString:@"NOT_LOTTERY"]){
+
+            self.labJiangjin.text = @"未中奖";
+        }else if([winningStatus isEqualToString:@"WAIT_LOTTERY"]){
+            self.labJiangjin.text = @"待开奖";
+        }else {
+            self.labJiangjin.text = @"";
+        }
+
+        //   [5]    (null)    @"winningStatus" : @"WAIT_LOTTERY"  NOT_LOTTERY  LOTTERY
+        //   [3]    (null)    @"orderStatus" : @"FAIL_TICKET"  SUC_TICKET  WAIT_PAY
+
 
 }
 
@@ -140,9 +308,17 @@
 
 
 -(CGFloat)getCellHeight:(NSDictionary*)dic{
+    if([dic[@"lotteryCode"] isEqualToString:@"DLT"] || [dic[@"lotteryCode"] isEqualToString:@"SFC"] || [dic[@"lotteryCode"] isEqualToString:@"RJC"]){
+        
+        return [dic[@"ticketContent"] componentsSeparatedByString:@";"].count * 12 + 150;
+    }else if ([dic[@"lotteryCode"] isEqualToString:@"JCGJ"] || [dic[@"lotteryCode"] isEqualToString:@"JCGYJ"]){
+        NSArray *titleArray = [Utility objFromJson:dic[@"ticketContent"]];
+        return titleArray.count * 12 + 150;
+    }
     NSArray *titleArray = [Utility objFromJson:dic[@"ticketContent"]] ;
     
     titleArray = [self getBetcontent:titleArray];
+    
     NSString * content = [titleArray componentsJoinedByString:@"\n"];
     
     NSStringDrawingOptions opts = NSStringDrawingUsesLineFragmentOrigin;

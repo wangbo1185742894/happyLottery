@@ -113,7 +113,6 @@
     }
     MemberInfo = @{@"cardCode":cardCode
                    };
-    
     [self.memberMan getMemberByCardCodeSms:(NSDictionary *)MemberInfo];
 }
 

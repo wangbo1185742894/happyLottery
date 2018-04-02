@@ -14,11 +14,13 @@
 #import "QuestionsViewController.h"
 #import "FunctionsViewController.h"
 #import "IntegeralChangeViewController.h"
+#import "LotteryInstructionDetailViewController.h"
 
 @interface MyHelpViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottom;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollerview;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *height;
 
 @end
 
@@ -30,8 +32,9 @@
     self.viewControllerNo = @"A207";
     if ([self isIphoneX]) {
         self.top.constant = 24;
-       // self.bottom.constant = 34;
+       
     }
+    self.height.constant = 770;
 }
 
 - (IBAction)footballPlay:(id)sender {
@@ -47,6 +50,22 @@
 - (IBAction)integralChange:(id)sender {
     IntegeralChangeViewController * mpVC = [[IntegeralChangeViewController alloc]init];
     [self.navigationController pushViewController:mpVC animated:YES];
+}
+- (IBAction)actionSFC:(UIButton *)sender {
+    NSArray *infoArr = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"LotteryInstructionConfig" ofType: @"plist"]];
+    NSDictionary *infoDic = infoArr[6];
+    LotteryInstructionDetailViewController *detailVC = [[LotteryInstructionDetailViewController alloc] initWithNibName: @"LotteryInstructionDetailViewController" bundle: nil];
+    detailVC.lotteryDetailDic = infoDic;
+    [self.navigationController pushViewController: detailVC animated: YES];
+}
+- (IBAction)actionDLT:(UIButton *)sender {
+    
+    NSArray *infoArr = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"LotteryInstructionConfig" ofType: @"plist"]];
+    NSDictionary *infoDic = infoArr[2];;
+    
+    LotteryInstructionDetailViewController *detailVC = [[LotteryInstructionDetailViewController alloc] initWithNibName: @"LotteryInstructionDetailViewController" bundle: nil];
+    detailVC.lotteryDetailDic = infoDic;
+    [self.navigationController pushViewController: detailVC animated: YES];
 }
 //功能指南
 - (IBAction)FunctionalGuide:(id)sender {

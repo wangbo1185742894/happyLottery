@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Lottery.h"
 
 typedef enum{//自购, 合买, 追号, 推荐
     SchemeTypeZigou = 0,
@@ -45,11 +46,12 @@ typedef enum : NSUInteger {
 
 @interface BaseTransaction : NSObject
 
+
 @property  (nonatomic,assign)   NSInteger betCost;
 @property  (nonatomic,assign)   NSInteger betCount;
 
 @property(nonatomic,assign)NSInteger units;
-
+@property (nonatomic , strong) Lottery * lottery; 
 @property(assign,nonatomic)SchemeType schemeType;
 @property (nonatomic,assign)NSInteger copies; // 总份数(copies int   自购的值为1)
 @property (nonatomic,assign)NSInteger sponsorCopies; //  发起认购份数(sponsorCopies  int   自购的值为1)

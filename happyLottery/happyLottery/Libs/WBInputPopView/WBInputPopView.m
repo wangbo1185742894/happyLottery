@@ -43,31 +43,40 @@
     return self;
 }
 
--(void)layoutSubviews{
-    [super layoutSubviews];
-    self.txtInput.text = @"";
-    self.imgBack.image = [UIImage imageNamed:[NSString stringWithFormat:@"pass%zd.png",self.txtInput.text.length]];
-}
+//-(void)layoutSubviews{
+//    [super layoutSubviews];
+//    self.txtInput.text = @"";
+//    self.imgBack.image = [UIImage imageNamed:[NSString stringWithFormat:@"pass%zd.png",self.txtInput.text.length]];
+//}
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    [self performSelector:@selector(GetBlock) withObject:nil afterDelay:0.01];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self GetBlock];
+    });
+    
     return YES;
 }
 
 -(void)textChange{
-    [self performSelector:@selector(GetBlock) withObject:nil afterDelay:0.01];
-
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self GetBlock];
+    });
 }
 
 -(void)GetBlock{
     if (self.txtInput.text.length >= 6) {
         self.imgBack.image = [UIImage imageNamed:[NSString stringWithFormat:@"pass6.png"]];
-        self.passBlock(self.txtInput.text);
-        [self endEditing:YES];
-        self.txtInput.text = @"";
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            self.passBlock(self.txtInput.text);
+            [self endEditing:YES];
+            self.txtInput.text = @"";
+            self.imgBack.image = [UIImage imageNamed:[NSString stringWithFormat:@"pass0.png"]];
+        });
         return;
+    }else{
+        
+        self.imgBack.image = [UIImage imageNamed:[NSString stringWithFormat:@"pass%zd.png",self.txtInput.text.length]];
     }
-    self.imgBack.image = [UIImage imageNamed:[NSString stringWithFormat:@"pass%zd.png",self.txtInput.text.length]];
 }
 - (void)show{
     [self.txtInput becomeFirstResponder];

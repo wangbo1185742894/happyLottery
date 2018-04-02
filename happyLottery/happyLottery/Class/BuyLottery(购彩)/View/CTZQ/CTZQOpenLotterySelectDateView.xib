@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CTZQOpenLotterySelectDateView">
+            <rect key="frame" x="0.0" y="0.0" width="400" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O91-hg-3c8">
+                    <rect key="frame" x="0.0" y="0.0" width="400" height="600"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <connections>
+                        <action selector="actionBackground:" destination="iN0-l3-epB" eventType="touchUpInside" id="L6r-DA-3gS"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="37c-rx-29w">
+                    <rect key="frame" x="0.0" y="550" width="400" height="50"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rNv-dO-TjP">
+                            <rect key="frame" x="340" y="0.0" width="60" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="60" id="5Ga-VM-x7u"/>
+                            </constraints>
+                            <state key="normal" title="确定"/>
+                            <connections>
+                                <action selector="actionSure:" destination="iN0-l3-epB" eventType="touchUpInside" id="fuO-rS-75A"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cec-5I-yOX">
+                            <rect key="frame" x="0.0" y="0.0" width="60" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="60" id="oQQ-bI-QqY"/>
+                            </constraints>
+                            <state key="normal" title="取消"/>
+                            <connections>
+                                <action selector="actionCancel:" destination="iN0-l3-epB" eventType="touchUpInside" id="aZf-2P-0Sz"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.85490196080000003" green="0.20784313730000001" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="Cec-5I-yOX" firstAttribute="top" secondItem="37c-rx-29w" secondAttribute="top" id="B4z-VA-PVm"/>
+                        <constraint firstItem="rNv-dO-TjP" firstAttribute="top" secondItem="37c-rx-29w" secondAttribute="top" id="Ukw-cR-eiG"/>
+                        <constraint firstAttribute="height" constant="50" id="VCK-nA-4X7"/>
+                        <constraint firstAttribute="bottom" secondItem="Cec-5I-yOX" secondAttribute="bottom" id="VQk-0Q-X0I"/>
+                        <constraint firstItem="Cec-5I-yOX" firstAttribute="leading" secondItem="37c-rx-29w" secondAttribute="leading" id="nRG-Cm-Uf2"/>
+                        <constraint firstAttribute="bottom" secondItem="rNv-dO-TjP" secondAttribute="bottom" id="rQ7-U7-MTs"/>
+                        <constraint firstAttribute="trailing" secondItem="rNv-dO-TjP" secondAttribute="trailing" id="zyD-vf-tfh"/>
+                    </constraints>
+                </view>
+                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2q7-hL-jN2">
+                    <rect key="frame" x="0.0" y="300" width="400" height="250"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="250" id="h7P-6N-AP4"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="dataSource" destination="iN0-l3-epB" id="0JM-aa-oRy"/>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="q7P-lp-60N"/>
+                    </connections>
+                </pickerView>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="2q7-hL-jN2" secondAttribute="trailing" id="AtA-SI-C2L"/>
+                <constraint firstItem="O91-hg-3c8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="KQx-yb-SUQ"/>
+                <constraint firstItem="O91-hg-3c8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="LAW-Gf-16u"/>
+                <constraint firstAttribute="bottom" secondItem="37c-rx-29w" secondAttribute="bottom" id="TOF-On-uIY"/>
+                <constraint firstAttribute="trailing" secondItem="O91-hg-3c8" secondAttribute="trailing" id="aG8-l6-w3f"/>
+                <constraint firstAttribute="bottom" secondItem="O91-hg-3c8" secondAttribute="bottom" id="dX5-jG-w8T"/>
+                <constraint firstItem="2q7-hL-jN2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="g6K-e7-24I"/>
+                <constraint firstItem="37c-rx-29w" firstAttribute="top" secondItem="2q7-hL-jN2" secondAttribute="bottom" id="pPV-wS-iwb"/>
+                <constraint firstAttribute="trailing" secondItem="37c-rx-29w" secondAttribute="trailing" id="pxE-fM-9qe"/>
+                <constraint firstItem="37c-rx-29w" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="y34-eR-cAC"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="picSelectDate" destination="2q7-hL-jN2" id="aDg-ev-JXo"/>
+            </connections>
+        </view>
+    </objects>
+</document>

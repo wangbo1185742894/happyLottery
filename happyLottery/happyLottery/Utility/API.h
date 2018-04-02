@@ -26,17 +26,13 @@
 //#define ServerAddress @"http://192.168.88.244:8086"  //资讯  轮播图 用户图像
 //#define H5BaseAddress @"http://192.168.88.244:18086"
 
-
 //#define H5BaseAddress @"http://192.168.88.193:18086"  //谢青服务
 //#define H5BaseAddress @"http://192.168.88.116:18086"  //史少鹏服务
 
 //杨芳本地
 //#define ServerAddress @"http://192.168.88.109:8086"
 
-
 //外网
-
-
 //244服务
 //#define WSServerURL @"http://192.168.88.244:28000/services%@"
 
@@ -52,10 +48,6 @@
 
 //杨芳
 //#define WSServerURL @"http://192.168.88.109:28000/services%@"
-
-
-
-
 
 #define SUBAPIActivity       @"/activity"
 #define APIopenRedPacket           @"openRedPacket"
@@ -103,8 +95,6 @@
 #define APIresetFeedBackReadStatus   @"resetFeedBackReadStatus"
 #define APIgiveShareScore            @"giveShareScore"
 
-
-
 #define SUBAPIDATA           @"/data"
 #define APISaveClientInfo           @"saveClientInfo"
 #define APIgetJczqMatch             @"getJczqMatch"
@@ -127,23 +117,39 @@
 #define APIgetForecastTotal         @"getForecastTotal"
 #define APIGetVueHttpUrl            @"getVueHttpUrl"
 #define APIupdateRecSchemeRecCount  @"updateRecSchemeRecCount"
+#define APIgetSellIssueList         @"getSellIssueList"
+#define APIlistZcMatchSp            @"listZcMatchSp"
+#define APIListHisIssue             @"listHisIssue"
+#define APIlistHisPageIssue         @"listHisPageIssue"
+#define APIlistJcgjSellItem           @"listJcgjSellItem" //获取冠军选项
+#define APIlistJcgyjSellItem          @"listJcgyjSellItem"//获取冠亚军选项
+#define APIlistJcgjItem               @"listJcgjItem"//获取冠军选项（包含不在售的）
+#define APIlistJcgyjItem              @"listJcgyjItem"//获取冠亚军选项（包含不在售的）
 
 
 
 #define SUBAPISchemeService   @"/scheme"
 #define APIBetLotteryScheme         @"betLotteryScheme"
+#define APIbetChaseScheme           @"betChaseScheme"
 #define APISchemeCashPayment        @"schemeCashPayment"
 #define APISchemeScorePayment       @"schemeScorePayment"
 #define APIGetSchemeRecord          @"getSchemeRecord"
 #define APIGetSchemeRecordBySchemeNo @"getSchemeRecordBySchemeNo"
 #define APIlistByHisGains           @"listByHisGains"
 #define APIbonusOptimize            @"bonusOptimize"
+#define APIlistChaseSchemeForApp    @"listChaseSchemeForApp"
+#define APIgetChaseDetailForApp     @"getChaseDetailForApp"
+#define APIchaseWhenStop            @"chaseWhenStop"
 
 
 #define SUBAPITicketService   @"/ticket"
 #define APIGetJczqTicketOrderDetail @"getJczqTicketOrderDetail"
+#define APIGetDltTicketOrderDetail  @"getDltTicketOrderDetail"
+#define APIgetSfcTicketOrderDetail  @"getSfcTicketOrderDetail"
+#define APIgetRjcTicketOrderDetail  @"getRjcTicketOrderDetail"
 
-
+#define APIGetJcgjTicketOrderDetail   @"getJcgjTicketOrderDetail"//查询冠军订单详情
+#define APIGetJcgyjTicketOrderDetail  @"getJcgyjTicketOrderDetail"//查询冠亚军订单详情
 
 
 #endif /* API_h */
