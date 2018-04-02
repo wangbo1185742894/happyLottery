@@ -55,7 +55,10 @@ typedef enum EarningsType{
 - (void) gotlistJcgyjItem:(NSArray *)infoArray  errorMsg:(NSString *)msg;
 - (void) gotJcgjTicketOrderDetail:(NSDictionary *)infoArray  errorMsg:(NSString *)msg;
 - (void) gotJcgyjTicketOrderDetail:(NSDictionary *)infoArray  errorMsg:(NSString *)msg;
-
+- (void) gotJclqMatch:(NSArray *)infoArray  errorMsg:(NSString *)msg;//篮球在售赛事
+- (void) gotJclqSp:(NSArray *)infoArray  errorMsg:(NSString *)msg;//篮球的sp
+- (void) gotSsqTicketOrderDetail:(NSDictionary *)infoArray  errorMsg:(NSString *)msg;//双色球
+- (void) gotJclqTicketOrderDetail:(NSDictionary *)infoArray  errorMsg:(NSString *)msg;//竞彩篮球
 
 @end
 
@@ -107,6 +110,15 @@ typedef enum EarningsType{
 - (void)listJcgyjItem:(NSDictionary *)infoDic; //获取冠亚军选项（包含不在售的）
 - (void)getJcgjTicketOrderDetail:(NSDictionary *)paraDic;//查询冠军订单详情
 - (void)getJcgyjTicketOrderDetail:(NSDictionary *)paraDic;//查询冠亚军订单详情
+
+#pragma mark 双色球
+- (void)getSsqTicketOrderDetail:(NSDictionary *)paraDic;//查询订单详情(双色球)
+
+#pragma mark 竞彩篮球
+
+- (void)getJclqMatch:(NSDictionary *)infoDic;//获取竞彩篮球在售赛事
+- (void)getJclqSp:(NSDictionary *)infoDic;//获取竞彩篮球的sp
+- (void)getJclqTicketOrderDetail:(NSDictionary *)paraDic;//查询订单详情(竞彩篮球)
 
 @end
 

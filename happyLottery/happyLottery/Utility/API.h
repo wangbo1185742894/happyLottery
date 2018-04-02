@@ -125,8 +125,8 @@
 #define APIlistJcgyjSellItem          @"listJcgyjSellItem"//获取冠亚军选项
 #define APIlistJcgjItem               @"listJcgjItem"//获取冠军选项（包含不在售的）
 #define APIlistJcgyjItem              @"listJcgyjItem"//获取冠亚军选项（包含不在售的）
-
-
+#define APIgetJclqMatch               @"getJclqMatch" //获取竞彩篮球在售赛事
+#define APIgetJclqSp                  @"getJclqSp"  //获取竞彩篮球的sp
 
 #define SUBAPISchemeService   @"/scheme"
 #define APIBetLotteryScheme         @"betLotteryScheme"
@@ -150,6 +150,7 @@
 
 #define APIGetJcgjTicketOrderDetail   @"getJcgjTicketOrderDetail"//查询冠军订单详情
 #define APIGetJcgyjTicketOrderDetail  @"getJcgyjTicketOrderDetail"//查询冠亚军订单详情
-
+#define APIGetSsqTicketOrderDetail    @"getSsqTicketOrderDetail"//查询订单详情(双色球)
+#define APIGetJclqTicketOrderDetail   @"getJclqTicketOrderDetail"// 查询订单详情(竞彩篮球)
 
 #endif /* API_h */
