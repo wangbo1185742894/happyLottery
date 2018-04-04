@@ -209,7 +209,7 @@
                 fixedNumCount = selectNumberCount;
             }else{
                 mutableNumCount = selectNumberCount;
-            }
+            } 
         }
         NSMutableDictionary *sectionBetNumDic = [NSMutableDictionary dictionaryWithCapacity: 2];
         sectionBetNumDic[keyNumberDanHao] = [NSArray arrayWithArray: lotteryXH.numbersDanHao];

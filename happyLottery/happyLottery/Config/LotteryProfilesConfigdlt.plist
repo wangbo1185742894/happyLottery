@@ -33,7 +33,7 @@
 					<key>Label</key>
 					<string>前区</string>
 					<key>NormalColor</key>
-					<string>db3c2c</string>
+					<string>fe3a51</string>
 					<key>SelectedColor</key>
 					<string>ffffff</string>
 					<key>NormalBackground</key>
@@ -65,7 +65,7 @@
 					<key>Label</key>
 					<string>后区</string>
 					<key>NormalColor</key>
-					<string>177edd</string>
+					<string>3189fd</string>
 					<key>SelectedColor</key>
 					<string>ffffff</string>
 					<key>NormalBackground</key>
@@ -2797,7 +2797,7 @@
 			<key>ProfileID</key>
 			<string>1</string>
 			<key>Desc</key>
-			<string>连续选中号码两次，为胆，胆球最多5个</string>
+			<string>点击一下为普通选中，点击两下为设胆</string>
 			<key>Amount</key>
 			<string>0</string>
 			<key>Title</key>
@@ -2818,9 +2818,9 @@
 					<key>NeedLabel</key>
 					<true/>
 					<key>Label</key>
-					<string>前区</string>
+					<string>红球区</string>
 					<key>NormalColor</key>
-					<string>db3c2c</string>
+					<string>fe3a51</string>
 					<key>SelectedColor</key>
 					<string>ffffff</string>
 					<key>NormalBackground</key>
@@ -2850,9 +2850,9 @@
 					<key>NeedLabel</key>
 					<true/>
 					<key>Label</key>
-					<string>后区</string>
+					<string>篮球区</string>
 					<key>NormalColor</key>
-					<string>177edd</string>
+					<string>3189fd</string>
 					<key>SelectedColor</key>
 					<string>ffffff</string>
 					<key>NormalBackground</key>

@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MGLabel.h"
 
 @class LotteryXHSection;
 @interface XHSectionTitleView : UIView {
+    UIButton *roundBtn;//圆点添加
     UILabel *labelTitle;
-    UILabel *labelRuleDesc;
-    UILabel *labelSelectedDesc;
+    MGLabel *labelRuleDesc;
+    MGLabel *labelSelectedDesc;
 }
 
 - (void) initWithLotteryXH: (LotteryXHSection *)lotteryXH;

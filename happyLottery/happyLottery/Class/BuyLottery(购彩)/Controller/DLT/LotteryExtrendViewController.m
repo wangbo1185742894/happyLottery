@@ -20,6 +20,9 @@
 #define dltFrontSectionBaseNumMaxValue   35
 #define dltAfterSectionBaseNumMaxValue   12
 
+#define ssqFrontSectionBaseNumMaxValue   33
+#define ssqAfterSectionBaseNumMaxValue   16
+
 #define ANIMATIONTIME 0.3
 
 //RGBCOLOR(253, 139, 82);出现次数字体颜色   254 241 235
@@ -154,22 +157,18 @@
         [timeCountDownView addSubview:timeView];
     }
     [timeView startTimeCountdown:_lottery.currentRound];
-    if ([_lottery.identifier isEqualToString:@"DLT"]||[_lottery.identifier isEqualToString:@"SSQ"]) {
+    if ([_lottery.identifier isEqualToString:@"DLT"]) {
         
         dltSectionType = DltSectionTypeFront;
         baseNumMaxValue = dltFrontSectionBaseNumMaxValue;
         [self.view bringSubviewToFront:dltHeadView];
         baseViewVericalConstraint.constant = 99;
-    }else if ([_lottery.identifier isEqualToString:@"X115"]){
-        
-//        baseNumMaxValue = x115BaseNumMaxValue;
-//        titleView = [[LotteryTitleView alloc] initWithFrame: CGRectMake(0, 0, 180, 44)];
-//        titleView.delegate = self;
-//        [titleView updateWithLottery: _lottery];
-//        self.navigationItem.titleView = titleView;
-//        x115SectionType = X115SectionTypeWan;
-//        self.lottery.activeProfileForExtrend = _lottery.activeProfile;
-//        [self userDidSelectLotteryProfile];
+    }
+    else if ([_lottery.identifier isEqualToString:@"SSQ"]){
+        dltSectionType = DltSectionTypeFront;
+        baseNumMaxValue = ssqFrontSectionBaseNumMaxValue;
+        [self.view bringSubviewToFront:dltHeadView];
+        baseViewVericalConstraint.constant = 99;
     }
 }
 
@@ -286,7 +285,12 @@
             flagLbHoriSpaceConstraint.constant = 0;
             [self.view layoutIfNeeded];
         }];
-        baseNumMaxValue = dltFrontSectionBaseNumMaxValue;
+        if ([_lottery.identifier isEqualToString:@"SSQ"]) {
+             baseNumMaxValue = ssqFrontSectionBaseNumMaxValue;
+        } else {
+             baseNumMaxValue = dltFrontSectionBaseNumMaxValue;
+        }
+       
         dltSectionType  = DltSectionTypeFront;
         
     }else{
@@ -296,7 +300,12 @@
             flagLbHoriSpaceConstraint.constant = CGRectGetWidth(button.frame);
             [self.view layoutIfNeeded];
         }];
-        baseNumMaxValue = dltAfterSectionBaseNumMaxValue;
+        if ([_lottery.identifier isEqualToString:@"SSQ"]) {
+            baseNumMaxValue = ssqAfterSectionBaseNumMaxValue;
+        } else {
+            baseNumMaxValue = dltAfterSectionBaseNumMaxValue;
+        }
+        
         dltSectionType  = DltSectionTypeAfter;
     }
     [self refreshNumExtrendView];
