@@ -221,7 +221,7 @@
 - (void) showPlayMethod{
     //2  dlt ,0 x115,1  jczq;
      NSArray *infoArr = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"LotteryInstructionConfig" ofType: @"plist"]];
-    NSDictionary *infoDic = infoArr[2];;
+    NSDictionary *infoDic = infoArr[1];;
    
     LotteryInstructionDetailViewController *detailVC = [[LotteryInstructionDetailViewController alloc] initWithNibName: @"LotteryInstructionDetailViewController" bundle: nil];
     detailVC.lotteryDetailDic = infoDic;
@@ -752,19 +752,22 @@
     
     [betInfoString appendAttributedString: [[NSAttributedString alloc] initWithString: TextTouZhuSummaryTotal attributes: textAttrsDictionary]];
     
-    NSMutableDictionary *numberAttrsDictionary = [NSMutableDictionary dictionaryWithCapacity: 2];
-    numberAttrsDictionary[NSForegroundColorAttributeName] = SystemGreen;
+    NSMutableDictionary *countNumberAttrsDictionary = [NSMutableDictionary dictionaryWithCapacity: 2];
+    countNumberAttrsDictionary[NSForegroundColorAttributeName] = SystemGreen;
     
     //bet count string
     NSString *betCountStr = [NSString stringWithFormat: @"%d", [lotteryBet getBetCount]];
-    [betInfoString appendAttributedString: [[NSAttributedString alloc] initWithString: betCountStr attributes: numberAttrsDictionary]];
+    [betInfoString appendAttributedString: [[NSAttributedString alloc] initWithString: betCountStr attributes: countNumberAttrsDictionary]];
     
     //bet unit string
     [betInfoString appendAttributedString: [[NSAttributedString alloc] initWithString: [NSString stringWithFormat: @"%@,", TextTouZhuSummaryBetUnit] attributes: textAttrsDictionary]];
     
     //bet cost string
+    NSMutableDictionary *costNumberAttrsDictionary = [NSMutableDictionary dictionaryWithCapacity: 2];
+    costNumberAttrsDictionary[NSForegroundColorAttributeName] = SystemRed;
+    
     NSString *betCostStr = [NSString stringWithFormat: @"%d", [lotteryBet getBetCost]];
-    [betInfoString appendAttributedString: [[NSAttributedString alloc] initWithString: betCostStr attributes: numberAttrsDictionary]];
+    [betInfoString appendAttributedString: [[NSAttributedString alloc] initWithString: betCostStr attributes: costNumberAttrsDictionary]];
     
     //bet unit string
     [betInfoString appendAttributedString: [[NSAttributedString alloc] initWithString: TextTouZhuSummaryCurrencyUnit attributes: textAttrsDictionary]];

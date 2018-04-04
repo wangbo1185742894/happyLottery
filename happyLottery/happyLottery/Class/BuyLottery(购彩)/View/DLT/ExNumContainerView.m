@@ -42,10 +42,15 @@
     }else{
         imageName = @"redBall";
     }
+    if ([_lottery.identifier isEqualToString:@"SSQ"] && _dltSectionType == DltSectionTypeAfter) {
+        imageName = @"blueBall";
+    }else{
+        imageName = @"redBall";
+    }
     NSUInteger sourceCount = _source.count;
     
     NSMutableArray * tempSourceArray = [NSMutableArray arrayWithCapacity:_source.count];
-    if ([_lottery.identifier isEqualToString:@"DLT"]) {
+    if ([_lottery.identifier isEqualToString:@"DLT"]||[_lottery.identifier isEqualToString:@"SSQ"]) {
         
         [_source enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             LotteryRound * round = (LotteryRound *)obj;

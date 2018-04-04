@@ -23,14 +23,20 @@
 
 - (void) initWithLotteryXH: (LotteryXHSection*) lotteryXH {
     CGFloat curX = 0;
+    //button
+    roundBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [roundBtn setBackgroundImage:[UIImage imageNamed:lotteryXH.selectedBackground] forState:UIControlStateNormal];
+    [roundBtn setFrame: CGRectMake(curX,(self.frame.size.height-10)/2, 10, 10)];
+    [self addSubview:roundBtn];
+    curX += roundBtn.frame.size.width+3;
     //title label
-    NSString *titleText = [NSString stringWithFormat: @"%@: ", lotteryXH.label];
+    NSString *titleText = [NSString stringWithFormat: @"%@, ", lotteryXH.label];
+    
     CGSize titleTextSize = MB_TEXTSIZE(titleText, TextFont);
     labelTitle = [[UILabel alloc] initWithFrame: CGRectMake(curX, 0, titleTextSize.width, self.bounds.size.height)];
     labelTitle.backgroundColor = [UIColor clearColor];
     labelTitle.font = TextFont;
     labelTitle.textColor = TEXTGRAYCOLOR;
-//    labelTitle.textColor = [Utility colorFromHexString: lotteryXH.normalColor];
    
     if ([[titleText substringToIndex:2] isEqualToString:@"拖码"]) {
         UIButton *allSelect = [self creatButton:CGRectMake(220, 0, 50, self.bounds.size.height) andTitle:@"全选"];
@@ -46,22 +52,17 @@
     //rule desc label
     NSString *descText;
     
-    if ([lotteryXH.ruleDesc isEqualToString:@"乐选"]) {
-        descText = @"选择1个号码";
-    }else  if ([lotteryXH.ruleDesc isEqualToString:@"11选5任选8"]) {
-        descText = @"选8个号";
-    }else{
-        descText =[NSString stringWithFormat: TextRuelDesc, [lotteryXH.minNumCount intValue]];
-    }
-    
-
+    descText =[NSString stringWithFormat: TextRuelDesc, [lotteryXH.minNumCount intValue]];
     CGSize descTextSize = MB_TEXTSIZE(descText, TextFont);
-    labelRuleDesc = [[UILabel alloc] initWithFrame: CGRectMake(curX, 0, descTextSize.width, self.bounds.size.height)];
+    labelRuleDesc = [[MGLabel alloc] initWithFrame: CGRectMake(curX, 0, descTextSize.width, self.bounds.size.height)];
     labelRuleDesc.backgroundColor = [UIColor clearColor];
-//    labelRuleDesc.textColor = MainColor;
+
     labelRuleDesc.textColor = TEXTGRAYCOLOR;
     labelRuleDesc.font = TextFont;
     labelRuleDesc.text = descText;
+    labelRuleDesc.keyWord = [NSString stringWithFormat:@"%@个",[lotteryXH.minNumCount stringValue]];
+    labelRuleDesc.keyWordColor = [Utility colorFromHexString:lotteryXH.normalColor];
+    
     [self addSubview: labelRuleDesc];
     curX = CGRectGetMaxX(labelRuleDesc.frame);
     
@@ -69,17 +70,21 @@
     //selected desc label
     NSString *numberText = [NSString stringWithFormat: TextSelectNumber, (unsigned long)0];
     CGFloat leftOverWidth = self.bounds.size.width - curX;
-    labelSelectedDesc = [[UILabel alloc] initWithFrame: CGRectMake(curX, 0, leftOverWidth, self.bounds.size.height)];
+    labelSelectedDesc = [[MGLabel alloc] initWithFrame: CGRectMake(curX, 0, leftOverWidth, self.bounds.size.height)];
     [labelSelectedDesc setBackgroundColor: [UIColor clearColor]];
     labelSelectedDesc.font = TextFont;
     labelSelectedDesc.text = numberText;
 //    labelSelectedDesc.textColor = MainColor;
     labelSelectedDesc.textColor = TEXTGRAYCOLOR;
+    labelSelectedDesc.keyWord = @"0个";
+    labelSelectedDesc.keyWordColor = [Utility colorFromHexString:lotteryXH.normalColor];
+    
     [self addSubview: labelSelectedDesc];
 }
 
 - (void) updateSelectedNumber: (NSUInteger) selectedNumberCount {
     labelSelectedDesc.text = [NSString stringWithFormat: TextSelectNumber, (unsigned long)selectedNumberCount];
+    labelSelectedDesc.keyWord = [NSString stringWithFormat:@"%ld个",selectedNumberCount];
 }
 
 -(UIButton *)creatButton:(CGRect)bt_frame andTitle:(NSString *)actionButtonText{

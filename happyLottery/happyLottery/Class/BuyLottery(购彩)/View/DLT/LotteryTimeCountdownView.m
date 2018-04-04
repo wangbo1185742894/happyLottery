@@ -80,6 +80,7 @@
     }
     return updataTimer;
 }
+
 - (void)startTimeCountdown:(LotteryRound *)round{
     self.curRound = round;
     if (!round) {

@@ -520,10 +520,10 @@
                     <rect key="frame" x="0.0" y="64" width="320" height="66"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BCN-8c-JOA">
-                            <rect key="frame" x="115.5" y="18" width="90" height="30"/>
+                            <rect key="frame" x="115" y="18" width="90" height="30"/>
                             <constraints>
+                                <constraint firstAttribute="height" constant="30" id="4YA-SE-FoI"/>
                                 <constraint firstAttribute="width" constant="90" id="8Ma-BE-XWo"/>
-                                <constraint firstAttribute="height" constant="30" id="W2L-iV-axn"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="机选1注" image="friendshake.png" backgroundImage="machine-selection.png"/>
@@ -531,23 +531,11 @@
                                 <action selector="actionAddRandomBet:" destination="-1" eventType="touchUpInside" id="syL-Df-ZAg"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bDP-Ba-SKp">
-                            <rect key="frame" x="10.5" y="18" width="90" height="30"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="90" id="Rkx-z2-O6m"/>
-                                <constraint firstAttribute="height" constant="30" id="pmi-mW-0Pg"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <state key="normal" title="再买1注" image="encore.png" backgroundImage="machine-selection.png"/>
-                            <connections>
-                                <action selector="actionGoonBuy:" destination="-1" eventType="touchUpInside" id="HId-fa-3YE"/>
-                            </connections>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iDf-9h-BjA">
-                            <rect key="frame" x="220.5" y="18" width="90" height="30"/>
+                            <rect key="frame" x="221" y="18" width="90" height="30"/>
                             <constraints>
+                                <constraint firstAttribute="height" constant="30" id="M2O-hm-lkY"/>
                                 <constraint firstAttribute="width" constant="90" id="gZF-QR-Q9Z"/>
-                                <constraint firstAttribute="height" constant="30" id="uWf-h8-5W8"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="机选5注" image="friendshake.png" backgroundImage="machine-selection.png"/>
@@ -555,15 +543,27 @@
                                 <action selector="actionRandomFive:" destination="-1" eventType="touchUpInside" id="Uau-Mh-dGn"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bDP-Ba-SKp">
+                            <rect key="frame" x="10.5" y="18" width="90" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="90" id="Rkx-z2-O6m"/>
+                                <constraint firstAttribute="height" constant="30" id="vMH-6e-rdw"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="再买1注" image="encore.png" backgroundImage="machine-selection.png"/>
+                            <connections>
+                                <action selector="actionGoonBuy:" destination="-1" eventType="touchUpInside" id="HId-fa-3YE"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="66" id="DNI-Z1-3pz"/>
                         <constraint firstItem="iDf-9h-BjA" firstAttribute="top" secondItem="bDP-Ba-SKp" secondAttribute="top" id="JVt-RC-jva"/>
-                        <constraint firstItem="iDf-9h-BjA" firstAttribute="leading" secondItem="BCN-8c-JOA" secondAttribute="trailing" constant="15" id="S1Q-AM-TOf"/>
                         <constraint firstItem="BCN-8c-JOA" firstAttribute="top" secondItem="bDP-Ba-SKp" secondAttribute="top" id="VyY-GO-9jT"/>
+                        <constraint firstItem="bDP-Ba-SKp" firstAttribute="leading" secondItem="jxg-eB-pEq" secondAttribute="leading" constant="10.5" id="e1s-2c-SJd"/>
                         <constraint firstItem="BCN-8c-JOA" firstAttribute="centerX" secondItem="jxg-eB-pEq" secondAttribute="centerX" id="gsq-BS-rA9"/>
-                        <constraint firstItem="BCN-8c-JOA" firstAttribute="leading" secondItem="bDP-Ba-SKp" secondAttribute="trailing" constant="15" id="jan-dd-rwu"/>
+                        <constraint firstAttribute="trailing" secondItem="iDf-9h-BjA" secondAttribute="trailing" constant="9.5" id="qtD-yl-d5l"/>
                         <constraint firstItem="BCN-8c-JOA" firstAttribute="centerY" secondItem="jxg-eB-pEq" secondAttribute="centerY" id="tax-XE-2LN"/>
                     </constraints>
                 </view>
