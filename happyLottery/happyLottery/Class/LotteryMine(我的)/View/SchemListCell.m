@@ -50,7 +50,7 @@
     labSchemeLottery.text = [self getLotteryByCode:model.lottery];
     imgLotteryIcon.image = [UIImage imageNamed:model.lotteryIcon];
     
-    if ([model.lottery isEqualToString:@"JCGJ"]||[model.lotteryIcon isEqualToString:@"JCGYJ"]||[model.lottery isEqualToString:@"DLT"]) {
+    if ([model.lottery isEqualToString:@"JCGJ"]||[model.lotteryIcon isEqualToString:@"JCGYJ"]||[model.lottery isEqualToString:@"DLT"]||[model.lottery isEqualToString:@"SSQ"]) {
         imagIconHeight.constant = 39;
         imageIconWidth.constant = 39;
     }
@@ -85,6 +85,8 @@
         return @"冠军";
     }else if([code isEqualToString:@"JCGYJ"]){
         return @"冠亚军";
+    }else if([code isEqualToString:@"SSQ"]){
+        return @"双色球";
     }
     return @"彩票";
 }

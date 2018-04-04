@@ -192,6 +192,10 @@
          lotteryTypeLb.text = @"冠亚军";
          lotteryIconImgV.image = [UIImage imageNamed:@"Championship.png"];
     }
+    if ([order.lotteryType isEqualToString:@"SSQ"]){
+        lotteryTypeLb.text = @"双色球";
+        lotteryIconImgV.image = [UIImage imageNamed:@"ssq_logo.png"];
+    }
     //    if([order.winningStatus intValue] > 2){
     //        winningStateLb.textColor = [UIColor redColor];
     //    }else{

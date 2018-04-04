@@ -15,6 +15,7 @@
 #import "AppDelegate.h"
 #import "LotteryPhaseInfoView.h"
 #import "DLTPlayViewController.h"
+#import "SSQPlayViewController.h"
 #import "DltOpenResult.h"
 
 #define CellH 90
@@ -313,7 +314,15 @@
 //        [lotteryMan getLotteryCurRoundInfo:_lottery];
         
         
-    }else{
+    }else if ([self.lottery.identifier isEqualToString:@"SSQ"]){
+        SSQPlayViewController *playVC = [[SSQPlayViewController alloc] initWithNibName: @"DLTPlayViewController" bundle: nil];
+        playVC.hidesBottomBarWhenPushed = YES;
+        //    _lottery.currentRound = round;
+        playVC.lottery = _lottery;
+        [self.navigationController pushViewController: playVC animated: YES];
+        
+    }
+    else{
         DLTPlayViewController *playVC = [[DLTPlayViewController alloc] initWithNibName: @"DLTPlayViewController" bundle: nil];
         playVC.hidesBottomBarWhenPushed = YES;
         //    _lottery.currentRound = round;

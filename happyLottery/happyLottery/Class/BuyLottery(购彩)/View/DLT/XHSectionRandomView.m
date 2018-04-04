@@ -28,7 +28,7 @@
     CGSize buttonTextSize;
     CGFloat buttonWidth;
     CGRect bt_frame;
-    if ([_lotteryIdenty isEqualToString:@"DLT"]) {
+    if ([_lotteryIdenty isEqualToString:@"DLT"]||[_lotteryIdenty isEqualToString:@"SSQ"]) {
         //zwl 16-01-18
         if([lotteryXHSection.sectionID isEqualToString:@"1"])
         {

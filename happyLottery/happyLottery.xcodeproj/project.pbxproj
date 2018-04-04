@@ -460,7 +460,6 @@
 		2D739D071FEB853500264044 /* btnbackimgNomal@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D739D051FEB853400264044 /* btnbackimgNomal@3x.png */; };
 		2D739D091FEB86A500264044 /* jczqshowallback@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D739D081FEB86A400264044 /* jczqshowallback@3x.png */; };
 		2D7B12C5204D3A250035AE89 /* DLTPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B12C2204D3A230035AE89 /* DLTPlayViewController.m */; };
-		2D7B12C6204D3A250035AE89 /* DLTPlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D7B12C3204D3A240035AE89 /* DLTPlayViewController.xib */; };
 		2D7B12C9204D3AB60035AE89 /* LotteryTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B12C7204D3AB50035AE89 /* LotteryTransaction.m */; };
 		2D7B12CC204D3B200035AE89 /* LotteryBet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B12CB204D3B200035AE89 /* LotteryBet.m */; };
 		2D7B12CF204D3B320035AE89 /* NumberSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B12CD204D3B310035AE89 /* NumberSelectView.m */; };
@@ -654,14 +653,10 @@
 		2D9847B61FF5EC9500038690 /* WBYCMatchDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D9847B41FF5EC9500038690 /* WBYCMatchDetailViewController.xib */; };
 		2D9847B71FF5EC9500038690 /* WBYCMatchDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9847B51FF5EC9500038690 /* WBYCMatchDetailViewController.m */; };
 		2D9847BA1FF5ED3100038690 /* JCYCTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9847B81FF5ED3000038690 /* JCYCTransaction.m */; };
-		2DA39EBB205238E900A03FD1 /* ZhuiHaoInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DA39EB8205238E700A03FD1 /* ZhuiHaoInfoViewController.xib */; };
-		2DA39EBC205238E900A03FD1 /* ZhuiHaoInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA39EBA205238E800A03FD1 /* ZhuiHaoInfoViewController.m */; };
 		2DA39EC02052391000A03FD1 /* OrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DA39EBD2052390F00A03FD1 /* OrderTableViewCell.xib */; };
 		2DA39EC12052391000A03FD1 /* OrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA39EBE2052390F00A03FD1 /* OrderTableViewCell.m */; };
 		2DA39EC42052393600A03FD1 /* OrderLotteryCateChooseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA39EC32052393600A03FD1 /* OrderLotteryCateChooseView.m */; };
 		2DA39EC72052395D00A03FD1 /* OrderDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA39EC62052395D00A03FD1 /* OrderDatePickerView.m */; };
-		2DA39ECB2052398B00A03FD1 /* ZHDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA39EC92052398A00A03FD1 /* ZHDetailViewController.m */; };
-		2DA39ECC2052398B00A03FD1 /* ZHDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DA39ECA2052398A00A03FD1 /* ZHDetailViewController.xib */; };
 		2DA39ED220523A2E00A03FD1 /* OrderBetsListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA39ED120523A2D00A03FD1 /* OrderBetsListView.m */; };
 		2DA39ED520523A8A00A03FD1 /* WinInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA39ED320523A8900A03FD1 /* WinInfoView.m */; };
 		2DA39ED920523AAB00A03FD1 /* ZHTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA39ED720523AAA00A03FD1 /* ZHTableViewCell.m */; };
@@ -944,6 +939,15 @@
 		F95BC7D220172AF7006D6243 /* redpacket_open@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F95BC7D020172AF6006D6243 /* redpacket_open@2x.png */; };
 		F95BC7D320172AF7006D6243 /* redpacket_open@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F95BC7D120172AF6006D6243 /* redpacket_open@3x.png */; };
 		F95C7E70206E025D005990F5 /* Helvetica-Condensed-Black-Se.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F95C7E6F206E025D005990F5 /* Helvetica-Condensed-Black-Se.ttf */; };
+		F95C7EAD2071D5CC005990F5 /* ZhuiHaoInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F95C7EAB2071D5CB005990F5 /* ZhuiHaoInfoViewController.m */; };
+		F95C7EAE2071D5CC005990F5 /* ZhuiHaoInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F95C7EAC2071D5CB005990F5 /* ZhuiHaoInfoViewController.xib */; };
+		F95C7EB22071D5ED005990F5 /* DLTPlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F95C7EB12071D5ED005990F5 /* DLTPlayViewController.xib */; };
+		F95C7EEE2071DA89005990F5 /* SSQPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F95C7EEB2071DA88005990F5 /* SSQPlayViewController.m */; };
+		F95C7EEF2071DA89005990F5 /* SSQPlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F95C7EED2071DA89005990F5 /* SSQPlayViewController.xib */; };
+		F95C7EF32071DAD5005990F5 /* SSQTouZhuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F95C7EF12071DAD4005990F5 /* SSQTouZhuViewController.xib */; };
+		F95C7EF42071DAD5005990F5 /* SSQTouZhuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F95C7EF22071DAD4005990F5 /* SSQTouZhuViewController.m */; };
+		F95C7FEF2071F178005990F5 /* ZHDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F95C7FEC2071F177005990F5 /* ZHDetailViewController.m */; };
+		F95C7FF02071F178005990F5 /* ZHDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F95C7FED2071F178005990F5 /* ZHDetailViewController.xib */; };
 		F9632F4B200C86EC00F69D23 /* LYJHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9632F4A200C86EC00F69D23 /* LYJHeaderView.m */; };
 		F9632F4E200C8C9800F69D23 /* arrowup@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9632F4C200C8C9700F69D23 /* arrowup@3x.png */; };
 		F9632F4F200C8C9800F69D23 /* arrowup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9632F4D200C8C9800F69D23 /* arrowup@2x.png */; };
@@ -966,6 +970,8 @@
 		F98A603120638EA9008C3132 /* GYJSchemeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F98A602E20638EA8008C3132 /* GYJSchemeViewCell.m */; };
 		F98A603220638EA9008C3132 /* GYJSchemeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F98A602F20638EA8008C3132 /* GYJSchemeViewCell.xib */; };
 		F98A603B206395EB008C3132 /* LotteryScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = F98A603A206395EA008C3132 /* LotteryScheme.m */; };
+		F98C3EE62071FAD400C1DBF8 /* user@2x.png in Sources */ = {isa = PBXBuildFile; fileRef = F924BA8E1FE252CE00830BF4 /* user@2x.png */; };
+		F98C3EE82071FDB400C1DBF8 /* ssq_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = F98C3EE72071FDB300C1DBF8 /* ssq_logo.png */; };
 		F999275D2003223000023F8F /* bj_overdue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F99927572003222E00023F8F /* bj_overdue@2x.png */; };
 		F999275E2003223000023F8F /* bj_overdue@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F99927582003222E00023F8F /* bj_overdue@3x.png */; };
 		F9992769200335DC00023F8F /* guanbi@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9992765200335DB00023F8F /* guanbi@3x.png */; };
@@ -1778,7 +1784,6 @@
 		2D739D051FEB853400264044 /* btnbackimgNomal@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnbackimgNomal@3x.png"; sourceTree = "<group>"; };
 		2D739D081FEB86A400264044 /* jczqshowallback@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jczqshowallback@3x.png"; sourceTree = "<group>"; };
 		2D7B12C2204D3A230035AE89 /* DLTPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLTPlayViewController.m; sourceTree = "<group>"; };
-		2D7B12C3204D3A240035AE89 /* DLTPlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DLTPlayViewController.xib; sourceTree = "<group>"; };
 		2D7B12C4204D3A240035AE89 /* DLTPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLTPlayViewController.h; sourceTree = "<group>"; };
 		2D7B12C7204D3AB50035AE89 /* LotteryTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LotteryTransaction.m; sourceTree = "<group>"; };
 		2D7B12C8204D3AB60035AE89 /* LotteryTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LotteryTransaction.h; sourceTree = "<group>"; };
@@ -2063,9 +2068,6 @@
 		2D9847B51FF5EC9500038690 /* WBYCMatchDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBYCMatchDetailViewController.m; sourceTree = "<group>"; };
 		2D9847B81FF5ED3000038690 /* JCYCTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCYCTransaction.m; sourceTree = "<group>"; };
 		2D9847B91FF5ED3100038690 /* JCYCTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCYCTransaction.h; sourceTree = "<group>"; };
-		2DA39EB8205238E700A03FD1 /* ZhuiHaoInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZhuiHaoInfoViewController.xib; sourceTree = "<group>"; };
-		2DA39EB9205238E800A03FD1 /* ZhuiHaoInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhuiHaoInfoViewController.h; sourceTree = "<group>"; };
-		2DA39EBA205238E800A03FD1 /* ZhuiHaoInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhuiHaoInfoViewController.m; sourceTree = "<group>"; };
 		2DA39EBD2052390F00A03FD1 /* OrderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderTableViewCell.xib; sourceTree = "<group>"; };
 		2DA39EBE2052390F00A03FD1 /* OrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderTableViewCell.m; sourceTree = "<group>"; };
 		2DA39EBF2052390F00A03FD1 /* OrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderTableViewCell.h; sourceTree = "<group>"; };
@@ -2073,9 +2075,6 @@
 		2DA39EC32052393600A03FD1 /* OrderLotteryCateChooseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderLotteryCateChooseView.m; sourceTree = "<group>"; };
 		2DA39EC52052395C00A03FD1 /* OrderDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDatePickerView.h; sourceTree = "<group>"; };
 		2DA39EC62052395D00A03FD1 /* OrderDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDatePickerView.m; sourceTree = "<group>"; };
-		2DA39EC82052398900A03FD1 /* ZHDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHDetailViewController.h; sourceTree = "<group>"; };
-		2DA39EC92052398A00A03FD1 /* ZHDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHDetailViewController.m; sourceTree = "<group>"; };
-		2DA39ECA2052398A00A03FD1 /* ZHDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZHDetailViewController.xib; sourceTree = "<group>"; };
 		2DA39ED020523A2D00A03FD1 /* OrderBetsListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderBetsListView.h; sourceTree = "<group>"; };
 		2DA39ED120523A2D00A03FD1 /* OrderBetsListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderBetsListView.m; sourceTree = "<group>"; };
 		2DA39ED320523A8900A03FD1 /* WinInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WinInfoView.m; sourceTree = "<group>"; };
@@ -2471,6 +2470,19 @@
 		F95BC7D020172AF6006D6243 /* redpacket_open@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redpacket_open@2x.png"; sourceTree = "<group>"; };
 		F95BC7D120172AF6006D6243 /* redpacket_open@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redpacket_open@3x.png"; sourceTree = "<group>"; };
 		F95C7E6F206E025D005990F5 /* Helvetica-Condensed-Black-Se.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica-Condensed-Black-Se.ttf"; sourceTree = "<group>"; };
+		F95C7EAA2071D5CA005990F5 /* ZhuiHaoInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhuiHaoInfoViewController.h; sourceTree = "<group>"; };
+		F95C7EAB2071D5CB005990F5 /* ZhuiHaoInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhuiHaoInfoViewController.m; sourceTree = "<group>"; };
+		F95C7EAC2071D5CB005990F5 /* ZhuiHaoInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZhuiHaoInfoViewController.xib; sourceTree = "<group>"; };
+		F95C7EB12071D5ED005990F5 /* DLTPlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DLTPlayViewController.xib; sourceTree = "<group>"; };
+		F95C7EEB2071DA88005990F5 /* SSQPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSQPlayViewController.m; sourceTree = "<group>"; };
+		F95C7EEC2071DA89005990F5 /* SSQPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSQPlayViewController.h; sourceTree = "<group>"; };
+		F95C7EED2071DA89005990F5 /* SSQPlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SSQPlayViewController.xib; sourceTree = "<group>"; };
+		F95C7EF02071DAC5005990F5 /* SSQTouZhuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSQTouZhuViewController.h; sourceTree = "<group>"; };
+		F95C7EF12071DAD4005990F5 /* SSQTouZhuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SSQTouZhuViewController.xib; sourceTree = "<group>"; };
+		F95C7EF22071DAD4005990F5 /* SSQTouZhuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSQTouZhuViewController.m; sourceTree = "<group>"; };
+		F95C7FEC2071F177005990F5 /* ZHDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHDetailViewController.m; sourceTree = "<group>"; };
+		F95C7FED2071F178005990F5 /* ZHDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZHDetailViewController.xib; sourceTree = "<group>"; };
+		F95C7FEE2071F178005990F5 /* ZHDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHDetailViewController.h; sourceTree = "<group>"; };
 		F9632F49200C86EC00F69D23 /* LYJHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LYJHeaderView.h; sourceTree = "<group>"; };
 		F9632F4A200C86EC00F69D23 /* LYJHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LYJHeaderView.m; sourceTree = "<group>"; };
 		F9632F4C200C8C9700F69D23 /* arrowup@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrowup@3x.png"; sourceTree = "<group>"; };
@@ -2499,6 +2511,7 @@
 		F98A603020638EA8008C3132 /* GYJSchemeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYJSchemeViewCell.h; sourceTree = "<group>"; };
 		F98A6039206395EA008C3132 /* LotteryScheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LotteryScheme.h; sourceTree = "<group>"; };
 		F98A603A206395EA008C3132 /* LotteryScheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LotteryScheme.m; sourceTree = "<group>"; };
+		F98C3EE72071FDB300C1DBF8 /* ssq_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ssq_logo.png; sourceTree = "<group>"; };
 		F99927572003222E00023F8F /* bj_overdue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bj_overdue@2x.png"; sourceTree = "<group>"; };
 		F99927582003222E00023F8F /* bj_overdue@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bj_overdue@3x.png"; sourceTree = "<group>"; };
 		F9992765200335DB00023F8F /* guanbi@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guanbi@3x.png"; sourceTree = "<group>"; };
@@ -3338,16 +3351,22 @@
 		2D7B1292204D37BD0035AE89 /* DLT */ = {
 			isa = PBXGroup;
 			children = (
-				2DA39EC82052398900A03FD1 /* ZHDetailViewController.h */,
-				2DA39EC92052398A00A03FD1 /* ZHDetailViewController.m */,
-				2DA39ECA2052398A00A03FD1 /* ZHDetailViewController.xib */,
+				F95C7FEE2071F178005990F5 /* ZHDetailViewController.h */,
+				F95C7FEC2071F177005990F5 /* ZHDetailViewController.m */,
+				F95C7FED2071F178005990F5 /* ZHDetailViewController.xib */,
+				F95C7EF02071DAC5005990F5 /* SSQTouZhuViewController.h */,
+				F95C7EF22071DAD4005990F5 /* SSQTouZhuViewController.m */,
+				F95C7EF12071DAD4005990F5 /* SSQTouZhuViewController.xib */,
+				F95C7EEC2071DA89005990F5 /* SSQPlayViewController.h */,
+				F95C7EEB2071DA88005990F5 /* SSQPlayViewController.m */,
+				F95C7EED2071DA89005990F5 /* SSQPlayViewController.xib */,
 				2DA39EC52052395C00A03FD1 /* OrderDatePickerView.h */,
 				2DA39EC62052395D00A03FD1 /* OrderDatePickerView.m */,
 				2DA39EC22052393500A03FD1 /* OrderLotteryCateChooseView.h */,
 				2DA39EC32052393600A03FD1 /* OrderLotteryCateChooseView.m */,
-				2DA39EB9205238E800A03FD1 /* ZhuiHaoInfoViewController.h */,
-				2DA39EBA205238E800A03FD1 /* ZhuiHaoInfoViewController.m */,
-				2DA39EB8205238E700A03FD1 /* ZhuiHaoInfoViewController.xib */,
+				F95C7EAA2071D5CA005990F5 /* ZhuiHaoInfoViewController.h */,
+				F95C7EAB2071D5CB005990F5 /* ZhuiHaoInfoViewController.m */,
+				F95C7EAC2071D5CB005990F5 /* ZhuiHaoInfoViewController.xib */,
 				2D7B1349204E2A320035AE89 /* DLTTouZhuViewController.h */,
 				2D7B134A204E2A320035AE89 /* DLTTouZhuViewController.m */,
 				2D7B1348204E2A310035AE89 /* DLTTouZhuViewController.xib */,
@@ -3368,7 +3387,7 @@
 				2D7B12D3204D3B540035AE89 /* LotteryExtrendViewController.xib */,
 				2D7B12C4204D3A240035AE89 /* DLTPlayViewController.h */,
 				2D7B12C2204D3A230035AE89 /* DLTPlayViewController.m */,
-				2D7B12C3204D3A240035AE89 /* DLTPlayViewController.xib */,
+				F95C7EB12071D5ED005990F5 /* DLTPlayViewController.xib */,
 			);
 			path = DLT;
 			sourceTree = "<group>";
@@ -3696,6 +3715,7 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				F98C3EE72071FDB300C1DBF8 /* ssq_logo.png */,
 				F95C7E6F206E025D005990F5 /* Helvetica-Condensed-Black-Se.ttf */,
 				2D89D60C206CE3E8005E0209 /* gyjweicome.png */,
 				2D08A48B206CBDF0005AFF13 /* pic_zixun@2x.png */,
@@ -5221,7 +5241,7 @@
 				TargetAttributes = {
 					2DCBB2701FD1000700934D92 = {
 						CreatedOnToolsVersion = 9.1;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -5348,6 +5368,7 @@
 				2D40CAAA201EDE5700DDCFE3 /* dot@3x.png in Resources */,
 				2D20602D1FFCB71E0086E266 /* icon_zhanbaotongji@3x.png in Resources */,
 				2D739CDA1FEB44F400264044 /* yuanjiaowubiankuangnomal@2x.png in Resources */,
+				F95C7EAE2071D5CC005990F5 /* ZhuiHaoInfoViewController.xib in Resources */,
 				2D0E23DA2019A66D0098DA40 /* lottery@3x.png in Resources */,
 				F9F2629C1FE8D7D000C2E60F /* closeperson@2x.png in Resources */,
 				F9281D1B201979BE00C42A37 /* one_redpacket@2x.png in Resources */,
@@ -5371,7 +5392,6 @@
 				2D92A827201068590038E165 /* PayOrderYouhunViewController.xib in Resources */,
 				2D0E23DE2019A6840098DA40 /* collect@2x.png in Resources */,
 				F9F6CAA11FF5D6B100A49F71 /* download@2x.png in Resources */,
-				2DA39EBB205238E900A03FD1 /* ZhuiHaoInfoViewController.xib in Resources */,
 				2D4B1E751FDF684E0034B708 /* fenleixian@2x.png in Resources */,
 				F93204EF1FECF98B00E22A27 /* pass2.png in Resources */,
 				F94AA9B31FEB59DA0021B980 /* checked@2x.png in Resources */,
@@ -5413,7 +5433,6 @@
 				F9FDFAE52011CD9D0029ACC7 /* number_bj@3x.png in Resources */,
 				F9FC153220622A0F009BAD68 /* WCHomeGYJItemViewCell.xib in Resources */,
 				F9B5D9752060A9DE00C9F6DC /* flag366@2x.png in Resources */,
-				2DA39ECC2052398B00A03FD1 /* ZHDetailViewController.xib in Resources */,
 				2D517201200D86BD00C3CD7F /* history_icon_default_fangan@2x.png in Resources */,
 				F94AA9EC1FEB9BD50021B980 /* add@2x.png in Resources */,
 				2D4B1EA71FDFCA520034B708 /* ForecastViewController.xib in Resources */,
@@ -5828,6 +5847,7 @@
 				2D5171F7200C73BF00C3CD7F /* won_scheme@3x.png in Resources */,
 				2DDEDC111FD4DC03007AEBF7 /* GroupViewController.xib in Resources */,
 				F93AC8171FFDF035003DF05C /* AboutViewController.xib in Resources */,
+				F95C7EEF2071DA89005990F5 /* SSQPlayViewController.xib in Resources */,
 				F9DC69A01FDF88E5007D384D /* IntegralMallViewController.xib in Resources */,
 				2D0E23FF2019A9780098DA40 /* button_blue@2x.png in Resources */,
 				F9F6CA9D1FF5D6B100A49F71 /* voice@3x.png in Resources */,
@@ -5846,7 +5866,6 @@
 				2DDEDE771FD568C9007AEBF7 /* README.md in Resources */,
 				2D7B1386204E7AFC0035AE89 /* delete@3x.png in Resources */,
 				2D2060261FFCB71E0086E266 /* icon_weixin@2x.png in Resources */,
-				2D7B12C6204D3A250035AE89 /* DLTPlayViewController.xib in Resources */,
 				F999278520037A8C00023F8F /* empty_youhuiquan@2x.png in Resources */,
 				F9B5D9812060A9DE00C9F6DC /* flag392@2x.png in Resources */,
 				2D7B13CF204E877A0035AE89 /* CTZQTouzhuRenjiuCell.xib in Resources */,
@@ -5891,6 +5910,7 @@
 				F97FD9CA2003026300B35A7C /* inputbox@3x.png in Resources */,
 				F924BA971FE252CF00830BF4 /* phone@2x.png in Resources */,
 				2D0E23BB20196B590098DA40 /* wait_lottery@3x.png in Resources */,
+				F95C7FF02071F178005990F5 /* ZHDetailViewController.xib in Resources */,
 				2D03F28A2060BAE800C81BEF /* PaySetViewController.xib in Resources */,
 				2D7B135F204E3D890035AE89 /* dlt_openlottery_ex@3x.png in Resources */,
 				2D36176B2061FA3D003093F9 /* dan_Win@3x.png in Resources */,
@@ -5899,6 +5919,7 @@
 				F9C3BA30200894ED00916F3C /* answer@3x.png in Resources */,
 				2D628B401FECAA9A0013D0E1 /* fengkuangjingcai-zhenshitouzhu-weixuanze@3x.png in Resources */,
 				2D2060151FFCB71E0086E266 /* btn_huanyige@3x.png in Resources */,
+				F98C3EE82071FDB400C1DBF8 /* ssq_logo.png in Resources */,
 				2D739C241FE2611C00264044 /* IQKeyboardManager.bundle in Resources */,
 				F94AA9DD1FEB7B780021B980 /* bank@3x.png in Resources */,
 				F94AA9BA1FEB59DA0021B980 /* list@3x.png in Resources */,
@@ -5926,6 +5947,7 @@
 				F924BAA91FE252CF00830BF4 /* stick@2x.png in Resources */,
 				2D7B12F2204D3C280035AE89 /* LotteryWinNumHistoryViewController.xib in Resources */,
 				2D0EEA9C201582C300B0769C /* yuce_detail@2x.png in Resources */,
+				F95C7EF32071DAD5005990F5 /* SSQTouZhuViewController.xib in Resources */,
 				F9B5D99B2060A9DE00C9F6DC /* flag424@2x.png in Resources */,
 				2D7B136F204E5F450035AE89 /* dltbutton-default@2x.png in Resources */,
 				2D628B3B1FECAA9A0013D0E1 /* wanfaxiala@2x.png in Resources */,
@@ -5991,6 +6013,7 @@
 				2D4B1E891FDF684E0034B708 /* yuce_defealt@2x.png in Resources */,
 				2DE892AE2022C1FA008926A6 /* jczq_hhgg_table.html in Resources */,
 				2D739C901FE899AC00264044 /* MatchLeagueSelectView.xib in Resources */,
+				F95C7EB22071D5ED005990F5 /* DLTPlayViewController.xib in Resources */,
 				F9B5D99A2060A9DE00C9F6DC /* flag421@3x.png in Resources */,
 				F9418F482010991200454109 /* ShareSDKUI.bundle in Resources */,
 				F95C7E70206E025D005990F5 /* Helvetica-Condensed-Black-Se.ttf in Resources */,
@@ -6109,6 +6132,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F98C3EE62071FAD400C1DBF8 /* user@2x.png in Sources */,
 				2DD2C50F204504AB005A18C4 /* WBOptimizeViewController.m in Sources */,
 				2D7B13B7204E87450035AE89 /* CTZQOrderProfile.m in Sources */,
 				2D7B132C204D4AF40035AE89 /* EXHeaderView.m in Sources */,
@@ -6157,6 +6181,7 @@
 				2D7B12ED204D3C0C0035AE89 /* LotteryPhaseInfoView.m in Sources */,
 				2D7B12D2204D3B440035AE89 /* ExprieRoundView.m in Sources */,
 				2D739C1E1FE2611C00264044 /* IQTextView.m in Sources */,
+				F95C7EEE2071DA89005990F5 /* SSQPlayViewController.m in Sources */,
 				2D7B1306204D46EB0035AE89 /* LotteryBaseView.m in Sources */,
 				2D7B12EA204D3BF20035AE89 /* LotteryBetsPopView.m in Sources */,
 				2D06001D1FFDCD9F009E7568 /* MJRefreshComponent.m in Sources */,
@@ -6198,7 +6223,6 @@
 				2DDEDE6F1FD568C9007AEBF7 /* AFHTTPSessionManager.m in Sources */,
 				2DDEDC321FD520FF007AEBF7 /* MemberManager.m in Sources */,
 				2D06002C1FFDCD9F009E7568 /* UIScrollView+MJExtension.m in Sources */,
-				2DA39ECB2052398B00A03FD1 /* ZHDetailViewController.m in Sources */,
 				2D06001E1FFDCD9F009E7568 /* MJRefreshFooter.m in Sources */,
 				2D7B1317204D49EE0035AE89 /* LotteryXHSection.m in Sources */,
 				2DDEDC351FD52178007AEBF7 /* AESUtility.m in Sources */,
@@ -6251,7 +6275,6 @@
 				2D7B140A204E89160035AE89 /* LotteryTitleView.m in Sources */,
 				2D0600231FFDCD9F009E7568 /* MJRefreshBackGifFooter.m in Sources */,
 				2DDEDE7F1FD568C9007AEBF7 /* UIProgressView+AFNetworking.m in Sources */,
-				2DA39EBC205238E900A03FD1 /* ZhuiHaoInfoViewController.m in Sources */,
 				2DE892A02020724C008926A6 /* JWCacheURLProtocol.m in Sources */,
 				F9B5DA6D2060BD2E00C9F6DC /* HomeGJItemViewCell.m in Sources */,
 				2DDEDE6B1FD568C9007AEBF7 /* UIImageView+WebCache.m in Sources */,
@@ -6265,6 +6288,7 @@
 				2D7B1402204E88C80035AE89 /* CTZQIssueSelectedButton.m in Sources */,
 				2D628B4A1FECAE980013D0E1 /* JingCaiChaunFaSelectView.m in Sources */,
 				2D0EEAA12015A94A00B0769C /* YCSchemeViewCell.m in Sources */,
+				F95C7EAD2071D5CC005990F5 /* ZhuiHaoInfoViewController.m in Sources */,
 				2D7B12F9204D3F110035AE89 /* LotteryXHProfile.m in Sources */,
 				2D7B13B2204E873D0035AE89 /* CTZQTransaction.m in Sources */,
 				F9FDFAE12011C9750029ACC7 /* Notice.m in Sources */,
@@ -6298,6 +6322,7 @@
 				F9581A7B1FE0C6FD009753AA /* UIImage+RandomSize.m in Sources */,
 				2D06001F1FFDCD9F009E7568 /* MJRefreshHeader.m in Sources */,
 				2D0EEA89201321AF00B0769C /* AlertPushtView.m in Sources */,
+				F95C7FEF2071F178005990F5 /* ZHDetailViewController.m in Sources */,
 				2D7B12F5204D3E5E0035AE89 /* LotteryRound.m in Sources */,
 				2D8CBFCF1FF3769F00CC367F /* YuceSchemeDetailViewController.m in Sources */,
 				2DDEDC471FD52562007AEBF7 /* GlobalInstance.m in Sources */,
@@ -6328,6 +6353,7 @@
 				2D7B1309204D47670035AE89 /* BetsListPopViewCell.m in Sources */,
 				F98A603B206395EB008C3132 /* LotteryScheme.m in Sources */,
 				F9632F57200C9A8B00F69D23 /* IntegeralChangeViewController.m in Sources */,
+				F95C7EF42071DAD5005990F5 /* SSQTouZhuViewController.m in Sources */,
 				2D3617802068DFEC003093F9 /* OptionSelectedView.m in Sources */,
 				2DDEDC2F1FD51C8B007AEBF7 /* SOAPRequest.m in Sources */,
 				2D06002B1FFDCD9F009E7568 /* NSBundle+MJRefresh.m in Sources */,
@@ -6608,8 +6634,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = happyLottery/happyLottery.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: aolikeji@xaonly.com (93Y3V24TMT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = TSK429FVKW;
 				ENABLE_BITCODE = NO;
@@ -6637,8 +6663,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.only.happyLottery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8e8f087e-3932-4af6-a0a4-4455cbd1ef4a";
-				PROVISIONING_PROFILE_SPECIFIER = TBZ_Dis_profiles;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -6649,8 +6675,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = happyLottery/happyLottery.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: XI'AN ONLY TECHNOLOGY DEVELOPMENT CO., LTD.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TSK429FVKW;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -6677,8 +6703,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.only.happyLottery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8e8f087e-3932-4af6-a0a4-4455cbd1ef4a";
-				PROVISIONING_PROFILE_SPECIFIER = TBZ_Dis_profiles;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

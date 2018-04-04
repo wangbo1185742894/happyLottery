@@ -147,6 +147,8 @@
         return @"冠亚军游戏";
     }else if ([code isEqualToString:@"JCGJ"]){
         return @"冠军游戏";
+    }else if ([code isEqualToString:@"SSQ"]){
+        return [NSString stringWithFormat:@"双色球(第%@期)",scheme.issueNumber];
     }
     return @"彩票";
 }

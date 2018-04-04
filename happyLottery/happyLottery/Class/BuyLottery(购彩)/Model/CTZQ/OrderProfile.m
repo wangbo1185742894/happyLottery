@@ -204,7 +204,9 @@
     if ([self.lotteryCode isEqualToString:@"DLT"]) {
         return @"大乐透";
     }
-    
+    if ([self.lotteryCode isEqualToString:@"SSQ"]) {
+        return @"双色球";
+    }
     switch ([_playType intValue]) {
         case 0:
             if ([_name isEqualToString:@"排列3"] ||[_name isEqualToString:@"排列5"] ) {
@@ -331,7 +333,7 @@
 
 - (id)lotteryNumberDesc{
 
-    if ([_lotteryType isEqualToString:@"DLT"]) {
+    if ([_lotteryType isEqualToString:@"DLT"]||[_lotteryType isEqualToString:@"SSQ"]) {
         if(![_lotteryNumber isEqual:[NSNull null]])
         {
         NSArray * numArray = [_lotteryNumber componentsSeparatedByString:@"#"];
@@ -454,6 +456,9 @@
     }
     if ([self.lotteryCode isEqualToString:@"JCGJ"]) {
         return @"first.png";
+    }
+    if ([self.lotteryCode isEqualToString:@"SSQ"]) {
+        return @"ssq_logo.png";
     }
     return @"";
 }

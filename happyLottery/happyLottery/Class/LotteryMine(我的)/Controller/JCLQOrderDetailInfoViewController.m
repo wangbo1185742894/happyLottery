@@ -45,6 +45,9 @@
     }else if ([self.lotteryCode isEqualToString:@"JCGYJ"]){
         self.labLotteryName.text = @"冠亚军";
         self.imgLotteryIcon.image = [UIImage imageNamed:@"Championship.png"];
+    }else if ([self.lotteryCode isEqualToString:@"SSQ"]){
+        self.labLotteryName.text = @"双色球";
+        self.imgLotteryIcon.image = [UIImage imageNamed:@"ssq_logo.png"];
     }
     self.page = 1;
     self.tabListDetail.dataSource = self;

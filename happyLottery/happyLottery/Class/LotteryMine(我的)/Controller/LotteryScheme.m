@@ -75,7 +75,7 @@
         } @catch (NSException *exception) {
             return 30;
         }
-    }else if([self.lottery isEqualToString:@"DLT"]){
+    }else if([self.lottery isEqualToString:@"DLT"]||[self.lottery isEqualToString:@"SSQ"]){
         
         @try {
             return [self getDLTCellHeight];

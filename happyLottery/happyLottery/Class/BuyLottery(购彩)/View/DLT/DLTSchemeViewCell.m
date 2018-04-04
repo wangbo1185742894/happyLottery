@@ -19,17 +19,24 @@
     return self;
 }
 
--(void)refreshDataWith:(NSDictionary*)betDic andOpenResult:(NSString *)string{
+-(void)refreshDataWith:(NSDictionary*)betDic andOpenResult:(NSString *)string andLotteryType:(NSString *)typeName{
     
 //    [6]    (null)    @"playType" : @"General"
     
     self.viewBallContent.layer.borderColor = RGBCOLOR(90, 160, 253).CGColor;
     self.viewBallContent.layer.borderWidth = 1;
-    
-    if([betDic[@"playType"] integerValue] == 1 ){
-        self.labLotteryName.text = [NSString stringWithFormat:@"超级大乐透（追加）"];
-    }else{
-        self.labLotteryName.text = [NSString stringWithFormat:@"超级大乐透"];
+    if ([typeName isEqualToString:@"DLT"]) {
+        if([betDic[@"playType"] integerValue] == 1 ){
+            self.labLotteryName.text = [NSString stringWithFormat:@"超级大乐透（追加）"];
+        }else{
+            self.labLotteryName.text = [NSString stringWithFormat:@"超级大乐透"];
+        }
+    } else {
+        if([betDic[@"playType"] integerValue] == 1 ){
+            self.labLotteryName.text = [NSString stringWithFormat:@"双色球（追加）"];
+        }else{
+            self.labLotteryName.text = [NSString stringWithFormat:@"双色球"];
+        }
     }
     self.trDltOpenResult = string;
     NSArray *redList = betDic[@"redList"];

@@ -19,6 +19,7 @@
 #import "Lottery.h"
 #import "Utility.h"
 #import "DLTChaseSchemeDetail.h"
+#import "SSQPlayViewController.h"
 @interface ZHDetailViewController ()<LotteryManagerDelegate,UIActionSheetDelegate,UITableViewDataSource,UITableViewDelegate>{
     
     __weak IBOutlet NSLayoutConstraint *topHightConstant;
@@ -80,6 +81,8 @@
     for (NSLayoutConstraint *sepHeight in sepHeightArr) {
         sepHeight.constant = SEPHEIGHT;
     }
+    
+    
     _allLotter = [lotteryMan getAllLottery];
     self.view.backgroundColor = [UIColor whiteColor];
     [self initLottyBetObj:nil];
@@ -89,8 +92,12 @@
 
     self.lottery = [[Lottery alloc] init];
     NSArray *typeAr = [lotteryMan getAllLottery];
-    self.lottery = typeAr.firstObject;
     
+    if ([_order.lotteryCode isEqualToString:@"DLT"]) {
+        self.lottery = typeAr.firstObject;
+    } else {
+        self.lottery = typeAr[10];
+    }
     
     //追号订单详情
     [self.lotteryMan getChaseDetailForApp:@{@"chaseSchemeNo":_order.chaseSchemeNo}];
@@ -230,7 +237,13 @@
         }
     }
     
-
+    if ([_order.lotteryCode isEqualToString:@"SSQ"]) {
+        if ([_order.playType isEqualToString:@"1"]) {
+            playName.text = [NSString stringWithFormat:@"双色球(追加)"];
+        } else {
+            playName.text = [NSString stringWithFormat:@"双色球"];
+        }
+    }
     if ([_order.catchResult isEqualToString:@"已中奖"]) {
         results.textColor = TextCharColor;
     }
@@ -507,12 +520,19 @@
 
 - (IBAction)toPlayGoon:(UIButton *)sender {
     NSArray * lotteryDS = [self.lotteryMan getAllLottery];
-    
-    DLTPlayViewController *playVC = [[DLTPlayViewController alloc] init];
-    playVC.hidesBottomBarWhenPushed = YES;
-    //    _lotterySelected.currentRound = round;
-    playVC.lottery = lotteryDS[1];
-    [self.navigationController pushViewController:playVC animated:YES];
+    if([_order.lotteryCode isEqualToString:@"DLT"]){
+        DLTPlayViewController *playVC = [[DLTPlayViewController alloc] init];
+        playVC.hidesBottomBarWhenPushed = YES;
+        //    _lotterySelected.currentRound = round;
+        playVC.lottery = lotteryDS[1];
+        [self.navigationController pushViewController:playVC animated:YES];
+    }
+    else{
+        SSQPlayViewController *playVC = [[SSQPlayViewController alloc] init];
+        playVC.hidesBottomBarWhenPushed = YES;
+        playVC.lottery = lotteryDS[1];
+        [self.navigationController pushViewController:playVC animated:YES];
+    }
     
 }
 

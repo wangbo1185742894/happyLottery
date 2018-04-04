@@ -133,7 +133,7 @@
                 [matchList addObject:betContent];
             }
         }
-    }else if ([schemeDetail.lottery isEqualToString:@"DLT"]){
+    }else if ([schemeDetail.lottery isEqualToString:@"DLT"]||[schemeDetail.lottery isEqualToString:@"SSQ"]){
         dltBetList = [Utility objFromJson: schemeDetail.betContent];
         
     }
@@ -263,7 +263,7 @@
             if ([schemeDetail.lottery isEqualToString:@"DLT"]) {
                 DLTSchemeViewCell *dltCell = [tableView dequeueReusableCellWithIdentifier:KDLTSchemeViewCell];
                 if (schemeDetail != nil) {
-                    [dltCell refreshDataWith:dltBetList[indexPath.row] andOpenResult:schemeDetail.trDltOpenResult];
+//                    [dltCell refreshDataWith:dltBetList[indexPath.row] andOpenResult:schemeDetail.trDltOpenResult];
                 }
                 [dltCell setNumIndex:[NSString stringWithFormat:@"%ld",indexPath.row + 1] andIsShow:dltBetList.count == 1];
                 cell = dltCell;
@@ -296,7 +296,7 @@
             if ([schemeDetail.lottery isEqualToString:@"DLT"]) {
                 DLTSchemeViewCell *dltCell = [tableView dequeueReusableCellWithIdentifier:KDLTSchemeViewCell];
                 if (schemeDetail != nil) {
-                    [dltCell refreshDataWith:dltBetList[indexPath.row] andOpenResult:schemeDetail.trDltOpenResult];
+//                    [dltCell refreshDataWith:dltBetList[indexPath.row] andOpenResult:schemeDetail.trDltOpenResult];
                 }
                 [dltCell setNumIndex:[NSString stringWithFormat:@"%ld",indexPath.row] andIsShow:dltBetList.count == 1];
                 cell = dltCell;

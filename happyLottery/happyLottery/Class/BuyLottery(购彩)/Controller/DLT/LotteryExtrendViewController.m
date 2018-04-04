@@ -154,7 +154,7 @@
         [timeCountDownView addSubview:timeView];
     }
     [timeView startTimeCountdown:_lottery.currentRound];
-    if ([_lottery.identifier isEqualToString:@"DLT"]) {
+    if ([_lottery.identifier isEqualToString:@"DLT"]||[_lottery.identifier isEqualToString:@"SSQ"]) {
         
         dltSectionType = DltSectionTypeFront;
         baseNumMaxValue = dltFrontSectionBaseNumMaxValue;
@@ -227,7 +227,12 @@
 //    [optionActionSheet showInView: self.view];
 }
 - (void)getLotteryRounds:(NSInteger)roundnum{
-    [self.lotteryMan getListHisIssue:@{@"lottery":@"DLT",@"size":@(roundnum)}];
+    if ([_lottery.identifier isEqualToString:@"DLT"]) {
+        [self.lotteryMan getListHisIssue:@{@"lottery":@"DLT",@"size":@(roundnum)}];
+    }
+    else{
+        [self.lotteryMan getListHisIssue:@{@"lottery":@"SSQ",@"size":@(roundnum)}];
+    }
 }
 
 -(void) refreshNumExtrendView{

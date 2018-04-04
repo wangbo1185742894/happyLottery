@@ -477,7 +477,7 @@ typedef enum {
             //                [GlobalInstance instance].lotttypefromorder = nil;
             //            }
         }
-        else if([self.lottery.identifier isEqualToString:@"DLT"])
+        else if([self.lottery.identifier isEqualToString:@"DLT"]||[self.lottery.identifier isEqualToString:@"SSQ"])
         {
             if ([bet needZhuiJia]) {
                 betDic[@"playType"] = [NSNumber numberWithInt:Additional];
@@ -673,7 +673,7 @@ typedef enum {
     for (NSDictionary *tempDic in [self lottData]) {
         
         
-        if ([self.lottery.identifier isEqualToString:@"DLT"]) {
+        if ([self.lottery.identifier isEqualToString:@"DLT"]||[self.lottery.identifier isEqualToString:@"SSQ"]) {
             NSString *number = tempDic[@"number"];
             
             NSArray *redList ;
