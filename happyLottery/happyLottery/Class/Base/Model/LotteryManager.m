@@ -45,7 +45,7 @@
     
     
     
-    return @[lotteryDS[0],lotteryDS[2],lotteryDS[3],lotteryDS[1],lotteryDS[4],lotteryDS[6],lotteryDS[5],lotteryDS[7],lotteryDS[9],lotteryDS[10]];
+    return @[lotteryDS[0],lotteryDS[2],lotteryDS[3],lotteryDS[1],lotteryDS[4],lotteryDS[6],lotteryDS[5],lotteryDS[7],lotteryDS[9],lotteryDS[10],lotteryDS[11]];
     
 }
 
@@ -548,7 +548,10 @@
         url = APIGetJcgjTicketOrderDetail;
     }else  if([lotteryCode isEqualToString:@"JCGYJ"]){
         url = APIGetJcgyjTicketOrderDetail;
-    }else {
+    }else if ([lotteryCode isEqualToString:@"SSQ"]){
+        url = APIGetSsqTicketOrderDetail;
+    }
+    else {
         url = APIGetJczqTicketOrderDetail;
     }
     SOAPRequest *request = [self requestForAPI: url withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];

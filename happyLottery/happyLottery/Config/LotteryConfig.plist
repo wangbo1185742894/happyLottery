@@ -242,5 +242,27 @@
 		<key>DateSectionLinkSymbol</key>
 		<string>$</string>
 	</dict>
+	<dict>
+		<key>Name</key>
+		<string>双色球</string>
+		<key>Identifier</key>
+		<string>SSQ</string>
+		<key>NeedSectionRandom</key>
+		<true/>
+		<key>Desc</key>
+		<string>2元赢取500万</string>
+		<key>AvatarPictureName</key>
+		<string>ssq_logo.png</string>
+		<key>Active</key>
+		<true/>
+		<key>DanTuo</key>
+		<true/>
+		<key>Type</key>
+		<string>13</string>
+		<key>RuleDesc</key>
+		<string>至少选择六个红球一个蓝球</string>
+		<key>DateSectionLinkSymbol</key>
+		<string>;</string>
+	</dict>
 </array>
 </plist>

@@ -62,15 +62,32 @@
     self.labTouzhuneirong.layer.borderColor =TFBorderColor.CGColor;
     self.viewSubContent.layer.borderColor = TFBorderColor.CGColor;
     self.viewSubContent.layer.borderWidth = 1;
-    
+//     ticketContent = "[{\"betType\":0,\"blueList\":[\"07\"],\"multiple\":1,\"playType\":\"General\",\"redDanList\":[],\"redList\":[\"01\",\"02\",\"24\",\"25\",\"30\",\"31\"],\"units\":1}]";
     self.labBetCost.text = [NSString stringWithFormat:@"%@元",dic[@"subscription"]];
     if([dic[@"lotteryCode"] isEqualToString:@"DLT"]){
         content = dic[@"ticketContent"];
         content = [content stringByReplacingOccurrencesOfString:@";" withString:@"\n"];
         self.disLeftPlayType.constant = -self.labPlayType.mj_w - 20;
         self.disLeftPlayTypeContent.constant = -self.labPlayType.mj_w - 20;
-        
-    }else if([dic[@"lotteryCode"] isEqualToString:@"RJC"] || [dic[@"lotteryCode"] isEqualToString:@"SFC"]){
+    }
+    else if ([dic[@"lotteryCode"] isEqualToString:@"SSQ"]){
+        NSArray *titleArray = [Utility objFromJson:dic[@"ticketContent"]];
+        NSMutableArray *marr = [NSMutableArray arrayWithCapacity:0];
+        for (NSString *itemStr in titleArray) {
+            NSDictionary *itemDic = [Utility objFromJson:itemStr];
+            if (itemDic[@"blueList"] != nil&&itemDic[@"redList"]!=nil) {
+                
+                NSString *str = [NSString stringWithFormat:@"%@+%@",itemDic[@"redList"],itemDic[@"blueList"]];
+                str= [str stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]; //去除掉首尾的空白字符和换行字符
+                str = [str stringByReplacingOccurrencesOfString:@"\r" withString:@""];
+                str = [str stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+                str = [str stringByReplacingOccurrencesOfString:@"()" withString:@""];
+                [marr addObject:str];
+            }
+        }
+        content = [marr componentsJoinedByString:@"\n"];
+    }
+    else if([dic[@"lotteryCode"] isEqualToString:@"RJC"] || [dic[@"lotteryCode"] isEqualToString:@"SFC"]){
         content = dic[@"ticketContent"];
         content = [content stringByReplacingOccurrencesOfString:@";" withString:@"\n"];
         self.disLeftPlayType.constant = -self.labPlayType.mj_w - 20;
@@ -308,7 +325,7 @@
 
 
 -(CGFloat)getCellHeight:(NSDictionary*)dic{
-    if([dic[@"lotteryCode"] isEqualToString:@"DLT"] || [dic[@"lotteryCode"] isEqualToString:@"SFC"] || [dic[@"lotteryCode"] isEqualToString:@"RJC"]){
+    if([dic[@"lotteryCode"] isEqualToString:@"DLT"] || [dic[@"lotteryCode"] isEqualToString:@"SFC"] || [dic[@"lotteryCode"] isEqualToString:@"RJC"]||[dic[@"lotteryCode"] isEqualToString:@"SSQ"]){
         
         return [dic[@"ticketContent"] componentsSeparatedByString:@";"].count * 12 + 150;
     }else if ([dic[@"lotteryCode"] isEqualToString:@"JCGJ"] || [dic[@"lotteryCode"] isEqualToString:@"JCGYJ"]){

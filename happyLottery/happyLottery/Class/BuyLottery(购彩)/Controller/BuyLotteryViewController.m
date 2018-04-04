@@ -10,6 +10,7 @@
 #import "WebShowViewController.h"
 #import "WebCTZQHisViewController.h"
 #import "DLTPlayViewController.h"
+#import "SSQPlayViewController.h"
 #import "CTZQPlayViewController.h"
 #import "DiscoverViewController.h"
 #import "WBAdsImgView.h"
@@ -924,6 +925,16 @@
     [self.navigationController pushViewController:playVC animated:YES];
     
 }
+
+//双色球
+- (IBAction)actionSSQ:(id)sender {
+    NSArray * lotteryDS = [self.lotteryMan getAllLottery];
+    SSQPlayViewController *playVC = [[SSQPlayViewController alloc] init];
+    playVC.hidesBottomBarWhenPushed = YES;
+    playVC.lottery = lotteryDS[10];
+    [self.navigationController pushViewController:playVC animated:YES];
+}
+
 
 - (IBAction)actionSFC:(id)sender {
     NSArray * lotteryDS = [self.lotteryMan getAllLottery];

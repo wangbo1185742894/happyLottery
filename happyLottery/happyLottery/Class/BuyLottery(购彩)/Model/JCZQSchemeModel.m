@@ -191,6 +191,9 @@
     if ([self.lottery isEqualToString:@"JCGJ"]) {
         return @"first.png";
     }
+    if ([self.lottery isEqualToString:@"SSQ"]) {
+        return @"ssq_logo.png";
+    }
     return @"";
 }
 

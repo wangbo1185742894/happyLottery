@@ -27,7 +27,7 @@
 
 - (void) lsetUpWithLottey:(Lottery *)lottery withViewRatio:(NSString *)ratio{
     CGFloat numBgViewW = numBgView.frame.size.width;
-    if ([lottery.identifier isEqualToString:@"dlt"]) {
+    if ([lottery.identifier isEqualToString:@"dlt"]||[lottery.identifier isEqualToString:@"ssq"]) {
         
         numLaW.constant = numBgViewW/9*5.8;
         blueLaW.constant = numBgViewW/9*3.2-1;
@@ -56,7 +56,7 @@
     
     NSArray * titleArray;
     NSArray * colorArray;
-    if ([lottery.identifier isEqualToString:@"dlt"]) {
+    if ([lottery.identifier isEqualToString:@"dlt"]||[lottery.identifier isEqualToString:@"ssq"]) {
         titleArray = @[@"期号",@"前区",@"后区"];
         colorArray = @[[UIColor blackColor],[UIColor redColor],[UIColor blueColor]];
     }else if ([lottery.identifier isEqualToString:@"X115"]){

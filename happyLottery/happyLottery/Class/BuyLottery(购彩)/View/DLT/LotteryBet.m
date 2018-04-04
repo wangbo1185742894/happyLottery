@@ -166,7 +166,7 @@ the product of combination Count of each section
 
     NSAttributedString * description;
     
-    if ([_betLotteryIdentifier isEqualToString:@"DLT"]) {
+    if ([_betLotteryIdentifier isEqualToString:@"DLT"]||[_betLotteryIdentifier isEqualToString:@"SSQ"]) {
         //  用颜色区分颜色的号码描述
         description = [self descriptionForColorDistinguish:font];
     }else if([_betLotteryIdentifier isEqualToString:@"X115"]){
@@ -456,7 +456,7 @@ the product of combination Count of each section
     NSString * nameKey;
     NSString * codeKey;
     
-    if ([self.betLotteryIdentifier isEqualToString:@"DLT"]) {
+    if ([self.betLotteryIdentifier isEqualToString:@"DLT"]||[self.betLotteryIdentifier isEqualToString:@"SSQ"]) {
         int type = [self getBetType];
         if (type == BetTypeNomal) {
             nameKey = @"name_S";

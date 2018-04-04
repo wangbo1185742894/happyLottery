@@ -14,7 +14,7 @@
 
 - (id)numberDesc{
 
-    if ([_lotteryType isEqualToString:@"DLT"]) {
+    if ([_lotteryType isEqualToString:@"DLT"]||[_lotteryType isEqualToString:@"SSQ"]) {
         
         NSString * numDesc = [_number stringByReplacingOccurrencesOfString:@"," withString:@" "];
         NSArray * numArray = [numDesc componentsSeparatedByString:@"#"];

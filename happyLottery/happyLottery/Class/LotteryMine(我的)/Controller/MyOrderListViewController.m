@@ -149,7 +149,7 @@
         NSString *imageName = [dataArray[indexPath.row] getSchemeImgState];
         schemeVC.imageName = imageName;
         [self.navigationController pushViewController:schemeVC animated:YES];
-    }else if([dataArray[indexPath.row].lottery isEqualToString:@"DLT"]){
+    }else if([dataArray[indexPath.row].lottery isEqualToString:@"DLT"]||[dataArray[indexPath.row].lottery isEqualToString:@"SSQ"]){
         DLTSchemeDetailViewController *schemeVC = [[DLTSchemeDetailViewController alloc]init];
         schemeVC.schemeNO = dataArray[indexPath.row].schemeNO;
         NSString *imageName = [dataArray[indexPath.row] getSchemeImgState];

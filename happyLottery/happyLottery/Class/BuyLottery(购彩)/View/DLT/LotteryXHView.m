@@ -432,7 +432,19 @@
                 randomcout = 2;
             }
             [self randomNumberAction:randomcout lotteryXHSection: lotteryXH];
-        }else{
+        } else if ([_lotteryBet.betLotteryIdentifier isEqualToString:@"SSQ"]){
+            int randomcout;
+            if([lotteryXH.sectionID isEqualToString:@"1"])
+            {
+                randomcout = 6;
+            }
+            else
+            {
+                randomcout = 1;
+            }
+            [self randomNumberAction:randomcout lotteryXHSection: lotteryXH];
+        }
+        else{
             [self randomNumberAction: [lotteryXH.minNumCount intValue] lotteryXHSection: lotteryXH];
         }
     }
@@ -458,7 +470,7 @@
 }
 
 - (void) randomNumberAction: (int) numberCount lotteryXHSection: (LotteryXHSection*) lotteryXH {
-    if ([_lotteryBet.betLotteryIdentifier isEqualToString:@"DLT"]) {
+    if ([_lotteryBet.betLotteryIdentifier isEqualToString:@"DLT"]||[_lotteryBet.betLotteryIdentifier isEqualToString:@"SSQ"]) {
         NSArray *numbersArray = [lotteryXH generateRandomNumber: numberCount];
         
         // 判断是否超过金额限制

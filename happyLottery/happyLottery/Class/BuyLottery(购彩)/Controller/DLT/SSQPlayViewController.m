@@ -7,7 +7,7 @@
 //  Copyright (c) 2015 AMP. All rights reserved.
 //
 
-#import "DLTPlayViewController.h"
+#import "SSQPlayViewController.h"
 #import "LotteryBet.h"
 #import "OptionSelectedView.h"
 #import "NumberSelectView.h"
@@ -15,7 +15,7 @@
 #import "ExprieRoundView.h"
 #import "LotteryExtrendViewController.h"
 #import "LotteryInstructionViewController.h"
-#import "DLTTouZhuViewController.h"
+#import "SSQTouZhuViewController.h"
 #import "DltOpenResult.h"
 //lc
 #import "LotteryInstructionDetailViewController.h"
@@ -35,7 +35,7 @@
 
 #define DltInvalidAlertTag  300
 
-@interface DLTPlayViewController() <LotteryXHViewDelegate, UIActionSheetDelegate, LotteryBetsPopViewDelegate, UIScrollViewDelegate, LotteryPhaseInfoViewDelegate,UIAlertViewDelegate,UIScrollViewDelegate,LotteryManagerDelegate,OptionSelectedViewDelegate>
+@interface SSQPlayViewController() <LotteryXHViewDelegate, UIActionSheetDelegate, LotteryBetsPopViewDelegate, UIScrollViewDelegate, LotteryPhaseInfoViewDelegate,UIAlertViewDelegate,UIScrollViewDelegate,LotteryManagerDelegate,OptionSelectedViewDelegate>
 
 
 {
@@ -90,13 +90,13 @@
 @property (nonatomic, strong) UIImageView *fengeImage;
 @end
 
-@implementation DLTPlayViewController
+@implementation SSQPlayViewController
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.lotteryMan.delegate = self;
-    self.viewControllerNo = @"A004";
+    self.viewControllerNo = @"A414";
     if([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     }
@@ -143,6 +143,7 @@
     
     if (self.lottery.activeProfile ==nil ) {
         NSDictionary *lotteryDetailDic = [NSDictionary dictionaryWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"LotteryProfilesConfigdlt" ofType: @"plist"]];
+        
         NSArray *profilesArray = lotteryDetailDic[[NSString stringWithFormat:@"%d", _lottery.type]];
         
         if ([profilesArray isKindOfClass: [NSArray class]] && profilesArray.count > 0) {
@@ -156,7 +157,8 @@
 }
 
 -(void)getHisIssue{
-    [self.lotteryMan getListHisIssue:@{@"lottery":@"DLT",@"size":@10}];
+//    [self.lotteryMan getListHisIssue:@{@"lottery":@"SSQ"}];
+    [self.lotteryMan getListHisIssue:@{@"size":@10,@"lottery":@"SSQ"}];
 }
 
 
@@ -236,12 +238,6 @@
 }
 
 
-//-(void)viewWillAppear:(BOOL)animated{
-//
-//    [super viewWillAppear:animated];
-//
-//    
-//}
 
 -(void)actionNotificationRandomeFive:(NSNotification*)notification{
     if([_lottery.currentRound isExpire]||_lottery.currentRound == nil){
@@ -252,7 +248,7 @@
     for (int i = 0; i < 5 ; i ++ ) {
         [self addRandomBet];
     }
-    DLTTouZhuViewController *touzhuVC = [[DLTTouZhuViewController alloc] initWithNibName: @"DLTTouZhuViewController" bundle: nil];
+    SSQTouZhuViewController *touzhuVC = [[SSQTouZhuViewController alloc] initWithNibName: @"SSQTouZhuViewController" bundle: nil];
     touzhuVC.lottery = self.lottery;
 
     NSLog(@"yaoguoqule%@",timerForcurRound);
@@ -271,36 +267,22 @@
 }
 
 - (IBAction) clearAllSelection {
-    
-    switch (_lottery.type) {
-        case LotteryTypeDaLeTou:
-        case LotteryTypeShiYiXuanWu:{
-            [self newBet];
-            [lotteryXHView clearAllSelection];
-            break;
-        }
-  
-        default:
-            break;
-    }
-   
+    [self newBet];
+    [lotteryXHView clearAllSelection];
 }
+
 - (IBAction)currentBet:(id)sender{
     
     if ([_lotteryTransaction betCount] > 0 || _lotteryTransaction.allBets.count >1) {
-        //            return nil;
+
         for (LotteryXHProfile * lottery in self.lottery.profiles) {
             if ([lottery.title isEqualToString: self.rebuyTitle]) {
                 self.lottery.activeProfile = lottery;
                 break;
             }
         }
-//        if([_lottery.currentRound isExpire]||_lottery.currentRound == nil){
-//            [self showPromptText:@"未获得有效奖期" hideAfterDelay:1.7];
-//            return;
-//        }
-        
-        DLTTouZhuViewController *touzhuVC = [[DLTTouZhuViewController alloc] initWithNibName: @"DLTTouZhuViewController" bundle: nil];
+
+        SSQTouZhuViewController *touzhuVC = [[SSQTouZhuViewController alloc] initWithNibName: @"SSQTouZhuViewController" bundle: nil];
         touzhuVC.lottery = self.lottery;
         if (!self.lottery.currentRound) {
             [self getCurrentRound];
@@ -468,7 +450,7 @@
     NSString * lotteryIdentify = _lottery.identifier;
     //add this phase information
     //期号: 054   距截止还有 1天5小时
-    if ([lotteryIdentify isEqualToString:@"DLT"]) {
+    if ([lotteryIdentify isEqualToString:@"SSQ"]) {
         CGRect phaseSectionFrame = CGRectMake(0, 0, KscreenWidth, 0);
         phaseSectionFrame.origin.y = curY;
         phaseSectionFrame.size.height = PhaseInfoHeight * 2;
@@ -591,25 +573,14 @@
 }
 
 - (void) newBet {
-    switch (_lottery.type) {
-        case LotteryTypeShuangSeQiu:
-        case LotteryTypeDaLeTou:
-        case LotteryTypeShiYiXuanWu:{
-            lotteryBet = [[LotteryBet alloc] init];
-            //    lotteryBet.lotteryDetails = self.lottery.activeProfile.details;
-            lotteryBet.betXHProfile = self.lottery.activeProfile;
-            lotteryBet.betLotteryIdentifier = self.lottery.identifier;
-            lotteryBet.betLotteryType = self.lottery.type;
+        lotteryBet = [[LotteryBet alloc] init];
+        lotteryBet.betXHProfile = self.lottery.activeProfile;
+        lotteryBet.betLotteryIdentifier = self.lottery.identifier;
+        lotteryBet.betLotteryType = self.lottery.type;
             
-            lotteryBet.sectionDataLinkSymbol = self.lottery.dateSectionLinkSymbol == nil?@";":self.lottery.dateSectionLinkSymbol;
-            lotteryXHView.lotteryBet = lotteryBet;
-            [self betInfoUpdated];
-            break;
-        }
-        
-        default:
-            break;
-    }
+        lotteryBet.sectionDataLinkSymbol = self.lottery.dateSectionLinkSymbol == nil?@";":self.lottery.dateSectionLinkSymbol;
+        lotteryXHView.lotteryBet = lotteryBet;
+        [self betInfoUpdated];
 }
 
 - (void) optionRightButtonAction {
@@ -618,31 +589,9 @@
     }
 
     NSArray *titleArr;
-   
-    
-    switch (_lottery.type) {
-        case LotteryTypeDaLeTou:
-        case LotteryTypeShiYiXuanWu:{
-            
-            titleArr = @[@" 走势图  ",
-                                  @" 开奖详情",
-                                  @" 玩法规则"];
-            
-            
-//            optionActionSheet= [[UIActionSheet alloc] initWithTitle: nil
-//                                                           delegate: self
-//                                                  cancelButtonTitle: TextDimiss
-//                                             destructiveButtonTitle: nil
-//                                                  otherButtonTitles: TextPlayMethodInd,
-//                                TextLotteryWinTrend,
-//                                TextLotteryWinHistory, nil];
-            break;
-        }
-        
-        default:
-            break;
-    }
-    
+    titleArr = @[@" 走势图  ",
+                 @" 开奖详情",
+                 @" 玩法规则"];
     
     CGFloat optionviewWidth = 100;
     CGFloat optionviewCellheight = 38;
@@ -652,10 +601,7 @@
     
     optionView.delegate = self;
     [self.view.window addSubview:optionView];
-    
 
-    
-//    [optionActionSheet showInView: self.tabBarController.view];
 }
 
 - (IBAction)showNumberBasket:(id)sender {
@@ -697,7 +643,7 @@
  2. check if any bet
  */
 - (NSString *) couldTouZhu {
-    if ([_lottery.identifier isEqualToString:@"X115"] || [_lottery.identifier isEqualToString:@"DLT"]) {
+    if ([_lottery.identifier isEqualToString:@"SSQ"]) {
         //check current bet
         {//20160601--非单式投注注数必须大于2
         [lotteryBet updateBetInfo];
@@ -717,9 +663,6 @@
             return nil;
         }
         
-//        if ([_lotteryTransaction betCount] > 0) {
-//            return nil;
-//        }
         return TextNotEnoughBet;
     }
     return @"";
@@ -745,15 +688,6 @@
         return;
     }
     
-//    if (!_lottery.currentRound||[_lottery.currentRound isExpire]) {
-//        [self showPromptText:ErrorWrongRoundExpird hideAfterDelay:1.7];
-//        return;
-//    }
-    LotteryXHSection *section = lotteryBet.lotteryDetails[0];
-//    if ([section.needDanHao integerValue]==1&&section.numbersSelected.count == 0) {
-//        [self showPromptText: @"至少选择一个胆码" hideAfterDelay: 1.7];
-//        return;
-//    }
     NSString * errorMsg = [self couldTouZhu];
     if (_touzhuErrorString) {
         [self showPromptText: _touzhuErrorString hideAfterDelay: 1.7];
@@ -770,7 +704,7 @@
         [self showPromptText:@"未获得有效奖期" hideAfterDelay:1.7];
         return;
     }
-    DLTTouZhuViewController *touzhuVC = [[DLTTouZhuViewController alloc] initWithNibName: @"DLTTouZhuViewController" bundle: nil];
+    SSQTouZhuViewController *touzhuVC = [[SSQTouZhuViewController alloc] initWithNibName: @"SSQTouZhuViewController" bundle: nil];
     touzhuVC.lottery = self.lottery;
 
     touzhuVC.transaction = _lotteryTransaction;
@@ -781,9 +715,6 @@
 }
 
 -(void)beginTimerForCurRound{
-//    [timerForcurRound invalidate];//强制定时器失效
-//    NSLog(@"timer sile");
-//    timerForcurRound = nil;
     if ([self.lottery.currentRound isExpire]) {
         timerForcurRound = [NSTimer scheduledTimerWithTimeInterval:2000 target:self selector:@selector(getCurrentRound) userInfo:nil repeats:YES];
     }
@@ -841,7 +772,6 @@
     NSString *selectStr = [lotteryBet numDescrption:[UIFont systemFontOfSize:14]].string;
  
     labelSummary.attributedText = betInfoString;
-    //[self sureQmitButtonIsHidden];
 }
 
 
@@ -860,66 +790,20 @@
         return NO;
     }
 }
+
 #pragma mark - OptionSelectedViewDelegate methods
 - (void)optionDidSelacted:(OptionSelectedView *)optionSelectedView andIndex:(NSInteger)index{
     NSInteger buttonIndex = index;
-    switch (_lottery.type) {
-        case LotteryTypeDaLeTou:
-        case LotteryTypeShiYiXuanWu:{
-            if (buttonIndex == 0) {
-                [self showExtrendViewCtr];
-                
-            }else if (buttonIndex == 1){
-                [self showWinHistoryViewCtr];
-            }else if (buttonIndex == 2){
-                [self showPlayMethod];
-            }
-            break;
-        }
-
-        default:
-            break;
+    if (buttonIndex == 0) {
+        [self showExtrendViewCtr];
+    }else if (buttonIndex == 1){
+        [self showWinHistoryViewCtr];
+    }else if (buttonIndex == 2){
+        [self showPlayMethod];
     }
 }
 
 #pragma mark - UIActionSheetDelegate methods
-//- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
-//   
-//    switch (_lottery.type) {
-//        case LotteryTypeDaLeTou:
-//        case LotteryTypeShiYiXuanWu:{
-//            if (buttonIndex == 0) {
-//                //clear selection
-//                [self showPlayMethod];
-//            }else if (buttonIndex == 1){
-//                [self showExtrendViewCtr];
-//            }else if (buttonIndex == 2){
-//                [self showWinHistoryViewCtr];
-//            }
-//            break;
-//        }
-//        case LotteryTypeJingCaiFootBall:{
-//            if (buttonIndex == 0) {
-////                LotteryInstructionViewController *instruceVC = [[LotteryInstructionViewController alloc]init];
-////                [instruceVC toDetailVC:1 andTarget:self];
-//                
-////                //lc
-//                [self showPlayMethod];
-//                
-//            }else if(buttonIndex == 1){
-//                JingCaiWinHistoryViewController * historyViewCtr = [[JingCaiWinHistoryViewController alloc] initWithNibName:@"JingCaiWinHistoryViewController" bundle:nil];
-//                historyViewCtr.lottery = _lottery;
-//                [self.navigationController pushViewController:historyViewCtr animated:YES];
-////                UINavigationController * navCtr = [[UINavigationController alloc] initWithRootViewController:historyViewCtr];
-////                [self presentViewController:navCtr animated:YES completion:^{
-////                }];
-//            }
-//            break;
-//        }
-//        default:
-//            break;
-//    }
-//}
 
 - (void)showExtrendViewCtr{
     {
@@ -949,20 +833,6 @@
 - (void) betListPopViewHide {
     lotteryXHView.randomStatus = RandomBetStatusShow;
 }
-- (void) touzhuSureAction {
-    
-//    TouZhuViewController *touzhuVC = [[TouZhuViewController alloc] initWithNibName: @"TouZhuViewController" bundle: nil];
-//    touzhuVC.lottery = self.lottery;
-//    touzhuVC.transaction = _lotteryTransaction;
-//    touzhuVC.timerForcurRound = timerForcurRound;
-//    touzhuVC.isFromTogeVC = self.isFromTogeVC;
-//    touzhuVC.delegate = self;
-//    [self.navigationController pushViewController: touzhuVC animated: YES];
-    
-//    [self touZhuAction:nil];
-}
-
-
 
 #pragma mark - LotteryProfileSelectViewDelegate methods
 - (void) userDidSelectLotteryProfile {
@@ -1106,18 +976,10 @@
     return YES;
     
 }
-//- (void)removeTimer{
-//    if (timerForcurRound) {
-//        [timerForcurRound invalidate];
-//        timerForcurRound = nil;
-//        NSLog(@"remove timer");
-//    }
-//}
+
 - (void)removeTimer{
     [timerForcurRound invalidate];
     timerForcurRound = nil;
-    //    [timeCountDownView.updataTimer invalidate];
-    
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"RoundTimeDownFinish" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:OrderPaySuccessNotification object:nil];
 }
