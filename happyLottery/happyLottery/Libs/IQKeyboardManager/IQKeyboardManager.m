@@ -234,14 +234,11 @@ NSInteger const kIQPreviousNextButtonToolbarTag     =   -1005;
             [self setLayoutIfNeededOnUpdate:NO];
             [self setShouldFixInteractivePopGestureRecognizer:YES];
             
-            //Loading IQToolbar, IQTitleBarButtonItem, IQBarButtonItem to fix first time keyboard appearance delay (Bug ID: #550)
             {
                 UITextField *view = [[UITextField alloc] init];
                 [view addDoneOnKeyboardWithTarget:nil action:nil];
                 [view addPreviousNextDoneOnKeyboardWithTarget:nil previousAction:nil nextAction:nil doneAction:nil];
             }
-            
-            //Initializing disabled classes Set.
             strongSelf.disabledDistanceHandlingClasses = [[NSMutableSet alloc] initWithObjects:[UITableViewController class],[UIAlertController class], nil];
             strongSelf.enabledDistanceHandlingClasses = [[NSMutableSet alloc] init];
             

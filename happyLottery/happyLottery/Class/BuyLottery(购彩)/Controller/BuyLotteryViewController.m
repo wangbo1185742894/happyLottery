@@ -951,6 +951,11 @@
     playVC.lottery = lotteryDS[7];
     [self.navigationController pushViewController:playVC animated:YES];
 }
+- (IBAction)actionJCLQ:(UIButton *)sender {
+    JCLQPlayController * playViewVC = [[JCLQPlayController alloc]init];
+    playViewVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:playViewVC animated:YES];
+}
 
 - (IBAction)actionJCZQ:(id)sender {
     JCZQPlayViewController * playViewVC = [[JCZQPlayViewController alloc]init];

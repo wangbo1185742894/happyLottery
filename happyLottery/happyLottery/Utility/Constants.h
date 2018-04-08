@@ -58,7 +58,7 @@
 #define EFLog(fmt, ...)
 #endif
 #define LEFTPADDING 15
-#define SEPHEIGHT 0.5
+#define SEPHEIGHT 1
 #define SEPLEADING 15
 #define SEPCOLOR RGBCOLOR(240, 240, 240)
 

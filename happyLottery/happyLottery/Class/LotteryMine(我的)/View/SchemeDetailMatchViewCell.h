@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JCLQSchemeModel.h"
 #import "JCZQSchemeModel.h"
 
 @interface SchemeDetailMatchViewCell : UITableViewCell
 -(void)setBtnNumIndexShow:(BOOL)isShow;
 -(void)refreshData:(JcBetContent  *)modelDic andResult:(NSArray<OpenResult *> *)resultArray;
+-(void)refreshDataJCLQ:(JlBetContent  *)modelDic andResult:(NSArray<JCLQOpenResult *> *)resultArray;
 @end

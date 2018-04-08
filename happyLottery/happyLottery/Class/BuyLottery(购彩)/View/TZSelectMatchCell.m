@@ -8,6 +8,7 @@
 
 #import "TZSelectMatchCell.h"
 #import "MGLabel.h"
+#import "JCLQMatchModel.h"
 @interface TZSelectMatchCell ()
 
 @property (weak, nonatomic) IBOutlet UIView *viewSelectItemContentView;
@@ -62,13 +63,45 @@
     }
 }
 
-
-
--(CGFloat)createLab:(NSString *)playtype andTitle:(NSString *)title andCurY:(float)curY andModel:(JCZQMatchModel *)model{
+-(void)loadDataJCLQ:(JCLQMatchModel *)model{
+    self.model = model;
+    self.labHomeName.text = [NSString stringWithFormat:@"%@(主)",model.homeName];
     
-    UILabel *labTitle = [[UILabel alloc]initWithFrame:CGRectMake(8, curY, 80, 18)];
+    self.labHomeName.keyWord = @"(主)";
+    self.labHomeName.keyWordFont = [UIFont systemFontOfSize:12];
+    self.labHomeName.keyWordColor = SystemBlue;
+    self.labGuestName.text = model.guestName;
+    self.labLineId.text = model.lineId;
+    
+    for (UIView *subView in self.viewSelectItemContentView.subviews) {
+        [subView removeFromSuperview];
+    }
+    float curY = 8;
+    if ([model getTouzhuAppearTitleByTypeNoSp:@"SF"] .length != 0) {
+        curY += [self createLab:@"SF" andTitle:@"胜负" andCurY:curY andModel:model];
+        
+    }
+    if ([model getTouzhuAppearTitleByTypeNoSp:@"RFSF"] .length != 0) {
+        curY +=[self createLab:@"RFSF" andTitle:[NSString stringWithFormat:@"让分(%@)",model.handicap] andCurY:curY andModel:model];
+        
+    }
+    if ([model getTouzhuAppearTitleByTypeNoSp:@"DXF"] .length != 0) {
+        curY +=[self createLab:@"DXF" andTitle:@"大小分" andCurY:curY andModel:model];
+        
+    }
+    if ([model getTouzhuAppearTitleByTypeNoSp:@"SFC"] .length != 0) {
+        curY += [self createLab:@"SFC" andTitle:@"胜分差" andCurY:curY andModel:model];
+        
+    }
+}
+
+
+
+-(CGFloat)createLab:(NSString *)playtype andTitle:(NSString *)title andCurY:(float)curY andModel:(JCLQMatchModel *)model{
+    UILabel *labTitle = [[UILabel alloc]initWithFrame:CGRectMake(8, curY, 85, 18)];
     labTitle.text = [NSString stringWithFormat:@"%@：",title];
     labTitle.font = [UIFont systemFontOfSize:14];
+    labTitle.adjustsFontSizeToFitWidth  = YES;
     NSString *titleSelect = [model getTouzhuAppearTitleByTypeNoSp:playtype];
     
     [self.viewSelectItemContentView addSubview:labTitle];
@@ -83,8 +116,15 @@
     labItem.numberOfLines = 0;
     return height + 2;
 }
+
 - (IBAction)actionCleanMatch:(id)sender {
-    [[NSNotificationCenter defaultCenter]postNotificationName:KSELECTMATCHCLEAN object:self.model];
+    if ([self.model isKindOfClass:[JCLQMatchModel class]]) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"NSNotificationDeleteMatchForTouzhu" object:self.model];
+
+    }else{
+        
+        [[NSNotificationCenter defaultCenter]postNotificationName:KSELECTMATCHCLEAN object:self.model];
+    }
 }
 
 @end

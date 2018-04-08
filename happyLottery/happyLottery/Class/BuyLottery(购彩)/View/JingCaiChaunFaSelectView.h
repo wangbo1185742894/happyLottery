@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "JCZQTranscation.h"
+#import "JCLQTransaction.h"
 
 
 @protocol JingCaiChaunFaSelectViewDelegate <NSObject>
@@ -19,12 +20,13 @@
 
 @interface JingCaiChaunFaSelectView : UIView
 @property (nonatomic , strong) JCZQTranscation * transation;
-
+@property (nonatomic , strong) JCLQTransaction * jclqtransation;
 @property (nonatomic , readwrite) BOOL  supportDanguan;
 @property(nonatomic,weak)id<JingCaiChaunFaSelectViewDelegate> delegate;
 @property(nonatomic,strong)NSMutableArray *selectedItems;
 
 -(void)setTitle:(NSString *)title andSingleTitle:(NSArray *)singleTitles andMutipleTitle:(NSArray *)mutipleTitles;
 - (void)showFromSuperView:(UIView *)supview;
+-(void)showFromSuperViewJCLQ:(UIView *)supview;
 
 @end

@@ -12,6 +12,7 @@
 #import "MyOrderListViewController.h"
 #import "CTZQSchemeDetailViewController.h"
 #import "GYJSchemeDetailViewController.h"
+#import "JCLQSchemeDetailViewController.h"
 
 @interface PaySuccessViewController ()
 
@@ -57,9 +58,11 @@
         GYJSchemeDetailViewController *schemeVC = [[GYJSchemeDetailViewController alloc]init];
         schemeVC.schemeNO = self.schemeNO;
         [self.navigationController pushViewController:schemeVC animated:YES];
-    }
-    else
-    {
+    }else if ([self.lotteryName isEqualToString:@"竞彩篮球"]){
+        JCLQSchemeDetailViewController *schemeVC = [[JCLQSchemeDetailViewController alloc]init];
+        schemeVC.schemeNO = self.schemeNO;
+        [self.navigationController pushViewController:schemeVC animated:YES];
+    }else{
         SchemeDetailViewController *schemeVC = [[SchemeDetailViewController alloc]init];
         schemeVC.schemeNO = self.schemeNO;
         [self.navigationController pushViewController:schemeVC animated:YES];

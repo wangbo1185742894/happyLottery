@@ -9,6 +9,7 @@
 #import "BaseViewController.h"
 #import "netWorkHelper.h"
 #import "VersionUpdatingPopView.h"
+#import "JCLQPlayController.h"
 
 @interface BuyLotteryViewController : BaseViewController
 

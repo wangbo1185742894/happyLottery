@@ -178,6 +178,8 @@
         schemeCashModel.lotteryName = @"冠军";
     }else if ([schemeDetail.lottery isEqualToString:@"GCGYJ"]){
         schemeCashModel.lotteryName = @"冠亚军";
+    }else if ([schemeDetail.lottery isEqualToString:@"JCLQ"]){
+        schemeCashModel.lotteryName = @"竞彩篮球";
     }
     if ([schemeDetail.costType isEqualToString:@"CASH"]) {
         schemeCashModel.costType = CostTypeCASH;
@@ -274,6 +276,13 @@
                 }
                 [matchCell setBtnNumIndexShow:![self showNum]];
                  cell = matchCell;
+            }else if ([schemeDetail.lottery isEqualToString:@"JCLQ"]){
+                SchemeDetailMatchViewCell *matchCell = [tableView dequeueReusableCellWithIdentifier:KSchemeDetailMatchViewCell];
+                if (schemeDetail != nil) {
+                    [matchCell refreshData:matchList[indexPath.row] andResult:schemeDetail.trOpenResult];
+                }
+                [matchCell setBtnNumIndexShow:![self showNum]];
+                cell = matchCell;
             }
             
            

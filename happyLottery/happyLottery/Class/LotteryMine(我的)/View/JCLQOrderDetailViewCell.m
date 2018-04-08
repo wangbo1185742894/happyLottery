@@ -93,6 +93,11 @@
         self.disLeftPlayType.constant = -self.labPlayType.mj_w - 20;
         self.disLeftPlayTypeContent.constant = -self.labPlayType.mj_w - 20;
         
+    }else if([dic[@"lotteryCode"] isEqualToString:@"JCLQ"]){
+        self.labPassType.text = [self getPasstype:dic[@"passType"]];
+        NSArray *titleArray = [Utility objFromJson:dic[@"ticketContent"]];
+        titleArray = [self getJCLQBetcontent:titleArray];
+        content  = [titleArray componentsJoinedByString:@"\n"];
     }else{
         self.labPassType.text = [self getPasstype:dic[@"passType"]];
         NSArray *titleArray = [Utility objFromJson:dic[@"ticketContent"]];
@@ -351,6 +356,57 @@
 
 }
 
+-(NSString *)reloadJCLQDataWithRec:(NSArray *)option type:(NSString *)playType andMatchLine:(NSString *)matchLine andMatchkey:(NSString *)matchKey{
+    
+    NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"JCLQCode" ofType: @"plist"]] ;
+    NSDictionary *contentArray;
+    NSInteger index;
+    NSMutableString*content = [NSMutableString string];
+    [content appendString:matchLine];
+    [content appendString:@":"];
+    switch ([playType integerValue]) {
+        case 1:
+            index = 100;
+            contentArray = dic[@"SF"];
+            
+            break;
+        case 2:
+            index = 200;
+            contentArray = dic[@"RFSF"];
+            
+            break;
+        case 4:
+            index = 400;
+            contentArray = dic[@"DXF"];
+            
+            break;
+        case 3:
+            index = 300;
+            contentArray = dic[@"SFC"];
+            
+            break;
+        default:
+            break;
+    }
+    
+    for (NSString *op in option) {
+        
+        NSString*type = [self getContentJCLQ:contentArray andOption:op];
+        NSString *odd = [self getOddWithOption:op matchKey:matchKey];
+        
+        if (odd.length == 0 || odd == nil) {
+            [content appendFormat:@"【%@】",type,odd];
+        }else{
+            [content appendFormat:@"【%@@%@】",type,odd];
+        }
+    }
+    
+    if (content.length >1) {
+        return content;
+    }
+    return @"";
+}
+
 -(NSString *)reloadDataWithRec:(NSArray *)option type:(NSString *)playType andMatchLine:(NSString *)matchLine andMatchkey:(NSString *)matchKey{
     
     NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"JingCaiOrderCode" ofType: @"plist"]] ;
@@ -407,15 +463,20 @@
     return @"";
 }
 
+-(NSString*)getContentJCLQ:(NSArray*)contentArray andOption:(NSString*)option{
+    for (NSDictionary *dic in contentArray) {
+        if (dic[option]!= nil) {
+            return dic[@"appear"];
+        }
+    }
+    return @"";
+}
+
 -(NSString*)getContent:(NSDictionary*)contentArray andOption:(NSString*)option{
     for (NSDictionary *dic in contentArray.allValues) {
-//        NSInteger type =  [dic[@"code"] integerValue]%100;
-//        if (type == [option integerValue]) {
-//            return dic[@"appear"];
-//        }
-                if (dic[option] != nil) {
-                    return dic[option];
-                }
+        if (dic[option] != nil) {
+                return dic[option];
+        }
     }
     return @"";
 }
@@ -434,8 +495,20 @@
     NSMutableArray *marr = [NSMutableArray arrayWithCapacity:0];
     
     for (NSDictionary  *itemDic in arr) {
-        
+
         NSString *str = [self reloadDataWithRec:itemDic[@"options"] type:itemDic[@"playType"] andMatchLine:itemDic[@"matchId"] andMatchkey:itemDic[@"matchKey"]];
+        [marr addObject:str];
+    }
+    return marr;
+}
+
+-(NSArray* )getJCLQBetcontent:(NSArray  *)arr{
+    
+    NSMutableArray *marr = [NSMutableArray arrayWithCapacity:0];
+    
+    for (NSDictionary  *itemDic in arr) {
+        
+        NSString *str = [self reloadJCLQDataWithRec:itemDic[@"options"] type:itemDic[@"playType"] andMatchLine:itemDic[@"matchId"] andMatchkey:itemDic[@"matchKey"]];
         [marr addObject:str];
     }
     return marr;
