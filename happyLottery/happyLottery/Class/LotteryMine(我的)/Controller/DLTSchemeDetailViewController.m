@@ -698,16 +698,21 @@
         }
         
         if (betcontent.count == 1) {
-            
-            DLTPlayViewController *lpVC = [[DLTPlayViewController alloc] init];
-            lpVC.isReBuy = YES;
-            if ([schemeDetail.lottery isEqualToString:@"DLT"]||[schemeDetail.lottery isEqualToString:@"SSQ"]){
+            if ([schemeDetail.lottery isEqualToString:@"DLT"]) {
+                DLTPlayViewController *lpVC = [[DLTPlayViewController alloc] init];
+                lpVC.isReBuy = YES;
                 lpVC.selectedNumber =betcontent;
+                lpVC.lottery = lottery_;
+                [self.navigationController pushViewController:lpVC animated:YES];
+            }
+            else{
+                SSQPlayViewController *lpVC = [[SSQPlayViewController alloc] init];
+                lpVC.isReBuy = YES;
+                lpVC.selectedNumber =betcontent;
+                lpVC.lottery = lottery_;
+                [self.navigationController pushViewController:lpVC animated:YES];
             }
             
-            
-            lpVC.lottery = lottery_;
-            [self.navigationController pushViewController:lpVC animated:YES];
         }else{
             if ([schemeDetail.lottery isEqualToString:@"DLT"]) {
                 DLTPlayViewController *lpVC = [[DLTPlayViewController alloc] init];

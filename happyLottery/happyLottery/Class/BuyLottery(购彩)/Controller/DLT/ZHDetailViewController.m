@@ -328,11 +328,8 @@
                                 str = mstr;
 
                             }
-                        }else{
-//                        str = [str stringByReplacingOccurrencesOfString:@"#" withString:@","];
-
                         }
-                        
+    
                         UIImage*backImage = [UIImage imageNamed:@"redBall.png"];
                         if (i == 1) {
                             backImage = [UIImage imageNamed: @"blueBall"];

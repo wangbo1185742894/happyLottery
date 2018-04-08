@@ -62,17 +62,13 @@
     [xiahuaBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, -45, 0, 0)];
     [xiahuaBtn addTarget:self action:@selector(lookHisOpenResult:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:xiahuaBtn];
-    
     [self showCurRoundInfo];
-    
 }
 
 -(void)lookHisOpenResult:(UIButton *)sender{
     sender.selected = !sender.selected;
     [self.delegate lookOpenHis:sender];
 }
-
-
 
 
 - (void)setNumberColor:(UILabel *)contentLabel{
@@ -104,7 +100,7 @@
     }
 //    if ([lottery.identifier isEqualToString:@"PL3"] ||[lottery.identifier isEqualToString:@"PL5"]) {
         CGRect titleFrame = self.bounds;
-        titleFrame.origin.x = 5;
+        titleFrame.origin.x = 15;
         titleFrame.size.width = 100;
         labelCurRoundInfoTitle = [[UILabel alloc] initWithFrame: titleFrame];
         labelCurRoundInfoTitle.backgroundColor = [UIColor clearColor];
@@ -117,9 +113,9 @@
             labelCurRoundInfoTitle.text = @"距离:未获得 截止:";
         }
         [self setNumberColor:labelCurRoundInfoTitle];
-        [self addSubview: labelCurRoundInfoTitle];
+        [self addSubview: labelCurRoundInfoTitle];  
         if (!_timeCountdownView) {
-            _timeCountdownView = [[LotteryTimeCountdownView alloc] initWithFrame:CGRectMake(56, 11,KscreenWidth - 150,20)];
+            _timeCountdownView = [[LotteryTimeCountdownView alloc] initWithFrame:CGRectMake(56, 10,KscreenWidth - 150,20)];
         }
 
         _timeCountdownView.timeCutType = TimeCutTypePlayPage;
