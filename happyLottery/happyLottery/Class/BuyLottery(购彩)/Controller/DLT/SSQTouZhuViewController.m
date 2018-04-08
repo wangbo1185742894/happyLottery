@@ -627,20 +627,7 @@
     }
     [self.navigationController popViewControllerAnimated:YES];
 }
-- (IBAction)actionAppend:(UIButton*)sender {
-    sender .selected = !sender.selected;
-    self.transaction.needZhuiJia =sender .selected;
-    
-    for (LotteryBet *bet in betsList) {
-        bet.costType = self.transaction.costType;
-        bet.needZhuiJia = self.transaction.needZhuiJia;
-    }
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
-        [tableViewContent_ reloadData];
-    });
-    [self update];
-}
+
 - (IBAction)actionSelectQiCount:(UIButton *)sender {
     for (UIButton *item in qiCountItem) {
         item.selected = NO;

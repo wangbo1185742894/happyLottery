@@ -28,6 +28,7 @@
 #import "LotteryPhaseInfoView.h"
 #import "LotteryWinNumHistoryViewController.h"
 #import "ZLAlertView.h"
+#import "WebViewController.h"
 
 //跳转到查遗漏的界面
 
@@ -219,22 +220,11 @@
 
 #pragma mark  玩法介绍
 - (void) showPlayMethod{
-    //2  dlt ,0 x115,1  jczq;
-     NSArray *infoArr = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"LotteryInstructionConfig" ofType: @"plist"]];
-    NSDictionary *infoDic = infoArr[1];;
-   
-    LotteryInstructionDetailViewController *detailVC = [[LotteryInstructionDetailViewController alloc] initWithNibName: @"LotteryInstructionDetailViewController" bundle: nil];
-    detailVC.lotteryDetailDic = infoDic;
-    [self.navigationController pushViewController: detailVC animated: YES];
-    
-    
-    
-//    LotteryInstructionViewController *instruceVC = [[LotteryInstructionViewController alloc]init];
-//    [instruceVC toDetailVC:1 andTarget:self];
-//    
-//    [self.navigationController pushViewController:instruceVC animated:YES];
-    
-    
+    WebViewController *webVC = [[WebViewController alloc]initWithNibName:@"WebViewController" bundle:nil];
+    webVC.type = @"html";
+    webVC.title = @"双色球玩法规则";
+    webVC.htmlName = @"ssq_play";
+    [self.navigationController pushViewController:webVC animated:YES];
 }
 
 

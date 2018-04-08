@@ -13,7 +13,6 @@
             <connections>
                 <outlet property="betOptionFunView" destination="59f-Vs-KTy" id="Lm8-Ur-O1H"/>
                 <outlet property="betOptionfunViewHeight" destination="a8Y-Al-lwn" id="raO-YF-1Xg"/>
-                <outlet property="btnAppend" destination="FeR-JG-loE" id="bee-iT-qx5"/>
                 <outlet property="btnMoniTouzhu" destination="xzA-cd-Tep" id="MGG-Wm-5d1"/>
                 <outlet property="btnZhenShiTouzhu" destination="3hc-je-Qjh" id="WbB-Xs-1D0"/>
                 <outlet property="mostBoundsLb" destination="px9-Xy-Z84" id="Ygu-8G-XB6"/>
@@ -424,21 +423,6 @@
                                 <outlet property="lableft" destination="hQg-UO-c1a" id="FwC-Pd-BgU"/>
                             </connections>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FeR-JG-loE">
-                            <rect key="frame" x="20" y="6" width="117" height="30"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="117" id="DkP-SS-eaA"/>
-                                <constraint firstAttribute="height" constant="30" id="YiY-AX-8Is"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <state key="normal" title="追加（每注3元）" image="dltcheckbox-default.png">
-                                <color key="titleColor" red="0.1450980392" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
-                            </state>
-                            <state key="selected" image="dltcheckbox.png"/>
-                            <connections>
-                                <action selector="actionAppend:" destination="-1" eventType="touchUpInside" id="18k-ao-eOZ"/>
-                            </connections>
-                        </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGB-wy-Jvh">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
                             <color key="backgroundColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -498,9 +482,7 @@
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="nEv-Lk-jCJ" secondAttribute="bottom" id="7Za-zy-e7G"/>
                         <constraint firstItem="5ag-TK-dhy" firstAttribute="top" secondItem="cGB-wy-Jvh" secondAttribute="bottom" constant="5" id="D4p-SM-dyY"/>
-                        <constraint firstItem="FeR-JG-loE" firstAttribute="top" secondItem="cGB-wy-Jvh" secondAttribute="bottom" constant="5" id="Hhw-WO-cyN"/>
                         <constraint firstItem="dFI-40-KRT" firstAttribute="leading" secondItem="59f-Vs-KTy" secondAttribute="leading" id="Lip-9s-KnP"/>
-                        <constraint firstItem="FeR-JG-loE" firstAttribute="leading" secondItem="59f-Vs-KTy" secondAttribute="leading" constant="20" id="Msn-4E-Mtj"/>
                         <constraint firstAttribute="trailing" secondItem="nEv-Lk-jCJ" secondAttribute="trailing" id="N0V-is-D4U"/>
                         <constraint firstItem="nEv-Lk-jCJ" firstAttribute="leading" secondItem="59f-Vs-KTy" secondAttribute="leading" id="T6I-Gv-6NT"/>
                         <constraint firstItem="cGB-wy-Jvh" firstAttribute="leading" secondItem="59f-Vs-KTy" secondAttribute="leading" id="T8x-Jt-RVH"/>
@@ -593,8 +575,6 @@
     <resources>
         <image name="dltbutton-default.png" width="91" height="30"/>
         <image name="dltbutton.png" width="91" height="30"/>
-        <image name="dltcheckbox-default.png" width="14" height="14"/>
-        <image name="dltcheckbox.png" width="14" height="14"/>
         <image name="encore.png" width="16" height="19"/>
         <image name="fengkuangjingcai-monitouzhu-weixuanze.png" width="87" height="30"/>
         <image name="fengkuangjingcai-monitouzhu-xuanze.png" width="87" height="30"/>
