@@ -12,6 +12,7 @@
 
 @implementation LotteryManager
 
+
 - (NSArray*) getAllLottery {
     NSArray *lotteryDStemp;
     NSArray *lotteryDSSource;
@@ -550,8 +551,9 @@
         url = APIGetJcgyjTicketOrderDetail;
     }else if ([lotteryCode isEqualToString:@"SSQ"]){
         url = APIGetSsqTicketOrderDetail;
-    }
-    else {
+    }else  if ([lotteryCode isEqualToString:@"JCLQ"]){
+        url = APIGetJclqTicketOrderDetail;
+    }else {
         url = APIGetJczqTicketOrderDetail;
     }
     SOAPRequest *request = [self requestForAPI: url withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
@@ -1242,9 +1244,9 @@
         }
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.delegate gotlistJcgyjItem:nil  errorMsg:@"服务器错误"];
+        [self.delegate gotJclqMatch:nil  errorMsg:@"服务器错误"];
     };
-    SOAPRequest* request = [self requestForAPI:APIlistJcgyjItem  withParam:nil];
+    SOAPRequest* request = [self requestForAPI:APIgetJclqMatch  withParam:nil];
     [self newRequestWithRequest:request
                          subAPI:SUBAPIDATA
       constructingBodyWithBlock:nil

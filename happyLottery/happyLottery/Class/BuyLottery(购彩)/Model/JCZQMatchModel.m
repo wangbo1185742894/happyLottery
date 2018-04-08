@@ -122,8 +122,8 @@
         title = @"";
     }
     return title;
-
 }
+
 
 -(NSMutableString *)getTitleForm:(NSDictionary *)titleDic andSp:(NSArray *)spArray andSelectArray:(NSArray *)selectArray andIndex:(NSInteger )baseIndex{
     NSMutableString *tit = [NSMutableString string];

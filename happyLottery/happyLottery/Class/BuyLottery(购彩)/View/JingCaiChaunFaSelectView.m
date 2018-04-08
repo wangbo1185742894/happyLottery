@@ -421,7 +421,133 @@
     [self removeFromSuperview];
 }
 
-
+-(void)showFromSuperViewJCLQ:(UIView *)supview{
+    
+    
+    NSMutableArray*chuanArray = [NSMutableArray arrayWithCapacity:0];
+    NSArray * array = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"JingCaiChuanTypeDic" ofType:@"plist"]];
+    if (self.jclqtransation.guanType == JCLQGuanTypeDanGuan) {
+        
+        NSInteger numGame =self.jclqtransation.matchSelectArray.count>8?8:self.jclqtransation.matchSelectArray.count;
+        
+        for (int i = 0; i<numGame; i++) {
+            if ([self.jclqtransation.playType isEqualToString:@"JCLQSFC"]) {
+                
+                if (i>=4) {
+                    break;
+                }else{
+                    
+                    NSDictionary *dic = array[i];
+                    NSArray *temp = [dic allKeys];
+                    [chuanArray addObjectsFromArray:temp];
+                }
+            }else{
+                NSDictionary *dic = array[i];
+                NSArray *temp = [dic allKeys];
+                [chuanArray addObjectsFromArray:temp];
+            }
+            
+        }
+        
+        NSArray * sortResult  = [chuanArray sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+            NSString * chuanFir = (NSString *)obj1;
+            NSString * chuanSec = (NSString *)obj2;
+            NSString * chuanFirNum = [chuanFir stringByReplacingOccurrencesOfString:@"串" withString:@""];
+            NSString * chuanSecNum = [chuanSec stringByReplacingOccurrencesOfString:@"串" withString:@""];
+            
+            int firSubFir = [[chuanFirNum substringToIndex:1] intValue];
+            int secSubFir = [[chuanSecNum substringToIndex:1] intValue];
+            if (firSubFir > secSubFir) {
+                return NSOrderedDescending;
+            }else if (firSubFir == secSubFir){
+                NSString *  firChuanSubNum = [chuanFir substringFromIndex:2];
+                NSString *  secChuanSubNum = [chuanSec substringFromIndex:2];
+                if ([firChuanSubNum intValue] > [secChuanSubNum intValue]) {
+                    return NSOrderedDescending;
+                }else{
+                    return NSOrderedAscending;
+                }
+            }else{
+                return NSOrderedAscending;
+            }
+        }];
+        
+        NSString *lastType = [sortResult lastObject];
+        
+        self.dataSource = sortResult;
+    }else{
+        
+        BOOL isDan = YES;
+        
+        NSInteger num = 0;
+        for (JCLQMatchModel *model in self.jclqtransation.matchSelectArray) {
+            for (NSString *state in model.SFCSelectMatch) {
+                num += [state integerValue];
+            }
+        }
+        
+        NSInteger numGame =self.jclqtransation.matchSelectArray.count>8?8:self.jclqtransation.matchSelectArray.count;
+        for (int i = 0; i< numGame; i++) {
+            if ([self.jclqtransation.playType isEqualToString:@"JCLQSFC"]||num!=0) {
+                
+                if (i>=4) {
+                    break;
+                }else{
+                    
+                    NSDictionary *dic = array[i];
+                    NSArray *temp = [dic allKeys];
+                    [chuanArray addObjectsFromArray:temp];
+                }
+            }else{
+                NSDictionary *dic = array[i];
+                NSArray *temp = [dic allKeys];
+                [chuanArray addObjectsFromArray:temp];
+            }
+            
+        }
+        
+        for (JCLQMatchModel *selectModel in self.jclqtransation.matchSelectArray) {
+            if (selectModel.isDanGuan == YES) {
+                isDan = YES;
+            }else{
+                
+                isDan = NO;
+                break;
+            }
+        }
+        
+        if (!isDan) {
+            [chuanArray removeObjectAtIndex:0];
+        }
+        
+        
+        
+        NSArray * sortResult  = [chuanArray sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+            NSString * chuanFir = (NSString *)obj1;
+            NSString * chuanSec = (NSString *)obj2;
+            NSString * chuanFirNum = [chuanFir stringByReplacingOccurrencesOfString:@"串" withString:@""];
+            NSString * chuanSecNum = [chuanSec stringByReplacingOccurrencesOfString:@"串" withString:@""];
+            
+            int firSubFir = [[chuanFirNum substringToIndex:1] intValue];
+            int secSubFir = [[chuanSecNum substringToIndex:1] intValue];
+            if (firSubFir > secSubFir) {
+                return NSOrderedDescending;
+            }else if (firSubFir == secSubFir){
+                NSString *  firChuanSubNum = [chuanFir substringFromIndex:2];
+                NSString *  secChuanSubNum = [chuanSec substringFromIndex:2];
+                if ([firChuanSubNum intValue] > [secChuanSubNum intValue]) {
+                    return NSOrderedDescending;
+                }else{
+                    return NSOrderedAscending;
+                }
+            }else{
+                return NSOrderedAscending;
+            }
+        }];
+        self.dataSource = sortResult;
+    }
+    [self handleDataSource:supview];
+}
 
 
 @end

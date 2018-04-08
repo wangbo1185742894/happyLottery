@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "JCZQMatchModel.h"
+#import "JCLQMatchModel.h"
 
 @interface TZSelectMatchCell : UITableViewCell
 
 -(void)loadData:(JCZQMatchModel *)model;
+-(void)loadDataJCLQ:(JCLQMatchModel *)model;
 
 @end

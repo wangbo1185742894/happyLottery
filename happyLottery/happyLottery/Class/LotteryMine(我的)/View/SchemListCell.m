@@ -87,6 +87,8 @@
         return @"冠亚军";
     }else if([code isEqualToString:@"SSQ"]){
         return @"双色球";
+    }else if([code isEqualToString:@"JCLQ"]){
+        return @"竞彩篮球";
     }
     return @"彩票";
 }

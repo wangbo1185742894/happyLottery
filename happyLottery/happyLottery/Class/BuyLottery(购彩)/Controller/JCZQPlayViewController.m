@@ -35,6 +35,7 @@
     LotteryProfileSelectView *profileSelectView;
     OptionSelectedView *optionView;
     JCZQMatchModel *curShowModel;
+    
 }
 @property (weak, nonatomic) IBOutlet UILabel *labSelectInfo;
 @property (weak, nonatomic) IBOutlet UITableView *tabJCZQListView;

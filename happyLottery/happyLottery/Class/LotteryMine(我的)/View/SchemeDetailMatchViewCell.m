@@ -58,8 +58,6 @@
         
     }
     
-    
-    
     if (modelDic.isShow) {
         topInfoView.hidden = NO;
         [btnNumIndex setTitle:[NSString stringWithFormat:@"%ld",modelDic.index] forState:0];
@@ -214,6 +212,33 @@
     
 }
 
+-(NSString *)getJCLQPlayTypeRecEn:(NSString *)playType{
+    
+    NSString*playTypeStr ;
+    switch ([playType integerValue]) {
+        case 1:
+            playTypeStr = @"SF";
+            
+            break;
+        case 2:
+            playTypeStr = @"RFSF";
+            
+            
+            break;
+        case 4:
+            playTypeStr = @"DXF";
+            break;
+        case 3:
+            
+            playTypeStr = @"SFC";
+            
+            break;
+        default:
+            break;
+    }
+    return playTypeStr;
+}
+
 -(NSString *)getPlayTypeRecEn:(NSString *)playType{
     
     NSString*playTypeStr ;
@@ -246,6 +271,33 @@
     return playTypeStr;
 }
 
+-(NSString *)getJCLQPlayTypeRec:(NSString *)playType{
+    
+    NSString*playTypeStr ;
+    switch ([playType integerValue]) {
+        case 1:
+            playTypeStr = @"胜负:";
+            
+            break;
+        case 2:
+            playTypeStr = @"让分胜负:";
+            
+            
+            break;
+        case 4:
+            playTypeStr = @"大小分";
+            break;
+        case 3:
+            
+            playTypeStr = @"胜分差";
+            
+            break;
+        default:
+            break;
+    }
+    return playTypeStr;
+}
+
 -(NSString *)getPlayTypeRec:(NSString *)playType{
     
     NSString*playTypeStr ;
@@ -268,9 +320,7 @@
             
             break;
         case 3:
-            
             playTypeStr = @"比分:";
-            
             break;
         default:
             break;
@@ -330,6 +380,57 @@
     return @"";
 }
 
+-(NSString *)reloadDataWithRecJCLQ:(NSArray *)option type:(NSString *)playType andMatchKey:(NSString *)matchKey{
+    
+    NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"JCLQCode" ofType: @"plist"]] ;
+    NSArray *contentArray;
+    NSInteger index;
+    NSMutableString*content = [NSMutableString string];
+    switch ([playType integerValue]) {
+        case 1:
+            index = 100;
+            contentArray = dic[@"SF"];
+            
+            break;
+        case 2:
+            index = 200;
+            contentArray = dic[@"RFSF"];
+            
+            break;
+        case 4:
+            index = 400;
+            contentArray = dic[@"DXF"];
+            
+            break;
+        case 3:
+            index = 300;
+            contentArray = dic[@"SFC"];
+            
+            break;
+        default:
+            break;
+    }
+    
+    for (NSString *op in option) {
+        
+        NSString*type = [self getContentJCLQ:contentArray andOption:op];
+        [content appendFormat:@"%@",type];
+        
+        if (itemDic != nil) {
+            [content appendString:[NSString stringWithFormat:@"(%.2f)",[[self getOddWithOption:op matchKey:matchKey andPlayType:[playType integerValue]] doubleValue] ]];
+        }
+        [content appendString:@", "];
+        self.num ++;
+    }
+    
+    
+    
+    if (content.length >1) {
+        return content;
+    }
+    return @"";
+}
+
 -(NSString *)reloadDataWithRec:(NSArray *)option type:(NSString *)playType andMatchKey:(NSString *)matchKey{
     
     NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"JingCaiCode" ofType: @"plist"]] ;
@@ -368,7 +469,7 @@
     
     for (NSString *op in option) {
         
-        NSString*type = [self getContentJCZQ:contentArray andOption:op];
+        NSString*type = [self getContent:contentArray andOption:op];
         [content appendFormat:@"%@",type];
         
         if (itemDic != nil) {
@@ -386,15 +487,15 @@
     return @"";
 }
 
--(NSString*)getContentJCZQ:(NSDictionary*)contentArray andOption:(NSString*)option{
-    for (NSDictionary *dic in contentArray.allValues) {
-        if ([dic[@"code"] integerValue]  == [option integerValue]) {
-            return dic[@"appear"];
-        }
+-(NSString*)getContentJCLQ:(NSArray*)contentArray andOption:(NSString*)option{
+    NSDictionary *dic = contentArray[[option integerValue]];
+    if (dic != nil) {
+        
+        return dic[@"appear"];
     }
-    return nil;
+    
+    return @"";
 }
-
 -(NSString*)getContent:(NSDictionary*)contentArray andOption:(NSString*)option{
     for (NSDictionary *dic in contentArray.allValues) {
         if (dic[option] != nil) {
@@ -458,6 +559,120 @@
         return @"";
     }
     
+}
+
+-(void)refreshDataJCLQ:(JlBetContent  *)modelDic andResult:(NSArray<JCLQOpenResult *> *)resultArray{
+    for (UIView *subView in viewBetContent.subviews) {
+        [subView removeFromSuperview];
+        
+    }
+    
+    if (modelDic.isShow) {
+        topInfoView.hidden = NO;
+        [btnNumIndex setTitle:[NSString stringWithFormat:@"%ld",modelDic.index] forState:0];
+        NSArray *passType = [Utility objFromJson:modelDic.passTypes];
+        topInfoViewHeight.constant =  ((passType.count / 7) + 1) * 15 + 50;
+        labBeiCount.text = [NSString stringWithFormat:@"%@倍",modelDic.multiple];
+        labPassType.text = [self getChuanFa:modelDic.passTypes];
+        
+        disTopL.constant = 8;
+        disTopR.constant = 8;
+        
+        disBottomL.constant = 0;
+        disBottomR.constant = 0;
+        labBottom.hidden = YES;
+        
+    }else{
+        topInfoView.hidden = YES;
+        topInfoViewHeight.constant = 0;
+        
+        if (modelDic.isLast == YES) {
+            disTopL.constant = 0;
+            disTopR.constant = 0;
+            
+            disBottomL.constant = 7;
+            disBottomR.constant = 7;
+            labBottom.hidden = NO;
+        }else{
+            disTopL.constant = 0;
+            disTopR.constant = 0;
+            
+            disBottomL.constant = 0;
+            disBottomR.constant = 0;
+            labBottom.hidden = YES;
+        }
+        
+        
+    }
+    
+    JCLQOpenResult *open;
+    for (JCLQOpenResult *openItem in resultArray) {
+        if ([openItem.matchKey integerValue] == [modelDic.matchInfo[@"matchKey"] integerValue]) {
+            open = openItem;
+        }
+    }
+    labMatchLine.text = modelDic.matchInfo[@"matchId"];
+    labGuestName.text = [[modelDic.matchInfo[@"clash"] componentsSeparatedByString:@"VS"] firstObject];
+    labHomeName.text = [[modelDic.matchInfo[@"clash"] componentsSeparatedByString:@"VS"] lastObject];
+    
+    if (modelDic.virtualSp != nil) {
+        itemDic = [Utility objFromJson:modelDic.virtualSp];
+    }else{
+        itemDic = nil;
+    }
+    
+    NSString *playType;
+    NSString *option;
+    NSString *result;
+    float curY = 5;
+    
+    viewBetContent.mj_w = KscreenWidth - 20;
+    for (NSDictionary *itemDic in modelDic.matchInfo[@"betPlayTypes"]) {
+        
+        option = [self reloadDataWithRecJCLQ:itemDic[@"options"] type:itemDic[@"playType"] andMatchKey:modelDic.matchInfo[@"matchKey"]];
+        
+        NSString *funcName = [self getJCLQPlayTypeRecEn:itemDic[@"playType"]] ;
+        SEL func = NSSelectorFromString(funcName);
+        if ([open respondsToSelector:func]) {
+            if ([open performSelector:func withObject:nil] == nil) {
+                result = @"已取消";
+            }else{
+                
+                result = [self reloadDataWithRecResult:@[[open performSelector:func withObject:nil]] type:itemDic[@"playType"]];
+            }
+        }
+        
+        float height = [option boundingRectWithSize:CGSizeMake(KscreenWidth - 110, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14]} context:nil].size.height;
+        height  = height > 25 ? height:25;
+        MGLabel * labOption = [self creactLab:option andFrame:CGRectMake(90, curY, KscreenWidth - 110, height)];
+        labOption.keyWord = result;
+        labOption.keyWordColor = SystemRed;
+        [viewBetContent addSubview:labOption];
+        
+        playType = [self getJCLQPlayTypeRec:itemDic[@"playType"]];
+        MGLabel * labPlayType = [self creactLab:playType andFrame:CGRectMake(5, curY, 80, height)];
+        labPlayType.textColor = SystemBlue;
+        [viewBetContent addSubview:labPlayType];
+        
+        curY += height;
+    }
+    
+    labResult.textColor = SystemRed;
+    labResult.keyWord = @"赛果:";
+    if (open == nil) {
+        labResult.text = @"赛果:--:--";
+    }else{
+        if ([open.matchStatus isEqualToString:@"CANCLE"]) {
+            labResult.text = @"赛果:取消";
+        }else if ([open.matchStatus isEqualToString:@"PAUSE"]){
+            labResult.text = @"赛果:暂停";
+        }else{
+            labResult.text = [NSString stringWithFormat:@"赛果:%@:%@",open.homeScore,open.guestScore];
+        }
+        
+    }
+    
+    labResult.keyWordColor = SystemBlue;
 }
 
 @end

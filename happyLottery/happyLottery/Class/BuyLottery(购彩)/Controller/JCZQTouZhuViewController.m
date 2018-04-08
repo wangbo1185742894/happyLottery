@@ -240,7 +240,6 @@
     btnZhenShiTouzhu.selected = NO;
     sender.selected = YES;
     [self updataTouzhuInfo];
-    
 }
 
 

@@ -82,7 +82,7 @@
         labBetCost.text = [NSString stringWithFormat:@"%@积分",model.betCost];
     }
     
-    if ([model.lottery isEqualToString:@"JCZQ"]||[model.lottery isEqualToString:@"JCGJ"]||[model.lottery isEqualToString:@"JCGYJ"]) {
+    if ([model.lottery isEqualToString:@"JCZQ"]||[model.lottery isEqualToString:@"JCGJ"]||[model.lottery isEqualToString:@"JCGYJ"] || [model.lottery isEqualToString:@"JCLQ"]) {
          labUnit.text = [NSString stringWithFormat:@"%@注",model.units];
     }else{
          labUnit.text = [NSString stringWithFormat:@"%@注%@倍",model.units,model.multiple];

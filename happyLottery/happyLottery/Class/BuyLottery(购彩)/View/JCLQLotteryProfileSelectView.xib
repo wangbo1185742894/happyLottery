@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="JCLQLotteryProfileSelectView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fQU-b5-TNF">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0WI-oX-CFv">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wLA-O8-p8L">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guoguan.png" translatesAutoresizingMaskIntoConstraints="NO" id="eyd-X2-ZgK">
+                            <rect key="frame" x="97.5" y="11.5" width="180" height="18"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="18" id="2YC-Pj-SFM"/>
+                                <constraint firstAttribute="width" constant="180" id="hgC-Qb-nWa"/>
+                            </constraints>
+                        </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T7H-Oc-q4H">
+                            <rect key="frame" x="0.0" y="35" width="375" height="80"/>
+                            <subviews>
+                                <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BRZ-fb-pdb">
+                                    <rect key="frame" x="252.5" y="6" width="114.5" height="31"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <state key="normal" title="胜分差" backgroundImage="fangkuangjingcainomal.png"/>
+                                    <state key="selected" backgroundImage="wukuangwuyuanjiaoselect.png"/>
+                                    <connections>
+                                        <action selector="actionPlayTypeSelect:" destination="iN0-l3-epB" eventType="touchUpInside" id="htv-WI-uWv"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JzH-5P-KMx">
+                                    <rect key="frame" x="8" y="6" width="114.5" height="31"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <state key="normal" title="胜负" backgroundImage="fangkuangjingcainomal.png"/>
+                                    <state key="selected" backgroundImage="wukuangwuyuanjiaoselect.png"/>
+                                    <connections>
+                                        <action selector="actionPlayTypeSelect:" destination="iN0-l3-epB" eventType="touchUpInside" id="jNe-tg-uqm"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VnE-lM-pCO">
+                                    <rect key="frame" x="130.5" y="6" width="114" height="31"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <state key="normal" title="让分胜负" backgroundImage="fangkuangjingcainomal.png"/>
+                                    <state key="selected" backgroundImage="wukuangwuyuanjiaoselect.png"/>
+                                    <connections>
+                                        <action selector="actionPlayTypeSelect:" destination="iN0-l3-epB" eventType="touchUpInside" id="h4s-wC-ktg"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lYJ-g2-nUE">
+                                    <rect key="frame" x="8" y="43" width="114.5" height="31"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <state key="normal" title="大小分" backgroundImage="fangkuangjingcainomal.png"/>
+                                    <state key="selected" backgroundImage="wukuangwuyuanjiaoselect.png"/>
+                                    <connections>
+                                        <action selector="actionPlayTypeSelect:" destination="iN0-l3-epB" eventType="touchUpInside" id="Pko-yX-J8V"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="104" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5TT-YR-Kji">
+                                    <rect key="frame" x="130.5" y="43" width="114" height="31"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <state key="normal" title="混合过关" backgroundImage="fangkuangjingcainomal.png"/>
+                                    <state key="selected" backgroundImage="wukuangwuyuanjiaoselect.png"/>
+                                    <connections>
+                                        <action selector="actionPlayTypeSelect:" destination="iN0-l3-epB" eventType="touchUpInside" id="Hrc-Gu-OS3"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="80" id="0xr-I0-ypD"/>
+                                <constraint firstItem="VnE-lM-pCO" firstAttribute="width" secondItem="JzH-5P-KMx" secondAttribute="width" id="26B-h9-vVK"/>
+                                <constraint firstItem="lYJ-g2-nUE" firstAttribute="leading" secondItem="T7H-Oc-q4H" secondAttribute="leading" constant="8" id="3dE-uz-gTR"/>
+                                <constraint firstItem="5TT-YR-Kji" firstAttribute="top" secondItem="VnE-lM-pCO" secondAttribute="bottom" constant="6" id="AuM-B3-leG"/>
+                                <constraint firstItem="BRZ-fb-pdb" firstAttribute="leading" secondItem="VnE-lM-pCO" secondAttribute="trailing" constant="8" id="BGg-wk-r8s"/>
+                                <constraint firstItem="JzH-5P-KMx" firstAttribute="top" secondItem="T7H-Oc-q4H" secondAttribute="top" constant="6" id="BsD-vA-Ilz"/>
+                                <constraint firstItem="5TT-YR-Kji" firstAttribute="leading" secondItem="lYJ-g2-nUE" secondAttribute="trailing" constant="8" id="Cdl-Bp-TH5"/>
+                                <constraint firstItem="BRZ-fb-pdb" firstAttribute="height" secondItem="JzH-5P-KMx" secondAttribute="height" id="Dsj-SW-WZu"/>
+                                <constraint firstAttribute="bottom" secondItem="5TT-YR-Kji" secondAttribute="bottom" constant="6" id="F8J-fC-jDy"/>
+                                <constraint firstItem="5TT-YR-Kji" firstAttribute="height" secondItem="JzH-5P-KMx" secondAttribute="height" id="HBs-Tk-IM3"/>
+                                <constraint firstAttribute="bottom" secondItem="lYJ-g2-nUE" secondAttribute="bottom" constant="6" id="HWq-dz-yEc"/>
+                                <constraint firstItem="5TT-YR-Kji" firstAttribute="width" secondItem="JzH-5P-KMx" secondAttribute="width" id="Jha-RI-JM5"/>
+                                <constraint firstAttribute="trailing" secondItem="BRZ-fb-pdb" secondAttribute="trailing" constant="8" id="Jnz-CD-HBw"/>
+                                <constraint firstItem="lYJ-g2-nUE" firstAttribute="width" secondItem="JzH-5P-KMx" secondAttribute="width" id="PQt-JT-Lh1"/>
+                                <constraint firstItem="BRZ-fb-pdb" firstAttribute="top" secondItem="T7H-Oc-q4H" secondAttribute="top" constant="6" id="PRq-eP-JT1"/>
+                                <constraint firstItem="JzH-5P-KMx" firstAttribute="leading" secondItem="T7H-Oc-q4H" secondAttribute="leading" constant="8" id="VGy-Ba-axP"/>
+                                <constraint firstItem="VnE-lM-pCO" firstAttribute="leading" secondItem="JzH-5P-KMx" secondAttribute="trailing" constant="8" id="WX1-8O-zTl"/>
+                                <constraint firstItem="lYJ-g2-nUE" firstAttribute="height" secondItem="JzH-5P-KMx" secondAttribute="height" id="dtD-v0-n57"/>
+                                <constraint firstItem="VnE-lM-pCO" firstAttribute="height" secondItem="JzH-5P-KMx" secondAttribute="height" id="elt-0i-dKK"/>
+                                <constraint firstItem="VnE-lM-pCO" firstAttribute="top" secondItem="T7H-Oc-q4H" secondAttribute="top" constant="6" id="fcT-lx-55y"/>
+                                <constraint firstItem="lYJ-g2-nUE" firstAttribute="top" secondItem="JzH-5P-KMx" secondAttribute="bottom" constant="6" id="lNZ-hn-FDY"/>
+                                <constraint firstItem="BRZ-fb-pdb" firstAttribute="width" secondItem="JzH-5P-KMx" secondAttribute="width" id="pqO-ez-1D5"/>
+                            </constraints>
+                        </view>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="danguan.png" translatesAutoresizingMaskIntoConstraints="NO" id="9Fw-gL-pjo">
+                            <rect key="frame" x="97.5" y="131" width="180" height="18"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="180" id="9EC-CQ-gdn"/>
+                                <constraint firstAttribute="height" constant="18" id="gmL-Le-5hM"/>
+                            </constraints>
+                        </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1wU-eC-OOs">
+                            <rect key="frame" x="0.0" y="155" width="375" height="80"/>
+                            <subviews>
+                                <button opaque="NO" tag="202" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z2C-1N-Vkf">
+                                    <rect key="frame" x="252.5" y="6" width="114.5" height="31"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <state key="normal" title="胜分差" backgroundImage="fangkuangjingcainomal.png"/>
+                                    <state key="selected" backgroundImage="wukuangwuyuanjiaoselect.png"/>
+                                    <connections>
+                                        <action selector="actionPlayTypeSelect:" destination="iN0-l3-epB" eventType="touchUpInside" id="LmX-OK-P9p"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="200" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Chq-8Z-awH">
+                                    <rect key="frame" x="8" y="6" width="114.5" height="31"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <state key="normal" title="胜负" backgroundImage="fangkuangjingcainomal.png"/>
+                                    <state key="selected" backgroundImage="wukuangwuyuanjiaoselect.png"/>
+                                    <connections>
+                                        <action selector="actionPlayTypeSelect:" destination="iN0-l3-epB" eventType="touchUpInside" id="U3o-lk-xs4"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="201" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cgb-eL-eO3">
+                                    <rect key="frame" x="130" y="6" width="114.5" height="31"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <state key="normal" title="让分胜负" backgroundImage="fangkuangjingcainomal.png"/>
+                                    <state key="selected" backgroundImage="wukuangwuyuanjiaoselect.png"/>
+                                    <connections>
+                                        <action selector="actionPlayTypeSelect:" destination="iN0-l3-epB" eventType="touchUpInside" id="HGa-pb-bY6"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="203" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epA-L7-C4n">
+                                    <rect key="frame" x="8" y="43" width="114.5" height="31"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <state key="normal" title="大小分" backgroundImage="fangkuangjingcainomal.png"/>
+                                    <state key="selected" backgroundImage="wukuangwuyuanjiaoselect.png"/>
+                                    <connections>
+                                        <action selector="actionPlayTypeSelect:" destination="iN0-l3-epB" eventType="touchUpInside" id="MdP-xd-lFb"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="80" id="2S8-8z-geO"/>
+                                <constraint firstItem="z2C-1N-Vkf" firstAttribute="leading" secondItem="Cgb-eL-eO3" secondAttribute="trailing" constant="8" id="4Fm-Lm-USx"/>
+                                <constraint firstAttribute="trailing" secondItem="z2C-1N-Vkf" secondAttribute="trailing" constant="8" id="5eF-b7-n0t"/>
+                                <constraint firstItem="z2C-1N-Vkf" firstAttribute="width" secondItem="Chq-8Z-awH" secondAttribute="width" id="9IW-If-vwy"/>
+                                <constraint firstItem="epA-L7-C4n" firstAttribute="top" secondItem="Chq-8Z-awH" secondAttribute="bottom" constant="6" id="9dk-mP-Jzg"/>
+                                <constraint firstItem="Cgb-eL-eO3" firstAttribute="top" secondItem="1wU-eC-OOs" secondAttribute="top" constant="6" id="CDF-Zd-MeS"/>
+                                <constraint firstItem="z2C-1N-Vkf" firstAttribute="height" secondItem="Chq-8Z-awH" secondAttribute="height" id="CvN-pX-Fk9"/>
+                                <constraint firstItem="epA-L7-C4n" firstAttribute="height" secondItem="Chq-8Z-awH" secondAttribute="height" id="Har-U8-C0f"/>
+                                <constraint firstItem="epA-L7-C4n" firstAttribute="leading" secondItem="1wU-eC-OOs" secondAttribute="leading" constant="8" id="TLq-Lu-Bdb"/>
+                                <constraint firstItem="Cgb-eL-eO3" firstAttribute="height" secondItem="Chq-8Z-awH" secondAttribute="height" id="Va7-Br-c4O"/>
+                                <constraint firstItem="Chq-8Z-awH" firstAttribute="leading" secondItem="1wU-eC-OOs" secondAttribute="leading" constant="8" id="WlJ-Xm-HzA"/>
+                                <constraint firstItem="Cgb-eL-eO3" firstAttribute="width" secondItem="Chq-8Z-awH" secondAttribute="width" id="afX-6J-677"/>
+                                <constraint firstItem="Chq-8Z-awH" firstAttribute="top" secondItem="1wU-eC-OOs" secondAttribute="top" constant="6" id="bXr-v4-5Lb"/>
+                                <constraint firstItem="z2C-1N-Vkf" firstAttribute="top" secondItem="1wU-eC-OOs" secondAttribute="top" constant="6" id="euF-ad-J78"/>
+                                <constraint firstItem="epA-L7-C4n" firstAttribute="width" secondItem="Chq-8Z-awH" secondAttribute="width" id="hUc-Sh-yqq"/>
+                                <constraint firstItem="Cgb-eL-eO3" firstAttribute="leading" secondItem="Chq-8Z-awH" secondAttribute="trailing" constant="8" id="jWx-8j-s4g"/>
+                                <constraint firstAttribute="bottom" secondItem="epA-L7-C4n" secondAttribute="bottom" constant="6" id="nys-bX-45s"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="wLA-O8-p8L" secondAttribute="trailing" id="0Ho-nB-zjI"/>
+                        <constraint firstAttribute="height" constant="240" id="6JM-bq-gCt"/>
+                        <constraint firstItem="T7H-Oc-q4H" firstAttribute="top" secondItem="eyd-X2-ZgK" secondAttribute="bottom" constant="5.5" id="90e-ci-lmh"/>
+                        <constraint firstItem="wLA-O8-p8L" firstAttribute="leading" secondItem="0WI-oX-CFv" secondAttribute="leading" id="Epp-RY-m8r"/>
+                        <constraint firstAttribute="trailing" secondItem="1wU-eC-OOs" secondAttribute="trailing" id="Hau-Di-Kqf"/>
+                        <constraint firstItem="eyd-X2-ZgK" firstAttribute="centerX" secondItem="0WI-oX-CFv" secondAttribute="centerX" id="KIc-Xv-F1U"/>
+                        <constraint firstAttribute="bottom" secondItem="wLA-O8-p8L" secondAttribute="bottom" id="QSh-Gf-5Hr"/>
+                        <constraint firstItem="eyd-X2-ZgK" firstAttribute="top" secondItem="0WI-oX-CFv" secondAttribute="top" constant="11.5" id="STS-CH-CNW"/>
+                        <constraint firstAttribute="trailing" secondItem="T7H-Oc-q4H" secondAttribute="trailing" id="Z0q-Xh-ef9"/>
+                        <constraint firstItem="9Fw-gL-pjo" firstAttribute="top" secondItem="T7H-Oc-q4H" secondAttribute="bottom" constant="16" id="Z2G-ge-9OA"/>
+                        <constraint firstItem="1wU-eC-OOs" firstAttribute="top" secondItem="9Fw-gL-pjo" secondAttribute="bottom" constant="6" id="fKY-Fz-hsY"/>
+                        <constraint firstItem="1wU-eC-OOs" firstAttribute="leading" secondItem="0WI-oX-CFv" secondAttribute="leading" id="mu6-jt-QWx"/>
+                        <constraint firstItem="T7H-Oc-q4H" firstAttribute="leading" secondItem="0WI-oX-CFv" secondAttribute="leading" id="nas-Te-DhO"/>
+                        <constraint firstItem="wLA-O8-p8L" firstAttribute="top" secondItem="0WI-oX-CFv" secondAttribute="top" id="oPE-Rf-Ry4"/>
+                        <constraint firstItem="9Fw-gL-pjo" firstAttribute="centerX" secondItem="0WI-oX-CFv" secondAttribute="centerX" id="xri-9I-oLd"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="fQU-b5-TNF" secondAttribute="trailing" id="0hL-En-l2B"/>
+                <constraint firstItem="fQU-b5-TNF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="AOM-0I-bam"/>
+                <constraint firstAttribute="bottom" secondItem="fQU-b5-TNF" secondAttribute="bottom" id="FVK-Ss-K2s"/>
+                <constraint firstItem="0WI-oX-CFv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="OGM-NH-YbJ"/>
+                <constraint firstItem="0WI-oX-CFv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Zg8-xd-kRT"/>
+                <constraint firstItem="fQU-b5-TNF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="sV4-Xl-FXT"/>
+                <constraint firstAttribute="trailing" secondItem="0WI-oX-CFv" secondAttribute="trailing" id="v6j-WW-Gg9"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="lotteryProfileItemView" destination="0WI-oX-CFv" id="SnL-8a-wQC"/>
+                <outletCollection property="profileSelectArray" destination="JzH-5P-KMx" id="q2E-bI-Z8x"/>
+                <outletCollection property="profileSelectArray" destination="VnE-lM-pCO" id="umn-NM-ZH2"/>
+                <outletCollection property="profileSelectArray" destination="BRZ-fb-pdb" id="Llj-eG-C3B"/>
+                <outletCollection property="profileSelectArray" destination="5TT-YR-Kji" id="aTk-WO-5b6"/>
+                <outletCollection property="profileSelectArray" destination="lYJ-g2-nUE" id="r5t-88-3ip"/>
+                <outletCollection property="profileSelectArray" destination="z2C-1N-Vkf" id="NC7-Hl-YRb"/>
+                <outletCollection property="profileSelectArray" destination="Cgb-eL-eO3" id="CvE-2q-Ltz"/>
+                <outletCollection property="profileSelectArray" destination="Chq-8Z-awH" id="Q7y-I8-kbM"/>
+                <outletCollection property="profileSelectArray" destination="epA-L7-C4n" id="HAS-V8-Kj8"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="53.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="danguan.png" width="127" height="11"/>
+        <image name="fangkuangjingcainomal.png" width="105" height="30"/>
+        <image name="guoguan.png" width="127" height="11"/>
+        <image name="wukuangwuyuanjiaoselect.png" width="83" height="35"/>
+    </resources>
+</document>
