@@ -91,10 +91,31 @@ typedef enum : NSUInteger {
     transaction.guanType = JCLQGuanTypeGuoGuan;
     [self .lotteryMan getJclqMatch:nil];
     [self showLoadingText:@"正在加载"];
+    [self setRightBarItems];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(acitonDeleteMatchForTouzhu:) name:@"NSNotificationDeleteMatchForPlay" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(cleanAllSelect) name:@"NSNotificationDeleteAll" object:nil];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(tabViewRefreshData:) name:@"NSNotificationCenterTouzhuReloadData" object:nil];
+}
+
+- (void) optionRightButtonAction {
+    //    if (isShowFLag) {
+    //        return;
+    //    }
+    
+    NSArray *titleArr = @[@" 开奖详情",
+                          @" 玩法规则"];
+    CGFloat optionviewWidth = 100;
+    CGFloat optionviewCellheight = 38;
+    CGSize mainSize = [UIScreen mainScreen].bounds.size;
+    if (optionView == nil) {
+           optionView = [[OptionSelectedView alloc] initWithFrame:CGRectMake(mainSize.width - optionviewWidth, 64, optionviewWidth, optionviewCellheight * titleArr.count) andTitleArr:titleArr];
+    }else{
+        optionView.hidden = NO;
+    }
+    
+    optionView.delegate = self;
+    [self.view.window addSubview:optionView];
 }
 
 -(void)setTitleView{
@@ -926,33 +947,22 @@ typedef enum : NSUInteger {
     }
     
 }
-- (void)optionRightButtonAction{
-    //    NSLog(@"haha");
-    NSArray *titleArr = @[TextPlayMethodInd,
-                          TextLotteryWinHistory,];
-    CGFloat optionviewWidth = 100;
-    CGFloat optionviewCellheight = 38;
-    CGSize mainSize = [UIScreen mainScreen].bounds.size;
-    if (!optionView) {
-        optionView = [[OptionSelectedView alloc] initWithFrame:CGRectMake(mainSize.width - optionviewWidth, 64, optionviewWidth, optionviewCellheight * titleArr.count) andTitleArr:titleArr];
-        optionView.delegate = self;
-    }
+
+-(void)setRightBarItems{
     
-    
-//    [self.view addSubview:optionView];
-    [[UIApplication sharedApplication].keyWindow addSubview:optionView];
+    UIBarButtonItem *itemQuery = [self creatBarItem:@" 助手" icon:@"helper.png" andFrame:CGRectMake(0, 10, 65, 25) andAction:@selector(optionRightButtonAction)];
+    self.navigationItem.rightBarButtonItems = @[itemQuery];
 }
+
 - (void)optionDidSelacted:(OptionSelectedView *)optionSelectedView andIndex:(NSInteger)index{
-    if (index == 0) {
+    if (index == 1) {
         //clear selection
         [self showPlayMethod];
-        NSLog(@"玩法");
-    }else if (index == 1){
+        NSLog(@"玩法介绍");
+    }else if (index == 0){
         //        [self showExtrendViewCtr];
         [self showWinHistoryViewCtr];
         NSLog(@"开奖历史");
-    }else if (index == 2){
-        //
     }
 }
 
@@ -1032,6 +1042,8 @@ typedef enum : NSUInteger {
 
 }
 -(void)showProfileType{
-    profileSelectView.hidden = !profileSelectView.hidden;
+    optionView.hidden = YES;
 }
+
+
 @end
