@@ -975,7 +975,11 @@ typedef enum : NSUInteger {
     [self.navigationController pushViewController: detailVC animated: YES];
 }
 - (void) showWinHistoryViewCtr{
-    
+    WebCTZQHisViewController * playViewVC = [[WebCTZQHisViewController alloc]init];
+    NSString *strUrl = [NSString stringWithFormat:@"%@/app/award/jlOpenAward",H5BaseAddress];
+    playViewVC.pageUrl = [NSURL URLWithString:strUrl];
+    playViewVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:playViewVC animated:YES];
 }
 
 -(void)jclqlotteryProfileSelectViewDelegate:(JCZQProfile *)lotteryPros andPlayType:(JCLQGuanType)playType andRes:(NSString *)res{

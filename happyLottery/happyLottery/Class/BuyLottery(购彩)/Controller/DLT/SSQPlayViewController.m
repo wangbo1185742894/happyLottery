@@ -821,7 +821,7 @@
 
 - (void) showWinHistoryViewCtr{
     WebCTZQHisViewController * playViewVC = [[WebCTZQHisViewController alloc]init];
-    NSString *strUrl = [NSString stringWithFormat:@"%@/app/award/dltOpenAward",H5BaseAddress];
+    NSString *strUrl = [NSString stringWithFormat:@"%@/app/award/ssqOpenAward",H5BaseAddress];
     playViewVC.pageUrl = [NSURL URLWithString:strUrl];
     playViewVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:playViewVC animated:YES];
