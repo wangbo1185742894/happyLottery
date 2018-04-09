@@ -19,7 +19,6 @@
 
 
 
-
 @end
 
 @implementation WinResultTableCell
@@ -33,12 +32,14 @@
 
     // Configure the view for the selected state
 }
+
 - (void)refreshWithGYJInfo:(NSString *)info{
     NSDictionary * openRes = [Utility objFromJson:info];
     self.winNotLa.text = [NSString stringWithFormat:@"%@  %@",openRes[@"indexNumber"],openRes[@"clash"]];
 }
-- (void)refreshWithInfo:(NSString *)info{
 
+- (void)refreshWithInfo:(NSString *)info{
+    
     NSLog(@"12138 数字彩开奖结果： <<%@>> ",info);
     
     if ([info isEqualToString:@"出票失败"]) {
@@ -56,7 +57,7 @@
         self.winNotLa.text = @"出票失败";
         return;
     }
-  
+    
     if([info isEqualToString:@"未开奖"]||[info isEqualToString:@"(null)"]||[info isEqualToString:@""] || info == nil){
         _winNotLa.hidden = NO;
         _winNotLa.text = @"等待开奖";
@@ -73,12 +74,17 @@
         return;
     }
     _winNotLa.hidden = YES;
+    NSString * result;
     if ([info rangeOfString:@"#"].length>0) {
-       info = [info stringByReplacingOccurrencesOfString:@"#" withString:@","];
+        //添加双色球
+        NSRange range = [info rangeOfString:@"#"]; //现获取要截取的字符串位置
+        result = [info substringToIndex:range.location]; //截取字符串
+        info = [info stringByReplacingOccurrencesOfString:@"#" withString:@","];
     }
+    NSArray *numRedArr = [result componentsSeparatedByString:@","];
     NSArray *numArr = [info componentsSeparatedByString:@","];
     if (numArr.count == 5) {
-    
+        
         for (NSInteger i = 0; i<numArr.count; i++) {
             UIButton *btn = _redBallArr[i];
             [btn setTitle:numArr[i] forState:UIControlStateNormal];
@@ -91,6 +97,7 @@
             btn.hidden = YES;
         }
     }else if(numArr.count == 7){
+        //双色球
         for (NSInteger i = 0; i<5; i++) {
             UIButton *btn = _redBallArr[i];
             [btn setTitle:numArr[i] forState:UIControlStateNormal];
@@ -98,8 +105,15 @@
         for (NSInteger i = 5; i<numArr.count; i++) {
             UIButton *btn = _blueBallArr[i - 5];
             [btn setTitle:numArr[i] forState:UIControlStateNormal];
+            //添加双色球
+            if (numRedArr.count == 6 && i == 5 ) {
+                [btn setBackgroundImage:[UIImage imageNamed:@"redBall.png"] forState:UIControlStateNormal];
+            }
+            else {
+                [btn setBackgroundImage:[UIImage imageNamed:@"blueBall.png"] forState:UIControlStateNormal];
+            }
             btn.hidden = NO;
-
+            
         }
         _redBallCenter.constant = 0;
         //添加 大乐透开奖号码的显示

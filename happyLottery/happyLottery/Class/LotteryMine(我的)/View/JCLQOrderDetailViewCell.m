@@ -71,6 +71,8 @@
         self.disLeftPlayTypeContent.constant = -self.labPlayType.mj_w - 20;
     }
     else if ([dic[@"lotteryCode"] isEqualToString:@"SSQ"]){
+        self.disLeftPlayType.constant = -self.labPlayType.mj_w - 50;
+        self.disLeftPlayTypeContent.constant = -self.labPlayType.mj_w - 50;
         NSArray *titleArray = [Utility objFromJson:dic[@"ticketContent"]];
         NSMutableArray *marr = [NSMutableArray arrayWithCapacity:0];
         for (NSString *itemStr in titleArray) {
@@ -81,7 +83,9 @@
                 str= [str stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]; //去除掉首尾的空白字符和换行字符
                 str = [str stringByReplacingOccurrencesOfString:@"\r" withString:@""];
                 str = [str stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-                str = [str stringByReplacingOccurrencesOfString:@"()" withString:@""];
+                str = [str stringByReplacingOccurrencesOfString:@"(" withString:@""];
+                str = [str stringByReplacingOccurrencesOfString:@")" withString:@""];
+                str = [str stringByReplacingOccurrencesOfString:@" " withString:@""];
                 [marr addObject:str];
             }
         }
