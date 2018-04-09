@@ -90,8 +90,9 @@
         }
         
         NSArray *subnumArray = [[betnumArray lastObject] componentsSeparatedByString:@","];
+        //修改 _ballArr[5+i] --> _ballArr[redNum.count+i] lyw
         for (int i = 0; i<subnumArray.count; i++) {
-            UIButton *btn = (UIButton*)_ballArr[5+i];
+            UIButton *btn = (UIButton*)_ballArr[redNum.count+i];
             [btn setTitle:subnumArray[i] forState:UIControlStateNormal];
             [btn setTitleColor:SystemBlue forState:0];
             

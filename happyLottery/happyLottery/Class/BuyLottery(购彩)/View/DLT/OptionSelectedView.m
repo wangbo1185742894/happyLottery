@@ -59,56 +59,35 @@
                 UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
                 btn.frame = CGRectMake(frame.origin.x, frame.origin.y + i *(btnHieight + separateLineHeight), btnWidth, btnHieight);
                 [btn addTarget:self action:@selector(btnDidClicked:) forControlEvents:UIControlEventTouchUpInside];
-                
                 NSString *title = titleArr[i];
                 [btn setTitle:titleArr[i] forState:UIControlStateNormal];
                 [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
                  btn.titleLabel.font = [UIFont systemFontOfSize:12];
-                if ([title isEqualToString:@"开奖记录"]) {
-                    [btn setImage:[UIImage imageNamed:@"kjjilu.png"] forState:UIControlStateNormal];
-                    [btn setImage:[UIImage imageNamed:@"kjjilu.png"] forState:UIControlStateHighlighted];
-                }else if ([title isEqualToString:@"开奖趋势"]){
-                    [btn setImage:[UIImage imageNamed:@"kjqushi.png"] forState:UIControlStateNormal];
-                    [btn setImage:[UIImage imageNamed:@"kjqushi.png"] forState:UIControlStateHighlighted];
-                }else if([title isEqualToString:@"玩法介绍"]){
-                    [btn setImage:[UIImage imageNamed:@"wfjieshao.png"] forState:UIControlStateNormal];
-                    [btn setImage:[UIImage imageNamed:@"wfjieshao.png"] forState:UIControlStateHighlighted];
+                //助手栏图片添加修改  lyw
+                title = [title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];//去掉左右空格
+                if ([title isEqualToString:@"走势图"]) {
+                    [btn setImage:[UIImage imageNamed:@"dlt_openlottery_ex.png"] forState:UIControlStateNormal];
+                    [btn setImage:[UIImage imageNamed:@"dlt_openlottery_ex.png"] forState:UIControlStateHighlighted];
+                }else if ([title isEqualToString:@"开奖详情"]){
+                    [btn setImage:[UIImage imageNamed:@"trophy.png"] forState:UIControlStateNormal];
+                    [btn setImage:[UIImage imageNamed:@"trophy.png"] forState:UIControlStateHighlighted];
+                }else if([title isEqualToString:@"玩法规则"]){
+                    [btn setImage:[UIImage imageNamed:@"gameplay.png"] forState:UIControlStateNormal];
+                    [btn setImage:[UIImage imageNamed:@"gameplay.png"] forState:UIControlStateHighlighted];
                 }else{
                     btn.titleLabel.font = [UIFont systemFontOfSize:12];
                     [btn setBackgroundImage:[UIImage imageNamed:@"orangeBackground"] forState:UIControlStateNormal];
                     [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
                 }
                 [self addSubview:btn];
-                    
+                //分割线添加 lyw
+                if (i<titleArr.count-1) {
+                    UILabel *label = [[UILabel alloc]init];
+                    label.frame = CGRectMake(frame.origin.x+3,btn.frame.origin.y+btn.frame.size.height, frame.size.width-6, separateLineHeight);
+                    label.backgroundColor = [UIColor whiteColor];
+                    [self addSubview:label];
                 }
-//            }else{
-//                for (NSInteger i = 0; i < titleArr.count; i++) {
-//                UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-//                btn.frame = CGRectMake(frame.origin.x, frame.origin.y + i *(btnHieight + separateLineHeight), btnWidth, btnHieight);
-//                [btn addTarget:self action:@selector(btnDidClicked:) forControlEvents:UIControlEventTouchUpInside];
-//                
-//                NSString *title = titleArr[i];
-//                [btn setTitle:titleArr[i] forState:UIControlStateNormal];
-//                [btn setTitleColor:[UIColor clearColor] forState:UIControlStateNormal];
-//                if ([title isEqualToString:@"开奖记录"]) {
-//                    [btn setBackgroundImage:[UIImage imageNamed:@"btn_record.png"] forState:UIControlStateNormal];
-//                    [btn setBackgroundImage:[UIImage imageNamed:@"btn_record_selected.png"] forState:UIControlStateHighlighted];
-//                }else if ([title isEqualToString:@"开奖趋势"]){
-//                    [btn setBackgroundImage:[UIImage imageNamed:@"btn_trend.png"] forState:UIControlStateNormal];
-//                    [btn setBackgroundImage:[UIImage imageNamed:@"btn_trend_selected.png"] forState:UIControlStateHighlighted];
-//                }else if([title isEqualToString:@"玩法介绍"]){
-//                    [btn setBackgroundImage:[UIImage imageNamed:@"btn_playMethod.png"] forState:UIControlStateNormal];
-//                    [btn setBackgroundImage:[UIImage imageNamed:@"btn_playMethod_selected.png"] forState:UIControlStateHighlighted];
-//                }else{
-//                    btn.titleLabel.font = [UIFont systemFontOfSize:14];
-//                    [btn setBackgroundImage:[UIImage imageNamed:@"orangeBackground"] forState:UIControlStateNormal];
-//                    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//                }
-//                [self addSubview:btn];
-//            }
-        
-//            }
-        
+            }
     }
     return self;
 }
