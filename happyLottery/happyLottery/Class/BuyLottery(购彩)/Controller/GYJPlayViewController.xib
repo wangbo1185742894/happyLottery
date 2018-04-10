@@ -32,12 +32,14 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="csZ-HW-1KG">
                             <rect key="frame" x="280" y="10" width="75" height="30"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="75" id="VPQ-tf-GGE"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="预约" backgroundImage="yuanjiaowukuangselect.png">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <state key="disabled" backgroundImage="yuanjiaowukuangselect.png">
                                 <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
@@ -89,7 +91,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" red="0.14509803921568626" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="csZ-HW-1KG" secondAttribute="bottom" constant="10" id="3SA-AM-ByD"/>
                         <constraint firstItem="Y1F-dL-QrM" firstAttribute="leading" secondItem="CBb-U1-dKf" secondAttribute="leading" constant="10" id="45h-rg-rM2"/>

@@ -30,6 +30,7 @@
 #import "JCLQTouZhuController.h"
 #import "JCLQTransaction.h"
 #import "JCLQLotteryProfileSelectView.h"
+#import "WebCTZQHisViewController.h"
 
 typedef enum : NSUInteger {
     NotCanBuyTypeTimeCanNotBuy,

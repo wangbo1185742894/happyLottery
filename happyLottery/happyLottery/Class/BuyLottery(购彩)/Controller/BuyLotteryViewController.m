@@ -34,6 +34,7 @@
 #import "RedPacket.h"
 #import "OpenRedPopView.h"
 #import "MyRedPacketViewController.h"
+#import "LotteryAreaViewController.h"
 #define KNewsListCell @"NewsListCell"
 #define AnimationDur 0.3
 
@@ -590,6 +591,15 @@
     [self.navigationController pushViewController:showViewVC animated:YES];
 }
 
+
+- (IBAction)actionToMoreLottery:(id)sender {
+    LotteryAreaViewController *lotteryAreVc = [[LotteryAreaViewController alloc]init];
+    lotteryAreVc.hidesBottomBarWhenPushed = YES;
+    lotteryAreVc.title = @"购彩专区";
+    lotteryAreVc.lotteryDS = [self.lotteryMan getAllLottery];
+    [self.navigationController pushViewController:lotteryAreVc   animated:YES];
+}
+
 //进入冠亚军竞猜
 - (IBAction)actionJcgyj:(id)sender {
     GYJPlayViewController *gyjPlayVc = [[GYJPlayViewController alloc]init];
@@ -915,6 +925,7 @@
 - (void)lijigenxin{
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:APPUPDATAURL]];
 }
+
 - (IBAction)actionDLT:(id)sender {
     NSArray * lotteryDS = [self.lotteryMan getAllLottery];
     
@@ -938,7 +949,6 @@
 
 - (IBAction)actionSFC:(id)sender {
     NSArray * lotteryDS = [self.lotteryMan getAllLottery];
-    
     CTZQPlayViewController *playVC = [[CTZQPlayViewController alloc] init];
     if ([sender isKindOfClass:[NSString class]]) {
         if ([sender isEqualToString:@"SFC"]) {

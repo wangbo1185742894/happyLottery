@@ -111,7 +111,7 @@
 }
 
 - (void)returnToRootView {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark DateSource

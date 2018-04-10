@@ -335,7 +335,8 @@ static SystemSoundID shake_sound_male_id = 0;
     
     NSMutableDictionary *tabAttrs = [NSMutableDictionary dictionaryWithCapacity: 3];
     tabAttrs[@"tabTitle"] = @"首页";
-    tabAttrs[@"title"] = @"彩票";
+//    tabAttrs[@"title"] = @"彩票";
+    tabAttrs[@"title"] = @"";
     tabAttrs[@"itemNormal"] = @"home_defealt";
     tabAttrs[@"itemSelected"] = @"home_select";
     tabAttrs[@"rootVC"] = @"BuyLotteryViewController";
@@ -366,9 +367,8 @@ static SystemSoundID shake_sound_male_id = 0;
     tabBarControllerMain.viewControllers = @[homeNavVC,gouCaiNavVC,faXianNavVC, memberNavVC];
     tabBarControllerMain.view.frame = CGRectMake(0, 0, self.window.bounds.size.width, self.window.bounds.size.height);
     
-    
-    tabBarControllerMain.tabBar.backgroundColor =  [UIColor blackColor];
-    tabBarControllerMain.tabBar.barTintColor =  [UIColor blackColor];
+    tabBarControllerMain.tabBar.backgroundColor = RGBCOLOR(37, 38, 38);
+    tabBarControllerMain.tabBar.barTintColor =  RGBCOLOR(37, 38, 38);
     
 }
 
