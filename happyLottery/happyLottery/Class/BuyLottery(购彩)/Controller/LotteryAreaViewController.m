@@ -37,6 +37,17 @@ static NSString * const reuseIdentifier = @"LotteryAreaViewCell";
     //加载数据
     NSString *plistPath = [[NSBundle mainBundle]pathForResource:@"LotteryArea" ofType:@"plist"];
     _lotteryArr = [[NSMutableArray alloc] initWithContentsOfFile:plistPath];
+    [self setNavigationBack];
+}
+
+-(void)setNavigationBack{
+    
+    UIBarButtonItem *backBarButton = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed: @"newBack"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(navigationBackToLastPage)];
+    if (self.navigationController.viewControllers.count == 1) {
+    }else{
+        self.navigationItem.leftBarButtonItem = backBarButton;
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {

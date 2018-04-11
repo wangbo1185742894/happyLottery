@@ -233,7 +233,6 @@ NSInteger const kIQPreviousNextButtonToolbarTag     =   -1005;
             [self setToolbarManageBehaviour:IQAutoToolbarBySubviews];
             [self setLayoutIfNeededOnUpdate:NO];
             [self setShouldFixInteractivePopGestureRecognizer:YES];
-            
             {
                 UITextField *view = [[UITextField alloc] init];
                 [view addDoneOnKeyboardWithTarget:nil action:nil];
