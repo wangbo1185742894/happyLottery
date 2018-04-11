@@ -450,7 +450,13 @@
         [[NSNotificationCenter defaultCenter]postNotificationName:@"NSNotificationJumpToPlayVC" object:@"DLT"];
         
         return;
-    }else{
+    }
+    else if ([keyStr isEqualToString:@"A007"]){
+        [self .navigationController popToRootViewControllerAnimated:YES];
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"NSNotificationJumpToPlayVC" object:@"SSQ"];
+        return;
+    }
+    else{
          baseVC.hidesBottomBarWhenPushed = YES;
          [self.navigationController pushViewController:baseVC animated:YES];
     }
