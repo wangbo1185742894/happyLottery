@@ -78,6 +78,27 @@
     
 }
 
+
+-(NSMutableString *)getJCLQTitleForm:(NSArray *)titleDic andSp:(NSArray *)spArray andSelectArray:(NSArray *)selectArray andIndex:(NSInteger )baseIndex{
+    NSMutableString *tit = [NSMutableString string];
+    if (spArray != nil) {
+        NSMutableString *tit = [NSMutableString string];
+        for (int i = 0; i < selectArray .count; i ++ ) {
+            if ([selectArray[i] integerValue] == 1) {
+                [tit appendString:[NSString stringWithFormat:@"%@%@,",titleDic[i][@"appear"],spArray[i]]];
+            }
+        }
+    }else{
+        for (int i = 0; i < selectArray .count; i ++ ) {
+            if ([selectArray[i ] integerValue]==  1) {
+                
+                [tit appendString:[NSString stringWithFormat:@"%@,",titleDic[i][@"appear"]]];
+            }
+        }
+    }
+    return tit;
+}
+
 -(NSMutableString *)getTitleForm:(NSArray *)titleDic andSp:(NSArray *)spArray andSelectArray:(NSArray *)selectArray andIndex:(NSInteger )baseIndex{
     NSMutableString *tit = [NSMutableString string];
     if (spArray != nil) {

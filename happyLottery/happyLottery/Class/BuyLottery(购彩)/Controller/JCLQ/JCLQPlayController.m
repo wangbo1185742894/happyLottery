@@ -1047,7 +1047,7 @@ typedef enum : NSUInteger {
 
 }
 -(void)showProfileType{
-    optionView.hidden = YES;
+    profileSelectView.hidden = !profileSelectView.hidden;
 }
 
 
