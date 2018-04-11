@@ -67,12 +67,22 @@ static NSString * const reuseIdentifier = @"LotteryAreaViewCell";
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return _lotteryArr.count/rowNumber;
+    if (_lotteryArr.count%rowNumber) {
+        return _lotteryArr.count/rowNumber +1;
+    } else {
+        return _lotteryArr.count/rowNumber;
+    }
+    
 }
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return rowNumber;
+    if (section < _lotteryArr.count/rowNumber) {
+        return rowNumber;
+    }
+    else {
+        return _lotteryArr.count%rowNumber;
+    }
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {

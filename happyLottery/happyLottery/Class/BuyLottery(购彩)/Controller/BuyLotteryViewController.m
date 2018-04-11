@@ -406,6 +406,9 @@
     }else if ([keyStr isEqualToString:@"A004"]){
         [self actionDLT:nil];
         return;
+    }else if ([keyStr isEqualToString:@"A007"]){
+        [self actionSSQ:nil];
+        return;
     }
     
     if (itemIndex.trLoadStatus!= nil) {
@@ -995,6 +998,13 @@
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
             [self actionJCZQ:nil];
+        });
+    }
+    //添加双色球(开奖记录页面-->投注-->进入购买页面) lyw
+    if ([playType isEqualToString:@"SSQ"]) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [self actionSSQ:nil];
         });
     }
 }

@@ -56,6 +56,7 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+
 - (IBAction)actionPopView:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -76,6 +77,7 @@
         [self showPromptText:msg hideAfterDelay:1.7];
     });
 }
+
 -(void)goCathectic:(NSString *)lotteryCode{
     if (lotteryCode == nil) {
         return;

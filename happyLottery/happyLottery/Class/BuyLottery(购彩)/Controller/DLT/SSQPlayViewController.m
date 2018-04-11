@@ -97,7 +97,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.lotteryMan.delegate = self;
-    self.viewControllerNo = @"A414";
+    self.viewControllerNo = @"A007";
     if([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     }
