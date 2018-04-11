@@ -589,6 +589,15 @@
 		2D7B1415204E8FD50035AE89 /* CTZQWinHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D7B1413204E8FD50035AE89 /* CTZQWinHistoryTableViewCell.xib */; };
 		2D7B1418204FC7CD0035AE89 /* timebackimage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D7B1416204FC7CC0035AE89 /* timebackimage@3x.png */; };
 		2D7B1419204FC7CD0035AE89 /* timebackimage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D7B1417204FC7CD0035AE89 /* timebackimage@2x.png */; };
+		2D811A95207DDA610069601C /* jingcailanqiu_daxiaofen.html in Resources */ = {isa = PBXBuildFile; fileRef = 2D811A8E207DDA5A0069601C /* jingcailanqiu_daxiaofen.html */; };
+		2D811A96207DDA610069601C /* jingcailanqiu_shengfu.html in Resources */ = {isa = PBXBuildFile; fileRef = 2D811A8F207DDA5C0069601C /* jingcailanqiu_shengfu.html */; };
+		2D811A97207DDA610069601C /* jingcailanqiu_shengfencha.html in Resources */ = {isa = PBXBuildFile; fileRef = 2D811A90207DDA5C0069601C /* jingcailanqiu_shengfencha.html */; };
+		2D811A98207DDA610069601C /* jingcailanqiu_rangfenshengfu.html in Resources */ = {isa = PBXBuildFile; fileRef = 2D811A91207DDA5D0069601C /* jingcailanqiu_rangfenshengfu.html */; };
+		2D811A99207DDA610069601C /* JCLQCode.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D811A92207DDA5E0069601C /* JCLQCode.plist */; };
+		2D811A9A207DDA610069601C /* jingcailanqiu_hunheguoguan.html in Resources */ = {isa = PBXBuildFile; fileRef = 2D811A93207DDA5F0069601C /* jingcailanqiu_hunheguoguan.html */; };
+		2D811A9B207DDA610069601C /* jingcailanqiu.html in Resources */ = {isa = PBXBuildFile; fileRef = 2D811A94207DDA600069601C /* jingcailanqiu.html */; };
+		2D811A9E207DDBED0069601C /* basketball@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D811A9C207DDBEB0069601C /* basketball@3x.png */; };
+		2D811A9F207DDBED0069601C /* basketball@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D811A9D207DDBEC0069601C /* basketball@2x.png */; };
 		2D89D60A206CE3AE005E0209 /* WelComeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D89D608206CE3AE005E0209 /* WelComeViewController.m */; };
 		2D89D60B206CE3AE005E0209 /* WelComeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D89D609206CE3AE005E0209 /* WelComeViewController.xib */; };
 		2D89D60D206CE3E9005E0209 /* gyjweicome.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D89D60C206CE3E8005E0209 /* gyjweicome.png */; };
@@ -2024,6 +2033,15 @@
 		2D7B1413204E8FD50035AE89 /* CTZQWinHistoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CTZQWinHistoryTableViewCell.xib; sourceTree = "<group>"; };
 		2D7B1416204FC7CC0035AE89 /* timebackimage@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timebackimage@3x.png"; sourceTree = "<group>"; };
 		2D7B1417204FC7CD0035AE89 /* timebackimage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timebackimage@2x.png"; sourceTree = "<group>"; };
+		2D811A8E207DDA5A0069601C /* jingcailanqiu_daxiaofen.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = jingcailanqiu_daxiaofen.html; sourceTree = "<group>"; };
+		2D811A8F207DDA5C0069601C /* jingcailanqiu_shengfu.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = jingcailanqiu_shengfu.html; sourceTree = "<group>"; };
+		2D811A90207DDA5C0069601C /* jingcailanqiu_shengfencha.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = jingcailanqiu_shengfencha.html; sourceTree = "<group>"; };
+		2D811A91207DDA5D0069601C /* jingcailanqiu_rangfenshengfu.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = jingcailanqiu_rangfenshengfu.html; sourceTree = "<group>"; };
+		2D811A92207DDA5E0069601C /* JCLQCode.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = JCLQCode.plist; sourceTree = "<group>"; };
+		2D811A93207DDA5F0069601C /* jingcailanqiu_hunheguoguan.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = jingcailanqiu_hunheguoguan.html; sourceTree = "<group>"; };
+		2D811A94207DDA600069601C /* jingcailanqiu.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = jingcailanqiu.html; sourceTree = "<group>"; };
+		2D811A9C207DDBEB0069601C /* basketball@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "basketball@3x.png"; sourceTree = "<group>"; };
+		2D811A9D207DDBEC0069601C /* basketball@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "basketball@2x.png"; sourceTree = "<group>"; };
 		2D89D607206CE3AE005E0209 /* WelComeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WelComeViewController.h; sourceTree = "<group>"; };
 		2D89D608206CE3AE005E0209 /* WelComeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WelComeViewController.m; sourceTree = "<group>"; };
 		2D89D609206CE3AE005E0209 /* WelComeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelComeViewController.xib; sourceTree = "<group>"; };
@@ -3184,6 +3202,13 @@
 		2D4B1E411FDF65380034B708 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				2D811A92207DDA5E0069601C /* JCLQCode.plist */,
+				2D811A8E207DDA5A0069601C /* jingcailanqiu_daxiaofen.html */,
+				2D811A93207DDA5F0069601C /* jingcailanqiu_hunheguoguan.html */,
+				2D811A91207DDA5D0069601C /* jingcailanqiu_rangfenshengfu.html */,
+				2D811A90207DDA5C0069601C /* jingcailanqiu_shengfencha.html */,
+				2D811A8F207DDA5C0069601C /* jingcailanqiu_shengfu.html */,
+				2D811A94207DDA600069601C /* jingcailanqiu.html */,
 				F9705E0B2079FA3A00E25E4E /* ssq_play.html */,
 				2D03F1F32060B51700C81BEF /* ctzq_renxuanjiuchang.html */,
 				2D03F1F52060B52300C81BEF /* ctzq_shengfushisichang.html */,
@@ -3827,6 +3852,8 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				2D811A9D207DDBEC0069601C /* basketball@2x.png */,
+				2D811A9C207DDBEB0069601C /* basketball@3x.png */,
 				F98C3EE72071FDB300C1DBF8 /* ssq_logo.png */,
 				F95C7E6F206E025D005990F5 /* Helvetica-Condensed-Black-Se.ttf */,
 				2D89D60C206CE3E8005E0209 /* gyjweicome.png */,
@@ -5623,6 +5650,7 @@
 				2DDEDC0C1FD4DBF1007AEBF7 /* DiscoverViewController.xib in Resources */,
 				2D628B251FECA9C40013D0E1 /* touzhuxuanzezhifu@2x.png in Resources */,
 				F91565EF1FFCBDAE00E254CE /* microblog@2x.png in Resources */,
+				2D811A9A207DDA610069601C /* jingcailanqiu_hunheguoguan.html in Resources */,
 				F91565F51FFCBDAE00E254CE /* wechat@2x.png in Resources */,
 				2D7B1378204E63EF0035AE89 /* dltcheckbox@3x.png in Resources */,
 				F9705E54207A0DE800E25E4E /* JCLQSFCPlayTypeView.xib in Resources */,
@@ -5696,6 +5724,7 @@
 				F924BAA51FE252CF00830BF4 /* hide@3x.png in Resources */,
 				2D739CFA1FEB5D1900264044 /* JCZQSelectBFVIew.xib in Resources */,
 				F957C1D31FE379590090B19B /* ForgetPWDViewController.xib in Resources */,
+				2D811A9B207DDA610069601C /* jingcailanqiu.html in Resources */,
 				2D0600411FFDDD51009E7568 /* schemedetailarrowsgreen@3x.png in Resources */,
 				F9CDBEBC2022F46C00A1BE71 /* banker@2x.png in Resources */,
 				F9CD01EA20243DBC00E54E79 /* registerCode@2x.png in Resources */,
@@ -5745,6 +5774,7 @@
 				2D06FFE81FFDC9EB009E7568 /* arrows@3x.png in Resources */,
 				2D2117F72050E7A000023FB4 /* DLTSchemeViewCell.xib in Resources */,
 				2D4B1E761FDF684E0034B708 /* fenleixian@3x.png in Resources */,
+				2D811A98207DDA610069601C /* jingcailanqiu_rangfenshengfu.html in Resources */,
 				2D628B431FECAA9A0013D0E1 /* fengkuangjingcai-zhenshitouzhu-xuanze@2x.png in Resources */,
 				F9D7C557200620FF00415B4E /* GetIntegralViewController.xib in Resources */,
 				2D0E23C220196B590098DA40 /* unpaid@3x.png in Resources */,
@@ -5905,6 +5935,7 @@
 				2D7B1418204FC7CD0035AE89 /* timebackimage@3x.png in Resources */,
 				F9418F452010991200454109 /* ShareSDKConfigFile.bundle in Resources */,
 				F9632F4F200C8C9800F69D23 /* arrowup@2x.png in Resources */,
+				2D811A95207DDA610069601C /* jingcailanqiu_daxiaofen.html in Resources */,
 				F9CD01FF2024456500E54E79 /* annotation@3x.png in Resources */,
 				F9705E4E207A0DE800E25E4E /* JCLQRFSFCell.xib in Resources */,
 				2D0E23F32019A83C0098DA40 /* points@3x.png in Resources */,
@@ -5997,6 +6028,7 @@
 				F9705E4C207A0DE800E25E4E /* JCLQHHTZCell.xib in Resources */,
 				F93EEEEA2021D8EC001C635A /* unlockredpacket@3x.png in Resources */,
 				F9F6CA961FF5D6B100A49F71 /* inform@3x.png in Resources */,
+				2D811A96207DDA610069601C /* jingcailanqiu_shengfu.html in Resources */,
 				2D4B1E821FDF684E0034B708 /* wode_defealt@3x.png in Resources */,
 				2D4B1E851FDF684E0034B708 /* yishoucang@2x.png in Resources */,
 				2D0E23C62019A5C20098DA40 /* withdraw@3x.png in Resources */,
@@ -6157,6 +6189,7 @@
 				2D739C641FE7878100264044 /* JCZQTouZhuViewController.xib in Resources */,
 				2D628B3C1FECAA9A0013D0E1 /* fengkuangjingcai-monitouzhu-xuanze@2x.png in Resources */,
 				2D0600881FFF1365009E7568 /* HHGGPeilvTable.plist in Resources */,
+				2D811A99207DDA610069601C /* JCLQCode.plist in Resources */,
 				2D205FE91FFC6E950086E266 /* WBBifenZhiboViewController.xib in Resources */,
 				F94AA9E11FEB7B780021B980 /* weixin@3x.png in Resources */,
 				F90058ED1FF61AEC009C8E1C /* NoticeDetailViewController.xib in Resources */,
@@ -6168,6 +6201,7 @@
 				F9B5D9942060A9DE00C9F6DC /* flag416@3x.png in Resources */,
 				2D7B137F204E70510035AE89 /* encore@2x.png in Resources */,
 				2D628B3D1FECAA9A0013D0E1 /* fengkuangjingcai-gengduoshuoming@3x.png in Resources */,
+				2D811A97207DDA610069601C /* jingcailanqiu_shengfencha.html in Resources */,
 				2D7B1365204E41910035AE89 /* trophy@2x.png in Resources */,
 				F924BAA91FE252CF00830BF4 /* stick@2x.png in Resources */,
 				2D7B12F2204D3C280035AE89 /* LotteryWinNumHistoryViewController.xib in Resources */,
@@ -6175,6 +6209,7 @@
 				F95C7EF32071DAD5005990F5 /* SSQTouZhuViewController.xib in Resources */,
 				F9B5D99B2060A9DE00C9F6DC /* flag424@2x.png in Resources */,
 				2D7B136F204E5F450035AE89 /* dltbutton-default@2x.png in Resources */,
+				2D811A9E207DDBED0069601C /* basketball@3x.png in Resources */,
 				2D628B3B1FECAA9A0013D0E1 /* wanfaxiala@2x.png in Resources */,
 				2D7B1346204E258B0035AE89 /* machine-selection@3x.png in Resources */,
 				2D4B1E401FDF652C0034B708 /* HomeMenuItemView.xib in Resources */,
@@ -6246,6 +6281,7 @@
 				2DE892AE2022C1FA008926A6 /* jczq_hhgg_table.html in Resources */,
 				2D739C901FE899AC00264044 /* MatchLeagueSelectView.xib in Resources */,
 				F95C7EB22071D5ED005990F5 /* DLTPlayViewController.xib in Resources */,
+				2D811A9F207DDBED0069601C /* basketball@2x.png in Resources */,
 				F9B5D99A2060A9DE00C9F6DC /* flag421@3x.png in Resources */,
 				F9418F482010991200454109 /* ShareSDKUI.bundle in Resources */,
 				F95C7E70206E025D005990F5 /* Helvetica-Condensed-Black-Se.ttf in Resources */,
