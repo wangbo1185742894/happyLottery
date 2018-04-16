@@ -699,8 +699,8 @@ if (index == _odd_NumArrayContent.count-1) {
     if (self.schemeType == SchemeTypeZigou) {
         submitParaDic[@"copies"] = @"1";
         submitParaDic[@"sponsorCopies"] = @"1";
-        submitParaDic[@"minSubCost"] =[NSString stringWithFormat:@"%ld",(long)self.betCost];
-        submitParaDic[@"sponsorCost"] = [NSString stringWithFormat:@"%ld",(long)self.betCost];
+        submitParaDic[@"minSubCost"] =betcost;
+        submitParaDic[@"sponsorCost"] = betcost;
     }else if(self.schemeType == SchemeTypeHemai){
         submitParaDic[@"commissionRate"] = [NSString stringWithFormat:@"%.2f",self.commissionRate];
         submitParaDic[@"copies"] = [NSString stringWithFormat:@"%zd",self.copies];

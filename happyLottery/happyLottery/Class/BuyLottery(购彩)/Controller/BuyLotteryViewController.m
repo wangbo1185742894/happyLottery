@@ -1007,6 +1007,13 @@
             [self actionSSQ:nil];
         });
     }
+    //添加双色球(开奖记录页面-->投注-->进入购买页面) lyw
+    if ([playType isEqualToString:@"JCLQ"]) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [self actionJCLQ:nil];
+        });
+    }
 }
 
 
