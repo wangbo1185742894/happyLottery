@@ -28,6 +28,13 @@
     return NO;
 }
 
+- (BOOL)couldHaveMoreSelected {
+    if (self.numbersSelected.count + self.numbersDanHao.count >= 20) {
+        return NO;
+    }
+    return YES;
+}
+
 - (void) updateSelectedNumberDesc {
     NSUInteger selectedCount = self.numbersSelected.count + self.numbersDanHao.count;
     [self.titleView updateSelectedNumber: selectedCount];

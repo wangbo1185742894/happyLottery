@@ -248,6 +248,14 @@
         BOOL moreNumber = [lotteryXH couldHaveMoreNumber];
         BOOL moreDanHao = [lotteryXH couldHaveMoreDanHao];
         if (newState == NumberViewStateSelected) {
+            //双色球红球数（包括胆球）最多可选20个  lyw
+            if ([lottery.identifier isEqualToString:@"SSQ"]) {
+              if (![lotteryXH couldHaveMoreSelected]) {
+                [self.delegate showPromptViewWithText: TextTouzhuNumBerLimit hideAfter: 1];
+                newState = NumberViewStateNormal;
+                return newState;
+              }
+            }
             if (!moreNumber) {
                 if (moreDanHao) {
                     newState = NumberViewStateDanHao;

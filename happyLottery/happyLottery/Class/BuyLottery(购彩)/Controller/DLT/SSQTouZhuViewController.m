@@ -208,7 +208,7 @@
         if (self.transaction.lottery.currentRound == nil){
             limitNum = 99;
         }else{
-            NSInteger curQI = [[self.lottery.currentRound.issueNumber substringFromIndex:2] integerValue];
+            NSInteger curQI = [[self.lottery.currentRound.issueNumber substringFromIndex:4] integerValue];
             limitNum = 135 - curQI;
         }
         if (num > limitNum) {
@@ -219,7 +219,7 @@
         if ([tfQiCount.text integerValue] == 1) {
             limitNum = 9999;
         }else{
-            limitNum = 99;
+            limitNum = 50;
         }
         if (num > limitNum) {
             [self showPromptText:[NSString stringWithFormat:@"最大可投%ld倍",limitNum] hideAfterDelay:1.8];
@@ -748,8 +748,8 @@
     
     float balance = [self.curUser.totalBanlece doubleValue];
     NSString *msg = [NSString stringWithFormat:@"共追%lu期，共需%ld元,您当前余额为%.1f元,是否确定追号？",[tfQiCount.text integerValue],(long)self.transaction.betCost,balance];
-    if ([tfBeiCount.text integerValue] > 99) {
-        [self showPromptText:@"追号最大可投99倍" hideAfterDelay:1.8];
+    if ([tfBeiCount.text integerValue] > 50) {
+        [self showPromptText:@"追号最大可投50倍" hideAfterDelay:1.8];
         return;
     }
     ZLAlertView *alert = [[ZLAlertView alloc] initWithTitle:@"追号确认" message:msg];
