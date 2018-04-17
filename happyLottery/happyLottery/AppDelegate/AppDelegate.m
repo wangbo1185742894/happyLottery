@@ -335,8 +335,7 @@ static SystemSoundID shake_sound_male_id = 0;
     
     NSMutableDictionary *tabAttrs = [NSMutableDictionary dictionaryWithCapacity: 3];
     tabAttrs[@"tabTitle"] = @"首页";
-//    tabAttrs[@"title"] = @"彩票";
-    tabAttrs[@"title"] = @"";
+    tabAttrs[@"title"] = @"彩票";
     tabAttrs[@"itemNormal"] = @"home_defealt";
     tabAttrs[@"itemSelected"] = @"home_select";
     tabAttrs[@"rootVC"] = @"BuyLotteryViewController";

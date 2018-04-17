@@ -40,6 +40,7 @@
 
 - (BOOL) couldHaveMoreNumber;
 - (BOOL) couldHaveMoreDanHao;
+- (BOOL)couldHaveMoreSelected;
 - (void) updateSelectedNumberDesc;
 - (NSArray *) generateRandomNumber: (int) numberCount;
 - (BOOL)isNumHasEquel:(NSArray *)numArray;
