@@ -60,15 +60,28 @@
     }
     //  刷新完成之后检测数据量
     dispatch_async(dispatch_get_main_queue(), ^{
-        
-        NSInteger numberOfSections = [self numberOfSections];
         BOOL havingData = NO;
-        for (NSInteger i = 0; i < numberOfSections; i++) {
-            if ([self numberOfRowsInSection:i] > 0) {
+        NSInteger numberOfSections = [self numberOfSections];
+        if (numberOfSections == 0) {
+            havingData = NO;
+        }else if (numberOfSections >1) {
+            havingData = YES;
+        }else{
+            
+            if ([self.delegate respondsToSelector:@selector(tableView:viewForHeaderInSection:)] && [self.delegate tableView:self viewForHeaderInSection:0] != nil) {
+                
                 havingData = YES;
-                break;
+            }else{
+                for (NSInteger i = 0; i < numberOfSections; i++) {
+                    if ([self numberOfRowsInSection:i] > 0) {
+                        havingData = YES;
+                        break;
+                    }
+                }
             }
+           
         }
+        
         
         [self xy_havingData:havingData];
     });
@@ -97,9 +110,14 @@
         return ;
     }
     
-    //  使用自带的
-    UIImage  *img   = [UIImage imageNamed:@"pic_zanwushuju"];
-    NSString *msg   = @"暂无数据";
+    //  使用自带
+    UIImage  *img = [UIImage imageNamed:@"pic_zanwushuju"];
+    NSString *msg = @"暂无数据";
+    
+    
+    
+    
+  
     UIColor  *color = [UIColor lightGrayColor];
     CGFloat  offset = 0;
     

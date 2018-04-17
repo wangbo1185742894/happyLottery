@@ -33,8 +33,6 @@
         [result close];
         [self.fmdb close];
     }
-    
-   
     return PayVerifyTypeAlwaysNo;
 }
 

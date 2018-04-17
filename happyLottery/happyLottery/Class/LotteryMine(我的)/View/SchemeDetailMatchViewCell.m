@@ -13,7 +13,9 @@
 @interface SchemeDetailMatchViewCell ()
 {
     
+    __weak IBOutlet NSLayoutConstraint *jczqHomeIconWidth;
     __weak IBOutlet NSLayoutConstraint *disBottomL;
+    __weak IBOutlet NSLayoutConstraint *jclqHomeIconWidth;
     __weak IBOutlet UIButton *btnNumIndex;
     __weak IBOutlet UILabel *labBottom;
     __weak IBOutlet NSLayoutConstraint *disTopL;
@@ -104,9 +106,11 @@
     }
     
     labMatchLine.text = modelDic.matchInfo[@"matchId"];
+    
     labHomeName.text = [[modelDic.matchInfo[@"clash"] componentsSeparatedByString:@"VS"] firstObject];
     labGuestName.text = [[modelDic.matchInfo[@"clash"] componentsSeparatedByString:@"VS"] lastObject];
-    
+    jclqHomeIconWidth.constant = 0;
+    jczqHomeIconWidth.constant = 18;
     if (modelDic.virtualSp != nil) {
         itemDic = [Utility objFromJson:modelDic.virtualSp];
     }else{
@@ -612,8 +616,10 @@
         }
     }
     labMatchLine.text = modelDic.matchInfo[@"matchId"];
-    labGuestName.text = [[modelDic.matchInfo[@"clash"] componentsSeparatedByString:@"VS"] firstObject];
-    labHomeName.text = [[modelDic.matchInfo[@"clash"] componentsSeparatedByString:@"VS"] lastObject];
+    labGuestName.text = [[modelDic.matchInfo[@"clash"] componentsSeparatedByString:@"VS"] lastObject];
+    labHomeName.text = [[modelDic.matchInfo[@"clash"] componentsSeparatedByString:@"VS"] firstObject];
+    jclqHomeIconWidth.constant = 18;
+    jczqHomeIconWidth.constant = 0;
     
     if (modelDic.virtualSp != nil) {
         itemDic = [Utility objFromJson:modelDic.virtualSp];
@@ -642,7 +648,7 @@
             }
         }
         
-        float height = [option boundingRectWithSize:CGSizeMake(KscreenWidth - 110, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14]} context:nil].size.height;
+        float height = [option boundingRectWithSize:CGSizeMake(KscreenWidth - 120, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:15]} context:nil].size.height;
         height  = height > 25 ? height:25;
         MGLabel * labOption = [self creactLab:option andFrame:CGRectMake(90, curY, KscreenWidth - 110, height)];
         labOption.keyWord = result;

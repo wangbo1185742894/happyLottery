@@ -31,7 +31,7 @@
 #import "JCLQTransaction.h"
 #import "JCLQLotteryProfileSelectView.h"
 #import "WebCTZQHisViewController.h"
-
+#import "UITableView+XY.h"
 typedef enum : NSUInteger {
     NotCanBuyTypeTimeCanNotBuy,
     NotCanBuyTypeCountCanNotBuy,
@@ -82,6 +82,7 @@ typedef enum : NSUInteger {
     self.lotteryMan.delegate = self;
     self.allTimeDate = [NSMutableArray arrayWithCapacity:0];
     self.tabPlayList.delegate = self;
+    
     self.tabPlayList.dataSource = self;
     self.tabPlayList.rowHeight = 100;
     self.tabPlayList.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -93,6 +94,7 @@ typedef enum : NSUInteger {
     [self .lotteryMan getJclqMatch:nil];
     [self showLoadingText:@"正在加载"];
     [self setRightBarItems];
+    [self setTitleView];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(acitonDeleteMatchForTouzhu:) name:@"NSNotificationDeleteMatchForPlay" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(cleanAllSelect) name:@"NSNotificationDeleteAll" object:nil];
     
@@ -310,7 +312,7 @@ typedef enum : NSUInteger {
 -(void)viewWillAppear:(BOOL)animated{
 
     [super viewWillAppear:animated];
-    [self setTitleView];
+    
     [self.tabPlayList reloadData];
      self.curUser = [[GlobalInstance instance] curUser];
     [self updata];
@@ -525,7 +527,6 @@ typedef enum : NSUInteger {
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
-    [self setTitleView];
     
 }
 
@@ -857,7 +858,6 @@ typedef enum : NSUInteger {
     if (transaction.matchSelectArray.count == 0) {
         model.isSelected = isSelect;
         [transaction.matchSelectArray addObject:model];
-        
     }else{
         for (int i = 0; i<transaction.matchSelectArray.count; i++) {
             
@@ -933,16 +933,8 @@ typedef enum : NSUInteger {
 }
 - (void)navigationBackToLastPage{
     if (transaction.matchSelectArray.count > 0) {
-        
-        ZLAlertView *alert = [[ZLAlertView alloc] initWithTitle:TitleHint message:@"返回将清空所有选择，您确定返回么?"];
-        [alert addBtnTitle:TitleNotDo action:^{
-        }];
-        
-        [alert addBtnTitle:TitleDo action:^{
-            [self cleanAllSelect];
-            [super navigationBackToLastPage];
-        }];
-        [alert showAlertWithSender:self];
+        [self cleanAllSelect];
+        [super navigationBackToLastPage];
     }else{
         [super navigationBackToLastPage];
     }
@@ -990,6 +982,7 @@ typedef enum : NSUInteger {
     if (![transaction.curProfile.Title isEqualToString:lotteryPros.Title] || transaction.guanType != playType) {
         [self cleanAllSelect];
     }
+    transaction.playType = lotteryPros.Desc;
     transaction.curProfile = lotteryPros;
     transaction.guanType = playType;
     [titleBtn setTitle:lotteryPros.Title forState:0];

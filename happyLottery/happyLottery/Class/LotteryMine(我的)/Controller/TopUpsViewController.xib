@@ -40,7 +40,7 @@
                     <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="    请选择支付方式" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7e-AF-Cow">
-                            <rect key="frame" x="0.0" y="170" width="375" height="40"/>
+                            <rect key="frame" x="0.0" y="190" width="375" height="40"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="J3v-ag-cYK"/>
@@ -50,7 +50,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z5v-0L-7bo">
-                            <rect key="frame" x="0.0" y="210" width="375" height="393"/>
+                            <rect key="frame" x="0.0" y="230" width="375" height="373"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ND2-YG-fwX">
                                     <rect key="frame" x="10" y="69" width="355" height="44"/>
@@ -136,7 +136,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z6k-7j-LYg">
-                            <rect key="frame" x="0.0" y="60" width="375" height="100"/>
+                            <rect key="frame" x="0.0" y="60" width="375" height="120"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5n-f6-SXi">
                                     <rect key="frame" x="20" y="40" width="335" height="1"/>
@@ -218,6 +218,15 @@
                                         <action selector="actionSelectItem:" destination="-1" eventType="touchUpInside" id="tb6-rO-lOq"/>
                                     </connections>
                                 </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="充值30%不可提现" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="szu-JQ-F1Y">
+                                    <rect key="frame" x="15" y="95" width="345" height="18"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="18" id="jyh-D9-1ZX"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" red="0.20288130639999999" green="0.77987009289999998" blue="0.57245916129999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -227,6 +236,7 @@
                                 <constraint firstItem="Hq1-v3-eXy" firstAttribute="leading" secondItem="kra-pQ-6ls" secondAttribute="trailing" constant="10" id="21F-Dz-LeU"/>
                                 <constraint firstItem="kra-pQ-6ls" firstAttribute="leading" secondItem="Z6k-7j-LYg" secondAttribute="leading" constant="15" id="3d3-l1-bzL"/>
                                 <constraint firstItem="s5W-Ol-jPw" firstAttribute="top" secondItem="g5n-f6-SXi" secondAttribute="bottom" constant="14" id="3sb-2i-Qvh"/>
+                                <constraint firstItem="szu-JQ-F1Y" firstAttribute="top" secondItem="s5W-Ol-jPw" secondAttribute="bottom" constant="5" id="6Xq-c3-18b"/>
                                 <constraint firstItem="O0l-yp-xTE" firstAttribute="width" secondItem="s5W-Ol-jPw" secondAttribute="width" id="7Gu-Yl-ENY"/>
                                 <constraint firstItem="kra-pQ-6ls" firstAttribute="top" secondItem="Z6k-7j-LYg" secondAttribute="top" constant="8" id="EYm-Z7-xrs"/>
                                 <constraint firstItem="O0l-yp-xTE" firstAttribute="top" secondItem="g5n-f6-SXi" secondAttribute="bottom" constant="14" id="HME-3S-8zS"/>
@@ -234,9 +244,11 @@
                                 <constraint firstItem="5GS-FX-0o0" firstAttribute="top" secondItem="g5n-f6-SXi" secondAttribute="bottom" constant="14" id="LjQ-eU-E7m"/>
                                 <constraint firstItem="Z3u-jj-Kaq" firstAttribute="leading" secondItem="5GS-FX-0o0" secondAttribute="trailing" constant="15" id="Lyc-XF-4oT"/>
                                 <constraint firstItem="Z3u-jj-Kaq" firstAttribute="top" secondItem="g5n-f6-SXi" secondAttribute="bottom" constant="14" id="Nc8-a4-gbf"/>
-                                <constraint firstAttribute="height" constant="100" id="QFe-0I-k2r"/>
+                                <constraint firstAttribute="trailing" secondItem="szu-JQ-F1Y" secondAttribute="trailing" constant="15" id="Q7U-s7-u7g"/>
+                                <constraint firstAttribute="height" constant="120" id="QFe-0I-k2r"/>
                                 <constraint firstItem="Hq1-v3-eXy" firstAttribute="centerY" secondItem="kra-pQ-6ls" secondAttribute="centerY" id="R1v-l1-771"/>
                                 <constraint firstAttribute="trailing" secondItem="g5n-f6-SXi" secondAttribute="trailing" constant="20" id="U5B-4N-wfA"/>
+                                <constraint firstItem="szu-JQ-F1Y" firstAttribute="leading" secondItem="Z6k-7j-LYg" secondAttribute="leading" constant="15" id="a4t-2c-co9"/>
                                 <constraint firstItem="g5n-f6-SXi" firstAttribute="leading" secondItem="Z6k-7j-LYg" secondAttribute="leading" constant="20" id="d19-L9-ZeQ"/>
                                 <constraint firstItem="s5W-Ol-jPw" firstAttribute="leading" secondItem="Z6k-7j-LYg" secondAttribute="leading" constant="15" id="e6Y-Db-hUw"/>
                                 <constraint firstItem="g5n-f6-SXi" firstAttribute="top" secondItem="kra-pQ-6ls" secondAttribute="bottom" constant="8" id="fQE-ms-wvX"/>
@@ -281,7 +293,7 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRm-HE-c1F">
-                            <rect key="frame" x="0.0" y="169" width="375" height="1"/>
+                            <rect key="frame" x="0.0" y="189" width="375" height="1"/>
                             <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="D3a-Cj-Nmr"/>

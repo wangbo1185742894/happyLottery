@@ -35,7 +35,7 @@
     __weak IBOutlet UIButton *btnMoniTouzhu;
     __weak IBOutlet UIButton *btnZhenShiTouzhu;
     
-    WBButton *chuanfaBt;
+    UIButton *chuanfaBt;
     SelectView *peiSelectView;
     LotteryManager *lotteryMan;
     AppDelegate *appDelegate;
@@ -69,7 +69,7 @@
     self.labMaxJiangjie.adjustsFontSizeToFitWidth = YES;
     [self.view layoutIfNeeded];
     [self setChuanfa];
-    self.title = @"竞彩篮球投注";
+    self.title = @"确认预约";
     if (nil == appDelegate) {
         appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     }
@@ -78,16 +78,17 @@
     
     self.lotteryMan.delegate = self;
     
-    CGRect changCiFram = CGRectMake(20, 55, 90, 25);
+    CGRect changCiFram = CGRectMake(20, 55, 110, 25);
     
     chuanfaBt = [self myButton:changCiFram title:@"" select:@selector(changCiChoose) imgage:@"" selectedImgName:@"" ];
     chuanfaBt.backgroundColor = [UIColor whiteColor];
+    [chuanfaBt setTitleColor:TEXTGRAYOrange forState:0];
     chuanfaBt.titleLabel.font = [UIFont systemFontOfSize:14];
     chuanfaBt.titleLabel.textAlignment = NSTextAlignmentCenter;
     chuanfaBt .layer.borderColor = COLORGRAYBUTTON.CGColor;
     chuanfaBt.layer.borderWidth = SEPHEIGHT;
     [chuanfaBt setTitle:self.transaction.chuanFa forState:0];
-    peiSelectView= [[SelectView alloc]initWithFrame:CGRectMake(self.view.mj_w -185, 55, 170, 25) andRightTitle:@"投" andLeftTitle:@"倍"];
+    peiSelectView= [[SelectView alloc]initWithFrame:CGRectMake(self.view.mj_w -175, 55, 160, 25) andRightTitle:@"投" andLeftTitle:@"倍"];
     peiSelectView.beiShuLimit = 9999;
     if ([self.transaction.beitou isEqualToString:@""] || self.transaction.beitou == nil) {
         peiSelectView.labContent.text = @"5";
@@ -196,6 +197,7 @@
     TZSelectMatchCell *cell = [tableView dequeueReusableCellWithIdentifier:KTZSelectMatchCell];
     JCLQMatchModel *model = self.transaction.matchSelectArray[indexPath.row];
     [cell loadDataJCLQ:model];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -214,8 +216,8 @@
     return [self.transaction.matchSelectArray [indexPath.row] getHeight] + 53;
 }
 
-- (WBButton *)myButton:(CGRect)fram title:(NSString *)title select:(SEL)select imgage:(NSString *)imgName selectedImgName:(NSString *)selectImgName {
-    WBButton * button = [WBButton buttonWithType:UIButtonTypeCustom];
+- (UIButton *)myButton:(CGRect)fram title:(NSString *)title select:(SEL)select imgage:(NSString *)imgName selectedImgName:(NSString *)selectImgName {
+    UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = fram;
     button.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     //    button.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 5);
@@ -470,7 +472,6 @@
     if (self.transaction.guanType == JCLQGuanTypeDanGuan) {
         if (self.transaction.matchSelectArray.count < 1) {
             return  @"单关模式下，至少保留一场比赛";
-            
         }
     }
     if (self.transaction.guanType == JCLQGuanTypeGuoGuan) {
@@ -494,7 +495,6 @@
 }
 - (IBAction)actionGoOnSelect:(UIButton *)sender {
     [self .navigationController popViewControllerAnimated:YES];
-    
 }
 
 -(void)dealloc{
