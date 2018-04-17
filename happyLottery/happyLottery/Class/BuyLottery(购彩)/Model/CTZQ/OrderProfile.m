@@ -458,7 +458,7 @@
         return @"first.png";
     }
     if ([self.lotteryCode isEqualToString:@"SSQ"]) {
-        return @"ssq_logo.png";
+        return @"shuangseqiu.png";
     }
     return @"";
 }
