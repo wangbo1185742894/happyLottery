@@ -307,7 +307,7 @@
                 if (schemeDetail != nil) {
 //                    [dltCell refreshDataWith:dltBetList[indexPath.row] andOpenResult:schemeDetail.trDltOpenResult];
                 }
-                [dltCell setNumIndex:[NSString stringWithFormat:@"%ld",indexPath.row] andIsShow:dltBetList.count == 1];
+                [dltCell setNumIndex:[NSString stringWithFormat:@"%ld",indexPath.row+1] andIsShow:dltBetList.count == 1];
                 cell = dltCell;
             }else if ([schemeDetail.lottery isEqualToString:@"JCZQ"]){
                 SchemeDetailMatchViewCell *matchCell = [tableView dequeueReusableCellWithIdentifier:KSchemeDetailMatchViewCell];
@@ -394,7 +394,7 @@
         if (indexPath.section == 0) {
             return [schemeDetail getJCZQCellHeight];
         }else if (indexPath.section ==1){
-            if ([schemeDetail.lottery isEqualToString:@"DLT"]) {
+            if ([schemeDetail.lottery isEqualToString:@"DLT"]||[schemeDetail.lottery isEqualToString:@"SSQ"]) {
                 DLTSchemeViewCell *temp = [[DLTSchemeViewCell alloc]init];
                 return [temp getCellHeightWith:dltBetList[indexPath.row]];
             }else if ([schemeDetail.lottery isEqualToString:@"JCZQ"]){

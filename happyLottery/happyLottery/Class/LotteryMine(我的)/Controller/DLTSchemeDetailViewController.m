@@ -345,7 +345,7 @@
                 if (schemeDetail != nil) {
                  [dltCell refreshDataWith:dltBetList[indexPath.row] andOpenResult:schemeDetail.trDltOpenResult andLotteryType:schemeDetail.lottery];
                 }
-                [dltCell setNumIndex:[NSString stringWithFormat:@"%ld",indexPath.row] andIsShow:dltBetList.count == 1];
+                [dltCell setNumIndex:[NSString stringWithFormat:@"%ld",indexPath.row+1] andIsShow:dltBetList.count == 1];
                 cell = dltCell;
  
             }else if(indexPath.section ==  1){

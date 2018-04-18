@@ -185,7 +185,7 @@
         return @"first.png";
     }
     if ([self.lottery isEqualToString:@"SSQ"]) {
-        return @"ssq_logo.png";
+        return @"shuangseqiu.png";
     }
     if ([self.lottery isEqualToString:@"JCLQ"]) {
         return @"basketball.png";

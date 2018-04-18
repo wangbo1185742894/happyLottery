@@ -47,7 +47,7 @@
         self.imgLotteryIcon.image = [UIImage imageNamed:@"Championship.png"];
     }else if ([self.lotteryCode isEqualToString:@"SSQ"]){
         self.labLotteryName.text = @"双色球";
-        self.imgLotteryIcon.image = [UIImage imageNamed:@"ssq_logo.png"];
+        self.imgLotteryIcon.image = [UIImage imageNamed:@"shuangseqiu.png"];
     }else if ([self.lotteryCode isEqualToString:@"JCLQ"]){
         self.labLotteryName.text = @"竞彩篮球";
         self.imgLotteryIcon.image = [UIImage imageNamed:@"basketball.png"];

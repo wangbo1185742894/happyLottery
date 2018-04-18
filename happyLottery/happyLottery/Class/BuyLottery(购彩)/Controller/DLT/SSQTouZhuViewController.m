@@ -121,7 +121,7 @@
     self.memberMan = [[MemberManager alloc] init];
     self.memberMan.delegate = self;
 
-    self.title = @"双色球投注";
+    self.title = @"确认预约";
     betsList = [self.transaction allBets];
     
     self.lotteryMan = [[LotteryManager alloc] init];
@@ -209,7 +209,7 @@
             limitNum = 99;
         }else{
             NSInteger curQI = [[self.lottery.currentRound.issueNumber substringFromIndex:4] integerValue];
-            limitNum = 135 - curQI;
+            limitNum = 153 - curQI;
         }
         if (num > limitNum) {
             [self showPromptText:[NSString stringWithFormat:@"最大可追%ld期",limitNum] hideAfterDelay:1.8];

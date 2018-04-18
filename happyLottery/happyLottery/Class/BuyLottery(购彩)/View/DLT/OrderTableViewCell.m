@@ -206,7 +206,7 @@
     }
     if ([order.lotteryType isEqualToString:@"SSQ"]){
         lotteryTypeLb.text = @"双色球";
-        lotteryIconImgV.image = [UIImage imageNamed:@"ssq_logo.png"];
+        lotteryIconImgV.image = [UIImage imageNamed:@"shuangseqiu.png"];
     }
     //    if([order.winningStatus intValue] > 2){
     //        winningStateLb.textColor = [UIColor redColor];

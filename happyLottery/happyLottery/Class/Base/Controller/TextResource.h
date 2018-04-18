@@ -293,6 +293,8 @@
 #define TextTouzhuExceedLimit       @"单笔最大金额不可超过30万元"
 // 双色球红球选择数限制添加  lyw
 #define TextTouzhuNumBerLimit       @"最多可选20个"
+// 双色球红球胆码选择数限制添加 lyw
+#define TextTouzhuDanHaoBerLimit       @"红区最多选择5个胆码"
 
 #define TextTouzhuExceedLimitJCLQ   @"单笔最大金额不可超过30万元"
 #define TextzhuijiaTouzhuExceedLimit @"追加投注单笔最大金额不可超过30万元"

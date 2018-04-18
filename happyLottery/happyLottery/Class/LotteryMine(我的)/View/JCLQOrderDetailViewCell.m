@@ -56,6 +56,33 @@
 //    NOT_LOTTERY("未中奖"),
 //    /**	 * 中奖	 */[8]    (null)    @"passType" : @"P2_1"
 //    LOTTERY("中奖");[2]    (null)    @"ticketContent" : @"[{\"matchId\":\"周一003\",\"matchKey\":\"102865\",\"options\":[\"3\",\"1\",\"0\"],\"playType\":1},{\"matchId\":\"周一005\",\"matchKey\":\"102867\",\"options\":[\"3\",\"1\"],\"playType\":1}]"
+
+- (NSMutableArray *)reloadDataSSQ:(NSDictionary *)dic{
+    NSArray *titleArray = [Utility objFromJson:dic[@"ticketContent"]];
+    NSMutableArray *marr = [NSMutableArray arrayWithCapacity:0];
+    for (NSString *itemStr in titleArray) {
+        NSDictionary *itemDic = [Utility objFromJson:itemStr];
+        NSArray *redList = itemDic[@"redList"];
+        NSArray *redDanList = itemDic[@"redDanList"];
+        NSArray *blueList = itemDic[@"blueList"];
+        if (redList.count!=0&&blueList.count!=0&&redList!=nil&&blueList!=nil) {
+            NSString *strRed;
+            NSString *strBlue;
+            NSString *redDanStr;
+            strRed = [redList componentsJoinedByString:@","];
+            strBlue = [blueList componentsJoinedByString:@","];
+            if (redDanList != nil && redDanList.count !=0) {
+                redDanStr = [redDanList componentsJoinedByString:@","];
+                redDanStr = [NSString stringWithFormat:@"%@#",redDanStr];
+                [marr addObject:[NSString stringWithFormat:@"%@%@+%@",redDanStr,strRed,strBlue]];
+            }
+            else {
+                [marr addObject:[NSString stringWithFormat:@"%@+%@",strRed,strBlue]];
+            }
+        }
+    }
+    return marr;
+}
 -(void)reloadData:(NSDictionary *)dic{
     itemDic = dic;
     self.labTouzhuneirong.layer.borderWidth = 1;
@@ -73,23 +100,8 @@
     else if ([dic[@"lotteryCode"] isEqualToString:@"SSQ"]){
         self.disLeftPlayType.constant = -self.labPlayType.mj_w - 50;
         self.disLeftPlayTypeContent.constant = -self.labPlayType.mj_w - 50;
-        NSArray *titleArray = [Utility objFromJson:dic[@"ticketContent"]];
-        NSMutableArray *marr = [NSMutableArray arrayWithCapacity:0];
-        for (NSString *itemStr in titleArray) {
-            NSDictionary *itemDic = [Utility objFromJson:itemStr];
-            if (itemDic[@"blueList"] != nil&&itemDic[@"redList"]!=nil) {
-                
-                NSString *str = [NSString stringWithFormat:@"%@+%@",itemDic[@"redList"],itemDic[@"blueList"]];
-                str= [str stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]; //去除掉首尾的空白字符和换行字符
-                str = [str stringByReplacingOccurrencesOfString:@"\r" withString:@""];
-                str = [str stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-                str = [str stringByReplacingOccurrencesOfString:@"(" withString:@""];
-                str = [str stringByReplacingOccurrencesOfString:@")" withString:@""];
-                str = [str stringByReplacingOccurrencesOfString:@" " withString:@""];
-                [marr addObject:str];
-            }
-        }
-        content = [marr componentsJoinedByString:@"\n"];
+        NSMutableArray *array = [self reloadDataSSQ:dic];
+        content = [array componentsJoinedByString:@"\n"];
     }
     else if([dic[@"lotteryCode"] isEqualToString:@"RJC"] || [dic[@"lotteryCode"] isEqualToString:@"SFC"]){
         content = dic[@"ticketContent"];
@@ -334,12 +346,14 @@
 
 
 -(CGFloat)getCellHeight:(NSDictionary*)dic{
-    if([dic[@"lotteryCode"] isEqualToString:@"DLT"] || [dic[@"lotteryCode"] isEqualToString:@"SFC"] || [dic[@"lotteryCode"] isEqualToString:@"RJC"]||[dic[@"lotteryCode"] isEqualToString:@"SSQ"]){
-        
+    if([dic[@"lotteryCode"] isEqualToString:@"DLT"] || [dic[@"lotteryCode"] isEqualToString:@"SFC"] || [dic[@"lotteryCode"] isEqualToString:@"RJC"]){
         return [dic[@"ticketContent"] componentsSeparatedByString:@";"].count * 12 + 150;
     }else if ([dic[@"lotteryCode"] isEqualToString:@"JCGJ"] || [dic[@"lotteryCode"] isEqualToString:@"JCGYJ"]){
         NSArray *titleArray = [Utility objFromJson:dic[@"ticketContent"]];
         return titleArray.count * 12 + 150;
+    }else if ([dic[@"lotteryCode"] isEqualToString:@"SSQ"]){
+        NSMutableArray *array = [self reloadDataSSQ:dic];
+        return array.count * 12 + 150;
     }
     NSArray *titleArray = [Utility objFromJson:dic[@"ticketContent"]] ;
     

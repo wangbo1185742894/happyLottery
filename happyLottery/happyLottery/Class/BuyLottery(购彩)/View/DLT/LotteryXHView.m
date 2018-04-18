@@ -345,6 +345,9 @@
             }
         } else if (newState == NumberViewStateDanHao) {
             if (!moreDanHao) {
+                if ([lottery.identifier isEqualToString:@"SSQ"]) {
+                    [self.delegate showPromptViewWithText: TextTouzhuDanHaoBerLimit hideAfter: 1];
+                }
                 newState = NumberViewStateNormal;
                 if (numberView.numberState == NumberViewStateNormal) {
                     needMaxErrorPrompt = YES;

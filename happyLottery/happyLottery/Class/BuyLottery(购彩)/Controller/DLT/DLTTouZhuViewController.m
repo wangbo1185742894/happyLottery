@@ -121,7 +121,7 @@
     self.memberMan = [[MemberManager alloc] init];
     self.memberMan.delegate = self;
 
-    self.title = @"大乐透投注";
+    self.title = @"确认预约";
     betsList = [self.transaction allBets];
     
     self.lotteryMan = [[LotteryManager alloc] init];

@@ -527,7 +527,7 @@
     else{
         SSQPlayViewController *playVC = [[SSQPlayViewController alloc] init];
         playVC.hidesBottomBarWhenPushed = YES;
-        playVC.lottery = lotteryDS[1];
+        playVC.lottery = lotteryDS[10];
         [self.navigationController pushViewController:playVC animated:YES];
     }
     
