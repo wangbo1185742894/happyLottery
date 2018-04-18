@@ -218,7 +218,7 @@
                                         <action selector="actionSelectItem:" destination="-1" eventType="touchUpInside" id="tb6-rO-lOq"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="充值30%不可提现" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="szu-JQ-F1Y">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="充值金额的30%只能用于购彩，不能提现。" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="szu-JQ-F1Y">
                                     <rect key="frame" x="15" y="95" width="345" height="18"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="18" id="jyh-D9-1ZX"/>

@@ -783,7 +783,11 @@
     
     
     float balance = [self.curUser.totalBanlece doubleValue];
-    NSString *msg = [NSString stringWithFormat:@"共追%lu期，共需%ld元,您当前余额为%.1f元,是否确定追号？",[tfQiCount.text integerValue],(long)self.transaction.betCost,balance];
+    NSString *msg = [NSString stringWithFormat:@"共追%lu期，共需%ld元,您当前余额为%.2f元,是否确定追号？",[tfQiCount.text integerValue],(long)self.transaction.betCost,balance];
+    if (balance < self.transaction.betCost) {
+        [self showPromptText:@"余额不足" hideAfterDelay:1.9];
+        return;
+    }
     if ([tfBeiCount.text integerValue] > 99) {
         [self showPromptText:@"追号最大可投99倍" hideAfterDelay:1.8];
         return;

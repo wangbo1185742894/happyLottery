@@ -250,5 +250,23 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (IBAction)saveErCodeToLocal:(id)sender {
+    [self loadImageFinished:self.codeImage.image];
+}
+- (void)loadImageFinished:(UIImage *)image
+{
+    UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), (__bridge void *)self);
+}
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
+{
+    
+    if (error == nil) {
+        [self showPromptText:@"保存成功" hideAfterDelay:1.9];
+    }else{
+        [self showPromptText:@"保存失败" hideAfterDelay:1.9];
+    }
+}
+
 
 @end
