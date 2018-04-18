@@ -153,6 +153,7 @@
     
     [self currentBet:nil];
     [self getHisIssue];
+    [self loadUI];
 }
 
 -(void)getHisIssue{
@@ -361,7 +362,7 @@
     if (isShowFLag) {
         [self.view bringSubviewToFront:flagLable];
     }else{
-         [self loadUI];
+//         [self loadUI];
     }
     
     
