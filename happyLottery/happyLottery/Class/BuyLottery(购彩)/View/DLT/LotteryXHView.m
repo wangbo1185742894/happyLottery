@@ -360,12 +360,19 @@
     }
     
     [self.lotteryBet updateBetInfo];
-    //  是否超额
-    BOOL isExceed = [self.delegate isExceedAmountLimit];
-
-    if (isExceed) {
-        [self.delegate showPromptViewWithText: TextTouzhuExceedLimit hideAfter: 1];
+    //判断注数添加 lyw
+    if([self.lotteryBet getBetCount] > 10000)
+    {
+        [self.delegate showPromptViewWithText:@"单次投注注数不能超过1万注" hideAfter:1];
         newState = NumberViewStateNormal;
+    } else {
+        //  是否超额
+        BOOL isExceed = [self.delegate isExceedAmountLimit];
+        
+        if (isExceed) {
+            [self.delegate showPromptViewWithText: TextTouzhuExceedLimit hideAfter: 1];
+            newState = NumberViewStateNormal;
+        }
     }
     if ([lotteryXH.numbersDanHao containsObject:numberView.numberObj]) {
         [lotteryXH.numbersDanHao removeObject:numberView.numberObj];
@@ -381,6 +388,7 @@
         if (![lottery.activeProfile.couldRepeatSelect boolValue]){
             //  区域间不可重复选择
             for (LotteryXHSection *lotteryXH_ in lottery.activeProfile.details) {
+          
                 if ([lotteryXH_.sectionID intValue] != [lotteryXH.sectionID intValue]) {
                     LotteryNumber * numberMustToRemove;
                     for (LotteryNumber * number in lotteryXH_.numbersSelected){
