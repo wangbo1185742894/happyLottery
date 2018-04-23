@@ -15,6 +15,7 @@
 #import "FunctionsViewController.h"
 #import "IntegeralChangeViewController.h"
 #import "LotteryInstructionDetailViewController.h"
+#import "WebViewController.h"
 
 @interface MyHelpViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
@@ -40,6 +41,20 @@
 - (IBAction)footballPlay:(id)sender {
     FootBallPlayViewController * mpVC = [[FootBallPlayViewController alloc]init];
     [self.navigationController pushViewController:mpVC animated:YES];
+}
+- (IBAction)actionJclqPlay:(id)sender {
+    NSArray *infoArr = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"LotteryInstructionConfig" ofType: @"plist"]];
+    NSDictionary *infoDic = infoArr[7];
+    LotteryInstructionDetailViewController *detailVC = [[LotteryInstructionDetailViewController alloc] initWithNibName: @"LotteryInstructionDetailViewController" bundle: nil];
+    detailVC.lotteryDetailDic = infoDic;
+    [self.navigationController pushViewController: detailVC animated: YES];
+}
+- (IBAction)actionSSQPlay:(id)sender {
+    WebViewController *webVC = [[WebViewController alloc]initWithNibName:@"WebViewController" bundle:nil];
+    webVC.type = @"html";
+    webVC.title = @"双色球玩法规则";
+    webVC.htmlName = @"ssq_play";
+    [self.navigationController pushViewController:webVC animated:YES];
 }
 
 - (IBAction)getIntegral:(id)sender {

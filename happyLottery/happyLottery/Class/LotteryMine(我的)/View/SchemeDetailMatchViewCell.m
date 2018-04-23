@@ -332,6 +332,54 @@
     return playTypeStr;
 }
 
+
+-(NSString *)reloadDataWithRecResultJCLQ:(NSArray *)option type:(NSString *)playType{
+    
+    NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"JCLQCode" ofType: @"plist"]] ;
+    NSDictionary *contentArray;
+    NSInteger index;
+    NSMutableString*content = [NSMutableString string];
+    switch ([playType integerValue]) {
+        case 1:
+            index = 100;
+            contentArray = dic[@"SF"];
+            
+            break;
+        case 2:
+            index = 200;
+            contentArray = dic[@"RFSF"];
+            
+            break;
+        case 4:
+            index = 400;
+            contentArray = dic[@"DXF"];
+            
+            break;
+        case 3:
+            index = 300;
+            contentArray = dic[@"SFC"];
+            
+            break;
+        default:
+            break;
+    }
+    
+    for (NSString *op in option) {
+        
+        NSString*type = [self getContentJCLQResult:contentArray andOption:op];
+        [content appendFormat:@"%@",type];
+        
+        self.num ++;
+    }
+    
+    
+    
+    if (content.length >1) {
+        return content;
+    }
+    return @"";
+}
+
 -(NSString *)reloadDataWithRecResult:(NSArray *)option type:(NSString *)playType{
     
     NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"JingCaiOrderCode" ofType: @"plist"]] ;
@@ -491,6 +539,16 @@
     return @"";
 }
 
+-(NSString*)getContentJCLQResult:(NSArray*)contentArray andOption:(NSString*)option{
+    for (NSDictionary *itemDic in contentArray) {
+        if (itemDic[option] != nil) {
+            return itemDic[option];
+        }
+    }
+    
+    return @"";
+}
+
 -(NSString*)getContentJCLQ:(NSArray*)contentArray andOption:(NSString*)option{
     NSDictionary *dic = contentArray[[option integerValue]];
     if (dic != nil) {
@@ -644,7 +702,7 @@
                 result = @"已取消";
             }else{
                 
-                result = [self reloadDataWithRecResult:@[[open performSelector:func withObject:nil]] type:itemDic[@"playType"]];
+                result = [self reloadDataWithRecResultJCLQ:@[[open performSelector:func withObject:nil]] type:itemDic[@"playType"]];
             }
         }
         
@@ -673,7 +731,7 @@
         }else if ([open.matchStatus isEqualToString:@"PAUSE"]){
             labResult.text = @"赛果:暂停";
         }else{
-            labResult.text = [NSString stringWithFormat:@"赛果:%@:%@",open.homeScore,open.guestScore];
+            labResult.text = [NSString stringWithFormat:@"赛果:%@:%@",open.guestScore,open.homeScore];
         }
         
     }
