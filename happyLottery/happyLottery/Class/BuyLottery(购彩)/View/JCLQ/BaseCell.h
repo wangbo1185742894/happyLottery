@@ -13,7 +13,7 @@
 @protocol JCLQCellDelegate <NSObject>
 
 -(void)clickItem:(NSString*)title model:(JCLQMatchModel*)model andIndex:(NSInteger)index;
-
+-(BOOL)canBuyThisMatch:(JCLQMatchModel *)model andIndex:(NSInteger)ind;
 @end
 
 @interface BaseCell : UITableViewCell
@@ -26,5 +26,7 @@
 -(void)loadDataWithModel:(JCLQMatchModel*)model;
 -(void)refreshSelected:(NSArray *)array baseTag:(NSInteger)tag andEnableArray:(NSArray *)enble;
 -(NSMutableAttributedString*)setLabHomeGuestTextColor:(NSString *)str andSelect:(BOOL)select;
+-(void )setButton:(UIButton *)item normal:(NSString  *)title andSelect:(NSString *)isselect;
+
 
 @end

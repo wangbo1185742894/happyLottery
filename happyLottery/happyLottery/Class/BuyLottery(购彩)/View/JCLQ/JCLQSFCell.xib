@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -95,15 +95,6 @@
                                 <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bic-TM-l4K">
-                                <rect key="frame" x="0.0" y="44" width="125.5" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="25n-Cl-yUj"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o6G-Vq-VJg">
                                 <rect key="frame" x="131" y="8" width="124" height="20"/>
                                 <constraints>
@@ -113,36 +104,21 @@
                                 <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DZY-2p-0hx">
-                                <rect key="frame" x="130.5" y="44" width="124" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="S56-sY-Aub"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="Bic-TM-l4K" firstAttribute="leading" secondItem="cyL-fh-91g" secondAttribute="leading" id="2WR-1Z-toV"/>
                             <constraint firstItem="H8y-Os-tdS" firstAttribute="leading" secondItem="cyL-fh-91g" secondAttribute="leading" constant="0.5" id="3F1-ei-gNz"/>
                             <constraint firstAttribute="trailing" secondItem="o6G-Vq-VJg" secondAttribute="trailing" id="3Rw-98-kkg"/>
                             <constraint firstItem="H8y-Os-tdS" firstAttribute="top" secondItem="cyL-fh-91g" secondAttribute="top" constant="36" id="8XQ-tG-1pb"/>
                             <constraint firstItem="KEO-CL-Jl2" firstAttribute="width" secondItem="H8y-Os-tdS" secondAttribute="width" id="CzF-Af-J9V"/>
                             <constraint firstItem="o6G-Vq-VJg" firstAttribute="leading" secondItem="iFd-Yt-uYI" secondAttribute="trailing" constant="5" id="NuO-Bb-7Ml"/>
-                            <constraint firstItem="KEO-CL-Jl2" firstAttribute="leading" secondItem="Bic-TM-l4K" secondAttribute="trailing" constant="5" id="QaJ-Ot-pxi"/>
                             <constraint firstItem="iFd-Yt-uYI" firstAttribute="leading" secondItem="cyL-fh-91g" secondAttribute="leading" id="U9f-B6-95o"/>
                             <constraint firstAttribute="bottom" secondItem="KEO-CL-Jl2" secondAttribute="bottom" constant="0.5" id="Wfn-XO-MNi"/>
                             <constraint firstItem="o6G-Vq-VJg" firstAttribute="top" secondItem="cyL-fh-91g" secondAttribute="top" constant="8" id="aIy-rp-l4U"/>
                             <constraint firstItem="KEO-CL-Jl2" firstAttribute="top" secondItem="cyL-fh-91g" secondAttribute="top" constant="36" id="eGU-iK-1CL"/>
-                            <constraint firstItem="DZY-2p-0hx" firstAttribute="leading" secondItem="Bic-TM-l4K" secondAttribute="trailing" constant="5" id="hbS-Av-YjA"/>
                             <constraint firstItem="iFd-Yt-uYI" firstAttribute="top" secondItem="cyL-fh-91g" secondAttribute="top" constant="8" id="hwt-uw-KJ8"/>
                             <constraint firstItem="KEO-CL-Jl2" firstAttribute="leading" secondItem="H8y-Os-tdS" secondAttribute="trailing" constant="5" id="jBM-Fm-1hw"/>
-                            <constraint firstAttribute="trailing" secondItem="DZY-2p-0hx" secondAttribute="trailing" id="jas-aH-oRX"/>
-                            <constraint firstItem="Bic-TM-l4K" firstAttribute="centerY" secondItem="H8y-Os-tdS" secondAttribute="centerY" id="jxI-hY-4rX"/>
                             <constraint firstItem="KEO-CL-Jl2" firstAttribute="leading" secondItem="iFd-Yt-uYI" secondAttribute="trailing" constant="5" id="kdH-5T-mmv"/>
                             <constraint firstAttribute="trailing" secondItem="KEO-CL-Jl2" secondAttribute="trailing" constant="0.5" id="lr2-gy-Qun"/>
-                            <constraint firstItem="KEO-CL-Jl2" firstAttribute="centerY" secondItem="DZY-2p-0hx" secondAttribute="centerY" id="oEh-0W-pxd"/>
                             <constraint firstAttribute="bottom" secondItem="H8y-Os-tdS" secondAttribute="bottom" constant="0.5" id="uec-ke-LpJ"/>
                         </constraints>
                     </view>
@@ -170,9 +146,7 @@
                 <outlet property="btnSFHomeWin" destination="KEO-CL-Jl2" id="bO5-DZ-0VG"/>
                 <outlet property="imgDanguan" destination="MTC-BE-tap" id="Ivr-8S-7yy"/>
                 <outlet property="labGuestName" destination="iFd-Yt-uYI" id="wPc-Sq-w5X"/>
-                <outlet property="labGuestPeiLv" destination="Bic-TM-l4K" id="Ffr-Dt-ALV"/>
                 <outlet property="labHomeName" destination="o6G-Vq-VJg" id="q9S-9v-hA6"/>
-                <outlet property="labHomePeiLv" destination="DZY-2p-0hx" id="Xfw-s5-K2T"/>
                 <outlet property="labSFCGameDay" destination="aej-o1-7T6" id="MJO-dq-v6b"/>
                 <outlet property="labSFCGameName" destination="bgR-hv-BOf" id="bGV-tl-ruV"/>
                 <outlet property="labSFCGameTime" destination="Mk3-Xk-KCa" id="WeN-Nz-Q0j"/>

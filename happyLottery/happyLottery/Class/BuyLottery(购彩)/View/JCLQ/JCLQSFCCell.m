@@ -24,8 +24,9 @@
 - (IBAction)actionSelectFenShu:(UIButton *)sender {
     JCLQSFCPlayTypeView *type = [[JCLQSFCPlayTypeView alloc]initWithFrame:[UIScreen mainScreen].bounds];
     type.frame =[UIScreen mainScreen].bounds;
+     type.delegate = self.delegate;
     [type loadDataWith:self.model];
-    type.delegate = self.delegate;
+   
     type.cell = self;
     [[UIApplication sharedApplication].keyWindow  addSubview:type];
     

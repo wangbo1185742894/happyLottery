@@ -22,9 +22,6 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    
-    // Configure the view for the selected state
 }
 
 - (IBAction)actionClick:(UIButton *)sender {
@@ -33,13 +30,10 @@
         [self.delegate clickItem:@"1" model:self.model andIndex:sender.tag];
     }else{
         [self.delegate clickItem:@"0" model:self.model andIndex:sender.tag];
-    
     }
-    
 }
 
 -(void)loadDataWithModel:(JCLQMatchModel *)model{
-    
     self.model = model;
     self.imgDanguan.hidden = !model.isDanGuan;
     self.labDXFGameName.text = model.leagueName;
@@ -60,10 +54,9 @@
     [aStr addAttribute:NSForegroundColorAttributeName value:SystemGreen range:r2];
     self.labDXFHomeAndGoust.attributedText = aStr;
 
-    [self.btnDXFDY setTitle:[NSString stringWithFormat:@"大于%@  %.2f",model.hilo,[model.DXFSOddArray[0] doubleValue]] forState:UIControlStateNormal];
-    [self.btnDXFXY setTitle:[NSString stringWithFormat:@"小于%@  %.2f",model.hilo,[model.DXFSOddArray[1] doubleValue]] forState:UIControlStateNormal];
-    
-    [self refreshSelected:self.model.DXFSelectMatch baseTag:300 andEnableArray:model.DXFSOddArray];
+    [self setButton:self.btnDXFDY normal:[NSString stringWithFormat:@"大于%@  %.2f",model.hilo,[model.DXFSOddArray[0] doubleValue]] andSelect:self.model.DXFSelectMatch[0]];
+    [self setButton:self.btnDXFXY normal:[NSString stringWithFormat:@"小于%@  %.2f",model.hilo,[model.DXFSOddArray[1] doubleValue]] andSelect:self.model.DXFSelectMatch[1]];
+//    [self refreshSelected:self.model.DXFSelectMatch baseTag:300 andEnableArray:model.DXFSOddArray];
 }
 
 

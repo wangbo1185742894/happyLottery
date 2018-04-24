@@ -25,40 +25,7 @@
         NSString *item = array[i];
         UIButton *btn = [self viewWithTag:tag+i];
         btn.selected = [item isEqualToString:@"1"];
-        NSString *btnTi = [btn titleForState:UIControlStateNormal];
-        if (tag/100==1||tag/100==2) {
-            if(!btnTi){
-                btnTi= @"";
-            }
-             NSMutableAttributedString *btnTitle = [[NSMutableAttributedString alloc] initWithString:btnTi];
-            if (!btn.selected) {
-                if ([btnTi containsString:@"+"]||[btnTi containsString:@"-"]) {
-                    NSRange addRange = [btnTi rangeOfString:@"+"];
-                    NSRange minRange = [btnTi rangeOfString:@"-"];
-                    NSRange blankRange = [btnTi rangeOfString:@" "];
-                    BOOL isAdd = YES;
-                    if (addRange.location == NSNotFound) {
-                        isAdd = NO;
-                    }
-                    NSInteger index_1 = isAdd ? addRange.location : minRange.location;
-                    NSInteger index_2 = blankRange.location;
-
-                    [btnTitle addAttribute:NSForegroundColorAttributeName value:TEXTGRAYCOLOR range:NSMakeRange(0, index_1)];
-                    if (isAdd) {
-                        [btnTitle addAttribute:NSForegroundColorAttributeName value:SystemRed range:NSMakeRange(index_1, index_2 - index_1)];
-                    }else{
-                        [btnTitle addAttribute:NSForegroundColorAttributeName value:SystemGreen range:NSMakeRange(index_1, index_2 - index_1)];
-                    }
-                    [btnTitle addAttribute:NSForegroundColorAttributeName value:TEXTGRAYCOLOR range:NSMakeRange(index_2, btnTitle.length - index_2)];
-                }else{
-                    [btnTitle addAttribute:NSForegroundColorAttributeName value:TEXTGRAYCOLOR range:NSMakeRange(0, btnTitle.length)];
-                }
-                [btn setAttributedTitle:btnTitle forState:UIControlStateNormal];
-            }else{
-                [btnTitle addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, btnTitle.length)];
-                [btn setAttributedTitle:btnTitle forState:UIControlStateNormal];
-            }
-        }
+        
         btn.enabled =![enble[i]isEqualToString:@"0"];
         btn.titleLabel.textAlignment = NSTextAlignmentCenter;
     }
@@ -70,12 +37,119 @@
     NSRange r2 = NSMakeRange(0,str.length-1);
     [aStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:11] range:r1];
     [aStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15] range:r2];
-        
         [aStr addAttribute:NSForegroundColorAttributeName value:TextOrangeColor range:r1];
         [aStr addAttribute:NSForegroundColorAttributeName value:TEXTGRAYCOLOR range:r2];
   
     return aStr;
     
 }
+
+-(BOOL)isCanBuyThisType:(UIButton *)sender{
+    
+    if (sender.tag == 0) {  //无效button
+        
+        return YES;
+    }
+    
+    if (sender.tag == 1000) {  //全部玩法 展开
+        
+        return YES;
+    }
+    if (sender.tag == 2000) { //半全场  展开
+        
+        return YES;
+    }
+    if (sender.tag == 3000) { // 比分展开
+        
+        return YES;
+    }
+    
+    NSInteger playType = sender.tag / 100;
+    NSInteger index = sender.tag % 100;
+    NSString *title;
+    BOOL isCanBuy = YES;
+    switch (playType) {
+        case 1:
+            isCanBuy = [self.delegate canBuyThisMatch:self.model andIndex:0];
+            title = [self getSpNOTitle:self.model.SFOddArray index:index];
+            break;
+        case 2:
+            title = [self getSpNOTitle:self.model.RFSFOddArray index:index];
+            isCanBuy = [self.delegate canBuyThisMatch:self.model andIndex:1];
+            
+            break;
+        case 4:
+            title = [self getSpNOTitle:self.model.SFCOddArray index:index];
+            isCanBuy = [self.delegate canBuyThisMatch:self.model andIndex:2];
+            
+            break;
+        case 3:
+            title = [self getSpNOTitle:self.model.DXFSOddArray index:index];
+            isCanBuy = [self.delegate canBuyThisMatch:self.model andIndex:3];
+            
+            break;
+    }
+    
+    if (isCanBuy == NO || [title doubleValue] == 0) {
+        return NO;
+    }else{
+        if ([self.model.status isEqualToString:@"ENDED"]) {
+            
+            return NO;
+        }
+        
+        if ([self.model.status isEqualToString:@"CANCLE"]) {
+            
+            return NO;
+        }
+        
+        if ([self.model.status isEqualToString:@"PAUSE"]) {
+            
+            return NO;
+        }
+        return YES;
+        
+    }
+}
+
+
+
+-(NSString *)getSpNOTitle:(NSArray *)oddArray index:(NSInteger)i{
+    float sp = 0.00;
+    if (oddArray.count > i ) {
+        sp = [oddArray[i] doubleValue];
+    }
+    NSString *itemStr = [NSString stringWithFormat:@"%.2f",sp];
+    return itemStr;
+}
+
+-(void )setButton:(UIButton *)item normal:(NSString  *)title andSelect:(NSString *)isselect{
+    item.selected = [isselect boolValue];
+    NSMutableAttributedString *attrStrN = [[NSMutableAttributedString alloc] initWithString:title];
+    NSMutableAttributedString *attrStrS = [[NSMutableAttributedString alloc] initWithString:title];
+    if ([self isCanBuyThisType:item]) {
+        NSDictionary * firstAttributesN = @{ NSFontAttributeName:[UIFont systemFontOfSize:13],NSForegroundColorAttributeName:RGBCOLOR(72, 72, 72)};
+        [attrStrN setAttributes:firstAttributesN range:NSMakeRange(0, attrStrN.string.length)];
+        
+        
+        NSDictionary * firstAttributesS = @{ NSFontAttributeName:[UIFont systemFontOfSize:13],NSForegroundColorAttributeName:[UIColor whiteColor]};
+        [attrStrS setAttributes:firstAttributesS range:NSMakeRange(0, attrStrS.string.length)];
+        
+    }else{
+        NSDictionary * firstAttributesN = @{ NSFontAttributeName:[UIFont systemFontOfSize:13],NSForegroundColorAttributeName:RGBCOLOR(72, 72, 72),NSStrikethroughStyleAttributeName : @(NSUnderlineStyleSingle)};
+        [attrStrN setAttributes:firstAttributesN range:NSMakeRange(0, attrStrN.string.length)];
+        [item setAttributedTitle:attrStrN forState:0];
+        NSDictionary * firstAttributesS = @{ NSFontAttributeName:[UIFont systemFontOfSize:13],NSForegroundColorAttributeName:RGBCOLOR(72, 72, 72),NSStrikethroughStyleAttributeName : @(NSUnderlineStyleSingle)};
+        [attrStrS setAttributes:firstAttributesS range:NSMakeRange(0, attrStrS.string.length)];
+        [item setAttributedTitle:attrStrS forState:0];
+    }
+    [item setAttributedTitle:attrStrS forState:UIControlStateSelected];
+    [item setAttributedTitle:attrStrN forState:0];
+    item.titleLabel.numberOfLines = 0;
+    item.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    item.titleLabel.font = [UIFont systemFontOfSize:13];
+
+}
+
 
 @end

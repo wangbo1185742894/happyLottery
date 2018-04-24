@@ -30,13 +30,13 @@
     
     self.labHomeName.attributedText = [self setLabHomeGuestTextColor:[NSString stringWithFormat:@"%@主",model.homeName] andSelect:[model.SFSelectMatch[1] isEqualToString:@"1"]];
     self.labGuestName.attributedText = [self setLabHomeGuestTextColor:[NSString stringWithFormat:@"%@客",model.guestName] andSelect:[model.SFSelectMatch[0] isEqualToString:@"1"]];
-    
-    self.labHomePeiLv.text = [NSString stringWithFormat:@"主胜 %@",model.SFOddArray[1]];
-    self.labGuestPeiLv.text = [NSString stringWithFormat:@"客胜 %@",model.SFOddArray[0]];
+       [self setButton:self.btnSFGuestWin normal:[NSString stringWithFormat:@"客胜 %@",model.SFOddArray[0]] andSelect:self.model.SFSelectMatch[0]];
+         [self setButton:self.btnSFHomeWin normal:[NSString stringWithFormat:@"主胜 %@",model.SFOddArray[1]] andSelect:self.model.SFSelectMatch[1]];
+
       [self refreshSelected:self.model.SFSelectMatch baseTag:100 andEnableArray:model.SFOddArray];
 //    self.labGuestName.textColor=self.btnSFGuestWin.selected?[UIColor whiteColor]:RGBCOLOR(72, 72, 72);
-    self.labGuestPeiLv.textColor = self.btnSFGuestWin.selected?[UIColor whiteColor]:RGBCOLOR(72, 72, 72);
-    self.labHomePeiLv.textColor =self.btnSFHomeWin.selected?[UIColor whiteColor]:RGBCOLOR(72, 72, 72);;
+//    self.labGuestPeiLv.textColor = self.btnSFGuestWin.selected?[UIColor whiteColor]:RGBCOLOR(72, 72, 72);
+//    self.labHomePeiLv.textColor =self.btnSFHomeWin.selected?[UIColor whiteColor]:RGBCOLOR(72, 72, 72);;
 //    self.labHomeName.textColor = self.btnSFHomeWin.selected?[UIColor whiteColor]:RGBCOLOR(72, 72, 72);
 }
 
@@ -53,8 +53,8 @@
     self.labGuestName.attributedText = [self setLabHomeGuestTextColor:self.labGuestName.text andSelect:self.btnSFGuestWin.selected];
     
 //    self.labGuestName.textColor=self.btnSFGuestWin.selected?[UIColor whiteColor]:RGBCOLOR(72, 72, 72);
-   self.labGuestPeiLv.textColor = self.btnSFGuestWin.selected?[UIColor whiteColor]:RGBCOLOR(72, 72, 72);
-    self.labHomePeiLv.textColor =self.btnSFHomeWin.selected?[UIColor whiteColor]:RGBCOLOR(72, 72, 72);;
+//   self.labGuestPeiLv.textColor = self.btnSFGuestWin.selected?[UIColor whiteColor]:RGBCOLOR(72, 72, 72);
+//    self.labHomePeiLv.textColor =self.btnSFHomeWin.selected?[UIColor whiteColor]:RGBCOLOR(72, 72, 72);;
 //    self.labHomeName.textColor = self.btnSFHomeWin.selected?[UIColor whiteColor]:RGBCOLOR(72, 72, 72);
     
 }

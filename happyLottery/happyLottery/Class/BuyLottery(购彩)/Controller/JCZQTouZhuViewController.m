@@ -47,7 +47,6 @@
 }
 
 -(void)cleanMatch:(NSNotification*)notification{
-    
         if (self.transction.playType == JCZQPlayTypeGuoGuan) {
             BOOL isDanGuan = YES;
             for (JCZQMatchModel *model in self.transction.selectMatchArray) {
@@ -59,24 +58,22 @@
             if (isDanGuan == YES) {
                 if (self.transction.selectMatchArray.count <= 1) {
                     
-                      [self showPromptText:@"单关至少选择一场比赛" hideAfterDelay:1.7];
+                      [self showPromptText:@"单关模式下至少保留一场比赛" hideAfterDelay:1.7];
                     return;
                 }
             }else{
                 if (self.transction.selectMatchArray.count <= 2) {
                     
-                    [self showPromptText:@"串关关至少选择两场比赛" hideAfterDelay:1.7];
+                    [self showPromptText:@"过关模式下至少保留两场比赛" hideAfterDelay:1.7];
                     return;
                 }
             }
-       
         }else{
             if (self.transction.selectMatchArray.count <= 1) {
-                [self showPromptText:@"单关至少选择一场比赛" hideAfterDelay:1.7];
+                [self showPromptText:@"单关模式下至少保留一场比赛" hideAfterDelay:1.7];
                 return;
             }
         }
-    
     JCZQMatchModel *model = (JCZQMatchModel*)notification.object;
     [self.transction.selectItems removeAllObjects];
     totalUnit = 0;

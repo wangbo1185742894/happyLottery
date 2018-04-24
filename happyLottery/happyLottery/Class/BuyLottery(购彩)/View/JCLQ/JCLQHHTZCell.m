@@ -20,7 +20,6 @@
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
 
     if (self == [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        
         self = [[[NSBundle mainBundle]loadNibNamed:@"JCLQHHTZCell" owner:nil options:nil] lastObject];
         [self.btnShowAll addTarget:self action:@selector(showAllType) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -31,6 +30,29 @@
 
 - (IBAction)actionClick:(UIButton *)sender {
     sender.selected = ! sender.selected;
+    
+    NSInteger index = sender.tag /100 -1;
+    NSString *flag;
+//    switch (index) {
+//        case 0:  //RF  0
+//            flag = [self.model.openFlag substringWithRange:NSMakeRange(0, 1)];
+//            break;
+//        case 1:   //RFSF 1
+//            flag = [self.model.openFlag substringWithRange:NSMakeRange(1, 1)];
+//            break;
+//        case 3:   //SFC  2
+//            flag = [self.model.openFlag substringWithRange:NSMakeRange(2, 1)];
+//            break;
+//        case 2:   //DXF  3
+//            flag = [self.model.openFlag substringWithRange:NSMakeRange(3, 1)];
+//            break;
+//            default:
+//            break;
+//    }
+//    if ([flag isEqualToString:@"3"]) {
+//        
+//        return;
+//    }
     if (sender.selected) {
         if (self.delegate) {
             [self.delegate clickItem:@"1" model:self.model andIndex:sender.tag];
@@ -116,20 +138,23 @@
     [aStr addAttribute:NSForegroundColorAttributeName value:SystemGreen range:r1];
     [aStr addAttribute:NSForegroundColorAttributeName value:SystemGreen range:r2];
     self.labHomeAndGoust.attributedText = aStr;
+            [self setButton:self.btnGuestWinNo normal:[NSString stringWithFormat:@"客胜%.2f",[model.SFOddArray[0] doubleValue]] andSelect:self.model.SFSelectMatch[0]];
+            [self setButton:self.btnGuestWinR normal:[NSString stringWithFormat:@"客胜%.2f",[model.RFSFOddArray[0] doubleValue]] andSelect:self.model.RFSFSelectMatch[0]];
     
-    [self.btnGuestWinNo setTitle:[NSString stringWithFormat:@"客胜%.2f",[model.SFOddArray[0] doubleValue]] forState:UIControlStateNormal];
-    [self.btnGuestWinR setTitle:[NSString stringWithFormat:@"客胜%.2f",[model.RFSFOddArray[0] doubleValue]] forState:UIControlStateNormal];
-    [self.btnHomeWinNo setTitle:[NSString stringWithFormat:@"主胜%.2f",[model.SFOddArray[1] doubleValue]] forState:UIControlStateNormal];
+            [self setButton:self.btnHomeWinNo normal:[NSString stringWithFormat:@"主胜%.2f",[model.SFOddArray[1] doubleValue]] andSelect:self.model.SFSelectMatch[1]];
+   
+
+    
 //    [self.btnHomeWinR setTitle:[NSString stringWithFormat:@"主胜(%@)%@",model.RFSFOddArray[1],model.handicap] forState:UIControlStateNormal];
 //    NSRange r = [model.handicap rangeOfString:@"-"];
     if ([model.handicap integerValue]>0) {
-        [self.btnHomeWinR setTitle:[NSString stringWithFormat:@"主胜+%@ %.2f",model.handicap,[model.RFSFOddArray[1] doubleValue] ] forState:UIControlStateNormal];
+          [self setButton:self.btnHomeWinR normal:[NSString stringWithFormat:@"主胜+%@ %.2f",model.handicap,[model.RFSFOddArray[1] doubleValue] ] andSelect:self.model.RFSFSelectMatch[1]];
+
     }else{
-        
-        [self.btnHomeWinR setTitle:[NSString stringWithFormat:@"主胜%@ %.2f" ,model.handicap,[model.RFSFOddArray[1] doubleValue]] forState:UIControlStateNormal];
+     [self setButton:self.btnHomeWinR normal:[NSString stringWithFormat:@"主胜%@ %.2f",model.handicap,[model.RFSFOddArray[1] doubleValue] ] andSelect:self.model.RFSFSelectMatch[1]];
     }
-    [self refreshSelected:self.model.SFSelectMatch baseTag:100 andEnableArray:model.SFOddArray];
-    [self refreshSelected:self.model.RFSFSelectMatch baseTag:200 andEnableArray:model.RFSFOddArray];
+//    [self refreshSelected:self.model.SFSelectMatch baseTag:100 andEnableArray:model.SFOddArray];
+//    [self refreshSelected:self.model.RFSFSelectMatch baseTag:200 andEnableArray:model.RFSFOddArray];
     [self updataSelected];
 }
 

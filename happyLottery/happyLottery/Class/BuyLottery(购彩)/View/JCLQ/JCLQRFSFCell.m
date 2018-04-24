@@ -34,41 +34,41 @@
      self.labGuestName.attributedText = [self setLabHomeGuestTextColor:self.labGuestName.text andSelect:self.btnRFSFGuestWin.selected];
     
 //    self.labGuestName.textColor=self.btnRFSFGuestWin.selected?[UIColor whiteColor]:TEXTGRAYCOLOR;
-    [self setLaColor:self.labGuestPeiLv isSelected:self.btnRFSFGuestWin.selected];
+//    [self setLaColor:self.labGuestPeiLv isSelected:self.btnRFSFGuestWin.selected];
 //    self.labHomePeiLv.textColor =self.btnRFSFHomeWin.selected?[UIColor whiteColor]:RGBCOLOR(72, 72, 72);
-    [self setLaColor:self.labHomePeiLv isSelected:self.btnRFSFHomeWin.selected];
+//    [self setLaColor:self.labHomePeiLv isSelected:self.btnRFSFHomeWin.selected];
 //    self.labHomeName.textColor = self.btnRFSFHomeWin.selected?[UIColor whiteColor]:TEXTGRAYCOLOR;
 }
-- (void)setLaColor:(UILabel *)label isSelected:(BOOL)isSelected{
-    NSString *laText = label.text;
-    NSString *subStr = [laText substringFromIndex:2];
-    subStr = [[subStr componentsSeparatedByString:@" "] firstObject];
-    
-    if ([subStr isEqualToString:@""]) {
-        
-        label.textColor =isSelected?[UIColor whiteColor]:TEXTGRAYCOLOR;
-        return;
-    }
-    NSString *flagStr = [subStr substringToIndex:1];
-    
-    
-    NSMutableAttributedString *attstr = [[NSMutableAttributedString alloc]initWithString:laText];
-    
-    [attstr addAttribute:NSForegroundColorAttributeName value:TEXTGRAYCOLOR range:NSMakeRange(0, laText.length )];
-    
-   
-    if (isSelected) {
-        [attstr addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, laText.length )];
-    }else{
-        if([flagStr isEqualToString:@"-"]) {
-            [attstr addAttribute:NSForegroundColorAttributeName value:SystemGreen range:NSMakeRange(2, subStr.length)];
-        }else{
-            [attstr addAttribute:NSForegroundColorAttributeName value:SystemRed range:NSMakeRange(2, subStr.length)];
-        }
-        
-    }
-    label.attributedText = attstr;
-}
+//- (void)setLaColor:(UILabel *)label isSelected:(BOOL)isSelected{
+//    NSString *laText = label.text;
+//    NSString *subStr = [laText substringFromIndex:2];
+//    subStr = [[subStr componentsSeparatedByString:@" "] firstObject];
+//
+//    if ([subStr isEqualToString:@""]) {
+//
+//        label.textColor =isSelected?[UIColor whiteColor]:TEXTGRAYCOLOR;
+//        return;
+//    }
+//    NSString *flagStr = [subStr substringToIndex:1];
+//
+//
+//    NSMutableAttributedString *attstr = [[NSMutableAttributedString alloc]initWithString:laText];
+//
+//    [attstr addAttribute:NSForegroundColorAttributeName value:TEXTGRAYCOLOR range:NSMakeRange(0, laText.length )];
+//
+//
+//    if (isSelected) {
+//        [attstr addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, laText.length )];
+//    }else{
+//        if([flagStr isEqualToString:@"-"]) {
+//            [attstr addAttribute:NSForegroundColorAttributeName value:SystemGreen range:NSMakeRange(2, subStr.length)];
+//        }else{
+//            [attstr addAttribute:NSForegroundColorAttributeName value:SystemRed range:NSMakeRange(2, subStr.length)];
+//        }
+//
+//    }
+//    label.attributedText = attstr;
+//}
 
 -(void)loadDataWithModel:(JCLQMatchModel *)model{
     self.model = model;
@@ -93,6 +93,7 @@
 //      
 //    }
 
+    
     self.labHomeName.attributedText = [self setLabHomeGuestTextColor:[NSString stringWithFormat:@"%@主",model.homeName] andSelect:[model.RFSFSelectMatch[1] isEqualToString:@"1"]];
      self.labGuestName.attributedText = [self setLabHomeGuestTextColor:[NSString stringWithFormat:@"%@客",model.guestName] andSelect:[model.RFSFSelectMatch[0] isEqualToString:@"1"]];
     
@@ -101,21 +102,15 @@
     
 //    NSRange r = [model.handicap rangeOfString:@"-"];
    if ([model.handicap integerValue]>0) {
-     self.labHomePeiLv.text =[NSString stringWithFormat:@"主胜+%@ %.2f",model.handicap,[model.RFSFOddArray[1] doubleValue]];
+         [self setButton:self.btnRFSFHomeWin normal:[NSString stringWithFormat:@"主胜+%@ %.2f",model.handicap,[model.RFSFOddArray[1] doubleValue]] andSelect:self.model.RFSFSelectMatch[1]];
     }else{
-    self.labHomePeiLv.text =[NSString stringWithFormat:@"主胜%@ %.2f",model.handicap,[model.RFSFOddArray[1] doubleValue]];
+         [self setButton:self.btnRFSFHomeWin normal:[NSString stringWithFormat:@"主胜%@ %.2f",model.handicap,[model.RFSFOddArray[1] doubleValue]] andSelect:self.model.RFSFSelectMatch[1]];
     }
-    self.labGuestPeiLv.text =[NSString stringWithFormat:@"客胜 %.2f",[model.RFSFOddArray[0] doubleValue]];
-
-    
+          [self setButton:self.btnRFSFGuestWin normal:[NSString stringWithFormat:@"客胜 %.2f",[model.RFSFOddArray[0] doubleValue]] andSelect:self.model.RFSFSelectMatch[0]];
     [self refreshSelected:self.model.RFSFSelectMatch baseTag:200 andEnableArray:model.RFSFOddArray];
-//    self.labGuestName.textColor=self.btnRFSFGuestWin.selected?[UIColor whiteColor]:TEXTGRAYCOLOR;
-//    self.labGuestPeiLv.textColor = self.btnRFSFGuestWin.selected?[UIColor whiteColor]:RGBCOLOR(72, 72, 72);
-//    self.labHomePeiLv.textColor =self.btnRFSFHomeWin.selected?[UIColor whiteColor]:RGBCOLOR(72, 72, 72);;
-//    self.labHomeName.textColor = self.btnRFSFHomeWin.selected?[UIColor whiteColor]:TEXTGRAYCOLOR;
-    
-    [self setLaColor:self.labGuestPeiLv isSelected:self.btnRFSFGuestWin.selected];
-    [self setLaColor:self.labHomePeiLv isSelected:self.btnRFSFHomeWin.selected];
+
+//    [self setLaColor:self.labGuestPeiLv isSelected:self.btnRFSFGuestWin.selected];
+//    [self setLaColor:self.labHomePeiLv isSelected:self.btnRFSFHomeWin.selected];
     
 }
 

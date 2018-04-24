@@ -486,8 +486,6 @@ typedef enum : NSUInteger {
                 JCLQMatchModel *model = array[j];
                 model.isDanGuan = NO;
             }
-            
-                
             }
             [self.showArray addObject:self.dataArray[i]];
         }
@@ -802,9 +800,12 @@ typedef enum : NSUInteger {
         flag = [model.openFlag substringWithRange:NSMakeRange(num - 1, 1)];
     }
     
-    
-    
-    if ([flag isEqualToString:@"3"]) {
+    if ([transaction.playType isEqualToString:@"JCLQHHGG"]) {
+        if ([flag isEqualToString:@"3"] || [flag isEqualToString:@"1"]) {
+            [self showPromptText:@"该场比赛暂不支持该玩法" hideAfterDelay:1.7];
+            return;
+        }
+    }else  if ([flag isEqualToString:@"3"]) {
         [self showPromptText:@"该场比赛暂不支持该玩法" hideAfterDelay:1.7];
         return;
     }
@@ -1054,6 +1055,23 @@ typedef enum : NSUInteger {
 }
 -(void)showProfileType{
     profileSelectView.hidden = !profileSelectView.hidden;
+}
+
+-(BOOL)canBuyThisMatch:(JCLQMatchModel *)model andIndex:(NSInteger)ind{
+    NSString* flag = [model.openFlag substringWithRange:NSMakeRange(ind, 1)];
+    if (transaction.playType ==JCLQGuanTypeDanGuan ) {
+        if ([flag isEqualToString:@"1"]||[flag isEqualToString:@"0"]) {
+            return YES;
+        }else{
+            return NO;
+        }
+    }else{
+        if ([flag isEqualToString:@"2"]||[flag isEqualToString:@"0"]) {
+            return YES;
+        }else{
+            return NO;
+        }
+    }
 }
 
 
