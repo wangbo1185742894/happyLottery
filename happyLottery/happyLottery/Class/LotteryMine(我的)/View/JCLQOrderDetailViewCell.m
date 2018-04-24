@@ -96,7 +96,7 @@
         content = [content stringByReplacingOccurrencesOfString:@";" withString:@"\n"];
         self.disLeftPlayType.constant = -self.labPlayType.mj_w - 20;
         self.disLeftPlayTypeContent.constant = -self.labPlayType.mj_w - 20;
-        NSString *leshanCode = dic[@"leshanCode"];
+        NSString *leshanCode = dic[@"leShanCode"];
         if (leshanCode == nil) {
             self.btnLeshanCode.hidden = YES;
         }else{
@@ -354,7 +354,7 @@
 
 -(CGFloat)getCellHeight:(NSDictionary*)dic{
     if([dic[@"lotteryCode"] isEqualToString:@"DLT"] || [dic[@"lotteryCode"] isEqualToString:@"SFC"] || [dic[@"lotteryCode"] isEqualToString:@"RJC"]){
-        NSString *leshanCode = dic[@"leshanCode"];
+        NSString *leshanCode = dic[@"leShanCode"];
         if (leshanCode != nil) {
               return [dic[@"ticketContent"] componentsSeparatedByString:@";"].count * 12 + 180;
         }else{

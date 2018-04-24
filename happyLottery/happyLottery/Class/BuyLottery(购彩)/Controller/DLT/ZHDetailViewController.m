@@ -212,7 +212,7 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     OrderProfile *order = _ordersArray[indexPath.row];
-    if (order.leshanCode == nil) {
+    if (order.leShanCode == nil) {
         return 60;
     }else{
         return 90;
