@@ -65,12 +65,12 @@
 
 -(void)loadDataJCLQ:(JCLQMatchModel *)model{
     self.model = model;
-    self.labHomeName.text = [NSString stringWithFormat:@"%@(主)",model.homeName];
+    self.labHomeName.text = [NSString stringWithFormat:@"%@(客)",model.guestName];
     
-    self.labHomeName.keyWord = @"(主)";
+    self.labHomeName.keyWord = @"(客)";
     self.labHomeName.keyWordFont = [UIFont systemFontOfSize:12];
     self.labHomeName.keyWordColor = SystemBlue;
-    self.labGuestName.text = model.guestName;
+    self.labGuestName.text = model.homeName;
     self.labLineId.text = model.lineId;
     
     for (UIView *subView in self.viewSelectItemContentView.subviews) {

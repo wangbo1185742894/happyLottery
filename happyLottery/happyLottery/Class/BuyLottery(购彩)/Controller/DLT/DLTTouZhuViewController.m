@@ -179,9 +179,11 @@
     if([textField .text integerValue] ==0){
         textField.text = @"1";
     }
+    textField.text = [NSString stringWithFormat:@"%ld",[textField .text integerValue]];
     for (UIButton *item in qiCountItem) {
         item.selected = NO;
     }
+    
     [self update];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         CGFloat height = self.navigationController.navigationBar.mj_h;

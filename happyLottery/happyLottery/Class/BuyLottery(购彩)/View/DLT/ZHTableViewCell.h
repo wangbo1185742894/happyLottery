@@ -11,6 +11,7 @@
 
 @interface ZHTableViewCell : UITableViewCell{
     
+    __weak IBOutlet UILabel *labLeShanCode;
     __weak IBOutlet UILabel *xuhao;
     __weak IBOutlet UIImageView *tupian;
     __weak IBOutlet UILabel *qihao;

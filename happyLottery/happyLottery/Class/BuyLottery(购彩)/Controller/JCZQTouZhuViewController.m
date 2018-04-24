@@ -49,10 +49,27 @@
 -(void)cleanMatch:(NSNotification*)notification{
     
         if (self.transction.playType == JCZQPlayTypeGuoGuan) {
-            if (self.transction.selectMatchArray.count <= 2) {
-                [self showPromptText:@"串关至少选择两场比赛" hideAfterDelay:1.7];
-                return;
+            BOOL isDanGuan = YES;
+            for (JCZQMatchModel *model in self.transction.selectMatchArray) {
+                if (model.isDanGuan ==NO) {
+                    isDanGuan = NO;
+                    break;
+                }
             }
+            if (isDanGuan == YES) {
+                if (self.transction.selectMatchArray.count <= 1) {
+                    
+                      [self showPromptText:@"单关至少选择一场比赛" hideAfterDelay:1.7];
+                    return;
+                }
+            }else{
+                if (self.transction.selectMatchArray.count <= 2) {
+                    
+                    [self showPromptText:@"串关关至少选择两场比赛" hideAfterDelay:1.7];
+                    return;
+                }
+            }
+       
         }else{
             if (self.transction.selectMatchArray.count <= 1) {
                 [self showPromptText:@"单关至少选择一场比赛" hideAfterDelay:1.7];
@@ -320,6 +337,10 @@
         return;
     }
     
+    if (self.transction.selectMatchArray .count >15) {
+        [self showPromptText:@"最多只能选择15场比赛" hideAfterDelay:1.8];
+        return;
+    }
     if (btnMoniTouzhu.selected == YES) {
     }else{
         if (self.transction.betCost  > 300000) {
@@ -327,6 +348,7 @@
             return;
         }
     }
+    
     
     [self showLoadingText:@"正在提交订单"];
     

@@ -99,7 +99,6 @@
         if ([profilesArray isKindOfClass: [NSArray class]] && profilesArray.count > 0) {
             NSArray *profiles = [self lotteryProfilesFromData: profilesArray];
             _lottery.profiles = profiles;
-            _lottery.activeProfile = profiles[0];
         }
     }
     [self setUp];
@@ -131,7 +130,9 @@
     [self.view.window addSubview:optionView];
 }
 - (void)setUp{
-
+    if (nil == _transaction) {
+        _transaction = [[CTZQTransaction alloc] init];
+    }
     _instance = [GlobalInstance instance];
     
     self.lotteryMan.delegate = self;
@@ -141,14 +142,12 @@
     }
     if (btnRJC.selected == YES) {
         self.lottery.activeProfile = self.lottery.profiles[0];
+        self.transaction.ctzqPlayType = CTZQPlayTypeRenjiu;
     }else{
         self.lottery.activeProfile = self.lottery.profiles[1];
+        self.transaction.ctzqPlayType = CTZQPlayTypeShiSi;
     }
-    
-    
-    if (nil == _transaction) {
-        _transaction = [[CTZQTransaction alloc] init];
-    }
+ 
 }
 - (void)loadUI{
     [self useBackButton:YES];

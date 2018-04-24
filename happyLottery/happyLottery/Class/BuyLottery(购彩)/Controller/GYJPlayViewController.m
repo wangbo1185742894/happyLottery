@@ -292,6 +292,7 @@
     if ([textField.text integerValue] ==0) {
         textField.text = @"1";
     }
+    textField.text = [NSString stringWithFormat:@"%ld",[textField .text integerValue]];
     [self updateTextField];
 }
 

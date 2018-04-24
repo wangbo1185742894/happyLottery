@@ -211,7 +211,12 @@
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 60;
+    OrderProfile *order = _ordersArray[indexPath.row];
+    if (order.leshanCode == nil) {
+        return 60;
+    }else{
+        return 90;
+    }
 }
 
 - ( void )tableView:( UITableView *)tableView willDisplayCell :( UITableViewCell *)cell forRowAtIndexPath :( NSIndexPath *)indexPath

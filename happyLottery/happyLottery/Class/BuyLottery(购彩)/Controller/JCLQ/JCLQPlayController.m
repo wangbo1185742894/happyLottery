@@ -94,6 +94,7 @@ typedef enum : NSUInteger {
     [self .lotteryMan getJclqMatch:nil];
     [self showLoadingText:@"正在加载"];
     [self setRightBarItems];
+    [self setSummary];
     [self setTitleView];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(acitonDeleteMatchForTouzhu:) name:@"NSNotificationDeleteMatchForPlay" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(cleanAllSelect) name:@"NSNotificationDeleteAll" object:nil];
@@ -462,6 +463,13 @@ typedef enum : NSUInteger {
     [self.tabPlayList reloadData];
 //    self.curActivePlayType = self.lottery.activeProfile.desc;
 
+}
+-(void)setSummary{
+    if (transaction.guanType ==JCLQGuanTypeGuoGuan) {
+        self.labPlayInfo.text = @"至少选择2场比赛";
+    }else{
+        self.labPlayInfo.text = @"至少选择1场比赛";
+    }
 }
 
 -(void)lookMatchForCurPlayType:(NSInteger)ind andGuanType:(JCLQGuanType)type{
@@ -891,6 +899,10 @@ typedef enum : NSUInteger {
 }
 -(void)updata{
     
+    if (transaction.matchSelectArray.count == 0) {
+        [self setSummary];
+    }else{
+    
     NSString *str = [NSString stringWithFormat:MatchCountLb,transaction.matchSelectArray.count];
     
     NSMutableAttributedString *attstr = [[NSMutableAttributedString alloc]initWithString:str];
@@ -898,6 +910,7 @@ typedef enum : NSUInteger {
     [attstr addAttribute:NSForegroundColorAttributeName value:SystemRed range:NSMakeRange(4, str.length - 7)];
 
     self.labPlayInfo.attributedText = attstr;
+    }
 }
 
 -(void)cleanAllSelect{

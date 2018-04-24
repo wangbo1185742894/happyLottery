@@ -57,7 +57,7 @@
 - (void)getBetCount{
     float danBeiJiangJin = 0.0;
     int betCuntTemp = 0;
-    if ([self.chuanFa isEqualToString:@"单场"]) {
+    if ([self.chuanFa isEqualToString:@"单场"] || [self.chuanFa isEqualToString:@"1串1"]) {
         for ( JCLQMatchModel* model in  self.matchSelectArray){
             
             betCuntTemp += [self sumSelectPlayType:model.SFSelectMatch];

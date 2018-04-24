@@ -118,7 +118,7 @@
     
     [self.transaction getBetCount];
     
-    self.labNumBetCount.text = [NSString stringWithFormat:@"%@ %zd注 %@倍 共%zd元"  ,self.transaction.chuanFa,self.transaction.betCount,self.transaction.beitou,self.transaction.betCost];
+    self.labNumBetCount.text = [NSString stringWithFormat:@"%zd注 %@倍 共%zd元",self.transaction.betCount,self.transaction.beitou,self.transaction.betCost];
 
     
     self.labMaxJiangjie.text = [NSString stringWithFormat:@"最大可中奖%.2f元(以实际中奖为准)",self.transaction.maxCount*[self.transaction.beitou floatValue]];
@@ -606,8 +606,23 @@
             
             
         }else{
-            
-            self.transaction.chuanFa = [NSString stringWithFormat:@"%ld串1",self.transaction.matchSelectArray.count>8?8:self.transaction.matchSelectArray.count];
+            BOOL isDanGuan = YES;
+            for (JCLQMatchModel *model in self.transaction.matchSelectArray) {
+                if (model.isDanGuan == NO) {
+                    isDanGuan = NO;
+                    break;
+                }
+            }
+            if (isDanGuan == YES) {
+                if (self.transaction.matchSelectArray.count == 1) {
+                    self.transaction.chuanFa = @"单场";
+                }else{
+                      self.transaction.chuanFa = [NSString stringWithFormat:@"%ld串1",self.transaction.matchSelectArray.count>8?8:self.transaction.matchSelectArray.count];
+                }
+            }else{
+                  self.transaction.chuanFa = [NSString stringWithFormat:@"%ld串1",self.transaction.matchSelectArray.count>8?8:self.transaction.matchSelectArray.count];
+            }
+          
             chuanfakey = 8;
         }
         self.transaction.maxChuanNumber =chuanfakey;

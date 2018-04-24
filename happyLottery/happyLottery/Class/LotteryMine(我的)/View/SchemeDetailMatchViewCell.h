@@ -14,4 +14,6 @@
 -(void)setBtnNumIndexShow:(BOOL)isShow;
 -(void)refreshData:(JcBetContent  *)modelDic andResult:(NSArray<OpenResult *> *)resultArray;
 -(void)refreshDataJCLQ:(JlBetContent  *)modelDic andResult:(NSArray<JCLQOpenResult *> *)resultArray;
+-(NSString *)reloadDataWithRecJCLQ:(NSArray *)option type:(NSString *)playType andMatchKey:(NSString *)matchKey;
+-(NSString *)reloadDataWithRec:(NSArray *)option type:(NSString *)playType andMatchKey:(NSString *)matchKey;
 @end

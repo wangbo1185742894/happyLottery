@@ -69,6 +69,13 @@
         tupian.hidden = NO;
     }
     
+    if (order.leshanCode == nil) {
+        labLeShanCode.hidden = YES;
+    }else{
+        labLeShanCode.hidden = NO;
+        labLeShanCode.text = [NSString stringWithFormat:@"乐善码：%@",order.leshanCode];
+    }
+    
  
     
     jieguo.adjustsFontSizeToFitWidth = YES;

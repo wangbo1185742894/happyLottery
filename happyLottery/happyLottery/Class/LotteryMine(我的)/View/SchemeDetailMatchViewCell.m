@@ -141,7 +141,7 @@
         
         float height = [option boundingRectWithSize:CGSizeMake(KscreenWidth - 110, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14]} context:nil].size.height;
         height  = height > 25 ? height:25;
-        MGLabel * labOption = [self creactLab:option andFrame:CGRectMake(90, curY, KscreenWidth - 110, height)];
+        MGLabel * labOption = [self creactLab:option andFrame:CGRectMake(80, curY, KscreenWidth - 95, height)];
         labOption.keyWord = result;
         labOption.keyWordColor = SystemRed;
         [viewBetContent addSubview:labOption];
@@ -171,6 +171,8 @@
     
     labResult.keyWordColor = SystemBlue;
 }
+
+
 
 -(NSString *)getOddWithOption:(NSString *)option matchKey:(NSString *)matchKey andPlayType:(NSInteger )playType{
     
@@ -418,7 +420,7 @@
     
     for (NSString *op in option) {
         
-        NSString*type = [self getContent:contentArray andOption:op];
+        NSString*type = [self getContentResult:contentArray andOption:op];
         [content appendFormat:@"%@",type];
         
         self.num ++;
@@ -540,6 +542,7 @@
 }
 
 -(NSString*)getContentJCLQResult:(NSArray*)contentArray andOption:(NSString*)option{
+    option = [NSString stringWithFormat:@"%@",option];
     for (NSDictionary *itemDic in contentArray) {
         if (itemDic[option] != nil) {
             return itemDic[option];
@@ -559,6 +562,17 @@
     return @"";
 }
 -(NSString*)getContent:(NSDictionary*)contentArray andOption:(NSString*)option{
+    option = [NSString stringWithFormat:@"%@",option];
+    for (NSDictionary *dic in contentArray.allValues) {
+        if ([dic[@"code"] isEqualToString:option]) {
+            return dic[@"appear"];
+        }
+    }
+    return @"";
+}
+
+-(NSString*)getContentResult:(NSDictionary*)contentArray andOption:(NSString*)option{
+    option = [NSString stringWithFormat:@"%@",option];
     for (NSDictionary *dic in contentArray.allValues) {
         if (dic[option] != nil) {
             return dic[option];
@@ -678,13 +692,14 @@
     labHomeName.text = [[modelDic.matchInfo[@"clash"] componentsSeparatedByString:@"VS"] firstObject];
     jclqHomeIconWidth.constant = 18;
     jczqHomeIconWidth.constant = 0;
-    
-    if (modelDic.virtualSp != nil) {
-        itemDic = [Utility objFromJson:modelDic.virtualSp];
-    }else{
-        itemDic = nil;
+    if (itemDic == nil) {
+        if (modelDic.virtualSp != nil) {
+            itemDic = [Utility objFromJson:modelDic.virtualSp];
+        }else{
+            itemDic = nil;
+        }
     }
-    
+
     NSString *playType;
     NSString *option;
     NSString *result;
@@ -705,10 +720,9 @@
                 result = [self reloadDataWithRecResultJCLQ:@[[open performSelector:func withObject:nil]] type:itemDic[@"playType"]];
             }
         }
-        
-        float height = [option boundingRectWithSize:CGSizeMake(KscreenWidth - 120, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:15]} context:nil].size.height;
+        float height = [option boundingRectWithSize:CGSizeMake(KscreenWidth - 110, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:15]} context:nil].size.height;
         height  = height > 25 ? height:25;
-        MGLabel * labOption = [self creactLab:option andFrame:CGRectMake(90, curY, KscreenWidth - 110, height)];
+        MGLabel * labOption = [self creactLab:option andFrame:CGRectMake(80, curY, KscreenWidth - 95, height)];
         labOption.keyWord = result;
         labOption.keyWordColor = SystemRed;
         [viewBetContent addSubview:labOption];
@@ -735,7 +749,6 @@
         }
         
     }
-    
     labResult.keyWordColor = SystemBlue;
 }
 

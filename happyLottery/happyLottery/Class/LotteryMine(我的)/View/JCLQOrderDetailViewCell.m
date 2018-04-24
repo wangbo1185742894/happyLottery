@@ -96,6 +96,13 @@
         content = [content stringByReplacingOccurrencesOfString:@";" withString:@"\n"];
         self.disLeftPlayType.constant = -self.labPlayType.mj_w - 20;
         self.disLeftPlayTypeContent.constant = -self.labPlayType.mj_w - 20;
+        NSString *leshanCode = dic[@"leshanCode"];
+        if (leshanCode == nil) {
+            self.btnLeshanCode.hidden = YES;
+        }else{
+            self.btnLeshanCode.hidden = NO;
+            [self.btnLeshanCode setTitle:leshanCode forState:0];
+        }
     }
     else if ([dic[@"lotteryCode"] isEqualToString:@"SSQ"]){
         self.disLeftPlayType.constant = -self.labPlayType.mj_w - 50;
@@ -347,7 +354,13 @@
 
 -(CGFloat)getCellHeight:(NSDictionary*)dic{
     if([dic[@"lotteryCode"] isEqualToString:@"DLT"] || [dic[@"lotteryCode"] isEqualToString:@"SFC"] || [dic[@"lotteryCode"] isEqualToString:@"RJC"]){
-        return [dic[@"ticketContent"] componentsSeparatedByString:@";"].count * 12 + 150;
+        NSString *leshanCode = dic[@"leshanCode"];
+        if (leshanCode != nil) {
+              return [dic[@"ticketContent"] componentsSeparatedByString:@";"].count * 12 + 180;
+        }else{
+         return [dic[@"ticketContent"] componentsSeparatedByString:@";"].count * 12 + 150;
+        }
+
     }else if ([dic[@"lotteryCode"] isEqualToString:@"JCGJ"] || [dic[@"lotteryCode"] isEqualToString:@"JCGYJ"]){
         NSArray *titleArray = [Utility objFromJson:dic[@"ticketContent"]];
         return titleArray.count * 12 + 150;

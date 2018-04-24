@@ -379,6 +379,8 @@
 		2D628B661FF1DAE60013D0E1 /* PayTypeListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D628B641FF1DAE60013D0E1 /* PayTypeListCell.xib */; };
 		2D628B691FF213050013D0E1 /* SchemeCashPayment.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D628B681FF213050013D0E1 /* SchemeCashPayment.m */; };
 		2D628B6B1FF2278F0013D0E1 /* icon_danguan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D628B6A1FF2278E0013D0E1 /* icon_danguan@3x.png */; };
+		2D6F9237208D9D8A007DFD0B /* leshan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D6F9235208D9D89007DFD0B /* leshan@3x.png */; };
+		2D6F9238208D9D8A007DFD0B /* leshan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D6F9236208D9D89007DFD0B /* leshan@2x.png */; };
 		2D739BEF1FE2555E00264044 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D739BED1FE2555E00264044 /* RegisterViewController.m */; };
 		2D739BF01FE2555E00264044 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D739BEE1FE2555E00264044 /* RegisterViewController.xib */; };
 		2D739C161FE2611C00264044 /* IQNSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D739BF41FE2611C00264044 /* IQNSArray+Sort.m */; };
@@ -1725,6 +1727,8 @@
 		2D628B671FF213050013D0E1 /* SchemeCashPayment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SchemeCashPayment.h; sourceTree = "<group>"; };
 		2D628B681FF213050013D0E1 /* SchemeCashPayment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SchemeCashPayment.m; sourceTree = "<group>"; };
 		2D628B6A1FF2278E0013D0E1 /* icon_danguan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_danguan@3x.png"; sourceTree = "<group>"; };
+		2D6F9235208D9D89007DFD0B /* leshan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leshan@3x.png"; sourceTree = "<group>"; };
+		2D6F9236208D9D89007DFD0B /* leshan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leshan@2x.png"; sourceTree = "<group>"; };
 		2D739BEC1FE2555E00264044 /* RegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		2D739BED1FE2555E00264044 /* RegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		2D739BEE1FE2555E00264044 /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
@@ -3868,6 +3872,8 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				2D6F9236208D9D89007DFD0B /* leshan@2x.png */,
+				2D6F9235208D9D89007DFD0B /* leshan@3x.png */,
 				2D811A9D207DDBEC0069601C /* basketball@2x.png */,
 				2D811A9C207DDBEB0069601C /* basketball@3x.png */,
 				F98C3EE72071FDB300C1DBF8 /* ssq_logo.png */,
@@ -6145,6 +6151,7 @@
 				2D5171D8200C728C00C3CD7F /* icon_zhanbaotongji_@2x.png in Resources */,
 				2D628B511FECCD2D0013D0E1 /* SelectView.xib in Resources */,
 				F9CD01EB20243DBC00E54E79 /* registerCode@3x.png in Resources */,
+				2D6F9238208D9D8A007DFD0B /* leshan@2x.png in Resources */,
 				F9B5D9A32060A9DE00C9F6DC /* flag438@2x.png in Resources */,
 				2DDEDE771FD568C9007AEBF7 /* README.md in Resources */,
 				2D7B1386204E7AFC0035AE89 /* delete@3x.png in Resources */,
@@ -6222,6 +6229,7 @@
 				2D0600881FFF1365009E7568 /* HHGGPeilvTable.plist in Resources */,
 				2D811A99207DDA610069601C /* JCLQCode.plist in Resources */,
 				2D205FE91FFC6E950086E266 /* WBBifenZhiboViewController.xib in Resources */,
+				2D6F9237208D9D8A007DFD0B /* leshan@3x.png in Resources */,
 				F94AA9E11FEB7B780021B980 /* weixin@3x.png in Resources */,
 				F90058ED1FF61AEC009C8E1C /* NoticeDetailViewController.xib in Resources */,
 				F9D7C55C2006276900415B4E /* FootBallPlayViewController.xib in Resources */,

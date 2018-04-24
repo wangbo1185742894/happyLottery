@@ -315,27 +315,30 @@
                 NSString *option;
                 for (NSDictionary *itemDic in itemArray) {
                     option = [self reloadDataWithRec:itemDic[@"options"] type:itemDic[@"playType"]];
-                    float height =  [option boundingRectWithSize:CGSizeMake(KscreenWidth - 120, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:15]} context:nil].size.height;
+                    float height =  [option boundingRectWithSize:CGSizeMake(KscreenWidth - 110, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:15]} context:nil].size.height;
                     height  = height > 25 ? height:25;
                     curY += height;
                 }
-                if (KscreenWidth == 375) {
+                curY += 20;
+                if (KscreenWidth == 0) {
                     if (matchList[indexPath.row].isShow) {
                         NSArray *passType = [Utility objFromJson:matchList[indexPath.row].passTypes];
                         ;
-                        return curY + 150 + ((passType.count / 7) + 1) * 15;
+                        return curY + 90 + ((passType.count / 7) + 1) * 15;
                     }else{
                         
-                        return curY + 100;
+                        return curY + 40;
                     }
                 }else{
                     if (matchList[indexPath.row].isShow) {
                         NSArray *passType = [Utility objFromJson:matchList[indexPath.row].passTypes];
-                        return curY + 140 + ((passType.count / 7) + 1) * 15 ;
+                        ;
+                        return curY + 130 + ((passType.count / 7) + 1) * 15;
                     }else{
-                        return curY + 90;
+                        return curY + 80;
                     }
                 }
+
                 
             }
             
@@ -357,12 +360,16 @@
                 float curY = 0;
                 NSString *option;
                 for (NSDictionary *itemDic in itemArray) {
-                    option = [self reloadDataWithRec:itemDic[@"options"] type:itemDic[@"playType"]];
-                    float height =  [option boundingRectWithSize:CGSizeMake(KscreenWidth - 120, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14]} context:nil].size.height;
+                    SchemeDetailMatchViewCell * tabcell = [[SchemeDetailMatchViewCell alloc]init];;
+                    JlBetContent *bet = matchList[indexPath.row];
+                    NSArray *   itemArray = [Utility objFromJson:bet.virtualSp];
+                    [tabcell setValue:itemArray forKey:@"itemDic"];
+                    option = [tabcell reloadDataWithRec:itemDic[@"options"] type:itemDic[@"playType"] andMatchKey:bet.matchInfo[@"matchKey"]];
+                    float height =  [option boundingRectWithSize:CGSizeMake(KscreenWidth - 110, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:15]} context:nil].size.height;
                     height  = height > 25 ? height:25;
                     curY += height;
                 }
-                if (KscreenWidth == 667) {
+                if (KscreenWidth == 0) {
                     if (matchList[indexPath.row].isShow) {
                         NSArray *passType = [Utility objFromJson:matchList[indexPath.row].passTypes];
                         ;

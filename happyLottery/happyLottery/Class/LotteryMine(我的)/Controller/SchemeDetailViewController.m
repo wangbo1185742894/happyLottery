@@ -357,11 +357,11 @@
                 NSString *option;
                 for (NSDictionary *itemDic in itemArray) {
                     option = [self reloadDataWithRec:itemDic[@"options"] type:itemDic[@"playType"]];
-                    float height =  [option boundingRectWithSize:CGSizeMake(KscreenWidth - 90, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14]} context:nil].size.height;
+                    float height =  [option boundingRectWithSize:CGSizeMake(KscreenWidth - 110, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14]} context:nil].size.height;
                     height  = height > 25 ? height:25;
                     curY += height;
                 }
-                if (KscreenWidth == 667) {
+                if (KscreenWidth == 0) {
                     if (matchList[indexPath.row].isShow) {
                         NSArray *passType = [Utility objFromJson:matchList[indexPath.row].passTypes];
                         ;
@@ -403,12 +403,17 @@
                 float curY = 0;
                 NSString *option;
                 for (NSDictionary *itemDic in itemArray) {
-                    option = [self reloadDataWithRec:itemDic[@"options"] type:itemDic[@"playType"]];
+                    SchemeDetailMatchViewCell * tabcell = [[SchemeDetailMatchViewCell alloc]init];;
+                    JcBetContent *bet = matchList[indexPath.row];
+                    NSArray *   itemArray = [Utility objFromJson:bet.virtualSp];
+                    [tabcell setValue:itemArray forKey:@"itemDic"];
+                    option = [tabcell reloadDataWithRec:itemDic[@"options"] type:itemDic[@"playType"] andMatchKey:bet.matchInfo[@"matchKey"]];
+
                     float height =  [option boundingRectWithSize:CGSizeMake(KscreenWidth - 90, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14]} context:nil].size.height;
                     height  = height > 25 ? height:25;
                     curY += height;
                 }
-                if (KscreenWidth == 667) {
+                if (KscreenWidth == 0) {
                     if (matchList[indexPath.row].isShow) {
                         NSArray *passType = [Utility objFromJson:matchList[indexPath.row].passTypes];
                         ;
