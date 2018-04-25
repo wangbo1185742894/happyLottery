@@ -107,20 +107,22 @@
         labelCurRoundInfoTitle.font = [UIFont systemFontOfSize: 11];
         labelCurRoundInfoTitle.adjustsFontSizeToFitWidth = YES;
         labelCurRoundInfoTitle.textColor = SystemLightGray;
+        // 奖期显示计时条修改 lyw
         if (lottery.currentRound) {
             labelCurRoundInfoTitle.text = [NSString stringWithFormat: @"距离%@期 截止:", lottery.currentRound.issueNumber];
+            if (!_timeCountdownView) {
+                _timeCountdownView = [[LotteryTimeCountdownView alloc] initWithFrame:CGRectMake(56, 10,KscreenWidth - 150,20)];
+            }
+            
+            _timeCountdownView.timeCutType = TimeCutTypePlayPage;
+            [_timeCountdownView startTimeCountdown:lottery.currentRound];
+            [self addSubview:_timeCountdownView];
         }else{
-            labelCurRoundInfoTitle.text = @"距离:未获得 截止:";
+              labelCurRoundInfoTitle.text = @"当前奖期已截止";
+//            labelCurRoundInfoTitle.text = @"距离:未获得 截止:";
         }
         [self setNumberColor:labelCurRoundInfoTitle];
-        [self addSubview: labelCurRoundInfoTitle];  
-        if (!_timeCountdownView) {
-            _timeCountdownView = [[LotteryTimeCountdownView alloc] initWithFrame:CGRectMake(56, 10,KscreenWidth - 150,20)];
-        }
-
-        _timeCountdownView.timeCutType = TimeCutTypePlayPage;
-        [_timeCountdownView startTimeCountdown:lottery.currentRound];
-        [self addSubview:_timeCountdownView];
+        [self addSubview: labelCurRoundInfoTitle];
 }
 
 - (NSString *)timeSting{

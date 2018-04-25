@@ -708,7 +708,10 @@
         if ([betTypeDesc containsString:@"胆拖"]||[betTypeDesc containsString:@"复式"]) {
             isNomalBet = NO;
         }
-        if (! isNomalBet &&[lotteryBet getBetCount]<2) {
+            
+        if ([lotteryBet getBetCount]==0) {
+            return TextNotEnoughBet;
+        } else if (! isNomalBet &&[lotteryBet getBetCount]<2) {
             return TextNotNomalBet;
         }
         }
