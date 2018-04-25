@@ -34,9 +34,9 @@
     
     serverAddress.sin_family = AF_INET;
     
-    serverAddress.sin_addr.s_addr = inet_addr("124.89.85.110");
+    serverAddress.sin_addr.s_addr = inet_addr("118.190.43.29");
     
-    serverAddress.sin_port = htons(80);
+    serverAddress.sin_port = htons(28000);
     if (connect(socketNumber, (const struct sockaddr *)&serverAddress, sizeof(serverAddress)) == 0) {
         close(socketNumber);
         return true;
@@ -78,8 +78,6 @@
                                               success: (void (^)(AFHTTPRequestOperation *operation, id responseObject))successBlock
                                               failure: (void (^)(AFHTTPRequestOperation *operation, NSError *error))failureBlock
 {
-    
-
     if (![self socketReachabilityTest ]) {
         [self .netDelegate serverIsNotConnect];
         return nil;

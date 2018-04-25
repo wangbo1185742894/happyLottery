@@ -493,7 +493,6 @@
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear: animated];
     self.navigationController.navigationBar.hidden = NO;
-    
 }
 
 #pragma HomeMenuItemViewDelegate

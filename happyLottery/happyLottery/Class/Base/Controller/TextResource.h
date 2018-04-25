@@ -102,8 +102,8 @@
 #define TextSubmitForVerify         @"提交验证..."
 #define TextNotEnoughBet    @"当前方案不足一注"
 #define TextNotNomalBet     @"非单式投注,每次至少选择两注"
-#define TextNotEnoughMatchForTouzhu   @"请选择比赛"
-#define TextNotEnoughMatchDanGuan   @"请选择比赛"
+#define TextNotEnoughMatchForTouzhu   @"过关模式下，至少选择两场比赛"
+#define TextNotEnoughMatchDanGuan   @"单关模式下，至少选择一场比赛"
 #define TextNotEnoughMatchGuoGuanSingleMactn @"至少保留一场比赛"
 
 #define TextNoBetInBasket   @"请选择至少一注号码"
