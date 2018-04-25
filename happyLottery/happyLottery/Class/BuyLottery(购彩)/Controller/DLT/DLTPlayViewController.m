@@ -700,28 +700,23 @@
 - (NSString *) couldTouZhu {
     if ([_lottery.identifier isEqualToString:@"X115"] || [_lottery.identifier isEqualToString:@"DLT"]) {
         //check current bet
-        {//20160601--非单式投注注数必须大于2
+        
         [lotteryBet updateBetInfo];
         [lotteryBet betType];
+        
         NSString *betTypeDesc = lotteryBet.betTypeDesc;
         BOOL isNomalBet = YES;
         if ([betTypeDesc containsString:@"胆拖"]||[betTypeDesc containsString:@"复式"]) {
             isNomalBet = NO;
         }
-        if (! isNomalBet &&[lotteryBet getBetCount]<2) {
+        if ([lotteryBet getBetCount]==0) {
+            return TextNotEnoughBet;
+        } else if (! isNomalBet &&[lotteryBet getBetCount]<2) {//20160601--非单式投注注数必须大于2
             return TextNotNomalBet;
-        }
-        }
-        if ([lotteryBet getBetCount] ) {
-            //add bet
+        } else{
             [self addBetAction_: nil];
             return nil;
         }
-        
-//        if ([_lotteryTransaction betCount] > 0) {
-//            return nil;
-//        }
-        return TextNotEnoughBet;
     }
     return @"";
 }
