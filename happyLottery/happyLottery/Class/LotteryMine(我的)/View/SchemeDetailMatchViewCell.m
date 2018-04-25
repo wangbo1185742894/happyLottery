@@ -142,8 +142,8 @@
         float height = [option boundingRectWithSize:CGSizeMake(KscreenWidth - 110, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14]} context:nil].size.height;
         height  = height > 25 ? height:25;
         MGLabel * labOption = [self creactLab:option andFrame:CGRectMake(80, curY, KscreenWidth - 95, height)];
-        labOption.keyWord = result;
-        labOption.keyWordColor = SystemRed;
+//        labOption.keyWord = result;
+//        labOption.keyWordColor = SystemRed;
         [viewBetContent addSubview:labOption];
         
         playType = [self getPlayTypeRec:itemDic[@"playType"]];
@@ -166,9 +166,7 @@
         }else{
             labResult.text = [NSString stringWithFormat:@"赛果:%@:%@",open.homeScore,open.guestScore];
         }
-        
     }
-    
     labResult.keyWordColor = SystemBlue;
 }
 
@@ -186,7 +184,6 @@
                     return itemOdds[option];
                 }
             }
-       
         }
     }
     return @"";
@@ -723,8 +720,8 @@
         float height = [option boundingRectWithSize:CGSizeMake(KscreenWidth - 110, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:15]} context:nil].size.height;
         height  = height > 25 ? height:25;
         MGLabel * labOption = [self creactLab:option andFrame:CGRectMake(80, curY, KscreenWidth - 95, height)];
-        labOption.keyWord = result;
-        labOption.keyWordColor = SystemRed;
+//        labOption.keyWord = result; 中奖标红去掉
+//        labOption.keyWordColor = SystemRed;
         [viewBetContent addSubview:labOption];
         
         playType = [self getJCLQPlayTypeRec:itemDic[@"playType"]];
