@@ -658,7 +658,7 @@
     }
     if (self.trancation.playType == JCZQPlayTypeDanGuan) {
         if (self.trancation.selectMatchArray.count < 1) {
-            return  @"单关模式下，至少保留一场比赛";
+            return  @"单关模式下，至少选择一场比赛";
         }
     }
     if (self.trancation.playType == JCZQPlayTypeGuoGuan) {
@@ -669,10 +669,10 @@
                     self.trancation.chuanFa = @"单场";
                     return nil;
                 }
-                return  @"过关模式下，至少保留两场比赛";
+                return  @"过关模式下，至少选择两场比赛";
                 
             }else{
-                return  @"过关模式下，至少保留两场比赛";
+                return  @"过关模式下，至少选择两场比赛";
                 
             }
             
