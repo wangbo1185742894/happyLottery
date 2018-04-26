@@ -76,6 +76,7 @@
     //lc
     __weak IBOutlet UILabel *QianErDownLa;
     __weak IBOutlet UILabel *QianSanDownLa;
+    __weak IBOutlet NSLayoutConstraint *bottomPHX;
 }
 
 @property (nonatomic , strong) LotteryXHProfile *currentProfile;
@@ -95,7 +96,7 @@
         self.viewControllerNo = @"A011";
     }
     
-    self.selectView = [[WBSelectView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, KscreenHeight)];
+    self.selectView = [[WBSelectView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, [self isIphoneX]?(KscreenHeight-34):KscreenHeight)];
     self.selectView.delegate = self;
 
     
@@ -115,6 +116,7 @@
     
     numberForSource = 30;
     [self getLotteryRounds:numberForSource];
+    bottomPHX.constant = [self isIphoneX]?34:0;
 }
 - (void) addOptionRighButton {
     

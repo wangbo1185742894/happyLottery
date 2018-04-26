@@ -15,6 +15,7 @@
                 <outlet property="QianSanDownLa" destination="PtF-sg-QZL" id="LSZ-5g-P68"/>
                 <outlet property="baseContentV" destination="rgg-h8-ROM" id="nUZ-LQ-dUN"/>
                 <outlet property="baseViewVericalConstraint" destination="qUH-h5-WXy" id="X9c-GW-Xe9"/>
+                <outlet property="bottomPHX" destination="H11-Db-Jr0" id="KMB-Ko-a6O"/>
                 <outlet property="dltHeadView" destination="B85-QZ-pyD" id="lEq-c5-0g7"/>
                 <outlet property="flagLbHoriSpaceConstraint" destination="ZfU-Ji-yAq" id="bFo-kO-Lie"/>
                 <outlet property="flagLb_x115SpaceConstrain" destination="QBI-tX-Fki" id="OLi-Cb-Yw6"/>
@@ -466,7 +467,7 @@
                 <constraint firstItem="gCB-Z0-qfQ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="tlH-Yi-vet"/>
                 <constraint firstItem="B85-QZ-pyD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="zHi-QR-Jlv"/>
             </constraints>
-            <point key="canvasLocation" x="25" y="-146"/>
+            <point key="canvasLocation" x="-593" y="-150"/>
         </view>
     </objects>
 </document>
