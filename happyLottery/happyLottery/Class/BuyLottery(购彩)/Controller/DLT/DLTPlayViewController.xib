@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,6 +18,8 @@
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewBottom_" destination="6qt-Bi-hCZ" id="nHB-ar-g6d"/>
                 <outlet property="viewContent_" destination="gGY-Gw-Pf5" id="b7k-Yo-OcY"/>
+                <outlet property="viewDisBottom" destination="gbW-3t-lMa" id="c75-rc-3M3"/>
+                <outlet property="viewDisTop" destination="WWh-pD-Qk1" id="NVZ-5z-izx"/>
                 <outletCollection property="sepHeight" destination="T1s-GM-LN0" id="wwP-wP-Czn"/>
             </connections>
         </placeholder>
@@ -68,8 +70,8 @@
                         <outlet property="tableViewContent_" destination="Dq0-yo-ln7" id="bG0-qx-RUe"/>
                     </connections>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6qt-Bi-hCZ" userLabel="BottomView">
-                    <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6qt-Bi-hCZ" userLabel="BottomView">
+                    <rect key="frame" x="0.0" y="618" width="375" height="29"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJV-W2-Omc">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>

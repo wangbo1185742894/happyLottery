@@ -31,8 +31,11 @@
     __weak IBOutlet UIButton *btnHemai;
     LotteryTimeCountdownView *timeCountDownView0;
     
+
     __weak IBOutlet UIButton *btnZigou;
 }
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewDisBottom;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewDisTop;
 
 @property(nonatomic,strong)SelectView*peiSelectView;
 @end
@@ -41,6 +44,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if ([self isIphoneX]) {
+        self.viewDisTop.constant = 88;
+        self.viewDisBottom .constant = 34;
+    }else{
+        self.viewDisTop.constant = 34;
+        self.viewDisBottom.constant = 0;
+    }
     
     self.title = @"确认预约";
 
@@ -55,6 +65,7 @@
     [_matchInfoBtn setBackgroundImage:imageHeight forState:UIControlStateHighlighted];
     
     self.peiSelectView = [[SelectView alloc]initWithFrame:CGRectMake(KscreenWidth - 200, 40, 190, 25) andRightTitle:@"投" andLeftTitle:@"倍"];
+    
     self.peiSelectView.beiShuLimit = 9999;
     self.peiSelectView.delegate = self;
     self.peiSelectView.labContent.text = _cTransation.beitou;;

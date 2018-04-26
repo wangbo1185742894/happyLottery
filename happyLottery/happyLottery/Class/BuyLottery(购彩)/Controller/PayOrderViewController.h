@@ -13,4 +13,7 @@
 @interface PayOrderViewController : BaseViewController
 @property(nonatomic,strong)SchemeCashPayment *cashPayMemt;
 @property(nonatomic,strong)Coupon *curSelectCoupon;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewDisTop;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewDisBottom;
+
 @end

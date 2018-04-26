@@ -53,7 +53,9 @@
     NSString *requsetIngUrlStr =[NSString stringWithFormat:@"%@",request.URL];
     if ([requsetIngUrlStr containsString:@"/index"]) {
         self.navigationController.navigationBar.hidden = NO;
-        if ([Utility isIOS11After]) {
+        if ([self isIphoneX]) {
+            webDisTop.constant = 44;
+        }else if ([Utility isIOS11After]) {
             webDisTop.constant = 0;
         }else{
             webDisTop.constant = 64;
@@ -61,7 +63,9 @@
         
     }else{
         self.navigationController.navigationBar.hidden = YES;
-        if ([Utility isIOS11After]) {
+        if ([self isIphoneX]) {
+            webDisTop.constant = 44;
+        }else if ([Utility isIOS11After]) {
             webDisTop.constant = 0;
         }else{
              webDisTop.constant = 20;
@@ -112,7 +116,10 @@
 }
 
 -(void)setWebView{
-    if ([Utility isIOS11After]) {
+    if ([self isIphoneX]) {
+        webDisTop.constant = 88;
+         webDisBottom.constant = 0;
+    }else if ([Utility isIOS11After]) {
         webDisTop.constant = 0;
         webDisBottom.constant = 0;
     }else{

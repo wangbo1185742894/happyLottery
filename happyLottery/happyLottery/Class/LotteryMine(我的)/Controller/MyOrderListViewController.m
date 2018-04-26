@@ -21,6 +21,7 @@
 
 {
     CostType curSchemeType;
+    __weak IBOutlet NSLayoutConstraint *viewDisTop;
     __weak IBOutlet UITableView *tabSchemeList;
     JCZQSchemeModel* schemeModel;
     NSMutableArray <JCZQSchemeItem *> *dataArray;
@@ -37,6 +38,12 @@
     dataArray = [NSMutableArray arrayWithCapacity:0];
     self.title = @"我的订单";
     page = 1;
+    
+    if ([self isIphoneX]) {
+        viewDisTop.constant = 88;
+    }else{
+        viewDisTop.constant = 64;
+    }
     curSchemeType = CostTypeCASH;
     [self setTableViewLoadRefresh];
     [self setTableView];

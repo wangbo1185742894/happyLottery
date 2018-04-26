@@ -56,6 +56,7 @@ typedef enum : NSUInteger {
 @property (weak, nonatomic) IBOutlet UITableView *tabPlayList;
 @property (weak, nonatomic) IBOutlet UILabel *labPlayInfo;
 @property(strong,nonatomic) NSString *curActivePlayType;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewDisTop;
 
 @property(strong,nonatomic)NSMutableArray *openRow;
 @property(strong,nonatomic)NSMutableArray *profiles;
@@ -67,6 +68,11 @@ typedef enum : NSUInteger {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if ([self isIphoneX]) {
+        self.viewDisTop .constant = 34;
+    }else{
+        self.viewDisTop.constant = 0;
+    }
     self.profiles = [NSMutableArray arrayWithCapacity:0];
     self.viewControllerNo = @"A002";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cleanMatch:) name:KSELECTMATCHCLEAN object:nil];
@@ -113,7 +119,7 @@ typedef enum : NSUInteger {
     CGFloat optionviewCellheight = 38;
     CGSize mainSize = [UIScreen mainScreen].bounds.size;
     if (optionView == nil) {
-           optionView = [[OptionSelectedView alloc] initWithFrame:CGRectMake(mainSize.width - optionviewWidth, 64, optionviewWidth, optionviewCellheight * titleArr.count) andTitleArr:titleArr];
+           optionView = [[OptionSelectedView alloc] initWithFrame:CGRectMake(mainSize.width - optionviewWidth, DisTop, optionviewWidth, optionviewCellheight * titleArr.count) andTitleArr:titleArr];
     }else{
         optionView.hidden = NO;
     }

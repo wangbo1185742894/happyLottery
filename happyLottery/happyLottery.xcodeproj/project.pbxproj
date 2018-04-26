@@ -461,6 +461,8 @@
 		2D739D061FEB853500264044 /* btnbackimgNomal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D739D041FEB853300264044 /* btnbackimgNomal@2x.png */; };
 		2D739D071FEB853500264044 /* btnbackimgNomal@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D739D051FEB853400264044 /* btnbackimgNomal@3x.png */; };
 		2D739D091FEB86A500264044 /* jczqshowallback@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D739D081FEB86A400264044 /* jczqshowallback@3x.png */; };
+		2D791C8020916B0500E455F5 /* pic_guanyajun_beijing@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D791C7E20916B0400E455F5 /* pic_guanyajun_beijing@3x.png */; };
+		2D791C8120916B0500E455F5 /* pic_guanyajun_beijing@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D791C7F20916B0400E455F5 /* pic_guanyajun_beijing@2x.png */; };
 		2D7B12C5204D3A250035AE89 /* DLTPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B12C2204D3A230035AE89 /* DLTPlayViewController.m */; };
 		2D7B12C9204D3AB60035AE89 /* LotteryTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B12C7204D3AB50035AE89 /* LotteryTransaction.m */; };
 		2D7B12CC204D3B200035AE89 /* LotteryBet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B12CB204D3B200035AE89 /* LotteryBet.m */; };
@@ -1852,6 +1854,8 @@
 		2D739D041FEB853300264044 /* btnbackimgNomal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnbackimgNomal@2x.png"; sourceTree = "<group>"; };
 		2D739D051FEB853400264044 /* btnbackimgNomal@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnbackimgNomal@3x.png"; sourceTree = "<group>"; };
 		2D739D081FEB86A400264044 /* jczqshowallback@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jczqshowallback@3x.png"; sourceTree = "<group>"; };
+		2D791C7E20916B0400E455F5 /* pic_guanyajun_beijing@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pic_guanyajun_beijing@3x.png"; sourceTree = "<group>"; };
+		2D791C7F20916B0400E455F5 /* pic_guanyajun_beijing@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pic_guanyajun_beijing@2x.png"; sourceTree = "<group>"; };
 		2D7B12C2204D3A230035AE89 /* DLTPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLTPlayViewController.m; sourceTree = "<group>"; };
 		2D7B12C4204D3A240035AE89 /* DLTPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLTPlayViewController.h; sourceTree = "<group>"; };
 		2D7B12C7204D3AB50035AE89 /* LotteryTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LotteryTransaction.m; sourceTree = "<group>"; };
@@ -3258,6 +3262,8 @@
 		2D4B1E441FDF684E0034B708 /* homeres */ = {
 			isa = PBXGroup;
 			children = (
+				2D791C7F20916B0400E455F5 /* pic_guanyajun_beijing@2x.png */,
+				2D791C7E20916B0400E455F5 /* pic_guanyajun_beijing@3x.png */,
 				2D0E23A4201883390098DA40 /* switch@2x.png */,
 				2D0E23A5201883390098DA40 /* switch@3x.png */,
 				2D0E23A62018833B0098DA40 /* switchbackground@2x.png */,
@@ -5708,6 +5714,7 @@
 				F94AA9EC1FEB9BD50021B980 /* add@2x.png in Resources */,
 				2D4B1EA71FDFCA520034B708 /* ForecastViewController.xib in Resources */,
 				2D739C3B1FE365BE00264044 /* WebShowViewController.xib in Resources */,
+				2D791C8120916B0500E455F5 /* pic_guanyajun_beijing@2x.png in Resources */,
 				2D739C701FE79DBC00264044 /* LotteryProfilesConfig.plist in Resources */,
 				F9418F4D2010991200454109 /* WeiboSDK.bundle in Resources */,
 				F9C4EED5202063D300CDCDBA /* about_logo@2x.png in Resources */,
@@ -6088,6 +6095,7 @@
 				2D7B138E204E82FD0035AE89 /* pic_jingzu_@3x.png in Resources */,
 				2D4B1E7A1FDF684E0034B708 /* home_select@3x.png in Resources */,
 				F94AA9C61FEB59DA0021B980 /* hint@3x.png in Resources */,
+				2D791C8020916B0500E455F5 /* pic_guanyajun_beijing@3x.png in Resources */,
 				2D517205200D986400C3CD7F /* newicon_default@2x.png in Resources */,
 				2D7B1380204E70510035AE89 /* encore@3x.png in Resources */,
 				F94AA9F41FEBBFE00021B980 /* BankCardSetTableViewCell.xib in Resources */,

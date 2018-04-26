@@ -14,6 +14,7 @@
 }
 @property (weak, nonatomic) IBOutlet UIWebView *groupWebView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *webDisBottom;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *webDisTop;
 
 @end
 
@@ -29,7 +30,9 @@
 }
 
 -(void)setWebView{
-    if ([Utility isIOS11After]) {
+    if ([self isIphoneX]) {
+        self.webDisTop.constant = 44;
+    }else    if ([Utility isIOS11After]) {
         self.webDisBottom.constant = 0;
     }else{
         self.webDisBottom.constant = 44;

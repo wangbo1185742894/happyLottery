@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *SchemeCreateTableView;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *selectMoneyBtn;
 @property (weak, nonatomic) IBOutlet UIView *viewContentItem;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewDisTop;
 
 
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *selectBetBtn;
@@ -54,6 +55,11 @@
     [super viewDidLoad];
     self.viewControllerNo = @"A016";
     page = 0;
+    if ([self isIphoneX]) {
+        self.viewDisTop.constant = 88;
+    }else{
+        self.viewDisTop.constant = 64;
+    }
     
     self.transaction = [[JCFATransaction alloc]init];
     self.transaction.beiTou = 1;

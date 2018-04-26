@@ -32,6 +32,7 @@
     UIButton *selectGroup;
 }
 @property (weak, nonatomic) IBOutlet SelectView *beiSelectView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewDisTop;
 
 @property (weak, nonatomic) IBOutlet UITableView *gyjListTableView;
 
@@ -47,6 +48,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *tfBeiCount;
 @property (weak, nonatomic) IBOutlet MGLabel *labCount;
 @property(strong,nonatomic)GYJTransaction *transaction;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewDisBottom;
 
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property(nonatomic,strong)NSMutableArray <WordCupHomeItem *> * gjSelectedArray;
@@ -57,6 +59,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if ([self isIphoneX]) {
+        self.viewDisTop .constant = 88;
+        self.viewDisBottom.constant = 34;
+    }else{
+        self.viewDisBottom.constant = 0;
+        self.viewDisTop .constant = 64;
+    }
+    
+    
     self.viewControllerNo = @"A009";
     [self setTableViewCell];
     self.gjSellArray = [NSMutableArray arrayWithCapacity:0];
@@ -81,8 +92,9 @@
 
 //自定义navigationBar
 - (void)navigationBarInit{
-    gYJview = [[UIView alloc]initWithFrame:CGRectMake(0, 0,self.view.frame.size.width, 60)];
+    gYJview = [[UIView alloc]initWithFrame:CGRectMake(0, 0,self.view.frame.size.width, DisTop)];
     UIImageView *itemImage =[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"pic_guanyajun_beijing"]];
+    itemImage.contentMode =UIViewContentModeScaleToFill;
     itemImage.frame = gYJview.frame;
     itemImage.contentMode= UIViewContentModeScaleToFill;
     [gYJview addSubview:itemImage];
@@ -451,8 +463,8 @@
 }
 
 - (void)setRightButton {
-    playIntroduce = [self creatBar:@"" icon:@"wanfajieshao" andFrame:CGRectMake(self.view.frame.size.width - 35, 25, 25, 25) andAction:@selector(pressPlayIntroduce)];
-    selectGroup = [self creatBar:@"" icon:@"liansaixuanze" andFrame:CGRectMake(self.view.frame.size.width-50-20, 25, 25, 25)andAction:@selector(pressSelectGroup)];
+    playIntroduce = [self creatBar:@"" icon:@"wanfajieshao" andFrame:CGRectMake(self.view.frame.size.width - 35, DisTop - 40, 25, 25) andAction:@selector(pressPlayIntroduce)];
+    selectGroup = [self creatBar:@"" icon:@"liansaixuanze" andFrame:CGRectMake(self.view.frame.size.width-50-20, DisTop - 40, 25, 25)andAction:@selector(pressSelectGroup)];
     [gYJview addSubview:playIntroduce];
     [gYJview addSubview:selectGroup];
     if (isShowGJ) {
@@ -473,7 +485,7 @@
 //}
 
 - (void)setLeftButton{
-    UIButton *returnToRoot = [self creatBar:@"" icon:@"common_top_bar_back" andFrame:CGRectMake(20, 30, 12,18) andAction:@selector(returnToRootView)];
+    UIButton *returnToRoot = [self creatBar:@"" icon:@"common_top_bar_back" andFrame:CGRectMake(20,DisTop - 33 , 12,18) andAction:@selector(returnToRootView)];
     [gYJview addSubview:returnToRoot];
 }
 
@@ -618,7 +630,7 @@
     if(gyjSelectedView != nil){
         return;
     }
-    gyjSelectedView = [[UIView alloc]initWithFrame:CGRectMake(self.view.frame.size.width/2-82,25, 164, 30)];
+    gyjSelectedView = [[UIView alloc]initWithFrame:CGRectMake(self.view.frame.size.width/2-82, DisTop - 40, 164,  30)];
     gyjSelectedView.backgroundColor = [UIColor clearColor];
     
     gyjSelectedView.layer.cornerRadius = 16;

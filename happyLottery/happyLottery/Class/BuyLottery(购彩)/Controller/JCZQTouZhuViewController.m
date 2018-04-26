@@ -29,6 +29,8 @@
 @property (weak, nonatomic) IBOutlet UIView *viewBottom;
 @property (weak, nonatomic) IBOutlet UILabel *labZhuInfo;
 @property (weak, nonatomic) IBOutlet UILabel *labPrizeInfo;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewDisTop;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewDisBottom;
 
 @end
 
@@ -36,6 +38,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if ([self isIphoneX]) {
+        self.viewDisTop.constant = 88;
+        self.viewDisBottom .constant = 34;
+    }else{
+        self.viewDisTop.constant = 34;
+        self.viewDisBottom.constant = 0;
+    }
     self.title = @"确认预约";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cleanMatch:) name:KSELECTMATCHCLEAN object:nil];
     self.lotteryMan.delegate = self;
