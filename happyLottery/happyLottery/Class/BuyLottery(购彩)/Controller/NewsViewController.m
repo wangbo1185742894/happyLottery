@@ -19,6 +19,7 @@
     __weak IBOutlet UITableView *tabNewListView;
     LoadData * singleLoad;
     NSMutableArray <NewsModel *> *newArray;
+    __weak IBOutlet NSLayoutConstraint *bottonLayCon;
 }
 @end
 
@@ -31,6 +32,7 @@
     [self setTableView];
     [UITableView refreshHelperWithScrollView:tabNewListView target:self loadNewData:@selector(loadNews) loadMoreData:@selector(loadNews) isBeginRefresh:NO];
     [self loadNews];
+    bottonLayCon.constant = [self isIphoneX]?34:0;
 }
 
 -(void)loadNews{

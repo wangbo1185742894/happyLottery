@@ -43,6 +43,8 @@
     NSMutableArray *dltBetList;
     __weak IBOutlet UIButton *btnReBuy;
     __weak IBOutlet UIButton *btnPay;
+    __weak IBOutlet NSLayoutConstraint *bottomIPhoneX;
+    __weak IBOutlet NSLayoutConstraint *upIPhoneX;
 }
 
 @property(nonatomic,strong)NSArray *allLotter;
@@ -65,6 +67,8 @@
         self.navigationController.navigationBar.barTintColor = SystemGreen;
     }
     [self loadData];
+    bottomIPhoneX.constant = [self isIphoneX]?34:0;
+    upIPhoneX.constant = [self isIphoneX]?88:64;
 }
 
 

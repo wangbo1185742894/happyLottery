@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imgLotteryIcon;
 @property (weak, nonatomic) IBOutlet UILabel *labLotteryName;
 @property (weak, nonatomic) IBOutlet UILabel *labIsWon;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *upIPhoneX;
 
 @end
 
@@ -66,6 +67,7 @@
         self.automaticallyAdjustsScrollViewInsets = NO; // tableView 莫名其妙  contentOffset.y 成-64了  MMP
     }
     [self loadNewData];
+    self.upIPhoneX.constant = [self isIphoneX]?88:64;
 }
 
 -(void)loadNewData{

@@ -11,12 +11,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GYJSchemeDetailViewController">
             <connections>
+                <outlet property="bottomIPhoneX" destination="Ebf-4E-d2z" id="uh0-LW-EWK"/>
                 <outlet property="btnPay" destination="elk-D4-DdO" id="uZY-Jc-OKO"/>
                 <outlet property="btnReBuy" destination="3Pg-3A-JNl" id="wXL-tQ-rIt"/>
                 <outlet property="heightZhifuView" destination="sbn-pK-K9A" id="rlJ-l4-7uC"/>
                 <outlet property="imgSchemeTopView" destination="61u-sy-qC0" id="KcQ-Ml-Jgh"/>
                 <outlet property="mainViewHeight" destination="b66-5V-q7H" id="fLh-bo-mqk"/>
                 <outlet property="tabMatchListVIew" destination="ima-rv-PXo" id="D37-fy-SPo"/>
+                <outlet property="upIPhoneX" destination="9c9-FL-6om" id="F2H-Kj-fuM"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
