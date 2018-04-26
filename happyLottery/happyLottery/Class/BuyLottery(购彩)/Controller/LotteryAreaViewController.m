@@ -20,6 +20,7 @@
 @interface LotteryAreaViewController ()
 {
     NSArray *_lotteryArr; //彩种详细
+    MBProgressHUD *loadingView;
 }
 
 @end
@@ -176,8 +177,27 @@ static NSString * const reuseIdentifier = @"LotteryAreaViewCell";
         [self.navigationController pushViewController:gyjPlayVc animated:YES];
     }
     else {
-        
+        [self showPromptText:@"此彩种暂停销售" hideAfterDelay:1.0];
     }
+}
+
+- (void) showPromptText: (NSString *) text hideAfterDelay: (NSTimeInterval) interval {
+    if (nil != loadingView) {
+        [loadingView hide: YES];
+    }
+    loadingView = [[MBProgressHUD alloc] initWithView: self.view];
+    [self.view addSubview: loadingView];
+    loadingView.labelText = text;
+    loadingView.labelFont = [UIFont systemFontOfSize:13];
+    loadingView.userInteractionEnabled = NO;
+    loadingView.mode = MBProgressHUDModeText;
+    loadingView.yOffset = self.view.frame.size.height/2 - 160;
+    [loadingView showAnimated:YES whileExecutingBlock:^{
+        sleep(interval);
+    } completionBlock:^{
+        [loadingView removeFromSuperview];
+        loadingView = nil;
+    }];
 }
 
 @end
