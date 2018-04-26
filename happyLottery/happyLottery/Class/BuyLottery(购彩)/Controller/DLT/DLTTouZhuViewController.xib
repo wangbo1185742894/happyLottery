@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,6 +22,8 @@
                 <outlet property="tfBeiCount" destination="GXN-7d-SFj" id="vMm-Ss-TJt"/>
                 <outlet property="tfQiCount" destination="vRw-Ge-Y45" id="npK-wL-BCd"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewDisBottom" destination="7fA-dd-0cW" id="k6s-x4-3Wn"/>
+                <outlet property="viewDisTop" destination="e9P-Kf-b0j" id="kKS-mT-doL"/>
                 <outletCollection property="qiCountItem" destination="l08-Yu-T8k" id="tjT-pp-lmk"/>
                 <outletCollection property="qiCountItem" destination="v82-KX-oZF" id="jWF-MO-lUx"/>
                 <outletCollection property="qiCountItem" destination="gRD-Hj-mHr" id="EB5-Yc-35s"/>

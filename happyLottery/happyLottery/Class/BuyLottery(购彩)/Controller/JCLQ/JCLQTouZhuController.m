@@ -47,6 +47,9 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableSelectMatch;
 @property (weak, nonatomic) IBOutlet UIView *selectPeiChuanView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *btnTuiJianWidth;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewDisTop;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewDisBottom;
 
 @property(strong,nonatomic) WBSelectView *selectView;
 
@@ -65,7 +68,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.labNumBetCount.adjustsFontSizeToFitWidth = YES;
+    if ([self isIphoneX]) {
+        self.viewDisTop.constant = 88;
+        self.viewDisBottom .constant = 34;
+    }else{
+        self.viewDisTop.constant = 34;
+        self.viewDisBottom.constant = 0;
+    } self.labNumBetCount.adjustsFontSizeToFitWidth = YES;
     self.labMaxJiangjie.adjustsFontSizeToFitWidth = YES;
     [self.view layoutIfNeeded];
     [self setChuanfa];

@@ -94,7 +94,9 @@
     BOOL isLeXuan ;
 }
 @property (nonatomic , assign) BOOL hasLiked;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewDisTop;
 @property (weak, nonatomic) IBOutlet UIButton *btnHemai;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewDisBottom;
 
 //timer
 @property (nonatomic , strong) NSTimer *timer;
@@ -111,6 +113,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if ([self isIphoneX]) {
+        self.viewDisTop.constant = 88;
+        self.viewDisBottom .constant = 34;
+    }else{
+        self.viewDisTop.constant = 34;
+        self.viewDisBottom.constant = 0;
+    }
     [self.view layoutIfNeeded];
     self.navigationController.hidesBarsWhenKeyboardAppears = NO;
     

@@ -37,6 +37,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *fanganLabel;
 @property (weak, nonatomic) IBOutlet UILabel *touzhufangshiLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewDisTop;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewDisBottom;
 
 @property (weak, nonatomic) IBOutlet SelectView *beiSelectView;
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
@@ -52,6 +54,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if ([self isIphoneX]) {
+        self.viewDisTop.constant = 88;
+        self.viewDisBottom.constant = 34;
+    }else{
+        self.viewDisTop.constant = 64;
+        self.viewDisBottom.constant = 0;
+    }
     self.navigationItem.title = @"足球方案详情";
     self.transaction = [[JCFATransaction alloc]init];
      [self.myTableView registerNib:[UINib nibWithNibName:@"YuCeSchemeDetailCell" bundle:nil] forCellReuseIdentifier:@"YuCeSchemeDetailCell"];

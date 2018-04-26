@@ -56,6 +56,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if ([self isIphoneX]) {
+        self.viewDisTop.constant = 88;
+        self.viewDisBottom.constant = 34;
+    }else{
+        self.viewDisBottom.constant = 0;
+        self.viewDisTop.constant = 64;
+    }
     if ([Utility isIOS11After]) {
         self.automaticallyAdjustsScrollViewInsets = NO; // tableView 莫名其妙  contentOffset.y 成-64了  MMP
     }

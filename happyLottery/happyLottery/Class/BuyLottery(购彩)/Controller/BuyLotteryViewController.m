@@ -331,7 +331,7 @@
 
 -(void)setADSUI{
     if (adsView == nil) {
-        adsView = [[WBAdsImgView alloc]initWithFrame:CGRectMake(0,[self isIphoneX]?0:-20, KscreenWidth, 175.0/375 * KscreenWidth)];
+        adsView = [[WBAdsImgView alloc]initWithFrame:CGRectMake(0,[self isIphoneX]?-44:-20, KscreenWidth, 175.0/375 * KscreenWidth)];
         adsView.delegate = self;
         [scrContentView addSubview:adsView];
     }

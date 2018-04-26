@@ -15,7 +15,9 @@
 {
     JSContext *context;
 }
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *webDisTop;
 @property (weak, nonatomic) IBOutlet UIButton *btnPop;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *webDisBottom;
 
 @property (weak, nonatomic) IBOutlet UIWebView *webViewShowInfo;
 
@@ -29,6 +31,13 @@
     self.webViewShowInfo.delegate = self;
     [self.webViewShowInfo loadRequest:[NSURLRequest requestWithURL:self.pageUrl]];
     
+    if ([self isIphoneX]) {
+        self.webDisTop.constant = 44;
+        self.webDisBottom.constant = 34;
+    }else{
+        self.webDisTop.constant = 20;
+        self.webDisBottom.constant = 0;
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated{

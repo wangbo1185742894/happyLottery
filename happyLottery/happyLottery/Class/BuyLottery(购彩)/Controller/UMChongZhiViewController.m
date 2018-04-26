@@ -10,6 +10,7 @@
 #import "WBYCMatchDetailViewController.h"
 @interface UMChongZhiViewController ()<UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (weak, nonatomic) IBOutlet UIView *BottomView;
 @property (weak, nonatomic) IBOutlet UILabel *labPreIndex;
 @property (weak, nonatomic) IBOutlet UIButton *btnSheng;
 @property (weak, nonatomic) IBOutlet UIButton *btnPing;
@@ -23,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *fuBtnWidth;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *rightDis;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *webViewdisBottom;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewDisBottom;
 
 @property (weak, nonatomic) IBOutlet UIView *viewBottom;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftDis;
@@ -41,7 +43,12 @@
     self.webView.scrollView.bounces = NO;
     self.viewYuceGailv.layer.cornerRadius = 2;
     self.viewYuceGailv.layer.masksToBounds = YES;
-    
+    if ([self isIphoneX]) {
+        self.viewDisBottom.constant = 34;
+        
+    }else {
+        self.viewDisBottom .constant = 0;
+    }
     if (IS_IOS11) {
         self.topWebView.constant = -44;
     }else{
@@ -135,9 +142,11 @@
 }
 
 - (IBAction)actionClose:(UIButton *)sender {
+     self.BottomView.hidden = YES;
     [UIView animateWithDuration:0.5 animations:^{
         self.btnBack.hidden = YES;
         self.heightViewBottom.constant = 35;
+       
         [self.viewBottom.superview layoutIfNeeded];
         
     }];
@@ -158,10 +167,12 @@
             [UIView animateWithDuration:0.5 animations:^{
                 self.btnBack.hidden = NO;
                 
+                
                 self.heightViewBottom.constant = 150;
                 [self.viewBottom.superview layoutIfNeeded];
                 
             }];
+            self.BottomView.hidden = NO;
         });
     }
 }

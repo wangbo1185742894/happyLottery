@@ -97,6 +97,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnHemai;
 
 //timer
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewDisTop;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewDisBottom;
 @property (nonatomic , strong) NSTimer *timer;
 @property(nonatomic,strong)User *curUser;
 @property(nonatomic,strong)UIToolbar *toolBar;
@@ -112,7 +115,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view layoutIfNeeded];
-    self.navigationController.hidesBarsWhenKeyboardAppears = NO;
+    if ([self isIphoneX]) {
+        self.viewDisTop.constant = 88;
+        self.viewDisBottom .constant = 34;
+    }else{
+        self.viewDisTop.constant = 34;
+        self.viewDisBottom.constant = 0;
+    } self.navigationController.hidesBarsWhenKeyboardAppears = NO;
     
     tableViewContent_.delegate = self;
     tableViewContent_.dataSource = self;

@@ -15,6 +15,7 @@
     UILabel *underlineofseclectbtn;
     UILabel *underline;
     
+    __weak IBOutlet NSLayoutConstraint *viewDisTop;
     __weak IBOutlet NSLayoutConstraint *webTopPadding;
 }
 
@@ -24,7 +25,11 @@
 
 - (void) viewDidLoad {
     [super viewDidLoad];
-
+    if ([self isIphoneX]) {
+        viewDisTop.constant = 88;
+    }else{
+        viewDisTop.constant = 64;
+    }
     // Do any additional setup after loading the view from its nib.
     self.title = [NSString stringWithFormat: @"%@%@", self.lotteryDetailDic[@"Name"], TextInsturction];
     [self showLoadingViewWithText: TextLoading];

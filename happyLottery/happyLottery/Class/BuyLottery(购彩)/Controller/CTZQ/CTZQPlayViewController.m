@@ -67,7 +67,9 @@
 @property (nonatomic, assign)BOOL isLoadFinish;
 @property (nonatomic, assign)NSUInteger matchMinNeed;
 @property (nonatomic, assign)NSInteger selectedIndex;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewDisBottom;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewDisTop;
 @property(nonatomic,strong)GlobalInstance *instance;
 
 @property (weak, nonatomic) IBOutlet UIView *jiangQiView;
@@ -79,7 +81,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    if ([self isIphoneX]) {
+        self.viewDisTop.constant = 88;
+        self.viewDisBottom .constant = 34;
+    }else{
+        self.viewDisTop.constant = 64;
+        self.viewDisBottom.constant = 0;
+    }
     
     if ([self.lottery.identifier isEqualToString:@"RJC"]) {
         self.viewControllerNo = @"A005";
@@ -124,7 +132,7 @@
     CGFloat optionviewCellheight = 38;
     CGSize mainSize = [UIScreen mainScreen].bounds.size;
     
-    OptionSelectedView *optionView = [[OptionSelectedView alloc] initWithFrame:CGRectMake(mainSize.width - optionviewWidth, 64, optionviewWidth, optionviewCellheight * titleArr.count) andTitleArr:titleArr];
+    OptionSelectedView *optionView = [[OptionSelectedView alloc] initWithFrame:CGRectMake(mainSize.width - optionviewWidth, DisTop, optionviewWidth, optionviewCellheight * titleArr.count) andTitleArr:titleArr];
     
     optionView.delegate = self;
     [self.view.window addSubview:optionView];

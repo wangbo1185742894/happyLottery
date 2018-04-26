@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UMChongZhiViewController">
             <connections>
+                <outlet property="BottomView" destination="z8Q-Ne-OIA" id="mgm-8c-Hej"/>
                 <outlet property="btnBack" destination="ccq-sW-jOp" id="ec1-zI-yqx"/>
                 <outlet property="btnFu" destination="Kat-GF-rvw" id="i7E-Kt-ffo"/>
                 <outlet property="btnPing" destination="REc-GH-b7I" id="Vwz-dq-SAo"/>
@@ -26,6 +27,7 @@
                 <outlet property="topWebView" destination="UwB-t5-YT0" id="Sfu-az-edK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewBottom" destination="upg-8Q-WSj" id="6PB-j7-8XO"/>
+                <outlet property="viewDisBottom" destination="5x9-Ke-i3t" id="LTi-Ac-uVV"/>
                 <outlet property="viewYuceGailv" destination="ADT-o1-UPR" id="wNT-Qb-a0s"/>
                 <outlet property="webView" destination="2J1-QH-vUJ" id="BcM-SC-ROZ"/>
                 <outlet property="webViewdisBottom" destination="vBJ-L5-osw" id="OsW-dr-MV0"/>
@@ -45,10 +47,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="627"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                 </button>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="upg-8Q-WSj">
-                    <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="upg-8Q-WSj">
+                    <rect key="frame" x="0.0" y="617" width="375" height="30"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z8Q-Ne-OIA">
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z8Q-Ne-OIA">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kxX-FU-XW9">

@@ -47,6 +47,7 @@
 @property(nonatomic,strong)NSMutableArray<JCZQLeaModel * > *leaArray;
 @property(nonatomic,strong)JCZQTranscation  *trancation;
 @property(nonatomic,strong)NSMutableArray<NSMutableArray <JCZQMatchModel *> * > *showArray;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewDisBottom;
 
 @end
 
@@ -54,6 +55,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if ([self isIphoneX]) {
+        self.viewDisBottom .constant = 34;
+    }else{
+        self.viewDisBottom.constant = 0;
+    }
     numBackNum = 0;
     self.viewControllerNo = @"A001";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cleanMatch:) name:KSELECTMATCHCLEAN object:nil];
@@ -342,7 +348,7 @@
     CGFloat optionviewCellheight = 38;
     CGSize mainSize = [UIScreen mainScreen].bounds.size;
     
-    OptionSelectedView *optionView = [[OptionSelectedView alloc] initWithFrame:CGRectMake(mainSize.width - optionviewWidth, 64, optionviewWidth, optionviewCellheight * titleArr.count) andTitleArr:titleArr];
+    OptionSelectedView *optionView = [[OptionSelectedView alloc] initWithFrame:CGRectMake(mainSize.width - optionviewWidth, DisTop, optionviewWidth, optionviewCellheight * titleArr.count) andTitleArr:titleArr];
     
     optionView.delegate = self;
     [self.view.window addSubview:optionView];

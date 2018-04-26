@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -30,6 +30,8 @@
                 <outlet property="payWebView" destination="Kk9-pn-yBS" id="k39-zp-opR"/>
                 <outlet property="tabPayTypeList" destination="e6Y-uh-Paq" id="3uF-L1-CZV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewDisBottom" destination="xcF-KM-exP" id="r7l-L4-3NA"/>
+                <outlet property="viewDisTop" destination="MDo-d2-ShB" id="gIE-3n-fLO"/>
                 <outlet property="viewPayList" destination="FiE-Ik-7AA" id="Sb0-ah-1j5"/>
                 <outlet property="viewPaychannalInfo" destination="pP5-zB-EpF" id="Zm9-qf-BIM"/>
             </connections>
@@ -320,11 +322,11 @@
                         <action selector="actionTouzhu:" destination="-1" eventType="touchUpInside" id="aVa-IM-DzU"/>
                     </connections>
                 </button>
-                <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jqd-nv-tAE">
-                    <rect key="frame" x="0.0" y="111" width="375" height="370"/>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jqd-nv-tAE">
+                    <rect key="frame" x="0.0" y="111" width="375" height="512"/>
                     <subviews>
-                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rUH-9e-nVj">
-                            <rect key="frame" x="0.0" y="13" width="375" height="75"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rUH-9e-nVj">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="huB-um-VHH">
                                     <rect key="frame" x="0.0" y="43.5" width="375" height="1"/>
