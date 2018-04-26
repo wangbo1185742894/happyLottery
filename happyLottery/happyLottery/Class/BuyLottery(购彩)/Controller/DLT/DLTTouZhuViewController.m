@@ -117,7 +117,7 @@
         self.viewDisTop.constant = 88;
         self.viewDisBottom .constant = 34;
     }else{
-        self.viewDisTop.constant = 34;
+        self.viewDisTop.constant = 64;
         self.viewDisBottom.constant = 0;
     }
     [self.view layoutIfNeeded];

@@ -79,6 +79,8 @@ static SystemSoundID shake_sound_male_id = 0;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [self loadTabVC];
+    
+     [[UIApplication sharedApplication]setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
     [[UITextField appearance]setTintColor:SystemGreen];
     
     [GlobalInstance instance].homeUrl = ServerAddress;
