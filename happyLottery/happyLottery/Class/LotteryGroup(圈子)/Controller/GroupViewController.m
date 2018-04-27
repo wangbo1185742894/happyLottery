@@ -32,9 +32,11 @@
 -(void)setWebView{
     if ([self isIphoneX]) {
         self.webDisTop.constant = 44;
-    }else    if ([Utility isIOS11After]) {
+    }else if ([Utility isIOS11After]) {
+        self.webDisTop.constant = 0;
         self.webDisBottom.constant = 0;
     }else{
+        self.webDisTop.constant = 20;
         self.webDisBottom.constant = 44;
     }
 }
