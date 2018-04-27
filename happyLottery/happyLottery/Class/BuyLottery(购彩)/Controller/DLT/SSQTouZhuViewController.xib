@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -83,7 +83,7 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="px9-Xy-Z84" userLabel="bounds">
-                                    <rect key="frame" x="10" y="5" width="215" height="20"/>
+                                    <rect key="frame" x="19" y="5" width="37.5" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="20" id="ThD-oa-BO8"/>
                                     </constraints>
@@ -91,8 +91,8 @@
                                     <color key="textColor" red="0.21866422891616821" green="0.21865770220756531" blue="0.21866145730018616" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPs-is-j3A" userLabel="Summary">
-                                    <rect key="frame" x="10" y="27" width="215" height="18"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPs-is-j3A" userLabel="Summary">
+                                    <rect key="frame" x="20" y="27" width="34.5" height="18"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="18" id="6Ib-ct-c8W"/>
                                     </constraints>
@@ -103,14 +103,12 @@
                             </subviews>
                             <color key="backgroundColor" red="0.1450980392" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
+                                <constraint firstItem="px9-Xy-Z84" firstAttribute="centerX" secondItem="TPs-is-j3A" secondAttribute="centerX" id="Cy5-hn-DOW"/>
                                 <constraint firstAttribute="height" constant="50" id="HTg-Jd-gTj"/>
                                 <constraint firstItem="oRg-rP-BVf" firstAttribute="top" secondItem="nEv-Lk-jCJ" secondAttribute="top" constant="10" id="Ldt-FV-ACH"/>
                                 <constraint firstAttribute="trailing" secondItem="oRg-rP-BVf" secondAttribute="trailing" constant="10" id="LeX-zA-1fk"/>
-                                <constraint firstItem="TPs-is-j3A" firstAttribute="leading" secondItem="nEv-Lk-jCJ" secondAttribute="leading" constant="10" id="WcF-bv-vfi"/>
-                                <constraint firstItem="px9-Xy-Z84" firstAttribute="leading" secondItem="nEv-Lk-jCJ" secondAttribute="leading" constant="10" id="bmg-y3-9iH"/>
+                                <constraint firstItem="TPs-is-j3A" firstAttribute="leading" secondItem="nEv-Lk-jCJ" secondAttribute="leading" constant="20" id="WcF-bv-vfi"/>
                                 <constraint firstAttribute="bottom" secondItem="TPs-is-j3A" secondAttribute="bottom" constant="5" id="q4D-8d-JZ8"/>
-                                <constraint firstItem="oRg-rP-BVf" firstAttribute="leading" secondItem="px9-Xy-Z84" secondAttribute="trailing" constant="10" id="q9F-XT-XtV"/>
-                                <constraint firstItem="oRg-rP-BVf" firstAttribute="leading" secondItem="TPs-is-j3A" secondAttribute="trailing" constant="10" id="upx-I1-9gr"/>
                                 <constraint firstItem="px9-Xy-Z84" firstAttribute="top" secondItem="nEv-Lk-jCJ" secondAttribute="top" constant="5" id="wYX-Sk-G0g"/>
                             </constraints>
                         </view>
