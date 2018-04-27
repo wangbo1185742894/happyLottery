@@ -22,6 +22,7 @@
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewDisBottom" destination="x4K-XD-EBn" id="90f-Ue-dar"/>
                 <outlet property="viewDisTop" destination="M88-JC-La9" id="GGK-bP-sk4"/>
+                <outlet property="yuyueBtn" destination="csZ-HW-1KG" id="E9I-lq-3E0"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -34,16 +35,16 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="csZ-HW-1KG">
                             <rect key="frame" x="280" y="10" width="75" height="30"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" red="0.067504443230000002" green="0.78096091749999996" blue="0.57203906770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="75" id="VPQ-tf-GGE"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <state key="normal" title="预约" backgroundImage="yuanjiaowukuangselect.png">
+                            <state key="normal" title="预约">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
-                            <state key="disabled" backgroundImage="yuanjiaowukuangselect.png">
+                            <state key="disabled">
                                 <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -255,6 +256,5 @@
         <image name="smartfollow_sub_press.png" width="16" height="16"/>
         <image name="touzhubeishujia.png" width="22" height="22"/>
         <image name="touzhubeishujian.png" width="22" height="22"/>
-        <image name="yuanjiaowukuangselect.png" width="81" height="27"/>
     </resources>
 </document>
