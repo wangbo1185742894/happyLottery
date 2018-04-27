@@ -74,7 +74,11 @@
     }else{
         self.viewDisTop.constant = 64;
         self.viewDisBottom.constant = 0;
-    } self.labNumBetCount.adjustsFontSizeToFitWidth = YES;
+    }
+     if ([Utility isIOS11After]) {
+        self.automaticallyAdjustsScrollViewInsets = NO; // tableView 莫名其妙  contentOffset.y 成-64了  MMP
+    }
+    self.labNumBetCount.adjustsFontSizeToFitWidth = YES;
     self.labMaxJiangjie.adjustsFontSizeToFitWidth = YES;
     [self.view layoutIfNeeded];
     [self setChuanfa];

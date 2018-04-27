@@ -25,11 +25,22 @@
 
 - (void) viewDidLoad {
     [super viewDidLoad];
-    if ([self isIphoneX]) {
-        viewDisTop.constant = 88;
+    if ([self.lotteryDetailDic[@"Type"] integerValue] == 5) {
+        if ([self isIphoneX]) {
+            viewDisTop.constant =44;
+        }else{
+            viewDisTop.constant = 20;
+        }
     }else{
-        viewDisTop.constant = 64;
+        if ([self isIphoneX]) {
+            viewDisTop.constant = 88;
+        }else{
+            viewDisTop.constant = 64;
+        }
     }
+
+    
+
     // Do any additional setup after loading the view from its nib.
     self.title = [NSString stringWithFormat: @"%@%@", self.lotteryDetailDic[@"Name"], TextInsturction];
     [self showLoadingViewWithText: TextLoading];
