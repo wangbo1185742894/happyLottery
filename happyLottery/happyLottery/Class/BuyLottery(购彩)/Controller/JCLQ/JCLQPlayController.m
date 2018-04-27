@@ -90,8 +90,8 @@ typedef enum : NSUInteger {
     self.tabPlayList.delegate = self;
     
     self.tabPlayList.dataSource = self;
-    self.tabPlayList.rowHeight = 100;
-    self.tabPlayList.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    
     self.tabPlayList.bounces = NO;
     [self.tabPlayList reloadData];
     self.openRow = [NSMutableArray arrayWithCapacity:0];
@@ -682,11 +682,16 @@ typedef enum : NSUInteger {
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    UILabel *bottomLine = [[UILabel alloc] initWithFrame:CGRectMake(0, 99.5, CGRectGetWidth(cell.frame), SEPHEIGHT)];
-    bottomLine.backgroundColor = SEPCOLOR;
-    [cell addSubview:bottomLine];
+
     return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if ([transaction.playType isEqualToString:@"JCLQHHGG"]) {
+        return 120;
+    }else{
+        return 100;
+    }
 }
 - (NotCanBuyType)matchCanBuy:(JCLQMatchModel *)_match{
     

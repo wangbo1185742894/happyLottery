@@ -105,7 +105,7 @@
 }
 
 -(void)getLeaArray{
-    [self showLoadingText:@"正在请求数据"];
+    [self showLoadingText:@"正在加载"];
     [self.lotteryMan getJczqLeague:nil];
     
 }
