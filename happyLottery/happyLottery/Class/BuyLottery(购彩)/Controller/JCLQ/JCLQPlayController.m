@@ -58,6 +58,7 @@ typedef enum : NSUInteger {
 @property(strong,nonatomic) NSString *curActivePlayType;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewDisTop;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnYuyue;
 @property(strong,nonatomic)NSMutableArray *openRow;
 @property(strong,nonatomic)NSMutableArray *profiles;
 @property(strong,nonatomic)NSMutableArray *allTimeDate;
@@ -106,6 +107,7 @@ typedef enum : NSUInteger {
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(cleanAllSelect) name:@"NSNotificationDeleteAll" object:nil];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(tabViewRefreshData:) name:@"NSNotificationCenterTouzhuReloadData" object:nil];
+    self.btnYuyue.layer.cornerRadius = 5;
 }
 
 - (void) optionRightButtonAction {
