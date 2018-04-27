@@ -116,7 +116,7 @@ static NSString * const reuseIdentifier = @"LotteryAreaViewCell";
 
 #pragma mark <UICollectionViewDelegate>
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake(CGRectGetWidth([UIScreen mainScreen].bounds)/rowNumber,115);
+    return CGSizeMake(CGRectGetWidth([UIScreen mainScreen].bounds)/rowNumber,125);
     
 //    return CGSizeMake(125, 115);
 }
