@@ -509,7 +509,6 @@
 		2D7B133B204E24AA0035AE89 /* ballWhiteBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D7B133A204E24AA0035AE89 /* ballWhiteBG.png */; };
 		2D7B1346204E258B0035AE89 /* machine-selection@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D7B1344204E258A0035AE89 /* machine-selection@3x.png */; };
 		2D7B1347204E258B0035AE89 /* machine-selection@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D7B1345204E258A0035AE89 /* machine-selection@2x.png */; };
-		2D7B134B204E2A330035AE89 /* DLTTouZhuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D7B1348204E2A310035AE89 /* DLTTouZhuViewController.xib */; };
 		2D7B134C204E2A330035AE89 /* DLTTouZhuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B134A204E2A320035AE89 /* DLTTouZhuViewController.m */; };
 		2D7B134F204E34D70035AE89 /* empty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D7B134D204E34D60035AE89 /* empty@2x.png */; };
 		2D7B1350204E34D70035AE89 /* empty@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D7B134E204E34D70035AE89 /* empty@3x.png */; };
@@ -955,7 +954,6 @@
 		F95C7EB22071D5ED005990F5 /* DLTPlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F95C7EB12071D5ED005990F5 /* DLTPlayViewController.xib */; };
 		F95C7EEE2071DA89005990F5 /* SSQPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F95C7EEB2071DA88005990F5 /* SSQPlayViewController.m */; };
 		F95C7EEF2071DA89005990F5 /* SSQPlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F95C7EED2071DA89005990F5 /* SSQPlayViewController.xib */; };
-		F95C7EF32071DAD5005990F5 /* SSQTouZhuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F95C7EF12071DAD4005990F5 /* SSQTouZhuViewController.xib */; };
 		F95C7EF42071DAD5005990F5 /* SSQTouZhuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F95C7EF22071DAD4005990F5 /* SSQTouZhuViewController.m */; };
 		F95C7FEF2071F178005990F5 /* ZHDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F95C7FEC2071F177005990F5 /* ZHDetailViewController.m */; };
 		F95C7FF02071F178005990F5 /* ZHDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F95C7FED2071F178005990F5 /* ZHDetailViewController.xib */; };
@@ -966,6 +964,8 @@
 		F9632F53200C8CC100F69D23 /* arrowdown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9632F51200C8CC000F69D23 /* arrowdown@2x.png */; };
 		F9632F57200C9A8B00F69D23 /* IntegeralChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9632F55200C9A8B00F69D23 /* IntegeralChangeViewController.m */; };
 		F9632F58200C9A8B00F69D23 /* IntegeralChangeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9632F56200C9A8B00F69D23 /* IntegeralChangeViewController.xib */; };
+		F96436E3209308DA00145F1C /* SSQTouZhuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F96436E2209308DA00145F1C /* SSQTouZhuViewController.xib */; };
+		F96436E5209308E300145F1C /* DLTTouZhuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F96436E4209308E300145F1C /* DLTTouZhuViewController.xib */; };
 		F9664BA92004D64A000A27CA /* bjCoupon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9664BA52004D649000A27CA /* bjCoupon@3x.png */; };
 		F9664BAA2004D64A000A27CA /* bjCoupon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9664BA62004D64A000A27CA /* bjCoupon@2x.png */; };
 		F96658F41FF0D26A001DE8B9 /* BankCard.m in Sources */ = {isa = PBXBuildFile; fileRef = F96658F31FF0D26A001DE8B9 /* BankCard.m */; };
@@ -1937,7 +1937,6 @@
 		2D7B133A204E24AA0035AE89 /* ballWhiteBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ballWhiteBG.png; sourceTree = "<group>"; };
 		2D7B1344204E258A0035AE89 /* machine-selection@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "machine-selection@3x.png"; sourceTree = "<group>"; };
 		2D7B1345204E258A0035AE89 /* machine-selection@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "machine-selection@2x.png"; sourceTree = "<group>"; };
-		2D7B1348204E2A310035AE89 /* DLTTouZhuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DLTTouZhuViewController.xib; sourceTree = "<group>"; };
 		2D7B1349204E2A320035AE89 /* DLTTouZhuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLTTouZhuViewController.h; sourceTree = "<group>"; };
 		2D7B134A204E2A320035AE89 /* DLTTouZhuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLTTouZhuViewController.m; sourceTree = "<group>"; };
 		2D7B134D204E34D60035AE89 /* empty@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty@2x.png"; sourceTree = "<group>"; };
@@ -2560,7 +2559,6 @@
 		F95C7EEC2071DA89005990F5 /* SSQPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSQPlayViewController.h; sourceTree = "<group>"; };
 		F95C7EED2071DA89005990F5 /* SSQPlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SSQPlayViewController.xib; sourceTree = "<group>"; };
 		F95C7EF02071DAC5005990F5 /* SSQTouZhuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSQTouZhuViewController.h; sourceTree = "<group>"; };
-		F95C7EF12071DAD4005990F5 /* SSQTouZhuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SSQTouZhuViewController.xib; sourceTree = "<group>"; };
 		F95C7EF22071DAD4005990F5 /* SSQTouZhuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSQTouZhuViewController.m; sourceTree = "<group>"; };
 		F95C7FEC2071F177005990F5 /* ZHDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHDetailViewController.m; sourceTree = "<group>"; };
 		F95C7FED2071F178005990F5 /* ZHDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZHDetailViewController.xib; sourceTree = "<group>"; };
@@ -2574,6 +2572,8 @@
 		F9632F54200C9A8B00F69D23 /* IntegeralChangeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntegeralChangeViewController.h; sourceTree = "<group>"; };
 		F9632F55200C9A8B00F69D23 /* IntegeralChangeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntegeralChangeViewController.m; sourceTree = "<group>"; };
 		F9632F56200C9A8B00F69D23 /* IntegeralChangeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntegeralChangeViewController.xib; sourceTree = "<group>"; };
+		F96436E2209308DA00145F1C /* SSQTouZhuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SSQTouZhuViewController.xib; sourceTree = "<group>"; };
+		F96436E4209308E300145F1C /* DLTTouZhuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DLTTouZhuViewController.xib; sourceTree = "<group>"; };
 		F9664BA52004D649000A27CA /* bjCoupon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bjCoupon@3x.png"; sourceTree = "<group>"; };
 		F9664BA62004D64A000A27CA /* bjCoupon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bjCoupon@2x.png"; sourceTree = "<group>"; };
 		F96658F21FF0D26A001DE8B9 /* BankCard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BankCard.h; path = "happyLottery/Class/LotteryMine(我的)/Controller/personnalSet/BankCard.h"; sourceTree = SOURCE_ROOT; };
@@ -3520,12 +3520,13 @@
 		2D7B1292204D37BD0035AE89 /* DLT */ = {
 			isa = PBXGroup;
 			children = (
+				F96436E4209308E300145F1C /* DLTTouZhuViewController.xib */,
+				F96436E2209308DA00145F1C /* SSQTouZhuViewController.xib */,
 				F95C7FEE2071F178005990F5 /* ZHDetailViewController.h */,
 				F95C7FEC2071F177005990F5 /* ZHDetailViewController.m */,
 				F95C7FED2071F178005990F5 /* ZHDetailViewController.xib */,
 				F95C7EF02071DAC5005990F5 /* SSQTouZhuViewController.h */,
 				F95C7EF22071DAD4005990F5 /* SSQTouZhuViewController.m */,
-				F95C7EF12071DAD4005990F5 /* SSQTouZhuViewController.xib */,
 				F95C7EEC2071DA89005990F5 /* SSQPlayViewController.h */,
 				F95C7EEB2071DA88005990F5 /* SSQPlayViewController.m */,
 				F95C7EED2071DA89005990F5 /* SSQPlayViewController.xib */,
@@ -3538,7 +3539,6 @@
 				F95C7EAC2071D5CB005990F5 /* ZhuiHaoInfoViewController.xib */,
 				2D7B1349204E2A320035AE89 /* DLTTouZhuViewController.h */,
 				2D7B134A204E2A320035AE89 /* DLTTouZhuViewController.m */,
-				2D7B1348204E2A310035AE89 /* DLTTouZhuViewController.xib */,
 				2D7B1300204D45830035AE89 /* LotteryWinHistoryHeadView.h */,
 				2D7B12FF204D45830035AE89 /* LotteryWinHistoryHeadView.m */,
 				2D7B1301204D45840035AE89 /* LotteryWinHistoryHeadView.xib */,
@@ -5630,6 +5630,7 @@
 				F928C6851FF48BE4001F1A32 /* bj_@3x.png in Resources */,
 				F97D82EE206B2EC600721336 /* zhushoubg@3x.png in Resources */,
 				F90FCD561FF34D1C00BD807C /* MyRedPacketViewController.xib in Resources */,
+				F96436E5209308E300145F1C /* DLTTouZhuViewController.xib in Resources */,
 				F924BAA81FE252CF00830BF4 /* captcha@2x.png in Resources */,
 				2D8CC01A1FF4B62100CC367F /* WBHomeYuceListCell.xib in Resources */,
 				2D5171E7200C72C100C3CD7F /* icon_mingzhong_@3x.png in Resources */,
@@ -6217,7 +6218,6 @@
 				F9F6CAA01FF5D6B100A49F71 /* inform@2x.png in Resources */,
 				F9F6CAA61FF5D80900A49F71 /* SystemSetViewController.xib in Resources */,
 				2D0EEA7B2012CEF900B0769C /* HomeJumpViewController.xib in Resources */,
-				2D7B134B204E2A330035AE89 /* DLTTouZhuViewController.xib in Resources */,
 				F9C4EED92020897D00CDCDBA /* logo120@3x.png in Resources */,
 				2D4B1E951FDF7BD20034B708 /* NewsListCell.xib in Resources */,
 				F97FD9CA2003026300B35A7C /* inputbox@3x.png in Resources */,
@@ -6265,7 +6265,6 @@
 				F924BAA91FE252CF00830BF4 /* stick@2x.png in Resources */,
 				2D7B12F2204D3C280035AE89 /* LotteryWinNumHistoryViewController.xib in Resources */,
 				2D0EEA9C201582C300B0769C /* yuce_detail@2x.png in Resources */,
-				F95C7EF32071DAD5005990F5 /* SSQTouZhuViewController.xib in Resources */,
 				F9B5D99B2060A9DE00C9F6DC /* flag424@2x.png in Resources */,
 				2D7B136F204E5F450035AE89 /* dltbutton-default@2x.png in Resources */,
 				2D811A9E207DDBED0069601C /* basketball@3x.png in Resources */,
@@ -6332,6 +6331,7 @@
 				F9330AAD2068DF73005BFF0B /* Championship@2x.png in Resources */,
 				F9B5D98B2060A9DE00C9F6DC /* flag409@2x.png in Resources */,
 				2D4B1E771FDF684E0034B708 /* home_defealt@2x.png in Resources */,
+				F96436E3209308DA00145F1C /* SSQTouZhuViewController.xib in Resources */,
 				F9705EA9207B58A900E25E4E /* LotteryAreaViewCell.xib in Resources */,
 				2D7B135B204E3D700035AE89 /* bet@2x.png in Resources */,
 				2D8CBFD31FF3769F00CC367F /* YuCeSchemeCreateViewController.xib in Resources */,

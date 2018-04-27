@@ -87,7 +87,8 @@
     betCellDataDic[keySerializedFrameButtonDelete] = NSStringFromCGRect(buttonFrame);
     bet.betCellDataDic = betCellDataDic;
     bet.popViewCellHeight = totalHeight;
-    CGRect downLineFrame = CGRectMake(15, totalHeight , KscreenWidth - 2*15, SEPHEIGHT);
+    // 预约cell间隔条修改 lyw
+    CGRect downLineFrame = CGRectMake(15, 0 , KscreenWidth - 2*15, SEPHEIGHT);
     betCellDataDic[keyDownLine] = NSStringFromCGRect(downLineFrame);
     totalHeight += SEPHEIGHT;
     return totalHeight;

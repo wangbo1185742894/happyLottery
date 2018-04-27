@@ -13,6 +13,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.lotteryImageView.clipsToBounds = NO;
+    self.lotteryImageView.contentMode = UIViewContentModeScaleAspectFit;
 }
 
 //-(id)initWithFrame:(CGRect)frame{

@@ -12,29 +12,29 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="LotteryAreaViewCell" id="gTV-IL-0wX" customClass="LotteryAreaViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="125" height="115"/>
+            <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="125" height="115"/>
+                <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GF3-MY-u1k">
-                        <rect key="frame" x="39" y="7" width="47" height="47"/>
+                        <rect key="frame" x="39" y="17" width="47" height="47"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="47" id="ebL-cL-D4P"/>
                             <constraint firstAttribute="width" constant="47" id="zfi-6V-tiX"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v3Z-Gr-m08">
-                        <rect key="frame" x="11" y="70" width="103" height="18"/>
+                        <rect key="frame" x="11" y="80" width="103" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIm-aU-XX7">
-                        <rect key="frame" x="0.0" y="91" width="125" height="16"/>
+                        <rect key="frame" x="0.0" y="101" width="125" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <color key="textColor" red="0.82096517089999999" green="0.8209405541" blue="0.82095444200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -43,7 +43,7 @@
             <constraints>
                 <constraint firstItem="v3Z-Gr-m08" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="11" id="5Mh-OE-08K"/>
                 <constraint firstItem="v3Z-Gr-m08" firstAttribute="top" secondItem="GF3-MY-u1k" secondAttribute="bottom" constant="16" id="KOW-cT-Npl"/>
-                <constraint firstItem="GF3-MY-u1k" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="7" id="ciI-vb-vaP"/>
+                <constraint firstItem="GF3-MY-u1k" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="17" id="ciI-vb-vaP"/>
                 <constraint firstItem="GF3-MY-u1k" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="czT-aY-3vM"/>
                 <constraint firstAttribute="trailing" secondItem="WIm-aU-XX7" secondAttribute="trailing" id="fZn-7d-igk"/>
                 <constraint firstAttribute="trailing" secondItem="v3Z-Gr-m08" secondAttribute="trailing" constant="11" id="jIO-Y9-Rc8"/>
