@@ -39,7 +39,7 @@
 #import "MyOrderListViewController.h"
 
 #define KEYAPPVERSION @"appVersion"
-#define KEYCURAPPVERSION @"CFBundleShortVersionString"
+#define KEYCURAPPVERSION @"CFBundleVersion"
 
 #define KTimeJumpAfter 0.3
 
