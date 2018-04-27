@@ -59,24 +59,31 @@
                             <rect key="frame" x="0.0" y="120" width="320" height="50"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oRg-rP-BVf">
-                                    <rect key="frame" x="228" y="0.0" width="92" height="50"/>
+                                    <rect key="frame" x="235" y="10" width="75" height="30"/>
                                     <color key="backgroundColor" red="0.20288130639999999" green="0.77987009289999998" blue="0.57245916129999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="92" id="wnw-Bd-98j"/>
+                                        <constraint firstAttribute="height" constant="30" id="cUi-hi-MWj"/>
+                                        <constraint firstAttribute="width" constant="75" id="wnw-Bd-98j"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <state key="normal" title="确认预约">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <state key="highlighted" backgroundImage="whiteBackground.png">
                                         <color key="titleColor" red="0.60271793603897095" green="0.602699875831604" blue="0.60271012783050537" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="actionTouzhu:" destination="-1" eventType="touchUpInside" id="J1N-AN-pXY"/>
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="px9-Xy-Z84" userLabel="bounds">
-                                    <rect key="frame" x="10" y="5" width="208" height="20"/>
+                                    <rect key="frame" x="10" y="5" width="215" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="20" id="ThD-oa-BO8"/>
                                     </constraints>
@@ -85,7 +92,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPs-is-j3A" userLabel="Summary">
-                                    <rect key="frame" x="10" y="27" width="208" height="18"/>
+                                    <rect key="frame" x="10" y="27" width="215" height="18"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="18" id="6Ib-ct-c8W"/>
                                     </constraints>
@@ -96,10 +103,9 @@
                             </subviews>
                             <color key="backgroundColor" red="0.1450980392" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="bottom" secondItem="oRg-rP-BVf" secondAttribute="bottom" id="D9L-IT-A5t"/>
                                 <constraint firstAttribute="height" constant="50" id="HTg-Jd-gTj"/>
-                                <constraint firstItem="oRg-rP-BVf" firstAttribute="top" secondItem="nEv-Lk-jCJ" secondAttribute="top" id="Ldt-FV-ACH"/>
-                                <constraint firstAttribute="trailing" secondItem="oRg-rP-BVf" secondAttribute="trailing" id="LeX-zA-1fk"/>
+                                <constraint firstItem="oRg-rP-BVf" firstAttribute="top" secondItem="nEv-Lk-jCJ" secondAttribute="top" constant="10" id="Ldt-FV-ACH"/>
+                                <constraint firstAttribute="trailing" secondItem="oRg-rP-BVf" secondAttribute="trailing" constant="10" id="LeX-zA-1fk"/>
                                 <constraint firstItem="TPs-is-j3A" firstAttribute="leading" secondItem="nEv-Lk-jCJ" secondAttribute="leading" constant="10" id="WcF-bv-vfi"/>
                                 <constraint firstItem="px9-Xy-Z84" firstAttribute="leading" secondItem="nEv-Lk-jCJ" secondAttribute="leading" constant="10" id="bmg-y3-9iH"/>
                                 <constraint firstAttribute="bottom" secondItem="TPs-is-j3A" secondAttribute="bottom" constant="5" id="q4D-8d-JZ8"/>
