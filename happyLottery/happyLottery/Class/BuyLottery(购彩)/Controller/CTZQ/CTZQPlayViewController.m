@@ -123,6 +123,7 @@
     _selectedIndex = 0;
     _jiangQiView.hidden = YES;
     [self getCurrentRound];
+    _touzhuBtn.layer.cornerRadius = 5;
 }
 - (void)optionRightButtonAction{
 //    NSLog(@"haha");

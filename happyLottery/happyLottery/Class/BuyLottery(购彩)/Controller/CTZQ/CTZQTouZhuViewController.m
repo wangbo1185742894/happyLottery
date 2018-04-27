@@ -93,7 +93,7 @@
         //        [timeCountDownView startTimeCountdown:self.lottery.currentRound];
     }
     [timeCountDownView0 startTimeCountdown:self.lottery.currentRound];
-    
+    btnZigou.layer.cornerRadius = 5;
 }
 #pragma mark-
 - (void)checkIfNeedDan{

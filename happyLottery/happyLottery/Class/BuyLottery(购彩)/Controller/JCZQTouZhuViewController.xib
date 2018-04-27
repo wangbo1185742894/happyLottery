@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,6 +17,7 @@
                 <outlet property="labPrizeInfo" destination="mGP-od-XJJ" id="ByR-pL-kSL"/>
                 <outlet property="labZhuInfo" destination="Lkk-DG-d5Y" id="BRv-oB-h0O"/>
                 <outlet property="tabSelectedMatch" destination="A9M-oL-sYZ" id="ScV-Qk-BPl"/>
+                <outlet property="touzhuBtn" destination="0Nb-bW-hJu" id="jr4-L0-Djf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewBottom" destination="KNy-oP-xbW" id="nDV-Qa-eUa"/>
                 <outlet property="viewDisBottom" destination="vQ2-6N-VfB" id="crZ-d7-GpF"/>
@@ -73,12 +74,13 @@
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Nb-bW-hJu">
                             <rect key="frame" x="280" y="10" width="75" height="30"/>
+                            <color key="backgroundColor" red="0.066666666669999999" green="0.78039215689999997" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="5kR-sP-EMN"/>
                                 <constraint firstAttribute="width" constant="75" id="eNS-Gn-V9N"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <state key="normal" title="确认预约" backgroundImage="yuanjiaowukuangselect"/>
+                            <state key="normal" title="确认预约"/>
                             <connections>
                                 <action selector="actionTouzhu:" destination="-1" eventType="touchUpInside" id="g5l-cj-5sm"/>
                             </connections>
@@ -201,6 +203,5 @@
         <image name="fengkuangjingcai-zhenshitouzhu-xuanze.png" width="87" height="30"/>
         <image name="touzhusaishijia.png" width="22" height="22"/>
         <image name="yuanjiaowubiankuangnomal.png" width="81" height="27"/>
-        <image name="yuanjiaowukuangselect" width="45" height="23"/>
     </resources>
 </document>

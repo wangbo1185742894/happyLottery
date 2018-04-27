@@ -31,6 +31,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labPrizeInfo;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewDisTop;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewDisBottom;
+@property (weak, nonatomic) IBOutlet UIButton *touzhuBtn;
 
 @end
 
@@ -53,6 +54,7 @@
     [self setWBSelectView];
     [self setChuanfa];
     [self updataTouzhuInfo];
+    self.touzhuBtn.layer.cornerRadius = 5;
 }
 
 -(void)cleanMatch:(NSNotification*)notification{
