@@ -30,6 +30,7 @@
     UIView * gYJview;
     UIButton *playIntroduce;
     UIButton *selectGroup;
+    __weak IBOutlet UIButton *yuyueBtn;
 }
 @property (weak, nonatomic) IBOutlet SelectView *beiSelectView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewDisTop;
@@ -87,7 +88,7 @@
 //    [self setUpLeftBtn];
     [self initLable];
     self.transaction = [[GYJTransaction alloc]init];
-    
+    yuyueBtn.layer.cornerRadius = 5;
 }
 
 //自定义navigationBar

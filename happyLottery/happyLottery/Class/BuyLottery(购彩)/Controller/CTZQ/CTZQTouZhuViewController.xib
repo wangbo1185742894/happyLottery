@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -91,13 +91,13 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WSj-WW-qdF">
-                            <rect key="frame" x="322" y="88" width="70" height="29"/>
-                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <rect key="frame" x="322" y="88" width="75" height="30"/>
+                            <color key="backgroundColor" red="0.067504443230000002" green="0.78096091749999996" blue="0.57203906770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="70" id="fMe-wc-Nxh"/>
+                                <constraint firstAttribute="width" constant="75" id="fMe-wc-Nxh"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" title="确认预约" backgroundImage="yuanjiaowukuangselect"/>
+                            <state key="normal" title="确认预约"/>
                             <state key="highlighted" backgroundImage="whiteBackground.png"/>
                             <connections>
                                 <action selector="actionTouZhu:" destination="-1" eventType="touchUpInside" id="16C-oF-Sno"/>
@@ -152,7 +152,7 @@
                     <constraints>
                         <constraint firstItem="Qhx-3E-78X" firstAttribute="top" secondItem="SS0-Xa-Fst" secondAttribute="bottom" constant="8" id="0mp-PQ-K7a"/>
                         <constraint firstItem="SS0-Xa-Fst" firstAttribute="leading" secondItem="QtU-A5-4eq" secondAttribute="leading" constant="16" id="1fT-fS-0yi"/>
-                        <constraint firstAttribute="trailing" secondItem="WSj-WW-qdF" secondAttribute="trailing" constant="8" id="8kJ-3G-bxe"/>
+                        <constraint firstAttribute="trailing" secondItem="WSj-WW-qdF" secondAttribute="trailing" constant="3" id="8kJ-3G-bxe"/>
                         <constraint firstItem="DF6-OQ-fci" firstAttribute="leading" secondItem="QtU-A5-4eq" secondAttribute="leading" constant="16" id="9oQ-NN-J0E"/>
                         <constraint firstItem="WSj-WW-qdF" firstAttribute="leading" secondItem="DF6-OQ-fci" secondAttribute="trailing" id="D20-vW-gDE"/>
                         <constraint firstItem="753-RL-NJP" firstAttribute="top" secondItem="IMG-Y3-b2f" secondAttribute="bottom" constant="7" id="Ir5-9H-49h"/>
@@ -160,7 +160,7 @@
                         <constraint firstItem="WSj-WW-qdF" firstAttribute="top" secondItem="Qhx-3E-78X" secondAttribute="bottom" constant="7" id="NWC-po-ol7"/>
                         <constraint firstItem="IMG-Y3-b2f" firstAttribute="top" secondItem="QtU-A5-4eq" secondAttribute="top" id="T0n-fi-7NW"/>
                         <constraint firstItem="IMG-Y3-b2f" firstAttribute="leading" secondItem="QtU-A5-4eq" secondAttribute="leading" id="Uig-ZG-rgr"/>
-                        <constraint firstAttribute="bottom" secondItem="WSj-WW-qdF" secondAttribute="bottom" constant="8" id="WwU-rb-I89"/>
+                        <constraint firstAttribute="bottom" secondItem="WSj-WW-qdF" secondAttribute="bottom" constant="7" id="WwU-rb-I89"/>
                         <constraint firstAttribute="height" constant="125" id="a7X-bH-Dvz"/>
                         <constraint firstItem="Qhx-3E-78X" firstAttribute="leading" secondItem="QtU-A5-4eq" secondAttribute="leading" id="cmi-KV-7mn"/>
                         <constraint firstItem="jR4-3i-XsK" firstAttribute="leading" secondItem="QtU-A5-4eq" secondAttribute="leading" id="dD1-Pi-Ppr"/>
@@ -215,6 +215,5 @@
         <image name="fengkuangjingcai-zhenshitouzhu-weixuanze.png" width="87" height="30"/>
         <image name="fengkuangjingcai-zhenshitouzhu-xuanze.png" width="87" height="30"/>
         <image name="whiteBackground.png" width="58" height="21"/>
-        <image name="yuanjiaowukuangselect" width="45" height="23"/>
     </resources>
 </document>

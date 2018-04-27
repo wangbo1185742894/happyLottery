@@ -34,6 +34,7 @@
 
 @property (strong,nonatomic)JCFATransaction * transaction;
 
+@property (weak, nonatomic) IBOutlet UIButton *yuyueBtn;
 @property (weak, nonatomic) IBOutlet UILabel *fanganLabel;
 @property (weak, nonatomic) IBOutlet UILabel *touzhufangshiLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
@@ -74,7 +75,7 @@
 //    [self enableKeyboarderListener];
    
     [self ToolView:self.beiSelectView.labContent];
-   
+    self.yuyueBtn.layer.cornerRadius = 5;
 }
 
 

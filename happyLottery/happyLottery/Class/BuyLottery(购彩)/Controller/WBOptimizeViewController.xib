@@ -225,12 +225,13 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0wW-dI-x0x">
                             <rect key="frame" x="280" y="10" width="75" height="30"/>
+                            <color key="backgroundColor" red="0.066666666669999999" green="0.78039215689999997" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="75" id="AGb-OP-h3w"/>
                                 <constraint firstAttribute="height" constant="30" id="Xqs-yz-4ij"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <state key="normal" title="确认预约" backgroundImage="yuanjiaowukuangselect"/>
+                            <state key="normal" title="确认预约"/>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GfR-GM-uJn">
                             <rect key="frame" x="12" y="28" width="258" height="15"/>

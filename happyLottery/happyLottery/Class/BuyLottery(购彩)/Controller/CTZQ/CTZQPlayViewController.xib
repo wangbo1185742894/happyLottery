@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -58,13 +58,14 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="005-CV-Tfx">
-                                    <rect key="frame" x="240" y="9" width="72" height="35"/>
+                                    <rect key="frame" x="240" y="9" width="75" height="30"/>
+                                    <color key="backgroundColor" red="0.067504443230000002" green="0.78096091749999996" blue="0.57203906770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="72" id="bjA-X0-pwW"/>
-                                        <constraint firstAttribute="height" constant="35" id="xew-4u-0X3"/>
+                                        <constraint firstAttribute="width" constant="75" id="bjA-X0-pwW"/>
+                                        <constraint firstAttribute="height" constant="30" id="xew-4u-0X3"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <state key="normal" title="预约" backgroundImage="yuanjiaowukuangselect">
+                                    <state key="normal" title="预约">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                     <state key="disabled" backgroundImage="buttonBG_gray.png">
@@ -115,7 +116,7 @@
                                 <constraint firstItem="WjU-Cy-BPb" firstAttribute="top" secondItem="Lsb-z4-nnd" secondAttribute="top" constant="14" id="RPn-7N-gf9"/>
                                 <constraint firstItem="WjU-Cy-BPb" firstAttribute="leading" secondItem="Lsb-z4-nnd" secondAttribute="leading" constant="13" id="YSY-9q-1PL"/>
                                 <constraint firstItem="Q09-qg-2KY" firstAttribute="leading" secondItem="vD7-YJ-aYJ" secondAttribute="trailing" constant="13" id="axJ-Jp-ABQ"/>
-                                <constraint firstAttribute="trailing" secondItem="005-CV-Tfx" secondAttribute="trailing" constant="8" id="i2m-FT-RzS"/>
+                                <constraint firstAttribute="trailing" secondItem="005-CV-Tfx" secondAttribute="trailing" constant="5" id="i2m-FT-RzS"/>
                                 <constraint firstItem="WjU-Cy-BPb" firstAttribute="leading" secondItem="Lsb-z4-nnd" secondAttribute="leading" constant="13" id="jFN-Q7-cb1"/>
                                 <constraint firstItem="R5K-fr-Rln" firstAttribute="leading" secondItem="Lsb-z4-nnd" secondAttribute="leading" id="jcr-Bx-Wzg"/>
                                 <constraint firstAttribute="height" constant="49" id="qEb-p7-7y7"/>
@@ -312,6 +313,5 @@
         <image name="button_default.png" width="105" height="30"/>
         <image name="empty.png" width="15" height="16"/>
         <image name="whiteBackground.png" width="58" height="21"/>
-        <image name="yuanjiaowukuangselect" width="45" height="23"/>
     </resources>
 </document>

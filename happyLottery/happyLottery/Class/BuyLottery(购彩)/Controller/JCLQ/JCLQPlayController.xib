@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JCLQPlayController">
             <connections>
+                <outlet property="btnYuyue" destination="NPm-jl-qIn" id="8EU-8E-MC0"/>
                 <outlet property="labPlayInfo" destination="Juc-xX-PIj" id="1HP-qD-RE5"/>
                 <outlet property="tabPlayList" destination="3V2-YH-44n" id="tfa-mU-eaz"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -37,14 +38,14 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NPm-jl-qIn">
-                            <rect key="frame" x="320" y="7" width="72" height="35"/>
-                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <rect key="frame" x="320" y="7" width="75" height="30"/>
+                            <color key="backgroundColor" red="0.067504443230000002" green="0.78096091749999996" blue="0.57203906770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="35" id="2dk-Sc-BV2"/>
-                                <constraint firstAttribute="width" constant="72" id="xTL-42-Odk"/>
+                                <constraint firstAttribute="height" constant="30" id="2dk-Sc-BV2"/>
+                                <constraint firstAttribute="width" constant="75" id="xTL-42-Odk"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" title="预约投注" backgroundImage="button.png">
+                            <state key="normal" title="预约投注">
                                 <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
@@ -89,7 +90,7 @@
                         <constraint firstItem="Juc-xX-PIj" firstAttribute="top" secondItem="b0u-ys-U4w" secondAttribute="top" constant="5" id="L4y-Bx-saT"/>
                         <constraint firstItem="LBW-XU-gUC" firstAttribute="top" secondItem="b0u-ys-U4w" secondAttribute="top" constant="8" id="Svu-ai-LRF"/>
                         <constraint firstItem="xpI-S0-dYL" firstAttribute="top" secondItem="dy4-V4-D96" secondAttribute="bottom" constant="10" id="VDh-eW-dva"/>
-                        <constraint firstAttribute="trailing" secondItem="NPm-jl-qIn" secondAttribute="trailing" constant="8" id="WoS-0G-tle"/>
+                        <constraint firstAttribute="trailing" secondItem="NPm-jl-qIn" secondAttribute="trailing" constant="5" id="WoS-0G-tle"/>
                         <constraint firstItem="xpI-S0-dYL" firstAttribute="leading" secondItem="b0u-ys-U4w" secondAttribute="leading" constant="10" id="X6c-3K-Fev"/>
                         <constraint firstItem="Juc-xX-PIj" firstAttribute="leading" secondItem="LBW-XU-gUC" secondAttribute="trailing" constant="10" id="dKJ-ol-HjK"/>
                         <constraint firstAttribute="height" constant="50" id="lXN-Lq-jjC"/>
@@ -121,7 +122,6 @@
         </view>
     </objects>
     <resources>
-        <image name="button.png" width="357" height="43"/>
         <image name="matchcleanall.png" width="22" height="22"/>
         <image name="whiteBackground.png" width="58" height="21"/>
     </resources>
