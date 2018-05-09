@@ -123,7 +123,7 @@ typedef enum EarningsType{
 - (void)getJclqTicketOrderDetail:(NSDictionary *)paraDic;//查询订单详情(竞彩篮球)
 
 #pragma mark 发单跟单
-- (void)listRecommend:(NSDictionary *)infoDic categoryCode:(NSString *)categoryCode;//获取牛人，红人，红单榜
+- (void)listRecommendPer:(NSDictionary *)infoDic categoryCode:(NSString *)categoryCode;//获取牛人，红人，红单榜
 
 @end
 

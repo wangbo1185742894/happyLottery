@@ -1336,7 +1336,7 @@
 
 #pragma mark 发单跟单
 
-- (void)listRecommend:(NSDictionary *)infoDic categoryCode:(NSString *)categoryCode{
+- (void)listRecommendPer:(NSDictionary *)infoDic categoryCode:(NSString *)categoryCode{
     void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
     {
         SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
