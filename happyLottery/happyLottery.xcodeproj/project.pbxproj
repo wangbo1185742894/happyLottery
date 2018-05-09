@@ -176,6 +176,17 @@
 		2D0EEAB22015DCFC00B0769C /* ad_home2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D0EEAAC2015DCFB00B0769C /* ad_home2@2x.png */; };
 		2D0EEAB52015F79800B0769C /* ad_home1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D0EEAB32015F79700B0769C /* ad_home1@3x.png */; };
 		2D0EEAB62015F79800B0769C /* ad_home1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D0EEAB42015F79700B0769C /* ad_home1@2x.png */; };
+		2D16600620A2C9F900C1C7E7 /* MyPostSchemeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D16600420A2C9F900C1C7E7 /* MyPostSchemeViewController.m */; };
+		2D16600720A2C9F900C1C7E7 /* MyPostSchemeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D16600520A2C9F900C1C7E7 /* MyPostSchemeViewController.xib */; };
+		2D16600B20A2CA1A00C1C7E7 /* MyAttendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D16600920A2CA1A00C1C7E7 /* MyAttendViewController.m */; };
+		2D16600C20A2CA1A00C1C7E7 /* MyAttendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D16600A20A2CA1A00C1C7E7 /* MyAttendViewController.xib */; };
+		2D16601020A2CA3400C1C7E7 /* MyHemaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D16600E20A2CA3400C1C7E7 /* MyHemaiViewController.m */; };
+		2D16601120A2CA3400C1C7E7 /* MyHemaiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D16600F20A2CA3400C1C7E7 /* MyHemaiViewController.xib */; };
+		2D16601520A2CF6700C1C7E7 /* PostSchemeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D16601320A2CF6700C1C7E7 /* PostSchemeViewCell.m */; };
+		2D16601620A2CF6700C1C7E7 /* PostSchemeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D16601420A2CF6700C1C7E7 /* PostSchemeViewCell.xib */; };
+		2D16601A20A2D4DF00C1C7E7 /* FollowSchemeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D16601820A2D4DE00C1C7E7 /* FollowSchemeViewCell.m */; };
+		2D16601B20A2D4DF00C1C7E7 /* FollowSchemeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D16601920A2D4DE00C1C7E7 /* FollowSchemeViewCell.xib */; };
+		2D16601E20A2DF3600C1C7E7 /* FollowListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D16601D20A2DF3600C1C7E7 /* FollowListModel.m */; };
 		2D205FE91FFC6E950086E266 /* WBBifenZhiboViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D205FE61FFC6E940086E266 /* WBBifenZhiboViewController.xib */; };
 		2D205FEA1FFC6E950086E266 /* WBBifenZhiboViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D205FE71FFC6E940086E266 /* WBBifenZhiboViewController.m */; };
 		2D205FED1FFC6F680086E266 /* BiFenZhiboModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D205FEC1FFC6F680086E266 /* BiFenZhiboModel.m */; };
@@ -1501,6 +1512,23 @@
 		2D0EEAAC2015DCFB00B0769C /* ad_home2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ad_home2@2x.png"; sourceTree = "<group>"; };
 		2D0EEAB32015F79700B0769C /* ad_home1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ad_home1@3x.png"; sourceTree = "<group>"; };
 		2D0EEAB42015F79700B0769C /* ad_home1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ad_home1@2x.png"; sourceTree = "<group>"; };
+		2D16600320A2C9F900C1C7E7 /* MyPostSchemeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyPostSchemeViewController.h; sourceTree = "<group>"; };
+		2D16600420A2C9F900C1C7E7 /* MyPostSchemeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyPostSchemeViewController.m; sourceTree = "<group>"; };
+		2D16600520A2C9F900C1C7E7 /* MyPostSchemeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPostSchemeViewController.xib; sourceTree = "<group>"; };
+		2D16600820A2CA1A00C1C7E7 /* MyAttendViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyAttendViewController.h; sourceTree = "<group>"; };
+		2D16600920A2CA1A00C1C7E7 /* MyAttendViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyAttendViewController.m; sourceTree = "<group>"; };
+		2D16600A20A2CA1A00C1C7E7 /* MyAttendViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyAttendViewController.xib; sourceTree = "<group>"; };
+		2D16600D20A2CA3400C1C7E7 /* MyHemaiViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyHemaiViewController.h; sourceTree = "<group>"; };
+		2D16600E20A2CA3400C1C7E7 /* MyHemaiViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyHemaiViewController.m; sourceTree = "<group>"; };
+		2D16600F20A2CA3400C1C7E7 /* MyHemaiViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyHemaiViewController.xib; sourceTree = "<group>"; };
+		2D16601220A2CF6700C1C7E7 /* PostSchemeViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostSchemeViewCell.h; sourceTree = "<group>"; };
+		2D16601320A2CF6700C1C7E7 /* PostSchemeViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostSchemeViewCell.m; sourceTree = "<group>"; };
+		2D16601420A2CF6700C1C7E7 /* PostSchemeViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostSchemeViewCell.xib; sourceTree = "<group>"; };
+		2D16601720A2D4DE00C1C7E7 /* FollowSchemeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowSchemeViewCell.h; sourceTree = "<group>"; };
+		2D16601820A2D4DE00C1C7E7 /* FollowSchemeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowSchemeViewCell.m; sourceTree = "<group>"; };
+		2D16601920A2D4DE00C1C7E7 /* FollowSchemeViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FollowSchemeViewCell.xib; sourceTree = "<group>"; };
+		2D16601C20A2DF3600C1C7E7 /* FollowListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FollowListModel.h; sourceTree = "<group>"; };
+		2D16601D20A2DF3600C1C7E7 /* FollowListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FollowListModel.m; sourceTree = "<group>"; };
 		2D205FE61FFC6E940086E266 /* WBBifenZhiboViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WBBifenZhiboViewController.xib; sourceTree = "<group>"; };
 		2D205FE71FFC6E940086E266 /* WBBifenZhiboViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBBifenZhiboViewController.m; sourceTree = "<group>"; };
 		2D205FE81FFC6E950086E266 /* WBBifenZhiboViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBBifenZhiboViewController.h; sourceTree = "<group>"; };
@@ -4263,6 +4291,15 @@
 				F9C3BA1520088D0100916F3C /* FeedBackHistoryViewController.m */,
 				F9C3BA1620088D0100916F3C /* FeedBackHistoryViewController.xib */,
 				F92D03E32005F0FA00C26E7A /* MyHelp */,
+				2D16600320A2C9F900C1C7E7 /* MyPostSchemeViewController.h */,
+				2D16600420A2C9F900C1C7E7 /* MyPostSchemeViewController.m */,
+				2D16600520A2C9F900C1C7E7 /* MyPostSchemeViewController.xib */,
+				2D16600820A2CA1A00C1C7E7 /* MyAttendViewController.h */,
+				2D16600920A2CA1A00C1C7E7 /* MyAttendViewController.m */,
+				2D16600A20A2CA1A00C1C7E7 /* MyAttendViewController.xib */,
+				2D16600D20A2CA3400C1C7E7 /* MyHemaiViewController.h */,
+				2D16600E20A2CA3400C1C7E7 /* MyHemaiViewController.m */,
+				2D16600F20A2CA3400C1C7E7 /* MyHemaiViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -4284,6 +4321,8 @@
 				2D5171B92008545F00C3CD7F /* ChannelModel.m */,
 				F9FDFADF2011C9750029ACC7 /* Notice.h */,
 				F9FDFAE02011C9750029ACC7 /* Notice.m */,
+				2D16601C20A2DF3600C1C7E7 /* FollowListModel.h */,
+				2D16601D20A2DF3600C1C7E7 /* FollowListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4291,6 +4330,9 @@
 		2DDEDBFA1FD4DBB5007AEBF7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2D16601720A2D4DE00C1C7E7 /* FollowSchemeViewCell.h */,
+				2D16601820A2D4DE00C1C7E7 /* FollowSchemeViewCell.m */,
+				2D16601920A2D4DE00C1C7E7 /* FollowSchemeViewCell.xib */,
 				2D36177520637BE7003093F9 /* WinResultTableCell.h */,
 				2D36177620637BE8003093F9 /* WinResultTableCell.m */,
 				2D36177720637BE9003093F9 /* WinResultTableCell.xib */,
@@ -4344,6 +4386,9 @@
 				F9C3BA26200893D600916F3C /* FeedBackHistoryTableViewCell.h */,
 				F9C3BA27200893D600916F3C /* FeedBackHistoryTableViewCell.m */,
 				F9C3BA28200893D600916F3C /* FeedBackHistoryTableViewCell.xib */,
+				2D16601220A2CF6700C1C7E7 /* PostSchemeViewCell.h */,
+				2D16601320A2CF6700C1C7E7 /* PostSchemeViewCell.m */,
+				2D16601420A2CF6700C1C7E7 /* PostSchemeViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -5694,6 +5739,7 @@
 				F9281D1B201979BE00C42A37 /* one_redpacket@2x.png in Resources */,
 				F9B5D9932060A9DE00C9F6DC /* flag416@2x.png in Resources */,
 				2D5171F3200C72F300C3CD7F /* btn_change_@2x.png in Resources */,
+				2D16601B20A2D4DF00C1C7E7 /* FollowSchemeViewCell.xib in Resources */,
 				F9B5D9912060A9DE00C9F6DC /* flag414@2x.png in Resources */,
 				F9705E19207A0DAE00E25E4E /* JCLQPlayController.xib in Resources */,
 				F9D9F2A91FF22640006434DC /* CashAndIntegrationWaterViewController.xib in Resources */,
@@ -5892,6 +5938,7 @@
 				F999275D2003223000023F8F /* bj_overdue@2x.png in Resources */,
 				2D4B1E6D1FDF684E0034B708 /* duibiao@3x.png in Resources */,
 				2D0E23EE2019A7480098DA40 /* feedback@3x.png in Resources */,
+				2D16601620A2CF6700C1C7E7 /* PostSchemeViewCell.xib in Resources */,
 				2D628B2B1FECA9C40013D0E1 /* touzhusaishijia@2x.png in Resources */,
 				2D03F19F205A23B400C81BEF /* footerball@2x.png in Resources */,
 				2D23487E2049422D005AE1F2 /* bunsoptimseleced@3x.png in Resources */,
@@ -5949,6 +5996,7 @@
 				2D03F1F42060B51800C81BEF /* ctzq_renxuanjiuchang.html in Resources */,
 				2D0EEAA62015D47400B0769C /* coupon@3x.png in Resources */,
 				2D4B1EA21FDFC5F30034B708 /* NewsTableViewCell.xib in Resources */,
+				2D16601120A2CA3400C1C7E7 /* MyHemaiViewController.xib in Resources */,
 				2D5171EB200C72DA00C3CD7F /* icon_weizhong_@2x.png in Resources */,
 				2D08A48C206CBDF1005AFF13 /* pic_zixun@3x.png in Resources */,
 				2D791C8B2091CB8900E455F5 /* LaunchViewController.xib in Resources */,
@@ -6257,6 +6305,7 @@
 				2D4B1EB41FDFCDAF0034B708 /* arrow_up@3x.png in Resources */,
 				F9F6CAA01FF5D6B100A49F71 /* inform@2x.png in Resources */,
 				F9F6CAA61FF5D80900A49F71 /* SystemSetViewController.xib in Resources */,
+				2D16600720A2C9F900C1C7E7 /* MyPostSchemeViewController.xib in Resources */,
 				2D0EEA7B2012CEF900B0769C /* HomeJumpViewController.xib in Resources */,
 				F9C4EED92020897D00CDCDBA /* logo120@3x.png in Resources */,
 				2D4B1E951FDF7BD20034B708 /* NewsListCell.xib in Resources */,
@@ -6293,6 +6342,7 @@
 				F94AA9E11FEB7B780021B980 /* weixin@3x.png in Resources */,
 				F90058ED1FF61AEC009C8E1C /* NoticeDetailViewController.xib in Resources */,
 				F9D7C55C2006276900415B4E /* FootBallPlayViewController.xib in Resources */,
+				2D16600C20A2CA1A00C1C7E7 /* MyAttendViewController.xib in Resources */,
 				F95BC7D320172AF7006D6243 /* redpacket_open@3x.png in Resources */,
 				F928C6861FF48BE4001F1A32 /* bj_@2x.png in Resources */,
 				2DE892AA2022B5D1008926A6 /* schemeticket@2x.png in Resources */,
@@ -6501,6 +6551,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D16601020A2CA3400C1C7E7 /* MyHemaiViewController.m in Sources */,
 				2DD2C50F204504AB005A18C4 /* WBOptimizeViewController.m in Sources */,
 				2D7B13B7204E87450035AE89 /* CTZQOrderProfile.m in Sources */,
 				2D7B132C204D4AF40035AE89 /* EXHeaderView.m in Sources */,
@@ -6589,6 +6640,7 @@
 				2D4B1E941FDF7BD20034B708 /* NewsListCell.m in Sources */,
 				F9705E55207A0DE800E25E4E /* TouZhuViewCell.m in Sources */,
 				2D8CBFEE1FF3771C00CC367F /* YCbetPlayTypes.m in Sources */,
+				2D16600B20A2CA1A00C1C7E7 /* MyAttendViewController.m in Sources */,
 				2D7B1323204D4ACE0035AE89 /* ExNumContainerView.m in Sources */,
 				2DA39EC42052393600A03FD1 /* OrderLotteryCateChooseView.m in Sources */,
 				F9F262B21FE8F4AE00C2E60F /* RSKImageCropViewController.m in Sources */,
@@ -6601,6 +6653,7 @@
 				2D7B1317204D49EE0035AE89 /* LotteryXHSection.m in Sources */,
 				2DDEDC351FD52178007AEBF7 /* AESUtility.m in Sources */,
 				2D0EEA862013216900B0769C /* ZhuiHaoStopPushVIew.m in Sources */,
+				2D16600620A2C9F900C1C7E7 /* MyPostSchemeViewController.m in Sources */,
 				2DDEDE721FD568C9007AEBF7 /* AFURLConnectionOperation.m in Sources */,
 				F9705E1A207A0DAE00E25E4E /* JCLQTouZhuController.m in Sources */,
 				F9B5DA6E2060BD2E00C9F6DC /* WCHomeGYJItemViewCell.m in Sources */,
@@ -6667,6 +6720,7 @@
 				2D628B4A1FECAE980013D0E1 /* JingCaiChaunFaSelectView.m in Sources */,
 				2D0EEAA12015A94A00B0769C /* YCSchemeViewCell.m in Sources */,
 				F95C7EAD2071D5CC005990F5 /* ZhuiHaoInfoViewController.m in Sources */,
+				2D16601520A2CF6700C1C7E7 /* PostSchemeViewCell.m in Sources */,
 				2D7B12F9204D3F110035AE89 /* LotteryXHProfile.m in Sources */,
 				2D7B13B2204E873D0035AE89 /* CTZQTransaction.m in Sources */,
 				F9FDFAE12011C9750029ACC7 /* Notice.m in Sources */,
@@ -6733,6 +6787,7 @@
 				2DDEDE6E1FD568C9007AEBF7 /* AFHTTPRequestOperationManager.m in Sources */,
 				F928C6A81FF4A268001F1A32 /* MyCouponTableViewCell.m in Sources */,
 				2DDEDC0B1FD4DBF1007AEBF7 /* DiscoverViewController.m in Sources */,
+				2D16601E20A2DF3600C1C7E7 /* FollowListModel.m in Sources */,
 				2D7B1309204D47670035AE89 /* BetsListPopViewCell.m in Sources */,
 				F98A603B206395EB008C3132 /* LotteryScheme.m in Sources */,
 				F9632F57200C9A8B00F69D23 /* IntegeralChangeViewController.m in Sources */,
@@ -6754,6 +6809,7 @@
 				2D0600271FFDCD9F009E7568 /* MJRefreshNormalHeader.m in Sources */,
 				2DDEDC4A1FD56849007AEBF7 /* Manager.m in Sources */,
 				2D8CBFF11FF3794700CC367F /* JCFATransaction.m in Sources */,
+				2D16601A20A2D4DF00C1C7E7 /* FollowSchemeViewCell.m in Sources */,
 				F94AA9D21FEB66FF0021B980 /* WithdrawalsViewController.m in Sources */,
 				2DDEDC1A1FD4DE97007AEBF7 /* Utility.m in Sources */,
 				2DDEDE711FD568C9007AEBF7 /* AFSecurityPolicy.m in Sources */,

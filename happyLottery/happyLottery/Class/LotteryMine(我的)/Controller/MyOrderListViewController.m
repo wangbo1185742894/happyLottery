@@ -196,7 +196,7 @@
             return;
         }
     }
-    self.tabBarController.selectedIndex = 3;
+    self.tabBarController.selectedIndex = 4;
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

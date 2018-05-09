@@ -7,8 +7,13 @@
 //
 
 #import "RecommendPerViewController.h"
+#import "OptionSelectedView.h"
+#import "JCLQPlayController.h"
+#import "JCZQPlayViewController.h"
 
-@interface RecommendPerViewController ()
+@interface RecommendPerViewController ()<OptionSelectedViewDelegate>{
+        OptionSelectedView *optionView;
+}
 
 @end
 
@@ -16,7 +21,33 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [self setRightBarItems];
+}
+
+-(void)setRightBarItems{
+    
+    UIBarButtonItem *itemQuery = [self creatBarItem:@"发起跟投" icon:@"" andFrame:CGRectMake(0, 10, 65, 25) andAction:@selector(optionRightButtonAction)];
+    self.navigationItem.rightBarButtonItems = @[itemQuery];
+}
+
+- (void) optionRightButtonAction {
+    //    if (isShowFLag) {
+    //        return;
+    //    }
+    
+    NSArray *titleArr = @[@" 竞猜篮球",
+                          @" 竞猜足球"];
+    CGFloat optionviewWidth = 100;
+    CGFloat optionviewCellheight = 38;
+    CGSize mainSize = [UIScreen mainScreen].bounds.size;
+    if (optionView == nil) {
+        optionView = [[OptionSelectedView alloc] initWithFrame:CGRectMake(mainSize.width - optionviewWidth, DisTop, optionviewWidth, optionviewCellheight * titleArr.count) andTitleArr:titleArr];
+    }else{
+        optionView.hidden = NO;
+    }
+    
+    optionView.delegate = self;
+    [self.view.window addSubview:optionView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,14 +55,17 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)optionDidSelacted:(OptionSelectedView *)optionSelectedView andIndex:(NSInteger)index{
+    if(index == 0){
+        JCZQPlayViewController * playViewVC = [[JCZQPlayViewController alloc]init];
+        playViewVC.hidesBottomBarWhenPushed = YES;
+        playViewVC.fromSchemeType = SchemeTypeFaqiGenDan;
+        [self.navigationController pushViewController:playViewVC animated:YES];
+    }else if(index == 1){
+        JCLQPlayController * playViewVC = [[JCLQPlayController alloc]init];
+        playViewVC.hidesBottomBarWhenPushed = YES;
+        playViewVC.fromSchemeType = SchemeTypeFaqiGenDan;
+        [self.navigationController pushViewController:playViewVC animated:YES];    }
 }
-*/
 
 @end

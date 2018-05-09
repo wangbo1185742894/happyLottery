@@ -13,7 +13,9 @@ typedef enum{//自购, 合买, 追号, 推荐
     SchemeTypeZigou = 0,
     SchemeTypeHemai = 1,
     SchemeTypeZhuihao = 2,
-    SchemeTypeTuijian = 3
+    SchemeTypeTuijian = 3,
+    SchemeTypeFaqiGenDan = 4,
+    SchemeTypeGenDan = 5
 }SchemeType;
 ////方案保密类型(secretType  int  完全公开,开奖后公开,跟单人公开,完全保密   自购时不填写该值)
 typedef enum{

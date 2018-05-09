@@ -55,11 +55,27 @@
 }
 
 
-
+/** * 自购 */
+//BUY_SELF("自购"),
+//
+///** * 追号 */
+//BUY_CHASE("追号"),
+//
+///** *合买 */
+//BUY_TOGETHER("合买"),
+//
+///** *推荐 */
+//BUY_REC("推荐"),
+//
+///** 发起跟单*/
+//BUY_INITIATE("发起跟单"),
+//
+///**　跟单　*/
+//BUY_FOLLOW("跟单");
 
 -(NSArray*)schemeTypes{
 
-    return  @[@"BUY_SELF",@"BUY_TOGETHER",@"BUY_CHASE",@"BUY_REC"];
+    return  @[@"BUY_SELF",@"BUY_TOGETHER",@"BUY_CHASE",@"BUY_REC",@"BUY_INITIATE",@"BUY_FOLLOW"];
 }
 ///** 完全公共 */
 //FULL_PUBLIC("完全公开"),

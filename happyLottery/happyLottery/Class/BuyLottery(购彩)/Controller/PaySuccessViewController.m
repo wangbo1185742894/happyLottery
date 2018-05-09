@@ -13,9 +13,11 @@
 #import "CTZQSchemeDetailViewController.h"
 #import "GYJSchemeDetailViewController.h"
 #import "JCLQSchemeDetailViewController.h"
+#import "MyPostSchemeViewController.h"
 
-@interface PaySuccessViewController ()
-
+@interface PaySuccessViewController ()<LotteryManagerDelegate>
+@property (weak, nonatomic) IBOutlet UIButton *btnPostScheme;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *btnHeightPostScheme;
 @end
 
 @implementation PaySuccessViewController
@@ -23,7 +25,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"预约支付";
-    
+    if(self.isShowFaDan){
+        self.btnHeightPostScheme.constant = 44;
+    }else{
+        self.btnHeightPostScheme.constant = 0;
+    }
+    self.lotteryMan.delegate = self;
     if (self.isMoni) {
         self.labChuPiaoimg.text = @"";
     }else{
@@ -78,6 +85,19 @@
 -(void)navigationBackToLastPage{
     [self.navigationController popToRootViewControllerAnimated:YES];
 
+}
+- (IBAction)actionPostScheme:(id)sender {
+    [self.lotteryMan initiateFollowScheme:@{@"schemeNo":self.schemeNO}];
+}
+- (void)initiateFollowScheme:(NSString *)resultStr errorMsg:(NSString *)msg{
+    if(resultStr != nil){
+        [self showPromptText:@"发单成功" hideAfterDelay:1.9];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        MyPostSchemeViewController *myPostVC = [[MyPostSchemeViewController alloc]init];
+        [self.navigationController pushViewController:myPostVC animated:YES];
+    }else{
+        [self showPromptText:msg hideAfterDelay:1.9];
+    }
 }
 
 @end

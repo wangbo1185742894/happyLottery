@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PaySuccessViewController">
             <connections>
+                <outlet property="btnHeightPostScheme" destination="GmO-wP-euU" id="NJx-XO-c8q"/>
+                <outlet property="btnPostScheme" destination="pa5-sj-LHs" id="vb3-Gg-6n2"/>
                 <outlet property="labChuPiaoimg" destination="Ujh-zc-LJ4" id="YfK-JW-jsU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -45,7 +47,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDp-PZ-hKU">
-                    <rect key="frame" x="37.5" y="345" width="300" height="47"/>
+                    <rect key="frame" x="37.5" y="361" width="300" height="47"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="47" id="21H-Lq-S9n"/>
                         <constraint firstAttribute="width" constant="300" id="vAe-m0-6H7"/>
@@ -56,10 +58,21 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hlg-BJ-1T2">
-                    <rect key="frame" x="37.5" y="412" width="300" height="47"/>
+                    <rect key="frame" x="37.5" y="428" width="300" height="47"/>
                     <state key="normal" title="返回" backgroundImage="fanhuishouye"/>
                     <connections>
                         <action selector="actionBackHome:" destination="-1" eventType="touchUpInside" id="Rxg-gW-RcA"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pa5-sj-LHs">
+                    <rect key="frame" x="37.5" y="341" width="300" height="0.0"/>
+                    <constraints>
+                        <constraint firstAttribute="height" id="GmO-wP-euU"/>
+                        <constraint firstAttribute="width" constant="300" id="vDd-F9-NPP"/>
+                    </constraints>
+                    <state key="normal" title="我要发单" backgroundImage="yuanjiaowukuangselect"/>
+                    <connections>
+                        <action selector="actionPostScheme:" destination="-1" eventType="touchUpInside" id="lkY-0E-EBh"/>
                     </connections>
                 </button>
             </subviews>
@@ -73,12 +86,14 @@
                 <constraint firstItem="9XB-jR-uQd" firstAttribute="top" secondItem="C99-ey-mhy" secondAttribute="bottom" id="L6f-zt-fxQ"/>
                 <constraint firstItem="Hlg-BJ-1T2" firstAttribute="width" secondItem="YDp-PZ-hKU" secondAttribute="width" id="O5C-fN-IDL"/>
                 <constraint firstItem="Ujh-zc-LJ4" firstAttribute="top" secondItem="9XB-jR-uQd" secondAttribute="bottom" constant="5" id="OEe-O7-zXr"/>
+                <constraint firstItem="pa5-sj-LHs" firstAttribute="top" secondItem="Ujh-zc-LJ4" secondAttribute="bottom" constant="30" id="QeR-IV-F7W"/>
                 <constraint firstAttribute="trailing" secondItem="C99-ey-mhy" secondAttribute="trailing" constant="50" id="Sdu-o6-CTZ"/>
                 <constraint firstItem="C99-ey-mhy" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="106" id="XrX-AP-p5y"/>
                 <constraint firstItem="Hlg-BJ-1T2" firstAttribute="top" secondItem="YDp-PZ-hKU" secondAttribute="bottom" constant="20" id="Z2C-H0-SCc"/>
-                <constraint firstItem="YDp-PZ-hKU" firstAttribute="top" secondItem="Ujh-zc-LJ4" secondAttribute="bottom" constant="34" id="apq-IH-GCg"/>
                 <constraint firstItem="C99-ey-mhy" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="bVS-AQ-BAB"/>
+                <constraint firstItem="pa5-sj-LHs" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="cCg-gQ-XGn"/>
                 <constraint firstItem="YDp-PZ-hKU" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="kAn-Du-Yjr"/>
+                <constraint firstItem="YDp-PZ-hKU" firstAttribute="top" secondItem="pa5-sj-LHs" secondAttribute="bottom" constant="20" id="kig-M4-nWx"/>
                 <constraint firstItem="Ujh-zc-LJ4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lX1-az-pbf"/>
                 <constraint firstAttribute="trailing" secondItem="9XB-jR-uQd" secondAttribute="trailing" id="z74-cL-v8l"/>
             </constraints>

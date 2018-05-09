@@ -1368,4 +1368,30 @@
                         failure:failureBlock];
 }
 
+- (void)initiateFollowScheme:(NSDictionary *)infoDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed  && responseJsonStr!= nil && responseJsonStr.length>0) {
+            [self.delegate initiateFollowScheme:responseJsonStr errorMsg:response.errorMsg];
+        }else{
+            [self.delegate initiateFollowScheme:nil errorMsg:response.errorMsg];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.delegate initiateFollowScheme:nil errorMsg:@"服务器错误"];
+    };
+    
+    SOAPRequest* request = [self requestForAPI:APIInitiateFollowScheme withParam:@{@"params":[self actionEncrypt:[self JsonFromId:infoDic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPISchemeService
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+
+
+
 @end
