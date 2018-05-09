@@ -1056,6 +1056,8 @@
 		F999278620037A8C00023F8F /* empty_youhuiquan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F999278420037A8B00023F8F /* empty_youhuiquan@3x.png */; };
 		F999278920037AA200023F8F /* empty_zhmx@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F999278720037AA200023F8F /* empty_zhmx@2x.png */; };
 		F999278A20037AA200023F8F /* empty_zhmx@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F999278820037AA200023F8F /* empty_zhmx@3x.png */; };
+		F9A6390720A29D2200AA07C6 /* RecommendPerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9A6390520A29D2200AA07C6 /* RecommendPerViewController.m */; };
+		F9A6390820A29D2200AA07C6 /* RecommendPerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9A6390620A29D2200AA07C6 /* RecommendPerViewController.xib */; };
 		F9B5D8F6205F8B5000C9F6DC /* wordcup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9B5D8F4205F8B4F00C9F6DC /* wordcup@2x.png */; };
 		F9B5D8F7205F8B5000C9F6DC /* wordcup@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9B5D8F5205F8B4F00C9F6DC /* wordcup@3x.png */; };
 		F9B5D912205FB0B000C9F6DC /* GYJPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9B5D90F205FB0AE00C9F6DC /* GYJPlayViewController.m */; };
@@ -2686,6 +2688,9 @@
 		F999278420037A8B00023F8F /* empty_youhuiquan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty_youhuiquan@3x.png"; sourceTree = "<group>"; };
 		F999278720037AA200023F8F /* empty_zhmx@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty_zhmx@2x.png"; sourceTree = "<group>"; };
 		F999278820037AA200023F8F /* empty_zhmx@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty_zhmx@3x.png"; sourceTree = "<group>"; };
+		F9A6390420A29D2200AA07C6 /* RecommendPerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecommendPerViewController.h; sourceTree = "<group>"; };
+		F9A6390520A29D2200AA07C6 /* RecommendPerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecommendPerViewController.m; sourceTree = "<group>"; };
+		F9A6390620A29D2200AA07C6 /* RecommendPerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendPerViewController.xib; sourceTree = "<group>"; };
 		F9B5D8F4205F8B4F00C9F6DC /* wordcup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wordcup@2x.png"; sourceTree = "<group>"; };
 		F9B5D8F5205F8B4F00C9F6DC /* wordcup@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wordcup@3x.png"; sourceTree = "<group>"; };
 		F9B5D90F205FB0AE00C9F6DC /* GYJPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYJPlayViewController.m; sourceTree = "<group>"; };
@@ -4042,6 +4047,7 @@
 			isa = PBXGroup;
 			children = (
 				2DDEDBFF1FD4DBB6007AEBF7 /* BuyLottery(购彩) */,
+				F9A638FF20A299ED00AA07C6 /* FollowLottery(跟投) */,
 				2DDEDBF31FD4DBB5007AEBF7 /* LotteryDiscover(发现) */,
 				2DDEDBFB1FD4DBB5007AEBF7 /* LotteryGroup(圈子) */,
 				2DDEDBF71FD4DBB5007AEBF7 /* LotteryMine(我的) */,
@@ -5288,6 +5294,40 @@
 			path = JCLQ;
 			sourceTree = "<group>";
 		};
+		F9A638FF20A299ED00AA07C6 /* FollowLottery(跟投) */ = {
+			isa = PBXGroup;
+			children = (
+				F9A6390020A29B1400AA07C6 /* Controller */,
+				F9A6390220A29B3900AA07C6 /* Model */,
+				F9A6390320A29B4100AA07C6 /* View */,
+			);
+			path = "FollowLottery(跟投)";
+			sourceTree = "<group>";
+		};
+		F9A6390020A29B1400AA07C6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F9A6390420A29D2200AA07C6 /* RecommendPerViewController.h */,
+				F9A6390520A29D2200AA07C6 /* RecommendPerViewController.m */,
+				F9A6390620A29D2200AA07C6 /* RecommendPerViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F9A6390220A29B3900AA07C6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F9A6390320A29B4100AA07C6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		F9B5D92E2060A9DD00C9F6DC /* jcgjgroupflag */ = {
 			isa = PBXGroup;
 			children = (
@@ -6357,6 +6397,7 @@
 				2D0E23FC2019A9780098DA40 /* button_yellow@2x.png in Resources */,
 				F9FDFAEF2013223F0029ACC7 /* msg_come.mp3 in Resources */,
 				2D03F1EA205FD4C200C81BEF /* CTZQSchemeDetailViewController.xib in Resources */,
+				F9A6390820A29D2200AA07C6 /* RecommendPerViewController.xib in Resources */,
 				F9705ED1207DD15200E25E4E /* 3d@2x.png in Resources */,
 				2D4B1E431FDF65480034B708 /* HomeMenuItemsConfig.plist in Resources */,
 				2D7B1353204E37100035AE89 /* helper@3x.png in Resources */,
@@ -6659,6 +6700,7 @@
 				F9581A7B1FE0C6FD009753AA /* UIImage+RandomSize.m in Sources */,
 				2D06001F1FFDCD9F009E7568 /* MJRefreshHeader.m in Sources */,
 				2D0EEA89201321AF00B0769C /* AlertPushtView.m in Sources */,
+				F9A6390720A29D2200AA07C6 /* RecommendPerViewController.m in Sources */,
 				F95C7FEF2071F178005990F5 /* ZHDetailViewController.m in Sources */,
 				2D7B12F5204D3E5E0035AE89 /* LotteryRound.m in Sources */,
 				2D8CBFCF1FF3769F00CC367F /* YuceSchemeDetailViewController.m in Sources */,

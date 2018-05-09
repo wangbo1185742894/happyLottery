@@ -59,6 +59,8 @@ typedef enum EarningsType{
 - (void) gotJclqSp:(NSArray *)infoArray  errorMsg:(NSString *)msg;//篮球的sp
 - (void) gotSsqTicketOrderDetail:(NSDictionary *)infoArray  errorMsg:(NSString *)msg;//双色球
 - (void) gotJclqTicketOrderDetail:(NSDictionary *)infoArray  errorMsg:(NSString *)msg;//竞彩篮球
+- (void) gotlistRecommend:(NSArray *)infoArray  errorMsg:(NSString *)msg;//牛人，红人，红单榜
+
 
 @end
 
@@ -119,6 +121,9 @@ typedef enum EarningsType{
 - (void)getJclqMatch:(NSDictionary *)infoDic;//获取竞彩篮球在售赛事
 - (void)getJclqSp:(NSDictionary *)infoDic;//获取竞彩篮球的sp
 - (void)getJclqTicketOrderDetail:(NSDictionary *)paraDic;//查询订单详情(竞彩篮球)
+
+#pragma mark 发单跟单
+- (void)listRecommendPer:(NSDictionary *)infoDic categoryCode:(NSString *)categoryCode;//获取牛人，红人，红单榜
 
 @end
 
