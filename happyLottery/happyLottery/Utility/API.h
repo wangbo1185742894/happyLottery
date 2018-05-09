@@ -94,6 +94,9 @@
 #define APIfeedBackUnReadNum         @"feedBackUnReadNum"
 #define APIresetFeedBackReadStatus   @"resetFeedBackReadStatus"
 #define APIgiveShareScore            @"giveShareScore"
+#define APIattentMember              @"attentMember" //关注会员
+#define APIlistGeniusDto             @"listGeniusDto" //获取牛人榜
+#define APIlistGreatFollow           @"listGreatFollow" //跟单首页可跟单大师列表
 
 #define SUBAPIDATA           @"/data"
 #define APISaveClientInfo           @"saveClientInfo"
@@ -140,6 +143,8 @@
 #define APIlistChaseSchemeForApp    @"listChaseSchemeForApp"
 #define APIgetChaseDetailForApp     @"getChaseDetailForApp"
 #define APIchaseWhenStop            @"chaseWhenStop"
+#define APIInitiateFollowScheme     @"initiateFollowScheme"//发单
+#define APIFollowScheme             @"followScheme"//跟单
 
 
 #define SUBAPITicketService   @"/ticket"
