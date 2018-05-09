@@ -7,8 +7,16 @@
 //
 
 #import "RecommendPerViewController.h"
+#import "RecomPerTableViewCell.h"
+#import "RecomPerModel.h"
 
-@interface RecommendPerViewController ()
+#define KRecomPerTableViewCell @"RecomPerTableViewCell"
+
+@interface RecommendPerViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate>
+
+@property(nonatomic,strong)NSMutableArray <RecomPerModel *> * personArray;
+
+@property (weak, nonatomic) IBOutlet UITableView *personList;
 
 @end
 
@@ -16,22 +24,64 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.personList.delegate = self;
+    self.personList.dataSource = self;
+    [self.personList registerNib:[UINib nibWithNibName:KRecomPerTableViewCell bundle:nil] forCellReuseIdentifier:KRecomPerTableViewCell];
+    self.personArray = [NSMutableArray arrayWithCapacity:0];
+    [self setBarTitle];
+    //data request
+    if (self.lotteryMan == nil) {
+        self.lotteryMan = [[LotteryManager alloc]init];
+    }
+    self.lotteryMan.delegate = self;
+    [self.lotteryMan listRecommendPer:@{@"channelCode":CHANNEL_CODE} categoryCode:self.categoryCode];
+    [self.personList reloadData];
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)setBarTitle{
+    if ([self.categoryCode isEqualToString:@"Cowman"]) {
+        self.title = @"牛人榜";
+    } else if ([self.categoryCode isEqualToString:@"Redman"]){
+        self.title = @"红人榜";
+    } else {
+        self.title = @"红单榜";
+    }
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+#pragma mark  lotteryMan
 
-/*
-#pragma mark - Navigation
+- (void) gotlistRecommend:(NSArray *)infoArray  errorMsg:(NSString *)msg{
+    [self.personArray removeAllObjects];
+    //添加数据
+    for (NSDictionary *dic in infoArray) {
+        RecomPerModel *model = [[RecomPerModel alloc]initWithDic:dic];
+        [self.personArray addObject:model];
+    }
+    
+    
+}//牛人，红人，红单榜
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark  tableView
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return  60;
 }
-*/
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.personArray.count;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    RecomPerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KRecomPerTableViewCell];
+    RecomPerModel *model = [self.personArray objectAtIndex:indexPath.row];
+    [cell reloadDate:model];
+    return cell;
+}
 
 @end
