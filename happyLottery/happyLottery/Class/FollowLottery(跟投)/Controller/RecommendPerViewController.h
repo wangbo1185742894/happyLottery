@@ -11,6 +11,6 @@
 
 @interface RecommendPerViewController : BaseViewController
 
-@property (nonatomic,copy) NSString *categoryCode;
+@property (nonatomic,copy) NSString *categoryCode; //榜单类别 Cowman，Redman，RedScheme
 
 @end

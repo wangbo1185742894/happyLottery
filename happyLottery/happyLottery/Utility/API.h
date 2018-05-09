@@ -96,6 +96,8 @@
 #define APIgiveShareScore            @"giveShareScore"
 #define APIattentMember              @"attentMember" //关注会员
 #define APIlistGeniusDto             @"listGeniusDto" //获取牛人榜
+#define APIRedManList                 @"red_man_list"  //获取红人榜
+#define APIRedSchemeList            @"red_scheme_list" //获取红单榜
 #define APIlistGreatFollow           @"listGreatFollow" //跟单首页可跟单大师列表
 
 #define SUBAPIDATA           @"/data"

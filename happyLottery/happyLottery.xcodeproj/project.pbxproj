@@ -817,6 +817,14 @@
 		F924BAA91FE252CF00830BF4 /* stick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA911FE252CF00830BF4 /* stick@2x.png */; };
 		F9281D1B201979BE00C42A37 /* one_redpacket@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9281D19201979BE00C42A37 /* one_redpacket@2x.png */; };
 		F9281D1C201979BE00C42A37 /* one_redpacket@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9281D1A201979BE00C42A37 /* one_redpacket@3x.png */; };
+		F92855D220A2DFD20023A0AC /* SchemeInfoFollowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F92855D020A2DFD20023A0AC /* SchemeInfoFollowCell.m */; };
+		F92855D320A2DFD20023A0AC /* SchemeInfoFollowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F92855D120A2DFD20023A0AC /* SchemeInfoFollowCell.xib */; };
+		F92855D820A2E7C90023A0AC /* win@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F92855D420A2E7C70023A0AC /* win@3x.png */; };
+		F92855D920A2E7C90023A0AC /* losing@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F92855D520A2E7C70023A0AC /* losing@2x.png */; };
+		F92855DA20A2E7C90023A0AC /* losing@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F92855D620A2E7C70023A0AC /* losing@3x.png */; };
+		F92855DB20A2E7C90023A0AC /* win@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F92855D720A2E7C80023A0AC /* win@2x.png */; };
+		F92855DE20A2E91A0023A0AC /* wave@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F92855DC20A2E9190023A0AC /* wave@2x.png */; };
+		F92855DF20A2E91A0023A0AC /* wave@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F92855DD20A2E9190023A0AC /* wave@3x.png */; };
 		F928C6851FF48BE4001F1A32 /* bj_@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F928C6831FF48BE3001F1A32 /* bj_@3x.png */; };
 		F928C6861FF48BE4001F1A32 /* bj_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F928C6841FF48BE4001F1A32 /* bj_@2x.png */; };
 		F928C6891FF48DB3001F1A32 /* bj@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F928C6871FF48DB2001F1A32 /* bj@2x.png */; };
@@ -1061,6 +1069,8 @@
 		F9A6391120A2A14000AA07C6 /* RecomPerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9A6390F20A2A14000AA07C6 /* RecomPerTableViewCell.m */; };
 		F9A6391220A2A14000AA07C6 /* RecomPerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9A6391020A2A14000AA07C6 /* RecomPerTableViewCell.xib */; };
 		F9A6391520A2AD1F00AA07C6 /* RecomPerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F9A6391420A2AD1F00AA07C6 /* RecomPerModel.m */; };
+		F9A6391E20A2D38300AA07C6 /* FASSchemeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9A6391C20A2D38300AA07C6 /* FASSchemeDetailViewController.m */; };
+		F9A6391F20A2D38300AA07C6 /* FASSchemeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9A6391D20A2D38300AA07C6 /* FASSchemeDetailViewController.xib */; };
 		F9B5D8F6205F8B5000C9F6DC /* wordcup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9B5D8F4205F8B4F00C9F6DC /* wordcup@2x.png */; };
 		F9B5D8F7205F8B5000C9F6DC /* wordcup@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9B5D8F5205F8B4F00C9F6DC /* wordcup@3x.png */; };
 		F9B5D912205FB0B000C9F6DC /* GYJPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9B5D90F205FB0AE00C9F6DC /* GYJPlayViewController.m */; };
@@ -2400,6 +2410,15 @@
 		F924BA911FE252CF00830BF4 /* stick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stick@2x.png"; sourceTree = "<group>"; };
 		F9281D19201979BE00C42A37 /* one_redpacket@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "one_redpacket@2x.png"; sourceTree = "<group>"; };
 		F9281D1A201979BE00C42A37 /* one_redpacket@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "one_redpacket@3x.png"; sourceTree = "<group>"; };
+		F92855CF20A2DFD20023A0AC /* SchemeInfoFollowCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SchemeInfoFollowCell.h; sourceTree = "<group>"; };
+		F92855D020A2DFD20023A0AC /* SchemeInfoFollowCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SchemeInfoFollowCell.m; sourceTree = "<group>"; };
+		F92855D120A2DFD20023A0AC /* SchemeInfoFollowCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SchemeInfoFollowCell.xib; sourceTree = "<group>"; };
+		F92855D420A2E7C70023A0AC /* win@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "win@3x.png"; sourceTree = "<group>"; };
+		F92855D520A2E7C70023A0AC /* losing@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "losing@2x.png"; sourceTree = "<group>"; };
+		F92855D620A2E7C70023A0AC /* losing@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "losing@3x.png"; sourceTree = "<group>"; };
+		F92855D720A2E7C80023A0AC /* win@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "win@2x.png"; sourceTree = "<group>"; };
+		F92855DC20A2E9190023A0AC /* wave@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wave@2x.png"; sourceTree = "<group>"; };
+		F92855DD20A2E9190023A0AC /* wave@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wave@3x.png"; sourceTree = "<group>"; };
 		F928C6831FF48BE3001F1A32 /* bj_@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bj_@3x.png"; sourceTree = "<group>"; };
 		F928C6841FF48BE4001F1A32 /* bj_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bj_@2x.png"; sourceTree = "<group>"; };
 		F928C6871FF48DB2001F1A32 /* bj@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bj@2x.png"; sourceTree = "<group>"; };
@@ -2699,6 +2718,9 @@
 		F9A6391020A2A14000AA07C6 /* RecomPerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecomPerTableViewCell.xib; sourceTree = "<group>"; };
 		F9A6391320A2AD1F00AA07C6 /* RecomPerModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecomPerModel.h; sourceTree = "<group>"; };
 		F9A6391420A2AD1F00AA07C6 /* RecomPerModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecomPerModel.m; sourceTree = "<group>"; };
+		F9A6391B20A2D38300AA07C6 /* FASSchemeDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FASSchemeDetailViewController.h; sourceTree = "<group>"; };
+		F9A6391C20A2D38300AA07C6 /* FASSchemeDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FASSchemeDetailViewController.m; sourceTree = "<group>"; };
+		F9A6391D20A2D38300AA07C6 /* FASSchemeDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FASSchemeDetailViewController.xib; sourceTree = "<group>"; };
 		F9B5D8F4205F8B4F00C9F6DC /* wordcup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wordcup@2x.png"; sourceTree = "<group>"; };
 		F9B5D8F5205F8B4F00C9F6DC /* wordcup@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wordcup@3x.png"; sourceTree = "<group>"; };
 		F9B5D90F205FB0AE00C9F6DC /* GYJPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYJPlayViewController.m; sourceTree = "<group>"; };
@@ -3916,6 +3938,12 @@
 				F98C3EFA20747CE500C1DBF8 /* blueBall@3x.png */,
 				F98C3EFB20747CE600C1DBF8 /* redBall@2x.png */,
 				F98C3EFD20747CE600C1DBF8 /* redBall@3x.png */,
+				F92855D520A2E7C70023A0AC /* losing@2x.png */,
+				F92855D620A2E7C70023A0AC /* losing@3x.png */,
+				F92855D720A2E7C80023A0AC /* win@2x.png */,
+				F92855D420A2E7C70023A0AC /* win@3x.png */,
+				F92855DC20A2E9190023A0AC /* wave@2x.png */,
+				F92855DD20A2E9190023A0AC /* wave@3x.png */,
 				2D7B1339204E24860035AE89 /* DLT */,
 				2D23488120494259005AE1F2 /* bunsoptimnormal@2x.png */,
 				F9705EAA207B68B300E25E4E /* gengduo@2x.png */,
@@ -5318,6 +5346,9 @@
 				F9A6390420A29D2200AA07C6 /* RecommendPerViewController.h */,
 				F9A6390520A29D2200AA07C6 /* RecommendPerViewController.m */,
 				F9A6390620A29D2200AA07C6 /* RecommendPerViewController.xib */,
+				F9A6391B20A2D38300AA07C6 /* FASSchemeDetailViewController.h */,
+				F9A6391C20A2D38300AA07C6 /* FASSchemeDetailViewController.m */,
+				F9A6391D20A2D38300AA07C6 /* FASSchemeDetailViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -5337,6 +5368,9 @@
 				F9A6390E20A2A14000AA07C6 /* RecomPerTableViewCell.h */,
 				F9A6390F20A2A14000AA07C6 /* RecomPerTableViewCell.m */,
 				F9A6391020A2A14000AA07C6 /* RecomPerTableViewCell.xib */,
+				F92855CF20A2DFD20023A0AC /* SchemeInfoFollowCell.h */,
+				F92855D020A2DFD20023A0AC /* SchemeInfoFollowCell.m */,
+				F92855D120A2DFD20023A0AC /* SchemeInfoFollowCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -5637,6 +5671,7 @@
 				2D628B3F1FECAA9A0013D0E1 /* fengkuangjingcai-monitouzhu-xuanze@3x.png in Resources */,
 				2D8CBFB11FF328D800CC367F /* paysuccess@3x.png in Resources */,
 				2D2060231FFCB71E0086E266 /* icon_tongyi_weixuanze@2x.png in Resources */,
+				F92855D920A2E7C90023A0AC /* losing@2x.png in Resources */,
 				F9705EC0207B6DDC00E25E4E /* jingzu@2x.png in Resources */,
 				2D5171DC200C729A00C3CD7F /* icon_yingli_@2x.png in Resources */,
 				2D628B2A1FECA9C40013D0E1 /* touzhuxuanzezhifuselect@3x.png in Resources */,
@@ -5896,6 +5931,7 @@
 				F9705E50207A0DE800E25E4E /* JCLQSFCCell.xib in Resources */,
 				F90058E81FF61619009C8E1C /* noticeempty@2x.png in Resources */,
 				2D51720A200D9E7600C3CD7F /* buddha@3x.png in Resources */,
+				F92855D320A2DFD20023A0AC /* SchemeInfoFollowCell.xib in Resources */,
 				2D7B1377204E63EF0035AE89 /* dltcheckbox@2x.png in Resources */,
 				2D7B137A204E6AEF0035AE89 /* BetPlayStyleCode.plist in Resources */,
 				2D0EEAAF2015DCFC00B0769C /* ad_home3@2x.png in Resources */,
@@ -5937,6 +5973,7 @@
 				F94795B2206282A900818A1F /* BuyLotteryViewController.xib in Resources */,
 				2D0E23A82018833E0098DA40 /* switch@2x.png in Resources */,
 				F9B5D9822060A9DE00C9F6DC /* flag392@3x.png in Resources */,
+				F92855D820A2E7C90023A0AC /* win@3x.png in Resources */,
 				2D40CAA8201EDE5700DDCFE3 /* bj_down@3x.png in Resources */,
 				2D5171B42007110D00C3CD7F /* SchemeInfoViewCell.xib in Resources */,
 				F9B5D98D2060A9DE00C9F6DC /* flag410@2x.png in Resources */,
@@ -5987,6 +6024,7 @@
 				2D9847B21FF5E1EB00038690 /* UMChongZhiViewController.xib in Resources */,
 				2D0E23CF2019A5F30098DA40 /* set@2x.png in Resources */,
 				F9FF4388201EE37C00179211 /* PageCodeIsLogin.plist in Resources */,
+				F92855DA20A2E7C90023A0AC /* losing@3x.png in Resources */,
 				2D7B1415204E8FD50035AE89 /* CTZQWinHistoryTableViewCell.xib in Resources */,
 				2D0E23BE20196B590098DA40 /* unpaid@2x.png in Resources */,
 				2D628B4D1FECB2EB0013D0E1 /* JingCaiChuanTypeDic.plist in Resources */,
@@ -6125,6 +6163,7 @@
 				2D5171E0200C72A700C3CD7F /* icon_time_@3x.png in Resources */,
 				F94AA9E21FEB7B780021B980 /* bank@2x.png in Resources */,
 				F94AA9E31FEB7B780021B980 /* zfb@2x.png in Resources */,
+				F9A6391F20A2D38300AA07C6 /* FASSchemeDetailViewController.xib in Resources */,
 				2DCBB27E1FD1000700934D92 /* Assets.xcassets in Resources */,
 				2D4B1E721FDF684E0034B708 /* faxian_select@3x.png in Resources */,
 				2D739C691FE787EF00264044 /* PayOrderViewController.xib in Resources */,
@@ -6355,6 +6394,7 @@
 				2D40CAA5201EDE5700DDCFE3 /* button_line@3x.png in Resources */,
 				2D06FFE71FFDC9EB009E7568 /* win@3x.png in Resources */,
 				2D4B1E3A1FDE717C0034B708 /* newBack@2x.png in Resources */,
+				F92855DB20A2E7C90023A0AC /* win@2x.png in Resources */,
 				2D7B1375204E63EF0035AE89 /* dltcheckbox-default@3x.png in Resources */,
 				2D0E23D62019A63E0098DA40 /* recharge@3x.png in Resources */,
 				2D739CD61FEB44F400264044 /* rangqiufu@3x.png in Resources */,
@@ -6445,6 +6485,7 @@
 				2D36176E20620FAF003093F9 /* zhuihao@3x.png in Resources */,
 				F9CD01E7202419AD00E54E79 /* linehelp@2x.png in Resources */,
 				F99927762003511000023F8F /* bluecoupon@3x.png in Resources */,
+				F92855DF20A2E91A0023A0AC /* wave@3x.png in Resources */,
 				2D7B1390204E82FD0035AE89 /* pic_shengfucai@3x.png in Resources */,
 				F957C1F61FE3B28D0090B19B /* return@2x.png in Resources */,
 				2DA39EE920538FBB00A03FD1 /* LotteryProfilesConfigdlt.plist in Resources */,
@@ -6484,6 +6525,7 @@
 				F924BA991FE252CF00830BF4 /* captcha@3x.png in Resources */,
 				F9705EBD207B6DDC00E25E4E /* guanyajun@2x.png in Resources */,
 				2D03F1EF205FD52F00C81BEF /* CTZQSchemeViewCell.xib in Resources */,
+				F92855DE20A2E91A0023A0AC /* wave@2x.png in Resources */,
 				2D4B1E731FDF684E0034B708 /* fengkuangjingcai@2x.png in Resources */,
 				2D739CC41FEA7B4E00264044 /* JingCaiCode.plist in Resources */,
 				2D628B601FF0C1980013D0E1 /* button_default@3x.png in Resources */,
@@ -6528,6 +6570,7 @@
 				2D0600261FFDCD9F009E7568 /* MJRefreshGifHeader.m in Sources */,
 				F9F262B41FE8F4AE00C2E60F /* RSKInternalUtility.m in Sources */,
 				2D739C5E1FE3B31500264044 /* FMDatabaseQueue.m in Sources */,
+				F92855D220A2DFD20023A0AC /* SchemeInfoFollowCell.m in Sources */,
 				2D739C221FE2611C00264044 /* IQToolbar.m in Sources */,
 				2D06002D1FFDCD9F009E7568 /* UIScrollView+MJRefresh.m in Sources */,
 				2D7B12F1204D3C280035AE89 /* LotteryWinNumHistoryViewController.m in Sources */,
@@ -6836,6 +6879,7 @@
 				2D8CBFD01FF3769F00CC367F /* YuCeLiShiZhanJViewController.m in Sources */,
 				2D7B13B4204E873D0035AE89 /* CTZQBet.m in Sources */,
 				F96658F41FF0D26A001DE8B9 /* BankCard.m in Sources */,
+				F9A6391E20A2D38300AA07C6 /* FASSchemeDetailViewController.m in Sources */,
 				2DDEDE6C1FD568C9007AEBF7 /* UIView+WebCacheOperation.m in Sources */,
 				2D361773206374EF003093F9 /* DLTSchemeDetailViewController.m in Sources */,
 				2DD2C514204522AD005A18C4 /* OptimizeViewCell.m in Sources */,

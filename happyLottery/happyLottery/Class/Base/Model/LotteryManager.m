@@ -1352,15 +1352,19 @@
         [self.delegate gotlistRecommend:nil  errorMsg:@"服务器错误"];
     };
     NSString *apiName;
+    NSDictionary *dic;
     if ([categoryCode isEqualToString:@"Cowman"]) {
         apiName = APIlistGeniusDto;
+        dic = @{@"params":[self actionEncrypt:[self JsonFromId:infoDic]]};
     } else if ([categoryCode isEqualToString:@"Redman"]){
-        
+        apiName = APIRedManList;
+        dic = nil;
     }else {
-         //  Redscheme
-        
+        //RedScheme
+        apiName = APIRedSchemeList;
+        dic = nil;
     }
-    SOAPRequest* request = [self requestForAPI:apiName withParam:@{@"params":[self actionEncrypt:[self JsonFromId:infoDic]]}];
+    SOAPRequest* request = [self requestForAPI:apiName withParam:dic];
     [self newRequestWithRequest:request
                          subAPI:SUBAPIMember
       constructingBodyWithBlock:nil
