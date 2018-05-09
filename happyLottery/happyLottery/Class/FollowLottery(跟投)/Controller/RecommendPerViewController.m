@@ -11,8 +11,8 @@
 #import "RecomPerModel.h"
 
 #define KRecomPerTableViewCell @"RecomPerTableViewCell"
-
 @interface RecommendPerViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate>
+
 
 @property(nonatomic,strong)NSMutableArray <RecomPerModel *> * personArray;
 
@@ -24,6 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     self.personList.delegate = self;
     self.personList.dataSource = self;
     [self.personList registerNib:[UINib nibWithNibName:KRecomPerTableViewCell bundle:nil] forCellReuseIdentifier:KRecomPerTableViewCell];
@@ -82,12 +83,12 @@
     return self.personArray.count;
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     RecomPerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KRecomPerTableViewCell];
     RecomPerModel *model = [self.personArray objectAtIndex:indexPath.row];
     [cell reloadDate:model];
     return cell;
+
 }
 
 @end

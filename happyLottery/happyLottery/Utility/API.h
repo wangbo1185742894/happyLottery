@@ -25,24 +25,18 @@
 
 #define ServerAddress @"http://192.168.88.244:8086"  //资讯  轮播图 用户图像
 #define H5BaseAddress @"http://192.168.88.244:18086"
+#define WSServerURL @"http://192.168.88.244:28000/services%@"
+
 
 //#define H5BaseAddress @"http://192.168.88.193:18086"  //谢青服务
 //#define H5BaseAddress @"http://192.168.88.116:18086"  //史少鹏服务
-
 //杨芳本地
 //#define ServerAddress @"http://192.168.88.109:8086"
 
-//外网
-//244服务
-#define WSServerURL @"http://192.168.88.244:28000/services%@"
-
 //史少鹏服务
 //#define WSServerURL @"http://192.168.88.116:28000/services%@"
-
 //程家宗服务
 //#define WSServerURL @"http://192.168.88.105:28000/services%@"
-
-
 //#define WSServerURL @"http://192.168.88.116:28000/services%@"
 
 

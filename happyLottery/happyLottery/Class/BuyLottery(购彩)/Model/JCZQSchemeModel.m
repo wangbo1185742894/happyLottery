@@ -31,7 +31,7 @@
             }
             self.list = schemeList;
         }
-    }else{
+    } else{
         [super setValue:value forKey:key];
     }
 }
@@ -50,7 +50,17 @@
             [trOpenResult addObject:result];
         }
         self.trOpenResult = trOpenResult;
-    }else{
+    }else if([key isEqualToString:@"followListDtos"]){
+        NSMutableArray *schemeList = [NSMutableArray arrayWithCapacity:0];
+        NSArray *listArray = [Utility objFromJson:value];
+        for (NSDictionary *itemDic in listArray) {
+            FollowListModel *itemModel = [[FollowListModel alloc]initWith:itemDic];
+            [schemeList addObject:itemModel];
+        }
+        self.followListDtos = schemeList;
+    }else if([key isEqualToString:@"passType"]){
+        self.passType =[Utility objFromJson:value];
+    } else{
         
         
         [super setValue:value forKey:key];
@@ -152,6 +162,29 @@
     return state;
     
 }
+
+
+-(NSString *)getLotteryByName{
+    if ([self.lottery isEqualToString:@"JCZQ"]) {
+        return @"竞彩足球";
+    }else if([self.lottery isEqualToString:@"DLT"]){
+        return [NSString stringWithFormat:@"超级大乐透"];
+    }else if([self.lottery isEqualToString:@"RJC"]){
+        return [NSString stringWithFormat:@"任选9场"];
+    }else if([self.lottery isEqualToString:@"SFC"]){
+        return [NSString stringWithFormat:@"胜负14场"];
+    }else if ([self.lottery isEqualToString:@"JCGYJ"]){
+        return @"冠亚军游戏";
+    }else if ([self.lottery isEqualToString:@"JCGJ"]){
+        return @"冠军游戏";
+    }else if ([self.lottery isEqualToString:@"SSQ"]){
+        return [NSString stringWithFormat:@"双色球"];
+    }else if ([self.lottery isEqualToString:@"JCLQ"]){
+        return @"竞彩篮球";
+    }
+    return @"彩票";
+}
+
 -(CGFloat )getGYJCellHeight{
 
     NSArray * selectArray = [[Utility objFromJson:self.betContent] firstObject][@"number"];

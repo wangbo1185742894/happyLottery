@@ -349,13 +349,13 @@
     }
     
     if([keyStr isEqualToString:@"A401"]){
-        self.tabBarController.selectedIndex = 2;
+        self.tabBarController.selectedIndex = 3;
         return;
     }else if([keyStr isEqualToString:@"A402"]){
-        self.tabBarController.selectedIndex = 1;
+        self.tabBarController.selectedIndex = 2;
         return;
     }else if([keyStr isEqualToString:@"A201"]){
-        self.tabBarController.selectedIndex = 3;
+        self.tabBarController.selectedIndex = 4;
         return;
     }else if ([keyStr isEqualToString:@"A403"]){
         HomeJumpViewController *disVC = [[HomeJumpViewController alloc]init];

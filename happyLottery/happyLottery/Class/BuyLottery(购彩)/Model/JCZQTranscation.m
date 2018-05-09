@@ -109,6 +109,7 @@
         submitParaDic[@"baodiCost"] = [NSString stringWithFormat:@"%.2f",self.baodiCopies *self.minSubCost];
         
     }
+    submitParaDic[@"multiple"] = self.beitou;
     return submitParaDic;
 }
 
