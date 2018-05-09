@@ -347,7 +347,7 @@ static SystemSoundID shake_sound_male_id = 0;
     tabAttrs[@"title"] = @"";
     tabAttrs[@"itemNormal"] = @"home_defealt";
     tabAttrs[@"itemSelected"] = @"home_select";
-    tabAttrs[@"rootVC"] = @"RecommendPerViewController";
+    tabAttrs[@"rootVC"] = @"FollowSendViewController";
     UINavigationController *genTouNavVC = [self tabNavVCWithAttr: tabAttrs];
     
     tabAttrs[@"tabTitle"] = @"圈子";

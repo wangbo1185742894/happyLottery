@@ -187,6 +187,8 @@
 		2D16601A20A2D4DF00C1C7E7 /* FollowSchemeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D16601820A2D4DE00C1C7E7 /* FollowSchemeViewCell.m */; };
 		2D16601B20A2D4DF00C1C7E7 /* FollowSchemeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D16601920A2D4DE00C1C7E7 /* FollowSchemeViewCell.xib */; };
 		2D16601E20A2DF3600C1C7E7 /* FollowListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D16601D20A2DF3600C1C7E7 /* FollowListModel.m */; };
+		2D16602320A2EFB800C1C7E7 /* FollowSendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D16602120A2EFB800C1C7E7 /* FollowSendViewController.m */; };
+		2D16602420A2EFB800C1C7E7 /* FollowSendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D16602220A2EFB800C1C7E7 /* FollowSendViewController.xib */; };
 		2D205FE91FFC6E950086E266 /* WBBifenZhiboViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D205FE61FFC6E940086E266 /* WBBifenZhiboViewController.xib */; };
 		2D205FEA1FFC6E950086E266 /* WBBifenZhiboViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D205FE71FFC6E940086E266 /* WBBifenZhiboViewController.m */; };
 		2D205FED1FFC6F680086E266 /* BiFenZhiboModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D205FEC1FFC6F680086E266 /* BiFenZhiboModel.m */; };
@@ -1069,6 +1071,9 @@
 		F999278A20037AA200023F8F /* empty_zhmx@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F999278820037AA200023F8F /* empty_zhmx@3x.png */; };
 		F9A6390720A29D2200AA07C6 /* RecommendPerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9A6390520A29D2200AA07C6 /* RecommendPerViewController.m */; };
 		F9A6390820A29D2200AA07C6 /* RecommendPerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9A6390620A29D2200AA07C6 /* RecommendPerViewController.xib */; };
+		F9A6391120A2A14000AA07C6 /* RecomPerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9A6390F20A2A14000AA07C6 /* RecomPerTableViewCell.m */; };
+		F9A6391220A2A14000AA07C6 /* RecomPerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9A6391020A2A14000AA07C6 /* RecomPerTableViewCell.xib */; };
+		F9A6391520A2AD1F00AA07C6 /* RecomPerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F9A6391420A2AD1F00AA07C6 /* RecomPerModel.m */; };
 		F9B5D8F6205F8B5000C9F6DC /* wordcup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9B5D8F4205F8B4F00C9F6DC /* wordcup@2x.png */; };
 		F9B5D8F7205F8B5000C9F6DC /* wordcup@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9B5D8F5205F8B4F00C9F6DC /* wordcup@3x.png */; };
 		F9B5D912205FB0B000C9F6DC /* GYJPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9B5D90F205FB0AE00C9F6DC /* GYJPlayViewController.m */; };
@@ -1529,6 +1534,9 @@
 		2D16601920A2D4DE00C1C7E7 /* FollowSchemeViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FollowSchemeViewCell.xib; sourceTree = "<group>"; };
 		2D16601C20A2DF3600C1C7E7 /* FollowListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FollowListModel.h; sourceTree = "<group>"; };
 		2D16601D20A2DF3600C1C7E7 /* FollowListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FollowListModel.m; sourceTree = "<group>"; };
+		2D16602020A2EFB800C1C7E7 /* FollowSendViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FollowSendViewController.h; sourceTree = "<group>"; };
+		2D16602120A2EFB800C1C7E7 /* FollowSendViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FollowSendViewController.m; sourceTree = "<group>"; };
+		2D16602220A2EFB800C1C7E7 /* FollowSendViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FollowSendViewController.xib; sourceTree = "<group>"; };
 		2D205FE61FFC6E940086E266 /* WBBifenZhiboViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WBBifenZhiboViewController.xib; sourceTree = "<group>"; };
 		2D205FE71FFC6E940086E266 /* WBBifenZhiboViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBBifenZhiboViewController.m; sourceTree = "<group>"; };
 		2D205FE81FFC6E950086E266 /* WBBifenZhiboViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBBifenZhiboViewController.h; sourceTree = "<group>"; };
@@ -2719,6 +2727,11 @@
 		F9A6390420A29D2200AA07C6 /* RecommendPerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecommendPerViewController.h; sourceTree = "<group>"; };
 		F9A6390520A29D2200AA07C6 /* RecommendPerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecommendPerViewController.m; sourceTree = "<group>"; };
 		F9A6390620A29D2200AA07C6 /* RecommendPerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendPerViewController.xib; sourceTree = "<group>"; };
+		F9A6390E20A2A14000AA07C6 /* RecomPerTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecomPerTableViewCell.h; sourceTree = "<group>"; };
+		F9A6390F20A2A14000AA07C6 /* RecomPerTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecomPerTableViewCell.m; sourceTree = "<group>"; };
+		F9A6391020A2A14000AA07C6 /* RecomPerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecomPerTableViewCell.xib; sourceTree = "<group>"; };
+		F9A6391320A2AD1F00AA07C6 /* RecomPerModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecomPerModel.h; sourceTree = "<group>"; };
+		F9A6391420A2AD1F00AA07C6 /* RecomPerModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecomPerModel.m; sourceTree = "<group>"; };
 		F9B5D8F4205F8B4F00C9F6DC /* wordcup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wordcup@2x.png"; sourceTree = "<group>"; };
 		F9B5D8F5205F8B4F00C9F6DC /* wordcup@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wordcup@3x.png"; sourceTree = "<group>"; };
 		F9B5D90F205FB0AE00C9F6DC /* GYJPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYJPlayViewController.m; sourceTree = "<group>"; };
@@ -5355,6 +5368,9 @@
 				F9A6390420A29D2200AA07C6 /* RecommendPerViewController.h */,
 				F9A6390520A29D2200AA07C6 /* RecommendPerViewController.m */,
 				F9A6390620A29D2200AA07C6 /* RecommendPerViewController.xib */,
+				2D16602020A2EFB800C1C7E7 /* FollowSendViewController.h */,
+				2D16602120A2EFB800C1C7E7 /* FollowSendViewController.m */,
+				2D16602220A2EFB800C1C7E7 /* FollowSendViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -5362,6 +5378,8 @@
 		F9A6390220A29B3900AA07C6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F9A6391320A2AD1F00AA07C6 /* RecomPerModel.h */,
+				F9A6391420A2AD1F00AA07C6 /* RecomPerModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -5369,6 +5387,9 @@
 		F9A6390320A29B4100AA07C6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F9A6390E20A2A14000AA07C6 /* RecomPerTableViewCell.h */,
+				F9A6390F20A2A14000AA07C6 /* RecomPerTableViewCell.m */,
+				F9A6391020A2A14000AA07C6 /* RecomPerTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -6412,6 +6433,7 @@
 				F999275E2003223000023F8F /* bj_overdue@3x.png in Resources */,
 				F9CD01E6202419AD00E54E79 /* linehelp@3x.png in Resources */,
 				2D0E23CE2019A5F30098DA40 /* set@3x.png in Resources */,
+				2D16602420A2EFB800C1C7E7 /* FollowSendViewController.xib in Resources */,
 				2D628B451FECAA9A0013D0E1 /* fengkuangjingcai-monitouzhu-weixuanze@2x.png in Resources */,
 				2D4B1E701FDF684E0034B708 /* faxian_defealt@3x.png in Resources */,
 				F94AA99D1FEB46770021B980 /* TopUpsViewController.xib in Resources */,
@@ -6462,6 +6484,7 @@
 				F9B5D9992060A9DE00C9F6DC /* flag421@2x.png in Resources */,
 				2D5171FB200C73D900C3CD7F /* icon_won_tatus@2x.png in Resources */,
 				F93EEEE02021D388001C635A /* lockredpacket@2x.png in Resources */,
+				F9A6391220A2A14000AA07C6 /* RecomPerTableViewCell.xib in Resources */,
 				F91565F11FFCBDAE00E254CE /* microblog@3x.png in Resources */,
 				2D36175F2061E6F2003093F9 /* shengfucai@3x.png in Resources */,
 				2D0E23C72019A5C20098DA40 /* withdraw@2x.png in Resources */,
@@ -6704,6 +6727,7 @@
 				2D739C231FE2611C00264044 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				2D7B140A204E89160035AE89 /* LotteryTitleView.m in Sources */,
 				2D0600231FFDCD9F009E7568 /* MJRefreshBackGifFooter.m in Sources */,
+				F9A6391520A2AD1F00AA07C6 /* RecomPerModel.m in Sources */,
 				2DDEDE7F1FD568C9007AEBF7 /* UIProgressView+AFNetworking.m in Sources */,
 				2DE892A02020724C008926A6 /* JWCacheURLProtocol.m in Sources */,
 				F9B5DA6D2060BD2E00C9F6DC /* HomeGJItemViewCell.m in Sources */,
@@ -6864,10 +6888,12 @@
 				2D0600241FFDCD9F009E7568 /* MJRefreshBackNormalFooter.m in Sources */,
 				2D06004B1FFE0606009E7568 /* JCLQOrderDetailInfoViewController.m in Sources */,
 				2DDEDC411FD52513007AEBF7 /* LotteryManager.m in Sources */,
+				2D16602320A2EFB800C1C7E7 /* FollowSendViewController.m in Sources */,
 				2D739C8E1FE8999700264044 /* MatchLeagueSelectView.m in Sources */,
 				2D06001B1FFDCD9F009E7568 /* MJRefreshAutoFooter.m in Sources */,
 				2D4B1E3F1FDF652C0034B708 /* HomeMenuItemView.m in Sources */,
 				2D7B13CB204E877A0035AE89 /* CTZQTouzhuRenjiuCell.m in Sources */,
+				F9A6391120A2A14000AA07C6 /* RecomPerTableViewCell.m in Sources */,
 				2D739C271FE265D800264044 /* UITextField+WbSetLRView.m in Sources */,
 				2D739C941FE8A4DE00264044 /* JCZQSelectAllPlayTypeVIew.m in Sources */,
 				2D7B13FE204E887A0035AE89 /* CTZQOpenLotterySelectDateView.m in Sources */,

@@ -7,13 +7,16 @@
 //
 
 #import "RecommendPerViewController.h"
-#import "OptionSelectedView.h"
-#import "JCLQPlayController.h"
-#import "JCZQPlayViewController.h"
+#import "RecomPerTableViewCell.h"
+#import "RecomPerModel.h"
 
-@interface RecommendPerViewController ()<OptionSelectedViewDelegate>{
-        OptionSelectedView *optionView;
-}
+#define KRecomPerTableViewCell @"RecomPerTableViewCell"
+@interface RecommendPerViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate>
+
+
+@property(nonatomic,strong)NSMutableArray <RecomPerModel *> * personArray;
+
+@property (weak, nonatomic) IBOutlet UITableView *personList;
 
 @end
 
@@ -21,51 +24,65 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setRightBarItems];
-}
 
--(void)setRightBarItems{
-    
-    UIBarButtonItem *itemQuery = [self creatBarItem:@"发起跟投" icon:@"" andFrame:CGRectMake(0, 10, 65, 25) andAction:@selector(optionRightButtonAction)];
-    self.navigationItem.rightBarButtonItems = @[itemQuery];
-}
-
-- (void) optionRightButtonAction {
-    //    if (isShowFLag) {
-    //        return;
-    //    }
-    
-    NSArray *titleArr = @[@" 竞猜篮球",
-                          @" 竞猜足球"];
-    CGFloat optionviewWidth = 100;
-    CGFloat optionviewCellheight = 38;
-    CGSize mainSize = [UIScreen mainScreen].bounds.size;
-    if (optionView == nil) {
-        optionView = [[OptionSelectedView alloc] initWithFrame:CGRectMake(mainSize.width - optionviewWidth, DisTop, optionviewWidth, optionviewCellheight * titleArr.count) andTitleArr:titleArr];
-    }else{
-        optionView.hidden = NO;
+    self.personList.delegate = self;
+    self.personList.dataSource = self;
+    [self.personList registerNib:[UINib nibWithNibName:KRecomPerTableViewCell bundle:nil] forCellReuseIdentifier:KRecomPerTableViewCell];
+    self.personArray = [NSMutableArray arrayWithCapacity:0];
+    [self setBarTitle];
+    //data request
+    if (self.lotteryMan == nil) {
+        self.lotteryMan = [[LotteryManager alloc]init];
     }
-    
-    optionView.delegate = self;
-    [self.view.window addSubview:optionView];
+    self.lotteryMan.delegate = self;
+    [self.lotteryMan listRecommendPer:@{@"channelCode":CHANNEL_CODE} categoryCode:self.categoryCode];
+    [self.personList reloadData];
+    // Do any additional setup after loading the view from its nib.
+}
+
+- (void)setBarTitle{
+    if ([self.categoryCode isEqualToString:@"Cowman"]) {
+        self.title = @"牛人榜";
+    } else if ([self.categoryCode isEqualToString:@"Redman"]){
+        self.title = @"红人榜";
+    } else {
+        self.title = @"红单榜";
+    }
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+#pragma mark  lotteryMan
 
-- (void)optionDidSelacted:(OptionSelectedView *)optionSelectedView andIndex:(NSInteger)index{
-    if(index == 0){
-        JCZQPlayViewController * playViewVC = [[JCZQPlayViewController alloc]init];
-        playViewVC.hidesBottomBarWhenPushed = YES;
-        playViewVC.fromSchemeType = SchemeTypeFaqiGenDan;
-        [self.navigationController pushViewController:playViewVC animated:YES];
-    }else if(index == 1){
-        JCLQPlayController * playViewVC = [[JCLQPlayController alloc]init];
-        playViewVC.hidesBottomBarWhenPushed = YES;
-        playViewVC.fromSchemeType = SchemeTypeFaqiGenDan;
-        [self.navigationController pushViewController:playViewVC animated:YES];    }
+- (void) gotlistRecommend:(NSArray *)infoArray  errorMsg:(NSString *)msg{
+    [self.personArray removeAllObjects];
+    //添加数据
+    for (NSDictionary *dic in infoArray) {
+        RecomPerModel *model = [[RecomPerModel alloc]initWithDic:dic];
+        [self.personArray addObject:model];
+    }
+    
+    
+}//牛人，红人，红单榜
+
+#pragma mark  tableView
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return  60;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.personArray.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    RecomPerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KRecomPerTableViewCell];
+    RecomPerModel *model = [self.personArray objectAtIndex:indexPath.row];
+    [cell reloadDate:model];
+    return cell;
+
 }
 
 @end

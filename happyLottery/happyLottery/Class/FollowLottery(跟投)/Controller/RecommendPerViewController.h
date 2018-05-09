@@ -11,4 +11,6 @@
 
 @interface RecommendPerViewController : BaseViewController
 
+@property (nonatomic,copy) NSString *categoryCode;
+
 @end
