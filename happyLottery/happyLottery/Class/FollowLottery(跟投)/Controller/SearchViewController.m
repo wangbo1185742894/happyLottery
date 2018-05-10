@@ -10,9 +10,13 @@
 #import "HotFollowSchemeViewCell.h"
 #define KHotFollowSchemeViewCell @"HotFollowSchemeViewCell"
 
-@interface SearchViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface SearchViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate>
+{
+    NSMutableArray <HotSchemeModel *> * schemeList;
+}
 @property (weak, nonatomic) IBOutlet UIButton *btnSearch;
 @property (weak, nonatomic) IBOutlet UITextField *tfSearchKey;
+@property(assign,nonatomic)NSInteger page;
 @property (weak, nonatomic) IBOutlet UITableView *tabSearchResultList;
 
 @end
@@ -21,9 +25,51 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.lotteryMan.delegate = self;
+    _page = 0;
+    schemeList = [NSMutableArray arrayWithCapacity:0];
     [self setTableView];
+    [self.tabSearchResultList reloadData];
     [self setTextFiled];
-    
+    [self getHotFollowScheme];
+    [UITableView refreshHelperWithScrollView:self.tabSearchResultList target:self loadNewData:@selector(loadNewData) loadMoreData:@selector(loadMoreData) isBeginRefresh:NO];
+}
+
+-(void)loadNewData{
+    _page = 0;
+    [self getHotFollowScheme];
+}
+
+-(void)loadMoreData{
+    _page ++;
+    [self getHotFollowScheme];
+}
+
+-(void)getHotFollowScheme{
+    if (self.tfSearchKey.text .length == 0) {
+        [self showPromptText:@"请输入要查询的昵称" hideAfterDelay:1.9];
+        [schemeList removeAllObjects];
+        [self.tabSearchResultList reloadData];
+        
+        return;
+    }
+    NSDictionary *parc = @{@"nickName":self.tfSearchKey.text,@"page":@(_page),@"pageSize":@(KpageSize),@"isHis":@NO};
+    [self.lotteryMan getFollowSchemeByNickName:parc];
+}
+
+-(void)getHotFollowScheme:(NSArray *)personList errorMsg:(NSString *)msg{
+    [self.tabSearchResultList tableViewEndRefreshCurPageCount:personList.count];
+    if (personList == nil) {
+        [self showPromptText:msg hideAfterDelay:1.8];
+        return;
+    }
+    if (_page == 0) {
+        [schemeList removeAllObjects];
+    }
+    for (NSDictionary *dic in personList) {
+        [schemeList addObject:[[HotSchemeModel alloc]initWith:dic]];
+    }
+    [self.tabSearchResultList  reloadData];
 }
 
 -(void)setTextFiled{
@@ -60,11 +106,13 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
- return 10;
+ return schemeList.count;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     HotFollowSchemeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KHotFollowSchemeViewCell];
+    [cell loadDataWithModel:schemeList[indexPath.row]];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -76,6 +124,7 @@
     [self dismissViewControllerAnimated:NO completion:nil];
 }
 - (IBAction)actionSearch:(id)sender {
+     [self loadNewData];
 }
 
 

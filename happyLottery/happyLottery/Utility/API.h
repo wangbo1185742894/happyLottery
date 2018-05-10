@@ -92,6 +92,9 @@
 #define APIRedManList                 @"red_man_list"  //获取红人榜
 #define APIRedSchemeList            @"red_scheme_list" //获取红单榜
 #define APIlistGreatFollow           @"listGreatFollow" //跟单首页可跟单大师列表
+#define APIGetHotFollowScheme  @"getHotFollowScheme"  // 获取热门发单
+
+#define APIGetFollowSchemeByNickName  @"getFollowSchemeByNickName"
 
 #define SUBAPIDATA           @"/data"
 #define APISaveClientInfo           @"saveClientInfo"

@@ -33,16 +33,12 @@
     return customLayout;
 }
 -(void)setCollection:(NSInteger )index andData:(NSArray * )model{
-    
+    self.selectIndex = index;
     if (index == 0) {
         self.topList = model;
-        self.selectIndex = index;
     }else if (index == 2){
         self.eightList = model;
-        self.selectIndex = -1;
     }
-    
-    
     _collectionViewItem.backgroundColor = [UIColor whiteColor];
     _collectionViewItem.dataSource = self;
     _collectionViewItem.delegate = self;
@@ -63,17 +59,9 @@
     if (self.selectIndex == 0) {
         return 4;
     }else    if (self.selectIndex ==2) {
-        return 8;
+        return self.eightList.count;
     }
     return 1;
-}
-
--(NSInteger )getArrayCount:(NSArray *)itemArray{
-    if(itemArray  == nil || itemArray.count == 0){
-        return 1;
-    }else{
-        return itemArray.count;
-    }
 }
 
 
@@ -82,10 +70,11 @@
     MenuCollectionViewCell* cell= [collectionView dequeueReusableCellWithReuseIdentifier:KMenuCollectionViewCell forIndexPath:indexPath];
     if (self.selectIndex == 0) {
         
+        cell.index = indexPath.row;
         [cell setItemIcom:_topList[indexPath.row]];
     }else{
-        cell.index = indexPath.row;
-        [cell setEightItemIcom:_eightList[0]];
+        cell.index = -1;
+        [cell setEightItemIcom:_eightList[indexPath.row]];
     }
     cell.delegate = self.delegate;
     return cell;
@@ -99,8 +88,6 @@
     [super setSelected:selected animated:animated];
 
 }
-- (IBAction)actionMore:(id)sender {
-    [self.delegate recommendViewCellDelegateMore:self.selectIndex];
-}
+
 
 @end

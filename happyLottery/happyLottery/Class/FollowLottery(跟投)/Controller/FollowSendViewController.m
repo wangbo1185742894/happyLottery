@@ -17,6 +17,7 @@
 #import "HomeTabTopAdsViewCell.h"
 #import "SearchViewController.h"
 #import "MenuCollectionViewCell.h"
+#import "HotSchemeModel.h"
 #define KRecommendViewCell @"RecommendViewCell"
 #define KHotFollowSchemeViewCell @"HotFollowSchemeViewCell"
 #define KHomeTabTopAdsViewCell @"HomeTabTopAdsViewCell"
@@ -26,6 +27,7 @@
         OptionSelectedView *optionView;
     NSArray *topMenuList;
     NSArray *eightList;
+    NSMutableArray <HotSchemeModel *> * schemeList;
     
     __weak IBOutlet UITableView *tabFollewView;
 }
@@ -36,6 +38,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    schemeList = [NSMutableArray arrayWithCapacity:0];
     self.lotteryMan.delegate = self;
     [self getTopViewData];
     [self setRightBarItems];
@@ -43,6 +46,22 @@
     
     [self loadEightPerosn];
     
+    [self getHotFollowScheme];
+    
+}
+-(void)getHotFollowScheme{
+    [self.lotteryMan getHotFollowScheme];
+}
+
+-(void)getHotFollowScheme:(NSArray *)personList errorMsg:(NSString *)msg{
+    if (personList == nil) {
+        [self showPromptText:msg hideAfterDelay:1.8];
+        return;
+    }
+    for (NSDictionary *dic in personList) {
+        [schemeList addObject:[[HotSchemeModel alloc]initWith:dic]];
+    }
+    [tabFollewView reloadSections:[NSIndexSet indexSetWithIndex:3] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 -(void)loadEightPerosn{
@@ -88,7 +107,7 @@
     }else   if(section == 2){
         return 1;
     }else   if(section == 3){
-        return 10;
+        return schemeList.count;
     }else{
         return 0;
     }
@@ -109,6 +128,8 @@
         return cell;
     }else   if(indexPath.section == 3){
         HotFollowSchemeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KHotFollowSchemeViewCell];
+        [cell loadDataWithModel:schemeList[indexPath.row]];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }else{
         return nil;
