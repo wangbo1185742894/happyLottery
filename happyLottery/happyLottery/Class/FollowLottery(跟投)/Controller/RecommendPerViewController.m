@@ -35,8 +35,14 @@
         self.lotteryMan = [[LotteryManager alloc]init];
     }
     self.lotteryMan.delegate = self;
-    [self.lotteryMan listRecommendPer:@{@"channelCode":CHANNEL_CODE} categoryCode:self.categoryCode];
-    [self.personList reloadData];
+    NSDictionary *dic;
+    if ([self.categoryCode isEqualToString:@"Cowman"]) {
+        dic = @{@"channelCode":CHANNEL_CODE};
+    } else {
+        dic = nil;
+    }
+    [self.lotteryMan listRecommendPer:dic categoryCode:self.categoryCode];
+    
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -63,7 +69,7 @@
         RecomPerModel *model = [[RecomPerModel alloc]initWithDic:dic];
         [self.personArray addObject:model];
     }
-    
+    [self.personList reloadData];
     
 }//牛人，红人，红单榜
 

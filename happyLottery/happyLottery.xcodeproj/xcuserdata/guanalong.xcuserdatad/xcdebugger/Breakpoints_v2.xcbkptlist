@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "happyLottery/Class/Base/Model/LotteryManager.m"
-            timestampString = "547537700.896922"
+            timestampString = "547550228.88608"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "524"
@@ -25,13 +25,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "happyLottery/Class/FollowLottery(&#x8ddf;&#x6295;)/Controller/RecommendPerViewController.m"
-            timestampString = "547537700.897337"
+            filePath = "happyLottery/Class/LotteryMine(&#x6211;&#x7684;)/View/SchemeDetailViewCell.m"
+            timestampString = "547541065.483117"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "-gotlistRecommend:errorMsg:"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "SchemeDetailViewCell()"
+            landmarkType = "2">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/FollowLottery(&#x8ddf;&#x6295;)/Controller/RecommendPerViewController.m"
+            timestampString = "547550808.66966"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,12 +58,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "happyLottery/Class/Base/Model/LotteryManager.m"
-            timestampString = "547537700.897935"
+            timestampString = "547550845.718564"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1340"
-            endingLineNumber = "1340"
+            startingLineNumber = "1345"
+            endingLineNumber = "1345"
             landmarkName = "-listRecommendPer:categoryCode:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/View/WCHomeGYJItemViewCell.m"
+            timestampString = "547551100.019696"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "+cellWithTableView:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
