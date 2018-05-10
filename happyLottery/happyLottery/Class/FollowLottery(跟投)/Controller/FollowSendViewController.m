@@ -10,11 +10,23 @@
 #import "OptionSelectedView.h"
 #import "JCLQPlayController.h"
 #import "JCZQPlayViewController.h"
-@interface FollowSendViewController ()<OptionSelectedViewDelegate>
+#import "RecommendViewCell.h"
+#import "HotFollowSchemeViewCell.h"
+#import "FollowHeaderView.h"
+#import "HomeTabTopAdsViewCell.h"
+#import "SearchViewController.h"
+#import "MenuCollectionViewCell.h"
+#define KRecommendViewCell @"RecommendViewCell"
+#define KHotFollowSchemeViewCell @"HotFollowSchemeViewCell"
+#define KHomeTabTopAdsViewCell @"HomeTabTopAdsViewCell"
+@interface FollowSendViewController ()<OptionSelectedViewDelegate,UITableViewDelegate,UITableViewDataSource,FollowHeaderDelegate,LotteryManagerDelegate,HomeMenuItemViewDelegate>
 {
     
         OptionSelectedView *optionView;
+    NSArray *topMenuList;
+    NSArray *eightList;
     
+    __weak IBOutlet UITableView *tabFollewView;
 }
 
 @end
@@ -23,9 +35,127 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.lotteryMan.delegate = self;
+    [self getTopViewData];
     [self setRightBarItems];
+    [self setTableView];
+    
+    [self loadEightPerosn];
     
 }
+
+-(void)loadEightPerosn{
+    [self.lotteryMan listGreatFollow:nil];
+}
+
+-(void)listGreatFollow:(NSArray *)personList errorMsg:(NSString *)msg{
+    if (personList == nil) {
+        [self showPromptText:msg hideAfterDelay:1.8];
+        return;
+    }
+    eightList = personList;
+    NSIndexPath *indexpath = [NSIndexPath indexPathForRow:0 inSection:2];
+    
+    
+    [tabFollewView reloadRowsAtIndexPaths:@[indexpath] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+-(void)getTopViewData{
+    
+    topMenuList = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"FollowTop" ofType: @"plist"]];
+}
+
+
+-(void)setTableView{
+    tabFollewView.delegate = self;
+    tabFollewView.dataSource = self;
+    [tabFollewView registerNib:[UINib nibWithNibName:KRecommendViewCell bundle:nil] forCellReuseIdentifier:KRecommendViewCell];
+    [tabFollewView registerNib:[UINib nibWithNibName:KHotFollowSchemeViewCell bundle:nil] forCellReuseIdentifier:KHotFollowSchemeViewCell];
+    [tabFollewView registerClass:[HomeTabTopAdsViewCell class] forCellReuseIdentifier:KHomeTabTopAdsViewCell];
+    [tabFollewView reloadData];
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 4;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if(section == 0){
+        return 1;
+    }else   if(section == 1){
+        return 1;
+    }else   if(section == 2){
+        return 1;
+    }else   if(section == 3){
+        return 10;
+    }else{
+        return 0;
+    }
+}
+
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(indexPath.section == 0){
+        RecommendViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KRecommendViewCell];
+        [cell setCollection:0 andData:topMenuList];
+        
+        return cell;
+    }else   if(indexPath.section == 1){
+        HomeTabTopAdsViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KHomeTabTopAdsViewCell];
+        return  cell;
+    }else   if(indexPath.section == 2){
+        RecommendViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KRecommendViewCell];
+        [cell setCollection:2 andData:eightList];
+        return cell;
+    }else   if(indexPath.section == 3){
+        HotFollowSchemeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KHotFollowSchemeViewCell];
+        return cell;
+    }else{
+        return nil;
+    }
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(indexPath.section == 0){
+        return 85;
+    }else   if(indexPath.section == 1){
+        return  80;
+    }else   if(indexPath.section == 2){
+        
+        return 170;
+    }else   if(indexPath.section == 3){
+        return 200;
+    }else{
+        return 0;
+    }
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    if(section == 1 || section == 2){
+        return 10;
+    }else{
+        return 1;
+    }
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if(section == 3){
+        return 40;
+    }else{
+        return 1;
+    }
+}
+
+-(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+
+    if(section == 3){
+        FollowHeaderView *headerView = [[FollowHeaderView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, 44)];
+        headerView.delegate = self;
+        return headerView;
+    }else{
+        return [UIView new];
+    }
+}
+
 -(void)setRightBarItems{
     
     UIBarButtonItem *itemQuery = [self creatBarItem:@"发起跟投" icon:@"" andFrame:CGRectMake(0, 10, 65, 25) andAction:@selector(optionRightButtonAction)];
@@ -68,4 +198,22 @@
         
     }
 }
+
+-(void)search{
+    SearchViewController *searchVC = [[SearchViewController alloc]init];
+    [self presentViewController:searchVC animated:YES completion:nil];
+}
+
+-(void)itemClick:(NSInteger)index{
+    if (index == 0) {  // 牛人
+        
+    }else if (index == 1){  // 红人
+        
+    }else if (index == 2){ // 红单
+        
+    }else if (index == 3){  // 我的关注
+        
+    }
+}
+
 @end

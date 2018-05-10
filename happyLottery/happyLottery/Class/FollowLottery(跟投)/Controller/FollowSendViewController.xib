@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FollowSendViewController">
             <connections>
+                <outlet property="tabFollewView" destination="ULt-d3-HJW" id="2Pf-82-nGX"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,7 +19,20 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="ULt-d3-HJW">
+                    <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                    <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </tableView>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="ULt-d3-HJW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="9rQ-HI-0rH"/>
+                <constraint firstItem="ULt-d3-HJW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="JgV-RS-yuf"/>
+                <constraint firstAttribute="trailing" secondItem="ULt-d3-HJW" secondAttribute="trailing" id="rJF-mJ-FlD"/>
+                <constraint firstAttribute="bottom" secondItem="ULt-d3-HJW" secondAttribute="bottom" id="tM0-Ng-2Lb"/>
+            </constraints>
+            <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>
     </objects>
 </document>

@@ -38,6 +38,9 @@
 		2D03F28C2060BAE900C81BEF /* PersonnalCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D03F2782060BAE800C81BEF /* PersonnalCenterViewController.xib */; };
 		2D03F28D2060BAE900C81BEF /* SetPayPWDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D03F27A2060BAE800C81BEF /* SetPayPWDViewController.m */; };
 		2D03F28E2060BAE900C81BEF /* SetPayPWDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D03F27B2060BAE800C81BEF /* SetPayPWDViewController.xib */; };
+		2D05C81420A3EE3E001A8953 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D05C81220A3EE3E001A8953 /* SearchViewController.m */; };
+		2D05C81520A3EE3E001A8953 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D05C81320A3EE3E001A8953 /* SearchViewController.xib */; };
+		2D05C81720A3F60E001A8953 /* HomeMenuItemsConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D05C81620A3F60E001A8953 /* HomeMenuItemsConfig.plist */; };
 		2D06001B1FFDCD9F009E7568 /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D06FFEF1FFDCD9E009E7568 /* MJRefreshAutoFooter.m */; };
 		2D06001C1FFDCD9F009E7568 /* MJRefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D06FFF11FFDCD9E009E7568 /* MJRefreshBackFooter.m */; };
 		2D06001D1FFDCD9F009E7568 /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D06FFF31FFDCD9E009E7568 /* MJRefreshComponent.m */; };
@@ -243,6 +246,15 @@
 		2D3617872069D86C003093F9 /* GYJLeagueSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D3617842069D86B003093F9 /* GYJLeagueSelectView.xib */; };
 		2D3617882069D86C003093F9 /* GYJLeagueSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3617862069D86C003093F9 /* GYJLeagueSelectView.m */; };
 		2D36178B2069D8FE003093F9 /* GYJTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D36178A2069D8FE003093F9 /* GYJTransaction.m */; };
+		2D3A06B720A3D640003C5E7B /* RecommendViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3A06B420A3D63F003C5E7B /* RecommendViewCell.m */; };
+		2D3A06B820A3D640003C5E7B /* RecommendViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D3A06B620A3D63F003C5E7B /* RecommendViewCell.xib */; };
+		2D3A06C120A3D6BB003C5E7B /* MenuCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D3A06BE20A3D6BA003C5E7B /* MenuCollectionViewCell.xib */; };
+		2D3A06C220A3D6BB003C5E7B /* MenuCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3A06C020A3D6BB003C5E7B /* MenuCollectionViewCell.m */; };
+		2D3A06C520A3D6CB003C5E7B /* HomeTabTopAdsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3A06C320A3D6CB003C5E7B /* HomeTabTopAdsViewCell.m */; };
+		2D3A06C920A3D7BC003C5E7B /* HotFollowSchemeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3A06C720A3D7BC003C5E7B /* HotFollowSchemeViewCell.m */; };
+		2D3A06CA20A3D7BC003C5E7B /* HotFollowSchemeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D3A06C820A3D7BC003C5E7B /* HotFollowSchemeViewCell.xib */; };
+		2D3A06CC20A3E702003C5E7B /* FollowHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D3A06CB20A3E702003C5E7B /* FollowHeaderView.xib */; };
+		2D3A06CF20A3E84E003C5E7B /* FollowHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3A06CE20A3E84E003C5E7B /* FollowHeaderView.m */; };
 		2D40CAA2201EDE5700DDCFE3 /* shut@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40CA98201EDE4E00DDCFE3 /* shut@2x.png */; };
 		2D40CAA3201EDE5700DDCFE3 /* button_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40CA99201EDE4F00DDCFE3 /* button_line@2x.png */; };
 		2D40CAA4201EDE5700DDCFE3 /* bj_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40CA9A201EDE5100DDCFE3 /* bj_down@2x.png */; };
@@ -263,7 +275,7 @@
 		2D4B1E3B1FDE717C0034B708 /* newBack@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D4B1E391FDE717C0034B708 /* newBack@3x.png */; };
 		2D4B1E3F1FDF652C0034B708 /* HomeMenuItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B1E3C1FDF652B0034B708 /* HomeMenuItemView.m */; };
 		2D4B1E401FDF652C0034B708 /* HomeMenuItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4B1E3D1FDF652B0034B708 /* HomeMenuItemView.xib */; };
-		2D4B1E431FDF65480034B708 /* HomeMenuItemsConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D4B1E421FDF65480034B708 /* HomeMenuItemsConfig.plist */; };
+		2D4B1E431FDF65480034B708 /* FollowTop.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D4B1E421FDF65480034B708 /* FollowTop.plist */; };
 		2D4B1E6B1FDF684E0034B708 /* bifenzhibo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D4B1E451FDF684E0034B708 /* bifenzhibo@2x.png */; };
 		2D4B1E6C1FDF684E0034B708 /* bifenzhibo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D4B1E461FDF684E0034B708 /* bifenzhibo@3x.png */; };
 		2D4B1E6D1FDF684E0034B708 /* duibiao@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D4B1E471FDF684E0034B708 /* duibiao@3x.png */; };
@@ -1344,6 +1356,10 @@
 		2D03F2792060BAE800C81BEF /* SetPayPWDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetPayPWDViewController.h; sourceTree = "<group>"; };
 		2D03F27A2060BAE800C81BEF /* SetPayPWDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetPayPWDViewController.m; sourceTree = "<group>"; };
 		2D03F27B2060BAE800C81BEF /* SetPayPWDViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetPayPWDViewController.xib; sourceTree = "<group>"; };
+		2D05C81120A3EE3E001A8953 /* SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		2D05C81220A3EE3E001A8953 /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		2D05C81320A3EE3E001A8953 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		2D05C81620A3F60E001A8953 /* HomeMenuItemsConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HomeMenuItemsConfig.plist; sourceTree = "<group>"; };
 		2D0600001FFDCD9E009E7568 /* MJRefreshAutoStateFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshAutoStateFooter.m; sourceTree = "<group>"; };
 		2D0600021FFDCD9E009E7568 /* MJRefreshBackGifFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBackGifFooter.h; sourceTree = "<group>"; };
 		2D0600031FFDCD9E009E7568 /* MJRefreshBackGifFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshBackGifFooter.m; sourceTree = "<group>"; };
@@ -1600,6 +1616,20 @@
 		2D3617862069D86C003093F9 /* GYJLeagueSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYJLeagueSelectView.m; sourceTree = "<group>"; };
 		2D3617892069D8FD003093F9 /* GYJTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYJTransaction.h; sourceTree = "<group>"; };
 		2D36178A2069D8FE003093F9 /* GYJTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYJTransaction.m; sourceTree = "<group>"; };
+		2D3A06B420A3D63F003C5E7B /* RecommendViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendViewCell.m; sourceTree = "<group>"; };
+		2D3A06B520A3D63F003C5E7B /* RecommendViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendViewCell.h; sourceTree = "<group>"; };
+		2D3A06B620A3D63F003C5E7B /* RecommendViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecommendViewCell.xib; sourceTree = "<group>"; };
+		2D3A06BE20A3D6BA003C5E7B /* MenuCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuCollectionViewCell.xib; sourceTree = "<group>"; };
+		2D3A06BF20A3D6BB003C5E7B /* MenuCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuCollectionViewCell.h; sourceTree = "<group>"; };
+		2D3A06C020A3D6BB003C5E7B /* MenuCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuCollectionViewCell.m; sourceTree = "<group>"; };
+		2D3A06C320A3D6CB003C5E7B /* HomeTabTopAdsViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTabTopAdsViewCell.m; sourceTree = "<group>"; };
+		2D3A06C420A3D6CB003C5E7B /* HomeTabTopAdsViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTabTopAdsViewCell.h; sourceTree = "<group>"; };
+		2D3A06C620A3D7BC003C5E7B /* HotFollowSchemeViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HotFollowSchemeViewCell.h; sourceTree = "<group>"; };
+		2D3A06C720A3D7BC003C5E7B /* HotFollowSchemeViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HotFollowSchemeViewCell.m; sourceTree = "<group>"; };
+		2D3A06C820A3D7BC003C5E7B /* HotFollowSchemeViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HotFollowSchemeViewCell.xib; sourceTree = "<group>"; };
+		2D3A06CB20A3E702003C5E7B /* FollowHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FollowHeaderView.xib; sourceTree = "<group>"; };
+		2D3A06CD20A3E84E003C5E7B /* FollowHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FollowHeaderView.h; sourceTree = "<group>"; };
+		2D3A06CE20A3E84E003C5E7B /* FollowHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FollowHeaderView.m; sourceTree = "<group>"; };
 		2D40CA98201EDE4E00DDCFE3 /* shut@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shut@2x.png"; sourceTree = "<group>"; };
 		2D40CA99201EDE4F00DDCFE3 /* button_line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_line@2x.png"; sourceTree = "<group>"; };
 		2D40CA9A201EDE5100DDCFE3 /* bj_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bj_down@2x.png"; sourceTree = "<group>"; };
@@ -1624,7 +1654,7 @@
 		2D4B1E3C1FDF652B0034B708 /* HomeMenuItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeMenuItemView.m; sourceTree = "<group>"; };
 		2D4B1E3D1FDF652B0034B708 /* HomeMenuItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeMenuItemView.xib; sourceTree = "<group>"; };
 		2D4B1E3E1FDF652B0034B708 /* HomeMenuItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeMenuItemView.h; sourceTree = "<group>"; };
-		2D4B1E421FDF65480034B708 /* HomeMenuItemsConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HomeMenuItemsConfig.plist; sourceTree = "<group>"; };
+		2D4B1E421FDF65480034B708 /* FollowTop.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FollowTop.plist; sourceTree = "<group>"; };
 		2D4B1E451FDF684E0034B708 /* bifenzhibo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bifenzhibo@2x.png"; sourceTree = "<group>"; };
 		2D4B1E461FDF684E0034B708 /* bifenzhibo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bifenzhibo@3x.png"; sourceTree = "<group>"; };
 		2D4B1E471FDF684E0034B708 /* duibiao@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "duibiao@3x.png"; sourceTree = "<group>"; };
@@ -3276,6 +3306,7 @@
 		2D4B1E411FDF65380034B708 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				2D05C81620A3F60E001A8953 /* HomeMenuItemsConfig.plist */,
 				2D811A92207DDA5E0069601C /* JCLQCode.plist */,
 				2D811A8E207DDA5A0069601C /* jingcailanqiu_daxiaofen.html */,
 				2D811A93207DDA5F0069601C /* jingcailanqiu_hunheguoguan.html */,
@@ -3301,7 +3332,7 @@
 				2D0600871FFF1365009E7568 /* HHGGPeilvTable.plist */,
 				2D628B4C1FECB2EB0013D0E1 /* JingCaiChuanTypeDic.plist */,
 				2D739CC31FEA7B4D00264044 /* JingCaiCode.plist */,
-				2D4B1E421FDF65480034B708 /* HomeMenuItemsConfig.plist */,
+				2D4B1E421FDF65480034B708 /* FollowTop.plist */,
 				2D739C6F1FE79DBB00264044 /* LotteryProfilesConfig.plist */,
 				F9FF4387201EE37C00179211 /* PageCodeIsLogin.plist */,
 				F9705EC7207C5CEB00E25E4E /* LotteryArea.plist */,
@@ -5371,6 +5402,9 @@
 				2D16602020A2EFB800C1C7E7 /* FollowSendViewController.h */,
 				2D16602120A2EFB800C1C7E7 /* FollowSendViewController.m */,
 				2D16602220A2EFB800C1C7E7 /* FollowSendViewController.xib */,
+				2D05C81120A3EE3E001A8953 /* SearchViewController.h */,
+				2D05C81220A3EE3E001A8953 /* SearchViewController.m */,
+				2D05C81320A3EE3E001A8953 /* SearchViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -5387,9 +5421,23 @@
 		F9A6390320A29B4100AA07C6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2D3A06C420A3D6CB003C5E7B /* HomeTabTopAdsViewCell.h */,
+				2D3A06C320A3D6CB003C5E7B /* HomeTabTopAdsViewCell.m */,
+				2D3A06BF20A3D6BB003C5E7B /* MenuCollectionViewCell.h */,
+				2D3A06C020A3D6BB003C5E7B /* MenuCollectionViewCell.m */,
+				2D3A06BE20A3D6BA003C5E7B /* MenuCollectionViewCell.xib */,
+				2D3A06B520A3D63F003C5E7B /* RecommendViewCell.h */,
+				2D3A06B420A3D63F003C5E7B /* RecommendViewCell.m */,
+				2D3A06B620A3D63F003C5E7B /* RecommendViewCell.xib */,
 				F9A6390E20A2A14000AA07C6 /* RecomPerTableViewCell.h */,
 				F9A6390F20A2A14000AA07C6 /* RecomPerTableViewCell.m */,
 				F9A6391020A2A14000AA07C6 /* RecomPerTableViewCell.xib */,
+				2D3A06C620A3D7BC003C5E7B /* HotFollowSchemeViewCell.h */,
+				2D3A06C720A3D7BC003C5E7B /* HotFollowSchemeViewCell.m */,
+				2D3A06C820A3D7BC003C5E7B /* HotFollowSchemeViewCell.xib */,
+				2D3A06CB20A3E702003C5E7B /* FollowHeaderView.xib */,
+				2D3A06CD20A3E84E003C5E7B /* FollowHeaderView.h */,
+				2D3A06CE20A3E84E003C5E7B /* FollowHeaderView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -5771,6 +5819,7 @@
 				F9B5D9A82060A9DE00C9F6DC /* flag524@3x.png in Resources */,
 				2D7B1303204D45840035AE89 /* LotteryWinHistoryHeadView.xib in Resources */,
 				F94AA9DE1FEB7B780021B980 /* zfb@3x.png in Resources */,
+				2D05C81520A3EE3E001A8953 /* SearchViewController.xib in Resources */,
 				F999276A200335DC00023F8F /* guanbi@2x.png in Resources */,
 				F94AA9C41FEB59DA0021B980 /* authentication@3x.png in Resources */,
 				2D0EEAB52015F79800B0769C /* ad_home1@3x.png in Resources */,
@@ -5915,6 +5964,7 @@
 				2D7B13C8204E877A0035AE89 /* CTZQTouzhuShisiCell.xib in Resources */,
 				F94AA9C31FEB59DA0021B980 /* unchecked@3x.png in Resources */,
 				2DCBB2811FD1000700934D92 /* LaunchScreen.storyboard in Resources */,
+				2D3A06B820A3D640003C5E7B /* RecommendViewCell.xib in Resources */,
 				F9DC698C1FDF7CF5007D384D /* Mine.plist in Resources */,
 				2D40CAB1201EEDC700DDCFE3 /* pic@3x.png in Resources */,
 				F9CD01F42024443D00E54E79 /* assisthelp@2x.png in Resources */,
@@ -5928,6 +5978,7 @@
 				2D4B1E3B1FDE717C0034B708 /* newBack@3x.png in Resources */,
 				F9705ED6207DD15200E25E4E /* pai3@2x.png in Resources */,
 				F9B5D97B2060A9DE00C9F6DC /* flag375@2x.png in Resources */,
+				2D3A06C120A3D6BB003C5E7B /* MenuCollectionViewCell.xib in Resources */,
 				2D628B261FECA9C40013D0E1 /* touzhubeishujian@3x.png in Resources */,
 				2D06FFE81FFDC9EB009E7568 /* arrows@3x.png in Resources */,
 				2D2117F72050E7A000023FB4 /* DLTSchemeViewCell.xib in Resources */,
@@ -5944,6 +5995,7 @@
 				2D0EEA902013280500B0769C /* trophydlt@3x.png in Resources */,
 				2D0600421FFDDD51009E7568 /* schemedetailpic@3x.png in Resources */,
 				F928C6B81FF4BA40001F1A32 /* decrease@3x.png in Resources */,
+				2D05C81720A3F60E001A8953 /* HomeMenuItemsConfig.plist in Resources */,
 				F9B5D98F2060A9DE00C9F6DC /* flag413@2x.png in Resources */,
 				2D0E23AA2018833E0098DA40 /* switchbackground@2x.png in Resources */,
 				2D5171DB200C729A00C3CD7F /* icon_yingli_@3x.png in Resources */,
@@ -6424,6 +6476,7 @@
 				F928C6891FF48DB3001F1A32 /* bj@2x.png in Resources */,
 				2D7B1407204E88ED0035AE89 /* CTZQLotteryPlayCell.xib in Resources */,
 				2D9847B61FF5EC9500038690 /* WBYCMatchDetailViewController.xib in Resources */,
+				2D3A06CC20A3E702003C5E7B /* FollowHeaderView.xib in Resources */,
 				F9B5D9AD2060A9DE00C9F6DC /* flag774@2x.png in Resources */,
 				F9B5D9842060A9DE00C9F6DC /* flag396@3x.png in Resources */,
 				F9B5D913205FB0B000C9F6DC /* GYJPlayViewController.xib in Resources */,
@@ -6471,7 +6524,7 @@
 				2D03F1EA205FD4C200C81BEF /* CTZQSchemeDetailViewController.xib in Resources */,
 				F9A6390820A29D2200AA07C6 /* RecommendPerViewController.xib in Resources */,
 				F9705ED1207DD15200E25E4E /* 3d@2x.png in Resources */,
-				2D4B1E431FDF65480034B708 /* HomeMenuItemsConfig.plist in Resources */,
+				2D4B1E431FDF65480034B708 /* FollowTop.plist in Resources */,
 				2D7B1353204E37100035AE89 /* helper@3x.png in Resources */,
 				F9D7C54F20060C1A00415B4E /* CouponGuidViewController.xib in Resources */,
 				2D36175E2061E6F2003093F9 /* shengfucai@2x.png in Resources */,
@@ -6495,7 +6548,7 @@
 				F90FCD901FF396F700BD807C /* fly@3x.png in Resources */,
 				2D4B1E8E1FDF684E0034B708 /* yucezhanji@3x.png in Resources */,
 				2D0EEA802012F7AF00B0769C /* icon_mingzhong@3x.png in Resources */,
-				2D4B1E431FDF65480034B708 /* HomeMenuItemsConfig.plist in Resources */,
+				2D4B1E431FDF65480034B708 /* FollowTop.plist in Resources */,
 				F92D03CC2005A14D00C26E7A /* dottedcoupon@3x.png in Resources */,
 				2D5171F8200C73BF00C3CD7F /* won_scheme@2x.png in Resources */,
 				F9B5D9832060A9DE00C9F6DC /* flag396@2x.png in Resources */,
@@ -6548,6 +6601,7 @@
 				2D628B601FF0C1980013D0E1 /* button_default@3x.png in Resources */,
 				2D2060161FFCB71E0086E266 /* btn_shouqi_@2x.png in Resources */,
 				F9B5D98E2060A9DE00C9F6DC /* flag410@3x.png in Resources */,
+				2D3A06CA20A3D7BC003C5E7B /* HotFollowSchemeViewCell.xib in Resources */,
 				F999278220037A7000023F8F /* empty_hongbao@2x.png in Resources */,
 				F9CD01E220240CEA00E54E79 /* zhifuchecked@3x.png in Resources */,
 			);
@@ -6705,9 +6759,11 @@
 				2D0600501FFE061D009E7568 /* JCLQOrderDetailViewCell.m in Sources */,
 				2D7B13E1204E878D0035AE89 /* CTZQKaiJiangTableViewCell.m in Sources */,
 				2D7B13E8204E87C40035AE89 /* OrderProfile.m in Sources */,
+				2D3A06B720A3D640003C5E7B /* RecommendViewCell.m in Sources */,
 				2D7B131D204D4A390035AE89 /* LotteryNumber.m in Sources */,
 				2D7B13D0204E877A0035AE89 /* CTZQHomeCell.m in Sources */,
 				2DDEDE681FD568C9007AEBF7 /* UIImage+MultiFormat.m in Sources */,
+				2D3A06C920A3D7BC003C5E7B /* HotFollowSchemeViewCell.m in Sources */,
 				2DDEDE671FD568C9007AEBF7 /* UIImage+GIF.m in Sources */,
 				F90FCD551FF34D1C00BD807C /* MyRedPacketViewController.m in Sources */,
 				2D5171B7200844AD00C3CD7F /* ADSModel.m in Sources */,
@@ -6759,6 +6815,7 @@
 				F9C3BA29200893D600916F3C /* FeedBackHistoryTableViewCell.m in Sources */,
 				2D739CA71FEA0A4000264044 /* JCZQTranscation.m in Sources */,
 				2D7B13A2204E871C0035AE89 /* CTZQWinHistoryViewController.m in Sources */,
+				2D05C81420A3EE3E001A8953 /* SearchViewController.m in Sources */,
 				2DD2C51B204550A1005A18C4 /* BounsOptimizeSingleModel.m in Sources */,
 				2D739C1C1FE2611C00264044 /* IQKeyboardManager.m in Sources */,
 				F93204F41FECF98C00E22A27 /* WBInputPopView.m in Sources */,
@@ -6771,6 +6828,7 @@
 				2DA39EC72052395D00A03FD1 /* OrderDatePickerView.m in Sources */,
 				2D739C6D1FE7898900264044 /* JCZQMatchViewCell.m in Sources */,
 				2D8CBFE71FF376DA00CC367F /* YuCeSchemeDetailCell.m in Sources */,
+				2D3A06C220A3D6BB003C5E7B /* MenuCollectionViewCell.m in Sources */,
 				2D0600861FFE206F009E7568 /* IQPreviousNextView.m in Sources */,
 				2D7B1326204D4ADB0035AE89 /* EXPingCeView.m in Sources */,
 				2D0600321FFDD2A1009E7568 /* SchemeDetailViewController.m in Sources */,
@@ -6789,6 +6847,7 @@
 				F9FDFAED2012F8DC0029ACC7 /* VersionUpdatingPopView.m in Sources */,
 				F9705E44207A0DE800E25E4E /* JCLQLotteryProfileSelectView.m in Sources */,
 				2D628B691FF213050013D0E1 /* SchemeCashPayment.m in Sources */,
+				2D3A06C520A3D6CB003C5E7B /* HomeTabTopAdsViewCell.m in Sources */,
 				2D7B12E4204D3BD60035AE89 /* Lottery.m in Sources */,
 				2D739C781FE7A38B00264044 /* JCZQProfile.m in Sources */,
 				F9705E23207A0DC400E25E4E /* JCLQMatchModel.m in Sources */,
@@ -6928,6 +6987,7 @@
 				2D7B12E1204D3BA10035AE89 /* LotteryInstructionDetailViewController.m in Sources */,
 				2D9847BA1FF5ED3100038690 /* JCYCTransaction.m in Sources */,
 				2D7B130C204D47B10035AE89 /* LotteryTimeCountdownView.m in Sources */,
+				2D3A06CF20A3E84E003C5E7B /* FollowHeaderView.m in Sources */,
 				2D7B131A204D4A190035AE89 /* XHSectionTitleView.m in Sources */,
 				2D0600281FFDCD9F009E7568 /* MJRefreshStateHeader.m in Sources */,
 				F94795B02062749300818A1F /* BaseTransaction.m in Sources */,

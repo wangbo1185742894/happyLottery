@@ -18,7 +18,6 @@
     #define APPUPDATAURL @"http://t.11max.com/Tbz"
 #endif
 
-
 //#define WSServerURL @"http://118.190.43.29:28000/services%@"
 //#define ServerAddress @"http://124.89.85.110:17085"  //资讯  轮播图 用户图像
 //#define H5BaseAddress @"http://118.190.43.29:28086"

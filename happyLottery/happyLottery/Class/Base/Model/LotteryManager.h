@@ -61,6 +61,7 @@ typedef enum EarningsType{
 - (void) gotJclqTicketOrderDetail:(NSDictionary *)infoArray  errorMsg:(NSString *)msg;//竞彩篮球
 - (void) gotlistRecommend:(NSArray *)infoArray  errorMsg:(NSString *)msg;//牛人，红人，红单榜
 - (void) initiateFollowScheme:(NSString *)resultStr  errorMsg:(NSString *)msg;
+- (void) listGreatFollow:(NSArray  *)personList  errorMsg:(NSString *)msg;
 
 
 @end
@@ -127,6 +128,8 @@ typedef enum EarningsType{
 - (void)listRecommendPer:(NSDictionary *)infoDic categoryCode:(NSString *)categoryCode;//获取牛人，红人，红单榜
 
 - (void)initiateFollowScheme:(NSDictionary *)infoDic;
+
+- (void)listGreatFollow:(NSDictionary *)infoDic;
 
 @end
 
