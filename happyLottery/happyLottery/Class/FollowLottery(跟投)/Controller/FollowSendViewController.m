@@ -21,7 +21,7 @@
 #define KRecommendViewCell @"RecommendViewCell"
 #define KHotFollowSchemeViewCell @"HotFollowSchemeViewCell"
 #define KHomeTabTopAdsViewCell @"HomeTabTopAdsViewCell"
-@interface FollowSendViewController ()<OptionSelectedViewDelegate,UITableViewDelegate,UITableViewDataSource,FollowHeaderDelegate,LotteryManagerDelegate,HomeMenuItemViewDelegate>
+@interface FollowSendViewController ()<OptionSelectedViewDelegate,UITableViewDelegate,UITableViewDataSource,FollowHeaderDelegate,LotteryManagerDelegate,HomeMenuItemViewDelegate,RecommendViewCellDelegate>
 {
     
         OptionSelectedView *optionView;
@@ -117,8 +117,8 @@
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.section == 0){
         RecommendViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KRecommendViewCell];
+        cell.delegate = self;
         [cell setCollection:0 andData:topMenuList];
-        
         return cell;
     }else   if(indexPath.section == 1){
         HomeTabTopAdsViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KHomeTabTopAdsViewCell];
@@ -228,13 +228,23 @@
     [self presentViewController:searchVC animated:YES completion:nil];
 }
 
+//牛人，红人，红单榜
+- (void)actionToRecommed:(NSString *)categoryCode {
+    RecommendPerViewController *perVC = [[RecommendPerViewController alloc]init];
+    perVC.hidesBottomBarWhenPushed = YES;
+    perVC.navigationController.navigationBar.hidden = YES;
+    perVC.categoryCode = categoryCode;
+    [self.navigationController pushViewController:perVC animated:YES];
+}
+
+
 -(void)itemClick:(NSInteger)index{
     if (index == 0) {  // 牛人
-        
+        [self actionToRecommed:@"Cowman"];
     }else if (index == 1){  // 红人
-        
+        [self actionToRecommed:@"Redman"];
     }else if (index == 2){ // 红单
-        
+        [self actionToRecommed:@"RedScheme"];
     }else if (index == 3){  // 我的关注
         
     }

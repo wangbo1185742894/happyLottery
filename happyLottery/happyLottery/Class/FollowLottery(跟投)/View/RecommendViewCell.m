@@ -69,6 +69,7 @@
 {
     MenuCollectionViewCell* cell= [collectionView dequeueReusableCellWithReuseIdentifier:KMenuCollectionViewCell forIndexPath:indexPath];
     if (self.selectIndex == 0) {
+        
         cell.index = indexPath.row;
         [cell setItemIcom:_topList[indexPath.row]];
     }else{
