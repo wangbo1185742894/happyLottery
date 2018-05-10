@@ -1420,6 +1420,58 @@
                         failure:failureBlock];
 }
 
+- (void)getHotFollowScheme{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed  && responseJsonStr!= nil && responseJsonStr.length>0) {
+            NSArray *personList = [self objFromJson:responseJsonStr];
+            
+            [self.delegate getHotFollowScheme:personList errorMsg:response.errorMsg];
+        }else{
+            [self.delegate getHotFollowScheme:nil errorMsg:response.errorMsg];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.delegate getHotFollowScheme:nil errorMsg:@"服务器错误"];
+    };
+    
+    SOAPRequest* request = [self requestForAPI:APIGetHotFollowScheme withParam:nil];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPISchemeService
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+- (void)getFollowSchemeByNickName:(NSDictionary *)paraic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed  && responseJsonStr!= nil && responseJsonStr.length>0) {
+            NSArray *personList = [self objFromJson:responseJsonStr];
+            
+            [self.delegate getHotFollowScheme:personList errorMsg:response.errorMsg];
+        }else{
+            [self.delegate getHotFollowScheme:nil errorMsg:response.errorMsg];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.delegate getHotFollowScheme:nil errorMsg:@"服务器错误"];
+    };
+    
+    SOAPRequest* request = [self requestForAPI:APIGetFollowSchemeByNickName withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPISchemeService
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+
+
 
 
 

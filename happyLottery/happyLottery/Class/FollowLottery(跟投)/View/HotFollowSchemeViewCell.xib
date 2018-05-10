@@ -26,7 +26,6 @@
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i4Y-N1-n3G">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
-                                        <color key="backgroundColor" red="0.99607843139999996" green="0.2274509804" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -56,6 +55,14 @@
                                     <constraint firstAttribute="width" constant="20" id="sZY-A7-vrh"/>
                                 </constraints>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E7t-w8-iLO">
+                                <rect key="frame" x="219" y="17.5" width="20" height="20"/>
+                                <color key="backgroundColor" red="0.99607843139999996" green="0.2274509804" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="3jP-89-k56"/>
+                                    <constraint firstAttribute="width" constant="20" id="4y5-Ui-6vJ"/>
+                                </constraints>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="近3中2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMA-7l-vt7">
                                 <rect key="frame" x="329" y="17.5" width="60" height="20"/>
                                 <color key="backgroundColor" red="0.99607843137254903" green="0.22745098039215686" blue="0.31764705882352939" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -67,16 +74,28 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Qu-vd-cnj">
+                                <rect key="frame" x="242" y="17" width="20" height="20"/>
+                                <color key="backgroundColor" red="0.99607843139999996" green="0.2274509804" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="Wtr-8p-wdk"/>
+                                    <constraint firstAttribute="height" constant="20" id="XoX-AE-wez"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="5Ct-NH-jYE" firstAttribute="centerY" secondItem="CWd-J7-phh" secondAttribute="centerY" id="8cE-7U-00m"/>
                             <constraint firstAttribute="trailing" secondItem="wMA-7l-vt7" secondAttribute="trailing" constant="10" id="9Hh-vG-mmS"/>
                             <constraint firstItem="XlW-V2-mHK" firstAttribute="leading" secondItem="g8B-Sw-Oby" secondAttribute="trailing" constant="10" id="DdB-Og-r4u"/>
+                            <constraint firstItem="E7t-w8-iLO" firstAttribute="top" secondItem="XlW-V2-mHK" secondAttribute="top" id="J9S-5B-xkR"/>
+                            <constraint firstItem="0Qu-vd-cnj" firstAttribute="top" secondItem="XlW-V2-mHK" secondAttribute="top" id="KoP-We-4Tp"/>
                             <constraint firstItem="g8B-Sw-Oby" firstAttribute="leading" secondItem="5Ct-NH-jYE" secondAttribute="trailing" constant="10" id="Ov3-oS-7OC"/>
+                            <constraint firstItem="E7t-w8-iLO" firstAttribute="leading" secondItem="XlW-V2-mHK" secondAttribute="trailing" constant="3" id="RTJ-Ry-UwT"/>
                             <constraint firstItem="5Ct-NH-jYE" firstAttribute="leading" secondItem="CWd-J7-phh" secondAttribute="leading" constant="15" id="SLI-K0-xk9"/>
                             <constraint firstItem="XlW-V2-mHK" firstAttribute="centerY" secondItem="CWd-J7-phh" secondAttribute="centerY" id="XTf-Kp-1Ln"/>
                             <constraint firstAttribute="height" constant="55" id="h8I-hH-E7q"/>
+                            <constraint firstItem="0Qu-vd-cnj" firstAttribute="leading" secondItem="E7t-w8-iLO" secondAttribute="trailing" constant="3" id="hqW-MB-8Qz"/>
                             <constraint firstItem="g8B-Sw-Oby" firstAttribute="centerY" secondItem="5Ct-NH-jYE" secondAttribute="centerY" id="lCW-HD-Ffr"/>
                             <constraint firstItem="wMA-7l-vt7" firstAttribute="centerY" secondItem="CWd-J7-phh" secondAttribute="centerY" id="w4N-7K-v8T"/>
                         </constraints>
@@ -223,6 +242,8 @@
             <connections>
                 <outlet property="btnFollowScheme" destination="ai0-JW-5Y8" id="YV6-vu-efn"/>
                 <outlet property="imgPersonHonor" destination="XlW-V2-mHK" id="QOv-vd-QJX"/>
+                <outlet property="imgPersonHonor1" destination="E7t-w8-iLO" id="rXU-Of-9iI"/>
+                <outlet property="imgPersonHonor2" destination="0Qu-vd-cnj" id="KWJ-K1-KEC"/>
                 <outlet property="imgPersonIcon" destination="i4Y-N1-n3G" id="EoX-aa-xEm"/>
                 <outlet property="labBetContent" destination="cta-kC-bdW" id="PTv-E3-jSt"/>
                 <outlet property="labCostBySelf" destination="e9u-FE-jy4" id="u3y-Vj-JpO"/>
