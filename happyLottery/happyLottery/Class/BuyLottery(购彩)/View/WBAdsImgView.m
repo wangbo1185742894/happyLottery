@@ -59,6 +59,7 @@
             UIButton *itemImg = [[UIButton alloc]initWithFrame:CGRectMake(KscreenWidth * i, 0, self.mj_w, scrContentView.mj_h)];
             itemImg.imageView.contentMode = UIViewContentModeScaleToFill;
             [scrContentView addSubview:itemImg];
+            itemImg.backgroundColor = RGBCOLOR(299, 221, 0);
             itemImg.adjustsImageWhenHighlighted = NO;
             [itemImg setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"ad_home%d",i + 1]] forState:0];
         }

@@ -1395,6 +1395,31 @@
                         failure:failureBlock];
 }
 
+- (void)listGreatFollow:(NSDictionary *)infoDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed  && responseJsonStr!= nil && responseJsonStr.length>0) {
+            NSArray *personList = [self objFromJson:responseJsonStr];
+            
+            [self.delegate listGreatFollow:personList errorMsg:response.errorMsg];
+        }else{
+            [self.delegate listGreatFollow:nil errorMsg:response.errorMsg];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.delegate listGreatFollow:nil errorMsg:@"服务器错误"];
+    };
+    
+    SOAPRequest* request = [self requestForAPI:APIlistGreatFollow withParam:nil];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
 
 
 
