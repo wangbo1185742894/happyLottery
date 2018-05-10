@@ -43,6 +43,7 @@
     [self getTopViewData];
     [self setRightBarItems];
     [self setTableView];
+    self.title = @"跟单";
     
     [self loadEightPerosn];
     
@@ -180,8 +181,9 @@
 
 -(void)setRightBarItems{
     
-    UIBarButtonItem *itemQuery = [self creatBarItem:@"发起跟投" icon:@"" andFrame:CGRectMake(0, 10, 65, 25) andAction:@selector(optionRightButtonAction)];
-    self.navigationItem.rightBarButtonItems = @[itemQuery];
+    UIBarButtonItem *itemQuery = [self creatBarItem:@"" icon:@"guize" andFrame:CGRectMake(0, 10, 30, 30) andAction:@selector(optionRightButtonAction)];
+    UIBarButtonItem *faqi = [self creatBarItem:@"" icon:@"fadan" andFrame:CGRectMake(0, 10, 30, 30) andAction:@selector(optionRightButtonAction)];
+    self.navigationItem.rightBarButtonItems = @[itemQuery,faqi];
 }
 
 - (void)didReceiveMemoryWarning {
