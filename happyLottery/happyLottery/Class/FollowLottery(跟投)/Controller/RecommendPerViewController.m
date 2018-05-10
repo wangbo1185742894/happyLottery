@@ -58,6 +58,19 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    self.navigationController.navigationBar.hidden = YES;
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self showLoadingText:nil];
+    self.navigationController.navigationBar.hidden = NO;
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:NotificationNameUserLogin object:nil];
+}
+
 - (void)reloadDate {
     //只刷新可视区域中的新cell
     NSArray *array = [self.personList indexPathsForVisibleRows];
@@ -75,10 +88,13 @@
     topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0,self.view.frame.size.width, 147)];
     NSString *imageName;
     if ([self.categoryCode isEqualToString:@"Cowman"]) {
-//        imageName =
+        imageName = @"pic_niurenbangbeijing.png";
+    } else if ([self.categoryCode isEqualToString:@"Redman"]){
+        imageName = @"pic_hongrenbangbeijing.png";
+    }else {
+        imageName = @"pic_hongdanbangbeijing.png";
     }
-    UIImageView *itemImage =[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"pic_guanyajun_beijing"]];
-    itemImage.contentMode =UIViewContentModeScaleToFill;
+    UIImageView *itemImage =[[UIImageView alloc]initWithImage:[UIImage imageNamed:imageName]];
     itemImage.frame = topView.frame;
     itemImage.contentMode= UIViewContentModeScaleToFill;
     [topView addSubview:itemImage];
@@ -116,7 +132,7 @@
     [self.personArray removeAllObjects];
     //添加数据
     for (NSDictionary *dic in infoArray) {
-        RecomPerModel *model = [[RecomPerModel alloc]initWithDic:dic];
+        RecomPerModel *model = [[RecomPerModel alloc]initWith:dic];
         [self.personArray addObject:model];
     }
     [self.personList reloadData];
@@ -150,12 +166,37 @@
     RecomPerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KRecomPerTableViewCell];
     RecomPerModel *model = [self.personArray objectAtIndex:indexPath.row];
     [cell reloadDate:model categoryCode:self.categoryCode];
+    if(indexPath.row <3 ||[self.categoryCode isEqualToString:@"Cowman"]){
+        cell.infoOneSum.textColor = RGBCOLOR(254, 58, 81);
+        cell.infoTwoSum.textColor = RGBCOLOR(254, 58, 81);
+    }
+    else {
+        cell.infoOneSum.textColor = [UIColor blackColor];
+        cell.infoTwoSum.textColor = [UIColor blackColor];
+    }
+    if(indexPath.row == 0){
+        [cell.orderImage setImage:[UIImage imageNamed:@"first.png"]];
+        cell.orderImage.hidden = NO;
+        cell.orderLabel.hidden = YES;
+    } else if (indexPath.row == 1){
+        [cell.orderImage setImage:[UIImage imageNamed:@"second.png"]];
+        cell.orderImage.hidden = NO;
+        cell.orderLabel.hidden = YES;
+    } else if (indexPath.row == 2){
+        [cell.orderImage setImage:[UIImage imageNamed:@"third.png"]];
+        cell.orderImage.hidden = NO;
+        cell.orderLabel.hidden = YES;
+    } else {
+        cell.orderImage.hidden = YES;
+        cell.orderLabel.hidden = NO;
+        cell.orderLabel.text = [NSString stringWithFormat:@"%ld",indexPath.row+1];
+    }
     //网络图片加载
     if ((self.personList.isDragging || self.personList.isDecelerating)&&![self.indexArray containsObject:indexPath]) {
-        cell.userImage.image = [UIImage imageNamed:@""];
+        cell.userImage.image = [UIImage imageNamed:@"usermine.png"];
         return cell;
     }
-    [cell.userImage sd_setImageWithURL:[NSURL URLWithString:model.personImageName] placeholderImage:[UIImage imageNamed:@""] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+    [cell.userImage sd_setImageWithURL:[NSURL URLWithString:model.headUrl] placeholderImage:[UIImage imageNamed:@"usermine.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         if (![self.indexArray containsObject:indexPath]) {
             [self.indexArray addObject:indexPath];
         }
