@@ -73,6 +73,10 @@
 //自定义navigationBar
 - (void)navigationBarInit{
     topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0,self.view.frame.size.width, 147)];
+    NSString *imageName;
+    if (self.categoryCode isEqualToString:@"Cowman") {
+        imageName = 
+    }
     UIImageView *itemImage =[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"pic_guanyajun_beijing"]];
     itemImage.contentMode =UIViewContentModeScaleToFill;
     itemImage.frame = topView.frame;

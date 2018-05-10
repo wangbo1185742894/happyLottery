@@ -30,6 +30,8 @@
     if ([categoryCode isEqualToString:@"Cowman"]) {
         self.infoOneSum.hidden = YES;
         self.infoOneLabel.hidden = YES;
+        self.infoOneSum.text = nil;
+        self.infoOneLabel.text = nil;
         self.infoTwoLabel.text = @"总中奖元";
     } else if ([categoryCode isEqualToString:@"Redman"]){
         self.infoOneLabel.text = @"跟投人次";
@@ -37,6 +39,8 @@
     } else {
         self.infoOneSum.hidden = YES;
         self.infoOneLabel.hidden = YES;
+        self.infoOneSum.text = nil;
+        self.infoOneLabel.text = nil;
         self.infoTwoLabel.text = @"中奖次数";
     }
 }
