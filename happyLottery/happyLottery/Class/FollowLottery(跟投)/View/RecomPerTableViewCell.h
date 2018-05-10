@@ -11,11 +11,18 @@
 
 @interface RecomPerTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *personImage;
+@property (weak, nonatomic) IBOutlet UILabel *orderLabel;
 
-@property (weak, nonatomic) IBOutlet UILabel *personName;
+@property (weak, nonatomic) IBOutlet UIImageView *orderImage;
 
-@property (weak, nonatomic) IBOutlet UILabel *personInfo;
+@property (weak, nonatomic) IBOutlet UIImageView *userImage;
 
-- (void)reloadDate:(RecomPerModel * )model;
+@property (weak, nonatomic) IBOutlet UILabel *userName;
+
+@property (weak, nonatomic) IBOutlet UILabel *infoOneSum;
+@property (weak, nonatomic) IBOutlet UILabel *infoOneLabel;
+@property (weak, nonatomic) IBOutlet UILabel *infoTwoSum;
+@property (weak, nonatomic) IBOutlet UILabel *infoTwoLabel;
+
+- (void)reloadDate:(RecomPerModel * )model categoryCode:(NSString *)categoryCode;
 @end

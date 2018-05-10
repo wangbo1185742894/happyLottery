@@ -10,6 +10,7 @@
 #import "OptionSelectedView.h"
 #import "JCLQPlayController.h"
 #import "JCZQPlayViewController.h"
+#import "RecommendPerViewController.h"
 #import "RecommendViewCell.h"
 #import "HotFollowSchemeViewCell.h"
 #import "FollowHeaderView.h"
@@ -236,5 +237,6 @@
         
     }
 }
+
 
 @end

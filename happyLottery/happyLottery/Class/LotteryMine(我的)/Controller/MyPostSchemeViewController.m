@@ -10,6 +10,7 @@
 #import "FollowSchemeViewCell.h"
 #import "PostSchemeViewCell.h"
 #import "JCZQSchemeModel.h"
+#import "FASSchemeDetailViewController.h"
 #define KFollowSchemeViewCell @"FollowSchemeViewCell"
 #define KPostSchemeViewCell  @"PostSchemeViewCell"
 
@@ -142,4 +143,9 @@
     }
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    JCZQSchemeItem *model = [dataArray objectAtIndex:indexPath.row];
+    FASSchemeDetailViewController *detailCV = [[FASSchemeDetailViewController alloc]init];
+    detailCV.schemeNo = model.schemeNO;
+}
 @end
