@@ -10,6 +10,7 @@
 #import "OptionSelectedView.h"
 #import "JCLQPlayController.h"
 #import "JCZQPlayViewController.h"
+#import "RecommendPerViewController.h"
 @interface FollowSendViewController ()<OptionSelectedViewDelegate>
 {
     
@@ -68,4 +69,7 @@
         
     }
 }
+
+
+
 @end

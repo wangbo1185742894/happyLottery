@@ -18,9 +18,15 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *personList;
 
+@property(nonatomic,strong)NSMutableArray *indexArray;
+
+@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
+
 @end
 
-@implementation RecommendPerViewController
+@implementation RecommendPerViewController{
+     UIView * topView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,7 +35,8 @@
     self.personList.dataSource = self;
     [self.personList registerNib:[UINib nibWithNibName:KRecomPerTableViewCell bundle:nil] forCellReuseIdentifier:KRecomPerTableViewCell];
     self.personArray = [NSMutableArray arrayWithCapacity:0];
-    [self setBarTitle];
+    self.indexArray = [NSMutableArray arrayWithCapacity:0];
+    [self navigationBarInit];
     //data request
     if (self.lotteryMan == nil) {
         self.lotteryMan = [[LotteryManager alloc]init];
@@ -46,20 +53,59 @@
     // Do any additional setup after loading the view from its nib.
 }
 
-- (void)setBarTitle{
-    if ([self.categoryCode isEqualToString:@"Cowman"]) {
-        self.title = @"牛人榜";
-    } else if ([self.categoryCode isEqualToString:@"Redman"]){
-        self.title = @"红人榜";
-    } else {
-        self.title = @"红单榜";
-    }
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)reloadDate {
+    //只刷新可视区域中的新cell
+    NSArray *array = [self.personList indexPathsForVisibleRows];
+    NSMutableArray *arrToReload = [NSMutableArray array];
+    for (NSIndexPath *indexPath in array) {
+        if (![self.indexArray containsObject:indexPath]) {
+            [arrToReload addObject:indexPath];
+        }
+    }
+    [self.personList reloadRowsAtIndexPaths:arrToReload withRowAnimation:UITableViewRowAnimationFade];
+}
+
+//自定义navigationBar
+- (void)navigationBarInit{
+    topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0,self.view.frame.size.width, 147)];
+    UIImageView *itemImage =[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"pic_guanyajun_beijing"]];
+    itemImage.contentMode =UIViewContentModeScaleToFill;
+    itemImage.frame = topView.frame;
+    itemImage.contentMode= UIViewContentModeScaleToFill;
+    [topView addSubview:itemImage];
+    [self.navigationBar addSubview:topView];
+    [self setLeftButton];
+}
+
+- (void)setLeftButton{
+    UIButton *returnToRoot = [self creatBar:@"" icon:@"common_top_bar_back" andFrame:CGRectMake(20,64, 12,18) andAction:@selector(returnToRootView)];
+    [topView addSubview:returnToRoot];
+}
+
+- (void)returnToRootView {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (UIButton*)creatBar:(NSString *)title icon:(NSString *)imgName andFrame:(CGRect)frame andAction:(SEL)action{
+    UIButton *btnItem = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btnItem addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
+    btnItem.frame = frame;
+    if (title != nil) {
+        [btnItem setTitle:title forState:0];
+    }
+    
+    if (imgName != nil) {
+        [btnItem setImage:[UIImage imageNamed:imgName] forState:0];
+    }
+    return btnItem;
+}
+
+
 #pragma mark  lotteryMan
 
 - (void) gotlistRecommend:(NSArray *)infoArray  errorMsg:(NSString *)msg{
@@ -75,6 +121,19 @@
 
 #pragma mark  tableView
 
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    //快滑结束触发
+    if(!decelerate){
+        [self reloadDate];
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    //快滑结束触发
+    [self reloadDate];
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return  60;
 }
@@ -86,7 +145,17 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     RecomPerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KRecomPerTableViewCell];
     RecomPerModel *model = [self.personArray objectAtIndex:indexPath.row];
-    [cell reloadDate:model];
+    [cell reloadDate:model categoryCode:self.categoryCode];
+    //网络图片加载
+    if ((self.personList.isDragging || self.personList.isDecelerating)&&![self.indexArray containsObject:indexPath]) {
+        cell.userImage.image = [UIImage imageNamed:@""];
+        return cell;
+    }
+    [cell.userImage sd_setImageWithURL:[NSURL URLWithString:model.personImageName] placeholderImage:[UIImage imageNamed:@""] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        if (![self.indexArray containsObject:indexPath]) {
+            [self.indexArray addObject:indexPath];
+        }
+    }];
     return cell;
 
 }

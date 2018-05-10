@@ -10,4 +10,6 @@
 
 @interface FASSchemeDetailViewController : BaseViewController
 
+@property (nonatomic,copy) NSString *schemeNo;
+
 @end

@@ -12,7 +12,8 @@
 
 @property(nonatomic,copy)NSString * personName;
 @property(nonatomic,copy)NSString * personImageName;
-@property(nonatomic,copy)NSString * personInfo;
+@property(nonatomic,copy)NSString * infoOneSum;
+@property(nonatomic,copy)NSString * infoTwoSum;
 
 
 -(id)initWithDic:(NSDictionary *)dic;

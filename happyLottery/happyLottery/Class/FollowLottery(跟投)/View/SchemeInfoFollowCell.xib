@@ -10,9 +10,18 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SchemeInfoFollowCell">
+            <connections>
+                <outlet property="labBetBouns" destination="eMC-IZ-5IQ" id="6xU-ly-tl3"/>
+                <outlet property="loterryLabel" destination="m3D-NX-6Zh" id="m3H-4C-leH"/>
+                <outlet property="lotteryImage" destination="12O-Pw-zGa" id="qcc-Jh-NFa"/>
+                <outlet property="moneyLabel" destination="3n4-7v-gzC" id="cKz-cb-tFY"/>
+                <outlet property="winImage" destination="Ce7-Ic-Pvl" id="EMe-bu-bMe"/>
+                <outlet property="winLabel" destination="Sd5-z2-FaV" id="QTv-SS-e1L"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="169" id="KGk-i7-Jjw" customClass="SchemeInfoFollowCell">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SchemeInfoFollowCell" rowHeight="169" id="KGk-i7-Jjw" customClass="SchemeInfoFollowCell">
             <rect key="frame" x="0.0" y="0.0" width="375" height="169"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -77,14 +86,6 @@
                         <color key="textColor" red="0.99607843137254903" green="0.22745098039215686" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hGQ-aZ-h6C">
-                        <rect key="frame" x="158" y="117" width="16" height="16"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="16" id="ecI-Qq-qjv"/>
-                            <constraint firstAttribute="height" constant="16" id="wrm-Oh-18G"/>
-                        </constraints>
-                        <state key="normal" title="1"/>
-                    </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="win.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ce7-Ic-Pvl">
                         <rect key="frame" x="235" y="45" width="65" height="52"/>
                         <constraints>
@@ -92,7 +93,7 @@
                             <constraint firstAttribute="height" constant="52" id="qdD-Rj-tRf"/>
                         </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kzI-00-GYc">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wave.png" translatesAutoresizingMaskIntoConstraints="NO" id="kzI-00-GYc">
                         <rect key="frame" x="0.0" y="159" width="375" height="9"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="9" id="eIr-7J-ndk"/>
@@ -104,6 +105,15 @@
                         <color key="textColor" red="0.99607843139999996" green="0.2274509804" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3zB-mZ-8EO">
+                        <rect key="frame" x="158" y="116" width="18" height="18"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="18" id="ERM-lP-2IZ"/>
+                            <constraint firstAttribute="height" constant="18" id="nJU-ZY-kfo"/>
+                        </constraints>
+                        <state key="normal" image="add.png"/>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="szN-JZ-JlZ" firstAttribute="leading" secondItem="nS2-2c-EDG" secondAttribute="trailing" constant="8" id="77S-0x-cU8"/>
@@ -121,23 +131,25 @@
                     <constraint firstItem="Sd5-z2-FaV" firstAttribute="leading" secondItem="Ce7-Ic-Pvl" secondAttribute="trailing" constant="8" id="Oe7-VJ-OvL"/>
                     <constraint firstItem="nAa-C1-Tyu" firstAttribute="leading" secondItem="12O-Pw-zGa" secondAttribute="leading" id="Wbh-PL-HMH"/>
                     <constraint firstItem="3n4-7v-gzC" firstAttribute="leading" secondItem="nAa-C1-Tyu" secondAttribute="trailing" constant="33" id="aad-bJ-rts"/>
+                    <constraint firstItem="3zB-mZ-8EO" firstAttribute="leading" secondItem="3n4-7v-gzC" secondAttribute="trailing" constant="8" id="b84-TB-yHB"/>
                     <constraint firstItem="nS2-2c-EDG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="dSF-bf-lGe"/>
                     <constraint firstItem="kzI-00-GYc" firstAttribute="top" secondItem="Ce7-Ic-Pvl" secondAttribute="bottom" constant="62" id="feu-HU-xte"/>
                     <constraint firstItem="m3D-NX-6Zh" firstAttribute="leading" secondItem="12O-Pw-zGa" secondAttribute="trailing" constant="14" id="fzg-7J-bRE"/>
                     <constraint firstItem="Ce7-Ic-Pvl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="34" id="gab-Fz-nyX"/>
                     <constraint firstItem="nS2-2c-EDG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9" id="hQx-lE-fzq"/>
                     <constraint firstItem="kzI-00-GYc" firstAttribute="top" secondItem="Sd5-z2-FaV" secondAttribute="bottom" constant="87" id="hXO-uz-pX8"/>
+                    <constraint firstItem="kzI-00-GYc" firstAttribute="top" secondItem="3zB-mZ-8EO" secondAttribute="bottom" constant="25" id="iJ2-Ny-45v"/>
                     <constraint firstItem="kzI-00-GYc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="pus-Y8-2jb"/>
-                    <constraint firstItem="hGQ-aZ-h6C" firstAttribute="leading" secondItem="3n4-7v-gzC" secondAttribute="trailing" constant="8" id="qvi-qc-Zid"/>
-                    <constraint firstItem="hGQ-aZ-h6C" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="106" id="ruw-Cj-VDe"/>
                     <constraint firstItem="12O-Pw-zGa" firstAttribute="top" secondItem="szN-JZ-JlZ" secondAttribute="bottom" constant="15" id="u9o-hA-aND"/>
                     <constraint firstAttribute="trailing" secondItem="kzI-00-GYc" secondAttribute="trailing" id="vtT-6E-cDb"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="-48.5" y="194.5"/>
+            <point key="canvasLocation" x="-421.5" y="6.5"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="add.png" width="29" height="29"/>
+        <image name="wave.png" width="375" height="9"/>
         <image name="win.png" width="65" height="52"/>
     </resources>
 </document>
