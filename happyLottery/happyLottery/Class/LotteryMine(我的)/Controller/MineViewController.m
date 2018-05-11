@@ -34,6 +34,7 @@
     long num;
     long rednum;
        NSMutableArray *listUseRedPacketArray;
+    __weak IBOutlet NSLayoutConstraint *tableViewHeight;
 }
 @property (weak, nonatomic) IBOutlet UIButton *personSetBtn;
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
@@ -370,6 +371,10 @@
     }else{
          cell.rightIcon.hidden=YES;
     }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        tableViewHeight.constant = self.tableview.mj_h;
+    });
     return cell;
 }
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
