@@ -27,7 +27,7 @@
         self.guanZhuBtn.layer.borderWidth = 1;
         self.guanZhuBtn.titleLabel.text = @"+ 关注";
         self.genfaLabel.text = @"发单人";
-        self.moneyNameLabel.text = @"张三";
+        self.moneyNameLabel.text = model.initiateNickname;
     }
    
 }
