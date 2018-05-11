@@ -13,6 +13,7 @@
 #import "SchemeBuyCell.h"
 #import "SchemeOverCell.h"
 #import "SchemeContainInfoCell.h"
+#import "SchemeInfoBuyCell.h"
 #import "JCZQSchemeModel.h"
 
 #define KSchemeInfoFollowCell @"SchemeInfoFollowCell"
@@ -21,6 +22,7 @@
 #define KSchemeBuyCell        @"SchemeBuyCell"
 #define KSchemeOverCell       @"SchemeOverCell"
 #define KSchemeContainInfoCell  @"SchemeContainInfoCell"
+#define KSchemeInfoBuyCell   @"SchemeInfoBuyCell"
 
 
 @interface FASSchemeDetailViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate>
@@ -78,38 +80,18 @@
 -(void)setTableView{
     self.detailTableView.delegate = self;
     self.detailTableView.dataSource = self;
+    self.detailTableView.allowsSelection = NO;
     [self.detailTableView registerNib:[UINib nibWithNibName:KSchemeInfoFollowCell bundle:nil] forCellReuseIdentifier:KSchemeInfoFollowCell];
     [self.detailTableView registerNib:[UINib nibWithNibName:KSchemePerFollowCell bundle:nil] forCellReuseIdentifier:KSchemePerFollowCell];
     [self.detailTableView registerNib:[UINib nibWithNibName:KSchemeContaintCell bundle:nil] forCellReuseIdentifier:KSchemeContaintCell];
     [self.detailTableView registerNib:[UINib nibWithNibName:KSchemeBuyCell bundle:nil] forCellReuseIdentifier:KSchemeBuyCell];
     [self.detailTableView registerNib:[UINib nibWithNibName:KSchemeOverCell bundle:nil] forCellReuseIdentifier:KSchemeOverCell];
     [self.detailTableView registerNib:[UINib nibWithNibName:KSchemeContainInfoCell bundle:nil] forCellReuseIdentifier:KSchemeContainInfoCell];
+    [self.detailTableView registerNib:[UINib nibWithNibName:KSchemeInfoBuyCell bundle:nil] forCellReuseIdentifier:KSchemeInfoBuyCell];
     self.detailTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
--(NSString *)getPassType:(NSString *)passType{
-    @try {
-        NSArray *passTypes = [passType componentsSeparatedByString:@","];
-        NSString *trPassType;
-        NSMutableArray *types = [NSMutableArray arrayWithCapacity:0];
-        
-        for (NSString *type in passTypes) {
-            if ([type isEqualToString:@"P1"]) {
-                [types addObject: @"单场"];
-            }else{
-                NSString * temp  = [type stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:@""];
-                
-                [types addObject:[temp stringByReplacingOccurrencesOfString:@"_" withString:@"串"]];
-            }
-        }
-        
-        trPassType = [types componentsJoinedByString:@","];
-        return trPassType;
-    } @catch (NSException *exception) {
-        return @"";
-    }
-    
-}
+
 #pragma mark  tableView
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -129,6 +111,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
+        if([self.schemeType isEqualToString:@"BUY_INITIATE"]) return 205;
         return 169;
     } else if (indexPath.section == 1){
         return 38;
@@ -143,11 +126,17 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        SchemeInfoFollowCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeInfoFollowCell];
+        if([self.schemeType isEqualToString:@"BUY_FOLLOW"]){
+            SchemeInfoFollowCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeInfoFollowCell];
+            [cell reloadDate:schemeDetail];
+            return cell;
+        }
+        SchemeInfoBuyCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeInfoBuyCell];
         [cell reloadDate:schemeDetail];
         return cell;
     }else if (indexPath.section == 1){
         SchemePerFollowCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemePerFollowCell];
+        [cell reloadDate:schemeDetail schemeType:self.schemeType];
         return cell;
     }else if (indexPath.section == 2){
         if (indexPath.row == 0) {
@@ -155,8 +144,10 @@
             return cell;
         }else if (indexPath.row == self.dataArray.count+2){
             SchemeOverCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeOverCell];
-            cell.passType.text = [self getPassType:schemeDetail.passType[0]];
-            cell.touzhuCount.text =[NSString stringWithFormat:@"%@倍%ld注",schemeDetail.multiple,self.dataArray.count];
+            NSString *pass = [schemeDetail.passType componentsJoinedByString:@","];
+            pass = [pass stringByReplacingOccurrencesOfString:@"x" withString:@"串"];
+            cell.passType.text = pass;
+            cell.touzhuCount.text =[NSString stringWithFormat:@"%@倍%@注",schemeDetail.multiple,schemeDetail.units];
             return cell;
         }else{
             SchemeContainInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeContainInfoCell];
@@ -169,11 +160,8 @@
             }else{
                 if(self.dataArray.count >0){
                     bet = self.dataArray[indexPath.row-2];
+                    [cell refreshData:bet andResult:schemeDetail.trOpenResult];
                 }
-                cell.orderNoLab.text = bet.matchInfo[@"matchId"];
-                cell.groupMatchLab.text = bet.matchInfo[@"clash"];
-                cell.betContentLab.text = @"投注内容";
-                cell.matchResultLab.text = @"赛果";
             }
             return cell;
         }

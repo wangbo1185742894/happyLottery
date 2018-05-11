@@ -22,6 +22,13 @@
 }
 
 - (void)reloadDate:(JCZQSchemeItem * )model{
+    
+    self.yongJin.text = [NSString stringWithFormat:@"%@元",model.totalCommission];
+    self.winMoney.text = [NSString stringWithFormat:@"%@元",model.earnings==nil?@"0":model.earnings];
+    int num1 = [model.totalCommission intValue];
+    int num2 = [model.earnings intValue];
+    int sum = num1 + num2;
+    self.moneyLabel.text = [NSString stringWithFormat:@"%d元",sum];
     if ([model.lottery isEqualToString:@"JCZQ"]) {
         self.loterryLabel.text = @"竞彩足球";
         [self.lotteryImage setImage:[UIImage imageNamed:@"footerball.png"]];
@@ -30,26 +37,19 @@
         [self.lotteryImage setImage:[UIImage imageNamed:@"basketball.png"]];
     }
     self.labBetBouns.text = [NSString stringWithFormat:@"投注%@元",model.betCost];
-    self.moneyLabel.text = [self getWinningStatus:model];
-}
-
--(NSString *)getWinningStatus:( JCZQSchemeItem*)model{
-    if ([model.winningStatus isEqualToString:@"WAIT_LOTTERY"]) {
-        self.winImage.hidden = YES;
-        self.winLabel.text = @"待开奖";
-        return @"0.00元";
-    }
-    if ([model.winningStatus isEqualToString:@"NOT_LOTTERY"]) {
-        [self.winImage setImage:[UIImage imageNamed:@"losing.png"]];
-        self.winLabel.text = @"未中奖";
-        return @"0.00元";
-    }
-    if ([model.bonus doubleValue] != 0) {
+    self.winLabel.text = model.getSchemeState;
+    if([self.winLabel.text containsString:@"已中奖"]){
         [self.winImage setImage:[UIImage imageNamed:@"win.png"]];
-        self.winLabel.text = @"已中奖";
-        return [NSString stringWithFormat:@"%.2f元",[model.bonus doubleValue]];
+        self.winLabel.textColor = RGBCOLOR(254, 58, 81);
+        self.winImage.hidden = NO;
+    } else if([self.winLabel.text containsString:@"未中奖"]){
+        [self.winImage setImage:[UIImage imageNamed:@"losing.png"]];
+        self.winImage.hidden = NO;
+        self.winLabel.textColor = [UIColor blackColor];
+    } else {
+        self.winImage.hidden = YES;
+        self.winLabel.textColor = [UIColor blackColor];
     }
-    return @"0.00元";
 }
 
 @end

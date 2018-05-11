@@ -114,6 +114,8 @@
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="nuc-2T-fJY" firstAttribute="leading" secondItem="xL5-rc-cJK" secondAttribute="trailing" constant="27" id="6Cw-x1-olX"/>
+                    <constraint firstItem="tQH-eW-fPN" firstAttribute="leading" secondItem="j0g-f3-QDI" secondAttribute="trailing" constant="27" id="83s-UM-DEE"/>
                     <constraint firstItem="j0g-f3-QDI" firstAttribute="top" secondItem="iqG-yx-eSG" secondAttribute="bottom" constant="5" id="97O-tB-pFa"/>
                     <constraint firstItem="ZOh-UE-4eV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-6" id="A80-5O-bLP"/>
                     <constraint firstItem="xL5-rc-cJK" firstAttribute="centerX" secondItem="dQE-vp-h21" secondAttribute="centerX" id="BZF-ie-1FW"/>
@@ -124,6 +126,7 @@
                     <constraint firstItem="HZa-5T-GWs" firstAttribute="centerY" secondItem="fTI-gq-MD3" secondAttribute="centerY" id="PUd-uJ-Jsr"/>
                     <constraint firstItem="fTI-gq-MD3" firstAttribute="centerX" secondItem="dQE-vp-h21" secondAttribute="centerX" id="RCd-9O-AJe"/>
                     <constraint firstItem="tQH-eW-fPN" firstAttribute="centerX" secondItem="HZa-5T-GWs" secondAttribute="centerX" id="YEl-sO-Cb6"/>
+                    <constraint firstItem="gW1-lX-Mpx" firstAttribute="leading" secondItem="iqG-yx-eSG" secondAttribute="trailing" constant="27" id="aLl-ku-uz1"/>
                     <constraint firstItem="HZa-5T-GWs" firstAttribute="leading" secondItem="fTI-gq-MD3" secondAttribute="trailing" constant="27" id="doA-Yj-1ww"/>
                     <constraint firstItem="ZOh-UE-4eV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="fo0-24-zV9"/>
                     <constraint firstItem="iqG-yx-eSG" firstAttribute="top" secondItem="fTI-gq-MD3" secondAttribute="bottom" constant="5" id="hDE-d8-6k4"/>

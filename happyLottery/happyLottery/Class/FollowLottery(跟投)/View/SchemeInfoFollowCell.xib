@@ -53,7 +53,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMC-IZ-5IQ">
-                        <rect key="frame" x="71" y="84.5" width="35.5" height="17"/>
+                        <rect key="frame" x="71" y="84.5" width="42" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.47843137254901957" green="0.47843137254901957" blue="0.47843137254901957" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -123,6 +123,7 @@
                     <constraint firstItem="nAa-C1-Tyu" firstAttribute="leading" secondItem="12O-Pw-zGa" secondAttribute="leading" id="Wbh-PL-HMH"/>
                     <constraint firstItem="3n4-7v-gzC" firstAttribute="leading" secondItem="nAa-C1-Tyu" secondAttribute="trailing" constant="33" id="aad-bJ-rts"/>
                     <constraint firstItem="3zB-mZ-8EO" firstAttribute="leading" secondItem="3n4-7v-gzC" secondAttribute="trailing" constant="8" id="b84-TB-yHB"/>
+                    <constraint firstItem="eMC-IZ-5IQ" firstAttribute="centerX" secondItem="m3D-NX-6Zh" secondAttribute="centerX" id="bPJ-GO-ybo"/>
                     <constraint firstItem="nS2-2c-EDG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="dSF-bf-lGe"/>
                     <constraint firstItem="kzI-00-GYc" firstAttribute="top" secondItem="Ce7-Ic-Pvl" secondAttribute="bottom" constant="62" id="feu-HU-xte"/>
                     <constraint firstItem="m3D-NX-6Zh" firstAttribute="leading" secondItem="12O-Pw-zGa" secondAttribute="trailing" constant="14" id="fzg-7J-bRE"/>

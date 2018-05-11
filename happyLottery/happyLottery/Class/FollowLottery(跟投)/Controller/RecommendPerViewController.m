@@ -175,7 +175,7 @@
         cell.infoTwoSum.textColor = [UIColor blackColor];
     }
     if(indexPath.row == 0){
-        [cell.orderImage setImage:[UIImage imageNamed:@"first.png"]];
+        [cell.orderImage setImage:[UIImage imageNamed:@"firstbang.png"]];
         cell.orderImage.hidden = NO;
         cell.orderLabel.hidden = YES;
     } else if (indexPath.row == 1){
