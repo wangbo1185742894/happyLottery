@@ -37,19 +37,15 @@
     } else if ([categoryCode isEqualToString:@"Redman"]){
         self.infoOneLabel.text = @"跟投人次";
         self.infoTwoLabel.text = @"带红人数";
-        self.infoOneSum.text = model.followCount;
-        self.infoTwoSum.text = model.redCount;
+        self.infoOneSum.text = model.followCount==nil?@"0":model.followCount;
+        self.infoTwoSum.text = model.redCount==nil?@"0":model.redCount;
     } else {
         self.infoOneSum.hidden = YES;
         self.infoOneLabel.hidden = YES;
         self.infoTwoLabel.text = @"中奖次数";
-        self.infoTwoSum.text = model.winCount;
+        self.infoTwoSum.text = model.winCount==nil?@"0":model.winCount;
     }
 }
-//- (void)reloadDate:(RecomPerModel * )model{
-//    [self.personImage setImage:[UIImage imageNamed:model.personImageName]];
-//    self.personName.text = model.personName;
-//    self.personInfo.text = model.personInfo;
-//}
+
 
 @end

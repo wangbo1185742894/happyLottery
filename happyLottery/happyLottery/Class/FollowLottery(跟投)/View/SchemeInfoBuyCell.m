@@ -1,19 +1,18 @@
 //
-//  SchemeInfoFollowCell.m
+//  SchemeInfoBuyCell.m
 //  happyLottery
 //
-//  Created by LYJ on 2018/5/9.
+//  Created by LYJ on 2018/5/10.
 //  Copyright © 2018年 onlytechnology. All rights reserved.
 //
 
-#import "SchemeInfoFollowCell.h"
+#import "SchemeInfoBuyCell.h"
 
-@implementation SchemeInfoFollowCell
+@implementation SchemeInfoBuyCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -32,7 +31,6 @@
     }
     self.labBetBouns.text = [NSString stringWithFormat:@"投注%@元",model.betCost];
     self.moneyLabel.text = [self getWinningStatus:model];
-    
 }
 
 -(NSString *)getWinningStatus:( JCZQSchemeItem*)model{

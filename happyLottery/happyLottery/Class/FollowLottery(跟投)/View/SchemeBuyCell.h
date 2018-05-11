@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JCZQSchemeModel.h"
 
 @interface SchemeBuyCell : UITableViewCell
+
+@property (weak, nonatomic) IBOutlet UILabel *labIsYouhui;
+@property (weak, nonatomic) IBOutlet UILabel *labZheKouJinE;
+@property (weak, nonatomic) IBOutlet UILabel *labShiFujine;
+@property (weak, nonatomic) IBOutlet UILabel *labZhifuShijian;
+
+-(void)loadData:(JCZQSchemeItem*)model;
 
 @end

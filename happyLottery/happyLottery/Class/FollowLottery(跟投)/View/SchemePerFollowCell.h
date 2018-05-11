@@ -11,5 +11,7 @@
 @interface SchemePerFollowCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIButton *guanZhuBtn;
+@property (weak, nonatomic) IBOutlet UILabel *genfaLabel;
+@property (weak, nonatomic) IBOutlet UILabel *moneyNameLabel;
 
 @end
