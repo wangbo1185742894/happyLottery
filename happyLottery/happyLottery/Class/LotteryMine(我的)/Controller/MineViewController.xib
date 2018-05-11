@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,6 +22,7 @@
                 <outlet property="redPacketBtn" destination="2R9-DO-gvq" id="SLL-6d-VA2"/>
                 <outlet property="redPacketLab" destination="UoB-tJ-jh8" id="FTe-5N-MwN"/>
                 <outlet property="signInBtn" destination="nRI-P4-Eje" id="Xfz-ag-ka9"/>
+                <outlet property="tableViewHeight" destination="vgB-f7-EbJ" id="lzW-eD-Jum"/>
                 <outlet property="tableview" destination="MTg-dn-YWb" id="PWQ-4M-fjb"/>
                 <outlet property="userImage" destination="9X8-Z4-jzu" id="cgo-k9-o2D"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -264,10 +265,10 @@
                             </constraints>
                         </view>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MTg-dn-YWb">
-                            <rect key="frame" x="0.0" y="239" width="375" height="468"/>
+                            <rect key="frame" x="0.0" y="239" width="375" height="600"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="468" id="vgB-f7-EbJ"/>
+                                <constraint firstAttribute="height" constant="600" id="vgB-f7-EbJ"/>
                             </constraints>
                         </tableView>
                     </subviews>
