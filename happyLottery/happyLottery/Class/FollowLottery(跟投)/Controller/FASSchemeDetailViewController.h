@@ -12,4 +12,6 @@
 
 @property (nonatomic,copy) NSString *schemeNo;
 
+@property (nonatomic,copy) NSString *schemeType;  //BUY_INITIATE  BUY_FOLLOW
+
 @end

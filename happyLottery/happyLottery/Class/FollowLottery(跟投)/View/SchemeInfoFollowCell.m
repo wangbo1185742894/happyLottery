@@ -23,6 +23,7 @@
 }
 
 - (void)reloadDate:(JCZQSchemeItem * )model{
+    self.moneyLabel.text = model.earnings;
     if ([model.lottery isEqualToString:@"JCZQ"]) {
         self.loterryLabel.text = @"竞彩足球";
         [self.lotteryImage setImage:[UIImage imageNamed:@"footerball.png"]];
@@ -32,26 +33,28 @@
     }
     self.labBetBouns.text = [NSString stringWithFormat:@"投注%@元",model.betCost];
     self.moneyLabel.text = [self getWinningStatus:model];
-    
+    self.winLabel.text = model.getSchemeState;
+    if([self.winLabel.text containsString:@"已中奖"]){
+        [self.winImage setImage:[UIImage imageNamed:@"win.png"]];
+    } else if([self.winLabel.text containsString:@"未中奖"]){
+        [self.winImage setImage:[UIImage imageNamed:@"losing.png"]];
+    } else {
+        self.winImage.hidden = YES;
+    }
 }
 
 -(NSString *)getWinningStatus:( JCZQSchemeItem*)model{
     if ([model.winningStatus isEqualToString:@"WAIT_LOTTERY"]) {
-        self.winImage.hidden = YES;
-        self.winLabel.text = @"待开奖";
         return @"0.00元";
     }
     if ([model.winningStatus isEqualToString:@"NOT_LOTTERY"]) {
-        [self.winImage setImage:[UIImage imageNamed:@"losing.png"]];
-        self.winLabel.text = @"未中奖";
         return @"0.00元";
     }
     if ([model.bonus doubleValue] != 0) {
-        [self.winImage setImage:[UIImage imageNamed:@"win.png"]];
-        self.winLabel.text = @"已中奖";
         return [NSString stringWithFormat:@"%.2f元",[model.bonus doubleValue]];
     }
     return @"0.00元";
 }
+
 
 @end

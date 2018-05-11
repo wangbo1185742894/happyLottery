@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "jcBetContent.h"
+#import "JCZQSchemeModel.h"
 
 @interface SchemeContainInfoCell : UITableViewCell
 
@@ -17,5 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *betContentLab;
 
 @property (weak, nonatomic) IBOutlet UILabel *matchResultLab;
+
+-(void)refreshData:(JcBetContent  *)modelDic andResult:(NSArray<OpenResult *> *)resultArray;
 
 @end

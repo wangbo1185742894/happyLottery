@@ -50,12 +50,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1iW-fa-W3E">
-                        <rect key="frame" x="304" y="7" width="55" height="25"/>
+                        <rect key="frame" x="280" y="7" width="85" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="Cj5-pe-VBf"/>
-                            <constraint firstAttribute="width" constant="55" id="LFv-kM-PuR"/>
                         </constraints>
-                        <state key="normal" title="+关注">
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="100" maxY="0.0"/>
+                        <state key="normal" title="跟单列表 &gt;">
                             <color key="titleColor" red="0.070588235289999995" green="0.78039215689999997" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                     </button>
@@ -63,7 +64,7 @@
                 <constraints>
                     <constraint firstItem="IqE-jp-ZR1" firstAttribute="centerY" secondItem="vGv-Ny-1yX" secondAttribute="centerY" id="3yA-tf-JuV"/>
                     <constraint firstItem="IqE-jp-ZR1" firstAttribute="leading" secondItem="vGv-Ny-1yX" secondAttribute="trailing" constant="8" id="9Pf-lB-qQQ"/>
-                    <constraint firstAttribute="trailing" secondItem="1iW-fa-W3E" secondAttribute="trailing" constant="16" id="AOe-N2-mbO"/>
+                    <constraint firstAttribute="trailing" secondItem="1iW-fa-W3E" secondAttribute="trailing" constant="10" id="AOe-N2-mbO"/>
                     <constraint firstItem="1iW-fa-W3E" firstAttribute="centerY" secondItem="vGv-Ny-1yX" secondAttribute="centerY" constant="1" id="dZH-bk-Sva"/>
                     <constraint firstItem="uWY-dP-i3V" firstAttribute="centerY" secondItem="vGv-Ny-1yX" secondAttribute="centerY" id="e7F-v8-uTO"/>
                     <constraint firstItem="vGv-Ny-1yX" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="kMh-Hg-4p3"/>
