@@ -17,7 +17,13 @@
     self.guanZhuBtn.layer.borderColor = [UIColor greenColor].CGColor;
     self.guanZhuBtn.layer.borderWidth = 1;
 //    if("跟单"){
-//        self.genfaLabel =
+//    self.genfaLabel.text = @"发单人";
+//    self.moneyNameLabel.text = @"张三";
+//
+//    }
+//    else {
+//        self.genfaLabel.text = @"已跟投";
+//        self.moneyNameLabel.text = @"888元";
 //    }
     /*
      
