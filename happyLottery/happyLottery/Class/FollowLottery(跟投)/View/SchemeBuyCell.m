@@ -21,4 +21,17 @@
     // Configure the view for the selected state
 }
 
+-(void)loadData:(JCZQSchemeItem*)model{
+    if ([model.useCoupon boolValue] == YES) {
+        self.labIsYouhui.text = @"使用优惠券";
+    }else{
+        self.labIsYouhui.text = @"未使用优惠券";
+    }
+    if ([model.costType isEqualToString:@"CASH"]) {
+        self.labZheKouJinE.text = [NSString stringWithFormat:@"%.2f元",[model.deduction doubleValue]];
+        self.labShiFujine.text =[NSString stringWithFormat:@"%.2f元",[model.realSubAmounts doubleValue]];
+        self.labZhifuShijian.text = model.subTime;
+    }
+}
+
 @end

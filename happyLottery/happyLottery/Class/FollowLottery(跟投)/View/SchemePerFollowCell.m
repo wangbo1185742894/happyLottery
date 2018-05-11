@@ -16,6 +16,12 @@
     self.guanZhuBtn.layer.cornerRadius = 5;
     self.guanZhuBtn.layer.borderColor = [UIColor greenColor].CGColor;
     self.guanZhuBtn.layer.borderWidth = 1;
+//    if("跟单"){
+//        self.genfaLabel =
+//    }
+    /*
+     
+     */
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

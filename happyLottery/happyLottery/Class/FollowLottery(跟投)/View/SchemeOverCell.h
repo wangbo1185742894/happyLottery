@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface SchemeOverCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *passType;
 
+@property (weak, nonatomic) IBOutlet UILabel *touzhuCount;
 @end

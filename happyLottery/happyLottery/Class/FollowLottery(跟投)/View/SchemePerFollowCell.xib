@@ -10,11 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SchemePerFollowCell">
-            <connections>
-                <outlet property="guanZhuBtn" destination="1iW-fa-W3E" id="k2c-Uh-yTM"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SchemePerFollowCell" id="KGk-i7-Jjw" customClass="SchemePerFollowCell">
             <rect key="frame" x="0.0" y="0.0" width="375" height="38"/>
@@ -54,10 +50,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1iW-fa-W3E">
-                        <rect key="frame" x="307" y="3" width="46" height="30"/>
+                        <rect key="frame" x="304" y="7" width="55" height="25"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="Cj5-pe-VBf"/>
-                            <constraint firstAttribute="width" constant="46" id="LFv-kM-PuR"/>
+                            <constraint firstAttribute="height" constant="25" id="Cj5-pe-VBf"/>
+                            <constraint firstAttribute="width" constant="55" id="LFv-kM-PuR"/>
                         </constraints>
                         <state key="normal" title="+关注">
                             <color key="titleColor" red="0.070588235289999995" green="0.78039215689999997" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -67,14 +63,19 @@
                 <constraints>
                     <constraint firstItem="IqE-jp-ZR1" firstAttribute="centerY" secondItem="vGv-Ny-1yX" secondAttribute="centerY" id="3yA-tf-JuV"/>
                     <constraint firstItem="IqE-jp-ZR1" firstAttribute="leading" secondItem="vGv-Ny-1yX" secondAttribute="trailing" constant="8" id="9Pf-lB-qQQ"/>
-                    <constraint firstAttribute="trailing" secondItem="1iW-fa-W3E" secondAttribute="trailing" constant="22" id="AOe-N2-mbO"/>
-                    <constraint firstItem="1iW-fa-W3E" firstAttribute="centerY" secondItem="vGv-Ny-1yX" secondAttribute="centerY" id="dZH-bk-Sva"/>
+                    <constraint firstAttribute="trailing" secondItem="1iW-fa-W3E" secondAttribute="trailing" constant="16" id="AOe-N2-mbO"/>
+                    <constraint firstItem="1iW-fa-W3E" firstAttribute="centerY" secondItem="vGv-Ny-1yX" secondAttribute="centerY" constant="1" id="dZH-bk-Sva"/>
                     <constraint firstItem="uWY-dP-i3V" firstAttribute="centerY" secondItem="vGv-Ny-1yX" secondAttribute="centerY" id="e7F-v8-uTO"/>
                     <constraint firstItem="vGv-Ny-1yX" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="kMh-Hg-4p3"/>
                     <constraint firstItem="vGv-Ny-1yX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="x3a-tF-bNK"/>
                     <constraint firstItem="uWY-dP-i3V" firstAttribute="leading" secondItem="IqE-jp-ZR1" secondAttribute="trailing" constant="27" id="zW1-7A-zo4"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="genfaLabel" destination="IqE-jp-ZR1" id="pvP-VG-Wcb"/>
+                <outlet property="guanZhuBtn" destination="1iW-fa-W3E" id="3bs-Og-j3Q"/>
+                <outlet property="moneyNameLabel" destination="uWY-dP-i3V" id="XSV-lz-04A"/>
+            </connections>
             <point key="canvasLocation" x="26.5" y="52"/>
         </tableViewCell>
     </objects>

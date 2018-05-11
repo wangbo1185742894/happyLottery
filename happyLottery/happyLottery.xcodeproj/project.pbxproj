@@ -1292,6 +1292,8 @@
 		F9DC69A01FDF88E5007D384D /* IntegralMallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9DC699E1FDF88E5007D384D /* IntegralMallViewController.xib */; };
 		F9DC69A91FDF8957007D384D /* MyHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DC69A71FDF8957007D384D /* MyHelpViewController.m */; };
 		F9DC69AA1FDF8957007D384D /* MyHelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9DC69A81FDF8957007D384D /* MyHelpViewController.xib */; };
+		F9DC8C2720A46051006B31F4 /* SchemeInfoBuyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DC8C2520A46051006B31F4 /* SchemeInfoBuyCell.m */; };
+		F9DC8C2820A46051006B31F4 /* SchemeInfoBuyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9DC8C2620A46051006B31F4 /* SchemeInfoBuyCell.xib */; };
 		F9E0DF1D2019695C0089F51D /* MineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9E0DF1C2019695B0089F51D /* MineViewController.xib */; };
 		F9E0DF21201972570089F51D /* JumpWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9E0DF1F201972570089F51D /* JumpWebViewController.m */; };
 		F9E0DF22201972570089F51D /* JumpWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9E0DF20201972570089F51D /* JumpWebViewController.xib */; };
@@ -3055,6 +3057,9 @@
 		F9DC69A61FDF8957007D384D /* MyHelpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyHelpViewController.h; sourceTree = "<group>"; };
 		F9DC69A71FDF8957007D384D /* MyHelpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyHelpViewController.m; sourceTree = "<group>"; };
 		F9DC69A81FDF8957007D384D /* MyHelpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyHelpViewController.xib; sourceTree = "<group>"; };
+		F9DC8C2420A46051006B31F4 /* SchemeInfoBuyCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SchemeInfoBuyCell.h; sourceTree = "<group>"; };
+		F9DC8C2520A46051006B31F4 /* SchemeInfoBuyCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SchemeInfoBuyCell.m; sourceTree = "<group>"; };
+		F9DC8C2620A46051006B31F4 /* SchemeInfoBuyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SchemeInfoBuyCell.xib; sourceTree = "<group>"; };
 		F9E0DF1C2019695B0089F51D /* MineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineViewController.xib; sourceTree = "<group>"; };
 		F9E0DF1E201972570089F51D /* JumpWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpWebViewController.h; sourceTree = "<group>"; };
 		F9E0DF1F201972570089F51D /* JumpWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpWebViewController.m; sourceTree = "<group>"; };
@@ -5582,22 +5587,12 @@
 				2D16602020A2EFB800C1C7E7 /* FollowSendViewController.h */,
 				2D16602120A2EFB800C1C7E7 /* FollowSendViewController.m */,
 				2D16602220A2EFB800C1C7E7 /* FollowSendViewController.xib */,
-
-				2D05C81120A3EE3E001A8953 /* SearchViewController.h */,
-				2D05C81220A3EE3E001A8953 /* SearchViewController.m */,
-				2D05C81320A3EE3E001A8953 /* SearchViewController.xib */,
 				2D05C81B20A42BCF001A8953 /* FollowDetailViewController.h */,
 				2D05C81C20A42BCF001A8953 /* FollowDetailViewController.m */,
 				2D05C81D20A42BCF001A8953 /* FollowDetailViewController.xib */,
-
-
-
 				2D05C81120A3EE3E001A8953 /* SearchViewController.h */,
 				2D05C81220A3EE3E001A8953 /* SearchViewController.m */,
 				2D05C81320A3EE3E001A8953 /* SearchViewController.xib */,
-
-
-
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -5635,8 +5630,6 @@
 				2D3A06CE20A3E84E003C5E7B /* FollowHeaderView.m */,
 				F92855CF20A2DFD20023A0AC /* SchemeInfoFollowCell.h */,
 				F92855D120A2DFD20023A0AC /* SchemeInfoFollowCell.xib */,
-
-
 				F92855D020A2DFD20023A0AC /* SchemeInfoFollowCell.m */,
 				F92855E020A2FD9B0023A0AC /* SchemePerFollowCell.h */,
 				F92855E120A2FD9B0023A0AC /* SchemePerFollowCell.m */,
@@ -5653,8 +5646,9 @@
 				F92855F420A3CA880023A0AC /* SchemeContainInfoCell.h */,
 				F92855F520A3CA880023A0AC /* SchemeContainInfoCell.m */,
 				F92855F620A3CA880023A0AC /* SchemeContainInfoCell.xib */,
-
-
+				F9DC8C2420A46051006B31F4 /* SchemeInfoBuyCell.h */,
+				F9DC8C2520A46051006B31F4 /* SchemeInfoBuyCell.m */,
+				F9DC8C2620A46051006B31F4 /* SchemeInfoBuyCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -6450,6 +6444,7 @@
 				F90FCD941FF396F700BD807C /* fly@2x.png in Resources */,
 				F9632F58200C9A8B00F69D23 /* IntegeralChangeViewController.xib in Resources */,
 				F9B5D9802060A9DE00C9F6DC /* flag380@3x.png in Resources */,
+				F9DC8C2820A46051006B31F4 /* SchemeInfoBuyCell.xib in Resources */,
 				2D0EEAB22015DCFC00B0769C /* ad_home2@2x.png in Resources */,
 				F9B5D9952060A9DE00C9F6DC /* flag417@2x.png in Resources */,
 				F9B5D9962060A9DE00C9F6DC /* flag417@3x.png in Resources */,
@@ -7202,6 +7197,7 @@
 				F92F4B6D200DADA6005E33AC /* NNValidationCodeView.m in Sources */,
 				2D8CBFD91FF376CA00CC367F /* yucezjModel.m in Sources */,
 				2D7B13F5204E88420035AE89 /* OpenLotteryResultHeaderView.m in Sources */,
+				F9DC8C2720A46051006B31F4 /* SchemeInfoBuyCell.m in Sources */,
 				2D06FFDF1FFDB7D8009E7568 /* JCZQSchemeModel.m in Sources */,
 				2D7B13CA204E877A0035AE89 /* CTZQOpenLotterySectionHeaderView.m in Sources */,
 				2D92A81E200F1D2F0038E165 /* WBLoopProgressView.m in Sources */,

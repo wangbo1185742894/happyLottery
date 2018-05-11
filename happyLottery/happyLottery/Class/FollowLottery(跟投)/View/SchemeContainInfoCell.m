@@ -12,6 +12,18 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.orderNoLab.layer.borderColor = RGBCOLOR(231,231,231).CGColor;
+    self.orderNoLab.layer.borderWidth = 0.5;
+    self.orderNoLab.numberOfLines = 2;
+    self.groupMatchLab.layer.borderColor = RGBCOLOR(231,231,231).CGColor;
+    self.groupMatchLab.layer.borderWidth = 0.5;
+    self.betContentLab.layer.borderColor = RGBCOLOR(231,231,231).CGColor;
+    self.betContentLab.layer.borderWidth = 0.5;
+    self.matchResultLab.layer.borderColor = RGBCOLOR(231,231,231).CGColor;
+    self.matchResultLab.layer.borderWidth = 0.5;
+    
+    
+    
     // Initialization code
 }
 
