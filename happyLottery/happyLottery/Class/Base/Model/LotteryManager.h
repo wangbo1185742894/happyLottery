@@ -63,6 +63,7 @@ typedef enum EarningsType{
 - (void) initiateFollowScheme:(NSString *)resultStr  errorMsg:(NSString *)msg;
 - (void) listGreatFollow:(NSArray  *)personList  errorMsg:(NSString *)msg;
 - (void) getHotFollowScheme:(NSArray  *)personList  errorMsg:(NSString *)msg;
+- (void) followScheme:(NSString  *)result  errorMsg:(NSString *)msg;
 
 
 @end
@@ -134,6 +135,7 @@ typedef enum EarningsType{
 
 - (void)getHotFollowScheme;
 - (void)getFollowSchemeByNickName:(NSDictionary *)paraic;
+- (void)followScheme:(NSDictionary *)paraic;
 
 @end
 

@@ -50,7 +50,7 @@
     self.labPersonName.text = model.nickName== nil?model.cardCode:model.nickName;
     self.labDeadTime.text = model.deadLine;
     self.labHuiBao.text =[NSString stringWithFormat:@"%@倍",model.pledge];
-    [self.labBetContent setTitle:[NSString stringWithFormat:@"%@  %@",model.leagueNames,[model.passTypes  stringByReplacingOccurrencesOfString:@"x" withString:@"串"]] forState:0];
+    [self.labBetContent setTitle:[model getContent] forState:0];
     self.labFollowCount.text = [NSString stringWithFormat:@"跟单金额：%@元",model.totalFollowCost];
     self.labCostBySelf.text =[NSString stringWithFormat:@"自购金额：%@元",model.betCost];
     NSArray *laburls = [model.label_urls componentsSeparatedByString:@";"];

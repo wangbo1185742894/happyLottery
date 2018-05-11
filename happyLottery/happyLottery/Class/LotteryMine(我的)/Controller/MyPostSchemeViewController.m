@@ -147,5 +147,6 @@
     JCZQSchemeItem *model = [dataArray objectAtIndex:indexPath.row];
     FASSchemeDetailViewController *detailCV = [[FASSchemeDetailViewController alloc]init];
     detailCV.schemeNo = model.schemeNO;
+    [self.navigationController pushViewController:detailCV animated:YES];
 }
 @end

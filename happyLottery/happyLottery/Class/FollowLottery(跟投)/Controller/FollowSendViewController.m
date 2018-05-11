@@ -17,6 +17,7 @@
 #import "HomeTabTopAdsViewCell.h"
 #import "SearchViewController.h"
 #import "MenuCollectionViewCell.h"
+#import "FollowDetailViewController.h"
 #import "HotSchemeModel.h"
 #define KRecommendViewCell @"RecommendViewCell"
 #define KHotFollowSchemeViewCell @"HotFollowSchemeViewCell"
@@ -248,6 +249,14 @@
     }else if (index == 3){  // 我的关注
         
     }
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    FollowDetailViewController *followVC = [[FollowDetailViewController alloc]init];
+    followVC.model = schemeList[indexPath.row];
+    followVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:followVC animated:YES];
+    
 }
 
 

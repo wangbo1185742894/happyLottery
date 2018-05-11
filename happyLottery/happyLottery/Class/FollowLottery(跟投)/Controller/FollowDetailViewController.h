@@ -7,7 +7,8 @@
 //
 
 #import "BaseViewController.h"
+#import "HotSchemeModel.h"
 
 @interface FollowDetailViewController : BaseViewController
-
+@property (nonatomic,strong)HotSchemeModel *model;
 @end
