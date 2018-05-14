@@ -29,7 +29,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"个人中心";
-    _page = 0;
+    [UITableView refreshHelperWithScrollView:self.personTabelView target:self loadNewData:@selector(loadNewData) loadMoreData:@selector(loadMoreData) isBeginRefresh:NO];
+    self.personArray = [NSMutableArray arrayWithCapacity:0];
+    _page = 1;
     [self initTabelView];
     if (self.lotteryMan == nil) {
         self.lotteryMan = [[LotteryManager alloc]init];
@@ -63,19 +65,35 @@
 - (void) gotInitiateInfo:(NSDictionary *)diction  errorMsg:(NSString *)msg
 {
     model = [[PersonCenterModel alloc]initWith:diction];
+    
+    [self loadNewData];
+}
+
+-(void)loadNewData{
+    _page = 1;
     NSDictionary *parc;
     if (model.nickName != nil) {
-        parc = @{@"nickName":model.nickName,@"page":@(_page),@"pageSize":@(KpageSize),@"isHis":@NO};
+        parc = @{@"nickName":model.nickName,@"page":@(_page),@"pageSize":@(KpageSize),@"isHis":@YES};
+    }
+    [self.lotteryMan getFollowSchemeByNickName:parc];
+}
+
+-(void)loadMoreData{
+    _page ++;
+    NSDictionary *parc;
+    if (model.nickName != nil) {
+        parc = @{@"nickName":model.nickName,@"page":@(_page),@"pageSize":@(KpageSize),@"isHis":@YES};
     }
     [self.lotteryMan getFollowSchemeByNickName:parc];
 }
 
 -(void)getHotFollowScheme:(NSArray *)personList errorMsg:(NSString *)msg{
+    [self.personTabelView tableViewEndRefreshCurPageCount:personList.count];
     if (personList == nil) {
         [self showPromptText:msg hideAfterDelay:1.8];
         return;
     }
-    if (_page == 0) {
+    if (_page == 1) {
         [self.personArray removeAllObjects];
     }
     for (NSDictionary *dic in personList) {
@@ -96,19 +114,12 @@
         return cell;
     }
     HotFollowSchemeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KHotFollowSchemeViewCell];
-    HotSchemeModel *model = [self.personArray objectAtIndex:indexPath.row];
-    [cell loadDataWithModel:model];
+    if (self.personArray .count >0) {
+        HotSchemeModel *model = [self.personArray objectAtIndex:indexPath.row - 1];
+        [cell loadDataWithModel:model];
+    }
+
     return cell;
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

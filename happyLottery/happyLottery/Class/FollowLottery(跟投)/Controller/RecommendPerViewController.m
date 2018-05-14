@@ -105,7 +105,7 @@
 }
 
 - (void)setLeftButton{
-    UIButton *returnToRoot = [self creatBar:@"" icon:@"common_top_bar_back" andFrame:CGRectMake(20,64, 12,18) andAction:@selector(returnToRootView)];
+    UIButton *returnToRoot = [self creatBar:@"" icon:@"common_top_bar_back" andFrame:CGRectMake(20,44, 12,18) andAction:@selector(returnToRootView)];
     [topView addSubview:returnToRoot];
 }
 

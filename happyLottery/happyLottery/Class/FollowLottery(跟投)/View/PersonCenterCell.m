@@ -40,7 +40,7 @@
     [self.userImage sd_setImageWithURL:[NSURL URLWithString:model.headUrl] placeholderImage:[UIImage imageNamed:@"usermine.png"]];
     self.userName.text = model.nickName;
     self.fenshiNum.text = [NSString stringWithFormat:@"粉丝%@人",model.attentCount];
-    self.initiateStatusSum.text = [NSString stringWithFormat:@"%@元",model.totalInitiateBonus];
+    self.initiateStatusSum.text = [NSString stringWithFormat:@"%.2f元",[model.totalInitiateBonus  doubleValue]];
     NSArray *array = [model.initiateStatus componentsSeparatedByString:@","];
     switch (array.count) {
         case 0:

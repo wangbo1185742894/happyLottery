@@ -41,8 +41,15 @@
     }else{
         [self.imgItemIcon sd_setImageWithURL:[NSURL URLWithString:model[@"headUrl"]]];
     }
+//    [1]    (null)    @"nickname" : @"大晴天哈哈哈哈还"
+    if (model[@"nickname"] == nil) {
+        NSString *cardCode =model[@"cardCode"];
+        cardCode = [cardCode stringByReplacingCharactersInRange:NSMakeRange(2, 4) withString:@"****"];
+        self.labItemTitle.text =cardCode;
+    }else{
+        self.labItemTitle.text =model[@"nickname"];
+    }
     
-    self.labItemTitle.text =model[@"cardCode"];
 }
 
 - (IBAction)itemClick:(UIButton *)sender {
