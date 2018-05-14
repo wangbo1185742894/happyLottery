@@ -49,6 +49,7 @@
     } else {
         dic = nil;
     }
+    [self showLoadingText:@"正在加载"];
     [self.lotteryMan listRecommendPer:dic categoryCode:self.categoryCode];
     
     // Do any additional setup after loading the view from its nib.
@@ -137,6 +138,7 @@
         [self.personArray addObject:model];
     }
     [self.personList reloadData];
+    [self hideLoadingView];
     
 }//牛人，红人，红单榜
 
