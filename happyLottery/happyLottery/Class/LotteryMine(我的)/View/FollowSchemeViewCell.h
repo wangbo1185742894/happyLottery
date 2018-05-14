@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JCZQSchemeModel.h"
 
 @interface FollowSchemeViewCell : UITableViewCell
-
+-(void)loadData:(JCZQSchemeItem * )model;
 @end
