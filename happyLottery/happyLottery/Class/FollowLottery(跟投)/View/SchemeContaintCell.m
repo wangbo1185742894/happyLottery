@@ -7,6 +7,7 @@
 //
 
 #import "SchemeContaintCell.h"
+#import "JCLQOrderDetailInfoViewController.h"
 
 @implementation SchemeContaintCell
 
@@ -19,6 +20,10 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+- (IBAction)actionOrderDetail:(id)sender {
+    [self.delegate goOrderList];
+
 }
 
 @end

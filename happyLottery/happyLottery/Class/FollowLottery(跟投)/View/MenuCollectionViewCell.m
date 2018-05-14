@@ -34,7 +34,12 @@
 -(void)setEightItemIcom:(NSDictionary *)model{
     self.imgItemIcon .layer.cornerRadius = self.imgItemIcon.mj_h / 2;
     self.imgItemIcon.layer.masksToBounds = YES;
-    [self.imgItemIcon sd_setImageWithURL:[NSURL URLWithString:model[@"headUrl"]]];
+    if (model[@"headUrl"] == nil) {
+        self.imgItemIcon .image = [UIImage imageNamed: @"usermine"];
+    }else{
+        [self.imgItemIcon sd_setImageWithURL:[NSURL URLWithString:model[@"headUrl"]]];
+    }
+    
     self.labItemTitle.text =model[@"cardCode"];
 }
 

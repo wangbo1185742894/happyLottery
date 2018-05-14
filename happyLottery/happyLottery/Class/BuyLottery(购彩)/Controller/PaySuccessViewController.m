@@ -14,6 +14,7 @@
 #import "GYJSchemeDetailViewController.h"
 #import "JCLQSchemeDetailViewController.h"
 #import "MyPostSchemeViewController.h"
+#import "FASSchemeDetailViewController.h"
 
 @interface PaySuccessViewController ()<LotteryManagerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *btnPostScheme;
@@ -92,9 +93,10 @@
 - (void)initiateFollowScheme:(NSString *)resultStr errorMsg:(NSString *)msg{
     if(resultStr != nil){
         [self showPromptText:@"发单成功" hideAfterDelay:1.9];
-        [self.navigationController popToRootViewControllerAnimated:YES];
-        MyPostSchemeViewController *myPostVC = [[MyPostSchemeViewController alloc]init];
-        [self.navigationController pushViewController:myPostVC animated:YES];
+        FASSchemeDetailViewController *detailCV = [[FASSchemeDetailViewController alloc]init];
+        detailCV.schemeNo = self.schemeNO;
+        detailCV.schemeType = @"BUY_INITIATE";
+        [self.navigationController pushViewController:detailCV animated:YES];
     }else{
         [self showPromptText:msg hideAfterDelay:1.9];
     }

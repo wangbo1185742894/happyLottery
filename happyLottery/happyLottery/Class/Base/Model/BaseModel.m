@@ -33,4 +33,25 @@
     NSLog(@"@property(nonatomic,copy)NSString * %@;",key);
 }
 
++(NSString *)getLotteryByName:(NSString *)lottery{
+    if ([lottery isEqualToString:@"JCZQ"]) {
+        return @"竞彩足球";
+    }else if([lottery isEqualToString:@"DLT"]){
+        return [NSString stringWithFormat:@"超级大乐透"];
+    }else if([lottery isEqualToString:@"RJC"]){
+        return [NSString stringWithFormat:@"任选9场"];
+    }else if([lottery isEqualToString:@"SFC"]){
+        return [NSString stringWithFormat:@"胜负14场"];
+    }else if ([lottery isEqualToString:@"JCGYJ"]){
+        return @"冠亚军游戏";
+    }else if ([lottery isEqualToString:@"JCGJ"]){
+        return @"冠军游戏";
+    }else if ([lottery isEqualToString:@"SSQ"]){
+        return [NSString stringWithFormat:@"双色球"];
+    }else if ([lottery isEqualToString:@"JCLQ"]){
+        return @"竞彩篮球";
+    }
+    return @"彩票";
+}
+
 @end

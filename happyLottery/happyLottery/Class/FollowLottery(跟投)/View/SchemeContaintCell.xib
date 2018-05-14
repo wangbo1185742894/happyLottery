@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEq-tu-vpn">
-                        <rect key="frame" x="10" y="11" width="4" height="17"/>
+                        <rect key="frame" x="10" y="13" width="4" height="17"/>
                         <color key="backgroundColor" red="0.99607843139999996" green="0.6588235294" blue="0.074509803920000006" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="5DU-Nk-wct"/>
@@ -31,7 +31,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="方案内容" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmw-zA-rZm">
-                        <rect key="frame" x="22" y="9" width="76" height="21"/>
+                        <rect key="frame" x="22" y="11" width="76" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="nBx-jV-iM2"/>
                             <constraint firstAttribute="width" constant="76" id="rx6-6Z-IPm"/>
@@ -41,31 +41,25 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DWk-LR-CmP">
-                        <rect key="frame" x="274.5" y="9" width="90.5" height="22"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                        <state key="normal">
+                        <rect key="frame" x="294" y="9" width="71" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="G9W-aI-Kbs"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <state key="normal" title="订单详情&gt;">
                             <color key="titleColor" red="0.070588235289999995" green="0.78039215689999997" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
+                        <connections>
+                            <action selector="actionOrderDetail:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="fzo-iI-X9H"/>
+                        </connections>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="订单详情 &gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Wb-Gb-qcs">
-                        <rect key="frame" x="274.5" y="9" width="84.5" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="DJG-js-YMy"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.070588235289999995" green="0.78039215689999997" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="3Wb-Gb-qcs" secondAttribute="trailing" constant="16" id="0yC-9D-MAU"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="DWk-LR-CmP" secondAttribute="trailing" constant="-6" id="E7O-Mh-IwO"/>
                     <constraint firstItem="DWk-LR-CmP" firstAttribute="centerY" secondItem="LEq-tu-vpn" secondAttribute="centerY" id="JOB-hO-84F"/>
-                    <constraint firstItem="3Wb-Gb-qcs" firstAttribute="centerY" secondItem="LEq-tu-vpn" secondAttribute="centerY" id="L4d-sv-7Rn"/>
                     <constraint firstItem="LEq-tu-vpn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="ONe-wI-6f4"/>
-                    <constraint firstItem="DWk-LR-CmP" firstAttribute="top" secondItem="3Wb-Gb-qcs" secondAttribute="top" id="Xh4-6q-uER"/>
+                    <constraint firstAttribute="trailing" secondItem="DWk-LR-CmP" secondAttribute="trailing" constant="10" id="ZQA-Pn-iXf"/>
                     <constraint firstItem="kmw-zA-rZm" firstAttribute="leading" secondItem="LEq-tu-vpn" secondAttribute="trailing" constant="8" id="c9D-hx-YKt"/>
-                    <constraint firstItem="DWk-LR-CmP" firstAttribute="leading" secondItem="3Wb-Gb-qcs" secondAttribute="leading" id="ji6-Zn-3MA"/>
+                    <constraint firstAttribute="trailing" secondItem="DWk-LR-CmP" secondAttribute="trailing" constant="10" id="kg9-4C-bbr"/>
                     <constraint firstItem="kmw-zA-rZm" firstAttribute="centerY" secondItem="LEq-tu-vpn" secondAttribute="centerY" id="n48-Tm-gg1"/>
                     <constraint firstItem="DWk-LR-CmP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-2" id="yuI-18-Ky3"/>
                 </constraints>

@@ -33,10 +33,10 @@
 
     
 }
--(void)loadData:(id *)model{
-    
+-(void)loadData:(NSArray *)model{
+    [adsView setImageUrlArray:model];
 }
--(void)adsImgViewClick:(id*)itemIndex{
+-(void)adsImgViewClick:(id)itemIndex{
     
 }
 

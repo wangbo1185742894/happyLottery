@@ -1470,6 +1470,30 @@
                         failure:failureBlock];
 }
 
+- (void)followScheme:(NSDictionary *)paraic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed  && responseJsonStr!= nil && responseJsonStr.length>0) {
+            
+            [self.delegate followScheme:responseJsonStr errorMsg:response.errorMsg];
+        }else{
+            [self.delegate followScheme:nil errorMsg:response.errorMsg];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.delegate followScheme:nil errorMsg:@"服务器错误"];
+    };
+    
+    SOAPRequest* request = [self requestForAPI:APIFollowScheme withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPISchemeService
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
 
 - (void)getAttentFollowScheme:(NSDictionary *)paraDic
 {

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ADSModel.h"
 
 @interface HomeTabTopAdsViewCell : UITableViewCell
--(void)loadData:(id *)model;
+-(void)loadData:(NSArray *)model;
 @end

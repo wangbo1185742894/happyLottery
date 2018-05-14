@@ -148,6 +148,7 @@
     FASSchemeDetailViewController *detailCV = [[FASSchemeDetailViewController alloc]init];
     detailCV.schemeNo = model.schemeNO;
     detailCV.schemeType = [self getSchemeType];
+
     [self.navigationController pushViewController:detailCV animated:YES];
 }
 @end

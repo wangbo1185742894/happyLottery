@@ -43,7 +43,7 @@
     labTime .text = [[model.createTime componentsSeparatedByString:@" "] firstObject];
     labWinState.text = model.getSchemeState;
     if([model .getSchemeState rangeOfString:@"已中奖"].length > 0){
-        labWonCost.text = model.bonus;
+        labWonCost.text = [NSString stringWithFormat:@"%@元",model.bonus];
         labWonCost.hidden = NO;
         imgWinState.hidden = NO;
     }else{

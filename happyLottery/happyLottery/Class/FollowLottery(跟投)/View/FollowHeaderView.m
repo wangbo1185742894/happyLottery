@@ -20,6 +20,7 @@
         self  = [[[NSBundle mainBundle] loadNibNamed:@"FollowHeaderView" owner:nil options:nil] lastObject];
         self .frame = frame;
     }
+    self.btnSearch.layer.cornerRadius = 5;
     return  self;
 }
 - (IBAction)actionSearch:(id)sender {

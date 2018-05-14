@@ -58,4 +58,8 @@
 /** 标签url */
 @property(nonatomic,copy)NSString *  label_urls;
 
+-(NSString *)lotteryIcon;
+
+-(NSString *)getContent;
+
 @end

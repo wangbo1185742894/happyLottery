@@ -20,6 +20,10 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *matchResultLab;
 
+-(CGFloat)getCellHeight:(JcBetContent  *)modelDic;
+-(CGFloat)getCellJCLQHeight:(JcBetContent  *)modelDic;
 -(void)refreshData:(JcBetContent  *)modelDic andResult:(NSArray<OpenResult *> *)resultArray;
+
+-(void)refreshDataJCLQ:(JcBetContent  *)modelDic andResult:(NSArray<OpenResult *> *)resultArray;
 
 @end

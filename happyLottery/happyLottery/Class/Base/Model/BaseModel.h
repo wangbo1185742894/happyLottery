@@ -12,4 +12,6 @@
 
 
 -(id)initWith:(NSDictionary*)dic;
+
++(NSString *)getLotteryByName:(NSString *)lottery;
 @end
