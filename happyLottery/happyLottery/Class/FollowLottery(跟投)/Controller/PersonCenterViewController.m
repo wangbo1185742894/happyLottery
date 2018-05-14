@@ -35,6 +35,7 @@
         self.lotteryMan = [[LotteryManager alloc]init];
     }
     self.lotteryMan.delegate = self;
+    [self showLoadingViewWithText:@"正在加载"];
     NSDictionary *dic = @{@"cardCode":self.cardCode};
     [self.lotteryMan getInitiateInfo:dic];
     // Do any additional setup after loading the view from its nib.
@@ -62,7 +63,10 @@
 - (void) gotInitiateInfo:(NSDictionary *)diction  errorMsg:(NSString *)msg
 {
     model = [[PersonCenterModel alloc]initWith:diction];
-    NSDictionary *parc = @{@"nickName":model.nickName,@"page":@(_page),@"pageSize":@(KpageSize),@"isHis":@NO};
+    NSDictionary *parc;
+    if (model.nickName != nil) {
+        parc = @{@"nickName":model.nickName,@"page":@(_page),@"pageSize":@(KpageSize),@"isHis":@NO};
+    }
     [self.lotteryMan getFollowSchemeByNickName:parc];
 }
 
@@ -78,6 +82,7 @@
         [self.personArray addObject:[[HotSchemeModel alloc]initWith:dic]];
     }
     [self.personTabelView  reloadData];
+    [self hideLoadingView];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

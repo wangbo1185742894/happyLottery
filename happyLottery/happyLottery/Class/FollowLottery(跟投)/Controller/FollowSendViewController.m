@@ -24,6 +24,8 @@
 #import "MyNoticeViewController.h"
 
 #import "ADSModel.h"
+#import "RecomPerModel.h"
+#import "PersonCenterViewController.h"
 
 #define KRecommendViewCell @"RecommendViewCell"
 #define KHotFollowSchemeViewCell @"HotFollowSchemeViewCell"
@@ -304,6 +306,10 @@
 -(void)recommendViewCellClick:(NSIndexPath *)indexpath andTabIndex:(NSInteger)index{
     if (index == 2) {
         NSDictionary *personInfo = eightList[indexpath.row];
+        RecomPerModel *model = [[RecomPerModel alloc]initWith:personInfo];
+        PersonCenterViewController *viewContr = [[PersonCenterViewController alloc]init];
+        viewContr.cardCode = model.cardCode;
+        [self.navigationController pushViewController:viewContr animated:YES];
         NSLog(@"%@",personInfo);
     }
 }

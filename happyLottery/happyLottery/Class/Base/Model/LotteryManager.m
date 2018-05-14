@@ -1507,7 +1507,6 @@
             [self.delegate gotAttentFollowScheme:dataArray errorMsg:response.errorMsg];
         } else {
             [self.delegate gotAttentFollowScheme:nil errorMsg:response.errorMsg];
-            
         }
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {

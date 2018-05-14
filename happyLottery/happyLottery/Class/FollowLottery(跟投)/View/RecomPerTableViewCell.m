@@ -33,7 +33,7 @@
     if ([categoryCode isEqualToString:@"Cowman"]) {
         self.infoOneSum.hidden = YES;
         self.infoOneLabel.hidden = YES;
-        self.infoTwoLabel.text = @"总中奖元";
+        self.infoTwoLabel.text = @"总中奖(元)";
         self.infoTwoSum.text = model.totalBonus==nil?@"0":model.totalBonus ;
     } else if ([categoryCode isEqualToString:@"Redman"]){
         self.infoOneLabel.text = @"跟投人次";
