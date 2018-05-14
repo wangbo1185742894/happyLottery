@@ -92,7 +92,8 @@
 #define APIRedManList                 @"redManList"  //获取红人榜
 #define APIRedSchemeList            @"redSchemeList" //获取红单榜
 #define APIlistGreatFollow           @"listGreatFollow" //跟单首页可跟单大师列表
-#define APIGetHotFollowScheme  @"getHotFollowScheme"  // 获取热门发单
+#define APIGetHotFollowScheme        @"getHotFollowScheme"  // 获取热门发单
+#define APIGetInitiateInfo           @"getInitiateInfo"  //获取发单会员详细信息
 
 #define APIGetFollowSchemeByNickName  @"getFollowSchemeByNickName"
 
@@ -143,6 +144,7 @@
 #define APIchaseWhenStop            @"chaseWhenStop"
 #define APIInitiateFollowScheme     @"initiateFollowScheme"//发单
 #define APIFollowScheme             @"followScheme"//跟单
+#define APIgetAttentFollowScheme    @"getAttentFollowScheme"  //获得关注人的发单
 
 
 #define SUBAPITicketService   @"/ticket"

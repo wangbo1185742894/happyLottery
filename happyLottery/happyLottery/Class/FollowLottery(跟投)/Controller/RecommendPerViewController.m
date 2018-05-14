@@ -9,6 +9,7 @@
 #import "RecommendPerViewController.h"
 #import "RecomPerTableViewCell.h"
 #import "RecomPerModel.h"
+#import "PersonCenterViewController.h"
 
 #define KRecomPerTableViewCell @"RecomPerTableViewCell"
 @interface RecommendPerViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate>
@@ -203,6 +204,14 @@
     }];
     return cell;
 
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    RecomPerModel *model = [self.personArray objectAtIndex:indexPath.row];
+    PersonCenterViewController *viewContr = [[PersonCenterViewController alloc]init];
+    viewContr.cardCode = model.cardCode;
+    [self.navigationController pushViewController:viewContr animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

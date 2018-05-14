@@ -18,6 +18,7 @@
 #import "SearchViewController.h"
 #import "MenuCollectionViewCell.h"
 #import "HotSchemeModel.h"
+#import "MyNoticeViewController.h"
 #define KRecommendViewCell @"RecommendViewCell"
 #define KHotFollowSchemeViewCell @"HotFollowSchemeViewCell"
 #define KHomeTabTopAdsViewCell @"HomeTabTopAdsViewCell"
@@ -246,7 +247,10 @@
     }else if (index == 2){ // 红单
         [self actionToRecommed:@"RedScheme"];
     }else if (index == 3){  // 我的关注
-        
+        MyNoticeViewController *noticeVc = [[MyNoticeViewController alloc]init];
+        noticeVc.hidesBottomBarWhenPushed = YES;
+        noticeVc.curUser = self.curUser;
+        [self.navigationController pushViewController:noticeVc animated:YES];
     }
 }
 
