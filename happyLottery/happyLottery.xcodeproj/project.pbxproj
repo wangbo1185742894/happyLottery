@@ -1149,6 +1149,7 @@
 		F9A6391520A2AD1F00AA07C6 /* RecomPerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F9A6391420A2AD1F00AA07C6 /* RecomPerModel.m */; };
 		F9A6391E20A2D38300AA07C6 /* FASSchemeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9A6391C20A2D38300AA07C6 /* FASSchemeDetailViewController.m */; };
 		F9A6391F20A2D38300AA07C6 /* FASSchemeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9A6391D20A2D38300AA07C6 /* FASSchemeDetailViewController.xib */; };
+		F9A941D420A92C1900A7D67A /* PersonCenterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F9A941D320A92C1900A7D67A /* PersonCenterModel.m */; };
 		F9B5D8F6205F8B5000C9F6DC /* wordcup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9B5D8F4205F8B4F00C9F6DC /* wordcup@2x.png */; };
 		F9B5D8F7205F8B5000C9F6DC /* wordcup@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9B5D8F5205F8B4F00C9F6DC /* wordcup@3x.png */; };
 		F9B5D912205FB0B000C9F6DC /* GYJPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9B5D90F205FB0AE00C9F6DC /* GYJPlayViewController.m */; };
@@ -1298,6 +1299,20 @@
 		F9DC69AA1FDF8957007D384D /* MyHelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9DC69A81FDF8957007D384D /* MyHelpViewController.xib */; };
 		F9DC8C2720A46051006B31F4 /* SchemeInfoBuyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DC8C2520A46051006B31F4 /* SchemeInfoBuyCell.m */; };
 		F9DC8C2820A46051006B31F4 /* SchemeInfoBuyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9DC8C2620A46051006B31F4 /* SchemeInfoBuyCell.xib */; };
+		F9DC8C3120A56034006B31F4 /* MyNoticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DC8C2F20A56034006B31F4 /* MyNoticeViewController.m */; };
+		F9DC8C3220A56034006B31F4 /* MyNoticeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9DC8C3020A56034006B31F4 /* MyNoticeViewController.xib */; };
+		F9DC8C3C20A57F02006B31F4 /* pic_zhongjiangjine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9DC8C3420A57F00006B31F4 /* pic_zhongjiangjine@2x.png */; };
+		F9DC8C3D20A57F02006B31F4 /* pic_zhongjiangjine@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9DC8C3520A57F00006B31F4 /* pic_zhongjiangjine@3x.png */; };
+		F9DC8C3E20A57F02006B31F4 /* pic_jinqizhuangtai@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9DC8C3620A57F01006B31F4 /* pic_jinqizhuangtai@3x.png */; };
+		F9DC8C3F20A57F02006B31F4 /* pic_beijing@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9DC8C3720A57F01006B31F4 /* pic_beijing@3x.png */; };
+		F9DC8C4020A57F02006B31F4 /* pic_jinqizhuangtai@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9DC8C3820A57F01006B31F4 /* pic_jinqizhuangtai@2x.png */; };
+		F9DC8C4120A57F02006B31F4 /* pic_lianjiexian@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9DC8C3920A57F02006B31F4 /* pic_lianjiexian@3x.png */; };
+		F9DC8C4220A57F02006B31F4 /* pic_lianjiexian@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9DC8C3A20A57F02006B31F4 /* pic_lianjiexian@2x.png */; };
+		F9DC8C4320A57F02006B31F4 /* pic_beijing@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9DC8C3B20A57F02006B31F4 /* pic_beijing@2x.png */; };
+		F9DC8C4720A57F8E006B31F4 /* PersonCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DC8C4520A57F8E006B31F4 /* PersonCenterViewController.m */; };
+		F9DC8C4820A57F8E006B31F4 /* PersonCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9DC8C4620A57F8E006B31F4 /* PersonCenterViewController.xib */; };
+		F9DC8C4C20A585D1006B31F4 /* PersonCenterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DC8C4A20A585D1006B31F4 /* PersonCenterCell.m */; };
+		F9DC8C4D20A585D1006B31F4 /* PersonCenterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9DC8C4B20A585D1006B31F4 /* PersonCenterCell.xib */; };
 		F9E0DF1D2019695C0089F51D /* MineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9E0DF1C2019695B0089F51D /* MineViewController.xib */; };
 		F9E0DF21201972570089F51D /* JumpWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9E0DF1F201972570089F51D /* JumpWebViewController.m */; };
 		F9E0DF22201972570089F51D /* JumpWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9E0DF20201972570089F51D /* JumpWebViewController.xib */; };
@@ -2901,6 +2916,8 @@
 		F9A6391B20A2D38300AA07C6 /* FASSchemeDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FASSchemeDetailViewController.h; sourceTree = "<group>"; };
 		F9A6391C20A2D38300AA07C6 /* FASSchemeDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FASSchemeDetailViewController.m; sourceTree = "<group>"; };
 		F9A6391D20A2D38300AA07C6 /* FASSchemeDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FASSchemeDetailViewController.xib; sourceTree = "<group>"; };
+		F9A941D220A92C1900A7D67A /* PersonCenterModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonCenterModel.h; sourceTree = "<group>"; };
+		F9A941D320A92C1900A7D67A /* PersonCenterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonCenterModel.m; sourceTree = "<group>"; };
 		F9B5D8F4205F8B4F00C9F6DC /* wordcup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wordcup@2x.png"; sourceTree = "<group>"; };
 		F9B5D8F5205F8B4F00C9F6DC /* wordcup@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wordcup@3x.png"; sourceTree = "<group>"; };
 		F9B5D90F205FB0AE00C9F6DC /* GYJPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYJPlayViewController.m; sourceTree = "<group>"; };
@@ -3070,6 +3087,23 @@
 		F9DC8C2420A46051006B31F4 /* SchemeInfoBuyCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SchemeInfoBuyCell.h; sourceTree = "<group>"; };
 		F9DC8C2520A46051006B31F4 /* SchemeInfoBuyCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SchemeInfoBuyCell.m; sourceTree = "<group>"; };
 		F9DC8C2620A46051006B31F4 /* SchemeInfoBuyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SchemeInfoBuyCell.xib; sourceTree = "<group>"; };
+		F9DC8C2E20A56034006B31F4 /* MyNoticeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyNoticeViewController.h; sourceTree = "<group>"; };
+		F9DC8C2F20A56034006B31F4 /* MyNoticeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyNoticeViewController.m; sourceTree = "<group>"; };
+		F9DC8C3020A56034006B31F4 /* MyNoticeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyNoticeViewController.xib; sourceTree = "<group>"; };
+		F9DC8C3420A57F00006B31F4 /* pic_zhongjiangjine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pic_zhongjiangjine@2x.png"; sourceTree = "<group>"; };
+		F9DC8C3520A57F00006B31F4 /* pic_zhongjiangjine@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pic_zhongjiangjine@3x.png"; sourceTree = "<group>"; };
+		F9DC8C3620A57F01006B31F4 /* pic_jinqizhuangtai@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pic_jinqizhuangtai@3x.png"; sourceTree = "<group>"; };
+		F9DC8C3720A57F01006B31F4 /* pic_beijing@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pic_beijing@3x.png"; sourceTree = "<group>"; };
+		F9DC8C3820A57F01006B31F4 /* pic_jinqizhuangtai@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pic_jinqizhuangtai@2x.png"; sourceTree = "<group>"; };
+		F9DC8C3920A57F02006B31F4 /* pic_lianjiexian@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pic_lianjiexian@3x.png"; sourceTree = "<group>"; };
+		F9DC8C3A20A57F02006B31F4 /* pic_lianjiexian@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pic_lianjiexian@2x.png"; sourceTree = "<group>"; };
+		F9DC8C3B20A57F02006B31F4 /* pic_beijing@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pic_beijing@2x.png"; sourceTree = "<group>"; };
+		F9DC8C4420A57F8E006B31F4 /* PersonCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonCenterViewController.h; sourceTree = "<group>"; };
+		F9DC8C4520A57F8E006B31F4 /* PersonCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonCenterViewController.m; sourceTree = "<group>"; };
+		F9DC8C4620A57F8E006B31F4 /* PersonCenterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonCenterViewController.xib; sourceTree = "<group>"; };
+		F9DC8C4920A585D1006B31F4 /* PersonCenterCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonCenterCell.h; sourceTree = "<group>"; };
+		F9DC8C4A20A585D1006B31F4 /* PersonCenterCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonCenterCell.m; sourceTree = "<group>"; };
+		F9DC8C4B20A585D1006B31F4 /* PersonCenterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonCenterCell.xib; sourceTree = "<group>"; };
 		F9E0DF1C2019695B0089F51D /* MineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineViewController.xib; sourceTree = "<group>"; };
 		F9E0DF1E201972570089F51D /* JumpWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpWebViewController.h; sourceTree = "<group>"; };
 		F9E0DF1F201972570089F51D /* JumpWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpWebViewController.m; sourceTree = "<group>"; };
@@ -4142,6 +4176,7 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				F9DC8C3320A57E71006B31F4 /* PersonCenter */,
 				2D05C82220A43619001A8953 /* gendanres */,
 				2D621C742092FD7700526041 /* launchImage@2x.png */,
 				2D621C712092F6DF00526041 /* yuyuefangan@2x.png */,
@@ -5609,6 +5644,12 @@
 				2D05C81120A3EE3E001A8953 /* SearchViewController.h */,
 				2D05C81220A3EE3E001A8953 /* SearchViewController.m */,
 				2D05C81320A3EE3E001A8953 /* SearchViewController.xib */,
+				F9DC8C2E20A56034006B31F4 /* MyNoticeViewController.h */,
+				F9DC8C2F20A56034006B31F4 /* MyNoticeViewController.m */,
+				F9DC8C3020A56034006B31F4 /* MyNoticeViewController.xib */,
+				F9DC8C4420A57F8E006B31F4 /* PersonCenterViewController.h */,
+				F9DC8C4520A57F8E006B31F4 /* PersonCenterViewController.m */,
+				F9DC8C4620A57F8E006B31F4 /* PersonCenterViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -5620,6 +5661,8 @@
 				F9A6391420A2AD1F00AA07C6 /* RecomPerModel.m */,
 				2D05C81820A418B9001A8953 /* HotSchemeModel.h */,
 				2D05C81920A418B9001A8953 /* HotSchemeModel.m */,
+				F9A941D220A92C1900A7D67A /* PersonCenterModel.h */,
+				F9A941D320A92C1900A7D67A /* PersonCenterModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -5665,6 +5708,9 @@
 				F9DC8C2420A46051006B31F4 /* SchemeInfoBuyCell.h */,
 				F9DC8C2520A46051006B31F4 /* SchemeInfoBuyCell.m */,
 				F9DC8C2620A46051006B31F4 /* SchemeInfoBuyCell.xib */,
+				F9DC8C4920A585D1006B31F4 /* PersonCenterCell.h */,
+				F9DC8C4A20A585D1006B31F4 /* PersonCenterCell.m */,
+				F9DC8C4B20A585D1006B31F4 /* PersonCenterCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -5768,6 +5814,21 @@
 				F9C3BA1A20088E3700916F3C /* starUnselecte@3x.png */,
 			);
 			name = feedback;
+			sourceTree = "<group>";
+		};
+		F9DC8C3320A57E71006B31F4 /* PersonCenter */ = {
+			isa = PBXGroup;
+			children = (
+				F9DC8C3B20A57F02006B31F4 /* pic_beijing@2x.png */,
+				F9DC8C3720A57F01006B31F4 /* pic_beijing@3x.png */,
+				F9DC8C3820A57F01006B31F4 /* pic_jinqizhuangtai@2x.png */,
+				F9DC8C3620A57F01006B31F4 /* pic_jinqizhuangtai@3x.png */,
+				F9DC8C3A20A57F02006B31F4 /* pic_lianjiexian@2x.png */,
+				F9DC8C3920A57F02006B31F4 /* pic_lianjiexian@3x.png */,
+				F9DC8C3420A57F00006B31F4 /* pic_zhongjiangjine@2x.png */,
+				F9DC8C3520A57F00006B31F4 /* pic_zhongjiangjine@3x.png */,
+			);
+			path = PersonCenter;
 			sourceTree = "<group>";
 		};
 		F9F2629E1FE8F4AE00C2E60F /* RSKImageCropper */ = {
@@ -6033,6 +6094,7 @@
 				2D0EEA922013280500B0769C /* button_trophy@2x.png in Resources */,
 				2D8CC0101FF487CF00CC367F /* WBHomeJCYCViewController.xib in Resources */,
 				2D03F27D2060BAE800C81BEF /* AddBankCardViewController.xib in Resources */,
+				F9DC8C4D20A585D1006B31F4 /* PersonCenterCell.xib in Resources */,
 				2D40CAAA201EDE5700DDCFE3 /* dot@3x.png in Resources */,
 				2D20602D1FFCB71E0086E266 /* icon_zhanbaotongji@3x.png in Resources */,
 				2D739CDA1FEB44F400264044 /* yuanjiaowubiankuangnomal@2x.png in Resources */,
@@ -6043,6 +6105,7 @@
 				F9B5D9932060A9DE00C9F6DC /* flag416@2x.png in Resources */,
 				2D5171F3200C72F300C3CD7F /* btn_change_@2x.png in Resources */,
 				2D16601B20A2D4DF00C1C7E7 /* FollowSchemeViewCell.xib in Resources */,
+				F9DC8C3F20A57F02006B31F4 /* pic_beijing@3x.png in Resources */,
 				F9B5D9912060A9DE00C9F6DC /* flag414@2x.png in Resources */,
 				F9705E19207A0DAE00E25E4E /* JCLQPlayController.xib in Resources */,
 				F9D9F2A91FF22640006434DC /* CashAndIntegrationWaterViewController.xib in Resources */,
@@ -6094,6 +6157,7 @@
 				F91565F51FFCBDAE00E254CE /* wechat@2x.png in Resources */,
 				2D7B1378204E63EF0035AE89 /* dltcheckbox@3x.png in Resources */,
 				F9705E54207A0DE800E25E4E /* JCLQSFCPlayTypeView.xib in Resources */,
+				F9DC8C3C20A57F02006B31F4 /* pic_zhongjiangjine@2x.png in Resources */,
 				2D05C85B20A43631001A8953 /* remengendan@3x.png in Resources */,
 				2D05C84F20A43631001A8953 /* guize@3x.png in Resources */,
 				2D92A81B200EF91D0038E165 /* win_tag@3x.png in Resources */,
@@ -6150,6 +6214,7 @@
 				2D89D60B206CE3AE005E0209 /* WelComeViewController.xib in Resources */,
 				2D4B1E831FDF684E0034B708 /* wode_select@2x.png in Resources */,
 				2D739CF01FEB4B0E00264044 /* xiala@3x.png in Resources */,
+				F9DC8C3E20A57F02006B31F4 /* pic_jinqizhuangtai@3x.png in Resources */,
 				2D7B1381204E70510035AE89 /* friendshake@3x.png in Resources */,
 				2D8CBFB01FF328D800CC367F /* paysuccess@2x.png in Resources */,
 				2D40CAA7201EDE5700DDCFE3 /* shut@3x.png in Resources */,
@@ -6383,6 +6448,7 @@
 				2D4B1E8C1FDF684E0034B708 /* yuce_select@3x.png in Resources */,
 				2D7B1357204E39780035AE89 /* dltrightmenubg@2x.png in Resources */,
 				2D05C81F20A42BCF001A8953 /* FollowDetailViewController.xib in Resources */,
+				F9DC8C3220A56034006B31F4 /* MyNoticeViewController.xib in Resources */,
 				2D739CF91FEB5D1900264044 /* JCZQSelectBQCVIew.xib in Resources */,
 				F9705E1B207A0DAE00E25E4E /* JCLQTouZhuController.xib in Resources */,
 				2D628B2C1FECA9C40013D0E1 /* touzhubeishujia@3x.png in Resources */,
@@ -6402,6 +6468,7 @@
 				2D739CEB1FEB48B600264044 /* wukuangwuyuanjiaoselect@3x.png in Resources */,
 				2D40CAA2201EDE5700DDCFE3 /* shut@2x.png in Resources */,
 				2D0E23F62019A8520098DA40 /* invite@2x.png in Resources */,
+				F9DC8C4120A57F02006B31F4 /* pic_lianjiexian@3x.png in Resources */,
 				2D628B3A1FECAA9A0013D0E1 /* fengkuangjingcai-monitouzhu-weixuanze@3x.png in Resources */,
 				2D7B1418204FC7CD0035AE89 /* timebackimage@3x.png in Resources */,
 				F9418F452010991200454109 /* ShareSDKConfigFile.bundle in Resources */,
@@ -6462,6 +6529,7 @@
 				F90FCD941FF396F700BD807C /* fly@2x.png in Resources */,
 				F9632F58200C9A8B00F69D23 /* IntegeralChangeViewController.xib in Resources */,
 				F9B5D9802060A9DE00C9F6DC /* flag380@3x.png in Resources */,
+				F9DC8C3D20A57F02006B31F4 /* pic_zhongjiangjine@3x.png in Resources */,
 				F9DC8C2820A46051006B31F4 /* SchemeInfoBuyCell.xib in Resources */,
 				2D0EEAB22015DCFC00B0769C /* ad_home2@2x.png in Resources */,
 				F9B5D9952060A9DE00C9F6DC /* flag417@2x.png in Resources */,
@@ -6521,6 +6589,7 @@
 				2D06008D1FFF4BAF009E7568 /* SchemeDetailViewCell.xib in Resources */,
 				F9B5D96F2060A9DE00C9F6DC /* flag1044@2x.png in Resources */,
 				F9992769200335DC00023F8F /* guanbi@3x.png in Resources */,
+				F9DC8C4320A57F02006B31F4 /* pic_beijing@2x.png in Resources */,
 				2D05C84A20A43631001A8953 /* delete@2x.png in Resources */,
 				2D06FFE91FFDC9EB009E7568 /* football@2x.png in Resources */,
 				2D40CAA4201EDE5700DDCFE3 /* bj_down@2x.png in Resources */,
@@ -6673,6 +6742,7 @@
 				F98C3EE82071FDB400C1DBF8 /* ssq_logo.png in Resources */,
 				2D739C241FE2611C00264044 /* IQKeyboardManager.bundle in Resources */,
 				F94AA9DD1FEB7B780021B980 /* bank@3x.png in Resources */,
+				F9DC8C4020A57F02006B31F4 /* pic_jinqizhuangtai@2x.png in Resources */,
 				F94AA9BA1FEB59DA0021B980 /* list@3x.png in Resources */,
 				F928C6B31FF4BA40001F1A32 /* lessen@3x.png in Resources */,
 				F9B5D99F2060A9DE00C9F6DC /* flag430@2x.png in Resources */,
@@ -6684,6 +6754,7 @@
 				2D628B3C1FECAA9A0013D0E1 /* fengkuangjingcai-monitouzhu-xuanze@2x.png in Resources */,
 				2D0600881FFF1365009E7568 /* HHGGPeilvTable.plist in Resources */,
 				2D811A99207DDA610069601C /* JCLQCode.plist in Resources */,
+				F9DC8C4220A57F02006B31F4 /* pic_lianjiexian@2x.png in Resources */,
 				2D205FE91FFC6E950086E266 /* WBBifenZhiboViewController.xib in Resources */,
 				2D6F9237208D9D8A007DFD0B /* leshan@3x.png in Resources */,
 				2D05C84920A43631001A8953 /* datingsousuo@3x.png in Resources */,
@@ -6706,6 +6777,7 @@
 				F9B5D99B2060A9DE00C9F6DC /* flag424@2x.png in Resources */,
 				2D7B136F204E5F450035AE89 /* dltbutton-default@2x.png in Resources */,
 				2D811A9E207DDBED0069601C /* basketball@3x.png in Resources */,
+				F9DC8C4820A57F8E006B31F4 /* PersonCenterViewController.xib in Resources */,
 				2D628B3B1FECAA9A0013D0E1 /* wanfaxiala@2x.png in Resources */,
 				2D7B1346204E258B0035AE89 /* machine-selection@3x.png in Resources */,
 				2D4B1E401FDF652C0034B708 /* HomeMenuItemView.xib in Resources */,
@@ -7014,6 +7086,7 @@
 				2DDEDC351FD52178007AEBF7 /* AESUtility.m in Sources */,
 				2D0EEA862013216900B0769C /* ZhuiHaoStopPushVIew.m in Sources */,
 				2D16600620A2C9F900C1C7E7 /* MyPostSchemeViewController.m in Sources */,
+				F9DC8C4720A57F8E006B31F4 /* PersonCenterViewController.m in Sources */,
 				2DDEDE721FD568C9007AEBF7 /* AFURLConnectionOperation.m in Sources */,
 				F9705E1A207A0DAE00E25E4E /* JCLQTouZhuController.m in Sources */,
 				F9B5DA6E2060BD2E00C9F6DC /* WCHomeGYJItemViewCell.m in Sources */,
@@ -7084,6 +7157,7 @@
 				2D628B4A1FECAE980013D0E1 /* JingCaiChaunFaSelectView.m in Sources */,
 				2D0EEAA12015A94A00B0769C /* YCSchemeViewCell.m in Sources */,
 				F95C7EAD2071D5CC005990F5 /* ZhuiHaoInfoViewController.m in Sources */,
+				F9DC8C4C20A585D1006B31F4 /* PersonCenterCell.m in Sources */,
 				2D16601520A2CF6700C1C7E7 /* PostSchemeViewCell.m in Sources */,
 				2D7B12F9204D3F110035AE89 /* LotteryXHProfile.m in Sources */,
 				2D7B13B2204E873D0035AE89 /* CTZQTransaction.m in Sources */,
@@ -7169,6 +7243,7 @@
 				2D03F22C2060B6CE00C81BEF /* WebCTZQHisViewController.m in Sources */,
 				2D0EEA7C2012CEF900B0769C /* HomeJumpViewController.m in Sources */,
 				F9705E5A207A0E5B00E25E4E /* JCLQSchemeDetailViewController.m in Sources */,
+				F9DC8C3120A56034006B31F4 /* MyNoticeViewController.m in Sources */,
 				F9F262B71FE8F4AE00C2E60F /* UIImage+RSKImageCropper.m in Sources */,
 				F9DC69A91FDF8957007D384D /* MyHelpViewController.m in Sources */,
 				F9DC699A1FDF888F007D384D /* MyFavoriteViewController.m in Sources */,
@@ -7199,6 +7274,7 @@
 				F9D9F2A81FF22640006434DC /* CashAndIntegrationWaterViewController.m in Sources */,
 				2DDEDC061FD4DBD8007AEBF7 /* BuyLotteryViewController.m in Sources */,
 				F92855E320A2FD9B0023A0AC /* SchemePerFollowCell.m in Sources */,
+				F9A941D420A92C1900A7D67A /* PersonCenterModel.m in Sources */,
 				F9D7C54E20060C1A00415B4E /* CouponGuidViewController.m in Sources */,
 				2D2117F62050E7A000023FB4 /* DLTSchemeViewCell.m in Sources */,
 				2D4B1EA11FDFC5F30034B708 /* NewsTableViewCell.m in Sources */,
