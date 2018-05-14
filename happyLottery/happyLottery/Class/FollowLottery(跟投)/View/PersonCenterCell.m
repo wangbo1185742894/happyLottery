@@ -41,6 +41,68 @@
     self.userName.text = model.nickName;
     self.fenshiNum.text = [NSString stringWithFormat:@"粉丝%@人",model.attentCount];
     self.initiateStatusSum.text = [NSString stringWithFormat:@"%@元",model.totalInitiateBonus];
+    NSArray *array = [model.initiateStatus componentsSeparatedByString:@","];
+    switch (array.count) {
+        case 0:
+            self.initiateStatusFirst.hidden = YES;
+            self.initiateStatusTwo.hidden = YES;
+            self.initiateStatusThird.hidden = YES;
+            self.initiateStatusForth.hidden = YES;
+            self.initiateStatusFifth.hidden = YES;
+            break;
+        case 1:
+            self.initiateStatusFirst.text = [array[0]isEqualToString:@"1"]?@"中":@"未";
+            self.initiateStatusFirst.hidden = NO;
+            self.initiateStatusTwo.hidden = YES;
+            self.initiateStatusThird.hidden = YES;
+            self.initiateStatusForth.hidden = YES;
+            self.initiateStatusFifth.hidden = YES;
+            break;
+        case 2:
+            self.initiateStatusFirst.text = [array[0]isEqualToString:@"1"]?@"中":@"未";
+            self.initiateStatusFirst.hidden = NO;
+            self.initiateStatusTwo.text = [array[1]isEqualToString:@"1"]?@"中":@"未";
+            self.initiateStatusTwo.hidden = NO;
+            self.initiateStatusThird.hidden = YES;
+            self.initiateStatusForth.hidden = YES;
+            self.initiateStatusFifth.hidden = YES;
+            break;
+        case 3:
+            self.initiateStatusFirst.text = [array[0]isEqualToString:@"1"]?@"中":@"未";
+            self.initiateStatusFirst.hidden = NO;
+            self.initiateStatusTwo.text = [array[1]isEqualToString:@"1"]?@"中":@"未";
+            self.initiateStatusTwo.hidden = NO;
+            self.initiateStatusThird.text = [array[2]isEqualToString:@"1"]?@"中":@"未";
+            self.initiateStatusThird.hidden = NO;
+            self.initiateStatusForth.hidden = YES;
+            self.initiateStatusFifth.hidden = YES;
+            break;
+        case 4:
+            self.initiateStatusFirst.text = [array[0]isEqualToString:@"1"]?@"中":@"未";
+            self.initiateStatusFirst.hidden = NO;
+            self.initiateStatusTwo.text = [array[1]isEqualToString:@"1"]?@"中":@"未";
+            self.initiateStatusTwo.hidden = NO;
+            self.initiateStatusThird.text = [array[2]isEqualToString:@"1"]?@"中":@"未";
+            self.initiateStatusThird.hidden = NO;
+            self.initiateStatusForth.text = [array[3]isEqualToString:@"1"]?@"中":@"未";
+            self.initiateStatusForth.hidden = NO;
+            self.initiateStatusFifth.hidden = YES;
+            break;
+        case 5:
+            self.initiateStatusFirst.text = [array[0]isEqualToString:@"1"]?@"中":@"未";
+            self.initiateStatusFirst.hidden = NO;
+            self.initiateStatusTwo.text = [array[1]isEqualToString:@"1"]?@"中":@"未";
+            self.initiateStatusTwo.hidden = NO;
+            self.initiateStatusThird.text = [array[2]isEqualToString:@"1"]?@"中":@"未";
+            self.initiateStatusThird.hidden = NO;
+            self.initiateStatusForth.text = [array[3]isEqualToString:@"1"]?@"中":@"未";
+            self.initiateStatusForth.hidden = NO;
+            self.initiateStatusFifth.text = [array[4]isEqualToString:@"1"]?@"中":@"未";
+            self.initiateStatusFifth.hidden = NO;
+            break;
+        default:
+            break;
+    }
 }
 
 @end
