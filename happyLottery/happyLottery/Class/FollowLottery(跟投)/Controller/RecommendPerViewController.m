@@ -21,7 +21,6 @@
 
 @property(nonatomic,strong)NSMutableArray *indexArray;
 
-@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 
 @end
 
@@ -31,13 +30,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     self.personList.delegate = self;
     self.personList.dataSource = self;
     [self.personList registerNib:[UINib nibWithNibName:KRecomPerTableViewCell bundle:nil] forCellReuseIdentifier:KRecomPerTableViewCell];
     self.personArray = [NSMutableArray arrayWithCapacity:0];
     self.indexArray = [NSMutableArray arrayWithCapacity:0];
-    [self navigationBarInit];
+//    [self navigationBarInit];
     //data request
     if (self.lotteryMan == nil) {
         self.lotteryMan = [[LotteryManager alloc]init];
@@ -62,14 +61,13 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
-    self.navigationController.navigationBar.hidden = YES;
+    self.navigationController.navigationBar.hidden  = YES;
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self showLoadingText:nil];
-    self.navigationController.navigationBar.hidden = NO;
+    self.navigationController.navigationBar.hidden  = NO;
     [[NSNotificationCenter defaultCenter]removeObserver:self name:NotificationNameUserLogin object:nil];
 }
 
@@ -85,9 +83,26 @@
     [self.personList reloadRowsAtIndexPaths:arrToReload withRowAnimation:UITableViewRowAnimationFade];
 }
 
-//自定义navigationBar
-- (void)navigationBarInit{
-    topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0,self.view.frame.size.width, 147)];
+//////自定义navigationBar
+//- (void)navigationBarInit{
+//    topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0,self.view.frame.size.width, 147)];
+//    NSString *imageName;
+//    if ([self.categoryCode isEqualToString:@"Cowman"]) {
+//        imageName = @"pic_niurenbangbeijing.png";
+//    } else if ([self.categoryCode isEqualToString:@"Redman"]){
+//        imageName = @"pic_hongrenbangbeijing.png";
+//    }else {
+//        imageName = @"pic_hongdanbangbeijing.png";
+//    }
+//    UIImageView *itemImage =[[UIImageView alloc]initWithImage:[UIImage imageNamed:imageName]];
+//    itemImage.frame = topView.frame;
+//    itemImage.contentMode= UIViewContentModeScaleToFill;
+//    [topView addSubview:itemImage];
+//
+//}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIImageView *image = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, 170  )];
     NSString *imageName;
     if ([self.categoryCode isEqualToString:@"Cowman"]) {
         imageName = @"pic_niurenbangbeijing.png";
@@ -96,17 +111,16 @@
     }else {
         imageName = @"pic_hongdanbangbeijing.png";
     }
-    UIImageView *itemImage =[[UIImageView alloc]initWithImage:[UIImage imageNamed:imageName]];
-    itemImage.frame = topView.frame;
-    itemImage.contentMode= UIViewContentModeScaleToFill;
-    [topView addSubview:itemImage];
-    [self.navigationBar addSubview:topView];
-    [self setLeftButton];
+     UIButton *returnToRoot = [self creatBar:@"" icon:@"newBack" andFrame:CGRectMake(10,30, 44,25) andAction:@selector(returnToRootView)];
+    returnToRoot.contentMode = UIViewContentModeScaleAspectFit;
+    image.image = [UIImage imageNamed:imageName];
+    [image addSubview:returnToRoot];
+    image.userInteractionEnabled = YES;
+    return image;
 }
 
-- (void)setLeftButton{
-    UIButton *returnToRoot = [self creatBar:@"" icon:@"common_top_bar_back" andFrame:CGRectMake(20,44, 12,18) andAction:@selector(returnToRootView)];
-    [topView addSubview:returnToRoot];
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 170;
 }
 
 - (void)returnToRootView {
@@ -158,7 +172,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return  60;
+    return  65;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
