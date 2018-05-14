@@ -55,8 +55,14 @@
     self.labLotteryName.text = [BaseModel getLotteryByName:_model.lottery];
     self.labPersonIcon.layer.cornerRadius = self.labPersonIcon.mj_h/2;
     self.labPersonIcon.layer.masksToBounds = YES;
-    self.labBetContent.text = [_model getContent];
-    [self.labPersonIcon sd_setImageWithURL:[NSURL URLWithString:_model.headUrl]];
+    self.labBetContent.text = [_model getDetailContent];
+    if (_model.headUrl.length == 0) {
+        [self.labPersonIcon setImage: [UIImage imageNamed:@"usermine"]];
+    }else{
+        
+        [self.labPersonIcon sd_setImageWithURL:[NSURL URLWithString:_model.headUrl]];
+    }
+    
     self.labPersonName .text =  _model.nickName;
     self.labYujihuibao.text =  [NSString stringWithFormat:@"%.2f倍",[_model.pledge doubleValue]];
     self.labZigou.text =[NSString stringWithFormat:@"%@元",_model.betCost];

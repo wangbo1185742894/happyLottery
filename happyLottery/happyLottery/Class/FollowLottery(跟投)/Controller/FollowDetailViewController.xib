@@ -317,7 +317,7 @@
                     <rect key="frame" x="0.0" y="288" width="375" height="274"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iIc-EN-gqf">
-                            <rect key="frame" x="15" y="8" width="100" height="25"/>
+                            <rect key="frame" x="20" y="11" width="100" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="25" id="IJb-N2-3Qc"/>
                                 <constraint firstAttribute="width" constant="100" id="o1C-6N-coZ"/>
@@ -333,13 +333,49 @@
                             <color key="textColor" red="0.55294117649999996" green="0.55294117649999996" blue="0.55294117649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="064-Th-bFF">
+                            <rect key="frame" x="50" y="79" width="275" height="1"/>
+                            <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="hpI-xQ-Aau"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_suozi.png" translatesAutoresizingMaskIntoConstraints="NO" id="jD1-CC-EMk">
+                            <rect key="frame" x="167.5" y="69" width="40" height="20"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="3LM-uZ-a4a"/>
+                                <constraint firstAttribute="height" constant="20" id="4gk-hA-CVZ"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ywg-tc-jF5">
+                            <rect key="frame" x="15" y="15" width="4" height="17"/>
+                            <color key="backgroundColor" red="0.99607843139999996" green="0.6588235294" blue="0.074509803920000006" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="17" id="Xjt-Ru-Bjx"/>
+                                <constraint firstAttribute="width" constant="4" id="sy0-dA-8JT"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="iIc-EN-gqf" firstAttribute="leading" secondItem="OJ0-vf-AVC" secondAttribute="leading" constant="15" id="F6f-Nv-SC9"/>
-                        <constraint firstItem="iIc-EN-gqf" firstAttribute="top" secondItem="OJ0-vf-AVC" secondAttribute="top" constant="8" id="JTh-Av-V2G"/>
+                        <constraint firstAttribute="trailing" secondItem="064-Th-bFF" secondAttribute="trailing" constant="50" id="2ZX-no-bhh"/>
+                        <constraint firstItem="064-Th-bFF" firstAttribute="leading" secondItem="OJ0-vf-AVC" secondAttribute="leading" constant="50" id="DVT-x9-lOy"/>
+                        <constraint firstItem="iIc-EN-gqf" firstAttribute="leading" secondItem="OJ0-vf-AVC" secondAttribute="leading" constant="20" id="F6f-Nv-SC9"/>
+                        <constraint firstItem="jD1-CC-EMk" firstAttribute="centerX" secondItem="064-Th-bFF" secondAttribute="centerX" id="Ngk-1f-Kq0"/>
+                        <constraint firstItem="jD1-CC-EMk" firstAttribute="centerY" secondItem="064-Th-bFF" secondAttribute="centerY" id="SL3-fB-8c7"/>
+                        <constraint firstItem="iIc-EN-gqf" firstAttribute="centerY" secondItem="ywg-tc-jF5" secondAttribute="centerY" id="WMu-aN-RBw"/>
+                        <constraint firstItem="onI-Pg-y6F" firstAttribute="top" secondItem="064-Th-bFF" secondAttribute="bottom" constant="20" id="nfN-Ap-x5s"/>
                         <constraint firstItem="onI-Pg-y6F" firstAttribute="top" secondItem="OJ0-vf-AVC" secondAttribute="top" constant="100" id="s1T-BL-PFq"/>
                         <constraint firstItem="onI-Pg-y6F" firstAttribute="centerX" secondItem="OJ0-vf-AVC" secondAttribute="centerX" id="vMd-Ls-Sbq"/>
+                        <constraint firstItem="ywg-tc-jF5" firstAttribute="leading" secondItem="OJ0-vf-AVC" secondAttribute="leading" constant="15" id="vxX-IY-keg"/>
+                        <constraint firstItem="ywg-tc-jF5" firstAttribute="top" secondItem="OJ0-vf-AVC" secondAttribute="top" constant="15" id="y7Z-nZ-aoZ"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ASD-jC-BSq">
@@ -462,6 +498,7 @@
         </view>
     </objects>
     <resources>
+        <image name="icon_suozi.png" width="11" height="14"/>
         <image name="smartfollow_add_pressed.png" width="16" height="16"/>
         <image name="smartfollow_sub_press.png" width="16" height="16"/>
         <image name="touzhubeishujia.png" width="22" height="22"/>

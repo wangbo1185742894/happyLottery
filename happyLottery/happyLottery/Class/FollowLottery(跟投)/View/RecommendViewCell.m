@@ -16,6 +16,7 @@
 @property(nonatomic,strong)NSArray *eightList;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topMarginViewHeight;
 @property(strong,nonatomic)id  model;
+@property(strong,nonatomic) UICollectionViewFlowLayout *customLayout;
 
 @end
 @implementation RecommendViewCell
@@ -26,11 +27,13 @@
 }
 
 -(UICollectionViewFlowLayout *)getLayoutMenu{
-    UICollectionViewFlowLayout *customLayout = [[UICollectionViewFlowLayout alloc] init]; // 自定义的布局对象
-    customLayout.minimumLineSpacing = 0;
-    customLayout.minimumInteritemSpacing = 0;
-    customLayout.itemSize = CGSizeMake(KscreenWidth /4 , 85) ;
-    return customLayout;
+    if (_customLayout == nil) {
+        _customLayout = [[UICollectionViewFlowLayout alloc] init]; // 自定义的布局对象
+        _customLayout.minimumLineSpacing = 0;
+        _customLayout.minimumInteritemSpacing = 0;
+        _customLayout.itemSize = CGSizeMake(KscreenWidth /4 , 85) ;
+    }
+    return _customLayout;
 }
 -(void)setCollection:(NSInteger )index andData:(NSArray * )model{
     self.selectIndex = index;
@@ -59,7 +62,7 @@
     if (self.selectIndex == 0) {
         return 4;
     }else    if (self.selectIndex ==2) {
-        return self.eightList.count;
+        return self.eightList.count == 0?1:self.eightList.count ;
     }
     return 1;
 }
@@ -71,6 +74,7 @@
     if (self.selectIndex == 0) {
         
         cell.index = indexPath.row;
+    
         [cell setItemIcom:_topList[indexPath.row]];
     }else{
         cell.index = -1;
