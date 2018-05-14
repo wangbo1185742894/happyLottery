@@ -77,10 +77,12 @@
     self.tfSearchKey.layer.masksToBounds = YES;
     NSMutableAttributedString * firstPart = [[NSMutableAttributedString alloc] initWithString:@"请输入您所需的关键字" attributes:@{ NSFontAttributeName:[UIFont systemFontOfSize:15],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     self.tfSearchKey.attributedPlaceholder = firstPart;
-    UIImageView *leftView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
+    UIButton *leftView = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
+    [leftView setImage:[UIImage imageNamed:@"sousuo"] forState:0];
+    
     UIButton *rightView = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
-    leftView.backgroundColor = [UIColor redColor];
-    rightView.backgroundColor = [UIColor redColor];
+    [rightView setImage:[UIImage imageNamed:@"delete"] forState:0];
+
     self.tfSearchKey.rightView = rightView;
     [rightView addTarget:self action:@selector(cleanKeyWord) forControlEvents:UIControlEventTouchUpInside];
     self.tfSearchKey.rightViewMode =  UITextFieldViewModeAlways;

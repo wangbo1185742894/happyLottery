@@ -15,37 +15,51 @@
             <rect key="frame" x="0.0" y="0.0" width="341" height="50"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Czr-NS-yYg">
-                    <rect key="frame" x="15" y="12.5" width="80" height="25"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="80" id="0Bt-oF-uhI"/>
-                        <constraint firstAttribute="height" constant="25" id="OXh-4m-fGJ"/>
-                    </constraints>
-                    <state key="normal" title="二门跟单">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Fv-p7-xvG">
                     <rect key="frame" x="226" y="5" width="100" height="40"/>
                     <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="100" id="nr1-wf-3uu"/>
                     </constraints>
-                    <state key="normal" title="搜索大蛇">
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="搜索大神" image="datingsousuo.png">
                         <color key="titleColor" red="0.55294117647058827" green="0.55294117647058827" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
                         <action selector="actionSearch:" destination="iN0-l3-epB" eventType="touchUpInside" id="aDs-a1-ZIh"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Eq-QZ-WlZ">
+                    <rect key="frame" x="10" y="15" width="5" height="20"/>
+                    <color key="backgroundColor" red="0.99607843139999996" green="0.6588235294" blue="0.074509803920000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="5" id="vBQ-OB-bTR"/>
+                        <constraint firstAttribute="height" constant="20" id="vjt-OW-HcK"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Czr-NS-yYg">
+                    <rect key="frame" x="20" y="12.5" width="80" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="0Bt-oF-uhI"/>
+                        <constraint firstAttribute="height" constant="25" id="OXh-4m-fGJ"/>
+                    </constraints>
+                    <state key="normal" title="热门跟单">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Czr-NS-yYg" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="3Az-0K-Vv2"/>
-                <constraint firstItem="Czr-NS-yYg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="6Qe-Sk-sbN"/>
                 <constraint firstAttribute="trailing" secondItem="0Fv-p7-xvG" secondAttribute="trailing" constant="15" id="QkH-PU-4TF"/>
                 <constraint firstAttribute="bottom" secondItem="0Fv-p7-xvG" secondAttribute="bottom" constant="5" id="RNt-bO-1rc"/>
                 <constraint firstItem="0Fv-p7-xvG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="Wr8-wd-HYK"/>
+                <constraint firstItem="4Eq-QZ-WlZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="aHo-EZ-T5n"/>
+                <constraint firstItem="Czr-NS-yYg" firstAttribute="leading" secondItem="4Eq-QZ-WlZ" secondAttribute="trailing" constant="5" id="fYW-jR-emq"/>
+                <constraint firstItem="4Eq-QZ-WlZ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ggr-8e-v8f"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
@@ -54,4 +68,7 @@
             <point key="canvasLocation" x="16.5" y="309"/>
         </view>
     </objects>
+    <resources>
+        <image name="datingsousuo.png" width="12" height="12"/>
+    </resources>
 </document>

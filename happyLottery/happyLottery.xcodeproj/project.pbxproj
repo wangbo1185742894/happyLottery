@@ -82,6 +82,10 @@
 		2D05C86C20A43631001A8953 /* pic_hongdanbangbeijing@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D05C84620A43630001A8953 /* pic_hongdanbangbeijing@3x.png */; };
 		2D05C86D20A43631001A8953 /* pic_hongrenbangbeijing@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D05C84720A43630001A8953 /* pic_hongrenbangbeijing@3x.png */; };
 		2D05C86E20A43631001A8953 /* icon_niurenbang@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D05C84820A43631001A8953 /* icon_niurenbang@3x.png */; };
+		2D05C87920A58416001A8953 /* FollowListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D05C87720A58416001A8953 /* FollowListViewController.m */; };
+		2D05C87A20A58416001A8953 /* FollowListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D05C87820A58416001A8953 /* FollowListViewController.xib */; };
+		2D05C88320A58485001A8953 /* FollowListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D05C88120A58485001A8953 /* FollowListTableViewCell.m */; };
+		2D05C88420A58485001A8953 /* FollowListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D05C88220A58485001A8953 /* FollowListTableViewCell.xib */; };
 		2D06001B1FFDCD9F009E7568 /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D06FFEF1FFDCD9E009E7568 /* MJRefreshAutoFooter.m */; };
 		2D06001C1FFDCD9F009E7568 /* MJRefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D06FFF11FFDCD9E009E7568 /* MJRefreshBackFooter.m */; };
 		2D06001D1FFDCD9F009E7568 /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D06FFF31FFDCD9E009E7568 /* MJRefreshComponent.m */; };
@@ -1464,6 +1468,12 @@
 		2D05C84620A43630001A8953 /* pic_hongdanbangbeijing@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pic_hongdanbangbeijing@3x.png"; sourceTree = "<group>"; };
 		2D05C84720A43630001A8953 /* pic_hongrenbangbeijing@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pic_hongrenbangbeijing@3x.png"; sourceTree = "<group>"; };
 		2D05C84820A43631001A8953 /* icon_niurenbang@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_niurenbang@3x.png"; sourceTree = "<group>"; };
+		2D05C87620A58416001A8953 /* FollowListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FollowListViewController.h; sourceTree = "<group>"; };
+		2D05C87720A58416001A8953 /* FollowListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FollowListViewController.m; sourceTree = "<group>"; };
+		2D05C87820A58416001A8953 /* FollowListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FollowListViewController.xib; sourceTree = "<group>"; };
+		2D05C88020A58485001A8953 /* FollowListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FollowListTableViewCell.h; sourceTree = "<group>"; };
+		2D05C88120A58485001A8953 /* FollowListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FollowListTableViewCell.m; sourceTree = "<group>"; };
+		2D05C88220A58485001A8953 /* FollowListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FollowListTableViewCell.xib; sourceTree = "<group>"; };
 		2D0600001FFDCD9E009E7568 /* MJRefreshAutoStateFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshAutoStateFooter.m; sourceTree = "<group>"; };
 		2D0600021FFDCD9E009E7568 /* MJRefreshBackGifFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBackGifFooter.h; sourceTree = "<group>"; };
 		2D0600031FFDCD9E009E7568 /* MJRefreshBackGifFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshBackGifFooter.m; sourceTree = "<group>"; };
@@ -4526,6 +4536,9 @@
 				2D16600D20A2CA3400C1C7E7 /* MyHemaiViewController.h */,
 				2D16600E20A2CA3400C1C7E7 /* MyHemaiViewController.m */,
 				2D16600F20A2CA3400C1C7E7 /* MyHemaiViewController.xib */,
+				2D05C87620A58416001A8953 /* FollowListViewController.h */,
+				2D05C87720A58416001A8953 /* FollowListViewController.m */,
+				2D05C87820A58416001A8953 /* FollowListViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -4615,6 +4628,9 @@
 				2D16601220A2CF6700C1C7E7 /* PostSchemeViewCell.h */,
 				2D16601320A2CF6700C1C7E7 /* PostSchemeViewCell.m */,
 				2D16601420A2CF6700C1C7E7 /* PostSchemeViewCell.xib */,
+				2D05C88020A58485001A8953 /* FollowListTableViewCell.h */,
+				2D05C88120A58485001A8953 /* FollowListTableViewCell.m */,
+				2D05C88220A58485001A8953 /* FollowListTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -5939,6 +5955,7 @@
 				F9B5D9742060A9DE00C9F6DC /* flag363@3x.png in Resources */,
 				F90FCD731FF3810F00BD807C /* dotted@3x.png in Resources */,
 				2D0EEAB62015F79800B0769C /* ad_home1@2x.png in Resources */,
+				2D05C88420A58485001A8953 /* FollowListTableViewCell.xib in Resources */,
 				F924BA961FE252CF00830BF4 /* hide@2x.png in Resources */,
 				2D739CE01FEB45E300264044 /* matchcleanall@2x.png in Resources */,
 				F9B5D9AC2060A9DE00C9F6DC /* flag773@3x.png in Resources */,
@@ -6086,6 +6103,7 @@
 				2D4B1E871FDF684E0034B708 /* yuce@2x.png in Resources */,
 				2D0EEA9D201582C300B0769C /* yuce_detail_recom@2x.png in Resources */,
 				2D05C85620A43631001A8953 /* icon_niurenbang@2x.png in Resources */,
+				2D05C87A20A58416001A8953 /* FollowListViewController.xib in Resources */,
 				2D205FF41FFC7AF30086E266 /* newFeatureView-3.png in Resources */,
 				2D4B1E7F1FDF684E0034B708 /* weishoucang@2x.png in Resources */,
 				2D7B1354204E37100035AE89 /* helper@2x.png in Resources */,
@@ -7091,6 +7109,7 @@
 				2DDEDE7B1FD568C9007AEBF7 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				F9FC153C20625815009BAD68 /* WebViewController.m in Sources */,
 				2D92A826201068590038E165 /* PayOrderYouhunViewController.m in Sources */,
+				2D05C88320A58485001A8953 /* FollowListTableViewCell.m in Sources */,
 				2DA39EC72052395D00A03FD1 /* OrderDatePickerView.m in Sources */,
 				2D739C6D1FE7898900264044 /* JCZQMatchViewCell.m in Sources */,
 				2D8CBFE71FF376DA00CC367F /* YuCeSchemeDetailCell.m in Sources */,
@@ -7153,6 +7172,7 @@
 				F9F262B71FE8F4AE00C2E60F /* UIImage+RSKImageCropper.m in Sources */,
 				F9DC69A91FDF8957007D384D /* MyHelpViewController.m in Sources */,
 				F9DC699A1FDF888F007D384D /* MyFavoriteViewController.m in Sources */,
+				2D05C87920A58416001A8953 /* FollowListViewController.m in Sources */,
 				2D0600911FFF4BDD009E7568 /* SchemeDetailMatchViewCell.m in Sources */,
 				2DCBB2BF1FD108B900934D92 /* BaseViewController.m in Sources */,
 				2DDEDE631FD568C9007AEBF7 /* SDWebImageDownloaderOperation.m in Sources */,

@@ -9,7 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "JCZQSchemeModel.h"
 
+@protocol  SchemePerFollowCellDelegate<NSObject>
+-(void)gotoFollowList;
+@end
+
+
 @interface SchemePerFollowCell : UITableViewCell
+
+@property (nonatomic,strong)id <SchemePerFollowCellDelegate >delegate;
 
 @property (weak, nonatomic) IBOutlet UIButton *guanZhuBtn;
 @property (weak, nonatomic) IBOutlet UILabel *genfaLabel;

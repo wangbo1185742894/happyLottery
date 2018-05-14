@@ -7,6 +7,7 @@
 //
 
 #import "FASSchemeDetailViewController.h"
+#import "FollowListViewController.h"
 #import "SchemeInfoFollowCell.h"
 #import "SchemePerFollowCell.h"
 #import "SchemeContaintCell.h"
@@ -15,6 +16,7 @@
 #import "SchemeContainInfoCell.h"
 #import "SchemeInfoBuyCell.h"
 #import "JCZQSchemeModel.h"
+#import "JCLQOrderDetailInfoViewController.h"
 
 #define KSchemeInfoFollowCell @"SchemeInfoFollowCell"
 #define KSchemePerFollowCell  @"SchemePerFollowCell"
@@ -25,7 +27,7 @@
 #define KSchemeInfoBuyCell   @"SchemeInfoBuyCell"
 
 
-@interface FASSchemeDetailViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate>
+@interface FASSchemeDetailViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,SchemeContaintCellDelegate,SchemePerFollowCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *detailTableView;
 
@@ -116,10 +118,18 @@
     } else if (indexPath.section == 1){
         return 38;
     } else if (indexPath.section == 2){
+        
         if (indexPath.row == 0 || indexPath.row == 2+self.dataArray.count ||indexPath.row == 1) {
             return 38;
+        }else{
+            SchemeContainInfoCell *cell = [[SchemeContainInfoCell alloc]init];
+            if ([schemeDetail.lottery isEqualToString:@"JCLQ"]) {
+                 return  [cell getCellJCLQHeight:self.dataArray[indexPath.row -2]];
+            }else{
+                 return  [cell getCellHeight:self.dataArray[indexPath.row -2]];
+            }
+          
         }
-        return 59;
     }
     return 138;
 }
@@ -136,11 +146,13 @@
         return cell;
     }else if (indexPath.section == 1){
         SchemePerFollowCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemePerFollowCell];
+        cell.delegate = self;
         [cell reloadDate:schemeDetail schemeType:self.schemeType];
         return cell;
     }else if (indexPath.section == 2){
         if (indexPath.row == 0) {
             SchemeContaintCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeContaintCell];
+            cell.delegate = self;
             return cell;
         }else if (indexPath.row == self.dataArray.count+2){
             SchemeOverCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeOverCell];
@@ -160,7 +172,12 @@
             }else{
                 if(self.dataArray.count >0){
                     bet = self.dataArray[indexPath.row-2];
-                    [cell refreshData:bet andResult:schemeDetail.trOpenResult];
+                    if ([schemeDetail.lottery isEqualToString:@"JCLQ"]) {
+                        [cell refreshDataJCLQ:bet andResult:schemeDetail.trOpenResult];
+                    }else{
+                        
+                        [cell refreshData:bet andResult:schemeDetail.trOpenResult];
+                    }
                 }
             }
             return cell;
@@ -174,6 +191,21 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
     return 4;
+}
+
+
+
+-(void)goOrderList{
+        JCLQOrderDetailInfoViewController *orderDetailVC = [[JCLQOrderDetailInfoViewController alloc]init];
+        orderDetailVC.schemeNO = schemeDetail.schemeNO;
+        orderDetailVC.lotteryCode = schemeDetail.lottery;
+        [self.navigationController pushViewController:orderDetailVC animated:YES];
+}
+
+-(void)gotoFollowList{
+    FollowListViewController * followVC = [[FollowListViewController alloc]init];
+    followVC.followListDtos = schemeDetail.followListDtos;
+    [self.navigationController pushViewController:followVC animated:YES];
 }
 
 @end

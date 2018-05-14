@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol SchemeContaintCellDelegate<NSObject>
+-(void)goOrderList;
+@end
+
 @interface SchemeContaintCell : UITableViewCell
+@property (nonatomic,strong)id <SchemeContaintCellDelegate> delegate;
 
 @end

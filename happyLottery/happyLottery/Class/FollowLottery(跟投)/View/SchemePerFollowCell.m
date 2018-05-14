@@ -8,16 +8,22 @@
 
 #import "SchemePerFollowCell.h"
 
+
 @implementation SchemePerFollowCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
 }
+- (IBAction)actionFollowList:(id)sender {
+    [self.delegate gotoFollowList];
+}
+
+
 
 - (void)reloadDate:(JCZQSchemeItem * )model schemeType:(NSString *)schemeType{
     if([schemeType isEqualToString:@"BUY_INITIATE"]){
-        self.guanZhuBtn.titleLabel.text = @"跟单列表 >";
+        self.guanZhuBtn.titleLabel.text = @"跟单列表>";
         self.genfaLabel.text = @"已跟投";
         self.moneyNameLabel.text = [NSString stringWithFormat:@"%@元",model.totalFollowCost];
     }
@@ -35,7 +41,6 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
 }
 
 @end

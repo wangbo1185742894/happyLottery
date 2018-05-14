@@ -103,7 +103,7 @@
 -(void)autoScrImg{
    
     NSInteger count = 0;
-    if (_imgUrls == nil) {
+    if (_imgUrls == nil || _imgUrls.count == 0) {
         count = 3;
     }else{
         count = _imgUrls.count;

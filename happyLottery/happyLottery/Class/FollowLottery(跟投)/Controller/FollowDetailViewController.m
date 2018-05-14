@@ -43,11 +43,11 @@
     self.lotteryMan.delegate = self;
     self.wbSelectView.beiShuLimit = 9999;
     self.wbSelectView.labContent.textColor = [UIColor whiteColor];
-    self.beiCount = 10;
-    [self updataTouzhuInfo];
     self.wbSelectView.delegate = self;
     [self.wbSelectView setTarget:self rightAction:@selector(actionAdd) leftAction:@selector(actionSub)];
     [self loadData];
+    self.beiCount = 10;
+    [self updataTouzhuInfo];
 }
 
 -(void)loadData{
@@ -169,9 +169,10 @@
     for (UIButton *btn in _btnBeiSelect) {
         [self setBtnBoard:btn];
     }
-    [self updataTouzhuInfo];
     _beiCount = sender.tag;
     _wbSelectView.labContent.text = [NSString stringWithFormat:@"%ld",_beiCount];
+    [self updataTouzhuInfo];
+
 }
 
 - (IBAction)actionGuanzhu:(id)sender {

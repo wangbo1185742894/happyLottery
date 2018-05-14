@@ -288,9 +288,6 @@
                 [matchCell setBtnNumIndexShow:![self showNum]];
                 cell = matchCell;
             }
-            
-           
-           
         }else if (indexPath.section == 1){
             SchemeInfoViewCell * infoCell = [tableView dequeueReusableCellWithIdentifier:KSchemeInfoViewCell];
             if (schemeDetail != nil) {
@@ -321,9 +318,6 @@
                 [matchCell setBtnNumIndexShow:![self showNum]];
                 cell = matchCell;
             }
-            
-            
-            
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;

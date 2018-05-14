@@ -18,13 +18,15 @@
 #import "SearchViewController.h"
 #import "MenuCollectionViewCell.h"
 #import "FollowDetailViewController.h"
+#import "LoadData.h"
 #import "HotSchemeModel.h"
+#import "ADSModel.h"
 #define KRecommendViewCell @"RecommendViewCell"
 #define KHotFollowSchemeViewCell @"HotFollowSchemeViewCell"
 #define KHomeTabTopAdsViewCell @"HomeTabTopAdsViewCell"
 @interface FollowSendViewController ()<OptionSelectedViewDelegate,UITableViewDelegate,UITableViewDataSource,FollowHeaderDelegate,LotteryManagerDelegate,HomeMenuItemViewDelegate,RecommendViewCellDelegate>
 {
-    
+    NSMutableArray <ADSModel *>*adsArray;
         OptionSelectedView *optionView;
     NSArray *topMenuList;
     NSArray *eightList;
@@ -49,6 +51,7 @@
     [self loadEightPerosn];
     
     [self getHotFollowScheme];
+    [self loadAdsImg];
     
 }
 -(void)getHotFollowScheme{
@@ -123,6 +126,7 @@
         return cell;
     }else   if(indexPath.section == 1){
         HomeTabTopAdsViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KHomeTabTopAdsViewCell];
+        [cell loadData:adsArray];
         return  cell;
     }else   if(indexPath.section == 2){
         RecommendViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KRecommendViewCell];
@@ -210,17 +214,16 @@
 }
 
 - (void)optionDidSelacted:(OptionSelectedView *)optionSelectedView andIndex:(NSInteger)index{
-    if(index == 0){
+    if(index == 1){
         JCZQPlayViewController * playViewVC = [[JCZQPlayViewController alloc]init];
         playViewVC.hidesBottomBarWhenPushed = YES;
         playViewVC.fromSchemeType = SchemeTypeFaqiGenDan;
         [self.navigationController pushViewController:playViewVC animated:YES];
-    }else if(index == 1){
+    }else if(index == 0){
         JCLQPlayController * playViewVC = [[JCLQPlayController alloc]init];
         playViewVC.hidesBottomBarWhenPushed = YES;
         playViewVC.fromSchemeType = SchemeTypeFaqiGenDan;
         [self.navigationController pushViewController:playViewVC animated:YES];
-        
     }
 }
 
@@ -259,5 +262,29 @@
     
 }
 
+-(void)loadAdsImg{
+    adsArray = [NSMutableArray arrayWithCapacity:0];
+    NSString *strUlr = [NSString stringWithFormat:@"%@/app/banner/byChannel?usageChannel=4",[GlobalInstance instance].homeUrl];
+    [[LoadData singleLoadData] RequestWithString:strUlr isPost:NO andPara:nil andComplete:^(id data, BOOL isSuccess) {
+        if (isSuccess == NO || data == nil) {
+            return ;
+        }
+        NSString *resultStr = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+        NSData *jsonData = [resultStr dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
+        
+        if ([resultDic[@"code"] integerValue] != 0) {
+            return ;
+        }
+        
+        NSArray  *modelList = resultDic[@"result"];
+        for (int i = 0; i < ( modelList.count > 5?5:modelList.count); i++) {
+            NSDictionary *dic = modelList[i];
+            ADSModel *model = [[ADSModel alloc]initWith:dic];
+            [adsArray addObject:model];
+        }
+        [tabFollewView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];
+    }];
+}
 
 @end
