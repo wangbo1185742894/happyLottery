@@ -112,6 +112,7 @@
         return;
     }
     PayOrderViewController *payVC = [[PayOrderViewController alloc]init];
+    payVC.schemetype = SchemeTypeGenDan;
     SchemeCashPayment *schemeCashModel = [[SchemeCashPayment alloc]init];
     schemeCashModel.cardCode = self.curUser.cardCode;
 

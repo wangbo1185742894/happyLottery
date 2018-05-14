@@ -71,6 +71,7 @@
     if(self.btnGendan.selected == YES){
         FollowSchemeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KFollowSchemeViewCell];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell loadData:[dataArray objectAtIndex:indexPath.row]];
         cell.accessoryType= UITableViewCellAccessoryDisclosureIndicator;
         
         return cell;

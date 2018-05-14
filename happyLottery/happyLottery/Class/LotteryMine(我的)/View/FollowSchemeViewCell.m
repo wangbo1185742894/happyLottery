@@ -15,9 +15,10 @@
     __weak IBOutlet UIImageView *imgWinState;
     __weak IBOutlet UILabel *labTime;
     
-    __weak IBOutlet UIView *labWinState;
+    __weak IBOutlet UILabel *labWinState;
     __weak IBOutlet UILabel *labPassType;
     __weak IBOutlet UILabel *labLottery;
+    __weak IBOutlet UILabel *labWonCost;
 }
 @end
 
@@ -32,6 +33,32 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+-(void)loadData:(JCZQSchemeItem * )model{
+    if (model.initiateUrl .length == 0) {
+        [imgLotteryIcon setImage:[UIImage imageNamed:@"usermine"]];
+    }else{
+        [imgLotteryIcon sd_setImageWithURL:[NSURL URLWithString:model.initiateUrl]];
+    }
+    
+    labPersonName.text = model.initiateNickname == nil?@"神秘大神":model.initiateNickname;
+    NSString *pass = [model.passType componentsJoinedByString:@","];
+    pass = [pass stringByReplacingOccurrencesOfString:@"x" withString:@"串"];
+    labPassType.text = pass;
+    labLottery.text = [model getLotteryByName];
+    labTime .text = [[model.createTime componentsSeparatedByString:@" "] firstObject];
+    labWinState.text = model.getSchemeState;
+    
+    if([model .getSchemeState rangeOfString:@"已中奖"].length > 0){
+        labWonCost.text = [NSString stringWithFormat:@"%@元",model.bonus];
+        labWonCost.hidden = NO;
+        imgWinState.hidden = NO;
+    }else{
+        imgWinState.hidden = YES;
+        labWonCost.hidden  = YES;
+    }
+    
+    labZigouCost.text =[NSString stringWithFormat:@"自购：%@元", model.betCost];
 }
 
 @end

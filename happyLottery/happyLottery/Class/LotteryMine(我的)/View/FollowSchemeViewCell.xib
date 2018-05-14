@@ -20,7 +20,6 @@
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Po-Bg-ZPm">
                         <rect key="frame" x="12" y="9" width="40" height="40"/>
-                        <color key="backgroundColor" red="0.58123142370000003" green="1" blue="0.63995308689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="Hbo-bm-PLY"/>
                             <constraint firstAttribute="width" constant="40" id="vih-LS-avh"/>
@@ -64,7 +63,6 @@
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FWh-bg-y9G">
                         <rect key="frame" x="186" y="28" width="50" height="50"/>
-                        <color key="backgroundColor" red="0.58123142370000003" green="1" blue="0.63995308689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="50" id="CCL-Sf-OfF"/>
                             <constraint firstAttribute="height" constant="50" id="Yso-is-GIs"/>
@@ -126,7 +124,8 @@
                 <outlet property="labPassType" destination="y0I-BD-WpD" id="Whs-iS-TQk"/>
                 <outlet property="labPersonName" destination="eB0-Uw-5d5" id="aEC-QX-xFz"/>
                 <outlet property="labTime" destination="LNQ-6U-8uA" id="FsO-t7-Hm9"/>
-                <outlet property="labWinState" destination="H2p-sc-9uM" id="88S-Yz-4E7"/>
+                <outlet property="labWinState" destination="YvL-cF-A7D" id="Y31-nI-Ky2"/>
+                <outlet property="labWonCost" destination="uEb-IP-QYQ" id="Vij-Z4-qf7"/>
                 <outlet property="labZigouCost" destination="ppw-yd-RgM" id="rCs-lY-5K9"/>
             </connections>
             <point key="canvasLocation" x="43" y="85"/>

@@ -15,5 +15,6 @@
 @property(nonatomic,strong)Coupon *curSelectCoupon;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewDisTop;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewDisBottom;
+@property(assign,nonatomic)SchemeType  schemetype;
 
 @end
