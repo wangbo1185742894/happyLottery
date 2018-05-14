@@ -10,6 +10,8 @@
 
 @interface HotSchemeModel : BaseModel
 
+@property(nonatomic,copy)NSString * totalFollowCount;
+
 /** 发卡人电话*/
 @property(nonatomic,copy)NSString *  memberTel;
 
@@ -62,4 +64,5 @@
 
 -(NSString *)getContent;
 
+-(NSString *)getDetailContent;
 @end

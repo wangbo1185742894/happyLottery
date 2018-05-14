@@ -40,18 +40,35 @@
 }
 
 -(void)loadDataWithModel:(HotSchemeModel *)model{
+    
+    self.btnFollowScheme.layer.cornerRadius = 5;
+    self.btnFollowScheme.layer.masksToBounds = YES;
+    self.btnFollowScheme.layer.borderWidth = 1;
+    self.btnFollowScheme.layer.borderColor = SystemGreen.CGColor;
+    self.labPersonHis.layer.cornerRadius = 3;
+    
     self.imgPersonHonor.hidden = YES;
     self.imgPersonHonor1.hidden = YES;
     self.imgPersonHonor2.hidden = YES;
-    [self.imgPersonIcon sd_setImageWithURL:[NSURL URLWithString:model.headUrl]];
-    self.labPersonHis.text = model.recent_won;
+    if (model.headUrl.length == 0) {
+        [self.imgPersonIcon setImage: [UIImage imageNamed:@"usermine"]];
+    }else{
+        
+        [self.imgPersonIcon sd_setImageWithURL:[NSURL URLWithString:model.headUrl]];
+    }
+    if (model.recent_won .length == 0) {
+        self.labPersonHis.text  = @"近0中0";
+    }else{
+        self.labPersonHis.text = model.recent_won;
+    }
+
     self.imgPersonIcon.layer.cornerRadius = self.imgPersonIcon.mj_h / 2;
     self.imgPersonIcon.layer.masksToBounds= YES;
-    self.labPersonName.text = model.nickName== nil?model.cardCode:model.nickName;
+    self.labPersonName.text = model.nickName;
     self.labDeadTime.text = model.deadLine;
     self.labHuiBao.text =[NSString stringWithFormat:@"%@倍",model.pledge];
     [self.labBetContent setTitle:[model getContent] forState:0];
-    self.labFollowCount.text = [NSString stringWithFormat:@"跟单金额：%@元",model.totalFollowCost];
+    self.labFollowCount.text = [NSString stringWithFormat:@"跟单人数：%@人",model.totalFollowCount];
     self.labCostBySelf.text =[NSString stringWithFormat:@"自购金额：%@元",model.betCost];
     NSArray *laburls = [model.label_urls componentsSeparatedByString:@";"];
     for (int i = 0; i < laburls.count; i ++) {

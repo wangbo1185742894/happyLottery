@@ -51,13 +51,16 @@
     [self setRightBarItems];
     [self setTableView];
     self.title = @"跟单";
-    
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     [self loadEightPerosn];
     
     [self getHotFollowScheme];
     [self loadAdsImg];
-    
 }
+
 -(void)getHotFollowScheme{
     [self.lotteryMan getHotFollowScheme];
 }
@@ -66,6 +69,8 @@
     if (personList == nil) {
         [self showPromptText:msg hideAfterDelay:1.8];
         return;
+    }else{
+        [schemeList removeAllObjects];
     }
     for (NSDictionary *dic in personList) {
         [schemeList addObject:[[HotSchemeModel alloc]initWith:dic]];
@@ -130,10 +135,12 @@
         return cell;
     }else   if(indexPath.section == 1){
         HomeTabTopAdsViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KHomeTabTopAdsViewCell];
+        
         [cell loadData:adsArray];
         return  cell;
     }else   if(indexPath.section == 2){
         RecommendViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KRecommendViewCell];
+        cell.delegate = self;
         [cell setCollection:2 andData:eightList];
         return cell;
     }else   if(indexPath.section == 3){
@@ -293,5 +300,13 @@
         [tabFollewView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];
     }];
 }
+
+-(void)recommendViewCellClick:(NSIndexPath *)indexpath andTabIndex:(NSInteger)index{
+    if (index == 2) {
+        NSDictionary *personInfo = eightList[indexpath.row];
+        NSLog(@"%@",personInfo);
+    }
+}
+
 
 @end

@@ -27,11 +27,13 @@
 
 
 -(void)setItemIcom:(NSDictionary *)model{
+    self.itemBack.userInteractionEnabled = YES;
     self.imgItemIcon .image = [UIImage imageNamed:model[@"itemImage"]];
     self.labItemTitle.text =model[@"itemTitle"];
 }
 
 -(void)setEightItemIcom:(NSDictionary *)model{
+    self.itemBack.userInteractionEnabled = NO;
     self.imgItemIcon .layer.cornerRadius = self.imgItemIcon.mj_h / 2;
     self.imgItemIcon.layer.masksToBounds = YES;
     if (model[@"headUrl"] == nil) {

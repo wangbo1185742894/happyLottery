@@ -35,7 +35,7 @@
     return @"";
 }
 
--(NSString *)getContent{
+-(NSString *)getDetailContent{
     NSArray *pass= [self.passTypes componentsSeparatedByString:@","];
     NSMutableArray *mPass = [NSMutableArray arrayWithCapacity:0];
     for (NSString *str  in pass) {
@@ -47,6 +47,41 @@
     }
     
     return [NSString stringWithFormat:@"%@  %@",self.leagueNames,[mPass componentsJoinedByString:@" "]];
+}
+
+-(NSString *)getContent{
+    NSArray *pass= [self.passTypes componentsSeparatedByString:@","];
+    NSMutableArray *mPass = [NSMutableArray arrayWithCapacity:0];
+    for (int i = 0 ; i < pass.count ;i ++) {
+        NSString *str = [pass objectAtIndex:i];
+        if (i >=2) {
+            break;
+        }
+        if ([str isEqualToString:@"x1"]) {
+            [mPass addObject: @"单关"];
+        }else{
+            [mPass addObject: [str stringByReplacingOccurrencesOfString:@"x" withString:@"串"]];
+        }
+    }
+    
+    NSArray *leaArray= [self.leagueNames componentsSeparatedByString:@","];
+    NSMutableArray *mleaArray = [NSMutableArray arrayWithCapacity:0];
+    for (int i = 0 ; i < leaArray.count ;i ++) {
+        NSString *str = [leaArray objectAtIndex:i];
+        if (i >=2) {
+            break;
+        }
+        [mleaArray addObject: str];
+    }
+    return [NSString stringWithFormat:@"%@%@",[mleaArray  componentsJoinedByString:@" "],[mPass componentsJoinedByString:@" "]];
+}
+-(NSString *)nickName{
+    if (_nickName == nil || _nickName.length == 0) {
+        NSString *itemNmae  = [_cardCode stringByReplacingCharactersInRange:NSMakeRange(2, 4) withString:@"****"];
+        return  itemNmae;
+    }else{
+        return _nickName;
+    }
 }
 
 @end
