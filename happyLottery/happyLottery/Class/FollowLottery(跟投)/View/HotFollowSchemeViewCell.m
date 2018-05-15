@@ -7,7 +7,10 @@
 //
 
 #import "HotFollowSchemeViewCell.h"
+#import "MGLabel.h"
 @interface HotFollowSchemeViewCell()
+@property (weak, nonatomic) IBOutlet UIImageView *imgWinState;
+@property (weak, nonatomic) IBOutlet MGLabel *labBouns;
 @property (weak, nonatomic) IBOutlet UIImageView *imgPersonIcon;
 @property (weak, nonatomic) IBOutlet UIImageView *imgPersonHonor;
 @property (weak, nonatomic) IBOutlet UIImageView *imgPersonHonor1;
@@ -40,6 +43,30 @@
 }
 
 -(void)loadDataWithModel:(HotSchemeModel *)model{
+
+    NSDate * dateServer = [Utility dateFromDateStr:model.serverTime withFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate * dateCur = [Utility dateFromDateStr:model.deadLine withFormat:@"yyyy-MM-dd HH:mm:ss"];
+
+    if ([dateServer compare:dateCur] ==kCFCompareLessThan ) { //没过期 可以买
+        self.btnFollowScheme.hidden = NO;
+        self.labBouns.hidden = YES;
+        self.imgWinState.hidden = YES;
+    }else{
+        self.btnFollowScheme.hidden = YES;
+        self.labBouns.hidden = YES;
+        if (model.won == nil) {
+            self.imgWinState.hidden = YES;
+        }else if ([model.won boolValue]){
+            self.imgWinState.hidden = NO;
+            self.imgWinState.image = [UIImage imageNamed:@"win"];
+            self.labBouns.hidden = NO;
+            self.labBouns.text = [NSString stringWithFormat:@"中奖%.2f元",[model.bonus doubleValue]];
+        }else{
+            self.imgWinState.hidden = NO;
+            self.imgWinState.image = [UIImage imageNamed:@"losing"];
+        }
+        
+    }
     
     self.btnFollowScheme.layer.cornerRadius = 5;
     self.btnFollowScheme.layer.masksToBounds = YES;

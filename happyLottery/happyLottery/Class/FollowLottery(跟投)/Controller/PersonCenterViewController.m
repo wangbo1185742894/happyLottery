@@ -10,7 +10,8 @@
 #import "HotFollowSchemeViewCell.h"
 #import "PersonCenterCell.h"
 #import "PersonCenterModel.h"
-
+#import "FollowDetailViewController.h"
+#import "FASSchemeDetailViewController.h"
 #define KHotFollowSchemeViewCell  @"HotFollowSchemeViewCell"
 #define KPersonCenterCell  @"PersonCenterCell"
 
@@ -120,8 +121,36 @@
         HotSchemeModel *model = [self.personArray objectAtIndex:indexPath.row - 1];
         [cell loadDataWithModel:model];
     }
-
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    HotSchemeModel *model = [_personArray objectAtIndex:indexPath.row - 1];
+    NSDate * dateServer = [Utility dateFromDateStr:model.serverTime withFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate * dateCur = [Utility dateFromDateStr:model.deadLine withFormat:@"yyyy-MM-dd HH:mm:ss"];
+    
+    if ([dateServer compare:dateCur] ==kCFCompareLessThan ) { //没过期 可以买
+        FollowDetailViewController *followVC = [[FollowDetailViewController alloc]init];
+        followVC.model = model;
+        followVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:followVC animated:YES];
+    }else{
+        if (model.won == nil) {
+            return;
+        }else{
+            FASSchemeDetailViewController *detailCV = [[FASSchemeDetailViewController alloc]init];
+            detailCV.schemeNo = model.schemeNo;
+            if ([model.cardCode isEqualToString:self.curUser.cardCode]) {
+                detailCV.schemeType = KBUY_INITIATE;
+            }else{
+                detailCV.schemeType = KBUY_FOLLOW;
+            }
+            
+            [self.navigationController pushViewController:detailCV animated:YES];
+        }
+        
+    }
 }
 
 @end

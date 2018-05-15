@@ -60,6 +60,23 @@
 /** 标签url */
 @property(nonatomic,copy)NSString *  label_urls;
 
+
+/**
+ 奖金
+ */
+@property(nonatomic,copy)NSString * bonus;
+
+/**
+ 服务时间用来判断改发单是否能被购买
+ */
+@property(nonatomic,copy)NSString * serverTime;
+
+
+/**
+ 是否中奖
+ */
+@property(nonatomic,copy)NSString * won;
+
 -(NSString *)lotteryIcon;
 
 -(NSString *)getContent;

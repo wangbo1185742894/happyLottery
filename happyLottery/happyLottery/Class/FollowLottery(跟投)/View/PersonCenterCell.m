@@ -36,6 +36,7 @@
     // Configure the view for the selected state
 }
 
+
 - (void)reloadCell:(PersonCenterModel *)model{
     [self.userImage sd_setImageWithURL:[NSURL URLWithString:model.headUrl] placeholderImage:[UIImage imageNamed:@"usermine.png"]];
     self.userName.text = model.nickName;

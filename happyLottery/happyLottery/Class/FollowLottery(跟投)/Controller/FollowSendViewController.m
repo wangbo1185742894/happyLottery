@@ -309,6 +309,7 @@
         RecomPerModel *model = [[RecomPerModel alloc]initWith:personInfo];
         PersonCenterViewController *viewContr = [[PersonCenterViewController alloc]init];
         viewContr.cardCode = model.cardCode;
+        viewContr.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:viewContr animated:YES];
         NSLog(@"%@",personInfo);
     }
