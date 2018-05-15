@@ -64,7 +64,6 @@
 
 
 - (void) gotisAttent:(NSString *)diction  errorMsg:(NSString *)msg{
-//    attendModel = [[AttendModel alloc]initWith:diction];
     isAttend = [diction boolValue];
     [self loadNewData];
 }

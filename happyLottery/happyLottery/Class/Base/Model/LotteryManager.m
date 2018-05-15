@@ -1560,8 +1560,7 @@
         SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
         NSString *responseJsonStr = [response getAPIResponse];
         if (response.succeed) {
-            NSString  *infoDic = [Utility objFromJson:responseJsonStr];
-            [self.delegate gotisAttent:infoDic errorMsg:response.errorMsg];
+            [self.delegate gotisAttent:responseJsonStr errorMsg:response.errorMsg];
             
         } else {
             [self.delegate gotisAttent:nil errorMsg:response.errorMsg];
@@ -1585,7 +1584,6 @@
     void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
     {
         SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
-//        NSString *responseJsonStr = [response getAPIResponse];
         if (response.succeed) {
             NSString *infoDic = @"succeed";
             [self.delegate gotAttentMember:infoDic errorMsg:response.errorMsg];
