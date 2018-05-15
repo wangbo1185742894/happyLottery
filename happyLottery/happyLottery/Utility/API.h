@@ -94,6 +94,7 @@
 #define APIlistGreatFollow           @"listGreatFollow" //跟单首页可跟单大师列表
 #define APIGetHotFollowScheme        @"getHotFollowScheme"  // 获取热门发单
 #define APIGetInitiateInfo           @"getInitiateInfo"  //获取发单会员详细信息
+#define APIgetListAttent                              @"listAttent"
 
 #define APIGetFollowSchemeByNickName  @"getFollowSchemeByNickName"
 #define APIIsAttent                   @"isAttent"   //是否关注
@@ -148,6 +149,7 @@
 #define APIInitiateFollowScheme     @"initiateFollowScheme"//发单
 #define APIFollowScheme             @"followScheme"//跟单
 #define APIgetAttentFollowScheme    @"getAttentFollowScheme"  //获得关注人的发单
+
 
 
 #define SUBAPITicketService   @"/ticket"

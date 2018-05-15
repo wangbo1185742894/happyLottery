@@ -70,6 +70,7 @@ typedef enum EarningsType{
 - (void) gotAttentMember:(NSString *)diction  errorMsg:(NSString *)msg;
 - (void) gotReliefAttent:(NSString *)diction  errorMsg:(NSString *)msg;
 
+- (void) gotListAttent:(NSArray  *)personList  errorMsg:(NSString *)msg;
 
 @end
 
@@ -145,6 +146,7 @@ typedef enum EarningsType{
 - (void)getAttentFollowScheme:(NSDictionary *)paraDic;
 
 - (void)getInitiateInfo:(NSDictionary *)paraDic;
+- (void)getListAttent:(NSDictionary *)paraDic;
 
 - (void)isAttent:(NSDictionary *)paraDic;
 

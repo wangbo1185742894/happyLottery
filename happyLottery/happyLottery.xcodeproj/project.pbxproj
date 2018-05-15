@@ -86,6 +86,9 @@
 		2D05C87A20A58416001A8953 /* FollowListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D05C87820A58416001A8953 /* FollowListViewController.xib */; };
 		2D05C88320A58485001A8953 /* FollowListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D05C88120A58485001A8953 /* FollowListTableViewCell.m */; };
 		2D05C88420A58485001A8953 /* FollowListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D05C88220A58485001A8953 /* FollowListTableViewCell.xib */; };
+		2D05C8B320A97AEE001A8953 /* AtttendPersonViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D05C8B120A97AEE001A8953 /* AtttendPersonViewCell.m */; };
+		2D05C8B420A97AEE001A8953 /* AtttendPersonViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D05C8B220A97AEE001A8953 /* AtttendPersonViewCell.xib */; };
+		2D05C8B720A97E9B001A8953 /* AttentPersonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D05C8B620A97E9B001A8953 /* AttentPersonModel.m */; };
 		2D06001B1FFDCD9F009E7568 /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D06FFEF1FFDCD9E009E7568 /* MJRefreshAutoFooter.m */; };
 		2D06001C1FFDCD9F009E7568 /* MJRefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D06FFF11FFDCD9E009E7568 /* MJRefreshBackFooter.m */; };
 		2D06001D1FFDCD9F009E7568 /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D06FFF31FFDCD9E009E7568 /* MJRefreshComponent.m */; };
@@ -1489,6 +1492,11 @@
 		2D05C88020A58485001A8953 /* FollowListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FollowListTableViewCell.h; sourceTree = "<group>"; };
 		2D05C88120A58485001A8953 /* FollowListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FollowListTableViewCell.m; sourceTree = "<group>"; };
 		2D05C88220A58485001A8953 /* FollowListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FollowListTableViewCell.xib; sourceTree = "<group>"; };
+		2D05C8B020A97AEE001A8953 /* AtttendPersonViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtttendPersonViewCell.h; sourceTree = "<group>"; };
+		2D05C8B120A97AEE001A8953 /* AtttendPersonViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AtttendPersonViewCell.m; sourceTree = "<group>"; };
+		2D05C8B220A97AEE001A8953 /* AtttendPersonViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AtttendPersonViewCell.xib; sourceTree = "<group>"; };
+		2D05C8B520A97E9B001A8953 /* AttentPersonModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AttentPersonModel.h; sourceTree = "<group>"; };
+		2D05C8B620A97E9B001A8953 /* AttentPersonModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AttentPersonModel.m; sourceTree = "<group>"; };
 		2D0600001FFDCD9E009E7568 /* MJRefreshAutoStateFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshAutoStateFooter.m; sourceTree = "<group>"; };
 		2D0600021FFDCD9E009E7568 /* MJRefreshBackGifFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBackGifFooter.h; sourceTree = "<group>"; };
 		2D0600031FFDCD9E009E7568 /* MJRefreshBackGifFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshBackGifFooter.m; sourceTree = "<group>"; };
@@ -4597,6 +4605,8 @@
 				F9FDFAE02011C9750029ACC7 /* Notice.m */,
 				2D16601C20A2DF3600C1C7E7 /* FollowListModel.h */,
 				2D16601D20A2DF3600C1C7E7 /* FollowListModel.m */,
+				2D05C8B520A97E9B001A8953 /* AttentPersonModel.h */,
+				2D05C8B620A97E9B001A8953 /* AttentPersonModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4666,6 +4676,9 @@
 				2D05C88020A58485001A8953 /* FollowListTableViewCell.h */,
 				2D05C88120A58485001A8953 /* FollowListTableViewCell.m */,
 				2D05C88220A58485001A8953 /* FollowListTableViewCell.xib */,
+				2D05C8B020A97AEE001A8953 /* AtttendPersonViewCell.h */,
+				2D05C8B120A97AEE001A8953 /* AtttendPersonViewCell.m */,
+				2D05C8B220A97AEE001A8953 /* AtttendPersonViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -6301,6 +6314,7 @@
 				2D0EEA902013280500B0769C /* trophydlt@3x.png in Resources */,
 				2D0600421FFDDD51009E7568 /* schemedetailpic@3x.png in Resources */,
 				F928C6B81FF4BA40001F1A32 /* decrease@3x.png in Resources */,
+				2D05C8B420A97AEE001A8953 /* AtttendPersonViewCell.xib in Resources */,
 				2D05C81720A3F60E001A8953 /* HomeMenuItemsConfig.plist in Resources */,
 				F9B5D98F2060A9DE00C9F6DC /* flag413@2x.png in Resources */,
 				2D0E23AA2018833E0098DA40 /* switchbackground@2x.png in Resources */,
@@ -6983,6 +6997,7 @@
 				2D16601020A2CA3400C1C7E7 /* MyHemaiViewController.m in Sources */,
 				2DD2C50F204504AB005A18C4 /* WBOptimizeViewController.m in Sources */,
 				2D7B13B7204E87450035AE89 /* CTZQOrderProfile.m in Sources */,
+				2D05C8B720A97E9B001A8953 /* AttentPersonModel.m in Sources */,
 				2D7B132C204D4AF40035AE89 /* EXHeaderView.m in Sources */,
 				2D739C161FE2611C00264044 /* IQNSArray+Sort.m in Sources */,
 				F9F6CAA51FF5D80900A49F71 /* SystemSetViewController.m in Sources */,
@@ -7036,6 +7051,7 @@
 				2D7B1306204D46EB0035AE89 /* LotteryBaseView.m in Sources */,
 				F9705EA8207B58A900E25E4E /* LotteryAreaViewCell.m in Sources */,
 				2D7B12EA204D3BF20035AE89 /* LotteryBetsPopView.m in Sources */,
+				2D05C8B320A97AEE001A8953 /* AtttendPersonViewCell.m in Sources */,
 				2D06001D1FFDCD9F009E7568 /* MJRefreshComponent.m in Sources */,
 				2D5171BA2008545F00C3CD7F /* ChannelModel.m in Sources */,
 				2D739C3A1FE365BE00264044 /* WebShowViewController.m in Sources */,

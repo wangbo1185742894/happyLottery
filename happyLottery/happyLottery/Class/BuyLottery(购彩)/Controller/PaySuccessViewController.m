@@ -52,21 +52,30 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)actionLookOrder:(id)sender {
-    MyOrderListViewController *myOrderListVC = [[MyOrderListViewController alloc]init];
-    NSMutableArray * vcS = [[NSMutableArray alloc]initWithArray:self.navigationController.viewControllers];
-    [vcS addObject:myOrderListVC];
-    self.navigationController.viewControllers = vcS;
+   
     if (self.schemetype == SchemeTypeGenDan) {
+        MyPostSchemeViewController *myOrderListVC = [[MyPostSchemeViewController alloc]init];
+        NSMutableArray * vcS = [[NSMutableArray alloc]initWithArray:self.navigationController.viewControllers];
+        [vcS addObject:myOrderListVC];
+        self.navigationController.viewControllers = vcS;
         FASSchemeDetailViewController *detailCV = [[FASSchemeDetailViewController alloc]init];
         detailCV.schemeNo = self.schemeNO;
         detailCV.schemeType = @"BUY_FOLLOW";
         [self.navigationController pushViewController:detailCV animated:YES];
     }else if ( self.schemetype == SchemeTypeFaqiGenDan){
+        MyPostSchemeViewController *myOrderListVC = [[MyPostSchemeViewController alloc]init];
+        NSMutableArray * vcS = [[NSMutableArray alloc]initWithArray:self.navigationController.viewControllers];
+        [vcS addObject:myOrderListVC];
+        self.navigationController.viewControllers = vcS;
         FASSchemeDetailViewController *detailCV = [[FASSchemeDetailViewController alloc]init];
         detailCV.schemeNo = self.schemeNO;
         detailCV.schemeType = @"BUY_INITIATE";
         [self.navigationController pushViewController:detailCV animated:YES];
     }else{
+        MyOrderListViewController *myOrderListVC = [[MyOrderListViewController alloc]init];
+        NSMutableArray * vcS = [[NSMutableArray alloc]initWithArray:self.navigationController.viewControllers];
+        [vcS addObject:myOrderListVC];
+        self.navigationController.viewControllers = vcS;
         if ([self.lotteryName isEqualToString:@"胜负14场"] || [self.lotteryName isEqualToString:@"任选9场"]) {
             CTZQSchemeDetailViewController *schemeVC = [[CTZQSchemeDetailViewController alloc]init];
             schemeVC.schemeNO = self.schemeNO;
