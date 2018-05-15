@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyAttendViewController">
             <connections>
+                <outlet property="tabAttendList" destination="uIt-pe-eQU" id="6ko-Cd-bgi"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,7 +19,19 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uIt-pe-eQU">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="uIt-pe-eQU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0RV-z9-hqx"/>
+                <constraint firstAttribute="bottom" secondItem="uIt-pe-eQU" secondAttribute="bottom" id="c9f-uh-Hkv"/>
+                <constraint firstItem="uIt-pe-eQU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="klu-XI-tyg"/>
+                <constraint firstAttribute="trailing" secondItem="uIt-pe-eQU" secondAttribute="trailing" id="ya7-Qw-RoV"/>
+            </constraints>
         </view>
     </objects>
 </document>

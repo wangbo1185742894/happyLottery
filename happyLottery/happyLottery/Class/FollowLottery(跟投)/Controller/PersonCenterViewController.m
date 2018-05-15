@@ -74,6 +74,8 @@
     NSDictionary *parc;
     if (model.nickName != nil) {
         parc = @{@"nickName":model.nickName,@"page":@(_page),@"pageSize":@(KpageSize),@"isHis":@YES};
+    }else{
+        parc = @{@"nickName":model.cardCode,@"page":@(_page),@"pageSize":@(KpageSize),@"isHis":@YES};
     }
     [self.lotteryMan getFollowSchemeByNickName:parc];
 }

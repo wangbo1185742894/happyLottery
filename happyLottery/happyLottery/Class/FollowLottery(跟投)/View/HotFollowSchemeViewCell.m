@@ -59,7 +59,12 @@
     if (model.recent_won .length == 0) {
         self.labPersonHis.text  = @"近0中0";
     }else{
-        self.labPersonHis.text = model.recent_won;
+        NSArray *wonState = [model.recent_won componentsSeparatedByString:@","];
+        NSInteger totalWon = 0;
+        for (NSString *state in wonState) {
+            totalWon += [state integerValue];
+        }
+        self.labPersonHis.text = [NSString stringWithFormat:@"近%ld中%ld",wonState.count,totalWon];
     }
 
     self.imgPersonIcon.layer.cornerRadius = self.imgPersonIcon.mj_h / 2;
