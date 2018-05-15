@@ -14,16 +14,16 @@
 #define KHotFollowSchemeViewCell  @"HotFollowSchemeViewCell"
 #define KPersonCenterCell  @"PersonCenterCell"
 
-@interface PersonCenterViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate>
+@interface PersonCenterViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,PersonCenterCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *personTabelView;
 @property (nonatomic,strong) NSMutableArray <HotSchemeModel *> * personArray;
 @property(assign,nonatomic)NSInteger page;
-
 @end
 
 @implementation PersonCenterViewController{
     PersonCenterModel *model;
+    BOOL isAttend;
 }
 
 - (void)viewDidLoad {
@@ -62,11 +62,19 @@
     return 208;
 }
 
+
+- (void) gotisAttent:(NSString *)diction  errorMsg:(NSString *)msg{
+//    attendModel = [[AttendModel alloc]initWith:diction];
+    isAttend = [diction boolValue];
+    [self loadNewData];
+}
+
 - (void) gotInitiateInfo:(NSDictionary *)diction  errorMsg:(NSString *)msg
 {
     model = [[PersonCenterModel alloc]initWith:diction];
+    NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"attentCardCode":self.cardCode,@"attentType":@"FOLLOW"};
+    [self.lotteryMan isAttent:dic];
     
-    [self loadNewData];
 }
 
 -(void)loadNewData{
@@ -110,7 +118,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
         PersonCenterCell *cell = [tableView dequeueReusableCellWithIdentifier:KPersonCenterCell];
-        [cell reloadCell:model];
+        cell.delegate = self;
+        [cell reloadCell:model isAttend:isAttend];
         return cell;
     }
     HotFollowSchemeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KHotFollowSchemeViewCell];
@@ -120,6 +129,39 @@
     }
 
     return cell;
+}
+
+- (void)addOrReliefAttend {
+    if (isAttend) {
+        //取消关注
+        NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"attentCardCode":self.cardCode,@"attentType":@"FOLLOW"};
+        [self.lotteryMan reliefAttent:dic];
+    }
+    else {
+        //添加关注
+        NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"attentCardCode":self.cardCode,@"attentType":@"FOLLOW"};
+        [self.lotteryMan attentMember:dic];
+    }
+}
+
+- (void) gotAttentMember:(NSString *)diction  errorMsg:(NSString *)msg{
+    [self showPromptText:msg hideAfterDelay:2.0];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    if (diction) {
+        isAttend = YES;
+        [self.personTabelView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+        [self showPromptText:@"添加关注成功" hideAfterDelay:2.0];
+    }
+}
+
+- (void) gotReliefAttent:(NSString *)diction  errorMsg:(NSString *)msg{
+    [self showPromptText:msg hideAfterDelay:2.0];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    if (diction) {
+        isAttend = NO;
+        [self.personTabelView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+        [self showPromptText:@"取消关注成功" hideAfterDelay:2.0];
+    }
 }
 
 @end

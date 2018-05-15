@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "PersonCenterModel.h"
 
+@protocol PersonCenterCellDelegate <NSObject>
+
+- (void)addOrReliefAttend;
+
+@end
+
 @interface PersonCenterCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *userImage;
@@ -20,7 +26,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *initiateStatusForth;
 @property (weak, nonatomic) IBOutlet UILabel *initiateStatusFifth;
 @property (weak, nonatomic) IBOutlet UILabel *initiateStatusSum;
+@property (weak, nonatomic) IBOutlet UIButton *noticeBtn;
+@property(nonatomic,weak)id <PersonCenterCellDelegate> delegate;
 
-- (void)reloadCell:(PersonCenterModel *)model;
+- (void)reloadCell:(PersonCenterModel *)model  isAttend:(BOOL)isAttend;
+
+- (IBAction)attendAction:(id)sender;
 
 @end

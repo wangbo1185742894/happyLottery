@@ -66,6 +66,9 @@ typedef enum EarningsType{
 - (void) gotAttentFollowScheme:(NSArray  *)personList  errorMsg:(NSString *)msg;//关注人的发单
 - (void) gotInitiateInfo:(NSDictionary *)diction  errorMsg:(NSString *)msg;
 - (void) followScheme:(NSString  *)result  errorMsg:(NSString *)msg;
+- (void) gotisAttent:(NSString *)diction  errorMsg:(NSString *)msg;
+- (void) gotAttentMember:(NSString *)diction  errorMsg:(NSString *)msg;
+- (void) gotReliefAttent:(NSString *)diction  errorMsg:(NSString *)msg;
 
 
 @end
@@ -142,6 +145,12 @@ typedef enum EarningsType{
 - (void)getAttentFollowScheme:(NSDictionary *)paraDic;
 
 - (void)getInitiateInfo:(NSDictionary *)paraDic;
+
+- (void)isAttent:(NSDictionary *)paraDic;
+
+- (void)attentMember:(NSDictionary *)paraDic;
+
+- (void)reliefAttent:(NSDictionary *)paraDic;
 
 @end
 

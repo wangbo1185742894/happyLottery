@@ -9,7 +9,9 @@
 #import "PersonCenterCell.h"
 
 
-@implementation PersonCenterCell
+@implementation PersonCenterCell{
+    
+}
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -27,16 +29,23 @@
     self.initiateStatusForth.layer.masksToBounds = YES;
     self.initiateStatusFifth.layer.cornerRadius = self.initiateStatusFifth.mj_h / 2;
     self.initiateStatusFifth.layer.masksToBounds = YES;
+    self.
+    self.noticeBtn.layer.masksToBounds = YES;
+    self.noticeBtn.layer.borderWidth = 1;
+    self.noticeBtn.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.noticeBtn.layer.cornerRadius = 5;
     // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 
-- (void)reloadCell:(PersonCenterModel *)model{
+- (void)reloadCell:(PersonCenterModel *)model  isAttend:(BOOL)isAttend{
+    NSString *str = isAttend?@"已关注":@"+ 关注";
+    [self.noticeBtn setTitle:str forState:UIControlStateNormal];
     [self.userImage sd_setImageWithURL:[NSURL URLWithString:model.headUrl] placeholderImage:[UIImage imageNamed:@"usermine.png"]];
     self.userName.text = model.nickName;
     self.fenshiNum.text = [NSString stringWithFormat:@"粉丝%@人",model.attentCount];
@@ -103,6 +112,10 @@
         default:
             break;
     }
+}
+
+- (IBAction)attendAction:(id)sender {
+    [self.delegate addOrReliefAttend];
 }
 
 @end

@@ -96,6 +96,9 @@
 #define APIGetInitiateInfo           @"getInitiateInfo"  //获取发单会员详细信息
 
 #define APIGetFollowSchemeByNickName  @"getFollowSchemeByNickName"
+#define APIIsAttent                   @"isAttent"   //是否关注
+#define APIAttentMember             @"attentMember" //关注会员
+#define APIReliefAttent             @"reliefAttent"  //解除跟单
 
 #define SUBAPIDATA           @"/data"
 #define APISaveClientInfo           @"saveClientInfo"
