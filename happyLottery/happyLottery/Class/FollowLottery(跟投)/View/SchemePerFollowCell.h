@@ -22,6 +22,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *genfaLabel;
 @property (weak, nonatomic) IBOutlet UILabel *moneyNameLabel;
 
-- (void)reloadDate:(JCZQSchemeItem * )model schemeType:(NSString *)schemeType;
+- (void)reloadDate:(JCZQSchemeItem * )model schemeType:(NSString *)schemeType isAttend:(BOOL)isAttend;
 
 @end

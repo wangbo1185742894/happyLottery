@@ -21,9 +21,9 @@
 
 
 
-- (void)reloadDate:(JCZQSchemeItem * )model schemeType:(NSString *)schemeType{
+- (void)reloadDate:(JCZQSchemeItem * )model schemeType:(NSString *)schemeType isAttend:(BOOL)isAttend{
     if([schemeType isEqualToString:@"BUY_INITIATE"]){
-        self.guanZhuBtn.titleLabel.text = @"跟单列表>";
+        [self.guanZhuBtn setTitle:@"跟单列表>" forState:UIControlStateNormal];
         self.genfaLabel.text = @"已跟投";
         self.moneyNameLabel.text = [NSString stringWithFormat:@"%@元",model.totalFollowCost];
     }
@@ -31,11 +31,11 @@
         self.guanZhuBtn.layer.cornerRadius = 5;
         self.guanZhuBtn.layer.borderColor = RGBCOLOR(18, 199, 146).CGColor;
         self.guanZhuBtn.layer.borderWidth = 1;
-        self.guanZhuBtn.titleLabel.text = @"+ 关注";
+        NSString *str = isAttend?@"已关注":@"+ 关注";
+        [self.guanZhuBtn setTitle:str forState:UIControlStateNormal];
         self.genfaLabel.text = @"发单人";
         self.moneyNameLabel.text = model.initiateNickname;
     }
-   
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

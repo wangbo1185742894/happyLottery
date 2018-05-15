@@ -1552,7 +1552,63 @@
                         failure:failureBlock];
 }
 
+- (void)isAttent:(NSDictionary *)paraDic
+{
+    
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed) {
+            [self.delegate gotisAttent:responseJsonStr errorMsg:response.errorMsg];
+            
+        } else {
+            [self.delegate gotisAttent:nil errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate gotisAttent:nil errorMsg:@"服务器错误"];
+    };
+    
+    SOAPRequest *request = [self requestForAPI: APIIsAttent withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
 
+
+
+- (void)attentMember:(NSDictionary *)paraDic
+{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed) {
+            [self.delegate gotAttentMember:responseJsonStr errorMsg:response.errorMsg];
+        } else {
+            [self.delegate gotAttentMember:nil errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        
+        [self.delegate gotAttentMember:nil errorMsg:@"服务器错误"];
+    };
+    
+    
+    SOAPRequest *request = [self requestForAPI: APIAttentMember withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
 - (void)getListAttent:(NSDictionary *)paraDic
 {
     
@@ -1565,13 +1621,16 @@
             [self.delegate gotListAttent:dataArray errorMsg:response.errorMsg];
         } else {
             [self.delegate gotListAttent:nil errorMsg:response.errorMsg];
+
         }
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
+
         [self.delegate gotListAttent:nil errorMsg:@"服务器错误"];
     };
     
+
     SOAPRequest *request = [self requestForAPI: APIgetListAttent withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
     [self newRequestWithRequest:request
                          subAPI:SUBAPIMember
@@ -1580,5 +1639,30 @@
                         failure:failureBlock];
 }
 
+- (void)reliefAttent:(NSDictionary *)paraDic {
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed) {
+            [self.delegate gotReliefAttent:responseJsonStr errorMsg:response.errorMsg];
+            
+        } else {
+            [self.delegate gotReliefAttent:nil errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate gotReliefAttent:nil errorMsg:@"服务器错误"];
+    };
+    
+    SOAPRequest *request = [self requestForAPI: APIReliefAttent withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
 
 @end

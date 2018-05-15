@@ -31,5 +31,7 @@
 /** 近期发单中奖状态  0,1,1,1,0 表示, 0 表示未中奖*/
 @property(nonatomic,copy)NSString * initiateStatus;
 
+@property(nonatomic,copy)NSString *  label_urls;
+
 
 @end
