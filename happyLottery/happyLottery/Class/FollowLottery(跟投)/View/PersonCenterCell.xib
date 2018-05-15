@@ -68,6 +68,7 @@
                                 <rect key="frame" x="0.0" y="11" width="189" height="1"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="5C0-BX-ELe"/>
+                                    <constraint firstAttribute="width" constant="189" id="aaG-iy-fEI"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TH2-JI-JxD">
@@ -116,7 +117,6 @@
                             <constraint firstItem="TH2-JI-JxD" firstAttribute="top" secondItem="gZR-ym-Yu9" secondAttribute="top" id="DvY-1B-MQc"/>
                             <constraint firstItem="TH2-JI-JxD" firstAttribute="leading" secondItem="nCM-uf-AEX" secondAttribute="trailing" constant="12" id="EOm-KV-7Zf"/>
                             <constraint firstItem="UYH-VL-vyI" firstAttribute="leading" secondItem="gZR-ym-Yu9" secondAttribute="leading" id="I8L-rg-cxk"/>
-                            <constraint firstAttribute="trailing" secondItem="UYH-VL-vyI" secondAttribute="trailing" constant="-6" id="JLn-T5-tKG"/>
                             <constraint firstAttribute="bottom" secondItem="Znc-Hp-fhu" secondAttribute="bottom" id="KyF-Mh-6TV"/>
                             <constraint firstItem="UYH-VL-vyI" firstAttribute="centerY" secondItem="gZR-ym-Yu9" secondAttribute="centerY" id="LJy-CC-AQm"/>
                             <constraint firstAttribute="bottom" secondItem="TH2-JI-JxD" secondAttribute="bottom" id="LWB-NH-VvI"/>
@@ -240,6 +240,8 @@
                 <outlet property="initiateStatusThird" destination="SuG-tI-pRD" id="5ub-8K-iX6"/>
                 <outlet property="initiateStatusTwo" destination="TH2-JI-JxD" id="hm6-vY-QFt"/>
                 <outlet property="noticeBtn" destination="kFt-Nc-OWM" id="x3k-Kv-W8h"/>
+                <outlet property="picLian" destination="UYH-VL-vyI" id="x3l-mB-dbO"/>
+                <outlet property="picLianjie" destination="aaG-iy-fEI" id="DP7-dy-Nm3"/>
                 <outlet property="userImage" destination="FPQ-Zg-XEV" id="Tty-8L-FfQ"/>
                 <outlet property="userName" destination="yKn-Db-byb" id="vqg-kB-nZE"/>
             </connections>

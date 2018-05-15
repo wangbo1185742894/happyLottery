@@ -27,6 +27,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *initiateStatusFifth;
 @property (weak, nonatomic) IBOutlet UILabel *initiateStatusSum;
 @property (weak, nonatomic) IBOutlet UIButton *noticeBtn;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *picLianjie;
+@property (weak, nonatomic) IBOutlet UIImageView *picLian;
 @property(nonatomic,weak)id <PersonCenterCellDelegate> delegate;
 
 - (void)reloadCell:(PersonCenterModel *)model  isAttend:(BOOL)isAttend;

@@ -47,8 +47,9 @@
     NSString *str = isAttend?@"已关注":@"+ 关注";
     [self.noticeBtn setTitle:str forState:UIControlStateNormal];
     [self.userImage sd_setImageWithURL:[NSURL URLWithString:model.headUrl] placeholderImage:[UIImage imageNamed:@"usermine.png"]];
-    self.userName.text = model.nickName;
-    self.fenshiNum.text = [NSString stringWithFormat:@"粉丝%@人",model.attentCount];
+    self.userName.text = model.nickName==nil?[model.cardCode stringByReplacingCharactersInRange:NSMakeRange(2,4) withString:@"****"]:model.nickName;
+    
+    self.fenshiNum.text = [NSString stringWithFormat:@"粉丝%d人",[model.attentCount intValue]];
     self.initiateStatusSum.text = [NSString stringWithFormat:@"%.2f元",[model.totalInitiateBonus  doubleValue]];
     NSArray *array = [model.initiateStatus componentsSeparatedByString:@","];
     switch (array.count) {
@@ -58,6 +59,8 @@
             self.initiateStatusThird.hidden = YES;
             self.initiateStatusForth.hidden = YES;
             self.initiateStatusFifth.hidden = YES;
+            self.picLianjie.constant = 0;
+            self.picLian.hidden = YES;
             break;
         case 1:
             self.initiateStatusFirst.text = [array[0]isEqualToString:@"1"]?@"中":@"未";
@@ -66,6 +69,8 @@
             self.initiateStatusThird.hidden = YES;
             self.initiateStatusForth.hidden = YES;
             self.initiateStatusFifth.hidden = YES;
+            self.picLianjie.constant = 47;
+            self.picLian.hidden = NO;
             break;
         case 2:
             self.initiateStatusFirst.text = [array[0]isEqualToString:@"1"]?@"中":@"未";
@@ -75,6 +80,8 @@
             self.initiateStatusThird.hidden = YES;
             self.initiateStatusForth.hidden = YES;
             self.initiateStatusFifth.hidden = YES;
+            self.picLianjie.constant = 47+23;
+            self.picLian.hidden = NO;
             break;
         case 3:
             self.initiateStatusFirst.text = [array[0]isEqualToString:@"1"]?@"中":@"未";
@@ -85,6 +92,8 @@
             self.initiateStatusThird.hidden = NO;
             self.initiateStatusForth.hidden = YES;
             self.initiateStatusFifth.hidden = YES;
+            self.picLian.hidden = NO;
+            self.picLianjie.constant = 47+23*2;
             break;
         case 4:
             self.initiateStatusFirst.text = [array[0]isEqualToString:@"1"]?@"中":@"未";
@@ -96,6 +105,8 @@
             self.initiateStatusForth.text = [array[3]isEqualToString:@"1"]?@"中":@"未";
             self.initiateStatusForth.hidden = NO;
             self.initiateStatusFifth.hidden = YES;
+            self.picLian.hidden = NO;
+            self.picLianjie.constant = 47+23*3;
             break;
         case 5:
             self.initiateStatusFirst.text = [array[0]isEqualToString:@"1"]?@"中":@"未";
@@ -108,6 +119,8 @@
             self.initiateStatusForth.hidden = NO;
             self.initiateStatusFifth.text = [array[4]isEqualToString:@"1"]?@"中":@"未";
             self.initiateStatusFifth.hidden = NO;
+            self.picLian.hidden = NO;
+            self.picLianjie.constant = 189;
             break;
         default:
             break;
