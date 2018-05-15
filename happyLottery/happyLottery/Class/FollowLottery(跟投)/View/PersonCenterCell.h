@@ -29,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *noticeBtn;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *picLianjie;
 @property (weak, nonatomic) IBOutlet UIImageView *picLian;
+@property (weak, nonatomic) IBOutlet UIImageView *label_urlsImage;
 @property(nonatomic,weak)id <PersonCenterCellDelegate> delegate;
 
 - (void)reloadCell:(PersonCenterModel *)model  isAttend:(BOOL)isAttend;

@@ -39,6 +39,7 @@
 
 @implementation FASSchemeDetailViewController{
     JCZQSchemeItem *schemeDetail;
+    BOOL isAttend;
 }
 
 - (void)viewDidLoad {
@@ -76,7 +77,8 @@
             [self.dataArray addObject:betContent];
         }
     }
-    [self.detailTableView reloadData];
+    NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"attentCardCode":schemeDetail.cardCode,@"attentType":@"FOLLOW"};
+    [self.lotteryMan isAttent:dic];
 }
 
 -(void)setTableView{
@@ -147,7 +149,7 @@
     }else if (indexPath.section == 1){
         SchemePerFollowCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemePerFollowCell];
         cell.delegate = self;
-        [cell reloadDate:schemeDetail schemeType:self.schemeType];
+        [cell reloadDate:schemeDetail schemeType:self.schemeType isAttend:isAttend];
         return cell;
     }else if (indexPath.section == 2){
         if (indexPath.row == 0) {
@@ -203,9 +205,48 @@
 }
 
 -(void)gotoFollowList{
-    FollowListViewController * followVC = [[FollowListViewController alloc]init];
-    followVC.followListDtos = schemeDetail.followListDtos;
-    [self.navigationController pushViewController:followVC animated:YES];
+    if ([self.schemeType isEqualToString:@"BUY_FOLLOW"]) {
+        if (isAttend) {
+            //取消关注
+            NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"attentCardCode":schemeDetail.cardCode,@"attentType":@"FOLLOW"};
+            [self.lotteryMan reliefAttent:dic];
+        }
+        else {
+            //添加关注
+            NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"attentCardCode":schemeDetail.cardCode,@"attentType":@"FOLLOW"};
+            [self.lotteryMan attentMember:dic];
+        }
+    }else {
+        FollowListViewController * followVC = [[FollowListViewController alloc]init];
+        followVC.followListDtos = schemeDetail.followListDtos;
+        [self.navigationController pushViewController:followVC animated:YES];
+    }
 }
+
+- (void) gotisAttent:(NSString *)diction  errorMsg:(NSString *)msg{
+    isAttend = [diction boolValue];
+    [self.detailTableView reloadData];
+}
+
+- (void) gotAttentMember:(NSString *)diction  errorMsg:(NSString *)msg{
+    [self showPromptText:msg hideAfterDelay:2.0];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:1];
+    if (diction) {
+        isAttend = YES;
+        [self.detailTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+        [self showPromptText:@"添加关注成功" hideAfterDelay:2.0];
+    }
+}
+
+- (void) gotReliefAttent:(NSString *)diction  errorMsg:(NSString *)msg{
+    [self showPromptText:msg hideAfterDelay:2.0];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:1];
+    if (diction) {
+        isAttend = NO;
+        [self.detailTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+        [self showPromptText:@"取消关注成功" hideAfterDelay:2.0];
+    }
+}
+
 
 @end

@@ -15,6 +15,8 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.label_urlsImage.clipsToBounds = NO;
+    self.label_urlsImage.contentMode = UIViewContentModeScaleAspectFit;
     self.userImage.clipsToBounds = NO;
     self.userImage.contentMode = UIViewContentModeScaleAspectFit;
     self.userImage.layer.cornerRadius = self.userImage.mj_h / 2;
@@ -33,7 +35,7 @@
     self.noticeBtn.layer.masksToBounds = YES;
     self.noticeBtn.layer.borderWidth = 1;
     self.noticeBtn.layer.borderColor = [UIColor whiteColor].CGColor;
-    self.noticeBtn.layer.cornerRadius = 5;
+    self.noticeBtn.layer.cornerRadius = 3;
     // Initialization code
 }
 
@@ -44,12 +46,13 @@
 }
 
 - (void)reloadCell:(PersonCenterModel *)model  isAttend:(BOOL)isAttend{
+    [self.label_urlsImage sd_setImageWithURL:[NSURL URLWithString:model.label_urls]];
     NSString *str = isAttend?@"已关注":@"+ 关注";
     [self.noticeBtn setTitle:str forState:UIControlStateNormal];
     [self.userImage sd_setImageWithURL:[NSURL URLWithString:model.headUrl] placeholderImage:[UIImage imageNamed:@"usermine.png"]];
     self.userName.text = model.nickName==nil?[model.cardCode stringByReplacingCharactersInRange:NSMakeRange(2,4) withString:@"****"]:model.nickName;
     
-    self.fenshiNum.text = [NSString stringWithFormat:@"粉丝%d人",[model.attentCount intValue]];
+    self.fenshiNum.text = [NSString stringWithFormat:@"粉丝 %d人",[model.attentCount intValue]];
     self.initiateStatusSum.text = [NSString stringWithFormat:@"%.2f元",[model.totalInitiateBonus  doubleValue]];
     NSArray *array = [model.initiateStatus componentsSeparatedByString:@","];
     switch (array.count) {
