@@ -23,12 +23,7 @@
 
 - (void)reloadDate:(JCZQSchemeItem * )model{
     
-    self.yongJin.text = [NSString stringWithFormat:@"%@元",model.totalCommission];
-    self.winMoney.text = [NSString stringWithFormat:@"%@元",model.earnings==nil?@"0":model.earnings];
-    int num1 = [model.totalCommission intValue];
-    int num2 = [model.earnings intValue];
-    int sum = num1 + num2;
-    self.moneyLabel.text = [NSString stringWithFormat:@"%d元",sum];
+   
     if ([model.lottery isEqualToString:@"JCZQ"]) {
         self.loterryLabel.text = @"竞彩足球";
         [self.lotteryImage setImage:[UIImage imageNamed:@"footerball.png"]];
@@ -50,6 +45,25 @@
         self.winImage.hidden = YES;
         self.winLabel.textColor = [UIColor blackColor];
     }
+    if ([self.winLabel.text isEqualToString:@"待开奖"]) {
+        self.yongJin.text = @"-";
+        self.winMoney.text = @"-";
+        self.moneyLabel.text = @"-";
+        self.yongJin.textColor = [UIColor blackColor];
+        self.winMoney.textColor = [UIColor blackColor];
+        self.moneyLabel.textColor = [UIColor blackColor];
+    } else {
+        self.yongJin.text = [NSString stringWithFormat:@"%@元",model.totalCommission];
+        self.winMoney.text = [NSString stringWithFormat:@"%@元",model.earnings==nil?@"0":model.earnings];
+        int num1 = [model.totalCommission intValue];
+        int num2 = [model.earnings intValue];
+        int sum = num1 + num2;
+        self.moneyLabel.text = [NSString stringWithFormat:@"%d元",sum];
+        self.yongJin.textColor = RGBCOLOR(254, 58, 81);
+        self.winMoney.textColor = RGBCOLOR(254, 58, 81);
+        self.moneyLabel.textColor = RGBCOLOR(254, 58, 81);
+    }
+  
 }
 
 @end
