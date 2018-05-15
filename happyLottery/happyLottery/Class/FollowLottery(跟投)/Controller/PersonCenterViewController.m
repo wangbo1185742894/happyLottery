@@ -8,18 +8,30 @@
 
 #import "PersonCenterViewController.h"
 #import "HotFollowSchemeViewCell.h"
-#import "PersonCenterCell.h"
 #import "PersonCenterModel.h"
 #import "FollowDetailViewController.h"
 #import "FASSchemeDetailViewController.h"
 #define KHotFollowSchemeViewCell  @"HotFollowSchemeViewCell"
-#define KPersonCenterCell  @"PersonCenterCell"
 
-@interface PersonCenterViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,PersonCenterCellDelegate>
+@interface PersonCenterViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *personTabelView;
 @property (nonatomic,strong) NSMutableArray <HotSchemeModel *> * personArray;
 @property(assign,nonatomic)NSInteger page;
+@property (weak, nonatomic) IBOutlet UIImageView *userImage;
+@property (weak, nonatomic) IBOutlet UILabel *userName;
+@property (weak, nonatomic) IBOutlet UILabel *fenshiNum;
+@property (weak, nonatomic) IBOutlet UILabel *initiateStatusFirst;
+@property (weak, nonatomic) IBOutlet UILabel *initiateStatusTwo;
+@property (weak, nonatomic) IBOutlet UILabel *initiateStatusThird;
+@property (weak, nonatomic) IBOutlet UILabel *initiateStatusForth;
+@property (weak, nonatomic) IBOutlet UILabel *initiateStatusFifth;
+@property (weak, nonatomic) IBOutlet UILabel *initiateStatusSum;
+@property (weak, nonatomic) IBOutlet UIButton *noticeBtn;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *picLianjie;
+@property (weak, nonatomic) IBOutlet UIImageView *picLian;
+@property (weak, nonatomic) IBOutlet UIImageView *label_urlsImage;
+
 @end
 
 @implementation PersonCenterViewController{
@@ -39,9 +51,34 @@
     }
     self.lotteryMan.delegate = self;
     [self showLoadingViewWithText:@"正在加载"];
+    self.personTabelView.separatorStyle = UITableViewCellSeparatorStyleNone;
     NSDictionary *dic = @{@"cardCode":self.cardCode};
     [self.lotteryMan getInitiateInfo:dic];
+    [self reloadView];
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)reloadView {
+    self.label_urlsImage.clipsToBounds = NO;
+    self.label_urlsImage.contentMode = UIViewContentModeScaleAspectFit;
+    self.userImage.clipsToBounds = NO;
+    self.userImage.contentMode = UIViewContentModeScaleAspectFit;
+    self.userImage.layer.cornerRadius = self.userImage.mj_h / 2;
+    self.userImage.layer.masksToBounds = YES;
+    self.initiateStatusFirst.layer.cornerRadius = self.initiateStatusFirst.mj_h / 2;
+    self.initiateStatusFirst.layer.masksToBounds = YES;
+    self.initiateStatusTwo.layer.cornerRadius = self.initiateStatusTwo.mj_h / 2;
+    self.initiateStatusTwo.layer.masksToBounds = YES;
+    self.initiateStatusThird.layer.cornerRadius = self.initiateStatusThird.mj_h / 2;
+    self.initiateStatusThird.layer.masksToBounds = YES;
+    self.initiateStatusForth.layer.cornerRadius = self.initiateStatusForth.mj_h / 2;
+    self.initiateStatusForth.layer.masksToBounds = YES;
+    self.initiateStatusFifth.layer.cornerRadius = self.initiateStatusFifth.mj_h / 2;
+    self.initiateStatusFifth.layer.masksToBounds = YES;
+    self.noticeBtn.layer.masksToBounds = YES;
+    self.noticeBtn.layer.borderWidth = 1;
+    self.noticeBtn.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.noticeBtn.layer.cornerRadius = 3;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,14 +90,11 @@
     self.personTabelView.delegate = self;
     self.personTabelView.dataSource = self;
     [self.personTabelView registerNib:[UINib nibWithNibName:KHotFollowSchemeViewCell bundle:nil] forCellReuseIdentifier:KHotFollowSchemeViewCell];
-    [self.personTabelView registerNib:[UINib nibWithNibName:KPersonCenterCell bundle:nil] forCellReuseIdentifier:KPersonCenterCell];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.row == 0){
-        return 196;
-    }
-    return 208;
+    
+    return 202;
 }
 
 
@@ -109,24 +143,20 @@
     for (NSDictionary *dic in personList) {
         [self.personArray addObject:[[HotSchemeModel alloc]initWith:dic]];
     }
+    [self reload:model isAttend:isAttend];
     [self.personTabelView  reloadData];
     [self hideLoadingView];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.personArray.count+1;
+    return self.personArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row == 0) {
-        PersonCenterCell *cell = [tableView dequeueReusableCellWithIdentifier:KPersonCenterCell];
-        cell.delegate = self;
-        [cell reloadCell:model isAttend:isAttend];
-        return cell;
-    }
+    
     HotFollowSchemeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KHotFollowSchemeViewCell];
     if (self.personArray .count >0) {
-        HotSchemeModel *model = [self.personArray objectAtIndex:indexPath.row - 1];
+        HotSchemeModel *model = [self.personArray objectAtIndex:indexPath.row];
         [cell loadDataWithModel:model];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -174,23 +204,120 @@
 }
 
 - (void) gotAttentMember:(NSString *)diction  errorMsg:(NSString *)msg{
-    [self showPromptText:msg hideAfterDelay:2.0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     if (diction) {
         isAttend = YES;
-        [self.personTabelView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-        [self showPromptText:@"添加关注成功" hideAfterDelay:2.0];
+        [self reload:model isAttend:isAttend];
+        [self showPromptText:@"添加关注成功" hideAfterDelay:1.0];
     }
 }
 
 - (void) gotReliefAttent:(NSString *)diction  errorMsg:(NSString *)msg{
-    [self showPromptText:msg hideAfterDelay:2.0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     if (diction) {
         isAttend = NO;
-        [self.personTabelView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-        [self showPromptText:@"取消关注成功" hideAfterDelay:2.0];
+        [self reload:model isAttend:isAttend];
+        [self showPromptText:@"取消关注成功" hideAfterDelay:1.0];
     }
+}
+
+- (UILabel *)initiateStatus:(UILabel *)label text:(NSString *)string{
+    if ([string isEqualToString:@"1"]) {
+        label.text = @"中";
+        label.backgroundColor = RGBCOLOR(254, 165, 19);
+    }
+    label.text = @"未";
+    label.backgroundColor = RGBCOLOR(180, 177, 177);
+    return label;
+}
+
+- (void)reload:(PersonCenterModel *)model  isAttend:(BOOL)isAttend{
+    [self.label_urlsImage sd_setImageWithURL:[NSURL URLWithString:model.label_urls]];
+    NSString *str = isAttend?@"已关注":@"+ 关注";
+    self.noticeBtn.userInteractionEnabled = YES;
+    [self.noticeBtn setTitle:str forState:UIControlStateNormal];
+    [self.userImage sd_setImageWithURL:[NSURL URLWithString:model.headUrl] placeholderImage:[UIImage imageNamed:@"usermine.png"]];
+    self.userName.text = model.nickName==nil?[model.cardCode stringByReplacingCharactersInRange:NSMakeRange(2,4) withString:@"****"]:model.nickName;
+    
+    self.fenshiNum.text = [NSString stringWithFormat:@"粉丝 %d人",[model.attentCount intValue]];
+    self.initiateStatusSum.text = [NSString stringWithFormat:@"%.2f元",[model.totalInitiateBonus  doubleValue]];
+    NSArray *array = [model.initiateStatus componentsSeparatedByString:@","];
+    switch (array.count) {
+        case 0:
+            self.initiateStatusFirst.hidden = YES;
+            self.initiateStatusTwo.hidden = YES;
+            self.initiateStatusThird.hidden = YES;
+            self.initiateStatusForth.hidden = YES;
+            self.initiateStatusFifth.hidden = YES;
+            self.picLianjie.constant = 0;
+            self.picLian.hidden = YES;
+            break;
+        case 1:
+            self.initiateStatusFirst = [self initiateStatus:self.initiateStatusFirst text:array[0]];
+            self.initiateStatusFirst.hidden = NO;
+            self.initiateStatusTwo.hidden = YES;
+            self.initiateStatusThird.hidden = YES;
+            self.initiateStatusForth.hidden = YES;
+            self.initiateStatusFifth.hidden = YES;
+            self.picLianjie.constant = self.initiateStatusFirst.mj_x+self.initiateStatusFirst.mj_w+12;
+            self.picLian.hidden = NO;
+            break;
+        case 2:
+            self.initiateStatusFirst = [self initiateStatus:self.initiateStatusFirst text:array[0]];
+            self.initiateStatusFirst.hidden = NO;
+            self.initiateStatusTwo = [self initiateStatus:self.initiateStatusTwo text:array[1]];
+            self.initiateStatusTwo.hidden = NO;
+            self.initiateStatusThird.hidden = YES;
+            self.initiateStatusForth.hidden = YES;
+            self.initiateStatusFifth.hidden = YES;
+            self.picLianjie.constant = self.initiateStatusTwo.mj_x+self.initiateStatusTwo.mj_w +12;
+            self.picLian.hidden = NO;
+            break;
+        case 3:
+            self.initiateStatusFirst = [self initiateStatus:self.initiateStatusFirst text:array[0]];
+            self.initiateStatusFirst.hidden = NO;
+            self.initiateStatusTwo = [self initiateStatus:self.initiateStatusTwo text:array[1]];
+            self.initiateStatusTwo.hidden = NO;
+            self.initiateStatusThird = [self initiateStatus:self.initiateStatusThird text:array[2]];
+            self.initiateStatusThird.hidden = NO;
+            self.initiateStatusForth.hidden = YES;
+            self.initiateStatusFifth.hidden = YES;
+            self.picLian.hidden = NO;
+            self.picLianjie.constant = self.initiateStatusThird.mj_x+ self.initiateStatusThird.mj_w+12;
+            break;
+        case 4:
+            self.initiateStatusFirst = [self initiateStatus:self.initiateStatusFirst text:array[0]];
+            self.initiateStatusFirst.hidden = NO;
+            self.initiateStatusTwo = [self initiateStatus:self.initiateStatusTwo text:array[1]];
+            self.initiateStatusTwo.hidden = NO;
+            self.initiateStatusThird = [self initiateStatus:self.initiateStatusThird text:array[2]];
+            self.initiateStatusThird.hidden = NO;
+            self.initiateStatusForth = [self initiateStatus:self.initiateStatusForth text:array[3]];
+            self.initiateStatusForth.hidden = NO;
+            self.initiateStatusFifth.hidden = YES;
+            self.picLian.hidden = NO;
+            self.picLianjie.constant = self.initiateStatusForth.mj_x+self.initiateStatusForth.mj_w+12;
+            break;
+        case 5:
+            self.initiateStatusFirst = [self initiateStatus:self.initiateStatusFirst text:array[0]];
+            self.initiateStatusFirst.hidden = NO;
+            self.initiateStatusTwo = [self initiateStatus:self.initiateStatusTwo text:array[1]];
+            self.initiateStatusTwo.hidden = NO;
+            self.initiateStatusThird = [self initiateStatus:self.initiateStatusThird text:array[2]];
+            self.initiateStatusThird.hidden = NO;
+            self.initiateStatusForth = [self initiateStatus:self.initiateStatusForth text:array[3]];
+            self.initiateStatusForth.hidden = NO;
+            self.initiateStatusFifth = [self initiateStatus:self.initiateStatusFifth text:array[4]];
+            self.initiateStatusFifth.hidden = NO;
+            self.picLian.hidden = NO;
+            self.picLianjie.constant = 189;
+            break;
+        default:
+            break;
+    }
+}
+
+- (IBAction)attendAction:(id)sender{
+    self.noticeBtn.userInteractionEnabled = NO;
+    [self addOrReliefAttend];
 }
 
 @end

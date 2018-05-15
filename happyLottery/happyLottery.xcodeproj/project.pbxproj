@@ -1314,8 +1314,6 @@
 		F9DC8C4320A57F02006B31F4 /* pic_beijing@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9DC8C3B20A57F02006B31F4 /* pic_beijing@2x.png */; };
 		F9DC8C4720A57F8E006B31F4 /* PersonCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DC8C4520A57F8E006B31F4 /* PersonCenterViewController.m */; };
 		F9DC8C4820A57F8E006B31F4 /* PersonCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9DC8C4620A57F8E006B31F4 /* PersonCenterViewController.xib */; };
-		F9DC8C4C20A585D1006B31F4 /* PersonCenterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DC8C4A20A585D1006B31F4 /* PersonCenterCell.m */; };
-		F9DC8C4D20A585D1006B31F4 /* PersonCenterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9DC8C4B20A585D1006B31F4 /* PersonCenterCell.xib */; };
 		F9E0DF1D2019695C0089F51D /* MineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9E0DF1C2019695B0089F51D /* MineViewController.xib */; };
 		F9E0DF21201972570089F51D /* JumpWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9E0DF1F201972570089F51D /* JumpWebViewController.m */; };
 		F9E0DF22201972570089F51D /* JumpWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9E0DF20201972570089F51D /* JumpWebViewController.xib */; };
@@ -3109,9 +3107,6 @@
 		F9DC8C4420A57F8E006B31F4 /* PersonCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonCenterViewController.h; sourceTree = "<group>"; };
 		F9DC8C4520A57F8E006B31F4 /* PersonCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonCenterViewController.m; sourceTree = "<group>"; };
 		F9DC8C4620A57F8E006B31F4 /* PersonCenterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonCenterViewController.xib; sourceTree = "<group>"; };
-		F9DC8C4920A585D1006B31F4 /* PersonCenterCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonCenterCell.h; sourceTree = "<group>"; };
-		F9DC8C4A20A585D1006B31F4 /* PersonCenterCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonCenterCell.m; sourceTree = "<group>"; };
-		F9DC8C4B20A585D1006B31F4 /* PersonCenterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonCenterCell.xib; sourceTree = "<group>"; };
 		F9E0DF1C2019695B0089F51D /* MineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineViewController.xib; sourceTree = "<group>"; };
 		F9E0DF1E201972570089F51D /* JumpWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpWebViewController.h; sourceTree = "<group>"; };
 		F9E0DF1F201972570089F51D /* JumpWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpWebViewController.m; sourceTree = "<group>"; };
@@ -5721,9 +5716,6 @@
 				F9DC8C2420A46051006B31F4 /* SchemeInfoBuyCell.h */,
 				F9DC8C2520A46051006B31F4 /* SchemeInfoBuyCell.m */,
 				F9DC8C2620A46051006B31F4 /* SchemeInfoBuyCell.xib */,
-				F9DC8C4920A585D1006B31F4 /* PersonCenterCell.h */,
-				F9DC8C4A20A585D1006B31F4 /* PersonCenterCell.m */,
-				F9DC8C4B20A585D1006B31F4 /* PersonCenterCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -6107,7 +6099,6 @@
 				2D0EEA922013280500B0769C /* button_trophy@2x.png in Resources */,
 				2D8CC0101FF487CF00CC367F /* WBHomeJCYCViewController.xib in Resources */,
 				2D03F27D2060BAE800C81BEF /* AddBankCardViewController.xib in Resources */,
-				F9DC8C4D20A585D1006B31F4 /* PersonCenterCell.xib in Resources */,
 				2D40CAAA201EDE5700DDCFE3 /* dot@3x.png in Resources */,
 				2D20602D1FFCB71E0086E266 /* icon_zhanbaotongji@3x.png in Resources */,
 				2D739CDA1FEB44F400264044 /* yuanjiaowubiankuangnomal@2x.png in Resources */,
@@ -7173,7 +7164,6 @@
 				2D628B4A1FECAE980013D0E1 /* JingCaiChaunFaSelectView.m in Sources */,
 				2D0EEAA12015A94A00B0769C /* YCSchemeViewCell.m in Sources */,
 				F95C7EAD2071D5CC005990F5 /* ZhuiHaoInfoViewController.m in Sources */,
-				F9DC8C4C20A585D1006B31F4 /* PersonCenterCell.m in Sources */,
 				2D16601520A2CF6700C1C7E7 /* PostSchemeViewCell.m in Sources */,
 				2D7B12F9204D3F110035AE89 /* LotteryXHProfile.m in Sources */,
 				2D7B13B2204E873D0035AE89 /* CTZQTransaction.m in Sources */,
