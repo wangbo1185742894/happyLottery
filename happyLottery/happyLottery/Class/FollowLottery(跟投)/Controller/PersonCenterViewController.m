@@ -165,7 +165,7 @@
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    HotSchemeModel *model = [_personArray objectAtIndex:indexPath.row - 1];
+    HotSchemeModel *model = [_personArray objectAtIndex:indexPath.row];
     NSDate * dateServer = [Utility dateFromDateStr:model.serverTime withFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSDate * dateCur = [Utility dateFromDateStr:model.deadLine withFormat:@"yyyy-MM-dd HH:mm:ss"];
     
