@@ -345,15 +345,15 @@ static SystemSoundID shake_sound_male_id = 0;
     
     tabAttrs[@"tabTitle"] = @"跟投";
     tabAttrs[@"title"] = @"";
-    tabAttrs[@"itemNormal"] = @"home_defealt";
-    tabAttrs[@"itemSelected"] = @"home_select";
+    tabAttrs[@"itemNormal"] = @"quanzi_defealt";
+    tabAttrs[@"itemSelected"] = @"quanzi_select";
     tabAttrs[@"rootVC"] = @"FollowSendViewController";
     UINavigationController *genTouNavVC = [self tabNavVCWithAttr: tabAttrs];
     
     tabAttrs[@"tabTitle"] = @"圈子";
     tabAttrs[@"title"] = @"圈子";
-    tabAttrs[@"itemNormal"] = @"quanzi_defealt";
-    tabAttrs[@"itemSelected"] = @"quanzi_select";
+    tabAttrs[@"itemNormal"] = @"quanzi_normal";
+    tabAttrs[@"itemSelected"] = @"quanzi_secelcted";
     tabAttrs[@"rootVC"] = @"GroupViewController";
     UINavigationController *gouCaiNavVC = [self tabNavVCWithAttr: tabAttrs];
     

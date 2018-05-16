@@ -39,8 +39,11 @@
     }
     self.lotteryMan.delegate = self;
     [self showLoadingViewWithText:@"正在加载"];
-    NSDictionary *dic = @{@"cardCode":self.cardCode};
-    [self.lotteryMan getInitiateInfo:dic];
+    if (self.cardCode != nil) {
+        NSDictionary *dic = @{@"cardCode":self.cardCode};
+        [self.lotteryMan getInitiateInfo:dic];
+    }
+
     // Do any additional setup after loading the view from its nib.
 }
 

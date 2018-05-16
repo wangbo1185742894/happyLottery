@@ -263,6 +263,10 @@
     }else if (index == 2){ // 红单
         [self actionToRecommed:@"RedScheme"];
     }else if (index == 3){  // 我的关注
+        if (self.curUser.isLogin == NO) {
+            [self needLogin];
+            return;
+        }
         MyNoticeViewController *noticeVc = [[MyNoticeViewController alloc]init];
         noticeVc.hidesBottomBarWhenPushed = YES;
         noticeVc.curUser = self.curUser;

@@ -50,6 +50,7 @@
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         switch (status) {
             case AFNetworkReachabilityStatusNotReachable:
+                
                 [self.netDelegate netIsNotEnable];
                 break;
             case AFNetworkReachabilityStatusReachableViaWWAN:

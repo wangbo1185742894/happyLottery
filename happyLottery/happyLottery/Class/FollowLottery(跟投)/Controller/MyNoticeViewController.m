@@ -30,6 +30,7 @@
         self.lotteryMan = [[LotteryManager alloc]init];
     }
     self.lotteryMan.delegate = self;
+  
     NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"page":@(0),@"pageSize":@(KpageSize)};
     [self.lotteryMan getAttentFollowScheme:dic];
     // Do any additional setup after loading the view from its nib.
@@ -66,6 +67,7 @@
     HotFollowSchemeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KHotFollowSchemeViewCell];
     HotSchemeModel *model = [self.personArray objectAtIndex:indexPath.row];
     [cell loadDataWithModel:model];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
