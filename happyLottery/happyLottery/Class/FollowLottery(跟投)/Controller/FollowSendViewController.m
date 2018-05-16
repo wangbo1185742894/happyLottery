@@ -147,7 +147,7 @@
         return cell;
     }else   if(indexPath.section == 3){
         HotFollowSchemeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KHotFollowSchemeViewCell];
-        [cell loadDataWithModel:schemeList[indexPath.row]];
+        [cell loadDataWithModelInDaT:schemeList[indexPath.row]];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }else{

@@ -11,5 +11,13 @@
 
 @interface HotFollowSchemeViewCell : UITableViewCell
 
--(void)loadDataWithModel:(HotSchemeModel *)model;
+//个人中心
+-(void)loadDataWithModelInPC:(HotSchemeModel *)model;
+
+//跟单大厅
+- (void)loadDataWithModelInDaT:(HotSchemeModel *)model;
+
+//我的关注
+-(void)loadDataWithModelInNotice:(HotSchemeModel *)model;
+
 @end

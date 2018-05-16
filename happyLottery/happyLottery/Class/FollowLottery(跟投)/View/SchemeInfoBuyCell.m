@@ -49,9 +49,9 @@
         self.yongJin.text = @"-";
         self.winMoney.text = @"-";
         self.moneyLabel.text = @"-";
-        self.yongJin.textColor = [UIColor blackColor];
-        self.winMoney.textColor = [UIColor blackColor];
-        self.moneyLabel.textColor = [UIColor blackColor];
+        self.yongJin.textColor = RGBCOLOR(122, 122, 122);
+        self.winMoney.textColor = RGBCOLOR(122, 122, 122);
+        self.moneyLabel.textColor = RGBCOLOR(122, 122, 122);
     } else {
         self.yongJin.text = [NSString stringWithFormat:@"%@元",model.totalCommission];
         self.winMoney.text = [NSString stringWithFormat:@"%@元",model.earnings==nil?@"0":model.earnings];

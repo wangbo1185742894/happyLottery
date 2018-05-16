@@ -120,17 +120,21 @@
     } else if (indexPath.section == 1){
         return 38;
     } else if (indexPath.section == 2){
-        
-        if (indexPath.row == 0 || indexPath.row == 2+self.dataArray.count ||indexPath.row == 1) {
+        if (indexPath.row == 0) {
+            return 51;
+        } else if(indexPath.row == 1){
             return 38;
-        }else{
+        } else if (indexPath.row == 2+self.dataArray.count){
+            SchemeOverCell *cell = [[SchemeOverCell alloc]init];
+            return [cell dateHeight:schemeDetail];
+        }     
+        else{
             SchemeContainInfoCell *cell = [[SchemeContainInfoCell alloc]init];
             if ([schemeDetail.lottery isEqualToString:@"JCLQ"]) {
                  return  [cell getCellJCLQHeight:self.dataArray[indexPath.row -2]];
             }else{
                  return  [cell getCellHeight:self.dataArray[indexPath.row -2]];
             }
-          
         }
     }
     return 138;
@@ -158,10 +162,7 @@
             return cell;
         }else if (indexPath.row == self.dataArray.count+2){
             SchemeOverCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeOverCell];
-            NSString *pass = [schemeDetail.passType componentsJoinedByString:@","];
-            pass = [pass stringByReplacingOccurrencesOfString:@"x" withString:@"串"];
-            cell.passType.text = pass;
-            cell.touzhuCount.text =[NSString stringWithFormat:@"%@倍%@注",schemeDetail.multiple,schemeDetail.units];
+            [cell reloadDate:schemeDetail];
             return cell;
         }else{
             SchemeContainInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeContainInfoCell];

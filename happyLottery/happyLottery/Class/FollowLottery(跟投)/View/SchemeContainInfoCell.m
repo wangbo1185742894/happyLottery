@@ -56,7 +56,11 @@
     }
      self.betContentLab.text = option;
     self.orderNoLab.text = modelDic.matchInfo[@"matchId"];
-    self.groupMatchLab.text = modelDic.matchInfo[@"clash"];
+    self.groupMatchLab.numberOfLines = 0;
+    if (modelDic.matchInfo[@"clash"]!= nil) {
+        NSArray *array = [modelDic.matchInfo[@"clash"] componentsSeparatedByString:@"VS"];
+        self.groupMatchLab.text = [NSString stringWithFormat:@"%@\nvs\n%@",array[1],array[0]];
+    }
 }
 
 -(CGFloat)getCellJCLQHeight:(JcBetContent  *)modelDic{
@@ -118,6 +122,11 @@
     self.betContentLab.text = option;
     self.orderNoLab.text = modelDic.matchInfo[@"matchId"];
     self.groupMatchLab.text = modelDic.matchInfo[@"clash"];
+    self.groupMatchLab.numberOfLines = 0;
+    if (modelDic.matchInfo[@"clash"]!= nil) {
+        NSArray *array = [modelDic.matchInfo[@"clash"] componentsSeparatedByString:@"VS"];
+        self.groupMatchLab.text = [NSString stringWithFormat:@"%@\nvs\n%@",array[0],array[1]];
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

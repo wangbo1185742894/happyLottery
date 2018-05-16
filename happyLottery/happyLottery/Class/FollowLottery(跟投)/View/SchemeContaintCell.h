@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MGLabel.h"
 
 @protocol SchemeContaintCellDelegate<NSObject>
 -(void)goOrderList;
@@ -14,5 +15,6 @@
 
 @interface SchemeContaintCell : UITableViewCell
 @property (nonatomic,strong)id <SchemeContaintCellDelegate> delegate;
+@property (weak, nonatomic) IBOutlet MGLabel *introduceLabel;
 
 @end
