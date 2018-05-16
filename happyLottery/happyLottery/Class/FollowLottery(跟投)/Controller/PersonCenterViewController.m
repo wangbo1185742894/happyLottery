@@ -51,10 +51,17 @@
     }
     self.lotteryMan.delegate = self;
     [self showLoadingViewWithText:@"正在加载"];
+
+ 
+
     self.personTabelView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    NSDictionary *dic = @{@"cardCode":self.cardCode};
-    [self.lotteryMan getInitiateInfo:dic];
+    if (self.cardCode != nil) {
+        NSDictionary *dic = @{@"cardCode":self.cardCode};
+        [self.lotteryMan getInitiateInfo:dic];
+    }
+
     [self reloadView];
+
     // Do any additional setup after loading the view from its nib.
 }
 
