@@ -1068,7 +1068,7 @@
 		F96723ED2009B12B0044DC8E /* response@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F96723EB2009B12A0044DC8E /* response@2x.png */; };
 		F96723EE2009B12B0044DC8E /* response@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F96723EC2009B12A0044DC8E /* response@3x.png */; };
 		F96C357220ABECCD00D1F034 /* yuce_defealt@2x.png in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B1E631FDF684E0034B708 /* yuce_defealt@2x.png */; };
-		F96C357320ABFE7F00D1F034 /* user@2x.png in Sources */ = {isa = PBXBuildFile; fileRef = F924BA8E1FE252CE00830BF4 /* user@2x.png */; };
+		F96C357420AC336300D1F034 /* user@2x.png in Sources */ = {isa = PBXBuildFile; fileRef = F924BA8E1FE252CE00830BF4 /* user@2x.png */; };
 		F9705E0C2079FA3B00E25E4E /* ssq_play.html in Resources */ = {isa = PBXBuildFile; fileRef = F9705E0B2079FA3A00E25E4E /* ssq_play.html */; };
 		F9705E18207A0DAE00E25E4E /* JCLQPlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9705E13207A0DAE00E25E4E /* JCLQPlayController.m */; };
 		F9705E19207A0DAE00E25E4E /* JCLQPlayController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9705E14207A0DAE00E25E4E /* JCLQPlayController.xib */; };
@@ -2936,7 +2936,7 @@
 		F9A6391320A2AD1F00AA07C6 /* RecomPerModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecomPerModel.h; sourceTree = "<group>"; };
 		F9A6391420A2AD1F00AA07C6 /* RecomPerModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecomPerModel.m; sourceTree = "<group>"; };
 		F9A6391B20A2D38300AA07C6 /* FASSchemeDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FASSchemeDetailViewController.h; sourceTree = "<group>"; };
-		F9A6391C20A2D38300AA07C6 /* FASSchemeDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FASSchemeDetailViewController.m; sourceTree = "<group>"; };
+		F9A6391C20A2D38300AA07C6 /* FASSchemeDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FASSchemeDetailViewController.m; sourceTree = "<group>"; wrapsLines = 1; };
 		F9A6391D20A2D38300AA07C6 /* FASSchemeDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FASSchemeDetailViewController.xib; sourceTree = "<group>"; };
 		F9A941D220A92C1900A7D67A /* PersonCenterModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonCenterModel.h; sourceTree = "<group>"; };
 		F9A941D320A92C1900A7D67A /* PersonCenterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonCenterModel.m; sourceTree = "<group>"; };
@@ -7015,7 +7015,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F96C357320ABFE7F00D1F034 /* user@2x.png in Sources */,
+				F96C357420AC336300D1F034 /* user@2x.png in Sources */,
 				F96C357220ABECCD00D1F034 /* yuce_defealt@2x.png in Sources */,
 				2D16601020A2CA3400C1C7E7 /* MyHemaiViewController.m in Sources */,
 				2DD2C50F204504AB005A18C4 /* WBOptimizeViewController.m in Sources */,

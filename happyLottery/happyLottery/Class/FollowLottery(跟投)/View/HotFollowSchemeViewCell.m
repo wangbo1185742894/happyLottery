@@ -34,6 +34,7 @@
     // Initialization code
 }
 - (IBAction)actionFollowScheme:(UIButton *)sender {
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -66,30 +67,16 @@
 -(void)loadDataWithModelInPC:(HotSchemeModel *)model {
     [self loadDataWithModel:model];
     self.labPersonHis.hidden = YES;
-    [self setMatchData:model];
 }
 
 
 - (void)loadDataWithModelInDaT:(HotSchemeModel *)model{
     [self loadDataWithModel:model];
-    if (model.recent_won .length == 0) {
-        self.labPersonHis.text  = @"近0中0";
-    }else{
-        NSArray *wonState = [model.recent_won componentsSeparatedByString:@","];
-        NSInteger totalWon = 0;
-        for (NSString *state in wonState) {
-            totalWon += [state integerValue];
-        }
-        self.labPersonHis.text = [NSString stringWithFormat:@"近%ld中%ld",wonState.count,totalWon];
-    }
-     self.labDeadTime.text = model.deadLine;
 }
 
 //我的关注
 -(void)loadDataWithModelInNotice:(HotSchemeModel *)model {
     [self loadDataWithModel:model];
-    [self setMatchData:model];
-    
 }
 
 -(void)loadDataWithModel:(HotSchemeModel *)model{
@@ -97,7 +84,7 @@
     NSDate * dateServer = [Utility dateFromDateStr:model.serverTime withFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSDate * dateCur = [Utility dateFromDateStr:model.deadLine withFormat:@"yyyy-MM-dd HH:mm:ss"];
 
-    if ([dateServer compare:dateCur] ==kCFCompareLessThan ) { //没过期 可以买
+    if ([dateServer compare:dateCur] ==kCFCompareLessThan ||model.serverTime==nil) { //没过期 可以买
         self.btnFollowScheme.hidden = NO;
         self.labBouns.hidden = YES;
         self.imgWinState.hidden = YES;
@@ -122,8 +109,7 @@
     self.btnFollowScheme.layer.masksToBounds = YES;
     self.btnFollowScheme.layer.borderWidth = 1;
     self.btnFollowScheme.layer.borderColor = SystemGreen.CGColor;
-    
-    
+    [self setMatchData:model];
     self.imgPersonHonor.hidden = YES;
     self.imgPersonHonor1.hidden = YES;
     self.imgPersonHonor2.hidden = YES;
@@ -156,6 +142,22 @@
         }else if (i == 2){
             [self.imgPersonHonor2 sd_setImageWithURL:[NSURL URLWithString:laburls[i]]];
             self.imgPersonHonor2.hidden = NO;
+        }
+    }
+    if (model.recent_won .length == 0) {
+        self.labPersonHis.text  = @"近0中0";
+    }else{
+        NSArray *wonState = [model.recent_won componentsSeparatedByString:@","];
+        NSInteger totalWon = 0;
+        for (NSString *state in wonState) {
+            totalWon += [state integerValue];
+            
+        }
+        self.labPersonHis.text = [NSString stringWithFormat:@"近%ld中%ld",wonState.count,totalWon];
+        if (wonState.count/totalWon<2 &&totalWon!= 0 ) {
+            self.labPersonHis.hidden = NO;
+        } else {
+            self.labPersonHis.hidden = YES;
         }
     }
 }

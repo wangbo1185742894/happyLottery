@@ -168,10 +168,7 @@
             SchemeContainInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeContainInfoCell];
             JcBetContent *bet;
             if(indexPath.row == 1){
-                cell.orderNoLab.text = @"编号";
-                cell.groupMatchLab.text = @"主队vs客队";
-                cell.betContentLab.text = @"投注内容";
-                cell.matchResultLab.text = @"赛果";
+                [cell reloadDate:schemeDetail];
             }else{
                 if(self.dataArray.count >0){
                     bet = self.dataArray[indexPath.row-2];

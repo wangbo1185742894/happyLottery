@@ -45,7 +45,7 @@
 
 -(NSString *)getWinningStatus:( JCZQSchemeItem*)model{
     if ([model.winningStatus isEqualToString:@"WAIT_LOTTERY"]) {
-        return @"0.00元";
+        return @"--元";
     }
     if ([model.winningStatus isEqualToString:@"NOT_LOTTERY"]) {
         return @"0.00元";

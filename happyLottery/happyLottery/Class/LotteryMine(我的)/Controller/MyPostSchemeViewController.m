@@ -11,6 +11,7 @@
 #import "PostSchemeViewCell.h"
 #import "JCZQSchemeModel.h"
 #import "FASSchemeDetailViewController.h"
+#import "NoticeCenterViewController.h"
 #define KFollowSchemeViewCell @"FollowSchemeViewCell"
 #define KPostSchemeViewCell  @"PostSchemeViewCell"
 
@@ -33,6 +34,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"我的跟单";
+    if (self.isFaDan) {
+        [self actionGenDan:self.btnFadan];
+//        self.btnFadan.selected = YES;
+//        self.btnGendan.selected = NO;
+    }
+//    } else {
+//        self.btnFadan.selected = NO;
+//        self.btnGendan.selected = YES;
+//    }
     dataArray = [NSMutableArray arrayWithCapacity:0];
     if ([self isIphoneX]) {
         viewDisTop.constant = 88;
@@ -152,4 +162,16 @@
 
     [self.navigationController pushViewController:detailCV animated:YES];
 }
+
+-(void)navigationBackToLastPage{
+    for (BaseViewController *baseVC in self.navigationController.viewControllers) {
+        if ([baseVC isKindOfClass:[NoticeCenterViewController class]]) {
+            [self.navigationController popToViewController:baseVC animated:YES];
+            return;
+        }
+    }
+    self.tabBarController.selectedIndex = 4;
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
 @end

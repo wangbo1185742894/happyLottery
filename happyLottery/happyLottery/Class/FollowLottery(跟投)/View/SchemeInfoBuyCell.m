@@ -53,12 +53,17 @@
         self.winMoney.textColor = RGBCOLOR(122, 122, 122);
         self.moneyLabel.textColor = RGBCOLOR(122, 122, 122);
     } else {
+        
         self.yongJin.text = [NSString stringWithFormat:@"%@元",model.totalCommission];
-        self.winMoney.text = [NSString stringWithFormat:@"%@元",model.earnings==nil?@"0":model.earnings];
-        int num1 = [model.totalCommission intValue];
-        int num2 = [model.earnings intValue];
-        int sum = num1 + num2;
-        self.moneyLabel.text = [NSString stringWithFormat:@"%d元",sum];
+        if (model.bonus==nil) {
+            self.winMoney.text = @"0元";
+        } else {
+            self.winMoney.text = [NSString stringWithFormat:@"%.2f元",[model.bonus floatValue]];
+        }
+        float num1 = [model.totalCommission floatValue];
+        float num2 = [model.bonus floatValue];
+        float sum = num1 + num2;
+        self.moneyLabel.text = [NSString stringWithFormat:@"%.2f元",sum];
         self.yongJin.textColor = RGBCOLOR(254, 58, 81);
         self.winMoney.textColor = RGBCOLOR(254, 58, 81);
         self.moneyLabel.textColor = RGBCOLOR(254, 58, 81);

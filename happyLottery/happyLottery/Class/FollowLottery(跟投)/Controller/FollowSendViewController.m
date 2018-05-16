@@ -57,10 +57,31 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self setNavigationBa];
     [self loadEightPerosn];
     
     [self getHotFollowScheme];
     [self loadAdsImg];
+}
+
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    UIImage *normalImage = [[UIImage imageNamed: @"quanzi_defealt.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UITabBarItem *tabBarItem = [[UITabBarItem alloc]initWithTitle:@"跟投" image:normalImage tag:0];
+    NSDictionary *normalAttributes = @{NSFontAttributeName: [UIFont systemFontOfSize:12], NSForegroundColorAttributeName: SystemLightGray};
+    [tabBarItem setTitleTextAttributes: normalAttributes forState:UIControlStateNormal];
+    self.navigationController.navigationBar.barTintColor = SystemGreen;
+    self.navigationController.tabBarItem = tabBarItem;
+}
+
+- (void)setNavigationBa{
+    
+    UIImage *selectedImage = [[UIImage imageNamed: @"quanzi_select.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UITabBarItem *tabBarItem = [[UITabBarItem alloc]initWithTitle:@"跟投" image:selectedImage tag:0];
+    NSDictionary *selectedAttributes = @{NSFontAttributeName: [UIFont systemFontOfSize:12], NSForegroundColorAttributeName: SystemGreen};
+    [tabBarItem setTitleTextAttributes: selectedAttributes forState:UIControlStateNormal];
+    self.navigationController.navigationBar.barTintColor = SystemGreen;
+    self.navigationController.tabBarItem = tabBarItem;
 }
 
 -(void)getHotFollowScheme{
@@ -210,8 +231,8 @@
 }
 
 - (void) optionRightButtonAction {
-    NSArray *titleArr = @[@" 竞猜篮球",
-                          @" 竞猜足球"];
+    NSArray *titleArr = @[@" 竞彩篮球",
+                          @" 竞彩足球"];
     CGFloat optionviewWidth = 100;
     CGFloat optionviewCellheight = 38;
     CGSize mainSize = [UIScreen mainScreen].bounds.size;
