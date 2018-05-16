@@ -145,6 +145,10 @@
 #pragma mark  lotteryMan
 
 - (void) gotlistRecommend:(NSArray *)infoArray  errorMsg:(NSString *)msg{
+    if (infoArray == nil) {
+        [self showPromptViewWithText:msg hideAfter:1];
+        return;
+    }
     [self.personArray removeAllObjects];
     //添加数据
     for (NSDictionary *dic in infoArray) {
