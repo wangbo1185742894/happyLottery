@@ -10,8 +10,10 @@
 #import "SelectView.h"
 #import "SchemeCashPayment.h"
 #import "PayOrderViewController.h"
+#import "MGLabel.h"
 
 @interface FollowDetailViewController ()<SelectViewDelegate,LotteryManagerDelegate>
+@property (weak, nonatomic) IBOutlet MGLabel *labDeadLine;
 @property (weak, nonatomic) IBOutlet UIButton *btnGuanzhu;
 @property (weak, nonatomic) IBOutlet UIImageView *labPersonIcon;
 @property (weak, nonatomic) IBOutlet UILabel *labPersonName;
@@ -62,6 +64,7 @@
         
         [self.labPersonIcon sd_setImageWithURL:[NSURL URLWithString:_model.headUrl]];
     }
+    self.labDeadLine.text = [NSString stringWithFormat:@"截止时间:%@",_model.deadLine];
     
     self.labPersonName .text =  _model.nickName;
     self.labYujihuibao.text =  [NSString stringWithFormat:@"%.2f倍",[_model.pledge doubleValue]];

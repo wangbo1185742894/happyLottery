@@ -100,7 +100,7 @@
     self.labDeadTime.text = model.deadLine;
     self.labHuiBao.text =[NSString stringWithFormat:@"%@倍",model.pledge];
     [self.labBetContent setTitle:[model getContent] forState:0];
-    self.labFollowCount.text = [NSString stringWithFormat:@"跟单人数：%@人",model.totalFollowCount];
+    self.labFollowCount.text = [NSString stringWithFormat:@"跟单人次：%@人",model.totalFollowCount];
     self.labCostBySelf.text =[NSString stringWithFormat:@"自购金额：%@元",model.betCost];
     NSArray *laburls = [model.label_urls componentsSeparatedByString:@";"];
     for (int i = 0; i < laburls.count; i ++) {
