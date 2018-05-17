@@ -1067,8 +1067,10 @@
 		F96658F41FF0D26A001DE8B9 /* BankCard.m in Sources */ = {isa = PBXBuildFile; fileRef = F96658F31FF0D26A001DE8B9 /* BankCard.m */; };
 		F96723ED2009B12B0044DC8E /* response@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F96723EB2009B12A0044DC8E /* response@2x.png */; };
 		F96723EE2009B12B0044DC8E /* response@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F96723EC2009B12A0044DC8E /* response@3x.png */; };
-		F96C357220ABECCD00D1F034 /* yuce_defealt@2x.png in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B1E631FDF684E0034B708 /* yuce_defealt@2x.png */; };
-		F96C357420AC336300D1F034 /* user@2x.png in Sources */ = {isa = PBXBuildFile; fileRef = F924BA8E1FE252CE00830BF4 /* user@2x.png */; };
+		F96C357820ACFC0D00D1F034 /* SuoSchemeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F96C357620ACFC0D00D1F034 /* SuoSchemeViewCell.m */; };
+		F96C357920ACFC0D00D1F034 /* SuoSchemeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F96C357720ACFC0D00D1F034 /* SuoSchemeViewCell.xib */; };
+		F96C357A20AD0ED100D1F034 /* yuce_defealt@2x.png in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B1E631FDF684E0034B708 /* yuce_defealt@2x.png */; };
+		F96C357B20AD0FF600D1F034 /* user@2x.png in Sources */ = {isa = PBXBuildFile; fileRef = F924BA8E1FE252CE00830BF4 /* user@2x.png */; };
 		F9705E0C2079FA3B00E25E4E /* ssq_play.html in Resources */ = {isa = PBXBuildFile; fileRef = F9705E0B2079FA3A00E25E4E /* ssq_play.html */; };
 		F9705E18207A0DAE00E25E4E /* JCLQPlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9705E13207A0DAE00E25E4E /* JCLQPlayController.m */; };
 		F9705E19207A0DAE00E25E4E /* JCLQPlayController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9705E14207A0DAE00E25E4E /* JCLQPlayController.xib */; };
@@ -2821,6 +2823,9 @@
 		F96658F31FF0D26A001DE8B9 /* BankCard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BankCard.m; path = "happyLottery/Class/LotteryMine(我的)/Controller/personnalSet/BankCard.m"; sourceTree = SOURCE_ROOT; };
 		F96723EB2009B12A0044DC8E /* response@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "response@2x.png"; sourceTree = "<group>"; };
 		F96723EC2009B12A0044DC8E /* response@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "response@3x.png"; sourceTree = "<group>"; };
+		F96C357520ACFC0D00D1F034 /* SuoSchemeViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuoSchemeViewCell.h; sourceTree = "<group>"; };
+		F96C357620ACFC0D00D1F034 /* SuoSchemeViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SuoSchemeViewCell.m; sourceTree = "<group>"; };
+		F96C357720ACFC0D00D1F034 /* SuoSchemeViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuoSchemeViewCell.xib; sourceTree = "<group>"; };
 		F9705E0B2079FA3A00E25E4E /* ssq_play.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = ssq_play.html; sourceTree = "<group>"; };
 		F9705E12207A0DAE00E25E4E /* JCLQPlayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCLQPlayController.h; sourceTree = "<group>"; };
 		F9705E13207A0DAE00E25E4E /* JCLQPlayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCLQPlayController.m; sourceTree = "<group>"; };
@@ -5739,6 +5744,9 @@
 				F9DC8C2420A46051006B31F4 /* SchemeInfoBuyCell.h */,
 				F9DC8C2520A46051006B31F4 /* SchemeInfoBuyCell.m */,
 				F9DC8C2620A46051006B31F4 /* SchemeInfoBuyCell.xib */,
+				F96C357520ACFC0D00D1F034 /* SuoSchemeViewCell.h */,
+				F96C357620ACFC0D00D1F034 /* SuoSchemeViewCell.m */,
+				F96C357720ACFC0D00D1F034 /* SuoSchemeViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -6781,6 +6789,7 @@
 				F9F6CA9F1FF5D6B100A49F71 /* arrows@2x.png in Resources */,
 				F9E0DF22201972570089F51D /* JumpWebViewController.xib in Resources */,
 				2D4B1E811FDF684E0034B708 /* wode_defealt@2x.png in Resources */,
+				F96C357920ACFC0D00D1F034 /* SuoSchemeViewCell.xib in Resources */,
 				2D0600471FFDDD51009E7568 /* schemedetailticket_bj@3x.png in Resources */,
 				2D739C641FE7878100264044 /* JCZQTouZhuViewController.xib in Resources */,
 				2D628B3C1FECAA9A0013D0E1 /* fengkuangjingcai-monitouzhu-xuanze@2x.png in Resources */,
@@ -7015,8 +7024,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F96C357420AC336300D1F034 /* user@2x.png in Sources */,
-				F96C357220ABECCD00D1F034 /* yuce_defealt@2x.png in Sources */,
+				F96C357B20AD0FF600D1F034 /* user@2x.png in Sources */,
+				F96C357A20AD0ED100D1F034 /* yuce_defealt@2x.png in Sources */,
 				2D16601020A2CA3400C1C7E7 /* MyHemaiViewController.m in Sources */,
 				2DD2C50F204504AB005A18C4 /* WBOptimizeViewController.m in Sources */,
 				2D7B13B7204E87450035AE89 /* CTZQOrderProfile.m in Sources */,
@@ -7286,6 +7295,7 @@
 				F9DC69A91FDF8957007D384D /* MyHelpViewController.m in Sources */,
 				F9DC699A1FDF888F007D384D /* MyFavoriteViewController.m in Sources */,
 				2D05C87920A58416001A8953 /* FollowListViewController.m in Sources */,
+				F96C357820ACFC0D00D1F034 /* SuoSchemeViewCell.m in Sources */,
 				2D0600911FFF4BDD009E7568 /* SchemeDetailMatchViewCell.m in Sources */,
 				2DCBB2BF1FD108B900934D92 /* BaseViewController.m in Sources */,
 				2DDEDE631FD568C9007AEBF7 /* SDWebImageDownloaderOperation.m in Sources */,

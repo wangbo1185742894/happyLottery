@@ -41,6 +41,12 @@
     } else {
         self.winImage.hidden = YES;
     }
+    if ([model.schemeStatus isEqualToString:@"INIT"]) {
+        self.zongShouruLabel.hidden = YES;
+        self.moneyLabel.hidden = YES;
+        self.winLabel.textColor = [UIColor blackColor];
+        self.shuoMingBtn.hidden = YES;
+    }
 }
 
 -(NSString *)getWinningStatus:( JCZQSchemeItem*)model{

@@ -130,14 +130,10 @@
 }
 
 - (void)reloadDate:(JCZQSchemeItem *)scheme {
-    if ([scheme.winningStatus isEqualToString:@"WAIT_LOTTERY"]) {
-     ,,,
-    } else {
-        self.orderNoLab.text = @"编号";
-        self.groupMatchLab.text = @"主队vs客队";
-        self.betContentLab.text = @"投注内容";
-        self.matchResultLab.text = @"赛果";
-    }
+    self.orderNoLab.text = @"编号";
+    self.groupMatchLab.text = @"主队vs客队";
+    self.betContentLab.text = @"投注内容";
+    self.matchResultLab.text = @"赛果";
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -22,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *winImage;
 
 @property (weak, nonatomic) IBOutlet UILabel *winLabel;
+@property (weak, nonatomic) IBOutlet UILabel *zongShouruLabel;
+@property (weak, nonatomic) IBOutlet UIButton *shuoMingBtn;
 
 - (void)reloadDate:(JCZQSchemeItem * )model;
 @end
