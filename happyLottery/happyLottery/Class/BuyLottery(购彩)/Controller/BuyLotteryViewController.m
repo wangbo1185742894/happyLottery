@@ -35,6 +35,7 @@
 #import "OpenRedPopView.h"
 #import "MyRedPacketViewController.h"
 #import "LotteryAreaViewController.h"
+#import "ActivityInfoView.h"
 #define KNewsListCell @"NewsListCell"
 #define AnimationDur 0.3
 
@@ -43,6 +44,7 @@
 {
     NSMutableArray  <JczqShortcutModel *>*JczqShortcutList;
     NSMutableArray  <JczqShortcutModel *>*colloectList;
+    ActivityInfoView *activityInfoView;
     __weak IBOutlet UIView *viewNews;
     __weak IBOutlet UIView *scrContentView;
     __weak IBOutlet NSLayoutConstraint *homeViewHeight;
@@ -97,6 +99,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    CGFloat bottomheight;
+    if ([self isIphoneX]) {
+        bottomheight = 49;
+    }else{
+        bottomheight = 83;
+    }
+    activityInfoView = [[ActivityInfoView alloc ]initWithFrame:CGRectMake(0, KscreenHeight - bottomheight - 55, KscreenWidth, 55)];
+//    activityInfoView.hidden = YES;
+    [[UIApplication sharedApplication].keyWindow addSubview:activityInfoView];
+    
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(jumpToPlayVC:) name:@"NSNotificationJumpToPlayVC" object:nil];
 #ifdef APPSTORE
     [self appStoreUpadata];
