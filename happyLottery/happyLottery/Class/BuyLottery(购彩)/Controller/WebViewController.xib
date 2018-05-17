@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WebViewController">
             <connections>
+                <outlet property="btnBack" destination="gY5-WN-dFn" id="LpA-9V-jq3"/>
+                <outlet property="topDis" destination="4Vq-ZD-2Hy" id="1qX-gb-vt3"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="webView" destination="6al-EP-gHK" id="ZRK-mV-v78"/>
             </connections>
@@ -22,15 +24,27 @@
             <subviews>
                 <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6al-EP-gHK">
                     <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.0" green="0.78823529411764703" blue="0.59607843137254901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </webView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gY5-WN-dFn">
+                    <rect key="frame" x="0.0" y="64" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="V38-Hm-nUM"/>
+                        <constraint firstAttribute="height" constant="50" id="WYU-Np-cd4"/>
+                    </constraints>
+                    <connections>
+                        <action selector="actionBack:" destination="-1" eventType="touchUpInside" id="A6K-jT-WnR"/>
+                    </connections>
+                </button>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.0" green="0.78431372549019607" blue="0.58431372549019611" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="6al-EP-gHK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="4Vq-ZD-2Hy"/>
                 <constraint firstItem="6al-EP-gHK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="73z-8V-Fom"/>
                 <constraint firstAttribute="trailing" secondItem="6al-EP-gHK" secondAttribute="trailing" id="K0A-n3-0G7"/>
+                <constraint firstItem="gY5-WN-dFn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Wod-tr-JuC"/>
                 <constraint firstAttribute="bottom" secondItem="6al-EP-gHK" secondAttribute="bottom" id="Z5S-8x-E3V"/>
+                <constraint firstItem="gY5-WN-dFn" firstAttribute="top" secondItem="6al-EP-gHK" secondAttribute="top" id="hlV-W0-WBi"/>
             </constraints>
             <point key="canvasLocation" x="50.5" y="73.5"/>
         </view>

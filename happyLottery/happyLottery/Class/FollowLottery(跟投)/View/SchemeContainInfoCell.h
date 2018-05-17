@@ -26,4 +26,6 @@
 
 -(void)refreshDataJCLQ:(JcBetContent  *)modelDic andResult:(NSArray<OpenResult *> *)resultArray;
 
+- (void)reloadDate:(JCZQSchemeItem *)scheme;
+
 @end

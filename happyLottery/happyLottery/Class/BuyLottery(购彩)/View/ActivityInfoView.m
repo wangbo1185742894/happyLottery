@@ -21,5 +21,8 @@
     [self.btnStart addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
 }
 
+- (IBAction)actionClose:(id)sender {
+    self.hidden = YES;
+}
 
 @end

@@ -7,9 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JCZQSchemeModel.h"
 
 @interface SchemeOverCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *passType;
 
 @property (weak, nonatomic) IBOutlet UILabel *touzhuCount;
+
+- (void)reloadDate :(JCZQSchemeItem *)schemeDetail;
+
+- (float)dateHeight:(JCZQSchemeItem *)schemeDetail;
+
 @end

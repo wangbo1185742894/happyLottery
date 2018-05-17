@@ -10,4 +10,6 @@
 
 @interface MyPostSchemeViewController : BaseViewController
 
+@property (nonatomic,assign)BOOL isFaDan;
+
 @end

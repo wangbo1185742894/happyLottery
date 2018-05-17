@@ -133,6 +133,8 @@
 #define APIlistJcgyjItem              @"listJcgyjItem"//获取冠亚军选项（包含不在售的）
 #define APIgetJclqMatch               @"getJclqMatch" //获取竞彩篮球在售赛事
 #define APIgetJclqSp                  @"getJclqSp"  //获取竞彩篮球的sp
+#define APIgetAppSign               @"getAppSign"
+
 
 #define SUBAPISchemeService   @"/scheme"
 #define APIBetLotteryScheme         @"betLotteryScheme"

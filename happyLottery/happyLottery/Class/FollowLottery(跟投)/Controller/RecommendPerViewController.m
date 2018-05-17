@@ -104,14 +104,21 @@
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIImageView *image = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, 170  )];
     NSString *imageName;
+    UILabel *jinLabel = [[UILabel alloc]initWithFrame:CGRectMake(KscreenWidth-75, 135, 90, 20)];
+    jinLabel.text = @"近15日";
+    jinLabel.textColor = [UIColor whiteColor];
+    jinLabel.backgroundColor = [UIColor clearColor];
+    
     if ([self.categoryCode isEqualToString:@"Cowman"]) {
         imageName = @"pic_niurenbangbeijing.png";
     } else if ([self.categoryCode isEqualToString:@"Redman"]){
         imageName = @"pic_hongrenbangbeijing.png";
+        [image addSubview:jinLabel];
     }else {
         imageName = @"pic_hongdanbangbeijing.png";
+        [image addSubview:jinLabel];
     }
-     UIButton *returnToRoot = [self creatBar:@"" icon:@"newBack" andFrame:CGRectMake(10,30, 44,25) andAction:@selector(returnToRootView)];
+    UIButton *returnToRoot = [self creatBar:@"" icon:@"newBack" andFrame:CGRectMake(10,30, 44,25) andAction:@selector(returnToRootView)];
     returnToRoot.contentMode = UIViewContentModeScaleAspectFit;
     image.image = [UIImage imageNamed:imageName];
     [image addSubview:returnToRoot];

@@ -41,7 +41,7 @@
         }
         [self setBtnBoard:btn];
     }
-    
+    self.title = @"跟单详情";
     self.lotteryMan.delegate = self;
     self.wbSelectView.beiShuLimit = 9999;
     self.wbSelectView.labContent.textColor = [UIColor whiteColor];

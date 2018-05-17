@@ -377,6 +377,11 @@
 		2D4B1EB41FDFCDAF0034B708 /* arrow_up@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D4B1EB21FDFCDAF0034B708 /* arrow_up@3x.png */; };
 		2D4D608020AD45C400280033 /* ActivityInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4D607F20AD45C400280033 /* ActivityInfoView.xib */; };
 		2D4D608320AD4DFB00280033 /* ActivityInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4D608220AD4DFB00280033 /* ActivityInfoView.m */; };
+		2D4D608620AD592B00280033 /* AppSignModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4D608520AD592B00280033 /* AppSignModel.m */; };
+		2D4D608B20AD717900280033 /* activitymoney@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D4D608720AD717800280033 /* activitymoney@2x.png */; };
+		2D4D608C20AD717900280033 /* activitymoney@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D4D608820AD717800280033 /* activitymoney@3x.png */; };
+		2D4D608D20AD717900280033 /* activityshut@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D4D608920AD717900280033 /* activityshut@3x.png */; };
+		2D4D608E20AD717900280033 /* activityshut@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D4D608A20AD717900280033 /* activityshut@2x.png */; };
 		2D5171B32007110D00C3CD7F /* SchemeInfoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5171B12007110D00C3CD7F /* SchemeInfoViewCell.m */; };
 		2D5171B42007110D00C3CD7F /* SchemeInfoViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D5171B22007110D00C3CD7F /* SchemeInfoViewCell.xib */; };
 		2D5171B7200844AD00C3CD7F /* ADSModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5171B6200844AD00C3CD7F /* ADSModel.m */; };
@@ -1066,6 +1071,10 @@
 		F96658F41FF0D26A001DE8B9 /* BankCard.m in Sources */ = {isa = PBXBuildFile; fileRef = F96658F31FF0D26A001DE8B9 /* BankCard.m */; };
 		F96723ED2009B12B0044DC8E /* response@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F96723EB2009B12A0044DC8E /* response@2x.png */; };
 		F96723EE2009B12B0044DC8E /* response@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F96723EC2009B12A0044DC8E /* response@3x.png */; };
+		F96C357820ACFC0D00D1F034 /* SuoSchemeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F96C357620ACFC0D00D1F034 /* SuoSchemeViewCell.m */; };
+		F96C357920ACFC0D00D1F034 /* SuoSchemeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F96C357720ACFC0D00D1F034 /* SuoSchemeViewCell.xib */; };
+		F96C357A20AD0ED100D1F034 /* yuce_defealt@2x.png in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B1E631FDF684E0034B708 /* yuce_defealt@2x.png */; };
+		F96C357B20AD0FF600D1F034 /* user@2x.png in Sources */ = {isa = PBXBuildFile; fileRef = F924BA8E1FE252CE00830BF4 /* user@2x.png */; };
 		F9705E0C2079FA3B00E25E4E /* ssq_play.html in Resources */ = {isa = PBXBuildFile; fileRef = F9705E0B2079FA3A00E25E4E /* ssq_play.html */; };
 		F9705E18207A0DAE00E25E4E /* JCLQPlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9705E13207A0DAE00E25E4E /* JCLQPlayController.m */; };
 		F9705E19207A0DAE00E25E4E /* JCLQPlayController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9705E14207A0DAE00E25E4E /* JCLQPlayController.xib */; };
@@ -1501,6 +1510,8 @@
 		2D05C8B220A97AEE001A8953 /* AtttendPersonViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AtttendPersonViewCell.xib; sourceTree = "<group>"; };
 		2D05C8B520A97E9B001A8953 /* AttentPersonModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AttentPersonModel.h; sourceTree = "<group>"; };
 		2D05C8B620A97E9B001A8953 /* AttentPersonModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AttentPersonModel.m; sourceTree = "<group>"; };
+		2D05C8BA20AABA24001A8953 /* quanzi_secelcted@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "quanzi_secelcted@3x.png"; sourceTree = "<group>"; };
+		2D05C8BB20AABA25001A8953 /* quanzi_secelcted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "quanzi_secelcted@2x.png"; sourceTree = "<group>"; };
 		2D05C8C420AABBEB001A8953 /* follow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "follow@3x.png"; sourceTree = "<group>"; };
 		2D05C8C520AABBEB001A8953 /* follow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "follow@2x.png"; sourceTree = "<group>"; };
 		2D05C8C820AABBF4001A8953 /* attentionperson@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "attentionperson@3x.png"; sourceTree = "<group>"; };
@@ -1855,6 +1866,12 @@
 		2D4D607F20AD45C400280033 /* ActivityInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityInfoView.xib; sourceTree = "<group>"; };
 		2D4D608120AD4DFB00280033 /* ActivityInfoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActivityInfoView.h; sourceTree = "<group>"; };
 		2D4D608220AD4DFB00280033 /* ActivityInfoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActivityInfoView.m; sourceTree = "<group>"; };
+		2D4D608420AD592B00280033 /* AppSignModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppSignModel.h; sourceTree = "<group>"; };
+		2D4D608520AD592B00280033 /* AppSignModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppSignModel.m; sourceTree = "<group>"; };
+		2D4D608720AD717800280033 /* activitymoney@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "activitymoney@2x.png"; sourceTree = "<group>"; };
+		2D4D608820AD717800280033 /* activitymoney@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "activitymoney@3x.png"; sourceTree = "<group>"; };
+		2D4D608920AD717900280033 /* activityshut@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "activityshut@3x.png"; sourceTree = "<group>"; };
+		2D4D608A20AD717900280033 /* activityshut@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "activityshut@2x.png"; sourceTree = "<group>"; };
 		2D5171B02007110D00C3CD7F /* SchemeInfoViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SchemeInfoViewCell.h; sourceTree = "<group>"; };
 		2D5171B12007110D00C3CD7F /* SchemeInfoViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SchemeInfoViewCell.m; sourceTree = "<group>"; };
 		2D5171B22007110D00C3CD7F /* SchemeInfoViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SchemeInfoViewCell.xib; sourceTree = "<group>"; };
@@ -2818,6 +2835,9 @@
 		F96658F31FF0D26A001DE8B9 /* BankCard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BankCard.m; path = "happyLottery/Class/LotteryMine(我的)/Controller/personnalSet/BankCard.m"; sourceTree = SOURCE_ROOT; };
 		F96723EB2009B12A0044DC8E /* response@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "response@2x.png"; sourceTree = "<group>"; };
 		F96723EC2009B12A0044DC8E /* response@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "response@3x.png"; sourceTree = "<group>"; };
+		F96C357520ACFC0D00D1F034 /* SuoSchemeViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuoSchemeViewCell.h; sourceTree = "<group>"; };
+		F96C357620ACFC0D00D1F034 /* SuoSchemeViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SuoSchemeViewCell.m; sourceTree = "<group>"; };
+		F96C357720ACFC0D00D1F034 /* SuoSchemeViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuoSchemeViewCell.xib; sourceTree = "<group>"; };
 		F9705E0B2079FA3A00E25E4E /* ssq_play.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = ssq_play.html; sourceTree = "<group>"; };
 		F9705E12207A0DAE00E25E4E /* JCLQPlayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCLQPlayController.h; sourceTree = "<group>"; };
 		F9705E13207A0DAE00E25E4E /* JCLQPlayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCLQPlayController.m; sourceTree = "<group>"; };
@@ -2933,7 +2953,7 @@
 		F9A6391320A2AD1F00AA07C6 /* RecomPerModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecomPerModel.h; sourceTree = "<group>"; };
 		F9A6391420A2AD1F00AA07C6 /* RecomPerModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecomPerModel.m; sourceTree = "<group>"; };
 		F9A6391B20A2D38300AA07C6 /* FASSchemeDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FASSchemeDetailViewController.h; sourceTree = "<group>"; };
-		F9A6391C20A2D38300AA07C6 /* FASSchemeDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FASSchemeDetailViewController.m; sourceTree = "<group>"; };
+		F9A6391C20A2D38300AA07C6 /* FASSchemeDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FASSchemeDetailViewController.m; sourceTree = "<group>"; wrapsLines = 1; };
 		F9A6391D20A2D38300AA07C6 /* FASSchemeDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FASSchemeDetailViewController.xib; sourceTree = "<group>"; };
 		F9A941D220A92C1900A7D67A /* PersonCenterModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonCenterModel.h; sourceTree = "<group>"; };
 		F9A941D320A92C1900A7D67A /* PersonCenterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonCenterModel.m; sourceTree = "<group>"; };
@@ -3292,10 +3312,16 @@
 		2D05C82220A43619001A8953 /* gendanres */ = {
 			isa = PBXGroup;
 			children = (
+				2D4D608720AD717800280033 /* activitymoney@2x.png */,
+				2D4D608820AD717800280033 /* activitymoney@3x.png */,
+				2D4D608A20AD717900280033 /* activityshut@2x.png */,
+				2D4D608920AD717900280033 /* activityshut@3x.png */,
 				2D05C8C920AABBF4001A8953 /* attentionperson@2x.png */,
 				2D05C8C820AABBF4001A8953 /* attentionperson@3x.png */,
 				2D05C8C520AABBEB001A8953 /* follow@2x.png */,
 				2D05C8C420AABBEB001A8953 /* follow@3x.png */,
+				2D05C8BA20AABA24001A8953 /* quanzi_secelcted@3x.png */,
+				2D05C8BB20AABA25001A8953 /* quanzi_secelcted@2x.png */,
 				2D05C82C20A4362D001A8953 /* datingsousuo@2x.png */,
 				2D05C82320A4362B001A8953 /* datingsousuo@3x.png */,
 				2D05C82420A4362C001A8953 /* delete@2x.png */,
@@ -4881,6 +4907,8 @@
 				2DD2C519204550A1005A18C4 /* BounsOptimizeSingleModel.h */,
 				2DD2C51A204550A1005A18C4 /* BounsOptimizeSingleModel.m */,
 				2DD2C51720455039005A18C4 /* OptimizeItemModel.m */,
+				2D4D608420AD592B00280033 /* AppSignModel.h */,
+				2D4D608520AD592B00280033 /* AppSignModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -5736,6 +5764,9 @@
 				F9DC8C2420A46051006B31F4 /* SchemeInfoBuyCell.h */,
 				F9DC8C2520A46051006B31F4 /* SchemeInfoBuyCell.m */,
 				F9DC8C2620A46051006B31F4 /* SchemeInfoBuyCell.xib */,
+				F96C357520ACFC0D00D1F034 /* SuoSchemeViewCell.h */,
+				F96C357620ACFC0D00D1F034 /* SuoSchemeViewCell.m */,
+				F96C357720ACFC0D00D1F034 /* SuoSchemeViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -6059,9 +6090,11 @@
 				F94AA9C01FEB59DA0021B980 /* hint@2x.png in Resources */,
 				2D7B13F0204E88250035AE89 /* OpenLotteryCell.xib in Resources */,
 				2D0E23E72019A6BE0098DA40 /* assist@2x.png in Resources */,
+				2D4D608D20AD717900280033 /* activityshut@3x.png in Resources */,
 				F9705EA4207B56BF00E25E4E /* LotteryAreaViewController.xib in Resources */,
 				2D0E23D32019A6210098DA40 /* packet@2x.png in Resources */,
 				2D739CED1FEB490900264044 /* fangkuangjingcainomal@3x.png in Resources */,
+				2D4D608B20AD717900280033 /* activitymoney@2x.png in Resources */,
 				2D517215200DD69E00C3CD7F /* sigln_gray@2x.png in Resources */,
 				2D0E23AB2018833E0098DA40 /* switchbackground@3x.png in Resources */,
 				F9DC699B1FDF888F007D384D /* MyFavoriteViewController.xib in Resources */,
@@ -6290,6 +6323,7 @@
 				F94AA9CE1FEB5A7D0021B980 /* ok@2x.png in Resources */,
 				F91565F31FFCBDAE00E254CE /* Moments@3x.png in Resources */,
 				F94A106C2022B715006C3695 /* checksuccess@3x.png in Resources */,
+				2D4D608E20AD717900280033 /* activityshut@2x.png in Resources */,
 				F999277E2003597E00023F8F /* addcrease@2x.png in Resources */,
 				F924BAA61FE252CF00830BF4 /* user@2x.png in Resources */,
 				F9CDBEC7202306E100A1BE71 /* 2@2x.png in Resources */,
@@ -6675,6 +6709,7 @@
 				2D03F2822060BAE800C81BEF /* ChangeLoginPWDViewController.xib in Resources */,
 				F957C1CD1FE36B3F0090B19B /* close@2x.png in Resources */,
 				2D05C85F20A43631001A8953 /* pic_niurenbangbeijing@3x.png in Resources */,
+				2D4D608C20AD717900280033 /* activitymoney@3x.png in Resources */,
 				2D0600441FFDDD51009E7568 /* schemedetailsymbol@2x.png in Resources */,
 				2D8CC00A1FF3958D00CC367F /* icon_normal@2x.png in Resources */,
 				2D0E23C020196B590098DA40 /* winning@3x.png in Resources */,
@@ -6777,6 +6812,7 @@
 				F9F6CA9F1FF5D6B100A49F71 /* arrows@2x.png in Resources */,
 				F9E0DF22201972570089F51D /* JumpWebViewController.xib in Resources */,
 				2D4B1E811FDF684E0034B708 /* wode_defealt@2x.png in Resources */,
+				F96C357920ACFC0D00D1F034 /* SuoSchemeViewCell.xib in Resources */,
 				2D0600471FFDDD51009E7568 /* schemedetailticket_bj@3x.png in Resources */,
 				2D739C641FE7878100264044 /* JCZQTouZhuViewController.xib in Resources */,
 				2D628B3C1FECAA9A0013D0E1 /* fengkuangjingcai-monitouzhu-xuanze@2x.png in Resources */,
@@ -7010,6 +7046,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F96C357B20AD0FF600D1F034 /* user@2x.png in Sources */,
+				F96C357A20AD0ED100D1F034 /* yuce_defealt@2x.png in Sources */,
+				2D4D608620AD592B00280033 /* AppSignModel.m in Sources */,
 				2D16601020A2CA3400C1C7E7 /* MyHemaiViewController.m in Sources */,
 				2DD2C50F204504AB005A18C4 /* WBOptimizeViewController.m in Sources */,
 				2D7B13B7204E87450035AE89 /* CTZQOrderProfile.m in Sources */,
@@ -7280,6 +7319,7 @@
 				F9DC69A91FDF8957007D384D /* MyHelpViewController.m in Sources */,
 				F9DC699A1FDF888F007D384D /* MyFavoriteViewController.m in Sources */,
 				2D05C87920A58416001A8953 /* FollowListViewController.m in Sources */,
+				F96C357820ACFC0D00D1F034 /* SuoSchemeViewCell.m in Sources */,
 				2D0600911FFF4BDD009E7568 /* SchemeDetailMatchViewCell.m in Sources */,
 				2DCBB2BF1FD108B900934D92 /* BaseViewController.m in Sources */,
 				2DDEDE631FD568C9007AEBF7 /* SDWebImageDownloaderOperation.m in Sources */,

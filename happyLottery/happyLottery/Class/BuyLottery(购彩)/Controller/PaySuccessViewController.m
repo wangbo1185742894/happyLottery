@@ -45,8 +45,6 @@
 
 }
 
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -112,6 +110,11 @@
 
 }
 - (IBAction)actionPostScheme:(id)sender {
+    MyPostSchemeViewController *myOrderListVC = [[MyPostSchemeViewController alloc]init];
+    myOrderListVC.isFaDan = YES;
+    NSMutableArray * vcS = [[NSMutableArray alloc]initWithArray:self.navigationController.viewControllers];
+    [vcS addObject:myOrderListVC];
+    self.navigationController.viewControllers = vcS;
     [self.lotteryMan initiateFollowScheme:@{@"schemeNo":self.schemeNO}];
 }
 - (void)initiateFollowScheme:(NSString *)resultStr errorMsg:(NSString *)msg{

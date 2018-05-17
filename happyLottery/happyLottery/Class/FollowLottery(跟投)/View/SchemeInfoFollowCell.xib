@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -154,8 +154,10 @@
                 <outlet property="loterryLabel" destination="m3D-NX-6Zh" id="kMf-p2-can"/>
                 <outlet property="lotteryImage" destination="12O-Pw-zGa" id="Dfh-js-rlA"/>
                 <outlet property="moneyLabel" destination="3n4-7v-gzC" id="w4o-hi-8qc"/>
+                <outlet property="shuoMingBtn" destination="3zB-mZ-8EO" id="mbI-hL-Ok0"/>
                 <outlet property="winImage" destination="Ce7-Ic-Pvl" id="92A-OQ-A77"/>
                 <outlet property="winLabel" destination="Sd5-z2-FaV" id="hbv-xh-5BA"/>
+                <outlet property="zongShouruLabel" destination="nAa-C1-Tyu" id="UEd-Ee-7fa"/>
             </connections>
             <point key="canvasLocation" x="35.5" y="233.5"/>
         </tableViewCell>

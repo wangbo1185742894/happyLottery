@@ -19,7 +19,6 @@
 @property(nonatomic,copy)NSString * mobile;
 @property(nonatomic,copy)NSString * totalCost;
 @property(nonatomic,copy)NSString * winCount;
-@property(nonatomic,copy)NSString * totalBonus;
 @property(nonatomic,copy)NSString * channelCode;
 @property(nonatomic,copy)NSString * createTime;
 @property(nonatomic,copy)NSString * platformCode;
@@ -27,5 +26,7 @@
 @property(nonatomic,copy)NSString * redCount;
 @property(nonatomic,copy)NSString * initiateCount;
 @property(nonatomic,copy)NSString * nickname;
-
+@property(nonatomic,copy)NSString * rank;
+@property(nonatomic,copy)NSString * totalBouns; //牛人中
+@property(nonatomic,copy)NSString * totalBonus; //红单中，红人中
 @end

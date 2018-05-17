@@ -66,7 +66,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     HotFollowSchemeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KHotFollowSchemeViewCell];
     HotSchemeModel *model = [self.personArray objectAtIndex:indexPath.row];
-    [cell loadDataWithModel:model];
+    [cell loadDataWithModelInNotice:model];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }

@@ -283,8 +283,8 @@
 
 -(void)goToJczq{
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.tabBarController.selectedIndex = 0;
-        [self.faxianWebView goBack];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"NSNotificationBuyVCJump" object:@1000];
     });
 }
 

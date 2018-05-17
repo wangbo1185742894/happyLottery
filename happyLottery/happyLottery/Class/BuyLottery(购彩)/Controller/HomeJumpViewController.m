@@ -119,9 +119,7 @@
         
         [self.navigationController popToRootViewControllerAnimated:YES];
         [[NSNotificationCenter defaultCenter]postNotificationName:@"NSNotificationBuyVCJump" object:@1000];
-        
     });
-    
 }
 -(void)exchangeToast:(NSString *)msg{
     [self showPromptText:msg hideAfterDelay:1.7];

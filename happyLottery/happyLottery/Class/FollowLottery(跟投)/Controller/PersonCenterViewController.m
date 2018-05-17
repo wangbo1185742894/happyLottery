@@ -112,6 +112,10 @@
 
 - (void) gotInitiateInfo:(NSDictionary *)diction  errorMsg:(NSString *)msg
 {
+    if (diction == nil) {
+        [self showPromptViewWithText:msg hideAfter:1];
+        return;
+    }
     model = [[PersonCenterModel alloc]initWith:diction];
     NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"attentCardCode":self.cardCode,@"attentType":@"FOLLOW"};
     [self.lotteryMan isAttent:dic];
@@ -164,8 +168,9 @@
     HotFollowSchemeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KHotFollowSchemeViewCell];
     if (self.personArray .count >0) {
         HotSchemeModel *model = [self.personArray objectAtIndex:indexPath.row];
-        [cell loadDataWithModel:model];
+        [cell loadDataWithModelInPC:model];
     }
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -268,9 +273,9 @@
             self.picLian.hidden = NO;
             break;
         case 2:
-            self.initiateStatusFirst = [self initiateStatus:self.initiateStatusFirst text:array[0]];
+            self.initiateStatusFirst = [self initiateStatus:self.initiateStatusFirst text:array[1]];
             self.initiateStatusFirst.hidden = NO;
-            self.initiateStatusTwo = [self initiateStatus:self.initiateStatusTwo text:array[1]];
+            self.initiateStatusTwo = [self initiateStatus:self.initiateStatusTwo text:array[0]];
             self.initiateStatusTwo.hidden = NO;
             self.initiateStatusThird.hidden = YES;
             self.initiateStatusForth.hidden = YES;
@@ -279,11 +284,11 @@
             self.picLian.hidden = NO;
             break;
         case 3:
-            self.initiateStatusFirst = [self initiateStatus:self.initiateStatusFirst text:array[0]];
+            self.initiateStatusFirst = [self initiateStatus:self.initiateStatusFirst text:array[2]];
             self.initiateStatusFirst.hidden = NO;
             self.initiateStatusTwo = [self initiateStatus:self.initiateStatusTwo text:array[1]];
             self.initiateStatusTwo.hidden = NO;
-            self.initiateStatusThird = [self initiateStatus:self.initiateStatusThird text:array[2]];
+            self.initiateStatusThird = [self initiateStatus:self.initiateStatusThird text:array[0]];
             self.initiateStatusThird.hidden = NO;
             self.initiateStatusForth.hidden = YES;
             self.initiateStatusFifth.hidden = YES;
@@ -291,28 +296,28 @@
             self.picLianjie.constant = self.initiateStatusThird.mj_x+ self.initiateStatusThird.mj_w+12;
             break;
         case 4:
-            self.initiateStatusFirst = [self initiateStatus:self.initiateStatusFirst text:array[0]];
+            self.initiateStatusFirst = [self initiateStatus:self.initiateStatusFirst text:array[3]];
             self.initiateStatusFirst.hidden = NO;
-            self.initiateStatusTwo = [self initiateStatus:self.initiateStatusTwo text:array[1]];
+            self.initiateStatusTwo = [self initiateStatus:self.initiateStatusTwo text:array[2]];
             self.initiateStatusTwo.hidden = NO;
-            self.initiateStatusThird = [self initiateStatus:self.initiateStatusThird text:array[2]];
+            self.initiateStatusThird = [self initiateStatus:self.initiateStatusThird text:array[1]];
             self.initiateStatusThird.hidden = NO;
-            self.initiateStatusForth = [self initiateStatus:self.initiateStatusForth text:array[3]];
+            self.initiateStatusForth = [self initiateStatus:self.initiateStatusForth text:array[0]];
             self.initiateStatusForth.hidden = NO;
             self.initiateStatusFifth.hidden = YES;
             self.picLian.hidden = NO;
             self.picLianjie.constant = self.initiateStatusForth.mj_x+self.initiateStatusForth.mj_w+12;
             break;
         case 5:
-            self.initiateStatusFirst = [self initiateStatus:self.initiateStatusFirst text:array[0]];
+            self.initiateStatusFirst = [self initiateStatus:self.initiateStatusFirst text:array[4]];
             self.initiateStatusFirst.hidden = NO;
-            self.initiateStatusTwo = [self initiateStatus:self.initiateStatusTwo text:array[1]];
+            self.initiateStatusTwo = [self initiateStatus:self.initiateStatusTwo text:array[3]];
             self.initiateStatusTwo.hidden = NO;
             self.initiateStatusThird = [self initiateStatus:self.initiateStatusThird text:array[2]];
             self.initiateStatusThird.hidden = NO;
-            self.initiateStatusForth = [self initiateStatus:self.initiateStatusForth text:array[3]];
+            self.initiateStatusForth = [self initiateStatus:self.initiateStatusForth text:array[1]];
             self.initiateStatusForth.hidden = NO;
-            self.initiateStatusFifth = [self initiateStatus:self.initiateStatusFifth text:array[4]];
+            self.initiateStatusFifth = [self initiateStatus:self.initiateStatusFifth text:array[0]];
             self.initiateStatusFifth.hidden = NO;
             self.picLian.hidden = NO;
             self.picLianjie.constant = 189;

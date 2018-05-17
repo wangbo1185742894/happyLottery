@@ -71,6 +71,7 @@ typedef enum EarningsType{
 - (void) gotReliefAttent:(NSString *)diction  errorMsg:(NSString *)msg;
 
 - (void) gotListAttent:(NSArray  *)personList  errorMsg:(NSString *)msg;
+- (void) gotAppSign:(NSDictionary *)personList  errorMsg:(NSString *)msg;
 
 @end
 
@@ -153,6 +154,8 @@ typedef enum EarningsType{
 - (void)attentMember:(NSDictionary *)paraDic;
 
 - (void)reliefAttent:(NSDictionary *)paraDic;
+
+- (void)getAppSign:(NSDictionary *)paraDic;
 
 @end
 

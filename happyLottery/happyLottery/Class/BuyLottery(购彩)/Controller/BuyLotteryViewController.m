@@ -13,6 +13,7 @@
 #import "SSQPlayViewController.h"
 #import "CTZQPlayViewController.h"
 #import "DiscoverViewController.h"
+#import "TopUpsViewController.h"
 #import "WBAdsImgView.h"
 #import "JCZQPlayViewController.h"
 #import "HomeMenuItemView.h"
@@ -26,6 +27,8 @@
 #import "WBBifenZhiboViewController.h"
 #import "HomeJumpViewController.h"
 #import "UMChongZhiViewController.h"
+#import "MyCouponViewController.h"
+#import "AppSignModel.h"
 #import "LoadData.h"
 #import "NewsModel.h"
 #import "ADSModel.h"
@@ -36,6 +39,7 @@
 #import "MyRedPacketViewController.h"
 #import "LotteryAreaViewController.h"
 #import "ActivityInfoView.h"
+#import "WebViewController.h"
 #define KNewsListCell @"NewsListCell"
 #define AnimationDur 0.3
 
@@ -50,7 +54,7 @@
     __weak IBOutlet NSLayoutConstraint *homeViewHeight;
     WBAdsImgView *adsView;
     UIView  *menuView;
-
+    AppSignModel *appSignModel;
     __weak IBOutlet UIView *lotteryPlayView;
     __weak IBOutlet NSLayoutConstraint *btnGyjHeight;
     OpenRedPopView *popView;
@@ -101,13 +105,15 @@
     [super viewDidLoad];
     CGFloat bottomheight;
     if ([self isIphoneX]) {
-        bottomheight = 49;
-    }else{
+        
         bottomheight = 83;
+    }else{
+        bottomheight = 49;
     }
-    activityInfoView = [[ActivityInfoView alloc ]initWithFrame:CGRectMake(0, KscreenHeight - bottomheight - 55, KscreenWidth, 55)];
-//    activityInfoView.hidden = YES;
-    [[UIApplication sharedApplication].keyWindow addSubview:activityInfoView];
+    activityInfoView = [[ActivityInfoView alloc ]initWithFrame:CGRectMake(0, KscreenHeight - bottomheight - 70, KscreenWidth, 70)];
+    activityInfoView.frame = CGRectMake(0, KscreenHeight - bottomheight - 70, KscreenWidth, 70);
+    [activityInfoView setStartBtnTarget:self andAction:@selector(startActivity)];
+
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(jumpToPlayVC:) name:@"NSNotificationJumpToPlayVC" object:nil];
 #ifdef APPSTORE
@@ -131,6 +137,7 @@
     [self setNewsView];
     [self gyjButtonView];
     [self setDLTCTZQView];
+    [self .lotteryMan getAppSign:nil];
     [self setTableView];
         openRedpacketButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     
@@ -138,6 +145,25 @@
 //    [self.view insertSubview:redpacketView aboveSubview:self.tabBarController.tabBar];
 }
 
+-(void)gotAppSign:(NSDictionary *)personList errorMsg:(NSString *)msg{
+    if (personList == nil) {
+        [self showPromptText:msg hideAfterDelay:1.7];
+//        activityInfoView.hidden = YES;
+        return;
+    }
+    appSignModel = [[AppSignModel alloc]initWith:personList];
+    activityInfoView.hidden = NO;
+    activityInfoView.labActivityInfo.text = appSignModel.describe;
+    [activityInfoView.imgRedIcon sd_setImageWithURL:[NSURL URLWithString:appSignModel.imageUrl]];
+}
+
+-(void)startActivity{
+    WebViewController *webVC = [[WebViewController alloc]init];
+    webVC.hidesBottomBarWhenPushed = YES;
+    activityInfoView.hidden = YES;
+    webVC.pageUrl = appSignModel.skipUrl;
+    [self.navigationController pushViewController:webVC animated:YES];
+}
 
 //修改，，，，，，，，，，
 - (void)gyjButtonHiddenOrNot{
@@ -481,6 +507,8 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    //    activityInfoView.hidden = YES;
+    [[UIApplication sharedApplication].keyWindow addSubview:activityInfoView];
     self.navigationController.navigationBar.hidden = YES;
     if (self.tabBarController.tabBar.hidden == YES) {
         self.tabBarController.tabBar.hidden = NO;
@@ -1025,6 +1053,21 @@
             [self actionJCLQ:nil];
         });
     }
+    if ([playType isEqualToString:@"YHQ"]) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            MyCouponViewController *couponVC = [[MyCouponViewController alloc]init];
+            [self .navigationController pushViewController:couponVC animated:YES];
+        });
+    }
+
+    if ([playType isEqualToString:@"CZ"]) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            TopUpsViewController *topUpsVC = [[TopUpsViewController alloc]init];
+            [self.navigationController pushViewController:topUpsVC animated:YES];
+        });
+    }
+
+    
 }
 
 
