@@ -82,11 +82,15 @@
 
 - (void)loadDataWithModelInDaT:(HotSchemeModel *)model{
     [self loadDataWithModel:model];
+    self.imgPersonIcon.layer.cornerRadius = self.imgPersonIcon.mj_h / 2;
+    self.imgPersonIcon.layer.masksToBounds= YES;
 }
 
 //我的关注
 -(void)loadDataWithModelInNotice:(HotSchemeModel *)model {
     [self loadDataWithModel:model];
+    self.imgPersonIcon.layer.cornerRadius = self.imgPersonIcon.mj_h / 2;
+    self.imgPersonIcon.layer.masksToBounds= YES;
 }
 
 -(void)loadDataWithModel:(HotSchemeModel *)model{
@@ -130,9 +134,7 @@
         [self.imgPersonIcon sd_setImageWithURL:[NSURL URLWithString:model.headUrl]];
     }
    
-
-    self.imgPersonIcon.layer.cornerRadius = self.imgPersonIcon.mj_h / 2;
-    self.imgPersonIcon.layer.masksToBounds= YES;
+   
     self.labPersonName.text = model.nickName;
     
     self.labHuiBao.text =[NSString stringWithFormat:@"%.2f倍",[model.pledge doubleValue]];
