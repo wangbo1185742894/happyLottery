@@ -182,12 +182,14 @@
         return;
     }
     
-    for (NSDictionary *itemDic in infoArray) {
+    for (NSInteger i = infoArray.count - 1 ; i > 0 ; i--) {
+        NSDictionary *itemDic = infoArray[i];
         ChannelModel *model = [[ChannelModel alloc]initWith:itemDic];
         if ([model.channelValue boolValue] == YES) {
             [channelList addObject:model];
         }
     }
+
     [channelList firstObject].isSelect = YES;
     self.tabPayListHeight.constant = channelList.count * self.tabChannelList.rowHeight;
     [self.tabChannelList reloadData];
