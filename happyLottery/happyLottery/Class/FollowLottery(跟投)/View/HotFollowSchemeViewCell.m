@@ -77,6 +77,12 @@
     self.imgPersonHonor.hidden = YES;
     self.imgPersonHonor1.hidden = YES;
     self.imgPersonHonor2.hidden = YES;
+    if (model.won == nil) {
+         [self.labBetContent setImage:[UIImage imageNamed:@"icon_suozi.png"] forState:UIControlStateNormal];
+    } else {
+         [self.labBetContent setImage:[UIImage imageNamed:@"kaisuo.png"] forState:UIControlStateNormal];
+    }
+   
 }
 
 
