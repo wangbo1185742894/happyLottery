@@ -93,7 +93,7 @@
         [self gotisAttent:@"false" errorMsg:nil];
         return;
     }
-    NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"attentCardCode":schemeDetail.cardCode,@"attentType":@"FOLLOW"};
+    NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"attentCardCode":schemeDetail.initiateCardCode,@"attentType":@"FOLLOW"};
     [self.lotteryMan isAttent:dic];
 }
 
@@ -265,12 +265,12 @@
         }
         if (isAttend) {
             //取消关注
-            NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"attentCardCode":schemeDetail.cardCode,@"attentType":@"FOLLOW"};
+            NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"attentCardCode":schemeDetail.initiateCardCode,@"attentType":@"FOLLOW"};
             [self.lotteryMan reliefAttent:dic];
         }
         else {
             //添加关注
-            NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"attentCardCode":schemeDetail.cardCode,@"attentType":@"FOLLOW"};
+            NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"attentCardCode":schemeDetail.initiateCardCode,@"attentType":@"FOLLOW"};
             [self.lotteryMan attentMember:dic];
         }
     }else {

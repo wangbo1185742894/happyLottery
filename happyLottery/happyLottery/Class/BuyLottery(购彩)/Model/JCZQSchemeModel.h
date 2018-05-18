@@ -97,6 +97,19 @@
 /** 跟单列表*/
 @property(nonatomic,copy)NSArray <FollowListModel *>  *followListDtos;
 
+@property(nonatomic,copy)NSString * initiateCardCode;
+@property(nonatomic,copy)NSString * trSchemeWinningStatus;
+@property(nonatomic,copy)NSString * sourceSchemeNo;
+@property(nonatomic,copy)NSString * trSchemeTicketStatus;
+@property(nonatomic,copy)NSString * DXF;
+@property(nonatomic,copy)NSString * hilo;
+@property(nonatomic,copy)NSString * RFSF;
+@property(nonatomic,copy)NSString * SF;
+@property(nonatomic,copy)NSString * SFC;
+@property(nonatomic,copy)NSString * trSchemeStatus;
+@property(nonatomic,copy)NSString * trLottery;
+@property(nonatomic,copy)NSString * trCostType;
+
 
 -(NSString *)getSchemeImgState;
 
