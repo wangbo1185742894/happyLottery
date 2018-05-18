@@ -7,7 +7,7 @@
 //
 
 #import "ActivityInfoView.h"
-
+#define KAppSignModelShow @"appSignModelShow"
 @implementation ActivityInfoView
 
 -(id)initWithFrame:(CGRect)frame{
@@ -23,6 +23,7 @@
 
 - (IBAction)actionClose:(id)sender {
     self.hidden = YES;
+    [[NSUserDefaults standardUserDefaults] setValue:@1  forKey:KAppSignModelShow];
 }
 
 @end

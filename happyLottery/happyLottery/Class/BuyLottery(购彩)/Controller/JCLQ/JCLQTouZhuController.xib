@@ -153,7 +153,9 @@
                             <state key="normal" title="付款" backgroundImage="huisebiankuang.png">
                                 <color key="titleColor" red="0.55294117649999996" green="0.55294117649999996" blue="0.55294117649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
-                            <state key="highlighted" backgroundImage="lvsebiankuang.png"/>
+                            <state key="highlighted" backgroundImage="lvsebiankuang.png">
+                                <color key="titleColor" red="0.0" green="0.78823529410000004" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
                             <connections>
                                 <action selector="actionTouzhu:" destination="-1" eventType="touchUpInside" id="X2u-Vj-LFE"/>
                             </connections>
@@ -170,7 +172,9 @@
                             <state key="normal" title="发单" backgroundImage="huisebiankuang.png">
                                 <color key="titleColor" red="0.55294117649999996" green="0.55294117649999996" blue="0.55294117649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
-                            <state key="highlighted" backgroundImage="lvsebiankuang.png"/>
+                            <state key="highlighted" backgroundImage="lvsebiankuang.png">
+                                <color key="titleColor" red="0.0" green="0.78823529410000004" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
                             <connections>
                                 <action selector="actionTouzhu:" destination="-1" eventType="touchUpInside" id="fJG-gY-i86"/>
                             </connections>
