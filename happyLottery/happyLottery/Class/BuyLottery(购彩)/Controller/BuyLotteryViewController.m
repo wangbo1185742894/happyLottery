@@ -42,7 +42,8 @@
 #import "WebViewController.h"
 #define KNewsListCell @"NewsListCell"
 #define AnimationDur 0.3
-
+#define KAppSignModelShow @"appSignModelShow"
+#define KAppSignModelUrl @"appSignModelUrl"
 
 @interface BuyLotteryViewController ()<WBAdsImgViewDelegate,HomeMenuItemViewDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,NewsListCellDelegate,OpenRedPopViewDelegate,MemberManagerDelegate,VersionUpdatingPopViewDelegate,NetWorkingHelperDelegate>
 {
@@ -106,8 +107,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     CGFloat bottomheight;
+    
     if ([self isIphoneX]) {
-        
         bottomheight = 83;
     }else{
         bottomheight = 49;
@@ -116,6 +117,7 @@
     activityInfoView.frame = CGRectMake(0, KscreenHeight - bottomheight - 70, KscreenWidth, 70);
     [activityInfoView setStartBtnTarget:self andAction:@selector(startActivity)];
 
+    activityInfoView.hidden = YES;
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(jumpToPlayVC:) name:@"NSNotificationJumpToPlayVC" object:nil];
 #ifdef APPSTORE
@@ -153,14 +155,32 @@
 //        activityInfoView.hidden = YES;
         return;
     }
+    BOOL isNotShow =[[[NSUserDefaults standardUserDefaults] objectForKey:KAppSignModelShow] boolValue];
+    NSString * modelUrl =[[NSUserDefaults standardUserDefaults] objectForKey:KAppSignModelUrl];
     appSignModel = [[AppSignModel alloc]initWith:personList];
-    activityInfoView.hidden = NO;
+    
     activityInfoView.labActivityInfo.text = appSignModel.describe;
+    if (modelUrl == nil) {
+        activityInfoView.hidden = NO;
+    }else{
+        [[NSUserDefaults standardUserDefaults] setValue:@0  forKey:KAppSignModelShow];
+        if ([modelUrl isEqualToString:appSignModel.skipUrl]) {
+            activityInfoView.hidden =  isNotShow;
+        }else{
+            activityInfoView.hidden = NO;
+        }
+    }
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:KAppSignModelShow] == nil) {
+        [[NSUserDefaults standardUserDefaults] setValue:@0  forKey:KAppSignModelShow];
+    }
+    [[NSUserDefaults standardUserDefaults] setValue:appSignModel.skipUrl forKey:KAppSignModelUrl];
     [activityInfoView.imgRedIcon sd_setImageWithURL:[NSURL URLWithString:appSignModel.imageUrl]];
 }
 
 -(void)startActivity{
     WebViewController *webVC = [[WebViewController alloc]init];
+    [[NSUserDefaults standardUserDefaults] setValue:@1 forKey:KAppSignModelShow];
+    
     webVC.hidesBottomBarWhenPushed = YES;
     activityInfoView.hidden = YES;
     webVC.pageUrl = appSignModel.skipUrl;
@@ -541,7 +561,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     //    activityInfoView.hidden = YES;
-    [[UIApplication sharedApplication].keyWindow addSubview:activityInfoView];
+    [self.view addSubview:activityInfoView];
     self.navigationController.navigationBar.hidden = YES;
     if (self.tabBarController.tabBar.hidden == YES) {
         self.tabBarController.tabBar.hidden = NO;

@@ -322,8 +322,8 @@
                         <action selector="actionTouzhu:" destination="-1" eventType="touchUpInside" id="aVa-IM-DzU"/>
                     </connections>
                 </button>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jqd-nv-tAE">
-                    <rect key="frame" x="0.0" y="111" width="375" height="512"/>
+                <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jqd-nv-tAE">
+                    <rect key="frame" x="0.0" y="549" width="375" height="74"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rUH-9e-nVj">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
