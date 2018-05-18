@@ -33,6 +33,11 @@
     }
     self.labBetBouns.text = [NSString stringWithFormat:@"投注%@元",model.betCost];
     self.moneyLabel.text = [self getWinningStatus:model];
+    if ([model.winningStatus isEqualToString:@"WAIT_LOTTERY"]) {
+        self.moneyLabel.textColor = RGBCOLOR(122, 122, 122);
+    } else {
+        self.moneyLabel.textColor = RGBCOLOR(254, 58, 81);;
+    }
     self.winLabel.text = model.getSchemeState;
     if([self.winLabel.text containsString:@"已中奖"]){
         [self.winImage setImage:[UIImage imageNamed:@"win.png"]];
@@ -53,7 +58,7 @@
 
 -(NSString *)getWinningStatus:( JCZQSchemeItem*)model{
     if ([model.winningStatus isEqualToString:@"WAIT_LOTTERY"]) {
-        return @"--元";
+        return @"-";
     }
     if ([model.winningStatus isEqualToString:@"NOT_LOTTERY"]) {
         return @"0.00元";

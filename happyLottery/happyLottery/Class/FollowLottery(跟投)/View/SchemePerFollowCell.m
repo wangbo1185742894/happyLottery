@@ -19,8 +19,6 @@
     [self.delegate gotoFollowList];
 }
 
-
-
 - (void)reloadDate:(JCZQSchemeItem * )model schemeType:(NSString *)schemeType isAttend:(BOOL)isAttend{
     if([schemeType isEqualToString:@"BUY_INITIATE"]){
         [self.guanZhuBtn setTitle:@"跟单列表>" forState:UIControlStateNormal];
@@ -31,7 +29,12 @@
         self.guanZhuBtn.layer.cornerRadius = 5;
         self.guanZhuBtn.layer.borderColor = RGBCOLOR(18, 199, 146).CGColor;
         self.guanZhuBtn.layer.borderWidth = 1;
-        NSString *str = isAttend?@"已关注":@"+ 关注";
+        NSString *str;
+        if (isAttend) {
+            str = @"已关注";
+        } else {
+            str = @"+ 关注";
+        }
         [self.guanZhuBtn setTitle:str forState:UIControlStateNormal];
         self.genfaLabel.text = @"发单人";
         self.moneyNameLabel.text = model.initiateNickname== nil?[model.cardCode stringByReplacingCharactersInRange:NSMakeRange(2,4) withString:@"****"]:model.initiateNickname;

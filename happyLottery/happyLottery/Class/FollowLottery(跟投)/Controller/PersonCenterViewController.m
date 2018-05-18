@@ -236,9 +236,11 @@
 }
 
 - (UILabel *)initiateStatus:(UILabel *)label text:(NSString *)string{
+    
     if ([string isEqualToString:@"1"]) {
         label.text = @"中";
         label.backgroundColor = RGBCOLOR(254, 165, 19);
+        return label;
     }
     label.text = @"未";
     label.backgroundColor = RGBCOLOR(180, 177, 177);
