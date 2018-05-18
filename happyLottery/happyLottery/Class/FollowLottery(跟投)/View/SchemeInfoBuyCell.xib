@@ -106,6 +106,9 @@
                             <constraint firstAttribute="height" constant="18" id="rqd-nH-h7h"/>
                         </constraints>
                         <state key="normal" image="what.png"/>
+                        <connections>
+                            <action selector="actionAlert:" destination="Ga0-Vm-2ZY" eventType="touchUpInside" id="Jlp-KI-LHu"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="方案佣金" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zlu-aT-jeV">
                         <rect key="frame" x="7" y="160" width="58" height="21"/>

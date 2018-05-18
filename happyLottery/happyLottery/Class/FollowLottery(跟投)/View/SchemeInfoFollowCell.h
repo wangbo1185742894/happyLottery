@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "JCZQSchemeModel.h"
 
+@protocol FollowCellDelegate
+
+- (void)showAlertFromFollow;
+
+@end
+
 @interface SchemeInfoFollowCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *loterryLabel;
@@ -24,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *winLabel;
 @property (weak, nonatomic) IBOutlet UILabel *zongShouruLabel;
 @property (weak, nonatomic) IBOutlet UIButton *shuoMingBtn;
+@property (nonatomic, weak) id<FollowCellDelegate> delegate;
 
 - (void)reloadDate:(JCZQSchemeItem * )model;
 @end

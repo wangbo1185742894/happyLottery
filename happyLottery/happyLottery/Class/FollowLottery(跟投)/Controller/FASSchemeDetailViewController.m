@@ -30,7 +30,7 @@
 #define kSuoSchemeViewCell   @"SuoSchemeViewCell"
 
 
-@interface FASSchemeDetailViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,SchemeContaintCellDelegate,SchemePerFollowCellDelegate>
+@interface FASSchemeDetailViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,SchemeContaintCellDelegate,SchemePerFollowCellDelegate,FollowCellDelegate,BuyCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *detailTableView;
 
@@ -183,10 +183,12 @@
         if([self.schemeType isEqualToString:@"BUY_FOLLOW"]){
             SchemeInfoFollowCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeInfoFollowCell];
             [cell reloadDate:schemeDetail];
+            cell.delegate = self;
             return cell;
         }
         SchemeInfoBuyCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeInfoBuyCell];
         [cell reloadDate:schemeDetail];
+        cell.delegate = self;
         return cell;
     }else if (indexPath.section == 1){
         SchemePerFollowCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemePerFollowCell];
@@ -321,4 +323,19 @@
     [self.navigationController pushViewController:payVC animated:YES];
 }
 
+- (void)showAlertFromFollow{
+    ZLAlertView *alert = [[ZLAlertView alloc]initWithTitle:@"" message:@"总收入=中奖-佣金"];
+    [alert addBtnTitle:@"确定" action:^{
+        
+    }];
+    [alert showAlertWithSender:self];
+}
+
+- (void)showAlertFromBuy {
+    ZLAlertView *alert = [[ZLAlertView alloc]initWithTitle:@"" message:@"总收入=中奖+佣金"];
+    [alert addBtnTitle:@"确定" action:^{
+        
+    }];
+    [alert showAlertWithSender:self];
+}
 @end

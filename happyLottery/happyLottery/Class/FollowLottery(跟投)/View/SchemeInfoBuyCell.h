@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "JCZQSchemeModel.h"
 
+@protocol BuyCellDelegate
+
+- (void)showAlertFromBuy;
+
+@end
+
 @interface SchemeInfoBuyCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *loterryLabel;
@@ -26,6 +32,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *yongJin;
 
 @property (weak, nonatomic) IBOutlet UILabel *winMoney;
+
+@property (nonatomic, weak) id<BuyCellDelegate> delegate;
 
 - (void)reloadDate:(JCZQSchemeItem * )model;
 

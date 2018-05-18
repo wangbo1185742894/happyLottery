@@ -134,8 +134,8 @@
     self.imgPersonIcon.layer.cornerRadius = self.imgPersonIcon.mj_h / 2;
     self.imgPersonIcon.layer.masksToBounds= YES;
     self.labPersonName.text = model.nickName;
-   
-    self.labHuiBao.text =[NSString stringWithFormat:@"%@倍",model.pledge];
+    
+    self.labHuiBao.text =[NSString stringWithFormat:@"%.2f倍",[model.pledge doubleValue]];
     [self.labBetContent setTitle:[model getContent] forState:0];
     self.labFollowCount.text = [NSString stringWithFormat:@"跟单人次：%@人",model.totalFollowCount];
     self.labCostBySelf.text =[NSString stringWithFormat:@"自购金额：%@元",model.betCost];
