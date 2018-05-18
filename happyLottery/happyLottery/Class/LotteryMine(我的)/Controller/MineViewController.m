@@ -448,8 +448,6 @@
             for (int i=0; i<array.count; i++) {
                 
                 Notice *notice = [[Notice alloc]initWith:array[i]];
-                
-               
                 if ([self.fmdb open]) {
                     NSString *cardcode=[GlobalInstance instance ].curUser.cardCode;
                     if ([cardcode isEqualToString:@""]) {

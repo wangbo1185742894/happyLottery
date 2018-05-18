@@ -22,6 +22,7 @@
     NSInteger totalUnit;
     JingCaiChaunFaSelectView *jingcaiSelect;
     __weak IBOutlet UIButton *btnMoniTouzhu;
+    __weak IBOutlet UIButton *fadanBtn;
     __weak IBOutlet UIButton *btnZhenShiTouzhu;
     __weak IBOutlet UIButton *chuanfaBtn;
 }
@@ -325,7 +326,7 @@
     }
 }
 
-- (IBAction)actionTouzhu:(id)sender {
+- (IBAction)actionTouzhu:(UIButton *)sender {
     
   
     
@@ -361,7 +362,11 @@
     [self showLoadingText:@"正在提交订单"];
     
     self.transction.maxPrize = 1.00;
-    self.transction.schemeType = SchemeTypeZigou;
+    if (sender.tag == 4) {
+        self.transction.schemeType = SchemeTypeFaqiGenDan;
+    }else{
+        self.transction.schemeType = SchemeTypeZigou;
+    }
     self.transction.units = self.transction.betCount;
     if (btnZhenShiTouzhu.selected == YES) {
         self.transction.costType = CostTypeCASH;
@@ -412,6 +417,7 @@
     schemeCashModel.cardCode = self.curUser.cardCode;
     schemeCashModel.lotteryName = @"竞彩足球";
     schemeCashModel.schemeNo = schemeNO;
+
     schemeCashModel.subCopies = 1;
     if (btnMoniTouzhu.selected == YES) {
         schemeCashModel.costType = CostTypeSCORE;
@@ -428,7 +434,7 @@
     }
     
     [self hideLoadingView];
-    
+    payVC.schemetype = self.transction.schemeType;
     schemeCashModel.subscribed = self.transction.betCost;
     schemeCashModel.realSubscribed = self.transction.betCost;
     payVC.cashPayMemt = schemeCashModel;
@@ -477,5 +483,6 @@
     [self updataTouzhuInfo];
     
 }
+
 
 @end
