@@ -36,8 +36,10 @@
     self.winLabel.text = model.getSchemeState;
     if([self.winLabel.text containsString:@"已中奖"]){
         [self.winImage setImage:[UIImage imageNamed:@"win.png"]];
+        self.winImage.hidden = NO;
     } else if([self.winLabel.text containsString:@"未中奖"]){
         [self.winImage setImage:[UIImage imageNamed:@"losing.png"]];
+        self.winImage.hidden = NO;
     } else {
         self.winImage.hidden = YES;
     }
@@ -62,5 +64,8 @@
     return @"0.00元";
 }
 
+- (IBAction)actionToSHuo:(id)sender {
+    [self.delegate showAlertFromFollow];
+}
 
 @end

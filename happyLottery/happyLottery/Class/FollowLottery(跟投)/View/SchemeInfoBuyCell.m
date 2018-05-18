@@ -21,6 +21,10 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)actionAlert:(id)sender {
+    [self.delegate showAlertFromBuy];
+}
+
 - (void)reloadDate:(JCZQSchemeItem * )model{
     
    

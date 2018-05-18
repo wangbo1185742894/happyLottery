@@ -887,6 +887,8 @@
 		F922FD2720AD6979000BA6F1 /* what@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F922FD2520AD6978000BA6F1 /* what@3x.png */; };
 		F922FD2820AD6979000BA6F1 /* what@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F922FD2620AD6978000BA6F1 /* what@2x.png */; };
 		F922FD2A20AE6718000BA6F1 /* about_follow_scheme.html in Resources */ = {isa = PBXBuildFile; fileRef = F922FD2920AE6717000BA6F1 /* about_follow_scheme.html */; };
+		F922FD2D20AE9940000BA6F1 /* quanzi_secelcted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F922FD2B20AE993E000BA6F1 /* quanzi_secelcted@2x.png */; };
+		F922FD2E20AE9940000BA6F1 /* quanzi_secelcted@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F922FD2C20AE993F000BA6F1 /* quanzi_secelcted@3x.png */; };
 		F924BA921FE252CF00830BF4 /* password@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA7A1FE252CA00830BF4 /* password@3x.png */; };
 		F924BA961FE252CF00830BF4 /* hide@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA7E1FE252CB00830BF4 /* hide@2x.png */; };
 		F924BA971FE252CF00830BF4 /* phone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA7F1FE252CB00830BF4 /* phone@2x.png */; };
@@ -1514,8 +1516,6 @@
 		2D05C8B220A97AEE001A8953 /* AtttendPersonViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AtttendPersonViewCell.xib; sourceTree = "<group>"; };
 		2D05C8B520A97E9B001A8953 /* AttentPersonModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AttentPersonModel.h; sourceTree = "<group>"; };
 		2D05C8B620A97E9B001A8953 /* AttentPersonModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AttentPersonModel.m; sourceTree = "<group>"; };
-		2D05C8BA20AABA24001A8953 /* quanzi_secelcted@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "quanzi_secelcted@3x.png"; sourceTree = "<group>"; };
-		2D05C8BB20AABA25001A8953 /* quanzi_secelcted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "quanzi_secelcted@2x.png"; sourceTree = "<group>"; };
 		2D05C8C420AABBEB001A8953 /* follow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "follow@3x.png"; sourceTree = "<group>"; };
 		2D05C8C520AABBEB001A8953 /* follow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "follow@2x.png"; sourceTree = "<group>"; };
 		2D05C8C820AABBF4001A8953 /* attentionperson@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "attentionperson@3x.png"; sourceTree = "<group>"; };
@@ -2617,6 +2617,8 @@
 		F922FD2520AD6978000BA6F1 /* what@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "what@3x.png"; sourceTree = "<group>"; };
 		F922FD2620AD6978000BA6F1 /* what@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "what@2x.png"; sourceTree = "<group>"; };
 		F922FD2920AE6717000BA6F1 /* about_follow_scheme.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about_follow_scheme.html; sourceTree = "<group>"; };
+		F922FD2B20AE993E000BA6F1 /* quanzi_secelcted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "quanzi_secelcted@2x.png"; sourceTree = "<group>"; };
+		F922FD2C20AE993F000BA6F1 /* quanzi_secelcted@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "quanzi_secelcted@3x.png"; sourceTree = "<group>"; };
 		F924BA7A1FE252CA00830BF4 /* password@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "password@3x.png"; sourceTree = "<group>"; };
 		F924BA7E1FE252CB00830BF4 /* hide@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hide@2x.png"; sourceTree = "<group>"; };
 		F924BA7F1FE252CB00830BF4 /* phone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone@2x.png"; sourceTree = "<group>"; };
@@ -3327,8 +3329,6 @@
 				2D05C8C820AABBF4001A8953 /* attentionperson@3x.png */,
 				2D05C8C520AABBEB001A8953 /* follow@2x.png */,
 				2D05C8C420AABBEB001A8953 /* follow@3x.png */,
-				2D05C8BA20AABA24001A8953 /* quanzi_secelcted@3x.png */,
-				2D05C8BB20AABA25001A8953 /* quanzi_secelcted@2x.png */,
 				2D05C82C20A4362D001A8953 /* datingsousuo@2x.png */,
 				2D05C82320A4362B001A8953 /* datingsousuo@3x.png */,
 				2D05C82420A4362C001A8953 /* delete@2x.png */,
@@ -4254,6 +4254,8 @@
 				F98C3EFC20747CE600C1DBF8 /* blueBall@2x.png */,
 				F98C3EFA20747CE500C1DBF8 /* blueBall@3x.png */,
 				F98C3EFB20747CE600C1DBF8 /* redBall@2x.png */,
+				F922FD2B20AE993E000BA6F1 /* quanzi_secelcted@2x.png */,
+				F922FD2C20AE993F000BA6F1 /* quanzi_secelcted@3x.png */,
 				F98C3EFD20747CE600C1DBF8 /* redBall@3x.png */,
 				F92855D520A2E7C70023A0AC /* losing@2x.png */,
 				F92855D620A2E7C70023A0AC /* losing@3x.png */,
@@ -6385,6 +6387,7 @@
 				2D7B1377204E63EF0035AE89 /* dltcheckbox@2x.png in Resources */,
 				2D7B137A204E6AEF0035AE89 /* BetPlayStyleCode.plist in Resources */,
 				2D0EEAAF2015DCFC00B0769C /* ad_home3@2x.png in Resources */,
+				F922FD2E20AE9940000BA6F1 /* quanzi_secelcted@3x.png in Resources */,
 				2D36176F20620FAF003093F9 /* zhuihao@2x.png in Resources */,
 				2DD2C515204522AD005A18C4 /* OptimizeViewCell.xib in Resources */,
 				2D7B12FE204D3F750035AE89 /* LotteryWinHistoryCell.xib in Resources */,
@@ -6567,6 +6570,7 @@
 				2D05C86D20A43631001A8953 /* pic_hongrenbangbeijing@3x.png in Resources */,
 				2D05C85C20A43631001A8953 /* firstbang@2x.png in Resources */,
 				2D7B13F9204E885E0035AE89 /* OpenLotteryResultCell.xib in Resources */,
+				F922FD2D20AE9940000BA6F1 /* quanzi_secelcted@2x.png in Resources */,
 				F94770C4200706BC0091729E /* jingcaizuqiu_shengpingfu.html in Resources */,
 				2D739CD71FEB44F400264044 /* wanfajieshao@3x.png in Resources */,
 				F9CD01FA2024444800E54E79 /* logo_assist@3x.png in Resources */,
