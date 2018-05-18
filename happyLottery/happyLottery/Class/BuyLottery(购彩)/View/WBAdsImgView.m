@@ -134,7 +134,7 @@
 
 -(void)imgItemClick{
     
-    [self.delegate adsImgViewClick:_imgUrls[index]];
+    [self.delegate adsImgViewClick:_imgUrls[index] navigation:nil];
 }
 
 

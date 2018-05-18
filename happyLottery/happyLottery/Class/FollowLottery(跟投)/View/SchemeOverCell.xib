@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -59,16 +58,16 @@
                     <constraint firstItem="vWl-gW-mzg" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="8rn-3F-bh7"/>
                     <constraint firstItem="ZKS-KP-snv" firstAttribute="centerY" secondItem="t8r-sy-MGZ" secondAttribute="centerY" id="ArS-hf-RSl"/>
                     <constraint firstItem="t8r-sy-MGZ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="FxZ-KO-0Ub"/>
+                    <constraint firstItem="Wxo-YZ-XjI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="Jm4-LQ-fVd"/>
                     <constraint firstItem="t8r-sy-MGZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Pou-MB-g7m"/>
                     <constraint firstItem="vWl-gW-mzg" firstAttribute="centerY" secondItem="t8r-sy-MGZ" secondAttribute="centerY" id="THu-XX-6tg"/>
                     <constraint firstItem="ZKS-KP-snv" firstAttribute="leading" secondItem="vWl-gW-mzg" secondAttribute="trailing" constant="-9" id="UpQ-YI-pg0"/>
                     <constraint firstItem="vWl-gW-mzg" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Xq5-qr-ySM"/>
                     <constraint firstItem="t8r-sy-MGZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="18" id="Ykd-1h-0Wa"/>
-                    <constraint firstItem="Wxo-YZ-XjI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="cvY-f6-arc"/>
                     <constraint firstAttribute="trailing" secondItem="ZKS-KP-snv" secondAttribute="trailing" constant="10" id="g9D-Ld-u0Z"/>
                     <constraint firstItem="ZKS-KP-snv" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="kd7-jr-uV4"/>
+                    <constraint firstAttribute="bottom" secondItem="Wxo-YZ-XjI" secondAttribute="bottom" constant="3" id="qCb-dR-OHM"/>
                     <constraint firstItem="ZKS-KP-snv" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="x1t-qb-sbx"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="Wxo-YZ-XjI" secondAttribute="bottom" constant="-8" id="z2o-h6-WYY"/>
                     <constraint firstItem="t8r-sy-MGZ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="zOf-xe-kmT"/>
                 </constraints>
             </tableViewCellContentView>

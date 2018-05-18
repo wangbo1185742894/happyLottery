@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -34,15 +34,6 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2串1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y0I-BD-WpD">
-                        <rect key="frame" x="131.5" y="54.5" width="29" height="15"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="15" id="dgv-dU-Si8"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" red="0.58426290749999998" green="0.58434748650000001" blue="0.58423620460000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L2018-23-33" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LNQ-6U-8uA">
                         <rect key="frame" x="246" y="22" width="82" height="15"/>
                         <constraints>
@@ -53,12 +44,12 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="自购：4000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppw-yd-RgM">
-                        <rect key="frame" x="60" y="76.5" width="93.5" height="18"/>
+                        <rect key="frame" x="60" y="76.5" width="72.5" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="20H-tA-JDD"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.47843137250000001" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FWh-bg-y9G">
@@ -110,18 +101,15 @@
                     <constraint firstItem="LNQ-6U-8uA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="22" id="U3b-Wc-qkt"/>
                     <constraint firstItem="ja7-z5-mCG" firstAttribute="leading" secondItem="6Po-Bg-ZPm" secondAttribute="trailing" constant="8" id="Uok-bq-cht"/>
                     <constraint firstItem="uEb-IP-QYQ" firstAttribute="top" secondItem="YvL-cF-A7D" secondAttribute="bottom" constant="1" id="bjr-hx-tGs"/>
-                    <constraint firstItem="y0I-BD-WpD" firstAttribute="leading" secondItem="ja7-z5-mCG" secondAttribute="trailing" constant="10" id="c4M-0B-yNL"/>
                     <constraint firstItem="eB0-Uw-5d5" firstAttribute="centerY" secondItem="6Po-Bg-ZPm" secondAttribute="centerY" id="jNG-o1-FLL"/>
                     <constraint firstItem="YvL-cF-A7D" firstAttribute="top" secondItem="LNQ-6U-8uA" secondAttribute="bottom" constant="19" id="lfx-ub-Khe"/>
                     <constraint firstItem="6Po-Bg-ZPm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9" id="mBy-iD-8Ze"/>
-                    <constraint firstItem="y0I-BD-WpD" firstAttribute="centerY" secondItem="ja7-z5-mCG" secondAttribute="centerY" id="rfl-Qm-Qcc"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="imgLotteryIcon" destination="6Po-Bg-ZPm" id="fy2-zx-LFE"/>
                 <outlet property="imgWinState" destination="FWh-bg-y9G" id="2HU-Zr-Iip"/>
                 <outlet property="labLottery" destination="ja7-z5-mCG" id="soy-Wf-z9F"/>
-                <outlet property="labPassType" destination="y0I-BD-WpD" id="Whs-iS-TQk"/>
                 <outlet property="labPersonName" destination="eB0-Uw-5d5" id="aEC-QX-xFz"/>
                 <outlet property="labTime" destination="LNQ-6U-8uA" id="FsO-t7-Hm9"/>
                 <outlet property="labWinState" destination="YvL-cF-A7D" id="Y31-nI-Ky2"/>

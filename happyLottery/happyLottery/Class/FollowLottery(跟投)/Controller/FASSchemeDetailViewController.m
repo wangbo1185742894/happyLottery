@@ -89,6 +89,10 @@
             [self.dataArray addObject:betContent];
         }
     }
+    if (self.curUser == nil || self.curUser.isLogin == NO) {
+        [self gotisAttent:@"false" errorMsg:nil];
+        return;
+    }
     NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"attentCardCode":schemeDetail.cardCode,@"attentType":@"FOLLOW"};
     [self.lotteryMan isAttent:dic];
 }
@@ -121,7 +125,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section == 2) {
-        if ([schemeDetail.winningStatus isEqualToString:@"WAIT_LOTTERY"]) {
+        if ([schemeDetail.winningStatus isEqualToString:@"WAIT_LOTTERY"]&&[self.schemeType isEqualToString:@"BUY_FOLLOW"]) {
             return 3;
         }
         return 3+self.dataArray.count;
@@ -132,7 +136,12 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        if([self.schemeType isEqualToString:@"BUY_INITIATE"]) return 205;
+        if([self.schemeType isEqualToString:@"BUY_INITIATE"]){
+            return 205;
+        }
+        if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) {
+            return 130;
+        }
         return 169;
     } else if (indexPath.section == 1){
         return 38;
@@ -141,6 +150,9 @@
             if (indexPath.row == 0) {
                 return 51;
             } else if (indexPath.row == 1){
+                if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) {
+                    return 150;
+                }
                 return 65;
             }
             SchemeOverCell *cell = [[SchemeOverCell alloc]init];
@@ -185,7 +197,9 @@
         if (indexPath.row == 0) {
             SchemeContaintCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeContaintCell];
             cell.delegate = self;
-            [cell reloadDate:schemeDetail];
+            if([self.schemeType isEqualToString:@"BUY_FOLLOW"]){
+                [cell reloadDate:schemeDetail];
+            }
             return cell;
         }else if (indexPath.row == self.dataArray.count+2){
             SchemeOverCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeOverCell];
@@ -196,7 +210,7 @@
             [cell reloadDate:schemeDetail];
             return cell;
         }else{
-            if ([schemeDetail.winningStatus isEqualToString:@"WAIT_LOTTERY"]) {
+            if ([schemeDetail.winningStatus isEqualToString:@"WAIT_LOTTERY"]&&[self.schemeType isEqualToString:@"BUY_FOLLOW"]) {
                 SuoSchemeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSuoSchemeViewCell];
                 return cell;
             }
@@ -243,6 +257,10 @@
 
 -(void)gotoFollowList{
     if ([self.schemeType isEqualToString:@"BUY_FOLLOW"]) {
+        if (self.curUser == nil || self.curUser.isLogin == NO) {
+            [self needLogin];
+            return;
+        }
         if (isAttend) {
             //取消关注
             NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"attentCardCode":schemeDetail.cardCode,@"attentType":@"FOLLOW"};

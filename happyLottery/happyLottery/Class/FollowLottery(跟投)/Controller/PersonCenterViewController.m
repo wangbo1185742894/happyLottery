@@ -30,7 +30,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *noticeBtn;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *picLianjie;
 @property (weak, nonatomic) IBOutlet UIImageView *picLian;
-@property (weak, nonatomic) IBOutlet UIImageView *label_urlsImage;
+@property (weak, nonatomic) IBOutlet UIImageView *imgPersonHonor;
+@property (weak, nonatomic) IBOutlet UIImageView *imgPersonHonor1;
+@property (weak, nonatomic) IBOutlet UIImageView *imgPersonHonor2;
 
 @end
 
@@ -52,7 +54,7 @@
     self.lotteryMan.delegate = self;
     [self showLoadingViewWithText:@"正在加载"];
 
- 
+    
 
     self.personTabelView.separatorStyle = UITableViewCellSeparatorStyleNone;
     if (self.cardCode != nil) {
@@ -66,8 +68,6 @@
 }
 
 - (void)reloadView {
-    self.label_urlsImage.clipsToBounds = NO;
-    self.label_urlsImage.contentMode = UIViewContentModeScaleAspectFit;
     self.userImage.clipsToBounds = NO;
     self.userImage.contentMode = UIViewContentModeScaleAspectFit;
     self.userImage.layer.cornerRadius = self.userImage.mj_h / 2;
@@ -117,6 +117,10 @@
         return;
     }
     model = [[PersonCenterModel alloc]initWith:diction];
+    if (self.curUser == nil || self.curUser.isLogin == NO) {
+        [self gotisAttent:@"false" errorMsg:nil];
+        return;
+    }
     NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"attentCardCode":self.cardCode,@"attentType":@"FOLLOW"};
     [self.lotteryMan isAttent:dic];
     
@@ -242,7 +246,9 @@
 }
 
 - (void)reload:(PersonCenterModel *)model  isAttend:(BOOL)isAttend{
-    [self.label_urlsImage sd_setImageWithURL:[NSURL URLWithString:model.label_urls]];
+    self.imgPersonHonor.hidden = NO;
+    self.imgPersonHonor1.hidden = NO;
+    self.imgPersonHonor2.hidden = NO;
     NSString *str = isAttend?@"已关注":@"+ 关注";
     self.noticeBtn.userInteractionEnabled = YES;
     [self.noticeBtn setTitle:str forState:UIControlStateNormal];
@@ -325,9 +331,37 @@
         default:
             break;
     }
+    if (model.labelMap != nil) {
+        NSArray *laburls = [model.labelMap componentsSeparatedByString:@";"];
+        for (int i = 0; i < laburls.count; i ++){
+            NSString *url;
+            if ([laburls[i] containsString:@"="]) {
+                NSArray *lab = [laburls[i] componentsSeparatedByString:@"="];
+                url = lab[1];
+                url = [url stringByReplacingOccurrencesOfString:@"\\" withString:@""];
+                url = [url stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+                url = [url stringByReplacingOccurrencesOfString:@" " withString:@""];
+            }
+            if (i == 0) {
+                self.imgPersonHonor.hidden = NO;
+                [self.imgPersonHonor sd_setImageWithURL:[NSURL URLWithString:url]];
+            }else if(i == 1){
+                [self.imgPersonHonor1 sd_setImageWithURL:[NSURL URLWithString:url]];
+                self.imgPersonHonor1.hidden = NO;
+                
+            }else if (i == 2){
+                [self.imgPersonHonor2 sd_setImageWithURL:[NSURL URLWithString:url]];
+                self.imgPersonHonor2.hidden = NO;
+            }
+        }
+    }
 }
 
 - (IBAction)attendAction:(id)sender{
+    if (self.curUser == nil || self.curUser.isLogin==NO) {
+        [self needLogin];
+        return;
+    }
     self.noticeBtn.userInteractionEnabled = NO;
     [self addOrReliefAttend];
 }

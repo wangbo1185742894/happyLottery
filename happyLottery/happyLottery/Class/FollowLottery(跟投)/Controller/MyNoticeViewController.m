@@ -8,6 +8,7 @@
 
 #import "MyNoticeViewController.h"
 #import "HotFollowSchemeViewCell.h"
+#import "FollowDetailViewController.h"
 
 #define KHotFollowSchemeViewCell  @"HotFollowSchemeViewCell"
 
@@ -76,6 +77,11 @@
 
 }
 
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    FollowDetailViewController *followVC = [[FollowDetailViewController alloc]init];
+    followVC.model = self.personArray[indexPath.row];
+    followVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:followVC animated:YES];
+}
 
 @end

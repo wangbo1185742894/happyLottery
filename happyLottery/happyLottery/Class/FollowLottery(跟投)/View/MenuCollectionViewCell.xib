@@ -24,6 +24,13 @@
                             <action selector="itemClick:" destination="gTV-IL-0wX" eventType="touchUpInside" id="UxW-ok-p9N"/>
                         </connections>
                     </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bqY-Qz-Dzl">
+                        <rect key="frame" x="27" y="10" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="ICe-Vu-v8W"/>
+                            <constraint firstAttribute="width" constant="40" id="Xye-7k-pcE"/>
+                        </constraints>
+                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bKT-6g-Jgu">
                         <rect key="frame" x="0.0" y="55" width="95" height="18"/>
                         <constraints>
@@ -33,19 +40,21 @@
                         <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bqY-Qz-Dzl">
-                        <rect key="frame" x="27.5" y="10" width="40" height="40"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ndW-KW-Xit">
+                        <rect key="frame" x="55" y="36" width="20" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="40" id="ICe-Vu-v8W"/>
-                            <constraint firstAttribute="width" constant="40" id="Xye-7k-pcE"/>
+                            <constraint firstAttribute="height" constant="20" id="32R-dc-Llh"/>
+                            <constraint firstAttribute="width" constant="20" id="GT3-DW-z8j"/>
                         </constraints>
                     </imageView>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="QJp-oW-Wfz" secondAttribute="trailing" id="DIE-Sa-zpf"/>
+                <constraint firstItem="ndW-KW-Xit" firstAttribute="leading" secondItem="bqY-Qz-Dzl" secondAttribute="trailing" constant="-12" id="GPr-H1-vfh"/>
                 <constraint firstItem="bqY-Qz-Dzl" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Idp-JY-jUS"/>
                 <constraint firstAttribute="trailing" secondItem="bKT-6g-Jgu" secondAttribute="trailing" id="M8O-67-Mkv"/>
+                <constraint firstItem="ndW-KW-Xit" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="36" id="O61-gy-I5v"/>
                 <constraint firstItem="QJp-oW-Wfz" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="OCi-sg-jLT"/>
                 <constraint firstItem="bqY-Qz-Dzl" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="S5Y-th-rTY"/>
                 <constraint firstAttribute="bottom" secondItem="QJp-oW-Wfz" secondAttribute="bottom" id="UdN-mJ-IOL"/>
@@ -58,6 +67,7 @@
                 <outlet property="imgItemIcon" destination="bqY-Qz-Dzl" id="oe7-6J-hWL"/>
                 <outlet property="itemBack" destination="QJp-oW-Wfz" id="tDG-OA-XQM"/>
                 <outlet property="labItemTitle" destination="bKT-6g-Jgu" id="Ic8-MJ-Fol"/>
+                <outlet property="targetImage" destination="ndW-KW-Xit" id="CXO-9e-byC"/>
             </connections>
             <point key="canvasLocation" x="62.5" y="45.5"/>
         </collectionViewCell>

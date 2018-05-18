@@ -192,6 +192,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     RecomPerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KRecomPerTableViewCell];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     RecomPerModel *model = [self.personArray objectAtIndex:indexPath.row];
     [cell reloadDate:model categoryCode:self.categoryCode];
     if(indexPath.row <3 ||[self.categoryCode isEqualToString:@"Cowman"]){
@@ -234,6 +235,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+   
     RecomPerModel *model = [self.personArray objectAtIndex:indexPath.row];
     PersonCenterViewController *viewContr = [[PersonCenterViewController alloc]init];
     viewContr.cardCode = model.cardCode;

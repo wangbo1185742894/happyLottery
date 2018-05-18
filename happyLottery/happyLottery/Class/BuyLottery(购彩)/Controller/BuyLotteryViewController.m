@@ -99,7 +99,9 @@
 @property(nonatomic,strong)Lottery *lottery;
 @end
 
-@implementation BuyLotteryViewController
+@implementation BuyLotteryViewController{
+    UINavigationController *navgC;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -376,7 +378,7 @@
 
 }
 
--(void)goToYunshiWithInfo:(ADSModel *)itemIndex{
+-(void)goToYunshiWithInfo:(ADSModel *)itemIndex navigation:(UINavigationController *)navgC{
     NSString *keyStr = itemIndex.thumbnailCode;
     
     if (keyStr == nil) {
@@ -408,28 +410,48 @@
         disVC.infoModel = model;
         disVC.hidesBottomBarWhenPushed = YES;
         disVC.isNeedBack = YES;
-        [self.navigationController pushViewController:disVC animated:YES];
+        if (navgC == nil) {
+            [self.navigationController pushViewController:disVC animated:YES];
+        }
+        else {
+            [navgC pushViewController:disVC animated:YES];
+        }
         return;
     }else if ([keyStr isEqualToString:@"A414"]){
         WebCTZQHisViewController * playViewVC = [[WebCTZQHisViewController alloc]init];
         NSString *strUrl = [NSString stringWithFormat:@"%@/app/award/dltOpenAward",H5BaseAddress];
         playViewVC.pageUrl = [NSURL URLWithString:strUrl];
         playViewVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:playViewVC animated:YES];
+        if (navgC == nil) {
+            [self.navigationController pushViewController:playViewVC animated:YES];
+        }
+        else {
+            [navgC pushViewController:playViewVC animated:YES];
+        }
         return;
     }else if ([keyStr isEqualToString:@"A415"]){
         WebCTZQHisViewController * playViewVC = [[WebCTZQHisViewController alloc]init];
         NSString *strUrl = [NSString stringWithFormat:@"%@/app/award/sfcOpenAward",H5BaseAddress];
         playViewVC.pageUrl = [NSURL URLWithString:strUrl];
         playViewVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:playViewVC animated:YES];
+        if (navgC == nil) {
+            [self.navigationController pushViewController:playViewVC animated:YES];
+        }
+        else {
+            [navgC pushViewController:playViewVC animated:YES];
+        }
         return;
     }else if ([keyStr isEqualToString:@"A412"]){
         WebCTZQHisViewController * playViewVC = [[WebCTZQHisViewController alloc]init];
         NSString *strUrl = [NSString stringWithFormat:@"%@/app/award/jzOpenAward",H5BaseAddress];
         playViewVC.pageUrl = [NSURL URLWithString:strUrl];
         playViewVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:playViewVC animated:YES];
+        if (navgC == nil) {
+            [self.navigationController pushViewController:playViewVC animated:YES];
+        }
+        else {
+            [navgC pushViewController:playViewVC animated:YES];
+        }
         return;
     }else if ([keyStr isEqualToString:@"A009"]){
         [self actionJcgyj:nil];
@@ -470,15 +492,19 @@
     
     
     baseVC.hidesBottomBarWhenPushed = YES;
-    
-    [self.navigationController pushViewController:baseVC animated:YES];
+    if (navgC == nil) {
+        [self.navigationController pushViewController:baseVC animated:YES];
+    } else {
+        [navgC pushViewController:baseVC animated:YES];
+    }
+//    UINavigationController *curNavVC = self.tabBarController.viewControllers[self.tabBarController.selectedIndex];
+//    [curNavVC pushViewController:baseVC animated:YES];
 }
 
-
--(void)adsImgViewClick:(ADSModel *)itemIndex{
+-(void)adsImgViewClick:(ADSModel *)itemIndex navigation:(UINavigationController *)navgC{
     NSString *jumpType;
     
-    
+    navgC = navgC;
     if (itemIndex.imageContentType != nil) {
         jumpType = [NSString stringWithFormat:@"%@",itemIndex.imageContentType];
     }else{
@@ -489,14 +515,21 @@
         return;
     }else if ([jumpType isEqualToString:@"APP"]) {//内部视图跳转
         
-        [self goToYunshiWithInfo:itemIndex];
+        [self goToYunshiWithInfo:itemIndex navigation:navgC];
         
     }else if([jumpType isEqualToString:@"EDITOR"]||[jumpType isEqualToString:@"H5PAGE"]){
         HomeJumpViewController *jumpVC = [[HomeJumpViewController alloc] initWithNibName:@"HomeJumpViewController" bundle:nil];
 
         jumpVC.infoModel = itemIndex;
         jumpVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:jumpVC animated:YES];
+//        [self.navigationController pushViewController:jumpVC animated:YES];
+        if (navgC == nil) {
+            [self.navigationController pushViewController:jumpVC animated:YES];
+        } else {
+            [navgC pushViewController:jumpVC animated:YES];
+        }
+//        UINavigationController *curNavVC = self.tabBarController.viewControllers[self.tabBarController.selectedIndex];
+//        [curNavVC pushViewController:jumpVC animated:YES];
     }
 }
 
@@ -647,7 +680,12 @@
     GYJPlayViewController *gyjPlayVc = [[GYJPlayViewController alloc]init];
     gyjPlayVc.hidesBottomBarWhenPushed = YES;
     gyjPlayVc.navigationController.navigationBar.hidden = YES;
-    [self.navigationController pushViewController:gyjPlayVc animated:YES];
+    if (navgC == nil) {
+        [self.navigationController pushViewController:gyjPlayVc animated:YES];
+    }
+    else {
+        [navgC pushViewController:gyjPlayVc animated:YES];
+    }
 }
 
 //"cardCode":"xxx","matchId":"x","isCollect":"x"
@@ -975,7 +1013,12 @@
     playVC.hidesBottomBarWhenPushed = YES;
     //    _lotterySelected.currentRound = round;
     playVC.lottery = lotteryDS[1];
-    [self.navigationController pushViewController:playVC animated:YES];
+    if (navgC == nil) {
+        [self.navigationController pushViewController:playVC animated:YES];
+    }
+    else {
+        [navgC pushViewController:playVC animated:YES];
+    }
     
 }
 
@@ -985,7 +1028,12 @@
     SSQPlayViewController *playVC = [[SSQPlayViewController alloc] init];
     playVC.hidesBottomBarWhenPushed = YES;
     playVC.lottery = lotteryDS[10];
-    [self.navigationController pushViewController:playVC animated:YES];
+    if (navgC == nil) {
+        [self.navigationController pushViewController:playVC animated:YES];
+    }
+    else {
+        [navgC pushViewController:playVC animated:YES];
+    }
 }
 
 
@@ -1001,7 +1049,12 @@
     }
     playVC.hidesBottomBarWhenPushed = YES;
     playVC.lottery = lotteryDS[7];
-    [self.navigationController pushViewController:playVC animated:YES];
+    if (navgC == nil) {
+        [self.navigationController pushViewController:playVC animated:YES];
+    }
+    else {
+        [navgC pushViewController:playVC animated:YES];
+    }
 }
 - (IBAction)actionJCLQ:(UIButton *)sender {
     JCLQPlayController * playViewVC = [[JCLQPlayController alloc]init];

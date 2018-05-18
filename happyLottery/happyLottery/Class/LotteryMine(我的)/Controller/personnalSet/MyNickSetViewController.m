@@ -59,8 +59,8 @@
     if(nickname.length==0){
          [self showPromptText:@"昵称不能为空！" hideAfterDelay:1.7];
         return;
-    }else if (nickname.length >8) {
-        [self showPromptText: @"昵称不能超过8位" hideAfterDelay: 1.7];
+    }else if (nickname.length >6) {
+        [self showPromptText: @"昵称不能超过6位" hideAfterDelay: 1.7];
         return;
     }else{
         
@@ -113,8 +113,8 @@
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{
     if (textField ==  _nickField) {
-        if (_nickField.text.length > 8) {
-            [self showPromptText:@"昵称不能超过8位" hideAfterDelay:2];
+        if (_nickField.text.length > 6) {
+            [self showPromptText:@"昵称不能超过6位" hideAfterDelay:2];
             
         }
     }

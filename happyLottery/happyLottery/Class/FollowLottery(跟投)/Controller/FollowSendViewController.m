@@ -26,11 +26,13 @@
 #import "ADSModel.h"
 #import "RecomPerModel.h"
 #import "PersonCenterViewController.h"
+#import "BuyLotteryViewController.h"
+#import "WebViewController.h"
 
 #define KRecommendViewCell @"RecommendViewCell"
 #define KHotFollowSchemeViewCell @"HotFollowSchemeViewCell"
 #define KHomeTabTopAdsViewCell @"HomeTabTopAdsViewCell"
-@interface FollowSendViewController ()<OptionSelectedViewDelegate,UITableViewDelegate,UITableViewDataSource,FollowHeaderDelegate,LotteryManagerDelegate,HomeMenuItemViewDelegate,RecommendViewCellDelegate>
+@interface FollowSendViewController ()<OptionSelectedViewDelegate,UITableViewDelegate,UITableViewDataSource,FollowHeaderDelegate,LotteryManagerDelegate,HomeMenuItemViewDelegate,RecommendViewCellDelegate,HomeTabTopAdsViewDelegate>
 {
     NSMutableArray <ADSModel *>*adsArray;
         OptionSelectedView *optionView;
@@ -43,7 +45,9 @@
 
 @end
 
-@implementation FollowSendViewController
+@implementation FollowSendViewController{
+    BuyLotteryViewController *buyVc;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -53,6 +57,8 @@
     [self setRightBarItems];
     [self setTableView];
     self.title = @"跟单";
+    buyVc = [[BuyLotteryViewController alloc]init];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -82,6 +88,10 @@
     [tabBarItem setTitleTextAttributes: selectedAttributes forState:UIControlStateNormal];
     self.navigationController.navigationBar.barTintColor = SystemGreen;
     self.navigationController.tabBarItem = tabBarItem;
+}
+
+-(void)itemClickInTop:(ADSModel *)index{
+    [buyVc adsImgViewClick:index navigation:self.navigationController];
 }
 
 -(void)getHotFollowScheme{
@@ -158,7 +168,7 @@
         return cell;
     }else   if(indexPath.section == 1){
         HomeTabTopAdsViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KHomeTabTopAdsViewCell];
-        
+        cell.delegate = self;
         [cell loadData:adsArray];
         return  cell;
     }else   if(indexPath.section == 2){
@@ -220,9 +230,17 @@
 
 -(void)setRightBarItems{
     
-    UIBarButtonItem *itemQuery = [self creatBarItem:@"" icon:@"guize" andFrame:CGRectMake(0, 10, 30, 30) andAction:@selector(optionRightButtonAction)];
+    UIBarButtonItem *itemQuery = [self creatBarItem:@"" icon:@"guize" andFrame:CGRectMake(0, 10, 30, 30) andAction:@selector(pressPlayIntroduce)];
     UIBarButtonItem *faqi = [self creatBarItem:@"" icon:@"fadan" andFrame:CGRectMake(0, 10, 30, 30) andAction:@selector(optionRightButtonAction)];
     self.navigationItem.rightBarButtonItems = @[itemQuery,faqi];
+}
+
+- (void)pressPlayIntroduce{
+    WebViewController *webVC = [[WebViewController alloc]initWithNibName:@"WebViewController" bundle:nil];
+    webVC.type = @"html";
+    webVC.title = @"复制跟单玩法说明";
+    webVC.htmlName = @"about_follow_scheme";
+    [self.navigationController pushViewController:webVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -231,8 +249,8 @@
 }
 
 - (void) optionRightButtonAction {
-    NSArray *titleArr = @[@" 竞彩篮球",
-                          @" 竞彩足球"];
+    NSArray *titleArr = @[@" 竞彩足球",
+                          @" 竞彩篮球"];
     CGFloat optionviewWidth = 100;
     CGFloat optionviewCellheight = 38;
     CGSize mainSize = [UIScreen mainScreen].bounds.size;

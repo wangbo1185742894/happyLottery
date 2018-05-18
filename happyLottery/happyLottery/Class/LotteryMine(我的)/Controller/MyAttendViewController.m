@@ -26,7 +26,13 @@
     self.title = @"我的关注";
     self.personList = [NSMutableArray arrayWithCapacity:0];
     
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self loadData];
+//    [self.tabAttendList reloadData];
 }
 
 -(void)loadData{
@@ -41,6 +47,7 @@
     [self.tabAttendList tableViewEndRefreshCurPageCount:personList.count];
     
     if (personList == nil) {
+        [_personList removeAllObjects];
         [self showPromptText:msg hideAfterDelay:1.9];
           [self.tabAttendList reloadData];
         return;
@@ -87,9 +94,10 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+ 
     PersonCenterViewController *viewContr = [[PersonCenterViewController alloc]init];
     
-    viewContr.cardCode = _personList[indexPath.row].cardCode;
+    viewContr.cardCode = _personList[indexPath.row].attentCardCode;
     [self.navigationController pushViewController:viewContr animated:YES];
 }
 

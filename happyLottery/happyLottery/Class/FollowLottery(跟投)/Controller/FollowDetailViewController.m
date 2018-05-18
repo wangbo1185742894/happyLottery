@@ -31,7 +31,10 @@
 
 @end
 
-@implementation FollowDetailViewController
+@implementation FollowDetailViewController{
+    
+    BOOL isAttend;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -73,8 +76,23 @@
     self.labQitou.text =[NSString stringWithFormat:@"%@元",_model.minFollowCost];
     self.btnGuanzhu.layer.borderColor = TEXTGRAYOrange.CGColor;
     self.btnGuanzhu.layer.borderWidth = 1;
-    
-    
+    if (self.curUser == nil || self.curUser.isLogin == NO) {
+        isAttend = NO;
+        [self.btnGuanzhu setTitle:@"+关注" forState:UIControlStateNormal];
+    } else {
+        NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"attentCardCode":_model.cardCode,@"attentType":@"FOLLOW"};
+        [self.lotteryMan isAttent:dic];
+    }
+}
+
+- (void) gotisAttent:(NSString *)diction  errorMsg:(NSString *)msg{
+    if ([diction boolValue]) {
+        isAttend = YES;
+        [self.btnGuanzhu setTitle:@"已关注" forState:UIControlStateNormal];
+    } else {
+        isAttend = NO;
+        [self.btnGuanzhu setTitle:@"+关注" forState:UIControlStateNormal];
+    }
 }
 
 -(void)setBtnBoard:(UIButton *)item{
@@ -186,7 +204,44 @@
 }
 
 - (IBAction)actionGuanzhu:(id)sender {
+    if (self.curUser == nil || self.curUser.isLogin==NO) {
+        [self needLogin];
+        return;
+    }
+    self.btnGuanzhu.userInteractionEnabled = NO;
+    [self addOrReliefAttend];
 }
 
+- (void)addOrReliefAttend {
+    if (isAttend) {
+        //取消关注
+        NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"attentCardCode":_model.cardCode,@"attentType":@"FOLLOW"};
+        [self.lotteryMan reliefAttent:dic];
+    }
+    else {
+        //添加关注
+        NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"attentCardCode":_model.cardCode,@"attentType":@"FOLLOW"};
+        [self.lotteryMan attentMember:dic];
+    }
+}
+
+
+- (void) gotAttentMember:(NSString *)diction  errorMsg:(NSString *)msg{
+    if (diction) {
+        isAttend = YES;
+        [self.btnGuanzhu setTitle:@"已关注" forState:UIControlStateNormal];
+        self.btnGuanzhu.userInteractionEnabled = YES;
+        [self showPromptText:@"添加关注成功" hideAfterDelay:1.0];
+    }
+}
+
+- (void) gotReliefAttent:(NSString *)diction  errorMsg:(NSString *)msg{
+    if (diction) {
+        isAttend = NO;
+        [self.btnGuanzhu setTitle:@"+关注" forState:UIControlStateNormal];
+        self.btnGuanzhu.userInteractionEnabled = YES;
+        [self showPromptText:@"取消关注成功" hideAfterDelay:1.0];
+    }
+}
 
 @end

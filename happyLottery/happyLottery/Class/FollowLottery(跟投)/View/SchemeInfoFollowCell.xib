@@ -96,7 +96,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sd5-z2-FaV">
-                        <rect key="frame" x="308" y="57" width="42" height="15"/>
+                        <rect key="frame" x="308" y="57" width="42" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.99607843139999996" green="0.2274509804" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -108,7 +108,7 @@
                             <constraint firstAttribute="width" constant="18" id="ERM-lP-2IZ"/>
                             <constraint firstAttribute="height" constant="18" id="nJU-ZY-kfo"/>
                         </constraints>
-                        <state key="normal" image="add.png"/>
+                        <state key="normal" image="what.png"/>
                     </button>
                 </subviews>
                 <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -139,7 +139,6 @@
                     <constraint firstItem="Ce7-Ic-Pvl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="34" id="gab-Fz-nyX"/>
                     <constraint firstItem="NrV-Yf-WB0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="giZ-WK-fTi"/>
                     <constraint firstItem="nS2-2c-EDG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="hQx-lE-fzq"/>
-                    <constraint firstItem="kzI-00-GYc" firstAttribute="top" secondItem="Sd5-z2-FaV" secondAttribute="bottom" constant="87" id="hXO-uz-pX8"/>
                     <constraint firstItem="kzI-00-GYc" firstAttribute="top" secondItem="3zB-mZ-8EO" secondAttribute="bottom" constant="25" id="iJ2-Ny-45v"/>
                     <constraint firstAttribute="bottom" secondItem="kzI-00-GYc" secondAttribute="bottom" id="jRq-8s-xfZ"/>
                     <constraint firstAttribute="trailing" secondItem="kzI-00-GYc" secondAttribute="trailing" id="m1b-M0-tjc"/>
@@ -163,8 +162,8 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="add.png" width="29" height="29"/>
         <image name="wave.png" width="375" height="9"/>
+        <image name="what.png" width="15" height="15"/>
         <image name="win.png" width="65" height="52"/>
     </resources>
 </document>
