@@ -17,4 +17,5 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewDisBottom;
 @property(assign,nonatomic)SchemeType  schemetype;
 
+
 @end

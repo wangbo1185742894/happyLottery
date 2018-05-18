@@ -434,7 +434,11 @@
     [self showLoadingText:@"正在提交订单"];
     
     self.transaction.maxPrize = 1.00;
-    self.transaction.schemeType = SchemeTypeZigou;
+    if (sender.tag == 4) {
+        self.transaction.schemeType = SchemeTypeFaqiGenDan;
+    }else{
+        self.transaction.schemeType = SchemeTypeZigou;
+    }
     self.transaction.units = self.transaction.betCount;
     if (btnZhenShiTouzhu.selected == YES) {
         self.transaction.costType = CostTypeCASH;
@@ -472,7 +476,7 @@
             return;
         }
     }
-    
+    payVC.schemetype  = self.transaction.schemeType;
     [self hideLoadingView];
     
     schemeCashModel.subscribed = self.transaction.betCost;
