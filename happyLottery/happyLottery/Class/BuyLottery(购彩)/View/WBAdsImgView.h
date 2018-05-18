@@ -11,7 +11,7 @@
 #import "ADSModel.h"
 @protocol WBAdsImgViewDelegate
 
--(void)adsImgViewClick:(ADSModel*)itemIndex;
+-(void)adsImgViewClick:(ADSModel *)itemIndex navigation:(UINavigationController *)navgC;
 
 @end
 

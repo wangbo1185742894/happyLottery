@@ -20,6 +20,7 @@
     self.userImage.contentMode = UIViewContentModeScaleAspectFit;
     self.userImage.layer.cornerRadius = self.userImage.mj_h / 2;
     self.userImage.layer.masksToBounds = YES;
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

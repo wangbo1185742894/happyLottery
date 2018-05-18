@@ -27,6 +27,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    imgLotteryIcon.layer.cornerRadius = imgLotteryIcon.mj_h / 2;
+    imgLotteryIcon.layer.masksToBounds = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -48,9 +50,6 @@
     labLottery.text = [model getLotteryByName];
     labTime .text = [[model.createTime componentsSeparatedByString:@" "] firstObject];
     labWinState.text = model.getSchemeState;
-    if ([model.getSchemeState isEqualToString:@"已中奖"]) {
-        labWinState.text = [NSString stringWithFormat:@"已中奖(未派奖)"];
-    }
     if([model .getSchemeState rangeOfString:@"已中奖"].length > 0){
         
         labWonCost.text = [NSString stringWithFormat:@"%.2f元",[model.bonus floatValue]];

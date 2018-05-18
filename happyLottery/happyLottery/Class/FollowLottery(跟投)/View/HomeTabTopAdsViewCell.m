@@ -36,8 +36,9 @@
 -(void)loadData:(NSArray *)model{
     [adsView setImageUrlArray:model];
 }
--(void)adsImgViewClick:(id)itemIndex{
-    
+
+-(void)adsImgViewClick:(ADSModel *)itemIndex navigation:(UINavigationController *)navgC{
+    [self.delegate itemClickInTop:itemIndex];
 }
 
 @end

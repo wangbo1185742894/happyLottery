@@ -36,13 +36,7 @@
     self.title = @"我的跟单";
     if (self.isFaDan) {
         [self actionGenDan:self.btnFadan];
-//        self.btnFadan.selected = YES;
-//        self.btnGendan.selected = NO;
     }
-//    } else {
-//        self.btnFadan.selected = NO;
-//        self.btnGendan.selected = YES;
-//    }
     dataArray = [NSMutableArray arrayWithCapacity:0];
     if ([self isIphoneX]) {
         viewDisTop.constant = 88;

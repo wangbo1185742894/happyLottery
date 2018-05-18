@@ -51,9 +51,9 @@
     if ([curDateM isEqualToString:matchDateM]) {
         NSInteger dayNum = [matchDateD integerValue] - [curDateD integerValue];
         if (dayNum == 0) {  // == 0 今天  ==1 明天   == 2  后天   == 3 大后天
-            self.labDeadTime.text =[NSString stringWithFormat:@"今日"];
+            self.labDeadTime.text =[NSString stringWithFormat:@"今日%@",[model.deadLine substringWithRange:NSMakeRange(11, 5)]];
         }else if (dayNum == 1){
-            self.labDeadTime.text =[NSString stringWithFormat:@"明日"];
+            self.labDeadTime.text =[NSString stringWithFormat:@"明日%@",[model.deadLine substringWithRange:NSMakeRange(11, 5)]];
         }else{
             self.labDeadTime.text =[NSString stringWithFormat:@"%@", [model.deadLine substringWithRange:NSMakeRange(5, 11)]];
         }
@@ -67,6 +67,16 @@
 -(void)loadDataWithModelInPC:(HotSchemeModel *)model {
     [self loadDataWithModel:model];
     self.labPersonHis.hidden = YES;
+    if ([model.lottery isEqualToString:@"JCZQ"]) {
+        self.labPersonName.text = @"竞彩足球";
+        [self.imgPersonIcon setImage:[UIImage imageNamed:@"footerball.png"]];
+    }else {
+        self.labPersonName.text = @"竞彩篮球";
+        [self.imgPersonIcon setImage:[UIImage imageNamed:@"basketball.png"]];
+    }
+    self.imgPersonHonor.hidden = YES;
+    self.imgPersonHonor1.hidden = YES;
+    self.imgPersonHonor2.hidden = YES;
 }
 
 

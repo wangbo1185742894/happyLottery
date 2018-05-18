@@ -10,7 +10,10 @@
 #import "netWorkHelper.h"
 #import "VersionUpdatingPopView.h"
 #import "JCLQPlayController.h"
+#import "ADSModel.h"
 
 @interface BuyLotteryViewController : BaseViewController
+
+-(void)adsImgViewClick:(ADSModel *)itemIndex navigation:(UINavigationController *)navgC;
 
 @end

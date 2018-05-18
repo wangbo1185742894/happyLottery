@@ -9,6 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "ADSModel.h"
 
+@protocol HomeTabTopAdsViewDelegate <NSObject>
+
+-(void)itemClickInTop:(ADSModel *)index;
+
+@end
+
 @interface HomeTabTopAdsViewCell : UITableViewCell
+
+@property(nonatomic,weak)id <HomeTabTopAdsViewDelegate> delegate;
+
 -(void)loadData:(NSArray *)model;
+
 @end

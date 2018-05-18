@@ -34,7 +34,7 @@
         NSString *str = isAttend?@"已关注":@"+ 关注";
         [self.guanZhuBtn setTitle:str forState:UIControlStateNormal];
         self.genfaLabel.text = @"发单人";
-        self.moneyNameLabel.text = model.initiateNickname;
+        self.moneyNameLabel.text = model.initiateNickname== nil?[model.cardCode stringByReplacingCharactersInRange:NSMakeRange(2,4) withString:@"****"]:model.initiateNickname;
     }
 }
 
