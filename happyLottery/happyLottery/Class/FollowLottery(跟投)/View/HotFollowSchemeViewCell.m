@@ -77,16 +77,26 @@
     self.imgPersonHonor.hidden = YES;
     self.imgPersonHonor1.hidden = YES;
     self.imgPersonHonor2.hidden = YES;
+    if (model.won == nil) {
+         [self.labBetContent setImage:[UIImage imageNamed:@"icon_suozi.png"] forState:UIControlStateNormal];
+    } else {
+         [self.labBetContent setImage:[UIImage imageNamed:@"kaisuo.png"] forState:UIControlStateNormal];
+    }
+   
 }
 
 
 - (void)loadDataWithModelInDaT:(HotSchemeModel *)model{
     [self loadDataWithModel:model];
+    self.imgPersonIcon.layer.cornerRadius = self.imgPersonIcon.mj_h / 2;
+    self.imgPersonIcon.layer.masksToBounds= YES;
 }
 
 //我的关注
 -(void)loadDataWithModelInNotice:(HotSchemeModel *)model {
     [self loadDataWithModel:model];
+    self.imgPersonIcon.layer.cornerRadius = self.imgPersonIcon.mj_h / 2;
+    self.imgPersonIcon.layer.masksToBounds= YES;
 }
 
 -(void)loadDataWithModel:(HotSchemeModel *)model{
@@ -130,9 +140,7 @@
         [self.imgPersonIcon sd_setImageWithURL:[NSURL URLWithString:model.headUrl]];
     }
    
-
-    self.imgPersonIcon.layer.cornerRadius = self.imgPersonIcon.mj_h / 2;
-    self.imgPersonIcon.layer.masksToBounds= YES;
+   
     self.labPersonName.text = model.nickName;
     
     self.labHuiBao.text =[NSString stringWithFormat:@"%.2f倍",[model.pledge doubleValue]];
@@ -155,7 +163,8 @@
         }
     }
     if (model.recent_won .length == 0) {
-        self.labPersonHis.text  = @"近0中0";
+//        self.labPersonHis.text  = @"近0中0"
+        self.labPersonHis.hidden = YES;  //近几中几标签大于50%才显示;
     }else{
         NSArray *wonState = [model.recent_won componentsSeparatedByString:@","];
         NSInteger totalWon = 0;

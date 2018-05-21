@@ -44,7 +44,7 @@
     labWinState.text = model.getSchemeState;
     if([model .getSchemeState rangeOfString:@"已中奖"].length > 0){
         
-        labWonCost.text = [NSString stringWithFormat:@"%.2f元",[model.bonus floatValue]];
+        labWonCost.text = [NSString stringWithFormat:@"%.2f元",[model.bonus doubleValue]];
         labWonCost.hidden = NO;
         imgWinState.hidden = NO;
         labWinState.textColor = RGBCOLOR(254, 58, 81);

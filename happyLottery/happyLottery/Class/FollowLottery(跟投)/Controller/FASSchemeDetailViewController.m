@@ -89,13 +89,16 @@
             [self.dataArray addObject:betContent];
         }
     }
-    if (self.curUser == nil || self.curUser.isLogin == NO) {
-        [self gotisAttent:@"false" errorMsg:nil];
-        return;
+    if([self.schemeType isEqualToString:@"BUY_FOLLOW"] ){
+        if (self.curUser == nil || self.curUser.isLogin == NO) {
+            [self gotisAttent:@"false" errorMsg:nil];
+            return;
+        }
+        NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"attentCardCode":schemeDetail.initiateCardCode,@"attentType":@"FOLLOW"};
+        [self.lotteryMan isAttent:dic];
+    }else {
+        [self.detailTableView reloadData];
     }
-
-    NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"attentCardCode":schemeDetail.initiateCardCode,@"attentType":@"FOLLOW"};
-    [self.lotteryMan isAttent:dic];
 }
 
 -(void)setTableView{

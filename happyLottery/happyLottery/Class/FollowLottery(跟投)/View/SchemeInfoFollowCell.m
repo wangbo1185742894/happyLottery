@@ -36,17 +36,21 @@
     if ([model.winningStatus isEqualToString:@"WAIT_LOTTERY"]) {
         self.moneyLabel.textColor = RGBCOLOR(122, 122, 122);
     } else {
-        self.moneyLabel.textColor = RGBCOLOR(254, 58, 81);;
+        self.moneyLabel.textColor = RGBCOLOR(254, 58, 81);
     }
     self.winLabel.text = model.getSchemeState;
     if([self.winLabel.text containsString:@"已中奖"]){
+        self.moneyLabel.textColor = RGBCOLOR(254, 58, 81);
         [self.winImage setImage:[UIImage imageNamed:@"win.png"]];
+        self.winLabel.textColor = RGBCOLOR(254, 58, 81);
         self.winImage.hidden = NO;
     } else if([self.winLabel.text containsString:@"未中奖"]){
         [self.winImage setImage:[UIImage imageNamed:@"losing.png"]];
+        self.winLabel.textColor = [UIColor blackColor];
         self.winImage.hidden = NO;
     } else {
         self.winImage.hidden = YES;
+        self.winLabel.textColor = [UIColor blackColor];
     }
     if ([model.schemeStatus isEqualToString:@"INIT"]) {
         self.zongShouruLabel.hidden = YES;
