@@ -362,10 +362,8 @@
                 if (KscreenWidth == 0) {
                     if (matchList[indexPath.row].isShow) {
                         NSArray *passType = [Utility objFromJson:matchList[indexPath.row].passTypes];
-                        ;
                         return curY + 90 + ((passType.count / 7) + 1) * 15;
                     }else{
-                        
                         return curY + 40;
                     }
                 }else{

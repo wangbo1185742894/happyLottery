@@ -27,6 +27,9 @@
             self.topDis.constant = 88;
         }else{
             self.topDis.constant = 64;
+            if ([Utility isIOS11After]) {
+                self.automaticallyAdjustsScrollViewInsets = NO; // tableView 莫名其妙  contentOffset.y 成-64了  MMP
+            }
         }
         NSURL *url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:_htmlName ofType:self.type]];
         [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
@@ -36,6 +39,9 @@
             self.topDis.constant = 44;
         }else{
             self.topDis.constant = 20;
+            if ([Utility isIOS11After]) {
+                self.automaticallyAdjustsScrollViewInsets = NO; // tableView 莫名其妙  contentOffset.y 成-64了  MMP
+            }
         }
         NSURL *url = [NSURL URLWithString:self.pageUrl];
         [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
