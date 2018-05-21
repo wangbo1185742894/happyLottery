@@ -238,8 +238,8 @@
 - (void)pressPlayIntroduce{
     WebViewController *webVC = [[WebViewController alloc]initWithNibName:@"WebViewController" bundle:nil];
     webVC.type = @"html";
-    webVC.title = @"复制跟单玩法说明";
-    webVC.htmlName = @"about_follow_scheme";
+    webVC.title = @"跟单玩法说明";
+    webVC.htmlName = @"about_follow";
     [self.navigationController pushViewController:webVC animated:YES];
 }
 
