@@ -62,7 +62,7 @@
         labWinState.textColor = [UIColor blackColor];
     }
     
-    labZigouCost.text =[NSString stringWithFormat:@"自购：%@元", model.betCost];
+    labZigouCost.text =[NSString stringWithFormat:@"跟投：%@元", model.betCost];
 }
 
 @end
