@@ -62,7 +62,7 @@
     if ([self isIphoneX]) {
         webDisTop.constant = 44;
     }else if ([Utility isIOS11After]) {
-        webDisTop.constant = 0;
+        webDisTop.constant = 20;
         webDisBottom.constant = 0;
      }else{
         webDisTop.constant = 20;

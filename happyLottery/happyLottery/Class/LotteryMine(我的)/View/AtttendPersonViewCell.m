@@ -37,12 +37,15 @@
     for (NSString *state in wonState) {
         totalWon += [state integerValue];
     }
-    self.labHis.text = [NSString stringWithFormat:@"近%ld中%ld",wonState.count,totalWon];
-    if (wonState.count/totalWon<2 &&totalWon!= 0 ) {
-        self.labHis.hidden = NO;
-    } else {
-        self.labHis.hidden = YES;
-    }
+    
+        self.labHis.text = [NSString stringWithFormat:@"近%ld中%ld",wonState.count,totalWon];
+        if ( totalWon!= 0 && wonState.count/totalWon<2  ) {
+            self.labHis.hidden = NO;
+        } else {
+            self.labHis.hidden = YES;
+        }
+ 
+   
     if (model.attentHeadUrl .length == 0) {
         [self.imgIcon setImage:[UIImage imageNamed:@"usermine"]];
     }else{
