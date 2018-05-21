@@ -44,7 +44,9 @@
         if (isSuccess == NO) {
             return ;
         }
-        NSDictionary *dicItem = [self transFomatJson:[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]];
+        NSString *resultStr = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+        NSData *jsonData = [resultStr dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary  *dicItem = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
         
          NSArray *itemArray = dicItem[@"result"];
         for (NSDictionary *dic in itemArray) {
