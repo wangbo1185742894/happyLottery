@@ -89,7 +89,7 @@
             [self.dataArray addObject:betContent];
         }
     }
-    if([self.schemeType isEqualToString:@"BUY_FOLLOW"] ){
+    if([self.schemeType isEqualToString:@"BUY_FOLLOW"]&&![schemeDetail.schemeStatus isEqualToString:@"INIT"]){
         if (self.curUser == nil || self.curUser.isLogin == NO) {
             [self gotisAttent:@"false" errorMsg:nil];
             return;
@@ -148,6 +148,9 @@
         }
         return 169;
     } else if (indexPath.section == 1){
+        if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) {
+            return 0;
+        }
         return 38;
     } else if (indexPath.section == 2){
         if ([schemeDetail.winningStatus isEqualToString:@"WAIT_LOTTERY"]) {
@@ -197,6 +200,10 @@
     }else if (indexPath.section == 1){
         SchemePerFollowCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemePerFollowCell];
         cell.delegate = self;
+        if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) {
+            cell.hidden = YES;
+            return cell;
+        }
         [cell reloadDate:schemeDetail schemeType:self.schemeType isAttend:isAttend];
         return cell;
     }else if (indexPath.section == 2){
