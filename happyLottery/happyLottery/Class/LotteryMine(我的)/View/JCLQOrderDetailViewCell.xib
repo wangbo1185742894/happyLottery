@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -63,7 +63,7 @@
                                             <constraint firstAttribute="height" constant="18" id="iTn-fJ-57E"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.19215686274509802" green="0.53725490196078429" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="投注方式" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tPR-Kn-5Cr">
@@ -277,6 +277,7 @@
                 <outlet property="labPassType" destination="mWW-P0-k5I" id="WnH-H8-5t8"/>
                 <outlet property="labPlayType" destination="tPR-Kn-5Cr" id="sJP-Bd-Qd0"/>
                 <outlet property="labTouzhuneirong" destination="B8d-Ja-69L" id="zli-Tz-vUm"/>
+                <outlet property="labelTouTitle" destination="9Qv-gD-q5l" id="t0C-VL-LqH"/>
                 <outlet property="viewSubContent" destination="I7a-yo-nRj" id="4X3-Vt-8mD"/>
             </connections>
             <point key="canvasLocation" x="-634" y="-53.5"/>
@@ -284,6 +285,6 @@
     </objects>
     <resources>
         <image name="leshan.png" width="26" height="13"/>
-        <image name="win.png" width="35" height="31"/>
+        <image name="win.png" width="65" height="52"/>
     </resources>
 </document>

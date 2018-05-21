@@ -26,44 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "happyLottery/Class/FollowLottery(&#x8ddf;&#x6295;)/Controller/FASSchemeDetailViewController.m"
-            timestampString = "548560608.99505"
+            timestampString = "548566189.381972"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "295"
-            endingLineNumber = "295"
+            startingLineNumber = "296"
+            endingLineNumber = "296"
             landmarkName = "-gotisAttent:errorMsg:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "happyLottery/Class/FollowLottery(&#x8ddf;&#x6295;)/Controller/FASSchemeDetailViewController.m"
-            timestampString = "548560608.995448"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "207"
-            endingLineNumber = "207"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "happyLottery/Class/FollowLottery(&#x8ddf;&#x6295;)/Controller/FASSchemeDetailViewController.m"
-            timestampString = "548560608.995705"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "-gotSchemeRecordBySchemeNo:errorMsg:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -80,6 +48,54 @@
             startingLineNumber = "330"
             endingLineNumber = "330"
             landmarkName = "-actionTouzhu:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/FollowLottery(&#x8ddf;&#x6295;)/Controller/FASSchemeDetailViewController.m"
+            timestampString = "548566189.382076"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "-gotSchemeRecordBySchemeNo:errorMsg:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/Base/Model/LotteryManager.m"
+            timestampString = "548563974.5517139"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "575"
+            endingLineNumber = "575"
+            landmarkName = "-getSchemeRecordBySchemeNo:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/LotteryMine(&#x6211;&#x7684;)/Controller/SchemeDetailViewController.m"
+            timestampString = "548563974.552137"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "-gotSchemeRecordBySchemeNo:errorMsg:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

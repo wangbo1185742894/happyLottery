@@ -13,5 +13,6 @@
 
 @property(nonatomic,strong)NSString *schemeNO;
 @property (nonatomic,strong)NSString *lotteryCode;
+@property (nonatomic,copy)NSString *fromView;
 
 @end
