@@ -636,6 +636,7 @@
     
     [self.trancation.selectMatchArray removeAllObjects];
     JCZQTouZhuViewController *touzhuVC = [[JCZQTouZhuViewController alloc]init];
+    touzhuVC.fromSchemeType = self.fromSchemeType;
     for (NSMutableArray *marray in self.showArray) {
         for (JCZQMatchModel *model in marray) {
             if (model.isSelect) {

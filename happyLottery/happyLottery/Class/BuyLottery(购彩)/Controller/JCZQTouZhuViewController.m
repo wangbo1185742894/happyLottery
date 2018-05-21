@@ -18,6 +18,7 @@
 @interface JCZQTouZhuViewController ()<UITableViewDelegate,UITableViewDataSource,JingCaiChaunFaSelectViewDelegate,LotteryManagerDelegate,SelectViewDelegate>
 {
     SelectView * peiSelectView;
+    __weak IBOutlet UIView *costTypeSelectView;
     NSInteger beiCount;
     NSInteger totalUnit;
     JingCaiChaunFaSelectView *jingcaiSelect;
@@ -27,7 +28,9 @@
     __weak IBOutlet UIButton *chuanfaBtn;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tabSelectedMatch;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomHeight;
 @property (weak, nonatomic) IBOutlet UIView *viewBottom;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthTouzhu;
 @property (weak, nonatomic) IBOutlet UILabel *labZhuInfo;
 @property (weak, nonatomic) IBOutlet UILabel *labPrizeInfo;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewDisTop;
@@ -40,6 +43,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if (self.fromSchemeType  == SchemeTypeFaqiGenDan) {
+        self.touzhuBtn.hidden = YES;
+        costTypeSelectView.hidden = YES;
+        self.widthTouzhu.constant = 0;
+    }else{
+        costTypeSelectView.hidden = NO;
+        self.touzhuBtn.hidden = NO;
+        self.widthTouzhu.constant = 60;
+    }
     if ([self isIphoneX]) {
         self.viewDisTop.constant = 88;
         self.viewDisBottom .constant = 34;
@@ -362,11 +374,7 @@
     [self showLoadingText:@"正在提交订单"];
     
     self.transction.maxPrize = 1.00;
-    if (sender.tag == 4) {
-        self.transction.schemeType = SchemeTypeFaqiGenDan;
-    }else{
-        self.transction.schemeType = SchemeTypeZigou;
-    }
+   
     self.transction.units = self.transction.betCount;
     if (btnZhenShiTouzhu.selected == YES) {
         self.transction.costType = CostTypeCASH;
@@ -376,7 +384,15 @@
     
     self.transction.secretType = SecretTypeFullOpen;
     self.transction.betCost = self.transction.betCount * 2 * [self.transction.beitou integerValue];
-    
+    if (sender.tag == 4) {
+        self.transction.schemeType = SchemeTypeFaqiGenDan;
+        if (self.transction.betCost < 10) {
+            [self showPromptText:@"发单金额不能小于10元" hideAfterDelay:1.9];
+            return;
+        }
+    }else{
+        self.transction.schemeType = SchemeTypeZigou;
+    }
     [self.lotteryMan betLotteryScheme:self.transction];
 }
 

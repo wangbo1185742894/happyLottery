@@ -12,6 +12,7 @@
 @interface FollowListViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UILabel *labPersonInfo;
 @property (weak, nonatomic) IBOutlet UITableView *tabFollowListView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topDis;
 
 @end
 
@@ -20,6 +21,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setTableView];
+    if ([self isIphoneX]) {
+        self.topDis.constant = 88;
+    }else{
+        self.topDis.constant = 64 ;
+    }
     self.labPersonInfo.text = [NSString stringWithFormat:@"当前用户跟单%ld人次",self.followListDtos.count];
 }
 

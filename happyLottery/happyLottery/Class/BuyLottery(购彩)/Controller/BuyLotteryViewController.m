@@ -179,10 +179,8 @@
 
 -(void)startActivity{
     WebViewController *webVC = [[WebViewController alloc]init];
-    [[NSUserDefaults standardUserDefaults] setValue:@1 forKey:KAppSignModelShow];
     
     webVC.hidesBottomBarWhenPushed = YES;
-    activityInfoView.hidden = YES;
     webVC.pageUrl = appSignModel.skipUrl;
     [self.navigationController pushViewController:webVC animated:YES];
 }

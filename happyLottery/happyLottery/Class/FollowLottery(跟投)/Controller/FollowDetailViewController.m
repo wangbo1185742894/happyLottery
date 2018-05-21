@@ -14,9 +14,11 @@
 
 @interface FollowDetailViewController ()<SelectViewDelegate,LotteryManagerDelegate>
 @property (weak, nonatomic) IBOutlet MGLabel *labDeadLine;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topDis;
 @property (weak, nonatomic) IBOutlet UIButton *btnGuanzhu;
 @property (weak, nonatomic) IBOutlet UIImageView *labPersonIcon;
 @property (weak, nonatomic) IBOutlet UILabel *labPersonName;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomDis;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *btnBeiSelect;
 @property (weak, nonatomic) IBOutlet UILabel *labQitou;
 @property (weak, nonatomic) IBOutlet UILabel *labGentou;
@@ -43,6 +45,13 @@
             btn.selected = YES;
         }
         [self setBtnBoard:btn];
+    }
+    if ([self isIphoneX]) {
+        _topDis.constant = 88;
+        _bottomDis.constant = 38;
+    }else{
+        _topDis.constant = 64;
+        _bottomDis.constant = 0;
     }
     self.title = @"跟单详情";
     self.lotteryMan.delegate = self;

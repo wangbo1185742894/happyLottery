@@ -25,12 +25,6 @@
                     <nil key="textColor"/>
                     <color key="highlightedColor" cocoaTouchSystemColor="darkTextColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="activitymoney.png" translatesAutoresizingMaskIntoConstraints="NO" id="ISE-1v-qSO">
-                    <rect key="frame" x="0.0" y="0.0" width="100" height="60"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="100" id="x1Z-DV-hNq"/>
-                    </constraints>
-                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lgi-6h-HYV">
                     <rect key="frame" x="285" y="25" width="80" height="30"/>
                     <color key="backgroundColor" red="0.0" green="0.78431372549019607" blue="0.58431372549019611" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -42,7 +36,7 @@
                     <state key="normal" title="限时领取"/>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ocv-Ai-f02">
-                    <rect key="frame" x="105" y="15" width="175" height="45"/>
+                    <rect key="frame" x="135" y="15" width="145" height="45"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="p8b-Ho-Csk"/>
                     </constraints>
@@ -51,7 +45,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcm-9F-B4E">
-                    <rect key="frame" x="25" y="32" width="50" height="18"/>
+                    <rect key="frame" x="55" y="32" width="50" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="O7z-DW-Rou"/>
                         <constraint firstAttribute="width" constant="50" id="l2D-Ac-caa"/>
@@ -61,26 +55,32 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="05A-3r-Dqs">
-                    <rect key="frame" x="0.0" y="0.0" width="35" height="20"/>
+                    <rect key="frame" x="0.0" y="15" width="30" height="45"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="20" id="Zho-bK-33d"/>
-                        <constraint firstAttribute="width" constant="35" id="h24-It-utz"/>
+                        <constraint firstAttribute="height" constant="45" id="DvL-Lb-lgd"/>
+                        <constraint firstAttribute="width" constant="30" id="RjO-n4-iCK"/>
                     </constraints>
-                    <inset key="imageEdgeInsets" minX="-15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <state key="normal" image="activityshut.png"/>
                     <connections>
                         <action selector="actionClose:" destination="iN0-l3-epB" eventType="touchUpInside" id="PIa-EM-aHZ"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="activitymoney.png" translatesAutoresizingMaskIntoConstraints="NO" id="ISE-1v-qSO">
+                    <rect key="frame" x="30" y="0.0" width="100" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="x1Z-DV-hNq"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <constraints>
                 <constraint firstItem="hcm-9F-B4E" firstAttribute="centerX" secondItem="ISE-1v-qSO" secondAttribute="centerX" id="2ZQ-PM-43H"/>
                 <constraint firstAttribute="trailing" secondItem="gne-KR-MJQ" secondAttribute="trailing" id="2wi-8T-6ag"/>
-                <constraint firstItem="05A-3r-Dqs" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="3ub-xk-bgw"/>
                 <constraint firstAttribute="bottom" secondItem="Lgi-6h-HYV" secondAttribute="bottom" constant="5" id="6C3-Od-U9m"/>
+                <constraint firstItem="05A-3r-Dqs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="80q-V6-wIm"/>
                 <constraint firstAttribute="trailing" secondItem="Lgi-6h-HYV" secondAttribute="trailing" constant="10" id="Chq-4c-Y2p"/>
                 <constraint firstItem="ISE-1v-qSO" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="CtU-f8-Yl0"/>
-                <constraint firstItem="ISE-1v-qSO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="PHd-MN-8mw"/>
+                <constraint firstItem="ISE-1v-qSO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="PHd-MN-8mw"/>
                 <constraint firstItem="Ocv-Ai-f02" firstAttribute="leading" secondItem="ISE-1v-qSO" secondAttribute="trailing" constant="5" id="TIO-U1-pfK"/>
                 <constraint firstAttribute="bottom" secondItem="hcm-9F-B4E" secondAttribute="bottom" constant="10" id="fGU-LM-vRJ"/>
                 <constraint firstAttribute="bottom" secondItem="ISE-1v-qSO" secondAttribute="bottom" id="fS8-wu-uNn"/>
@@ -88,6 +88,7 @@
                 <constraint firstItem="Lgi-6h-HYV" firstAttribute="leading" secondItem="Ocv-Ai-f02" secondAttribute="trailing" constant="5" id="pe4-XR-syw"/>
                 <constraint firstItem="05A-3r-Dqs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="rQs-dm-cFD"/>
                 <constraint firstItem="gne-KR-MJQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="uiS-IO-Y3h"/>
+                <constraint firstAttribute="bottom" secondItem="05A-3r-Dqs" secondAttribute="bottom" id="vi9-Ha-UyE"/>
                 <constraint firstAttribute="bottom" secondItem="gne-KR-MJQ" secondAttribute="bottom" id="wsV-w0-AUb"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

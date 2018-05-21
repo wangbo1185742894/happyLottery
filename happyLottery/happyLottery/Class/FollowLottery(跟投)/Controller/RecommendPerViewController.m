@@ -15,6 +15,7 @@
 @interface RecommendPerViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate>
 
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topDis;
 @property(nonatomic,strong)NSMutableArray <RecomPerModel *> * personArray;
 
 @property (weak, nonatomic) IBOutlet UITableView *personList;
@@ -30,7 +31,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    if ([self isIphoneX]) {
+        _topDis .constant = -44;
+    }else{
+        _topDis.constant = -20;
+    }
+  
     self.personList.delegate = self;
     self.personList.dataSource = self;
     [self.personList registerNib:[UINib nibWithNibName:KRecomPerTableViewCell bundle:nil] forCellReuseIdentifier:KRecomPerTableViewCell];

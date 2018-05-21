@@ -773,6 +773,7 @@ typedef enum : NSUInteger {
     
     JCLQTouZhuController *touzhuVC = [[JCLQTouZhuController alloc]init];
     touzhuVC.lottery = self.lottery;
+    touzhuVC.fromSchemeType = self.fromSchemeType;
     touzhuVC.transaction = transaction;
     [self.navigationController pushViewController:touzhuVC animated:YES];
 }

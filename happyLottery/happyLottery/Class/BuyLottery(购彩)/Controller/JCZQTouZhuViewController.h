@@ -11,7 +11,7 @@
 #import "SchemeCashPayment.h"
 #import "LoginViewController.h"
 @interface JCZQTouZhuViewController : BaseViewController
-
+@property(nonatomic,assign)SchemeType fromSchemeType;
 @property(nonatomic,strong)JCZQTranscation *transction;
 
 @end
