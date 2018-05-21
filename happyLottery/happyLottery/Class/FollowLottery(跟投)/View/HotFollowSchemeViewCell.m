@@ -173,7 +173,7 @@
             
         }
         self.labPersonHis.text = [NSString stringWithFormat:@"近%ld中%ld",wonState.count,totalWon];
-        if (wonState.count/totalWon<2 &&totalWon!= 0 ) {
+        if (totalWon!= 0 && wonState.count/totalWon<2) {
             self.labPersonHis.hidden = NO;
         } else {
             self.labPersonHis.hidden = YES;
