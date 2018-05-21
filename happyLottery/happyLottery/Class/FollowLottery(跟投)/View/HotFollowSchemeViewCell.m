@@ -163,7 +163,8 @@
         }
     }
     if (model.recent_won .length == 0) {
-        self.labPersonHis.text  = @"近0中0";
+//        self.labPersonHis.text  = @"近0中0"
+        self.labPersonHis.hidden = YES;  //近几中几标签大于50%才显示;
     }else{
         NSArray *wonState = [model.recent_won componentsSeparatedByString:@","];
         NSInteger totalWon = 0;
