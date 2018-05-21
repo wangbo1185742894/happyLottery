@@ -259,7 +259,7 @@
     CGFloat optionviewCellheight = 38;
     CGSize mainSize = [UIScreen mainScreen].bounds.size;
     if (optionView == nil) {
-        optionView = [[OptionSelectedView alloc] initWithFrame:CGRectMake(mainSize.width - optionviewWidth, DisTop, optionviewWidth, optionviewCellheight * titleArr.count) andTitleArr:titleArr];
+        optionView = [[OptionSelectedView alloc] initWithFrame:CGRectMake(mainSize.width - optionviewWidth-45, DisTop, optionviewWidth, optionviewCellheight * titleArr.count) andTitleArr:titleArr];
     }else{
         optionView.hidden = NO;
     }

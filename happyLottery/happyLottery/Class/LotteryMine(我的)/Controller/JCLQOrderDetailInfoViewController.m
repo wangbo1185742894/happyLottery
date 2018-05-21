@@ -109,7 +109,11 @@
     if ([self.lotteryCode isEqualToString:@"JCGYJ"]||[self.lotteryCode isEqualToString:@"JCGJ"]) {
         [cell reloadDataGYJ:dic];
     }else{
-        [cell reloadData:dic];
+        if ([self.fromView isEqualToString:@"FOLLOW_INIT"]) {
+            [cell reloadDataFollowInit:dic];
+        }else {
+            [cell reloadData:dic];
+        }
     } 
     return cell;
 }  

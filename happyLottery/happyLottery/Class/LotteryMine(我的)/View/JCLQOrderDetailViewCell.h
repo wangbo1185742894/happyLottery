@@ -21,11 +21,14 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *disLeftPlayTypeContent;
 @property (weak, nonatomic) IBOutlet UILabel *labPlayType;
 @property (weak, nonatomic) IBOutlet UIButton *btnLeshanCode;
+@property (weak, nonatomic) IBOutlet UILabel *labelTouTitle;
 
 
 -(void)reloadData:(NSDictionary *)dic;
 
 -(void)reloadDataGYJ:(NSDictionary *)dic;
+
+- (void)reloadDataFollowInit:(NSDictionary *)dic;
 
 
 -(CGFloat)getCellHeight:(NSDictionary*)dic;
