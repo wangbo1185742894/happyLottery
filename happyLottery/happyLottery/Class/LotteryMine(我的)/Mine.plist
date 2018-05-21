@@ -50,6 +50,34 @@
 			<false/>
 			<key>needLogin</key>
 			<true/>
+			<key>title</key>
+			<string>我的跟单</string>
+			<key>icon</key>
+			<string>follow</string>
+			<key>actionClassName</key>
+			<string>MyPostSchemeViewController</string>
+			<key>ShowIconRight</key>
+			<string>1</string>
+		</dict>
+		<dict>
+			<key>showRedPoint</key>
+			<false/>
+			<key>needLogin</key>
+			<true/>
+			<key>title</key>
+			<string>我的关注</string>
+			<key>icon</key>
+			<string>attentionperson</string>
+			<key>actionClassName</key>
+			<string>MyAttendViewController</string>
+			<key>ShowIconRight</key>
+			<string>1</string>
+		</dict>
+		<dict>
+			<key>showRedPoint</key>
+			<false/>
+			<key>needLogin</key>
+			<true/>
 			<key>ShowIconRight</key>
 			<string>1</string>
 			<key>actionClassName</key>

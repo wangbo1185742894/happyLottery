@@ -709,6 +709,12 @@ if (index == _odd_NumArrayContent.count-1) {
         submitParaDic[@"sponsorCost"] = [NSString stringWithFormat:@"%.2f",self.sponsorCost];
         submitParaDic[@"baodiCopies"] =[NSString stringWithFormat:@"%ld",(long)self.baodiCopies];
         submitParaDic[@"baodiCost"] = [NSString stringWithFormat:@"%.2f",self.baodiCopies *self.minSubCost];
+    }else if(self.schemeType == SchemeTypeFaqiGenDan){
+        submitParaDic[@"sponsorCopies"] = @"1";
+        submitParaDic[@"sponsorCost"] = betcost;
+        submitParaDic[@"subCopies"] = @"1";
+        submitParaDic[@"subscribedCost"] = betcost;
+        
     }
 
     return submitParaDic;

@@ -13,6 +13,7 @@
 #import "SSQPlayViewController.h"
 #import "CTZQPlayViewController.h"
 #import "DiscoverViewController.h"
+#import "TopUpsViewController.h"
 #import "WBAdsImgView.h"
 #import "JCZQPlayViewController.h"
 #import "HomeMenuItemView.h"
@@ -26,6 +27,8 @@
 #import "WBBifenZhiboViewController.h"
 #import "HomeJumpViewController.h"
 #import "UMChongZhiViewController.h"
+#import "MyCouponViewController.h"
+#import "AppSignModel.h"
 #import "LoadData.h"
 #import "NewsModel.h"
 #import "ADSModel.h"
@@ -35,20 +38,24 @@
 #import "OpenRedPopView.h"
 #import "MyRedPacketViewController.h"
 #import "LotteryAreaViewController.h"
+#import "ActivityInfoView.h"
+#import "WebViewController.h"
 #define KNewsListCell @"NewsListCell"
 #define AnimationDur 0.3
-
+#define KAppSignModelShow @"appSignModelShow"
+#define KAppSignModelUrl @"appSignModelUrl"
 
 @interface BuyLotteryViewController ()<WBAdsImgViewDelegate,HomeMenuItemViewDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,NewsListCellDelegate,OpenRedPopViewDelegate,MemberManagerDelegate,VersionUpdatingPopViewDelegate,NetWorkingHelperDelegate>
 {
     NSMutableArray  <JczqShortcutModel *>*JczqShortcutList;
     NSMutableArray  <JczqShortcutModel *>*colloectList;
+    ActivityInfoView *activityInfoView;
     __weak IBOutlet UIView *viewNews;
     __weak IBOutlet UIView *scrContentView;
     __weak IBOutlet NSLayoutConstraint *homeViewHeight;
     WBAdsImgView *adsView;
     UIView  *menuView;
-
+    AppSignModel *appSignModel;
     __weak IBOutlet UIView *lotteryPlayView;
     __weak IBOutlet NSLayoutConstraint *btnGyjHeight;
     OpenRedPopView *popView;
@@ -93,10 +100,25 @@
 @property(nonatomic,strong)Lottery *lottery;
 @end
 
-@implementation BuyLotteryViewController
+@implementation BuyLotteryViewController{
+    UINavigationController *navgC;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    CGFloat bottomheight;
+    
+    if ([self isIphoneX]) {
+        bottomheight = 83;
+    }else{
+        bottomheight = 49;
+    }
+    activityInfoView = [[ActivityInfoView alloc ]initWithFrame:CGRectMake(0, KscreenHeight - bottomheight - 70, KscreenWidth, 70)];
+    activityInfoView.frame = CGRectMake(0, KscreenHeight - bottomheight - 70, KscreenWidth, 70);
+    [activityInfoView setStartBtnTarget:self andAction:@selector(startActivity)];
+
+    activityInfoView.hidden = YES;
+    
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(jumpToPlayVC:) name:@"NSNotificationJumpToPlayVC" object:nil];
 #ifdef APPSTORE
     [self appStoreUpadata];
@@ -119,6 +141,7 @@
     [self setNewsView];
     [self gyjButtonView];
     [self setDLTCTZQView];
+    [self .lotteryMan getAppSign:nil];
     [self setTableView];
         openRedpacketButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     
@@ -126,6 +149,41 @@
 //    [self.view insertSubview:redpacketView aboveSubview:self.tabBarController.tabBar];
 }
 
+-(void)gotAppSign:(NSDictionary *)personList errorMsg:(NSString *)msg{
+    if (personList == nil) {
+        [self showPromptText:msg hideAfterDelay:1.7];
+//        activityInfoView.hidden = YES;
+        return;
+    }
+    BOOL isNotShow =[[[NSUserDefaults standardUserDefaults] objectForKey:KAppSignModelShow] boolValue];
+    NSString * modelUrl =[[NSUserDefaults standardUserDefaults] objectForKey:KAppSignModelUrl];
+    appSignModel = [[AppSignModel alloc]initWith:personList];
+    
+    activityInfoView.labActivityInfo.text = appSignModel.describe;
+    if (modelUrl == nil) {
+        activityInfoView.hidden = NO;
+    }else{
+        [[NSUserDefaults standardUserDefaults] setValue:@0  forKey:KAppSignModelShow];
+        if ([modelUrl isEqualToString:appSignModel.skipUrl]) {
+            activityInfoView.hidden =  isNotShow;
+        }else{
+            activityInfoView.hidden = NO;
+        }
+    }
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:KAppSignModelShow] == nil) {
+        [[NSUserDefaults standardUserDefaults] setValue:@0  forKey:KAppSignModelShow];
+    }
+    [[NSUserDefaults standardUserDefaults] setValue:appSignModel.skipUrl forKey:KAppSignModelUrl];
+    [activityInfoView.imgRedIcon sd_setImageWithURL:[NSURL URLWithString:appSignModel.imageUrl]];
+}
+
+-(void)startActivity{
+    WebViewController *webVC = [[WebViewController alloc]init];
+    
+    webVC.hidesBottomBarWhenPushed = YES;
+    webVC.pageUrl = appSignModel.skipUrl;
+    [self.navigationController pushViewController:webVC animated:YES];
+}
 
 //修改，，，，，，，，，，
 - (void)gyjButtonHiddenOrNot{
@@ -338,7 +396,7 @@
 
 }
 
--(void)goToYunshiWithInfo:(ADSModel *)itemIndex{
+-(void)goToYunshiWithInfo:(ADSModel *)itemIndex navigation:(UINavigationController *)navgC{
     NSString *keyStr = itemIndex.thumbnailCode;
     
     if (keyStr == nil) {
@@ -349,13 +407,13 @@
     }
     
     if([keyStr isEqualToString:@"A401"]){
-        self.tabBarController.selectedIndex = 2;
+        self.tabBarController.selectedIndex = 3;
         return;
     }else if([keyStr isEqualToString:@"A402"]){
-        self.tabBarController.selectedIndex = 1;
+        self.tabBarController.selectedIndex = 2;
         return;
     }else if([keyStr isEqualToString:@"A201"]){
-        self.tabBarController.selectedIndex = 3;
+        self.tabBarController.selectedIndex = 4;
         return;
     }else if ([keyStr isEqualToString:@"A403"]){
         HomeJumpViewController *disVC = [[HomeJumpViewController alloc]init];
@@ -370,28 +428,48 @@
         disVC.infoModel = model;
         disVC.hidesBottomBarWhenPushed = YES;
         disVC.isNeedBack = YES;
-        [self.navigationController pushViewController:disVC animated:YES];
+        if (navgC == nil) {
+            [self.navigationController pushViewController:disVC animated:YES];
+        }
+        else {
+            [navgC pushViewController:disVC animated:YES];
+        }
         return;
     }else if ([keyStr isEqualToString:@"A414"]){
         WebCTZQHisViewController * playViewVC = [[WebCTZQHisViewController alloc]init];
         NSString *strUrl = [NSString stringWithFormat:@"%@/app/award/dltOpenAward",H5BaseAddress];
         playViewVC.pageUrl = [NSURL URLWithString:strUrl];
         playViewVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:playViewVC animated:YES];
+        if (navgC == nil) {
+            [self.navigationController pushViewController:playViewVC animated:YES];
+        }
+        else {
+            [navgC pushViewController:playViewVC animated:YES];
+        }
         return;
     }else if ([keyStr isEqualToString:@"A415"]){
         WebCTZQHisViewController * playViewVC = [[WebCTZQHisViewController alloc]init];
         NSString *strUrl = [NSString stringWithFormat:@"%@/app/award/sfcOpenAward",H5BaseAddress];
         playViewVC.pageUrl = [NSURL URLWithString:strUrl];
         playViewVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:playViewVC animated:YES];
+        if (navgC == nil) {
+            [self.navigationController pushViewController:playViewVC animated:YES];
+        }
+        else {
+            [navgC pushViewController:playViewVC animated:YES];
+        }
         return;
     }else if ([keyStr isEqualToString:@"A412"]){
         WebCTZQHisViewController * playViewVC = [[WebCTZQHisViewController alloc]init];
         NSString *strUrl = [NSString stringWithFormat:@"%@/app/award/jzOpenAward",H5BaseAddress];
         playViewVC.pageUrl = [NSURL URLWithString:strUrl];
         playViewVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:playViewVC animated:YES];
+        if (navgC == nil) {
+            [self.navigationController pushViewController:playViewVC animated:YES];
+        }
+        else {
+            [navgC pushViewController:playViewVC animated:YES];
+        }
         return;
     }else if ([keyStr isEqualToString:@"A009"]){
         [self actionJcgyj:nil];
@@ -432,15 +510,19 @@
     
     
     baseVC.hidesBottomBarWhenPushed = YES;
-    
-    [self.navigationController pushViewController:baseVC animated:YES];
+    if (navgC == nil) {
+        [self.navigationController pushViewController:baseVC animated:YES];
+    } else {
+        [navgC pushViewController:baseVC animated:YES];
+    }
+//    UINavigationController *curNavVC = self.tabBarController.viewControllers[self.tabBarController.selectedIndex];
+//    [curNavVC pushViewController:baseVC animated:YES];
 }
 
-
--(void)adsImgViewClick:(ADSModel *)itemIndex{
+-(void)adsImgViewClick:(ADSModel *)itemIndex navigation:(UINavigationController *)navgC{
     NSString *jumpType;
     
-    
+    navgC = navgC;
     if (itemIndex.imageContentType != nil) {
         jumpType = [NSString stringWithFormat:@"%@",itemIndex.imageContentType];
     }else{
@@ -451,14 +533,21 @@
         return;
     }else if ([jumpType isEqualToString:@"APP"]) {//内部视图跳转
         
-        [self goToYunshiWithInfo:itemIndex];
+        [self goToYunshiWithInfo:itemIndex navigation:navgC];
         
     }else if([jumpType isEqualToString:@"EDITOR"]||[jumpType isEqualToString:@"H5PAGE"]){
         HomeJumpViewController *jumpVC = [[HomeJumpViewController alloc] initWithNibName:@"HomeJumpViewController" bundle:nil];
 
         jumpVC.infoModel = itemIndex;
         jumpVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:jumpVC animated:YES];
+//        [self.navigationController pushViewController:jumpVC animated:YES];
+        if (navgC == nil) {
+            [self.navigationController pushViewController:jumpVC animated:YES];
+        } else {
+            [navgC pushViewController:jumpVC animated:YES];
+        }
+//        UINavigationController *curNavVC = self.tabBarController.viewControllers[self.tabBarController.selectedIndex];
+//        [curNavVC pushViewController:jumpVC animated:YES];
     }
 }
 
@@ -469,6 +558,8 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    //    activityInfoView.hidden = YES;
+    [self.view addSubview:activityInfoView];
     self.navigationController.navigationBar.hidden = YES;
     if (self.tabBarController.tabBar.hidden == YES) {
         self.tabBarController.tabBar.hidden = NO;
@@ -607,7 +698,12 @@
     GYJPlayViewController *gyjPlayVc = [[GYJPlayViewController alloc]init];
     gyjPlayVc.hidesBottomBarWhenPushed = YES;
     gyjPlayVc.navigationController.navigationBar.hidden = YES;
-    [self.navigationController pushViewController:gyjPlayVc animated:YES];
+    if (navgC == nil) {
+        [self.navigationController pushViewController:gyjPlayVc animated:YES];
+    }
+    else {
+        [navgC pushViewController:gyjPlayVc animated:YES];
+    }
 }
 
 //"cardCode":"xxx","matchId":"x","isCollect":"x"
@@ -935,7 +1031,12 @@
     playVC.hidesBottomBarWhenPushed = YES;
     //    _lotterySelected.currentRound = round;
     playVC.lottery = lotteryDS[1];
-    [self.navigationController pushViewController:playVC animated:YES];
+    if (navgC == nil) {
+        [self.navigationController pushViewController:playVC animated:YES];
+    }
+    else {
+        [navgC pushViewController:playVC animated:YES];
+    }
     
 }
 
@@ -945,7 +1046,12 @@
     SSQPlayViewController *playVC = [[SSQPlayViewController alloc] init];
     playVC.hidesBottomBarWhenPushed = YES;
     playVC.lottery = lotteryDS[10];
-    [self.navigationController pushViewController:playVC animated:YES];
+    if (navgC == nil) {
+        [self.navigationController pushViewController:playVC animated:YES];
+    }
+    else {
+        [navgC pushViewController:playVC animated:YES];
+    }
 }
 
 
@@ -961,7 +1067,12 @@
     }
     playVC.hidesBottomBarWhenPushed = YES;
     playVC.lottery = lotteryDS[7];
-    [self.navigationController pushViewController:playVC animated:YES];
+    if (navgC == nil) {
+        [self.navigationController pushViewController:playVC animated:YES];
+    }
+    else {
+        [navgC pushViewController:playVC animated:YES];
+    }
 }
 - (IBAction)actionJCLQ:(UIButton *)sender {
     JCLQPlayController * playViewVC = [[JCLQPlayController alloc]init];
@@ -1013,6 +1124,21 @@
             [self actionJCLQ:nil];
         });
     }
+    if ([playType isEqualToString:@"YHQ"]) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            MyCouponViewController *couponVC = [[MyCouponViewController alloc]init];
+            [self .navigationController pushViewController:couponVC animated:YES];
+        });
+    }
+
+    if ([playType isEqualToString:@"CZ"]) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            TopUpsViewController *topUpsVC = [[TopUpsViewController alloc]init];
+            [self.navigationController pushViewController:topUpsVC animated:YES];
+        });
+    }
+
+    
 }
 
 

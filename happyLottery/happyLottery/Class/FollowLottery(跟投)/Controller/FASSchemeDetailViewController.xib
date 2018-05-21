@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FASSchemeDetailViewController">
+            <connections>
+                <outlet property="detailTableView" destination="EDd-Fi-95v" id="VsZ-aH-6aH"/>
+                <outlet property="liJiZhiFuBtn" destination="1dX-Ya-aZR" id="zm0-4J-Ptj"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="EDd-Fi-95v">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1dX-Ya-aZR">
+                    <rect key="frame" x="20" y="603" width="335" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="G3C-h1-75U"/>
+                    </constraints>
+                    <state key="normal" title="立即支付" backgroundImage="schemedetailbutton.png"/>
+                    <connections>
+                        <action selector="actionToZhiFu:" destination="-1" eventType="touchUpInside" id="cjB-Mp-vR9"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="EDd-Fi-95v" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Ky1-6e-vSa"/>
+                <constraint firstAttribute="trailing" secondItem="EDd-Fi-95v" secondAttribute="trailing" id="Lsa-e8-Kcp"/>
+                <constraint firstAttribute="trailing" secondItem="1dX-Ya-aZR" secondAttribute="trailing" constant="20" id="W4U-1X-I2M"/>
+                <constraint firstItem="1dX-Ya-aZR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="itR-pH-avl"/>
+                <constraint firstAttribute="bottom" secondItem="EDd-Fi-95v" secondAttribute="bottom" id="joZ-rf-4cc"/>
+                <constraint firstItem="EDd-Fi-95v" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="sug-vl-6oN"/>
+                <constraint firstAttribute="bottom" secondItem="1dX-Ya-aZR" secondAttribute="bottom" constant="20" id="xCs-jj-Siu"/>
+            </constraints>
+            <point key="canvasLocation" x="-155.5" y="32.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="schemedetailbutton.png" width="357" height="44"/>
+    </resources>
+</document>

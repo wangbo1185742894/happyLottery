@@ -10,4 +10,6 @@
 
 @interface JCZQPlayViewController : BaseViewController
 
+@property (assign,nonatomic)SchemeType fromSchemeType;
+
 @end

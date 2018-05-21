@@ -13,9 +13,12 @@
 #import "CTZQSchemeDetailViewController.h"
 #import "GYJSchemeDetailViewController.h"
 #import "JCLQSchemeDetailViewController.h"
+#import "MyPostSchemeViewController.h"
+#import "FASSchemeDetailViewController.h"
 
-@interface PaySuccessViewController ()
-
+@interface PaySuccessViewController ()<LotteryManagerDelegate>
+@property (weak, nonatomic) IBOutlet UIButton *btnPostScheme;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *btnHeightPostScheme;
 @end
 
 @implementation PaySuccessViewController
@@ -23,7 +26,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"预约支付";
-    
+    if (self.schemetype == SchemeTypeGenDan ) {
+         self.btnHeightPostScheme.constant = 0;
+    }else if(self.isShowFaDan){
+        self.btnHeightPostScheme.constant = 44;
+    }else{
+        self.btnHeightPostScheme.constant = 0;
+    }
+    self.lotteryMan.delegate = self;
     if (self.isMoni) {
         self.labChuPiaoimg.text = @"";
     }else{
@@ -35,37 +45,57 @@
 
 }
 
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)actionLookOrder:(id)sender {
-    MyOrderListViewController *myOrderListVC = [[MyOrderListViewController alloc]init];
-    NSMutableArray * vcS = [[NSMutableArray alloc]initWithArray:self.navigationController.viewControllers];
-    [vcS addObject:myOrderListVC];
-    self.navigationController.viewControllers = vcS;
-    if ([self.lotteryName isEqualToString:@"胜负14场"] || [self.lotteryName isEqualToString:@"任选9场"]) {
-        CTZQSchemeDetailViewController *schemeVC = [[CTZQSchemeDetailViewController alloc]init];
-        schemeVC.schemeNO = self.schemeNO;
-        [self.navigationController pushViewController:schemeVC animated:YES];
-    }else if([self.lotteryName isEqualToString:@"大乐透"]||[self.lotteryName isEqualToString:@"双色球"]){
-        DLTSchemeDetailViewController *schemeVC = [[DLTSchemeDetailViewController alloc]init];
-        schemeVC.schemeNO = self.schemeNO;
-        [self.navigationController pushViewController:schemeVC animated:YES];
-    }else if ([self.lotteryName isEqualToString:@"冠军"] || [self.lotteryName isEqualToString:@"冠亚军"]){
-        GYJSchemeDetailViewController *schemeVC = [[GYJSchemeDetailViewController alloc]init];
-        schemeVC.schemeNO = self.schemeNO;
-        [self.navigationController pushViewController:schemeVC animated:YES];
-    }else if ([self.lotteryName isEqualToString:@"竞彩篮球"]){
-        JCLQSchemeDetailViewController *schemeVC = [[JCLQSchemeDetailViewController alloc]init];
-        schemeVC.schemeNO = self.schemeNO;
-        [self.navigationController pushViewController:schemeVC animated:YES];
+   
+    if (self.schemetype == SchemeTypeGenDan) {
+        MyPostSchemeViewController *myOrderListVC = [[MyPostSchemeViewController alloc]init];
+        NSMutableArray * vcS = [[NSMutableArray alloc]initWithArray:self.navigationController.viewControllers];
+        [vcS addObject:myOrderListVC];
+        self.navigationController.viewControllers = vcS;
+        FASSchemeDetailViewController *detailCV = [[FASSchemeDetailViewController alloc]init];
+        detailCV.schemeNo = self.schemeNO;
+        detailCV.schemeType = @"BUY_FOLLOW";
+        [self.navigationController pushViewController:detailCV animated:YES];
+    }else if ( self.schemetype == SchemeTypeFaqiGenDan){
+        MyPostSchemeViewController *myOrderListVC = [[MyPostSchemeViewController alloc]init];
+        NSMutableArray * vcS = [[NSMutableArray alloc]initWithArray:self.navigationController.viewControllers];
+        [vcS addObject:myOrderListVC];
+        self.navigationController.viewControllers = vcS;
+        FASSchemeDetailViewController *detailCV = [[FASSchemeDetailViewController alloc]init];
+        detailCV.schemeNo = self.schemeNO;
+        detailCV.schemeType = @"BUY_INITIATE";
+        [self.navigationController pushViewController:detailCV animated:YES];
     }else{
-        SchemeDetailViewController *schemeVC = [[SchemeDetailViewController alloc]init];
-        schemeVC.schemeNO = self.schemeNO;
-        [self.navigationController pushViewController:schemeVC animated:YES];
+        MyOrderListViewController *myOrderListVC = [[MyOrderListViewController alloc]init];
+        NSMutableArray * vcS = [[NSMutableArray alloc]initWithArray:self.navigationController.viewControllers];
+        [vcS addObject:myOrderListVC];
+        self.navigationController.viewControllers = vcS;
+        if ([self.lotteryName isEqualToString:@"胜负14场"] || [self.lotteryName isEqualToString:@"任选9场"]) {
+            CTZQSchemeDetailViewController *schemeVC = [[CTZQSchemeDetailViewController alloc]init];
+            schemeVC.schemeNO = self.schemeNO;
+            [self.navigationController pushViewController:schemeVC animated:YES];
+        }else if([self.lotteryName isEqualToString:@"大乐透"]||[self.lotteryName isEqualToString:@"双色球"]){
+            DLTSchemeDetailViewController *schemeVC = [[DLTSchemeDetailViewController alloc]init];
+            schemeVC.schemeNO = self.schemeNO;
+            [self.navigationController pushViewController:schemeVC animated:YES];
+        }else if ([self.lotteryName isEqualToString:@"冠军"] || [self.lotteryName isEqualToString:@"冠亚军"]){
+            GYJSchemeDetailViewController *schemeVC = [[GYJSchemeDetailViewController alloc]init];
+            schemeVC.schemeNO = self.schemeNO;
+            [self.navigationController pushViewController:schemeVC animated:YES];
+        }else if ([self.lotteryName isEqualToString:@"竞彩篮球"]){
+            JCLQSchemeDetailViewController *schemeVC = [[JCLQSchemeDetailViewController alloc]init];
+            schemeVC.schemeNO = self.schemeNO;
+            [self.navigationController pushViewController:schemeVC animated:YES];
+        }else{
+            SchemeDetailViewController *schemeVC = [[SchemeDetailViewController alloc]init];
+            schemeVC.schemeNO = self.schemeNO;
+            [self.navigationController pushViewController:schemeVC animated:YES];
+        }
+
     }
 
 }
@@ -78,6 +108,25 @@
 -(void)navigationBackToLastPage{
     [self.navigationController popToRootViewControllerAnimated:YES];
 
+}
+- (IBAction)actionPostScheme:(id)sender {
+    MyPostSchemeViewController *myOrderListVC = [[MyPostSchemeViewController alloc]init];
+    myOrderListVC.isFaDan = YES;
+    NSMutableArray * vcS = [[NSMutableArray alloc]initWithArray:self.navigationController.viewControllers];
+    [vcS addObject:myOrderListVC];
+    self.navigationController.viewControllers = vcS;
+    [self.lotteryMan initiateFollowScheme:@{@"schemeNo":self.schemeNO}];
+}
+- (void)initiateFollowScheme:(NSString *)resultStr errorMsg:(NSString *)msg{
+    if(resultStr != nil){
+        [self showPromptText:@"发单成功" hideAfterDelay:1.9];
+        FASSchemeDetailViewController *detailCV = [[FASSchemeDetailViewController alloc]init];
+        detailCV.schemeNo = self.schemeNO;
+        detailCV.schemeType = @"BUY_INITIATE";
+        [self.navigationController pushViewController:detailCV animated:YES];
+    }else{
+        [self showPromptText:msg hideAfterDelay:1.9];
+    }
 }
 
 @end

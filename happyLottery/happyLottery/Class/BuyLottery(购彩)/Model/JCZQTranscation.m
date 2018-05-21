@@ -108,7 +108,14 @@
         submitParaDic[@"baodiCopies"] =[NSString stringWithFormat:@"%ld",(long)self.baodiCopies];
         submitParaDic[@"baodiCost"] = [NSString stringWithFormat:@"%.2f",self.baodiCopies *self.minSubCost];
         
+    }else if(self.schemeType == SchemeTypeFaqiGenDan){
+        submitParaDic[@"sponsorCopies"] = @"1";
+        submitParaDic[@"sponsorCost"] = betcost;
+        submitParaDic[@"subCopies"] = @"1";
+        submitParaDic[@"subscribedCost"] = betcost;
+        
     }
+    submitParaDic[@"multiple"] = self.beitou;
     return submitParaDic;
 }
 

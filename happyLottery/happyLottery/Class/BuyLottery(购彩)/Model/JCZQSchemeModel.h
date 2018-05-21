@@ -7,6 +7,7 @@
 //
 
 #import "BaseModel.h"
+#import "FollowListModel.h"
 
 
 //_trOpenResult    __NSCFString *    @"[{\"RQSPF\":\"1\",\"homeScore\":1,\"guestScore\":0,\"BF\":\"--\",\"BQC\":\"33\",\"handicap\":-1,\"SPF\":\"3\",\"matchKey\":102989,\"guest\":\"普埃布拉\",\"JQS\":\"1\",\"home\":\"莫雷利亚\",\"status\":1},{\"\":\"1\",\"homeScore\":1,\"guestScore\":0,\"BF\":\"--\",\"BQC\":\"33\",\"handicap\":-1,\"SPF\":\"3\",\"matchKey\":102988,\"guest\":\"内卡萨\",\"JQS\":\"1\",\"home\":\"蒂华纳\",\"status\":1}]"    0x0000000101af79c0
@@ -68,11 +69,54 @@
 @property(nonatomic,copy)NSString * trDltOpenResult;
 
 @property(nonatomic,copy)NSString *virtualSp;
+
+
+/******************** 跟单发单信息 *********************/
+
+/** JC投注内容的串关 */
+ @property(nonatomic,copy)NSArray *passType;
+
+/** 发单人昵称 */
+@property(nonatomic,copy)NSString *initiateNickname;
+
+/** 发单人头像 */
+@property(nonatomic,copy)NSString * initiateUrl;
+
+/** 实际盈利 奖金减去佣金*/
+@property(nonatomic,copy)NSString * earnings;
+
+/** 总计跟单人次 */
+@property(nonatomic,copy)NSString * totalFollowCount;
+
+/** 总计获取佣金 */
+@property(nonatomic,copy)NSString * totalCommission;
+
+/** 总计跟单金额*/
+@property(nonatomic,copy)NSString *totalFollowCost;
+
+/** 跟单列表*/
+@property(nonatomic,copy)NSArray <FollowListModel *>  *followListDtos;
+
+@property(nonatomic,copy)NSString * initiateCardCode;
+@property(nonatomic,copy)NSString * trSchemeWinningStatus;
+@property(nonatomic,copy)NSString * sourceSchemeNo;
+@property(nonatomic,copy)NSString * trSchemeTicketStatus;
+@property(nonatomic,copy)NSString * DXF;
+@property(nonatomic,copy)NSString * hilo;
+@property(nonatomic,copy)NSString * RFSF;
+@property(nonatomic,copy)NSString * SF;
+@property(nonatomic,copy)NSString * SFC;
+@property(nonatomic,copy)NSString * trSchemeStatus;
+@property(nonatomic,copy)NSString * trLottery;
+@property(nonatomic,copy)NSString * trCostType;
+
+
 -(NSString *)getSchemeImgState;
 
 -(NSString *)getSchemeState;
 -(CGFloat)getJCZQCellHeight;
 -(CGFloat )getGYJCellHeight;
+-(NSString *)getLotteryByName;
 @end
 
 
@@ -83,9 +127,6 @@
 @property(nonatomic,copy)NSString * pageSize;
 @property(nonatomic,copy)NSString * totalCount;
 @property(nonatomic,copy)NSString * totalPage;
-
-
-
 @end
 
 

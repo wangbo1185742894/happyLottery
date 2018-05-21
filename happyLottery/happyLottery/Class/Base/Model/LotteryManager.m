@@ -1334,4 +1334,362 @@
     
 }
 
+#pragma mark 发单跟单
+
+- (void)listRecommendPer:(NSDictionary *)infoDic categoryCode:(NSString *)categoryCode{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed  && responseJsonStr!= nil && responseJsonStr.length>0) {
+            NSArray  * dataArray = [self objFromJson:responseJsonStr];
+            [self.delegate gotlistRecommend:dataArray errorMsg:response.errorMsg];
+        }else{
+            [self.delegate gotlistRecommend:nil  errorMsg:response.errorMsg];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.delegate gotlistRecommend:nil  errorMsg:@"服务器错误"];
+    };
+    NSString *apiName;
+    NSDictionary *dic;
+    if ([categoryCode isEqualToString:@"Cowman"]) {
+        apiName = APIlistGeniusDto;
+        dic = @{@"params":[self actionEncrypt:[self JsonFromId:infoDic]]};
+    } else if ([categoryCode isEqualToString:@"Redman"]){
+        apiName = APIRedManList;
+        dic = nil;
+    }else {
+        //RedScheme
+        apiName = APIRedSchemeList;
+        dic = nil;
+    }
+    SOAPRequest* request = [self requestForAPI:apiName withParam:dic];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+- (void)initiateFollowScheme:(NSDictionary *)infoDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed  && responseJsonStr!= nil && responseJsonStr.length>0) {
+            [self.delegate initiateFollowScheme:responseJsonStr errorMsg:response.errorMsg];
+        }else{
+            [self.delegate initiateFollowScheme:nil errorMsg:response.errorMsg];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.delegate initiateFollowScheme:nil errorMsg:@"服务器错误"];
+    };
+    
+    SOAPRequest* request = [self requestForAPI:APIInitiateFollowScheme withParam:@{@"params":[self actionEncrypt:[self JsonFromId:infoDic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPISchemeService
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+- (void)listGreatFollow:(NSDictionary *)infoDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed  && responseJsonStr!= nil && responseJsonStr.length>0) {
+            NSArray *personList = [self objFromJson:responseJsonStr];
+            
+            [self.delegate listGreatFollow:personList errorMsg:response.errorMsg];
+        }else{
+            [self.delegate listGreatFollow:nil errorMsg:response.errorMsg];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.delegate listGreatFollow:nil errorMsg:@"服务器错误"];
+    };
+    
+    SOAPRequest* request = [self requestForAPI:APIlistGreatFollow withParam:nil];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+- (void)getHotFollowScheme{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed  && responseJsonStr!= nil && responseJsonStr.length>0) {
+            NSArray *personList = [self objFromJson:responseJsonStr];
+            
+            [self.delegate getHotFollowScheme:personList errorMsg:response.errorMsg];
+        }else{
+            [self.delegate getHotFollowScheme:nil errorMsg:response.errorMsg];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.delegate getHotFollowScheme:nil errorMsg:@"服务器错误"];
+    };
+    
+    SOAPRequest* request = [self requestForAPI:APIGetHotFollowScheme withParam:nil];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPISchemeService
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+- (void)getFollowSchemeByNickName:(NSDictionary *)paraic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed  && responseJsonStr!= nil && responseJsonStr.length>0) {
+            NSArray *personList = [self objFromJson:responseJsonStr];
+            
+            [self.delegate getHotFollowScheme:personList errorMsg:response.errorMsg];
+        }else{
+            [self.delegate getHotFollowScheme:nil errorMsg:response.errorMsg];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.delegate getHotFollowScheme:nil errorMsg:@"服务器错误"];
+    };
+    
+    SOAPRequest* request = [self requestForAPI:APIGetFollowSchemeByNickName withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPISchemeService
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+- (void)followScheme:(NSDictionary *)paraic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed  && responseJsonStr!= nil && responseJsonStr.length>0) {
+            
+            [self.delegate followScheme:responseJsonStr errorMsg:response.errorMsg];
+        }else{
+            [self.delegate followScheme:nil errorMsg:response.errorMsg];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.delegate followScheme:nil errorMsg:@"服务器错误"];
+    };
+    
+    SOAPRequest* request = [self requestForAPI:APIFollowScheme withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPISchemeService
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+
+- (void)getAttentFollowScheme:(NSDictionary *)paraDic
+{
+    
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed) {
+            NSArray *dataArray = [self objFromJson:responseJsonStr];;
+            [self.delegate gotAttentFollowScheme:dataArray errorMsg:response.errorMsg];
+        } else {
+            [self.delegate gotAttentFollowScheme:nil errorMsg:response.errorMsg];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate gotAttentFollowScheme:nil errorMsg:@"服务器错误"];
+    };
+    
+    SOAPRequest *request = [self requestForAPI: APIgetAttentFollowScheme withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPISchemeService
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+- (void)getInitiateInfo:(NSDictionary *)paraDic
+{
+    
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed) {
+            NSDictionary  *infoDic = [Utility objFromJson:responseJsonStr];
+            [self.delegate gotInitiateInfo:infoDic errorMsg:response.errorMsg];
+            
+            
+        } else {
+            [self.delegate gotInitiateInfo:nil errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate gotInitiateInfo:nil errorMsg:@"服务器错误"];
+    };
+    
+    SOAPRequest *request = [self requestForAPI: APIGetInitiateInfo withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+- (void)isAttent:(NSDictionary *)paraDic
+{
+    
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed) {
+            [self.delegate gotisAttent:responseJsonStr errorMsg:response.errorMsg];
+            
+        } else {
+            [self.delegate gotisAttent:nil errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate gotisAttent:nil errorMsg:@"服务器错误"];
+    };
+    
+    SOAPRequest *request = [self requestForAPI: APIIsAttent withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+
+
+- (void)attentMember:(NSDictionary *)paraDic
+{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed) {
+            [self.delegate gotAttentMember:responseJsonStr errorMsg:response.errorMsg];
+        } else {
+            [self.delegate gotAttentMember:nil errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        
+        [self.delegate gotAttentMember:nil errorMsg:@"服务器错误"];
+    };
+    
+    
+    SOAPRequest *request = [self requestForAPI: APIAttentMember withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+- (void)getListAttent:(NSDictionary *)paraDic
+{
+    
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed) {
+            NSArray *dataArray = [self objFromJson:responseJsonStr];;
+            [self.delegate gotListAttent:dataArray errorMsg:response.errorMsg];
+        } else {
+            [self.delegate gotListAttent:nil errorMsg:response.errorMsg];
+
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+
+        [self.delegate gotListAttent:nil errorMsg:@"服务器错误"];
+    };
+    
+
+    SOAPRequest *request = [self requestForAPI: APIgetListAttent withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+- (void)reliefAttent:(NSDictionary *)paraDic {
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed) {
+            [self.delegate gotReliefAttent:responseJsonStr errorMsg:response.errorMsg];
+            
+        } else {
+            [self.delegate gotReliefAttent:nil errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate gotReliefAttent:nil errorMsg:@"服务器错误"];
+    };
+    
+    SOAPRequest *request = [self requestForAPI: APIReliefAttent withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+- (void)getAppSign:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        NSDictionary *paraDic = [Utility objFromJson:responseJsonStr];
+        if (response.succeed) {
+            [self.delegate gotAppSign:paraDic errorMsg:response.errorMsg];
+            
+        } else {
+            [self.delegate gotAppSign:nil errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate gotAppSign:nil errorMsg:@"服务器错误"];
+    };
+    
+    SOAPRequest *request = [self requestForAPI: APIgetAppSign withParam:nil];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIDATA
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
 @end

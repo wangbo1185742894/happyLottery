@@ -12,5 +12,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *labChuPiaoimg;
 @property(nonatomic,strong)NSString *lotteryName;
 @property(assign,nonatomic) BOOL isMoni;
+@property(nonatomic,assign)BOOL isShowFaDan;
 @property(nonatomic,strong)NSString *schemeNO;
+
+@property(assign,nonatomic)SchemeType  schemetype;
 @end

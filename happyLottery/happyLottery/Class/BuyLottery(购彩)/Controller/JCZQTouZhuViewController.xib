@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JCZQTouZhuViewController">
             <connections>
+                <outlet property="bottomHeight" destination="Fw1-t0-LRc" id="HRc-lU-98A"/>
                 <outlet property="btnMoniTouzhu" destination="RUA-J6-5t7" id="JHQ-iL-73L"/>
                 <outlet property="btnZhenShiTouzhu" destination="Caz-J9-BJM" id="uaz-PI-kHT"/>
                 <outlet property="chuanfaBtn" destination="Adz-U4-5gQ" id="bUi-R4-5fM"/>
+                <outlet property="costTypeSelectView" destination="IfH-hP-Gpm" id="3Wr-6B-khq"/>
+                <outlet property="fadanBtn" destination="OO6-Nl-Gyn" id="FUP-yY-wnY"/>
                 <outlet property="labPrizeInfo" destination="mGP-od-XJJ" id="ByR-pL-kSL"/>
                 <outlet property="labZhuInfo" destination="Lkk-DG-d5Y" id="BRv-oB-h0O"/>
                 <outlet property="tabSelectedMatch" destination="A9M-oL-sYZ" id="ScV-Qk-BPl"/>
@@ -22,6 +25,7 @@
                 <outlet property="viewBottom" destination="KNy-oP-xbW" id="nDV-Qa-eUa"/>
                 <outlet property="viewDisBottom" destination="vQ2-6N-VfB" id="crZ-d7-GpF"/>
                 <outlet property="viewDisTop" destination="mnj-zM-frQ" id="VWY-0M-7iK"/>
+                <outlet property="widthTouzhu" destination="eNS-Gn-V9N" id="OwS-Jo-GHb"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -58,13 +62,13 @@
                     <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGP-od-XJJ">
-                            <rect key="frame" x="12" y="28" width="258" height="15"/>
+                            <rect key="frame" x="12" y="28" width="35.5" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lkk-DG-d5Y">
-                            <rect key="frame" x="12" y="8" width="258" height="15"/>
+                            <rect key="frame" x="12" y="8" width="35.5" height="15"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="15" id="BYu-iN-DHI"/>
                             </constraints>
@@ -73,16 +77,37 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Nb-bW-hJu">
-                            <rect key="frame" x="280" y="10" width="75" height="30"/>
-                            <color key="backgroundColor" red="0.066666666669999999" green="0.78039215689999997" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
+                            <rect key="frame" x="295" y="10" width="60" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="5kR-sP-EMN"/>
-                                <constraint firstAttribute="width" constant="75" id="eNS-Gn-V9N"/>
+                                <constraint firstAttribute="width" constant="60" id="eNS-Gn-V9N"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <state key="normal" title="确认预约"/>
+                            <state key="normal" title="付款" backgroundImage="huisebiankuang.png">
+                                <color key="titleColor" red="0.55294117647058827" green="0.55294117647058827" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <state key="highlighted" backgroundImage="lvsebiankuang.png">
+                                <color key="titleColor" red="0.0" green="0.78823529410000004" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
                             <connections>
                                 <action selector="actionTouzhu:" destination="-1" eventType="touchUpInside" id="g5l-cj-5sm"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OO6-Nl-Gyn">
+                            <rect key="frame" x="230" y="10" width="60" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="r8Z-3J-WyF"/>
+                                <constraint firstAttribute="width" constant="60" id="yjy-dB-tap"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="发单" backgroundImage="huisebiankuang.png">
+                                <color key="titleColor" red="0.55294117647058827" green="0.55294117647058827" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <state key="highlighted" backgroundImage="lvsebiankuang.png">
+                                <color key="titleColor" red="0.0" green="0.78823529410000004" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="actionTouzhu:" destination="-1" eventType="touchUpInside" id="TwS-1E-lNo"/>
                             </connections>
                         </button>
                     </subviews>
@@ -90,13 +115,12 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="0AA-7Z-brr"/>
                         <constraint firstItem="mGP-od-XJJ" firstAttribute="top" secondItem="Lkk-DG-d5Y" secondAttribute="bottom" constant="5" id="0mH-BS-lBZ"/>
+                        <constraint firstItem="0Nb-bW-hJu" firstAttribute="leading" secondItem="OO6-Nl-Gyn" secondAttribute="trailing" constant="5" id="EvC-LD-JJ6"/>
                         <constraint firstItem="Lkk-DG-d5Y" firstAttribute="top" secondItem="Dwp-Qb-Wm1" secondAttribute="top" constant="8" id="Ftm-Jc-xuG"/>
-                        <constraint firstAttribute="bottom" secondItem="mGP-od-XJJ" secondAttribute="bottom" constant="7" id="SSQ-eu-chu"/>
+                        <constraint firstItem="0Nb-bW-hJu" firstAttribute="top" secondItem="OO6-Nl-Gyn" secondAttribute="top" id="SHt-Ds-gY3"/>
                         <constraint firstItem="mGP-od-XJJ" firstAttribute="leading" secondItem="Dwp-Qb-Wm1" secondAttribute="leading" constant="12" id="X8r-sL-mA5"/>
                         <constraint firstItem="0Nb-bW-hJu" firstAttribute="top" secondItem="Dwp-Qb-Wm1" secondAttribute="top" constant="10" id="agD-le-RKk"/>
-                        <constraint firstItem="0Nb-bW-hJu" firstAttribute="leading" secondItem="Lkk-DG-d5Y" secondAttribute="trailing" constant="10" id="g0h-XD-btn"/>
                         <constraint firstItem="Lkk-DG-d5Y" firstAttribute="leading" secondItem="Dwp-Qb-Wm1" secondAttribute="leading" constant="12" id="ied-cR-9Xb"/>
-                        <constraint firstItem="0Nb-bW-hJu" firstAttribute="leading" secondItem="mGP-od-XJJ" secondAttribute="trailing" constant="10" id="sxe-KT-cwB"/>
                         <constraint firstAttribute="trailing" secondItem="0Nb-bW-hJu" secondAttribute="trailing" constant="20" id="tGA-AT-WAM"/>
                     </constraints>
                 </view>
@@ -201,6 +225,8 @@
         <image name="fengkuangjingcai-monitouzhu-xuanze.png" width="87" height="30"/>
         <image name="fengkuangjingcai-zhenshitouzhu-weixuanze.png" width="87" height="30"/>
         <image name="fengkuangjingcai-zhenshitouzhu-xuanze.png" width="87" height="30"/>
+        <image name="huisebiankuang.png" width="25" height="25"/>
+        <image name="lvsebiankuang.png" width="25" height="25"/>
         <image name="touzhusaishijia.png" width="22" height="22"/>
         <image name="yuanjiaowubiankuangnomal.png" width="81" height="27"/>
     </resources>

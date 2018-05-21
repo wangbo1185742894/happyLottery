@@ -16,4 +16,7 @@
 -(void)refreshDataJCLQ:(JlBetContent  *)modelDic andResult:(NSArray<JCLQOpenResult *> *)resultArray;
 -(NSString *)reloadDataWithRecJCLQ:(NSArray *)option type:(NSString *)playType andMatchKey:(NSString *)matchKey;
 -(NSString *)reloadDataWithRec:(NSArray *)option type:(NSString *)playType andMatchKey:(NSString *)matchKey;
+-(NSString *)getPlayTypeRecEn:(NSString *)playType;
+-(NSString *)reloadDataWithRecResult:(NSArray *)option type:(NSString *)playType;
+-(NSString *)getPlayTypeRec:(NSString *)playType;
 @end

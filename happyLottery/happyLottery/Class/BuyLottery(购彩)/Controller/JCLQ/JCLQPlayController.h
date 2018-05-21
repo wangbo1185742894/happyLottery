@@ -9,8 +9,8 @@
 #import "BaseViewController.h"
 
 @interface JCLQPlayController : BaseViewController
-@property (nonatomic, strong)Lottery
-*lottery;
+@property (assign,nonatomic)SchemeType fromSchemeType;
+@property (nonatomic, strong)Lottery *lottery;
 @property (nonatomic, strong)NSString *tempResource;
 
 @end

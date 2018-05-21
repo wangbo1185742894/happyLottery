@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SchemeContainInfoCell" rowHeight="59" id="KGk-i7-Jjw" customClass="SchemeContainInfoCell">
+            <rect key="frame" x="0.0" y="0.0" width="380" height="59"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="380" height="58.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="赛果" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7s-f0-ztb">
+                        <rect key="frame" x="313" y="0.0" width="60" height="59"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="t3s-pI-0AE"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.47843137250000001" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                <integer key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                <color key="value" red="0.90588235289999997" green="0.90588235289999997" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" insetsLayoutMarginsFromSafeArea="NO" text="编号004" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ft5-R9-qvW">
+                        <rect key="frame" x="9" y="0.0" width="50" height="58.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="pnX-W1-DEo"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.47843137250000001" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                <integer key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                <color key="value" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9c6-Bj-TKs">
+                        <rect key="frame" x="59" y="0.0" width="130" height="58.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="130" id="Oze-tw-8Ii"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.47843137250000001" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                <integer key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                <color key="value" red="0.90588235289999997" green="0.90588235289999997" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="投注内容" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JIe-pT-ZhI">
+                        <rect key="frame" x="189" y="0.0" width="124" height="58.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.47843137250000001" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                <integer key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                <color key="value" red="0.90588235289999997" green="0.90588235289999997" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="JIe-pT-ZhI" firstAttribute="leading" secondItem="9c6-Bj-TKs" secondAttribute="trailing" id="9br-0p-Q7j"/>
+                    <constraint firstAttribute="trailing" secondItem="v7s-f0-ztb" secondAttribute="trailing" constant="7" id="BnB-0b-7Dy"/>
+                    <constraint firstItem="9c6-Bj-TKs" firstAttribute="leading" secondItem="ft5-R9-qvW" secondAttribute="trailing" id="CeZ-rv-n8m"/>
+                    <constraint firstItem="v7s-f0-ztb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="DdK-kE-BLM"/>
+                    <constraint firstAttribute="bottom" secondItem="ft5-R9-qvW" secondAttribute="bottom" id="JNz-4t-wFV"/>
+                    <constraint firstAttribute="bottom" secondItem="v7s-f0-ztb" secondAttribute="bottom" id="Pxf-Ee-Xzb"/>
+                    <constraint firstItem="ft5-R9-qvW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="9" id="QRn-iK-OxU"/>
+                    <constraint firstItem="9c6-Bj-TKs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Qb4-hU-2HR"/>
+                    <constraint firstItem="ft5-R9-qvW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Uuo-Bm-JbO"/>
+                    <constraint firstItem="JIe-pT-ZhI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="XUi-4e-fXT"/>
+                    <constraint firstAttribute="bottom" secondItem="JIe-pT-ZhI" secondAttribute="bottom" id="fUy-XW-C3p"/>
+                    <constraint firstAttribute="bottom" secondItem="9c6-Bj-TKs" secondAttribute="bottom" id="gqL-OJ-TMN"/>
+                    <constraint firstItem="v7s-f0-ztb" firstAttribute="leading" secondItem="JIe-pT-ZhI" secondAttribute="trailing" id="y09-XY-mof"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="betContentLab" destination="JIe-pT-ZhI" id="m95-qr-cIy"/>
+                <outlet property="groupMatchLab" destination="9c6-Bj-TKs" id="FYB-fK-ywz"/>
+                <outlet property="matchResultLab" destination="v7s-f0-ztb" id="upD-Hp-yQt"/>
+                <outlet property="orderNoLab" destination="ft5-R9-qvW" id="5iT-iU-WzQ"/>
+            </connections>
+            <point key="canvasLocation" x="22" y="79.5"/>
+        </tableViewCell>
+    </objects>
+</document>

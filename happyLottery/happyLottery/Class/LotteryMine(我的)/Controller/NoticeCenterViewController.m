@@ -378,17 +378,17 @@
     
     if([keyStr isEqualToString:@"A401"]){
 
-        self.tabBarController.selectedIndex = 2;
+        self.tabBarController.selectedIndex = 3;
         [self.navigationController popToRootViewControllerAnimated:YES];
         return;
     }else if([keyStr isEqualToString:@"A402"]){
 
-        self.tabBarController.selectedIndex = 1;
+        self.tabBarController.selectedIndex = 2;
         [self.navigationController popToRootViewControllerAnimated:YES];
         return;
     }else if ([keyStr isEqualToString:@"A201"]){
 
-             self.tabBarController.selectedIndex = 3;
+             self.tabBarController.selectedIndex = 4;
         [self.navigationController popToRootViewControllerAnimated:YES];
          return;
     }else if([keyStr isEqualToString:@"A000"]){

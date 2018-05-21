@@ -110,6 +110,8 @@
 #define TEXTGRAYCOLOR       RGBCOLOR(72, 72, 72) //偏黑色
 #define TEXTGRAYOrange       RGBCOLOR(255, 153, 0) //偏黑色
 
+
+
 //这是 NavigationBar 的背景颜色
 
 
@@ -188,6 +190,8 @@ sizeWithFont:font constrainedToSize:maxSize lineBreakMode:mode] : CGSizeZero;
 #define KscreenWidth CGRectGetWidth([UIScreen mainScreen].bounds)
 #define KscreenHeight CGRectGetHeight([UIScreen mainScreen].bounds)
 
+#define KBUY_FOLLOW @"BUY_FOLLOW"
+#define KBUY_INITIATE @"BUY_INITIATE"
 #define DisTop ([self isIphoneX]?88:64)
 // 登录名验证：4到16位，数字或英文或下划线
 #define REG_LOGINNAME_STR   @"^[a-zA-Z0-9_\u4e00-\u9fa5]{4,16}+$"

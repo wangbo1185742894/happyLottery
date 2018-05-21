@@ -343,10 +343,17 @@ static SystemSoundID shake_sound_male_id = 0;
     tabAttrs[@"rootVC"] = @"BuyLotteryViewController";
     UINavigationController *homeNavVC = [self tabNavVCWithAttr: tabAttrs];
     
-    tabAttrs[@"tabTitle"] = @"圈子";
-    tabAttrs[@"title"] = @"圈子";
+    tabAttrs[@"tabTitle"] = @"跟投";
+    tabAttrs[@"title"] = @"";
     tabAttrs[@"itemNormal"] = @"quanzi_defealt";
     tabAttrs[@"itemSelected"] = @"quanzi_select";
+    tabAttrs[@"rootVC"] = @"FollowSendViewController";
+    UINavigationController *genTouNavVC = [self tabNavVCWithAttr: tabAttrs];
+    
+    tabAttrs[@"tabTitle"] = @"圈子";
+    tabAttrs[@"title"] = @"圈子";
+    tabAttrs[@"itemNormal"] = @"quanzi_normal";
+    tabAttrs[@"itemSelected"] = @"quanzi_secelcted";
     tabAttrs[@"rootVC"] = @"GroupViewController";
     UINavigationController *gouCaiNavVC = [self tabNavVCWithAttr: tabAttrs];
     
@@ -365,7 +372,7 @@ static SystemSoundID shake_sound_male_id = 0;
     tabAttrs[@"rootVC"] = @"MineViewController";
     UINavigationController *memberNavVC = [self tabNavVCWithAttr: tabAttrs];
     tabBarControllerMain = [[UITabBarController alloc] init];
-    tabBarControllerMain.viewControllers = @[homeNavVC,gouCaiNavVC,faXianNavVC, memberNavVC];
+    tabBarControllerMain.viewControllers = @[homeNavVC,genTouNavVC,gouCaiNavVC,faXianNavVC, memberNavVC];
     tabBarControllerMain.view.frame = CGRectMake(0, 0, self.window.bounds.size.width, self.window.bounds.size.height);
     
     tabBarControllerMain.tabBar.backgroundColor = RGBCOLOR(37, 38, 38);
@@ -376,6 +383,7 @@ static SystemSoundID shake_sound_male_id = 0;
 - (UINavigationController *) tabNavVCWithAttr: (NSDictionary*) attrs {
     UIImage *normalImage = [[UIImage imageNamed: attrs[@"itemNormal"]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     UIImage *selectedImage = [[UIImage imageNamed: attrs[@"itemSelected"]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
     
     UITabBarItem *tabBarItem = [[UITabBarItem alloc] initWithTitle: attrs[@"tabTitle"] image: normalImage selectedImage: selectedImage];
     NSDictionary *normalAttributes = @{NSFontAttributeName: [UIFont systemFontOfSize:12], NSForegroundColorAttributeName: SystemLightGray};
@@ -591,17 +599,17 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
      tabBarController.selectedIndex = 0;
     if([keyStr isEqualToString:@"A401"]){
         
-        tabBarController.selectedIndex = 2;
+        tabBarController.selectedIndex = 3;
         [ delegate.curNavVC  popToRootViewControllerAnimated:YES];
         return;
     }else if([keyStr isEqualToString:@"A402"]){
         
-       tabBarController.selectedIndex = 1;
+       tabBarController.selectedIndex = 2;
         [ delegate.curNavVC  popToRootViewControllerAnimated:YES];
         return;
     }else if ([keyStr isEqualToString:@"A201"]){
         
-        tabBarController.selectedIndex = 3;
+        tabBarController.selectedIndex = 4;
         [ delegate.curNavVC  popToRootViewControllerAnimated:YES];
         return;
     }else if([keyStr isEqualToString:@"A000"]){

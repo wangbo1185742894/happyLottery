@@ -18,31 +18,24 @@
     #define APPUPDATAURL @"http://t.11max.com/Tbz"
 #endif
 
+//#define WSServerURL @"http://118.190.43.29:28000/services%@"
+//#define ServerAddress @"http://124.89.85.110:17085"  //资讯  轮播图 用户图像
+//#define H5BaseAddress @"http://118.190.43.29:28086"
 
-#define WSServerURL @"http://118.190.43.29:28000/services%@"
-#define ServerAddress @"http://124.89.85.110:17085"  //资讯  轮播图 用户图像
-#define H5BaseAddress @"http://118.190.43.29:28086"
+#define ServerAddress @"http://192.168.88.244:8086"  //资讯  轮播图 用户图像
+#define H5BaseAddress @"http://192.168.88.244:18086"
+#define WSServerURL @"http://192.168.88.244:28000/services%@"
 
-//#define ServerAddress @"http://192.168.88.244:8086"  //资讯  轮播图 用户图像
-//#define H5BaseAddress @"http://192.168.88.244:18086"
 
 //#define H5BaseAddress @"http://192.168.88.193:18086"  //谢青服务
 //#define H5BaseAddress @"http://192.168.88.116:18086"  //史少鹏服务
-
 //杨芳本地
 //#define ServerAddress @"http://192.168.88.109:8086"
 
-//外网
-//244服务
-//#define WSServerURL @"http://192.168.88.244:28000/services%@"
-
 //史少鹏服务
 //#define WSServerURL @"http://192.168.88.116:28000/services%@"
-
 //程家宗服务
 //#define WSServerURL @"http://192.168.88.105:28000/services%@"
-
-
 //#define WSServerURL @"http://192.168.88.116:28000/services%@"
 
 
@@ -94,6 +87,19 @@
 #define APIfeedBackUnReadNum         @"feedBackUnReadNum"
 #define APIresetFeedBackReadStatus   @"resetFeedBackReadStatus"
 #define APIgiveShareScore            @"giveShareScore"
+#define APIattentMember              @"attentMember" //关注会员
+#define APIlistGeniusDto             @"listGeniusDto" //获取牛人榜
+#define APIRedManList                 @"redManList"  //获取红人榜
+#define APIRedSchemeList            @"redSchemeList" //获取红单榜
+#define APIlistGreatFollow           @"listGreatFollow" //跟单首页可跟单大师列表
+#define APIGetHotFollowScheme        @"getHotFollowScheme"  // 获取热门发单
+#define APIGetInitiateInfo           @"getInitiateInfo"  //获取发单会员详细信息
+#define APIgetListAttent                              @"listAttent"
+
+#define APIGetFollowSchemeByNickName  @"getFollowSchemeByNickName"
+#define APIIsAttent                   @"isAttent"   //是否关注
+#define APIAttentMember             @"attentMember" //关注会员
+#define APIReliefAttent             @"reliefAttent"  //解除跟单
 
 #define SUBAPIDATA           @"/data"
 #define APISaveClientInfo           @"saveClientInfo"
@@ -127,6 +133,8 @@
 #define APIlistJcgyjItem              @"listJcgyjItem"//获取冠亚军选项（包含不在售的）
 #define APIgetJclqMatch               @"getJclqMatch" //获取竞彩篮球在售赛事
 #define APIgetJclqSp                  @"getJclqSp"  //获取竞彩篮球的sp
+#define APIgetAppSign               @"getAppSign"
+
 
 #define SUBAPISchemeService   @"/scheme"
 #define APIBetLotteryScheme         @"betLotteryScheme"
@@ -140,6 +148,10 @@
 #define APIlistChaseSchemeForApp    @"listChaseSchemeForApp"
 #define APIgetChaseDetailForApp     @"getChaseDetailForApp"
 #define APIchaseWhenStop            @"chaseWhenStop"
+#define APIInitiateFollowScheme     @"initiateFollowScheme"//发单
+#define APIFollowScheme             @"followScheme"//跟单
+#define APIgetAttentFollowScheme    @"getAttentFollowScheme"  //获得关注人的发单
+
 
 
 #define SUBAPITicketService   @"/ticket"

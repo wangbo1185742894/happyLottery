@@ -59,6 +59,19 @@ typedef enum EarningsType{
 - (void) gotJclqSp:(NSArray *)infoArray  errorMsg:(NSString *)msg;//篮球的sp
 - (void) gotSsqTicketOrderDetail:(NSDictionary *)infoArray  errorMsg:(NSString *)msg;//双色球
 - (void) gotJclqTicketOrderDetail:(NSDictionary *)infoArray  errorMsg:(NSString *)msg;//竞彩篮球
+- (void) gotlistRecommend:(NSArray *)infoArray  errorMsg:(NSString *)msg;//牛人，红人，红单榜
+- (void) initiateFollowScheme:(NSString *)resultStr  errorMsg:(NSString *)msg;
+- (void) listGreatFollow:(NSArray  *)personList  errorMsg:(NSString *)msg;
+- (void) getHotFollowScheme:(NSArray  *)personList  errorMsg:(NSString *)msg;
+- (void) gotAttentFollowScheme:(NSArray  *)personList  errorMsg:(NSString *)msg;//关注人的发单
+- (void) gotInitiateInfo:(NSDictionary *)diction  errorMsg:(NSString *)msg;
+- (void) followScheme:(NSString  *)result  errorMsg:(NSString *)msg;
+- (void) gotisAttent:(NSString *)diction  errorMsg:(NSString *)msg;
+- (void) gotAttentMember:(NSString *)diction  errorMsg:(NSString *)msg;
+- (void) gotReliefAttent:(NSString *)diction  errorMsg:(NSString *)msg;
+
+- (void) gotListAttent:(NSArray  *)personList  errorMsg:(NSString *)msg;
+- (void) gotAppSign:(NSDictionary *)personList  errorMsg:(NSString *)msg;
 
 @end
 
@@ -119,6 +132,30 @@ typedef enum EarningsType{
 - (void)getJclqMatch:(NSDictionary *)infoDic;//获取竞彩篮球在售赛事
 - (void)getJclqSp:(NSDictionary *)infoDic;//获取竞彩篮球的sp
 - (void)getJclqTicketOrderDetail:(NSDictionary *)paraDic;//查询订单详情(竞彩篮球)
+
+#pragma mark 发单跟单
+- (void)listRecommendPer:(NSDictionary *)infoDic categoryCode:(NSString *)categoryCode;//获取牛人，红人，红单榜
+
+- (void)initiateFollowScheme:(NSDictionary *)infoDic;
+
+- (void)listGreatFollow:(NSDictionary *)infoDic;
+
+- (void)getHotFollowScheme;
+- (void)getFollowSchemeByNickName:(NSDictionary *)paraic;
+- (void)followScheme:(NSDictionary *)paraic;
+
+- (void)getAttentFollowScheme:(NSDictionary *)paraDic;
+
+- (void)getInitiateInfo:(NSDictionary *)paraDic;
+- (void)getListAttent:(NSDictionary *)paraDic;
+
+- (void)isAttent:(NSDictionary *)paraDic;
+
+- (void)attentMember:(NSDictionary *)paraDic;
+
+- (void)reliefAttent:(NSDictionary *)paraDic;
+
+- (void)getAppSign:(NSDictionary *)paraDic;
 
 @end
 

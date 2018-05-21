@@ -373,6 +373,12 @@
 
 -(void)paySuccess{
     PaySuccessViewController * paySuccessVC = [[PaySuccessViewController alloc]init];
+    paySuccessVC.schemetype = self.schemetype;
+    if(([self.cashPayMemt.lotteryName isEqualToString:@"竞彩足球"] ||[self.cashPayMemt.lotteryName isEqualToString:@"竞彩篮球"]) && self.cashPayMemt.costType == CostTypeCASH && self.cashPayMemt.subscribed >= 10){
+        paySuccessVC.isShowFaDan = YES;
+    }else{
+        paySuccessVC.isShowFaDan = NO;
+    }
     paySuccessVC.lotteryName = self.cashPayMemt.lotteryName;
     paySuccessVC.schemeNO = self.cashPayMemt.schemeNo;
     paySuccessVC.isMoni = self.cashPayMemt.costType == CostTypeSCORE;
@@ -420,7 +426,8 @@
         return;
     }
     
-    for (NSDictionary *itemDic in infoArray) {
+    for (NSInteger i = infoArray.count - 1 ; i > 0 ; i--) {
+        NSDictionary *itemDic = infoArray[i];
         ChannelModel *model = [[ChannelModel alloc]initWith:itemDic];
         if ([model.channelValue boolValue] == YES) {
             [channelList addObject:model];
