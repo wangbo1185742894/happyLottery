@@ -15,6 +15,7 @@
     NSMutableArray <HotSchemeModel *> * schemeList;
 }
 @property (weak, nonatomic) IBOutlet UIButton *btnSearch;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewHeight;
 @property (weak, nonatomic) IBOutlet UITextField *tfSearchKey;
 @property(assign,nonatomic)NSInteger page;
 @property (weak, nonatomic) IBOutlet UITableView *tabSearchResultList;
@@ -25,6 +26,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if ([self isIphoneX]) {
+        self.topViewHeight.constant = 88;
+    }else{
+        self.topViewHeight.constant = 64;
+    }
     self.lotteryMan.delegate = self;
     _page = 0;
     schemeList = [NSMutableArray arrayWithCapacity:0];

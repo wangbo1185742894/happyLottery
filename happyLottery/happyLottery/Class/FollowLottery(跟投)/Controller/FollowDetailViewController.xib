@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FollowDetailViewController">
             <connections>
+                <outlet property="bottomDis" destination="ESj-cY-W0b" id="iNr-fi-Zko"/>
                 <outlet property="btnBetInfo" destination="1dV-b8-9ay" id="h8X-eo-TU1"/>
                 <outlet property="btnGuanzhu" destination="c9Z-E2-mT9" id="DLn-lT-Z6c"/>
                 <outlet property="imgLotteryIcon" destination="1lw-6a-g37" id="mMC-3q-6r0"/>
@@ -23,6 +24,7 @@
                 <outlet property="labQitou" destination="7fJ-yJ-IPm" id="TAQ-Vc-oCS"/>
                 <outlet property="labYujihuibao" destination="Gtm-yZ-Bvk" id="rYy-bQ-45C"/>
                 <outlet property="labZigou" destination="mcZ-qJ-KRo" id="ely-VD-gPU"/>
+                <outlet property="topDis" destination="dlG-js-8gy" id="aD4-Vf-f9q"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="wbSelectView" destination="EYm-96-9Ad" id="vOq-lx-Doz"/>
                 <outletCollection property="btnBeiSelect" destination="5g0-dx-5Hm" id="W30-wf-flJ"/>

@@ -93,6 +93,7 @@
         [self gotisAttent:@"false" errorMsg:nil];
         return;
     }
+
     NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"attentCardCode":schemeDetail.initiateCardCode,@"attentType":@"FOLLOW"};
     [self.lotteryMan isAttent:dic];
 }

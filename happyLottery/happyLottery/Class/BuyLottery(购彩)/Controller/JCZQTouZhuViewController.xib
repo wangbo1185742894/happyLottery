@@ -11,9 +11,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JCZQTouZhuViewController">
             <connections>
+                <outlet property="bottomHeight" destination="Fw1-t0-LRc" id="HRc-lU-98A"/>
                 <outlet property="btnMoniTouzhu" destination="RUA-J6-5t7" id="JHQ-iL-73L"/>
                 <outlet property="btnZhenShiTouzhu" destination="Caz-J9-BJM" id="uaz-PI-kHT"/>
                 <outlet property="chuanfaBtn" destination="Adz-U4-5gQ" id="bUi-R4-5fM"/>
+                <outlet property="costTypeSelectView" destination="IfH-hP-Gpm" id="3Wr-6B-khq"/>
                 <outlet property="fadanBtn" destination="OO6-Nl-Gyn" id="FUP-yY-wnY"/>
                 <outlet property="labPrizeInfo" destination="mGP-od-XJJ" id="ByR-pL-kSL"/>
                 <outlet property="labZhuInfo" destination="Lkk-DG-d5Y" id="BRv-oB-h0O"/>
@@ -23,6 +25,7 @@
                 <outlet property="viewBottom" destination="KNy-oP-xbW" id="nDV-Qa-eUa"/>
                 <outlet property="viewDisBottom" destination="vQ2-6N-VfB" id="crZ-d7-GpF"/>
                 <outlet property="viewDisTop" destination="mnj-zM-frQ" id="VWY-0M-7iK"/>
+                <outlet property="widthTouzhu" destination="eNS-Gn-V9N" id="OwS-Jo-GHb"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

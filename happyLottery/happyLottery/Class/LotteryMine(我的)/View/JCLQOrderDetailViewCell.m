@@ -479,7 +479,7 @@
     for (NSString *op in option) {
         
         NSString*type = [self getContent:contentArray andOption:op];
-        NSString *odd = [self getOddWithOption:op matchKey:matchKey];
+        NSString *odd = [NSString stringWithFormat:@"%@",[self getOddWithOption:op matchKey:matchKey]];
         
         if (odd.length == 0 || odd == nil) {
             [content appendFormat:@"【%@】",type,odd];

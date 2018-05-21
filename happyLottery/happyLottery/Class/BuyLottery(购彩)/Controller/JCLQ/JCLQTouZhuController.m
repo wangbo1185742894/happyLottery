@@ -18,7 +18,6 @@
 #import "TouZhuViewCell.h"
 #import "LotteryManager.h"
 #import "TZSelectMatchCell.h"
-
 #define KTZSelectMatchCell @"TZSelectMatchCell"
 
 
@@ -30,11 +29,13 @@
     float keyboardheight2;
     NSInteger beiCount;
     NSInteger totalUnit;
+    __weak IBOutlet NSLayoutConstraint *widthTouzhu;
     BOOL keyboard;
     __weak IBOutlet UIButton *btnZigou;
     __weak IBOutlet UIButton *btnMoniTouzhu;
     __weak IBOutlet UIButton *btnZhenShiTouzhu;
     
+    __weak IBOutlet UIButton *btnTouzhu;
     UIButton *chuanfaBt;
     SelectView *peiSelectView;
     LotteryManager *lotteryMan;
@@ -67,6 +68,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if (self.fromSchemeType  == SchemeTypeFaqiGenDan) {
+           btnTouzhu .hidden = YES;
+        self.costTypeSelectView.hidden = YES;
+        widthTouzhu.constant = 0;
+    }else{
+        self.costTypeSelectView.hidden = NO;
+        btnTouzhu.hidden = NO;
+        widthTouzhu.constant = 60;
+    }
 
     if ([self isIphoneX]) {
         self.viewDisTop.constant = 88;
@@ -434,11 +445,6 @@
     [self showLoadingText:@"正在提交订单"];
     
     self.transaction.maxPrize = 1.00;
-    if (sender.tag == 4) {
-        self.transaction.schemeType = SchemeTypeFaqiGenDan;
-    }else{
-        self.transaction.schemeType = SchemeTypeZigou;
-    }
     self.transaction.units = self.transaction.betCount;
     if (btnZhenShiTouzhu.selected == YES) {
         self.transaction.costType = CostTypeCASH;
@@ -448,7 +454,15 @@
     
     self.transaction.secretType = SecretTypeFullOpen;
     self.transaction.betCost = self.transaction.betCount * 2 * [self.transaction.beitou integerValue];
-    
+    if (sender.tag == 4) {
+        self.transaction.schemeType = SchemeTypeFaqiGenDan;
+        if (self.transaction.betCost < 10) {
+            [self showPromptText:@"发单金额不能小于10元" hideAfterDelay:1.9];
+            return;
+        }
+    }else{
+        self.transaction.schemeType = SchemeTypeZigou;
+    }
     [self.lotteryMan betLotteryScheme:self.transaction];
 }
 - (void) betedLotteryScheme:(NSString *)schemeNO errorMsg:(NSString *)msg{

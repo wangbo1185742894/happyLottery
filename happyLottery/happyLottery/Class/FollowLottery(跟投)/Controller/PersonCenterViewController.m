@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *userImage;
 @property (weak, nonatomic) IBOutlet UILabel *userName;
 @property (weak, nonatomic) IBOutlet UILabel *fenshiNum;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topDis;
 @property (weak, nonatomic) IBOutlet UILabel *initiateStatusFirst;
 @property (weak, nonatomic) IBOutlet UILabel *initiateStatusTwo;
 @property (weak, nonatomic) IBOutlet UILabel *initiateStatusThird;
@@ -44,6 +45,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"个人中心";
+    if ([self isIphoneX]) {
+        _topDis .constant = 88;
+    }else{
+        _topDis.constant = 64;
+    }
     [UITableView refreshHelperWithScrollView:self.personTabelView target:self loadNewData:@selector(loadNewData) loadMoreData:@selector(loadMoreData) isBeginRefresh:NO];
     self.personArray = [NSMutableArray arrayWithCapacity:0];
     _page = 1;

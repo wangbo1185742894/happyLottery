@@ -53,6 +53,9 @@
     [super viewDidLoad];
     schemeList = [NSMutableArray arrayWithCapacity:0];
     self.lotteryMan.delegate = self;
+    if ([Utility isIOS11After]) {
+        self.automaticallyAdjustsScrollViewInsets = NO; // tableView 莫名其妙  contentOffset.y 成-64了  MMP
+    }
     [self getTopViewData];
     [self setRightBarItems];
     [self setTableView];
@@ -237,6 +240,7 @@
 
 - (void)pressPlayIntroduce{
     WebViewController *webVC = [[WebViewController alloc]initWithNibName:@"WebViewController" bundle:nil];
+    webVC.hidesBottomBarWhenPushed = YES;
     webVC.type = @"html";
     webVC.title = @"复制跟单玩法说明";
     webVC.htmlName = @"about_follow_scheme";
@@ -266,15 +270,15 @@
 }
 
 - (void)optionDidSelacted:(OptionSelectedView *)optionSelectedView andIndex:(NSInteger)index{
-    if(index == 1){
+    if(index == 0){
         JCZQPlayViewController * playViewVC = [[JCZQPlayViewController alloc]init];
         playViewVC.hidesBottomBarWhenPushed = YES;
         playViewVC.fromSchemeType = SchemeTypeFaqiGenDan;
         [self.navigationController pushViewController:playViewVC animated:YES];
-    }else if(index == 0){
+    }else if(index == 1){
         JCLQPlayController * playViewVC = [[JCLQPlayController alloc]init];
-        playViewVC.hidesBottomBarWhenPushed = YES;
         playViewVC.fromSchemeType = SchemeTypeFaqiGenDan;
+        playViewVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:playViewVC animated:YES];
     }
 }
