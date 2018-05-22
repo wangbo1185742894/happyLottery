@@ -23,7 +23,8 @@
     if([schemeType isEqualToString:@"BUY_INITIATE"]){
         [self.guanZhuBtn setTitle:@"跟单列表>" forState:UIControlStateNormal];
         self.genfaLabel.text = @"已跟投";
-        self.moneyNameLabel.text = [NSString stringWithFormat:@"%@元",model.totalFollowCost];
+        
+        self.moneyNameLabel.text = [NSString stringWithFormat:@"%.2f元",[model.totalFollowCost doubleValue]];
     }
     else {
         self.guanZhuBtn.layer.cornerRadius = 5;

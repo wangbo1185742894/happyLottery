@@ -42,6 +42,7 @@
     AppDelegate *appDelegate;
     __weak IBOutlet UIButton *btnTuijian;
 
+    __weak IBOutlet UIButton *faDanBtn;
     __weak IBOutlet UIButton *btnHemai;
 }
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *buttomHeight;
@@ -70,13 +71,16 @@
     [super viewDidLoad];
     
     if (self.fromSchemeType  == SchemeTypeFaqiGenDan) {
-           btnTouzhu .hidden = YES;
+        btnTouzhu .hidden = YES;
         self.costTypeSelectView.hidden = YES;
         widthTouzhu.constant = 0;
+        faDanBtn.hidden = NO;
+        
     }else{
         self.costTypeSelectView.hidden = NO;
         btnTouzhu.hidden = NO;
         widthTouzhu.constant = 60;
+        faDanBtn.hidden = YES;
     }
 
     if ([self isIphoneX]) {

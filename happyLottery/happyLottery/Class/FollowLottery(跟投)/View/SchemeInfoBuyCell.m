@@ -49,7 +49,7 @@
         self.winImage.hidden = YES;
         self.winLabel.textColor = [UIColor blackColor];
     }
-    if ([self.winLabel.text isEqualToString:@"待开奖"]) {
+    if ([self.winLabel.text isEqualToString:@"待开奖"]||[self.winLabel.text isEqualToString:@"出票中"]) {
         self.yongJin.text = @"-";
         self.winMoney.text = @"-";
         self.moneyLabel.text = @"-";
@@ -58,7 +58,7 @@
         self.moneyLabel.textColor = RGBCOLOR(122, 122, 122);
     } else {
         
-        self.yongJin.text = [NSString stringWithFormat:@"%@元",model.totalCommission];
+        self.yongJin.text = [NSString stringWithFormat:@"%.2f元",[model.totalCommission doubleValue]];
         if (model.bonus==nil) {
             self.winMoney.text = @"0元";
         } else {

@@ -47,10 +47,12 @@
         self.touzhuBtn.hidden = YES;
         costTypeSelectView.hidden = YES;
         self.widthTouzhu.constant = 0;
+        fadanBtn.hidden = NO;
     }else{
         costTypeSelectView.hidden = NO;
         self.touzhuBtn.hidden = NO;
         self.widthTouzhu.constant = 60;
+        fadanBtn.hidden = YES;
     }
     if ([self isIphoneX]) {
         self.viewDisTop.constant = 88;

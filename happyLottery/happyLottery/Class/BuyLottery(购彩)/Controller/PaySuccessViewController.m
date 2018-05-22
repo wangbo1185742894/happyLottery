@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"预约支付";
-    if (self.schemetype == SchemeTypeGenDan ) {
+    if (self.schemetype == SchemeTypeGenDan ||self.schemetype == SchemeTypeFaqiGenDan) {
          self.btnHeightPostScheme.constant = 0;
     }else if(self.isShowFaDan){
         self.btnHeightPostScheme.constant = 44;
