@@ -502,6 +502,11 @@
         schemeCashModel.lotteryName = @"竞彩篮球";
     }
     payVC.cashPayMemt = schemeCashModel;
+    if ([self.schemeType isEqualToString:@"BUY_INITIATE"]) {
+        payVC.schemetype = SchemeTypeFaqiGenDan;
+    } else {
+        payVC.schemetype = SchemeTypeGenDan;
+    }
     [self.navigationController pushViewController:payVC animated:YES];
 }
 
