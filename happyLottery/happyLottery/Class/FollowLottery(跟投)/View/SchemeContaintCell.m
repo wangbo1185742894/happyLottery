@@ -26,10 +26,10 @@
 }
 
 - (void)reloadDate:(JCZQSchemeItem * )model{
-    if ([model.winningStatus isEqualToString:@"WAIT_LOTTERY"]) {
+//    if ([model.winningStatus isEqualToString:@"WAIT_LOTTERY"]) {
         self.introduceLabel.hidden = YES;
         self.dingDan.hidden = YES;
-    }
+//    }
 }
 
 - (IBAction)actionOrderDetail:(id)sender {

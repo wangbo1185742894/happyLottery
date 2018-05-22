@@ -331,6 +331,11 @@
             return cell;
         }
         else {  //section = 1;
+            if (indexPath.row == 0) {
+                SchemeContaintCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeContaintCell];
+                [cell reloadDate:schemeDetail];
+                return cell;
+            }
            return  [self tableView:tableView cellForFangAnIndexPath:indexPath];
         }
     }
