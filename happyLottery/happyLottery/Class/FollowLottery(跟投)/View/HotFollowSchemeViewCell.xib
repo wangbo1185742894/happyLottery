@@ -39,9 +39,9 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="断桥是否下过雪" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g8B-Sw-Oby">
-                                <rect key="frame" x="65" y="21" width="121.5" height="15"/>
+                                <rect key="frame" x="65" y="18.5" width="121.5" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="15" id="dpi-bK-QYy"/>
+                                    <constraint firstAttribute="height" constant="20" id="dpi-bK-QYy"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>

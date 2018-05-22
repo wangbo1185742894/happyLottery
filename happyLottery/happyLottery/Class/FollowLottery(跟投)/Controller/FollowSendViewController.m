@@ -285,7 +285,9 @@
 
 -(void)search{
     SearchViewController *searchVC = [[SearchViewController alloc]init];
-    [self presentViewController:searchVC animated:YES completion:nil];
+    searchVC.hidesBottomBarWhenPushed = YES;
+    searchVC.navigationController.navigationBar.hidden = YES;
+    [self.navigationController pushViewController:searchVC animated:YES];
 }
 
 //牛人，红人，红单榜
