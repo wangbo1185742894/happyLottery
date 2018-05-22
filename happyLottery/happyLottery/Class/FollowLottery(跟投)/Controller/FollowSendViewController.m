@@ -242,7 +242,7 @@
     WebViewController *webVC = [[WebViewController alloc]initWithNibName:@"WebViewController" bundle:nil];
     webVC.hidesBottomBarWhenPushed = YES;
     webVC.type = @"html";
-    webVC.title = @"跟单玩法说明";
+    webVC.title = @"跟单玩法规则";
     webVC.htmlName = @"about_follow";
     [self.navigationController pushViewController:webVC animated:YES];
 }
