@@ -96,7 +96,7 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    // Dispose of any resources that can be recreated.   
 }
 
 - (void)initTabelView {
@@ -202,12 +202,8 @@
         }else{
             FASSchemeDetailViewController *detailCV = [[FASSchemeDetailViewController alloc]init];
             detailCV.schemeNo = model.schemeNo;
-            if ([model.cardCode isEqualToString:self.curUser.cardCode]) {
-                detailCV.schemeType = KBUY_INITIATE;
-            }else{
-                detailCV.schemeType = KBUY_FOLLOW;
-            }
-            
+            detailCV.schemeType = KBUY_INITIATE;
+            detailCV.schemeFromView = @"personCen";
             [self.navigationController pushViewController:detailCV animated:YES];
         }
     }

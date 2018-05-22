@@ -15,6 +15,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *labZheKouJinE;
 @property (weak, nonatomic) IBOutlet UILabel *labShiFujine;
 @property (weak, nonatomic) IBOutlet UILabel *labZhifuShijian;
+@property (weak, nonatomic) IBOutlet UILabel *zhifuInfoLabel;
+@property (weak, nonatomic) IBOutlet UILabel *labInfo1;
+@property (weak, nonatomic) IBOutlet UILabel *labInfo2;
+@property (weak, nonatomic) IBOutlet UILabel *labInfo3;
+@property (weak, nonatomic) IBOutlet UILabel *labInfo4;
 
 -(void)loadData:(JCZQSchemeItem*)model;
 
