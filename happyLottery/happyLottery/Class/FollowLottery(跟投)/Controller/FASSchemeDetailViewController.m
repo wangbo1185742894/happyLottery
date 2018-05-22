@@ -292,49 +292,6 @@
         return 138;
     }
 }
-//    if (indexPath.section == 0) {
-//        if([self.schemeType isEqualToString:@"BUY_INITIATE"]){
-//            return 205;
-//        }
-//        if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) {
-//            return 130;
-//        }
-//        return 169;
-//    } else if (indexPath.section == 1){
-//        if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) {
-//            return 0;
-//        }
-//        return 38;
-//    } else if (indexPath.section == 2){
-//        if ([schemeDetail.winningStatus isEqualToString:@"WAIT_LOTTERY"]) {
-//            if (indexPath.row == 0) {
-//                return 51;
-//            } else if (indexPath.row == 1){
-//                if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) {
-//                    return 150;
-//                }
-//                return 65;
-//            }
-//            SchemeOverCell *cell = [[SchemeOverCell alloc]init];
-//            return [cell dateHeight:schemeDetail];
-//        }
-//        if (indexPath.row == 0) {
-//            return 51;
-//        } else if(indexPath.row == 1){
-//            return 38;
-//        } else if (indexPath.row == 2+self.dataArray.count){
-//            SchemeOverCell *cell = [[SchemeOverCell alloc]init];
-//            return [cell dateHeight:schemeDetail];
-//        }     
-//        else{
-//            SchemeContainInfoCell *cell = [[SchemeContainInfoCell alloc]init];
-//            if ([schemeDetail.lottery isEqualToString:@"JCLQ"]) {
-//                 return  [cell getCellJCLQHeight:self.dataArray[indexPath.row -2]];
-//            }else{
-//                 return  [cell getCellHeight:self.dataArray[indexPath.row -2]];
-//            }
-//        }
-//    }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForFangAnIndexPath:(NSIndexPath *)indexPath{
@@ -387,6 +344,12 @@
         }
         if ([self.schemeType isEqualToString:@"BUY_INITIATE"]) {
             if (indexPath.section == 1){
+                //待支付的发单状态，没有订单详情按钮
+                if (indexPath.row == 0) {
+                    SchemeContaintCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeContaintCell];
+                    [cell reloadDate:schemeDetail];
+                    return cell;
+                }
                  return [self tableView:tableView cellForFangAnIndexPath:indexPath];
             }
         }
@@ -465,73 +428,7 @@
     SchemeBuyCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeBuyCell];
     [cell loadData:schemeDetail];
     return cell;
-    
-    
-//    if (indexPath.section == 0) {
-//        if([self.schemeType isEqualToString:@"BUY_FOLLOW"]){
-//            SchemeInfoFollowCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeInfoFollowCell];
-//            [cell reloadDate:schemeDetail];
-//            cell.delegate = self;
-//            return cell;
-//        }
-//        SchemeInfoBuyCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeInfoBuyCell];
-//        [cell reloadDate:schemeDetail];
-//        cell.delegate = self;
-//        return cell;
-//    }else if (indexPath.section == 1){
-//        SchemePerFollowCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemePerFollowCell];
-//        cell.delegate = self;
-//        if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) {
-//            cell.hidden = YES;
-//            return cell;
-//        }
-//        [cell reloadDate:schemeDetail schemeType:self.schemeType isAttend:isAttend];
-//        return cell;
-//    }else if (indexPath.section == 2){
-//        if (indexPath.row == 0) {
-//            SchemeContaintCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeContaintCell];
-//            cell.delegate = self;
-//            if([self.schemeType isEqualToString:@"BUY_FOLLOW"]){
-//                [cell reloadDate:schemeDetail];
-//            }
-//            return cell;
-//        }else if (indexPath.row == self.dataArray.count+2){
-//            SchemeOverCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeOverCell];
-//            if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) {
-//                cell.hidden = YES;
-//                return cell;
-//            }
-//            [cell reloadDate:schemeDetail];
-//            return cell;
-//        }else{
-//            if ([schemeDetail.winningStatus isEqualToString:@"WAIT_LOTTERY"]&&[self.schemeType isEqualToString:@"BUY_FOLLOW"]) {
-//                SuoSchemeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSuoSchemeViewCell];
-//                return cell;
-//            }
-//            SchemeContainInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeContainInfoCell];
-//            JcBetContent *bet;
-//            if(indexPath.row == 1){
-//                [cell reloadDate:schemeDetail];
-//            }else{
-//                if(self.dataArray.count >0){
-//                    bet = self.dataArray[indexPath.row-2];
-//                    if ([schemeDetail.lottery isEqualToString:@"JCLQ"]) {
-//                        [cell refreshDataJCLQ:bet andResult:schemeDetail.trOpenResult];
-//                    }else{
-//
-//                        [cell refreshData:bet andResult:schemeDetail.trOpenResult];
-//                    }
-//                }
-//            }
-//            return cell;
-//        }
-//    }
 }
-
-
-
-
-
 
 
 -(void)goOrderList{
