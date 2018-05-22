@@ -34,7 +34,11 @@
         self.infoOneSum.hidden = YES;
         self.infoOneLabel.hidden = YES;
         self.infoTwoLabel.text = @"总中奖(元)";
-        self.infoTwoSum.text = model.totalBouns==nil?@"0":model.totalBouns ;
+        if (model.totalBouns==nil) {
+            self.infoTwoSum.text = @"0";
+        } else {
+            self.infoTwoSum.text = [NSString stringWithFormat:@"%.2f",[model.totalBouns floatValue]];
+        }
     } else if ([categoryCode isEqualToString:@"Redman"]){
         self.infoOneLabel.text = @"跟投人次";
         self.infoTwoLabel.text = @"带红人数";
