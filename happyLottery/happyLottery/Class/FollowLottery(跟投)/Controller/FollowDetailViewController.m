@@ -125,6 +125,8 @@
 }
 
 - (IBAction)actionGenDan:(id)sender {
+    UIButton *button = (UIButton *)sender;
+    button.userInteractionEnabled = NO;
     if (self .curUser .isLogin == NO) {
         [self needLogin];
         return;
