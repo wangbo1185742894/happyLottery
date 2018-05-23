@@ -163,17 +163,23 @@
     if (modelUrl == nil) {
         activityInfoView.hidden = NO;
     }else{
-        [[NSUserDefaults standardUserDefaults] setValue:@0  forKey:KAppSignModelShow];
+//        [[NSUserDefaults standardUserDefaults] setValue:@0  forKey:KAppSignModelShow];
+//        bug修改(目前杀掉进程后的第一次打开悬浮窗不显示，再杀进程再打开时，悬浮窗又出现了),如有新问题改回  lyw
         if ([modelUrl isEqualToString:appSignModel.skipUrl]) {
             activityInfoView.hidden =  isNotShow;
         }else{
             activityInfoView.hidden = NO;
+            //bug修改同上
+            [[NSUserDefaults standardUserDefaults] setValue:@0  forKey:KAppSignModelShow];
+            [[NSUserDefaults standardUserDefaults] synchronize];
         }
     }
     if ([[NSUserDefaults standardUserDefaults] objectForKey:KAppSignModelShow] == nil) {
         [[NSUserDefaults standardUserDefaults] setValue:@0  forKey:KAppSignModelShow];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     }
     [[NSUserDefaults standardUserDefaults] setValue:appSignModel.skipUrl forKey:KAppSignModelUrl];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     [activityInfoView.imgRedIcon sd_setImageWithURL:[NSURL URLWithString:appSignModel.imageUrl]];
 }
 

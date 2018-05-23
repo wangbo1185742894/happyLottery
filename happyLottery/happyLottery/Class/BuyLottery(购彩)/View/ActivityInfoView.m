@@ -24,6 +24,7 @@
 - (IBAction)actionClose:(id)sender {
     self.hidden = YES;
     [[NSUserDefaults standardUserDefaults] setValue:@1  forKey:KAppSignModelShow];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end
