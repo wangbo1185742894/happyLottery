@@ -66,6 +66,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [tabFollewView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
     [self setNavigationBa];
     [self loadEightPerosn];
     
