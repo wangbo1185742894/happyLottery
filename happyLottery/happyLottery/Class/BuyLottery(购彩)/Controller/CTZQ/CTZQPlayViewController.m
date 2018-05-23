@@ -115,7 +115,7 @@
     [self setUpCTZQPlayTableView];
     [self setUpCTZQMatchArrWithInfo:nil];
     [self loadUI];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cleanMatch:) name:KSELECTMATCHCLEAN object:nil];
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(issueTimeCountDown:) name:@"IssueTimeCountDown" object:nil];
     [self updateSummary];
     noDataView.hidden = NO;
@@ -125,6 +125,12 @@
     [self getCurrentRound];
     _touzhuBtn.layer.cornerRadius = 5;
 }
+
+
+-(void)cleanMatch:(NSNotification*)notification{
+    [self removeAllSelection];
+}
+
 - (void)optionRightButtonAction{
 //    NSLog(@"haha");
    NSArray *titleArr = @[TextPlayMethodInd,
@@ -201,13 +207,7 @@
         _transaction.isBackClean = @"0";
     }
     
-    if ([self.tempResource isEqualToString:@"BetPayViewController"]) {
-        [self removeAllSelection];
-        self.tempResource = @"";
-    }
-    
     [_CTZQPlayTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
-   
 }
 - (void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];

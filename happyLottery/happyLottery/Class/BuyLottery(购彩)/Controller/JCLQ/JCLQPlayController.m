@@ -326,14 +326,7 @@ typedef enum : NSUInteger {
      self.curUser = [[GlobalInstance instance] curUser];
     [self updata];
     self.lotteryMan.delegate = self;
-    
-    
-    if ([self.tempResource isEqualToString:@"BetPayViewController"]) {
-        [self cleanAllSelect];
-        self.tempResource = @"";
-        [_tabPlayList scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
-    }
-   self.tabBarController.tabBar.hidden = YES;
+    self.tabBarController.tabBar.hidden = YES;
 }
 
 -(void)getCurlotteryProfiles{
@@ -1057,9 +1050,7 @@ typedef enum : NSUInteger {
 }
 
 -(void)cleanMatch:(NSNotification*)notification{
-
-    JCLQMatchModel *model = (JCLQMatchModel*)notification.object;
-    [transaction.matchSelectArray removeObject:model];
+    [self cleanAllSelect];
     [self.tabPlayList reloadData];
 }
 

@@ -59,7 +59,7 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hlg-BJ-1T2">
                     <rect key="frame" x="37.5" y="495" width="300" height="47"/>
-                    <state key="normal" title="返回" backgroundImage="fanhuishouye"/>
+                    <state key="normal" title="关闭" backgroundImage="fanhuishouye"/>
                     <connections>
                         <action selector="actionBackHome:" destination="-1" eventType="touchUpInside" id="Rxg-gW-RcA"/>
                     </connections>
