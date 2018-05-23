@@ -1040,6 +1040,9 @@
 }
 
 - (IBAction)actionDLT:(id)sender {
+    if (self.lotteryMan == nil) {
+        self.lotteryMan = [[LotteryManager alloc]init];
+    }
     NSArray * lotteryDS = [self.lotteryMan getAllLottery];
     
     DLTPlayViewController *playVC = [[DLTPlayViewController alloc] init];
@@ -1057,6 +1060,9 @@
 
 //双色球
 - (IBAction)actionSSQ:(id)sender {
+    if (self.lotteryMan == nil) {
+        self.lotteryMan = [[LotteryManager alloc]init];
+    }
     NSArray * lotteryDS = [self.lotteryMan getAllLottery];
     SSQPlayViewController *playVC = [[SSQPlayViewController alloc] init];
     playVC.hidesBottomBarWhenPushed = YES;
@@ -1071,6 +1077,9 @@
 
 
 - (IBAction)actionSFC:(id)sender {
+    if (self.lotteryMan == nil) {
+       self.lotteryMan = [[LotteryManager alloc]init];
+    }
     NSArray * lotteryDS = [self.lotteryMan getAllLottery];
     CTZQPlayViewController *playVC = [[CTZQPlayViewController alloc] init];
     if ([sender isKindOfClass:[NSString class]]) {

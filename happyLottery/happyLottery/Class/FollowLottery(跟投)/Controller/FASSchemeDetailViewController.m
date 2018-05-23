@@ -20,6 +20,11 @@
 #import "SuoSchemeViewCell.h"
 #import "PayOrderViewController.h"
 
+#import <ShareSDK/ShareSDK+Base.h>
+#import <ShareSDKUI/ShareSDK+SSUI.h>
+#import <ShareSDK/NSMutableDictionary+SSDKShare.h>
+#import <MOBFoundation/MOBFoundation.h>
+
 #define KSchemeInfoFollowCell @"SchemeInfoFollowCell"
 #define KSchemePerFollowCell  @"SchemePerFollowCell"
 #define KSchemeContaintCell   @"SchemeContaintCell"
@@ -56,7 +61,86 @@
     [self loadData];
     self.liJiZhiFuBtn.hidden = YES;
     self.layHeightInfo.constant = 0;
+    
     // Do any additional setup after loading the view from its nib.
+}
+
+-(void)setRightBarItems{
+    UIBarButtonItem *itemQuery = [self creatBarItem:@"" icon:@"share" andFrame:CGRectMake(0, 10, 50, 50) andAction:@selector(sharePress)];
+    self.navigationItem.rightBarButtonItems = @[itemQuery];
+}
+
+- (void)sharePress {
+    {
+        NSString *url = [NSString stringWithFormat:@"http://192.168.88.193:18086/app/share/shareScheme?schemeNo=%@",schemeDetail.schemeNO];
+        NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
+        NSArray* imageArray = @[[[NSBundle mainBundle] pathForResource:@"logo120@2x" ofType:@"png"]];
+        [shareParams SSDKSetupShareParamsByText:@"给你推荐一个方案，跟着大神买准没错。"
+                                         images:imageArray
+                                            url:[NSURL URLWithString:url]
+                                          title:@"跟单大神，等着收米。"
+                                           type:SSDKContentTypeWebPage];
+        [ShareSDK showShareActionSheet:nil
+                                 items:@[@(SSDKPlatformSubTypeWechatSession),@(SSDKPlatformSubTypeWechatTimeline)]
+                           shareParams:shareParams
+                   onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
+                       
+                       switch (state) {
+                               
+                           case SSDKResponseStateBegin:
+                           {
+                               //设置UI等操作
+                               //Instagram、Line等平台捕获不到分享成功或失败的状态，最合适的方式就是对这些平台区别对待
+                               if (platformType == SSDKPlatformSubTypeWechatSession)
+                               {
+                                   break;
+                               }
+                               break;
+                           }
+                           case SSDKResponseStateSuccess:
+                           {
+                               
+                               
+                               UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
+                                                                                   message:nil
+                                                                                  delegate:nil
+                                                                         cancelButtonTitle:@"确定"
+                                                                         otherButtonTitles:nil];
+                               [alertView show];
+                               if (platformType == SSDKPlatformSubTypeWechatTimeline)
+                               {
+                                
+                                   
+                               }
+                               break;
+                           }
+                           case SSDKResponseStateFail:
+                           {
+                               NSLog(@"%@",error);
+                               UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败"
+                                                                               message:[NSString stringWithFormat:@"%@",error]
+                                                                              delegate:nil
+                                                                     cancelButtonTitle:@"OK"
+                                                                     otherButtonTitles:nil, nil];
+                               [alert show];
+                               break;
+                           }
+                           case SSDKResponseStateCancel:
+                           {
+                               UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享已取消"
+                                                                                   message:nil
+                                                                                  delegate:nil
+                                                                         cancelButtonTitle:@"确定"
+                                                                         otherButtonTitles:nil];
+                               [alertView show];
+                               break;
+                           }
+                           default:
+                               break;
+                       }
+                   }];
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -82,6 +166,8 @@
     schemeDetail = [[JCZQSchemeItem alloc]initWith:infoArray];
     if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) {
         [self reloadZhiFuButton];
+    } else {
+        [self setRightBarItems];
     }
     for (NSDictionary *matchDic in [Utility objFromJson:schemeDetail.betContent]) {
           NSArray *matchArray = [Utility objFromJson:matchDic[@"betMatches"]];
@@ -333,7 +419,7 @@
         else {  //section = 1;
             if (indexPath.row == 0) {
                 SchemeContaintCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeContaintCell];
-                [cell reloadDate:schemeDetail];
+//                [cell reloadDate:schemeDetail];
                 return cell;
             }
            return  [self tableView:tableView cellForFangAnIndexPath:indexPath];

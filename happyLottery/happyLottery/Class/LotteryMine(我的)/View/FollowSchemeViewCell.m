@@ -42,8 +42,7 @@
     }else{
         [imgLotteryIcon sd_setImageWithURL:[NSURL URLWithString:model.initiateUrl]];
     }
-    
-    labPersonName.text = model.initiateNickname == nil?[model.cardCode stringByReplacingCharactersInRange:NSMakeRange(2,4) withString:@"****"]:model.initiateNickname;
+    labPersonName.text = model.initiateNickname == nil?[model.initiateCardCode stringByReplacingCharactersInRange:NSMakeRange(2,4) withString:@"****"]:model.initiateNickname;
     NSString *pass = [model.passType componentsJoinedByString:@","];
     pass = [pass stringByReplacingOccurrencesOfString:@"x" withString:@"串"];
     labPassType.text = pass;

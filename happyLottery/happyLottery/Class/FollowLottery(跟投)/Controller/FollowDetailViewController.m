@@ -28,7 +28,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labBetContent;
 @property (weak, nonatomic) IBOutlet UIImageView *imgLotteryIcon;
 @property (weak, nonatomic) IBOutlet SelectView *wbSelectView;
-@property (weak, nonatomic) IBOutlet UILabel *btnBetInfo;
+@property (weak, nonatomic) IBOutlet MGLabel *btnBetInfo;
 @property(assign,nonatomic)NSInteger beiCount;
 
 @end
@@ -79,10 +79,11 @@
     self.labDeadLine.text = [NSString stringWithFormat:@"截止时间:%@",_model.deadLine];
     
     self.labPersonName .text =  _model.nickName;
+    
     self.labYujihuibao.text =  [NSString stringWithFormat:@"%.2f倍",[_model.pledge doubleValue]];
-    self.labZigou.text =[NSString stringWithFormat:@"%@元",_model.betCost];
-    self.labGentou.text =[NSString stringWithFormat:@"%@元",_model.totalFollowCost];
-    self.labQitou.text =[NSString stringWithFormat:@"%@元",_model.minFollowCost];
+    self.labZigou.text =[NSString stringWithFormat:@"%d元",[_model.betCost intValue]];
+    self.labGentou.text =[NSString stringWithFormat:@"%d元",[_model.totalFollowCost intValue]];
+    self.labQitou.text =[NSString stringWithFormat:@"%d元",[_model.minFollowCost intValue]];
     self.btnGuanzhu.layer.borderColor = TEXTGRAYOrange.CGColor;
     self.btnGuanzhu.layer.borderWidth = 1;
     if (self.curUser == nil || self.curUser.isLogin == NO) {
@@ -187,6 +188,8 @@
     _beiCount = [self.wbSelectView.labContent.text integerValue];
     _wbSelectView.labContent.text = [NSString stringWithFormat:@"%ld",_beiCount];
     _btnBetInfo.text = [NSString stringWithFormat:@"共%.2f元",[self.model.minFollowCost doubleValue] * _beiCount] ;
+    _btnBetInfo.keyWord = [NSString stringWithFormat:@"共%.2f",[self.model.minFollowCost doubleValue] * _beiCount];
+    _btnBetInfo.keyWordColor = RGBCOLOR(254, 168, 19);
 }
 
 -(void)update{

@@ -68,7 +68,7 @@
         return @"0.00元";
     }
     if ([model.bonus doubleValue] != 0) {
-        return [NSString stringWithFormat:@"%.2f元",[model.bonus doubleValue]];
+        return [NSString stringWithFormat:@"%.2f元",[model.earnings doubleValue]];
     }
     return @"0.00元";
 }

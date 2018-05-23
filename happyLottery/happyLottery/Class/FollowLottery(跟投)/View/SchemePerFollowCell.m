@@ -38,7 +38,7 @@
         }
         [self.guanZhuBtn setTitle:str forState:UIControlStateNormal];
         self.genfaLabel.text = @"发单人";
-        self.moneyNameLabel.text = model.initiateNickname== nil?[model.cardCode stringByReplacingCharactersInRange:NSMakeRange(2,4) withString:@"****"]:model.initiateNickname;
+        self.moneyNameLabel.text = model.initiateNickname== nil?[model.initiateCardCode stringByReplacingCharactersInRange:NSMakeRange(2,4) withString:@"****"]:model.initiateNickname;
     }
 }
 

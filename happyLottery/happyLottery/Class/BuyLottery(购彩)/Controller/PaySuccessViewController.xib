@@ -70,7 +70,7 @@
                         <constraint firstAttribute="height" constant="47" id="YXc-aW-9cq"/>
                         <constraint firstAttribute="width" constant="300" id="ldF-ZI-3Zj"/>
                     </constraints>
-                    <state key="normal" title="发起跟单" backgroundImage="yuanjiaowukuangselect"/>
+                    <state key="normal" title="发起跟投" backgroundImage="yuanjiaowukuangselect"/>
                     <connections>
                         <action selector="actionPostScheme:" destination="-1" eventType="touchUpInside" id="hg8-Eo-642"/>
                     </connections>
