@@ -24,7 +24,7 @@
         [self.guanZhuBtn setTitle:@"跟单列表>" forState:UIControlStateNormal];
         self.genfaLabel.text = @"已跟投";
         
-        self.moneyNameLabel.text = [NSString stringWithFormat:@"%.2f元",[model.totalFollowCost doubleValue]];
+        self.moneyNameLabel.text = [NSString stringWithFormat:@"%d元",[model.totalFollowCost intValue]];
     }
     else {
         self.guanZhuBtn.layer.cornerRadius = 5;

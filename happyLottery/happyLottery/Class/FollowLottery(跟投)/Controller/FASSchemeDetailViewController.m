@@ -66,7 +66,7 @@
 }
 
 -(void)setRightBarItems{
-    UIBarButtonItem *itemQuery = [self creatBarItem:@"" icon:@"share" andFrame:CGRectMake(0, 10, 50, 50) andAction:@selector(sharePress)];
+    UIBarButtonItem *itemQuery = [self creatBarItem:@"" icon:@"sharedeat" andFrame:CGRectMake(0, 10, 31, 33) andAction:@selector(sharePress)];
     self.navigationItem.rightBarButtonItems = @[itemQuery];
 }
 
@@ -164,7 +164,7 @@
         return;
     }
     schemeDetail = [[JCZQSchemeItem alloc]initWith:infoArray];
-    if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) {
+    if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) { //待支付状态
         [self reloadZhiFuButton];
     } else {
         [self setRightBarItems];

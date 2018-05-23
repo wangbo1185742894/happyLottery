@@ -37,7 +37,8 @@
         if (model.totalBouns==nil) {
             self.infoTwoSum.text = @"0";
         } else {
-            self.infoTwoSum.text = [NSString stringWithFormat:@"%.2f",[model.totalBouns floatValue]];
+            
+            self.infoTwoSum.text = [NSString stringWithFormat:@"%.2f",[model.totalBouns doubleValue]];
         }
     } else if ([categoryCode isEqualToString:@"Redman"]){
         self.infoOneLabel.text = @"跟投人次";

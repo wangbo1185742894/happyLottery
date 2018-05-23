@@ -35,7 +35,8 @@
         self.loterryLabel.text = @"竞彩篮球";
         [self.lotteryImage setImage:[UIImage imageNamed:@"basketball.png"]];
     }
-    self.labBetBouns.text = [NSString stringWithFormat:@"投注%@元",model.betCost];
+    
+    self.labBetBouns.text = [NSString stringWithFormat:@"投注%d元",[model.betCost intValue]];
     self.winLabel.text = model.getSchemeState;
     if([self.winLabel.text containsString:@"已中奖"]){
         [self.winImage setImage:[UIImage imageNamed:@"win.png"]];
@@ -62,7 +63,7 @@
         if (model.bonus==nil) {
             self.winMoney.text = @"0元";
         } else {
-            self.winMoney.text = [NSString stringWithFormat:@"%.2f元",[model.bonus floatValue]];
+            self.winMoney.text = [NSString stringWithFormat:@"%.2f元",[model.bonus doubleValue]];
         }
         float num1 = [model.totalCommission floatValue];
         float num2 = [model.bonus floatValue];

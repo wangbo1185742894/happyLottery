@@ -56,7 +56,7 @@
     self.title = @"跟单详情";
     self.lotteryMan.delegate = self;
     self.wbSelectView.beiShuLimit = 9999;
-    self.wbSelectView.labContent.textColor = [UIColor whiteColor];
+    self.wbSelectView.labContent.textColor = RGBCOLOR(254, 168, 19);
     self.wbSelectView.delegate = self;
     [self.wbSelectView setTarget:self rightAction:@selector(actionAdd) leftAction:@selector(actionSub)];
     [self loadData];
@@ -188,8 +188,9 @@
     _beiCount = [self.wbSelectView.labContent.text integerValue];
     _wbSelectView.labContent.text = [NSString stringWithFormat:@"%ld",_beiCount];
     _btnBetInfo.text = [NSString stringWithFormat:@"共%.2f元",[self.model.minFollowCost doubleValue] * _beiCount] ;
-    _btnBetInfo.keyWord = [NSString stringWithFormat:@"共%.2f",[self.model.minFollowCost doubleValue] * _beiCount];
+    _btnBetInfo.keyWord = [NSString stringWithFormat:@"%.2f",[self.model.minFollowCost doubleValue] * _beiCount];
     _btnBetInfo.keyWordColor = RGBCOLOR(254, 168, 19);
+
 }
 
 -(void)update{
