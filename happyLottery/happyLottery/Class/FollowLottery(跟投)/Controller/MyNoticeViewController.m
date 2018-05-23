@@ -15,7 +15,7 @@
 @interface MyNoticeViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *listTableView;
-
+@property(assign,nonatomic)NSInteger page;
 @property(nonatomic,strong)NSMutableArray <HotSchemeModel *> * personArray;
 
 @end
@@ -25,18 +25,32 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"我的关注";
+    
     [self initTabelView];
     self.personArray = [NSMutableArray arrayWithCapacity:0];
     if (self.lotteryMan == nil) {
         self.lotteryMan = [[LotteryManager alloc]init];
     }
     self.lotteryMan.delegate = self;
-  
-    NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"page":@(0),@"pageSize":@(KpageSize)};
-    [self.lotteryMan getAttentFollowScheme:dic];
+    [UITableView refreshHelperWithScrollView:self.listTableView target:self loadNewData:@selector(loadNewData) loadMoreData:@selector(loadMoreData) isBeginRefresh:YES];
+    
     // Do any additional setup after loading the view from its nib.
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self loadNewData];
+}
+-(void)loadNewData{
+    self.page = 0;
+    NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"page":@(_page),@"pageSize":@(KpageSize)};
+    [self.lotteryMan getAttentFollowScheme:dic];
+}
+-(void)loadMoreData{
+    self.page ++;
+    NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"page":@(_page),@"pageSize":@(KpageSize)};
+    [self.lotteryMan getAttentFollowScheme:dic];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -45,6 +59,7 @@
 - (void) gotAttentFollowScheme:(NSArray  *)personList  errorMsg:(NSString *)msg{
     [self.personArray removeAllObjects];
     //添加数据
+    [self.listTableView tableViewEndRefreshCurPageCount:personList.count];
     for (NSDictionary *dic in personList) {
         HotSchemeModel *model = [[HotSchemeModel alloc]initWith:dic];
         [self.personArray addObject:model];

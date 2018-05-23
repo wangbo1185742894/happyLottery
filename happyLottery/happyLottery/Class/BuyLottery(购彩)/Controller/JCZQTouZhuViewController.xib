@@ -84,7 +84,11 @@
                                 <constraint firstAttribute="width" constant="60" id="eNS-Gn-V9N"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <state key="normal" title="预约"/>
+
+                            <state key="normal" title="自购" backgroundImage="huisebiankuang.png">
+                                <color key="titleColor" red="0.55294117647058827" green="0.55294117647058827" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+
                             <state key="highlighted" backgroundImage="lvsebiankuang.png">
                                 <color key="titleColor" red="0.0" green="0.78823529410000004" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>

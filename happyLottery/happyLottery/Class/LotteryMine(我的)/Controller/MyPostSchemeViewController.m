@@ -135,7 +135,12 @@
     
     self.btnFadan.selected = NO;
     self.btnGendan.selected = NO;
-    self.disImgLeft.constant = sender.mj_x + 10;
+     self.disImgLeft.constant = sender.mj_x + 10;
+    [UIView animateWithDuration:0.5 animations:^{
+           [self.imgBottom.superview layoutIfNeeded];
+//    self.imgBottom.mj_x = sender.mj_x + 10;
+    }];
+    
     sender.selected = YES;
     [self loadNewData];
 }

@@ -111,8 +111,8 @@
     }
     
     //  使用自带
-    UIImage  *img = [UIImage imageNamed:@"pic_zanwushuju"];
-    NSString *msg = @"暂无数据";
+    UIImage  *img = [UIImage imageNamed:@"pic_zanwushuju_tongyong"];
+    NSString *msg = @"暂无数据~";
     
     
     
