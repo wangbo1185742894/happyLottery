@@ -66,6 +66,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [tabFollewView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
     [self setNavigationBa];
     [self loadEightPerosn];
     
@@ -242,7 +243,7 @@
     WebViewController *webVC = [[WebViewController alloc]initWithNibName:@"WebViewController" bundle:nil];
     webVC.hidesBottomBarWhenPushed = YES;
     webVC.type = @"html";
-    webVC.title = @"跟单玩法说明";
+    webVC.title = @"跟单玩法规则";
     webVC.htmlName = @"about_follow";
     [self.navigationController pushViewController:webVC animated:YES];
 }
@@ -285,7 +286,9 @@
 
 -(void)search{
     SearchViewController *searchVC = [[SearchViewController alloc]init];
-    [self presentViewController:searchVC animated:YES completion:nil];
+    searchVC.hidesBottomBarWhenPushed = YES;
+    searchVC.navigationController.navigationBar.hidden = YES;
+    [self.navigationController pushViewController:searchVC animated:YES];
 }
 
 //牛人，红人，红单榜

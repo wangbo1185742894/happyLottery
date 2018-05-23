@@ -20,6 +20,11 @@
 #import "SuoSchemeViewCell.h"
 #import "PayOrderViewController.h"
 
+#import <ShareSDK/ShareSDK+Base.h>
+#import <ShareSDKUI/ShareSDK+SSUI.h>
+#import <ShareSDK/NSMutableDictionary+SSDKShare.h>
+#import <MOBFoundation/MOBFoundation.h>
+
 #define KSchemeInfoFollowCell @"SchemeInfoFollowCell"
 #define KSchemePerFollowCell  @"SchemePerFollowCell"
 #define KSchemeContaintCell   @"SchemeContaintCell"
@@ -38,6 +43,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *liJiZhiFuBtn;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layHeightInfo;
 
 @end
 
@@ -54,7 +60,87 @@
     [self setTableView];
     [self loadData];
     self.liJiZhiFuBtn.hidden = YES;
+    self.layHeightInfo.constant = 0;
+    
     // Do any additional setup after loading the view from its nib.
+}
+
+-(void)setRightBarItems{
+    UIBarButtonItem *itemQuery = [self creatBarItem:@"" icon:@"sharedeat" andFrame:CGRectMake(0, 10, 31, 33) andAction:@selector(sharePress)];
+    self.navigationItem.rightBarButtonItems = @[itemQuery];
+}
+
+- (void)sharePress {
+    {
+        NSString *url = [NSString stringWithFormat:@"http://192.168.88.193:18086/app/share/shareScheme?schemeNo=%@",schemeDetail.schemeNO];
+        NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
+        NSArray* imageArray = @[[[NSBundle mainBundle] pathForResource:@"logo120@2x" ofType:@"png"]];
+        [shareParams SSDKSetupShareParamsByText:@"给你推荐一个方案，跟着大神买准没错。"
+                                         images:imageArray
+                                            url:[NSURL URLWithString:url]
+                                          title:@"跟单大神，等着收米。"
+                                           type:SSDKContentTypeWebPage];
+        [ShareSDK showShareActionSheet:nil
+                                 items:@[@(SSDKPlatformSubTypeWechatSession),@(SSDKPlatformSubTypeWechatTimeline)]
+                           shareParams:shareParams
+                   onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
+                       
+                       switch (state) {
+                               
+                           case SSDKResponseStateBegin:
+                           {
+                               //设置UI等操作
+                               //Instagram、Line等平台捕获不到分享成功或失败的状态，最合适的方式就是对这些平台区别对待
+                               if (platformType == SSDKPlatformSubTypeWechatSession)
+                               {
+                                   break;
+                               }
+                               break;
+                           }
+                           case SSDKResponseStateSuccess:
+                           {
+                               
+                               
+                               UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
+                                                                                   message:nil
+                                                                                  delegate:nil
+                                                                         cancelButtonTitle:@"确定"
+                                                                         otherButtonTitles:nil];
+                               [alertView show];
+                               if (platformType == SSDKPlatformSubTypeWechatTimeline)
+                               {
+                                
+                                   
+                               }
+                               break;
+                           }
+                           case SSDKResponseStateFail:
+                           {
+                               NSLog(@"%@",error);
+                               UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败"
+                                                                               message:[NSString stringWithFormat:@"%@",error]
+                                                                              delegate:nil
+                                                                     cancelButtonTitle:@"OK"
+                                                                     otherButtonTitles:nil, nil];
+                               [alert show];
+                               break;
+                           }
+                           case SSDKResponseStateCancel:
+                           {
+                               UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享已取消"
+                                                                                   message:nil
+                                                                                  delegate:nil
+                                                                         cancelButtonTitle:@"确定"
+                                                                         otherButtonTitles:nil];
+                               [alertView show];
+                               break;
+                           }
+                           default:
+                               break;
+                       }
+                   }];
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -69,6 +155,7 @@
 
 - (void)reloadZhiFuButton {
     self.liJiZhiFuBtn.hidden = NO;
+    self.layHeightInfo.constant = 77;
 }
 
 - (void) gotSchemeRecordBySchemeNo:(NSDictionary *)infoArray errorMsg:(NSString *)msg{
@@ -77,8 +164,10 @@
         return;
     }
     schemeDetail = [[JCZQSchemeItem alloc]initWith:infoArray];
-    if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) {
+    if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) { //待支付状态
         [self reloadZhiFuButton];
+    } else {
+        [self setRightBarItems];
     }
     for (NSDictionary *matchDic in [Utility objFromJson:schemeDetail.betContent]) {
           NSArray *matchArray = [Utility objFromJson:matchDic[@"betMatches"]];
@@ -94,7 +183,13 @@
             [self gotisAttent:@"false" errorMsg:nil];
             return;
         }
-        NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"attentCardCode":schemeDetail.initiateCardCode,@"attentType":@"FOLLOW"};
+        NSDictionary *dic;
+        if (schemeDetail.initiateCardCode!=nil) {
+            dic = @{@"cardCode":self.curUser.cardCode,@"attentCardCode":schemeDetail.initiateCardCode,@"attentType":@"FOLLOW"};
+        }
+        else {
+            dic = @{@"cardCode":self.curUser.cardCode,@"attentCardCode":schemeDetail.cardCode,@"attentType":@"FOLLOW"};
+        }
         [self.lotteryMan isAttent:dic];
     }else {
         [self.detailTableView reloadData];
@@ -127,138 +222,304 @@
     
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (section == 2) {
-        if ([schemeDetail.winningStatus isEqualToString:@"WAIT_LOTTERY"]&&[self.schemeType isEqualToString:@"BUY_FOLLOW"]) {
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    /*
+     从个人中心进入,只显示方案信息与方案内容,个人中心只有发单
+     */
+    if ([self.schemeFromView isEqualToString:@"personCen"]) {
+        return 2;
+    }
+    /*
+     从我的跟单发单进入
+     */
+    else {
+        if ([schemeDetail.schemeStatus isEqualToString:@"INIT"])// 未支付状态,显示方案信息，方案内容，认购信息提示语，支付按钮
+        {
             return 3;
         }
+    }
+    return 4;
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if ([self.schemeFromView isEqualToString:@"personCen"]&&section == 1) {
+        return 3+self.dataArray.count;
+    }
+    if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) {
+        if ([self.schemeType isEqualToString:@"BUY_INITIATE"]) {//发单方案内容显示，订单详情按钮不显示
+            if (section == 1) {
+                return 3+self.dataArray.count;
+            }
+            else {
+                return 1;
+            }
+        }
+        else { //跟单方案内容锁，订单详情按钮不显示
+            if (section == 1) {
+                return 2;
+            }
+            else {
+                return 1;
+            }
+        }
+    }
+    if ([schemeDetail.winningStatus isEqualToString:@"WAIT_LOTTERY"]) { //待开奖
+        if ([self.schemeType isEqualToString:@"BUY_INITIATE"]) {
+            if (section == 2) {
+                return 3+self.dataArray.count;
+            }
+        }
+        else {
+            if (section == 2) {
+                return 3;
+            }
+        }
+    }
+    if (section == 2) { //已开奖
         return 3+self.dataArray.count;
     }
     return 1;
 }
 
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section == 0) {
-        if([self.schemeType isEqualToString:@"BUY_INITIATE"]){
-            return 205;
-        }
-        if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) {
-            return 130;
-        }
-        return 169;
-    } else if (indexPath.section == 1){
-        if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) {
-            return 0;
-        }
-        return 38;
-    } else if (indexPath.section == 2){
-        if ([schemeDetail.winningStatus isEqualToString:@"WAIT_LOTTERY"]) {
-            if (indexPath.row == 0) {
-                return 51;
-            } else if (indexPath.row == 1){
-                if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) {
-                    return 150;
-                }
-                return 65;
-            }
-            SchemeOverCell *cell = [[SchemeOverCell alloc]init];
-            return [cell dateHeight:schemeDetail];
-        }
+//方案内容全显示
+- (CGFloat)setHeightForFangan:(NSIndexPath *)indexPath {
         if (indexPath.row == 0) {
             return 51;
-        } else if(indexPath.row == 1){
+        }
+        if (indexPath.row == 1) {
             return 38;
-        } else if (indexPath.row == 2+self.dataArray.count){
+        }
+        if (indexPath.row == 2+self.dataArray.count){
             SchemeOverCell *cell = [[SchemeOverCell alloc]init];
             return [cell dateHeight:schemeDetail];
-        }     
-        else{
-            SchemeContainInfoCell *cell = [[SchemeContainInfoCell alloc]init];
-            if ([schemeDetail.lottery isEqualToString:@"JCLQ"]) {
-                 return  [cell getCellJCLQHeight:self.dataArray[indexPath.row -2]];
-            }else{
-                 return  [cell getCellHeight:self.dataArray[indexPath.row -2]];
-            }
+        }
+        SchemeContainInfoCell *cell = [[SchemeContainInfoCell alloc]init];
+        if ([schemeDetail.lottery isEqualToString:@"JCLQ"]) {
+            return  [cell getCellJCLQHeight:self.dataArray[indexPath.row -2]];
+        }else{
+            return  [cell getCellHeight:self.dataArray[indexPath.row -2]];
+        }
+        return 138;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    //个人中心
+    if ([self.schemeFromView isEqualToString:@"personCen"]) {
+        if (indexPath.section == 0) {
+            return 205;
+        }
+        if (indexPath.section == 1){
+            return [self setHeightForFangan:indexPath];
         }
     }
-    return 138;
+    //未支付
+    if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]){
+        if (indexPath.section == 0) {
+            return 130;
+        }
+        if ([self.schemeType isEqualToString:@"BUY_INITIATE"]) {
+            if (indexPath.section == 1){
+             return  [self setHeightForFangan:indexPath];
+            }
+        }
+        else {
+            if (indexPath.section == 1) {
+                if (indexPath.row == 0) {
+                    return 51;
+                }
+                if (indexPath.row == 1) {
+                    return 120;
+                }
+            }
+        }
+        if (indexPath.section == 2){
+            return 138;
+        }
+    }
+    //
+    if([self.schemeType isEqualToString:@"BUY_INITIATE"]){
+        if (indexPath.section == 0){
+            return 205;
+        }
+        if (indexPath.section == 1){
+            return 38;
+        }
+        if (indexPath.section == 2){
+            return [self setHeightForFangan:indexPath];
+        }
+        return 138;
+    }
+    else {
+        if (indexPath.section == 0){
+            return 169;
+        }
+        if (indexPath.section == 1){
+            return 38;
+        }
+        if (indexPath.section == 2) {
+            if ([schemeDetail.winningStatus isEqualToString:@"WAIT_LOTTERY"]){
+                if (indexPath.row == 0) {
+                    return 51;
+                }
+                if (indexPath.row == 1) {
+                    return 65;
+                }
+                if (indexPath.row == 2) {
+                    SchemeOverCell *cell = [[SchemeOverCell alloc]init];
+                    return [cell dateHeight:schemeDetail];
+                }
+            } else {
+                return [self setHeightForFangan:indexPath];
+            }
+        }
+        return 138;
+    }
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForFangAnIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == 0) {
+        SchemeContaintCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeContaintCell];
+        cell.delegate = self;
+        return cell;
+    }else if (indexPath.row == self.dataArray.count+2){
+        SchemeOverCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeOverCell];
+        [cell reloadDate:schemeDetail];
+        return cell;
+    }else{
+        SchemeContainInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeContainInfoCell];
+        JcBetContent *bet;
+        if(indexPath.row == 1){
+            [cell reloadDate:schemeDetail];
+        }else{
+            if(self.dataArray.count >0){
+                bet = self.dataArray[indexPath.row-2];
+                if ([schemeDetail.lottery isEqualToString:@"JCLQ"]) {
+                    [cell refreshDataJCLQ:bet andResult:schemeDetail.trOpenResult];
+                }else{
+                    [cell refreshData:bet andResult:schemeDetail.trOpenResult];
+                }
+            }
+        }
+       return cell;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section == 0) {
-        if([self.schemeType isEqualToString:@"BUY_FOLLOW"]){
+    if ([self.schemeFromView isEqualToString:@"personCen"]){
+        if (indexPath.section == 0) {
+            SchemeInfoBuyCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeInfoBuyCell];
+            [cell reloadDate:schemeDetail];
+            cell.delegate = self;
+            return cell;
+        }
+        else {  //section = 1;
+            if (indexPath.row == 0) {
+                SchemeContaintCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeContaintCell];
+//                [cell reloadDate:schemeDetail];
+                return cell;
+            }
+           return  [self tableView:tableView cellForFangAnIndexPath:indexPath];
+        }
+    }
+    
+    if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]){
+        if (indexPath.section == 0) {
             SchemeInfoFollowCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeInfoFollowCell];
             [cell reloadDate:schemeDetail];
             cell.delegate = self;
             return cell;
         }
-        SchemeInfoBuyCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeInfoBuyCell];
-        [cell reloadDate:schemeDetail];
-        cell.delegate = self;
-        return cell;
-    }else if (indexPath.section == 1){
-        SchemePerFollowCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemePerFollowCell];
-        cell.delegate = self;
-        if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) {
-            cell.hidden = YES;
-            return cell;
+        if ([self.schemeType isEqualToString:@"BUY_INITIATE"]) {
+            if (indexPath.section == 1){
+                //待支付的发单状态，没有订单详情按钮
+                if (indexPath.row == 0) {
+                    SchemeContaintCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeContaintCell];
+                    [cell reloadDate:schemeDetail];
+                    return cell;
+                }
+                 return [self tableView:tableView cellForFangAnIndexPath:indexPath];
+            }
         }
-        [cell reloadDate:schemeDetail schemeType:self.schemeType isAttend:isAttend];
-        return cell;
-    }else if (indexPath.section == 2){
-        if (indexPath.row == 0) {
-            SchemeContaintCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeContaintCell];
-            cell.delegate = self;
-            if([self.schemeType isEqualToString:@"BUY_FOLLOW"]){
-                [cell reloadDate:schemeDetail];
-            }
-            return cell;
-        }else if (indexPath.row == self.dataArray.count+2){
-            SchemeOverCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeOverCell];
-            if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) {
-                cell.hidden = YES;
-                return cell;
-            }
-            [cell reloadDate:schemeDetail];
-            return cell;
-        }else{
-            if ([schemeDetail.winningStatus isEqualToString:@"WAIT_LOTTERY"]&&[self.schemeType isEqualToString:@"BUY_FOLLOW"]) {
-                SuoSchemeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSuoSchemeViewCell];
-                return cell;
-            }
-            SchemeContainInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeContainInfoCell];
-            JcBetContent *bet;
-            if(indexPath.row == 1){
-                [cell reloadDate:schemeDetail];
-            }else{
-                if(self.dataArray.count >0){
-                    bet = self.dataArray[indexPath.row-2];
-                    if ([schemeDetail.lottery isEqualToString:@"JCLQ"]) {
-                        [cell refreshDataJCLQ:bet andResult:schemeDetail.trOpenResult];
-                    }else{
-                        
-                        [cell refreshData:bet andResult:schemeDetail.trOpenResult];
-                    }
+        else {
+            if (indexPath.section == 1) {
+                if (indexPath.row == 0) {
+                    SchemeContaintCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeContaintCell];
+                    [cell reloadDate:schemeDetail];
+                    return cell;
+                }
+                if (indexPath.row == 1) {
+                    SuoSchemeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSuoSchemeViewCell];
+                    return cell;
                 }
             }
+        }
+        if (indexPath.section == 2){
+            SchemeBuyCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeBuyCell];
+            [cell loadData:schemeDetail];
             return cell;
+        }
+    }
+    
+    if([self.schemeType isEqualToString:@"BUY_INITIATE"]){
+        if (indexPath.section == 0){
+            SchemeInfoBuyCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeInfoBuyCell];
+            [cell reloadDate:schemeDetail];
+            cell.delegate = self;
+            return cell;
+        }
+        if (indexPath.section == 1){
+            SchemePerFollowCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemePerFollowCell];
+            cell.delegate = self;
+            [cell reloadDate:schemeDetail schemeType:self.schemeType isAttend:isAttend];
+            return cell;
+        }
+        if (indexPath.section == 2){
+            return  [self tableView:tableView cellForFangAnIndexPath:indexPath];
+        }
+    }
+    else {
+        if (indexPath.section == 0){
+            SchemeInfoFollowCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeInfoFollowCell];
+            [cell reloadDate:schemeDetail];
+            cell.delegate = self;
+            return cell;
+        }
+        if (indexPath.section == 1){
+            SchemePerFollowCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemePerFollowCell];
+            cell.delegate = self;
+            [cell reloadDate:schemeDetail schemeType:self.schemeType isAttend:isAttend];
+            return cell;
+        }
+        if (indexPath.section == 2) {
+            if ([schemeDetail.winningStatus isEqualToString:@"WAIT_LOTTERY"]){
+                if (indexPath.row == 0) {
+                    SchemeContaintCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeContaintCell];
+                    cell.delegate = self;
+                    [cell reloadDate:schemeDetail];
+                    return cell;
+                }
+                if (indexPath.row == 1) {
+                    SuoSchemeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSuoSchemeViewCell];
+                    return cell;
+                }
+                if (indexPath.row == 2) {
+                    SchemeOverCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeOverCell];
+                    [cell reloadDate:schemeDetail];
+                    return cell;
+                }
+            } else {
+                 return [self tableView:tableView cellForFangAnIndexPath:indexPath];
+            }
         }
     }
     SchemeBuyCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeBuyCell];
-    if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) {
-        cell.hidden = YES;
-        return cell;
-    }
     [cell loadData:schemeDetail];
     return cell;
 }
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    
-    return 4;
-}
-
 
 
 -(void)goOrderList{
@@ -332,6 +593,11 @@
         schemeCashModel.lotteryName = @"竞彩篮球";
     }
     payVC.cashPayMemt = schemeCashModel;
+    if ([self.schemeType isEqualToString:@"BUY_INITIATE"]) {
+        payVC.schemetype = SchemeTypeFaqiGenDan;
+    } else {
+        payVC.schemetype = SchemeTypeGenDan;
+    }
     [self.navigationController pushViewController:payVC animated:YES];
 }
 

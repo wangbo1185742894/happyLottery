@@ -14,4 +14,6 @@
 
 @property (nonatomic,copy) NSString *schemeType;  //BUY_INITIATE  BUY_FOLLOW
 
+@property (nonatomic,copy) NSString *schemeFromView;
+
 @end

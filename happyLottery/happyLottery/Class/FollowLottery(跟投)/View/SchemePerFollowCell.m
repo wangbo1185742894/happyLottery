@@ -23,7 +23,8 @@
     if([schemeType isEqualToString:@"BUY_INITIATE"]){
         [self.guanZhuBtn setTitle:@"跟单列表>" forState:UIControlStateNormal];
         self.genfaLabel.text = @"已跟投";
-        self.moneyNameLabel.text = [NSString stringWithFormat:@"%@元",model.totalFollowCost];
+        
+        self.moneyNameLabel.text = [NSString stringWithFormat:@"%d元",[model.totalFollowCost intValue]];
     }
     else {
         self.guanZhuBtn.layer.cornerRadius = 5;
@@ -37,7 +38,7 @@
         }
         [self.guanZhuBtn setTitle:str forState:UIControlStateNormal];
         self.genfaLabel.text = @"发单人";
-        self.moneyNameLabel.text = model.initiateNickname== nil?[model.cardCode stringByReplacingCharactersInRange:NSMakeRange(2,4) withString:@"****"]:model.initiateNickname;
+        self.moneyNameLabel.text = model.initiateNickname== nil?[model.initiateCardCode stringByReplacingCharactersInRange:NSMakeRange(2,4) withString:@"****"]:model.initiateNickname;
     }
 }
 

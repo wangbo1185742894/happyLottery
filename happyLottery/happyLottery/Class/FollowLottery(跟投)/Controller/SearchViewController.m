@@ -8,6 +8,7 @@
 
 #import "SearchViewController.h"
 #import "HotFollowSchemeViewCell.h"
+#import "FollowDetailViewController.h"
 #define KHotFollowSchemeViewCell @"HotFollowSchemeViewCell"
 
 @interface SearchViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate>
@@ -40,6 +41,8 @@
     [self getHotFollowScheme];
     [UITableView refreshHelperWithScrollView:self.tabSearchResultList target:self loadNewData:@selector(loadNewData) loadMoreData:@selector(loadMoreData) isBeginRefresh:NO];
 }
+
+
 
 -(void)loadNewData{
     _page = 0;
@@ -128,8 +131,26 @@
   return 202;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBar.hidden = NO;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    FollowDetailViewController *followVC = [[FollowDetailViewController alloc]init];
+    followVC.model = schemeList[indexPath.row];
+    followVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:followVC animated:YES];
+}
+
 - (IBAction)actionBack:(id)sender {
-    [self dismissViewControllerAnimated:NO completion:nil];
+//    [self dismissViewControllerAnimated:NO completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 - (IBAction)actionSearch:(id)sender {
      [self loadNewData];

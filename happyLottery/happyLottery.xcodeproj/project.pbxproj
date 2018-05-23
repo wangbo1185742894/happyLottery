@@ -1279,6 +1279,8 @@
 		F9C4EED6202063D300CDCDBA /* about_slogan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9C4EED2202063D300CDCDBA /* about_slogan@2x.png */; };
 		F9C4EED92020897D00CDCDBA /* logo120@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9C4EED72020897B00CDCDBA /* logo120@3x.png */; };
 		F9C4EEDA2020897D00CDCDBA /* logo120@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9C4EED82020897C00CDCDBA /* logo120@2x.png */; };
+		F9C942CC20B50191009BA1BF /* sharedeat@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9C942CB20B50191009BA1BF /* sharedeat@3x.png */; };
+		F9C942D220B50CED009BA1BF /* sharedeat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9C942D120B50CED009BA1BF /* sharedeat@2x.png */; };
 		F9CD01DE20240A3300E54E79 /* tuijianma@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9CD01DC20240A3300E54E79 /* tuijianma@2x.png */; };
 		F9CD01DF20240A3300E54E79 /* tuijianma@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9CD01DD20240A3300E54E79 /* tuijianma@3x.png */; };
 		F9CD01E220240CEA00E54E79 /* zhifuchecked@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9CD01E020240CE900E54E79 /* zhifuchecked@3x.png */; };
@@ -3089,6 +3091,8 @@
 		F9C4EED2202063D300CDCDBA /* about_slogan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about_slogan@2x.png"; sourceTree = "<group>"; };
 		F9C4EED72020897B00CDCDBA /* logo120@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo120@3x.png"; sourceTree = "<group>"; };
 		F9C4EED82020897C00CDCDBA /* logo120@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo120@2x.png"; sourceTree = "<group>"; };
+		F9C942CB20B50191009BA1BF /* sharedeat@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sharedeat@3x.png"; sourceTree = "<group>"; };
+		F9C942D120B50CED009BA1BF /* sharedeat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sharedeat@2x.png"; sourceTree = "<group>"; };
 		F9CD01DC20240A3300E54E79 /* tuijianma@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tuijianma@2x.png"; sourceTree = "<group>"; };
 		F9CD01DD20240A3300E54E79 /* tuijianma@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tuijianma@3x.png"; sourceTree = "<group>"; };
 		F9CD01E020240CE900E54E79 /* zhifuchecked@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zhifuchecked@3x.png"; sourceTree = "<group>"; };
@@ -4250,10 +4254,15 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+
 				2D22810120B5470600F4C8B9 /* pic_gendankongbaiye@2x.png */,
 				2D2280FF20B5470500F4C8B9 /* pic_gendankongbaiye@3x.png */,
 				2D22810220B5470700F4C8B9 /* pic_zanwushuju_tongyong@2x.png */,
 				2D22810020B5470600F4C8B9 /* pic_zanwushuju_tongyong@3x.png */,
+
+				F9C942D120B50CED009BA1BF /* sharedeat@2x.png */,
+				F9C942CB20B50191009BA1BF /* sharedeat@3x.png */,
+
 				2D4D609020AEAACB00280033 /* huisebiankuang@2x.png */,
 				2D4D609120AEAACC00280033 /* huisebiankuang@3x.png */,
 				2D4D609220AEAACC00280033 /* lvsebiankuang@2x.png */,
@@ -6248,6 +6257,7 @@
 				2D05C86320A43631001A8953 /* third@3x.png in Resources */,
 				2D20601F1FFCB71E0086E266 /* icon_shijian@2x.png in Resources */,
 				2D03F2842060BAE800C81BEF /* ChangePayPWDViewController.xib in Resources */,
+				F9C942D220B50CED009BA1BF /* sharedeat@2x.png in Resources */,
 				2DDEDC0C1FD4DBF1007AEBF7 /* DiscoverViewController.xib in Resources */,
 				2D628B251FECA9C40013D0E1 /* touzhuxuanzezhifu@2x.png in Resources */,
 				F91565EF1FFCBDAE00E254CE /* microblog@2x.png in Resources */,
@@ -6316,6 +6326,7 @@
 				2D89D60B206CE3AE005E0209 /* WelComeViewController.xib in Resources */,
 				2D4B1E831FDF684E0034B708 /* wode_select@2x.png in Resources */,
 				2D739CF01FEB4B0E00264044 /* xiala@3x.png in Resources */,
+				F9C942CC20B50191009BA1BF /* sharedeat@3x.png in Resources */,
 				F9DC8C3E20A57F02006B31F4 /* pic_jinqizhuangtai@3x.png in Resources */,
 				2D7B1381204E70510035AE89 /* friendshake@3x.png in Resources */,
 				2D8CBFB01FF328D800CC367F /* paysuccess@2x.png in Resources */,

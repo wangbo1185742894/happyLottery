@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PaySuccessViewController">
             <connections>
+                <outlet property="btnHeightPostScheme" destination="YXc-aW-9cq" id="ber-GK-UxD"/>
+                <outlet property="btnPostScheme" destination="fsY-zM-eCl" id="UFo-dB-Xhu"/>
                 <outlet property="labChuPiaoimg" destination="Ujh-zc-LJ4" id="YfK-JW-jsU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -45,7 +47,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDp-PZ-hKU">
-                    <rect key="frame" x="37.5" y="361" width="300" height="47"/>
+                    <rect key="frame" x="37.5" y="428" width="300" height="47"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="47" id="21H-Lq-S9n"/>
                         <constraint firstAttribute="width" constant="300" id="vAe-m0-6H7"/>
@@ -56,10 +58,21 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hlg-BJ-1T2">
-                    <rect key="frame" x="37.5" y="428" width="300" height="47"/>
+                    <rect key="frame" x="37.5" y="495" width="300" height="47"/>
                     <state key="normal" title="返回" backgroundImage="fanhuishouye"/>
                     <connections>
                         <action selector="actionBackHome:" destination="-1" eventType="touchUpInside" id="Rxg-gW-RcA"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fsY-zM-eCl">
+                    <rect key="frame" x="37" y="361" width="300" height="47"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="47" id="YXc-aW-9cq"/>
+                        <constraint firstAttribute="width" constant="300" id="ldF-ZI-3Zj"/>
+                    </constraints>
+                    <state key="normal" title="发起跟投" backgroundImage="yuanjiaowukuangselect"/>
+                    <connections>
+                        <action selector="actionPostScheme:" destination="-1" eventType="touchUpInside" id="hg8-Eo-642"/>
                     </connections>
                 </button>
             </subviews>
@@ -69,6 +82,7 @@
                 <constraint firstAttribute="trailing" secondItem="Ujh-zc-LJ4" secondAttribute="trailing" id="47J-ko-VZ5"/>
                 <constraint firstItem="9XB-jR-uQd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="6TE-2b-MPd"/>
                 <constraint firstItem="Hlg-BJ-1T2" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="FbJ-oV-0dk"/>
+                <constraint firstItem="fsY-zM-eCl" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="G9p-jb-VHW"/>
                 <constraint firstItem="C99-ey-mhy" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="HfC-Fj-mf4"/>
                 <constraint firstItem="9XB-jR-uQd" firstAttribute="top" secondItem="C99-ey-mhy" secondAttribute="bottom" id="L6f-zt-fxQ"/>
                 <constraint firstItem="Hlg-BJ-1T2" firstAttribute="width" secondItem="YDp-PZ-hKU" secondAttribute="width" id="O5C-fN-IDL"/>
@@ -77,9 +91,10 @@
                 <constraint firstItem="C99-ey-mhy" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="106" id="XrX-AP-p5y"/>
                 <constraint firstItem="Hlg-BJ-1T2" firstAttribute="top" secondItem="YDp-PZ-hKU" secondAttribute="bottom" constant="20" id="Z2C-H0-SCc"/>
                 <constraint firstItem="C99-ey-mhy" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="bVS-AQ-BAB"/>
-                <constraint firstItem="YDp-PZ-hKU" firstAttribute="top" secondItem="Ujh-zc-LJ4" secondAttribute="bottom" constant="50" id="gDQ-OV-JQy"/>
+                <constraint firstItem="YDp-PZ-hKU" firstAttribute="top" secondItem="fsY-zM-eCl" secondAttribute="bottom" constant="20" id="ftq-pW-DML"/>
                 <constraint firstItem="YDp-PZ-hKU" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="kAn-Du-Yjr"/>
                 <constraint firstItem="Ujh-zc-LJ4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lX1-az-pbf"/>
+                <constraint firstItem="fsY-zM-eCl" firstAttribute="top" secondItem="Ujh-zc-LJ4" secondAttribute="bottom" constant="50" id="xWF-Bi-LFm"/>
                 <constraint firstAttribute="trailing" secondItem="9XB-jR-uQd" secondAttribute="trailing" id="z74-cL-v8l"/>
             </constraints>
         </view>

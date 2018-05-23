@@ -35,7 +35,8 @@
         self.top.constant = 24;
        
     }
-    self.height.constant = 770;
+//    self.height.constant = 770;
+    self.height.constant = 815;
 }
 
 - (IBAction)footballPlay:(id)sender {
@@ -106,5 +107,13 @@
 }
 - (IBAction)actionTel:(UIButton *)sender {
     [self actionTelMe];
+}
+
+- (IBAction)actionToFollowInfo:(id)sender {
+    WebViewController *webVC = [[WebViewController alloc]initWithNibName:@"WebViewController" bundle:nil];
+    webVC.type = @"html";
+    webVC.title = @"跟单玩法规则";
+    webVC.htmlName = @"about_follow";
+    [self.navigationController pushViewController:webVC animated:YES];
 }
 @end

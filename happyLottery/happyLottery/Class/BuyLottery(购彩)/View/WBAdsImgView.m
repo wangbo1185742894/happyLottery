@@ -35,7 +35,6 @@
 }
 
 -(void)setImageUrlArray:(NSArray<ADSModel *> *)imgUrls{
-    
     if (scrContentView == nil) {
         scrContentView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth,self.mj_h)];
         scrContentView.delegate = self;
@@ -50,7 +49,7 @@
         }
     }
     
-    if (imgUrls == nil) {//网络状态不好  或者数据未回来  预先加载本地banner图
+    if (imgUrls == nil||imgUrls.count==0) {//网络状态不好  或者数据未回来  预先加载本地banner图
         scrContentView.contentSize = CGSizeMake(KscreenWidth * 3, scrContentView.mj_h);
         
         pageCtl.numberOfPages = 3;

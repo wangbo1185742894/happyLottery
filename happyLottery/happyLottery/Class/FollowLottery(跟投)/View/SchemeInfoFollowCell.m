@@ -23,7 +23,6 @@
 }
 
 - (void)reloadDate:(JCZQSchemeItem * )model{
-    self.moneyLabel.text = model.earnings;
     if ([model.lottery isEqualToString:@"JCZQ"]) {
         self.loterryLabel.text = @"竞彩足球";
         [self.lotteryImage setImage:[UIImage imageNamed:@"footerball.png"]];
@@ -31,7 +30,7 @@
         self.loterryLabel.text = @"竞彩篮球";
         [self.lotteryImage setImage:[UIImage imageNamed:@"basketball.png"]];
     }
-    self.labBetBouns.text = [NSString stringWithFormat:@"投注%@元",model.betCost];
+    self.labBetBouns.text = [NSString stringWithFormat:@"投注%d元",[model.betCost intValue]];
     self.moneyLabel.text = [self getWinningStatus:model];
     if ([model.winningStatus isEqualToString:@"WAIT_LOTTERY"]) {
         self.moneyLabel.textColor = RGBCOLOR(122, 122, 122);
@@ -61,14 +60,15 @@
 }
 
 -(NSString *)getWinningStatus:( JCZQSchemeItem*)model{
+
     if ([model.winningStatus isEqualToString:@"WAIT_LOTTERY"]) {
         return @"-";
     }
     if ([model.winningStatus isEqualToString:@"NOT_LOTTERY"]) {
         return @"0.00元";
     }
-    if ([model.bonus doubleValue] != 0) {
-        return [NSString stringWithFormat:@"%.2f元",[model.bonus doubleValue]];
+    if ([model.earnings doubleValue] != 0) {
+        return [NSString stringWithFormat:@"%.2f元",[model.earnings doubleValue]];
     }
     return @"0.00元";
 }

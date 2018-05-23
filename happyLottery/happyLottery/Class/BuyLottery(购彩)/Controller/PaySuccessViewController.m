@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"预约支付";
-    if (self.schemetype == SchemeTypeGenDan ) {
+    if (self.schemetype == SchemeTypeGenDan ||self.schemetype == SchemeTypeFaqiGenDan) {
          self.btnHeightPostScheme.constant = 0;
     }else if(self.isShowFaDan){
         self.btnHeightPostScheme.constant = 44;
@@ -62,6 +62,7 @@
         [self.navigationController pushViewController:detailCV animated:YES];
     }else if ( self.schemetype == SchemeTypeFaqiGenDan){
         MyPostSchemeViewController *myOrderListVC = [[MyPostSchemeViewController alloc]init];
+        myOrderListVC.isFaDan = YES;
         NSMutableArray * vcS = [[NSMutableArray alloc]initWithArray:self.navigationController.viewControllers];
         [vcS addObject:myOrderListVC];
         self.navigationController.viewControllers = vcS;

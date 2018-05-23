@@ -101,7 +101,7 @@
 @end
 
 @implementation BuyLotteryViewController{
-    UINavigationController *navgC;
+   UINavigationController *navGationCotr;
 }
 
 - (void)viewDidLoad {
@@ -163,19 +163,25 @@
     if (modelUrl == nil) {
         activityInfoView.hidden = NO;
     }else{
-        
+//        [[NSUserDefaults standardUserDefaults] setValue:@0  forKey:KAppSignModelShow];
+//        bug修改(目前杀掉进程后的第一次打开悬浮窗不显示，再杀进程再打开时，悬浮窗又出现了),如有新问题改回  lyw
         if ([modelUrl isEqualToString:appSignModel.skipUrl]) {
             [[NSUserDefaults standardUserDefaults] setValue:@(isNotShow)  forKey:KAppSignModelShow];
             activityInfoView.hidden =  isNotShow;
         }else{
             activityInfoView.hidden = NO;
-            [[NSUserDefaults standardUserDefaults] setValue:@(0)  forKey:KAppSignModelShow];
+            //bug修改同上
+            [[NSUserDefaults standardUserDefaults] setValue:@0  forKey:KAppSignModelShow];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+
         }
     }
     if ([[NSUserDefaults standardUserDefaults] objectForKey:KAppSignModelShow] == nil) {
         [[NSUserDefaults standardUserDefaults] setValue:@0  forKey:KAppSignModelShow];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     }
     [[NSUserDefaults standardUserDefaults] setValue:appSignModel.skipUrl forKey:KAppSignModelUrl];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     [activityInfoView.imgRedIcon sd_setImageWithURL:[NSURL URLWithString:appSignModel.imageUrl]];
 }
 
@@ -399,6 +405,7 @@
 }
 
 -(void)goToYunshiWithInfo:(ADSModel *)itemIndex navigation:(UINavigationController *)navgC{
+    navGationCotr = navgC;
     NSString *keyStr = itemIndex.thumbnailCode;
     
     if (keyStr == nil) {
@@ -409,13 +416,28 @@
     }
     
     if([keyStr isEqualToString:@"A401"]){
-        self.tabBarController.selectedIndex = 3;
+        if (navgC == nil) {
+           self.tabBarController.selectedIndex = 3;
+        }
+        else {
+           navgC.tabBarController.selectedIndex = 3;
+        }
         return;
     }else if([keyStr isEqualToString:@"A402"]){
-        self.tabBarController.selectedIndex = 2;
+        if (navgC == nil) {
+            self.tabBarController.selectedIndex = 2;
+        }
+        else {
+            navgC.tabBarController.selectedIndex = 2;
+        }
         return;
     }else if([keyStr isEqualToString:@"A201"]){
-        self.tabBarController.selectedIndex = 4;
+        if (navgC == nil) {
+            self.tabBarController.selectedIndex = 4;
+        }
+        else {
+            navgC.tabBarController.selectedIndex = 4;
+        }
         return;
     }else if ([keyStr isEqualToString:@"A403"]){
         HomeJumpViewController *disVC = [[HomeJumpViewController alloc]init];
@@ -523,8 +545,7 @@
 
 -(void)adsImgViewClick:(ADSModel *)itemIndex navigation:(UINavigationController *)navgC{
     NSString *jumpType;
-    
-    navgC = navgC;
+    navGationCotr = navgC;
     if (itemIndex.imageContentType != nil) {
         jumpType = [NSString stringWithFormat:@"%@",itemIndex.imageContentType];
     }else{
@@ -700,11 +721,11 @@
     GYJPlayViewController *gyjPlayVc = [[GYJPlayViewController alloc]init];
     gyjPlayVc.hidesBottomBarWhenPushed = YES;
     gyjPlayVc.navigationController.navigationBar.hidden = YES;
-    if (navgC == nil) {
+    if (navGationCotr == nil) {
         [self.navigationController pushViewController:gyjPlayVc animated:YES];
     }
     else {
-        [navgC pushViewController:gyjPlayVc animated:YES];
+        [navGationCotr pushViewController:gyjPlayVc animated:YES];
     }
 }
 
@@ -1027,37 +1048,46 @@
 }
 
 - (IBAction)actionDLT:(id)sender {
+    if (self.lotteryMan == nil) {
+        self.lotteryMan = [[LotteryManager alloc]init];
+    }
     NSArray * lotteryDS = [self.lotteryMan getAllLottery];
     
     DLTPlayViewController *playVC = [[DLTPlayViewController alloc] init];
     playVC.hidesBottomBarWhenPushed = YES;
     //    _lotterySelected.currentRound = round;
     playVC.lottery = lotteryDS[1];
-    if (navgC == nil) {
+    if (navGationCotr == nil) {
         [self.navigationController pushViewController:playVC animated:YES];
     }
     else {
-        [navgC pushViewController:playVC animated:YES];
+        [navGationCotr pushViewController:playVC animated:YES];
     }
     
 }
 
 //双色球
 - (IBAction)actionSSQ:(id)sender {
+    if (self.lotteryMan == nil) {
+        self.lotteryMan = [[LotteryManager alloc]init];
+    }
     NSArray * lotteryDS = [self.lotteryMan getAllLottery];
     SSQPlayViewController *playVC = [[SSQPlayViewController alloc] init];
     playVC.hidesBottomBarWhenPushed = YES;
     playVC.lottery = lotteryDS[10];
-    if (navgC == nil) {
+    if (navGationCotr == nil) {
         [self.navigationController pushViewController:playVC animated:YES];
     }
     else {
-        [navgC pushViewController:playVC animated:YES];
+        [navGationCotr pushViewController:playVC animated:YES];
     }
 }
 
 
 - (IBAction)actionSFC:(id)sender {
+    if (self.lotteryMan == nil) {
+       self.lotteryMan = [[LotteryManager alloc]init];
+    }
     NSArray * lotteryDS = [self.lotteryMan getAllLottery];
     CTZQPlayViewController *playVC = [[CTZQPlayViewController alloc] init];
     if ([sender isKindOfClass:[NSString class]]) {
@@ -1069,11 +1099,11 @@
     }
     playVC.hidesBottomBarWhenPushed = YES;
     playVC.lottery = lotteryDS[7];
-    if (navgC == nil) {
+    if (navGationCotr == nil) {
         [self.navigationController pushViewController:playVC animated:YES];
     }
     else {
-        [navgC pushViewController:playVC animated:YES];
+        [navGationCotr pushViewController:playVC animated:YES];
     }
 }
 - (IBAction)actionJCLQ:(UIButton *)sender {

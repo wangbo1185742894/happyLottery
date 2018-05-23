@@ -19,7 +19,10 @@
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         if (adsView == nil) {
-            adsView = [[WBAdsImgView alloc]initWithFrame:CGRectMake(0,0, KscreenWidth, 80)];
+            adsView = [[WBAdsImgView alloc]initWithFrame:CGRectMake(20,0, KscreenWidth-40, 80)];
+            adsView.contentMode = UIViewContentModeScaleAspectFit;
+            adsView.layer.cornerRadius = 35;
+            adsView.layer.masksToBounds = YES;
             adsView.delegate = self;
             [self addSubview:adsView];
         }

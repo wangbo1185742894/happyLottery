@@ -42,8 +42,7 @@
     }else{
         [imgLotteryIcon sd_setImageWithURL:[NSURL URLWithString:model.initiateUrl]];
     }
-    
-    labPersonName.text = model.initiateNickname == nil?[model.cardCode stringByReplacingCharactersInRange:NSMakeRange(2,4) withString:@"****"]:model.initiateNickname;
+    labPersonName.text = model.initiateNickname == nil?[model.initiateCardCode stringByReplacingCharactersInRange:NSMakeRange(2,4) withString:@"****"]:model.initiateNickname;
     NSString *pass = [model.passType componentsJoinedByString:@","];
     pass = [pass stringByReplacingOccurrencesOfString:@"x" withString:@"串"];
     labPassType.text = pass;
@@ -51,8 +50,7 @@
     labTime .text = [[model.createTime componentsSeparatedByString:@" "] firstObject];
     labWinState.text = model.getSchemeState;
     if([model .getSchemeState rangeOfString:@"已中奖"].length > 0){
-        
-        labWonCost.text = [NSString stringWithFormat:@"%.2f元",[model.bonus floatValue]];
+        labWonCost.text = [NSString stringWithFormat:@"%.2f元",[model.bonus doubleValue]];
         labWonCost.hidden = NO;
         imgWinState.hidden = NO;
         labWinState.textColor = RGBCOLOR(254, 58, 81);
