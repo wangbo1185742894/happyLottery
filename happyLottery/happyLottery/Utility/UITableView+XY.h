@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #define KpageSize 10
 @interface UITableView (XY)
+
 +(void)refreshHelperWithScrollView:(UIScrollView *)scrollView target:(id)target loadNewData:(SEL)loadNewData loadMoreData:(SEL)loadMoreData isBeginRefresh:(BOOL)beginRefreshing;
 -(void)tableViewEndRefreshCurPageCount:(NSInteger )count;
+-(void)xy_setImage:(NSString *)imgName noDataMsg:(NSString *)msg;
 @end

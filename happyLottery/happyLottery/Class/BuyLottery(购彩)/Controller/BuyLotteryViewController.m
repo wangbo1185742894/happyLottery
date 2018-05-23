@@ -163,11 +163,13 @@
     if (modelUrl == nil) {
         activityInfoView.hidden = NO;
     }else{
-        [[NSUserDefaults standardUserDefaults] setValue:@0  forKey:KAppSignModelShow];
+        
         if ([modelUrl isEqualToString:appSignModel.skipUrl]) {
+            [[NSUserDefaults standardUserDefaults] setValue:@(isNotShow)  forKey:KAppSignModelShow];
             activityInfoView.hidden =  isNotShow;
         }else{
             activityInfoView.hidden = NO;
+            [[NSUserDefaults standardUserDefaults] setValue:@(0)  forKey:KAppSignModelShow];
         }
     }
     if ([[NSUserDefaults standardUserDefaults] objectForKey:KAppSignModelShow] == nil) {

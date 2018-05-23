@@ -14,7 +14,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnBack;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topDis;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
-
 @end
 
 @implementation WebViewController
@@ -43,29 +42,26 @@
                 self.automaticallyAdjustsScrollViewInsets = NO; // tableView 莫名其妙  contentOffset.y 成-64了  MMP
             }
         }
-        NSURL *url = [NSURL URLWithString:self.pageUrl];
+       NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?isLogin=%@&cardCode=%@",self.pageUrl,self.curUser.isLogin == YES?@"true":@"false",self.curUser.isLogin == YES?self.curUser.cardCode:@""]];
         [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
     }
 }
-
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     if (self.pageUrl != nil) {
         self.navigationController.navigationBar.hidden = YES;
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?isLogin=%@&cardCode=%@",self.pageUrl,self.curUser.isLogin == YES?@"true":@"false",self.curUser.isLogin == YES?self.curUser.cardCode:@""]];
+        [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
     }
-    
-    
-    
-//    [self useBackButton:NO];
-//    [self setNavigationBarStyle];
 }
+
 - (IBAction)actionBack:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     NSString *urlStr =[NSString stringWithFormat:@"%@", request.URL];
-    if ([urlStr isEqualToString:self.pageUrl]) {
+    if ([urlStr rangeOfString:@"/app/activity/index"].length > 0) {
         _btnBack.userInteractionEnabled = YES;
     }else{
         _btnBack.userInteractionEnabled = NO;

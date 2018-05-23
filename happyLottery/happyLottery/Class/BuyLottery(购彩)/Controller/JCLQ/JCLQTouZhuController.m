@@ -590,9 +590,11 @@
 - (IBAction)actionMoniTouzhu:(UIButton *)sender {
     
     [self setBtnState:sender];
+    widthTouzhu.constant = 0;
 }
 - (IBAction)actionZhenshiTouzhu:(UIButton *)sender {
     [self setBtnState:sender];
+    widthTouzhu.constant = 60;
 }
 
 -(void)setBtnState:(UIButton *)sender{
