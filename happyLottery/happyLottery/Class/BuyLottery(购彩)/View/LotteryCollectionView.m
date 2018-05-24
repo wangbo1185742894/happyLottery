@@ -7,8 +7,32 @@
 //
 
 #import "LotteryCollectionView.h"
+#import "LotteryAreaViewCell.h"
 
-@implementation LotteryCollectionView
+static NSString *ID = @"LotteryAreaViewCell";
+
+@interface LotteryCollectionView()<UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UICollectionViewDelegate>
+
+
+
+@end
+
+@implementation LotteryCollectionView{
+    
+    NSArray *_lotteryArr; //彩种详细
+}
+
+- (instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout{
+    self = [super initWithFrame:frame collectionViewLayout:layout];
+    if (self) {
+        self.dataSource = self;
+        self.delegate = self;
+        [self registerNib:[UINib nibWithNibName:@"LotteryAreaViewCell" bundle:nil] forCellWithReuseIdentifier:ID];
+        self.backgroundColor =[UIColor blackColor];
+    }
+    return self;
+}
+
 
 /*
 // Only override drawRect: if you perform custom drawing.

@@ -40,12 +40,16 @@
 #import "LotteryAreaViewController.h"
 #import "ActivityInfoView.h"
 #import "WebViewController.h"
+#import "LotteryCollectionView.h"
+#import "LotteryAreaViewCell.h"
 #define KNewsListCell @"NewsListCell"
 #define AnimationDur 0.3
 #define KAppSignModelShow @"appSignModelShow"
 #define KAppSignModelUrl @"appSignModelUrl"
 
-@interface BuyLotteryViewController ()<WBAdsImgViewDelegate,HomeMenuItemViewDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,NewsListCellDelegate,OpenRedPopViewDelegate,MemberManagerDelegate,VersionUpdatingPopViewDelegate,NetWorkingHelperDelegate>
+static NSString *ID = @"LotteryAreaViewCell";
+
+@interface BuyLotteryViewController ()<WBAdsImgViewDelegate,HomeMenuItemViewDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,NewsListCellDelegate,OpenRedPopViewDelegate,MemberManagerDelegate,VersionUpdatingPopViewDelegate,NetWorkingHelperDelegate,UICollectionViewDataSource,UICollectionViewDelegate>
 {
     NSMutableArray  <JczqShortcutModel *>*JczqShortcutList;
     NSMutableArray  <JczqShortcutModel *>*colloectList;
@@ -56,7 +60,8 @@
     WBAdsImgView *adsView;
     UIView  *menuView;
     AppSignModel *appSignModel;
-    __weak IBOutlet UIView *lotteryPlayView;
+
+    __weak IBOutlet UICollectionView *lotteryPlayView;
     __weak IBOutlet NSLayoutConstraint *btnGyjHeight;
     OpenRedPopView *popView;
     __weak IBOutlet NSLayoutConstraint *spaceBtnGyj;
@@ -144,9 +149,37 @@
     [self .lotteryMan getAppSign:nil];
     [self setTableView];
         openRedpacketButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+
+    layout.minimumInteritemSpacing = 0;
+    layout.minimumLineSpacing = 0;
+    [lotteryPlayView registerNib:[UINib nibWithNibName:@"LotteryAreaViewCell" bundle:nil] forCellWithReuseIdentifier:ID];
+    [lotteryPlayView setCollectionViewLayout:layout];
+    lotteryPlayView.delegate = self;
+    lotteryPlayView.dataSource = self;
     
 //    [self.view bringSubviewToFront:redpacketView];
 //    [self.view insertSubview:redpacketView aboveSubview:self.tabBarController.tabBar];
+}
+
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+    return CGSizeMake(KscreenWidth/4,90);
+    
+//        return CGSizeMake(125, 115);
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return  8;
+    
+}
+
+
+- (UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    LotteryAreaViewCell *cell =  [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
+    cell.lotteryName.text = @"逗你玩";
+    return cell;
 }
 
 -(void)gotAppSign:(NSDictionary *)personList errorMsg:(NSString *)msg{
