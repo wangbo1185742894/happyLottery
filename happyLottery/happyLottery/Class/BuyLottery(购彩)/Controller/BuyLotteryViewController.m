@@ -49,7 +49,7 @@
 
 static NSString *ID = @"LotteryAreaViewCell";
 
-@interface BuyLotteryViewController ()<WBAdsImgViewDelegate,HomeMenuItemViewDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,NewsListCellDelegate,OpenRedPopViewDelegate,MemberManagerDelegate,VersionUpdatingPopViewDelegate,NetWorkingHelperDelegate,UICollectionViewDataSource,UICollectionViewDelegate>
+@interface BuyLotteryViewController ()<WBAdsImgViewDelegate,HomeMenuItemViewDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,NewsListCellDelegate,OpenRedPopViewDelegate,MemberManagerDelegate,VersionUpdatingPopViewDelegate,NetWorkingHelperDelegate,UICollectionViewDataSource,UICollectionViewDelegate,XYTableViewDelegate>
 {
     NSMutableArray  <JczqShortcutModel *>*JczqShortcutList;
     NSMutableArray  <JczqShortcutModel *>*colloectList;
@@ -281,6 +281,22 @@ static NSString *ID = @"LotteryAreaViewCell";
     }
 }
 
+-(UIImage *)xy_noDataViewImage{
+    return [UIImage imageNamed:@"pic_gendankongbaiye.png"];
+}
+
+-(NSNumber *)xy_noDataViewCenterYOffset{
+    return @(15);
+}
+
+-(BOOL)havData{
+    if (colloectList.count == 0) {
+        return NO;
+    }else{
+        return YES;
+    }
+}
+
 -(void)itemNotification:(NSNotification *)notification{
     NSInteger index = [notification.object integerValue];
     [self itemClick:index];
@@ -378,6 +394,16 @@ static NSString *ID = @"LotteryAreaViewCell";
     
     if (dataArray == nil) {
         [self showPromptText:msg hideAfterDelay:1.7];
+        CGFloat height;
+        if ([self isIphoneX]) {
+            height = tabForecaseList.mj_y  + tabForecaseList.rowHeight * 2 + 20;
+        }else{
+            height = tabForecaseList.mj_y  + tabForecaseList.rowHeight * 2 + 70;
+        }
+        homeViewHeight.constant = height;
+        tabForecastListHeight.constant = tabForecaseList.rowHeight * 2;
+
+        [tabForecaseList reloadData];
         return;
     }
     [JczqShortcutList removeAllObjects];

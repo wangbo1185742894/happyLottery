@@ -57,9 +57,7 @@
         NSInteger numberOfSections = [self numberOfSections];
         if (numberOfSections == 0) {
             havingData = NO;
-        }else if (numberOfSections >1) {
-            havingData = YES;
-        }else{
+        }else {
             if ([self.delegate respondsToSelector:@selector(havData)]) {
                 havingData =[self.delegate performSelector:@selector(havData)];
             }else{
