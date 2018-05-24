@@ -124,6 +124,9 @@
 
 -(void)listGreatFollow:(NSArray *)personList errorMsg:(NSString *)msg{
     if (personList == nil) {
+        eightList = nil;
+        NSIndexPath *indexpath = [NSIndexPath indexPathForRow:0 inSection:2];
+        [tabFollewView reloadRowsAtIndexPaths:@[indexpath] withRowAnimation:UITableViewRowAnimationFade];
         [self showPromptText:msg hideAfterDelay:1.8];
         return;
     }
