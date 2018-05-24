@@ -114,6 +114,7 @@
     [super viewWillAppear:animated];
     
     self.navigationController.navigationBar.hidden = YES;
+    [self deleteSelected:nil];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{

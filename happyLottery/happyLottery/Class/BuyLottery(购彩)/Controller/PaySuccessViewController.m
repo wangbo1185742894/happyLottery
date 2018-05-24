@@ -16,6 +16,20 @@
 #import "MyPostSchemeViewController.h"
 #import "FASSchemeDetailViewController.h"
 
+
+
+#import "DLTPlayViewController.h"
+#import "SSQPlayViewController.h"
+#import "JCZQPlayViewController.h"
+#import "CTZQPlayViewController.h"
+#import "JCLQPlayController.h"
+#import "GYJPlayViewController.h"
+#import "PersonCenterViewController.h"
+#import "MyNoticeViewController.h"
+#import "FollowSendViewController.h"
+#import "SearchViewController.h"
+
+
 @interface PaySuccessViewController ()<LotteryManagerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *btnPostScheme;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *btnHeightPostScheme;
@@ -100,16 +114,93 @@
     }
 
 }
+
 - (IBAction)actionBackHome:(id)sender {
-    
-    [self.navigationController popToRootViewControllerAnimated:YES];
-    
+    [self navigationBackToLastPage];
 }
 
 -(void)navigationBackToLastPage{
+    for (UIViewController *controller in self.navigationController.viewControllers) {
+        NSLog(@"-----%@------",controller);
+        if ([controller isKindOfClass:[GYJPlayViewController class]]) {
+            GYJPlayViewController *revise =(GYJPlayViewController *)controller;
+            [self.navigationController popToViewController:revise animated:YES];
+            return;
+        }
+        if ([controller isKindOfClass:[DLTPlayViewController class]]) {
+            DLTPlayViewController *revise =(DLTPlayViewController *)controller;
+            [self.navigationController popToViewController:revise animated:YES];
+            return;
+        }
+        if ([controller isKindOfClass:[SSQPlayViewController class]]) {
+            SSQPlayViewController *revise =(SSQPlayViewController *)controller;
+            [self.navigationController popToViewController:revise animated:YES];
+            return;
+        }
+        if ([controller isKindOfClass:[JCZQPlayViewController class]]) {
+            JCZQPlayViewController *revise =(JCZQPlayViewController *)controller;
+            [self.navigationController popToViewController:revise animated:YES];
+            [[NSNotificationCenter defaultCenter]postNotificationName:KSELECTMATCHCLEAN object:nil];
+            return;
+        }
+        if ([controller isKindOfClass:[CTZQPlayViewController class]]) {
+            CTZQPlayViewController *revise =(CTZQPlayViewController *)controller;
+            [[NSNotificationCenter defaultCenter]postNotificationName:KSELECTMATCHCLEAN object:nil];
+            [self.navigationController popToViewController:revise animated:YES];
+            return;
+            
+        }
+        if ([controller isKindOfClass:[JCLQPlayController class]]) {
+            JCLQPlayController *revise =(JCLQPlayController *)controller;
+            [[NSNotificationCenter defaultCenter]postNotificationName:KSELECTMATCHCLEAN object:nil];
+            [self.navigationController popToViewController:revise animated:YES];
+            return;
+        }
+        if ([controller isKindOfClass:[FollowSendViewController class]]) {
+            
+            for (UIViewController *controller in self.navigationController.viewControllers) {
+                if ([controller isKindOfClass:[PersonCenterViewController class]]) {
+                    PersonCenterViewController *revise =(PersonCenterViewController *)controller;
+                    [self.navigationController popToViewController:revise animated:YES];
+                    return;
+                }
+                if ([controller isKindOfClass:[MyNoticeViewController class]]) {
+                    MyNoticeViewController *revise =(MyNoticeViewController *)controller;
+                    [self.navigationController popToViewController:revise animated:YES];
+                    return;
+                }
+                if ([controller isKindOfClass:[JCZQPlayViewController class]]) {
+                    JCZQPlayViewController *revise =(JCZQPlayViewController *)controller;
+                    [[NSNotificationCenter defaultCenter]postNotificationName:KSELECTMATCHCLEAN object:nil];
+                    [self.navigationController popToViewController:revise animated:YES];
+                    return;
+                }
+                if ([controller isKindOfClass:[JCLQPlayController class]]) {
+                    JCLQPlayController *revise =(JCLQPlayController *)controller;
+                    [[NSNotificationCenter defaultCenter]postNotificationName:KSELECTMATCHCLEAN object:nil];
+                    [self.navigationController popToViewController:revise animated:YES];
+                    return;
+                }
+                if ([controller isKindOfClass:[SearchViewController class]]) {
+                    SearchViewController *revise =(SearchViewController *)controller;
+                    [self.navigationController popToViewController:revise animated:YES];
+                    return;
+                }
+            }
+            FollowSendViewController *revise =(FollowSendViewController *)controller;
+            [self.navigationController popToViewController:revise animated:YES];
+            return;
+        }
+        if ([controller isKindOfClass:[MyPostSchemeViewController class]]) {
+            MyPostSchemeViewController *revise =(MyPostSchemeViewController *)controller;
+            [self.navigationController popToViewController:revise animated:YES];
+            return;
+        }
+        
+    }
     [self.navigationController popToRootViewControllerAnimated:YES];
-
 }
+
 - (IBAction)actionPostScheme:(id)sender {
     MyPostSchemeViewController *myOrderListVC = [[MyPostSchemeViewController alloc]init];
     myOrderListVC.isFaDan = YES;

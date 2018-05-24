@@ -1281,6 +1281,7 @@
 		F9C4EEDA2020897D00CDCDBA /* logo120@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9C4EED82020897C00CDCDBA /* logo120@2x.png */; };
 		F9C942CC20B50191009BA1BF /* sharedeat@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9C942CB20B50191009BA1BF /* sharedeat@3x.png */; };
 		F9C942D220B50CED009BA1BF /* sharedeat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9C942D120B50CED009BA1BF /* sharedeat@2x.png */; };
+		F9C942D520B56107009BA1BF /* LotteryCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C942D420B56107009BA1BF /* LotteryCollectionView.m */; };
 		F9CD01DE20240A3300E54E79 /* tuijianma@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9CD01DC20240A3300E54E79 /* tuijianma@2x.png */; };
 		F9CD01DF20240A3300E54E79 /* tuijianma@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9CD01DD20240A3300E54E79 /* tuijianma@3x.png */; };
 		F9CD01E220240CEA00E54E79 /* zhifuchecked@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9CD01E020240CE900E54E79 /* zhifuchecked@3x.png */; };
@@ -3093,6 +3094,8 @@
 		F9C4EED82020897C00CDCDBA /* logo120@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo120@2x.png"; sourceTree = "<group>"; };
 		F9C942CB20B50191009BA1BF /* sharedeat@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sharedeat@3x.png"; sourceTree = "<group>"; };
 		F9C942D120B50CED009BA1BF /* sharedeat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sharedeat@2x.png"; sourceTree = "<group>"; };
+		F9C942D320B56107009BA1BF /* LotteryCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LotteryCollectionView.h; sourceTree = "<group>"; };
+		F9C942D420B56107009BA1BF /* LotteryCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LotteryCollectionView.m; sourceTree = "<group>"; };
 		F9CD01DC20240A3300E54E79 /* tuijianma@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tuijianma@2x.png"; sourceTree = "<group>"; };
 		F9CD01DD20240A3300E54E79 /* tuijianma@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tuijianma@3x.png"; sourceTree = "<group>"; };
 		F9CD01E020240CE900E54E79 /* zhifuchecked@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zhifuchecked@3x.png"; sourceTree = "<group>"; };
@@ -4254,15 +4257,12 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-
 				2D22810120B5470600F4C8B9 /* pic_gendankongbaiye@2x.png */,
 				2D2280FF20B5470500F4C8B9 /* pic_gendankongbaiye@3x.png */,
 				2D22810220B5470700F4C8B9 /* pic_zanwushuju_tongyong@2x.png */,
 				2D22810020B5470600F4C8B9 /* pic_zanwushuju_tongyong@3x.png */,
-
 				F9C942D120B50CED009BA1BF /* sharedeat@2x.png */,
 				F9C942CB20B50191009BA1BF /* sharedeat@3x.png */,
-
 				2D4D609020AEAACB00280033 /* huisebiankuang@2x.png */,
 				2D4D609120AEAACC00280033 /* huisebiankuang@3x.png */,
 				2D4D609220AEAACC00280033 /* lvsebiankuang@2x.png */,
@@ -5046,6 +5046,8 @@
 				2D4D607F20AD45C400280033 /* ActivityInfoView.xib */,
 				2D4D608120AD4DFB00280033 /* ActivityInfoView.h */,
 				2D4D608220AD4DFB00280033 /* ActivityInfoView.m */,
+				F9C942D320B56107009BA1BF /* LotteryCollectionView.h */,
+				F9C942D420B56107009BA1BF /* LotteryCollectionView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -7391,6 +7393,7 @@
 				2DDEDE651FD568C9007AEBF7 /* SDWebImagePrefetcher.m in Sources */,
 				F94AA99C1FEB46770021B980 /* TopUpsViewController.m in Sources */,
 				2DDEDE691FD568C9007AEBF7 /* UIImage+WebP.m in Sources */,
+				F9C942D520B56107009BA1BF /* LotteryCollectionView.m in Sources */,
 				2DDEDE641FD568C9007AEBF7 /* SDWebImageManager.m in Sources */,
 				2D628B651FF1DAE60013D0E1 /* PayTypeListCell.m in Sources */,
 				2D7B12C5204D3A250035AE89 /* DLTPlayViewController.m in Sources */,

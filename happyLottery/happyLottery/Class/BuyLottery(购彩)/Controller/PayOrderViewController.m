@@ -195,8 +195,8 @@
         
     }];
     [alert addBtnTitle:@"确定" action:^{
-        
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        [super navigationBackToLastPage];
+//        [self.navigationController popToRootViewControllerAnimated:YES];
         
     }];
     [alert showAlertWithSender:self];
