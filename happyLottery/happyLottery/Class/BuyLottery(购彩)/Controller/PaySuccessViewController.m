@@ -202,23 +202,25 @@
 }
 
 - (IBAction)actionPostScheme:(id)sender {
-    MyPostSchemeViewController *myOrderListVC = [[MyPostSchemeViewController alloc]init];
-    myOrderListVC.isFaDan = YES;
-    NSMutableArray * vcS = [[NSMutableArray alloc]initWithArray:self.navigationController.viewControllers];
-    [vcS addObject:myOrderListVC];
-    self.navigationController.viewControllers = vcS;
+   
     [self.lotteryMan initiateFollowScheme:@{@"schemeNo":self.schemeNO}];
 }
 - (void)initiateFollowScheme:(NSString *)resultStr errorMsg:(NSString *)msg{
-    if(resultStr != nil){
+    if(resultStr != nil && resultStr.length > 0){
         [self showPromptText:@"发单成功" hideAfterDelay:1.9];
-        FASSchemeDetailViewController *detailCV = [[FASSchemeDetailViewController alloc]init];
-        detailCV.schemeNo = self.schemeNO;
-        detailCV.schemeType = @"BUY_INITIATE";
-        [self.navigationController pushViewController:detailCV animated:YES];
     }else{
         [self showPromptText:msg hideAfterDelay:1.9];
+        return;
     }
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        FASSchemeDetailViewController *myOrderListVC = [[FASSchemeDetailViewController alloc]init];
+        myOrderListVC.schemeNo = self.schemeNO;
+        myOrderListVC.schemeType = @"BUY_INITIATE";
+        NSMutableArray * vcS = [[NSMutableArray alloc]initWithArray:self.navigationController.viewControllers];
+        [vcS addObject:myOrderListVC];
+        self.navigationController.viewControllers = vcS;
+    });
+   
 }
 
 @end

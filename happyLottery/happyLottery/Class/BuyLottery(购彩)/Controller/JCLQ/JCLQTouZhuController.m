@@ -154,6 +154,7 @@
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(acitonDeleteMatch:) name:@"NSNotificationDeleteMatchForTouzhu" object:nil];
     btnZigou.layer.cornerRadius = 5;
+    faDanBtn.layer.cornerRadius = 5;
 }
 
 -(NSInteger)sumSelect:(NSArray*)array{

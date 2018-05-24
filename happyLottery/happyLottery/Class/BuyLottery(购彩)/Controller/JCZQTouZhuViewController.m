@@ -70,6 +70,7 @@
     [self setChuanfa];
     [self updataTouzhuInfo];
     self.touzhuBtn.layer.cornerRadius = 5;
+    fadanBtn.layer.cornerRadius = 5;
 }
 
 -(void)cleanMatch:(NSNotification*)notification{

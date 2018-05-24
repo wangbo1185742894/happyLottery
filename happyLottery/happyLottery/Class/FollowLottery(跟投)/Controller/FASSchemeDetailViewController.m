@@ -7,6 +7,7 @@
 //
 
 #import "FASSchemeDetailViewController.h"
+#import "MyPostSchemeViewController.h"
 #import "FollowListViewController.h"
 #import "SchemeInfoFollowCell.h"
 #import "SchemePerFollowCell.h"
@@ -72,7 +73,7 @@
 
 - (void)sharePress {
     {
-        NSString *url = [NSString stringWithFormat:@"http://192.168.88.193:18086/app/share/shareScheme?schemeNo=%@",schemeDetail.schemeNO];
+        NSString *url = [NSString stringWithFormat:@"%@/app/share/shareScheme?schemeNo=%@",H5BaseAddress,schemeDetail.schemeNO];
         NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
         NSArray* imageArray = @[[[NSBundle mainBundle] pathForResource:@"logo120@2x" ofType:@"png"]];
         [shareParams SSDKSetupShareParamsByText:@"给你推荐一个方案，跟着大神买准没错。"
@@ -551,6 +552,18 @@
         followVC.followListDtos = schemeDetail.followListDtos;
         [self.navigationController pushViewController:followVC animated:YES];
     }
+}
+
+-(void)navigationBackToLastPage{
+        for (BaseViewController *baseVC in self.navigationController.viewControllers) {
+            if ([baseVC isKindOfClass:[MyPostSchemeViewController class]]) {
+                [self.navigationController popToViewController:baseVC animated:YES];
+                return;
+            }
+        }
+    self.tabBarController.selectedIndex = 4;
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    
 }
 
 - (void) gotisAttent:(NSString *)diction  errorMsg:(NSString *)msg{

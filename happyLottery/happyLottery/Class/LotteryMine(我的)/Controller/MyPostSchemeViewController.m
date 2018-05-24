@@ -7,6 +7,7 @@
 //
 
 #import "MyPostSchemeViewController.h"
+#import "PaySuccessViewController.h"
 #import "FollowSchemeViewCell.h"
 #import "PostSchemeViewCell.h"
 #import "JCZQSchemeModel.h"
@@ -164,14 +165,14 @@
 
 -(void)navigationBackToLastPage{
 //    for (BaseViewController *baseVC in self.navigationController.viewControllers) {
-//        if ([baseVC isKindOfClass:[NoticeCenterViewController class]]) {
-//            [self.navigationController popToViewController:baseVC animated:YES];
+//        if ([baseVC isKindOfClass:[PaySuccessViewController class]]) {
+//
 //            return;
 //        }
 //    }
-//    self.tabBarController.selectedIndex = 4;
-//    [self.navigationController popToRootViewControllerAnimated:YES];
-    [super navigationBackToLastPage];
+    self.tabBarController.selectedIndex = 4;
+    [self.navigationController popToRootViewControllerAnimated:YES];
+//    [super navigationBackToLastPage];
 }
 
 @end

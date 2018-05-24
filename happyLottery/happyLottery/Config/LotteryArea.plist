@@ -5,6 +5,10 @@
 	<dict>
 		<key>lotteryImageName</key>
 		<string>jingzu.png</string>
+		<key>enable</key>
+		<true/>
+		<key>lottery</key>
+		<string>JCZQ</string>
 		<key>lotteryName</key>
 		<string>竞彩足球</string>
 		<key>lotteryInfo</key>
@@ -13,6 +17,10 @@
 	<dict>
 		<key>lotteryImageName</key>
 		<string>jinglan.png</string>
+		<key>enable</key>
+		<true/>
+		<key>lottery</key>
+		<string>JCLQ</string>
 		<key>lotteryName</key>
 		<string>竞彩篮球</string>
 		<key>lotteryInfo</key>
@@ -21,6 +29,10 @@
 	<dict>
 		<key>lotteryImageName</key>
 		<string>shengfucaishouye.png</string>
+		<key>enable</key>
+		<true/>
+		<key>lottery</key>
+		<string>SFC</string>
 		<key>lotteryName</key>
 		<string>胜负彩</string>
 		<key>lotteryInfo</key>
@@ -29,6 +41,10 @@
 	<dict>
 		<key>lotteryImageName</key>
 		<string>daletoushouye.png</string>
+		<key>enable</key>
+		<true/>
+		<key>lottery</key>
+		<string>DLT</string>
 		<key>lotteryName</key>
 		<string>大乐透</string>
 		<key>lotteryInfo</key>
@@ -37,30 +53,46 @@
 	<dict>
 		<key>lotteryImageName</key>
 		<string>shuangseqiu.png</string>
+		<key>enable</key>
+		<true/>
 		<key>lotteryName</key>
 		<string>双色球</string>
+		<key>lottery</key>
+		<string>SSQ</string>
 		<key>lotteryInfo</key>
 		<string>奖金高达1000万</string>
 	</dict>
 	<dict>
 		<key>lotteryImageName</key>
 		<string>guanyajun.png</string>
+		<key>enable</key>
+		<true/>
 		<key>lotteryName</key>
 		<string>冠亚军</string>
+		<key>lottery</key>
+		<string>GYJ</string>
 		<key>lotteryInfo</key>
 		<string>世界杯冠亚军竞猜</string>
 	</dict>
 	<dict>
 		<key>lotteryImageName</key>
 		<string>pai3.png</string>
+		<key>enable</key>
+		<false/>
 		<key>lotteryName</key>
 		<string>排列3</string>
+		<key>lottery</key>
+		<string>PL3</string>
 		<key>lotteryInfo</key>
 		<string>暂停销售</string>
 	</dict>
 	<dict>
 		<key>lotteryImageName</key>
 		<string>paiwu.png</string>
+		<key>lottery</key>
+		<string>PL5</string>
+		<key>enable</key>
+		<false/>
 		<key>lotteryName</key>
 		<string>排列5</string>
 		<key>lotteryInfo</key>
@@ -71,12 +103,20 @@
 		<string>shiyixuanwu.png</string>
 		<key>lotteryName</key>
 		<string>十一选五</string>
+		<key>enable</key>
+		<false/>
+		<key>lottery</key>
+		<string>X115</string>
 		<key>lotteryInfo</key>
 		<string>暂停销售</string>
 	</dict>
 	<dict>
 		<key>lotteryImageName</key>
 		<string>3d.png</string>
+		<key>enable</key>
+		<false/>
+		<key>FC3D</key>
+		<string>JCZQ</string>
 		<key>lotteryName</key>
 		<string>福彩3D</string>
 		<key>lotteryInfo</key>

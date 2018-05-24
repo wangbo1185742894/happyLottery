@@ -100,6 +100,7 @@ static NSString *ID = @"LotteryAreaViewCell";
     __weak IBOutlet UIButton *goRedPacket;
 
     __weak IBOutlet UIButton *gyjButton;
+    NSArray * _lotteryArr;
     BOOL showGJbtn;
 }
 @property(nonatomic,strong)Lottery *lottery;
@@ -118,6 +119,8 @@ static NSString *ID = @"LotteryAreaViewCell";
     }else{
         bottomheight = 49;
     }
+    NSString *plistPath = [[NSBundle mainBundle]pathForResource:@"LotteryArea" ofType:@"plist"];
+    _lotteryArr = [[NSMutableArray alloc] initWithContentsOfFile:plistPath];
     activityInfoView = [[ActivityInfoView alloc ]initWithFrame:CGRectMake(0, KscreenHeight - bottomheight - 70, KscreenWidth, 70)];
     activityInfoView.frame = CGRectMake(0, KscreenHeight - bottomheight - 70, KscreenWidth, 70);
     [activityInfoView setStartBtnTarget:self andAction:@selector(startActivity)];
@@ -165,7 +168,7 @@ static NSString *ID = @"LotteryAreaViewCell";
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     return CGSizeMake(KscreenWidth/4,90);
     
-//        return CGSizeMake(125, 115);
+
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -178,8 +181,38 @@ static NSString *ID = @"LotteryAreaViewCell";
 - (UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     LotteryAreaViewCell *cell =  [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
-    cell.lotteryName.text = @"逗你玩";
+    NSDictionary *itemDic = _lotteryArr[indexPath.row];
+    if (indexPath.row < 7) {
+        cell.lotteryName.text = itemDic[@"lotteryName"];
+        cell.isEable.hidden = [itemDic[@"enable"] boolValue];
+        [cell.lotteryImageView setImage:[UIImage imageNamed:itemDic[@"lotteryImageName"]]];
+    }else{
+        cell.lotteryName .text= @"更多";
+        cell.isEable.hidden = YES;
+        [cell.lotteryImageView setImage:[UIImage imageNamed:@"gengduo"]];
+    }
+    
     return cell;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+   
+    if (indexPath.row <7) {
+        NSDictionary *itemDic = _lotteryArr[indexPath.row];
+        NSString *lottert =  itemDic[@"lottery"];
+        NSString *funName = [NSString stringWithFormat:@"action%@:",lottert];
+        SEL action = NSSelectorFromString(funName);
+        if ([self respondsToSelector:action ]) {
+            [self performSelector:action withObject:nil afterDelay:0];
+        }
+    }else{
+        [self actionToMoreLottery:nil];
+    }
+
+}
+
+-(void)actionPL3:(UIButton *)sender{
+    [self showPromptText:@"该玩法暂未开售" hideAfterDelay:2.0];
 }
 
 -(void)gotAppSign:(NSDictionary *)personList errorMsg:(NSString *)msg{
@@ -529,7 +562,7 @@ static NSString *ID = @"LotteryAreaViewCell";
         }
         return;
     }else if ([keyStr isEqualToString:@"A009"]){
-        [self actionJcgyj:nil];
+        [self actionGYJ:nil];
         return;
     }else if ([keyStr isEqualToString:@"A006"]){
         
@@ -750,6 +783,11 @@ static NSString *ID = @"LotteryAreaViewCell";
 }
 
 //进入冠亚军竞猜
+
+-(void)actionGYJ:(UIButton*)sender{
+    [self actionJcgyj:sender];
+}
+
 - (IBAction)actionJcgyj:(id)sender {
     GYJPlayViewController *gyjPlayVc = [[GYJPlayViewController alloc]init];
     gyjPlayVc.hidesBottomBarWhenPushed = YES;

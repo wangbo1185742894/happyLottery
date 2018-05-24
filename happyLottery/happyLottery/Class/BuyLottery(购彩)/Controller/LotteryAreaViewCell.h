@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface LotteryAreaViewCell : UICollectionViewCell
+@property (weak, nonatomic) IBOutlet UILabel *isEable;
 
 @property (weak, nonatomic) IBOutlet UIImageView *lotteryImageView;
 

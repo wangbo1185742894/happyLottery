@@ -13,6 +13,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.isEable.layer.cornerRadius = 4;
+    self.isEable.layer.masksToBounds = YES;
     self.lotteryImageView.clipsToBounds = NO;
     self.lotteryImageView.contentMode = UIViewContentModeScaleAspectFit;
 }

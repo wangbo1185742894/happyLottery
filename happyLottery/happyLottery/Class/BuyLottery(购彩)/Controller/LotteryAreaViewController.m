@@ -108,9 +108,15 @@ static NSString * const reuseIdentifier = @"LotteryAreaViewCell";
     NSInteger index = [self arryIndex:indexPath];
     NSDictionary *lottery = (NSDictionary *)_lotteryArr[index];
     // Configure the cell
+    cell.isEable.hidden = [lottery[@"enable"] boolValue];
+    if ([lottery[@"enable"] boolValue] == NO) {
+        cell.lotteryIntroduce.text = @"暂停销售";
+    }else{
+        cell.lotteryIntroduce.text = [lottery objectForKey:@"lotteryInfo"];
+    }
     [cell.lotteryImageView setImage:[UIImage imageNamed:[lottery objectForKey:@"lotteryImageName"]]];
     cell.lotteryName.text = [lottery objectForKey:@"lotteryName"];
-    cell.lotteryIntroduce.text = [lottery objectForKey:@"lotteryInfo"];
+    
     return cell;
 }
 
