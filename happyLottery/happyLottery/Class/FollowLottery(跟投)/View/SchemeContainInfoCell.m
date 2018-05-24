@@ -59,7 +59,7 @@
     self.groupMatchLab.numberOfLines = 0;
     if (modelDic.matchInfo[@"clash"]!= nil) {
         NSArray *array = [modelDic.matchInfo[@"clash"] componentsSeparatedByString:@"VS"];
-        self.groupMatchLab.text = [NSString stringWithFormat:@"%@\nvs\n%@",array[1],array[0]];
+        self.groupMatchLab.text = [NSString stringWithFormat:@"%@\nvs\n%@",array[0],array[1]];
     }
 }
 
@@ -131,7 +131,12 @@
 
 - (void)reloadDate:(JCZQSchemeItem *)scheme {
     self.orderNoLab.text = @"编号";
-    self.groupMatchLab.text = @"主队vs客队";
+    if ([scheme.lottery isEqualToString:@"JCLQ"]) {
+        self.groupMatchLab.text = @"客队vs主队";
+    }
+    else{
+        self.groupMatchLab.text = @"主队vs客队";
+    }
     self.betContentLab.text = @"投注内容";
     self.matchResultLab.text = @"赛果";
 }
