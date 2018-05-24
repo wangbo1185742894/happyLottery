@@ -12,7 +12,7 @@
 #import "PersonCenterViewController.h"
 
 #define KRecomPerTableViewCell @"RecomPerTableViewCell"
-@interface RecommendPerViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate>
+@interface RecommendPerViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,XYTableViewDelegate>
 
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topDis;
@@ -42,8 +42,16 @@
     [self.personList registerNib:[UINib nibWithNibName:KRecomPerTableViewCell bundle:nil] forCellReuseIdentifier:KRecomPerTableViewCell];
     self.personArray = [NSMutableArray arrayWithCapacity:0];
     self.indexArray = [NSMutableArray arrayWithCapacity:0];
-//    [self navigationBarInit];
-    //data request
+    [UITableView refreshHelperWithScrollView:self.personList target:self loadNewData:@selector(loadData) loadMoreData:@selector(loadData) isBeginRefresh:NO];
+    
+    [self loadData];
+}
+
+-(UIImage *)xy_noDataViewImage{
+    return [UIImage imageNamed:@"pic_zanwushuju_tongyong"];
+}
+
+-(void)loadData{
     if (self.lotteryMan == nil) {
         self.lotteryMan = [[LotteryManager alloc]init];
     }
@@ -57,7 +65,6 @@
     [self showLoadingText:@"正在加载"];
     [self.lotteryMan listRecommendPer:dic categoryCode:self.categoryCode];
     
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -154,12 +161,24 @@
     return btnItem;
 }
 
+-(NSNumber *)xy_noDataViewCenterYOffset{
+    return @60;
+}
 
+-(BOOL)havData{
+    if (self.personArray.count == 0) {
+        return NO;
+    }else{
+        return YES;
+    }
+}
 #pragma mark  lotteryMan
 
 - (void) gotlistRecommend:(NSArray *)infoArray  errorMsg:(NSString *)msg{
+    [self.personList tableViewEndRefreshCurPageCount:infoArray.count];
     if (infoArray == nil) {
         [self showPromptViewWithText:msg hideAfter:1];
+        [self .personList reloadData];
         return;
     }
     [self.personArray removeAllObjects];

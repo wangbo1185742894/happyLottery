@@ -12,6 +12,7 @@
 @protocol JSObjcDelegate <JSExport>
 -(void)SharingLinks:(NSString *)code;
 -(void)goToJczq;
+-(NSString *)getCardCode;
 - (void)telPhone;
 -(void)goToLogin;
 -(void)exchangeToast:(NSString *)msg;

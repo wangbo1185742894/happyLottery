@@ -127,7 +127,7 @@
 
 - (IBAction)actionGenDan:(id)sender {
     UIButton *button = (UIButton *)sender;
-    button.userInteractionEnabled = NO;
+    
     if (self .curUser .isLogin == NO) {
         [self needLogin];
         return;
@@ -137,9 +137,12 @@
         return;
     }
     NSDictionary *paraDic= @{@"schemeNo":_model.schemeNo , @"cardCode":self.curUser.cardCode,@"multiple":@(_beiCount)};
+    [self showLoadingText:@"正在提交"];
     [self.lotteryMan followScheme:paraDic];
 }
+
 -(void)followScheme:(NSString *)result errorMsg:(NSString *)msg{
+    [self hideLoadingView];
     if (result == nil) {
         [self showPromptText:msg hideAfterDelay:1.7];
         return;

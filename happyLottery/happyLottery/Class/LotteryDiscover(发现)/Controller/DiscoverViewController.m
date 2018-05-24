@@ -271,6 +271,14 @@
     
 }
 
+-(NSString *)getCardCode{
+    if (self.curUser.isLogin ==YES) {
+        return self.curUser.cardCode;
+    }else{
+        return @"";
+    }
+}
+
 -(void)giveShareScore:(BOOL)success errorMsg:(NSString *)msg{
     if ([msg isEqualToString:@"执行成功"]) {
 //        [self showPromptText: @"积分赠送成功" hideAfterDelay: 1.7];
@@ -278,11 +286,12 @@
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
     }
-    
+
 }
 
 -(void)goToJczq{
     dispatch_async(dispatch_get_main_queue(), ^{
+        [self.faxianWebView goBack];
         [self.navigationController popToRootViewControllerAnimated:YES];
         self.tabBarController.selectedIndex = 0;
     });
@@ -365,5 +374,7 @@
         [[NSURLCache sharedURLCache] removeAllCachedResponses];
     }
 }
+
+
 
 @end
