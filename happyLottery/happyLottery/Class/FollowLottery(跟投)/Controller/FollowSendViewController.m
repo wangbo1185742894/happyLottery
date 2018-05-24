@@ -105,7 +105,7 @@
 
 -(void)getHotFollowScheme:(NSArray *)personList errorMsg:(NSString *)msg{
     
-    if (personList == nil) {
+    if (personList == nil||personList.count == 0) {
         [self showPromptText:msg hideAfterDelay:1.8];
         [tabFollewView reloadData];
         return;
@@ -215,7 +215,9 @@
     }else   if(indexPath.section == 1){
         return  80;
     }else   if(indexPath.section == 2){
-        
+        if (eightList.count == 0) {
+            return 0;
+        }
         return 170;
     }else   if(indexPath.section == 3){
         return 202;
@@ -226,6 +228,9 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     if(section == 1 || section == 2){
+        if (section == 2&&eightList.count == 0) {
+            return 1;
+        }
         return 10;
     }else{
         return 1;

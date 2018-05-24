@@ -36,7 +36,7 @@
     _page = 0;
     schemeList = [NSMutableArray arrayWithCapacity:0];
     [self setTableView];
-    [self.tabSearchResultList reloadData];
+    self.tabSearchResultList.hidden = YES;
     [self setTextFiled];
     [self getHotFollowScheme];
     [UITableView refreshHelperWithScrollView:self.tabSearchResultList target:self loadNewData:@selector(loadNewData) loadMoreData:@selector(loadMoreData) isBeginRefresh:NO];
@@ -67,6 +67,7 @@
 }
 
 -(void)getHotFollowScheme:(NSArray *)personList errorMsg:(NSString *)msg{
+    self.tabSearchResultList.hidden = NO;
     [self.tabSearchResultList tableViewEndRefreshCurPageCount:personList.count];
     if (personList == nil) {
         [self showPromptText:msg hideAfterDelay:1.8];
