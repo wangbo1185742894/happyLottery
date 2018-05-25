@@ -21,4 +21,8 @@
 
 -(void)loadData:(NSArray *)model;
 
+- (void)stopTimer;
+
+- (void)openTimer;
+
 @end

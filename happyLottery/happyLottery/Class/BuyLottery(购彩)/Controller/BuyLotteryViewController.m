@@ -718,6 +718,7 @@ static NSString *ID = @"LotteryAreaViewCell";
     [self getJczqShortcut];
     
     [adsView setImageUrlArray:nil];
+    [adsView openTimer];
     [self loadAdsImg];
     
     [self loadNews];
@@ -729,11 +730,11 @@ static NSString *ID = @"LotteryAreaViewCell";
         redpacketView.hidden = YES;
     }
     [self gyjButtonHiddenOrNot];
-   
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear: animated];
+    [adsView stopTimer];
     self.navigationController.navigationBar.hidden = NO;
 }
 

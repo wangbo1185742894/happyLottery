@@ -22,5 +22,10 @@
 @property(nonatomic,weak)id<WBAdsImgViewDelegate>delegate;
 -(void)setImageUrlArray:(NSArray<ADSModel *> *)imgUrls;
 
+- (void)setImageUrlArray:(NSArray<ADSModel *> *)imgUrls placeImageName:(NSString *)imageName;
+
+- (void)stopTimer;
+
+- (void)openTimer;
 
 @end
