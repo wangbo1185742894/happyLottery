@@ -171,7 +171,9 @@
     if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) { //待支付状态
         [self reloadZhiFuButton];
     } else {
-        [self setRightBarItems];
+        if (![schemeDetail.schemeStatus isEqualToString:@"REPEAL"]) {
+            [self setRightBarItems];
+        }
     }
     for (NSDictionary *matchDic in [Utility objFromJson:schemeDetail.betContent]) {
           NSArray *matchArray = [Utility objFromJson:matchDic[@"betMatches"]];

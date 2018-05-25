@@ -13,7 +13,7 @@
 #import "UMChongZhiViewController.h"
 #import "NewsModel.h"
 #define KNewsListCell @"NewsListCell"
-@interface ForecastViewController ()<UITableViewDataSource,UITableViewDelegate,LotteryManagerDelegate,NewsListCellDelegate>
+@interface ForecastViewController ()<UITableViewDataSource,UITableViewDelegate,LotteryManagerDelegate,NewsListCellDelegate,XYTableViewDelegate>
 {
     __weak IBOutlet UITableView *tabForecastListView;
     NSMutableArray  <JczqShortcutModel *>*colloectList;
@@ -39,6 +39,11 @@
     [self getJczqShortcut];
 }
 
+-(UIImage *)xy_noDataViewImage{
+    return [UIImage imageNamed:@"pic_gendankongbaiye.png"];
+}
+
+
 -(void)getJczqShortcut{
     self.lotteryMan.delegate = self ;
     [self.lotteryMan listByForecast:@{@"lotteryCode":@"jczq"} isHis:NO];
@@ -49,6 +54,7 @@
     
     if (infoArray == nil || infoArray.count == 0) {
         [self showPromptText:msg hideAfterDelay:1.7];
+        [tabForecastListView reloadData];
         return;
     }
     

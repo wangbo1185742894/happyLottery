@@ -15,7 +15,7 @@
 
 #define KYCSchemeViewCell @"YCSchemeViewCell"
 
-@interface WBHomeJCYCViewController ()<UITableViewDelegate,UITableViewDataSource ,LotteryManagerDelegate,WBHomeYuceListCellDelegate>
+@interface WBHomeJCYCViewController ()<UITableViewDelegate,UITableViewDataSource ,LotteryManagerDelegate,WBHomeYuceListCellDelegate,XYTableViewDelegate>
 {
     UIButton *_btnBendian;
     UIButton *_btnZongbiao;
@@ -69,9 +69,11 @@
     
 }
 
+
 -(void)getForecastTotal{
     [self.lotteryMan getForecastTotal:nil];
 }
+
 
 -(void)gotForecastTotal:(NSDictionary *)infoDic errorMsg:(NSString *)msg{
     if (infoDic == nil) {

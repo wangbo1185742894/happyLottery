@@ -32,7 +32,7 @@
 #define KRecommendViewCell @"RecommendViewCell"
 #define KHotFollowSchemeViewCell @"HotFollowSchemeViewCell"
 #define KHomeTabTopAdsViewCell @"HomeTabTopAdsViewCell"
-@interface FollowSendViewController ()<OptionSelectedViewDelegate,UITableViewDelegate,UITableViewDataSource,FollowHeaderDelegate,LotteryManagerDelegate,HomeMenuItemViewDelegate,RecommendViewCellDelegate,HomeTabTopAdsViewDelegate>
+@interface FollowSendViewController ()<OptionSelectedViewDelegate,UITableViewDelegate,UITableViewDataSource,FollowHeaderDelegate,LotteryManagerDelegate,HomeMenuItemViewDelegate,RecommendViewCellDelegate,HomeTabTopAdsViewDelegate,XYTableViewDelegate>
 {
     NSMutableArray <ADSModel *>*adsArray;
         OptionSelectedView *optionView;
@@ -99,12 +99,15 @@
 }
 
 -(void)getHotFollowScheme{
+   
     [self.lotteryMan getHotFollowScheme];
 }
 
 -(void)getHotFollowScheme:(NSArray *)personList errorMsg:(NSString *)msg{
-    if (personList == nil) {
+    
+    if (personList == nil||personList.count == 0) {
         [self showPromptText:msg hideAfterDelay:1.8];
+        [tabFollewView reloadData];
         return;
     }else{
         [schemeList removeAllObjects];
@@ -144,6 +147,22 @@
     [tabFollewView registerNib:[UINib nibWithNibName:KHotFollowSchemeViewCell bundle:nil] forCellReuseIdentifier:KHotFollowSchemeViewCell];
     [tabFollewView registerClass:[HomeTabTopAdsViewCell class] forCellReuseIdentifier:KHomeTabTopAdsViewCell];
     [tabFollewView reloadData];
+}
+
+-(UIImage *)xy_noDataViewImage{
+    return [UIImage imageNamed:@"pic_gendankongbaiye.png"];
+}
+
+-(NSNumber *)xy_noDataViewCenterYOffset{
+    return @([tabFollewView rectForSection:3].origin.y-120);
+}
+
+-(BOOL)havData{
+    if (schemeList.count == 0) {
+        return NO;
+    }else{
+        return YES;
+    }
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -196,7 +215,9 @@
     }else   if(indexPath.section == 1){
         return  80;
     }else   if(indexPath.section == 2){
-        
+        if (eightList.count == 0) {
+            return 0;
+        }
         return 170;
     }else   if(indexPath.section == 3){
         return 202;
@@ -207,6 +228,9 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     if(section == 1 || section == 2){
+        if (section == 2&&eightList.count == 0) {
+            return 1;
+        }
         return 10;
     }else{
         return 1;
