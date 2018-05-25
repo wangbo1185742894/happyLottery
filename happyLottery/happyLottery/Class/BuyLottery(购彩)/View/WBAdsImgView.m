@@ -56,7 +56,7 @@
         UIButton *itemImg = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.mj_w, scrContentView.mj_h)];
         itemImg.imageView.contentMode = UIViewContentModeScaleToFill;
         [scrContentView addSubview:itemImg];
-        itemImg.backgroundColor = RGBCOLOR(299, 221, 0);
+        itemImg.backgroundColor = [UIColor clearColor];
         itemImg.adjustsImageWhenHighlighted = NO;
         [itemImg setBackgroundImage:[UIImage imageNamed:imageName] forState:0];
         return;

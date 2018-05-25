@@ -439,6 +439,7 @@ static NSString *ID = @"LotteryAreaViewCell";
         
         homeViewHeight.constant = height;
         tabForecastListHeight.constant = tabForecaseList.rowHeight * 2;
+        [tabForecaseList reloadData];
         return;
     }
     [JczqShortcutList removeAllObjects];
