@@ -47,6 +47,7 @@
 
 @implementation FollowSendViewController{
     BuyLotteryViewController *buyVc;
+    HomeTabTopAdsViewCell *cell;
 }
 
 - (void)viewDidLoad {
@@ -72,6 +73,7 @@
     
     [self getHotFollowScheme];
     [self loadAdsImg];
+    [cell openTimer];
 }
 
 - (void)viewDidDisappear:(BOOL)animated{
@@ -82,6 +84,7 @@
     [tabBarItem setTitleTextAttributes: normalAttributes forState:UIControlStateNormal];
     self.navigationController.navigationBar.barTintColor = SystemGreen;
     self.navigationController.tabBarItem = tabBarItem;
+    [cell stopTimer];
 }
 
 - (void)setNavigationBa{
@@ -193,7 +196,7 @@
         [cell setCollection:0 andData:topMenuList];
         return cell;
     }else   if(indexPath.section == 1){
-        HomeTabTopAdsViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KHomeTabTopAdsViewCell];
+        cell = [tableView dequeueReusableCellWithIdentifier:KHomeTabTopAdsViewCell];
         cell.delegate = self;
         [cell loadData:adsArray];
         return  cell;

@@ -17,6 +17,7 @@
    
     NSInteger index;
     UIPageControl *pageCtl;
+    NSInteger count;
     
 }
 @property(nonatomic,strong)NSArray * imgUrls;
@@ -34,6 +35,65 @@
     return self;
 }
 
+- (void)setImageUrlArray:(NSArray<ADSModel *> *)imgUrls placeImageName:(NSString *)imageName{
+    if (scrContentView == nil) {
+        scrContentView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth,self.mj_h)];
+        scrContentView.delegate = self;
+        scrContentView.pagingEnabled = YES;
+        scrContentView.showsHorizontalScrollIndicator = NO;
+        scrContentView.showsVerticalScrollIndicator = NO;
+        scrContentView.bounces = NO;
+        [self addSubview:scrContentView];
+    }else{
+        for (UIView *subView in scrContentView.subviews) {
+            [subView removeFromSuperview];
+        }
+    }
+    _imgUrls = imgUrls;
+    if (imgUrls == nil||imgUrls.count==0) {//网络状态不好  或者数据未回来  预先加载本地banner图
+        scrContentView.contentSize = CGSizeMake(KscreenWidth, scrContentView.mj_h);
+        count = 1;
+        UIButton *itemImg = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.mj_w, scrContentView.mj_h)];
+        itemImg.imageView.contentMode = UIViewContentModeScaleToFill;
+        [scrContentView addSubview:itemImg];
+        itemImg.backgroundColor = RGBCOLOR(299, 221, 0);
+        itemImg.adjustsImageWhenHighlighted = NO;
+        [itemImg setBackgroundImage:[UIImage imageNamed:imageName] forState:0];
+        return;
+    }
+    
+    pageCtl.hidesForSinglePage = NO;
+    scrContentView.contentSize = CGSizeMake(KscreenWidth * imgUrls.count, scrContentView.mj_h);
+    if (imgUrls.count == 1) {
+        pageCtl.hidden = YES;
+    }else{
+        pageCtl.hidden = NO;
+    }
+    for (int i = 0; i < imgUrls.count; i ++ ) {
+        UIButton *itemImg = [[UIButton alloc]initWithFrame:CGRectMake(KscreenWidth * i, 0, self.mj_w, scrContentView.mj_h)];
+        itemImg.imageView.contentMode = UIViewContentModeScaleToFill;
+        [scrContentView addSubview:itemImg];
+        
+        [itemImg addTarget:self action:@selector(imgItemClick) forControlEvents:UIControlEventTouchUpInside];
+        itemImg.adjustsImageWhenHighlighted = NO;
+        [itemImg setBackgroundImage:[UIImage imageNamed:imageName] forState:0];
+        [itemImg sd_setBackgroundImageWithURL:[NSURL URLWithString:imgUrls[i].imgUrl] forState:0];
+    }
+    pageCtl.numberOfPages = imgUrls.count;
+    if (imgUrls .count ==1) {
+        pageCtl.hidden = YES;
+    }
+    [self addSubview:pageCtl];
+}
+
+- (void)stopTimer {
+    [timer setFireDate:[NSDate distantFuture]];
+}
+
+- (void)openTimer {
+    [timer setFireDate:[NSDate date]];
+}
+
 -(void)setImageUrlArray:(NSArray<ADSModel *> *)imgUrls{
     if (scrContentView == nil) {
         scrContentView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth,self.mj_h)];
@@ -48,10 +108,10 @@
             [subView removeFromSuperview];
         }
     }
-    
+    _imgUrls = imgUrls;
     if (imgUrls == nil||imgUrls.count==0) {//网络状态不好  或者数据未回来  预先加载本地banner图
         scrContentView.contentSize = CGSizeMake(KscreenWidth * 3, scrContentView.mj_h);
-        
+        count = 3;
         pageCtl.numberOfPages = 3;
         
         for (int i = 0; i < 3; i ++ ) {
@@ -67,7 +127,7 @@
         return;
     }
     
-    _imgUrls = imgUrls;
+    
 
     scrContentView.contentSize = CGSizeMake(KscreenWidth * imgUrls.count, scrContentView.mj_h);
     if (imgUrls.count == 1) {
@@ -100,14 +160,12 @@
 }
 
 -(void)autoScrImg{
-   
-    NSInteger count = 0;
-    if (_imgUrls == nil || _imgUrls.count == 0) {
-        count = 3;
-    }else{
+    if (_imgUrls.count != 0) {
         count = _imgUrls.count;
     }
-    
+    if (count == 1) {
+        return;
+    }
     CGFloat aniTime;
     index ++ ;
     if (index == count) {

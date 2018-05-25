@@ -19,6 +19,7 @@
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         if (adsView == nil) {
+            
             adsView = [[WBAdsImgView alloc]initWithFrame:CGRectMake(20,0, KscreenWidth-40, 80)];
             adsView.contentMode = UIViewContentModeScaleAspectFit;
             adsView.layer.cornerRadius = 35;
@@ -26,9 +27,17 @@
             adsView.delegate = self;
             [self addSubview:adsView];
         }
-        [adsView setImageUrlArray:nil];
+        [adsView setImageUrlArray:nil placeImageName:@"genadnbanner"];
     }
     return self;
+}
+
+- (void)stopTimer {
+    [adsView stopTimer];
+}
+
+- (void)openTimer {
+    [adsView openTimer];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -37,7 +46,7 @@
     
 }
 -(void)loadData:(NSArray *)model{
-    [adsView setImageUrlArray:model];
+    [adsView setImageUrlArray:model placeImageName:@"genadnbanner"];
 }
 
 -(void)adsImgViewClick:(ADSModel *)itemIndex navigation:(UINavigationController *)navgC{
