@@ -271,5 +271,8 @@
         loadingView = nil;
     }];
 }
+-(void)exchangeToast:(NSString *)msg{
+    [self showPromptText:msg hideAfterDelay:1.7];
+}
 
 @end

@@ -11,6 +11,7 @@
 
 @protocol LotterySelectViewObjcDelegate <JSExport>
 -(void)goCathectic:(NSString *)lotteryName;
+-(void)exchangeToast:(NSString *)msg;
 @end
 
 @interface LotteryAreaViewController : BaseViewController
