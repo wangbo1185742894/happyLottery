@@ -757,6 +757,7 @@
 		2D9847BA1FF5ED3100038690 /* JCYCTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9847B81FF5ED3000038690 /* JCYCTransaction.m */; };
 		2DA0C2D120B659280031AC47 /* guanyajun@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DA0C2CF20B659280031AC47 /* guanyajun@3x.png */; };
 		2DA0C2D220B659280031AC47 /* guanyajun@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DA0C2D020B659280031AC47 /* guanyajun@2x.png */; };
+		2DA0C2D420B6AAB90031AC47 /* LotteryAreaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DA0C2D320B6AAB90031AC47 /* LotteryAreaViewController.xib */; };
 		2DA39EC02052391000A03FD1 /* OrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DA39EBD2052390F00A03FD1 /* OrderTableViewCell.xib */; };
 		2DA39EC12052391000A03FD1 /* OrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA39EBE2052390F00A03FD1 /* OrderTableViewCell.m */; };
 		2DA39EC42052393600A03FD1 /* OrderLotteryCateChooseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA39EC32052393600A03FD1 /* OrderLotteryCateChooseView.m */; };
@@ -1122,7 +1123,6 @@
 		F9705E5A207A0E5B00E25E4E /* JCLQSchemeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9705E57207A0E5A00E25E4E /* JCLQSchemeDetailViewController.m */; };
 		F9705E5B207A0E5B00E25E4E /* JCLQSchemeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9705E58207A0E5B00E25E4E /* JCLQSchemeDetailViewController.xib */; };
 		F9705EA3207B56BF00E25E4E /* LotteryAreaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9705EA1207B56BF00E25E4E /* LotteryAreaViewController.m */; };
-		F9705EA4207B56BF00E25E4E /* LotteryAreaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9705EA2207B56BF00E25E4E /* LotteryAreaViewController.xib */; };
 		F9705EA8207B58A900E25E4E /* LotteryAreaViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9705EA6207B58A900E25E4E /* LotteryAreaViewCell.m */; };
 		F9705EA9207B58A900E25E4E /* LotteryAreaViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9705EA7207B58A900E25E4E /* LotteryAreaViewCell.xib */; };
 		F9705EAC207B68B400E25E4E /* gengduo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9705EAA207B68B300E25E4E /* gengduo@2x.png */; };
@@ -2406,6 +2406,7 @@
 		2D9847B91FF5ED3100038690 /* JCYCTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCYCTransaction.h; sourceTree = "<group>"; };
 		2DA0C2CF20B659280031AC47 /* guanyajun@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guanyajun@3x.png"; sourceTree = "<group>"; };
 		2DA0C2D020B659280031AC47 /* guanyajun@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guanyajun@2x.png"; sourceTree = "<group>"; };
+		2DA0C2D320B6AAB90031AC47 /* LotteryAreaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LotteryAreaViewController.xib; sourceTree = "<group>"; };
 		2DA39EBD2052390F00A03FD1 /* OrderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderTableViewCell.xib; sourceTree = "<group>"; };
 		2DA39EBE2052390F00A03FD1 /* OrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderTableViewCell.m; sourceTree = "<group>"; };
 		2DA39EBF2052390F00A03FD1 /* OrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderTableViewCell.h; sourceTree = "<group>"; };
@@ -2918,7 +2919,6 @@
 		F9705E59207A0E5B00E25E4E /* JCLQSchemeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCLQSchemeDetailViewController.h; sourceTree = "<group>"; };
 		F9705EA0207B56BF00E25E4E /* LotteryAreaViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LotteryAreaViewController.h; sourceTree = "<group>"; };
 		F9705EA1207B56BF00E25E4E /* LotteryAreaViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LotteryAreaViewController.m; sourceTree = "<group>"; };
-		F9705EA2207B56BF00E25E4E /* LotteryAreaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LotteryAreaViewController.xib; sourceTree = "<group>"; };
 		F9705EA5207B58A900E25E4E /* LotteryAreaViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LotteryAreaViewCell.h; sourceTree = "<group>"; };
 		F9705EA6207B58A900E25E4E /* LotteryAreaViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LotteryAreaViewCell.m; sourceTree = "<group>"; };
 		F9705EA7207B58A900E25E4E /* LotteryAreaViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LotteryAreaViewCell.xib; sourceTree = "<group>"; };
@@ -4826,9 +4826,9 @@
 				2D0EEA792012CEF800B0769C /* HomeJumpViewController.h */,
 				2D0EEA7A2012CEF900B0769C /* HomeJumpViewController.m */,
 				2D0EEA782012CEF700B0769C /* HomeJumpViewController.xib */,
+				2DA0C2D320B6AAB90031AC47 /* LotteryAreaViewController.xib */,
 				F9705EA0207B56BF00E25E4E /* LotteryAreaViewController.h */,
 				F9705EA1207B56BF00E25E4E /* LotteryAreaViewController.m */,
-				F9705EA2207B56BF00E25E4E /* LotteryAreaViewController.xib */,
 				F9705EA5207B58A900E25E4E /* LotteryAreaViewCell.h */,
 				F9705EA6207B58A900E25E4E /* LotteryAreaViewCell.m */,
 				F9705EA7207B58A900E25E4E /* LotteryAreaViewCell.xib */,
@@ -6144,7 +6144,6 @@
 				2D7B13F0204E88250035AE89 /* OpenLotteryCell.xib in Resources */,
 				2D0E23E72019A6BE0098DA40 /* assist@2x.png in Resources */,
 				2D4D608D20AD717900280033 /* activityshut@3x.png in Resources */,
-				F9705EA4207B56BF00E25E4E /* LotteryAreaViewController.xib in Resources */,
 				2D0E23D32019A6210098DA40 /* packet@2x.png in Resources */,
 				2D739CED1FEB490900264044 /* fangkuangjingcainomal@3x.png in Resources */,
 				2D4D608B20AD717900280033 /* activitymoney@2x.png in Resources */,
@@ -6242,6 +6241,7 @@
 				F94AA9B31FEB59DA0021B980 /* checked@2x.png in Resources */,
 				2D05C86020A43631001A8953 /* fadan@3x.png in Resources */,
 				F98C3F0020747CE700C1DBF8 /* blueBall@2x.png in Resources */,
+				2DA0C2D420B6AAB90031AC47 /* LotteryAreaViewController.xib in Resources */,
 				F94AA9B81FEB59DA0021B980 /* eliminate@3x.png in Resources */,
 				F9F6CAAB1FF60BCF00A49F71 /* NoticeCenterViewController.xib in Resources */,
 				F957C2011FE3B28D0090B19B /* news@3x.png in Resources */,

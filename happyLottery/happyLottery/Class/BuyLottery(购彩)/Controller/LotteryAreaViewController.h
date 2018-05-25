@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <JavaScriptCore/JavaScriptCore.h>
 
-@interface LotteryAreaViewController : UICollectionViewController
+@protocol LotterySelectViewObjcDelegate <JSExport>
+-(void)goCathectic:(NSString *)lotteryName;
+@end
+
+@interface LotteryAreaViewController : BaseViewController
 
 @property (nonatomic,strong) NSArray *lotteryDS;
 

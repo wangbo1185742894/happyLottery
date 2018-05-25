@@ -7,6 +7,9 @@
 //
 
 #import "WebViewController.h"
+#import "MyCouponViewController.h"
+#import "TopUpsViewController.h"
+#import "JCZQPlayViewController.h"
 
 @interface WebViewController ()<UIWebViewDelegate,WebViewObjcDelegate>{
     JSContext *context;
@@ -73,6 +76,13 @@
     [super didReceiveMemoryWarning];
   
 }
+
+-(void)goToLogin{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self needLogin];
+    });
+    
+}
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     context = [webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
@@ -105,6 +115,33 @@
         [self needLogin];
         return;
     }
+    if ([lotteryCode isEqualToString:@"JCZQ"]) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            JCZQPlayViewController * playViewVC = [[JCZQPlayViewController alloc]init];
+            playViewVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:playViewVC animated:YES];
+        });
+    }
+
+
+    if ([lotteryCode isEqualToString:@"YHQ"]) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            MyCouponViewController *couponVC = [[MyCouponViewController alloc]init];
+            couponVC.hidesBottomBarWhenPushed = YES;
+            [self .navigationController pushViewController:couponVC animated:YES];
+        });
+    }
+    
+    if ([lotteryCode isEqualToString:@"CZ"]) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            TopUpsViewController *topUpsVC = [[TopUpsViewController alloc]init];
+            topUpsVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:topUpsVC animated:YES];
+        });
+    }
+
     dispatch_async(dispatch_get_main_queue(), ^{
         [[NSNotificationCenter defaultCenter]postNotificationName:@"NSNotificationJumpToPlayVC" object:lotteryCode];
         [self.navigationController popToRootViewControllerAnimated:NO];

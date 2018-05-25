@@ -18,6 +18,7 @@
 -(void)exchangeToast:(NSString *)msg;
 -(void)SharingLinks:(NSString *)code;
 -(NSString *)getCardCode;
+-(void)goToLogin;
 @end
 
 @interface WebViewController : BaseViewController
