@@ -160,7 +160,7 @@
 }
 
 -(NSNumber *)xy_noDataViewCenterYOffset{
-    return @([tabFollewView rectForSection:3].origin.y-120);
+    return @([tabFollewView rectForSection:3].origin.y-self.view.bounds.size.height * (1 - 0.618)+202* (1 - 0.618)+35);
 }
 
 -(BOOL)havData{
@@ -233,12 +233,15 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    if(section == 1 || section == 2){
-        if (section == 2&&eightList.count == 0) {
+    if(section == 2){
+        if (eightList.count == 0) {
             return 1;
         }
         return 10;
-    }else{
+    }else if (section == 0||section == 1){
+        return 0.01;
+    }
+    else{
         return 1;
     }
 }
@@ -246,7 +249,10 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if(section == 3){
         return 40;
-    }else{
+    }if (section == 1||section == 2) {
+        return 0.01;
+    }
+    else{
         return 1;
     }
 }
