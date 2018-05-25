@@ -17,27 +17,43 @@
 
 #define rowNumber 3 //每行显示三个cell
 
-@interface LotteryAreaViewController ()
+@interface LotteryAreaViewController ()<LotterySelectViewObjcDelegate,UIWebViewDelegate>
 {
     NSArray *_lotteryArr; //彩种详细
     MBProgressHUD *loadingView;
+    __weak IBOutlet UIWebView *webView;
+    UIWebView *lotterySelectView;
+    JSContext *context;
 }
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topDis;
 
 @end
 
 @implementation LotteryAreaViewController
 
-static NSString * const reuseIdentifier = @"LotteryAreaViewCell";
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UINib *nib = [UINib nibWithNibName:@"LotteryAreaViewCell" bundle:nil];
-    [self.collectionView registerNib:nib forCellWithReuseIdentifier:
-     reuseIdentifier];
-    self.collectionView.backgroundColor = [UIColor whiteColor];
-    //加载数据
-    NSString *plistPath = [[NSBundle mainBundle]pathForResource:@"LotteryArea" ofType:@"plist"];
-    _lotteryArr = [[NSMutableArray alloc] initWithContentsOfFile:plistPath];
+    webView.scrollView.bounces = NO;
+    if ([self isIphoneX]) {
+        self.topDis.constant = 44;
+    }else{
+        self.topDis.constant = 20;
+        if ([Utility isIOS11After]) {
+            self.automaticallyAdjustsScrollViewInsets = NO; // tableView 莫名其妙  contentOffset.y 成-64了  MMP
+        }
+    }
+//    [NSString stringWithFormat:@"%@/app/award/listHisJclqMatch",H5BaseAddress]
+    NSURL *url = [NSURL URLWithString:@"http://192.168.88.193:18086/app/award/listHisJclqMatch"];
+    webView.delegate  =self;
+    [webView loadRequest:[NSURLRequest requestWithURL:url]];
+    
+//    UINib *nib = [UINib nibWithNibName:@"LotteryAreaViewCell" bundle:nil];
+//    [self.collectionView registerNib:nib forCellWithReuseIdentifier:
+//     reuseIdentifier];
+//    self.collectionView.backgroundColor = [UIColor whiteColor];
+//    //加载数据
+//    NSString *plistPath = [[NSBundle mainBundle]pathForResource:@"LotteryArea" ofType:@"plist"];
+//    _lotteryArr = [[NSMutableArray alloc] initWithContentsOfFile:plistPath];
     [self setNavigationBack];
 }
 
@@ -62,13 +78,18 @@ static NSString * const reuseIdentifier = @"LotteryAreaViewCell";
     // Dispose of any resources that can be recreated.
 }
 
-
--(id)init{
-    UICollectionViewFlowLayout *layout=[[UICollectionViewFlowLayout alloc]init];
-    if (self=[super initWithCollectionViewLayout:layout]) {
-    }
-    return self;
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    context = [webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
+    context[@"appObj"] = self;
+    context.exceptionHandler = ^(JSContext *context, JSValue *exceptionValue) {
+        context.exception = exceptionValue;
+    };
+    [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitUserSelect='none';"];
+    [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitTouchCallout='none';"];
 }
+
+
 
 //查找数组下标
 - (NSInteger)arryIndex:(NSIndexPath *)indexpath {
@@ -93,6 +114,51 @@ static NSString * const reuseIdentifier = @"LotteryAreaViewCell";
     
 }
 
+-(void)goCathectic:(NSString *)lotteryName{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if ([lotteryName isEqualToString:@"JCZQ"]) {
+            JCZQPlayViewController * playViewVC = [[JCZQPlayViewController alloc]init];
+            playViewVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:playViewVC animated:YES];
+        }
+        else if ([lotteryName isEqualToString:@"SFC"]){
+            CTZQPlayViewController *playVC = [[CTZQPlayViewController alloc] init];
+            playVC.playType = CTZQPlayTypeRenjiu;
+            playVC.hidesBottomBarWhenPushed = YES;
+            playVC.lottery = self.lotteryDS[7];
+            [self.navigationController pushViewController:playVC animated:YES];
+        }
+        else if ([lotteryName isEqualToString:@"JCLQ"]){
+            JCLQPlayController * playViewVC = [[JCLQPlayController alloc]init];
+            playViewVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:playViewVC animated:YES];
+        }
+        else if ([lotteryName isEqualToString:@"DLT"]){
+            DLTPlayViewController *playVC = [[DLTPlayViewController alloc] init];
+            playVC.hidesBottomBarWhenPushed = YES;
+            playVC.lottery = self.lotteryDS[1];
+            [self.navigationController pushViewController:playVC animated:YES];
+            
+        }
+        else if ([lotteryName isEqualToString:@"SSQ"]){
+            SSQPlayViewController *playVC = [[SSQPlayViewController alloc] init];
+            playVC.hidesBottomBarWhenPushed = YES;
+            playVC.lottery = self.lotteryDS[10];
+            [self.navigationController pushViewController:playVC animated:YES];
+        }
+        else if ([lotteryName isEqualToString:@"GYJ"]){
+            GYJPlayViewController *gyjPlayVc = [[GYJPlayViewController alloc]init];
+            gyjPlayVc.hidesBottomBarWhenPushed = YES;
+            gyjPlayVc.navigationController.navigationBar.hidden = YES;
+            [self.navigationController pushViewController:gyjPlayVc animated:YES];
+        }
+        else {
+            [self showPromptText:@"此彩种暂停销售" hideAfterDelay:1.0];
+        }
+    });
+    
+ 
+}
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     if (section < _lotteryArr.count/rowNumber) {
@@ -103,45 +169,45 @@ static NSString * const reuseIdentifier = @"LotteryAreaViewCell";
     }
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    LotteryAreaViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    NSInteger index = [self arryIndex:indexPath];
-    NSDictionary *lottery = (NSDictionary *)_lotteryArr[index];
-    // Configure the cell
-    cell.isEable.hidden = [lottery[@"enable"] boolValue];
-    if ([lottery[@"enable"] boolValue] == NO) {
-        cell.lotteryIntroduce.text = @"暂停销售";
-    }else{
-        cell.lotteryIntroduce.text = [lottery objectForKey:@"lotteryInfo"];
-    }
-    [cell.lotteryImageView setImage:[UIImage imageNamed:[lottery objectForKey:@"lotteryImageName"]]];
-    cell.lotteryName.text = [lottery objectForKey:@"lotteryName"];
-    
-    return cell;
-}
-
-#pragma mark <UICollectionViewDelegate>
--(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake(CGRectGetWidth([UIScreen mainScreen].bounds)/rowNumber,125);
-    
-//    return CGSizeMake(125, 115);
-}
-
-//这个是两行cell之间的间距（上下行cell的间距）
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
-    return 0;
-}
-
-//两个cell之间的间距（同一行的cell的间距）
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
-    return 0;
-}
-
-
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
+//- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+//    LotteryAreaViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+//    NSInteger index = [self arryIndex:indexPath];
+//    NSDictionary *lottery = (NSDictionary *)_lotteryArr[index];
+//    // Configure the cell
+//    cell.isEable.hidden = [lottery[@"enable"] boolValue];
+//    if ([lottery[@"enable"] boolValue] == NO) {
+//        cell.lotteryIntroduce.text = @"暂停销售";
+//    }else{
+//        cell.lotteryIntroduce.text = [lottery objectForKey:@"lotteryInfo"];
+//    }
+//    [cell.lotteryImageView setImage:[UIImage imageNamed:[lottery objectForKey:@"lotteryImageName"]]];
+//    cell.lotteryName.text = [lottery objectForKey:@"lotteryName"];
+//
+//    return cell;
+//}
+//
+//#pragma mark <UICollectionViewDelegate>
+//-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+//    return CGSizeMake(CGRectGetWidth([UIScreen mainScreen].bounds)/rowNumber,125);
+//
+////    return CGSizeMake(125, 115);
+//}
+//
+////这个是两行cell之间的间距（上下行cell的间距）
+//- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
+//    return 0;
+//}
+//
+////两个cell之间的间距（同一行的cell的间距）
+//- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
+//    return 0;
+//}
+//
+//
+//// Uncomment this method to specify if the specified item should be selected
+//- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+//    return YES;
+//}
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     LotteryAreaViewCell *cell = (LotteryAreaViewCell *)[collectionView cellForItemAtIndexPath:indexPath];

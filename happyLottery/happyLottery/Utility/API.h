@@ -134,7 +134,7 @@
 #define APIgetJclqMatch               @"getJclqMatch" //获取竞彩篮球在售赛事
 #define APIgetJclqSp                  @"getJclqSp"  //获取竞彩篮球的sp
 #define APIgetAppSign               @"getAppSign"
-
+#define APIlistSellLottery              @"listSellLottery"
 
 #define SUBAPISchemeService   @"/scheme"
 #define APIBetLotteryScheme         @"betLotteryScheme"

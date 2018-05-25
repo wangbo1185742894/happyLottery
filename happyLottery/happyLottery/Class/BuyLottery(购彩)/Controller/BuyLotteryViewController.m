@@ -100,9 +100,13 @@ static NSString *ID = @"LotteryAreaViewCell";
     __weak IBOutlet UIButton *goRedPacket;
 
     __weak IBOutlet UIButton *gyjButton;
-    NSArray * _lotteryArr;
+    NSMutableArray * _lotteryArr;
     BOOL showGJbtn;
+    
+
 }
+
+@property(nonatomic,strong)NSMutableArray *sellLottery;
 @property(nonatomic,strong)Lottery *lottery;
 @end
 
@@ -113,6 +117,7 @@ static NSString *ID = @"LotteryAreaViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     CGFloat bottomheight;
+    self.sellLottery = [NSMutableArray arrayWithCapacity:0];
     
     if ([self isIphoneX]) {
         bottomheight = 83;
@@ -165,15 +170,43 @@ static NSString *ID = @"LotteryAreaViewCell";
 //    [self.view insertSubview:redpacketView aboveSubview:self.tabBarController.tabBar];
 }
 
+-(void)getLotteryList{
+    [self.lotteryMan getListSellLottery];
+}
+
+-(void)listSellLottery:(NSDictionary *)lotteryList errorMsg:(NSString *)msg{
+    [self.sellLottery removeAllObjects];
+    if (lotteryList == nil) {
+        [self showPromptText:msg hideAfterDelay:1.7];
+        return;
+    }
+    
+    for (int i = 0;i < _lotteryArr.count ;i ++) {
+        NSDictionary *itemDic = _lotteryArr[i];
+        NSString *key = itemDic[@"lottery"] ;
+        if ([key isEqualToString:@"GYJ"]&& [lotteryList[@"JCGJ"] boolValue] ==NO && [lotteryList[@"JCGYJ"] boolValue] ==NO) {
+            continue;
+        }
+//        else if(![key isEqualToString:@"GYJ"] && [lotteryList[key] boolValue] == NO){
+//            continue;
+//        }
+        if (self.sellLottery .count == 7) {
+            break;
+        }
+        [self.sellLottery addObject:itemDic];
+    }
+    [lotteryPlayView reloadData];
+    
+}
+
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     return CGSizeMake(KscreenWidth/4,90);
-    
-
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return  8;
+  
+            return self.sellLottery.count + 1 ;
     
 }
 
@@ -181,8 +214,9 @@ static NSString *ID = @"LotteryAreaViewCell";
 - (UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     LotteryAreaViewCell *cell =  [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
-    NSDictionary *itemDic = _lotteryArr[indexPath.row];
-    if (indexPath.row < 7) {
+    
+    if (indexPath.row < self.sellLottery.count) {
+        NSDictionary *itemDic = self.sellLottery[indexPath.row];
         cell.lotteryName.text = itemDic[@"lotteryName"];
         cell.isEable.hidden = [itemDic[@"enable"] boolValue];
         [cell.lotteryImageView setImage:[UIImage imageNamed:itemDic[@"lotteryImageName"]]];
@@ -197,7 +231,7 @@ static NSString *ID = @"LotteryAreaViewCell";
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
    
-    if (indexPath.row <7) {
+    if (indexPath.row <self.sellLottery.count) {
         NSDictionary *itemDic = _lotteryArr[indexPath.row];
         NSString *lottert =  itemDic[@"lottery"];
         NSString *funName = [NSString stringWithFormat:@"action%@:",lottert];
@@ -398,12 +432,13 @@ static NSString *ID = @"LotteryAreaViewCell";
         if ([self isIphoneX]) {
             height = tabForecaseList.mj_y  + tabForecaseList.rowHeight * 2 + 20;
         }else{
+
             height = tabForecaseList.mj_y  + tabForecaseList.rowHeight * 2 + 70;
+  
         }
+        
         homeViewHeight.constant = height;
         tabForecastListHeight.constant = tabForecaseList.rowHeight * 2;
-
-        [tabForecaseList reloadData];
         return;
     }
     [JczqShortcutList removeAllObjects];
@@ -675,6 +710,7 @@ static NSString *ID = @"LotteryAreaViewCell";
     [super viewWillAppear:animated];
     //    activityInfoView.hidden = YES;
     [self.view addSubview:activityInfoView];
+    [self getLotteryList];
     self.navigationController.navigationBar.hidden = YES;
     if (self.tabBarController.tabBar.hidden == YES) {
         self.tabBarController.tabBar.hidden = NO;
@@ -1257,13 +1293,16 @@ static NSString *ID = @"LotteryAreaViewCell";
     if ([playType isEqualToString:@"YHQ"]) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             MyCouponViewController *couponVC = [[MyCouponViewController alloc]init];
+            couponVC.hidesBottomBarWhenPushed = YES;
             [self .navigationController pushViewController:couponVC animated:YES];
         });
     }
 
     if ([playType isEqualToString:@"CZ"]) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
             TopUpsViewController *topUpsVC = [[TopUpsViewController alloc]init];
+            topUpsVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:topUpsVC animated:YES];
         });
     }

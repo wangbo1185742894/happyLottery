@@ -1692,4 +1692,34 @@
                         failure:failureBlock];
 }
 
+- (void)getListSellLottery{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        NSDictionary *lotteryList = [Utility objFromJson:responseJsonStr];
+        if (response.succeed) {
+            [self.delegate listSellLottery:lotteryList errorMsg:response.errorMsg];
+            
+        } else {
+            [self.delegate listSellLottery:nil errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate listSellLottery:nil errorMsg:@"服务器错误"];
+    };
+    
+    SOAPRequest *request = [self requestForAPI: APIlistSellLottery withParam:nil];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIDATA
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+
+
+
 @end
