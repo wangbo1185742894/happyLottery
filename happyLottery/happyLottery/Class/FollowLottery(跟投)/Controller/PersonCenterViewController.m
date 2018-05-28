@@ -73,17 +73,6 @@
     // Do any additional setup after loading the view from its nib.
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBar.barTintColor = [UIColor blueColor];
-//    RGBCOLOR(31, 202, 149);
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-//    self.navigationController.navigationBar.backgroundColor = SystemGreen;
-}
-
 - (void)reloadView {
     self.userImage.clipsToBounds = NO;
     self.userImage.contentMode = UIViewContentModeScaleAspectFit;

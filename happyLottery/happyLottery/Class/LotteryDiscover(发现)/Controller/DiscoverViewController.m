@@ -138,7 +138,7 @@
     if (navigationType == UIWebViewNavigationTypeBackForward) {
         isBack = YES;
     }else{
-        isBack =NO;
+        isBack =NO;          
     }
     
     request = [NSURLRequest requestWithURL:request.URL cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:100];
@@ -146,7 +146,7 @@
     
     NSURL *URL = request.URL;
     NSString *scheme = [NSString stringWithFormat:@"%@",URL];
-    if ([scheme containsString:@"index"]) {
+    if ([scheme containsString:@"index"]&&![scheme containsString:@"isLogin"]) {
         self.tabBarController.tabBar.hidden = NO;
         
         if ([Utility isIOS11After]) {

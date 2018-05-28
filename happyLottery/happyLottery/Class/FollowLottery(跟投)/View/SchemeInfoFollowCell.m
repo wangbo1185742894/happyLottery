@@ -43,12 +43,15 @@
         [self.winImage setImage:[UIImage imageNamed:@"win.png"]];
         self.winLabel.textColor = RGBCOLOR(254, 58, 81);
         self.winImage.hidden = NO;
+        self.winLabel.hidden = YES;
     } else if([self.winLabel.text containsString:@"未中奖"]){
         [self.winImage setImage:[UIImage imageNamed:@"losing.png"]];
         self.winLabel.textColor = [UIColor blackColor];
         self.winImage.hidden = NO;
+        self.winLabel.hidden = YES;
     } else {
         self.winImage.hidden = YES;
+        self.winLabel.hidden = NO;
         self.winLabel.textColor = [UIColor blackColor];
     }
     if ([model.schemeStatus isEqualToString:@"INIT"]) {

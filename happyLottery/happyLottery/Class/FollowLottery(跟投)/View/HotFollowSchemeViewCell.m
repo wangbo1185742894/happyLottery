@@ -32,6 +32,7 @@
     [super awakeFromNib];
     self.labPersonHis.layer.cornerRadius = 4;
     self.labPersonHis.layer.masksToBounds = YES;
+    self.labBouns.keyWordFont = [UIFont fontWithName:@"Helvetica-Condensed-Black-Se" size:16];
     // Initialization code
 }
 - (IBAction)actionFollowScheme:(UIButton *)sender {
@@ -83,7 +84,11 @@
     } else {
          [self.labBetContent setImage:[UIImage imageNamed:@"kaisuo.png"] forState:UIControlStateNormal];
     }
-   
+    if ([model.won boolValue]){
+        self.imgWinState.image = [UIImage imageNamed:@"winPerson.png"];
+    } else {
+        self.imgWinState.image = [UIImage imageNamed:@"losePerson.png"];
+    }
 }
 
 
@@ -91,6 +96,7 @@
     [self loadDataWithModel:model];
     self.imgPersonIcon.layer.cornerRadius = self.imgPersonIcon.mj_h / 2;
     self.imgPersonIcon.layer.masksToBounds= YES;
+    
 }
 
 //我的关注
@@ -118,13 +124,10 @@
             self.imgWinState.hidden = NO;
             self.imgWinState.image = [UIImage imageNamed:@"win"];
             self.labBouns.hidden = NO;
-            NSString * str = [NSString stringWithFormat:@"中奖%.2f元",[model.bonus doubleValue]];
-            NSMutableAttributedString *str1 = [[NSMutableAttributedString alloc]initWithString:str];
-            [str1 addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:13] range:NSMakeRange(0, 1)]; 
-//             [str1 addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:13] range:NSMakeRange(str1.length-2,str1.length-1)];
-            self.labBouns.attributedText = str1;
+            self.labBouns.text = [NSString stringWithFormat:@"中奖%.2f元",[model.bonus doubleValue]];
             self.labBouns.keyWord = [NSString stringWithFormat:@"%.2f",[model.bonus doubleValue]];
             self.labBouns.keyWordColor = RGBCOLOR(254, 58, 81);
+            
         }else{
             self.imgWinState.hidden = NO;
             self.imgWinState.image = [UIImage imageNamed:@"losing"];
@@ -190,6 +193,7 @@
             self.labPersonHis.hidden = YES;
         }
     }
+    
 }
 
 @end

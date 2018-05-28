@@ -39,6 +39,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *updateLoginPWDBtn;
 @property (weak, nonatomic) IBOutlet UIButton *updatePayPWDBtn;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottom;
+@property (weak, nonatomic) IBOutlet UILabel *telephone;
 
 @property(nonatomic,strong)LoadData *loadDataTool;
 @end
@@ -55,6 +56,7 @@
         //titleStr = @"银行卡添加";
         self.myCardLab.hidden = YES;
     }
+    self.telephone.hidden = NO;
 }
 
 - (void)viewDidLoad {
@@ -81,8 +83,9 @@
     }else{
         userName = self.curUser.nickname;
     }
-    self.myNickLab.text = userName;
-    self.memberLab.text = self.curUser.mobile;
+    self.myNickLab.text =userName;
+    self.telephone.text = self.curUser.mobile;
+    self.memberLab.text = self.curUser.cardCode;
     //[_userImage sd_setImageWithURL:[NSURL URLWithString:self.curUser.headUrl]];
     
     if ([self.curUser.headUrl isEqualToString:@""] || self.curUser.headUrl == nil) {
