@@ -979,6 +979,7 @@
 - (void)updateImage:(NSDictionary *)paramDic{
     void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
     {
+        
         SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
         NSString * infoString = [response getAPIResponse];
         if (response.succeed) {

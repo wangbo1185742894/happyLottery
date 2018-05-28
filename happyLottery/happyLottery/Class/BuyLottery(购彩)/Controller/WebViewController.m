@@ -122,6 +122,7 @@
             playViewVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:playViewVC animated:YES];
         });
+        return;
     }
 
 
@@ -131,6 +132,7 @@
             couponVC.hidesBottomBarWhenPushed = YES;
             [self .navigationController pushViewController:couponVC animated:YES];
         });
+        return;
     }
     
     if ([lotteryCode isEqualToString:@"CZ"]) {
@@ -140,12 +142,13 @@
             topUpsVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:topUpsVC animated:YES];
         });
+        return;
     }
-
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"NSNotificationJumpToPlayVC" object:lotteryCode];
-        [self.navigationController popToRootViewControllerAnimated:NO];
-    });
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"NSNotificationJumpToPlayVC" object:lotteryCode];
+            [self.navigationController popToRootViewControllerAnimated:NO];
+        });
+    
 }
 
 

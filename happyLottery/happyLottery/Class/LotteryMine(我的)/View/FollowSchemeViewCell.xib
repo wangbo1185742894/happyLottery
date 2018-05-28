@@ -52,10 +52,8 @@
                         <color key="textColor" red="0.47843137250000001" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-
                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="win.png" translatesAutoresizingMaskIntoConstraints="NO" id="FWh-bg-y9G">
-                        <rect key="frame" x="186" y="28" width="50" height="50"/>
-
+                        <rect key="frame" x="181" y="25.5" width="55" height="55"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="55" id="CCL-Sf-OfF"/>
                             <constraint firstAttribute="height" constant="55" id="Yso-is-GIs"/>
