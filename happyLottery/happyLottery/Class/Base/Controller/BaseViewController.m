@@ -205,6 +205,7 @@
     }
     if ([text isEqualToString:@"执行成功"] ) {
         text = @"数据请求成功";
+        return;
     }
     //当提示出现时，屏幕键盘收起，不会挡住提示。
     

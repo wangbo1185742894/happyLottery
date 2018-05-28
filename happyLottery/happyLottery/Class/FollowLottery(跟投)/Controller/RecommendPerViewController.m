@@ -115,9 +115,9 @@
 //}
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    UIImageView *image = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, 170  )];
+    UIImageView *image = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth,295/(750/KscreenWidth))];
     NSString *imageName;
-    UILabel *jinLabel = [[UILabel alloc]initWithFrame:CGRectMake(KscreenWidth-75, 135, 90, 20)];
+    UILabel *jinLabel = [[UILabel alloc]initWithFrame:CGRectMake(KscreenWidth-75, 120, 90, 20)];
     jinLabel.text = @"近15日";
     jinLabel.textColor = [UIColor whiteColor];
     jinLabel.backgroundColor = [UIColor clearColor];
@@ -140,7 +140,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 170;
+    return 295/(750/KscreenWidth);
 }
 
 - (void)returnToRootView {

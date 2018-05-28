@@ -8,6 +8,7 @@
 
 #import "MyCouponViewController.h"
 #import "MyCouponTableViewCell.h"
+#import "DiscoverViewController.h"
 #import "Coupon.h"
 
 @interface MyCouponViewController ()<MemberManagerDelegate,UITableViewDelegate,UITableViewDataSource>{
@@ -319,6 +320,17 @@
         }
         
     }
+}
+
+- (void)navigationBackToLastPage{
+    for (UIViewController *controller in self.navigationController.viewControllers) {
+        if ([controller isKindOfClass:[DiscoverViewController class]]) {
+            self.tabBarController.selectedIndex = 3;
+            [self.navigationController popViewControllerAnimated:YES];
+            return;
+        }
+    }
+    [super navigationBackToLastPage];
 }
 
 - (void)didReceiveMemoryWarning {

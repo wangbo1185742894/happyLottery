@@ -15,6 +15,8 @@
 #import "PayOrderYouhunViewController.h"
 #import "WebShowViewController.h"
 #import "SetPayPWDViewController.h"
+#import "YuCeSchemeCreateViewController.h"
+#import "UMChongZhiViewController.h"
 #define KPayTypeListCell @"PayTypeListCell"
 @interface PayOrderViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,MemberManagerDelegate,UIWebViewDelegate,WBInputPopViewDelegate>
 {
@@ -372,12 +374,18 @@
 }
 
 -(void)paySuccess{
+  
     PaySuccessViewController * paySuccessVC = [[PaySuccessViewController alloc]init];
     paySuccessVC.schemetype = self.schemetype;
     if(([self.cashPayMemt.lotteryName isEqualToString:@"竞彩足球"] ||[self.cashPayMemt.lotteryName isEqualToString:@"竞彩篮球"]) && self.cashPayMemt.costType == CostTypeCASH && self.cashPayMemt.subscribed > 10){
         paySuccessVC.isShowFaDan = YES;
     }else{
         paySuccessVC.isShowFaDan = NO;
+    }
+    for (UIViewController *controller in self.navigationController.viewControllers) {
+        if ([controller isKindOfClass:[YuCeSchemeCreateViewController class]]||[controller isKindOfClass:[UMChongZhiViewController class]]) {
+            paySuccessVC.isShowFaDan = NO;
+        }
     }
     paySuccessVC.lotteryName = self.cashPayMemt.lotteryName;
     paySuccessVC.schemeNO = self.cashPayMemt.schemeNo;

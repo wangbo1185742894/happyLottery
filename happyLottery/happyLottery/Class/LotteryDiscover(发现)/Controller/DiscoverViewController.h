@@ -13,6 +13,7 @@
 -(void)SharingLinks:(NSString *)code;
 -(void)goToJczq;
 -(NSString *)getCardCode;
+-(void)goCathectic:(NSString *)lotteryCode;
 - (void)telPhone;
 -(void)goToLogin;
 -(void)exchangeToast:(NSString *)msg;

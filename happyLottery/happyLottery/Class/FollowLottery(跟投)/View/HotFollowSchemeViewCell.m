@@ -19,7 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labDeadTime;
 @property (weak, nonatomic) IBOutlet UIButton *btnFollowScheme;
 @property (weak, nonatomic) IBOutlet UILabel *labHuiBao;
-@property (weak, nonatomic) IBOutlet UILabel *labFollowCount;
+@property (weak, nonatomic) IBOutlet MGLabel *labFollowCount;
 @property (weak, nonatomic) IBOutlet UILabel *labPersonHis;
 @property (weak, nonatomic) IBOutlet UILabel *labCostBySelf;
 @property (weak, nonatomic) IBOutlet UIButton *labBetContent;
@@ -30,7 +30,8 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.labPersonHis.layer.cornerRadius = 3;
+    self.labPersonHis.layer.cornerRadius = 4;
+    self.labPersonHis.layer.masksToBounds = YES;
     // Initialization code
 }
 - (IBAction)actionFollowScheme:(UIButton *)sender {
@@ -117,7 +118,13 @@
             self.imgWinState.hidden = NO;
             self.imgWinState.image = [UIImage imageNamed:@"win"];
             self.labBouns.hidden = NO;
-            self.labBouns.text = [NSString stringWithFormat:@"中奖%.2f元",[model.bonus doubleValue]];
+            NSString * str = [NSString stringWithFormat:@"中奖%.2f元",[model.bonus doubleValue]];
+            NSMutableAttributedString *str1 = [[NSMutableAttributedString alloc]initWithString:str];
+            [str1 addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:13] range:NSMakeRange(0, 1)]; 
+//             [str1 addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:13] range:NSMakeRange(str1.length-2,str1.length-1)];
+            self.labBouns.attributedText = str1;
+            self.labBouns.keyWord = [NSString stringWithFormat:@"%.2f",[model.bonus doubleValue]];
+            self.labBouns.keyWordColor = RGBCOLOR(254, 58, 81);
         }else{
             self.imgWinState.hidden = NO;
             self.imgWinState.image = [UIImage imageNamed:@"losing"];
@@ -144,9 +151,13 @@
     self.labPersonName.text = model.nickName;
     
     self.labHuiBao.text =[NSString stringWithFormat:@"%.2f倍",[model.pledge doubleValue]];
-    [self.labBetContent setTitle:[model getContent] forState:0];
+    NSString *str = [NSString stringWithFormat:@"  %@",[model getContent]];
+    [self.labBetContent setTitle:str forState:0];
     self.labFollowCount.text = [NSString stringWithFormat:@"跟单人次：%@人",model.totalFollowCount];
-    self.labCostBySelf.text =[NSString stringWithFormat:@"自购金额：%@元",model.betCost];
+    self.labFollowCount.keyWord = model.totalFollowCount;
+    self.labFollowCount.keyWordColor = RGBCOLOR(254, 58, 81);
+    self.labCostBySelf.text =[NSString stringWithFormat:@"  自购金额：%@元",model.betCost];
+    self.labCostBySelf.textColor = RGBCOLOR(25, 26, 26);
     NSArray *laburls = [model.label_urls componentsSeparatedByString:@";"];
     for (int i = 0; i < laburls.count; i ++) {
         if (i == 0) {

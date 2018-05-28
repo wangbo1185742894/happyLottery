@@ -48,6 +48,7 @@
 @implementation FollowSendViewController{
     BuyLotteryViewController *buyVc;
     HomeTabTopAdsViewCell *cell;
+    NSString *imageName;
 }
 
 - (void)viewDidLoad {
@@ -70,7 +71,7 @@
     [tabFollewView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
     [self setNavigationBa];
     [self loadEightPerosn];
-    
+    imageName = nil;
     [self getHotFollowScheme];
     [self loadAdsImg];
     [cell openTimer];
@@ -111,6 +112,7 @@
     if (personList == nil||personList.count == 0) {
         [self showPromptText:msg hideAfterDelay:1.8];
         [tabFollewView reloadData];
+        imageName = @"pic_gendankongbaiye.png";
         return;
     }else{
         [schemeList removeAllObjects];
@@ -156,11 +158,12 @@
 }
 
 -(UIImage *)xy_noDataViewImage{
-    return [UIImage imageNamed:@"pic_gendankongbaiye.png"];
+    return [UIImage imageNamed:imageName];
 }
 
 -(NSNumber *)xy_noDataViewCenterYOffset{
-    return @([tabFollewView rectForSection:3].origin.y-self.view.bounds.size.height * (1 - 0.618)+202* (1 - 0.618)+35);
+    NSLog(@"---------------%f+++++++++++++=",[tabFollewView rectForSection:3].origin.y-self.view.bounds.size.height * (1 - 0.618)+202* (1 - 0.618)+50);
+    return @([tabFollewView rectForSection:3].origin.y-self.view.bounds.size.height * (1 - 0.618)+202* (1 - 0.618)+50);
 }
 
 -(BOOL)havData{
@@ -224,6 +227,9 @@
         if (eightList.count == 0) {
             return 0;
         }
+        else if (eightList.count<5){
+            return 85;
+        }
         return 170;
     }else   if(indexPath.section == 3){
         return 202;
@@ -260,7 +266,7 @@
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
 
     if(section == 3){
-        FollowHeaderView *headerView = [[FollowHeaderView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, 44)];
+        FollowHeaderView *headerView = [[FollowHeaderView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, 40)];
         headerView.delegate = self;
         return headerView;
     }else{

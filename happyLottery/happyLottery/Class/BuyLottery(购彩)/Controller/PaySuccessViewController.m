@@ -28,7 +28,8 @@
 #import "MyNoticeViewController.h"
 #import "FollowSendViewController.h"
 #import "SearchViewController.h"
-
+#import "UMChongZhiViewController.h"
+#import "YuCeSchemeCreateViewController.h"
 
 @interface PaySuccessViewController ()<LotteryManagerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *btnPostScheme;
@@ -127,6 +128,7 @@
             [self.navigationController popToViewController:revise animated:YES];
             return;
         }
+        
         if ([controller isKindOfClass:[DLTPlayViewController class]]) {
             DLTPlayViewController *revise =(DLTPlayViewController *)controller;
             [self.navigationController popToViewController:revise animated:YES];
@@ -153,6 +155,11 @@
         if ([controller isKindOfClass:[JCLQPlayController class]]) {
             JCLQPlayController *revise =(JCLQPlayController *)controller;
             [[NSNotificationCenter defaultCenter]postNotificationName:KSELECTMATCHCLEAN object:nil];
+            [self.navigationController popToViewController:revise animated:YES];
+            return;
+        }
+        if ([controller isKindOfClass:[YuCeSchemeCreateViewController class]]) {
+            YuCeSchemeCreateViewController *revise =(YuCeSchemeCreateViewController *)controller;
             [self.navigationController popToViewController:revise animated:YES];
             return;
         }

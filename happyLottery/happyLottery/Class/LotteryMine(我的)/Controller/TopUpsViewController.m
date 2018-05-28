@@ -9,6 +9,7 @@
 #import "TopUpsViewController.h"
 #import "WXApi.h"
 #import "WebShowViewController.h"
+#import "DiscoverViewController.h"
 #define KPayTypeListCell @"PayTypeListCell"
 @interface TopUpsViewController ()<MemberManagerDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,UITextFieldDelegate,UIWebViewDelegate>
 {
@@ -288,6 +289,18 @@
     }else{
         [self showPromptText:msg hideAfterDelay:1.7];
     }
+}
+
+- (void)navigationBackToLastPage{
+    
+    for (UIViewController *controller in self.navigationController.viewControllers) {
+        if ([controller isKindOfClass:[DiscoverViewController class]]) {
+            self.tabBarController.selectedIndex = 3;
+            [self.navigationController popViewControllerAnimated:YES];
+            return;
+        }
+    }
+    [super navigationBackToLastPage];
 }
 
 @end
