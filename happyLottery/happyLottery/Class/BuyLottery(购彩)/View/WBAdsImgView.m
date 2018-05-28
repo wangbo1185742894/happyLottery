@@ -53,7 +53,7 @@
     if (imgUrls == nil||imgUrls.count==0) {//网络状态不好  或者数据未回来  预先加载本地banner图
         scrContentView.contentSize = CGSizeMake(KscreenWidth, scrContentView.mj_h);
         count = 1;
-        UIButton *itemImg = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.mj_w, scrContentView.mj_h)];
+        UIButton *itemImg = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 345, 70)];
         itemImg.imageView.contentMode = UIViewContentModeScaleToFill;
         [scrContentView addSubview:itemImg];
         itemImg.backgroundColor = [UIColor clearColor];
@@ -70,7 +70,7 @@
         pageCtl.hidden = NO;
     }
     for (int i = 0; i < imgUrls.count; i ++ ) {
-        UIButton *itemImg = [[UIButton alloc]initWithFrame:CGRectMake(KscreenWidth * i, 0, self.mj_w, scrContentView.mj_h)];
+        UIButton *itemImg = [[UIButton alloc]initWithFrame:CGRectMake(KscreenWidth * i, 0, 345, 70)];
         itemImg.imageView.contentMode = UIViewContentModeScaleToFill;
         [scrContentView addSubview:itemImg];
         

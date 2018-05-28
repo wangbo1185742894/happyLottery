@@ -22,8 +22,6 @@
             
             adsView = [[WBAdsImgView alloc]initWithFrame:CGRectMake(20,0, KscreenWidth-40, 80)];
             adsView.contentMode = UIViewContentModeScaleAspectFit;
-            adsView.layer.cornerRadius = 35;
-            adsView.layer.masksToBounds = YES;
             adsView.delegate = self;
             [self addSubview:adsView];
         }

@@ -73,6 +73,17 @@
     // Do any additional setup after loading the view from its nib.
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.barTintColor = [UIColor blueColor];
+//    RGBCOLOR(31, 202, 149);
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+//    self.navigationController.navigationBar.backgroundColor = SystemGreen;
+}
+
 - (void)reloadView {
     self.userImage.clipsToBounds = NO;
     self.userImage.contentMode = UIViewContentModeScaleAspectFit;
@@ -260,7 +271,7 @@
     self.userName.text = model.nickName==nil?[model.cardCode stringByReplacingCharactersInRange:NSMakeRange(2,4) withString:@"****"]:model.nickName;
     
     self.fenshiNum.text = [NSString stringWithFormat:@"粉丝 %d人",[model.attentCount intValue]];
-    self.initiateStatusSum.text = [NSString stringWithFormat:@"%.2f元",[model.totalInitiateBonus  doubleValue]];
+    self.initiateStatusSum.text = [NSString stringWithFormat:@"%.2f",[model.totalInitiateBonus  doubleValue]];
     NSArray *array = [model.initiateStatus componentsSeparatedByString:@","];
     switch (array.count) {
         case 0:
