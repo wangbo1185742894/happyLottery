@@ -12,6 +12,9 @@
 #import <ShareSDK/NSMutableDictionary+SSDKShare.h>
 #import <MOBFoundation/MOBFoundation.h>
 #import "JWCacheURLProtocol.h"
+#import "JCZQPlayViewController.h"
+#import "MyCouponViewController.h"
+#import "TopUpsViewController.h"
 #import <WebKit/WebKit.h>
 
 @interface DiscoverViewController ()<JSObjcDelegate,UIWebViewDelegate>
@@ -306,6 +309,52 @@
         }else{
             webDisBottom.constant = -100;
         }
+    });
+}
+-(void)goCathectic:(NSString *)lotteryCode{ //跳转竟足  充值  优惠券
+    if (lotteryCode == nil) {
+        return;
+    }
+    if (self.curUser.isLogin == NO) {
+        [self needLogin];
+        return;
+    }
+    if ([lotteryCode isEqualToString:@"JCZQ"]) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            JCZQPlayViewController * playViewVC = [[JCZQPlayViewController alloc]init];
+            playViewVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:playViewVC animated:YES];
+            
+        });
+        return;
+    }
+    
+    
+    if ([lotteryCode isEqualToString:@"YHQ"]) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            MyCouponViewController *couponVC = [[MyCouponViewController alloc]init];
+            couponVC.hidesBottomBarWhenPushed = YES;
+            [self .navigationController pushViewController:couponVC animated:YES];
+            
+        });
+        return;
+    }
+    
+    if ([lotteryCode isEqualToString:@"CZ"]) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            TopUpsViewController *topUpsVC = [[TopUpsViewController alloc]init];
+            topUpsVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:topUpsVC animated:YES];
+            
+        });
+        return;
+    }
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"NSNotificationJumpToPlayVC" object:lotteryCode];
+        [self.navigationController popToRootViewControllerAnimated:NO];
     });
 }
 

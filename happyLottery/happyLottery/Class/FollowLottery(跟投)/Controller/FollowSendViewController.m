@@ -48,6 +48,7 @@
 @implementation FollowSendViewController{
     BuyLotteryViewController *buyVc;
     HomeTabTopAdsViewCell *cell;
+    NSString *imageName;
 }
 
 - (void)viewDidLoad {
@@ -70,7 +71,7 @@
     [tabFollewView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
     [self setNavigationBa];
     [self loadEightPerosn];
-    
+    imageName = nil;
     [self getHotFollowScheme];
     [self loadAdsImg];
     [cell openTimer];
@@ -111,6 +112,7 @@
     if (personList == nil||personList.count == 0) {
         [self showPromptText:msg hideAfterDelay:1.8];
         [tabFollewView reloadData];
+        imageName = @"pic_gendankongbaiye.png";
         return;
     }else{
         [schemeList removeAllObjects];
@@ -156,7 +158,7 @@
 }
 
 -(UIImage *)xy_noDataViewImage{
-    return [UIImage imageNamed:@"pic_gendankongbaiye.png"];
+    return [UIImage imageNamed:imageName];
 }
 
 -(NSNumber *)xy_noDataViewCenterYOffset{

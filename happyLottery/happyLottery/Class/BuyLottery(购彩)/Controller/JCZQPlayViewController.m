@@ -25,6 +25,7 @@
 #import "UMChongZhiViewController.h"
 #import "YuCeSchemeCreateViewController.h"
 #import "FootBallPlayViewController.h"
+#import "DiscoverViewController.h"
 
 #define KJCZQMatchViewCell @"JCZQMatchViewCell"
 @interface JCZQPlayViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryProfileSelectViewDelegate,LotteryManagerDelegate,JCZQMatchViewCellDelegate,JCZQSelectVIewDelegate,MatchLeagueSelectViewDelegate,OptionSelectedViewDelegate>
@@ -814,6 +815,18 @@
         
     }
     
+}
+
+- (void)navigationBackToLastPage{
+    for (UIViewController *controller in self.navigationController.viewControllers) {\
+        NSLog(@"---%@----",controller);
+        if ([controller isKindOfClass:[DiscoverViewController class]]) {
+            self.tabBarController.selectedIndex = 3;
+            [self.navigationController popViewControllerAnimated:YES];
+            return;
+        }
+    }
+    [super navigationBackToLastPage];
 }
 
 @end
