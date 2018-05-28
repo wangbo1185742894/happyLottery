@@ -160,7 +160,8 @@
 }
 
 -(NSNumber *)xy_noDataViewCenterYOffset{
-    return @([tabFollewView rectForSection:3].origin.y-self.view.bounds.size.height * (1 - 0.618)+202* (1 - 0.618)+35);
+    NSLog(@"---------------%f+++++++++++++=",[tabFollewView rectForSection:3].origin.y-self.view.bounds.size.height * (1 - 0.618)+202* (1 - 0.618)+50);
+    return @([tabFollewView rectForSection:3].origin.y-self.view.bounds.size.height * (1 - 0.618)+202* (1 - 0.618)+50);
 }
 
 -(BOOL)havData{
@@ -223,6 +224,9 @@
     }else   if(indexPath.section == 2){
         if (eightList.count == 0) {
             return 0;
+        }
+        else if (eightList.count<5){
+            return 85;
         }
         return 170;
     }else   if(indexPath.section == 3){

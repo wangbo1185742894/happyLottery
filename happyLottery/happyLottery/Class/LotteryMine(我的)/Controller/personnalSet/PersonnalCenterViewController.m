@@ -82,7 +82,7 @@
         userName = self.curUser.nickname;
     }
     self.myNickLab.text = userName;
-    self.memberLab.text = self.curUser.cardCode;
+    self.memberLab.text = self.curUser.mobile;
     //[_userImage sd_setImageWithURL:[NSURL URLWithString:self.curUser.headUrl]];
     
     if ([self.curUser.headUrl isEqualToString:@""] || self.curUser.headUrl == nil) {
