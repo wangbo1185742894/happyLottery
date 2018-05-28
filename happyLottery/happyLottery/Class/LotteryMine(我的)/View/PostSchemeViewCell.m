@@ -43,12 +43,13 @@
     labTime .text = [[model.createTime componentsSeparatedByString:@" "] firstObject];
     labWinState.text = model.getSchemeState;
     if([model .getSchemeState rangeOfString:@"已中奖"].length > 0){
-        
+         labWinState.text = @"中奖";
         labWonCost.text = [NSString stringWithFormat:@"%.2f元",[model.bonus doubleValue]];
         labWonCost.hidden = NO;
         imgWinState.hidden = NO;
         labWinState.textColor = RGBCOLOR(254, 58, 81);
     }else{
+         labWinState.text = model.getSchemeState;
         imgWinState.hidden = YES;
         labWonCost.hidden  = YES;
         labWinState.textColor = [UIColor blackColor];

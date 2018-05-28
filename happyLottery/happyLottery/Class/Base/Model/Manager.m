@@ -110,8 +110,6 @@
     return paramDic;
 }
 
-
-
 - (NSString*) JsonFromId: (id) obj {
     if (obj == nil) {
         return nil;

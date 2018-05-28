@@ -42,8 +42,8 @@
             self.automaticallyAdjustsScrollViewInsets = NO; // tableView 莫名其妙  contentOffset.y 成-64了  MMP
         }
     }
-//    [NSString stringWithFormat:@"%@/app/award/listHisJclqMatch",H5BaseAddress]
-    NSURL *url = [NSURL URLWithString:@"http://192.168.88.193:18086/app/award/listHisJclqMatch"];
+//
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/app/award/listSellLottery",H5BaseAddress]];
     webView.delegate  =self;
     [webView loadRequest:[NSURLRequest requestWithURL:url]];
     
