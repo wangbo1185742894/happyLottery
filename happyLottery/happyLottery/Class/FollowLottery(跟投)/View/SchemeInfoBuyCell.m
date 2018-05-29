@@ -42,12 +42,15 @@
         [self.winImage setImage:[UIImage imageNamed:@"win.png"]];
         self.winLabel.textColor = RGBCOLOR(254, 58, 81);
         self.winImage.hidden = NO;
+        self.winLabel.hidden = YES;
     } else if([self.winLabel.text containsString:@"未中奖"]){
         [self.winImage setImage:[UIImage imageNamed:@"losing.png"]];
         self.winImage.hidden = NO;
+        self.winLabel.hidden = YES;
         self.winLabel.textColor = [UIColor blackColor];
     } else {
         self.winImage.hidden = YES;
+        self.winLabel.hidden = NO;
         self.winLabel.textColor = [UIColor blackColor];
     }
     if ([self.winLabel.text isEqualToString:@"待开奖"]||[self.winLabel.text isEqualToString:@"出票中"]) {

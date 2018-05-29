@@ -220,11 +220,11 @@ static NSString *ID = @"LotteryAreaViewCell";
         NSDictionary *itemDic = self.sellLottery[indexPath.row];
         cell.lotteryName.text = itemDic[@"lotteryName"];
         cell.isEable.hidden = [itemDic[@"enable"] boolValue];
-        [cell.lotteryImageView setImage:[UIImage imageNamed:itemDic[@"lotteryImageName"]]];
+        [cell.lotteryImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"icon_%@",itemDic[@"lotteryImageName"]]]];
     }else{
         cell.lotteryName .text= @"更多";
         cell.isEable.hidden = YES;
-        [cell.lotteryImageView setImage:[UIImage imageNamed:@"gengduo"]];
+        [cell.lotteryImageView setImage:[UIImage imageNamed:@"icon_gengduo"]];
     }
     
     return cell;
