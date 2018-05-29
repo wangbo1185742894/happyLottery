@@ -72,7 +72,6 @@
     [self setNavigationBa];
     [self loadEightPerosn];
     imageName = nil;
-    
     [self loadAdsImg];
     [cell openTimer];
 }
@@ -120,7 +119,8 @@
     for (NSDictionary *dic in personList) {
         [schemeList addObject:[[HotSchemeModel alloc]initWith:dic]];
     }
-    [tabFollewView reloadSections:[NSIndexSet indexSetWithIndex:3] withRowAnimation:UITableViewRowAnimationFade];
+//    [tabFollewView reloadSections:[NSIndexSet indexSetWithIndex:3] withRowAnimation:UITableViewRowAnimationFade]; // 因有刷新效果，所以换成reloadData
+    [tabFollewView reloadData];
 }
 
 -(void)loadEightPerosn{
@@ -131,16 +131,16 @@
     [self getHotFollowScheme];
     if (personList == nil) {
         eightList = nil;
-        NSIndexPath *indexpath = [NSIndexPath indexPathForRow:0 inSection:2];
-        [tabFollewView reloadRowsAtIndexPaths:@[indexpath] withRowAnimation:UITableViewRowAnimationFade];
+//        NSIndexPath *indexpath = [NSIndexPath indexPathForRow:0 inSection:2];
+        [tabFollewView reloadData];
         [self showPromptText:msg hideAfterDelay:1.8];
         return;
     }
     eightList = personList;
-    NSIndexPath *indexpath = [NSIndexPath indexPathForRow:0 inSection:2];
+//    NSIndexPath *indexpath = [NSIndexPath indexPathForRow:0 inSection:2];
     
-    
-    [tabFollewView reloadRowsAtIndexPaths:@[indexpath] withRowAnimation:UITableViewRowAnimationFade];
+    [tabFollewView reloadData];
+//    [tabFollewView reloadRowsAtIndexPaths:@[indexpath] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 -(void)getTopViewData{
@@ -393,7 +393,8 @@
             ADSModel *model = [[ADSModel alloc]initWith:dic];
             [adsArray addObject:model];
         }
-        [tabFollewView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];
+        [tabFollewView reloadData];
+//        [tabFollewView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];
     }];
 }
 
