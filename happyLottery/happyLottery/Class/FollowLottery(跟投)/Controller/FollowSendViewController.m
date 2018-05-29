@@ -162,8 +162,9 @@
 }
 
 -(NSNumber *)xy_noDataViewCenterYOffset{
-    NSLog(@"---------------%f+++++++++++++=",[tabFollewView rectForSection:3].origin.y-self.view.bounds.size.height * (1 - 0.618)+202* (1 - 0.618)+50);
-    return @([tabFollewView rectForSection:3].origin.y-self.view.bounds.size.height * (1 - 0.618)+202* (1 - 0.618)+50);
+    CGFloat f = (self.view.bounds.size.height - [tabFollewView rectForSection:3].origin.y)*(1 - 0.618)+[tabFollewView rectForSection:3].origin.y;
+    CGFloat d = self.view.bounds.size.height * (1 - 0.618);
+    return @(f-d);
 }
 
 -(BOOL)havData{
