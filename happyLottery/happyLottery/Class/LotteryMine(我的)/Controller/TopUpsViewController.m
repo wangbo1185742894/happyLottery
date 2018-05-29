@@ -34,7 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"充值";
-     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkSchemePayState:) name:@"NSNotificationapplicationWillEnterForeground" object:nil];
+    
     self.viewControllerNo = @"A105";
     self.payWebView.delegate = self;
     self.memberMan.delegate = self;
@@ -158,6 +158,7 @@
        return;
     }
     [self showLoadingText:@"正在提交订单"];
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkSchemePayState:) name:@"NSNotificationapplicationWillEnterForeground" object:nil];
     [self.memberMan rechargeSms:rechargeInfo];
     
     

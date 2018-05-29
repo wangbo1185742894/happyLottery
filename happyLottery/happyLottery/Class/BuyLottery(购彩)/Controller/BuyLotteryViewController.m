@@ -269,6 +269,7 @@ static NSString *ID = @"LotteryAreaViewCell";
     webVC.hidesBottomBarWhenPushed = YES;
     webVC.pageUrl = appSignModel.skipUrl;
     [self.navigationController pushViewController:webVC animated:YES];
+    activityInfoView.hidden = YES;
 }
 
 //修改，，，，，，，，，，
@@ -710,7 +711,13 @@ static NSString *ID = @"LotteryAreaViewCell";
     perVC.hidesBottomBarWhenPushed = YES;
     perVC.navigationController.navigationBar.hidden = YES;
     perVC.categoryCode = categoryCode;
-    [self.navigationController pushViewController:perVC animated:YES];
+    if (navGationCotr == nil) {
+        [self.navigationController pushViewController:perVC animated:YES];
+        
+    }else{
+        [navGationCotr pushViewController:perVC animated:YES];
+
+    }
 }
 
 -(void)jumpGenTouPage:(NSInteger)index{
@@ -728,7 +735,12 @@ static NSString *ID = @"LotteryAreaViewCell";
         MyNoticeViewController *noticeVc = [[MyNoticeViewController alloc]init];
         noticeVc.hidesBottomBarWhenPushed = YES;
         noticeVc.curUser = self.curUser;
-        [self.navigationController pushViewController:noticeVc animated:YES];
+        if (navGationCotr == nil) {
+            [self.navigationController pushViewController:noticeVc animated:YES];
+            
+        }else{
+            [navGationCotr pushViewController:noticeVc animated:YES];
+        }
     }
 }
 

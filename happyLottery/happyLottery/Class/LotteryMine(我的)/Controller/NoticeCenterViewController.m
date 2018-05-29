@@ -431,8 +431,7 @@
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self.navigationController popToRootViewControllerAnimated:YES];
         });
-            self.tabBarController.selectedIndex = 2;
-        
+        self.tabBarController.selectedIndex = 1;
         return;
     }else if ([keyStr isEqualToString:@"A417"]){
         [self jumpGenTouPage:0];
