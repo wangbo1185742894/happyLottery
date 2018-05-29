@@ -31,6 +31,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//     *categoryCode; //榜单类别 Cowman，Redman，RedScheme
+    if ([self.categoryCode isEqualToString:@"Cowman"]) {
+        self.viewControllerNo = @"A417";
+    }
+    if ([self.categoryCode isEqualToString:@"Redman"]) {
+        self.viewControllerNo = @"A418";
+    }
+    if ([self.categoryCode isEqualToString:@"RedScheme"]) {
+        self.viewControllerNo = @"A419";
+    }
+    
+    
     if ([self isIphoneX]) {
         _topDis .constant = -44;
     }else{
@@ -46,6 +58,8 @@
     
     [self loadData];
 }
+
+
 
 -(UIImage *)xy_noDataViewImage{
     return [UIImage imageNamed:@"pic_zanwushuju_tongyong"];

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CTZQMatch.h"
 
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
@@ -20,5 +21,6 @@
 + (AppDelegate*) shareDelegate;
 -(void) playSound;
 - (void)showZhuihaoDetail:(NSString*) ordernumber;
+-(void)goToYunshiWithInfo:(NSString *)pageCode;
 @end
 

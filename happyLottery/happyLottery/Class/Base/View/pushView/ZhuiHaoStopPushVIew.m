@@ -36,7 +36,12 @@
 }
 - (IBAction)actionToDetail:(UIButton *)sender {
     AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [app showZhuihaoDetail:nil];
+    if ([self.pageCode isEqualToString:@"A204"]) {
+          [app showZhuihaoDetail:nil];
+    }else{
+        [app goToYunshiWithInfo:self.pageCode];
+    }
+  
     [self close];
 }
 

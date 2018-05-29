@@ -10,6 +10,8 @@
 #import "netWorkHelper.h"
 #import "VersionUpdatingPopView.h"
 #import "JCLQPlayController.h"
+#import "MyPostSchemeViewController.h"
+#import "MyAttendViewController.h"
 #import "ADSModel.h"
 
 @interface BuyLotteryViewController : BaseViewController

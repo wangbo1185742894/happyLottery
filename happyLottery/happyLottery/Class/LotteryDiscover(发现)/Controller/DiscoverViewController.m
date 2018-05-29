@@ -241,12 +241,14 @@
                            }
                            case SSDKResponseStateCancel:
                            {
-                               UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享已取消"
-                                                                                   message:nil
-                                                                                  delegate:nil
-                                                                         cancelButtonTitle:@"确定"
-                                                                         otherButtonTitles:nil];
-                               [alertView show];
+                               if (userData != nil) {
+                                   UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享已取消"
+                                                                                       message:nil
+                                                                                      delegate:nil
+                                                                             cancelButtonTitle:@"确定"
+                                                                             otherButtonTitles:nil];
+                                   [alertView show];
+                               }
                                break;
                            }
                            default:
@@ -349,6 +351,7 @@
             [self.navigationController pushViewController:topUpsVC animated:YES];
             
         });
+        [self.faxianWebView goBack];
         return;
     }
     

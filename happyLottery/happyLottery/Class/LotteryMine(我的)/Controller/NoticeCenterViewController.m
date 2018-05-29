@@ -8,8 +8,11 @@
 
 #import "NoticeCenterViewController.h"
 #import "NoticeCenterTableViewCell.h"
+#import "RecommendPerViewController.h"
+#import "MyPostSchemeViewController.h"
+#import "MyAttendViewController.h"
 #import "NoticeDetailViewController.h"
-
+#import "MyNoticeViewController.h"
 #import "Notice.h"
 #import "FMDB.h"
 #import "JumpWebViewController.h"
@@ -424,6 +427,58 @@
         playViewVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:playViewVC animated:YES];
         return;
+    }else if([keyStr isEqualToString:@"A416"]){
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        });
+            self.tabBarController.selectedIndex = 2;
+        
+        return;
+    }else if ([keyStr isEqualToString:@"A417"]){
+        [self jumpGenTouPage:0];
+        
+        return;
+    }else if ([keyStr isEqualToString:@"A418"]){
+        [self jumpGenTouPage:1];
+        
+        return;
+    }else if ([keyStr isEqualToString:@"A419"]){
+        [self jumpGenTouPage:2];
+        
+        return;
+    }else if ([keyStr isEqualToString:@"A420"]){
+        [self jumpGenTouPage:3];
+        
+        return;
+    }else if ([keyStr isEqualToString:@"A422"]){
+        
+        if (self.curUser .isLogin == NO) {
+            [self needLogin];
+            return;
+        }
+        MyPostSchemeViewController *revise = [[MyPostSchemeViewController alloc]init];
+        revise.isFaDan = NO;
+        [self.navigationController pushViewController:revise animated:YES];
+        return;
+    }else if ([keyStr isEqualToString:@"A424"]){
+        
+        if (self.curUser .isLogin == NO) {
+            [self needLogin];
+            return;
+        }
+        MyPostSchemeViewController *revise = [[MyPostSchemeViewController alloc]init];
+        revise.isFaDan = YES;
+        [self.navigationController pushViewController:revise animated:YES];
+        return;
+    }else if ([keyStr isEqualToString:@"A423"]){
+        
+        if (self.curUser .isLogin == NO) {
+            [self needLogin];
+            return;
+        }
+        MyAttendViewController *revise = [[MyAttendViewController alloc]init];
+        [self.navigationController pushViewController:revise animated:YES];
+        return;
     }else if ([keyStr isEqualToString:@"A412"]){
         WebCTZQHisViewController * playViewVC = [[WebCTZQHisViewController alloc]init];
         NSString *strUrl = [NSString stringWithFormat:@"%@/app/award/jzOpenAward",H5BaseAddress];
@@ -459,6 +514,34 @@
     else{
          baseVC.hidesBottomBarWhenPushed = YES;
          [self.navigationController pushViewController:baseVC animated:YES];
+    }
+}
+
+- (void)actionToRecommed:(NSString *)categoryCode {
+    RecommendPerViewController *perVC = [[RecommendPerViewController alloc]init];
+    perVC.hidesBottomBarWhenPushed = YES;
+    perVC.navigationController.navigationBar.hidden = YES;
+    perVC.categoryCode = categoryCode;
+    [self.navigationController pushViewController:perVC animated:YES];
+}
+
+
+-(void)jumpGenTouPage:(NSInteger)index{
+    if (index == 0) {  // 牛人
+        [self actionToRecommed:@"Cowman"];
+    }else if (index == 1){  // 红人
+        [self actionToRecommed:@"Redman"];
+    }else if (index == 2){ // 红单
+        [self actionToRecommed:@"RedScheme"];
+    }else if (index == 3){  // 我的关注
+        if (self.curUser.isLogin == NO) {
+            [self needLogin];
+            return;
+        }
+        MyNoticeViewController *noticeVc = [[MyNoticeViewController alloc]init];
+        noticeVc.hidesBottomBarWhenPushed = YES;
+        noticeVc.curUser = self.curUser;
+        [self.navigationController pushViewController:noticeVc animated:YES];
     }
 }
 

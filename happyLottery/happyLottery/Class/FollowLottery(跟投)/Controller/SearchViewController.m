@@ -32,6 +32,7 @@
     }else{
         self.topViewHeight.constant = 64;
     }
+    self.viewControllerNo = @"A421";
     self.lotteryMan.delegate = self;
     _page = 0;
     schemeList = [NSMutableArray arrayWithCapacity:0];
