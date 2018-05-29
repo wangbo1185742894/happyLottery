@@ -54,7 +54,7 @@
         scrContentView.contentSize = CGSizeMake(KscreenWidth, scrContentView.mj_h);
         count = 1;
         UIButton *itemImg = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, 70)];
-        itemImg.imageView.contentMode = UIViewContentModeCenter;
+        itemImg.imageView.contentMode = UIViewContentModeScaleAspectFit;
         [scrContentView addSubview:itemImg];
         itemImg.backgroundColor = [UIColor clearColor];
         itemImg.adjustsImageWhenHighlighted = NO;
@@ -71,7 +71,7 @@
     }
     for (int i = 0; i < imgUrls.count; i ++ ) {
         UIButton *itemImg = [[UIButton alloc]initWithFrame:CGRectMake(KscreenWidth * i, 0, KscreenWidth, 70)];
-        itemImg.imageView.contentMode = UIViewContentModeCenter;
+        itemImg.imageView.contentMode = UIViewContentModeScaleAspectFit;
         [scrContentView addSubview:itemImg];
         
         [itemImg addTarget:self action:@selector(imgItemClick) forControlEvents:UIControlEventTouchUpInside];
