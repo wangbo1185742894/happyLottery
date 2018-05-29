@@ -230,7 +230,7 @@
         else if (eightList.count<5){
             return 85;
         }
-        return 160;
+        return 170;
     }else   if(indexPath.section == 3){
         return 202;
     }else{

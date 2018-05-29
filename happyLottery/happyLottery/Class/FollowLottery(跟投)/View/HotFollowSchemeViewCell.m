@@ -156,8 +156,15 @@
     self.labHuiBao.text =[NSString stringWithFormat:@"%.2f倍",[model.pledge doubleValue]];
     NSString *str = [NSString stringWithFormat:@"  %@",[model getContent]];
     [self.labBetContent setTitle:str forState:0];
-    self.labFollowCount.text = [NSString stringWithFormat:@"跟单人次：%@人",model.totalFollowCount];
-    self.labFollowCount.keyWord = model.totalFollowCount;
+    //虚拟固定卡号跟单人次（10000370-10000380）  末尾数*20+真实人次
+    NSString *carcode = [model.cardCode substringWithRange:NSMakeRange(0, 7)];
+    if ([carcode isEqualToString:@"1000037"]||[model.cardCode isEqualToString:@"10000380"]) {
+        self.labFollowCount.text = [NSString stringWithFormat:@"跟单人次：%d人",[[model.cardCode substringFromIndex:model.cardCode.length-1]intValue]*20+[model.totalFollowCount intValue]];
+        self.labFollowCount.keyWord = [NSString stringWithFormat:@"%d",[[model.cardCode substringFromIndex:model.cardCode.length-1]intValue]*20+[model.totalFollowCount intValue]];
+    } else{
+        self.labFollowCount.text = [NSString stringWithFormat:@"跟单人次：%@人",model.totalFollowCount];
+        self.labFollowCount.keyWord = model.totalFollowCount;
+    }
     self.labFollowCount.keyWordColor = RGBCOLOR(254, 58, 81);
     self.labCostBySelf.text =[NSString stringWithFormat:@"  自购金额：%@元",model.betCost];
     self.labCostBySelf.textColor = RGBCOLOR(25, 26, 26);

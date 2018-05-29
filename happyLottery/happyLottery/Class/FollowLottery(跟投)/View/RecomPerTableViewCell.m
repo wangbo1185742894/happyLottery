@@ -43,7 +43,13 @@
     } else if ([categoryCode isEqualToString:@"Redman"]){
         self.infoOneLabel.text = @"跟投人次";
         self.infoTwoLabel.text = @"带红人数";
-        self.infoOneSum.text = model.followCount==nil?@"0":model.followCount;
+        //虚拟固定卡号跟单人次（10000370-10000380）
+        NSString *carcode = [model.cardCode substringWithRange:NSMakeRange(0, 7)];
+        if ([carcode isEqualToString:@"1000037"]||[model.cardCode isEqualToString:@"10000380"]) {
+            self.infoOneSum.text = [NSString stringWithFormat:@"%d",[[model.cardCode substringFromIndex:model.cardCode.length-1]intValue]*20+[model.followCount intValue]];
+        } else{
+            self.infoOneSum.text = model.followCount==nil?@"0":model.followCount;
+        }
         self.infoTwoSum.text = model.redCount==nil?@"0":model.redCount;
     } else {
         self.infoOneSum.hidden = YES;
