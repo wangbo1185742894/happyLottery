@@ -130,6 +130,11 @@
     }else{
         self.labJiangjin.text = @"待开奖";
     }
+    self.labTouzhuneirong.textColor = RGBCOLOR(72, 72, 72);
+    [self reloadLabelColor:winningStatus];
+}
+
+- (void)reloadLabelColor:(NSString *)winningStatus {
     if ([winningStatus isEqualToString:@"LOTTERY"]){
         self.labPassType.textColor = RGBCOLOR(254, 58, 81);
         self.labNumber.textColor = RGBCOLOR(254, 58, 81);
@@ -142,7 +147,7 @@
         self.labNumber.textColor = RGBCOLOR(49, 137, 253);
         self.labBetCost.textColor = RGBCOLOR(49, 137, 253);
         self.labJiangjin.textColor = RGBCOLOR(49, 137, 253);
-        self.labTouzhuneirong.textColor = RGBCOLOR(49, 137, 253);
+        self.labTouzhuneirong.textColor = RGBCOLOR(72, 72, 72);
     }
 }
 
@@ -233,6 +238,7 @@
        
         self.labJiangjin.text = @"待开奖";
     }
+    [self reloadLabelColor:winningStatus];
 }
  //   [5]	(null)	@"winningStatus" : @"WAIT_LOTTERY"  NOT_LOTTERY  LOTTERY
  //   [3]	(null)	@"orderStatus" : @"FAIL_TICKET"  SUC_TICKET  WAIT_PA
@@ -391,7 +397,7 @@
 
         //   [5]    (null)    @"winningStatus" : @"WAIT_LOTTERY"  NOT_LOTTERY  LOTTERY
         //   [3]    (null)    @"orderStatus" : @"FAIL_TICKET"  SUC_TICKET  WAIT_PAY
-
+       [self reloadLabelColor:winningStatus];
 
 }
 

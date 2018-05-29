@@ -54,7 +54,7 @@
         scrContentView.contentSize = CGSizeMake(KscreenWidth, scrContentView.mj_h);
         count = 1;
         UIButton *itemImg = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, 70)];
-        itemImg.imageView.contentMode = UIViewContentModeCenter;
+        itemImg.imageView.contentMode = UIViewContentModeScaleAspectFit;
         [scrContentView addSubview:itemImg];
         itemImg.backgroundColor = [UIColor clearColor];
         itemImg.adjustsImageWhenHighlighted = NO;
@@ -71,14 +71,12 @@
     }
     for (int i = 0; i < imgUrls.count; i ++ ) {
         UIButton *itemImg = [[UIButton alloc]initWithFrame:CGRectMake(KscreenWidth * i, 0, KscreenWidth, 70)];
-        itemImg.imageView.contentMode = UIViewContentModeCenter;
+        itemImg.imageView.contentMode = UIViewContentModeScaleAspectFit;
         [scrContentView addSubview:itemImg];
         
         [itemImg addTarget:self action:@selector(imgItemClick) forControlEvents:UIControlEventTouchUpInside];
         itemImg.adjustsImageWhenHighlighted = NO;
         [itemImg sd_setImageWithURL:[NSURL URLWithString:imgUrls[i].imgUrl] forState:0 placeholderImage:[UIImage imageNamed:imageName]];
-//        [itemImg setImage:[UIImage imageNamed:imageName] forState:0];
-//        [itemImg sd_setImageWithURL:[NSURL URLWithString:imgUrls[i].imgUrl] forState:0];
     }
     pageCtl.numberOfPages = imgUrls.count;
     if (imgUrls .count ==1) {

@@ -8,9 +8,10 @@
 
 #import "FollowListViewController.h"
 #import "FollowListTableViewCell.h"
+#import "MGLabel.h"
 #define  KFollowListTableViewCell  @"FollowListTableViewCell"
 @interface FollowListViewController ()<UITableViewDelegate,UITableViewDataSource>
-@property (weak, nonatomic) IBOutlet UILabel *labPersonInfo;
+@property (weak, nonatomic) IBOutlet MGLabel *labPersonInfo;
 @property (weak, nonatomic) IBOutlet UITableView *tabFollowListView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topDis;
 
@@ -27,6 +28,8 @@
         self.topDis.constant = 64 ;
     }
     self.labPersonInfo.text = [NSString stringWithFormat:@"当前用户跟单%ld人次",self.followListDtos.count];
+    self.labPersonInfo.keyWord = [NSString stringWithFormat:@"%ld人次",self.followListDtos.count];
+    self.labPersonInfo.keyWordColor = RGBCOLOR(254, 58, 81);
 }
 
 -(void)setTableView{
