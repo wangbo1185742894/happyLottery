@@ -14,7 +14,7 @@
     return iconDic[self.channel];
 }
 -(NSString*)channelTitle{
-    NSDictionary *iconDic = @{@"YUE":@"余额支付",@"UNION":@"银联支付",@"WFTWX":@"微信支付",@"SDALI":@"支付宝支付",@"BOINGWX":@"微信支付2"};
+    NSDictionary *iconDic = @{@"YUE":@"余额支付",@"UNION":@"银联支付",@"WFTWX":@"微信支付(推荐)",@"SDALI":@"支付宝支付",@"BOINGWX":@"微信支付2"};
     return iconDic[self.channel];
 }
 

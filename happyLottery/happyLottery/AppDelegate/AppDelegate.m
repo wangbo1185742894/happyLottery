@@ -9,11 +9,15 @@
 #import "AppDelegate.h"
 #import "NewFeatureViewController.h"
 #import "WebCTZQHisViewController.h"
+#import "RecommendPerViewController.h"
+#import "MyPostSchemeViewController.h"
 #import "DLTPlayViewController.h"
 #import "CTZQPlayViewController.h"
 #import "JCZQPlayViewController.h"
 #import "WelComeViewController.h"
 #import "AESUtility.h"
+#import "MyNoticeViewController.h"
+#import "MyAttendViewController.h"
 #import "netWorkHelper.h"
 // 引入JPush功能所需头文件
 #import "JPUSHService.h"
@@ -548,23 +552,46 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         //    SYSTEM_MESSAGE("系统消息"),
         //    COUPON_EXPIRATION_MESSAGE("优惠卷到期提醒");messageType
 //
-        if ([extra[@"pageCode"] isEqualToString:@"A204"]&&[extra[@"messageType"] isEqualToString:@"DRAW_MESSAGE"]) { //中奖推送
-            if (winPushView !=nil) {
-                [winPushView removeFromSuperview];
-                winPushView = nil;
-            }
-            [self playSound];
+        if ([extra[@"messageType"] isEqualToString:@"DRAW_MESSAGE"]) { //中奖推送
             
-            winPushView = [[ZhuiHaoStopPushVIew alloc]initWithFrame:[UIScreen  mainScreen].bounds];
-         
-            [winPushView refreshInfo:title andContent:content];
-            [[UIApplication sharedApplication].keyWindow addSubview:winPushView];
-            return;
+                if (winPushView !=nil) {
+                    [winPushView removeFromSuperview];
+                    winPushView = nil;
+                }
+                [self playSound];
+                
+                winPushView = [[ZhuiHaoStopPushVIew alloc]initWithFrame:[UIScreen  mainScreen].bounds];
+                winPushView.pageCode = extra[@"pageCode"];
+                [winPushView refreshInfo:title andContent:content];
+                [[UIApplication sharedApplication].keyWindow addSubview:winPushView];
+                return;
         }
     }
-
+}
+- (void)actionToRecommed:(NSString *)categoryCode {
+     AppDelegate *delegate  = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    RecommendPerViewController *perVC = [[RecommendPerViewController alloc]init];
+    perVC.hidesBottomBarWhenPushed = YES;
+    perVC.navigationController.navigationBar.hidden = YES;
+    perVC.categoryCode = categoryCode;
+    [delegate.curNavVC pushViewController:perVC animated:YES];
 }
 
+
+-(void)jumpGenTouPage:(NSInteger)index{
+    if (index == 0) {  // 牛人
+        [self actionToRecommed:@"Cowman"];
+    }else if (index == 1){  // 红人
+        [self actionToRecommed:@"Redman"];
+    }else if (index == 2){ // 红单
+        [self actionToRecommed:@"RedScheme"];
+    }else if (index == 3){  // 我的关注
+        if ([GlobalInstance instance].curUser.isLogin == NO) {
+            return;
+        }
+    
+    }
+}
 -(void)goToYunshiWithInfo:(NSString *)pageCode{
     NSString *keyStr = pageCode;
     pageCodeNotice = nil;
@@ -650,6 +677,46 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         playViewVC.pageUrl = [NSURL URLWithString:strUrl];
         playViewVC.hidesBottomBarWhenPushed = YES;
         [delegate.curNavVC pushViewController:playViewVC animated:YES];
+        return;
+    }else if([keyStr isEqualToString:@"A416"]){
+  
+            tabBarController.selectedIndex = 1;
+        return;
+    }else if ([keyStr isEqualToString:@"A417"]){
+        [self jumpGenTouPage:0];
+        
+        return;
+    }else if ([keyStr isEqualToString:@"A418"]){
+        [self jumpGenTouPage:1];
+        
+        return;
+    }else if ([keyStr isEqualToString:@"A419"]){
+        [self jumpGenTouPage:2];
+        
+        return;
+    }else if ([keyStr isEqualToString:@"A420"]){
+        MyNoticeViewController *noticeVc = [[MyNoticeViewController alloc]init];
+        noticeVc.hidesBottomBarWhenPushed = YES;
+        noticeVc.curUser = [GlobalInstance instance].curUser;
+        [delegate.curNavVC pushViewController:noticeVc animated:YES];
+        return;
+    }else if ([keyStr isEqualToString:@"A422"]){
+        
+        MyPostSchemeViewController *revise = [[MyPostSchemeViewController alloc]init];
+        revise.isFaDan = NO;
+        [delegate.curNavVC pushViewController:revise animated:YES];
+        return;
+    }else if ([keyStr isEqualToString:@"A424"]){
+        
+        MyPostSchemeViewController *revise = [[MyPostSchemeViewController alloc]init];
+        revise.isFaDan = YES;
+        
+        [delegate.curNavVC pushViewController:revise animated:YES];
+        return;
+    }else if ([keyStr isEqualToString:@"A423"]){
+     
+        MyAttendViewController *revise = [[MyAttendViewController alloc]init];
+        [delegate.curNavVC pushViewController:revise animated:YES];
         return;
     }else{
           baseVC.hidesBottomBarWhenPushed = YES;

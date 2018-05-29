@@ -8,6 +8,8 @@
 
 #import "BuyLotteryViewController.h"
 #import "WebShowViewController.h"
+#import "RecommendPerViewController.h"
+#import "MyNoticeViewController.h"
 #import "WebCTZQHisViewController.h"
 #import "DLTPlayViewController.h"
 #import "SSQPlayViewController.h"
@@ -131,7 +133,7 @@ static NSString *ID = @"LotteryAreaViewCell";
     activityInfoView.frame = CGRectMake(0, KscreenHeight - bottomheight - 70, KscreenWidth, 70);
     [activityInfoView setStartBtnTarget:self andAction:@selector(startActivity)];
 
-    activityInfoView.hidden = YES;
+    [self.view addSubview:activityInfoView];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(jumpToPlayVC:) name:@"NSNotificationJumpToPlayVC" object:nil];
 #ifdef APPSTORE
@@ -256,33 +258,8 @@ static NSString *ID = @"LotteryAreaViewCell";
 //        activityInfoView.hidden = YES;
         return;
     }
-    BOOL isNotShow =[[[NSUserDefaults standardUserDefaults] objectForKey:KAppSignModelShow] boolValue];
-    NSString * modelUrl =[[NSUserDefaults standardUserDefaults] objectForKey:KAppSignModelUrl];
     appSignModel = [[AppSignModel alloc]initWith:personList];
-    
     activityInfoView.labActivityInfo.text = appSignModel.describe;
-    if (modelUrl == nil) {
-        activityInfoView.hidden = NO;
-    }else{
-//        [[NSUserDefaults standardUserDefaults] setValue:@0  forKey:KAppSignModelShow];
-//        bug修改(目前杀掉进程后的第一次打开悬浮窗不显示，再杀进程再打开时，悬浮窗又出现了),如有新问题改回  lyw
-        if ([modelUrl isEqualToString:appSignModel.skipUrl]) {
-            [[NSUserDefaults standardUserDefaults] setValue:@(isNotShow)  forKey:KAppSignModelShow];
-            activityInfoView.hidden =  isNotShow;
-        }else{
-            activityInfoView.hidden = NO;
-            //bug修改同上
-            [[NSUserDefaults standardUserDefaults] setValue:@0  forKey:KAppSignModelShow];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-
-        }
-    }
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:KAppSignModelShow] == nil) {
-        [[NSUserDefaults standardUserDefaults] setValue:@0  forKey:KAppSignModelShow];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
-    [[NSUserDefaults standardUserDefaults] setValue:appSignModel.skipUrl forKey:KAppSignModelUrl];
-    [[NSUserDefaults standardUserDefaults] synchronize];
     [activityInfoView.imgRedIcon sd_setImageWithURL:[NSURL URLWithString:appSignModel.imageUrl]];
 }
 
@@ -624,6 +601,62 @@ static NSString *ID = @"LotteryAreaViewCell";
             [navgC pushViewController:playViewVC animated:YES];
         }
         return;
+    }else if([keyStr isEqualToString:@"A416"]){
+        if (navgC == nil) {
+            self.tabBarController.selectedIndex = 1;
+        }
+        else {
+            navgC.tabBarController.selectedIndex = 1;
+        }
+        return;
+    }else if ([keyStr isEqualToString:@"A417"]){
+        [self jumpGenTouPage:0];
+     
+        return;
+    }else if ([keyStr isEqualToString:@"A418"]){
+        [self jumpGenTouPage:1];
+        
+        return;
+    }else if ([keyStr isEqualToString:@"A419"]){
+        [self jumpGenTouPage:2];
+        
+        return;
+    }else if ([keyStr isEqualToString:@"A420"]){
+        [self jumpGenTouPage:3];
+    
+        return;
+    }else if ([keyStr isEqualToString:@"A422"]){
+        
+        if (self.curUser .isLogin == NO) {
+            [self needLogin];
+            return;
+        }
+        MyPostSchemeViewController *revise = [[MyPostSchemeViewController alloc]init];
+        revise.isFaDan = NO;
+        revise.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:revise animated:YES];
+        return;
+    }else if ([keyStr isEqualToString:@"A424"]){
+        
+        if (self.curUser .isLogin == NO) {
+            [self needLogin];
+            return;
+        }
+        MyPostSchemeViewController *revise = [[MyPostSchemeViewController alloc]init];
+        revise.hidesBottomBarWhenPushed = YES;
+        revise.isFaDan = YES;
+        [self.navigationController pushViewController:revise animated:YES];
+        return;
+    }else if ([keyStr isEqualToString:@"A423"]){
+        
+        if (self.curUser .isLogin == NO) {
+            [self needLogin];
+            return;
+        }
+        MyAttendViewController *revise = [[MyAttendViewController alloc]init];
+        revise.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:revise animated:YES];
+        return;
     }else if ([keyStr isEqualToString:@"A009"]){
         [self actionGYJ:nil];
         return;
@@ -672,6 +705,33 @@ static NSString *ID = @"LotteryAreaViewCell";
 //    [curNavVC pushViewController:baseVC animated:YES];
 }
 
+- (void)actionToRecommed:(NSString *)categoryCode {
+    RecommendPerViewController *perVC = [[RecommendPerViewController alloc]init];
+    perVC.hidesBottomBarWhenPushed = YES;
+    perVC.navigationController.navigationBar.hidden = YES;
+    perVC.categoryCode = categoryCode;
+    [self.navigationController pushViewController:perVC animated:YES];
+}
+
+-(void)jumpGenTouPage:(NSInteger)index{
+    if (index == 0) {  // 牛人
+        [self actionToRecommed:@"Cowman"];
+    }else if (index == 1){  // 红人
+        [self actionToRecommed:@"Redman"];
+    }else if (index == 2){ // 红单
+        [self actionToRecommed:@"RedScheme"];
+    }else if (index == 3){  // 我的关注
+        if (self.curUser.isLogin == NO) {
+            [self needLogin];
+            return;
+        }
+        MyNoticeViewController *noticeVc = [[MyNoticeViewController alloc]init];
+        noticeVc.hidesBottomBarWhenPushed = YES;
+        noticeVc.curUser = self.curUser;
+        [self.navigationController pushViewController:noticeVc animated:YES];
+    }
+}
+
 -(void)adsImgViewClick:(ADSModel *)itemIndex navigation:(UINavigationController *)navgC{
     NSString *jumpType;
     navGationCotr = navgC;
@@ -711,7 +771,7 @@ static NSString *ID = @"LotteryAreaViewCell";
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     //    activityInfoView.hidden = YES;
-    [self.view addSubview:activityInfoView];
+    
     [self getLotteryList];
     self.navigationController.navigationBar.hidden = YES;
     if (self.tabBarController.tabBar.hidden == YES) {

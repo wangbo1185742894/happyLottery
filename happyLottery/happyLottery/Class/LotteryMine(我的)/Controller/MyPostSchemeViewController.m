@@ -35,8 +35,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"我的跟单";
+    self.viewControllerNo = @"A422";
     if (self.isFaDan) {
         [self actionGenDan:self.btnFadan];
+        self.viewControllerNo = @"A424";
     }
     dataArray = [NSMutableArray arrayWithCapacity:0];
     if ([self isIphoneX]) {

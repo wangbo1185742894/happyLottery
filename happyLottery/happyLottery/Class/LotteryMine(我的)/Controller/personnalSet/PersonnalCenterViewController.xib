@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,6 +21,7 @@
                 <outlet property="myImage" destination="ddE-fh-p3u" id="HA1-QC-z6R"/>
                 <outlet property="myImageBtn" destination="506-C9-ngo" id="jFH-SC-2fE"/>
                 <outlet property="myNickBtn" destination="NW2-s7-a0m" id="BzL-qk-JBf"/>
+                <outlet property="myNickLab" destination="nSD-2P-ESA" id="adJ-Pi-ZSl"/>
                 <outlet property="paySetBtn" destination="baM-s6-aZF" id="sUR-F1-t7d"/>
                 <outlet property="scrollerView" destination="yWn-8Y-LpU" id="FFs-Dy-8TH"/>
                 <outlet property="telephone" destination="Sg6-wk-CbC" id="Qw6-YC-O1g"/>
@@ -256,6 +257,16 @@
                                     <color key="textColor" red="0.1960784314" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSD-2P-ESA">
+                                    <rect key="frame" x="198" y="194" width="142" height="22"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="142" id="BrY-jJ-i4N"/>
+                                        <constraint firstAttribute="height" constant="22" id="KBh-0J-Z8l"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" red="0.1960784314" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" red="0.96444731950759888" green="0.96840888261795044" blue="0.98488038778305054" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
@@ -294,6 +305,7 @@
                                 <constraint firstItem="zxD-pb-FKY" firstAttribute="top" secondItem="baM-s6-aZF" secondAttribute="bottom" constant="11" id="aWu-7s-xVl"/>
                                 <constraint firstItem="nUL-uR-TWn" firstAttribute="top" secondItem="NW2-s7-a0m" secondAttribute="bottom" constant="19" id="aky-xF-ikn"/>
                                 <constraint firstItem="nUL-uR-TWn" firstAttribute="leading" secondItem="kM9-wg-Ohd" secondAttribute="leading" id="atq-lj-UwV"/>
+                                <constraint firstItem="knJ-h6-DCr" firstAttribute="leading" secondItem="nSD-2P-ESA" secondAttribute="trailing" constant="5" id="bC5-CE-qH7"/>
                                 <constraint firstItem="NW2-s7-a0m" firstAttribute="leading" secondItem="kM9-wg-Ohd" secondAttribute="leading" id="c6D-IL-VxV"/>
                                 <constraint firstAttribute="trailing" secondItem="Sg6-wk-CbC" secondAttribute="trailing" constant="36" id="fHh-vx-A2S"/>
                                 <constraint firstItem="knJ-h6-DCr" firstAttribute="top" secondItem="Dde-1n-JQP" secondAttribute="bottom" constant="50" id="fOH-kC-VRX"/>
@@ -310,6 +322,7 @@
                                 <constraint firstItem="kpe-1W-adt" firstAttribute="top" secondItem="nUL-uR-TWn" secondAttribute="bottom" constant="10" id="qVh-c4-34c"/>
                                 <constraint firstAttribute="trailing" secondItem="nUL-uR-TWn" secondAttribute="trailing" id="tfJ-L7-P8s"/>
                                 <constraint firstItem="clM-fe-WWR" firstAttribute="leading" secondItem="jal-Z6-OFJ" secondAttribute="trailing" id="thc-CC-1IF"/>
+                                <constraint firstItem="knJ-h6-DCr" firstAttribute="centerY" secondItem="nSD-2P-ESA" secondAttribute="centerY" id="vDY-rb-ywQ"/>
                             </constraints>
                         </view>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo125.png" translatesAutoresizingMaskIntoConstraints="NO" id="nfP-Uw-wht">

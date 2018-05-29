@@ -53,6 +53,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.viewControllerNo = @"A416";
     schemeList = [NSMutableArray arrayWithCapacity:0];
     self.lotteryMan.delegate = self;
     if ([Utility isIOS11After]) {

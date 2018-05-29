@@ -21,11 +21,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setTableVIew];
+    self.viewControllerNo = @"A423";
     [UITableView refreshHelperWithScrollView:self.tabAttendList target:self loadNewData:@selector(loadData) loadMoreData:@selector(loadData) isBeginRefresh:NO];
     self.lotteryMan.delegate = self;
     self.title = @"我的关注";
     self.personList = [NSMutableArray arrayWithCapacity:0];
-    
     
 }
 

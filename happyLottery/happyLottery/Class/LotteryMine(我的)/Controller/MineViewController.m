@@ -152,7 +152,8 @@
 -(void)loadUserInfo{
     
     if (![self.curUser.memberType isEqualToString:@"FREEDOM_PERSON"] && self.curUser.isLogin == YES) {
-        listArray = @[listArray[0],@[listArray[1][0],listArray[1][2]],listArray[2]];
+        NSArray *itemArray = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Mine" ofType: @"plist"]];
+        listArray = @[itemArray[0],@[itemArray[1][0],itemArray[1][2]],itemArray[2]];
         [self.tableview reloadData];
     }
     

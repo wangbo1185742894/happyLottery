@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"我的关注";
-    
+    self.viewControllerNo = @"A420";
     [self initTabelView];
     self.personArray = [NSMutableArray arrayWithCapacity:0];
     if (self.lotteryMan == nil) {

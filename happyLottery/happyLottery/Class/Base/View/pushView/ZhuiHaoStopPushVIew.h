@@ -9,6 +9,7 @@
 #import "AlertPushtView.h"
 
 @interface ZhuiHaoStopPushVIew : AlertPushtView
+@property(strong,nonatomic)NSString *pageCode;
 @property (weak, nonatomic) IBOutlet UILabel *labContent;
 @property (weak, nonatomic) IBOutlet UILabel *labTitle;
 @property (weak, nonatomic) IBOutlet UIImageView *imgBack;
