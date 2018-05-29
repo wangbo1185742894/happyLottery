@@ -72,7 +72,7 @@
     [self setNavigationBa];
     [self loadEightPerosn];
     imageName = nil;
-    [self getHotFollowScheme];
+    
     [self loadAdsImg];
     [cell openTimer];
 }
@@ -128,6 +128,7 @@
 }
 
 -(void)listGreatFollow:(NSArray *)personList errorMsg:(NSString *)msg{
+    [self getHotFollowScheme];
     if (personList == nil) {
         eightList = nil;
         NSIndexPath *indexpath = [NSIndexPath indexPathForRow:0 inSection:2];
