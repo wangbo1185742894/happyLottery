@@ -15,8 +15,6 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *itemBack;
 
-@property (weak, nonatomic) IBOutlet UIImageView *targetImage;
-
 @end
 
 @implementation MenuCollectionViewCell
@@ -31,18 +29,12 @@
     self.itemBack.userInteractionEnabled = YES;
     self.imgItemIcon .image = [UIImage imageNamed:model[@"itemImage"]];
     self.labItemTitle.text =model[@"itemTitle"];
-    self.targetImage.hidden = YES;
 }
 
 -(void)setEightItemIcom:(NSDictionary *)model{
     self.itemBack.userInteractionEnabled = NO;
     self.imgItemIcon .layer.cornerRadius = self.imgItemIcon.mj_h / 2;
     self.imgItemIcon.layer.masksToBounds = YES;
-    self.targetImage.hidden = YES;
-    if (model[@"labelUrl"]!=nil) {
-        self.targetImage.hidden = NO;
-        [self.targetImage sd_setImageWithURL:[NSURL URLWithString:model[@"labelUrl"]]];
-    }
     if (model[@"headUrl"] == nil) {
         self.imgItemIcon .image = [UIImage imageNamed: @"usermine"];
     }else{

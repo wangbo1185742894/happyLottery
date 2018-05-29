@@ -77,8 +77,6 @@
         [itemImg addTarget:self action:@selector(imgItemClick) forControlEvents:UIControlEventTouchUpInside];
         itemImg.adjustsImageWhenHighlighted = NO;
         [itemImg sd_setImageWithURL:[NSURL URLWithString:imgUrls[i].imgUrl] forState:0 placeholderImage:[UIImage imageNamed:imageName]];
-//        [itemImg setImage:[UIImage imageNamed:imageName] forState:0];
-//        [itemImg sd_setImageWithURL:[NSURL URLWithString:imgUrls[i].imgUrl] forState:0];
     }
     pageCtl.numberOfPages = imgUrls.count;
     if (imgUrls .count ==1) {
