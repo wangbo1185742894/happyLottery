@@ -11,6 +11,7 @@
 #import "PersonCenterModel.h"
 #import "FollowDetailViewController.h"
 #import "FASSchemeDetailViewController.h"
+#import "MGLabel.h"
 #define KHotFollowSchemeViewCell  @"HotFollowSchemeViewCell"
 
 @interface PersonCenterViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate>
@@ -20,7 +21,7 @@
 @property(assign,nonatomic)NSInteger page;
 @property (weak, nonatomic) IBOutlet UIImageView *userImage;
 @property (weak, nonatomic) IBOutlet UILabel *userName;
-@property (weak, nonatomic) IBOutlet UILabel *fenshiNum;
+@property (weak, nonatomic) IBOutlet MGLabel *fenshiNum;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topDis;
 @property (weak, nonatomic) IBOutlet UILabel *initiateStatusFirst;
 @property (weak, nonatomic) IBOutlet UILabel *initiateStatusTwo;
@@ -92,6 +93,9 @@
     self.noticeBtn.layer.borderWidth = 1;
     self.noticeBtn.layer.borderColor = [UIColor whiteColor].CGColor;
     self.noticeBtn.layer.cornerRadius = 3;
+    self.fenshiNum.text = [NSString stringWithFormat:@"粉丝 %d人",[model.attentCount intValue]];
+    self.fenshiNum.keyWord = [NSString stringWithFormat:@"%d",[model.attentCount intValue]];
+    self.fenshiNum.keyWordFont = [UIFont systemFontOfSize:17];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -260,6 +264,9 @@
     self.userName.text = model.nickName==nil?[model.cardCode stringByReplacingCharactersInRange:NSMakeRange(2,4) withString:@"****"]:model.nickName;
     
     self.fenshiNum.text = [NSString stringWithFormat:@"粉丝 %d人",[model.attentCount intValue]];
+    self.fenshiNum.keyWord = [NSString stringWithFormat:@"%d",[model.attentCount intValue]];
+    self.fenshiNum.keyWordFont = [UIFont systemFontOfSize:17];
+    
     self.initiateStatusSum.text = [NSString stringWithFormat:@"%.2f",[model.totalInitiateBonus  doubleValue]];
     NSArray *array = [model.initiateStatus componentsSeparatedByString:@","];
     switch (array.count) {

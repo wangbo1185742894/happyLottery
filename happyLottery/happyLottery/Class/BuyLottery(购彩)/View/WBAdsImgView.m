@@ -53,12 +53,12 @@
     if (imgUrls == nil||imgUrls.count==0) {//网络状态不好  或者数据未回来  预先加载本地banner图
         scrContentView.contentSize = CGSizeMake(KscreenWidth, scrContentView.mj_h);
         count = 1;
-        UIButton *itemImg = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 345, 70)];
-        itemImg.imageView.contentMode = UIViewContentModeScaleToFill;
+        UIButton *itemImg = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, 70)];
+        itemImg.imageView.contentMode = UIViewContentModeCenter;
         [scrContentView addSubview:itemImg];
         itemImg.backgroundColor = [UIColor clearColor];
         itemImg.adjustsImageWhenHighlighted = NO;
-        [itemImg setBackgroundImage:[UIImage imageNamed:imageName] forState:0];
+        [itemImg setImage:[UIImage imageNamed:imageName] forState:0];
         return;
     }
     
@@ -70,14 +70,15 @@
         pageCtl.hidden = NO;
     }
     for (int i = 0; i < imgUrls.count; i ++ ) {
-        UIButton *itemImg = [[UIButton alloc]initWithFrame:CGRectMake(KscreenWidth * i, 0, 345, 70)];
-        itemImg.imageView.contentMode = UIViewContentModeScaleToFill;
+        UIButton *itemImg = [[UIButton alloc]initWithFrame:CGRectMake(KscreenWidth * i, 0, KscreenWidth, 70)];
+        itemImg.imageView.contentMode = UIViewContentModeCenter;
         [scrContentView addSubview:itemImg];
         
         [itemImg addTarget:self action:@selector(imgItemClick) forControlEvents:UIControlEventTouchUpInside];
         itemImg.adjustsImageWhenHighlighted = NO;
-        [itemImg setBackgroundImage:[UIImage imageNamed:imageName] forState:0];
-        [itemImg sd_setBackgroundImageWithURL:[NSURL URLWithString:imgUrls[i].imgUrl] forState:0];
+        [itemImg sd_setImageWithURL:[NSURL URLWithString:imgUrls[i].imgUrl] forState:0 placeholderImage:[UIImage imageNamed:imageName]];
+//        [itemImg setImage:[UIImage imageNamed:imageName] forState:0];
+//        [itemImg sd_setImageWithURL:[NSURL URLWithString:imgUrls[i].imgUrl] forState:0];
     }
     pageCtl.numberOfPages = imgUrls.count;
     if (imgUrls .count ==1) {

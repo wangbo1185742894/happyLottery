@@ -73,7 +73,6 @@
     [self setNavigationBa];
     [self loadEightPerosn];
     imageName = nil;
-    [self getHotFollowScheme];
     [self loadAdsImg];
     [cell openTimer];
 }
@@ -121,7 +120,8 @@
     for (NSDictionary *dic in personList) {
         [schemeList addObject:[[HotSchemeModel alloc]initWith:dic]];
     }
-    [tabFollewView reloadSections:[NSIndexSet indexSetWithIndex:3] withRowAnimation:UITableViewRowAnimationFade];
+//    [tabFollewView reloadSections:[NSIndexSet indexSetWithIndex:3] withRowAnimation:UITableViewRowAnimationFade]; // 因有刷新效果，所以换成reloadData
+    [tabFollewView reloadData];
 }
 
 -(void)loadEightPerosn{
@@ -129,18 +129,19 @@
 }
 
 -(void)listGreatFollow:(NSArray *)personList errorMsg:(NSString *)msg{
+    [self getHotFollowScheme];
     if (personList == nil) {
         eightList = nil;
-        NSIndexPath *indexpath = [NSIndexPath indexPathForRow:0 inSection:2];
-        [tabFollewView reloadRowsAtIndexPaths:@[indexpath] withRowAnimation:UITableViewRowAnimationFade];
+//        NSIndexPath *indexpath = [NSIndexPath indexPathForRow:0 inSection:2];
+        [tabFollewView reloadData];
         [self showPromptText:msg hideAfterDelay:1.8];
         return;
     }
     eightList = personList;
-    NSIndexPath *indexpath = [NSIndexPath indexPathForRow:0 inSection:2];
+//    NSIndexPath *indexpath = [NSIndexPath indexPathForRow:0 inSection:2];
     
-    
-    [tabFollewView reloadRowsAtIndexPaths:@[indexpath] withRowAnimation:UITableViewRowAnimationFade];
+    [tabFollewView reloadData];
+//    [tabFollewView reloadRowsAtIndexPaths:@[indexpath] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 -(void)getTopViewData{
@@ -163,8 +164,9 @@
 }
 
 -(NSNumber *)xy_noDataViewCenterYOffset{
-    NSLog(@"---------------%f+++++++++++++=",[tabFollewView rectForSection:3].origin.y-self.view.bounds.size.height * (1 - 0.618)+202* (1 - 0.618)+50);
-    return @([tabFollewView rectForSection:3].origin.y-self.view.bounds.size.height * (1 - 0.618)+202* (1 - 0.618)+50);
+    CGFloat f = (self.view.bounds.size.height - [tabFollewView rectForSection:3].origin.y)*(1 - 0.618)+[tabFollewView rectForSection:3].origin.y;
+    CGFloat d = self.view.bounds.size.height * (1 - 0.618);
+    return @(f-d);
 }
 
 -(BOOL)havData{
@@ -392,7 +394,8 @@
             ADSModel *model = [[ADSModel alloc]initWith:dic];
             [adsArray addObject:model];
         }
-        [tabFollewView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];
+        [tabFollewView reloadData];
+//        [tabFollewView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];
     }];
 }
 
