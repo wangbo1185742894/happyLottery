@@ -426,6 +426,7 @@
             if (indexPath.row == 0) {
                 SchemeContaintCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeContaintCell];
 //                [cell reloadDate:schemeDetail];
+                cell.delegate = self;
                 return cell;
             }
            return  [self tableView:tableView cellForFangAnIndexPath:indexPath];
