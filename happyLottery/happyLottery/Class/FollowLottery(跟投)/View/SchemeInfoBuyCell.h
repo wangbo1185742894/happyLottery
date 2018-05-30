@@ -35,6 +35,15 @@
 
 @property (nonatomic, weak) id<BuyCellDelegate> delegate;
 
+@property (weak, nonatomic) IBOutlet UILabel *zhongjiangPerLabel;
+@property (weak, nonatomic) IBOutlet UILabel *zhongjiangMoneyLabel;
+@property (weak, nonatomic) IBOutlet UILabel *zongshouruLabel;
+@property (weak, nonatomic) IBOutlet UILabel *fanganLabel;
+@property (weak, nonatomic) IBOutlet UILabel *zhongjaingjinLabel;
+@property (weak, nonatomic) IBOutlet UIButton *helpButton;
+
 - (void)reloadDate:(JCZQSchemeItem * )model;
+
+- (void)reloadDateFromPer:(JCZQSchemeItem * )model;
 
 @end

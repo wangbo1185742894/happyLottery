@@ -25,9 +25,21 @@
     [self.delegate showAlertFromBuy];
 }
 
+- (void)reloadDateFromPer:(JCZQSchemeItem * )model{
+    [self reloadDate:model];
+    self.zhongjiangPerLabel.hidden = NO;
+    self.zhongjiangMoneyLabel.hidden = NO;
+    self.zhongjiangMoneyLabel.text = self.winMoney.text;
+    self.zongshouruLabel.hidden = YES;
+    self.moneyLabel.hidden = YES;
+    self.fanganLabel.hidden = YES;
+    self.zhongjaingjinLabel.hidden = YES;
+    self.yongJin.text = nil;
+    self.winMoney.text = nil;
+    self.helpButton.hidden = YES;
+}
+
 - (void)reloadDate:(JCZQSchemeItem * )model{
-    
-   
     if ([model.lottery isEqualToString:@"JCZQ"]) {
         self.loterryLabel.text = @"竞彩足球";
         [self.lotteryImage setImage:[UIImage imageNamed:@"footerball.png"]];
@@ -76,7 +88,13 @@
         self.winMoney.textColor = RGBCOLOR(254, 58, 81);
         self.moneyLabel.textColor = RGBCOLOR(254, 58, 81);
     }
-  
+    self.zhongjiangPerLabel.hidden = YES;
+    self.zhongjiangMoneyLabel.hidden = YES;
+    self.zongshouruLabel.hidden = NO;
+    self.moneyLabel.hidden = NO;
+    self.fanganLabel.hidden = NO;
+    self.zhongjaingjinLabel.hidden = NO;
+    self.helpButton.hidden = NO;
 }
 
 @end

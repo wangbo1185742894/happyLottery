@@ -316,6 +316,9 @@
     //个人中心
     if ([self.schemeFromView isEqualToString:@"personCen"]) {
         if (indexPath.section == 0) {
+            if (![schemeDetail.cardCode isEqualToString:self.curUser.cardCode]) {
+                return 168;
+            }
             return 205;
         }
         if (indexPath.section == 1){
@@ -419,14 +422,18 @@
     if ([self.schemeFromView isEqualToString:@"personCen"]){
         if (indexPath.section == 0) {
             SchemeInfoBuyCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeInfoBuyCell];
-            [cell reloadDate:schemeDetail];
+            if ([schemeDetail.cardCode isEqualToString:self.curUser.cardCode]) {
+                [cell reloadDate:schemeDetail];
+            }
+            else {
+                [cell reloadDateFromPer:schemeDetail];
+            }
             cell.delegate = self;
             return cell;
         }
         else {  //section = 1;
             if (indexPath.row == 0) {
                 SchemeContaintCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeContaintCell];
-//                [cell reloadDate:schemeDetail];
                 cell.delegate = self;
                 return cell;
             }

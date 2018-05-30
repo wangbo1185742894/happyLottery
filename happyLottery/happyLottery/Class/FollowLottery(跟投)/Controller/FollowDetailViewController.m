@@ -100,7 +100,13 @@
     
     self.labYujihuibao.text =  [NSString stringWithFormat:@"%.2f倍",[_model.pledge doubleValue]];
     self.labZigou.text =[NSString stringWithFormat:@"%d元",[_model.betCost intValue]];
-    self.labGentou.text =[NSString stringWithFormat:@"%d元",[_model.totalFollowCost intValue]];
+    //虚拟账号跟单金额造假（10000370-10000380）(末尾数+20)*起投金额*2+真实跟单金额
+    NSString *carcode = [_model.cardCode substringWithRange:NSMakeRange(0, 7)];
+    if ([carcode isEqualToString:@"1000037"]||[_model.cardCode isEqualToString:@"10000380"]) {
+        self.labGentou.text = [NSString stringWithFormat:@"%d元",([[_model.cardCode substringFromIndex:_model.cardCode.length-1] intValue]+20)*[_model.minFollowCost intValue]*2+[_model.totalFollowCost intValue]];
+    } else{
+        self.labGentou.text =[NSString stringWithFormat:@"%d元",[_model.totalFollowCost intValue]];
+    }
     self.labQitou.text =[NSString stringWithFormat:@"%d元",[_model.minFollowCost intValue]];
     self.btnGuanzhu.layer.borderColor = TEXTGRAYOrange.CGColor;
     self.btnGuanzhu.layer.borderWidth = 1;
