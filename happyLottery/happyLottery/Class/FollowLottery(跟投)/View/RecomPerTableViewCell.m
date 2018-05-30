@@ -46,7 +46,7 @@
         //虚拟固定卡号跟单人次（10000370-10000380）
         NSString *carcode = [model.cardCode substringWithRange:NSMakeRange(0, 7)];
         if ([carcode isEqualToString:@"1000037"]||[model.cardCode isEqualToString:@"10000380"]) {
-            self.infoOneSum.text = [NSString stringWithFormat:@"%d",[[model.cardCode substringFromIndex:model.cardCode.length-1]intValue]*20+[model.followCount intValue]];
+            self.infoOneSum.text = [NSString stringWithFormat:@"%d",[[model.cardCode substringFromIndex:model.cardCode.length-1]intValue]+20+[model.followCount intValue]];
         } else{
             self.infoOneSum.text = model.followCount==nil?@"0":model.followCount;
         }
