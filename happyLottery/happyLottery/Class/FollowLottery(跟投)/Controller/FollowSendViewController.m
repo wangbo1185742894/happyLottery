@@ -50,7 +50,6 @@
 @implementation FollowSendViewController{
     BuyLotteryViewController *buyVc;
     HomeTabTopAdsViewCell *cell;
-    NSString *imageName;
 }
 
 - (void)viewDidLoad {
@@ -74,7 +73,6 @@
     [tabFollewView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
     [self setNavigationBa];
     [self loadEightPerosn];
-    imageName = nil;
     [self loadAdsImg];
     [cell openTimer];
 }
@@ -113,7 +111,6 @@
     
     if (personList == nil||personList.count == 0) {
         [self showPromptText:msg hideAfterDelay:1.8];
-        imageName = @"pic_gendankongbaiye.png";
         [tabFollewView reloadData];
         return;
     }else{
