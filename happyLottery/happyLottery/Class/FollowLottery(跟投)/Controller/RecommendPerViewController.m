@@ -14,10 +14,14 @@
 #define KRecomPerTableViewCell @"RecomPerTableViewCell"
 @interface RecommendPerViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,XYTableViewDelegate>
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *labTopHeight;
+@property (weak, nonatomic) IBOutlet UILabel *labTItle;
 
+@property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topDis;
 @property(nonatomic,strong)NSMutableArray <RecomPerModel *> * personArray;
 
+@property (weak, nonatomic) IBOutlet UILabel *labTop;
 @property (weak, nonatomic) IBOutlet UITableView *personList;
 
 @property(nonatomic,strong)NSMutableArray *indexArray;
@@ -45,8 +49,11 @@
     
     if ([self isIphoneX]) {
         _topDis .constant = -44;
+        self.labTopHeight.constant = 88;
+        
     }else{
         _topDis.constant = -20;
+        self.labTopHeight.constant = 64;
     }
   
     self.personList.delegate = self;
@@ -57,8 +64,8 @@
     [UITableView refreshHelperWithScrollView:self.personList target:self loadNewData:@selector(loadData) loadMoreData:@selector(loadData) isBeginRefresh:NO];
     
     [self loadData];
+    
 }
-
 
 
 -(UIImage *)xy_noDataViewImage{
@@ -88,13 +95,14 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.navigationController.navigationBar.hidden  = YES;
+    self.navigationController.navigationBar.hidden = YES;
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self showLoadingText:nil];
-    self.navigationController.navigationBar.hidden  = NO;
+    self.navigationController.navigationBar.hidden = NO;
     [[NSNotificationCenter defaultCenter]removeObserver:self name:NotificationNameUserLogin object:nil];
 }
 
@@ -148,7 +156,7 @@
     UIButton *returnToRoot = [self creatBar:@"" icon:@"newBack" andFrame:CGRectMake(10,30, 44,25) andAction:@selector(returnToRootView)];
     returnToRoot.contentMode = UIViewContentModeScaleAspectFit;
     image.image = [UIImage imageNamed:imageName];
-    [image addSubview:returnToRoot];
+//    [image addSubview:returnToRoot];
     image.userInteractionEnabled = YES;
     return image;
 }
@@ -221,6 +229,16 @@
     [self reloadDate];
 }
 
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if (scrollView.contentOffset.y> 100) {
+        return;
+    }
+    
+        CGFloat offsetY = scrollView.contentOffset.y /100.0;
+    UIColor *color= RGBACOLOR(17, 199, 146, offsetY);
+    self.topView.backgroundColor = color;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return  65;
 }
@@ -281,5 +299,11 @@
     [self.navigationController pushViewController:viewContr animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+
+- (IBAction)actionBack:(id)sender {
+    [self navigationBackToLastPage];
+}
+
+
 
 @end

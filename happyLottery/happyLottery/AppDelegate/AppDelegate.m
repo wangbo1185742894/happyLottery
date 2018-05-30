@@ -703,6 +703,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     }else if ([keyStr isEqualToString:@"A422"]){
         
         MyPostSchemeViewController *revise = [[MyPostSchemeViewController alloc]init];
+        revise.hidesBottomBarWhenPushed = YES;
         revise.isFaDan = NO;
         [delegate.curNavVC pushViewController:revise animated:YES];
         return;
@@ -710,7 +711,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         
         MyPostSchemeViewController *revise = [[MyPostSchemeViewController alloc]init];
         revise.isFaDan = YES;
-        
+        revise.hidesBottomBarWhenPushed = YES;
         [delegate.curNavVC pushViewController:revise animated:YES];
         return;
     }else if ([keyStr isEqualToString:@"A423"]){
