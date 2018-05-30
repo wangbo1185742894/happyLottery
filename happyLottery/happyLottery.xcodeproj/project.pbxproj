@@ -913,6 +913,8 @@
 		F924BAA51FE252CF00830BF4 /* hide@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA8D1FE252CD00830BF4 /* hide@3x.png */; };
 		F924BAA81FE252CF00830BF4 /* captcha@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA901FE252CE00830BF4 /* captcha@2x.png */; };
 		F924BAA91FE252CF00830BF4 /* stick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F924BA911FE252CF00830BF4 /* stick@2x.png */; };
+		F9255B7420BE4BB600C70660 /* ZhanWeiTuScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = F9255B7220BE4BB600C70660 /* ZhanWeiTuScheme.m */; };
+		F9255B7520BE4BB600C70660 /* ZhanWeiTuScheme.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9255B7320BE4BB600C70660 /* ZhanWeiTuScheme.xib */; };
 		F9281D1B201979BE00C42A37 /* one_redpacket@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9281D19201979BE00C42A37 /* one_redpacket@2x.png */; };
 		F9281D1C201979BE00C42A37 /* one_redpacket@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9281D1A201979BE00C42A37 /* one_redpacket@3x.png */; };
 		F92855D220A2DFD20023A0AC /* SchemeInfoFollowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F92855D020A2DFD20023A0AC /* SchemeInfoFollowCell.m */; };
@@ -2681,6 +2683,9 @@
 		F924BA8E1FE252CE00830BF4 /* user@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user@2x.png"; sourceTree = "<group>"; };
 		F924BA901FE252CE00830BF4 /* captcha@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "captcha@2x.png"; sourceTree = "<group>"; };
 		F924BA911FE252CF00830BF4 /* stick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stick@2x.png"; sourceTree = "<group>"; };
+		F9255B7120BE4BB600C70660 /* ZhanWeiTuScheme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZhanWeiTuScheme.h; sourceTree = "<group>"; };
+		F9255B7220BE4BB600C70660 /* ZhanWeiTuScheme.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZhanWeiTuScheme.m; sourceTree = "<group>"; };
+		F9255B7320BE4BB600C70660 /* ZhanWeiTuScheme.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZhanWeiTuScheme.xib; sourceTree = "<group>"; };
 		F9281D19201979BE00C42A37 /* one_redpacket@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "one_redpacket@2x.png"; sourceTree = "<group>"; };
 		F9281D1A201979BE00C42A37 /* one_redpacket@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "one_redpacket@3x.png"; sourceTree = "<group>"; };
 		F92855CF20A2DFD20023A0AC /* SchemeInfoFollowCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SchemeInfoFollowCell.h; sourceTree = "<group>"; };
@@ -5898,6 +5903,9 @@
 				F96C357520ACFC0D00D1F034 /* SuoSchemeViewCell.h */,
 				F96C357620ACFC0D00D1F034 /* SuoSchemeViewCell.m */,
 				F96C357720ACFC0D00D1F034 /* SuoSchemeViewCell.xib */,
+				F9255B7120BE4BB600C70660 /* ZhanWeiTuScheme.h */,
+				F9255B7220BE4BB600C70660 /* ZhanWeiTuScheme.m */,
+				F9255B7320BE4BB600C70660 /* ZhanWeiTuScheme.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -6996,6 +7004,7 @@
 				2D7B1365204E41910035AE89 /* trophy@2x.png in Resources */,
 				F924BAA91FE252CF00830BF4 /* stick@2x.png in Resources */,
 				2D7B12F2204D3C280035AE89 /* LotteryWinNumHistoryViewController.xib in Resources */,
+				F9255B7520BE4BB600C70660 /* ZhanWeiTuScheme.xib in Resources */,
 				2D0EEA9C201582C300B0769C /* yuce_detail@2x.png in Resources */,
 				F9B5D99B2060A9DE00C9F6DC /* flag424@2x.png in Resources */,
 				2D7B136F204E5F450035AE89 /* dltbutton-default@2x.png in Resources */,
@@ -7409,6 +7418,7 @@
 				F9C3BA29200893D600916F3C /* FeedBackHistoryTableViewCell.m in Sources */,
 				2D739CA71FEA0A4000264044 /* JCZQTranscation.m in Sources */,
 				2D7B13A2204E871C0035AE89 /* CTZQWinHistoryViewController.m in Sources */,
+				F9255B7420BE4BB600C70660 /* ZhanWeiTuScheme.m in Sources */,
 				2D05C81420A3EE3E001A8953 /* SearchViewController.m in Sources */,
 				2DD2C51B204550A1005A18C4 /* BounsOptimizeSingleModel.m in Sources */,
 				2D739C1C1FE2611C00264044 /* IQKeyboardManager.m in Sources */,
