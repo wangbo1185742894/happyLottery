@@ -10,6 +10,7 @@
 
 @interface ActivityInfoView : UIView
 @property (weak, nonatomic) IBOutlet UIImageView *imgRedIcon;
+@property (weak, nonatomic) IBOutlet UIButton *btnBack;
 @property (weak, nonatomic) IBOutlet UILabel *labRedCost;
 @property (weak, nonatomic) IBOutlet UILabel *labActivityInfo;
 @property (weak, nonatomic) IBOutlet UIButton *btnStart;

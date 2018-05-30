@@ -39,7 +39,7 @@
     NSArray *pass= [self.passTypes componentsSeparatedByString:@","];
     NSMutableArray *mPass = [NSMutableArray arrayWithCapacity:0];
     for (NSString *str  in pass) {
-        if ([str isEqualToString:@"x1"]) {
+        if ([str isEqualToString:@"1x1"]) {
             [mPass addObject: @"单关"];
         }else{
             [mPass addObject: [str stringByReplacingOccurrencesOfString:@"x" withString:@"串"]];
@@ -57,7 +57,7 @@
         if (i >=2) {
             break;
         }
-        if ([str isEqualToString:@"x1"]) {
+        if ([str isEqualToString:@"1x1"]) {
             [mPass addObject: @"单关"];
         }else{
             [mPass addObject: [str stringByReplacingOccurrencesOfString:@"x" withString:@"串"]];
@@ -73,7 +73,7 @@
         }
         [mleaArray addObject: str];
     }
-    return [NSString stringWithFormat:@"%@%@",[mleaArray  componentsJoinedByString:@" "],[mPass componentsJoinedByString:@" "]];
+    return [NSString stringWithFormat:@"%@  %@",[mleaArray  componentsJoinedByString:@" "],[mPass componentsJoinedByString:@" "]];
 }
 -(NSString *)nickName{
     if (_nickName == nil || _nickName.length == 0) {

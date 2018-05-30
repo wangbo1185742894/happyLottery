@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -72,6 +72,9 @@
                         <constraint firstAttribute="width" constant="100" id="x1Z-DV-hNq"/>
                     </constraints>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lUo-yj-dcz">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="hcm-9F-B4E" firstAttribute="centerX" secondItem="ISE-1v-qSO" secondAttribute="centerX" id="2ZQ-PM-43H"/>
@@ -80,19 +83,24 @@
                 <constraint firstItem="05A-3r-Dqs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="80q-V6-wIm"/>
                 <constraint firstAttribute="trailing" secondItem="Lgi-6h-HYV" secondAttribute="trailing" constant="10" id="Chq-4c-Y2p"/>
                 <constraint firstItem="ISE-1v-qSO" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="CtU-f8-Yl0"/>
+                <constraint firstAttribute="trailing" secondItem="lUo-yj-dcz" secondAttribute="trailing" id="N6T-57-57a"/>
                 <constraint firstItem="ISE-1v-qSO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="PHd-MN-8mw"/>
+                <constraint firstAttribute="bottom" secondItem="lUo-yj-dcz" secondAttribute="bottom" id="SDG-Ax-dnm"/>
                 <constraint firstItem="Ocv-Ai-f02" firstAttribute="leading" secondItem="ISE-1v-qSO" secondAttribute="trailing" constant="-10" id="TIO-U1-pfK"/>
                 <constraint firstAttribute="bottom" secondItem="hcm-9F-B4E" secondAttribute="bottom" constant="10" id="fGU-LM-vRJ"/>
                 <constraint firstAttribute="bottom" secondItem="ISE-1v-qSO" secondAttribute="bottom" id="fS8-wu-uNn"/>
                 <constraint firstItem="Ocv-Ai-f02" firstAttribute="centerY" secondItem="gne-KR-MJQ" secondAttribute="centerY" id="lQh-ey-Ynz"/>
                 <constraint firstItem="Lgi-6h-HYV" firstAttribute="leading" secondItem="Ocv-Ai-f02" secondAttribute="trailing" constant="16" id="pe4-XR-syw"/>
+                <constraint firstItem="lUo-yj-dcz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="qGJ-QD-zpa"/>
                 <constraint firstItem="05A-3r-Dqs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="rQs-dm-cFD"/>
                 <constraint firstItem="gne-KR-MJQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="uiS-IO-Y3h"/>
                 <constraint firstAttribute="bottom" secondItem="05A-3r-Dqs" secondAttribute="bottom" id="vi9-Ha-UyE"/>
+                <constraint firstItem="lUo-yj-dcz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="wjb-m9-TJ8"/>
                 <constraint firstAttribute="bottom" secondItem="gne-KR-MJQ" secondAttribute="bottom" id="wsV-w0-AUb"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="btnBack" destination="lUo-yj-dcz" id="zNp-fU-6rI"/>
                 <outlet property="btnStart" destination="Lgi-6h-HYV" id="5oa-4O-Wiz"/>
                 <outlet property="imgRedIcon" destination="ISE-1v-qSO" id="aQH-R8-Dne"/>
                 <outlet property="labActivityInfo" destination="Ocv-Ai-f02" id="nOA-yi-LFV"/>

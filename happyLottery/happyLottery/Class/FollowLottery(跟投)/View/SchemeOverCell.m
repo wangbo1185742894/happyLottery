@@ -19,9 +19,16 @@
 
 
 - (void)reloadDate :(JCZQSchemeItem *)schemeDetail{
-    
-    NSString *pass = [schemeDetail.passType componentsJoinedByString:@","];
-    pass = [pass stringByReplacingOccurrencesOfString:@"x" withString:@"串"];
+    NSMutableArray *mPass = [NSMutableArray arrayWithCapacity:0];
+    for (int i = 0 ; i < schemeDetail.passType.count ;i ++) {
+        NSString *str = [schemeDetail.passType objectAtIndex:i];
+        if ([str isEqualToString:@"1x1"]) {
+            [mPass addObject: @"单关"];
+        }else{
+            [mPass addObject: [str stringByReplacingOccurrencesOfString:@"x" withString:@"串"]];
+        }
+    }
+    NSString *pass = [mPass componentsJoinedByString:@","];
     self.passType.numberOfLines = 0;
     self.passType.text = pass;
     self.touzhuCount.text =[NSString stringWithFormat:@"%@倍%@注",schemeDetail.multiple,schemeDetail.units];

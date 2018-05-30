@@ -36,8 +36,17 @@
 }
 -(void)loadData:(JCZQSchemeItem * )model{
     [imgLotteryIcon setImage:[UIImage imageNamed:model.lotteryIcon]];
-    NSString *pass = [model.passType componentsJoinedByString:@","];
-    pass = [pass stringByReplacingOccurrencesOfString:@"x" withString:@"串"];
+    NSMutableArray *mPass = [NSMutableArray arrayWithCapacity:0];
+    for (int i = 0 ; i < model.passType.count ;i ++) {
+        NSString *str = [model.passType objectAtIndex:i];
+        if ([str isEqualToString:@"1x1"]) {
+            [mPass addObject: @"单关"];
+        }else{
+            [mPass addObject: [str stringByReplacingOccurrencesOfString:@"x" withString:@"串"]];
+        }
+    }
+    NSString *pass = [mPass componentsJoinedByString:@","];
+    
     labPassType.text = pass;
     labLottery.text = [model getLotteryByName];
     labTime .text = [[model.createTime componentsSeparatedByString:@" "] firstObject];

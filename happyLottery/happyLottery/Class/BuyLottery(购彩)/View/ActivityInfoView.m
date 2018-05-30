@@ -19,6 +19,7 @@
 
 -(void)setStartBtnTarget:(id)target andAction:(SEL)action{
     [self.btnStart addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    [self.btnBack addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (IBAction)actionClose:(id)sender {

@@ -8,6 +8,7 @@
 
 #import "FASSchemeDetailViewController.h"
 #import "MyPostSchemeViewController.h"
+#import "PersonCenterViewController.h"
 #import "FollowListViewController.h"
 #import "SchemeInfoFollowCell.h"
 #import "SchemePerFollowCell.h"
@@ -563,6 +564,10 @@
 -(void)navigationBackToLastPage{
         for (BaseViewController *baseVC in self.navigationController.viewControllers) {
             if ([baseVC isKindOfClass:[MyPostSchemeViewController class]]) {
+                [self.navigationController popToViewController:baseVC animated:YES];
+                return;
+            }
+            if ([baseVC isKindOfClass:[PersonCenterViewController class]]) {
                 [self.navigationController popToViewController:baseVC animated:YES];
                 return;
             }

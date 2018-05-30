@@ -24,6 +24,7 @@
     BOOL isBack;
     BOOL isIndex;
     BOOL lastLoginState;
+    __weak IBOutlet NSLayoutConstraint *bottomDis;
     NSString *_cardCode;
     __weak IBOutlet NSLayoutConstraint *webDisBottom;
     BOOL _pageCacheDisable;
@@ -39,7 +40,7 @@
     [super viewDidLoad];
     isBack = NO;
     isIndex = YES;
-    
+
     lastLoginState = self.curUser.isLogin;
     
      _pageCacheDisable = YES;
@@ -160,14 +161,11 @@
         self.tabBarController.tabBar.hidden = YES;
         if ([Utility isIOS11After]) {
             webDisBottom.constant = -50;
-            
         }else{
-            
             webDisBottom.constant = 0;
         }
-        
     }
-      [self removeWebCache];
+    [self removeWebCache];
     return YES;
 }
 
@@ -340,6 +338,10 @@
             [self .navigationController pushViewController:couponVC animated:YES];
             
         });
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+               [self.faxianWebView goBack];
+        });
+     
         return;
     }
     
@@ -351,7 +353,9 @@
             [self.navigationController pushViewController:topUpsVC animated:YES];
             
         });
-        [self.faxianWebView goBack];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.faxianWebView goBack];
+        });
         return;
     }
     
