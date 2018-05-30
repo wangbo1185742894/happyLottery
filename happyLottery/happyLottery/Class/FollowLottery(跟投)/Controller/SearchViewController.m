@@ -92,7 +92,7 @@
     [leftView setImage:[UIImage imageNamed:@"sousuo"] forState:0];
     
     UIButton *rightView = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
-    [rightView setImage:[UIImage imageNamed:@"delete"] forState:0];
+    [rightView setImage:[UIImage imageNamed:@"deletesearch"] forState:0];
 
     self.tfSearchKey.rightView = rightView;
     [rightView addTarget:self action:@selector(cleanKeyWord) forControlEvents:UIControlEventTouchUpInside];
