@@ -422,11 +422,11 @@
     if ([self.schemeFromView isEqualToString:@"personCen"]){
         if (indexPath.section == 0) {
             SchemeInfoBuyCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeInfoBuyCell];
-            if ([schemeDetail.cardCode isEqualToString:self.curUser.cardCode]) {
-                [cell reloadDate:schemeDetail];
+            if (![schemeDetail.cardCode isEqualToString:self.curUser.cardCode]||self.curUser.isLogin ==NO ) {
+               [cell reloadDateFromPer:schemeDetail];
             }
             else {
-                [cell reloadDateFromPer:schemeDetail];
+               [cell reloadDate:schemeDetail];
             }
             cell.delegate = self;
             return cell;
