@@ -40,8 +40,6 @@
 }
 
 - (void)reloadDate:(JCZQSchemeItem * )model{
-    
-   
     if ([model.lottery isEqualToString:@"JCZQ"]) {
         self.loterryLabel.text = @"竞彩足球";
         [self.lotteryImage setImage:[UIImage imageNamed:@"footerball.png"]];
@@ -90,7 +88,13 @@
         self.winMoney.textColor = RGBCOLOR(254, 58, 81);
         self.moneyLabel.textColor = RGBCOLOR(254, 58, 81);
     }
-    
+    self.zhongjiangPerLabel.hidden = YES;
+    self.zhongjiangMoneyLabel.hidden = YES;
+    self.zongshouruLabel.hidden = NO;
+    self.moneyLabel.hidden = NO;
+    self.fanganLabel.hidden = NO;
+    self.zhongjaingjinLabel.hidden = NO;
+    self.helpButton.hidden = NO;
 }
 
 @end
