@@ -116,6 +116,10 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
+    if (self.tabBarController.selectedIndex != 3) {
+        self.tabBarController.tabBar.hidden = NO;
+        return;
+    }
     if (isBack == YES && self.tabBarController.tabBar.hidden == YES) {
         [self.faxianWebView reload];
     }
@@ -129,11 +133,16 @@
 }
 
 -(void)webViewDidStartLoad:(UIWebView *)webView{
-    
+    if (self.tabBarController.selectedIndex != 3) {
+        return;
+    }
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
+    if (self.tabBarController.selectedIndex != 3) {
+        return NO;
+    }
     [self removeWebCache];
     [self cleanWebviewCache];
     if (navigationType == UIWebViewNavigationTypeBackForward) {
@@ -326,6 +335,9 @@
             playViewVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:playViewVC animated:YES];
             
+        });
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.faxianWebView goBack];
         });
         return;
     }

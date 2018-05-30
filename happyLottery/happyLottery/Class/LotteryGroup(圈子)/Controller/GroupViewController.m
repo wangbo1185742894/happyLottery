@@ -13,6 +13,7 @@
     JSContext *context;
 }
 @property (weak, nonatomic) IBOutlet UIWebView *groupWebView;
+@property(assign,nonatomic)BOOL tabbarHidenstate;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *webDisBottom;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *webDisTop;
 
@@ -77,11 +78,14 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    self.tabbarHidenstate =  self.tabBarController.tabBar.hidden;
     self.navigationController.navigationBar.hidden = YES;
+    self.tabBarController.tabBar.hidden = NO;
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+     self.tabBarController.tabBar.hidden = self.tabbarHidenstate ;
     self.navigationController.navigationBar.hidden = NO;
 }
 

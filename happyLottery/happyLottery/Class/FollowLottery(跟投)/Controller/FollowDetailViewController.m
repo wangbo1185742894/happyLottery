@@ -30,7 +30,10 @@
 @property (weak, nonatomic) IBOutlet SelectView *wbSelectView;
 @property (weak, nonatomic) IBOutlet MGLabel *btnBetInfo;
 @property(assign,nonatomic)NSInteger beiCount;
+@property (weak, nonatomic) IBOutlet UIImageView *imgFlag2;
+@property (weak, nonatomic) IBOutlet UIImageView *imgFlag3;
 
+@property (weak, nonatomic) IBOutlet UIImageView *imgFlag1;
 @end
 
 @implementation FollowDetailViewController{
@@ -67,6 +70,21 @@
 -(void)loadData{
     [self.imgLotteryIcon setImage: [UIImage imageNamed:[_model lotteryIcon]]];
     self.labLotteryName.text = [BaseModel getLotteryByName:_model.lottery];
+    NSArray *laburls = [self.model.label_urls componentsSeparatedByString:@";"];
+    for (int i = 0; i < laburls.count; i ++) {
+        if (i == 0) {
+            self.imgFlag1.hidden = NO;
+            
+            [self.imgFlag1 sd_setImageWithURL:[NSURL URLWithString:laburls[i]]];
+        }else if(i == 1){
+            [self.imgFlag2 sd_setImageWithURL:[NSURL URLWithString:laburls[i]]];
+            self.imgFlag2.hidden = NO;
+            
+        }else if (i == 2){
+            [self.imgFlag3 sd_setImageWithURL:[NSURL URLWithString:laburls[i]]];
+            self.imgFlag3.hidden = NO;
+        }
+    }
     self.labPersonIcon.layer.cornerRadius = self.labPersonIcon.mj_h/2;
     self.labPersonIcon.layer.masksToBounds = YES;
     self.labBetContent.text = [_model getDetailContent];
