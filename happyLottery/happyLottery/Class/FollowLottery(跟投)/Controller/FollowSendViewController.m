@@ -111,8 +111,8 @@
     
     if (personList == nil||personList.count == 0) {
         [self showPromptText:msg hideAfterDelay:1.8];
-        [tabFollewView reloadData];
         imageName = @"pic_gendankongbaiye.png";
+        [tabFollewView reloadData];
         return;
     }else{
         [schemeList removeAllObjects];
