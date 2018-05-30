@@ -21,6 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title =@"认购列表";
     [self setTableView];
     if ([self isIphoneX]) {
         self.topDis.constant = 88;

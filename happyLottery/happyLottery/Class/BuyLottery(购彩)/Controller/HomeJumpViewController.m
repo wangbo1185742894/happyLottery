@@ -64,9 +64,8 @@
     
     NSURL *linkUrl;
     if (self.curUser.isLogin == YES) {
-        
        NSString * slinkUrl = _infoModel.linkUrl;
-        if ([slinkUrl rangeOfString:@"app/activity/bannerH5"].length > 0) {
+        if ([slinkUrl rangeOfString:@"app/activity/index"].length > 0) {
             if (self.curUser.cardCode != nil && self.isNeedBack == NO) {
                 linkUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@?cardCode=%@&isLogin=%@",slinkUrl,self.curUser.cardCode,self.curUser.isLogin == YES?@"true":@"false"]];
             }else{

@@ -635,7 +635,12 @@ static NSString *ID = @"LotteryAreaViewCell";
         MyPostSchemeViewController *revise = [[MyPostSchemeViewController alloc]init];
         revise.isFaDan = NO;
         revise.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:revise animated:YES];
+        if (navGationCotr == nil) {
+            [self.navigationController pushViewController:revise animated:YES];
+            
+        }else{
+            [navGationCotr pushViewController:revise animated:YES];
+        }
         return;
     }else if ([keyStr isEqualToString:@"A424"]){
         
@@ -646,7 +651,12 @@ static NSString *ID = @"LotteryAreaViewCell";
         MyPostSchemeViewController *revise = [[MyPostSchemeViewController alloc]init];
         revise.hidesBottomBarWhenPushed = YES;
         revise.isFaDan = YES;
-        [self.navigationController pushViewController:revise animated:YES];
+        if (navGationCotr == nil) {
+            [self.navigationController pushViewController:revise animated:YES];
+            
+        }else{
+            [navGationCotr pushViewController:revise animated:YES];
+        }
         return;
     }else if ([keyStr isEqualToString:@"A423"]){
         
@@ -656,7 +666,12 @@ static NSString *ID = @"LotteryAreaViewCell";
         }
         MyAttendViewController *revise = [[MyAttendViewController alloc]init];
         revise.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:revise animated:YES];
+        if (navGationCotr == nil) {
+            [self.navigationController pushViewController:revise animated:YES];
+            
+        }else{
+            [navGationCotr pushViewController:revise animated:YES];
+        }
         return;
     }else if ([keyStr isEqualToString:@"A009"]){
         [self actionGYJ:nil];
@@ -758,18 +773,27 @@ static NSString *ID = @"LotteryAreaViewCell";
     }else if ([jumpType isEqualToString:@"APP"]) {//内部视图跳转
         
         [self goToYunshiWithInfo:itemIndex navigation:navgC];
-        
-    }else if([jumpType isEqualToString:@"EDITOR"]||[jumpType isEqualToString:@"H5PAGE"]){
-        HomeJumpViewController *jumpVC = [[HomeJumpViewController alloc] initWithNibName:@"HomeJumpViewController" bundle:nil];
 
-        jumpVC.infoModel = itemIndex;
-        jumpVC.hidesBottomBarWhenPushed = YES;
-//        [self.navigationController pushViewController:jumpVC animated:YES];
-        if (navgC == nil) {
-            [self.navigationController pushViewController:jumpVC animated:YES];
-        } else {
-            [navgC pushViewController:jumpVC animated:YES];
+    }else if([jumpType isEqualToString:@"EDITOR"]||[jumpType isEqualToString:@"H5PAGE"]){
+        if ([itemIndex.linkUrl rangeOfString:@"app/activity/index"].length > 0) {
+            WebViewController *webVC = [[WebViewController alloc]init];
+            webVC.hidesBottomBarWhenPushed = YES;
+            webVC.pageUrl = itemIndex.linkUrl;
+            [self.navigationController pushViewController:webVC animated:YES];
+            
+        }else{
+            HomeJumpViewController *jumpVC = [[HomeJumpViewController alloc] initWithNibName:@"HomeJumpViewController" bundle:nil];
+            
+            jumpVC.infoModel = itemIndex;
+            jumpVC.hidesBottomBarWhenPushed = YES;
+            //        [self.navigationController pushViewController:jumpVC animated:YES];
+            if (navgC == nil) {
+                [self.navigationController pushViewController:jumpVC animated:YES];
+            } else {
+                [navgC pushViewController:jumpVC animated:YES];
+            }
         }
+
 //        UINavigationController *curNavVC = self.tabBarController.viewControllers[self.tabBarController.selectedIndex];
 //        [curNavVC pushViewController:jumpVC animated:YES];
     }
