@@ -28,11 +28,13 @@
 #import "PersonCenterViewController.h"
 #import "BuyLotteryViewController.h"
 #import "WebViewController.h"
+#import "ZhanWeiTuScheme.h"
 
 #define KRecommendViewCell @"RecommendViewCell"
 #define KHotFollowSchemeViewCell @"HotFollowSchemeViewCell"
 #define KHomeTabTopAdsViewCell @"HomeTabTopAdsViewCell"
-@interface FollowSendViewController ()<OptionSelectedViewDelegate,UITableViewDelegate,UITableViewDataSource,FollowHeaderDelegate,LotteryManagerDelegate,HomeMenuItemViewDelegate,RecommendViewCellDelegate,HomeTabTopAdsViewDelegate,XYTableViewDelegate>
+#define KZhanWeiTuScheme @"ZhanWeiTuScheme"
+@interface FollowSendViewController ()<OptionSelectedViewDelegate,UITableViewDelegate,UITableViewDataSource,FollowHeaderDelegate,LotteryManagerDelegate,HomeMenuItemViewDelegate,RecommendViewCellDelegate,HomeTabTopAdsViewDelegate>
 {
     NSMutableArray <ADSModel *>*adsArray;
         OptionSelectedView *optionView;
@@ -156,26 +158,29 @@
     [tabFollewView registerNib:[UINib nibWithNibName:KRecommendViewCell bundle:nil] forCellReuseIdentifier:KRecommendViewCell];
     [tabFollewView registerNib:[UINib nibWithNibName:KHotFollowSchemeViewCell bundle:nil] forCellReuseIdentifier:KHotFollowSchemeViewCell];
     [tabFollewView registerClass:[HomeTabTopAdsViewCell class] forCellReuseIdentifier:KHomeTabTopAdsViewCell];
+    [tabFollewView registerNib:[UINib nibWithNibName:KZhanWeiTuScheme bundle:nil] forCellReuseIdentifier:KZhanWeiTuScheme];
+    
     [tabFollewView reloadData];
+    
 }
 
--(UIImage *)xy_noDataViewImage{
-    return [UIImage imageNamed:imageName];
-}
-
--(NSNumber *)xy_noDataViewCenterYOffset{
-    CGFloat f = (self.view.bounds.size.height - [tabFollewView rectForSection:3].origin.y)*(1 - 0.618)+[tabFollewView rectForSection:3].origin.y;
-    CGFloat d = self.view.bounds.size.height * (1 - 0.618);
-    return @(f-d);
-}
-
--(BOOL)havData{
-    if (schemeList.count == 0) {
-        return NO;
-    }else{
-        return YES;
-    }
-}
+//-(UIImage *)xy_noDataViewImage{
+//    return [UIImage imageNamed:imageName];
+//}
+//
+//-(NSNumber *)xy_noDataViewCenterYOffset{
+//    CGFloat f = (self.view.bounds.size.height - [tabFollewView rectForSection:3].origin.y)*(1 - 0.618)+[tabFollewView rectForSection:3].origin.y;
+//    CGFloat d = self.view.bounds.size.height * (1 - 0.618);
+//    return @(f-d);
+//}
+//
+//-(BOOL)havData{
+//    if (schemeList.count == 0) {
+//        return NO;
+//    }else{
+//        return YES;
+//    }
+//}
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 4;
@@ -189,6 +194,9 @@
     }else   if(section == 2){
         return 1;
     }else   if(section == 3){
+        if(schemeList.count == 0){
+            return 1;
+        }
         return schemeList.count;
     }else{
         return 0;
@@ -212,6 +220,10 @@
         [cell setCollection:2 andData:eightList];
         return cell;
     }else   if(indexPath.section == 3){
+        if (schemeList.count == 0) {
+            ZhanWeiTuScheme *cell = [tableView dequeueReusableCellWithIdentifier:KZhanWeiTuScheme];
+            return cell;
+        }
         HotFollowSchemeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KHotFollowSchemeViewCell];
         [cell loadDataWithModelInDaT:schemeList[indexPath.row]];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -235,6 +247,9 @@
         }
         return 170;
     }else   if(indexPath.section == 3){
+        if (schemeList.count == 0) {
+            return (tabFollewView.bounds.size.height - [tabFollewView rectForSection:3].origin.y-40-44);
+        }
         return 202;
     }else{
         return 0;
