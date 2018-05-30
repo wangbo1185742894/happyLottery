@@ -25,6 +25,20 @@
     [self.delegate showAlertFromBuy];
 }
 
+- (void)reloadDateFromPer:(JCZQSchemeItem * )model{
+    [self reloadDate:model];
+    self.zhongjiangPerLabel.hidden = NO;
+    self.zhongjiangMoneyLabel.hidden = NO;
+    self.zhongjiangMoneyLabel.text = self.winMoney.text;
+    self.zongshouruLabel.hidden = YES;
+    self.moneyLabel.hidden = YES;
+    self.fanganLabel.hidden = YES;
+    self.zhongjaingjinLabel.hidden = YES;
+    self.yongJin.text = nil;
+    self.winMoney.text = nil;
+    self.helpButton.hidden = YES;
+}
+
 - (void)reloadDate:(JCZQSchemeItem * )model{
     
    
@@ -76,7 +90,7 @@
         self.winMoney.textColor = RGBCOLOR(254, 58, 81);
         self.moneyLabel.textColor = RGBCOLOR(254, 58, 81);
     }
-  
+    
 }
 
 @end

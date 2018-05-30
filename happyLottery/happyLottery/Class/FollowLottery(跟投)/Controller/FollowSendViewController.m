@@ -50,6 +50,7 @@
 @implementation FollowSendViewController{
     BuyLotteryViewController *buyVc;
     HomeTabTopAdsViewCell *cell;
+    BOOL placeImageHidden;
 }
 
 - (void)viewDidLoad {
@@ -71,6 +72,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [tabFollewView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
+    placeImageHidden = YES;
     [self setNavigationBa];
     [self loadEightPerosn];
     [self loadAdsImg];
@@ -108,8 +110,8 @@
 }
 
 -(void)getHotFollowScheme:(NSArray *)personList errorMsg:(NSString *)msg{
-    
     if (personList == nil||personList.count == 0) {
+        placeImageHidden = NO;
         [self showPromptText:msg hideAfterDelay:1.8];
         [tabFollewView reloadData];
         return;
@@ -161,24 +163,6 @@
     
 }
 
-//-(UIImage *)xy_noDataViewImage{
-//    return [UIImage imageNamed:imageName];
-//}
-//
-//-(NSNumber *)xy_noDataViewCenterYOffset{
-//    CGFloat f = (self.view.bounds.size.height - [tabFollewView rectForSection:3].origin.y)*(1 - 0.618)+[tabFollewView rectForSection:3].origin.y;
-//    CGFloat d = self.view.bounds.size.height * (1 - 0.618);
-//    return @(f-d);
-//}
-//
-//-(BOOL)havData{
-//    if (schemeList.count == 0) {
-//        return NO;
-//    }else{
-//        return YES;
-//    }
-//}
-
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 4;
 }
@@ -219,6 +203,7 @@
     }else   if(indexPath.section == 3){
         if (schemeList.count == 0) {
             ZhanWeiTuScheme *cell = [tableView dequeueReusableCellWithIdentifier:KZhanWeiTuScheme];
+            cell.hidden = placeImageHidden;
             return cell;
         }
         HotFollowSchemeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KHotFollowSchemeViewCell];
