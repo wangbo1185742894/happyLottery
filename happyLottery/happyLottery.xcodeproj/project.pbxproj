@@ -239,8 +239,6 @@
 		2D16601E20A2DF3600C1C7E7 /* FollowListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D16601D20A2DF3600C1C7E7 /* FollowListModel.m */; };
 		2D16602320A2EFB800C1C7E7 /* FollowSendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D16602120A2EFB800C1C7E7 /* FollowSendViewController.m */; };
 		2D16602420A2EFB800C1C7E7 /* FollowSendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D16602220A2EFB800C1C7E7 /* FollowSendViewController.xib */; };
-		2D205FE91FFC6E950086E266 /* WBBifenZhiboViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D205FE61FFC6E940086E266 /* WBBifenZhiboViewController.xib */; };
-		2D205FEA1FFC6E950086E266 /* WBBifenZhiboViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D205FE71FFC6E940086E266 /* WBBifenZhiboViewController.m */; };
 		2D205FED1FFC6F680086E266 /* BiFenZhiboModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D205FEC1FFC6F680086E266 /* BiFenZhiboModel.m */; };
 		2D205FF21FFC7AF30086E266 /* newFeatureView-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D205FEF1FFC7AF30086E266 /* newFeatureView-1.png */; };
 		2D205FF31FFC7AF30086E266 /* newFeatureView-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D205FF01FFC7AF30086E266 /* newFeatureView-2.png */; };
@@ -693,6 +691,8 @@
 		2D811A9B207DDA610069601C /* jingcailanqiu.html in Resources */ = {isa = PBXBuildFile; fileRef = 2D811A94207DDA600069601C /* jingcailanqiu.html */; };
 		2D811A9E207DDBED0069601C /* basketball@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D811A9C207DDBEB0069601C /* basketball@3x.png */; };
 		2D811A9F207DDBED0069601C /* basketball@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D811A9D207DDBEC0069601C /* basketball@2x.png */; };
+		2D83E26320BE8FEE00F2D375 /* WBBifenZhiboViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D83E26120BE8FEE00F2D375 /* WBBifenZhiboViewController.m */; };
+		2D83E26420BE8FEE00F2D375 /* WBBifenZhiboViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D83E26220BE8FEE00F2D375 /* WBBifenZhiboViewController.xib */; };
 		2D89D60A206CE3AE005E0209 /* WelComeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D89D608206CE3AE005E0209 /* WelComeViewController.m */; };
 		2D89D60B206CE3AE005E0209 /* WelComeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D89D609206CE3AE005E0209 /* WelComeViewController.xib */; };
 		2D89D60D206CE3E9005E0209 /* gyjweicome.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D89D60C206CE3E8005E0209 /* gyjweicome.png */; };
@@ -1748,9 +1748,6 @@
 		2D16602020A2EFB800C1C7E7 /* FollowSendViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FollowSendViewController.h; sourceTree = "<group>"; };
 		2D16602120A2EFB800C1C7E7 /* FollowSendViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FollowSendViewController.m; sourceTree = "<group>"; };
 		2D16602220A2EFB800C1C7E7 /* FollowSendViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FollowSendViewController.xib; sourceTree = "<group>"; };
-		2D205FE61FFC6E940086E266 /* WBBifenZhiboViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WBBifenZhiboViewController.xib; sourceTree = "<group>"; };
-		2D205FE71FFC6E940086E266 /* WBBifenZhiboViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBBifenZhiboViewController.m; sourceTree = "<group>"; };
-		2D205FE81FFC6E950086E266 /* WBBifenZhiboViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBBifenZhiboViewController.h; sourceTree = "<group>"; };
 		2D205FEB1FFC6F670086E266 /* BiFenZhiboModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BiFenZhiboModel.h; sourceTree = "<group>"; };
 		2D205FEC1FFC6F680086E266 /* BiFenZhiboModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BiFenZhiboModel.m; sourceTree = "<group>"; };
 		2D205FEF1FFC7AF30086E266 /* newFeatureView-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newFeatureView-1.png"; sourceTree = "<group>"; };
@@ -2341,6 +2338,9 @@
 		2D811A94207DDA600069601C /* jingcailanqiu.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = jingcailanqiu.html; sourceTree = "<group>"; };
 		2D811A9C207DDBEB0069601C /* basketball@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "basketball@3x.png"; sourceTree = "<group>"; };
 		2D811A9D207DDBEC0069601C /* basketball@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "basketball@2x.png"; sourceTree = "<group>"; };
+		2D83E26020BE8FEE00F2D375 /* WBBifenZhiboViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBBifenZhiboViewController.h; sourceTree = "<group>"; };
+		2D83E26120BE8FEE00F2D375 /* WBBifenZhiboViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBBifenZhiboViewController.m; sourceTree = "<group>"; };
+		2D83E26220BE8FEE00F2D375 /* WBBifenZhiboViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WBBifenZhiboViewController.xib; sourceTree = "<group>"; };
 		2D89D607206CE3AE005E0209 /* WelComeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WelComeViewController.h; sourceTree = "<group>"; };
 		2D89D608206CE3AE005E0209 /* WelComeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WelComeViewController.m; sourceTree = "<group>"; };
 		2D89D609206CE3AE005E0209 /* WelComeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelComeViewController.xib; sourceTree = "<group>"; };
@@ -3949,6 +3949,9 @@
 		2D7B1292204D37BD0035AE89 /* DLT */ = {
 			isa = PBXGroup;
 			children = (
+				2D83E26020BE8FEE00F2D375 /* WBBifenZhiboViewController.h */,
+				2D83E26120BE8FEE00F2D375 /* WBBifenZhiboViewController.m */,
+				2D83E26220BE8FEE00F2D375 /* WBBifenZhiboViewController.xib */,
 				F96436E4209308E300145F1C /* DLTTouZhuViewController.xib */,
 				F96436E2209308DA00145F1C /* SSQTouZhuViewController.xib */,
 				F95C7FEE2071F178005990F5 /* ZHDetailViewController.h */,
@@ -4898,9 +4901,6 @@
 				2D5171CB200C567D00C3CD7F /* WonSchemeListController.h */,
 				2D5171CC200C567D00C3CD7F /* WonSchemeListController.m */,
 				2D5171CD200C567D00C3CD7F /* WonSchemeListController.xib */,
-				2D205FE81FFC6E950086E266 /* WBBifenZhiboViewController.h */,
-				2D205FE71FFC6E940086E266 /* WBBifenZhiboViewController.m */,
-				2D205FE61FFC6E940086E266 /* WBBifenZhiboViewController.xib */,
 				2D9847B31FF5EC9400038690 /* WBYCMatchDetailViewController.h */,
 				2D9847B51FF5EC9500038690 /* WBYCMatchDetailViewController.m */,
 				2D9847B41FF5EC9500038690 /* WBYCMatchDetailViewController.xib */,
@@ -6875,6 +6875,7 @@
 				F957C1CD1FE36B3F0090B19B /* close@2x.png in Resources */,
 				2D05C85F20A43631001A8953 /* pic_niurenbangbeijing@3x.png in Resources */,
 				2D4D608C20AD717900280033 /* activitymoney@3x.png in Resources */,
+				2D83E26420BE8FEE00F2D375 /* WBBifenZhiboViewController.xib in Resources */,
 				2D0600441FFDDD51009E7568 /* schemedetailsymbol@2x.png in Resources */,
 				2D8CC00A1FF3958D00CC367F /* icon_normal@2x.png in Resources */,
 				2D0E23C020196B590098DA40 /* winning@3x.png in Resources */,
@@ -6986,7 +6987,6 @@
 				2D0600881FFF1365009E7568 /* HHGGPeilvTable.plist in Resources */,
 				2D811A99207DDA610069601C /* JCLQCode.plist in Resources */,
 				F9DC8C4220A57F02006B31F4 /* pic_lianjiexian@2x.png in Resources */,
-				2D205FE91FFC6E950086E266 /* WBBifenZhiboViewController.xib in Resources */,
 				2D6F9237208D9D8A007DFD0B /* leshan@3x.png in Resources */,
 				2D05C84920A43631001A8953 /* datingsousuo@3x.png in Resources */,
 				F94AA9E11FEB7B780021B980 /* weixin@3x.png in Resources */,
@@ -7350,7 +7350,6 @@
 				2D739CFB1FEB5D1900264044 /* JCZQSelectBQCVIew.m in Sources */,
 				2D8CC0161FF4B5E600CC367F /* HomeYCModel.m in Sources */,
 				2D8CBFAC1FF326F200CC367F /* PaySuccessViewController.m in Sources */,
-				2D205FEA1FFC6E950086E266 /* WBBifenZhiboViewController.m in Sources */,
 				F9FDFAE82012F70F0029ACC7 /* netWorkHelper.m in Sources */,
 				2D739CF81FEB5D1900264044 /* JCZQSelectBFVIew.m in Sources */,
 				2DE109532004E6690020343A /* NewsModel.m in Sources */,
@@ -7506,6 +7505,7 @@
 				2DDEDC1A1FD4DE97007AEBF7 /* Utility.m in Sources */,
 				2DDEDE711FD568C9007AEBF7 /* AFSecurityPolicy.m in Sources */,
 				F9B5D912205FB0B000C9F6DC /* GYJPlayViewController.m in Sources */,
+				2D83E26320BE8FEE00F2D375 /* WBBifenZhiboViewController.m in Sources */,
 				2DDEDE651FD568C9007AEBF7 /* SDWebImagePrefetcher.m in Sources */,
 				F94AA99C1FEB46770021B980 /* TopUpsViewController.m in Sources */,
 				2DDEDE691FD568C9007AEBF7 /* UIImage+WebP.m in Sources */,

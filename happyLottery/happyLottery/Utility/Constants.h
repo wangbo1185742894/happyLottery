@@ -96,7 +96,31 @@
 
 #define TextCharColorNomal RGBCOLOR(232, 79, 42)
 
+/*
+ * Top-level identifiers
+ */
+#define    CTL_UNSPEC    0        /* unused */
+#define    CTL_KERN    1        /* "high kernel": proc, limits */
+#define    CTL_VM        2        /* virtual memory */
+#define    CTL_VFS        3        /* file system, mount type is next */
+#define    CTL_NET        4        /* network, see socket.h */
+#define    CTL_DEBUG    5        /* debugging parameters */
+#define    CTL_HW        6        /* generic cpu/io */
+#define    CTL_MACHDEP    7        /* machine dependent */
+#define    CTL_USER    8        /* user-level */
+#define    CTL_MAXID    9        /* number of valid top-level ids */
 
+#define CTL_NAMES { \
+{ 0, 0 }, \
+{ "kern", CTLTYPE_NODE }, \
+{ "vm", CTLTYPE_NODE }, \
+{ "vfs", CTLTYPE_NODE }, \
+{ "net", CTLTYPE_NODE }, \
+{ "debug", CTLTYPE_NODE }, \
+{ "hw", CTLTYPE_NODE }, \
+{ "machdep", CTLTYPE_NODE }, \
+{ "user", CTLTYPE_NODE }, \
+}
 
 #define MAINBGC             RGBCOLOR(245, 245, 245)
 #define SystemRed           RGBCOLOR(209, 57, 34)
@@ -109,8 +133,12 @@
 #define TFBorderColor        RGBCOLOR(227,227,227)
 #define TEXTGRAYCOLOR       RGBCOLOR(72, 72, 72) //偏黑色
 #define TEXTGRAYOrange       RGBCOLOR(255, 153, 0) //偏黑色
-
-
+#define IPHONE_X [[Utility getCurrentDeviceModel] isEqualToString:@"iPhone_X"]
+/**距离导航栏底部的距离*/
+#define NaviHeight (IPHONE_X ? 88 : 64)
+/**iphonex导航栏增加的高度*/
+#define NaviAddHeight (IPHONE_X ? 24 : 0)
+#define BOTTOM_BAR_HEIGHT (IPHONE_X ? 34 : 0)
 
 //这是 NavigationBar 的背景颜色
 

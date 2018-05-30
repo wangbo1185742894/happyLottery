@@ -7,6 +7,7 @@
 //
 
 #import "BaseViewController.h"
+#import "Constants.h"
 
 @interface WBBifenZhiboViewController : BaseViewController
 

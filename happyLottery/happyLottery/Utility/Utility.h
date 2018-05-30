@@ -64,4 +64,6 @@
 +(BOOL)isIphoneX;
 + (NSString *)weekDayGetForTimeDate:(NSDate *)date;
 + (NSString*)iphoneType;
++(NSString*)getTheCorrectNum:(NSString*)tempString;
++(NSString *)getCurrentDeviceModel;
 @end
