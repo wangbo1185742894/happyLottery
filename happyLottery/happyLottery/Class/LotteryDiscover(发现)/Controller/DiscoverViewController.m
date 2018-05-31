@@ -298,15 +298,19 @@
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
     }
-
 }
 
 -(void)goToJczq{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.faxianWebView goBack];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
         [self.navigationController popToRootViewControllerAnimated:YES];
         self.tabBarController.selectedIndex = 0;
+    
     });
+    dispatch_async(dispatch_get_main_queue(), ^{
+          [self.faxianWebView goBack];
+    });
+ 
 }
 
 -(void)hiddenFooter:(BOOL )isHiden{

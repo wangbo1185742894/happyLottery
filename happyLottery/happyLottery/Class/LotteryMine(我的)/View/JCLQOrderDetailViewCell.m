@@ -11,6 +11,7 @@
 
 #import "JCLQOrderDetailViewCell.h"
 
+
 @interface JCLQOrderDetailViewCell()
 {
     NSDictionary *itemDic;

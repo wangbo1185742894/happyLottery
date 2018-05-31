@@ -30,7 +30,6 @@
 @end
 
 @implementation RecommendPerViewController{
-     UIView * topView;
 }
 
 - (void)viewDidLoad {
@@ -215,26 +214,29 @@
 }//牛人，红人，红单榜
 
 #pragma mark  tableView
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
-{
-    //快滑结束触发
-    if(!decelerate){
-        [self reloadDate];
-    }
-}
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    //快滑结束触发
-    [self reloadDate];
-}
+//
+//- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+//{
+//    //快滑结束触发
+//    if(!decelerate){
+//        [self reloadDate];
+//    }
+//}
+//
+//- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+//    //快滑结束触发
+//    [self reloadDate];
+//}
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    if (scrollView.contentOffset.y> 100) {
+    
+    if ( self.personList.contentOffset.y> 100) {
+        UIColor *color= RGBACOLOR(17, 199, 146, 1);
+        self.topView.backgroundColor = color;
         return;
     }
     
-        CGFloat offsetY = scrollView.contentOffset.y /100.0;
+    CGFloat offsetY = self.personList.contentOffset.y /100.0;
     UIColor *color= RGBACOLOR(17, 199, 146, offsetY);
     self.topView.backgroundColor = color;
 }
@@ -277,15 +279,9 @@
         cell.orderLabel.hidden = NO;
         cell.orderLabel.text = [NSString stringWithFormat:@"%ld",indexPath.row+1];
     }
-    //网络图片加载
-    if ((self.personList.isDragging || self.personList.isDecelerating)&&![self.indexArray containsObject:indexPath]) {
-        cell.userImage.image = [UIImage imageNamed:@"usermine.png"];
-        return cell;
-    }
+
     [cell.userImage sd_setImageWithURL:[NSURL URLWithString:model.headUrl] placeholderImage:[UIImage imageNamed:@"usermine.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        if (![self.indexArray containsObject:indexPath]) {
-            [self.indexArray addObject:indexPath];
-        }
+  
     }];
     return cell;
 
