@@ -693,6 +693,7 @@
 		2D811A9F207DDBED0069601C /* basketball@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D811A9D207DDBEC0069601C /* basketball@2x.png */; };
 		2D83E26320BE8FEE00F2D375 /* WBBifenZhiboViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D83E26120BE8FEE00F2D375 /* WBBifenZhiboViewController.m */; };
 		2D83E26420BE8FEE00F2D375 /* WBBifenZhiboViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D83E26220BE8FEE00F2D375 /* WBBifenZhiboViewController.xib */; };
+		2D83E26720BE9CAD00F2D375 /* NSNumber+Length.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D83E26620BE9CAD00F2D375 /* NSNumber+Length.m */; };
 		2D89D60A206CE3AE005E0209 /* WelComeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D89D608206CE3AE005E0209 /* WelComeViewController.m */; };
 		2D89D60B206CE3AE005E0209 /* WelComeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D89D609206CE3AE005E0209 /* WelComeViewController.xib */; };
 		2D89D60D206CE3E9005E0209 /* gyjweicome.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D89D60C206CE3E8005E0209 /* gyjweicome.png */; };
@@ -2341,6 +2342,8 @@
 		2D83E26020BE8FEE00F2D375 /* WBBifenZhiboViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBBifenZhiboViewController.h; sourceTree = "<group>"; };
 		2D83E26120BE8FEE00F2D375 /* WBBifenZhiboViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBBifenZhiboViewController.m; sourceTree = "<group>"; };
 		2D83E26220BE8FEE00F2D375 /* WBBifenZhiboViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WBBifenZhiboViewController.xib; sourceTree = "<group>"; };
+		2D83E26520BE9CAD00F2D375 /* NSNumber+Length.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSNumber+Length.h"; sourceTree = "<group>"; };
+		2D83E26620BE9CAD00F2D375 /* NSNumber+Length.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+Length.m"; sourceTree = "<group>"; };
 		2D89D607206CE3AE005E0209 /* WelComeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WelComeViewController.h; sourceTree = "<group>"; };
 		2D89D608206CE3AE005E0209 /* WelComeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WelComeViewController.m; sourceTree = "<group>"; };
 		2D89D609206CE3AE005E0209 /* WelComeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelComeViewController.xib; sourceTree = "<group>"; };
@@ -5175,6 +5178,8 @@
 				2DDEDC1E1FD4DFDE007AEBF7 /* Macro.h */,
 				F9D7C55020061E7300415B4E /* UILabel+ChangeLineSpaceAndWordSpace.h */,
 				F9D7C55120061E7300415B4E /* UILabel+ChangeLineSpaceAndWordSpace.m */,
+				2D83E26520BE9CAD00F2D375 /* NSNumber+Length.h */,
+				2D83E26620BE9CAD00F2D375 /* NSNumber+Length.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -7256,6 +7261,7 @@
 				2DDEDC441FD5254C007AEBF7 /* User.m in Sources */,
 				F90FCD5A1FF34D5000BD807C /* MyRedPacketTableViewCell.m in Sources */,
 				F92855F720A3CA880023A0AC /* SchemeContainInfoCell.m in Sources */,
+				2D83E26720BE9CAD00F2D375 /* NSNumber+Length.m in Sources */,
 				F928C6A31FF4A190001F1A32 /* MyCouponViewController.m in Sources */,
 				2DDEDE6D1FD568C9007AEBF7 /* AFHTTPRequestOperation.m in Sources */,
 				2D628B561FECCE4C0013D0E1 /* TZSelectMatchCell.m in Sources */,
