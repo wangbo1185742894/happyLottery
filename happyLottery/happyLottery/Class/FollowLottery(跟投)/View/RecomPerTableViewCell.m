@@ -42,7 +42,7 @@
         }
     } else if ([categoryCode isEqualToString:@"Redman"]){
         self.infoOneLabel.text = @"跟投人次";
-        self.infoTwoLabel.text = @"带红人数";
+        self.infoTwoLabel.text = @"带红人次";
         self.infoOneSum.text = model.followCount==nil?@"0":model.followCount;
         self.infoTwoSum.text = model.redCount==nil?@"0":model.redCount;
     } else {
