@@ -63,6 +63,7 @@ static NSString *ID = @"LotteryAreaViewCell";
     UIView  *menuView;
     AppSignModel *appSignModel;
 
+    __weak IBOutlet NSLayoutConstraint *playViewHeight;
     __weak IBOutlet UICollectionView *lotteryPlayView;
     __weak IBOutlet NSLayoutConstraint *btnGyjHeight;
     OpenRedPopView *popView;
@@ -125,6 +126,14 @@ static NSString *ID = @"LotteryAreaViewCell";
         bottomheight = 83;
     }else{
         bottomheight = 49;
+    }
+    
+    if ([self.curUser.whitelist boolValue] == NO) {
+        playViewHeight.constant = 0;
+        lotteryPlayView.hidden = YES;
+    }else{
+        playViewHeight.constant = 180;
+        lotteryPlayView.hidden = NO;
     }
 
     NSString *plistPath = [[NSBundle mainBundle]pathForResource:@"LotteryArea" ofType:@"plist"];
@@ -1225,7 +1234,7 @@ static NSString *ID = @"LotteryAreaViewCell";
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
     // app版本
     NSString *app_Version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
-    [[LoadData singleLoadData]RequestWithString:@"https://itunes.apple.com/cn/lookup" isPost:YES andPara:@{@"id":@"1334494277"} andComplete:^(id data, BOOL isSuccess) {
+    [[LoadData singleLoadData]RequestWithString:@"https://itunes.apple.com/cn/lookup" isPost:YES andPara:@{@"id":@"1392832997"} andComplete:^(id data, BOOL isSuccess) {
         if (isSuccess) {
             NSString*string = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
             

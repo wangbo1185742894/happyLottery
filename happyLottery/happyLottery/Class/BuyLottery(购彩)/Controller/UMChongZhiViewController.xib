@@ -47,8 +47,8 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="627"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                 </button>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="upg-8Q-WSj">
-                    <rect key="frame" x="0.0" y="617" width="375" height="30"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="upg-8Q-WSj">
+                    <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                     <subviews>
                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z8Q-Ne-OIA">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>

@@ -288,7 +288,6 @@ static NSInteger seq = 0;
         
     }else{
         regex = @"^[0-9]";
-        
     }
     
     NSString *str = [NSString stringWithFormat:@"%@%@",textField.text,string];

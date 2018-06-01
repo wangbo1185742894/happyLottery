@@ -36,7 +36,11 @@
        NSMutableArray *listUseRedPacketArray;
     __weak IBOutlet NSLayoutConstraint *tableViewHeight;
 }
+@property (weak, nonatomic) IBOutlet UIView *viewJIfen;
+@property (weak, nonatomic) IBOutlet UIView *viewChongZhi;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *jifenHeight;
 @property (weak, nonatomic) IBOutlet UIButton *personSetBtn;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *chongzhiViewHeight;
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *userImage;
 @property (weak, nonatomic) IBOutlet UIButton *signInBtn;//签到
@@ -74,7 +78,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.viewControllerNo = @"A201";
+
       num=0;
     self.memberMan.delegate = self;
     listUseRedPacketArray = [[NSMutableArray alloc]init];
@@ -92,6 +96,18 @@
     [self noticeCenterSet];
     
     [_tableview reloadData];
+    self.viewControllerNo = @"A201";
+    if ([self.curUser.whitelist boolValue] == NO) {
+        self.viewJIfen.hidden = YES;
+        self.jifenHeight.constant = 0;
+        self.chongzhiViewHeight.constant = 0;
+        self.viewChongZhi.hidden = YES;
+    }else{
+        self.viewJIfen.hidden = NO;
+        self.jifenHeight.constant = 70;
+        self.chongzhiViewHeight.constant = 66;
+        self.viewChongZhi.hidden = NO;
+    }
 }
 
 -(void)notLogin{

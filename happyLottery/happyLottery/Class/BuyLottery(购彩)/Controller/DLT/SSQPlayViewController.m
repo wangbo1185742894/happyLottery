@@ -105,6 +105,9 @@
         self.viewDisTop.constant = 64;
         self.viewDisBottom.constant = 0;
     }
+    if ([self.curUser.whitelist boolValue] == NO) {
+        buttonSubmit.hidden = YES;
+    }
     self.lotteryMan.delegate = self;
     self.viewControllerNo = @"A007";
     if([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {

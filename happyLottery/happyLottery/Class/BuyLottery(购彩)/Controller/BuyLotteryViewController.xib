@@ -24,6 +24,7 @@
                 <outlet property="labNewTitle" destination="F0Z-M8-KCF" id="ukG-rO-0m9"/>
                 <outlet property="lotteryPlayView" destination="zao-AV-HGH" id="Fgu-nz-9Lx"/>
                 <outlet property="openRedpacketButton" destination="HFI-cN-b9n" id="ByJ-o2-R0e"/>
+                <outlet property="playViewHeight" destination="UJT-Jz-ydC" id="dtR-AB-epo"/>
                 <outlet property="redPacketWidth" destination="g9I-AX-Sfy" id="V2K-gk-u26"/>
                 <outlet property="redpacketCancel" destination="hSn-fT-7n5" id="Qn1-0X-dac"/>
                 <outlet property="redpacketLab" destination="dIV-Bb-Uy1" id="1Xa-eY-gXe"/>
@@ -289,8 +290,8 @@
                         <constraint firstAttribute="bottom" secondItem="0Aq-6s-ooa" secondAttribute="bottom" id="tjx-Id-H2w"/>
                     </constraints>
                 </scrollView>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VmK-ed-3Fs">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VmK-ed-3Fs">
+                    <rect key="frame" x="0.0" y="591" width="375" height="76"/>
                     <subviews>
                         <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sO4-WE-ckg">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>

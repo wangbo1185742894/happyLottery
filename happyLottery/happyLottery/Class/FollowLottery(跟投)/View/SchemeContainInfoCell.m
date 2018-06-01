@@ -46,8 +46,8 @@
             self.matchResultLab.text = @"取消";
         }else if ([open.matchStatus isEqualToString:@"PAUSE"]){
             self.matchResultLab.text = @"暂停";
-        }else{
-            self.matchResultLab.text = [NSString stringWithFormat:@"%@:%@",open.homeScore,open.guestScore];
+        }else{//篮球赛果  客 VS 主
+            self.matchResultLab.text = [NSString stringWithFormat:@"%@:%@",open.guestScore,open.homeScore];
         }
     }
     NSMutableString *option = [[NSMutableString alloc]initWithCapacity:0];
@@ -111,7 +111,7 @@
            self.matchResultLab.text = @"取消";
         }else if ([open.matchStatus isEqualToString:@"PAUSE"]){
            self.matchResultLab.text = @"暂停";
-        }else{
+        }else{   //足球赛果  主 VS 客
            self.matchResultLab.text = [NSString stringWithFormat:@"%@:%@",open.homeScore,open.guestScore];
         }
     }

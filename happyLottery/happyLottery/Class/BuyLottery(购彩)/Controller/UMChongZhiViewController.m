@@ -56,13 +56,14 @@
     }
     self.title = @"预测详情";
 
-    if (self.isHis == YES) {
+    if (self.isHis == YES || [self.curUser.whitelist boolValue] == NO) {
         self.webViewdisBottom.constant = 0;
+        self.viewBottom.hidden = YES;
     }else{
         self.webViewdisBottom.constant = 50;
+        self.viewBottom.hidden = NO;
         
     }
-    self.viewBottom.hidden = self.isHis;
 
     NSURL *strUrl =[NSURL URLWithString:self.model.h5Url];
     

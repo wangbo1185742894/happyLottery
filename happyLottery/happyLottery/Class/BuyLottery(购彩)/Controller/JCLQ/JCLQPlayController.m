@@ -74,6 +74,9 @@ typedef enum : NSUInteger {
     }else{
         self.viewDisTop.constant = 0;
     }
+    if ([self.curUser.whitelist boolValue] == NO) {
+        _btnYuyue.hidden = YES;
+    }
     self.profiles = [NSMutableArray arrayWithCapacity:0];
     self.viewControllerNo = @"A002";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cleanMatch:) name:KSELECTMATCHCLEAN object:nil];
