@@ -682,6 +682,11 @@
 		2D7B1415204E8FD50035AE89 /* CTZQWinHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D7B1413204E8FD50035AE89 /* CTZQWinHistoryTableViewCell.xib */; };
 		2D7B1418204FC7CD0035AE89 /* timebackimage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D7B1416204FC7CC0035AE89 /* timebackimage@3x.png */; };
 		2D7B1419204FC7CD0035AE89 /* timebackimage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D7B1417204FC7CD0035AE89 /* timebackimage@2x.png */; };
+		2D7B8D7A20C12028000EAFB1 /* AgentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B8D7920C12028000EAFB1 /* AgentManager.m */; };
+		2D7B8D7E20C12CED000EAFB1 /* AgentInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B8D7D20C12CED000EAFB1 /* AgentInfoModel.m */; };
+		2D7B8D8120C12E53000EAFB1 /* AgentMemberModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B8D8020C12E53000EAFB1 /* AgentMemberModel.m */; };
+		2D7B8D8820C1312D000EAFB1 /* AgentTransferModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B8D8720C1312D000EAFB1 /* AgentTransferModel.m */; };
+		2D7B8D8B20C1320F000EAFB1 /* MyAgentInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B8D8A20C1320F000EAFB1 /* MyAgentInfoModel.m */; };
 		2D811A95207DDA610069601C /* jingcailanqiu_daxiaofen.html in Resources */ = {isa = PBXBuildFile; fileRef = 2D811A8E207DDA5A0069601C /* jingcailanqiu_daxiaofen.html */; };
 		2D811A96207DDA610069601C /* jingcailanqiu_shengfu.html in Resources */ = {isa = PBXBuildFile; fileRef = 2D811A8F207DDA5C0069601C /* jingcailanqiu_shengfu.html */; };
 		2D811A97207DDA610069601C /* jingcailanqiu_shengfencha.html in Resources */ = {isa = PBXBuildFile; fileRef = 2D811A90207DDA5C0069601C /* jingcailanqiu_shengfencha.html */; };
@@ -2330,6 +2335,17 @@
 		2D7B1413204E8FD50035AE89 /* CTZQWinHistoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CTZQWinHistoryTableViewCell.xib; sourceTree = "<group>"; };
 		2D7B1416204FC7CC0035AE89 /* timebackimage@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timebackimage@3x.png"; sourceTree = "<group>"; };
 		2D7B1417204FC7CD0035AE89 /* timebackimage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timebackimage@2x.png"; sourceTree = "<group>"; };
+		2D7B8D7820C12028000EAFB1 /* AgentManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AgentManager.h; sourceTree = "<group>"; };
+		2D7B8D7920C12028000EAFB1 /* AgentManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AgentManager.m; sourceTree = "<group>"; };
+		2D7B8D7C20C12CED000EAFB1 /* AgentInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AgentInfoModel.h; sourceTree = "<group>"; };
+		2D7B8D7D20C12CED000EAFB1 /* AgentInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AgentInfoModel.m; sourceTree = "<group>"; };
+		2D7B8D7F20C12E53000EAFB1 /* AgentMemberModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AgentMemberModel.h; sourceTree = "<group>"; };
+		2D7B8D8020C12E53000EAFB1 /* AgentMemberModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AgentMemberModel.m; sourceTree = "<group>"; };
+		2D7B8D8520C12F9F000EAFB1 /* Enum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Enum.h; sourceTree = "<group>"; };
+		2D7B8D8620C1312D000EAFB1 /* AgentTransferModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AgentTransferModel.h; sourceTree = "<group>"; };
+		2D7B8D8720C1312D000EAFB1 /* AgentTransferModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AgentTransferModel.m; sourceTree = "<group>"; };
+		2D7B8D8920C1320F000EAFB1 /* MyAgentInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyAgentInfoModel.h; sourceTree = "<group>"; };
+		2D7B8D8A20C1320F000EAFB1 /* MyAgentInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyAgentInfoModel.m; sourceTree = "<group>"; };
 		2D811A8E207DDA5A0069601C /* jingcailanqiu_daxiaofen.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = jingcailanqiu_daxiaofen.html; sourceTree = "<group>"; };
 		2D811A8F207DDA5C0069601C /* jingcailanqiu_shengfu.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = jingcailanqiu_shengfu.html; sourceTree = "<group>"; };
 		2D811A90207DDA5C0069601C /* jingcailanqiu_shengfencha.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = jingcailanqiu_shengfencha.html; sourceTree = "<group>"; };
@@ -4230,6 +4246,22 @@
 			path = CTZQ;
 			sourceTree = "<group>";
 		};
+		2D7B8D7B20C12CD2000EAFB1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2D7B8D7C20C12CED000EAFB1 /* AgentInfoModel.h */,
+				2D7B8D7D20C12CED000EAFB1 /* AgentInfoModel.m */,
+				2D7B8D7F20C12E53000EAFB1 /* AgentMemberModel.h */,
+				2D7B8D8020C12E53000EAFB1 /* AgentMemberModel.m */,
+				2D7B8D8520C12F9F000EAFB1 /* Enum.h */,
+				2D7B8D8620C1312D000EAFB1 /* AgentTransferModel.h */,
+				2D7B8D8720C1312D000EAFB1 /* AgentTransferModel.m */,
+				2D7B8D8920C1320F000EAFB1 /* MyAgentInfoModel.h */,
+				2D7B8D8A20C1320F000EAFB1 /* MyAgentInfoModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		2DA39EDB2052685600A03FD1 /* DLT */ = {
 			isa = PBXGroup;
 			children = (
@@ -4582,6 +4614,8 @@
 				2DDEDC461FD52562007AEBF7 /* GlobalInstance.m */,
 				2D739C4C1FE3AF9500264044 /* BaseModel.h */,
 				2D739C4D1FE3AF9500264044 /* BaseModel.m */,
+				2D7B8D7820C12028000EAFB1 /* AgentManager.h */,
+				2D7B8D7920C12028000EAFB1 /* AgentManager.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4841,8 +4875,8 @@
 		2DDEDBFB1FD4DBB5007AEBF7 /* LotteryGroup(圈子) */ = {
 			isa = PBXGroup;
 			children = (
+				2D7B8D7B20C12CD2000EAFB1 /* Model */,
 				2DDEDBFC1FD4DBB5007AEBF7 /* Controller */,
-				2DDEDBFD1FD4DBB5007AEBF7 /* Model */,
 				2DDEDBFE1FD4DBB5007AEBF7 /* View */,
 			);
 			path = "LotteryGroup(圈子)";
@@ -4856,13 +4890,6 @@
 				2DDEDC0F1FD4DC03007AEBF7 /* GroupViewController.xib */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		2DDEDBFD1FD4DBB5007AEBF7 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		2DDEDBFE1FD4DBB5007AEBF7 /* View */ = {
@@ -7354,6 +7381,7 @@
 				2D06001C1FFDCD9F009E7568 /* MJRefreshBackFooter.m in Sources */,
 				2D8CBFEB1FF3770100CC367F /* jcBetContent.m in Sources */,
 				2D739CFB1FEB5D1900264044 /* JCZQSelectBQCVIew.m in Sources */,
+				2D7B8D7A20C12028000EAFB1 /* AgentManager.m in Sources */,
 				2D8CC0161FF4B5E600CC367F /* HomeYCModel.m in Sources */,
 				2D8CBFAC1FF326F200CC367F /* PaySuccessViewController.m in Sources */,
 				F9FDFAE82012F70F0029ACC7 /* netWorkHelper.m in Sources */,
@@ -7395,6 +7423,7 @@
 				2DDEDE7F1FD568C9007AEBF7 /* UIProgressView+AFNetworking.m in Sources */,
 				2DE892A02020724C008926A6 /* JWCacheURLProtocol.m in Sources */,
 				F9B5DA6D2060BD2E00C9F6DC /* HomeGJItemViewCell.m in Sources */,
+				2D7B8D8120C12E53000EAFB1 /* AgentMemberModel.m in Sources */,
 				2DDEDE6B1FD568C9007AEBF7 /* UIImageView+WebCache.m in Sources */,
 				2D739C631FE7878100264044 /* JCZQTouZhuViewController.m in Sources */,
 				F9705E53207A0DE800E25E4E /* JCLQSFCPlayTypeView.m in Sources */,
@@ -7549,6 +7578,7 @@
 				2D7B13F5204E88420035AE89 /* OpenLotteryResultHeaderView.m in Sources */,
 				F9DC8C2720A46051006B31F4 /* SchemeInfoBuyCell.m in Sources */,
 				2D06FFDF1FFDB7D8009E7568 /* JCZQSchemeModel.m in Sources */,
+				2D7B8D8820C1312D000EAFB1 /* AgentTransferModel.m in Sources */,
 				2D7B13CA204E877A0035AE89 /* CTZQOpenLotterySectionHeaderView.m in Sources */,
 				2D92A81E200F1D2F0038E165 /* WBLoopProgressView.m in Sources */,
 				2D0600831FFE2036009E7568 /* TableHeaderView.m in Sources */,
@@ -7577,6 +7607,7 @@
 				2D7B13FE204E887A0035AE89 /* CTZQOpenLotterySelectDateView.m in Sources */,
 				2D03F28B2060BAE900C81BEF /* PersonnalCenterViewController.m in Sources */,
 				2D739C4E1FE3AF9500264044 /* BaseModel.m in Sources */,
+				2D7B8D7E20C12CED000EAFB1 /* AgentInfoModel.m in Sources */,
 				2D8CBFD01FF3769F00CC367F /* YuCeLiShiZhanJViewController.m in Sources */,
 				2D7B13B4204E873D0035AE89 /* CTZQBet.m in Sources */,
 				F96658F41FF0D26A001DE8B9 /* BankCard.m in Sources */,
@@ -7611,6 +7642,7 @@
 				2D7B130C204D47B10035AE89 /* LotteryTimeCountdownView.m in Sources */,
 				2D3A06CF20A3E84E003C5E7B /* FollowHeaderView.m in Sources */,
 				2D7B131A204D4A190035AE89 /* XHSectionTitleView.m in Sources */,
+				2D7B8D8B20C1320F000EAFB1 /* MyAgentInfoModel.m in Sources */,
 				2D0600281FFDCD9F009E7568 /* MJRefreshStateHeader.m in Sources */,
 				F94795B02062749300818A1F /* BaseTransaction.m in Sources */,
 				2D0600251FFDCD9F009E7568 /* MJRefreshBackStateFooter.m in Sources */,
@@ -7821,7 +7853,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -7861,7 +7893,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

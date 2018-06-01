@@ -165,4 +165,20 @@
 #define APIGetSsqTicketOrderDetail    @"getSsqTicketOrderDetail"//查询订单详情(双色球)
 #define APIGetJclqTicketOrderDetail   @"getJclqTicketOrderDetail"// 查询订单详情(竞彩篮球)
 
+#define SUBAPIAgentService  @"/agent"
+
+#define Agent_agentApply @"agentApply"  /** 会员建圈申请*/
+#define Agent_getAgentInfo @"getAgentInfo" //获取当前用户的圈子信息()
+#define Agent_listAgentMember @"listAgentMember"//获取当前用户所在圈子的所有圈民列表(我的圈子->我的圈友)
+#define Agent_getAgentFollowCount @"getAgentFollowCount"//获取当前登录用户的圈子可跟单方案数
+#define Agent_listAgentFollow @"listAgentFollow" //获取当前登录用户的圈子可跟单方案
+#define Agent_listAgentDynamic @"listAgentDynamic" //获取圈子的动态
+#define Agent_getMyAgentInfo @"getMyAgentInfo" //获取我的圈子
+#define Agent_transferAccount @"transferAccount" //佣金账户转个人账户
+#define Agent_listMyTransfer @"listMyTransfer" //分页获取圈主的佣金转账记录
+#define Agent_modifyHeadUrl @"modifyHeadUrl" //变更圈子的头像
+#define Agent_modifyCircleName @"modifyCircleName" //变更圈名
+#define Agent_modifyNotice @"modifyNotice" //申请变更圈子公告
+
+
 #endif /* API_h */

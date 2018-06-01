@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "BonusOptimize.h"
+#import "Utility.h"
 
 @interface happyLotteryTests : XCTestCase
 
@@ -26,7 +27,7 @@
 }
 
 - (void)testExample {
-     
+  
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct results.
 }

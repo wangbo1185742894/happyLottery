@@ -62,6 +62,17 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
       listArray = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Mine" ofType: @"plist"]];
+    if ([self.curUser.whitelist boolValue] == NO) {
+        self.viewJIfen.hidden = YES;
+        self.jifenHeight.constant = 0;
+        self.chongzhiViewHeight.constant = 0;
+        self.viewChongZhi.hidden = YES;
+    }else{
+        self.viewJIfen.hidden = NO;
+        self.jifenHeight.constant = 70;
+        self.chongzhiViewHeight.constant = 66;
+        self.viewChongZhi.hidden = NO;
+    }
     if (self.curUser.isLogin==YES) {
         [self updateMemberClinet];
         [self getSystemNoticeClient];
@@ -97,17 +108,7 @@
     
     [_tableview reloadData];
     self.viewControllerNo = @"A201";
-    if ([self.curUser.whitelist boolValue] == NO) {
-        self.viewJIfen.hidden = YES;
-        self.jifenHeight.constant = 0;
-        self.chongzhiViewHeight.constant = 0;
-        self.viewChongZhi.hidden = YES;
-    }else{
-        self.viewJIfen.hidden = NO;
-        self.jifenHeight.constant = 70;
-        self.chongzhiViewHeight.constant = 66;
-        self.viewChongZhi.hidden = NO;
-    }
+
 }
 
 -(void)notLogin{

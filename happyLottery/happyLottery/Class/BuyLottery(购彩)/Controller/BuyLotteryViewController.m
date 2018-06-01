@@ -128,13 +128,7 @@ static NSString *ID = @"LotteryAreaViewCell";
         bottomheight = 49;
     }
     
-    if ([self.curUser.whitelist boolValue] == NO) {
-        playViewHeight.constant = 0;
-        lotteryPlayView.hidden = YES;
-    }else{
-        playViewHeight.constant = 180;
-        lotteryPlayView.hidden = NO;
-    }
+
 
     NSString *plistPath = [[NSBundle mainBundle]pathForResource:@"LotteryArea" ofType:@"plist"];
     _lotteryArr = [[NSMutableArray alloc] initWithContentsOfFile:plistPath];
@@ -811,12 +805,19 @@ static NSString *ID = @"LotteryAreaViewCell";
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     //    activityInfoView.hidden = YES;
-    
+    if ([self.curUser.whitelist boolValue] == NO) {
+        playViewHeight.constant = 0;
+        lotteryPlayView.hidden = YES;
+    }else{
+        playViewHeight.constant = 180;
+        lotteryPlayView.hidden = NO;
+    }
     [self getLotteryList];
     self.navigationController.navigationBar.hidden = YES;
     if (self.tabBarController.tabBar.hidden == YES) {
