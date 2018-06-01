@@ -105,7 +105,7 @@ static SystemSoundID shake_sound_male_id = 0;
   
     NSString  *pushKey;
 #ifdef APPSTORE
-    pushKey = @"fbb09610ec798e722175c54d";
+    pushKey = @"0b8f85bf5208bb5da4651334";
 #else
     pushKey = @"5dd3abce8e0e840e6158b8e1";
 #endif

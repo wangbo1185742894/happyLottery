@@ -40,5 +40,13 @@
     return [NSString stringWithFormat:@"%.2f",[self.balance doubleValue] + [self.sendBalance doubleValue] + [self .notCash doubleValue]];
 }
 
+-(NSString *)whitelist{
+    if ([_whitelist boolValue] == YES&& self.isLogin == YES) {
+        return @"1";
+    }else{
+        return @"0";
+    }
+}
+
 
 @end

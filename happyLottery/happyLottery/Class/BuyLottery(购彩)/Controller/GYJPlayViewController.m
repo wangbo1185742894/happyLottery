@@ -68,7 +68,9 @@
         self.viewDisTop .constant = 64;
     }
     
-    
+    if ([self.curUser.whitelist boolValue] == NO) {
+        yuyueBtn.hidden = YES;
+    }
     self.viewControllerNo = @"A009";
     [self setTableViewCell];
     self.gjSellArray = [NSMutableArray arrayWithCapacity:0];

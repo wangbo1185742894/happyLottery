@@ -8,12 +8,12 @@
 #ifndef API_h
 #define API_h
 
-//#define APPSTORE 1 //appstore 版本 打开宏，  内测包 ，自由平台  屏蔽宏
+#define APPSTORE 1 //appstore 版本 打开宏，  内测包 ，自由平台  屏蔽宏
 
 #define NameSpaceURI @"http://webservice.onlytest.com/"
 
 #ifdef APPSTORE
-    #define APPUPDATAURL @"https://itunes.apple.com/cn/app/%E5%BD%A9%E8%BF%90%E5%AE%9D/id1334494277?mt=8"
+    #define APPUPDATAURL @"https://itunes.apple.com/cn/app/%E5%BD%A9%E8%BF%90%E5%AE%9D/1392832997?mt=8"
 #else
     #define APPUPDATAURL @"http://t.11max.com/Tbz"
 #endif

@@ -14,8 +14,10 @@
             <connections>
                 <outlet property="balanceBtn" destination="E6j-k7-LS0" id="kBu-Ef-KqV"/>
                 <outlet property="balanceLab" destination="hRu-RF-G1I" id="Bxv-gY-OjC"/>
+                <outlet property="chongzhiViewHeight" destination="Gla-FN-gYo" id="qzf-G9-zrd"/>
                 <outlet property="integralBtn" destination="sO0-Mz-jY7" id="OZa-ta-WBe"/>
                 <outlet property="integralLab" destination="2Kw-f5-ZTp" id="UjA-dk-v4z"/>
+                <outlet property="jifenHeight" destination="oZG-Ku-CFx" id="RSt-0V-hEi"/>
                 <outlet property="loginBtn" destination="XsK-Vt-gZZ" id="hfc-Ta-Z9K"/>
                 <outlet property="personSetBtn" destination="43O-Jm-2Qq" id="aXW-T4-tqj"/>
                 <outlet property="rechargeBtn" destination="nGQ-9Q-TVZ" id="avO-n3-5EZ"/>
@@ -26,6 +28,8 @@
                 <outlet property="tableview" destination="MTg-dn-YWb" id="PWQ-4M-fjb"/>
                 <outlet property="userImage" destination="9X8-Z4-jzu" id="cgo-k9-o2D"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewChongZhi" destination="kk5-rP-XGf" id="Z8c-GM-oLS"/>
+                <outlet property="viewJIfen" destination="ut7-e6-ow1" id="9hN-x1-QY9"/>
                 <outlet property="withdrawalsBtn" destination="K9m-13-mCb" id="Mus-5Q-kTO"/>
             </connections>
         </placeholder>
@@ -105,9 +109,6 @@
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sO0-Mz-jY7">
                                     <rect key="frame" x="125" y="0.0" width="125" height="66"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="66" id="YID-ic-JZD"/>
-                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <inset key="contentEdgeInsets" minX="2" minY="20" maxX="0.0" maxY="0.0"/>
                                     <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -130,9 +131,6 @@
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2R9-DO-gvq">
                                     <rect key="frame" x="250" y="0.0" width="125" height="66"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="66" id="Kfs-Y4-J5h"/>
-                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <inset key="contentEdgeInsets" minX="2" minY="20" maxX="0.0" maxY="0.0"/>
                                     <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -154,9 +152,6 @@
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E6j-k7-LS0">
                                     <rect key="frame" x="0.0" y="0.0" width="125" height="66"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="66" id="cKg-YS-p4o"/>
-                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <inset key="contentEdgeInsets" minX="2" minY="20" maxX="0.0" maxY="0.0"/>
                                     <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -195,9 +190,9 @@
                             <constraints>
                                 <constraint firstItem="UoB-tJ-jh8" firstAttribute="leading" secondItem="sO0-Mz-jY7" secondAttribute="trailing" id="03B-93-cI1"/>
                                 <constraint firstItem="E6j-k7-LS0" firstAttribute="leading" secondItem="ut7-e6-ow1" secondAttribute="leading" id="3AW-l6-TFL"/>
-                                <constraint firstItem="E6j-k7-LS0" firstAttribute="baseline" secondItem="2R9-DO-gvq" secondAttribute="baseline" id="4tk-Yj-iUd"/>
                                 <constraint firstItem="2Kw-f5-ZTp" firstAttribute="height" secondItem="hRu-RF-G1I" secondAttribute="height" id="729-m3-fpB"/>
                                 <constraint firstItem="sO0-Mz-jY7" firstAttribute="leading" secondItem="hRu-RF-G1I" secondAttribute="trailing" id="8QF-Er-aAt"/>
+                                <constraint firstAttribute="bottom" secondItem="sO0-Mz-jY7" secondAttribute="bottom" id="BbD-pz-0qa"/>
                                 <constraint firstItem="2Kw-f5-ZTp" firstAttribute="width" secondItem="hRu-RF-G1I" secondAttribute="width" id="BuL-i2-yJU"/>
                                 <constraint firstAttribute="trailing" secondItem="UoB-tJ-jh8" secondAttribute="trailing" id="ECW-ZE-3h0"/>
                                 <constraint firstItem="2R9-DO-gvq" firstAttribute="top" secondItem="ut7-e6-ow1" secondAttribute="top" id="FGb-Ik-mDN"/>
@@ -205,6 +200,7 @@
                                 <constraint firstItem="2R9-DO-gvq" firstAttribute="width" secondItem="E6j-k7-LS0" secondAttribute="width" id="PWG-z2-Mou"/>
                                 <constraint firstItem="UoB-tJ-jh8" firstAttribute="height" secondItem="hRu-RF-G1I" secondAttribute="height" id="Pgx-jA-OJ8"/>
                                 <constraint firstItem="2Kw-f5-ZTp" firstAttribute="top" secondItem="hRu-RF-G1I" secondAttribute="top" id="S3H-HA-o3u"/>
+                                <constraint firstAttribute="bottom" secondItem="E6j-k7-LS0" secondAttribute="bottom" id="ScX-M1-r2z"/>
                                 <constraint firstItem="2Kw-f5-ZTp" firstAttribute="leading" secondItem="E6j-k7-LS0" secondAttribute="trailing" id="SqE-nb-t8u"/>
                                 <constraint firstItem="E6j-k7-LS0" firstAttribute="baseline" secondItem="sO0-Mz-jY7" secondAttribute="firstBaseline" id="UOh-Gf-csn"/>
                                 <constraint firstItem="g8r-1F-mg3" firstAttribute="top" secondItem="ut7-e6-ow1" secondAttribute="top" constant="8" id="YJA-Wy-RpO"/>
@@ -215,12 +211,12 @@
                                 <constraint firstItem="sO0-Mz-jY7" firstAttribute="width" secondItem="E6j-k7-LS0" secondAttribute="width" id="jzr-QH-DNx"/>
                                 <constraint firstItem="hRu-RF-G1I" firstAttribute="top" secondItem="ut7-e6-ow1" secondAttribute="top" constant="10" id="lBV-Ke-s7d"/>
                                 <constraint firstItem="hRu-RF-G1I" firstAttribute="leading" secondItem="ut7-e6-ow1" secondAttribute="leading" id="mwr-va-Edl"/>
+                                <constraint firstAttribute="bottom" secondItem="2R9-DO-gvq" secondAttribute="bottom" id="oAL-lZ-5yj"/>
                                 <constraint firstAttribute="height" constant="66" id="oZG-Ku-CFx"/>
                                 <constraint firstAttribute="trailing" secondItem="2R9-DO-gvq" secondAttribute="trailing" id="pHe-IZ-AKB"/>
                                 <constraint firstItem="iwZ-xu-gbf" firstAttribute="leading" secondItem="sO0-Mz-jY7" secondAttribute="trailing" id="qcL-Dx-6ek"/>
                                 <constraint firstItem="sO0-Mz-jY7" firstAttribute="top" secondItem="ut7-e6-ow1" secondAttribute="top" id="tbZ-ei-x0p"/>
                                 <constraint firstItem="sO0-Mz-jY7" firstAttribute="leading" secondItem="g8r-1F-mg3" secondAttribute="trailing" id="vfg-2Y-rKD"/>
-                                <constraint firstItem="2R9-DO-gvq" firstAttribute="height" secondItem="E6j-k7-LS0" secondAttribute="height" id="x7w-VJ-MYI"/>
                                 <constraint firstAttribute="bottom" secondItem="E6j-k7-LS0" secondAttribute="bottom" id="xUQ-2u-jDQ"/>
                                 <constraint firstItem="UoB-tJ-jh8" firstAttribute="top" secondItem="hRu-RF-G1I" secondAttribute="top" id="yo1-w7-lzM"/>
                             </constraints>
