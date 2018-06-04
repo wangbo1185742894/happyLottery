@@ -127,8 +127,6 @@ static NSString *ID = @"LotteryAreaViewCell";
     }else{
         bottomheight = 49;
     }
-    
-
 
     NSString *plistPath = [[NSBundle mainBundle]pathForResource:@"LotteryArea" ofType:@"plist"];
     _lotteryArr = [[NSMutableArray alloc] initWithContentsOfFile:plistPath];
