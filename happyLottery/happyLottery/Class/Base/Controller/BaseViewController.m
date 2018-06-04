@@ -86,7 +86,6 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
      AppDelegate *delegate  = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    
     delegate.curNavVC = self.navigationController;
     self.openDate = [NSDate date];
     [self afnReachabilityTest];

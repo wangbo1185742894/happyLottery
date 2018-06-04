@@ -73,10 +73,12 @@
                             <color key="textColor" red="0.066666666669999999" green="0.91764705879999997" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxt-mj-b4K">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxt-mj-b4K">
                             <rect key="frame" x="90" y="331" width="195" height="45"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="apply_again.png"/>
+                            <connections>
+                                <action selector="actionToApplyAgain:" destination="-1" eventType="touchUpInside" id="YnP-mk-vJm"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L6e-SU-09a">
                             <rect key="frame" x="166" y="175" width="42" height="21"/>
@@ -112,10 +114,12 @@
                         <constraint firstAttribute="bottom" secondItem="xci-gN-CaP" secondAttribute="bottom" constant="59" id="1OP-bn-QrH"/>
                         <constraint firstItem="QDB-XI-pKJ" firstAttribute="leading" secondItem="Oad-1x-JkJ" secondAttribute="trailing" constant="20" id="1iN-BK-FfH"/>
                         <constraint firstItem="QDB-XI-pKJ" firstAttribute="leading" secondItem="3YM-F3-UFE" secondAttribute="trailing" constant="20" id="3Zw-CL-p0L"/>
+                        <constraint firstItem="dxt-mj-b4K" firstAttribute="top" secondItem="MKS-dS-YGJ" secondAttribute="bottom" constant="1" id="5M3-O6-9qO"/>
                         <constraint firstItem="Oad-1x-JkJ" firstAttribute="leading" secondItem="k7z-00-WSY" secondAttribute="leading" constant="42" id="6hb-IS-1rb"/>
                         <constraint firstItem="Oad-1x-JkJ" firstAttribute="centerY" secondItem="QDB-XI-pKJ" secondAttribute="centerY" id="9SQ-Y1-exp"/>
                         <constraint firstItem="ylV-6I-aoq" firstAttribute="centerY" secondItem="QDB-XI-pKJ" secondAttribute="centerY" id="D9A-fK-N15"/>
                         <constraint firstItem="A4n-CA-6pK" firstAttribute="centerX" secondItem="ylV-6I-aoq" secondAttribute="centerX" id="FZ8-Gj-nqz"/>
+                        <constraint firstItem="dxt-mj-b4K" firstAttribute="centerX" secondItem="k7z-00-WSY" secondAttribute="centerX" id="Nup-x9-bKD"/>
                         <constraint firstItem="xci-gN-CaP" firstAttribute="leading" secondItem="k7z-00-WSY" secondAttribute="leading" constant="48" id="Oso-ff-7HN"/>
                         <constraint firstItem="Oad-1x-JkJ" firstAttribute="centerY" secondItem="A4n-CA-6pK" secondAttribute="centerY" id="Pgr-Jx-Ulh"/>
                         <constraint firstItem="QDB-XI-pKJ" firstAttribute="top" secondItem="k7z-00-WSY" secondAttribute="top" constant="137" id="XWC-WJ-B6B"/>
@@ -141,7 +145,7 @@
                 <constraint firstItem="k7z-00-WSY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="X9O-of-CrB"/>
                 <constraint firstAttribute="bottom" secondItem="k7z-00-WSY" secondAttribute="bottom" id="kDI-Dx-bq9"/>
             </constraints>
-            <point key="canvasLocation" x="25.5" y="51.5"/>
+            <point key="canvasLocation" x="-467" y="41"/>
         </view>
     </objects>
     <resources>

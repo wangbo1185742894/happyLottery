@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="395" height="194.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入您的真实姓名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hrf-jE-ZLN">
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入您的姓名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hrf-jE-ZLN">
                         <rect key="frame" x="58" y="42" width="279" height="30"/>
                         <color key="textColor" red="0.55294117649999996" green="0.55294117649999996" blue="0.55294117649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -31,13 +31,20 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qian.png" translatesAutoresizingMaskIntoConstraints="NO" id="4IY-p0-7wQ">
                         <rect key="frame" x="1" y="28" width="25" height="120"/>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UHr-vH-nYg">
-                        <rect key="frame" x="58" y="107" width="12" height="33"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UHr-vH-nYg">
+                        <rect key="frame" x="58" y="107" width="31" height="33"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="31" id="5CS-2H-AUU"/>
+                            <constraint firstAttribute="height" constant="33" id="wzl-f8-eU9"/>
+                        </constraints>
                         <state key="normal" image="agreenNormal.png"/>
                         <state key="selected" image="agreenSelect.png"/>
+                        <connections>
+                            <action selector="actionToAgree:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="jJo-Uf-2LI"/>
+                        </connections>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我已同意并阅读《投必中圈主协议》" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7c-mH-LhW">
-                        <rect key="frame" x="78" y="115" width="229" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我已同意并阅读" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7c-mH-LhW">
+                        <rect key="frame" x="76" y="115" width="100" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.55294117649999996" green="0.55294117649999996" blue="0.55294117649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -52,19 +59,28 @@
                             <action selector="commitApplyAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="9wa-Nx-s7A"/>
                         </connections>
                     </button>
-                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入您的手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Prh-SF-grk">
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入您的手机号/微信/qq" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Prh-SF-grk">
                         <rect key="frame" x="58" y="77" width="279" height="30"/>
                         <color key="textColor" red="0.55294117649999996" green="0.55294117649999996" blue="0.55294117649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0FE-Kh-2G8">
+                        <rect key="frame" x="179" y="109" width="86" height="29"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <state key="normal" title="《圈主须知》"/>
+                        <connections>
+                            <action selector="actionToDelegate:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="spl-25-99R"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="4IY-p0-7wQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="17" id="5NV-lQ-7w1"/>
                     <constraint firstItem="hrf-jE-ZLN" firstAttribute="leading" secondItem="4IY-p0-7wQ" secondAttribute="trailing" constant="32.5" id="5TW-m5-a6x"/>
                     <constraint firstItem="M7c-mH-LhW" firstAttribute="top" secondItem="Prh-SF-grk" secondAttribute="bottom" constant="8" id="90X-mb-AaS"/>
-                    <constraint firstItem="M7c-mH-LhW" firstAttribute="leading" secondItem="UHr-vH-nYg" secondAttribute="trailing" constant="8" symbolic="YES" id="BEx-uC-ccK"/>
+                    <constraint firstItem="M7c-mH-LhW" firstAttribute="leading" secondItem="UHr-vH-nYg" secondAttribute="trailing" constant="-13" id="BEx-uC-ccK"/>
                     <constraint firstItem="hrf-jE-ZLN" firstAttribute="top" secondItem="Jt0-tj-6R6" secondAttribute="bottom" constant="13" id="H3W-KS-NA2"/>
+                    <constraint firstItem="0FE-Kh-2G8" firstAttribute="leading" secondItem="M7c-mH-LhW" secondAttribute="trailing" constant="3" id="JkH-dZ-QVd"/>
                     <constraint firstItem="Jt0-tj-6R6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="MeB-Tz-G1S"/>
                     <constraint firstAttribute="trailing" secondItem="hrf-jE-ZLN" secondAttribute="trailing" constant="58" id="RwL-TJ-fFW"/>
                     <constraint firstItem="Prh-SF-grk" firstAttribute="top" secondItem="hrf-jE-ZLN" secondAttribute="bottom" constant="5" id="V4W-bg-aRD"/>
@@ -81,6 +97,7 @@
                     <constraint firstItem="M7c-mH-LhW" firstAttribute="centerY" secondItem="UHr-vH-nYg" secondAttribute="centerY" id="imP-Uo-l1f"/>
                     <constraint firstItem="Ier-03-8Dj" firstAttribute="top" secondItem="UHr-vH-nYg" secondAttribute="bottom" constant="7" id="jjT-jK-Ko2"/>
                     <constraint firstItem="Prh-SF-grk" firstAttribute="centerX" secondItem="hrf-jE-ZLN" secondAttribute="centerX" id="l42-K8-rbj"/>
+                    <constraint firstItem="0FE-Kh-2G8" firstAttribute="centerY" secondItem="M7c-mH-LhW" secondAttribute="centerY" id="s0Y-6g-drV"/>
                     <constraint firstItem="hrf-jE-ZLN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="38" id="s7n-Ov-XLW"/>
                     <constraint firstAttribute="bottom" secondItem="UHr-vH-nYg" secondAttribute="bottom" constant="54.5" id="uIp-JL-a8z"/>
                     <constraint firstItem="Ier-03-8Dj" firstAttribute="leading" secondItem="hrf-jE-ZLN" secondAttribute="leading" id="y0T-Nv-mgN"/>
@@ -89,6 +106,8 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="agreeBtn" destination="UHr-vH-nYg" id="WUw-No-jgn"/>
+                <outlet property="commitBtn" destination="Ier-03-8Dj" id="nTn-88-vNS"/>
                 <outlet property="realName" destination="hrf-jE-ZLN" id="pCk-ra-VPG"/>
                 <outlet property="telephoneNum" destination="Prh-SF-grk" id="10b-wy-Yq0"/>
             </connections>

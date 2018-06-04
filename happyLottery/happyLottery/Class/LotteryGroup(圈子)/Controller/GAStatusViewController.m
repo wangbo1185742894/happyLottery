@@ -7,6 +7,7 @@
 //
 
 #import "GAStatusViewController.h"
+#import "GroupApplyInfoViewController.h"
 
 @interface GAStatusViewController ()
 
@@ -31,6 +32,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.leftBarButtonItem = nil;
+    self.navigationItem.hidesBackButton = YES;
     [self setScrollBackGround];
     self.title = @"圈子";
     if ([self.agentStatus isEqualToString:@"AGENT_APPLYING"]) {
@@ -62,7 +65,7 @@
     
     //初始化CAGradientlayer对象，使它的大小为UIView的大小
     gradientLayer = [CAGradientLayer layer];
-    gradientLayer.frame = self.contentView.bounds;
+    gradientLayer.frame = CGRectMake(0, 0,KscreenWidth, KscreenHeight);
     
     //将CAGradientlayer对象添加在我们要设置背景色的视图的layer层
     [self.contentView.layer insertSublayer:gradientLayer atIndex:0];
@@ -81,6 +84,12 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+//重新申请
+- (IBAction)actionToApplyAgain:(id)sender {
+    GroupApplyInfoViewController *applyInfoVC =  [[GroupApplyInfoViewController alloc]init];
+    [self.navigationController pushViewController:applyInfoVC animated:YES];
 }
 
 /*

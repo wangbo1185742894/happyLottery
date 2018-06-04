@@ -41,7 +41,7 @@
     
     //初始化CAGradientlayer对象，使它的大小为UIView的大小
     gradientLayer = [CAGradientLayer layer];
-    gradientLayer.frame = self.theView.bounds;
+    gradientLayer.frame = CGRectMake(0, 0,KscreenWidth, KscreenHeight);
     
     //将CAGradientlayer对象添加在我们要设置背景色的视图的layer层
     [self.theView.layer insertSublayer:gradientLayer atIndex:0];
