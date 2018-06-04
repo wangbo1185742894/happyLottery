@@ -2,20 +2,23 @@
 //  GroupViewController.m
 //  happyLottery
 //
-//  Created by 王博 on 2017/12/4.
-//  Copyright © 2017年 onlytechnology. All rights reserved.
+//  Created by LYJ on 2018/6/2.
+//  Copyright © 2018年 onlytechnology. All rights reserved.
 //
 
 #import "GroupViewController.h"
-#import <JavaScriptCore/JavaScriptCore.h>
+#import "AgentInfoModel.h"
+#import "GAStatusViewController.h"
+#import "GroupApplyInfoViewController.h"
 
-@interface GroupViewController ()<JSObjcGourpDelegate,UIWebViewDelegate>{
-    JSContext *context;
+
+@interface GroupViewController ()<AgentManagerDelegate>{
+    CAGradientLayer *gradientLayer;
+    
 }
-@property (weak, nonatomic) IBOutlet UIWebView *groupWebView;
-@property(assign,nonatomic)BOOL tabbarHidenstate;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *webDisBottom;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *webDisTop;
+
+@property (weak, nonatomic) IBOutlet UIView *theView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
@@ -23,70 +26,74 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.groupWebView.scrollView.bounces = NO;
-    self.viewControllerNo = @"A402";
-   self.groupWebView.delegate = self;
-    [self.groupWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/app/circle/index",H5BaseAddress]]]];
-    [self setWebView];
-}
-
--(void)setWebView{
-    if ([self isIphoneX]) {
-        self.webDisTop.constant = 44;
-    }else if ([Utility isIOS11After]) {
-        self.webDisTop.constant = 20;
-        self.webDisBottom.constant = 0;
-    }else{
-        self.webDisTop.constant = 20;
-        self.webDisBottom.constant = 44;
+    [self setScrollBackGround];
+    if (self.agentMan == nil) {
+        self.agentMan = [[AgentManager alloc]init];
     }
+    self.agentMan.delegate = self;
+//    self.
+    // Do any additional setup after loading the view from its nib.
 }
 
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
-    context = [webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
-    context[@"appObj"] = self;
-    context.exceptionHandler = ^(JSContext *context, JSValue *exceptionValue) {
-        context.exception = exceptionValue;
-    };
-    [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitUserSelect='none';"];
-    [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitTouchCallout='none';"];
-}
-
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
-{
-    NSURL *URL = request.URL;
+//实现背景渐变
+- (void)setScrollBackGround {
+    //初始化我们需要改变背景色的UIView，并添加在视图上
     
-    NSString *scheme = [NSString stringWithFormat:@"%@",URL];
-    return YES;
-}
--(void)webViewDidStartLoad:(UIWebView *)webView{
-    [self cleanWebviewCache];
-}
-
-#pragma JSObjcDelegate
--(void)telPhone{
-    //    [self showPromptText:code hideAfterDelay:1.8];
-    [self actionTelMe];
-  
+    //初始化CAGradientlayer对象，使它的大小为UIView的大小
+    gradientLayer = [CAGradientLayer layer];
+    gradientLayer.frame = self.theView.bounds;
+    
+    //将CAGradientlayer对象添加在我们要设置背景色的视图的layer层
+    [self.theView.layer insertSublayer:gradientLayer atIndex:0];
+    //设置渐变区域的起始和终止位置（范围为0-1）
+    gradientLayer.startPoint = CGPointMake(0, 0);
+    gradientLayer.endPoint = CGPointMake(0, 1);
+    
+    //设置颜色数组
+    gradientLayer.colors = @[(__bridge id)RGBCOLOR(35, 51, 94).CGColor,
+                                  (__bridge id)RGBCOLOR(18, 199, 146).CGColor];
+    //设置颜色分割点（范围：0-1）
+//    gradientLayer.locations = @[@(0.3f),@(0.5f), @(0.7f),@(1.0f)];
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    self.tabbarHidenstate =  self.tabBarController.tabBar.hidden;
-    self.navigationController.navigationBar.hidden = YES;
-    self.tabBarController.tabBar.hidden = NO;
+
+- (IBAction)applyForGroup:(id)sender {
+    NSDictionary *dic;
+    dic = @{@"cardCode":self.curUser.cardCode};
+    [self.agentMan getAgentInfo:dic];
 }
 
--(void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-     self.tabBarController.tabBar.hidden = self.tabbarHidenstate ;
-    self.navigationController.navigationBar.hidden = NO;
+-(void )getAgentInfodelegate:(NSDictionary *)param isSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    if (param == nil) {
+        [self showPromptViewWithText:msg hideAfter:1];
+        return;
+    }
+    NSString *agentStatus = [param objectForKey:@"agentStatus"];
+    
+    if ([agentStatus isEqualToString:@"NOT_AGENT"]) {
+        GroupApplyInfoViewController *applyInfoVC =  [[GroupApplyInfoViewController alloc]init];
+        [self.navigationController pushViewController:applyInfoVC animated:YES];
+    }
+    else {
+        GAStatusViewController *statusVC = [[GAStatusViewController alloc]init];
+        statusVC.agentStatus = agentStatus;
+        [self.navigationController pushViewController:statusVC animated:YES];
+    }
 }
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
 
 @end

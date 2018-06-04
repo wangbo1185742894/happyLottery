@@ -57,7 +57,7 @@ typedef enum {
 @property(nonatomic,strong)NSString *shareCode;
 @property(nonatomic,strong)NSString *lockStatus;
 // CIRCLE_MASTER("圈主"), CIRCLE_PERSON("圈民"), FREEDOM_PERSON("自由人");
-@property(nonatomic,assign)NSString * memberType;
+@property(nonatomic,strong)NSString * memberType;
 @property(nonatomic,strong)NSString * balance;
 @property(nonatomic,strong)NSString * notCash;
 @property(nonatomic,strong)NSString * whitelist;

@@ -1419,5 +1419,4 @@ static NSString *ID = @"LotteryAreaViewCell";
 }
 
 
-
 @end
