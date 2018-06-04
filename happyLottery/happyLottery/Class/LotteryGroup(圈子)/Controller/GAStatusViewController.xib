@@ -29,7 +29,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k7z-00-WSY">
-                    <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="apply_statusk.png" translatesAutoresizingMaskIntoConstraints="NO" id="QDB-XI-pKJ">
                             <rect key="frame" x="117" y="137" width="140" height="96"/>
@@ -54,7 +54,7 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="如有疑问可拨打电话:400-600-5558" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xci-gN-CaP">
-                            <rect key="frame" x="48" y="523" width="279" height="21"/>
+                            <rect key="frame" x="48" y="587" width="279" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="7t8-E1-jEH"/>
                                 <constraint firstAttribute="width" constant="279" id="c9p-dt-60O"/>
@@ -141,7 +141,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="k7z-00-WSY" secondAttribute="trailing" id="5iF-gq-RA0"/>
-                <constraint firstItem="k7z-00-WSY" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="Ucj-hn-oqQ"/>
+                <constraint firstItem="k7z-00-WSY" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Ucj-hn-oqQ"/>
                 <constraint firstItem="k7z-00-WSY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="X9O-of-CrB"/>
                 <constraint firstAttribute="bottom" secondItem="k7z-00-WSY" secondAttribute="bottom" id="kDI-Dx-bq9"/>
             </constraints>
