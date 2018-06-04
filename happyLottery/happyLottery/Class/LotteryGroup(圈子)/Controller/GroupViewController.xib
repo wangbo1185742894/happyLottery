@@ -9,6 +9,11 @@
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Fangzheng-xiyuan-jianti.ttf">
+            <string>FZY1JW--GB1-0</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GroupViewController">
             <connections>
@@ -44,13 +49,13 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="309"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="千里马常有，而伯乐不常有。你就是那匹千里马，                 投必中邀你一起合作共赢" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7H-SM-XCi">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="千里马常有，而伯乐不常有。 你就是那匹千里马，                 投必中邀你一起合作共赢" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7H-SM-XCi">
                                     <rect key="frame" x="33" y="643" width="198" height="62"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="62" id="c15-zB-sbt"/>
                                         <constraint firstAttribute="width" constant="198" id="oz6-Ru-HQA"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <fontDescription key="fontDescription" name="FZY1JW--GB1-0" family="FZXiYuan-M01S" pointSize="14"/>
                                     <color key="textColor" red="0.066666666669999999" green="0.91764705879999997" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -74,8 +79,8 @@
                                         <constraint firstAttribute="width" constant="155" id="W5z-LC-4w1"/>
                                         <constraint firstAttribute="height" constant="105" id="nIg-gT-RoT"/>
                                     </constraints>
-                                    <string key="text">注册就送，                                      充值也送，                                   中奖了还送，                            裁判的最佳平台。                     0风险，月入万元不是梦                           </string>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <string key="text">注册就送，                                      充值也送，                                   中奖了还送，                            裁判的最佳平台。                0风险，月入万元不是梦                           </string>
+                                    <fontDescription key="fontDescription" name="FZY1JW--GB1-0" family="FZXiYuan-M01S" pointSize="14"/>
                                     <color key="textColor" red="0.066666666669999999" green="0.91764705879999997" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -109,7 +114,7 @@
                                         <constraint firstAttribute="width" constant="148" id="bMu-py-wua"/>
                                         <constraint firstAttribute="height" constant="49" id="oCt-Xq-aaU"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <fontDescription key="fontDescription" name="FZY1JW--GB1-0" family="FZXiYuan-M01S" pointSize="14"/>
                                     <color key="textColor" red="0.066666666666666666" green="0.91764705882352937" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
