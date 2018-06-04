@@ -11,3 +11,8 @@
 @implementation AgentInfoModel
 
 @end
+
+@implementation AgentDynamic
+
+@end
+

@@ -869,6 +869,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         } else {
             //圈主or圈民
             gouCaiNavVC = [self groupDisplayNav];
+            gouCaiNavVC.navigationBar.hidden = YES;
         }
         tabBarControllerMain.viewControllers = @[homeNavVC,genTouNavVC,gouCaiNavVC,faXianNavVC, memberNavVC];
         
@@ -889,7 +890,6 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 - (UINavigationController *)groupDisplayNav{
     NSMutableDictionary *tabAttrs = [NSMutableDictionary dictionaryWithCapacity: 3];
     tabAttrs[@"tabTitle"] = @"圈子";
-    tabAttrs[@"title"] = @"圈子";
     tabAttrs[@"itemNormal"] = @"quanzi_normal";
     tabAttrs[@"itemSelected"] = @"quanzi_secelcted";
     tabAttrs[@"rootVC"] = @"GroupNewViewController";

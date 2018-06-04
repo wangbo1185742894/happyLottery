@@ -12,6 +12,14 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.cornorView.layer.masksToBounds = YES;
+    self.cornorView.layer.cornerRadius = 5;
+    self.headUrlImge.clipsToBounds = NO;
+    self.headUrlImge.contentMode = UIViewContentModeScaleAspectFit;
+    self.headUrlImge.layer.cornerRadius = self.headUrlImge.mj_h / 2;
+    self.headUrlImge.layer.masksToBounds = YES;
+    self.headUrlImge.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.headUrlImge.layer.borderWidth = 2;
     // Initialization code
 }
 
@@ -19,6 +27,22 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)reloadDate:(AgentInfoModel *)model{
+    [self.headUrlImge sd_setImageWithURL:[NSURL URLWithString:model.headUrl] placeholderImage:[UIImage imageNamed:@"usermine.png"] completed:nil];
+    if (model.circleName.length == 0) {
+        self.circleNameLab.text = [NSString stringWithFormat:@"@%@",model._id];
+    } else {
+        self.circleNameLab.text = model.circleName;
+    }
+    if (model.notice.length == 0) {
+        self.circleNotice.text = @"投必中圈子帮你发现，更多中奖的理由和信息...";
+    } else {
+        self.circleNotice.text = model.notice;
+    }
+    self.memberCountLab.text = model.memberCount;
+    self.totalBonusLab.text = [NSString stringWithFormat:@"%.2f",[model.totalBonus doubleValue]];
 }
 
 @end

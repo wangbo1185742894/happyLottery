@@ -11,4 +11,6 @@
 
 @interface GroupNewViewController : BaseViewController
 
+@property(nonatomic,copy) NSString *agentId;
+
 @end

@@ -10,4 +10,12 @@
 
 @interface GroupFollowCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *followCountLab;
+
+@property (weak, nonatomic) IBOutlet UIButton *gendanBtn;
+
+@property (weak, nonatomic) IBOutlet UIView *cornorView;
+
+- (void)reloadDate:(NSString *)followCount;
+
 @end
