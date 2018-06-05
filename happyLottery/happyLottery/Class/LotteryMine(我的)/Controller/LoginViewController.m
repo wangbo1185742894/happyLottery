@@ -113,8 +113,7 @@ static NSInteger seq = 0;
 - (void)delayMethod{
     AppDelegate *delegate  = (AppDelegate *)[UIApplication sharedApplication].delegate;
     if (delegate.showGroup) {
-        UITabBarController *rootVC = (UITabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
-        rootVC.selectedIndex = 2;
+        [delegate setGroupView];
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
