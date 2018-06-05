@@ -57,13 +57,35 @@
 }
 
 
+-(NSString *)setMatchData:(NSString *)time{
+    if ([time containsString:@"-"]) {
+        NSString *curDateM = [Utility timeStringFromFormat:@"MM" withDate:[NSDate date]];
+        NSString *curDateD = [Utility timeStringFromFormat:@"dd" withDate:[NSDate date]];
+        NSString *matchDateM =[[[time componentsSeparatedByString:@" "] firstObject] componentsSeparatedByString:@"-"][1];
+        NSString *matchDateD =[[[[time componentsSeparatedByString:@" "] firstObject] componentsSeparatedByString:@"-"] lastObject];
+        if ([curDateM isEqualToString:matchDateM]) {
+            NSInteger dayNum = [matchDateD integerValue] - [curDateD integerValue];
+            if (dayNum == 0) {  // == 0 今天  ==1 明天   == 2  后天   == 3 大后天
+                return [NSString stringWithFormat:@"今日%@",[time substringWithRange:NSMakeRange(11, 5)]];
+            }else{
+                return [NSString stringWithFormat:@"%@", [time substringWithRange:NSMakeRange(5, 11)]];
+            }
+        }else{
+            return [NSString stringWithFormat:@"%@", [time substringWithRange:NSMakeRange(5, 11)]];
+        }
+    }
+    return time;
+}
+
+
+
 - (void)reloadDate :(AgentDynamic *)model{
     NSString *htmlStr = [model.dynamic stringByReplacingOccurrencesOfString:@"<p>" withString:@"<p style='color:fea513'>"];
     NSAttributedString *attStr = [self getAttStrByHtmlStr:htmlStr];
     NSMutableAttributedString *mubStr = [[NSMutableAttributedString alloc]initWithAttributedString:attStr];
     [self getRangeStr:mubStr findText:@"\n"];
     self.dynamicLab.attributedText = mubStr;
-    self.createTimeLab.text = model.createTime;
+    self.createTimeLab.text = [self setMatchData:model.createTime];
 }
 
 @end
