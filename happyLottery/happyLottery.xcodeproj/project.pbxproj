@@ -1141,8 +1141,6 @@
 		F9632F58200C9A8B00F69D23 /* IntegeralChangeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9632F56200C9A8B00F69D23 /* IntegeralChangeViewController.xib */; };
 		F96436E3209308DA00145F1C /* SSQTouZhuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F96436E2209308DA00145F1C /* SSQTouZhuViewController.xib */; };
 		F96436E5209308E300145F1C /* DLTTouZhuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F96436E4209308E300145F1C /* DLTTouZhuViewController.xib */; };
-		F96555FB20C4DB820017066C /* pic_beijingjili@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F96555F920C4DB810017066C /* pic_beijingjili@3x.png */; };
-		F96555FC20C4DB820017066C /* pic_beijingjili@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F96555FA20C4DB820017066C /* pic_beijingjili@2x.png */; };
 		F965560020C5019B0017066C /* AdvantageLeftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F96555FE20C5019B0017066C /* AdvantageLeftCell.m */; };
 		F965560120C5019B0017066C /* AdvantageLeftCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F96555FF20C5019B0017066C /* AdvantageLeftCell.xib */; };
 		F965560520C504D20017066C /* PromptCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F965560320C504D20017066C /* PromptCell.m */; };
@@ -3096,8 +3094,6 @@
 		F9632F56200C9A8B00F69D23 /* IntegeralChangeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntegeralChangeViewController.xib; sourceTree = "<group>"; };
 		F96436E2209308DA00145F1C /* SSQTouZhuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SSQTouZhuViewController.xib; sourceTree = "<group>"; };
 		F96436E4209308E300145F1C /* DLTTouZhuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DLTTouZhuViewController.xib; sourceTree = "<group>"; };
-		F96555F920C4DB810017066C /* pic_beijingjili@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pic_beijingjili@3x.png"; path = "../../../../../Desktop/审核切图/pic_beijingjili@3x.png"; sourceTree = "<group>"; };
-		F96555FA20C4DB820017066C /* pic_beijingjili@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pic_beijingjili@2x.png"; path = "../../../../../Desktop/审核切图/pic_beijingjili@2x.png"; sourceTree = "<group>"; };
 		F96555FD20C5019B0017066C /* AdvantageLeftCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdvantageLeftCell.h; sourceTree = "<group>"; };
 		F96555FE20C5019B0017066C /* AdvantageLeftCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdvantageLeftCell.m; sourceTree = "<group>"; };
 		F96555FF20C5019B0017066C /* AdvantageLeftCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvantageLeftCell.xib; sourceTree = "<group>"; };
@@ -4627,16 +4623,13 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-
 				2D7B8DA120C541BA000EAFB1 /* icon_share@2x.png */,
 				2D7B8DA220C541BA000EAFB1 /* icon_share@3x.png */,
 				2D7B8DA520C541BB000EAFB1 /* icon_shezhi@2x.png */,
 				2D7B8DA320C541BA000EAFB1 /* icon_shezhi@3x.png */,
 				2D7B8DA020C541B9000EAFB1 /* pic_beijing@2x.png */,
 				2D7B8DA420C541BA000EAFB1 /* pic_beijing@3x.png */,
-
 				F965560A20C50F700017066C /* Fangzheng-xiyuan-jianti.ttf */,
-
 				F9BC6DE420C285320037998B /* GroupImage */,
 				F958F16D20BC04D900F30690 /* icongoucai  */,
 				F958F16A20BBFE7700F30690 /* gendanxiangqing @2x.png */,
@@ -6398,8 +6391,6 @@
 				F965561320C52EFD0017066C /* pic_wangguan@3x.png */,
 				F965560E20C52DF30017066C /* pic_quanzibeijing@2x.png */,
 				F965560F20C52DF40017066C /* pic_quanzibeijing@3x.png */,
-				F96555FA20C4DB820017066C /* pic_beijingjili@2x.png */,
-				F96555F920C4DB810017066C /* pic_beijingjili@3x.png */,
 				F9BC6E5520C2DD3C0037998B /* xuhao1@2x.png */,
 				F9BC6E5620C2DD3C0037998B /* xuhao1@3x.png */,
 				F9BC6E5120C2DD3A0037998B /* xuhao2@2x.png */,
@@ -6863,7 +6854,6 @@
 				2D0EEA9D201582C300B0769C /* yuce_detail_recom@2x.png in Resources */,
 				2D05C85620A43631001A8953 /* icon_niurenbang@2x.png in Resources */,
 				F958F18220BC04FF00F30690 /* icon_daletoushouye@3x.png in Resources */,
-				F96555FB20C4DB820017066C /* pic_beijingjili@3x.png in Resources */,
 				2D05C87A20A58416001A8953 /* FollowListViewController.xib in Resources */,
 				2D205FF41FFC7AF30086E266 /* newFeatureView-3.png in Resources */,
 				2D4B1E7F1FDF684E0034B708 /* weishoucang@2x.png in Resources */,
@@ -6953,7 +6943,6 @@
 				2D0EEA742011DE9600B0769C /* unselected@3x.png in Resources */,
 				2D0E23EA2019A6D90098DA40 /* integral@2x.png in Resources */,
 				2D4B1E8D1FDF684E0034B708 /* yucezhanji@2x.png in Resources */,
-				F96555FC20C4DB820017066C /* pic_beijingjili@2x.png in Resources */,
 				F9BC6DFD20C285620037998B /* quanzu_renshu@2x.png in Resources */,
 				2D7B8D9020C4D53D000EAFB1 /* MyCircleViewController.xib in Resources */,
 				2D3617662061FA3D003093F9 /* dan_notWin@2x.png in Resources */,

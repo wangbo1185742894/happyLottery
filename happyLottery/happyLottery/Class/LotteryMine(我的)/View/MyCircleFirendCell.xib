@@ -44,9 +44,22 @@
                         <color key="textColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0Y-0j-7Tr">
+                        <rect key="frame" x="0.0" y="68" width="360" height="1"/>
+                        <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="Q2M-lE-NNz"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="e0Y-0j-7Tr" secondAttribute="trailing" id="7af-hd-Sl5"/>
+                    <constraint firstItem="e0Y-0j-7Tr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="At9-3j-O3X"/>
                     <constraint firstItem="Ak1-4D-ffs" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="QRR-qu-eRD"/>
+                    <constraint firstAttribute="bottom" secondItem="e0Y-0j-7Tr" secondAttribute="bottom" id="WhD-U5-4ge"/>
                     <constraint firstItem="G8P-O6-2zE" firstAttribute="centerY" secondItem="GFM-7O-ySy" secondAttribute="centerY" id="Zmv-SN-GJv"/>
                     <constraint firstItem="Ak1-4D-ffs" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="dj5-K5-QJ9"/>
                     <constraint firstItem="GFM-7O-ySy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="fo4-Zg-ad6"/>

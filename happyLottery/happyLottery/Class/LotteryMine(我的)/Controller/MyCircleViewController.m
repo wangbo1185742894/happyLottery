@@ -51,7 +51,7 @@
 }
 
 -(void)loadData{
-    [self.agentMan getMyAgentInfo:@{@"cardCode":@"10000218"}];
+    [self.agentMan getMyAgentInfo:@{@"cardCode":self.curUser.cardCode}];
 }
 
 
@@ -65,13 +65,14 @@
     self.labYue.text = self.agentInfoModel.commission;
     NSMutableArray *listX = [NSMutableArray arrayWithCapacity:0];
     NSMutableArray *listY = [NSMutableArray arrayWithCapacity:0];
-    for (int i = 0; i < self.agentInfoModel.agentTotalList.count; i ++) {
+    for (int i = self.agentInfoModel.agentTotalList.count- 1; i >=0 ; i --) {
         MyAgentTotalModel *model = self.agentInfoModel.agentTotalList[i];
         [listX addObject: [model.totalDay substringFromIndex:5] ];
         [listY addObject: model.totalCommission ];
     }
    self. LCView.xValues = listX;
-   self. LCView.yValues =@[@23,@35,@89];
+    self. LCView.yValues = listY ;
+    //@[@23,@35,@89];
     [self setupConditions];
 }
 

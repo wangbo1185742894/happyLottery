@@ -121,6 +121,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MyCircleFirendCell *cell = [tableView dequeueReusableCellWithIdentifier:KMyCircleFirendCell];
     [cell loadData:self.personArray[indexPath.section][indexPath.row]];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 

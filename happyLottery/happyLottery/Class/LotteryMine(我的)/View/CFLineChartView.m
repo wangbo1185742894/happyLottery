@@ -268,16 +268,59 @@ static CGFloat allW;    // 整个图表宽度
            
     }
   
+//    CAShapeLayer *layer = [[CAShapeLayer alloc] init];
+//    layer.path = path.CGPath;
+//    layer.strokeColor = [UIColor clearColor].CGColor; //.
+//    layer.fillColor =RGBCOLOR(215, 250, 240).CGColor;
+//    [self.bgView.layer addSublayer:layer];
     
-    CAShapeLayer *layer = [[CAShapeLayer alloc] init];
-    layer.path = path.CGPath;
-    layer.strokeColor = [UIColor clearColor].CGColor; //.
-    layer.fillColor =RGBCOLOR(215, 250, 240).CGColor;
+    //创建CGContextRef
+    UIGraphicsBeginImageContext(self.bgView.bounds.size);
+    CGContextRef gc = UIGraphicsGetCurrentContext();
     
-    [self.bgView.layer addSublayer:layer];
+    //创建CGMutablePathRef
+    //绘制渐变
+    [self drawLinearGradient:gc path:path.CGPath startColor:RGBCOLOR(215, 250, 240).CGColor endColor:[UIColor whiteColor].CGColor];
+    
+    //注意释放CGMutablePathRef
+//    CGPathRelease(path.CGPath);
+    
+    //从Context中获取图像，并显示在界面上
+    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
+    [self.bgView addSubview:imgView];
     
 }
-
+- (void)drawLinearGradient:(CGContextRef)context
+                      path:(CGPathRef)path
+                startColor:(CGColorRef)startColor
+                  endColor:(CGColorRef)endColor
+{
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    CGFloat locations[] = { 0.0, 1.0 };
+    
+    NSArray *colors = @[(__bridge id) startColor, (__bridge id) endColor];
+    
+    CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef) colors, locations);
+    
+    
+    CGRect pathRect = CGPathGetBoundingBox(path);
+    
+    //具体方向可根据需求修改
+    CGPoint startPoint = CGPointMake(CGRectGetMaxX(pathRect), CGRectGetMinY(pathRect));
+    CGPoint endPoint = CGPointMake(CGRectGetMaxX(pathRect), CGRectGetMaxY(pathRect));
+    
+    CGContextSaveGState(context);
+    CGContextAddPath(context, path);
+    CGContextClip(context);
+    CGContextDrawLinearGradient(context, gradient, startPoint, endPoint, 0);
+    CGContextRestoreGState(context);
+    
+    CGGradientRelease(gradient);
+    CGColorSpaceRelease(colorSpace);
+}
 #pragma mark - 画折线\曲线
 - (void)drawFoldLineWithLineChartType:(LineChartType)type{
     UIBezierPath *path = [UIBezierPath bezierPath];
