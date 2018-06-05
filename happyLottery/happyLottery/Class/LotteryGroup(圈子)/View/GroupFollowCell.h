@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol GroupFollowDelegate
+
+- (void)groupFollowScheme;
+
+@end
+
 @interface GroupFollowCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *followCountLab;
@@ -15,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *gendanBtn;
 
 @property (weak, nonatomic) IBOutlet UIView *cornorView;
+
+@property (weak, nonatomic) id<GroupFollowDelegate> delegate;
 
 - (void)reloadDate:(NSString *)followCount;
 

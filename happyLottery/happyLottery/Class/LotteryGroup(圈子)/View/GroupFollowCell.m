@@ -29,4 +29,7 @@
     self.followCountLab.text = followCount;
 }
 
+- (IBAction)followScheme:(id)sender {
+    [self.delegate groupFollowScheme];
+}
 @end

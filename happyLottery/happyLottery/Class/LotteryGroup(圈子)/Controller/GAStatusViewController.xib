@@ -109,7 +109,7 @@
                                 <constraint firstAttribute="height" constant="1" id="WWc-s9-7vj"/>
                             </constraints>
                         </imageView>
-                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="       您的入驻申请已提交审核，              工作人员会在3个工作日内联系您，                  请保持手机号码畅通。 " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKS-dS-YGJ">
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="       您的入驻申请已提交审核，              工作人员会在3个工作日内联系您。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKS-dS-YGJ">
                             <rect key="frame" x="52" y="300" width="271" height="63"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="271" id="Ait-VO-lGS"/>

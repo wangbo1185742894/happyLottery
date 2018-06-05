@@ -43,10 +43,11 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRn-mj-dJt">
-                        <rect key="frame" x="38" y="46" width="265" height="17"/>
-                        <color key="backgroundColor" red="0.70588235290000001" green="0.69411764710000001" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <rect key="frame" x="38" y="46" width="309" height="20"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="265" id="tKn-VX-4ow"/>
+                            <constraint firstAttribute="height" constant="20" id="dH5-Oy-WGB"/>
+                            <constraint firstAttribute="width" constant="309" id="g1h-aH-pLd"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="FZY1JW--GB1-0" family="FZXiYuan-M01S" pointSize="15"/>
                         <nil key="textColor"/>
@@ -56,16 +57,22 @@
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="Psx-UY-R2G" secondAttribute="bottom" id="3qd-F3-MGs"/>
                     <constraint firstItem="5Pi-1m-eVX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="94o-6F-EXU"/>
+                    <constraint firstItem="uRn-mj-dJt" firstAttribute="leading" secondItem="MZh-1u-cIV" secondAttribute="leading" id="Ika-aV-xec"/>
                     <constraint firstItem="MZh-1u-cIV" firstAttribute="leading" secondItem="5Pi-1m-eVX" secondAttribute="trailing" constant="8" id="Nv2-N0-8ac"/>
-                    <constraint firstItem="uRn-mj-dJt" firstAttribute="leading" secondItem="MZh-1u-cIV" secondAttribute="leading" id="O1Z-AB-fT0"/>
-                    <constraint firstItem="uRn-mj-dJt" firstAttribute="top" secondItem="MZh-1u-cIV" secondAttribute="bottom" constant="15" id="ZgD-T4-Zu5"/>
                     <constraint firstItem="MZh-1u-cIV" firstAttribute="centerY" secondItem="5Pi-1m-eVX" secondAttribute="centerY" id="khD-Bc-NkM"/>
                     <constraint firstItem="Psx-UY-R2G" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="qZY-91-tnz"/>
                     <constraint firstItem="Psx-UY-R2G" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="wE3-Ne-aIn"/>
+                    <constraint firstItem="uRn-mj-dJt" firstAttribute="leading" secondItem="MZh-1u-cIV" secondAttribute="leading" id="xq8-pd-gqC"/>
                     <constraint firstItem="Psx-UY-R2G" firstAttribute="centerX" secondItem="5Pi-1m-eVX" secondAttribute="centerX" id="yqJ-eg-XGv"/>
+                    <constraint firstItem="uRn-mj-dJt" firstAttribute="top" secondItem="MZh-1u-cIV" secondAttribute="bottom" constant="15" id="zZB-qh-HXr"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="createTimeLab" destination="MZh-1u-cIV" id="3tA-sO-rHE"/>
+                <outlet property="dynamicLab" destination="uRn-mj-dJt" id="Y9t-LD-Oqq"/>
+            </connections>
+            <point key="canvasLocation" x="24.5" y="51.5"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -1518,6 +1518,8 @@
 		F9F91B6D200EF81C0036DD2A /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F91B6C200EF81C0036DD2A /* AdSupport.framework */; };
 		F9F91B6F200EF82B0036DD2A /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F91B6E200EF82A0036DD2A /* UserNotifications.framework */; };
 		F9F91B71200EF83A0036DD2A /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F91B70200EF83A0036DD2A /* libresolv.tbd */; };
+		F9FC0BEF20C60AA000BCCF59 /* GroupFollowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9FC0BEC20C60A9F00BCCF59 /* GroupFollowViewController.xib */; };
+		F9FC0BF020C60AA000BCCF59 /* GroupFollowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FC0BEE20C60AA000BCCF59 /* GroupFollowViewController.m */; };
 		F9FC15242062208B009BAD68 /* HomeGJItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9FC15222062208B009BAD68 /* HomeGJItemViewCell.xib */; };
 		F9FC153220622A0F009BAD68 /* WCHomeGYJItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9FC153120622A0F009BAD68 /* WCHomeGYJItemViewCell.xib */; };
 		F9FC153B20625815009BAD68 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9FC153820625814009BAD68 /* WebViewController.xib */; };
@@ -3509,6 +3511,9 @@
 		F9F91B6E200EF82A0036DD2A /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		F9F91B70200EF83A0036DD2A /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		F9F91B72200EF8EE0036DD2A /* happyLottery.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = happyLottery.entitlements; sourceTree = "<group>"; };
+		F9FC0BEC20C60A9F00BCCF59 /* GroupFollowViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupFollowViewController.xib; sourceTree = "<group>"; };
+		F9FC0BED20C60A9F00BCCF59 /* GroupFollowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupFollowViewController.h; sourceTree = "<group>"; };
+		F9FC0BEE20C60AA000BCCF59 /* GroupFollowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupFollowViewController.m; sourceTree = "<group>"; };
 		F9FC15222062208B009BAD68 /* HomeGJItemViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeGJItemViewCell.xib; sourceTree = "<group>"; };
 		F9FC153120622A0F009BAD68 /* WCHomeGYJItemViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WCHomeGYJItemViewCell.xib; sourceTree = "<group>"; };
 		F9FC153820625814009BAD68 /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
@@ -5092,6 +5097,9 @@
 		2DDEDBFC1FD4DBB5007AEBF7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F9FC0BED20C60A9F00BCCF59 /* GroupFollowViewController.h */,
+				F9FC0BEE20C60AA000BCCF59 /* GroupFollowViewController.m */,
+				F9FC0BEC20C60A9F00BCCF59 /* GroupFollowViewController.xib */,
 				F9BC6DC620C228290037998B /* GroupNewViewController.h */,
 				F9BC6DC720C228290037998B /* GroupNewViewController.m */,
 				F9BC6DC820C228290037998B /* GroupNewViewController.xib */,
@@ -7599,6 +7607,7 @@
 				2D7B1391204E82FD0035AE89 /* pic_jingzu_@2x.png in Resources */,
 				F97D82EA206A534D00721336 /* common_top_bar_back.png in Resources */,
 				2D5171FE200C942400C3CD7F /* pageCodeConfig.plist in Resources */,
+				F9FC0BEF20C60AA000BCCF59 /* GroupFollowViewController.xib in Resources */,
 				2D739CE11FEB45E300264044 /* matchcleanall@3x.png in Resources */,
 				F9BC6E4120C2D1C20037998B /* agreenSelect@3x.png in Resources */,
 				F9E0DF1D2019695C0089F51D /* MineViewController.xib in Resources */,
@@ -7926,6 +7935,7 @@
 				F95C7EF42071DAD5005990F5 /* SSQTouZhuViewController.m in Sources */,
 				2D3617802068DFEC003093F9 /* OptionSelectedView.m in Sources */,
 				2DDEDC2F1FD51C8B007AEBF7 /* SOAPRequest.m in Sources */,
+				F9FC0BF020C60AA000BCCF59 /* GroupFollowViewController.m in Sources */,
 				2D06002B1FFDCD9F009E7568 /* NSBundle+MJRefresh.m in Sources */,
 				2D739C5B1FE3B31500264044 /* FMDatabase.m in Sources */,
 				F9B5D919205FB94700C9F6DC /* WordCupHomeItem.m in Sources */,

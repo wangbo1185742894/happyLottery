@@ -13,4 +13,8 @@
 
 - (void)reloadDate :(AgentDynamic *)model;
 
+@property (weak, nonatomic) IBOutlet UILabel *createTimeLab;
+
+@property (weak, nonatomic) IBOutlet UILabel *dynamicLab;
+
 @end

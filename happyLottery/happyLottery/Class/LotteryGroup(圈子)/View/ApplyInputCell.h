@@ -17,7 +17,7 @@
 @end
 
 
-@interface ApplyInputCell : UITableViewCell
+@interface ApplyInputCell: UITableViewCell
 
 @property(weak,nonatomic)id <ApplyInputCellDelegate>delegate;
 

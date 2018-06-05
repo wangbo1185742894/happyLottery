@@ -32,10 +32,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.leftBarButtonItem = nil;
-    self.navigationItem.hidesBackButton = YES;
+//    self.navigationItem.leftBarButtonItem = nil;
+//    self.navigationItem.hidesBackButton = YES;
     [self setScrollBackGround];
-    self.title = @"圈子";
+    self.title = @"审核状态";
     if ([self.agentStatus isEqualToString:@"AGENT_APPLYING"]) {
         self.statusLabel.text = @"审核中";
         self.waitImage.hidden = NO;

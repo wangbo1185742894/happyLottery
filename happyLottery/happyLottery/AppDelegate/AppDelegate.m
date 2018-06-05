@@ -869,7 +869,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         } else {
             //圈主or圈民
             gouCaiNavVC = [self groupDisplayNav];
-            gouCaiNavVC.navigationBar.hidden = YES;
+//            gouCaiNavVC.navigationBar.hidden = YES;
         }
         tabBarControllerMain.viewControllers = @[homeNavVC,genTouNavVC,gouCaiNavVC,faXianNavVC, memberNavVC];
         

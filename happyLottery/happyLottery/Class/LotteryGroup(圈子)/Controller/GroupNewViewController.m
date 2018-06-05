@@ -12,12 +12,13 @@
 #import "GroupFollowCell.h"
 #import "AgentDynamicCell.h"
 #import "AgentHeaderView.h"
+#import "GroupFollowViewController.h"
 #define KAgentInfoCell @"AgentInfoCell"
 #define KGroupFollowCell @"GroupFollowCell"
 #define KAgentDynamicCell @"AgentDynamicCell"
 
 
-@interface GroupNewViewController ()<UITableViewDelegate,UITableViewDataSource,AgentManagerDelegate>
+@interface GroupNewViewController ()<UITableViewDelegate,UITableViewDataSource,AgentManagerDelegate,GroupFollowDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *groupTableView;
 
@@ -32,6 +33,16 @@
     AgentDynamic *dynamicModel;
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBar.hidden = NO;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setTableView];
@@ -44,7 +55,7 @@
     NSDictionary *dic = @{@"cardCode":self.curUser.cardCode};
 //    [self.agentMan listAgentDynamic:dic];
     [self.agentMan getAgentInfo:dic];
-//    [self showLoadingText:@"正在加载"];
+    [self showLoadingText:@"正在加载"];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -66,7 +77,6 @@
     }
     model = [[AgentInfoModel alloc]initWith:param];
     NSDictionary *dic = @{@"agentId":model._id};
-    [self.agentMan listAgentDynamic:dic];
     [self.agentMan getAgentFollowCount:dic];
 }
 
@@ -85,6 +95,7 @@
     }
     
     [self.groupTableView reloadData];
+    [self hideLoadingView];
 }
 
 -(void )getAgentFollowCountdelegate:(NSString *)string isSuccess:(BOOL)success errorMsg:(NSString *)msg{
@@ -93,7 +104,15 @@
         return;
     }
     followCount = string;
-    [self.groupTableView reloadData];
+    NSDictionary *dic = @{@"agentId":model._id};
+    [self.agentMan listAgentDynamic:dic];
+}
+
+- (void)groupFollowScheme{
+    GroupFollowViewController *groupVc =  [[GroupFollowViewController alloc]init];
+    groupVc.agentId= model._id;
+    groupVc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:groupVc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -122,12 +141,15 @@
     if (section == 1) {
         [headerView.headImage setImage:[UIImage imageNamed:@"pic_quanneigendan"] forState:UIControlStateNormal];
         headerView.headTitle.text = nil;
+        return headerView;
     }
     if (section == 2) {
         [headerView.headImage setImage:[UIImage imageNamed:@"pic_quanneidongtai"] forState:UIControlStateNormal];
         headerView.headTitle.text = @"实时更新圈内好友动态";
+        return headerView;
     }
-    return headerView;
+    UIView *view;
+    return view;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -151,22 +173,27 @@
     if (indexPath.section == 0) {
         AgentInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:KAgentInfoCell];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell reloadDate:model];
+        if (model!=nil) {
+            [cell reloadDate:model];
+        }
         return cell;
     }
     if (indexPath.section == 1) {
         GroupFollowCell *cell = [tableView dequeueReusableCellWithIdentifier:KGroupFollowCell];
+        cell.delegate = self;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell reloadDate:followCount];
+        if (model != nil) {
+            [cell reloadDate:followCount];
+        }
         return cell;
     }
     AgentDynamicCell *cell = [tableView dequeueReusableCellWithIdentifier:KAgentDynamicCell];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (self.dynamicArray.count >0) {
-        dynamicModel = (AgentDynamic *)self.dynamicArray[indexPath.row-2];
+        dynamicModel = [self.dynamicArray objectAtIndex:indexPath.row];
+        [cell reloadDate:dynamicModel];
     }
     
-//    []
     return cell;
 }
 

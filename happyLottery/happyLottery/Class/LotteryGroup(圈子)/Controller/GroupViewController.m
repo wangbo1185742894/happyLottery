@@ -77,10 +77,12 @@
     
     if ([agentStatus isEqualToString:@"NOT_AGENT"]) {
         GroupApplyInfoViewController *applyInfoVC =  [[GroupApplyInfoViewController alloc]init];
+        applyInfoVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:applyInfoVC animated:YES];
     }
     else {
         GAStatusViewController *statusVC = [[GAStatusViewController alloc]init];
+        statusVC.hidesBottomBarWhenPushed = YES;
         statusVC.agentStatus = agentStatus;
         [self.navigationController pushViewController:statusVC animated:YES];
     }

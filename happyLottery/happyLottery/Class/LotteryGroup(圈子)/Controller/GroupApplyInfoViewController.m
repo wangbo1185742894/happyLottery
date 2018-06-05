@@ -23,15 +23,17 @@
 #define KAdvantageLeftCell  @"AdvantageLeftCell"
 #define KPromptCell  @"PromptCell"
 
+#define NMUBERS @"0123456789./*-+~!@#$%^&()_+-=,./;'[]{}:<>?`"
 
 
-@interface GroupApplyInfoViewController ()<UITableViewDelegate,UITableViewDataSource,ApplyInputCellDelegate,AgentManagerDelegate>
+@interface GroupApplyInfoViewController ()<UITableViewDelegate,UITableViewDataSource,ApplyInputCellDelegate,AgentManagerDelegate,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
 @implementation GroupApplyInfoViewController{
     NSArray *array;
+    ApplyInputCell *cell;
 }
 
 - (void)viewDidLoad {
@@ -65,6 +67,10 @@
     
 }
 
+-(void)navigationBackToLastPage{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
 #pragma mark  ======== tableViewDelegate==========
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -92,8 +98,10 @@
         return cell;
     }
     if (indexPath.row == 1) {
-        ApplyInputCell *cell = [tableView dequeueReusableCellWithIdentifier:KApplyInputCell];
+        cell = [tableView dequeueReusableCellWithIdentifier:KApplyInputCell];
         cell.delegate = self;
+        cell.realName.delegate = self;
+        cell.telephoneNum.delegate = self;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
@@ -121,6 +129,41 @@
     return cell;
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if (range.length == 1 && string.length == 0) {
+        return YES;
+    }
+    else if (textField.text.length >= 20) {
+        textField.text = [textField.text substringToIndex:20];
+        return NO;
+    }
+    
+    //只能输入汉字或英文。
+
+    if (textField == cell.realName) {
+        if ([string isEqualToString:@""]) {
+            return YES;
+        }
+        if ([textField isFirstResponder]) {
+            if ([[[textField textInputMode] primaryLanguage] isEqualToString:@"emoji"] || ![[textField textInputMode] primaryLanguage]) {
+                return NO;
+            }
+            //判断键盘是不是九宫格键盘
+            if ([self isNineKeyBoard:string] ){
+                return YES;
+            }else{
+                if ([self hasEmoji:string] || [self stringContainsEmoji:string]){
+                    return NO;
+                }
+            }
+        }
+        if (![self isValidateRealName:string]) {
+            return NO;
+        }
+    }
+    return YES;
+}
+
 
 -(void )agentApplydelegate:(NSDictionary *)param isSuccess:(BOOL)success errorMsg:(NSString *)msg{
     if (!success) {
@@ -139,8 +182,11 @@
     webVC.type = @"html";
     webVC.title = @"圈主须知";
     webVC.htmlName = @"quanzhuxuzhi";
+    webVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:webVC animated:YES];
 }
+
+
 
 - (void)applayAgent:(NSString *)realName telephone:(NSString *)telephone agree:(BOOL)agree{
     //判断输入
@@ -150,11 +196,11 @@
     }else if ([telephone isEqualToString:@""]){
         alertString = @"请输入您的手机号/微信/qq";
     }else if (!agree){
-        alertString = @"请点击同意本协议";
+        alertString = @"请勾选同意《圈主须知》";
     }
     if (alertString == nil) {
         NSDictionary *dicInfo = @{@"cardCode":self.curUser.cardCode,@"realName":realName,@"mobile":telephone};
-        [self.agentMan agentApply:dicInfo];
+//        [self.agentMan agentApply:dicInfo];
     } else {
         [self showPromptText:alertString hideAfterDelay:1.0];
     }
