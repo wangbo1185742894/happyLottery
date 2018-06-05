@@ -27,6 +27,7 @@
 
 
 @interface GroupApplyInfoViewController ()<UITableViewDelegate,UITableViewDataSource,ApplyInputCellDelegate,AgentManagerDelegate,UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topDis;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -38,6 +39,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.topDis.constant = NaviHeight;
     [self setTableView];
     if (self.agentMan == nil) {
         self.agentMan = [[AgentManager alloc]init];

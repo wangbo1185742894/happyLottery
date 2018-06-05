@@ -66,10 +66,10 @@
     }
     
     self.agentInfoModel = [[MyAgentInfoModel alloc]initWith:param];
-    self.labYue.text = self.agentInfoModel.commission;
+    self.labYue.text = [NSString stringWithFormat:@"%@元",self.agentInfoModel.commission];
     NSMutableArray *listX = [NSMutableArray arrayWithCapacity:0];
     NSMutableArray *listY = [NSMutableArray arrayWithCapacity:0];
-    for (int i = self.agentInfoModel.agentTotalList.count- 1; i >=0 ; i --) {
+    for (int i = 0; i <self.agentInfoModel.agentTotalList.count ; i ++) {
         MyAgentTotalModel *model = self.agentInfoModel.agentTotalList[i];
         [listX addObject: [model.totalDay substringFromIndex:5] ];
         [listY addObject: model.totalCommission ];

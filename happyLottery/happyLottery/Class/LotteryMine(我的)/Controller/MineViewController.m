@@ -61,7 +61,22 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
-      listArray = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Mine" ofType: @"plist"]];
+    
+    if (![self.curUser.memberType isEqualToString:@"CIRCLE_MASTER"]|| self.curUser.isLogin == NO) {
+        NSArray *itemArray = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Mine" ofType: @"plist"]];
+        NSMutableArray *fristArray = [NSMutableArray arrayWithArray:itemArray[0]];
+        for (NSDictionary *itemDic in fristArray) {
+            if ([itemDic[@"title"] isEqualToString:@"我的圈子"]) {
+                [fristArray removeObject:itemDic];
+                break;
+            }
+        }
+        listArray = @[fristArray,@[itemArray[1][0],itemArray[1][2]],itemArray[2]];
+        [self.tableview reloadData];
+    }else{
+        listArray = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Mine" ofType: @"plist"]];
+    }
+
     if ([self.curUser.whitelist boolValue] == NO) {
         self.viewJIfen.hidden = YES;
         self.jifenHeight.constant = 0;
@@ -84,6 +99,7 @@
         [self notLogin];
         [self.tableview reloadData];
     }
+    
     self.memberMan.delegate = self;
 }
 
@@ -173,6 +189,21 @@
         listArray = @[itemArray[0],@[itemArray[1][0],itemArray[1][2]],itemArray[2]];
         [self.tableview reloadData];
     }
+    
+    if (![self.curUser.memberType isEqualToString:@"CIRCLE_MASTER"]|| self.curUser.isLogin == NO) {
+        NSArray *itemArray = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Mine" ofType: @"plist"]];
+        NSMutableArray *fristArray = [NSMutableArray arrayWithArray:itemArray[0]];
+        for (NSDictionary *itemDic in fristArray) {
+            if ([itemDic[@"title"] isEqualToString:@"我的圈子"]) {
+                [fristArray removeObject:itemDic];
+                break;
+            }
+        }
+        listArray = @[fristArray,@[itemArray[1][0],itemArray[1][2]],itemArray[2]];
+        [self.tableview reloadData];
+    }
+        
+    
     
     NSString *userName;
     if (self.curUser.nickname.length == 0) {

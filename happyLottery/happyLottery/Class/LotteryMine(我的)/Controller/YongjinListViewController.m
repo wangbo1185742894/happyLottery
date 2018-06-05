@@ -12,6 +12,8 @@
 
 #define KYongjinCell @"YongjinCell"
 @interface YongjinListViewController ()<UITableViewDelegate,UITableViewDataSource,AgentManagerDelegate>
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topDis;
+@property (weak, nonatomic) IBOutlet UILabel *labTotal;
 @property (weak, nonatomic) IBOutlet UITableView *tabyongjinList;
 @property (nonatomic,assign)NSInteger page;
 @property(nonatomic,strong)NSMutableArray <AgentCommissionModel *> *transferList;
@@ -22,11 +24,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.topDis.constant = NaviHeight;
     self.title = @"佣金查询";
     self.transferList = [NSMutableArray arrayWithCapacity:0];
     self.agentMan.delegate = self;
     [self setTableView];
-    
+    self.labTotal.text = _model.totalSale;
     [UITableView refreshHelperWithScrollView:self.tabyongjinList target:self loadNewData:@selector(loadNewData) loadMoreData:@selector(loadMoreData) isBeginRefresh:NO];
     [self loadNewData];
 }

@@ -65,7 +65,7 @@
     
     //初始化CAGradientlayer对象，使它的大小为UIView的大小
     gradientLayer = [CAGradientLayer layer];
-    gradientLayer.frame = CGRectMake(self.contentView.mj_x, self.contentView.mj_y, KscreenWidth, self.contentView.mj_size.height);
+    gradientLayer.frame = CGRectMake(self.contentView.mj_x, self.contentView.mj_y, KscreenWidth, KscreenHeight);
     //将CAGradientlayer对象添加在我们要设置背景色的视图的layer层
     [self.contentView.layer insertSublayer:gradientLayer atIndex:0];
     //设置渐变区域的起始和终止位置（范围为0-1）
