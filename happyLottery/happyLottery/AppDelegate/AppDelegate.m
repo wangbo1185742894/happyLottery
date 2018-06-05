@@ -849,6 +849,18 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     }
 }
 
+- (void)setGroupView {
+    //自由人
+    if ([[GlobalInstance instance].curUser.memberType isEqualToString:@"FREEDOM_PERSON"]) {
+        gouCaiNavVC = [self groupApplyNav];
+    } else {
+        //圈主or圈民
+        gouCaiNavVC = [self groupDisplayNav];
+    }
+    tabBarControllerMain.viewControllers = @[homeNavVC,genTouNavVC,gouCaiNavVC,faXianNavVC, memberNavVC];
+    tabBarControllerMain.selectedIndex = 2;
+}
+
 //切换到圈子页面，当前无登陆用户，跳转到登陆页面，否则调到圈子
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
     if (tabBarController.selectedIndex == 2){
@@ -863,15 +875,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
             [base needLogin];
             return;
         }
-        //自由人
-        if ([curUser.memberType isEqualToString:@"FREEDOM_PERSON"]) {
-            gouCaiNavVC = [self groupApplyNav];
-        } else {
-            //圈主or圈民
-            gouCaiNavVC = [self groupDisplayNav];
-//            gouCaiNavVC.navigationBar.hidden = YES;
-        }
-        tabBarControllerMain.viewControllers = @[homeNavVC,genTouNavVC,gouCaiNavVC,faXianNavVC, memberNavVC];
+        [self setGroupView];
         
     }
     _showGroup = NO;

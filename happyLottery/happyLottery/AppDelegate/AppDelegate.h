@@ -23,5 +23,6 @@
 -(void) playSound;
 - (void)showZhuihaoDetail:(NSString*) ordernumber;
 -(void)goToYunshiWithInfo:(NSString *)pageCode;
+- (void)setGroupView;
 @end
 
