@@ -874,6 +874,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         tabBarControllerMain.viewControllers = @[homeNavVC,genTouNavVC,gouCaiNavVC,faXianNavVC, memberNavVC];
         
     }
+    _showGroup = NO;
     _lastSelectedIndex = tabBarController.selectedIndex;
 }
 
