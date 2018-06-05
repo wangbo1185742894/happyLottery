@@ -28,5 +28,6 @@
 
 /** 圈民类型 */
 @property(nonatomic,copy)NSString * memberType;
+@property(nonatomic,copy)NSString * createTime;
 
 @end

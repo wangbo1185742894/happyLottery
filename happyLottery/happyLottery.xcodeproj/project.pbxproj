@@ -687,6 +687,35 @@
 		2D7B8D8120C12E53000EAFB1 /* AgentMemberModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B8D8020C12E53000EAFB1 /* AgentMemberModel.m */; };
 		2D7B8D8820C1312D000EAFB1 /* AgentTransferModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B8D8720C1312D000EAFB1 /* AgentTransferModel.m */; };
 		2D7B8D8B20C1320F000EAFB1 /* MyAgentInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B8D8A20C1320F000EAFB1 /* MyAgentInfoModel.m */; };
+		2D7B8D8F20C4D53D000EAFB1 /* MyCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B8D8D20C4D53D000EAFB1 /* MyCircleViewController.m */; };
+		2D7B8D9020C4D53D000EAFB1 /* MyCircleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D7B8D8E20C4D53D000EAFB1 /* MyCircleViewController.xib */; };
+		2D7B8D9420C50A70000EAFB1 /* CFLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B8D9120C50A6F000EAFB1 /* CFLineChartView.m */; };
+		2D7B8D9520C50A70000EAFB1 /* CFLineChartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D7B8D9220C50A6F000EAFB1 /* CFLineChartView.xib */; };
+		2D7B8D9920C51FE2000EAFB1 /* MyCricleFriendVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B8D9720C51FE2000EAFB1 /* MyCricleFriendVC.m */; };
+		2D7B8D9A20C51FE2000EAFB1 /* MyCricleFriendVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D7B8D9820C51FE2000EAFB1 /* MyCricleFriendVC.xib */; };
+		2D7B8D9E20C52048000EAFB1 /* MyCircleFirendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B8D9C20C52047000EAFB1 /* MyCircleFirendCell.m */; };
+		2D7B8D9F20C52048000EAFB1 /* MyCircleFirendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D7B8D9D20C52048000EAFB1 /* MyCircleFirendCell.xib */; };
+		2D7B8DA620C541BB000EAFB1 /* pic_beijing@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D7B8DA020C541B9000EAFB1 /* pic_beijing@2x.png */; };
+		2D7B8DA720C541BB000EAFB1 /* icon_share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D7B8DA120C541BA000EAFB1 /* icon_share@2x.png */; };
+		2D7B8DA820C541BB000EAFB1 /* icon_share@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D7B8DA220C541BA000EAFB1 /* icon_share@3x.png */; };
+		2D7B8DA920C541BB000EAFB1 /* icon_shezhi@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D7B8DA320C541BA000EAFB1 /* icon_shezhi@3x.png */; };
+		2D7B8DAA20C541BB000EAFB1 /* pic_beijing@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D7B8DA420C541BA000EAFB1 /* pic_beijing@3x.png */; };
+		2D7B8DAB20C541BB000EAFB1 /* icon_shezhi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D7B8DA520C541BB000EAFB1 /* icon_shezhi@2x.png */; };
+		2D7B8DAF20C54926000EAFB1 /* MyCricleYongJinVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D7B8DAC20C54925000EAFB1 /* MyCricleYongJinVC.xib */; };
+		2D7B8DB020C54927000EAFB1 /* MyCricleYongJinVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B8DAE20C54926000EAFB1 /* MyCricleYongJinVC.m */; };
+		2D7B8DB420C556DB000EAFB1 /* CricleCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B8DB120C556DA000EAFB1 /* CricleCenterViewController.m */; };
+		2D7B8DB520C556DB000EAFB1 /* CricleCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D7B8DB220C556DA000EAFB1 /* CricleCenterViewController.xib */; };
+		2D7B8DB920C55D5F000EAFB1 /* SetCriNameSetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D7B8DB720C55D5E000EAFB1 /* SetCriNameSetViewController.xib */; };
+		2D7B8DBA20C55D5F000EAFB1 /* SetCriNameSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B8DB820C55D5F000EAFB1 /* SetCriNameSetViewController.m */; };
+		2D7B8DBE20C62A1F000EAFB1 /* RuZhangViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B8DBC20C62A1F000EAFB1 /* RuZhangViewController.m */; };
+		2D7B8DBF20C62A1F000EAFB1 /* RuZhangViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D7B8DBD20C62A1F000EAFB1 /* RuZhangViewController.xib */; };
+		2D7B8DC320C632A1000EAFB1 /* ZhuangZhangListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B8DC120C632A1000EAFB1 /* ZhuangZhangListVC.m */; };
+		2D7B8DC420C632A1000EAFB1 /* ZhuangZhangListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D7B8DC220C632A1000EAFB1 /* ZhuangZhangListVC.xib */; };
+		2D7B8DC820C63EF2000EAFB1 /* YongjinListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B8DC620C63EF2000EAFB1 /* YongjinListViewController.m */; };
+		2D7B8DC920C63EF2000EAFB1 /* YongjinListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D7B8DC720C63EF2000EAFB1 /* YongjinListViewController.xib */; };
+		2D7B8DCD20C63F6B000EAFB1 /* YongjinCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B8DCB20C63F6B000EAFB1 /* YongjinCell.m */; };
+		2D7B8DCE20C63F6B000EAFB1 /* YongjinCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D7B8DCC20C63F6B000EAFB1 /* YongjinCell.xib */; };
+		2D7B8DD120C6501E000EAFB1 /* AgentCommissionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B8DD020C6501E000EAFB1 /* AgentCommissionModel.m */; };
 		2D811A95207DDA610069601C /* jingcailanqiu_daxiaofen.html in Resources */ = {isa = PBXBuildFile; fileRef = 2D811A8E207DDA5A0069601C /* jingcailanqiu_daxiaofen.html */; };
 		2D811A96207DDA610069601C /* jingcailanqiu_shengfu.html in Resources */ = {isa = PBXBuildFile; fileRef = 2D811A8F207DDA5C0069601C /* jingcailanqiu_shengfu.html */; };
 		2D811A97207DDA610069601C /* jingcailanqiu_shengfencha.html in Resources */ = {isa = PBXBuildFile; fileRef = 2D811A90207DDA5C0069601C /* jingcailanqiu_shengfencha.html */; };
@@ -2416,6 +2445,47 @@
 		2D7B8D8720C1312D000EAFB1 /* AgentTransferModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AgentTransferModel.m; sourceTree = "<group>"; };
 		2D7B8D8920C1320F000EAFB1 /* MyAgentInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyAgentInfoModel.h; sourceTree = "<group>"; };
 		2D7B8D8A20C1320F000EAFB1 /* MyAgentInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyAgentInfoModel.m; sourceTree = "<group>"; };
+		2D7B8D8C20C4D53D000EAFB1 /* MyCircleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCircleViewController.h; sourceTree = "<group>"; };
+		2D7B8D8D20C4D53D000EAFB1 /* MyCircleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCircleViewController.m; sourceTree = "<group>"; };
+		2D7B8D8E20C4D53D000EAFB1 /* MyCircleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCircleViewController.xib; sourceTree = "<group>"; };
+		2D7B8D9120C50A6F000EAFB1 /* CFLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFLineChartView.m; sourceTree = "<group>"; };
+		2D7B8D9220C50A6F000EAFB1 /* CFLineChartView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CFLineChartView.xib; sourceTree = "<group>"; };
+		2D7B8D9320C50A70000EAFB1 /* CFLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFLineChartView.h; sourceTree = "<group>"; };
+		2D7B8D9620C51FE2000EAFB1 /* MyCricleFriendVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCricleFriendVC.h; sourceTree = "<group>"; };
+		2D7B8D9720C51FE2000EAFB1 /* MyCricleFriendVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCricleFriendVC.m; sourceTree = "<group>"; };
+		2D7B8D9820C51FE2000EAFB1 /* MyCricleFriendVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCricleFriendVC.xib; sourceTree = "<group>"; };
+		2D7B8D9B20C52047000EAFB1 /* MyCircleFirendCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCircleFirendCell.h; sourceTree = "<group>"; };
+		2D7B8D9C20C52047000EAFB1 /* MyCircleFirendCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCircleFirendCell.m; sourceTree = "<group>"; };
+		2D7B8D9D20C52048000EAFB1 /* MyCircleFirendCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCircleFirendCell.xib; sourceTree = "<group>"; };
+		2D7B8DA020C541B9000EAFB1 /* pic_beijing@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pic_beijing@2x.png"; sourceTree = "<group>"; };
+		2D7B8DA120C541BA000EAFB1 /* icon_share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_share@2x.png"; sourceTree = "<group>"; };
+		2D7B8DA220C541BA000EAFB1 /* icon_share@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_share@3x.png"; sourceTree = "<group>"; };
+		2D7B8DA320C541BA000EAFB1 /* icon_shezhi@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_shezhi@3x.png"; sourceTree = "<group>"; };
+		2D7B8DA420C541BA000EAFB1 /* pic_beijing@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pic_beijing@3x.png"; sourceTree = "<group>"; };
+		2D7B8DA520C541BB000EAFB1 /* icon_shezhi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_shezhi@2x.png"; sourceTree = "<group>"; };
+		2D7B8DAC20C54925000EAFB1 /* MyCricleYongJinVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCricleYongJinVC.xib; sourceTree = "<group>"; };
+		2D7B8DAD20C54926000EAFB1 /* MyCricleYongJinVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCricleYongJinVC.h; sourceTree = "<group>"; };
+		2D7B8DAE20C54926000EAFB1 /* MyCricleYongJinVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCricleYongJinVC.m; sourceTree = "<group>"; };
+		2D7B8DB120C556DA000EAFB1 /* CricleCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CricleCenterViewController.m; path = personnalSet/CricleCenterViewController.m; sourceTree = "<group>"; };
+		2D7B8DB220C556DA000EAFB1 /* CricleCenterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CricleCenterViewController.xib; path = personnalSet/CricleCenterViewController.xib; sourceTree = "<group>"; };
+		2D7B8DB320C556DB000EAFB1 /* CricleCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CricleCenterViewController.h; path = personnalSet/CricleCenterViewController.h; sourceTree = "<group>"; };
+		2D7B8DB620C55D5E000EAFB1 /* SetCriNameSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetCriNameSetViewController.h; path = personnalSet/SetCriNameSetViewController.h; sourceTree = "<group>"; };
+		2D7B8DB720C55D5E000EAFB1 /* SetCriNameSetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SetCriNameSetViewController.xib; path = personnalSet/SetCriNameSetViewController.xib; sourceTree = "<group>"; };
+		2D7B8DB820C55D5F000EAFB1 /* SetCriNameSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetCriNameSetViewController.m; path = personnalSet/SetCriNameSetViewController.m; sourceTree = "<group>"; };
+		2D7B8DBB20C62A1F000EAFB1 /* RuZhangViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RuZhangViewController.h; sourceTree = "<group>"; };
+		2D7B8DBC20C62A1F000EAFB1 /* RuZhangViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RuZhangViewController.m; sourceTree = "<group>"; };
+		2D7B8DBD20C62A1F000EAFB1 /* RuZhangViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RuZhangViewController.xib; sourceTree = "<group>"; };
+		2D7B8DC020C632A1000EAFB1 /* ZhuangZhangListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZhuangZhangListVC.h; sourceTree = "<group>"; };
+		2D7B8DC120C632A1000EAFB1 /* ZhuangZhangListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZhuangZhangListVC.m; sourceTree = "<group>"; };
+		2D7B8DC220C632A1000EAFB1 /* ZhuangZhangListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZhuangZhangListVC.xib; sourceTree = "<group>"; };
+		2D7B8DC520C63EF2000EAFB1 /* YongjinListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YongjinListViewController.h; sourceTree = "<group>"; };
+		2D7B8DC620C63EF2000EAFB1 /* YongjinListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YongjinListViewController.m; sourceTree = "<group>"; };
+		2D7B8DC720C63EF2000EAFB1 /* YongjinListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YongjinListViewController.xib; sourceTree = "<group>"; };
+		2D7B8DCA20C63F6B000EAFB1 /* YongjinCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YongjinCell.h; sourceTree = "<group>"; };
+		2D7B8DCB20C63F6B000EAFB1 /* YongjinCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YongjinCell.m; sourceTree = "<group>"; };
+		2D7B8DCC20C63F6B000EAFB1 /* YongjinCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YongjinCell.xib; sourceTree = "<group>"; };
+		2D7B8DCF20C6501E000EAFB1 /* AgentCommissionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AgentCommissionModel.h; sourceTree = "<group>"; };
+		2D7B8DD020C6501E000EAFB1 /* AgentCommissionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AgentCommissionModel.m; sourceTree = "<group>"; };
 		2D811A8E207DDA5A0069601C /* jingcailanqiu_daxiaofen.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = jingcailanqiu_daxiaofen.html; sourceTree = "<group>"; };
 		2D811A8F207DDA5C0069601C /* jingcailanqiu_shengfu.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = jingcailanqiu_shengfu.html; sourceTree = "<group>"; };
 		2D811A90207DDA5C0069601C /* jingcailanqiu_shengfencha.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = jingcailanqiu_shengfencha.html; sourceTree = "<group>"; };
@@ -4497,6 +4567,12 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				2D7B8DA120C541BA000EAFB1 /* icon_share@2x.png */,
+				2D7B8DA220C541BA000EAFB1 /* icon_share@3x.png */,
+				2D7B8DA520C541BB000EAFB1 /* icon_shezhi@2x.png */,
+				2D7B8DA320C541BA000EAFB1 /* icon_shezhi@3x.png */,
+				2D7B8DA020C541B9000EAFB1 /* pic_beijing@2x.png */,
+				2D7B8DA420C541BA000EAFB1 /* pic_beijing@3x.png */,
 				F9BC6E0120C28A220037998B /* 方正细圆简体.ttf */,
 				F9BC6DE420C285320037998B /* GroupImage */,
 				F958F16D20BC04D900F30690 /* icongoucai  */,
@@ -4820,6 +4896,9 @@
 		2DDEDBF81FD4DBB5007AEBF7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2D7B8DB320C556DB000EAFB1 /* CricleCenterViewController.h */,
+				2D7B8DB120C556DA000EAFB1 /* CricleCenterViewController.m */,
+				2D7B8DB220C556DA000EAFB1 /* CricleCenterViewController.xib */,
 				F9705E59207A0E5B00E25E4E /* JCLQSchemeDetailViewController.h */,
 				F9705E57207A0E5A00E25E4E /* JCLQSchemeDetailViewController.m */,
 				F9705E58207A0E5B00E25E4E /* JCLQSchemeDetailViewController.xib */,
@@ -4914,6 +4993,9 @@
 				2D16600320A2C9F900C1C7E7 /* MyPostSchemeViewController.h */,
 				2D16600420A2C9F900C1C7E7 /* MyPostSchemeViewController.m */,
 				2D16600520A2C9F900C1C7E7 /* MyPostSchemeViewController.xib */,
+				2D7B8DB620C55D5E000EAFB1 /* SetCriNameSetViewController.h */,
+				2D7B8DB820C55D5F000EAFB1 /* SetCriNameSetViewController.m */,
+				2D7B8DB720C55D5E000EAFB1 /* SetCriNameSetViewController.xib */,
 				2D16600820A2CA1A00C1C7E7 /* MyAttendViewController.h */,
 				2D16600920A2CA1A00C1C7E7 /* MyAttendViewController.m */,
 				2D16600A20A2CA1A00C1C7E7 /* MyAttendViewController.xib */,
@@ -4923,6 +5005,24 @@
 				2D05C87620A58416001A8953 /* FollowListViewController.h */,
 				2D05C87720A58416001A8953 /* FollowListViewController.m */,
 				2D05C87820A58416001A8953 /* FollowListViewController.xib */,
+				2D7B8D8C20C4D53D000EAFB1 /* MyCircleViewController.h */,
+				2D7B8D8D20C4D53D000EAFB1 /* MyCircleViewController.m */,
+				2D7B8D8E20C4D53D000EAFB1 /* MyCircleViewController.xib */,
+				2D7B8D9620C51FE2000EAFB1 /* MyCricleFriendVC.h */,
+				2D7B8D9720C51FE2000EAFB1 /* MyCricleFriendVC.m */,
+				2D7B8D9820C51FE2000EAFB1 /* MyCricleFriendVC.xib */,
+				2D7B8DAD20C54926000EAFB1 /* MyCricleYongJinVC.h */,
+				2D7B8DAE20C54926000EAFB1 /* MyCricleYongJinVC.m */,
+				2D7B8DAC20C54925000EAFB1 /* MyCricleYongJinVC.xib */,
+				2D7B8DBB20C62A1F000EAFB1 /* RuZhangViewController.h */,
+				2D7B8DBC20C62A1F000EAFB1 /* RuZhangViewController.m */,
+				2D7B8DBD20C62A1F000EAFB1 /* RuZhangViewController.xib */,
+				2D7B8DC020C632A1000EAFB1 /* ZhuangZhangListVC.h */,
+				2D7B8DC120C632A1000EAFB1 /* ZhuangZhangListVC.m */,
+				2D7B8DC220C632A1000EAFB1 /* ZhuangZhangListVC.xib */,
+				2D7B8DC520C63EF2000EAFB1 /* YongjinListViewController.h */,
+				2D7B8DC620C63EF2000EAFB1 /* YongjinListViewController.m */,
+				2D7B8DC720C63EF2000EAFB1 /* YongjinListViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -4948,6 +5048,8 @@
 				2D16601D20A2DF3600C1C7E7 /* FollowListModel.m */,
 				2D05C8B520A97E9B001A8953 /* AttentPersonModel.h */,
 				2D05C8B620A97E9B001A8953 /* AttentPersonModel.m */,
+				2D7B8DCF20C6501E000EAFB1 /* AgentCommissionModel.h */,
+				2D7B8DD020C6501E000EAFB1 /* AgentCommissionModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4955,6 +5057,9 @@
 		2DDEDBFA1FD4DBB5007AEBF7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2D7B8D9320C50A70000EAFB1 /* CFLineChartView.h */,
+				2D7B8D9120C50A6F000EAFB1 /* CFLineChartView.m */,
+				2D7B8D9220C50A6F000EAFB1 /* CFLineChartView.xib */,
 				2D16601720A2D4DE00C1C7E7 /* FollowSchemeViewCell.h */,
 				2D16601820A2D4DE00C1C7E7 /* FollowSchemeViewCell.m */,
 				2D16601920A2D4DE00C1C7E7 /* FollowSchemeViewCell.xib */,
@@ -5020,6 +5125,12 @@
 				2D05C8B020A97AEE001A8953 /* AtttendPersonViewCell.h */,
 				2D05C8B120A97AEE001A8953 /* AtttendPersonViewCell.m */,
 				2D05C8B220A97AEE001A8953 /* AtttendPersonViewCell.xib */,
+				2D7B8D9B20C52047000EAFB1 /* MyCircleFirendCell.h */,
+				2D7B8D9C20C52047000EAFB1 /* MyCircleFirendCell.m */,
+				2D7B8D9D20C52048000EAFB1 /* MyCircleFirendCell.xib */,
+				2D7B8DCA20C63F6B000EAFB1 /* YongjinCell.h */,
+				2D7B8DCB20C63F6B000EAFB1 /* YongjinCell.m */,
+				2D7B8DCC20C63F6B000EAFB1 /* YongjinCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -6484,6 +6595,7 @@
 				F90FCD731FF3810F00BD807C /* dotted@3x.png in Resources */,
 				2D0EEAB62015F79800B0769C /* ad_home1@2x.png in Resources */,
 				2D05C88420A58485001A8953 /* FollowListTableViewCell.xib in Resources */,
+				2D7B8DC420C632A1000EAFB1 /* ZhuangZhangListVC.xib in Resources */,
 				F924BA961FE252CF00830BF4 /* hide@2x.png in Resources */,
 				2D739CE01FEB45E300264044 /* matchcleanall@2x.png in Resources */,
 				F9B5D9AC2060A9DE00C9F6DC /* flag773@3x.png in Resources */,
@@ -6577,6 +6689,7 @@
 				F9B5D9932060A9DE00C9F6DC /* flag416@2x.png in Resources */,
 				2D5171F3200C72F300C3CD7F /* btn_change_@2x.png in Resources */,
 				2D16601B20A2D4DF00C1C7E7 /* FollowSchemeViewCell.xib in Resources */,
+				2D7B8DA620C541BB000EAFB1 /* pic_beijing@2x.png in Resources */,
 				F9DC8C3F20A57F02006B31F4 /* pic_beijing@3x.png in Resources */,
 				F9B5D9912060A9DE00C9F6DC /* flag414@2x.png in Resources */,
 				F9705E19207A0DAE00E25E4E /* JCLQPlayController.xib in Resources */,
@@ -6608,6 +6721,7 @@
 				F9BC6DF620C285620037998B /* group_man@3x.png in Resources */,
 				2DA0C2D420B6AAB90031AC47 /* LotteryAreaViewController.xib in Resources */,
 				F94AA9B81FEB59DA0021B980 /* eliminate@3x.png in Resources */,
+				2D7B8DCE20C63F6B000EAFB1 /* YongjinCell.xib in Resources */,
 				F9F6CAAB1FF60BCF00A49F71 /* NoticeCenterViewController.xib in Resources */,
 				F958F16320BBEE2400F30690 /* winPerson@2x.png in Resources */,
 				F957C2011FE3B28D0090B19B /* news@3x.png in Resources */,
@@ -6619,6 +6733,7 @@
 				F9BC6E6420C2DD3D0037998B /* xutu2@3x.png in Resources */,
 				F9B5D99C2060A9DE00C9F6DC /* flag424@3x.png in Resources */,
 				2D2348822049425A005AE1F2 /* bunsoptimnormal@3x.png in Resources */,
+				2D7B8DAF20C54926000EAFB1 /* MyCricleYongJinVC.xib in Resources */,
 				F9BC6E0820C2AC420037998B /* GAStatusViewController.xib in Resources */,
 				F9581A801FE0FA01009753AA /* LoginViewController.xib in Resources */,
 				F958F16720BBEE6600F30690 /* losePerson@3x.png in Resources */,
@@ -6739,11 +6854,14 @@
 				2D0E23EA2019A6D90098DA40 /* integral@2x.png in Resources */,
 				2D4B1E8D1FDF684E0034B708 /* yucezhanji@2x.png in Resources */,
 				F9BC6DFD20C285620037998B /* quanzu_renshu@2x.png in Resources */,
+				2D7B8D9020C4D53D000EAFB1 /* MyCircleViewController.xib in Resources */,
 				2D3617662061FA3D003093F9 /* dan_notWin@2x.png in Resources */,
 				2D20601B1FFCB71E0086E266 /* icon_kuaijie@3x.png in Resources */,
+				2D7B8DAB20C541BB000EAFB1 /* icon_shezhi@2x.png in Resources */,
 				F9B5D9762060A9DE00C9F6DC /* flag366@3x.png in Resources */,
 				2D8CBFFF1FF3857E00CC367F /* kuangyuanjiaobaise@3x.png in Resources */,
 				F9BC6E4020C2D1C20037998B /* agreenSelect@2x.png in Resources */,
+				2D7B8DA920C541BB000EAFB1 /* icon_shezhi@3x.png in Resources */,
 				F922FD3220AEBE4C000BA6F1 /* kaisuo@3x.png in Resources */,
 				2D7B13A1204E871C0035AE89 /* CTZQWinHistoryViewController.xib in Resources */,
 				F9CD01F72024443D00E54E79 /* assisthelp@3x.png in Resources */,
@@ -6937,6 +7055,7 @@
 				2D03F2862060BAE800C81BEF /* FirstBankCardSetViewController.xib in Resources */,
 				2D20602B1FFCB71E0086E266 /* icon_yue@3x.png in Resources */,
 				2D2060271FFCB71E0086E266 /* icon_weixin@3x.png in Resources */,
+				2D7B8DA820C541BB000EAFB1 /* icon_share@3x.png in Resources */,
 				2D7B136D204E5F450035AE89 /* dltbutton-default@3x.png in Resources */,
 				F9C3BA2420088FA400916F3C /* dialogfeedback@2x.png in Resources */,
 				2D7B1336204D52C40035AE89 /* LotteryConfig.plist in Resources */,
@@ -6981,6 +7100,7 @@
 				2D2060201FFCB71E0086E266 /* icon_tongyi_normal@2x.png in Resources */,
 				F9BC6DF320C285620037998B /* fandian_fencheng@3x.png in Resources */,
 				F9330AAA2068DF73005BFF0B /* first@3x.png in Resources */,
+				2D7B8DC920C63EF2000EAFB1 /* YongjinListViewController.xib in Resources */,
 				F9B5D9A12060A9DE00C9F6DC /* flag434@2x.png in Resources */,
 				2D0E23E22019A6990098DA40 /* balance@3x.png in Resources */,
 				2D03F1A2205A23B400C81BEF /* daletou@2x.png in Resources */,
@@ -7025,6 +7145,7 @@
 				F9B5D9A22060A9DE00C9F6DC /* flag434@3x.png in Resources */,
 				F9705E52207A0DE800E25E4E /* JCLQSFCell.xib in Resources */,
 				2D739CE81FEB462B00264044 /* guoguan@2x.png in Resources */,
+				2D7B8D9A20C51FE2000EAFB1 /* MyCricleFriendVC.xib in Resources */,
 				2D20602A1FFCB71E0086E266 /* icon_yue@2x.png in Resources */,
 				2D20601E1FFCB71E0086E266 /* icon_shijian@3x.png in Resources */,
 				F9B5D9872060A9DE00C9F6DC /* flag402@2x.png in Resources */,
@@ -7067,6 +7188,7 @@
 				2DA0C2D220B659280031AC47 /* guanyajun@2x.png in Resources */,
 				2DE892A92022B5D1008926A6 /* schemeticket@3x.png in Resources */,
 				F94AA9BD1FEB59DA0021B980 /* checked@3x.png in Resources */,
+				2D7B8DA720C541BB000EAFB1 /* icon_share@2x.png in Resources */,
 				2D4B1EB31FDFCDAF0034B708 /* arrow_up@2x.png in Resources */,
 				2D0EEA952013280500B0769C /* button_trophy@3x.png in Resources */,
 				2D06003F1FFDDD51009E7568 /* schemedetailbutton@3x.png in Resources */,
@@ -7142,6 +7264,7 @@
 				F91565F41FFCBDAE00E254CE /* scancode@3x.png in Resources */,
 				F9BC6DFF20C285620037998B /* group_head@3x.png in Resources */,
 				F922FD2820AD6979000BA6F1 /* what@2x.png in Resources */,
+				2D7B8D9520C50A70000EAFB1 /* CFLineChartView.xib in Resources */,
 				2D5171C52008654800C3CD7F /* icon_zhifubao@2x.png in Resources */,
 				F93EEEE52021D78D001C635A /* unlock_cannot@3x.png in Resources */,
 				F9BC6E3920C2CEFF0037998B /* qian@2x.png in Resources */,
@@ -7179,6 +7302,7 @@
 				2D20602F1FFCB71E0086E266 /* icon_zhifu_normal@3x.png in Resources */,
 				2D2348832049425A005AE1F2 /* bunsoptimnormal@2x.png in Resources */,
 				F9B5D9882060A9DE00C9F6DC /* flag402@3x.png in Resources */,
+				2D7B8D9F20C52048000EAFB1 /* MyCircleFirendCell.xib in Resources */,
 				F9BC6E4220C2D1C20037998B /* agreenNormal@3x.png in Resources */,
 				2D2060171FFCB71E0086E266 /* btn_shouqi_@3x.png in Resources */,
 				2D03F2822060BAE800C81BEF /* ChangeLoginPWDViewController.xib in Resources */,
@@ -7255,6 +7379,7 @@
 				F9C3BA2520088FA400916F3C /* dialogfeedback@3x.png in Resources */,
 				2D4D609D20B2548B00280033 /* arrow_up@3x.png in Resources */,
 				F9705EBF207B6DDC00E25E4E /* shuangseqiu@2x.png in Resources */,
+				2D7B8DB920C55D5F000EAFB1 /* SetCriNameSetViewController.xib in Resources */,
 				2D739CFF1FEB68B800264044 /* backViewYuanJiao@3x.png in Resources */,
 				2D739C751FE79EAA00264044 /* LotteryProfileSelectView.xib in Resources */,
 				2D8CBFE61FF376DA00CC367F /* YuCeLiShiZhanJCell.xib in Resources */,
@@ -7318,6 +7443,7 @@
 				F9DC69961FDF878D007D384D /* MyOrderListViewController.xib in Resources */,
 				F9B5D9942060A9DE00C9F6DC /* flag416@3x.png in Resources */,
 				2D7B137F204E70510035AE89 /* encore@2x.png in Resources */,
+				2D7B8DB520C556DB000EAFB1 /* CricleCenterViewController.xib in Resources */,
 				2D628B3D1FECAA9A0013D0E1 /* fengkuangjingcai-gengduoshuoming@3x.png in Resources */,
 				F9BC6E1620C2B1390037998B /* applay_failure@2x.png in Resources */,
 				F9BC6E5A20C2DD3D0037998B /* xutu1@2x.png in Resources */,
@@ -7369,6 +7495,7 @@
 				F9705EBC207B6DDC00E25E4E /* shengfucaishouye@3x.png in Resources */,
 				2D40CAA5201EDE5700DDCFE3 /* button_line@3x.png in Resources */,
 				F9BC6DD920C26E4C0037998B /* GroupApplyInfoViewController.xib in Resources */,
+				2D7B8DBF20C62A1F000EAFB1 /* RuZhangViewController.xib in Resources */,
 				2D4B1E3A1FDE717C0034B708 /* newBack@2x.png in Resources */,
 				F92855DB20A2E7C90023A0AC /* win@2x.png in Resources */,
 				2D7B1375204E63EF0035AE89 /* dltcheckbox-default@3x.png in Resources */,
@@ -7501,6 +7628,7 @@
 				F9BC6E4120C2D1C20037998B /* agreenSelect@3x.png in Resources */,
 				F9E0DF1D2019695C0089F51D /* MineViewController.xib in Resources */,
 				2D2060211FFCB71E0086E266 /* icon_tongyi_normal@3x.png in Resources */,
+				2D7B8DAA20C541BB000EAFB1 /* pic_beijing@3x.png in Resources */,
 				2D4B1E371FDE241F0034B708 /* JCZQPlayViewController.xib in Resources */,
 				F9CD01F22024443D00E54E79 /* integralhelp@3x.png in Resources */,
 				2D739CE61FEB462B00264044 /* guoguan@3x.png in Resources */,
@@ -7629,14 +7757,17 @@
 				F9705E51207A0DE800E25E4E /* JCLQSFCell.m in Sources */,
 				2D8CC0131FF48EBB00CC367F /* WBSelectDateButtom.m in Sources */,
 				F9F262B61FE8F4AE00C2E60F /* UIApplication+RSKImageCropper.m in Sources */,
+				2D7B8D8F20C4D53D000EAFB1 /* MyCircleViewController.m in Sources */,
 				2D7B1329204D4AE70035AE89 /* EXQiHaoView.m in Sources */,
 				2D7B1320204D4A590035AE89 /* BetCalculationManage.m in Sources */,
 				2DDEDC1D1FD4DEFF007AEBF7 /* UIView+MJExtension.m in Sources */,
 				2D739CC21FEA445300264044 /* JCZQLeaModel.m in Sources */,
+				2D7B8D9E20C52048000EAFB1 /* MyCircleFirendCell.m in Sources */,
 				2DCBB2841FD1000700934D92 /* main.m in Sources */,
 				2D5171CE200C567D00C3CD7F /* WonSchemeListController.m in Sources */,
 				2D7B13A6204E871C0035AE89 /* CTZQPlayViewController.m in Sources */,
 				2D7B13A0204E871C0035AE89 /* CTZQTouZhuViewController.m in Sources */,
+				2D7B8DB020C54927000EAFB1 /* MyCricleYongJinVC.m in Sources */,
 				2DDEDE731FD568C9007AEBF7 /* AFURLRequestSerialization.m in Sources */,
 				F9E0DF21201972570089F51D /* JumpWebViewController.m in Sources */,
 				2D739C5C1FE3B31500264044 /* FMDatabaseAdditions.m in Sources */,
@@ -7650,6 +7781,7 @@
 				2D4B1E941FDF7BD20034B708 /* NewsListCell.m in Sources */,
 				2D4D608320AD4DFB00280033 /* ActivityInfoView.m in Sources */,
 				F9705E55207A0DE800E25E4E /* TouZhuViewCell.m in Sources */,
+				2D7B8D9420C50A70000EAFB1 /* CFLineChartView.m in Sources */,
 				2D8CBFEE1FF3771C00CC367F /* YCbetPlayTypes.m in Sources */,
 				2D16600B20A2CA1A00C1C7E7 /* MyAttendViewController.m in Sources */,
 				2D7B1323204D4ACE0035AE89 /* ExNumContainerView.m in Sources */,
@@ -7744,9 +7876,11 @@
 				2D7B13B2204E873D0035AE89 /* CTZQTransaction.m in Sources */,
 				F9FDFAE12011C9750029ACC7 /* Notice.m in Sources */,
 				2D7B13EF204E88250035AE89 /* OpenLotteryCell.m in Sources */,
+				2D7B8DCD20C63F6B000EAFB1 /* YongjinCell.m in Sources */,
 				2D739C211FE2611C00264044 /* IQTitleBarButtonItem.m in Sources */,
 				2D739CA41FEA0A2E00264044 /* JCZQMatchModel.m in Sources */,
 				2D4B174E1FD7B9270034B708 /* WBAdsImgView.m in Sources */,
+				2D7B8DC320C632A1000EAFB1 /* ZhuangZhangListVC.m in Sources */,
 				2D7B1410204E8F250035AE89 /* LotteryProfileSelectCellView.m in Sources */,
 				2DA39EE12052740F00A03FD1 /* DLTChaseSchemeDetail.m in Sources */,
 				F9632F4B200C86EC00F69D23 /* LYJHeaderView.m in Sources */,
@@ -7767,6 +7901,7 @@
 				F9BC6E0720C2AC420037998B /* GAStatusViewController.m in Sources */,
 				2D92A826201068590038E165 /* PayOrderYouhunViewController.m in Sources */,
 				2D05C88320A58485001A8953 /* FollowListTableViewCell.m in Sources */,
+				2D7B8DC820C63EF2000EAFB1 /* YongjinListViewController.m in Sources */,
 				2DA39EC72052395D00A03FD1 /* OrderDatePickerView.m in Sources */,
 				2D739C6D1FE7898900264044 /* JCZQMatchViewCell.m in Sources */,
 				2D8CBFE71FF376DA00CC367F /* YuCeSchemeDetailCell.m in Sources */,
@@ -7783,6 +7918,7 @@
 				2D7B12F5204D3E5E0035AE89 /* LotteryRound.m in Sources */,
 				2D8CBFCF1FF3769F00CC367F /* YuceSchemeDetailViewController.m in Sources */,
 				2DDEDC471FD52562007AEBF7 /* GlobalInstance.m in Sources */,
+				2D7B8D9920C51FE2000EAFB1 /* MyCricleFriendVC.m in Sources */,
 				2D2060351FFCCB380086E266 /* SchemListCell.m in Sources */,
 				2DA39ED520523A8A00A03FD1 /* WinInfoView.m in Sources */,
 				2DD2C51820455039005A18C4 /* OptimizeItemModel.m in Sources */,
@@ -7790,12 +7926,14 @@
 				F9FDFAED2012F8DC0029ACC7 /* VersionUpdatingPopView.m in Sources */,
 				F9705E44207A0DE800E25E4E /* JCLQLotteryProfileSelectView.m in Sources */,
 				2D628B691FF213050013D0E1 /* SchemeCashPayment.m in Sources */,
+				2D7B8DBE20C62A1F000EAFB1 /* RuZhangViewController.m in Sources */,
 				2D3A06C520A3D6CB003C5E7B /* HomeTabTopAdsViewCell.m in Sources */,
 				2D7B12E4204D3BD60035AE89 /* Lottery.m in Sources */,
 				2D739C781FE7A38B00264044 /* JCZQProfile.m in Sources */,
 				F9705E23207A0DC400E25E4E /* JCLQMatchModel.m in Sources */,
 				2D03F1F2205FD55900C81BEF /* BaseSchemeViewCell.m in Sources */,
 				F9D9F2B11FF2505E006434DC /* CashBoltter.m in Sources */,
+				2D7B8DD120C6501E000EAFB1 /* AgentCommissionModel.m in Sources */,
 				2D739C181FE2611C00264044 /* IQUITextFieldView+Additions.m in Sources */,
 				2D8CBFB91FF3481700CC367F /* JczqShortcutModel.m in Sources */,
 				2DA39EF42053CA1000A03FD1 /* DltOpenResult.m in Sources */,
@@ -7917,6 +8055,7 @@
 				F9BC6DD820C26E4C0037998B /* GroupApplyInfoViewController.m in Sources */,
 				F96658F41FF0D26A001DE8B9 /* BankCard.m in Sources */,
 				F9A6391E20A2D38300AA07C6 /* FASSchemeDetailViewController.m in Sources */,
+				2D7B8DB420C556DB000EAFB1 /* CricleCenterViewController.m in Sources */,
 				2DDEDE6C1FD568C9007AEBF7 /* UIView+WebCacheOperation.m in Sources */,
 				2D361773206374EF003093F9 /* DLTSchemeDetailViewController.m in Sources */,
 				F9BC6E4B20C2D91F0037998B /* PingtaiYouCell.m in Sources */,
@@ -7957,6 +8096,7 @@
 				2DDEDE751FD568C9007AEBF7 /* AFURLSessionManager.m in Sources */,
 				2D7B13C9204E877A0035AE89 /* CTZQOpenLotteryFirstView.m in Sources */,
 				F9705E24207A0DC400E25E4E /* JCLQTransaction.m in Sources */,
+				2D7B8DBA20C55D5F000EAFB1 /* SetCriNameSetViewController.m in Sources */,
 				F91565DC1FFCBB4A00E254CE /* ShareViewController.m in Sources */,
 				2D7B130F204D47DA0035AE89 /* XHNumberView.m in Sources */,
 				2D06008C1FFF4BAF009E7568 /* SchemeDetailViewCell.m in Sources */,

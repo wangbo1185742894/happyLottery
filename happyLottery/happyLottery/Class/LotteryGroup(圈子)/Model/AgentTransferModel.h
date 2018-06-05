@@ -22,10 +22,10 @@
 @property(nonatomic,copy)NSString * transferCost;
 
 /** 审核状态 */
-@property(nonatomic,assign)ApplyStatus applyStatus;
+@property(nonatomic,assign)NSString * applyStatus; //ApplyStatus
 
 /** 转账状态 */
-@property(nonatomic,assign)TransferStatus status;
+@property(nonatomic,assign)NSString  * status; //TransferStatus
 
 /** 审核人 */
 @property(nonatomic,copy)NSString * applyUser;

@@ -101,6 +101,20 @@
 			<key>ShowIconRight</key>
 			<string>1</string>
 		</dict>
+		<dict>
+			<key>showRedPoint</key>
+			<false/>
+			<key>title</key>
+			<string>我的圈子</string>
+			<key>icon</key>
+			<string>points</string>
+			<key>needLogin</key>
+			<true/>
+			<key>actionClassName</key>
+			<string>MyCircleViewController</string>
+			<key>ShowIconRight</key>
+			<string>1</string>
+		</dict>
 	</array>
 	<array>
 		<dict>
