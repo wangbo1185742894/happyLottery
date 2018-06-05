@@ -613,7 +613,6 @@
     
     if ([self.arrayTableSectionIsOpen [section] boolValue] == YES) {
         [header.imgDir setImage:[UIImage imageNamed:@"arrow_up"]];
-        
     }else{
         [header.imgDir setImage:[UIImage imageNamed:@"arrow_down"]];
     }

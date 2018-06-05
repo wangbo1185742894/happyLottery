@@ -179,6 +179,7 @@
 #define Agent_modifyHeadUrl @"modifyHeadUrl" //变更圈子的头像
 #define Agent_modifyCircleName @"modifyCircleName" //变更圈名
 #define Agent_modifyNotice @"modifyNotice" //申请变更圈子公告
+#define Agent_listMyCommission @"listMyCommission" //获取圈子的佣金列表
 
 
 #endif /* API_h */

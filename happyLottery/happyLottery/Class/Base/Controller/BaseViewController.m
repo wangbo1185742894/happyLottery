@@ -59,7 +59,12 @@
 }
 
 -(User *)curUser{
-    return [GlobalInstance instance ].curUser;
+    if ([GlobalInstance instance ].curUser == nil) {
+        return [User new];
+    }else{
+        
+        return [GlobalInstance instance ].curUser;
+    }
 }
 
 -(void)setNavigationBack{

@@ -221,4 +221,18 @@ typedef  void(^RequestBlock)(AFHTTPRequestOperation *operation, id responseObjec
     }];
 }
 
+/**
+获取圈子的佣金列表 {"agentId":"xxx","page":"xxx","pageSize":"xxx" }
+ */
+- (void)listMyCommission:(NSDictionary *)param{
+    [self AgentManagerRequest:param url:Agent_listMyCommission andSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        SOAPResponse *response = [self wrapSOAPResponse:operation.responseString];
+        [self.delegate listMyCommissiondelegate:[self analyticalArray:response] isSuccess:response.succeed errorMsg:response.errorMsg];
+    } andfailure:^(AFHTTPRequestOperation *operation, id responseObject) {
+        SOAPResponse *response = [self wrapSOAPResponse:operation.responseString];
+        [self.delegate listMyCommissiondelegate:nil isSuccess:NO errorMsg:response.errorMsg];
+    }];
+}
+
+
 @end

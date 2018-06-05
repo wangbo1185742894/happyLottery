@@ -36,10 +36,13 @@
 @property(nonatomic,copy)NSString * notice;
 
 /** 公告审核状态 */
-@property(nonatomic,assign)ApplyStatus noticeStatus;
+@property(nonatomic,copy)NSString * noticeStatus;
 
 /** 竞技彩提成 */
 @property(nonatomic,copy)NSString * sportsCommission;
+
+
+@property(nonatomic,copy)NSString * noticeRefuseReason;
 
 /** 数字彩提成*/
 @property(nonatomic,copy)NSString * numberCommission;
@@ -47,6 +50,7 @@
 /** 佣金余额 */
 @property(nonatomic,copy)NSString * commission;
 
+@property(nonatomic,copy)NSString * totalSale;
 /** 七日佣金统计 */
 @property(nonatomic,strong) NSMutableArray  <MyAgentTotalModel *>  *agentTotalList;
 

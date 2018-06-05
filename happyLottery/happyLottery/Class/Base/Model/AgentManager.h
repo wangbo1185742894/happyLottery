@@ -86,7 +86,10 @@
  */
 -(void )modifyNoticedelegate:(NSString *)string isSuccess:(BOOL)success errorMsg:(NSString *)msg;
 
-
+/**
+ 获取圈子的佣金列表
+ */
+-(void )listMyCommissiondelegate:(NSArray *)array isSuccess:(BOOL)success errorMsg:(NSString *)msg;
 @end
 
 @interface AgentManager : Manager
@@ -188,5 +191,11 @@
  @param param {"agentId":"圈子ID","notice":"公告" }
  */
 - (void)modifyNotice:(NSDictionary *)param;
+
+
+/**
+ 获取圈子的佣金列表 {"agentId":"xxx","page":"xxx","pageSize":"xxx" }
+ */
+- (void)listMyCommission:(NSDictionary *)param;
 
 @end
