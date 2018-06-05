@@ -200,7 +200,7 @@
     }
     if (alertString == nil) {
         NSDictionary *dicInfo = @{@"cardCode":self.curUser.cardCode,@"realName":realName,@"mobile":telephone};
-//        [self.agentMan agentApply:dicInfo];
+        [self.agentMan agentApply:dicInfo];
     } else {
         [self showPromptText:alertString hideAfterDelay:1.0];
     }
