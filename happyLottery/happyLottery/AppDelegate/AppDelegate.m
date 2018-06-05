@@ -91,6 +91,7 @@ static SystemSoundID shake_sound_male_id = 0;
     [self loadTabVC];
     tabBarControllerMain.delegate = self;
     _lastSelectedIndex = 0;
+    _showGroup = NO;
      [[UIApplication sharedApplication]setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
     [[UITextField appearance]setTintColor:SystemGreen];
     
@@ -98,8 +99,7 @@ static SystemSoundID shake_sound_male_id = 0;
     NSString *doc=[NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString *fileName=[doc stringByAppendingPathComponent:@"userInfo.sqlite"];
     self.fmdb =[FMDatabase databaseWithPath:fileName];
-  
-    
+
     memberMan = [[MemberManager alloc]init];
     memberMan.delegate = self;
     [memberMan getVueHttpUrl];
@@ -109,7 +109,7 @@ static SystemSoundID shake_sound_male_id = 0;
     [self setNewFeature];
     [self dataSave];
     [self autoLogin];
-  
+
     NSString  *pushKey;
 #ifdef APPSTORE
     pushKey = @"0b8f85bf5208bb5da4651334";
@@ -169,6 +169,9 @@ static SystemSoundID shake_sound_male_id = 0;
     
     return YES;
 }
+
+
+
 -(void)initShareSDK{
 
      [ShareSDK registerActivePlatforms:@[
@@ -852,10 +855,12 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         //未登录
         User * curUser = [GlobalInstance instance].curUser;
         if (curUser.isLogin == NO) {
-            LoginViewController * loginVC = [[LoginViewController alloc]init];
+            
             AppDelegate *delegate  = (AppDelegate*)[UIApplication sharedApplication].delegate;
             tabBarController.selectedIndex = _lastSelectedIndex;
-            [delegate.curNavVC pushViewController:loginVC animated:YES];
+            BaseViewController *base = delegate.curNavVC.viewControllers[0];
+            _showGroup = YES;
+            [base needLogin];
             return;
         }
         //自由人
@@ -864,6 +869,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         } else {
             //圈主or圈民
             gouCaiNavVC = [self groupDisplayNav];
+//            gouCaiNavVC.navigationBar.hidden = YES;
         }
         tabBarControllerMain.viewControllers = @[homeNavVC,genTouNavVC,gouCaiNavVC,faXianNavVC, memberNavVC];
         
@@ -884,7 +890,6 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 - (UINavigationController *)groupDisplayNav{
     NSMutableDictionary *tabAttrs = [NSMutableDictionary dictionaryWithCapacity: 3];
     tabAttrs[@"tabTitle"] = @"圈子";
-    tabAttrs[@"title"] = @"圈子";
     tabAttrs[@"itemNormal"] = @"quanzi_normal";
     tabAttrs[@"itemSelected"] = @"quanzi_secelcted";
     tabAttrs[@"rootVC"] = @"GroupNewViewController";

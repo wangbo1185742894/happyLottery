@@ -41,7 +41,7 @@
     
     //初始化CAGradientlayer对象，使它的大小为UIView的大小
     gradientLayer = [CAGradientLayer layer];
-    gradientLayer.frame = self.theView.bounds;
+    gradientLayer.frame = CGRectMake(self.theView.mj_x, self.theView.mj_y, KscreenWidth, self.theView.mj_size.height);
     
     //将CAGradientlayer对象添加在我们要设置背景色的视图的layer层
     [self.theView.layer insertSublayer:gradientLayer atIndex:0];
@@ -77,10 +77,12 @@
     
     if ([agentStatus isEqualToString:@"NOT_AGENT"]) {
         GroupApplyInfoViewController *applyInfoVC =  [[GroupApplyInfoViewController alloc]init];
+        applyInfoVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:applyInfoVC animated:YES];
     }
     else {
         GAStatusViewController *statusVC = [[GAStatusViewController alloc]init];
+        statusVC.hidesBottomBarWhenPushed = YES;
         statusVC.agentStatus = agentStatus;
         [self.navigationController pushViewController:statusVC animated:YES];
     }

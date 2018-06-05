@@ -10,17 +10,21 @@
 
 @protocol ApplyInputCellDelegate <NSObject>
 
-- (void)applayAgent:(NSString *)realName telephone:(NSString *)telephone;
+- (void)applayAgent:(NSString *)realName telephone:(NSString *)telephone agree:(BOOL)agree;
+
+- (void)goToGroupInform;
 
 @end
 
 
-@interface ApplyInputCell : UITableViewCell
+@interface ApplyInputCell: UITableViewCell
 
 @property(weak,nonatomic)id <ApplyInputCellDelegate>delegate;
 
 @property (weak, nonatomic) IBOutlet UITextField *realName;
 
 @property (weak, nonatomic) IBOutlet UITextField *telephoneNum;
+@property (weak, nonatomic) IBOutlet UIButton *agreeBtn;
+@property (weak, nonatomic) IBOutlet UIButton *commitBtn;
 
 @end

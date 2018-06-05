@@ -13,6 +13,9 @@
 @interface AgentDynamic : BaseModel
 @property(nonatomic,copy)NSString * agentId;
 @property(nonatomic,copy)NSString * dynamic;
+@property(nonatomic,copy)NSString * createTime;
+@property(nonatomic,copy)NSString * _id;
+@property(nonatomic,copy)NSString * version;
 @end
 
 @interface AgentInfoModel : BaseModel
