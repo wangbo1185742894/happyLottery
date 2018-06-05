@@ -31,21 +31,25 @@
     AgentInfoModel *model;
     NSString *followCount;
     AgentDynamic *dynamicModel;
+    NSTimer *timer;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
+    [self openTimer];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     self.navigationController.navigationBar.hidden = NO;
+    [self stopTimer];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setTableView];
+    
     if (self.agentMan == nil) {
         self.agentMan = [[AgentManager alloc]init];
     }
@@ -56,7 +60,22 @@
 //    [self.agentMan listAgentDynamic:dic];
     [self.agentMan getAgentInfo:dic];
     [self showLoadingText:@"正在加载"];
+    
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)reloadAgentDynamic{
+    NSDictionary *dic = @{@"agentId":model._id};
+    [self showLoadingText:@"正在刷新圈子动态"];
+    [self.agentMan listAgentDynamic:dic];
+}
+
+- (void)stopTimer {
+    [timer setFireDate:[NSDate distantFuture]];
+}
+
+- (void)openTimer {
+    [timer setFireDate:[NSDate date]];
 }
 
 -(void)setTableView{
@@ -78,6 +97,7 @@
     model = [[AgentInfoModel alloc]initWith:param];
     NSDictionary *dic = @{@"agentId":model._id};
     [self.agentMan getAgentFollowCount:dic];
+    timer = [NSTimer scheduledTimerWithTimeInterval:20 target:self selector:@selector(reloadAgentDynamic) userInfo:nil repeats:YES];
 }
 
 
@@ -93,7 +113,6 @@
         AgentDynamic *model = [[AgentDynamic alloc]initWith:dic];
         [self.dynamicArray addObject:model];
     }
-    
     [self.groupTableView reloadData];
     [self hideLoadingView];
 }
@@ -104,6 +123,7 @@
         return;
     }
     followCount = string;
+    [self.groupTableView reloadData];
     NSDictionary *dic = @{@"agentId":model._id};
     [self.agentMan listAgentDynamic:dic];
 }

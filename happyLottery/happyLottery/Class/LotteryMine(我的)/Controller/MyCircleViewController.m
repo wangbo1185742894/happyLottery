@@ -101,16 +101,26 @@
 
 -(void)initshare{
     NSString *code=self.curUser.shareCode;
-    //    if (code.length>0) {
     NSString *url = [NSString stringWithFormat:@"http://192.168.88.193:18086/app/share/circleRegister?shareCode=%@",code];
+    //    标题：用户名+邀请你加入+圈名
+    //    内容：加入+圈名，一起快乐购彩！
     
-    //    }
+    NSString *nickName = self.curUser.nickname==nil?[self.curUser.cardCode stringByReplacingCharactersInRange:NSMakeRange(2,4) withString:@"****"]:self.curUser.nickname;
+    
+    NSString *circleName = self.agentInfoModel.circleName == nil?[NSString stringWithFormat:@"@%@",self.agentInfoModel._id]:self.agentInfoModel.circleName;
+    
+    NSString *titleString = [NSString stringWithFormat:@"%@邀请你加入%@",nickName,circleName];
+    
+    NSString *textString = [NSString stringWithFormat:@"加入%@，一起快乐购彩！",circleName];
+    
+    
+    
     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
     NSArray* imageArray = @[[[NSBundle mainBundle] pathForResource:@"logo120@2x" ofType:@"png"]];
-    [shareParams SSDKSetupShareParamsByText:@"圈子描述子标题"
+    [shareParams SSDKSetupShareParamsByText:textString
                                      images:imageArray
                                         url:[NSURL URLWithString:url]
-                                      title:@"圈子分享标题"
+                                      title:titleString
                                        type:SSDKContentTypeWebPage];
     
     [ShareSDK showShareActionSheet:nil
