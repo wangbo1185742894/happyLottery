@@ -155,6 +155,23 @@
 
 #pragma UITextFieldDelegate
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    if ([text isEqualToString:@""]) {
+        if ([self.titlestr isEqualToString:@"设置圈名"]) {
+          
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                self.labTextNum.text = [NSString stringWithFormat:@"%ld/%d",textView.text.length,8];
+            });
+            
+        }else{
+         
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                
+                self.labTextNum.text = [NSString stringWithFormat:@"%ld/%d",textView.text.length ,30];
+            });
+        }
+        return YES;
+    }
+
     if ([self.titlestr isEqualToString:@"设置圈名"]) {
         if (textView.text.length + text.length > 8) {
             return NO;
@@ -174,10 +191,11 @@
         });
     }
     
-    if ([text isEqualToString:@""]) {
+   
+    NSString *otherStr = @"~!@#$%^&*()_+=-.,/';[]\?><:《》，。、？‘；“：”}{|、】【";
+    if ([otherStr rangeOfString:text].length > 0) {
         return YES;
     }
-    
 
     
     if ([textView isFirstResponder]) {

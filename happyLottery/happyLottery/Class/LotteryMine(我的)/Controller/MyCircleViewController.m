@@ -74,6 +74,7 @@
         [listX addObject: [model.totalDay substringFromIndex:5] ];
         [listY addObject: model.totalCommission ];
     }
+    self.labRecentlyYongjinInfo.text = [NSString stringWithFormat:@"近%ld日佣金走势",listX.count];
    self. LCView.xValues = listX;
     self. LCView.yValues = listY ;
     //@[@23,@35,@89];
