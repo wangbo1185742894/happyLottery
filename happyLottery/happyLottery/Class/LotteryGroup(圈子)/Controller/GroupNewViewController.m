@@ -22,6 +22,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *groupTableView;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topDIs;
 @property(nonatomic,strong)NSMutableArray <AgentDynamic *> * dynamicArray;
 
 @end
@@ -49,6 +50,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setTableView];
+    if ([self isIphoneX]) {
+        self.topDIs.constant = -44;
+    }else{
+        self.topDIs.constant = -20;
+    }
     
     if (self.agentMan == nil) {
         self.agentMan = [[AgentManager alloc]init];

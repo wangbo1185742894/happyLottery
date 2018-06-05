@@ -12,6 +12,7 @@
 @interface RuZhangViewController ()<AgentManagerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *tfJine;
 @property (weak, nonatomic) IBOutlet UILabel *labInfo;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topDis;
 
 @property (weak, nonatomic) IBOutlet UILabel *labYue;
 @end
@@ -20,6 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.topDis.constant = NaviHeight;
     self.agentMan.delegate = self;
     self.title = @"入账余额";
     self.labYue.text = [NSString stringWithFormat:@"佣金余额  %@",self.agentInfo.commission];

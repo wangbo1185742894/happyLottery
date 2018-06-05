@@ -103,13 +103,19 @@
 
 #pragma mark Regex
 //姓名一般只允许包含中文或英文字母
-
 -(void)cancleBtnClick{
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)closeBtnClick:(id)sender {
     self.nickField.text =@"";
+    if ([self.titlestr isEqualToString:@"设置圈名"]) {
+        
+        self.labTextNum.text = [NSString stringWithFormat:@"%d/%d",0,8];
+    }else{
+        
+        self.labTextNum.text = [NSString stringWithFormat:@"%d/%d",0,30];
+    }
 }
 
 -(void)modifyNotice{

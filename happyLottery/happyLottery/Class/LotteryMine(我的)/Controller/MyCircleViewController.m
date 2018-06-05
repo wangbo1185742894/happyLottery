@@ -47,9 +47,13 @@
     [self setRightBarItems];
     [self doWithCreateUI];
     self.agentMan.delegate = self;
-    [self loadData];
+    
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self loadData];
+}
 -(void)loadData{
     [self.agentMan getMyAgentInfo:@{@"cardCode":self.curUser.cardCode}];
 }
