@@ -57,9 +57,15 @@
 }
 
 - (void) gotAttentFollowScheme:(NSArray  *)personList  errorMsg:(NSString *)msg{
-    [self.personArray removeAllObjects];
-    //添加数据
     [self.listTableView tableViewEndRefreshCurPageCount:personList.count];
+    if (personList == nil) {
+        [self showPromptText:msg hideAfterDelay:1.0];
+        return;
+    }
+    if (self.page == 0) {
+        [self.personArray removeAllObjects];
+    }
+    //添加数据
     for (NSDictionary *dic in personList) {
         HotSchemeModel *model = [[HotSchemeModel alloc]initWith:dic];
         [self.personArray addObject:model];
