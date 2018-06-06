@@ -156,39 +156,73 @@
 #pragma UITextFieldDelegate
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
     if ([text isEqualToString:@""]) {
-        if ([self.titlestr isEqualToString:@"设置圈名"]) {
-          
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                self.labTextNum.text = [NSString stringWithFormat:@"%ld/%d",textView.text.length,10];
-            });
-            
-        }else{
-         
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                
-                self.labTextNum.text = [NSString stringWithFormat:@"%ld/%d",textView.text.length ,30];
-            });
-        }
         return YES;
     }
-
-    if ([self.titlestr isEqualToString:@"设置圈名"]) {
-        if (textView.text.length + text.length > 10) {
-            return NO;
-        }
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            self.labTextNum.text = [NSString stringWithFormat:@"%ld/%d",textView.text.length,10];
-        });
-    }else{
-        if (textView.text.length + text.length > 30) {
-            return NO;
-        }
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        
-            self.labTextNum.text = [NSString stringWithFormat:@"%ld/%d",textView.text.length ,30];
-        });
-    }
     
+//    if ([text isEqualToString:@""]) {
+//        if ([self.titlestr isEqualToString:@"设置圈名"]) {
+//
+//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                self.labTextNum.text = [NSString stringWithFormat:@"%ld/%d",textView.text.length,10];
+//            });
+//
+//        }else{
+//
+//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//
+//                self.labTextNum.text = [NSString stringWithFormat:@"%ld/%d",textView.text.length ,30];
+//            });
+//        }
+//        return YES;
+//    }
+
+//    if ([self.titlestr isEqualToString:@"设置圈名"]) {
+//        UITextRange *selectedRange = [textView markedTextRange];
+//        //获取高亮部分
+//        UITextPosition *pos = [textView positionFromPosition:selectedRange.start offset:0];
+//        if (pos  && selectedRange) {
+//            if (textView.text.length + text.length - range.length> 10) {
+//                return NO;
+//            }
+//        }else{
+//            if (textView.text.length + text.length> 10) {
+//                return NO;
+//            }
+//        }
+//
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//
+//            UITextRange *selectedRange = [textView markedTextRange];
+//            //获取高亮部分
+//            UITextPosition *pos = [textView positionFromPosition:selectedRange.start offset:0];
+//            //如果在变化中是高亮部分在变，就不要计算字符了
+//            if (selectedRange && pos) {
+//
+//            }else{
+//
+//                self.labTextNum.text = [NSString stringWithFormat:@"%ld/%d",textView.text.length,10];
+//            }
+//        });
+//    }else{
+//        if (textView.text.length + text.length > 30) {
+//            return NO;
+//        }
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            UITextRange *selectedRange = [textView markedTextRange];
+//            //获取高亮部分
+//            UITextPosition *pos = [textView positionFromPosition:selectedRange.start offset:0];
+//
+//            //如果在变化中是高亮部分在变，就不要计算字符了
+//            if (selectedRange && pos) {
+//
+//            }else{
+//
+//                self.labTextNum.text = [NSString stringWithFormat:@"%ld/%d",textView.text.length ,30];
+//            }
+//
+//        });
+//    }
+//
    
     NSString *otherStr = @"~!@#$%^&*()_+=-.,/';[]\?><:《》，。、？‘；“：”}{|、】【";
     if ([otherStr rangeOfString:text].length > 0) {
@@ -242,6 +276,38 @@
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
     
 }
+//
+- (void)textViewDidChange:(UITextView *)textView
+{
+    UITextRange *selectedRange = [textView markedTextRange];
+    //获取高亮部分
+    UITextPosition *pos = [textView positionFromPosition:selectedRange.start offset:0];
+    
+    //如果在变化中是高亮部分在变，就不要计算字符了
+    if (selectedRange && pos) {
+        return;
+    }
+    
+    if ([self.titlestr isEqualToString:@"设置圈名"]) {
+        if (textView.text.length > 10) {
+            textView.text = [textView.text substringToIndex:10];
+        }
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            self.labTextNum.text = [NSString stringWithFormat:@"%ld/%d",textView.text.length,10];
+        });
+        
+    }else{
+        if (textView.text.length > 30) {
+            textView.text = [textView.text substringToIndex:30];
+        }
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            self.labTextNum.text = [NSString stringWithFormat:@"%ld/%d",textView.text.length ,30];
+        });
+    }
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

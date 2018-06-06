@@ -70,7 +70,8 @@
     self.labYue.text = [NSString stringWithFormat:@"%.2f元",[self.agentInfoModel.commission doubleValue]];
     NSMutableArray *listX = [NSMutableArray arrayWithCapacity:0];
     NSMutableArray *listY = [NSMutableArray arrayWithCapacity:0];
-    for (int i = 0; i <self.agentInfoModel.agentTotalList.count ; i ++) {
+    
+    for (NSInteger i = self.agentInfoModel.agentTotalList.count - 1; i >= 0; i --) {
         MyAgentTotalModel *model = self.agentInfoModel.agentTotalList[i];
         [listX addObject: [model.totalDay substringFromIndex:5] ];
         [listY addObject: model.totalCommission ];
@@ -104,13 +105,15 @@
     // Dispose of any resources that can be recreated.
 }
 
-
 -(void)initshare{
-    NSString *code=self.curUser.shareCode;
-    NSString *url = [NSString stringWithFormat:@"http://192.168.88.193:18086/app/share/circleRegister?shareCode=%@",code];
+    NSString *url ;
+    if ([self.curUser.memberType isEqualToString:@"CIRCLE_MASTER"]) {
+        url = [NSString stringWithFormat:@"%@%@?shareCode=%@",H5BaseAddress,KcircleRegister,self.curUser.shareCode];
+    }else{
+        url = [NSString stringWithFormat:@"%@%@?shareCode=%@",H5BaseAddress,KcircleRegisterCopy,self.curUser.shareCode];
+    }
     //    标题：用户名+邀请你加入+圈名
     //    内容：加入+圈名，一起快乐购彩！
-    
     NSString *nickName = self.curUser.nickname==nil?[self.curUser.cardCode stringByReplacingCharactersInRange:NSMakeRange(2,4) withString:@"****"]:self.curUser.nickname;
     
     NSString *circleName = self.agentInfoModel.circleName == nil?[NSString stringWithFormat:@"@%@",self.agentInfoModel._id]:self.agentInfoModel.circleName;
