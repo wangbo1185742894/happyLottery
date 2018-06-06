@@ -84,13 +84,14 @@
     
     curMode = [[MyAgentInfoModel alloc]initWith:param];
     if ([curMode.noticeStatus isEqualToString:@"AUDITING"]) {
-        self.labNoticeState.text = @"待审核";
+        self.labNoticeState.text = @"(审核中)";
     }else if ([curMode.noticeStatus isEqualToString:@"AUDITED"]){
-        self.labNoticeState.text = @"审批通过";
+//        self.labNoticeState.text = @"(审批通过)";
     }else if ([curMode.noticeStatus isEqualToString:@"AUDIT_REJECT"]){
-        self.labNoticeState.text = @"审批驳回";
+        self.labNoticeState.text = @"(审批失败)";
+        self.labNoticeInfo.text = [NSString stringWithFormat:@"* %@",curMode.noticeRefuseReason] ;
     }
-    self.labNoticeInfo.text = curMode.noticeRefuseReason;
+    
     [self loadUserInfo];
 }
 
@@ -115,6 +116,10 @@
 }
 
 - (IBAction)setNick:(id)sender {
+    if ([curMode.noticeStatus isEqualToString:@"AUDITING"]) {
+        [self showPromptViewWithText:@"公告审核中,不可编辑" hideAfter:1.7];
+        return;
+    }
     SetCriNameSetViewController * nickVC = [[SetCriNameSetViewController alloc]init];
     nickVC.titlestr = @"设置圈子公告";
     nickVC.agentModel = curMode;
@@ -544,6 +549,10 @@
     
 }
 - (IBAction)actionModfiyName:(id)sender {
+    if ([self.agentModel.circleName rangeOfString:@"circle_"].length ==  0) {
+        [self showPromptViewWithText:@"圈名只能修改一次" hideAfter:1.7];
+        return;
+    }
     SetCriNameSetViewController *vc = [[SetCriNameSetViewController alloc]init];
     vc.agentModel = curMode;
     vc.titlestr = @"设置圈名";

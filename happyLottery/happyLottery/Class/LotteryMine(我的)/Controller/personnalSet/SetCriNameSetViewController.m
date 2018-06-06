@@ -27,9 +27,11 @@
     
     if ([self.titlestr isEqualToString:@"设置圈名"]) {
         _textViewHeight.constant = 50;
+        self.labTextNum.hidden = YES;
         self.labTextNum.text = [NSString stringWithFormat:@"%ld/%d",self.agentModel.circleName.length,10];
     }else{
         _textViewHeight.constant = 90;
+        self.labTextNum.hidden = NO;
         self.labTextNum.text = [NSString stringWithFormat:@"%ld/%d",self.agentModel.notice.length,30];
     }
     self.title = self.titlestr;
@@ -75,7 +77,7 @@
   NSString *nickname = self.nickField.text;
     if ([self.titlestr isEqualToString:@"设置圈名"]) {
         if(nickname.length==0){
-            [self showPromptText:@"圈名不能为空！" hideAfterDelay:1.7];
+            [self showPromptText:@"请输入圈名" hideAfterDelay:1.7];
             return;
         }else if (nickname.length >10) {
             [self showPromptText: @"圈名不能超过10个字符" hideAfterDelay: 1.7];
@@ -87,7 +89,7 @@
         }
     }else{
         if(nickname.length==0){
-            [self showPromptText:@"公告不能为空！" hideAfterDelay:1.7];
+            [self showPromptText:@"请输入公告" hideAfterDelay:1.7];
             return;
         }else if (nickname.length >30) {
             [self showPromptText: @"公告不能超过30个字符" hideAfterDelay: 1.7];
@@ -224,7 +226,7 @@
 //    }
 //
    
-    NSString *otherStr = @"~!@#$%^&*()_+=-.,/';[]\?><:《》，。、？‘；“：”}{|、】【";
+    NSString *otherStr = @"~！!@#$%^&*()_+=-.,/';[]\?><:《》，。、？‘；“：”}{|、】【";
     if ([otherStr rangeOfString:text].length > 0) {
         return YES;
     }

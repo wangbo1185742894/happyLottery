@@ -11,7 +11,9 @@
 
 @interface CashAndIntegrationWaterTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *image;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imgWidth;
 @property (weak, nonatomic) IBOutlet UILabel *nameLab;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imgDisLeft;
 @property (weak, nonatomic) IBOutlet UILabel *dateLab;
 @property (weak, nonatomic) IBOutlet UIButton *btnZhuangZhangState;
 @property (weak, nonatomic) IBOutlet UILabel *priceLab;

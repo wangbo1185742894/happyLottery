@@ -12,6 +12,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    _btnZhuangZhangState.hidden = YES;
     [_btnZhuangZhangState setTitleColor:SystemGreen forState:0];
     [_btnZhuangZhangState setBackgroundImage:[UIImage imageWithColor:RGBCOLOR(220, 220, 220)] forState:0];
     
@@ -29,10 +30,12 @@
 }
 
 -(void)loadData:(AgentTransferModel *)model{
+    _btnZhuangZhangState.hidden = NO;
     self.retainLab.textColor = RGBCOLOR(200, 200, 200);
     self.labDidTop.constant = 15;
     self.retainLab.text = model.createTime;
-    
+    self.imgWidth.constant = 0;
+    self.imgDisLeft.constant = 0;
 //    /**     * 待审核     */
 //    AUDITING,
 //    /**     * 审批通过     */
