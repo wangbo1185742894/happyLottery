@@ -87,12 +87,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CJo-ZU-sXh">
-                                <rect key="frame" x="88" y="72" width="0.0" height="0.0"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="88" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CJo-ZU-sXh">
+                                <rect key="frame" x="80.5" y="72" width="15" height="15"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Condensed-Black-Se" family="Helvetica-Condensed-Black-Se" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xg4-BG-wc6">
+                                <rect key="frame" x="50.5" y="16" width="75" height="76"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="EpH-Q6-8dG"/>
+                                    <constraint firstAttribute="height" constant="76" id="TNy-Jq-Res"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="actionToMember:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="a9a-nd-2gl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -105,12 +115,14 @@
                             <constraint firstItem="x9Z-cc-FYg" firstAttribute="top" secondItem="AjI-8K-3T3" secondAttribute="bottom" constant="5" id="ae9-cr-JkN"/>
                             <constraint firstItem="9aq-M3-t7S" firstAttribute="leading" secondItem="4V8-6h-EGc" secondAttribute="trailing" constant="68" id="big-JR-nMv"/>
                             <constraint firstAttribute="height" constant="118" id="fjL-aV-TPd"/>
+                            <constraint firstItem="x9Z-cc-FYg" firstAttribute="centerX" secondItem="Xg4-BG-wc6" secondAttribute="centerX" id="gx5-eB-3pG"/>
                             <constraint firstItem="9aq-M3-t7S" firstAttribute="centerY" secondItem="AjI-8K-3T3" secondAttribute="centerY" id="kfk-t8-RfV"/>
                             <constraint firstItem="CJo-ZU-sXh" firstAttribute="centerX" secondItem="AjI-8K-3T3" secondAttribute="centerX" id="o2h-q7-DbT"/>
                             <constraint firstItem="x9Z-cc-FYg" firstAttribute="centerX" secondItem="AjI-8K-3T3" secondAttribute="centerX" id="pXt-ni-XVH"/>
                             <constraint firstItem="4V8-6h-EGc" firstAttribute="centerY" secondItem="B6r-Ut-dAl" secondAttribute="centerY" id="tqR-Ov-mHX"/>
                             <constraint firstItem="4V8-6h-EGc" firstAttribute="leading" secondItem="AjI-8K-3T3" secondAttribute="trailing" constant="69" id="uDw-DN-Zqz"/>
                             <constraint firstItem="CJo-ZU-sXh" firstAttribute="top" secondItem="x9Z-cc-FYg" secondAttribute="bottom" constant="10" id="vQG-G3-tbG"/>
+                            <constraint firstItem="Xg4-BG-wc6" firstAttribute="top" secondItem="B6r-Ut-dAl" secondAttribute="top" constant="16" id="zFE-Ue-z2m"/>
                         </constraints>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pqS-6h-aFP">
@@ -154,7 +166,7 @@
                 <outlet property="memberCountLab" destination="CJo-ZU-sXh" id="OK5-Tf-Cyh"/>
                 <outlet property="totalBonusLab" destination="93u-xt-OS0" id="lXP-nu-qYH"/>
             </connections>
-            <point key="canvasLocation" x="785.5" y="213"/>
+            <point key="canvasLocation" x="323.5" y="144"/>
         </tableViewCell>
     </objects>
     <resources>

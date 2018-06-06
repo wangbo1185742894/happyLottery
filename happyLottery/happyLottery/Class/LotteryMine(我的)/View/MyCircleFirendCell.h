@@ -13,6 +13,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *lmgIcon;
 @property (weak, nonatomic) IBOutlet UILabel *labName;
 @property (weak, nonatomic) IBOutlet UILabel *labTime;
+@property (weak, nonatomic) IBOutlet UIImageView *quanzhuImage;
 -(void)loadData:(AgentMemberModel *)model;
+-(void)loadDataInQ:(AgentMemberModel *)model;
 -(void)loadDataLottery:(NSDictionary  *)itemDic andRate:(NSString *)rate;
 @end
