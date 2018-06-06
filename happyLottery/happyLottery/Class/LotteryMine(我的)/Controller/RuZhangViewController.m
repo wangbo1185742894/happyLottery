@@ -24,7 +24,7 @@
     self.topDis.constant = NaviHeight;
     self.agentMan.delegate = self;
     self.title = @"入账余额";
-    self.labYue.text = [NSString stringWithFormat:@"佣金余额  %@",self.agentInfo.commission];
+    self.labYue.text = [NSString stringWithFormat:@"佣金余额  %.2f元",[self.agentInfo.commission doubleValue]];
     self.labInfo.text = @"注意：\n1:每周一可提现至余额，其他时间不可提现。\n2:余额账户到账时间在2小时。\n3:提现金额超过2000元，需财务审核通过即可转入余额账户";
     UIBarButtonItem *faqi = [self creatBarItem:@"" icon:@"icon_shezhi" andFrame:CGRectMake(0, 10, 30, 30) andAction:@selector(optionRightButtonAction)];
     self.navigationItem.rightBarButtonItems = @[faqi];
