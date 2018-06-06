@@ -1547,6 +1547,8 @@
 		F9F91B71200EF83A0036DD2A /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F91B70200EF83A0036DD2A /* libresolv.tbd */; };
 		F9FC0BEF20C60AA000BCCF59 /* GroupFollowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9FC0BEC20C60A9F00BCCF59 /* GroupFollowViewController.xib */; };
 		F9FC0BF020C60AA000BCCF59 /* GroupFollowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FC0BEE20C60AA000BCCF59 /* GroupFollowViewController.m */; };
+		F9FC0BF320C76E7D00BCCF59 /* yongjin_money@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9FC0BF120C76E7B00BCCF59 /* yongjin_money@2x.png */; };
+		F9FC0BF420C76E7D00BCCF59 /* yongjin_money@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9FC0BF220C76E7C00BCCF59 /* yongjin_money@3x.png */; };
 		F9FC15242062208B009BAD68 /* HomeGJItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9FC15222062208B009BAD68 /* HomeGJItemViewCell.xib */; };
 		F9FC153220622A0F009BAD68 /* WCHomeGYJItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9FC153120622A0F009BAD68 /* WCHomeGYJItemViewCell.xib */; };
 		F9FC153B20625815009BAD68 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9FC153820625814009BAD68 /* WebViewController.xib */; };
@@ -3580,6 +3582,8 @@
 		F9FC0BEC20C60A9F00BCCF59 /* GroupFollowViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupFollowViewController.xib; sourceTree = "<group>"; };
 		F9FC0BED20C60A9F00BCCF59 /* GroupFollowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupFollowViewController.h; sourceTree = "<group>"; };
 		F9FC0BEE20C60AA000BCCF59 /* GroupFollowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupFollowViewController.m; sourceTree = "<group>"; };
+		F9FC0BF120C76E7B00BCCF59 /* yongjin_money@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yongjin_money@2x.png"; sourceTree = "<group>"; };
+		F9FC0BF220C76E7C00BCCF59 /* yongjin_money@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yongjin_money@3x.png"; sourceTree = "<group>"; };
 		F9FC15222062208B009BAD68 /* HomeGJItemViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeGJItemViewCell.xib; sourceTree = "<group>"; };
 		F9FC153120622A0F009BAD68 /* WCHomeGYJItemViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WCHomeGYJItemViewCell.xib; sourceTree = "<group>"; };
 		F9FC153820625814009BAD68 /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
@@ -6377,6 +6381,8 @@
 		F9BC6DE420C285320037998B /* GroupImage */ = {
 			isa = PBXGroup;
 			children = (
+				F9FC0BF120C76E7B00BCCF59 /* yongjin_money@2x.png */,
+				F9FC0BF220C76E7C00BCCF59 /* yongjin_money@3x.png */,
 				F965563020C53BFD0017066C /* pic_lianjieyuanhuan@2x.png */,
 				F965562F20C53BFC0017066C /* pic_lianjieyuanhuan@3x.png */,
 				F965561F20C533570017066C /* pic_quanneidongtai@2x.png */,
@@ -7012,6 +7018,7 @@
 				2D0600421FFDDD51009E7568 /* schemedetailpic@3x.png in Resources */,
 				F928C6B81FF4BA40001F1A32 /* decrease@3x.png in Resources */,
 				2D05C8B420A97AEE001A8953 /* AtttendPersonViewCell.xib in Resources */,
+				F9FC0BF420C76E7D00BCCF59 /* yongjin_money@3x.png in Resources */,
 				2D05C81720A3F60E001A8953 /* HomeMenuItemsConfig.plist in Resources */,
 				F9B5D98F2060A9DE00C9F6DC /* flag413@2x.png in Resources */,
 				2D0E23AA2018833E0098DA40 /* switchbackground@2x.png in Resources */,
@@ -7707,6 +7714,7 @@
 				F9BC6E2020C2B2EC0037998B /* dengdai@3x.png in Resources */,
 				2D05C84C20A43631001A8953 /* deletesearch@3x.png in Resources */,
 				2D7B133B204E24AA0035AE89 /* ballWhiteBG.png in Resources */,
+				F9FC0BF320C76E7D00BCCF59 /* yongjin_money@2x.png in Resources */,
 				2D4B1E6C1FDF684E0034B708 /* bifenzhibo@3x.png in Resources */,
 				F90058E51FF61619009C8E1C /* noticedelete@2x.png in Resources */,
 				2D7B1367204E41910035AE89 /* gameplay@3x.png in Resources */,
