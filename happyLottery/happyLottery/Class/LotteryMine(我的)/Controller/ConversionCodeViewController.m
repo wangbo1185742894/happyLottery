@@ -63,7 +63,7 @@
     
     if ([msg isEqualToString:@"执行成功"]) {
         //NSLog(@"Info%@",Info);
-         [self showPromptText: @"恭喜您，获得500积分" hideAfterDelay: 1.7];
+         [self showPromptText: @"恭喜您，成功加入圈子" hideAfterDelay: 1.7];
           [self performSelector:@selector(delayMethod) withObject:nil afterDelay:1.0];
     
     }else{
