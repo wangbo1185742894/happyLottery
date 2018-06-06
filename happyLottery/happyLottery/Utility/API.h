@@ -23,11 +23,11 @@
 //#define H5BaseAddress @"http://tbz.xianyingcai.com:28086"
 
 #define ServerAddress @"http://192.168.88.244:8086"  //资讯  轮播图 用户图像
-#define H5BaseAddress @"http://192.168.88.244:18086"
+//#define H5BaseAddress @"http://192.168.88.244:18086"
 #define WSServerURL @"http://192.168.88.244:28000/services%@"
 //
 //
-//#define H5BaseAddress @"http://192.168.88.193:18086"  //谢青服务
+#define H5BaseAddress @"http://192.168.88.193:18086"  //谢青服务
 //#define H5BaseAddress @"http://192.168.88.116:18086"  //史少鹏服务
 //杨芳本地
 //#define ServerAddress @"http://192.168.88.109:8086"
@@ -181,5 +181,8 @@
 #define Agent_modifyNotice @"modifyNotice" //申请变更圈子公告
 #define Agent_listMyCommission @"listMyCommission" //获取圈子的佣金列表
 
+
+#define KcircleRegister @"/app/share/circleRegister" //圈主分享 H5BaseAddress
+#define KcircleRegisterCopy @"/app/share/circleRegisterCopy"  //圈友分享 H5BaseAddress
 
 #endif /* API_h */

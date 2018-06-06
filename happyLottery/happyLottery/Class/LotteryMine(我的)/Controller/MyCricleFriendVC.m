@@ -64,7 +64,7 @@
             AgentMemberModel *model = [[AgentMemberModel alloc]initWith:item];
             for (NSMutableArray *array in self.personArray) {
                 AgentMemberModel *fModel = [array firstObject];
-                if ([[fModel.createTime substringToIndex:10 ] isEqualToString:[fModel.createTime substringToIndex:10 ]]) {
+                if ([[fModel.createTime substringToIndex:10 ] isEqualToString:[model.createTime substringToIndex:10 ]]) {
                     [array addObject:model];
                     flag = 1;
                     break;

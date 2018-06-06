@@ -42,9 +42,17 @@
     }
     self.memberMan.delegate = self;
    // [self getQRCodeClient];
-    codeurl = @"http://t.11max.com/Tbz";
-    
+    codeurl = [self getShareUrl];
     [self initCode];
+}
+
+-(NSString *)getShareUrl{
+    
+    if ([self.curUser.memberType isEqualToString:@"CIRCLE_MASTER"]) {
+        return  [NSString stringWithFormat:@"%@%@?shareCode=%@",H5BaseAddress,KcircleRegister,self.curUser.shareCode];
+    }else{
+        return  [NSString stringWithFormat:@"%@%@?shareCode=%@",H5BaseAddress,KcircleRegisterCopy,self.curUser.shareCode];
+    }
 }
 
 - (IBAction)shareBtnClick:(id)sender {
@@ -53,10 +61,12 @@
 
 -(void)initshare{
     NSString *code=self.curUser.shareCode;
-//    if (code.length>0) {
-              NSString *url = [NSString stringWithFormat:@"tfi.11max.com/Tbz/ShareByCode?shareCode=%@",code];
+//    if (code.length>0) { 
+//              = [NSString stringWithFormat:@"tfi.11max.com/Tbz/ShareByCode?shareCode=%@",code];
  
-//    }
+//    }CIRCLE_MASTER("圈主"), CIRCLE_PERSON("圈民"), FREEDOM_PERSON("自由人");
+    NSString *url = [self getShareUrl];
+  
     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
     NSArray* imageArray = @[[[NSBundle mainBundle] pathForResource:@"logo120@2x" ofType:@"png"]];
     [shareParams SSDKSetupShareParamsByText:@"千万大奖集聚地，新用户即享188元豪礼。积分商城优惠享不停！"
