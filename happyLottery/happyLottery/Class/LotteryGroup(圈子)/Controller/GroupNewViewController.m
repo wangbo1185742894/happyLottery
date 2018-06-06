@@ -73,7 +73,6 @@
 
 - (void)reloadAgentDynamic{
     NSDictionary *dic = @{@"agentId":model._id};
-    [self showLoadingText:@"正在刷新圈子动态"];
     [self.agentMan listAgentDynamic:dic];
 }
 

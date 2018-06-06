@@ -41,6 +41,16 @@
 }
 
 -(void)loadData{
+//    NSArray *array = @[@"2什么os",@"4bc",@"3ab",@"3aa",@"3aa",@"e11",@"e23",@"s23",@"什么",@"娥皇"];
+//    array = [array sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+//        NSString * stringa = (NSString *)obj1;
+//        NSString * stringb = (NSString *)obj2;
+//        if ([stringa compare:stringb]== NSOrderedDescending) {
+//            return YES;
+//        }
+//        return NO;
+//    }];
+//    NSLog(@"%@",array);
     [self.agentMan listAgentMember:@{@"cardCode":self.curUser.cardCode,@"page":@(_page),@"pageSize":@(KpageSize)}];
 }
 
