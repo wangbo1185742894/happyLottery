@@ -63,6 +63,7 @@
     if ([msg isEqualToString:@"执行成功"]) {
         //NSLog(@"Info%@",Info);
          [self showPromptText: result hideAfterDelay: 1.7];
+
           [self performSelector:@selector(delayMethod) withObject:nil afterDelay:1.0];
     
     }else{
