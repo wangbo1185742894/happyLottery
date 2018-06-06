@@ -31,9 +31,31 @@
     [self.lmgIcon setImage:[UIImage imageNamed:itemDic[@"lotteryImageName"]]];
 }
 
--(void)loadData:(AgentMemberModel *)model{
+-(void)loadDataInQ:(AgentMemberModel *)model{
+    if ([model.memberType isEqualToString:@"0"]) {
+        self.quanzhuImage.hidden = NO;
+    }
+    else {
+        self.quanzhuImage.hidden = YES;
+    }
+    self.labTime.hidden = YES;
+    if (model.headUrl == nil) {
+        self.lmgIcon.image = [UIImage imageNamed:@"usermine"];
+    }else{
+        [self.lmgIcon sd_setImageWithURL:[NSURL URLWithString:model.headUrl]];
+    }
     
+    if (model.nickname == nil) {
+        self.labName.text = [model.cardCode stringByReplacingCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
+    }else{
+        self.labName.text = model.nickname;
+    }
+}
+
+-(void)loadData:(AgentMemberModel *)model{
+    self.quanzhuImage.hidden = YES;
     self.labTime.text = [model.createTime substringFromIndex:10];
+    self.labTime.hidden = NO;
     if (model.headUrl == nil) {
         self.lmgIcon.image = [UIImage imageNamed:@"usermine"];
     }else{

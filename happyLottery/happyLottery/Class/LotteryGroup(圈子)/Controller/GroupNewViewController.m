@@ -13,12 +13,13 @@
 #import "AgentDynamicCell.h"
 #import "AgentHeaderView.h"
 #import "GroupFollowViewController.h"
+#import "GroupMemberVC.h"
 #define KAgentInfoCell @"AgentInfoCell"
 #define KGroupFollowCell @"GroupFollowCell"
 #define KAgentDynamicCell @"AgentDynamicCell"
 
 
-@interface GroupNewViewController ()<UITableViewDelegate,UITableViewDataSource,AgentManagerDelegate,GroupFollowDelegate>
+@interface GroupNewViewController ()<UITableViewDelegate,UITableViewDataSource,AgentManagerDelegate,GroupFollowDelegate,AgentInfoDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *groupTableView;
 
@@ -141,6 +142,12 @@
     [self.navigationController pushViewController:groupVc animated:YES];
 }
 
+- (void)agentMember{
+    GroupMemberVC *membVc = [[GroupMemberVC alloc]init];
+    membVc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:membVc animated:YES];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -199,6 +206,7 @@
     if (indexPath.section == 0) {
         AgentInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:KAgentInfoCell];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.delegate = self;
         if (model!=nil) {
             [cell reloadDate:model];
         }

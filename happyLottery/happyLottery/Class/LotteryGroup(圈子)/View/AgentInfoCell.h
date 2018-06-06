@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "AgentInfoModel.h"
 
+@protocol AgentInfoDelegate
+
+- (void)agentMember;
+
+@end
+
 @interface AgentInfoCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *circleNameLab;
@@ -22,6 +28,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *totalBonusLab;
 
 @property (weak, nonatomic) IBOutlet UIView *cornorView;
+
+@property (weak, nonatomic) id<AgentInfoDelegate> delegate;
 
 - (void)reloadDate:(AgentInfoModel *)model;
 
