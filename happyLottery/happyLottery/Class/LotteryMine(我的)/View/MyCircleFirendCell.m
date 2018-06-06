@@ -24,6 +24,7 @@
 
 
 -(void)loadDataLottery:(NSDictionary  *)itemDic andRate:(NSString *)rate{
+    self.quanzhuImage.hidden = YES;
     self.labName.text = itemDic[@"lotteryName"];
     self.labTime.text = [NSString stringWithFormat:@"%.2f%%",[rate doubleValue] * 100];
     self.labTime.font = [UIFont systemFontOfSize:15];

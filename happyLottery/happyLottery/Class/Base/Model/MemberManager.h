@@ -45,7 +45,7 @@
 - (void) changeLoginPWDSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) getFeedbackListSms:(NSArray *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 
-- (void) upMemberShareSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
+- (void) upMemberShareSmsIsSuccess:(BOOL)success result:(NSString *)result errorMsg:(NSString *)msg;
 
 - (void) signInIsSuccess:(NSDictionary *)info isSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) gotisSignInToday:(NSString  *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg;

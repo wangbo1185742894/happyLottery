@@ -56,6 +56,9 @@
         return;
     }else{
         [self showPromptViewWithText:@"转账成功" hideAfter:1.8];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.navigationController popViewControllerAnimated:YES];
+        });
         return;
     }
 }

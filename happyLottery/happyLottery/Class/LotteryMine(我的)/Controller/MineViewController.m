@@ -71,12 +71,28 @@
                 break;
             }
         }
-        listArray = @[fristArray,@[itemArray[1][0],itemArray[1][2]],itemArray[2]];
-        [self.tableview reloadData];
+        if (![self.curUser.memberType isEqualToString:@"FREEDOM_PERSON"] ) {
+            NSArray *itemArray = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Mine" ofType: @"plist"]];
+            listArray = @[fristArray,@[itemArray[1][0],itemArray[1][2]],itemArray[2]];
+            [self.tableview reloadData];
+        }else{
+              listArray = @[fristArray,itemArray[1],itemArray[2]];
+        }
+      
+        
     }else{
-        listArray = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Mine" ofType: @"plist"]];
+          NSArray *itemArray = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Mine" ofType: @"plist"]];
+        if (![self.curUser.memberType isEqualToString:@"FREEDOM_PERSON"] ) {
+          
+            listArray = @[itemArray[0],@[itemArray[1][0],itemArray[1][2]],itemArray[2]];
+            [self.tableview reloadData];
+        }else{
+            listArray = @[itemArray[0],itemArray[1],itemArray[2]];
+        }
+
     }
 
+    [self.tableview reloadData];
     if ([self.curUser.whitelist boolValue] == NO) {
         self.viewJIfen.hidden = YES;
         self.jifenHeight.constant = 0;
@@ -184,12 +200,6 @@
 
 -(void)loadUserInfo{
     
-    if (![self.curUser.memberType isEqualToString:@"FREEDOM_PERSON"] && self.curUser.isLogin == YES) {
-        NSArray *itemArray = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Mine" ofType: @"plist"]];
-        listArray = @[itemArray[0],@[itemArray[1][0],itemArray[1][2]],itemArray[2]];
-        [self.tableview reloadData];
-    }
-    
     if (![self.curUser.memberType isEqualToString:@"CIRCLE_MASTER"]|| self.curUser.isLogin == NO) {
         NSArray *itemArray = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Mine" ofType: @"plist"]];
         NSMutableArray *fristArray = [NSMutableArray arrayWithArray:itemArray[0]];
@@ -199,10 +209,25 @@
                 break;
             }
         }
-        listArray = @[fristArray,@[itemArray[1][0],itemArray[1][2]],itemArray[2]];
-        [self.tableview reloadData];
+        if (![self.curUser.memberType isEqualToString:@"FREEDOM_PERSON"] ) {
+            NSArray *itemArray = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Mine" ofType: @"plist"]];
+            listArray = @[fristArray,@[itemArray[1][0],itemArray[1][2]],itemArray[2]];
+            [self.tableview reloadData];
+        }else{
+            listArray = @[fristArray,itemArray[1],itemArray[2]];
+        }
+    }else{
+        NSArray *itemArray = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Mine" ofType: @"plist"]];
+        if (![self.curUser.memberType isEqualToString:@"FREEDOM_PERSON"] ) {
+            
+            listArray = @[itemArray[0],@[itemArray[1][0],itemArray[1][2]],itemArray[2]];
+            [self.tableview reloadData];
+        }else{
+            listArray = @[itemArray[0],itemArray[1],itemArray[2]];
+        }
+     
     }
-        
+        [self.tableview reloadData];
     
     
     NSString *userName;

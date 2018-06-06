@@ -51,7 +51,7 @@
         [_btnZhuangZhangState setTitle:@"转账驳回" forState:0];
     }
     
-    if ([model.transferCost doubleValue] > 0) {
+    if ([model.transferCost doubleValue] < 0) {
         self.nameLab.text = @"转账退款";
         self.image.image = [UIImage imageNamed:@"increase"];
  

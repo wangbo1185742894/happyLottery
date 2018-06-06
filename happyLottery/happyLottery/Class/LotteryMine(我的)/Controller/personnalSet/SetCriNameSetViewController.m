@@ -27,7 +27,7 @@
     
     if ([self.titlestr isEqualToString:@"设置圈名"]) {
         _textViewHeight.constant = 50;
-        self.labTextNum.text = [NSString stringWithFormat:@"%ld/%d",self.agentModel.circleName.length,8];
+        self.labTextNum.text = [NSString stringWithFormat:@"%ld/%d",self.agentModel.circleName.length,10];
     }else{
         _textViewHeight.constant = 90;
         self.labTextNum.text = [NSString stringWithFormat:@"%ld/%d",self.agentModel.notice.length,30];
@@ -77,8 +77,8 @@
         if(nickname.length==0){
             [self showPromptText:@"圈名不能为空！" hideAfterDelay:1.7];
             return;
-        }else if (nickname.length >8) {
-            [self showPromptText: @"圈名不能超过8个字符" hideAfterDelay: 1.7];
+        }else if (nickname.length >10) {
+            [self showPromptText: @"圈名不能超过10个字符" hideAfterDelay: 1.7];
             return;
         }else{
             
@@ -111,7 +111,7 @@
     self.nickField.text =@"";
     if ([self.titlestr isEqualToString:@"设置圈名"]) {
         
-        self.labTextNum.text = [NSString stringWithFormat:@"%d/%d",0,8];
+        self.labTextNum.text = [NSString stringWithFormat:@"%d/%d",0,10];
     }else{
         
         self.labTextNum.text = [NSString stringWithFormat:@"%d/%d",0,30];
@@ -159,7 +159,7 @@
         if ([self.titlestr isEqualToString:@"设置圈名"]) {
           
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                self.labTextNum.text = [NSString stringWithFormat:@"%ld/%d",textView.text.length,8];
+                self.labTextNum.text = [NSString stringWithFormat:@"%ld/%d",textView.text.length,10];
             });
             
         }else{
@@ -173,11 +173,11 @@
     }
 
     if ([self.titlestr isEqualToString:@"设置圈名"]) {
-        if (textView.text.length + text.length > 8) {
+        if (textView.text.length + text.length > 10) {
             return NO;
         }
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            self.labTextNum.text = [NSString stringWithFormat:@"%ld/%d",textView.text.length,8];
+            self.labTextNum.text = [NSString stringWithFormat:@"%ld/%d",textView.text.length,10];
         });
     }else{
         if (textView.text.length + text.length > 30) {
