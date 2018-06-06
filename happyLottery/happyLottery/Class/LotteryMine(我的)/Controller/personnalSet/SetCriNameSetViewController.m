@@ -179,14 +179,12 @@
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             self.labTextNum.text = [NSString stringWithFormat:@"%ld/%d",textView.text.length,8];
         });
-        
-        
     }else{
         if (textView.text.length + text.length > 30) {
             return NO;
         }
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            
+        
             self.labTextNum.text = [NSString stringWithFormat:@"%ld/%d",textView.text.length ,30];
         });
     }
