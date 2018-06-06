@@ -66,13 +66,15 @@
 
 
 -(void )listAgentFollowdelegate:(NSArray *)array isSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    [self.listTableView tableViewEndRefreshCurPageCount:array.count];
     if (!success) {
         [self showPromptViewWithText:msg hideAfter:1];
         return;
     }
-    [self.personArray removeAllObjects];
+    if (self.page == 0) {
+        [self.personArray removeAllObjects];
+    }
     //添加数据
-    [self.listTableView tableViewEndRefreshCurPageCount:array.count];
     for (NSDictionary *dic in array) {
         HotSchemeModel *model = [[HotSchemeModel alloc]initWith:dic];
         [self.personArray addObject:model];

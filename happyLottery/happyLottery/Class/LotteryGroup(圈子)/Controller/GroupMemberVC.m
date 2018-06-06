@@ -61,13 +61,13 @@
         return;
     }
 
-    if (_page == 0) {
+    if (_page == 1) {
         [self.personArray removeAllObjects];
     }
     if (array == nil || array.count == 0) {
         [self showPromptText:@"暂无圈友" hideAfterDelay:1.0];
     }else{
-        [self.personArray removeAllObjects];
+//        [self.personArray removeAllObjects];
         //添加数据
         for (NSDictionary *dic in array) {
             AgentMemberModel *model = [[AgentMemberModel alloc]initWith:dic];
