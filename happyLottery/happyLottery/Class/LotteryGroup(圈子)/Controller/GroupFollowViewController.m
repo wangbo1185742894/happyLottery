@@ -45,7 +45,7 @@
     [self loadNewData];
 }
 -(void)loadNewData{
-    self.page = 0;
+    self.page = 1;
     NSDictionary *dic = @{@"agentId":self.agentId,@"page":@(_page),@"pageSize":@(KpageSize)};
     [self.agentMan listAgentFollow:dic];
 }
@@ -71,7 +71,7 @@
         [self showPromptViewWithText:msg hideAfter:1];
         return;
     }
-    if (self.page == 0) {
+    if (self.page == 1) {
         [self.personArray removeAllObjects];
     }
     //添加数据

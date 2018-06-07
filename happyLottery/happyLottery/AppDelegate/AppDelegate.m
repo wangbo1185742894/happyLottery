@@ -54,9 +54,9 @@
 #import "LoginViewController.h"
 #import "BaseViewController.h"
 #import "HomeJumpViewController.h"
+#import "AgentManager.h"
 
-
-@interface AppDelegate ()<NewFeatureViewDelegate,MemberManagerDelegate,JPUSHRegisterDelegate,VersionUpdatingPopViewDelegate,NetWorkingHelperDelegate,UITabBarControllerDelegate>
+@interface AppDelegate ()<NewFeatureViewDelegate,MemberManagerDelegate,JPUSHRegisterDelegate,VersionUpdatingPopViewDelegate,NetWorkingHelperDelegate,UITabBarControllerDelegate,AgentManagerDelegate>
 
 {
     UITabBarController *tabBarControllerMain;
@@ -80,6 +80,7 @@
 }
 
 @property(nonatomic,strong)FMDatabase* fmdb;
+@property (nonatomic,strong)AgentManager * agentMan;
 @end
 static SystemSoundID shake_sound_male_id = 0;
 
@@ -849,13 +850,27 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     }
 }
 
+
 - (void)setGroupView {
-    //自由人
-    if ([[GlobalInstance instance].curUser.memberType isEqualToString:@"FREEDOM_PERSON"]) {
-        gouCaiNavVC = [self groupApplyNav];
-    } else {
+    if (self.agentMan == nil) {
+        self.agentMan = [[AgentManager alloc]init];
+    }
+    self.agentMan.delegate = self;
+    NSDictionary *dic = @{@"cardCode":[GlobalInstance instance].curUser.cardCode};
+    [self.agentMan getAgentInfo:dic];
+}
+
+-(void )getAgentInfodelegate:(NSDictionary *)param isSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    if (!success) {
+        return;
+    }
+    NSString *agentStatus = [param objectForKey:@"agentStatus"];
+    if (agentStatus == nil) { //申请成功
         //圈主or圈民
-        gouCaiNavVC = [self groupDisplayNav];
+       gouCaiNavVC = [self groupDisplayNav];
+    }
+    else {
+       gouCaiNavVC = [self groupApplyNav];
     }
     tabBarControllerMain.viewControllers = @[homeNavVC,genTouNavVC,gouCaiNavVC,faXianNavVC, memberNavVC];
     tabBarControllerMain.selectedIndex = 2;
