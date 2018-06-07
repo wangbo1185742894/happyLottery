@@ -54,10 +54,12 @@
     }
     if (success == NO) {
         [self  showPromptViewWithText:msg hideAfter:1.8];
+        [self.tabyongjinList reloadData];
         return;
     }else{
         if (array .count == 0) {
-            [self showPromptViewWithText:@"暂无流水" hideAfter:1.8];
+//            [self showPromptViewWithText:@"暂无流水" hideAfter:1.8];
+            [self.tabyongjinList reloadData];
             return;
         }
     }
