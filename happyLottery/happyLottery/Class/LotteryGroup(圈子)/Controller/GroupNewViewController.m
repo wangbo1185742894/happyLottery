@@ -78,7 +78,7 @@
 
 - (void)reloadAgentDynamic{
     NSDictionary *dic = @{@"agentId":model._id};
-    [self.agentMan listAgentDynamic:dic];
+    [self.agentMan getAgentFollowCount:dic];
 }
 
 - (void)stopTimer {
@@ -107,8 +107,7 @@
         return;
     }
     model = [[AgentInfoModel alloc]initWith:param];
-    NSDictionary *dic = @{@"agentId":model._id};
-    [self.agentMan getAgentFollowCount:dic];
+    [self reloadAgentDynamic];
     timer = [NSTimer scheduledTimerWithTimeInterval:20 target:self selector:@selector(reloadAgentDynamic) userInfo:nil repeats:YES];
 }
 
@@ -120,10 +119,9 @@
         return;
     }
     [self.dynamicArray removeAllObjects];
+    //如果是上移一个cell的高度，上移一个cell的高度(解决偏移量错的问题)
+    self.groupTableView.estimatedRowHeight = 200;
     if (array.count == 0) {
-        if (!placeImageHidden) {
-            return;
-        }
         placeImageHidden = NO;
         [self.groupTableView reloadData];
         [self hideLoadingView];
@@ -144,7 +142,7 @@
         return;
     }
     followCount = string;
-    [self.groupTableView reloadData];
+//    [self.groupTableView reloadData];
     NSDictionary *dic = @{@"agentId":model._id};
     [self.agentMan listAgentDynamic:dic];
 }
@@ -195,8 +193,7 @@
         headerView.headTitle.text = @"实时更新圈内好友动态";
         return headerView;
     }
-    UIView *view;
-    return view;
+    return nil;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -206,7 +203,7 @@
     if (indexPath.section == 1) {
         return 165;
     }
-    if (self.dynamicArray.count == 0) {
+    if (self.dynamicArray.count == 0&&indexPath.section == 2) {
          return 200;
     }
     return 85;
@@ -222,7 +219,7 @@
     return 1;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+ (NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         AgentInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:KAgentInfoCell];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -241,21 +238,25 @@
         }
         return cell;
     }
-    if (self.dynamicArray.count == 0) {
-        ZhanWeiTuScheme *cell = [tableView dequeueReusableCellWithIdentifier:KZhanWeiTuScheme];
-        [cell reloadDateInGroup];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.hidden = placeImageHidden;
-        return cell;
+    if (indexPath.section == 2) {
+        if (self.dynamicArray.count == 0) {
+            ZhanWeiTuScheme *cell = [tableView dequeueReusableCellWithIdentifier:KZhanWeiTuScheme];
+            [cell reloadDateInGroup];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.hidden = placeImageHidden;
+            return cell;
+        } else {
+            AgentDynamicCell *cell = [tableView dequeueReusableCellWithIdentifier:KAgentDynamicCell];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            if (self.dynamicArray.count >0) {
+                dynamicModel = [self.dynamicArray objectAtIndex:indexPath.row];
+                [cell reloadDate:dynamicModel];
+            }
+            
+            return cell;
+        }
     }
-    AgentDynamicCell *cell = [tableView dequeueReusableCellWithIdentifier:KAgentDynamicCell];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    if (self.dynamicArray.count >0) {
-        dynamicModel = [self.dynamicArray objectAtIndex:indexPath.row];
-        [cell reloadDate:dynamicModel];
-    }
-    
-    return cell;
+    return nil;
 }
 
 @end
