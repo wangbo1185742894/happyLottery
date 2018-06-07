@@ -85,6 +85,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)navigationBackToLastPage{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
 //重新申请
 - (IBAction)actionToApplyAgain:(id)sender {
     GroupApplyInfoViewController *applyInfoVC =  [[GroupApplyInfoViewController alloc]init];

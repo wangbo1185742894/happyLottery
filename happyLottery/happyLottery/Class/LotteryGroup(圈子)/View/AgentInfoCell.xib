@@ -26,14 +26,14 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic_quanzibeijing.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ldj-Jj-gOx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="199"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12345" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbq-qJ-BEw">
-                        <rect key="frame" x="20" y="68.5" width="63.5" height="26.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbq-qJ-BEw">
+                        <rect key="frame" x="20" y="68.5" width="0.0" height="0.0"/>
                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="说什么呢刷刷花都湖嗲嗲和稍等说什么呢刷刷花都湖嗲嗲和稍等稍等" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WDx-gf-O4z">
-                        <rect key="frame" x="20" y="105" width="268" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WDx-gf-O4z">
+                        <rect key="frame" x="20" y="78.5" width="268" height="0.0"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="268" id="qsc-2n-d2i"/>
                         </constraints>
@@ -147,7 +147,6 @@
                     <constraint firstItem="WDx-gf-O4z" firstAttribute="leading" secondItem="vbq-qJ-BEw" secondAttribute="leading" id="OfV-WO-1ET"/>
                     <constraint firstAttribute="trailing" secondItem="Ldj-Jj-gOx" secondAttribute="trailing" id="Qa5-Kb-qxM"/>
                     <constraint firstItem="Ldj-Jj-gOx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="UTU-vX-mBO"/>
-                    <constraint firstItem="B6r-Ut-dAl" firstAttribute="top" secondItem="WDx-gf-O4z" secondAttribute="bottom" constant="38" id="aS5-F2-LHD"/>
                     <constraint firstAttribute="bottom" secondItem="B6r-Ut-dAl" secondAttribute="bottom" id="aaJ-o4-oeO"/>
                     <constraint firstItem="B6r-Ut-dAl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="18" id="ect-Hj-Gy8"/>
                     <constraint firstItem="vbq-qJ-BEw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="kTx-RI-SEN"/>
@@ -155,6 +154,7 @@
                     <constraint firstItem="pqS-6h-aFP" firstAttribute="top" secondItem="w3J-8u-Gha" secondAttribute="bottom" id="pVh-vA-8uN"/>
                     <constraint firstItem="w3J-8u-Gha" firstAttribute="centerX" secondItem="pqS-6h-aFP" secondAttribute="centerX" id="uAV-Ko-Igg"/>
                     <constraint firstItem="Ldj-Jj-gOx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="zdA-3N-sjW"/>
+                    <constraint firstItem="vbq-qJ-BEw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="68.5" id="zpp-af-PsW"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>

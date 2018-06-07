@@ -21,4 +21,16 @@
     // Configure the view for the selected state
 }
 
+- (void)reloadDateInFollow{
+    [self.placeImage setImage:[UIImage imageNamed:@"pic_gendankongbaiye.png"]];
+    self.backgroundColor = [UIColor whiteColor];
+    self.placeLab.text = @"暂无数据~";
+}
+
+- (void)reloadDateInGroup{
+    [self.placeImage setImage:[UIImage imageNamed:@"groupplaceImage.png"]];
+    self.backgroundColor = RGBCOLOR(247, 247, 247);
+    self.placeLab.text = @"暂无动态";
+}
+
 @end

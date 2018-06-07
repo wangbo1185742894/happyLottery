@@ -10,4 +10,13 @@
 
 @interface ZhanWeiTuScheme : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *placeImage;
+
+
+@property (weak, nonatomic) IBOutlet UILabel *placeLab;
+
+- (void)reloadDateInFollow;
+
+- (void)reloadDateInGroup;
+
 @end
