@@ -86,6 +86,8 @@
 }
 
 - (void)navigationBackToLastPage{
+    AppDelegate *delegate  = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [delegate setGroupView];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

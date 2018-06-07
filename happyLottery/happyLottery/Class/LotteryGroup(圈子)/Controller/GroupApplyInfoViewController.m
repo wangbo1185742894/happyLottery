@@ -24,6 +24,7 @@
 #define KPromptCell  @"PromptCell"
 
 #define NMUBERS @"0123456789./*-+~!@#$%^&()_+-=,./;'[]{}:<>?`"
+#define DEF_MAIL @"1234567890-_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 
 @interface GroupApplyInfoViewController ()<UITableViewDelegate,UITableViewDataSource,ApplyInputCellDelegate,AgentManagerDelegate,UITextFieldDelegate>
@@ -163,8 +164,30 @@
             return NO;
         }
     }
+    if (textField == cell.telephoneNum) {
+        NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:DEF_MAIL]invertedSet];
+        NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
+        BOOL basicTest = [string isEqualToString:filtered];
+        if(!basicTest){
+            return NO;
+        }
+    }
     return YES;
 }
+
+
+//- (NSUInteger)textLength:(NSString *)text{
+//    NSUInteger ascIIlength = 0;
+//    for (NSUInteger i = 0; i<text.length; i++) {
+//        unichar uc = [text characterAtIndex:i];
+//        ascIIlength += isascii(uc)?1:2;
+//        if (ascIIlength == 20) {
+//            teger = i+1;
+//        }
+//    }
+//    NSUInteger unicodeLength = ascIIlength;
+//    return unicodeLength;
+//}
 
 
 -(void )agentApplydelegate:(NSDictionary *)param isSuccess:(BOOL)success errorMsg:(NSString *)msg{
