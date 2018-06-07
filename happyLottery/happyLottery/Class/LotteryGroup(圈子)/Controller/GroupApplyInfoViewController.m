@@ -136,9 +136,18 @@
     if (range.length == 1 && string.length == 0) {
         return YES;
     }
-    else if (textField.text.length >= 20) {
-        textField.text = [textField.text substringToIndex:20];
-        return NO;
+    else {
+        if (textField == cell.realName) {
+            if (textField.text.length >= 10) {
+                textField.text = [textField.text substringToIndex:10];
+                return NO;
+            }
+        } else {
+            if (textField.text.length >= 20) {
+                textField.text = [textField.text substringToIndex:20];
+                return NO;
+            }
+        }
     }
     
     //只能输入汉字或英文。
@@ -174,20 +183,6 @@
     }
     return YES;
 }
-
-
-//- (NSUInteger)textLength:(NSString *)text{
-//    NSUInteger ascIIlength = 0;
-//    for (NSUInteger i = 0; i<text.length; i++) {
-//        unichar uc = [text characterAtIndex:i];
-//        ascIIlength += isascii(uc)?1:2;
-//        if (ascIIlength == 20) {
-//            teger = i+1;
-//        }
-//    }
-//    NSUInteger unicodeLength = ascIIlength;
-//    return unicodeLength;
-//}
 
 
 -(void )agentApplydelegate:(NSDictionary *)param isSuccess:(BOOL)success errorMsg:(NSString *)msg{
