@@ -116,10 +116,10 @@ static CGFloat allW;    // 整个图表宽度
         lbl.backgroundColor = [UIColor clearColor];
         lbl.textAlignment = NSTextAlignmentRight;
         lbl.text = [NSString stringWithFormat:@"%d", (int)(maxY / yCount * (yCount - i)) ];
-        if (i == 0) {
-            [self.bgView addSubview:lbl];
-            lbl.text = [NSString stringWithFormat:@"%.1f",maxY];
-        }
+//        if (i == 0) {
+//            [self.bgView addSubview:lbl];
+//            lbl.text = [NSString stringWithFormat:@"%.1f",maxY];
+//        }
 //        if (i == yCount - 1) {
 //            lbl.mj_y =  kMargin  + everyY * yCount +1 ;
 //            [self.bgView addSubview:lbl];

@@ -16,6 +16,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RuZhangViewController">
             <connections>
+                <outlet property="btnTixian" destination="olT-7S-beM" id="IiU-b0-Ham"/>
                 <outlet property="labYue" destination="FFV-Yw-CpB" id="xyh-UK-pcy"/>
                 <outlet property="tfJine" destination="pva-V7-AJZ" id="Fad-5C-nLN"/>
                 <outlet property="topDis" destination="oWI-Kt-mYP" id="avb-rq-QiI"/>

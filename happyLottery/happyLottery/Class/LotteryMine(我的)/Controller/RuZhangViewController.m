@@ -9,9 +9,10 @@
 #import "RuZhangViewController.h"
 #import "ZhuangZhangListVC.h"
 
-@interface RuZhangViewController ()<AgentManagerDelegate>
+@interface RuZhangViewController ()<AgentManagerDelegate,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *tfJine;
 @property (weak, nonatomic) IBOutlet UILabel *labInfo;
+@property (weak, nonatomic) IBOutlet UIButton *btnTixian;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topDis;
 
 @property (weak, nonatomic) IBOutlet UILabel *labYue;
@@ -22,8 +23,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.topDis.constant = NaviHeight;
+    self.tfJine.delegate = self;
     self.agentMan.delegate = self;
-    self.title = @"入账余额";
+    self.btnTixian.enabled = NO;
+    self.title = @"入账记录";
     self.labYue.text = [NSString stringWithFormat:@"佣金余额  %.2f元",[self.agentInfo.commission doubleValue]];
     self.labInfo.text = @"注意：\n1:每周一可提现至余额，其他时间不可提现。\n2:余额账户到账时间在2小时。\n3:提现金额超过2000元，需财务审核通过即可转入余额账户";
     UIBarButtonItem *faqi = [self creatBarItem:@"" icon:@"icon_shezhi" andFrame:CGRectMake(0, 10, 30, 30) andAction:@selector(optionRightButtonAction)];
@@ -63,5 +66,15 @@
     }
 }
 
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if ([textField.text doubleValue] > [self.agentInfo.commission doubleValue] || [textField.text doubleValue] == 0) {
+            self.btnTixian.enabled = NO;
+        }else{
+            self.btnTixian.enabled = YES;
+        }
+    });
+    return YES;
+}
 
 @end

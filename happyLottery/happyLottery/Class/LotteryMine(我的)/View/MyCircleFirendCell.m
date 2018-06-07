@@ -64,7 +64,7 @@
     }
     
     if (model.nickname == nil) {
-        self.labName.text = [model.cardCode stringByReplacingCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
+        self.labName.text = [model.cardCode stringByReplacingCharactersInRange:NSMakeRange(2, 4) withString:@"****"];
     }else{
         self.labName.text = model.nickname;
     }

@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.topDis.constant = NaviHeight;
-    self.title = @"佣金查询";
+    self.title = @"收入明细";
     self.transferList = [NSMutableArray arrayWithCapacity:0];
     self.agentMan.delegate = self;
     [self setTableView];

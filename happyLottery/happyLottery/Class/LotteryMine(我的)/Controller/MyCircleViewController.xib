@@ -103,7 +103,7 @@
                                         <action selector="actionYongjinBili:" destination="-1" eventType="touchUpInside" id="dJm-nw-dXx"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="账户余额" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8L3-49-dfb">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="佣金余额" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8L3-49-dfb">
                                     <rect key="frame" x="157" y="94" width="61.5" height="17"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="17" id="cxa-13-wT2"/>
@@ -133,13 +133,12 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n65-Jb-h3L">
-                                    <rect key="frame" x="275" y="75" width="50" height="24"/>
+                                    <rect key="frame" x="254" y="75" width="71" height="24"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="24" id="552-gH-bC3"/>
-                                        <constraint firstAttribute="width" constant="50" id="uRd-vh-IeO"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <state key="normal" title="明细&gt;"/>
+                                    <state key="normal" title="收入明细&gt;"/>
                                     <connections>
                                         <action selector="actionYongjinChaxun:" destination="-1" eventType="touchUpInside" id="0KL-NX-Xj4"/>
                                     </connections>
@@ -193,6 +192,6 @@
         </view>
     </objects>
     <resources>
-        <image name="pic_beijing.png" width="375" height="103"/>
+        <image name="pic_beijing.png" width="355" height="166"/>
     </resources>
 </document>
