@@ -29,7 +29,7 @@
     self.transferList = [NSMutableArray arrayWithCapacity:0];
     self.agentMan.delegate = self;
     [self setTableView];
-    self.labTotal.text = _model.totalSale;
+    self.labTotal.text = [NSString stringWithFormat:@"%.2f",[_model.totalSale doubleValue]];
     [UITableView refreshHelperWithScrollView:self.tabyongjinList target:self loadNewData:@selector(loadNewData) loadMoreData:@selector(loadMoreData) isBeginRefresh:NO];
     [self loadNewData];
 }

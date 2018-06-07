@@ -103,7 +103,7 @@
                         <constraint firstAttribute="height" constant="40" id="um9-uQ-t9z"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <state key="normal" title="提现至金额"/>
+                    <state key="normal" title="提现至余额"/>
                     <connections>
                         <action selector="actionTixian:" destination="-1" eventType="touchUpInside" id="S3t-Gz-oWZ"/>
                     </connections>

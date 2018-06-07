@@ -62,9 +62,9 @@
 -(NSString *)getShareUrl{
     
     if ([self.curUser.memberType isEqualToString:@"CIRCLE_MASTER"]) {
-        return  [NSString stringWithFormat:@"%@%@?shareCode=%@",H5BaseAddress,KcircleRegister,self.curUser.shareCode];
+        return  [NSString stringWithFormat:@"%@%@?shareCode=%@&shareCardCode=%@",H5BaseAddress,KcircleRegister,self.curUser.shareCode,self.curUser.cardCode];
     }else{
-        return  [NSString stringWithFormat:@"%@%@?shareCode=%@",H5BaseAddress,KcircleRegisterCopy,self.curUser.shareCode];
+        return  [NSString stringWithFormat:@"%@%@?shareCode=%@&shareCardCode=%@",H5BaseAddress,KcircleRegisterCopy,self.curUser.shareCode,self.curUser.cardCode];
     }
 }
 
