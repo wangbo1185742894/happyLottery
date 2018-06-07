@@ -74,7 +74,7 @@
     for (NSInteger i = self.agentInfoModel.agentTotalList.count - 1; i >= 0; i --) {
         MyAgentTotalModel *model = self.agentInfoModel.agentTotalList[i];
         [listX addObject: [model.totalDay substringFromIndex:5] ];
-        [listY addObject: model.totalCommission ];
+        [listY addObject: [NSString stringWithFormat:@"%.2f",[model.totalCommission doubleValue]] ];
     }
     self.labRecentlyYongjinInfo.text = [NSString stringWithFormat:@"近%ld日佣金走势",listX.count];
    self. LCView.xValues = listX;
