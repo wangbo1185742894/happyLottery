@@ -75,7 +75,12 @@
                 NSMutableArray *item = [NSMutableArray arrayWithCapacity:0];
                 [item addObject:model];
                 [self.personArray addObject:item];
-                [self.openRow addObject:@"1"];
+                if (self.openRow.count >=1) {
+                    [self.openRow addObject:@"1"];
+                }else{
+                    [self.openRow addObject:@"0"];
+                }
+                
             }
             
             

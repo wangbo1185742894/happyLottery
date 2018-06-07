@@ -52,6 +52,7 @@
         [self showPromptViewWithText:@"请输入金额" hideAfter:1.8];
         return;
     }
+    [self showLoadingText:@"正在加载"];
     [self.agentMan transferAccount:@{@"agentId":self.agentInfo._id,@"cardCode":self.agentInfo.cardCode,@"transferCost":self.tfJine.text}];
 }
 
@@ -60,8 +61,11 @@
         [self showPromptViewWithText:msg hideAfter:1.8];
         return;
     }else{
+        [self hideLoadingView];
+        self.tfJine.text = @"";
         [self showPromptViewWithText:@"转账成功" hideAfter:1.8];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
             [self.navigationController popViewControllerAnimated:YES];
         });
         return;
