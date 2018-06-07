@@ -129,7 +129,7 @@
         return;
     }
     SetCriNameSetViewController * nickVC = [[SetCriNameSetViewController alloc]init];
-    nickVC.titlestr = @"设置圈子公告";
+    nickVC.titlestr = @"设置圈公告";
     nickVC.agentModel = curMode;
    // self.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:nickVC animated:YES];
