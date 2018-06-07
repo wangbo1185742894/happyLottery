@@ -52,6 +52,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"设置";
+    if ([self.agentModel.circleName rangeOfString:@"circle_"].length ==  0) {
+        self.memberBtn.enabled = NO;
+        self.memberLab.textColor = [UIColor lightGrayColor];
+        return;
+    }
     self.viewControllerNo = @"";
     if ([self isIphoneX]) {
         // self.bigView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -89,7 +94,10 @@
 //        self.labNoticeState.text = @"(审批通过)";
     }else if ([curMode.noticeStatus isEqualToString:@"AUDIT_REJECT"]){
         self.labNoticeState.text = @"(审批失败)";
+        if (curMode.noticeRefuseReason != nil) {
         self.labNoticeInfo.text = [NSString stringWithFormat:@"* %@",curMode.noticeRefuseReason] ;
+        }
+        
     }
     
     [self loadUserInfo];

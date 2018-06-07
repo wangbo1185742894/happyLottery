@@ -21,7 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title  =@"转账记录";
+    self.title  =@"入账记录";
     self.agentMan.delegate = self;
     [self setTableView];
     self.transferList = [NSMutableArray arrayWithCapacity:0];
@@ -48,10 +48,12 @@
     }
     if (success == NO) {
         [self  showPromptViewWithText:msg hideAfter:1.8];
+        [self.tabRuzhangList reloadData];
         return;
     }else{
         if (array .count == 0) {
-            [self showPromptViewWithText:@"暂无流水" hideAfter:1.8];
+//            [self showPromptViewWithText:@"暂无流水" hideAfter:1.8];
+            [self.tabRuzhangList reloadData];
             return;
         }
     }

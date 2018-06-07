@@ -67,7 +67,7 @@
     
     self.agentInfoModel = [[MyAgentInfoModel alloc]initWith:param];
     
-    self.labYue.text = [NSString stringWithFormat:@"%.2f元",[self.agentInfoModel.commission doubleValue]];
+    self.labYue.text = [NSString stringWithFormat:@"%.2f",[self.agentInfoModel.commission doubleValue]];
     NSMutableArray *listX = [NSMutableArray arrayWithCapacity:0];
     NSMutableArray *listY = [NSMutableArray arrayWithCapacity:0];
     
