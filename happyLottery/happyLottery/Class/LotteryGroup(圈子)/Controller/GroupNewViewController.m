@@ -219,7 +219,7 @@
     return 1;
 }
 
- (NSIndexPath *)indexPath{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         AgentInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:KAgentInfoCell];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -260,3 +260,4 @@
 }
 
 @end
+
