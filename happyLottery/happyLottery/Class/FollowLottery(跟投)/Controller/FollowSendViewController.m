@@ -203,6 +203,7 @@
     }else   if(indexPath.section == 3){
         if (schemeList.count == 0) {
             ZhanWeiTuScheme *cell = [tableView dequeueReusableCellWithIdentifier:KZhanWeiTuScheme];
+            [cell reloadDateInFollow];
             cell.hidden = placeImageHidden;
             return cell;
         }

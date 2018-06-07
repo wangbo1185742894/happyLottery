@@ -67,11 +67,14 @@
     if (array == nil || array.count == 0) {
         [self showPromptText:@"暂无圈友" hideAfterDelay:1.0];
     }else{
-//        [self.personArray removeAllObjects];
         //添加数据
         for (NSDictionary *dic in array) {
             AgentMemberModel *model = [[AgentMemberModel alloc]initWith:dic];
-            [_personArray addObject:model];
+            if ([model.memberType isEqualToString:@"0"]) {
+                [_personArray insertObject:model atIndex:0];
+            } else {
+                [_personArray addObject:model];
+            }
         }
         [self hideLoadingView];
     }

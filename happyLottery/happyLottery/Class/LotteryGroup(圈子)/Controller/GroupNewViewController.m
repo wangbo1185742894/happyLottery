@@ -14,9 +14,11 @@
 #import "AgentHeaderView.h"
 #import "GroupFollowViewController.h"
 #import "GroupMemberVC.h"
+#import "ZhanWeiTuScheme.h"
 #define KAgentInfoCell @"AgentInfoCell"
 #define KGroupFollowCell @"GroupFollowCell"
 #define KAgentDynamicCell @"AgentDynamicCell"
+#define KZhanWeiTuScheme @"ZhanWeiTuScheme"
 
 
 @interface GroupNewViewController ()<UITableViewDelegate,UITableViewDataSource,AgentManagerDelegate,GroupFollowDelegate,AgentInfoDelegate>
@@ -34,12 +36,15 @@
     NSString *followCount;
     AgentDynamic *dynamicModel;
     NSTimer *timer;
+    BOOL placeImageHidden;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
     [self openTimer];
+    placeImageHidden = YES;
+    [self.groupTableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -90,6 +95,7 @@
     [self.groupTableView registerNib:[UINib nibWithNibName:KAgentInfoCell bundle:nil] forCellReuseIdentifier:KAgentInfoCell];
     [self.groupTableView registerNib:[UINib nibWithNibName:KGroupFollowCell bundle:nil] forCellReuseIdentifier:KGroupFollowCell];
     [self.groupTableView registerNib:[UINib nibWithNibName:KAgentDynamicCell bundle:nil] forCellReuseIdentifier:KAgentDynamicCell];
+     [self.groupTableView registerNib:[UINib nibWithNibName:KZhanWeiTuScheme bundle:nil] forCellReuseIdentifier:KZhanWeiTuScheme];
     
     self.groupTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
@@ -114,6 +120,15 @@
         return;
     }
     [self.dynamicArray removeAllObjects];
+    if (array.count == 0) {
+        if (!placeImageHidden) {
+            return;
+        }
+        placeImageHidden = NO;
+        [self.groupTableView reloadData];
+        [self hideLoadingView];
+        return;
+    }
     //添加数据
     for (NSDictionary *dic in array) {
         AgentDynamic *model = [[AgentDynamic alloc]initWith:dic];
@@ -191,11 +206,17 @@
     if (indexPath.section == 1) {
         return 165;
     }
+    if (self.dynamicArray.count == 0) {
+         return 200;
+    }
     return 85;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section == 2) {
+        if (self.dynamicArray.count == 0) {
+            return 1;
+        }
         return self.dynamicArray.count;
     }
     return 1;
@@ -218,6 +239,13 @@
         if (model != nil) {
             [cell reloadDate:followCount];
         }
+        return cell;
+    }
+    if (self.dynamicArray.count == 0) {
+        ZhanWeiTuScheme *cell = [tableView dequeueReusableCellWithIdentifier:KZhanWeiTuScheme];
+        [cell reloadDateInGroup];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.hidden = placeImageHidden;
         return cell;
     }
     AgentDynamicCell *cell = [tableView dequeueReusableCellWithIdentifier:KAgentDynamicCell];
