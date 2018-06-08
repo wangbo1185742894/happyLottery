@@ -16,9 +16,9 @@
 #import "MyCricleYongJinVC.h"
 #import "RuZhangViewController.h"
 #import "CricleCenterViewController.h"
-
+#import "MGLabel.h"
 @interface MyCircleViewController ()<AgentManagerDelegate>
-@property (weak, nonatomic) IBOutlet UILabel *labRecentlyYongjinInfo;
+@property (weak, nonatomic) IBOutlet MGLabel *labRecentlyYongjinInfo;
 @property (weak, nonatomic) IBOutlet UIImageView *imgBG;
 @property (weak, nonatomic) IBOutlet UIView *viewRecentLy;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topDis;
@@ -77,6 +77,8 @@
         [listY addObject: [NSString stringWithFormat:@"%.2f",[model.totalCommission doubleValue]] ];
     }
     self.labRecentlyYongjinInfo.text = [NSString stringWithFormat:@"近%ld日佣金走势",listX.count];
+    self.labRecentlyYongjinInfo.keyWord =[NSString stringWithFormat:@"%ld",listX.count];
+    self.labRecentlyYongjinInfo.keyWordColor = SystemGreen;
    self. LCView.xValues = listX;
     self. LCView.yValues = listY ;
     //@[@23,@35,@89];

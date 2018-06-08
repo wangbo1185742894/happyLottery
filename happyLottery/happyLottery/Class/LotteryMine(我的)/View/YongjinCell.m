@@ -24,7 +24,7 @@
 -(void)loadData:(AgentCommissionModel *)model{
     self.labName.text = model.viewName;
     self.labTime.text = model.createTime;
-    self.labYongjin.text = [NSString stringWithFormat:@"%.1f",[model.commission doubleValue]];
+    self.labYongjin.text = [NSString stringWithFormat:@"%.2f",[model.commission doubleValue]];
     self.labTouzhu.text = model.subCost;
     self.imgicon.image = [UIImage imageNamed:[model lotteryIcon]];
 }

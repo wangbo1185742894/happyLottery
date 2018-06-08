@@ -76,9 +76,9 @@
                 [item addObject:model];
                 [self.personArray addObject:item];
                 if (self.openRow.count >=1) {
-                    [self.openRow addObject:@"1"];
-                }else{
                     [self.openRow addObject:@"0"];
+                }else{
+                    [self.openRow addObject:@"1"];
                 }
                 
             }
