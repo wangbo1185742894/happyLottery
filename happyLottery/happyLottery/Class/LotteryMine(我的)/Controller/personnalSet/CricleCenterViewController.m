@@ -53,9 +53,7 @@
     [super viewDidLoad];
     self.title = @"设置";
     if ([self.agentModel.circleName rangeOfString:@"circle_"].length ==  0) {
-        self.memberBtn.enabled = NO;
         self.memberLab.textColor = [UIColor lightGrayColor];
-        return;
     }
     self.viewControllerNo = @"";
     if ([self isIphoneX]) {

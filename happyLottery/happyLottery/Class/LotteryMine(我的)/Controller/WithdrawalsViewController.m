@@ -207,6 +207,10 @@
         [self showPromptText: @"请输入取现金额" hideAfterDelay: 2.7];
         return;
     }
+    if ([self.withdrawTextField.text isEqualToString:@"0"]) {
+        [self showPromptText: @"输入有效金额" hideAfterDelay: 2.7];
+        return;
+    }
     double text =[self.withdrawTextField.text doubleValue];
     if (text>[self.curUser.balance doubleValue]) {
         [self showPromptText: @"取现金额不能大于可用余额！" hideAfterDelay: 3.7];
