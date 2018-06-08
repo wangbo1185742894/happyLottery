@@ -1718,7 +1718,32 @@
                         success:succeedBlock
                         failure:failureBlock];
 }
-
+- (void)listRechargeHandsel{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        NSArray *lotteryList = [Utility objFromJson:responseJsonStr];
+        if (response.succeed) {
+            [self.delegate listRechargeHandsel:lotteryList errorMsg:response.errorMsg];
+            
+        } else {
+            [self.delegate listRechargeHandsel:nil errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate listRechargeHandsel:nil errorMsg:@"服务器错误"];
+    };
+    
+    SOAPRequest *request = [self requestForAPI: APIlistRechargeHandsel withParam:nil];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
 
 
 

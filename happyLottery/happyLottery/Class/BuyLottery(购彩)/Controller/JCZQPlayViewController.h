@@ -9,7 +9,7 @@
 #import "BaseViewController.h"
 
 @interface JCZQPlayViewController : BaseViewController
-
+@property(nonatomic,assign)JCZQPlayType playType;
 @property (assign,nonatomic)SchemeType fromSchemeType;
 
 @end

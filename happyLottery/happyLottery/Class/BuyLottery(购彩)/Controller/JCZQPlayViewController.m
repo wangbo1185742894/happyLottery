@@ -304,19 +304,33 @@
     WBButton * titleBtn = [WBButton buttonWithType:UIButtonTypeCustom];
     titleBtn.frame = CGRectMake(0, 10, 150, 40);
     [titleBtn addTarget:self action:@selector(showProfileType) forControlEvents:UIControlEventTouchUpInside];
-    [titleBtn setTitle:@"混合过关" forState:0];
+    if (self.playType == JCZQPlayTypeDanGuan) {
+        [titleBtn setTitle:@"胜平负" forState:0];
+    }else{
+        [titleBtn setTitle:@"混合过关" forState:0];
+    }
+    
     [titleBtn setImage:[UIImage imageNamed:@"wanfaxiala"] forState:0];
     titleBtn.titleLabel.font = [UIFont systemFontOfSize:18];
     if (profileSelectView == nil) {
         profileSelectView = [[LotteryProfileSelectView alloc]initWithFrame:CGRectMake(0, 64, KscreenWidth, KscreenHeight - 64)];
     }
+    [profileSelectView setPlayVIew:self.playType];
+    
     profileSelectView.frame = CGRectMake(0, 64, KscreenWidth, KscreenHeight - 64);
     profileSelectView.delegate = self;
     [self getCurlotteryProfiles];
     profileSelectView.lotteryPros = self.profiles;
     profileSelectView.hidden = YES;
-    self.trancation.playType = JCZQPlayTypeGuoGuan;
-    self.trancation.curProfile = self.profiles[4];
+    if (self.playType == JCZQPlayTypeDanGuan) {
+        self.trancation.playType = JCZQPlayTypeDanGuan;
+        self.trancation.curProfile = self.profiles[0];
+    }else{
+        self.trancation.playType = JCZQPlayTypeGuoGuan;
+        self.trancation.curProfile = self.profiles[4];
+    }
+    
+    
     [self.view addSubview:profileSelectView];
     self.navigationItem.titleView = titleBtn;
 }

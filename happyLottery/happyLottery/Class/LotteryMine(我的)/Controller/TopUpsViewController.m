@@ -15,6 +15,8 @@
 {
     NSMutableArray <ChannelModel *>*channelList;
     ChannelModel *itemModel;
+    NSMutableArray <RechargeModel *> *rechList;
+    RechargeModel *selectRech;
     NSString *orderNO;
 }
 @property (weak, nonatomic) IBOutlet UILabel *labBanlence;
@@ -26,6 +28,7 @@
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *chongZhiSelectItem;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tabPayListHeight;
 @property (weak, nonatomic) IBOutlet UIWebView *payWebView;
+@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *labCaijin;
 
 @end
 
@@ -34,6 +37,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"充值";
+    rechList = [NSMutableArray arrayWithCapacity:0];
     
     self.viewControllerNo = @"A105";
     self.payWebView.delegate = self;
@@ -52,8 +56,63 @@
              [self setItem:selectItem];
         }
     }
+    for (UILabel *lab in self.labCaijin) {
+        lab.layer.cornerRadius = 3;
+        lab.layer.masksToBounds = YES;
+    }
+    [self .lotteryMan listRechargeHandsel];
    
 }
+
+-(void)listRechargeHandsel:(NSArray *)lotteryList errorMsg:(NSString *)msg{
+    if (lotteryList == nil) {
+        [self showPromptViewWithText:msg hideAfter:1.7];
+        
+        return;
+    }
+  
+    for (NSDictionary *itemDic in lotteryList) {
+        RechargeModel *model = [[RechargeModel alloc] initWith:itemDic];
+        [rechList addObject:model];
+    }
+    
+    [rechList sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        RechargeModel * r1 = obj1;
+        RechargeModel * r2 = obj2;
+        return  [r1.recharge compare:r2.recharge];
+     
+    }];
+    int i = 0;
+    for (RechargeModel  *model in rechList) {
+        if (i == 0) {
+            model.isSelect = YES;
+            self.txtChongZhiJIne.text = model.recharge;
+            selectRech = model;
+        }
+        
+        for (UIButton *itemDic in self.chongZhiSelectItem) {
+            if (itemDic.tag == 100 + i) {
+                itemDic.selected = model.isSelect;
+                [itemDic setTitle: [NSString stringWithFormat:@"￥%.2f",[model.recharge doubleValue]] forState:0];
+            }
+        }
+        for (UILabel *itemDic in self.labCaijin) {
+            if (itemDic.tag == 200 + i) {
+                if ([model.handsel doubleValue] == 0) {
+                    itemDic.hidden = YES;
+                }else{
+                    itemDic.text = [NSString stringWithFormat:@"+%.2f",[model.handsel doubleValue]];
+                    itemDic.hidden = NO;
+                }
+                
+            }
+        }
+        i ++;
+    }
+    
+    
+}
+
 -(void)setTableView{
     self.tabChannelList.dataSource =self;
     self.tabChannelList.delegate = self;
@@ -66,15 +125,26 @@
     for (UIButton *item in self.chongZhiSelectItem) {
         
         item.selected = NO;
-        
+    }
+  
+    sender.selected = !sender.selected;
+    for (RechargeModel *model in rechList) {
+        if ([sender.currentTitle isEqualToString:[NSString stringWithFormat:@"￥%.2f",[model.recharge doubleValue]]]) {
+            model.isSelect = sender.selected;
+            if (model.isSelect == YES) {
+                selectRech = model;
+            }else{
+                selectRech = nil;
+            }
+        }else{
+            model.isSelect = NO;
+        }
         
     }
-    sender.selected = !sender.selected;
-    
     for (UIButton *item in self.chongZhiSelectItem) {
         
         if (sender.selected == YES) {
-            self.txtChongZhiJIne.text = [NSString stringWithFormat:@"%ld",sender.tag];
+            self.txtChongZhiJIne.text = [NSString stringWithFormat:@"%.2f",[selectRech.recharge doubleValue]];
         }
         
         if (item.selected == YES) {

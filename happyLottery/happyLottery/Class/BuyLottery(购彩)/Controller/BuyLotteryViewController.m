@@ -249,6 +249,13 @@ static NSString *ID = @"LotteryAreaViewCell";
 
 }
 
+-(void)actionJCZQDG:(UIButton *)sender{
+    JCZQPlayViewController * playViewVC = [[JCZQPlayViewController alloc]init];
+    playViewVC.playType = JCZQPlayTypeDanGuan;
+    playViewVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:playViewVC animated:YES];
+}
+
 -(void)actionPL3:(UIButton *)sender{
     [self showPromptText:@"该玩法暂未开售" hideAfterDelay:2.0];
 }

@@ -18,13 +18,13 @@
     #define APPUPDATAURL @"http://t.11max.com/Tbz"
 #endif
 
-//#define WSServerURL @"http://tbz.xianyingcai.com:28000/services%@"
-//#define ServerAddress @"http://124.89.85.110:17085"  //资讯  轮播图 用户图像
-//#define H5BaseAddress @"http://tbz.xianyingcai.com:28086"
+#define WSServerURL @"http://tbz.xianyingcai.com:28000/services%@"
+#define ServerAddress @"http://124.89.85.110:17085"  //资讯  轮播图 用户图像
+#define H5BaseAddress @"http://tbz.xianyingcai.com:28086"
 
-#define ServerAddress @"http://192.168.88.244:8086"  //资讯  轮播图 用户图像
-#define H5BaseAddress @"http://192.168.88.244:18086"
-#define WSServerURL @"http://192.168.88.244:28000/services%@"
+//#define ServerAddress @"http://192.168.88.244:8086"  //资讯  轮播图 用户图像
+//#define H5BaseAddress @"http://192.168.88.244:18086"
+//#define WSServerURL @"http://192.168.88.244:28000/services%@"
 //
 //
 //#define H5BaseAddress @"http://192.168.88.193:18086"  //谢青服务
@@ -95,11 +95,11 @@
 #define APIGetHotFollowScheme        @"getHotFollowScheme"  // 获取热门发单
 #define APIGetInitiateInfo           @"getInitiateInfo"  //获取发单会员详细信息
 #define APIgetListAttent                              @"listAttent"
-
 #define APIGetFollowSchemeByNickName  @"getFollowSchemeByNickName"
 #define APIIsAttent                   @"isAttent"   //是否关注
 #define APIAttentMember             @"attentMember" //关注会员
 #define APIReliefAttent             @"reliefAttent"  //解除跟单
+#define APIlistRechargeHandsel      @"listRechargeHandsel"
 
 #define SUBAPIDATA           @"/data"
 #define APISaveClientInfo           @"saveClientInfo"

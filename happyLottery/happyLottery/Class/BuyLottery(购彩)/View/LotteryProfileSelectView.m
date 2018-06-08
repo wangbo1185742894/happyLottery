@@ -9,9 +9,13 @@
 #import "LotteryProfileSelectView.h"
 
 @interface LotteryProfileSelectView()
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightVIew;
 @property(nonatomic,strong)NSArray *lotteryProfiles;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topDis;
 @property (weak, nonatomic) IBOutlet UIView *lotteryProfileItemView;
+@property (weak, nonatomic) IBOutlet UIImageView *labPlayType;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *profileSelectArray;
+@property (weak, nonatomic) IBOutlet UIView *viewGuoguan;
 
 @end
 
@@ -25,8 +29,23 @@
     return self;
 }
 
+-(void)setPlayVIew:(JCZQPlayType )playtype{
+    if (playtype == JCZQPlayTypeDanGuan) {
+        self.viewGuoguan.hidden = YES;
+        self.labPlayType.hidden = YES;
+        self.heightVIew.constant = 130;
+        self.topDis .constant= 20;
+        UIButton *select = [self viewWithTag: 200];
+        if ([select isKindOfClass:[UIButton class]]) {
+            select .selected = YES;
+        }
+    }
+}
+
+
 - (IBAction)actionPlayTypeSelect:(UIButton *)sender {
     
+ 
     for (UIButton *itemBtn in self.profileSelectArray) {
         itemBtn.selected = NO;
     }
