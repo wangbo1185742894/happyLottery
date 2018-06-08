@@ -62,8 +62,15 @@
         return;
     }else{
         [self hideLoadingView];
+        NSString *tishiText;
+        //大额入账>100需要审核不会立即到账 lyw
+        if ([self.tfJine.text intValue]>100) {
+            tishiText = @"已提交申请，注意到账情况";
+        } else {
+            tishiText = @"转账成功";
+        }
         self.tfJine.text = @"";
-        [self showPromptViewWithText:@"转账成功" hideAfter:1.8];
+        [self showPromptViewWithText:tishiText hideAfter:1.8];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
             [self.navigationController popViewControllerAnimated:YES];
