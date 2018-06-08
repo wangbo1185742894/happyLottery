@@ -13,11 +13,9 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     _btnZhuangZhangState.hidden = YES;
-    [_btnZhuangZhangState setTitleColor:SystemGreen forState:0];
-    [_btnZhuangZhangState setBackgroundImage:[UIImage imageWithColor:RGBCOLOR(220, 220, 220)] forState:0];
+  
     
-    [_btnZhuangZhangState setTitleColor:[UIColor whiteColor] forState:0];
-    [_btnZhuangZhangState setBackgroundImage:[UIImage imageWithColor:TEXTGRAYOrange] forState:0];
+    
     
     _btnZhuangZhangState.layer.cornerRadius = _btnZhuangZhangState.mj_h/ 2;
     _btnZhuangZhangState.layer.masksToBounds = YES;
@@ -46,12 +44,18 @@
     if ([model.applyStatus isEqualToString:@"AUDITING"]) {
         _btnZhuangZhangState.selected = NO;
         [_btnZhuangZhangState setTitle:@"审核中" forState:0];
+        [_btnZhuangZhangState setTitleColor:SystemGreen forState:0];
+        [_btnZhuangZhangState setBackgroundImage:[UIImage imageWithColor:RGBCOLOR(220, 220, 220)] forState:0];
     }else if ([model.applyStatus isEqualToString:@"AUDITED"]){
         _btnZhuangZhangState.selected = YES;
         [_btnZhuangZhangState setTitle:@"转账成功" forState:UIControlStateSelected];
+        [_btnZhuangZhangState setTitleColor:[UIColor whiteColor] forState:0];
+        [_btnZhuangZhangState setBackgroundImage:[UIImage imageWithColor:TEXTGRAYOrange] forState:0];
     }else{
         _btnZhuangZhangState.selected = NO;
         [_btnZhuangZhangState setTitle:@"转账驳回" forState:0];
+        [_btnZhuangZhangState setTitleColor:SystemGreen forState:0];
+        [_btnZhuangZhangState setBackgroundImage:[UIImage imageWithColor:RGBCOLOR(220, 220, 220)] forState:0];
     }
     
     if ([model.transferCost doubleValue] < 0) {
