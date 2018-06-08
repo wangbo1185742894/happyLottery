@@ -207,7 +207,8 @@
         [self showPromptText: @"请输入取现金额" hideAfterDelay: 2.7];
         return;
     }
-    if ([self.withdrawTextField.text isEqualToString:@"0"]) {
+    NSString *money = [NSString stringWithFormat:@"%.2f",[self.withdrawTextField.text doubleValue]];
+    if ([money isEqualToString:@"0.00"]) {
         [self showPromptText: @"输入有效金额" hideAfterDelay: 2.7];
         return;
     }
