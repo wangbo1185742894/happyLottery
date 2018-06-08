@@ -188,6 +188,9 @@
         }
         
         [self loadMatchSP];
+        if (self.playType == JCZQPlayTypeDanGuan) {
+            [self lotteryProfileSelectViewDelegate:self.trancation.curProfile andPlayType:JCZQPlayTypeDanGuan andRes:@"1"];
+        }
     }
   
 }
