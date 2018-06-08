@@ -93,7 +93,7 @@
     }else if ([curMode.noticeStatus isEqualToString:@"AUDITED"]){
 //        self.labNoticeState.text = @"(审批通过)";
     }else if ([curMode.noticeStatus isEqualToString:@"AUDIT_REJECT"]){
-        self.labNoticeState.text = @"(审批失败)";
+        self.labNoticeState.text = @"(审核失败)";
         if (curMode.noticeRefuseReason != nil) {
         self.labNoticeInfo.text = [NSString stringWithFormat:@"* %@",curMode.noticeRefuseReason] ;
         }
