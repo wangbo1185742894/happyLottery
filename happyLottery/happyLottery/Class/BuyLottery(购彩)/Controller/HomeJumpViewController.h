@@ -13,10 +13,10 @@
 @protocol JSJumpDelegate <JSExport>
 
 -(void)goToJczq;
-
+-(void)SharingLinks;
 -(void)goToLogin;
 -(void)exchangeToast:(NSString *)msg;
-
+-(void)goCathectic:(NSString *)lotteryCode;
 @end
 
 @interface HomeJumpViewController : BaseViewController

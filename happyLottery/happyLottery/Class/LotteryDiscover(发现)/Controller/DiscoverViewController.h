@@ -10,7 +10,7 @@
 #import <JavaScriptCore/JavaScriptCore.h>
 
 @protocol JSObjcDelegate <JSExport>
--(void)SharingLinks:(NSString *)code;
+-(void)SharingLinks;
 -(void)goToJczq;
 -(NSString *)getCardCode;
 -(void)goCathectic:(NSString *)lotteryCode;

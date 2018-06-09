@@ -54,7 +54,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.viewControllerNo = @"A016";
-    page = 0;
+    page = 1;
     if ([self isIphoneX]) {
         self.viewDisTop.constant = 88;
     }else{
@@ -272,7 +272,7 @@
 }
 
 - (IBAction)actionCreateScheme:(UIButton *)sender {
-    page = 0;
+    page = 1;
     [self loadData];
     
 }
@@ -392,7 +392,13 @@
     
     self.transaction.maxPrize = maxPrize;
     self.transaction.betCount = selectnum;
-    self.transaction.beiTou = maxPrize / (selectnum * 2);
+    if (selectnum == 0) {
+        self.transaction.beiTou = 0;
+    }else{
+        
+        self.transaction.beiTou = maxPrize / (selectnum * 2);
+    }
+    
     
     self.transaction.betCost = self.transaction.betCount * 2 * self.transaction.beiTou;
 }

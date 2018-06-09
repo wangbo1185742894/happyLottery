@@ -12,6 +12,7 @@
 @interface JCLQLotteryProfileSelectView()
 @property(nonatomic,strong)NSArray *lotteryProfiles;
 @property (weak, nonatomic) IBOutlet UIView *lotteryProfileItemView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topDis;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *profileSelectArray;
 
 @end

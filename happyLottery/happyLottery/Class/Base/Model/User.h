@@ -74,6 +74,6 @@ typedef enum {
 @property(nonatomic,strong)NSString *totalBanlece;
 @property (nonatomic, assign) PayVerifyType payVerifyType;
 
-
+-(NSString *)getShareUrl;
 @end
 

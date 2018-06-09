@@ -20,7 +20,7 @@
 
 -(id)initWithFrame:(CGRect)frame{
     
-    if ([super initWithFrame:frame]) {
+    if (self = [super initWithFrame:frame]) {
         [self initUI];
     }
     return self;

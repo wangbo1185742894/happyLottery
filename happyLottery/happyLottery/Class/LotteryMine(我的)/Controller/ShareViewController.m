@@ -55,17 +55,8 @@
     
     self.memberMan.delegate = self;
    // [self getQRCodeClient];
-    codeurl = [self getShareUrl];
+    codeurl = [self.curUser getShareUrl];
     [self initCode];
-}
-
--(NSString *)getShareUrl{
-    
-    if ([self.curUser.memberType isEqualToString:@"CIRCLE_MASTER"]) {
-        return  [NSString stringWithFormat:@"%@%@?shareCode=%@&shareCardCode=%@",H5BaseAddress,KcircleRegister,self.curUser.shareCode,self.curUser.cardCode];
-    }else{
-        return  [NSString stringWithFormat:@"%@%@?shareCode=%@&shareCardCode=%@",H5BaseAddress,KcircleRegisterCopy,self.curUser.shareCode,self.curUser.cardCode];
-    }
 }
 
 - (IBAction)shareBtnClick:(id)sender {
@@ -73,12 +64,11 @@
 }
 
 -(void)initshare{
-    NSString *code=self.curUser.shareCode;
 //    if (code.length>0) { 
 //              = [NSString stringWithFormat:@"tfi.11max.com/Tbz/ShareByCode?shareCode=%@",code];
  
 //    }CIRCLE_MASTER("圈主"), CIRCLE_PERSON("圈民"), FREEDOM_PERSON("自由人");
-    NSString *url = [self getShareUrl];
+    NSString *url = [self.curUser getShareUrl];
   
     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
     NSArray* imageArray = @[[[NSBundle mainBundle] pathForResource:@"logo120@2x" ofType:@"png"]];

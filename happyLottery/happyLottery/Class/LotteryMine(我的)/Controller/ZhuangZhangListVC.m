@@ -30,7 +30,7 @@
 }
 
 -(void)loadNewData{
-    _page = 0;
+    _page = 1;
     [self loadData];
 }
 -(void)loadMoreData{
@@ -43,7 +43,7 @@
 
 -(void)listMyTransferdelegate:(NSArray *)array isSuccess:(BOOL)success errorMsg:(NSString *)msg{
     [self .tabRuzhangList tableViewEndRefreshCurPageCount:array.count];
-    if (_page ==0 ) {
+    if (_page == 1 ) {
         [self.transferList removeAllObjects];
     }
     if (success == NO) {

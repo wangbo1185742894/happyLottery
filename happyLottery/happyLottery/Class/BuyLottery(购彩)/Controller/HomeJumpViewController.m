@@ -10,9 +10,13 @@
 #import "UIImage+RandomSize.h"
 #import "UIImageView+WebCache.h"
 #import <JavaScriptCore/JavaScriptCore.h>
+#import "JCZQPlayViewController.h"
+#import <ShareSDK/ShareSDK+Base.h>
+#import <ShareSDKUI/ShareSDK+SSUI.h>
+#import <ShareSDK/NSMutableDictionary+SSDKShare.h>
+#import <MOBFoundation/MOBFoundation.h>
 
-
-@interface HomeJumpViewController ()<JSJumpDelegate,UIWebViewDelegate>
+@interface HomeJumpViewController ()<JSJumpDelegate,UIWebViewDelegate,MemberManagerDelegate>
 {
     JSContext *context;
 }
@@ -30,7 +34,7 @@
     if (_isNeedBack) {
         
     }
-    
+    self.memberMan.delegate = self;
     self.title = self.infoModel.title;
     [self showWeb];
     
@@ -132,6 +136,130 @@
 }
 -(void)exchangeToast:(NSString *)msg{
     [self showPromptText:msg hideAfterDelay:1.7];
+}
+
+-(void)goCathectic:(NSString *)lotteryCode{ //跳转竟足  充值  优惠券
+    if (lotteryCode == nil) {
+        return;
+    }
+    if ([lotteryCode isEqualToString:@"JCZQ"]) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            JCZQPlayViewController * playViewVC = [[JCZQPlayViewController alloc]init];
+            playViewVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:playViewVC animated:YES];
+        });
+    }
+}
+
+-(void)SharingLinks{
+    //    [self showPromptText:code hideAfterDelay:1.8];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self initshare:@""];
+    });
+}
+
+-(void)initshare:code{
+    
+    if (self.curUser.isLogin == NO) {
+        [self needLogin];
+        return;
+    }
+    
+    NSString *url = [self.curUser getShareUrl];
+    NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
+    NSArray* imageArray = @[[[NSBundle mainBundle] pathForResource:@"logo120@2x" ofType:@"png"]];
+    [shareParams SSDKSetupShareParamsByText:@"千万大奖集聚地，新用户即享188元豪礼。积分商城优惠享不停！"
+                                     images:imageArray
+                                        url:[NSURL URLWithString:url]
+                                      title:@"送您188元新人大礼包！点击领取"
+                                       type:SSDKContentTypeWebPage];
+    [ShareSDK showShareActionSheet:nil
+                             items:@[@(SSDKPlatformSubTypeWechatSession),@(SSDKPlatformSubTypeWechatTimeline)]
+                       shareParams:shareParams
+               onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
+                   
+                   switch (state) {
+                           
+                       case SSDKResponseStateBegin:
+                       {
+                           //设置UI等操作
+                           //Instagram、Line等平台捕获不到分享成功或失败的状态，最合适的方式就是对这些平台区别对待
+                           if (platformType == SSDKPlatformSubTypeWechatSession)
+                           {
+                               [self giveShareScoreClient];
+                               break;
+                           }
+                           break;
+                       }
+                       case SSDKResponseStateSuccess:
+                       {
+                           
+                           
+                           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
+                                                                               message:nil
+                                                                              delegate:nil
+                                                                     cancelButtonTitle:@"确定"
+                                                                     otherButtonTitles:nil];
+                           [alertView show];
+                           if (platformType == SSDKPlatformSubTypeWechatTimeline)
+                           {
+                               [self giveShareScoreClient];
+                               
+                           }
+                           break;
+                       }
+                       case SSDKResponseStateFail:
+                       {
+                           NSLog(@"%@",error);
+                           UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败"
+                                                                           message:[NSString stringWithFormat:@"%@",error]
+                                                                          delegate:nil
+                                                                 cancelButtonTitle:@"OK"
+                                                                 otherButtonTitles:nil, nil];
+                           [alert show];
+                           break;
+                       }
+                       case SSDKResponseStateCancel:
+                       {
+                           if (userData != nil) {
+                               UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享已取消"
+                                                                                   message:nil
+                                                                                  delegate:nil
+                                                                         cancelButtonTitle:@"确定"
+                                                                         otherButtonTitles:nil];
+                               [alertView show];
+                           }
+                           break;
+                       }
+                       default:
+                           break;
+                   }
+               }];
+    
+}
+
+-(void)giveShareScoreClient{
+    NSDictionary *Info;
+    @try {
+        
+        Info = @{@"cardCode":self.curUser.cardCode
+                 };
+        
+    } @catch (NSException *exception) {
+        return;
+    }
+    [self.memberMan giveShareScore:Info];
+    
+}
+
+-(void)giveShareScore:(BOOL)success errorMsg:(NSString *)msg{
+    if ([msg isEqualToString:@"执行成功"]) {
+        // [self showPromptText: @"积分赠送成功" hideAfterDelay: 1.7];
+        
+    }else{
+        [self showPromptText: msg hideAfterDelay: 1.7];
+    }
+    
 }
 
 @end

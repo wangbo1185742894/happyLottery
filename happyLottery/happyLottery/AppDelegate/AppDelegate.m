@@ -19,6 +19,7 @@
 #import "MyNoticeViewController.h"
 #import "MyAttendViewController.h"
 #import "netWorkHelper.h"
+#import "MyCircleViewController.h"
 // 引入JPush功能所需头文件
 #import "JPUSHService.h"
 #import "VersionUpdatingPopView.h"
@@ -161,6 +162,7 @@ static SystemSoundID shake_sound_male_id = 0;
             NSInteger badge = [[aps valueForKey:@"badge"] integerValue];
             [[UIApplication sharedApplication]setApplicationIconBadgeNumber:badge/2];
             [JPUSHService setBadge:badge/2];//清空JPush服务器中存储的badge值
+            [self jpushStart];
         }  
         
     }  
@@ -499,35 +501,34 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
             [JPUSHService handleRemoteNotification:userInfo];
            pageCodeNotice =  [userInfo valueForKey:@"pageCode"];
            linkUrlNotice=[userInfo valueForKey:@"linkUrl"];
-//            [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];
-//            [JPUSHService setBadge:0];//清空JPush服务器中存储的badge值
-           
-//              if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive ||[UIApplication sharedApplication].applicationState == UIApplicationStateInactive) {
-            if (pageCodeNotice!=nil) {
-       
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(KTimeJumpAfter * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    
-                    [self goToYunshiWithInfo:pageCodeNotice];
-                });
-
-            }
-            if (linkUrlNotice!=nil) {
-
-                UITabBarController *tab = (UITabBarController *)_window.rootViewController;
-                UINavigationController *nav = tab.viewControllers[tab.selectedIndex];
-                JumpWebViewController *jumpVC = [[JumpWebViewController alloc] initWithNibName:@"JumpWebViewController" bundle:nil];
-                jumpVC.title = @"消息详情";
-                jumpVC.URL = linkUrlNotice;
-                jumpVC.hidesBottomBarWhenPushed = YES;
-                [nav pushViewController:jumpVC animated:YES];
-
-            }
-          //  }
+           [self jpushStart];
         }
     } else {
     }
 
     completionHandler();  // 系统要求执行这个方法
+}
+
+-(void)jpushStart{
+    if (pageCodeNotice!=nil) {
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(KTimeJumpAfter * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [self goToYunshiWithInfo:pageCodeNotice];
+        });
+        
+    }
+    if (linkUrlNotice!=nil) {
+        
+        UITabBarController *tab = (UITabBarController *)_window.rootViewController;
+        UINavigationController *nav = tab.viewControllers[tab.selectedIndex];
+        JumpWebViewController *jumpVC = [[JumpWebViewController alloc] initWithNibName:@"JumpWebViewController" bundle:nil];
+        jumpVC.title = @"消息详情";
+        jumpVC.URL = linkUrlNotice;
+        jumpVC.hidesBottomBarWhenPushed = YES;
+        [nav pushViewController:jumpVC animated:YES];
+        
+    }
 }
 
 - (void)networkDidReceiveMessage:(NSNotification *)notification {
@@ -577,6 +578,11 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
                 [winPushView refreshInfo:title andContent:content];
                 [[UIApplication sharedApplication].keyWindow addSubview:winPushView];
                 return;
+        }
+        if ([extra[@"messageType"] isEqualToString:@"JOIN_AGENT"]) {
+//            UITabBarController *tabBarVC = (UITabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+//            tabBarVC.selectedIndex = 2;
+            return;
         }
     }
 }
@@ -731,6 +737,11 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         MyAttendViewController *revise = [[MyAttendViewController alloc]init];
         [delegate.curNavVC pushViewController:revise animated:YES];
         return;
+    }else if ([keyStr isEqualToString:@"A425"]){
+
+        UITabBarController *rootTab = (UITabBarController *)[UIApplication sharedApplication].keyWindow .rootViewController;
+        rootTab.selectedIndex  =2;
+        return;
     }else{
           baseVC.hidesBottomBarWhenPushed = YES;
     }
@@ -779,14 +790,14 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         // 取得自定义字段内容，userInfo就是后台返回的JSON数据，是一个字典
        pageCodeNotice =  [userInfo valueForKey:@"pageCode"];
       linkUrlNotice=[userInfo valueForKey:@"linkUrl"];
- 
+        [self  jpushStart];
     [[UIApplication sharedApplication]setApplicationIconBadgeNumber:badge/2];
     [JPUSHService setBadge:badge/2 ];//清空JPush服务器中存储的badge值
 //         if ([UIApplication sharedApplication].applicationState != UIApplicationStateActive) {
 //
 //             if (pageCodeNotice!=nil) {
 //
-//                 [self goToYunshiWithInfo:pageCodeNotice];
+
 //
 //             }
 //             if (linkUrlNotice!=nil) {
@@ -807,22 +818,23 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     [JPUSHService handleRemoteNotification:userInfo];
-    if (pageCodeNotice!=nil) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(KTimeJumpAfter * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            
-            [self goToYunshiWithInfo:pageCodeNotice];
-        });
-    }
-    if (linkUrlNotice!=nil) {
-        
-        UITabBarController *tab = (UITabBarController *)_window.rootViewController;
-        UINavigationController *nav = tab.viewControllers[tab.selectedIndex];
-        JumpWebViewController *jumpVC = [[JumpWebViewController alloc] initWithNibName:@"JumpWebViewController" bundle:nil];
-        jumpVC.title = @"消息详情";
-        jumpVC.URL = linkUrlNotice;
-        jumpVC.hidesBottomBarWhenPushed = YES;
-        [nav pushViewController:jumpVC animated:YES];
-    }
+    
+//    if (pageCodeNotice!=nil) {
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(KTimeJumpAfter * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//
+//            [self goToYunshiWithInfo:pageCodeNotice];
+//        });
+//    }
+//    if (linkUrlNotice!=nil) {
+//
+//        UITabBarController *tab = (UITabBarController *)_window.rootViewController;
+//        UINavigationController *nav = tab.viewControllers[tab.selectedIndex];
+//        JumpWebViewController *jumpVC = [[JumpWebViewController alloc] initWithNibName:@"JumpWebViewController" bundle:nil];
+//        jumpVC.title = @"消息详情";
+//        jumpVC.URL = linkUrlNotice;
+//        jumpVC.hidesBottomBarWhenPushed = YES;
+//        [nav pushViewController:jumpVC animated:YES];
+//    }
 
 }
 
