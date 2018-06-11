@@ -9,9 +9,10 @@
 #import "TopUpsViewController.h"
 #import "WXApi.h"
 #import "WebShowViewController.h"
+#import "ChongZhiRulePopView.h"
 #import "DiscoverViewController.h"
 #define KPayTypeListCell @"PayTypeListCell"
-@interface TopUpsViewController ()<MemberManagerDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,UITextFieldDelegate,UIWebViewDelegate>
+@interface TopUpsViewController ()<MemberManagerDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,UITextFieldDelegate,UIWebViewDelegate,ChongZhiRulePopViewDelegate>
 {
     NSMutableArray <ChannelModel *>*channelList;
     ChannelModel *itemModel;
@@ -38,7 +39,7 @@
     [super viewDidLoad];
     self.title = @"充值";
     rechList = [NSMutableArray arrayWithCapacity:0];
-    
+    [self setRightBarButtonItem];
     self.viewControllerNo = @"A105";
     self.payWebView.delegate = self;
     self.memberMan.delegate = self;
@@ -79,8 +80,7 @@
     [rechList sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
         RechargeModel * r1 = obj1;
         RechargeModel * r2 = obj2;
-        return  [r1.recharge compare:r2.recharge];
-     
+        return  [r1.recharge doubleValue] > [r2.recharge doubleValue];
     }];
     int i = 0;
     for (RechargeModel  *model in rechList) {
@@ -101,7 +101,7 @@
                 if ([model.handsel doubleValue] == 0) {
                     itemDic.hidden = YES;
                 }else{
-                    itemDic.text = [NSString stringWithFormat:@"+%.2f",[model.handsel doubleValue]];
+                    itemDic.text = [NSString stringWithFormat:@"送%.2f",[model.handsel doubleValue]];
                     itemDic.hidden = NO;
                 }
                 
@@ -332,7 +332,10 @@
     }
     return YES;
 }
-
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"NSNotificationapplicationWillEnterForeground" object:nil];
+}
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"NSNotificationapplicationWillEnterForeground" object:nil];
 }
@@ -372,6 +375,27 @@
         }
     }
     [super navigationBackToLastPage];
+}
+
+- (void)showPlayRec{
+    ChongZhiRulePopView *rulePopView = [[ChongZhiRulePopView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    rulePopView.delegate = self;
+    [[UIApplication sharedApplication].keyWindow addSubview:rulePopView];
+}
+
+-(void)setRightBarButtonItem{
+    
+    UIButton *rightBtnRec = [UIButton buttonWithType:UIButtonTypeCustom];
+    rightBtnRec.frame = CGRectMake(0, 0, 30, 30);
+    [rightBtnRec addTarget:self action:@selector(showPlayRec) forControlEvents:UIControlEventTouchUpInside];
+    [rightBtnRec setImage:[UIImage imageNamed:@"redpacketrule"] forState:UIControlStateNormal];
+    UIBarButtonItem *barRedPacketRec = [[UIBarButtonItem alloc]initWithCustomView:rightBtnRec];
+    self.navigationItem.rightBarButtonItem  = barRedPacketRec;
+}
+
+- (void)showRuleBtnPage{
+    
+    [self memberDetail:nil];
 }
 
 @end

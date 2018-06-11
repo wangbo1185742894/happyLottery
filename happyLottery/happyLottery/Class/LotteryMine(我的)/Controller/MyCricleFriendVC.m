@@ -33,7 +33,7 @@
 }
 
 -(void)loadNewData{
-    _page = 0;
+    _page = 1;
     [self loadData];
 }
 -(void)loadMoreData{
@@ -53,7 +53,7 @@
         return;
     }
 
-    if (_page == 0) {
+    if (_page == 1) {
         [self .personArray removeAllObjects];
     }
     if (array == nil || array.count == 0) {

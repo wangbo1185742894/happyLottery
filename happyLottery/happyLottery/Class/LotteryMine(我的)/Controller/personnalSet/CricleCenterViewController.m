@@ -236,8 +236,7 @@
     //上传，等待回传设置
     //[self updateFaceRequest:image];
     
-//
-//    NSString * BASE_URL = @"http://192.168.88.244:8086";
+
 ////    UIImage * chosenImage = editingInfo[UIImagePickerControllerEditedImage];
 //    UIImageView * picImageView = (UIImageView *)[self.view viewWithTag:500];
 //    picImageView.image = image;
@@ -489,71 +488,6 @@
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
-
--(void)updateFaceRequest:(UIImage*)faceImg
-{
-    NSString * BASE_URL = @"http://192.168.88.244:8086";
-    NSData* imageData = UIImageJPEGRepresentation(faceImg, 0.8);
-    NSDictionary* uploadFaceDic=@{@"memberAvatar":@[imageData]};
-//    UIImage * chosenImage = info[UIImagePickerControllerEditedImage];
-//    UIImageView * picImageView = (UIImageView *)[self.view viewWithTag:500];
-//    picImageView.image = chosenImage;
-//    chosenImage = [self imageWithImageSimple:chosenImage scaledToSize:CGSizeMake(60, 60)];
-   // NSData * imageData = UIImageJPEGRepresentation(chosenImage, 0.9);
-    //    [self saveImage:chosenImage withName:@"avatar.png"];
-    //    NSURL * filePath = [NSURL fileURLWithPath:[self documentFolderPath]];
-    //将图片上传到服务器
-    //    --------------------------------------------------------
-    AFHTTPRequestOperationManager * manager = [[AFHTTPRequestOperationManager alloc]initWithBaseURL:nil];
-    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",@"text/javascript",@"text/json", nil];
-    NSString * urlString = [NSString stringWithFormat:@"%@/app/head/url",BASE_URL];
-    NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
-    NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithCapacity:1];
-   // [dict setObject:[userDefaults objectForKey:@"user_id"] forKey:@"user_id"];
-    [manager POST:urlString parameters:dict constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        //通过post请求上传用户头像图片,name和fileName传的参数需要跟后台协商,看后台要传的参数名
-        [formData appendPartWithFileData:imageData name:@"img" fileName:@"img.jpg" mimeType:@"image/jpeg"];
-        
-    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //解析后台返回的结果,如果不做一下处理,打印结果可能是一些二进制流数据
-        NSError *error;
-        NSString *string = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
-        string =[string stringByReplacingOccurrencesOfString:@"\\" withString:@""];
-        string=[string substringWithRange:NSMakeRange(1, string.length-2)];
-        NSDictionary *itemInfo=[Utility objFromJson:string];
-        if ([itemInfo[@"code"] isEqualToString:@"0000"]) {
-          //  [self showPromptText:@"修改成功" hideAfterDelay:1.8];
-            NSString *iconUrl = itemInfo[@"result"];  //图片url
-        }
-        //上传成功后更新数据
-//        self.personModel.adperurl = imageDict[@"adperurl"];
-        NSLog(@"上传图片成功0---%@");
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"上传图片-- 失败  -%@",error);
-    }];
-  
-     // [self.memberMan updateImage:uploadFaceDic];
-//    NSString *theRequest;
-//    theRequest  = @"http://192.168.88.244:8086";
-//    [self.loadDataTool RequestWithString:[NSString stringWithFormat:@"%@/app/head/url?",theRequest] isPost:NO andPara:nil andComplete:^(id data, BOOL isSuccess) {
-//        [self hideLoadingView];
-//        if (isSuccess) {
-//            NSString *resultStr = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-//            NSData *jsonData = [resultStr dataUsingEncoding:NSUTF8StringEncoding];
-//            NSDictionary  *resultDic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
-//            if ([resultDic[@"code"] integerValue] != 0) {
-//                return ;
-//            }
-//            NSArray *resultArr =  resultDic[@"result"];
-//
-//
-//        }else{
-//             [self showPromptText: @"服务器连接失败" hideAfterDelay: 1.7];
-//        }
-//    }];
-    
-}
 - (IBAction)actionModfiyName:(id)sender {
     if ([self.agentModel.circleName rangeOfString:@"circle_"].length ==  0) {
         [self showPromptViewWithText:@"圈名只能修改一次" hideAfter:1.7];

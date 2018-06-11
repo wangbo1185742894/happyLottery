@@ -316,11 +316,11 @@
     [titleBtn setImage:[UIImage imageNamed:@"wanfaxiala"] forState:0];
     titleBtn.titleLabel.font = [UIFont systemFontOfSize:18];
     if (profileSelectView == nil) {
-        profileSelectView = [[LotteryProfileSelectView alloc]initWithFrame:CGRectMake(0, 64, KscreenWidth, KscreenHeight - 64)];
+        profileSelectView = [[LotteryProfileSelectView alloc]initWithFrame:CGRectMake(0, NaviHeight, KscreenWidth, KscreenHeight - 64)];
     }
     [profileSelectView setPlayVIew:self.playType];
     
-    profileSelectView.frame = CGRectMake(0, 64, KscreenWidth, KscreenHeight - 64);
+    profileSelectView.frame = CGRectMake(0, NaviHeight, KscreenWidth, KscreenHeight - 64);
     profileSelectView.delegate = self;
     [self getCurlotteryProfiles];
     profileSelectView.lotteryPros = self.profiles;

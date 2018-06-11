@@ -42,7 +42,7 @@
     [self loadNewData];
 }
 -(void)loadNewData{
-    self.page = 0;
+    self.page = 1;
     NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"page":@(_page),@"pageSize":@(KpageSize)};
     [self.lotteryMan getAttentFollowScheme:dic];
 }
@@ -62,7 +62,7 @@
         [self showPromptText:msg hideAfterDelay:1.0];
         return;
     }
-    if (self.page == 0) {
+    if (self.page == 1) {
         [self.personArray removeAllObjects];
     }
     //添加数据

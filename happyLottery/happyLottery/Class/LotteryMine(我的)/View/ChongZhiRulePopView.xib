@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ChongZhiRulePopView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" alpha="0.30000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3M8-RX-6Gs">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <action selector="actionClose:" destination="iN0-l3-epB" eventType="touchUpInside" id="RMV-ll-T0t"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4OX-hE-SVj">
+                    <rect key="frame" x="20" y="208" width="335" height="250"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="redpacketruleback" translatesAutoresizingMaskIntoConstraints="NO" id="xEa-bi-jSi">
+                            <rect key="frame" x="0.0" y="0.0" width="335" height="250"/>
+                        </imageView>
+                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nd2-FA-v6v">
+                            <rect key="frame" x="10" y="30" width="315" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="Smw-62-X7V"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
+                            <state key="normal" title="充值小贴士">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Asa-Qj-Xn1">
+                            <rect key="frame" x="305" y="10" width="20" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="IIK-36-XEH"/>
+                                <constraint firstAttribute="width" constant="20" id="wxI-xl-s6R"/>
+                            </constraints>
+                            <state key="normal" image="redclose.png"/>
+                            <connections>
+                                <action selector="actionClose:" destination="iN0-l3-epB" eventType="touchUpInside" id="pDd-t2-hUT"/>
+                            </connections>
+                        </button>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vO-lY-82t">
+                            <rect key="frame" x="10" y="65" width="315" height="165"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <attributedString key="attributedText">
+                                <fragment>
+                                    <string key="content">1.充值免收手续费，即充即时到账；                                           2.充值金额的30%只能用于购彩，不能提现；                           3.投必中客服热线:  400-600-5558                                                   另附</string>
+                                    <attributes>
+                                        <color key="NSColor" red="0.28235294117647058" green="0.28235294117647058" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
+                                        <font key="NSFont" size="11" name="DFWaWaSC-W5"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="6" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UTZ-3o-4dC">
+                            <rect key="frame" x="26" y="126" width="108" height="19"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="108" id="PwA-JN-xjK"/>
+                                <constraint firstAttribute="height" constant="19" id="hfJ-9H-C0s"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                            <state key="normal" title="《会员充值说明》">
+                                <color key="titleColor" red="0.92156862750000001" green="0.30980392159999998" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="actionRule:" destination="iN0-l3-epB" eventType="touchUpInside" id="jNM-o0-BMZ"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="xEa-bi-jSi" firstAttribute="leading" secondItem="4OX-hE-SVj" secondAttribute="leading" id="01Q-PX-tDn"/>
+                        <constraint firstAttribute="bottom" secondItem="5vO-lY-82t" secondAttribute="bottom" constant="20" id="52W-3Y-IZ1"/>
+                        <constraint firstItem="Asa-Qj-Xn1" firstAttribute="top" secondItem="4OX-hE-SVj" secondAttribute="top" constant="10" id="C7P-JI-pqQ"/>
+                        <constraint firstItem="UTZ-3o-4dC" firstAttribute="top" secondItem="Nd2-FA-v6v" secondAttribute="bottom" constant="76" id="FDY-yF-EwK"/>
+                        <constraint firstItem="UTZ-3o-4dC" firstAttribute="leading" secondItem="4OX-hE-SVj" secondAttribute="leading" constant="26" id="LfU-9y-UpC"/>
+                        <constraint firstItem="xEa-bi-jSi" firstAttribute="top" secondItem="4OX-hE-SVj" secondAttribute="top" id="NMN-qt-bbx"/>
+                        <constraint firstItem="5vO-lY-82t" firstAttribute="leading" secondItem="4OX-hE-SVj" secondAttribute="leading" constant="10" id="OJf-zE-nKb"/>
+                        <constraint firstAttribute="trailing" secondItem="Asa-Qj-Xn1" secondAttribute="trailing" constant="10" id="QVb-fA-GDL"/>
+                        <constraint firstAttribute="trailing" secondItem="xEa-bi-jSi" secondAttribute="trailing" id="Zm0-ck-vKD"/>
+                        <constraint firstAttribute="height" constant="250" id="bbP-9a-D6o"/>
+                        <constraint firstAttribute="trailing" secondItem="5vO-lY-82t" secondAttribute="trailing" constant="10" id="dY2-5l-wes"/>
+                        <constraint firstItem="Nd2-FA-v6v" firstAttribute="top" secondItem="4OX-hE-SVj" secondAttribute="top" constant="30" id="fwv-iG-hxD"/>
+                        <constraint firstAttribute="trailing" secondItem="Nd2-FA-v6v" secondAttribute="trailing" constant="10" id="jvT-U6-x2E"/>
+                        <constraint firstAttribute="bottom" secondItem="xEa-bi-jSi" secondAttribute="bottom" id="lTa-Gk-6kX"/>
+                        <constraint firstItem="Nd2-FA-v6v" firstAttribute="leading" secondItem="4OX-hE-SVj" secondAttribute="leading" constant="10" id="rGi-JC-NVB"/>
+                        <constraint firstItem="5vO-lY-82t" firstAttribute="top" secondItem="Nd2-FA-v6v" secondAttribute="bottom" constant="15" id="uBo-SN-ivh"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="3M8-RX-6Gs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="14I-eu-9ZE"/>
+                <constraint firstAttribute="bottom" secondItem="3M8-RX-6Gs" secondAttribute="bottom" id="Ljz-YB-iYv"/>
+                <constraint firstItem="3M8-RX-6Gs" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="VNh-vX-LY4"/>
+                <constraint firstItem="4OX-hE-SVj" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="dr8-wW-THA"/>
+                <constraint firstItem="4OX-hE-SVj" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="oI8-Vu-tlj"/>
+                <constraint firstAttribute="trailing" secondItem="3M8-RX-6Gs" secondAttribute="trailing" id="x0A-qU-Xor"/>
+                <constraint firstItem="4OX-hE-SVj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="xx6-kd-jbh"/>
+            </constraints>
+            <connections>
+                <outlet property="btnTitle" destination="Nd2-FA-v6v" id="oxZ-tp-tED"/>
+                <outlet property="heightContentView" destination="bbP-9a-D6o" id="Z7B-cA-ghP"/>
+                <outlet property="showRuleBtn" destination="UTZ-3o-4dC" id="gPH-hZ-AnS"/>
+                <outlet property="tvContent" destination="5vO-lY-82t" id="No1-A8-Mrw"/>
+            </connections>
+            <point key="canvasLocation" x="26.5" y="52.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="redclose.png" width="16" height="14"/>
+        <image name="redpacketruleback" width="26" height="84"/>
+    </resources>
+</document>

@@ -146,9 +146,9 @@ typedef enum : NSUInteger {
     [titleBtn setImage:[UIImage imageNamed:@"wanfaxiala"] forState:0];
     titleBtn.titleLabel.font = [UIFont systemFontOfSize:18];
     if (profileSelectView == nil) {
-        profileSelectView = [[JCLQLotteryProfileSelectView alloc]initWithFrame:CGRectMake(0, 64, KscreenWidth, KscreenHeight - 64)];
+        profileSelectView = [[JCLQLotteryProfileSelectView alloc]initWithFrame:CGRectMake(0, NaviHeight, KscreenWidth, KscreenHeight - NaviHeight)];
     }
-    profileSelectView.frame = CGRectMake(0, 64, KscreenWidth, KscreenHeight - 64);
+    profileSelectView.frame = CGRectMake(0, NaviHeight, KscreenWidth, KscreenHeight - NaviHeight);
     profileSelectView.delegate = self;
     [self getCurlotteryProfiles];
     profileSelectView.lotteryPros = self.profiles;

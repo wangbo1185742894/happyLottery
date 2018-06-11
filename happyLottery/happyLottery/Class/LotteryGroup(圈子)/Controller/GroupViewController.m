@@ -16,7 +16,6 @@
     CAGradientLayer *gradientLayer;
     
 }
-
 @property (weak, nonatomic) IBOutlet UIView *theView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 

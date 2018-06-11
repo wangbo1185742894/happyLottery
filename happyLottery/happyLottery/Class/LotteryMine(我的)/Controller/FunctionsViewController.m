@@ -114,7 +114,7 @@
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSNumber *height = [self.heightAtIndexPath objectForKey:indexPath];
-    if(height)
+    if([height integerValue] != 0)
     {
         return height.floatValue;
     }
