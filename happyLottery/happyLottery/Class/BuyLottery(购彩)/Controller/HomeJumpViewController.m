@@ -261,5 +261,10 @@
     }
     
 }
+- (void)telPhone{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"tel://4006005558"]];
+    });
+}
 
 @end

@@ -101,7 +101,7 @@
                 if ([model.handsel doubleValue] == 0) {
                     itemDic.hidden = YES;
                 }else{
-                    itemDic.text = [NSString stringWithFormat:@"+%.2f",[model.handsel doubleValue]];
+                    itemDic.text = [NSString stringWithFormat:@"送%.2f",[model.handsel doubleValue]];
                     itemDic.hidden = NO;
                 }
                 

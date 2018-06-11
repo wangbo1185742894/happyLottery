@@ -17,6 +17,7 @@
 -(void)goCathectic:(NSString *)lotteryCode;
 -(void)exchangeToast:(NSString *)msg;
 -(void)SharingLinks;
+- (void)telPhone;
 -(NSString *)getCardCode;
 -(void)goToLogin;
 @end

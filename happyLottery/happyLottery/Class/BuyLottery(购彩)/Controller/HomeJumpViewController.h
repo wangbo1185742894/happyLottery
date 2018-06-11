@@ -14,6 +14,7 @@
 
 -(void)goToJczq;
 -(void)SharingLinks;
+- (void)telPhone;
 -(void)goToLogin;
 -(void)exchangeToast:(NSString *)msg;
 -(void)goCathectic:(NSString *)lotteryCode;

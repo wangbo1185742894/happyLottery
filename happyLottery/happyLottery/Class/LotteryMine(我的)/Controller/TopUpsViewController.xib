@@ -201,10 +201,10 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" tag="201" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zw6-Bl-RIW">
-                                    <rect key="frame" x="195" y="55" width="35" height="12"/>
+                                    <rect key="frame" x="190" y="55" width="40" height="12"/>
                                     <color key="backgroundColor" red="0.99607843139999996" green="0.64705882349999999" blue="0.074509803920000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="35" id="59y-bk-pvE"/>
+                                        <constraint firstAttribute="width" constant="40" id="59y-bk-pvE"/>
                                         <constraint firstAttribute="height" constant="12" id="aw4-Pf-MWm"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="8"/>
@@ -225,10 +225,10 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" tag="202" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O7k-tq-mvU">
-                                    <rect key="frame" x="310" y="55" width="35" height="12"/>
+                                    <rect key="frame" x="305" y="55" width="40" height="12"/>
                                     <color key="backgroundColor" red="0.99607843139999996" green="0.64705882349999999" blue="0.074509803920000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="35" id="3gL-Ly-DKW"/>
+                                        <constraint firstAttribute="width" constant="40" id="3gL-Ly-DKW"/>
                                         <constraint firstAttribute="height" constant="12" id="Nnj-Ax-1Jy"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="8"/>
@@ -258,10 +258,10 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" tag="204" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="An9-gr-UoF">
-                                    <rect key="frame" x="195" y="105" width="35" height="12"/>
+                                    <rect key="frame" x="190" y="105" width="40" height="12"/>
                                     <color key="backgroundColor" red="0.99607843139999996" green="0.64705882349999999" blue="0.074509803920000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="35" id="ZZh-qQ-4Nu"/>
+                                        <constraint firstAttribute="width" constant="40" id="ZZh-qQ-4Nu"/>
                                         <constraint firstAttribute="height" constant="12" id="mgW-QN-pjm"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="8"/>
@@ -282,10 +282,10 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" tag="205" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ceK-3T-JXI">
-                                    <rect key="frame" x="310" y="105" width="35" height="12"/>
+                                    <rect key="frame" x="305" y="105" width="40" height="12"/>
                                     <color key="backgroundColor" red="0.99607843139999996" green="0.64705882349999999" blue="0.074509803920000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="35" id="dNf-Jz-EqK"/>
+                                        <constraint firstAttribute="width" constant="40" id="dNf-Jz-EqK"/>
                                         <constraint firstAttribute="height" constant="12" id="fWO-Qe-Z2j"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="8"/>
@@ -293,11 +293,11 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" tag="200" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcf-zH-2Ff">
-                                    <rect key="frame" x="80" y="55" width="35" height="12"/>
+                                    <rect key="frame" x="75" y="55" width="40" height="12"/>
                                     <color key="backgroundColor" red="0.99607843139999996" green="0.64705882349999999" blue="0.074509803920000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="12" id="Hqy-m6-rA6"/>
-                                        <constraint firstAttribute="width" constant="35" id="Uxz-ve-8KA"/>
+                                        <constraint firstAttribute="width" constant="40" id="Uxz-ve-8KA"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="8"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -317,11 +317,11 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" tag="203" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zwe-2k-ULT">
-                                    <rect key="frame" x="80" y="105" width="35" height="12"/>
+                                    <rect key="frame" x="75" y="105" width="40" height="12"/>
                                     <color key="backgroundColor" red="0.99607843139999996" green="0.64705882349999999" blue="0.074509803920000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="12" id="ZAf-fL-8Lu"/>
-                                        <constraint firstAttribute="width" constant="35" id="aP8-gz-f5Q"/>
+                                        <constraint firstAttribute="width" constant="40" id="aP8-gz-f5Q"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="8"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
