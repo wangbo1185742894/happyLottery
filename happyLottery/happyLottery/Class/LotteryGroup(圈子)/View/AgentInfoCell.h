@@ -33,6 +33,8 @@
 
 @property (weak, nonatomic) id<AgentInfoDelegate> delegate;
 
-- (void)reloadDate:(AgentInfoModel *)model;
+@property (weak, nonatomic) IBOutlet UIButton *shareBtn;
+
+- (void)reloadDate:(AgentInfoModel *)model isMaster:(BOOL)ismaster;
 
 @end
