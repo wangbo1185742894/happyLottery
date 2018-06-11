@@ -15,6 +15,10 @@
 #import "GroupFollowViewController.h"
 #import "GroupMemberVC.h"
 #import "ZhanWeiTuScheme.h"
+#import <ShareSDK/ShareSDK.h>
+#import "CFLineChartView.h"
+#import <ShareSDKUI/ShareSDKUI.h>
+#import "ShareViewController.h"
 #define KAgentInfoCell @"AgentInfoCell"
 #define KGroupFollowCell @"GroupFollowCell"
 #define KAgentDynamicCell @"AgentDynamicCell"
@@ -109,6 +113,12 @@
     model = [[AgentInfoModel alloc]initWith:param];
     [self reloadAgentDynamic];
     timer = [NSTimer scheduledTimerWithTimeInterval:20 target:self selector:@selector(reloadAgentDynamic) userInfo:nil repeats:YES];
+    //当前用户的卡号等于圈主卡号
+    if ([self.curUser.cardCode isEqualToString:model.cardCode]) {
+        self.curUser.memberType = @"CIRCLE_MASTER";
+    }else {
+        self.curUser.memberType = @"CIRCLE_PERSON";
+    }
 }
 
 
@@ -158,6 +168,13 @@
     GroupMemberVC *membVc = [[GroupMemberVC alloc]init];
     membVc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:membVc animated:YES];
+}
+
+
+- (void)actionShare{
+    ShareViewController *share = [[ShareViewController alloc]init];
+    share.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:share animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -225,7 +242,13 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.delegate = self;
         if (model!=nil) {
-            [cell reloadDate:model];
+            BOOL isMaster;
+            if ([self.curUser.cardCode isEqualToString:model.cardCode]) {
+                isMaster = YES;
+            }else {
+                isMaster = NO;
+            }
+            [cell reloadDate:model isMaster:isMaster];
         }
         return cell;
     }

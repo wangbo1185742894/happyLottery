@@ -139,8 +139,19 @@
                             <constraint firstAttribute="width" constant="26" id="sXC-Kr-pwh"/>
                         </constraints>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gb8-zx-zBh">
+                        <rect key="frame" x="276" y="25" width="81" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <state key="normal" title="  发展圈员" image="tuiguangtaoli.png">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                        <connections>
+                            <action selector="actionToShare:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="75d-Ux-qtZ"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="pqS-6h-aFP" firstAttribute="trailing" secondItem="Gb8-zx-zBh" secondAttribute="trailing" id="3Q8-Js-lLM"/>
                     <constraint firstAttribute="trailing" secondItem="B6r-Ut-dAl" secondAttribute="trailing" constant="18" id="7wb-4c-Ufc"/>
                     <constraint firstItem="WDx-gf-O4z" firstAttribute="top" secondItem="vbq-qJ-BEw" secondAttribute="bottom" constant="10" id="BWG-VG-ZKV"/>
                     <constraint firstItem="B6r-Ut-dAl" firstAttribute="top" secondItem="pqS-6h-aFP" secondAttribute="bottom" constant="51" id="OSl-kw-ARl"/>
@@ -151,6 +162,7 @@
                     <constraint firstItem="B6r-Ut-dAl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="18" id="ect-Hj-Gy8"/>
                     <constraint firstItem="vbq-qJ-BEw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="kTx-RI-SEN"/>
                     <constraint firstItem="pqS-6h-aFP" firstAttribute="trailing" secondItem="B6r-Ut-dAl" secondAttribute="trailing" id="nP7-Hf-2cu"/>
+                    <constraint firstItem="Gb8-zx-zBh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="pGi-Fg-6sc"/>
                     <constraint firstItem="pqS-6h-aFP" firstAttribute="top" secondItem="w3J-8u-Gha" secondAttribute="bottom" id="pVh-vA-8uN"/>
                     <constraint firstItem="w3J-8u-Gha" firstAttribute="centerX" secondItem="pqS-6h-aFP" secondAttribute="centerX" id="uAV-Ko-Igg"/>
                     <constraint firstItem="Ldj-Jj-gOx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="zdA-3N-sjW"/>
@@ -164,6 +176,7 @@
                 <outlet property="cornorView" destination="B6r-Ut-dAl" id="tYz-nr-y59"/>
                 <outlet property="headUrlImge" destination="pqS-6h-aFP" id="ZjL-pQ-hkS"/>
                 <outlet property="memberCountLab" destination="CJo-ZU-sXh" id="OK5-Tf-Cyh"/>
+                <outlet property="shareBtn" destination="Gb8-zx-zBh" id="BcL-ex-AmB"/>
                 <outlet property="totalBonusLab" destination="93u-xt-OS0" id="lXP-nu-qYH"/>
             </connections>
             <point key="canvasLocation" x="323.5" y="144"/>
@@ -174,5 +187,6 @@
         <image name="pic_quanzibeijing.png" width="375" height="199"/>
         <image name="pic_wangguan.png" width="26" height="15"/>
         <image name="pic_zongzhongjiang.png" width="21" height="21"/>
+        <image name="tuiguangtaoli.png" width="16" height="16"/>
     </resources>
 </document>

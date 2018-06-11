@@ -34,7 +34,11 @@
     
 }
 
-- (void)reloadDate:(AgentInfoModel *)model{
+- (IBAction)actionToShare:(id)sender {
+    [self.delegate actionShare];
+}
+
+- (void)reloadDate:(AgentInfoModel *)model isMaster:(BOOL)ismaster{
     [self.headUrlImge sd_setImageWithURL:[NSURL URLWithString:model.headUrl] placeholderImage:[UIImage imageNamed:@"usermine.png"] completed:nil];
     if (model.circleName.length == 0) {
         self.circleNameLab.text = [NSString stringWithFormat:@"@%@",model._id];
@@ -48,6 +52,11 @@
     }
     self.memberCountLab.text = model.memberCount;
     self.totalBonusLab.text = [NSString stringWithFormat:@"%.2f",[model.totalBonus doubleValue]];
+    if (ismaster ) {
+        self.shareBtn.hidden = NO;
+    }else {
+        self.shareBtn.hidden = YES;
+    }
 }
 
 @end
