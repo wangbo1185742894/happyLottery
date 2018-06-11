@@ -13,6 +13,8 @@
 
 - (void)agentMember;
 
+- (void)actionShare;
+
 @end
 
 @interface AgentInfoCell : UITableViewCell

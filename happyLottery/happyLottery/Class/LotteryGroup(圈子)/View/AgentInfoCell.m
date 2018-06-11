@@ -34,6 +34,10 @@
     
 }
 
+- (IBAction)actionToShare:(id)sender {
+    [self.delegate actionShare];
+}
+
 - (void)reloadDate:(AgentInfoModel *)model{
     [self.headUrlImge sd_setImageWithURL:[NSURL URLWithString:model.headUrl] placeholderImage:[UIImage imageNamed:@"usermine.png"] completed:nil];
     if (model.circleName.length == 0) {

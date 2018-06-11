@@ -15,6 +15,9 @@
 #import "GroupFollowViewController.h"
 #import "GroupMemberVC.h"
 #import "ZhanWeiTuScheme.h"
+#import <ShareSDK/ShareSDK.h>
+#import "CFLineChartView.h"
+#import <ShareSDKUI/ShareSDKUI.h>
 #define KAgentInfoCell @"AgentInfoCell"
 #define KGroupFollowCell @"GroupFollowCell"
 #define KAgentDynamicCell @"AgentDynamicCell"
@@ -158,6 +161,98 @@
     GroupMemberVC *membVc = [[GroupMemberVC alloc]init];
     membVc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:membVc animated:YES];
+}
+
+
+- (void)actionShare{
+        NSString *url;
+        if ([self.curUser.memberType isEqualToString:@"CIRCLE_MASTER"]) {
+            url = [NSString stringWithFormat:@"%@%@?shareCode=%@&shareCardCode=%@",H5BaseAddress,KcircleRegister,self.curUser.shareCode,self.curUser.cardCode];
+        }else{
+            url = [NSString stringWithFormat:@"%@%@?shareCode=%@&shareCardCode=%@",H5BaseAddress,KcircleRegisterCopy,self.curUser.shareCode,self.curUser.cardCode];
+        }
+        //    标题：用户名+邀请你加入+圈名
+        //    内容：加入+圈名，一起快乐购彩！
+        NSString *nickName = self.curUser.nickname==nil?[self.curUser.cardCode stringByReplacingCharactersInRange:NSMakeRange(2,4) withString:@"****"]:self.curUser.nickname;
+        
+        NSString *circleName = model.circleName == nil?[NSString stringWithFormat:@"@%@",model._id]:model.circleName;
+        
+        NSString *titleString = [NSString stringWithFormat:@"%@邀请你加入%@",nickName,circleName];
+        
+        NSString *textString = [NSString stringWithFormat:@"加入%@，一起快乐购彩！",circleName];
+        
+        
+        
+        NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
+        NSArray* imageArray = @[[[NSBundle mainBundle] pathForResource:@"logo120@2x" ofType:@"png"]];
+        [shareParams SSDKSetupShareParamsByText:textString
+                                         images:imageArray
+                                            url:[NSURL URLWithString:url]
+                                          title:titleString
+                                           type:SSDKContentTypeWebPage];
+        
+        [ShareSDK showShareActionSheet:nil
+                                 items:@[@(SSDKPlatformSubTypeWechatSession),@(SSDKPlatformSubTypeWechatTimeline)]
+                           shareParams:shareParams
+                   onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
+                       
+                       switch (state) {
+                               
+                           case SSDKResponseStateBegin:
+                           {
+                               //设置UI等操作
+                               //Instagram、Line等平台捕获不到分享成功或失败的状态，最合适的方式就是对这些平台区别对待
+                               if (platformType == SSDKPlatformSubTypeWechatSession)
+                               {
+                                   
+                                   break;
+                               }
+                               break;
+                           }
+                           case SSDKResponseStateSuccess:
+                           {
+                               
+                               
+                               UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
+                                                                                   message:nil
+                                                                                  delegate:nil
+                                                                         cancelButtonTitle:@"确定"
+                                                                         otherButtonTitles:nil];
+                               [alertView show];
+                               if (platformType == SSDKPlatformSubTypeWechatTimeline)
+                               {
+                                   
+                                   
+                               }
+                               break;
+                           }
+                           case SSDKResponseStateFail:
+                           {
+                               NSLog(@"%@",error);
+                               UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败"
+                                                                               message:[NSString stringWithFormat:@"%@",error]
+                                                                              delegate:nil
+                                                                     cancelButtonTitle:@"OK"
+                                                                     otherButtonTitles:nil, nil];
+                               [alert show];
+                               break;
+                           }
+                           case SSDKResponseStateCancel:
+                           {
+                               if (userData != nil) {
+                                   UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享已取消"
+                                                                                       message:nil
+                                                                                      delegate:nil
+                                                                             cancelButtonTitle:@"确定"
+                                                                             otherButtonTitles:nil];
+                                   [alertView show];
+                               }
+                               break;
+                           }
+                           default:
+                               break;
+                       }
+                   }];
 }
 
 - (void)didReceiveMemoryWarning {

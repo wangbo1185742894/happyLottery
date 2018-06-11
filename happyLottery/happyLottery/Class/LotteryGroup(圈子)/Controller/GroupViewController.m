@@ -20,6 +20,10 @@
 @property (weak, nonatomic) IBOutlet UIView *theView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
+@property (weak, nonatomic) IBOutlet UILabel *noticeFirst;
+@property (weak, nonatomic) IBOutlet UILabel *noticeSecond;
+@property (weak, nonatomic) IBOutlet UILabel *noticeThird;
+
 @end
 
 @implementation GroupViewController
@@ -31,8 +35,21 @@
         self.agentMan = [[AgentManager alloc]init];
     }
     self.agentMan.delegate = self;
-//    self.
+    self.noticeFirst.attributedText = [self setLabelTextStyle:self.noticeFirst.text];
+    self.noticeSecond.attributedText = [self setLabelTextStyle:self.noticeSecond.text];
+    self.noticeThird.attributedText = [self setLabelTextStyle:self.noticeThird.text];
+    self.noticeThird.textAlignment = NSTextAlignmentRight;
     // Do any additional setup after loading the view from its nib.
+}
+
+- (NSMutableAttributedString *)setLabelTextStyle:(NSString *)content{
+    NSMutableDictionary *attDic = [NSMutableDictionary dictionary];
+    [attDic setValue:@1 forKey:NSKernAttributeName];
+    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:content attributes:attDic];
+    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+    style.lineSpacing = 8;
+    [attStr addAttribute:NSParagraphStyleAttributeName value:style range: NSMakeRange(0, content.length)];
+    return attStr;
 }
 
 //实现背景渐变
