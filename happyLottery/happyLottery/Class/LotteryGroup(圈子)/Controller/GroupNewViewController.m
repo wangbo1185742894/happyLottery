@@ -113,6 +113,12 @@
     model = [[AgentInfoModel alloc]initWith:param];
     [self reloadAgentDynamic];
     timer = [NSTimer scheduledTimerWithTimeInterval:20 target:self selector:@selector(reloadAgentDynamic) userInfo:nil repeats:YES];
+    //当前用户的卡号等于圈主卡号
+    if ([self.curUser.cardCode isEqualToString:model.cardCode]) {
+        self.curUser.memberType = @"CIRCLE_MASTER";
+    }else {
+        self.curUser.memberType = @"CIRCLE_PERSON";
+    }
 }
 
 
