@@ -8,7 +8,7 @@
 #ifndef API_h
 #define API_h
 
-//#define APPSTORE 1 //appstore 版本 打开宏，  内测包 ，自由平台  屏蔽宏
+#define APPSTORE 1 //appstore 版本 打开宏，  内测包 ，自由平台  屏蔽宏
 
 #define NameSpaceURI @"http://webservice.onlytest.com/"
 
@@ -18,15 +18,15 @@
     #define APPUPDATAURL @"http://t.11max.com/Tbz"
 #endif
 
-//#define WSServerURL @"http://tbz.xianyingcai.com:28000/services%@"
-//#define ServerAddress @"http://124.89.85.110:17085"  //资讯  轮播图 用户图像
-//#define H5BaseAddress @"http://tbz.xianyingcai.com:28086"
+#define WSServerURL @"http://tbz.xianyingcai.com:28000/services%@"
+#define ServerAddress @"http://124.89.85.110:17085"  //资讯  轮播图 用户图像
+#define H5BaseAddress @"http://tbz.xianyingcai.com:28086"
 
-#define ServerAddress @"http://192.168.88.244:8086"  //资讯  轮播图 用户图像
-#define H5BaseAddress @"http://192.168.88.244:18086"
-#define WSServerURL @"http://192.168.88.244:28000/services%@"
+//#define ServerAddress @"http://192.168.88.244:8086"  //资讯  轮播图 用户图像
+//#define H5BaseAddress @"http://192.168.88.244:18086"
+//#define WSServerURL @"http://192.168.88.244:28000/services%@"
 //
-//
+
 //#define H5BaseAddress @"http://192.168.88.193:18086"  //谢青服务
 //#define H5BaseAddress @"http://192.168.88.116:18086"  //史少鹏服务
 //杨芳本地
