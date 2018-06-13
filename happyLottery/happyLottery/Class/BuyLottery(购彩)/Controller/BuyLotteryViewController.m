@@ -268,7 +268,9 @@ static NSString *ID = @"LotteryAreaViewCell";
     }
     appSignModel = [[AppSignModel alloc]initWith:personList];
     activityInfoView.labActivityInfo.text = appSignModel.describe;
-    [activityInfoView.imgRedIcon sd_setImageWithURL:[NSURL URLWithString:appSignModel.imageUrl]];
+    if (appSignModel.imageUrl != nil) {
+          [activityInfoView.imgRedIcon sd_setImageWithURL:[NSURL URLWithString:appSignModel.imageUrl]];
+    }
 }
 
 -(void)startActivity{

@@ -11,10 +11,27 @@
 #import <AudioToolbox/AudioToolbox.h>//添加推送声音lala
 
 @interface User()
-   @property(nonatomic,strong)FMDatabase* fmdb;
+@property(nonatomic,strong)FMDatabase* fmdb;
 @end
 
 @implementation User
+
+-(void)setValue:(id)value forKey:(NSString *)key{
+    if ([key isEqualToString:@"bankBinding"]) {
+        self.bankBinding = [value boolValue];
+        return;
+    }
+    if ([key isEqualToString:@"paypwdSetting"]) {
+        self.paypwdSetting = [value boolValue];
+        return;
+    }
+    if ([key isEqualToString:@"payPWDThreshold"]) {
+        self.payPWDThreshold = [value intValue];
+        return;
+    }
+    [super setValue:value forKey:key];
+}
+
 
 -(PayVerifyType)payVerifyType{
     
