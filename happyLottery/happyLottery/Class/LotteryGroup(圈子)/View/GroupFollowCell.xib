@@ -16,30 +16,33 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="164" id="KGk-i7-Jjw" customClass="GroupFollowCell">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="165"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="163" id="KGk-i7-Jjw" customClass="GroupFollowCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="175"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="164.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="174.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3zQ-8c-Rvz">
-                        <rect key="frame" x="18" y="5" width="339" height="154.5"/>
+                        <rect key="frame" x="10" y="5" width="355" height="169.5"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="border_gendan.png" translatesAutoresizingMaskIntoConstraints="NO" id="4uq-SM-YqY">
+                                <rect key="frame" x="0.0" y="0.0" width="355" height="169.5"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="可跟单" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bPt-53-QHe">
-                                <rect key="frame" x="147.5" y="20" width="43" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <rect key="frame" x="158.5" y="15" width="37" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.55294117649999996" green="0.55294117649999996" blue="0.55294117649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="“每一个跟单方案，都是中奖的可能”" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GDU-WV-ckC">
-                                <rect key="frame" x="56" y="75" width="228" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <rect key="frame" x="80" y="71" width="196" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.55294117649999996" green="0.55294117649999996" blue="0.55294117649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3iZ-Oy-B2q">
-                                <rect key="frame" x="69.5" y="112" width="200" height="35"/>
+                                <rect key="frame" x="77.5" y="100.5" width="200" height="35"/>
                                 <color key="backgroundColor" red="0.070588235289999995" green="0.78039215689999997" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="4sP-5T-9Z3"/>
@@ -54,31 +57,35 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="23c-4G-Q0k">
-                                <rect key="frame" x="165" y="42" width="9" height="18"/>
-                                <fontDescription key="fontDescription" name="Helvetica-Condensed-Black-Se" family="Helvetica-Condensed-Black-Se" pointSize="20"/>
+                                <rect key="frame" x="171" y="34.5" width="13.5" height="26.5"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Condensed-Black-Se" family="Helvetica-Condensed-Black-Se" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="23c-4G-Q0k" firstAttribute="centerX" secondItem="3zQ-8c-Rvz" secondAttribute="centerX" id="0X4-DF-bxh"/>
                             <constraint firstItem="bPt-53-QHe" firstAttribute="centerX" secondItem="3zQ-8c-Rvz" secondAttribute="centerX" id="1Qd-C1-JY4"/>
-                            <constraint firstItem="GDU-WV-ckC" firstAttribute="top" secondItem="23c-4G-Q0k" secondAttribute="bottom" constant="15" id="2D7-ij-vsl"/>
+                            <constraint firstItem="GDU-WV-ckC" firstAttribute="top" secondItem="23c-4G-Q0k" secondAttribute="bottom" constant="10" id="2D7-ij-vsl"/>
                             <constraint firstItem="23c-4G-Q0k" firstAttribute="top" secondItem="bPt-53-QHe" secondAttribute="bottom" constant="5" id="4zX-dF-fHV"/>
-                            <constraint firstItem="bPt-53-QHe" firstAttribute="top" secondItem="3zQ-8c-Rvz" secondAttribute="top" constant="20" id="heu-47-u9c"/>
+                            <constraint firstAttribute="trailing" secondItem="4uq-SM-YqY" secondAttribute="trailing" id="9tw-2L-VgG"/>
+                            <constraint firstItem="4uq-SM-YqY" firstAttribute="leading" secondItem="3zQ-8c-Rvz" secondAttribute="leading" id="SbO-rr-rQu"/>
+                            <constraint firstItem="bPt-53-QHe" firstAttribute="top" secondItem="3zQ-8c-Rvz" secondAttribute="top" constant="15" id="heu-47-u9c"/>
                             <constraint firstItem="GDU-WV-ckC" firstAttribute="centerX" secondItem="3zQ-8c-Rvz" secondAttribute="centerX" id="kNe-ab-RKr"/>
+                            <constraint firstAttribute="bottom" secondItem="4uq-SM-YqY" secondAttribute="bottom" id="m3d-aO-u6t"/>
                             <constraint firstItem="3iZ-Oy-B2q" firstAttribute="centerX" secondItem="3zQ-8c-Rvz" secondAttribute="centerX" id="xWU-Gr-02r"/>
-                            <constraint firstItem="3iZ-Oy-B2q" firstAttribute="top" secondItem="GDU-WV-ckC" secondAttribute="bottom" constant="20" id="ya5-cI-dyS"/>
+                            <constraint firstItem="3iZ-Oy-B2q" firstAttribute="top" secondItem="GDU-WV-ckC" secondAttribute="bottom" constant="15" id="ya5-cI-dyS"/>
+                            <constraint firstItem="4uq-SM-YqY" firstAttribute="top" secondItem="3zQ-8c-Rvz" secondAttribute="top" id="zpS-Eu-zeL"/>
                         </constraints>
                     </view>
                 </subviews>
                 <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="3zQ-8c-Rvz" secondAttribute="trailing" constant="18" id="AGS-Mb-mqr"/>
-                    <constraint firstItem="3zQ-8c-Rvz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="18" id="FvC-dX-cEc"/>
+                    <constraint firstAttribute="trailing" secondItem="3zQ-8c-Rvz" secondAttribute="trailing" constant="10" id="AGS-Mb-mqr"/>
+                    <constraint firstItem="3zQ-8c-Rvz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="FvC-dX-cEc"/>
                     <constraint firstItem="3zQ-8c-Rvz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="H46-gY-Rmc"/>
-                    <constraint firstAttribute="bottom" secondItem="3zQ-8c-Rvz" secondAttribute="bottom" constant="5" id="JVu-HD-0PN"/>
+                    <constraint firstAttribute="bottom" secondItem="3zQ-8c-Rvz" secondAttribute="bottom" id="JVu-HD-0PN"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
@@ -87,7 +94,10 @@
                 <outlet property="followCountLab" destination="23c-4G-Q0k" id="haz-KI-vda"/>
                 <outlet property="gendanBtn" destination="3iZ-Oy-B2q" id="BQV-JG-rFs"/>
             </connections>
-            <point key="canvasLocation" x="45.5" y="99.5"/>
+            <point key="canvasLocation" x="52" y="93"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="border_gendan.png" width="361" height="177"/>
+    </resources>
 </document>

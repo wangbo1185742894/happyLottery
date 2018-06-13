@@ -12,8 +12,6 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.cornorView.layer.masksToBounds = YES;
-    self.cornorView.layer.cornerRadius = 5;
     self.headUrlImge.clipsToBounds = NO;
     self.headUrlImge.contentMode = UIViewContentModeScaleAspectFit;
     self.headUrlImge.layer.cornerRadius = self.headUrlImge.mj_h / 2;

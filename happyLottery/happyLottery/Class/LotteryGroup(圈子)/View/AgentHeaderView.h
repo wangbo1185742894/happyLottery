@@ -14,4 +14,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *headTitle;
 
+@property (weak, nonatomic) IBOutlet UILabel *labelBottom;
+
 @end

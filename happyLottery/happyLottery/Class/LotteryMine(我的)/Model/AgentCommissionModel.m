@@ -12,7 +12,7 @@
 
 -(NSString *)lotteryIcon{
     if ([self.lottery isEqualToString:@"DLT"]) {
-        return @"daletou.png";
+        return @"icon_daletoushouye.png";
     }
     if ([self.lottery isEqualToString:@"SFC"] || [self.lottery isEqualToString:@"RJC"]) {
         return @"shengfucai.png";

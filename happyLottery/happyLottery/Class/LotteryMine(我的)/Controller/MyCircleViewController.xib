@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -8,6 +8,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Helvetica-Condensed-Black-Se.ttf">
+            <string>Helvetica-Condensed-Black-Se</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyCircleViewController">
             <connections>
@@ -61,19 +66,19 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic_beijing.png" translatesAutoresizingMaskIntoConstraints="NO" id="Sar-eE-Rcg">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mycircle_backgroup.png" translatesAutoresizingMaskIntoConstraints="NO" id="Sar-eE-Rcg">
                                     <rect key="frame" x="25" y="67" width="325" height="150"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="150" id="qOH-Yw-crG"/>
                                     </constraints>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3z6-gV-Ltd">
-                                    <rect key="frame" x="35" y="249" width="145" height="35"/>
+                                    <rect key="frame" x="35" y="249" width="145" height="36"/>
                                     <color key="backgroundColor" red="0.070588235289999995" green="0.78039215689999997" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="35" id="XNq-5v-PJt"/>
+                                        <constraint firstAttribute="height" constant="36" id="XNq-5v-PJt"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <state key="normal" title="我的圈友"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -86,12 +91,12 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJ4-Aw-T3V">
-                                    <rect key="frame" x="195" y="249" width="145" height="35"/>
+                                    <rect key="frame" x="195" y="249" width="145" height="36"/>
                                     <color key="backgroundColor" red="0.99607843139999996" green="0.64705882349999999" blue="0.074509803920000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="35" id="jTU-8Z-F3L"/>
+                                        <constraint firstAttribute="height" constant="36" id="jTU-8Z-F3L"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <state key="normal" title="佣金比例"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -104,11 +109,11 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="佣金余额" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8L3-49-dfb">
-                                    <rect key="frame" x="157" y="94" width="61.5" height="17"/>
+                                    <rect key="frame" x="159" y="94" width="57.5" height="17"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="17" id="cxa-13-wT2"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -117,28 +122,29 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="27" id="CuE-1g-nzO"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
+                                    <fontDescription key="fontDescription" name="Helvetica-Condensed-Black-Se" family="Helvetica-Condensed-Black-Se" pointSize="25"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vZt-rH-ytS">
-                                    <rect key="frame" x="112" y="160" width="150" height="33"/>
+                                    <rect key="frame" x="112" y="163" width="150" height="33"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="33" id="gle-hQ-IqB"/>
                                         <constraint firstAttribute="width" constant="150" id="kEp-1B-xDW"/>
                                     </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <state key="normal" title="入账"/>
                                     <connections>
                                         <action selector="actionRuzhang:" destination="-1" eventType="touchUpInside" id="Mjt-sG-ihP"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n65-Jb-h3L">
-                                    <rect key="frame" x="254" y="75" width="71" height="24"/>
+                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n65-Jb-h3L">
+                                    <rect key="frame" x="249" y="74" width="76" height="24"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="24" id="552-gH-bC3"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <state key="normal" title="收入明细&gt;"/>
+                                    <state key="normal" title="收入明细 &gt;"/>
                                     <connections>
                                         <action selector="actionYongjinChaxun:" destination="-1" eventType="touchUpInside" id="0KL-NX-Xj4"/>
                                     </connections>
@@ -165,7 +171,7 @@
                                 <constraint firstItem="gJ4-Aw-T3V" firstAttribute="top" secondItem="Sar-eE-Rcg" secondAttribute="bottom" constant="32" id="mAp-IZ-Hoc"/>
                                 <constraint firstItem="gJ4-Aw-T3V" firstAttribute="width" secondItem="3z6-gV-Ltd" secondAttribute="width" id="npX-SE-D03"/>
                                 <constraint firstItem="3z6-gV-Ltd" firstAttribute="top" secondItem="Sar-eE-Rcg" secondAttribute="bottom" constant="32" id="sAD-UO-c84"/>
-                                <constraint firstItem="vZt-rH-ytS" firstAttribute="top" secondItem="PSW-7V-R5x" secondAttribute="bottom" constant="10" id="xsA-OX-BVB"/>
+                                <constraint firstItem="vZt-rH-ytS" firstAttribute="top" secondItem="PSW-7V-R5x" secondAttribute="bottom" constant="13" id="xsA-OX-BVB"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -192,6 +198,6 @@
         </view>
     </objects>
     <resources>
-        <image name="pic_beijing.png" width="355" height="166"/>
+        <image name="mycircle_backgroup.png" width="326" height="145"/>
     </resources>
 </document>

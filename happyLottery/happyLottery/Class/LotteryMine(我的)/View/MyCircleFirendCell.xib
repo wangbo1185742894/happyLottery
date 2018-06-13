@@ -76,6 +76,8 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="bottomLabel" destination="e0Y-0j-7Tr" id="5AZ-UX-6vo"/>
+                <outlet property="constLabel" destination="At9-3j-O3X" id="5ek-O8-mf5"/>
                 <outlet property="labName" destination="G8P-O6-2zE" id="otL-T5-1Se"/>
                 <outlet property="labTime" destination="Ak1-4D-ffs" id="Oop-UH-jKy"/>
                 <outlet property="lmgIcon" destination="GFM-7O-ySy" id="yZW-sq-zat"/>

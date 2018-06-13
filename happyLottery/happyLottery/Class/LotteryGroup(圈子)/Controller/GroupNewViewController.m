@@ -203,11 +203,13 @@
     if (section == 1) {
         [headerView.headImage setImage:[UIImage imageNamed:@"pic_quanneigendan"] forState:UIControlStateNormal];
         headerView.headTitle.text = nil;
+        headerView.labelBottom.hidden = YES;
         return headerView;
     }
     if (section == 2) {
         [headerView.headImage setImage:[UIImage imageNamed:@"pic_quanneidongtai"] forState:UIControlStateNormal];
         headerView.headTitle.text = @"实时更新圈内好友动态";
+        headerView.labelBottom.hidden = NO;
         return headerView;
     }
     return nil;
@@ -215,13 +217,16 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        return 278;
+        return 299;
     }
     if (indexPath.section == 1) {
         return 165;
     }
     if (self.dynamicArray.count == 0&&indexPath.section == 2) {
          return 200;
+    }
+    if (indexPath.section == 2 && indexPath.row == 0) {
+        return 95;
     }
     return 85;
 }

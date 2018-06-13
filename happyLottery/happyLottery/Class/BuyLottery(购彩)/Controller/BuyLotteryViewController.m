@@ -105,8 +105,6 @@ static NSString *ID = @"LotteryAreaViewCell";
     __weak IBOutlet UIButton *gyjButton;
     NSMutableArray * _lotteryArr;
     BOOL showGJbtn;
-    
-
 }
 
 @property(nonatomic,strong)NSMutableArray *sellLottery;

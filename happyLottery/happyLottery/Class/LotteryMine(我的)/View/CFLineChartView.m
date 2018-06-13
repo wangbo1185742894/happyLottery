@@ -99,7 +99,7 @@ static CGFloat allW;    // 整个图表宽度
     
     CAShapeLayer *layer = [[CAShapeLayer alloc] init];
     layer.path = path.CGPath;
-    layer.strokeColor = RGBCOLOR(180, 180, 180).CGColor;
+    layer.strokeColor = RGBCOLOR(238, 238, 238).CGColor;
     layer.fillColor = [UIColor clearColor].CGColor;
     layer.lineWidth = 1.0;
     [self.bgView.layer addSublayer:layer];
