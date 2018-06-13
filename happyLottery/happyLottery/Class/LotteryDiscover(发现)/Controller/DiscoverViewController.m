@@ -67,7 +67,7 @@
         webDisTop.constant = 44;
     }else if ([Utility isIOS11After]) {
         webDisTop.constant = 20;
-        webDisBottom.constant = 0;
+        webDisBottom.constant =44;
      }else{
         webDisTop.constant = 20;
         webDisBottom.constant = 44;
@@ -160,7 +160,7 @@
         self.tabBarController.tabBar.hidden = NO;
         
         if ([Utility isIOS11After]) {
-            webDisBottom.constant = 0;
+            webDisBottom.constant = 44;
 
         }else{
             
@@ -169,7 +169,7 @@
     }else{
         self.tabBarController.tabBar.hidden = YES;
         if ([Utility isIOS11After]) {
-            webDisBottom.constant = -50;
+            webDisBottom.constant = 0;
         }else{
             webDisBottom.constant = 0;
         }
