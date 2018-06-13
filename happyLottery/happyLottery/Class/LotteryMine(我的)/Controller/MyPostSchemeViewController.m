@@ -161,7 +161,7 @@
     FASSchemeDetailViewController *detailCV = [[FASSchemeDetailViewController alloc]init];
     detailCV.schemeNo = model.schemeNO;
     detailCV.schemeType = [self getSchemeType];
-
+    detailCV.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detailCV animated:YES];
 }
 
