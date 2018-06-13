@@ -75,7 +75,7 @@
     self.tabyongjinList.delegate  = self;
     self.tabyongjinList.dataSource = self;
     [self .tabyongjinList registerNib:[UINib nibWithNibName:KYongjinCell bundle:nil] forCellReuseIdentifier:KYongjinCell];
-    self.tabyongjinList.rowHeight = 60;
+    self.tabyongjinList.rowHeight = 70;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{

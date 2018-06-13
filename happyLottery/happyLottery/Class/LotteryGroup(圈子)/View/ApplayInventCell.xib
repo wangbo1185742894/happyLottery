@@ -47,11 +47,11 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tishi_man.png" translatesAutoresizingMaskIntoConstraints="NO" id="ahh-ca-WZr">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tishi_man.png" translatesAutoresizingMaskIntoConstraints="NO" id="ahh-ca-WZr">
                         <rect key="frame" x="0.0" y="54.5" width="375" height="228"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="专业的彩票代理平台" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TAW-Nx-vSB">
-                        <rect key="frame" x="123" y="14" width="126" height="16"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="专 业 的 彩 票 代 理 平 台" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TAW-Nx-vSB">
+                        <rect key="frame" x="123" y="14" width="157.5" height="16"/>
                         <fontDescription key="fontDescription" name="FZY1JW--GB1-0" family="FZXiYuan-M01S" pointSize="14"/>
                         <color key="textColor" red="0.55294117649999996" green="0.55294117649999996" blue="0.55294117649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>

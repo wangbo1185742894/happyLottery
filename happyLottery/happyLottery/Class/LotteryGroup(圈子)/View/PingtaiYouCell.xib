@@ -18,15 +18,16 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pingtaiyoushi.png" translatesAutoresizingMaskIntoConstraints="NO" id="zqv-Dt-dlv">
-                        <rect key="frame" x="97" y="14" width="126" height="14"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pingtaiyoushi.png" translatesAutoresizingMaskIntoConstraints="NO" id="zqv-Dt-dlv">
+                        <rect key="frame" x="47" y="5" width="226" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="226" id="n1h-cP-MZz"/>
+                        </constraints>
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="zqv-Dt-dlv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="97" id="QND-iS-UJD"/>
-                    <constraint firstAttribute="bottom" secondItem="zqv-Dt-dlv" secondAttribute="bottom" constant="15.5" id="RCk-XX-Qas"/>
-                    <constraint firstAttribute="trailing" secondItem="zqv-Dt-dlv" secondAttribute="trailing" constant="97" id="oyA-Sx-T26"/>
-                    <constraint firstItem="zqv-Dt-dlv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="xEW-oI-UHD"/>
+                    <constraint firstItem="zqv-Dt-dlv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="EWI-Gq-CND"/>
+                    <constraint firstItem="zqv-Dt-dlv" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="wjT-B4-Hnv"/>
                 </constraints>
             </tableViewCellContentView>
         </tableViewCell>

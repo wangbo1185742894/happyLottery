@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -23,7 +23,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3r0-VI-fzL">
-                    <rect key="frame" x="0.0" y="134" width="375" height="533"/>
+                    <rect key="frame" x="0.0" y="144" width="375" height="523"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4s4-E9-fa7">
@@ -49,31 +49,31 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yongjin_money.png" translatesAutoresizingMaskIntoConstraints="NO" id="M7Y-y7-gWo">
-                            <rect key="frame" x="267" y="8" width="100" height="62"/>
+                            <rect key="frame" x="259" y="9" width="109" height="70"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="100" id="QOT-V2-wwe"/>
+                                <constraint firstAttribute="width" constant="109" id="QOT-V2-wwe"/>
                             </constraints>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="0.81568627450980391" blue="0.63921568627450975" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="M7Y-y7-gWo" secondAttribute="bottom" id="2Iw-BI-bf7"/>
+                        <constraint firstAttribute="bottom" secondItem="M7Y-y7-gWo" secondAttribute="bottom" constant="-9" id="2Iw-BI-bf7"/>
                         <constraint firstItem="P20-fa-MAD" firstAttribute="top" secondItem="Z4i-PS-0rb" secondAttribute="bottom" constant="5" id="9dO-Kt-ocu"/>
-                        <constraint firstAttribute="trailing" secondItem="M7Y-y7-gWo" secondAttribute="trailing" constant="8" id="Bkl-Kg-4Bs"/>
+                        <constraint firstAttribute="trailing" secondItem="M7Y-y7-gWo" secondAttribute="trailing" constant="7" id="Bkl-Kg-4Bs"/>
                         <constraint firstItem="Z4i-PS-0rb" firstAttribute="top" secondItem="4s4-E9-fa7" secondAttribute="top" constant="8" id="Eaz-Kg-ilQ"/>
                         <constraint firstAttribute="bottom" secondItem="P20-fa-MAD" secondAttribute="bottom" constant="5" id="Inz-H0-SJ6"/>
                         <constraint firstAttribute="height" constant="70" id="Y4l-6g-L78"/>
                         <constraint firstItem="Z4i-PS-0rb" firstAttribute="leading" secondItem="4s4-E9-fa7" secondAttribute="leading" constant="49" id="lJF-br-It3"/>
-                        <constraint firstItem="M7Y-y7-gWo" firstAttribute="top" secondItem="4s4-E9-fa7" secondAttribute="top" constant="8" id="wot-3n-jvP"/>
+                        <constraint firstItem="M7Y-y7-gWo" firstAttribute="top" secondItem="4s4-E9-fa7" secondAttribute="top" constant="9" id="wot-3n-jvP"/>
                         <constraint firstItem="P20-fa-MAD" firstAttribute="leading" secondItem="Z4i-PS-0rb" secondAttribute="leading" id="zFv-UR-c1k"/>
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="3r0-VI-fzL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="4tm-PW-COV"/>
+                <constraint firstItem="3r0-VI-fzL" firstAttribute="top" secondItem="4s4-E9-fa7" secondAttribute="bottom" constant="10" id="GDL-p8-tnJ"/>
                 <constraint firstItem="4s4-E9-fa7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="KYF-IG-LJj"/>
-                <constraint firstItem="3r0-VI-fzL" firstAttribute="top" secondItem="4s4-E9-fa7" secondAttribute="bottom" id="cjt-eZ-Q1q"/>
                 <constraint firstAttribute="bottom" secondItem="3r0-VI-fzL" secondAttribute="bottom" id="efS-v1-L4T"/>
                 <constraint firstItem="4s4-E9-fa7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="fmQ-Zs-Tub"/>
                 <constraint firstAttribute="trailing" secondItem="3r0-VI-fzL" secondAttribute="trailing" id="hjX-sS-eRu"/>

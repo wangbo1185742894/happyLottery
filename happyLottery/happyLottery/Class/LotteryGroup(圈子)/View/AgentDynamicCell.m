@@ -12,6 +12,8 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.dynamicLab.layer.masksToBounds = YES;
+    self.dynamicLab.layer.cornerRadius = 4;
     // Initialization code
 }
 
@@ -84,7 +86,7 @@
     NSAttributedString *attStr = [self getAttStrByHtmlStr:htmlStr];
     NSMutableAttributedString *mubStr = [[NSMutableAttributedString alloc]initWithAttributedString:attStr];
     [self getRangeStr:mubStr findText:@"\n"];
-    self.dynamicLab.attributedText = mubStr;
+    self.labText.attributedText = mubStr;
     self.createTimeLab.text = [self setMatchData:model.createTime];
 }
 

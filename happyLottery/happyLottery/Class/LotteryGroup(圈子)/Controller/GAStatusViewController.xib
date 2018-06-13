@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -65,12 +65,8 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="如有疑问可拨打电话:400-600-5558" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xci-gN-CaP">
-                            <rect key="frame" x="48" y="587" width="279" height="21"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="21" id="7t8-E1-jEH"/>
-                                <constraint firstAttribute="width" constant="279" id="c9p-dt-60O"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="FZY1JW--GB1-0" family="FZXiYuan-M01S" pointSize="17"/>
+                            <rect key="frame" x="74.5" y="588" width="226" height="16"/>
+                            <fontDescription key="fontDescription" name="FZY1JW--GB1-0" family="FZXiYuan-M01S" pointSize="14"/>
                             <color key="textColor" red="0.066666666669999999" green="0.44443441722543942" blue="0.5725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -104,7 +100,7 @@
                             </constraints>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dengdai.png" translatesAutoresizingMaskIntoConstraints="NO" id="A4n-CA-6pK">
-                            <rect key="frame" x="277" y="218" width="47" height="1"/>
+                            <rect key="frame" x="277" y="218" width="55" height="1"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="WWc-s9-7vj"/>
                             </constraints>
@@ -122,7 +118,6 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="xci-gN-CaP" secondAttribute="bottom" constant="59" id="1OP-bn-QrH"/>
                         <constraint firstItem="QDB-XI-pKJ" firstAttribute="leading" secondItem="Oad-1x-JkJ" secondAttribute="trailing" constant="20" id="1iN-BK-FfH"/>
                         <constraint firstItem="QDB-XI-pKJ" firstAttribute="leading" secondItem="3YM-F3-UFE" secondAttribute="trailing" constant="20" id="3Zw-CL-p0L"/>
                         <constraint firstItem="dxt-mj-b4K" firstAttribute="top" secondItem="MKS-dS-YGJ" secondAttribute="bottom" constant="1" id="5M3-O6-9qO"/>
@@ -130,10 +125,11 @@
                         <constraint firstItem="Oad-1x-JkJ" firstAttribute="centerY" secondItem="QDB-XI-pKJ" secondAttribute="centerY" id="9SQ-Y1-exp"/>
                         <constraint firstItem="ylV-6I-aoq" firstAttribute="centerY" secondItem="QDB-XI-pKJ" secondAttribute="centerY" id="D9A-fK-N15"/>
                         <constraint firstItem="duf-k4-KsX" firstAttribute="leading" secondItem="k7z-00-WSY" secondAttribute="leading" id="EvM-LD-bch"/>
-                        <constraint firstItem="A4n-CA-6pK" firstAttribute="centerX" secondItem="ylV-6I-aoq" secondAttribute="centerX" id="FZ8-Gj-nqz"/>
+                        <constraint firstItem="xci-gN-CaP" firstAttribute="centerX" secondItem="k7z-00-WSY" secondAttribute="centerX" id="ExT-YA-uWY"/>
+                        <constraint firstItem="A4n-CA-6pK" firstAttribute="centerX" secondItem="ylV-6I-aoq" secondAttribute="centerX" constant="4.5" id="FZ8-Gj-nqz"/>
                         <constraint firstItem="dxt-mj-b4K" firstAttribute="centerX" secondItem="k7z-00-WSY" secondAttribute="centerX" id="Nup-x9-bKD"/>
-                        <constraint firstItem="xci-gN-CaP" firstAttribute="leading" secondItem="k7z-00-WSY" secondAttribute="leading" constant="48" id="Oso-ff-7HN"/>
                         <constraint firstItem="Oad-1x-JkJ" firstAttribute="centerY" secondItem="A4n-CA-6pK" secondAttribute="centerY" id="Pgr-Jx-Ulh"/>
+                        <constraint firstAttribute="bottom" secondItem="xci-gN-CaP" secondAttribute="bottom" constant="63" id="SN2-Ve-oEc"/>
                         <constraint firstItem="QDB-XI-pKJ" firstAttribute="top" secondItem="k7z-00-WSY" secondAttribute="top" constant="170" id="XWC-WJ-B6B"/>
                         <constraint firstItem="duf-k4-KsX" firstAttribute="top" secondItem="k7z-00-WSY" secondAttribute="top" id="bim-Rl-l2t"/>
                         <constraint firstItem="xB7-ys-Xlf" firstAttribute="centerX" secondItem="k7z-00-WSY" secondAttribute="centerX" id="bz2-RA-xjF"/>
@@ -146,7 +142,6 @@
                         <constraint firstItem="xB7-ys-Xlf" firstAttribute="top" secondItem="QDB-XI-pKJ" secondAttribute="bottom" constant="36" id="o0A-q6-1cu"/>
                         <constraint firstItem="MKS-dS-YGJ" firstAttribute="centerX" secondItem="k7z-00-WSY" secondAttribute="centerX" id="pUL-SQ-DTa"/>
                         <constraint firstItem="QDB-XI-pKJ" firstAttribute="centerX" secondItem="k7z-00-WSY" secondAttribute="centerX" id="se2-ml-2BI"/>
-                        <constraint firstItem="xci-gN-CaP" firstAttribute="centerX" secondItem="k7z-00-WSY" secondAttribute="centerX" id="sf4-W7-MYW"/>
                         <constraint firstItem="MKS-dS-YGJ" firstAttribute="top" secondItem="QDB-XI-pKJ" secondAttribute="bottom" constant="34" id="sfM-In-8nc"/>
                         <constraint firstItem="QDB-XI-pKJ" firstAttribute="centerY" secondItem="3YM-F3-UFE" secondAttribute="centerY" id="xgD-1d-1I9"/>
                     </constraints>

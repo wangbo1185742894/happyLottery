@@ -65,6 +65,7 @@
     self.tabFirendList .delegate = self;
     self.tabFirendList.dataSource = self;
     [self.tabFirendList registerNib:[UINib nibWithNibName:KMyCircleFirendCell bundle:nil] forCellReuseIdentifier:KMyCircleFirendCell];
+    self.tabFirendList.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -82,6 +83,11 @@
         [cell loadDataLottery:self.personArray[indexPath.section][indexPath.row] andRate:self.agentModel.sportsCommission];
     }else{
         [cell loadDataLottery:self.personArray[indexPath.section][indexPath.row] andRate:self.agentModel.numberCommission];
+    }
+    if (indexPath.row == self.personArray[indexPath.section].count - 1) {
+        cell.bottomLabel.hidden = YES;
+    } else {
+        cell.bottomLabel.hidden = NO;
     }
     return cell;
 }
@@ -114,6 +120,9 @@
     }else{
         titleLab.text = @"数字彩";
     }
+    UILabel *lineLab = [[UILabel alloc]initWithFrame:CGRectMake(0, 34, KscreenWidth, 1)];
+    lineLab.backgroundColor = RGBCOLOR(234, 234, 234);
+    [header addSubview:lineLab];
     [header addSubview:titleLab];
     return header;
 }

@@ -12,8 +12,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.lmgIcon.layer.cornerRadius = self.lmgIcon.mj_h/ 2;
-    self.lmgIcon.layer.masksToBounds = YES;
+   
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -29,7 +28,13 @@
     self.labTime.text = [NSString stringWithFormat:@"%.1f%%",[rate doubleValue] * 100];
     self.labTime.font = [UIFont systemFontOfSize:15];
     self.labTime.textColor = [UIColor redColor];
-    [self.lmgIcon setImage:[UIImage imageNamed:itemDic[@"lotteryImageName"]]];
+    if ([itemDic[@"lottery"] isEqualToString:@"GYJ"]) {
+        [self.lmgIcon setImage:[UIImage imageNamed:[NSString stringWithFormat:@"icon_%@",itemDic[@"lotteryImageName"]]]];
+    } else {
+        [self.lmgIcon setImage:[UIImage imageNamed:itemDic[@"lotteryImageName"]]];
+    }
+    
+    self.constLabel.constant = 61;
 }
 
 -(void)loadDataInQ:(AgentMemberModel *)model{
@@ -51,6 +56,10 @@
     }else{
         self.labName.text = model.nickname;
     }
+    self.constLabel.constant = 0;
+    self.lmgIcon.layer.cornerRadius = self.lmgIcon.mj_h/ 2;
+    self.lmgIcon.layer.masksToBounds = YES;
+    self.bottomLabel.hidden = NO;
 }
 
 -(void)loadData:(AgentMemberModel *)model{
@@ -68,7 +77,10 @@
     }else{
         self.labName.text = model.nickname;
     }
-    
+    self.constLabel.constant = 0;
+    self.lmgIcon.layer.cornerRadius = self.lmgIcon.mj_h/ 2;
+    self.lmgIcon.layer.masksToBounds = YES;
+    self.bottomLabel.hidden = NO;
 }
 
 @end
