@@ -91,6 +91,10 @@
         }
 
     }
+    if ([self.curUser.whitelist boolValue] == NO) {
+        NSArray *itemArray = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Mine" ofType: @"plist"]];
+        listArray = @[itemArray[2]];
+    }
 
     [self.tableview reloadData];
     if ([self.curUser.whitelist boolValue] == NO) {

@@ -140,7 +140,7 @@
     }
     eightList = personList;
 //    NSIndexPath *indexpath = [NSIndexPath indexPathForRow:0 inSection:2];
-    
+   
     [tabFollewView reloadData];
 //    [tabFollewView reloadRowsAtIndexPaths:@[indexpath] withRowAnimation:UITableViewRowAnimationFade];
 }
@@ -178,7 +178,12 @@
         if(schemeList.count == 0){
             return 1;
         }
-        return schemeList.count;
+        if ([self.curUser.whitelist boolValue] == NO) {
+             return 0;
+        }else{
+             return schemeList.count;
+        }
+       
     }else{
         return 0;
     }
@@ -398,6 +403,9 @@
 }
 
 -(void)recommendViewCellClick:(NSIndexPath *)indexpath andTabIndex:(NSInteger)index{
+    if (self.curUser.whitelist == NO) {
+        return;
+    }
     if (index == 2) {
         NSDictionary *personInfo = eightList[indexpath.row];
         RecomPerModel *model = [[RecomPerModel alloc]initWith:personInfo];

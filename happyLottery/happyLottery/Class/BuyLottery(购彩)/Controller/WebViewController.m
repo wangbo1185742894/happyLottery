@@ -33,6 +33,11 @@
                 self.automaticallyAdjustsScrollViewInsets = NO; // tableView 莫名其妙  contentOffset.y 成-64了  MMP
             }
         }
+        if (_htmlName == nil) {
+            [self.navigationController popToRootViewControllerAnimated:YES];
+            return;
+        }
+   
         NSURL *url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:_htmlName ofType:self.type]];
         [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
     }else{
