@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -150,18 +149,6 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E6j-k7-LS0">
-                                    <rect key="frame" x="0.0" y="0.0" width="125" height="66"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                    <inset key="contentEdgeInsets" minX="2" minY="20" maxX="0.0" maxY="0.0"/>
-                                    <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    <state key="normal" title="余额(元)" image="balance.png">
-                                        <color key="titleColor" red="0.53725490196078429" green="0.53725490196078429" blue="0.53725490196078429" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="blanceBtnClick:" destination="-1" eventType="touchUpInside" id="GTL-9J-tKq"/>
-                                    </connections>
-                                </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hRu-RF-G1I">
                                     <rect key="frame" x="0.0" y="10" width="125" height="21"/>
                                     <constraints>
@@ -185,6 +172,18 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E6j-k7-LS0">
+                                    <rect key="frame" x="0.0" y="0.0" width="125" height="66"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <inset key="contentEdgeInsets" minX="2" minY="20" maxX="0.0" maxY="0.0"/>
+                                    <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" title="余额(元)" image="balance.png">
+                                        <color key="titleColor" red="0.53725490196078429" green="0.53725490196078429" blue="0.53725490196078429" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="blanceBtnClick:" destination="-1" eventType="touchUpInside" id="GTL-9J-tKq"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -197,13 +196,11 @@
                                 <constraint firstAttribute="trailing" secondItem="UoB-tJ-jh8" secondAttribute="trailing" id="ECW-ZE-3h0"/>
                                 <constraint firstItem="2R9-DO-gvq" firstAttribute="top" secondItem="ut7-e6-ow1" secondAttribute="top" id="FGb-Ik-mDN"/>
                                 <constraint firstItem="sO0-Mz-jY7" firstAttribute="leading" secondItem="E6j-k7-LS0" secondAttribute="trailing" id="JW0-fV-ZWU"/>
-                                <constraint firstItem="2R9-DO-gvq" firstAttribute="width" secondItem="E6j-k7-LS0" secondAttribute="width" id="PWG-z2-Mou"/>
                                 <constraint firstItem="UoB-tJ-jh8" firstAttribute="height" secondItem="hRu-RF-G1I" secondAttribute="height" id="Pgx-jA-OJ8"/>
+                                <constraint firstItem="E6j-k7-LS0" firstAttribute="top" secondItem="ut7-e6-ow1" secondAttribute="top" id="Qoz-H2-K2g"/>
                                 <constraint firstItem="2Kw-f5-ZTp" firstAttribute="top" secondItem="hRu-RF-G1I" secondAttribute="top" id="S3H-HA-o3u"/>
-                                <constraint firstAttribute="bottom" secondItem="E6j-k7-LS0" secondAttribute="bottom" id="ScX-M1-r2z"/>
-                                <constraint firstItem="2Kw-f5-ZTp" firstAttribute="leading" secondItem="E6j-k7-LS0" secondAttribute="trailing" id="SqE-nb-t8u"/>
-                                <constraint firstItem="E6j-k7-LS0" firstAttribute="baseline" secondItem="sO0-Mz-jY7" secondAttribute="firstBaseline" id="UOh-Gf-csn"/>
                                 <constraint firstItem="g8r-1F-mg3" firstAttribute="top" secondItem="ut7-e6-ow1" secondAttribute="top" constant="8" id="YJA-Wy-RpO"/>
+                                <constraint firstAttribute="bottom" secondItem="E6j-k7-LS0" secondAttribute="bottom" id="ZcD-Ok-6gT"/>
                                 <constraint firstItem="2R9-DO-gvq" firstAttribute="leading" secondItem="sO0-Mz-jY7" secondAttribute="trailing" id="acN-Oo-TGo"/>
                                 <constraint firstItem="iwZ-xu-gbf" firstAttribute="top" secondItem="ut7-e6-ow1" secondAttribute="top" constant="8" id="dpb-jg-9Zv"/>
                                 <constraint firstItem="2R9-DO-gvq" firstAttribute="leading" secondItem="2Kw-f5-ZTp" secondAttribute="trailing" id="fJ9-MU-DAj"/>
@@ -217,7 +214,6 @@
                                 <constraint firstItem="iwZ-xu-gbf" firstAttribute="leading" secondItem="sO0-Mz-jY7" secondAttribute="trailing" id="qcL-Dx-6ek"/>
                                 <constraint firstItem="sO0-Mz-jY7" firstAttribute="top" secondItem="ut7-e6-ow1" secondAttribute="top" id="tbZ-ei-x0p"/>
                                 <constraint firstItem="sO0-Mz-jY7" firstAttribute="leading" secondItem="g8r-1F-mg3" secondAttribute="trailing" id="vfg-2Y-rKD"/>
-                                <constraint firstAttribute="bottom" secondItem="E6j-k7-LS0" secondAttribute="bottom" id="xUQ-2u-jDQ"/>
                                 <constraint firstItem="UoB-tJ-jh8" firstAttribute="top" secondItem="hRu-RF-G1I" secondAttribute="top" id="yo1-w7-lzM"/>
                             </constraints>
                         </view>

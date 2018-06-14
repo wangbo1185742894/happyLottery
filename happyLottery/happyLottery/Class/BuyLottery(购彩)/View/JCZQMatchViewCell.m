@@ -60,9 +60,11 @@
     self.widthLabRangqiu.constant = 28;
     [self creatBtnWithFrame:CGRectMake(0.5, 0, 24, self.playItemContentView.mj_h / 2 - 5 ) normal:@{@"nTitle":@"0",@"nImage":@"yuanjiaowubiankuangnomal",@"sImage":@""} andTag:0 andSelect:@"0"];
     UIButton *handicap = [self creatBtnWithFrame:CGRectMake(0,self.playItemContentView.mj_h / 2 - 5, 25, self.playItemContentView.mj_h / 2 -5) normal:@{@"nTitle":curModel.handicap == nil?@"0":curModel.handicap,@"nImage":@"",@"sImage":@""} andTag:0 andSelect:@"0"];
+    handicap.selected  = YES;
     [handicap setTitleColor:[UIColor whiteColor] forState:0];
     if ([curModel.handicap integerValue] >0) {
         [handicap setBackgroundImage:[UIImage imageNamed:@"rangqiuzheng"] forState:0];
+        
     }else{
         [handicap setBackgroundImage:[UIImage imageNamed:@"rangqiufu"] forState:0];
     }
@@ -483,13 +485,11 @@
     float curY = 10;
     float width =KscreenWidth - 73;
     float height = 37;
-    
     if ([curModel selectItemNum] == 0) {
         [self creatBtnWithFrame:CGRectMake(curX, curY, width, height) normal:@{@"nTitle":@"点击展开全部",@"nImage":@"jczqshowallback",@"sImage":@"wukuangwuyuanjiaoselect"} andTag:3000 andSelect:@"0"];
     }else{
         [self creatBtnWithFrame:CGRectMake(curX, curY, width, height) normal:@{@"nTitle":[NSString stringWithFormat:@"已选%ld项",[curModel selectItemNum]],@"nImage":@"jczqshowallback",@"sImage":@"wukuangwuyuanjiaoselect"} andTag:3000 andSelect:@"1"];
     }
-    
 //    [self creatBtnWithFrame:CGRectMake(curX, curY, width, height) normal:@{@"nTitle":@"点击展开全部",@"nImage":@"jczqshowallback",@"sImage":@"wukuangwuyuanjiaoselect"} andTag:3000 andSelect:@"0"] ;
     
 }
