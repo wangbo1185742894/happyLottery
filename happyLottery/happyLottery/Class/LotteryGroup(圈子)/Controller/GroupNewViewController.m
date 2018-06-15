@@ -191,6 +191,9 @@
     if (section == 0) {
         return 0.1;
     }
+    if (section == 1) {
+        return 35;
+    }
     return 44;
 }
 
@@ -199,14 +202,16 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    AgentHeaderView *headerView = [[AgentHeaderView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, 44)];
+   
     if (section == 1) {
+         AgentHeaderView *headerView = [[AgentHeaderView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, 35)];
         [headerView.headImage setImage:[UIImage imageNamed:@"pic_quanneigendan"] forState:UIControlStateNormal];
         headerView.headTitle.text = nil;
         headerView.labelBottom.hidden = YES;
         return headerView;
     }
     if (section == 2) {
+         AgentHeaderView *headerView = [[AgentHeaderView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, 44)];
         [headerView.headImage setImage:[UIImage imageNamed:@"pic_quanneidongtai"] forState:UIControlStateNormal];
         headerView.headTitle.text = @"实时更新圈内好友动态";
         headerView.labelBottom.hidden = NO;
@@ -217,10 +222,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        return 299;
+        return 292;
     }
     if (indexPath.section == 1) {
-        return 165;
+        return 178;
     }
     if (self.dynamicArray.count == 0&&indexPath.section == 2) {
          return 200;
