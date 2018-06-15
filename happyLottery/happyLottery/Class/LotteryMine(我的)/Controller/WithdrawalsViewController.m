@@ -63,7 +63,7 @@
 -(void)withdrawSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     [self hideLoadingView];
     if ([msg isEqualToString:@"执行成功"]) {
-        [self showPromptText: @"会员提现成功" hideAfterDelay: 1.7];
+        [self showPromptText: @"申请提交成功" hideAfterDelay: 1.7];
           [self performSelector:@selector(delayMethod) withObject:nil afterDelay:1.0];
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
