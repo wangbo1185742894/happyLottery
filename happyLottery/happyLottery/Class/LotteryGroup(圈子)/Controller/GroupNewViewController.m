@@ -77,8 +77,7 @@
     }
     self.agentMan.delegate = self;
     self.dynamicArray = [NSMutableArray arrayWithCapacity:0];
-    
-    
+    timer = [NSTimer scheduledTimerWithTimeInterval:20 target:self selector:@selector(reloadAgentDynamic) userInfo:nil repeats:YES];
 //    [self.agentMan listAgentDynamic:dic];
    
     
@@ -86,8 +85,10 @@
 }
 
 - (void)reloadAgentDynamic{
-    NSDictionary *dic = @{@"agentId":model._id};
-    [self.agentMan getAgentFollowCount:dic];
+    if (model!= nil) {
+        NSDictionary *dic = @{@"agentId":model._id};
+        [self.agentMan getAgentFollowCount:dic];
+    }
 }
 
 - (void)stopTimer {
@@ -119,7 +120,6 @@
     }
     model = [[AgentInfoModel alloc]initWith:param];
     [self reloadAgentDynamic];
-    timer = [NSTimer scheduledTimerWithTimeInterval:20 target:self selector:@selector(reloadAgentDynamic) userInfo:nil repeats:YES];
     //当前用户的卡号等于圈主卡号
     if ([self.curUser.cardCode isEqualToString:model.cardCode]) {
         self.curUser.memberType = @"CIRCLE_MASTER";
