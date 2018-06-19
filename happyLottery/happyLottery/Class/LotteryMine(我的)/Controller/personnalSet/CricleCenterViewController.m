@@ -443,7 +443,7 @@
     if ([msg isEqualToString:@"执行成功"]) {
         // NSLog(@"%@",bankInfo);
         [self showPromptText: @"修改圈子头像成功" hideAfterDelay: 1.7];
-        self.myImage.image =[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:headUrl]]];
+        [self.myImage sd_setImageWithURL:[NSURL URLWithString:headUrl]];
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
     }

@@ -92,7 +92,7 @@
         self.myImage.image = [UIImage imageNamed:@"usermine.png"];
     }else{
         [self.myImage sd_setImageWithURL:[NSURL URLWithString:self.curUser.headUrl]];
-//        self.myImage.image =[UIImage imageWithData:[NSData dataWithContentsOfURL:]];
+
     }
 }
 
@@ -457,7 +457,7 @@
     if ([msg isEqualToString:@"执行成功"]) {
         // NSLog(@"%@",bankInfo);
         [self showPromptText: @"修改会员头像成功" hideAfterDelay: 1.7];
-        self.myImage.image =[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:headUrl]]];
+        [self.myImage sd_setImageWithURL:[NSURL URLWithString:headUrl]];
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
     }

@@ -42,13 +42,18 @@
     NSTimer *timer;
     BOOL placeImageHidden;
 }
-
+-(void)loadNewData{
+    NSDictionary *dic = @{@"cardCode":self.curUser.cardCode};
+    [self.agentMan getAgentInfo:dic];
+}
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self loadNewData];
     self.navigationController.navigationBar.hidden = YES;
     [self openTimer];
     placeImageHidden = YES;
     [self.groupTableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
+   
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -60,6 +65,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setTableView];
+
     if ([self isIphoneX]) {
         self.topDIs.constant = -44;
     }else{
@@ -72,10 +78,9 @@
     self.agentMan.delegate = self;
     self.dynamicArray = [NSMutableArray arrayWithCapacity:0];
     
-    NSDictionary *dic = @{@"cardCode":self.curUser.cardCode};
+    
 //    [self.agentMan listAgentDynamic:dic];
-    [self.agentMan getAgentInfo:dic];
-    [self showLoadingText:@"正在加载"];
+   
     
     // Do any additional setup after loading the view from its nib.
 }
@@ -102,10 +107,12 @@
      [self.groupTableView registerNib:[UINib nibWithNibName:KZhanWeiTuScheme bundle:nil] forCellReuseIdentifier:KZhanWeiTuScheme];
     
     self.groupTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [UITableView refreshHelperWithScrollView:self.groupTableView target:self loadNewData:@selector(loadNewData) loadMoreData:nil isBeginRefresh:NO];
     
 }
 
 -(void )getAgentInfodelegate:(NSDictionary *)param isSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    [self.groupTableView tableViewEndRefreshCurPageCount:0];
     if (!success) {
         [self showPromptViewWithText:msg hideAfter:1];
         return;

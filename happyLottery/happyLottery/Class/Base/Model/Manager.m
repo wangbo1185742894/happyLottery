@@ -79,11 +79,13 @@
                                               success: (void (^)(AFHTTPRequestOperation *operation, id responseObject))successBlock
                                               failure: (void (^)(AFHTTPRequestOperation *operation, NSError *error))failureBlock
 {
-    if (![self socketReachabilityTest ]) {
-        [self .netDelegate serverIsNotConnect];
-        return nil;
-    }
-    [self afnReachabilityTest];
+    NSLog(@"开始——————————————————————%@",[NSDate date]);
+//    if (![self socketReachabilityTest ]) {
+//        [self .netDelegate serverIsNotConnect];
+//        return nil;
+//    }
+//    [self afnReachabilityTest];
+    NSLog(@"结束——————————————————————%@",[NSDate date]);
     NSString * soapMessage = [request getSOAPMessage];
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL: [NSURL URLWithString:[NSString stringWithFormat:WSServerURL,subApi]]];
     NSString *msgLength = [NSString stringWithFormat:@"%lu", (unsigned long)[soapMessage length]];
@@ -97,8 +99,12 @@
     [operation setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
 
     }];
-    [operation setCompletionBlockWithSuccess: successBlock failure: failureBlock];
-    [operation start];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+         [operation setCompletionBlockWithSuccess: successBlock failure: failureBlock];
+         [operation start];
+    });
+   
+   
     return operation;
 }
 

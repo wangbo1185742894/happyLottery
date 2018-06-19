@@ -378,7 +378,7 @@
     baseVC =[[class alloc] init];
     
 
-    
+    keyStr = @"A425";
     if([keyStr isEqualToString:@"A401"]){
 
         self.tabBarController.selectedIndex = 3;
@@ -509,6 +509,10 @@
         [self .navigationController popToRootViewControllerAnimated:YES];
         [[NSNotificationCenter defaultCenter]postNotificationName:@"NSNotificationJumpToPlayVC" object:@"SSQ"];
         return;
+    }else if([keyStr isEqualToString:@"A425"]){
+        AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        [app setGroupView];
+       [self.navigationController popToRootViewControllerAnimated:YES];
     }
     else{
          baseVC.hidesBottomBarWhenPushed = YES;

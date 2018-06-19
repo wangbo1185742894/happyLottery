@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "NewFeatureViewController.h"
+#import "GroupNewViewController.h"
+#import "GroupViewController.h"
 #import "WebCTZQHisViewController.h"
 #import "RecommendPerViewController.h"
 #import "MyPostSchemeViewController.h"
@@ -152,7 +154,8 @@ static SystemSoundID shake_sound_male_id = 0;
             NSLog(@"app 通过本地通知启动 localNotification = %@",localNotification);  
         }  
         NSDictionary *remoteCotificationDic = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];  
-        //远程通知启动  
+        //远程通知启动
+        
         if(remoteCotificationDic)  
         {
            NSDictionary * userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
@@ -879,7 +882,13 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSString *agentStatus = [param objectForKey:@"agentStatus"];
     if (agentStatus == nil) { //申请成功
         //圈主or圈民
-       gouCaiNavVC = [self groupDisplayNav];
+        UINavigationController  *baseNAVVC = tabBarControllerMain.viewControllers[2];
+        BaseViewController *baseVC = (BaseViewController *)[baseNAVVC.childViewControllers firstObject];
+        if ([baseVC isKindOfClass:[GroupNewViewController class]]) {
+            gouCaiNavVC = [self groupDisplayNav:baseVC];
+        }else{
+            gouCaiNavVC = [self groupDisplayNav:nil];
+        }
     }
     else {
        gouCaiNavVC = [self groupApplyNav];
@@ -919,13 +928,17 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     return [self tabNavVCWithAttr: tabAttrs];
 }
 
-- (UINavigationController *)groupDisplayNav{
+- (UINavigationController *)groupDisplayNav:(BaseViewController *)baseVC{
     NSMutableDictionary *tabAttrs = [NSMutableDictionary dictionaryWithCapacity: 3];
     tabAttrs[@"tabTitle"] = @"圈子";
     tabAttrs[@"itemNormal"] = @"quanzi_normal";
     tabAttrs[@"itemSelected"] = @"quanzi_secelcted";
     tabAttrs[@"rootVC"] = @"GroupNewViewController";
-    return [self tabNavVCWithAttr: tabAttrs];
+    UINavigationController *itemNav =[self tabNavVCWithAttr: tabAttrs];
+    if (baseVC != nil) {
+        itemNav.viewControllers = @[baseVC];
+    }
+    return itemNav;
 }
 
 @end

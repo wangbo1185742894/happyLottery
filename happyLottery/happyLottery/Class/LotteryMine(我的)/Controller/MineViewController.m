@@ -109,11 +109,14 @@
         self.viewChongZhi.hidden = NO;
     }
     if (self.curUser.isLogin==YES) {
-        [self updateMemberClinet];
-        [self getSystemNoticeClient];
-       
-         [self getRedPacketByStateClient:@"true"];
-        [self CheckFeedBackRedNumClient];
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            [self updateMemberClinet];
+            [self getSystemNoticeClient];
+            
+            [self getRedPacketByStateClient:@"true"];
+            [self CheckFeedBackRedNumClient];
+        });
+    
     } else {
         //显示未登录时的状态
         [self notLogin];
@@ -268,7 +271,8 @@
     if ([self.curUser.headUrl isEqualToString:@""] || self.curUser.headUrl == nil) {
         self.userImage.image = [UIImage imageNamed:@"usermine.png"];
     }else{
-        self.userImage.image =[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.curUser.headUrl]]];
+        [self.userImage sd_setImageWithURL:[NSURL URLWithString:self.curUser.headUrl] placeholderImage:[UIImage imageNamed:@"usermine.png"]];
+        
     }
 }
 
@@ -534,7 +538,7 @@
                     NSString *isread = @"0";
                     NSString *nid =[NSString stringWithFormat:@"A%d",i];
                     
-                    FMResultSet*  rs = [self.fmdb executeQuery:@"select * from SystemNotice where noticeid=? and cardcode=?",notice._id,cardcode];
+                    FMResultSet*  rs = [self.fmdb executeQuery:@"select * from SystemNotice where noticeid=? and cardcode=?",notice._id == nil?@"":notice._id,cardcode == nil?@"":cardcode];
                     BOOL isExit = NO;
                     do {
                         NSString *itemId = [rs stringForColumn:@"noticeid"];
@@ -547,7 +551,7 @@
                     
                     if (!isExit) {
                         
-                        BOOL result =  [self.fmdb executeUpdate:[NSString stringWithFormat:@"insert into SystemNotice (title,content, msgTime , cardcode ,isread,noticeid,type,pagecode,url) values ('%@', '%@', '%@', '%@', '%@', '%@','%@', '%@', '%@');",notice.title,notice.content,notice.releaseTime,cardcode,isread,notice._id,notice.type,notice.thumbnailCode,notice.linkUrl]];
+                        BOOL result =  [self.fmdb executeUpdate:[NSString stringWithFormat:@"insert into SystemNotice (title,content, msgTime , cardcode ,isread,noticeid,type,pagecode,url) values ('%@', '%@', '%@', '%@', '%@', '%@','%@', '%@', '%@');",notice.title,notice.content,notice.releaseTime,cardcode,isread,notice._id,notice.type,notice.thumbnailCode==nil?@"":notice.thumbnailCode,notice.linkUrl==nil?@"":notice.linkUrl]];
                         if (result) {
                             [self.fmdb close];
                         }
@@ -563,7 +567,6 @@
             [self showPromptText: @"服务器连接失败" hideAfterDelay: 1.7];
         }
     }];
-    
 }
 
 -(void)searchSystemDB{
@@ -574,7 +577,7 @@
         //    FMResultSet *rs = [self.fmdb executeQuery:@"select * from vcUserPushMsg"];
         // 2.遍历结果集
         
-        FMResultSet*  rs = [self.fmdb executeQuery:@"select * from SystemNotice where isread=? and cardcode=?",@"0",self.curUser.cardCode];
+        FMResultSet*  rs = [self.fmdb executeQuery:@"select * from SystemNotice where isread=? and cardcode=?",@"0",self.curUser.cardCode == nil?@"":self.curUser.cardCode];
    
         
         while (rs.next) {

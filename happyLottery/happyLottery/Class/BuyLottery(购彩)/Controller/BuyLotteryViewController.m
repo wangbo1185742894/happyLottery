@@ -117,6 +117,7 @@ static NSString *ID = @"LotteryAreaViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     CGFloat bottomheight;
     self.sellLottery = [NSMutableArray arrayWithCapacity:0];
     
@@ -815,6 +816,7 @@ static NSString *ID = @"LotteryAreaViewCell";
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+ 
     //    activityInfoView.hidden = YES;
     if ([self.curUser.whitelist boolValue] == NO) {
         playViewHeight.constant = 0;
@@ -823,17 +825,19 @@ static NSString *ID = @"LotteryAreaViewCell";
         playViewHeight.constant = 180;
         lotteryPlayView.hidden = NO;
     }
-    [self getLotteryList];
+    
+   
     self.navigationController.navigationBar.hidden = YES;
     if (self.tabBarController.tabBar.hidden == YES) {
         self.tabBarController.tabBar.hidden = NO;
     }
-    [self getJczqShortcut];
-    
     [adsView setImageUrlArray:nil];
+    
+    
+     [self getLotteryList];
+    [self getJczqShortcut];
     [adsView openTimer];
     [self loadAdsImg];
-    
     [self loadNews];
     [self getJczqShortcut];
     

@@ -57,6 +57,7 @@
     [super viewDidLoad];
     self.viewControllerNo = @"A416";
     schemeList = [NSMutableArray arrayWithCapacity:0];
+   
     self.lotteryMan.delegate = self;
     if ([Utility isIOS11After]) {
         self.automaticallyAdjustsScrollViewInsets = NO; // tableView 莫名其妙  contentOffset.y 成-64了  MMP
@@ -66,6 +67,14 @@
     [self setTableView];
     self.title = @"跟单";
     buyVc = [[BuyLotteryViewController alloc]init];
+     [UITableView refreshHelperWithScrollView:tabFollewView target:self loadNewData:@selector(loadNewData) loadMoreData:nil isBeginRefresh:YES];
+    
+}
+
+-(void)loadNewData{
+    
+    [self loadEightPerosn];
+    [self loadAdsImg];
     
 }
 
@@ -73,9 +82,7 @@
     [super viewWillAppear:animated];
     [tabFollewView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
     placeImageHidden = YES;
-    [self setNavigationBa];
-    [self loadEightPerosn];
-    [self loadAdsImg];
+   [self setNavigationBa];
     [cell openTimer];
 }
 
@@ -110,6 +117,7 @@
 }
 
 -(void)getHotFollowScheme:(NSArray *)personList errorMsg:(NSString *)msg{
+    [tabFollewView tableViewEndRefreshCurPageCount:personList.count];
     if (personList == nil||personList.count == 0) {
         placeImageHidden = NO;
         [self showPromptText:msg hideAfterDelay:1.8];
