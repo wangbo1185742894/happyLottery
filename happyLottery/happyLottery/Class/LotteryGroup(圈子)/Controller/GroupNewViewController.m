@@ -118,6 +118,9 @@
         [self showPromptViewWithText:msg hideAfter:1];
         return;
     }
+    if ([param objectForKey:@"agentStatus"] != nil) {
+        return;
+    }
     model = [[AgentInfoModel alloc]initWith:param];
     [self reloadAgentDynamic];
     //当前用户的卡号等于圈主卡号
