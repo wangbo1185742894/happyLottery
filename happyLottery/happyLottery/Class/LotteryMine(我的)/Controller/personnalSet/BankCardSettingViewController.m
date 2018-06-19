@@ -138,7 +138,9 @@
             [self showPromptText:@"请输入支付密码" hideAfterDelay:1.7];
             return;
         }
-        
+        if (text .length == 0) {
+            text = @"000000";
+        }
         NSDictionary *cardInfo= @{@"cardCode":self.curUser.cardCode,
                                   @"payPwd":[AESUtility encryptStr:text]};
         [self.memberMan validatePaypwdSms:cardInfo];
