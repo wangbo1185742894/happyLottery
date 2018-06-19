@@ -690,18 +690,17 @@
     }
     if (self.trancation.playType == JCZQPlayTypeGuoGuan) {
         if (self.trancation.selectMatchArray.count < 2 ) {
-            if(self.trancation.selectMatchArray.count ==1){
-                JCZQMatchModel *model = [self.trancation.selectMatchArray firstObject];
-                if (model.isDanGuan == YES) {
-                    self.trancation.chuanFa = @"单场";
-                    return nil;
-                }
+//            if(self.trancation.selectMatchArray.count ==1){
+//                JCZQMatchModel *model = [self.trancation.selectMatchArray firstObject];
+//                if (model.isDanGuan == YES) {
+//                    self.trancation.chuanFa = @"单场";
+//                    return nil;
+//                }
+//                return  @"过关模式下，至少选择两场比赛";
+//
+//            }else{
                 return  @"过关模式下，至少选择两场比赛";
-                
-            }else{
-                return  @"过关模式下，至少选择两场比赛";
-                
-            }
+//            }
             
         }
     }
