@@ -24,7 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labCostBySelf;
 @property (weak, nonatomic) IBOutlet UIButton *labBetContent;
 @property (weak, nonatomic) IBOutlet UILabel *labPersonName;
-
+@property (nonatomic,copy) NSString *carcode;
 @end
 @implementation HotFollowSchemeViewCell
 
@@ -33,8 +33,17 @@
     self.labPersonHis.layer.cornerRadius = 4;
     self.labPersonHis.layer.masksToBounds = YES;
     self.labBouns.keyWordFont = [UIFont fontWithName:@"Helvetica-Condensed-Black-Se" size:16];
+   
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickImage)];
+    [self.imgPersonIcon addGestureRecognizer:tapGesture];
+    self.imgPersonIcon.userInteractionEnabled = YES;
     // Initialization code
 }
+
+- (void)clickImage {
+    [self.delegate itemClickToPerson:self.carcode];
+}
+
 - (IBAction)actionFollowScheme:(UIButton *)sender {
     
 }
@@ -107,7 +116,7 @@
 }
 
 -(void)loadDataWithModel:(HotSchemeModel *)model{
-
+    self.carcode = model.cardCode;
     NSDate * dateServer = [Utility dateFromDateStr:model.serverTime withFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSDate * dateCur = [Utility dateFromDateStr:model.deadLine withFormat:@"yyyy-MM-dd HH:mm:ss"];
 
