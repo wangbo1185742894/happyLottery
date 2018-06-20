@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labCostBySelf;
 @property (weak, nonatomic) IBOutlet UIButton *labBetContent;
 @property (weak, nonatomic) IBOutlet UILabel *labPersonName;
+@property (weak, nonatomic) IBOutlet UIView *topPersonView;
 @property (nonatomic,copy) NSString *carcode;
 @end
 @implementation HotFollowSchemeViewCell
@@ -35,8 +36,8 @@
     self.labBouns.keyWordFont = [UIFont fontWithName:@"Helvetica-Condensed-Black-Se" size:16];
    
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickImage)];
-    [self.imgPersonIcon addGestureRecognizer:tapGesture];
-    self.imgPersonIcon.userInteractionEnabled = YES;
+    [self.topPersonView addGestureRecognizer:tapGesture];
+    self.topPersonView.userInteractionEnabled = YES;
     // Initialization code
 }
 
