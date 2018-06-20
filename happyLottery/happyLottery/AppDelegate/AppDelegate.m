@@ -80,6 +80,7 @@
     UINavigationController *faXianNavVC;
     UINavigationController *memberNavVC;
     NSUInteger _lastSelectedIndex;
+    
 }
 
 @property(nonatomic,strong)FMDatabase* fmdb;
@@ -92,6 +93,7 @@ static SystemSoundID shake_sound_male_id = 0;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self loadTabVC];
+    
     tabBarControllerMain.delegate = self;
     _lastSelectedIndex = 0;
     _showGroup = NO;
@@ -107,7 +109,10 @@ static SystemSoundID shake_sound_male_id = 0;
     memberMan.delegate = self;
     [memberMan getVueHttpUrl];
      _messageContents = [[NSMutableArray alloc] initWithCapacity:6];
+    
     [self setKeyWindow];
+    
+    
     [self initJpush];
     [self setNewFeature];
     [self dataSave];
@@ -128,6 +133,7 @@ static SystemSoundID shake_sound_male_id = 0;
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
     [defaultCenter addObserver:self selector:@selector(networkDidReceiveMessage:) name:kJPFNetworkDidReceiveMessageNotification object:nil];
     [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];
+    
     [JPUSHService setBadge:0];
     if (launchOptions) {
         NSDictionary * remoteNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
@@ -307,12 +313,19 @@ static SystemSoundID shake_sound_male_id = 0;
     lastVersion = [defaults objectForKey:KEYAPPVERSION];
     curVersion = [NSBundle mainBundle].infoDictionary[KEYCURAPPVERSION];
     if ([curVersion isEqualToString:lastVersion]) { //
-        WelComeViewController *welcomeVC = [[WelComeViewController alloc]init];
-        _window.rootViewController = welcomeVC;
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             _window.rootViewController = tabBarControllerMain;
-        });
         
+        WelComeViewController * welCom = [[WelComeViewController alloc]init];
+        [[UIApplication sharedApplication].keyWindow addSubview:welCom.view];
+        [UIView animateWithDuration:1.5 animations:^{
+            
+            
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.2 animations:^{
+                welCom.view.alpha = 0.1;
+                 [welCom.view removeFromSuperview];
+            }];
+        }];
         
     }else{
         [defaults setObject:curVersion forKey:KEYAPPVERSION];
