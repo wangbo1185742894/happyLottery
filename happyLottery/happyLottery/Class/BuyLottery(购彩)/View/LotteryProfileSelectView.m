@@ -11,6 +11,7 @@
 @interface LotteryProfileSelectView()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightVIew;
 @property(nonatomic,strong)NSArray *lotteryProfiles;
+@property (weak, nonatomic) IBOutlet UIButton *btnDanGuanHT;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topDis;
 @property (weak, nonatomic) IBOutlet UIView *lotteryProfileItemView;
 @property (weak, nonatomic) IBOutlet UIImageView *labPlayType;
@@ -34,8 +35,9 @@
         self.viewGuoguan.hidden = YES;
         self.labPlayType.hidden = YES;
         self.heightVIew.constant = 130;
+        self.btnDanGuanHT.hidden = NO;
         self.topDis .constant= 20;
-        UIButton *select = [self viewWithTag: 200];
+        UIButton *select = [self viewWithTag: 204];
         if ([select isKindOfClass:[UIButton class]]) {
             select .selected = YES;
         }

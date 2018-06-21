@@ -132,12 +132,21 @@
                             <rect key="frame" x="0.0" y="155" width="375" height="80"/>
                             <subviews>
                                 <button opaque="NO" tag="202" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z2C-1N-Vkf">
-                                    <rect key="frame" x="252.5" y="6" width="114.5" height="31"/>
+                                    <rect key="frame" x="252" y="6" width="114.5" height="31"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <state key="normal" title="比分" backgroundImage="fangkuangjingcainomal.png"/>
                                     <state key="selected" backgroundImage="wukuangwuyuanjiaoselect.png"/>
                                     <connections>
                                         <action selector="actionPlayTypeSelect:" destination="iN0-l3-epB" eventType="touchUpInside" id="LmX-OK-P9p"/>
+                                    </connections>
+                                </button>
+                                <button hidden="YES" opaque="NO" tag="204" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0I-YL-oqL">
+                                    <rect key="frame" x="130" y="43" width="114.5" height="31"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <state key="normal" title="单关混投" backgroundImage="fangkuangjingcainomal.png"/>
+                                    <state key="selected" backgroundImage="wukuangwuyuanjiaoselect.png"/>
+                                    <connections>
+                                        <action selector="actionPlayTypeSelect:" destination="iN0-l3-epB" eventType="touchUpInside" id="b6h-9D-vzH"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="200" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Chq-8Z-awH">
@@ -168,7 +177,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="205" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="45u-GF-Rbe">
-                                    <rect key="frame" x="130" y="43" width="114.5" height="31"/>
+                                    <rect key="frame" x="252" y="43" width="114.5" height="31"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <state key="normal" title="进球数" backgroundImage="fangkuangjingcainomal.png"/>
                                     <state key="selected" backgroundImage="wukuangwuyuanjiaoselect.png"/>
@@ -178,7 +187,6 @@
                                 </button>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="45u-GF-Rbe" firstAttribute="leading" secondItem="epA-L7-C4n" secondAttribute="trailing" constant="8" id="24g-uz-J46"/>
                                 <constraint firstAttribute="height" constant="80" id="2S8-8z-geO"/>
                                 <constraint firstItem="45u-GF-Rbe" firstAttribute="width" secondItem="Chq-8Z-awH" secondAttribute="width" id="3V1-C3-Kie"/>
                                 <constraint firstItem="z2C-1N-Vkf" firstAttribute="leading" secondItem="Cgb-eL-eO3" secondAttribute="trailing" constant="8" id="4Fm-Lm-USx"/>
@@ -188,10 +196,14 @@
                                 <constraint firstItem="Cgb-eL-eO3" firstAttribute="top" secondItem="1wU-eC-OOs" secondAttribute="top" constant="6" id="CDF-Zd-MeS"/>
                                 <constraint firstItem="z2C-1N-Vkf" firstAttribute="height" secondItem="Chq-8Z-awH" secondAttribute="height" id="CvN-pX-Fk9"/>
                                 <constraint firstItem="epA-L7-C4n" firstAttribute="height" secondItem="Chq-8Z-awH" secondAttribute="height" id="Har-U8-C0f"/>
-                                <constraint firstItem="45u-GF-Rbe" firstAttribute="top" secondItem="Cgb-eL-eO3" secondAttribute="bottom" constant="6" id="SK1-2z-cec"/>
+                                <constraint firstItem="g0I-YL-oqL" firstAttribute="trailing" secondItem="Cgb-eL-eO3" secondAttribute="trailing" id="JGA-Zt-Rh1"/>
+                                <constraint firstItem="45u-GF-Rbe" firstAttribute="top" secondItem="epA-L7-C4n" secondAttribute="top" id="M9U-04-G5F"/>
+                                <constraint firstItem="g0I-YL-oqL" firstAttribute="bottom" secondItem="45u-GF-Rbe" secondAttribute="bottom" id="NZj-iS-4Ii"/>
+                                <constraint firstItem="g0I-YL-oqL" firstAttribute="leading" secondItem="Cgb-eL-eO3" secondAttribute="leading" id="QtJ-9e-SaZ"/>
                                 <constraint firstItem="epA-L7-C4n" firstAttribute="leading" secondItem="1wU-eC-OOs" secondAttribute="leading" constant="8" id="TLq-Lu-Bdb"/>
                                 <constraint firstAttribute="bottom" secondItem="45u-GF-Rbe" secondAttribute="bottom" constant="6" id="UcS-Qx-eEC"/>
                                 <constraint firstItem="Cgb-eL-eO3" firstAttribute="height" secondItem="Chq-8Z-awH" secondAttribute="height" id="Va7-Br-c4O"/>
+                                <constraint firstItem="g0I-YL-oqL" firstAttribute="top" secondItem="epA-L7-C4n" secondAttribute="top" id="WHL-AE-IsG"/>
                                 <constraint firstItem="Chq-8Z-awH" firstAttribute="leading" secondItem="1wU-eC-OOs" secondAttribute="leading" constant="8" id="WlJ-Xm-HzA"/>
                                 <constraint firstItem="Cgb-eL-eO3" firstAttribute="width" secondItem="Chq-8Z-awH" secondAttribute="width" id="afX-6J-677"/>
                                 <constraint firstItem="Chq-8Z-awH" firstAttribute="top" secondItem="1wU-eC-OOs" secondAttribute="top" constant="6" id="bXr-v4-5Lb"/>
@@ -199,6 +211,7 @@
                                 <constraint firstItem="45u-GF-Rbe" firstAttribute="height" secondItem="Chq-8Z-awH" secondAttribute="height" id="fxf-l6-nfe"/>
                                 <constraint firstItem="epA-L7-C4n" firstAttribute="width" secondItem="Chq-8Z-awH" secondAttribute="width" id="hUc-Sh-yqq"/>
                                 <constraint firstItem="Cgb-eL-eO3" firstAttribute="leading" secondItem="Chq-8Z-awH" secondAttribute="trailing" constant="8" id="jWx-8j-s4g"/>
+                                <constraint firstItem="45u-GF-Rbe" firstAttribute="leading" secondItem="z2C-1N-Vkf" secondAttribute="leading" id="k5r-Ob-jsj"/>
                                 <constraint firstAttribute="bottom" secondItem="epA-L7-C4n" secondAttribute="bottom" constant="6" id="nys-bX-45s"/>
                             </constraints>
                         </view>
@@ -233,6 +246,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="btnDanGuanHT" destination="g0I-YL-oqL" id="IZm-KQ-3kx"/>
                 <outlet property="heightVIew" destination="6JM-bq-gCt" id="WXB-G1-FWl"/>
                 <outlet property="labPlayType" destination="eyd-X2-ZgK" id="Djp-Yb-sr6"/>
                 <outlet property="lotteryProfileItemView" destination="0WI-oX-CFv" id="SnL-8a-wQC"/>
@@ -249,6 +263,7 @@
                 <outletCollection property="profileSelectArray" destination="Chq-8Z-awH" id="Q7y-I8-kbM"/>
                 <outletCollection property="profileSelectArray" destination="45u-GF-Rbe" id="bbH-We-eB8"/>
                 <outletCollection property="profileSelectArray" destination="epA-L7-C4n" id="HAS-V8-Kj8"/>
+                <outletCollection property="profileSelectArray" destination="g0I-YL-oqL" id="FtY-I3-CjK"/>
             </connections>
             <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>
