@@ -34,7 +34,7 @@
 #define KHotFollowSchemeViewCell @"HotFollowSchemeViewCell"
 #define KHomeTabTopAdsViewCell @"HomeTabTopAdsViewCell"
 #define KZhanWeiTuScheme @"ZhanWeiTuScheme"
-@interface FollowSendViewController ()<OptionSelectedViewDelegate,UITableViewDelegate,UITableViewDataSource,FollowHeaderDelegate,LotteryManagerDelegate,HomeMenuItemViewDelegate,RecommendViewCellDelegate,HomeTabTopAdsViewDelegate>
+@interface FollowSendViewController ()<OptionSelectedViewDelegate,UITableViewDelegate,UITableViewDataSource,FollowHeaderDelegate,LotteryManagerDelegate,HomeMenuItemViewDelegate,RecommendViewCellDelegate,HomeTabTopAdsViewDelegate,ToPersonViewDelegate>
 {
     NSMutableArray <ADSModel *>*adsArray;
         OptionSelectedView *optionView;
@@ -171,6 +171,13 @@
     
 }
 
+-(void)itemClickToPerson:(NSString *)carcode{
+    PersonCenterViewController *viewContr = [[PersonCenterViewController alloc]init];
+    viewContr.cardCode = carcode;
+    viewContr.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:viewContr animated:YES];
+}
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 4;
 }
@@ -222,6 +229,7 @@
         }
         HotFollowSchemeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KHotFollowSchemeViewCell];
         [cell loadDataWithModelInDaT:schemeList[indexPath.row]];
+        cell.delegate = self;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }else{
