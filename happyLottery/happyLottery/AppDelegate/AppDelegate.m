@@ -217,6 +217,9 @@ static SystemSoundID shake_sound_male_id = 0;
 //                                                                   break;
                                 
                 case SSDKPlatformTypeWechat:
+                              //appstore
+//                    [appInfo SSDKSetupWeChatByAppId:@"wxa0ff0f5a5d94e563"
+//                                                      appSecret:@"bad37187c37042cfa2134ce2e1872d40"];
                     [appInfo SSDKSetupWeChatByAppId:@"wxe640eb18da420c3b"
                     appSecret:@"6ad481ed34390f25f4c930befb0e4abb"];
                     break;
@@ -404,13 +407,38 @@ static SystemSoundID shake_sound_male_id = 0;
     tabAttrs[@"rootVC"] = @"MineViewController";
     memberNavVC = [self tabNavVCWithAttr: tabAttrs];
     tabBarControllerMain = [[UITabBarController alloc] init];
+  
     tabBarControllerMain.viewControllers = @[homeNavVC,genTouNavVC,gouCaiNavVC,faXianNavVC, memberNavVC];
     tabBarControllerMain.view.frame = CGRectMake(0, 0, self.window.bounds.size.width, self.window.bounds.size.height);
     
     tabBarControllerMain.tabBar.backgroundColor = RGBCOLOR(37, 38, 38);
     tabBarControllerMain.tabBar.barTintColor =  RGBCOLOR(37, 38, 38);
     
+}
+
+-(void)setNomalRootVC{
+    [self loadTabVC];
+    _window.rootViewController = tabBarControllerMain;
+}
+
+-(void)setAppstoreRootVC {
+    NSMutableDictionary *tabAttrs = [NSMutableDictionary dictionaryWithCapacity: 3];
+    tabAttrs[@"tabTitle"] = @"首页";
+    tabAttrs[@"title"] = @"彩票";
+    tabAttrs[@"itemNormal"] = @"home_defealt";
+    tabAttrs[@"itemSelected"] = @"home_select";
+    tabAttrs[@"rootVC"] = @"NewsViewController";
+    homeNavVC = [self tabNavVCWithAttr: tabAttrs];
+    tabAttrs[@"tabTitle"] = @"我的";
+    tabAttrs[@"title"] = @"我的";
+    tabAttrs[@"itemNormal"] = @"wode_defealt";
+    tabAttrs[@"itemSelected"] = @"wode_select";
+    tabAttrs[@"rootVC"] = @"MineViewController";
+    memberNavVC = [self tabNavVCWithAttr: tabAttrs];
+    tabBarControllerMain = [[UITabBarController alloc] init];
     
+    tabBarControllerMain.viewControllers = @[homeNavVC,memberNavVC];
+    _window.rootViewController = tabBarControllerMain;
 }
 
 - (UINavigationController *) tabNavVCWithAttr: (NSDictionary*) attrs {
@@ -567,8 +595,10 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         if ([cardcode isEqualToString:@""]) {
             cardcode = @"cardcode";
         }
-        
-        BOOL result =  [self.fmdb executeUpdate:[NSString stringWithFormat:@"insert into vcUserPushMsg (title,content, msgTime , cardcode  ,isread, pagecode ,url ) values ('%@', '%@', '%@', '%@', '%@', '%@', '%@');",title,content,time,cardcode,@"1",pageCode,linkUrl]];
+        if (title == nil || title.length == 0) {
+            title = @"投必中";
+        }
+        BOOL result =  [self.fmdb executeUpdate:[NSString stringWithFormat:@"insert into vcUserPushMsg (title,content, msgTime , cardcode  ,isread, pagecode ,url ) values ('%@', '%@', '%@', '%@', '%@', '%@', '%@');",title,content,time,cardcode,@"0",pageCode,linkUrl]];
         if (result) {
             [self.fmdb close];
         }

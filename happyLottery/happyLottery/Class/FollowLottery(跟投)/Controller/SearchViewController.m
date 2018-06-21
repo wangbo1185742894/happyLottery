@@ -9,10 +9,9 @@
 #import "SearchViewController.h"
 #import "HotFollowSchemeViewCell.h"
 #import "FollowDetailViewController.h"
-#import "PersonCenterViewController.h"
 #define KHotFollowSchemeViewCell @"HotFollowSchemeViewCell"
 
-@interface SearchViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,ToPersonViewDelegate>
+@interface SearchViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate>
 {
     NSMutableArray <HotSchemeModel *> * schemeList;
 }
@@ -126,7 +125,6 @@
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     HotFollowSchemeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KHotFollowSchemeViewCell];
     [cell loadDataWithModelInDaT:schemeList[indexPath.row]];
-    cell.delegate = self;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -160,11 +158,5 @@
      [self loadNewData];
 }
 
--(void)itemClickToPerson:(NSString *)carcode{
-    PersonCenterViewController *viewContr = [[PersonCenterViewController alloc]init];
-    viewContr.cardCode = carcode;
-    viewContr.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:viewContr animated:YES];
-}
 
 @end

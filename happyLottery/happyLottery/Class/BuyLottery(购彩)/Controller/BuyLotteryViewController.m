@@ -48,7 +48,7 @@
 #define AnimationDur 0.3
 #define KAppSignModelShow @"appSignModelShow"
 #define KAppSignModelUrl @"appSignModelUrl"
-
+#define KEYAPPVERSION @"appVersion"
 static NSString *ID = @"LotteryAreaViewCell";
 
 @interface BuyLotteryViewController ()<WBAdsImgViewDelegate,HomeMenuItemViewDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,NewsListCellDelegate,OpenRedPopViewDelegate,MemberManagerDelegate,VersionUpdatingPopViewDelegate,NetWorkingHelperDelegate,UICollectionViewDataSource,UICollectionViewDelegate,XYTableViewDelegate>
@@ -117,7 +117,7 @@ static NSString *ID = @"LotteryAreaViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     CGFloat bottomheight;
     self.sellLottery = [NSMutableArray arrayWithCapacity:0];
     
@@ -157,7 +157,14 @@ static NSString *ID = @"LotteryAreaViewCell";
     [self setNewsView];
     [self gyjButtonView];
     [self setDLTCTZQView];
-    [self .lotteryMan getAppSign:nil];
+   NSString *  isShow = [[NSUserDefaults standardUserDefaults] objectForKey:KAppSignModelShow];
+    if (isShow == nil) {
+        [self .lotteryMan getAppSign:nil];
+        [[NSUserDefaults standardUserDefaults] setObject:@"1" forKey:KAppSignModelShow];
+    }else{
+        activityInfoView.hidden = YES;
+    }
+    
     [self setTableView];
         openRedpacketButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
@@ -343,7 +350,6 @@ static NSString *ID = @"LotteryAreaViewCell";
         if ([resultDic[@"code"] integerValue] != 0) {
             return ;
         }
-        
         NSArray  *modelList = resultDic[@"result"];
         for (int i = 0; i < ( modelList.count > 5?5:modelList.count); i++) {
             NSDictionary *dic = modelList[i];
@@ -816,7 +822,13 @@ static NSString *ID = @"LotteryAreaViewCell";
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
- 
+    AppDelegate  *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    if ([self.curUser.whitelist boolValue] == NO && self.tabBarController.viewControllers.count == 5) {
+        
+        [app setAppstoreRootVC];
+    }else if([self.curUser.whitelist boolValue] == YES && self.tabBarController.viewControllers.count == 2){
+        [app setNomalRootVC];
+    }
     //    activityInfoView.hidden = YES;
     if ([self.curUser.whitelist boolValue] == NO) {
         playViewHeight.constant = 0;

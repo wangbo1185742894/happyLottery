@@ -25,6 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.topDis.constant = NaviHeight;
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.title = @"收入明细";
     self.transferList = [NSMutableArray arrayWithCapacity:0];
     self.agentMan.delegate = self;

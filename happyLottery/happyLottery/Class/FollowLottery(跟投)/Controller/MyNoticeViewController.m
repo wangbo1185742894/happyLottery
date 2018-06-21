@@ -9,11 +9,10 @@
 #import "MyNoticeViewController.h"
 #import "HotFollowSchemeViewCell.h"
 #import "FollowDetailViewController.h"
-#import "PersonCenterViewController.h"
 
 #define KHotFollowSchemeViewCell  @"HotFollowSchemeViewCell"
 
-@interface MyNoticeViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,ToPersonViewDelegate>
+@interface MyNoticeViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *listTableView;
 @property(assign,nonatomic)NSInteger page;
@@ -90,7 +89,6 @@
     HotFollowSchemeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KHotFollowSchemeViewCell];
     HotSchemeModel *model = [self.personArray objectAtIndex:indexPath.row];
     [cell loadDataWithModelInNotice:model];
-    cell.delegate = self;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -106,10 +104,4 @@
     [self.navigationController pushViewController:followVC animated:YES];
 }
 
--(void)itemClickToPerson:(NSString *)carcode{
-    PersonCenterViewController *viewContr = [[PersonCenterViewController alloc]init];
-    viewContr.cardCode = carcode;
-    viewContr.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:viewContr animated:YES];
-}
 @end

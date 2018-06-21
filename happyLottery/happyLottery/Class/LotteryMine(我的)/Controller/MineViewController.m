@@ -61,7 +61,13 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
-    
+    AppDelegate  *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    if ([self.curUser.whitelist boolValue] == NO && self.tabBarController.viewControllers.count == 5) {
+        
+        [app setAppstoreRootVC];
+    }else if([self.curUser.whitelist boolValue] == YES && self.tabBarController.viewControllers.count == 2){
+        [app setNomalRootVC];
+    }
     if (![self.curUser.memberType isEqualToString:@"CIRCLE_MASTER"]|| self.curUser.isLogin == NO) {
         NSArray *itemArray = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Mine" ofType: @"plist"]];
         NSMutableArray *fristArray = [NSMutableArray arrayWithArray:itemArray[0]];
@@ -92,8 +98,9 @@
 
     }
     if ([self.curUser.whitelist boolValue] == NO) {
-        NSArray *itemArray = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Mine" ofType: @"plist"]];
-        listArray = @[itemArray[2]];
+        self.tableview.hidden = YES;
+    }else{
+        self.tableview.hidden = NO;
     }
 
     [self.tableview reloadData];
@@ -109,14 +116,19 @@
         self.viewChongZhi.hidden = NO;
     }
     if (self.curUser.isLogin==YES) {
-        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        
             [self updateMemberClinet];
-            [self getSystemNoticeClient];
+            NSInteger num = [self getNotReadMes];
+            if ( num == 0) {
+                label.hidden = YES;
+            }else{
+                label.hidden = NO;
+                label.text = [NSString stringWithFormat:@"%ld",num];
+            }
             
             [self getRedPacketByStateClient:@"true"];
             [self CheckFeedBackRedNumClient];
-        });
-    
+
     } else {
         //显示未登录时的状态
         [self notLogin];
@@ -133,9 +145,6 @@
     self.memberMan.delegate = self;
     listUseRedPacketArray = [[NSMutableArray alloc]init];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(actionUserLoginSuccess:) name:NotificationNameUserLogin object:nil];
-   
-    
- 
     [_tableview registerClass:[MineTableViewCell class] forCellReuseIdentifier:@"MineTableViewCell"];
     _tableview.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     
@@ -680,5 +689,33 @@
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
      [self hideLoadingView];
+}
+
+-(NSInteger)getNotReadMes{
+    NSInteger notReadNum = 0 ;
+        // 1.查询数据
+        if ([self.fmdb open]) {
+    
+            FMResultSet*  rs = [self.fmdb executeQuery:@"select * from vcUserPushMsg where cardcode=?",self.curUser.cardCode];
+            while (rs.next) {
+                if ([[rs stringForColumn:@"isread"] boolValue] == NO) {
+                    notReadNum ++;
+                }
+            }
+             [self.fmdb close];
+        }
+    
+        if ([self.fmdb open]) {
+      
+            FMResultSet*  rs = [self.fmdb executeQuery:@"select * from SystemNotice where cardcode=?",self.curUser.cardCode];
+            
+            while (rs.next) {
+                if ([[rs stringForColumn:@"isread"] boolValue] == NO) {
+                    notReadNum ++;
+                }
+            }
+            [self.fmdb close];
+        }
+    return notReadNum;
 }
 @end  

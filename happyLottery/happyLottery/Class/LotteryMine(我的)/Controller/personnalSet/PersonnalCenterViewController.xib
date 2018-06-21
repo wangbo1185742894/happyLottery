@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -14,6 +14,7 @@
                 <outlet property="bottom" destination="1LS-6c-c8a" id="qjE-6d-9nb"/>
                 <outlet property="contentView" destination="kM9-wg-Ohd" id="N9X-pO-Nz6"/>
                 <outlet property="labMemberIcon" destination="nfP-Uw-wht" id="FWi-Rv-A88"/>
+                <outlet property="loginoutBtn" destination="RCP-Lo-an3" id="OXl-34-Tlr"/>
                 <outlet property="memberBtn" destination="Dde-1n-JQP" id="qir-GS-cGD"/>
                 <outlet property="memberLab" destination="9Q2-Cy-YyE" id="v35-0N-H4m"/>
                 <outlet property="myCardBtn" destination="nUL-uR-TWn" id="Pcl-iA-Wzf"/>
@@ -267,6 +268,17 @@
                                     <color key="textColor" red="0.1960784314" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RCP-Lo-an3">
+                                    <rect key="frame" x="20" y="603" width="335" height="44"/>
+                                    <color key="backgroundColor" red="0.070588235289999995" green="0.78039215689999997" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="44" id="gCL-6C-heL"/>
+                                    </constraints>
+                                    <state key="normal" title="退出登录"/>
+                                    <connections>
+                                        <action selector="outLogin:" destination="-1" eventType="touchUpInside" id="xyW-1m-kD6"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" red="0.96444731950759888" green="0.96840888261795044" blue="0.98488038778305054" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
@@ -285,7 +297,9 @@
                                 <constraint firstItem="clM-fe-WWR" firstAttribute="centerY" secondItem="jal-Z6-OFJ" secondAttribute="centerY" id="E60-pv-Hk3"/>
                                 <constraint firstItem="Dde-1n-JQP" firstAttribute="top" secondItem="506-C9-ngo" secondAttribute="bottom" constant="20" id="FTF-l0-bbh"/>
                                 <constraint firstItem="qIT-mF-giE" firstAttribute="leading" secondItem="kM9-wg-Ohd" secondAttribute="leading" id="GuD-C9-0aP"/>
+                                <constraint firstAttribute="trailing" secondItem="RCP-Lo-an3" secondAttribute="trailing" constant="20" id="IHu-wh-VGU"/>
                                 <constraint firstAttribute="trailing" secondItem="Dde-1n-JQP" secondAttribute="trailing" id="KON-an-I6P"/>
+                                <constraint firstAttribute="bottom" secondItem="RCP-Lo-an3" secondAttribute="bottom" constant="20" id="KXO-y9-8FI"/>
                                 <constraint firstItem="Fje-zc-LwQ" firstAttribute="top" secondItem="kM9-wg-Ohd" secondAttribute="top" constant="47" id="Lbo-Iv-2pd"/>
                                 <constraint firstItem="jFA-Hx-XqN" firstAttribute="top" secondItem="NW2-s7-a0m" secondAttribute="bottom" constant="29" id="MUL-La-zz1"/>
                                 <constraint firstAttribute="trailing" secondItem="jFA-Hx-XqN" secondAttribute="trailing" constant="8" id="NrV-IZ-b2T"/>
@@ -296,6 +310,7 @@
                                 <constraint firstItem="506-C9-ngo" firstAttribute="top" secondItem="kM9-wg-Ohd" secondAttribute="top" constant="30" id="QsT-f7-Nt3"/>
                                 <constraint firstItem="NW2-s7-a0m" firstAttribute="top" secondItem="Dde-1n-JQP" secondAttribute="bottom" constant="41" id="Rx1-hv-rRV"/>
                                 <constraint firstAttribute="trailing" secondItem="kpe-1W-adt" secondAttribute="trailing" constant="8" id="SOY-rZ-GHo"/>
+                                <constraint firstItem="RCP-Lo-an3" firstAttribute="leading" secondItem="kM9-wg-Ohd" secondAttribute="leading" constant="20" id="Smb-AL-Bmn"/>
                                 <constraint firstAttribute="bottom" secondItem="jal-Z6-OFJ" secondAttribute="bottom" constant="86" id="W2o-A7-B0r"/>
                                 <constraint firstItem="506-C9-ngo" firstAttribute="leading" secondItem="kM9-wg-Ohd" secondAttribute="leading" id="XDF-Ww-Cwj"/>
                                 <constraint firstAttribute="trailing" secondItem="506-C9-ngo" secondAttribute="trailing" id="YQx-d9-Nyh"/>

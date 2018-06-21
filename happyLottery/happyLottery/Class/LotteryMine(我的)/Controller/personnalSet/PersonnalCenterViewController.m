@@ -16,7 +16,7 @@
 #import "BankCardSettingViewController.h"
 #import "LoadData.h"
 #import "ChangeLoginPWDViewController.h"
-
+#import "JPUSHService.h"
 
 @interface PersonnalCenterViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate,RSKImageCropViewControllerDelegate,MemberManagerDelegate>{
      NSString *headUrl;
@@ -24,6 +24,7 @@
 }
 @property (weak, nonatomic) IBOutlet UIWebView *web123;
 @property (weak, nonatomic) IBOutlet UIImageView *labMemberIcon;
+@property (weak, nonatomic) IBOutlet UIButton *loginoutBtn;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollerView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
@@ -62,6 +63,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"个人信息";
+    self.loginoutBtn.hidden = [self.curUser.whitelist boolValue];
     self.viewControllerNo = @"";
     if ([self isIphoneX]) {
         // self.bigView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -511,6 +513,26 @@
 - (IBAction)actionTel:(id)sender {
     [self actionTelMe];
 }
+-(void)updateLoginStatus{
+    
+    if ([self.fmdb open]) {
+        NSString *mobile =self.curUser.mobile;
+        NSString * isLogin =@"0";
+        //update t_student set score = age where name = ‘jack’ ;
+        [self.fmdb executeUpdate:@"update  t_user_info set isLogin = ? where mobile = ?",isLogin, mobile];
+        [self.fmdb close];
+    }
+}
 
+- (IBAction)outLogin:(id)sender {
+  
+    self.curUser.isLogin = NO;
+    [self updateLoginStatus];
+    [JPUSHService setTags:nil alias:@"" callbackSelector:@selector(tagsAliasCallback:tags:alias:) object:self];
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
+- (void)tagsAliasCallback:(int)iResCode tags:(NSSet*)tags alias:(NSString*)alias {
+    NSLog(@"rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, tags , alias);
+}
 @end

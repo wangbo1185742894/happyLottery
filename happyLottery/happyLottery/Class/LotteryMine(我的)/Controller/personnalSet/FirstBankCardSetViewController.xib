@@ -108,7 +108,7 @@
                                         <constraint firstAttribute="height" constant="26" id="t47-bM-ZsQ"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请务必核实您的银行卡号信息和姓名是否一致。（不支持信用卡）" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPH-j7-edN">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="为保证您成功提现（信用卡不支持提现），请如实填写相应信息，姓名只可填写一次，过后不可修改！" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPH-j7-edN">
                                     <rect key="frame" x="52" y="142" width="311" height="65"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="65" id="fYZ-W2-gtu"/>

@@ -290,8 +290,8 @@
     NoticeCenterTableViewCell  *selectCell = [tableView cellForRowAtIndexPath:indexPath];
     if (tableView ==self.tableView1) {
             long i=listSystemNoticeArray.count-indexPath.row-1;
-        Notice *notice = [[Notice alloc]init];
-         notice = listSystemNoticeArray[i];
+        
+         Notice *notice = listSystemNoticeArray[i];
         if ([self.fmdb open]) {
             NSString *cardcode=[GlobalInstance instance ].curUser.cardCode;
             if ([cardcode isEqualToString:@""]) {
@@ -299,12 +299,9 @@
             }
             NSString *isread = @"1";
             BOOL result =  [self.fmdb executeUpdate:[NSString stringWithFormat:@"update SystemNotice set isread = '%@' where noticeid = '%@';",isread,notice._id]];
-           
             if (result) {
                 [self.fmdb close];
-            
             }
-            
         }
         [self searchSystemDB];
     NSString *type = notice.type;
@@ -325,8 +322,20 @@
         
     }else if (tableView ==self.tableView2){
         long j=listPersonNoticeArray.count-indexPath.row-1;
-         Notice *notice = [[Notice alloc]init];
-         notice = listPersonNoticeArray[j];
+        
+          Notice *notice  = listPersonNoticeArray[j];
+        if ([self.fmdb open]) {
+            NSString *cardcode=[GlobalInstance instance ].curUser.cardCode;
+            if ([cardcode isEqualToString:@""]) {
+                cardcode = @"cardcode";
+            }
+            NSString *isread = @"1";
+            BOOL result =  [self.fmdb executeUpdate:[NSString stringWithFormat:@"update vcUserPushMsg set isread = '%@' where msgTime = '%@';",isread,notice.releaseTime]];
+            if (result) {
+                [self.fmdb close];
+            }
+        }
+        [self searchPersonDB];
            NSString *linkUrl=notice.linkUrl;
         if (![notice.thumbnailCode isEqualToString:@"(null)"]) {
             NSString *pageCode=notice.thumbnailCode;
@@ -341,9 +350,9 @@
        
         }
         if ([notice.thumbnailCode isEqualToString:@"(null)"]&&[linkUrl isEqualToString:@"(null)"]){
-         NoticeDetailViewController *vc = [[NoticeDetailViewController alloc] init];
-         vc.notice = notice;
-         [self.navigationController pushViewController: vc animated: YES];
+            NoticeDetailViewController *vc = [[NoticeDetailViewController alloc] init];
+            vc.notice = notice;
+            [self.navigationController pushViewController: vc animated: YES];
         }
     }
    
@@ -554,14 +563,35 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
+-(void)navigationBackToLastPage{
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+        
+    if ([self.fmdb open]) {
+        NSString *cardcode=[GlobalInstance instance ].curUser.cardCode;
+        if ([cardcode isEqualToString:@""]) {
+            cardcode = @"cardcode";
+        }
+        NSString *isread = @"1";
+        BOOL result =  [self.fmdb executeUpdate:[NSString stringWithFormat:@"update SystemNotice set isread = '%@';",isread]];
+        if (result) {
+            [self.fmdb close];
+        }
+    }
+    [self searchSystemDB];
+        
+        if ([self.fmdb open]) {
+            NSString *cardcode=[GlobalInstance instance ].curUser.cardCode;
+            if ([cardcode isEqualToString:@""]) {
+                cardcode = @"cardcode";
+            }
+            NSString *isread = @"1";
+            BOOL result =  [self.fmdb executeUpdate:[NSString stringWithFormat:@"update vcUserPushMsg set isread = '%@';",isread]];
+            if (result) {
+                [self.fmdb close];
+            }
+        }
+        [self searchPersonDB];
+    [super navigationBackToLastPage];
 }
-*/
 
 @end

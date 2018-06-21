@@ -9,12 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "HotSchemeModel.h"
 
-@protocol ToPersonViewDelegate <NSObject>
-
--(void)itemClickToPerson:(NSString *)carcode;
-
-@end
-
 @interface HotFollowSchemeViewCell : UITableViewCell
 
 //个人中心
@@ -25,7 +19,5 @@
 
 //我的关注
 -(void)loadDataWithModelInNotice:(HotSchemeModel *)model;
-
-@property(nonatomic,weak)id <ToPersonViewDelegate> delegate;
 
 @end

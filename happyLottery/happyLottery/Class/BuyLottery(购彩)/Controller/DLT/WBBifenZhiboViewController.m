@@ -43,7 +43,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.topViewHeight.constant = NaviHeight + 30;
     self.viewControllerNo = @"A108";
     self.dataArray = [NSMutableArray arrayWithCapacity:0];

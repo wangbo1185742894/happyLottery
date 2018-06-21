@@ -9,11 +9,10 @@
 #import "GroupFollowViewController.h"
 #import "HotFollowSchemeViewCell.h"
 #import "FollowDetailViewController.h"
-#import "PersonCenterViewController.h"
 
 #define KHotFollowSchemeViewCell  @"HotFollowSchemeViewCell"
 
-@interface GroupFollowViewController ()<UITableViewDelegate,UITableViewDataSource,AgentManagerDelegate,ToPersonViewDelegate>
+@interface GroupFollowViewController ()<UITableViewDelegate,UITableViewDataSource,AgentManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topDis;
 @property (weak, nonatomic) IBOutlet UITableView *listTableView;
@@ -97,7 +96,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     HotFollowSchemeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KHotFollowSchemeViewCell];
-    cell.delegate = self;
     HotSchemeModel *model = [self.personArray objectAtIndex:indexPath.row];
     [cell loadDataWithModelInNotice:model];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -113,13 +111,6 @@
     followVC.model = self.personArray[indexPath.row];
     followVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:followVC animated:YES];
-}
-
--(void)itemClickToPerson:(NSString *)carcode{
-    PersonCenterViewController *viewContr = [[PersonCenterViewController alloc]init];
-    viewContr.cardCode = carcode;
-    viewContr.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:viewContr animated:YES];
 }
 
 @end

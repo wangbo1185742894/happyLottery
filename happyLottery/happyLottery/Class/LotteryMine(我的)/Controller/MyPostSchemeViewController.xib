@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,8 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyPostSchemeViewController">
             <connections>
-                <outlet property="btnFadan" destination="6tH-Fw-ED0" id="JPo-0G-ife"/>
-                <outlet property="btnGendan" destination="XnS-pw-6k3" id="iei-a2-u6d"/>
+                <outlet property="btnFadan" destination="XnS-pw-6k3" id="M3G-JN-OGW"/>
+                <outlet property="btnGendan" destination="6tH-Fw-ED0" id="4Yw-mQ-1f4"/>
                 <outlet property="disImgLeft" destination="l4i-Bm-Gp2" id="ncv-9k-mB1"/>
                 <outlet property="imgBottom" destination="VkQ-2f-N6i" id="9v3-8K-yys"/>
                 <outlet property="tabSchemeListView" destination="KMJ-bX-BzV" id="wsa-G4-H7Y"/>
@@ -36,7 +36,7 @@
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <state key="normal" title="我的跟单">
+                            <state key="normal" title="我的发单">
                                 <color key="titleColor" red="0.1450980392" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <state key="selected">
@@ -54,7 +54,7 @@
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <state key="normal" title="我的发单">
+                            <state key="normal" title="我的跟单">
                                 <color key="titleColor" red="0.1450980392" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <state key="selected">
