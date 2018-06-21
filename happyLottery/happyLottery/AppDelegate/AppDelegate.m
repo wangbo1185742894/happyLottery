@@ -783,9 +783,9 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         return;
     }else if ([keyStr isEqualToString:@"A425"]){
 
-        UITabBarController *rootTab = (UITabBarController *)[UIApplication sharedApplication].keyWindow .rootViewController;
-        rootTab.selectedIndex  =2;
-        return;
+//        UITabBarController *rootTab = (UITabBarController *)[UIApplication sharedApplication].keyWindow .rootViewController;
+//        rootTab.selectedIndex  =2;
+//        return;
     }else{
           baseVC.hidesBottomBarWhenPushed = YES;
     }

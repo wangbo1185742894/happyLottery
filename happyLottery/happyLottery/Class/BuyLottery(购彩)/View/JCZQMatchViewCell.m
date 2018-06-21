@@ -142,11 +142,11 @@
     NSMutableAttributedString *attrStrN = [[NSMutableAttributedString alloc] initWithString:dic[@"nTitle"]];
     NSMutableAttributedString *attrStrS = [[NSMutableAttributedString alloc] initWithString:dic[@"nTitle"]];
     if ([self isCanBuyThisType:item]) {
-        NSDictionary * firstAttributesN = @{ NSFontAttributeName:[UIFont systemFontOfSize:13],NSForegroundColorAttributeName:RGBCOLOR(72, 72, 72)};
+        NSDictionary * firstAttributesN = @{ NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:RGBCOLOR(72, 72, 72)};
         [attrStrN setAttributes:firstAttributesN range:NSMakeRange(0, attrStrN.string.length)];
         
         
-        NSDictionary * firstAttributesS = @{ NSFontAttributeName:[UIFont systemFontOfSize:13],NSForegroundColorAttributeName:[UIColor whiteColor]};
+        NSDictionary * firstAttributesS = @{ NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:[UIColor whiteColor]};
         [attrStrS setAttributes:firstAttributesS range:NSMakeRange(0, attrStrS.string.length)];
         
     }else{
