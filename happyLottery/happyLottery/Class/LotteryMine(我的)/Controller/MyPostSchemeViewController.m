@@ -172,6 +172,7 @@
 //            return;
 //        }
 //    }
+    self.tabBarController.selectedIndex = 4;
     [self.navigationController popToRootViewControllerAnimated:YES];
 //    [super navigationBackToLastPage];
 }
