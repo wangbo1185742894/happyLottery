@@ -579,9 +579,14 @@
                 return;
             }
         }
-    self.tabBarController.selectedIndex = 4;
-    [self.navigationController popToRootViewControllerAnimated:YES];
-    
+    MyPostSchemeViewController *revise = [[MyPostSchemeViewController alloc]init];
+    revise.hidesBottomBarWhenPushed = YES;
+    if ([self.schemeType isEqualToString:@"BUY_INITIATE"]) {
+        revise.isFaDan = YES;
+    } else {
+        revise.isFaDan = NO;
+    }
+    [self.navigationController pushViewController:revise animated:YES];
 }
 
 - (void) gotisAttent:(NSString *)diction  errorMsg:(NSString *)msg{
