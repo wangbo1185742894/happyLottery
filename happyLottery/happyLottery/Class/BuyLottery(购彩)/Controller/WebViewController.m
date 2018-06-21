@@ -37,7 +37,7 @@
             [self.navigationController popViewControllerAnimated:YES];
             return;
         }
-        
+
         NSURL *url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:_htmlName ofType:self.type]];
         [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
     }else{
@@ -157,18 +157,20 @@
 }
 
 
--(void)SharingLinks:(NSString *)code{
+-(void)SharingLinks{
     //    [self showPromptText:code hideAfterDelay:1.8];
     dispatch_async(dispatch_get_main_queue(), ^{
         
-        [self initshare:code];
+        [self initshare:@""];
     });
 }
 
 -(void)initshare:(NSString *)code{
-    
-    if (![code isEqualToString:@""]) {
-        NSString *url = [NSString stringWithFormat:@"tfi.11max.com/Tbz/Share?shareCode=%@",code];
+    if (self.curUser.isLogin == NO) {
+        [self needLogin];
+        return;
+    }
+        NSString *url = [self .curUser getShareUrl];
         
         NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
         NSArray* imageArray = @[[[NSBundle mainBundle] pathForResource:@"logo120@2x" ofType:@"png"]];
@@ -239,10 +241,6 @@
                                break;
                        }
                    }];
-    }else{
-        return;
-    }
-    
     
 }
 
@@ -257,12 +255,16 @@
         return;
     }
     [self.memberMan giveShareScore:Info];
-    
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
     self.navigationController.navigationBar.hidden = NO;
+}
+- (void)telPhone{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"tel://4006005558"]];
+    });
 }
 
 

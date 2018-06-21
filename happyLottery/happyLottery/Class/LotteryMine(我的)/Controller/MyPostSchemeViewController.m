@@ -93,7 +93,7 @@
 }
 
 -(void)loadNewData{
-    page = 0;
+    page = 1;
     NSString *costType = @"CASH";
     [self.lotteryMan getSchemeRecord:@{@"cardCode":self.curUser.cardCode,@"page":@(page),@"pageSize":@(KpageSize),@"costType":costType,@"schemeType":[self getSchemeType]}];
 }
@@ -120,7 +120,7 @@
         [self showPromptText:msg hideAfterDelay:17];
         return;
     }
-    if(page == 0){
+    if(page == 1){
         [dataArray removeAllObjects];
     }
     for (NSDictionary *itemDic in infoDic) {
@@ -161,7 +161,7 @@
     FASSchemeDetailViewController *detailCV = [[FASSchemeDetailViewController alloc]init];
     detailCV.schemeNo = model.schemeNO;
     detailCV.schemeType = [self getSchemeType];
-
+    detailCV.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detailCV animated:YES];
 }
 

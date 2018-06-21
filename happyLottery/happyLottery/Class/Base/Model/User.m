@@ -11,10 +11,27 @@
 #import <AudioToolbox/AudioToolbox.h>//添加推送声音lala
 
 @interface User()
-   @property(nonatomic,strong)FMDatabase* fmdb;
+@property(nonatomic,strong)FMDatabase* fmdb;
 @end
 
 @implementation User
+
+-(void)setValue:(id)value forKey:(NSString *)key{
+    if ([key isEqualToString:@"bankBinding"]) {
+        self.bankBinding = [value boolValue];
+        return;
+    }
+    if ([key isEqualToString:@"paypwdSetting"]) {
+        self.paypwdSetting = [value boolValue];
+        return;
+    }
+    if ([key isEqualToString:@"payPWDThreshold"]) {
+        self.payPWDThreshold = [value intValue];
+        return;
+    }
+    [super setValue:value forKey:key];
+}
+
 
 -(PayVerifyType)payVerifyType{
     
@@ -41,12 +58,26 @@
 }
 
 -(NSString *)whitelist{
+    
+#ifdef APPSTORE
+    
     if ([_whitelist boolValue] == YES&& self.isLogin == YES) {
         return @"1";
     }else{
+        
         return @"0";
     }
+#endif
+    return @"1";
+
 }
 
+-(NSString *)getShareUrl{
+    if ([self.memberType isEqualToString:@"CIRCLE_MASTER"]) {
+        return [NSString stringWithFormat:@"%@%@?shareCode=%@&shareCardCode=%@",H5BaseAddress,KcircleRegister,self.shareCode,self.cardCode];
+    }else{
+        return [NSString stringWithFormat:@"%@%@?shareCardCode=%@",H5BaseAddress,KcircleRegisterCopy,self.cardCode];
+    }
+}
 
 @end

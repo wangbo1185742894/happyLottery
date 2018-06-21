@@ -188,6 +188,9 @@
         }
         
         [self loadMatchSP];
+        if (self.playType == JCZQPlayTypeDanGuan) {
+            [self lotteryProfileSelectViewDelegate:self.trancation.curProfile andPlayType:JCZQPlayTypeDanGuan andRes:@"1"];
+        }
     }
   
 }
@@ -304,19 +307,33 @@
     WBButton * titleBtn = [WBButton buttonWithType:UIButtonTypeCustom];
     titleBtn.frame = CGRectMake(0, 10, 150, 40);
     [titleBtn addTarget:self action:@selector(showProfileType) forControlEvents:UIControlEventTouchUpInside];
-    [titleBtn setTitle:@"混合过关" forState:0];
+    if (self.playType == JCZQPlayTypeDanGuan) {
+        [titleBtn setTitle:@"胜平负" forState:0];
+    }else{
+        [titleBtn setTitle:@"混合过关" forState:0];
+    }
+    
     [titleBtn setImage:[UIImage imageNamed:@"wanfaxiala"] forState:0];
     titleBtn.titleLabel.font = [UIFont systemFontOfSize:18];
     if (profileSelectView == nil) {
-        profileSelectView = [[LotteryProfileSelectView alloc]initWithFrame:CGRectMake(0, 64, KscreenWidth, KscreenHeight - 64)];
+        profileSelectView = [[LotteryProfileSelectView alloc]initWithFrame:CGRectMake(0, NaviHeight, KscreenWidth, KscreenHeight - 64)];
     }
-    profileSelectView.frame = CGRectMake(0, 64, KscreenWidth, KscreenHeight - 64);
+    [profileSelectView setPlayVIew:self.playType];
+    
+    profileSelectView.frame = CGRectMake(0, NaviHeight, KscreenWidth, KscreenHeight - 64);
     profileSelectView.delegate = self;
     [self getCurlotteryProfiles];
     profileSelectView.lotteryPros = self.profiles;
     profileSelectView.hidden = YES;
-    self.trancation.playType = JCZQPlayTypeGuoGuan;
-    self.trancation.curProfile = self.profiles[4];
+    if (self.playType == JCZQPlayTypeDanGuan) {
+        self.trancation.playType = JCZQPlayTypeDanGuan;
+        self.trancation.curProfile = self.profiles[0];
+    }else{
+        self.trancation.playType = JCZQPlayTypeGuoGuan;
+        self.trancation.curProfile = self.profiles[4];
+    }
+    
+    
     [self.view addSubview:profileSelectView];
     self.navigationItem.titleView = titleBtn;
 }
@@ -613,7 +630,6 @@
     
     if ([self.arrayTableSectionIsOpen [section] boolValue] == YES) {
         [header.imgDir setImage:[UIImage imageNamed:@"arrow_up"]];
-        
     }else{
         [header.imgDir setImage:[UIImage imageNamed:@"arrow_down"]];
     }
@@ -674,18 +690,17 @@
     }
     if (self.trancation.playType == JCZQPlayTypeGuoGuan) {
         if (self.trancation.selectMatchArray.count < 2 ) {
-            if(self.trancation.selectMatchArray.count ==1){
-                JCZQMatchModel *model = [self.trancation.selectMatchArray firstObject];
-                if (model.isDanGuan == YES) {
-                    self.trancation.chuanFa = @"单场";
-                    return nil;
-                }
+//            if(self.trancation.selectMatchArray.count ==1){
+//                JCZQMatchModel *model = [self.trancation.selectMatchArray firstObject];
+//                if (model.isDanGuan == YES) {
+//                    self.trancation.chuanFa = @"单场";
+//                    return nil;
+//                }
+//                return  @"过关模式下，至少选择两场比赛";
+//
+//            }else{
                 return  @"过关模式下，至少选择两场比赛";
-                
-            }else{
-                return  @"过关模式下，至少选择两场比赛";
-                
-            }
+//            }
             
         }
     }

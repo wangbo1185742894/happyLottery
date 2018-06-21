@@ -23,10 +23,10 @@
 #define H5BaseAddress @"http://tbz.xianyingcai.com:28086"
 
 //#define ServerAddress @"http://192.168.88.244:8086"  //资讯  轮播图 用户图像
-////#define H5BaseAddress @"http://192.168.88.244:18086"
+//#define H5BaseAddress @"http://192.168.88.244:18086"
 //#define WSServerURL @"http://192.168.88.244:28000/services%@"
 //
-//
+
 //#define H5BaseAddress @"http://192.168.88.193:18086"  //谢青服务
 //#define H5BaseAddress @"http://192.168.88.116:18086"  //史少鹏服务
 //杨芳本地
@@ -95,11 +95,11 @@
 #define APIGetHotFollowScheme        @"getHotFollowScheme"  // 获取热门发单
 #define APIGetInitiateInfo           @"getInitiateInfo"  //获取发单会员详细信息
 #define APIgetListAttent                              @"listAttent"
-
 #define APIGetFollowSchemeByNickName  @"getFollowSchemeByNickName"
 #define APIIsAttent                   @"isAttent"   //是否关注
 #define APIAttentMember             @"attentMember" //关注会员
 #define APIReliefAttent             @"reliefAttent"  //解除跟单
+#define APIlistRechargeHandsel      @"listRechargeHandsel"
 
 #define SUBAPIDATA           @"/data"
 #define APISaveClientInfo           @"saveClientInfo"
@@ -164,5 +164,25 @@
 #define APIGetJcgyjTicketOrderDetail  @"getJcgyjTicketOrderDetail"//查询冠亚军订单详情
 #define APIGetSsqTicketOrderDetail    @"getSsqTicketOrderDetail"//查询订单详情(双色球)
 #define APIGetJclqTicketOrderDetail   @"getJclqTicketOrderDetail"// 查询订单详情(竞彩篮球)
+
+#define SUBAPIAgentService  @"/agent"
+
+#define Agent_agentApply @"agentApply"  /** 会员建圈申请*/
+#define Agent_getAgentInfo @"getAgentInfo" //获取当前用户的圈子信息()
+#define Agent_listAgentMember @"listAgentMember"//获取当前用户所在圈子的所有圈民列表(我的圈子->我的圈友)
+#define Agent_getAgentFollowCount @"getAgentFollowCount"//获取当前登录用户的圈子可跟单方案数
+#define Agent_listAgentFollow @"listAgentFollow" //获取当前登录用户的圈子可跟单方案
+#define Agent_listAgentDynamic @"listAgentDynamic" //获取圈子的动态
+#define Agent_getMyAgentInfo @"getMyAgentInfo" //获取我的圈子
+#define Agent_transferAccount @"transferAccount" //佣金账户转个人账户
+#define Agent_listMyTransfer @"listMyTransfer" //分页获取圈主的佣金转账记录
+#define Agent_modifyHeadUrl @"modifyHeadUrl" //变更圈子的头像
+#define Agent_modifyCircleName @"modifyCircleName" //变更圈名
+#define Agent_modifyNotice @"modifyNotice" //申请变更圈子公告
+#define Agent_listMyCommission @"listMyCommission" //获取圈子的佣金列表
+
+
+#define KcircleRegister @"/app/share/circleRegister" //圈主分享 H5BaseAddress
+#define KcircleRegisterCopy @"/app/share/circleRegisterCopy"  //圈友分享 H5BaseAddress
 
 #endif /* API_h */

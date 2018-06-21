@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -108,7 +108,7 @@
                                         <constraint firstAttribute="height" constant="26" id="t47-bM-ZsQ"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="为保证您提现和领奖成功，请如实填写相应信息，姓名只可填写一次，过后不可修改！" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPH-j7-edN">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请务必核实您的银行卡号信息和姓名是否一致。（不支持信用卡）" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPH-j7-edN">
                                     <rect key="frame" x="52" y="142" width="311" height="65"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="65" id="fYZ-W2-gtu"/>
@@ -246,7 +246,7 @@
                 <constraint firstItem="AbH-NK-PPC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="S1Z-Vl-fIv"/>
                 <constraint firstItem="AbH-NK-PPC" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="nNT-OH-kpl"/>
             </constraints>
-            <point key="canvasLocation" x="33.5" y="53.5"/>
+            <point key="canvasLocation" x="-108" y="22"/>
         </view>
     </objects>
     <resources>

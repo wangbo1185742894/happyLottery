@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -15,7 +15,6 @@
                 <outlet property="btnMoniTouzhu" destination="RUA-J6-5t7" id="JHQ-iL-73L"/>
                 <outlet property="btnZhenShiTouzhu" destination="Caz-J9-BJM" id="uaz-PI-kHT"/>
                 <outlet property="chuanfaBtn" destination="Adz-U4-5gQ" id="bUi-R4-5fM"/>
-                <outlet property="costTypeSelectView" destination="IfH-hP-Gpm" id="3Wr-6B-khq"/>
                 <outlet property="fadanBtn" destination="OO6-Nl-Gyn" id="FUP-yY-wnY"/>
                 <outlet property="labPrizeInfo" destination="mGP-od-XJJ" id="ByR-pL-kSL"/>
                 <outlet property="labZhuInfo" destination="Lkk-DG-d5Y" id="BRv-oB-h0O"/>
@@ -128,7 +127,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KNy-oP-xbW">
                     <rect key="frame" x="0.0" y="527" width="375" height="90"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IfH-hP-Gpm">
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IfH-hP-Gpm">
                             <rect key="frame" x="203" y="10" width="160" height="30"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RUA-J6-5t7">

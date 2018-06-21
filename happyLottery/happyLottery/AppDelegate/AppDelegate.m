@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "NewFeatureViewController.h"
+#import "GroupNewViewController.h"
+#import "GroupViewController.h"
 #import "WebCTZQHisViewController.h"
 #import "RecommendPerViewController.h"
 #import "MyPostSchemeViewController.h"
@@ -19,6 +21,7 @@
 #import "MyNoticeViewController.h"
 #import "MyAttendViewController.h"
 #import "netWorkHelper.h"
+#import "MyCircleViewController.h"
 // 引入JPush功能所需头文件
 #import "JPUSHService.h"
 #import "VersionUpdatingPopView.h"
@@ -54,9 +57,9 @@
 #import "LoginViewController.h"
 #import "BaseViewController.h"
 #import "HomeJumpViewController.h"
+#import "AgentManager.h"
 
-
-@interface AppDelegate ()<NewFeatureViewDelegate,MemberManagerDelegate,JPUSHRegisterDelegate,VersionUpdatingPopViewDelegate,NetWorkingHelperDelegate>
+@interface AppDelegate ()<NewFeatureViewDelegate,MemberManagerDelegate,JPUSHRegisterDelegate,VersionUpdatingPopViewDelegate,NetWorkingHelperDelegate,UITabBarControllerDelegate,AgentManagerDelegate>
 
 {
     UITabBarController *tabBarControllerMain;
@@ -71,9 +74,17 @@
     NSString *linkUrlNotice;
     NSString *titleNotice;
     BOOL isLogin ;
+    UINavigationController *homeNavVC;
+    UINavigationController *genTouNavVC;
+    UINavigationController *gouCaiNavVC;
+    UINavigationController *faXianNavVC;
+    UINavigationController *memberNavVC;
+    NSUInteger _lastSelectedIndex;
+    
 }
 
 @property(nonatomic,strong)FMDatabase* fmdb;
+@property (nonatomic,strong)AgentManager * agentMan;
 @end
 static SystemSoundID shake_sound_male_id = 0;
 
@@ -81,9 +92,11 @@ static SystemSoundID shake_sound_male_id = 0;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
     [self loadTabVC];
     
+    tabBarControllerMain.delegate = self;
+    _lastSelectedIndex = 0;
+    _showGroup = NO;
      [[UIApplication sharedApplication]setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
     [[UITextField appearance]setTintColor:SystemGreen];
     
@@ -91,18 +104,20 @@ static SystemSoundID shake_sound_male_id = 0;
     NSString *doc=[NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString *fileName=[doc stringByAppendingPathComponent:@"userInfo.sqlite"];
     self.fmdb =[FMDatabase databaseWithPath:fileName];
-  
-    
+
     memberMan = [[MemberManager alloc]init];
     memberMan.delegate = self;
     [memberMan getVueHttpUrl];
      _messageContents = [[NSMutableArray alloc] initWithCapacity:6];
+    
     [self setKeyWindow];
+    
+    
     [self initJpush];
     [self setNewFeature];
     [self dataSave];
     [self autoLogin];
-  
+
     NSString  *pushKey;
 #ifdef APPSTORE
     pushKey = @"0b8f85bf5208bb5da4651334";
@@ -118,6 +133,7 @@ static SystemSoundID shake_sound_male_id = 0;
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
     [defaultCenter addObserver:self selector:@selector(networkDidReceiveMessage:) name:kJPFNetworkDidReceiveMessageNotification object:nil];
     [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];
+    
     [JPUSHService setBadge:0];
     if (launchOptions) {
         NSDictionary * remoteNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
@@ -143,7 +159,8 @@ static SystemSoundID shake_sound_male_id = 0;
             NSLog(@"app 通过本地通知启动 localNotification = %@",localNotification);  
         }  
         NSDictionary *remoteCotificationDic = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];  
-        //远程通知启动  
+        //远程通知启动
+        
         if(remoteCotificationDic)  
         {
            NSDictionary * userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
@@ -153,6 +170,7 @@ static SystemSoundID shake_sound_male_id = 0;
             NSInteger badge = [[aps valueForKey:@"badge"] integerValue];
             [[UIApplication sharedApplication]setApplicationIconBadgeNumber:badge/2];
             [JPUSHService setBadge:badge/2];//清空JPush服务器中存储的badge值
+            [self jpushStart];
         }  
         
     }  
@@ -162,6 +180,9 @@ static SystemSoundID shake_sound_male_id = 0;
     
     return YES;
 }
+
+
+
 -(void)initShareSDK{
 
      [ShareSDK registerActivePlatforms:@[
@@ -292,12 +313,19 @@ static SystemSoundID shake_sound_male_id = 0;
     lastVersion = [defaults objectForKey:KEYAPPVERSION];
     curVersion = [NSBundle mainBundle].infoDictionary[KEYCURAPPVERSION];
     if ([curVersion isEqualToString:lastVersion]) { //
-        WelComeViewController *welcomeVC = [[WelComeViewController alloc]init];
-        _window.rootViewController = welcomeVC;
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             _window.rootViewController = tabBarControllerMain;
-        });
         
+        WelComeViewController * welCom = [[WelComeViewController alloc]init];
+        [[UIApplication sharedApplication].keyWindow addSubview:welCom.view];
+        [UIView animateWithDuration:1.5 animations:^{
+            
+            
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.2 animations:^{
+                welCom.view.alpha = 0.1;
+                 [welCom.view removeFromSuperview];
+            }];
+        }];
         
     }else{
         [defaults setObject:curVersion forKey:KEYAPPVERSION];
@@ -345,28 +373,28 @@ static SystemSoundID shake_sound_male_id = 0;
     tabAttrs[@"itemNormal"] = @"home_defealt";
     tabAttrs[@"itemSelected"] = @"home_select";
     tabAttrs[@"rootVC"] = @"BuyLotteryViewController";
-    UINavigationController *homeNavVC = [self tabNavVCWithAttr: tabAttrs];
+    homeNavVC = [self tabNavVCWithAttr: tabAttrs];
     
     tabAttrs[@"tabTitle"] = @"跟投";
     tabAttrs[@"title"] = @"";
     tabAttrs[@"itemNormal"] = @"quanzi_defealt";
     tabAttrs[@"itemSelected"] = @"quanzi_select";
     tabAttrs[@"rootVC"] = @"FollowSendViewController";
-    UINavigationController *genTouNavVC = [self tabNavVCWithAttr: tabAttrs];
+    genTouNavVC = [self tabNavVCWithAttr: tabAttrs];
     
     tabAttrs[@"tabTitle"] = @"圈子";
     tabAttrs[@"title"] = @"圈子";
     tabAttrs[@"itemNormal"] = @"quanzi_normal";
     tabAttrs[@"itemSelected"] = @"quanzi_secelcted";
     tabAttrs[@"rootVC"] = @"GroupViewController";
-    UINavigationController *gouCaiNavVC = [self tabNavVCWithAttr: tabAttrs];
+    gouCaiNavVC = [self tabNavVCWithAttr: tabAttrs];
     
     tabAttrs[@"tabTitle"] = @"发现";
     tabAttrs[@"title"] = @"发现";
     tabAttrs[@"itemNormal"] = @"faxian_defealt";
     tabAttrs[@"itemSelected"] = @"faxian_select";
     tabAttrs[@"rootVC"] = @"DiscoverViewController";
-    UINavigationController *faXianNavVC = [self tabNavVCWithAttr: tabAttrs];
+    faXianNavVC = [self tabNavVCWithAttr: tabAttrs];
     
     
     tabAttrs[@"tabTitle"] = @"我的";
@@ -374,13 +402,14 @@ static SystemSoundID shake_sound_male_id = 0;
     tabAttrs[@"itemNormal"] = @"wode_defealt";
     tabAttrs[@"itemSelected"] = @"wode_select";
     tabAttrs[@"rootVC"] = @"MineViewController";
-    UINavigationController *memberNavVC = [self tabNavVCWithAttr: tabAttrs];
+    memberNavVC = [self tabNavVCWithAttr: tabAttrs];
     tabBarControllerMain = [[UITabBarController alloc] init];
     tabBarControllerMain.viewControllers = @[homeNavVC,genTouNavVC,gouCaiNavVC,faXianNavVC, memberNavVC];
     tabBarControllerMain.view.frame = CGRectMake(0, 0, self.window.bounds.size.width, self.window.bounds.size.height);
     
     tabBarControllerMain.tabBar.backgroundColor = RGBCOLOR(37, 38, 38);
     tabBarControllerMain.tabBar.barTintColor =  RGBCOLOR(37, 38, 38);
+    
     
 }
 
@@ -487,35 +516,34 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
             [JPUSHService handleRemoteNotification:userInfo];
            pageCodeNotice =  [userInfo valueForKey:@"pageCode"];
            linkUrlNotice=[userInfo valueForKey:@"linkUrl"];
-//            [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];
-//            [JPUSHService setBadge:0];//清空JPush服务器中存储的badge值
-           
-//              if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive ||[UIApplication sharedApplication].applicationState == UIApplicationStateInactive) {
-            if (pageCodeNotice!=nil) {
-       
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(KTimeJumpAfter * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    
-                    [self goToYunshiWithInfo:pageCodeNotice];
-                });
-
-            }
-            if (linkUrlNotice!=nil) {
-
-                UITabBarController *tab = (UITabBarController *)_window.rootViewController;
-                UINavigationController *nav = tab.viewControllers[tab.selectedIndex];
-                JumpWebViewController *jumpVC = [[JumpWebViewController alloc] initWithNibName:@"JumpWebViewController" bundle:nil];
-                jumpVC.title = @"消息详情";
-                jumpVC.URL = linkUrlNotice;
-                jumpVC.hidesBottomBarWhenPushed = YES;
-                [nav pushViewController:jumpVC animated:YES];
-
-            }
-          //  }
+           [self jpushStart];
         }
     } else {
     }
 
     completionHandler();  // 系统要求执行这个方法
+}
+
+-(void)jpushStart{
+    if (pageCodeNotice!=nil) {
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(KTimeJumpAfter * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [self goToYunshiWithInfo:pageCodeNotice];
+        });
+        
+    }
+    if (linkUrlNotice!=nil) {
+        
+        UITabBarController *tab = (UITabBarController *)_window.rootViewController;
+        UINavigationController *nav = tab.viewControllers[tab.selectedIndex];
+        JumpWebViewController *jumpVC = [[JumpWebViewController alloc] initWithNibName:@"JumpWebViewController" bundle:nil];
+        jumpVC.title = @"消息详情";
+        jumpVC.URL = linkUrlNotice;
+        jumpVC.hidesBottomBarWhenPushed = YES;
+        [nav pushViewController:jumpVC animated:YES];
+        
+    }
 }
 
 - (void)networkDidReceiveMessage:(NSNotification *)notification {
@@ -565,6 +593,11 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
                 [winPushView refreshInfo:title andContent:content];
                 [[UIApplication sharedApplication].keyWindow addSubview:winPushView];
                 return;
+        }
+        if ([extra[@"messageType"] isEqualToString:@"JOIN_AGENT"]) {
+//            UITabBarController *tabBarVC = (UITabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+//            tabBarVC.selectedIndex = 2;
+            return;
         }
     }
 }
@@ -719,6 +752,11 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         MyAttendViewController *revise = [[MyAttendViewController alloc]init];
         [delegate.curNavVC pushViewController:revise animated:YES];
         return;
+    }else if ([keyStr isEqualToString:@"A425"]){
+
+        UITabBarController *rootTab = (UITabBarController *)[UIApplication sharedApplication].keyWindow .rootViewController;
+        rootTab.selectedIndex  =2;
+        return;
     }else{
           baseVC.hidesBottomBarWhenPushed = YES;
     }
@@ -767,14 +805,14 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         // 取得自定义字段内容，userInfo就是后台返回的JSON数据，是一个字典
        pageCodeNotice =  [userInfo valueForKey:@"pageCode"];
       linkUrlNotice=[userInfo valueForKey:@"linkUrl"];
- 
+        [self  jpushStart];
     [[UIApplication sharedApplication]setApplicationIconBadgeNumber:badge/2];
     [JPUSHService setBadge:badge/2 ];//清空JPush服务器中存储的badge值
 //         if ([UIApplication sharedApplication].applicationState != UIApplicationStateActive) {
 //
 //             if (pageCodeNotice!=nil) {
 //
-//                 [self goToYunshiWithInfo:pageCodeNotice];
+
 //
 //             }
 //             if (linkUrlNotice!=nil) {
@@ -795,22 +833,23 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     [JPUSHService handleRemoteNotification:userInfo];
-    if (pageCodeNotice!=nil) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(KTimeJumpAfter * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            
-            [self goToYunshiWithInfo:pageCodeNotice];
-        });
-    }
-    if (linkUrlNotice!=nil) {
-        
-        UITabBarController *tab = (UITabBarController *)_window.rootViewController;
-        UINavigationController *nav = tab.viewControllers[tab.selectedIndex];
-        JumpWebViewController *jumpVC = [[JumpWebViewController alloc] initWithNibName:@"JumpWebViewController" bundle:nil];
-        jumpVC.title = @"消息详情";
-        jumpVC.URL = linkUrlNotice;
-        jumpVC.hidesBottomBarWhenPushed = YES;
-        [nav pushViewController:jumpVC animated:YES];
-    }
+    
+//    if (pageCodeNotice!=nil) {
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(KTimeJumpAfter * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//
+//            [self goToYunshiWithInfo:pageCodeNotice];
+//        });
+//    }
+//    if (linkUrlNotice!=nil) {
+//
+//        UITabBarController *tab = (UITabBarController *)_window.rootViewController;
+//        UINavigationController *nav = tab.viewControllers[tab.selectedIndex];
+//        JumpWebViewController *jumpVC = [[JumpWebViewController alloc] initWithNibName:@"JumpWebViewController" bundle:nil];
+//        jumpVC.title = @"消息详情";
+//        jumpVC.URL = linkUrlNotice;
+//        jumpVC.hidesBottomBarWhenPushed = YES;
+//        [nav pushViewController:jumpVC animated:YES];
+//    }
 
 }
 
@@ -838,5 +877,80 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     }
 }
 
+
+- (void)setGroupView {
+    if (self.agentMan == nil) {
+        self.agentMan = [[AgentManager alloc]init];
+    }
+    self.agentMan.delegate = self;
+    NSDictionary *dic = @{@"cardCode":[GlobalInstance instance].curUser.cardCode};
+    [self.agentMan getAgentInfo:dic];
+}
+
+-(void )getAgentInfodelegate:(NSDictionary *)param isSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    if (!success) {
+        return;
+    }
+    NSString *agentStatus = [param objectForKey:@"agentStatus"];
+    if (agentStatus == nil) { //申请成功
+        //圈主or圈民
+        UINavigationController  *baseNAVVC = tabBarControllerMain.viewControllers[2];
+        BaseViewController *baseVC = (BaseViewController *)[baseNAVVC.childViewControllers firstObject];
+        if ([baseVC isKindOfClass:[GroupNewViewController class]]) {
+            gouCaiNavVC = [self groupDisplayNav:baseVC];
+        }else{
+            gouCaiNavVC = [self groupDisplayNav:nil];
+        }
+    }
+    else {
+       gouCaiNavVC = [self groupApplyNav];
+    }
+    tabBarControllerMain.viewControllers = @[homeNavVC,genTouNavVC,gouCaiNavVC,faXianNavVC, memberNavVC];
+    tabBarControllerMain.selectedIndex = 2;
+}
+
+//切换到圈子页面，当前无登陆用户，跳转到登陆页面，否则调到圈子
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
+    if (tabBarController.selectedIndex == 2){
+        //未登录
+        User * curUser = [GlobalInstance instance].curUser;
+        if (curUser.isLogin == NO) {
+            
+            AppDelegate *delegate  = (AppDelegate*)[UIApplication sharedApplication].delegate;
+            tabBarController.selectedIndex = _lastSelectedIndex;
+            BaseViewController *base = delegate.curNavVC.viewControllers[0];
+            _showGroup = YES;
+            [base needLogin];
+            return;
+        }
+        [self setGroupView];
+        
+    }
+    _showGroup = NO;
+    _lastSelectedIndex = tabBarController.selectedIndex;
+}
+
+- (UINavigationController *)groupApplyNav{
+    NSMutableDictionary *tabAttrs = [NSMutableDictionary dictionaryWithCapacity: 3];
+    tabAttrs[@"tabTitle"] = @"圈子";
+    tabAttrs[@"title"] = @"圈子";
+    tabAttrs[@"itemNormal"] = @"quanzi_normal";
+    tabAttrs[@"itemSelected"] = @"quanzi_secelcted";
+    tabAttrs[@"rootVC"] = @"GroupViewController";
+    return [self tabNavVCWithAttr: tabAttrs];
+}
+
+- (UINavigationController *)groupDisplayNav:(BaseViewController *)baseVC{
+    NSMutableDictionary *tabAttrs = [NSMutableDictionary dictionaryWithCapacity: 3];
+    tabAttrs[@"tabTitle"] = @"圈子";
+    tabAttrs[@"itemNormal"] = @"quanzi_normal";
+    tabAttrs[@"itemSelected"] = @"quanzi_secelcted";
+    tabAttrs[@"rootVC"] = @"GroupNewViewController";
+    UINavigationController *itemNav =[self tabNavVCWithAttr: tabAttrs];
+    if (baseVC != nil) {
+        itemNav.viewControllers = @[baseVC];
+    }
+    return itemNav;
+}
 
 @end

@@ -9,10 +9,11 @@
 #import "MyNoticeViewController.h"
 #import "HotFollowSchemeViewCell.h"
 #import "FollowDetailViewController.h"
+#import "PersonCenterViewController.h"
 
 #define KHotFollowSchemeViewCell  @"HotFollowSchemeViewCell"
 
-@interface MyNoticeViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate>
+@interface MyNoticeViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,ToPersonViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *listTableView;
 @property(assign,nonatomic)NSInteger page;
@@ -42,7 +43,7 @@
     [self loadNewData];
 }
 -(void)loadNewData{
-    self.page = 0;
+    self.page = 1;
     NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"page":@(_page),@"pageSize":@(KpageSize)};
     [self.lotteryMan getAttentFollowScheme:dic];
 }
@@ -57,9 +58,15 @@
 }
 
 - (void) gotAttentFollowScheme:(NSArray  *)personList  errorMsg:(NSString *)msg{
-    [self.personArray removeAllObjects];
-    //添加数据
     [self.listTableView tableViewEndRefreshCurPageCount:personList.count];
+    if (personList == nil) {
+        [self showPromptText:msg hideAfterDelay:1.0];
+        return;
+    }
+    if (self.page == 1) {
+        [self.personArray removeAllObjects];
+    }
+    //添加数据
     for (NSDictionary *dic in personList) {
         HotSchemeModel *model = [[HotSchemeModel alloc]initWith:dic];
         [self.personArray addObject:model];
@@ -83,6 +90,7 @@
     HotFollowSchemeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KHotFollowSchemeViewCell];
     HotSchemeModel *model = [self.personArray objectAtIndex:indexPath.row];
     [cell loadDataWithModelInNotice:model];
+    cell.delegate = self;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -98,4 +106,10 @@
     [self.navigationController pushViewController:followVC animated:YES];
 }
 
+-(void)itemClickToPerson:(NSString *)carcode{
+    PersonCenterViewController *viewContr = [[PersonCenterViewController alloc]init];
+    viewContr.cardCode = carcode;
+    viewContr.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:viewContr animated:YES];
+}
 @end

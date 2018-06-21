@@ -139,7 +139,7 @@ static NSString * const ReuseIdentifier = @"cell";
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSNumber *height = [self.heightAtIndexPath objectForKey:indexPath];
-    if(height)
+    if(height != nil)
     {
         return height.floatValue;
     }

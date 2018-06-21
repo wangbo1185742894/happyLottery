@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14109"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CFLineChartView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="220"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FlP-wR-TU7">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="220"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="FlP-wR-TU7" secondAttribute="trailing" id="Cye-qG-asj"/>
+                <constraint firstAttribute="bottom" secondItem="FlP-wR-TU7" secondAttribute="bottom" id="Hnd-z9-Eb2"/>
+                <constraint firstItem="FlP-wR-TU7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="VT1-iK-JZg"/>
+                <constraint firstItem="FlP-wR-TU7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="gH2-2H-ufd"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="bgView" destination="FlP-wR-TU7" id="7sF-z5-KUk"/>
+            </connections>
+            <point key="canvasLocation" x="268" y="282"/>
+        </view>
+    </objects>
+</document>

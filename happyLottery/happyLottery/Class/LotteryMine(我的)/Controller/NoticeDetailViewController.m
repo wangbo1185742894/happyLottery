@@ -31,7 +31,7 @@
     
     self.titleLab.text = notice.title;
     self.noticeLab.text = notice.content;
-    self.dateLab.text = notice.endTime;
+    self.dateLab.text = notice.releaseTime;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -213,8 +213,8 @@
                         <constraint firstAttribute="bottom" secondItem="wLA-O8-p8L" secondAttribute="bottom" id="QSh-Gf-5Hr"/>
                         <constraint firstItem="eyd-X2-ZgK" firstAttribute="top" secondItem="0WI-oX-CFv" secondAttribute="top" constant="11.5" id="STS-CH-CNW"/>
                         <constraint firstAttribute="trailing" secondItem="T7H-Oc-q4H" secondAttribute="trailing" id="Z0q-Xh-ef9"/>
-                        <constraint firstItem="9Fw-gL-pjo" firstAttribute="top" secondItem="T7H-Oc-q4H" secondAttribute="bottom" constant="16" id="Z2G-ge-9OA"/>
                         <constraint firstItem="1wU-eC-OOs" firstAttribute="top" secondItem="9Fw-gL-pjo" secondAttribute="bottom" constant="6" id="fKY-Fz-hsY"/>
+                        <constraint firstItem="9Fw-gL-pjo" firstAttribute="top" secondItem="0WI-oX-CFv" secondAttribute="top" constant="131" id="kwF-JY-3hy"/>
                         <constraint firstItem="1wU-eC-OOs" firstAttribute="leading" secondItem="0WI-oX-CFv" secondAttribute="leading" id="mu6-jt-QWx"/>
                         <constraint firstItem="T7H-Oc-q4H" firstAttribute="leading" secondItem="0WI-oX-CFv" secondAttribute="leading" id="nas-Te-DhO"/>
                         <constraint firstItem="wLA-O8-p8L" firstAttribute="top" secondItem="0WI-oX-CFv" secondAttribute="top" id="oPE-Rf-Ry4"/>
@@ -233,7 +233,11 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="heightVIew" destination="6JM-bq-gCt" id="WXB-G1-FWl"/>
+                <outlet property="labPlayType" destination="eyd-X2-ZgK" id="Djp-Yb-sr6"/>
                 <outlet property="lotteryProfileItemView" destination="0WI-oX-CFv" id="SnL-8a-wQC"/>
+                <outlet property="topDis" destination="kwF-JY-3hy" id="0FY-Wc-mxm"/>
+                <outlet property="viewGuoguan" destination="T7H-Oc-q4H" id="nRq-lc-2Hf"/>
                 <outletCollection property="profileSelectArray" destination="JzH-5P-KMx" id="q2E-bI-Z8x"/>
                 <outletCollection property="profileSelectArray" destination="VnE-lM-pCO" id="umn-NM-ZH2"/>
                 <outletCollection property="profileSelectArray" destination="BRZ-fb-pdb" id="Llj-eG-C3B"/>

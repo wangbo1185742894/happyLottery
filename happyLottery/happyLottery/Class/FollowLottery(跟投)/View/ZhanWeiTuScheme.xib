@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,15 +18,15 @@
                 <rect key="frame" x="0.0" y="0.0" width="346" height="148.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic_gendankongbaiye.png" translatesAutoresizingMaskIntoConstraints="NO" id="mla-iP-oCV">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mla-iP-oCV">
                         <rect key="frame" x="98" y="30.5" width="150" height="88"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="88" id="dzt-6X-bYx"/>
                             <constraint firstAttribute="width" constant="150" id="jFZ-Cc-BNP"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无数据~" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9r-8j-0aq">
-                        <rect key="frame" x="135.5" y="128.5" width="75.5" height="19.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9r-8j-0aq">
+                        <rect key="frame" x="173.5" y="128.5" width="0.0" height="0.0"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" red="0.70588235290000001" green="0.69411764710000001" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -39,10 +39,11 @@
                     <constraint firstItem="R9r-8j-0aq" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="wai-xu-hbA"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="placeImage" destination="mla-iP-oCV" id="6ne-Q7-1Xx"/>
+                <outlet property="placeLab" destination="R9r-8j-0aq" id="Vfz-gi-Egw"/>
+            </connections>
             <point key="canvasLocation" x="38" y="104.5"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="pic_gendankongbaiye.png" width="149" height="87"/>
-    </resources>
 </document>

@@ -53,7 +53,6 @@
     }
     [UITableView refreshHelperWithScrollView:self.personTabelView target:self loadNewData:@selector(loadNewData) loadMoreData:@selector(loadMoreData) isBeginRefresh:NO];
     self.personArray = [NSMutableArray arrayWithCapacity:0];
-    _page = 1;
     [self initTabelView];
     if (self.lotteryMan == nil) {
         self.lotteryMan = [[LotteryManager alloc]init];
@@ -139,20 +138,14 @@
 -(void)loadNewData{
     _page = 1;
     NSDictionary *parc;
-    if (model.nickName != nil) {
-        parc = @{@"nickName":model.nickName,@"page":@(_page),@"pageSize":@(KpageSize),@"isHis":@YES};
-    }else{
-        parc = @{@"nickName":model.cardCode,@"page":@(_page),@"pageSize":@(KpageSize),@"isHis":@YES};
-    }
+    parc = @{@"nickName":model.cardCode,@"page":@(_page),@"pageSize":@(KpageSize),@"isHis":@YES};
     [self.lotteryMan getFollowSchemeByNickName:parc];
 }
 
 -(void)loadMoreData{
     _page ++;
     NSDictionary *parc;
-    if (model.nickName != nil) {
-        parc = @{@"nickName":model.nickName,@"page":@(_page),@"pageSize":@(KpageSize),@"isHis":@YES};
-    }
+    parc = @{@"nickName":model.cardCode,@"page":@(_page),@"pageSize":@(KpageSize),@"isHis":@YES};
     [self.lotteryMan getFollowSchemeByNickName:parc];
 }
 

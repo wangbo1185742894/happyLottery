@@ -254,7 +254,7 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     RecomPerModel *model = [self.personArray objectAtIndex:indexPath.row];
     [cell reloadDate:model categoryCode:self.categoryCode];
-    if(indexPath.row <3 ||[self.categoryCode isEqualToString:@"Cowman"]){
+    if(indexPath.row <3){
         cell.infoOneSum.textColor = RGBCOLOR(254, 58, 81);
         cell.infoTwoSum.textColor = RGBCOLOR(254, 58, 81);
     }

@@ -63,7 +63,7 @@
 -(void)withdrawSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     [self hideLoadingView];
     if ([msg isEqualToString:@"执行成功"]) {
-        [self showPromptText: @"会员提现成功" hideAfterDelay: 1.7];
+        [self showPromptText: @"申请提交成功" hideAfterDelay: 1.7];
           [self performSelector:@selector(delayMethod) withObject:nil afterDelay:1.0];
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
@@ -205,6 +205,11 @@
 - (void)showPayPopView{
     if ([self.withdrawTextField.text isEqualToString:@"" ]) {
         [self showPromptText: @"请输入取现金额" hideAfterDelay: 2.7];
+        return;
+    }
+    NSString *money = [NSString stringWithFormat:@"%.2f",[self.withdrawTextField.text doubleValue]];
+    if ([money isEqualToString:@"0.00"]) {
+        [self showPromptText: @"输入有效金额" hideAfterDelay: 2.7];
         return;
     }
     double text =[self.withdrawTextField.text doubleValue];

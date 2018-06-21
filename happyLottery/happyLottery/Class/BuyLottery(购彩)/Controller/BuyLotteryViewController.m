@@ -105,8 +105,6 @@ static NSString *ID = @"LotteryAreaViewCell";
     __weak IBOutlet UIButton *gyjButton;
     NSMutableArray * _lotteryArr;
     BOOL showGJbtn;
-    
-
 }
 
 @property(nonatomic,strong)NSMutableArray *sellLottery;
@@ -119,6 +117,7 @@ static NSString *ID = @"LotteryAreaViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     CGFloat bottomheight;
     self.sellLottery = [NSMutableArray arrayWithCapacity:0];
     
@@ -126,14 +125,6 @@ static NSString *ID = @"LotteryAreaViewCell";
         bottomheight = 83;
     }else{
         bottomheight = 49;
-    }
-    
-    if ([self.curUser.whitelist boolValue] == NO) {
-        playViewHeight.constant = 0;
-        lotteryPlayView.hidden = YES;
-    }else{
-        playViewHeight.constant = 180;
-        lotteryPlayView.hidden = NO;
     }
 
     NSString *plistPath = [[NSBundle mainBundle]pathForResource:@"LotteryArea" ofType:@"plist"];
@@ -257,6 +248,13 @@ static NSString *ID = @"LotteryAreaViewCell";
 
 }
 
+-(void)actionJCZQDG:(UIButton *)sender{
+    JCZQPlayViewController * playViewVC = [[JCZQPlayViewController alloc]init];
+    playViewVC.playType = JCZQPlayTypeDanGuan;
+    playViewVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:playViewVC animated:YES];
+}
+
 -(void)actionPL3:(UIButton *)sender{
     [self showPromptText:@"该玩法暂未开售" hideAfterDelay:2.0];
 }
@@ -269,7 +267,9 @@ static NSString *ID = @"LotteryAreaViewCell";
     }
     appSignModel = [[AppSignModel alloc]initWith:personList];
     activityInfoView.labActivityInfo.text = appSignModel.describe;
-    [activityInfoView.imgRedIcon sd_setImageWithURL:[NSURL URLWithString:appSignModel.imageUrl]];
+    if (appSignModel.imageUrl != nil) {
+          [activityInfoView.imgRedIcon sd_setImageWithURL:[NSURL URLWithString:appSignModel.imageUrl]];
+    }
 }
 
 -(void)startActivity{
@@ -811,23 +811,33 @@ static NSString *ID = @"LotteryAreaViewCell";
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+ 
     //    activityInfoView.hidden = YES;
+    if ([self.curUser.whitelist boolValue] == NO) {
+        playViewHeight.constant = 0;
+        lotteryPlayView.hidden = YES;
+    }else{
+        playViewHeight.constant = 180;
+        lotteryPlayView.hidden = NO;
+    }
     
-    [self getLotteryList];
+   
     self.navigationController.navigationBar.hidden = YES;
     if (self.tabBarController.tabBar.hidden == YES) {
         self.tabBarController.tabBar.hidden = NO;
     }
-    [self getJczqShortcut];
-    
     [adsView setImageUrlArray:nil];
+    
+    
+     [self getLotteryList];
+    [self getJczqShortcut];
     [adsView openTimer];
     [self loadAdsImg];
-    
     [self loadNews];
     [self getJczqShortcut];
     
@@ -1416,7 +1426,6 @@ static NSString *ID = @"LotteryAreaViewCell";
 
     
 }
-
 
 
 @end

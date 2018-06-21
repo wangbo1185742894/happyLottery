@@ -45,8 +45,11 @@
     self.view.mj_h = KscreenHeight;
     self.memberMan = [[MemberManager alloc]init];
     self.lotteryMan = [[LotteryManager alloc]init];
+    self.agentMan = [[AgentManager alloc]init];
+    
     self.memberMan.netDelegate = self;
     self.lotteryMan.netDelegate = self;
+    self.agentMan.netDelegate = self;
     [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
     [self setNavigationBack];
     NSString *doc=[NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
@@ -56,7 +59,12 @@
 }
 
 -(User *)curUser{
-    return [GlobalInstance instance ].curUser;
+    if ([GlobalInstance instance ].curUser == nil) {
+        return [User new];
+    }else{
+        
+        return [GlobalInstance instance ].curUser;
+    }
 }
 
 -(void)setNavigationBack{
@@ -83,7 +91,6 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
      AppDelegate *delegate  = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    
     delegate.curNavVC = self.navigationController;
     self.openDate = [NSDate date];
     [self afnReachabilityTest];
@@ -296,6 +303,7 @@
 }
 
 -(void)saveInfo{
+    return;
     //@"create table if not exists vcUserActiveInfo(id integer primary key, vcNo text,updateDate text, visitCount integer , visitTime integer)"
     NSInteger visitTime = [self.closeDate timeIntervalSinceDate:self.openDate];
     if (self.viewControllerNo == nil || self.viewControllerNo.length == 0) {
@@ -318,7 +326,7 @@
             [self.fmdb executeUpdate:@"update vcUserActiveInfo set visitCount = ?,visitTime = ? where vcNo = ?",@(visitCount + 1) ,@(visitTime + oldVisitTime),self.viewControllerNo];
 
         }else{
-      
+            
             [self.fmdb executeUpdate:@"insert into vcUserActiveInfo (vcNo,updateDate,visitCount,visitTime) values (?,?,?,?)",self.viewControllerNo,@"",@1,@(visitTime)];
             
         }
@@ -369,7 +377,7 @@
     [super viewWillDisappear:animated];
     self.closeDate = [NSDate date];
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-    [self saveInfo];
+       [self saveInfo];
     });
     
 }

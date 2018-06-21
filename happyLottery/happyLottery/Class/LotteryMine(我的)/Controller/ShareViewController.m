@@ -23,7 +23,11 @@
 @property (weak, nonatomic) IBOutlet UIImageView *codeImage;
 @property (weak, nonatomic) IBOutlet UILabel *codeLab;
 @property (weak, nonatomic) IBOutlet UIButton *shareBtn;
+@property (weak, nonatomic) IBOutlet UILabel *labCode;
+@property (weak, nonatomic) IBOutlet UIImageView *lab2;
 @property (weak, nonatomic) IBOutlet UIButton *coedBtn;
+@property (weak, nonatomic) IBOutlet UILabel *lab2inf;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topDisShare;
 
 @end
 
@@ -40,10 +44,18 @@
     if (code.length>0) {
         self.codeLab.text=code;
     }
+    if ([self.curUser.memberType isEqualToString:@"CIRCLE_MASTER"]) {
+     
+    }else{
+        self.lab2.hidden = YES;
+        self.lab2inf.hidden = YES;
+        self.labCode.hidden = YES;
+        self.topDisShare.constant = 140;
+    }
+    
     self.memberMan.delegate = self;
    // [self getQRCodeClient];
-    codeurl = @"http://t.11max.com/Tbz";
-    
+    codeurl = [self.curUser getShareUrl];
     [self initCode];
 }
 
@@ -52,11 +64,12 @@
 }
 
 -(void)initshare{
-    NSString *code=self.curUser.shareCode;
-//    if (code.length>0) {
-              NSString *url = [NSString stringWithFormat:@"tfi.11max.com/Tbz/ShareByCode?shareCode=%@",code];
+//    if (code.length>0) { 
+//              = [NSString stringWithFormat:@"tfi.11max.com/Tbz/ShareByCode?shareCode=%@",code];
  
-//    }
+//    }CIRCLE_MASTER("圈主"), CIRCLE_PERSON("圈民"), FREEDOM_PERSON("自由人");
+    NSString *url = [self.curUser getShareUrl];
+  
     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
     NSArray* imageArray = @[[[NSBundle mainBundle] pathForResource:@"logo120@2x" ofType:@"png"]];
     [shareParams SSDKSetupShareParamsByText:@"千万大奖集聚地，新用户即享188元豪礼。积分商城优惠享不停！"

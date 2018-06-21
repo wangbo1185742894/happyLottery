@@ -18,9 +18,11 @@
 @property(nonatomic, retain)NSMutableDictionary   *Dic;
 @property (assign, nonatomic)NSUserDefaults       *userDefaultes;
 @property(nonatomic,strong)UINavigationController  *curNavVC;
+@property(nonatomic, assign)BOOL showGroup;
 + (AppDelegate*) shareDelegate;
 -(void) playSound;
 - (void)showZhuihaoDetail:(NSString*) ordernumber;
 -(void)goToYunshiWithInfo:(NSString *)pageCode;
+- (void)setGroupView;
 @end
 

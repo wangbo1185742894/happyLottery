@@ -30,6 +30,7 @@
 #import "SearchViewController.h"
 #import "UMChongZhiViewController.h"
 #import "YuCeSchemeCreateViewController.h"
+#import "GroupFollowViewController.h"
 
 @interface PaySuccessViewController ()<LotteryManagerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *btnPostScheme;
@@ -200,6 +201,11 @@
         }
         if ([controller isKindOfClass:[MyPostSchemeViewController class]]) {
             MyPostSchemeViewController *revise =(MyPostSchemeViewController *)controller;
+            [self.navigationController popToViewController:revise animated:YES];
+            return;
+        }
+        if ([controller isKindOfClass:[GroupFollowViewController class]]) {
+            GroupFollowViewController *revise =(GroupFollowViewController *)controller;
             [self.navigationController popToViewController:revise animated:YES];
             return;
         }

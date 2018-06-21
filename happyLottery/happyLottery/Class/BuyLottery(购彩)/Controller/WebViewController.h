@@ -16,7 +16,8 @@
 @protocol WebViewObjcDelegate <JSExport>
 -(void)goCathectic:(NSString *)lotteryCode;
 -(void)exchangeToast:(NSString *)msg;
--(void)SharingLinks:(NSString *)code;
+-(void)SharingLinks;
+- (void)telPhone;
 -(NSString *)getCardCode;
 -(void)goToLogin;
 @end

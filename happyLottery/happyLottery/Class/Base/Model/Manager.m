@@ -79,11 +79,13 @@
                                               success: (void (^)(AFHTTPRequestOperation *operation, id responseObject))successBlock
                                               failure: (void (^)(AFHTTPRequestOperation *operation, NSError *error))failureBlock
 {
-    if (![self socketReachabilityTest ]) {
-        [self .netDelegate serverIsNotConnect];
-        return nil;
-    }
-    [self afnReachabilityTest];
+    NSLog(@"开始——————————————————————%@",[NSDate date]);
+//    if (![self socketReachabilityTest ]) {
+//        [self .netDelegate serverIsNotConnect];
+//        return nil;
+//    }
+//    [self afnReachabilityTest];
+    NSLog(@"结束——————————————————————%@",[NSDate date]);
     NSString * soapMessage = [request getSOAPMessage];
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL: [NSURL URLWithString:[NSString stringWithFormat:WSServerURL,subApi]]];
     NSString *msgLength = [NSString stringWithFormat:@"%lu", (unsigned long)[soapMessage length]];
@@ -97,8 +99,12 @@
     [operation setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
 
     }];
-    [operation setCompletionBlockWithSuccess: successBlock failure: failureBlock];
-    [operation start];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+         [operation setCompletionBlockWithSuccess: successBlock failure: failureBlock];
+         [operation start];
+    });
+   
+   
     return operation;
 }
 
@@ -174,51 +180,6 @@
     //TODO: check if need login, if so show login page
 //    NSString *responseJsonStr = [response getAPIResponse];
     return response;
-}
-
-- (AFHTTPRequestOperation *) newRequestWithRequest: (SOAPRequest*)request
-                         constructingBodyWithBlock: (void (^)(id <AFMultipartFormData> formData))block
-                                           success: (void (^)(AFHTTPRequestOperation *operation, id responseObject))successBlock
-                                           failure: (void (^)(AFHTTPRequestOperation *operation, NSError *error))failureBlock
-{
-    NSString *soapMessage;
-//    if ([ipaName isEqualToString:@"CancelOrder"]) {
-//
-//    }else{
-        soapMessage = [request getSOAPMessage];
-//    }
-    
-    NSMutableURLRequest *theRequest;
-#ifdef bate
-    theRequest= [NSMutableURLRequest requestWithURL: WSServerURL];
-#else
-    
-    
-    NSString *urlStr = @"http://192.168.88.244:8086/app/head/url?";
-    
-//    NSString *urlStr = [GlobalInstance instance].baseUrl;
-//    if (urlStr.length == 0) {
-//        theRequest= [NSMutableURLRequest requestWithURL: WSServerURL];
-//    }else{
-        theRequest = [NSMutableURLRequest requestWithURL: [NSURL URLWithString:urlStr]];
-//    }
-
-#endif
-    
-    NSString *msgLength = [NSString stringWithFormat:@"%lu", (unsigned long)[soapMessage length]];
-    NSLog(@"22334%@",msgLength);
-    [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-    [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
-    [theRequest setHTTPMethod: @"POST"];
-    [theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest: theRequest];
-    [operation setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
-        
-    }];
-    [operation setCompletionBlockWithSuccess: successBlock failure: failureBlock];
-    [operation start];
-    return operation;
 }
 
 @end

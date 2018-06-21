@@ -67,7 +67,7 @@
         webDisTop.constant = 44;
     }else if ([Utility isIOS11After]) {
         webDisTop.constant = 20;
-        webDisBottom.constant = 0;
+        webDisBottom.constant =44;
      }else{
         webDisTop.constant = 20;
         webDisBottom.constant = 44;
@@ -160,7 +160,7 @@
         self.tabBarController.tabBar.hidden = NO;
         
         if ([Utility isIOS11After]) {
-            webDisBottom.constant = 0;
+            webDisBottom.constant = 44;
 
         }else{
             
@@ -169,7 +169,7 @@
     }else{
         self.tabBarController.tabBar.hidden = YES;
         if ([Utility isIOS11After]) {
-            webDisBottom.constant = -50;
+            webDisBottom.constant = 0;
         }else{
             webDisBottom.constant = 0;
         }
@@ -180,19 +180,22 @@
 
 #pragma JSObjcDelegate
 
--(void)SharingLinks:(NSString *)code{
+-(void)SharingLinks{
 //    [self showPromptText:code hideAfterDelay:1.8];
     dispatch_async(dispatch_get_main_queue(), ^{
 
-        [self initshare:code];
+        [self initshare:@""];
     });
 }
 
--(void)initshare:(NSString *)code{
+-(void)initshare:code{
     
-    if (![code isEqualToString:@""]) {
-      NSString *url = [NSString stringWithFormat:@"tfi.11max.com/Tbz/Share?shareCode=%@",code];
-      
+    if (self.curUser.isLogin == NO) {
+        [self needLogin];
+        return;
+    }
+  
+        NSString *url = [self.curUser getShareUrl];
         NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
         NSArray* imageArray = @[[[NSBundle mainBundle] pathForResource:@"logo120@2x" ofType:@"png"]];
         [shareParams SSDKSetupShareParamsByText:@"千万大奖集聚地，新用户即享188元豪礼。积分商城优惠享不停！"
@@ -262,11 +265,7 @@
                                break;
                        }
                    }];
-    }else{
-        return;
-    }
-   
-    
+
 }
 
 -(void)giveShareScoreClient{

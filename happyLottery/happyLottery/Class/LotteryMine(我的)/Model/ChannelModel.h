@@ -19,3 +19,12 @@
 @property(nonatomic,assign)BOOL isSelect;
 
 @end
+
+
+@interface RechargeModel : BaseModel
+
+@property(nonatomic,copy)NSString *handsel;
+@property(nonatomic,copy)NSString *recharge;
+@property(nonatomic,assign)BOOL isSelect;
+
+@end

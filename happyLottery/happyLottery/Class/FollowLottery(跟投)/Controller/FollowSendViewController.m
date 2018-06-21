@@ -34,7 +34,7 @@
 #define KHotFollowSchemeViewCell @"HotFollowSchemeViewCell"
 #define KHomeTabTopAdsViewCell @"HomeTabTopAdsViewCell"
 #define KZhanWeiTuScheme @"ZhanWeiTuScheme"
-@interface FollowSendViewController ()<OptionSelectedViewDelegate,UITableViewDelegate,UITableViewDataSource,FollowHeaderDelegate,LotteryManagerDelegate,HomeMenuItemViewDelegate,RecommendViewCellDelegate,HomeTabTopAdsViewDelegate>
+@interface FollowSendViewController ()<OptionSelectedViewDelegate,UITableViewDelegate,UITableViewDataSource,FollowHeaderDelegate,LotteryManagerDelegate,HomeMenuItemViewDelegate,RecommendViewCellDelegate,HomeTabTopAdsViewDelegate,ToPersonViewDelegate>
 {
     NSMutableArray <ADSModel *>*adsArray;
         OptionSelectedView *optionView;
@@ -57,6 +57,7 @@
     [super viewDidLoad];
     self.viewControllerNo = @"A416";
     schemeList = [NSMutableArray arrayWithCapacity:0];
+   
     self.lotteryMan.delegate = self;
     if ([Utility isIOS11After]) {
         self.automaticallyAdjustsScrollViewInsets = NO; // tableView 莫名其妙  contentOffset.y 成-64了  MMP
@@ -66,6 +67,14 @@
     [self setTableView];
     self.title = @"跟单";
     buyVc = [[BuyLotteryViewController alloc]init];
+     [UITableView refreshHelperWithScrollView:tabFollewView target:self loadNewData:@selector(loadNewData) loadMoreData:nil isBeginRefresh:YES];
+    
+}
+
+-(void)loadNewData{
+    
+    [self loadEightPerosn];
+    [self loadAdsImg];
     
 }
 
@@ -73,9 +82,7 @@
     [super viewWillAppear:animated];
     [tabFollewView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
     placeImageHidden = YES;
-    [self setNavigationBa];
-    [self loadEightPerosn];
-    [self loadAdsImg];
+   [self setNavigationBa];
     [cell openTimer];
 }
 
@@ -110,6 +117,7 @@
 }
 
 -(void)getHotFollowScheme:(NSArray *)personList errorMsg:(NSString *)msg{
+    [tabFollewView tableViewEndRefreshCurPageCount:personList.count];
     if (personList == nil||personList.count == 0) {
         placeImageHidden = NO;
         [self showPromptText:msg hideAfterDelay:1.8];
@@ -140,7 +148,7 @@
     }
     eightList = personList;
 //    NSIndexPath *indexpath = [NSIndexPath indexPathForRow:0 inSection:2];
-    
+   
     [tabFollewView reloadData];
 //    [tabFollewView reloadRowsAtIndexPaths:@[indexpath] withRowAnimation:UITableViewRowAnimationFade];
 }
@@ -163,6 +171,13 @@
     
 }
 
+-(void)itemClickToPerson:(NSString *)carcode{
+    PersonCenterViewController *viewContr = [[PersonCenterViewController alloc]init];
+    viewContr.cardCode = carcode;
+    viewContr.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:viewContr animated:YES];
+}
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 4;
 }
@@ -178,7 +193,12 @@
         if(schemeList.count == 0){
             return 1;
         }
-        return schemeList.count;
+        if ([self.curUser.whitelist boolValue] == NO) {
+             return 0;
+        }else{
+             return schemeList.count;
+        }
+       
     }else{
         return 0;
     }
@@ -203,11 +223,13 @@
     }else   if(indexPath.section == 3){
         if (schemeList.count == 0) {
             ZhanWeiTuScheme *cell = [tableView dequeueReusableCellWithIdentifier:KZhanWeiTuScheme];
+            [cell reloadDateInFollow];
             cell.hidden = placeImageHidden;
             return cell;
         }
         HotFollowSchemeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KHotFollowSchemeViewCell];
         [cell loadDataWithModelInDaT:schemeList[indexPath.row]];
+        cell.delegate = self;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }else{
@@ -397,6 +419,9 @@
 }
 
 -(void)recommendViewCellClick:(NSIndexPath *)indexpath andTabIndex:(NSInteger)index{
+    if (self.curUser.whitelist == NO) {
+        return;
+    }
     if (index == 2) {
         NSDictionary *personInfo = eightList[indexpath.row];
         RecomPerModel *model = [[RecomPerModel alloc]initWith:personInfo];

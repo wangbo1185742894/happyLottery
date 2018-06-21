@@ -74,7 +74,6 @@
         });
         return;
     }else{
-        
         self.imgBack.image = [UIImage imageNamed:[NSString stringWithFormat:@"pass%zd.png",self.txtInput.text.length]];
     }
 }

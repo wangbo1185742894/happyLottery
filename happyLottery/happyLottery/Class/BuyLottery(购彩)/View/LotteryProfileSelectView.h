@@ -17,7 +17,8 @@
 @end
 
 @interface LotteryProfileSelectView : UIView
-
+-(void)setPlayVIew:(JCZQPlayType )playtype;
 @property(nonatomic,strong)id<LotteryProfileSelectViewDelegate >delegate;
 @property(nonatomic,strong)NSMutableArray <JCZQProfile * >* lotteryPros;
+@property(nonatomic,assign)JCZQPlayType playtype;
 @end

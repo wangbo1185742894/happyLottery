@@ -84,6 +84,7 @@
     }else{
         itemParaDic = @{@"mobile":paraDic[@"userTel"], @"pwd":[self actionEncrypt:paraDic[@"userPwd"]],@"channelCode":@"TBZ",@"shareCode":paraDic[@"shareCode"],@"platformCode":platformCode};
     }
+    
     SOAPRequest *request = [self requestForAPI: APIRegister withParam:@{@"params":[self actionEncrypt:[self JsonFromId:itemParaDic]]} ];
     [self newRequestWithRequest:request
                          subAPI:SUBAPIMember
@@ -1270,15 +1271,15 @@
         NSString *responseJsonStr = [response getAPIResponse];
         if (response.succeed) {
             //NSDictionary *userInfo = [self objFromJson: responseJsonStr];
-            [self.delegate upMemberShareSmsIsSuccess: YES errorMsg:response.errorMsg];
+            [self.delegate upMemberShareSmsIsSuccess: YES result:responseJsonStr errorMsg:response.errorMsg];
         } else {
-            [self.delegate upMemberShareSmsIsSuccess:YES errorMsg:response.errorMsg];
+            [self.delegate upMemberShareSmsIsSuccess:YES result:nil errorMsg:response.errorMsg];
             
         }
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate upMemberShareSmsIsSuccess:YES errorMsg:@"服务器错误"];
+        [self.delegate upMemberShareSmsIsSuccess:YES result:nil  errorMsg:@"服务器错误"];
         //失败的代理方法
     };
     //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};

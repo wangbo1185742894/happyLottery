@@ -9,9 +9,10 @@
 #import "SearchViewController.h"
 #import "HotFollowSchemeViewCell.h"
 #import "FollowDetailViewController.h"
+#import "PersonCenterViewController.h"
 #define KHotFollowSchemeViewCell @"HotFollowSchemeViewCell"
 
-@interface SearchViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate>
+@interface SearchViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,ToPersonViewDelegate>
 {
     NSMutableArray <HotSchemeModel *> * schemeList;
 }
@@ -34,7 +35,7 @@
     }
     self.viewControllerNo = @"A421";
     self.lotteryMan.delegate = self;
-    _page = 0;
+    _page = 1;
     schemeList = [NSMutableArray arrayWithCapacity:0];
     [self setTableView];
     self.tabSearchResultList.hidden = YES;
@@ -46,7 +47,7 @@
 
 
 -(void)loadNewData{
-    _page = 0;
+    _page = 1;
     [self getHotFollowScheme];
 }
 
@@ -74,7 +75,7 @@
         [self showPromptText:msg hideAfterDelay:1.8];
         return;
     }
-    if (_page == 0) {
+    if (_page == 1) {
         [schemeList removeAllObjects];
     }
     for (NSDictionary *dic in personList) {
@@ -125,6 +126,7 @@
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     HotFollowSchemeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KHotFollowSchemeViewCell];
     [cell loadDataWithModelInDaT:schemeList[indexPath.row]];
+    cell.delegate = self;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -158,5 +160,11 @@
      [self loadNewData];
 }
 
+-(void)itemClickToPerson:(NSString *)carcode{
+    PersonCenterViewController *viewContr = [[PersonCenterViewController alloc]init];
+    viewContr.cardCode = carcode;
+    viewContr.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:viewContr animated:YES];
+}
 
 @end

@@ -56,14 +56,14 @@
      return;
     }
     [self.memberMan upMemberShareSms:Info];
-
 }
 
--(void)upMemberShareSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+-(void)upMemberShareSmsIsSuccess:(BOOL)success result:(NSString *)result errorMsg:(NSString *)msg{
     
     if ([msg isEqualToString:@"执行成功"]) {
         //NSLog(@"Info%@",Info);
-         [self showPromptText: @"恭喜您，获得500积分" hideAfterDelay: 1.7];
+         [self showPromptText: result hideAfterDelay: 1.7];
+
           [self performSelector:@selector(delayMethod) withObject:nil afterDelay:1.0];
     
     }else{
