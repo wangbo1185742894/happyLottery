@@ -205,7 +205,6 @@ static NSString *ID = @"LotteryAreaViewCell";
         [self.sellLottery addObject:itemDic];
     }
     [lotteryPlayView reloadData];
-    
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -214,9 +213,7 @@ static NSString *ID = @"LotteryAreaViewCell";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-  
-            return self.sellLottery.count + 1 ;
-    
+    return self.sellLottery.count + 1 ;
 }
 
 
