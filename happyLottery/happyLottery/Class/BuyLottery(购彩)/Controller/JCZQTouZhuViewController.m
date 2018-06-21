@@ -330,7 +330,6 @@
         [self.transction updataBetCount];
         totalUnit += self.transction.betCount;
         maxPrize +=[self.transction.mostBounds doubleValue];
-        
     }
     self.transction.betCount = totalUnit;
     self.transction.betCost  =self.transction.betCount * [self.transction.beitou integerValue] * 2;
