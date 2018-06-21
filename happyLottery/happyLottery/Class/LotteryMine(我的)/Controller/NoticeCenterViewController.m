@@ -385,7 +385,6 @@
     Class class = NSClassFromString(vcName);
     
     baseVC =[[class alloc] init];
-    
     if([keyStr isEqualToString:@"A401"]){
 
         self.tabBarController.selectedIndex = 3;
@@ -520,8 +519,7 @@
         AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
         [app setGroupView];
        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
-    else{
+    } else{
          baseVC.hidesBottomBarWhenPushed = YES;
          [self.navigationController pushViewController:baseVC animated:YES];
     }

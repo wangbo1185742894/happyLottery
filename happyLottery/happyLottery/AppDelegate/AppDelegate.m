@@ -321,12 +321,12 @@ static SystemSoundID shake_sound_male_id = 0;
         WelComeViewController * welCom = [[WelComeViewController alloc]init];
         [[UIApplication sharedApplication].keyWindow addSubview:welCom.view];
         [UIView animateWithDuration:1.5 animations:^{
-            
-            
+
+
         } completion:^(BOOL finished) {
             [UIView animateWithDuration:0.2 animations:^{
-                welCom.view.alpha = 0.1;
-                 [welCom.view removeFromSuperview];
+                welCom.view.alpha = 0;
+                welCom.view.hidden = YES;
             }];
         }];
         
@@ -783,8 +783,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         return;
     }else if ([keyStr isEqualToString:@"A425"]){
 
-        UITabBarController *rootTab = (UITabBarController *)[UIApplication sharedApplication].keyWindow .rootViewController;
-        rootTab.selectedIndex  =2;
+//        UITabBarController *rootTab = (UITabBarController *)[UIApplication sharedApplication].keyWindow .rootViewController;
+//        rootTab.selectedIndex  =2;
         return;
     }else{
           baseVC.hidesBottomBarWhenPushed = YES;

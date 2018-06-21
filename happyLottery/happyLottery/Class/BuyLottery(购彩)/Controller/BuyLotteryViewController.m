@@ -160,7 +160,6 @@ static NSString *ID = @"LotteryAreaViewCell";
    NSString *  isShow = [[NSUserDefaults standardUserDefaults] objectForKey:KAppSignModelShow];
     if (isShow == nil) {
         [self .lotteryMan getAppSign:nil];
-        [[NSUserDefaults standardUserDefaults] setObject:@"1" forKey:KAppSignModelShow];
     }else{
         activityInfoView.hidden = YES;
     }
@@ -206,7 +205,6 @@ static NSString *ID = @"LotteryAreaViewCell";
         [self.sellLottery addObject:itemDic];
     }
     [lotteryPlayView reloadData];
-    
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -215,9 +213,7 @@ static NSString *ID = @"LotteryAreaViewCell";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-  
-            return self.sellLottery.count + 1 ;
-    
+    return self.sellLottery.count + 1 ;
 }
 
 
@@ -286,6 +282,7 @@ static NSString *ID = @"LotteryAreaViewCell";
     webVC.pageUrl = appSignModel.skipUrl;
     [self.navigationController pushViewController:webVC animated:YES];
     activityInfoView.hidden = YES;
+    [[NSUserDefaults standardUserDefaults] setObject:@"1" forKey:KAppSignModelShow];
 }
 
 //修改，，，，，，，，，，
