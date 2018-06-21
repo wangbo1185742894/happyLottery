@@ -386,8 +386,6 @@
     
     baseVC =[[class alloc] init];
     
-
-    keyStr = @"A425";
     if([keyStr isEqualToString:@"A401"]){
 
         self.tabBarController.selectedIndex = 3;

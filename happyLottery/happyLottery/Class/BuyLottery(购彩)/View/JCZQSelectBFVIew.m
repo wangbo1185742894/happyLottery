@@ -47,7 +47,15 @@
     
     for (UIButton *itemBtn in self.jczqCellBfItem) {
         NSString *tag = [NSString stringWithFormat:@"%ld",itemBtn.tag];
-        NSString *title = [NSString stringWithFormat:@"%@%@",titleDic[tag][@"appear"],[self getSpTitle:model.BF_OddArray index:itemBtn.tag %100]];
+        NSString *title;
+        if ([self checkThisItemCanBuy:itemBtn]) {
+            
+            title = [NSString stringWithFormat:@"%@%@",titleDic[tag][@"appear"],[self getSpTitle:model.BF_OddArray index:itemBtn.tag %100]];
+        }else{
+            
+            title = [NSString stringWithFormat:@"%@0",titleDic[tag][@"appear"]];
+        }
+   
         
         itemBtn.selected = [model.BF_SelectMatch[itemBtn.tag %100] boolValue];
         [itemBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];

@@ -44,8 +44,14 @@
     
     self.labGuestName.text = self.curModel.guestName;
     for (UIButton *itemBtn in self.jczqCellBQCitem) {
+        NSString *title;
         NSString *tag = [NSString stringWithFormat:@"%ld",itemBtn.tag];
-        NSString *title = [NSString stringWithFormat:@"%@%@",titleDic[tag][@"appear"],[self getSpTitle:model.BQC_OddArray index:itemBtn.tag %100]];
+        if ([self checkThisItemCanBuy:itemBtn]) {
+             title = [NSString stringWithFormat:@"%@%@",titleDic[tag][@"appear"],[self getSpTitle:model.BQC_OddArray index:itemBtn.tag %100]];
+        }else{
+             title = [NSString stringWithFormat:@"%@%@",titleDic[tag][@"appear"],@"0"];
+        }
+       
 
         itemBtn.selected = [model.BQC_SelectMatch[itemBtn.tag %100] boolValue];
         

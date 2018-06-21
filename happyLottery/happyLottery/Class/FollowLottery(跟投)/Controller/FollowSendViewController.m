@@ -83,6 +83,7 @@
     [tabFollewView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
     placeImageHidden = YES;
    [self setNavigationBa];
+    [self loadNewData];
     [cell openTimer];
 }
 

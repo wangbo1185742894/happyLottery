@@ -73,10 +73,19 @@
         NSString *tag = [NSString stringWithFormat:@"%ld",itemBtn.tag];
         NSString *title;
         if (itemBtn.tag /100 == 3) {
-            title = [NSString stringWithFormat:@"%@\n%@",titleDic[tag][@"appear"],[self getSpNOTitle:oddArray index:itemBtn.tag %100]];
+            if ([self checkThisItemCanBuy:itemBtn]) {
+                            title = [NSString stringWithFormat:@"%@\n%@",titleDic[tag][@"appear"],[self getSpNOTitle:oddArray index:itemBtn.tag %100]];
+            }else{
+                            title = [NSString stringWithFormat:@"%@\n%@",titleDic[tag][@"appear"],@"0"];
+            }
+
         }else{
-            
-            title = [NSString stringWithFormat:@"%@%@",titleDic[tag][@"appear"],[self getSpTitle:oddArray index:itemBtn.tag %100]];
+            if ([self checkThisItemCanBuy:itemBtn]) {
+                  title = [NSString stringWithFormat:@"%@%@",titleDic[tag][@"appear"],[self getSpTitle:oddArray index:itemBtn.tag %100]];
+            }else{
+                  title = [NSString stringWithFormat:@"%@%@",titleDic[tag][@"appear"],@"(0)"];
+            }
+          
         }
         
         

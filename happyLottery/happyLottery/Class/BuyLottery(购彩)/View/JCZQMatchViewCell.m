@@ -150,6 +150,10 @@
         [attrStrS setAttributes:firstAttributesS range:NSMakeRange(0, attrStrS.string.length)];
         
     }else{
+        NSString *title =[NSString stringWithFormat:@"%@(0)", [[dic[@"nTitle"] componentsSeparatedByString:@"("] firstObject]];
+        
+        attrStrN = [[NSMutableAttributedString alloc] initWithString:title];
+        attrStrS = [[NSMutableAttributedString alloc] initWithString:title];
         NSDictionary * firstAttributesN = @{ NSFontAttributeName:[UIFont systemFontOfSize:13],NSForegroundColorAttributeName:RGBCOLOR(72, 72, 72),NSStrikethroughStyleAttributeName : @(NSUnderlineStyleSingle)};
         [attrStrN setAttributes:firstAttributesN range:NSMakeRange(0, attrStrN.string.length)];
         [item setAttributedTitle:attrStrN forState:0];

@@ -143,7 +143,7 @@
                                 <button hidden="YES" opaque="NO" tag="204" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0I-YL-oqL">
                                     <rect key="frame" x="130" y="43" width="114.5" height="31"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <state key="normal" title="单关混投" backgroundImage="fangkuangjingcainomal.png"/>
+                                    <state key="normal" title="单场混投" backgroundImage="fangkuangjingcainomal.png"/>
                                     <state key="selected" backgroundImage="wukuangwuyuanjiaoselect.png"/>
                                     <connections>
                                         <action selector="actionPlayTypeSelect:" destination="iN0-l3-epB" eventType="touchUpInside" id="b6h-9D-vzH"/>

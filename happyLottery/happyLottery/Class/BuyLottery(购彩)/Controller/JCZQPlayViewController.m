@@ -308,7 +308,7 @@
     titleBtn.frame = CGRectMake(0, 10, 150, 40);
     [titleBtn addTarget:self action:@selector(showProfileType) forControlEvents:UIControlEventTouchUpInside];
     if (self.playType == JCZQPlayTypeDanGuan) {
-        [titleBtn setTitle:@"单关混投" forState:0];
+        [titleBtn setTitle:@"单场混投" forState:0];
     }else{
         [titleBtn setTitle:@"混合过关" forState:0];
     }
@@ -328,7 +328,7 @@
     if (self.playType == JCZQPlayTypeDanGuan) {
         self.trancation.playType = JCZQPlayTypeDanGuan;
         self.trancation.curProfile = self.profiles[4];
-        self.trancation.curProfile.Title = @"单关混投";
+        self.trancation.curProfile.Title = @"单场混投";
     }else{
         self.trancation.playType = JCZQPlayTypeGuoGuan;
         self.trancation.curProfile = self.profiles[4];

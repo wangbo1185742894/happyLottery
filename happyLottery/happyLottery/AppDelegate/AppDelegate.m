@@ -570,7 +570,6 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         jumpVC.URL = linkUrlNotice;
         jumpVC.hidesBottomBarWhenPushed = YES;
         [nav pushViewController:jumpVC animated:YES];
-        
     }
 }
 
