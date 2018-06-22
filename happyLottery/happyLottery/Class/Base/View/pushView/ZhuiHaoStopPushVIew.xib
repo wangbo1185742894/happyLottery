@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,12 +22,8 @@
                         <action selector="actionColse:" destination="iN0-l3-epB" eventType="touchUpInside" id="Iyp-ls-9ZP"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trophy.png" translatesAutoresizingMaskIntoConstraints="NO" id="xmi-IF-vSS">
-                    <rect key="frame" x="102.5" y="128" width="170" height="190"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="170" id="JaP-xh-Lgy"/>
-                        <constraint firstAttribute="height" constant="190" id="URM-fZ-Xta"/>
-                    </constraints>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wincup.png" translatesAutoresizingMaskIntoConstraints="NO" id="xmi-IF-vSS">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="552"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="etn-7d-OcS">
                     <rect key="frame" x="320" y="128" width="35" height="35"/>
@@ -41,25 +37,19 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="恭喜中奖，智能追号自动停追" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Co2-WD-N2S">
-                    <rect key="frame" x="10" y="378" width="355" height="102"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="102" id="gjC-hP-Eud"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                    <color key="textColor" red="1" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <rect key="frame" x="10" y="411" width="355" height="23"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="中奖啦" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jCk-ya-9bf">
-                    <rect key="frame" x="10" y="328" width="355" height="40"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="UdW-g1-Gqf"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="37"/>
+                    <rect key="frame" x="10" y="346" width="355" height="55"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="46"/>
                     <color key="textColor" red="1" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mcb-2V-zw0">
-                    <rect key="frame" x="62" y="501" width="250" height="44"/>
+                    <rect key="frame" x="62" y="455" width="250" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="Q6K-pR-Yjx"/>
                         <constraint firstAttribute="width" constant="250" id="voV-y6-v3r"/>
@@ -73,6 +63,7 @@
             </subviews>
             <constraints>
                 <constraint firstItem="DWe-K7-mvm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="2R6-pa-Gcg"/>
+                <constraint firstItem="jCk-ya-9bf" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="40" id="5QK-9X-Bsa"/>
                 <constraint firstAttribute="trailing" secondItem="jCk-ya-9bf" secondAttribute="trailing" constant="10" id="Da5-bg-xYt"/>
                 <constraint firstItem="etn-7d-OcS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="128" id="FGP-54-DLD"/>
                 <constraint firstItem="jCk-ya-9bf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="H1T-Qf-0J4"/>
@@ -81,10 +72,9 @@
                 <constraint firstItem="mcb-2V-zw0" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="KFD-CU-5FT"/>
                 <constraint firstItem="DWe-K7-mvm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Lqx-NL-1gt"/>
                 <constraint firstItem="Co2-WD-N2S" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="Vz2-TQ-87x"/>
-                <constraint firstItem="jCk-ya-9bf" firstAttribute="top" secondItem="xmi-IF-vSS" secondAttribute="bottom" constant="10" id="ZcU-Ez-cR3"/>
-                <constraint firstItem="xmi-IF-vSS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="128" id="bQU-Kk-Mdv"/>
                 <constraint firstItem="Co2-WD-N2S" firstAttribute="top" secondItem="jCk-ya-9bf" secondAttribute="bottom" constant="10" id="eRO-Z2-fsq"/>
                 <constraint firstItem="xmi-IF-vSS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="f9n-5n-bnw"/>
+                <constraint firstItem="xmi-IF-vSS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="kAz-sq-xFw"/>
                 <constraint firstAttribute="trailing" secondItem="Co2-WD-N2S" secondAttribute="trailing" constant="10" id="lzV-Mw-6ZX"/>
                 <constraint firstAttribute="trailing" secondItem="DWe-K7-mvm" secondAttribute="trailing" id="viM-vA-LFF"/>
                 <constraint firstAttribute="trailing" secondItem="etn-7d-OcS" secondAttribute="trailing" constant="20" id="xEE-oQ-Nyd"/>
@@ -99,7 +89,7 @@
     </objects>
     <resources>
         <image name="button_trophy.png" width="278" height="43"/>
-        <image name="trophy.png" width="156" height="180"/>
         <image name="turnoff.png" width="29" height="29"/>
+        <image name="wincup.png" width="375" height="552"/>
     </resources>
 </document>

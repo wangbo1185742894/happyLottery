@@ -162,11 +162,28 @@
             //            [self goImage:student.photo];
             [listSystemNoticeArray addObject: notice];
         }
-                [self.fmdb close];
+        [self.fmdb close];
         [self.tableView1 reloadData];
         //    }];
     }
 }
+
+-(BOOL)havData{
+    if (self.personBtn.selected == YES) {
+        if (listPersonNoticeArray.count == 0) {
+            return NO;
+        }else{
+            return YES;
+        }
+    }else{
+        if (listSystemNoticeArray.count == 0) {
+            return NO;
+        }else{
+            return YES;
+        }
+    }
+}
+
 
 - (IBAction)systemBtnClick:(id)sender {
     self.systemBtn.selected = YES;

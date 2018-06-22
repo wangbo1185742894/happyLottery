@@ -9,6 +9,7 @@
 #import "BuyLotteryViewController.h"
 #import "WebShowViewController.h"
 #import "RecommendPerViewController.h"
+#import "NoticeCenterViewController.h"
 #import "MyNoticeViewController.h"
 #import "WebCTZQHisViewController.h"
 #import "DLTPlayViewController.h"
@@ -44,6 +45,7 @@
 #import "WebViewController.h"
 #import "LotteryCollectionView.h"
 #import "LotteryAreaViewCell.h"
+#import "LMJScrollTextView2.h"
 #define KNewsListCell @"NewsListCell"
 #define AnimationDur 0.3
 #define KAppSignModelShow @"appSignModelShow"
@@ -106,7 +108,7 @@ static NSString *ID = @"LotteryAreaViewCell";
     NSMutableArray * _lotteryArr;
     BOOL showGJbtn;
 }
-
+@property (nonatomic, strong) LMJScrollTextView2 * scrollTextView;
 @property(nonatomic,strong)NSMutableArray *sellLottery;
 @property(nonatomic,strong)Lottery *lottery;
 @end
@@ -153,6 +155,7 @@ static NSString *ID = @"LotteryAreaViewCell";
      singleLoad = [LoadData singleLoadData];
     [self setViewFeature];
     [self setADSUI];
+    [self setMessage];
     [self setMenu];
     [self setNewsView];
     [self gyjButtonView];
@@ -492,7 +495,7 @@ static NSString *ID = @"LotteryAreaViewCell";
     
 }
 -(void)setMenu{
-    curY = adsView.mj_y + adsView.mj_h ;
+    curY = self.scrollTextView.mj_y + self.scrollTextView.mj_h + 10 ;
     if (menuView != nil) {
         return;
     }
@@ -520,7 +523,33 @@ static NSString *ID = @"LotteryAreaViewCell";
         adsView.delegate = self;
         [scrContentView addSubview:adsView];
     }
+}
 
+-(void)setMessage{
+    UIImageView *imageV = [[UIImageView alloc]initWithFrame:CGRectMake(0, adsView.mj_h + adsView.mj_y, 85, 41)];
+    imageV.backgroundColor = [UIColor whiteColor];
+    imageV.contentMode = UIViewContentModeCenter;
+    imageV.image = [UIImage imageNamed:@"必中头条"];
+    [scrContentView addSubview:imageV];
+    self.scrollTextView = [[LMJScrollTextView2 alloc] initWithType:LMJScrollTextTypeDefealt];
+    self.scrollTextView.frame = CGRectMake(85, adsView.mj_h + adsView.mj_y, KscreenWidth - 85, 41);
+    [scrContentView addSubview:self.scrollTextView];
+    [self.scrollTextView startScrollBottomToTop];
+    self.scrollTextView.textDataArr = @[@"投必中邀您一起快乐购彩！"];
+    _scrollTextView.backgroundColor = [UIColor whiteColor];
+    _scrollTextView.userInteractionEnabled = NO;
+    UIButton *itemBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    itemBtn.frame =self.scrollTextView.frame;
+    itemBtn.backgroundColor = [UIColor clearColor];
+    [scrContentView addSubview:itemBtn];
+    [itemBtn addTarget:self action:@selector(actionToMessageCenter) forControlEvents:UIControlEventTouchUpInside];
+}
+
+-(void)actionToMessageCenter{
+    NoticeCenterViewController * nVC = [[NoticeCenterViewController alloc]init];
+    nVC.hidesBottomBarWhenPushed = YES;
+    
+    [self.navigationController pushViewController:nVC animated:YES];
 }
 
 -(void)goToYunshiWithInfo:(ADSModel *)itemIndex navigation:(UINavigationController *)navgC{
