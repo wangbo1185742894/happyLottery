@@ -232,7 +232,12 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        return 292;
+        if ([self isIphoneX]) {
+            return 314;
+        }else{
+            
+            return 292;
+        }
     }
     if (indexPath.section == 1) {
         return 178;

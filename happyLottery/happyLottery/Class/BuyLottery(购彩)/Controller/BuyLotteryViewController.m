@@ -119,7 +119,7 @@ static NSString *ID = @"LotteryAreaViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     CGFloat bottomheight;
     self.sellLottery = [NSMutableArray arrayWithCapacity:0];
     
@@ -849,6 +849,7 @@ static NSString *ID = @"LotteryAreaViewCell";
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     AppDelegate  *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [self getSystemNoticeClient];
     if ([self.curUser.whitelist boolValue] == NO && self.tabBarController.viewControllers.count == 5) {
         
         [app setAppstoreRootVC];
@@ -1463,6 +1464,43 @@ static NSString *ID = @"LotteryAreaViewCell";
     }
 
     
+}
+
+-(void)getSystemNoticeClient{
+    NSString *theRequest;
+    theRequest= [GlobalInstance instance].homeUrl;
+    //    theRequest = [[theRequest componentsSeparatedByString:@"/h5"] firstObject];
+    //
+    //    theRequest = [[theRequest componentsSeparatedByString:@"/ms"] firstObject];
+    [[LoadData singleLoadData] RequestWithString:[NSString stringWithFormat:@"%@/app/inform/byChannel?usageChannel=3",theRequest] isPost:YES andPara:nil andComplete:^(id data, BOOL isSuccess) {
+        // [self hideLoadingView];
+        if (isSuccess) {
+            NSString *resultStr = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+            NSData *jsonData = [resultStr dataUsingEncoding:NSUTF8StringEncoding];
+            NSDictionary  *resultDic1 = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
+            if ([resultDic1[@"code"] integerValue] != 0) {
+                return ;
+            }
+            
+            NSArray  *array =  resultDic1[@"result"];
+            NSMutableArray *messageArray = [NSMutableArray arrayWithCapacity:0];
+            if (array.count == 0) {
+                
+                return;
+            }
+            for (NSDictionary *itemDic in array) {
+                if (itemDic[@"content"] != nil) {
+                     [messageArray addObject:itemDic[@"content"]];;
+                }
+               
+            }
+            self.scrollTextView.textDataArr = messageArray;
+    
+        }else{
+            
+            [self showPromptText: @"服务器连接失败" hideAfterDelay: 1.7];
+        }
+    }];
 }
 
 
