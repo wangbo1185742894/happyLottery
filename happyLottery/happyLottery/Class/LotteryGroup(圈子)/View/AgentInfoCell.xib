@@ -165,10 +165,10 @@
                     <constraint firstAttribute="trailing" secondItem="B6r-Ut-dAl" secondAttribute="trailing" constant="10" id="7wb-4c-Ufc"/>
                     <constraint firstItem="w3J-8u-Gha" firstAttribute="top" secondItem="Gb8-zx-zBh" secondAttribute="bottom" constant="7.5" id="8Rw-3w-khl"/>
                     <constraint firstItem="WDx-gf-O4z" firstAttribute="top" secondItem="vbq-qJ-BEw" secondAttribute="bottom" constant="10" id="BWG-VG-ZKV"/>
-                    <constraint firstItem="B6r-Ut-dAl" firstAttribute="top" secondItem="pqS-6h-aFP" secondAttribute="bottom" constant="30" id="OSl-kw-ARl"/>
                     <constraint firstItem="WDx-gf-O4z" firstAttribute="leading" secondItem="vbq-qJ-BEw" secondAttribute="leading" id="OfV-WO-1ET"/>
                     <constraint firstAttribute="trailing" secondItem="Ldj-Jj-gOx" secondAttribute="trailing" id="Qa5-Kb-qxM"/>
                     <constraint firstItem="Ldj-Jj-gOx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="UTU-vX-mBO"/>
+                    <constraint firstItem="pqS-6h-aFP" firstAttribute="top" secondItem="Gb8-zx-zBh" secondAttribute="bottom" constant="22.5" id="WGY-8B-Su3"/>
                     <constraint firstAttribute="bottom" secondItem="B6r-Ut-dAl" secondAttribute="bottom" id="aaJ-o4-oeO"/>
                     <constraint firstItem="B6r-Ut-dAl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="ect-Hj-Gy8"/>
                     <constraint firstItem="vbq-qJ-BEw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="kTx-RI-SEN"/>
@@ -187,6 +187,7 @@
                 <outlet property="headUrlImge" destination="pqS-6h-aFP" id="ZjL-pQ-hkS"/>
                 <outlet property="memberCountLab" destination="CJo-ZU-sXh" id="OK5-Tf-Cyh"/>
                 <outlet property="shareBtn" destination="Gb8-zx-zBh" id="BcL-ex-AmB"/>
+                <outlet property="shareBtnTopCon" destination="pGi-Fg-6sc" id="SdM-RN-j4x"/>
                 <outlet property="totalBonusLab" destination="93u-xt-OS0" id="lXP-nu-qYH"/>
             </connections>
             <point key="canvasLocation" x="323.5" y="150"/>

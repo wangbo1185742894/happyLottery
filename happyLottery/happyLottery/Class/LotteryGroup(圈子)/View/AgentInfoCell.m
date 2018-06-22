@@ -18,6 +18,11 @@
     self.headUrlImge.layer.masksToBounds = YES;
     self.headUrlImge.layer.borderColor = [UIColor whiteColor].CGColor;
     self.headUrlImge.layer.borderWidth = 2;
+    if ([Utility isIphoneX]) {
+        self.shareBtnTopCon.constant = 35;
+    } else {
+        self.shareBtnTopCon.constant = 25;
+    }
     // Initialization code
 }
 
