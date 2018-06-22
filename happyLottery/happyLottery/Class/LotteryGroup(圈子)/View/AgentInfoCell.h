@@ -35,6 +35,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *shareBtn;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *shareBtnTopCon;
+
 - (void)reloadDate:(AgentInfoModel *)model isMaster:(BOOL)ismaster;
 
 @end
