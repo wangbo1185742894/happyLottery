@@ -8,6 +8,7 @@
 
 #import "BuyLotteryViewController.h"
 #import "WebShowViewController.h"
+#import "Notice.h"
 #import "RecommendPerViewController.h"
 #import "NoticeCenterViewController.h"
 #import "MyNoticeViewController.h"
@@ -290,8 +291,8 @@ static NSString *ID = @"LotteryAreaViewCell";
 
 //修改，，，，，，，，，，
 - (void)gyjButtonHiddenOrNot{
-    showGJbtn = YES;
-    [self.lotteryMan getSellIssueList:@{@"lotteryCode":@"JCGJ"}];
+    showGJbtn = NO;
+//    [self.lotteryMan getSellIssueList:@{@"lotteryCode":@"JCGJ"}];
 }
 
 //奖期不在售时，服务器返回"[]"
@@ -546,6 +547,10 @@ static NSString *ID = @"LotteryAreaViewCell";
 }
 
 -(void)actionToMessageCenter{
+    if (![self.curUser isLogin]) {
+        [self needLogin];
+        return;
+    }
     NoticeCenterViewController * nVC = [[NoticeCenterViewController alloc]init];
     nVC.hidesBottomBarWhenPushed = YES;
     
@@ -1481,7 +1486,6 @@ static NSString *ID = @"LotteryAreaViewCell";
             if ([resultDic1[@"code"] integerValue] != 0) {
                 return ;
             }
-            
             NSArray  *array =  resultDic1[@"result"];
             NSMutableArray *messageArray = [NSMutableArray arrayWithCapacity:0];
             if (array.count == 0) {
@@ -1490,14 +1494,46 @@ static NSString *ID = @"LotteryAreaViewCell";
             }
             for (NSDictionary *itemDic in array) {
                 if (itemDic[@"content"] != nil) {
-                     [messageArray addObject:itemDic[@"content"]];;
+                    [messageArray addObject:itemDic[@"content"]];;
                 }
-               
+                
             }
             self.scrollTextView.textDataArr = messageArray;
-    
-        }else{
             
+            for (int i=0; i<array.count; i++) {
+                
+                Notice *notice = [[Notice alloc]initWith:array[i]];
+                if ([self.fmdb open]) {
+                    NSString *cardcode=[GlobalInstance instance ].curUser.cardCode;
+                    if ([cardcode isEqualToString:@""]) {
+                        cardcode = @"cardcode";
+                    }
+                    NSString *isread = @"0";
+                    NSString *nid =[NSString stringWithFormat:@"A%d",i];
+                    
+                    FMResultSet*  rs = [self.fmdb executeQuery:@"select * from SystemNotice where noticeid=? and cardcode=?",notice._id == nil?@"":notice._id,cardcode == nil?@"":cardcode];
+                    BOOL isExit = NO;
+                    do {
+                        NSString *itemId = [rs stringForColumn:@"noticeid"];
+                        if ([itemId isEqualToString:notice._id]) {
+                            isExit = YES;
+                            break;
+                        }
+                    } while (rs.next);
+                    
+                    
+                    if (!isExit) {
+                        
+                        BOOL result =  [self.fmdb executeUpdate:[NSString stringWithFormat:@"insert into SystemNotice (title,content, msgTime , cardcode ,isread,noticeid,type,pagecode,url) values ('%@', '%@', '%@', '%@', '%@', '%@','%@', '%@', '%@');",notice.title,notice.content,notice.releaseTime,cardcode,isread,notice._id,notice.type,notice.thumbnailCode==nil?@"":notice.thumbnailCode,notice.linkUrl==nil?@"":notice.linkUrl]];
+                        if (result) {
+                            [self.fmdb close];
+                        }
+                    }
+                }
+                
+                NSLog(@"redPacket%@",notice.content);
+            }
+        }else{
             [self showPromptText: @"服务器连接失败" hideAfterDelay: 1.7];
         }
     }];

@@ -140,7 +140,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
       num=0;
     self.memberMan.delegate = self;
     listUseRedPacketArray = [[NSMutableArray alloc]init];

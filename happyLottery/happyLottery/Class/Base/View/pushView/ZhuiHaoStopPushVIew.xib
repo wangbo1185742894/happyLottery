@@ -23,7 +23,7 @@
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wincup.png" translatesAutoresizingMaskIntoConstraints="NO" id="xmi-IF-vSS">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="552"/>
+                    <rect key="frame" x="0.0" y="26.5" width="375" height="552"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="etn-7d-OcS">
                     <rect key="frame" x="320" y="128" width="35" height="35"/>
@@ -37,7 +37,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="恭喜中奖，智能追号自动停追" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Co2-WD-N2S">
-                    <rect key="frame" x="10" y="411" width="355" height="23"/>
+                    <rect key="frame" x="62.5" y="411" width="250" height="45.5"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -49,7 +49,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mcb-2V-zw0">
-                    <rect key="frame" x="62" y="455" width="250" height="44"/>
+                    <rect key="frame" x="62" y="477.5" width="250" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="Q6K-pR-Yjx"/>
                         <constraint firstAttribute="width" constant="250" id="voV-y6-v3r"/>
@@ -64,6 +64,7 @@
             <constraints>
                 <constraint firstItem="DWe-K7-mvm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="2R6-pa-Gcg"/>
                 <constraint firstItem="jCk-ya-9bf" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="40" id="5QK-9X-Bsa"/>
+                <constraint firstItem="xmi-IF-vSS" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-31" id="97R-Cd-xvD"/>
                 <constraint firstAttribute="trailing" secondItem="jCk-ya-9bf" secondAttribute="trailing" constant="10" id="Da5-bg-xYt"/>
                 <constraint firstItem="etn-7d-OcS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="128" id="FGP-54-DLD"/>
                 <constraint firstItem="jCk-ya-9bf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="H1T-Qf-0J4"/>
@@ -71,13 +72,12 @@
                 <constraint firstAttribute="bottom" secondItem="DWe-K7-mvm" secondAttribute="bottom" id="Ivb-qp-j6R"/>
                 <constraint firstItem="mcb-2V-zw0" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="KFD-CU-5FT"/>
                 <constraint firstItem="DWe-K7-mvm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Lqx-NL-1gt"/>
-                <constraint firstItem="Co2-WD-N2S" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="Vz2-TQ-87x"/>
                 <constraint firstItem="Co2-WD-N2S" firstAttribute="top" secondItem="jCk-ya-9bf" secondAttribute="bottom" constant="10" id="eRO-Z2-fsq"/>
                 <constraint firstItem="xmi-IF-vSS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="f9n-5n-bnw"/>
-                <constraint firstItem="xmi-IF-vSS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="kAz-sq-xFw"/>
-                <constraint firstAttribute="trailing" secondItem="Co2-WD-N2S" secondAttribute="trailing" constant="10" id="lzV-Mw-6ZX"/>
+                <constraint firstItem="mcb-2V-zw0" firstAttribute="width" secondItem="Co2-WD-N2S" secondAttribute="width" id="fVt-UO-ktU"/>
                 <constraint firstAttribute="trailing" secondItem="DWe-K7-mvm" secondAttribute="trailing" id="viM-vA-LFF"/>
                 <constraint firstAttribute="trailing" secondItem="etn-7d-OcS" secondAttribute="trailing" constant="20" id="xEE-oQ-Nyd"/>
+                <constraint firstItem="Co2-WD-N2S" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="yKj-0l-Ow5"/>
             </constraints>
             <connections>
                 <outlet property="imgBack" destination="xmi-IF-vSS" id="kco-QM-ngL"/>
