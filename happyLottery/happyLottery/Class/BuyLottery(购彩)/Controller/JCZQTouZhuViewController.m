@@ -75,26 +75,34 @@
 
 -(void)cleanMatch:(NSNotification*)notification{
         if (self.transction.playType == JCZQPlayTypeGuoGuan) {
-            BOOL isDanGuan = YES;
-            for (JCZQMatchModel *model in self.transction.selectMatchArray) {
-                if (model.isDanGuan ==NO) {
-                    isDanGuan = NO;
-                    break;
-                }
+            
+            if (self.transction.selectMatchArray.count <= 2) {
+                
+                [self showPromptText:@"过关模式下至少保留两场比赛" hideAfterDelay:1.7];
+                return;
             }
-            if (isDanGuan == YES) {
-                if (self.transction.selectMatchArray.count <= 1) {
-                    
-                      [self showPromptText:@"单关模式下至少保留一场比赛" hideAfterDelay:1.7];
-                    return;
-                }
-            }else{
-                if (self.transction.selectMatchArray.count <= 2) {
-                    
-                    [self showPromptText:@"过关模式下至少保留两场比赛" hideAfterDelay:1.7];
-                    return;
-                }
-            }
+            return;
+            
+//            BOOL isDanGuan = YES;
+//            for (JCZQMatchModel *model in self.transction.selectMatchArray) {
+//                if (model.isDanGuan ==NO) {
+//                    isDanGuan = NO;
+//                    break;
+//                }
+//            }
+//            if (isDanGuan == YES) {
+//                if (self.transction.selectMatchArray.count <= 1) {
+//
+//                      [self showPromptText:@"单关模式下至少保留一场比赛" hideAfterDelay:1.7];
+//                    return;
+//                }
+//            }else{
+//                if (self.transction.selectMatchArray.count <= 2) {
+//
+//                    [self showPromptText:@"过关模式下至少保留两场比赛" hideAfterDelay:1.7];
+//                    return;
+//                }
+//            }
         }else{
             if (self.transction.selectMatchArray.count <= 1) {
                 [self showPromptText:@"单关模式下至少保留一场比赛" hideAfterDelay:1.7];
@@ -409,19 +417,19 @@
     }
     if (self.transction.playType == JCZQPlayTypeGuoGuan) {
         if (self.transction.selectMatchArray.count < 2 ) {
-            if(self.transction.selectMatchArray.count ==1){
-                JCZQMatchModel *model = [self.transction.selectMatchArray firstObject];
-                if (model.isDanGuan == YES) {
-                    self.transction.chuanFa = @"单场";
-                    return nil;
-                }
-                return  @"过关模式下，至少保留两场比赛";
-                
-            }else{
-                return  @"过关模式下，至少保留两场比赛";
-                
-            }
-            
+            return  @"过关模式下，至少保留两场比赛";
+//            if(self.transction.selectMatchArray.count ==1){
+//                JCZQMatchModel *model = [self.transction.selectMatchArray firstObject];
+//                if (model.isDanGuan == YES) {
+//                    self.transction.chuanFa = @"单场";
+//                    return nil;
+//                }
+//                return  @"过关模式下，至少保留两场比赛";
+//
+//            }else{
+//                return  @"过关模式下，至少保留两场比赛";
+//
+//            }
         }
     }
     return nil;

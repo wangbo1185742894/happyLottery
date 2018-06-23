@@ -7,6 +7,7 @@
 //
 
 #import "AgentInfoCell.h"
+#import "MyCircleViewController.h"
 
 @implementation AgentInfoCell
 
@@ -59,6 +60,14 @@
         self.shareBtn.hidden = NO;
     }else {
         self.shareBtn.hidden = YES;
+    }
+}
+- (IBAction)actionGoMyGroup:(id)sender {
+    MyCircleViewController * myCircleVC = [[MyCircleViewController alloc]init];
+    if ([myCircleVC.curUser.memberType isEqualToString:@"CIRCLE_MASTER"]) {
+        
+        myCircleVC.hidesBottomBarWhenPushed = YES;
+        [[self getCurrentVC].navigationController pushViewController:myCircleVC animated:YES];
     }
 }
 

@@ -692,7 +692,7 @@
 - (void)peilvJiSuan{
     if (self.playType == JCZQPlayTypeDanGuan) {
         
-        if ([self.curProfile.Desc isEqualToString:@"HHGG"]) {
+        if (1) {
             
             NSArray * chuanFaCodeDic = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"JingCaiChuanTypeDic" ofType:@"plist"]];
             NSString * index;
@@ -790,7 +790,7 @@
             self.mostBounds = [NSString stringWithFormat:@"%.2f",total_bounds];
             return;
         }
-        
+        return;
         NSMutableArray * match_valid_odd_array = [NSMutableArray arrayWithCapacity:self.selectMatchArray.count];
 //        NSMutableArray * match_min_valid_odd_array = [NSMutableArray arrayWithCapacity:self.selectMatchArray.count];
         for (JCZQMatchModel * mathc in self.selectMatchArray){

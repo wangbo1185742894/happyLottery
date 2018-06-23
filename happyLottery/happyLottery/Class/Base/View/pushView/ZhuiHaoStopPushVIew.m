@@ -38,6 +38,9 @@
     AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
     if ([self.pageCode isEqualToString:@"A204"]) {
           [app showZhuihaoDetail:nil];
+    }else if([self.pageCode isEqualToString:@"A205"]){
+        [app showZhuihaoDetailWin:nil];
+        
     }else{
         [app goToYunshiWithInfo:self.pageCode];
     }

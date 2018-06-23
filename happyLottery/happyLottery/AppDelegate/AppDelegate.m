@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "NewFeatureViewController.h"
 #import "GroupNewViewController.h"
+#import "UPPaymentControl.h"
 #import "GroupViewController.h"
 #import "WebCTZQHisViewController.h"
 #import "RecommendPerViewController.h"
@@ -22,6 +23,7 @@
 #import "MyAttendViewController.h"
 #import "netWorkHelper.h"
 #import "MyCircleViewController.h"
+#import "ZhuiHaoInfoViewController.h"
 // 引入JPush功能所需头文件
 #import "JPUSHService.h"
 #import "VersionUpdatingPopView.h"
@@ -94,6 +96,19 @@ static SystemSoundID shake_sound_male_id = 0;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self loadTabVC];
     
+    [GlobalInstance instance].lotteryUrl = WSServerURL;
+#ifdef bate
+ 
+#else
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        NSString *item = [[NSString alloc]initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:BaseUrl]] encoding:NSUTF8StringEncoding];
+        [GlobalInstance instance].lotteryUrl = [NSString stringWithFormat:@"%@%@",item,@"%@"];
+        
+    });
+#endif
+
+
+ 
     tabBarControllerMain.delegate = self;
     _lastSelectedIndex = 0;
     _showGroup = NO;
@@ -117,6 +132,7 @@ static SystemSoundID shake_sound_male_id = 0;
     [self setNewFeature];
     [self dataSave];
     [self autoLogin];
+
 
     NSString  *pushKey;
 #ifdef APPSTORE
@@ -171,7 +187,7 @@ static SystemSoundID shake_sound_male_id = 0;
             [[UIApplication sharedApplication]setApplicationIconBadgeNumber:badge/2];
             [JPUSHService setBadge:badge/2];//清空JPush服务器中存储的badge值
             [self jpushStart];
-        }  
+        }
         
     }  
     
@@ -655,6 +671,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     }
 }
 -(void)goToYunshiWithInfo:(NSString *)pageCode{
+    
     NSString *keyStr = pageCode;
     pageCodeNotice = nil;
     if (keyStr == nil) {
@@ -692,9 +709,12 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         [ delegate.curNavVC  popToRootViewControllerAnimated:YES];
         return;
     }else if([keyStr isEqualToString:@"A402"]){
-        
-       tabBarController.selectedIndex = 2;
-        [ delegate.curNavVC  popToRootViewControllerAnimated:YES];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            [app setGroupView];
+        });
+      
+//        [delegate.curNavVC popToRootViewControllerAnimated:YES];
         return;
     }else if ([keyStr isEqualToString:@"A201"]){
         
@@ -757,10 +777,13 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         
         return;
     }else if ([keyStr isEqualToString:@"A420"]){
-        MyNoticeViewController *noticeVc = [[MyNoticeViewController alloc]init];
-        noticeVc.hidesBottomBarWhenPushed = YES;
-        noticeVc.curUser = [GlobalInstance instance].curUser;
-        [delegate.curNavVC pushViewController:noticeVc animated:YES];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            MyNoticeViewController *noticeVc = [[MyNoticeViewController alloc]init];
+            noticeVc.hidesBottomBarWhenPushed = YES;
+            noticeVc.curUser = [GlobalInstance instance].curUser;
+            [delegate.curNavVC pushViewController:noticeVc animated:YES];
+        });
+
         return;
     }else if ([keyStr isEqualToString:@"A422"]){
         
@@ -782,7 +805,9 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         [delegate.curNavVC pushViewController:revise animated:YES];
         return;
     }else if ([keyStr isEqualToString:@"A425"]){
-
+//        MyCircleViewController * myCircleVC = [[MyCircleViewController alloc]init];
+//        myCircleVC.hidesBottomBarWhenPushed = YES;
+//        [delegate.curNavVC pushViewController:myCircleVC animated:YES];
 //        UITabBarController *rootTab = (UITabBarController *)[UIApplication sharedApplication].keyWindow .rootViewController;
 //        rootTab.selectedIndex  =2;
         return;
@@ -898,11 +923,29 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
    
 }
 
+- (void)showZhuihaoDetailWin:(NSString*) ordernumber{
+    if ([GlobalInstance instance].curUser.isLogin == NO) {
+        return;
+    }
+    
+    ZhuiHaoInfoViewController * myOrderListVC = [[ZhuiHaoInfoViewController alloc]init];
+    myOrderListVC.hidesBottomBarWhenPushed = YES;
+    AppDelegate *delegate  = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(KTimeJumpAfter * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [delegate.curNavVC pushViewController:myOrderListVC animated:YES];
+    });
+    
+}
+
 -(void)gotVueHttpUrl:(NSString *)baseUrl errorMsg:(NSString *)msg{
     if (baseUrl == nil || baseUrl.length == 0) {
         [GlobalInstance instance].homeUrl = ServerAddress;
     }else{
+#ifdef bate
+        [GlobalInstance instance].homeUrl = ServerAddress;
+#else
         [GlobalInstance instance].homeUrl = baseUrl;
+#endif
     }
 }
 
@@ -912,6 +955,11 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         self.agentMan = [[AgentManager alloc]init];
     }
     self.agentMan.delegate = self;
+    if ([GlobalInstance instance].curUser.cardCode == nil) {
+        UITabBarController *tabBarController = (UITabBarController *)_window.rootViewController;
+        tabBarController.selectedIndex = 2;
+        return;
+    }
     NSDictionary *dic = @{@"cardCode":[GlobalInstance instance].curUser.cardCode};
     [self.agentMan getAgentInfo:dic];
 }
@@ -980,6 +1028,27 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         itemNav.viewControllers = @[baseVC];
     }
     return itemNav;
+}
+
+- (BOOL)application:(UIApplication *)app
+            openURL:(NSURL *)url
+            options:(NSDictionary<NSString *,id> *)options{
+    [[UPPaymentControl defaultControl] handlePaymentResult:url completeBlock:^(NSString *code, NSDictionary *data) {
+        
+        //调用- (void)yinlanPayFinish:(NSString *)result
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"UPPaymentControlFinishNotification" object:code];
+    }];
+    
+    return YES;
+};
+
+-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
+
+    [[UPPaymentControl defaultControl] handlePaymentResult:url completeBlock:^(NSString *code, NSDictionary *data) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"UPPaymentControlFinishNotification" object:code];
+    }];
+    return YES;
+    
 }
 
 @end

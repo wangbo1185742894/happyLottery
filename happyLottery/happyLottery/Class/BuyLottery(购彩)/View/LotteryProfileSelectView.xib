@@ -195,6 +195,7 @@
                                 <constraint firstItem="epA-L7-C4n" firstAttribute="top" secondItem="Chq-8Z-awH" secondAttribute="bottom" constant="6" id="9dk-mP-Jzg"/>
                                 <constraint firstItem="Cgb-eL-eO3" firstAttribute="top" secondItem="1wU-eC-OOs" secondAttribute="top" constant="6" id="CDF-Zd-MeS"/>
                                 <constraint firstItem="z2C-1N-Vkf" firstAttribute="height" secondItem="Chq-8Z-awH" secondAttribute="height" id="CvN-pX-Fk9"/>
+                                <constraint firstItem="45u-GF-Rbe" firstAttribute="leading" secondItem="epA-L7-C4n" secondAttribute="trailing" constant="129.5" id="EMH-GI-Ei9"/>
                                 <constraint firstItem="epA-L7-C4n" firstAttribute="height" secondItem="Chq-8Z-awH" secondAttribute="height" id="Har-U8-C0f"/>
                                 <constraint firstItem="g0I-YL-oqL" firstAttribute="trailing" secondItem="Cgb-eL-eO3" secondAttribute="trailing" id="JGA-Zt-Rh1"/>
                                 <constraint firstItem="45u-GF-Rbe" firstAttribute="top" secondItem="epA-L7-C4n" secondAttribute="top" id="M9U-04-G5F"/>
@@ -211,7 +212,6 @@
                                 <constraint firstItem="45u-GF-Rbe" firstAttribute="height" secondItem="Chq-8Z-awH" secondAttribute="height" id="fxf-l6-nfe"/>
                                 <constraint firstItem="epA-L7-C4n" firstAttribute="width" secondItem="Chq-8Z-awH" secondAttribute="width" id="hUc-Sh-yqq"/>
                                 <constraint firstItem="Cgb-eL-eO3" firstAttribute="leading" secondItem="Chq-8Z-awH" secondAttribute="trailing" constant="8" id="jWx-8j-s4g"/>
-                                <constraint firstItem="45u-GF-Rbe" firstAttribute="leading" secondItem="z2C-1N-Vkf" secondAttribute="leading" id="k5r-Ob-jsj"/>
                                 <constraint firstAttribute="bottom" secondItem="epA-L7-C4n" secondAttribute="bottom" constant="6" id="nys-bX-45s"/>
                             </constraints>
                         </view>
@@ -246,6 +246,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="bifenDisLeft" destination="EMH-GI-Ei9" id="nd1-h3-1CY"/>
                 <outlet property="btnDanGuanHT" destination="g0I-YL-oqL" id="IZm-KQ-3kx"/>
                 <outlet property="heightVIew" destination="6JM-bq-gCt" id="WXB-G1-FWl"/>
                 <outlet property="labPlayType" destination="eyd-X2-ZgK" id="Djp-Yb-sr6"/>

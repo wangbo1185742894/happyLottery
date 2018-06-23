@@ -177,17 +177,17 @@
     
     if (self.transaction.guanType == JCLQGuanTypeGuoGuan) {
         if (self.transaction.matchSelectArray.count <=2) {
-            
-            if (self.transaction.matchSelectArray.count == 1) {
-                [self showPromptText:@"至少保留一场比赛" hideAfterDelay:1.7];
-                return;
-                
-            }else{
-            
-                [self showPromptText:@"过关模式下至少保留两场比赛" hideAfterDelay:1.7];
-                return;
-            }
-           
+            [self showPromptText:@"过关模式下至少保留两场比赛" hideAfterDelay:1.7];
+            return;
+//            if (self.transaction.matchSelectArray.count == 1) {
+//                [self showPromptText:@"至少保留一场比赛" hideAfterDelay:1.7];
+//                return;
+//
+//            }else{
+//
+//                [self showPromptText:@"过关模式下至少保留两场比赛" hideAfterDelay:1.7];
+//                return;
+//            }
         }
     }
     
@@ -512,18 +512,19 @@
     }
     if (self.transaction.guanType == JCLQGuanTypeGuoGuan) {
         if (self.transaction.matchSelectArray.count < 2 ) {
-            if(self.transaction.matchSelectArray.count ==1){
-                JCZQMatchModel *model = [self.transaction.matchSelectArray firstObject];
-                if (model.isDanGuan == YES) {
-                    self.transaction.chuanFa = @"单场";
-                    return nil;
-                }
-                return  @"过关模式下，至少保留两场比赛";
-                
-            }else{
-                return  @"过关模式下，至少保留两场比赛";
-                
-            }
+             return  @"过关模式下，至少保留两场比赛";
+//            if(self.transaction.matchSelectArray.count ==1){
+//                JCZQMatchModel *model = [self.transaction.matchSelectArray firstObject];
+//                if (model.isDanGuan == YES) {
+//                    self.transaction.chuanFa = @"单场";
+//                    return nil;
+//                }
+//                return  @"过关模式下，至少保留两场比赛";
+//
+//            }else{
+//
+//
+//            }
             
         }
     }

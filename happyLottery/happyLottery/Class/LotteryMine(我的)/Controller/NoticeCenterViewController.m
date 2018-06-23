@@ -8,6 +8,7 @@
 
 #import "NoticeCenterViewController.h"
 #import "NoticeCenterTableViewCell.h"
+#import "MyCircleViewController.h"
 #import "RecommendPerViewController.h"
 #import "MyPostSchemeViewController.h"
 #import "MyAttendViewController.h"
@@ -27,7 +28,7 @@
     
     NSMutableArray <Notice *>*listSystemNoticeArray;
     NSMutableArray <Notice *>*listPersonNoticeArray;
-  
+    BOOL isEnterPersonMessage;
 }
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottom;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
@@ -49,6 +50,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    isEnterPersonMessage = NO;
     self.viewControllerNo  = @"A107";
     self.title = @"我的消息";
     self.memberMan.delegate = self;
@@ -162,6 +164,12 @@
             //            [self goImage:student.photo];
             [listSystemNoticeArray addObject: notice];
         }
+        [listSystemNoticeArray sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+            Notice *no1 = (Notice *)obj1;
+            Notice *no2 = (Notice *)obj2;
+            return  [no1.releaseTime compare:no2.releaseTime];
+            
+        }];
         [self.fmdb close];
         [self.tableView1 reloadData];
         //    }];
@@ -198,6 +206,7 @@
 }
 
 - (IBAction)personBtnClick:(id)sender {
+    isEnterPersonMessage = YES;
     self.systemBtn.selected = NO;
     self.personBtn.selected = YES;
     self.line2.hidden = NO;
@@ -408,9 +417,11 @@
         [self.navigationController popToRootViewControllerAnimated:YES];
         return;
     }else if([keyStr isEqualToString:@"A402"]){
-
-        self.tabBarController.selectedIndex = 2;
-        [self.navigationController popToRootViewControllerAnimated:YES];
+                AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+                [app setGroupView];
+               [self.navigationController popToRootViewControllerAnimated:YES];
+//        self.tabBarController.selectedIndex = 2;
+//        [self.navigationController popToRootViewControllerAnimated:YES];
         return;
     }else if ([keyStr isEqualToString:@"A201"]){
 
@@ -533,9 +544,10 @@
         [[NSNotificationCenter defaultCenter]postNotificationName:@"NSNotificationJumpToPlayVC" object:@"SSQ"];
         return;
     }else if([keyStr isEqualToString:@"A425"]){
-        AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        [app setGroupView];
-       [self.navigationController popToRootViewControllerAnimated:YES];
+        MyCircleViewController * myCircleVC = [[MyCircleViewController alloc]init];
+        myCircleVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:myCircleVC animated:YES];
+
     } else{
          baseVC.hidesBottomBarWhenPushed = YES;
          [self.navigationController pushViewController:baseVC animated:YES];
@@ -577,8 +589,6 @@
 }
 
 -(void)navigationBackToLastPage{
-
-        
     if ([self.fmdb open]) {
         NSString *cardcode=[GlobalInstance instance ].curUser.cardCode;
         if ([cardcode isEqualToString:@""]) {
@@ -591,7 +601,7 @@
         }
     }
     [self searchSystemDB];
-        
+    if (isEnterPersonMessage == YES) {
         if ([self.fmdb open]) {
             NSString *cardcode=[GlobalInstance instance ].curUser.cardCode;
             if ([cardcode isEqualToString:@""]) {
@@ -604,6 +614,8 @@
             }
         }
         [self searchPersonDB];
+    }
+   
     [super navigationBackToLastPage];
 }
 

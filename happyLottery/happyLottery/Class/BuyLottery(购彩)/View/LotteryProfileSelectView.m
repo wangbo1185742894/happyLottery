@@ -18,6 +18,7 @@
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *profileSelectArray;
 @property (weak, nonatomic) IBOutlet UIView *viewGuoguan;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bifenDisLeft;
 @end
 
 @implementation LotteryProfileSelectView
@@ -35,12 +36,15 @@
         self.viewGuoguan.hidden = YES;
         self.labPlayType.hidden = YES;
         self.heightVIew.constant = 130;
+        
         self.btnDanGuanHT.hidden = NO;
         self.topDis .constant= 20;
         UIButton *select = [self viewWithTag: 204];
         if ([select isKindOfClass:[UIButton class]]) {
             select .selected = YES;
         }
+    }else{
+        self.bifenDisLeft.constant = 8;
     }
 }
 

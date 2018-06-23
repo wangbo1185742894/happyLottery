@@ -18,6 +18,7 @@
 @interface BankCardSettingViewController  ()<UITableViewDelegate, UITableViewDataSource,MemberManagerDelegate,WBInputPopViewDelegate>{
         NSMutableArray *listBankArray;
         BankCard *bankCard;
+       NSString *curPayPwd;
         WBInputPopView *passInput;
 }
 
@@ -141,6 +142,7 @@
         if (text .length == 0) {
             text = @"000000";
         }
+        curPayPwd = text;
         NSDictionary *cardInfo= @{@"cardCode":self.curUser.cardCode,
                                   @"payPwd":[AESUtility encryptStr:text]};
         [self.memberMan validatePaypwdSms:cardInfo];
@@ -170,18 +172,15 @@
       NSDictionary *Info;
     @try {
         NSString *cardCode = self.curUser.cardCode;
-        NSString *paypwd =@"123456";
-        
+        NSString *paypwd = curPayPwd;
         Info = @{@"cardCode":cardCode,
                  @"bankNumber":bankCard.bankNumber,
                  @"payPwd": [AESUtility encryptStr: paypwd]
                  };
-        
     } @catch (NSException *exception) {
         return;
     }
-        [self.memberMan unBindBankCardSms:Info];
-
+    [self.memberMan unBindBankCardSms:Info];
 }
 
 -(void)btnAction:(UIButton *)btn{

@@ -120,7 +120,6 @@ static NSString *ID = @"LotteryAreaViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     CGFloat bottomheight;
     self.sellLottery = [NSMutableArray arrayWithCapacity:0];
     
@@ -577,12 +576,9 @@ static NSString *ID = @"LotteryAreaViewCell";
         }
         return;
     }else if([keyStr isEqualToString:@"A402"]){
-        if (navgC == nil) {
-            self.tabBarController.selectedIndex = 2;
-        }
-        else {
-            navgC.tabBarController.selectedIndex = 2;
-        }
+        AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        [app setGroupView];
+        [self.navigationController popToRootViewControllerAnimated:YES];
         return;
     }else if([keyStr isEqualToString:@"A201"]){
         if (navgC == nil) {

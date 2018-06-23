@@ -11,18 +11,24 @@
 #import "ChannelModel.h"
 #import "JCZQSchemeModel.h"
 #import "WBInputPopView.h"
+#import "JCZQPlayViewController.h"
+#import "JCLQPlayController.h"
 #import "AESUtility.h"
+#import "BaseViewController.h"
 #import "PayOrderYouhunViewController.h"
 #import "WebShowViewController.h"
 #import "SetPayPWDViewController.h"
 #import "YuCeSchemeCreateViewController.h"
+#import "BaseViewController.h"
 #import "UMChongZhiViewController.h"
+#import "YinLanPayManage.h"
 #define KPayTypeListCell @"PayTypeListCell"
 @interface PayOrderViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,MemberManagerDelegate,UIWebViewDelegate,WBInputPopViewDelegate>
 {
     NSMutableArray <ChannelModel *>*channelList;
     ChannelModel *itemModel;
     WBInputPopView *passInput;
+    YinLanPayManage *yinlanManage;
     JCZQSchemeItem * schemeDetail;
     __weak IBOutlet UILabel *labCanUseYouhuiquan;
     
@@ -197,8 +203,19 @@
         
     }];
     [alert addBtnTitle:@"确定" action:^{
-        [super navigationBackToLastPage];
-//        [self.navigationController popToRootViewControllerAnimated:YES];
+        
+//        [super navigationBackToLastPage];
+        for (BaseViewController *baseVC in self.navigationController.viewControllers) {
+            if ([baseVC isKindOfClass:[JCLQPlayController class]]) {
+                [self.navigationController popToViewController:baseVC animated:YES];
+                return ;
+            }
+            if ([baseVC isKindOfClass: [JCZQPlayViewController class]]) {
+                [self.navigationController popToViewController:baseVC animated:YES];
+                return;
+            }
+        }
+        [self.navigationController popViewControllerAnimated:YES];
         
     }];
     [alert showAlertWithSender:self];
@@ -460,6 +477,8 @@
             [self.payWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:payInfo[@"qrCode"]]]];
         }else if ([itemModel.channel isEqualToString:@"WFTWX"]){
             [self.payWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:payInfo[@"payInfo"]]]];
+        }else if ([itemModel.channel isEqualToString:@""]){
+            [self actionYinLianChongZhi:payInfo[@"payInfo"]];
         }
         
     }else{
@@ -467,9 +486,17 @@
     }
 }
 
+-(void)actionYinLianChongZhi:(NSString *)orderNo{
+    NSString * tn = orderNo;
+    if (tn) {
+        if (!yinlanManage) {
+            yinlanManage = [[YinLanPayManage alloc] init];
+        }
+        [yinlanManage yanlianPay:tn viewController:self];
+    }
+}
 //params - String cardCode 会员卡号, RechargeChannel channel 充值渠道, BigDecimal amounts 充值金额
 -(void)commitClient{
-    
     NSDictionary *rechargeInfo;
     @try {
         NSString *cardCode = self.curUser.cardCode;

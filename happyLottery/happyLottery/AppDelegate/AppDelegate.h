@@ -22,6 +22,7 @@
 + (AppDelegate*) shareDelegate;
 -(void) playSound;
 - (void)showZhuihaoDetail:(NSString*) ordernumber;
+- (void)showZhuihaoDetailWin:(NSString*) ordernumber;
 -(void)goToYunshiWithInfo:(NSString *)pageCode;
 - (void)setGroupView;
 -(void)setAppstoreRootVC;

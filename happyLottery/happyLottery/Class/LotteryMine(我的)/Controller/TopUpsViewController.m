@@ -11,12 +11,14 @@
 #import "WebShowViewController.h"
 #import "ChongZhiRulePopView.h"
 #import "DiscoverViewController.h"
+#import "YinLanPayManage.h"
 #define KPayTypeListCell @"PayTypeListCell"
 @interface TopUpsViewController ()<MemberManagerDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,UITextFieldDelegate,UIWebViewDelegate,ChongZhiRulePopViewDelegate>
 {
     NSMutableArray <ChannelModel *>*channelList;
     ChannelModel *itemModel;
     NSMutableArray <RechargeModel *> *rechList;
+    YinLanPayManage * yinlanManage;
     RechargeModel *selectRech;
     NSString *orderNO;
 }
@@ -38,6 +40,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"充值";
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(checkSchemePayState:) name:@"UPPaymentControlFinishNotification" object:nil];
     rechList = [NSMutableArray arrayWithCapacity:0];
     [self setRightBarButtonItem];
     self.viewControllerNo = @"A105";
@@ -173,6 +176,9 @@
         }else if ([itemModel.channel isEqualToString:@"WFTWX"]){
             [self.payWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:payInfo[@"payInfo"]]]];
             orderNO = payInfo[@"orderNo"];
+        }else if([itemModel.channel isEqualToString:@"UNION"]){
+            orderNO = payInfo[@"orderNo"];
+            [self  actionYinLianChongZhi: payInfo[@"tn"]];
         }
         
     }else{
@@ -197,7 +203,7 @@
 }
 //params - String cardCode 会员卡号, RechargeChannel channel 充值渠道, BigDecimal amounts 充值金额
 -(void)commitClient{
-    
+ 
     NSDictionary *rechargeInfo;
     for (ChannelModel *model in channelList) {
         if (model.isSelect == YES) {
@@ -254,10 +260,10 @@
         return;
     }
     
-    for (NSInteger i = infoArray.count - 1 ; i > 0 ; i--) {
+    for (NSInteger i = 0 ; i < infoArray.count ; i ++ ) {
         NSDictionary *itemDic = infoArray[i];
         ChannelModel *model = [[ChannelModel alloc]initWith:itemDic];
-        if ([model.channelValue boolValue] == YES) {
+        if ([model.channelValue boolValue] == YES || [model.channel isEqualToString:@"UNION"]) {
             [channelList addObject:model];
         }
     }
@@ -341,7 +347,14 @@
 }
 
 -(void)checkSchemePayState:(NSNotification *)notification{
-    
+//    object    NSTaggedPointerString *    @"cancel"    0xa006c65636e61636
+    if ([itemModel.channel isEqualToString:@"UNION"]) {
+        if (![notification.object isEqualToString:@"success"]) {
+            [self showPromptText:@"支付失败" hideAfterDelay:1.6];
+            return;
+        }
+    }
+  
     if (orderNO == nil) {
         return;
     }
@@ -392,10 +405,19 @@
     UIBarButtonItem *barRedPacketRec = [[UIBarButtonItem alloc]initWithCustomView:rightBtnRec];
     self.navigationItem.rightBarButtonItem  = barRedPacketRec;
 }
-
+-(void)actionYinLianChongZhi:(NSString *)orderNo{
+    NSString * tn = orderNo;
+    if (tn) {
+        if (!yinlanManage) {
+            yinlanManage = [[YinLanPayManage alloc] init];
+        }
+        [yinlanManage yanlianPay:tn viewController:self];
+    }
+}
 - (void)showRuleBtnPage{
     
     [self memberDetail:nil];
 }
+
 
 @end

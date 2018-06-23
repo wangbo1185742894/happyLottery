@@ -63,8 +63,8 @@
         _index = 0;
         _textDataArr = @[@""];
         _textDataSubTitle = @[@""];
-        _textFont    = [UIFont systemFontOfSize:12];
-        _textColor   = [UIColor blackColor];
+        _textFont    = [UIFont systemFontOfSize:14];
+        _textColor   = RGBCOLOR(100, 100, 100);
         _scrollLabel = nil;
         _scrolcontent = nil;
     }
@@ -93,7 +93,7 @@
 - (void)createScrollLabel{
     _scrollLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, self.frame.size.width - 15, 40)];
     _scrollLabel.text          = @"";
-    _scrollLabel.numberOfLines = 0;
+    _scrollLabel.numberOfLines = 1;
     _scrollLabel.textAlignment = NSTextAlignmentLeft;
     _scrollLabel.textColor     = _textColor;
     _scrollLabel.font          = _textFont;

@@ -621,7 +621,6 @@
             [self.delegate gotListByRechargeChannel:dataArray errorMsg:response.errorMsg];
         } else {
             [self.delegate gotListByRechargeChannel:nil errorMsg:response.errorMsg];
-            
         }
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {

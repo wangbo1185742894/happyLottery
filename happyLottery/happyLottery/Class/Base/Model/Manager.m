@@ -79,15 +79,15 @@
                                               success: (void (^)(AFHTTPRequestOperation *operation, id responseObject))successBlock
                                               failure: (void (^)(AFHTTPRequestOperation *operation, NSError *error))failureBlock
 {
-    NSLog(@"开始——————————————————————%@",[NSDate date]);
+    
 //    if (![self socketReachabilityTest ]) {
 //        [self .netDelegate serverIsNotConnect];
 //        return nil;
 //    }
 //    [self afnReachabilityTest];
-    NSLog(@"结束——————————————————————%@",[NSDate date]);
+    
     NSString * soapMessage = [request getSOAPMessage];
-    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL: [NSURL URLWithString:[NSString stringWithFormat:WSServerURL,subApi]]];
+    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL: [NSURL URLWithString:[NSString stringWithFormat:[GlobalInstance instance].lotteryUrl,subApi]]];
     NSString *msgLength = [NSString stringWithFormat:@"%lu", (unsigned long)[soapMessage length]];
     NSLog(@"22334%@",msgLength);
     [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
