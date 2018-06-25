@@ -79,9 +79,10 @@
             if (listBankArray.count>0) {
                 
                 self.tvHeight.constant = listBankArray.count*82;
-                
+                self.curUser.bankBinding = 1;
             }else{
                 self.tvHeight.constant = 0;
+                self.curUser.bankBinding = 0;
             }
             [self.tableView reloadData];
         }
@@ -94,7 +95,7 @@
 -(void)unBindBankCardSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     [passInput removeFromSuperview];
     if ([msg isEqualToString:@"执行成功"]) {
-        self.curUser.bankBinding = 0;
+        
         [self showPromptText: @"解绑银行卡成功" hideAfterDelay: 1.7];
         [self getBankListClient];
     }else{
@@ -106,7 +107,7 @@
 -(void)validatePaypwdSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
       [passInput removeFromSuperview];
     if ([msg isEqualToString:@"执行成功"]) {
-        [self showPromptText:@"支付密码验证成功" hideAfterDelay:1.7];
+//        [self showPromptText:@"支付密码验证成功" hideAfterDelay:1.7];
         [self unBindBankCardClient];
       
     }else{

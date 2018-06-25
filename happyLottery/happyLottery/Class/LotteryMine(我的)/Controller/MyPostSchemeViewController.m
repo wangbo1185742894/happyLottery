@@ -34,7 +34,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"我的跟单";
+    self.title = @"我的跟投";
     self.viewControllerNo = @"A422";
     if (self.isFaDan) {
         [self actionGenDan:self.btnFadan];

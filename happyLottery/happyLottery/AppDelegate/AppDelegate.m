@@ -102,8 +102,12 @@ static SystemSoundID shake_sound_male_id = 0;
 #else
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         NSString *item = [[NSString alloc]initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:BaseUrl]] encoding:NSUTF8StringEncoding];
-        [GlobalInstance instance].lotteryUrl = [NSString stringWithFormat:@"%@%@",item,@"%@"];
-        
+
+        if (item != nil && item.length > 0) {
+            [GlobalInstance instance].lotteryUrl = [NSString stringWithFormat:@"%@%@",item,@"%@"];
+        }else{
+            [GlobalInstance instance].lotteryUrl = WSServerURL;
+        }
     });
 #endif
 

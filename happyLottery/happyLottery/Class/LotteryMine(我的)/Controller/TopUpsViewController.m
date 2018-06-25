@@ -173,7 +173,7 @@
         if ([itemModel.channel isEqualToString:@"SDALI"]) {
             [self.payWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:payInfo[@"qrCode"]]]];
             orderNO = payInfo[@"orderNo"];
-        }else if ([itemModel.channel isEqualToString:@"WFTWX"]){
+        }else if ([itemModel.channel isEqualToString:@"WFTWX"] || [itemModel.channel isEqualToString:@"WFTWX_HC"]){
             [self.payWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:payInfo[@"payInfo"]]]];
             orderNO = payInfo[@"orderNo"];
         }else if([itemModel.channel isEqualToString:@"UNION"]){

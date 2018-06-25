@@ -23,11 +23,11 @@
 			<key>needLogin</key>
 			<true/>
 			<key>title</key>
-			<string>我的追号</string>
+			<string>我的跟投</string>
 			<key>icon</key>
-			<string>zhuihao</string>
+			<string>follow</string>
 			<key>actionClassName</key>
-			<string>ZhuiHaoInfoViewController</string>
+			<string>MyPostSchemeViewController</string>
 			<key>ShowIconRight</key>
 			<string>1</string>
 		</dict>
@@ -37,11 +37,11 @@
 			<key>needLogin</key>
 			<true/>
 			<key>title</key>
-			<string>我的跟单</string>
+			<string>我的追号</string>
 			<key>icon</key>
-			<string>follow</string>
+			<string>zhuihao</string>
 			<key>actionClassName</key>
-			<string>MyPostSchemeViewController</string>
+			<string>ZhuiHaoInfoViewController</string>
 			<key>ShowIconRight</key>
 			<string>1</string>
 		</dict>

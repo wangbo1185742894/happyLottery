@@ -269,7 +269,7 @@
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
         SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
-        [self.delegate gotSchemeScorePayment:NO errorMsg:@"服务器错误"];
+        [self.delegate gotSchemeScorePayment:NO errorMsg:@"请检查网络连接"];
     };
     
     
@@ -322,7 +322,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         
-        [self.delegate gotlistByForecast:nil  errorMsg:@"服务器错误"];
+        [self.delegate gotlistByForecast:nil  errorMsg:@"请检查网络连接"];
     };
     NSString *strPara;
     SOAPRequest *request;
@@ -358,7 +358,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         
-        [self.delegate gotForecastByMatch:nil  errorMsg:@"服务器错误"];
+        [self.delegate gotForecastByMatch:nil  errorMsg:@"请检查网络连接"];
     };
     
     SOAPRequest* request = [self requestForAPI:APIgetForecastByMatch  withParam: @{@"params":[self actionEncrypt:[self JsonFromId:infoDic]]}];
@@ -389,7 +389,7 @@
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
         
-            [self.delegate gotJczqPairingMatch:nil  errorMsg:@"服务器错误"];
+            [self.delegate gotJczqPairingMatch:nil  errorMsg:@"请检查网络连接"];
     };
     
     SOAPRequest *request = [self requestForAPI: APIgetJczqPairingMatch withParam: @{@"params":[self actionEncrypt:[self JsonFromId:infoDic]]}];
@@ -417,7 +417,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         
-        [self.delegate gotjcycScoreZhibo:nil  errorMsg:@"服务器错误"];
+        [self.delegate gotjcycScoreZhibo:nil  errorMsg:@"请检查网络连接"];
     };
     
     SOAPRequest *request;
@@ -509,7 +509,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate gotSchemeRecord:nil errorMsg:@"服务器错误"];
+        [self.delegate gotSchemeRecord:nil errorMsg:@"请检查网络连接"];
     };
     
     SOAPRequest *request = [self requestForAPI: APIGetSchemeRecord withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
@@ -536,7 +536,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate gotJczqTicketOrderDetail:nil errorMsg:@"服务器错误"];
+        [self.delegate gotJczqTicketOrderDetail:nil errorMsg:@"请检查网络连接"];
     };
     NSString *url;
     if([lotteryCode isEqualToString:@"DLT"]){
@@ -580,7 +580,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate gotSchemeRecordBySchemeNo:nil errorMsg:@"服务器错误"];
+        [self.delegate gotSchemeRecordBySchemeNo:nil errorMsg:@"请检查网络连接"];
     };
     
     SOAPRequest *request = [self requestForAPI: APIGetSchemeRecordBySchemeNo withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
@@ -625,7 +625,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate gotListByRechargeChannel:nil errorMsg:@"服务器错误"];
+        [self.delegate gotListByRechargeChannel:nil errorMsg:@"请检查网络连接"];
     };
 //
     SOAPRequest *request = [self requestForAPI: APIlistByRechargeChannel withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
@@ -655,7 +655,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate gotCollectedMatchList:nil errorMsg:@"服务器错误"];
+        [self.delegate gotCollectedMatchList:nil errorMsg:@"请检查网络连接"];
     };
     //
     SOAPRequest *request = [self requestForAPI: APIGetCollectedMatchList withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
@@ -683,7 +683,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate gotlistByHisGains:nil errorMsg:@"服务器错误"];
+        [self.delegate gotlistByHisGains:nil errorMsg:@"请检查网络连接"];
     };
     //
     SOAPRequest *request = [self requestForAPI: APIlistByHisGains withParam:nil];
@@ -711,7 +711,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate collectedMatch:NO errorMsg:@"服务器错误" andIsSelect:[paraDic[@"isCollect"] boolValue]];
+        [self.delegate collectedMatch:NO errorMsg:@"请检查网络连接" andIsSelect:[paraDic[@"isCollect"] boolValue]];
     };
     //
     SOAPRequest *request = [self requestForAPI: APICollectMatch withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
@@ -739,7 +739,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate gotForecastTotal:nil errorMsg:@"服务器错误"];
+        [self.delegate gotForecastTotal:nil errorMsg:@"请检查网络连接"];
     };
     //
     SOAPRequest *request = [self requestForAPI: APIgetForecastTotal withParam:nil];
@@ -788,7 +788,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate gotbonusOptimize:nil errorMsg:@"服务器错误"];
+        [self.delegate gotbonusOptimize:nil errorMsg:@"请检查网络连接"];
     };
     
     NSArray *betContentDic = [transcation lottDataScheme];
@@ -835,7 +835,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate gotSellIssueList:nil errorMsg:@"服务器错误"];
+        [self.delegate gotSellIssueList:nil errorMsg:@"请检查网络连接"];
     };
     //
     SOAPRequest *request = [self requestForAPI: APIgetSellIssueList withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
@@ -862,7 +862,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate gotListHisPageIssue:nil errorMsg:@"服务器错误"];
+        [self.delegate gotListHisPageIssue:nil errorMsg:@"请检查网络连接"];
     };
     
     SOAPRequest *request = [self requestForAPI: APIlistHisPageIssue withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
@@ -889,7 +889,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate gotListHisIssue:nil errorMsg:@"服务器错误"];
+        [self.delegate gotListHisIssue:nil errorMsg:@"请检查网络连接"];
     };
     
     SOAPRequest *request = [self requestForAPI: APIListHisIssue withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
@@ -916,7 +916,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate gotChaseDetailForApp:nil errorMsg:@"服务器错误"];
+        [self.delegate gotChaseDetailForApp:nil errorMsg:@"请检查网络连接"];
     };
     
     SOAPRequest *request = [self requestForAPI: APIgetChaseDetailForApp withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
@@ -943,7 +943,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate listChaseSchemeForApp:nil errorMsg:@"服务器错误"];
+        [self.delegate listChaseSchemeForApp:nil errorMsg:@"请检查网络连接"];
     };
     
     SOAPRequest *request = [self requestForAPI: APIlistChaseSchemeForApp withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
@@ -996,7 +996,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate gotListZcMatchSp:nil errorMsg:@"服务器错误"];
+        [self.delegate gotListZcMatchSp:nil errorMsg:@"请检查网络连接"];
     };
     //
     SOAPRequest *request = [self requestForAPI: APIlistZcMatchSp withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
@@ -1088,7 +1088,7 @@
         }
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.delegate gotlistJcgjSellItem:nil errorMsg:@"服务器错误"];
+        [self.delegate gotlistJcgjSellItem:nil errorMsg:@"请检查网络连接"];
     };
     SOAPRequest* request = [self requestForAPI:APIlistJcgjSellItem  withParam: nil];
     [self newRequestWithRequest:request
@@ -1112,7 +1112,7 @@
         }
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
-            [self.delegate gotlistJcgyjSellItem:nil  errorMsg:@"服务器错误"];
+            [self.delegate gotlistJcgyjSellItem:nil  errorMsg:@"请检查网络连接"];
     };
     SOAPRequest* request = [self requestForAPI:APIlistJcgyjSellItem  withParam:nil];
     [self newRequestWithRequest:request
@@ -1137,7 +1137,7 @@
         }
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
-             [self.delegate gotlistJcgjItem:nil  errorMsg:@"服务器错误"];
+             [self.delegate gotlistJcgjItem:nil  errorMsg:@"请检查网络连接"];
     };
     SOAPRequest* request = [self requestForAPI:APIlistJcgjItem  withParam:nil];
     [self newRequestWithRequest:request
@@ -1162,7 +1162,7 @@
         }
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
-                [self.delegate gotlistJcgyjItem:nil  errorMsg:@"服务器错误"];
+                [self.delegate gotlistJcgyjItem:nil  errorMsg:@"请检查网络连接"];
     };
     SOAPRequest* request = [self requestForAPI:APIlistJcgyjItem  withParam:nil];
     [self newRequestWithRequest:request
@@ -1189,7 +1189,7 @@
         };
         void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"%@", error);
-            [self.delegate gotJcgjTicketOrderDetail:nil errorMsg:@"服务器错误"];
+            [self.delegate gotJcgjTicketOrderDetail:nil errorMsg:@"请检查网络连接"];
         };
         
         SOAPRequest *request = [self requestForAPI: APIGetJcgjTicketOrderDetail withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
@@ -1216,7 +1216,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-            [self.delegate gotJcgyjTicketOrderDetail:nil errorMsg:@"服务器错误"];
+            [self.delegate gotJcgyjTicketOrderDetail:nil errorMsg:@"请检查网络连接"];
     };
     
     SOAPRequest *request = [self requestForAPI: APIGetJcgyjTicketOrderDetail withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
@@ -1243,7 +1243,7 @@
         }
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.delegate gotJclqMatch:nil  errorMsg:@"服务器错误"];
+        [self.delegate gotJclqMatch:nil  errorMsg:@"请检查网络连接"];
     };
     SOAPRequest* request = [self requestForAPI:APIgetJclqMatch  withParam:nil];
     [self newRequestWithRequest:request
@@ -1266,7 +1266,7 @@
         }
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.delegate gotJclqSp:nil  errorMsg:@"服务器错误"];
+        [self.delegate gotJclqSp:nil  errorMsg:@"请检查网络连接"];
     };
     SOAPRequest* request = [self requestForAPI:APIgetJclqSp  withParam:nil];
     [self newRequestWithRequest:request
@@ -1292,7 +1292,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate gotSsqTicketOrderDetail:nil errorMsg:@"服务器错误"];
+        [self.delegate gotSsqTicketOrderDetail:nil errorMsg:@"请检查网络连接"];
     };
     
     SOAPRequest *request = [self requestForAPI: APIGetSsqTicketOrderDetail withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
@@ -1321,7 +1321,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate gotJclqTicketOrderDetail:nil errorMsg:@"服务器错误"];
+        [self.delegate gotJclqTicketOrderDetail:nil errorMsg:@"请检查网络连接"];
     };
     
     SOAPRequest *request = [self requestForAPI: APIGetJclqTicketOrderDetail withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
@@ -1348,7 +1348,7 @@
         }
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.delegate gotlistRecommend:nil  errorMsg:@"服务器错误"];
+        [self.delegate gotlistRecommend:nil  errorMsg:@"请检查网络连接"];
     };
     NSString *apiName;
     NSDictionary *dic;
@@ -1383,7 +1383,7 @@
         }
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.delegate initiateFollowScheme:nil errorMsg:@"服务器错误"];
+        [self.delegate initiateFollowScheme:nil errorMsg:@"请检查网络连接"];
     };
     
     SOAPRequest* request = [self requestForAPI:APIInitiateFollowScheme withParam:@{@"params":[self actionEncrypt:[self JsonFromId:infoDic]]}];
@@ -1408,7 +1408,7 @@
         }
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.delegate listGreatFollow:nil errorMsg:@"服务器错误"];
+        [self.delegate listGreatFollow:nil errorMsg:@"请检查网络连接"];
     };
     
     SOAPRequest* request = [self requestForAPI:APIlistGreatFollow withParam:nil];
@@ -1433,7 +1433,7 @@
         }
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.delegate getHotFollowScheme:nil errorMsg:@"服务器错误"];
+        [self.delegate getHotFollowScheme:nil errorMsg:@"请检查网络连接"];
     };
     
     SOAPRequest* request = [self requestForAPI:APIGetHotFollowScheme withParam:nil];
@@ -1458,7 +1458,7 @@
         }
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.delegate getHotFollowScheme:nil errorMsg:@"服务器错误"];
+        [self.delegate getHotFollowScheme:nil errorMsg:@"请检查网络连接"];
     };
     
     SOAPRequest* request = [self requestForAPI:APIGetFollowSchemeByNickName withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraic]]}];
@@ -1482,7 +1482,7 @@
         }
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.delegate followScheme:nil errorMsg:@"服务器错误"];
+        [self.delegate followScheme:nil errorMsg:@"请检查网络连接"];
     };
     
     SOAPRequest* request = [self requestForAPI:APIFollowScheme withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraic]]}];
@@ -1510,7 +1510,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate gotAttentFollowScheme:nil errorMsg:@"服务器错误"];
+        [self.delegate gotAttentFollowScheme:nil errorMsg:@"请检查网络连接"];
     };
     
     SOAPRequest *request = [self requestForAPI: APIgetAttentFollowScheme withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
@@ -1540,7 +1540,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate gotInitiateInfo:nil errorMsg:@"服务器错误"];
+        [self.delegate gotInitiateInfo:nil errorMsg:@"请检查网络连接"];
     };
     
     SOAPRequest *request = [self requestForAPI: APIGetInitiateInfo withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
@@ -1568,7 +1568,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate gotisAttent:nil errorMsg:@"服务器错误"];
+        [self.delegate gotisAttent:nil errorMsg:@"请检查网络连接"];
     };
     
     SOAPRequest *request = [self requestForAPI: APIIsAttent withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
@@ -1597,7 +1597,7 @@
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
         
-        [self.delegate gotAttentMember:nil errorMsg:@"服务器错误"];
+        [self.delegate gotAttentMember:nil errorMsg:@"请检查网络连接"];
     };
     
     
@@ -1626,7 +1626,7 @@
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
 
-        [self.delegate gotListAttent:nil errorMsg:@"服务器错误"];
+        [self.delegate gotListAttent:nil errorMsg:@"请检查网络连接"];
     };
     
 
@@ -1653,7 +1653,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate gotReliefAttent:nil errorMsg:@"服务器错误"];
+        [self.delegate gotReliefAttent:nil errorMsg:@"请检查网络连接"];
     };
     
     SOAPRequest *request = [self requestForAPI: APIReliefAttent withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
@@ -1680,7 +1680,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate gotAppSign:nil errorMsg:@"服务器错误"];
+        [self.delegate gotAppSign:nil errorMsg:@"请检查网络连接"];
     };
     
     SOAPRequest *request = [self requestForAPI: APIgetAppSign withParam:nil];
@@ -1707,7 +1707,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate listSellLottery:nil errorMsg:@"服务器错误"];
+        [self.delegate listSellLottery:nil errorMsg:@"请检查网络连接"];
     };
     
     SOAPRequest *request = [self requestForAPI: APIlistSellLottery withParam:nil];
@@ -1733,7 +1733,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate listRechargeHandsel:nil errorMsg:@"服务器错误"];
+        [self.delegate listRechargeHandsel:nil errorMsg:@"请检查网络连接"];
     };
     
     SOAPRequest *request = [self requestForAPI: APIlistRechargeHandsel withParam:nil];

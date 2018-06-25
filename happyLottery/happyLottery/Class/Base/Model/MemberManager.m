@@ -34,7 +34,7 @@
     
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate loginUser:nil IsSuccess:NO errorMsg:@"服务器错误"];
+        [self.delegate loginUser:nil IsSuccess:NO errorMsg:@"请检查网络连接"];
     };
     
     SOAPRequest *request = [self requestForAPI: APILogin withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
@@ -68,7 +68,7 @@
     
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate registerUser:nil IsSuccess:NO errorMsg:@"服务器错误"];
+        [self.delegate registerUser:nil IsSuccess:NO errorMsg:@"请检查网络连接"];
         //失败的代理方法
     };
     NSString *platformCode;
@@ -114,7 +114,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate sendRegisterSmsIsSuccess:NO errorMsg:@"服务器错误"];
+        [self.delegate sendRegisterSmsIsSuccess:NO errorMsg:@"请检查网络连接"];
         //失败的代理方法
     };
     NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ"};
@@ -146,7 +146,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate checkRegisterSmsIsSuccess:NO errorMsg:@"服务器错误"];
+        [self.delegate checkRegisterSmsIsSuccess:NO errorMsg:@"请检查网络连接"];
         //失败的代理方法
     };
     NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
@@ -178,7 +178,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate forgetPWDSmsIsSuccess:NO errorMsg:@"服务器错误"];
+        [self.delegate forgetPWDSmsIsSuccess:NO errorMsg:@"请检查网络连接"];
         //失败的代理方法
     };
 //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
@@ -211,7 +211,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate sendForgetPWDSmsIsSuccess:NO errorMsg:@"服务器错误"];
+        [self.delegate sendForgetPWDSmsIsSuccess:NO errorMsg:@"请检查网络连接"];
         //失败的代理方法
     };
     NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ"};
@@ -243,7 +243,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate checkForgetPWDSmsIsSuccess:NO errorMsg:@"服务器错误"];
+        [self.delegate checkForgetPWDSmsIsSuccess:NO errorMsg:@"请检查网络连接"];
         //失败的代理方法
     };
     NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
@@ -276,7 +276,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate resetNickSmsIsSuccess:NO errorMsg:@"服务器错误"];
+        [self.delegate resetNickSmsIsSuccess:NO errorMsg:@"请检查网络连接"];
         //失败的代理方法
     };
     //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
@@ -308,7 +308,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate bandPayPWDSmsIsSuccess:NO errorMsg:@"服务器错误"];
+        [self.delegate bandPayPWDSmsIsSuccess:NO errorMsg:@"请检查网络连接"];
         //失败的代理方法
     };
     //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
@@ -341,7 +341,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate resetPayPWDSmsIsSuccess:NO errorMsg:@"服务器错误"];
+        [self.delegate resetPayPWDSmsIsSuccess:NO errorMsg:@"请检查网络连接"];
         //失败的代理方法
     };
     //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
@@ -374,7 +374,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate changeLoginPWDSmsIsSuccess:NO errorMsg:@"服务器错误"];
+        [self.delegate changeLoginPWDSmsIsSuccess:NO errorMsg:@"请检查网络连接"];
         //失败的代理方法
     };
     //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
@@ -406,7 +406,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate sendUpdatePaypwdSmsIsSuccess:NO errorMsg:@"服务器错误"];
+        [self.delegate sendUpdatePaypwdSmsIsSuccess:NO errorMsg:@"请检查网络连接"];
         //失败的代理方法
     };
     NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":CHANNEL_CODE};
@@ -438,7 +438,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate checkUpdatePaypwdSmsIsSuccess:NO errorMsg:@"服务器错误"];
+        [self.delegate checkUpdatePaypwdSmsIsSuccess:NO errorMsg:@"请检查网络连接"];
         //失败的代理方法
     };
     //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
@@ -470,7 +470,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate getSupportBankSms:nil IsSuccess:NO errorMsg:@"服务器错误"];
+        [self.delegate getSupportBankSms:nil IsSuccess:NO errorMsg:@"请检查网络连接"];
         //失败的代理方法
     };
     //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
@@ -502,7 +502,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate bindNameSmsIsSuccess:NO errorMsg:@"服务器错误"];
+        [self.delegate bindNameSmsIsSuccess:NO errorMsg:@"请检查网络连接"];
         //失败的代理方法
     };
     //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
@@ -534,7 +534,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate addBankCardSmsIsSuccess:NO errorMsg:@"服务器错误"];
+        [self.delegate addBankCardSmsIsSuccess:NO errorMsg:@"请检查网络连接"];
         //失败的代理方法
     };
     //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
@@ -568,7 +568,7 @@
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
         
-        [self.delegate getBankListSms:nil IsSuccess:NO errorMsg:@"服务器错误"];
+        [self.delegate getBankListSms:nil IsSuccess:NO errorMsg:@"请检查网络连接"];
         //失败的代理方法
     };
     //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
@@ -600,7 +600,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate unBindBankCardSmsIsSuccess:NO errorMsg:@"服务器错误"];
+        [self.delegate unBindBankCardSmsIsSuccess:NO errorMsg:@"请检查网络连接"];
         //失败的代理方法
     };
     //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
@@ -634,7 +634,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate rechargeSmsIsSuccess:NO andPayInfo:nil errorMsg:@"服务器错误"];
+        [self.delegate rechargeSmsIsSuccess:NO andPayInfo:nil errorMsg:@"请检查网络连接"];
         //失败的代理方法
     };
     //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
@@ -663,7 +663,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate gotAvailableCoupon:NO andPayInfo:nil errorMsg:@"服务器错误"];
+        [self.delegate gotAvailableCoupon:NO andPayInfo:nil errorMsg:@"请检查网络连接"];
         //失败的代理方法
     };
     //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
@@ -692,7 +692,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate queryRecharge:nil IsSuccess:NO errorMsg:@"服务器错误"];
+        [self.delegate queryRecharge:nil IsSuccess:NO errorMsg:@"请检查网络连接"];
     };
     
     SOAPRequest *request = [self requestForAPI: APIqueryRecharge withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]} ];
@@ -722,7 +722,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate withdrawSmsIsSuccess:NO errorMsg:@"服务器错误"];
+        [self.delegate withdrawSmsIsSuccess:NO errorMsg:@"请检查网络连接"];
         //失败的代理方法
     };
     //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
@@ -755,7 +755,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate validatePaypwdSmsIsSuccess:NO errorMsg:@"服务器错误"];
+        [self.delegate validatePaypwdSmsIsSuccess:NO errorMsg:@"请检查网络连接"];
         //失败的代理方法
     };
     //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
@@ -784,7 +784,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate getCashBlotterSms:nil IsSuccess:NO errorMsg:@"服务器错误"];
+        [self.delegate getCashBlotterSms:nil IsSuccess:NO errorMsg:@"请检查网络连接"];
         //失败的代理方法
     };
     //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
@@ -821,7 +821,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate getScoreBlotterSms:nil IsSuccess:NO errorMsg:@"服务器错误"];
+        [self.delegate getScoreBlotterSms:nil IsSuccess:NO errorMsg:@"请检查网络连接"];
         //失败的代理方法
     };
     //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
@@ -856,7 +856,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate getMemberByCardCodeSms:nil IsSuccess:NO errorMsg:@"服务器错误"];
+        [self.delegate getMemberByCardCodeSms:nil IsSuccess:NO errorMsg:@"请检查网络连接"];
         //失败的代理方法
     };
     //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
@@ -891,7 +891,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate getRedPacketByStateSms:nil IsSuccess:NO errorMsg:@"服务器错误"];
+        [self.delegate getRedPacketByStateSms:nil IsSuccess:NO errorMsg:@"请检查网络连接"];
         //失败的代理方法
     };
     //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
@@ -926,7 +926,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate openRedPacketSms:nil IsSuccess:NO errorMsg:@"服务器错误"];
+        [self.delegate openRedPacketSms:nil IsSuccess:NO errorMsg:@"请检查网络连接"];
         //失败的代理方法
     };
     //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
@@ -963,7 +963,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate getCouponByStateSms:nil IsSuccess:NO errorMsg:@"服务器错误"];
+        [self.delegate getCouponByStateSms:nil IsSuccess:NO errorMsg:@"请检查网络连接"];
         //失败的代理方法
     };
     //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
@@ -992,7 +992,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-       [self.delegate updateImage:YES errorMsg:@"服务器错误"];
+       [self.delegate updateImage:YES errorMsg:@"请检查网络连接"];
     };
 
     SOAPRequest *request = [self requestForAPI:APIupdateImage withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paramDic]]}];
@@ -1021,7 +1021,7 @@
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
         SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
-        [self.delegate gotMemberByCardCode:nil errorMsg:@"服务器错误"];
+        [self.delegate gotMemberByCardCode:nil errorMsg:@"请检查网络连接"];
         //失败的代理方法
     };
     NSDictionary *itemParaDic = @{@"cardCode":paraDic[@"cardCode"]};
@@ -1055,7 +1055,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-         [self.delegate getQRCodeStateSms:nil IsSuccess:YES errorMsg:@"服务器错误"];
+         [self.delegate getQRCodeStateSms:nil IsSuccess:YES errorMsg:@"请检查网络连接"];
         //失败的代理方法
     };
     //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
@@ -1090,7 +1090,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate FeedBack:YES errorMsg:@"服务器错误"];
+        [self.delegate FeedBack:YES errorMsg:@"请检查网络连接"];
     };
     
     SOAPRequest *request = [self requestForAPI:APIfeedBack withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
@@ -1121,7 +1121,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-         [self.delegate FeedBackUnReadNum:nil IsSuccess:NO errorMsg:@"服务器错误"];
+         [self.delegate FeedBackUnReadNum:nil IsSuccess:NO errorMsg:@"请检查网络连接"];
    
     };
     
@@ -1153,7 +1153,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-          [self.delegate ResetFeedBackReadStatusSmsIsSuccess: YES errorMsg:@"服务器错误"];
+          [self.delegate ResetFeedBackReadStatusSmsIsSuccess: YES errorMsg:@"请检查网络连接"];
         
     };
     
@@ -1188,7 +1188,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate getFeedbackListSms:nil IsSuccess:NO errorMsg:@"服务器错误"];
+        [self.delegate getFeedbackListSms:nil IsSuccess:NO errorMsg:@"请检查网络连接"];
         //失败的代理方法
     };
     //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
@@ -1217,7 +1217,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate signInIsSuccess:nil isSuccess:NO errorMsg:@"服务器错误"];
+        [self.delegate signInIsSuccess:nil isSuccess:NO errorMsg:@"请检查网络连接"];
         //失败的代理方法
     };
     //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
@@ -1244,7 +1244,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate gotisSignInToday:nil IsSuccess:NO errorMsg:@"服务器错误"];
+        [self.delegate gotisSignInToday:nil IsSuccess:NO errorMsg:@"请检查网络连接"];
         //失败的代理方法
     };
     //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
@@ -1279,7 +1279,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate upMemberShareSmsIsSuccess:YES result:nil  errorMsg:@"服务器错误"];
+        [self.delegate upMemberShareSmsIsSuccess:YES result:nil  errorMsg:@"请检查网络连接"];
         //失败的代理方法
     };
     //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
@@ -1355,7 +1355,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate gotVueHttpUrl:nil errorMsg:@"服务器错误"];
+        [self.delegate gotVueHttpUrl:nil errorMsg:@"请检查网络连接"];
     };
     //
     SOAPRequest *request = [self requestForAPI: APIGetVueHttpUrl withParam:nil];
@@ -1385,7 +1385,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate ResetFeedBackReadStatusSmsIsSuccess: YES errorMsg:@"服务器错误"];
+        [self.delegate ResetFeedBackReadStatusSmsIsSuccess: YES errorMsg:@"请检查网络连接"];
         
     };
     

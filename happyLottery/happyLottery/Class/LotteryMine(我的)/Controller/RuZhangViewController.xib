@@ -41,9 +41,8 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yil-ZE-F4C">
-                            <rect key="frame" x="15" y="36" width="30" height="35"/>
+                            <rect key="frame" x="15" y="36" width="34.5" height="35"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="30" id="9Vu-To-Bjj"/>
                                 <constraint firstAttribute="height" constant="35" id="RbR-gW-QYA"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
@@ -51,7 +50,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="pva-V7-AJZ">
-                            <rect key="frame" x="53" y="33.5" width="302" height="40"/>
+                            <rect key="frame" x="57.5" y="33.5" width="297.5" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="3HZ-05-yCe"/>
                             </constraints>

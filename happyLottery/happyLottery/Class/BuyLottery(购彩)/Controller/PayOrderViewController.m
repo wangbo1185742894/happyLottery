@@ -451,7 +451,7 @@
         return;
     }
     
-    for (NSInteger i = infoArray.count - 1 ; i > 0 ; i--) {
+    for (NSInteger i =0  ; i < infoArray.count ; i ++) {
         NSDictionary *itemDic = infoArray[i];
         ChannelModel *model = [[ChannelModel alloc]initWith:itemDic];
         if ([model.channelValue boolValue] == YES) {
@@ -475,7 +475,7 @@
     if (success) {
         if ([itemModel.channel isEqualToString:@"SDALI"]) {
             [self.payWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:payInfo[@"qrCode"]]]];
-        }else if ([itemModel.channel isEqualToString:@"WFTWX"]){
+        }else if ([itemModel.channel isEqualToString:@"WFTWX"] || [itemModel.channel isEqualToString:@"WFTWX_HC"]){
             [self.payWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:payInfo[@"payInfo"]]]];
         }else if ([itemModel.channel isEqualToString:@""]){
             [self actionYinLianChongZhi:payInfo[@"payInfo"]];
