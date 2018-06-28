@@ -328,7 +328,6 @@ static SystemSoundID shake_sound_male_id = 0;
     [_window makeKeyAndVisible];
     _window.backgroundColor = [UIColor whiteColor];
     defaults = [NSUserDefaults standardUserDefaults];
-    
 }
 
 -(void)setNewFeature{
