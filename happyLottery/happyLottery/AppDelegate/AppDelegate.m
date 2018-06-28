@@ -409,8 +409,9 @@ static SystemSoundID shake_sound_male_id = 0;
     tabAttrs[@"title"] = @"圈子";
     tabAttrs[@"itemNormal"] = @"quanzi_normal";
     tabAttrs[@"itemSelected"] = @"quanzi_secelcted";
-    tabAttrs[@"rootVC"] = @"GroupViewController";
+    tabAttrs[@"rootVC"] = @"";
     gouCaiNavVC = [self tabNavVCWithAttr: tabAttrs];
+    
     
     tabAttrs[@"tabTitle"] = @"发现";
     tabAttrs[@"title"] = @"发现";
@@ -1018,6 +1019,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     tabAttrs[@"itemNormal"] = @"quanzi_normal";
     tabAttrs[@"itemSelected"] = @"quanzi_secelcted";
     tabAttrs[@"rootVC"] = @"GroupViewController";
+    
     return [self tabNavVCWithAttr: tabAttrs];
 }
 
@@ -1031,6 +1033,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     if (baseVC != nil) {
         itemNav.viewControllers = @[baseVC];
     }
+    itemNav.hidesBottomBarWhenPushed = YES;
     return itemNav;
 }
 
