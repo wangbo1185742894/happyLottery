@@ -48,6 +48,8 @@
     }else{
         isBack =NO;
     }
+    [self showLoadingViewWithText:@"正在加载"];
+
     NSString *requsetIngUrlStr =[NSString stringWithFormat:@"%@",request.URL];
     if ([requsetIngUrlStr containsString:@"/index"]) {
         self.navigationController.navigationBar.hidden = NO;
@@ -85,6 +87,7 @@
     }else{
         webView.hidden = NO;
     }
+    [self hideLoadingView];
     context = [webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
     context[@"appObj"] = self;
     context.exceptionHandler = ^(JSContext *context, JSValue *exceptionValue) {
