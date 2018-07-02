@@ -41,7 +41,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p7d-Na-86m">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="-20" width="375" height="687"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="byr-kC-ygS">
                             <rect key="frame" x="0.0" y="156" width="375" height="11"/>
@@ -379,9 +379,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.95686274509803915" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstItem="sod-Ac-n0P" firstAttribute="top" secondItem="p7d-Na-86m" secondAttribute="top" constant="22" id="1cu-cC-EDI"/>
                         <constraint firstAttribute="trailing" secondItem="byr-kC-ygS" secondAttribute="trailing" id="AtB-eW-ePQ"/>
                         <constraint firstItem="7oa-xW-2Ak" firstAttribute="top" secondItem="kk5-rP-XGf" secondAttribute="bottom" id="BHy-md-8Uy"/>
                         <constraint firstItem="ut7-e6-ow1" firstAttribute="leading" secondItem="p7d-Na-86m" secondAttribute="leading" id="Gjg-AC-bad"/>
@@ -392,6 +390,7 @@
                         <constraint firstItem="byr-kC-ygS" firstAttribute="leading" secondItem="p7d-Na-86m" secondAttribute="leading" id="T1R-Dr-noU"/>
                         <constraint firstItem="7kh-qy-0D9" firstAttribute="top" secondItem="p7d-Na-86m" secondAttribute="top" id="TQU-tk-Xom"/>
                         <constraint firstAttribute="trailing" secondItem="sod-Ac-n0P" secondAttribute="trailing" constant="11" id="VWX-NU-BZn"/>
+                        <constraint firstItem="asT-0r-9bk" firstAttribute="top" secondItem="sod-Ac-n0P" secondAttribute="bottom" constant="44" id="bWa-PV-Awu"/>
                         <constraint firstAttribute="trailing" secondItem="7kh-qy-0D9" secondAttribute="trailing" id="d2W-Hf-2Bo"/>
                         <constraint firstAttribute="trailing" secondItem="7oa-xW-2Ak" secondAttribute="trailing" id="dRg-5y-bRY"/>
                         <constraint firstItem="y7c-WS-iwa" firstAttribute="centerY" secondItem="sod-Ac-n0P" secondAttribute="centerY" id="ddC-VU-Yb9"/>
@@ -418,7 +417,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="p7d-Na-86m" secondAttribute="bottom" id="Eb5-KW-w74"/>
-                <constraint firstItem="p7d-Na-86m" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Oyl-0s-KxW"/>
+                <constraint firstItem="p7d-Na-86m" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="-20" id="Oyl-0s-KxW"/>
                 <constraint firstAttribute="trailing" secondItem="p7d-Na-86m" secondAttribute="trailing" id="hsg-cN-cmv"/>
                 <constraint firstItem="p7d-Na-86m" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="mfA-CF-n9l"/>
             </constraints>

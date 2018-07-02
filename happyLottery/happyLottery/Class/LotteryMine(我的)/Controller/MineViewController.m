@@ -193,6 +193,7 @@
         self.notiRedPointImg.hidden = NO;
         self.noticeRedPointLab.text = [NSString stringWithFormat:@"%ld",num];
     }
+    self.navigationController.navigationBar.hidden = YES;
 }
 
 
@@ -277,6 +278,7 @@
     double total = balance+notCash+sendBalance;
     NSString *totalstr = [NSString stringWithFormat:@"%.2f",total];
     self.balanceLab.text = totalstr;
+    self.lotMoneyLab.text = [NSString stringWithFormat:@"%.2f",sendBalance];
     int score =  [self.curUser.score intValue];
     NSString *scorestr = [NSString stringWithFormat:@"%d",score];
     self.integralLab.text = scorestr;
@@ -347,6 +349,7 @@
 
 -(void)signInIsSuccess:(NSDictionary *)info isSuccess:(BOOL)success errorMsg:(NSString *)msg{
     if (success) {
+        
         [self showPromptText:[NSString stringWithFormat:@"您已连续签到%@天,恭喜您获得%@积分!",info[@"severalDays"],info[@"gainScore"]] hideAfterDelay:1.7];
 //        self.signInBtn.enabled = NO;
     }else{
