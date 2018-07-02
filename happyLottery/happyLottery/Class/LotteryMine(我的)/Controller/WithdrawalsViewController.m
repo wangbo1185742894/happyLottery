@@ -242,8 +242,12 @@
             [self showPromptText:@"请输入支付密码" hideAfterDelay:2.7];
             return;
         }
+        if (text .length == 0) {
+            text = @"1";
+        }
+
         pwd =text;
-        NSDictionary *cardInfo= @{@"cardCode":self.curUser.cardCode,
+                NSDictionary *cardInfo= @{@"cardCode":self.curUser.cardCode,
                                   @"payPwd":[AESUtility encryptStr:pwd]};
         [self.memberMan validatePaypwdSms:cardInfo];
     }];
