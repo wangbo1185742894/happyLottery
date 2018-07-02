@@ -982,9 +982,11 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         }else{
             gouCaiNavVC = [self groupDisplayNav:nil];
         }
+        gouCaiNavVC.hidesBottomBarWhenPushed = NO;
     }
     else {
        gouCaiNavVC = [self groupApplyNav];
+        gouCaiNavVC.hidesBottomBarWhenPushed = YES;
     }
     tabBarControllerMain.viewControllers = @[homeNavVC,genTouNavVC,gouCaiNavVC,faXianNavVC, memberNavVC];
     tabBarControllerMain.selectedIndex = 2;
@@ -1018,7 +1020,6 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     tabAttrs[@"itemNormal"] = @"quanzi_normal";
     tabAttrs[@"itemSelected"] = @"quanzi_secelcted";
     tabAttrs[@"rootVC"] = @"GroupViewController";
-    
     return [self tabNavVCWithAttr: tabAttrs];
 }
 
@@ -1032,7 +1033,6 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     if (baseVC != nil) {
         itemNav.viewControllers = @[baseVC];
     }
-    itemNav.hidesBottomBarWhenPushed = YES;
     return itemNav;
 }
 
