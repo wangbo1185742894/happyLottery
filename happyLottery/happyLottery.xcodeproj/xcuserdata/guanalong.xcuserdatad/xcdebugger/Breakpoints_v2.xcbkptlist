@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "happyLottery/Class/LotteryMine(&#x6211;&#x7684;)/Controller/IntegralMallViewController.m"
-            timestampString = "552214869.721652"
+            timestampString = "552224203.756451"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "46"
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "happyLottery/Class/LotteryMine(&#x6211;&#x7684;)/Controller/MineViewController.m"
-            timestampString = "552211935.03477"
+            timestampString = "552224203.756592"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "343"
-            endingLineNumber = "343"
-            landmarkName = "-signInBtnClick:"
+            startingLineNumber = "351"
+            endingLineNumber = "351"
+            landmarkName = "-signInIsSuccess:isSuccess:errorMsg:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,13 +42,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "happyLottery/Class/LotteryMine(&#x6211;&#x7684;)/Controller/MineViewController.m"
-            timestampString = "552211935.0349981"
+            timestampString = "552224203.757147"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "351"
-            endingLineNumber = "351"
-            landmarkName = "-signInIsSuccess:isSuccess:errorMsg:"
-            landmarkType = "7">
+            startingLineNumber = "359"
+            endingLineNumber = "359"
+            landmarkName = "MineViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -74,6 +74,38 @@
             startingLineNumber = "246"
             endingLineNumber = "246"
             landmarkName = "-showPayPopView"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/LotteryMine(&#x6211;&#x7684;)/Controller/MineViewController.m"
+            timestampString = "552224203.757537"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "-viewWillAppear:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/BuyLotteryViewController.m"
+            timestampString = "552221230.6715569"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "852"
+            endingLineNumber = "852"
+            landmarkName = "-viewWillAppear:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
