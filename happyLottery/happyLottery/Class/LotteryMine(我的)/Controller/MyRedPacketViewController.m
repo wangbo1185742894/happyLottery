@@ -361,21 +361,24 @@
             }
             
             cell.endTimeLab.text = [NSString stringWithFormat:@"有效期至：%@",date];
-           const long long  dayInteger = [self getDifferenceByDate:redPacket.endValidTime];
-//            const long long  dayInteger = [self getDifferenceByDate:@"2018-01-26 09:24:57"]; 
-            NSNumber *longlongNumber = [NSNumber numberWithLongLong:dayInteger];
-            NSString *time = @"";
-            if (redPacket.endValidTime .length!=0) {
-                time=[redPacket.endValidTime substringFromIndex:10];
+            if ([redPacket._description containsString:@"大转盘"]) {
+                cell.day.text = [self getTimesFromHours:redPacket.endValidTime];
+            } else {
+                const long long  dayInteger = [self getDifferenceByDate:redPacket.endValidTime];
+                //            const long long  dayInteger = [self getDifferenceByDate:@"2018-01-26 09:24:57"];
+                NSNumber *longlongNumber = [NSNumber numberWithLongLong:dayInteger];
+                NSString *time = @"";
+                if (redPacket.endValidTime .length!=0) {
+                    time=[redPacket.endValidTime substringFromIndex:10];
+                }
+                
+                NSString *daystr = [longlongNumber stringValue];
+                if (dayInteger==0) {
+                    cell.day.text=[NSString stringWithFormat:@"截止%@过期",time];
+                }else{
+                    cell.day.text=[NSString stringWithFormat:@"还有%@天过期",daystr];
+                }
             }
-
-            NSString *daystr = [longlongNumber stringValue];
-            if (dayInteger==0) {
-                cell.day.text=[NSString stringWithFormat:@"截止%@过期",time];
-            }else{
-                cell.day.text=[NSString stringWithFormat:@"还有%@天过期",daystr];
-            }
-            
         }
       
     }else if (tableView ==self.tableView2){
@@ -449,6 +452,29 @@
 //    NSInteger era = [comps day];
 //    NSLog(@"era:%d",era);
     return [comps day];
+}
+
+- (NSString *)getTimesFromHours:(NSString *)date {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *oldDate = [dateFormatter dateFromString:date];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    
+    NSDateComponents *components = [calendar components:NSCalendarUnitSecond fromDate:[NSDate date] toDate:oldDate options:0];
+    if (components.second <60) {
+        return [NSString stringWithFormat:@"还有%zd秒过期",components.second];
+    }
+    
+    components = [calendar components:NSCalendarUnitMinute fromDate:[NSDate date] toDate:oldDate options:0];
+    if (components.minute <60) {
+        return [NSString stringWithFormat:@"还有%zd分钟过期",components.minute];
+    }
+    components = [calendar components:NSCalendarUnitHour fromDate:[NSDate date] toDate:oldDate options:0];
+    if (components.hour <24) {
+        return [NSString stringWithFormat:@"还有%zd小时过期",components.hour];
+    }
+    components = [calendar components:NSCalendarUnitDay fromDate:[NSDate date] toDate:oldDate options:0];
+    return [NSString stringWithFormat:@"还有%zd天过期",components.day];
 }
 
 

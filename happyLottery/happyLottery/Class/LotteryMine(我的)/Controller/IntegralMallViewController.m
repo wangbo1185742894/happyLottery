@@ -48,8 +48,8 @@
     }else{
         isBack =NO;
     }
-    
     [self showLoadingViewWithText:@"正在加载"];
+
     NSString *requsetIngUrlStr =[NSString stringWithFormat:@"%@",request.URL];
     if ([requsetIngUrlStr containsString:@"/index"]) {
         self.navigationController.navigationBar.hidden = NO;

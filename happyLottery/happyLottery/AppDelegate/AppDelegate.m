@@ -330,7 +330,6 @@ static SystemSoundID shake_sound_male_id = 0;
     [_window makeKeyAndVisible];
     _window.backgroundColor = [UIColor whiteColor];
     defaults = [NSUserDefaults standardUserDefaults];
-    
 }
 
 -(void)setNewFeature{
@@ -411,8 +410,9 @@ static SystemSoundID shake_sound_male_id = 0;
     tabAttrs[@"title"] = @"圈子";
     tabAttrs[@"itemNormal"] = @"quanzi_normal";
     tabAttrs[@"itemSelected"] = @"quanzi_secelcted";
-    tabAttrs[@"rootVC"] = @"GroupViewController";
+    tabAttrs[@"rootVC"] = @"";
     gouCaiNavVC = [self tabNavVCWithAttr: tabAttrs];
+    
     
     tabAttrs[@"tabTitle"] = @"发现";
     tabAttrs[@"title"] = @"发现";
@@ -984,9 +984,11 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         }else{
             gouCaiNavVC = [self groupDisplayNav:nil];
         }
+        gouCaiNavVC.hidesBottomBarWhenPushed = NO;
     }
     else {
        gouCaiNavVC = [self groupApplyNav];
+        gouCaiNavVC.hidesBottomBarWhenPushed = YES;
     }
     tabBarControllerMain.viewControllers = @[homeNavVC,genTouNavVC,gouCaiNavVC,faXianNavVC, memberNavVC];
     tabBarControllerMain.selectedIndex = 2;

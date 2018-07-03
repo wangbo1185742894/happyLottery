@@ -32,7 +32,8 @@
 #define KMenuCollectionViewCell @"MineCollectionViewCell"
 
 @interface MineViewController () <UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,MemberManagerDelegate>{
-    NSArray <NSDictionary *>*listArray;
+    NSMutableArray <NSDictionary *>*listArray;
+    NSMutableArray <NSDictionary *>*groupArray;
     __weak IBOutlet UIButton *btnMyCircle;
     UIButton *noticeBtn;
     UILabel *label;
@@ -55,18 +56,86 @@
 @property (weak, nonatomic) IBOutlet UIButton *integralBtn;
 @property (weak, nonatomic) IBOutlet UIButton *redPacketBtn;
 @property (weak, nonatomic) IBOutlet UILabel *redPacketLab;
+@property (weak, nonatomic) IBOutlet UILabel *lotMoneyLab;
+@property (weak, nonatomic) IBOutlet UIButton *lotMoneyBtn;
 @property (weak, nonatomic) IBOutlet UIButton *rechargeBtn;//充值
 @property (weak, nonatomic) IBOutlet UIButton *withdrawalsBtn;//提现
 @property (weak, nonatomic) IBOutlet UICollectionView *mineInfoColloView;
+@property (weak, nonatomic) IBOutlet UILabel *noticeRedPointLab;
+@property (weak, nonatomic) IBOutlet UIImageView *notiRedPointImg;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topDIs;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topHeadCons;
 
 @property(strong, nonatomic) NSString * memberSubFunctionClass;
+@property (weak, nonatomic) IBOutlet UIImageView *topHead;
 @property(nonatomic,strong)  LoadData  *loadDataTool;
 @end
 
 @implementation MineViewController
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    num=0;
+    self.memberMan.delegate = self;
+    listUseRedPacketArray = [[NSMutableArray alloc]init];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(actionUserLoginSuccess:) name:NotificationNameUserLogin object:nil];
+    [self.mineInfoColloView registerNib:[UINib nibWithNibName:@"MineCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:KMenuCollectionViewCell];
+    _mineInfoColloView.delegate = self;
+    _mineInfoColloView.dataSource = self;
+    self.loadDataTool = [LoadData singleLoadData];
+    [self noticeCenterSet];
+    
+    [_mineInfoColloView reloadData];
+    self.viewControllerNo = @"A201";
+    if ([self isIphoneX]) {
+        self.topDIs.constant = -44;
+        self.topHeadCons.constant = 190;
+    }else{
+        self.topDIs.constant = -20;
+        self.topHeadCons.constant = 166;
+    }
+}
+
+- (void)reloadDateArray {
+    //数组拆分
+    NSMutableArray *itemArray = [[NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Mine" ofType: @"plist"]] mutableCopy];
+    NSArray *smallArray = [itemArray subarrayWithRange:NSMakeRange(0, 4)];
+    groupArray = [NSMutableArray arrayWithArray:smallArray];
+    [itemArray removeObjectsInArray:smallArray];
+    listArray = itemArray;
+    //未登录状态     不显示我的圈子
+    //登陆状态       只有圈主显示我的圈子 只有自由人显示推荐码
+    if (self.curUser.isLogin == NO) {
+        for (NSDictionary *itemDic in groupArray) {
+            if ([itemDic[@"title"] isEqualToString:@"我的圈子"]) {
+                [groupArray removeObject:itemDic];
+                break;
+            }
+        }
+    } else {
+        if (![self.curUser.memberType isEqualToString:@"CIRCLE_MASTER"]){
+            for (NSDictionary *itemDic in groupArray) {
+                if ([itemDic[@"title"] isEqualToString:@"我的圈子"]) {
+                    [groupArray removeObject:itemDic];
+                    break;
+                }
+            }
+        }
+        if (![self.curUser.memberType isEqualToString:@"FREEDOM_PERSON"]) {
+            for (NSDictionary *itemDic in listArray) {
+                if ([itemDic[@"title"] isEqualToString:@"推荐码"]) {
+                    [listArray removeObject:itemDic];
+                    break;
+                }
+            }
+        }
+    }
+}
+
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
+    self.navigationController.navigationBar.hidden = YES;
     AppDelegate  *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
     if ([self.curUser.whitelist boolValue] == NO && self.tabBarController.viewControllers.count == 5) {
         
@@ -74,46 +143,13 @@
     }else if([self.curUser.whitelist boolValue] == YES && self.tabBarController.viewControllers.count == 2){
         [app setNomalRootVC];
     }
-    if (![self.curUser.memberType isEqualToString:@"CIRCLE_MASTER"]|| self.curUser.isLogin == NO) {
-        btnMyCircle.hidden = YES;
-        NSMutableArray *itemArray = [[NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Mine" ofType: @"plist"]] mutableCopy];
-        if ([self.curUser.memberType isEqualToString:@"FREEDOM_PERSON"]  ||  self.curUser.isLogin == NO) {
-            listArray = itemArray;
-        
-        }else{
-            
-            for (NSDictionary *itemDic in itemArray) {
-                if ([itemDic[@"title"] isEqualToString:@"推荐码"]) {
-                    [itemArray removeObject:itemDic];
-                    break;
-                }
-            }
-              listArray = itemArray;
-        }
-        [self.mineInfoColloView reloadData];
-    }else{
-        btnMyCircle.hidden = NO;
-        NSMutableArray *itemArray = [[NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Mine" ofType: @"plist"]] mutableCopy];
-        if ([self.curUser.memberType isEqualToString:@"FREEDOM_PERSON"]  ||  self.curUser.isLogin == NO) {
-            listArray = itemArray;
-            
-        }else{
-            for (NSDictionary *itemDic in itemArray) {
-                if ([itemDic[@"title"] isEqualToString:@"推荐码"]) {
-                    [itemArray removeObject:itemDic];
-                    break;
-                }
-            }
-            listArray = itemArray;
-        }
-        [self.mineInfoColloView reloadData];
-    }
+    [self reloadDateArray];
     if ([self.curUser.whitelist boolValue] == NO) {
         self.mineInfoColloView.hidden = YES;
     }else{
         self.mineInfoColloView.hidden = NO;
     }
-
+  
     [self.mineInfoColloView reloadData];
     if ([self.curUser.whitelist boolValue] == NO) {
         self.viewJIfen.hidden = YES;
@@ -126,8 +162,9 @@
         self.chongzhiViewHeight.constant = 66;
         self.viewChongZhi.hidden = NO;
     }
+    
+    
     if (self.curUser.isLogin==YES) {
-        
             [self updateMemberClinet];
             NSInteger num = [self getNotReadMes];
             if ( num == 0) {
@@ -147,39 +184,27 @@
     }
     
     self.memberMan.delegate = self;
+    NSInteger num = [self getNotReadMes];
+    if ( num == 0) {
+        self.noticeRedPointLab.hidden = YES;
+        self.notiRedPointImg.hidden = YES;
+    }else{
+        self.noticeRedPointLab.hidden = NO;
+        self.notiRedPointImg.hidden = NO;
+        self.noticeRedPointLab.text = [NSString stringWithFormat:@"%ld",num];
+    }
+    self.navigationController.navigationBar.hidden = YES;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-      num=0;
-    self.memberMan.delegate = self;
-    listUseRedPacketArray = [[NSMutableArray alloc]init];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(actionUserLoginSuccess:) name:NotificationNameUserLogin object:nil];
-      [self.mineInfoColloView registerNib:[UINib nibWithNibName:@"MineCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:KMenuCollectionViewCell];
-    _mineInfoColloView.backgroundColor = [UIColor clearColor];
-    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    
-    layout.minimumInteritemSpacing = 0;
-    layout.minimumLineSpacing = 0;
-    [_mineInfoColloView setCollectionViewLayout:layout];
-    _mineInfoColloView.delegate = self;
-    _mineInfoColloView.dataSource = self;
-     self.loadDataTool = [LoadData singleLoadData];
-    [self noticeCenterSet];
-    
-    [_mineInfoColloView reloadData];
-    self.viewControllerNo = @"A201";
-
-}
 
 -(void)notLogin{
     [self.loginBtn setTitle:@"登录/注册" forState:UIControlStateNormal];
-    [self.userImage setImage:[UIImage imageNamed:@"usermine"]];
+    [self.userImage setImage:[UIImage imageNamed:@"user_place"]];
     self.loginBtn.enabled = YES;
     self.balanceLab.text = @"0";
     self.integralLab.text = @"0";
     self.redPacketLab.text =  @"0";
+    self.lotMoneyLab.text = @"0";
     label.hidden=YES;
 }
 
@@ -228,41 +253,8 @@
 }
 
 -(void)loadUserInfo{
-    NSArray *itemArray = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Mine" ofType: @"plist"]];
-    if (![self.curUser.memberType isEqualToString:@"CIRCLE_MASTER"]|| self.curUser.isLogin == NO) {
-        btnMyCircle.hidden =YES;
-        NSMutableArray *itemArray = [[NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Mine" ofType: @"plist"]] mutableCopy];
-        
-        if ([self.curUser.memberType isEqualToString:@"FREEDOM_PERSON"]  ||  self.curUser.isLogin == NO) {
-            listArray = itemArray;
-        }else{
-            for (NSDictionary *itemDic in itemArray) {
-                if ([itemDic[@"title"] isEqualToString:@"推荐码"]) {
-                    [itemArray removeObject:itemDic];
-                    break;
-                }
-            }
-            listArray = itemArray;
-        }
-        [self.mineInfoColloView reloadData];
-    }else{
-        btnMyCircle.hidden = NO;
-        NSMutableArray *itemArray = [[NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"Mine" ofType: @"plist"]] mutableCopy];
-        if ([self.curUser.memberType isEqualToString:@"FREEDOM_PERSON"] ||  self.curUser.isLogin == NO) {
-            listArray = itemArray;
-            
-        }else{
-            for (NSDictionary *itemDic in itemArray) {
-                if ([itemDic[@"title"] isEqualToString:@"推荐码"]) {
-                    [itemArray removeObject:itemDic];
-                    break;
-                }
-            }
-            listArray = itemArray;
-        }
-        [self.mineInfoColloView reloadData];
-    }
-    
+    [self reloadDateArray];
+    [self.mineInfoColloView reloadData];
     NSString *userName;
     if (self.curUser.nickname.length == 0) {
         userName = self.curUser.mobile;
@@ -286,6 +278,7 @@
     double total = balance+notCash+sendBalance;
     NSString *totalstr = [NSString stringWithFormat:@"%.2f",total];
     self.balanceLab.text = totalstr;
+    self.lotMoneyLab.text = [NSString stringWithFormat:@"%.2f",sendBalance];
     int score =  [self.curUser.score intValue];
     NSString *scorestr = [NSString stringWithFormat:@"%d",score];
     self.integralLab.text = scorestr;
@@ -294,8 +287,10 @@
     self.redPacketLab.text = couponCountstr;
     self.userImage.layer.cornerRadius = 29;
     self.userImage.layer.masksToBounds = YES;
+    self.userImage.layer.borderWidth = 1;
+    self.userImage.layer.borderColor = RGBCOLOR(245, 215, 90).CGColor;
     if ([self.curUser.headUrl isEqualToString:@""] || self.curUser.headUrl == nil) {
-        self.userImage.image = [UIImage imageNamed:@"usermine.png"];
+        self.userImage.image = [UIImage imageNamed:@"user_place.png"];
     }else{
         [self.userImage sd_setImageWithURL:[NSURL URLWithString:self.curUser.headUrl] placeholderImage:[UIImage imageNamed:@"usermine.png"]];
         
@@ -354,6 +349,7 @@
 
 -(void)signInIsSuccess:(NSDictionary *)info isSuccess:(BOOL)success errorMsg:(NSString *)msg{
     if (success) {
+        
         [self showPromptText:[NSString stringWithFormat:@"您已连续签到%@天,恭喜您获得%@积分!",info[@"severalDays"],info[@"gainScore"]] hideAfterDelay:1.7];
 //        self.signInBtn.enabled = NO;
     }else{
@@ -438,42 +434,78 @@
 
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    return 1;
+    return 2;
+}
+
+- (void)hiddenCell:(MineCollectionViewCell *)cell{
+    cell.labRedPoint.hidden = YES;
+    cell.imgItemIcon.hidden = YES;
+    cell.labItemTitle.hidden = YES;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     MineCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:KMenuCollectionViewCell forIndexPath:indexPath];
-    NSDictionary *optionDic = listArray[indexPath.row];
-    cell.labRedPoint.adjustsFontSizeToFitWidth = YES;
-    cell.imgItemIcon.image = [UIImage imageNamed:optionDic[@"icon"]];
-    //    cell.imageView.image = [UIImage imageNamed: optionDic[@"icon"]];
-    if ([optionDic[@"title"] isEqualToString:@"我的消息"]) {
-        NSInteger num = [self getNotReadMes];
-        if ( num == 0) {
-           cell.labRedPoint.hidden = YES;
-        }else{
-            cell.labRedPoint.hidden = NO;
-            cell.labRedPoint.text = [NSString stringWithFormat:@"%ld",num];
+    NSDictionary *optionDic;
+   
+    if (indexPath.section == 0) {
+        if (indexPath.row == groupArray.count) {
+            [self hiddenCell:cell];
+            return cell;
         }
-    }else{
-        if (listUseRedPacketArray.count>0 && [optionDic[@"title"] isEqualToString:@"我的红包"]) {
-            
-            cell.labRedPoint.hidden=  !self.curUser.isLogin;
-        }else  if (rednum>0 && [optionDic[@"title"] isEqualToString:@"意见反馈"]) {
-            cell.labRedPoint.hidden= !self.curUser.isLogin;
-        }else{
-            cell.labRedPoint.hidden= YES;
+        optionDic = groupArray[indexPath.row];
+    }else {
+        if (indexPath.row == listArray.count) {
+           [self hiddenCell:cell];
+           return cell;
         }
+        optionDic = listArray[indexPath.row];
     }
+    cell.labRedPoint.hidden = NO;
+    cell.imgItemIcon.hidden = NO;
+    cell.labItemTitle.hidden = NO;
+    cell.labRedPoint.adjustsFontSizeToFitWidth = YES;
     
+    cell.imgItemIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_mine",optionDic[@"icon"]]];
+    if (listUseRedPacketArray.count>0 && [optionDic[@"title"] isEqualToString:@"我的红包"]) {
+        
+        cell.labRedPoint.hidden=  !self.curUser.isLogin;
+    }else  if (rednum>0 && [optionDic[@"title"] isEqualToString:@"意见反馈"]) {
+        cell.labRedPoint.hidden= !self.curUser.isLogin;
+    }else{
+        cell.labRedPoint.hidden= YES;
+    }
     cell.labItemTitle.text = optionDic[@"title"];
-    
- 
     return cell;
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake(KscreenWidth / 4, 80);
+    if (indexPath.section == 0) {
+        return CGSizeMake(KscreenWidth / 2-0.5, 80);
+    }
+    return CGSizeMake(KscreenWidth / 2, 80);
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
+    if (section == 0) {
+        return 1;
+    }
+    return 0;
+}
+
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
+    if (section == 0) {
+        return 1;
+    }
+    return 0;
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    if (section == 0) {
+        return  UIEdgeInsetsMake(10, 0, 10, 0);
+    }
+    return UIEdgeInsetsMake(0, 0, 0, 0);
 }
 
 //- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -544,11 +576,20 @@
 #pragma UITableViewDelegate methods
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return listArray.count;
+    if (section == 0) {
+        return 4;
+    }
+    return 8;
 }
 
+
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSDictionary *optionDic = listArray[indexPath.row];
+    NSDictionary *optionDic;
+    if (indexPath.section == 0) {
+        optionDic = groupArray[indexPath.row];
+    }else{
+        optionDic = listArray[indexPath.row];
+    }
     if ([optionDic[@"needLogin"] boolValue] == YES && self.curUser.isLogin == NO) {
         [self needLogin];
     } else {
@@ -727,9 +768,10 @@
     [super needLogin];
 }
 
--(void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
-     [self hideLoadingView];
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBar.hidden = NO;
+    [self hideLoadingView];
 }
 
 -(NSInteger)getNotReadMes{
@@ -759,10 +801,26 @@
         }
     return notReadNum;
 }
-- (IBAction)myCircle:(id)sender {
-    MyCircleViewController * myCircleVC = [[MyCircleViewController alloc]init];
-    myCircleVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:myCircleVC animated:YES];
-    
+
+
+- (IBAction)actionSetController:(id)sender {
+    if (self.curUser.isLogin == NO) {
+        [self needLogin];
+        return;
+    }
+    SystemSetViewController *SystemSetVC = [[SystemSetViewController alloc]init];
+    SystemSetVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:SystemSetVC animated:YES];
 }
+
+- (IBAction)actionToNotice:(id)sender {
+    if (self.curUser.isLogin == NO) {
+        [self needLogin];
+        return;
+    }
+    NoticeCenterViewController *noticeVc = [[NoticeCenterViewController alloc]init];
+    noticeVc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:noticeVc animated:YES];
+}
+
 @end  
