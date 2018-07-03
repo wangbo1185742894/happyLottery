@@ -9,9 +9,75 @@
 #import "LotteryManager.h"
 #import "JCZQTranscation.h"
 #import "Lottery.h"
+#import "LotteryXHSection.h"
 
 @implementation LotteryManager
 
+//get lottery xuanhao display rules
+- (void) loadLotteryProfiles: (Lottery *) lottery {
+    NSDictionary *lotteryDetailDic = [NSDictionary dictionaryWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"LotteryProfilesConfigdlt" ofType: @"plist"]];
+    NSArray *profilesArray = lotteryDetailDic[[NSString stringWithFormat:@"%d", lottery.type]];
+    
+    if ([profilesArray isKindOfClass: [NSArray class]] && profilesArray.count > 0) {
+        NSArray *profiles = [self lotteryProfilesFromData: profilesArray];
+        lottery.profiles = profiles;
+        if ([lottery.identifier isEqualToString:@"SX115"] || [lottery.identifier isEqualToString:@"SD115"]) {
+            // 11选5 默认任选5
+            lottery.activeProfile = profiles[4];
+        }else if([lottery.identifier isEqualToString:@"JCZQ"]){
+            lottery.activeProfile = profiles[0];
+        }else if([lottery.identifier isEqualToString:@"RJC"] || [lottery.identifier isEqualToString:@"SFC"]){
+            lottery.activeProfile = profiles[0];
+        }else if ([lottery.identifier isEqualToString:@"DLT"]){
+            lottery.activeProfile = profiles[0];
+        }else if ([lottery.identifier isEqualToString:@"JCLQ"]){
+            lottery.activeProfile = profiles[4];
+        }else if ([lottery.identifier isEqualToString:@"PL3"]){
+            lottery.activeProfile = profiles[0];
+        }else if ([lottery.identifier isEqualToString:@"PL5"]){
+            lottery.activeProfile = profiles[0];
+        }
+    }
+}
+
+- (NSArray *) lotteryProfilesFromData: (NSArray *) profilesArray {
+    NSMutableArray *profiles = [NSMutableArray arrayWithCapacity: profilesArray.count];
+    for (NSDictionary *profileDic in profilesArray) {
+        LotteryXHProfile *profile = [[LotteryXHProfile alloc] init];
+        NSArray *allKeys = [profileDic allKeys];
+        for (NSString *key in allKeys) {
+            SEL selector = NSSelectorFromString([NSString stringWithFormat: @"set%@:", key]);
+            if ([profile respondsToSelector: selector]) {
+                [profile performSelector: selector withObject: profileDic[key]];
+            } else {
+                if ([key isEqualToString: @"LotteryData"]) {
+                    profile.details = [self lotterySectionsFromData: profileDic[key]];
+                }
+            }
+        }
+        [profiles addObject: profile];
+    }
+    return profiles;
+}
+
+- (NSArray *) lotterySectionsFromData: (NSArray *) detailDataArray {
+    NSMutableArray *details = nil;
+    if ([detailDataArray isKindOfClass: [NSArray class]]) {
+        details = [NSMutableArray arrayWithCapacity: detailDataArray.count];
+        for (NSDictionary *detail in detailDataArray) {
+            LotteryXHSection *lxh = [[LotteryXHSection alloc] init];
+            NSArray *allKeys = [detail allKeys];
+            for (NSString *key in allKeys) {
+                SEL selector = NSSelectorFromString([NSString stringWithFormat: @"set%@:", key]);
+                if ([lxh respondsToSelector: selector]) {
+                    [lxh performSelector: selector withObject: detail[key]];
+                }
+            }
+            [details addObject: lxh];
+        }
+    }
+    return details;
+}
 
 - (NSArray*) getAllLottery {
     NSArray *lotteryDStemp;
@@ -46,7 +112,7 @@
     
     
     
-    return @[lotteryDS[0],lotteryDS[2],lotteryDS[3],lotteryDS[1],lotteryDS[4],lotteryDS[6],lotteryDS[5],lotteryDS[7],lotteryDS[9],lotteryDS[10],lotteryDS[11]];
+    return @[lotteryDS[0],lotteryDS[2],lotteryDS[3],lotteryDS[1],lotteryDS[4],lotteryDS[6],lotteryDS[5],lotteryDS[7],lotteryDS[9],lotteryDS[10],lotteryDS[11],lotteryDS[12]];
     
 }
 
@@ -1049,7 +1115,7 @@
             NSRange rang = [temp rangeOfString:@"#"];
             if (rang.location == NSNotFound) {
                 round.mainRes = temp;
-                if([roundDic[@"lotteryCode"] isEqualToString:@"X115"]){
+                if([roundDic[@"lotteryCode"] isEqualToString:@"SX115"] || [roundDic[@"lotteryCode"]  isEqualToString:@"SD115"]){
                     NSArray * numArray = [temp componentsSeparatedByString:@" "];
                     NSMutableArray * newNumTemp = [NSMutableArray array];
                     for (NSString * num in numArray) {

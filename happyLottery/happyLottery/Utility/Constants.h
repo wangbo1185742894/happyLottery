@@ -217,7 +217,8 @@ sizeWithFont:font constrainedToSize:maxSize lineBreakMode:mode] : CGSizeZero;
 
 #define KscreenWidth CGRectGetWidth([UIScreen mainScreen].bounds)
 #define KscreenHeight CGRectGetHeight([UIScreen mainScreen].bounds)
-
+#define MAXQI11X5 88
+#define MAXQISD11X5 87
 #define KBUY_FOLLOW @"BUY_FOLLOW"
 #define KBUY_INITIATE @"BUY_INITIATE"
 #define DisTop ([self isIphoneX]?88:64)

@@ -358,7 +358,7 @@
             return lotteryNumString;
         }
         }
-    }else if([_lotteryType isEqualToString:@"X115"]){
+    }else if([_lotteryType isEqualToString:@"SX115"] || [_lotteryType isEqualToString:@"SD115"]){
         if(![_lotteryNumber isEqual:[NSNull null]])
         {
             NSString * numTring =  [_lotteryNumber stringByReplacingOccurrencesOfString:@"," withString:@" "];

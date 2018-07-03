@@ -33,6 +33,7 @@ typedef enum {
     LotteryTypeJingCaiGuanYaJun = 12,
     //双色球
     LotteryTypeShuangSeQiu = 13,
+    LotteryTypeSDShiYiXuanWu = 14
 } LotteryType;
 
 @interface Lottery : NSObject

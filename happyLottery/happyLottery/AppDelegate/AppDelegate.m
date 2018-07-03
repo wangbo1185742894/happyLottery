@@ -10,6 +10,7 @@
 #import "NewFeatureViewController.h"
 #import "GroupNewViewController.h"
 #import "UPPaymentControl.h"
+#import <Bugly/Bugly.h>
 #import "GroupViewController.h"
 #import "WebCTZQHisViewController.h"
 #import "RecommendPerViewController.h"
@@ -94,6 +95,7 @@ static SystemSoundID shake_sound_male_id = 0;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [Bugly startWithAppId:@"c36c93659f"];
     [self loadTabVC];
     
     [GlobalInstance instance].lotteryUrl = WSServerURL;

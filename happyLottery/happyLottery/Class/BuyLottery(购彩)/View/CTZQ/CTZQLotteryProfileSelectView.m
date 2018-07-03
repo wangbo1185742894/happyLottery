@@ -34,7 +34,7 @@
         curLottery = lottery;
         int countPerRow = 1;
         
-        if ([lottery.identifier isEqualToString:@"X115"]) {
+        if ([lottery.identifier isEqualToString:@"SX115"] || [lottery.identifier  isEqualToString:@"SD115"]) {
             countPerRow = 4;
         }else if([lottery.identifier isEqualToString:@"JCZQ"]){
             countPerRow = 3;
@@ -52,7 +52,7 @@
         __block CGFloat curY = cellPadding;
         
         CGFloat cellViewHeight = 0;
-        if ([lottery.identifier isEqualToString:@"X115"]) {
+        if ([lottery.identifier isEqualToString:@"SX115"]|| [lottery.identifier  isEqualToString:@"SD115"]) {
             cellViewHeight = cellViewWidth / 1.8;
         }else if([lottery.identifier isEqualToString:@"JCZQ"]){
             cellViewHeight = cellViewWidth / 3;
@@ -120,7 +120,7 @@
                     }
                 }
                 //profileDic
-                if ([lottery.identifier isEqualToString:@"X115"]) {
+                if ([lottery.identifier isEqualToString:@"SX115"]|| [lottery.identifier  isEqualToString:@"SD115"]) {
                    
                 }else{
                 
@@ -178,7 +178,7 @@
                             }
                         }
                         //profileDic
-                        if ([lottery.identifier isEqualToString:@"X115"]) {
+                        if ([lottery.identifier isEqualToString:@"SX115"] || [lottery.identifier  isEqualToString:@"SD115"]) {
             
                         }else{
                             

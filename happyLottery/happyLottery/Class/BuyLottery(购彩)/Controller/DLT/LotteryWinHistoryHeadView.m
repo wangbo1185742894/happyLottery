@@ -59,7 +59,7 @@
     if ([lottery.identifier isEqualToString:@"dlt"]||[lottery.identifier isEqualToString:@"ssq"]) {
         titleArray = @[@"期号",@"前区",@"后区"];
         colorArray = @[[UIColor blackColor],[UIColor redColor],[UIColor blueColor]];
-    }else if ([lottery.identifier isEqualToString:@"X115"]){
+    }else if ([lottery.identifier isEqualToString:@"SX115"] || [lottery.identifier isEqualToString:@"SD115"]){
         titleArray = @[@"期号",@"开奖号码"];
         colorArray = @[[UIColor blackColor],[UIColor blueColor]];
     }

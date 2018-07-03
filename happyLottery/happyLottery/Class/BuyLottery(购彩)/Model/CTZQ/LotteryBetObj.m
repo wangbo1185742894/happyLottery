@@ -36,7 +36,7 @@
         danHaoDictionary[NSForegroundColorAttributeName] = RGBCOLOR(0, 0, 255);
         [numDescString appendAttributedString:[[NSAttributedString alloc] initWithString: [NSString stringWithFormat:@" %@",numArray[1]] attributes: danHaoDictionary]];
         return numDescString;
-    }else if ([_lotteryType isEqualToString:@"X115"]){
+    }else if ([_lotteryType isEqualToString:@"SX115"] || [_lotteryType  isEqualToString:@"SD115"]){
         NSString * numDesc = [_number stringByReplacingOccurrencesOfString:@"," withString:@" "];
         
         NSMutableAttributedString *numDescString = [[NSMutableAttributedString alloc] init];

@@ -313,9 +313,9 @@
 - (void)setUpWithInfoArray:(NSArray *)infoArray BetType:(NSString*)BetType{
     self.backgroundColor = [UIColor whiteColor];
     float cur_y;
-    if ([_orderProfile.lotteryType isEqualToString:@"DLT"]||[_orderProfile.lotteryType isEqualToString:@"X115"]) {
+    if ([_orderProfile.lotteryType isEqualToString:@"DLT"]||[_orderProfile.lotteryType isEqualToString:@"SX115"] || [_orderProfile.lotteryType  isEqualToString:@"SD115"]) {
         cur_y =0;
-        if([_orderProfile.lotteryType isEqualToString:@"X115"])
+        if([_orderProfile.lotteryType isEqualToString:@"SX115"]|| [_orderProfile.lotteryType  isEqualToString:@"SD115"])
         {
             _playtypename = BetType;
         }

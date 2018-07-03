@@ -11,6 +11,5 @@
 
 @interface MyNoticeViewController : BaseViewController
 
-@property(nonatomic,strong) User *curUser;  //登陆用户信息
 
 @end

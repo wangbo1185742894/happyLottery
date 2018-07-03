@@ -32,7 +32,7 @@
 }
 
 - (void)lsetUpWithLottery:(Lottery *)lottery cellHeight:(float)cellH withSizeRatio:(NSString *)ratio{
-    if ([lottery.identifier isEqualToString:@"X115"]  || [lottery.identifier isEqualToString:@"PL5"]) {
+    if ([lottery.identifier isEqualToString:@"SX115"]  || [lottery.identifier isEqualToString:@"PL5"] || [lottery.identifier  isEqualToString:@"SD115"]) {
         redLeading.constant = 20;
         for (UIButton *bn in blueBalls) {
             bn.hidden = YES;

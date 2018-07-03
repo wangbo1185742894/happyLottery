@@ -242,6 +242,7 @@
             [self showPromptText:@"请输入支付密码" hideAfterDelay:2.7];
             return;
         }
+       
         pwd =text;
         NSDictionary *cardInfo= @{@"cardCode":self.curUser.cardCode,
                                   @"payPwd":[AESUtility encryptStr:pwd]};

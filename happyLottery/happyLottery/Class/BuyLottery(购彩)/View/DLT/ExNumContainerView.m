@@ -73,7 +73,7 @@
            
         }];
         
-    }else if ([_lottery.identifier isEqualToString:@"X115"]){
+    }else if ([_lottery.identifier isEqualToString:@"SX115"]){
         if (_x115PlayType == x115PlayTypeQianYi) {
             [_source enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                 LotteryRound * round = (LotteryRound *)obj;

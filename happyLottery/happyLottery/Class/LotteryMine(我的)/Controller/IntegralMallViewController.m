@@ -80,10 +80,9 @@
 }
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
+    
     if (isBack) {
-        
         [self.webContentView reload];
-        
     }else{
         webView.hidden = NO;
     }
@@ -95,6 +94,7 @@
     };
     [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitUserSelect='none';"];
     [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitTouchCallout='none';"];
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated{

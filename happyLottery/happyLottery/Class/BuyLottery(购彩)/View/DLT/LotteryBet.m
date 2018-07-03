@@ -169,7 +169,7 @@ the product of combination Count of each section
     if ([_betLotteryIdentifier isEqualToString:@"DLT"]||[_betLotteryIdentifier isEqualToString:@"SSQ"]) {
         //  用颜色区分颜色的号码描述
         description = [self descriptionForColorDistinguish:font];
-    }else if([_betLotteryIdentifier isEqualToString:@"X115"]){
+    }else if([_betLotteryIdentifier isEqualToString:@"SX115"] ||[_betLotteryIdentifier isEqualToString:@"SD115"]){
         switch ([_betXHProfile.profileID intValue]) {
             case 1:
             case 2:
@@ -471,7 +471,7 @@ the product of combination Count of each section
         betType = [lotteryCodeDic[codeKey] intValue];
         betTypeDesc = lotteryCodeDic[nameKey];
        
-    }else if([self.betLotteryIdentifier isEqualToString:@"X115"]){
+    }else if([self.betLotteryIdentifier isEqualToString:@"SX115"] || [self.betLotteryIdentifier isEqualToString:@"SD115"]){
 
         int betSelected = [_betXHProfile.profileID intValue];
         

@@ -149,10 +149,10 @@
     actionBtn.titleLabel.font = [UIFont systemFontOfSize:11];
     
         if (self.isSelectedProfile &&[profileTitle isEqualToString:self.typeString]) {
-            [actionBtn setBackgroundImage:[UIImage imageNamed:@"plxuanzhong.png"] forState:0];
+            [actionBtn setBackgroundImage:[UIImage imageWithColor:SystemGreen] forState:0];
             [actionBtn setTitleColor:TextCharColor forState:0];
         }else{
-            [actionBtn setBackgroundImage:[UIImage imageNamed:@"plweixuanzhong.png"] forState:0];
+            [actionBtn setBackgroundImage:[UIImage imageWithColor:SystemGreen] forState:0];
             [actionBtn setTitleColor:[UIColor blackColor] forState:0];
         }
         [actionBtn addTarget: self action: @selector(buttonAction:) forControlEvents: UIControlEventTouchUpInside];
@@ -182,10 +182,10 @@
     
     self.isSelectedProfile = select;
         if (self.isSelectedProfile && [title isEqualToString:actionBtn.titleLabel.text]) {
-            [actionBtn setBackgroundImage:[UIImage imageNamed:@"plxuanzhong.png"] forState:0];
+            [actionBtn setBackgroundImage:[UIImage imageWithColor:SystemGreen] forState:0];
             [actionBtn setTitleColor:TextCharColor forState:0];
         }else{
-            [actionBtn setBackgroundImage:[UIImage imageNamed:@"plweixuanzhong.png"] forState:0];
+            [actionBtn setBackgroundImage:[UIImage imageWithColor:SystemGreen] forState:0];
             [actionBtn setTitleColor:[UIColor blackColor] forState:0];
         }
    

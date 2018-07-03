@@ -15,10 +15,12 @@
 @property (strong, nonatomic) UIWindow *window;
 @property(assign,nonatomic)NSInteger  betlistcount;
 @property(nonatomic, assign)BOOL versionFlag;
+@property(nonatomic, retain)NSMutableDictionary   *ZHDic;
 @property(nonatomic, retain)NSMutableDictionary   *Dic;
 @property (assign, nonatomic)NSUserDefaults       *userDefaultes;
 @property(nonatomic,strong)UINavigationController  *curNavVC;
 @property(nonatomic, assign)BOOL showGroup;
+@property(assign,nonatomic)BOOL iswinStop;
 + (AppDelegate*) shareDelegate;
 -(void) playSound;
 - (void)showZhuihaoDetail:(NSString*) ordernumber;

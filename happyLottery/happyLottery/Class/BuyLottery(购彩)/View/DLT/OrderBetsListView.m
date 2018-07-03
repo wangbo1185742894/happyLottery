@@ -224,7 +224,7 @@
 
     for (LotteryBetObj * betObj in betArray){
         UIView * item ;
-        if ([_lotteryType isEqualToString:@"DLT"] || [_lotteryType isEqualToString:@"X115"]) {
+        if ([_lotteryType isEqualToString:@"DLT"] || [_lotteryType isEqualToString:@"SX115"]|| [_lotteryType  isEqualToString:@"SD115"]) {
             item = [self forDltOrX115BetItemView:betObj cury:cur_y];
         }else if ([_lotteryType isEqualToString:@"JCZQ"]){
            item = [self forJingCaiBetItemView:betObj cury:cur_y];

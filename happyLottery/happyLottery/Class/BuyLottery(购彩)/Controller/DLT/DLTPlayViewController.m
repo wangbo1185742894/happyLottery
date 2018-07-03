@@ -709,7 +709,7 @@
  2. check if any bet
  */
 - (NSString *) couldTouZhu {
-    if ([_lottery.identifier isEqualToString:@"X115"] || [_lottery.identifier isEqualToString:@"DLT"]) {
+    if ([_lottery.identifier isEqualToString:@"SX115"] || [_lottery.identifier isEqualToString:@"DLT"]) {
         //check current bet
         
         [lotteryBet updateBetInfo];

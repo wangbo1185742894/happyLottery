@@ -80,7 +80,7 @@
             //add title lable
             CGFloat sectionTitleViewWidth = sectionDrawingWidth;
             if ([lottery.needSectionRandom boolValue]) {
-                if ([lottery.identifier isEqualToString:@"X115"]) {
+                if ([lottery.identifier isEqualToString:@"SX115"] || [lottery.identifier  isEqualToString:@"SD115"]) {
                     if ([lotteryXH.sectionID intValue] ==1) {
                         //need add random button on the right of this line
                         sectionTitleViewWidth -= (SectionLabelRightPadding+RandomNumberButtonWidth);
@@ -529,7 +529,7 @@
               lotteryXHSection: lotteryXH
                       isDanHao: NO];
         }
-    }else if ([_lotteryBet.betLotteryIdentifier isEqualToString:@"X115"]){
+    }else if ([_lotteryBet.betLotteryIdentifier isEqualToString:@"SX115"] || [lottery.identifier  isEqualToString:@"SD115"]){
 
         int randomNum = [lottery.activeProfile.randomTotalNum intValue];
         NSArray * lotteryXHSection = lottery.activeProfile.details;

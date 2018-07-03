@@ -53,6 +53,10 @@
         return [NSString stringWithFormat:@"双色球"];
     }else if ([lottery isEqualToString:@"JCLQ"]){
         return @"竞彩篮球";
+    }else if ([lottery isEqualToString:@"SD115"]){
+        return @"山东11选5";
+    }else if ([lottery isEqualToString:@"SX115"]){
+        return @"陕西11选5";
     }
     return @"彩票";
 }

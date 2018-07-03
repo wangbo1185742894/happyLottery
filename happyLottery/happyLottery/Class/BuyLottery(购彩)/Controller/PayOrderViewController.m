@@ -410,6 +410,17 @@
     [self.navigationController pushViewController:paySuccessVC animated:YES];
 }
 
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    UILabel *lab = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth , 1)];
+    lab.backgroundColor = RGBCOLOR(230, 230, 230);
+    
+    return lab;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 1;
+}
+
 -(void)gotSchemeCashPayment:(BOOL)isSuccess errorMsg:(NSString *)msg{
     [self hideLoadingView];
     if (isSuccess) {

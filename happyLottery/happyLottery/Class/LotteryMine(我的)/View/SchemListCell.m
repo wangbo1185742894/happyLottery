@@ -73,24 +73,7 @@
 }
 
 -(NSString *)getLotteryByCode:(NSString *)code{
-    if ([code isEqualToString:@"JCZQ"]) {
-        return @"竞彩足球";
-    }else if([code isEqualToString:@"DLT"]){
-        return @"超级大乐透";
-    }else if([code isEqualToString:@"RJC"]){
-        return @"任9场";
-    }else if([code isEqualToString:@"SFC"]){
-        return @"14场";
-    }else if([code isEqualToString:@"JCGJ"]){
-        return @"冠军";
-    }else if([code isEqualToString:@"JCGYJ"]){
-        return @"冠亚军";
-    }else if([code isEqualToString:@"SSQ"]){
-        return @"双色球";
-    }else if([code isEqualToString:@"JCLQ"]){
-        return @"竞彩篮球";
-    }
-    return @"彩票";
+     return [BaseModel getLotteryByName:code];
 }
 
 @end

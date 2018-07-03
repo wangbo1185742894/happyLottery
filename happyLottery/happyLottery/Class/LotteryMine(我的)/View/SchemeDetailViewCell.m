@@ -151,6 +151,10 @@
         return [NSString stringWithFormat:@"双色球(第%@期)",scheme.issueNumber];
     }else if ([code isEqualToString:@"JCLQ"]){
         return @"竞彩篮球";
+    }else if ([code isEqualToString:@"SD115"]){
+        return @"山东11选5";
+    }else if ([code isEqualToString:@"SX115"]){
+        return @"陕西11选5";
     }
     return @"彩票";
 }

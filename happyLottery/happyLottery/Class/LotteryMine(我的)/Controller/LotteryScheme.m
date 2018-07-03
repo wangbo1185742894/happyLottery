@@ -68,7 +68,7 @@
         }
         
         
-    }else if([self.lottery isEqualToString:@"X115"]){
+    }else if([self.lottery isEqualToString:@"SX115"] || [self.lottery  isEqualToString:@"SD115"]){
     
         @try {
             return [self getX115CellHeight];

@@ -11,6 +11,7 @@
 #import "GYJPlayViewController.h"
 #import "JCZQPlayViewController.h"
 #import "JCLQPlayController.h"
+#import "LotteryPlayViewController.h"
 #import "DLTPlayViewController.h"
 #import "SSQPlayViewController.h"
 #import "CTZQPlayViewController.h"
@@ -134,6 +135,11 @@
             [self.navigationController pushViewController:playViewVC animated:YES];
         }
         else if ([lotteryName isEqualToString:@"DLT"]){
+            LotteryPlayViewController *gyjPlayVc = [[LotteryPlayViewController alloc]init];
+            gyjPlayVc.hidesBottomBarWhenPushed = YES;
+            gyjPlayVc.lottery = self.lotteryDS[0];
+            [self.navigationController pushViewController:gyjPlayVc animated:YES];
+            return ;
             DLTPlayViewController *playVC = [[DLTPlayViewController alloc] init];
             playVC.hidesBottomBarWhenPushed = YES;
             playVC.lottery = self.lotteryDS[1];
@@ -141,6 +147,11 @@
             
         }
         else if ([lotteryName isEqualToString:@"SSQ"]){
+            LotteryPlayViewController *gyjPlayVc = [[LotteryPlayViewController alloc]init];
+            gyjPlayVc.hidesBottomBarWhenPushed = YES;
+            gyjPlayVc.lottery = self.lotteryDS[11];
+            [self.navigationController pushViewController:gyjPlayVc animated:YES];
+            return ;
             SSQPlayViewController *playVC = [[SSQPlayViewController alloc] init];
             playVC.hidesBottomBarWhenPushed = YES;
             playVC.lottery = self.lotteryDS[10];
@@ -244,6 +255,11 @@
     }
     else if ([lotteryName isEqualToString:@"冠亚军"]){
         GYJPlayViewController *gyjPlayVc = [[GYJPlayViewController alloc]init];
+        gyjPlayVc.hidesBottomBarWhenPushed = YES;
+        gyjPlayVc.navigationController.navigationBar.hidden = YES;
+        [self.navigationController pushViewController:gyjPlayVc animated:YES];
+    } else if ([lotteryName isEqualToString:@"十一选五"]){
+        LotteryPlayViewController *gyjPlayVc = [[LotteryPlayViewController alloc]init];
         gyjPlayVc.hidesBottomBarWhenPushed = YES;
         gyjPlayVc.navigationController.navigationBar.hidden = YES;
         [self.navigationController pushViewController:gyjPlayVc animated:YES];

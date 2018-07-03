@@ -464,7 +464,7 @@ typedef enum {
             default:
                 break;
         }
-        if ([self.lottery.identifier isEqualToString:@"X115"]) {
+        if ([self.lottery.identifier isEqualToString:@"SX115"] || [self.lottery.identifier  isEqualToString:@"SD115"]) {
             NSString * playTypeName = [bet betTypeDesc];
             betDic[@"playTypeName"] = playTypeName;
             betDic[@"playType"] = playType;
@@ -519,7 +519,7 @@ typedef enum {
         
         //212 213 214 215 216 217 222 232
         /*增加参数betType,表示单复式或胆托*/
-        if ([self.lottery.identifier isEqualToString:@"X115"]) {
+        if ([self.lottery.identifier isEqualToString:@"SX115"] ||  [self.lottery.identifier  isEqualToString:@"SD115"]) {
             if([bet betType] == 212 || [bet betType] == 213 || [bet betType] == 214 || [bet betType] == 215 || [bet betType] == 216 || [bet betType] == 217 || [bet betType] == 222 || [bet betType] == 232)
             {
                 NSNumber *num = [bettypedic objectForKey:@"Towed"];
@@ -553,7 +553,7 @@ typedef enum {
         }else{
             /*将_sectionDataLinkSymbol在plist文件中的值由"＃"改为“;”,这里传值改回“＃”*/
             NSString * number = [bet getBetNumberDesc];
-            if ([self.lottery.identifier isEqualToString:@"X115"]) {
+            if ([self.lottery.identifier isEqualToString:@"SX115"] || [self.lottery.identifier  isEqualToString:@"SD115"]) {
                 number = [number stringByReplacingOccurrencesOfString:@";" withString:@"#"];
             }
             else

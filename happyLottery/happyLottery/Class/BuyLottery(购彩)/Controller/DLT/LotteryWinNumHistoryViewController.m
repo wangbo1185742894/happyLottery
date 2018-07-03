@@ -50,7 +50,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     results = [NSMutableArray arrayWithCapacity:0];
-    if ([self.lottery.identifier  isEqualToString:@"X115"]) {
+    if ([self.lottery.identifier  isEqualToString:@"SX115"]) {
+        self.viewControllerNo = @"A311";
+    }else if  ([self.lottery.identifier  isEqualToString:@"SD115"]) {
         self.viewControllerNo = @"A311";
     }else if ([self.lottery.identifier isEqualToString:@"DLT"]){
         self.viewControllerNo = @"A314";
@@ -64,7 +66,7 @@
     page =0;
     
     
-    NSDictionary * config = @{@"dlt":@"2,3,1.5",@"X115":@"2,3"};
+    NSDictionary * config = @{@"dlt":@"2,3,1.5",@"SX115":@"2,3",@"SD115":@"2,3"};
     viewDistributRatio = config[_lottery.identifier];
     [UITableView refreshHelperWithScrollView:soureTableView target:self loadNewData:@selector(loadNewData) loadMoreData:@selector(loadMoreData) isBeginRefresh:YES];
     [self loadNewData];

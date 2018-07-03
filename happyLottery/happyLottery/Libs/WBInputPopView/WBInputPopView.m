@@ -67,9 +67,13 @@
     if (self.txtInput.text.length >= 6) {
         self.imgBack.image = [UIImage imageNamed:[NSString stringWithFormat:@"pass6.png"]];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            self.passBlock(self.txtInput.text);
+        
+            self.passBlock([self.txtInput.text substringToIndex:6]);
             [self endEditing:YES];
-            self.txtInput.text = @"";
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                self.txtInput.text = @"";
+            });
+            
             self.imgBack.image = [UIImage imageNamed:[NSString stringWithFormat:@"pass0.png"]];
         });
         return;

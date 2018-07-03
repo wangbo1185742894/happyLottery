@@ -58,9 +58,6 @@
     __block NSArray *beiTouData;
     int tempBeiTouCount;
     int tempQiShuCount;
-
-    
-    User *curUser;
     BOOL removemark;
     BOOL keyboard;
     NSString* strcuriss;

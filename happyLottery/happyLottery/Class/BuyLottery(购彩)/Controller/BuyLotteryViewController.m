@@ -183,6 +183,7 @@ static NSString *ID = @"LotteryAreaViewCell";
 }
 
 -(void)getLotteryList{
+
     [self.lotteryMan getListSellLottery];
 }
 

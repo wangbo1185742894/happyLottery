@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="X115LimitNumPopView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iXv-w3-Ua7">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fGd-7i-LeD">
+                    <rect key="frame" x="20" y="170" width="335" height="220"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="x115limitback.png" translatesAutoresizingMaskIntoConstraints="NO" id="lF0-Eh-69b">
+                            <rect key="frame" x="0.0" y="0.0" width="335" height="220"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="温馨提示" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTm-Ah-MbX">
+                            <rect key="frame" x="0.0" y="0.0" width="335" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="saq-BR-nWF"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="0.97030597929999995" green="0.35416346789999997" blue="0.20679116249999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pr6-He-L4N">
+                            <rect key="frame" x="0.0" y="40" width="335" height="0.5"/>
+                            <color key="backgroundColor" red="0.76078431369999999" green="0.76078431369999999" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="0.5" id="X0H-TJ-ahg"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DpU-fb-ThN">
+                            <rect key="frame" x="10" y="50.5" width="315" height="110.5"/>
+                            <attributedString key="attributedText">
+                                <fragment content="      体彩高频“">
+                                    <attributes>
+                                        <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <font key="NSFont" usesAppearanceFont="YES"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                    </attributes>
+                                </fragment>
+                                <fragment content="11">
+                                    <attributes>
+                                        <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <font key="NSFont" metaFont="system"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                    </attributes>
+                                </fragment>
+                                <fragment content="选">
+                                    <attributes>
+                                        <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <font key="NSFont" usesAppearanceFont="YES"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                    </attributes>
+                                </fragment>
+                                <fragment content="5">
+                                    <attributes>
+                                        <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <font key="NSFont" metaFont="system"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                    </attributes>
+                                </fragment>
+                                <fragment content="”存在动态限号规定，彩运宝对追号过程中含有被限号码的投注方案，将在当期官方截止时间前，对相应方案做撤销返款处理。如因限号原因导致无法完成的订单，彩运宝除返款外，不承担任何其它责任。">
+                                    <attributes>
+                                        <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <font key="NSFont" usesAppearanceFont="YES"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AyU-sH-j4M">
+                            <rect key="frame" x="10" y="50.5" width="315" height="110.5"/>
+                            <attributedString key="attributedText">
+                                <fragment content="      体彩“大乐透”存在动态限号规定，彩运宝对追号过程中含有被限号码的投注方案，将在当期官方截止时间前，对相应方案做撤销返款处理。如因限号原因导致无法完成的订单，彩运宝除返款外，不承担任何其它责任。">
+                                    <attributes>
+                                        <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <font key="NSFont" usesAppearanceFont="YES"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1LI-Qb-J5d">
+                            <rect key="frame" x="108" y="171" width="120" height="34"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="34" id="8lp-xV-2LR"/>
+                                <constraint firstAttribute="width" constant="120" id="N1d-xj-0Se"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="继续预约" backgroundImage="x115limitpop.png"/>
+                            <connections>
+                                <action selector="actionGoonBuy:" destination="iN0-l3-epB" eventType="touchUpInside" id="A0E-5l-rcR"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="DpU-fb-ThN" firstAttribute="top" secondItem="pr6-He-L4N" secondAttribute="bottom" constant="10" id="2RF-9B-1ZE"/>
+                        <constraint firstAttribute="trailing" secondItem="pr6-He-L4N" secondAttribute="trailing" id="3fx-hu-1HZ"/>
+                        <constraint firstItem="DpU-fb-ThN" firstAttribute="leading" secondItem="fGd-7i-LeD" secondAttribute="leading" constant="10" id="BbZ-RX-pQu"/>
+                        <constraint firstItem="AyU-sH-j4M" firstAttribute="top" secondItem="DpU-fb-ThN" secondAttribute="top" id="ECU-MQ-JWu"/>
+                        <constraint firstItem="QTm-Ah-MbX" firstAttribute="leading" secondItem="fGd-7i-LeD" secondAttribute="leading" id="Fkf-vl-LeI"/>
+                        <constraint firstAttribute="bottom" secondItem="lF0-Eh-69b" secondAttribute="bottom" id="HHs-br-0Vt"/>
+                        <constraint firstItem="lF0-Eh-69b" firstAttribute="top" secondItem="fGd-7i-LeD" secondAttribute="top" id="Iyu-mD-0M3"/>
+                        <constraint firstItem="1LI-Qb-J5d" firstAttribute="centerX" secondItem="fGd-7i-LeD" secondAttribute="centerX" id="LL4-zo-pCf"/>
+                        <constraint firstItem="lF0-Eh-69b" firstAttribute="leading" secondItem="fGd-7i-LeD" secondAttribute="leading" id="RzE-Uh-Bey"/>
+                        <constraint firstAttribute="trailing" secondItem="QTm-Ah-MbX" secondAttribute="trailing" id="SYD-l0-G5A"/>
+                        <constraint firstItem="DpU-fb-ThN" firstAttribute="height" secondItem="AyU-sH-j4M" secondAttribute="height" id="VNT-4J-1LX"/>
+                        <constraint firstItem="pr6-He-L4N" firstAttribute="top" secondItem="QTm-Ah-MbX" secondAttribute="bottom" id="XD1-rd-RhN"/>
+                        <constraint firstAttribute="trailing" secondItem="DpU-fb-ThN" secondAttribute="trailing" constant="10" id="afB-qq-ekO"/>
+                        <constraint firstAttribute="height" constant="220" id="b8l-8h-lSR"/>
+                        <constraint firstItem="pr6-He-L4N" firstAttribute="leading" secondItem="fGd-7i-LeD" secondAttribute="leading" id="enM-gl-qCf"/>
+                        <constraint firstAttribute="trailing" secondItem="lF0-Eh-69b" secondAttribute="trailing" id="kMa-3X-KNa"/>
+                        <constraint firstAttribute="bottom" secondItem="1LI-Qb-J5d" secondAttribute="bottom" constant="15" id="lFq-zX-Mqs"/>
+                        <constraint firstItem="DpU-fb-ThN" firstAttribute="width" secondItem="AyU-sH-j4M" secondAttribute="width" id="myG-tu-rog"/>
+                        <constraint firstItem="QTm-Ah-MbX" firstAttribute="top" secondItem="fGd-7i-LeD" secondAttribute="top" id="oLN-9M-nlw"/>
+                        <constraint firstItem="1LI-Qb-J5d" firstAttribute="top" secondItem="DpU-fb-ThN" secondAttribute="bottom" constant="10" id="otV-Dk-Any"/>
+                        <constraint firstItem="AyU-sH-j4M" firstAttribute="leading" secondItem="DpU-fb-ThN" secondAttribute="leading" id="ySu-3c-kao"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="fGd-7i-LeD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="170" id="1dR-cr-GcK"/>
+                <constraint firstItem="fGd-7i-LeD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="Rto-Z7-Wdf"/>
+                <constraint firstAttribute="trailing" secondItem="iXv-w3-Ua7" secondAttribute="trailing" id="UQg-FH-3xt"/>
+                <constraint firstAttribute="bottom" secondItem="iXv-w3-Ua7" secondAttribute="bottom" id="Ua9-Wo-6SB"/>
+                <constraint firstItem="iXv-w3-Ua7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="bex-cO-VNb"/>
+                <constraint firstItem="iXv-w3-Ua7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="cWH-jw-S2n"/>
+                <constraint firstAttribute="trailing" secondItem="fGd-7i-LeD" secondAttribute="trailing" constant="20" id="pBn-wS-gZ1"/>
+            </constraints>
+            <connections>
+                <outlet property="labDltLimitInfo" destination="AyU-sH-j4M" id="bCl-9l-DZq"/>
+                <outlet property="labLimitInfo" destination="DpU-fb-ThN" id="Asd-bG-Y3l"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="53.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="x115limitback.png" width="328" height="248"/>
+        <image name="x115limitpop.png" width="179" height="40"/>
+    </resources>
+</document>

@@ -80,7 +80,8 @@ typedef enum EarningsType{
 @interface LotteryManager : Manager
 
 @property(nonatomic,weak)id <LotteryManagerDelegate >delegate;
-
+- (void) loadLotteryProfiles: (Lottery *) lottery;
+- (NSArray *) lotteryProfilesFromData: (NSArray *) profilesArray;
 - (NSString *)getStringformfeid :(EarningsType)defaultFeid;
 
 - (void) getJczqMatch:(NSDictionary *)paraDic;

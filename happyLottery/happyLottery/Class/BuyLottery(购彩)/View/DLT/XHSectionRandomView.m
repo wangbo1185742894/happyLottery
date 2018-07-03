@@ -52,7 +52,7 @@
             [buttonRandomeFive addTarget:self action:@selector(actionRandomeFive) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview: buttonRandomeFive];
         }
-    }else if([_lotteryIdenty isEqualToString:@"X115"]){
+    }else if([_lotteryIdenty isEqualToString:@"SX115"]|| [_lotteryIdenty  isEqualToString:@"SD115"]){
         actionButtonText = @"机选一注";
         buttonTextSize = MB_TEXTSIZE(actionButtonText, TextFont);
         buttonWidth = buttonTextSize.width + ButtonTitlePadding*2;
@@ -62,7 +62,7 @@
     buttonRandomeNumber = [self creatButton:bt_frame andTitle:actionButtonText];
     [buttonRandomeNumber addTarget: self action: @selector(generateRandomeNumbers) forControlEvents: UIControlEventTouchUpInside];
     [self addSubview: buttonRandomeNumber];
-    if([_lotteryIdenty isEqualToString:@"X115"]){
+    if([_lotteryIdenty isEqualToString:@"SX115"]|| [_lotteryIdenty  isEqualToString:@"SD115"]){
        return;
     }
     

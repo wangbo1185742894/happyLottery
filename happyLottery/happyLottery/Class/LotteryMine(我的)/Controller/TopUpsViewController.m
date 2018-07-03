@@ -22,6 +22,7 @@
     RechargeModel *selectRech;
     NSString *orderNO;
 }
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewHeight;
 @property (weak, nonatomic) IBOutlet UILabel *labBanlence;
 @property (weak, nonatomic) IBOutlet UITextField *txtChongZhiJIne;
 @property (weak, nonatomic) IBOutlet UIButton *haveReadBtn;
@@ -32,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tabPayListHeight;
 @property (weak, nonatomic) IBOutlet UIWebView *payWebView;
 @property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *labCaijin;
+@property (weak, nonatomic) IBOutlet UIButton *btnChongzhi;
 
 @end
 
@@ -40,6 +42,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"充值";
+    self.automaticallyAdjustsScrollViewInsets = NO;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(checkSchemePayState:) name:@"UPPaymentControlFinishNotification" object:nil];
     rechList = [NSMutableArray arrayWithCapacity:0];
     [self setRightBarButtonItem];
@@ -56,6 +59,7 @@
     [self getListByChannel];
     
     for (UIButton *selectItem in _chongZhiSelectItem) {
+        selectItem.titleLabel.adjustsFontSizeToFitWidth = YES;
         if (selectItem.tag == 100) {
              [self setItem:selectItem];
         }
@@ -267,6 +271,8 @@
             [channelList addObject:model];
         }
     }
+    
+    self.viewHeight.constant = 420 + channelList.count * 60;
 
     [channelList firstObject].isSelect = YES;
     self.tabPayListHeight.constant = channelList.count * self.tabChannelList.rowHeight;
@@ -275,11 +281,13 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return channelList.count;
+    
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     PayTypeListCell *cell = [tableView dequeueReusableCellWithIdentifier:KPayTypeListCell];
     [cell chongzhiLoadDataWithModel:channelList[indexPath.row]];
+    
     return cell;
 }
 

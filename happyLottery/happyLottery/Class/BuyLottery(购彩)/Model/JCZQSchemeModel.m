@@ -165,24 +165,7 @@
 
 
 -(NSString *)getLotteryByName{
-    if ([self.lottery isEqualToString:@"JCZQ"]) {
-        return @"竞彩足球";
-    }else if([self.lottery isEqualToString:@"DLT"]){
-        return [NSString stringWithFormat:@"超级大乐透"];
-    }else if([self.lottery isEqualToString:@"RJC"]){
-        return [NSString stringWithFormat:@"任选9场"];
-    }else if([self.lottery isEqualToString:@"SFC"]){
-        return [NSString stringWithFormat:@"胜负14场"];
-    }else if ([self.lottery isEqualToString:@"JCGYJ"]){
-        return @"冠亚军游戏";
-    }else if ([self.lottery isEqualToString:@"JCGJ"]){
-        return @"冠军游戏";
-    }else if ([self.lottery isEqualToString:@"SSQ"]){
-        return [NSString stringWithFormat:@"双色球"];
-    }else if ([self.lottery isEqualToString:@"JCLQ"]){
-        return @"竞彩篮球";
-    }
-    return @"彩票";
+    return  [BaseModel getLotteryByName:self.lottery];
 }
 
 -(CGFloat )getGYJCellHeight{
@@ -228,6 +211,12 @@
         return @"shuangseqiu.png";
     }
     if ([self.lottery isEqualToString:@"JCLQ"]) {
+        return @"basketball.png";
+    }
+    if ([self.lottery isEqualToString:@"SD115"]) {
+        return @"basketball.png";
+    }
+    if ([self.lottery isEqualToString:@"SX115"]) {
         return @"basketball.png";
     }
     return @"";

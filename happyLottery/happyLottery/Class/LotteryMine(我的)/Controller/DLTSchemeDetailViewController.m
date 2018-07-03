@@ -61,6 +61,7 @@
     self.title = @"方案详情";
     _allLotter = [self.lotteryMan getAllLottery];
     matchList = [NSMutableArray arrayWithCapacity:0];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     [self setTableView];
     self.lotteryMan.delegate = self;
     heightZhifuView.constant = 0;

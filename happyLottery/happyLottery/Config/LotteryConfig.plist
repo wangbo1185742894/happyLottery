@@ -6,7 +6,7 @@
 		<key>Name</key>
 		<string>陕11选5</string>
 		<key>Identifier</key>
-		<string>X115</string>
+		<string>SX115</string>
 		<key>NeedSectionRandom</key>
 		<true/>
 		<key>Desc</key>
@@ -261,6 +261,28 @@
 		<string>13</string>
 		<key>RuleDesc</key>
 		<string>至少选择六个红球一个蓝球</string>
+		<key>DateSectionLinkSymbol</key>
+		<string>;</string>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>山东11选5</string>
+		<key>Identifier</key>
+		<string>SD115</string>
+		<key>NeedSectionRandom</key>
+		<true/>
+		<key>Desc</key>
+		<string>2元赢取1170元</string>
+		<key>AvatarPictureName</key>
+		<string>11xuan5.png</string>
+		<key>Active</key>
+		<true/>
+		<key>Type</key>
+		<string>14</string>
+		<key>RuleDesc</key>
+		<string>至少选择两个7个号码</string>
+		<key>DanTuo</key>
+		<true/>
 		<key>DateSectionLinkSymbol</key>
 		<string>;</string>
 	</dict>
