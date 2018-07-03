@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSArray * dataArray;
 @property (nonatomic, strong) UIView * bottomView;
 @property (nonatomic, strong) UILabel * leftLabel;
+@property (nonatomic, strong) UILabel * rightLabel;
 @property (nonatomic, strong) UILabel * middenLabel;
 @property (nonatomic, assign) id<ZDdropViewDelegate>delegate;
 //查遗漏

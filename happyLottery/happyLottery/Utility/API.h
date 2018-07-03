@@ -22,7 +22,7 @@
 //#define WSServerURL @"http://tbz.xianyingcai.com:28000/services%@"
 //#define ServerAddress @"http://124.89.85.110:17085"  //资讯  轮播图 用户图像
 #define H5BaseAddress @"http://tbz.xianyingcai.com:28086"
-
+#define OmitServerURL @"http://tc.xianticai.com:17082/ms"  //新后台
 
 #define ServerAddress @"http://192.168.88.244:8086"  //资讯  轮播图 用户图像
 //#define H5BaseAddress @"http://192.168.88.244:18086"
@@ -166,6 +166,10 @@
 #define APIGetJcgyjTicketOrderDetail  @"getJcgyjTicketOrderDetail"//查询冠亚军订单详情
 #define APIGetSsqTicketOrderDetail    @"getSsqTicketOrderDetail"//查询订单详情(双色球)
 #define APIGetJclqTicketOrderDetail   @"getJclqTicketOrderDetail"// 查询订单详情(竞彩篮球)
+
+#define APIgetSD115TicketOrderDetail  @"getSD115TicketOrderDetail"
+
+#define APIgetSX115TicketOrderDetail  @"getSX115TicketOrderDetail"
 
 #define SUBAPIAgentService  @"/agent"
 

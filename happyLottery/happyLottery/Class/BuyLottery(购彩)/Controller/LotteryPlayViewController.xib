@@ -13,7 +13,6 @@
             <connections>
                 <outlet property="BottomDlt" destination="gbW-3t-lMa" id="haR-1s-orr"/>
                 <outlet property="ClearXHBtn" destination="6wI-zi-OAf" id="sFV-3S-rv3"/>
-                <outlet property="buttonAdd_" destination="OhQ-tu-aK7" id="Azq-OE-Bpt"/>
                 <outlet property="buttonSubmit" destination="FfJ-u5-7iU" id="nEy-sl-8st"/>
                 <outlet property="flagLable" destination="Krh-8U-oRL" id="cLc-Cm-lPe"/>
                 <outlet property="labLimitNumInfo" destination="PBb-d5-4bA" id="ZNj-tf-UbC"/>
@@ -22,7 +21,6 @@
                 <outlet property="numberSelectView_" destination="kBT-gp-L3J" id="zSo-Cq-zV8"/>
                 <outlet property="topDlt" destination="r9U-2a-X5k" id="7F4-La-goX"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
-                <outlet property="viewBadgeSuperView_" destination="5Ag-X4-vbz" id="8nH-Y9-pII"/>
                 <outlet property="viewBottom_" destination="6qt-Bi-hCZ" id="nHB-ar-g6d"/>
                 <outlet property="viewContent_" destination="gGY-Gw-Pf5" id="b7k-Yo-OcY"/>
                 <outletCollection property="sepHeight" destination="T1s-GM-LN0" id="wwP-wP-Czn"/>
@@ -264,57 +262,13 @@
                             <color key="textColor" red="0.90980392160000001" green="0.30980392159999998" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xh9-qg-YNh">
-                            <rect key="frame" x="65" y="5" width="1" height="39"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.2182983011007309" green="0.21829177439212799" blue="0.21829545497894287" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pickerNumBasket.png" translatesAutoresizingMaskIntoConstraints="NO" id="xmg-ix-37m">
-                            <rect key="frame" x="20" y="4" width="28" height="28"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        </imageView>
-                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="号码篮" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IqH-J2-u5t">
-                            <rect key="frame" x="0.0" y="29" width="66" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <color key="textColor" red="0.60271793603897095" green="0.602699875831604" blue="0.60271012783050537" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OhQ-tu-aK7">
-                            <rect key="frame" x="67" y="9" width="39" height="31"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" image="pickerNumAdd.png">
-                                <color key="titleShadowColor" red="0.42467421293258667" green="0.42466151714324951" blue="0.42466866970062256" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </state>
-                            <connections>
-                                <action selector="addBetAction_:" destination="-1" eventType="touchUpInside" id="Og0-tQ-Kbr"/>
-                            </connections>
-                        </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rFZ-F7-eqL">
-                            <rect key="frame" x="65" y="0.0" width="227" height="49"/>
+                            <rect key="frame" x="53" y="0.0" width="239" height="49"/>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <color key="textColor" red="0.14137327671051025" green="0.1413690447807312" blue="0.1413714736700058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hst-1Z-Pkq" userLabel="NumBasket">
-                            <rect key="frame" x="2" y="0.0" width="64" height="49"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal">
-                                <color key="titleShadowColor" red="0.42467421293258667" green="0.42466151714324951" blue="0.42466866970062256" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </state>
-                            <connections>
-                                <action selector="showNumberBasket:" destination="-1" eventType="touchUpInside" id="VJ4-V7-ydZ"/>
-                            </connections>
-                        </button>
-                        <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Ag-X4-vbz" userLabel="BadgeSuperView">
-                            <rect key="frame" x="50" y="0.0" width="20" height="10"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                        </view>
                         <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6wI-zi-OAf">
                             <rect key="frame" x="8" y="8" width="40" height="40"/>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -322,6 +276,7 @@
                                 <constraint firstAttribute="height" constant="40" id="Fa0-C1-ZhI"/>
                                 <constraint firstAttribute="width" constant="40" id="MVf-eq-g9t"/>
                             </constraints>
+                            <state key="normal" image="matchcleanall.png"/>
                             <state key="highlighted">
                                 <color key="titleColor" red="0.038167610764503479" green="0.029352849349379539" blue="0.053954198956489563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
@@ -329,23 +284,14 @@
                                 <action selector="currentBet:" destination="-1" eventType="touchUpInside" id="dBW-jJ-4gI"/>
                             </connections>
                         </button>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="drQ-zK-CHD">
-                            <rect key="frame" x="12" y="13" width="25" height="25"/>
-                            <color key="backgroundColor" red="1" green="0.14117647059999999" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="25" id="hmT-jK-Dp2"/>
-                                <constraint firstAttribute="height" constant="25" id="zsV-oz-ha2"/>
-                            </constraints>
-                        </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FfJ-u5-7iU">
-                            <rect key="frame" x="295" y="8" width="72" height="35"/>
+                            <rect key="frame" x="295" y="10" width="72" height="29"/>
                             <color key="backgroundColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="35" id="dFV-HL-zT2"/>
                                 <constraint firstAttribute="width" constant="72" id="rvr-5Y-mBL"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" title="预约投注" backgroundImage="yuanjiaowukuangselect">
+                            <state key="normal" title="预  约" backgroundImage="yuanjiaowukuangselect">
                                 <color key="titleColor" red="0.96055269241333008" green="0.96052390336990356" blue="0.96054017543792725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="titleShadowColor" red="0.42467421293258667" green="0.42466151714324951" blue="0.42466866970062256" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
@@ -366,22 +312,33 @@
                             <color key="textColor" red="0.90980392156862744" green="0.30980392156862746" blue="0.16470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAu-09-Pzw">
+                            <rect key="frame" x="50" y="11" width="1" height="28"/>
+                            <color key="backgroundColor" red="1" green="0.99625651039999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="1" id="wmS-zd-F9m"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="drQ-zK-CHD" firstAttribute="top" secondItem="ZJV-W2-Omc" secondAttribute="bottom" constant="12" id="0WK-cc-XEj"/>
+                        <constraint firstItem="VAu-09-Pzw" firstAttribute="top" secondItem="ZJV-W2-Omc" secondAttribute="bottom" constant="10" id="6Lu-jw-hMH"/>
+                        <constraint firstItem="VAu-09-Pzw" firstAttribute="leading" secondItem="6wI-zi-OAf" secondAttribute="trailing" constant="2" id="6go-a6-xSb"/>
                         <constraint firstItem="6wI-zi-OAf" firstAttribute="top" secondItem="6qt-Bi-hCZ" secondAttribute="top" constant="8" id="9RI-Tn-3d7"/>
                         <constraint firstItem="6wI-zi-OAf" firstAttribute="leading" secondItem="6qt-Bi-hCZ" secondAttribute="leading" constant="8" id="9Tw-84-of9"/>
                         <constraint firstAttribute="trailing" secondItem="ZJV-W2-Omc" secondAttribute="trailing" id="Bo4-na-fT0"/>
                         <constraint firstAttribute="height" constant="49" id="DGL-H0-css"/>
                         <constraint firstItem="rFZ-F7-eqL" firstAttribute="top" secondItem="6qt-Bi-hCZ" secondAttribute="top" id="EO7-SK-mlb"/>
-                        <constraint firstItem="FfJ-u5-7iU" firstAttribute="top" secondItem="6qt-Bi-hCZ" secondAttribute="top" constant="8" id="EtH-hI-aWP"/>
+                        <constraint firstItem="FfJ-u5-7iU" firstAttribute="top" secondItem="6qt-Bi-hCZ" secondAttribute="top" constant="10" id="EtH-hI-aWP"/>
                         <constraint firstAttribute="trailing" secondItem="rFZ-F7-eqL" secondAttribute="trailing" constant="83" id="Kht-Vw-IT6"/>
-                        <constraint firstItem="drQ-zK-CHD" firstAttribute="leading" secondItem="6qt-Bi-hCZ" secondAttribute="leading" constant="12" id="T6V-St-bEg"/>
-                        <constraint firstAttribute="bottom" secondItem="FfJ-u5-7iU" secondAttribute="bottom" constant="6" id="cLd-60-7Fz"/>
+                        <constraint firstAttribute="bottom" secondItem="FfJ-u5-7iU" secondAttribute="bottom" constant="10" id="cLd-60-7Fz"/>
                         <constraint firstItem="PBb-d5-4bA" firstAttribute="leading" secondItem="6qt-Bi-hCZ" secondAttribute="leading" id="gFW-SF-cmJ"/>
                         <constraint firstItem="ZJV-W2-Omc" firstAttribute="top" secondItem="6qt-Bi-hCZ" secondAttribute="top" id="hxF-4A-ucu"/>
-                        <constraint firstItem="rFZ-F7-eqL" firstAttribute="leading" secondItem="6qt-Bi-hCZ" secondAttribute="leading" constant="65" id="jws-Tr-Nj3"/>
+                        <constraint firstAttribute="bottom" secondItem="VAu-09-Pzw" secondAttribute="bottom" constant="10" id="m26-wS-d41"/>
+                        <constraint firstItem="rFZ-F7-eqL" firstAttribute="leading" secondItem="6wI-zi-OAf" secondAttribute="trailing" constant="5" id="pQE-vk-b0B"/>
                         <constraint firstItem="ZJV-W2-Omc" firstAttribute="leading" secondItem="6qt-Bi-hCZ" secondAttribute="leading" id="pxQ-L3-RRN"/>
                         <constraint firstItem="PBb-d5-4bA" firstAttribute="top" secondItem="ZJV-W2-Omc" secondAttribute="bottom" constant="-20" id="tZy-pG-gQI"/>
                         <constraint firstAttribute="trailing" secondItem="FfJ-u5-7iU" secondAttribute="trailing" constant="8" id="vk8-go-aAL"/>
@@ -413,8 +370,7 @@
         </view>
     </objects>
     <resources>
-        <image name="pickerNumAdd.png" width="26" height="26"/>
-        <image name="pickerNumBasket.png" width="28" height="28"/>
+        <image name="matchcleanall.png" width="22" height="22"/>
         <image name="whiteBackground.png" width="58" height="21"/>
         <image name="yuanjiaowukuangselect" width="45" height="23"/>
     </resources>

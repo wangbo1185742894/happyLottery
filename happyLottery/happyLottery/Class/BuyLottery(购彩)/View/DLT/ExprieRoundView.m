@@ -127,7 +127,11 @@
     }
     
     DltOpenResult * round = reversedArray[indexPath.row];
-    [cell roundDesInfo:round andProfileID:profileID]; // 暂时用NSUserDefaults做赋值操作
+    if([round .lotteryCode isEqualToString:@"SX115"] || [round.lotteryCode isEqualToString:@"SD115"]){
+        cell.isX115 = YES;
+    }
+    [cell roundDesInfo:round andProfileID:[self.lottery.activeProfile.profileID integerValue]]; // 暂时用NSUserDefaults做赋值操作
+  
     return cell;
 }
 

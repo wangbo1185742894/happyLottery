@@ -34,20 +34,23 @@
         //添加一个白色的背景View
         int leftSpcing = 10;
         self.bottomView = [[UIView alloc]initWithFrame:CGRectMake(0, NaviHeight, KscreenWidth, 203)];
-        self.bottomView.backgroundColor =RGBCOLOR(255,254, 233);
+        self.bottomView.backgroundColor =RGBACOLOR(0, 0, 0, 0.7);
         [self addSubview:self.bottomView];
         
-        self.leftLabel = [[UILabel alloc]initWithFrame:CGRectMake(leftSpcing, 30, KscreenWidth-2*leftSpcing, 1.5)];
+        self.leftLabel = [[UILabel alloc]initWithFrame:CGRectMake(leftSpcing, 13, KscreenWidth / 2-50, 1.5)];
         self.leftLabel.backgroundColor = SystemGreen;
         [self.bottomView addSubview:self.leftLabel];
+        self.rightLabel = [[UILabel alloc]initWithFrame:CGRectMake(KscreenWidth / 2 + 40, 13, KscreenWidth / 2-50, 1.5)];
+        self.rightLabel.backgroundColor = SystemGreen;
+        [self.bottomView addSubview:self.rightLabel];
         
         self.middenLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 70, 25)];
         self.middenLabel.center = CGPointMake(self.center.x, 15);
-        self.middenLabel.backgroundColor = self.bottomView.backgroundColor;
+        self.middenLabel.backgroundColor =[UIColor clearColor];
         self.middenLabel.text = @"组合遗漏";
-        self.leftLabel.center = self.middenLabel.center;
         
-        self.middenLabel.textColor  = RGBCOLOR(72, 72, 72);
+        
+        self.middenLabel.textColor  = [UIColor whiteColor];
         
         self.middenLabel.textAlignment = NSTextAlignmentCenter;
         self.middenLabel.font = [UIFont systemFontOfSize:16];
@@ -70,7 +73,7 @@
             
             [button setTitle:array[i] forState:UIControlStateNormal];
             
-            [button setTitleColor:RGBCOLOR(254, 253, 0) forState:UIControlStateSelected];
+            [button setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
             if (i == myIndex) {
                 button.selected = YES;
             }else {
@@ -81,7 +84,12 @@
             
 //            [button setBackgroundImage:[UIImage imageNamed:@"itemback"] forState:UIControlStateNormal];
 //            [button setBackgroundImage:[UIImage imageNamed:@"itemback"] forState:UIControlStateSelected];
-            [button setBackgroundColor:RGBCOLOR(224, 57, 32)];
+            [button setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]] forState:0];
+                [button setBackgroundImage:[UIImage imageWithColor:SystemGreen] forState:UIControlStateSelected];
+            button.layer.borderColor = [UIColor whiteColor].CGColor;
+            button.layer.borderWidth = 1;
+            button.layer.cornerRadius = 4;
+            button.layer.masksToBounds = YES;
             
             [button addTarget:self action:@selector(choceClicked:) forControlEvents:UIControlEventTouchUpInside];
 

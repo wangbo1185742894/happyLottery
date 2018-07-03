@@ -288,8 +288,8 @@
         qilabel2.font = [UIFont systemFontOfSize:14];
         [betOptionFunView addSubview:beilabel];
         [betOptionFunView addSubview:toulabel];
-        [betOptionFunView addSubview:qilabel1];
-        [betOptionFunView addSubview:qilabel2];
+//        [betOptionFunView addSubview:qilabel1];
+//        [betOptionFunView addSubview:qilabel2];
         [self loadzhuiqi];
         [self loadbei];
         [addRandonBetButton setTitle:@"机选一注" forState:UIControlStateNormal];
@@ -299,7 +299,7 @@
     [zhuihaoBtn setTitleColor:TextCharColor forState:UIControlStateNormal];
     [zhuihaoBtn setTitleColor:TextOrangeColor forState:UIControlStateHighlighted];
     [zhuihaoBtn setTitle:@"智能追号" forState:UIControlStateNormal];
-    
+    zhuihaoBtn.hidden = YES;
     UIImage*image = [UIImage imageNamed:@"buttonBG_orange"];
     image = [image resizableImageWithCapInsets:UIEdgeInsetsMake(0, 1, 0, 1) resizingMode:UIImageResizingModeStretch];
     [zhuihaoBtn setBackgroundImage:image forState:UIControlStateNormal];
@@ -419,7 +419,7 @@
             Mark = NO;
             isLeXuan = NO;
         }else{
-            zhuihaoBtn.hidden = NO;
+//            zhuihaoBtn.hidden = NO;
         }
         toulabel.hidden  = NO;
         beilabel.hidden = NO;
@@ -458,6 +458,7 @@
     JiangqiChoose.keyboardType = UIKeyboardTypeNumberPad;
     [self ToolView:BeiChoose];
     [self ToolView:JiangqiChoose];
+    JiangqiChoose.hidden = YES;
     
 }
 
@@ -577,7 +578,7 @@
         isLeXuan = NO;
     }
     else if(!_FLAG){
-        zhuihaoBtn.hidden = NO;
+//        zhuihaoBtn.hidden = NO;
     }
     removemark = NO;
 }
@@ -2166,14 +2167,14 @@
 -(void) loadbei
 {
     beishudownBtn = [[UIButton alloc]initWithFrame:CGRectMake(KscreenWidth-128,10, 25, 25)];
-    [beishudownBtn setImage:[UIImage imageNamed:@"smartfollow_sub_icon.png"] forState:UIControlStateNormal];
-    [beishudownBtn setImage:[UIImage imageNamed:@"smartfollow_sub_press.png"] forState:UIControlStateHighlighted];
+    [beishudownBtn setImage:[UIImage imageNamed:@"touzhubeishujian.png"] forState:UIControlStateNormal];
+    [beishudownBtn setImage:[UIImage imageNamed:@"touzhubeishujian.png"] forState:UIControlStateHighlighted];
     [beishudownBtn addTarget: self action: @selector(BeishudownBtnClick) forControlEvents: UIControlEventTouchUpInside];
     //倍数加
     beishuUpBtn = [[UIButton alloc]initWithFrame:CGRectMake(KscreenWidth-63,10, 25, 25)];
     
-    [beishuUpBtn setImage:[UIImage imageNamed:@"smartfollow_add_icon.png"] forState:UIControlStateNormal];
-    [beishuUpBtn setImage:[UIImage imageNamed:@"smartfollow_add_pressed.png"] forState:UIControlStateHighlighted];
+    [beishuUpBtn setImage:[UIImage imageNamed:@"touzhubeishujia.png"] forState:UIControlStateNormal];
+    [beishuUpBtn setImage:[UIImage imageNamed:@"touzhubeishujia.png"] forState:UIControlStateHighlighted];
     [beishuUpBtn addTarget: self action: @selector(BeishuUpBtnClick) forControlEvents: UIControlEventTouchUpInside];
     //倍数label
     BeiChoose = [[UITextField alloc]initWithFrame:CGRectMake(KscreenWidth-103.5,10, 41, 25)];

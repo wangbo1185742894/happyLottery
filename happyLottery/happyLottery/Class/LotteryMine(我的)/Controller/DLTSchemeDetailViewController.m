@@ -8,8 +8,11 @@
 
 #import "DLTSchemeDetailViewController.h"
 #import "JCLQOrderDetailInfoViewController.h"
+#import "LotteryPlayViewController.h"
+#import "X115SchemeViewCell.h"
 #import "LotteryXHSection.h"
 #import "JCZQSchemeModel.h"
+#import "TouZhuViewController.h"
 #import "WinResultTableCell.h"
 #import "PayOrderViewController.h"
 #import "SchemeDetailMatchViewCell.h"
@@ -31,6 +34,7 @@
 #define  KTableHeaderView               @"TableHeaderView"
 #define  KSchemeInfoViewCell            @"SchemeInfoViewCell"
 #define  KDLTSchemeViewCell             @"DLTSchemeViewCell"
+#define  KX115SchemeViewCell        @"X115SchemeViewCell"
 #define KWinResultTableCell             @"WinResultTableCell"
 @interface DLTSchemeDetailViewController ()<LotteryManagerDelegate,UITableViewDelegate,UITableViewDataSource>
 {
@@ -72,7 +76,7 @@
     }
     [self loadData];
     BottomIphoneX.constant = [self isIphoneX]?34:0;
-    upIPhoneX.constant = [self isIphoneX]?88:0;
+    upIPhoneX.constant = [self isIphoneX]?88:64;
 }
 
 
@@ -104,6 +108,7 @@
     [tabMatchListVIew registerClass:[SchemeInfoViewCell class] forCellReuseIdentifier:KSchemeInfoViewCell];
     [tabMatchListVIew registerClass:[DLTSchemeViewCell class] forCellReuseIdentifier:KDLTSchemeViewCell];
     [tabMatchListVIew registerNib:[UINib nibWithNibName:KWinResultTableCell bundle:nil] forCellReuseIdentifier:KWinResultTableCell];
+    [tabMatchListVIew registerClass:[X115SchemeViewCell class] forCellReuseIdentifier:KX115SchemeViewCell];
 
 }
 
@@ -272,13 +277,22 @@
                 [detailCell reloadDataModel:schemeDetail];
                 cell = detailCell;
             }else if (indexPath.section == 2){ // 显示方案投注内容
-                
-                DLTSchemeViewCell *dltCell = [tableView dequeueReusableCellWithIdentifier:KDLTSchemeViewCell];
-                if (schemeDetail != nil) {
-                    [dltCell refreshDataWith:dltBetList[indexPath.row] andOpenResult:schemeDetail.trDltOpenResult andLotteryType:schemeDetail.lottery];
+                if([schemeDetail.lottery isEqualToString:@"DLT"] || [schemeDetail.lottery isEqualToString:@"SSQ"]){
+                    DLTSchemeViewCell *dltCell = [tableView dequeueReusableCellWithIdentifier:KDLTSchemeViewCell];
+                    if (schemeDetail != nil) {
+                        [dltCell refreshDataWith:dltBetList[indexPath.row] andOpenResult:schemeDetail.trDltOpenResult andLotteryType:schemeDetail.lottery];
+                    }
+                    [dltCell setNumIndex:[NSString stringWithFormat:@"%ld",indexPath.row + 1] andIsShow:dltBetList.count == 1];
+                    cell = dltCell;
+                }else{
+                    X115SchemeViewCell*dltCell = [tableView dequeueReusableCellWithIdentifier:KX115SchemeViewCell];
+                    if (schemeDetail != nil) {
+                        [dltCell refreshDataWith:dltBetList[indexPath.row] andOpenResult:schemeDetail.trDltOpenResult andLotteryType:schemeDetail.lottery];
+                    }
+                    [dltCell setNumIndex:[NSString stringWithFormat:@"%ld",indexPath.row + 1] andIsShow:dltBetList.count == 1];
+                    cell = dltCell;
                 }
-                [dltCell setNumIndex:[NSString stringWithFormat:@"%ld",indexPath.row + 1] andIsShow:dltBetList.count == 1];
-                cell = dltCell;
+                
                 
                 
             }else if (indexPath.section == 1){
@@ -317,13 +331,22 @@
                 [detailCell reloadDataModel:schemeDetail];
                 cell = detailCell;
             }else if (indexPath.section == 3){ // 显示方案投注内容
-                
-                DLTSchemeViewCell *dltCell = [tableView dequeueReusableCellWithIdentifier:KDLTSchemeViewCell];
-                if (schemeDetail != nil) {
-                    [dltCell refreshDataWith:dltBetList[indexPath.row] andOpenResult:schemeDetail.trDltOpenResult andLotteryType:schemeDetail.lottery];
+                if([schemeDetail.lottery isEqualToString:@"DLT"] || [schemeDetail.lottery isEqualToString:@"SSQ"]){
+                    DLTSchemeViewCell *dltCell = [tableView dequeueReusableCellWithIdentifier:KDLTSchemeViewCell];
+                    if (schemeDetail != nil) {
+                        [dltCell refreshDataWith:dltBetList[indexPath.row] andOpenResult:schemeDetail.trDltOpenResult andLotteryType:schemeDetail.lottery];
+                    }
+                    [dltCell setNumIndex:[NSString stringWithFormat:@"%ld",indexPath.row + 1] andIsShow:dltBetList.count == 1];
+                    cell = dltCell;
+                }else{
+                        X115SchemeViewCell*dltCell = [tableView dequeueReusableCellWithIdentifier:KX115SchemeViewCell];
+                    if (schemeDetail != nil) {
+                        [dltCell refreshDataWith:dltBetList[indexPath.row] andOpenResult:schemeDetail.trDltOpenResult andLotteryType:schemeDetail.lottery];
+                    }
+                    [dltCell setNumIndex:[NSString stringWithFormat:@"%ld",indexPath.row + 1] andIsShow:dltBetList.count == 1];
+                    cell = dltCell;
                 }
-                [dltCell setNumIndex:[NSString stringWithFormat:@"%ld",indexPath.row + 1] andIsShow:dltBetList.count == 1];
-                cell = dltCell;
+      
                 
                 
             }else if (indexPath.section == 2){
@@ -388,10 +411,14 @@
             if (indexPath.section == 0) {
                 return [schemeDetail getJCZQCellHeight];
             }else if (indexPath.section ==2){
-                
-                DLTSchemeViewCell *temp = [[DLTSchemeViewCell alloc]init];
-                return [temp getCellHeightWith:dltBetList[indexPath.row]];
-                
+                if([schemeDetail.lottery isEqualToString:@"DLT"] || [schemeDetail.lottery isEqualToString:@"SSQ"]){
+                    DLTSchemeViewCell *temp = [[DLTSchemeViewCell alloc]init];
+                    return [temp getCellHeightWith:dltBetList[indexPath.row]];
+                    
+                }else{
+                    X115SchemeViewCell *temp = [[X115SchemeViewCell alloc]init];
+                    return [temp getCellHeightWith:dltBetList[indexPath.row]];
+                }
                 
             }else if (indexPath.section ==1){
                 if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) {
@@ -405,9 +432,15 @@
             if (indexPath.section == 0) {
                 return [schemeDetail getJCZQCellHeight];
             }else if (indexPath.section ==1){
+                if([schemeDetail.lottery isEqualToString:@"DLT"] || [schemeDetail.lottery isEqualToString:@"SSQ"]){
+                    DLTSchemeViewCell *temp = [[DLTSchemeViewCell alloc]init];
+                    return [temp getCellHeightWith:dltBetList[indexPath.row]];
+        
+                }else{
+                    X115SchemeViewCell *temp = [[X115SchemeViewCell alloc]init];
+                    return [temp getCellHeightWith:dltBetList[indexPath.row]];
+                }
                 
-                DLTSchemeViewCell *temp = [[DLTSchemeViewCell alloc]init];
-                return [temp getCellHeightWith:dltBetList[indexPath.row]];
             }
         }
     }else{
@@ -415,10 +448,14 @@
             if (indexPath.section == 0) {
                 return [schemeDetail getJCZQCellHeight];
             }else if (indexPath.section ==3){
-                
-                DLTSchemeViewCell *temp = [[DLTSchemeViewCell alloc]init];
-                return [temp getCellHeightWith:dltBetList[indexPath.row]];
-                
+                if([schemeDetail.lottery isEqualToString:@"DLT"] || [schemeDetail.lottery isEqualToString:@"SSQ"]){
+                    DLTSchemeViewCell *temp = [[DLTSchemeViewCell alloc]init];
+                    return [temp getCellHeightWith:dltBetList[indexPath.row]];
+                    
+                }else{
+                    X115SchemeViewCell *temp = [[X115SchemeViewCell alloc]init];
+                    return [temp getCellHeightWith:dltBetList[indexPath.row]];
+                }
                 
             }else if (indexPath.section ==2){
                 if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) {
@@ -434,9 +471,15 @@
             if (indexPath.section == 0) {
                 return [schemeDetail getJCZQCellHeight];
             }else if (indexPath.section ==2){
-                
-                DLTSchemeViewCell *temp = [[DLTSchemeViewCell alloc]init];
-                return [temp getCellHeightWith:dltBetList[indexPath.row]];
+                if([schemeDetail.lottery isEqualToString:@"DLT"] || [schemeDetail.lottery isEqualToString:@"SSQ"]){
+                    DLTSchemeViewCell *temp = [[DLTSchemeViewCell alloc]init];
+                    return [temp getCellHeightWith:dltBetList[indexPath.row]];
+                  
+                }else{
+                    X115SchemeViewCell *temp = [[X115SchemeViewCell alloc]init];
+                    return [temp getCellHeightWith:dltBetList[indexPath.row]];
+                }
+     
             }else if(indexPath.section == 1){
                 return 50;
             }
@@ -618,7 +661,179 @@
     }
     [super navigationBackToLastPage];
 }
+
+-(void)action115Rebuy{
+    for (Lottery  *lottery in _allLotter) {
+        if ([lottery.identifier isEqualToString:schemeDetail.lottery]) {
+            lottery_  = lottery;
+        }
+    }
+       TouZhuViewController *     touzhuVC = [[TouZhuViewController alloc] init];
+    
+    //        [lotteryMan getLotteryCurRoundInfo:lottery_];
+    touzhuVC.lottery = lottery_;
+    _lotteryTransaction = [[LotteryTransaction alloc] init];
+    
+    _lotteryTransaction.beiTouCount = 1;
+    _lotteryTransaction.qiShuCount = 1;
+    _lotteryTransaction.lottery = lottery_;
+    
+    NSArray * betcontent = [Utility objFromJson: schemeDetail.betContent];
+    //            NSString *playType = betDic[@"playType"];
+    //
+    //            if ([betDic[@"betType"] integerValue] ==2) {
+    //                playType = [NSString stringWithFormat:@"%@胆拖",playType];
+    //            }
+    //
+    NSString * strbBetType;
+    for (NSDictionary *betDic in betcontent) {
+        
+        //            selectedBetCount ++;
+        
+        
+        LotteryBet * Bet = [[LotteryBet alloc] init];
+        
+        
+        Bet.sectionDataLinkSymbol = lottery_.dateSectionLinkSymbol;
+        
+        NSInteger cost = 2;
+        Bet.betType = (int )[[[[BaseTransaction alloc]init] getLotteryNumWithEnname:betDic[@"playType"] ] integerValue];
+        NSInteger playType = 0;
+        NSString * betType =betDic[@"playType"];
+        strbBetType = betType;
+        
+            if ([betDic[@"betType"] integerValue] == 2) {
+                
+                switch (Bet.betType) {
+                    case 202:
+                    
+                    playType = 212;
+                    break;
+                    case 203:
+                    
+                    
+                    playType = 213;
+                    break;
+                    case 204:
+                    
+                    
+                    playType = 214;
+                    break;
+                    case 205:
+                    
+                    playType = 215;
+                    break;
+                    case 206:
+                    
+                    playType = 216;
+                    break;
+                    case 207:
+                    
+                    playType = 217;
+                    break;
+                    case 221:
+                    
+                    playType = 222;
+                    break;
+                    case 231:
+                    
+                    playType = 232;
+                    break;
+                    case 220:
+                    playType = 229;
+                    break;
+                    case 230:
+                    playType = 239;
+                    break;
+                }
+                betType = [NSString stringWithFormat:@"%@Towed",betType];
+                Bet.betType = (int)playType;
+                strbBetType = betType;
+            }
+            
+            if ([betDic[@"betType"] integerValue] == 5) {
+                switch (Bet.betType){
+                    case 220:
+                    playType = 229;
+                    break;
+                    case 230:
+                    playType = 239;
+                    break;
+                }
+                betType = [NSString stringWithFormat:@"%@Towed",betType];
+                Bet.betType = (int)playType;
+                strbBetType = betType;
+            }
+            Bet.lotteryDetails = lottery_.activeProfile.details;
+            Bet.betXHProfile = lottery_.activeProfile;
+            Bet.betLotteryIdentifier = lottery_.identifier;
+            Bet.betLotteryType = lottery_.type;
+            Bet.betTypeDesc = [X115SchemeViewCell X115CHNTypeByEnType:strbBetType];
+            Bet.betProfile = Bet.betTypeDesc;
+            NSArray *betRows = betDic[@"betRows"];
+            
+            NSMutableArray *mItemArray = [NSMutableArray arrayWithCapacity:0];
+            for (NSArray *itemArray in betRows) {
+                NSMutableString *strTitle = [NSMutableString string];
+                for (NSString *item in itemArray) {
+                    [strTitle appendFormat:@"%02zd,",[item integerValue]];
+                }
+                if (strTitle.length >=1) {
+                    strTitle = [strTitle substringToIndex:strTitle.length-1];
+                }
+                [mItemArray addObject:strTitle];
+            }
+            
+            Bet.orderBetNumberDesc = [mItemArray componentsJoinedByString:@"#"];
+            
+            NSAttributedString *numberAttributedString;
+            numberAttributedString = [[NSAttributedString alloc]initWithString:[mItemArray componentsJoinedByString:@"#"] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15],NSForegroundColorAttributeName:SystemRed}];
+            Bet.betNumbersDesc = numberAttributedString;
+        
+        
+        [Bet setBetCount:(int )[betDic[@"units"] integerValue]];
+        [Bet setBetsCost:[betDic[@"units"] integerValue] * cost];
+        
+        if (betcontent.count >1) {
+            
+            [self.lotteryTransaction addBet:Bet];
+        }
+    }
+    
+    for (BaseViewController *baseVC  in self.navigationController.viewControllers) {
+        if ([baseVC isKindOfClass:[LotteryPlayViewController class]]) {
+            
+        }
+    }
+    
+    if (betcontent.count == 1) {
+        
+        LotteryPlayViewController *lpVC = [[LotteryPlayViewController alloc] init];
+        lpVC.isReBuy = YES;
+        
+            lpVC.selectedNumber = [[betcontent lastObject] objectForKey:@"betRows"];
+            
+            lpVC.rebuyTitle =[X115SchemeViewCell X115CHNTypeByEnType:strbBetType] ;
+    
+        
+        lpVC.lottery = lottery_;
+        [self.navigationController pushViewController:lpVC animated:YES];
+    }else{
+        LotteryPlayViewController *lpVC = [[LotteryPlayViewController alloc] init];
+        lpVC.isReBuy = NO;
+        lpVC.lotteryTransaction = _lotteryTransaction;
+        NSDictionary *lastDic =[betcontent lastObject];
+        lpVC.rebuyTitle = [X115SchemeViewCell X115CHNTypeByEnType:[lastDic objectForKey:@"playType"]];
+        lpVC.lottery = lottery_;
+        [self.navigationController pushViewController:lpVC animated:YES];
+    }
+}
+
 - (IBAction)actionReBuy:(UIButton *)sender {
+    if([schemeDetail.lottery isEqualToString:@"SX115"] ||[schemeDetail .lottery isEqualToString:@"SD115"]){
+        [self action115Rebuy];
+        return;
+    }
     if ([schemeDetail.lottery isEqualToString:@"DLT"]||[schemeDetail.lottery isEqualToString:@"SSQ"]) {
         for (Lottery  *lottery in _allLotter) {
             if ([lottery.identifier isEqualToString:schemeDetail.lottery]) {

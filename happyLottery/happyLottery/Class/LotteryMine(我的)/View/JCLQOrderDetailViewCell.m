@@ -10,7 +10,7 @@
 
 
 #import "JCLQOrderDetailViewCell.h"
-
+#import "X115SchemeViewCell.h"
 
 @interface JCLQOrderDetailViewCell()
 {
@@ -172,8 +172,28 @@
             self.btnLeshanCode.hidden = NO;
             [self.btnLeshanCode setTitle:leshanCode forState:0];
         }
-    }
-    else if ([dic[@"lotteryCode"] isEqualToString:@"SSQ"]){
+    } else  if([dic[@"lotteryCode"] isEqualToString:@"SX115"] || [dic[@"lotteryCode"] isEqualToString:@"SD115"]){
+        NSString *type;
+        if([dic[@"betType"] isEqualToString:@"Single"] || [dic[@"betType"] isEqualToString:@"Direct"]){
+             type = [NSString stringWithFormat:@"%@",dic[@"playType"]];
+        }else{
+             type = [NSString stringWithFormat:@"%@%@",dic[@"playType"],dic[@"betType"]];
+        }
+       
+        
+        content = dic[@"ticketContent"];
+        content = [content stringByReplacingOccurrencesOfString:@";" withString:@"\n"];
+        self.labPlayType.hidden = NO;
+        self.labPassType.hidden = NO;
+        self.labPassType.text = [X115SchemeViewCell X115CHNTypeByEnType:type] == nil?@"":[X115SchemeViewCell X115CHNTypeByEnType:type];
+        NSString *leshanCode = dic[@"leShanCode"];
+        if (leshanCode == nil) {
+            self.btnLeshanCode.hidden = YES;
+        }else{
+            self.btnLeshanCode.hidden = NO;
+            [self.btnLeshanCode setTitle:leshanCode forState:0];
+        }
+    }else if ([dic[@"lotteryCode"] isEqualToString:@"SSQ"]){
         self.disLeftPlayType.constant = -self.labPlayType.mj_w - 50;
         self.disLeftPlayTypeContent.constant = -self.labPlayType.mj_w - 50;
         NSMutableArray *array = [self reloadDataSSQ:dic];

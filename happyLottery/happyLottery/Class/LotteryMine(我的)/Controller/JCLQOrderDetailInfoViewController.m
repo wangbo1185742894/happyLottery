@@ -52,6 +52,12 @@
     }else if ([self.lotteryCode isEqualToString:@"JCLQ"]){
         self.labLotteryName.text = @"竞彩篮球";
         self.imgLotteryIcon.image = [UIImage imageNamed:@"basketball.png"];
+    }else if ([self.lotteryCode isEqualToString:@"SX115"]){
+        self.labLotteryName.text = @"陕西11选5";
+        self.imgLotteryIcon.image = [UIImage imageNamed:@"shiyixuanwu.png"];
+    }else if ([self.lotteryCode isEqualToString:@"SD115"]){
+        self.labLotteryName.text = @"山东11选5";
+        self.imgLotteryIcon.image = [UIImage imageNamed:@"sdx115.png"];
     }
     self.page = 1;
     self.tabListDetail.dataSource = self;

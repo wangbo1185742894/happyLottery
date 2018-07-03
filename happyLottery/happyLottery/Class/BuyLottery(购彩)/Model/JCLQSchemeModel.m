@@ -190,6 +190,15 @@
     if ([self.lottery isEqualToString:@"JCLQ"]) {
         return @"basketball.png";
     }
+    if ([self.lottery isEqualToString:@"SX115"]){
+        
+        return @"shiyixuanwu.png";
+        
+    }
+    if ([self.lottery isEqualToString:@"SD115"]){
+        
+        return @"sdx115.png";
+    }
     return @"";
 }
 

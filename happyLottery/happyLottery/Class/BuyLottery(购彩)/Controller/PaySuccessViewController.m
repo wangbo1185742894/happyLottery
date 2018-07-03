@@ -95,7 +95,7 @@
             CTZQSchemeDetailViewController *schemeVC = [[CTZQSchemeDetailViewController alloc]init];
             schemeVC.schemeNO = self.schemeNO;
             [self.navigationController pushViewController:schemeVC animated:YES];
-        }else if([self.lotteryName isEqualToString:@"大乐透"]||[self.lotteryName isEqualToString:@"双色球"]){
+        }else if([self.lotteryName isEqualToString:@"大乐透"]||[self.lotteryName isEqualToString:@"双色球"] || [self.lotteryName isEqualToString:@"陕西11选5"] || [self.lotteryName isEqualToString:@"山东11选5"]){
             DLTSchemeDetailViewController *schemeVC = [[DLTSchemeDetailViewController alloc]init];
             schemeVC.schemeNO = self.schemeNO;
             [self.navigationController pushViewController:schemeVC animated:YES];

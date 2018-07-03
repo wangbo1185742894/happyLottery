@@ -133,7 +133,7 @@
         }
         priceLb.text = [NSString stringWithFormat:@"%.1f元",[order.orderbonus doubleValue]];
         if ([order.name isEqualToString:@"陕西11选5"]) {
-            lotteryTypeLb.text = @"陕11选5";
+            lotteryTypeLb.text = @"陕西11选5";
         }else{
             lotteryTypeLb.text = order.name;
         }
@@ -321,7 +321,7 @@
         }
         priceLb.text = [NSString stringWithFormat:@"%.1f元",[order.betCost doubleValue]];
         if ([order.trLotteryName isEqualToString:@"陕西11选5"]) {
-             lotteryTypeLb.text = @"陕11选5";
+             lotteryTypeLb.text = @"陕西11选5";
         }else{
             lotteryTypeLb.text = order.trLotteryName;
         }

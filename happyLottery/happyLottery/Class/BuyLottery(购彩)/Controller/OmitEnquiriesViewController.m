@@ -146,7 +146,7 @@
     mArrayqian = [NSMutableArray arrayWithCapacity:0];
         mArraybai = [NSMutableArray arrayWithCapacity:0];
         mArraywan = [NSMutableArray arrayWithCapacity:0];
-  
+    self.lotteryMan.delegate = self;
     self.indexArray = @[@201,@202,@203,@204,@205,@206,@207,@208,@220,@230,@221,@231];
     self.titleArray = @[@"前一",@"任选二",@"任选三", @"任选四", @"任选五", @"任选六", @"任选七", @"任选八",@"前二直选", @"前三直选", @"前二组选", @"前三组选"];
     
@@ -236,7 +236,7 @@
         }
         
         [self.omitButton setTitle:@"取消" forState:UIControlStateNormal];
-        self.omitImageView.image = [UIImage imageNamed:@"cancel"];
+        self.omitImageView.image = [UIImage imageNamed:@"omitshut.png"];
         self.EnquiriesLabelHeight.constant = 0;
     }else {
         
@@ -430,9 +430,7 @@
     
     
     
-    NSString *theUrlStr = H5BaseAddress;
-
-    
+    NSString *theUrlStr = OmitServerURL;
     
     [self.loadDataTool RequestWithString:[NSString stringWithFormat:@"%@%@", theUrlStr, urls2] isPost:YES andPara:params2 andComplete:^(id data, BOOL isSuccess) {
         [self hideLoadingView];
@@ -441,7 +439,7 @@
             NSData*dataStr = [string dataUsingEncoding:NSUTF8StringEncoding];
             NSDictionary*dict = [NSJSONSerialization JSONObjectWithData:dataStr options:NSJSONReadingAllowFragments error:nil];
             
-            if ([[dict objectForKey:@"code"] isEqualToString:@"1"]) {
+            if ([[dict objectForKey:@"code"] integerValue] == 1) {
                 NSArray * dataArray = dict[@"data"];
                 NSLog(@"%@", dataArray);
                 for (NSDictionary * subDict in dataArray) {
@@ -672,7 +670,7 @@
         }
         
         [self.omitButton setTitle:@"取消" forState:UIControlStateNormal];
-        self.omitImageView.image = [UIImage imageNamed:@"cancel"];
+        self.omitImageView.image = [UIImage imageNamed:@"omitshut.png"];
         self.EnquiriesLabelHeight.constant = 0;
         self.isQmit = YES;
     }else {
@@ -1153,9 +1151,10 @@
 
 - (void) getCurrentRound{
     NSLog(@"开始请求奖期。");
-//    [self.lotteryMan getLotteryCurRoundInfo:_lottery];
+    [self.lotteryMan getSellIssueList:@{@"lotteryCode":self.lottery.identifier}];
 }
--(void)gotLotteryCurRound:(LotteryRound *)round{
+-(void)gotSellIssueList:(NSArray *)infoDic errorMsg:(NSString *)msg{
+    LotteryRound  * round = [infoDic lastObject];
     if (round) {
         NSLog(@"得到奖期。");
         [timerForcurRound invalidate];
@@ -1166,12 +1165,13 @@
         second = _lottery.currentRound.abortSecond;
         //展是定时器时间
         [self showTime];
-         timerForcurRound = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updataTimeAppear) userInfo:nil repeats:YES];
+        timerForcurRound = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updataTimeAppear) userInfo:nil repeats:YES];
         
     }else{
         NSLog(@"未得到奖期。");
     }
 }
+
 - (void)showTime
 {
     NSMutableAttributedString *timeString = [[NSMutableAttributedString alloc] init];
@@ -1222,11 +1222,6 @@
     [self showTime];
 
 }
--(void)gotLotteryCurRoundTimeout {
-    [self hideLoadingView];
-    [self showPromptText:requestTimeOut hideAfterDelay:3.0];
-    
-}
 
 -(void)dealloc{
 
@@ -1254,6 +1249,15 @@
     self.btnQianwei.selected = NO;
     self.btnWanwei.selected = NO;
     [self  omitAreaConfig];
+}
+- (IBAction)actionRemove:(id)sender {
+    
+    for (QmitModel * model in self.dataSource) {
+        model.isSelect = @"0";
+    }
+    [self.OmitEnquiriesTableView reloadData];
+
+
 }
 
 

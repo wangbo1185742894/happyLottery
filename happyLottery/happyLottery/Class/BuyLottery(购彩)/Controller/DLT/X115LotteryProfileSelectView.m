@@ -17,7 +17,7 @@
 - (void) initUIWithLottery: (Lottery *) lottery resource:(NSString *)vcResourceName{
     if (nil == scrollViewContent_) {
         AppDelegate *myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        self.backgroundColor = RGBACOLOR(0, 0, 0, 0.3);
+        self.backgroundColor = RGBACOLOR(0, 0, 0, 0.1);
         UIButton *hideMeButton = [UIButton buttonWithType: UIButtonTypeCustom];
         hideMeButton.frame = self.bounds;
         [hideMeButton addTarget: self action: @selector(hideMeButtonAction:) forControlEvents: UIControlEventTouchUpInside];
@@ -28,7 +28,7 @@
         scrollViewContentFrame.origin.y = NaviHeight;
         scrollViewContentFrame.size.height -= 84;
         scrollViewContent_ = [[UIScrollView alloc] initWithFrame: scrollViewContentFrame];
-        scrollViewContent_.backgroundColor = RGBCOLOR(255, 254, 233);
+        scrollViewContent_.backgroundColor = RGBACOLOR(0, 0, 0, 0.7);;
         [self addSubview: scrollViewContent_];
         
         curLottery = lottery;
@@ -53,7 +53,7 @@
         __block CGFloat curX = cellPadding;
         __block CGFloat curY = cellPadding;
         
-        CGFloat cellViewHeight = cellViewWidth / 1.8;
+        CGFloat cellViewHeight = cellViewWidth / 1.4;
 
         
         __block CGSize contentSize = scrollViewContent_.frame.size;
@@ -94,6 +94,15 @@
                 }
                 
             }
+            if(cellView.isSelectedProfile == YES){
+                cellView.backgroundColor =SystemGreen;
+            }else{
+                cellView.backgroundColor = [UIColor clearColor];
+            }
+            cellView.layer.borderColor = [[UIColor whiteColor] CGColor];
+            cellView.layer.borderWidth = 1;
+            cellView.layer.cornerRadius = 4;
+            cellView.layer.masksToBounds = YES;
             [scrollViewContent_ addSubview: cellView];
         }];
 
@@ -172,6 +181,16 @@
         [selectedCellView buttonSelect: NO curtitle:curLottery.activeProfile.title];
     }
     selectedCellView = view;
+
+    for(LotteryProfileSelectCellView *cell in [[self.subviews lastObject] subviews]){
+        
+        if([cell isKindOfClass:[LotteryProfileSelectCellView class]]){
+            cell.isSelectedProfile = NO;
+            cell.backgroundColor = [UIColor clearColor];
+        }
+    }
+    selectedCellView.isSelectedProfile = YES;
+        selectedCellView.backgroundColor = SystemGreen;
 
     if (curLottery.activeProfileForExtrend) {
         curLottery.activeProfileForExtrend = profile;

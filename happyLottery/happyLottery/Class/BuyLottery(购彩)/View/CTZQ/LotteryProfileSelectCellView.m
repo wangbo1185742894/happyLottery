@@ -89,7 +89,7 @@
         //add separate label
         UILabel *seprateLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, curY, self.bounds.size.width, 1)];
         seprateLabel.backgroundColor = [UIColor lightGrayColor];
-        [self addSubview: seprateLabel];
+//        [self addSubview: seprateLabel];
         
         if ([profile.percentage intValue] != 0) {
             //draw bouns label
@@ -114,7 +114,6 @@
             [self buttonSelect: YES curtitle:curProfile.title];
         }
 
-
     }
     
 }
@@ -133,7 +132,7 @@
     }
     //lc
 //    requestLabel.font = [UIFont systemFontOfSize: 11];
-    requestLabel.backgroundColor = RGBCOLOR(232, 79, 42);
+    requestLabel.backgroundColor = [UIColor clearColor];
     requestLabel.textColor = [UIColor whiteColor];
     requestLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview: requestLabel];
@@ -150,10 +149,10 @@
     
         if (self.isSelectedProfile &&[profileTitle isEqualToString:self.typeString]) {
             [actionBtn setBackgroundImage:[UIImage imageWithColor:SystemGreen] forState:0];
-            [actionBtn setTitleColor:TextCharColor forState:0];
+            [actionBtn setTitleColor:[UIColor whiteColor] forState:0];
         }else{
             [actionBtn setBackgroundImage:[UIImage imageWithColor:SystemGreen] forState:0];
-            [actionBtn setTitleColor:[UIColor blackColor] forState:0];
+            [actionBtn setTitleColor:[UIColor whiteColor] forState:0];
         }
         [actionBtn addTarget: self action: @selector(buttonAction:) forControlEvents: UIControlEventTouchUpInside];
     return actionBtn;

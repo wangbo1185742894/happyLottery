@@ -260,7 +260,7 @@
 
 //   NSString *test = @"12 22#12 34 34 23+23 23#23 54 45; 12 22#12 34 54 34 23+23 23 45 56#23 54 45; 12 22#12 34 54 34 23+23 25 56#54 45;22#14 54 34 23+23 23 56#23";
     id ZHlotteryNumber ;
-    if([_order.name isEqualToString:@"11选5"]||[_order.name isEqualToString:@"陕11选5"])
+    if([_order.name isEqualToString:@"陕西11选5"])
     {
         ZHlotteryNumber = _order.ZHlotteryNumberDesc;
         ZHlotteryNumber = [ZHlotteryNumber stringByReplacingOccurrencesOfString:@" " withString:@","];

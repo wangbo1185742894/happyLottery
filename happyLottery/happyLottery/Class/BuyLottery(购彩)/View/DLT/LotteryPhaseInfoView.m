@@ -104,7 +104,7 @@
         titleFrame.size.width = 100;
         labelCurRoundInfoTitle = [[UILabel alloc] initWithFrame: titleFrame];
         labelCurRoundInfoTitle.backgroundColor = [UIColor clearColor];
-        labelCurRoundInfoTitle.font = [UIFont systemFontOfSize: 11];
+        labelCurRoundInfoTitle.font = [UIFont systemFontOfSize: 14];
         labelCurRoundInfoTitle.adjustsFontSizeToFitWidth = YES;
         labelCurRoundInfoTitle.textColor = SystemLightGray;
         // 奖期显示计时条修改 lyw

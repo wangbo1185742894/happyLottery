@@ -105,6 +105,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.lotteryMan.delegate = self;
 //   [self.lotteryMan queryX115LimitNum];
     limitArray  = [NSMutableArray arrayWithCapacity:0];
@@ -113,7 +114,7 @@
     if([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     }
-    viewBottom_.backgroundColor = [UIColor whiteColor];
+    
     AppDelegate *myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     myDelegate.curNavVC = self.navigationController;
 //    每当此页面加载的时候，将十一选五的中奖停追设置为是。
@@ -123,7 +124,7 @@
         sepH.constant = SEPHEIGHT;
     }
     
-    labelSummary_.textColor = TEXTGRAYCOLOR;
+
 
 
     buttonSubmit_ .titleLabel.font = [UIFont systemFontOfSize:15];
@@ -167,6 +168,7 @@
 
 //  2016-03-18  购彩页面模拟点击 跳转投注界面。
     [self beginTimerForCurRound];
+    [self getHisIssue];
     [self currentBet:nil];
 }
 -(void)lookOpenHis:(UIButton *)sender{
@@ -195,6 +197,7 @@
 }
 
 -(void) gotListHisIssue:(NSArray *)infoDic errorMsg:(NSString *)msg{
+    
     if(infoDic.count == 0 || infoDic == nil){
         [self showPromptText:msg hideAfterDelay:1.8];
         return;
@@ -340,6 +343,9 @@
     [lotteryXHView becomeFirstResponder];
     //  temp for appStore
       [self updateNavigationTitle];
+    if([self.lottery.identifier isEqualToString:@"SX115"]){
+    [self addQmitButton];
+    }
     
     [timerForcurRound setFireDate:[NSDate date]];
 }
@@ -632,10 +638,10 @@
         return;
     }
     
-//    if (!_lottery.currentRound||[_lottery.currentRound isExpire]) {
-//        [self showPromptText:ErrorWrongRoundExpird hideAfterDelay:1.7];
-//        return;
-//    }
+    if (!_lottery.currentRound||[_lottery.currentRound isExpire]) {
+        [self showPromptText:ErrorWrongRoundExpird hideAfterDelay:1.7];
+        return;
+    }
     LotteryXHSection *section = lotteryBet.lotteryDetails[0];
     if ([section.needDanHao integerValue]==1&&section.numbersSelected.count == 0) {
         [self showPromptText: @"至少选择一个胆码" hideAfterDelay: 1.7];
@@ -759,7 +765,7 @@
     NSMutableAttributedString *betInfoString = [[NSMutableAttributedString alloc] init];
     
     NSMutableDictionary *textAttrsDictionary = [NSMutableDictionary dictionaryWithCapacity: 2];
-    textAttrsDictionary[NSForegroundColorAttributeName] = TEXTGRAYCOLOR;
+    textAttrsDictionary[NSForegroundColorAttributeName] = [UIColor whiteColor];
     
     [betInfoString appendAttributedString: [[NSAttributedString alloc] initWithString: TextTouZhuSummaryTotal attributes: textAttrsDictionary]];
     
@@ -906,6 +912,8 @@
     }
     
     [self loadConentView:NaviHeight - 64];
+    expireTableView.lottery = _lottery;
+    [expireTableView reloadData];
 }
 
 #pragma mark - TouZhuViewController methods
@@ -916,19 +924,6 @@
     [self clearAllSelection];
 }
 
--(void) getLotteryRoundFinish{
-    expireTablveHeight = ExpireTableViewCellH * 10;
-    
-    CGRect fram = CGRectMake(0, 0-expireTablveHeight, KscreenWidth, expireTablveHeight);
-    expireTableView = [[ExprieRoundView alloc] initWithFrame:fram];
-    expireTableView.lottery = _lottery;
-    //lc
-
-    [scrollViewContent_ addSubview:expireTableView];
-    scrollViewContent_.contentInset = UIEdgeInsetsMake(expireTablveHeight, 0, 0, 0);
-    expireTableView.contentOffset = CGPointMake(0, ExpireTableViewCellH * _lottery.allRoundsInfo.count);
-    [self addQmitButton];
-   }
 #pragma mark--添加查遗漏按钮
 - (void)addQmitButton
 {

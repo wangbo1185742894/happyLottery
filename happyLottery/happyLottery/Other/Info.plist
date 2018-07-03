@@ -206,6 +206,17 @@
 				<key>NSIncludesSubdomains</key>
 				<true/>
 			</dict>
+			<key>tc.xianticai.com</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSExceptionMinimumTLSVersion</key>
+				<string>TLSv1.0</string>
+				<key>NSExceptionRequiresForwardSecrecy</key>
+				<false/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
 			<key>weibo.cn</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>

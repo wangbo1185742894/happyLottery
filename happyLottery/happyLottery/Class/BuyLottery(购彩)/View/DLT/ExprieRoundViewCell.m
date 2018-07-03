@@ -39,7 +39,7 @@
     _qiHaoLa.textColor = SystemLightGray;
     NSString *betCountStr = [NSString stringWithFormat: @"%@", round.openResult];
 
-    NSArray *betnumArray = [betCountStr componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"#"]];
+    NSArray *betnumArray = [betCountStr componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"#,"]];
     //不同的x115  玩法需要显示的数字个数不同；
     NSUInteger numCount;
     if (_isX115) {
