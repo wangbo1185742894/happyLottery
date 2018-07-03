@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labForeCast;
 @property (weak, nonatomic) IBOutlet UILabel *xuHao;
 
+
 @end
 
 @implementation HomeGJItemViewCell
@@ -31,6 +32,7 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.backgroundColor = [UIColor clearColor];
     cell.contentView.backgroundColor = [UIColor clearColor];
+   
     return cell;
 }
 

@@ -63,9 +63,11 @@
     UIImage*imageHeight = [UIImage imageNamed:@"buttonBG_orange_selected"];
     imageHeight = [imageHeight resizableImageWithCapInsets:UIEdgeInsetsMake(0, 1, 0, 1) resizingMode:UIImageResizingModeStretch];
     [_matchInfoBtn setBackgroundImage:imageHeight forState:UIControlStateHighlighted];
-    
-    self.peiSelectView = [[SelectView alloc]initWithFrame:CGRectMake(KscreenWidth - 200, 40, 190, 25) andRightTitle:@"投" andLeftTitle:@"倍"];
-    
+    if ([self isIphone5s]) {
+        self.peiSelectView = [[SelectView alloc]initWithFrame:CGRectMake(KscreenWidth - 170, 40, 210, 25) andRightTitle:@"投" andLeftTitle:@"倍"];
+    } else {
+        self.peiSelectView = [[SelectView alloc]initWithFrame:CGRectMake(KscreenWidth - 200, 40, 190, 25) andRightTitle:@"投" andLeftTitle:@"倍"];
+    }
     self.peiSelectView.beiShuLimit = 9999;
     self.peiSelectView.delegate = self;
     self.peiSelectView.labContent.text = _cTransation.beitou;;

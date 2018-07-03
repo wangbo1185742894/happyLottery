@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnRuZhang;
 @property (nonatomic, strong) CFLineChartView *LCView;
 @property(nonatomic,strong)MyAgentInfoModel *agentInfoModel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightCons;
 
 
 @end
@@ -47,7 +48,11 @@
     [self setRightBarItems];
     [self doWithCreateUI];
     self.agentMan.delegate = self;
-    
+    if ([self isIphone5s]) {
+        self.heightCons.constant = 190;
+    } else {
+        self.heightCons.constant = 270;
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -191,11 +196,15 @@
                            break;
                    }
                }];
-    
 }
 
 - (void)doWithCreateUI{
-    CFLineChartView *LCView = [CFLineChartView lineChartViewWithFrame:CGRectMake(0, 40, CGRectGetWidth([UIScreen mainScreen].bounds) - 20, 220)];
+    CFLineChartView *LCView;
+    if ([Utility isIphone5s]) {
+         LCView = [CFLineChartView lineChartViewWithFrame:CGRectMake(0, 25, CGRectGetWidth([UIScreen mainScreen].bounds), 170)];
+    }else {
+        LCView = [CFLineChartView lineChartViewWithFrame:CGRectMake(0, 40, CGRectGetWidth([UIScreen mainScreen].bounds) - 20, 220)];
+    }
      self.LCView = LCView;
     [self.viewRecentLy addSubview:self.LCView];
     

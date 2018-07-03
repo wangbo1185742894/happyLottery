@@ -29,6 +29,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *lab2inf;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topDisShare;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topCons;
+
 @end
 
 @implementation ShareViewController
@@ -39,6 +41,11 @@
     if ([self isIphoneX]) {
         self.top.constant = 88;
         self.bottom.constant = 34;
+    }
+    if ([self isIphone5s]) {
+        self.topCons.constant = 27;
+    } else {
+        self.topCons.constant = 67;
     }
     NSString *code=self.curUser.shareCode;
     if (code.length>0) {

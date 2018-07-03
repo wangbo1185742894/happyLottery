@@ -32,14 +32,28 @@
     self.passType.numberOfLines = 0;
     self.passType.text = pass;
     self.touzhuCount.text =[NSString stringWithFormat:@"%@倍%@注",schemeDetail.multiple,schemeDetail.units];
+    if ([Utility isIphone5s]) {
+        self.widthCons.constant = 70;
+    }else {
+        self.widthCons.constant = 94;
+    }
 }
 
 - (float)dateHeight:(JCZQSchemeItem *)schemeDetail{
     NSString *pass = [schemeDetail.passType componentsJoinedByString:@","];
-    if ( [pass boundingRectWithSize:CGSizeMake(94, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName :[UIFont systemFontOfSize:14]} context:nil].size.height+30 > 58) {
-        return [pass boundingRectWithSize:CGSizeMake(94, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName :[UIFont systemFontOfSize:14]} context:nil].size.height+30;
-    }else{
-        return 58;
+    if ([Utility isIphone5s]) {
+        if ( [pass boundingRectWithSize:CGSizeMake(70, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName :[UIFont systemFontOfSize:14]} context:nil].size.height+70 > 58) {
+            return [pass boundingRectWithSize:CGSizeMake(70, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName :[UIFont systemFontOfSize:14]} context:nil].size.height+70;
+        }else{
+            return 58;
+        }
+    }
+    else {
+        if ( [pass boundingRectWithSize:CGSizeMake(94, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName :[UIFont systemFontOfSize:14]} context:nil].size.height+30 > 58) {
+            return [pass boundingRectWithSize:CGSizeMake(94, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName :[UIFont systemFontOfSize:14]} context:nil].size.height+30;
+        }else{
+            return 58;
+        }
     }
 }
 

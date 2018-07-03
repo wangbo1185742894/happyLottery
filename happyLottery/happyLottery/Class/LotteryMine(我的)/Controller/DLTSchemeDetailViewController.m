@@ -71,7 +71,7 @@
     }
     [self loadData];
     BottomIphoneX.constant = [self isIphoneX]?34:0;
-    upIPhoneX.constant = [self isIphoneX]?88:0;
+    upIPhoneX.constant = [self isIphoneX]?88:64;
 }
 
 

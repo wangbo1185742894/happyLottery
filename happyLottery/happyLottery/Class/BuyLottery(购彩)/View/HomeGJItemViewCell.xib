@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -39,10 +39,10 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rAc-TR-a9M">
-                        <rect key="frame" x="324" y="29" width="70" height="19"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rAc-TR-a9M">
+                        <rect key="frame" x="324" y="29" width="56" height="19"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="70" id="Zj5-xA-fNf"/>
+                            <constraint firstAttribute="width" constant="56" id="Zj5-xA-fNf"/>
                             <constraint firstAttribute="height" constant="19" id="kMb-VQ-eVq"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="Helvetica-Condensed-Black-Se" family="Helvetica-Condensed-Black-Se" pointSize="18"/>
@@ -96,7 +96,7 @@
                     <constraint firstAttribute="bottom" secondItem="fXP-fu-qzT" secondAttribute="bottom" constant="2.5" id="E5H-Vl-BRV"/>
                     <constraint firstItem="fXP-fu-qzT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Ggh-eR-ypd"/>
                     <constraint firstAttribute="bottom" secondItem="PqS-8m-eCU" secondAttribute="bottom" constant="22.5" id="Gtp-PE-zXK"/>
-                    <constraint firstAttribute="trailing" secondItem="rAc-TR-a9M" secondAttribute="trailing" constant="6" id="MqK-K8-x5O"/>
+                    <constraint firstAttribute="trailing" secondItem="rAc-TR-a9M" secondAttribute="trailing" constant="20" id="MqK-K8-x5O"/>
                     <constraint firstItem="McJ-Le-ny7" firstAttribute="leading" secondItem="PqS-8m-eCU" secondAttribute="trailing" constant="19" id="S9k-Et-RJ0"/>
                     <constraint firstItem="McJ-Le-ny7" firstAttribute="centerY" secondItem="PqS-8m-eCU" secondAttribute="centerY" id="XGr-Ye-LJK"/>
                     <constraint firstItem="rAc-TR-a9M" firstAttribute="centerY" secondItem="PqS-8m-eCU" secondAttribute="centerY" id="ZQF-3G-NXr"/>
@@ -111,11 +111,15 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="imageLeftCons" destination="S9k-Et-RJ0" id="OR2-2V-imq"/>
                 <outlet property="imgGroupFlag" destination="McJ-Le-ny7" id="q0Z-yU-bVb"/>
                 <outlet property="labForeCast" destination="rAc-TR-a9M" id="S8S-TD-u4T"/>
                 <outlet property="labMatchBack" destination="fXP-fu-qzT" id="7mX-6M-hcM"/>
+                <outlet property="leftXuHaoCons" destination="3ei-sF-f7u" id="lC7-Va-9og"/>
                 <outlet property="nameGroupFlag" destination="tHa-C0-m49" id="wph-B9-QE2"/>
+                <outlet property="nameWidthCons" destination="nbp-rM-loo" id="qYz-Ix-eCE"/>
                 <outlet property="pfBeiShu" destination="v03-zy-95X" id="6rz-xg-fe7"/>
+                <outlet property="rightCons" destination="MqK-K8-x5O" id="bbZ-ee-Igz"/>
                 <outlet property="xuHao" destination="PqS-8m-eCU" id="jfw-s3-754"/>
             </connections>
             <point key="canvasLocation" x="63" y="53"/>

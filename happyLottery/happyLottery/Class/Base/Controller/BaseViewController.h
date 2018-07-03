@@ -39,6 +39,8 @@
 
 -(BOOL)isIphoneX;
 
+-(BOOL)isIphone5s;
+
 -(void)actionTelMe;
 
 -(void)navigationBackToLastPage;

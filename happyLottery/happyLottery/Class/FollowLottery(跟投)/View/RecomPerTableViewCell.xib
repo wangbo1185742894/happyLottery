@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -106,14 +106,18 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="imageLeftCons" destination="lCW-FX-mny" id="afA-XK-lK3"/>
                 <outlet property="infoOneLabel" destination="pMb-qR-C6I" id="zbH-9Z-rt1"/>
                 <outlet property="infoOneSum" destination="5op-Kf-WvY" id="rW8-su-0fv"/>
                 <outlet property="infoTwoLabel" destination="VKh-MO-n5P" id="kUA-kw-jhE"/>
                 <outlet property="infoTwoSum" destination="o4K-5b-l6q" id="Pme-QX-hwC"/>
+                <outlet property="leftCons" destination="4Hp-C5-f8M" id="3Fp-mM-w2W"/>
                 <outlet property="orderImage" destination="WMF-1a-kfG" id="oiN-ZI-zNu"/>
                 <outlet property="orderLabel" destination="8Zr-mD-NB1" id="xBz-bO-z2t"/>
+                <outlet property="rightCons" destination="lTY-qz-yXE" id="xj7-fd-zhe"/>
                 <outlet property="userImage" destination="PPs-of-uyD" id="7bf-EN-eCK"/>
                 <outlet property="userName" destination="Uj8-d4-frB" id="ur7-aP-ps1"/>
+                <outlet property="xuhaoLeftCons" destination="cd5-dD-RWT" id="zoS-wE-SlS"/>
             </connections>
             <point key="canvasLocation" x="24.5" y="52"/>
         </tableViewCell>

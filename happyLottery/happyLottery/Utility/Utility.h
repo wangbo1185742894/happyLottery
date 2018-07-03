@@ -62,6 +62,7 @@
 + (NSString*) JsonFromId: (id) obj;
 +(BOOL)isIOS11After;
 +(BOOL)isIphoneX;
++(BOOL)isIphone5s;
 + (NSString *)weekDayGetForTimeDate:(NSDate *)date;
 + (NSString*)iphoneType;
 +(NSString*)getTheCorrectNum:(NSString*)tempString;

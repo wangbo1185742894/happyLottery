@@ -23,6 +23,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *infoOneLabel;
 @property (weak, nonatomic) IBOutlet UILabel *infoTwoSum;
 @property (weak, nonatomic) IBOutlet UILabel *infoTwoLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *rightCons;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftCons;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *xuhaoLeftCons;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageLeftCons;
+
 
 - (void)reloadDate:(RecomPerModel * )model categoryCode:(NSString *)categoryCode;
 @end

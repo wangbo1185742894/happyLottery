@@ -11,6 +11,10 @@
 
 @interface HomeGJItemViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageLeftCons;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *rightCons;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftXuHaoCons;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *nameWidthCons;
 
 + (instancetype)cellWithTableView:(UITableView *)tableVie;
 
