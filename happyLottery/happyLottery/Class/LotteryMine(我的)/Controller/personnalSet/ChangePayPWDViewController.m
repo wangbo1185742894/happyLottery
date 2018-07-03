@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *PWD3;
 @property (weak, nonatomic) IBOutlet UIButton *commitBtn;
 @property (weak, nonatomic) IBOutlet UIButton *forgetBtn;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftCons;
 
 @end
 
@@ -29,7 +30,11 @@
     if ([self isIphoneX]) {
         self.top.constant = 88;
     }
-    
+    if ([self isIphone5s]) {
+        self.leftCons.constant = 148;
+    } else {
+        self.leftCons.constant = 151;
+    }
     self.memberMan.delegate = self;
     self.PWD1.delegate = self;
     self.PWD2.delegate = self;

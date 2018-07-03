@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -28,9 +28,11 @@
                 <outlet property="labQitou" destination="7fJ-yJ-IPm" id="TAQ-Vc-oCS"/>
                 <outlet property="labYujihuibao" destination="Gtm-yZ-Bvk" id="rYy-bQ-45C"/>
                 <outlet property="labZigou" destination="mcZ-qJ-KRo" id="ely-VD-gPU"/>
+                <outlet property="rightCons" destination="6qu-5k-4m8" id="n6k-Sp-6xr"/>
                 <outlet property="topDis" destination="dlG-js-8gy" id="aD4-Vf-f9q"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="wbSelectView" destination="EYm-96-9Ad" id="vOq-lx-Doz"/>
+                <outlet property="widthCons" destination="Vg4-io-H2K" id="qIc-Pa-mie"/>
                 <outletCollection property="btnBeiSelect" destination="5g0-dx-5Hm" id="W30-wf-flJ"/>
                 <outletCollection property="btnBeiSelect" destination="JAJ-5X-iGT" id="UhG-2X-ohH"/>
                 <outletCollection property="btnBeiSelect" destination="pxL-lG-7q1" id="EeN-Dt-GyF"/>

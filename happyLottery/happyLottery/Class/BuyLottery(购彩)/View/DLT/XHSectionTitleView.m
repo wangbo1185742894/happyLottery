@@ -69,7 +69,12 @@
     
     //selected desc label
     NSString *numberText = [NSString stringWithFormat: TextSelectNumber, (unsigned long)0];
-    CGFloat leftOverWidth = self.bounds.size.width - curX;
+    CGFloat leftOverWidth;
+    if ([Utility isIphone5s]) {
+        leftOverWidth = self.bounds.size.width - curX+5;
+    } else {
+        leftOverWidth = self.bounds.size.width - curX;
+    }
     labelSelectedDesc = [[MGLabel alloc] initWithFrame: CGRectMake(curX, 0, leftOverWidth, self.bounds.size.height)];
     [labelSelectedDesc setBackgroundColor: [UIColor clearColor]];
     labelSelectedDesc.font = TextFont;

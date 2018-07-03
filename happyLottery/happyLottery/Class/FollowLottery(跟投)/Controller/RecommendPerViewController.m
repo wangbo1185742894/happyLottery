@@ -138,7 +138,13 @@
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIImageView *image = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth,295/(750/KscreenWidth))];
     NSString *imageName;
-    UILabel *jinLabel = [[UILabel alloc]initWithFrame:CGRectMake(KscreenWidth-75, 120, 90, 20)];
+    UILabel *jinLabel;
+    if ([self isIphone5s]) {
+        jinLabel = [[UILabel alloc]initWithFrame:CGRectMake(KscreenWidth-75, 100, 90, 20)];
+    } else {
+        jinLabel = [[UILabel alloc]initWithFrame:CGRectMake(KscreenWidth-75, 120, 90, 20)];
+
+    }
     jinLabel.text = @"近15日";
     jinLabel.textColor = [UIColor whiteColor];
     jinLabel.backgroundColor = [UIColor clearColor];
@@ -283,6 +289,18 @@
     [cell.userImage sd_setImageWithURL:[NSURL URLWithString:model.headUrl] placeholderImage:[UIImage imageNamed:@"usermine.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
   
     }];
+    if ([self isIphone5s]) {
+        cell.rightCons.constant = 0;
+        cell.leftCons.constant = 5;
+        cell.xuhaoLeftCons.constant = 2;
+        cell.imageLeftCons.constant = 2;
+    }
+    else {
+        cell.rightCons.constant = 10;
+        cell.leftCons.constant = 20;
+        cell.xuhaoLeftCons.constant = 7;
+        cell.imageLeftCons.constant = 7;
+    }
     return cell;
 
 }

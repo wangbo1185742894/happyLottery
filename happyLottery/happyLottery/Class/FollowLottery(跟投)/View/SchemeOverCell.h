@@ -14,6 +14,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *touzhuCount;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthCons;
+
 - (void)reloadDate :(JCZQSchemeItem *)schemeDetail;
 
 - (float)dateHeight:(JCZQSchemeItem *)schemeDetail;

@@ -41,13 +41,25 @@
             actionButtonText = @"机选1注";
             buttonTextSize = MB_TEXTSIZE(actionButtonText, TextFont);
             buttonWidth = buttonTextSize.width + ButtonTitlePadding*2;
-            bt_frame = CGRectMake(0, 0, buttonWidth, self.bounds.size.height);
+            if ([Utility isIphone5s]) {
+                bt_frame = CGRectMake(27, 0, buttonWidth, self.bounds.size.height);
+            }else {
+                bt_frame = CGRectMake(0, 0, buttonWidth, self.bounds.size.height);
+            }
+            
             
             
             NSString * actionText = @"机选5注";
             CGSize textSize = MB_TEXTSIZE(actionText, TextFont);
             CGFloat width = textSize.width + ButtonTitlePadding*2;
-            CGRect fiveFrame = CGRectMake(80, 0, width, self.bounds.size.height);
+            CGRect fiveFrame ;
+            if ([Utility isIphone5s]) {
+                fiveFrame = CGRectMake(87, 0, width, self.bounds.size.height);
+            }
+            else {
+                fiveFrame = CGRectMake(80, 0, width, self.bounds.size.height);
+            }
+            
             buttonRandomeFive = [self creatButton:fiveFrame andTitle:actionText];
             [buttonRandomeFive addTarget:self action:@selector(actionRandomeFive) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview: buttonRandomeFive];

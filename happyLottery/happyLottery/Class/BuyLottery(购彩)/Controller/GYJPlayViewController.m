@@ -67,7 +67,6 @@
         self.viewDisBottom.constant = 0;
         self.viewDisTop .constant = 64;
     }
-    
     if ([self.curUser.whitelist boolValue] == NO) {
         yuyueBtn.hidden = YES;
     }
@@ -260,6 +259,17 @@
         HomeGJItemViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KHomeGJItemViewCell];
         [cell loadDataWith:self.gjSellArray[indexPath.row]];
         cell.backgroundColor = RGBCOLOR(245, 245, 245);
+        if ([Utility isIphone5s]) {
+            cell.imageLeftCons.constant = 3;
+            cell.rightCons.constant = 5;
+            cell.leftXuHaoCons.constant = 3 ;
+            cell.nameWidthCons.constant = 65;
+        }else{
+            cell.imageLeftCons.constant = 19;
+            cell.rightCons.constant = 20;
+            cell.leftXuHaoCons.constant = 10;
+            cell.nameWidthCons.constant = 72;
+        }
         return cell;
     }
     else {

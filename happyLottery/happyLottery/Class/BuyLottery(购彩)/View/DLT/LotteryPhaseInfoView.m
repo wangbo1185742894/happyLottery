@@ -110,8 +110,15 @@
         // 奖期显示计时条修改 lyw
         if (lottery.currentRound) {
             labelCurRoundInfoTitle.text = [NSString stringWithFormat: @"距离%@期 截止:", lottery.currentRound.issueNumber];
+            float pointX;
+            if ([Utility isIphone5s]) {
+                pointX = 65;
+            }else {
+                pointX = 56;
+            }
+            
             if (!_timeCountdownView) {
-                _timeCountdownView = [[LotteryTimeCountdownView alloc] initWithFrame:CGRectMake(56, 10,KscreenWidth - 150,20)];
+                _timeCountdownView = [[LotteryTimeCountdownView alloc] initWithFrame:CGRectMake(pointX, 10,KscreenWidth - 150,20)];
             }
             
             _timeCountdownView.timeCutType = TimeCutTypePlayPage;

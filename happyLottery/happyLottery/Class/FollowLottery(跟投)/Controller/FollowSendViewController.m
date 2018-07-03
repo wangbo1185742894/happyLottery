@@ -43,6 +43,8 @@
     NSMutableArray <HotSchemeModel *> * schemeList;
     
     __weak IBOutlet UITableView *tabFollewView;
+    
+    __weak IBOutlet NSLayoutConstraint *bottomCons;
 }
 
 @end
@@ -61,6 +63,11 @@
     self.lotteryMan.delegate = self;
     if ([Utility isIOS11After]) {
         self.automaticallyAdjustsScrollViewInsets = NO; // tableView 莫名其妙  contentOffset.y 成-64了  MMP
+    } 
+    if ([self isIphone5s]) {
+        bottomCons.constant = 44;
+    }else {
+        bottomCons.constant = 0;
     }
     [self getTopViewData];
     [self setRightBarItems];

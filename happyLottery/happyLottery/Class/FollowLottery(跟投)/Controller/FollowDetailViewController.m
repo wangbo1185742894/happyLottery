@@ -35,6 +35,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnTouzhu;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgFlag1;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *rightCons;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthCons;
 @end
 
 @implementation FollowDetailViewController{
@@ -56,6 +58,14 @@
     }else{
         _topDis.constant = 64;
         _bottomDis.constant = 0;
+    }
+    if ([self isIphone5s]) {
+        self.rightCons.constant = 2;
+        self.widthCons.constant = 65;
+    }else {
+        self.rightCons.constant = 20;
+        self.widthCons.constant = 85;
+
     }
     self.title = @"跟单详情";
     if ([self.curUser.whitelist boolValue] == NO) {

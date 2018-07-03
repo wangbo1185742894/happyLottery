@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -197,8 +197,8 @@
                                 <outlet property="lableft" destination="Jwv-4z-fuA" id="3jg-bd-kFt"/>
                             </connections>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已选2场对阵" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D4d-g2-J5v" customClass="MGLabel">
-                            <rect key="frame" x="8" y="10" width="120" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已选2场对阵" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D4d-g2-J5v" customClass="MGLabel">
+                            <rect key="frame" x="8" y="10" width="152" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -213,7 +213,7 @@
                         <constraint firstAttribute="bottom" secondItem="ZrO-Bt-cqu" secondAttribute="bottom" constant="10" id="CmL-fy-xO9"/>
                         <constraint firstAttribute="bottom" secondItem="D4d-g2-J5v" secondAttribute="bottom" constant="13" id="gs3-9f-oZO"/>
                         <constraint firstAttribute="trailing" secondItem="ZrO-Bt-cqu" secondAttribute="trailing" constant="15" id="mtP-SH-wNl"/>
-                        <constraint firstItem="ZrO-Bt-cqu" firstAttribute="leading" secondItem="D4d-g2-J5v" secondAttribute="trailing" constant="52" id="sFf-z4-VDN"/>
+                        <constraint firstItem="ZrO-Bt-cqu" firstAttribute="leading" secondItem="D4d-g2-J5v" secondAttribute="trailing" constant="20" id="sFf-z4-VDN"/>
                     </constraints>
                 </view>
                 <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2EE-rl-vdP">

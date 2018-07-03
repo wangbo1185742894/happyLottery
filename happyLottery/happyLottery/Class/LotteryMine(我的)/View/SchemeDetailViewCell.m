@@ -29,6 +29,7 @@
     __weak IBOutlet UILabel *touzhuzhushu;
     __weak IBOutlet UILabel *fanganhao;
     __weak IBOutlet UILabel *touzhujine;
+    __weak IBOutlet NSLayoutConstraint *rightCons;
 }
 @end
 
@@ -75,6 +76,13 @@
     
     labSchemeTime.text = model.createTime;
     labLottery.text = [self getLotteryByCode:model.lottery];
+    if ([Utility isIphone5s]) {
+        labLottery.font = [UIFont systemFontOfSize:13.5];
+        rightCons.constant = 0;
+    }else {
+        labLottery.font = [UIFont systemFontOfSize:14.0];
+        rightCons.constant = 15;
+    }
     labSchemeNo.text = model.schemeNO;
     if ([model.costType isEqualToString:@"CASH"]) {
         labBetCost.text = [NSString stringWithFormat:@"%@元",model.betCost];

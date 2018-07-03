@@ -71,8 +71,14 @@
     for (NSDictionary *itemDic in modelDic.matchInfo[@"betPlayTypes"]) {
         [option appendString:[tabcell reloadDataWithRecJCLQ:itemDic[@"options"] type:itemDic[@"playType"] andMatchKey:modelDic.matchInfo[@"matchKey"]]];
     }
-    if ( [option boundingRectWithSize:CGSizeMake(KscreenWidth - 300, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName :[UIFont systemFontOfSize:14]} context:nil].size.height > 58) {
-        return [option boundingRectWithSize:CGSizeMake(KscreenWidth - 300, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName :[UIFont systemFontOfSize:14]} context:nil].size.height;
+    float width;
+    if ([Utility isIphone5s]) {
+        width = 270;
+    }else {
+        width = 300;
+    }
+    if ( [option boundingRectWithSize:CGSizeMake(KscreenWidth - width, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName :[UIFont systemFontOfSize:14]} context:nil].size.height > 58) {
+        return [option boundingRectWithSize:CGSizeMake(KscreenWidth - width, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName :[UIFont systemFontOfSize:14]} context:nil].size.height;
     }else{
         return 58;
     }
@@ -87,8 +93,15 @@
     for (NSDictionary *itemDic in modelDic.matchInfo[@"betPlayTypes"]) {
         [option appendString:[tabcell reloadDataWithRec:itemDic[@"options"] type:itemDic[@"playType"] andMatchKey:modelDic.matchInfo[@"matchKey"]]];
     }
-    if ( [option boundingRectWithSize:CGSizeMake(KscreenWidth - 300, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName :[UIFont systemFontOfSize:14]} context:nil].size.height > 58) {
-        return [option boundingRectWithSize:CGSizeMake(KscreenWidth - 300, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName :[UIFont systemFontOfSize:14]} context:nil].size.height;
+    float width;
+    if ([Utility isIphone5s]) {
+        width = 270;
+    }else {
+        width = 300;
+    }
+    
+    if ( [option boundingRectWithSize:CGSizeMake(KscreenWidth - width, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName :[UIFont systemFontOfSize:14]} context:nil].size.height > 58) {
+        return [option boundingRectWithSize:CGSizeMake(KscreenWidth - width, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName :[UIFont systemFontOfSize:14]} context:nil].size.height;
     }else{
         return 58;
     }

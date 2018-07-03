@@ -26,7 +26,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.topDis.constant = NaviHeight;
+    if ([self isIphone5s]) {
+        self.topDis.constant = 0;
+    } else {
+        self.topDis.constant = NaviHeight;
+    }
     self.title = @"跟投列表";
     [self initTabelView];
     self.personArray = [NSMutableArray arrayWithCapacity:0];

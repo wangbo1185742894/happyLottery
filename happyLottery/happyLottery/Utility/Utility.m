@@ -511,6 +511,17 @@
     
 }
 
++(BOOL)isIphone5s{
+    if ([[self iphoneType] isEqualToString:@"iPhone 5s"]) {
+        return YES;
+    }else {
+        if (KscreenWidth == 320&&KscreenHeight == 568) {
+            return YES;
+        }
+        return NO;
+    }
+}
+
 + (NSString*)iphoneType {
     
     

@@ -86,6 +86,9 @@
     return [Utility isIphoneX];
 }
 
+-(BOOL)isIphone5s{
+    return [Utility isIphone5s];
+}
 
 
 -(void)viewWillAppear:(BOOL)animated{

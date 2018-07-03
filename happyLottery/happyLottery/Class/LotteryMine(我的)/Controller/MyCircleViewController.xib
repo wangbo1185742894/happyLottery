@@ -17,6 +17,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyCircleViewController">
             <connections>
                 <outlet property="btnRuZhang" destination="vZt-rH-ytS" id="SjW-Wz-9Oz"/>
+                <outlet property="heightCons" destination="lBq-GR-epL" id="EMC-E9-h70"/>
                 <outlet property="imgBG" destination="Sar-eE-Rcg" id="FrU-MU-zfm"/>
                 <outlet property="labRecentlyYongjinInfo" destination="Toi-yH-Qyb" id="3f2-jL-ncM"/>
                 <outlet property="labYue" destination="PSW-7V-R5x" id="QhV-md-Bn2"/>

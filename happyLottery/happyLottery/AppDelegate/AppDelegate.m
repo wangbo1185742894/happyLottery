@@ -423,7 +423,7 @@ static SystemSoundID shake_sound_male_id = 0;
     
     
     tabAttrs[@"tabTitle"] = @"我的";
-    tabAttrs[@"title"] = @"我的";
+    tabAttrs[@"title"] = @"";
     tabAttrs[@"itemNormal"] = @"wode_defealt";
     tabAttrs[@"itemSelected"] = @"wode_select";
     tabAttrs[@"rootVC"] = @"MineViewController";
