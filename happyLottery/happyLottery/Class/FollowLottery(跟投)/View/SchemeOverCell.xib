@@ -72,7 +72,9 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="leftCons" destination="Pou-MB-g7m" id="Uxp-AE-qwZ"/>
                 <outlet property="passType" destination="Wxo-YZ-XjI" id="eEj-qM-NjU"/>
+                <outlet property="rightCons" destination="g9D-Ld-u0Z" id="Qv8-M0-9pQ"/>
                 <outlet property="touzhuCount" destination="ZKS-KP-snv" id="yRl-b8-nq8"/>
                 <outlet property="widthCons" destination="SOb-PC-g3K" id="NSI-Zw-Zjc"/>
             </connections>

@@ -34,8 +34,12 @@
     self.touzhuCount.text =[NSString stringWithFormat:@"%@倍%@注",schemeDetail.multiple,schemeDetail.units];
     if ([Utility isIphone5s]) {
         self.widthCons.constant = 70;
+        self.leftCons.constant = 5;
+        self.rightCons.constant = 5;
     }else {
         self.widthCons.constant = 94;
+        self.leftCons.constant = 16;
+        self.rightCons.constant = 10;
     }
 }
 
