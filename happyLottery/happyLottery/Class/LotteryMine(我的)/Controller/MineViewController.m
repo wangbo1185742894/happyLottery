@@ -275,7 +275,7 @@
     NSDecimalNumber *myDecimalObj3 = [[NSDecimalNumber alloc] initWithString:self.curUser.sendBalance];
     NSLog(@"myDecimalObj doubleValue=%6.2f",[myDecimalObj3 doubleValue]);
     double sendBalance = [myDecimalObj3 doubleValue];
-    double total = balance+notCash+sendBalance;
+    double total = balance+notCash;
     NSString *totalstr = [NSString stringWithFormat:@"%.2f",total];
     self.balanceLab.text = totalstr;
     self.lotMoneyLab.text = [NSString stringWithFormat:@"%.2f",sendBalance];
