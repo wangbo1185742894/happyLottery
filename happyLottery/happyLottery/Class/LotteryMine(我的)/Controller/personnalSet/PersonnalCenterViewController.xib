@@ -11,7 +11,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PersonnalCenterViewController">
             <connections>
+                <outlet property="bottomCons" destination="H9d-Sp-uX9" id="04I-Ga-c16"/>
                 <outlet property="contentView" destination="kM9-wg-Ohd" id="N9X-pO-Nz6"/>
+                <outlet property="heightCons" destination="Qwo-a9-ZwC" id="suh-fD-o8E"/>
+                <outlet property="imageBottom" destination="dMA-lV-DPg" id="91i-IS-PSB"/>
                 <outlet property="labMemberIcon" destination="nfP-Uw-wht" id="FWi-Rv-A88"/>
                 <outlet property="loginoutBtn" destination="RCP-Lo-an3" id="OXl-34-Tlr"/>
                 <outlet property="memberBtn" destination="Dde-1n-JQP" id="qir-GS-cGD"/>

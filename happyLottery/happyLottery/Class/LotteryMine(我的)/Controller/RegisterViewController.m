@@ -24,6 +24,9 @@
     __weak IBOutlet UIButton *btnRegister;
     NSTimer *timer;
     NSInteger checkSec;
+    __weak IBOutlet NSLayoutConstraint *leftCons;
+    __weak IBOutlet NSLayoutConstraint *btnCons;
+    __weak IBOutlet NSLayoutConstraint *widthCons;
 }
 @property (weak, nonatomic) IBOutlet UIButton *checkBtn;
 
@@ -42,6 +45,24 @@
     self.view.backgroundColor = MAINBGC;
     self.title = @"注册";
     tfRecomCode.keyboardType = UIKeyboardTypeNumberPad;
+    float size;
+    if ([self isIphone5s]) {
+        size = 13;
+        leftCons.constant = 20;
+        btnCons.constant = 2;
+        widthCons.constant = 97;
+    }else {
+        size = 14;
+        leftCons.constant = 45;
+        btnCons.constant = 30;
+        widthCons.constant = 103;
+    }
+    UIFont *font = [UIFont systemFontOfSize:size];
+    btnSendCheckCode.titleLabel.font = font;
+    tfRecomCode.font = font;
+    tfCheckCode.font = font;
+    tfUserTel.font = font;
+    tfUserPwd.font = font;
 }
 
 -(void)setTFViewLRView{

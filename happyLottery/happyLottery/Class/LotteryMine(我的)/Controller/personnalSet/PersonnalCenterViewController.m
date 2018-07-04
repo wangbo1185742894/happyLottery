@@ -41,6 +41,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *updatePayPWDBtn;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottom;
 @property (weak, nonatomic) IBOutlet UILabel *telephone;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomCons;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightCons;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageBottom;
 
 @property(nonatomic,strong)LoadData *loadDataTool;
 @end
@@ -69,6 +72,18 @@
         // self.bigView.translatesAutoresizingMaskIntoConstraints = NO;
         self.top.constant = 88;
         self.bottom.constant = 34;
+    }
+    if ([self isIphone5s]) {
+        self.heightCons.constant = 568;
+        self.bottomCons.constant = 18;
+        self.imageBottom.constant = 10;
+
+    }else {
+        self.heightCons.constant = 667;
+        self.bottomCons.constant = 86;
+        self.imageBottom.constant = 28;
+        
+
     }
     self.memberMan.delegate = self;
     self.myImage.layer.cornerRadius = self.myImage.mj_h/2;
