@@ -624,7 +624,7 @@
     }else if([lotteryCode isEqualToString:@"SX115"]){
         url = APIgetSX115TicketOrderDetail;
     }else{
-        url = @"";
+        url = APIGetJczqTicketOrderDetail;
     }
     SOAPRequest *request = [self requestForAPI: url withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
     [self newRequestWithRequest:request

@@ -69,6 +69,7 @@
    
     if (self.schemetype == SchemeTypeGenDan) {
         MyPostSchemeViewController *myOrderListVC = [[MyPostSchemeViewController alloc]init];
+        myOrderListVC.isFaDan = NO;
         NSMutableArray * vcS = [[NSMutableArray alloc]initWithArray:self.navigationController.viewControllers];
         [vcS addObject:myOrderListVC];
         self.navigationController.viewControllers = vcS;
