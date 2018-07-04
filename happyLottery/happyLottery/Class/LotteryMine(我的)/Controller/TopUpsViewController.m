@@ -268,7 +268,11 @@
         NSDictionary *itemDic = infoArray[i];
         ChannelModel *model = [[ChannelModel alloc]initWith:itemDic];
         if ([model.channelValue boolValue] == YES || [model.channel isEqualToString:@"UNION"]) {
-            [channelList addObject:model];
+            if ([model.channelTitle containsString:@"微信支付"]) {
+                [channelList insertObject:model atIndex:0];
+            } else {
+                [channelList addObject:model];
+            }
         }
     }
     
