@@ -17,6 +17,14 @@
 #import "MJRefresh.h"
 #import "NoticeCenterViewController.h"
 #define KSchemListCell @"SchemListCell"
+
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+
+
+
+
+
 @interface MyOrderListViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate>
 
 {
@@ -27,7 +35,7 @@
     NSMutableArray <JCZQSchemeItem *> *dataArray;
     NSInteger page;
 }
-
+@property (strong, nonatomic) NSIndexPath* editingIndexPath;  //当前左滑cell的index，在代理方法中设置
 @end
 
 @implementation MyOrderListViewController
@@ -54,6 +62,7 @@
     }
 
 }
+
 
 
 - (IBAction)actionCostTypeSelect:(UISegmentedControl *)sender {
@@ -93,6 +102,7 @@
 
     return dataArray.count;
 }
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     SchemListCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemListCell];
     [cell refreshData:dataArray[indexPath.row]];
@@ -102,19 +112,7 @@
 }
 
 
-//- ( UISwipeActionsConfiguration *)tableView:(UITableView *)tableView trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath  API_AVAILABLE(ios(11.0)){
-//    //删除
-////    UIContextualAction *deleteRowAction = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleDestructive title:@"delete" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
-////        [self.titleArr removeObjectAtIndex:indexPath.row];
-////        completionHandler (YES);
-////        [self.tableView reloadData];
-////    }];
-////    deleteRowAction.image = [UIImage imageNamed:@"删除"];
-////    deleteRowAction.backgroundColor = [UIColor redColor];
-////
-////    UISwipeActionsConfiguration *config = [UISwipeActionsConfiguration configurationWithActions:@[deleteRowAction]];
-//    return config;
-//}
+
 
 -(void)loadNewData{
     page = 1;
@@ -215,6 +213,111 @@
     }
     self.tabBarController.selectedIndex = 4;
     [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+#pragma mark ======deleteCell=======
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        ZLAlertView *alert = [[ZLAlertView alloc] initWithTitle:TitleHint message:@"您确定删除吗?"];
+        [alert addBtnTitle:TitleNotDo action:^{
+            [tableView setEditing:NO animated:YES];
+        }];
+
+        [alert addBtnTitle:TitleDo action:^{
+            [tableView setEditing:NO animated:YES];
+            [self->dataArray removeObjectAtIndex:indexPath.row];
+            [tableView reloadData];
+        }];
+        [alert showAlertWithSender:self];
+    }
+}
+
+// 修改编辑按钮文字
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return @"删除";
+}
+
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    if (SYSTEM_VERSION_LESS_THAN(@"11.0")) {
+         [self configSwipeButtons];
+    }
+}
+
+- (void)configSwipeButtons
+{
+    // 获取选项按钮的reference
+//    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"11.0"))
+//    {
+        // iOS 11层级 (Xcode 9编译): UITableView -> UISwipeActionPullView
+        //        for (UIView *subview in tabSchemeList.subviews)
+        //        {
+        //            if ([subview isKindOfClass:NSClassFromString(@"UISwipeActionPullView")])
+        //            {
+        //                // 和iOS 10的按钮顺序相反
+        //                UIButton *deleteButton = subview.subviews[0];
+        //                [deleteButton setTitle:@"确认删除" forState:UIControlStateNormal];
+        //                [deleteButton setBackgroundColor:RGBCOLOR(254, 165, 19)];
+        //            }
+        //        }
+//    }
+    if (SYSTEM_VERSION_LESS_THAN(@"11.0"))
+    {
+        // iOS 8-10层级: UITableView -> UITableViewCell -> UITableViewCellDeleteConfirmationView
+        SchemListCell *tableCell = [tabSchemeList cellForRowAtIndexPath:self.editingIndexPath];
+        for (UIView *subview in tableCell.subviews)
+        {
+            if ([subview isKindOfClass:NSClassFromString(@"UITableViewCellDeleteConfirmationView")])
+            {
+                UIButton *deleteButton = subview.subviews[0];
+                [deleteButton setBackgroundColor:RGBCOLOR(254, 165, 19)];
+            }
+        }
+    }
+}
+
+- (void)tableView:(UITableView *)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.editingIndexPath = indexPath;
+    [self.view setNeedsLayout];   // 触发-(void)viewDidLayoutSubviews
+}
+
+- (void)tableView:(UITableView *)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.editingIndexPath = nil;
+}
+
+- ( UISwipeActionsConfiguration *)tableView:(UITableView *)tableView trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath  API_AVAILABLE(ios(11.0)){
+    //删除
+    UIContextualAction *deleteRowAction = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"删除" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
+        
+        ZLAlertView *alert = [[ZLAlertView alloc] initWithTitle:TitleHint message:@"您确定删除吗?"];
+        [alert addBtnTitle:TitleNotDo action:^{
+            completionHandler (NO);
+        }];
+        
+        [alert addBtnTitle:TitleDo action:^{
+            [self->dataArray removeObjectAtIndex:indexPath.row];
+            completionHandler (YES);
+            [tableView reloadData];
+        }];
+        [alert showAlertWithSender:self];
+        
+    }];
+    deleteRowAction.backgroundColor = RGBCOLOR(254, 165, 19);
+    
+    UISwipeActionsConfiguration *config = [UISwipeActionsConfiguration configurationWithActions:@[deleteRowAction]];
+    return config;
 }
 
 @end
