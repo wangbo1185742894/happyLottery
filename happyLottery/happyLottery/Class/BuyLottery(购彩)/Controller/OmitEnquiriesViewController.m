@@ -247,7 +247,7 @@
             self.EnquiriesLabelHeight.constant = -110;
         }
         [self.omitButton setTitle:@"查找" forState:UIControlStateNormal];
-        self.omitImageView.image = [UIImage imageNamed:@"search"];
+        self.omitImageView.image = [UIImage imageNamed:@"omitreach"];
       
     }
 
