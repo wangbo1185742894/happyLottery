@@ -9,6 +9,7 @@
 #import "MineViewController.h"
 #import "MineTableViewCell.h"
 #import "UIImage+RandomSize.h"
+#import "CashInfoViewController.h"
 #import "LoginViewController.h"
 #import "MyCircleViewController.h"
 #import "RegisterViewController.h"
@@ -363,8 +364,8 @@
      if (!self.curUser.isLogin) {
         [self needLogin];
     } else {
-        CashAndIntegrationWaterViewController * pcVC = [[CashAndIntegrationWaterViewController alloc]init];
-        pcVC.select = 0;
+        CashInfoViewController * pcVC = [[CashInfoViewController alloc]init];
+        
         pcVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:pcVC animated:YES];
     }
@@ -585,9 +586,16 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     NSDictionary *optionDic;
+    
     if (indexPath.section == 0) {
+        if(groupArray.count <= indexPath.row){
+            return;
+        }
         optionDic = groupArray[indexPath.row];
     }else{
+        if(listArray.count <= indexPath.row){
+            return;
+        }
         optionDic = listArray[indexPath.row];
     }
     if ([optionDic[@"needLogin"] boolValue] == YES && self.curUser.isLogin == NO) {

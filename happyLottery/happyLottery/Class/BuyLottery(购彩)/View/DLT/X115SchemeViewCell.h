@@ -12,7 +12,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *labMatchNum;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightRedBall;
 @property (weak, nonatomic) IBOutlet UILabel *labRedBall;
-@property (weak, nonatomic) IBOutlet UILabel *labBuleBall;
+@property (weak, nonatomic) IBOutlet UILabel *playtype;
 @property (strong,nonatomic)NSString *trDltOpenResult;
 @property (weak, nonatomic) IBOutlet UILabel *labLotteryName;
 @property (weak, nonatomic) IBOutlet UIView *viewBallContent;

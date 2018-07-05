@@ -281,7 +281,7 @@
                                 <color key="titleColor" red="0.038167610764503479" green="0.029352849349379539" blue="0.053954198956489563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
-                                <action selector="currentBet:" destination="-1" eventType="touchUpInside" id="dBW-jJ-4gI"/>
+                                <action selector="cleanAction:" destination="-1" eventType="touchUpInside" id="tVA-c5-QqV"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FfJ-u5-7iU">

@@ -624,7 +624,7 @@
     }else if([lotteryCode isEqualToString:@"SX115"]){
         url = APIgetSX115TicketOrderDetail;
     }else{
-        url = @"";
+        url = APIGetJczqTicketOrderDetail;
     }
     SOAPRequest *request = [self requestForAPI: url withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
     [self newRequestWithRequest:request
@@ -1814,6 +1814,30 @@
                         failure:failureBlock];
 }
 
+-(void)getBootPageUrl{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        
+        if (response.succeed) {
+            [self.delegate gotBootPageUrl:responseJsonStr];
+        } else {
+            [self.delegate gotBootPageUrl:nil];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate gotBootPageUrl:nil];
+    };
+    
+    SOAPRequest *request = [self requestForAPI: APIgetBootPageUrl withParam:nil];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIDATA
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
 
 
 @end

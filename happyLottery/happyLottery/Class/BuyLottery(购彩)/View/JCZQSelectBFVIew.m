@@ -59,23 +59,27 @@
         
         itemBtn.selected = [model.BF_SelectMatch[itemBtn.tag %100] boolValue];
         [itemBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+        NSInteger fontSize = 13;
+        if(KscreenHeight == 568){
+            fontSize = 11;
+        }
         
         NSMutableAttributedString *attrStrN = [[NSMutableAttributedString alloc] initWithString:title];
         NSMutableAttributedString *attrStrS = [[NSMutableAttributedString alloc] initWithString:title];
         if ([self checkThisItemCanBuy:itemBtn]) {
-            NSDictionary * firstAttributesN = @{ NSFontAttributeName:[UIFont systemFontOfSize:13],NSForegroundColorAttributeName:RGBCOLOR(72, 72, 72)};
+            NSDictionary * firstAttributesN = @{ NSFontAttributeName:[UIFont systemFontOfSize:fontSize],NSForegroundColorAttributeName:RGBCOLOR(72, 72, 72)};
             [attrStrN setAttributes:firstAttributesN range:NSMakeRange(0, attrStrN.string.length)];
             
             
-            NSDictionary * firstAttributesS = @{ NSFontAttributeName:[UIFont systemFontOfSize:13],NSForegroundColorAttributeName:[UIColor whiteColor]};
+            NSDictionary * firstAttributesS = @{ NSFontAttributeName:[UIFont systemFontOfSize:fontSize],NSForegroundColorAttributeName:[UIColor whiteColor]};
             [attrStrS setAttributes:firstAttributesS range:NSMakeRange(0, attrStrS.string.length)];
             
         }else{
-            NSDictionary * firstAttributesN = @{ NSFontAttributeName:[UIFont systemFontOfSize:13],NSForegroundColorAttributeName:RGBCOLOR(72, 72, 72),NSStrikethroughStyleAttributeName : @(NSUnderlineStyleSingle)};
+            NSDictionary * firstAttributesN = @{ NSFontAttributeName:[UIFont systemFontOfSize:fontSize],NSForegroundColorAttributeName:RGBCOLOR(72, 72, 72),NSStrikethroughStyleAttributeName : @(NSUnderlineStyleSingle)};
             [attrStrN setAttributes:firstAttributesN range:NSMakeRange(0, attrStrN.string.length)];
             [itemBtn setAttributedTitle:attrStrN forState:0];
             
-            NSDictionary * firstAttributesS = @{ NSFontAttributeName:[UIFont systemFontOfSize:13],NSForegroundColorAttributeName:RGBCOLOR(72, 72, 72),NSStrikethroughStyleAttributeName : @(NSUnderlineStyleSingle)};
+            NSDictionary * firstAttributesS = @{ NSFontAttributeName:[UIFont systemFontOfSize:fontSize],NSForegroundColorAttributeName:RGBCOLOR(72, 72, 72),NSStrikethroughStyleAttributeName : @(NSUnderlineStyleSingle)};
             [attrStrS setAttributes:firstAttributesS range:NSMakeRange(0, attrStrS.string.length)];
             [itemBtn setAttributedTitle:attrStrS forState:0];
         }

@@ -160,9 +160,10 @@
     }else if ([code isEqualToString:@"JCLQ"]){
         return @"竞彩篮球";
     }else if ([code isEqualToString:@"SD115"]){
-        return @"山东11选5";
+        return [NSString stringWithFormat:@"山东11选5(第%@期)",scheme.issueNumber];
+        
     }else if ([code isEqualToString:@"SX115"]){
-        return @"陕西11选5";
+        return [NSString stringWithFormat:@"陕西11选5(第%@期)",scheme.issueNumber];
     }
     return @"彩票";
 }

@@ -467,6 +467,7 @@ typedef enum {
         if ([self.lottery.identifier isEqualToString:@"SX115"] || [self.lottery.identifier  isEqualToString:@"SD115"]) {
             NSString * playTypeName = [bet betTypeDesc];
             betDic[@"playTypeName"] = playTypeName;
+            
             betDic[@"playType"] = playType;
             if (bet.orderBetPlayType) {
                 betDic[@"playType"] = bet.orderBetPlayType;

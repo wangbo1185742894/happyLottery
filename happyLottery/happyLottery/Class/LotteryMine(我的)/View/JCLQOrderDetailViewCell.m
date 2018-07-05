@@ -174,7 +174,7 @@
         }
     } else  if([dic[@"lotteryCode"] isEqualToString:@"SX115"] || [dic[@"lotteryCode"] isEqualToString:@"SD115"]){
         NSString *type;
-        if([dic[@"betType"] isEqualToString:@"Single"] || [dic[@"betType"] isEqualToString:@"Direct"]){
+        if([dic[@"betType"] isEqualToString:@"Single"] || [dic[@"betType"] isEqualToString:@"Direct"] || [dic[@"betType"] isEqualToString:@"Double"]){
              type = [NSString stringWithFormat:@"%@",dic[@"playType"]];
         }else{
              type = [NSString stringWithFormat:@"%@%@",dic[@"playType"],dic[@"betType"]];
@@ -443,7 +443,7 @@
 
 
 -(CGFloat)getCellHeight:(NSDictionary*)dic{
-    if([dic[@"lotteryCode"] isEqualToString:@"DLT"] || [dic[@"lotteryCode"] isEqualToString:@"SFC"] || [dic[@"lotteryCode"] isEqualToString:@"RJC"]){
+    if([dic[@"lotteryCode"] isEqualToString:@"DLT"] || [dic[@"lotteryCode"] isEqualToString:@"SFC"] || [dic[@"lotteryCode"] isEqualToString:@"RJC"]||[dic[@"lotteryCode"] isEqualToString:@"SX115"]||[dic[@"lotteryCode"] isEqualToString:@"SD115"]){
         NSString *leshanCode = dic[@"leShanCode"];
         if (leshanCode != nil) {
               return [dic[@"ticketContent"] componentsSeparatedByString:@";"].count * 12 + 180;

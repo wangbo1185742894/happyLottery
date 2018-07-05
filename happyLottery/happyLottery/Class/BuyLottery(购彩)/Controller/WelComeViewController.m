@@ -9,6 +9,7 @@
 #import "WelComeViewController.h"
 
 @interface WelComeViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *imgBack;
 
 @end
 
@@ -16,9 +17,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
 }
 
+-(void)setImg:(NSString *)url{
+    [self .imgBack sd_setImageWithURL:[NSURL URLWithString:url]];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

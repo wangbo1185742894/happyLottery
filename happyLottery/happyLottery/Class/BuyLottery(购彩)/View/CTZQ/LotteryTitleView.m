@@ -36,7 +36,8 @@
 //        labelLotteryProfileName.textAlignment = NSTextAlignmentCenter;
 //        [self addSubview: labelLotteryProfileName];
         
-        ivClickIndicator = [[UIImageView alloc] initWithImage: [UIImage imageNamed: @"navMore.png"]];
+        ivClickIndicator = [[UIImageView alloc] initWithImage: [UIImage imageNamed: @"wanfaxiala"]];
+        
         ivClickIndicator.hidden = YES;
         [self addSubview: ivClickIndicator];
         
@@ -52,35 +53,31 @@
         title = lottery.activeProfile.title;
     }
     
-    NSString *titleText;
-//#ifdef betaVersion
-//    if(title == nil)
-//    {
-//        title = lottery.name;
-//    }
-//    titleText = [NSString stringWithFormat: @"%@", title];
-//#else
-    if(title == nil||[title isEqualToString:@"任选9场"]||[title isEqualToString:@"胜负14场"] || [lottery.identifier isEqualToString:@"JCZQ"])
-        {
-            titleText = title;
-        }else{
-            
-            titleText  = [NSString stringWithFormat: @"%@", title];
-        }
-//#endif
+    NSString *titleText ;
+    if([lottery.identifier isEqualToString:@"SX115"]||[lottery.identifier isEqualToString:@"SD115"]){
+        titleText = [NSString stringWithFormat:@"%@-%@",lottery.name,title];
+    }else{
+        titleText = title;
+    }
+
     CGSize titleSize = MB_TEXTSIZE(titleText, TitleTextFont);
     CGRect newFrame = labelLotteryName.frame;
     newFrame.size.width = titleSize.width;
     newFrame.origin.x = (self.bounds.size.width - titleSize.width)/2;
     labelLotteryName.frame = newFrame;
-    labelLotteryName.text = titleText;
+    if([lottery.identifier isEqualToString:@"SX115"]||[lottery.identifier isEqualToString:@"SD115"]){
+        labelLotteryName.text = titleText;
+    }else{
+        labelLotteryName.text = titleText;
+    }
     
     CGRect ivFrame = ivClickIndicator.frame;
     ivFrame.origin.x = CGRectGetMaxX(newFrame) + 1;
-    ivFrame.origin.y = 18;
-    ivFrame.size.width = 18;
-    ivFrame.size.height = 11;
+    ivFrame.origin.y = CGRectGetMaxY(newFrame) - 20;
+    ivFrame.size.width = 10;
+    ivFrame.size.height = 10;
     ivClickIndicator.frame = ivFrame;
+    ivClickIndicator.contentMode = UIViewContentModeCenter;
     ivClickIndicator.hidden = NO;
 }
 

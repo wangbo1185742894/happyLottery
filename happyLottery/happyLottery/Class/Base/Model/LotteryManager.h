@@ -74,7 +74,7 @@ typedef enum EarningsType{
 - (void) gotAppSign:(NSDictionary *)personList  errorMsg:(NSString *)msg;
 - (void) listSellLottery:(NSDictionary *)lotteryList  errorMsg:(NSString *)msg;
 - (void) listRechargeHandsel:(NSArray *)lotteryList  errorMsg:(NSString *)msg;
-
+-(void)gotBootPageUrl:(NSString *)strUrl;
 @end
 
 @interface LotteryManager : Manager
@@ -83,7 +83,7 @@ typedef enum EarningsType{
 - (void) loadLotteryProfiles: (Lottery *) lottery;
 - (NSArray *) lotteryProfilesFromData: (NSArray *) profilesArray;
 - (NSString *)getStringformfeid :(EarningsType)defaultFeid;
-
+-(void)getBootPageUrl;
 - (void) getJczqMatch:(NSDictionary *)paraDic;
 - (void) getJczqSp:(NSDictionary *)paraDic;
 - (void) getJczqLeague:(NSDictionary *)paraDic;

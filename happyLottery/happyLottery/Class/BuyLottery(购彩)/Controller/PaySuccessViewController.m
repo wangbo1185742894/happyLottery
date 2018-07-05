@@ -15,6 +15,7 @@
 #import "JCLQSchemeDetailViewController.h"
 #import "MyPostSchemeViewController.h"
 #import "FASSchemeDetailViewController.h"
+#import "LotteryPlayViewController.h"
 
 
 
@@ -164,6 +165,13 @@
             [self.navigationController popToViewController:revise animated:YES];
             return;
         }
+        
+        if ([controller isKindOfClass:[LotteryPlayViewController class]]) {
+            LotteryPlayViewController *revise =(LotteryPlayViewController *)controller;
+            [self.navigationController popToViewController:revise animated:YES];
+            return;
+        }
+        
         if ([controller isKindOfClass:[FollowSendViewController class]]) {
             
             for (UIViewController *controller in self.navigationController.viewControllers) {

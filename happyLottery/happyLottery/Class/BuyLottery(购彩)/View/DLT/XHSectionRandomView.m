@@ -65,7 +65,7 @@
             [self addSubview: buttonRandomeFive];
         }
     }else if([_lotteryIdenty isEqualToString:@"SX115"]|| [_lotteryIdenty  isEqualToString:@"SD115"]){
-        actionButtonText = @"机选一注";
+        actionButtonText = @"机选1注";
         buttonTextSize = MB_TEXTSIZE(actionButtonText, TextFont);
         buttonWidth = buttonTextSize.width + ButtonTitlePadding*2;
         bt_frame = CGRectMake(CGRectGetWidth(self.bounds)-buttonWidth, 0, buttonWidth, self.bounds.size.height);

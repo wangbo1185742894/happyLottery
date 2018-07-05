@@ -9,5 +9,6 @@
 #import "BaseViewController.h"
 
 @interface WelComeViewController : BaseViewController
+-(void)setImg:(NSString *)url;
 
 @end

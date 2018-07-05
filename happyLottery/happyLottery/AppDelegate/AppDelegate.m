@@ -62,7 +62,7 @@
 #import "HomeJumpViewController.h"
 #import "AgentManager.h"
 
-@interface AppDelegate ()<NewFeatureViewDelegate,MemberManagerDelegate,JPUSHRegisterDelegate,VersionUpdatingPopViewDelegate,NetWorkingHelperDelegate,UITabBarControllerDelegate,AgentManagerDelegate>
+@interface AppDelegate ()<NewFeatureViewDelegate,MemberManagerDelegate,JPUSHRegisterDelegate,VersionUpdatingPopViewDelegate,NetWorkingHelperDelegate,UITabBarControllerDelegate,AgentManagerDelegate,LotteryManagerDelegate>
 
 {
     UITabBarController *tabBarControllerMain;
@@ -70,8 +70,10 @@
     NSString * lastVersion;//应用内保存的版本号
     NSString * curVersion; //当前版本号
     MemberManager *memberMan;
+    LotteryManager *lotteryMan;
     NSMutableArray *_messageContents;
     ZhuiHaoStopPushVIew *winPushView;
+    
     UIAlertView *alert;
     NSString *pageCodeNotice;
     NSString *linkUrlNotice;
@@ -88,6 +90,7 @@
 
 @property(nonatomic,strong)FMDatabase* fmdb;
 @property (nonatomic,strong)AgentManager * agentMan;
+@property (nonatomic,strong)WelComeViewController * welCom;
 @end
 static SystemSoundID shake_sound_male_id = 0;
 
@@ -95,9 +98,11 @@ static SystemSoundID shake_sound_male_id = 0;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    lotteryMan = [[LotteryManager alloc]init];
+    lotteryMan.delegate = self;
     [Bugly startWithAppId:@"c36c93659f"];
     [self loadTabVC];
-    
+    self.welCom = [[WelComeViewController alloc]init];
     [GlobalInstance instance].lotteryUrl = WSServerURL;
 #ifdef bate
  
@@ -337,25 +342,32 @@ static SystemSoundID shake_sound_male_id = 0;
     lastVersion = [defaults objectForKey:KEYAPPVERSION];
     curVersion = [NSBundle mainBundle].infoDictionary[KEYCURAPPVERSION];
     if ([curVersion isEqualToString:lastVersion]) { //
-            _window.rootViewController = tabBarControllerMain;
-        
-        WelComeViewController * welCom = [[WelComeViewController alloc]init];
-        [[UIApplication sharedApplication].keyWindow addSubview:welCom.view];
-        [UIView animateWithDuration:1.5 animations:^{
+        _window.rootViewController = tabBarControllerMain;
+        [lotteryMan getBootPageUrl];
+        [[UIApplication sharedApplication].keyWindow addSubview:self.welCom.view];
 
-
-        } completion:^(BOOL finished) {
-            [UIView animateWithDuration:0.2 animations:^{
-                welCom.view.alpha = 0;
-                welCom.view.hidden = YES;
-            }];
-        }];
-        
     }else{
         [defaults setObject:curVersion forKey:KEYAPPVERSION];
         [defaults synchronize];
         [self showNewFeature];
     }
+}
+
+-(void)gotBootPageUrl:(NSString *)strUrl{
+    _window.rootViewController = tabBarControllerMain;
+   
+    if(strUrl == nil){
+        self.welCom.view.alpha = 0;
+        self.welCom.view.hidden = YES;
+        return;
+    }
+    [self.welCom setImg:strUrl];
+    MJWeakSelf;
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        weakSelf.welCom.view.alpha = 0;
+        weakSelf.welCom.view.hidden = YES;
+    });
 }
 
 -(void)newFeatureSetRootVC{

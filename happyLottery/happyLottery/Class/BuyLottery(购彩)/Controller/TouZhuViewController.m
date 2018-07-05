@@ -42,6 +42,7 @@
     __weak IBOutlet UIView *viewPickerContainer_;
     __weak IBOutlet UIView *viewBeiTou_;
     
+    __weak IBOutlet NSLayoutConstraint *topDis;
     //确认投注
     __weak IBOutlet NSLayoutConstraint *tableViewContentBottom;
     __weak IBOutlet UIButton *buttonK;
@@ -145,6 +146,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if([self isIphoneX]){
+        topDis.constant = 118-64 + 88;
+        _bottomDis.constant = 38;
+    }else{
+        topDis.constant = 118;
+        _bottomDis.constant = 0;
+    }
     [self.view layoutIfNeeded];
     self.lotteryMan.delegate = self;
     self.memberMan.delegate = self;
@@ -173,7 +181,8 @@
     //    betOptionFunView.backgroundColor = RGBCOLOR(249, 249, 249);
     AppDelegate *myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     myDelegate.curNavVC = self.navigationController;
-    self.title = [NSString stringWithFormat: @"%@投注", self.lottery.name];
+//    self.title = [NSString stringWithFormat: @"%@投注", self.lottery.name];
+    self.title = @"确认预约";
     //     Do any additional setup after loading the view from its nib.
     //    self.view.backgroundColor = RGBCOLOR(245, 245, 245);
     tableViewContent_.allowsSelection = NO;
@@ -207,22 +216,23 @@
         CGRect frame1;
         CGRect frame2;
     self.btnHemai.hidden = YES;
-    frame1= CGRectMake(40, NaviHeight + 10, (KscreenWidth-120)/2.0, 30);
-    frame2= CGRectMake(40+ (KscreenWidth-120)/2.0+40, NaviHeight + 10,  (KscreenWidth-120)/2.0, 30);
+    frame1= CGRectMake(40, NaviHeight + 20, (KscreenWidth-120)/2.0, 30);
+    frame2= CGRectMake(40+ (KscreenWidth-120)/2.0+40, NaviHeight + 20,  (KscreenWidth-120)/2.0, 30);
 
-        CGRect frame3= CGRectMake(60+(KscreenWidth-80)*2/3.0, NaviHeight + 10, (KscreenWidth-80)/3.0, 30);
+        CGRect frame3= CGRectMake(60+(KscreenWidth-80)*2/3.0, NaviHeight + 20, (KscreenWidth-80)/3.0, 30);
         frame4 = CGRectMake(8,49, 85, 35);
         CGRect frame5 = CGRectMake(KscreenWidth-110, 45, 20, 20);
         
         goOnPlayButton = [[UIButton alloc]initWithFrame:frame1];
         //        goOnPlayButton.layer.cornerRadius = 3;
         //        goOnPlayButton.layer.masksToBounds = YES;
-        [goOnPlayButton setBackgroundImage:[UIImage imageNamed:@"yuanjiaowukuangselect"] forState:UIControlStateNormal];
+        [goOnPlayButton setBackgroundImage:[UIImage imageNamed:@"machine-selection.png"] forState:UIControlStateNormal];
         
-        [goOnPlayButton setBackgroundImage:[UIImage imageNamed:@"yuanjiaowukuangselect"] forState:UIControlStateHighlighted];
+        [goOnPlayButton setBackgroundImage:[UIImage imageNamed:@"machine-selection.png"] forState:UIControlStateHighlighted];
+        [goOnPlayButton setImage:[UIImage imageNamed:@"encore.png"] forState:0];
         [goOnPlayButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [goOnPlayButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
-        [goOnPlayButton setTitle:@"再买一注" forState:UIControlStateNormal];
+        [goOnPlayButton setTitle:@"再买1注" forState:UIControlStateNormal];
         
         [self.view addSubview:goOnPlayButton];
         addRandonBetButton = [[UIButton alloc]initWithFrame:frame2];
@@ -244,7 +254,7 @@
             [WinStop setSelected:NO];
             [WinStop setImage:[UIImage imageNamed:@"png_btn_agree.png"] forState:UIControlStateNormal];
         }
-        
+    
         [WinStop addTarget: self action: @selector(WinStopClick) forControlEvents: UIControlEventTouchUpInside];
         
         [betOptionFunView addSubview:WinStoplabel];
@@ -292,7 +302,7 @@
 //        [betOptionFunView addSubview:qilabel2];
         [self loadzhuiqi];
         [self loadbei];
-        [addRandonBetButton setTitle:@"机选一注" forState:UIControlStateNormal];
+        [addRandonBetButton setTitle:@"机选1注" forState:UIControlStateNormal];
         
     zhuihaoBtn = [[UIButton alloc]initWithFrame:frame4];
     
@@ -320,8 +330,9 @@
     //    addRandonBetButton.layer.masksToBounds = YES;
     addRandonBetButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     
-    [addRandonBetButton setBackgroundImage:[UIImage imageNamed:@"yuanjiaowukuangselect"] forState:UIControlStateNormal];
-    [addRandonBetButton setBackgroundImage:[UIImage imageNamed:@"yuanjiaowukuangselect"] forState:UIControlStateHighlighted];
+    [addRandonBetButton setBackgroundImage:[UIImage imageNamed:@"machine-selection.png"] forState:UIControlStateNormal];
+    [addRandonBetButton setBackgroundImage:[UIImage imageNamed:@"machine-selection.png"] forState:UIControlStateHighlighted];
+    [addRandonBetButton setImage:[UIImage imageNamed:@"friendshake.png"] forState:0];
     [addRandonBetButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [addRandonBetButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
     
@@ -330,10 +341,11 @@
     
     //    clearAllBetButton.layer.cornerRadius = 3;
     clearAllBetButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-    [clearAllBetButton setBackgroundImage:[UIImage imageNamed:@"yuanjiaowukuangselect"] forState:UIControlStateNormal];
-    [clearAllBetButton setBackgroundImage:[UIImage imageNamed:@"yuanjiaowukuangselect"] forState:UIControlStateHighlighted];
+    [clearAllBetButton setBackgroundImage:[UIImage imageNamed:@"machine-selection.png"] forState:UIControlStateNormal];
+    [clearAllBetButton setBackgroundImage:[UIImage imageNamed:@"machine-selection.png"] forState:UIControlStateHighlighted];
     [clearAllBetButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [clearAllBetButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
+    [clearAllBetButton setImage:[UIImage imageNamed:@"encore.png"] forState:0];
     
     clearAllBetButton.titleLabel.font = [UIFont systemFontOfSize:15];
     [clearAllBetButton addTarget: self action: @selector(actionRemoveAllBets:) forControlEvents: UIControlEventTouchUpInside];
@@ -1093,7 +1105,10 @@
 
 - (IBAction)actionTouzhu:(UIButton *)sender {
     self.transaction.schemeSource = SchemeSourceBet;
-    
+    if(self.transaction.allBets.count > 30){
+        [self showPromptText:@"投注最多30注" hideAfterDelay:2.0];
+        return;
+    }
     [self showLoadingText:@"正在提交订单"];
     [self.lotteryMan getSellIssueList:@{@"lotteryCode":self.lottery.identifier}];
 }
@@ -1496,6 +1511,10 @@
 
 #pragma mark - LotteryManagerDelegate methods
 - (void) removeBetAction: (NSIndexPath *) indexPath {
+    if([self.transaction betCount] <= 1){
+        [self showPromptText:@"至少选择一注" hideAfterDelay:1.8];
+        return;
+    }
     if (indexPath.row < [self.transaction betCount]) {
         LotteryBet *bet = [self betForRow: indexPath.row];
         [self.transaction removeBet: bet];

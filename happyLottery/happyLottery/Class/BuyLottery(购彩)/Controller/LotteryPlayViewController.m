@@ -8,6 +8,7 @@
 //
 
 #import "LotteryPlayViewController.h"
+#import "WebCTZQHisViewController.h"
 #import "OmitEnquiriesViewController.h"
 #import "OptionSelectedView.h"
 #import "LotteryBet.h"
@@ -105,7 +106,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    if([self isIphoneX]){
+        self.topDlt.constant = 88;
+        self.BottomDlt.constant = 38;
+    }else{
+        self.topDlt.constant = 64;
+        self.BottomDlt.constant = 0;
+    }
     self.lotteryMan.delegate = self;
 //   [self.lotteryMan queryX115LimitNum];
     limitArray  = [NSMutableArray arrayWithCapacity:0];
@@ -239,14 +246,17 @@
     //2  dlt ,0 x115,1  jczq;
      NSArray *infoArr = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"LotteryInstructionConfig" ofType: @"plist"]];
     NSDictionary *infoDic;
-    infoDic = infoArr[0];
+    if([self.lottery.identifier isEqualToString:@"SD115"]){
+        infoDic = infoArr[11];
+    }else{
+        infoDic = infoArr[0];
+    }
+    
 
     LotteryInstructionDetailViewController *detailVC = [[LotteryInstructionDetailViewController alloc] initWithNibName: @"LotteryInstructionDetailViewController" bundle: nil];
     detailVC.lotteryDetailDic = infoDic;
+    detailVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController: detailVC animated: YES];
-    
-    
-    
 }
 
 - (IBAction) clearAllSelection {
@@ -404,10 +414,14 @@
         CGRect phaseSectionFrame = CGRectMake(0, 0, CGRectGetWidth(viewContent_.frame), 0);
         phaseSectionFrame.origin.y = curY;
         phaseSectionFrame.size.height = PhaseInfoHeight * 2;
+    if(phaseInfoView == nil){
         phaseInfoView = [[LotteryPhaseInfoView alloc] initWithFrame: phaseSectionFrame];
         phaseInfoView.delegate = self;
-        [phaseInfoView drawWithLottery: self.lottery];
         [viewContent_ addSubview: phaseInfoView];
+    }
+    
+        [phaseInfoView drawWithLottery: self.lottery];
+    
         
 //        if (!_lottery.currentRound) {
             [self beginTimerForCurRound];
@@ -424,6 +438,7 @@
             scrollViewContent_.backgroundColor = [UIColor whiteColor];
             scrollViewContent_.delegate = self;
             scrollViewContent_.autoresizingMask = UIViewAutoresizingFlexibleHeight |UIViewAutoresizingFlexibleBottomMargin;
+            
             [viewContent_ addSubview: scrollViewContent_];
         }
     //        curY = CGRectGetMaxY(phaseInfoView.frame);
@@ -444,10 +459,15 @@
             
             
             
-            instructionSectionFrame.origin.y = curY;
+            
             instructionSectionFrame.origin.x = LEFTPADDING;
             instructionSectionFrame.size.width -= 10;
             instructionSectionFrame.size.height = 40;
+            if(labelInstruction == nil){
+                instructionSectionFrame.origin.y = curY;
+            }else{
+                instructionSectionFrame.origin.y = labelInstruction.mj_y;
+            }
             labelInstruction = [[UILabel alloc] initWithFrame: instructionSectionFrame];
             labelInstruction.backgroundColor = [UIColor clearColor];
             labelInstruction.font = [UIFont systemFontOfSize: 11];
@@ -455,6 +475,7 @@
             labelInstruction.adjustsFontSizeToFitWidth = YES;
             
             [scrollViewContent_ addSubview: labelInstruction];
+           
             labelInstruction.text = self.lottery.activeProfile.desc;
             NSMutableAttributedString  *attStr = [[NSMutableAttributedString alloc] initWithString:labelInstruction.text];
             NSString *temp = @"";
@@ -508,6 +529,7 @@
             scrollViewContent_.contentSize = CGSizeMake(CGRectGetWidth(scrollViewContent_.frame), CGRectGetHeight(scrollViewContent_.frame)+220);
         }
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(beginTimerForCurRound) name:@"RoundTimeDownFinish" object:nil];
+    [self  addQmitButton];
 }
 
 - (void) updateNavigationTitle {
@@ -564,7 +586,6 @@
         [lotteryBetsPopView_ refreshBetListView: _lotteryTransaction];
         [self.view bringSubviewToFront: lotteryBetsPopView_];
     } else {
-        //show error prompt
         [self showPromptText: TextNoBetInBasket hideAfterDelay: 1.7];
     }
 }
@@ -615,7 +636,6 @@
         [self addBetAction_: nil];
         return nil;
     }
-    
     return TextNotEnoughBet;
 }
 
@@ -862,18 +882,21 @@
 }
 
 - (void)showExtrendViewCtr{
-    
-    LotteryExtrendViewController * extrendViewCtr = [[LotteryExtrendViewController alloc] initWithNibName:@"LotteryExtrendViewController" bundle:nil];
-    extrendViewCtr.lottery = _lottery;
-    extrendViewCtr.timeString = [phaseInfoView timeSting];
-    [self.navigationController pushViewController:extrendViewCtr animated:YES];
-    
+
+    WebCTZQHisViewController * playViewVC = [[WebCTZQHisViewController alloc]init];
+    NSString *strUrl = [NSString stringWithFormat:@"%@/app/award/toTrend?lotteryCode=%@",H5BaseAddress,self.lottery.identifier];
+    playViewVC.pageUrl = [NSURL URLWithString:strUrl];
+    playViewVC.title  = [NSString stringWithFormat:@"%@开奖记录",self.lottery.name];
+    playViewVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:playViewVC animated:YES];
 }
 
 - (void) showWinHistoryViewCtr{
-    LotteryWinNumHistoryViewController * historyViewCtr = [[LotteryWinNumHistoryViewController alloc] initWithNibName:@"LotteryWinNumHistoryViewController" bundle:nil];
-    historyViewCtr.lottery = _lottery;
-    [self.navigationController pushViewController:historyViewCtr animated:YES];
+    WebCTZQHisViewController * playViewVC = [[WebCTZQHisViewController alloc]init];
+    NSString *strUrl = [NSString stringWithFormat:@"%@/app/award/toHis?lotteryCode=%@",H5BaseAddress,self.lottery.identifier];
+    playViewVC.pageUrl = [NSURL URLWithString:strUrl];
+    playViewVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:playViewVC animated:YES];
 
 }
 
@@ -904,6 +927,7 @@
 #pragma mark - LotteryProfileSelectViewDelegate methods
 - (void) userDidSelectLotteryProfile {
     [titleView updateWithLottery: self.lottery];
+    
     labLimitNumInfo.hidden = YES;
     
     NSLog(@"10109 %@ ",_lottery.activeProfile.profileID );
@@ -1068,6 +1092,9 @@
     }else{
         NSLog(@"未得到奖期。");
     }
+}
+- (IBAction)cleanAction:(id)sender {
+    [self userDidSelectLotteryProfile];
 }
 - (void)gotLotteryCurRoundTimeout {
     

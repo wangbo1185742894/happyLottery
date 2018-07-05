@@ -39,7 +39,7 @@
     labelTitle.textColor = TEXTGRAYCOLOR;
    
     if ([[titleText substringToIndex:2] isEqualToString:@"拖码"]) {
-        UIButton *allSelect = [self creatButton:CGRectMake(220, 0, 50, self.bounds.size.height) andTitle:@"全选"];
+        UIButton *allSelect = [self creatButton:CGRectMake(KscreenWidth - 90, 0, 50, self.bounds.size.height) andTitle:@"全选"];
         [self addSubview: allSelect];
         
         [allSelect addTarget:self action:@selector(actionAllSelect) forControlEvents:UIControlEventTouchUpInside];
@@ -104,9 +104,10 @@
     btn.layer.masksToBounds = YES;
     
     
-    [btn setBackgroundImage:[UIImage imageNamed:@"orangeBackground.png"] forState:UIControlStateNormal];
+    [btn setBackgroundImage:[UIImage imageNamed:@"machine-selection.png"] forState:UIControlStateNormal];
+    
     [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [btn setBackgroundImage:[UIImage imageNamed:@"whiteBackground.png"] forState:UIControlStateHighlighted];
+    [btn setBackgroundImage:[UIImage imageNamed:@"machine-selection.png"] forState:UIControlStateHighlighted];
     [btn setTitleColor:TEXTGRAYCOLOR forState:UIControlStateHighlighted];
     [btn setTitle: actionButtonText forState: UIControlStateNormal];
     

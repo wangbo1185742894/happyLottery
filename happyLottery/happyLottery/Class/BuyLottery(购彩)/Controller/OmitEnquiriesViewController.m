@@ -141,6 +141,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if([self isIphoneX]){
+        _topDis.constant = 88;
+        _bottomDis.constant = 38;
+    }else{
+        _topDis.constant = 64;
+        _bottomDis.constant = 0;
+    }
 //    [self iphoneXViewFrame:_topDis andBottom:_bottomDis];
     self.viewControllerNo = @"A106";
     mArrayqian = [NSMutableArray arrayWithCapacity:0];
@@ -247,7 +254,7 @@
             self.EnquiriesLabelHeight.constant = -110;
         }
         [self.omitButton setTitle:@"查找" forState:UIControlStateNormal];
-        self.omitImageView.image = [UIImage imageNamed:@"omitreach"];
+        self.omitImageView.image = [UIImage imageNamed:@"omitreach.png"];
       
     }
 
@@ -326,8 +333,6 @@
         if ([model.isSelect isEqualToString:@"1"]) {
             selectedBetCount ++;}
     }
-//    [self.lotteryTransaction removeAllBets];
-   
     betCost = selectedBetCount *2;
     self.labBeySummary.text = [NSString stringWithFormat:@"共%d注，金额：%d元",selectedBetCount,betCost];
 }
@@ -349,12 +354,12 @@
     if ([self.titleString isEqualToString:@"前二直选"]) {
         
         if (mArraywan.count>1) {
-            [self showPromptText:@"请【每位】只选择一个号码" hideAfterDelay:1.7];
+            [self showPromptText:@"请每位只选择一个号码" hideAfterDelay:1.7];
             
             return;
         }
         if (mArrayqian.count >1) {
-            [self showPromptText:@"请【每位】只选择一个号码" hideAfterDelay:1.7];
+            [self showPromptText:@"请每位只选择一个号码" hideAfterDelay:1.7];
             return;
         }
         
@@ -371,15 +376,15 @@
         
     }else if([self.titleString isEqualToString:@"前三直选"]){
         if (mArraywan.count>1) {
-            [self showPromptText:@"请【每位】只选择一个号码" hideAfterDelay:1.7];
+            [self showPromptText:@"请每位只选择一个号码" hideAfterDelay:1.7];
             return;
         }
         if (mArrayqian.count >1) {
-            [self showPromptText:@"请【每位】只选择一个号码" hideAfterDelay:1.7];
+            [self showPromptText:@"请每位只选择一个号码" hideAfterDelay:1.7];
             return;
         }
         if (mArraybai.count >1) {
-            [self showPromptText:@"请【每位】只选择一个号码" hideAfterDelay:1.7];
+            [self showPromptText:@"请每位只选择一个号码" hideAfterDelay:1.7];
             return;
         }
         
@@ -442,11 +447,25 @@
             if ([[dict objectForKey:@"code"] integerValue] == 1) {
                 NSArray * dataArray = dict[@"data"];
                 NSLog(@"%@", dataArray);
+                NSString *newstr;
+                if ([self.titleString isEqualToString:@"前二直选"]||[self.titleString isEqualToString:@"前三直选"]) {
+                    newstr = [self.searchCodeArray componentsJoinedByString:@","];
+                }else{
+                    NSArray * realArray =[self.searchCodeArray sortedArrayUsingSelector:@selector(compare:)];
+                    newstr  = [realArray componentsJoinedByString:@","];
+                }
                 for (NSDictionary * subDict in dataArray) {
                     QmitModel * qmitModel = [[QmitModel alloc]initWith:subDict];
+                    if ([newstr isEqualToString:qmitModel.number]) {
+                        qmitModel.isSelect = @"1";
+                    }else{
+                        qmitModel.isSelect = @"0";
+                    }
                     [self.dataSource addObject:qmitModel];
                 }
+                
                 self.currentIssueLabel.text = [NSString stringWithFormat:@"遗漏期次：%@", dataArray[0][@"currentIssue"]];
+                [self updateSummary];
                 [self.OmitEnquiriesTableView reloadData];
             }else {
             [self showPromptText:@"查询失败，请重试" hideAfterDelay:1.7];
@@ -675,7 +694,7 @@
         self.isQmit = YES;
     }else {
         [self.omitButton setTitle:@"查找" forState:UIControlStateNormal];
-        self.omitImageView.image = [UIImage imageNamed:@"search"];
+        self.omitImageView.image = [UIImage imageNamed:@"omitreach.png"];
         if ([self.titleString isEqualToString:@"前二直选"]||[self.titleString isEqualToString:@"前三直选"]) {
             self.EnquiriesLabelHeight.constant = -140;
         }else{
@@ -1118,24 +1137,23 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSArray * array = self.searchCodeArray;
-    
-    NSString *newstr;
-    if ([self.titleString isEqualToString:@"前二直选"]||[self.titleString isEqualToString:@"前三直选"]) {
-         newstr = [self.searchCodeArray componentsJoinedByString:@","];
-    }else{
-    NSArray * realArray =[array sortedArrayUsingSelector:@selector(compare:)];
-        newstr  = [realArray componentsJoinedByString:@","];
-    }
-
 
     QmitModel * model;
     if (self.dataSource.count >0) {
         model = self.dataSource[indexPath.row];
     }
     OmitEnquiresTableViewCell * cell = [OmitEnquiresTableViewCell cellWithTableView:tableView];
-    cell.sureString = newstr;
+//    cell.sureString = newstr;
     [cell setCellValueFromModel:model andIndexPath:indexPath];
-    
+//    if(indexPath.row == 5){
+//        selectedBetCount = 0;
+//        QmitModel *model = [self.dataSource firstObject];
+//            if ([model.isSelect isEqualToString:@"1"]) {
+//                selectedBetCount ++;
+//            }
+//        betCost = selectedBetCount *2;
+//        self.labBeySummary.text = [NSString stringWithFormat:@"共%d注，金额：%d元",selectedBetCount,betCost];
+//    }
     
     return cell;
 }
@@ -1146,7 +1164,7 @@
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
 }
 
 - (void) getCurrentRound{
@@ -1256,8 +1274,7 @@
         model.isSelect = @"0";
     }
     [self.OmitEnquiriesTableView reloadData];
-
-
+    [self updateSummary];
 }
 
 

@@ -11,18 +11,18 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="88" id="KGk-i7-Jjw" customClass="X115SchemeViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="302" height="88"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="64" id="KGk-i7-Jjw" customClass="X115SchemeViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="302" height="64"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="302" height="87.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="302" height="63.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IRL-hT-lqb">
-                        <rect key="frame" x="8" y="4" width="286" height="79.5"/>
+                        <rect key="frame" x="8" y="4" width="286" height="55.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z6L-dg-Z3m">
-                                <rect key="frame" x="5" y="25" width="281" height="49.5"/>
+                                <rect key="frame" x="85" y="25" width="201" height="26"/>
                                 <color key="backgroundColor" red="1" green="0.98823529409999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
@@ -47,13 +47,26 @@
                                     <color key="titleColor" red="0.35257309679999999" green="0.62924289700000002" blue="0.99314433339999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ggj-My-Ggo">
+                                <rect key="frame" x="5" y="25" width="80" height="26"/>
+                                <color key="backgroundColor" red="1" green="0.98431372549019602" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="ius-hR-Lmm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.1137254902" green="0.1137254902" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <constraints>
                             <constraint firstItem="z6L-dg-Z3m" firstAttribute="top" secondItem="Oho-K8-FRZ" secondAttribute="bottom" id="CMx-Tx-gMP"/>
-                            <constraint firstItem="z6L-dg-Z3m" firstAttribute="leading" secondItem="IRL-hT-lqb" secondAttribute="leading" constant="5" id="Dcn-yZ-SII"/>
+                            <constraint firstItem="z6L-dg-Z3m" firstAttribute="leading" secondItem="Ggj-My-Ggo" secondAttribute="trailing" id="H5L-by-j7P"/>
                             <constraint firstItem="lyb-oF-xbJ" firstAttribute="top" secondItem="IRL-hT-lqb" secondAttribute="top" id="VRk-cJ-7Rd"/>
                             <constraint firstAttribute="bottom" secondItem="z6L-dg-Z3m" secondAttribute="bottom" constant="5" id="Vd4-Ay-fJD"/>
+                            <constraint firstItem="Ggj-My-Ggo" firstAttribute="leading" secondItem="IRL-hT-lqb" secondAttribute="leading" constant="5" id="afW-29-bJy"/>
                             <constraint firstAttribute="trailing" secondItem="z6L-dg-Z3m" secondAttribute="trailing" id="bpT-EM-e0J"/>
+                            <constraint firstItem="z6L-dg-Z3m" firstAttribute="height" secondItem="Ggj-My-Ggo" secondAttribute="height" id="cOf-ok-PnI"/>
+                            <constraint firstItem="Ggj-My-Ggo" firstAttribute="top" secondItem="Oho-K8-FRZ" secondAttribute="bottom" id="iFY-Pc-u5N"/>
                             <constraint firstItem="Oho-K8-FRZ" firstAttribute="leading" secondItem="IRL-hT-lqb" secondAttribute="leading" constant="5" id="qfW-Py-yHu"/>
                             <constraint firstAttribute="trailing" secondItem="lyb-oF-xbJ" secondAttribute="trailing" constant="12" id="vTd-z5-N7W"/>
                             <constraint firstItem="Oho-K8-FRZ" firstAttribute="top" secondItem="IRL-hT-lqb" secondAttribute="top" constant="5" id="xe2-DF-7ah"/>
@@ -73,9 +86,10 @@
                 <outlet property="labLotteryName" destination="Oho-K8-FRZ" id="caq-Db-kT0"/>
                 <outlet property="labMatchNum" destination="lyb-oF-xbJ" id="Psj-xh-syG"/>
                 <outlet property="labRedBall" destination="z6L-dg-Z3m" id="dcb-oa-VmK"/>
+                <outlet property="playtype" destination="Ggj-My-Ggo" id="nhE-5p-Rl0"/>
                 <outlet property="viewBallContent" destination="IRL-hT-lqb" id="J4b-y1-u1w"/>
             </connections>
-            <point key="canvasLocation" x="31" y="81"/>
+            <point key="canvasLocation" x="31" y="69"/>
         </tableViewCell>
     </objects>
     <resources>

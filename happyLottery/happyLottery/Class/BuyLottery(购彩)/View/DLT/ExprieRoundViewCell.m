@@ -39,10 +39,11 @@
     _qiHaoLa.textColor = SystemLightGray;
     NSString *betCountStr = [NSString stringWithFormat: @"%@", round.openResult];
 
-    NSArray *betnumArray = [betCountStr componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"#,"]];
+    
     //不同的x115  玩法需要显示的数字个数不同；
     NSUInteger numCount;
     if (_isX115) {
+        NSArray *betnumArray = [betCountStr componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"#,"]];
         switch (profileID) {
             case 8:     //前1
                 numCount = 1;
@@ -66,19 +67,25 @@
                 break;
         }
 
-
+        for (UIButton *item in _ballArr) {
+            item.hidden = YES;
+        }
         for (int i=0; i < numCount; i++) {
+          
             NSString *tempstr;
             tempstr = [NSString stringWithFormat:@"%02d",[betnumArray[i] intValue]];
             NSInteger index = [tempstr integerValue];
 
 
-            UIButton *btn=(UIButton *) _ballArr[index - 1];
+            UIButton *btn=(UIButton *) _ballArr[i];
+            btn.hidden = NO;
             [btn setTitleColor:SystemRed forState:0];
+            [btn setTitle:tempstr forState:0];
             
         }
 
     }else{
+        NSArray *betnumArray = [betCountStr componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"#"]];
         NSArray *redNum  = [[betnumArray firstObject] componentsSeparatedByString:@","];
         for (int i=0; i<redNum.count; i++) {
             NSString *tempstr;

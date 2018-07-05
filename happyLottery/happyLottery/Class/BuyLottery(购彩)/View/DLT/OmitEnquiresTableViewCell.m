@@ -49,11 +49,13 @@
     
     
     
-    if ([self.sureString isEqualToString:model.number]) {
-        [self.numberButton setTitleColor:TextOrangeColor forState:UIControlStateNormal];
-    }else {
+//    if ([self.sureString isEqualToString:model.number]) {
+////        [self.numberButton setTitleColor:[] forState:UIControlStateNormal];
+//        self.numberButton.selected = YES;
+//        model.isSelect = @"1";
+//    }else {
         [self.numberButton setTitleColor:RGBCOLOR(72, 72, 72) forState:UIControlStateNormal];
-    }
+//    }
     self.avgNumbsLabel.text = model.avgNumbs;
     float times = [model.times floatValue];
     float avgNums = [model.avgNumbs floatValue];

@@ -135,11 +135,7 @@
             [self.navigationController pushViewController:playViewVC animated:YES];
         }
         else if ([lotteryName isEqualToString:@"DLT"]){
-            LotteryPlayViewController *gyjPlayVc = [[LotteryPlayViewController alloc]init];
-            gyjPlayVc.hidesBottomBarWhenPushed = YES;
-            gyjPlayVc.lottery = self.lotteryDS[0];
-            [self.navigationController pushViewController:gyjPlayVc animated:YES];
-            return ;
+       
             DLTPlayViewController *playVC = [[DLTPlayViewController alloc] init];
             playVC.hidesBottomBarWhenPushed = YES;
             playVC.lottery = self.lotteryDS[1];
@@ -147,11 +143,7 @@
             
         }
         else if ([lotteryName isEqualToString:@"SSQ"]){
-            LotteryPlayViewController *gyjPlayVc = [[LotteryPlayViewController alloc]init];
-            gyjPlayVc.hidesBottomBarWhenPushed = YES;
-            gyjPlayVc.lottery = self.lotteryDS[11];
-            [self.navigationController pushViewController:gyjPlayVc animated:YES];
-            return ;
+            
             SSQPlayViewController *playVC = [[SSQPlayViewController alloc] init];
             playVC.hidesBottomBarWhenPushed = YES;
             playVC.lottery = self.lotteryDS[10];
@@ -289,6 +281,20 @@
 }
 -(void)exchangeToast:(NSString *)msg{
     [self showPromptText:msg hideAfterDelay:1.7];
+}
+- (IBAction)acitonsx115:(id)sender {
+    LotteryPlayViewController *gyjPlayVc = [[LotteryPlayViewController alloc]init];
+    gyjPlayVc.hidesBottomBarWhenPushed = YES;
+    gyjPlayVc.lottery = self.lotteryDS[0];
+    [self.navigationController pushViewController:gyjPlayVc animated:YES];
+    
+}
+- (IBAction)actionsd115:(id)sender {
+    LotteryPlayViewController *gyjPlayVc = [[LotteryPlayViewController alloc]init];
+    gyjPlayVc.hidesBottomBarWhenPushed = YES;
+    gyjPlayVc.lottery = self.lotteryDS[11];
+    [self.navigationController pushViewController:gyjPlayVc animated:YES];
+    
 }
 
 @end

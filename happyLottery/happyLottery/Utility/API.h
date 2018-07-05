@@ -21,7 +21,7 @@
 //#define WSServerURL @"http://115.28.27.198:28000/services%@"  //新服务地址
 //#define WSServerURL @"http://tbz.xianyingcai.com:28000/services%@"
 //#define ServerAddress @"http://124.89.85.110:17085"  //资讯  轮播图 用户图像
-#define H5BaseAddress @"http://tbz.xianyingcai.com:28086"
+//#define H5BaseAddress @"http://tbz.xianyingcai.com:28086"
 #define OmitServerURL @"http://tc.xianticai.com:17082/ms"  //新后台
 
 #define ServerAddress @"http://192.168.88.244:8086"  //资讯  轮播图 用户图像
@@ -35,7 +35,7 @@
 //#define H5BaseAddress @"http://tbz.xianyingcai.com:28086"
 
 
-//#define H5BaseAddress @"http://192.168.88.193:18086"  //谢青服务
+#define H5BaseAddress @"http://192.168.88.193:18086"  //谢青服务
 //#define H5BaseAddress @"http://192.168.88.116:18086"  //史少鹏服务
 //杨芳本地
 //#define ServerAddress @"http://192.168.88.109:8086"
@@ -143,6 +143,7 @@
 #define APIgetJclqSp                  @"getJclqSp"  //获取竞彩篮球的sp
 #define APIgetAppSign               @"getAppSign"
 #define APIlistSellLottery              @"listSellLottery"
+#define APIgetBootPageUrl           @"getBootPageUrl"
 
 #define SUBAPISchemeService   @"/scheme"
 #define APIBetLotteryScheme         @"betLotteryScheme"
@@ -167,14 +168,11 @@
 #define APIGetDltTicketOrderDetail  @"getDltTicketOrderDetail"
 #define APIgetSfcTicketOrderDetail  @"getSfcTicketOrderDetail"
 #define APIgetRjcTicketOrderDetail  @"getRjcTicketOrderDetail"
-
 #define APIGetJcgjTicketOrderDetail   @"getJcgjTicketOrderDetail"//查询冠军订单详情
 #define APIGetJcgyjTicketOrderDetail  @"getJcgyjTicketOrderDetail"//查询冠亚军订单详情
 #define APIGetSsqTicketOrderDetail    @"getSsqTicketOrderDetail"//查询订单详情(双色球)
-#define APIGetJclqTicketOrderDetail   @"getJclqTicketOrderDetail"// 查询订单详情(竞彩篮球)
-
+#define APIGetJclqTicketOrderDetail   @"getJclqTicketOrderDetail"// 查询订单详情(竞彩篮球
 #define APIgetSD115TicketOrderDetail  @"getSD115TicketOrderDetail"
-
 #define APIgetSX115TicketOrderDetail  @"getSX115TicketOrderDetail"
 
 #define SUBAPIAgentService  @"/agent"

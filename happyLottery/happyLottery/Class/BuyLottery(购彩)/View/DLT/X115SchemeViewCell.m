@@ -27,12 +27,19 @@
     playType = [self getCHNTypeByEnType:playType];
     if ([betDic[@"betType"] integerValue] ==2) {
         playType = [NSString stringWithFormat:@"%@胆拖",playType];
+        if ([playType isEqualToString:@"前三组选胆拖"]) {
+            playType = @"组三胆拖";
+        }
+        if ([playType isEqualToString:@"前二组选胆拖"]) {
+            playType = @"组二胆拖";
+        }
     }
     if ([typeName isEqualToString:@"SX115"]) {
-            self.labLotteryName.text = [NSString stringWithFormat:@"陕西11选5(%@)",playType];
+            self.labLotteryName.text = [NSString stringWithFormat:@"陕西11选5"];
     } else {
-              self.labLotteryName.text = [NSString stringWithFormat:@"山东11选5(%@)",playType];
+              self.labLotteryName.text = [NSString stringWithFormat:@"山东11选5"];
     }
+    self.playtype.text = playType;
     self.trDltOpenResult = string;
     NSArray *betRows = betDic[@"betRows"];
      NSAttributedString *bet = [self getBetNumberStr:betRows type:playType betType:[betDic[@"betType"]integerValue]];
@@ -45,7 +52,9 @@
     NSString *playType = betDic[@"playType"];
     playType = [self getCHNTypeByEnType:playType];
     if ([betDic[@"betType"] integerValue] ==2) {
-        playType = [NSString stringWithFormat:@"%@胆拖",playType];
+        if([playType rangeOfString:@"胆拖"].length == 0){
+            playType = [NSString stringWithFormat:@"%@胆拖",playType];
+        }
     }
     NSAttributedString *bet = [self getBetNumberStr:betRows type:playType betType:[betDic[@"betType"]integerValue]];
 
@@ -218,7 +227,7 @@
 }
 
 -(float)getTotalHeightredTitle:(NSString*)title{
-    float redHeight = [title boundingRectWithSize:CGSizeMake(KscreenWidth - 20, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{@"UIFont":[UIFont systemFontOfSize:13]} context:nil].size.height;
+    float redHeight = [title boundingRectWithSize:CGSizeMake(KscreenWidth - 80, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{@"UIFont":[UIFont systemFontOfSize:13]} context:nil].size.height;
     return redHeight;
 }
 
