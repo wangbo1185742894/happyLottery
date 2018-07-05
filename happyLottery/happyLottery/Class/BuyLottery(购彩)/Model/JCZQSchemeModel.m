@@ -7,6 +7,7 @@
 //
 
 #import "JCZQSchemeModel.h"
+#import "JCLQSchemeModel.h"
 
 @implementation JCZQSchemeModel
 
@@ -45,9 +46,15 @@
         
         NSMutableArray *trOpenResult = [[NSMutableArray  alloc]initWithCapacity:0];
         NSArray *resArray = [Utility objFromJson:value];
+        
         for (NSDictionary *item in resArray) {
-            OpenResult *result = [[OpenResult alloc]initWith:item];
-            [trOpenResult addObject:result];
+            if ([self.lottery isEqualToString:@"JCLQ"]) {
+                JCLQOpenResult *result = [[JCLQOpenResult alloc]initWith:item];
+                [trOpenResult addObject:result];
+            }else{
+                OpenResult *result = [[OpenResult alloc]initWith:item];
+                [trOpenResult addObject:result];
+            }
         }
         self.trOpenResult = trOpenResult;
     }else if([key isEqualToString:@"followListDtos"]){

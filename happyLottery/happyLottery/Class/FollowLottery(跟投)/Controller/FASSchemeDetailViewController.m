@@ -51,6 +51,7 @@
 
 @implementation FASSchemeDetailViewController{
     JCZQSchemeItem *schemeDetail;
+    JCLQSchemeItem *jclqSchemeDetail;
     BOOL isAttend;
 }
 
@@ -168,7 +169,9 @@
         [self showPromptText:msg hideAfterDelay:17];
         return;
     }
+    schemeDetail.lottery = infoArray[@"lottery"];
     schemeDetail = [[JCZQSchemeItem alloc]initWith:infoArray];
+    
     if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) { //待支付状态
         [self reloadZhiFuButton];
     } else {
