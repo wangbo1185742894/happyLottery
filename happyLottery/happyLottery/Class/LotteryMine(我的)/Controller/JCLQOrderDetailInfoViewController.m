@@ -116,9 +116,9 @@
         [cell reloadDataGYJ:dic];
     }else{
         if ([self.fromView isEqualToString:@"FOLLOW_INIT"]) {
-            [cell reloadDataFollowInit:dic];
+            [cell reloadDataFollowInit:dic openResult:self.trOpenResult];
         }else {
-            [cell reloadData:dic];
+            [cell reloadData:dic openResult:self.trOpenResult];
         }
     } 
     return cell;
