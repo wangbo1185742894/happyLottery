@@ -29,6 +29,8 @@
 #import "FirstBankCardSetViewController.h"
 #import "LoadData.h"
 #import "Utility.h"
+#import "MyPostSchemeViewController.h"
+
 
 #define KMenuCollectionViewCell @"MineCollectionViewCell"
 
@@ -602,9 +604,17 @@
         [self needLogin];
     } else {
         self.memberSubFunctionClass = optionDic[@"actionClassName"];
-        BaseViewController *vc = [[NSClassFromString(_memberSubFunctionClass) alloc] initWithNibName: _memberSubFunctionClass bundle: nil];
-        vc.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController: vc animated: YES];
+      
+        if ([self.memberSubFunctionClass isEqualToString:@"MyPostSchemeViewController"]) {
+            MyPostSchemeViewController *vc = [[MyPostSchemeViewController alloc]init];
+            vc.isFaDan = YES;
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController: vc animated: YES];
+        } else {
+             BaseViewController *vc = [[NSClassFromString(_memberSubFunctionClass) alloc] initWithNibName: _memberSubFunctionClass bundle: nil];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController: vc animated: YES];
+        }
     }
 }
 

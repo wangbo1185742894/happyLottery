@@ -162,6 +162,7 @@
     JCLQOrderDetailInfoViewController *orderDetailVC = [[JCLQOrderDetailInfoViewController alloc]init];
     orderDetailVC.schemeNO = self.schemeNO;
     orderDetailVC.lotteryCode = schemeDetail.lottery;
+    orderDetailVC.trOpenResult = schemeDetail.trOpenResult;
     [self.navigationController pushViewController:orderDetailVC animated:YES];
 }
 

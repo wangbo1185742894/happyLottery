@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JCLQSchemeModel.h"
 
 @interface JCLQOrderDetailViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *labNumber;
@@ -24,11 +25,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelTouTitle;
 
 
--(void)reloadData:(NSDictionary *)dic;
+-(void)reloadData:(NSDictionary *)dic openResult:(NSMutableArray *)array;
 
 -(void)reloadDataGYJ:(NSDictionary *)dic;
 
-- (void)reloadDataFollowInit:(NSDictionary *)dic;
+- (void)reloadDataFollowInit:(NSDictionary *)dic openResult:(NSMutableArray *)array;
 
 
 -(CGFloat)getCellHeight:(NSDictionary*)dic;

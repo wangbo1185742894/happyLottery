@@ -538,10 +538,11 @@
 
 
 -(void)goOrderList{
-        JCLQOrderDetailInfoViewController *orderDetailVC = [[JCLQOrderDetailInfoViewController alloc]init];
-        orderDetailVC.schemeNO = schemeDetail.schemeNO;
-        orderDetailVC.lotteryCode = schemeDetail.lottery;
-        orderDetailVC.fromView = @"FOLLOW_INIT";
+    JCLQOrderDetailInfoViewController *orderDetailVC =[[JCLQOrderDetailInfoViewController alloc]init];
+    orderDetailVC.schemeNO = schemeDetail.schemeNO;
+    orderDetailVC.lotteryCode = schemeDetail.lottery;
+    orderDetailVC.fromView = @"FOLLOW_INIT";
+    orderDetailVC.trOpenResult = schemeDetail.trOpenResult;
         [self.navigationController pushViewController:orderDetailVC animated:YES];
 }
 
