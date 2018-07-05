@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "JCZQSchemeModel.h"
+#import "JCLQSchemeModel.h"
 
 @interface JCLQOrderDetailInfoViewController : BaseViewController
 @property (weak, nonatomic) IBOutlet UITableView *tabListDetail;
@@ -16,5 +17,6 @@
 @property (nonatomic,strong)NSString *lotteryCode;
 @property (nonatomic,copy)NSString *fromView;
 @property(nonatomic,copy)NSMutableArray <OpenResult *> * trOpenResult;
+@property(nonatomic,copy)NSMutableArray <JCLQOpenResult *> *lqOpenResult;
 
 @end

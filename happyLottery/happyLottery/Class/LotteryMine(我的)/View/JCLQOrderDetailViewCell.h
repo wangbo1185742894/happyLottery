@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JCLQSchemeModel.h"
 
 @interface JCLQOrderDetailViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *labNumber;

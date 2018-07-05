@@ -114,13 +114,19 @@
     NSDictionary *dic = self.dataArray[indexPath.row];
     if ([self.lotteryCode isEqualToString:@"JCGYJ"]||[self.lotteryCode isEqualToString:@"JCGJ"]) {
         [cell reloadDataGYJ:dic];
-    }else{
+    }else if([self.lotteryCode isEqualToString:@"JCLQ"]){
+        if ([self.fromView isEqualToString:@"FOLLOW_INIT"]) {
+            [cell reloadDataFollowInit:dic openResult:self.lqOpenResult];
+        }else {
+            [cell reloadData:dic openResult:self.lqOpenResult];
+        }
+    } else {
         if ([self.fromView isEqualToString:@"FOLLOW_INIT"]) {
             [cell reloadDataFollowInit:dic openResult:self.trOpenResult];
         }else {
             [cell reloadData:dic openResult:self.trOpenResult];
         }
-    } 
+    }
     return cell;
 }  
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
