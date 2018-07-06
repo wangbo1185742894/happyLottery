@@ -90,10 +90,10 @@
     self.viewControllerNo = @"A201";
     if ([self isIphoneX]) {
         self.topDIs.constant = -44;
-        self.topHeadCons.constant = 215;
+        self.topHeadCons.constant = 235;
     }else{
         self.topDIs.constant = -20;
-        self.topHeadCons.constant = 191;
+        self.topHeadCons.constant = 211;
     }
     self.viewChongZhi.layer.masksToBounds = YES;
     self.viewChongZhi.layer.cornerRadius = 12;
@@ -102,6 +102,8 @@
     } else {
         self.heightCon.constant = 448;
     }
+    self.noticeRedPointLab.layer.cornerRadius = 3;
+    self.noticeRedPointLab.layer.masksToBounds = YES;
 }
 
 
