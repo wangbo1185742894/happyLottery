@@ -72,6 +72,7 @@
 
 @property(strong, nonatomic) NSString * memberSubFunctionClass;
 @property (weak, nonatomic) IBOutlet UIImageView *topHead;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightCon;
 @property(nonatomic,strong)  LoadData  *loadDataTool;
 @end
 
@@ -96,6 +97,11 @@
     }
     self.viewChongZhi.layer.masksToBounds = YES;
     self.viewChongZhi.layer.cornerRadius = 12;
+    if (KscreenHeight >667) {
+        self.heightCon.constant = KscreenHeight - self.tableView.mj_y;
+    } else {
+        self.heightCon.constant = 448;
+    }
 }
 
 
