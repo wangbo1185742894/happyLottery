@@ -20,7 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"账户明细";
-       _topMenu = [[WBMenu alloc]initWithFrame:CGRectMake(0, 44, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 44)];
+       _topMenu = [[WBMenu alloc]initWithFrame:CGRectMake(0, NaviHeight - 20, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - NaviHeight +20)];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     NSArray *titleArray = @[@"购彩",@"充值",@"派奖",@"提现",@"彩金",@"佣金",@"返佣"];
     NSArray *apiArray = @[API_listSubscribeDetail,API_listRechargeDetail,API_listBonusDetail,API_listWithdrawDetail,API_listHandselDetail,API_listFollowDetail,API_listAgentCommissionDetail];
     [_topMenu createMenuView:titleArray size:CGSizeMake(70, 30)];

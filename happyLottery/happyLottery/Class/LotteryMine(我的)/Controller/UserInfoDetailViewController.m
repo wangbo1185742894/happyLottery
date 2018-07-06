@@ -11,6 +11,7 @@
 @interface UserInfoDetailViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *labLeft;
 @property (weak, nonatomic) IBOutlet UILabel *labRight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topDis;
 
 @end
 
@@ -18,6 +19,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _topDis.constant = NaviHeight;
     self.title = @"明细详情";
     self.labLeft .text = [self.model getLeftTitle];
     self.labRight.text = [self.model getRightTitle];
@@ -39,3 +42,4 @@
 */
 
 @end
+
