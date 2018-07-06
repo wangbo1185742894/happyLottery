@@ -137,6 +137,9 @@
                                     <state key="normal" title="彩金(元)">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
+                                    <connections>
+                                        <action selector="labCaijin:" destination="-1" eventType="touchUpInside" id="0Ai-ur-FuR"/>
+                                    </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="FOx-Oc-FG1">
                                     <rect key="frame" x="94" y="3" width="93.5" height="21.5"/>

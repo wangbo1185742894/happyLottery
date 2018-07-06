@@ -318,13 +318,13 @@
     }else if([self.schemeStatus isEqualToString:@"CANCEL"]){
         if ([self.ticketStatus isEqualToString:@"TICKET_FAILED"]) {
             
-            state = @"方案失败";
+            state = @"已退款";
         }else{
             
-            state = @"方案失败";
+            state = @"已退款";
         }
     }else if([self.schemeStatus isEqualToString:@"REPEAL"]){
-            state = @"方案撤销";
+            state = @"已退款";
     }else{
         if ([self.schemeType isEqualToString:@"BUY_TOGETHER"]) {
             if ([self.schemeStatus isEqualToString:@"UN_FULL"]) {

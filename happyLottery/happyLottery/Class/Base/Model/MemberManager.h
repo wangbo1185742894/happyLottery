@@ -58,6 +58,7 @@
 - (void) ResetFeedBackReadStatusSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg;
 - (void) gotVueHttpUrl:(NSString  *)baseUrl errorMsg:(NSString *)msg;
 - (void) giveShareScore:(BOOL)success errorMsg:(NSString *)msg;
+- (void) gotUserCashInfoList:(NSArray*)infoList errorMsg:(NSString *)msg;
 
 
 @end
@@ -118,6 +119,8 @@
 -(void)upLoadClientInfo:(NSDictionary *)clientInfo;
 
 - (void)getVueHttpUrl;
+
+-(void)getUserCashInfo:(NSDictionary *)paraDic andApi:(NSString *)api;
 
 
 @end

@@ -23,7 +23,7 @@
 -(void)createMenuView:(NSArray*)titles size:(CGSize)size;
 
 -(void)addViewController:(UIViewController*)vc atIndex:(NSInteger)index;
-
+-(void)setMenuViewOffset:(NSInteger)index;
 
 -(void)addView:(UIView*)view andViewController :(UIViewController*)vc atIndex:(NSInteger )index;
 

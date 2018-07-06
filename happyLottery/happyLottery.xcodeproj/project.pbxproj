@@ -475,6 +475,9 @@
 		2D628B661FF1DAE60013D0E1 /* PayTypeListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D628B641FF1DAE60013D0E1 /* PayTypeListCell.xib */; };
 		2D628B691FF213050013D0E1 /* SchemeCashPayment.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D628B681FF213050013D0E1 /* SchemeCashPayment.m */; };
 		2D628B6B1FF2278F0013D0E1 /* icon_danguan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D628B6A1FF2278E0013D0E1 /* icon_danguan@3x.png */; };
+		2D638F5520EE2C54004463FC /* UserInfoBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D638F5420EE2C54004463FC /* UserInfoBaseModel.m */; };
+		2D638F5920EF1518004463FC /* UserInfoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D638F5720EF1518004463FC /* UserInfoDetailViewController.m */; };
+		2D638F5A20EF1518004463FC /* UserInfoDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D638F5820EF1518004463FC /* UserInfoDetailViewController.xib */; };
 		2D676A8220EA4C330026BA05 /* BetType.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D676A8120EA4C320026BA05 /* BetType.plist */; };
 		2D6F9237208D9D8A007DFD0B /* leshan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D6F9235208D9D89007DFD0B /* leshan@3x.png */; };
 		2D6F9238208D9D8A007DFD0B /* leshan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D6F9236208D9D89007DFD0B /* leshan@2x.png */; };
@@ -2245,6 +2248,11 @@
 		2D628B671FF213050013D0E1 /* SchemeCashPayment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SchemeCashPayment.h; sourceTree = "<group>"; };
 		2D628B681FF213050013D0E1 /* SchemeCashPayment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SchemeCashPayment.m; sourceTree = "<group>"; };
 		2D628B6A1FF2278E0013D0E1 /* icon_danguan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_danguan@3x.png"; sourceTree = "<group>"; };
+		2D638F5320EE2C54004463FC /* UserInfoBaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfoBaseModel.h; sourceTree = "<group>"; };
+		2D638F5420EE2C54004463FC /* UserInfoBaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserInfoBaseModel.m; sourceTree = "<group>"; };
+		2D638F5620EF1518004463FC /* UserInfoDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfoDetailViewController.h; sourceTree = "<group>"; };
+		2D638F5720EF1518004463FC /* UserInfoDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserInfoDetailViewController.m; sourceTree = "<group>"; };
+		2D638F5820EF1518004463FC /* UserInfoDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserInfoDetailViewController.xib; sourceTree = "<group>"; };
 		2D676A8120EA4C320026BA05 /* BetType.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BetType.plist; sourceTree = "<group>"; };
 		2D6F9235208D9D89007DFD0B /* leshan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leshan@3x.png"; sourceTree = "<group>"; };
 		2D6F9236208D9D89007DFD0B /* leshan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leshan@2x.png"; sourceTree = "<group>"; };
@@ -5423,6 +5431,9 @@
 				2D3065E520EC6AFC0084DB97 /* ClassListCellViewController.h */,
 				2D3065E620EC6AFC0084DB97 /* ClassListCellViewController.m */,
 				2D3065E420EC6AFB0084DB97 /* ClassListCellViewController.xib */,
+				2D638F5620EF1518004463FC /* UserInfoDetailViewController.h */,
+				2D638F5720EF1518004463FC /* UserInfoDetailViewController.m */,
+				2D638F5820EF1518004463FC /* UserInfoDetailViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -5452,6 +5463,8 @@
 				2D05C8B620A97E9B001A8953 /* AttentPersonModel.m */,
 				2D7B8DCF20C6501E000EAFB1 /* AgentCommissionModel.h */,
 				2D7B8DD020C6501E000EAFB1 /* AgentCommissionModel.m */,
+				2D638F5320EE2C54004463FC /* UserInfoBaseModel.h */,
+				2D638F5420EE2C54004463FC /* UserInfoBaseModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -7058,6 +7071,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DD5991020E1C976002441B5 /* LotteryPlayViewController.xib in Resources */,
+				2D638F5A20EF1518004463FC /* UserInfoDetailViewController.xib in Resources */,
+				F9CEDF0B20E785C20017EED6 /* chase_mine@3x.png in Resources */,
 				F95BC7D220172AF7006D6243 /* redpacket_open@2x.png in Resources */,
 				F9CDBECC2023242900A1BE71 /* icon_zhifu_selceted@3x.png in Resources */,
 				2D03F2172060B6A500C81BEF /* WebCTZQHisViewController.xib in Resources */,
@@ -8229,6 +8244,7 @@
 				F94B4D7A20BBB1CD00DE0C7A /* deletesearch@3x.png in Sources */,
 				F922FD2420AD5375000BA6F1 /* yucezhanji@3x.png in Sources */,
 				F96C357B20AD0FF600D1F034 /* user@2x.png in Sources */,
+				2D638F5520EE2C54004463FC /* UserInfoBaseModel.m in Sources */,
 				F96C357A20AD0ED100D1F034 /* yuce_defealt@2x.png in Sources */,
 				2D4D608620AD592B00280033 /* AppSignModel.m in Sources */,
 				2D16601020A2CA3400C1C7E7 /* MyHemaiViewController.m in Sources */,
@@ -8363,6 +8379,7 @@
 				F9705E1A207A0DAE00E25E4E /* JCLQTouZhuController.m in Sources */,
 				F9B5DA6E2060BD2E00C9F6DC /* WCHomeGYJItemViewCell.m in Sources */,
 				F9705E4D207A0DE800E25E4E /* JCLQRFSFCell.m in Sources */,
+				2D638F5920EF1518004463FC /* UserInfoDetailViewController.m in Sources */,
 				2D7B13A7204E871C0035AE89 /* CTZQOpenLotteryViewController.m in Sources */,
 				2D739C171FE2611C00264044 /* IQUIScrollView+Additions.m in Sources */,
 				2D7B134C204E2A330035AE89 /* DLTTouZhuViewController.m in Sources */,

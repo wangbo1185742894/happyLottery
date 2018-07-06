@@ -16,8 +16,10 @@
 @end
 
 @interface SchemeInfoFollowCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *labRemark;
 
 @property (weak, nonatomic) IBOutlet UILabel *loterryLabel;
+
 
 @property (weak, nonatomic) IBOutlet UIImageView *lotteryImage;
 

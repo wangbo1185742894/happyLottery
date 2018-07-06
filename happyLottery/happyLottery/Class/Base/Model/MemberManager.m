@@ -1385,7 +1385,7 @@
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        [self.delegate ResetFeedBackReadStatusSmsIsSuccess: YES errorMsg:@"请检查网络连接"];
+        [self.delegate giveShareScore: YES errorMsg:@"请检查网络连接"];
         
     };
     
@@ -1398,5 +1398,31 @@
                         failure:failureBlock];
 }
 
+-(void)getUserCashInfo:(NSDictionary *)paraDic andApi:(NSString *)api{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+                NSString * infoString = [response getAPIResponse];
+        
+        if (response.succeed) {
+            NSArray  *infoList = [self objFromJson:infoString];
+            [self.delegate gotUserCashInfoList: infoList errorMsg:response.errorMsg];
+        }else{
+            [self.delegate gotUserCashInfoList: nil errorMsg:response.errorMsg];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate gotUserCashInfoList: nil errorMsg:@"请检查网络连接"];
+    };
+    
+    SOAPRequest *request = [self requestForAPI:api withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
+    
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
 
 @end

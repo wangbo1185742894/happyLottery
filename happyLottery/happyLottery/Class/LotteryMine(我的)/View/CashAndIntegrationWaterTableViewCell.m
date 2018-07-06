@@ -27,6 +27,17 @@
     // Configure the view for the selected state
 }
 
+-(void)loadUserInfo:(UserInfoBaseModel *)userInfo{
+    self.imgWidth.constant = 0;
+    self.imgDisLeft.constant = 0;
+    self.nameLab.text = userInfo.get1Name;
+    self.priceLab.text = userInfo.get2Name;
+    self.retainLab.text = userInfo.get3Name;
+    self.dateLab.text = userInfo.get4Name;
+    self.labRemark.text = userInfo.getRemark;
+    
+}
+
 -(void)loadData:(AgentTransferModel *)model{
     _btnZhuangZhangState.hidden = NO;
     self.retainLab.textColor = RGBCOLOR(200, 200, 200);

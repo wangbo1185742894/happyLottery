@@ -25,44 +25,12 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </webView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fqC-hh-1Ab">
-                    <rect key="frame" x="187.5" y="523" width="187" height="44"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="44" id="NUr-rd-Vam"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                    <state key="normal" title="山东11炫舞">
-                        <color key="titleColor" red="0.070588235289999995" green="0.78039215689999997" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="actionsd115:" destination="-1" eventType="touchUpInside" id="g6R-z0-OAT"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jAa-YD-Ypv">
-                    <rect key="frame" x="0.0" y="523" width="187.5" height="44"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="44" id="0SG-rv-CCF"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                    <state key="normal" title="陕西11炫舞">
-                        <color key="titleColor" red="0.070588235289999995" green="0.78039215689999997" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="acitonsx115:" destination="-1" eventType="touchUpInside" id="C8s-dY-dOd"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="fqC-hh-1Ab" secondAttribute="bottom" constant="100" id="4nN-VU-A3h"/>
-                <constraint firstItem="jAa-YD-Ypv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="L4S-HZ-QK9"/>
                 <constraint firstItem="7yu-dy-adE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="U5Z-Up-jle"/>
-                <constraint firstAttribute="trailing" secondItem="fqC-hh-1Ab" secondAttribute="trailing" id="eM6-ii-XY2"/>
-                <constraint firstAttribute="bottom" secondItem="jAa-YD-Ypv" secondAttribute="bottom" constant="100" id="kc1-83-xZj"/>
                 <constraint firstAttribute="bottom" secondItem="7yu-dy-adE" secondAttribute="bottom" id="nhD-57-pFa"/>
                 <constraint firstItem="7yu-dy-adE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="r7h-hi-rgM"/>
-                <constraint firstItem="fqC-hh-1Ab" firstAttribute="width" secondItem="jAa-YD-Ypv" secondAttribute="width" id="sTA-fA-gsD"/>
-                <constraint firstItem="fqC-hh-1Ab" firstAttribute="leading" secondItem="jAa-YD-Ypv" secondAttribute="trailing" id="vXw-g3-eg9"/>
                 <constraint firstAttribute="trailing" secondItem="7yu-dy-adE" secondAttribute="trailing" id="yoF-58-tdL"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="53.5"/>

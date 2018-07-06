@@ -9,5 +9,5 @@
 #import "BaseViewController.h"
 
 @interface CashInfoViewController : BaseViewController
-
+-(void)setMenuOffset:(NSInteger)index;
 @end

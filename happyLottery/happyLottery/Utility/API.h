@@ -108,6 +108,58 @@
 #define APIAttentMember             @"attentMember" //关注会员
 #define APIReliefAttent             @"reliefAttent"  //解除跟单
 #define APIlistRechargeHandsel      @"listRechargeHandsel"
+#define API_listSubscribeDetail     @"listSubscribeDetail"
+/**
+ * 分页查询会员的认购明细
+ * @param params {"cardCode":"xxx","page":"xxx","pageSize":"xxx"}
+ * @return List<SubscribeDetail>
+ */
+#define API_listSubscribeDetail     @"listSubscribeDetail"
+/**
+ * 分页查询会员的充值明细
+ * @param params {"cardCode":"xxx","page":"xxx","pageSize":"xxx"}
+ * @return List<RechargeDetail>
+ */
+#define API_listRechargeDetail     @"listRechargeDetail"
+
+/**
+ * 分页查询会员的中奖明细
+ * @param params {"cardCode":"xxx","page":"xxx","pageSize":"xxx"}
+ * @return List<BonusDetail>
+ */
+#define API_listBonusDetail  @"listBonusDetail"
+
+/**
+ * 分页查询会员提现明显
+ * @param params {"cardCode":"xxx","page":"xxx","pageSize":"xxx"}
+ * @return List<WithdrawDetail>
+ */
+#define API_listWithdrawDetail      @"listWithdrawDetail"
+
+
+/**
+ * 分页查询会员彩金明细
+ * @param params {"cardCode":"xxx","page":"xxx","pageSize":"xxx"}
+ * @return List<HandselDetail>
+ */
+#define API_listHandselDetail  @"listHandselDetail"
+
+
+/**
+ * 分页查询会员发单佣金明细
+ * @param params {"cardCode":"xxx","page":"xxx","pageSize":"xxx"}
+ * @return List<FollowDetail>
+ */
+#define API_listFollowDetail        @"listFollowDetail"
+
+/**
+ * 获取返佣明细
+ * @param params {"agentId":"xxx","page":"xxx","pageSize":"xxx"}
+ * @return  List<AgentCommissionDetail>
+ * @throws BizException
+ */
+#define API_listAgentCommissionDetail       @"listAgentCommissionDetail"
+
 
 #define SUBAPIDATA           @"/data"
 #define APISaveClientInfo           @"saveClientInfo"

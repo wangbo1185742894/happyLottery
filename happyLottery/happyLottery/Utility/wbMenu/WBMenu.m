@@ -85,7 +85,12 @@
     [self addSubview:contentView];
 }
 
-
+-(void)setMenuViewOffset:(NSInteger)index{
+    UIButton *but = [UIButton buttonWithType:UIButtonTypeCustom];
+    but.tag = index;
+    but.frame = CGRectMake(0, 0, self.itemSize.width, self.itemSize.height);
+    [self.menuView clickAction:but];
+}
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     NSInteger index = (NSInteger)scrollView.contentOffset.x / self.frame.size.width;
