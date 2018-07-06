@@ -545,8 +545,12 @@
     orderDetailVC.schemeNO = schemeDetail.schemeNO;
     orderDetailVC.lotteryCode = schemeDetail.lottery;
     orderDetailVC.fromView = @"FOLLOW_INIT";
-    orderDetailVC.trOpenResult = schemeDetail.trOpenResult;
-        [self.navigationController pushViewController:orderDetailVC animated:YES];
+    if ([schemeDetail.lottery isEqualToString:@"JCZQ"]) {
+        orderDetailVC.trOpenResult = schemeDetail.trOpenResult;
+    }else {
+        orderDetailVC.lqOpenResult = (NSMutableArray <JCLQOpenResult *> *)schemeDetail.trOpenResult;
+    }
+    [self.navigationController pushViewController:orderDetailVC animated:YES];
 }
 
 -(void)gotoFollowList{

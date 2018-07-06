@@ -160,6 +160,7 @@
 #define APIInitiateFollowScheme     @"initiateFollowScheme"//发单
 #define APIFollowScheme             @"followScheme"//跟单
 #define APIgetAttentFollowScheme    @"getAttentFollowScheme"  //获得关注人的发单
+#define APIconcealSchemeBySchemeNo  @"concealSchemeBySchemeNo" //删除方案
 
 
 

@@ -24,7 +24,7 @@
 		<key>title</key>
 		<string>发单跟单</string>
 		<key>icon</key>
-		<string>documentary</string>
+		<string>folder</string>
 		<key>actionClassName</key>
 		<string>MyPostSchemeViewController</string>
 		<key>ShowIconRight</key>
@@ -38,7 +38,7 @@
 		<key>title</key>
 		<string>我的追号</string>
 		<key>icon</key>
-		<string>chase</string>
+		<string>zhuihao</string>
 		<key>actionClassName</key>
 		<string>ZhuiHaoInfoViewController</string>
 		<key>ShowIconRight</key>
@@ -68,23 +68,9 @@
 		<key>actionClassName</key>
 		<string>MyRedPacketViewController</string>
 		<key>icon</key>
-		<string>redpacket</string>
+		<string>redbag</string>
 		<key>title</key>
 		<string>我的红包</string>
-	</dict>
-	<dict>
-		<key>showRedPoint</key>
-		<false/>
-		<key>title</key>
-		<string>积分商城</string>
-		<key>icon</key>
-		<string>integration</string>
-		<key>needLogin</key>
-		<true/>
-		<key>actionClassName</key>
-		<string>IntegralMallViewController</string>
-		<key>ShowIconRight</key>
-		<string>1</string>
 	</dict>
 	<dict>
 		<key>showRedPoint</key>
@@ -94,7 +80,7 @@
 		<key>title</key>
 		<string>我的收藏</string>
 		<key>icon</key>
-		<string>collect</string>
+		<string>fav</string>
 		<key>actionClassName</key>
 		<string>MyFavoriteViewController</string>
 		<key>ShowIconRight</key>
@@ -108,9 +94,23 @@
 		<key>title</key>
 		<string>我的关注</string>
 		<key>icon</key>
-		<string>attention</string>
+		<string>guanzhu</string>
 		<key>actionClassName</key>
 		<string>MyAttendViewController</string>
+		<key>ShowIconRight</key>
+		<string>1</string>
+	</dict>
+	<dict>
+		<key>showRedPoint</key>
+		<false/>
+		<key>title</key>
+		<string>积分商城</string>
+		<key>icon</key>
+		<string>jifen</string>
+		<key>needLogin</key>
+		<true/>
+		<key>actionClassName</key>
+		<string>IntegralMallViewController</string>
 		<key>ShowIconRight</key>
 		<string>1</string>
 	</dict>
@@ -124,7 +124,7 @@
 		<key>actionClassName</key>
 		<string>FeedbackViewController</string>
 		<key>icon</key>
-		<string>feedback</string>
+		<string>yijian</string>
 		<key>title</key>
 		<string>意见反馈</string>
 	</dict>
@@ -164,7 +164,7 @@
 		<key>ShowIconRight</key>
 		<string>0</string>
 		<key>icon</key>
-		<string>IIUV</string>
+		<string>tuijian</string>
 		<key>actionClassName</key>
 		<string>ConversionCodeViewController</string>
 		<key>title</key>

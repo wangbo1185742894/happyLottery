@@ -75,6 +75,8 @@ typedef enum EarningsType{
 - (void) listSellLottery:(NSDictionary *)lotteryList  errorMsg:(NSString *)msg;
 - (void) listRechargeHandsel:(NSArray *)lotteryList  errorMsg:(NSString *)msg;
 -(void)gotBootPageUrl:(NSString *)strUrl;
+- (void) deleteSchemeByNo:(NSString *)resultStr  errorMsg:(NSString *)msg; //删除订单
+
 @end
 
 @interface LotteryManager : Manager
@@ -148,6 +150,8 @@ typedef enum EarningsType{
 - (void)followScheme:(NSDictionary *)paraic;
 
 - (void)getAttentFollowScheme:(NSDictionary *)paraDic;
+
+- (void)getDeleteSchemeByNo:(NSDictionary *)paraDic;//删除订单
 
 - (void)getInitiateInfo:(NSDictionary *)paraDic;
 - (void)getListAttent:(NSDictionary *)paraDic;

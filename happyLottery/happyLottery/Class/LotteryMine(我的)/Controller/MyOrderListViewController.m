@@ -36,6 +36,8 @@
     NSInteger page;
 }
 @property (strong, nonatomic) NSIndexPath* editingIndexPath;  //当前左滑cell的index，在代理方法中设置
+@property (strong, nonatomic) NSIndexPath* selectIndexPath; //当前要删除的cell
+
 @end
 
 @implementation MyOrderListViewController
@@ -233,10 +235,24 @@
 
         [alert addBtnTitle:TitleDo action:^{
             [tableView setEditing:NO animated:YES];
-            [self->dataArray removeObjectAtIndex:indexPath.row];
-            [tableView reloadData];
+            self.selectIndexPath = indexPath;
+            JCZQSchemeItem *seleteScheme = self->dataArray[indexPath.row];
+            NSDictionary *dic = @{@"schemeNo":seleteScheme.schemeNO};
+            [self.lotteryMan getDeleteSchemeByNo:dic];
         }];
         [alert showAlertWithSender:self];
+    }
+}
+
+- (void) deleteSchemeByNo:(NSString *)resultStr  errorMsg:(NSString *)msg{
+    if (msg == nil) {
+        [tabSchemeList setEditing:NO];
+        [dataArray removeObjectAtIndex:self.selectIndexPath.row];
+        [tabSchemeList deleteRowsAtIndexPaths:@[self.selectIndexPath] withRowAnimation:UITableViewRowAnimationBottom];
+//        [tabSchemeList reloadData];
+         [self showPromptText:@"删除订单成功" hideAfterDelay:1.7];
+    } else {
+        [self showPromptText:msg hideAfterDelay:1.7];
     }
 }
 
@@ -307,9 +323,12 @@
         }];
         
         [alert addBtnTitle:TitleDo action:^{
-            [self->dataArray removeObjectAtIndex:indexPath.row];
             completionHandler (YES);
-            [tableView reloadData];
+            self.selectIndexPath = indexPath;
+            JCZQSchemeItem *seleteScheme = self->dataArray[indexPath.row];
+            NSDictionary *dic = @{@"schemeNo":seleteScheme.schemeNO};
+            [self.lotteryMan getDeleteSchemeByNo:dic];
+            
         }];
         [alert showAlertWithSender:self];
         
