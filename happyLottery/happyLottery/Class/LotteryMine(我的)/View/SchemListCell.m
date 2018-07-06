@@ -68,7 +68,7 @@
             labSchemeState.text = [NSString stringWithFormat:@"中奖%.2f分",[model.bonus doubleValue]];
         }
     }else{
-        labSchemeState.textColor = SystemGreen;
+        labSchemeState.textColor = SystemLightGray;
     }
 }
 
