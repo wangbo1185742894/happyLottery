@@ -256,10 +256,10 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kk5-rP-XGf">
-                            <rect key="frame" x="14" y="169" width="347" height="50"/>
+                            <rect key="frame" x="14" y="169" width="347" height="65"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K9m-13-mCb">
-                                    <rect key="frame" x="176" y="0.0" width="171" height="50"/>
+                                    <rect key="frame" x="176" y="0.0" width="171" height="65"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
                                     <state key="normal" title="提现" image="cash_mine.png">
@@ -270,7 +270,7 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UqZ-TQ-vqy">
-                                    <rect key="frame" x="173" y="9" width="1" height="33"/>
+                                    <rect key="frame" x="173" y="16.5" width="1" height="33"/>
                                     <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="33" id="1zB-KF-61F"/>
@@ -281,7 +281,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nGQ-9Q-TVZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="171" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="171" height="65"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
@@ -301,7 +301,7 @@
                                 <constraint firstAttribute="bottom" secondItem="nGQ-9Q-TVZ" secondAttribute="bottom" id="Ryc-IO-gEq"/>
                                 <constraint firstItem="nGQ-9Q-TVZ" firstAttribute="top" secondItem="kk5-rP-XGf" secondAttribute="top" id="Wim-bI-mh5"/>
                                 <constraint firstItem="UqZ-TQ-vqy" firstAttribute="centerY" secondItem="kk5-rP-XGf" secondAttribute="centerY" id="aIQ-g6-4ie"/>
-                                <constraint firstAttribute="height" constant="50" id="dDR-Z9-S69"/>
+                                <constraint firstAttribute="height" constant="65" id="dDR-Z9-S69"/>
                                 <constraint firstItem="UqZ-TQ-vqy" firstAttribute="leading" secondItem="nGQ-9Q-TVZ" secondAttribute="trailing" constant="2" id="mJf-5b-bgi"/>
                                 <constraint firstItem="K9m-13-mCb" firstAttribute="width" secondItem="nGQ-9Q-TVZ" secondAttribute="width" id="sGV-8B-3sM"/>
                                 <constraint firstItem="UqZ-TQ-vqy" firstAttribute="centerX" secondItem="kk5-rP-XGf" secondAttribute="centerX" id="wgB-mU-awQ"/>
@@ -309,7 +309,7 @@
                             </constraints>
                         </view>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SK6-b0-laz">
-                            <rect key="frame" x="0.0" y="219" width="375" height="448"/>
+                            <rect key="frame" x="0.0" y="234" width="375" height="448"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="448" id="msd-Up-1x5"/>

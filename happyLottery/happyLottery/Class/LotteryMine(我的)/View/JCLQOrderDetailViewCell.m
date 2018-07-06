@@ -485,19 +485,26 @@
         
         NSString*type = [self getContentJCLQ:contentArray andOption:op];
         NSString *odd = [self getOddWithOption:op matchKey:matchKey];
+        NSString *handicap = [self getHandWithmatchKey:matchKey];
+        NSString *cont;
         if (odd.length == 0 || odd == nil) {
-            [content appendFormat:@"【%@】",type,odd];
-            if ([op isEqualToString:winType]) {
-                redText = [NSString stringWithFormat:@"【%@】",type,odd];
+            if (handicap.length == 0 ||handicap == nil){
+                cont = [NSString stringWithFormat:@"【%@】",type];
+            } else {
+                cont = [NSString stringWithFormat:@"【%@(%@)】",type,handicap];
             }
-        }else{
-            [content appendFormat:@"【%@@%@】",type,odd];
-            if ([op isEqualToString:winType]) {
-                redText = [NSString stringWithFormat:@"【%@@%@】",type,odd];
+        } else{
+            if (handicap.length == 0 ||handicap == nil){
+                cont = [NSString stringWithFormat:@"【%@@%@】",type,odd];
+            } else {
+                cont = [NSString stringWithFormat:@"【%@(%@)@%@】",type,handicap,odd];
             }
         }
+        [content appendString:cont];
+        if ([op isEqualToString:winType]) {
+            redText = cont;
+        }
     }
-    
     if (content.length >1) {
         return content;
     }
@@ -611,20 +618,26 @@
     NSString *winType = [self setContentWin:playType resultArray:openResult Matchkey:matchKey];
     redText = @"";
     for (NSString *op in option) {
-        
         NSString*type = [self getContent:contentArray andOption:op];
         NSString *odd = [NSString stringWithFormat:@"%@",[self getOddWithOption:op matchKey:matchKey]];
-        
+        NSString *handicap = [self getHandWithmatchKey:matchKey];
+        NSString *cont;
         if (odd.length == 0 || odd == nil) {
-            [content appendFormat:@"【%@】",type,odd];
-            if ([op isEqualToString:winType]) {
-                redText = [NSString stringWithFormat:@"【%@】",type,odd];
+            if (handicap.length == 0 ||handicap == nil){
+                cont = [NSString stringWithFormat:@"【%@】",type];
+            } else {
+                cont = [NSString stringWithFormat:@"【%@(%@)】",type,handicap];
             }
-        }else{
-            [content appendFormat:@"【%@@%@】",type,odd];
-            if ([op isEqualToString:winType]) {
-                redText = [NSString stringWithFormat:@"【%@@%@】",type,odd];
+        } else{
+            if (handicap.length == 0 ||handicap == nil){
+                cont = [NSString stringWithFormat:@"【%@@%@】",type,odd];
+            } else {
+                cont = [NSString stringWithFormat:@"【%@(%@)@%@】",type,handicap,odd];
             }
+        }
+        [content appendString:cont];
+        if ([op isEqualToString:winType]) {
+            redText = cont;
         }
     }
     
@@ -733,6 +746,22 @@
     
 }
 
+-(NSString *)getHandWithmatchKey:(NSString *)matchKey{
+    if (itemDic[@"odds"] == nil) {
+        return @"";
+    }
+    NSDictionary *itemOddsDic = [Utility objFromJson:itemDic[@"odds"]];//让球数
+    NSArray *oddsArray =itemOddsDic[@"itemsOdds"];
+    
+    for (NSDictionary *itemDic in oddsArray) {
+        if ([itemDic[@"matchKey"] integerValue] == [matchKey integerValue]) {
+            NSString *handicap = [Utility objFromJson:itemDic[@"handicap"]];
+            return handicap;
+        }
+    }
+    return @"";
+}
+
 -(NSString *)getOddWithOption:(NSString *)option matchKey:(NSString *)matchKey{
     if (itemDic[@"odds"] == nil) {
         return @"";
@@ -742,6 +771,7 @@
     for (NSDictionary *itemDic in oddsArray) {
         if ([itemDic[@"matchKey"] integerValue] == [matchKey integerValue]) {
             NSDictionary *odds = [Utility objFromJson:itemDic[@"odds"]];
+            
             return odds[option];
         }
     }
