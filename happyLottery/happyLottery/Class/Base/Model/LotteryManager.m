@@ -1591,6 +1591,34 @@
                         failure:failureBlock];
 }
 
+
+- (void)getDeleteSchemeByNo:(NSDictionary *)paraDic
+{
+    
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed) {
+            NSString * userInfo = [self objFromJson: responseJsonStr];
+            [self.delegate deleteSchemeByNo:userInfo errorMsg:nil];
+        } else {
+            [self.delegate deleteSchemeByNo:nil errorMsg:response.errorMsg];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate deleteSchemeByNo:nil errorMsg:@"请检查网络连接"];
+    };
+    
+    SOAPRequest *request = [self requestForAPI: APIconcealSchemeBySchemeNo withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPISchemeService
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
 - (void)getInitiateInfo:(NSDictionary *)paraDic
 {
     

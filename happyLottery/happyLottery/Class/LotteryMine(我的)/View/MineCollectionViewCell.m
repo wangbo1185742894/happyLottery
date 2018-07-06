@@ -25,11 +25,7 @@
 
 
 -(void)setItemIcom:(NSDictionary *)model{
-    
 }
-- (IBAction)itemClick:(UIButton *)sender {
-    [self.delegate itemClick:nil];
-    
-}
+
 
 @end
