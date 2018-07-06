@@ -61,7 +61,7 @@
          labWinState.text = model.getSchemeState;
         imgWinState.hidden = YES;
         labWonCost.hidden  = YES;
-        labWinState.textColor = [UIColor blackColor];
+        labWinState.textColor = SystemLightGray;
     }
     
     labZigouCost.text =[NSString stringWithFormat:@"自购：%@元", model.betCost];
