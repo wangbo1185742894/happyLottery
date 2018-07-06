@@ -127,11 +127,11 @@
     }else if([self.schemeStatus isEqualToString:@"CANCEL"]){
         state = @"方案取消";
     }else if([self.schemeStatus isEqualToString:@"REPEAL"]){
-        state = @"方案撤销";
+        state = @"已退款";
     }else{
         
             if ([self.ticketStatus isEqualToString:@"FAIL_TICKET"]) {
-                state = @"出票失败";
+                state = @"已退款";
                
             }else if ([self.ticketStatus isEqualToString:@"WAIT_PAY"]) {
                 state = @"待支付";

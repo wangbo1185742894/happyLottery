@@ -8,6 +8,7 @@
 
 #import "MineViewController.h"
 #import "MineTableViewCell.h"
+#import "MyAgentInfoModel.h"
 #import "UIImage+RandomSize.h"
 #import "CashInfoViewController.h"
 #import "LoginViewController.h"
@@ -34,7 +35,7 @@
 
 #define KMenuCollectionViewCell @"MineCollectionViewCell"
 
-@interface MineViewController () <UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,MemberManagerDelegate>{
+@interface MineViewController () <UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,MemberManagerDelegate,AgentManagerDelegate>{
     NSMutableArray <NSDictionary *>*listArray;
     NSMutableArray <NSDictionary *>*groupArray;
     __weak IBOutlet UIButton *btnMyCircle;
@@ -259,6 +260,9 @@
     [self reloadDateArray];
     [self.mineInfoColloView reloadData];
     NSString *userName;
+    if (self.curUser.cardCode.length >0) {
+        [self getMyAgentInfo];
+    }
     if (self.curUser.nickname.length == 0) {
         userName = self.curUser.mobile;
     }else{
@@ -371,8 +375,23 @@
         pcVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:pcVC animated:YES];
     }
-    
 }
+
+-(void)getMyAgentInfo{
+    self.agentMan.delegate = self;
+    [self.agentMan getMyAgentInfo:@{@"cardCode":self.curUser.cardCode}];
+}
+
+
+-(void)getMyAgentInfodelegate:(NSDictionary *)param isSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    if (success == NO) {
+        [self showPromptText:msg hideAfterDelay:1.8];
+        return;
+    }
+    MyAgentInfoModel * curMode = [[MyAgentInfoModel alloc]initWith:param];
+    self.curUser.agentInfo= curMode;
+}
+
 - (IBAction)integralBtnClick:(id)sender {
      if (!self.curUser.isLogin) {
         [self needLogin];
@@ -789,6 +808,7 @@
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     self.navigationController.navigationBar.hidden = NO;
+   
     [self hideLoadingView];
 }
 

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -98,6 +98,12 @@
                         <color key="textColor" red="0.99607843139999996" green="0.2274509804" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bWH-Ax-u2l">
+                        <rect key="frame" x="314.5" y="79" width="35.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.99607843139999996" green="0.2274509804" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="srm-Ut-VEF">
                         <rect key="frame" x="158" y="116" width="18" height="18"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -162,6 +168,7 @@
                 <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstItem="53O-Ny-DNU" firstAttribute="top" secondItem="ySy-e2-Uzq" secondAttribute="topMargin" constant="34" id="0ax-TO-IyN"/>
+                    <constraint firstItem="bWH-Ax-u2l" firstAttribute="trailing" secondItem="LeJ-zY-JJm" secondAttribute="trailing" id="3h4-JZ-6p5"/>
                     <constraint firstItem="hbe-fn-PQb" firstAttribute="centerY" secondItem="zlu-aT-jeV" secondAttribute="centerY" id="3og-DX-fMg"/>
                     <constraint firstItem="Tjc-XO-DGg" firstAttribute="centerY" secondItem="yKR-vY-apE" secondAttribute="centerY" id="74b-DS-EJc"/>
                     <constraint firstItem="zlu-aT-jeV" firstAttribute="top" secondItem="yKR-vY-apE" secondAttribute="bottom" constant="13" id="8bP-YH-5Ym"/>
@@ -177,6 +184,7 @@
                     <constraint firstItem="4gx-uW-Oml" firstAttribute="leading" secondItem="ySy-e2-Uzq" secondAttribute="leading" constant="10" id="Voq-5d-h3A"/>
                     <constraint firstItem="l3v-jZ-Vf7" firstAttribute="centerY" secondItem="4gx-uW-Oml" secondAttribute="centerY" id="WHk-ix-7Ce"/>
                     <constraint firstAttribute="bottom" secondItem="iRt-sN-hrh" secondAttribute="bottom" id="Xxl-yR-Ode"/>
+                    <constraint firstItem="bWH-Ax-u2l" firstAttribute="top" secondItem="LeJ-zY-JJm" secondAttribute="bottom" constant="1" id="aVU-vm-Rrc"/>
                     <constraint firstItem="GKI-KN-c5E" firstAttribute="centerX" secondItem="hqd-Op-NDd" secondAttribute="centerX" id="bnn-Qe-Dac"/>
                     <constraint firstItem="qnt-fL-mTO" firstAttribute="top" secondItem="l3v-jZ-Vf7" secondAttribute="bottom" constant="15" id="eCp-YX-ugf"/>
                     <constraint firstItem="hbe-fn-PQb" firstAttribute="top" secondItem="srm-Ut-VEF" secondAttribute="bottom" constant="26" id="em8-hS-4Pg"/>
@@ -209,6 +217,7 @@
                 <outlet property="fanganLabel" destination="zlu-aT-jeV" id="RM2-UZ-sjk"/>
                 <outlet property="helpButton" destination="srm-Ut-VEF" id="stZ-Vm-YAW"/>
                 <outlet property="labBetBouns" destination="GKI-KN-c5E" id="URn-SE-xNd"/>
+                <outlet property="labRemark" destination="bWH-Ax-u2l" id="CDp-nK-6Hx"/>
                 <outlet property="loterryLabel" destination="hqd-Op-NDd" id="y5d-vO-vwD"/>
                 <outlet property="lotteryImage" destination="qnt-fL-mTO" id="vWe-ki-EeV"/>
                 <outlet property="moneyLabel" destination="Tjc-XO-DGg" id="60h-bk-9xp"/>

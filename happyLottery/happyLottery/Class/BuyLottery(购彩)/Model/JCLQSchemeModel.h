@@ -54,6 +54,7 @@
 @property(nonatomic,copy)NSString * lotteryIcon;
 @property(nonatomic,copy)NSString * ticketCount;
 @property(nonatomic,copy)NSString * printCount;
+@property(nonatomic,copy)NSString * ticketFailRef;
 @property(nonatomic,copy)NSString * schemeStatus;
 @property(nonatomic,copy)NSString * bonus;
 @property(nonatomic,copy)NSString * finished;

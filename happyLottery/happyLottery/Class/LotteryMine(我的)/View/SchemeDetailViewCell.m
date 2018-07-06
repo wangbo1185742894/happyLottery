@@ -20,7 +20,7 @@
     __weak IBOutlet UILabel *labBetBouns;
     __weak IBOutlet UILabel *labSchemeTime;
     __weak IBOutlet MGLabel *labTicketCount;
-    __weak IBOutlet UILabel *labLottery;
+    __weak IBOutlet UILabel *labLotteryDes;
     __weak IBOutlet UILabel *labSchemeNo;
     __weak IBOutlet UILabel *labBouns;
     __weak IBOutlet UILabel *labBetCost;
@@ -30,6 +30,7 @@
     __weak IBOutlet UILabel *fanganhao;
     __weak IBOutlet UILabel *touzhujine;
     __weak IBOutlet NSLayoutConstraint *rightCons;
+    __weak IBOutlet UILabel *labLottery;
 }
 @end
 
@@ -56,7 +57,15 @@
         if ([model.ticketCount integerValue] == 0) {
              labTicketCount.text = @"";
         }else{
-        labTicketCount.text = [NSString stringWithFormat:@"出票%@/%@单",model.printCount,model.ticketCount];
+
+            if ([model.ticketFailRef doubleValue] > 0 && [model.printCount doubleValue]>0) {
+                 labTicketCount.text = [NSString stringWithFormat:@"出票%@/%@单(未出票订单已退款)",model.printCount,model.ticketCount];
+                labTicketCount.keyWord = @"(未出票订单已退款)";
+                labTicketCount.keyWordColor = SystemRed;
+            }else{
+                 labTicketCount.text = [NSString stringWithFormat:@"出票%@/%@单",model.printCount,model.ticketCount];
+            }
+       
         }
         
     }else{
@@ -75,7 +84,12 @@
     }
     
     labSchemeTime.text = model.createTime;
-    labLottery.text = [self getLotteryByCode:model.lottery];
+    
+    NSMutableParagraphStyle * paragraphStyle1 = [[NSMutableParagraphStyle alloc]init];
+    [paragraphStyle1 setLineSpacing:5];
+    NSAttributedString *att = [[NSAttributedString alloc]initWithString:[self getLotteryByCodeDesc:model.lottery] attributes:@{NSParagraphStyleAttributeName:paragraphStyle1}];
+    labLotteryDes.attributedText = att;
+    labLottery.attributedText = [[NSAttributedString alloc]initWithString:[self getLotteryByCode:model.lottery] attributes:@{NSParagraphStyleAttributeName:paragraphStyle1}];
     if ([Utility isIphone5s]) {
         labLottery.font = [UIFont systemFontOfSize:13.5];
         rightCons.constant = 0;
@@ -140,30 +154,37 @@
     return @"0.00元";
 }
 
-
+-(NSString *)getLotteryByCodeDesc:(NSString *)code{
+   if ([code isEqualToString:@"SX115"] || [code isEqualToString:@"SD115"] || [code isEqualToString:@"SSQ"] || [code isEqualToString:@"SFC"] || [code isEqualToString:@"RJC"] || [code isEqualToString:@"DLT"]){
+        return @"彩种\n期号";
+   }else{
+       return @"彩种";
+   }
+    
+}
 
 -(NSString *)getLotteryByCode:(NSString *)code{
     if ([code isEqualToString:@"JCZQ"]) {
         return @"竞彩足球";
     }else if([code isEqualToString:@"DLT"]){
-        return [NSString stringWithFormat:@"超级大乐透(第%@期)",scheme.issueNumber];
+        return [NSString stringWithFormat:@"超级大乐透\n第%@期",scheme.issueNumber];
     }else if([code isEqualToString:@"RJC"]){
-        return [NSString stringWithFormat:@"任选9场(第%@期)",scheme.issueNumber];
+        return [NSString stringWithFormat:@"任选9场\n第%@期",scheme.issueNumber];
     }else if([code isEqualToString:@"SFC"]){
-        return [NSString stringWithFormat:@"胜负14场(第%@期)",scheme.issueNumber];
+        return [NSString stringWithFormat:@"胜负14场\n第%@期",scheme.issueNumber];
     }else if ([code isEqualToString:@"JCGYJ"]){
         return @"冠亚军游戏";
     }else if ([code isEqualToString:@"JCGJ"]){
         return @"冠军游戏";
     }else if ([code isEqualToString:@"SSQ"]){
-        return [NSString stringWithFormat:@"双色球(第%@期)",scheme.issueNumber];
+        return [NSString stringWithFormat:@"双色球\n第%@期",scheme.issueNumber];
     }else if ([code isEqualToString:@"JCLQ"]){
         return @"竞彩篮球";
     }else if ([code isEqualToString:@"SD115"]){
-        return [NSString stringWithFormat:@"山东11选5(第%@期)",scheme.issueNumber];
+        return [NSString stringWithFormat:@"山东11选5\n第%@期",scheme.issueNumber];
         
     }else if ([code isEqualToString:@"SX115"]){
-        return [NSString stringWithFormat:@"陕西11选5(第%@期)",scheme.issueNumber];
+        return [NSString stringWithFormat:@"陕西11选5\n第%@期",scheme.issueNumber];
     }
     return @"彩票";
 }

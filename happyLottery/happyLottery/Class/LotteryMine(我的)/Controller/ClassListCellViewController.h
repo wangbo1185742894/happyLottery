@@ -11,5 +11,7 @@
 @interface ClassListCellViewController : BaseViewController
 
 @property(nonatomic,strong)UIViewController *navVC;
+@property(nonatomic,strong)NSString *strApi;
+@property(nonatomic,strong)NSMutableDictionary  *firstPara;
 
 @end

@@ -155,6 +155,19 @@
             gyjPlayVc.navigationController.navigationBar.hidden = YES;
             [self.navigationController pushViewController:gyjPlayVc animated:YES];
         }
+        else if ([lotteryName isEqualToString:@"SD115"]){
+            LotteryPlayViewController *gyjPlayVc = [[LotteryPlayViewController alloc]init];
+            gyjPlayVc.hidesBottomBarWhenPushed = YES;
+            gyjPlayVc.lottery = self.lotteryDS[11];
+            [self.navigationController pushViewController:gyjPlayVc animated:YES];
+        }
+        else if ([lotteryName isEqualToString:@"SX115"]){
+            LotteryPlayViewController *gyjPlayVc = [[LotteryPlayViewController alloc]init];
+            gyjPlayVc.hidesBottomBarWhenPushed = YES;
+            gyjPlayVc.lottery = self.lotteryDS[0];
+            [self.navigationController pushViewController:gyjPlayVc animated:YES];
+            
+        }
         else {
             [self showPromptText:@"此彩种暂停销售" hideAfterDelay:1.0];
         }
@@ -282,19 +295,6 @@
 -(void)exchangeToast:(NSString *)msg{
     [self showPromptText:msg hideAfterDelay:1.7];
 }
-- (IBAction)acitonsx115:(id)sender {
-    LotteryPlayViewController *gyjPlayVc = [[LotteryPlayViewController alloc]init];
-    gyjPlayVc.hidesBottomBarWhenPushed = YES;
-    gyjPlayVc.lottery = self.lotteryDS[0];
-    [self.navigationController pushViewController:gyjPlayVc animated:YES];
-    
-}
-- (IBAction)actionsd115:(id)sender {
-    LotteryPlayViewController *gyjPlayVc = [[LotteryPlayViewController alloc]init];
-    gyjPlayVc.hidesBottomBarWhenPushed = YES;
-    gyjPlayVc.lottery = self.lotteryDS[11];
-    [self.navigationController pushViewController:gyjPlayVc animated:YES];
-    
-}
+
 
 @end

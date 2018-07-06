@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "BaseModel.h"
+#import "MyAgentInfoModel.h"
 
 //{
 //    balance = 999996; *
@@ -73,6 +74,8 @@ typedef enum {
 
 @property(nonatomic,strong)NSString *totalBanlece;
 @property (nonatomic, assign) PayVerifyType payVerifyType;
+
+@property(nonatomic,strong)MyAgentInfoModel *agentInfo;
 
 -(NSString *)getShareUrl;
 @end

@@ -50,6 +50,11 @@
     
     self.labBetBouns.text = [NSString stringWithFormat:@"投注%d元",[model.betCost intValue]];
     self.winLabel.text = model.getSchemeState;
+    if ([model.ticketFailRef doubleValue] > 0 && model.printCount >0) {
+        self.labRemark.text = [NSString stringWithFormat:@"未出票订单已退款"];
+    }else{
+        self.labRemark.text = [NSString stringWithFormat:@""];
+    }
     if([self.winLabel.text containsString:@"已中奖"]){
         [self.winImage setImage:[UIImage imageNamed:@"win.png"]];
         self.winLabel.textColor = RGBCOLOR(254, 58, 81);

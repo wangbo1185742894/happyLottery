@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -27,11 +27,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gOu-uf-x4P">
                     <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                     <subviews>
-                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jZD-Fc-YyM">
-                            <rect key="frame" x="10" y="20" width="355" height="33"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="32" id="cbV-KC-8HG"/>
-                            </constraints>
+                        <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jZD-Fc-YyM">
+                            <rect key="frame" x="10" y="20" width="355" height="29"/>
                             <segments>
                                 <segment title="现金明细"/>
                                 <segment title="积分明细"/>
@@ -42,27 +39,27 @@
                             </connections>
                         </segmentedControl>
                         <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EIa-5v-MRM">
-                            <rect key="frame" x="0.0" y="62" width="375" height="541"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </tableView>
                         <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jc0-Sj-Ftj">
-                            <rect key="frame" x="0.0" y="62" width="375" height="541"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </tableView>
                     </subviews>
                     <color key="backgroundColor" red="0.96444731949999996" green="0.96840888260000002" blue="0.98488038779999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
+                        <constraint firstItem="EIa-5v-MRM" firstAttribute="top" secondItem="gOu-uf-x4P" secondAttribute="top" id="FVr-FV-ais"/>
                         <constraint firstAttribute="bottom" secondItem="EIa-5v-MRM" secondAttribute="bottom" id="LF5-fC-ek4"/>
                         <constraint firstAttribute="trailing" secondItem="EIa-5v-MRM" secondAttribute="trailing" id="LuX-hn-qgA"/>
                         <constraint firstItem="jc0-Sj-Ftj" firstAttribute="leading" secondItem="gOu-uf-x4P" secondAttribute="leading" id="NI0-Be-DkM"/>
                         <constraint firstAttribute="bottom" secondItem="jc0-Sj-Ftj" secondAttribute="bottom" id="THA-Pv-UgN"/>
                         <constraint firstItem="EIa-5v-MRM" firstAttribute="leading" secondItem="gOu-uf-x4P" secondAttribute="leading" id="Xk6-rF-GiI"/>
+                        <constraint firstItem="jZD-Fc-YyM" firstAttribute="top" secondItem="gOu-uf-x4P" secondAttribute="top" constant="20" id="ZUl-nw-cUW"/>
                         <constraint firstItem="jZD-Fc-YyM" firstAttribute="leading" secondItem="gOu-uf-x4P" secondAttribute="leading" constant="10" id="bHx-Sb-cqs"/>
-                        <constraint firstItem="jZD-Fc-YyM" firstAttribute="top" secondItem="gOu-uf-x4P" secondAttribute="top" constant="20" id="dWE-fp-OER"/>
-                        <constraint firstItem="EIa-5v-MRM" firstAttribute="top" secondItem="jZD-Fc-YyM" secondAttribute="bottom" constant="10" id="fi3-6z-AMJ"/>
                         <constraint firstAttribute="trailing" secondItem="jc0-Sj-Ftj" secondAttribute="trailing" id="kln-g3-H1I"/>
                         <constraint firstAttribute="trailing" secondItem="jZD-Fc-YyM" secondAttribute="trailing" constant="10" id="mQ4-ck-gsf"/>
-                        <constraint firstItem="jc0-Sj-Ftj" firstAttribute="top" secondItem="jZD-Fc-YyM" secondAttribute="bottom" constant="10" id="w80-lT-4tw"/>
+                        <constraint firstItem="jc0-Sj-Ftj" firstAttribute="top" secondItem="gOu-uf-x4P" secondAttribute="top" id="naE-sp-gav"/>
                     </constraints>
                 </view>
             </subviews>

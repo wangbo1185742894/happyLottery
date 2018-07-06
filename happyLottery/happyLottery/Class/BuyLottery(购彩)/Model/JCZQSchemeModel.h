@@ -65,6 +65,7 @@
 @property(nonatomic,copy)NSString * useCoupon;
 @property(nonatomic,copy)NSString * finishedTime;
 @property(nonatomic,copy)NSString * subTime;
+@property(nonatomic ,copy)NSString *ticketFailRef;
 @property(nonatomic,copy)NSMutableArray <OpenResult *> * trOpenResult;
 @property(nonatomic,copy)NSString * trDltOpenResult;
 
