@@ -950,6 +950,8 @@
 		F90D68F120F0B1A7007865E4 /* sdwanfa.html in Resources */ = {isa = PBXBuildFile; fileRef = F90D68ED20F0B1A5007865E4 /* sdwanfa.html */; };
 		F90D68F220F0B1A7007865E4 /* sdjianjie.html in Resources */ = {isa = PBXBuildFile; fileRef = F90D68EE20F0B1A6007865E4 /* sdjianjie.html */; };
 		F90D68F320F0B1A7007865E4 /* sdjiangxiang.html in Resources */ = {isa = PBXBuildFile; fileRef = F90D68EF20F0B1A6007865E4 /* sdjiangxiang.html */; };
+		F90D68F620F0BD4F007865E4 /* user_mine@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F90D68F420F0BD4D007865E4 /* user_mine@3x.png */; };
+		F90D68F720F0BD4F007865E4 /* user_mine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F90D68F520F0BD4E007865E4 /* user_mine@2x.png */; };
 		F90FCD551FF34D1C00BD807C /* MyRedPacketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F90FCD531FF34D1C00BD807C /* MyRedPacketViewController.m */; };
 		F90FCD561FF34D1C00BD807C /* MyRedPacketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F90FCD541FF34D1C00BD807C /* MyRedPacketViewController.xib */; };
 		F90FCD5A1FF34D5000BD807C /* MyRedPacketTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F90FCD581FF34D5000BD807C /* MyRedPacketTableViewCell.m */; };
@@ -3003,6 +3005,8 @@
 		F90D68ED20F0B1A5007865E4 /* sdwanfa.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sdwanfa.html; sourceTree = "<group>"; };
 		F90D68EE20F0B1A6007865E4 /* sdjianjie.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sdjianjie.html; sourceTree = "<group>"; };
 		F90D68EF20F0B1A6007865E4 /* sdjiangxiang.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sdjiangxiang.html; sourceTree = "<group>"; };
+		F90D68F420F0BD4D007865E4 /* user_mine@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_mine@3x.png"; sourceTree = "<group>"; };
+		F90D68F520F0BD4E007865E4 /* user_mine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_mine@2x.png"; sourceTree = "<group>"; };
 		F90FCD521FF34D1C00BD807C /* MyRedPacketViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyRedPacketViewController.h; sourceTree = "<group>"; };
 		F90FCD531FF34D1C00BD807C /* MyRedPacketViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyRedPacketViewController.m; sourceTree = "<group>"; };
 		F90FCD541FF34D1C00BD807C /* MyRedPacketViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyRedPacketViewController.xib; sourceTree = "<group>"; };
@@ -6887,6 +6891,8 @@
 		F9E53D2820EE26B90072B8AF /* MineIcon */ = {
 			isa = PBXGroup;
 			children = (
+				F90D68F520F0BD4E007865E4 /* user_mine@2x.png */,
+				F90D68F420F0BD4D007865E4 /* user_mine@3x.png */,
 				F9E53D4420EE28CF0072B8AF /* cash_mine@2x.png */,
 				F9E53D4A20EE28D50072B8AF /* cash_mine@3x.png */,
 				F9E53D2D20EE28BC0072B8AF /* chongzhi_mine@2x.png */,
@@ -7707,6 +7713,7 @@
 				2DE1094A2003423E0020343A /* hometeam@3x.png in Resources */,
 				2D8CBFCE1FF3769F00CC367F /* YuCeLiShiZhanJViewController.xib in Resources */,
 				F9B5D9A22060A9DE00C9F6DC /* flag434@3x.png in Resources */,
+				F90D68F720F0BD4F007865E4 /* user_mine@2x.png in Resources */,
 				F9705E52207A0DE800E25E4E /* JCLQSFCell.xib in Resources */,
 				2D739CE81FEB462B00264044 /* guoguan@2x.png in Resources */,
 				2D7B8D9A20C51FE2000EAFB1 /* MyCricleFriendVC.xib in Resources */,
@@ -7765,6 +7772,7 @@
 				F9B5D9922060A9DE00C9F6DC /* flag414@3x.png in Resources */,
 				2D0EEA7F2012F7AF00B0769C /* icon_mingzhong@2x.png in Resources */,
 				2D05C84D20A43631001A8953 /* second@2x.png in Resources */,
+				F90D68F620F0BD4F007865E4 /* user_mine@3x.png in Resources */,
 				F99927752003511000023F8F /* bluecoupon@2x.png in Resources */,
 				2D0E23BA20196B590098DA40 /* losing_lottery@2x.png in Resources */,
 				F9F6CA9A1FF5D6B100A49F71 /* about@3x.png in Resources */,
