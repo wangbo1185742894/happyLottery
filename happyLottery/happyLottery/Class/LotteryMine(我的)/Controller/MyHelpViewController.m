@@ -21,10 +21,6 @@
 @interface MyHelpViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottom;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollerview;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *height;
 @property (strong,nonatomic) NSArray <NSDictionary *> *listArray;
 
 @end
@@ -35,11 +31,6 @@
     [super viewDidLoad];
     self.title = @"帮助";
     self.viewControllerNo = @"A207";
-    if ([self isIphoneX]) {
-        self.top.constant = 24;
-    }
-//    self.height.constant = 770;
-    self.height.constant = 815;
     [self setTableView];
     self.listArray = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"PlayIntroduce" ofType: @"plist"]];
     
@@ -51,7 +42,6 @@
     self.tableView.dataSource = self;
     self.tableView.rowHeight = 45;
 }
-
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 3;
