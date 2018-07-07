@@ -74,6 +74,7 @@
 @property(strong, nonatomic) NSString * memberSubFunctionClass;
 @property (weak, nonatomic) IBOutlet UIImageView *topHead;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightCon;
+@property (weak, nonatomic) IBOutlet UIButton *siginBtn;
 @property(nonatomic,strong)  LoadData  *loadDataTool;
 @end
 
@@ -85,6 +86,7 @@
     self.memberMan.delegate = self;
     listUseRedPacketArray = [[NSMutableArray alloc]init];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(actionUserLoginSuccess:) name:NotificationNameUserLogin object:nil];
+    
     self.loadDataTool = [LoadData singleLoadData];
     [self noticeCenterSet];
     [self setTableView];
@@ -244,13 +246,15 @@
 }
 
 -(void)gotisSignInToday:(NSString *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
-//    if (success ) {
-//        if ([redPacketInfo boolValue] == NO) { // 未签
-//            self.signInBtn.enabled = YES;
-//        }else{
-//            self.signInBtn.enabled = NO;
-//        }
-//    }
+    if (success ) {
+        if ([redPacketInfo boolValue] == NO) { // 未签
+            self.siginBtn.userInteractionEnabled = YES;
+            [self.siginBtn setTitle:@"签到" forState:UIControlStateNormal];
+        }else{
+            self.siginBtn.userInteractionEnabled = NO;
+            [self.siginBtn setTitle:@"已签到" forState:UIControlStateNormal];
+        }
+    }
 }
 
 -(void)actionUserLoginSuccess:(NSNotification *)notification{
@@ -377,7 +381,8 @@
     if (success) {
         
         [self showPromptText:[NSString stringWithFormat:@"您已连续签到%@天,恭喜您获得%@积分!",info[@"severalDays"],info[@"gainScore"]] hideAfterDelay:1.7];
-//        self.signInBtn.enabled = NO;
+        self.siginBtn.userInteractionEnabled = NO;
+        [self.siginBtn setTitle:@"已签到" forState:UIControlStateNormal];
     }else{
         [self showPromptText:msg hideAfterDelay:1.7];
     }

@@ -14,6 +14,7 @@
 - (void)passValueWithDic:(NSDictionary *)value;
 - (void)passPostValueWithDic:(NSDictionary *)value;
 - (void)passToValueWithDic:(NSDictionary *)value;
+//- (void)passToDeletehelpWithDic
 
 //判断是否有网络
 - (void)passValueWithError;
