@@ -14,7 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *numberButton;
 @property (weak, nonatomic) IBOutlet UILabel *timesLabel;
-
+@property(assign,nonatomic)NSInteger selectNum;
 @property (weak, nonatomic) IBOutlet UILabel *avgNumbsLabel;//平均遗漏
 @property (weak, nonatomic) IBOutlet UILabel *preOutProbLabel;//欲出几率
 @property (weak, nonatomic) IBOutlet UILabel *curDayOutLabel;//本日已出

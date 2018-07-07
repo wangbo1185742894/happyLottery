@@ -1867,5 +1867,30 @@
                         failure:failureBlock];
 }
 
+-(void)getCommonSetValue:(NSDictionary *)para{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        
+        if (response.succeed) {
+            [self.delegate gotCommonSetValue:responseJsonStr];
+        } else {
+            [self.delegate gotCommonSetValue:nil];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate gotCommonSetValue:nil];
+    };
+    
+    SOAPRequest *request = [self requestForAPI: APIgetCommonSetValue withParam:@{@"params":[self actionEncrypt:[self JsonFromId:para]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIDATA
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
 
 @end

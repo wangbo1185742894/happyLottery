@@ -30,7 +30,7 @@
         titleArray = @[@"购彩",@"充值",@"派奖",@"提现",@"彩金",@"佣金"];
     }
     NSArray *apiArray = @[API_listSubscribeDetail,API_listRechargeDetail,API_listBonusDetail,API_listWithdrawDetail,API_listHandselDetail,API_listFollowDetail,API_listAgentCommissionDetail];
-    [_topMenu createMenuView:titleArray size:CGSizeMake(70, 30)];
+    [_topMenu createMenuView:titleArray size:CGSizeMake(70, 40)];
     
     for (int i = 0; i < titleArray.count ; i ++) {
         ClassListCellViewController * classListVC = [[ClassListCellViewController alloc]init];

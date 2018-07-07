@@ -80,7 +80,7 @@
 
 -(void)setTableView{
     self.classListView .delegate = self;
-    self.classListView.rowHeight = 70;
+    self.classListView.rowHeight = 75;
     self.classListView.dataSource = self;
     [self.classListView registerNib:[UINib nibWithNibName:KClassItemViewCell bundle:nil] forCellReuseIdentifier:KClassItemViewCell];
 

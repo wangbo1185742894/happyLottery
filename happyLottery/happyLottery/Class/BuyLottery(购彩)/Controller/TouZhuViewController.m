@@ -153,6 +153,7 @@
         topDis.constant = 118;
         _bottomDis.constant = 0;
     }
+    self.automaticallyAdjustsScrollViewInsets = NO;
     [self.view layoutIfNeeded];
     self.lotteryMan.delegate = self;
     self.memberMan.delegate = self;
@@ -728,6 +729,10 @@
 }
 
 - (IBAction)actionAddRandomBet:(id)sender {
+    if([self.transaction betCount] >= 30){
+        [self showPromptText:@"最多只能选择30注" hideAfterDelay:1.8];
+        return;
+    }
     if ([self.isOmit isEqualToString:@"YES"]) {
         LotteryPlayViewController *playVC = self.delegate;
         playVC.lotteryTransaction = self.transaction;
@@ -1362,6 +1367,10 @@
 }
 
 - (IBAction)actionKeepBetting:(id)sender {
+    if([self.transaction betCount] >= 30){
+        [self showPromptText:@"最多只能选择30注" hideAfterDelay:1.8];
+        return;
+    }
     NSInteger numLotteryVCCount = 0;
     //从遗漏购买进入  点击再买一注时  不响应
     LotteryPlayViewController *lotteryVC;
@@ -1449,7 +1458,7 @@
 {
     
     if (_lottery.type == LotteryTypeDaLeTou || _lottery.type == LotteryTypeShiYiXuanWu || _lottery.type == LotteryTypeSDShiYiXuanWu) {
-        return [self.transaction betCount];
+        return [self.transaction allBets].count;
     }else{
         return _matchBetArray.count;
     }
@@ -1512,7 +1521,7 @@
 
 #pragma mark - LotteryManagerDelegate methods
 - (void) removeBetAction: (NSIndexPath *) indexPath {
-    if([self.transaction betCount] <= 1){
+    if([self.transaction allBets].count <= 1){
         [self showPromptText:@"至少选择一注" hideAfterDelay:1.8];
         return;
     }

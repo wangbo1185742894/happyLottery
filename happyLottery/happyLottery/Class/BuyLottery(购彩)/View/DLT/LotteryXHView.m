@@ -262,7 +262,13 @@
                         [lotteryXH.numbersDanHao addObject:numberView.numberObj];
                         lotteryXH.numberObjTemp = numberView.numberObj;
                 } else {
-                    
+                    if ([lotteryXH.label isEqualToString:@"胆码"]) {
+                          [self .delegate  showPromptViewWithText:[NSString stringWithFormat:@"只能选择%@胆码",lotteryXH.maxNumCount] hideAfter:2.0];
+                    }else{
+                          [self .delegate  showPromptViewWithText:[NSString stringWithFormat:@"只能选择%@号码",lotteryXH.maxNumCount] hideAfter:2.0];
+                    }
+                  
+                    return NumberViewStateNormal;
                     if ([lottery.activeProfile.profileID integerValue] == 21 || [lottery.activeProfile.profileID integerValue] == 22) {
                         BOOL isCanSelect = YES;
                         if (![lottery.activeProfile.couldRepeatSelect boolValue]){

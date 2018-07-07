@@ -43,18 +43,18 @@
     menuView.showsHorizontalScrollIndicator = NO;
     
     self.menuView = menuView;
-    menuView.frame = CGRectMake(0, 20, [UIScreen mainScreen].bounds.size.width, 30);
+    menuView.frame = CGRectMake(0, 20, [UIScreen mainScreen].bounds.size.width, 40);
     [self addSubview:menuView];
-    
-    
-    UIButton *btnAll = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btnAll addTarget:self action:@selector(showAllItem) forControlEvents:UIControlEventTouchUpInside];
-//    [btnAll setTitle:@"全部" forState:0];
-    [btnAll setImage:[UIImage imageNamed:@"下拉箭头"] forState:0];
-    btnAll .frame  =CGRectMake([UIScreen mainScreen].bounds.size.width - 65, 20, 65, 30);
-    [btnAll.titleLabel setFont: [UIFont systemFontOfSize:14]];
-    [btnAll setTitleColor:RGBCOLOR(72, 72, 72) forState:0];
-//    [self addSubview:btnAll];
+//    
+//    
+//    UIButton *btnAll = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [btnAll addTarget:self action:@selector(showAllItem) forControlEvents:UIControlEventTouchUpInside];
+////    [btnAll setTitle:@"全部" forState:0];
+//    [btnAll setImage:[UIImage imageNamed:@"下拉箭头"] forState:0];
+//    btnAll .frame  =CGRectMake([UIScreen mainScreen].bounds.size.width - 65, 20, 65, 30);
+//    [btnAll.titleLabel setFont: [UIFont systemFontOfSize:14]];
+//    [btnAll setTitleColor:RGBCOLOR(72, 72, 72) forState:0];
+////    [self addSubview:btnAll];
     
     [self createContentView:titles];
 }
@@ -78,7 +78,7 @@
 /**创建内容view*/
 -(void)createContentView:(NSArray*)titles{
     
-    WBContentView *contentView = [[WBContentView alloc]initWithFrame:CGRectMake(0, 50, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+    WBContentView *contentView = [[WBContentView alloc]initWithFrame:CGRectMake(0, 60, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     contentView.delegate = self;
     self.menuView.contentScrollView = contentView;
     [contentView addTopMenuView:titles];

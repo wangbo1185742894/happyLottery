@@ -132,8 +132,8 @@
     
     [self.OmitEnquiriesTableView reloadData];
     lotteryMan = [[LotteryManager alloc] init];
-    lotteryMan.delegate =
-    self;
+    lotteryMan.delegate =self;
+    [self updateSummary ];
     [self  getCurrentRound];
 //    [self.lotteryTransaction removeAllBets];
     selectedBetCount = 0;
@@ -159,7 +159,7 @@
     
  
     if (self.searchCodeArray.count == 0) {
-        
+        self.isQmit = NO;
         if ([self.titleString isEqualToString:@"乐选五"]) {
             self.index = 4;
             
@@ -326,6 +326,15 @@
     [self.navigationController popViewControllerAnimated:YES];
     
 }
+
+-(NSInteger)getSelectNum{
+    NSInteger  count = 0;
+    for (QmitModel *model in self.dataSource) {
+        if ([model.isSelect isEqualToString:@"1"]) {
+            count ++;}
+    }
+    return count;
+}
 -(void)updateSummary{
     [self.OmitEnquiriesTableView reloadData];
       selectedBetCount = 0;
@@ -436,8 +445,13 @@
     
     
     NSString *theUrlStr = OmitServerURL;
-    
-    [self.loadDataTool RequestWithString:[NSString stringWithFormat:@"%@%@", theUrlStr, urls2] isPost:YES andPara:params2 andComplete:^(id data, BOOL isSuccess) {
+    NSString *missUrl ;
+    if ([self.lottery.identifier isEqualToString:@"SX115"]) {
+        missUrl =[NSString stringWithFormat:@"%@%@", theUrlStr, urls2];
+    }else{
+        missUrl = self.sd115MissUrl;
+    }
+    [self.loadDataTool RequestWithString:missUrl isPost:YES andPara:params2 andComplete:^(id data, BOOL isSuccess) {
         [self hideLoadingView];
         if (isSuccess) {
             NSString*string = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
@@ -886,16 +900,15 @@
 }
 
 - (IBAction)TouZhuClicked:(id)sender {
-    
     if ([self.lottery.activeProfile.profileID integerValue] >=21) {
         [self showPromptText:@"乐选玩法暂不支持遗漏投注" hideAfterDelay:1.7];
         return;
     }
     
-    if ([self.lottery.activeProfile.title hasSuffix:@"胆拖"]) {
-        [self showPromptText:@"胆拖玩法暂不支持遗漏投注" hideAfterDelay:1.7];
-        return;
-    }
+//    if ([self.lottery.activeProfile.title hasSuffix:@"胆拖"]) {
+//        [self showPromptText:@"胆拖玩法暂不支持遗漏投注" hideAfterDelay:1.7];
+//        return;
+//    }
     
     if(betCost > 300000)
     {
@@ -1154,7 +1167,7 @@
 //        betCost = selectedBetCount *2;
 //        self.labBeySummary.text = [NSString stringWithFormat:@"共%d注，金额：%d元",selectedBetCount,betCost];
 //    }
-    
+    cell.selectNum = [self getSelectNum];
     return cell;
 }
 #pragma mark--UITableViewDelegate

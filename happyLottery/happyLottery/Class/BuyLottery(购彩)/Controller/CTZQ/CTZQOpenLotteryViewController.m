@@ -415,7 +415,6 @@ return header;
     CTZQPlayViewController *plVC = [[CTZQPlayViewController alloc] initWithNibName:@"CTZQPlayViewController" bundle:nil];
     plVC.lottery = _lottery;
     [self.navigationController pushViewController:plVC animated:YES];
-        
-    
 }
+
 @end

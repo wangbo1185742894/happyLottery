@@ -95,7 +95,7 @@
     return [NSString stringWithFormat:@"%.2f元",[self.amounts doubleValue]];
 }
 -(NSString *)get3Name{
-    return self.handselSource;
+    return [self getHandselSourceDes];
 }
 
 -(NSString *)getRemark{
@@ -147,13 +147,13 @@
         if (self.refundAmounts.doubleValue > 0) {
                         return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n%@\n\n %@元\n\n%@元\n%@元优惠券\n\n",[self get1Name],[BaseModel getLotteryByName:self.lotteryType],self.schemeNo,self.subTime,self.realSubAmounts,self.refundAmounts,self.deduction];
         }else{
-                        return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n%@\n\n %@元\n%@元优惠券\n\n合计%@元",[self get1Name],[BaseModel getLotteryByName:self.lotteryType],self.schemeNo,self.subTime,self.realSubAmounts,self.deduction,self.subAmounts];
+                        return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n%@\n\n %@元\n%@元优惠券\n\n合计%@元\n\n",[self get1Name],[BaseModel getLotteryByName:self.lotteryType],self.schemeNo,self.subTime,self.realSubAmounts,self.deduction,self.subAmounts];
         }
     }else{
         if (self.refundAmounts.doubleValue > 0) {
               return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n%@\n\n %@元\n\n%@元\n\n",[self get1Name],[BaseModel getLotteryByName:self.lotteryType],self.schemeNo,self.subTime,self.realSubAmounts,self.refundAmounts];
         }else{
-              return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n%@\n\n %@元\n\n合计%@元",[self get1Name],[BaseModel getLotteryByName:self.lotteryType],self.schemeNo,self.subTime,self.realSubAmounts,self.subAmounts];
+              return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n%@\n\n %@元\n\n合计%@元\n\n",[self get1Name],[BaseModel getLotteryByName:self.lotteryType],self.schemeNo,self.subTime,self.realSubAmounts,self.subAmounts];
         }
         
     }
@@ -200,15 +200,14 @@
 -(NSString *)getRightTitle{
     NSString *state;
     if ([self.orderStatus isEqualToString:@"WAIT_CASH"]) {
-        state = @"等待提现";
+        state = @"提现(等待)";
     }else if([self.orderStatus isEqualToString:@"CASH_SUCCESS"]){
-        return @"提现成功";
+        state =  @"提现(成功)";
     }else if ([self.orderStatus isEqualToString:@"CASH_FAILED"]){
-        return @"提现失败";
+        state =  @"提现(驳回)";
     }
     if ([self.orderStatus isEqualToString:@"CASH_FAILED"]) {
         return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@元\n\n%@\n\n%@\n\n",[self get1Name],state,self.amounts,self.createTime,self.remark];
-        
     }else if([self.orderStatus isEqualToString:@"CASH_SUCCESS"]){
           return [NSString stringWithFormat:@"\n%@\n\n%@\n\n %@元\n\n %@\n\n",[self get1Name],state,self.amounts,self.successTime];
     }else if([self.orderStatus isEqualToString:@"WAIT_CASH"]){

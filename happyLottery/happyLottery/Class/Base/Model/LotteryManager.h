@@ -76,7 +76,7 @@ typedef enum EarningsType{
 - (void) listRechargeHandsel:(NSArray *)lotteryList  errorMsg:(NSString *)msg;
 -(void)gotBootPageUrl:(NSString *)strUrl;
 - (void) deleteSchemeByNo:(NSString *)resultStr  errorMsg:(NSString *)msg; //删除订单
-
+-(void)gotCommonSetValue:(NSString *)strUrl;
 @end
 
 @interface LotteryManager : Manager
@@ -167,6 +167,8 @@ typedef enum EarningsType{
 - (void)getListSellLottery;
 
 - (void)listRechargeHandsel;
+
+-(void)getCommonSetValue:(NSDictionary *)para;
 
 @end
 

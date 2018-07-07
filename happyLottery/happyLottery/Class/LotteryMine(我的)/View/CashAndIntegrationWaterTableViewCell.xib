@@ -26,16 +26,6 @@
                             <constraint firstAttribute="height" constant="36" id="vr9-Cx-p7H"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xtc-wv-hdt">
-                        <rect key="frame" x="66" y="11" width="160" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="JM4-3U-brD"/>
-                            <constraint firstAttribute="width" constant="160" id="g9s-hY-bO3"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <color key="textColor" red="0.1960784314" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yx4-ap-Edo">
                         <rect key="frame" x="167" y="42.5" width="138" height="21"/>
                         <constraints>
@@ -85,6 +75,16 @@
                         <color key="textColor" red="0.94901960780000005" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xtc-wv-hdt">
+                        <rect key="frame" x="66" y="25" width="160" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="JM4-3U-brD"/>
+                            <constraint firstAttribute="width" constant="160" id="g9s-hY-bO3"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="0.1960784314" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="PN2-VO-LRV" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="2vf-rh-JYc"/>
@@ -110,6 +110,7 @@
                 <outlet property="image" destination="i6B-iL-vZH" id="5rH-rh-rzv"/>
                 <outlet property="imgDisLeft" destination="GK0-pq-Wb2" id="VU0-w8-uDU"/>
                 <outlet property="imgWidth" destination="o8w-sN-eZM" id="DOm-WR-etS"/>
+                <outlet property="lab1DisTop" destination="EuE-kN-hfl" id="PMO-7X-INv"/>
                 <outlet property="labDidTop" destination="ZQK-OB-hg3" id="w8h-Q9-CPX"/>
                 <outlet property="labRemark" destination="kDf-vd-f1M" id="zAF-ts-ErL"/>
                 <outlet property="nameLab" destination="Xtc-wv-hdt" id="NSV-6f-HIk"/>

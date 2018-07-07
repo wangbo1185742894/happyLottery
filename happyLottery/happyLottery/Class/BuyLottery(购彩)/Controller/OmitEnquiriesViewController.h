@@ -14,6 +14,7 @@
 @property (nonatomic, copy) NSString * titleString;
 @property (nonatomic, assign) BOOL isQmit;
 @property (nonatomic, strong) Lottery * lottery;
+@property(nonatomic,strong)NSString *sd115MissUrl;
 //传过来的号
 //@property (nonatomic, copy) NSString * searchCode;
 @property (weak, nonatomic) IBOutlet UILabel *labBeySummary;

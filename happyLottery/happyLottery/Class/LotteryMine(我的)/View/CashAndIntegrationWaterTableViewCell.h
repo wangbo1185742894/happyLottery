@@ -12,6 +12,7 @@
 #import "UserInfoBaseModel.h"
 
 @interface CashAndIntegrationWaterTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *lab1DisTop;
 @property (weak, nonatomic) IBOutlet UILabel *labRemark;
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imgWidth;

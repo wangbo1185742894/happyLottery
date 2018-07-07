@@ -12,6 +12,7 @@
 #import "OmitEnquiriesViewController.h"
 #import "OptionSelectedView.h"
 #import "LotteryBet.h"
+
 #import "LotteryTransaction.h"
 #import "NumberSelectView.h"
 #import "LotteryManager.h"
@@ -45,6 +46,7 @@
     NSTimer * timerForcurRound;
     X115LimitNum * _model;
     OptionSelectedView*optionView ;
+    NSString *sd115MissUrl;
     __weak IBOutlet UILabel *flagLable;
     __weak IBOutlet UIView *viewContent_;
     UIScrollView *scrollViewContent_;
@@ -106,6 +108,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     if([self isIphoneX]){
         self.topDlt.constant = 88;
         self.BottomDlt.constant = 38;
@@ -114,7 +117,10 @@
         self.BottomDlt.constant = 0;
     }
     self.lotteryMan.delegate = self;
-//   [self.lotteryMan queryX115LimitNum];
+    if ([self.lottery.identifier isEqualToString:@"SD115"]) {
+        [self.lotteryMan getCommonSetValue:@{@"typeCode":@"number_miss",  @"commonCode":@"SDX115_miss"}];
+    }
+
     limitArray  = [NSMutableArray arrayWithCapacity:0];
     self.viewControllerNo = @"A003";
 
@@ -193,6 +199,13 @@
             scrollViewContent_.contentOffset = CGPointMake(0,-expireTablveHeight);
         }];
     }
+}
+-(void)gotCommonSetValue:(NSString *)strUrl{
+    if (strUrl == nil || strUrl.length == 0) {
+        return;
+    }
+    sd115MissUrl = strUrl;
+    [self addQmitButton];
 }
 - (void) getCurrentRound{
     NSLog(@"开始请求奖期。");
@@ -355,6 +368,10 @@
       [self updateNavigationTitle];
     if([self.lottery.identifier isEqualToString:@"SX115"]){
     [self addQmitButton];
+    }else{
+        if (sd115MissUrl != nil) {
+            [self addQmitButton];
+        }
     }
     
     [timerForcurRound setFireDate:[NSDate date]];
@@ -531,6 +548,10 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(beginTimerForCurRound) name:@"RoundTimeDownFinish" object:nil];
     if([self.lottery.identifier isEqualToString:@"SX115"]){
         [self addQmitButton];
+    }else{
+        if (sd115MissUrl != nil) {
+            [self addQmitButton];
+        }
     }
 }
 
@@ -991,7 +1012,7 @@
         }
     }
     OmitEnquiriesViewController * omitVC = [[OmitEnquiriesViewController alloc]init];
-    
+    omitVC.sd115MissUrl = sd115MissUrl;
     omitVC.delegate = self;
     omitVC.lottery = self.lottery;
     omitVC.lotteryTransaction = self.lotteryTransaction;

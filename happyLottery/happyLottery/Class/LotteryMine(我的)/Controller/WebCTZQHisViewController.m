@@ -54,6 +54,7 @@
 }
 
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+    
     if ([request.URL isEqual:self.pageUrl]) {
         self.btnPop.userInteractionEnabled = YES;
     }else{
