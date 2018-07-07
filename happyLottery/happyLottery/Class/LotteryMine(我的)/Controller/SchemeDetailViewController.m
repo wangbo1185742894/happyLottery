@@ -372,6 +372,10 @@
                         NSArray *passType = [Utility objFromJson:matchList[indexPath.row].passTypes];
                         ;
                         return curY + 130 + ((passType.count / 7) + 1) * 15;
+                    }else if(matchList[indexPath.row].isLast){
+                        NSArray *passType = [Utility objFromJson:matchList[indexPath.row].passTypes];
+                        ;
+                        return curY + 130 + ((passType.count / 7) + 1) * 15 - 30;
                     }else{
                         return curY + 80;
                     }
@@ -415,6 +419,9 @@
                         NSArray *passType = [Utility objFromJson:matchList[indexPath.row].passTypes];
                         ;
                         return curY + 90 + ((passType.count / 7) + 1) * 15;
+                    }else if(matchList[indexPath.row].isLast){
+                        NSArray *passType = [Utility objFromJson:matchList[indexPath.row].passTypes];
+                        return curY + 90 + ((passType.count / 7) + 1) * 15 -30;
                     }else{
                         
                         return curY + 40;

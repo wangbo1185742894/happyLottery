@@ -33,7 +33,9 @@
     NSArray *itemDic;
     __weak IBOutlet NSLayoutConstraint *disTopR;
 }
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightBottom;
 
+@property (weak, nonatomic) IBOutlet UILabel *labBottom;
 @property(nonatomic,assign)NSInteger num;
 @end
 
@@ -41,8 +43,6 @@
 
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
-    
-    
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self = [[[NSBundle mainBundle] loadNibNamed:@"SchemeDetailMatchViewCell" owner: nil options:nil] lastObject];
     }
@@ -74,7 +74,8 @@
         disBottomL.constant = 0;
         disBottomR.constant = 0;
         labBottom.hidden = YES;
-        
+        self.labBottom.hidden = YES;
+        self.heightBottom.constant = 0;
     }else{
         topInfoView.hidden = YES;
         topInfoViewHeight.constant = 0;
@@ -83,10 +84,15 @@
             disTopL.constant = 0;
             disTopR.constant = 0;
             
-            disBottomL.constant = 7;
-            disBottomR.constant = 7;
+            disBottomL.constant = 35;
+            disBottomR.constant = 35;
+            self.labBottom.hidden = NO;
+            self.heightBottom.constant = 30;
             labBottom.hidden = NO;
         }else{
+            self.labBottom.hidden = YES;
+            self.heightBottom.constant = 0;
+       
             disTopL.constant = 0;
             disTopR.constant = 0;
             

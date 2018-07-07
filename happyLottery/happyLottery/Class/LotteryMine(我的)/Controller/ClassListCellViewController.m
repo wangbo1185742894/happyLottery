@@ -103,7 +103,7 @@
     }
     if (infoList == nil || infoList.count == 0) {
         [self.classListView reloadData];
-        [self showPromptText:@"暂无流水" hideAfterDelay:1.8];
+        
         return;
     }
     
