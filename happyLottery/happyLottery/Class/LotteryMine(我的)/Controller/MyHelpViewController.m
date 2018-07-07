@@ -114,7 +114,7 @@
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     if (section == 2) {
         UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, 52)];
-        UIImageView *iamge = [[UIImageView alloc]initWithFrame:CGRectMake((KscreenWidth-217)/2, 35, 17, 17)];
+        UIImageView *iamge = [[UIImageView alloc]initWithFrame:CGRectMake((KscreenWidth-217)/2, 34, 17, 17)];
         [iamge setImage:[UIImage imageNamed:@"logo_assist.png"]];
         UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake((KscreenWidth-217)/2+20, 35, 200, 14)];
         label.text = @"客服电话 400-600-5558";
