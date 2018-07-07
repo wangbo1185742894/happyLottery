@@ -65,13 +65,13 @@
                  btn.titleLabel.font = [UIFont systemFontOfSize:12];
                 //助手栏图片添加修改  lyw
                 title = [title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];//去掉左右空格
-                if ([title isEqualToString:@"走势图"]) {
+                if ([title isEqualToString:@"走势图"] || [title isEqualToString:@"开奖趋势"]) {
                     [btn setImage:[UIImage imageNamed:@"dlt_openlottery_ex.png"] forState:UIControlStateNormal];
                     [btn setImage:[UIImage imageNamed:@"dlt_openlottery_ex.png"] forState:UIControlStateHighlighted];
-                }else if ([title isEqualToString:@"开奖详情"]){
+                }else if ([title isEqualToString:@"开奖详情"]||[title isEqualToString:@"开奖信息"]){
                     [btn setImage:[UIImage imageNamed:@"trophy.png"] forState:UIControlStateNormal];
                     [btn setImage:[UIImage imageNamed:@"trophy.png"] forState:UIControlStateHighlighted];
-                }else if([title isEqualToString:@"玩法规则"]){
+                }else if([title isEqualToString:@"玩法规则"]||[title isEqualToString:@"玩法说明"]){
                     [btn setImage:[UIImage imageNamed:@"gameplay.png"] forState:UIControlStateNormal];
                     [btn setImage:[UIImage imageNamed:@"gameplay.png"] forState:UIControlStateHighlighted];
                 }else{
