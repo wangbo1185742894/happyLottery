@@ -945,6 +945,7 @@
 		F90D68D520EF647C007865E4 /* DeleteOrderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F90D68D420EF647C007865E4 /* DeleteOrderView.xib */; };
 		F90D68D720EF65D0007865E4 /* deletehelp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F90D68D620EF65CF007865E4 /* deletehelp@2x.png */; };
 		F90D68D920EF65DA007865E4 /* deletehelp@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F90D68D820EF65DA007865E4 /* deletehelp@3x.png */; };
+		F90D68E320F06259007865E4 /* PlayIntroduce.plist in Resources */ = {isa = PBXBuildFile; fileRef = F90D68E220F06259007865E4 /* PlayIntroduce.plist */; };
 		F90FCD551FF34D1C00BD807C /* MyRedPacketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F90FCD531FF34D1C00BD807C /* MyRedPacketViewController.m */; };
 		F90FCD561FF34D1C00BD807C /* MyRedPacketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F90FCD541FF34D1C00BD807C /* MyRedPacketViewController.xib */; };
 		F90FCD5A1FF34D5000BD807C /* MyRedPacketTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F90FCD581FF34D5000BD807C /* MyRedPacketTableViewCell.m */; };
@@ -2993,6 +2994,7 @@
 		F90D68D420EF647C007865E4 /* DeleteOrderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeleteOrderView.xib; sourceTree = "<group>"; };
 		F90D68D620EF65CF007865E4 /* deletehelp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "deletehelp@2x.png"; sourceTree = "<group>"; };
 		F90D68D820EF65DA007865E4 /* deletehelp@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "deletehelp@3x.png"; sourceTree = "<group>"; };
+		F90D68E220F06259007865E4 /* PlayIntroduce.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PlayIntroduce.plist; sourceTree = "<group>"; };
 		F90FCD521FF34D1C00BD807C /* MyRedPacketViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyRedPacketViewController.h; sourceTree = "<group>"; };
 		F90FCD531FF34D1C00BD807C /* MyRedPacketViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyRedPacketViewController.m; sourceTree = "<group>"; };
 		F90FCD541FF34D1C00BD807C /* MyRedPacketViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyRedPacketViewController.xib; sourceTree = "<group>"; };
@@ -4245,6 +4247,7 @@
 				F9FF4387201EE37C00179211 /* PageCodeIsLogin.plist */,
 				F9705EC7207C5CEB00E25E4E /* LotteryArea.plist */,
 				F9BC6E6520C2DF150037998B /* AgentApplayConfig.plist */,
+				F90D68E220F06259007865E4 /* PlayIntroduce.plist */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -7610,6 +7613,7 @@
 				F90FCD791FF3810F00BD807C /* stale@2x.png in Resources */,
 				F94AA9C21FEB59DA0021B980 /* list@2x.png in Resources */,
 				2D4B1E6E1FDF684E0034B708 /* duibiao@x2.png in Resources */,
+				F90D68E320F06259007865E4 /* PlayIntroduce.plist in Resources */,
 				F90D68D920EF65DA007865E4 /* deletehelp@3x.png in Resources */,
 				F9FC153B20625815009BAD68 /* WebViewController.xib in Resources */,
 				2D8CC0091FF3958D00CC367F /* icon_selected@3x.png in Resources */,
