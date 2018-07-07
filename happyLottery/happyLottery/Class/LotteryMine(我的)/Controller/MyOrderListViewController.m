@@ -16,7 +16,9 @@
 #import "SchemeDetailViewController.h"
 #import "MJRefresh.h"
 #import "NoticeCenterViewController.h"
+#import "DeleteOrderView.h"
 #define KSchemListCell @"SchemListCell"
+#define KdeleteOrderIntroduce  @"deleteOrderIntroduce"
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
@@ -34,6 +36,7 @@
     JCZQSchemeModel* schemeModel;
     NSMutableArray <JCZQSchemeItem *> *dataArray;
     NSInteger page;
+    DeleteOrderView *introView;
 }
 @property (strong, nonatomic) NSIndexPath* editingIndexPath;  //当前左滑cell的index，在代理方法中设置
 @property (strong, nonatomic) NSIndexPath* selectIndexPath; //当前要删除的cell
@@ -62,7 +65,14 @@
     if ([Utility isIOS11After]) {
         self.automaticallyAdjustsScrollViewInsets = NO; // tableView 莫名其妙  contentOffset.y 成-64了  MMP
     }
-
+    
+    NSString *  isShow = [[NSUserDefaults standardUserDefaults] objectForKey:KdeleteOrderIntroduce];
+    if (isShow == nil) {
+        introView = [[DeleteOrderView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+        [[UIApplication sharedApplication].keyWindow addSubview:introView];
+    }else{
+        introView.hidden = YES;
+    }
 }
 
 

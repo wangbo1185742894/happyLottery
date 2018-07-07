@@ -941,6 +941,10 @@
 		F90058EC1FF61AEC009C8E1C /* NoticeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F90058EA1FF61AEC009C8E1C /* NoticeDetailViewController.m */; };
 		F90058ED1FF61AEC009C8E1C /* NoticeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F90058EB1FF61AEC009C8E1C /* NoticeDetailViewController.xib */; };
 		F9085B051FFB20D500DC0531 /* LoadData.m in Sources */ = {isa = PBXBuildFile; fileRef = F9085B031FFB20D500DC0531 /* LoadData.m */; };
+		F90D68D320EF645A007865E4 /* DeleteOrderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F90D68D220EF645A007865E4 /* DeleteOrderView.m */; };
+		F90D68D520EF647C007865E4 /* DeleteOrderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F90D68D420EF647C007865E4 /* DeleteOrderView.xib */; };
+		F90D68D720EF65D0007865E4 /* deletehelp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F90D68D620EF65CF007865E4 /* deletehelp@2x.png */; };
+		F90D68D920EF65DA007865E4 /* deletehelp@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F90D68D820EF65DA007865E4 /* deletehelp@3x.png */; };
 		F90FCD551FF34D1C00BD807C /* MyRedPacketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F90FCD531FF34D1C00BD807C /* MyRedPacketViewController.m */; };
 		F90FCD561FF34D1C00BD807C /* MyRedPacketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F90FCD541FF34D1C00BD807C /* MyRedPacketViewController.xib */; };
 		F90FCD5A1FF34D5000BD807C /* MyRedPacketTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F90FCD581FF34D5000BD807C /* MyRedPacketTableViewCell.m */; };
@@ -2984,6 +2988,11 @@
 		F90058EB1FF61AEC009C8E1C /* NoticeDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoticeDetailViewController.xib; sourceTree = "<group>"; };
 		F9085B031FFB20D500DC0531 /* LoadData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadData.m; sourceTree = "<group>"; };
 		F9085B041FFB20D500DC0531 /* LoadData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadData.h; sourceTree = "<group>"; };
+		F90D68D120EF645A007865E4 /* DeleteOrderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeleteOrderView.h; sourceTree = "<group>"; };
+		F90D68D220EF645A007865E4 /* DeleteOrderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeleteOrderView.m; sourceTree = "<group>"; };
+		F90D68D420EF647C007865E4 /* DeleteOrderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeleteOrderView.xib; sourceTree = "<group>"; };
+		F90D68D620EF65CF007865E4 /* deletehelp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "deletehelp@2x.png"; sourceTree = "<group>"; };
+		F90D68D820EF65DA007865E4 /* deletehelp@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "deletehelp@3x.png"; sourceTree = "<group>"; };
 		F90FCD521FF34D1C00BD807C /* MyRedPacketViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyRedPacketViewController.h; sourceTree = "<group>"; };
 		F90FCD531FF34D1C00BD807C /* MyRedPacketViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyRedPacketViewController.m; sourceTree = "<group>"; };
 		F90FCD541FF34D1C00BD807C /* MyRedPacketViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyRedPacketViewController.xib; sourceTree = "<group>"; };
@@ -4925,6 +4934,8 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				F90D68D820EF65DA007865E4 /* deletehelp@3x.png */,
+				F90D68D620EF65CF007865E4 /* deletehelp@2x.png */,
 				F9E53D2820EE26B90072B8AF /* MineIcon */,
 				2D3065CF20EC63530084DB97 /* omitreach@2x.png */,
 				2D3065CE20EC63520084DB97 /* omitreach@3x.png */,
@@ -5558,6 +5569,9 @@
 				2D7B8DCA20C63F6B000EAFB1 /* YongjinCell.h */,
 				2D7B8DCB20C63F6B000EAFB1 /* YongjinCell.m */,
 				2D7B8DCC20C63F6B000EAFB1 /* YongjinCell.xib */,
+				F90D68D120EF645A007865E4 /* DeleteOrderView.h */,
+				F90D68D220EF645A007865E4 /* DeleteOrderView.m */,
+				F90D68D420EF647C007865E4 /* DeleteOrderView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -7072,7 +7086,6 @@
 			files = (
 				2DD5991020E1C976002441B5 /* LotteryPlayViewController.xib in Resources */,
 				2D638F5A20EF1518004463FC /* UserInfoDetailViewController.xib in Resources */,
-				F9CEDF0B20E785C20017EED6 /* chase_mine@3x.png in Resources */,
 				F95BC7D220172AF7006D6243 /* redpacket_open@2x.png in Resources */,
 				F9CDBECC2023242900A1BE71 /* icon_zhifu_selceted@3x.png in Resources */,
 				2D03F2172060B6A500C81BEF /* WebCTZQHisViewController.xib in Resources */,
@@ -7597,6 +7610,7 @@
 				F90FCD791FF3810F00BD807C /* stale@2x.png in Resources */,
 				F94AA9C21FEB59DA0021B980 /* list@2x.png in Resources */,
 				2D4B1E6E1FDF684E0034B708 /* duibiao@x2.png in Resources */,
+				F90D68D920EF65DA007865E4 /* deletehelp@3x.png in Resources */,
 				F9FC153B20625815009BAD68 /* WebViewController.xib in Resources */,
 				2D8CC0091FF3958D00CC367F /* icon_selected@3x.png in Resources */,
 				F9B5D9782060A9DE00C9F6DC /* flag369@3x.png in Resources */,
@@ -7637,6 +7651,7 @@
 				2D7B1418204FC7CD0035AE89 /* timebackimage@3x.png in Resources */,
 				F9418F452010991200454109 /* ShareSDKConfigFile.bundle in Resources */,
 				F9632F4F200C8C9800F69D23 /* arrowup@2x.png in Resources */,
+				F90D68D720EF65D0007865E4 /* deletehelp@2x.png in Resources */,
 				F9E53D5E20EE28D70072B8AF /* help_mine@2x.png in Resources */,
 				2D05C86920A43631001A8953 /* third@2x.png in Resources */,
 				2D05C86A20A43631001A8953 /* guize@2x.png in Resources */,
@@ -7845,6 +7860,7 @@
 				F9BC6E4220C2D1C20037998B /* agreenNormal@3x.png in Resources */,
 				2D2060171FFCB71E0086E266 /* btn_shouqi_@3x.png in Resources */,
 				2D03F2822060BAE800C81BEF /* ChangeLoginPWDViewController.xib in Resources */,
+				F90D68D520EF647C007865E4 /* DeleteOrderView.xib in Resources */,
 				F957C1CD1FE36B3F0090B19B /* close@2x.png in Resources */,
 				2D7BFAC420E0925B006173EC /* set@3x.png in Resources */,
 				2D05C85F20A43631001A8953 /* pic_niurenbangbeijing@3x.png in Resources */,
@@ -8393,6 +8409,7 @@
 				F965562920C537810017066C /* AgentDynamicCell.m in Sources */,
 				2D739CFB1FEB5D1900264044 /* JCZQSelectBQCVIew.m in Sources */,
 				F9BC6E2D20C2CB5F0037998B /* ApplyInputCell.m in Sources */,
+				F90D68D320EF645A007865E4 /* DeleteOrderView.m in Sources */,
 				2D7B8D7A20C12028000EAFB1 /* AgentManager.m in Sources */,
 				2D8CC0161FF4B5E600CC367F /* HomeYCModel.m in Sources */,
 				2D8CBFAC1FF326F200CC367F /* PaySuccessViewController.m in Sources */,
