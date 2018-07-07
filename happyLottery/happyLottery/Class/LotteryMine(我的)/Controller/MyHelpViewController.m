@@ -106,18 +106,19 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     if (section == 2) {
-        return 106;
+        return 84;
     }
     return 0.1;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     if (section == 2) {
-        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, 50)];
-        UIImageView *iamge = [[UIImageView alloc]initWithFrame:CGRectMake((KscreenWidth-43)/2, 10, 43, 43)];
+        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, 52)];
+        UIImageView *iamge = [[UIImageView alloc]initWithFrame:CGRectMake((KscreenWidth-217)/2, 35, 17, 17)];
         [iamge setImage:[UIImage imageNamed:@"logo_assist.png"]];
-        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake((KscreenWidth-200)/2, 20+43, 200, 43)];
+        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake((KscreenWidth-217)/2+20, 35, 200, 14)];
         label.text = @"客服电话 400-600-5558";
+        label.textColor = RGBCOLOR(25, 26, 26);
         label.userInteractionEnabled=YES;
         UITapGestureRecognizer *labelTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(actionTelMe)];
         [label addGestureRecognizer:labelTapGestureRecognizer];

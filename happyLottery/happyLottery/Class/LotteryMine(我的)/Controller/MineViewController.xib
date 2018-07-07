@@ -49,7 +49,7 @@
                             </constraints>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="asT-0r-9bk">
-                            <rect key="frame" x="330.5" y="65" width="44.5" height="46"/>
+                            <rect key="frame" x="330.5" y="63" width="44.5" height="46"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="44.5" id="3Nj-Y2-5qN"/>
                             </constraints>
@@ -63,10 +63,10 @@
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nX3-at-4OK">
-                            <rect key="frame" x="0.0" y="42" width="305" height="69"/>
+                            <rect key="frame" x="0.0" y="45" width="305" height="64"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="43O-Jm-2Qq">
-                                    <rect key="frame" x="0.0" y="0.0" width="305" height="69"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="305" height="64"/>
                                     <state key="normal">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -75,14 +75,14 @@
                                     </connections>
                                 </button>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_mine.png" translatesAutoresizingMaskIntoConstraints="NO" id="9X8-Z4-jzu">
-                                    <rect key="frame" x="17" y="0.0" width="61" height="61"/>
+                                    <rect key="frame" x="17" y="0.0" width="44" height="44"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="60.5" id="Dsg-ij-tZp"/>
-                                        <constraint firstAttribute="height" constant="60.5" id="bbe-QK-a1X"/>
+                                        <constraint firstAttribute="width" constant="44" id="Dsg-ij-tZp"/>
+                                        <constraint firstAttribute="height" constant="44" id="bbe-QK-a1X"/>
                                     </constraints>
                                 </imageView>
                                 <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XsK-Vt-gZZ">
-                                    <rect key="frame" x="98" y="12" width="79" height="37"/>
+                                    <rect key="frame" x="81" y="3.5" width="79" height="37"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="37" id="BhB-Mg-yBi"/>
                                     </constraints>
@@ -102,16 +102,16 @@
                                 <constraint firstItem="43O-Jm-2Qq" firstAttribute="leading" secondItem="nX3-at-4OK" secondAttribute="leading" id="NF4-pz-jcN"/>
                                 <constraint firstItem="9X8-Z4-jzu" firstAttribute="leading" secondItem="nX3-at-4OK" secondAttribute="leading" constant="17" id="YAz-2O-qAu"/>
                                 <constraint firstAttribute="bottom" secondItem="43O-Jm-2Qq" secondAttribute="bottom" id="ak0-Br-578"/>
-                                <constraint firstAttribute="height" constant="69" id="eZ6-fO-Ia5"/>
+                                <constraint firstAttribute="height" constant="64" id="eZ6-fO-Ia5"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ut7-e6-ow1">
-                            <rect key="frame" x="0.0" y="111" width="375" height="48"/>
+                            <rect key="frame" x="0.0" y="109" width="375" height="45"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E6j-k7-LS0">
-                                    <rect key="frame" x="0.0" y="0.0" width="94" height="48"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="94" height="45"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <inset key="contentEdgeInsets" minX="-7" minY="-20" maxX="0.0" maxY="0.0"/>
                                     <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <state key="normal" title="余额(元)">
@@ -126,13 +126,13 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="21.5" id="TiX-Me-3Cl"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nvt-1p-Rwn">
-                                    <rect key="frame" x="94" y="0.0" width="93.5" height="48"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <rect key="frame" x="94" y="0.0" width="93.5" height="45"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <inset key="contentEdgeInsets" minX="-7" minY="-20" maxX="0.0" maxY="0.0"/>
                                     <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <state key="normal" title="彩金(元)">
@@ -144,14 +144,14 @@
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="FOx-Oc-FG1">
                                     <rect key="frame" x="94" y="3" width="93.5" height="21.5"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sO0-Mz-jY7">
-                                    <rect key="frame" x="187.5" y="0.0" width="94" height="48"/>
+                                    <rect key="frame" x="187.5" y="0.0" width="94" height="45"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <inset key="contentEdgeInsets" minX="-9" minY="-20" maxX="0.0" maxY="0.0"/>
                                     <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <state key="normal" title="积分(分)">
@@ -163,14 +163,14 @@
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Kw-f5-ZTp">
                                     <rect key="frame" x="187.5" y="3" width="94" height="22"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2R9-DO-gvq">
-                                    <rect key="frame" x="281.5" y="0.0" width="93.5" height="48"/>
+                                    <rect key="frame" x="281.5" y="0.0" width="93.5" height="45"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <inset key="contentEdgeInsets" minX="-9" minY="-20" maxX="0.0" maxY="0.0"/>
                                     <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <state key="normal" title="礼券(张)">
@@ -182,7 +182,7 @@
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UoB-tJ-jh8">
                                     <rect key="frame" x="281.5" y="3" width="93.5" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -200,7 +200,7 @@
                                 <constraint firstItem="UoB-tJ-jh8" firstAttribute="top" secondItem="ut7-e6-ow1" secondAttribute="top" constant="3" id="7q1-Cs-v88"/>
                                 <constraint firstItem="FOx-Oc-FG1" firstAttribute="height" secondItem="hRu-RF-G1I" secondAttribute="height" id="DEb-m3-9fN"/>
                                 <constraint firstItem="hRu-RF-G1I" firstAttribute="top" secondItem="ut7-e6-ow1" secondAttribute="top" constant="3" id="G6I-FJ-Mgm"/>
-                                <constraint firstAttribute="height" constant="48" id="Gob-uB-J30"/>
+                                <constraint firstAttribute="height" constant="45" id="Gob-uB-J30"/>
                                 <constraint firstItem="sO0-Mz-jY7" firstAttribute="width" secondItem="E6j-k7-LS0" secondAttribute="width" id="IGX-Ia-gtu"/>
                                 <constraint firstAttribute="bottom" secondItem="sO0-Mz-jY7" secondAttribute="bottom" id="Iex-Mj-vaB"/>
                                 <constraint firstItem="FOx-Oc-FG1" firstAttribute="leading" secondItem="Nvt-1p-Rwn" secondAttribute="leading" id="JS2-KC-7r4"/>
@@ -227,7 +227,7 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jlj-aY-aYi">
-                            <rect key="frame" x="291" y="26" width="20" height="19"/>
+                            <rect key="frame" x="291" y="24" width="20" height="19"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="20" id="Dru-B3-9Xw"/>
                                 <constraint firstAttribute="height" constant="19" id="vQb-79-ATU"/>
@@ -238,7 +238,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="15k-Cq-U68">
-                            <rect key="frame" x="336" y="27" width="19" height="18"/>
+                            <rect key="frame" x="336" y="25" width="19" height="18"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="19" id="0Ox-u0-80G"/>
                                 <constraint firstAttribute="height" constant="18" id="39q-Cr-q6H"/>
@@ -249,7 +249,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7c-WS-iwa">
-                            <rect key="frame" x="347" y="26" width="20" height="10"/>
+                            <rect key="frame" x="347" y="24" width="20" height="10"/>
                             <color key="backgroundColor" red="0.99607843139999996" green="0.2274509804" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="10" id="82A-Az-0jk"/>
@@ -345,7 +345,7 @@
                         <constraint firstAttribute="trailing" secondItem="asT-0r-9bk" secondAttribute="trailing" id="pEM-u8-pLp"/>
                         <constraint firstItem="asT-0r-9bk" firstAttribute="top" secondItem="jlj-aY-aYi" secondAttribute="bottom" constant="20" id="q5W-H5-tE2"/>
                         <constraint firstAttribute="trailing" secondItem="ut7-e6-ow1" secondAttribute="trailing" id="tDC-7H-za0"/>
-                        <constraint firstItem="kk5-rP-XGf" firstAttribute="top" secondItem="ut7-e6-ow1" secondAttribute="bottom" constant="10" id="uBS-ct-CvV"/>
+                        <constraint firstItem="kk5-rP-XGf" firstAttribute="top" secondItem="ut7-e6-ow1" secondAttribute="bottom" constant="15" id="uBS-ct-CvV"/>
                         <constraint firstAttribute="trailing" secondItem="nX3-at-4OK" secondAttribute="trailing" constant="70" id="usE-Iv-pZJ"/>
                         <constraint firstItem="nX3-at-4OK" firstAttribute="leading" secondItem="p7d-Na-86m" secondAttribute="leading" id="yXx-qm-Sve"/>
                         <constraint firstItem="7kh-qy-0D9" firstAttribute="leading" secondItem="p7d-Na-86m" secondAttribute="leading" id="yh7-dq-o7Z"/>
@@ -360,7 +360,7 @@
                 <constraint firstItem="p7d-Na-86m" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="mfA-CF-n9l"/>
                 <constraint firstItem="7kh-qy-0D9" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="oCL-z2-xsA"/>
             </constraints>
-            <point key="canvasLocation" x="-771" y="190"/>
+            <point key="canvasLocation" x="-771.5" y="189.5"/>
         </view>
     </objects>
     <resources>

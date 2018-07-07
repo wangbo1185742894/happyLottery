@@ -133,7 +133,8 @@
     
 
 
-
+    buttonSubmit.layer.masksToBounds = YES;
+    buttonSubmit.layer.cornerRadius = 4;
     buttonSubmit_ .titleLabel.font = [UIFont systemFontOfSize:15];
     
     [buttonSubmit_ setTitle: @"预约投注" forState: UIControlStateNormal];

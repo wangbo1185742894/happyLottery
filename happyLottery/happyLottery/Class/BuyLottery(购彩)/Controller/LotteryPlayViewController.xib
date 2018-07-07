@@ -286,12 +286,12 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FfJ-u5-7iU">
                             <rect key="frame" x="295" y="10" width="72" height="29"/>
-                            <color key="backgroundColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.070588235294117646" green="0.7803921568627451" blue="0.5725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="72" id="rvr-5Y-mBL"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" title="预  约" backgroundImage="yuanjiaowukuangselect">
+                            <state key="normal" title="预  约">
                                 <color key="titleColor" red="0.96055269241333008" green="0.96052390336990356" blue="0.96054017543792725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="titleShadowColor" red="0.42467421293258667" green="0.42466151714324951" blue="0.42466866970062256" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
@@ -372,6 +372,5 @@
     <resources>
         <image name="matchcleanall.png" width="22" height="22"/>
         <image name="whiteBackground.png" width="58" height="21"/>
-        <image name="yuanjiaowukuangselect" width="45" height="23"/>
     </resources>
 </document>

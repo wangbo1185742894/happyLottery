@@ -315,7 +315,7 @@
     int couponCount = [self.curUser.couponCount intValue];
     NSString *couponCountstr = [NSString stringWithFormat:@"%d",couponCount];
     self.redPacketLab.text = couponCountstr;
-    self.userImage.layer.cornerRadius = 29;
+    self.userImage.layer.cornerRadius = self.userImage.mj_h / 2;
     self.userImage.layer.masksToBounds = YES;
     self.userImage.layer.borderWidth = 1;
     self.userImage.layer.borderColor = [UIColor whiteColor].CGColor;
