@@ -23,6 +23,7 @@
                 <outlet property="personSetBtn" destination="43O-Jm-2Qq" id="aXW-T4-tqj"/>
                 <outlet property="redPacketBtn" destination="2R9-DO-gvq" id="SLL-6d-VA2"/>
                 <outlet property="redPacketLab" destination="UoB-tJ-jh8" id="FTe-5N-MwN"/>
+                <outlet property="siginBtn" destination="asT-0r-9bk" id="SRC-Nd-6p8"/>
                 <outlet property="tableView" destination="SK6-b0-laz" id="CR1-c8-0oI"/>
                 <outlet property="topDIs" destination="Oyl-0s-KxW" id="SPs-xR-ebQ"/>
                 <outlet property="topHeadCons" destination="Iwq-Ma-7Dv" id="wDC-zT-8yz"/>
@@ -48,9 +49,9 @@
                             </constraints>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="asT-0r-9bk">
-                            <rect key="frame" x="334" y="65" width="41" height="46"/>
+                            <rect key="frame" x="330.5" y="65" width="44.5" height="46"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="40.5" id="3Nj-Y2-5qN"/>
+                                <constraint firstAttribute="width" constant="44.5" id="3Nj-Y2-5qN"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <inset key="contentEdgeInsets" minX="2" minY="-23" maxX="0.0" maxY="0.0"/>
