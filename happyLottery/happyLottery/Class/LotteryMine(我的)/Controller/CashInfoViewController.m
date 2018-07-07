@@ -36,7 +36,7 @@
         ClassListCellViewController * classListVC = [[ClassListCellViewController alloc]init];
         classListVC.navVC = self;
         classListVC.strApi  = apiArray[i];
-        if (i == titleArray.count - 1) {
+        if (i == 6) {
             
             classListVC.firstPara = [NSMutableDictionary dictionaryWithDictionary:@{@"agentId":self.curUser.agentInfo._id==nil?@"":self.curUser.agentInfo._id,@"pageSize":@(KpageSize)}];
             
@@ -45,7 +45,7 @@
         }
         [_topMenu addViewController:classListVC atIndex:i];
     }
-    if (index != 0) {
+    if (_index != 0) {
         [_topMenu setMenuViewOffset:_index];
     }
     

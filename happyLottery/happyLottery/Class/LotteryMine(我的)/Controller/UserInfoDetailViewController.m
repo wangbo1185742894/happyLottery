@@ -7,10 +7,11 @@
 //
 
 #import "UserInfoDetailViewController.h"
+#import "MGLabel.h"
 
 @interface UserInfoDetailViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *labLeft;
-@property (weak, nonatomic) IBOutlet UILabel *labRight;
+@property (weak, nonatomic) IBOutlet MGLabel *labRight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topDis;
 
 @end
@@ -22,8 +23,14 @@
     
     _topDis.constant = NaviHeight;
     self.title = @"明细详情";
+
     self.labLeft .text = [self.model getLeftTitle];
     self.labRight.text = [self.model getRightTitle];
+    NSArray *keyList = [[self.model getRightTitle] componentsSeparatedByString:@" "];
+    if (keyList.count > 2) {
+        self.labRight.keyWord = keyList[2];
+        self.labRight.keyWordColor = SystemGreen;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

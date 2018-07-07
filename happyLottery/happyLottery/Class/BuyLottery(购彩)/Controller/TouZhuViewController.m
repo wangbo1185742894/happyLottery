@@ -1250,6 +1250,7 @@
     schemeCashModel.subscribed = self.transaction.betCost;
     schemeCashModel.realSubscribed = self.transaction.betCost;
     payVC.cashPayMemt = schemeCashModel;
+    [self.transaction removeAllBets];
     [self.navigationController pushViewController:payVC animated:YES];
 }
 

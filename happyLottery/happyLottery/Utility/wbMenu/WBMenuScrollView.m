@@ -28,7 +28,7 @@
 -(void)addMenuItems:(NSArray*)items andSize:(CGSize)itemSize{
 
     self.buttomLable = [[UILabel alloc]initWithFrame:CGRectMake(0, itemSize.height-2, itemSize.width, 2)];
-    self.buttomLable.backgroundColor = [UIColor redColor];
+    self.buttomLable.backgroundColor = SystemGreen;
     [self addSubview:self.buttomLable];
     for (int i = 0;i<items.count;i++) {
         UIButton*button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -41,7 +41,7 @@
             button.selected = YES;
         }
         [button setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
+        [button setTitleColor:SystemGreen forState:UIControlStateSelected];
         [button setTitle:title forState:UIControlStateNormal];
         [self addSubview:button];
         [button addTarget:self action:@selector(clickAction:) forControlEvents:UIControlEventTouchUpInside];

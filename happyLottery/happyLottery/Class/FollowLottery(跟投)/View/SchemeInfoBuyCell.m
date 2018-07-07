@@ -50,8 +50,8 @@
     
     self.labBetBouns.text = [NSString stringWithFormat:@"投注%d元",[model.betCost intValue]];
     self.winLabel.text = model.getSchemeState;
-    if ([model.ticketFailRef doubleValue] > 0 && model.printCount >0) {
-        self.labRemark.text = [NSString stringWithFormat:@"未出票订单已退款"];
+    if ([model.ticketFailRef doubleValue] > 0 && [model.printCount doubleValue]>0) {
+        self.labRemark.text = [NSString stringWithFormat:@"（未出票订单已退款）"];
     }else{
         self.labRemark.text = [NSString stringWithFormat:@""];
     }

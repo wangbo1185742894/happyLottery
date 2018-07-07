@@ -37,7 +37,6 @@
     self.viewControllerNo = @"A207";
     if ([self isIphoneX]) {
         self.top.constant = 24;
-       
     }
 //    self.height.constant = 770;
     self.height.constant = 815;

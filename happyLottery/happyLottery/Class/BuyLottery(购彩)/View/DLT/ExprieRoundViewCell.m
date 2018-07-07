@@ -60,6 +60,12 @@
             case 12:    //前3组
                 numCount = 3;
                 break;
+            case 19:    //前3组
+                numCount = 2;
+                break;
+            case 20:    //前3组
+                numCount = 3;
+                break;
 
 
             default:

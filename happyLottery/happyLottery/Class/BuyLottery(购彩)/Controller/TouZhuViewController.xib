@@ -59,8 +59,8 @@
                         <constraint firstItem="9bN-O5-47h" firstAttribute="top" secondItem="YpD-W2-XrA" secondAttribute="top" constant="15" id="nCH-Tf-k6j"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="59f-Vs-KTy">
-                    <rect key="frame" x="0.0" y="458" width="320" height="90"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="59f-Vs-KTy">
+                    <rect key="frame" x="0.0" y="458" width="320" height="110"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfd-Nl-E6w">
                             <rect key="frame" x="0.0" y="59" width="320" height="51"/>
