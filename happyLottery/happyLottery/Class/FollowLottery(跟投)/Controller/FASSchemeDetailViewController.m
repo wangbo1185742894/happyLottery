@@ -304,7 +304,7 @@
         }
         if (indexPath.row == 2+self.dataArray.count){
             SchemeOverCell *cell = [[SchemeOverCell alloc]init];
-            return [cell dateHeight:schemeDetail];
+            return [cell dateHeight:schemeDetail]+32;
         }
         SchemeContainInfoCell *cell = [[SchemeContainInfoCell alloc]init];
         if ([schemeDetail.lottery isEqualToString:@"JCLQ"]) {
@@ -382,7 +382,7 @@
                 }
                 if (indexPath.row == 2) {
                     SchemeOverCell *cell = [[SchemeOverCell alloc]init];
-                    return [cell dateHeight:schemeDetail];
+                    return [cell dateHeight:schemeDetail]+32;
                 }
             } else {
                 return [self setHeightForFangan:indexPath];
