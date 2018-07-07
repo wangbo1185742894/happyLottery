@@ -143,6 +143,7 @@
         dic = self.listArray[indexPath.row+10];
     }
     cell.textLabel.text = dic[@"Name"];
+    cell.textLabel.font = [UIFont systemFontOfSize:14];
     return cell;
 }
 

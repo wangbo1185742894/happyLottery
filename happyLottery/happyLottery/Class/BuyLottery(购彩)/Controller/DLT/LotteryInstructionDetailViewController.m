@@ -146,10 +146,16 @@
         [selectedButton setTitleColor:TEXTGRAYCOLOR forState:UIControlStateNormal];
         selectedButton = button;
         NSString *fileName = actionHTMLFile[button.tag - ButtonTagBase];
+        if ([self.lotteryDetailDic[@"Name"] isEqualToString:@"山东11选5"]) {
+            NSString *htmlStr = [[NSBundle mainBundle]pathForResource:fileName ofType:@"html"];
+            [webViewContent_ loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:htmlStr]]];
+        }else {
+            NSError *error = NULL;
+            
+            NSString *htmlStr = [NSString stringWithContentsOfFile: [[NSBundle mainBundle] pathForResource: fileName ofType: @"html"] encoding: NSUTF8StringEncoding error: &error];
+            [webViewContent_ loadHTMLString: htmlStr baseURL: [NSURL fileURLWithPath:[ [NSBundle mainBundle] bundlePath]]];
+        }
         
-        NSError *error = NULL;
-        NSString *htmlStr = [NSString stringWithContentsOfFile: [[NSBundle mainBundle] pathForResource: fileName ofType: @"html"] encoding: NSUTF8StringEncoding error: &error];
-        [webViewContent_ loadHTMLString: htmlStr baseURL: [NSURL fileURLWithPath:[ [NSBundle mainBundle] bundlePath]]];
     }
     [selectedButton setBackgroundColor: [UIColor clearColor]];
     [selectedButton setTitleColor:SystemGreen forState:UIControlStateNormal];
