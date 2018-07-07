@@ -116,6 +116,7 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
+    [self hideLoadingView];
     if (self.tabBarController.selectedIndex != 3) {
         self.tabBarController.tabBar.hidden = NO;
         return;
@@ -136,6 +137,7 @@
     if (self.tabBarController.selectedIndex != 3) {
         return;
     }
+    [self showLoadingText:@"正在加载"];
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType

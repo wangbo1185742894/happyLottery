@@ -27,7 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.webViewShowInfo.scrollView.bounces = NO;
+    self.webViewShowInfo.scrollView.bounces = NO;
     self.webViewShowInfo.delegate = self;
     [self.webViewShowInfo loadRequest:[NSURLRequest requestWithURL:self.pageUrl]];
     

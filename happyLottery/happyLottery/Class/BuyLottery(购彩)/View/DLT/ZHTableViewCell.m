@@ -125,7 +125,7 @@
                     jieguo.text = str;
                 }
                 if ([str isEqualToString:@"余额不足"]) {
-                    str = @"出票失败";
+                    str = @"已退款";
                     jieguo.text = str;
                     kaijianghaoma.text = @"余额不足";
                 }else if ([str isEqualToString:@"(null)"]||[str isEqualToString:@"null"]){
@@ -164,13 +164,12 @@
                 }
                 else if([StrorderStatus isEqualToString:@"1"] ||[StrorderStatus isEqualToString:@"2"]||[StrorderStatus isEqualToString:@"9"])
                 {
-                    //出票失败
                     jieguo.text = @"出票中";
                     kaijianghaoma.text = @"";
                 }
                 else if([StrorderStatus isEqualToString:@"4"])
                 {
-                    jieguo.text = @"出票失败";
+                    jieguo.text = @"已退款";
                     
                     if ([order.ticketRemark isEqualToString:@"(null)"] ||[order.ticketRemark isEqualToString:@"null"]) {
                         kaijianghaoma.text = @"";
@@ -180,7 +179,7 @@
                 }
                 else
                 {
-                    jieguo.text = @"出票失败";
+                    jieguo.text = @"已退款";
                     if ([order.ticketRemark isEqualToString:@"(null)"] ||[order.ticketRemark isEqualToString:@"null"]) {
                         kaijianghaoma.text = @"";
                     }else{

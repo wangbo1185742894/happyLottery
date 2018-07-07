@@ -529,7 +529,9 @@
             scrollViewContent_.contentSize = CGSizeMake(CGRectGetWidth(scrollViewContent_.frame), CGRectGetHeight(scrollViewContent_.frame)+220);
         }
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(beginTimerForCurRound) name:@"RoundTimeDownFinish" object:nil];
-    [self  addQmitButton];
+    if([self.lottery.identifier isEqualToString:@"SX115"]){
+        [self addQmitButton];
+    }
 }
 
 - (void) updateNavigationTitle {

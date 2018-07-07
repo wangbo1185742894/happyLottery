@@ -303,9 +303,6 @@
                 for (int zhu = 0; zhu < zhuNumber.count; zhu++) {
                     zhuArray = [zhuNumber[zhu] componentsSeparatedByString:@"+"];
                     hight = hight + zhuArray.count;
-                    
-                   
-                    
                    
                     for (int i = 0; i<zhuArray.count; i++) {
                         

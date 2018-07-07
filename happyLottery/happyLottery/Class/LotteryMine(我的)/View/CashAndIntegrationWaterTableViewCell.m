@@ -31,6 +31,13 @@
     self.imgWidth.constant = 0;
     self.imgDisLeft.constant = 0;
     self.nameLab.text = userInfo.get1Name;
+    self.nameLab.font = [UIFont boldSystemFontOfSize:15];
+    
+    
+    self.priceLab.font = [UIFont systemFontOfSize:15];
+    self.priceLab.textColor = RGBCOLOR(37,186,96);
+    self.priceLab.keyWord = @"元";
+    self.priceLab.keyWordFont = [UIFont systemFontOfSize:12];
     self.priceLab.text = userInfo.get2Name;
     self.retainLab.text = userInfo.get3Name;
     self.dateLab.text = userInfo.get4Name;
