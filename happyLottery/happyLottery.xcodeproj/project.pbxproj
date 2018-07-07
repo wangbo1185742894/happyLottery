@@ -945,10 +945,7 @@
 		F90D68D520EF647C007865E4 /* DeleteOrderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F90D68D420EF647C007865E4 /* DeleteOrderView.xib */; };
 		F90D68D720EF65D0007865E4 /* deletehelp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F90D68D620EF65CF007865E4 /* deletehelp@2x.png */; };
 		F90D68D920EF65DA007865E4 /* deletehelp@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F90D68D820EF65DA007865E4 /* deletehelp@3x.png */; };
-		F90D68DE20F0603E007865E4 /* sd115_jianjie.html in Resources */ = {isa = PBXBuildFile; fileRef = F90D68DA20F0603C007865E4 /* sd115_jianjie.html */; };
-		F90D68DF20F0603E007865E4 /* sd115_jiangxiang.html in Resources */ = {isa = PBXBuildFile; fileRef = F90D68DB20F0603D007865E4 /* sd115_jiangxiang.html */; };
-		F90D68E020F0603E007865E4 /* sd115_wanfa.html in Resources */ = {isa = PBXBuildFile; fileRef = F90D68DC20F0603E007865E4 /* sd115_wanfa.html */; };
-		F90D68E120F0603E007865E4 /* sd115_guize.html in Resources */ = {isa = PBXBuildFile; fileRef = F90D68DD20F0603E007865E4 /* sd115_guize.html */; };
+		F90D68E320F06259007865E4 /* PlayIntroduce.plist in Resources */ = {isa = PBXBuildFile; fileRef = F90D68E220F06259007865E4 /* PlayIntroduce.plist */; };
 		F90FCD551FF34D1C00BD807C /* MyRedPacketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F90FCD531FF34D1C00BD807C /* MyRedPacketViewController.m */; };
 		F90FCD561FF34D1C00BD807C /* MyRedPacketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F90FCD541FF34D1C00BD807C /* MyRedPacketViewController.xib */; };
 		F90FCD5A1FF34D5000BD807C /* MyRedPacketTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F90FCD581FF34D5000BD807C /* MyRedPacketTableViewCell.m */; };
@@ -2997,10 +2994,7 @@
 		F90D68D420EF647C007865E4 /* DeleteOrderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeleteOrderView.xib; sourceTree = "<group>"; };
 		F90D68D620EF65CF007865E4 /* deletehelp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "deletehelp@2x.png"; sourceTree = "<group>"; };
 		F90D68D820EF65DA007865E4 /* deletehelp@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "deletehelp@3x.png"; sourceTree = "<group>"; };
-		F90D68DA20F0603C007865E4 /* sd115_jianjie.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sd115_jianjie.html; sourceTree = "<group>"; };
-		F90D68DB20F0603D007865E4 /* sd115_jiangxiang.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sd115_jiangxiang.html; sourceTree = "<group>"; };
-		F90D68DC20F0603E007865E4 /* sd115_wanfa.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sd115_wanfa.html; sourceTree = "<group>"; };
-		F90D68DD20F0603E007865E4 /* sd115_guize.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sd115_guize.html; sourceTree = "<group>"; };
+		F90D68E220F06259007865E4 /* PlayIntroduce.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PlayIntroduce.plist; sourceTree = "<group>"; };
 		F90FCD521FF34D1C00BD807C /* MyRedPacketViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyRedPacketViewController.h; sourceTree = "<group>"; };
 		F90FCD531FF34D1C00BD807C /* MyRedPacketViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyRedPacketViewController.m; sourceTree = "<group>"; };
 		F90FCD541FF34D1C00BD807C /* MyRedPacketViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyRedPacketViewController.xib; sourceTree = "<group>"; };
@@ -4216,10 +4210,6 @@
 		2D4B1E411FDF65380034B708 /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				F90D68DD20F0603E007865E4 /* sd115_guize.html */,
-				F90D68DB20F0603D007865E4 /* sd115_jiangxiang.html */,
-				F90D68DA20F0603C007865E4 /* sd115_jianjie.html */,
-				F90D68DC20F0603E007865E4 /* sd115_wanfa.html */,
 				F9FC0C0C20CA7A1100BCCF59 /* quanzhuxuzhi.html */,
 				2D676A8120EA4C320026BA05 /* BetType.plist */,
 				2D05C81620A3F60E001A8953 /* HomeMenuItemsConfig.plist */,
@@ -4257,6 +4247,7 @@
 				F9FF4387201EE37C00179211 /* PageCodeIsLogin.plist */,
 				F9705EC7207C5CEB00E25E4E /* LotteryArea.plist */,
 				F9BC6E6520C2DF150037998B /* AgentApplayConfig.plist */,
+				F90D68E220F06259007865E4 /* PlayIntroduce.plist */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -7173,7 +7164,6 @@
 				2D628B291FECA9C40013D0E1 /* touzhuxuanzezhifu@3x.png in Resources */,
 				F9A75BB720D0CFC9005AA881 /* border_renshu@3x.png in Resources */,
 				F9F6CA9B1FF5D6B100A49F71 /* button@2x.png in Resources */,
-				F90D68E020F0603E007865E4 /* sd115_wanfa.html in Resources */,
 				F90FCD5B1FF34D5000BD807C /* MyRedPacketTableViewCell.xib in Resources */,
 				F98A603220638EA9008C3132 /* GYJSchemeViewCell.xib in Resources */,
 				2DE892A3202150AC008926A6 /* tbz_recharge.html in Resources */,
@@ -7298,7 +7288,6 @@
 				2D05C85620A43631001A8953 /* icon_niurenbang@2x.png in Resources */,
 				F958F18220BC04FF00F30690 /* icon_daletoushouye@3x.png in Resources */,
 				2D05C87A20A58416001A8953 /* FollowListViewController.xib in Resources */,
-				F90D68E120F0603E007865E4 /* sd115_guize.html in Resources */,
 				2D205FF41FFC7AF30086E266 /* newFeatureView-3.png in Resources */,
 				2D4B1E7F1FDF684E0034B708 /* weishoucang@2x.png in Resources */,
 				2D7B1354204E37100035AE89 /* helper@2x.png in Resources */,
@@ -7624,6 +7613,7 @@
 				F90FCD791FF3810F00BD807C /* stale@2x.png in Resources */,
 				F94AA9C21FEB59DA0021B980 /* list@2x.png in Resources */,
 				2D4B1E6E1FDF684E0034B708 /* duibiao@x2.png in Resources */,
+				F90D68E320F06259007865E4 /* PlayIntroduce.plist in Resources */,
 				F90D68D920EF65DA007865E4 /* deletehelp@3x.png in Resources */,
 				F9FC153B20625815009BAD68 /* WebViewController.xib in Resources */,
 				2D8CC0091FF3958D00CC367F /* icon_selected@3x.png in Resources */,
@@ -7820,7 +7810,6 @@
 				F9A75BBE20D0F6A9005AA881 /* mycircle_backgroup@2x.png in Resources */,
 				2D7B138E204E82FD0035AE89 /* pic_jingzu_@3x.png in Resources */,
 				2D4B1E7A1FDF684E0034B708 /* home_select@3x.png in Resources */,
-				F90D68DE20F0603E007865E4 /* sd115_jianjie.html in Resources */,
 				F94AA9C61FEB59DA0021B980 /* hint@3x.png in Resources */,
 				2D791C8020916B0500E455F5 /* pic_guanyajun_beijing@3x.png in Resources */,
 				2D517205200D986400C3CD7F /* newicon_default@2x.png in Resources */,
@@ -8193,7 +8182,6 @@
 				2D7B1390204E82FD0035AE89 /* pic_shengfucai@3x.png in Resources */,
 				2DA39EE920538FBB00A03FD1 /* LotteryProfilesConfigdlt.plist in Resources */,
 				2D4B1E7D1FDF684E0034B708 /* quanzi_select@2x.png in Resources */,
-				F90D68DF20F0603E007865E4 /* sd115_jiangxiang.html in Resources */,
 				F9BC6E2020C2B2EC0037998B /* dengdai@3x.png in Resources */,
 				2D05C84C20A43631001A8953 /* deletesearch@3x.png in Resources */,
 				2D7B133B204E24AA0035AE89 /* ballWhiteBG.png in Resources */,
