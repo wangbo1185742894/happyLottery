@@ -761,9 +761,10 @@ static NSString *ID = @"LotteryAreaViewCell";
         return;
     }else if ([keyStr isEqualToString:@"A003"]){
         [self actionSX115:nil];
-        
+        return;
     }else if ([keyStr isEqualToString:@"A426"]){
         [self actionSD115:nil];
+        return;
     }
     
     if (itemIndex.trLoadStatus!= nil) {
