@@ -25,6 +25,7 @@
 #import "netWorkHelper.h"
 #import "MyCircleViewController.h"
 #import "ZhuiHaoInfoViewController.h"
+#import "LotteryPlayViewController.h"
 // 引入JPush功能所需头文件
 #import "JPUSHService.h"
 #import "VersionUpdatingPopView.h"
@@ -862,6 +863,22 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 //        [delegate.curNavVC pushViewController:myCircleVC animated:YES];
 //        UITabBarController *rootTab = (UITabBarController *)[UIApplication sharedApplication].keyWindow .rootViewController;
 //        rootTab.selectedIndex  =2;
+        return;
+    }else if ([keyStr isEqualToString:@"A003"]){
+        NSArray * lotteryDS = [lotteryMan getAllLottery];
+        LotteryPlayViewController *playVC = [[LotteryPlayViewController alloc] init];
+        playVC.hidesBottomBarWhenPushed = YES;
+        playVC.lottery = lotteryDS[0];
+        playVC.hidesBottomBarWhenPushed = YES;
+        [delegate.curNavVC pushViewController:playVC animated:YES];
+        return;
+    }else if ([keyStr isEqualToString:@"A426"]){
+        NSArray * lotteryDS = [lotteryMan getAllLottery];
+        LotteryPlayViewController *playVC = [[LotteryPlayViewController alloc] init];
+        playVC.hidesBottomBarWhenPushed = YES;
+        playVC.lottery = lotteryDS[11];
+        playVC.hidesBottomBarWhenPushed = YES;
+        [delegate.curNavVC pushViewController:playVC animated:YES];
         return;
     }else{
           baseVC.hidesBottomBarWhenPushed = YES;
