@@ -87,7 +87,13 @@
 //    [self afnReachabilityTest];
     
     NSString * soapMessage = [request getSOAPMessage];
-    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL: [NSURL URLWithString:[NSString stringWithFormat:[GlobalInstance instance].lotteryUrl,subApi]]];
+    NSString *lotteryUrl;
+    if ([GlobalInstance instance].lotteryUrl .length == 0) {
+        lotteryUrl = WSServerURL;
+    }else{
+        lotteryUrl = [GlobalInstance instance].lotteryUrl;
+    }
+    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL: [NSURL URLWithString:[NSString stringWithFormat:lotteryUrl,subApi]]];
     theRequest.timeoutInterval = 10;
     NSString *msgLength = [NSString stringWithFormat:@"%lu", (unsigned long)[soapMessage length]];
     NSLog(@"22334%@",msgLength);

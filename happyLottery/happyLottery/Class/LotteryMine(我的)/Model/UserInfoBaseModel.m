@@ -135,19 +135,28 @@
 
 @implementation SubscribeDetail : UserInfoBaseModel
 -(NSString *)getLeftTitle{
-    if (self.refundAmounts.doubleValue > 0) {
-          return [NSString stringWithFormat:@"\n类型\n\n彩种\n\n方案号\n\n时间\n\n认购金额\n\n退款金额\n\n"];
+    if ([self.useCoupon boolValue] == YES) {
+        if (self.refundAmounts.doubleValue > 0) {
+            return [NSString stringWithFormat:@"\n类型\n\n彩种\n\n方案号\n\n时间\n\n认购金额\n\n\n退款金额\n\n"];
+        }else{
+            return [NSString stringWithFormat:@"\n类型\n\n彩种\n\n方案号\n\n时间\n\n认购金额\n\n"];
+        }
     }else{
-          return [NSString stringWithFormat:@"\n类型\n\n彩种\n\n方案号\n\n时间\n\n认购金额\n\n"];
+        if (self.refundAmounts.doubleValue > 0) {
+            return [NSString stringWithFormat:@"\n类型\n\n彩种\n\n方案号\n\n时间\n\n认购金额\n\n退款金额\n\n"];
+        }else{
+            return [NSString stringWithFormat:@"\n类型\n\n彩种\n\n方案号\n\n时间\n\n认购金额\n\n"];
+        }
     }
+ 
   
 }
 -(NSString *)getRightTitle{
     if ([self.useCoupon boolValue] == YES) {
         if (self.refundAmounts.doubleValue > 0) {
-            return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n%@\n\n#%@元\n\n%@元\n%@元优惠券\n\n",[self get1Name],[BaseModel getLotteryByName:self.lotteryType],self.schemeNo,self.subTime,self.realSubAmounts,self.refundAmounts,self.deduction];
+            return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n%@\n\n#%@元\n%@元优惠券\n\n%@元\n\n",[self get1Name],[BaseModel getLotteryByName:self.lotteryType],self.schemeNo,self.subTime,self.realSubAmounts,self.deduction,self.refundAmounts];
         }else{
-            return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n%@\n\n#%@元\n%@元优惠券\n\n合计%@元\n\n",[self get1Name],[BaseModel getLotteryByName:self.lotteryType],self.schemeNo,self.subTime,self.realSubAmounts,self.deduction,self.subAmounts];
+            return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n%@\n\n#%@元优惠券\n\n%@元\n合计%@元\n\n",[self get1Name],[BaseModel getLotteryByName:self.lotteryType],self.schemeNo,self.subTime,self.deduction,self.realSubAmounts,self.subAmounts];
         }
     }else{
         if (self.refundAmounts.doubleValue > 0) {
