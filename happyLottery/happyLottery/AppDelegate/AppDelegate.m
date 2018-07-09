@@ -779,7 +779,23 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         playViewVC.hidesBottomBarWhenPushed = YES;
         [delegate.curNavVC pushViewController:playViewVC animated:YES];
         return;
-    }else if([keyStr isEqualToString:@"A416"]){
+    }else if ([keyStr isEqualToString:@"A427"]){
+        WebCTZQHisViewController * playViewVC = [[WebCTZQHisViewController alloc]init];
+        NSString *strUrl = [NSString stringWithFormat:@"%@/app/award/toHis?lotteryCode=SD115",H5BaseAddress];
+        playViewVC.pageUrl = [NSURL URLWithString:strUrl];
+        playViewVC.hidesBottomBarWhenPushed = YES;
+        [delegate.curNavVC pushViewController:playViewVC animated:YES];
+        return;
+        
+    }else if ([keyStr isEqualToString:@"A311"]){
+        WebCTZQHisViewController * playViewVC = [[WebCTZQHisViewController alloc]init];
+        NSString *strUrl = [NSString stringWithFormat:@"%@/app/award/toHis?lotteryCode=SX115",H5BaseAddress];
+        playViewVC.pageUrl = [NSURL URLWithString:strUrl];
+        playViewVC.hidesBottomBarWhenPushed = YES;
+        [delegate.curNavVC pushViewController:playViewVC animated:YES];
+        return;
+        
+    } else if([keyStr isEqualToString:@"A416"]){
   
             tabBarController.selectedIndex = 1;
         return;

@@ -461,6 +461,22 @@
         playViewVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:playViewVC animated:YES];
         return;
+    }else if ([keyStr isEqualToString:@"A427"]){
+        WebCTZQHisViewController * playViewVC = [[WebCTZQHisViewController alloc]init];
+        NSString *strUrl = [NSString stringWithFormat:@"%@/app/award/toHis?lotteryCode=SD115",H5BaseAddress];
+        playViewVC.pageUrl = [NSURL URLWithString:strUrl];
+        playViewVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:playViewVC animated:YES];
+        return;
+        
+    }else if ([keyStr isEqualToString:@"A311"]){
+        WebCTZQHisViewController * playViewVC = [[WebCTZQHisViewController alloc]init];
+        NSString *strUrl = [NSString stringWithFormat:@"%@/app/award/toHis?lotteryCode=SX115",H5BaseAddress];
+        playViewVC.pageUrl = [NSURL URLWithString:strUrl];
+        playViewVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:playViewVC animated:YES];
+        return;
+        
     }else if([keyStr isEqualToString:@"A416"]){
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self.navigationController popToRootViewControllerAnimated:YES];
@@ -536,6 +552,18 @@
     }else if ([keyStr isEqualToString:@"A004"]){
         [self .navigationController popToRootViewControllerAnimated:YES];
         [[NSNotificationCenter defaultCenter]postNotificationName:@"NSNotificationJumpToPlayVC" object:@"DLT"];
+        
+        return;
+    }
+    else if ([keyStr isEqualToString:@"A003"]){
+        [self .navigationController popToRootViewControllerAnimated:YES];
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"NSNotificationJumpToPlayVC" object:@"SX115"];
+        
+        return;
+    }
+    else if ([keyStr isEqualToString:@"A426"]){
+        [self .navigationController popToRootViewControllerAnimated:YES];
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"NSNotificationJumpToPlayVC" object:@"SD115"];
         
         return;
     }

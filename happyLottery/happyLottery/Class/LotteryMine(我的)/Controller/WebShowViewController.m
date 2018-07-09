@@ -28,6 +28,10 @@
         self.viewControllerNo = @"A412";
     }else if ([strUrl rangeOfString:@"sfcOpenAward"].length > 0){
         self.viewControllerNo = @"A415";
+    }else if ([strUrl rangeOfString:@"SD115"].length > 0){
+        self.viewControllerNo = @"A427";
+    }else if ([strUrl rangeOfString:@"SX115"].length > 0){
+        self.viewControllerNo = @"A311";
     }
     self.webViewShowInfo.delegate = self;
     [self.webViewShowInfo loadRequest:[NSURLRequest requestWithURL:self.pageUrl]];

@@ -120,9 +120,14 @@
     if ([self.lottery.identifier isEqualToString:@"SD115"]) {
         [self.lotteryMan getCommonSetValue:@{@"typeCode":@"number_miss",  @"commonCode":@"SDX115_miss"}];
     }
-
+   
     limitArray  = [NSMutableArray arrayWithCapacity:0];
-    self.viewControllerNo = @"A003";
+    if (self.lottery.type == LotteryTypeSDShiYiXuanWu) {
+        self.viewControllerNo = @"A426";
+    }
+    else {
+        self.viewControllerNo = @"A003";
+    }
 
     if([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
