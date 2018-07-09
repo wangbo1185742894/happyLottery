@@ -18,6 +18,8 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftCons;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *rightCons;
+@property (weak, nonatomic) IBOutlet UILabel *infoLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightCons;
 
 - (void)reloadDate :(JCZQSchemeItem *)schemeDetail;
 

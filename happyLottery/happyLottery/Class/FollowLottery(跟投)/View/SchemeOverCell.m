@@ -41,6 +41,13 @@
         self.leftCons.constant = 16;
         self.rightCons.constant = 10;
     }
+    if ([schemeDetail.lottery isEqualToString:@"JCLQ"]) {
+        self.infoLabel.hidden = YES;
+        self.heightCons.constant = 0;
+    } else {
+        self.infoLabel.hidden = NO;
+        self.heightCons.constant = 27;
+    }
 }
 
 - (float)dateHeight:(JCZQSchemeItem *)schemeDetail{
@@ -53,8 +60,8 @@
         }
     }
     else {
-        if ( [pass boundingRectWithSize:CGSizeMake(94, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName :[UIFont systemFontOfSize:14]} context:nil].size.height+30 > 58) {
-            return [pass boundingRectWithSize:CGSizeMake(94, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName :[UIFont systemFontOfSize:14]} context:nil].size.height+30;
+        if ( [pass boundingRectWithSize:CGSizeMake(94, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName :[UIFont systemFontOfSize:14]} context:nil].size.height+50 > 58) {
+            return [pass boundingRectWithSize:CGSizeMake(94, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName :[UIFont systemFontOfSize:14]} context:nil].size.height+50;
         }else{
             return 58;
         }

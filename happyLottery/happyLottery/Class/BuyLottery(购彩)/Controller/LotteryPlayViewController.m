@@ -139,7 +139,8 @@
     
 
 
-
+    buttonSubmit.layer.masksToBounds = YES;
+    buttonSubmit.layer.cornerRadius = 4;
     buttonSubmit_ .titleLabel.font = [UIFont systemFontOfSize:15];
     
     [buttonSubmit_ setTitle: @"预约投注" forState: UIControlStateNormal];
@@ -587,11 +588,9 @@
     if (isShowFLag) {
         return;
     }
-
-    NSArray *titleArr = @[TextPlayMethodInd,
-                 TextLotteryWinTrend,
-                 TextLotteryWinHistory,];
-    
+    NSArray *titleArr = @[@" 走势图  ",
+                 @" 开奖详情",
+                 @" 玩法规则"];
     CGFloat optionviewWidth = 100;
     CGFloat optionviewCellheight = 38;
     CGSize mainSize = [UIScreen mainScreen].bounds.size;
@@ -896,11 +895,11 @@
     NSInteger buttonIndex = index;
     if (buttonIndex == 0) {
         //clear selection
-        [self showPlayMethod];
-    }else if (buttonIndex == 1){
         [self showExtrendViewCtr];
-    }else if (buttonIndex == 2){
+    }else if (buttonIndex == 1){
         [self showWinHistoryViewCtr];
+    }else if (buttonIndex == 2){
+        [self showPlayMethod];
     }
 }
 

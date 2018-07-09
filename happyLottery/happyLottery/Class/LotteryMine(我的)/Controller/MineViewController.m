@@ -224,7 +224,7 @@
 
 -(void)notLogin{
     [self.loginBtn setTitle:@"登录/注册" forState:UIControlStateNormal];
-    [self.userImage setImage:[UIImage imageNamed:@"usermine.png"]];
+    [self.userImage setImage:[UIImage imageNamed:@"user_mine.png"]];
     self.loginBtn.enabled = YES;
     self.balanceLab.text = @"0";
     self.integralLab.text = @"0";
@@ -315,14 +315,14 @@
     int couponCount = [self.curUser.couponCount intValue];
     NSString *couponCountstr = [NSString stringWithFormat:@"%d",couponCount];
     self.redPacketLab.text = couponCountstr;
-    self.userImage.layer.cornerRadius = 29;
+    self.userImage.layer.cornerRadius = self.userImage.mj_h / 2;
     self.userImage.layer.masksToBounds = YES;
     self.userImage.layer.borderWidth = 1;
     self.userImage.layer.borderColor = [UIColor whiteColor].CGColor;
     if ([self.curUser.headUrl isEqualToString:@""] || self.curUser.headUrl == nil) {
-        self.userImage.image = [UIImage imageNamed:@"usermine.png"];
+        self.userImage.image = [UIImage imageNamed:@"user_mine.png"];
     }else{
-        [self.userImage sd_setImageWithURL:[NSURL URLWithString:self.curUser.headUrl] placeholderImage:[UIImage imageNamed:@"usermine.png"]];
+        [self.userImage sd_setImageWithURL:[NSURL URLWithString:self.curUser.headUrl] placeholderImage:[UIImage imageNamed:@"user_mine.png"]];
         
     }
 }

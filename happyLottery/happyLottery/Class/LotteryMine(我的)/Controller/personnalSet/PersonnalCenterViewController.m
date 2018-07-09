@@ -106,7 +106,7 @@
     //[_userImage sd_setImageWithURL:[NSURL URLWithString:self.curUser.headUrl]];
     
     if ([self.curUser.headUrl isEqualToString:@""] || self.curUser.headUrl == nil) {
-        self.myImage.image = [UIImage imageNamed:@"usermine.png"];
+        self.myImage.image = [UIImage imageNamed:@"user_mine.png"];
     }else{
         [self.myImage sd_setImageWithURL:[NSURL URLWithString:self.curUser.headUrl]];
 

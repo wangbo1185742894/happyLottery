@@ -21,10 +21,6 @@
 @interface MyHelpViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottom;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollerview;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *height;
 @property (strong,nonatomic) NSArray <NSDictionary *> *listArray;
 
 @end
@@ -35,11 +31,6 @@
     [super viewDidLoad];
     self.title = @"帮助";
     self.viewControllerNo = @"A207";
-    if ([self isIphoneX]) {
-        self.top.constant = 24;
-    }
-//    self.height.constant = 770;
-    self.height.constant = 815;
     [self setTableView];
     self.listArray = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"PlayIntroduce" ofType: @"plist"]];
     
@@ -51,7 +42,6 @@
     self.tableView.dataSource = self;
     self.tableView.rowHeight = 45;
 }
-
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 3;
@@ -106,18 +96,19 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     if (section == 2) {
-        return 106;
+        return 84;
     }
     return 0.1;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     if (section == 2) {
-        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, 50)];
-        UIImageView *iamge = [[UIImageView alloc]initWithFrame:CGRectMake((KscreenWidth-43)/2, 10, 43, 43)];
+        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, 52)];
+        UIImageView *iamge = [[UIImageView alloc]initWithFrame:CGRectMake((KscreenWidth-217)/2, 34, 17, 17)];
         [iamge setImage:[UIImage imageNamed:@"logo_assist.png"]];
-        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake((KscreenWidth-200)/2, 20+43, 200, 43)];
+        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake((KscreenWidth-217)/2+20, 35, 200, 14)];
         label.text = @"客服电话 400-600-5558";
+        label.textColor = RGBCOLOR(25, 26, 26);
         label.userInteractionEnabled=YES;
         UITapGestureRecognizer *labelTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(actionTelMe)];
         [label addGestureRecognizer:labelTapGestureRecognizer];
@@ -142,6 +133,7 @@
         dic = self.listArray[indexPath.row+10];
     }
     cell.textLabel.text = dic[@"Name"];
+    cell.textLabel.font = [UIFont systemFontOfSize:14];
     return cell;
 }
 
