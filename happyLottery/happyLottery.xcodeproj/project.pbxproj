@@ -560,8 +560,6 @@
 		2D739D091FEB86A500264044 /* jczqshowallback@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D739D081FEB86A400264044 /* jczqshowallback@3x.png */; };
 		2D791C8020916B0500E455F5 /* pic_guanyajun_beijing@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D791C7E20916B0400E455F5 /* pic_guanyajun_beijing@3x.png */; };
 		2D791C8120916B0500E455F5 /* pic_guanyajun_beijing@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D791C7F20916B0400E455F5 /* pic_guanyajun_beijing@2x.png */; };
-		2D791C8A2091CB8900E455F5 /* LaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D791C882091CB8900E455F5 /* LaunchViewController.m */; };
-		2D791C8B2091CB8900E455F5 /* LaunchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D791C892091CB8900E455F5 /* LaunchViewController.xib */; };
 		2D7B12C5204D3A250035AE89 /* DLTPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B12C2204D3A230035AE89 /* DLTPlayViewController.m */; };
 		2D7B12C9204D3AB60035AE89 /* LotteryTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B12C7204D3AB50035AE89 /* LotteryTransaction.m */; };
 		2D7B12CC204D3B200035AE89 /* LotteryBet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B12CB204D3B200035AE89 /* LotteryBet.m */; };
@@ -2389,9 +2387,6 @@
 		2D739D081FEB86A400264044 /* jczqshowallback@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jczqshowallback@3x.png"; sourceTree = "<group>"; };
 		2D791C7E20916B0400E455F5 /* pic_guanyajun_beijing@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pic_guanyajun_beijing@3x.png"; sourceTree = "<group>"; };
 		2D791C7F20916B0400E455F5 /* pic_guanyajun_beijing@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pic_guanyajun_beijing@2x.png"; sourceTree = "<group>"; };
-		2D791C872091CB8900E455F5 /* LaunchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LaunchViewController.h; sourceTree = "<group>"; };
-		2D791C882091CB8900E455F5 /* LaunchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LaunchViewController.m; sourceTree = "<group>"; };
-		2D791C892091CB8900E455F5 /* LaunchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchViewController.xib; sourceTree = "<group>"; };
 		2D7B12C2204D3A230035AE89 /* DLTPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLTPlayViewController.m; sourceTree = "<group>"; };
 		2D7B12C4204D3A240035AE89 /* DLTPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLTPlayViewController.h; sourceTree = "<group>"; };
 		2D7B12C7204D3AB50035AE89 /* LotteryTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LotteryTransaction.m; sourceTree = "<group>"; };
@@ -5156,9 +5151,6 @@
 				2DCBB2821FD1000700934D92 /* Info.plist */,
 				2DCBB2831FD1000700934D92 /* main.m */,
 				2DCBB2C61FD1098300934D92 /* HappyLottery.pch */,
-				2D791C872091CB8900E455F5 /* LaunchViewController.h */,
-				2D791C882091CB8900E455F5 /* LaunchViewController.m */,
-				2D791C892091CB8900E455F5 /* LaunchViewController.xib */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -7570,7 +7562,6 @@
 				2D5171EB200C72DA00C3CD7F /* icon_weizhong_@2x.png in Resources */,
 				2D08A48C206CBDF1005AFF13 /* pic_zixun@3x.png in Resources */,
 				F9BC6E1520C2B1390037998B /* apply_again@2x.png in Resources */,
-				2D791C8B2091CB8900E455F5 /* LaunchViewController.xib in Resources */,
 				2D4B1E9D1FDFC4E10034B708 /* NewsViewController.xib in Resources */,
 				F97D0B4620B7A12A003D09C6 /* remengendan@3x.png in Resources */,
 				2D05C86520A43631001A8953 /* quanzi_normal@2x.png in Resources */,
@@ -8394,7 +8385,6 @@
 				F9705E49207A0DE800E25E4E /* JCLQDXFCell.m in Sources */,
 				F9C3BA1720088D0100916F3C /* FeedBackHistoryViewController.m in Sources */,
 				F9705E4B207A0DE800E25E4E /* JCLQHHTZCell.m in Sources */,
-				2D791C8A2091CB8900E455F5 /* LaunchViewController.m in Sources */,
 				2D7B1314204D499D0035AE89 /* ExprieRoundViewCell.m in Sources */,
 				2D03F27F2060BAE800C81BEF /* BankCardSettingViewController.m in Sources */,
 				2D4B1E941FDF7BD20034B708 /* NewsListCell.m in Sources */,

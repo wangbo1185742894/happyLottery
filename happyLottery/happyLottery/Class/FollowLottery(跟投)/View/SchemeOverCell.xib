@@ -76,6 +76,8 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="heightCons" destination="xY6-VG-TC1" id="alM-wT-LHj"/>
+                <outlet property="infoLabel" destination="M2C-Ue-d5w" id="agd-jO-MJK"/>
                 <outlet property="leftCons" destination="IMM-F1-Ofm" id="29M-pO-quN"/>
                 <outlet property="passType" destination="Wxo-YZ-XjI" id="eEj-qM-NjU"/>
                 <outlet property="rightCons" destination="UZ3-7j-vCA" id="BhZ-qY-kqT"/>

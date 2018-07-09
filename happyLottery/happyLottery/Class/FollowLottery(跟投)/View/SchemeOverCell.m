@@ -41,6 +41,13 @@
         self.leftCons.constant = 16;
         self.rightCons.constant = 10;
     }
+    if ([schemeDetail.lottery isEqualToString:@"JCLQ"]) {
+        self.infoLabel.hidden = YES;
+        self.heightCons.constant = 0;
+    } else {
+        self.infoLabel.hidden = NO;
+        self.heightCons.constant = 27;
+    }
 }
 
 - (float)dateHeight:(JCZQSchemeItem *)schemeDetail{
