@@ -19,6 +19,9 @@
 #import "WebShowViewController.h"
 #import "SetPayPWDViewController.h"
 #import "YuCeSchemeCreateViewController.h"
+#import "LotteryPlayViewController.h"
+#import "DLTPlayViewController.h"
+#import "SSQPlayViewController.h"
 #import "BaseViewController.h"
 #import "UMChongZhiViewController.h"
 #import "YinLanPayManage.h"
@@ -214,6 +217,18 @@
                 [self.navigationController popToViewController:baseVC animated:YES];
                 return;
             }
+            if ([baseVC isKindOfClass: [LotteryPlayViewController class]]) {
+                [self.navigationController popToViewController:baseVC animated:YES];
+                return;
+            }
+            if ([baseVC isKindOfClass: [DLTPlayViewController class]]) {
+                [self.navigationController popToViewController:baseVC animated:YES];
+                return;
+            } if ([baseVC isKindOfClass: [SSQPlayViewController class]]) {
+                [self.navigationController popToViewController:baseVC animated:YES];
+                return;
+            }
+            
         }
         [self.navigationController popViewControllerAnimated:YES];
         

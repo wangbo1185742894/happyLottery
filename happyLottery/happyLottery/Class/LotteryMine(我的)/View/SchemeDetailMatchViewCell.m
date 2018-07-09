@@ -637,7 +637,6 @@
     } @catch (NSException *exception) {
         return @"";
     }
-    
 }
 
 -(void)refreshDataJCLQ:(JlBetContent  *)modelDic andResult:(NSArray<JCLQOpenResult *> *)resultArray{
