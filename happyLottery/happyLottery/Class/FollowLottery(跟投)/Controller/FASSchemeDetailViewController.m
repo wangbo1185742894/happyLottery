@@ -385,6 +385,9 @@
                 }
                 if (indexPath.row == 2) {
                     SchemeOverCell *cell = [[SchemeOverCell alloc]init];
+                    if ([schemeDetail.lottery isEqualToString:@"JCLQ"]) {
+                        return [cell dateHeight:schemeDetail];
+                    }
                     return [cell dateHeight:schemeDetail]+32;
                 }
             } else {
