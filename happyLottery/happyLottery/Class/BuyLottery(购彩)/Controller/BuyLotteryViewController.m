@@ -47,6 +47,7 @@
 #import "LotteryCollectionView.h"
 #import "LotteryAreaViewCell.h"
 #import "LMJScrollTextView2.h"
+#import "LotteryPlayViewController.h"
 #define KNewsListCell @"NewsListCell"
 #define AnimationDur 0.3
 #define KAppSignModelShow @"appSignModelShow"
@@ -645,6 +646,32 @@ static NSString *ID = @"LotteryAreaViewCell";
             [navgC pushViewController:playViewVC animated:YES];
         }
         return;
+    }else if ([keyStr isEqualToString:@"A427"]){
+        WebCTZQHisViewController * playViewVC = [[WebCTZQHisViewController alloc]init];
+        NSString *strUrl = [NSString stringWithFormat:@"%@/app/award/toHis?lotteryCode=SD115",H5BaseAddress];
+        playViewVC.pageUrl = [NSURL URLWithString:strUrl];
+        playViewVC.hidesBottomBarWhenPushed = YES;
+        if (navgC == nil) {
+            [self.navigationController pushViewController:playViewVC animated:YES];
+        }
+        else {
+            [navgC pushViewController:playViewVC animated:YES];
+        }
+        return;
+        
+    }else if ([keyStr isEqualToString:@"A311"]){
+        WebCTZQHisViewController * playViewVC = [[WebCTZQHisViewController alloc]init];
+        NSString *strUrl = [NSString stringWithFormat:@"%@/app/award/toHis?lotteryCode=SX115",H5BaseAddress];
+        playViewVC.pageUrl = [NSURL URLWithString:strUrl];
+        playViewVC.hidesBottomBarWhenPushed = YES;
+        if (navgC == nil) {
+            [self.navigationController pushViewController:playViewVC animated:YES];
+        }
+        else {
+            [navgC pushViewController:playViewVC animated:YES];
+        }
+        return;
+        
     }else if([keyStr isEqualToString:@"A416"]){
         if (navgC == nil) {
             self.tabBarController.selectedIndex = 1;
@@ -732,6 +759,11 @@ static NSString *ID = @"LotteryAreaViewCell";
     }else if ([keyStr isEqualToString:@"A007"]){
         [self actionSSQ:nil];
         return;
+    }else if ([keyStr isEqualToString:@"A003"]){
+        [self actionSX115:nil];
+        
+    }else if ([keyStr isEqualToString:@"A426"]){
+        [self actionSD115:nil];
     }
     
     if (itemIndex.trLoadStatus!= nil) {
@@ -1375,6 +1407,38 @@ static NSString *ID = @"LotteryAreaViewCell";
     }
 }
 
+//11选5
+- (IBAction)actionSX115:(id)sender {
+    if (self.lotteryMan == nil) {
+        self.lotteryMan = [[LotteryManager alloc]init];
+    }
+    NSArray * lotteryDS = [self.lotteryMan getAllLottery];
+    LotteryPlayViewController *playVC = [[LotteryPlayViewController alloc] init];
+    playVC.hidesBottomBarWhenPushed = YES;
+    playVC.lottery = lotteryDS[0];
+    if (navGationCotr == nil) {
+        [self.navigationController pushViewController:playVC animated:YES];
+    }
+    else {
+        [navGationCotr pushViewController:playVC animated:YES];
+    }
+}
+
+- (IBAction)actionSD115:(id)sender {
+    if (self.lotteryMan == nil) {
+        self.lotteryMan = [[LotteryManager alloc]init];
+    }
+    NSArray * lotteryDS = [self.lotteryMan getAllLottery];
+    LotteryPlayViewController *playVC = [[LotteryPlayViewController alloc] init];
+    playVC.hidesBottomBarWhenPushed = YES;
+    playVC.lottery = lotteryDS[11];
+    if (navGationCotr == nil) {
+        [self.navigationController pushViewController:playVC animated:YES];
+    }
+    else {
+        [navGationCotr pushViewController:playVC animated:YES];
+    }
+}
 
 - (IBAction)actionSFC:(id)sender {
     if (self.lotteryMan == nil) {
@@ -1464,8 +1528,18 @@ static NSString *ID = @"LotteryAreaViewCell";
             [self.navigationController pushViewController:topUpsVC animated:YES];
         });
     }
-
-    
+    if ([playType isEqualToString:@"SX115"]) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [self actionSX115:nil];
+        });
+    }
+    if ([playType isEqualToString:@"SD115"]) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [self actionSD115:nil];
+        });
+    }
 }
 
 -(void)getSystemNoticeClient{

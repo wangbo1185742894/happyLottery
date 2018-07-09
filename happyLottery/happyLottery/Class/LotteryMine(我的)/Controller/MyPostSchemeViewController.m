@@ -16,6 +16,8 @@
 #define KFollowSchemeViewCell @"FollowSchemeViewCell"
 #define KPostSchemeViewCell  @"PostSchemeViewCell"
 
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+
 @interface MyPostSchemeViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate>
 {
     NSInteger page;
@@ -27,6 +29,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnFadan;
 @property (weak, nonatomic) IBOutlet UIImageView *imgBottom;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *disImgLeft;
+@property (strong, nonatomic) NSIndexPath* editingIndexPath;
+@property (strong, nonatomic) NSIndexPath* selectIndexPath; //当前要删除的cell
 
 @end
 
@@ -74,6 +78,7 @@
     
     return dataArray.count;
 }
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(self.btnGendan.selected == YES){
         FollowSchemeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KFollowSchemeViewCell];
@@ -176,5 +181,144 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
 //    [super navigationBackToLastPage];
 }
+
+#pragma mark =====deletecell=======
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        ZLAlertView *alert = [[ZLAlertView alloc] initWithTitle:TitleHint message:@"您确定删除吗?"];
+        [alert addBtnTitle:TitleNotDo action:^{
+            [tableView setEditing:NO animated:YES];
+        }];
+        
+        [alert addBtnTitle:TitleDo action:^{
+            [tableView setEditing:NO animated:YES];
+            self.selectIndexPath = indexPath;
+            JCZQSchemeItem *seleteScheme = self->dataArray[indexPath.row];
+            NSDictionary *dic = @{@"schemeNo":seleteScheme.schemeNO};
+            [self.lotteryMan getDeleteSchemeByNo:dic];
+        }];
+        [alert showAlertWithSender:self];
+    }
+}
+
+- (void) deleteSchemeByNo:(NSString *)resultStr  errorMsg:(NSString *)msg{
+    if (msg == nil) {
+        [self.tabSchemeListView setEditing:NO];
+        [dataArray removeObjectAtIndex:self.selectIndexPath.row];
+        [self.tabSchemeListView deleteRowsAtIndexPaths:@[self.selectIndexPath] withRowAnimation:UITableViewRowAnimationBottom];
+        //        [tabSchemeList reloadData];
+        [self showPromptText:@"删除订单成功" hideAfterDelay:1.7];
+    } else {
+        [self showPromptText:msg hideAfterDelay:1.7];
+    }
+}
+
+// 修改编辑按钮文字
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return @"删除";
+}
+
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    if (SYSTEM_VERSION_LESS_THAN(@"11.0")) {
+        [self configSwipeButtons];
+    }
+}
+
+- (void)configSwipeButtons
+{
+    // 获取选项按钮的reference
+    //    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"11.0"))
+    //    {
+    // iOS 11层级 (Xcode 9编译): UITableView -> UISwipeActionPullView
+    //        for (UIView *subview in tabSchemeList.subviews)
+    //        {
+    //            if ([subview isKindOfClass:NSClassFromString(@"UISwipeActionPullView")])
+    //            {
+    //                // 和iOS 10的按钮顺序相反
+    //                UIButton *deleteButton = subview.subviews[0];
+    //                [deleteButton setTitle:@"确认删除" forState:UIControlStateNormal];
+    //                [deleteButton setBackgroundColor:RGBCOLOR(254, 165, 19)];
+    //            }
+    //        }
+    //    }
+    if (SYSTEM_VERSION_LESS_THAN(@"11.0"))
+    {
+        // iOS 8-10层级: UITableView -> UITableViewCell -> UITableViewCellDeleteConfirmationView
+        UITableViewCell *tableCell;
+        tableCell = [self.tabSchemeListView cellForRowAtIndexPath:self.editingIndexPath];
+        for (UIView *subview in tableCell.subviews)
+        {
+            if ([subview isKindOfClass:NSClassFromString(@"UITableViewCellDeleteConfirmationView")])
+            {
+                UIButton *deleteButton = subview.subviews[0];
+                [deleteButton setBackgroundColor:RGBCOLOR(254, 165, 19)];
+            }
+        }
+//        if(self.btnGendan.selected == YES){
+//
+//
+//        }else{
+//            PostSchemeViewCell *tableCell = [self.tabSchemeListView cellForRowAtIndexPath:self.editingIndexPath];
+//            for (UIView *subview in tableCell.subviews)
+//            {
+//                if ([subview isKindOfClass:NSClassFromString(@"UITableViewCellDeleteConfirmationView")])
+//                {
+//                    UIButton *deleteButton = subview.subviews[0];
+//                    [deleteButton setBackgroundColor:RGBCOLOR(254, 165, 19)];
+//                }
+//            }
+//        }
+        
+    }
+}
+
+- (void)tableView:(UITableView *)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.editingIndexPath = indexPath;
+    [self.view setNeedsLayout];   // 触发-(void)viewDidLayoutSubviews
+}
+
+- (void)tableView:(UITableView *)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.editingIndexPath = nil;
+}
+
+- ( UISwipeActionsConfiguration *)tableView:(UITableView *)tableView trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath  API_AVAILABLE(ios(11.0)){
+    //删除
+    UIContextualAction *deleteRowAction = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"删除" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
+        
+        ZLAlertView *alert = [[ZLAlertView alloc] initWithTitle:TitleHint message:@"您确定删除吗?"];
+        [alert addBtnTitle:TitleNotDo action:^{
+            completionHandler (NO);
+        }];
+        
+        [alert addBtnTitle:TitleDo action:^{
+            completionHandler (YES);
+            self.selectIndexPath = indexPath;
+            JCZQSchemeItem *seleteScheme = self->dataArray[indexPath.row];
+            NSDictionary *dic = @{@"schemeNo":seleteScheme.schemeNO};
+            [self.lotteryMan getDeleteSchemeByNo:dic];
+            
+        }];
+        [alert showAlertWithSender:self];
+        
+    }];
+    deleteRowAction.backgroundColor = RGBCOLOR(254, 165, 19);
+    
+    UISwipeActionsConfiguration *config = [UISwipeActionsConfiguration configurationWithActions:@[deleteRowAction]];
+    return config;
+}
+
 
 @end
