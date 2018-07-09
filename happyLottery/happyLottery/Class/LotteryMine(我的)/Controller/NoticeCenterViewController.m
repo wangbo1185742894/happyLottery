@@ -558,13 +558,11 @@
     else if ([keyStr isEqualToString:@"A003"]){
         [self .navigationController popToRootViewControllerAnimated:YES];
         [[NSNotificationCenter defaultCenter]postNotificationName:@"NSNotificationJumpToPlayVC" object:@"SX115"];
-        
         return;
     }
     else if ([keyStr isEqualToString:@"A426"]){
         [self .navigationController popToRootViewControllerAnimated:YES];
         [[NSNotificationCenter defaultCenter]postNotificationName:@"NSNotificationJumpToPlayVC" object:@"SD115"];
-        
         return;
     }
     else if ([keyStr isEqualToString:@"A007"]){
