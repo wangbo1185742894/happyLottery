@@ -39,8 +39,6 @@
 @interface MineViewController () <UITableViewDelegate, UITableViewDataSource,MemberManagerDelegate,RecommendViewCellDelegate,AgentManagerDelegate>{
     NSMutableArray <NSDictionary *>*listArray;
     NSMutableArray <NSDictionary *>*groupArray;
-    UIButton *noticeBtn;
-    UILabel *label;
     long num;
     long rednum;
     NSMutableArray *listUseRedPacketArray;
@@ -66,7 +64,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *rechargeBtn;//充值
 @property (weak, nonatomic) IBOutlet UIButton *withdrawalsBtn;//提现
 @property (weak, nonatomic) IBOutlet UILabel *noticeRedPointLab;
-@property (weak, nonatomic) IBOutlet UIImageView *notiRedPointImg;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topDIs;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topHeadCons;
@@ -88,7 +85,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(actionUserLoginSuccess:) name:NotificationNameUserLogin object:nil];
     
     self.loadDataTool = [LoadData singleLoadData];
-    [self noticeCenterSet];
     [self setTableView];
     self.viewControllerNo = @"A201";
     if ([self isIphoneX]) {
@@ -186,17 +182,20 @@
     
     
     if (self.curUser.isLogin==YES) {
-            [self updateMemberClinet];
-            NSInteger num = [self getNotReadMes];
-            if ( num == 0) {
-                label.hidden = YES;
-            }else{
-                label.hidden = NO;
-                label.text = [NSString stringWithFormat:@"%ld",num];
+        [self updateMemberClinet];
+        NSInteger num = [self getNotReadMes];
+        if ( num == 0) {
+            self.noticeRedPointLab.hidden = YES;
+        }else{
+            self.noticeRedPointLab.hidden = NO;
+            if (num >99) {
+                self.noticeRedPointLab.text = @"99+";
+            } else {
+                self.noticeRedPointLab.text = [NSString stringWithFormat:@"%ld",num];
             }
-            
-            [self getRedPacketByStateClient:@"true"];
-            [self CheckFeedBackRedNumClient];
+        }
+        [self getRedPacketByStateClient:@"true"];
+        [self CheckFeedBackRedNumClient];
 
     } else {
         //显示未登录时的状态
@@ -205,19 +204,6 @@
     }
     
     self.memberMan.delegate = self;
-    NSInteger num = [self getNotReadMes];
-    if ( num == 0) {
-        self.noticeRedPointLab.hidden = YES;
-        self.notiRedPointImg.hidden = YES;
-    }else{
-        self.noticeRedPointLab.hidden = NO;
-        self.notiRedPointImg.hidden = NO;
-        if (num >99) {
-            self.noticeRedPointLab.text = @"99+";
-        } else {
-             self.noticeRedPointLab.text = [NSString stringWithFormat:@"%ld",num];
-        }
-    }
     self.navigationController.navigationBar.hidden = YES;
 }
 
@@ -230,7 +216,7 @@
     self.integralLab.text = @"0";
     self.redPacketLab.text =  @"0";
     self.lotMoneyLab.text = @"0";
-    label.hidden=YES;
+    self.noticeRedPointLab.hidden = YES;
 }
 
 -(void)updateMemberClinet{
@@ -325,26 +311,6 @@
         [self.userImage sd_setImageWithURL:[NSURL URLWithString:self.curUser.headUrl] placeholderImage:[UIImage imageNamed:@"user_mine.png"]];
         
     }
-}
-
-
--(void)noticeCenterSet{
-    noticeBtn = [UIButton buttonWithType: UIButtonTypeCustom];
-    noticeBtn.frame = CGRectMake(0, 0, 45, 45);
-    label = [[UILabel alloc]init];
-    label.frame =CGRectMake(25, 0,10, 10);
-    label.layer.cornerRadius = label.bounds.size.width/2;
-    label.layer.masksToBounds = YES;
-    label.hidden=YES;
- 
-    label.font = [UIFont systemFontOfSize:7];
-    label.textAlignment = NSTextAlignmentCenter;
-    label.backgroundColor = [UIColor redColor];
-    label.textColor = [UIColor whiteColor];
-//    [noticeBtn addSubview:label];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView: noticeBtn];
-    [noticeBtn setImage:[UIImage imageNamed:@"signin"] forState:UIControlStateNormal];
-    [noticeBtn addTarget: self action: @selector(signInBtnClick:) forControlEvents: UIControlEventTouchUpInside];
 }
 
 -(void)noticeBtnClick{
@@ -739,12 +705,12 @@
      
         //    }];
     }
-    if (num==0) {
-        label.hidden=YES;
-    }else{
-        label.hidden=NO;
-        label.text = [NSString stringWithFormat:@"%ld",num];
-    }
+//    if (num==0) {
+//        label.hidden=YES;
+//    }else{
+//        label.hidden=NO;
+//        label.text = [NSString stringWithFormat:@"%ld",num];
+//    }
 }
 
 #pragma 获取红包是否显示小红点
