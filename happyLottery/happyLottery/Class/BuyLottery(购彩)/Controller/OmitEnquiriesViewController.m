@@ -129,7 +129,7 @@
 -(void)viewWillAppear:(BOOL)animated{
 
     [super viewWillAppear:animated];
-    
+    self.automaticallyAdjustsScrollViewInsets = NO;
     [self.OmitEnquiriesTableView reloadData];
     lotteryMan = [[LotteryManager alloc] init];
     lotteryMan.delegate =self;

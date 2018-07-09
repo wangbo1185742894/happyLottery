@@ -20,6 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     
     _topDis.constant = NaviHeight;
     self.title = @"明细详情";

@@ -478,6 +478,9 @@
 		2D638F5520EE2C54004463FC /* UserInfoBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D638F5420EE2C54004463FC /* UserInfoBaseModel.m */; };
 		2D638F5920EF1518004463FC /* UserInfoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D638F5720EF1518004463FC /* UserInfoDetailViewController.m */; };
 		2D638F5A20EF1518004463FC /* UserInfoDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D638F5820EF1518004463FC /* UserInfoDetailViewController.xib */; };
+		2D638F5D20F32836004463FC /* LaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D638F5C20F32836004463FC /* LaunchViewController.m */; };
+		2D638F5F20F32CAA004463FC /* launch_x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D638F5E20F32CAA004463FC /* launch_x.png */; };
+		2D638F6120F32FAE004463FC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D638F6020F32FAD004463FC /* Images.xcassets */; };
 		2D676A8220EA4C330026BA05 /* BetType.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D676A8120EA4C320026BA05 /* BetType.plist */; };
 		2D6F9237208D9D8A007DFD0B /* leshan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D6F9235208D9D89007DFD0B /* leshan@3x.png */; };
 		2D6F9238208D9D8A007DFD0B /* leshan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D6F9236208D9D89007DFD0B /* leshan@2x.png */; };
@@ -2262,6 +2265,10 @@
 		2D638F5620EF1518004463FC /* UserInfoDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfoDetailViewController.h; sourceTree = "<group>"; };
 		2D638F5720EF1518004463FC /* UserInfoDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserInfoDetailViewController.m; sourceTree = "<group>"; };
 		2D638F5820EF1518004463FC /* UserInfoDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserInfoDetailViewController.xib; sourceTree = "<group>"; };
+		2D638F5B20F32836004463FC /* LaunchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LaunchViewController.h; sourceTree = "<group>"; };
+		2D638F5C20F32836004463FC /* LaunchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LaunchViewController.m; sourceTree = "<group>"; };
+		2D638F5E20F32CAA004463FC /* launch_x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch_x.png; sourceTree = "<group>"; };
+		2D638F6020F32FAD004463FC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2D676A8120EA4C320026BA05 /* BetType.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BetType.plist; sourceTree = "<group>"; };
 		2D6F9235208D9D89007DFD0B /* leshan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leshan@3x.png"; sourceTree = "<group>"; };
 		2D6F9236208D9D89007DFD0B /* leshan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leshan@2x.png"; sourceTree = "<group>"; };
@@ -4908,6 +4915,7 @@
 				2DCBB2BB1FD107F100934D92 /* Libs */,
 				2DCBB2B81FD107F000934D92 /* Other */,
 				2DCBB2B71FD107F000934D92 /* Resource */,
+				2D638F6020F32FAD004463FC /* Images.xcassets */,
 			);
 			path = happyLottery;
 			sourceTree = "<group>";
@@ -4948,6 +4956,7 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				2D638F5E20F32CAA004463FC /* launch_x.png */,
 				F90D68D820EF65DA007865E4 /* deletehelp@3x.png */,
 				F90D68D620EF65CF007865E4 /* deletehelp@2x.png */,
 				F9E53D2820EE26B90072B8AF /* MineIcon */,
@@ -5151,6 +5160,8 @@
 				2DCBB2821FD1000700934D92 /* Info.plist */,
 				2DCBB2831FD1000700934D92 /* main.m */,
 				2DCBB2C61FD1098300934D92 /* HappyLottery.pch */,
+				2D638F5B20F32836004463FC /* LaunchViewController.h */,
+				2D638F5C20F32836004463FC /* LaunchViewController.m */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -7530,6 +7541,7 @@
 				2D5171B42007110D00C3CD7F /* SchemeInfoViewCell.xib in Resources */,
 				F9B5D98D2060A9DE00C9F6DC /* flag410@2x.png in Resources */,
 				F9418F502010991200454109 /* ShareSDK.bundle in Resources */,
+				2D638F5F20F32CAA004463FC /* launch_x.png in Resources */,
 				F9E53D5A20EE28D70072B8AF /* redbag_mine@3x.png in Resources */,
 				2D4B1E861FDF684E0034B708 /* yishoucang@3x.png in Resources */,
 				F9F6CA971FF5D6B100A49F71 /* voice@2x.png in Resources */,
@@ -7931,6 +7943,7 @@
 				F9BC6DCA20C228290037998B /* GroupNewViewController.xib in Resources */,
 				F96723EE2009B12B0044DC8E /* response@3x.png in Resources */,
 				F94AA9DF1FEB7B780021B980 /* kuaijie@3x.png in Resources */,
+				2D638F6120F32FAE004463FC /* Images.xcassets in Resources */,
 				F965561120C52DF40017066C /* pic_quanzibeijing@3x.png in Resources */,
 				F9E53D6D20EE28D70072B8AF /* folder_mine@3x.png in Resources */,
 				F9C4EED6202063D300CDCDBA /* about_slogan@2x.png in Resources */,
@@ -8599,6 +8612,7 @@
 				F9DC8C3120A56034006B31F4 /* MyNoticeViewController.m in Sources */,
 				F9F262B71FE8F4AE00C2E60F /* UIImage+RSKImageCropper.m in Sources */,
 				F9DC69A91FDF8957007D384D /* MyHelpViewController.m in Sources */,
+				2D638F5D20F32836004463FC /* LaunchViewController.m in Sources */,
 				F9DC699A1FDF888F007D384D /* MyFavoriteViewController.m in Sources */,
 				2D05C87920A58416001A8953 /* FollowListViewController.m in Sources */,
 				F96C357820ACFC0D00D1F034 /* SuoSchemeViewCell.m in Sources */,
@@ -8908,6 +8922,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = NO;
 				CODE_SIGN_ENTITLEMENTS = happyLottery/happyLottery.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -8953,6 +8968,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = NO;
 				CODE_SIGN_ENTITLEMENTS = happyLottery/happyLottery.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

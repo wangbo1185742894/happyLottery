@@ -1,32 +1,24 @@
 //
-//  WelComeViewController.m
+//  LaunchViewController.m
 //  happyLottery
 //
-//  Created by 王博 on 2018/3/29.
+//  Created by 阿兹尔 on 2018/7/9.
 //  Copyright © 2018年 onlytechnology. All rights reserved.
 //
 
-#import "WelComeViewController.h"
+#import "LaunchViewController.h"
 
-@interface WelComeViewController ()
-@property (weak, nonatomic) IBOutlet UIImageView *imgBack;
+@interface LaunchViewController ()
 
 @end
 
-@implementation WelComeViewController
+@implementation LaunchViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if(IPHONE_X){
-        [self.imgBack setImage: [UIImage imageNamed:@"launch_x.png"]];
-    }else{
-        [self.imgBack setImage: [UIImage imageNamed:@"launchImage"]];
-    }
+    // Do any additional setup after loading the view.
 }
 
--(void)setImg:(NSString *)url{
-    [self .imgBack sd_setImageWithURL:[NSURL URLWithString:url]];
-}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -96,8 +96,16 @@ static SystemSoundID shake_sound_male_id = 0;
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+//    UIStoryboard *storyboard=[UIStoryboard storyboardWithName:@"LaunchScreen" bundle:nil];
+//    UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"launchVC"];
+//    UIImageView *imgv = (UIImageView *)[vc.view viewWithTag:909090];
+//    if (IPHONE_X) {
+//        imgv.backgroundColor = [UIColor redColor];
+////        imgv.image = [UIImage imageNamed:@"launch_x"];
+//    }else{
+//        imgv.image = [UIImage imageNamed:@"launchImage"];
+//    }
     lotteryMan = [[LotteryManager alloc]init];
     lotteryMan.delegate = self;
     [Bugly startWithAppId:@"c36c93659f"];
@@ -343,7 +351,13 @@ static SystemSoundID shake_sound_male_id = 0;
     curVersion = [NSBundle mainBundle].infoDictionary[KEYCURAPPVERSION];
     if ([curVersion isEqualToString:lastVersion]) { //
         _window.rootViewController = tabBarControllerMain;
-        [lotteryMan getBootPageUrl];
+        if(IPHONE_X ){
+            [lotteryMan getCommonSetValue:@{@"typeCode":@"boot_page",@"commonCode":@"second_url_x"}];
+        }else{
+            [lotteryMan getBootPageUrl];
+        }
+        
+        
         [[UIApplication sharedApplication].keyWindow addSubview:self.welCom.view];
 
     }else{
@@ -353,6 +367,9 @@ static SystemSoundID shake_sound_male_id = 0;
     }
 }
 
+-(void)gotCommonSetValue:(NSString *)strUrl{
+    [self gotBootPageUrl:strUrl];
+}
 -(void)gotBootPageUrl:(NSString *)strUrl{
     _window.rootViewController = tabBarControllerMain;
    
