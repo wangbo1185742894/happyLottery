@@ -641,6 +641,7 @@
 }
 
 -(void)refreshDataJCLQ:(JlBetContent  *)modelDic andResult:(NSArray<JCLQOpenResult *> *)resultArray{
+    self.labBottom.hidden = YES;
     for (UIView *subView in viewBetContent.subviews) {
         [subView removeFromSuperview];
         

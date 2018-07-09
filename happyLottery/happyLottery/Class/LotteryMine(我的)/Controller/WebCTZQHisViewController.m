@@ -14,6 +14,7 @@
 @interface WebCTZQHisViewController ()<UIWebViewDelegate,JSObjcCTZQHisDelegate>
 {
     JSContext *context;
+    UIWebViewNavigationType _navigationType;
 }
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *webDisTop;
 @property (weak, nonatomic) IBOutlet UIButton *btnPop;
@@ -54,7 +55,8 @@
 }
 
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
-    
+    _navigationType = navigationType;
+//    navigationType    UIWebViewNavigationType    UIWebViewNavigationTypeBackForward
     if ([request.URL isEqual:self.pageUrl]) {
         self.btnPop.userInteractionEnabled = YES;
     }else{
@@ -74,6 +76,9 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     [self hideLoadingView];
+    if (_navigationType == UIWebViewNavigationTypeOther) {
+        [self.webViewShowInfo reload];
+    }
     context = [webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
     context[@"appObj"] = self;
     context.exceptionHandler = ^(JSContext *context, JSValue *exceptionValue) {
