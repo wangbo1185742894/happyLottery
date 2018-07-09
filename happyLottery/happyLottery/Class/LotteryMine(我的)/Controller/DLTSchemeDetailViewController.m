@@ -409,7 +409,7 @@
     if (schemeDetail.trDltOpenResult == nil || schemeDetail.trDltOpenResult.length ==0){
         if ([schemeDetail.costType isEqualToString:@"CASH"]) {
             if (indexPath.section == 0) {
-                return [schemeDetail getJCZQCellHeight];
+                return [schemeDetail getJCZQCellHeight]+15;
             }else if (indexPath.section ==2){
                 if([schemeDetail.lottery isEqualToString:@"DLT"] || [schemeDetail.lottery isEqualToString:@"SSQ"]){
                     DLTSchemeViewCell *temp = [[DLTSchemeViewCell alloc]init];
@@ -430,7 +430,7 @@
             }
         }else{
             if (indexPath.section == 0) {
-                return [schemeDetail getJCZQCellHeight];
+                return [schemeDetail getJCZQCellHeight]+15;
             }else if (indexPath.section ==1){
                 if([schemeDetail.lottery isEqualToString:@"DLT"] || [schemeDetail.lottery isEqualToString:@"SSQ"]){
                     DLTSchemeViewCell *temp = [[DLTSchemeViewCell alloc]init];
@@ -446,7 +446,7 @@
     }else{
         if ([schemeDetail.costType isEqualToString:@"CASH"]) {
             if (indexPath.section == 0) {
-                return [schemeDetail getJCZQCellHeight];
+                return [schemeDetail getJCZQCellHeight]+15;
             }else if (indexPath.section ==3){
                 if([schemeDetail.lottery isEqualToString:@"DLT"] || [schemeDetail.lottery isEqualToString:@"SSQ"]){
                     DLTSchemeViewCell *temp = [[DLTSchemeViewCell alloc]init];
@@ -469,7 +469,7 @@
             }
         }else{
             if (indexPath.section == 0) {
-                return [schemeDetail getJCZQCellHeight];
+                return [schemeDetail getJCZQCellHeight]+15;
             }else if (indexPath.section ==2){
                 if([schemeDetail.lottery isEqualToString:@"DLT"] || [schemeDetail.lottery isEqualToString:@"SSQ"]){
                     DLTSchemeViewCell *temp = [[DLTSchemeViewCell alloc]init];
