@@ -42,6 +42,15 @@
     // Configure the view for the selected state
 }
 
+- (void)refreshWithInfoGYJ:(NSString *)infoResult{
+    if ([infoResult rangeOfString:@"—"].length != 0) {
+        infoResult = [infoResult stringByReplacingOccurrencesOfString:@"—" withString:@"VS"];
+    }
+    _winNotLa.textColor = RGBCOLOR(72, 72, 72);
+    _winNotLa.hidden = NO;
+    _winNotLa.text = infoResult;
+}
+
 - (void)refreshWithInfo:(NSString *)infoResult{
     NSLog(@"TEST SHOW");
 // 开奖结果展示

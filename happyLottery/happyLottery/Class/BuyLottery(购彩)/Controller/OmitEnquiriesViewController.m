@@ -157,7 +157,7 @@
     self.indexArray = @[@201,@202,@203,@204,@205,@206,@207,@208,@220,@230,@221,@231];
     self.titleArray = @[@"前一",@"任选二",@"任选三", @"任选四", @"任选五", @"任选六", @"任选七", @"任选八",@"前二直选", @"前三直选", @"前二组选", @"前三组选"];
     
- 
+    [self refreshAreaView];
     if (self.searchCodeArray.count == 0) {
         self.isQmit = NO;
         if ([self.titleString isEqualToString:@"乐选五"]) {

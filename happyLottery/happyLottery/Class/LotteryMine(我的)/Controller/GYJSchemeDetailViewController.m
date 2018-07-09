@@ -8,6 +8,7 @@
 
 #import "GYJSchemeDetailViewController.h"
 #import "JCLQOrderDetailInfoViewController.h"
+#import "WordCupHomeItem.h"
 #import "LotteryXHSection.h"
 #import "JCZQSchemeModel.h"
 #import "PayOrderViewController.h"
@@ -42,6 +43,7 @@
     __weak IBOutlet UITableView *tabMatchListVIew;
     NSMutableArray  <JcBetContent * >*matchList;
     NSMutableArray *dltBetList;
+    NSMutableArray *groupList;
     __weak IBOutlet UIButton *btnReBuy;
     __weak IBOutlet UIButton *btnPay;
     __weak IBOutlet NSLayoutConstraint *bottomIPhoneX;
@@ -57,6 +59,7 @@
     [super viewDidLoad];
     tabMatchListVIew.hidden  =YES;
     self.title = @"方案详情";
+    
     matchList = [NSMutableArray arrayWithCapacity:0];
     [self setTableView];
     self.lotteryMan.delegate = self;
@@ -67,6 +70,7 @@
         self.navigationController.navigationBar.barTintColor = SystemGreen;
     }
     [self loadData];
+    
     bottomIPhoneX.constant = [self isIphoneX]?34:0;
     upIPhoneX.constant = [self isIphoneX]?88:64;
 }
@@ -115,6 +119,11 @@
     }
 
     schemeDetail = [[JCZQSchemeItem alloc]initWith:infoArray];
+    if ([schemeDetail.lottery isEqualToString:@"JCGYJ"]) {
+        [self.lotteryMan listJcgyjItem:nil];
+    }else{
+        [self.lotteryMan listJcgjItem:nil];
+    }
 //    NSInteger itemIndex = 1;
     
     [self setSchemeStateImg];
@@ -136,6 +145,27 @@
 
     [self hideLoadingView];
     tabMatchListVIew.hidden = NO;
+}
+
+-(void)gotlistJcgyjItem:(NSArray *)infoArray errorMsg:(NSString *)msg{
+    [self gotlistJcgjItem:infoArray errorMsg:msg];
+}
+
+- (void) gotlistJcgjItem:(NSArray *)infoArray  errorMsg:(NSString *)msg{
+    
+    if (infoArray == nil) {
+        return;
+    }
+    if (groupList == nil) {
+        groupList = [NSMutableArray arrayWithCapacity:0];
+    }
+    [groupList removeAllObjects];
+    for (int i = 0 ; i < infoArray.count; i++ ) {
+        NSDictionary *itemDic = infoArray[i];
+        WordCupHomeItem *model = [[WordCupHomeItem alloc]initWith:itemDic];
+        [groupList addObject:model];
+    }
+    [tabMatchListVIew reloadData];
 }
 
 - (IBAction)actionOrderDetail:(UIButton *)sender {
@@ -186,13 +216,13 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     if ([schemeDetail.costType isEqualToString:@"CASH"]) {
-        if (schemeDetail.trDltOpenResult == nil || schemeDetail.trDltOpenResult.length ==0) {
+        if (schemeDetail.winMatchIndex == nil || schemeDetail.winMatchIndex.length ==0) {
             return 3;
         }else{
             return 4;
         }
     }else{
-        if (schemeDetail.trDltOpenResult == nil || schemeDetail.trDltOpenResult.length ==0) {
+        if (schemeDetail.winMatchIndex == nil || schemeDetail.winMatchIndex.length ==0) {
             return 2;
         }else{
             return 3;
@@ -214,7 +244,7 @@
         tabMatchListVIew.bounces = NO;
     });
     
-    if (schemeDetail.trDltOpenResult == nil || schemeDetail.trDltOpenResult.length ==0) {
+    if (schemeDetail.winMatchIndex == nil || schemeDetail.winMatchIndex.length ==0) {
         if ([schemeDetail.costType isEqualToString:@"CASH"]) {
             if (indexPath.section == 0) { // 显示 方案信息
                 SchemeDetailViewCell *detailCell = [tableView dequeueReusableCellWithIdentifier:KSchemeDetailViewCell];
@@ -260,7 +290,7 @@
                 cell = detailCell;
             }else if(indexPath.section == 1){
                 CTZQWinResultCell *resultCell =[tableView dequeueReusableCellWithIdentifier:KCTZQWinResultCell];
-                [resultCell refreshWithInfo:schemeDetail.trDltOpenResult];
+                [resultCell refreshWithInfoGYJ:[self getGYJWinString]];
                 cell = resultCell;
                 
             }else if (indexPath.section == 3){ // 显示方案投注内容
@@ -286,7 +316,7 @@
                 cell = detailCell;
             }else if(indexPath.section == 1){
                 CTZQWinResultCell *resultCell =[tableView dequeueReusableCellWithIdentifier:KCTZQWinResultCell];
-                [resultCell refreshWithInfo:schemeDetail.trDltOpenResult];
+                [resultCell refreshWithInfo:[self getGYJWinString]];
                 cell = resultCell;
                 
             }else if (indexPath.section == 2){ // 显示方案投注内容
@@ -304,12 +334,22 @@
     return nil;
 }
 
+-(NSString *)getGYJWinString{
+    for (WordCupHomeItem *item in groupList) {
+        if ([schemeDetail.winMatchIndex isEqual:item.indexNumber]) {
+            
+            return item.clash;
+        }
+    }
+    return @"";
+}
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
     
     
-    if (schemeDetail.trDltOpenResult == nil || schemeDetail.trDltOpenResult.length ==0){
+    if (schemeDetail.winMatchIndex == nil || schemeDetail.winMatchIndex.length ==0){
         
         if ([schemeDetail.costType isEqualToString:@"CASH"]) {
             if (indexPath.section == 0) {
@@ -371,7 +411,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if (schemeDetail.trDltOpenResult == nil || schemeDetail.trDltOpenResult.length ==0) {
+    if (schemeDetail.winMatchIndex == nil || schemeDetail.winMatchIndex.length ==0) {
         if ([schemeDetail.costType isEqualToString:@"CASH"]) {
             
             if (section == 2) {
@@ -436,7 +476,7 @@
     OrderListHeaderView *header = [[[NSBundle mainBundle] loadNibNamed:@"OrderListHeaderView" owner:nil options:nil] lastObject];
     header.backgroundColor = RGBCOLOR(253 , 252, 245);
     
-    if (schemeDetail.trDltOpenResult == nil || schemeDetail.trDltOpenResult.length ==0) {
+    if (schemeDetail.winMatchIndex == nil || schemeDetail.winMatchIndex.length ==0) {
         
         if ([schemeDetail.costType isEqualToString:@"CASH"]) {
             if (section == 0) {

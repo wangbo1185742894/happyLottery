@@ -11,4 +11,5 @@
 @interface CTZQWinResultCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *winNotLa;
 - (void)refreshWithInfo:(NSString *)infoResult;
+- (void)refreshWithInfoGYJ:(NSString *)infoResult;
 @end
