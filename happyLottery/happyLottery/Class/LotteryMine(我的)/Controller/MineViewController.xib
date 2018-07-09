@@ -227,9 +227,9 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jlj-aY-aYi">
-                            <rect key="frame" x="291" y="24" width="20" height="19"/>
+                            <rect key="frame" x="291" y="24" width="32" height="19"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="20" id="Dru-B3-9Xw"/>
+                                <constraint firstAttribute="width" constant="32" id="Dru-B3-9Xw"/>
                                 <constraint firstAttribute="height" constant="19" id="vQb-79-ATU"/>
                             </constraints>
                             <state key="normal" image="set_mine.png"/>
@@ -330,7 +330,7 @@
                         <constraint firstItem="kk5-rP-XGf" firstAttribute="leading" secondItem="p7d-Na-86m" secondAttribute="leading" constant="14" id="INE-Gj-epP"/>
                         <constraint firstAttribute="trailing" secondItem="SK6-b0-laz" secondAttribute="trailing" id="JPL-Y1-Czq"/>
                         <constraint firstItem="kk5-rP-XGf" firstAttribute="top" secondItem="7kh-qy-0D9" secondAttribute="bottom" constant="-22" id="Kzn-AB-aLk"/>
-                        <constraint firstItem="15k-Cq-U68" firstAttribute="leading" secondItem="jlj-aY-aYi" secondAttribute="trailing" constant="25" id="LlV-oE-Dxk"/>
+                        <constraint firstItem="15k-Cq-U68" firstAttribute="leading" secondItem="jlj-aY-aYi" secondAttribute="trailing" constant="13" id="LlV-oE-Dxk"/>
                         <constraint firstItem="ut7-e6-ow1" firstAttribute="top" secondItem="asT-0r-9bk" secondAttribute="bottom" id="Mca-Zw-xsz"/>
                         <constraint firstItem="ut7-e6-ow1" firstAttribute="top" secondItem="nX3-at-4OK" secondAttribute="bottom" id="Or3-UI-6xz"/>
                         <constraint firstAttribute="trailing" secondItem="ut7-e6-ow1" secondAttribute="trailing" id="Q3c-yi-gY8"/>
