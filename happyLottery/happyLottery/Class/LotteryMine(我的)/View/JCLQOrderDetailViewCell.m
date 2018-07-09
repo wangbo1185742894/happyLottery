@@ -368,11 +368,10 @@
 
         }else{
             self.labChupiao.text = @"出票中";
-
         }
         self.imgWinIcon.hidden = YES;
         if ([winningStatus isEqualToString:@"LOTTERY"]) {
-            float jingjin =[dic[@"bonus"] floatValue];
+            float jingjin =[dic[@"afterTaxBonus"] floatValue];
             self.labJiangjin.text = [NSString stringWithFormat:@"%.2f元",jingjin];
             self.imgWinIcon.hidden = NO;
             [self setLabTextColor:SystemRed];
