@@ -649,8 +649,9 @@
     self.mytitleLabel.textAlignment = NSTextAlignmentRight;
     [titleView addSubview:self.mytitleLabel];
     
-    self.titleImageView = [[UIImageView alloc]initWithFrame:CGRectMake(75, 8, 18, 11)];
-    self.titleImageView.image = [UIImage imageNamed:@"navMore.png"];
+    self.titleImageView = [[UIImageView alloc]initWithFrame:CGRectMake(75, 14, 18, 11)];
+    self.titleImageView.image = [UIImage imageNamed:@"wanfaxiala"];
+    self.titleImageView.contentMode =UIViewContentModeCenter;
     [titleView addSubview:self.titleImageView];
     
     tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tap:)];
