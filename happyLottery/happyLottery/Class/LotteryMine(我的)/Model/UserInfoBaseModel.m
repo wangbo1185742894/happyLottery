@@ -34,7 +34,7 @@
     return [NSString stringWithFormat:@"\n类型\n\n方案号\n\n时间\n\n金额\n\n"];
 }
 -(NSString *)getRightTitle{
-    return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n %@元\n\n",[self get1Name],self.schemeNo,self.prizeTime,self.subBonus];
+    return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n#%@元\n\n",[self get1Name],self.schemeNo,self.prizeTime,self.subBonus];
 }
 @end
 
@@ -43,7 +43,7 @@
     return [NSString stringWithFormat:@"\n类型\n\n方案号\n\n时间\n\n金额\n\n"];
 }
 -(NSString *)getRightTitle{
-    return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n %@元\n\n",[self get1Name],self.followSchemeNo,self.createTime,self.commission];
+    return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n#%@元\n\n",[self get1Name],self.followSchemeNo,self.createTime,self.commission];
 }
 -(NSString *)get1Name{
     return @"跟单佣金";
@@ -69,7 +69,7 @@
     return [NSString stringWithFormat:@"\n类型\n\n来源\n\n时间\n\n金额\n\n"];
 }
 -(NSString *)getRightTitle{
-    return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n %@元\n\n",[self get1Name],[self getHandselSourceDes],self.createTime,self.amounts];
+    return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n#%@元\n\n",[self get1Name],[self getHandselSourceDes],self.createTime,self.amounts];
 }
 
 -(NSString *)getHandselSourceDes{
@@ -112,7 +112,7 @@
     return [NSString stringWithFormat:@"\n类型\n\n时间\n\n金额\n\n"];
 }
 -(NSString *)getRightTitle{
-    return [NSString stringWithFormat:@"\n%@\n\n%@\n\n %@元\n\n",[self get1Name],self.successTime,self.amounts];
+    return [NSString stringWithFormat:@"\n%@\n\n%@\n\n#%@元\n\n",[self get1Name],self.successTime,self.amounts];
 }
 -(NSString *)get1Name{
     return @"充值";
@@ -145,15 +145,15 @@
 -(NSString *)getRightTitle{
     if ([self.useCoupon boolValue] == YES) {
         if (self.refundAmounts.doubleValue > 0) {
-                        return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n%@\n\n %@元\n\n%@元\n%@元优惠券\n\n",[self get1Name],[BaseModel getLotteryByName:self.lotteryType],self.schemeNo,self.subTime,self.realSubAmounts,self.refundAmounts,self.deduction];
+            return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n%@\n\n#%@元\n\n%@元\n%@元优惠券\n\n",[self get1Name],[BaseModel getLotteryByName:self.lotteryType],self.schemeNo,self.subTime,self.realSubAmounts,self.refundAmounts,self.deduction];
         }else{
-                        return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n%@\n\n %@元\n%@元优惠券\n\n合计%@元\n\n",[self get1Name],[BaseModel getLotteryByName:self.lotteryType],self.schemeNo,self.subTime,self.realSubAmounts,self.deduction,self.subAmounts];
+            return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n%@\n\n#%@元\n%@元优惠券\n\n合计%@元\n\n",[self get1Name],[BaseModel getLotteryByName:self.lotteryType],self.schemeNo,self.subTime,self.realSubAmounts,self.deduction,self.subAmounts];
         }
     }else{
         if (self.refundAmounts.doubleValue > 0) {
-              return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n%@\n\n %@元\n\n%@元\n\n",[self get1Name],[BaseModel getLotteryByName:self.lotteryType],self.schemeNo,self.subTime,self.realSubAmounts,self.refundAmounts];
+            return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n%@\n\n#%@元\n\n%@元\n\n",[self get1Name],[BaseModel getLotteryByName:self.lotteryType],self.schemeNo,self.subTime,self.realSubAmounts,self.refundAmounts];
         }else{
-              return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n%@\n\n %@元\n\n合计%@元\n\n",[self get1Name],[BaseModel getLotteryByName:self.lotteryType],self.schemeNo,self.subTime,self.realSubAmounts,self.subAmounts];
+            return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n%@\n\n#%@元\n\n合计%@元\n\n",[self get1Name],[BaseModel getLotteryByName:self.lotteryType],self.schemeNo,self.subTime,self.realSubAmounts,self.subAmounts];
         }
         
     }
@@ -174,7 +174,12 @@
     if ([self.refundAmounts doubleValue] == 0) {
         return @"";
     }else{
-        return [NSString stringWithFormat:@"出票失败，退款%.0f元",[self.refundAmounts doubleValue]];
+        if ([self.refundAmounts doubleValue] == [self.realSubAmounts doubleValue]) {
+                 return [NSString stringWithFormat:@"出票失败，退款%.0f元",[self.refundAmounts doubleValue]];
+        }else{
+                 return [NSString stringWithFormat:@"部分失败，退款%.0f元",[self.refundAmounts doubleValue]];
+        }
+   
     }
 }
 -(NSString *)get4Name{
@@ -200,18 +205,18 @@
 -(NSString *)getRightTitle{
     NSString *state;
     if ([self.orderStatus isEqualToString:@"WAIT_CASH"]) {
-        state = @"提现(等待)";
+        state = @"提现(处理中)";
     }else if([self.orderStatus isEqualToString:@"CASH_SUCCESS"]){
         state =  @"提现(成功)";
     }else if ([self.orderStatus isEqualToString:@"CASH_FAILED"]){
         state =  @"提现(驳回)";
     }
     if ([self.orderStatus isEqualToString:@"CASH_FAILED"]) {
-        return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@元\n\n%@\n\n%@\n\n",[self get1Name],state,self.amounts,self.createTime,self.remark];
+        return [NSString stringWithFormat:@"\n%@\n\n%@\n\n#%@元\n\n#%@\n\n%@\n\n",@"提现",state,self.amounts,self.createTime,self.remark];
     }else if([self.orderStatus isEqualToString:@"CASH_SUCCESS"]){
-          return [NSString stringWithFormat:@"\n%@\n\n%@\n\n %@元\n\n %@\n\n",[self get1Name],state,self.amounts,self.successTime];
+        return [NSString stringWithFormat:@"\n%@\n\n%@\n\n#%@元\n\n#%@\n\n",@"提现",state,self.amounts,self.successTime];
     }else if([self.orderStatus isEqualToString:@"WAIT_CASH"]){
-        return [NSString stringWithFormat:@"\n%@\n\n%@\n\n %@元\n\n %@\n\n",[self get1Name],state,self.amounts,self.createTime];
+        return [NSString stringWithFormat:@"\n%@\n\n%@\n\n#%@元\n\n#%@\n\n",@"提现",state,self.amounts,self.createTime];
     }
     return @"";
 }
@@ -222,7 +227,7 @@
 //    /**提现失败*/
 //    CASH_FAILED("提现失败");
     if ([self.orderStatus isEqualToString:@"WAIT_CASH"]) {
-        return @"提现(等待)";
+        return @"提现(处理中)";
     }else if([self.orderStatus isEqualToString:@"CASH_SUCCESS"]){
         return @"提现(成功)";
     }else if ([self.orderStatus isEqualToString:@"CASH_FAILED"]){
@@ -254,7 +259,7 @@
 }
 -(NSString *)getRightTitle{
     
-        return [NSString stringWithFormat:@"\n%@\n\n%@\n\n %@元\n\n",[self get1Name],self.createTime,self.commission];
+    return [NSString stringWithFormat:@"\n%@\n\n%@\n\n#%@元\n\n",[self get1Name],self.createTime,self.commission];
 
     
 }

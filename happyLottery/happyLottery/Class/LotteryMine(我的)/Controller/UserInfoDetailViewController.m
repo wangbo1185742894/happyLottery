@@ -25,12 +25,18 @@
     self.title = @"明细详情";
 
     self.labLeft .text = [self.model getLeftTitle];
-    self.labRight.text = [self.model getRightTitle];
-    NSArray *keyList = [[self.model getRightTitle] componentsSeparatedByString:@" "];
-    if (keyList.count > 2) {
-        self.labRight.keyWord = keyList[2];
+    NSString *title = [[self.model getRightTitle] stringByReplacingOccurrencesOfString:@"#" withString:@""];
+        self.labRight.text = title;
+    NSArray *keyList = [[self.model getRightTitle] componentsSeparatedByString:@"#"];
+    if (keyList.count > 1) {
+        NSString *keyWord = [keyList[1] stringByReplacingOccurrencesOfString:@"#" withString:@""];
+        self.labRight.keyWord = keyWord;
+        
         self.labRight.keyWordColor = SystemGreen;
     }
+  
+
+    
 }
 
 - (void)didReceiveMemoryWarning {

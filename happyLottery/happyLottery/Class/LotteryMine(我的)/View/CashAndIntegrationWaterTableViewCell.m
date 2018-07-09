@@ -30,7 +30,15 @@
 -(void)loadUserInfo:(UserInfoBaseModel *)userInfo{
     self.imgWidth.constant = 0;
     self.imgDisLeft.constant = 0;
+
     self.nameLab.text = [userInfo get1Name];
+    self.nameLab.keyWord = @"(驳回)";
+    if ([[userInfo get1Name] isEqualToString:@"提现(驳回)"]) {
+        self.priceLab.textColor =SystemRed;
+    }else{
+        self.priceLab.textColor = RGBCOLOR(37,186,96);
+    }
+    self.nameLab.keyWordColor = SystemRed;
     self.nameLab.font = [UIFont boldSystemFontOfSize:15];
     
     if ([userInfo get3Name ].length == 0) {
@@ -39,7 +47,7 @@
         self.lab1DisTop.constant  =0;
     }
     self.priceLab.font = [UIFont systemFontOfSize:16];
-    self.priceLab.textColor = RGBCOLOR(37,186,96);
+    
 //    self.priceLab.keyWordFont = [UIFont systemFontOfSize:12];
     self.priceLab.keyWord = @"元";
     
