@@ -24,7 +24,6 @@
 }
 @property (weak, nonatomic) IBOutlet UIWebView *web123;
 @property (weak, nonatomic) IBOutlet UIImageView *labMemberIcon;
-@property (weak, nonatomic) IBOutlet UIButton *loginoutBtn;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollerView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
@@ -66,7 +65,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"个人信息";
-    self.loginoutBtn.hidden = [self.curUser.whitelist boolValue];
     self.viewControllerNo = @"";
     if ([self isIphoneX]) {
         // self.bigView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -525,9 +523,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)actionTel:(id)sender {
-    [self actionTelMe];
-}
 -(void)updateLoginStatus{
     
     if ([self.fmdb open]) {
