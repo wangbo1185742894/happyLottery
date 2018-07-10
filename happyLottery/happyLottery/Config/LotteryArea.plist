@@ -40,15 +40,15 @@
 	</dict>
 	<dict>
 		<key>lotteryImageName</key>
-		<string>shengfucaishouye.png</string>
+		<string>shiyixuanwu.png</string>
+		<key>lotteryName</key>
+		<string>十一选五</string>
 		<key>enable</key>
 		<true/>
 		<key>lottery</key>
-		<string>SFC</string>
-		<key>lotteryName</key>
-		<string>胜负彩</string>
+		<string>SX115</string>
 		<key>lotteryInfo</key>
-		<string>猜14场比赛赢大奖</string>
+		<string>暂停销售</string>
 	</dict>
 	<dict>
 		<key>lotteryImageName</key>
@@ -90,7 +90,7 @@
 		<key>lotteryImageName</key>
 		<string>pai3.png</string>
 		<key>enable</key>
-		<false/>
+		<true/>
 		<key>lotteryName</key>
 		<string>排列3</string>
 		<key>lottery</key>
@@ -104,7 +104,7 @@
 		<key>lottery</key>
 		<string>PL5</string>
 		<key>enable</key>
-		<false/>
+		<true/>
 		<key>lotteryName</key>
 		<string>排列5</string>
 		<key>lotteryInfo</key>
@@ -112,27 +112,27 @@
 	</dict>
 	<dict>
 		<key>lotteryImageName</key>
-		<string>shiyixuanwu.png</string>
-		<key>lotteryName</key>
-		<string>十一选五</string>
-		<key>enable</key>
-		<false/>
-		<key>lottery</key>
-		<string>SX115</string>
-		<key>lotteryInfo</key>
-		<string>暂停销售</string>
-	</dict>
-	<dict>
-		<key>lotteryImageName</key>
 		<string>3d.png</string>
 		<key>enable</key>
-		<false/>
+		<true/>
 		<key>FC3D</key>
 		<string>JCZQ</string>
 		<key>lotteryName</key>
 		<string>福彩3D</string>
 		<key>lotteryInfo</key>
 		<string>暂停销售</string>
+	</dict>
+	<dict>
+		<key>lotteryImageName</key>
+		<string>shengfucaishouye.png</string>
+		<key>enable</key>
+		<true/>
+		<key>lottery</key>
+		<string>SFC</string>
+		<key>lotteryName</key>
+		<string>胜负彩</string>
+		<key>lotteryInfo</key>
+		<string>猜14场比赛赢大奖</string>
 	</dict>
 </array>
 </plist>

@@ -56,6 +56,9 @@
         if ([lottery isEqualToString:@"DLT"]) {
             [shuziArray addObject:itemDic];
         }
+        if ([lottery isEqualToString:@"SX115"]) {
+            [shuziArray addObject:itemDic];
+        }
     }
     [self.personArray addObject:jingjiArray];
     [self.personArray addObject:shuziArray];

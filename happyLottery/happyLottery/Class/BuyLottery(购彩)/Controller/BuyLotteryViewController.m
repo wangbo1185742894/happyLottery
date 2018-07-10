@@ -61,6 +61,7 @@ static NSString *ID = @"LotteryAreaViewCell";
     NSMutableArray  <JczqShortcutModel *>*colloectList;
     ActivityInfoView *activityInfoView;
     __weak IBOutlet UIView *viewNews;
+    NSDictionary *_lotteryList;
     __weak IBOutlet UIView *scrContentView;
     __weak IBOutlet NSLayoutConstraint *homeViewHeight;
     WBAdsImgView *adsView;
@@ -194,7 +195,7 @@ static NSString *ID = @"LotteryAreaViewCell";
         [self showPromptText:msg hideAfterDelay:1.7];
         return;
     }
-    
+    _lotteryList = lotteryList;
     for (int i = 0;i < _lotteryArr.count ;i ++) {
         NSDictionary *itemDic = _lotteryArr[i];
         NSString *key = itemDic[@"lottery"] ;
@@ -229,7 +230,18 @@ static NSString *ID = @"LotteryAreaViewCell";
     if (indexPath.row < self.sellLottery.count) {
         NSDictionary *itemDic = self.sellLottery[indexPath.row];
         cell.lotteryName.text = itemDic[@"lotteryName"];
-        cell.isEable.hidden = [itemDic[@"enable"] boolValue];
+        if ([itemDic[@"lottery"] isEqualToString:@"JCZQDG"]) {
+            cell.isEable.hidden = [_lotteryList[@"JCZQ"] boolValue];
+        }else if ([itemDic[@"lottery"] isEqualToString:@"GYJ"]) {
+            if ( [_lotteryList[@"JCGJ"] boolValue] ==NO && [_lotteryList[@"JCGYJ"] boolValue] ==NO) {
+                cell.isEable .hidden= NO;
+            }else{
+                cell.isEable.hidden = YES;
+            }
+        }else{
+            cell.isEable.hidden = [_lotteryList[itemDic[@"lottery"]] boolValue];
+        }
+        
         [cell.lotteryImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"icon_%@",itemDic[@"lotteryImageName"]]]];
     }else{
         cell.lotteryName .text= @"更多";
@@ -241,10 +253,26 @@ static NSString *ID = @"LotteryAreaViewCell";
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-   
+
     if (indexPath.row <self.sellLottery.count) {
         NSDictionary *itemDic = _lotteryArr[indexPath.row];
         NSString *lottert =  itemDic[@"lottery"];
+        if ([lottert isEqualToString:@"JCZQDG"]) {
+            if ([_lotteryList[@"JCZQ"] boolValue] ==NO) {
+                [self showPromptText:@"该玩法暂未开售" hideAfterDelay:2.0];
+                return;
+            }
+        }else if ([lottert isEqualToString:@"GYJ"]) {
+            if ( [_lotteryList[@"JCGJ"] boolValue] ==NO && [_lotteryList[@"JCGYJ"] boolValue] ==NO) {
+                [self showPromptText:@"该玩法暂未开售" hideAfterDelay:2.0];
+                return;
+            }
+        }else{
+            if([_lotteryList[lottert] boolValue] == NO) {
+                [self showPromptText:@"该玩法暂未开售" hideAfterDelay:2.0];
+                return;
+            }
+        }
         NSString *funName = [NSString stringWithFormat:@"action%@:",lottert];
         SEL action = NSSelectorFromString(funName);
         if ([self respondsToSelector:action ]) {

@@ -119,12 +119,12 @@
     
     [profileId synchronize];
     NSArray* reversedArray;
-    if (profileID == 10 || profileID == 9  || profileID == 21 || profileID == 22) {
-        reversedArray = self.rounds;//倒序
-    }else{
-        
+//    if (profileID == 10 || profileID == 9  || profileID == 21 || profileID == 22) {
+//        reversedArray = self.rounds;//倒序
+//    }else{
+    
         reversedArray = [[self.rounds reverseObjectEnumerator] allObjects]; //倒序
-    }
+//    }
     
     DltOpenResult * round = reversedArray[indexPath.row];
     if([round .lotteryCode isEqualToString:@"SX115"] || [round.lotteryCode isEqualToString:@"SD115"]){

@@ -72,23 +72,38 @@
                 numCount = betnumArray.count;
                 break;
         }
-
-        for (UIButton *item in _ballArr) {
-            item.hidden = YES;
-        }
-        for (int i=0; i < numCount; i++) {
-          
-            NSString *tempstr;
-            tempstr = [NSString stringWithFormat:@"%02d",[betnumArray[i] intValue]];
-            NSInteger index = [tempstr integerValue];
-
-
-            UIButton *btn=(UIButton *) _ballArr[i];
-            btn.hidden = NO;
-            [btn setTitleColor:SystemRed forState:0];
-            [btn setTitle:tempstr forState:0];
+  
+        if (profileID == 9||profileID == 10 ||profileID == 19||profileID == 20) {
+            for (UIButton *item in _ballArr) {
+                item.hidden = YES;
+            }
+            for (int i=0; i < numCount; i++) {
+                NSString *tempstr;
+                tempstr = [NSString stringWithFormat:@"%02d",[betnumArray[i] intValue]];
+                NSInteger index = [tempstr integerValue];
+                UIButton *btn=(UIButton *) _ballArr[i];
+                btn.hidden = NO;
+                [btn setTitleColor:[UIColor whiteColor] forState:0];
+                [btn setBackgroundImage:[UIImage imageNamed:@"redBall"] forState:0];
+                [btn setTitle:tempstr forState:0];
+            }
+        }else{
+            for (int i=0; i<numCount; i++) {
+                NSString *tempstr;
+                tempstr = [NSString stringWithFormat:@"%02d",[betnumArray[i] intValue]];
+                for (UIButton *item in _ballArr) {
+                    if ([item.currentTitle isEqualToString:tempstr]) {
+                        [item setTitleColor:[UIColor whiteColor] forState:0];
+                        [item setBackgroundImage:[UIImage imageNamed:@"redBall"] forState:0];
+                        break;
+                    }
+                }
+            }
             
+         
+       
         }
+  
 
     }else{
         NSArray *betnumArray = [betCountStr componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"#"]];

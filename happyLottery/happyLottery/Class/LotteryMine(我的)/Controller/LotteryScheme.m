@@ -324,7 +324,7 @@
             state = @"已退款";
         }
     }else if([self.schemeStatus isEqualToString:@"REPEAL"]){
-            state = @"方案撤销";
+            state = @"已退款";
     }else{
         if ([self.schemeType isEqualToString:@"BUY_TOGETHER"]) {
             if ([self.schemeStatus isEqualToString:@"UN_FULL"]) {

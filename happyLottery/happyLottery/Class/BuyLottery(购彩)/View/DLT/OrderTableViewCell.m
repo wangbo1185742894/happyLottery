@@ -232,7 +232,7 @@
             winningStateLb.text = @"方案失败";
         }
     }else if([order.schemeStatus isEqualToString:@"REPEAL"]){
-         winningStateLb.text = @"方案撤销";
+         winningStateLb.text = @"已退款";
     }else{
         if ([order.schemeType isEqualToString:@"BUY_TOGETHER"]) {
             if ([order.schemeStatus isEqualToString:@"UN_FULL"]) {

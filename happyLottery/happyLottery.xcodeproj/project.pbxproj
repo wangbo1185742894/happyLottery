@@ -481,6 +481,8 @@
 		2D638F5D20F32836004463FC /* LaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D638F5C20F32836004463FC /* LaunchViewController.m */; };
 		2D638F5F20F32CAA004463FC /* launch_x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D638F5E20F32CAA004463FC /* launch_x.png */; };
 		2D638F6120F32FAE004463FC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D638F6020F32FAD004463FC /* Images.xcassets */; };
+		2D638F6420F45E05004463FC /* icon_shiyixuanwu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D638F6220F45E04004463FC /* icon_shiyixuanwu@3x.png */; };
+		2D638F6520F45E05004463FC /* icon_shiyixuanwu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D638F6320F45E04004463FC /* icon_shiyixuanwu@2x.png */; };
 		2D676A8220EA4C330026BA05 /* BetType.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D676A8120EA4C320026BA05 /* BetType.plist */; };
 		2D6F9237208D9D8A007DFD0B /* leshan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D6F9235208D9D89007DFD0B /* leshan@3x.png */; };
 		2D6F9238208D9D8A007DFD0B /* leshan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D6F9236208D9D89007DFD0B /* leshan@2x.png */; };
@@ -2269,6 +2271,8 @@
 		2D638F5C20F32836004463FC /* LaunchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LaunchViewController.m; sourceTree = "<group>"; };
 		2D638F5E20F32CAA004463FC /* launch_x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch_x.png; sourceTree = "<group>"; };
 		2D638F6020F32FAD004463FC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		2D638F6220F45E04004463FC /* icon_shiyixuanwu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_shiyixuanwu@3x.png"; sourceTree = "<group>"; };
+		2D638F6320F45E04004463FC /* icon_shiyixuanwu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_shiyixuanwu@2x.png"; sourceTree = "<group>"; };
 		2D676A8120EA4C320026BA05 /* BetType.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BetType.plist; sourceTree = "<group>"; };
 		2D6F9235208D9D89007DFD0B /* leshan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leshan@3x.png"; sourceTree = "<group>"; };
 		2D6F9236208D9D89007DFD0B /* leshan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leshan@2x.png"; sourceTree = "<group>"; };
@@ -5132,6 +5136,8 @@
 				2D4B1E441FDF684E0034B708 /* homeres */,
 				2D517204200D986300C3CD7F /* newicon_default@3x.png */,
 				2D517203200D986200C3CD7F /* newicon_default@2x.png */,
+				2D638F6320F45E04004463FC /* icon_shiyixuanwu@2x.png */,
+				2D638F6220F45E04004463FC /* icon_shiyixuanwu@3x.png */,
 				2D0E2399201817180098DA40 /* button_forbidden@2x.png */,
 				2D0E2398201817180098DA40 /* button_forbidden@3x.png */,
 				2D0EEA8C2013280100B0769C /* button_trophy@2x.png */,
@@ -7985,6 +7991,7 @@
 				F928C6B71FF4BA40001F1A32 /* addmoney@2x.png in Resources */,
 				2D05C86C20A43631001A8953 /* pic_hongdanbangbeijing@3x.png in Resources */,
 				F9F6CAA01FF5D6B100A49F71 /* inform@2x.png in Resources */,
+				2D638F6420F45E05004463FC /* icon_shiyixuanwu@3x.png in Resources */,
 				F9E53D6A20EE28D70072B8AF /* zhuihao_mine@2x.png in Resources */,
 				F9F6CAA61FF5D80900A49F71 /* SystemSetViewController.xib in Resources */,
 				2D16600720A2C9F900C1C7E7 /* MyPostSchemeViewController.xib in Resources */,
@@ -8194,6 +8201,7 @@
 				F9FC153F20625E9A009BAD68 /* gjplaytype.html in Resources */,
 				F90058E61FF61619009C8E1C /* noticedelete@3x.png in Resources */,
 				F90FCD901FF396F700BD807C /* fly@3x.png in Resources */,
+				2D638F6520F45E05004463FC /* icon_shiyixuanwu@2x.png in Resources */,
 				2D05C85120A43631001A8953 /* icon_hongdanbang@3x.png in Resources */,
 				2D0EEA802012F7AF00B0769C /* icon_mingzhong@3x.png in Resources */,
 				2D01750F20CB9352005DEDC9 /* redpacketrule@3x.png in Resources */,
