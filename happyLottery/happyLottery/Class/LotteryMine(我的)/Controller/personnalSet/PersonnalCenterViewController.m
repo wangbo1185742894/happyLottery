@@ -41,8 +41,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottom;
 @property (weak, nonatomic) IBOutlet UILabel *telephone;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomCons;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightCons;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageBottom;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightCons;
 
 @property(nonatomic,strong)LoadData *loadDataTool;
 @end
@@ -72,17 +72,18 @@
         self.bottom.constant = 34;
     }
     if ([self isIphone5s]) {
-        self.heightCons.constant = 568;
+        
         self.bottomCons.constant = 18;
         self.imageBottom.constant = 10;
 
     }else {
-        self.heightCons.constant = 667;
+        
         self.bottomCons.constant = 86;
         self.imageBottom.constant = 28;
         
 
     }
+    self.heightCons.constant = KscreenHeight;
     self.memberMan.delegate = self;
     self.myImage.layer.cornerRadius = self.myImage.mj_h/2;
     self.myImage.layer.masksToBounds = YES;
