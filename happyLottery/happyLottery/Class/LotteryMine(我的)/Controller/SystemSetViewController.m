@@ -59,6 +59,11 @@
     [self checkUpdateNetWork];
 }
 
+
+- (IBAction)actionTel:(id)sender {
+    [self actionTelMe];
+}
+
 #pragma mark 将设置存储在本地
 -(void)saveNSUserDefaults:(NSMutableDictionary *)Dictionary
 {
