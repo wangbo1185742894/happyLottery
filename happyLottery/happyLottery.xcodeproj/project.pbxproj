@@ -955,6 +955,8 @@
 		F90D68FD20F2FDB0007865E4 /* sdguize.html in Resources */ = {isa = PBXBuildFile; fileRef = F90D68F920F2FDAE007865E4 /* sdguize.html */; };
 		F90D68FE20F2FDB0007865E4 /* sdjianjie.html in Resources */ = {isa = PBXBuildFile; fileRef = F90D68FA20F2FDAF007865E4 /* sdjianjie.html */; };
 		F90D68FF20F2FDB0007865E4 /* sdwanfa.html in Resources */ = {isa = PBXBuildFile; fileRef = F90D68FB20F2FDAF007865E4 /* sdwanfa.html */; };
+		F90D690220F4AF53007865E4 /* findyilou@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F90D690020F4AF51007865E4 /* findyilou@2x.png */; };
+		F90D690320F4AF53007865E4 /* findyilou@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F90D690120F4AF52007865E4 /* findyilou@3x.png */; };
 		F90FCD551FF34D1C00BD807C /* MyRedPacketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F90FCD531FF34D1C00BD807C /* MyRedPacketViewController.m */; };
 		F90FCD561FF34D1C00BD807C /* MyRedPacketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F90FCD541FF34D1C00BD807C /* MyRedPacketViewController.xib */; };
 		F90FCD5A1FF34D5000BD807C /* MyRedPacketTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F90FCD581FF34D5000BD807C /* MyRedPacketTableViewCell.m */; };
@@ -3013,6 +3015,8 @@
 		F90D68F920F2FDAE007865E4 /* sdguize.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sdguize.html; sourceTree = "<group>"; };
 		F90D68FA20F2FDAF007865E4 /* sdjianjie.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sdjianjie.html; sourceTree = "<group>"; };
 		F90D68FB20F2FDAF007865E4 /* sdwanfa.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sdwanfa.html; sourceTree = "<group>"; };
+		F90D690020F4AF51007865E4 /* findyilou@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "findyilou@2x.png"; sourceTree = "<group>"; };
+		F90D690120F4AF52007865E4 /* findyilou@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "findyilou@3x.png"; sourceTree = "<group>"; };
 		F90FCD521FF34D1C00BD807C /* MyRedPacketViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyRedPacketViewController.h; sourceTree = "<group>"; };
 		F90FCD531FF34D1C00BD807C /* MyRedPacketViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyRedPacketViewController.m; sourceTree = "<group>"; };
 		F90FCD541FF34D1C00BD807C /* MyRedPacketViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyRedPacketViewController.xib; sourceTree = "<group>"; };
@@ -4960,6 +4964,8 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				F90D690020F4AF51007865E4 /* findyilou@2x.png */,
+				F90D690120F4AF52007865E4 /* findyilou@3x.png */,
 				2D638F5E20F32CAA004463FC /* launch_x.png */,
 				F90D68D820EF65DA007865E4 /* deletehelp@3x.png */,
 				F90D68D620EF65CF007865E4 /* deletehelp@2x.png */,
@@ -7739,6 +7745,7 @@
 				2D7B13CD204E877A0035AE89 /* CTZQOpenLotteryFirstView.xib in Resources */,
 				F9705E56207A0DE800E25E4E /* TouZhuViewCell.xib in Resources */,
 				2D7B1347204E258B0035AE89 /* machine-selection@2x.png in Resources */,
+				F90D690320F4AF53007865E4 /* findyilou@3x.png in Resources */,
 				F94B4D7D20BBCB1600DE0C7A /* gengduo@3x.png in Resources */,
 				F90058E71FF61619009C8E1C /* noticeempty@3x.png in Resources */,
 				F9B5D9792060A9DE00C9F6DC /* flag370@2x.png in Resources */,
@@ -8050,6 +8057,7 @@
 				2DE892AA2022B5D1008926A6 /* schemeticket@2x.png in Resources */,
 				F9DC69961FDF878D007D384D /* MyOrderListViewController.xib in Resources */,
 				F9B5D9942060A9DE00C9F6DC /* flag416@3x.png in Resources */,
+				F90D690220F4AF53007865E4 /* findyilou@2x.png in Resources */,
 				2D7B137F204E70510035AE89 /* encore@2x.png in Resources */,
 				2D7B8DB520C556DB000EAFB1 /* CricleCenterViewController.xib in Resources */,
 				2D628B3D1FECAA9A0013D0E1 /* fengkuangjingcai-gengduoshuoming@3x.png in Resources */,
