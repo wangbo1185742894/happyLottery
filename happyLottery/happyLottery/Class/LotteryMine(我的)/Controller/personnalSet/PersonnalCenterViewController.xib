@@ -24,6 +24,7 @@
                 <outlet property="paySetBtn" destination="baM-s6-aZF" id="sUR-F1-t7d"/>
                 <outlet property="scrollerView" destination="yWn-8Y-LpU" id="FFs-Dy-8TH"/>
                 <outlet property="telephone" destination="Sg6-wk-CbC" id="Qw6-YC-O1g"/>
+                <outlet property="top" destination="uov-7Q-cLL" id="OEF-qg-eWy"/>
                 <outlet property="updateLoginPWDBtn" destination="5zp-W4-ebq" id="fLu-nn-8RA"/>
                 <outlet property="updatePayPWDBtn" destination="Egz-s1-yZu" id="qfI-iT-bgg"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -35,10 +36,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yWn-8Y-LpU">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kM9-wg-Ohd">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="506-C9-ngo">
                                     <rect key="frame" x="0.0" y="30" width="375" height="55"/>
@@ -241,7 +242,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RCP-Lo-an3">
-                                    <rect key="frame" x="20" y="603" width="335" height="44"/>
+                                    <rect key="frame" x="20" y="539" width="335" height="44"/>
                                     <color key="backgroundColor" red="0.070588235289999995" green="0.78039215689999997" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="44" id="gCL-6C-heL"/>
@@ -276,7 +277,6 @@
                                 <constraint firstAttribute="trailing" secondItem="jFA-Hx-XqN" secondAttribute="trailing" constant="8" id="NrV-IZ-b2T"/>
                                 <constraint firstAttribute="trailing" secondItem="ddE-fh-p3u" secondAttribute="trailing" constant="36" id="PCq-8Z-DWs"/>
                                 <constraint firstItem="506-C9-ngo" firstAttribute="top" secondItem="kM9-wg-Ohd" secondAttribute="top" constant="30" id="QsT-f7-Nt3"/>
-                                <constraint firstAttribute="height" constant="667" id="Qwo-a9-ZwC"/>
                                 <constraint firstAttribute="trailing" secondItem="kpe-1W-adt" secondAttribute="trailing" constant="8" id="SOY-rZ-GHo"/>
                                 <constraint firstItem="RCP-Lo-an3" firstAttribute="leading" secondItem="kM9-wg-Ohd" secondAttribute="leading" constant="20" id="Smb-AL-Bmn"/>
                                 <constraint firstItem="kpe-1W-adt" firstAttribute="centerY" secondItem="baM-s6-aZF" secondAttribute="centerY" id="WWn-XP-9Dr"/>
@@ -322,8 +322,9 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="yWn-8Y-LpU" secondAttribute="trailing" id="AcN-kg-AJe"/>
                 <constraint firstItem="yWn-8Y-LpU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="B6S-RQ-HYG"/>
+                <constraint firstAttribute="bottom" secondItem="kM9-wg-Ohd" secondAttribute="bottom" id="KQW-xh-SuM"/>
                 <constraint firstAttribute="bottom" secondItem="yWn-8Y-LpU" secondAttribute="bottom" id="bkD-GA-I3b"/>
-                <constraint firstItem="yWn-8Y-LpU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="uov-7Q-cLL"/>
+                <constraint firstItem="yWn-8Y-LpU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="uov-7Q-cLL"/>
             </constraints>
             <point key="canvasLocation" x="-44.5" y="90.5"/>
         </view>

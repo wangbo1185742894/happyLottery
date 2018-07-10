@@ -4,8 +4,6 @@
 //
 //  Created by LYJ on 2017/12/18.
 //  Copyright © 2017年 onlytechnology. All rights reserved.
-//
-
 #import "PersonnalCenterViewController.h"
 #import "MyNickSetViewController.h"
 #import "RSKImageCropper.h"
@@ -52,6 +50,8 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
     [self loadUserInfo];
+    
+    
      if (self.curUser.bankBinding == 0) {
         titleStr = @"银行卡设置";
         self.myCardLab.hidden = NO;
@@ -65,9 +65,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"个人信息";
+     self.automaticallyAdjustsScrollViewInsets = NO;
     self.viewControllerNo = @"";
     if ([self isIphoneX]) {
-        // self.bigView.translatesAutoresizingMaskIntoConstraints = NO;
+        
         self.top.constant = 88;
         self.bottom.constant = 34;
     }
@@ -83,7 +84,7 @@
         
 
     }
-    self.heightCons.constant = KscreenHeight;
+    
     self.memberMan.delegate = self;
     self.myImage.layer.cornerRadius = self.myImage.mj_h/2;
     self.myImage.layer.masksToBounds = YES;

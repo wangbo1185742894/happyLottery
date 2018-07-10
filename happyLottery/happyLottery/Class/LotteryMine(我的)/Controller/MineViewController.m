@@ -874,7 +874,7 @@
         return cell;
     }
     [cell reloadDate:listArray];
-    cell.labTitle.text = @"常用工具";
+    cell.labTitle.text = @"常用服务";
     cell.login = self.curUser.isLogin;
     cell.listUseRedPacketArray = [listUseRedPacketArray copy];
     cell.rednum = rednum;

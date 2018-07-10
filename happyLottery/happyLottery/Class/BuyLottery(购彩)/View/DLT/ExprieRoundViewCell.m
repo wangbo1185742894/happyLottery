@@ -73,7 +73,7 @@
                 break;
         }
   
-        if (profileID == 9||profileID == 10 ||profileID == 19||profileID == 20) {
+        if (profileID == 9||profileID == 10) {
             for (UIButton *item in _ballArr) {
                 item.hidden = YES;
             }

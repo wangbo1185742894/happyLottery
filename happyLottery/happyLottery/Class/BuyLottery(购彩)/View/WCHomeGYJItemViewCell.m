@@ -61,9 +61,10 @@
         self.nameGroupFlag2.text= nil;
         self.lableVs.text = model.clash;
     }
+    
     self.labForeCast.text = [NSString stringWithFormat:@"%.2f%%",[model.probability doubleValue]] ;
     
-    self.pfBeiShu.text = model.odds;
+    self.pfBeiShu.text = [NSString stringWithFormat:@"%.2f",[model.odds doubleValue]];
     self.xuelie.text = model.indexNumber;
     if (model.isSelect) {
         self.labMatchBack.backgroundColor = RGBCOLOR(255,243,222);
