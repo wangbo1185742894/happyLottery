@@ -44,7 +44,7 @@
         }
     }
 //
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/app/award/listSellLottery",H5BaseAddress]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/app/award/listSellLottery",@"http://192.168.88.244:18086"]];
     webView.delegate  =self;
     [webView loadRequest:[NSURLRequest requestWithURL:url]];
     

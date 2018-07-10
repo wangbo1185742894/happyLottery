@@ -77,7 +77,7 @@
 - (IBAction)leftNumberClicked:(id)sender {
     if (self.selectNum >= 30) {
         BaseViewController *baseVC = (BaseViewController *)[self getCurrentVC];
-        [baseVC showPromptViewWithText:@"最多只能选择30注" hideAfter:1.8];
+        [baseVC showPromptViewWithText:@"最多只能选择30组" hideAfter:1.8];
         return;
     }
     self.model.isSelect = [self.model.isSelect isEqualToString: @"0"]?@"1":@"0";

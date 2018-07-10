@@ -729,8 +729,8 @@
 }
 
 - (IBAction)actionAddRandomBet:(id)sender {
-    if([self.transaction betCount] >= 30){
-        [self showPromptText:@"最多只能选择30注" hideAfterDelay:1.8];
+    if([self.transaction.allBets count] >= 30){
+        [self showPromptText:@"最多只能选择30组" hideAfterDelay:1.8];
         return;
     }
     if ([self.isOmit isEqualToString:@"YES"]) {
@@ -1111,7 +1111,7 @@
 - (IBAction)actionTouzhu:(UIButton *)sender {
     self.transaction.schemeSource = SchemeSourceBet;
     if(self.transaction.allBets.count > 30){
-        [self showPromptText:@"投注最多30注" hideAfterDelay:2.0];
+        [self showPromptText:@"投注最多30组" hideAfterDelay:2.0];
         return;
     }
     [self showLoadingText:@"正在提交订单"];
@@ -1367,8 +1367,8 @@
 }
 
 - (IBAction)actionKeepBetting:(id)sender {
-    if([self.transaction betCount] >= 30){
-        [self showPromptText:@"最多只能选择30注" hideAfterDelay:1.8];
+    if([self.transaction.allBets count] >= 30){
+        [self showPromptText:@"最多只能选择30组" hideAfterDelay:1.8];
         return;
     }
     NSInteger numLotteryVCCount = 0;

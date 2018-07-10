@@ -76,7 +76,6 @@
 }
 
 
-
 - (IBAction)actionCostTypeSelect:(UISegmentedControl *)sender {
     page = 1;
     if (sender.selectedSegmentIndex == 0) {
@@ -98,20 +97,17 @@
     tabSchemeList.dataSource = self;
     [tabSchemeList registerClass:[ SchemListCell class] forCellReuseIdentifier:KSchemListCell];
     tabSchemeList.rowHeight = 73;
-    
     self.lotteryMan.delegate =self;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    
 }
 
 - (IBAction)actionSelectSchemeTpye:(UISegmentedControl *)sender {
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-
     return dataArray.count;
 }
 
