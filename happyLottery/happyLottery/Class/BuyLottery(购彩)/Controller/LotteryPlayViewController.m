@@ -989,7 +989,8 @@
     CGFloat origy = CGRectGetMaxY(lotteryXHView.frame);
     self.qmitBtn.frame = CGRectMake(KscreenWidth-70, origy, 64, 16);
     self.qmitBtn.titleLabel.font = [UIFont systemFontOfSize:16];
-    [self.qmitBtn setTitle:@"查遗漏>" forState:UIControlStateNormal];
+    [self.qmitBtn setTitle:@"查遗漏" forState:UIControlStateNormal];
+    [self.qmitBtn setImage:[UIImage imageNamed:@"findyilou.png"] forState:UIControlStateNormal];
     self.fengeImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, origy + 17, KscreenWidth,10)];
     self.fengeImage.image = [UIImage imageNamed:@"fengge.png"];
     [scrollViewContent_ addSubview:self.fengeImage];
