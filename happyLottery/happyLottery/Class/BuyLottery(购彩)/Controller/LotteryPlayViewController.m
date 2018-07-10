@@ -36,6 +36,7 @@
 #import "OmitEnquiriesViewController.h"
 #define BackAlertTag 20
 
+
 #define DltInvalidAlertTag  300
 
 @interface LotteryPlayViewController() <LotteryXHViewDelegate, UIActionSheetDelegate, LotteryBetsPopViewDelegate, LotteryTitleViewDelegate, TouZhuViewControllerDelegate, UIScrollViewDelegate, LotteryPhaseInfoViewDelegate,UIAlertViewDelegate,UIScrollViewDelegate,LotteryManagerDelegate,OptionSelectedViewDelegate,X115LotteryProfileSelectViewDelegate>
@@ -191,7 +192,7 @@
     [self currentBet:nil];
 }
 -(void)lookOpenHis:(UIButton *)sender{
-    
+    [self getHisIssue];
     if (scrollViewContent_.contentOffset.y != 0) {
         // 向上
         
@@ -219,7 +220,7 @@
 }
 
 -(void)getHisIssue{
-    [self.lotteryMan getListHisIssue:@{@"lottery":self.lottery.identifier,@"size":@10}];
+    [self.lotteryMan getListHisIssue:@{@"lottery":self.lottery.identifier,@"size":@30}];
 }
 
 -(void) gotListHisIssue:(NSArray *)infoDic errorMsg:(NSString *)msg{
@@ -241,9 +242,13 @@
     
     [scrollViewContent_ addSubview:expireTableView];
     scrollViewContent_.contentInset = UIEdgeInsetsMake(expireTablveHeight, 0, 0, 0);
-    expireTableView.contentOffset = CGPointMake(0, ExpireTableViewCellH * 10);
+//    expireTableView.contentOffset = CGPointMake(0, expireTableView.rowHeight * results.count);
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [expireTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:results.count-1 inSection:0]  atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+    });
     expireTableView.rounds = results;
     [expireTableView reloadData];
+
 }
 
 -(void)gotSellIssueList:(NSArray *)infoDic errorMsg:(NSString *)msg{
@@ -1094,6 +1099,7 @@
         }else{
             // 向下
             if (scrollView.contentOffset.y < -80) {
+                [self getHisIssue];
                 [UIView animateWithDuration:0.2 animations:^{
                                     scrollView.contentInset = UIEdgeInsetsMake(expireTablveHeight, 0, 0, 0);
                 } completion:^(BOOL finished) {
