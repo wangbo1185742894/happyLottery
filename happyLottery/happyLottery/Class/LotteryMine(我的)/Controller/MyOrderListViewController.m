@@ -65,16 +65,32 @@
     if ([Utility isIOS11After]) {
         self.automaticallyAdjustsScrollViewInsets = NO; // tableView 莫名其妙  contentOffset.y 成-64了  MMP
     }
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     NSString *  isShow = [[NSUserDefaults standardUserDefaults] objectForKey:KdeleteOrderIntroduce];
+   
     if (isShow == nil) {
         introView = [[DeleteOrderView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-        [[UIApplication sharedApplication].keyWindow addSubview:introView];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [[UIApplication sharedApplication].keyWindow addSubview:self->introView];
+        });
     }else{
         introView.hidden = YES;
+        if(introView.superview!=nil){
+            [introView removeFromSuperview];
+        }
     }
 }
 
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    introView.hidden = YES;
+    if(introView.superview!=nil){
+        [introView removeFromSuperview];
+    }
+}
 
 - (IBAction)actionCostTypeSelect:(UISegmentedControl *)sender {
     page = 1;
