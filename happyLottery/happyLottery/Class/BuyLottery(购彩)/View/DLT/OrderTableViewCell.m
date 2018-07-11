@@ -198,7 +198,7 @@
     }
     if ([order.lotteryType isEqualToString:@"JCGJ"]){
          lotteryTypeLb.text = @"冠军";
-         lotteryIconImgV.image = [UIImage imageNamed:@"first.png"];
+         lotteryIconImgV.image = [UIImage imageNamed:@"icon_guanyajun.png"];
     }
     if ([order.lotteryType isEqualToString:@"JCGYJ"]){
          lotteryTypeLb.text = @"冠亚军";

@@ -119,10 +119,14 @@
             NSArray *matchArray = [Utility objFromJson:matchDic[@"betMatches"]];
             for (int i  = 0; i < matchArray.count; i++) {
                 JlBetContent *betContent = [[JlBetContent alloc]init];
-                betContent.isLast = NO;
+                
                 betContent.index = itemIndex;
                 if (i == 0) {
-                    
+                    if (matchArray.count == 1) {
+                        betContent.isLast = YES;
+                    }else{
+                        betContent.isLast = NO;
+                    }
                     betContent.isShow = YES;
                     betContent.multiple = matchDic[@"multiple"];
                     betContent.passTypes = matchDic[@"passTypes"];

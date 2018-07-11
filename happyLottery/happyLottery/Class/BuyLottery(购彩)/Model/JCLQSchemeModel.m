@@ -182,7 +182,7 @@
         return @"icon_guanyajun.png";
     }
     if ([self.lottery isEqualToString:@"JCGJ"]) {
-        return @"first.png";
+        return @"icon_guanyajun.png";
     }
     if ([self.lottery isEqualToString:@"SSQ"]) {
         return @"icon_shuangseqiu.png";

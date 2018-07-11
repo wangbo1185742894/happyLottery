@@ -1020,7 +1020,8 @@
     
     TouZhuViewController *touzhuVC = [[TouZhuViewController alloc] initWithNibName: @"TouZhuViewController" bundle: nil];
     touzhuVC.lottery = self.lottery;
-    
+    touzhuVC.phaseInfoView = self.touzhuphaseInfoView
+    ;
     touzhuVC.transaction = _lotteryTransaction;
     touzhuVC.timerForcurRound = timerForcurRound;
     

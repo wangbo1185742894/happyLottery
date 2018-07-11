@@ -155,7 +155,7 @@ NSInteger const kIQPreviousNextButtonToolbarTag     =   -1005;
     /** To save Status Bar size. */
     CGRect                   _statusBarFrame;
     
-    /*******************************************/
+    /****************** *************************/
 }
 
 //UIKeyboard handling

@@ -15,6 +15,8 @@
 {
     JSContext *context;
     UIWebViewNavigationType _navigationType;
+    BOOL isBackRoot;
+    NSMutableArray *listArray;
 }
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *webDisTop;
 @property (weak, nonatomic) IBOutlet UIButton *btnPop;
@@ -28,10 +30,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    listArray = [NSMutableArray arrayWithCapacity:0];
     self.webViewShowInfo.scrollView.bounces = NO;
     self.webViewShowInfo.delegate = self;
-    [self.webViewShowInfo loadRequest:[NSURLRequest requestWithURL:self.pageUrl]];
-    
+    [listArray addObject:self.pageUrl];
+    [self.webViewShowInfo loadRequest:[NSURLRequest requestWithURL:self.pageUrl cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:5.0]];
+
     if ([self isIphoneX]) {
         self.webDisTop.constant = 44;
         self.webDisBottom.constant = 34;
@@ -55,12 +59,13 @@
 }
 
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
-    _navigationType = navigationType;
-//    navigationType    UIWebViewNavigationType    UIWebViewNavigationTypeBackForward
+    if(navigationType == UIWebViewNavigationTypeLinkClicked){
+        [listArray addObject:request.URL];
+    }
     if ([request.URL isEqual:self.pageUrl]) {
-        self.btnPop.userInteractionEnabled = YES;
+        isBackRoot = YES;//    UIWebViewNavigationTypeLinkClicked    UIWebViewNavigationTypeBackForward    UIWebViewNavigationTypeOther
     }else{
-        self.btnPop.userInteractionEnabled = NO;
+        isBackRoot = NO;
     }
     return YES;
 }
@@ -70,15 +75,17 @@
 }
 
 - (IBAction)actionPopView:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    if (isBackRoot == YES) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
+        [listArray removeLastObject];
+        [self.webViewShowInfo loadRequest:[NSURLRequest requestWithURL:[listArray lastObject]]];
+    }
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     [self hideLoadingView];
-    if (_navigationType == UIWebViewNavigationTypeOther) {
-        [self.webViewShowInfo reload];
-    }
     context = [webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
     context[@"appObj"] = self;
     context.exceptionHandler = ^(JSContext *context, JSValue *exceptionValue) {

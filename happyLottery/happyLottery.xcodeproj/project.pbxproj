@@ -483,6 +483,7 @@
 		2D638F6120F32FAE004463FC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D638F6020F32FAD004463FC /* Images.xcassets */; };
 		2D638F6420F45E05004463FC /* icon_shiyixuanwu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D638F6220F45E04004463FC /* icon_shiyixuanwu@3x.png */; };
 		2D638F6520F45E05004463FC /* icon_shiyixuanwu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D638F6320F45E04004463FC /* icon_shiyixuanwu@2x.png */; };
+		2D638F6720F5A597004463FC /* GYJSchemeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D638F6620F5A597004463FC /* GYJSchemeDetailViewController.xib */; };
 		2D676A8220EA4C330026BA05 /* BetType.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D676A8120EA4C320026BA05 /* BetType.plist */; };
 		2D6F9237208D9D8A007DFD0B /* leshan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D6F9235208D9D89007DFD0B /* leshan@3x.png */; };
 		2D6F9238208D9D8A007DFD0B /* leshan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D6F9236208D9D89007DFD0B /* leshan@2x.png */; };
@@ -1289,7 +1290,6 @@
 		F97FD9CA2003026300B35A7C /* inputbox@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F97FD9C82003026200B35A7C /* inputbox@3x.png */; };
 		F97FD9CB2003026300B35A7C /* inputbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F97FD9C92003026200B35A7C /* inputbox@2x.png */; };
 		F98A602C20638893008C3132 /* GYJSchemeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F98A602A20638892008C3132 /* GYJSchemeDetailViewController.m */; };
-		F98A602D20638893008C3132 /* GYJSchemeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F98A602B20638892008C3132 /* GYJSchemeDetailViewController.xib */; };
 		F98A603120638EA9008C3132 /* GYJSchemeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F98A602E20638EA8008C3132 /* GYJSchemeViewCell.m */; };
 		F98A603220638EA9008C3132 /* GYJSchemeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F98A602F20638EA8008C3132 /* GYJSchemeViewCell.xib */; };
 		F98A603B206395EB008C3132 /* LotteryScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = F98A603A206395EA008C3132 /* LotteryScheme.m */; };
@@ -2275,6 +2275,7 @@
 		2D638F6020F32FAD004463FC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2D638F6220F45E04004463FC /* icon_shiyixuanwu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_shiyixuanwu@3x.png"; sourceTree = "<group>"; };
 		2D638F6320F45E04004463FC /* icon_shiyixuanwu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_shiyixuanwu@2x.png"; sourceTree = "<group>"; };
+		2D638F6620F5A597004463FC /* GYJSchemeDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GYJSchemeDetailViewController.xib; sourceTree = "<group>"; };
 		2D676A8120EA4C320026BA05 /* BetType.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BetType.plist; sourceTree = "<group>"; };
 		2D6F9235208D9D89007DFD0B /* leshan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leshan@3x.png"; sourceTree = "<group>"; };
 		2D6F9236208D9D89007DFD0B /* leshan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leshan@2x.png"; sourceTree = "<group>"; };
@@ -3412,7 +3413,6 @@
 		F97FD9C92003026200B35A7C /* inputbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inputbox@2x.png"; sourceTree = "<group>"; };
 		F98A602920638891008C3132 /* GYJSchemeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYJSchemeDetailViewController.h; sourceTree = "<group>"; };
 		F98A602A20638892008C3132 /* GYJSchemeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYJSchemeDetailViewController.m; sourceTree = "<group>"; };
-		F98A602B20638892008C3132 /* GYJSchemeDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GYJSchemeDetailViewController.xib; sourceTree = "<group>"; };
 		F98A602E20638EA8008C3132 /* GYJSchemeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYJSchemeViewCell.m; sourceTree = "<group>"; };
 		F98A602F20638EA8008C3132 /* GYJSchemeViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GYJSchemeViewCell.xib; sourceTree = "<group>"; };
 		F98A603020638EA8008C3132 /* GYJSchemeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYJSchemeViewCell.h; sourceTree = "<group>"; };
@@ -5415,7 +5415,7 @@
 				F90058EB1FF61AEC009C8E1C /* NoticeDetailViewController.xib */,
 				F98A602920638891008C3132 /* GYJSchemeDetailViewController.h */,
 				F98A602A20638892008C3132 /* GYJSchemeDetailViewController.m */,
-				F98A602B20638892008C3132 /* GYJSchemeDetailViewController.xib */,
+				2D638F6620F5A597004463FC /* GYJSchemeDetailViewController.xib */,
 				F98A603020638EA8008C3132 /* GYJSchemeViewCell.h */,
 				F98A602E20638EA8008C3132 /* GYJSchemeViewCell.m */,
 				F98A602F20638EA8008C3132 /* GYJSchemeViewCell.xib */,
@@ -7988,6 +7988,7 @@
 				2D4D609D20B2548B00280033 /* arrow_up@3x.png in Resources */,
 				F9705EBF207B6DDC00E25E4E /* shuangseqiu@2x.png in Resources */,
 				2D7B8DB920C55D5F000EAFB1 /* SetCriNameSetViewController.xib in Resources */,
+				2D638F6720F5A597004463FC /* GYJSchemeDetailViewController.xib in Resources */,
 				2D739CFF1FEB68B800264044 /* backViewYuanJiao@3x.png in Resources */,
 				2D739C751FE79EAA00264044 /* LotteryProfileSelectView.xib in Resources */,
 				2D8CBFE61FF376DA00CC367F /* YuCeLiShiZhanJCell.xib in Resources */,
@@ -8136,7 +8137,6 @@
 				F9B5D913205FB0B000C9F6DC /* GYJPlayViewController.xib in Resources */,
 				2DD5992D20E1DB26002441B5 /* ZhuiHaoViewController.xib in Resources */,
 				F9705EC1207B6DDC00E25E4E /* daletoushouye@2x.png in Resources */,
-				F98A602D20638893008C3132 /* GYJSchemeDetailViewController.xib in Resources */,
 				F999275E2003223000023F8F /* bj_overdue@3x.png in Resources */,
 				F9CD01E6202419AD00E54E79 /* linehelp@3x.png in Resources */,
 				2D16602420A2EFB800C1C7E7 /* FollowSendViewController.xib in Resources */,

@@ -499,7 +499,9 @@
 //}
 
 - (void)setLeftButton{
-    UIButton *returnToRoot = [self creatBar:@"" icon:@"common_top_bar_back" andFrame:CGRectMake(20,DisTop - 33 , 12,18) andAction:@selector(returnToRootView)];
+    UIButton *returnToRoot = [self creatBar:@"" icon:@"common_top_bar_back" andFrame:CGRectMake(10,DisTop - 38 , 30,30) andAction:@selector(returnToRootView)];
+    returnToRoot .imageView.contentMode = UIViewContentModeScaleAspectFit;
+    returnToRoot.imageView.mj_size = CGSizeMake(20, 20);
     [gYJview addSubview:returnToRoot];
 }
 

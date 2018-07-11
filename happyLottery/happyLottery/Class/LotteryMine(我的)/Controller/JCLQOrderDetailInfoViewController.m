@@ -42,7 +42,7 @@
         self.imgLotteryIcon.image = [UIImage imageNamed:@"icon_shengfucaishouye.png"];
     }else if ([self.lotteryCode isEqualToString:@"JCGJ"]){
         self.labLotteryName.text = @"冠军";
-        self.imgLotteryIcon.image = [UIImage imageNamed:@"first.png"];
+        self.imgLotteryIcon.image = [UIImage imageNamed:@"icon_guanyajun.png"];
     }else if ([self.lotteryCode isEqualToString:@"JCGYJ"]){
         self.labLotteryName.text = @"冠亚军";
         self.imgLotteryIcon.image = [UIImage imageNamed:@"icon_guanyajun.png"];

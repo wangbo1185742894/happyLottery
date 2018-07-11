@@ -38,7 +38,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"我的跟投";
+    self.title = @"发单跟单";
     self.viewControllerNo = @"A424";
     if (!self.isFaDan) {
         [self actionGenDan:self.btnGendan];

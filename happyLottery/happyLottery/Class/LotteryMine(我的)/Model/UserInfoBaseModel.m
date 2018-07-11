@@ -273,8 +273,7 @@
     
 }
 -(NSString *)get1Name{
-
-    return @"圈子佣金入账";
+    return @"圈子佣金";
 }
 -(NSString *)get2Name{
     return [NSString stringWithFormat:@"%.2f元",[self.commission doubleValue]];
