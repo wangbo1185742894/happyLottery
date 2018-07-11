@@ -30,34 +30,34 @@
     self.title = @"订单详情";
     if([self.lotteryCode isEqualToString:@"DLT"]){
         self.labLotteryName.text  = @"大乐透";
-        self.imgLotteryIcon.image = [UIImage imageNamed:@"daletou.png"];
+        self.imgLotteryIcon.image = [UIImage imageNamed:@"icon_daletoushouye.png"];
     }else if([self.lotteryCode isEqualToString:@"JCZQ"]){
         self.labLotteryName.text = @"竞彩足球";
-        self.imgLotteryIcon.image = [UIImage imageNamed:@"footerball.png"];
+        self.imgLotteryIcon.image = [UIImage imageNamed:@"icon_jingzu.png"];
     }else if([self.lotteryCode isEqualToString:@"RJC"]){
         self.labLotteryName.text = @"任9场";
-        self.imgLotteryIcon.image = [UIImage imageNamed:@"shengfucai.png"];
+        self.imgLotteryIcon.image = [UIImage imageNamed:@"icon_shengfucaishouye.png"];
     }else if([self.lotteryCode isEqualToString:@"SFC"]){
         self.labLotteryName.text = @"14场";
-        self.imgLotteryIcon.image = [UIImage imageNamed:@"shengfucai.png"];
+        self.imgLotteryIcon.image = [UIImage imageNamed:@"icon_shengfucaishouye.png"];
     }else if ([self.lotteryCode isEqualToString:@"JCGJ"]){
         self.labLotteryName.text = @"冠军";
         self.imgLotteryIcon.image = [UIImage imageNamed:@"first.png"];
     }else if ([self.lotteryCode isEqualToString:@"JCGYJ"]){
         self.labLotteryName.text = @"冠亚军";
-        self.imgLotteryIcon.image = [UIImage imageNamed:@"Championship.png"];
+        self.imgLotteryIcon.image = [UIImage imageNamed:@"icon_guanyajun.png"];
     }else if ([self.lotteryCode isEqualToString:@"SSQ"]){
         self.labLotteryName.text = @"双色球";
-        self.imgLotteryIcon.image = [UIImage imageNamed:@"shuangseqiu.png"];
+        self.imgLotteryIcon.image = [UIImage imageNamed:@"icon_shuangseqiu.png"];
     }else if ([self.lotteryCode isEqualToString:@"JCLQ"]){
         self.labLotteryName.text = @"竞彩篮球";
-        self.imgLotteryIcon.image = [UIImage imageNamed:@"basketball.png"];
+        self.imgLotteryIcon.image = [UIImage imageNamed:@"icon_jinglan.png"];
     }else if ([self.lotteryCode isEqualToString:@"SX115"]){
         self.labLotteryName.text = @"陕西11选5";
-        self.imgLotteryIcon.image = [UIImage imageNamed:@"shiyixuanwu.png"];
+        self.imgLotteryIcon.image = [UIImage imageNamed:@"icon_shiyixuanwu.png"];
     }else if ([self.lotteryCode isEqualToString:@"SD115"]){
         self.labLotteryName.text = @"山东11选5";
-        self.imgLotteryIcon.image = [UIImage imageNamed:@"sdx115.png"];
+        self.imgLotteryIcon.image = [UIImage imageNamed:@"icon_sdx115.png"];
     }
     self.page = 1;
     self.tabListDetail.dataSource = self;

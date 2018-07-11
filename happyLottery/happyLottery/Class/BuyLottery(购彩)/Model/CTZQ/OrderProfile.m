@@ -442,23 +442,43 @@
 }
 
 -(NSString *)iconName{
-    if ([self.lotteryCode isEqualToString:@"DLT"]) {
-        return @"daletou.png";
+    if ([self.lottery isEqualToString:@"DLT"]) {
+        return @"icon_daletoushouye.png";
     }
-    if ([self.lotteryCode isEqualToString:@"SFC"] || [self.lotteryCode isEqualToString:@"RJC"]) {
-        return @"shengfucai.png";
+    if ([self.lottery isEqualToString:@"SFC"] || [self.lottery isEqualToString:@"RJC"]) {
+        return @"icon_shengfucaishouye.png";
     }
-    if ([self.lotteryCode isEqualToString:@"JCZQ"]) {
-        return @"footerball.png";
+    if ([self.lottery isEqualToString:@"JCZQ"]) {
+        return @"icon_jingzu.png";
     }
-    if ([self.lotteryCode isEqualToString:@"JCGYJ"]) {
-        return @"Championship.png";
+    if ([self.lottery isEqualToString:@"JCGYJ"]) {
+        return @"icon_guanyajun.png";
     }
-    if ([self.lotteryCode isEqualToString:@"JCGJ"]) {
+    if ([self.lottery isEqualToString:@"JCGJ"]) {
         return @"first.png";
     }
-    if ([self.lotteryCode isEqualToString:@"SSQ"]) {
-        return @"shuangseqiu.png";
+    if ([self.lottery isEqualToString:@"SSQ"]) {
+        return @"icon_shuangseqiu.png";
+    }
+    if ([self.lottery isEqualToString:@"JCLQ"]) {
+        return @"icon_jinglan.png";
+    }
+    if ([self.lottery isEqualToString:@"SX115"]){
+        
+        return @"icon_shiyixuanwu.png";
+        
+    }
+    if ([self.lottery isEqualToString:@"SD115"]){
+        
+        return @"icon_sdx115.png";
+    }
+    if ([self.lottery isEqualToString:@"PL3"]){
+        
+        return @"icon_pai3.png";
+    }
+    if ([self.lottery isEqualToString:@"PL5"]){
+        
+        return @"icon_paiwu.png";
     }
     return @"";
 }
