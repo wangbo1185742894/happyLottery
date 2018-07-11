@@ -752,10 +752,12 @@
     NSDictionary *itemOddsDic = [Utility objFromJson:itemDic[@"odds"]];//让球数
     NSArray *oddsArray =itemOddsDic[@"itemsOdds"];
     
-    for (NSDictionary *itemDic in oddsArray) {
-        if ([itemDic[@"matchKey"] integerValue] == [matchKey integerValue]) {
-            NSString *handicap = [Utility objFromJson:itemDic[@"handicap"]];
-            return handicap;
+    for (NSDictionary *itemDics in oddsArray) {//篮球让分数修改  lyw 
+        if ([itemDics[@"playType"]isEqualToNumber:@2]||[itemDics[@"playType"]isEqualToNumber:@4]) {
+            if ([itemDics[@"matchKey"] integerValue] == [matchKey integerValue]) {
+                NSString *handicap = [Utility objFromJson:itemDics[@"handicap"]];
+                return handicap;
+            }
         }
     }
     return @"";
