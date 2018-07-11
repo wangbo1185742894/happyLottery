@@ -133,7 +133,7 @@
         btnReBuy.hidden = YES;
         
     }else{
-        if ([schemeDetail.lottery isEqualToString:@"SFC"] ||[schemeDetail.lottery isEqualToString:@"RJC"]){
+        if ([schemeDetail.lottery isEqualToString:@"JCGYJ"] ||[schemeDetail.lottery isEqualToString:@"JCGJ"]){
             btnPay.hidden = YES;
             btnReBuy.hidden = NO;
             heightZhifuView.constant = 60;
