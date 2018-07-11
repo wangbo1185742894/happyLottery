@@ -124,7 +124,6 @@
 //    if ([lottery.identifier isEqualToString:@"PL3"] ||[lottery.identifier isEqualToString:@"PL5"]) {
         CGRect titleFrame = self.bounds;
         titleFrame.origin.x = 15;
-    
     if ([Utility isIphone5s]) {
         titleFrame.size.width = 100;
     }else{
@@ -132,12 +131,12 @@
     }
         labelCurRoundInfoTitle = [[UILabel alloc] initWithFrame: titleFrame];
         labelCurRoundInfoTitle.backgroundColor = [UIColor clearColor];
-        labelCurRoundInfoTitle.font = [UIFont systemFontOfSize: 15];
+        labelCurRoundInfoTitle.font = [UIFont systemFontOfSize: 14];
         labelCurRoundInfoTitle.adjustsFontSizeToFitWidth = YES;
         labelCurRoundInfoTitle.textColor = SystemLightGray;
         // 奖期显示计时条修改 lyw
         if (lottery.currentRound) {
-            labelCurRoundInfoTitle.text = [NSString stringWithFormat: @"距离%@期 截止:", lottery.currentRound.issueNumber];
+            labelCurRoundInfoTitle.text = [NSString stringWithFormat: @"距离%@期 截止:  ", lottery.currentRound.issueNumber];
             float pointX;
             if ([Utility isIphone5s]) {
                 pointX = 65;
