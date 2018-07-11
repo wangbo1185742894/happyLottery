@@ -49,7 +49,6 @@
     
     labSchemeLottery.text = [self getLotteryByCode:model.lottery];
     imgLotteryIcon.image = [UIImage imageNamed:model.lotteryIcon];
-    
     if ([model.lottery isEqualToString:@"JCGJ"]||[model.lotteryIcon isEqualToString:@"JCGYJ"]||[model.lottery isEqualToString:@"DLT"]||[model.lottery isEqualToString:@"SSQ"]) {
         imagIconHeight.constant = 39;
         imageIconWidth.constant = 39;
