@@ -42,9 +42,33 @@
     self.playtype.text = playType;
     self.trDltOpenResult = string;
     NSArray *betRows = betDic[@"betRows"];
-     NSAttributedString *bet = [self getBetNumberStr:betRows type:playType betType:[betDic[@"betType"]integerValue]];
-    
-    self.labRedBall.attributedText = bet;
+    if ([playType isEqualToString:@"前一"]) {
+        NSAttributedString *bet = [self getBetNumberStr:betRows length:1 betType:NO idRandom:NO];
+        self.labRedBall.attributedText = bet;
+    }else if ([playType isEqualToString:@"前三直选"]) {
+        NSAttributedString *bet = [self getBetNumberStr:betRows length:3 betType:NO idRandom:NO];
+        self.labRedBall.attributedText = bet;
+    }else if([playType isEqualToString:@"前二直选"]){
+        NSAttributedString *bet = [self getBetNumberStr:betRows length:2 betType:NO idRandom:NO];
+        self.labRedBall.attributedText = bet;
+    }else if([playType isEqualToString:@"前三组选"]){
+        NSAttributedString *bet = [self getBetNumberStr:betRows length:1 betType:YES idRandom:NO];
+        self.labRedBall.attributedText = bet;
+    }else if([playType isEqualToString:@"前二组选"]){
+        NSAttributedString *bet = [self getBetNumberStr:betRows length:1 betType:YES idRandom:NO];
+        self.labRedBall.attributedText = bet;
+    }else if([playType isEqualToString:@"组三胆拖"]){
+        NSAttributedString *bet = [self getBetNumberStr:betRows length:2 betType:YES idRandom:YES];
+        self.labRedBall.attributedText = bet;
+    }else if([playType isEqualToString:@"组二胆拖"]){
+        NSAttributedString *bet = [self getBetNumberStr:betRows length:2 betType:YES idRandom:YES];
+        self.labRedBall.attributedText = bet;
+    }else{
+        NSAttributedString *bet = [self getBetNumberStr:betRows type:playType betType:[betDic[@"betType"]integerValue]];
+        
+        self.labRedBall.attributedText = bet;
+    }
+   
 }
 
 -(CGFloat)getCellHeightWith:(NSDictionary*)betDic{
@@ -61,17 +85,160 @@
     return  [self getTotalHeightredTitle:bet.string] + 60;
 }
 
+-(NSAttributedString*)getBetNumberStr:(NSArray *)betRows length:(NSInteger )lenght betType:(BOOL)isTown idRandom:(BOOL)isRandom{
+    
+    
+    NSMutableAttributedString *attTitle = [[NSMutableAttributedString alloc]init];
+    
+    NSArray *resultArray;
+    NSInteger rowNum;
+    if (self.trDltOpenResult != nil && ![self.trDltOpenResult isEqualToString:@""]) {
+        resultArray = [self.trDltOpenResult componentsSeparatedByString:@","];
+    }
+        for (int i = 0; i<lenght; i++) {
+            rowNum = i;
+            if (isRandom == NO) {
+                NSArray * danArray = betRows[i];
+                NSString *resDanItem = resultArray[i];
+                NSInteger numDan = 0;
+                for (NSString *itemDan in danArray) {
+                    UIColor *titleColor;
+                    if ([itemDan integerValue] == [resDanItem integerValue]) {
+                        titleColor = TextOrangeColor;
+
+                    }else{
+                        titleColor = TEXTGRAYCOLOR;
+                    }
+                    NSAttributedString * att = [[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@",itemDan] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:titleColor}];
+                    
+                    [attTitle appendAttributedString:att];
+                    numDan ++;
+                    if (numDan  < danArray.count) {
+                        NSAttributedString * comStr = [[NSAttributedString alloc]initWithString:@"," attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:TEXTGRAYCOLOR}];
+                        
+                        [attTitle appendAttributedString:comStr];
+                    }
+                    
+                }
+                if (rowNum < lenght - 1) {
+                    NSAttributedString * comStr = [[NSAttributedString alloc]initWithString:@"#" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:TEXTGRAYCOLOR}];
+                    
+                    [attTitle appendAttributedString:comStr];
+                }
+              
+            }else{
+                NSString *comStr ;
+                NSString *endStr ;
+                if (isTown && i == 0) {
+                    comStr  = @"[胆:";
+                    endStr = @"]\n";
+                    
+                }else{
+                    comStr =@"" ;
+                    endStr =@"" ;
+                }
+                NSArray * danArray = betRows[i];
+                if (resultArray == nil) {
+                        NSInteger numDan = 0;
+                        for (NSString *itemDan in danArray) {
+                            
+                            UIColor *titleColor = TEXTGRAYCOLOR;
+                            if (numDan == 0) {
+                                NSAttributedString * att = [[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@%@",comStr,itemDan] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:titleColor}];
+                                
+                                [attTitle appendAttributedString:att];
+                            }else{
+                                NSAttributedString * att = [[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@",itemDan] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:titleColor}];
+                                
+                                [attTitle appendAttributedString:att];
+                            }
+              
+                            
+                            if (numDan  < danArray.count - 1) {
+                                NSAttributedString * comStr = [[NSAttributedString alloc]initWithString:@"," attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:TEXTGRAYCOLOR}];
+                                
+                                [attTitle appendAttributedString:comStr];
+                            }
+                            if (numDan == danArray.count - 1) {
+                                NSAttributedString * comStr = [[NSAttributedString alloc]initWithString:endStr attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:TEXTGRAYCOLOR}];
+                                
+                                [attTitle appendAttributedString:comStr];
+                            }
+                            numDan ++;
+                        }
+                    
+                        if (rowNum < lenght - 1 && !isTown) {
+                            NSAttributedString * comStr = [[NSAttributedString alloc]initWithString:@"#" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:TEXTGRAYCOLOR}];
+                            
+                            [attTitle appendAttributedString:comStr];
+                        }
+                    
+                }else{
+                        for (NSString *itemDan in danArray) {
+                            NSInteger numDan = 0;
+                            UIColor *titleColor;
+                            BOOL isExit = NO;
+//                            for (NSString * resDanItem in resultArray) {
+                            NSString * resDanItem = resultArray[i];
+                                if ([itemDan integerValue] == [resDanItem integerValue]) {
+
+                                    isExit = YES;
+//                                    break;
+                    
+                                }
+//                            }
+                            if (isExit) {
+                                                                    titleColor = TextOrangeColor;
+                            }else{
+                                titleColor = TEXTGRAYCOLOR;
+                            }
+                            if (numDan == 0) {
+                                NSAttributedString * att = [[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@%@",comStr,itemDan] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:titleColor}];
+                                
+                                [attTitle appendAttributedString:att];
+                            }else{
+                                NSAttributedString * att = [[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@",itemDan] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:titleColor}];
+                                
+                                [attTitle appendAttributedString:att];
+                            }
+                            
+                            if (numDan  < danArray.count - 1) {
+                                NSAttributedString * comStr = [[NSAttributedString alloc]initWithString:@"," attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:TEXTGRAYCOLOR}];
+                                
+                                [attTitle appendAttributedString:comStr];
+                            }
+                            if (numDan == danArray.count - 1) {
+                                NSAttributedString * comStr = [[NSAttributedString alloc]initWithString:endStr attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:TEXTGRAYCOLOR}];
+                                
+                                [attTitle appendAttributedString:comStr];
+                            }
+                            numDan ++;
+                        
+                        if (rowNum < lenght - 1 && !isTown) {
+                            NSAttributedString * comStr = [[NSAttributedString alloc]initWithString:@"#" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:TEXTGRAYCOLOR}];
+                            
+                            [attTitle appendAttributedString:comStr];
+                        }
+                    }
+                }
+
+            }
+        }
+    return attTitle;
+    
+}
+
 -(NSAttributedString*)getBetNumberStr:(NSArray *)betRows type:(NSString *)type betType:(NSInteger)betType{
     
     
     NSMutableAttributedString *attTitle = [[NSMutableAttributedString alloc]init];
     
     NSArray *resultArray;
+    
     if (self.trDltOpenResult != nil && ![self.trDltOpenResult isEqualToString:@""]) {
         resultArray = [self.trDltOpenResult componentsSeparatedByString:@","];
     }
-    
-    
+
     NSInteger numDan = 0;
     if (betType  == 2) {
         for (int i = 0; i<betRows.count; i++) {
