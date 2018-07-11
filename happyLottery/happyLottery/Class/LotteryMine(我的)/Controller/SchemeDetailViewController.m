@@ -118,10 +118,15 @@
             NSArray *matchArray = [Utility objFromJson:matchDic[@"betMatches"]];
             for (int i  = 0; i < matchArray.count; i++) {
                 JcBetContent *betContent = [[JcBetContent alloc]init];
-                betContent.isLast = NO;
+            
+                
                 betContent.index = itemIndex;
                 if (i == 0) {
-                    
+                    if (matchArray.count == 1) {
+                        betContent.isLast = YES;
+                    }else{
+                        betContent.isLast = NO;
+                    }
                     betContent.isShow = YES;
                     betContent.multiple = matchDic[@"multiple"];
                     betContent.passTypes = matchDic[@"passTypes"];
@@ -130,6 +135,8 @@
                     betContent.isShow = NO;
                     if (i == matchArray.count - 1) {
                         betContent.isLast = YES;
+                    }else{
+                        betContent.isLast = NO;
                     }
                 }
                 betContent.virtualSp = schemeDetail.virtualSp;
@@ -369,9 +376,16 @@
                     }
                 }else{
                     if (matchList[indexPath.row].isShow) {
-                        NSArray *passType = [Utility objFromJson:matchList[indexPath.row].passTypes];
-                        ;
-                        return curY + 130 + ((passType.count / 7) + 1) * 15;
+                        if (matchList[indexPath.row].isLast) {
+                            NSArray *passType = [Utility objFromJson:matchList[indexPath.row].passTypes];
+                            ;
+                            return curY + 180 + ((passType.count / 7) + 1) * 15 - 30;
+                        }else{
+                            NSArray *passType = [Utility objFromJson:matchList[indexPath.row].passTypes];
+                            ;
+                            return curY + 130 + ((passType.count / 7) + 1) * 15;
+                        }
+                      
                     }else if(matchList[indexPath.row].isLast){
                         NSArray *passType = [Utility objFromJson:matchList[indexPath.row].passTypes];
                         ;

@@ -28,6 +28,7 @@
 // dlt  x115
 @property (nonatomic, strong) LotteryTransaction *transaction;
 //  竞彩
+@property(nonatomic,strong)LotteryPhaseInfoView *phaseInfoView;
 @property (nonatomic, strong) NSArray * matchBetArray;
 @property (nonatomic, readwrite) BOOL FLAG;//zwl
 @property (nonatomic , readwrite) int resourceflag;

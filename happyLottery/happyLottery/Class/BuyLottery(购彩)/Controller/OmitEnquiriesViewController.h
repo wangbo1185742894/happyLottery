@@ -8,8 +8,12 @@
 
 //11选5遗漏查询
 #import "BaseViewController.h"
+#import "LotteryPhaseInfoView.h"
+
+
 
 @interface OmitEnquiriesViewController : BaseViewController
+@property(nonatomic,strong)LotteryPhaseInfoView *touzhuphaseInfoView;
 @property (nonatomic, assign) id delegate;
 @property (nonatomic, copy) NSString * titleString;
 @property (nonatomic, assign) BOOL isQmit;

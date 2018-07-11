@@ -12,6 +12,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GYJSchemeDetailViewController">
             <connections>
                 <outlet property="bottomIPhoneX" destination="Ebf-4E-d2z" id="uh0-LW-EWK"/>
+                <outlet property="btnPay" destination="elk-D4-DdO" id="uZY-Jc-OKO"/>
+                <outlet property="btnReBuy" destination="3Pg-3A-JNl" id="wXL-tQ-rIt"/>
                 <outlet property="heightZhifuView" destination="sbn-pK-K9A" id="rlJ-l4-7uC"/>
                 <outlet property="imgSchemeTopView" destination="61u-sy-qC0" id="KcQ-Ml-Jgh"/>
                 <outlet property="mainViewHeight" destination="b66-5V-q7H" id="fLh-bo-mqk"/>
@@ -26,14 +28,38 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dMs-0c-A2S">
-                    <rect key="frame" x="0.0" y="667" width="375" height="0.0"/>
+                    <rect key="frame" x="0.0" y="607" width="375" height="60"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elk-D4-DdO">
+                            <rect key="frame" x="0.0" y="8" width="375" height="44"/>
+                            <state key="normal" title="立即支付" backgroundImage="schemedetailbutton.png"/>
+                            <connections>
+                                <action selector="actionGotoTouzhu:" destination="-1" eventType="touchUpInside" id="RO2-ev-okT"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Pg-3A-JNl">
+                            <rect key="frame" x="0.0" y="8" width="375" height="44"/>
+                            <state key="normal" title="继续投注" backgroundImage="schemedetailbutton.png"/>
+                            <connections>
+                                <action selector="actionReBuy:" destination="-1" eventType="touchUpInside" id="yEd-pB-xC6"/>
+                            </connections>
+                        </button>
+                    </subviews>
                     <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" id="sbn-pK-K9A"/>
+                        <constraint firstItem="3Pg-3A-JNl" firstAttribute="top" secondItem="dMs-0c-A2S" secondAttribute="top" constant="8" id="0gG-2Z-Xpy"/>
+                        <constraint firstAttribute="bottom" secondItem="3Pg-3A-JNl" secondAttribute="bottom" constant="8" id="6rt-Tq-hZ5"/>
+                        <constraint firstItem="3Pg-3A-JNl" firstAttribute="leading" secondItem="dMs-0c-A2S" secondAttribute="leading" id="XoU-SP-j9b"/>
+                        <constraint firstItem="elk-D4-DdO" firstAttribute="top" secondItem="dMs-0c-A2S" secondAttribute="top" constant="8" id="a5f-eN-l5J"/>
+                        <constraint firstAttribute="trailing" secondItem="3Pg-3A-JNl" secondAttribute="trailing" id="jXX-1a-Mku"/>
+                        <constraint firstAttribute="trailing" secondItem="elk-D4-DdO" secondAttribute="trailing" id="kej-GD-VQp"/>
+                        <constraint firstItem="elk-D4-DdO" firstAttribute="leading" secondItem="dMs-0c-A2S" secondAttribute="leading" id="p4a-Bg-uIZ"/>
+                        <constraint firstAttribute="height" constant="60" id="sbn-pK-K9A"/>
+                        <constraint firstAttribute="bottom" secondItem="elk-D4-DdO" secondAttribute="bottom" constant="8" id="yDK-q4-hHc"/>
                     </constraints>
                 </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l2R-z5-UWM">
-                    <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                    <rect key="frame" x="0.0" y="64" width="375" height="543"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1WK-Is-UVx">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="600"/>
@@ -45,13 +71,16 @@
                                     </constraints>
                                 </imageView>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ima-rv-PXo">
-                                    <rect key="frame" x="0.0" y="80" width="375" height="520"/>
+                                    <rect key="frame" x="0.0" y="80" width="375" height="453"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="453" id="fyf-Y5-sYy"/>
+                                    </constraints>
                                 </tableView>
                             </subviews>
                             <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstAttribute="bottom" secondItem="ima-rv-PXo" secondAttribute="bottom" id="Dch-Vu-lwI"/>
+                                <constraint firstAttribute="bottom" secondItem="ima-rv-PXo" secondAttribute="bottom" constant="67" id="Dch-Vu-lwI"/>
                                 <constraint firstItem="61u-sy-qC0" firstAttribute="top" secondItem="1WK-Is-UVx" secondAttribute="top" id="VcL-Dz-7vN"/>
                                 <constraint firstItem="61u-sy-qC0" firstAttribute="leading" secondItem="1WK-Is-UVx" secondAttribute="leading" id="Zy6-xq-dIw"/>
                                 <constraint firstAttribute="height" constant="600" id="b66-5V-q7H"/>
@@ -84,4 +113,7 @@
             <point key="canvasLocation" x="34.5" y="53.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="schemedetailbutton.png" width="357" height="44"/>
+    </resources>
 </document>

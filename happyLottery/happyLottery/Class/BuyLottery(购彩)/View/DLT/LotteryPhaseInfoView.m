@@ -33,6 +33,29 @@
     }
     return self;
 }
+
+- (void) drawWithLotteryNoButton: (Lottery *) lotteryTMP {
+    lottery = lotteryTMP;
+    if (lotteryMan == nil) {
+        lotteryMan = [[LotteryManager alloc] init];
+        lotteryMan.delegate = self;
+    }
+    self.backgroundColor = [UIColor whiteColor];
+    
+    //        UIImageView *blackImage = [[UIImageView alloc]initWithFrame:CGRectMake(-15,10,KscreenWidth - 140, 20)];
+    //        blackImage.backgroundColor = [UIColor blackColor];
+    //        blackImage.image = [UIImage imageNamed:@"timebackimage"];
+    //    [blackImage setBackgroundColor:[UIColor whiteColor]];
+    //    blackImage.layer.cornerRadius = blackImage.mj_h / 2;
+    //    blackImage.layer.masksToBounds = YES;
+    
+    // 在这里添加背景图片
+    //        [self addSubview:blackImage];
+    
+  
+    [self showCurRoundInfo];
+}
+
 - (void) drawWithLottery: (Lottery *) lotteryTMP {
     lottery = lotteryTMP;
     if (lotteryMan == nil) {
@@ -101,10 +124,15 @@
 //    if ([lottery.identifier isEqualToString:@"PL3"] ||[lottery.identifier isEqualToString:@"PL5"]) {
         CGRect titleFrame = self.bounds;
         titleFrame.origin.x = 15;
+    
+    if ([Utility isIphone5s]) {
         titleFrame.size.width = 100;
+    }else{
+        titleFrame.size.width = 120;
+    }
         labelCurRoundInfoTitle = [[UILabel alloc] initWithFrame: titleFrame];
         labelCurRoundInfoTitle.backgroundColor = [UIColor clearColor];
-        labelCurRoundInfoTitle.font = [UIFont systemFontOfSize: 14];
+        labelCurRoundInfoTitle.font = [UIFont systemFontOfSize: 15];
         labelCurRoundInfoTitle.adjustsFontSizeToFitWidth = YES;
         labelCurRoundInfoTitle.textColor = SystemLightGray;
         // 奖期显示计时条修改 lyw
@@ -118,7 +146,7 @@
             }
             
             if (!_timeCountdownView) {
-                _timeCountdownView = [[LotteryTimeCountdownView alloc] initWithFrame:CGRectMake(pointX, 10,KscreenWidth - 150,20)];
+                _timeCountdownView = [[LotteryTimeCountdownView alloc] initWithFrame:CGRectMake(pointX, 12,KscreenWidth - 150,20)];
             }
             
             _timeCountdownView.timeCutType = TimeCutTypePlayPage;

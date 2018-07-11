@@ -60,6 +60,7 @@
     NSMutableArray *limitArray;
     LotteryXHView *lotteryXHView;
     LotteryPhaseInfoView *phaseInfoView;
+    LotteryPhaseInfoView *touzhuphaseInfoView;
     LotteryBet *lotteryBet;
     
     IBOutlet LotteryBetsPopView *lotteryBetsPopView_;
@@ -263,6 +264,9 @@
     if (phaseInfoView) {
         [phaseInfoView showCurRoundInfo];
     }
+    if (touzhuphaseInfoView) {
+        [touzhuphaseInfoView showCurRoundInfo];
+    }
     
 }
 #pragma mark  玩法介绍
@@ -300,6 +304,7 @@
         
         TouZhuViewController *touzhuVC = [[TouZhuViewController alloc] initWithNibName: @"TouZhuViewController" bundle: nil];
         touzhuVC.lottery = self.lottery;
+        touzhuVC.phaseInfoView = touzhuphaseInfoView;
         if (!self.lottery.currentRound) {
             [self getCurrentRound];
         }
@@ -447,8 +452,12 @@
         phaseInfoView.delegate = self;
         [viewContent_ addSubview: phaseInfoView];
     }
+    [phaseInfoView drawWithLottery: self.lottery];
+    if(touzhuphaseInfoView == nil){
+        touzhuphaseInfoView = [[LotteryPhaseInfoView alloc] initWithFrame: CGRectMake(0,NaviHeight, KscreenWidth, 44)];
+    }
+    [touzhuphaseInfoView drawWithLotteryNoButton:self.lottery];
     
-        [phaseInfoView drawWithLottery: self.lottery];
     
         
 //        if (!_lottery.currentRound) {
@@ -714,6 +723,7 @@
     TouZhuViewController *touzhuVC = [[TouZhuViewController alloc] initWithNibName: @"TouZhuViewController" bundle: nil];
     touzhuVC.lottery = self.lottery;
     
+    touzhuVC.phaseInfoView = touzhuphaseInfoView;
     
     touzhuVC.transaction = _lotteryTransaction;
     touzhuVC.timerForcurRound = timerForcurRound;
@@ -1023,6 +1033,7 @@
     }
     OmitEnquiriesViewController * omitVC = [[OmitEnquiriesViewController alloc]init];
     omitVC.sd115MissUrl = sd115MissUrl;
+    omitVC.touzhuphaseInfoView = touzhuphaseInfoView;
     omitVC.delegate = self;
     omitVC.lottery = self.lottery;
     omitVC.lotteryTransaction = self.lotteryTransaction;
@@ -1122,6 +1133,9 @@
         if (phaseInfoView) {
             [phaseInfoView showCurRoundInfo];
         }
+        if (touzhuphaseInfoView) {
+            [touzhuphaseInfoView showCurRoundInfo];
+        }
         
     }else{
         NSLog(@"未得到奖期。");
@@ -1179,6 +1193,7 @@
 }
 - (void)dealloc{
     [phaseInfoView.timeCountdownView.updataTimer invalidate];
+    [touzhuphaseInfoView.timeCountdownView.updataTimer invalidate];
     NSLog(@"sile");
 }
 @end

@@ -29,6 +29,7 @@
 
 - (void) drawWithLottery: (Lottery *) lottery;
 - (void) drawWithLotterypl: (Lottery *) lotteryTMP;
+- (void) drawWithLotteryNoButton: (Lottery *) lotteryTMP;
 - (NSString *)timeSting;
 - (void) showCurRoundInfo;
 

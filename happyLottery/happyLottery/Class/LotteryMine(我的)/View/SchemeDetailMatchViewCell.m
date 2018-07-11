@@ -34,8 +34,8 @@
     __weak IBOutlet NSLayoutConstraint *disTopR;
 }
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightBottom;
+@property (weak, nonatomic) IBOutlet UILabel *labBottomInfo;
 
-@property (weak, nonatomic) IBOutlet UILabel *labBottom;
 @property(nonatomic,assign)NSInteger num;
 @end
 
@@ -61,6 +61,21 @@
     }
     
     if (modelDic.isShow) {
+        if (modelDic.isLast == YES) {
+            self.labBottomInfo.hidden = NO;
+            self.heightBottom.constant = 30;
+            disBottomL.constant = 37;
+            disBottomR.constant = 37;
+            labBottom.hidden = NO;
+           
+        }else{
+            self.labBottomInfo.hidden = YES;
+            self.heightBottom.constant = 0;
+            disBottomL.constant = 0;
+            disBottomR.constant = 0;
+            labBottom.hidden = YES;
+           
+        }
         topInfoView.hidden = NO;
         [btnNumIndex setTitle:[NSString stringWithFormat:@"%ld",modelDic.index] forState:0];
         NSArray *passType = [Utility objFromJson:modelDic.passTypes];
@@ -71,11 +86,7 @@
         disTopL.constant = 8;
         disTopR.constant = 8;
         
-        disBottomL.constant = 0;
-        disBottomR.constant = 0;
-        labBottom.hidden = YES;
-        self.labBottom.hidden = YES;
-        self.heightBottom.constant = 0;
+     
     }else{
         topInfoView.hidden = YES;
         topInfoViewHeight.constant = 0;
@@ -84,13 +95,13 @@
             disTopL.constant = 0;
             disTopR.constant = 0;
             
-            disBottomL.constant = 35;
-            disBottomR.constant = 35;
-            self.labBottom.hidden = NO;
+            disBottomL.constant = 37;
+            disBottomR.constant = 37;
+            self.labBottomInfo.hidden = NO;
             self.heightBottom.constant = 30;
             labBottom.hidden = NO;
         }else{
-            self.labBottom.hidden = YES;
+            self.labBottomInfo.hidden = YES;
             self.heightBottom.constant = 0;
        
             disTopL.constant = 0;
@@ -640,7 +651,7 @@
 }
 
 -(void)refreshDataJCLQ:(JlBetContent  *)modelDic andResult:(NSArray<JCLQOpenResult *> *)resultArray{
-    self.labBottom.hidden = YES;
+    self.labBottomInfo.hidden = YES;
     for (UIView *subView in viewBetContent.subviews) {
         [subView removeFromSuperview];
         
@@ -654,13 +665,21 @@
         labBeiCount.text = [NSString stringWithFormat:@"%@倍",modelDic.multiple];
         labPassType.text = [self getChuanFa:modelDic.passTypes];
         
-        disTopL.constant = 8;
-        disTopR.constant = 8;
-        
-        disBottomL.constant = 0;
-        disBottomR.constant = 0;
-        labBottom.hidden = YES;
-        
+        if (modelDic.isLast) {
+            disTopL.constant = 8;
+            disTopR.constant = 8;
+            
+            disBottomL.constant = 37;
+            disBottomR.constant = 37;
+            labBottom.hidden = NO;
+        }else{
+            disTopL.constant = 8;
+            disTopR.constant = 8;
+            
+            disBottomL.constant = 0;
+            disBottomR.constant = 0;
+            labBottom.hidden = YES;
+        }
     }else{
         topInfoView.hidden = YES;
         topInfoViewHeight.constant = 0;
@@ -669,8 +688,8 @@
             disTopL.constant = 0;
             disTopR.constant = 0;
             
-            disBottomL.constant = 7;
-            disBottomR.constant = 7;
+            disBottomL.constant = 37;
+            disBottomR.constant = 37;
             labBottom.hidden = NO;
         }else{
             disTopL.constant = 0;

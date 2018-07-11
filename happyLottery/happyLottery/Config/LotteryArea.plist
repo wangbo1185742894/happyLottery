@@ -88,6 +88,18 @@
 	</dict>
 	<dict>
 		<key>lotteryImageName</key>
+		<string>shengfucaishouye.png</string>
+		<key>enable</key>
+		<true/>
+		<key>lottery</key>
+		<string>SFC</string>
+		<key>lotteryName</key>
+		<string>胜负彩</string>
+		<key>lotteryInfo</key>
+		<string>猜14场比赛赢大奖</string>
+	</dict>
+	<dict>
+		<key>lotteryImageName</key>
 		<string>pai3.png</string>
 		<key>enable</key>
 		<true/>
@@ -121,18 +133,6 @@
 		<string>福彩3D</string>
 		<key>lotteryInfo</key>
 		<string>暂停销售</string>
-	</dict>
-	<dict>
-		<key>lotteryImageName</key>
-		<string>shengfucaishouye.png</string>
-		<key>enable</key>
-		<true/>
-		<key>lottery</key>
-		<string>SFC</string>
-		<key>lotteryName</key>
-		<string>胜负彩</string>
-		<key>lotteryInfo</key>
-		<string>猜14场比赛赢大奖</string>
 	</dict>
 </array>
 </plist>

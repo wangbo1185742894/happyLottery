@@ -7,6 +7,7 @@
 //
 
 #import "TouZhuViewController.h"
+
 #import "LotteryXHSection.h"
 #import "PayOrderViewController.h"
 #import "SchemeCashPayment.h"
@@ -25,7 +26,7 @@
 #import "SelectView.h"
 #import "SetPayPWDViewController.h"
 #import "X115LimitNumPopView.h"
-@interface TouZhuViewController ()<UITextFieldDelegate,UIAlertViewDelegate,MemberManagerDelegate,SelectViewDelegate,WBInputPopViewDelegate,X115LimitNumPopViewDelegate,UITableViewDelegate,UITableViewDataSource> {
+@interface TouZhuViewController ()<UITextFieldDelegate,UIAlertViewDelegate,MemberManagerDelegate,SelectViewDelegate,WBInputPopViewDelegate,X115LimitNumPopViewDelegate,UITableViewDelegate,UITableViewDataSource,LotteryPhaseInfoViewDelegate> {
     
     __weak IBOutlet UIView *betOptionFunView;
     __weak IBOutlet UIImageView *tableViewBGIV_;
@@ -146,11 +147,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.view addSubview:self.phaseInfoView];
     if([self isIphoneX]){
-        topDis.constant = 118-64 + 88;
+        topDis.constant = 118-64 + 88 + 44;
         _bottomDis.constant = 38;
     }else{
-        topDis.constant = 118;
+        topDis.constant = 118 + 44;
         _bottomDis.constant = 0;
     }
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -217,10 +219,10 @@
         CGRect frame1;
         CGRect frame2;
     self.btnHemai.hidden = YES;
-    frame1= CGRectMake(40, NaviHeight + 20, (KscreenWidth-120)/2.0, 30);
-    frame2= CGRectMake(40+ (KscreenWidth-120)/2.0+40, NaviHeight + 20,  (KscreenWidth-120)/2.0, 30);
+    frame1= CGRectMake(40, NaviHeight + 20 + 44, (KscreenWidth-120)/2.0, 30);
+    frame2= CGRectMake(40+ (KscreenWidth-120)/2.0+40, NaviHeight + 20 + 44,  (KscreenWidth-120)/2.0, 30);
 
-        CGRect frame3= CGRectMake(60+(KscreenWidth-80)*2/3.0, NaviHeight + 20, (KscreenWidth-80)/3.0, 30);
+        CGRect frame3= CGRectMake(60+(KscreenWidth-80)*2/3.0, NaviHeight + 20 + 44, (KscreenWidth-80)/3.0, 30);
         frame4 = CGRectMake(8,49, 85, 35);
         CGRect frame5 = CGRectMake(KscreenWidth-110, 45, 20, 20);
         
