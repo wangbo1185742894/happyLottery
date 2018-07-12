@@ -102,7 +102,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VmZ-5A-JHw">
-                        <rect key="frame" x="317" y="78" width="33" height="16"/>
+                        <rect key="frame" x="317" y="107.5" width="33" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.99607843139999996" green="0.2274509804" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -151,7 +151,7 @@
                     <constraint firstItem="nS2-2c-EDG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="hQx-lE-fzq"/>
                     <constraint firstItem="kzI-00-GYc" firstAttribute="top" secondItem="3zB-mZ-8EO" secondAttribute="bottom" constant="25" id="iJ2-Ny-45v"/>
                     <constraint firstAttribute="bottom" secondItem="kzI-00-GYc" secondAttribute="bottom" id="jRq-8s-xfZ"/>
-                    <constraint firstItem="VmZ-5A-JHw" firstAttribute="top" secondItem="Sd5-z2-FaV" secondAttribute="bottom" constant="0.5" id="kVp-Ic-bDO"/>
+                    <constraint firstItem="VmZ-5A-JHw" firstAttribute="top" secondItem="Sd5-z2-FaV" secondAttribute="bottom" constant="30" id="kVp-Ic-bDO"/>
                     <constraint firstAttribute="trailing" secondItem="kzI-00-GYc" secondAttribute="trailing" id="m1b-M0-tjc"/>
                     <constraint firstItem="kzI-00-GYc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="nsD-6e-wUL"/>
                     <constraint firstItem="kzI-00-GYc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="pus-Y8-2jb"/>

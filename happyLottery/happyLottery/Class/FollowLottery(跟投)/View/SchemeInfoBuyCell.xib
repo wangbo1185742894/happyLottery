@@ -99,7 +99,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bWH-Ax-u2l">
-                        <rect key="frame" x="314.5" y="79" width="35.5" height="17"/>
+                        <rect key="frame" x="314.5" y="108" width="35.5" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.99607843139999996" green="0.2274509804" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -184,7 +184,7 @@
                     <constraint firstItem="4gx-uW-Oml" firstAttribute="leading" secondItem="ySy-e2-Uzq" secondAttribute="leading" constant="10" id="Voq-5d-h3A"/>
                     <constraint firstItem="l3v-jZ-Vf7" firstAttribute="centerY" secondItem="4gx-uW-Oml" secondAttribute="centerY" id="WHk-ix-7Ce"/>
                     <constraint firstAttribute="bottom" secondItem="iRt-sN-hrh" secondAttribute="bottom" id="Xxl-yR-Ode"/>
-                    <constraint firstItem="bWH-Ax-u2l" firstAttribute="top" secondItem="LeJ-zY-JJm" secondAttribute="bottom" constant="1" id="aVU-vm-Rrc"/>
+                    <constraint firstItem="bWH-Ax-u2l" firstAttribute="top" secondItem="LeJ-zY-JJm" secondAttribute="bottom" constant="30" id="aVU-vm-Rrc"/>
                     <constraint firstItem="GKI-KN-c5E" firstAttribute="centerX" secondItem="hqd-Op-NDd" secondAttribute="centerX" id="bnn-Qe-Dac"/>
                     <constraint firstItem="qnt-fL-mTO" firstAttribute="top" secondItem="l3v-jZ-Vf7" secondAttribute="bottom" constant="15" id="eCp-YX-ugf"/>
                     <constraint firstItem="hbe-fn-PQb" firstAttribute="top" secondItem="srm-Ut-VEF" secondAttribute="bottom" constant="26" id="em8-hS-4Pg"/>

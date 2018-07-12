@@ -473,7 +473,7 @@
     }
     if ([self.lotteryCode isEqualToString:@"SD115"]){
         
-        return @"icon_sdx115.png";
+        return @"sdx115.png";
     }
     if ([self.lotteryCode isEqualToString:@"PL3"]){
         
