@@ -745,7 +745,6 @@
     
 }
 
-
 -(NSString *)getHandWithmatchKeyZQ:(NSString *)matchKey{
     if (itemDic[@"odds"] == nil) {
         return @"";
@@ -753,9 +752,14 @@
     NSDictionary *itemOddsDic = [Utility objFromJson:itemDic[@"odds"]];//让球数
     NSArray *oddsArray =itemOddsDic[@"itemsOdds"];
     for (NSDictionary *itemDics in oddsArray) {
-        if ([itemDics[@"matchKey"] integerValue] == [matchKey integerValue]) {
-            NSString *handicap = [Utility objFromJson:itemDics[@"handicap"]];
-            return handicap;
+        if ([itemDics[@"playType"]isEqualToNumber:@5]){
+            if ([itemDics[@"matchKey"] integerValue] == [matchKey integerValue]) {
+                NSString *handicap =[Utility objFromJson:itemDics[@"handicap"]];
+                if (itemDics[@"handicap"] != nil &&[itemDics[@"handicap"]compare:@0]== NSOrderedDescending) {
+                    handicap = [NSString stringWithFormat:@"+%@",handicap];
+                }
+                return handicap;
+            }
         }
     }
     return @"";
@@ -770,8 +774,16 @@
     for (NSDictionary *itemDics in oddsArray) {//篮球让分数修改  lyw
         if ([itemDics[@"playType"]isEqualToNumber:@2]||[itemDics[@"playType"]isEqualToNumber:@4]) {
             if ([itemDics[@"matchKey"] integerValue] == [matchKey integerValue]) {
-                NSString *handicap = [Utility objFromJson:itemDics[@"handicap"]];
-                return handicap;
+                if ([itemDics[@"playType"]isEqualToNumber:@2]) {
+                    NSString *handicap = [Utility objFromJson:itemDics[@"handicap"]];
+                    if (itemDics[@"handicap"]!=nil &&[itemDics[@"handicap"]compare:@0]== NSOrderedDescending) {
+                        handicap = [NSString stringWithFormat:@"+%@",handicap];
+                    }
+                    return handicap;
+                } else {
+                    NSString *handicap = [Utility objFromJson:itemDics[@"handicap"]];
+                    return handicap;
+                }
             }
         }
     }
