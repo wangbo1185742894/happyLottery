@@ -484,7 +484,7 @@
         
         NSString*type = [self getContentJCLQ:contentArray andOption:op];
         NSString *odd = [self getOddWithOption:op matchKey:matchKey];
-        NSString *handicap = [self getHandWithmatchKey:matchKey];
+        NSString *handicap = [self getHandWithmatchKeyLQ:matchKey];
         NSString *cont;
         if (odd.length == 0 || odd == nil) {
             if (handicap.length == 0 ||handicap == nil){
@@ -619,7 +619,7 @@
     for (NSString *op in option) {
         NSString*type = [self getContent:contentArray andOption:op];
         NSString *odd = [NSString stringWithFormat:@"%@",[self getOddWithOption:op matchKey:matchKey]];
-        NSString *handicap = [self getHandWithmatchKey:matchKey];
+        NSString *handicap = [self getHandWithmatchKeyZQ:matchKey];
         NSString *cont;
         if (odd.length == 0 || odd == nil) {
             if (handicap.length == 0 ||handicap == nil){
@@ -745,17 +745,34 @@
     
 }
 
--(NSString *)getHandWithmatchKey:(NSString *)matchKey{
+
+-(NSString *)getHandWithmatchKeyZQ:(NSString *)matchKey{
     if (itemDic[@"odds"] == nil) {
         return @"";
     }
     NSDictionary *itemOddsDic = [Utility objFromJson:itemDic[@"odds"]];//让球数
     NSArray *oddsArray =itemOddsDic[@"itemsOdds"];
-    
-    for (NSDictionary *itemDic in oddsArray) {
-        if ([itemDic[@"matchKey"] integerValue] == [matchKey integerValue]) {
-            NSString *handicap = [Utility objFromJson:itemDic[@"handicap"]];
+    for (NSDictionary *itemDics in oddsArray) {
+        if ([itemDics[@"matchKey"] integerValue] == [matchKey integerValue]) {
+            NSString *handicap = [Utility objFromJson:itemDics[@"handicap"]];
             return handicap;
+        }
+    }
+    return @"";
+}
+
+-(NSString *)getHandWithmatchKeyLQ:(NSString *)matchKey{
+    if (itemDic[@"odds"] == nil) {
+        return @"";
+    }
+    NSDictionary *itemOddsDic = [Utility objFromJson:itemDic[@"odds"]];//让球数
+    NSArray *oddsArray =itemOddsDic[@"itemsOdds"];
+    for (NSDictionary *itemDics in oddsArray) {//篮球让分数修改  lyw
+        if ([itemDics[@"playType"]isEqualToNumber:@2]||[itemDics[@"playType"]isEqualToNumber:@4]) {
+            if ([itemDics[@"matchKey"] integerValue] == [matchKey integerValue]) {
+                NSString *handicap = [Utility objFromJson:itemDics[@"handicap"]];
+                return handicap;
+            }
         }
     }
     return @"";
