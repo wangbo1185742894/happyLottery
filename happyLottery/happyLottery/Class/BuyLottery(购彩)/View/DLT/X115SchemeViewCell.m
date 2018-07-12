@@ -52,16 +52,16 @@
         NSAttributedString *bet = [self getBetNumberStr:betRows length:2 betType:NO idRandom:NO];
         self.labRedBall.attributedText = bet;
     }else if([playType isEqualToString:@"前三组选"]){
-        NSAttributedString *bet = [self getBetNumberStr:betRows length:1 betType:YES idRandom:NO];
+        NSAttributedString *bet = [self getBetNumberStr:betRows length:3 betType:NO];
         self.labRedBall.attributedText = bet;
     }else if([playType isEqualToString:@"前二组选"]){
-        NSAttributedString *bet = [self getBetNumberStr:betRows length:1 betType:YES idRandom:NO];
+        NSAttributedString *bet = [self getBetNumberStr:betRows length:2 betType:NO];
         self.labRedBall.attributedText = bet;
     }else if([playType isEqualToString:@"组三胆拖"]){
-        NSAttributedString *bet = [self getBetNumberStr:betRows length:2 betType:YES idRandom:YES];
+        NSAttributedString *bet = [self getBetNumberStr:betRows length:3 betType:YES];
         self.labRedBall.attributedText = bet;
     }else if([playType isEqualToString:@"组二胆拖"]){
-        NSAttributedString *bet = [self getBetNumberStr:betRows length:2 betType:YES idRandom:YES];
+        NSAttributedString *bet = [self getBetNumberStr:betRows length:2 betType:YES];
         self.labRedBall.attributedText = bet;
     }else{
         NSAttributedString *bet = [self getBetNumberStr:betRows type:playType betType:[betDic[@"betType"]integerValue]];
@@ -85,6 +85,65 @@
     return  [self getTotalHeightredTitle:bet.string] + 60;
 }
 
+-(NSAttributedString*)getBetNumberStr:(NSArray *)betRows length:(NSInteger )lenght betType:(BOOL)isTown{
+    
+    
+    NSMutableAttributedString *attTitle = [[NSMutableAttributedString alloc]init];
+    
+    NSArray *resultArray;
+    NSInteger rowNum;
+    if (self.trDltOpenResult != nil && ![self.trDltOpenResult isEqualToString:@""]) {
+        resultArray = [self.trDltOpenResult componentsSeparatedByString:@","];
+    }
+    
+    for (int i = 0; i < betRows.count;  i++) {
+        NSString *comStr ;
+        NSString *endStr ;
+        if (isTown && i == 0) {
+            comStr  = @"[胆:";
+            endStr = @"]\n";
+            
+        }else{
+            comStr =@"" ;
+            endStr =@"" ;
+        }
+        NSArray * danArray = betRows[i];
+        
+        if (i == 0) {
+            NSAttributedString * att = [[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@",comStr] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:TEXTGRAYCOLOR}];
+            [attTitle appendAttributedString:att];
+        }
+        
+        NSInteger num = 0;
+        for (NSString *itemNum in danArray) {
+            UIColor *titleColor = TEXTGRAYCOLOR;
+            for (int j = 0 ; j <lenght ; j++) {
+                if (resultArray.count == 0) {
+                    break;
+                }
+                NSString *itemResult = resultArray[j];
+                if ([itemResult integerValue] == [itemNum integerValue]) {
+                    titleColor = SystemRed;
+                    break;
+                }
+            }
+            
+            NSAttributedString * att = [[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@,",itemNum] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:titleColor}];
+            
+            [attTitle appendAttributedString:att];
+            
+            if (num == danArray.count - 1) {
+                NSAttributedString * comStr = [[NSAttributedString alloc]initWithString:endStr attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:TEXTGRAYCOLOR}];
+                
+                [attTitle appendAttributedString:comStr];
+            }
+            num ++;
+        }
+    }
+    return attTitle;
+    
+}
+
 -(NSAttributedString*)getBetNumberStr:(NSArray *)betRows length:(NSInteger )lenght betType:(BOOL)isTown idRandom:(BOOL)isRandom{
     
     
@@ -99,8 +158,15 @@
             rowNum = i;
             if (isRandom == NO) {
                 NSArray * danArray = betRows[i];
-                NSString *resDanItem = resultArray[i];
                 NSInteger numDan = 0;
+                
+                NSString *resDanItem;
+                if (resultArray.count != 0) {
+                    resDanItem = resultArray[i];
+                }else{
+                     resDanItem =  @"";
+                }
+                
                 for (NSString *itemDan in danArray) {
                     UIColor *titleColor;
                     if ([itemDan integerValue] == [resDanItem integerValue]) {
