@@ -116,6 +116,7 @@
 }
 @property (nonatomic , assign) BOOL hasLiked;
 @property (weak, nonatomic) IBOutlet UIButton *btnHemai;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *qCountItembtn;
 
 //timer
 @property (nonatomic , strong) NSTimer *timer;
@@ -2018,91 +2019,22 @@
     [self updateSummary];
     [tableViewContent_ reloadData];
 }
-/*Dlt追期变化*/
--(void) JiangqiUpBtnClick
-{
-    if (_lottery.currentRound == nil) {
-        [self showPromptText:@"当前时间没有奖期,请稍后更改追期" hideAfterDelay:1.7];
-        return;
-    }
-    NSString * curRoundnum = [_lottery.currentRound valueForKey:@"issueNumber"];
-    NSInteger length = [curRoundnum length];
-    NSString *strcut = [curRoundnum substringFromIndex:length-2];
-    int intString = [strcut intValue];
-    if(_issue > MAXQI11X5 - intString)
-    {
-        return;
-    }
-    _issue +=1;
-    if(_issue > 1)
-    {
-        WinStop.hidden = NO;
-        WinStoplabel.hidden = NO;
-        betOptionfunViewHeight.constant = 140;
-        
-        lineBottom.constant = betOptionfunViewHeight.constant;
-        
-        tableviewBottom.constant = betOptionfunViewHeight.constant;
-        tableViewContentBottom .constant = 0;
-        
-        
-        frame4.origin.y = 79;
-        
-        zhuihaoBtn.frame = frame4;
-        totalframe.origin.y = 78;
-        beiqiframe.origin.y = 96;
-        splitLineframe.origin.y = 71;
-        splitLine.frame = splitLineframe;
-    }
-    NSString *str = [NSString stringWithFormat:@"%d",(unsigned int)_issue];
-    tfQiText.text = str;
-    self.transaction.qiShuCount = [str intValue];
-    [self updateSummary];
-}
-/*Dlt追期变化*/
--(void) JiangqidownBtnClick
-{
-    
-    if (_lottery.currentRound == nil) {
-        [self showPromptText:@"当前时间没有奖期,请稍后更改追期" hideAfterDelay:1.7];
-        return;
-    }
-    if((unsigned int)_issue == 1)
-    {
-        return;
-    }
-    _issue -=1;
-    if(_issue < 2)
-    {
-        WinStop.hidden = YES;
-      
-            WinStoplabel.hidden = YES;
-            betOptionfunViewHeight.constant = 140;
-            lineBottom.constant = betOptionfunViewHeight.constant;
-            
-            tableviewBottom.constant = betOptionfunViewHeight.constant;
-            tableViewContentBottom .constant = 0;
-            
-            frame4.origin.y = 49;
-            
-            zhuihaoBtn.frame = frame4;
-            totalframe.origin.y = 48;
-            beiqiframe.origin.y = 66;
-            splitLineframe.origin.y = 41;
-            splitLine.frame = splitLineframe;
-    }
-    NSString *str = [NSString stringWithFormat:@"%d",(unsigned int)_issue];
-    tfQiText.text = str;
-    self.transaction.qiShuCount = [str intValue];
-    [self updateSummary];
-}
-
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
     return YES;
 }
+
+- (IBAction)actionSelectQiCount:(UIButton *)sender {
+    for (UIButton *item in _qCountItembtn) {
+        item.selected = NO;
+    }
+    sender.selected = YES;
+    tfQiText.text = [NSString stringWithFormat:@"%ld",sender.tag];
+    [self updateSummary];
+}
+
 //点击屏幕空白处去掉键盘
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -2141,6 +2073,9 @@
         }
     } else {
         //获得剩余奖期
+        for (UIButton *item in _qCountItembtn) {
+            item.selected = NO;
+        }
         NSString * curRoundnum = [_lottery.currentRound valueForKey:@"issueNumber"];
         NSInteger length = [curRoundnum length];
         NSString *strcut = [curRoundnum substringFromIndex:length-2];
