@@ -29,17 +29,13 @@
 @interface TouZhuViewController ()<UITextFieldDelegate,UIAlertViewDelegate,MemberManagerDelegate,SelectViewDelegate,WBInputPopViewDelegate,X115LimitNumPopViewDelegate,UITableViewDelegate,UITableViewDataSource,LotteryPhaseInfoViewDelegate> {
     
     __weak IBOutlet UIView *betOptionFunView;
-    __weak IBOutlet UIImageView *tableViewBGIV_;
+
     __weak IBOutlet UITableView *tableViewContent_;
     
     __weak IBOutlet UIButton *buttonZhuiJia_;
     
     __weak IBOutlet UILabel *labelSummary_;
-    __weak IBOutlet UIActivityIndicatorView *spinnerLoading_;
     __weak IBOutlet NSLayoutConstraint *tableViewHeight_;
-    __weak IBOutlet UIPickerView *pickerBeiTou_;
-    __weak IBOutlet UIView *viewPickerContainer_;
-    __weak IBOutlet UIView *viewBeiTou_;
     
     __weak IBOutlet UITextField *tfBeiText;
     
@@ -48,12 +44,9 @@
     __weak IBOutlet NSLayoutConstraint *topDis;
     //确认投注
     __weak IBOutlet NSLayoutConstraint *tableViewContentBottom;
-    __weak IBOutlet UIButton *buttonK;
     
     __weak IBOutlet NSLayoutConstraint *betOptionfunViewHeight;
     
-    __weak IBOutlet NSLayoutConstraint *lineBottom;
-    __weak IBOutlet NSLayoutConstraint *tableviewBottom;
     UIButton *goOnPlayButton;
     UIButton *addRandonBetButton;
     UIButton *clearAllBetButton;
@@ -148,17 +141,11 @@
     self.lotteryMan.delegate = self;
     self.memberMan.delegate = self;
     self.bottomDis.constant = BOTTOM_BAR_HEIGHT;
-//    labelSummary_.hidden = YES;
-//    mostBoundsLb.hidden = YES;
-    lineBottom.constant = 90;
-    buttonK.tag = 33;
     //11.07
     self.yuYueBtn.layer.masksToBounds = YES;
     self.yuYueBtn.layer.cornerRadius = 4;
     tfBeiText.delegate = self;
     tfQiText.delegate = self;
-    
-    labelSummary_.adjustsFontSizeToFitWidth  = YES;
     /*zwl*/
     _FLAG = NO;
     isZhuiHao = NO;
@@ -167,40 +154,25 @@
     appendstrqi = @"";
     appendstrbei = @"";
     subscristr = @"";
-//    mostBoundsLb.adjustsFontSizeToFitWidth = YES;
     for (NSLayoutConstraint *sepHeight in sepHeightArr) {
         sepHeight.constant = SEPHEIGHT;
     }
-    //    betOptionFunView.backgroundColor = RGBCOLOR(249, 249, 249);
     AppDelegate *myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     myDelegate.curNavVC = self.navigationController;
-//    self.title = [NSString stringWithFormat: @"%@投注", self.lottery.name];
     self.title = @"确认预约";
     //     Do any additional setup after loading the view from its nib.
-    //    self.view.backgroundColor = RGBCOLOR(245, 245, 245);
     tableViewContent_.allowsSelection = NO;
     tableViewContent_.delegate  =self;
     tableViewContent_.dataSource = self;
     tableViewContent_.layer.borderWidth = SEPHEIGHT;
     tableViewContent_.layer.borderColor = SEPCOLOR.CGColor;
     [tableViewContent_ setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    tableViewBGIV_.image = [[UIImage imageNamed: @"shoppingCartBG.png"] stretchableImageWithLeftCapWidth: 30 topCapHeight: 14];
-    //    for (UIButton *button in buttons_) {
-    //        button.layer.cornerRadius = 3;
-    //    }
-    //    viewPickerContainer_.layer.cornerRadius = 4;
-    [spinnerLoading_ startAnimating];
     betsList = [self.transaction allBets];
     viewContentResetHeight = tableViewContent_.frame.size.height;
-    ivBGResetHeight = tableViewBGIV_.frame.size.height;
     
     tableViewContent_.hidden = YES;
     
-    pickerBeiTou_.delegate = self;
-    pickerBeiTou_.dataSource = self;
 
-    viewBeiTou_.hidden = YES;
-    viewBeiTou_.alpha = 0;
     if (self.transaction.needZhuiJia) {
         buttonZhuiJia_.selected = YES;
         
@@ -217,8 +189,6 @@
         CGRect frame5 = CGRectMake(KscreenWidth-110, 45, 20, 20);
         
         goOnPlayButton = [[UIButton alloc]initWithFrame:frame1];
-        //        goOnPlayButton.layer.cornerRadius = 3;
-        //        goOnPlayButton.layer.masksToBounds = YES;
         [goOnPlayButton setBackgroundImage:[UIImage imageNamed:@"machine-selection.png"] forState:UIControlStateNormal];
         
         [goOnPlayButton setBackgroundImage:[UIImage imageNamed:@"machine-selection.png"] forState:UIControlStateHighlighted];
@@ -256,9 +226,7 @@
         
         WinStoplabel.hidden = YES;
         betOptionfunViewHeight.constant = 140;
-        
-        lineBottom.constant = betOptionfunViewHeight.constant;
-        tableviewBottom.constant = betOptionfunViewHeight.constant;
+
         tableViewContentBottom .constant = 0;
     
         [self loadzhuiqi];
@@ -270,8 +238,6 @@
     goOnPlayButton.titleLabel.font = [UIFont systemFontOfSize:15];
     
     [goOnPlayButton addTarget: self action: @selector(actionKeepBetting:) forControlEvents: UIControlEventTouchUpInside];
-    //    addRandonBetButton.layer.cornerRadius = 3;
-    //    addRandonBetButton.layer.masksToBounds = YES;
     addRandonBetButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     
     [addRandonBetButton setBackgroundImage:[UIImage imageNamed:@"machine-selection.png"] forState:UIControlStateNormal];
@@ -283,7 +249,6 @@
     addRandonBetButton.titleLabel.font = [UIFont systemFontOfSize:15];
     [addRandonBetButton addTarget: self action: @selector(actionAddRandomBet:) forControlEvents: UIControlEventTouchUpInside];
     
-    //    clearAllBetButton.layer.cornerRadius = 3;
     clearAllBetButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     [clearAllBetButton setBackgroundImage:[UIImage imageNamed:@"machine-selection.png"] forState:UIControlStateNormal];
     [clearAllBetButton setBackgroundImage:[UIImage imageNamed:@"machine-selection.png"] forState:UIControlStateHighlighted];
@@ -328,10 +293,7 @@
         WinStop.hidden = YES;
         WinStoplabel.hidden = YES;
         betOptionfunViewHeight.constant = 140;
-        
-        lineBottom.constant = betOptionfunViewHeight.constant;
-        
-        tableviewBottom.constant = betOptionfunViewHeight.constant;
+    
         tableViewContentBottom .constant = 0;
         
         
@@ -361,9 +323,7 @@
         WinStoplabel.hidden = NO;
         betOptionfunViewHeight.constant = 140;
         
-        lineBottom.constant = betOptionfunViewHeight.constant;
-        
-        tableviewBottom.constant = betOptionfunViewHeight.constant;
+    
         tableViewContentBottom .constant = 0;
         
         
@@ -466,11 +426,8 @@
         });
         betListCellHeightSum = -10;
         dispatch_async(dispatch_get_main_queue(), ^{
-            [pickerBeiTou_ reloadAllComponents];
             
             [self updateContentBGForDltOrX115: YES];
-//            mostBoundsLb.hidden = YES;
-//            labelSummary_.hidden = YES;
         });
     });
     
@@ -544,10 +501,6 @@
         }
     }];
     if ([self.transaction betCount] > 0) {
-        if (firstLoad) {
-            labelSummary_.hidden = NO;
-            tableViewContent_.hidden = NO;
-        }
         tableViewHeight_.constant = viewContentResetHeight + betListCellHeightSum;
         [UIView animateWithDuration: 0.01
                          animations:^{
@@ -558,7 +511,6 @@
                                  tableViewContent_.delegate = self;
                                  self->tableViewContent_.dataSource = self;
                                  [tableViewContent_ reloadData];
-                                 [self->spinnerLoading_ stopAnimating];
                              }
                          }];
     }
@@ -653,20 +605,6 @@
     if (tableViewContent_.scrollEnabled) {
         [tableViewContent_ scrollToRowAtIndexPath: [NSIndexPath indexPathForRow: ([betsList count] - 1) inSection: 0] atScrollPosition: UITableViewScrollPositionBottom animated: YES];
     }
-}
-
-- (IBAction)actionBeiTouZhuiHao:(id)sender {
-    tempQiShuCount = self.transaction.qiShuCount;
-    tempBeiTouCount = self.transaction.beiTouCount;
-    [self restPicker];
-    viewBeiTou_.hidden = NO;
-    [self.view bringSubviewToFront: viewBeiTou_];
-    [UIView animateWithDuration: 0.3
-                     animations:^{
-                         self->viewBeiTou_.alpha = 1;
-                     } completion:^(BOOL finished) {
-                         
-                     }];
 }
 
 - (IBAction)actionZhuiJia:(id)sender {
@@ -1302,36 +1240,23 @@
     return nil;
 }
 
-- (IBAction)actionAddBeiTOu:(id)sender {
-    self.transaction.beiTouCount = tempBeiTouCount;
-    self.transaction.qiShuCount = tempQiShuCount;
-    [self updateSummary];
-    [self actionHideBeiTou: nil];
-}
 
-- (IBAction)actionHideBeiTou:(id)sender {
-    [UIView animateWithDuration: 0.3
-                     animations:^{
-                         self->viewBeiTou_.alpha = 0;
-                     } completion:^(BOOL finished) {
-                         self->viewBeiTou_.hidden = YES;
-                         [self.view sendSubviewToBack: self->viewBeiTou_];
-                     }];
-}
+//- (IBAction)actionHideBeiTou:(id)sender {
+//    [UIView animateWithDuration: 0.3
+//                     animations:^{
+//                         self->viewBeiTou_.alpha = 0;
+//                     } completion:^(BOOL finished) {
+//                         self->viewBeiTou_.hidden = YES;
+//                         [self.view sendSubviewToBack: self->viewBeiTou_];
+//                     }];
+//}
 
-- (void) restPicker {
-    int defaultBeiShu = MaxBeiShu*DataSourceTimes/2;
-    if (self.transaction.beiTouCount > 0) {
-        defaultBeiShu += self.transaction.beiTouCount - 1;
-    }
-    //    int defaultQiShu = MaxQiShu*DataSourceTimes/2;
-    //    if (self.transaction.qiShuCount > 0) {
-    //        defaultQiShu += self.transaction.qiShuCount - 1;
-    //    }
-    
-    [pickerBeiTou_ selectRow: defaultBeiShu inComponent: 0 animated: NO];
-    //  [pickerBeiTou_ selectRow: defaultQiShu inComponent: 1 animated: NO];
-}
+//- (void) restPicker {
+//    int defaultBeiShu = MaxBeiShu*DataSourceTimes/2;
+//    if (self.transaction.beiTouCount > 0) {
+//        defaultBeiShu += self.transaction.beiTouCount - 1;
+//    }
+//}
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -1576,22 +1501,22 @@
 
 
 #pragma mark - BeitouViewDelegate methods
-- (void) betBeiTou{
-    tempQiShuCount = self.transaction.qiShuCount;
-    tempBeiTouCount = self.transaction.beiTouCount;
-    
-    NSLog(@"%d",tempBeiTouCount);
-    [self restPicker];
-    viewBeiTou_.hidden = NO;
-    [self.view bringSubviewToFront: viewBeiTou_];
-    [UIView animateWithDuration: 0.3
-                     animations:^{
-                         viewBeiTou_.alpha = 1;
-                     } completion:^(BOOL finished) {
-                         
-                     }];
-    
-}
+//- (void) betBeiTou{
+//    tempQiShuCount = self.transaction.qiShuCount;
+//    tempBeiTouCount = self.transaction.beiTouCount;
+//
+//    NSLog(@"%d",tempBeiTouCount);
+//    [self restPicker];
+//    viewBeiTou_.hidden = NO;
+//    [self.view bringSubviewToFront: viewBeiTou_];
+//    [UIView animateWithDuration: 0.3
+//                     animations:^{
+//                         viewBeiTou_.alpha = 1;
+//                     } completion:^(BOOL finished) {
+//
+//                     }];
+//
+//}
 - (void) betzhuihao
 {
     isZhuiHao = YES;
@@ -2033,6 +1958,22 @@
     sender.selected = YES;
     tfQiText.text = [NSString stringWithFormat:@"%ld",sender.tag];
     [self updateSummary];
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    if([textField .text integerValue] ==0){
+        textField.text = @"1";
+    }
+    textField.text = [NSString stringWithFormat:@"%ld",[textField .text integerValue]];
+    for (UIButton *item in _qCountItembtn) {
+        item.selected = NO;
+    }
+    
+    [self updateSummary];
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        CGFloat height = self.navigationController.navigationBar.mj_h;
+//        NSLog(@"%@",self.navigationController.navigationBar);
+//    });
 }
 
 //点击屏幕空白处去掉键盘
