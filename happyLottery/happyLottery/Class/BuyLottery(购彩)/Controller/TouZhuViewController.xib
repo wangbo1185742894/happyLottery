@@ -26,6 +26,9 @@
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="yuYueBtn" destination="oRg-rP-BVf" id="cZc-Dh-5E2"/>
                 <outletCollection property="sepHeightArr" destination="rmK-Qe-MWd" id="kwB-JF-UID"/>
+                <outletCollection property="qCountItembtn" destination="Io1-SO-ohy" id="YXv-Pi-Vf3"/>
+                <outletCollection property="qCountItembtn" destination="KLF-Ra-N8h" id="5os-IB-ubU"/>
+                <outletCollection property="qCountItembtn" destination="RdO-z1-ukA" id="igS-Ab-FO2"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -275,6 +278,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="28"/>
                                             <state key="normal" backgroundImage="dltbutton-default.png"/>
                                             <state key="selected" backgroundImage="dltbutton.png"/>
+                                            <connections>
+                                                <action selector="actionSelectQiCount:" destination="-1" eventType="touchUpInside" id="6mW-mc-BiX"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新手小试" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8K-f0-0YK">
                                             <rect key="frame" x="4" y="2" width="25" height="24"/>
@@ -315,6 +321,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="28"/>
                                             <state key="normal" backgroundImage="dltbutton-default.png"/>
                                             <state key="selected" backgroundImage="dltbutton.png"/>
+                                            <connections>
+                                                <action selector="actionSelectQiCount:" destination="-1" eventType="touchUpInside" id="WpJ-s9-0Pf"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="人气最高" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mdJ-UU-KOV">
                                             <rect key="frame" x="4" y="2" width="25" height="24"/>
@@ -355,6 +364,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="28"/>
                                             <state key="normal" backgroundImage="dltbutton-default.png"/>
                                             <state key="selected" backgroundImage="dltbutton.png"/>
+                                            <connections>
+                                                <action selector="actionSelectQiCount:" destination="-1" eventType="touchUpInside" id="Djd-YE-dbr"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="大奖必选" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Jj-i0-xmP">
                                             <rect key="frame" x="4" y="2" width="25" height="24"/>
