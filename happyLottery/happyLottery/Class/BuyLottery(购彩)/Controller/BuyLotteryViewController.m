@@ -248,14 +248,12 @@ static NSString *ID = @"LotteryAreaViewCell";
         cell.isEable.hidden = YES;
         [cell.lotteryImageView setImage:[UIImage imageNamed:@"icon_gengduo"]];
     }
-    
     return cell;
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-
     if (indexPath.row <self.sellLottery.count) {
-        NSDictionary *itemDic = _lotteryArr[indexPath.row];
+        NSDictionary *itemDic = self.sellLottery[indexPath.row];
         NSString *lottert =  itemDic[@"lottery"];
         if ([lottert isEqualToString:@"JCZQDG"]) {
             if ([_lotteryList[@"JCZQ"] boolValue] ==NO) {
