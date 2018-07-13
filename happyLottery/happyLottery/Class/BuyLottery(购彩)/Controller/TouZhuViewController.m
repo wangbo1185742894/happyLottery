@@ -32,16 +32,18 @@
     __weak IBOutlet UIImageView *tableViewBGIV_;
     __weak IBOutlet UITableView *tableViewContent_;
     
-    IBOutletCollection(UIButton) NSArray *buttons_;
     __weak IBOutlet UIButton *buttonZhuiJia_;
     
     __weak IBOutlet UILabel *labelSummary_;
     __weak IBOutlet UIActivityIndicatorView *spinnerLoading_;
     __weak IBOutlet NSLayoutConstraint *tableViewHeight_;
-    __weak IBOutlet NSLayoutConstraint *ivBGHeight_;
     __weak IBOutlet UIPickerView *pickerBeiTou_;
     __weak IBOutlet UIView *viewPickerContainer_;
     __weak IBOutlet UIView *viewBeiTou_;
+    
+    __weak IBOutlet UITextField *tfBeiText;
+    
+    __weak IBOutlet UITextField *tfQiText;
     
     __weak IBOutlet NSLayoutConstraint *topDis;
     //确认投注
@@ -61,22 +63,6 @@
     UILabel *WinStoplabel;
     /*追加按钮*/
     UIButton *appendBtn;
-    UILabel *appendLabel;
-    UILabel *toulabel;
-    UILabel *beilabel;
-    UILabel *qilabel1;
-    UILabel *qilabel2;
-    UILabel *totalabel;
-    UILabel *beiqilabel;
-    
-    /*DLT倍数追期数显示*/
-    UITextField *JiangqiChoose;
-    UITextField *BeiChoose;
-    UIButton *JiangqiUpBtn;
-    UIButton *JiangqidownBtn;
-    UIButton *beishudownBtn;
-    UIButton *beishuUpBtn;
-    
     
     BeitouView * beitouView;
     __weak IBOutlet NSLayoutConstraint *lbSummaryBottomTraint;
@@ -135,6 +121,7 @@
 @property (nonatomic , strong) NSTimer *timer;
 @property(nonatomic,strong)User *curUser;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomDis;
+@property (weak, nonatomic) IBOutlet UIButton *yuYueBtn;
 @property(nonatomic,strong)UIToolbar *toolBar;
 @end
 
@@ -160,13 +147,15 @@
     self.lotteryMan.delegate = self;
     self.memberMan.delegate = self;
     self.bottomDis.constant = BOTTOM_BAR_HEIGHT;
-    labelSummary_.hidden = YES;
-    mostBoundsLb.hidden = YES;
+//    labelSummary_.hidden = YES;
+//    mostBoundsLb.hidden = YES;
     lineBottom.constant = 90;
     buttonK.tag = 33;
     //11.07
-
-
+    self.yuYueBtn.layer.masksToBounds = YES;
+    self.yuYueBtn.layer.cornerRadius = 4;
+    tfBeiText.delegate = self;
+    tfQiText.delegate = self;
     
     labelSummary_.adjustsFontSizeToFitWidth  = YES;
     /*zwl*/
@@ -177,7 +166,7 @@
     appendstrqi = @"";
     appendstrbei = @"";
     subscristr = @"";
-    mostBoundsLb.adjustsFontSizeToFitWidth = YES;
+//    mostBoundsLb.adjustsFontSizeToFitWidth = YES;
     for (NSLayoutConstraint *sepHeight in sepHeightArr) {
         sepHeight.constant = SEPHEIGHT;
     }
@@ -265,64 +254,15 @@
         WinStop.hidden = YES;
         
         WinStoplabel.hidden = YES;
-        betOptionfunViewHeight.constant = 90;
+        betOptionfunViewHeight.constant = 140;
         
         lineBottom.constant = betOptionfunViewHeight.constant;
         tableviewBottom.constant = betOptionfunViewHeight.constant;
         tableViewContentBottom .constant = 0;
-        
-        //投*注，买*期
-        CGRect touframe = CGRectMake(KscreenWidth-145,10, 20, 25);
-        toulabel = [[UILabel alloc]initWithFrame:touframe];
-        toulabel.text = @"投";
-        toulabel.textColor = TEXTGRAYCOLOR;
-        toulabel.textAlignment = NSTextAlignmentLeft;
-        toulabel.font = [UIFont systemFontOfSize:14];
-        CGRect beiframe = CGRectMake(KscreenWidth-40,10, 20, 25);
-        
-        beilabel = [[UILabel alloc]initWithFrame:beiframe];
-        beilabel.text = @"倍";
-        beilabel.textColor = TEXTGRAYCOLOR;
-        beilabel.textAlignment = NSTextAlignmentCenter;
-        beilabel.font = [UIFont systemFontOfSize:14];
-        
-        CGRect qiframe1= CGRectMake(20,10, 40, 25);
-        qilabel1 = [[UILabel alloc]initWithFrame:qiframe1];
-        qilabel1.text = @"连追";
-        qilabel1.textColor = TEXTGRAYCOLOR;
-        qilabel1.textAlignment = NSTextAlignmentCenter;
-        qilabel1.font = [UIFont systemFontOfSize:14];
-        
-        CGRect qiframe2 = CGRectMake(142,10, 20, 25);
-        qilabel2 = [[UILabel alloc]initWithFrame:qiframe2];
-        qilabel2.text = @"期";
-        qilabel2.textColor = TEXTGRAYCOLOR;
-        qilabel2.textAlignment = NSTextAlignmentRight;
-        qilabel2.font = [UIFont systemFontOfSize:14];
-        [betOptionFunView addSubview:beilabel];
-        [betOptionFunView addSubview:toulabel];
-//        [betOptionFunView addSubview:qilabel1];
-//        [betOptionFunView addSubview:qilabel2];
+    
         [self loadzhuiqi];
         [self loadbei];
         [addRandonBetButton setTitle:@"机选1注" forState:UIControlStateNormal];
-        
-    zhuihaoBtn = [[UIButton alloc]initWithFrame:frame4];
-    
-    [zhuihaoBtn setTitleColor:TextCharColor forState:UIControlStateNormal];
-    [zhuihaoBtn setTitleColor:TextOrangeColor forState:UIControlStateHighlighted];
-    [zhuihaoBtn setTitle:@"智能追号" forState:UIControlStateNormal];
-    zhuihaoBtn.hidden = YES;
-    UIImage*image = [UIImage imageNamed:@"buttonBG_orange"];
-    image = [image resizableImageWithCapInsets:UIEdgeInsetsMake(0, 1, 0, 1) resizingMode:UIImageResizingModeStretch];
-    [zhuihaoBtn setBackgroundImage:image forState:UIControlStateNormal];
-    
-    UIImage*imageHeight = [UIImage imageNamed:@"buttonBG_orange_selected"];
-    imageHeight = [imageHeight resizableImageWithCapInsets:UIEdgeInsetsMake(0, 1, 0, 1) resizingMode:UIImageResizingModeStretch];
-    [zhuihaoBtn setBackgroundImage:imageHeight forState:UIControlStateHighlighted];
-    zhuihaoBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-    [zhuihaoBtn addTarget: self action: @selector(betzhuihao) forControlEvents: UIControlEventTouchUpInside];
-    [betOptionFunView addSubview:zhuihaoBtn];
     
     goOnPlayButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     
@@ -353,18 +293,6 @@
     clearAllBetButton.titleLabel.font = [UIFont systemFontOfSize:15];
     [clearAllBetButton addTarget: self action: @selector(actionRemoveAllBets:) forControlEvents: UIControlEventTouchUpInside];
     [self.view addSubview:addRandonBetButton];
-    totalframe = CGRectMake(100,48, KscreenWidth-200, 18);
-    beiqiframe = CGRectMake(100,66, KscreenWidth-200, 18);
-    totalabel = [[UILabel alloc]initWithFrame:totalframe];
-    beiqilabel = [[UILabel alloc]initWithFrame:beiqiframe];
-    
-
-    
-//    if (self.isFromTogeVC == YES) {
-//        self.btnHemai.hidden = YES;
-//        self.btnHemai.mj_w = 0;
-//        [buttonK setTitle: @"发起合买" forState:0];
-//    }
 }
 
 - (void)navigationBackToLastPage{
@@ -398,7 +326,7 @@
     if (_FLAG) {
         WinStop.hidden = YES;
         WinStoplabel.hidden = YES;
-        betOptionfunViewHeight.constant = 90;
+        betOptionfunViewHeight.constant = 140;
         
         lineBottom.constant = betOptionfunViewHeight.constant;
         
@@ -410,22 +338,11 @@
         
         zhuihaoBtn.frame = frame4;
         totalframe.origin.y = 48;
-        totalabel.frame = totalframe;
         beiqiframe.origin.y = 66;
-        beiqilabel.frame = beiqiframe;
+
         splitLineframe.origin.y = 41;
         splitLine.frame = splitLineframe;
         zhuihaoBtn.hidden = YES;
-        toulabel.hidden = YES;
-        beilabel.hidden = YES;
-        qilabel1.hidden = YES;
-        qilabel2.hidden = YES;
-        BeiChoose.hidden = YES;
-        JiangqiChoose.hidden = YES;
-        JiangqiUpBtn.hidden = YES;
-        JiangqidownBtn.hidden = YES;
-        beishudownBtn.hidden = YES;
-        beishuUpBtn.hidden = YES;
     }
     else
     {
@@ -436,22 +353,12 @@
         }else{
 //            zhuihaoBtn.hidden = NO;
         }
-        toulabel.hidden  = NO;
-        beilabel.hidden = NO;
-        qilabel1.hidden = NO;
-        qilabel2.hidden = NO;
-        BeiChoose.hidden = NO;
-        JiangqiChoose.hidden = NO;
-        JiangqiUpBtn.hidden = NO;
-        JiangqidownBtn.hidden = NO;
-        beishudownBtn.hidden = NO;
-        beishuUpBtn.hidden = NO;
     }
     if(WinStop.hidden && _issue > 1)
     {
         WinStop.hidden = NO;
         WinStoplabel.hidden = NO;
-        betOptionfunViewHeight.constant = 120;
+        betOptionfunViewHeight.constant = 140;
         
         lineBottom.constant = betOptionfunViewHeight.constant;
         
@@ -463,17 +370,14 @@
         
         zhuihaoBtn.frame = frame4;
         totalframe.origin.y = 78;
-        totalabel.frame = totalframe;
         beiqiframe.origin.y = 96;
-        beiqilabel.frame = beiqiframe;
         splitLineframe.origin.y = 71;
         splitLine.frame = splitLineframe;
     }
-    BeiChoose.keyboardType =UIKeyboardTypeNumberPad;
-    JiangqiChoose.keyboardType = UIKeyboardTypeNumberPad;
-    [self ToolView:BeiChoose];
-    [self ToolView:JiangqiChoose];
-    JiangqiChoose.hidden = YES;
+//    tfBeiText.keyboardType =UIKeyboardTypeNumberPad;
+//    tfQiText.keyboardType = UIKeyboardTypeNumberPad;
+    [self ToolView:tfBeiText];
+    [self ToolView:tfQiText];
     
 }
 
@@ -506,8 +410,8 @@
 
 -(void)actionWancheng:(UITextField*)tv{
     
-    [BeiChoose resignFirstResponder];
-    [JiangqiChoose resignFirstResponder];
+    [tfBeiText resignFirstResponder];
+    [tfQiText resignFirstResponder];
 }
 
 - (void) WinStopClick {
@@ -564,8 +468,8 @@
             [pickerBeiTou_ reloadAllComponents];
             
             [self updateContentBGForDltOrX115: YES];
-            mostBoundsLb.hidden = YES;
-            labelSummary_.hidden = YES;
+//            mostBoundsLb.hidden = YES;
+//            labelSummary_.hidden = YES;
         });
     });
     
@@ -644,17 +548,16 @@
             tableViewContent_.hidden = NO;
         }
         tableViewHeight_.constant = viewContentResetHeight + betListCellHeightSum;
-        ivBGHeight_.constant = ivBGResetHeight + betListCellHeightSum;
         [UIView animateWithDuration: 0.01
                          animations:^{
-                             [tableViewContent_ layoutIfNeeded];
+                             [self->tableViewContent_ layoutIfNeeded];
                          }
                          completion:^(BOOL finished) {
                              if (firstLoad) {
                                  tableViewContent_.delegate = self;
-                                 tableViewContent_.dataSource = self;
+                                 self->tableViewContent_.dataSource = self;
                                  [tableViewContent_ reloadData];
-                                 [spinnerLoading_ stopAnimating];
+                                 [self->spinnerLoading_ stopAnimating];
                              }
                          }];
     }
@@ -664,16 +567,16 @@
  update bet transaction summary data
  */
 - (void) updateSummary {
-    labelSummary_.attributedText = [self.transaction getTouZhuSummaryText];
-    totalabel.attributedText = [self.transaction getTouZhuSummaryText2];
-    beiqilabel.attributedText = [self.transaction getTouZhuSummaryText1];
-    totalabel.textAlignment = NSTextAlignmentCenter;
-    beiqilabel.textAlignment = NSTextAlignmentCenter;
-    [betOptionFunView addSubview:totalabel];
-    [betOptionFunView addSubview:beiqilabel];
-    labelSummary_.hidden = YES;
-    mostBoundsLb.hidden = YES;
-
+    self.transaction.beiTouCount = [tfBeiText.text intValue];
+    self.transaction.qiShuCount = [tfQiText.text intValue];
+    if ( self.transaction.beiTouCount  == 0) {
+        self.transaction.beiTouCount  = 1;
+    }
+    if ( self.transaction.qiShuCount  == 0) {
+        self.transaction.qiShuCount  = 1;
+    }
+    mostBoundsLb.attributedText = [self.transaction getTouZhuSummaryText1];
+    labelSummary_.attributedText = [self.transaction getTouZhuSummaryText2];
 }
 
 - (void)removeAllBetsAlert{
@@ -717,12 +620,9 @@
 - (void) removeAllBetsAction {
     [self.transaction removeAllBets];
     tableViewContent_.hidden = YES;
-    //    [tableViewContent_ reloadData];
-    //    tableViewHeight_.constant = viewContentResetHeight;
-    ivBGHeight_.constant = ivBGResetHeight;
     [UIView animateWithDuration: 0.3
                      animations:^{
-                         [tableViewContent_ layoutIfNeeded];
+                         [self->tableViewContent_ layoutIfNeeded];
                      }
                      completion:^(BOOL finished) {
                          [self.delegate betTransactionUpdated];
@@ -762,7 +662,7 @@
     [self.view bringSubviewToFront: viewBeiTou_];
     [UIView animateWithDuration: 0.3
                      animations:^{
-                         viewBeiTou_.alpha = 1;
+                         self->viewBeiTou_.alpha = 1;
                      } completion:^(BOOL finished) {
                          
                      }];
@@ -986,13 +886,13 @@
         return;
     }
     
-    int qi = [JiangqiChoose.text intValue];
-    int bei = [BeiChoose.text intValue];
+    int qi = [tfQiText.text intValue];
+    int bei = [tfBeiText.text intValue];
     
-    //    if (bei > 99) {
-    //        [self showPromptText:@"追号不能大于99倍" hideAfterDelay:1.7];
-    //        return;
-    //    }
+        if (bei > 99) {
+            [self showPromptText:@"追号不能大于99倍" hideAfterDelay:1.7];
+            return;
+        }
     NSString *lotteryRoundDesc= [NSString stringWithFormat:@"%@ 第%@期",_lottery.name,_lottery.currentRound.issueNumber];
     int betCount = 0;
     NSArray * betsArray = [_transaction allBets];
@@ -1184,15 +1084,6 @@
                     
                     return;
                 }
-//                }else{
-////                    if ([self checkPayPassword]) {
-////
-////                        [self showPayPopView];
-////                        return;
-////                    }
-//                }
-                
-//                [self actionZhuihao];
                 return;
             }else{
                 [self needLogin];
@@ -1238,20 +1129,11 @@
     schemeCashModel.cardCode = self.curUser.cardCode;
     schemeCashModel.schemeNo = schemeNO;
     schemeCashModel.subCopies = 1;
-//    if (btnMoniTouzhu.selected == YES) {
-//        schemeCashModel.costType = CostTypeSCORE;
-//        if (self.transaction.betCost  > 30000000) {
-//            [self showPromptText:@"单笔总积分不能超过3千万积分" hideAfterDelay:1.7];
-//            return;
-//        }
-//    }else{
-        schemeCashModel.costType = CostTypeCASH;
-        if (self.transaction.betCost  > 300000) {
-            [self showPromptText:@"单笔总金额不能超过30万元" hideAfterDelay:1.7];
-            return;
-        }
-//    }
-    
+    schemeCashModel.costType = CostTypeCASH;
+    if (self.transaction.betCost  > 300000) {
+        [self showPromptText:@"单笔总金额不能超过30万元" hideAfterDelay:1.7];
+        return;
+    }
     [self hideLoadingView];
     
     schemeCashModel.subscribed = self.transaction.betCost;
@@ -1429,10 +1311,10 @@
 - (IBAction)actionHideBeiTou:(id)sender {
     [UIView animateWithDuration: 0.3
                      animations:^{
-                         viewBeiTou_.alpha = 0;
+                         self->viewBeiTou_.alpha = 0;
                      } completion:^(BOOL finished) {
-                         viewBeiTou_.hidden = YES;
-                         [self.view sendSubviewToBack: viewBeiTou_];
+                         self->viewBeiTou_.hidden = YES;
+                         [self.view sendSubviewToBack: self->viewBeiTou_];
                      }];
 }
 
@@ -1534,10 +1416,10 @@
         //zwl 01-19
         if([self.transaction betCount] == 0)
         {
-            JiangqiChoose.text = @"1";
-            BeiChoose.text = @"1";
-            self.transaction.qiShuCount = [JiangqiChoose.text intValue];
-            self.transaction.beiTouCount = [BeiChoose.text intValue];
+            tfQiText.text = @"1";
+            tfBeiText.text = @"1";
+            self.transaction.qiShuCount = [tfQiText.text intValue];
+            self.transaction.beiTouCount = [tfBeiText.text intValue];
             _multiple = self.transaction.beiTouCount;
             _issue = self.transaction.qiShuCount;
             
@@ -1613,8 +1495,8 @@
                 [self showPromptText:msg hideAfterDelay:2.7];
                 return;
             }
-            int qi = [JiangqiChoose.text intValue];
-            int bei = [BeiChoose.text intValue];
+            int qi = [tfQiText.text intValue];
+            int bei = [tfBeiText.text intValue];
             NSString *lotteryRoundDesc= [NSString stringWithFormat:@"%@ 第%@期",_lottery.name,_lottery.currentRound.issueNumber];
             int betCount = 0;
             NSArray * betsArray = [_transaction allBets];
@@ -1793,87 +1675,44 @@
         //注数计算
         Strunits = [betslist[i] valueForKey:@"betCount"];
         int intstrunits = [Strunits intValue];
-        
-        if([_lottery.identifier isEqualToString:@"SX115"]|| [_lottery.identifier isEqualToString:@"SD115"])
+        NSDictionary *bettypedic = [NSDictionary dictionaryWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"BetType" ofType: @"plist"]];
+        LotteryBet *bet =betslist[i];
+        if([bet betType] == 212 || [bet betType] == 213 || [bet betType] == 214 || [bet betType] == 215 || [bet betType] == 216 || [bet betType] == 217 || [bet betType] == 222 || [bet betType] == 232)
         {
-            
-            NSDictionary *bettypedic = [NSDictionary dictionaryWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"BetType" ofType: @"plist"]];
-            LotteryBet *bet =betslist[i];
-            if([bet betType] == 212 || [bet betType] == 213 || [bet betType] == 214 || [bet betType] == 215 || [bet betType] == 216 || [bet betType] == 217 || [bet betType] == 222 || [bet betType] == 232)
-            {
-                NSNumber *num = [bettypedic objectForKey:@"Towed"];
-                [myDelegate.ZHDic setObject:num forKey:@"betType"  ];
-            }
-            else if([bet betType] == 229 || [bet betType] == 239 )
-            {
-                NSNumber *num = [bettypedic objectForKey:@"Direct"];
-                [myDelegate.ZHDic setObject:num forKey:@"betType" ];
-            }
-            //前一 201 和 任八 208 没有 复式
-            else if(intstrunits > 1 && [bet betType] != 208 && [bet betType] != 201)
-            {
-                NSNumber *num = [bettypedic objectForKey:@"Double"];
-                [myDelegate.ZHDic setObject:num forKey:@"betType" ];
-            }
-            else
-            {
-                NSNumber *num = [bettypedic objectForKey:@"Single"];
-                [myDelegate.ZHDic setObject:num forKey:@"betType" ];
-            }
+            NSNumber *num = [bettypedic objectForKey:@"Towed"];
+            [myDelegate.ZHDic setObject:num forKey:@"betType"  ];
         }
-        if([_lottery.identifier isEqualToString:@"DLT"])
+        else if([bet betType] == 229 || [bet betType] == 239 )
         {
-            NSString * BetTypeName = [NSString stringWithFormat:@"%@", [betslist[i] betTypeDesc]];
-            NSNumber *num;
-            if([BetTypeName isEqualToString:@"胆拖"])
-            {
-                num = [NSNumber numberWithInt:2];
-                [myDelegate.ZHDic setObject:num forKey:@"betType" ];
-            }
-            else if([BetTypeName isEqualToString:@"复式"])
-            {
-                num = [NSNumber numberWithInt:1];
-                [myDelegate.ZHDic setObject:num forKey:@"betType" ];
-            }
-            else
-            {
-                num = [NSNumber numberWithInt:0];
-                [myDelegate.ZHDic setObject:num forKey:@"betType" ];
-            }
-            
+            NSNumber *num = [bettypedic objectForKey:@"Direct"];
+            [myDelegate.ZHDic setObject:num forKey:@"betType" ];
+        }
+        //前一 201 和 任八 208 没有 复式
+        else if(intstrunits > 1 && [bet betType] != 208 && [bet betType] != 201)
+        {
+            NSNumber *num = [bettypedic objectForKey:@"Double"];
+            [myDelegate.ZHDic setObject:num forKey:@"betType" ];
+        }
+        else
+        {
+            NSNumber *num = [bettypedic objectForKey:@"Single"];
+            [myDelegate.ZHDic setObject:num forKey:@"betType" ];
         }
         units += intstrunits;
         //        NSString *str = [[betslist[i] valueForKey:@"betNumbersDesc"]valueForKey:@"mutableString"];
-        LotteryBet *bet = betslist[i];
         NSString * str = bet.betNumbersDesc.string;
         str = [str stringByReplacingOccurrencesOfString:@"[胆:" withString:@""];
         str = [str stringByReplacingOccurrencesOfString:@"\n" withString:@""];
         str = [str stringByReplacingOccurrencesOfString:@"]" withString:@"#"];
         playtype = [self getPlayType:i];
         
-        if([_lottery.identifier isEqualToString:@"DLT"])
+        if([catchcontent isEqualToString:@""])
         {
-            if([catchcontent isEqualToString:@""])
-            {
-                catchcontent = str;
-            }
-            else{
-                catchcontent = [catchcontent stringByAppendingString:@";"];
-                catchcontent = [catchcontent stringByAppendingString:str];
-            }
-            catchcontent = [catchcontent stringByReplacingOccurrencesOfString:@" "withString:@"+"];
+            catchcontent = str;
         }
-        else if([_lottery.identifier isEqualToString:@"SX115"]|| [_lottery.identifier isEqualToString:@"SD115"])
-        {
-            
-            if([catchcontent isEqualToString:@""])
-            {
-                catchcontent = str;
-            }
-            else{
-                catchcontent = [catchcontent stringByAppendingString:@";"];
-                catchcontent = [catchcontent stringByAppendingString:str];
-            }
+        else{
+            catchcontent = [catchcontent stringByAppendingString:@";"];
+            catchcontent = [catchcontent stringByAppendingString:str];
         }
     }
     [myDelegate.ZHDic setObject:catchcontent forKey:@"catchContent"];
@@ -1923,27 +1762,13 @@
     if (betTemp.orderBetPlayType) {
         playType = [NSNumber numberWithInt:[betTemp.orderBetPlayType intValue]];
     }
-    
-    //16-01-12 zwl
-    if([_lottery.identifier isEqualToString:@"DLT"])
-    {
-        if(appendBtn.selected)
-        {
-            playType = [NSNumber numberWithInt:1];
-        }
-        else
-        {
-            playType = [NSNumber numberWithInt:0];
-        }
-    }
-    
     myDelegate.ZHDic[@"playType"] = playType;
-    int surplusissue =[JiangqiChoose.text intValue];
+    int surplusissue =[tfQiText.text intValue];
     if(surplusissue==0)
     {
         surplusissue = 1;
     }
-    NSString *mutiple =BeiChoose.text;
+    NSString *mutiple =tfBeiText.text;
     if([mutiple isEqualToString:@""])
     {
         mutiple = @"1";
@@ -1972,26 +1797,18 @@
     [myDelegate.ZHDic setObject:array forKey: @"catchList"]
     ;
     //中奖后是否停追
-    if([_lottery.identifier isEqualToString:@"DLT"])
+    if(WinStop.selected)
     {
-        [myDelegate.ZHDic setObject:@"NOTSTOP"forKey:@"winStopStatus"];
+        [myDelegate.ZHDic setObject:@"WINSTOP"forKey:@"winStopStatus"];
     }
     else
     {
-        if(WinStop.selected)
-        {
-            [myDelegate.ZHDic setObject:@"WINSTOP"forKey:@"winStopStatus"];
-        }
-        else
-        {
-            [myDelegate.ZHDic setObject:@"NOTSTOP"forKey:@"winStopStatus"];
-        }
+        [myDelegate.ZHDic setObject:@"NOTSTOP"forKey:@"winStopStatus"];
     }
-    
     [myDelegate.ZHDic setObject:@"0"forKey:@"winStatus"];
     [myDelegate.ZHDic setObject:@"2"forKey:@"betSource"];
-    [myDelegate.ZHDic setObject:JiangqiChoose.text forKey:@"totalCatch"];
-    [myDelegate.ZHDic setObject:JiangqiChoose.text forKey:@"catchIndex"];
+    [myDelegate.ZHDic setObject:tfQiText.text forKey:@"totalCatch"];
+    [myDelegate.ZHDic setObject:tfQiText.text forKey:@"catchIndex"];
     [myDelegate.ZHDic setObject:@"0.0"forKey:@"orderbonus"];
     [myDelegate.ZHDic setObject:@"0.0"forKey:@"bonus"];
     
@@ -2003,15 +1820,7 @@
     NSString * morelocationString=[dateformatter stringFromDate:timeDate];
     [myDelegate.ZHDic setObject:morelocationString forKey:@"modifyTime"];
     [myDelegate.ZHDic setObject:morelocationString forKey:@"createTime"];
-    
-    if([_lottery.identifier isEqualToString:@"DLT"])
-    {
-        [myDelegate.ZHDic setObject:@"DLT" forKey:@"lottery"];
-    }
-    else
-    {
-        [myDelegate.ZHDic setObject:self.lottery.identifier forKey:@"lottery"];
-    }
+    [myDelegate.ZHDic setObject:self.lottery.identifier forKey:@"lottery"];
 }
 
 -(NSString *)getPlayType:(int)i
@@ -2151,14 +1960,6 @@
 /*Dlt追期显示*/
 -(void) loadzhuiqi
 {
-    //奖期减小按钮
-    
-    JiangqidownBtn = [[UIButton alloc]initWithFrame:CGRectMake(57,10, 25, 25)];
-    [JiangqidownBtn setImage:[UIImage imageNamed:@"smartfollow_sub_icon.png"] forState:UIControlStateNormal];
-    [JiangqidownBtn setImage:[UIImage imageNamed:@"smartfollow_sub_press.png"] forState:UIControlStateHighlighted];
-    [JiangqidownBtn addTarget: self action: @selector(JiangqidownBtnClick) forControlEvents: UIControlEventTouchUpInside];
-    //中间显示框
-    JiangqiChoose = [[UITextField alloc]initWithFrame:CGRectMake(82,10, 41.5, 25)];
     //zwl 16-01-12
     AppDelegate *myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     if(myDelegate.betlistcount == 0)
@@ -2171,48 +1972,16 @@
     NSString *str = [NSString stringWithFormat:@"%lu",(unsigned long)_issue];
     if(![str isEqualToString:@"(null)"]&&![str isEqualToString:@"1"])
     {
-        JiangqiChoose.text = str;
+        tfQiText.text = str;
     }
     else
     {
-        JiangqiChoose.text = @"1";
+        tfQiText.text = @"1";
     }
-    JiangqiChoose.tag = 2;
-    JiangqiChoose.autocorrectionType=UITextAutocorrectionTypeNo;
-    JiangqiChoose.delegate = self;
-    JiangqiChoose.returnKeyType = UIReturnKeyDone;
-    JiangqiChoose.textAlignment = NSTextAlignmentCenter;
-    JiangqiChoose.layer.borderWidth = SEPHEIGHT;
-    JiangqiChoose.layer.borderColor = SEPCOLOR.CGColor;
-    //    JiangqiChoose.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"input_bg_normal.9.png"]];
-    //奖期增加按钮
-    JiangqiUpBtn = [[UIButton alloc]initWithFrame:CGRectMake(122,10, 25, 25)];
-    [JiangqiUpBtn setImage:[UIImage imageNamed:@"smartfollow_add_icon.png"] forState:UIControlStateNormal];
-    [JiangqiUpBtn setImage:[UIImage imageNamed:@"smartfollow_add_pressed.png"] forState:UIControlStateHighlighted];
-    [JiangqiUpBtn addTarget: self action: @selector(JiangqiUpBtnClick) forControlEvents: UIControlEventTouchUpInside];
-    [betOptionFunView addSubview:JiangqidownBtn];
-    [betOptionFunView addSubview:JiangqiChoose];
-    [betOptionFunView addSubview:JiangqiUpBtn];
 }
 /*Dlt倍数显示*/
 -(void) loadbei
 {
-    beishudownBtn = [[UIButton alloc]initWithFrame:CGRectMake(KscreenWidth-128,10, 25, 25)];
-    [beishudownBtn setImage:[UIImage imageNamed:@"touzhubeishujian.png"] forState:UIControlStateNormal];
-    [beishudownBtn setImage:[UIImage imageNamed:@"touzhubeishujian.png"] forState:UIControlStateHighlighted];
-    [beishudownBtn addTarget: self action: @selector(BeishudownBtnClick) forControlEvents: UIControlEventTouchUpInside];
-    //倍数加
-    beishuUpBtn = [[UIButton alloc]initWithFrame:CGRectMake(KscreenWidth-63,10, 25, 25)];
-    
-    [beishuUpBtn setImage:[UIImage imageNamed:@"touzhubeishujia.png"] forState:UIControlStateNormal];
-    [beishuUpBtn setImage:[UIImage imageNamed:@"touzhubeishujia.png"] forState:UIControlStateHighlighted];
-    [beishuUpBtn addTarget: self action: @selector(BeishuUpBtnClick) forControlEvents: UIControlEventTouchUpInside];
-    //倍数label
-    BeiChoose = [[UITextField alloc]initWithFrame:CGRectMake(KscreenWidth-103.5,10, 41, 25)];
-    BeiChoose.autocorrectionType=UITextAutocorrectionTypeNo;
-    BeiChoose.delegate = self;
-    BeiChoose.font = [UIFont systemFontOfSize:13];
-    BeiChoose.tag = 1;
     //zwl 16-01-12
     AppDelegate *myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     if(myDelegate.betlistcount == 0)
@@ -2224,38 +1993,15 @@
     NSString *str = [NSString stringWithFormat:@"%lu",(unsigned long)_multiple];
     if(![str isEqualToString:@"(null)"]&&![str isEqualToString:@"1"])
     {
-        BeiChoose.text = str;
+        tfBeiText.text = str;
     }
     else
     {
-        BeiChoose.text = @"1";
+        tfBeiText.text = @"1";
     }
-    BeiChoose.returnKeyType = UIReturnKeyDone;
-    BeiChoose.textAlignment = NSTextAlignmentCenter;
-    BeiChoose.layer.borderWidth = SEPHEIGHT;
-    BeiChoose.layer.borderColor = SEPCOLOR.CGColor;
-    //    BeiChoose.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"input_bg_normal.9.png"]];
-    [betOptionFunView addSubview:beishuUpBtn];
-    [betOptionFunView addSubview:BeiChoose];
-    [betOptionFunView addSubview:beishudownBtn];
 }
--(void)loadappendBtn
-{
-    appendBtn = [[UIButton alloc]initWithFrame:CGRectMake(6,betOptionFunView.bounds.size.height  -65, 25, 25)];
-    appendLabel = [[UILabel alloc]initWithFrame:CGRectMake(31,betOptionFunView.bounds.size.height - 65, 100, 25)];
-    appendLabel.text = @"追加(每注3元)";
-    appendLabel.font = [UIFont systemFontOfSize:13];
-    appendLabel.textColor = RGBCOLOR(140, 140, 140);
-    [appendBtn setSelected:NO];
-    appendBtn.titleLabel.textAlignment = NSTextAlignmentRight;
-    appendBtn.titleLabel.font = [UIFont systemFontOfSize:13];
-    [appendBtn setImage:[UIImage imageNamed:@"png_btn_agree.png"] forState:UIControlStateNormal];
-    
-    [appendBtn addTarget: self action: @selector(appendbtnClick) forControlEvents: UIControlEventTouchUpInside];
-    [betOptionFunView addSubview:appendLabel];
-    [betOptionFunView addSubview:appendBtn];
-    
-}
+
+
 -(void)appendbtnClick
 {
     appendBtn.selected = !appendBtn.selected;
@@ -2292,7 +2038,7 @@
     {
         WinStop.hidden = NO;
         WinStoplabel.hidden = NO;
-        betOptionfunViewHeight.constant = 120;
+        betOptionfunViewHeight.constant = 140;
         
         lineBottom.constant = betOptionfunViewHeight.constant;
         
@@ -2304,14 +2050,12 @@
         
         zhuihaoBtn.frame = frame4;
         totalframe.origin.y = 78;
-        totalabel.frame = totalframe;
         beiqiframe.origin.y = 96;
-        beiqilabel.frame = beiqiframe;
         splitLineframe.origin.y = 71;
         splitLine.frame = splitLineframe;
     }
     NSString *str = [NSString stringWithFormat:@"%d",(unsigned int)_issue];
-    JiangqiChoose.text = str;
+    tfQiText.text = str;
     self.transaction.qiShuCount = [str intValue];
     [self updateSummary];
 }
@@ -2333,7 +2077,7 @@
         WinStop.hidden = YES;
       
             WinStoplabel.hidden = YES;
-            betOptionfunViewHeight.constant = 90;
+            betOptionfunViewHeight.constant = 140;
             lineBottom.constant = betOptionfunViewHeight.constant;
             
             tableviewBottom.constant = betOptionfunViewHeight.constant;
@@ -2343,49 +2087,13 @@
             
             zhuihaoBtn.frame = frame4;
             totalframe.origin.y = 48;
-            totalabel.frame = totalframe;
             beiqiframe.origin.y = 66;
-            beiqilabel.frame = beiqiframe;
             splitLineframe.origin.y = 41;
             splitLine.frame = splitLineframe;
     }
     NSString *str = [NSString stringWithFormat:@"%d",(unsigned int)_issue];
-    JiangqiChoose.text = str;
+    tfQiText.text = str;
     self.transaction.qiShuCount = [str intValue];
-    [self updateSummary];
-}
-/*Dlt倍数变化*/
--(void) BeishuUpBtnClick
-{
-    
-    if ([self getIssnum] > 1) {
-        if (_multiple > 98){
-            return;
-        }
-    }else{
-        if (_multiple > 9998){
-            return;
-        }
-    }
-    
-    _multiple +=1;
-    NSString *str = [NSString stringWithFormat:@"%d",(unsigned int)_multiple];
-    BeiChoose.text = str;
-    self.transaction.beiTouCount = [str intValue];
-    [self updateSummary];
-}
-
-/*Dlt倍数变化*/
--(void) BeishudownBtnClick
-{
-    if((unsigned int)_multiple == 1)
-    {
-        return;
-    }
-    _multiple -=1;
-    NSString *str = [NSString stringWithFormat:@"%u",(unsigned int)_multiple];
-    BeiChoose.text = str;
-    self.transaction.beiTouCount = [str intValue];
     [self updateSummary];
 }
 
@@ -2398,12 +2106,12 @@
 //点击屏幕空白处去掉键盘
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [BeiChoose resignFirstResponder];
-    [JiangqiChoose resignFirstResponder];
+    [tfBeiText resignFirstResponder];
+    [tfQiText resignFirstResponder];
 }
 
 - (int)getIssnum{
-    NSString *issuNum = [NSString stringWithFormat:@"%@",JiangqiChoose.text];
+    NSString *issuNum = [NSString stringWithFormat:@"%@",tfQiText.text];
     int issnum = [issuNum intValue];
     return issnum;
 }
@@ -2414,309 +2122,65 @@
         [self showPromptText:@"当前时间没有奖期,请稍后进行更改" hideAfterDelay:1.7];
         return NO;
     }
-    NSString * regex;
-    if (textField == BeiChoose || textField == JiangqiChoose ) {
-        regex = @"^[0-9]";
+    if ([string isEqualToString:@""]) {
+        return YES;
     }
-    
-    NSString *str1 = BeiChoose.text;
-    NSString *str2 = JiangqiChoose.text;
-    appendstrbei = BeiChoose.text;
-    appendstrqi = JiangqiChoose.text;
-    if (textField == BeiChoose && ![string isEqualToString:@""])
-    {
-        
-        if ([self getIssnum] > 1) {
-            if (str1.length > 1)
-            {
-                return NO;
-            }
+    NSMutableString*numStr = [[NSMutableString alloc]initWithString:textField.text];
+    [numStr appendString:string];
+    NSInteger num = [numStr integerValue];
+    NSInteger limitNum;
+    if (textField == tfBeiText) {
+        if ([tfQiText.text integerValue] == 1) {
+            limitNum = 9999;
         }else{
-            if (str1.length > 3)
-            {
-                return NO;
-            }
+            limitNum = 99;
         }
-        
-    }
-    //zwl 16-01-13
-    if(textField == BeiChoose && str1.length == 1)
-    {
-        if( [string isEqualToString:@""])
-        {
-            appendstrbei = @"";
-        }else
-        {
-            appendstrbei = str1;
+        if (num > limitNum) {
+            [self showPromptText:[NSString stringWithFormat:@"最大可投%ld倍",limitNum] hideAfterDelay:1.8];
+            return NO;
         }
-    }
-    //zwl 16-01-13
-    if(textField == JiangqiChoose && str2.length == 1)
-    {
-        if( [string isEqualToString:@""])
-        {
-            appendstrqi = @"";
-        }else
-        {
-            appendstrqi = str2;
-        }
-    }
-    
-    if([_lottery.identifier isEqualToString:@"SX115"]|| [_lottery.identifier isEqualToString:@"SD115"])
-    {
-        if (textField == JiangqiChoose && ![string isEqualToString:@""]){
-            if (str2.length > 1 && ![string isEqualToString:@""])
-            {
-                return NO;
-            }
-        }
-    }
-    else if([_lottery.identifier isEqualToString:@"DLT"])
-    {
-        if (textField == JiangqiChoose && ![string isEqualToString:@""]){
-            if (str2.length > 1 && ![string isEqualToString:@""])
-            {
-                if([appendstrqi integerValue]>15 || ([appendstrqi integerValue]==15 && [string integerValue] > 4))
-                {
-                    return NO;
-                }
-            }
-            if (str2.length > 2 && ![string isEqualToString:@""])
-            {
-                return NO;
-            }
-        }
-    }
-    
-    if([BeiChoose.text isEqualToString:@""])
-    {
-        appendstrbei = @"";
-    }
-    if([JiangqiChoose.text isEqualToString:@""])
-    {
-        appendstrqi = @"";
-        WinStop.hidden = YES;
-        WinStoplabel.hidden = YES;
-    }
-    if([string isEqualToString:@""])
-    {
-        
-        if(textField.tag == 2)
-        {
-            NSInteger j = appendstrqi.length-1;
-            if(j>0)
-            {
-                appendstrqi = [appendstrqi substringToIndex:j];
-            }
-            if([appendstrqi intValue]>1)
-            {
-                WinStop.hidden = NO;
-                WinStoplabel.hidden = NO;
-            }
-            else
-            {
-                WinStop.hidden = YES;
-                WinStoplabel.hidden = YES;
-            }
-        }
-        else
-        {
-            NSInteger i = appendstrbei.length-1;
-            if(i>0)
-            {
-                appendstrbei = [appendstrbei substringToIndex:i];
-                
-            }
-        }
-        
-    }
-    else{
-        NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
-        BOOL isMatch = [pred evaluateWithObject:string];
-        if(!isMatch)
-        {
-            return isMatch;
-        }
-        if(textField.tag == 2)
-        {
-            if([_lottery.identifier isEqualToString:@"SX115"]|| [_lottery.identifier isEqualToString:@"SD115"])
-            {
-                if(appendstrqi.length > 1)
-                {
-                    return NO;
-                }
-            }
-            else if([_lottery.identifier isEqualToString:@"DLT"])
-            {
-                if(appendstrqi.length > 2)
-                {
-                    return NO;
-                }
-            }
-            appendstrqi = [appendstrqi stringByAppendingString:string];
-            if([appendstrqi intValue]>1)
-            {
-                WinStop.hidden = NO;
-                WinStoplabel.hidden = NO;
-            }
-            else
-            {
-                WinStop.hidden = YES;
-                WinStoplabel.hidden = YES;
-            }
-        }
-        else
-        {
-            if(appendstrbei.length > 3)
-            {
-                return NO;
-            }
-            appendstrbei = [appendstrbei stringByAppendingString:string];
-        }
-    }
-    if([appendstrqi isEqualToString:@""])
-    {
-        appendstrqi = @"1";
-        WinStop.hidden = YES;
-        WinStoplabel.hidden = YES;
-    }
-    if([appendstrbei isEqualToString:@""])
-    {
-        NSLog(@"\n=============1. bei0  :[%@]\n",appendstrbei);
-        appendstrbei = @"1";
-    }
-    //获得剩余奖期
-    NSString * curRoundnum = [_lottery.currentRound valueForKey:@"issueNumber"];
-    NSInteger length = [curRoundnum length];
-    NSString *strcut = [curRoundnum substringFromIndex:length-2];
-    int intString = [strcut intValue];
-    unsigned long curiss = intString;
-    int surplusissue =[appendstrqi intValue];
-    if (textField == JiangqiChoose) {
-        if([_lottery.identifier isEqualToString:@"SX115"]|| [_lottery.identifier isEqualToString:@"SD115"])
-        {
-            if(surplusissue >= MAXQI11X5 - curiss + 1)
-            {
-                strcuriss = [NSString stringWithFormat:@"%lu", (MAXQI11X5 - curiss + 1)];
-                appendstrqi = strcuriss;
-                if([appendstrqi intValue]>1)
-                {
-                    WinStop.hidden = NO;
-                    WinStoplabel.hidden = NO;
-                }
-                JiangqiChoose.text = strcuriss;
-                NSString *Maxissue =  [NSString stringWithFormat:@"今日最大可追%lu期，系统不支持跨日追号", MAXQI11X5 - curiss + 1];
-                [self showPromptText:Maxissue hideAfterDelay:1.7];
-                //                return NO;
-            }
-        }
-        else if([_lottery.identifier isEqualToString:@"DLT"])
-        {
-            if(surplusissue > 154 - curiss)
-            {
-                strcuriss = [NSString stringWithFormat:@"%lu", (154 - curiss)];
-                appendstrqi = strcuriss;
-                if([appendstrqi intValue]>1)
-                {
-                    WinStop.hidden = NO;
-                    WinStoplabel.hidden = NO;
-                }
-                JiangqiChoose.text = strcuriss;
-                NSString *Maxissue =  [NSString stringWithFormat:@"今日最大可追%lu期，系统不支持跨日追号", 154 - curiss];
-                [self showPromptText:Maxissue hideAfterDelay:1.7];
-                //                return NO;
-            }
-        }
-    }
-    NSLog(@"-------[%@]",appendstrbei);
-    int beiTouCount = [appendstrbei intValue];
-    int qiShuCount = [appendstrqi intValue];
-    if([appendstrbei intValue] == 0)
-    {
-        NSLog(@"\n=============2. bei0  :[%@]\n",appendstrbei);
-        beiTouCount = 1;
-    }
-    if([appendstrqi intValue] == 0)
-    {
-        qiShuCount = 1;
-    }
-    
-    self.transaction.beiTouCount = beiTouCount;
-    self.transaction.qiShuCount = qiShuCount;
-    _multiple = beiTouCount;
-    _issue = qiShuCount;
-    
-    //判断期号大于1显示中奖停追按钮
-    if(_issue > 1)
-    {
-        
-        if([_lottery.identifier isEqualToString:@"SX115"]|| [_lottery.identifier isEqualToString:@"SD115"])
-        {
-            WinStop.hidden = NO;
-            WinStoplabel.hidden = NO;
-            betOptionfunViewHeight.constant = 120;
-            
-            lineBottom.constant = betOptionfunViewHeight.constant;
-            
-            tableviewBottom.constant = betOptionfunViewHeight.constant;
-            tableViewContentBottom .constant = 0;
-            
-            
-            frame4.origin.y = 79;
-            
-            zhuihaoBtn.frame = frame4;
-            totalframe.origin.y = 78;
-            totalabel.frame = totalframe;
-            beiqiframe.origin.y = 96;
-            beiqilabel.frame = beiqiframe;
-            splitLineframe.origin.y = 71;
-            splitLine.frame = splitLineframe;
-        }
-        else
-        {
-            lineBottom.constant = 90;
-        }
-    }
-    NSLog(@"self.transaction.beiTouCount is %d,self.transaction.qiShuCount %d",self.transaction.beiTouCount,self.transaction.qiShuCount);
-    totalabel.attributedText = [self.transaction getTouZhuSummaryText2];
-    beiqilabel.attributedText = [self.transaction getTouZhuSummaryText1];
-    totalabel.textAlignment = NSTextAlignmentCenter;
-    beiqilabel.textAlignment = NSTextAlignmentCenter;
-    if (textField == JiangqiChoose) {
+    } else {
+        //获得剩余奖期
+        NSString * curRoundnum = [_lottery.currentRound valueForKey:@"issueNumber"];
+        NSInteger length = [curRoundnum length];
+        NSString *strcut = [curRoundnum substringFromIndex:length-2];
+        unsigned long curiss = [strcut intValue];
+        unsigned long count;
         if([_lottery.identifier isEqualToString:@"SX115"])
         {
-            if(surplusissue >= MAXQI11X5 - curiss + 1)
-            {
-                return NO;
-            }
-        }else if ( [_lottery.identifier isEqualToString:@"SD115"]){
-            if(surplusissue >= MAXQISD11X5 - curiss + 1)
-            {
-                return NO;
-            }
-        }else if([_lottery.identifier isEqualToString:@"DLT"])
+            count = MAXQI11X5 - curiss + 1;
+            
+        }else{
+            count = MAXQISD11X5 - curiss + 1;
+        }
+        if(num >= count)
         {
-            if(surplusissue > 154 - curiss)
-            {
-                return NO;
-            }
+            tfQiText.text = [NSString stringWithFormat:@"%lu", count];
+            [self showPromptText:[NSString stringWithFormat:@"今日最大可追%lu期，系统不支持跨日追号", count] hideAfterDelay:1.7];
+            [self performSelector:@selector(updateSummary) withObject:nil afterDelay:0.1];
+            return NO;
+        }
+        limitNum = 99;
+        if (num > limitNum) {
+            [self showPromptText:[NSString stringWithFormat:@"最大可追%ld期",limitNum] hideAfterDelay:1.8];
+            return NO;
         }
     }
     
-    
+    [self performSelector:@selector(updateSummary) withObject:nil afterDelay:0.1];
     if ([string isEqualToString:@""]) {
         return YES;
     }
     if ([textField.text isEqualToString:@""]&&[string isEqualToString:@"0"]) {
         return NO;
     }
+    NSString * regex;
+    regex = @"^[0-9]";
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
     BOOL isMatch = [pred evaluateWithObject:string];
     return isMatch;
 }
-- (void)textInputFromPopView:(NSString *)text{
-    
-}
+
 
 -(void)initediateScheme:(NSString *)schemeNO{
     
