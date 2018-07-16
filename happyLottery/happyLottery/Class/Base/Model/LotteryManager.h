@@ -169,6 +169,7 @@ typedef enum EarningsType{
 - (void)listRechargeHandsel;
 
 -(void)getCommonSetValue:(NSDictionary *)para;
+- (void) betChaseSchemeZhineng:(LotteryTransaction *)transcation andchaseList:(NSArray *)chaseList;
 
 @end
 

@@ -34,7 +34,7 @@
     [TitleLabel setTextColor:[UIColor whiteColor]];
     UIImageView *ImageViewTitle =
     [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, container.bounds.size.width, 40)];
-    ImageViewTitle.backgroundColor = TextCharColor;
+    ImageViewTitle.backgroundColor = SystemGreen;
     [ImageViewTitle addSubview:TitleLabel];
     [container addSubview:ImageViewTitle];
     //连续追号，起始倍数、预期盈利，根据弹出视图大小，动态确定每行宽度，具体为view高度减去标题及底部按钮后等分
@@ -56,13 +56,13 @@
     beishuView.backgroundColor = [UIColor whiteColor];
     //期号减，倍数减
     _issuedownBtn = [[UIButton alloc]initWithFrame:CGRectMake(102, 1+y-40, 30, 30)];
-    [_issuedownBtn setImage:[UIImage imageNamed:@"smartfollow_sub_icon.png"] forState:UIControlStateNormal];
-    [_issuedownBtn setImage:[UIImage imageNamed:@"smartfollow_sub_press.png"] forState:UIControlStateHighlighted];
+    [_issuedownBtn setImage:[UIImage imageNamed:@"touzhubeishujian.png"] forState:UIControlStateNormal];
+    [_issuedownBtn setImage:[UIImage imageNamed:@"touzhubeishujian.png"] forState:UIControlStateHighlighted];
     
     [_issuedownBtn addTarget: self action: @selector(issuedownBtnClick) forControlEvents: UIControlEventTouchUpInside];
     _beishudownBtn = [[UIButton alloc]initWithFrame:CGRectMake(102, 1+y+y-40, 30, 30)];
-    [_beishudownBtn setImage:[UIImage imageNamed:@"smartfollow_sub_icon.png"] forState:UIControlStateNormal];
-    [_beishudownBtn setImage:[UIImage imageNamed:@"smartfollow_sub_press.png"] forState:UIControlStateHighlighted];
+    [_beishudownBtn setImage:[UIImage imageNamed:@"touzhubeishujian.png"] forState:UIControlStateNormal];
+    [_beishudownBtn setImage:[UIImage imageNamed:@"touzhubeishujian.png"] forState:UIControlStateHighlighted];
     
     [_beishudownBtn addTarget: self action: @selector(beishudownBtnClick) forControlEvents: UIControlEventTouchUpInside];
     //倍数label
@@ -85,13 +85,13 @@
     _beishuLabel.textColor = TEXTGRAYCOLOR;
     //期号加，倍数加
     _issueUpBtn = [[UIButton alloc]initWithFrame:CGRectMake(171,1+y-40, 30, 30)];
-    [_issueUpBtn setImage:[UIImage imageNamed:@"smartfollow_add_icon.png"] forState:UIControlStateNormal];
-    [_issueUpBtn setImage:[UIImage imageNamed:@"smartfollow_add_pressed.png"] forState:UIControlStateHighlighted];
+    [_issueUpBtn setImage:[UIImage imageNamed:@"touzhubeishujia.png"] forState:UIControlStateNormal];
+    [_issueUpBtn setImage:[UIImage imageNamed:@"touzhubeishujia.png"] forState:UIControlStateHighlighted];
     [_issueUpBtn addTarget: self action: @selector(issueUpBtnClick) forControlEvents: UIControlEventTouchUpInside];
     
     _beishuUpBtn = [[UIButton alloc]initWithFrame:CGRectMake(171,1+y+y-40, 30, 30)];
-    [_beishuUpBtn setImage:[UIImage imageNamed:@"smartfollow_add_icon.png"] forState:UIControlStateNormal];
-    [_beishuUpBtn setImage:[UIImage imageNamed:@"smartfollow_add_pressed.png"] forState:UIControlStateHighlighted];
+    [_beishuUpBtn setImage:[UIImage imageNamed:@"touzhubeishujia.png"] forState:UIControlStateNormal];
+    [_beishuUpBtn setImage:[UIImage imageNamed:@"touzhubeishujia.png"] forState:UIControlStateHighlighted];
     [_beishuUpBtn addTarget: self action: @selector(beishuUpBtnClick) forControlEvents: UIControlEventTouchUpInside];
     
     UILabel* isslabel;
@@ -286,8 +286,8 @@
     [CancelBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [CancelBtn setTitleColor:TEXTGRAYCOLOR forState:UIControlStateHighlighted];
     
-    [submitBtn setBackgroundImage:[UIImage imageNamed:@"orangeBackground"] forState:UIControlStateNormal];
-    [submitBtn setBackgroundImage:[UIImage imageNamed:@"whiteBackground"] forState:UIControlStateHighlighted];
+    [submitBtn setBackgroundImage:[UIImage imageWithColor:SystemGreen] forState:UIControlStateNormal];
+    [submitBtn setBackgroundImage:[UIImage imageWithColor:SystemGreen] forState:UIControlStateHighlighted];
     [submitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [submitBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
     submitBtn.titleLabel.textAlignment = NSTextAlignmentCenter;

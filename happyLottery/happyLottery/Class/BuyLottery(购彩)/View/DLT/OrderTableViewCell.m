@@ -57,7 +57,12 @@
         }
         if ([order.lotteryCode isEqualToString:@"SSQ"]) {
             lotteryTypeLb.text = [NSString stringWithFormat:@"双色球"];
-            
+        }
+        if ([order.lottery isEqualToString:@"SX115"]) {
+            lotteryTypeLb.text = [NSString stringWithFormat:@"陕西11选5"];
+        }
+        if ([order.lottery isEqualToString:@"SD115"]) {
+            lotteryTypeLb.text = [NSString stringWithFormat:@"山东11选5"];
         }
             
         
@@ -87,15 +92,23 @@
         if ([order.playType isEqualToString:@"1"]) {
             if ([order.lotteryCode isEqualToString:@"SSQ"]) {
                 issueNumLb.text = [NSString stringWithFormat:@"双色球(追加)"];
-            } else {
+            }else  if ([order.lotteryCode isEqualToString:@"DLT"]){
                 issueNumLb.text = [NSString stringWithFormat:@"超级大乐透(追加)"];
+            }else  if ([order.lotteryCode isEqualToString:@"SX115"]){
+                issueNumLb.text = [NSString stringWithFormat:@"陕西11选5"];
+            }else  if ([order.lotteryCode isEqualToString:@"SD115"]){
+                issueNumLb.text = [NSString stringWithFormat:@"山东11选5"];
             }
             
         } else {
             if ([order.lotteryCode isEqualToString:@"SSQ"]) {
                 issueNumLb.text = [NSString stringWithFormat:@"双色球"];
-            } else {
+            }else  if ([order.lotteryCode isEqualToString:@"DLT"]){
                 issueNumLb.text = [NSString stringWithFormat:@"超级大乐透"];
+            }else  if ([order.lotteryCode isEqualToString:@"SX115"]){
+                issueNumLb.text = [NSString stringWithFormat:@"陕西11选5"];
+            }else  if ([order.lotteryCode isEqualToString:@"SD115"]){
+                issueNumLb.text = [NSString stringWithFormat:@"山东11选5"];
             }
         }
 //        issueNumLb.text = [NSString stringWithFormat:@"%@",order.catchplaytype];
@@ -109,7 +122,7 @@
         {
             winningStateLb.text = [NSString stringWithFormat:@"投注%@元",order.sumSub];
         }
-        if ([order.lotteryType isEqualToString:@"DLT"]||[order.lotteryType isEqualToString:@"dlt"]||[order.name isEqualToString:@"大乐透"]||[order.lotteryType isEqualToString:@"SSQ"]){
+        if ([order.lotteryType isEqualToString:@"DLT"]||[order.lotteryType isEqualToString:@"dlt"]||[order.name isEqualToString:@"大乐透"]||[order.lotteryType isEqualToString:@"SSQ"] || [order.lotteryType isEqualToString:@"SD115"] || [order.lotteryType isEqualToString:@"SX115"]){
             issueNumLb.hidden = YES;
             
         }else{

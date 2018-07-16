@@ -263,6 +263,40 @@
                         failure:failureBlock];
 }
 
+- (void) betChaseSchemeZhineng:(LotteryTransaction *)transcation andchaseList:(NSArray *)chaseList{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed) {
+            [self.delegate betedChaseScheme:responseJsonStr errorMsg:response.errorMsg];
+        } else {
+            [self.delegate betedChaseScheme:nil errorMsg:response.errorMsg];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        [self.delegate betedLotteryScheme:nil errorMsg:response.errorMsg];
+    };
+    
+    NSDictionary *chaseContent = [transcation lottDataSchemeZhiNeng];
+    
+    NSMutableDictionary *subSchemeDic = [transcation getDLTChaseScheme];
+    
+    subSchemeDic[@"chaseContent"] = [self JsonFromId:chaseContent];
+    if (chaseList != nil) {
+        subSchemeDic[@"chaseList"] = chaseList;
+    }
+    
+    SOAPRequest *request = [self requestForAPI: APIbetChaseScheme withParam:@{@"params":[self actionEncrypt:[self JsonFromId:subSchemeDic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPISchemeService
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
 - (void) betChaseScheme:(LotteryTransaction *)transcation{
     void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
     {

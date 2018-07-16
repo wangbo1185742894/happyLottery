@@ -56,7 +56,7 @@
     BOOL flag;
     BOOL poptype;
 
-    LotteryManager *lotteryMan;
+    
     NSInteger Maxprize;//最大中奖金额
     NSInteger maxwin;//最大中奖注数
     NSInteger  Maxmulcount;
@@ -69,7 +69,7 @@
     NSString *strcurRound;
     
     NSArray * PushData;
-    MemberManager * memberManage;
+    
     WBInputPopView *passInput;
     __weak IBOutlet NSLayoutConstraint *bottomDis;
 }
@@ -81,13 +81,14 @@
     [super viewDidLoad];
     _multiple = 1;
     _issue = 10;
-    memberManage = [[MemberManager alloc] init];
-    memberManage.delegate = self;
+    self.lotteryMan.delegate = self;
+    self.memberMan.delegate = self;
     
     [self loadUI];
     self.viewControllerNo = @"A109";
     self.title = @"追号设置";
-    
+    topDis.constant= NaviHeight;
+    bottomDis.constant = BOTTOM_BAR_HEIGHT;
     
     NSString * curRoundnum = [_lottery.currentRound valueForKey:@"issueNumber"];
     strcurRound = curRoundnum;//纪录期号，变化后更新
@@ -115,8 +116,6 @@
     [self getPlayType:0];//得到最大中奖金额Maxprize
     [self schemeValue:1 lowprofit:_lowrate];//默认全程最低盈利率
     
-    lotteryMan = [[LotteryManager alloc] init];
-    lotteryMan.delegate = self;
     ContentView.backgroundColor = RGBCOLOR(250, 250, 250);
     UIButton *optionButton = [UIButton buttonWithType: UIButtonTypeSystem];
     optionButton.frame = CGRectMake(0, 0, 80, 44);
@@ -166,8 +165,6 @@
 - (void)loadConentView:(float)curY{
     
     //清空、确认按钮
-    [SubmitBtn setTitle: TitleDo forState: UIControlStateNormal];
-    [ClearBtn setTitle: TextBetListCleanButtonTitle forState: UIControlStateNormal];
     
     [SubmitBtn addTarget: self action: @selector(SubmitBtnClick) forControlEvents: UIControlEventTouchUpInside];
     [ClearBtn addTarget: self action: @selector(clearBtnClick) forControlEvents: UIControlEventTouchUpInside];
@@ -185,7 +182,7 @@
     NSString * lotteryIdentify = _lottery.identifier;
     //add this phase information
     //期号: 054   距截止还有 1天5小时
-    if ([lotteryIdentify isEqualToString:@"DLT"] || [lotteryIdentify isEqualToString:@"SX115"]) {
+    if ([lotteryIdentify isEqualToString:@"SD115"] || [lotteryIdentify isEqualToString:@"SX115"]) {
         [self loadphaseInfoView];
         CGRect phaseSectionFrame = CGRectMake(0, 0, KscreenWidth, 0);
         phaseSectionFrame.origin.y = 10;
@@ -210,8 +207,8 @@
         UIView *beishuview = [[UIView alloc]initWithFrame:CGRectMake(10+30+5, phaseSectionFrame.origin.y+30+27, 90, 37)];
         //倍数减小按钮
         UIButton *beishudownBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 3, 25, 25)];
-        [beishudownBtn setImage:[UIImage imageNamed:@"smartfollow_sub_icon.png"] forState:UIControlStateNormal];
-        [beishudownBtn setImage:[UIImage imageNamed:@"smartfollow_sub_press.png"] forState:UIControlStateHighlighted];
+        [beishudownBtn setImage:[UIImage imageNamed:@"touzhubeishujian.png"] forState:UIControlStateNormal];
+        [beishudownBtn setImage:[UIImage imageNamed:@"touzhubeishujian.png"] forState:UIControlStateHighlighted];
         [beishudownBtn addTarget: self action: @selector(beishudownBtnClick) forControlEvents: UIControlEventTouchUpInside];
         //中间显示框
         beishuChoose = [[UILabel alloc]initWithFrame:CGRectMake(beishudownBtn.bounds.size.width-1, 3, 25, 25)];
@@ -225,8 +222,8 @@
         //倍数、期号
 
         UIButton *beishuUpBtn = [[UIButton alloc]initWithFrame:CGRectMake(beishuview.bounds.size.width-41, 3, 25, 25)];
-        [beishuUpBtn setImage:[UIImage imageNamed:@"smartfollow_add_icon.png"] forState:UIControlStateNormal];
-        [beishuUpBtn setImage:[UIImage imageNamed:@"smartfollow_add_pressed.png"] forState:UIControlStateHighlighted];
+        [beishuUpBtn setImage:[UIImage imageNamed:@"touzhubeishujia.png"] forState:UIControlStateNormal];
+        [beishuUpBtn setImage:[UIImage imageNamed:@"touzhubeishujia.png"] forState:UIControlStateHighlighted];
         [beishuUpBtn addTarget: self action: @selector(beishuUpBtnClick) forControlEvents: UIControlEventTouchUpInside];
         
         [beishuview addSubview:beishudownBtn];
@@ -245,8 +242,8 @@
         UIView *Jiangqiview = [[UIView alloc]initWithFrame:CGRectMake(beishuview.bounds.origin.x+beishuview.bounds.size.width+90, phaseSectionFrame.origin.y+30+27, 90, 37)];
         //奖期减小按钮
         UIButton *JiangqidownBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 3, 25, 25)];
-        [JiangqidownBtn setImage:[UIImage imageNamed:@"smartfollow_sub_icon.png"] forState:UIControlStateNormal];
-        [JiangqidownBtn setImage:[UIImage imageNamed:@"smartfollow_sub_press.png"] forState:UIControlStateHighlighted];
+        [JiangqidownBtn setImage:[UIImage imageNamed:@"touzhubeishujian.png"] forState:UIControlStateNormal];
+        [JiangqidownBtn setImage:[UIImage imageNamed:@"touzhubeishujian.png"] forState:UIControlStateHighlighted];
         [JiangqidownBtn addTarget: self action: @selector(JiangqidownBtnClick) forControlEvents: UIControlEventTouchUpInside];
         //中间显示框
         JiangqiChoose = [[UILabel alloc]initWithFrame:CGRectMake(beishudownBtn.bounds.size.width-1, 3, 25, 25)];
@@ -260,14 +257,17 @@
 //        JiangqiChoose.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"input_bg_normal.9.png"]];
         //奖期增加按钮
         UIButton *JiangqiUpBtn = [[UIButton alloc]initWithFrame:CGRectMake(beishuview.bounds.size.width-41, 3, 25+SEPHEIGHT, 25)];
-        [JiangqiUpBtn setImage:[UIImage imageNamed:@"smartfollow_add_icon.png"] forState:UIControlStateNormal];
-        [JiangqiUpBtn setImage:[UIImage imageNamed:@"smartfollow_add_pressed.png"] forState:UIControlStateHighlighted];
+        [JiangqiUpBtn setImage:[UIImage imageNamed:@"touzhubeishujia.png"] forState:UIControlStateNormal];
+        [JiangqiUpBtn setImage:[UIImage imageNamed:@"touzhubeishujia.png"] forState:UIControlStateHighlighted];
         [JiangqiUpBtn addTarget: self action: @selector(JiangqiUpBtnClick) forControlEvents: UIControlEventTouchUpInside];
         //奖金优化按钮
-        UIButton *JoptimizeBtn = [[UIButton alloc]initWithFrame:CGRectMake(KscreenWidth-80, phaseSectionFrame.origin.y+30+29, 80, 25)];
-        [JoptimizeBtn setTitle:@"优化方案 >" forState:UIControlStateNormal];
+        UIButton *JoptimizeBtn = [[UIButton alloc]initWithFrame:CGRectMake(KscreenWidth-100, phaseSectionFrame.origin.y+30+29, 80, 25)];
+        [JoptimizeBtn setTitle:@"优化方案" forState:UIControlStateNormal];
         JoptimizeBtn.titleLabel.textAlignment = NSTextAlignmentRight;
-        [JoptimizeBtn setTitleColor:TextCharColor forState:UIControlStateNormal];
+        [JoptimizeBtn setBackgroundImage:[UIImage imageWithColor:RGBCOLOR(252, 148, 18)] forState:UIControlStateNormal];
+        JoptimizeBtn .layer.cornerRadius = 3;
+        JoptimizeBtn.layer.masksToBounds = YES;
+        [JoptimizeBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         JoptimizeBtn.titleLabel.font = [UIFont systemFontOfSize:13];
         [JoptimizeBtn addTarget: self action: @selector(JoptimizeBtnClick) forControlEvents: UIControlEventTouchUpInside];
         
@@ -510,7 +510,7 @@
     numlabel.textAlignment = NSTextAlignmentCenter;
     numlabel.font = [UIFont systemFontOfSize:13];
     numlabel.textColor = TEXTGRAYCOLOR;
-    numlabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
+    numlabel.backgroundColor =RGBCOLOR(250, 250, 250);
     numlabel.tag = j;
     //期号
     isslabel = [[UILabel alloc]initWithFrame:CGRectMake(35, 45*j,34,45)];
@@ -528,20 +528,20 @@
     NSString *str = [NSString stringWithFormat:@"%u",(unsigned int)(intString+j)];
     isslabel.text = str;
     isslabel.textAlignment = NSTextAlignmentCenter;
-    isslabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
+    isslabel.backgroundColor = RGBCOLOR(250, 250, 250);
     isslabel.font = [UIFont systemFontOfSize:13];
     isslabel.textColor = TEXTGRAYCOLOR;
     isslabel.tag = j;
     //倍数减小
     SbeishudownBtn = [[UIButton alloc]initWithFrame:CGRectMake(35*2, 45*j+10, 25, 25)];
-    [SbeishudownBtn setImage:[UIImage imageNamed:@"smartfollow_sub_icon.png"] forState:UIControlStateNormal];
-    [SbeishudownBtn setImage:[UIImage imageNamed:@"smartfollow_sub_press.png"] forState:UIControlStateHighlighted];
+    [SbeishudownBtn setImage:[UIImage imageNamed:@"touzhubeishujian.png"] forState:UIControlStateNormal];
+    [SbeishudownBtn setImage:[UIImage imageNamed:@"touzhubeishujian.png"] forState:UIControlStateHighlighted];
     SbeishudownBtn.tag = j;
     [SbeishudownBtn addTarget: self action: @selector(SbeishudownBtnClick:) forControlEvents: UIControlEventTouchUpInside];
     //倍数加
     SbeishuUpBtn = [[UIButton alloc]initWithFrame:CGRectMake(150-25, 45*j+10, 25+SEPHEIGHT, 25)];
-    [SbeishuUpBtn setImage:[UIImage imageNamed:@"smartfollow_add_icon.png"] forState:UIControlStateNormal];
-    [SbeishuUpBtn setImage:[UIImage imageNamed:@"smartfollow_add_pressed.png"] forState:UIControlStateHighlighted];
+    [SbeishuUpBtn setImage:[UIImage imageNamed:@"touzhubeishujia.png"] forState:UIControlStateNormal];
+    [SbeishuUpBtn setImage:[UIImage imageNamed:@"touzhubeishujia.png"] forState:UIControlStateHighlighted];
     SbeishuUpBtn.tag = j;
     [SbeishuUpBtn addTarget: self action: @selector(SbeishuUpBtnClick:) forControlEvents: UIControlEventTouchUpInside];
     [SbeishuUpBtn setTag:j];
@@ -584,16 +584,16 @@
             profitlabel = [[UILabel alloc]initWithFrame:CGRectMake(152+X, 45*num+7,X-2, 30)];
             ratelabel = [[UILabel alloc]initWithFrame:CGRectMake(153+2*X, 45*num+7,X-1, 30)];
             
-            expenselabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
+            expenselabel.backgroundColor = RGBCOLOR(250, 250, 250);
             expenselabel.textAlignment = NSTextAlignmentCenter;
             expenselabel.textColor = TEXTGRAYCOLOR;
             expenselabel.font = [UIFont systemFontOfSize:13];
             
-            profitlabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
+            profitlabel.backgroundColor = RGBCOLOR(250, 250, 250);
             profitlabel.textAlignment = NSTextAlignmentCenter;
             profitlabel.font = [UIFont systemFontOfSize:13];
             
-            ratelabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
+            ratelabel.backgroundColor = RGBCOLOR(250, 250, 250);
             ratelabel.textAlignment = NSTextAlignmentCenter;
             ratelabel.font = [UIFont systemFontOfSize:13];
             
@@ -657,23 +657,22 @@
         Allexpense = total;
     }
     
-    expenselabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
+    expenselabel.backgroundColor = RGBCOLOR(250, 250, 250);
     expenselabel.textAlignment = NSTextAlignmentCenter;
     expenselabel.textColor = TEXTGRAYCOLOR;
     expenselabel.font = [UIFont systemFontOfSize:13];
     
-    profitlabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
+    profitlabel.backgroundColor = RGBCOLOR(250, 250, 250);
     profitlabel.textAlignment = NSTextAlignmentCenter;
     profitlabel.font = [UIFont systemFontOfSize:13];
     
-    ratelabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]];
+    ratelabel.backgroundColor = RGBCOLOR(250, 250, 250);
     ratelabel.textAlignment = NSTextAlignmentCenter;
     ratelabel.font = [UIFont systemFontOfSize:13];
     
     //bottom label text
     bottomLabel.text = [NSString stringWithFormat:@"共追%lu期,共需%.1f元",(unsigned long)_issue,Allexpense*2.0*_zhushu];
-    bottomLabel.textColor = TEXTGRAYCOLOR;
-    bottomLabel.font = [UIFont systemFontOfSize:13];
+    bottomLabel.font = [UIFont systemFontOfSize:15];
     
     [_scrollView addSubview:numlabel];
     [_scrollView addSubview:isslabel];
@@ -1475,8 +1474,34 @@
             return;
         }
     }
+    [self  updateMemberClinet];
     
 }
+
+-(void)updateMemberClinet{
+    
+    NSDictionary *MemberInfo;
+    NSString *cardCode =self.curUser.cardCode;
+    if (cardCode == nil) {
+        return;
+    }
+    MemberInfo = @{@"cardCode":cardCode
+                   };
+    [self.memberMan getMemberByCardCodeSms:(NSDictionary *)MemberInfo];
+}
+-(void)getMemberByCardCodeSms:(NSDictionary *)memberInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    
+    NSLog(@"memberInfo%@",memberInfo);
+    if ([msg isEqualToString:@"执行成功"]) {
+        // [self showPromptText: @"memberInfo成功" hideAfterDelay: 1.7];
+        User *user = [[User alloc]initWith:memberInfo];
+        [self payJudge];
+    }else{
+        [self showPromptText: msg hideAfterDelay: 1.7];
+    }
+}
+
+
 - (void)instance:(GlobalInstance *)instance RefreshedUserInfo:(User *)user{
     [self payJudge];
     
@@ -1537,20 +1562,7 @@
 
 -(void)actionTouZhu
 {
-    if ([_lottery.identifier isEqualToString:@"SX115"] ) {
-        [self setZNZHDic];
-    }
-
-//    AppDelegate *myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//    if (myDelegate.ZHDic[@"catchList"]!=nil) {
-//        for (NSDictionary *dic in myDelegate.ZHDic[@"catchList"]) {
-//            if ([dic[@"mutiple"] integerValue] * [dic[@"units"] integerValue] * 2 >20000)  {
-//                [self showPromptText:@"单期投注金额不能超过2万" hideAfterDelay:1.7];
-//                return;
-//            }
-//        }
-//    }
-    
+    [self setZNZHDic];
     
     if ([self isExceedLimitAmount]) {
         [self showPromptText:TextTouzhuExceedLimit hideAfterDelay:1.7];
@@ -1569,6 +1581,7 @@
             isNeedPayPasswordVerify = YES;
             break;
         }
+            
         case PayVerifyTypeAlwaysNo:{
             isNeedPayPasswordVerify = NO;
             break;
@@ -1624,10 +1637,21 @@
 {
     AppDelegate *myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     //用户名
-    [myDelegate.ZHDic setObject:self.curUser.cardCode == nil?@"":self.curUser.cardCode forKey:@"cardCode"];
     
     
+    NSString *username = self.curUser.cardCode;
+    [myDelegate.ZHDic setObject:username forKey:@"cardCode"];
+    self.transaction.qiShuCount = (int)[self getZhuiHaoInfo].count;
+    if (WinStop.selected == YES) {
+        self.transaction.winStopStatus = WINSTOP;
+    }else{
+        self.transaction.winStopStatus = NOTSTOP;
+    }
+    
+    [self.lotteryMan betChaseSchemeZhineng:self.transaction andchaseList:[self getZhuiHaoInfo]];
 }
+
+
 
 //10.30
 - (void)showPayPopView{
@@ -2035,7 +2059,7 @@
     
     phaseInfoView = [[LotteryPhaseInfoView alloc] initWithFrame: phaseSectionFrame];
     phaseInfoView.delegate = self;
-    [phaseInfoView drawWithLottery: self.lottery];
+    [phaseInfoView drawWithLotteryNoButton: self.lottery];
     [ContentView addSubview: phaseInfoView];
     
 //    if (!_lottery.currentRound) {
@@ -2054,7 +2078,7 @@
         
     }
 }
-    
+
 - (void) getCurrentRound{
     
 }
@@ -2093,13 +2117,14 @@
     
 }
 
--(NSDictionary*)getZhuiHaoInfo
+-(NSArray*)getZhuiHaoInfo
 {
     AppDelegate *myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSMutableArray *issueMultiple = [NSMutableArray arrayWithCapacity:0];
     NSArray *catchList = myDelegate.ZHDic[@"catchList"];
-    NSInteger cost  = Allexpense*2.0*_zhushu/catchList.count;
+    
     for (NSDictionary *dic in catchList) {
+        NSInteger cost  = [dic[@"mutiple"] doubleValue]*  [dic[@"units"] doubleValue] * 2;
         NSDictionary * temp = @{@"issueNumber":dic[@"issueNumber"],
                                 @"multiple":dic[@"mutiple"],
                                 @"units":dic[@"units"],
@@ -2109,22 +2134,23 @@
         [issueMultiple addObject:temp];
     }
     
-    return  @{                   @"winStopStatus":myDelegate.ZHDic[@"winStopStatus"],
-                                 
-                                 @"playType":myDelegate.ZHDic[@"playType"],
-                                 @"betType":myDelegate.ZHDic[@"betType"],
-                                 
-                                 @"totalCatch":myDelegate.ZHDic[@"totalCatch"],
-                                 @"lottery":myDelegate.ZHDic[@"lottery"],
-                                 @"chaseList":issueMultiple,
-                                 @"chaseContent":myDelegate.ZHDic[@"catchContent"],
-                                 @"cardCode":myDelegate.ZHDic[@"cardCode"],
-                                 @"betSource":@"2",
-                                 @"beginIssue":myDelegate.ZHDic[@"beginIssue"]
-                                 };
+    return issueMultiple;
     
 }
 
+
+-(void)betedChaseScheme:(NSString *)schemeNO errorMsg:(NSString *)msg{
+    [self hideLoadingView];
+    if (schemeNO == nil) {
+        [self showPromptText:msg hideAfterDelay:1.8];
+        return;
+    }
+    ZhuiHaoInfoViewController * betInfoViewCtr = [[ZhuiHaoInfoViewController alloc] initWithNibName:@"ZhuiHaoInfoViewController" bundle:nil];
+    
+    //    betInfoViewCtr.ZHflag = YES;
+    betInfoViewCtr.from = YES;
+    [self.navigationController pushViewController:betInfoViewCtr animated:YES];
+}
 
 
 @end

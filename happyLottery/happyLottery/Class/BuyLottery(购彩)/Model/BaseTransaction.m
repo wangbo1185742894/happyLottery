@@ -12,9 +12,36 @@
 
 @implementation BaseTransaction
 
+-(NSString*)X115PlayTypeValue:(NSNumber *)key{
+    
+    NSDictionary *valueDic =  @{@"201":@"0",
+             @"202":@"1",
+             @"203":@"2",
+             @"204":@"3",
+             @"205":@"4",
+             @"206":@"5",
+             @"207":@"6",
+             @"208":@"7",
+             @"212":@"8",
+             @"213":@"9",
+             @"214":@"10",
+             @"215":@"11",
+             @"216":@"12",
+             @"217":@"13",
+             @"220":@"14",
+             @"230":@"15",
+             @"221":@"16",
+             @"231":@"17",
+
+             };
+    
+    NSString *strkey = [NSString stringWithFormat:@"%@",key];
+    return valueDic[strkey];
+}
+
 -(NSDictionary*)X115PlayType{
 
-    return @{@"201":@"TopOne",
+  return   @{@"201":@"TopOne",
              @"202":@"EitherTwo",
              @"203":@"EitherThree",
              @"204":@"EitherFour",

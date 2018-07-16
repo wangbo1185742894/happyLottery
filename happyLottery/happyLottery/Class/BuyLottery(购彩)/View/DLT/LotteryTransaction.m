@@ -251,7 +251,7 @@ typedef enum {
     //总计
     int totalAmount = betsCostTotalAmount*self.beiTouCount*self.qiShuCount;
     orderAmount = totalAmount;
-    
+      
     //    [descAttributedString appendAttributedString: [[NSAttributedString alloc] initWithString: [NSString stringWithFormat: @"%@", TextTouZhuSummaryTotal] attributes: normalAttributeDic]];
     
     touZhuSummaryAS = [[NSMutableAttributedString alloc] initWithAttributedString: descAttributedString];
@@ -420,7 +420,7 @@ typedef enum {
     return paramDic;
 }
 
-- (NSArray *) lottData {
+- (NSArray *) lottData{
     NSMutableArray *betsParams = [NSMutableArray array];
     for (LotteryBet *bet in bets) {
         NSMutableDictionary *betDic = [NSMutableDictionary dictionary];
@@ -467,7 +467,9 @@ typedef enum {
         if ([self.lottery.identifier isEqualToString:@"SX115"] || [self.lottery.identifier  isEqualToString:@"SD115"]) {
             NSString * playTypeName = [bet betTypeDesc];
             betDic[@"playTypeName"] = playTypeName;
-            
+//            if (isZhuiHao) {
+//                playType
+//            }
             betDic[@"playType"] = playType;
             if (bet.orderBetPlayType) {
                 betDic[@"playType"] = bet.orderBetPlayType;
@@ -666,6 +668,110 @@ typedef enum {
  ]"*/
 
 //[{\"betType\":2,\"blueDanList\":[1],\"blueList\":[11,12],\"multiple\":0,\"playType\":\"General\",\"redDanList\":[1,2],\"redList\":[3,4,5,6,7],\"units\":0}]
+- (id )lottDataSchemeZhiNeng{
+    
+    
+    
+    NSMutableArray *betsArray = [NSMutableArray arrayWithCapacity:0];
+    for (NSDictionary *tempDic in [self lottData]) {
+        
+        
+        if ([self.lottery.identifier isEqualToString:@"DLT"]||[self.lottery.identifier isEqualToString:@"SSQ"]) {
+            NSString *number = tempDic[@"number"];
+            
+            NSArray *redList ;
+            NSArray *redDanList;
+            NSArray *blueList;
+            NSArray *blueDanList;
+            
+            if ([number rangeOfString:@"+"].length > 0) {
+                NSArray *array = [number componentsSeparatedByString:@"+"];
+                NSString *redStr = array[0];
+                NSString *blueStr = array[1];
+                
+                if ([redStr rangeOfString:@"#"].length >0) {
+                    NSArray * array =  [redStr componentsSeparatedByString:@"#"];
+                    redDanList = [[array firstObject] componentsSeparatedByString:@","];
+                    redList = [[array lastObject] componentsSeparatedByString:@","];
+                }else{
+                    redList = [redStr componentsSeparatedByString:@","];
+                    redDanList = @[];
+                }
+                
+                if ([blueStr rangeOfString:@"#"].length >0) {
+                    NSArray * array =  [blueStr componentsSeparatedByString:@"#"];
+                    blueDanList = [[array firstObject] componentsSeparatedByString:@","];
+                    blueList = [[array lastObject] componentsSeparatedByString:@","];
+                }else{
+                    blueList = [blueStr componentsSeparatedByString:@","];
+                    blueDanList = @[];
+                }
+            }
+            
+            NSDictionary *dic = @{@"betType":tempDic[@"betType"],
+                                  @"multiple":[NSNumber numberWithInteger: self.beiTouCount],
+                                  @"playType":@([tempDic[@"addtional"] integerValue]),
+                                  @"units":tempDic[@"count"],
+                                  @"blueDanList":blueDanList,
+                                  @"blueList":blueList,
+                                  @"redDanList":redDanList,
+                                  @"redList":redList
+                                  };
+            
+            [betsArray addObject:dic];
+            
+        }else{
+            
+            
+            NSMutableArray *mSelectNum = [NSMutableArray arrayWithCapacity:0];
+            NSString *number = tempDic[@"number"];
+            if ([number rangeOfString:@"#"].length > 0) {
+                NSArray *tempArray = [number componentsSeparatedByString:@"#"];
+                for (NSString * tempStr in tempArray) {
+                    NSMutableArray *temp1Array = [NSMutableArray arrayWithCapacity:0];
+                    if ([tempStr rangeOfString:@","].length >0) {
+                        NSArray *a = [tempStr componentsSeparatedByString:@","];
+                        for (NSString *str  in a) {
+                            if (![str isEqualToString:@""]) {
+                                [temp1Array addObject:str];
+                            }
+                        }
+                    }else{
+                        [temp1Array addObject:tempStr];
+                    }
+                    [mSelectNum addObject:temp1Array];
+                }
+            }else{
+                NSMutableArray *temp1Array = [NSMutableArray arrayWithCapacity:0];
+                if ([number rangeOfString:@","].length >0) {
+                    NSArray *a = [number componentsSeparatedByString:@","];
+                    for (NSString *str  in a) {
+                        if (![str isEqualToString:@""]) {
+                            [temp1Array addObject:str];
+                        }
+                    }
+                }else{
+                    [temp1Array addObject:number];
+                }
+                [mSelectNum addObject:temp1Array];
+                
+            }
+            
+            
+            NSString *key = [NSString stringWithFormat:@"%@",tempDic[@"playType"]];
+            
+            NSDictionary *dic = @{@"betRows":mSelectNum,
+                                  @"betType":tempDic[@"betType"],
+                                  @"playType":self.X115PlayType[key],
+                                  @"units":tempDic[@"count"]
+                                  };
+            [betsArray addObject:dic];
+        }
+    }
+    
+    return betsArray;
+}
+
 - (id )lottDataScheme{
     
     
@@ -771,8 +877,29 @@ typedef enum {
     return betsArray;
 }
 
+-(NSMutableDictionary *)getX115ChaseScheme{
+    
+    NSDictionary *dataDic = [[self lottData] firstObject];
+    NSDictionary *itemDic= @{
+                             @"cardCode":[GlobalInstance instance].curUser.cardCode,
+                             @"lottery":@(self.lottery.type),
+                             @"playType":dataDic[@"playType"],
+                             @"betType":dataDic[@"betType"],
+                             @"totalCatch":@(self.qiShuCount),
+                             @"beginIssue":self.lottery.currentRound.issueNumber,
+                             @"winStopStatus":@(self.winStopStatus),
+                             @"channelCode":CHANNEL_CODE,
+                             @"chaseList":[self getChaseList],
+                             @"stopBonus":@(self.winStopStatus),
+                             @"units":@(self.betCount)
+                             };
+    return [[NSMutableDictionary alloc]initWithDictionary:itemDic];
+}
+
 -(NSMutableDictionary *)getDLTChaseScheme{
-   
+    if (![self.lottery.identifier isEqualToString:@"DLT"]) {
+       return   [self getX115ChaseScheme];
+    }
     NSDictionary *dataDic = [[self lottData] firstObject];
     NSDictionary *itemDic= @{
                               @"cardCode":[GlobalInstance instance].curUser.cardCode,
@@ -804,5 +931,8 @@ typedef enum {
     return chaseList;
 }
 
+-(double)getAllCost{
+    return orderAmount;
+}
 
 @end

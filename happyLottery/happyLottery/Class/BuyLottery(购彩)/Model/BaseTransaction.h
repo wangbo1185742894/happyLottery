@@ -76,6 +76,7 @@ typedef enum : NSUInteger {
 
 -(NSMutableDictionary*)submitParaDicScheme;
 - (id)lottDataScheme;
+-(NSString*)X115PlayTypeValue:(NSNumber *)key;
 
 -(NSString *)getLotteryNumWithEnname:(NSString *)name;
 @end

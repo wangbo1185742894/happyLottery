@@ -9,6 +9,7 @@
 #import "ZHDetailViewController.h"
 #import "LotteryManager.h"
 #import "LotteryBetObj.h"
+#import "X115SchemeViewCell.h"
 #import "BetCalculationManage.h"
 #import "WinInfoView.h"
 //zwl
@@ -24,6 +25,7 @@
     
     __weak IBOutlet NSLayoutConstraint *topHightConstant;
     __weak IBOutlet UILabel *playName;    //任选几
+    __weak IBOutlet NSLayoutConstraint *topDis;
     __weak IBOutlet UILabel *results;     //结果 2/3未中奖
     __weak IBOutlet UILabel *playnumber;  //选号
     __weak IBOutlet UILabel *totleMoney;  //奖金
@@ -57,6 +59,7 @@
 @property (nonatomic, strong) Lottery *lottery;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *numberViewWidth;
 - (IBAction)actionStopChaseScheme:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomDis;
 @property (weak, nonatomic) IBOutlet UIButton *stopChaseBtn;
 
 @end
@@ -69,6 +72,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     /*zwl*/
+    topDis.constant = NaviHeight;
+    self.bottomDis.constant = BOTTOM_BAR_HEIGHT;
     if (![self.order.chaseStatus isEqualToString:@"追号中"]) {
         self.stopChaseBtn.enabled = NO;
     }else{
@@ -249,6 +254,7 @@
             playName.text = [NSString stringWithFormat:@"双色球"];
         }
     }
+   
     if ([_order.catchResult isEqualToString:@"已中奖"]) {
         results.textColor = TextCharColor;
     }
@@ -595,28 +601,48 @@
     NSArray *chaseList = [Utility objFromJson:self.order.catchContent];
     NSMutableString *chaseContent = [[NSMutableString alloc]initWithCapacity:0];
     for (NSDictionary *itemDic in chaseList) {
-        
-        NSArray *blueList = itemDic[@"blueList"];
-        NSArray *blueDanList = itemDic[@"blueDanList"];
-        NSArray *redList = itemDic[@"redList"];
-        NSArray *redDanList = itemDic[@"redDanList"];
-        
-        
-        if (redDanList.count > 0) {
+        if ([self.order.lotteryCode isEqualToString:@"SX115"] || [self.order.lotteryCode isEqualToString:@"SD115"]) {
+              NSArray *redDanList = itemDic[@"betRows"];
+            if ([_order.betType integerValue] == 2) {
+                 playName.text = [NSString stringWithFormat:@"%@%@",[X115SchemeViewCell X115CHNTypeByEnType:itemDic[@"playType"]],@"胆拖"];
+            }else{
+                 playName.text = [X115SchemeViewCell X115CHNTypeByEnType:itemDic[@"playType"]];
+            }
             
-            [chaseContent appendString:[redDanList componentsJoinedByString:@","]];
-            [chaseContent appendString:@"#"];
-        }
-        [chaseContent appendString:[redList componentsJoinedByString:@","]];
-        [chaseContent appendString:@"+"];
-        
-        if (blueDanList.count > 0) {
             
-            [chaseContent appendString:[blueDanList componentsJoinedByString:@","]];
-            [chaseContent appendString:@"#"];
+            for (int i = 0; i < redDanList.count; i ++) {
+                NSArray *itemArray = redDanList[i];
+                [chaseContent appendString:[itemArray componentsJoinedByString:@","]];
+                if (redDanList.count >1 && i < redDanList.count-1) {
+                    [chaseContent appendString:@"#"];
+                }
+                
+            }
+            [chaseContent appendString:@";"];
+        }else{
+            NSArray *blueList = itemDic[@"blueList"];
+            NSArray *blueDanList = itemDic[@"blueDanList"];
+            NSArray *redList = itemDic[@"redList"];
+            NSArray *redDanList = itemDic[@"redDanList"];
+            
+            
+            if (redDanList.count > 0) {
+                
+                [chaseContent appendString:[redDanList componentsJoinedByString:@","]];
+                [chaseContent appendString:@"#"];
+            }
+            [chaseContent appendString:[redList componentsJoinedByString:@","]];
+            [chaseContent appendString:@"+"];
+            
+            if (blueDanList.count > 0) {
+                
+                [chaseContent appendString:[blueDanList componentsJoinedByString:@","]];
+                [chaseContent appendString:@"#"];
+            }
+            [chaseContent appendString:[blueList componentsJoinedByString:@","]];
+            [chaseContent appendString:@";"];
         }
-        [chaseContent appendString:[blueList componentsJoinedByString:@","]];
-        [chaseContent appendString:@";"];
+      
     }
     return chaseContent;
 }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -14,6 +14,7 @@
                 <outlet property="GoOn" destination="tnu-Ck-BeN" id="t3U-OE-4WJ"/>
                 <outlet property="beginTime" destination="ieu-U4-5qm" id="7rK-zk-Vt8"/>
                 <outlet property="beginnum" destination="kr2-cP-ccp" id="aIY-6J-c3m"/>
+                <outlet property="bottomDis" destination="s72-Cv-tZx" id="FON-zP-eoP"/>
                 <outlet property="controlVC" destination="2gr-Nb-1GX" id="MDO-Uc-UAR"/>
                 <outlet property="numberBackground" destination="T39-6Q-dg5" id="e5R-qH-X3W"/>
                 <outlet property="numberContentHight" destination="ptL-Cd-bWf" id="jtb-eL-1X8"/>
@@ -23,6 +24,7 @@
                 <outlet property="playName" destination="8Vq-hk-y2D" id="aLb-Nc-90C"/>
                 <outlet property="results" destination="R3W-0Q-6Ue" id="TGL-L5-L4V"/>
                 <outlet property="stopChaseBtn" destination="3rC-UQ-so1" id="chO-GQ-88G"/>
+                <outlet property="topDis" destination="jMl-Lx-qmf" id="9U7-EQ-Sp6"/>
                 <outlet property="topHightConstant" destination="RB6-rQ-e8K" id="Bt8-VE-75n"/>
                 <outlet property="topViewHeight" destination="Xo6-j2-TvR" id="URA-D8-yeb"/>
                 <outlet property="totleMoney" destination="S37-fA-fRI" id="Wme-Tt-nFg"/>
@@ -91,8 +93,8 @@
                         </mask>
                     </variation>
                 </view>
-                <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tnu-Ck-BeN">
-                    <rect key="frame" x="10" y="528" width="300" height="35"/>
+                <button contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tnu-Ck-BeN">
+                    <rect key="frame" x="10" y="528" width="300" height="14"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="35" id="bB8-wO-ROO"/>
                     </constraints>
@@ -478,6 +480,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="R3W-0Q-6Ue" firstAttribute="top" secondItem="8Vq-hk-y2D" secondAttribute="top" id="4XB-P7-fQY"/>
                 <constraint firstItem="fBZ-hk-H4H" firstAttribute="top" secondItem="R3W-0Q-6Ue" secondAttribute="bottom" constant="5" id="60B-rJ-D1O"/>
                 <constraint firstItem="C6Z-ye-Qh6" firstAttribute="top" secondItem="1eh-Df-5HO" secondAttribute="bottom" id="CrE-iB-pYg"/>
                 <constraint firstItem="2gr-Nb-1GX" firstAttribute="top" secondItem="C6Z-ye-Qh6" secondAttribute="bottom" id="Drv-Ql-dfC"/>
@@ -498,7 +501,6 @@
                 <constraint firstItem="1eh-Df-5HO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="k8y-F4-2ji"/>
                 <constraint firstItem="1eh-Df-5HO" firstAttribute="top" secondItem="ytb-TE-WW5" secondAttribute="bottom" constant="5" id="lzH-0C-Qsr"/>
                 <constraint firstAttribute="trailing" secondItem="2gr-Nb-1GX" secondAttribute="trailing" id="oVL-EZ-bmM"/>
-                <constraint firstItem="R3W-0Q-6Ue" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="qI1-Ui-AXi"/>
                 <constraint firstAttribute="bottom" secondItem="tnu-Ck-BeN" secondAttribute="bottom" constant="5" id="s72-Cv-tZx"/>
                 <constraint firstItem="tnu-Ck-BeN" firstAttribute="top" secondItem="2gr-Nb-1GX" secondAttribute="bottom" constant="5" id="sWl-c6-oUl"/>
                 <constraint firstItem="R3W-0Q-6Ue" firstAttribute="leading" secondItem="8Vq-hk-y2D" secondAttribute="trailing" constant="40" id="skV-rX-xFK"/>

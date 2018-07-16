@@ -25,7 +25,6 @@ typedef enum {
 @property (nonatomic, strong) NSDictionary *lotteryRoundInfo;
 
 - (void) addBet: (LotteryBet*) bet;
-- (NSUInteger) betCount;
 - (NSArray *) allBets;
 - (NSAttributedString *) getAttributedSummaryText;
 - (void) removeBet: (LotteryBet *) bet;
@@ -39,6 +38,7 @@ typedef enum {
 - (NSArray *) lottData;
 - (NSString *)couldTouzhu;
 
+- (id )lottDataSchemeZhiNeng;
 -(NSMutableDictionary *)getDLTChaseScheme;
-
+-(double)getAllCost;
 @end

@@ -94,7 +94,7 @@
     
     //11.07
     NSArray * PushData;
-    MemberManager * memberManage;
+    
     WBInputPopView* passInput;
     
     NSString *subscristr;
@@ -120,7 +120,6 @@
 
 //timer
 @property (nonatomic , strong) NSTimer *timer;
-@property(nonatomic,strong)User *curUser;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomDis;
 @property (weak, nonatomic) IBOutlet UIButton *yuYueBtn;
 @property(nonatomic,strong)UIToolbar *toolBar;
@@ -850,22 +849,11 @@
 //        }
 //    }
 //}
-- (void)payJudgeWithOrderInfo:(NSDictionary *)orderNeedInfo andQishu:(int)qi{
-    ZHOrderInfoTemp = @{@"orderNeedInfo":orderNeedInfo,@"qi":@(qi)};
-    
-    
-}
-- (void)instance:(GlobalInstance *)instance RefreshedUserInfo:(User *)user{
-    
-    [self payForZHOrderInfo:ZHOrderInfoTemp[@"orderNeedInfo"] andQishu:[ZHOrderInfoTemp[@"qi"] intValue]];
-    
-    
-}
 - (void)payForZHOrderInfo:(NSDictionary *)orderNeedInfo andQishu:(int)qi{
     
     curBlance =  [[self.curUser totalBanlece] doubleValue];
-    curPay = [orderNeedInfo[@"orderCost"] integerValue];
-    NSString *msg = [NSString stringWithFormat:@"共追%lu期，共需%@元,您当前余额为%.1f元,是否确定追号？",(unsigned long)qi,orderNeedInfo[@"orderCost"],curBlance];
+    
+    NSString *msg = [NSString stringWithFormat:@"共追%@期，共需%.0f元,您当前余额为%.1f元,是否确定追号？",tfQiText.text,[self.transaction getAllCost],curBlance];
     ZLAlertView *alert = [[ZLAlertView alloc] initWithTitle:@"追号确认" message:msg];
     [alert addBtnTitle:TitleNotDo action:^{
         [self hideLoadingView];
@@ -949,7 +937,7 @@
         } else {
             [self showPayPopView];
         }
-    }else if(!isNeedPayPasswordVerify&&self.curUser.paypwdSetting != NO){
+    }else if(!isNeedPayPasswordVerify&&self.curUser.paypwdSetting == NO){
         
         [self showSetPayPasswordAlert];
         
@@ -1012,6 +1000,14 @@
 }
 
 - (IBAction)actionTouzhu:(UIButton *)sender {
+    if (self.curUser.isLogin == NO) {
+        [self needLogin];
+        return;
+    }
+    if ([tfQiText.text integerValue]>1) {
+          [self payForZHOrderInfo:ZHOrderInfoTemp[@"orderNeedInfo"] andQishu:[ZHOrderInfoTemp[@"qi"] intValue]];
+        return;
+    }
     self.transaction.schemeSource = SchemeSourceBet;
     if(self.transaction.allBets.count > 30){
         [self showPromptText:@"投注最多30组" hideAfterDelay:2.0];
@@ -1147,12 +1143,27 @@
 //11.07
 - (void)nopayword
 {
+    
     AppDelegate *myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 
-    [myDelegate.ZHDic setObject:self.curUser.cardCode == nil?@"":self.curUser.cardCode forKey:@"cardCode"];
-    NSString *jsonStr = [Utility JsonFromId:[self getZhuiHaoInfo]];
-//    [memberManage submitCatch:jsonStr];
+//    [myDelegate.ZHDic setObject:self.curUser.cardCode == nil?@"":self.curUser.cardCode forKey:@"cardCode"];
+//    NSString *jsonStr = [Utility JsonFromId:[self getZhuiHaoInfo]];
+    [self.lotteryMan betChaseSchemeZhineng:self.transaction andchaseList:nil];
 }
+
+-(void)betedChaseScheme:(NSString *)schemeNO errorMsg:(NSString *)msg{
+    [self hideLoadingView];
+    if (schemeNO == nil) {
+        [self showPromptText:msg hideAfterDelay:1.8];
+        return;
+    }
+    ZhuiHaoInfoViewController * betInfoViewCtr = [[ZhuiHaoInfoViewController alloc] initWithNibName:@"ZhuiHaoInfoViewController" bundle:nil];
+    
+    //    betInfoViewCtr.ZHflag = YES;
+    betInfoViewCtr.from = YES;
+    [self.navigationController pushViewController:betInfoViewCtr animated:YES];
+}
+
 - (void)showPayPopView{
     [self hideLoadingView];
     if (nil == passInput) {
@@ -1552,7 +1563,7 @@
                 } else {
                     [self showPayPopView];
                 }
-            }else if(!isNeedPayPasswordVerify&&!self.curUser.paypwdSetting){
+            }else if(self.curUser.paypwdSetting ==NO){
                 
                 [self showSetPayPasswordAlert];
                 
@@ -1596,7 +1607,7 @@
 {
     isZhuiHao = YES;
     
-    //    [lotteryMan]
+    [self zhuiHaoGo];
     
 }
 - (void)zhuiHaoGo{
@@ -2137,6 +2148,9 @@
     
     [self hideLoadingView];
     
+}
+- (IBAction)actionZhiNengZH:(id)sender {
+    [self betzhuihao];
 }
 
 -(void)goonBuy{
