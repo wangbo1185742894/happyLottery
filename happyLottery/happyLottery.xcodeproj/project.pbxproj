@@ -966,6 +966,7 @@
 		F90D690920FC4A33007865E4 /* 11x5tzh_sel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F90D690520FC4A30007865E4 /* 11x5tzh_sel@3x.png */; };
 		F90D690A20FC4A33007865E4 /* 11x5tzh_selNo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F90D690620FC4A31007865E4 /* 11x5tzh_selNo@3x.png */; };
 		F90D690B20FC4A33007865E4 /* 11x5tzh_selNo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F90D690720FC4A32007865E4 /* 11x5tzh_selNo@2x.png */; };
+		F90D690D20FC6C4A007865E4 /* questionAndAnswear.plist in Resources */ = {isa = PBXBuildFile; fileRef = F90D690C20FC6C4A007865E4 /* questionAndAnswear.plist */; };
 		F90FCD551FF34D1C00BD807C /* MyRedPacketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F90FCD531FF34D1C00BD807C /* MyRedPacketViewController.m */; };
 		F90FCD561FF34D1C00BD807C /* MyRedPacketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F90FCD541FF34D1C00BD807C /* MyRedPacketViewController.xib */; };
 		F90FCD5A1FF34D5000BD807C /* MyRedPacketTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F90FCD581FF34D5000BD807C /* MyRedPacketTableViewCell.m */; };
@@ -3034,6 +3035,7 @@
 		F90D690520FC4A30007865E4 /* 11x5tzh_sel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "11x5tzh_sel@3x.png"; sourceTree = "<group>"; };
 		F90D690620FC4A31007865E4 /* 11x5tzh_selNo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "11x5tzh_selNo@3x.png"; sourceTree = "<group>"; };
 		F90D690720FC4A32007865E4 /* 11x5tzh_selNo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "11x5tzh_selNo@2x.png"; sourceTree = "<group>"; };
+		F90D690C20FC6C4A007865E4 /* questionAndAnswear.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = questionAndAnswear.plist; sourceTree = "<group>"; };
 		F90FCD521FF34D1C00BD807C /* MyRedPacketViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyRedPacketViewController.h; sourceTree = "<group>"; };
 		F90FCD531FF34D1C00BD807C /* MyRedPacketViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyRedPacketViewController.m; sourceTree = "<group>"; };
 		F90FCD541FF34D1C00BD807C /* MyRedPacketViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyRedPacketViewController.xib; sourceTree = "<group>"; };
@@ -4290,6 +4292,7 @@
 				F9705EC7207C5CEB00E25E4E /* LotteryArea.plist */,
 				F9BC6E6520C2DF150037998B /* AgentApplayConfig.plist */,
 				F90D68E220F06259007865E4 /* PlayIntroduce.plist */,
+				F90D690C20FC6C4A007865E4 /* questionAndAnswear.plist */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -7662,6 +7665,7 @@
 				2D7B1336204D52C40035AE89 /* LotteryConfig.plist in Resources */,
 				2D0EEA762011DE9600B0769C /* selected@3x.png in Resources */,
 				F958F17F20BC04FF00F30690 /* icon_shengfucaishouye@3x.png in Resources */,
+				F90D690D20FC6C4A007865E4 /* questionAndAnswear.plist in Resources */,
 				2D628B421FECAA9A0013D0E1 /* fengkuangjingcai-chuanguanwanfaqiehuanbeijing@3x.png in Resources */,
 				2D20602C1FFCB71E0086E266 /* icon_zhanbaotongji@2x.png in Resources */,
 				2D8CBFAD1FF326F200CC367F /* PaySuccessViewController.xib in Resources */,
