@@ -223,11 +223,11 @@ typedef enum {
 - (NSAttributedString *) getTouZhuSummaryText1 {
     NSMutableDictionary *redAttributeDic = [NSMutableDictionary dictionaryWithCapacity: 2];
     redAttributeDic[NSFontAttributeName] = [UIFont boldSystemFontOfSize: 14];
-    redAttributeDic[NSForegroundColorAttributeName] = SystemGreen;
+    redAttributeDic[NSForegroundColorAttributeName] = RGBCOLOR(254, 165, 19);
     
     NSMutableDictionary *blueAttributeDic = [NSMutableDictionary dictionaryWithCapacity: 2];
     blueAttributeDic[NSFontAttributeName] = [UIFont boldSystemFontOfSize: 14];
-    blueAttributeDic[NSForegroundColorAttributeName] = SystemGreen;
+    blueAttributeDic[NSForegroundColorAttributeName] = RGBCOLOR(254, 165, 19);
     
     NSMutableDictionary *normalAttributeDic = [NSMutableDictionary dictionaryWithCapacity: 2];
     normalAttributeDic[NSFontAttributeName] = [UIFont boldSystemFontOfSize: 14];
@@ -278,11 +278,11 @@ typedef enum {
 - (NSAttributedString *) getTouZhuSummaryText2 {
     NSMutableDictionary *redAttributeDic = [NSMutableDictionary dictionaryWithCapacity: 2];
     redAttributeDic[NSFontAttributeName] = [UIFont boldSystemFontOfSize: 14];
-    redAttributeDic[NSForegroundColorAttributeName] = SystemGreen;
+    redAttributeDic[NSForegroundColorAttributeName] = RGBCOLOR(254, 165, 19);
     
     NSMutableDictionary *blueAttributeDic = [NSMutableDictionary dictionaryWithCapacity: 2];
     blueAttributeDic[NSFontAttributeName] = [UIFont boldSystemFontOfSize: 14];
-    blueAttributeDic[NSForegroundColorAttributeName] = SystemGreen;
+    blueAttributeDic[NSForegroundColorAttributeName] = RGBCOLOR(254, 165, 19);
     
     NSMutableDictionary *normalAttributeDic = [NSMutableDictionary dictionaryWithCapacity: 2];
     normalAttributeDic[NSFontAttributeName] = [UIFont boldSystemFontOfSize: 14];

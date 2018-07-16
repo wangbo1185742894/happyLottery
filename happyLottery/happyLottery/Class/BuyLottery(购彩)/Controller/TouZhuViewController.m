@@ -58,12 +58,10 @@
     UIButton *addRandonBetButton;
     UIButton *clearAllBetButton;
     UIButton *zhuihaoBtn;
-    /*中奖停追*/
-    UIButton *WinStop;
-    UILabel *WinStoplabel;
     /*追加按钮*/
     UIButton *appendBtn;
     
+    __weak IBOutlet UIButton *zhinengBtn;
     BeitouView * beitouView;
     __weak IBOutlet NSLayoutConstraint *lbSummaryBottomTraint;
     
@@ -117,6 +115,7 @@
 @property (nonatomic , assign) BOOL hasLiked;
 @property (weak, nonatomic) IBOutlet UIButton *btnHemai;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *qCountItembtn;
+@property (weak, nonatomic) IBOutlet UIButton *zhSelectBtn;
 
 //timer
 @property (nonatomic , strong) NSTimer *timer;
@@ -156,7 +155,10 @@
     self.yuYueBtn.layer.cornerRadius = 4;
     tfBeiText.delegate = self;
     tfQiText.delegate = self;
-    
+    zhinengBtn.layer.cornerRadius = 4;
+    zhinengBtn.layer.masksToBounds = YES;
+    zhinengBtn.layer.borderWidth = 1;
+    zhinengBtn.layer.borderColor = RGBCOLOR(18, 199, 146).CGColor;
     labelSummary_.adjustsFontSizeToFitWidth  = YES;
     /*zwl*/
     _FLAG = NO;
@@ -228,33 +230,7 @@
         
         [self.view addSubview:goOnPlayButton];
         addRandonBetButton = [[UIButton alloc]initWithFrame:frame2];
-        /*中奖后是否停追*/
-        WinStop = [[UIButton alloc]initWithFrame:frame5];
-        WinStoplabel = [[UILabel alloc]initWithFrame:CGRectMake(KscreenWidth-89,45, 110, 25)];;
-        WinStoplabel.text = @"中奖后停追";
-        WinStoplabel.font = [UIFont systemFontOfSize:13];
-        WinStoplabel.textColor = RGBCOLOR(140, 140, 140);
-        WinStop.titleLabel.textAlignment = NSTextAlignmentRight;
-        WinStop.titleLabel.font = [UIFont systemFontOfSize:13];
-        if( myDelegate.iswinStop)
-        {
-            [WinStop setSelected:YES];
-            [WinStop setImage:[UIImage imageNamed:@"png_btn_agree_pressed.png"] forState:UIControlStateSelected];
-        }
-        else
-        {
-            [WinStop setSelected:NO];
-            [WinStop setImage:[UIImage imageNamed:@"png_btn_agree.png"] forState:UIControlStateNormal];
-        }
-    
-        [WinStop addTarget: self action: @selector(WinStopClick) forControlEvents: UIControlEventTouchUpInside];
-        
-        [betOptionFunView addSubview:WinStoplabel];
-        [betOptionFunView addSubview:WinStop];
-        WinStop.hidden = YES;
-        
-        WinStoplabel.hidden = YES;
-        betOptionfunViewHeight.constant = 140;
+        betOptionfunViewHeight.constant = 160;
         
         lineBottom.constant = betOptionfunViewHeight.constant;
         tableviewBottom.constant = betOptionfunViewHeight.constant;
@@ -293,6 +269,11 @@
     clearAllBetButton.titleLabel.font = [UIFont systemFontOfSize:15];
     [clearAllBetButton addTarget: self action: @selector(actionRemoveAllBets:) forControlEvents: UIControlEventTouchUpInside];
     [self.view addSubview:addRandonBetButton];
+    self.zhSelectBtn.hidden = YES;
+    if ([tfQiText.text integerValue]>1) {
+        self.zhSelectBtn.hidden = NO;
+    }
+    
 }
 
 - (void)navigationBackToLastPage{
@@ -324,9 +305,7 @@
     self.hasLiked = YES;
     [self initZhuiHaoBtnState];
     if (_FLAG) {
-        WinStop.hidden = YES;
-        WinStoplabel.hidden = YES;
-        betOptionfunViewHeight.constant = 140;
+        betOptionfunViewHeight.constant = 160;
         
         lineBottom.constant = betOptionfunViewHeight.constant;
         
@@ -354,31 +333,14 @@
 //            zhuihaoBtn.hidden = NO;
         }
     }
-    if(WinStop.hidden && _issue > 1)
-    {
-        WinStop.hidden = NO;
-        WinStoplabel.hidden = NO;
-        betOptionfunViewHeight.constant = 140;
-        
-        lineBottom.constant = betOptionfunViewHeight.constant;
-        
-        tableviewBottom.constant = betOptionfunViewHeight.constant;
-        tableViewContentBottom .constant = 0;
-        
-        
-        frame4.origin.y = 79;
-        
-        zhuihaoBtn.frame = frame4;
-        totalframe.origin.y = 78;
-        beiqiframe.origin.y = 96;
-        splitLineframe.origin.y = 71;
-        splitLine.frame = splitLineframe;
-    }
-//    tfBeiText.keyboardType =UIKeyboardTypeNumberPad;
-//    tfQiText.keyboardType = UIKeyboardTypeNumberPad;
     [self ToolView:tfBeiText];
     [self ToolView:tfQiText];
     
+}
+
+- (IBAction)actionSelectTZ:(id)sender {
+    UIButton *butt = sender;
+    butt.selected = !butt.selected;
 }
 
 -(void)ToolView:(UITextField *)textField{
@@ -414,20 +376,6 @@
     [tfQiText resignFirstResponder];
 }
 
-- (void) WinStopClick {
-    WinStop.selected = !WinStop.selected;
-    AppDelegate *myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    if(WinStop.selected)
-    {
-        [WinStop setImage:[UIImage imageNamed:@"png_btn_agree_pressed.png"] forState:UIControlStateNormal];
-        myDelegate.iswinStop = YES;
-    }
-    else
-    {
-        [WinStop setImage:[UIImage imageNamed:@"png_btn_agree.png"] forState:UIControlStateNormal];
-        myDelegate.iswinStop = NO;
-    }
-}
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NotificationNameUserLogin object:nil];
@@ -577,6 +525,11 @@
     }
     mostBoundsLb.attributedText = [self.transaction getTouZhuSummaryText1];
     labelSummary_.attributedText = [self.transaction getTouZhuSummaryText2];
+    if ([tfQiText.text intValue]>1) {
+        self.zhSelectBtn.hidden = NO;
+    } else {
+        self.zhSelectBtn.hidden = YES;
+    }
 }
 
 - (void)removeAllBetsAlert{
@@ -852,7 +805,7 @@
 - (void)payForZHOrderInfo:(NSDictionary *)orderNeedInfo andQishu:(int)qi{
     
     curBlance =  [[self.curUser totalBanlece] doubleValue];
-    
+    self.transaction.winStopStatus = _zhSelectBtn.selected?WINSTOP:NOTSTOP;
     NSString *msg = [NSString stringWithFormat:@"共追%@期，共需%.0f元,您当前余额为%.1f元,是否确定追号？",tfQiText.text,[self.transaction getAllCost],curBlance];
     ZLAlertView *alert = [[ZLAlertView alloc] initWithTitle:@"追号确认" message:msg];
     [alert addBtnTitle:TitleNotDo action:^{
@@ -1335,10 +1288,6 @@
     if (self.transaction.beiTouCount > 0) {
         defaultBeiShu += self.transaction.beiTouCount - 1;
     }
-    //    int defaultQiShu = MaxQiShu*DataSourceTimes/2;
-    //    if (self.transaction.qiShuCount > 0) {
-    //        defaultQiShu += self.transaction.qiShuCount - 1;
-    //    }
     
     [pickerBeiTou_ selectRow: defaultBeiShu inComponent: 0 animated: NO];
     //  [pickerBeiTou_ selectRow: defaultQiShu inComponent: 1 animated: NO];
@@ -1767,9 +1716,7 @@
             playType = [NSNumber numberWithInt:[playtype intValue]];;
             break;
     }
-    //    if ([GlobalInstance instance].lotttypefromorder) {
-    //        playType = [NSNumber numberWithInt:[[GlobalInstance instance].lotttypefromorder intValue]];
-    //    }
+  
     LotteryBet *betTemp = [betslist lastObject];
     if (betTemp.orderBetPlayType) {
         playType = [NSNumber numberWithInt:[betTemp.orderBetPlayType intValue]];
@@ -1809,7 +1756,7 @@
     [myDelegate.ZHDic setObject:array forKey: @"catchList"]
     ;
     //中奖后是否停追
-    if(WinStop.selected)
+    if(zhuihaoBtn.selected)
     {
         [myDelegate.ZHDic setObject:@"WINSTOP"forKey:@"winStopStatus"];
     }
