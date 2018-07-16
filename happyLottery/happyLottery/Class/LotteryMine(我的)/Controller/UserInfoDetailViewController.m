@@ -32,7 +32,6 @@
     if (keyList.count > 1) {
         NSString *keyWord = [keyList[1] stringByReplacingOccurrencesOfString:@"#" withString:@""];
         self.labRight.keyWord = keyWord;
-        
         self.labRight.keyWordColor = SystemGreen;
     }
   
