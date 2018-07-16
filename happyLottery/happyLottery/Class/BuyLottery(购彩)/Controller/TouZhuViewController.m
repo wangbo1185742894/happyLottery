@@ -527,6 +527,7 @@
     labelSummary_.attributedText = [self.transaction getTouZhuSummaryText2];
     if ([tfQiText.text intValue]>1) {
         self.zhSelectBtn.hidden = NO;
+        self.zhSelectBtn.selected = YES;
     } else {
         self.zhSelectBtn.hidden = YES;
     }
