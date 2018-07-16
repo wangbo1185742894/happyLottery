@@ -29,6 +29,7 @@
         self.top.constant = 88;
         self.bottom.constant = 34;
     }
+    _foldInfoDic = [NSMutableDictionary dictionaryWithCapacity:0];
     self.tableView.delegate=self;
     self.tableView.dataSource=self;
     self.tableView.estimatedRowHeight = 120;//很重要保障滑动流畅性
@@ -37,36 +38,27 @@
 }
 
 - (void)creatArr {
-    NSString *s1=@"通常情况下，充值后您的资金将会立即到账。若出现银行卡已经扣费，但资金并未到账，请拨打客服热线400-600-5558";
-    NSString *s2=@"根据相关规定充值金额的30%只能用于购彩，不能提现。其中彩金是投必中发送给用户的专属购彩金，也是无法提现。";
-    NSString *s3=@"预测结果通过多维度的大数据分析，进行数学建模和多维度的数据模型匹配，从而智能分析出比赛结果。" ;
- 
-    _arr = [@[@[s1],@[s2],@[s3]]mutableCopy];
-    _foldInfoDic = [NSMutableDictionary dictionaryWithDictionary:@{
-                                                                   @"0":@"1",
-                                                                   @"1":@"0",
-                                                                   @"2":@"0"
-                                                                   }];
+    _arr = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"questionAndAnswear" ofType: @"plist"]];
+    for (int i = 0; i<_arr.count; i++) {
+        NSString *stringInt = [NSString stringWithFormat:@"%d",i];
+        if (i == 0) {
+            [_foldInfoDic setValue:@"1" forKey:stringInt];
+        } else {
+            [_foldInfoDic setValue:@"0" forKey:stringInt];
+        }
+        
+    }
 }
 //
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     NSString *key = [NSString stringWithFormat:@"%d", (int)section];
     BOOL folded = [[_foldInfoDic objectForKey:key] boolValue];
-    
-//    if (section == 0) {
-//        return folded?1:0;
-//    } else if (section == 1) {
-//        return folded?1:0;
-//    } else if (section == 2) {
-//        return folded?_arr.count:0;
-//    } else {
-        return folded?1:0;
-    //}
+    return folded?1:0;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return _arr.count;
 }
 
 
@@ -76,20 +68,13 @@
         headerView = [[LYJHeaderView alloc] initWithReuseIdentifier:@"header"];
         headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 45);
     }
-    
-    if (section == 0) {
-        [headerView setFoldSectionHeaderViewWithTitle:@"充值未及时到账怎么办？"  type: HerderStyleTotal section:0 canFold:YES];
-    } else if (section == 1) {
-        [headerView setFoldSectionHeaderViewWithTitle:@"账户有余额为什么不能提现？"  type:HerderStyleTotal section:1 canFold:YES];
-    } else if (section == 2){
-        [headerView setFoldSectionHeaderViewWithTitle:@"预测结果有什么依据吗？"  type:HerderStyleNone section:2 canFold:YES];
-    }
+    NSDictionary *dic = _arr[section];
+    [headerView setFoldSectionHeaderViewWithTitle:dic[@"question"] type:HerderStyleTotal section:section canFold:YES];
     headerView.delegate = self;
     NSString *key = [NSString stringWithFormat:@"%d", (int)section];
     BOOL folded = [[_foldInfoDic valueForKey:key] boolValue];
     headerView.fold = folded;
     return headerView;
-    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -99,16 +84,8 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-//        if (tableView.sectionIndexMinimumDisplayRowCount == 0) {
-//           cell.textLabel.text = _arr[0];
-//        } else if (tableView.sectionIndexMinimumDisplayRowCount == 1) {
-//            cell.textLabel.text = _arr[1];
-//        } else if (tableView.sectionIndexMinimumDisplayRowCount == 2) {
-//           cell.textLabel.text = _arr[2];
-//        } else  if (tableView.sectionIndexMinimumDisplayRowCount == 4){
-//  cell.textLabel.text = _arr[3];
-//    }
-    cell.textLabel.text = _arr[indexPath.section][indexPath.row];
+    NSDictionary *dic = _arr[indexPath.section];
+    cell.textLabel.text = dic[@"answer"];
     cell.textLabel.numberOfLines=0;
     cell.textLabel.font = [UIFont systemFontOfSize:14];
      [UILabel changeLineSpaceForLabel:cell.textLabel WithSpace:5.0];
@@ -133,11 +110,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 20;
 }
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return 120;
-//}
+
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
