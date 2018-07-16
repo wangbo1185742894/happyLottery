@@ -146,8 +146,6 @@
     self.lotteryMan.delegate = self;
     self.memberMan.delegate = self;
     self.bottomDis.constant = BOTTOM_BAR_HEIGHT;
-//    labelSummary_.hidden = YES;
-//    mostBoundsLb.hidden = YES;
     lineBottom.constant = 90;
     buttonK.tag = 33;
     //11.07
@@ -272,6 +270,7 @@
     self.zhSelectBtn.hidden = YES;
     if ([tfQiText.text integerValue]>1) {
         self.zhSelectBtn.hidden = NO;
+        self.zhSelectBtn.selected = YES;
     }
     
 }
