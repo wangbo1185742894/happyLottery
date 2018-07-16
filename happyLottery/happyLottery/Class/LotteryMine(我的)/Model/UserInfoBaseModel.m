@@ -148,8 +148,6 @@
             return [NSString stringWithFormat:@"\n类型\n\n彩种\n\n方案号\n\n时间\n\n认购金额\n\n"];
         }
     }
- 
-  
 }
 -(NSString *)getRightTitle{
     if ([self.useCoupon boolValue] == YES) {
@@ -290,3 +288,39 @@
     return self.createTime;
 }
 @end
+@implementation ChasePrepayModel : UserInfoBaseModel
+-(NSString *)getLeftTitle{
+    if (self.refundAmounts.doubleValue > 0) {
+        return [NSString stringWithFormat:@"\n类型\n\n彩种\n\n方案号\n\n时间\n\n追号期数\n\n认购金额\n\n退款金额\n\n"];
+    }else{
+        return [NSString stringWithFormat:@"\n类型\n\n彩种\n\n方案号\n\n时间\n\n追号期数\n\n认购金额\n\n"];
+    }
+}
+-(NSString *)getRightTitle{
+//    if (self.refundAmounts.doubleValue > 0) {
+//        return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n%@\n\n%@/%@\n\n#%@元\n\n%@元\n\n",[self get1Name],[BaseModel getLotteryByName:self.lotteryType],self.chaseSchemeNo,self.subTime,,self.subAmounts,self.refundAmounts];
+//    }else{
+//        return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n%@\n\n#%@元\n\n合计%@元\n\n",[self get1Name],[BaseModel getLotteryByName:self.lotteryType],self.chaseSchemeNo,self.subTime,self.subAmounts,self.subAmounts];
+//    }
+    return @"";
+
+}
+-(NSString *)get1Name{
+    return @"追号";
+}
+-(NSString *)get2Name{
+    return [NSString stringWithFormat:@"%.2f元",[self.subAmounts doubleValue]];
+}
+-(NSString *)get3Name{
+    return @"";
+}
+
+-(NSString *)getRemark{
+    return self.refundAmounts;
+}
+-(NSString *)get4Name{
+    
+    return self.subTime;
+}
+@end
+

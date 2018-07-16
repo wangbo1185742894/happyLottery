@@ -161,6 +161,8 @@
  */
 #define API_listAgentCommissionDetail       @"listAgentCommissionDetail"
 
+#define API_getChasePrepayOrderList         @"getChasePrepayOrderList"
+
 
 #define SUBAPIDATA           @"/data"
 #define APISaveClientInfo           @"saveClientInfo"

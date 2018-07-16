@@ -288,7 +288,7 @@
     if (chaseList != nil) {
         subSchemeDic[@"chaseList"] = chaseList;
     }
-    
+    subSchemeDic[@"playType"] =  [NSString stringWithFormat:@"%@",[transcation X115PlayTypeValue:subSchemeDic[@"playType"]]];
     SOAPRequest *request = [self requestForAPI: APIbetChaseScheme withParam:@{@"params":[self actionEncrypt:[self JsonFromId:subSchemeDic]]}];
     [self newRequestWithRequest:request
                          subAPI:SUBAPISchemeService

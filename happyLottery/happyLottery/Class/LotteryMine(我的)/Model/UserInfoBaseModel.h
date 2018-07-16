@@ -146,3 +146,37 @@
 @property(nonatomic,strong)NSString * createTime;
 @end
 
+@interface ChasePrepayModel : UserInfoBaseModel
+
+/** 订单号*/
+@property(nonatomic,strong)NSString * orderNo;
+
+/** 会员卡号 */
+@property(nonatomic,strong)NSString * cardCode;
+
+/** 追号方案号*/
+@property(nonatomic,strong)NSString * chaseSchemeNo;
+
+/** 认购总金额 */
+@property(nonatomic,strong)NSString * subAmounts;
+
+/** 退款总金额 */
+@property(nonatomic,strong)NSString * refundAmounts;
+
+/** 认购时间 */
+@property(nonatomic,strong)NSString * subTime;
+
+/** 追号完成时间 */
+@property(nonatomic,strong)NSString * finishedTime;
+
+/** 备注 */
+@property(nonatomic,strong)NSString *  remark;
+
+/** 完成追期数 */
+@property(nonatomic,strong)NSString * chaseCount;
+
+/** 彩种*/
+@property(nonatomic,strong)NSString *  lotteryType;
+@end
+
+

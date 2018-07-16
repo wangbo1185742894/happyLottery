@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "CashAndIntegrationWaterViewController.h"
+#import "CashInfoViewController.h"
 #import "NewFeatureViewController.h"
 #import "GroupNewViewController.h"
 #import "UPPaymentControl.h"
@@ -879,6 +881,53 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         playVC.lottery = lotteryDS[11];
         playVC.hidesBottomBarWhenPushed = YES;
         [delegate.curNavVC pushViewController:playVC animated:YES];
+        return;
+    }else if ([keyStr isEqualToString:@"A428"]){
+        CashInfoViewController *cashInfoVC = [[CashInfoViewController alloc]init];
+        [cashInfoVC setMenuOffset:CashInfoGoucai];
+        cashInfoVC.hidesBottomBarWhenPushed = YES;
+        [delegate.curNavVC pushViewController:cashInfoVC animated:YES];
+        return;
+    }else if ([keyStr isEqualToString:@"A429"]){
+        CashInfoViewController *cashInfoVC = [[CashInfoViewController alloc]init];
+        [cashInfoVC setMenuOffset:CashInfoChongzhi];
+        cashInfoVC.hidesBottomBarWhenPushed = YES;
+        [delegate.curNavVC pushViewController:cashInfoVC animated:YES];
+        return;
+    }else if ([keyStr isEqualToString:@"A430"]){
+        CashInfoViewController *cashInfoVC = [[CashInfoViewController alloc]init];
+        [cashInfoVC setMenuOffset:CashInfoPaijiang];
+        cashInfoVC.hidesBottomBarWhenPushed = YES;
+        [delegate.curNavVC pushViewController:cashInfoVC animated:YES];
+        return;
+    }else if ([keyStr isEqualToString:@"A431"]){
+        CashInfoViewController *cashInfoVC = [[CashInfoViewController alloc]init];
+        [cashInfoVC setMenuOffset:CashInfoTixian];
+        cashInfoVC.hidesBottomBarWhenPushed = YES;
+        [delegate.curNavVC pushViewController:cashInfoVC animated:YES];
+        return;
+    }else if ([keyStr isEqualToString:@"A432"]){
+        CashInfoViewController *cashInfoVC = [[CashInfoViewController alloc]init];
+        [cashInfoVC setMenuOffset:CashInfoCaijin];
+        cashInfoVC.hidesBottomBarWhenPushed = YES;
+        [delegate.curNavVC pushViewController:cashInfoVC animated:YES];
+        return;
+    }else if ([keyStr isEqualToString:@"A433"]){
+        CashInfoViewController *cashInfoVC = [[CashInfoViewController alloc]init];
+        [cashInfoVC setMenuOffset:CashInfoYongjin];
+        cashInfoVC.hidesBottomBarWhenPushed = YES;
+        [delegate.curNavVC pushViewController:cashInfoVC animated:YES];
+        return;
+    }else if ([keyStr isEqualToString:@"A434"]){
+        CashInfoViewController *cashInfoVC = [[CashInfoViewController alloc]init];
+        [cashInfoVC setMenuOffset:CashInfoFanyong];
+        cashInfoVC.hidesBottomBarWhenPushed = YES;
+        [delegate.curNavVC pushViewController:cashInfoVC animated:YES];
+        return;
+    }else if ([keyStr isEqualToString:@"A435"]){
+        CashAndIntegrationWaterViewController *cashInfoVC = [[CashAndIntegrationWaterViewController alloc]init];
+        cashInfoVC.hidesBottomBarWhenPushed = YES;
+        [delegate.curNavVC pushViewController:cashInfoVC animated:YES];
         return;
     }else{
           baseVC.hidesBottomBarWhenPushed = YES;
