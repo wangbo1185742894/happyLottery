@@ -58,9 +58,6 @@
     UIButton *addRandonBetButton;
     UIButton *clearAllBetButton;
     UIButton *zhuihaoBtn;
-    /*中奖停追*/
-    UIButton *WinStop;
-    UILabel *WinStoplabel;
     /*追加按钮*/
     UIButton *appendBtn;
     
@@ -233,32 +230,6 @@
         
         [self.view addSubview:goOnPlayButton];
         addRandonBetButton = [[UIButton alloc]initWithFrame:frame2];
-        /*中奖后是否停追*/
-        WinStop = [[UIButton alloc]initWithFrame:frame5];
-        WinStoplabel = [[UILabel alloc]initWithFrame:CGRectMake(KscreenWidth-89,45, 110, 25)];;
-        WinStoplabel.text = @"中奖后停追";
-        WinStoplabel.font = [UIFont systemFontOfSize:13];
-        WinStoplabel.textColor = RGBCOLOR(140, 140, 140);
-        WinStop.titleLabel.textAlignment = NSTextAlignmentRight;
-        WinStop.titleLabel.font = [UIFont systemFontOfSize:13];
-        if( myDelegate.iswinStop)
-        {
-            [WinStop setSelected:YES];
-            [WinStop setImage:[UIImage imageNamed:@"png_btn_agree_pressed.png"] forState:UIControlStateSelected];
-        }
-        else
-        {
-            [WinStop setSelected:NO];
-            [WinStop setImage:[UIImage imageNamed:@"png_btn_agree.png"] forState:UIControlStateNormal];
-        }
-    
-        [WinStop addTarget: self action: @selector(WinStopClick) forControlEvents: UIControlEventTouchUpInside];
-        
-        [betOptionFunView addSubview:WinStoplabel];
-        [betOptionFunView addSubview:WinStop];
-        WinStop.hidden = YES;
-        
-        WinStoplabel.hidden = YES;
         betOptionfunViewHeight.constant = 160;
         
         lineBottom.constant = betOptionfunViewHeight.constant;
@@ -334,8 +305,6 @@
     self.hasLiked = YES;
     [self initZhuiHaoBtnState];
     if (_FLAG) {
-        WinStop.hidden = YES;
-        WinStoplabel.hidden = YES;
         betOptionfunViewHeight.constant = 160;
         
         lineBottom.constant = betOptionfunViewHeight.constant;
@@ -363,26 +332,6 @@
         }else{
 //            zhuihaoBtn.hidden = NO;
         }
-    }
-    if(WinStop.hidden && _issue > 1)
-    {
-        WinStop.hidden = NO;
-        WinStoplabel.hidden = NO;
-        betOptionfunViewHeight.constant = 160;
-        
-        lineBottom.constant = betOptionfunViewHeight.constant;
-        
-        tableviewBottom.constant = betOptionfunViewHeight.constant;
-        tableViewContentBottom .constant = 0;
-        
-        
-        frame4.origin.y = 79;
-        
-        zhuihaoBtn.frame = frame4;
-        totalframe.origin.y = 78;
-        beiqiframe.origin.y = 96;
-        splitLineframe.origin.y = 71;
-        splitLine.frame = splitLineframe;
     }
     [self ToolView:tfBeiText];
     [self ToolView:tfQiText];
@@ -427,20 +376,6 @@
     [tfQiText resignFirstResponder];
 }
 
-- (void) WinStopClick {
-    WinStop.selected = !WinStop.selected;
-    AppDelegate *myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    if(WinStop.selected)
-    {
-        [WinStop setImage:[UIImage imageNamed:@"png_btn_agree_pressed.png"] forState:UIControlStateNormal];
-        myDelegate.iswinStop = YES;
-    }
-    else
-    {
-        [WinStop setImage:[UIImage imageNamed:@"png_btn_agree.png"] forState:UIControlStateNormal];
-        myDelegate.iswinStop = NO;
-    }
-}
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NotificationNameUserLogin object:nil];
@@ -1353,10 +1288,6 @@
     if (self.transaction.beiTouCount > 0) {
         defaultBeiShu += self.transaction.beiTouCount - 1;
     }
-    //    int defaultQiShu = MaxQiShu*DataSourceTimes/2;
-    //    if (self.transaction.qiShuCount > 0) {
-    //        defaultQiShu += self.transaction.qiShuCount - 1;
-    //    }
     
     [pickerBeiTou_ selectRow: defaultBeiShu inComponent: 0 animated: NO];
     //  [pickerBeiTou_ selectRow: defaultQiShu inComponent: 1 animated: NO];
@@ -1785,9 +1716,7 @@
             playType = [NSNumber numberWithInt:[playtype intValue]];;
             break;
     }
-    //    if ([GlobalInstance instance].lotttypefromorder) {
-    //        playType = [NSNumber numberWithInt:[[GlobalInstance instance].lotttypefromorder intValue]];
-    //    }
+  
     LotteryBet *betTemp = [betslist lastObject];
     if (betTemp.orderBetPlayType) {
         playType = [NSNumber numberWithInt:[betTemp.orderBetPlayType intValue]];
