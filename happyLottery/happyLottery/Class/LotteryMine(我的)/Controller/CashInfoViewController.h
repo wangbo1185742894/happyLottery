@@ -8,6 +8,16 @@
 
 #import "BaseViewController.h"
 
+typedef enum : NSUInteger {
+    CashInfoGoucai = 0,
+    CashInfoChongzhi,
+    CashInfoPaijiang,
+    CashInfoTixian,
+    CashInfoCaijin,
+    CashInfoYongjin,
+    CashInfoFanyong,
+}CashInfoType;
+
 @interface CashInfoViewController : BaseViewController
--(void)setMenuOffset:(NSInteger)index;
+-(void)setMenuOffset:(CashInfoType)index;
 @end

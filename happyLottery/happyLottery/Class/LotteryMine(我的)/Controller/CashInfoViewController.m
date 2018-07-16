@@ -10,7 +10,7 @@
 #import "ClassListCellViewController.h"
 #import "WBMenu.h"
 @interface CashInfoViewController (){
-    NSInteger _index;
+    CashInfoType _index;
 }
 @property(nonatomic,strong)WBMenu *topMenu;
 @end
@@ -52,7 +52,7 @@
     [self.view addSubview:_topMenu];
 }
 
--(void)setMenuOffset:(NSInteger)index{
+-(void)setMenuOffset:(CashInfoType)index{
     _index = index;
 }
 

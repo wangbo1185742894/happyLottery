@@ -8,6 +8,7 @@
 
 #import "ClassListCellViewController.h"
 #import "UserInfoDetailViewController.h"
+
 #import "WBMenu.h"
 #import "UserInfoBaseModel.h"
 #import "CashAndIntegrationWaterTableViewCell.h"

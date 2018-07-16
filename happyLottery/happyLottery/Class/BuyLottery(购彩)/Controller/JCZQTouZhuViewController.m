@@ -81,7 +81,7 @@
                 [self showPromptText:@"过关模式下至少保留两场比赛" hideAfterDelay:1.7];
                 return;
             }
-            return;
+            
             
 //            BOOL isDanGuan = YES;
 //            for (JCZQMatchModel *model in self.transction.selectMatchArray) {
