@@ -12,7 +12,7 @@
 
 @interface QuestionsViewController ()<UITableViewDelegate,UITableViewDataSource,FoldSectionHeaderViewDelegate>{
     NSArray *_arr;//创建一个数据源数组
-    NSMutableDictionary *_foldInfoDic;//创建一个字典进行判断收缩还是展开
+    NSMutableArray *_foldInfoarry;//创建一个字典进行判断收缩还是展开
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottom;
@@ -29,7 +29,7 @@
         self.top.constant = 88;
         self.bottom.constant = 34;
     }
-    _foldInfoDic = [NSMutableDictionary dictionaryWithCapacity:0];
+    _foldInfoarry = [NSMutableArray arrayWithCapacity:0];
     self.tableView.delegate=self;
     self.tableView.dataSource=self;
     self.tableView.estimatedRowHeight = 120;//很重要保障滑动流畅性
@@ -40,20 +40,16 @@
 - (void)creatArr {
     _arr = [NSArray arrayWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"questionAndAnswear" ofType: @"plist"]];
     for (int i = 0; i<_arr.count; i++) {
-        NSString *stringInt = [NSString stringWithFormat:@"%d",i];
         if (i == 0) {
-            [_foldInfoDic setValue:@"1" forKey:stringInt];
+            [_foldInfoarry addObject:@"1"];
         } else {
-            [_foldInfoDic setValue:@"0" forKey:stringInt];
+            [_foldInfoarry addObject:@"0"];
         }
-        
     }
 }
 //
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    NSString *key = [NSString stringWithFormat:@"%d", (int)section];
-    BOOL folded = [[_foldInfoDic objectForKey:key] boolValue];
+    BOOL folded = [_foldInfoarry[section] boolValue];
     return folded?1:0;
 }
 
@@ -71,8 +67,7 @@
     NSDictionary *dic = _arr[section];
     [headerView setFoldSectionHeaderViewWithTitle:dic[@"question"] type:HerderStyleTotal section:section canFold:YES];
     headerView.delegate = self;
-    NSString *key = [NSString stringWithFormat:@"%d", (int)section];
-    BOOL folded = [[_foldInfoDic valueForKey:key] boolValue];
+    BOOL folded = [_foldInfoarry[section] boolValue];
     headerView.fold = folded;
     return headerView;
 }
@@ -128,10 +123,9 @@
 }
 
 - (void)foldHeaderInSection:(NSInteger)SectionHeader {
-    NSString *key = [NSString stringWithFormat:@"%d",(int)SectionHeader];
-    BOOL folded = [[_foldInfoDic objectForKey:key] boolValue];
+    BOOL folded = [_foldInfoarry[SectionHeader] boolValue];
     NSString *fold = folded ? @"0" : @"1";
-    [_foldInfoDic setValue:fold forKey:key];
+    _foldInfoarry[SectionHeader] = fold;
     NSMutableIndexSet *set = [[NSMutableIndexSet alloc] initWithIndex:SectionHeader];
     [_tableView reloadSections:set withRowAnimation:UITableViewRowAnimationAutomatic];
     
