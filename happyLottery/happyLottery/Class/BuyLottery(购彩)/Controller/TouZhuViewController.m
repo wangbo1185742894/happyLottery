@@ -64,6 +64,7 @@
     /*追加按钮*/
     UIButton *appendBtn;
     
+    __weak IBOutlet UIButton *zhinengBtn;
     BeitouView * beitouView;
     __weak IBOutlet NSLayoutConstraint *lbSummaryBottomTraint;
     
@@ -117,6 +118,7 @@
 @property (nonatomic , assign) BOOL hasLiked;
 @property (weak, nonatomic) IBOutlet UIButton *btnHemai;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *qCountItembtn;
+@property (weak, nonatomic) IBOutlet UIButton *zhSelectBtn;
 
 //timer
 @property (nonatomic , strong) NSTimer *timer;
@@ -156,7 +158,10 @@
     self.yuYueBtn.layer.cornerRadius = 4;
     tfBeiText.delegate = self;
     tfQiText.delegate = self;
-    
+    zhinengBtn.layer.cornerRadius = 4;
+    zhinengBtn.layer.masksToBounds = YES;
+    zhinengBtn.layer.borderWidth = 1;
+    zhinengBtn.layer.borderColor = RGBCOLOR(18, 199, 146).CGColor;
     labelSummary_.adjustsFontSizeToFitWidth  = YES;
     /*zwl*/
     _FLAG = NO;
@@ -254,7 +259,7 @@
         WinStop.hidden = YES;
         
         WinStoplabel.hidden = YES;
-        betOptionfunViewHeight.constant = 140;
+        betOptionfunViewHeight.constant = 160;
         
         lineBottom.constant = betOptionfunViewHeight.constant;
         tableviewBottom.constant = betOptionfunViewHeight.constant;
@@ -293,6 +298,11 @@
     clearAllBetButton.titleLabel.font = [UIFont systemFontOfSize:15];
     [clearAllBetButton addTarget: self action: @selector(actionRemoveAllBets:) forControlEvents: UIControlEventTouchUpInside];
     [self.view addSubview:addRandonBetButton];
+    self.zhSelectBtn.hidden = YES;
+    if ([tfQiText.text integerValue]>1) {
+        self.zhSelectBtn.hidden = NO;
+    }
+    
 }
 
 - (void)navigationBackToLastPage{
@@ -326,7 +336,7 @@
     if (_FLAG) {
         WinStop.hidden = YES;
         WinStoplabel.hidden = YES;
-        betOptionfunViewHeight.constant = 140;
+        betOptionfunViewHeight.constant = 160;
         
         lineBottom.constant = betOptionfunViewHeight.constant;
         
@@ -358,7 +368,7 @@
     {
         WinStop.hidden = NO;
         WinStoplabel.hidden = NO;
-        betOptionfunViewHeight.constant = 140;
+        betOptionfunViewHeight.constant = 160;
         
         lineBottom.constant = betOptionfunViewHeight.constant;
         
@@ -374,11 +384,14 @@
         splitLineframe.origin.y = 71;
         splitLine.frame = splitLineframe;
     }
-//    tfBeiText.keyboardType =UIKeyboardTypeNumberPad;
-//    tfQiText.keyboardType = UIKeyboardTypeNumberPad;
     [self ToolView:tfBeiText];
     [self ToolView:tfQiText];
     
+}
+
+- (IBAction)actionSelectTZ:(id)sender {
+    UIButton *butt = sender;
+    butt.selected = !butt.selected;
 }
 
 -(void)ToolView:(UITextField *)textField{
@@ -577,6 +590,11 @@
     }
     mostBoundsLb.attributedText = [self.transaction getTouZhuSummaryText1];
     labelSummary_.attributedText = [self.transaction getTouZhuSummaryText2];
+    if ([tfQiText.text intValue]>1) {
+        self.zhSelectBtn.hidden = NO;
+    } else {
+        self.zhSelectBtn.hidden = YES;
+    }
 }
 
 - (void)removeAllBetsAlert{
@@ -852,7 +870,7 @@
 - (void)payForZHOrderInfo:(NSDictionary *)orderNeedInfo andQishu:(int)qi{
     
     curBlance =  [[self.curUser totalBanlece] doubleValue];
-    
+    self.transaction.winStopStatus = _zhSelectBtn.selected?WINSTOP:NOTSTOP;
     NSString *msg = [NSString stringWithFormat:@"共追%@期，共需%.0f元,您当前余额为%.1f元,是否确定追号？",tfQiText.text,[self.transaction getAllCost],curBlance];
     ZLAlertView *alert = [[ZLAlertView alloc] initWithTitle:@"追号确认" message:msg];
     [alert addBtnTitle:TitleNotDo action:^{
@@ -1809,7 +1827,7 @@
     [myDelegate.ZHDic setObject:array forKey: @"catchList"]
     ;
     //中奖后是否停追
-    if(WinStop.selected)
+    if(zhuihaoBtn.selected)
     {
         [myDelegate.ZHDic setObject:@"WINSTOP"forKey:@"winStopStatus"];
     }

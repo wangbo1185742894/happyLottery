@@ -402,8 +402,6 @@
                                             NSLog(@"n%@",arr[k]);
                                             [button setTitle:[NSString stringWithFormat:@"%@",arr[k]] forState:UIControlStateNormal];
                                             [button setBackgroundImage:backImage forState:UIControlStateNormal];
-//                                            button.layer.cornerRadius = 13;
-//                                            button.layer.masksToBounds = YES;
                                             [self.numberBackground addSubview:button];
                                         }
                                         if (number < arra.count +k) {
@@ -502,12 +500,13 @@
     if(_order){
     
     }
-    if ([_order.winStopStatus intValue] == 0) {
-        winStop.text = @"中奖停追：否";
+    if ([_order.winStopStatus isEqualToString:@"WINSTOP"]) {
+        
+        winStop.text = @"中奖停追：是";
     }
     else
     {
-        winStop.text = @"中奖停追：是";
+        winStop.text = @"中奖停追：否";
     }
 }
 
