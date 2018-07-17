@@ -179,6 +179,7 @@
     if (nil == _lotteryTransaction) {
         _lotteryTransaction = [[LotteryTransaction alloc] init];
         _lotteryTransaction.needZhuiJia = NO;
+        _lotteryTransaction.winStopStatus = WINSTOP;
         _lotteryTransaction.beiTouCount = 1;
         _lotteryTransaction.qiShuCount = 1;
         _lotteryTransaction.lottery = self.lottery;

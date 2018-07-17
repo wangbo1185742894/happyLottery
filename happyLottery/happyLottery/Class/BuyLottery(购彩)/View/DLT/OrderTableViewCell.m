@@ -9,9 +9,12 @@
 #define TOPLONG 20
 
 #import "OrderTableViewCell.h"
+#import "X115SchemeViewCell.h"
 #import "CTZQOrderProfile.h"
 
-@interface OrderTableViewCell()
+@interface OrderTableViewCell(){
+    OrderProfile * ItemOrder;
+}
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstant;
 
 @end
@@ -21,14 +24,25 @@
 @implementation OrderTableViewCell
 
 - (void)awakeFromNib {
-
+    OrderProfile * ItemOrder;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 }
 
+-(NSString *)x115PlayType{
+    NSArray *chaseList = [Utility objFromJson:ItemOrder.catchContent];
+    NSDictionary *itemDic = [chaseList firstObject];
+    if ([ItemOrder.betType integerValue] == 2) {
+        return  [NSString stringWithFormat:@"%@%@",[X115SchemeViewCell X115CHNTypeByEnType:itemDic[@"playType"]],@"胆拖"];
+    }else{
+        return  [X115SchemeViewCell X115CHNTypeByEnType:itemDic[@"playType"]];
+    }
+}
+
 -(void)orderInforZhuihao:(OrderProfile *)order{
+    ItemOrder = order;
     prizeMoney.hidden = YES;
     [prizeMoney setFont:[UIFont systemFontOfSize:13]];
     [timeLb setFont:[UIFont systemFontOfSize:13]];
@@ -58,10 +72,10 @@
         if ([order.lotteryCode isEqualToString:@"SSQ"]) {
             lotteryTypeLb.text = [NSString stringWithFormat:@"双色球"];
         }
-        if ([order.lottery isEqualToString:@"SX115"]) {
+        if ([order.lotteryCode isEqualToString:@"SX115"]) {
             lotteryTypeLb.text = [NSString stringWithFormat:@"陕西11选5"];
         }
-        if ([order.lottery isEqualToString:@"SD115"]) {
+        if ([order.lotteryCode isEqualToString:@"SD115"]) {
             lotteryTypeLb.text = [NSString stringWithFormat:@"山东11选5"];
         }
             
@@ -91,24 +105,22 @@
 
         if ([order.playType isEqualToString:@"1"]) {
             if ([order.lotteryCode isEqualToString:@"SSQ"]) {
-                issueNumLb.text = [NSString stringWithFormat:@"双色球(追加)"];
+                issueNumLb.text = [NSString stringWithFormat:@"(追加)"];
             }else  if ([order.lotteryCode isEqualToString:@"DLT"]){
-                issueNumLb.text = [NSString stringWithFormat:@"超级大乐透(追加)"];
-            }else  if ([order.lotteryCode isEqualToString:@"SX115"]){
-                issueNumLb.text = [NSString stringWithFormat:@"陕西11选5"];
-            }else  if ([order.lotteryCode isEqualToString:@"SD115"]){
-                issueNumLb.text = [NSString stringWithFormat:@"山东11选5"];
+                issueNumLb.text = [NSString stringWithFormat:@"(追加)"];
+            }else{
+                issueNumLb.text = [self x115PlayType];
+                issueNumLb.text = [self x115PlayType];
             }
             
         } else {
             if ([order.lotteryCode isEqualToString:@"SSQ"]) {
-                issueNumLb.text = [NSString stringWithFormat:@"双色球"];
+                issueNumLb.text = [NSString stringWithFormat:@""];
             }else  if ([order.lotteryCode isEqualToString:@"DLT"]){
-                issueNumLb.text = [NSString stringWithFormat:@"超级大乐透"];
-            }else  if ([order.lotteryCode isEqualToString:@"SX115"]){
-                issueNumLb.text = [NSString stringWithFormat:@"陕西11选5"];
-            }else  if ([order.lotteryCode isEqualToString:@"SD115"]){
-                issueNumLb.text = [NSString stringWithFormat:@"山东11选5"];
+                issueNumLb.text = [NSString stringWithFormat:@""];
+            }else{
+                issueNumLb.text = [self x115PlayType];
+                issueNumLb.text = [self x115PlayType];
             }
         }
 //        issueNumLb.text = [NSString stringWithFormat:@"%@",order.catchplaytype];

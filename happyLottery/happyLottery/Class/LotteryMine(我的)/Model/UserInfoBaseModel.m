@@ -10,6 +10,8 @@
 
 @implementation UserInfoBaseModel
 
+
+
 @end
 
 @implementation BonusDetail : UserInfoBaseModel
@@ -134,6 +136,21 @@
 @end
 
 @implementation SubscribeDetail : UserInfoBaseModel
+
+-(NSString *)getConsumeName{
+    NSDictionary *consumeDic = @{
+                                 
+                                 @"FOR_SELF":@"自购",
+                                 @"FOR_INITIATE":@"发起合买",
+                                 @"FOR_OFFER":@"认购合买",
+                                 @"FOR_CHASE":@"追号实际扣款",
+                                 @"FOR_RECOMMENDED":@"推荐认购",
+                                 @"BUY_INITIATE":@"发起跟单",
+                                 @"FOR_FOLLOW":@"跟单"
+                                 };
+    return consumeDic[self.consumeType];
+}
+
 -(NSString *)getLeftTitle{
     if ([self.useCoupon boolValue] == YES) {
         if (self.refundAmounts.doubleValue > 0) {
@@ -168,7 +185,7 @@
 }
 
 -(NSString *)get1Name{
-    return @"购彩";
+    return [self getConsumeName];
 }
 -(NSString *)get2Name{
     return [NSString stringWithFormat:@"%.2f元",[self.realSubAmounts doubleValue]];
@@ -182,7 +199,12 @@
         return @"";
     }else{
         if ([self.refundAmounts doubleValue] == [self.realSubAmounts doubleValue]) {
+            if ([self.consumeType isEqualToString:@"FOR_CHASE"]) {
+                 return [NSString stringWithFormat:@"追号出票失败，退款%.0f元",[self.refundAmounts doubleValue]];
+            }else{
                  return [NSString stringWithFormat:@"出票失败，退款%.0f元",[self.refundAmounts doubleValue]];
+            }
+            
         }else{
                  return [NSString stringWithFormat:@"部分失败，退款%.0f元",[self.refundAmounts doubleValue]];
         }
@@ -297,16 +319,14 @@
     }
 }
 -(NSString *)getRightTitle{
-//    if (self.refundAmounts.doubleValue > 0) {
-//        return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n%@\n\n%@/%@\n\n#%@元\n\n%@元\n\n",[self get1Name],[BaseModel getLotteryByName:self.lotteryType],self.chaseSchemeNo,self.subTime,,self.subAmounts,self.refundAmounts];
-//    }else{
-//        return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n%@\n\n#%@元\n\n合计%@元\n\n",[self get1Name],[BaseModel getLotteryByName:self.lotteryType],self.chaseSchemeNo,self.subTime,self.subAmounts,self.subAmounts];
-//    }
-    return @"";
-
+    if (self.refundAmounts.doubleValue > 0) {
+        return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n%@\n\n%@/%@期\n\n#%@元\n\n%@元\n\n",[self get1Name],[BaseModel getLotteryByName:self.lotteryCode],self.chaseSchemeNo,self.subTime,self.catchIndex,self.totalCatch,self.subAmounts,self.refundAmounts];
+    }else{
+        return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n%@\n\n%@/%@期\n\n#%@元\n\n",[self get1Name],[BaseModel getLotteryByName:self.lotteryCode],self.chaseSchemeNo,self.subTime,self.catchIndex,self.totalCatch,self.subAmounts];
+    }
 }
 -(NSString *)get1Name{
-    return @"追号";
+    return @"追号预付款";
 }
 -(NSString *)get2Name{
     return [NSString stringWithFormat:@"%.2f元",[self.subAmounts doubleValue]];
@@ -316,11 +336,17 @@
 }
 
 -(NSString *)getRemark{
-    return self.refundAmounts;
+    if ([self.refundAmounts doubleValue] == 0) {
+        return @"";
+    }else{
+        return [NSString stringWithFormat:@"退款%.0f元",[self.refundAmounts doubleValue]];
+    }
 }
 -(NSString *)get4Name{
     
     return self.subTime;
 }
+
 @end
+
 

@@ -7,6 +7,7 @@
 //
 
 #import "ZHDetailViewController.h"
+#import "LotteryPlayViewController.h"
 #import "LotteryManager.h"
 #import "LotteryBetObj.h"
 #import "X115SchemeViewCell.h"
@@ -151,7 +152,13 @@
             OrderProfile *profile = [[OrderProfile alloc]initWith:itemDic];
             [_ordersArray addObject:profile];
         }
-        
+        if (_ordersArray.count == [self.order.totalCatch integerValue]) {
+            NSString * paystatus = [[_ordersArray lastObject] valueForKey:@"payStatus"];//支付状态
+            if ([paystatus isEqualToString:@"PaymentSuccess"]) {
+                self.stopChaseBtn.enabled = NO;
+            }
+
+        }
         if (orderTableView.hidden) {
             orderTableView.hidden = NO;
         }
@@ -193,6 +200,7 @@
     /* 计算累计投注 */
     NSMutableArray *datearray = [[NSMutableArray alloc]init];
     int number = 0;
+    
     for (int i= 0; i<_ordersArray.count; i++) {
         //当期投入
         NSString * string = [_ordersArray[i] valueForKey:@"subscription"];//当期投入
@@ -530,11 +538,21 @@
         //    _lotterySelected.currentRound = round;
         playVC.lottery = lotteryDS[1];
         [self.navigationController pushViewController:playVC animated:YES];
-    }
-    else{
+    }else if([_order.lotteryCode isEqualToString:@"SSQ"]){
         SSQPlayViewController *playVC = [[SSQPlayViewController alloc] init];
         playVC.hidesBottomBarWhenPushed = YES;
         playVC.lottery = lotteryDS[10];
+        [self.navigationController pushViewController:playVC animated:YES];
+    }else if([_order.lotteryCode isEqualToString:@"SX115"]){
+        
+        LotteryPlayViewController *playVC = [[LotteryPlayViewController alloc] init];
+        playVC.hidesBottomBarWhenPushed = YES;
+        playVC.lottery = lotteryDS[0];
+        [self.navigationController pushViewController:playVC animated:YES];
+    }else if([_order.lotteryCode isEqualToString:@"SD115"]){
+        LotteryPlayViewController *playVC = [[LotteryPlayViewController alloc] init];
+        playVC.hidesBottomBarWhenPushed = YES;
+        playVC.lottery = lotteryDS[11];
         [self.navigationController pushViewController:playVC animated:YES];
     }
     
@@ -599,25 +617,36 @@
 -(NSString *)getChaseContent{
     NSArray *chaseList = [Utility objFromJson:self.order.catchContent];
     NSMutableString *chaseContent = [[NSMutableString alloc]initWithCapacity:0];
+    NSInteger betCount = 0;
     for (NSDictionary *itemDic in chaseList) {
+        
         if ([self.order.lotteryCode isEqualToString:@"SX115"] || [self.order.lotteryCode isEqualToString:@"SD115"]) {
+            
+            NSString *lottery;
+            if ([self.order.lotteryCode isEqualToString:@"SX115"]) {
+                lottery = @"陕西11选5";
+            }else{
+                lottery = @"山东11选5";
+            }
               NSArray *redDanList = itemDic[@"betRows"];
             if ([_order.betType integerValue] == 2) {
-                 playName.text = [NSString stringWithFormat:@"%@%@",[X115SchemeViewCell X115CHNTypeByEnType:itemDic[@"playType"]],@"胆拖"];
+                 playName.text = [NSString stringWithFormat:@"%@%@(%@)",[X115SchemeViewCell X115CHNTypeByEnType:itemDic[@"playType"]],@"胆拖",lottery];
             }else{
-                 playName.text = [X115SchemeViewCell X115CHNTypeByEnType:itemDic[@"playType"]];
+                 playName.text = [NSString stringWithFormat:@"%@(%@)",[X115SchemeViewCell X115CHNTypeByEnType:itemDic[@"playType"]],lottery];
             }
             
-            
-            for (int i = 0; i < redDanList.count; i ++) {
+           
+            for ( int i = 0; i < redDanList.count; i ++) {
                 NSArray *itemArray = redDanList[i];
                 [chaseContent appendString:[itemArray componentsJoinedByString:@","]];
                 if (redDanList.count >1 && i < redDanList.count-1) {
                     [chaseContent appendString:@"#"];
                 }
-                
             }
-            [chaseContent appendString:@";"];
+            if (betCount < chaseList.count -1) {
+                [chaseContent appendString:@";"];
+            }
+             betCount ++;
         }else{
             NSArray *blueList = itemDic[@"blueList"];
             NSArray *blueDanList = itemDic[@"blueDanList"];
@@ -641,7 +670,7 @@
             [chaseContent appendString:[blueList componentsJoinedByString:@","]];
             [chaseContent appendString:@";"];
         }
-      
+       
     }
     return chaseContent;
 }

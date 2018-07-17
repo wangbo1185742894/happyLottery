@@ -21,7 +21,7 @@
 #define KTZSelectMatchCell @"TZSelectMatchCell"
 
 
-@interface JCLQTouZhuController ()<WBSelectViewDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,SelectViewDelegate,JingCaiChaunFaSelectViewDelegate>
+@interface JCLQTouZhuController ()<WBSelectViewDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,SelectViewDelegate,JingCaiChaunFaSelectViewDelegate,MemberManagerDelegate>
 
 
 {
@@ -30,6 +30,7 @@
     NSInteger beiCount;
     NSInteger totalUnit;
     __weak IBOutlet NSLayoutConstraint *widthTouzhu;
+    __weak IBOutlet NSLayoutConstraint *labCouHeight;
     BOOL keyboard;
     __weak IBOutlet UIButton *btnZigou;
     __weak IBOutlet UIButton *btnMoniTouzhu;
@@ -49,9 +50,11 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableSelectMatch;
 @property (weak, nonatomic) IBOutlet UIView *selectPeiChuanView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *btnTuiJianWidth;
+@property (weak, nonatomic) IBOutlet UILabel *labCouInfo;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewDisTop;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewDisBottom;
+@property(strong,nonatomic)NSMutableArray <Coupon *> * itemDataArray;
 
 @property(strong,nonatomic) WBSelectView *selectView;
 
@@ -69,7 +72,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self getCouponMoreData];
+    self.itemDataArray = [NSMutableArray arrayWithCapacity:0];
     if (self.fromSchemeType  == SchemeTypeFaqiGenDan) {
         btnTouzhu .hidden = YES;
         self.costTypeSelectView.hidden = YES;
@@ -106,7 +110,7 @@
     
     self.lotteryMan.delegate = self;
     
-    CGRect changCiFram = CGRectMake(20, 55, 110, 25);
+    CGRect changCiFram = CGRectMake(20, 10, 110, 25);
     
     chuanfaBt = [self myButton:changCiFram title:@"" select:@selector(changCiChoose) imgage:@"" selectedImgName:@"" ];
     chuanfaBt.backgroundColor = [UIColor whiteColor];
@@ -116,7 +120,7 @@
     chuanfaBt .layer.borderColor = COLORGRAYBUTTON.CGColor;
     chuanfaBt.layer.borderWidth = SEPHEIGHT;
     [chuanfaBt setTitle:self.transaction.chuanFa forState:0];
-    peiSelectView= [[SelectView alloc]initWithFrame:CGRectMake(self.view.mj_w -175, 55, 160, 25) andRightTitle:@"投" andLeftTitle:@"倍"];
+    peiSelectView= [[SelectView alloc]initWithFrame:CGRectMake(self.view.mj_w -175, 10, 160, 25) andRightTitle:@"投" andLeftTitle:@"倍"];
     peiSelectView.beiShuLimit = 9999;
     if ([self.transaction.beitou isEqualToString:@""] || self.transaction.beitou == nil) {
         peiSelectView.labContent.text = @"5";
@@ -155,6 +159,43 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(acitonDeleteMatch:) name:@"NSNotificationDeleteMatchForTouzhu" object:nil];
     btnZigou.layer.cornerRadius = 5;
     faDanBtn.layer.cornerRadius = 5;
+}
+
+
+-(void)getCouponByStateSms:(NSArray *)couponInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    NSMutableArray *listTitle = [NSMutableArray arrayWithCapacity:0];
+    
+    if (success == YES && couponInfo != nil) {
+        for (NSDictionary *itemDic in couponInfo) {
+            Coupon *coupon = [[Coupon alloc]initWith:itemDic];
+            [listTitle addObject:[NSString stringWithFormat:@"   满%@减%@",coupon.quota,coupon.deduction]];
+            [self.itemDataArray addObject:coupon];
+        }
+        self.labCouInfo.text = [listTitle componentsJoinedByString:@","];
+    }
+}
+
+-(void)getCouponMoreData{
+    if (self.curUser.isLogin == NO) {
+        self.labCouInfo.text = @"";
+        labCouHeight.constant = 0;
+        return;
+    }else{
+           labCouHeight.constant = 30;
+    }
+    NSDictionary *Info;
+    @try {
+        NSString *cardCode = self.curUser.cardCode;
+        Info = @{@"cardCode":cardCode,
+                 @"isValid":@1,
+                 @"page":@(0),
+                 @"pageSize":@(20)
+                 };
+    } @catch (NSException *exception) {
+        return;
+    }
+    self.memberMan.delegate = self;
+    [self.memberMan getCouponByStateSms:Info];
 }
 
 -(NSInteger)sumSelect:(NSArray*)array{

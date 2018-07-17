@@ -15,7 +15,7 @@
 #define KTZSelectMatchCell @"TZSelectMatchCell"
 
 
-@interface JCZQTouZhuViewController ()<UITableViewDelegate,UITableViewDataSource,JingCaiChaunFaSelectViewDelegate,LotteryManagerDelegate,SelectViewDelegate>
+@interface JCZQTouZhuViewController ()<UITableViewDelegate,UITableViewDataSource,JingCaiChaunFaSelectViewDelegate,LotteryManagerDelegate,SelectViewDelegate,MemberManagerDelegate>
 {
     SelectView * peiSelectView;
     __weak IBOutlet UIView *costTypeSelectView;
@@ -29,7 +29,10 @@
 }
 @property (weak, nonatomic) IBOutlet UITableView *tabSelectedMatch;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *couHeight;
 @property (weak, nonatomic) IBOutlet UIView *viewBottom;
+@property (weak, nonatomic) IBOutlet UILabel *labCouInfo;
+@property(strong,nonatomic)NSMutableArray <Coupon *> * itemDataArray;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthTouzhu;
 @property (weak, nonatomic) IBOutlet UILabel *labZhuInfo;
 @property (weak, nonatomic) IBOutlet UILabel *labPrizeInfo;
@@ -43,6 +46,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self getCouponMoreData];
+    self.itemDataArray = [NSMutableArray arrayWithCapacity:0];
     if (self.fromSchemeType  == SchemeTypeFaqiGenDan) {
         self.touzhuBtn.hidden = YES;
         costTypeSelectView.hidden = YES;
@@ -73,16 +78,51 @@
     fadanBtn.layer.cornerRadius = 5;
 }
 
+
+-(void)getCouponByStateSms:(NSArray *)couponInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    NSMutableArray *listTitle = [NSMutableArray arrayWithCapacity:0];
+    
+    if (success == YES && couponInfo != nil) {
+        for (NSDictionary *itemDic in couponInfo) {
+            Coupon *coupon = [[Coupon alloc]initWith:itemDic];
+            [listTitle addObject:[NSString stringWithFormat:@"   满%@减%@",coupon.quota,coupon.deduction]];
+            [self.itemDataArray addObject:coupon];
+        }
+        self.labCouInfo.text = [listTitle componentsJoinedByString:@","];
+    }
+}
+
+-(void)getCouponMoreData{
+    if (self.curUser.isLogin == NO) {
+        self.labCouInfo.text = @"";
+        _couHeight.constant = 0;
+        return;
+    }else{
+        _couHeight.constant = 30;
+    }
+    NSDictionary *Info;
+    @try {
+        NSString *cardCode = self.curUser.cardCode;
+        Info = @{@"cardCode":cardCode,
+                 @"isValid":@1,
+                 @"page":@(0),
+                 @"pageSize":@(20)
+                 };
+    } @catch (NSException *exception) {
+        return;
+    }
+    self.memberMan.delegate = self;
+    [self.memberMan getCouponByStateSms:Info];
+}
+
+
 -(void)cleanMatch:(NSNotification*)notification{
         if (self.transction.playType == JCZQPlayTypeGuoGuan) {
             
             if (self.transction.selectMatchArray.count <= 2) {
-                
                 [self showPromptText:@"过关模式下至少保留两场比赛" hideAfterDelay:1.7];
                 return;
             }
-            
-            
 //            BOOL isDanGuan = YES;
 //            for (JCZQMatchModel *model in self.transction.selectMatchArray) {
 //                if (model.isDanGuan ==NO) {
@@ -217,7 +257,7 @@
 
 -(void)setWBSelectView{
     if (peiSelectView  == nil) {
-         peiSelectView= [[SelectView alloc]initWithFrame:CGRectMake(KscreenWidth -180, 56, 162, 32) andRightTitle:@"投" andLeftTitle:@"倍"];
+         peiSelectView= [[SelectView alloc]initWithFrame:CGRectMake(KscreenWidth -180, 10, 162, 32) andRightTitle:@"投" andLeftTitle:@"倍"];
     }
     _viewBottom.mj_w = KscreenWidth;
     peiSelectView.delegate = self;

@@ -1526,7 +1526,10 @@
 }
 -(void)SubmitBtnClick
 {
-    
+    if(![self.lottery.currentRound.issueNumber isEqualToString:strcurRound]){
+        [self showPromptText:@"当前追号奖期已截止" hideAfterDelay:1.7];
+        return ;
+    }
     for (int i = 0; i < _issue; i++) {
         if ([mutArry[i] integerValue] * _zhushu * 2 >20000) {
             [self showPromptText:@"单期投注金额不能超过2万" hideAfterDelay:1.7];
@@ -2156,8 +2159,6 @@
 //        NSString * str = [_lottery.currentRound valueForKey:@"number"];
          NSString * str = [_lottery.currentRound valueForKey:@"issueNumber"];
         [phaseInfoView showCurRoundInfo];
-        
-        [phaseInfoView showCurRoundInfo];
         if(![str isEqualToString:strcurRound])
         {
             NSString *msg =@"奖期已经更新";
@@ -2178,6 +2179,7 @@
 
 -(NSArray*)getZhuiHaoInfo
 {
+  
     AppDelegate *myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSMutableArray *issueMultiple = [NSMutableArray arrayWithCapacity:0];
     NSArray *catchList = myDelegate.ZHDic[@"catchList"];

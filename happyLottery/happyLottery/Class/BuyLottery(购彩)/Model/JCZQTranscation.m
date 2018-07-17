@@ -722,10 +722,10 @@
                 NSArray * allZuheArray =   [self matchCodeFenZu:match.matchBetArray  match:match];
                 
                 NSArray * zuheValid;
-                //            NSArray * zuheValid_min;
+                            NSArray * zuheValid_min;
                 float maxValue = 0;
-                //            float minValue = NSIntegerMax;
-                //            NSMutableArray * peilu_zuhe_temp =[NSMutableArray array];
+                            float minValue = NSIntegerMax;
+                            NSMutableArray * peilu_zuhe_temp =[NSMutableArray array];
                 for(NSArray * array in allZuheArray){
                     NSArray * peilv_zuhe_array = [self codeZuheShiftToOddZuhe:array match:match];
                     float result=0;
@@ -792,7 +792,7 @@
         }
         return;
         NSMutableArray * match_valid_odd_array = [NSMutableArray arrayWithCapacity:self.selectMatchArray.count];
-//        NSMutableArray * match_min_valid_odd_array = [NSMutableArray arrayWithCapacity:self.selectMatchArray.count];
+        NSMutableArray * match_min_valid_odd_array = [NSMutableArray arrayWithCapacity:self.selectMatchArray.count];
         for (JCZQMatchModel * mathc in self.selectMatchArray){
             
             NSArray * odds_array;
@@ -849,8 +849,8 @@
     NSArray * baseNumArray = [baseNum componentsSeparatedByString:@","];
     
     if ([self.curProfile.Desc isEqualToString:@"HHGG"]) {
-        //        NSDictionary * hunheBfPeiDuiDic = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"HHGGPeilvTable" ofType:@"plist"]];
-        //        NSMutableArray * oddNumArray_temp = [NSMutableArray array];
+                NSDictionary * hunheBfPeiDuiDic = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"HHGGPeilvTable" ofType:@"plist"]];
+                NSMutableArray * oddNumArray_temp = [NSMutableArray array];
         for (int i=0;i<self.selectMatchArray.count;i++){
             
             JCZQMatchModel* match = self.selectMatchArray[i];
@@ -860,10 +860,10 @@
             NSArray * allZuheArray =   [self matchCodeFenZu:match.matchBetArray  match:match];
             
             NSArray * zuheValid;
-//            NSArray * zuheValid_min;
+            NSArray * zuheValid_min;
             float maxValue = 0;
-//            float minValue = NSIntegerMax;
-            //            NSMutableArray * peilu_zuhe_temp =[NSMutableArray array];
+            float minValue = NSIntegerMax;
+                        NSMutableArray * peilu_zuhe_temp =[NSMutableArray array];
             for(NSArray * array in allZuheArray){
                 NSArray * peilv_zuhe_array = [self codeZuheShiftToOddZuhe:array match:match];
                 float result=0;
@@ -875,20 +875,20 @@
                     zuheValid = peilv_zuhe_array;
                 }
                 
-//                peilv_zuhe_array = [self codeZuheShiftToOddZuheMin:array match:match];
+                peilv_zuhe_array = [self codeZuheShiftToOddZuheMin:array match:match];
                 result=0;
                 for(NSNumber *num in peilv_zuhe_array){
                     result += [num floatValue];
                 }
                 
-//                if (result < minValue) {
-//                    minValue = result;
-//                    zuheValid_min = peilv_zuhe_array;
-//                }
+                if (result < minValue) {
+                    minValue = result;
+                    zuheValid_min = peilv_zuhe_array;
+                }
             }
             match.odd_max_zuhe_HHGG = zuheValid;
-//            match.odd_min_zuhe_HHGG = zuheValid_min;
-            //            [oddNumArray_temp addObject:zuheValid];
+            match.odd_min_zuhe_HHGG = zuheValid_min;
+                        [oddNumArray_temp addObject:zuheValid];
         }
         
         NSMutableDictionary * matchGropDic = [NSMutableDictionary dictionary];
@@ -927,35 +927,35 @@
         float total_bounds = bouns_temp * [_beitou intValue];
         self.mostBounds = [NSString stringWithFormat:@"%.2f",total_bounds];
         
-//        bouns_temp = 0;
-//        for (NSArray * indexArray in allGroup) {
-//            NSMutableArray * matchArray = [NSMutableArray arrayWithCapacity:indexArray.count];
-//            for (NSString * indexString in indexArray) {
-//                [matchArray addObject:matchGropDic[indexString]];
-//            }
-//            self.numArrayContent = [NSMutableArray array];
-//            NSMutableArray * numArrayContent_temp = [NSMutableArray array];
-//            for(JCZQMatchModel * match in matchArray){
-//                [numArrayContent_temp addObject:match.odd_min_zuhe_HHGG];
-//            }
-//            self.numArrayContent = numArrayContent_temp;
-//
-//            self.hunHeCombinesString = [NSMutableArray array];
-//
-//            [self arrayRrgodicIndex:0 mutableString:nil];
-//            for (int i =0; i<_hunHeCombinesString.count; i++) {
-//                NSString * numString = _hunHeCombinesString[i];
-//                NSArray * numArray = [numString componentsSeparatedByString:@","];
-//                double  value =[self calculateBetCount:numArray baseNumArray:baseNumArray];
-//                bouns_temp += value;
-//            }
-//        }
-//        total_bounds = bouns_temp * [_beitou intValue];
-//        self.minBounds = [NSString stringWithFormat:@"%.2f",total_bounds];
+        bouns_temp = 0;
+        for (NSArray * indexArray in allGroup) {
+            NSMutableArray * matchArray = [NSMutableArray arrayWithCapacity:indexArray.count];
+            for (NSString * indexString in indexArray) {
+                [matchArray addObject:matchGropDic[indexString]];
+            }
+            self.numArrayContent = [NSMutableArray array];
+            NSMutableArray * numArrayContent_temp = [NSMutableArray array];
+            for(JCZQMatchModel * match in matchArray){
+                [numArrayContent_temp addObject:match.odd_min_zuhe_HHGG];
+            }
+            self.numArrayContent = numArrayContent_temp;
+
+            self.hunHeCombinesString = [NSMutableArray array];
+
+            [self arrayRrgodicIndex:0 mutableString:nil];
+            for (int i =0; i<_hunHeCombinesString.count; i++) {
+                NSString * numString = _hunHeCombinesString[i];
+                NSArray * numArray = [numString componentsSeparatedByString:@","];
+                double  value =[self calculateBetCount:numArray baseNumArray:baseNumArray];
+                bouns_temp += value;
+            }
+        }
+        total_bounds = bouns_temp * [_beitou intValue];
+        self.minBounds = [NSString stringWithFormat:@"%.2f",total_bounds];
         
     }else{
         NSMutableArray * match_valid_odd_array = [NSMutableArray arrayWithCapacity:self.selectMatchArray.count];
-//        NSMutableArray * match_min_valid_odd_array = [NSMutableArray arrayWithCapacity:self.selectMatchArray.count];
+        NSMutableArray * match_min_valid_odd_array = [NSMutableArray arrayWithCapacity:self.selectMatchArray.count];
         for (JCZQMatchModel * mathc in self.selectMatchArray){
             
             NSArray * odds_array;
@@ -982,10 +982,10 @@
                 [match_valid_odd_array addObject:odd_string];
             }
             
-//            NSString * odd_string_min = [self setMatchMaxOddSelect:mathc oddsArray:odds_array selectArray:select_array];
-//            if (odd_string_min) {
-//                [match_min_valid_odd_array addObject:odd_string_min];
-//            }
+            NSString * odd_string_min = [self setMatchMaxOddSelect:mathc oddsArray:odds_array selectArray:select_array];
+            if (odd_string_min) {
+                [match_min_valid_odd_array addObject:odd_string_min];
+            }
         }
         
         if ([_chuanFa isEqualToString:@"单场"]) {
@@ -993,8 +993,8 @@
             float bouds = [self danChangBounds:match_valid_odd_array];
             _mostBounds = [NSString stringWithFormat:@"%.2f",bouds];
             
-//            bouds = [self danChangBounds:match_min_valid_odd_array];
-//            _minBounds = [NSString stringWithFormat:@"%.2f",bouds];
+            bouds = [self danChangBounds:match_min_valid_odd_array];
+            _minBounds = [NSString stringWithFormat:@"%.2f",bouds];
             return;
         }
         
@@ -1009,37 +1009,37 @@
         float bounds = [self calculateBetCount:match_valid_odd_array baseNumArray:baseNumArray];
         float total_bounds = bounds * [_beitou intValue];
         self.mostBounds = [NSString stringWithFormat:@"%.2f",total_bounds];
-//        bounds = [self calculateBetCount:match_min_valid_odd_array baseNumArray:baseNumArray];
-//        total_bounds = bounds * [_beitou intValue];
-//        self.minBounds = [NSString stringWithFormat:@"%.2f",total_bounds];
+        bounds = [self calculateBetCount:match_min_valid_odd_array baseNumArray:baseNumArray];
+        total_bounds = bounds * [_beitou intValue];
+        self.minBounds = [NSString stringWithFormat:@"%.2f",total_bounds];
     }
 }
 
-//- (NSString *)setMatchMinOddSelect:(JCZQMatchModel *)match oddsArray:(NSArray *)odds_Array selectArray:(NSArray *)selectArray{
-//    NSMutableArray * odds_has = [NSMutableArray arrayWithCapacity:0];
-//    for (int i=0; i<selectArray.count; i++) {
-//        NSString *select = selectArray[i];
-//        if ([select integerValue] == 1) {
-//            if (odds_Array.count > i) {
-//                [odds_has addObject:odds_Array[i]];
-//            }else{
-//                return 0;
-//            }
-//        }
-//    }
-//    NSString * valid_odd;
-//    for(NSString * odd in odds_has){
-//        if (valid_odd) {
-//            if ([valid_odd floatValue] > [odd floatValue]) {
-//                valid_odd = odd;
-//            }
-//        }else{
-//            valid_odd = odd;
-//        }
-//    }
-//
-//    return valid_odd;
-//}
+- (NSString *)setMatchMinOddSelect:(JCZQMatchModel *)match oddsArray:(NSArray *)odds_Array selectArray:(NSArray *)selectArray{
+    NSMutableArray * odds_has = [NSMutableArray arrayWithCapacity:0];
+    for (int i=0; i<selectArray.count; i++) {
+        NSString *select = selectArray[i];
+        if ([select integerValue] == 1) {
+            if (odds_Array.count > i) {
+                [odds_has addObject:odds_Array[i]];
+            }else{
+                return 0;
+            }
+        }
+    }
+    NSString * valid_odd;
+    for(NSString * odd in odds_has){
+        if (valid_odd) {
+            if ([valid_odd floatValue] > [odd floatValue]) {
+                valid_odd = odd;
+            }
+        }else{
+            valid_odd = odd;
+        }
+    }
+
+    return valid_odd;
+}
 
 - (NSString *)setMatchMaxOddSelect:(JCZQMatchModel *)match oddsArray:(NSArray *)odds_Array selectArray:(NSArray *)selectArray{
     NSMutableArray * odds_has = [NSMutableArray arrayWithCapacity:0];
@@ -1207,70 +1207,70 @@
     return valid_oddArray;
 }
 
-//- (NSArray *) codeZuheShiftToOddZuheMin:(NSArray *)codeArray match:(JCZQMatchModel *)match{
-//    NSMutableArray * valid_oddArray = [NSMutableArray arrayWithCapacity:codeArray.count];
-//
-//
-//
-//    NSMutableArray * odd_spf = [NSMutableArray array];
-//    NSMutableArray * odd_rqspf = [NSMutableArray array];
-//    NSMutableArray * odd_jqs = [NSMutableArray array];
-//    NSMutableArray * odd_bqc = [NSMutableArray array];
-//    NSMutableArray * odd_bf = [NSMutableArray array];
-//
-//    for(NSNumber * code in codeArray){
-//        NSArray * odds_source_array;
-//        NSMutableArray * code_select_array;
-//
-//        int  codeValue = [code intValue];
-//        if (codeValue > 99 && codeValue < 103) {
-//            odds_source_array = match.SPF_OddArray;
-//            code_select_array = odd_spf;
-//        }else if (codeValue> 199 && codeValue < 203){
-//            odds_source_array = match.RQSPF_OddArray;
-//            code_select_array = odd_rqspf;
-//        }else if (codeValue> 299 && codeValue < 308){
-//            odds_source_array = match.JQS_OddArray;
-//            code_select_array = odd_jqs;
-//        }else if (codeValue> 399 && codeValue < 409){
-//            odds_source_array = match.BQC_OddArray;
-//            code_select_array = odd_bqc;
-//        }else if (codeValue> 499 && codeValue < 531){
-//            odds_source_array = match.BF_OddArray;
-//            code_select_array = odd_bf;
-//        }
-//
-//        int codeIndex = codeValue %100;
-//        if (codeIndex < odds_source_array.count) {
-//            NSString * odd = odds_source_array[codeIndex];
-//            [code_select_array addObject:odd];
-//        }
-//    }
-//
-//    NSArray * container_array = @[odd_spf,odd_rqspf,odd_jqs,odd_bqc,odd_bf];
-//    for(NSArray * container in container_array){
-//
-//        if (container.count > 0) {
-//            NSString * value = [self minValueInArray:container];
-//            [valid_oddArray addObject:value];
-//        }
-//    }
-//    return valid_oddArray;
-//}
+- (NSArray *) codeZuheShiftToOddZuheMin:(NSArray *)codeArray match:(JCZQMatchModel *)match{
+    NSMutableArray * valid_oddArray = [NSMutableArray arrayWithCapacity:codeArray.count];
 
-//- (NSString *)minValueInArray:(NSArray *)array{
-//    NSString * string= nil;
-//    for (NSString * str in array){
-//        if (string) {
-//            if ([str floatValue] < [string floatValue]) {
-//                string = str;
-//            }
-//        }else{
-//            string = str;
-//        }
-//    }
-//    return string;
-//}
+
+
+    NSMutableArray * odd_spf = [NSMutableArray array];
+    NSMutableArray * odd_rqspf = [NSMutableArray array];
+    NSMutableArray * odd_jqs = [NSMutableArray array];
+    NSMutableArray * odd_bqc = [NSMutableArray array];
+    NSMutableArray * odd_bf = [NSMutableArray array];
+
+    for(NSNumber * code in codeArray){
+        NSArray * odds_source_array;
+        NSMutableArray * code_select_array;
+
+        int  codeValue = [code intValue];
+        if (codeValue > 99 && codeValue < 103) {
+            odds_source_array = match.SPF_OddArray;
+            code_select_array = odd_spf;
+        }else if (codeValue> 199 && codeValue < 203){
+            odds_source_array = match.RQSPF_OddArray;
+            code_select_array = odd_rqspf;
+        }else if (codeValue> 299 && codeValue < 308){
+            odds_source_array = match.JQS_OddArray;
+            code_select_array = odd_jqs;
+        }else if (codeValue> 399 && codeValue < 409){
+            odds_source_array = match.BQC_OddArray;
+            code_select_array = odd_bqc;
+        }else if (codeValue> 499 && codeValue < 531){
+            odds_source_array = match.BF_OddArray;
+            code_select_array = odd_bf;
+        }
+
+        int codeIndex = codeValue %100;
+        if (codeIndex < odds_source_array.count) {
+            NSString * odd = odds_source_array[codeIndex];
+            [code_select_array addObject:odd];
+        }
+    }
+
+    NSArray * container_array = @[odd_spf,odd_rqspf,odd_jqs,odd_bqc,odd_bf];
+    for(NSArray * container in container_array){
+
+        if (container.count > 0) {
+            NSString * value = [self minValueInArray:container];
+            [valid_oddArray addObject:value];
+        }
+    }
+    return valid_oddArray;
+}
+
+- (NSString *)minValueInArray:(NSArray *)array{
+    NSString * string= nil;
+    for (NSString * str in array){
+        if (string) {
+            if ([str floatValue] < [string floatValue]) {
+                string = str;
+            }
+        }else{
+            string = str;
+        }
+    }
+    return string;
+}
 
 - (NSString *)maxValueInArray:(NSArray *)array{
     NSString * string= nil;

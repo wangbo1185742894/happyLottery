@@ -133,6 +133,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _zhSelectBtn.selected = self.transaction.winStopStatus;
     [self.view addSubview:self.phaseInfoView];
     if([self isIphoneX]){
         topDis.constant = 118-64 + 88 + 44;
@@ -141,6 +142,8 @@
         topDis.constant = 118 + 44;
         _bottomDis.constant = 0;
     }
+    tfQiText.text = [NSString stringWithFormat:@"%d",self.transaction.qiShuCount];
+    tfBeiText.text = [NSString stringWithFormat:@"%d",self.transaction.beiTouCount];
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self.view layoutIfNeeded];
     self.lotteryMan.delegate = self;
@@ -272,7 +275,6 @@
         self.zhSelectBtn.hidden = NO;
         self.zhSelectBtn.selected = YES;
     }
-    
 }
 
 - (void)navigationBackToLastPage{
@@ -340,6 +342,7 @@
 - (IBAction)actionSelectTZ:(id)sender {
     UIButton *butt = sender;
     butt.selected = !butt.selected;
+    self.transaction.winStopStatus = butt.selected;
 }
 
 -(void)ToolView:(UITextField *)textField{
@@ -572,6 +575,9 @@
 
 - (void) removeAllBetsAction {
     [self.transaction removeAllBets];
+    self.transaction.beiTouCount = 1;
+    self.transaction.qiShuCount =1;
+    self.transaction.winStopStatus = WINSTOP;
     tableViewContent_.hidden = YES;
     [UIView animateWithDuration: 0.3
                      animations:^{
@@ -802,6 +808,51 @@
 //        }
 //    }
 //}
+
+-(BOOL)checkZhuiHaoNum{
+    NSArray *betslist = [self.transaction allBets];
+    if(betslist.count == 0)
+    {
+        NSString *msg =@"请正确追号投注";
+        [self showPromptText:msg hideAfterDelay:2.7];
+        return NO;
+    }
+    
+    for(int i=0;i<betslist.count;i++)
+    {
+        int intunits =[[betslist[i] valueForKey:@"betCount"] intValue];
+        
+        if(intunits == 1){
+            if(betslist.count > 5)
+            {
+                NSString *msg =@"系统最多支持五注单式追号";
+                [self showPromptText:msg hideAfterDelay:2.7];
+                return NO;
+            }
+        }
+        else if(intunits != 1)
+        {
+            if(betslist.count > 1)
+            {
+                NSString *msg =@"复式追号，系统仅支持一组选号";
+                [self showPromptText:msg hideAfterDelay:2.7];
+                return NO;
+            }
+        }
+    }
+    
+    LotteryBet *bet1 = [_transaction.allBets firstObject];
+    for (int i = 1 ;i< _transaction.allBets.count ;i++) {
+        
+        LotteryBet *bet = _transaction.allBets[i];
+        if ([bet.betXHProfile.profileID integerValue] != [bet1.betXHProfile.profileID integerValue]) {
+            [self showPromptText:@"系统暂不支持多种玩法的追号!" hideAfterDelay:1.7];
+            return NO;
+        }
+    }
+    return YES;
+}
+
 - (void)payForZHOrderInfo:(NSDictionary *)orderNeedInfo andQishu:(int)qi{
     
     curBlance =  [[self.curUser totalBanlece] doubleValue];
@@ -958,6 +1009,9 @@
         return;
     }
     if ([tfQiText.text integerValue]>1) {
+        if ([self checkZhuiHaoNum] == NO) {
+            return;
+        }
           [self payForZHOrderInfo:ZHOrderInfoTemp[@"orderNeedInfo"] andQishu:[ZHOrderInfoTemp[@"qi"] intValue]];
         return;
     }
@@ -1555,7 +1609,9 @@
 - (void) betzhuihao
 {
     isZhuiHao = YES;
-    
+    if ([self checkZhuiHaoNum] == NO) {
+        return;
+    }
     [self zhuiHaoGo];
     
 }
@@ -1919,9 +1975,8 @@
 /*Dlt追期显示*/
 -(void) loadzhuiqi
 {
-    //zwl 16-01-12
-    AppDelegate *myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    if(myDelegate.betlistcount == 0)
+
+    if(self.transaction.allBets == 0)
     {
         _issue = 1;
         self.transaction.qiShuCount = _issue;
@@ -1942,8 +1997,8 @@
 -(void) loadbei
 {
     //zwl 16-01-12
-    AppDelegate *myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    if(myDelegate.betlistcount == 0)
+
+    if(self.transaction.allBets .count == 0)
     {
         _multiple = 1;
         self.transaction.beiTouCount = _multiple;
@@ -1989,9 +2044,31 @@
         item.selected = NO;
     }
     sender.selected = YES;
-    tfQiText.text = [NSString stringWithFormat:@"%ld",sender.tag];
+    NSInteger num = sender.tag;
+    NSString * curRoundnum = [_lottery.currentRound valueForKey:@"issueNumber"];
+    NSInteger length = [curRoundnum length];
+    NSString *strcut = [curRoundnum substringFromIndex:length-2];
+    unsigned long curiss = [strcut intValue];
+    unsigned long count;
+    if([_lottery.identifier isEqualToString:@"SX115"] )
+    {
+        count = MAXQI11X5 - curiss + 1;
+        
+    }else{
+        count = MAXQISD11X5 - curiss + 1;
+    }
+    if(num >= count)
+    {
+        tfQiText.text = [NSString stringWithFormat:@"%lu", count];
+        [self showPromptText:[NSString stringWithFormat:@"今日最大可追%lu期，系统不支持跨日追号", count] hideAfterDelay:1.7];
+        sender.selected = NO;
+    }else{
+        tfQiText.text = [NSString stringWithFormat:@"%ld",sender.tag];
+    }
+    
     [self updateSummary];
 }
+
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{
     if([textField .text integerValue] ==0){
@@ -2045,6 +2122,7 @@
             [self showPromptText:[NSString stringWithFormat:@"最大可投%ld倍",limitNum] hideAfterDelay:1.8];
             return NO;
         }
+        self.transaction.beiTouCount =num;
     } else {
         //获得剩余奖期
         for (UIButton *item in _qCountItembtn) {
@@ -2055,7 +2133,7 @@
         NSString *strcut = [curRoundnum substringFromIndex:length-2];
         unsigned long curiss = [strcut intValue];
         unsigned long count;
-        if([_lottery.identifier isEqualToString:@"SX115"])
+        if([_lottery.identifier isEqualToString:@"SX115"] )
         {
             count = MAXQI11X5 - curiss + 1;
             
