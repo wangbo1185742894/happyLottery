@@ -2057,7 +2057,7 @@
     }else{
         count = MAXQISD11X5 - curiss + 1;
     }
-    if(num >= count)
+    if(num > count)
     {
         tfQiText.text = [NSString stringWithFormat:@"%lu", count];
         [self showPromptText:[NSString stringWithFormat:@"今日最大可追%lu期，系统不支持跨日追号", count] hideAfterDelay:1.7];
@@ -2195,7 +2195,7 @@
     if ([msg isEqualToString:@"执行成功"]) {
         // [self showPromptText: @"memberInfo成功" hideAfterDelay: 1.7];
         User *user = [[User alloc]initWith:memberInfo];
-        [GlobalInstance instance].curUser = user;
+        
         self.curUser.notCash = user.notCash;
         self.curUser.balance = user.balance;
         self.curUser.sendBalance = user.sendBalance;

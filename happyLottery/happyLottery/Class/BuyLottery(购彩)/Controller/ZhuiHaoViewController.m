@@ -279,6 +279,10 @@
         [JiangqiUpBtn addTarget: self action: @selector(JiangqiUpBtnClick) forControlEvents: UIControlEventTouchUpInside];
         //奖金优化按钮
         UIButton *JoptimizeBtn = [[UIButton alloc]initWithFrame:CGRectMake(KscreenWidth-100, phaseSectionFrame.origin.y+30+29, 80, 25)];
+        if ([self isIphone5s]) {
+            JoptimizeBtn.mj_w = 55;
+            JoptimizeBtn.mj_x = KscreenWidth - 65;
+        }
         [JoptimizeBtn setTitle:@"优化方案" forState:UIControlStateNormal];
         JoptimizeBtn.titleLabel.textAlignment = NSTextAlignmentRight;
         [JoptimizeBtn setBackgroundImage:[UIImage imageWithColor:RGBCOLOR(252, 148, 18)] forState:UIControlStateNormal];
@@ -1535,6 +1539,10 @@
 }
 -(void)SubmitBtnClick
 {
+    if (self.transaction.qiShuCount <= 1) {
+        [self showPromptText:@"至少追2期" hideAfterDelay:1.7];
+        return;
+    }
     if(![self.lottery.currentRound.issueNumber isEqualToString:strcurRound]){
         [self showPromptText:@"当前追号奖期已截止" hideAfterDelay:1.7];
         return ;
