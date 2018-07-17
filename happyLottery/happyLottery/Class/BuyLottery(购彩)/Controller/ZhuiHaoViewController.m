@@ -34,7 +34,7 @@
     __weak IBOutlet UIButton *WinStop;
     __weak IBOutlet NSLayoutConstraint *topDis;
     __weak IBOutlet UILabel *bottomLabel;
-    
+    optimizeView *Optimizeview;
     NSArray *BetsList;
     UIScrollView *_scrollView;
     UITextField *beishuChoose;  //倍数选择框
@@ -843,7 +843,9 @@
     //最多中奖注数get
     maxwin = [self getx115MaxWinCount];
     _planType = plantype;
+    
     if(1 == plantype){
+        _lowrate = lowprofitNum;
         float p = (float)lowprofitNum/100;//最低盈利率
         //全程最低盈利率
         //求出满足条件的总期数
@@ -877,8 +879,7 @@
         }
         flag = true;
         [self loadScrollView];
-    }
-    else if(3 == plantype){
+    }else if(3 == plantype){
         _lowprofit = lowprofitNum;
         //全程最低盈利**元
         double p = (float)lowprofitNum;//最低盈利率
@@ -1515,7 +1516,8 @@
     WinStop.selected = !WinStop.selected;
 }
 - (void)JoptimizeBtnClick {
-    optimizeView *Optimizeview = [[optimizeView alloc]init];
+    
+    Optimizeview = [[optimizeView alloc]init];
     Optimizeview.issueNum = _issue;
     Optimizeview.multipleNum = _multiple;
     Optimizeview.lottery = _lottery;
@@ -1527,6 +1529,8 @@
     Optimizeview.planTypeNum = _planType;
     
     Optimizeview.delegate = self;
+//    Optimizeview.hidden = NO;
+//    [[UIApplication sharedApplication].keyWindow addSubview:Optimizeview];
     [Optimizeview show];
 }
 -(void)SubmitBtnClick
@@ -1562,6 +1566,9 @@
     if ([msg isEqualToString:@"执行成功"]) {
         // [self showPromptText: @"memberInfo成功" hideAfterDelay: 1.7];
         User *user = [[User alloc]initWith:memberInfo];
+        self.curUser.notCash = user.notCash;
+        self.curUser.balance = user.balance;
+        self.curUser.sendBalance = user.sendBalance;
         [self payJudge];
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];

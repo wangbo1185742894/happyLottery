@@ -29,8 +29,8 @@ static NSMutableDictionary *_groupRadioDic = nil;
         [self addToGroup];
         
         self.exclusiveTouch = NO;
-        [self setImage:[UIImage imageNamed:@"radio_unselect.png"] forState:UIControlStateNormal];
-        [self setImage:[UIImage imageNamed:@"radio_selected.png"] forState:UIControlStateSelected];
+        [self setImage:[UIImage imageNamed:@"unchecked"] forState:UIControlStateNormal];
+        [self setImage:[UIImage imageNamed:@"zhifuchecked"] forState:UIControlStateSelected];
         [self addTarget:self action:@selector(radioBtnChecked:) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;

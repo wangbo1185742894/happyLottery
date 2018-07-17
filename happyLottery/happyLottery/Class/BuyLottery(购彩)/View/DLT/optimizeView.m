@@ -309,7 +309,8 @@
 }
 -(void)CancelBtnTouchUpInside
 {
-    [self close];
+    self.hidden = YES;
+//    [self close];
 }
 -(void)submitBtnTouchUpInside
 {
@@ -331,7 +332,8 @@
         _lowprofitNum = [_minprofitField.text intValue];
         [self.delegate schemeValue:3 lowprofit:_lowprofitNum];
     }
-    [self close];
+//    [self close];
+    self.hidden = YES;
 }
 
 -(void)beishudownBtnClick{

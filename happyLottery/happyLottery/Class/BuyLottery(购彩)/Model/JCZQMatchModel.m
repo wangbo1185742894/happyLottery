@@ -200,6 +200,8 @@
 -(NSMutableArray *)matchBetArray{
     if (_matchBetArray == nil) {
         _matchBetArray = [NSMutableArray arrayWithCapacity:0];
+    }else{
+        [_matchBetArray removeAllObjects];
     }
     [self getNumberPlayTypeNum:self.SPF_SelectMatch andBaseIndex:100];
     [self getNumberPlayTypeNum:self.RQSPF_SelectMatch andBaseIndex:200];

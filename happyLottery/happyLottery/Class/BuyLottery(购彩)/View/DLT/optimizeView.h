@@ -18,7 +18,7 @@
 
 @interface optimizeView : AlertPushtView
 
-@property (nonatomic, assign) id<optimizeViewDelegate> delegate;
+@property (nonatomic, weak) id<optimizeViewDelegate> delegate;
 
 @property (nonatomic, strong) Lottery *lottery;
 @property (nonatomic, retain) UIButton *issuedownBtn;
