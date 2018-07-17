@@ -143,7 +143,7 @@
                                  @"FOR_SELF":@"自购",
                                  @"FOR_INITIATE":@"发起合买",
                                  @"FOR_OFFER":@"认购合买",
-                                 @"FOR_CHASE":@"追号实际扣款",
+                                 @"FOR_CHASE":@"预付款扣除",
                                  @"FOR_RECOMMENDED":@"推荐认购",
                                  @"BUY_INITIATE":@"发起跟单",
                                  @"FOR_FOLLOW":@"跟单"

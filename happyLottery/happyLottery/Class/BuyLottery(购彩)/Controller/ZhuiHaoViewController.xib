@@ -12,7 +12,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ZhuiHaoViewController">
             <connections>
                 <outlet property="BottomView" destination="0ig-nv-NGZ" id="Kh4-Ws-Jdx"/>
-                <outlet property="ClearBtn" destination="eeh-Lr-OKx" id="yfL-Q1-qmn"/>
                 <outlet property="ContentView" destination="ygq-AK-lFX" id="cB4-fY-qW4"/>
                 <outlet property="SubmitBtn" destination="scB-wX-mTZ" id="m5Q-Z2-P1b"/>
                 <outlet property="WinStop" destination="rri-I8-zCC" id="Ga1-XT-dAT"/>
@@ -44,21 +43,8 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eeh-Lr-OKx">
-                            <rect key="frame" x="8" y="36" width="44" height="35"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="44" id="2xq-8e-6Ej"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" image="matchcleanall.png">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </state>
-                            <state key="highlighted">
-                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </state>
-                        </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9aC-B3-jgv">
-                            <rect key="frame" x="62" y="33" width="223" height="44"/>
+                            <rect key="frame" x="10" y="33" width="275" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="4z4-jX-4NA"/>
                             </constraints>
@@ -96,36 +82,20 @@
                                 <color key="titleColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUl-12-UxV">
-                            <rect key="frame" x="53" y="40" width="1" height="30"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="30" id="FLe-kc-goK"/>
-                                <constraint firstAttribute="width" constant="1" id="I8j-RD-EOn"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="rri-I8-zCC" firstAttribute="top" secondItem="0ig-nv-NGZ" secondAttribute="top" constant="2" id="0g0-tP-jdf"/>
-                        <constraint firstItem="gUl-12-UxV" firstAttribute="leading" secondItem="eeh-Lr-OKx" secondAttribute="trailing" constant="1" id="2bh-oi-tga"/>
-                        <constraint firstItem="9aC-B3-jgv" firstAttribute="leading" secondItem="eeh-Lr-OKx" secondAttribute="trailing" constant="10" id="3by-Ya-jca"/>
-                        <constraint firstItem="scB-wX-mTZ" firstAttribute="height" secondItem="eeh-Lr-OKx" secondAttribute="height" id="3ho-Zy-CEx"/>
                         <constraint firstAttribute="bottom" secondItem="scB-wX-mTZ" secondAttribute="bottom" constant="6" id="Czp-kB-NFy"/>
-                        <constraint firstAttribute="bottom" secondItem="gUl-12-UxV" secondAttribute="bottom" constant="7" id="Pt0-gW-7eD"/>
                         <constraint firstAttribute="bottom" secondItem="9aC-B3-jgv" secondAttribute="bottom" id="Syh-He-OEX"/>
                         <constraint firstAttribute="trailing" secondItem="scB-wX-mTZ" secondAttribute="trailing" constant="8" id="YnC-3c-oJv"/>
-                        <constraint firstItem="eeh-Lr-OKx" firstAttribute="leading" secondItem="0ig-nv-NGZ" secondAttribute="leading" constant="8" id="gEY-m9-Ntc"/>
                         <constraint firstItem="74V-HA-vmp" firstAttribute="leading" secondItem="0ig-nv-NGZ" secondAttribute="leading" id="gYs-Av-4XN"/>
-                        <constraint firstAttribute="bottom" secondItem="eeh-Lr-OKx" secondAttribute="bottom" constant="6" id="kGY-Vt-NEe"/>
                         <constraint firstAttribute="trailing" secondItem="74V-HA-vmp" secondAttribute="trailing" id="mB3-zp-010"/>
                         <constraint firstAttribute="bottom" secondItem="74V-HA-vmp" secondAttribute="bottom" id="mEm-Vw-bNS"/>
                         <constraint firstAttribute="trailing" secondItem="rri-I8-zCC" secondAttribute="trailing" constant="15" id="pre-ar-g1X"/>
                         <constraint firstAttribute="height" constant="77" id="sjp-2e-qtp"/>
                         <constraint firstItem="scB-wX-mTZ" firstAttribute="leading" secondItem="9aC-B3-jgv" secondAttribute="trailing" constant="2" id="uvg-Im-ibV"/>
+                        <constraint firstItem="9aC-B3-jgv" firstAttribute="leading" secondItem="0ig-nv-NGZ" secondAttribute="leading" constant="10" id="ygD-m1-pni"/>
                     </constraints>
                 </view>
             </subviews>
@@ -143,7 +113,6 @@
         </view>
     </objects>
     <resources>
-        <image name="matchcleanall.png" width="22" height="22"/>
         <image name="winstopnomal.png" width="15" height="15"/>
         <image name="winstopselect.png" width="15" height="15"/>
         <image name="yuanjiaowukuangselect.png" width="81" height="27"/>

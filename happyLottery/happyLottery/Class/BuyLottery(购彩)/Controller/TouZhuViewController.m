@@ -2140,16 +2140,11 @@
         }else{
             count = MAXQISD11X5 - curiss + 1;
         }
-        if(num >= count)
+        if(num >count)
         {
             tfQiText.text = [NSString stringWithFormat:@"%lu", count];
             [self showPromptText:[NSString stringWithFormat:@"今日最大可追%lu期，系统不支持跨日追号", count] hideAfterDelay:1.7];
             [self performSelector:@selector(updateSummary) withObject:nil afterDelay:0.1];
-            return NO;
-        }
-        limitNum = 99;
-        if (num > limitNum) {
-            [self showPromptText:[NSString stringWithFormat:@"最大可追%ld期",limitNum] hideAfterDelay:1.8];
             return NO;
         }
     }

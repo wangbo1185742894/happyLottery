@@ -62,6 +62,7 @@
 - (IBAction)actionStopChaseScheme:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomDis;
 @property (weak, nonatomic) IBOutlet UIButton *stopChaseBtn;
+@property (weak, nonatomic) IBOutlet UILabel *schemeID;
 
 @end
 
@@ -118,11 +119,11 @@
         [orderTableView.mj_header endRefreshing];
     }];
     
-    if ([_order.name isEqualToString:@"大乐透"]) {
+    if ([_order.name isEqualToString:@"双色球"]) {
         winStop.hidden = YES;
         topViewHeight.constant = 90;
     }else{
-        topViewHeight.constant = 110;
+        topViewHeight.constant = 131;
         winStop.hidden = NO;
     }
     [self showLoadingViewWithText:TextLoading];
@@ -494,7 +495,7 @@
 //    NSInteger lenth = starttime.length;
 //    beginTime.text = [starttime substringToIndex:lenth-2];
      beginTime.text = [NSString stringWithFormat:@"%@",_order.createTime];
-    
+    self.schemeID.text = _order.chaseSchemeNo;
     if ([_order.sumSub isEqualToString:@"<null>"]) {
         playMoner.text = [NSString stringWithFormat:@"投注金额：%@元",@"0"];
     }
