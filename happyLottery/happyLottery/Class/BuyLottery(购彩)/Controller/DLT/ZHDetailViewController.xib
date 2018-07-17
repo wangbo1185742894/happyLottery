@@ -108,52 +108,52 @@
                     </connections>
                 </button>
                 <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C6Z-ye-Qh6" userLabel="Detailtitle">
-                    <rect key="frame" x="0.0" y="238" width="320" height="24"/>
+                    <rect key="frame" x="0.0" y="238" width="320" height="35"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="期号" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JU8-jl-5QB">
-                            <rect key="frame" x="51" y="0.0" width="50" height="24"/>
+                            <rect key="frame" x="51" y="0.0" width="60" height="35"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="50" id="JKP-v3-LKW"/>
+                                <constraint firstAttribute="width" constant="60" id="JKP-v3-LKW"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.21866422891616821" green="0.21865770220756531" blue="0.21866145730018616" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="序号" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vKT-lW-CvW">
-                            <rect key="frame" x="0.0" y="0.0" width="50" height="24"/>
+                            <rect key="frame" x="0.0" y="0.0" width="50" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="50" id="uoi-cs-AE2"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.21866422891616821" green="0.21865770220756531" blue="0.21866145730018616" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当期投入" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MQF-Wj-ZuV">
-                            <rect key="frame" x="102" y="0.0" width="73" height="24"/>
+                            <rect key="frame" x="112" y="0.0" width="73" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="73" id="aok-aY-jjl"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.21866422891616821" green="0.21865770220756531" blue="0.21866145730018616" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="累计投入" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yoh-Rz-JoJ">
-                            <rect key="frame" x="176" y="0.0" width="73" height="24"/>
+                            <rect key="frame" x="186" y="0.0" width="73" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="73" id="FnR-ec-IXe"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.21866422891616821" green="0.21865770220756531" blue="0.21866145730018616" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="中奖奖金" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMA-dQ-YfE">
-                            <rect key="frame" x="250" y="0.0" width="70" height="24"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <rect key="frame" x="260" y="0.0" width="60" height="35"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.21866422891616821" green="0.21865770220756531" blue="0.21866145730018616" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.85597825050354004" green="0.8559526801109314" blue="0.85596716403961182" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="TMA-dQ-YfE" secondAttribute="trailing" id="0xk-Nt-oIn"/>
                         <constraint firstAttribute="bottom" secondItem="JU8-jl-5QB" secondAttribute="bottom" id="14l-Ir-WZV"/>
@@ -161,7 +161,7 @@
                         <constraint firstItem="MQF-Wj-ZuV" firstAttribute="leading" secondItem="JU8-jl-5QB" secondAttribute="trailing" constant="1" id="9GK-eo-OAb"/>
                         <constraint firstAttribute="bottom" secondItem="Yoh-Rz-JoJ" secondAttribute="bottom" id="AjQ-OX-awn"/>
                         <constraint firstItem="MQF-Wj-ZuV" firstAttribute="top" secondItem="C6Z-ye-Qh6" secondAttribute="top" id="Qrh-1B-pm1"/>
-                        <constraint firstAttribute="height" constant="24" id="SZn-2t-7L1"/>
+                        <constraint firstAttribute="height" constant="35" id="SZn-2t-7L1"/>
                         <constraint firstItem="TMA-dQ-YfE" firstAttribute="top" secondItem="C6Z-ye-Qh6" secondAttribute="top" id="UYV-s5-QVq"/>
                         <constraint firstItem="vKT-lW-CvW" firstAttribute="leading" secondItem="C6Z-ye-Qh6" secondAttribute="leading" id="bZD-Hu-h38"/>
                         <constraint firstItem="JU8-jl-5QB" firstAttribute="top" secondItem="C6Z-ye-Qh6" secondAttribute="top" id="brI-Lc-xZl"/>
@@ -175,10 +175,10 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2gr-Nb-1GX" userLabel="ControlVC">
-                    <rect key="frame" x="0.0" y="262" width="320" height="261"/>
+                    <rect key="frame" x="0.0" y="273" width="320" height="250"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VyV-3q-0vI">
-                            <rect key="frame" x="0.0" y="260" width="320" height="1"/>
+                            <rect key="frame" x="0.0" y="249" width="320" height="1"/>
                             <color key="backgroundColor" red="0.82096517086029053" green="0.82094055414199829" blue="0.82095444202423096" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="kCs-Ed-UQi"/>
@@ -188,7 +188,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AVb-rf-0ii">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="256"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="245"/>
                             <color key="backgroundColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <outlet property="dataSource" destination="-1" id="DTC-TM-6aq"/>
