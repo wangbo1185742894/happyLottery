@@ -59,7 +59,7 @@
 - (void) gotVueHttpUrl:(NSString  *)baseUrl errorMsg:(NSString *)msg;
 - (void) giveShareScore:(BOOL)success errorMsg:(NSString *)msg;
 - (void) gotUserCashInfoList:(NSArray*)infoList errorMsg:(NSString *)msg;
-
+-(void)chaseCompleteCount:(NSDictionary *)paraDic errorMsg:(NSString *)msg;
 
 @end
 
@@ -121,6 +121,7 @@
 - (void)getVueHttpUrl;
 
 -(void)getUserCashInfo:(NSDictionary *)paraDic andApi:(NSString *)api;
+-(void)chaseCompleteCount:(NSDictionary *)paraDic;
 
 
 @end

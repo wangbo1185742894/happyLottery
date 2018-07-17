@@ -25,11 +25,11 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     NSArray *titleArray;
     if ([self.curUser.memberType isEqualToString:@"CIRCLE_MASTER"]) {
-        titleArray = @[@"购彩",@"充值",@"派奖",@"提现",@"彩金",@"佣金",@"返佣"];
+        titleArray = @[@"购彩",@"追号",@"充值",@"派奖",@"提现",@"彩金",@"佣金",@"返佣"];
     }else{
-        titleArray = @[@"购彩",@"充值",@"派奖",@"提现",@"彩金",@"佣金"];
+        titleArray = @[@"购彩",@"追号",@"充值",@"派奖",@"提现",@"彩金",@"佣金"];
     }
-    NSArray *apiArray = @[API_listSubscribeDetail,API_listRechargeDetail,API_listBonusDetail,API_listWithdrawDetail,API_listHandselDetail,API_listFollowDetail,API_listAgentCommissionDetail];
+    NSArray *apiArray = @[API_listSubscribeDetail,API_getChasePrepayOrderList,API_listRechargeDetail,API_listBonusDetail,API_listWithdrawDetail,API_listHandselDetail,API_listFollowDetail,API_listAgentCommissionDetail];
     [_topMenu createMenuView:titleArray size:CGSizeMake(70, 40)];
     
     for (int i = 0; i < titleArray.count ; i ++) {

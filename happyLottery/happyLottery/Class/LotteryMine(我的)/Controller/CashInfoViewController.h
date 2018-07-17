@@ -11,6 +11,7 @@
 typedef enum : NSUInteger {
     CashInfoGoucai = 0,
     CashInfoChongzhi,
+    CashInfoZhuihao,
     CashInfoPaijiang,
     CashInfoTixian,
     CashInfoCaijin,

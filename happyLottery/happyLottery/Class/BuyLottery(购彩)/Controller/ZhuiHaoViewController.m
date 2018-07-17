@@ -24,7 +24,7 @@
 #define ZHSURETAG 12321
 
 @interface ZhuiHaoViewController ()<UIAlertViewDelegate,LotteryPhaseInfoViewDelegate,MemberManagerDelegate,WBInputPopViewDelegate>{
-    
+    NSString *curLotteryRound;
     LotteryPhaseInfoView *phaseInfoView;
     __weak IBOutlet UIView *ContentView;
     __weak IBOutlet UIView *BottomView;
@@ -79,6 +79,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    curLotteryRound = self.transaction.lottery.currentRound.issueNumber;
     _multiple = 1;
     _issue = 10;
     self.lotteryMan.delegate = self;
@@ -1474,6 +1475,12 @@
             return;
         }
     }
+    
+    if (![curLotteryRound isEqualToString:self.transaction.lottery.currentRound.issueNumber]) {
+        [self showPromptViewWithText:@"当前追期期号已截止" hideAfter:1.7];
+        return;
+    }
+    
     [self  updateMemberClinet];
     
 }

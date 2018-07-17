@@ -111,13 +111,14 @@ static SystemSoundID shake_sound_male_id = 0;
 //    }
     lotteryMan = [[LotteryManager alloc]init];
     lotteryMan.delegate = self;
-    [Bugly startWithAppId:@"c36c93659f"];
+    
     [self loadTabVC];
     self.welCom = [[WelComeViewController alloc]init];
     [GlobalInstance instance].lotteryUrl = WSServerURL;
 #ifdef bate
  
 #else
+    [Bugly startWithAppId:@"c36c93659f"];
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         NSString *item = [[NSString alloc]initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:BaseUrl]] encoding:NSUTF8StringEncoding];
 

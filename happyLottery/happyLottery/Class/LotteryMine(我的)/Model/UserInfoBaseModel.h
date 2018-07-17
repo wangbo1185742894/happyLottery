@@ -8,6 +8,8 @@
 
 #import "BaseModel.h"
 
+
+
 @interface UserInfoBaseModel : BaseModel
 -(NSString *)get1Name;
 -(NSString *)get2Name;
@@ -87,6 +89,8 @@
 
 /** 方案号*/
 @property(nonatomic,strong)NSString *  schemeNo;
+
+@property(nonatomic,strong)NSString * consumeType;
 
 /** 彩种*/
 @property(nonatomic,strong)NSString *  lotteryType;
@@ -176,7 +180,14 @@
 @property(nonatomic,strong)NSString * chaseCount;
 
 /** 彩种*/
-@property(nonatomic,strong)NSString *  lotteryType;
+@property(nonatomic,strong)NSString *  lotteryCode;
+
+
+/** 当前期 */
+@property(nonatomic,strong)NSString *  catchIndex;
+
+/** 总期数 */
+@property(nonatomic,strong)NSString *  totalCatch;
 @end
 
 

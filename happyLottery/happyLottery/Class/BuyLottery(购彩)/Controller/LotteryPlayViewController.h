@@ -8,6 +8,7 @@
 
 #import "BaseViewController.h"
 #import "UMChongZhiViewController.h"
+#import "LotteryPlayViewController.h"
 @class Lottery;
 @interface LotteryPlayViewController : BaseViewController
 @property(nonatomic,assign)BOOL isReBuy;

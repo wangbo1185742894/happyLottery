@@ -217,6 +217,7 @@
 #define APIgetAttentFollowScheme    @"getAttentFollowScheme"  //获得关注人的发单
 #define APIconcealSchemeBySchemeNo  @"concealSchemeBySchemeNo" //删除方案
 #define APIgetCommonSetValue            @"getCommonSetValue"
+#define APIchaseCompleteCount           @"chaseCompleteCount"
 
 
 #define SUBAPITicketService   @"/ticket"

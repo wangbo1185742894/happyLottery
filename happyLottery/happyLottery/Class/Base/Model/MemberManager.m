@@ -1425,4 +1425,34 @@
                         failure:failureBlock];
 }
 
+
+-(void)chaseCompleteCount:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString * infoString = [response getAPIResponse];
+        
+        if (response.succeed) {
+            NSDictionary  *infoList = [self objFromJson:infoString];
+            [self.delegate chaseCompleteCount: infoList errorMsg:response.errorMsg];
+        }else{
+            [self.delegate chaseCompleteCount: nil errorMsg:response.errorMsg];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate chaseCompleteCount: nil errorMsg:@"请检查网络连接"];
+    };
+    
+    SOAPRequest *request = [self requestForAPI:APIchaseCompleteCount withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
+    
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPISchemeService
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+
+
 @end

@@ -9,7 +9,7 @@
 #import "UserInfoDetailViewController.h"
 #import "MGLabel.h"
 
-@interface UserInfoDetailViewController ()
+@interface UserInfoDetailViewController ()<MemberManagerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *labLeft;
 @property (weak, nonatomic) IBOutlet MGLabel *labRight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topDis;
@@ -20,23 +20,38 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    
+    self.memberMan.delegate = self;
+    if ([self.model isMemberOfClass:[ChasePrepayModel class]]) {
+        ChasePrepayModel *itemModel = (ChasePrepayModel *)self.model;
+        [self.memberMan chaseCompleteCount:@{@"chaseSchemeNo":itemModel.chaseSchemeNo}];
+    }else{
+        [self loadData];
+    }
     _topDis.constant = NaviHeight;
     self.title = @"明细详情";
+}
 
+-(void)loadData{
     self.labLeft .text = [self.model getLeftTitle];
     NSString *title = [[self.model getRightTitle] stringByReplacingOccurrencesOfString:@"#" withString:@""];
-        self.labRight.text = title;
+    self.labRight.text = title;
     NSArray *keyList = [[self.model getRightTitle] componentsSeparatedByString:@"#"];
     if (keyList.count > 1) {
         NSString *keyWord = [keyList[1] stringByReplacingOccurrencesOfString:@"#" withString:@""];
         self.labRight.keyWord = keyWord;
         self.labRight.keyWordColor = SystemGreen;
     }
-  
+}
 
-    
+-(void)chaseCompleteCount:(NSDictionary *)paraDic errorMsg:(NSString *)msg{
+    if (paraDic == nil) {
+        return;
+    }
+    ChasePrepayModel *itemModel = (ChasePrepayModel *)self.model;
+    itemModel.lotteryCode = paraDic[@"lotteryCode"];
+    itemModel.totalCatch = paraDic[@"totalCatch"];
+    itemModel.catchIndex = paraDic[@"catchIndex"];
+    [self loadData];
 }
 
 - (void)didReceiveMemoryWarning {
