@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -142,16 +142,41 @@
                                 </mask>
                             </variation>
                         </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="如遇到提现、充值或订单问题，请查询" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JjF-5W-55o">
+                            <rect key="frame" x="10" y="228" width="209" height="15"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="15" id="lAe-Q7-EgX"/>
+                                <constraint firstAttribute="width" constant="209" id="u7P-NX-IcB"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6hx-tU-Cva">
+                            <rect key="frame" x="217" y="222" width="74" height="27"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="74" id="0E8-cC-DMc"/>
+                                <constraint firstAttribute="height" constant="27" id="g8W-Aa-R4I"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <state key="normal" title="《常见问题》"/>
+                            <connections>
+                                <action selector="actionToWenda:" destination="-1" eventType="touchUpInside" id="3QL-kc-ic4"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.96444731950759888" green="0.96840888261795044" blue="0.98488038778305054" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="Ko6-Yo-n7i" secondAttribute="trailing" constant="10" id="5uj-LF-dIb"/>
                         <constraint firstItem="eBv-95-3lI" firstAttribute="top" secondItem="Yuf-dN-dSW" secondAttribute="top" constant="186" id="6NC-9W-Pp5"/>
                         <constraint firstItem="Ko6-Yo-n7i" firstAttribute="top" secondItem="F26-lm-s5i" secondAttribute="bottom" constant="149" id="7UI-co-OKW"/>
+                        <constraint firstItem="6hx-tU-Cva" firstAttribute="leading" secondItem="JjF-5W-55o" secondAttribute="trailing" constant="-2" id="7wl-yt-AVH"/>
                         <constraint firstAttribute="trailing" secondItem="7fd-sU-lRB" secondAttribute="trailing" constant="8" id="BKV-Nx-r1P"/>
                         <constraint firstItem="F26-lm-s5i" firstAttribute="top" secondItem="Yuf-dN-dSW" secondAttribute="top" constant="20" id="E1K-z5-OMD"/>
+                        <constraint firstItem="JjF-5W-55o" firstAttribute="leading" secondItem="F26-lm-s5i" secondAttribute="leading" id="Ews-is-UXp"/>
                         <constraint firstItem="7fd-sU-lRB" firstAttribute="top" secondItem="F26-lm-s5i" secondAttribute="bottom" constant="36" id="QHH-KI-b3S"/>
                         <constraint firstAttribute="trailing" secondItem="F26-lm-s5i" secondAttribute="trailing" constant="10" id="R1j-DG-AfN"/>
+                        <constraint firstItem="7fd-sU-lRB" firstAttribute="top" secondItem="JjF-5W-55o" secondAttribute="bottom" constant="13" id="YS3-i7-46w"/>
                         <constraint firstItem="F26-lm-s5i" firstAttribute="leading" secondItem="Yuf-dN-dSW" secondAttribute="leading" constant="10" id="Zf3-JE-XjO"/>
                         <constraint firstAttribute="trailing" secondItem="eBv-95-3lI" secondAttribute="trailing" constant="12" id="anC-PI-crw"/>
                         <constraint firstItem="7fd-sU-lRB" firstAttribute="leading" secondItem="Yuf-dN-dSW" secondAttribute="leading" constant="8" id="bOb-Ko-Stq"/>
@@ -159,6 +184,8 @@
                         <constraint firstItem="Ko6-Yo-n7i" firstAttribute="centerX" secondItem="Yuf-dN-dSW" secondAttribute="centerX" id="fgG-Iv-lBh"/>
                         <constraint firstItem="1i9-DZ-cGL" firstAttribute="top" secondItem="c21-UJ-d4b" secondAttribute="bottom" constant="8" id="gtM-aC-Lf2"/>
                         <constraint firstItem="1i9-DZ-cGL" firstAttribute="leading" secondItem="Yuf-dN-dSW" secondAttribute="leading" constant="15" id="kXx-UC-8Eg"/>
+                        <constraint firstItem="6hx-tU-Cva" firstAttribute="centerY" secondItem="JjF-5W-55o" secondAttribute="centerY" id="lcY-8t-PaB"/>
+                        <constraint firstItem="JjF-5W-55o" firstAttribute="top" secondItem="F26-lm-s5i" secondAttribute="bottom" constant="8" id="nyy-5l-hES"/>
                         <constraint firstItem="c21-UJ-d4b" firstAttribute="leading" secondItem="Yuf-dN-dSW" secondAttribute="leading" constant="15" id="rrt-Wx-zcX"/>
                         <constraint firstItem="c21-UJ-d4b" firstAttribute="top" secondItem="Yuf-dN-dSW" secondAttribute="top" constant="29" id="xfg-ju-XLG"/>
                         <constraint firstItem="Ko6-Yo-n7i" firstAttribute="leading" secondItem="Yuf-dN-dSW" secondAttribute="leading" constant="10" id="yFM-bj-efV"/>

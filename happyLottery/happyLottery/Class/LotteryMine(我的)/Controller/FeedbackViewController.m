@@ -8,6 +8,7 @@
 
 #import "FeedbackViewController.h"
 #import "FeedBackHistoryViewController.h"
+#import "QuestionsViewController.h"
 
 @interface FeedbackViewController ()<UITextViewDelegate,MemberManagerDelegate>{
        NSString *myscore;
@@ -188,6 +189,11 @@
     }
         [self.memberMan FeedBack:Info];
 
+}
+
+- (IBAction)actionToWenda:(id)sender {
+    QuestionsViewController * quesVC = [[QuestionsViewController alloc]init];
+    [self.navigationController pushViewController:quesVC animated:YES];
 }
 
 -(void)FeedBackUnReadNum:(NSDictionary *)Info IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
