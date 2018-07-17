@@ -260,6 +260,7 @@
         JiangqiChoose = [[UITextField alloc]initWithFrame:CGRectMake(beishudownBtn.bounds.size.width-1, 3, 25, 25)];
         NSString *str = [NSString stringWithFormat:@"%d",(unsigned int)_issue];
         JiangqiChoose.text = str;
+        JiangqiChoose.userInteractionEnabled = NO;
         JiangqiChoose.font = [UIFont systemFontOfSize:12];
         JiangqiChoose.textAlignment = NSTextAlignmentCenter;
         JiangqiChoose.layer.borderWidth = SEPHEIGHT;
