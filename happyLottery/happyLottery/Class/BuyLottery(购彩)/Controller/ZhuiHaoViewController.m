@@ -344,10 +344,9 @@
        
         if (num > limitNum) {
             JiangqiChoose.text = [NSString stringWithFormat:@"%lu", limitNum];
+            [self showPromptText:[NSString stringWithFormat:@"今日最大可追%lu期，系统不支持跨日追号", limitNum] hideAfterDelay:1.7];
             _issue = [JiangqiChoose.text integerValue];
             [self ScrollViewUI:_issue-1];
-            [self showPromptText:[NSString stringWithFormat:@"今日最大可追%lu期，系统不支持跨日追号", limitNum] hideAfterDelay:1.7];
-            
             return NO;
         }
         _issue = [JiangqiChoose.text integerValue];
@@ -362,7 +361,11 @@
         textField.text = @"1";
     }
     textField.text = [NSString stringWithFormat:@"%ld",[textField .text integerValue]];
-    [self loadScrollView];
+    if (textField == beishuChoose) {
+        [self ScrollViewUI:0];
+    }else {
+        [self loadScrollView];
+    }
 }
 
 -(void) loadTitleView{
