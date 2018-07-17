@@ -222,6 +222,7 @@
         beishuChoose = [[UITextField alloc]initWithFrame:CGRectMake(beishudownBtn.bounds.size.width-1, 3, 25, 25)];
         beishuChoose.font = [UIFont systemFontOfSize:12];
         beishuChoose.text = @"1";
+        
         beishuChoose.textAlignment = NSTextAlignmentCenter;
         beishuChoose.layer.borderWidth = SEPHEIGHT;
         beishuChoose.backgroundColor = [UIColor whiteColor];
@@ -435,12 +436,15 @@
 }
 -(void) loadScrollView{
     //详细信息显示，scrollaview
-
+    if (scrollView == nil) {
         scrollView = [[UIScrollView alloc] init];
-
-    
-    scrollView.frame = CGRectMake(0,128, KscreenWidth, KscreenHeight-270); // frame中的size指UIScrollView的可视范围
-    scrollView.backgroundColor = RGBCOLOR(250, 250, 250) ;
+        
+        
+        scrollView.frame = CGRectMake(0,128, KscreenWidth, KscreenHeight-270); // frame中的size指UIScrollView的可视范围
+        scrollView.backgroundColor = RGBCOLOR(250, 250, 250) ;
+        [ContentView addSubview:scrollView];
+    }
+  
     CGRect scrollframe = scrollView.frame;
     scrollframe.size.height = _issue*45;
     scrollView.contentSize = scrollframe.size;
@@ -474,7 +478,7 @@
 //        [scrollView addSubview:Vline[i]];
 //    }
     [self loadBeishushow];
-    [ContentView addSubview:scrollView];
+    
 }
 -(void) loadBeishushow{
     if(mutArry.count == 0)
