@@ -120,6 +120,7 @@ CGFloat buttonSpacerHeight = 1;
 
 - (void)close
 {
+    
     CATransform3D currentTransform = dialogView.layer.transform;
     
     CGFloat startRotation = [[dialogView valueForKeyPath:@"layer.transform.rotation.z"] floatValue];
