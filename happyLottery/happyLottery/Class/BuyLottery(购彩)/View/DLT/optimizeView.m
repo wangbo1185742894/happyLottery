@@ -280,9 +280,8 @@
 //    submitBtn.layer.masksToBounds = YES;
     [CancelBtn setTitle:@"取消" forState:UIControlStateNormal];
     [submitBtn setTitle:@"生成方案" forState:UIControlStateNormal];
-    
     CancelBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
-    CancelBtn.backgroundColor = RGBCOLOR(200, 200, 200);
+    CancelBtn.backgroundColor = SystemGreen;
     [CancelBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [CancelBtn setTitleColor:TEXTGRAYCOLOR forState:UIControlStateHighlighted];
     
@@ -408,7 +407,7 @@
 //    fram.origin.y += 3*y-40;
     self.profitview.frame = fram;
 }
-//输入限制
+//输入限
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     if ([string isEqualToString:@""]) {
         return YES;

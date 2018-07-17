@@ -245,7 +245,7 @@
                         <constraint firstItem="uqW-Qu-dJU" firstAttribute="centerX" secondItem="Yrt-3Q-blH" secondAttribute="centerX" id="p9Y-OB-Uuz"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I63-BJ-MQs">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I63-BJ-MQs">
                     <rect key="frame" x="0.0" y="470" width="400" height="30"/>
                     <color key="backgroundColor" red="0.99607843139999996" green="0.96078431369999995" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
