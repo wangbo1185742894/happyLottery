@@ -8,12 +8,14 @@
 
 #import "FeedbackViewController.h"
 #import "FeedBackHistoryViewController.h"
+#import "QuestionsViewController.h"
 
 @interface FeedbackViewController ()<UITextViewDelegate,MemberManagerDelegate>{
        NSString *myscore;
     UIButton *noticeBtn;
     UILabel *label;
     long rednum;
+    float starx;
 }
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottom;
@@ -190,6 +192,11 @@
 
 }
 
+- (IBAction)actionToWenda:(id)sender {
+    QuestionsViewController * quesVC = [[QuestionsViewController alloc]init];
+    [self.navigationController pushViewController:quesVC animated:YES];
+}
+
 -(void)FeedBackUnReadNum:(NSDictionary *)Info IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     if ([msg isEqualToString:@"执行成功"]) {
        // [self showPromptText:@"获取意见反馈小红点成功！" hideAfterDelay:1.7];
@@ -277,17 +284,19 @@
 
 #pragma mark - creatStar
 - (void)creatStarUI {
-    
+    starx = (self.scoerView.mj_w-145)/2;
     for (int i = 0; i < 5; i++) {
         UIImageView *imageStar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"star_light"]];
 //        if (i == 0) {
 //            imageStar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"star_selected"]];
 //        }
-        imageStar.frame = CGRectMake(90 + (24 + 5)*i, 48, 24, 24);
+        
+        imageStar.frame = CGRectMake(starx + (24 + 5)*i, 48, 24, 24);
         imageStar.contentMode = UIViewContentModeScaleAspectFit;
         [self.scoerView addSubview:imageStar];
         [self.allStar addObject:imageStar];
     }
+    
 }
 #pragma mark - 点击的坐标
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -297,17 +306,17 @@
     UIImageView *imageTouch;
     for(int i = 0;i < 5 ; i++){
         imageTouch = self.allStar[i];
-        if ((touchPoint.x > 80)&&(touchPoint.x < 230)&&(touchPoint.y > 0)&&(touchPoint.y < 80)) {
+        if ((touchPoint.x > 80)&&(touchPoint.x < (starx+145))&&(touchPoint.y > 0)&&(touchPoint.y < 80)) {
          
-            if (touchPoint.x > 90 && touchPoint.x < 119) {
+            if (touchPoint.x > starx && touchPoint.x < starx+29) {
                 myscore = [NSString stringWithFormat:@"%d",1];
-            } else if (touchPoint.x > 119 && touchPoint.x < 143) {
+            } else if (touchPoint.x > starx+29 && touchPoint.x < starx+29*2) {
                 myscore = [NSString stringWithFormat:@"%d",2];
-            }else if (touchPoint.x > 143 && touchPoint.x < 172) {
+            }else if (touchPoint.x > starx+29*2 && touchPoint.x < starx+29*3) {
                 myscore = [NSString stringWithFormat:@"%d",3];
-            }else if (touchPoint.x > 172 && touchPoint.x < 201) {
+            }else if (touchPoint.x > starx+29*3 && touchPoint.x < starx+29*4) {
                 myscore = [NSString stringWithFormat:@"%d",4];
-            }else if (touchPoint.x > 201 && touchPoint.x < 230) {
+            }else if (touchPoint.x > starx+29*4 && touchPoint.x < starx+29*5) {
                 myscore = [NSString stringWithFormat:@"%d",5];
             }
             

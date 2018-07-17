@@ -224,6 +224,7 @@
         beishuChoose.text = @"1";
         beishuChoose.userInteractionEnabled = NO;
         beishuChoose.textAlignment = NSTextAlignmentCenter;
+        beishuChoose.userInteractionEnabled = NO;
         beishuChoose.layer.borderWidth = SEPHEIGHT;
         beishuChoose.backgroundColor = [UIColor whiteColor];
         beishuChoose.layer.borderColor = SEPCOLOR.CGColor;
@@ -266,6 +267,7 @@
         JiangqiChoose.layer.borderWidth = SEPHEIGHT;
         JiangqiChoose.backgroundColor = [UIColor whiteColor];
         JiangqiChoose.layer.borderColor = SEPCOLOR.CGColor;
+        JiangqiChoose.userInteractionEnabled = NO;
         JiangqiChoose.delegate = self;
         JiangqiChoose.keyboardType = UIKeyboardTypeNumberPad;
 //        JiangqiChoose.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"input_bg_normal.9.png"]];
