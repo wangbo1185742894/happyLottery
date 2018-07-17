@@ -23,8 +23,9 @@
 #define VlineCount 5
 #define ZHSURETAG 12321
 
-@interface ZhuiHaoViewController ()<UIAlertViewDelegate,LotteryPhaseInfoViewDelegate,MemberManagerDelegate,WBInputPopViewDelegate>{
+@interface ZhuiHaoViewController ()<UIAlertViewDelegate,LotteryPhaseInfoViewDelegate,MemberManagerDelegate,WBInputPopViewDelegate,UITextFieldDelegate>{
     NSString *curLotteryRound;
+
     LotteryPhaseInfoView *phaseInfoView;
     __weak IBOutlet UIView *ContentView;
     __weak IBOutlet UIView *BottomView;
@@ -36,8 +37,8 @@
     
     NSArray *BetsList;
     UIScrollView *_scrollView;
-    UILabel *beishuChoose;
-    UILabel *JiangqiChoose;
+    UITextField *beishuChoose;  //倍数选择框
+    UITextField *JiangqiChoose; //期数选择框
     NSMutableArray *mutArry;
     UIScrollView *scrollView;
     
@@ -189,11 +190,17 @@
         phaseSectionFrame.origin.y = 10;
         phaseSectionFrame.size.height = PhaseInfoHeight * 2;
         //玩法显示
-        UILabel *playlabel = [[UILabel alloc]initWithFrame:CGRectMake(10, phaseSectionFrame.origin.y+30, 105, 30)];
+        UILabel *playlabel = [[UILabel alloc]initWithFrame:CGRectMake(10, phaseSectionFrame.origin.y+30, 135, 30)];
         playlabel.font = [UIFont systemFontOfSize:13];
         playlabel.textColor = TEXTGRAYCOLOR;
         BetsList = [self.transaction allBets];
-        playlabel.text = [NSString stringWithFormat:@"玩法：%@",[BetsList[0] valueForKey:@"betProfile"]];
+        NSString *lotteryName;
+        if ([lotteryIdentify isEqualToString:@"SD115"]) {
+            lotteryName = @"山东11选5";
+        }else {
+            lotteryName = @"陕西11选5";
+        }
+        playlabel.text = [NSString stringWithFormat:@"玩法：%@(%@)",[BetsList[0] valueForKey:@"betProfile"],lotteryName];
         playlabel.adjustsFontSizeToFitWidth = YES;
         [ContentView addSubview: playlabel];
 
@@ -212,13 +219,15 @@
         [beishudownBtn setImage:[UIImage imageNamed:@"touzhubeishujian.png"] forState:UIControlStateHighlighted];
         [beishudownBtn addTarget: self action: @selector(beishudownBtnClick) forControlEvents: UIControlEventTouchUpInside];
         //中间显示框
-        beishuChoose = [[UILabel alloc]initWithFrame:CGRectMake(beishudownBtn.bounds.size.width-1, 3, 25, 25)];
+        beishuChoose = [[UITextField alloc]initWithFrame:CGRectMake(beishudownBtn.bounds.size.width-1, 3, 25, 25)];
         beishuChoose.font = [UIFont systemFontOfSize:12];
         beishuChoose.text = @"1";
         beishuChoose.textAlignment = NSTextAlignmentCenter;
         beishuChoose.layer.borderWidth = SEPHEIGHT;
         beishuChoose.backgroundColor = [UIColor whiteColor];
         beishuChoose.layer.borderColor = SEPCOLOR.CGColor;
+        beishuChoose.delegate = self;
+        beishuChoose.keyboardType = UIKeyboardTypeNumberPad;
         //倍数增加按钮
         //倍数、期号
 
@@ -247,7 +256,7 @@
         [JiangqidownBtn setImage:[UIImage imageNamed:@"touzhubeishujian.png"] forState:UIControlStateHighlighted];
         [JiangqidownBtn addTarget: self action: @selector(JiangqidownBtnClick) forControlEvents: UIControlEventTouchUpInside];
         //中间显示框
-        JiangqiChoose = [[UILabel alloc]initWithFrame:CGRectMake(beishudownBtn.bounds.size.width-1, 3, 25, 25)];
+        JiangqiChoose = [[UITextField alloc]initWithFrame:CGRectMake(beishudownBtn.bounds.size.width-1, 3, 25, 25)];
         NSString *str = [NSString stringWithFormat:@"%d",(unsigned int)_issue];
         JiangqiChoose.text = str;
         JiangqiChoose.font = [UIFont systemFontOfSize:12];
@@ -255,6 +264,8 @@
         JiangqiChoose.layer.borderWidth = SEPHEIGHT;
         JiangqiChoose.backgroundColor = [UIColor whiteColor];
         JiangqiChoose.layer.borderColor = SEPCOLOR.CGColor;
+        JiangqiChoose.delegate = self;
+        JiangqiChoose.keyboardType = UIKeyboardTypeNumberPad;
 //        JiangqiChoose.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"input_bg_normal.9.png"]];
         //奖期增加按钮
         UIButton *JiangqiUpBtn = [[UIButton alloc]initWithFrame:CGRectMake(beishuview.bounds.size.width-41, 3, 25+SEPHEIGHT, 25)];
@@ -313,6 +324,49 @@
 //        [alert show];
 //    }
 //}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if ([string isEqualToString:@""]) {
+        return YES;
+    }
+    NSMutableString*numStr = [[NSMutableString alloc]initWithString:textField.text];
+    [numStr appendString:string];
+    NSInteger num = [numStr integerValue];
+    NSInteger limitNum;
+    if (textField == beishuChoose) {
+        limitNum = 98;
+        if (num > limitNum) {
+            [self showPromptText:[NSString stringWithFormat:@"最大可投%ld倍",limitNum] hideAfterDelay:1.8];
+            return NO;
+        }
+        mutArry[0] = beishuChoose.text;
+        [self ScrollViewUI:0];
+    }else {
+        limitNum =  MAXQI11X5 - curiss;
+       
+        if (num > limitNum) {
+            JiangqiChoose.text = [NSString stringWithFormat:@"%lu", limitNum];
+            _issue = [JiangqiChoose.text integerValue];
+            [self ScrollViewUI:_issue-1];
+            [self showPromptText:[NSString stringWithFormat:@"今日最大可追%lu期，系统不支持跨日追号", limitNum] hideAfterDelay:1.7];
+            
+            return NO;
+        }
+        _issue = [JiangqiChoose.text integerValue];
+        [self ScrollViewUI:_issue-1];
+    }
+    return YES;
+}
+
+
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    if([textField .text integerValue] ==0){
+        textField.text = @"1";
+    }
+    textField.text = [NSString stringWithFormat:@"%ld",[textField .text integerValue]];
+    [self loadScrollView];
+}
+
 -(void) loadTitleView{
     CGFloat width = KscreenWidth;
     UIView *Hline1 = [[UIView alloc] initWithFrame:CGRectMake(0, 103, width, SEPHEIGHT)];
@@ -724,6 +778,7 @@
     [self ScrollViewUI:_issue-1];
     
 }
+
 -(void) JiangqidownBtnClick
 {
     if((unsigned int)_issue == 1)
