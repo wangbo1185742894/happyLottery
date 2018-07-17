@@ -1557,6 +1557,9 @@
     if ([msg isEqualToString:@"执行成功"]) {
         // [self showPromptText: @"memberInfo成功" hideAfterDelay: 1.7];
         User *user = [[User alloc]initWith:memberInfo];
+        self.curUser.notCash = user.notCash;
+        self.curUser.balance = user.balance;
+        self.curUser.sendBalance = user.sendBalance;
         [self payJudge];
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];

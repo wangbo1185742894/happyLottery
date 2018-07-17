@@ -88,7 +88,13 @@
             [listTitle addObject:[NSString stringWithFormat:@"   满%@减%@",coupon.quota,coupon.deduction]];
             [self.itemDataArray addObject:coupon];
         }
-        self.labCouInfo.text = [listTitle componentsJoinedByString:@","];
+        if (listTitle.count == 0) {
+            self.labCouInfo.text = @"";
+            _couHeight.constant = 0;
+        }else{
+            self.labCouInfo.text = [listTitle componentsJoinedByString:@","];
+            _couHeight.constant = 30;
+        }
     }
 }
 
@@ -372,12 +378,15 @@
     
     totalUnit = 0;
     double maxPrize = 0.00;
+    double minPrize = 0.00;
     for (NSString *chuanfa in _transction.selectItems) {
         self.transction.betCount = 0;
         self.transction.chuanFa = chuanfa;
         [self.transction updataBetCount];
         totalUnit += self.transction.betCount;
         maxPrize +=[self.transction.mostBounds doubleValue];
+        minPrize +=[self.transction.minBounds doubleValue];
+        
     }
     self.transction.betCount = totalUnit;
     self.transction.betCost  =self.transction.betCount * [self.transction.beitou integerValue] * 2;
@@ -386,7 +395,7 @@
         self.labPrizeInfo.text = [NSString stringWithFormat:@"可中%.0f积分",maxPrize * 100];
     }else{
         self.labZhuInfo.text = [NSString stringWithFormat:@"%ld注,%@倍,共%ld元",self.transction.betCount,self.transction.beitou,self.transction.betCost];
-        self.labPrizeInfo.text = [NSString stringWithFormat:@"最大可中%.2f元",maxPrize];
+        self.labPrizeInfo.text = [NSString stringWithFormat:@"可中%.2f元~%.2f元",minPrize,maxPrize];
     }
 }
 

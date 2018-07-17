@@ -1012,7 +1012,7 @@
         if ([self checkZhuiHaoNum] == NO) {
             return;
         }
-          [self payForZHOrderInfo:ZHOrderInfoTemp[@"orderNeedInfo"] andQishu:[ZHOrderInfoTemp[@"qi"] intValue]];
+        [self updateMemberClinet];
         return;
     }
     self.transaction.schemeSource = SchemeSourceBet;
@@ -2180,6 +2180,34 @@
 
 -(void)goonBuy{
     [self setZHDic];
+}
+
+
+-(void)updateMemberClinet{
+    
+    NSDictionary *MemberInfo;
+    NSString *cardCode =self.curUser.cardCode;
+    if (cardCode == nil) {
+        return;
+    }
+    MemberInfo = @{@"cardCode":cardCode
+                   };
+    [self.memberMan getMemberByCardCodeSms:(NSDictionary *)MemberInfo];
+}
+-(void)getMemberByCardCodeSms:(NSDictionary *)memberInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    
+    NSLog(@"memberInfo%@",memberInfo);
+    if ([msg isEqualToString:@"执行成功"]) {
+        // [self showPromptText: @"memberInfo成功" hideAfterDelay: 1.7];
+        User *user = [[User alloc]initWith:memberInfo];
+        [GlobalInstance instance].curUser = user;
+        self.curUser.notCash = user.notCash;
+        self.curUser.balance = user.balance;
+        self.curUser.sendBalance = user.sendBalance;
+        [self payForZHOrderInfo:ZHOrderInfoTemp[@"orderNeedInfo"] andQishu:[ZHOrderInfoTemp[@"qi"] intValue]];
+    }else{
+        [self showPromptText: msg hideAfterDelay: 1.7];
+    }
 }
 
 @end

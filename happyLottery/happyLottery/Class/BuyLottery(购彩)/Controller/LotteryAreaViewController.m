@@ -79,8 +79,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)webViewDidStartLoad:(UIWebView *)webView{
+    [self showLoadingText:@"正在加载"];
+    
+}
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
+    
+    [self hideLoadingView];
     context = [webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
     context[@"appObj"] = self;
     context.exceptionHandler = ^(JSContext *context, JSValue *exceptionValue) {

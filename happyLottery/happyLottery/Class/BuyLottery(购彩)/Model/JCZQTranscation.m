@@ -334,8 +334,12 @@
     for (JCZQMatchModel *model in self.selectMatchArray) {
         [model refreshPrize];
     }
-    
-    [self peilvJiSuan];
+    @try {
+       [self peilvJiSuan];
+    } @catch (NSException *exception) {
+        self.minBounds = @"0.00";
+        self.mostBounds = @"0.00";
+    }
 }
 - (void)getBetCount{
     
@@ -712,7 +716,7 @@
             NSString * baseNum = codeDic[@"baseNum"];
             
             NSArray * baseNumArray = [baseNum componentsSeparatedByString:@","];
-            //        NSMutableArray * oddNumArray_temp = [NSMutableArray array];
+            NSMutableArray * oddNumArray_temp = [NSMutableArray array];
             for (int i=0;i<self.selectMatchArray.count;i++){
                 
                 JCZQMatchModel* match = self.selectMatchArray[i];
@@ -722,10 +726,10 @@
                 NSArray * allZuheArray =   [self matchCodeFenZu:match.matchBetArray  match:match];
                 
                 NSArray * zuheValid;
-                            NSArray * zuheValid_min;
+                NSArray * zuheValid_min;
                 float maxValue = 0;
-                            float minValue = NSIntegerMax;
-                            NSMutableArray * peilu_zuhe_temp =[NSMutableArray array];
+                float minValue = NSIntegerMax;
+                NSMutableArray * peilu_zuhe_temp =[NSMutableArray array];
                 for(NSArray * array in allZuheArray){
                     NSArray * peilv_zuhe_array = [self codeZuheShiftToOddZuhe:array match:match];
                     float result=0;
@@ -736,21 +740,20 @@
                         maxValue = result;
                         zuheValid = peilv_zuhe_array;
                     }
-                    
-                    //                peilv_zuhe_array = [self codeZuheShiftToOddZuheMin:array match:match];
+                    peilv_zuhe_array = [self codeZuheShiftToOddZuheMin:array match:match];
                     result=0;
                     for(NSNumber *num in peilv_zuhe_array){
                         result += [num floatValue];
                     }
                     
-                    //                if (result < minValue) {
-                    //                    minValue = result;
-                    //                    zuheValid_min = peilv_zuhe_array;
-                    //                }
+                                    if (result < minValue) {
+                                        minValue = result;
+                                        zuheValid_min = peilv_zuhe_array;
+                                    }
                 }
                 match.odd_max_zuhe_HHGG = zuheValid;
-                //            match.odd_min_zuhe_HHGG = zuheValid_min;
-                //            [oddNumArray_temp addObject:zuheValid];
+                match.odd_min_zuhe_HHGG = zuheValid_min;
+                [oddNumArray_temp addObject:zuheValid];
             }
             
             NSMutableDictionary * matchGropDic = [NSMutableDictionary dictionary];
@@ -857,6 +860,7 @@
             if (match.matchBetArray .count == 0) {
                 return;
             }
+            
             NSArray * allZuheArray =   [self matchCodeFenZu:match.matchBetArray  match:match];
             
             NSArray * zuheValid;
@@ -1068,6 +1072,7 @@
 }
 
 - (NSArray *)matchCodeFenZu:(NSArray *)codeArray match:(JCZQMatchModel *)match{
+    
     NSDictionary * hunheBfPeiDuiDic = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"HHGGPeilvTable" ofType:@"plist"]];
     NSArray * allZuheTable = [hunheBfPeiDuiDic allValues];
     NSMutableArray * validZuhe = [NSMutableArray arrayWithCapacity:allZuheTable.count];
@@ -1105,7 +1110,7 @@
     NSString * codeAppear = codeAppearDic[@"appear"];
     int rqspfValue = [rqspf intValue];
     int rq = [match.handicap intValue];
-    if (bf_value == 512) {
+    if (bf_value == 312) {
         // 胜其他
         if(rq > 0 && rqspfValue == 200){
             return YES;
@@ -1114,12 +1119,12 @@
         }else if(rq < -1 ){
             return YES;
         }
-    }else if (bf_value == 517){
+    }else if (bf_value == 317){
         // 平其他
         if ((rq > 0 && rqspfValue==200) || (rq < 0 && rqspfValue==202)) {
             return YES;
         }
-    }else if (bf_value == 530){
+    }else if (bf_value == 330){
         // 负其他
         if (rq == 1 &&  (rqspfValue == 202 || rqspfValue == 201)) {
             return YES;
@@ -1209,7 +1214,6 @@
 
 - (NSArray *) codeZuheShiftToOddZuheMin:(NSArray *)codeArray match:(JCZQMatchModel *)match{
     NSMutableArray * valid_oddArray = [NSMutableArray arrayWithCapacity:codeArray.count];
-
 
 
     NSMutableArray * odd_spf = [NSMutableArray array];

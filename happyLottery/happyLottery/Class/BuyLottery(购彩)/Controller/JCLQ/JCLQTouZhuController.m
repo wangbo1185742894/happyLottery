@@ -171,7 +171,13 @@
             [listTitle addObject:[NSString stringWithFormat:@"   满%@减%@",coupon.quota,coupon.deduction]];
             [self.itemDataArray addObject:coupon];
         }
-        self.labCouInfo.text = [listTitle componentsJoinedByString:@","];
+        if (listTitle.count == 0) {
+            self.labCouInfo.text = @"";
+            labCouHeight.constant = 0;
+        }else{
+            self.labCouInfo.text = [listTitle componentsJoinedByString:@","];
+            labCouHeight.constant = 30;
+        }
     }
 }
 
