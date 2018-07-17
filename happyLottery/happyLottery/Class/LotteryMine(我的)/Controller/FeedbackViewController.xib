@@ -159,7 +159,9 @@
                                 <constraint firstAttribute="height" constant="27" id="g8W-Aa-R4I"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <state key="normal" title="《常见问题》"/>
+                            <state key="normal" title="《常见问题》">
+                                <color key="titleColor" red="0.19215686274509802" green="0.53725490196078429" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
                             <connections>
                                 <action selector="actionToWenda:" destination="-1" eventType="touchUpInside" id="3QL-kc-ic4"/>
                             </connections>
