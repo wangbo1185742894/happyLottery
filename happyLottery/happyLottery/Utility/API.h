@@ -199,6 +199,7 @@
 #define APIgetAppSign               @"getAppSign"
 #define APIlistSellLottery              @"listSellLottery"
 #define APIgetBootPageUrl           @"getBootPageUrl"
+#define APIgetCommonSetValue            @"getCommonSetValue"
 
 #define SUBAPISchemeService   @"/scheme"
 #define APIBetLotteryScheme         @"betLotteryScheme"
@@ -216,8 +217,8 @@
 #define APIFollowScheme             @"followScheme"//跟单
 #define APIgetAttentFollowScheme    @"getAttentFollowScheme"  //获得关注人的发单
 #define APIconcealSchemeBySchemeNo  @"concealSchemeBySchemeNo" //删除方案
-#define APIgetCommonSetValue            @"getCommonSetValue"
 #define APIchaseCompleteCount           @"chaseCompleteCount"
+
 
 
 #define SUBAPITicketService   @"/ticket"

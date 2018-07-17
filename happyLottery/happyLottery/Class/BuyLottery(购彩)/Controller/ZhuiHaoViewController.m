@@ -18,6 +18,7 @@
 #import "MemberManager.h"
 #import "LotteryPlayViewController.h"
 #import "WBInputPopView.h"
+#import "WebViewController.h"
 
 #define PhaseInfoHeight 20
 #define VlineCount 5
@@ -143,7 +144,11 @@
 }
 
 - (void) optionRightButtonAction {
-
+    WebViewController *webVC = [[WebViewController alloc]initWithNibName:@"WebViewController" bundle:nil];
+    webVC.type = @"html";
+    webVC.title = @"智能追号帮助";
+    webVC.htmlName = @"zhuihao";
+    [self.navigationController pushViewController:webVC animated:YES];
 }
 
 - (void) navigationBackToLastPage{

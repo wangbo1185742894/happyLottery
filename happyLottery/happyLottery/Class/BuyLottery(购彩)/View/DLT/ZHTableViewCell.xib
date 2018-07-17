@@ -29,10 +29,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="win-zhuihao.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ye6-54-SSn">
-                        <rect key="frame" x="25" y="10" width="30" height="85.5"/>
+                        <rect key="frame" x="25" y="6" width="18" height="89.5"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="30" id="yYg-yQ-A3A"/>
+                            <constraint firstAttribute="width" constant="18" id="yYg-yQ-A3A"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tq6-fi-7vM">
@@ -103,7 +103,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pTF-2E-L3q">
-                        <rect key="frame" x="55" y="60" width="200" height="23"/>
+                        <rect key="frame" x="43" y="60" width="200" height="23"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="23" id="2KE-TB-7XA"/>
                         </constraints>
@@ -122,11 +122,11 @@
                     <constraint firstItem="74b-Zm-Pig" firstAttribute="top" secondItem="Ye6-54-SSn" secondAttribute="bottom" constant="5" id="9WJ-Ap-85J"/>
                     <constraint firstItem="cwD-j1-3Pm" firstAttribute="top" secondItem="5sZ-cz-NVF" secondAttribute="bottom" id="9Z9-4C-2Xl"/>
                     <constraint firstItem="Ye6-54-SSn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="AGr-z6-zg0"/>
+                    <constraint firstItem="Ye6-54-SSn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="C3g-zF-vXu"/>
                     <constraint firstItem="5sZ-cz-NVF" firstAttribute="leading" secondItem="l8O-UT-g7e" secondAttribute="trailing" id="PhL-fd-54y"/>
                     <constraint firstItem="r5D-sN-fa5" firstAttribute="leading" secondItem="tq6-fi-7vM" secondAttribute="trailing" constant="25" id="SRN-re-fQb"/>
                     <constraint firstItem="TcZ-u7-R1B" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Yll-bz-FCw"/>
                     <constraint firstItem="74b-Zm-Pig" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Yvb-xd-T8b"/>
-                    <constraint firstItem="Ye6-54-SSn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="apO-6h-zHD"/>
                     <constraint firstAttribute="bottom" secondItem="tq6-fi-7vM" secondAttribute="bottom" id="bGa-bu-Ojy"/>
                     <constraint firstAttribute="bottom" secondItem="74b-Zm-Pig" secondAttribute="bottom" id="exR-iH-OWF"/>
                     <constraint firstItem="tq6-fi-7vM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="g5N-EM-6p6"/>

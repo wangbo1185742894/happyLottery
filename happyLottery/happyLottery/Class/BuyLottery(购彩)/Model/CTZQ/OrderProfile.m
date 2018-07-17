@@ -177,6 +177,9 @@
     if ([_chaseStatus isEqualToString:@"CATCHSTOP"]) {
         return @"已停追";
     }
+    if ([_chaseStatus isEqualToString:@"CATCHEND"]) {
+        return @"追号结束";
+    }
     return @"追号中";
     //    switch ([_catchStatus intValue]) {
     //        case 0:

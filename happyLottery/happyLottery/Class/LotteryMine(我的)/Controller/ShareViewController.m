@@ -14,9 +14,11 @@
 #import <MOBFoundation/MOBFoundation.h>
 
 
-@interface ShareViewController ()<MemberManagerDelegate>{
+@interface ShareViewController ()<MemberManagerDelegate,LotteryManagerDelegate>{
     UIButton *menuButton;
     NSString *codeurl;
+    NSString *shareTitle;
+    NSString *shareText;
 }
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottom;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
@@ -64,9 +66,22 @@
    // [self getQRCodeClient];
     codeurl = [self.curUser getShareUrl];
     [self initCode];
+    self.lotteryMan.delegate = self;
 }
 
+//服务器动态返回分享内容
 - (IBAction)shareBtnClick:(id)sender {
+    [self.lotteryMan getCommonSetValue:@{@"typeCode":@"share",@"commonCode":@"share_activity"}];
+}
+
+
+-(void)gotCommonSetValue:(NSString *)strUrl{
+    if (strUrl == nil || strUrl.length == 0) {
+        return;
+    }
+    NSArray *arrayText = [strUrl componentsSeparatedByString:@"|"];
+    shareTitle = arrayText[0];
+    shareText = arrayText[1];
     [self initshare];
 }
 
@@ -75,14 +90,15 @@
 //              = [NSString stringWithFormat:@"tfi.11max.com/Tbz/ShareByCode?shareCode=%@",code];
  
 //    }CIRCLE_MASTER("圈主"), CIRCLE_PERSON("圈民"), FREEDOM_PERSON("自由人");
+    
     NSString *url = [self.curUser getShareUrl];
   
     NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
     NSArray* imageArray = @[[[NSBundle mainBundle] pathForResource:@"logo120@2x" ofType:@"png"]];
-    [shareParams SSDKSetupShareParamsByText:@"千万大奖集聚地，新用户即享188元豪礼。积分商城优惠享不停！"
+    [shareParams SSDKSetupShareParamsByText:shareText
                                      images:imageArray
                                         url:[NSURL URLWithString:url]
-                                      title:@"送您188元新人大礼包！点击领取"
+                                      title:shareTitle
                                        type:SSDKContentTypeWebPage];
 
     [ShareSDK showShareActionSheet:nil
