@@ -617,8 +617,11 @@
 -(NSString *)getChaseContent{
     NSArray *chaseList = [Utility objFromJson:self.order.catchContent];
     NSMutableString *chaseContent = [[NSMutableString alloc]initWithCapacity:0];
+    NSInteger betCount = 0;
     for (NSDictionary *itemDic in chaseList) {
+        
         if ([self.order.lotteryCode isEqualToString:@"SX115"] || [self.order.lotteryCode isEqualToString:@"SD115"]) {
+            
             NSString *lottery;
             if ([self.order.lotteryCode isEqualToString:@"SX115"]) {
                 lottery = @"陕西11选5";
@@ -632,18 +635,18 @@
                  playName.text = [NSString stringWithFormat:@"%@(%@)",[X115SchemeViewCell X115CHNTypeByEnType:itemDic[@"playType"]],lottery];
             }
             
-            int i = 0;
-            for (; i < redDanList.count; i ++) {
+           
+            for ( int i = 0; i < redDanList.count; i ++) {
                 NSArray *itemArray = redDanList[i];
                 [chaseContent appendString:[itemArray componentsJoinedByString:@","]];
                 if (redDanList.count >1 && i < redDanList.count-1) {
                     [chaseContent appendString:@"#"];
                 }
-                
             }
-            if (i < redDanList.count - 1) {
+            if (betCount < chaseList.count -1) {
                 [chaseContent appendString:@";"];
             }
+             betCount ++;
         }else{
             NSArray *blueList = itemDic[@"blueList"];
             NSArray *blueDanList = itemDic[@"blueDanList"];
@@ -667,7 +670,7 @@
             [chaseContent appendString:[blueList componentsJoinedByString:@","]];
             [chaseContent appendString:@";"];
         }
-      
+       
     }
     return chaseContent;
 }
