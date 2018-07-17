@@ -1339,6 +1339,8 @@
 		F9A75BC120D11371005AA881 /* wodequanzi@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9A75BBF20D11371005AA881 /* wodequanzi@3x.png */; };
 		F9A75BC220D11371005AA881 /* wodequanzi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9A75BC020D11371005AA881 /* wodequanzi@2x.png */; };
 		F9A941D420A92C1900A7D67A /* PersonCenterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F9A941D320A92C1900A7D67A /* PersonCenterModel.m */; };
+		F9ADB10520FDCF4700AFAA03 /* ZhuiHaoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9ADB10320FDCF4700AFAA03 /* ZhuiHaoCell.m */; };
+		F9ADB10620FDCF4700AFAA03 /* ZhuiHaoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9ADB10420FDCF4700AFAA03 /* ZhuiHaoCell.xib */; };
 		F9B5D8F6205F8B5000C9F6DC /* wordcup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9B5D8F4205F8B4F00C9F6DC /* wordcup@2x.png */; };
 		F9B5D8F7205F8B5000C9F6DC /* wordcup@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9B5D8F5205F8B4F00C9F6DC /* wordcup@3x.png */; };
 		F9B5D912205FB0B000C9F6DC /* GYJPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9B5D90F205FB0AE00C9F6DC /* GYJPlayViewController.m */; };
@@ -3478,6 +3480,9 @@
 		F9A75BC020D11371005AA881 /* wodequanzi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wodequanzi@2x.png"; sourceTree = "<group>"; };
 		F9A941D220A92C1900A7D67A /* PersonCenterModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonCenterModel.h; sourceTree = "<group>"; };
 		F9A941D320A92C1900A7D67A /* PersonCenterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonCenterModel.m; sourceTree = "<group>"; };
+		F9ADB10220FDCF4700AFAA03 /* ZhuiHaoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZhuiHaoCell.h; sourceTree = "<group>"; };
+		F9ADB10320FDCF4700AFAA03 /* ZhuiHaoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZhuiHaoCell.m; sourceTree = "<group>"; };
+		F9ADB10420FDCF4700AFAA03 /* ZhuiHaoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZhuiHaoCell.xib; sourceTree = "<group>"; };
 		F9B5D8F4205F8B4F00C9F6DC /* wordcup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wordcup@2x.png"; sourceTree = "<group>"; };
 		F9B5D8F5205F8B4F00C9F6DC /* wordcup@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wordcup@3x.png"; sourceTree = "<group>"; };
 		F9B5D90F205FB0AE00C9F6DC /* GYJPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYJPlayViewController.m; sourceTree = "<group>"; };
@@ -5926,6 +5931,9 @@
 				2D4D608220AD4DFB00280033 /* ActivityInfoView.m */,
 				F9C942D320B56107009BA1BF /* LotteryCollectionView.h */,
 				F9C942D420B56107009BA1BF /* LotteryCollectionView.m */,
+				F9ADB10220FDCF4700AFAA03 /* ZhuiHaoCell.h */,
+				F9ADB10320FDCF4700AFAA03 /* ZhuiHaoCell.m */,
+				F9ADB10420FDCF4700AFAA03 /* ZhuiHaoCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -8073,6 +8081,7 @@
 				F9F6CA9F1FF5D6B100A49F71 /* arrows@2x.png in Resources */,
 				F9E0DF22201972570089F51D /* JumpWebViewController.xib in Resources */,
 				2D4B1E811FDF684E0034B708 /* wode_defealt@2x.png in Resources */,
+				F9ADB10620FDCF4700AFAA03 /* ZhuiHaoCell.xib in Resources */,
 				F96C357920ACFC0D00D1F034 /* SuoSchemeViewCell.xib in Resources */,
 				2D0600471FFDDD51009E7568 /* schemedetailticket_bj@3x.png in Resources */,
 				2D739C641FE7878100264044 /* JCZQTouZhuViewController.xib in Resources */,
@@ -8438,6 +8447,7 @@
 				2D739CC21FEA445300264044 /* JCZQLeaModel.m in Sources */,
 				2D7B8D9E20C52048000EAFB1 /* MyCircleFirendCell.m in Sources */,
 				2DCBB2841FD1000700934D92 /* main.m in Sources */,
+				F9ADB10520FDCF4700AFAA03 /* ZhuiHaoCell.m in Sources */,
 				2D5171CE200C567D00C3CD7F /* WonSchemeListController.m in Sources */,
 				2D7B13A6204E871C0035AE89 /* CTZQPlayViewController.m in Sources */,
 				2DD5992E20E1DB26002441B5 /* ZhuiHaoViewController.m in Sources */,
