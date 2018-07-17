@@ -439,6 +439,7 @@
 		2D525F0120FC3DA500D66C81 /* winstopnomal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D525EFD20FC3DA400D66C81 /* winstopnomal@2x.png */; };
 		2D525F0220FC3DA500D66C81 /* winstopnomal@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D525EFE20FC3DA400D66C81 /* winstopnomal@3x.png */; };
 		2D525F0320FC3DA500D66C81 /* winstopselect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D525EFF20FC3DA500D66C81 /* winstopselect@2x.png */; };
+		2D525F0620FDB13600D66C81 /* ZhuiHaoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D525F0420FDB13500D66C81 /* ZhuiHaoViewController.m */; };
 		2D621C722092F6E000526041 /* yuyuefangan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D621C702092F6DF00526041 /* yuyuefangan@3x.png */; };
 		2D621C732092F6E000526041 /* yuyuefangan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D621C712092F6DF00526041 /* yuyuefangan@2x.png */; };
 		2D621C752092FD7700526041 /* launchImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D621C742092FD7700526041 /* launchImage@2x.png */; };
@@ -857,7 +858,6 @@
 		2DD5992620E1D92E002441B5 /* X115LimitNumPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD5992420E1D92D002441B5 /* X115LimitNumPopView.m */; };
 		2DD5992920E1DA7F002441B5 /* BeitouView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD5992720E1DA7E002441B5 /* BeitouView.m */; };
 		2DD5992D20E1DB26002441B5 /* ZhuiHaoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DD5992A20E1DB25002441B5 /* ZhuiHaoViewController.xib */; };
-		2DD5992E20E1DB26002441B5 /* ZhuiHaoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD5992C20E1DB26002441B5 /* ZhuiHaoViewController.m */; };
 		2DD5993120E1EA2F002441B5 /* optimizeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD5993020E1EA2F002441B5 /* optimizeView.m */; };
 		2DD5993420E1EA8A002441B5 /* RadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD5993320E1EA89002441B5 /* RadioButton.m */; };
 		2DD5994620E1EAED002441B5 /* DateTools.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2DD5993620E1EAED002441B5 /* DateTools.bundle */; };
@@ -2231,6 +2231,8 @@
 		2D525EFD20FC3DA400D66C81 /* winstopnomal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "winstopnomal@2x.png"; sourceTree = "<group>"; };
 		2D525EFE20FC3DA400D66C81 /* winstopnomal@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "winstopnomal@3x.png"; sourceTree = "<group>"; };
 		2D525EFF20FC3DA500D66C81 /* winstopselect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "winstopselect@2x.png"; sourceTree = "<group>"; };
+		2D525F0420FDB13500D66C81 /* ZhuiHaoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhuiHaoViewController.m; sourceTree = "<group>"; };
+		2D525F0520FDB13500D66C81 /* ZhuiHaoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhuiHaoViewController.h; sourceTree = "<group>"; };
 		2D621C702092F6DF00526041 /* yuyuefangan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "yuyuefangan@3x.png"; path = "homeres/yuyuefangan@3x.png"; sourceTree = "<group>"; };
 		2D621C712092F6DF00526041 /* yuyuefangan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "yuyuefangan@2x.png"; path = "homeres/yuyuefangan@2x.png"; sourceTree = "<group>"; };
 		2D621C742092FD7700526041 /* launchImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launchImage@2x.png"; sourceTree = "<group>"; };
@@ -2844,8 +2846,6 @@
 		2DD5992720E1DA7E002441B5 /* BeitouView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeitouView.m; sourceTree = "<group>"; };
 		2DD5992820E1DA7F002441B5 /* BeitouView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeitouView.h; sourceTree = "<group>"; };
 		2DD5992A20E1DB25002441B5 /* ZhuiHaoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZhuiHaoViewController.xib; sourceTree = "<group>"; };
-		2DD5992B20E1DB25002441B5 /* ZhuiHaoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhuiHaoViewController.h; sourceTree = "<group>"; };
-		2DD5992C20E1DB26002441B5 /* ZhuiHaoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhuiHaoViewController.m; sourceTree = "<group>"; };
 		2DD5992F20E1EA2E002441B5 /* optimizeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = optimizeView.h; sourceTree = "<group>"; };
 		2DD5993020E1EA2F002441B5 /* optimizeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = optimizeView.m; sourceTree = "<group>"; };
 		2DD5993220E1EA89002441B5 /* RadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioButton.h; sourceTree = "<group>"; };
@@ -5685,8 +5685,8 @@
 		2DDEDC001FD4DBB6007AEBF7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				2DD5992B20E1DB25002441B5 /* ZhuiHaoViewController.h */,
-				2DD5992C20E1DB26002441B5 /* ZhuiHaoViewController.m */,
+				2D525F0520FDB13500D66C81 /* ZhuiHaoViewController.h */,
+				2D525F0420FDB13500D66C81 /* ZhuiHaoViewController.m */,
 				2DD5992A20E1DB25002441B5 /* ZhuiHaoViewController.xib */,
 				2DD5991F20E1D424002441B5 /* OmitEnquiriesViewController.h */,
 				2DD5991D20E1D423002441B5 /* OmitEnquiriesViewController.m */,
@@ -8440,7 +8440,6 @@
 				2DCBB2841FD1000700934D92 /* main.m in Sources */,
 				2D5171CE200C567D00C3CD7F /* WonSchemeListController.m in Sources */,
 				2D7B13A6204E871C0035AE89 /* CTZQPlayViewController.m in Sources */,
-				2DD5992E20E1DB26002441B5 /* ZhuiHaoViewController.m in Sources */,
 				2D7B13A0204E871C0035AE89 /* CTZQTouZhuViewController.m in Sources */,
 				2D7B8DB020C54927000EAFB1 /* MyCricleYongJinVC.m in Sources */,
 				2DDEDE731FD568C9007AEBF7 /* AFURLRequestSerialization.m in Sources */,
@@ -8489,6 +8488,7 @@
 				2D9847B71FF5EC9500038690 /* WBYCMatchDetailViewController.m in Sources */,
 				2D06001C1FFDCD9F009E7568 /* MJRefreshBackFooter.m in Sources */,
 				2D8CBFEB1FF3770100CC367F /* jcBetContent.m in Sources */,
+				2D525F0620FDB13600D66C81 /* ZhuiHaoViewController.m in Sources */,
 				F965562920C537810017066C /* AgentDynamicCell.m in Sources */,
 				2D739CFB1FEB5D1900264044 /* JCZQSelectBQCVIew.m in Sources */,
 				F9BC6E2D20C2CB5F0037998B /* ApplyInputCell.m in Sources */,

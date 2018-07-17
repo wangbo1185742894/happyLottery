@@ -24,8 +24,7 @@
 #define ZHSURETAG 12321
 
 @interface ZhuiHaoViewController ()<UIAlertViewDelegate,LotteryPhaseInfoViewDelegate,MemberManagerDelegate,WBInputPopViewDelegate,UITextFieldDelegate>{
-    NSString *curLotteryRound;
-
+    
     LotteryPhaseInfoView *phaseInfoView;
     __weak IBOutlet UIView *ContentView;
     __weak IBOutlet UIView *BottomView;
@@ -80,7 +79,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    curLotteryRound = self.transaction.lottery.currentRound.issueNumber;
     _multiple = 1;
     _issue = 10;
     self.lotteryMan.delegate = self;
@@ -222,7 +220,6 @@
         beishuChoose = [[UITextField alloc]initWithFrame:CGRectMake(beishudownBtn.bounds.size.width-1, 3, 25, 25)];
         beishuChoose.font = [UIFont systemFontOfSize:12];
         beishuChoose.text = @"1";
-        beishuChoose.userInteractionEnabled = NO;
         beishuChoose.textAlignment = NSTextAlignmentCenter;
         beishuChoose.userInteractionEnabled = NO;
         beishuChoose.layer.borderWidth = SEPHEIGHT;
@@ -261,7 +258,6 @@
         JiangqiChoose = [[UITextField alloc]initWithFrame:CGRectMake(beishudownBtn.bounds.size.width-1, 3, 25, 25)];
         NSString *str = [NSString stringWithFormat:@"%d",(unsigned int)_issue];
         JiangqiChoose.text = str;
-        JiangqiChoose.userInteractionEnabled = NO;
         JiangqiChoose.font = [UIFont systemFontOfSize:12];
         JiangqiChoose.textAlignment = NSTextAlignmentCenter;
         JiangqiChoose.layer.borderWidth = SEPHEIGHT;
@@ -350,10 +346,9 @@
        
         if (num > limitNum) {
             JiangqiChoose.text = [NSString stringWithFormat:@"%lu", limitNum];
+            [self showPromptText:[NSString stringWithFormat:@"今日最大可追%lu期，系统不支持跨日追号", limitNum] hideAfterDelay:1.7];
             _issue = [JiangqiChoose.text integerValue];
             [self ScrollViewUI:_issue-1];
-            [self showPromptText:[NSString stringWithFormat:@"今日最大可追%lu期，系统不支持跨日追号", limitNum] hideAfterDelay:1.7];
-            
             return NO;
         }
         _issue = [JiangqiChoose.text integerValue];
@@ -368,6 +363,11 @@
         textField.text = @"1";
     }
     textField.text = [NSString stringWithFormat:@"%ld",[textField .text integerValue]];
+    if (textField == beishuChoose) {
+        [self ScrollViewUI:0];
+    }else {
+        [self loadScrollView];
+    }
 }
 
 -(void) loadTitleView{
@@ -438,15 +438,12 @@
 }
 -(void) loadScrollView{
     //详细信息显示，scrollaview
-    if (scrollView == nil) {
+
         scrollView = [[UIScrollView alloc] init];
-        
-        
-        scrollView.frame = CGRectMake(0,128, KscreenWidth, KscreenHeight-270); // frame中的size指UIScrollView的可视范围
-        scrollView.backgroundColor = RGBCOLOR(250, 250, 250) ;
-        [ContentView addSubview:scrollView];
-    }
-  
+
+    
+    scrollView.frame = CGRectMake(0,128, KscreenWidth, KscreenHeight-270); // frame中的size指UIScrollView的可视范围
+    scrollView.backgroundColor = RGBCOLOR(250, 250, 250) ;
     CGRect scrollframe = scrollView.frame;
     scrollframe.size.height = _issue*45;
     scrollView.contentSize = scrollframe.size;
@@ -480,7 +477,7 @@
 //        [scrollView addSubview:Vline[i]];
 //    }
     [self loadBeishushow];
-    
+    [ContentView addSubview:scrollView];
 }
 -(void) loadBeishushow{
     if(mutArry.count == 0)
@@ -1529,19 +1526,16 @@
 }
 -(void)SubmitBtnClick
 {
-    
+    if(![self.lottery.currentRound.issueNumber isEqualToString:strcurRound]){
+        [self showPromptText:@"当前追号奖期已截止" hideAfterDelay:1.7];
+        return ;
+    }
     for (int i = 0; i < _issue; i++) {
         if ([mutArry[i] integerValue] * _zhushu * 2 >20000) {
             [self showPromptText:@"单期投注金额不能超过2万" hideAfterDelay:1.7];
             return;
         }
     }
-    
-    if (![curLotteryRound isEqualToString:self.transaction.lottery.currentRound.issueNumber]) {
-        [self showPromptViewWithText:@"当前追期期号已截止" hideAfter:1.7];
-        return;
-    }
-    
     [self  updateMemberClinet];
     
 }
@@ -2165,8 +2159,6 @@
 //        NSString * str = [_lottery.currentRound valueForKey:@"number"];
          NSString * str = [_lottery.currentRound valueForKey:@"issueNumber"];
         [phaseInfoView showCurRoundInfo];
-        
-        [phaseInfoView showCurRoundInfo];
         if(![str isEqualToString:strcurRound])
         {
             NSString *msg =@"奖期已经更新";
@@ -2187,6 +2179,7 @@
 
 -(NSArray*)getZhuiHaoInfo
 {
+  
     AppDelegate *myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSMutableArray *issueMultiple = [NSMutableArray arrayWithCapacity:0];
     NSArray *catchList = myDelegate.ZHDic[@"catchList"];
