@@ -1012,6 +1012,22 @@
         if ([self checkZhuiHaoNum] == NO) {
             return;
         }
+        
+        if ([tfBeiText.text integerValue] > 99) {
+            [self showPromptText:[NSString stringWithFormat:@"最大可投99倍"] hideAfterDelay:1.8];
+            return;
+        }
+                if (self.transaction.qiShuCount > 1) {
+                    X115LimitNumPopView *popView = [[X115LimitNumPopView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+        
+                    [popView setLabLimitInfoText:self.transaction.lottery.identifier];
+        
+                    popView.delegate = self;
+                    [[UIApplication sharedApplication].keyWindow addSubview:popView];
+                }
+        
+        
+        
         [self updateMemberClinet];
         return;
     }
@@ -1144,6 +1160,9 @@
     schemeCashModel.realSubscribed = self.transaction.betCost;
     payVC.cashPayMemt = schemeCashModel;
     [self.transaction removeAllBets];
+    self.transaction.beiTouCount = 1;
+    self.transaction.qiShuCount  = 1;
+    self.transaction.winStopStatus = WINSTOP;
     [self.navigationController pushViewController:payVC animated:YES];
 }
 
@@ -2174,7 +2193,7 @@
 }
 
 -(void)goonBuy{
-    [self setZHDic];
+    
 }
 
 

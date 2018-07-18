@@ -1,4 +1,4 @@
-//
+ //
 //  ZhuiHaoViewController.m
 //  Lottery
 //
@@ -129,6 +129,23 @@
     [optionButton addTarget: self action: @selector(optionRightButtonAction) forControlEvents: UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView: optionButton];
 }
+
+
+-(void)gotSellIssueList:(NSArray *)infoDic errorMsg:(NSString *)msg{
+    if (infoDic == nil || infoDic .count == 0) {
+        [self showPromptText:msg hideAfterDelay:1.9];
+        return;
+    }
+    self.lottery.currentRound = [infoDic firstObject];
+    self.transaction.lottery.currentRound = [infoDic firstObject];
+    
+    NSLog(@"timer sile");
+    if (phaseInfoView) {
+        [phaseInfoView showCurRoundInfo];
+    }
+
+}
+
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
@@ -1539,7 +1556,7 @@
 }
 -(void)SubmitBtnClick
 {
-    if (self.transaction.qiShuCount <= 1) {
+    if ([JiangqiChoose.text integerValue] <= 1) {
         [self showPromptText:@"追号期数至少2期" hideAfterDelay:1.7];
         return;
     }
@@ -2138,9 +2155,12 @@
     CGRect phaseSectionFrame = CGRectMake(0, 0, CGRectGetWidth(ContentView.frame), 0);
     phaseSectionFrame.origin.y = 0;
     phaseSectionFrame.size.height = PhaseInfoHeight * 2;
-    
-    phaseInfoView = [[LotteryPhaseInfoView alloc] initWithFrame: phaseSectionFrame];
-    phaseInfoView.delegate = self;
+    if(phaseInfoView == nil){
+        phaseInfoView = [[LotteryPhaseInfoView alloc] initWithFrame: phaseSectionFrame];
+        phaseInfoView.delegate = self;
+    }
+        
+  
     [phaseInfoView drawWithLotteryNoButton: self.lottery];
     [ContentView addSubview: phaseInfoView];
     
@@ -2162,7 +2182,8 @@
 }
 
 - (void) getCurrentRound{
-    
+    NSLog(@"开始请求奖期。");
+    [self.lotteryMan getSellIssueList:@{@"lotteryCode":self.transaction.lottery.identifier}];
 }
 #pragma mark - LotteryManagerDelegate methods
 -(void)gotLotteryCurRoundTimeout {

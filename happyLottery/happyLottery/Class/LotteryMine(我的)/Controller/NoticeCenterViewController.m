@@ -618,8 +618,15 @@
         cashInfoVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:cashInfoVC animated:YES];
         return;
+    }else if ([keyStr isEqualToString:@"A436"]){
+        CashInfoViewController *cashInfoVC = [[CashInfoViewController alloc]init];
+        [cashInfoVC setMenuOffset:CashInfoZhuihao];
+        cashInfoVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:cashInfoVC animated:YES];
+        return;
     }else if ([keyStr isEqualToString:@"A435"]){
         CashAndIntegrationWaterViewController *cashInfoVC = [[CashAndIntegrationWaterViewController alloc]init];
+        cashInfoVC.select = 1;
         cashInfoVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:cashInfoVC animated:YES];
         return;
