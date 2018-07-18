@@ -140,7 +140,6 @@
     [self reloadTableView];
 
 }
-
 - (void)reloadTableView{
     listTableView = [[UITableView alloc]initWithFrame:CGRectMake(0,128, KscreenWidth, KscreenHeight-270) style:UITableViewStylePlain];
     listTableView.delegate = self;
@@ -917,7 +916,7 @@
 {
     if(_issue > maxQi - curiss)
     {
-        [self showPromptText:[NSString stringWithFormat:@"今日最大可追%lu期，系统不支持跨日追号", maxQi - curiss] hideAfterDelay:1.7];
+        [self showPromptText:[NSString stringWithFormat:@"今日最大可追%lu期，系统不支持跨日追号", _issue] hideAfterDelay:1.7];
         return;
     }
     _issue +=1;
