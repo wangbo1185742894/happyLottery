@@ -75,7 +75,7 @@
     [super viewDidLoad];
     /*zwl*/
     topDis.constant = NaviHeight;
-    self.bottomDis.constant = BOTTOM_BAR_HEIGHT;
+    self.bottomDis.constant = BOTTOM_BAR_HEIGHT + 10;
     if (![self.order.chaseStatus isEqualToString:@"追号中"]) {
         self.stopChaseBtn.enabled = NO;
     }else{

@@ -194,7 +194,10 @@
             }else if ([order.remark isEqualToString:@"余额不足"]){
                 jieguo.text = order.trOrderStatus;
                 kaijianghaoma.text  = order.remark;
-            }else{
+            }else  if ([order.remark isEqualToString:@"中奖停追"]){
+                jieguo.text = @"已取消";
+                kaijianghaoma.text  = order.remark;
+            }else {
                 jieguo.text = @"撤销追号";
             }
         }
