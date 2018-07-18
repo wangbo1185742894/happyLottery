@@ -94,8 +94,8 @@
                         </mask>
                     </variation>
                 </view>
-                <button contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tnu-Ck-BeN">
-                    <rect key="frame" x="10" y="528" width="300" height="14"/>
+                <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tnu-Ck-BeN">
+                    <rect key="frame" x="10" y="528" width="300" height="35"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="35" id="bB8-wO-ROO"/>
                     </constraints>

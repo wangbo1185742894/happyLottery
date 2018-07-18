@@ -89,7 +89,7 @@
     self.viewControllerNo = @"A109";
     self.title = @"追号设置";
     topDis.constant= NaviHeight;
-    bottomDis.constant = BOTTOM_BAR_HEIGHT;
+    bottomDis.constant = BOTTOM_BAR_HEIGHT  ;
     
     NSString * curRoundnum = [_lottery.currentRound valueForKey:@"issueNumber"];
     strcurRound = curRoundnum;//纪录期号，变化后更新
@@ -1540,7 +1540,7 @@
 -(void)SubmitBtnClick
 {
     if (self.transaction.qiShuCount <= 1) {
-        [self showPromptText:@"至少追2期" hideAfterDelay:1.7];
+        [self showPromptText:@"追号期数至少2期" hideAfterDelay:1.7];
         return;
     }
     if(![self.lottery.currentRound.issueNumber isEqualToString:strcurRound]){
