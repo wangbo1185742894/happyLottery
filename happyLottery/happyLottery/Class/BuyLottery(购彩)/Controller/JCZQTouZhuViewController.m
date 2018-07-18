@@ -85,7 +85,7 @@
     if (success == YES && couponInfo != nil) {
         for (NSDictionary *itemDic in couponInfo) {
             Coupon *coupon = [[Coupon alloc]initWith:itemDic];
-            [listTitle addObject:[NSString stringWithFormat:@"   满%@减%@",coupon.quota,coupon.deduction]];
+            [listTitle addObject:[NSString stringWithFormat:@"满%@减%@",coupon.quota,coupon.deduction]];
             [self.itemDataArray addObject:coupon];
         }
         if (listTitle.count == 0) {
