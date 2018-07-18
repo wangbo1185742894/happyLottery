@@ -105,10 +105,11 @@
         catchString = @"追号中";
     }
     if ([_winStatus isEqualToString:@"NOT_LOTTERY"]) {
-        catchString = @"已中奖";
+        catchString = @"未中奖";
+        
     }
     if ([_winStatus isEqualToString:@"LOTTERY"]) {
-        catchString = @"未中奖";
+        catchString = @"已中奖";
     }
     
     return catchString;

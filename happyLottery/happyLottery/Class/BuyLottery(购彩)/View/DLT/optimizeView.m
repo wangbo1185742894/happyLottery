@@ -306,6 +306,8 @@
     _qiannumField.delegate = self;
     _minnumField.delegate = self;
 }
+
+
 -(void)CancelBtnTouchUpInside
 {
     self.hidden = YES;
@@ -411,6 +413,9 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     if ([string isEqualToString:@""]) {
         return YES;
+    }
+    if (textField.text.length + string.length >=7) {
+        return NO;
     }
     NSString * regex;
     regex = @"^[0-9]";

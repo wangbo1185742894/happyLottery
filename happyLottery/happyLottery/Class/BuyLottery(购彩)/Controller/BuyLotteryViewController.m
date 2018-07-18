@@ -824,8 +824,15 @@ static NSString *ID = @"LotteryAreaViewCell";
         return;
     }else if ([keyStr isEqualToString:@"A435"]){
         
+        
         if (self.curUser .isLogin == NO) {
-            [self needLogin];
+            if (navGationCotr == nil) {
+                [self needLogin];
+            }else{
+                BaseViewController *baseVC = [navGationCotr.viewControllers firstObject];
+                [baseVC needLogin];
+            }
+            return;
             return;
         }
         CashAndIntegrationWaterViewController *cashInfoVC = [[CashAndIntegrationWaterViewController alloc]init];
@@ -836,7 +843,6 @@ static NSString *ID = @"LotteryAreaViewCell";
         }else{
             [navGationCotr pushViewController:cashInfoVC animated:YES];
         }
-        
         return;
     }
     

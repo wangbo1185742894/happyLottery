@@ -856,6 +856,10 @@
 - (void)payForZHOrderInfo:(NSDictionary *)orderNeedInfo andQishu:(int)qi{
     
     curBlance =  [[self.curUser totalBanlece] doubleValue];
+    if ([self.transaction getAllCost] > curBlance) {
+        [self showPromptText:[NSString stringWithFormat:@"账户余额:%.2f元,余额不足",curBlance] hideAfterDelay:2];
+        return;
+    }
     self.transaction.winStopStatus = _zhSelectBtn.selected?WINSTOP:NOTSTOP;
     NSString *msg = [NSString stringWithFormat:@"共追%@期，共需%.0f元,您当前余额为%.1f元,是否确定追号？",tfQiText.text,[self.transaction getAllCost],curBlance];
     ZLAlertView *alert = [[ZLAlertView alloc] initWithTitle:@"追号确认" message:msg];
@@ -1017,14 +1021,14 @@
             [self showPromptText:[NSString stringWithFormat:@"最大可投99倍"] hideAfterDelay:1.8];
             return;
         }
-                if (self.transaction.qiShuCount > 1) {
+                
                     X115LimitNumPopView *popView = [[X115LimitNumPopView alloc]initWithFrame:[UIScreen mainScreen].bounds];
         
                     [popView setLabLimitInfoText:self.transaction.lottery.identifier];
         
                     popView.delegate = self;
                     [[UIApplication sharedApplication].keyWindow addSubview:popView];
-                }
+                
         
         
         
@@ -2218,6 +2222,7 @@
         self.curUser.notCash = user.notCash;
         self.curUser.balance = user.balance;
         self.curUser.sendBalance = user.sendBalance;
+       
         [self payForZHOrderInfo:ZHOrderInfoTemp[@"orderNeedInfo"] andQishu:[ZHOrderInfoTemp[@"qi"] intValue]];
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];

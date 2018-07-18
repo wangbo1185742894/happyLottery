@@ -12,6 +12,8 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.beiShutf.layer.borderColor = RGBCOLOR(230, 230, 230).CGColor;
+    self.beiShutf.layer.borderWidth = 1;
     // Initialization code
 }
 
