@@ -151,7 +151,7 @@
     minratelabel.textAlignment = NSTextAlignmentLeft;
     minratelabel.textColor = TEXTGRAYCOLOR;
     
-    _minnumField = [[UITextField alloc]initWithFrame:CGRectMake(222, 6, 40, 30)];
+    _minnumField = [[UITextField alloc]initWithFrame:CGRectMake(222, 6, 80, 30)];
     _minnumField.textAlignment = NSTextAlignmentCenter;
 //    _minnumField.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"input_bg_normal.9.png"]];
     _minnumField.layer.borderWidth = SEPHEIGHT;
@@ -160,7 +160,7 @@
     NSString *strlowrate = [NSString stringWithFormat:@"%ld",(long)_lowrateNum];
     _minnumField.text = strlowrate;
     
-    UILabel *ratelabel = [[UILabel alloc]initWithFrame:CGRectMake(263,6,_profitview.bounds.size.width-30,25)];
+    UILabel *ratelabel = [[UILabel alloc]initWithFrame:CGRectMake(303,6,_profitview.bounds.size.width-30,25)];
     ratelabel.text = @"％";
     ratelabel.font = [UIFont systemFontOfSize: 13];
     ratelabel.textAlignment = NSTextAlignmentLeft;
@@ -196,7 +196,7 @@
     qilabel.textColor = TEXTGRAYCOLOR;
     [_profitview addSubview:qilabel];
     
-    _qinumField = [[UITextField alloc]initWithFrame:CGRectMake(202, y-1, 40, 30)];
+    _qinumField = [[UITextField alloc]initWithFrame:CGRectMake(202, y-1, 80, 30)];
     _qinumField.textAlignment = NSTextAlignmentCenter;
 //    _qinumField.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"input_bg_normal.9.png"]];
     _qinumField.layer.borderWidth = SEPHEIGHT;
@@ -207,7 +207,7 @@
     
     [_profitview addSubview:_qinumField];
     
-    UILabel *ratelabel1 = [[UILabel alloc]initWithFrame:CGRectMake(245,y-1,_profitview.bounds.size.width-30,25)];
+    UILabel *ratelabel1 = [[UILabel alloc]initWithFrame:CGRectMake(285,y-1,_profitview.bounds.size.width-30,25)];
     ratelabel1.text = @"％";
     ratelabel1.font = [UIFont systemFontOfSize: 13];
     ratelabel1.textAlignment = NSTextAlignmentLeft;
@@ -221,7 +221,7 @@
     lateratelabel.textColor = TEXTGRAYCOLOR;
     [_profitview addSubview:lateratelabel];
     
-    _ratenumField = [[UITextField alloc]initWithFrame:CGRectMake(195, 2*y-8, 40, 30)];
+    _ratenumField = [[UITextField alloc]initWithFrame:CGRectMake(195, 2*y-8, 80, 30)];
     _ratenumField.textAlignment = NSTextAlignmentCenter;
     _ratenumField.layer.borderWidth = SEPHEIGHT;
     _ratenumField.layer.borderColor = SEPCOLOR.CGColor;
@@ -231,7 +231,7 @@
     
     [_profitview addSubview:_ratenumField];
     
-    UILabel *ratelabel2 = [[UILabel alloc]initWithFrame:CGRectMake(237,2*y-8,_profitview.bounds.size.width-30,25)];
+    UILabel *ratelabel2 = [[UILabel alloc]initWithFrame:CGRectMake(277,2*y-8,_profitview.bounds.size.width-30,25)];
     ratelabel2.text = @"％";
     ratelabel2.font = [UIFont systemFontOfSize: 13];
     ratelabel2.textAlignment = NSTextAlignmentLeft;
@@ -245,7 +245,7 @@
     minlabel.textAlignment = NSTextAlignmentLeft;
     minlabel.textColor = TEXTGRAYCOLOR;
     
-    _minprofitField = [[UITextField alloc]initWithFrame:CGRectMake(209, 6+3*(y-7), 40, 30)];
+    _minprofitField = [[UITextField alloc]initWithFrame:CGRectMake(209, 6+3*(y-7), 80, 30)];
     _minprofitField.textAlignment = NSTextAlignmentCenter;
 //    _minprofitField.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"input_bg_normal.9.png"]];
     _minprofitField.layer.borderWidth = SEPHEIGHT;
@@ -254,7 +254,7 @@
     NSString *strlowprofit = [NSString stringWithFormat:@"%ld",(long)_lowprofitNum];
     _minprofitField.text = strlowprofit;
     
-    UILabel *yuanlabel = [[UILabel alloc]initWithFrame:CGRectMake(252,6+3*(y-7),_profitview.bounds.size.width-30,25)];
+    UILabel *yuanlabel = [[UILabel alloc]initWithFrame:CGRectMake(292,6+3*(y-7),_profitview.bounds.size.width-30,25)];
     yuanlabel.text = @"元";
     yuanlabel.font = [UIFont systemFontOfSize: 13];
     yuanlabel.textAlignment = NSTextAlignmentLeft;
@@ -414,7 +414,7 @@
     if ([string isEqualToString:@""]) {
         return YES;
     }
-    if (textField.text.length + string.length >=7) {
+    if (textField.text.length + string.length > 7) {
         return NO;
     }
     NSString * regex;

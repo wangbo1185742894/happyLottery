@@ -82,11 +82,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     if ([self.transaction.lottery.identifier isEqualToString:@"SX115"]) {
         maxQi = MAXQI11X5;
     }else{
         maxQi = MAXQISD11X5;
     }
+    
     _multiple = 1;
     _issue = 10;
     self.lotteryMan.delegate = self;
@@ -100,6 +102,7 @@
     
     NSString * curRoundnum = [_lottery.currentRound valueForKey:@"issueNumber"];
     strcurRound = curRoundnum;//纪录期号，变化后更新
+    
     NSInteger location = [curRoundnum length] - 2;
     NSString *strcut;
     if(location > 0)
@@ -111,6 +114,7 @@
     if (intString + 10 > maxQi) {
         _issue = maxQi - intString + 1;
     }
+    curiss = intString;
     _lowrate = 30;
     _preissue = 5;
     _prerate = 50;
@@ -432,6 +436,11 @@
 //}
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    if (textField.text.length == 0 && [string isEqualToString:@"0"]) {
+        return NO;
+    }
+    
     if ([string isEqualToString:@""]) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             NSInteger temp;
