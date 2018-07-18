@@ -1,4 +1,4 @@
-//
+ //
 //  ZhuiHaoViewController.m
 //  Lottery
 //
@@ -150,10 +150,21 @@
     listTableView.separatorStyle= UITableViewCellSeparatorStyleNone;
     [self updateSummary];
 }
-
-
+-(void)gotSellIssueList:(NSArray *)infoDic errorMsg:(NSString *)msg{
+    if (infoDic == nil || infoDic .count == 0) {
+        [self showPromptText:msg hideAfterDelay:1.9];
+        return;
+    }
+    self.lottery.currentRound = [infoDic firstObject];
+    self.transaction.lottery.currentRound = [infoDic firstObject];
+    
+    NSLog(@"timer sile");
+    if (phaseInfoView) {
+        [phaseInfoView showCurRoundInfo];
+    }
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [JiangqiChoose.text integerValue];
+    return _issue;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -178,9 +189,14 @@
     for (int i = 0; i <= indexPath.row; i++) {
         total += [mutArry[i] integerValue];
     }
-     cell.expenselabel.text = [NSString stringWithFormat:@"%ld",total*2];
+     cell.expenselabel.text = [NSString stringWithFormat:@"%ld",total*2 * _zhushu];
      cell.profitlabel.text = [NSString stringWithFormat:@"%ld",Maxprize*[mutArry[indexPath.row] integerValue]*maxwin-[cell.expenselabel.text integerValue]];
      cell.ratelabel.text = [NSString stringWithFormat:@"%.0f%%",[cell.profitlabel.text doubleValue]/[cell.expenselabel.text doubleValue]*100];
+    if ([cell.ratelabel.text doubleValue] > 0) {
+        
+    }else{
+        cell.ratelabel.textColor =SystemGreen;
+    }
      cell.beiUpBtn.tag = indexPath.row;
      cell.beidownBtn.tag = indexPath.row;
      return cell;
@@ -391,7 +407,7 @@
 }
 //- (void)RadomgetNumBtnClick{
 //    _RadomgetNumBtn.selected=!_RadomgetNumBtn.selected;
-//    
+//
 //    if(_RadomgetNumBtn.selected){
 //        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"选号方式"
 //                                                         message:AlertGetNoMethod delegate:nil cancelButtonTitle:TitleNo otherButtonTitles:TitleYes, nil];
@@ -421,7 +437,7 @@
             NSInteger temp;
             if ([textField.text integerValue] == 0) {
                 temp = 1;
-                textField.text = @"1";
+                
             }else{
                 temp =[textField.text integerValue];
             }
@@ -451,8 +467,8 @@
         [listTableView reloadData];
         [self updateSummary];
     }else {
-        limitNum =  maxQi - curiss;
-       
+        limitNum =  maxQi - curiss + 1;
+    
         if (num > limitNum) {
             JiangqiChoose.text = [NSString stringWithFormat:@"%lu", limitNum];
             [self showPromptText:[NSString stringWithFormat:@"今日最大可追%lu期，系统不支持跨日追号", limitNum] hideAfterDelay:1.7];
@@ -480,11 +496,11 @@
         textField.text = @"1";
     }
     textField.text = [NSString stringWithFormat:@"%ld",[textField .text integerValue]];
-    if (textField == beishuChoose) {
-        [self ScrollViewUI:0];
-    }else {
-        [self loadScrollView];
-    }
+//    if (textField == beishuChoose) {
+//        [self ScrollViewUI:0];
+//    }else {
+//        [self loadScrollView];
+//    }
 }
 
 -(void) loadTitleView{
@@ -602,11 +618,6 @@
         }
         mutArry=[[NSMutableArray alloc]initWithCapacity:_issue];
         mutArry = tempmutArry;
-    }
-    
-    for(NSInteger j=0;j<_issue;j++)
-    {
-        [self ScrollViewUI:j];
     }
 }
 -(void) ScrollViewUI:(NSUInteger)j
@@ -852,7 +863,13 @@
 -(NSInteger)getTotal{
     NSInteger total = 0;
     for (int i = 0; i < _issue; i ++) {
-        total += [mutArry[i] integerValue];
+        if (i >= mutArry.count) {
+            total += 99;
+            [mutArry addObject:@"99"];
+        }else{
+            total += [mutArry[i] integerValue];
+        }
+        
     }
     return total;
 }
@@ -889,7 +906,7 @@
 }
 -(void) JiangqiUpBtnClick
 {
-    if(_issue >= maxQi - curiss)
+    if(_issue > maxQi - curiss)
     {
         [self showPromptText:[NSString stringWithFormat:@"今日最大可追%lu期，系统不支持跨日追号", maxQi - curiss] hideAfterDelay:1.7];
         return;
@@ -897,7 +914,7 @@
     _issue +=1;
     NSString *str = [NSString stringWithFormat:@"%d",(unsigned int)_issue];
     JiangqiChoose.text = str;
-//    [self ScrollViewUI:_issue-1];
+
     [listTableView reloadData];
     [self updateSummary];
     
@@ -1663,10 +1680,8 @@
 }
 -(void)SubmitBtnClick
 {
-
-    if (self.transaction.qiShuCount <= 1) {
+    if ([JiangqiChoose.text integerValue] <= 1) {
         [self showPromptText:@"追号期数至少2期" hideAfterDelay:1.7];
-
         return;
     }
     if(![self.lottery.currentRound.issueNumber isEqualToString:strcurRound]){
@@ -1678,6 +1693,10 @@
             [self showPromptText:@"单期投注金额不能超过2万" hideAfterDelay:1.7];
             return;
         }
+    }
+    if (self.curUser.isLogin == NO) {
+        [self needLogin];
+        return;
     }
     [self  updateMemberClinet];
     
@@ -2264,9 +2283,12 @@
     CGRect phaseSectionFrame = CGRectMake(0, 0, CGRectGetWidth(ContentView.frame), 0);
     phaseSectionFrame.origin.y = 0;
     phaseSectionFrame.size.height = PhaseInfoHeight * 2;
-    
-    phaseInfoView = [[LotteryPhaseInfoView alloc] initWithFrame: phaseSectionFrame];
-    phaseInfoView.delegate = self;
+    if(phaseInfoView == nil){
+        phaseInfoView = [[LotteryPhaseInfoView alloc] initWithFrame: phaseSectionFrame];
+        phaseInfoView.delegate = self;
+    }
+        
+  
     [phaseInfoView drawWithLotteryNoButton: self.lottery];
     [ContentView addSubview: phaseInfoView];
     
@@ -2290,7 +2312,8 @@
 
 
 - (void) getCurrentRound{
-    
+    NSLog(@"开始请求奖期。");
+    [self.lotteryMan getSellIssueList:@{@"lotteryCode":self.transaction.lottery.identifier}];
 }
 #pragma mark - LotteryManagerDelegate methods
 -(void)gotLotteryCurRoundTimeout {

@@ -794,51 +794,55 @@ static NSString *ID = @"LotteryAreaViewCell";
         [self actionSD115:nil];
         return;
     }else if ([keyStr isEqualToString:@"A428"]){
-        CashInfoViewController *cashInfoVC = [[CashInfoViewController alloc]init];
-        [cashInfoVC setMenuOffset:CashInfoGoucai];
-        cashInfoVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:cashInfoVC animated:YES];
+        [self jumpCashInfo:CashInfoGoucai];
         return;
     }else if ([keyStr isEqualToString:@"A429"]){
-        CashInfoViewController *cashInfoVC = [[CashInfoViewController alloc]init];
-        [cashInfoVC setMenuOffset:CashInfoChongzhi];
-        cashInfoVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:cashInfoVC animated:YES];
+
+        [self jumpCashInfo:CashInfoChongzhi];
         return;
     }else if ([keyStr isEqualToString:@"A430"]){
-        CashInfoViewController *cashInfoVC = [[CashInfoViewController alloc]init];
-        [cashInfoVC setMenuOffset:CashInfoPaijiang];
-        cashInfoVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:cashInfoVC animated:YES];
+       
+        [self jumpCashInfo:CashInfoPaijiang];
         return;
     }else if ([keyStr isEqualToString:@"A431"]){
-        CashInfoViewController *cashInfoVC = [[CashInfoViewController alloc]init];
-        [cashInfoVC setMenuOffset:CashInfoTixian];
-        cashInfoVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:cashInfoVC animated:YES];
+       
+        [self jumpCashInfo:CashInfoTixian];
         return;
     }else if ([keyStr isEqualToString:@"A432"]){
-        CashInfoViewController *cashInfoVC = [[CashInfoViewController alloc]init];
-        [cashInfoVC setMenuOffset:CashInfoCaijin];
-        cashInfoVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:cashInfoVC animated:YES];
+    
+        [self jumpCashInfo:CashInfoCaijin];
         return;
     }else if ([keyStr isEqualToString:@"A433"]){
-        CashInfoViewController *cashInfoVC = [[CashInfoViewController alloc]init];
-        [cashInfoVC setMenuOffset:CashInfoYongjin];
-        cashInfoVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:cashInfoVC animated:YES];
+
+        [self jumpCashInfo:CashInfoYongjin];
         return;
     }else if ([keyStr isEqualToString:@"A434"]){
-        CashInfoViewController *cashInfoVC = [[CashInfoViewController alloc]init];
-        [cashInfoVC setMenuOffset:CashInfoFanyong];
-        cashInfoVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:cashInfoVC animated:YES];
+        [self jumpCashInfo:CashInfoFanyong];
+        return;
+    }else if ([keyStr isEqualToString:@"A436"]){
+        [self jumpCashInfo:CashInfoZhuihao];
         return;
     }else if ([keyStr isEqualToString:@"A435"]){
+        
+        
+        if (self.curUser .isLogin == NO) {
+            if (navGationCotr == nil) {
+                [self needLogin];
+            }else{
+                BaseViewController *baseVC = [navGationCotr.viewControllers firstObject];
+                [baseVC needLogin];
+            }
+            return;
+            return;
+        }
         CashAndIntegrationWaterViewController *cashInfoVC = [[CashAndIntegrationWaterViewController alloc]init];
         cashInfoVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:cashInfoVC animated:YES];
+        cashInfoVC.select = 1;
+        if (navGationCotr == nil) {
+            [self.navigationController pushViewController:cashInfoVC animated:YES];
+        }else{
+            [navGationCotr pushViewController:cashInfoVC animated:YES];
+        }
         return;
     }
     
@@ -870,6 +874,27 @@ static NSString *ID = @"LotteryAreaViewCell";
     }
 //    UINavigationController *curNavVC = self.tabBarController.viewControllers[self.tabBarController.selectedIndex];
 //    [curNavVC pushViewController:baseVC animated:YES];
+}
+
+-(void)jumpCashInfo:(CashInfoType)infoType{
+    if (self.curUser .isLogin == NO) {
+        if (navGationCotr == nil) {
+            [self needLogin];
+        }else{
+            BaseViewController *baseVC = [navGationCotr.viewControllers firstObject];
+            [baseVC needLogin];
+        }
+        return;
+    }
+    CashInfoViewController *cashInfoVC = [[CashInfoViewController alloc]init];
+    [cashInfoVC setMenuOffset:infoType];
+    cashInfoVC.hidesBottomBarWhenPushed = YES;
+    if (navGationCotr == nil) {
+        [self.navigationController pushViewController:cashInfoVC animated:YES];
+    }else{
+        [navGationCotr pushViewController:cashInfoVC animated:YES];
+    }
+    return;
 }
 
 - (void)actionToRecommed:(NSString *)categoryCode {

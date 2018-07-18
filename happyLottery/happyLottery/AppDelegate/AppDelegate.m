@@ -884,49 +884,43 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         [delegate.curNavVC pushViewController:playVC animated:YES];
         return;
     }else if ([keyStr isEqualToString:@"A428"]){
-        CashInfoViewController *cashInfoVC = [[CashInfoViewController alloc]init];
-        [cashInfoVC setMenuOffset:CashInfoGoucai];
-        cashInfoVC.hidesBottomBarWhenPushed = YES;
-        [delegate.curNavVC pushViewController:cashInfoVC animated:YES];
+        [self  jumpCashInfo:CashInfoGoucai ];
         return;
     }else if ([keyStr isEqualToString:@"A429"]){
-        CashInfoViewController *cashInfoVC = [[CashInfoViewController alloc]init];
-        [cashInfoVC setMenuOffset:CashInfoChongzhi];
-        cashInfoVC.hidesBottomBarWhenPushed = YES;
-        [delegate.curNavVC pushViewController:cashInfoVC animated:YES];
+        [self  jumpCashInfo:CashInfoChongzhi ];
+
         return;
     }else if ([keyStr isEqualToString:@"A430"]){
-        CashInfoViewController *cashInfoVC = [[CashInfoViewController alloc]init];
-        [cashInfoVC setMenuOffset:CashInfoPaijiang];
-        cashInfoVC.hidesBottomBarWhenPushed = YES;
-        [delegate.curNavVC pushViewController:cashInfoVC animated:YES];
+        [self  jumpCashInfo:CashInfoPaijiang ];
+
         return;
     }else if ([keyStr isEqualToString:@"A431"]){
-        CashInfoViewController *cashInfoVC = [[CashInfoViewController alloc]init];
-        [cashInfoVC setMenuOffset:CashInfoTixian];
-        cashInfoVC.hidesBottomBarWhenPushed = YES;
-        [delegate.curNavVC pushViewController:cashInfoVC animated:YES];
+        [self  jumpCashInfo:CashInfoTixian ];
+    
         return;
     }else if ([keyStr isEqualToString:@"A432"]){
-        CashInfoViewController *cashInfoVC = [[CashInfoViewController alloc]init];
-        [cashInfoVC setMenuOffset:CashInfoCaijin];
-        cashInfoVC.hidesBottomBarWhenPushed = YES;
-        [delegate.curNavVC pushViewController:cashInfoVC animated:YES];
+        [self  jumpCashInfo:CashInfoCaijin ];
+
         return;
     }else if ([keyStr isEqualToString:@"A433"]){
-        CashInfoViewController *cashInfoVC = [[CashInfoViewController alloc]init];
-        [cashInfoVC setMenuOffset:CashInfoYongjin];
-        cashInfoVC.hidesBottomBarWhenPushed = YES;
-        [delegate.curNavVC pushViewController:cashInfoVC animated:YES];
+        [self  jumpCashInfo:CashInfoYongjin ];
+   
         return;
     }else if ([keyStr isEqualToString:@"A434"]){
-        CashInfoViewController *cashInfoVC = [[CashInfoViewController alloc]init];
-        [cashInfoVC setMenuOffset:CashInfoFanyong];
-        cashInfoVC.hidesBottomBarWhenPushed = YES;
-        [delegate.curNavVC pushViewController:cashInfoVC animated:YES];
+        [self  jumpCashInfo:CashInfoFanyong ];
+        return;
+    }else if ([keyStr isEqualToString:@"A436"]){
+        [self  jumpCashInfo:CashInfoZhuihao ];
         return;
     }else if ([keyStr isEqualToString:@"A435"]){
+        
+        BaseViewController *base = delegate.curNavVC.viewControllers[0];
+        if ([GlobalInstance instance].curUser.isLogin == NO) {
+            [base needLogin];
+            return;
+        }
         CashAndIntegrationWaterViewController *cashInfoVC = [[CashAndIntegrationWaterViewController alloc]init];
+        cashInfoVC.select = 1;
         cashInfoVC.hidesBottomBarWhenPushed = YES;
         [delegate.curNavVC pushViewController:cashInfoVC animated:YES];
         return;
@@ -939,6 +933,19 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         
         [delegate.curNavVC pushViewController:baseVC animated:YES];
     });
+}
+
+-(void)jumpCashInfo:(CashInfoType)infoType{
+    AppDelegate *delegate  = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    BaseViewController *base = delegate.curNavVC.viewControllers[0];
+    if ([GlobalInstance instance].curUser.isLogin == NO) {
+        [base needLogin];
+        return;
+    }
+    CashInfoViewController *cashInfoVC = [[CashInfoViewController alloc]init];
+    [cashInfoVC setMenuOffset:infoType];
+    [delegate.curNavVC pushViewController:cashInfoVC animated:YES];
+    return;
 }
 
 - (NSString *)logDic:(NSDictionary *)dic {
