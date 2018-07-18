@@ -17,7 +17,7 @@
 #import "TopUpsViewController.h"
 #import <WebKit/WebKit.h>
 
-@interface DiscoverViewController ()<JSObjcDelegate,UIWebViewDelegate>
+@interface DiscoverViewController ()<JSObjcDelegate,UIWebViewDelegate,LotteryManagerDelegate>
 {
     __weak IBOutlet NSLayoutConstraint *webDisTop;
     JSContext *context;
@@ -28,6 +28,8 @@
     NSString *_cardCode;
     __weak IBOutlet NSLayoutConstraint *webDisBottom;
     BOOL _pageCacheDisable;
+    NSString *shareTitle;
+    NSString *shareText;
 }
 
 @property (weak, nonatomic) IBOutlet UIWebView *faxianWebView;
@@ -40,7 +42,7 @@
     [super viewDidLoad];
     isBack = NO;
     isIndex = YES;
-
+    self.lotteryMan.delegate = self;
     lastLoginState = self.curUser.isLogin;
     
      _pageCacheDisable = YES;
@@ -183,9 +185,18 @@
 #pragma JSObjcDelegate
 
 -(void)SharingLinks{
-//    [self showPromptText:code hideAfterDelay:1.8];
-    dispatch_async(dispatch_get_main_queue(), ^{
+    //    [self showPromptText:code hideAfterDelay:1.8];
+    [self.lotteryMan getCommonSetValue:@{@"typeCode":@"share",@"commonCode":@"share_activity"}];
+}
 
+-(void)gotCommonSetValue:(NSString *)strUrl{
+    if (strUrl == nil || strUrl.length == 0) {
+        return;
+    }
+    NSArray *arrayText = [strUrl componentsSeparatedByString:@"|"];
+    shareTitle = arrayText[0];
+    shareText = arrayText[1];
+    dispatch_async(dispatch_get_main_queue(), ^{
         [self initshare:@""];
     });
 }
@@ -200,10 +211,10 @@
         NSString *url = [self.curUser getShareUrl];
         NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
         NSArray* imageArray = @[[[NSBundle mainBundle] pathForResource:@"logo120@2x" ofType:@"png"]];
-        [shareParams SSDKSetupShareParamsByText:@"千万大奖集聚地，新用户即享188元豪礼。积分商城优惠享不停！"
+        [shareParams SSDKSetupShareParamsByText:shareText
                                          images:imageArray
                                             url:[NSURL URLWithString:url]
-                                          title:@"送您188元新人大礼包！点击领取"
+                                          title:shareTitle
                                            type:SSDKContentTypeWebPage];
         [ShareSDK showShareActionSheet:nil
                                  items:@[@(SSDKPlatformSubTypeWechatSession),@(SSDKPlatformSubTypeWechatTimeline)]

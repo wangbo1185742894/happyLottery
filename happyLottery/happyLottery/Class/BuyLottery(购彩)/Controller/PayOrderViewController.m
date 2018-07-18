@@ -25,6 +25,7 @@
 #import "BaseViewController.h"
 #import "UMChongZhiViewController.h"
 #import "YinLanPayManage.h"
+#import "MyCouponViewController.h"
 #define KPayTypeListCell @"PayTypeListCell"
 @interface PayOrderViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,MemberManagerDelegate,UIWebViewDelegate,WBInputPopViewDelegate>
 {
@@ -586,13 +587,17 @@
 
 - (IBAction)actionShowYouHuiquan:(UIButton *)sender {
     if (self.couponList.count == 0) {
-        [self showPromptText:@"暂无可用优惠券" hideAfterDelay:1.7];
+        MyCouponViewController *MyCoupon = [[MyCouponViewController alloc]init];
+        MyCoupon.fromZf = YES;
+        [self.navigationController pushViewController:MyCoupon animated:YES];
         return;
+    }else {
+        PayOrderYouhunViewController *youhuanquanVC = [[PayOrderYouhunViewController alloc]init];
+        youhuanquanVC.payOrderVC = self;
+        youhuanquanVC.couponList = self.couponList;
+        [self.navigationController pushViewController:youhuanquanVC animated:YES];
     }
-    PayOrderYouhunViewController *youhuanquanVC = [[PayOrderYouhunViewController alloc]init];
-    youhuanquanVC.payOrderVC = self;
-    youhuanquanVC.couponList = self.couponList;
-    [self.navigationController pushViewController:youhuanquanVC animated:YES];
+   
 }
 - (IBAction)showRuler:(UIButton *)sender {
     NSURL *pathUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"tbz_useragreement" ofType:@"html"]];

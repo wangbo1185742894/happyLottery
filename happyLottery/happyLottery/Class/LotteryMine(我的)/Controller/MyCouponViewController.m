@@ -31,6 +31,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView1;
 @property (weak, nonatomic) IBOutlet UITableView *tableView2;
 @property (weak, nonatomic) IBOutlet UIView *enptyView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *hrightCons;
 
 @end
 
@@ -47,6 +48,12 @@
     if ([self isIphoneX]) {
         self.top.constant = 88;
         self.bottom.constant = 34;
+    }
+    _segment.hidden = NO;
+    self.hrightCons.constant = 32;
+    if (_fromZf) {
+        self.hrightCons.constant = 0;
+        _segment.hidden = YES;
     }
     listUseCouponArray = [[NSMutableArray alloc]init];
     listUnUseCouponArray = [[NSMutableArray alloc]init];

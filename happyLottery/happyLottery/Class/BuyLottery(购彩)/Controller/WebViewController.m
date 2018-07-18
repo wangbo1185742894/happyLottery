@@ -11,8 +11,10 @@
 #import "TopUpsViewController.h"
 #import "JCZQPlayViewController.h"
 
-@interface WebViewController ()<UIWebViewDelegate,WebViewObjcDelegate>{
+@interface WebViewController ()<UIWebViewDelegate,WebViewObjcDelegate,LotteryManagerDelegate>{
     JSContext *context;
+    NSString *shareTitle;
+    NSString *shareText;
 }
 @property (weak, nonatomic) IBOutlet UIButton *btnBack;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topDis;
@@ -23,6 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.lotteryMan.delegate = self;
        self.webView.delegate = self;
     if (self.pageUrl == nil) {
         if ([self isIphoneX]) {
@@ -159,8 +162,17 @@
 
 -(void)SharingLinks{
     //    [self showPromptText:code hideAfterDelay:1.8];
+    [self.lotteryMan getCommonSetValue:@{@"typeCode":@"share",@"commonCode":@"share_activity"}];
+}
+
+-(void)gotCommonSetValue:(NSString *)strUrl{
+    if (strUrl == nil || strUrl.length == 0) {
+        return;
+    }
+    NSArray *arrayText = [strUrl componentsSeparatedByString:@"|"];
+    shareTitle = arrayText[0];
+    shareText = arrayText[1];
     dispatch_async(dispatch_get_main_queue(), ^{
-        
         [self initshare:@""];
     });
 }
@@ -174,10 +186,10 @@
         
         NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
         NSArray* imageArray = @[[[NSBundle mainBundle] pathForResource:@"logo120@2x" ofType:@"png"]];
-        [shareParams SSDKSetupShareParamsByText:@"千万大奖集聚地，新用户即享188元豪礼。积分商城优惠享不停！"
+        [shareParams SSDKSetupShareParamsByText:shareText
                                          images:imageArray
                                             url:[NSURL URLWithString:url]
-                                          title:@"送您188元新人大礼包！点击领取"
+                                          title:shareTitle
                                            type:SSDKContentTypeWebPage];
         [ShareSDK showShareActionSheet:nil
                                  items:@[@(SSDKPlatformSubTypeWechatSession),@(SSDKPlatformSubTypeWechatTimeline)]
