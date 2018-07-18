@@ -20,7 +20,6 @@
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="序号" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uD8-Jb-QM7">
                         <rect key="frame" x="0.0" y="5" width="34" height="45"/>
-                        <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="45" id="auh-ZA-do9"/>
                             <constraint firstAttribute="width" constant="34" id="cd3-11-8UG"/>
@@ -31,7 +30,6 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="期号" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xiT-tz-7q9">
                         <rect key="frame" x="35" y="5" width="34" height="45"/>
-                        <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="34" id="S7z-rI-Tgp"/>
                             <constraint firstAttribute="height" constant="45" id="r4d-kh-i73"/>
@@ -49,10 +47,12 @@
                         <state key="normal" image="touzhubeishujian.png">
                             <color key="titleColor" red="0.44705882349999998" green="0.44705882349999998" blue="0.44705882349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
+                        <connections>
+                            <action selector="actionDown:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="RQ7-5Q-wbc"/>
+                        </connections>
                     </button>
-                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3o8-3N-YKA">
+                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3o8-3N-YKA">
                         <rect key="frame" x="95" y="14.5" width="32" height="25"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="P1l-2j-Q2v"/>
                             <constraint firstAttribute="width" constant="32" id="qVh-es-g5v"/>
@@ -68,10 +68,12 @@
                             <constraint firstAttribute="height" constant="25" id="cQE-P8-kC9"/>
                         </constraints>
                         <state key="normal" image="touzhubeishujia.png"/>
+                        <connections>
+                            <action selector="actionUp:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="blS-zB-0to"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcf-xe-aNj">
                         <rect key="frame" x="153" y="12.5" width="73.5" height="30"/>
-                        <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="M0o-u7-kN6"/>
                         </constraints>
@@ -81,7 +83,6 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tiD-df-oRA">
                         <rect key="frame" x="227.5" y="12.5" width="73" height="30"/>
-                        <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="H6b-Nx-ko9"/>
                         </constraints>
@@ -91,12 +92,11 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7H-J1-7NI">
                         <rect key="frame" x="301.5" y="12.5" width="73.5" height="30"/>
-                        <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="nu7-Oa-XD7"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="textColor" red="0.99607843139999996" green="0.2274509804" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -122,7 +122,17 @@
                     <constraint firstItem="sZ3-De-Q9Y" firstAttribute="centerY" secondItem="uD8-Jb-QM7" secondAttribute="centerY" id="yEY-pS-1lj"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="25.5" y="57.5"/>
+            <connections>
+                <outlet property="beiShutf" destination="3o8-3N-YKA" id="Q0d-2f-PJj"/>
+                <outlet property="beiUpBtn" destination="sZ3-De-Q9Y" id="2eU-eE-373"/>
+                <outlet property="beidownBtn" destination="6vu-tW-wVn" id="jWn-Mv-p3W"/>
+                <outlet property="expenselabel" destination="hcf-xe-aNj" id="hnt-n2-iDJ"/>
+                <outlet property="isslabel" destination="xiT-tz-7q9" id="dvB-LY-HsX"/>
+                <outlet property="numLabel" destination="uD8-Jb-QM7" id="94N-DK-PE6"/>
+                <outlet property="profitlabel" destination="tiD-df-oRA" id="FIa-b3-AYz"/>
+                <outlet property="ratelabel" destination="o7H-J1-7NI" id="Ovh-Ql-NJf"/>
+            </connections>
+            <point key="canvasLocation" x="-87" y="65"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -21,4 +21,17 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)actionDown:(id)sender {
+    if ([self.beiShutf.text integerValue] <=1) {
+        return;
+    }
+    [self.delegate beishuChange:@"down" sender:sender];
+}
+- (IBAction)actionUp:(id)sender {
+    if ([self.beiShutf.text integerValue] >= 99) {
+        return;
+    }
+    [self.delegate beishuChange:@"up" sender:sender];
+}
+
 @end
