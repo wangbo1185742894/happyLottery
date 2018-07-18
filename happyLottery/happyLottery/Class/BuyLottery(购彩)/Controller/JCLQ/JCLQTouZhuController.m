@@ -175,7 +175,7 @@
             self.labCouInfo.text = @"";
             labCouHeight.constant = 0;
         }else{
-            self.labCouInfo.text = [listTitle componentsJoinedByString:@","];
+            self.labCouInfo.text = [NSString stringWithFormat:@"优惠券可用:%@",[listTitle componentsJoinedByString:@","]];
             labCouHeight.constant = 30;
         }
     }

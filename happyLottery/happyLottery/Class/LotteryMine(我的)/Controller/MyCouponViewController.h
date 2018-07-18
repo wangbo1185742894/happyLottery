@@ -10,4 +10,6 @@
 
 @interface MyCouponViewController : BaseViewController
 
+@property (nonatomic , assign) BOOL fromZf;
+
 @end

@@ -364,7 +364,7 @@
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                             <state key="normal" title="停止追号" backgroundImage="yuanjiaowukuangselect"/>
-                            <state key="disabled" backgroundImage="button_forbidden.png">
+                            <state key="disabled" title="已停追" backgroundImage="button_forbidden.png">
                                 <color key="titleColor" red="0.1450980392" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <state key="selected" title="追号停止" backgroundImage="zhuihaotingzhi.png">

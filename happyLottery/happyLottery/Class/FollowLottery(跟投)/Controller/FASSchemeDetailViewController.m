@@ -53,6 +53,8 @@
     JCZQSchemeItem *schemeDetail;
     JCLQSchemeItem *jclqSchemeDetail;
     BOOL isAttend;
+    NSString *shareTitle;
+    NSString *shareText;
 }
 
 - (void)viewDidLoad {
@@ -64,13 +66,27 @@
     [self loadData];
     self.liJiZhiFuBtn.hidden = YES;
     self.layHeightInfo.constant = 0;
-    
+    self.lotteryMan.delegate = self;
     // Do any additional setup after loading the view from its nib.
 }
 
 -(void)setRightBarItems{
-    UIBarButtonItem *itemQuery = [self creatBarItem:@"" icon:@"sharedeat" andFrame:CGRectMake(0, 10, 31, 33) andAction:@selector(sharePress)];
+    UIBarButtonItem *itemQuery = [self creatBarItem:@"" icon:@"sharedeat" andFrame:CGRectMake(0, 10, 31, 33) andAction:@selector(shareIF)];
     self.navigationItem.rightBarButtonItems = @[itemQuery];
+}
+
+- (void)shareIF{
+    [self.lotteryMan getCommonSetValue:@{@"typeCode":@"share",@"commonCode":@"share_activity"}];
+}
+
+-(void)gotCommonSetValue:(NSString *)strUrl{
+    if (strUrl == nil || strUrl.length == 0) {
+        return;
+    }
+    NSArray *arrayText = [strUrl componentsSeparatedByString:@"|"];
+    shareTitle = arrayText[0];
+    shareText = arrayText[1];
+    [self sharePress];
 }
 
 - (void)sharePress {
@@ -78,10 +94,10 @@
         NSString *url = [NSString stringWithFormat:@"%@/app/share/shareScheme?schemeNo=%@",H5BaseAddress,schemeDetail.schemeNO];
         NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
         NSArray* imageArray = @[[[NSBundle mainBundle] pathForResource:@"logo120@2x" ofType:@"png"]];
-        [shareParams SSDKSetupShareParamsByText:@"给你推荐一个方案，跟着大神买准没错。"
+        [shareParams SSDKSetupShareParamsByText:shareText
                                          images:imageArray
                                             url:[NSURL URLWithString:url]
-                                          title:@"跟单大神，等着收米。"
+                                          title:shareTitle
                                            type:SSDKContentTypeWebPage];
         [ShareSDK showShareActionSheet:nil
                                  items:@[@(SSDKPlatformSubTypeWechatSession),@(SSDKPlatformSubTypeWechatTimeline)]
