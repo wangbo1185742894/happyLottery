@@ -77,8 +77,7 @@
 //个人中心
 -(void)loadDataWithModelInPC:(HotSchemeModel *)model {
     [self loadDataWithModel:model];
-    
-    self.labPersonHis.adjustsFontSizeToFitWidth = YES;
+    self.labPersonHis.hidden = YES;
     if ([model.lottery isEqualToString:@"JCZQ"]) {
         self.labPersonName.text = @"竞彩足球";
         [self.imgPersonIcon setImage:[UIImage imageNamed:@"footerball.png"]];
@@ -120,7 +119,7 @@
     self.carcode = model.cardCode;
     NSDate * dateServer = [Utility dateFromDateStr:model.serverTime withFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSDate * dateCur = [Utility dateFromDateStr:model.deadLine withFormat:@"yyyy-MM-dd HH:mm:ss"];
-
+    self.labPersonHis.adjustsFontSizeToFitWidth = YES;
     if ([dateServer compare:dateCur] ==kCFCompareLessThan ||model.serverTime==nil) { //没过期 可以买
         self.btnFollowScheme.hidden = NO;
         self.labBouns.hidden = YES;
