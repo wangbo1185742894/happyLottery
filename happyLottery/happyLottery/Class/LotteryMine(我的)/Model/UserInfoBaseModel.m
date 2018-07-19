@@ -339,7 +339,7 @@
     if ([self.refundAmounts doubleValue] == 0) {
         return @"";
     }else{
-        return [NSString stringWithFormat:@"退款%.0f元",[self.refundAmounts doubleValue]];
+        return [NSString stringWithFormat:@"退款%.2f元",[self.refundAmounts doubleValue]];
     }
 }
 -(NSString *)get4Name{

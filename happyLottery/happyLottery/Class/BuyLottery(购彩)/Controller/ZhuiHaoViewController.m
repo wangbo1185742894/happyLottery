@@ -7,6 +7,7 @@
 //
 
 #import "ZhuiHaoViewController.h"
+#import "AESUtility.h"
 
 #import "LotteryExtrendViewController.h"
 #import "TouZhuViewController.h"
@@ -1693,7 +1694,7 @@
         return;
     }
     if(![self.lottery.currentRound.issueNumber isEqualToString:strcurRound]){
-        [self showPromptText:@"当前追号奖期已截止" hideAfterDelay:1.7];
+        [self showPromptText:@"起始追号期已截止" hideAfterDelay:1.7];
         return ;
     }
     for (int i = 0; i < _issue; i++) {
@@ -1907,9 +1908,21 @@
         NSDictionary * paraInfo = @{@"cardCode":self.curUser.cardCode == nil?@"":self.curUser.cardCode,
                                     @"payPassword":text};
         [self showPromptText:TextSubmitForVerify hideAfterDelay:1.7];
-        
+        NSDictionary *cardInfo= @{@"cardCode":self.curUser.cardCode,
+                                  @"payPwd":[AESUtility encryptStr:text]};
+        [self.memberMan validatePaypwdSms:cardInfo];
     }];
 
+}
+
+
+-(void)validatePaypwdSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    [passInput removeFromSuperview];
+    if (success == YES) {
+        [self nopayword];
+    }else{
+        [self showPromptText:msg hideAfterDelay:1.7];
+    }
 }
 
 - (void)submitCatcherror:(NSString *)errorMsg

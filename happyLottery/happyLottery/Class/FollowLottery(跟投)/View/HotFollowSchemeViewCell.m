@@ -79,6 +79,7 @@
 -(void)loadDataWithModelInPC:(HotSchemeModel *)model {
     [self loadDataWithModel:model];
     self.labPersonHis.hidden = YES;
+    self.labPersonHis.adjustsFontSizeToFitWidth = YES;
     if ([model.lottery isEqualToString:@"JCZQ"]) {
         self.labPersonName.text = @"竞彩足球";
         [self.imgPersonIcon setImage:[UIImage imageNamed:@"footerball.png"]];
