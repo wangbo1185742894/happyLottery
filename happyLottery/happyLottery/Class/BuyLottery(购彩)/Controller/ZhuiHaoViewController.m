@@ -124,7 +124,8 @@
     Maxmulcount = 1;
     flag = false;
     poptype = NO;
-    
+    SubmitBtn.layer.masksToBounds = YES;
+    SubmitBtn.layer.cornerRadius = 4;
     [self getPlayType:0];//得到最大中奖金额Maxprize
     [self schemeValue:1 lowprofit:_lowrate];//默认全程最低盈利率
     
@@ -246,7 +247,7 @@
 - (void) optionRightButtonAction {
     WebViewController *webVC = [[WebViewController alloc]initWithNibName:@"WebViewController" bundle:nil];
     webVC.type = @"html";
-    webVC.title = @"智能追号帮助";
+    webVC.title = @"规则介绍";
     webVC.htmlName = @"zhuihao";
     [self.navigationController pushViewController:webVC animated:YES];
 }
@@ -850,7 +851,7 @@
     
     //bottom label text
 
-    bottomLabel.font = [UIFont systemFontOfSize:15];
+    bottomLabel.font = [UIFont systemFontOfSize:14];
     
     [_scrollView addSubview:numlabel];
     [_scrollView addSubview:isslabel];
@@ -864,8 +865,25 @@
 }
 
 -(void)updateSummary{
-
-        bottomLabel.text = [NSString stringWithFormat:@"共追%lu期,共需%.1f元",(unsigned long)_issue,[self getTotal]*2.0*_zhushu];
+    NSMutableAttributedString *betInfoString = [[NSMutableAttributedString alloc] init];
+    
+    NSMutableDictionary *textAttrsDictionary = [NSMutableDictionary dictionaryWithCapacity: 2];
+    textAttrsDictionary[NSForegroundColorAttributeName] = [UIColor whiteColor];
+    
+    [betInfoString appendAttributedString: [[NSAttributedString alloc] initWithString: @"共追" attributes: textAttrsDictionary]];
+    
+    NSMutableDictionary *numberAttrsDictionary = [NSMutableDictionary dictionaryWithCapacity: 2];
+    numberAttrsDictionary[NSForegroundColorAttributeName] = RGBCOLOR(254, 165, 19);
+    
+    //bet count string
+    NSString *betCountStr = [NSString stringWithFormat: @"%lu", (unsigned long)_issue];
+    [betInfoString appendAttributedString: [[NSAttributedString alloc] initWithString: betCountStr attributes: numberAttrsDictionary]];
+    
+    [betInfoString appendAttributedString: [[NSAttributedString alloc] initWithString: @"期,共需" attributes: textAttrsDictionary]];
+    NSString *yuanStr = [NSString stringWithFormat: @"%.1f", [self getTotal]*2.0*_zhushu];
+    [betInfoString appendAttributedString: [[NSAttributedString alloc] initWithString: yuanStr attributes: numberAttrsDictionary]];
+     [betInfoString appendAttributedString: [[NSAttributedString alloc] initWithString: @"元" attributes: textAttrsDictionary]];
+     bottomLabel.attributedText = betInfoString;
 }
 
 -(NSInteger)getTotal{

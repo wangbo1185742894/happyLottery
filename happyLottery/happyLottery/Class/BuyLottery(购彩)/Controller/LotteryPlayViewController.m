@@ -833,7 +833,7 @@
     [betInfoString appendAttributedString: [[NSAttributedString alloc] initWithString: TextTouZhuSummaryTotal attributes: textAttrsDictionary]];
     
     NSMutableDictionary *numberAttrsDictionary = [NSMutableDictionary dictionaryWithCapacity: 2];
-    numberAttrsDictionary[NSForegroundColorAttributeName] = TextCharColor;
+    numberAttrsDictionary[NSForegroundColorAttributeName] = RGBCOLOR(254, 165, 19);
     
     //bet count string
     NSString *betCountStr = [NSString stringWithFormat: @"%d", [lotteryBet getBetCount]];

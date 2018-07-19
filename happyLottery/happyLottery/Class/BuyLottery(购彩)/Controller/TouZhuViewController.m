@@ -231,7 +231,7 @@
         
         [self.view addSubview:goOnPlayButton];
         addRandonBetButton = [[UIButton alloc]initWithFrame:frame2];
-        betOptionfunViewHeight.constant = 160;
+        betOptionfunViewHeight.constant = 165;
         
         lineBottom.constant = betOptionfunViewHeight.constant;
         tableviewBottom.constant = betOptionfunViewHeight.constant;
@@ -306,7 +306,7 @@
     self.hasLiked = YES;
     [self initZhuiHaoBtnState];
     if (_FLAG) {
-        betOptionfunViewHeight.constant = 160;
+        betOptionfunViewHeight.constant = 165;
         
         lineBottom.constant = betOptionfunViewHeight.constant;
         
@@ -531,7 +531,7 @@
         self.zhSelectBtn.hidden = NO;
         self.zhSelectBtn.selected = YES;
     } else {
-        self.zhSelectBtn.hidden = YES;
+        self.zhSelectBtn.hidden = YES; 
     }
 }
 
