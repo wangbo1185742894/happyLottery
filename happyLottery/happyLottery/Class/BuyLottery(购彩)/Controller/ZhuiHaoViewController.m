@@ -199,7 +199,7 @@
      cell.profitlabel.text = [NSString stringWithFormat:@"%ld",Maxprize*[mutArry[indexPath.row] integerValue]*maxwin-[cell.expenselabel.text integerValue]];
      cell.ratelabel.text = [NSString stringWithFormat:@"%.0f%%",[cell.profitlabel.text doubleValue]/[cell.expenselabel.text doubleValue]*100];
     if ([cell.ratelabel.text doubleValue] > 0) {
-        
+        cell.ratelabel.textColor =RGBCOLOR(254, 58, 81);
     }else{
         cell.ratelabel.textColor =SystemGreen;
     }
