@@ -2288,7 +2288,7 @@
 }
 -(void)loadphaseInfoView
 {
-    CGRect phaseSectionFrame = CGRectMake(0, 0, CGRectGetWidth(ContentView.frame), 0);
+    CGRect phaseSectionFrame = CGRectMake(0, 0, KscreenWidth, 0);
     phaseSectionFrame.origin.y = 0;
     phaseSectionFrame.size.height = PhaseInfoHeight * 2;
     if(phaseInfoView == nil){
