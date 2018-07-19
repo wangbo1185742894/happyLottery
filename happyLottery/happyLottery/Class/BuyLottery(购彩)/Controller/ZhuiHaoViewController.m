@@ -189,6 +189,7 @@
         NSString *strcut = [curRoundnum substringFromIndex:location];
         cell.isslabel.text = [NSString stringWithFormat:@"%ld",[strcut integerValue]+indexPath.row];
      }
+    
      cell.beiShutf.text = mutArry[indexPath.row];
     NSInteger total = 0;
     for (int i = 0; i <= indexPath.row; i++) {
@@ -1146,12 +1147,17 @@
                 [self showPromptText:msg hideAfterDelay:2.7];
             }
             [self loadScrollView];
+            [listTableView reloadData];
+            [self updateSummary];
             return;
         }
         sum = [self getSum:sum mut:muLNum n:n];
     }
     flag = true;
     [self loadScrollView];
+    [listTableView reloadData];
+    [self updateSummary];
+    
 }
 /*
  sum:累计投入

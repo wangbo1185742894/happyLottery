@@ -18,7 +18,9 @@
     NSInteger selectIndex;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tabYouhuiquanLIst;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomDis;
 @property (weak, nonatomic) IBOutlet UIButton *actionSubmit;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topDis;
 
 @end
 
@@ -27,7 +29,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"可用优惠券";
-    
+    self.topDis.constant = NaviHeight;
+    self.bottomDis.constant = BOTTOM_BAR_HEIGHT;
     for (Coupon * model in self.couponList) {
         if (model.isSelect == YES) {
             oldCoupon = model;

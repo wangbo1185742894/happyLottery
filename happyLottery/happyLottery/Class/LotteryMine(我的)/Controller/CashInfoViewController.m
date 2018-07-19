@@ -36,7 +36,7 @@
         ClassListCellViewController * classListVC = [[ClassListCellViewController alloc]init];
         classListVC.navVC = self;
         classListVC.strApi  = apiArray[i];
-        if (i == 6) {
+        if (i == 7) {
             
             classListVC.firstPara = [NSMutableDictionary dictionaryWithDictionary:@{@"agentId":self.curUser.agentInfo._id==nil?@"":self.curUser.agentInfo._id,@"pageSize":@(KpageSize)}];
             

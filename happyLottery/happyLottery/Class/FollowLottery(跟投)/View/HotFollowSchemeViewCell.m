@@ -74,9 +74,10 @@
     }
 }
 
-
 //个人中心
 -(void)loadDataWithModelInPC:(HotSchemeModel *)model {
+    [self loadDataWithModel:model];
+    
     self.labPersonHis.adjustsFontSizeToFitWidth = YES;
     if ([model.lottery isEqualToString:@"JCZQ"]) {
         self.labPersonName.text = @"竞彩足球";

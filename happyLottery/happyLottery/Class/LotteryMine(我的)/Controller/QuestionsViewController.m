@@ -29,6 +29,7 @@
         self.top.constant = 88;
         self.bottom.constant = 34;
     }
+    self.automaticallyAdjustsScrollViewInsets = NO;
     _foldInfoarry = [NSMutableArray arrayWithCapacity:0];
     self.tableView.delegate=self;
     self.tableView.dataSource=self;
