@@ -62,13 +62,13 @@
     NSString *title;
     @try {
         if ([type isEqualToString:@"SF"]) {
-            title = [self getTitleForm:titleDic andSp:nil andSelectArray:self.SFSelectMatch andIndex:100];
+            title = [self getTitleForm:titleDic andSp:self.SFOddArray andSelectArray:self.SFSelectMatch andIndex:100];
         }else if ([type isEqualToString:@"RFSF"]) {
-            title = [self getTitleForm:titleDic andSp:nil andSelectArray:self.RFSFSelectMatch andIndex:200];
+            title = [self getTitleForm:titleDic andSp:self.RFSFOddArray andSelectArray:self.RFSFSelectMatch andIndex:200];
         }else if ([type isEqualToString:@"DXF"]) {
-            title = [self getTitleForm:titleDic andSp:nil andSelectArray:self.DXFSelectMatch andIndex:300];
+            title = [self getTitleForm:titleDic andSp:self.DXFSOddArray andSelectArray:self.DXFSelectMatch andIndex:300];
         }else if ([type isEqualToString:@"SFC"]) {
-            title = [self getTitleForm:titleDic andSp:nil andSelectArray:self.SFCSelectMatch andIndex:400];
+            title = [self getTitleForm:titleDic andSp:self.SFCOddArray andSelectArray:self.SFCSelectMatch andIndex:400];
         }
     } @catch (NSException *exception) {
         title = @"";
@@ -102,10 +102,10 @@
 -(NSMutableString *)getTitleForm:(NSArray *)titleDic andSp:(NSArray *)spArray andSelectArray:(NSArray *)selectArray andIndex:(NSInteger )baseIndex{
     NSMutableString *tit = [NSMutableString string];
     if (spArray != nil) {
-        NSMutableString *tit = [NSMutableString string];
+        
         for (int i = 0; i < selectArray .count; i ++ ) {
             if ([selectArray[i] integerValue] == 1) {
-                [tit appendString:[NSString stringWithFormat:@"%@%@,",titleDic[i][@"appear"],spArray[i]]];
+                [tit appendString:[NSString stringWithFormat:@"%@ %@,",titleDic[i][@"appear"],spArray[i]]];
             }
         }
     }else{

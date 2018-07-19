@@ -128,10 +128,9 @@
 -(NSMutableString *)getTitleForm:(NSDictionary *)titleDic andSp:(NSArray *)spArray andSelectArray:(NSArray *)selectArray andIndex:(NSInteger )baseIndex{
     NSMutableString *tit = [NSMutableString string];
     if (spArray != nil) {
-        NSMutableString *tit = [NSMutableString string];
         for (int i = 0; i < selectArray .count; i ++ ) {
             if ([selectArray[i] integerValue] == 1) {
-                  [tit appendString:[NSString stringWithFormat:@"%@%@,",titleDic[[NSString stringWithFormat:@"%ld",baseIndex + i]][@"appear"],spArray[i]]];
+                [tit appendString:[NSString stringWithFormat:@"%@ %@,",titleDic[[NSString stringWithFormat:@"%ld",baseIndex + i]][@"appear"],spArray[i]]];
             }
         }
     }else{
@@ -143,8 +142,6 @@
         }
     }
     return tit;
-    
-    
 }
 
 -(NSString *)getTouzhuAppearTitleByTypeNoSp:(NSString *)type{
@@ -153,15 +150,15 @@
     NSString *title;
     @try {
         if ([type isEqualToString:@"SPF"]) {
-            title = [self getTitleForm:titleDic andSp:nil andSelectArray:self.SPF_SelectMatch andIndex:100];
+            title = [self getTitleForm:titleDic andSp:self.SPF_OddArray andSelectArray:self.SPF_SelectMatch andIndex:100];
         }else if ([type isEqualToString:@"RQSPF"]) {
-            title = [self getTitleForm:titleDic andSp:nil andSelectArray:self.RQSPF_SelectMatch andIndex:200];
+            title = [self getTitleForm:titleDic andSp:self.RQSPF_OddArray andSelectArray:self.RQSPF_SelectMatch andIndex:200];
         }else if ([type isEqualToString:@"BF"]) {
-            title = [self getTitleForm:titleDic andSp:nil andSelectArray:self.BF_SelectMatch andIndex:300];
+            title = [self getTitleForm:titleDic andSp:self.BF_OddArray andSelectArray:self.BF_SelectMatch andIndex:300];
         }else if ([type isEqualToString:@"BQC"]) {
-            title = [self getTitleForm:titleDic andSp:nil andSelectArray:self.BQC_SelectMatch andIndex:400];
+            title = [self getTitleForm:titleDic andSp:self.BQC_OddArray andSelectArray:self.BQC_SelectMatch andIndex:400];
         }else if ([type isEqualToString:@"JQS"]) {
-            title = [self getTitleForm:titleDic andSp:nil andSelectArray:self.JQS_SelectMatch andIndex:500];
+            title = [self getTitleForm:titleDic andSp:self.JQS_OddArray andSelectArray:self.JQS_SelectMatch andIndex:500];
         }
     } @catch (NSException *exception) {
         title = @"";

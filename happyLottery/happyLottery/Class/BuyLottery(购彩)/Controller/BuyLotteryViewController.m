@@ -257,22 +257,22 @@ static NSString *ID = @"LotteryAreaViewCell";
     if (indexPath.row <self.sellLottery.count) {
         NSDictionary *itemDic = self.sellLottery[indexPath.row];
         NSString *lottert =  itemDic[@"lottery"];
-        if ([lottert isEqualToString:@"JCZQDG"]) {
-            if ([_lotteryList[@"JCZQ"] boolValue] ==NO) {
-                [self showPromptText:@"该玩法暂未开售" hideAfterDelay:2.0];
-                return;
-            }
-        }else if ([lottert isEqualToString:@"GYJ"]) {
-            if ( [_lotteryList[@"JCGJ"] boolValue] ==NO && [_lotteryList[@"JCGYJ"] boolValue] ==NO) {
-                [self showPromptText:@"该玩法暂未开售" hideAfterDelay:2.0];
-                return;
-            }
-        }else{
-            if([_lotteryList[lottert] boolValue] == NO) {
-                [self showPromptText:@"该玩法暂未开售" hideAfterDelay:2.0];
-                return;
-            }
-        }
+//        if ([lottert isEqualToString:@"JCZQDG"]) {
+//            if ([_lotteryList[@"JCZQ"] boolValue] ==NO) {
+//                [self showPromptText:@"该玩法暂未开售" hideAfterDelay:2.0];
+//                return;
+//            }
+//        }else if ([lottert isEqualToString:@"GYJ"]) {
+//            if ( [_lotteryList[@"JCGJ"] boolValue] ==NO && [_lotteryList[@"JCGYJ"] boolValue] ==NO) {
+//                [self showPromptText:@"该玩法暂未开售" hideAfterDelay:2.0];
+//                return;
+//            }
+//        }else{
+//            if([_lotteryList[lottert] boolValue] == NO) {
+//                [self showPromptText:@"该玩法暂未开售" hideAfterDelay:2.0];
+//                return;
+//            }
+//        }
         NSString *funName = [NSString stringWithFormat:@"action%@:",lottert];
         SEL action = NSSelectorFromString(funName);
         if ([self respondsToSelector:action ]) {

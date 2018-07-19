@@ -932,6 +932,7 @@
         self.mostBounds = [NSString stringWithFormat:@"%.2f",total_bounds];
         
         bouns_temp = 0;
+        CGFloat bouns_temp_min=MAXFLOAT;
         for (NSArray * indexArray in allGroup) {
             NSMutableArray * matchArray = [NSMutableArray arrayWithCapacity:indexArray.count];
             for (NSString * indexString in indexArray) {
@@ -947,14 +948,17 @@
             self.hunHeCombinesString = [NSMutableArray array];
 
             [self arrayRrgodicIndex:0 mutableString:nil];
+            bouns_temp = MAXFLOAT;
             for (int i =0; i<_hunHeCombinesString.count; i++) {
                 NSString * numString = _hunHeCombinesString[i];
                 NSArray * numArray = [numString componentsSeparatedByString:@","];
                 double  value =[self calculateBetCount:numArray baseNumArray:baseNumArray];
-                bouns_temp += value;
+                if (bouns_temp_min > value) {
+                    bouns_temp_min = value;
+                }
             }
         }
-        total_bounds = bouns_temp * [_beitou intValue];
+        total_bounds = bouns_temp_min * [_beitou intValue];
         self.minBounds = [NSString stringWithFormat:@"%.2f",total_bounds];
         
     }else{

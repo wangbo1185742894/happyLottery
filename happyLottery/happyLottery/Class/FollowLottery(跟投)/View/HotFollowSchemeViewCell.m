@@ -120,7 +120,7 @@
     self.carcode = model.cardCode;
     NSDate * dateServer = [Utility dateFromDateStr:model.serverTime withFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSDate * dateCur = [Utility dateFromDateStr:model.deadLine withFormat:@"yyyy-MM-dd HH:mm:ss"];
-
+    self.labPersonHis.adjustsFontSizeToFitWidth = YES;
     if ([dateServer compare:dateCur] ==kCFCompareLessThan ||model.serverTime==nil) { //没过期 可以买
         self.btnFollowScheme.hidden = NO;
         self.labBouns.hidden = YES;
