@@ -27,19 +27,18 @@
 - (void)addButtonsToView: (UIView *)container
 {
     //title
-    UILabel * TitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, container.bounds.size.width, 40)];
+    UILabel * TitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, container.bounds.size.width, 50)];
     TitleLabel.text = @"修改追号方案";
-    TitleLabel.font = [UIFont systemFontOfSize: 16];
+    TitleLabel.font = [UIFont systemFontOfSize: 17];
     TitleLabel.textAlignment = NSTextAlignmentCenter;
     [TitleLabel setTextColor:[UIColor whiteColor]];
     UIImageView *ImageViewTitle =
-    [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, container.bounds.size.width, 40)];
+    [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, container.bounds.size.width, 50)];
     ImageViewTitle.backgroundColor = SystemGreen;
     [ImageViewTitle addSubview:TitleLabel];
     [container addSubview:ImageViewTitle];
     //连续追号，起始倍数、预期盈利，根据弹出视图大小，动态确定每行宽度，具体为view高度减去标题及底部按钮后等分
     float y = (container.bounds.size.height-90)/6;
-    
     UILabel * issaddLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, y-40, 85, 40)];
     issaddLabel.text = @"连续追号：";
     issaddLabel.font = [UIFont systemFontOfSize: 16];
@@ -52,7 +51,7 @@
     startmultipleLabel.textAlignment = NSTextAlignmentCenter;
     startmultipleLabel.textColor = TEXTGRAYCOLOR;
     
-    UIView * beishuView = [[UIView alloc]initWithFrame:CGRectMake(0, 40, container.bounds.size.width, 2*y+y-40)];
+    UIView * beishuView = [[UIView alloc]initWithFrame:CGRectMake(0, 50, container.bounds.size.width, 2*y+y-50)];
     beishuView.backgroundColor = [UIColor whiteColor];
     //期号减，倍数减
     _issuedownBtn = [[UIButton alloc]initWithFrame:CGRectMake(102, 1+y-40, 30, 30)];
@@ -122,8 +121,8 @@
     _rb3 = [[RadioButton alloc] initWithDelegate:self groupId:@"0"];
     
     _rb1.frame = CGRectMake(101,7, 25,25);
-    _rb2.frame = CGRectMake(101,y+1, 25,25);
-    _rb3.frame = CGRectMake(101,6+3*(y-7), 25,25);
+    _rb2.frame = CGRectMake(101,y-18, 25,25);
+    _rb3.frame = CGRectMake(101,6+3*(y-20), 25,25);
 //    rb1.tag = 1;
 //    rb2.tag = 2;
 //    rb3.tag = 3;
@@ -151,7 +150,7 @@
     minratelabel.textAlignment = NSTextAlignmentLeft;
     minratelabel.textColor = TEXTGRAYCOLOR;
     
-    _minnumField = [[UITextField alloc]initWithFrame:CGRectMake(222, 6, 80, 30)];
+    _minnumField = [[UITextField alloc]initWithFrame:CGRectMake(230, 6, 80, 30)];
     _minnumField.textAlignment = NSTextAlignmentCenter;
 //    _minnumField.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"input_bg_normal.9.png"]];
     _minnumField.layer.borderWidth = SEPHEIGHT;
@@ -160,7 +159,7 @@
     NSString *strlowrate = [NSString stringWithFormat:@"%ld",(long)_lowrateNum];
     _minnumField.text = strlowrate;
     
-    UILabel *ratelabel = [[UILabel alloc]initWithFrame:CGRectMake(303,6,_profitview.bounds.size.width-30,25)];
+    UILabel *ratelabel = [[UILabel alloc]initWithFrame:CGRectMake(313,6,_profitview.bounds.size.width-30,25)];
     ratelabel.text = @"％";
     ratelabel.font = [UIFont systemFontOfSize: 13];
     ratelabel.textAlignment = NSTextAlignmentLeft;
@@ -170,14 +169,14 @@
     [_profitview addSubview:_minnumField];
     [_profitview addSubview:ratelabel];
     // 前几期盈利，之后盈利
-    UILabel *qianlabel = [[UILabel alloc]initWithFrame:CGRectMake(130,y-1,13,25)];
+    UILabel *qianlabel = [[UILabel alloc]initWithFrame:CGRectMake(130,y-18,13,25)];
     qianlabel.text = @"前";
     qianlabel.font = [UIFont systemFontOfSize: 13];
     qianlabel.textAlignment = NSTextAlignmentLeft;
     qianlabel.textColor = TEXTGRAYCOLOR;
     [_profitview addSubview:qianlabel];
     
-    _qiannumField = [[UITextField alloc]initWithFrame:CGRectMake(144, y-1, 40, 30)];
+    _qiannumField = [[UITextField alloc]initWithFrame:CGRectMake(144, y-20, 40, 30)];
     _qiannumField.textAlignment = NSTextAlignmentCenter;
 //    _qiannumField.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"input_bg_normal.9.png"]];
     _qiannumField.layer.borderWidth = SEPHEIGHT;
@@ -189,14 +188,14 @@
     
     [_profitview addSubview:_qiannumField];
     
-    UILabel *qilabel = [[UILabel alloc]initWithFrame:CGRectMake(187, y-1, 13, 30)];
+    UILabel *qilabel = [[UILabel alloc]initWithFrame:CGRectMake(187, y-20, 13, 30)];
     qilabel.text = @"期";
     qilabel.font = [UIFont systemFontOfSize: 13];
     qilabel.textAlignment = NSTextAlignmentCenter;
     qilabel.textColor = TEXTGRAYCOLOR;
     [_profitview addSubview:qilabel];
     
-    _qinumField = [[UITextField alloc]initWithFrame:CGRectMake(202, y-1, 80, 30)];
+    _qinumField = [[UITextField alloc]initWithFrame:CGRectMake(202, y-22, 80, 30)];
     _qinumField.textAlignment = NSTextAlignmentCenter;
 //    _qinumField.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"input_bg_normal.9.png"]];
     _qinumField.layer.borderWidth = SEPHEIGHT;
@@ -207,21 +206,21 @@
     
     [_profitview addSubview:_qinumField];
     
-    UILabel *ratelabel1 = [[UILabel alloc]initWithFrame:CGRectMake(285,y-1,_profitview.bounds.size.width-30,25)];
+    UILabel *ratelabel1 = [[UILabel alloc]initWithFrame:CGRectMake(285,y-20,_profitview.bounds.size.width-30,25)];
     ratelabel1.text = @"％";
     ratelabel1.font = [UIFont systemFontOfSize: 13];
     ratelabel1.textAlignment = NSTextAlignmentLeft;
     ratelabel1.textColor = TEXTGRAYCOLOR;
     [_profitview addSubview:ratelabel1];
     
-    UILabel *lateratelabel = [[UILabel alloc]initWithFrame:CGRectMake(130,2*y-8,_profitview.bounds.size.width-30,25)];
+    UILabel *lateratelabel = [[UILabel alloc]initWithFrame:CGRectMake(130,2*y-30,_profitview.bounds.size.width-30,25)];
     lateratelabel.text = @"之后盈利率";
     lateratelabel.font = [UIFont systemFontOfSize: 13];
     lateratelabel.textAlignment = NSTextAlignmentLeft;
     lateratelabel.textColor = TEXTGRAYCOLOR;
     [_profitview addSubview:lateratelabel];
     
-    _ratenumField = [[UITextField alloc]initWithFrame:CGRectMake(195, 2*y-8, 80, 30)];
+    _ratenumField = [[UITextField alloc]initWithFrame:CGRectMake(205, 2*y-32, 80, 30)];
     _ratenumField.textAlignment = NSTextAlignmentCenter;
     _ratenumField.layer.borderWidth = SEPHEIGHT;
     _ratenumField.layer.borderColor = SEPCOLOR.CGColor;
@@ -231,7 +230,7 @@
     
     [_profitview addSubview:_ratenumField];
     
-    UILabel *ratelabel2 = [[UILabel alloc]initWithFrame:CGRectMake(277,2*y-8,_profitview.bounds.size.width-30,25)];
+    UILabel *ratelabel2 = [[UILabel alloc]initWithFrame:CGRectMake(287,2*y-30,_profitview.bounds.size.width-30,25)];
     ratelabel2.text = @"％";
     ratelabel2.font = [UIFont systemFontOfSize: 13];
     ratelabel2.textAlignment = NSTextAlignmentLeft;
@@ -239,13 +238,13 @@
     [_profitview addSubview:ratelabel2];
     
     //全程最低盈利
-    UILabel *minlabel = [[UILabel alloc]initWithFrame:CGRectMake(130,6+3*(y-7),_profitview.bounds.size.width-30,25)];
+    UILabel *minlabel = [[UILabel alloc]initWithFrame:CGRectMake(130,6+3*(y-20),_profitview.bounds.size.width-30,25)];
     minlabel.text = @"全程最低盈利";
     minlabel.font = [UIFont systemFontOfSize: 13];
     minlabel.textAlignment = NSTextAlignmentLeft;
     minlabel.textColor = TEXTGRAYCOLOR;
     
-    _minprofitField = [[UITextField alloc]initWithFrame:CGRectMake(209, 6+3*(y-7), 80, 30)];
+    _minprofitField = [[UITextField alloc]initWithFrame:CGRectMake(219, 6+3*(y-21), 80, 30)];
     _minprofitField.textAlignment = NSTextAlignmentCenter;
 //    _minprofitField.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"input_bg_normal.9.png"]];
     _minprofitField.layer.borderWidth = SEPHEIGHT;
@@ -254,7 +253,7 @@
     NSString *strlowprofit = [NSString stringWithFormat:@"%ld",(long)_lowprofitNum];
     _minprofitField.text = strlowprofit;
     
-    UILabel *yuanlabel = [[UILabel alloc]initWithFrame:CGRectMake(292,6+3*(y-7),_profitview.bounds.size.width-30,25)];
+    UILabel *yuanlabel = [[UILabel alloc]initWithFrame:CGRectMake(302,6+3*(y-20),_profitview.bounds.size.width-30,25)];
     yuanlabel.text = @"元";
     yuanlabel.font = [UIFont systemFontOfSize: 13];
     yuanlabel.textAlignment = NSTextAlignmentLeft;
@@ -272,14 +271,18 @@
     
     [_profitview addSubview:profitLabel];
     //确定、取消按钮
-    UIButton *CancelBtn = [[UIButton alloc]initWithFrame:CGRectMake(container.bounds.size.width/4-60, container.bounds.size.height - 50, 120, 40)];
-    UIButton *submitBtn = [[UIButton alloc]initWithFrame:CGRectMake(container.bounds.size.width*3/4-60, container.bounds.size.height - 50, 120, 40)];
+    UIButton *CancelBtn = [[UIButton alloc]initWithFrame:CGRectMake(container.bounds.size.width/4-60, container.bounds.size.height - 80, 120, 40)];
+    UIButton *submitBtn = [[UIButton alloc]initWithFrame:CGRectMake(container.bounds.size.width*3/4-60, container.bounds.size.height - 80, 120, 40)];
 //    CancelBtn.layer.cornerRadius = 3;
 //    CancelBtn.layer.masksToBounds = YES;
 //    submitBtn.layer.cornerRadius = 3;
 //    submitBtn.layer.masksToBounds = YES;
     [CancelBtn setTitle:@"取消" forState:UIControlStateNormal];
+    CancelBtn.layer.cornerRadius = 4;
+    CancelBtn.layer.masksToBounds = YES;
     [submitBtn setTitle:@"生成方案" forState:UIControlStateNormal];
+    submitBtn.layer.cornerRadius = 4;
+    submitBtn.layer.masksToBounds = YES;
     CancelBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
     CancelBtn.backgroundColor = SystemGreen;
     [CancelBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

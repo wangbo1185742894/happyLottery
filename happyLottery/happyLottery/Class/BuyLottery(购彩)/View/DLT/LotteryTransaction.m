@@ -222,15 +222,15 @@ typedef enum {
 
 - (NSAttributedString *) getTouZhuSummaryText1 {
     NSMutableDictionary *redAttributeDic = [NSMutableDictionary dictionaryWithCapacity: 2];
-    redAttributeDic[NSFontAttributeName] = [UIFont boldSystemFontOfSize: 14];
+    redAttributeDic[NSFontAttributeName] = [UIFont systemFontOfSize: 14];
     redAttributeDic[NSForegroundColorAttributeName] = RGBCOLOR(254, 165, 19);
     
     NSMutableDictionary *blueAttributeDic = [NSMutableDictionary dictionaryWithCapacity: 2];
-    blueAttributeDic[NSFontAttributeName] = [UIFont boldSystemFontOfSize: 14];
+    blueAttributeDic[NSFontAttributeName] = [UIFont systemFontOfSize: 14];
     blueAttributeDic[NSForegroundColorAttributeName] = RGBCOLOR(254, 165, 19);
     
     NSMutableDictionary *normalAttributeDic = [NSMutableDictionary dictionaryWithCapacity: 2];
-    normalAttributeDic[NSFontAttributeName] = [UIFont boldSystemFontOfSize: 14];
+    normalAttributeDic[NSFontAttributeName] = [UIFont systemFontOfSize: 14];
     normalAttributeDic[NSForegroundColorAttributeName] = [UIColor whiteColor];
     
     NSMutableAttributedString *descAttributedString = [[NSMutableAttributedString alloc] init];
@@ -277,15 +277,15 @@ typedef enum {
 
 - (NSAttributedString *) getTouZhuSummaryText2 {
     NSMutableDictionary *redAttributeDic = [NSMutableDictionary dictionaryWithCapacity: 2];
-    redAttributeDic[NSFontAttributeName] = [UIFont boldSystemFontOfSize: 14];
+    redAttributeDic[NSFontAttributeName] = [UIFont systemFontOfSize:14];
     redAttributeDic[NSForegroundColorAttributeName] = RGBCOLOR(254, 165, 19);
     
     NSMutableDictionary *blueAttributeDic = [NSMutableDictionary dictionaryWithCapacity: 2];
-    blueAttributeDic[NSFontAttributeName] = [UIFont boldSystemFontOfSize: 14];
+    blueAttributeDic[NSFontAttributeName] = [UIFont systemFontOfSize:14];
     blueAttributeDic[NSForegroundColorAttributeName] = RGBCOLOR(254, 165, 19);
     
     NSMutableDictionary *normalAttributeDic = [NSMutableDictionary dictionaryWithCapacity: 2];
-    normalAttributeDic[NSFontAttributeName] = [UIFont boldSystemFontOfSize: 14];
+    normalAttributeDic[NSFontAttributeName] = [UIFont systemFontOfSize:14];
     normalAttributeDic[NSForegroundColorAttributeName] = [UIColor whiteColor];
     
     NSMutableAttributedString *descAttributedString = [[NSMutableAttributedString alloc] init];

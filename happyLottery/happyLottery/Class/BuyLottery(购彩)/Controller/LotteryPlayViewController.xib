@@ -106,9 +106,10 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FfJ-u5-7iU">
-                            <rect key="frame" x="295" y="10" width="72" height="29"/>
+                            <rect key="frame" x="295" y="7" width="72" height="35"/>
                             <color key="backgroundColor" red="0.070588235294117646" green="0.7803921568627451" blue="0.5725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
+                                <constraint firstAttribute="height" constant="35" id="aeO-FA-Vn1"/>
                                 <constraint firstAttribute="width" constant="72" id="rvr-5Y-mBL"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -153,9 +154,8 @@
                         <constraint firstAttribute="trailing" secondItem="ZJV-W2-Omc" secondAttribute="trailing" id="Bo4-na-fT0"/>
                         <constraint firstAttribute="height" constant="49" id="DGL-H0-css"/>
                         <constraint firstItem="rFZ-F7-eqL" firstAttribute="top" secondItem="6qt-Bi-hCZ" secondAttribute="top" id="EO7-SK-mlb"/>
-                        <constraint firstItem="FfJ-u5-7iU" firstAttribute="top" secondItem="6qt-Bi-hCZ" secondAttribute="top" constant="10" id="EtH-hI-aWP"/>
+                        <constraint firstItem="FfJ-u5-7iU" firstAttribute="centerY" secondItem="6qt-Bi-hCZ" secondAttribute="centerY" id="HBo-Fj-Gf7"/>
                         <constraint firstAttribute="trailing" secondItem="rFZ-F7-eqL" secondAttribute="trailing" constant="83" id="Kht-Vw-IT6"/>
-                        <constraint firstAttribute="bottom" secondItem="FfJ-u5-7iU" secondAttribute="bottom" constant="10" id="cLd-60-7Fz"/>
                         <constraint firstItem="PBb-d5-4bA" firstAttribute="leading" secondItem="6qt-Bi-hCZ" secondAttribute="leading" id="gFW-SF-cmJ"/>
                         <constraint firstItem="ZJV-W2-Omc" firstAttribute="top" secondItem="6qt-Bi-hCZ" secondAttribute="top" id="hxF-4A-ucu"/>
                         <constraint firstAttribute="bottom" secondItem="VAu-09-Pzw" secondAttribute="bottom" constant="10" id="m26-wS-d41"/>

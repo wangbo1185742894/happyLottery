@@ -48,7 +48,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="4z4-jX-4NA"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -69,12 +69,13 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="scB-wX-mTZ">
-                            <rect key="frame" x="287" y="36" width="80" height="35"/>
+                            <rect key="frame" x="287" y="41" width="80" height="30"/>
+                            <color key="backgroundColor" red="0.070588235289999995" green="0.78039215689999997" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="80" id="faj-yJ-ptc"/>
-                                <constraint firstAttribute="height" constant="35" id="sde-Xs-EUW"/>
+                                <constraint firstAttribute="height" constant="30" id="sde-Xs-EUW"/>
                             </constraints>
-                            <state key="normal" title="确认预约" backgroundImage="yuanjiaowukuangselect.png">
+                            <state key="normal" title="确认预约">
                                 <color key="titleColor" red="0.98040592670440674" green="0.98606610298156738" blue="0.96061241626739502" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
@@ -115,6 +116,5 @@
     <resources>
         <image name="winstopnomal.png" width="15" height="15"/>
         <image name="winstopselect.png" width="15" height="15"/>
-        <image name="yuanjiaowukuangselect.png" width="81" height="27"/>
     </resources>
 </document>
