@@ -61,8 +61,11 @@
     self.labHomeName.keyWordFont = [UIFont systemFontOfSize:12];
     self.labHomeName.keyWordColor = SystemBlue;
     self.labGuestName.text = model.guestName;
-    
-    self.labRangQiuNum.text = [NSString stringWithFormat:@"%ld",[self.curModel.handicap integerValue]];
+    if ([self.curModel.handicap compare:@"0"] == NSOrderedDescending) {
+        self.labRangQiuNum.text = [NSString stringWithFormat:@"+%ld",[self.curModel.handicap integerValue]];
+    }else {
+        self.labRangQiuNum.text = [NSString stringWithFormat:@"%ld",[self.curModel.handicap integerValue]];
+    }
     self.labRangQiuNum.textColor = [UIColor whiteColor];
     if ([self.curModel.handicap integerValue] >0) {
         self.labRangQiuNum.backgroundColor = ColorFromImage(@"rangqiuzheng");

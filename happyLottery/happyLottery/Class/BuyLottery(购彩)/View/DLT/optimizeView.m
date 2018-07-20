@@ -183,9 +183,15 @@
     _qiannumField.layer.borderColor = SEPCOLOR.CGColor;
     _qiannumField.textColor = TEXTGRAYCOLOR;
     NSString *strpreissue = [NSString stringWithFormat:@"%ld",(long)_preissueNum];
-    _qiannumField.text = strpreissue;
-
-    
+    if (_issueNum <= _preissueNum) {
+        if (_issueNum == 1) {
+            _qiannumField.text = @"1";
+        } else {
+             _qiannumField.text = [NSString stringWithFormat:@"%ld",_issueNum-1];
+        }
+    }else {
+        _qiannumField.text = strpreissue;
+    }
     [_profitview addSubview:_qiannumField];
     
     UILabel *qilabel = [[UILabel alloc]initWithFrame:CGRectMake(187, y-20, 13, 30)];
@@ -419,6 +425,15 @@
     }
     if (textField.text.length + string.length > 7) {
         return NO;
+    }
+    if (textField == _qiannumField) {
+        NSMutableString*numStr = [[NSMutableString alloc]initWithString:textField.text];
+        [numStr appendString:string];
+        NSInteger num = [numStr integerValue];
+        if (num>= [_issueLabel.text integerValue]) {
+            textField.text = [NSString stringWithFormat:@"%ld",[_issueLabel.text integerValue]-1];
+            return NO;
+        }
     }
     NSString * regex;
     regex = @"^[0-9]";
