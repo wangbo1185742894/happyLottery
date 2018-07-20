@@ -32,7 +32,6 @@
     LotteryPhaseInfoView *phaseInfoView;
     __weak IBOutlet UIView *ContentView;
     __weak IBOutlet UIView *BottomView;
-    __weak IBOutlet UIButton *ClearBtn;
     __weak IBOutlet UIButton *SubmitBtn;
     __weak IBOutlet UIButton *WinStop;
     __weak IBOutlet NSLayoutConstraint *topDis;
@@ -83,26 +82,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.viewControllerNo = @"A109";
+    self.title = @"追号设置";
+    //期数
     if ([self.transaction.lottery.identifier isEqualToString:@"SX115"]) {
         maxQi = MAXQI11X5;
     }else{
         maxQi = MAXQISD11X5;
     }
-    
+    //默认倍数,期数
     _multiple = 1;
     _issue = 10;
+    
     self.lotteryMan.delegate = self;
     self.memberMan.delegate = self;
     
     [self loadUI];
-    self.viewControllerNo = @"A109";
-    self.title = @"追号设置";
+  
     topDis.constant= NaviHeight;
     bottomDis.constant = BOTTOM_BAR_HEIGHT  ;
     
     NSString * curRoundnum = [_lottery.currentRound valueForKey:@"issueNumber"];
-    strcurRound = curRoundnum;//纪录期号，变化后更新
+    strcurRound = curRoundnum;//纪录期号，变化后不更新
     
     NSInteger location = [curRoundnum length] - 2;
     NSString *strcut;
@@ -115,7 +116,7 @@
     if (intString + 10 > maxQi) {
         _issue = maxQi - intString + 1;
     }
-    curiss = intString;
+    curiss = intString; //纪录奖期，变化后即更新
     _lowrate = 30;
     _preissue = 5;
     _prerate = 50;
@@ -127,6 +128,7 @@
     poptype = NO;
     SubmitBtn.layer.masksToBounds = YES;
     SubmitBtn.layer.cornerRadius = 4;
+    
     [self getPlayType:0];//得到最大中奖金额Maxprize
     [self schemeValue:1 lowprofit:_lowrate];//默认全程最低盈利率
     
@@ -139,11 +141,16 @@
     optionButton.titleLabel.font = [UIFont systemFontOfSize:14];
     [optionButton addTarget: self action: @selector(optionRightButtonAction) forControlEvents: UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView: optionButton];
-    [self reloadTableView];
+    
 
 }
 - (void)reloadTableView{
-    listTableView = [[UITableView alloc]initWithFrame:CGRectMake(0,128, KscreenWidth, KscreenHeight-270) style:UITableViewStylePlain];
+    if ([self isIphoneX]) {
+        listTableView = [[UITableView alloc]initWithFrame:CGRectMake(0,128, KscreenWidth, KscreenHeight-334) style:UITableViewStylePlain];
+    }
+    else {
+        listTableView = [[UITableView alloc]initWithFrame:CGRectMake(0,128, KscreenWidth, KscreenHeight-270) style:UITableViewStylePlain];
+    }
     listTableView.delegate = self;
     listTableView.dataSource = self;
     [listTableView registerNib:[UINib nibWithNibName:KZhuihaoCell bundle:nil] forCellReuseIdentifier:KZhuihaoCell];
@@ -155,6 +162,7 @@
     listTableView.separatorStyle= UITableViewCellSeparatorStyleNone;
     [self updateSummary];
 }
+
 -(void)gotSellIssueList:(NSArray *)infoDic errorMsg:(NSString *)msg{
     if (infoDic == nil || infoDic .count == 0) {
         [self showPromptText:msg hideAfterDelay:1.9];
@@ -162,14 +170,13 @@
     }
     self.lottery.currentRound = [infoDic firstObject];
     self.transaction.lottery.currentRound = [infoDic firstObject];
-    
     NSLog(@"timer sile");
     if (phaseInfoView) {
         [phaseInfoView showCurRoundInfo];
     }
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return _issue;
+    return [JiangqiChoose.text integerValue];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -182,20 +189,21 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
      cell.numLabel.text = [NSString stringWithFormat:@"%ld",indexPath.row+1];
-     NSString * curRoundnum = [_lottery.currentRound valueForKey:@"issueNumber"];
-     NSInteger location = [curRoundnum length] - 2;
+     NSInteger location = [strcurRound length] - 2;
      if(location > 0)
      {
-        NSString *strcut = [curRoundnum substringFromIndex:location];
+        NSString *strcut = [strcurRound substringFromIndex:location];
         cell.isslabel.text = [NSString stringWithFormat:@"%ld",[strcut integerValue]+indexPath.row];
      }
     
-     cell.beiShutf.text = mutArry[indexPath.row];
+    cell.beiShutf.text = mutArry[indexPath.row];
     NSInteger total = 0;
     for (int i = 0; i <= indexPath.row; i++) {
+        
         total += [mutArry[i] integerValue];
     }
      cell.expenselabel.text = [NSString stringWithFormat:@"%ld",total*2 * _zhushu];
+    
      cell.profitlabel.text = [NSString stringWithFormat:@"%ld",Maxprize*[mutArry[indexPath.row] integerValue]*maxwin-[cell.expenselabel.text integerValue]];
      cell.ratelabel.text = [NSString stringWithFormat:@"%.0f%%",[cell.profitlabel.text doubleValue]/[cell.expenselabel.text doubleValue]*100];
     if ([cell.ratelabel.text doubleValue] > 0) {
@@ -254,47 +262,31 @@
     [self.navigationController pushViewController:webVC animated:YES];
 }
 
-- (void) navigationBackToLastPage{
-    //返回清空所选
-    [super navigationBackToLastPage];
-}
-
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear: animated];
-    
 }
+
 - (void) loadUI {
     [self showLoadingViewWithText: TextLoading];
     CGFloat curY = 0;
     [self loadConentView:curY];
+    [self reloadTableView];
     [self hideLoadingView];
 }
 
 - (void)loadConentView:(float)curY{
-    
-    //清空、确认按钮
-    
-    [SubmitBtn addTarget: self action: @selector(SubmitBtnClick) forControlEvents: UIControlEventTouchUpInside];
-    [ClearBtn addTarget: self action: @selector(clearBtnClick) forControlEvents: UIControlEventTouchUpInside];
-    
-    [WinStop setTitle:@"中奖后停止追号" forState:UIControlStateNormal];
+    //停止追号按钮默认选中
     [WinStop setSelected:YES];
-    WinStop.titleLabel.textAlignment = NSTextAlignmentRight;
-    WinStop.titleLabel.font = [UIFont systemFontOfSize:13];
-    
-    CGFloat width = KscreenWidth;
-    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 31, width, SEPHEIGHT)];
+
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 31, KscreenWidth, SEPHEIGHT)];
     lineView.backgroundColor = SEPCOLOR;
     [BottomView addSubview:lineView];
     
     NSString * lotteryIdentify = _lottery.identifier;
     //add this phase information
     //期号: 054   距截止还有 1天5小时
-    if ([lotteryIdentify isEqualToString:@"SD115"] || [lotteryIdentify isEqualToString:@"SX115"]) {
         [self loadphaseInfoView];
-        CGRect phaseSectionFrame = CGRectMake(0, 0, KscreenWidth, 0);
-        phaseSectionFrame.origin.y = 10;
-        phaseSectionFrame.size.height = PhaseInfoHeight * 2;
+        CGRect phaseSectionFrame = CGRectMake(0, 10, KscreenWidth, PhaseInfoHeight * 2);
         //玩法显示
         UILabel *playlabel = [[UILabel alloc]initWithFrame:CGRectMake(10, phaseSectionFrame.origin.y+30, 135, 30)];
         playlabel.font = [UIFont systemFontOfSize:13];
@@ -374,7 +366,7 @@
         
         JiangqiChoose.delegate = self;
         JiangqiChoose.keyboardType = UIKeyboardTypeNumberPad;
-//        JiangqiChoose.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"input_bg_normal.9.png"]];
+
         //奖期增加按钮
         UIButton *JiangqiUpBtn = [[UIButton alloc]initWithFrame:CGRectMake(beishuview.bounds.size.width-41, 3, 25+SEPHEIGHT, 25)];
         [JiangqiUpBtn setImage:[UIImage imageNamed:@"touzhubeishujia.png"] forState:UIControlStateNormal];
@@ -402,40 +394,9 @@
         [ContentView addSubview:Jiangqiview];
         
         [self loadTitleView];
-        [self loadScrollView];
-    }
+        [self loadBeishushow];
 }
-- (void) NumListShowselector {
-    if (nil != self.navigationController) {
-        poptype = YES;
-        [self.navigationController popViewControllerAnimated: YES];
-    }
-}
-//- (void)RadomgetNumBtnClick{
-//    _RadomgetNumBtn.selected=!_RadomgetNumBtn.selected;
-//
-//    if(_RadomgetNumBtn.selected){
-//        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"选号方式"
-//                                                         message:AlertGetNoMethod delegate:nil cancelButtonTitle:TitleNo otherButtonTitles:TitleYes, nil];
-//        
-//        if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1)
-//        {
-//            CGSize size = [AlertGetNoMethod sizeWithFont:[UIFont systemFontOfSize:15] constrainedToSize:CGSizeMake(240, 1000) lineBreakMode:NSLineBreakByWordWrapping];
-//            
-//            UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 240, size.height)];
-//            textLabel.font = [UIFont systemFontOfSize:15];
-//            textLabel.textColor = [UIColor blackColor];
-//            textLabel.lineBreakMode = NSLineBreakByTruncatingTail;
-//            textLabel.numberOfLines = 0;
-//            textLabel.textAlignment = NSTextAlignmentLeft;
-//            textLabel.text = AlertGetNoMethod;
-//            [alert setValue:textLabel forKey:@"accessoryView"];
-//            //这个地方别忘了把alertview的message设为空.
-//            alert.message = @"";
-//        }
-//        [alert show];
-//    }
-//}
+
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     
@@ -452,12 +413,12 @@
             }else{
                 temp =[textField.text integerValue];
             }
-            if (textField == beishuChoose) {
-                mutArry[0] = [NSString stringWithFormat:@"%ld",temp];
+            if (textField == self->beishuChoose) {
+                self->mutArry[0] = [NSString stringWithFormat:@"%ld",temp];
             }else{
-                _issue = temp;
+                self->_issue = temp;
             }
-            [listTableView reloadData];
+            [self->listTableView reloadData];
             [self updateSummary];
         });
         
@@ -478,21 +439,21 @@
         [listTableView reloadData];
         [self updateSummary];
     }else {
-        limitNum =  maxQi - curiss + 1;
+        limitNum =  maxQi - curiss+1;
     
         if (num > limitNum) {
             JiangqiChoose.text = [NSString stringWithFormat:@"%lu", limitNum];
             [self showPromptText:[NSString stringWithFormat:@"今日最大可追%lu期，系统不支持跨日追号", limitNum] hideAfterDelay:1.7];
             _issue = limitNum;
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [listTableView reloadData];
+                [self->listTableView reloadData];
                 [self updateSummary];
             });
             return NO;
         }
         _issue = [numStr integerValue];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [listTableView reloadData];
+            [self->listTableView reloadData];
             [self updateSummary];
         });
        
@@ -507,11 +468,6 @@
         textField.text = @"1";
     }
     textField.text = [NSString stringWithFormat:@"%ld",[textField .text integerValue]];
-//    if (textField == beishuChoose) {
-//        [self ScrollViewUI:0];
-//    }else {
-//        [self loadScrollView];
-//    }
 }
 
 -(void) loadTitleView{
@@ -580,32 +536,6 @@
         [ContentView addSubview:titlelable[i]];
     }
 }
--(void) loadScrollView{
-    //详细信息显示，scrollaview
-
-//    UIView * Vline[VlineCount];
-//    for(NSInteger i=0;i<VlineCount;i++)
-//    {
-//        if(i<3)
-//        {
-//            if(i>1)
-//            {
-//                Vline[i] = [[UIView alloc] initWithFrame:CGRectMake(35*(i+1)+45, 0,1,/*99*/(_issue)*45)];
-//            }
-//            else{
-//                Vline[i] = [[UIView alloc] initWithFrame:CGRectMake(35*(i+1), 0,1,/*99*/(_issue)*45)];
-//            }
-//        }
-//        else{
-//            CGFloat X = (scrollView.bounds.size.width-150)/3;
-//            Vline[i] = [[UIView alloc] initWithFrame:CGRectMake(150+(X*(i-2)), 0,1,/*99*/(_issue)*45)];
-//        }
-//        Vline[i].backgroundColor = [UIColor colorWithRed:225.0/255.0 green:225.0/255.0 blue:225.0/255.0 alpha:1.0f];
-//        
-//        [scrollView addSubview:Vline[i]];
-//    }
-    [self loadBeishushow];
-}
 
 -(void) loadBeishushow{
     if(mutArry.count == 0)
@@ -631,240 +561,7 @@
         mutArry = tempmutArry;
     }
 }
--(void) ScrollViewUI:(NSUInteger)j
-{
-    
-    
-    UIView * Vline[VlineCount];
-    for(NSInteger i=0;i<VlineCount;i++)
-    {
-        if(i<3)
-        {
-            if(i>1)
-            {
-                Vline[i] = [[UIView alloc] initWithFrame:CGRectMake(35*(i+1)+45, 0,SEPHEIGHT,/*99*/(_issue)*45)];
-            }
-            else{
-                Vline[i] = [[UIView alloc] initWithFrame:CGRectMake(35*(i+1), 0,SEPHEIGHT,/*99*/(_issue)*45)];
-            }
-        }
-        else{
-            CGFloat X = (scrollView.bounds.size.width-150)/3;
-            Vline[i] = [[UIView alloc] initWithFrame:CGRectMake(150+(X*(i-2)), 0,SEPHEIGHT,/*99*/(_issue)*45)];
-        }
-        Vline[i].backgroundColor = SEPCOLOR;
-        
-        [scrollView addSubview:Vline[i]];
-    }
-    
-    CGRect scrollframe = scrollView.frame;
-    scrollframe.size.height = _issue*45;
-    _scrollView.contentSize = scrollframe.size;
-    
-    downLine.frame = CGRectMake(0, scrollframe.size.height, KscreenWidth, SEPHEIGHT);
-    
-    if(mutArry.count == 0)
-    {
-        mutArry=[[NSMutableArray alloc]initWithCapacity:_issue];
-        for(NSInteger k=0;k<_issue;k++)
-        {
-            mutArry[k] = @"1";
-        }
-    }
-    if(mutArry.count < _issue)
-    {
-        NSMutableArray *tempmutArry = [[NSMutableArray alloc]initWithCapacity:_issue];
-        for(int i=0;i<_issue;i++)
-        {
-            if(i<mutArry.count)
-            tempmutArry[i] = mutArry[i];
-            else{
-                tempmutArry[i] = @"1";
-            }
-        }
-        mutArry=[[NSMutableArray alloc]initWithCapacity:_issue];
-        mutArry = tempmutArry;
-    }
-    //序号
-    numlabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 45*j,34,45)];
-    numlabel.text = [NSString stringWithFormat:@"%zd",j+1];
-    numlabel.textAlignment = NSTextAlignmentCenter;
-    numlabel.font = [UIFont systemFontOfSize:13];
-    numlabel.textColor = TEXTGRAYCOLOR;
-    numlabel.backgroundColor =RGBCOLOR(250, 250, 250);
-    numlabel.tag = j;
-    //期号
-    isslabel = [[UILabel alloc]initWithFrame:CGRectMake(35, 45*j,34,45)];
 
-    NSString * curRoundnum = [_lottery.currentRound valueForKey:@"issueNumber"];
-    strcurRound = curRoundnum;//纪录期号，变化后更新
-    NSInteger location = [curRoundnum length] - 2;
-    NSString *strcut;
-    if(location > 0)
-    {
-        strcut = [curRoundnum substringFromIndex:location];
-    }
-    int intString = [strcut intValue];
-    curiss = intString;
-    NSString *str = [NSString stringWithFormat:@"%u",(unsigned int)(intString+j)];
-    isslabel.text = str;
-    isslabel.textAlignment = NSTextAlignmentCenter;
-    isslabel.backgroundColor = RGBCOLOR(250, 250, 250);
-    isslabel.font = [UIFont systemFontOfSize:13];
-    isslabel.textColor = TEXTGRAYCOLOR;
-    isslabel.tag = j;
-    //倍数减小
-    SbeishudownBtn = [[UIButton alloc]initWithFrame:CGRectMake(35*2, 45*j+10, 25, 25)];
-    [SbeishudownBtn setImage:[UIImage imageNamed:@"touzhubeishujian.png"] forState:UIControlStateNormal];
-    [SbeishudownBtn setImage:[UIImage imageNamed:@"touzhubeishujian.png"] forState:UIControlStateHighlighted];
-    SbeishudownBtn.tag = j;
-    [SbeishudownBtn addTarget: self action: @selector(SbeishudownBtnClick:) forControlEvents: UIControlEventTouchUpInside];
-    //倍数加
-    SbeishuUpBtn = [[UIButton alloc]initWithFrame:CGRectMake(150-25, 45*j+10, 25+SEPHEIGHT, 25)];
-    [SbeishuUpBtn setImage:[UIImage imageNamed:@"touzhubeishujia.png"] forState:UIControlStateNormal];
-    [SbeishuUpBtn setImage:[UIImage imageNamed:@"touzhubeishujia.png"] forState:UIControlStateHighlighted];
-    SbeishuUpBtn.tag = j;
-    [SbeishuUpBtn addTarget: self action: @selector(SbeishuUpBtnClick:) forControlEvents: UIControlEventTouchUpInside];
-    [SbeishuUpBtn setTag:j];
-    //倍数label
-    beishulabel = [[UILabel alloc]initWithFrame:CGRectMake(35*2+24, 45*j+10, 32, 25)];
-    if(0==j)
-    {
-        _multiple = [mutArry[j] intValue];
-        NSString *str = [NSString stringWithFormat:@"%lu",(unsigned long)_multiple];
-        mutArry[j] = str;
-        beishuChoose.text = str;
-    }
-    beishulabel.text = mutArry[j];
-    beishulabel.textAlignment = NSTextAlignmentCenter;
-    beishulabel.layer.borderWidth = SEPHEIGHT;
-    beishulabel.backgroundColor = [UIColor whiteColor];
-    beishulabel.layer.borderColor = SEPCOLOR.CGColor;
-    beishulabel.textColor = TEXTGRAYCOLOR;
-    beishulabel.tag = j;
-    //累计投入//最大盈利//盈利率
-    CGFloat X = (KscreenWidth-150)/3;
-    expenselabel = [[UILabel alloc]initWithFrame:CGRectMake(151, 45*j+7,X-1, 30)];
-    profitlabel = [[UILabel alloc]initWithFrame:CGRectMake(152+X, 45*j+7,X-2, 30)];
-    ratelabel = [[UILabel alloc]initWithFrame:CGRectMake(153+2*X, 45*j+7,X-1, 30)];
-    
-    float total = 0.0;
-    if(flag ==false)
-    {
-        for(NSInteger num=0;num<=j;num++)
-        {
-            NSString *str = mutArry[num];
-            int intString = [str intValue];
-            total += intString;
-        }
-    }
-    if(flag == true){
-        for(NSInteger num=j;num<_issue;num++)
-        {
-            expenselabel = [[UILabel alloc]initWithFrame:CGRectMake(151, 45*num+7,X-1, 30)];
-            profitlabel = [[UILabel alloc]initWithFrame:CGRectMake(152+X, 45*num+7,X-2, 30)];
-            ratelabel = [[UILabel alloc]initWithFrame:CGRectMake(153+2*X, 45*num+7,X-1, 30)];
-            
-            expenselabel.backgroundColor = RGBCOLOR(250, 250, 250);
-            expenselabel.textAlignment = NSTextAlignmentCenter;
-            expenselabel.textColor = TEXTGRAYCOLOR;
-            expenselabel.font = [UIFont systemFontOfSize:13];
-            
-            profitlabel.backgroundColor = RGBCOLOR(250, 250, 250);
-            profitlabel.textAlignment = NSTextAlignmentCenter;
-            profitlabel.font = [UIFont systemFontOfSize:13];
-            
-            ratelabel.backgroundColor = RGBCOLOR(250, 250, 250);
-            ratelabel.textAlignment = NSTextAlignmentCenter;
-            ratelabel.font = [UIFont systemFontOfSize:13];
-            
-            float Total = 0.0;
-            for(NSInteger i=0;i<=num;i++)
-            {
-                NSString *str = mutArry[i];
-                int intString = [str intValue];
-                Total += intString;
-            }
-            expenselabel.text = [NSString stringWithFormat:@"%u",(unsigned int)(Total*2.0*_zhushu)];
-            
-            int m = [mutArry[num] intValue];
-            int tempprofit = Maxprize*m*maxwin-Total*2.0*_zhushu;
-            if(tempprofit < 0)
-            {
-                profitlabel.textColor = SystemGreen;
-                ratelabel.textColor = SystemGreen;
-            }
-            else
-            {
-                profitlabel.textColor = TEXTGRAYCOLOR;
-                ratelabel.textColor = TEXTGRAYCOLOR;
-            }
-            NSString *str = [NSString stringWithFormat:@"%d",tempprofit];
-            profitlabel.text = str;
-            float rate =(Maxprize*m*maxwin-Total*2.0*_zhushu)/(Total*2.0*_zhushu)*100;
-            ratelabel.text = [NSString stringWithFormat:@"%.0f％",(float)rate];
-            
-            [_scrollView addSubview:expenselabel];
-            [_scrollView addSubview:profitlabel];
-            [_scrollView addSubview:ratelabel];
-//            [ContentView addSubview:_scrollView];
-            if(num == _issue-1)
-            {
-                Allexpense = Total;
-            }
-        }
-    }
-    else{
-        int m = [mutArry[j] intValue];
-        expenselabel.text = [NSString stringWithFormat:@"%u",(unsigned int)(total*2.0*_zhushu)];
-        
-        int tempprofit = Maxprize*m*maxwin-total*2.0*_zhushu;
-        if(tempprofit < 0)
-        {
-            profitlabel.textColor = SystemGreen;
-            ratelabel.textColor = SystemGreen;
-        }
-        else
-        {
-            profitlabel.textColor = TEXTGRAYCOLOR;
-            ratelabel.textColor = TEXTGRAYCOLOR;
-        }
-        NSString *str = [NSString stringWithFormat:@"%d",tempprofit];
-        profitlabel.text = str;
-        
-        float rate = (Maxprize*m*maxwin-total*2.0*_zhushu)/(total*2.0*_zhushu)*100;
-        
-        ratelabel.text = [NSString stringWithFormat:@"%.0f％",(float)rate];
-        Allexpense = total;
-    }
-    
-    expenselabel.backgroundColor = RGBCOLOR(250, 250, 250);
-    expenselabel.textAlignment = NSTextAlignmentCenter;
-    expenselabel.textColor = TEXTGRAYCOLOR;
-    expenselabel.font = [UIFont systemFontOfSize:13];
-    
-    profitlabel.backgroundColor = RGBCOLOR(250, 250, 250);
-    profitlabel.textAlignment = NSTextAlignmentCenter;
-    profitlabel.font = [UIFont systemFontOfSize:13];
-    
-    ratelabel.backgroundColor = RGBCOLOR(250, 250, 250);
-    ratelabel.textAlignment = NSTextAlignmentCenter;
-    ratelabel.font = [UIFont systemFontOfSize:13];
-    
-    //bottom label text
-
-    bottomLabel.font = [UIFont systemFontOfSize:14];
-    
-    [_scrollView addSubview:numlabel];
-    [_scrollView addSubview:isslabel];
-    [_scrollView addSubview:SbeishudownBtn];
-    [_scrollView addSubview:SbeishuUpBtn];
-    [_scrollView addSubview:beishulabel];
-    [_scrollView addSubview:expenselabel];
-    [_scrollView addSubview:profitlabel];
-    [_scrollView addSubview:ratelabel];
-//    [ContentView addSubview:_scrollView];
-}
 
 -(void)updateSummary{
     NSMutableAttributedString *betInfoString = [[NSMutableAttributedString alloc] init];
@@ -892,8 +589,8 @@
     NSInteger total = 0;
     for (int i = 0; i < _issue; i ++) {
         if (i >= mutArry.count) {
-            total += 99;
-            [mutArry addObject:@"99"];
+            total += 1;
+            [mutArry addObject:@"1"];
         }else{
             total += [mutArry[i] integerValue];
         }
@@ -912,7 +609,6 @@
     beishuChoose.text = str;
     NSString *strmultiple= [NSString stringWithFormat:@"%lu",(unsigned long)_multiple];
     mutArry[0] = strmultiple;
-//    [self ScrollViewUI:0];
     [listTableView reloadData];
     [self updateSummary];
 }
@@ -928,7 +624,6 @@
     
     NSString *strmultiple= [NSString stringWithFormat:@"%lu",(unsigned long)_multiple];
     mutArry[0] = strmultiple;
-//    [self ScrollViewUI:0];
     [listTableView reloadData];
     [self updateSummary];
 }
@@ -942,7 +637,7 @@
     _issue +=1;
     NSString *str = [NSString stringWithFormat:@"%d",(unsigned int)_issue];
     JiangqiChoose.text = str;
-
+    
     [listTableView reloadData];
     [self updateSummary];
     
@@ -957,39 +652,11 @@
     _issue -=1;
     NSString *str = [NSString stringWithFormat:@"%d",(unsigned int)_issue];
     JiangqiChoose.text = str;
-//    [self loadScrollView];
     [listTableView reloadData];
     [self updateSummary];
 }
 
--(void) SbeishuUpBtnClick:(id)sender
-{
-    NSInteger tag= [sender tag];
-    NSString *str = mutArry[tag];
-    int intString = [str intValue];
-    if(intString == 99){
-        return;
-    }
-    NSString *strbeishu = [NSString stringWithFormat:@"%u",(unsigned int)(intString+1)];
-    mutArry[tag] = strbeishu;
-    flag = true;
-    
-//    [self ScrollViewUI:tag];
-//    [listTableView reloadData];
-}
--(void) SbeishudownBtnClick:(id)sender
-{
-    NSInteger tag= [sender tag];
-    NSString *str = mutArry[tag];
-    int intString = [str intValue];
-    if(intString ==1){
-        return;
-    }
-    NSString *strbeishu = [NSString stringWithFormat:@"%u",(unsigned int)(intString-1)];
-    mutArry[tag] = strbeishu;
-//    [self ScrollViewUI:tag];
-//    [listTableView reloadData];
-}
+
 //代理传值
 -(void) changeValue:(NSInteger)issNum multiple:(NSInteger)multipleNum;
 {
@@ -1016,19 +683,20 @@
         float p = (float)lowprofitNum/100;//最低盈利率
         //全程最低盈利率
         //求出满足条件的总期数
-        NSInteger total = maxQi;//最大期数
         NSInteger sum = 2*n*_multiple;//累计投入
-        mutArry = [[NSMutableArray alloc]initWithCapacity:total];//倍数
+        mutArry = [[NSMutableArray alloc]initWithCapacity:maxQi];//倍数
         mutArry[0] = [NSString stringWithFormat:@"%lu",(unsigned long)_multiple];
-        for(NSInteger i=1;i<total-1;i++)
+        for(NSInteger i=1;i<maxQi;i++)
         {
             NSString *strMul;
             NSInteger muLNum;
             //根据最低盈利率求出每期的倍数，若倍数大于99或小于0，则舍弃
             muLNum = [self getmul:Maxprize n:n maxwin:(maxwin) sum:sum p:p];
             strMul = [NSString stringWithFormat:@"%ld",(long)muLNum];
-            mutArry[i] = strMul;
-            if(muLNum == 99)
+            if (muLNum>0) {
+                mutArry[i] = strMul;
+            }
+            if(muLNum == 99||muLNum <=0)
             {
                 if(_issue > i)
                 {
@@ -1054,7 +722,6 @@
         double p = (float)lowprofitNum;//最低盈利率
         //全程最低盈利
         //求出满足条件的总期数
-        NSInteger total = maxQi;//最大期数
         NSInteger mut = _multiple;//起始倍数
         mut = (int) ceilf((float)(p/(Maxprize*maxwin-2*n)));
         if(mut > 99)
@@ -1065,10 +732,10 @@
         {
             mut =1;
         }
-        mutArry = [[NSMutableArray alloc]initWithCapacity:total];//倍数
+        mutArry = [[NSMutableArray alloc]initWithCapacity:maxQi];//倍数
         mutArry[0] = [NSString stringWithFormat:@"%ld",(long)mut];
          NSInteger sum = 2*n*mut;//累计投入
-        for(NSInteger i=1;i<total-1;i++)
+        for(NSInteger i=1;i<maxQi;i++)
         {
 
         NSString *strMul;
@@ -1076,9 +743,11 @@
         //根据最低盈利率求出每期的倍数，若倍数大于99或小于0，则舍弃
         muLNum = [self getmulplan3:Maxprize n:n maxwin:(maxwin) sum:sum pmoney:p];
         strMul = [NSString stringWithFormat:@"%ld",(long)muLNum];
-        mutArry[i] = strMul;
+        if (muLNum>0) {
+            mutArry[i] = strMul;
+        }
         //_issue = i;
-        if(muLNum == 99)
+        if(muLNum == 99||muLNum <=0)
         {
             if(_issue > i)
             {
@@ -1135,8 +804,10 @@
         //根据最低盈利率求出每期的倍数，若倍数大于99或小于0，则舍弃
         muLNum = [self getmul:Maxprize n:n maxwin:(maxwin) sum:sum p:p];
         strMul = [NSString stringWithFormat:@"%ld",(long)muLNum];
-        mutArry[i] = strMul;
-        if(muLNum == 99)
+        if (muLNum>0) {
+             mutArry[i] = strMul;
+        }
+        if(muLNum == 99||muLNum <=0)
         {
             if(_issue > i)
             {
@@ -1146,7 +817,8 @@
                 NSString *msg =@"单期倍数超限，超限的期号不再显示";
                 [self showPromptText:msg hideAfterDelay:2.7];
             }
-            [self loadScrollView];
+            [self loadBeishushow];
+            
             [listTableView reloadData];
             [self updateSummary];
             return;
@@ -1154,7 +826,7 @@
         sum = [self getSum:sum mut:muLNum n:n];
     }
     flag = true;
-    [self loadScrollView];
+    [self loadBeishushow];
     [listTableView reloadData];
     [self updateSummary];
     
@@ -1184,10 +856,10 @@
         //如果超过倍数上限
         return 99;
     }
-    else if(result < 0)
-    {   //如果计算出的倍数为负数
-        return 1;
-    }
+//    else if(result < 0)
+//    {   //如果计算出的倍数为负数
+//        return 1;
+//    }
     else{
         return result;
     }
@@ -1206,9 +878,11 @@
         result =  (int) ceilf((float)((float) (pmoney+sum)/(prize*maxwin-2*n)));
         if((result > 99) ){
             return 99;
-        }else if(result < 0){
-            return 1;
-        }else{
+        }
+//        else if(result < 0){
+//            return 1;
+//        }
+        else{
             return result;
         }
     }else{
@@ -1474,14 +1148,13 @@
         NSMutableArray *MutableArray = [[NSMutableArray alloc] init];
         LotteryBet * bet = betslist[0];
         
-        NSString * str = bet.betNumbersDesc.string;
 //        NSString *str = [[betslist[0] valueForKey:@"betNumbersDesc"]valueForKey:@"mutableString"];
-        MutableArray = [str componentsSeparatedByString:@","];
+//        MutableArray = [str componentsSeparatedByString:@","];
         for(int i=1;i<betslist.count;i++)
         {    LotteryBet * bet = betslist[i];
              NSString * str = bet.betNumbersDesc.string;
 //             NSString *str = [[betslist[i] valueForKey:@"betNumbersDesc"]valueForKey:@"mutableString"];
-            NSMutableArray * array = [str componentsSeparatedByString:@","];
+            NSArray * array = [str componentsSeparatedByString:@","];
             for(int i=0;i<array.count;i++)
             {
                 int count = 0;
@@ -1556,7 +1229,7 @@
                 LotteryBet*bet =betslist[i];
                 
                 NSString *str =bet.betNumbersDesc.string;
-                 NSMutableArray * array = [str componentsSeparatedByString:@","];
+                NSArray* array = [str componentsSeparatedByString:@","];
                 int count =0;
                 if(array.count<tmp.count)
                 {
@@ -1711,8 +1384,8 @@
 //    [[UIApplication sharedApplication].keyWindow addSubview:Optimizeview];
     [Optimizeview show];
 }
--(void)SubmitBtnClick
-{
+
+- (IBAction)actionToSubmit:(id)sender {
     if ([JiangqiChoose.text integerValue] <= 1) {
         [self showPromptText:@"追号期数至少2期" hideAfterDelay:1.7];
         return;
@@ -1732,7 +1405,6 @@
         return;
     }
     [self  updateMemberClinet];
-    
 }
 
 -(void)updateMemberClinet{
@@ -1796,10 +1468,7 @@
     }];
     [alert showAlertWithSender:self];
 }
--(void)clearBtnClick
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
+
 - (BOOL)isExceedLimitAmount{
     
     int costTotal = 0;
@@ -1979,10 +1648,7 @@
         switch (i) {
             case 0: straward = @"SX115";
                 break;
-            case 1: straward = @"JCZQ";
-                break;
-            case 2: straward = @"DLT";
-                break;
+            
             case 3:
                 break;
             case 4:
@@ -2323,35 +1989,29 @@
     }
     return playType;
 }
+
 -(void)loadphaseInfoView
 {
-    CGRect phaseSectionFrame = CGRectMake(0, 0, KscreenWidth, 0);
-    phaseSectionFrame.origin.y = 0;
-    phaseSectionFrame.size.height = PhaseInfoHeight * 2;
+    CGRect phaseSectionFrame = CGRectMake(0, 0, KscreenWidth, PhaseInfoHeight * 2);
     if(phaseInfoView == nil){
         phaseInfoView = [[LotteryPhaseInfoView alloc] initWithFrame: phaseSectionFrame];
         phaseInfoView.delegate = self;
     }
-        
-  
     [phaseInfoView drawWithLotteryNoButton: self.lottery];
     [ContentView addSubview: phaseInfoView];
-    
-//    if (!_lottery.currentRound) {
-        [self beginTimerForCurRound];
-//    }
-    
+    [self beginTimerForCurRound];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(beginTimerForCurRound) name:@"RoundTimeDownFinish" object:nil];
 }
+
 -(void)beginTimerForCurRound{
-    
-    @try {
-        [timerForcurRound invalidate];//强制定时器失效
-        timerForcurRound = [NSTimer scheduledTimerWithTimeInterval:20 target:self selector:@selector(getCurrentRound) userInfo:nil repeats:YES];
-        [timerForcurRound fire];
-    } @catch (NSException *exception) {
-        
-    }
+    [self getCurrentRound];
+//    @try {
+//        [timerForcurRound invalidate];//强制定时器失效
+//        timerForcurRound = [NSTimer scheduledTimerWithTimeInterval:20 target:self selector:@selector(getCurrentRound) userInfo:nil repeats:YES];
+//        [timerForcurRound fire];
+//    } @catch (NSException *exception) {
+//
+//    }
 }
 
 
@@ -2379,18 +2039,10 @@
         {
             NSString *msg =@"奖期已经更新";
             [self showPromptText:msg hideAfterDelay:2.7];
-            [self loadScrollView];
+            [self loadBeishushow];
         }
       
     }
-}
-
--(void) getLotteryRoundFinish{
-    
-}
-
-- (void)textInputFromPopView:(NSString *)text{
-    
 }
 
 -(NSArray*)getZhuiHaoInfo
