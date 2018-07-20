@@ -105,7 +105,7 @@
         
         for (int i = 0; i < selectArray .count; i ++ ) {
             if ([selectArray[i] integerValue] == 1) {
-                [tit appendString:[NSString stringWithFormat:@"%@ %@,",titleDic[i][@"appear"],spArray[i]]];
+                [tit appendString:[NSString stringWithFormat:@"%@@%@,",titleDic[i][@"appear"],spArray[i]]];
             }
         }
     }else{

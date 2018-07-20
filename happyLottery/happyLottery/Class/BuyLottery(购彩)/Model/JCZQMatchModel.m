@@ -130,7 +130,7 @@
     if (spArray != nil) {
         for (int i = 0; i < selectArray .count; i ++ ) {
             if ([selectArray[i] integerValue] == 1) {
-                [tit appendString:[NSString stringWithFormat:@"%@ %@,",titleDic[[NSString stringWithFormat:@"%ld",baseIndex + i]][@"appear"],spArray[i]]];
+                [tit appendString:[NSString stringWithFormat:@"%@@%@,",titleDic[[NSString stringWithFormat:@"%ld",baseIndex + i]][@"appear"],spArray[i]]];
             }
         }
     }else{
