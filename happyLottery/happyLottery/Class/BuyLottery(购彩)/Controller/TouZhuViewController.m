@@ -1208,7 +1208,6 @@
     [self.view addSubview:passInput];
     
     [passInput createBlock:^(NSString *text) {
-        
         if (nil == text) {
             [self showPromptText:TextNoPwdAlert hideAfterDelay:1.7];
             return;
@@ -1219,7 +1218,6 @@
                                   @"payPwd":[AESUtility encryptStr:text]};
         [self.memberMan validatePaypwdSms:cardInfo];
     }];
-    
 }
 
 -(void)validatePaypwdSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
