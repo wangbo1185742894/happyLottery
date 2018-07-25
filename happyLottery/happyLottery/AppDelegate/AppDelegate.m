@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "CashAndIntegrationWaterViewController.h"
+#import "FASSchemeDetailViewController.h"
 #import "CashInfoViewController.h"
 #import "NewFeatureViewController.h"
 #import "GroupNewViewController.h"
@@ -257,10 +258,9 @@ static SystemSoundID shake_sound_male_id = 0;
                                 
                 case SSDKPlatformTypeWechat:
                               //appstore
-//                    [appInfo SSDKSetupWeChatByAppId:@"wxa0ff0f5a5d94e563"
-//                                                      appSecret:@"bad37187c37042cfa2134ce2e1872d40"];
-                    [appInfo SSDKSetupWeChatByAppId:@"wxe640eb18da420c3b"
-                    appSecret:@"6ad481ed34390f25f4c930befb0e4abb"];
+                    [appInfo SSDKSetupWeChatByAppId:@"wxa0ff0f5a5d94e563" appSecret:@"bad37187c37042cfa2134ce2e1872d40"];
+//                    [appInfo SSDKSetupWeChatByAppId:@"wxe640eb18da420c3b"
+//                    appSecret:@"6ad481ed34390f25f4c930befb0e4abb"];
                     break;
                     default:
                     break;
@@ -1159,6 +1159,24 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 - (BOOL)application:(UIApplication *)app
             openURL:(NSURL *)url
             options:(NSDictionary<NSString *,id> *)options{
+    NSString *strUrl = [NSString stringWithFormat:@"%@",url];
+    if ([strUrl rangeOfString:@"tbz"].length >0) {
+        NSArray * shemeNom = [[[strUrl componentsSeparatedByString:@"schemeNo="] lastObject] componentsSeparatedByString:@"&schemeType="];
+        if (shemeNom .count == 2) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                FASSchemeDetailViewController *schemeDetailVC = [[FASSchemeDetailViewController alloc]init];
+                schemeDetailVC.schemeNo =[shemeNom firstObject];
+                schemeDetailVC.schemeType = [shemeNom lastObject];
+                schemeDetailVC.hidesBottomBarWhenPushed = YES;
+                
+                UITabBarController *tabBarController = (UITabBarController *)_window.rootViewController;
+                schemeDetailVC.h5Init = YES;
+                UINavigationController *nav = tabBarController .viewControllers[tabBarController.selectedIndex];
+                [nav pushViewController:schemeDetailVC animated:YES];
+            });
+        }
+        return YES;
+    }
     [[UPPaymentControl defaultControl] handlePaymentResult:url completeBlock:^(NSString *code, NSDictionary *data) {
         
         //调用- (void)yinlanPayFinish:(NSString *)result

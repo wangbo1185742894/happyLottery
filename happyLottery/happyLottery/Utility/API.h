@@ -56,9 +56,9 @@
 #define APIgetRedPacketByState     @"getRedPacketByState"
 
 
-#define SUBAPIMember         @"/member"
-#define APILogin                   @"login"
-#define APIRegister                @"register"
+#define SUBAPIMember              @"/member"
+#define APILogin                        @"login"
+#define APIRegister                    @"register"
 #define APISendRegisterSms         @"sendRegisterSms"
 #define APICheckRegisterSms        @"checkRegisterSms"
 #define APISendForgetPWDSms        @"sendResetPwdSms"

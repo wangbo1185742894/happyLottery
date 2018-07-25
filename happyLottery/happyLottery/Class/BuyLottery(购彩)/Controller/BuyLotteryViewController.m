@@ -50,6 +50,7 @@
 #import "LotteryAreaViewCell.h"
 #import "LMJScrollTextView2.h"
 #import "LotteryPlayViewController.h"
+#import <UIKit/UIWebView.h>
 #define KNewsListCell @"NewsListCell"
 #define AnimationDur 0.3
 #define KAppSignModelShow @"appSignModelShow"
@@ -57,7 +58,7 @@
 #define KEYAPPVERSION @"appVersion"
 static NSString *ID = @"LotteryAreaViewCell";
 
-@interface BuyLotteryViewController ()<WBAdsImgViewDelegate,HomeMenuItemViewDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,NewsListCellDelegate,OpenRedPopViewDelegate,MemberManagerDelegate,VersionUpdatingPopViewDelegate,NetWorkingHelperDelegate,UICollectionViewDataSource,UICollectionViewDelegate,XYTableViewDelegate>
+@interface BuyLotteryViewController ()<WBAdsImgViewDelegate,HomeMenuItemViewDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,NewsListCellDelegate,OpenRedPopViewDelegate,MemberManagerDelegate,VersionUpdatingPopViewDelegate,NetWorkingHelperDelegate,UICollectionViewDataSource,UICollectionViewDelegate,XYTableViewDelegate,UIWebViewDelegate>
 {
     NSMutableArray  <JczqShortcutModel *>*JczqShortcutList;
     NSMutableArray  <JczqShortcutModel *>*colloectList;
@@ -125,6 +126,7 @@ static NSString *ID = @"LotteryAreaViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     CGFloat bottomheight;
+   
     self.sellLottery = [NSMutableArray arrayWithCapacity:0];
     
     if ([self isIphoneX]) {
@@ -132,7 +134,6 @@ static NSString *ID = @"LotteryAreaViewCell";
     }else{
         bottomheight = 49;
     }
-
     NSString *plistPath = [[NSBundle mainBundle]pathForResource:@"LotteryArea" ofType:@"plist"];
     _lotteryArr = [[NSMutableArray alloc] initWithContentsOfFile:plistPath];
     activityInfoView = [[ActivityInfoView alloc ]initWithFrame:CGRectMake(0, KscreenHeight - bottomheight - 70, KscreenWidth, 70)];
@@ -185,6 +186,8 @@ static NSString *ID = @"LotteryAreaViewCell";
 //    [self.view bringSubviewToFront:redpacketView];
 //    [self.view insertSubview:redpacketView aboveSubview:self.tabBarController.tabBar];
 }
+
+
 
 -(void)getLotteryList{
 
