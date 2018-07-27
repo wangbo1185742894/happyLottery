@@ -290,8 +290,8 @@
                         <constraint firstAttribute="bottom" secondItem="0Aq-6s-ooa" secondAttribute="bottom" id="tjx-Id-H2w"/>
                     </constraints>
                 </scrollView>
-                <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VmK-ed-3Fs">
-                    <rect key="frame" x="0.0" y="591" width="375" height="76"/>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VmK-ed-3Fs">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sO4-WE-ckg">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>

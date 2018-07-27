@@ -1926,5 +1926,32 @@
                         failure:failureBlock];
 }
 
+-(void)getFollowSchemeBySchemeNo:(NSDictionary *)para{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        
+        if (response.succeed) {
+            NSDictionary *paraDic = [Utility objFromJson:responseJsonStr];
+            [self.delegate gotFollowSchemeBySchemeNo:paraDic errorInfo:response.errorMsg];
+        } else {
+             [self.delegate gotFollowSchemeBySchemeNo:nil errorInfo:response.errorMsg];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+         [self.delegate gotFollowSchemeBySchemeNo:nil errorInfo:@"请检查网络连接"];
+    };
+    
+    SOAPRequest *request = [self requestForAPI: APIgetFollowSchemeBySchemeNo withParam:@{@"params":[self actionEncrypt:[self JsonFromId:para]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPISchemeService
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+
 
 @end

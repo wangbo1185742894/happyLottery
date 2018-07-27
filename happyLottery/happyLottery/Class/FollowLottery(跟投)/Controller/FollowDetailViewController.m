@@ -46,6 +46,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     for (UIButton *btn in _btnBeiSelect) {
         if (btn.tag == 10) {
             btn.selected = YES;
@@ -71,13 +72,34 @@
     if ([self.curUser.whitelist boolValue] == NO) {
         self.btnTouzhu.hidden = YES;
     }
-    self.lotteryMan.delegate = self;
+
     self.wbSelectView.beiShuLimit = 9999;
     self.wbSelectView.labContent.textColor = RGBCOLOR(254, 168, 19);
     self.wbSelectView.delegate = self;
     [self.wbSelectView setTarget:self rightAction:@selector(actionAdd) leftAction:@selector(actionSub)];
-    [self loadData];
+    self.lotteryMan.delegate = self;
+    if (self.schemeNo != nil) {
+        [self showLoadingText:@"正在加载"];
+        [self.lotteryMan getFollowSchemeBySchemeNo:@{@"schemeNo":self.schemeNo}];
+    }else{
+        [self loadData];
+        [self updataTouzhuInfo];
+    }
+    
     self.beiCount = 10;
+    
+   
+}
+
+-(void)gotFollowSchemeBySchemeNo:(NSDictionary *)resultDic errorInfo:(NSString *)msg{
+    [self hideLoadingView];
+    if (resultDic == nil) {
+        [self showPromptText:msg hideAfterDelay:1.7];
+        return;
+    }
+    
+    self .model = [[HotSchemeModel alloc]initWith:resultDic];
+    [self loadData];
     [self updataTouzhuInfo];
 }
 

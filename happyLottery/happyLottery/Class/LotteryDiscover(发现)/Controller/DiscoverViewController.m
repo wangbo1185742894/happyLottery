@@ -8,6 +8,7 @@
 
 #import "DiscoverViewController.h"
 #import <ShareSDK/ShareSDK+Base.h>
+#import "PersonCenterViewController.h"
 #import <ShareSDKUI/ShareSDK+SSUI.h>
 #import <ShareSDK/NSMutableDictionary+SSDKShare.h>
 #import <MOBFoundation/MOBFoundation.h>
@@ -336,8 +337,18 @@
         }
     });
 }
--(void)goCathectic:(NSString *)lotteryCode{ //跳转竟足  充值  优惠券
-    if (lotteryCode == nil) {
+
+-(void)goCathectic:(NSString *)lotteryCode :(NSString *)cardCode{ //跳转竟足  充值  优惠券
+    if ([lotteryCode isEqualToString: @"GRZX"]) {
+        if (cardCode.length == 0) {
+            return;
+        }
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            PersonCenterViewController *personVC = [[PersonCenterViewController alloc]init];
+            personVC.cardCode = cardCode;
+            personVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:personVC animated:YES];
+        });
         return;
     }
     if (self.curUser.isLogin == NO) {

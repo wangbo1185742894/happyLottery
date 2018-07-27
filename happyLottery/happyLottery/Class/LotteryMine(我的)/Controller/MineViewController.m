@@ -904,9 +904,8 @@
         [self needLogin];
     } else {
         CashInfoViewController * pcVC = [[CashInfoViewController alloc]init];
-        
         pcVC.hidesBottomBarWhenPushed = YES;
-        [pcVC setMenuOffset:4];
+        [pcVC setMenuOffset:CashInfoCaijin];
         [self.navigationController pushViewController:pcVC animated:YES];
     }
 }

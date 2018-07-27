@@ -394,6 +394,9 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     FollowDetailViewController *followVC = [[FollowDetailViewController alloc]init];
+    if (schemeList.count == 0) {
+        return;
+    }
     followVC.model = schemeList[indexPath.row];
     followVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:followVC animated:YES];

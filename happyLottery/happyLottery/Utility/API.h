@@ -56,9 +56,9 @@
 #define APIgetRedPacketByState     @"getRedPacketByState"
 
 
-#define SUBAPIMember         @"/member"
-#define APILogin                   @"login"
-#define APIRegister                @"register"
+#define SUBAPIMember              @"/member"
+#define APILogin                        @"login"
+#define APIRegister                    @"register"
 #define APISendRegisterSms         @"sendRegisterSms"
 #define APICheckRegisterSms        @"checkRegisterSms"
 #define APISendForgetPWDSms        @"sendResetPwdSms"
@@ -232,6 +232,8 @@
 #define APIGetJclqTicketOrderDetail   @"getJclqTicketOrderDetail"// 查询订单详情(竞彩篮球
 #define APIgetSD115TicketOrderDetail  @"getSD115TicketOrderDetail"
 #define APIgetSX115TicketOrderDetail  @"getSX115TicketOrderDetail"
+#define APIgetFollowSchemeBySchemeNo    @"getFollowSchemeBySchemeNo"
+
 
 #define SUBAPIAgentService  @"/agent"
 

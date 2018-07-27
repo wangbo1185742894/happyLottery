@@ -583,6 +583,10 @@
 }
 
 -(void)navigationBackToLastPage{
+    if (self.h5Init == YES) {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        return;
+    }
         for (BaseViewController *baseVC in self.navigationController.viewControllers) {
             if ([baseVC isKindOfClass:[MyPostSchemeViewController class]]) {
                 [self.navigationController popToViewController:baseVC animated:YES];

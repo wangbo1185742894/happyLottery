@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "CashAndIntegrationWaterViewController.h"
+#import "FollowDetailViewController.h"
+#import "FASSchemeDetailViewController.h"
 #import "CashInfoViewController.h"
 #import "NewFeatureViewController.h"
 #import "GroupNewViewController.h"
@@ -257,10 +259,9 @@ static SystemSoundID shake_sound_male_id = 0;
                                 
                 case SSDKPlatformTypeWechat:
                               //appstore
-//                    [appInfo SSDKSetupWeChatByAppId:@"wxa0ff0f5a5d94e563"
-//                                                      appSecret:@"bad37187c37042cfa2134ce2e1872d40"];
-                    [appInfo SSDKSetupWeChatByAppId:@"wxe640eb18da420c3b"
-                    appSecret:@"6ad481ed34390f25f4c930befb0e4abb"];
+                    [appInfo SSDKSetupWeChatByAppId:@"wxa0ff0f5a5d94e563" appSecret:@"bad37187c37042cfa2134ce2e1872d40"];
+//                    [appInfo SSDKSetupWeChatByAppId:@"wxe640eb18da420c3b"
+//                    appSecret:@"6ad481ed34390f25f4c930befb0e4abb"];
                     break;
                     default:
                     break;
@@ -634,13 +635,10 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSString *title = [userInfo valueForKey:@"title"];
     NSString *content = [userInfo valueForKey:@"content"];
     NSDictionary *extra = [userInfo valueForKey:@"extras"];
-    NSString *customizeField1 = [extra valueForKey:@"customizeField1"]; //服务端传递的Extras附加字段，key是自己定义的
+    
     NSString *pageCode =extra[@"pageCode"] ;
     NSString *linkUrl=extra[@"linkUrl"] ;
-//
-//
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    //
+
     NSString *time = [Utility timeStringFromFormat:@"yyyy-MM-dd HH:mm:ss" withDate:[NSDate date]];
     //    [APService handleRemoteNotification:userInfo];
     if ([self.fmdb open]) {
@@ -1159,6 +1157,49 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 - (BOOL)application:(UIApplication *)app
             openURL:(NSURL *)url
             options:(NSDictionary<NSString *,id> *)options{
+    NSString *strUrl = [NSString stringWithFormat:@"%@",url];
+    NSURLComponents *components = [[NSURLComponents alloc] initWithString:url.absoluteString];
+    NSString *schemeNo;
+    NSString *schemeType;
+    NSString *onSell ;
+    for (NSURLQueryItem *item in components.queryItems) {
+        if ([item.name isEqualToString:@"schemeNo"]) {
+            schemeNo = item.value;
+        }
+        if ([item.name isEqualToString:@"schemeType"]) {
+            schemeType = item.value;
+        }
+        if ([item.name isEqualToString:@"onSell"]) {
+            onSell = item.value;
+        }
+    }
+    if (schemeNo.length == 0) {
+        return YES;
+    }
+    MJWeakSelf;
+    if ([strUrl rangeOfString:@"tbz"].length >0) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                BaseViewController *baseVC;
+                if ([onSell boolValue] == YES) {
+                    FollowDetailViewController *followDetailVC = [[FollowDetailViewController alloc]init];
+                    followDetailVC.hidesBottomBarWhenPushed = YES;
+                    followDetailVC.schemeNo = schemeNo;
+                    baseVC = followDetailVC;
+                }else{
+                    FASSchemeDetailViewController *schemeDetailVC = [[FASSchemeDetailViewController alloc]init];
+                    schemeDetailVC.schemeNo =  schemeNo;
+                    schemeDetailVC.schemeType = schemeType;
+                    schemeDetailVC.hidesBottomBarWhenPushed = YES;
+                    schemeDetailVC.h5Init = YES;
+                    baseVC = schemeDetailVC;
+                }
+               
+                UITabBarController *tabBarController = (UITabBarController *)weakSelf. window.rootViewController;
+                UINavigationController *nav = tabBarController .viewControllers[tabBarController.selectedIndex];
+                [nav pushViewController:baseVC animated:YES];
+            });
+        return YES;
+    }
     [[UPPaymentControl defaultControl] handlePaymentResult:url completeBlock:^(NSString *code, NSDictionary *data) {
         
         //调用- (void)yinlanPayFinish:(NSString *)result
