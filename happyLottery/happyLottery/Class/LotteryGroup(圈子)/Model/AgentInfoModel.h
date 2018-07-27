@@ -16,6 +16,7 @@
 @property(nonatomic,copy)NSString * createTime;
 @property(nonatomic,copy)NSString * _id;
 @property(nonatomic,copy)NSString * version;
+@property(nonatomic,copy)NSString * cardCode;
 @end
 
 @interface AgentInfoModel : BaseModel

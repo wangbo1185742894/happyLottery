@@ -13,6 +13,7 @@
 #import "AgentDynamicCell.h"
 #import "AgentHeaderView.h"
 #import "GroupFollowViewController.h"
+#import "PersonCenterViewController.h"
 #import "GroupMemberVC.h"
 #import "ZhanWeiTuScheme.h"
 #import <ShareSDK/ShareSDK.h>
@@ -31,6 +32,7 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topDIs;
 @property(nonatomic,strong)NSMutableArray <AgentDynamic *> * dynamicArray;
+@property(assign,nonatomic)NSInteger page;
 
 @end
 
@@ -41,16 +43,16 @@
     AgentDynamic *dynamicModel;
     NSTimer *timer;
     BOOL placeImageHidden;
+    BOOL timerRefresh;
 }
--(void)loadNewData{
-    NSDictionary *dic = @{@"cardCode":self.curUser.cardCode};
-    [self.agentMan getAgentInfo:dic];
-}
+
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self loadNewData];
     self.navigationController.navigationBar.hidden = YES;
-    [self openTimer];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(20 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self openTimer];
+    });
     placeImageHidden = YES;
     [self.groupTableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
    
@@ -78,14 +80,18 @@
     self.agentMan.delegate = self;
     self.dynamicArray = [NSMutableArray arrayWithCapacity:0];
     timer = [NSTimer scheduledTimerWithTimeInterval:20 target:self selector:@selector(reloadAgentDynamic) userInfo:nil repeats:YES];
-//    [self.agentMan listAgentDynamic:dic];
-   
-    
     // Do any additional setup after loading the view from its nib.
 }
 
+-(void)loadNewData{
+    timerRefresh = NO;
+    NSDictionary *dic = @{@"cardCode":self.curUser.cardCode};
+    [self.agentMan getAgentInfo:dic];
+}
+
+//定时刷新  分页显示时不刷新
 - (void)reloadAgentDynamic{
-    if (model!= nil) {
+    if (model!= nil&&self.page == 1) {
         NSDictionary *dic = @{@"agentId":model._id};
         [self.agentMan getAgentFollowCount:dic];
     }
@@ -108,12 +114,12 @@
      [self.groupTableView registerNib:[UINib nibWithNibName:KZhanWeiTuScheme bundle:nil] forCellReuseIdentifier:KZhanWeiTuScheme];
     
     self.groupTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [UITableView refreshHelperWithScrollView:self.groupTableView target:self loadNewData:@selector(loadNewData) loadMoreData:nil isBeginRefresh:NO];
+    [UITableView refreshHelperWithScrollView:self.groupTableView target:self loadNewData:@selector(loadNewData) loadMoreData:@selector(loadMoreData) isBeginRefresh:YES];
     
 }
 
 -(void )getAgentInfodelegate:(NSDictionary *)param isSuccess:(BOOL)success errorMsg:(NSString *)msg{
-    [self.groupTableView tableViewEndRefreshCurPageCount:0];
+//    [self.groupTableView tableViewEndRefreshCurPageCount:0];
     if (!success) {
         [self showPromptViewWithText:msg hideAfter:1];
         return;
@@ -122,7 +128,8 @@
         return;
     }
     model = [[AgentInfoModel alloc]initWith:param];
-    [self reloadAgentDynamic];
+    NSDictionary *dic = @{@"agentId":model._id};
+    [self.agentMan getAgentFollowCount:dic];
     //当前用户的卡号等于圈主卡号
     if ([self.curUser.cardCode isEqualToString:model.cardCode]) {
         self.curUser.memberType = @"CIRCLE_MASTER";
@@ -134,11 +141,14 @@
 
 
 -(void )listAgentDynamicdelegate:(NSArray *)array isSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    [self.groupTableView tableViewEndRefreshCurPageCount:self.dynamicArray.count];
     if (!success) {
         [self showPromptViewWithText:msg hideAfter:1];
         return;
     }
-    [self.dynamicArray removeAllObjects];
+    if (self.page == 1) {
+        [self.dynamicArray removeAllObjects];
+    }
     //如果是上移一个cell的高度，上移一个cell的高度(解决偏移量错的问题)
     self.groupTableView.estimatedRowHeight = 200;
     if (array.count == 0) {
@@ -156,14 +166,22 @@
     [self hideLoadingView];
 }
 
--(void )getAgentFollowCountdelegate:(NSString *)string isSuccess:(BOOL)success errorMsg:(NSString *)msg{
+-(void)getAgentFollowCountdelegate:(NSString *)string isSuccess:(BOOL)success errorMsg:(NSString *)msg{
     if (!success) {
         [self showPromptViewWithText:msg hideAfter:1];
         return;
     }
     followCount = string;
-//    [self.groupTableView reloadData];
-    NSDictionary *dic = @{@"agentId":model._id};
+    self.page = 1;
+    NSDictionary *dic = @{@"agentId":model._id,@"page":@(_page),@"pageSize":@(KpageSize)};
+    [self.agentMan listAgentDynamic:dic];
+}
+
+
+- (void)loadMoreData{
+    timerRefresh = NO;
+    self.page ++;
+    NSDictionary *dic = @{@"agentId":model._id,@"page":@(_page),@"pageSize":@(KpageSize)};
     [self.agentMan listAgentDynamic:dic];
 }
 
@@ -305,6 +323,16 @@
         }
     }
     return nil;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 2) {
+        dynamicModel = self.dynamicArray[indexPath.row];
+        PersonCenterViewController *personCV = [[PersonCenterViewController alloc]init];
+        personCV.cardCode = dynamicModel.cardCode;
+        personCV.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:personCV animated:YES];
+    }
 }
 
 @end
