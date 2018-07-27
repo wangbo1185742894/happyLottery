@@ -326,6 +326,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (self.dynamicArray.count == 0) {
+        return;
+    }
     if (indexPath.section == 2) {
         dynamicModel = self.dynamicArray[indexPath.row];
         PersonCenterViewController *personCV = [[PersonCenterViewController alloc]init];
