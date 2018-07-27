@@ -11,4 +11,5 @@
 
 @interface FollowDetailViewController : BaseViewController
 @property (nonatomic,strong)HotSchemeModel *model;
+@property (nonatomic,strong)NSString  *schemeNo;
 @end

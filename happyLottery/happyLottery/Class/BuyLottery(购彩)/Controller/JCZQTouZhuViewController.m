@@ -567,6 +567,25 @@
     [self updataTouzhuInfo];
     
 }
+- (IBAction)bounsYouhua:(id)sender {
+    if (self.transction.selectMatchArray.count > 4) {
+        [self showPromptText:@"奖金优化最多选4场比赛" hideAfterDelay:2];
+        return;
+    }
+    if (self.transction.betCount > 50) {
+        [self showPromptText:@"奖金优化原始注数不能超过50注" hideAfterDelay:2];
+        return;
+    }
+    for (NSString *item in self.transction.selectItems) {
+        if ([item rangeOfString:@"串"].length >0) {
+            if ([[[item componentsSeparatedByString:@"串"] lastObject] integerValue] > 1) {
+                [self showPromptText:@"奖金优化仅支持n串1" hideAfterDelay:2];
+                return;
+            }
+        }
+    }
+    
+}
 
 
 @end

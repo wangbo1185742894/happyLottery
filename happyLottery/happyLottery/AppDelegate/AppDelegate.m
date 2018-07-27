@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "CashAndIntegrationWaterViewController.h"
+#import "FollowDetailViewController.h"
 #import "FASSchemeDetailViewController.h"
 #import "CashInfoViewController.h"
 #import "NewFeatureViewController.h"
@@ -634,13 +635,10 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSString *title = [userInfo valueForKey:@"title"];
     NSString *content = [userInfo valueForKey:@"content"];
     NSDictionary *extra = [userInfo valueForKey:@"extras"];
-    NSString *customizeField1 = [extra valueForKey:@"customizeField1"]; //服务端传递的Extras附加字段，key是自己定义的
+    
     NSString *pageCode =extra[@"pageCode"] ;
     NSString *linkUrl=extra[@"linkUrl"] ;
-//
-//
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    //
+
     NSString *time = [Utility timeStringFromFormat:@"yyyy-MM-dd HH:mm:ss" withDate:[NSDate date]];
     //    [APService handleRemoteNotification:userInfo];
     if ([self.fmdb open]) {
@@ -1160,21 +1158,46 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
             openURL:(NSURL *)url
             options:(NSDictionary<NSString *,id> *)options{
     NSString *strUrl = [NSString stringWithFormat:@"%@",url];
-    if ([strUrl rangeOfString:@"tbz"].length >0) {
-        NSArray * shemeNom = [[[strUrl componentsSeparatedByString:@"schemeNo="] lastObject] componentsSeparatedByString:@"&schemeType="];
-        if (shemeNom .count == 2) {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                FASSchemeDetailViewController *schemeDetailVC = [[FASSchemeDetailViewController alloc]init];
-                schemeDetailVC.schemeNo =[shemeNom firstObject];
-                schemeDetailVC.schemeType = [shemeNom lastObject];
-                schemeDetailVC.hidesBottomBarWhenPushed = YES;
-                
-                UITabBarController *tabBarController = (UITabBarController *)_window.rootViewController;
-                schemeDetailVC.h5Init = YES;
-                UINavigationController *nav = tabBarController .viewControllers[tabBarController.selectedIndex];
-                [nav pushViewController:schemeDetailVC animated:YES];
-            });
+    NSURLComponents *components = [[NSURLComponents alloc] initWithString:url.absoluteString];
+    NSString *schemeNo;
+    NSString *schemeType;
+    NSString *onSell ;
+    for (NSURLQueryItem *item in components.queryItems) {
+        if ([item.name isEqualToString:@"schemeNo"]) {
+            schemeNo = item.value;
         }
+        if ([item.name isEqualToString:@"schemeType"]) {
+            schemeType = item.value;
+        }
+        if ([item.name isEqualToString:@"onSell"]) {
+            onSell = item.value;
+        }
+    }
+    if (schemeNo.length == 0) {
+        return YES;
+    }
+    MJWeakSelf;
+    if ([strUrl rangeOfString:@"tbz"].length >0) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                BaseViewController *baseVC;
+                if ([onSell boolValue] == YES) {
+                    FollowDetailViewController *followDetailVC = [[FollowDetailViewController alloc]init];
+                    followDetailVC.hidesBottomBarWhenPushed = YES;
+                    followDetailVC.schemeNo = schemeNo;
+                    baseVC = followDetailVC;
+                }else{
+                    FASSchemeDetailViewController *schemeDetailVC = [[FASSchemeDetailViewController alloc]init];
+                    schemeDetailVC.schemeNo =  schemeNo;
+                    schemeDetailVC.schemeType = schemeType;
+                    schemeDetailVC.hidesBottomBarWhenPushed = YES;
+                    schemeDetailVC.h5Init = YES;
+                    baseVC = schemeDetailVC;
+                }
+               
+                UITabBarController *tabBarController = (UITabBarController *)weakSelf. window.rootViewController;
+                UINavigationController *nav = tabBarController .viewControllers[tabBarController.selectedIndex];
+                [nav pushViewController:baseVC animated:YES];
+            });
         return YES;
     }
     [[UPPaymentControl defaultControl] handlePaymentResult:url completeBlock:^(NSString *code, NSDictionary *data) {

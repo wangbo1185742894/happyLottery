@@ -1340,9 +1340,6 @@ static NSString *ID = @"LotteryAreaViewCell";
         // [self showPromptText: @"memberInfo成功" hideAfterDelay: 1.7];
            [listUseRedPacketArray removeAllObjects];
             NSArray *array = redPacketInfo;
-            
-            
-        
                         for (int i=0; i<array.count; i++) {
                             
                             RedPacket *redPacket = [[RedPacket alloc]initWith:array[i]];
