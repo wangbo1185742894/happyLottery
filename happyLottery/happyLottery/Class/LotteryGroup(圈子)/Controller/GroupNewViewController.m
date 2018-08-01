@@ -43,7 +43,6 @@
     AgentDynamic *dynamicModel;
     NSTimer *timer;
     BOOL placeImageHidden;
-    BOOL timerRefresh;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -80,14 +79,14 @@
     self.agentMan.delegate = self;
     self.dynamicArray = [NSMutableArray arrayWithCapacity:0];
     timer = [NSTimer scheduledTimerWithTimeInterval:20 target:self selector:@selector(reloadAgentDynamic) userInfo:nil repeats:YES];
+  
     // Do any additional setup after loading the view from its nib.
 }
-
 -(void)loadNewData{
-    timerRefresh = NO;
     NSDictionary *dic = @{@"cardCode":self.curUser.cardCode};
     [self.agentMan getAgentInfo:dic];
 }
+
 
 //定时刷新  分页显示时不刷新
 - (void)reloadAgentDynamic{
@@ -112,14 +111,12 @@
     [self.groupTableView registerNib:[UINib nibWithNibName:KGroupFollowCell bundle:nil] forCellReuseIdentifier:KGroupFollowCell];
     [self.groupTableView registerNib:[UINib nibWithNibName:KAgentDynamicCell bundle:nil] forCellReuseIdentifier:KAgentDynamicCell];
      [self.groupTableView registerNib:[UINib nibWithNibName:KZhanWeiTuScheme bundle:nil] forCellReuseIdentifier:KZhanWeiTuScheme];
-    
     self.groupTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [UITableView refreshHelperWithScrollView:self.groupTableView target:self loadNewData:@selector(loadNewData) loadMoreData:@selector(loadMoreData) isBeginRefresh:YES];
     
 }
 
 -(void )getAgentInfodelegate:(NSDictionary *)param isSuccess:(BOOL)success errorMsg:(NSString *)msg{
-//    [self.groupTableView tableViewEndRefreshCurPageCount:0];
     if (!success) {
         [self showPromptViewWithText:msg hideAfter:1];
         return;
@@ -127,6 +124,7 @@
     if ([param objectForKey:@"agentStatus"] != nil) {
         return;
     }
+    
     model = [[AgentInfoModel alloc]initWith:param];
     NSDictionary *dic = @{@"agentId":model._id};
     [self.agentMan getAgentFollowCount:dic];
@@ -141,7 +139,7 @@
 
 
 -(void )listAgentDynamicdelegate:(NSArray *)array isSuccess:(BOOL)success errorMsg:(NSString *)msg{
-    [self.groupTableView tableViewEndRefreshCurPageCount:self.dynamicArray.count];
+    [self.groupTableView tableViewEndRefreshCurPageCount:array.count];
     if (!success) {
         [self showPromptViewWithText:msg hideAfter:1];
         return;
@@ -179,7 +177,6 @@
 
 
 - (void)loadMoreData{
-    timerRefresh = NO;
     self.page ++;
     NSDictionary *dic = @{@"agentId":model._id,@"page":@(_page),@"pageSize":@(KpageSize)};
     [self.agentMan listAgentDynamic:dic];
@@ -326,6 +323,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (self.dynamicArray.count == 0) {
+        return;
+    }
     if (indexPath.section == 2) {
         dynamicModel = self.dynamicArray[indexPath.row];
         PersonCenterViewController *personCV = [[PersonCenterViewController alloc]init];
