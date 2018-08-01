@@ -79,6 +79,7 @@ typedef enum EarningsType{
 -(void)gotCommonSetValue:(NSString *)strUrl;
 
 - (void) gotFollowSchemeBySchemeNo:(NSDictionary *)resultDic  errorInfo:(NSString *)msg;
+
 @end
 
 @interface LotteryManager : Manager
@@ -173,5 +174,7 @@ typedef enum EarningsType{
 -(void)getCommonSetValue:(NSDictionary *)para;
 - (void) betChaseSchemeZhineng:(LotteryTransaction *)transcation andchaseList:(NSArray *)chaseList;
 -(void)getFollowSchemeBySchemeNo:(NSDictionary *)para;
+
+- (void) betLotteryScheme:(BaseTransaction *)transcation andBetContentArray:(NSArray *)contents;
 @end
 

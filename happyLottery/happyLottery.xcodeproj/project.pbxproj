@@ -327,6 +327,10 @@
 		2D40CAAE201EE15400DDCFE3 /* usermine@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40CAAC201EE15300DDCFE3 /* usermine@3x.png */; };
 		2D40CAB1201EEDC700DDCFE3 /* pic@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40CAAF201EEDC500DDCFE3 /* pic@3x.png */; };
 		2D40CAB2201EEDC700DDCFE3 /* pic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D40CAB0201EEDC600DDCFE3 /* pic@2x.png */; };
+		2D438D78210AB7CC002087CE /* BounsYouHuaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D438D76210AB7CC002087CE /* BounsYouHuaViewController.m */; };
+		2D438D79210AB7CC002087CE /* BounsYouHuaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D438D77210AB7CC002087CE /* BounsYouHuaViewController.xib */; };
+		2D438D7D210B081B002087CE /* BounsYouViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D438D7B210B081B002087CE /* BounsYouViewCell.m */; };
+		2D438D7E210B081B002087CE /* BounsYouViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D438D7C210B081B002087CE /* BounsYouViewCell.xib */; };
 		2D4B174E1FD7B9270034B708 /* WBAdsImgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B174D1FD7B9270034B708 /* WBAdsImgView.m */; };
 		2D4B1DC31FD7D6030034B708 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B1DC21FD7D6030034B708 /* MBProgressHUD.m */; };
 		2D4B1E361FDE241F0034B708 /* JCZQPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4B1E341FDE241F0034B708 /* JCZQPlayViewController.m */; };
@@ -2111,6 +2115,12 @@
 		2D40CAAC201EE15300DDCFE3 /* usermine@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "usermine@3x.png"; sourceTree = "<group>"; };
 		2D40CAAF201EEDC500DDCFE3 /* pic@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pic@3x.png"; sourceTree = "<group>"; };
 		2D40CAB0201EEDC600DDCFE3 /* pic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pic@2x.png"; sourceTree = "<group>"; };
+		2D438D75210AB7CC002087CE /* BounsYouHuaViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BounsYouHuaViewController.h; sourceTree = "<group>"; };
+		2D438D76210AB7CC002087CE /* BounsYouHuaViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BounsYouHuaViewController.m; sourceTree = "<group>"; };
+		2D438D77210AB7CC002087CE /* BounsYouHuaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BounsYouHuaViewController.xib; sourceTree = "<group>"; };
+		2D438D7A210B081B002087CE /* BounsYouViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BounsYouViewCell.h; sourceTree = "<group>"; };
+		2D438D7B210B081B002087CE /* BounsYouViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BounsYouViewCell.m; sourceTree = "<group>"; };
+		2D438D7C210B081B002087CE /* BounsYouViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BounsYouViewCell.xib; sourceTree = "<group>"; };
 		2D4B174C1FD7B9270034B708 /* WBAdsImgView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBAdsImgView.h; sourceTree = "<group>"; };
 		2D4B174D1FD7B9270034B708 /* WBAdsImgView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBAdsImgView.m; sourceTree = "<group>"; };
 		2D4B1DC11FD7D6030034B708 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -5777,6 +5787,9 @@
 				2D89D607206CE3AE005E0209 /* WelComeViewController.h */,
 				2D89D608206CE3AE005E0209 /* WelComeViewController.m */,
 				2D89D609206CE3AE005E0209 /* WelComeViewController.xib */,
+				2D438D75210AB7CC002087CE /* BounsYouHuaViewController.h */,
+				2D438D76210AB7CC002087CE /* BounsYouHuaViewController.m */,
+				2D438D77210AB7CC002087CE /* BounsYouHuaViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -5937,6 +5950,9 @@
 				F9ADB10220FDCF4700AFAA03 /* ZhuiHaoCell.h */,
 				F9ADB10320FDCF4700AFAA03 /* ZhuiHaoCell.m */,
 				F9ADB10420FDCF4700AFAA03 /* ZhuiHaoCell.xib */,
+				2D438D7A210B081B002087CE /* BounsYouViewCell.h */,
+				2D438D7B210B081B002087CE /* BounsYouViewCell.m */,
+				2D438D7C210B081B002087CE /* BounsYouViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -7412,6 +7428,7 @@
 				F9B5D9722060A9DE00C9F6DC /* flag23@3x.png in Resources */,
 				2D89D60B206CE3AE005E0209 /* WelComeViewController.xib in Resources */,
 				2D4B1E831FDF684E0034B708 /* wode_select@2x.png in Resources */,
+				2D438D7E210B081B002087CE /* BounsYouViewCell.xib in Resources */,
 				2D739CF01FEB4B0E00264044 /* xiala@3x.png in Resources */,
 				F9C942CC20B50191009BA1BF /* sharedeat@3x.png in Resources */,
 				F9DC8C3E20A57F02006B31F4 /* pic_jinqizhuangtai@3x.png in Resources */,
@@ -7697,6 +7714,7 @@
 				F9B5D9782060A9DE00C9F6DC /* flag369@3x.png in Resources */,
 				2D4B1E741FDF684E0034B708 /* fengkuangjingcai@3x.png in Resources */,
 				F9B5D9A42060A9DE00C9F6DC /* flag438@3x.png in Resources */,
+				2D438D79210AB7CC002087CE /* BounsYouHuaViewController.xib in Resources */,
 				2D7B13F4204E88420035AE89 /* OpenLotteryResultHeaderView.xib in Resources */,
 				F91565DD1FFCBB4A00E254CE /* ShareViewController.xib in Resources */,
 				2D27A21720DC929D0050F6D5 /* wincup@3x.png in Resources */,
@@ -8472,6 +8490,7 @@
 				2D8CBFEE1FF3771C00CC367F /* YCbetPlayTypes.m in Sources */,
 				2D16600B20A2CA1A00C1C7E7 /* MyAttendViewController.m in Sources */,
 				2D7B1323204D4ACE0035AE89 /* ExNumContainerView.m in Sources */,
+				2D438D7D210B081B002087CE /* BounsYouViewCell.m in Sources */,
 				2DA39EC42052393600A03FD1 /* OrderLotteryCateChooseView.m in Sources */,
 				F9F262B21FE8F4AE00C2E60F /* RSKImageCropViewController.m in Sources */,
 				F94AA9F31FEBBFE00021B980 /* BankCardSetTableViewCell.m in Sources */,
@@ -8785,6 +8804,7 @@
 				2D4B1E361FDE241F0034B708 /* JCZQPlayViewController.m in Sources */,
 				2D9847B11FF5E1EB00038690 /* UMChongZhiViewController.m in Sources */,
 				2D7B13E5204E878D0035AE89 /* CTZQBetInfoCell.m in Sources */,
+				2D438D78210AB7CC002087CE /* BounsYouHuaViewController.m in Sources */,
 				F9581A771FE0B765009753AA /* MineTableViewCell.m in Sources */,
 				2DDEDE6A1FD568C9007AEBF7 /* UIImageView+HighlightedWebCache.m in Sources */,
 				F92D03E12005E76600C26E7A /* FeedbackViewController.m in Sources */,

@@ -230,7 +230,6 @@
                         failure:failureBlock];
 }
 
-
 - (void) betLotteryScheme:(BaseTransaction *)transcation{
     
     void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
@@ -249,11 +248,41 @@
         SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
         [self.delegate betedLotteryScheme:nil errorMsg:response.errorMsg];
     };
-//    [0]    (null)    @"betContent" : @"[{\"betMatches\":[{\"dan\":false,\"matchId\":\"1\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"2\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"3\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"4\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"5\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"6\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"7\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"8\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"9\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"10\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"11\",\"options\":[\"*\"]},{\"dan\":false,\"matchId\":\"12\",\"options\":[\"*\"]},{\"dan\":false,\"matchId\":\"13\",\"options\":[\"*\"]},{\"dan\":false,\"matchId\":\"14\",\"options\":[\"*\"]}]}]"
+    //    [0]    (null)    @"betContent" : @"[{\"betMatches\":[{\"dan\":false,\"matchId\":\"1\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"2\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"3\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"4\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"5\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"6\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"7\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"8\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"9\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"10\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"11\",\"options\":[\"*\"]},{\"dan\":false,\"matchId\":\"12\",\"options\":[\"*\"]},{\"dan\":false,\"matchId\":\"13\",\"options\":[\"*\"]},{\"dan\":false,\"matchId\":\"14\",\"options\":[\"*\"]}]}]"
     NSDictionary *betContentDic = [transcation lottDataScheme];
     NSMutableDictionary *subSchemeDic = [transcation submitParaDicScheme];
     
     subSchemeDic[@"betContent"] = [self JsonFromId:betContentDic];
+    
+    SOAPRequest *request = [self requestForAPI: APIBetLotteryScheme withParam:@{@"params":[self actionEncrypt:[self JsonFromId:subSchemeDic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPISchemeService
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+- (void) betLotteryScheme:(BaseTransaction *)transcation andBetContentArray:(NSArray *)contents{
+    
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed) {
+            
+            [self.delegate betedLotteryScheme:responseJsonStr errorMsg:response.errorMsg];
+        } else {
+            [self.delegate betedLotteryScheme:nil errorMsg:response.errorMsg];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        [self.delegate betedLotteryScheme:nil errorMsg:response.errorMsg];
+    };
+//    [0]    (null)    @"betContent" : @"[{\"betMatches\":[{\"dan\":false,\"matchId\":\"1\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"2\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"3\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"4\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"5\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"6\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"7\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"8\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"9\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"10\",\"options\":[\"3\"]},{\"dan\":false,\"matchId\":\"11\",\"options\":[\"*\"]},{\"dan\":false,\"matchId\":\"12\",\"options\":[\"*\"]},{\"dan\":false,\"matchId\":\"13\",\"options\":[\"*\"]},{\"dan\":false,\"matchId\":\"14\",\"options\":[\"*\"]}]}]"
+    NSMutableDictionary *subSchemeDic = [transcation submitParaDicScheme];
+    
+    subSchemeDic[@"betContent"] = [self JsonFromId:contents];
     
     SOAPRequest *request = [self requestForAPI: APIBetLotteryScheme withParam:@{@"params":[self actionEncrypt:[self JsonFromId:subSchemeDic]]}];
     [self newRequestWithRequest:request

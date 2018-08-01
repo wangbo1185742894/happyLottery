@@ -725,6 +725,14 @@
     return platform;
 }
 
++(NSString *)toStringByInteger:(NSInteger )i{
+    return  [NSString stringWithFormat:@"%ld",i];
+}
+
++(NSString *)toStringByfloat:(CGFloat )f{
+    return  [NSString stringWithFormat:@"%.2f",f];
+}
+
 
 @end
 

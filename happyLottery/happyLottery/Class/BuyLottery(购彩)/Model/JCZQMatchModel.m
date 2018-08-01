@@ -108,15 +108,15 @@
     NSString *title;
     @try {
         if ([type isEqualToString:@"SPF"]) {
-            title = [self getTitleForm:titleDic andSp:self.SPF_OddArray andSelectArray:self.SPF_SelectMatch andIndex:100];
+            title = [self getTitleForm:titleDic andSp:nil andSelectArray:self.SPF_SelectMatch andIndex:100];
         }else if ([type isEqualToString:@"RQSPF"]) {
-            title = [self getTitleForm:titleDic andSp:self.RQSPF_OddArray andSelectArray:self.RQSPF_SelectMatch andIndex:200];
+            title = [self getTitleForm:titleDic andSp:nil andSelectArray:self.RQSPF_SelectMatch andIndex:200];
         }else if ([type isEqualToString:@"BF"]) {
-            title = [self getTitleForm:titleDic andSp:self.BF_OddArray andSelectArray:self.BF_SelectMatch andIndex:300];
+            title = [self getTitleForm:titleDic andSp:nil andSelectArray:self.BF_SelectMatch andIndex:300];
         }else if ([type isEqualToString:@"BQC"]) {
-            title = [self getTitleForm:titleDic andSp:self.BQC_OddArray andSelectArray:self.BQC_SelectMatch andIndex:400];
+            title = [self getTitleForm:titleDic andSp:nil andSelectArray:self.BQC_SelectMatch andIndex:400];
         }else if ([type isEqualToString:@"JQS"]) {
-            title = [self getTitleForm:titleDic andSp:self.JQS_OddArray andSelectArray:self.JQS_SelectMatch andIndex:500];
+            title = [self getTitleForm:titleDic andSp:nil andSelectArray:self.JQS_SelectMatch andIndex:500];
         }
     } @catch (NSException *exception) {
         title = @"";
@@ -143,6 +143,33 @@
     }
     return tit;
 }
+
+-(NSString *)getBounsAppearTitleByTypeAndSp:(NSString *)type{
+    NSString *itemType;
+    NSInteger playType = [type integerValue]  / 100;
+    if (playType == 1) {
+        itemType = @"SPF";
+    }
+    
+    if (playType == 2) {
+        itemType = @"RQSPF";
+    }
+    
+    if (playType == 3) {
+        itemType = @"BF";
+    }
+    
+    if (playType == 4) {
+        itemType = @"BQC";
+    }
+    
+    if (playType == 5) {
+        itemType = @"JQS";
+    }
+    NSDictionary *titleDic = [self getJCZQTitle][itemType];
+    return  titleDic[[NSString stringWithFormat:@"%@",type]][@"appear"];
+}
+
 
 -(NSString *)getTouzhuAppearTitleByTypeNoSp:(NSString *)type{
     
@@ -192,6 +219,37 @@
         
     }
     return curY + 10;
+}
+
+-(CGFloat)getSpByMatchBet:(NSString *)bet{
+    NSInteger playtype = [bet integerValue] / 100;
+    NSInteger item = [bet integerValue] % 100;
+    NSArray *spArray;
+    switch (playtype) {
+        case 1:
+            spArray = self.SPF_OddArray;
+            break;
+        case 2:
+            spArray = self.RQSPF_OddArray;
+            break;
+        case 3:
+            spArray = self.BF_OddArray;
+            break;
+        case 4:
+            spArray = self.BQC_OddArray;
+            break;
+        case 5:
+            spArray = self.JQS_OddArray;
+            break;
+            
+        default:
+            break;
+    }
+    if (spArray.count  <= item) {
+        return 1.0;
+    }else{
+        return [spArray[item] doubleValue];
+    }
 }
 
 -(NSMutableArray *)matchBetArray{

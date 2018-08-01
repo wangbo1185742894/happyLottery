@@ -92,4 +92,7 @@
 
 -(void)refreshPrize;
 
+-(CGFloat)getSpByMatchBet:(NSString *)bet;
+
+-(NSString *)getBounsAppearTitleByTypeAndSp:(NSString *)type;
 @end

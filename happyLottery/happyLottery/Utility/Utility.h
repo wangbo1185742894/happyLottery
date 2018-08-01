@@ -67,4 +67,6 @@
 + (NSString*)iphoneType;
 +(NSString*)getTheCorrectNum:(NSString*)tempString;
 +(NSString *)getCurrentDeviceModel;
++(NSString *)toStringByfloat:(CGFloat )f;
++(NSString *)toStringByInteger:(NSInteger )i;
 @end

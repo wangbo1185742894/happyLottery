@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+
 #import "JCZQProfile.h"
 #import "JCZQMatchModel.h"
 #import "BaseTransaction.h"
-
+@class  BounsModelItem;
 @interface JCZQTranscation : BaseTransaction
 
 
@@ -40,8 +41,8 @@
 
 - (NSInteger)hhggHasBetMatchNumWithPlayCode:(NSString *)playCd;
 
+-(NSArray *)getSelectItemAllGroup;
 
-
-
+- (void)peilvJiSuanBy:(NSArray <BounsModelItem *>*)array;
 - (void)updataBetCount;
 @end
