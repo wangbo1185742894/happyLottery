@@ -36,14 +36,14 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h5e-Vo-1nF">
-                    <rect key="frame" x="0.0" y="94" width="375" height="100"/>
+                    <rect key="frame" x="0.0" y="94" width="375" height="90"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入计划金额进行优化，并只支持平均优化" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59i-i8-AEx">
-                            <rect key="frame" x="0.0" y="70" width="375" height="20"/>
+                            <rect key="frame" x="0.0" y="60" width="375" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="Ehc-HQ-5xL"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" red="1" green="0.70196078431372544" blue="0.42352941176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -151,7 +151,7 @@
                         <constraint firstItem="YMN-Sc-L3M" firstAttribute="centerX" secondItem="h5e-Vo-1nF" secondAttribute="centerX" constant="20" id="fcQ-z6-OB6"/>
                         <constraint firstItem="YMN-Sc-L3M" firstAttribute="top" secondItem="h5e-Vo-1nF" secondAttribute="top" constant="15" id="o7c-6V-A8H"/>
                         <constraint firstItem="Mm6-oM-Rpg" firstAttribute="centerY" secondItem="YMN-Sc-L3M" secondAttribute="centerY" id="p6m-fo-6wg"/>
-                        <constraint firstAttribute="height" constant="100" id="qZt-8l-ha1"/>
+                        <constraint firstAttribute="height" constant="90" id="qZt-8l-ha1"/>
                         <constraint firstAttribute="bottom" secondItem="59i-i8-AEx" secondAttribute="bottom" constant="10" id="yMd-5O-7Ld"/>
                     </constraints>
                 </view>
@@ -175,13 +175,12 @@
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3F-IS-WEY">
                             <rect key="frame" x="278" y="10" width="77" height="30"/>
-                            <color key="backgroundColor" red="0.070588235289999995" green="0.78039215689999997" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="77" id="CIj-2m-cuN"/>
                                 <constraint firstAttribute="height" constant="30" id="wpK-Dr-5BW"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <state key="normal" title="预约"/>
+                            <state key="normal" title="预约" backgroundImage="yuanjiaowukuangselect"/>
                             <state key="highlighted" backgroundImage="lvsebiankuang.png">
                                 <color key="titleColor" red="0.0" green="0.78823529410000004" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
@@ -209,10 +208,10 @@
                     <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="53u-pB-YnV">
-                    <rect key="frame" x="0.0" y="194" width="375" height="30"/>
+                    <rect key="frame" x="0.0" y="184" width="375" height="40"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="理论奖金" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VGh-gg-Uvw">
-                            <rect key="frame" x="289" y="0.0" width="86" height="30"/>
+                            <rect key="frame" x="289" y="0.0" width="86" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="86" id="Glj-X5-Cm8"/>
                             </constraints>
@@ -221,7 +220,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="倍数" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSp-IH-GG3">
-                            <rect key="frame" x="183" y="0.0" width="106" height="30"/>
+                            <rect key="frame" x="183" y="0.0" width="106" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="106" id="mFM-GH-knD"/>
                             </constraints>
@@ -230,7 +229,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="投注内容" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcI-dC-W6E">
-                            <rect key="frame" x="0.0" y="0.0" width="183" height="30"/>
+                            <rect key="frame" x="0.0" y="0.0" width="183" height="40"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -238,7 +237,7 @@
                     </subviews>
                     <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="2w5-2E-D7Z"/>
+                        <constraint firstAttribute="height" constant="40" id="2w5-2E-D7Z"/>
                         <constraint firstItem="VGh-gg-Uvw" firstAttribute="leading" secondItem="rSp-IH-GG3" secondAttribute="trailing" id="7ui-JA-0lE"/>
                         <constraint firstItem="dcI-dC-W6E" firstAttribute="top" secondItem="53u-pB-YnV" secondAttribute="top" id="8do-33-7oa"/>
                         <constraint firstAttribute="bottom" secondItem="VGh-gg-Uvw" secondAttribute="bottom" id="FjY-8p-sGd"/>
@@ -280,5 +279,6 @@
         <image name="smartfollow_sub_press.png" width="16" height="16"/>
         <image name="touzhubeishujia.png" width="22" height="22"/>
         <image name="touzhubeishujian.png" width="22" height="22"/>
+        <image name="yuanjiaowukuangselect" width="45" height="23"/>
     </resources>
 </document>
