@@ -1154,6 +1154,8 @@
 		F94B4D7E20BBCB1600DE0C7A /* gengduo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94B4D7C20BBCB1600DE0C7A /* gengduo@2x.png */; };
 		F954A7A02111819E00B40D00 /* icon_gerenzhongxin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F954A79E2111819D00B40D00 /* icon_gerenzhongxin@2x.png */; };
 		F954A7A12111819E00B40D00 /* icon_gerenzhongxin@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F954A79F2111819D00B40D00 /* icon_gerenzhongxin@3x.png */; };
+		F954A7A52112E97900B40D00 /* SearchViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F954A7A32112E97900B40D00 /* SearchViewCell.m */; };
+		F954A7A62112E97900B40D00 /* SearchViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F954A7A42112E97900B40D00 /* SearchViewCell.xib */; };
 		F954D517200C498C00CD3B2B /* QuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F954D515200C498C00CD3B2B /* QuestionsViewController.m */; };
 		F954D518200C498C00CD3B2B /* QuestionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F954D516200C498C00CD3B2B /* QuestionsViewController.xib */; };
 		F954D51C200C49A600CD3B2B /* FunctionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F954D51A200C49A600CD3B2B /* FunctionsViewController.m */; };
@@ -3260,6 +3262,9 @@
 		F94B4D7C20BBCB1600DE0C7A /* gengduo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gengduo@2x.png"; sourceTree = "<group>"; };
 		F954A79E2111819D00B40D00 /* icon_gerenzhongxin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_gerenzhongxin@2x.png"; sourceTree = "<group>"; };
 		F954A79F2111819D00B40D00 /* icon_gerenzhongxin@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_gerenzhongxin@3x.png"; sourceTree = "<group>"; };
+		F954A7A22112E97900B40D00 /* SearchViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewCell.h; sourceTree = "<group>"; };
+		F954A7A32112E97900B40D00 /* SearchViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewCell.m; sourceTree = "<group>"; };
+		F954A7A42112E97900B40D00 /* SearchViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewCell.xib; sourceTree = "<group>"; };
 		F954D514200C498C00CD3B2B /* QuestionsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuestionsViewController.h; sourceTree = "<group>"; };
 		F954D515200C498C00CD3B2B /* QuestionsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuestionsViewController.m; sourceTree = "<group>"; };
 		F954D516200C498C00CD3B2B /* QuestionsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionsViewController.xib; sourceTree = "<group>"; };
@@ -6719,6 +6724,9 @@
 				F9255B7120BE4BB600C70660 /* ZhanWeiTuScheme.h */,
 				F9255B7220BE4BB600C70660 /* ZhanWeiTuScheme.m */,
 				F9255B7320BE4BB600C70660 /* ZhanWeiTuScheme.xib */,
+				F954A7A22112E97900B40D00 /* SearchViewCell.h */,
+				F954A7A32112E97900B40D00 /* SearchViewCell.m */,
+				F954A7A42112E97900B40D00 /* SearchViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -7832,6 +7840,7 @@
 				F9632F58200C9A8B00F69D23 /* IntegeralChangeViewController.xib in Resources */,
 				2D05C8CB20AABBF5001A8953 /* attentionperson@2x.png in Resources */,
 				F9B5D9802060A9DE00C9F6DC /* flag380@3x.png in Resources */,
+				F954A7A62112E97900B40D00 /* SearchViewCell.xib in Resources */,
 				F9BC6E1220C2B1390037998B /* apply_again@3x.png in Resources */,
 				F9DC8C3D20A57F02006B31F4 /* pic_zhongjiangjine@3x.png in Resources */,
 				F9E53D6F20EE28D70072B8AF /* tuijian_mine@2x.png in Resources */,
@@ -8492,6 +8501,7 @@
 				2D7B1314204D499D0035AE89 /* ExprieRoundViewCell.m in Sources */,
 				2D03F27F2060BAE800C81BEF /* BankCardSettingViewController.m in Sources */,
 				2D4B1E941FDF7BD20034B708 /* NewsListCell.m in Sources */,
+				F954A7A52112E97900B40D00 /* SearchViewCell.m in Sources */,
 				2D4D608320AD4DFB00280033 /* ActivityInfoView.m in Sources */,
 				F9705E55207A0DE800E25E4E /* TouZhuViewCell.m in Sources */,
 				2D7B8D9420C50A70000EAFB1 /* CFLineChartView.m in Sources */,
