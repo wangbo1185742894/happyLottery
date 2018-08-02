@@ -9,7 +9,10 @@
 #import "FollowHeaderView.h"
 
 @interface FollowHeaderView()
-@property (weak, nonatomic) IBOutlet UIButton *btnSearch;
+
+
+@property (weak, nonatomic) IBOutlet UIImageView *imgBottom;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imgDisLeft;
 
 @end
 
@@ -19,19 +22,34 @@
     if(self  = [super initWithFrame:frame]){
         self  = [[[NSBundle mainBundle] loadNibNamed:@"FollowHeaderView" owner:nil options:nil] lastObject];
     }
-    self.btnSearch.layer.cornerRadius = 5;
     return  self;
 }
 
 - (void)setFrame:(CGRect)frame{
     frame.size.height -= 1;
+    if (self.btnGenDan.selected) {
+        self.imgDisLeft.constant = self.btnGenDan.mj_x;
+    } else {
+        self.imgDisLeft.constant = self.btnNotice.mj_x;
+    }
     [super setFrame:frame];
 }
 
-- (IBAction)actionSearch:(id)sender {
-    [self.delegate search];
+
+- (IBAction)actionGenDan:(UIButton *)sender {
+    self.btnGenDan.selected = NO;
+    self.btnNotice.selected = NO;
+    self.imgDisLeft.constant = sender.mj_x;
+    [UIView animateWithDuration:0.5 animations:^{
+        [self.imgBottom.superview layoutIfNeeded];
+    }];
+    if (sender == self.btnGenDan) {
+        [self.delegate actionToGD];
+        self.btnGenDan.selected = YES;
+    } else {
+        [self.delegate actionToNotice];
+        self.btnNotice.selected = YES;
+    }
 }
-
-
 
 @end

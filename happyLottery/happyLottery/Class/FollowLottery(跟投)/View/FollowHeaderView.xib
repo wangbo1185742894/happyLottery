@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,20 +15,6 @@
             <rect key="frame" x="0.0" y="0.0" width="341" height="50"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="0Fv-p7-xvG">
-                    <rect key="frame" x="176" y="5" width="150" height="40"/>
-                    <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="150" id="nr1-wf-3uu"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <state key="normal" title="搜索大神" image="datingsousuo.png">
-                        <color key="titleColor" red="0.55294117647058827" green="0.55294117647058827" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="actionSearch:" destination="iN0-l3-epB" eventType="touchUpInside" id="aDs-a1-ZIh"/>
-                    </connections>
-                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Eq-QZ-WlZ">
                     <rect key="frame" x="10" y="16" width="5" height="18"/>
                     <color key="backgroundColor" red="0.99607843139999996" green="0.6588235294" blue="0.074509803920000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -50,26 +36,76 @@
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ncz-08-mzB">
+                    <rect key="frame" x="251" y="4" width="75" height="42"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="75" id="QIp-MD-FWy"/>
+                        <constraint firstAttribute="height" constant="42" id="i1Y-u4-FpP"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="我的关注">
+                        <color key="titleColor" red="0.1450980392" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <state key="selected">
+                        <color key="titleColor" red="0.067504443230000002" green="0.78096091749999996" blue="0.57203906770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="actionGenDan:" destination="iN0-l3-epB" eventType="touchUpInside" id="Pkj-tm-4y7"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HFi-Nx-oEr">
+                    <rect key="frame" x="171" y="47" width="75" height="1"/>
+                    <color key="backgroundColor" red="0.067504443230000002" green="0.78096091749999996" blue="0.57203906770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="75" id="0bM-s5-BVc"/>
+                        <constraint firstAttribute="height" constant="1" id="OjR-bX-0Vd"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T94-33-RJR">
+                    <rect key="frame" x="171" y="4" width="75" height="42"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="推荐跟单">
+                        <color key="titleColor" red="0.1450980392" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <state key="selected">
+                        <color key="titleColor" red="0.067504443230000002" green="0.78096091749999996" blue="0.57203906770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="actionGenDan:" destination="iN0-l3-epB" eventType="touchUpInside" id="CoO-hL-4pu"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="HFi-Nx-oEr" firstAttribute="top" secondItem="T94-33-RJR" secondAttribute="bottom" constant="1" id="2AB-AJ-KKm"/>
                 <constraint firstItem="Czr-NS-yYg" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="3Az-0K-Vv2"/>
-                <constraint firstAttribute="trailing" secondItem="0Fv-p7-xvG" secondAttribute="trailing" constant="15" id="QkH-PU-4TF"/>
-                <constraint firstAttribute="bottom" secondItem="0Fv-p7-xvG" secondAttribute="bottom" constant="5" id="RNt-bO-1rc"/>
-                <constraint firstItem="0Fv-p7-xvG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="Wr8-wd-HYK"/>
+                <constraint firstItem="T94-33-RJR" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="CPX-Ds-Bz8"/>
+                <constraint firstItem="ncz-08-mzB" firstAttribute="height" secondItem="T94-33-RJR" secondAttribute="height" id="Idg-pu-UbV"/>
+                <constraint firstItem="ncz-08-mzB" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="JnO-IY-6xo"/>
+                <constraint firstAttribute="bottom" secondItem="HFi-Nx-oEr" secondAttribute="bottom" constant="2" id="M1O-LR-B7c"/>
+                <constraint firstItem="ncz-08-mzB" firstAttribute="leading" secondItem="T94-33-RJR" secondAttribute="trailing" constant="5" id="Pr1-CG-bY5"/>
+                <constraint firstAttribute="trailing" secondItem="ncz-08-mzB" secondAttribute="trailing" constant="15" id="XW7-5a-Lao"/>
                 <constraint firstItem="4Eq-QZ-WlZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="aHo-EZ-T5n"/>
                 <constraint firstItem="Czr-NS-yYg" firstAttribute="leading" secondItem="4Eq-QZ-WlZ" secondAttribute="trailing" constant="5" id="fYW-jR-emq"/>
                 <constraint firstItem="4Eq-QZ-WlZ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ggr-8e-v8f"/>
+                <constraint firstItem="HFi-Nx-oEr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="171" id="sP4-y6-f37"/>
+                <constraint firstItem="ncz-08-mzB" firstAttribute="width" secondItem="T94-33-RJR" secondAttribute="width" id="tey-I6-D2o"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="btnSearch" destination="0Fv-p7-xvG" id="3Pd-Z1-RJa"/>
+                <outlet property="btnGenDan" destination="T94-33-RJR" id="vc6-q6-i6a"/>
+                <outlet property="btnNotice" destination="ncz-08-mzB" id="7Su-Fu-Mrn"/>
+                <outlet property="imgBottom" destination="HFi-Nx-oEr" id="2O9-qF-RV2"/>
+                <outlet property="imgDisLeft" destination="sP4-y6-f37" id="9xk-Qr-mkk"/>
             </connections>
-            <point key="canvasLocation" x="16.5" y="309"/>
+            <point key="canvasLocation" x="148" y="224"/>
         </view>
     </objects>
     <resources>
-        <image name="datingsousuo.png" width="12" height="12"/>
         <image name="remengendan.png" width="58" height="14"/>
     </resources>
 </document>

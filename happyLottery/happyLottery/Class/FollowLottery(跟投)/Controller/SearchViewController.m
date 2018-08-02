@@ -54,10 +54,11 @@
 -(void)loadMoreData{
     _page ++;
     [self getHotFollowScheme];
+    
 }
 
 -(void)getHotFollowScheme{
-    if (self.tfSearchKey.text .length == 0) {
+    if (self.tfSearchKey.text.length == 0) {
         [self showPromptText:@"请输入要查询的昵称" hideAfterDelay:1.9];
         [schemeList removeAllObjects];
         [self.tabSearchResultList reloadData];
@@ -87,7 +88,7 @@
 -(void)setTextFiled{
     self.tfSearchKey.layer.cornerRadius = self.tfSearchKey.mj_h / 2;
     self.tfSearchKey.layer.masksToBounds = YES;
-    NSMutableAttributedString * firstPart = [[NSMutableAttributedString alloc] initWithString:@"请输入您要搜索的昵称" attributes:@{ NSFontAttributeName:[UIFont systemFontOfSize:15],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    NSMutableAttributedString * firstPart = [[NSMutableAttributedString alloc] initWithString:@"请输入您所需的关键词" attributes:@{ NSFontAttributeName:[UIFont systemFontOfSize:15],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     self.tfSearchKey.attributedPlaceholder = firstPart;
     UIButton *leftView = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
     [leftView setImage:[UIImage imageNamed:@"sousuo"] forState:0];

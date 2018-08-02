@@ -1148,6 +1148,8 @@
 		F94B4D7A20BBB1CD00DE0C7A /* deletesearch@3x.png in Sources */ = {isa = PBXBuildFile; fileRef = 2D05C82620A4362C001A8953 /* deletesearch@3x.png */; };
 		F94B4D7D20BBCB1600DE0C7A /* gengduo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94B4D7B20BBCB1500DE0C7A /* gengduo@3x.png */; };
 		F94B4D7E20BBCB1600DE0C7A /* gengduo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94B4D7C20BBCB1600DE0C7A /* gengduo@2x.png */; };
+		F954A7A02111819E00B40D00 /* icon_gerenzhongxin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F954A79E2111819D00B40D00 /* icon_gerenzhongxin@2x.png */; };
+		F954A7A12111819E00B40D00 /* icon_gerenzhongxin@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F954A79F2111819D00B40D00 /* icon_gerenzhongxin@3x.png */; };
 		F954D517200C498C00CD3B2B /* QuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F954D515200C498C00CD3B2B /* QuestionsViewController.m */; };
 		F954D518200C498C00CD3B2B /* QuestionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F954D516200C498C00CD3B2B /* QuestionsViewController.xib */; };
 		F954D51C200C49A600CD3B2B /* FunctionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F954D51A200C49A600CD3B2B /* FunctionsViewController.m */; };
@@ -3246,6 +3248,8 @@
 		F94AA9F21FEBBFE00021B980 /* BankCardSetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BankCardSetTableViewCell.xib; sourceTree = "<group>"; };
 		F94B4D7B20BBCB1500DE0C7A /* gengduo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gengduo@3x.png"; sourceTree = "<group>"; };
 		F94B4D7C20BBCB1600DE0C7A /* gengduo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gengduo@2x.png"; sourceTree = "<group>"; };
+		F954A79E2111819D00B40D00 /* icon_gerenzhongxin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_gerenzhongxin@2x.png"; sourceTree = "<group>"; };
+		F954A79F2111819D00B40D00 /* icon_gerenzhongxin@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_gerenzhongxin@3x.png"; sourceTree = "<group>"; };
 		F954D514200C498C00CD3B2B /* QuestionsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuestionsViewController.h; sourceTree = "<group>"; };
 		F954D515200C498C00CD3B2B /* QuestionsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuestionsViewController.m; sourceTree = "<group>"; };
 		F954D516200C498C00CD3B2B /* QuestionsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionsViewController.xib; sourceTree = "<group>"; };
@@ -4991,6 +4995,8 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				F954A79E2111819D00B40D00 /* icon_gerenzhongxin@2x.png */,
+				F954A79F2111819D00B40D00 /* icon_gerenzhongxin@3x.png */,
 				F90D690420FC4A2F007865E4 /* 11x5tzh_sel@2x.png */,
 				F90D690520FC4A30007865E4 /* 11x5tzh_sel@3x.png */,
 				F90D690720FC4A32007865E4 /* 11x5tzh_selNo@2x.png */,
@@ -7161,6 +7167,7 @@
 				2DD5991020E1C976002441B5 /* LotteryPlayViewController.xib in Resources */,
 				2D638F5A20EF1518004463FC /* UserInfoDetailViewController.xib in Resources */,
 				F95BC7D220172AF7006D6243 /* redpacket_open@2x.png in Resources */,
+				F954A7A12111819E00B40D00 /* icon_gerenzhongxin@3x.png in Resources */,
 				F9CDBECC2023242900A1BE71 /* icon_zhifu_selceted@3x.png in Resources */,
 				2D03F2172060B6A500C81BEF /* WebCTZQHisViewController.xib in Resources */,
 				2D40CAAD201EE15400DDCFE3 /* usermine@2x.png in Resources */,
@@ -7376,6 +7383,7 @@
 				2D3065E720EC6AFC0084DB97 /* ClassListCellViewController.xib in Resources */,
 				F9B5D9752060A9DE00C9F6DC /* flag366@2x.png in Resources */,
 				2D517201200D86BD00C3CD7F /* history_icon_default_fangan@2x.png in Resources */,
+				F954A7A02111819E00B40D00 /* icon_gerenzhongxin@2x.png in Resources */,
 				F94AA9EC1FEB9BD50021B980 /* add@2x.png in Resources */,
 				2D4B1EA71FDFCA520034B708 /* ForecastViewController.xib in Resources */,
 				2D739C3B1FE365BE00264044 /* WebShowViewController.xib in Resources */,

@@ -9,11 +9,17 @@
 #import <UIKit/UIKit.h>
 
 @protocol FollowHeaderDelegate<NSObject>
--(void)search;
+-(void)actionToGD;
+
+-(void)actionToNotice;
+
 @end
 
 @interface FollowHeaderView : UIView
 
 @property(weak,nonatomic)id <FollowHeaderDelegate >delegate;
+
+@property (weak, nonatomic) IBOutlet UIButton *btnGenDan;
+@property (weak, nonatomic) IBOutlet UIButton *btnNotice;
 
 @end

@@ -41,10 +41,10 @@
     NSArray *topMenuList;
     NSArray *eightList;
     NSMutableArray <HotSchemeModel *> * schemeList;
-    
     __weak IBOutlet UITableView *tabFollewView;
     
     __weak IBOutlet NSLayoutConstraint *bottomCons;
+    NSInteger page;
 }
 
 @end
@@ -53,6 +53,7 @@
     BuyLotteryViewController *buyVc;
     HomeTabTopAdsViewCell *cell;
     BOOL placeImageHidden;
+    FollowHeaderView *headerView;
 }
 
 - (void)viewDidLoad {
@@ -71,25 +72,34 @@
     }
     [self getTopViewData];
     [self setRightBarItems];
-    [self setTableView];
-    self.title = @"跟单";
-    buyVc = [[BuyLotteryViewController alloc]init];
-     [UITableView refreshHelperWithScrollView:tabFollewView target:self loadNewData:@selector(loadNewData) loadMoreData:nil isBeginRefresh:YES];
+    [self setSearchButtonItems];
     
+    [self setTableView];
+//    self.title = @"跟单";
+    buyVc = [[BuyLotteryViewController alloc]init];
+     [UITableView refreshHelperWithScrollView:tabFollewView target:self loadNewData:@selector(loadNewData) loadMoreData:@selector(loadMoreData) isBeginRefresh:YES];
+    headerView = [[FollowHeaderView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, 40)];
 }
 
 -(void)loadNewData{
-    
     [self loadEightPerosn];
     [self loadAdsImg];
-    
+}
+
+-(void)loadMoreData{
+    if (headerView.btnNotice.selected) {
+        return;
+    }
+    page ++;
+    NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"page":@(page),@"pageSize":@(KpageSize)};
+    [self.lotteryMan getAttentFollowScheme:dic];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [tabFollewView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
     placeImageHidden = YES;
-   [self setNavigationBa];
+    [self setNavigationBa];
     [self loadNewData];
     [cell openTimer];
 }
@@ -106,7 +116,6 @@
 }
 
 - (void)setNavigationBa{
-    
     UIImage *selectedImage = [[UIImage imageNamed: @"quanzi_select.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     UITabBarItem *tabBarItem = [[UITabBarItem alloc]initWithTitle:@"跟投" image:selectedImage tag:0];
     NSDictionary *selectedAttributes = @{NSFontAttributeName: [UIFont systemFontOfSize:12], NSForegroundColorAttributeName: SystemGreen};
@@ -120,7 +129,6 @@
 }
 
 -(void)getHotFollowScheme{
-   
     [self.lotteryMan getHotFollowScheme];
 }
 
@@ -137,8 +145,9 @@
     for (NSDictionary *dic in personList) {
         [schemeList addObject:[[HotSchemeModel alloc]initWith:dic]];
     }
-//    [tabFollewView reloadSections:[NSIndexSet indexSetWithIndex:3] withRowAnimation:UITableViewRowAnimationFade]; // 因有刷新效果，所以换成reloadData
-    [tabFollewView reloadData];
+    [UIView performWithoutAnimation:^{
+        [self->tabFollewView reloadSections:[[NSIndexSet alloc] initWithIndex:3] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }];
 }
 
 -(void)loadEightPerosn{
@@ -146,7 +155,12 @@
 }
 
 -(void)listGreatFollow:(NSArray *)personList errorMsg:(NSString *)msg{
-    [self getHotFollowScheme];
+    if (headerView.btnGenDan.selected) {
+        [self actionToGD];
+    }
+    else {
+        [self actionToNotice];
+    }
     if (personList == nil) {
         eightList = nil;
 //        NSIndexPath *indexpath = [NSIndexPath indexPathForRow:0 inSection:2];
@@ -296,7 +310,6 @@
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
 
     if(section == 3){
-        FollowHeaderView *headerView = [[FollowHeaderView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, 40)];
         headerView.delegate = self;
         return headerView;
     }else{
@@ -310,6 +323,31 @@
     UIBarButtonItem *faqi = [self creatBarItem:@"" icon:@"fadan" andFrame:CGRectMake(0, 10, 30, 30) andAction:@selector(optionRightButtonAction)];
     self.navigationItem.rightBarButtonItems = @[itemQuery,faqi];
 }
+
+-(void)setSearchButtonItems{
+    UIButton *tfSearchKey = [UIButton buttonWithType:UIButtonTypeCustom];
+    tfSearchKey.frame = CGRectMake(0, 25, 251, 35);
+    tfSearchKey.backgroundColor = RGBCOLOR(84, 223, 192);
+    tfSearchKey.layer.cornerRadius = 12;
+    tfSearchKey.layer.masksToBounds = YES;
+    [tfSearchKey setTitle:@"搜索大神" forState:UIControlStateNormal];
+    tfSearchKey.titleLabel.font = [UIFont systemFontOfSize:15.0];
+    [tfSearchKey setImage:[UIImage imageNamed:@"sousuo"] forState:0];
+    tfSearchKey.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;//居左显示
+    tfSearchKey.titleEdgeInsets = UIEdgeInsetsMake(0, 15, 0, 0);
+    tfSearchKey.imageEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
+    UIBarButtonItem *barItem = [[UIBarButtonItem alloc]initWithCustomView:tfSearchKey];
+    self.navigationItem.leftBarButtonItem = barItem;
+    [tfSearchKey addTarget:self action:@selector(actionToSearchView) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)actionToSearchView {
+    SearchViewController *searchVC = [[SearchViewController alloc]init];
+    searchVC.hidesBottomBarWhenPushed = YES;
+    searchVC.navigationController.navigationBar.hidden = YES;
+    [self.navigationController pushViewController:searchVC animated:YES];
+}
+
 
 - (void)pressPlayIntroduce{
     WebViewController *webVC = [[WebViewController alloc]initWithNibName:@"WebViewController" bundle:nil];
@@ -363,6 +401,47 @@
     [self.navigationController pushViewController:searchVC animated:YES];
 }
 
+- (void)actionToGD {
+    placeImageHidden = YES;
+    [schemeList removeAllObjects];
+    [self getHotFollowScheme];
+}
+
+- (void)actionToNotice {
+    placeImageHidden = YES;
+    [schemeList removeAllObjects];
+    page = 1;
+    NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"page":@(page),@"pageSize":@(KpageSize)};
+    [self.lotteryMan getAttentFollowScheme:dic];
+}
+
+
+- (void) gotAttentFollowScheme:(NSArray  *)personList  errorMsg:(NSString *)msg{
+    [tabFollewView tableViewEndRefreshCurPageCount:personList.count];
+    if (personList.count == 0) {
+        [self showPromptText:msg hideAfterDelay:1.0];
+        placeImageHidden = NO;
+        [UIView performWithoutAnimation:^{
+            [self->tabFollewView reloadSections:[[NSIndexSet alloc] initWithIndex:3] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }];
+        return;
+    }
+    if (page == 1) {
+        [schemeList removeAllObjects];
+    }
+    
+    //添加数据
+    for (NSDictionary *dic in personList) {
+        HotSchemeModel *model = [[HotSchemeModel alloc]initWith:dic];
+        [schemeList addObject:model];
+    }
+    
+    [UIView performWithoutAnimation:^{
+        [self->tabFollewView reloadSections:[[NSIndexSet alloc] initWithIndex:3] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }];
+
+}
+
 //牛人，红人，红单榜
 - (void)actionToRecommed:(NSString *)categoryCode {
     RecommendPerViewController *perVC = [[RecommendPerViewController alloc]init];
@@ -380,15 +459,15 @@
         [self actionToRecommed:@"Redman"];
     }else if (index == 2){ // 红单
         [self actionToRecommed:@"RedScheme"];
-    }else if (index == 3){  // 我的关注
+    }else if (index == 3){  // 个人中心
         if (self.curUser.isLogin == NO) {
             [self needLogin];
             return;
         }
-        MyNoticeViewController *noticeVc = [[MyNoticeViewController alloc]init];
-        noticeVc.hidesBottomBarWhenPushed = YES;
-        noticeVc.curUser = self.curUser;
-        [self.navigationController pushViewController:noticeVc animated:YES];
+        PersonCenterViewController *viewContr = [[PersonCenterViewController alloc]init];
+        viewContr.cardCode = self.curUser.cardCode;
+        viewContr.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:viewContr animated:YES];
     }
 }
 
