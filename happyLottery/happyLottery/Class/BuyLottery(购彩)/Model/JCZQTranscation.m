@@ -8,7 +8,7 @@
 //
 
 #import "JCZQTranscation.h"
-
+#import "BounsYouHuaViewController.h"
 @interface JCZQTranscation()
 {
     
@@ -766,6 +766,222 @@
         temp /=i;
     }
     return temp;
+}
+
+-(NSArray *)getSelectItemAllGroup{
+
+    NSArray * chuanFaCodeDic = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"JingCaiChuanTypeDic" ofType:@"plist"]];
+    NSString * index;
+    NSString* minIndex;
+    
+    //增加单场选择
+    if([_chuanFa isEqualToString:@"单场"])
+    {
+        index = @"1";
+        minIndex =  @"1";
+    }
+    else
+    {
+        index = [_chuanFa substringToIndex:1];
+        
+    }
+    minIndex = index;
+    NSDictionary * sectionCodeDic = chuanFaCodeDic[[index intValue]-1];
+    NSDictionary * codeDic = sectionCodeDic[_chuanFa];
+    NSString * baseNum = codeDic[@"baseNum"];
+    
+    NSArray * baseNumArray = [baseNum componentsSeparatedByString:@","];
+    
+    
+    
+    
+    //    if (self.selectMatchArray.count != [index integerValue]) {
+    //
+    //    }
+    minIndex = [baseNumArray lastObject];
+    
+    NSDictionary * hunheBfPeiDuiDic = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"HHGGPeilvTable" ofType:@"plist"]];
+    
+    
+    NSMutableDictionary * matchGropDic = [NSMutableDictionary dictionary];
+    NSMutableArray * matchIndexArray = [NSMutableArray array];
+    for (int i=0;i<self.selectMatchArray.count;i++){
+        NSString * indexString = [NSString stringWithFormat:@"%d",i];
+        
+        matchGropDic[indexString] = self.selectMatchArray[i];
+        [matchIndexArray addObject:indexString];
+    }
+    NSArray * allGroup = [self getCombination:matchIndexArray count:[index intValue]];
+    
+    return allGroup;
+}
+
+- (void)peilvJiSuanBy:(NSArray <BounsModelItem *>*)array{
+    
+    
+    NSInteger winZhu  = [self getWinZhuCount];
+    NSArray * chuanFaCodeDic = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"JingCaiChuanTypeDic" ofType:@"plist"]];
+    NSString * index;
+    NSString* minIndex;
+    
+    //增加单场选择
+    if([_chuanFa isEqualToString:@"单场"])
+    {
+        index = @"1";
+        minIndex =  @"1";
+    }
+    else
+    {
+        index = [_chuanFa substringToIndex:1];
+        
+    }
+    minIndex = index;
+    NSDictionary * sectionCodeDic = chuanFaCodeDic[[index intValue]-1];
+    NSDictionary * codeDic = sectionCodeDic[_chuanFa];
+    NSString * baseNum = codeDic[@"baseNum"];
+    
+    NSArray * baseNumArray = [baseNum componentsSeparatedByString:@","];
+    
+    
+    
+    
+    //    if (self.selectMatchArray.count != [index integerValue]) {
+    //
+    //    }
+    minIndex = [baseNumArray lastObject];
+    
+    NSDictionary * hunheBfPeiDuiDic = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"HHGGPeilvTable" ofType:@"plist"]];
+    NSMutableArray * oddNumArray_temp = [NSMutableArray array];
+    for (int i=0;i<self.selectMatchArray.count;i++){
+        
+        JCZQMatchModel* match = self.selectMatchArray[i];
+        if (match.matchBetArray .count == 0) {
+            return;
+        }
+        
+        NSArray * allZuheArray =   [self matchCodeFenZu:match.matchBetArray  match:match];
+        
+        NSArray * zuheValid;
+        NSArray * zuheValid_min;
+        float maxValue = 0;
+        float minValue = NSIntegerMax;
+        NSMutableArray * peilu_zuhe_temp =[NSMutableArray array];
+        for(NSArray * array in allZuheArray){
+            NSArray * peilv_zuhe_array = [self codeZuheShiftToOddZuhe:array match:match];
+            float result=0;
+            for(NSNumber *num in peilv_zuhe_array){
+                result += [num floatValue];
+            }
+            if (result > maxValue) {
+                maxValue = result;
+                zuheValid = peilv_zuhe_array;
+            }
+            
+            peilv_zuhe_array = [self codeZuheShiftToOddZuheMin:array match:match];
+            result=0;
+            for(NSNumber *num in peilv_zuhe_array){
+                result += [num floatValue];
+            }
+            
+            if (result < minValue) {
+                minValue = result;
+                zuheValid_min = peilv_zuhe_array;
+            }
+        }
+        match.odd_max_zuhe_HHGG = zuheValid;
+        match.odd_min_zuhe_HHGG = zuheValid_min;
+        [oddNumArray_temp addObject:zuheValid];
+    }
+    
+    NSMutableDictionary * matchGropDic = [NSMutableDictionary dictionary];
+    NSMutableArray * matchIndexArray = [NSMutableArray array];
+    for (int i=0;i<self.selectMatchArray.count;i++){
+        NSString * indexString = [NSString stringWithFormat:@"%d",i];
+        
+        matchGropDic[indexString] = self.selectMatchArray[i];
+        [matchIndexArray addObject:indexString];
+    }
+    NSArray * allGroup = [self getCombination:matchIndexArray count:[index intValue]];
+    
+    
+    NSMutableDictionary * matchGropDicMin = [NSMutableDictionary dictionary];
+    NSMutableArray * matchIndexArrayMin = [NSMutableArray array];
+    for (int i=0;i<self.selectMatchArray.count;i++){
+        NSString * indexString = [NSString stringWithFormat:@"%d",i];
+        
+        matchGropDicMin[indexString] = self.selectMatchArray[i];
+        [matchIndexArrayMin addObject:indexString];
+    }
+    NSArray * allGroupMin = [self getCombination:matchIndexArrayMin count:[minIndex intValue]];
+    float bouns_temp =0;
+    for (NSArray * indexArray in allGroup) {
+        NSMutableArray * matchArray = [NSMutableArray arrayWithCapacity:indexArray.count];
+        for (NSString * indexString in indexArray) {
+            [matchArray addObject:matchGropDic[indexString]];
+        }
+        self.numArrayContent = [NSMutableArray array];
+        NSMutableArray * numArrayContent_temp = [NSMutableArray array];
+        for(JCZQMatchModel * match in matchArray){
+            [numArrayContent_temp addObject:match.odd_max_zuhe_HHGG];
+        }
+        self.numArrayContent = numArrayContent_temp;
+        
+        self.hunHeCombinesString = [NSMutableArray array];
+        
+        [self arrayRrgodicIndex:0 mutableString:@""];
+        for (int i =0; i<_hunHeCombinesString.count; i++) {
+            NSString * numString = _hunHeCombinesString[i];
+            NSArray * numArray = [numString componentsSeparatedByString:@","];
+            double  value =[self calculateBetCount:numArray baseNumArray:baseNumArray];
+            NSInteger bei = [_beitou intValue];
+            for (BounsModelItem *item in array) {
+                 
+                if (value - (item.getSp * 2) < 0.1) {
+                    bei = [item.multiple integerValue];
+                    break;
+                }
+            }
+            bouns_temp += (value*bei);
+        }
+    }
+
+    float total_bounds = bouns_temp;
+    self.mostBounds = [NSString stringWithFormat:@"%.2f",total_bounds];
+    
+    
+    bouns_temp = 0;
+    CGFloat bouns_temp_min=MAXFLOAT;
+    
+    for (NSArray * indexArray in allGroupMin) {
+        NSMutableArray * matchArray = [NSMutableArray arrayWithCapacity:indexArray.count];
+        for (NSString * indexString in indexArray) {
+            [matchArray addObject:matchGropDicMin[indexString]];
+        }
+        self.numArrayContent = [NSMutableArray array];
+        NSMutableArray * numArrayContent_temp = [NSMutableArray array];
+        for(JCZQMatchModel * match in matchArray){
+            [numArrayContent_temp addObject:match.odd_min_zuhe_HHGG];
+        }
+        self.numArrayContent = numArrayContent_temp;
+        
+        self.hunHeCombinesString = [NSMutableArray array];
+        
+        [self arrayRrgodicIndex:0 mutableString:@""];
+        double  value= 0.0;
+        for (int i =0; i<_hunHeCombinesString.count; i++) {
+            NSString * numString = _hunHeCombinesString[i];
+            NSArray * numArray = [numString componentsSeparatedByString:@","];
+            value +=[self calculateBetCount:numArray baseNumArray:baseNumArray];
+            value = value/baseNumArray.count;
+        }
+        if (bouns_temp_min > value) {
+            bouns_temp_min = value;
+        }
+    }
+    total_bounds = bouns_temp_min * [_beitou intValue];
+    self.minBounds = [NSString stringWithFormat:@"%.2f",total_bounds * winZhu];
+    
+    
 }
 
 - (void)peilvJiSuan{

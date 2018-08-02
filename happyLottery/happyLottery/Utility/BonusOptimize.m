@@ -10,30 +10,41 @@
 
 @implementation BonusOptimize
 
-+(CGFloat)getMincCommonDivisor:(NSArray *)numList{
++(long long)getMincCommonDivisor:(NSArray *)numList{
     NSMutableArray *mNumList  = [NSMutableArray arrayWithCapacity:0];
         for (NSString * temp in numList) {
-            NSInteger ops = [[NSString  stringWithFormat:@"%.2f",[temp doubleValue]* 100] integerValue] ;
+            long long ops = [[NSString  stringWithFormat:@"%.0f",[temp doubleValue]] longLongValue] ;
             [mNumList addObject:@(ops)];
         }
-    CGFloat tempf = [self getMincCommon:mNumList] / 100.0;
+    [mNumList sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        NSInteger int1 = [obj1 integerValue];
+        NSInteger int2 = [obj2 integerValue];
+        return int1 > int2;
+    }];
+    
+    
+    NSMutableArray *temp = [NSMutableArray arrayWithCapacity:0];
+    [temp addObject:[mNumList firstObject]];
+    for (int i = 1; i < mNumList.count; i ++) {
+        NSInteger item = mNumList[i];
+        if (item - [[temp lastObject] integerValue] > 2) {
+            [temp addObject:@(item)];
+        }
+    }
+    long long tempf = [self getMincCommon:temp];
     return tempf;
 }
 
-+(NSInteger)getMincCommon:(NSMutableArray *)numList{
++(long)getMincCommon:(NSMutableArray *)numList{
     for (int i = 0; i < numList .count - 1; i ++) {
-        NSInteger minTemp = [self getMinCommon:[numList[i] integerValue] and:[numList[i +1] integerValue]];
-        
+        long long minTemp = [self getMinCommon:[numList[i] longLongValue] and:[numList[i +1] longLongValue]];
         [numList removeObjectAtIndex:i ];
         [numList insertObject:@(minTemp) atIndex:i + 1];
     }
-    
-    return [[numList lastObject] integerValue];
+    return [[numList lastObject] longLongValue];
 }
-
-+(NSInteger)getMinCommon:(NSInteger )num1 and:(NSInteger )num2{
-    
-    for(NSInteger  i = num2 > num1?num2:num1; i<num1*num2;i+=num2 > num1?num2:num1){
++(long long)getMinCommon:(long long )num1 and:(long long )num2{
+    for(long long  i = num2 > num1?num2:num1; i<num1*num2;i+=num2 > num1?num2:num1){
         if((i%num1==0)&&(i%num2==0)){
             return i;
         }

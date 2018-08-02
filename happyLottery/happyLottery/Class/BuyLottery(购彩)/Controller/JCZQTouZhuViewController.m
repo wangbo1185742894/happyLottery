@@ -8,6 +8,7 @@
 
 #import "JCZQTouZhuViewController.h"
 #import "JingCaiChaunFaSelectView.h"
+#import "BounsYouHuaViewController.h"
 #import "TZSelectMatchCell.h"
 #import "SelectView.h"
 #import "PayOrderViewController.h"
@@ -24,6 +25,7 @@
     JingCaiChaunFaSelectView *jingcaiSelect;
     __weak IBOutlet UIButton *btnMoniTouzhu;
     __weak IBOutlet UIButton *fadanBtn;
+    __weak IBOutlet UIButton *btnJiangjinYouhua;
     __weak IBOutlet UIButton *btnZhenShiTouzhu;
     __weak IBOutlet UIButton *chuanfaBtn;
 }
@@ -47,6 +49,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self getCouponMoreData];
+    btnJiangjinYouhua.layer.borderColor = SystemGreen.CGColor;
+    btnJiangjinYouhua.layer.borderWidth  =1;
+    btnJiangjinYouhua.layer.cornerRadius = 3;
+    btnJiangjinYouhua.layer.masksToBounds = YES;
+    [btnJiangjinYouhua addTarget: self action: @selector(bounsYouhua) forControlEvents: UIControlEventTouchUpInside];
     self.itemDataArray = [NSMutableArray arrayWithCapacity:0];
     if (self.fromSchemeType  == SchemeTypeFaqiGenDan) {
         self.touzhuBtn.hidden = YES;
@@ -120,8 +127,6 @@
     self.memberMan.delegate = self;
     [self.memberMan getCouponByStateSms:Info];
 }
-
-
 -(void)cleanMatch:(NSNotification*)notification{
         if (self.transction.playType == JCZQPlayTypeGuoGuan) {
             
@@ -223,11 +228,7 @@
                     self.transction.chuanFa = [NSString stringWithFormat:@"%ld串1",self.transction.selectMatchArray.count>8?8:self.transction.selectMatchArray.count];
                     chuanfakey = 8;
                 }
-                
-                
-                
             }else{
-                
                 self.transction.chuanFa = [NSString stringWithFormat:@"%ld串1",self.transction.selectMatchArray.count>8?8:self.transction.selectMatchArray.count];
                 chuanfakey = 8;
             }
@@ -567,13 +568,15 @@
     [self updataTouzhuInfo];
     
 }
-- (IBAction)bounsYouhua:(id)sender {
+- (void)bounsYouhua{
+    
     if (self.transction.selectMatchArray.count > 4) {
         [self showPromptText:@"奖金优化最多选4场比赛" hideAfterDelay:2];
         return;
     }
-    if (self.transction.betCount > 50) {
-        [self showPromptText:@"奖金优化原始注数不能超过50注" hideAfterDelay:2];
+    
+    if (self.transction.selectItems .count == 0) {
+        [self showPromptText:@"请选择过关方式" hideAfterDelay:1.7];
         return;
     }
     for (NSString *item in self.transction.selectItems) {
@@ -584,7 +587,15 @@
             }
         }
     }
-    
+    if (self.transction.betCount > 50) {
+        [self showPromptText:@"奖金优化原始注数不能超过50注" hideAfterDelay:2];
+        return;
+    }
+  
+    BounsYouHuaViewController *bounsVC = [[BounsYouHuaViewController alloc]init];
+    bounsVC.fromSchemeType = self.fromSchemeType;
+    bounsVC.transcation = self.transction;
+    [self.navigationController pushViewController:bounsVC animated:YES];
 }
 
 
