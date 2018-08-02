@@ -116,7 +116,7 @@
     NSString *url = [self.curUser getShareUrl];
     //    标题：用户名+邀请你加入+圈名
     //    内容：加入+圈名，一起快乐购彩！
-    NSString *nickName = self.curUser.nickname==nil?[self.curUser.cardCode stringByReplacingCharactersInRange:NSMakeRange(2,4) withString:@"****"]:self.curUser.nickname;
+    NSString *nickName = self.curUser.nickname==nil?[self.curUser.mobile stringByReplacingCharactersInRange:NSMakeRange(3,4) withString:@"****"]:self.curUser.nickname;
     
     NSString *circleName = self.agentInfoModel.circleName == nil?[NSString stringWithFormat:@"@%@",self.agentInfoModel._id]:self.agentInfoModel.circleName;
     

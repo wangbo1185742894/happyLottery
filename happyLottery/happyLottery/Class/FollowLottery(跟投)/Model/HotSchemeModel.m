@@ -94,7 +94,7 @@
 }
 -(NSString *)nickName{
     if (_nickName == nil || _nickName.length == 0) {
-        NSString *itemNmae  = [_cardCode stringByReplacingCharactersInRange:NSMakeRange(2, 4) withString:@"****"];
+        NSString *itemNmae  = [_memberTel stringByReplacingCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
         return  itemNmae;
     }else{
         return _nickName;

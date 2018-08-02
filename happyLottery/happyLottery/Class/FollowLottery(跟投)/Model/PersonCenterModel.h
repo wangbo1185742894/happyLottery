@@ -33,5 +33,7 @@
 
 @property(nonatomic,copy)NSString *  label_urls;
 
+@property(nonatomic,copy)NSString * mobile;
+
 
 @end
