@@ -324,10 +324,11 @@
     self.navigationItem.rightBarButtonItems = @[itemQuery,faqi];
 }
 
+//搜索框添加
 -(void)setSearchButtonItems{
     UIButton *tfSearchKey = [UIButton buttonWithType:UIButtonTypeCustom];
-    tfSearchKey.frame = CGRectMake(0, 25, 251, 35);
-    tfSearchKey.backgroundColor = RGBCOLOR(84, 223, 192);
+    tfSearchKey.frame = CGRectMake(0, 25,KscreenWidth - 90, 30);
+    tfSearchKey.backgroundColor = RGBCOLOR(146, 229, 205);
     tfSearchKey.layer.cornerRadius = 12;
     tfSearchKey.layer.masksToBounds = YES;
     [tfSearchKey setTitle:@"搜索大神" forState:UIControlStateNormal];

@@ -27,11 +27,9 @@
 
 - (void)setFrame:(CGRect)frame{
     frame.size.height -= 1;
-    if (self.btnGenDan.selected) {
-        self.imgDisLeft.constant = self.btnGenDan.mj_x;
-    } else {
-        self.imgDisLeft.constant = self.btnNotice.mj_x;
-    }
+    self.imgDisLeft.constant = self.btnGenDan.selected?self.btnGenDan.mj_x:self.btnNotice.mj_x;
+    self.btnGenDan.titleLabel.font = self.btnGenDan.selected?[UIFont boldSystemFontOfSize:14.0]:[UIFont systemFontOfSize:14.0];
+    self.btnNotice.titleLabel.font = self.btnNotice.selected?[UIFont boldSystemFontOfSize:14.0]:[UIFont systemFontOfSize:14.0];
     [super setFrame:frame];
 }
 
@@ -43,12 +41,13 @@
     [UIView animateWithDuration:0.5 animations:^{
         [self.imgBottom.superview layoutIfNeeded];
     }];
+    sender.selected = YES;
+    self.btnGenDan.titleLabel.font = self.btnGenDan.selected?[UIFont boldSystemFontOfSize:14.0]:[UIFont systemFontOfSize:14.0];
+    self.btnNotice.titleLabel.font = self.btnNotice.selected?[UIFont boldSystemFontOfSize:14.0]:[UIFont systemFontOfSize:14.0];
     if (sender == self.btnGenDan) {
         [self.delegate actionToGD];
-        self.btnGenDan.selected = YES;
     } else {
         [self.delegate actionToNotice];
-        self.btnNotice.selected = YES;
     }
 }
 
