@@ -29,7 +29,7 @@
 }
 
 - (void)reloadDate:(RecomPerModel * )model categoryCode:(NSString *)categoryCode{
-    self.userName.text = model.nickname==nil?[model.cardCode stringByReplacingCharactersInRange:NSMakeRange(2,4) withString:@"****"]:model.nickname;
+    self.userName.text = model.nickname==nil?[model.mobile stringByReplacingCharactersInRange:NSMakeRange(3,4) withString:@"****"]:model.nickname;
     if ([categoryCode isEqualToString:@"Cowman"]) {
         self.infoOneSum.hidden = YES;
         self.infoOneLabel.hidden = YES;

@@ -254,7 +254,7 @@
     self.noticeBtn.userInteractionEnabled = YES;
     [self.noticeBtn setTitle:str forState:UIControlStateNormal];
     [self.userImage sd_setImageWithURL:[NSURL URLWithString:model.headUrl] placeholderImage:[UIImage imageNamed:@"usermine.png"]];
-    self.userName.text = model.nickName==nil?[model.cardCode stringByReplacingCharactersInRange:NSMakeRange(2,4) withString:@"****"]:model.nickName;
+    self.userName.text = model.nickName==nil?[model.mobile stringByReplacingCharactersInRange:NSMakeRange(3,4) withString:@"****"]:model.nickName;
     
     self.fenshiNum.text = [NSString stringWithFormat:@"粉丝 %d人",[model.attentCount intValue]];
     self.fenshiNum.keyWord = [NSString stringWithFormat:@"%d",[model.attentCount intValue]];

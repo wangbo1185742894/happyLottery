@@ -42,9 +42,9 @@
     }
 //    [1]    (null)    @"nickname" : @"大晴天哈哈哈哈还"
     if (model[@"nickname"] == nil) {
-        NSString *cardCode =model[@"cardCode"];
-        cardCode = [cardCode stringByReplacingCharactersInRange:NSMakeRange(2, 4) withString:@"****"];
-        self.labItemTitle.text =cardCode;
+        NSString *mobile =model[@"mobile"];
+        mobile = [mobile stringByReplacingCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
+        self.labItemTitle.text =mobile;
     }else{
         self.labItemTitle.text =model[@"nickname"];
     }
