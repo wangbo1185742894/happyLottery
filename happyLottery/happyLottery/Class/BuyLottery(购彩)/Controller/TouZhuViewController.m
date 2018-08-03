@@ -232,7 +232,7 @@
         
         [self.view addSubview:goOnPlayButton];
         addRandonBetButton = [[UIButton alloc]initWithFrame:frame2];
-        betOptionfunViewHeight.constant = 165;
+        betOptionfunViewHeight.constant = 121;
         
         lineBottom.constant = betOptionfunViewHeight.constant;
         tableviewBottom.constant = betOptionfunViewHeight.constant;
@@ -307,7 +307,7 @@
     self.hasLiked = YES;
     [self initZhuiHaoBtnState];
     if (_FLAG) {
-        betOptionfunViewHeight.constant = 165;
+        betOptionfunViewHeight.constant = 121;
         
         lineBottom.constant = betOptionfunViewHeight.constant;
         
