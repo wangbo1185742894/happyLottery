@@ -1156,6 +1156,7 @@
 		F954A7A12111819E00B40D00 /* icon_gerenzhongxin@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F954A79F2111819D00B40D00 /* icon_gerenzhongxin@3x.png */; };
 		F954A7A52112E97900B40D00 /* SearchViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F954A7A32112E97900B40D00 /* SearchViewCell.m */; };
 		F954A7A62112E97900B40D00 /* SearchViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F954A7A42112E97900B40D00 /* SearchViewCell.xib */; };
+		F954A7A9211330A300B40D00 /* SearchPerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F954A7A8211330A300B40D00 /* SearchPerModel.m */; };
 		F954D517200C498C00CD3B2B /* QuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F954D515200C498C00CD3B2B /* QuestionsViewController.m */; };
 		F954D518200C498C00CD3B2B /* QuestionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F954D516200C498C00CD3B2B /* QuestionsViewController.xib */; };
 		F954D51C200C49A600CD3B2B /* FunctionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F954D51A200C49A600CD3B2B /* FunctionsViewController.m */; };
@@ -3265,6 +3266,8 @@
 		F954A7A22112E97900B40D00 /* SearchViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewCell.h; sourceTree = "<group>"; };
 		F954A7A32112E97900B40D00 /* SearchViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewCell.m; sourceTree = "<group>"; };
 		F954A7A42112E97900B40D00 /* SearchViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewCell.xib; sourceTree = "<group>"; };
+		F954A7A7211330A300B40D00 /* SearchPerModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchPerModel.h; sourceTree = "<group>"; };
+		F954A7A8211330A300B40D00 /* SearchPerModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchPerModel.m; sourceTree = "<group>"; };
 		F954D514200C498C00CD3B2B /* QuestionsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuestionsViewController.h; sourceTree = "<group>"; };
 		F954D515200C498C00CD3B2B /* QuestionsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuestionsViewController.m; sourceTree = "<group>"; };
 		F954D516200C498C00CD3B2B /* QuestionsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionsViewController.xib; sourceTree = "<group>"; };
@@ -6673,6 +6676,8 @@
 				2D05C81920A418B9001A8953 /* HotSchemeModel.m */,
 				F9A941D220A92C1900A7D67A /* PersonCenterModel.h */,
 				F9A941D320A92C1900A7D67A /* PersonCenterModel.m */,
+				F954A7A7211330A300B40D00 /* SearchPerModel.h */,
+				F954A7A8211330A300B40D00 /* SearchPerModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -8552,6 +8557,7 @@
 				2DE109532004E6690020343A /* NewsModel.m in Sources */,
 				2D739C1A1FE2611C00264044 /* IQUIViewController+Additions.m in Sources */,
 				2D7B1302204D45840035AE89 /* LotteryWinHistoryHeadView.m in Sources */,
+				F954A7A9211330A300B40D00 /* SearchPerModel.m in Sources */,
 				F9C3BA352008A2F800916F3C /* FeedBackHistory.m in Sources */,
 				2D739C8B1FE7E0F700264044 /* WBButton.m in Sources */,
 				2D0600501FFE061D009E7568 /* JCLQOrderDetailViewCell.m in Sources */,

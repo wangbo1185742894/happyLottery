@@ -60,6 +60,7 @@
 - (void) giveShareScore:(BOOL)success errorMsg:(NSString *)msg;
 - (void) gotUserCashInfoList:(NSArray*)infoList errorMsg:(NSString *)msg;
 -(void)chaseCompleteCount:(NSDictionary *)paraDic errorMsg:(NSString *)msg;
+-(void)searchGreatFollow:(NSArray*)infoList errorMsg:(NSString *)msg;
 
 @end
 
@@ -122,6 +123,7 @@
 
 -(void)getUserCashInfo:(NSDictionary *)paraDic andApi:(NSString *)api;
 -(void)chaseCompleteCount:(NSDictionary *)paraDic;
+-(void)searchGreatFollow:(NSDictionary *)paraDic;
 
 
 @end

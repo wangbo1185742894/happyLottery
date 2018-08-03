@@ -64,6 +64,12 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.btnPostScheme.userInteractionEnabled = YES;
+}
+
 - (IBAction)actionLookOrder:(id)sender {
    
     if (self.schemetype == SchemeTypeGenDan) {
@@ -222,7 +228,7 @@
 }
 
 - (IBAction)actionPostScheme:(id)sender {
-   
+    self.btnPostScheme.userInteractionEnabled = NO;
     [self.lotteryMan initiateFollowScheme:@{@"schemeNo":self.schemeNO}];
 }
 - (void)initiateFollowScheme:(NSString *)resultStr errorMsg:(NSString *)msg{

@@ -7,14 +7,16 @@
 //
 
 #import "SearchViewController.h"
-#import "HotFollowSchemeViewCell.h"
 #import "FollowDetailViewController.h"
 #import "PersonCenterViewController.h"
-#define KHotFollowSchemeViewCell @"HotFollowSchemeViewCell"
+#import "SearchPerModel.h"
+#import "SearchViewCell.h"
 
-@interface SearchViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,ToPersonViewDelegate>
+#define KSearchViewCell  @"SearchViewCell"
+
+@interface SearchViewController ()<UITableViewDelegate,UITableViewDataSource,MemberManagerDelegate>
 {
-    NSMutableArray <HotSchemeModel *> * schemeList;
+    NSMutableArray <SearchPerModel *> * schemeList;
 }
 @property (weak, nonatomic) IBOutlet UIButton *btnSearch;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewHeight;
@@ -34,7 +36,7 @@
         self.topViewHeight.constant = 64;
     }
     self.viewControllerNo = @"A421";
-    self.lotteryMan.delegate = self;
+    self.memberMan.delegate = self;
     _page = 1;
     schemeList = [NSMutableArray arrayWithCapacity:0];
     [self setTableView];
@@ -65,22 +67,22 @@
         
         return;
     }
-    NSDictionary *parc = @{@"nickName":self.tfSearchKey.text,@"page":@(_page),@"pageSize":@(KpageSize),@"isHis":@NO};
-    [self.lotteryMan getFollowSchemeByNickName:parc];
+    NSDictionary *parc = @{@"nickName":self.tfSearchKey.text,@"page":@(_page),@"pageSize":@(KpageSize)};
+    [self.memberMan searchGreatFollow:parc];
 }
 
--(void)getHotFollowScheme:(NSArray *)personList errorMsg:(NSString *)msg{
+-(void)searchGreatFollow:(NSArray*)infoList errorMsg:(NSString *)msg{
     self.tabSearchResultList.hidden = NO;
-    [self.tabSearchResultList tableViewEndRefreshCurPageCount:personList.count];
-    if (personList == nil) {
+    [self.tabSearchResultList tableViewEndRefreshCurPageCount:infoList.count];
+    if (infoList == nil||infoList.count == 0) {
         [self showPromptText:msg hideAfterDelay:1.8];
         return;
     }
     if (_page == 1) {
         [schemeList removeAllObjects];
     }
-    for (NSDictionary *dic in personList) {
-        [schemeList addObject:[[HotSchemeModel alloc]initWith:dic]];
+    for (NSDictionary *dic in infoList) {
+        [schemeList addObject:[[SearchPerModel alloc]initWith:dic]];
     }
     [self.tabSearchResultList  reloadData];
 }
@@ -111,7 +113,7 @@
     self.tabSearchResultList.delegate = self;
     self.tabSearchResultList.dataSource = self;
 
-    [self.tabSearchResultList registerNib:[UINib nibWithNibName:KHotFollowSchemeViewCell bundle:nil] forCellReuseIdentifier:KHotFollowSchemeViewCell];
+    [self.tabSearchResultList registerNib:[UINib nibWithNibName:KSearchViewCell bundle:nil] forCellReuseIdentifier:KSearchViewCell];
 
     [self.tabSearchResultList reloadData];
 }
@@ -125,15 +127,14 @@
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    HotFollowSchemeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KHotFollowSchemeViewCell];
-    [cell loadDataWithModelInDaT:schemeList[indexPath.row]];
-    cell.delegate = self;
+    SearchViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KSearchViewCell];
+    [cell loadDataWithModel:schemeList[indexPath.row]];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-  return 202;
+  return 80;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -147,10 +148,11 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    FollowDetailViewController *followVC = [[FollowDetailViewController alloc]init];
-    followVC.model = schemeList[indexPath.row];
-    followVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:followVC animated:YES];
+    PersonCenterViewController *viewContr = [[PersonCenterViewController alloc]init];
+    SearchPerModel *model = schemeList[indexPath.row];
+    viewContr.cardCode = model.cardCode;
+    viewContr.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:viewContr animated:YES];
 }
 
 - (IBAction)actionBack:(id)sender {
@@ -162,10 +164,7 @@
 }
 
 -(void)itemClickToPerson:(NSString *)carcode{
-    PersonCenterViewController *viewContr = [[PersonCenterViewController alloc]init];
-    viewContr.cardCode = carcode;
-    viewContr.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:viewContr animated:YES];
+ 
 }
 
 @end
