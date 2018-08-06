@@ -200,14 +200,11 @@
             [self showPromptText:@"姓名不能超过15位" hideAfterDelay:2];
             return;
         }
-        
-        if (![self isValidateName:self.nameTextField.text]) {
-           
+        if (![self isValidateName:[self.nameTextField.text stringByReplacingOccurrencesOfString:@"•" withString:@""]]) {
             [self showPromptText: @"请输入真实姓名" hideAfterDelay: 1.7];
             self.nameTextField.text= @"";
             return;
         }
-        
     }
     [self.view resignFirstResponder];
 }
@@ -243,13 +240,17 @@
             //判断键盘是不是九宫格键盘
             if ([self isNineKeyBoard:string] ){
                 return YES;
-            }else{
+            }else if ([string isEqualToString:@"•"]) {
+                return YES;
+            }
+            else{
                 if ([self hasEmoji:string] || [self stringContainsEmoji:string]){
                     return NO;
                 }
             }
         }
         if (textField == self.nameTextField) {
+            
             if (![self isValidateRealName:string]) {
                 return NO;
             }
