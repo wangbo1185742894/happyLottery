@@ -103,7 +103,7 @@
 
 -(void)actionSub{
     NSInteger beiCount =[self.svInputMoney.labContent.text integerValue];
-    if ( beiCount>self.transcation.betCount * 2 + 2 ) {
+    if ( beiCount>=self.transcation.betCount * 2 + 2 ) {
         beiCount -= 2;
     }
     self.svInputMoney.labContent.text = [NSString stringWithFormat:@"%ld",(long)beiCount];
