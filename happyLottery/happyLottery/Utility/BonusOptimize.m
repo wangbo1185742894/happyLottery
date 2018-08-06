@@ -26,8 +26,8 @@
     NSMutableArray *temp = [NSMutableArray arrayWithCapacity:0];
     [temp addObject:[mNumList firstObject]];
     for (int i = 1; i < mNumList.count; i ++) {
-        NSInteger item = mNumList[i];
-        if (item - [[temp lastObject] integerValue] > 2) {
+        NSInteger item = [mNumList[i] integerValue];
+        if (item - [[temp lastObject] integerValue] > 1) {
             [temp addObject:@(item)];
         }
     }

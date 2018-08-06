@@ -74,7 +74,7 @@
         self.viewDisBottom.constant = 0;
     }
     self.title = @"确认预约";
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cleanMatch:) name:KSELECTMATCHCLEAN object:nil];
+
     self.lotteryMan.delegate = self;
     [self.transction.selectItems removeAllObjects];
     [self setTableView];
@@ -556,10 +556,15 @@
     }];
     [alert showAlertWithSender:self];
 }
-
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cleanMatch:) name:KSELECTMATCHCLEAN object:nil];
+}
 -(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
     [[NSNotificationCenter defaultCenter]removeObserver:self name:KSELECTMATCHCLEAN object:nil];
 }
+
 
 -(void)update{
     
@@ -569,7 +574,10 @@
     
 }
 - (void)bounsYouhua{
-    
+    if (self.transction.betCount == 1) {
+        [self showPromptText:@"单注方案无需奖金优化" hideAfterDelay:2];
+        return;
+    }
     if (self.transction.selectMatchArray.count > 4) {
         [self showPromptText:@"奖金优化最多选4场比赛" hideAfterDelay:2];
         return;
@@ -582,7 +590,7 @@
     for (NSString *item in self.transction.selectItems) {
         if ([item rangeOfString:@"串"].length >0) {
             if ([[[item componentsSeparatedByString:@"串"] lastObject] integerValue] > 1) {
-                [self showPromptText:@"奖金优化仅支持n串1" hideAfterDelay:2];
+                [self showPromptText:@"奖金优化只支持自由自由过关4串1及以下串关玩法" hideAfterDelay:2];
                 return;
             }
         }
@@ -595,6 +603,7 @@
     BounsYouHuaViewController *bounsVC = [[BounsYouHuaViewController alloc]init];
     bounsVC.fromSchemeType = self.fromSchemeType;
     bounsVC.transcation = self.transction;
+    self.transction.betCost  = self.transction.betCount * [self.transction.beitou integerValue] * 2;
     [self.navigationController pushViewController:bounsVC animated:YES];
 }
 

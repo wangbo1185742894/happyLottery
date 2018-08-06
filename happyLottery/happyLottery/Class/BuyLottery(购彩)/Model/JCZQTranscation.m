@@ -834,7 +834,6 @@
     else
     {
         index = [_chuanFa substringToIndex:1];
-        
     }
     minIndex = index;
     NSDictionary * sectionCodeDic = chuanFaCodeDic[[index intValue]-1];

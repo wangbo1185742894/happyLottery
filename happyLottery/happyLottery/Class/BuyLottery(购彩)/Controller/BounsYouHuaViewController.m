@@ -17,8 +17,10 @@
 #define KBounsYouViewCell @"BounsYouViewCell"
 
 @interface BounsYouHuaViewController ()<UITableViewDelegate,UITableViewDataSource,BounsYouViewCellDelegate,UITextFieldDelegate,LotteryManagerDelegate>
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomDis;
 @property (weak, nonatomic) IBOutlet SelectView *svInputMoney;
 @property (weak, nonatomic) IBOutlet MGLabel *labTopInfo;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topDis;
 @property (weak, nonatomic) IBOutlet UITableView *tabBounsList;
 @property (weak, nonatomic) IBOutlet MGLabel *labZhuInfo;
 @property (weak, nonatomic) IBOutlet MGLabel *labBounsInfo;
@@ -30,6 +32,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.topDis.constant = NaviHeight;
+    self.bottomDis.constant = BOTTOM_BAR_HEIGHT;
     self.showChuanfa = [NSMutableArray arrayWithCapacity:0];
     for (NSString *chuanfa in self.transcation.selectItems) {
         [_showChuanfa addObject:chuanfa];
@@ -38,15 +42,26 @@
     [self.transcation.selectItems removeAllObjects];
     for (NSString *chuanfa in _showChuanfa) {
         NSArray * chuanFaCodeDic = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"JingCaiChuanTypeDic" ofType:@"plist"]];
-        NSString * index = [chuanfa substringToIndex:1];
+        NSString * index;
+        if ([chuanfa isEqualToString:@"单场"]) {
+            index = @"1";
+            
+        }else{
+            index = [chuanfa substringToIndex:1];
+        }
+        
+        
         NSDictionary * sectionCodeDic = chuanFaCodeDic[[index intValue]-1];
         NSDictionary * codeDic = sectionCodeDic[chuanfa];
         NSString * baseNum = codeDic[@"baseNum"];
         for (NSString *itemChuanfa in [baseNum componentsSeparatedByString:@","]) {
-            NSString *item = [NSString stringWithFormat:@"%@串1",itemChuanfa];
-//            if (![self.transcation.selectItems containsObject:itemChuanfa]) {
+            if ([itemChuanfa integerValue] == 1) {
+  
+                [self.transcation .selectItems addObject:@"单场"];
+            }else{
+                NSString *item = [NSString stringWithFormat:@"%@串1",itemChuanfa];
                 [self.transcation .selectItems addObject:item];
-//            }
+            }
         }
     }
     
@@ -77,7 +92,14 @@
     NSMutableArray *itemArray = [NSMutableArray arrayWithCapacity:0];
     for (NSMutableArray  *  select in _zhuArray) {
         BounsModelItem *item = [[BounsModelItem alloc]init];
-        item.selectItemList = select;
+        if ([select isKindOfClass:[NSArray class]]) {
+               item.selectItemList = select;
+        }else{
+            NSMutableArray *array = [NSMutableArray arrayWithCapacity:0];
+            [array addObject:select];
+            item.selectItemList = array;
+        }
+     
         item.multiple = @"1";
         [itemArray addObject:item];
     }
@@ -244,20 +266,18 @@
 }
 
 -(void)bonusOptimize{
-    CGFloat avgSp =[BonusOptimize getMincCommonDivisor:[self getAllSp]];
+    long long avgSp =[BonusOptimize getMincCommonDivisor:[self getAllSp]];
     CGFloat subOptimize = 0;
     for (BounsModelItem * model in _zhuArray) {
         subOptimize += avgSp / [model getSp];
     }
     NSInteger totalBei = self.transcation.betCost / 2;// _zhuArray.count * [self.transcation.beitou integerValue];
+    totalBei  -=  _zhuArray.count;
     for (BounsModelItem * model in _zhuArray) {
-        if ([self.transcation.beitou integerValue] == 1) {
-            NSString *itembei = [NSString stringWithFormat:@"%.0f",(avgSp /  [model getSp]) / subOptimize * _zhuArray.count * [self.transcation.beitou integerValue]];
-                model.multiple = itembei;
-        }else{
-            model.multiple = @"1";
-        }
-        totalBei -= [model.multiple integerValue];
+            NSString *itembei = [NSString stringWithFormat:@"%.0f",(avgSp /  [model getSp]) / subOptimize * totalBei];
+        
+        totalBei -= [itembei integerValue];
+        model.multiple = [NSString stringWithFormat:@"%ld",[itembei integerValue] + 1];
     }
     
     for (NSInteger i = totalBei; i > 0; i--) {
@@ -343,7 +363,8 @@
         [betContent  addObject:@{
                                  @"betMatches":matches,
                                  @"passTypes":@[chuanFaString],
-                                 @"multiple":item.multiple
+                                 @"multiple":item.multiple,
+                                 @"units":@"1"
                                  }];
     }
     [self.lotteryMan betLotteryScheme:self.transcation andBetContentArray:betContent];
@@ -394,7 +415,6 @@
         if (action != NULL) {
             [self performSelector:action];
         }
-        
         [self.transcation peilvJiSuanBy:_zhuArray];
         Max += [self.transcation.mostBounds doubleValue];
     }
