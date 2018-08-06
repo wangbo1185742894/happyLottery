@@ -10,6 +10,12 @@
 
 @implementation SearchViewCell
 
+- (void)setFrame:(CGRect)frame {
+    frame.origin.y += 1;  // 让cell的y值增加1(根据自己需要分割线的高度来进行调整)
+    frame.size.height -= 1; // 让cell的高度减1
+    [super setFrame:frame]; // 别忘了重写父类方法
+}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.userImage.layer.cornerRadius = self.userImage.mj_h / 2;
@@ -66,7 +72,7 @@
             self.recentWin.hidden = YES;
         }
     }
-    self.totalBonus.text = model.totalBonus;
+    self.totalBonus.text = [NSString stringWithFormat:@"累计发单中奖：%.2f元",[model.totalBonus doubleValue]];
 }
 
 @end

@@ -14,7 +14,7 @@
 
 #define KSearchViewCell  @"SearchViewCell"
 
-@interface SearchViewController ()<UITableViewDelegate,UITableViewDataSource,MemberManagerDelegate>
+@interface SearchViewController ()<UITableViewDelegate,UITableViewDataSource,MemberManagerDelegate,UITextFieldDelegate>
 {
     NSMutableArray <SearchPerModel *> * schemeList;
 }
@@ -61,10 +61,9 @@
 
 -(void)getHotFollowScheme{
     if (self.tfSearchKey.text.length == 0) {
-        [self showPromptText:@"请输入要查询的昵称" hideAfterDelay:1.9];
+//        [self showPromptText:@"昵称不能为空" hideAfterDelay:1.9];
         [schemeList removeAllObjects];
         [self.tabSearchResultList reloadData];
-        
         return;
     }
     NSDictionary *parc = @{@"nickName":self.tfSearchKey.text,@"page":@(_page),@"pageSize":@(KpageSize)};
@@ -90,7 +89,7 @@
 -(void)setTextFiled{
     self.tfSearchKey.layer.cornerRadius = self.tfSearchKey.mj_h / 2;
     self.tfSearchKey.layer.masksToBounds = YES;
-    NSMutableAttributedString * firstPart = [[NSMutableAttributedString alloc] initWithString:@"请输入您所需的关键词" attributes:@{ NSFontAttributeName:[UIFont systemFontOfSize:15],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    NSMutableAttributedString * firstPart = [[NSMutableAttributedString alloc] initWithString:@"请输入您要搜索的昵称" attributes:@{ NSFontAttributeName:[UIFont systemFontOfSize:15],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     self.tfSearchKey.attributedPlaceholder = firstPart;
     UIButton *leftView = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
     [leftView setImage:[UIImage imageNamed:@"sousuo"] forState:0];
@@ -103,10 +102,13 @@
     self.tfSearchKey.rightViewMode =  UITextFieldViewModeAlways;
     self.tfSearchKey.leftView =leftView ;
     self.tfSearchKey.leftViewMode =  UITextFieldViewModeAlways;
+    self.tfSearchKey.delegate = self;
 }
 
 -(void)cleanKeyWord{
     self.tfSearchKey.text = @"";
+    [schemeList removeAllObjects];
+    [self.tabSearchResultList reloadData];
 }
 
 -(void)setTableView{
@@ -114,7 +116,6 @@
     self.tabSearchResultList.dataSource = self;
 
     [self.tabSearchResultList registerNib:[UINib nibWithNibName:KSearchViewCell bundle:nil] forCellReuseIdentifier:KSearchViewCell];
-
     [self.tabSearchResultList reloadData];
 }
 
@@ -160,7 +161,45 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (IBAction)actionSearch:(id)sender {
-     [self loadNewData];
+    if (self.tfSearchKey.text.length == 0) {
+        [self showPromptText:@"昵称不能为空" hideAfterDelay:1.9];
+        [schemeList removeAllObjects];
+        [self.tabSearchResultList reloadData];
+        return;
+    }
+    [self loadNewData];
+}
+
+#pragma UITextFieldDelegate
+
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if ([string isEqualToString:@""]) {
+        return YES;
+    }
+    if ([string isEqualToString:@"\n"]) {
+        
+    }
+    if ([textField isFirstResponder]) {
+        
+        if ([[[textField textInputMode] primaryLanguage] isEqualToString:@"emoji"] || ![[textField textInputMode] primaryLanguage]) {
+            return NO;
+        }
+        
+        //判断键盘是不是九宫格键盘
+        if ([self isNineKeyBoard:string] ){
+            return YES;
+        }else{
+            if ([self hasEmoji:string] || [self stringContainsEmoji:string]){
+                return NO;
+            }
+        }
+    }
+    if (textField == self.tfSearchKey) {
+        if (![self isValidateName:string]) {
+            return NO;
+        }
+    }
+    return YES;
 }
 
 -(void)itemClickToPerson:(NSString *)carcode{
