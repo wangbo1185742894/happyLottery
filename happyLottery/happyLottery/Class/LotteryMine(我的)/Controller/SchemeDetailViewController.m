@@ -114,11 +114,7 @@
     schemeDetail = [[JCZQSchemeItem alloc]initWith:infoArray];
     NSInteger itemIndex = 1;
     if ([schemeDetail.lottery isEqualToString:@"JCZQ"]) {
-        NSString *content = schemeDetail.betContent;
-        if ([schemeDetail.schemeSource isEqualToString:@"BONUS_OPTIMIZE"]) {
-            content = schemeDetail.originalContent;
-        }
-        for (NSDictionary *matchDic in [Utility objFromJson:content]) {
+        for (NSDictionary *matchDic in [Utility objFromJson:schemeDetail.betContent]) {
             NSArray *matchArray = [Utility objFromJson:matchDic[@"betMatches"]];
             for (int i  = 0; i < matchArray.count; i++) {
                 JcBetContent *betContent = [[JcBetContent alloc]init];

@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet MGLabel *introduceLabel;
 @property (weak, nonatomic) IBOutlet UIButton *dingDan;
 @property (weak, nonatomic) IBOutlet UILabel *passTypeLab;
+@property (weak, nonatomic) IBOutlet UILabel *passtypeText;
 
 - (void)reloadDate:(JCZQSchemeItem * )model;
 

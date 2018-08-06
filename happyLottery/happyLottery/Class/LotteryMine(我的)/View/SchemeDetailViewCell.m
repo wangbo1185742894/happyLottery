@@ -31,6 +31,7 @@
     __weak IBOutlet UILabel *touzhujine;
     __weak IBOutlet NSLayoutConstraint *rightCons;
     __weak IBOutlet UILabel *labLottery;
+    __weak IBOutlet UIImageView *youHuaTag;
 }
 @end
 
@@ -111,7 +112,11 @@
     }
   
     labBouns.text = [self getWinningStatus:model];
-    
+    if ([model.lottery isEqualToString:@"JCZQ"] && [model.schemeSource isEqualToString:@"BONUS_OPTIMIZE"]) {
+        youHuaTag.hidden = NO;
+    } else {
+        youHuaTag.hidden = YES;
+    }
 //    labChuanFa.text = [self getChuanFa];
 //    [self reloadGYJModel:model];
 }

@@ -281,7 +281,7 @@
             }
         }
     }
-    if ([schemeDetail.winningStatus isEqualToString:@"WAIT_LOTTERY"]) { //待开奖
+    if ([schemeDetail.betContent isEqualToString:@"开奖后公开"]) { //截期后公开
         if ([self.schemeType isEqualToString:@"BUY_INITIATE"]) {
             if (section == 2) {
                 return 3+self.dataArray.count;
@@ -303,9 +303,6 @@
 - (CGFloat)setHeightForFangan:(NSIndexPath *)indexPath {
         if (indexPath.row == 0) {
             SchemeContaintCell *cell = [[SchemeContaintCell alloc]init];
-            if ([schemeDetail.lottery isEqualToString:@"JCLQ"]) {
-                return [cell dateHeight:schemeDetail];
-            }
             return [cell dateHeight:schemeDetail]+32;
         }
         if (indexPath.row == 1) {
@@ -349,11 +346,7 @@
         else {
             if (indexPath.section == 1) {
                 if (indexPath.row == 0) {
-                    SchemeContaintCell *cell = [[SchemeContaintCell alloc]init];
-                    if ([schemeDetail.lottery isEqualToString:@"JCLQ"]) {
-                        return [cell dateHeight:schemeDetail];
-                    }
-                    return [cell dateHeight:schemeDetail]+32;
+                    return 51;
                 }
                 if (indexPath.row == 1) {
                     return 120;
@@ -364,7 +357,7 @@
             return 138;
         }
     }
-    //
+    //支付后
     if([self.schemeType isEqualToString:@"BUY_INITIATE"]){
         if (indexPath.section == 0){
             return 205;
@@ -385,12 +378,9 @@
             return 38;
         }
         if (indexPath.section == 2) {
-            if ([schemeDetail.winningStatus isEqualToString:@"WAIT_LOTTERY"]){
+            if ([schemeDetail.betContent isEqualToString:@"开奖后公开"]){
                 if (indexPath.row == 0) {
                     SchemeContaintCell *cell = [[SchemeContaintCell alloc]init];
-                    if ([schemeDetail.lottery isEqualToString:@"JCLQ"]) {
-                        return [cell dateHeight:schemeDetail];
-                    }
                     return [cell dateHeight:schemeDetail]+32;
                 }
                 if (indexPath.row == 1) {
@@ -486,6 +476,8 @@
                     SchemeContaintCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeContaintCell];
                     [cell reloadPassTypeDate:schemeDetail];
                     [cell reloadDate:schemeDetail];
+                    cell.passTypeLab.hidden = YES;
+                    cell.passtypeText.hidden = YES;
                     return cell;
                 }
                 if (indexPath.row == 1) {
