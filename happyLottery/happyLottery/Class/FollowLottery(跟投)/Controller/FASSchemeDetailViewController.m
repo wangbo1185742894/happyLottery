@@ -532,7 +532,7 @@
             return cell;
         }
         if (indexPath.section == 2) {
-            if ([schemeDetail.betContent isEqualToString:@"截期后公开"]){
+            if ([schemeDetail.betContent isEqualToString:@"开奖后公开"]){
                 if (indexPath.row == 0) {
                     SchemeContaintCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeContaintCell];
                     cell.delegate = self;
