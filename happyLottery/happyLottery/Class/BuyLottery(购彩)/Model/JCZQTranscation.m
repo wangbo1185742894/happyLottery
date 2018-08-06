@@ -82,7 +82,8 @@
     submitParaDic[@"issueNumber"] = @"2018";
     submitParaDic[@"units"] = [NSString stringWithFormat:@"%ld",(long)self.units];
     submitParaDic[@"betSource"] = @"2";
-    submitParaDic[@"schemeSource"] = @(0);
+    submitParaDic[@"schemeSource"] = @(self.schemeSource);
+    submitParaDic[@"multiple"] = @(1);
     submitParaDic[@"secretType"] =@(self.secretType);
     submitParaDic[@"costType"] = @(self.costType);
     NSString *betcost;
@@ -115,7 +116,7 @@
         submitParaDic[@"subscribedCost"] = betcost;
         
     }
-    submitParaDic[@"multiple"] = self.beitou;
+//    submitParaDic[@"multiple"] = self.beitou;
     return submitParaDic;
 }
 

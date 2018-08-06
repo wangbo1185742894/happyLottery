@@ -99,6 +99,8 @@
     [super viewWillAppear:animated];
     [tabFollewView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
     placeImageHidden = YES;
+    headerView.btnGenDan.selected = YES;
+    headerView.btnNotice.selected = NO;
     [self setNavigationBa];
     [self loadNewData];
     [cell openTimer];

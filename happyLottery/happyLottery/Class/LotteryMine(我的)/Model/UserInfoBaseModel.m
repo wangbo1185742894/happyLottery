@@ -35,8 +35,9 @@
 -(NSString *)getLeftTitle{
     return [NSString stringWithFormat:@"\n类型\n\n方案号\n\n时间\n\n金额\n\n"];
 }
+
 -(NSString *)getRightTitle{
-    return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n#%@元\n\n",[self get1Name],self.schemeNo,self.prizeTime,self.subBonus];
+    return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n#%@元\n\n",[self get1Name],self.schemeNo,self.prizeTime,[NSString stringWithFormat:@"%.2f",[self.subBonus doubleValue]]];
 }
 @end
 

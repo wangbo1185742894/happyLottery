@@ -15,7 +15,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *createTimeLab;
 
-@property (weak, nonatomic) IBOutlet UILabel *dynamicLab;
 @property (weak, nonatomic) IBOutlet UILabel *labText;
 
 @end

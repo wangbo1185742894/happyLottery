@@ -18,7 +18,12 @@
 @property (nonatomic,strong)id <SchemeContaintCellDelegate> delegate;
 @property (weak, nonatomic) IBOutlet MGLabel *introduceLabel;
 @property (weak, nonatomic) IBOutlet UIButton *dingDan;
+@property (weak, nonatomic) IBOutlet UILabel *passTypeLab;
 
 - (void)reloadDate:(JCZQSchemeItem * )model;
+
+- (float)dateHeight:(JCZQSchemeItem *)schemeDetail;
+
+- (void)reloadPassTypeDate:(JCZQSchemeItem *)model;
 
 @end

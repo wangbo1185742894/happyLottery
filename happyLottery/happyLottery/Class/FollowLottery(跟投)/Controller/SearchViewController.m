@@ -7,14 +7,16 @@
 //
 
 #import "SearchViewController.h"
-#import "HotFollowSchemeViewCell.h"
 #import "FollowDetailViewController.h"
 #import "PersonCenterViewController.h"
-#define KHotFollowSchemeViewCell @"HotFollowSchemeViewCell"
+#import "SearchPerModel.h"
+#import "SearchViewCell.h"
 
-@interface SearchViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,ToPersonViewDelegate>
+#define KSearchViewCell  @"SearchViewCell"
+
+@interface SearchViewController ()<UITableViewDelegate,UITableViewDataSource,MemberManagerDelegate,UITextFieldDelegate>
 {
-    NSMutableArray <HotSchemeModel *> * schemeList;
+    NSMutableArray <SearchPerModel *> * schemeList;
 }
 @property (weak, nonatomic) IBOutlet UIButton *btnSearch;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewHeight;
@@ -34,7 +36,7 @@
         self.topViewHeight.constant = 64;
     }
     self.viewControllerNo = @"A421";
-    self.lotteryMan.delegate = self;
+    self.memberMan.delegate = self;
     _page = 1;
     schemeList = [NSMutableArray arrayWithCapacity:0];
     [self setTableView];
@@ -59,28 +61,27 @@
 
 -(void)getHotFollowScheme{
     if (self.tfSearchKey.text.length == 0) {
-        [self showPromptText:@"请输入要查询的昵称" hideAfterDelay:1.9];
+//        [self showPromptText:@"昵称不能为空" hideAfterDelay:1.9];
         [schemeList removeAllObjects];
         [self.tabSearchResultList reloadData];
-        
         return;
     }
-    NSDictionary *parc = @{@"nickName":self.tfSearchKey.text,@"page":@(_page),@"pageSize":@(KpageSize),@"isHis":@NO};
-    [self.lotteryMan getFollowSchemeByNickName:parc];
+    NSDictionary *parc = @{@"nickName":self.tfSearchKey.text,@"page":@(_page),@"pageSize":@(KpageSize)};
+    [self.memberMan searchGreatFollow:parc];
 }
 
--(void)getHotFollowScheme:(NSArray *)personList errorMsg:(NSString *)msg{
+-(void)searchGreatFollow:(NSArray*)infoList errorMsg:(NSString *)msg{
     self.tabSearchResultList.hidden = NO;
-    [self.tabSearchResultList tableViewEndRefreshCurPageCount:personList.count];
-    if (personList == nil) {
+    [self.tabSearchResultList tableViewEndRefreshCurPageCount:infoList.count];
+    if (infoList == nil||infoList.count == 0) {
         [self showPromptText:msg hideAfterDelay:1.8];
         return;
     }
     if (_page == 1) {
         [schemeList removeAllObjects];
     }
-    for (NSDictionary *dic in personList) {
-        [schemeList addObject:[[HotSchemeModel alloc]initWith:dic]];
+    for (NSDictionary *dic in infoList) {
+        [schemeList addObject:[[SearchPerModel alloc]initWith:dic]];
     }
     [self.tabSearchResultList  reloadData];
 }
@@ -88,7 +89,7 @@
 -(void)setTextFiled{
     self.tfSearchKey.layer.cornerRadius = self.tfSearchKey.mj_h / 2;
     self.tfSearchKey.layer.masksToBounds = YES;
-    NSMutableAttributedString * firstPart = [[NSMutableAttributedString alloc] initWithString:@"请输入您所需的关键词" attributes:@{ NSFontAttributeName:[UIFont systemFontOfSize:15],NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    NSMutableAttributedString * firstPart = [[NSMutableAttributedString alloc] initWithString:@"请输入您要搜索的昵称" attributes:@{ NSFontAttributeName:[UIFont systemFontOfSize:15],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     self.tfSearchKey.attributedPlaceholder = firstPart;
     UIButton *leftView = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
     [leftView setImage:[UIImage imageNamed:@"sousuo"] forState:0];
@@ -101,18 +102,20 @@
     self.tfSearchKey.rightViewMode =  UITextFieldViewModeAlways;
     self.tfSearchKey.leftView =leftView ;
     self.tfSearchKey.leftViewMode =  UITextFieldViewModeAlways;
+    self.tfSearchKey.delegate = self;
 }
 
 -(void)cleanKeyWord{
     self.tfSearchKey.text = @"";
+    [schemeList removeAllObjects];
+    [self.tabSearchResultList reloadData];
 }
 
 -(void)setTableView{
     self.tabSearchResultList.delegate = self;
     self.tabSearchResultList.dataSource = self;
 
-    [self.tabSearchResultList registerNib:[UINib nibWithNibName:KHotFollowSchemeViewCell bundle:nil] forCellReuseIdentifier:KHotFollowSchemeViewCell];
-
+    [self.tabSearchResultList registerNib:[UINib nibWithNibName:KSearchViewCell bundle:nil] forCellReuseIdentifier:KSearchViewCell];
     [self.tabSearchResultList reloadData];
 }
 
@@ -125,15 +128,14 @@
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    HotFollowSchemeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KHotFollowSchemeViewCell];
-    [cell loadDataWithModelInDaT:schemeList[indexPath.row]];
-    cell.delegate = self;
+    SearchViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KSearchViewCell];
+    [cell loadDataWithModel:schemeList[indexPath.row]];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-  return 202;
+  return 80;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -147,10 +149,11 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    FollowDetailViewController *followVC = [[FollowDetailViewController alloc]init];
-    followVC.model = schemeList[indexPath.row];
-    followVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:followVC animated:YES];
+    PersonCenterViewController *viewContr = [[PersonCenterViewController alloc]init];
+    SearchPerModel *model = schemeList[indexPath.row];
+    viewContr.cardCode = model.cardCode;
+    viewContr.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:viewContr animated:YES];
 }
 
 - (IBAction)actionBack:(id)sender {
@@ -158,14 +161,49 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (IBAction)actionSearch:(id)sender {
-     [self loadNewData];
+    if (self.tfSearchKey.text.length == 0) {
+        [self showPromptText:@"昵称不能为空" hideAfterDelay:1.9];
+        [schemeList removeAllObjects];
+        [self.tabSearchResultList reloadData];
+        return;
+    }
+    [self loadNewData];
+}
+
+#pragma UITextFieldDelegate
+
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if ([string isEqualToString:@""]) {
+        return YES;
+    }
+    if ([string isEqualToString:@"\n"]) {
+        
+    }
+    if ([textField isFirstResponder]) {
+        
+        if ([[[textField textInputMode] primaryLanguage] isEqualToString:@"emoji"] || ![[textField textInputMode] primaryLanguage]) {
+            return NO;
+        }
+        
+        //判断键盘是不是九宫格键盘
+        if ([self isNineKeyBoard:string] ){
+            return YES;
+        }else{
+            if ([self hasEmoji:string] || [self stringContainsEmoji:string]){
+                return NO;
+            }
+        }
+    }
+    if (textField == self.tfSearchKey) {
+        if (![self isValidateName:string]) {
+            return NO;
+        }
+    }
+    return YES;
 }
 
 -(void)itemClickToPerson:(NSString *)carcode{
-    PersonCenterViewController *viewContr = [[PersonCenterViewController alloc]init];
-    viewContr.cardCode = carcode;
-    viewContr.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:viewContr animated:YES];
+ 
 }
 
 @end

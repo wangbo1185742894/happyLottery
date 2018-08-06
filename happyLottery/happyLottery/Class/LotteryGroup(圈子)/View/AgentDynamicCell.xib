@@ -38,25 +38,13 @@
                         <color key="textColor" red="0.55294117649999996" green="0.55294117649999996" blue="0.55294117649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRn-mj-dJt">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fRI-MT-lcb">
                         <rect key="frame" x="38" y="46" width="309" height="20"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="20" id="dH5-Oy-WGB"/>
-                            <constraint firstAttribute="width" constant="309" id="g1h-aH-pLd"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fRI-MT-lcb">
-                        <rect key="frame" x="44" y="46" width="309" height="20"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
-                        <constraints>
                             <constraint firstAttribute="width" constant="309" id="ILK-ex-qKx"/>
-                            <constraint firstAttribute="height" constant="20" id="y13-zC-A3U"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="OUI-bR-Xc1"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <nil key="textColor"/>
@@ -65,22 +53,18 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="Psx-UY-R2G" secondAttribute="bottom" id="3qd-F3-MGs"/>
-                    <constraint firstItem="fRI-MT-lcb" firstAttribute="leading" secondItem="Psx-UY-R2G" secondAttribute="trailing" constant="23" id="7Ig-yC-MJO"/>
+                    <constraint firstItem="fRI-MT-lcb" firstAttribute="leading" secondItem="MZh-1u-cIV" secondAttribute="leading" id="CLg-2u-JIW"/>
                     <constraint firstAttribute="bottom" secondItem="5Pi-1m-eVX" secondAttribute="bottom" constant="50.5" id="DuN-TY-NyL"/>
-                    <constraint firstItem="uRn-mj-dJt" firstAttribute="leading" secondItem="MZh-1u-cIV" secondAttribute="leading" id="Ika-aV-xec"/>
                     <constraint firstItem="MZh-1u-cIV" firstAttribute="leading" secondItem="5Pi-1m-eVX" secondAttribute="trailing" constant="8" id="Nv2-N0-8ac"/>
+                    <constraint firstItem="fRI-MT-lcb" firstAttribute="top" secondItem="MZh-1u-cIV" secondAttribute="bottom" constant="15" id="Pvg-UD-B4B"/>
                     <constraint firstItem="MZh-1u-cIV" firstAttribute="centerY" secondItem="5Pi-1m-eVX" secondAttribute="centerY" id="khD-Bc-NkM"/>
                     <constraint firstItem="Psx-UY-R2G" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="qZY-91-tnz"/>
-                    <constraint firstItem="uRn-mj-dJt" firstAttribute="leading" secondItem="MZh-1u-cIV" secondAttribute="leading" id="xq8-pd-gqC"/>
                     <constraint firstItem="Psx-UY-R2G" firstAttribute="centerX" secondItem="5Pi-1m-eVX" secondAttribute="centerX" id="yqJ-eg-XGv"/>
-                    <constraint firstItem="fRI-MT-lcb" firstAttribute="top" secondItem="MZh-1u-cIV" secondAttribute="bottom" constant="15" id="zNh-b4-MGb"/>
-                    <constraint firstItem="uRn-mj-dJt" firstAttribute="top" secondItem="MZh-1u-cIV" secondAttribute="bottom" constant="15" id="zZB-qh-HXr"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
                 <outlet property="createTimeLab" destination="MZh-1u-cIV" id="3tA-sO-rHE"/>
-                <outlet property="dynamicLab" destination="uRn-mj-dJt" id="Y9t-LD-Oqq"/>
                 <outlet property="labText" destination="fRI-MT-lcb" id="mGK-OP-yNf"/>
             </connections>
             <point key="canvasLocation" x="24.5" y="51.5"/>

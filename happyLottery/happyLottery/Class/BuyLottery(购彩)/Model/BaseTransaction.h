@@ -32,11 +32,13 @@ typedef enum{
 
 
 typedef enum{
-    SchemeSourceBet = 0,
+    SchemeSourceBet = 0, //正常投注
     SchemeSourceRECOMMEND, //推荐
     SchemeSourceFORECAST,  //预测
     SchemeSourceFORECAST_SHORTCUT, //首页
-    SchemeSourceFORECAST_SCHEME //方案
+    SchemeSourceFORECAST_SCHEME, //方案
+    SchemeSourceFOLLOW_SCHEME, //跟单方案
+    SchemeSourceBONUS_OPTIMIZE //奖金优化
 }SchemeSource;
 
 typedef enum : NSUInteger {
@@ -71,6 +73,7 @@ typedef enum : NSUInteger {
 @property(nonatomic,strong)NSArray *schemeTypes;
 @property(nonatomic,strong)NSArray *secretTypes;
 @property(nonatomic,assign)CostType costType;
+@property(nonatomic,assign)NSString * originalContent;
 
 @property (assign,nonatomic)CGFloat maxPrize;
 

@@ -110,6 +110,7 @@
 #define APIReliefAttent             @"reliefAttent"  //解除跟单
 #define APIlistRechargeHandsel      @"listRechargeHandsel"
 #define API_listSubscribeDetail     @"listSubscribeDetail"
+
 /**
  * 分页查询会员的认购明细
  * @param params {"cardCode":"xxx","page":"xxx","pageSize":"xxx"}
@@ -218,6 +219,7 @@
 #define APIgetAttentFollowScheme    @"getAttentFollowScheme"  //获得关注人的发单
 #define APIconcealSchemeBySchemeNo  @"concealSchemeBySchemeNo" //删除方案
 #define APIchaseCompleteCount           @"chaseCompleteCount"
+#define APISearchGreatFollow        @"searchGreatFollow"
 
 
 

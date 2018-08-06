@@ -318,8 +318,7 @@
     
     self.transcation.units = self.transcation.betCount;
     self.transcation.costType = CostTypeCASH;
-
-    
+    self.transcation.schemeSource = SchemeSourceBONUS_OPTIMIZE;
     self.transcation.secretType = SecretTypeFullOpen;
     if (self.fromSchemeType == SchemeTypeFaqiGenDan) {
         self.transcation.schemeType = SchemeTypeFaqiGenDan;
@@ -330,6 +329,7 @@
     }else{
         self.transcation.schemeType = SchemeTypeZigou;
     }
+    self.transcation.originalContent = [self.transcation lottDataScheme];
     NSMutableArray *betContent = [NSMutableArray arrayWithCapacity:0];
     for (BounsModelItem *item in _zhuArray) {
         NSArray * matches = [item lottDataScheme];

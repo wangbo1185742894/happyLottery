@@ -93,6 +93,15 @@
                     <constraint firstItem="xQm-Su-A5t" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="uuM-mT-wYu"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="recentWin" destination="4oE-WP-KOJ" id="Gi5-8T-Knm"/>
+                <outlet property="tagOne" destination="6Aj-5u-225" id="NzX-sC-KYM"/>
+                <outlet property="tagThree" destination="Hx8-xj-gOZ" id="L3W-5j-Nsa"/>
+                <outlet property="tagTwo" destination="Q53-Ci-0ml" id="bWb-Rq-86c"/>
+                <outlet property="totalBonus" destination="JD8-BG-w7h" id="GLC-Gv-UgB"/>
+                <outlet property="userImage" destination="xQm-Su-A5t" id="6uN-55-taR"/>
+                <outlet property="userName" destination="MiX-X0-ajC" id="HHN-UP-kJY"/>
+            </connections>
             <point key="canvasLocation" x="24.5" y="52"/>
         </tableViewCell>
     </objects>

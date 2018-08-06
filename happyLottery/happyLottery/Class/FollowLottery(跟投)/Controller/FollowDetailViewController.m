@@ -37,6 +37,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imgFlag1;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *rightCons;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthCons;
+@property (weak, nonatomic) IBOutlet UIImageView *youHuaTag;
 @end
 
 @implementation FollowDetailViewController{
@@ -152,6 +153,11 @@
     } else {
         NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"attentCardCode":_model.cardCode,@"attentType":@"FOLLOW"};
         [self.lotteryMan isAttent:dic];
+    }
+    if ([_model.schemeSource isEqualToString:@"BONUS_OPTIMIZE"]) {
+        self.youHuaTag.hidden = NO;
+    }else {
+        self.youHuaTag.hidden = YES;
     }
 }
 

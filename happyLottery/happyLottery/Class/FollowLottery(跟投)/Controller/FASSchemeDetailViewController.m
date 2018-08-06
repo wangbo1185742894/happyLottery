@@ -179,8 +179,12 @@
             [self setRightBarItems];
         }
     }
-    for (NSDictionary *matchDic in [Utility objFromJson:schemeDetail.betContent]) {
-          NSArray *matchArray = [Utility objFromJson:matchDic[@"betMatches"]];
+    NSString *content = schemeDetail.betContent;
+    if ([schemeDetail.schemeSource isEqualToString:@"BONUS_OPTIMIZE"]){
+        content = schemeDetail.originalContent;
+    }
+    for (NSDictionary *matchDic in [Utility objFromJson:content]) {
+        NSArray *matchArray = [Utility objFromJson:matchDic[@"betMatches"]];
         for (int i  = 0; i < matchArray.count; i++) {
             JcBetContent *betContent = [[JcBetContent alloc]init];
             betContent.virtualSp = schemeDetail.virtualSp;
@@ -188,6 +192,7 @@
             [self.dataArray addObject:betContent];
         }
     }
+   
     if([self.schemeType isEqualToString:@"BUY_FOLLOW"]&&![schemeDetail.schemeStatus isEqualToString:@"INIT"]){
         if (self.curUser == nil || self.curUser.isLogin == NO) {
             [self gotisAttent:@"false" errorMsg:nil];
@@ -297,17 +302,17 @@
 //方案内容全显示
 - (CGFloat)setHeightForFangan:(NSIndexPath *)indexPath {
         if (indexPath.row == 0) {
-            return 51;
+            SchemeContaintCell *cell = [[SchemeContaintCell alloc]init];
+            if ([schemeDetail.lottery isEqualToString:@"JCLQ"]) {
+                return [cell dateHeight:schemeDetail];
+            }
+            return [cell dateHeight:schemeDetail]+32;
         }
         if (indexPath.row == 1) {
             return 38;
         }
         if (indexPath.row == 2+self.dataArray.count){
-            SchemeOverCell *cell = [[SchemeOverCell alloc]init];
-            if ([schemeDetail.lottery isEqualToString:@"JCLQ"]) {
-                return [cell dateHeight:schemeDetail];
-            }
-            return [cell dateHeight:schemeDetail]+32;
+            return 79;
         }
         SchemeContainInfoCell *cell = [[SchemeContainInfoCell alloc]init];
         if ([schemeDetail.lottery isEqualToString:@"JCLQ"]) {
@@ -344,7 +349,11 @@
         else {
             if (indexPath.section == 1) {
                 if (indexPath.row == 0) {
-                    return 51;
+                    SchemeContaintCell *cell = [[SchemeContaintCell alloc]init];
+                    if ([schemeDetail.lottery isEqualToString:@"JCLQ"]) {
+                        return [cell dateHeight:schemeDetail];
+                    }
+                    return [cell dateHeight:schemeDetail]+32;
                 }
                 if (indexPath.row == 1) {
                     return 120;
@@ -378,17 +387,17 @@
         if (indexPath.section == 2) {
             if ([schemeDetail.winningStatus isEqualToString:@"WAIT_LOTTERY"]){
                 if (indexPath.row == 0) {
-                    return 51;
+                    SchemeContaintCell *cell = [[SchemeContaintCell alloc]init];
+                    if ([schemeDetail.lottery isEqualToString:@"JCLQ"]) {
+                        return [cell dateHeight:schemeDetail];
+                    }
+                    return [cell dateHeight:schemeDetail]+32;
                 }
                 if (indexPath.row == 1) {
                     return 65;
                 }
                 if (indexPath.row == 2) {
-                    SchemeOverCell *cell = [[SchemeOverCell alloc]init];
-                    if ([schemeDetail.lottery isEqualToString:@"JCLQ"]) {
-                        return [cell dateHeight:schemeDetail];
-                    }
-                    return [cell dateHeight:schemeDetail]+32;
+                    return 79;
                 }
             } else {
                 return [self setHeightForFangan:indexPath];
@@ -402,6 +411,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForFangAnIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
         SchemeContaintCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeContaintCell];
+        [cell reloadPassTypeDate:schemeDetail];
         cell.delegate = self;
         return cell;
     }else if (indexPath.row == self.dataArray.count+2){
@@ -443,6 +453,7 @@
         else {  //section = 1;
             if (indexPath.row == 0) {
                 SchemeContaintCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeContaintCell];
+                [cell reloadPassTypeDate:schemeDetail];
                 cell.delegate = self;
                 return cell;
             }
@@ -462,6 +473,7 @@
                 //待支付的发单状态，没有订单详情按钮
                 if (indexPath.row == 0) {
                     SchemeContaintCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeContaintCell];
+                    [cell reloadPassTypeDate:schemeDetail];
                     [cell reloadDate:schemeDetail];
                     return cell;
                 }
@@ -472,6 +484,7 @@
             if (indexPath.section == 1) {
                 if (indexPath.row == 0) {
                     SchemeContaintCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeContaintCell];
+                    [cell reloadPassTypeDate:schemeDetail];
                     [cell reloadDate:schemeDetail];
                     return cell;
                 }
@@ -524,6 +537,7 @@
                     SchemeContaintCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeContaintCell];
                     cell.delegate = self;
                     [cell reloadDate:schemeDetail];
+                    [cell reloadPassTypeDate:schemeDetail];
                     return cell;
                 }
                 if (indexPath.row == 1) {
