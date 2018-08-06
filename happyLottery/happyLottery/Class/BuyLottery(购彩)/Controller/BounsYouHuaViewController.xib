@@ -11,12 +11,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BounsYouHuaViewController">
             <connections>
+                <outlet property="bottomDis" destination="9NU-Z4-3t0" id="RXm-Pm-4yN"/>
                 <outlet property="btnTouzhu" destination="A3F-IS-WEY" id="fuU-Kg-jPh"/>
                 <outlet property="labBounsInfo" destination="Qmm-SK-DaI" id="ZUW-cO-f9D"/>
                 <outlet property="labTopInfo" destination="bW3-Zh-9W7" id="b9S-Xh-b5R"/>
                 <outlet property="labZhuInfo" destination="4xh-0B-2SA" id="gW8-QG-rkf"/>
                 <outlet property="svInputMoney" destination="YMN-Sc-L3M" id="TMd-Cc-T33"/>
                 <outlet property="tabBounsList" destination="3el-Wr-JZU" id="bjL-XB-jka"/>
+                <outlet property="topDis" destination="NvD-eD-nTg" id="IWs-yb-0LK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -158,14 +160,14 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="blK-li-UDp">
                     <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qmm-SK-DaI">
-                            <rect key="frame" x="12" y="28" width="35.5" height="17"/>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qmm-SK-DaI">
+                            <rect key="frame" x="12" y="35" width="35.5" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4xh-0B-2SA">
-                            <rect key="frame" x="12" y="8" width="35.5" height="15"/>
+                            <rect key="frame" x="12" y="15" width="35.5" height="15"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="15" id="Ghf-Dv-89J"/>
                             </constraints>
@@ -198,7 +200,7 @@
                         <constraint firstItem="A3F-IS-WEY" firstAttribute="top" secondItem="blK-li-UDp" secondAttribute="top" constant="10" id="OTY-cd-0K2"/>
                         <constraint firstAttribute="height" constant="50" id="REd-cb-Pz4"/>
                         <constraint firstAttribute="trailing" secondItem="A3F-IS-WEY" secondAttribute="trailing" constant="20" id="SAw-ui-3av"/>
-                        <constraint firstItem="4xh-0B-2SA" firstAttribute="top" secondItem="blK-li-UDp" secondAttribute="top" constant="8" id="Ykg-L4-iT2"/>
+                        <constraint firstItem="4xh-0B-2SA" firstAttribute="top" secondItem="blK-li-UDp" secondAttribute="top" constant="15" id="Ykg-L4-iT2"/>
                         <constraint firstItem="Qmm-SK-DaI" firstAttribute="top" secondItem="4xh-0B-2SA" secondAttribute="bottom" constant="5" id="s6j-Me-Ryd"/>
                         <constraint firstItem="4xh-0B-2SA" firstAttribute="leading" secondItem="blK-li-UDp" secondAttribute="leading" constant="12" id="vMh-SM-HGU"/>
                     </constraints>

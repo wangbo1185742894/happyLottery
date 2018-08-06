@@ -10,6 +10,6 @@
 
 @interface BonusOptimize : NSObject
 
-+(CGFloat)getMincCommonDivisor:(NSArray *)numList;
++(long long)getMincCommonDivisor:(NSArray *)numList;
 
 @end
