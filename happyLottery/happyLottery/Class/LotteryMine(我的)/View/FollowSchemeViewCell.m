@@ -42,7 +42,7 @@
     }else{
         [imgLotteryIcon sd_setImageWithURL:[NSURL URLWithString:model.initiateUrl]];
     }
-    labPersonName.text = model.initiateNickname == nil?[model.initiateCardCode stringByReplacingCharactersInRange:NSMakeRange(2,4) withString:@"****"]:model.initiateNickname;
+    labPersonName.text = model.initiateNickname == nil?[model.mobile stringByReplacingCharactersInRange:NSMakeRange(3,4) withString:@"****"]:model.initiateNickname;
     NSMutableArray *mPass = [NSMutableArray arrayWithCapacity:0];
     for (int i = 0 ; i < model.passType.count ;i ++) {
         NSString *str = [model.passType objectAtIndex:i];
