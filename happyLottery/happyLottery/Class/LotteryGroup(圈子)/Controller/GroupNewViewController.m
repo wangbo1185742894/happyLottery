@@ -49,9 +49,7 @@
     [super viewWillAppear:animated];
     [self loadNewData];
     self.navigationController.navigationBar.hidden = YES;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(20 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self openTimer];
-    });
+    [self openTimer];
     placeImageHidden = YES;
     [self.groupTableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
    

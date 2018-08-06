@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightCons;
 @property (weak, nonatomic) IBOutlet UIImageView *youHuaTag;
+@property (weak, nonatomic) IBOutlet UILabel *touzhuText;
 
 - (void)reloadDate :(JCZQSchemeItem *)schemeDetail;
 

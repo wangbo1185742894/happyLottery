@@ -116,24 +116,25 @@
     self.labBetCost.text = [NSString stringWithFormat:@"%@元",dic[@"subscription"]];
     self.labPassType.text = [self getPasstype:dic[@"passType"]];
     NSArray *titleArray = [Utility objFromJson:dic[@"ticketContent"]];
-    //中奖标红
-//    if ([dic[@"winningStatus"] isEqualToString:@"LOTTERY"]) {
+    //中奖标红[@"orderStatus"]
+    if ([dic[@"orderStatus"] isEqualToString:@"SUC_TICKET"]) {
         if([dic[@"lotteryCode"] isEqualToString:@"JCLQ"]){
             titleArray = [self getJCLQOpenContent:titleArray];
         } else {
             titleArray = [self getOpenContent:titleArray];
         }
         self.labTouzhuneirong.attributedText = [self contentWithRed:titleArray];
-//    }
-//    else {
-//        if([dic[@"lotteryCode"] isEqualToString:@"JCLQ"]){
-//            titleArray = [self getJCLQBetcontent:titleArray];
-//        }else {
-//            titleArray = [self getBetcontent:titleArray];
-//        }
-//        content  = [titleArray componentsJoinedByString:@"\n"];
-//        self.labTouzhuneirong.text = content ;
-//    }
+    }
+    else {
+        if([dic[@"lotteryCode"] isEqualToString:@"JCLQ"]){
+            titleArray = [self getJCLQBetcontent:titleArray];
+        }else {
+            titleArray = [self getBetcontent:titleArray];
+        }
+        content  = [titleArray componentsJoinedByString:@"\n"];
+        self.labTouzhuneirong.text = content ;
+        self.labTouzhuneirong.textColor = RGBCOLOR(72, 72, 72);
+    }
     self.labTouzhuneirong.adjustsFontSizeToFitWidth = YES;
     self.labNumber.text = [NSString stringWithFormat:@"%@注%@倍",dic[@"unit"],dic[@"multiple"]];
     NSString *orderStatus = dic[@"orderStatus"];
@@ -174,6 +175,7 @@
         self.labNumber.textColor = RGBCOLOR(49, 137, 253);
         self.labBetCost.textColor = RGBCOLOR(49, 137, 253);
         self.labJiangjin.textColor = RGBCOLOR(49, 137, 253);
+//        self.labTouzhuneirong.textColor = RGBCOLOR(72, 72, 72);
     }
 }
 
@@ -236,25 +238,27 @@
     }else if([dic[@"lotteryCode"] isEqualToString:@"JCLQ"]){
         self.labPassType.text = [self getPasstype:dic[@"passType"]];
         NSArray *titleArray = [Utility objFromJson:dic[@"ticketContent"]];
-//        if ([dic[@"winningStatus"] isEqualToString:@"LOTTERY"]) {
+        if ([dic[@"orderStatus"] isEqualToString:@"SUC_TICKET"]) {
             titleArray = [self getJCLQOpenContent:titleArray];
             self.labTouzhuneirong.attributedText = [self contentWithRed:titleArray];
-//        } else {
-//            titleArray = [self getJCLQBetcontent:titleArray];
-//            content  = [titleArray componentsJoinedByString:@"\n"];
-//            self.labTouzhuneirong.text = content ;
-//        }
+        } else {
+            titleArray = [self getJCLQBetcontent:titleArray];
+            content  = [titleArray componentsJoinedByString:@"\n"];
+            self.labTouzhuneirong.text = content ;
+            self.labTouzhuneirong.textColor = RGBCOLOR(72, 72, 72);
+        }
     }else{
         self.labPassType.text = [self getPasstype:dic[@"passType"]];
         NSArray *titleArray = [Utility objFromJson:dic[@"ticketContent"]];
-//        if ([dic[@"winningStatus"] isEqualToString:@"LOTTERY"]) {
+        if ([dic[@"orderStatus"] isEqualToString:@"SUC_TICKET"]) {
             titleArray = [self getOpenContent:titleArray];
             self.labTouzhuneirong.attributedText = [self contentWithRed:titleArray];
-//        } else {
-//            titleArray = [self getBetcontent:titleArray];
-//            content  = [titleArray componentsJoinedByString:@"\n"];
-//            self.labTouzhuneirong.text = content ;
-//        }
+        } else {
+            titleArray = [self getBetcontent:titleArray];
+            content  = [titleArray componentsJoinedByString:@"\n"];
+            self.labTouzhuneirong.text = content ;
+            self.labTouzhuneirong.textColor = RGBCOLOR(72, 72, 72);
+        }
     }
     
     self.labTouzhuneirong.adjustsFontSizeToFitWidth = YES;

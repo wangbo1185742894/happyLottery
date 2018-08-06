@@ -37,8 +37,12 @@
     }
     if([schemeDetail.schemeSource isEqualToString:@"BONUS_OPTIMIZE"]){
         self.youHuaTag.hidden = NO;
+        self.touzhuText.hidden = YES;
+        self.touzhuCount.hidden = YES;
     }else {
         self.youHuaTag.hidden = YES;
+        self.touzhuText.hidden = NO;
+        self.touzhuCount.hidden = NO;
     }
 }
 

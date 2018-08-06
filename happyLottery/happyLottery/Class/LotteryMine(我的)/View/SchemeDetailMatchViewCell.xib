@@ -153,7 +153,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MFf-vH-LG7">
-                                <rect key="frame" x="76" y="28" width="160" height="18"/>
+                                <rect key="frame" x="76" y="28" width="0.0" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.1960784314" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -178,13 +178,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jiangji_youhuaTag.png" translatesAutoresizingMaskIntoConstraints="NO" id="rTQ-3A-Tq9">
-                                <rect key="frame" x="241" y="28.5" width="117.5" height="17.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="17.5" id="3Vg-zw-IiC"/>
-                                    <constraint firstAttribute="width" constant="117.5" id="skP-Ae-UkD"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -198,15 +191,12 @@
                             <constraint firstAttribute="trailing" secondItem="DWU-Wn-NfC" secondAttribute="trailing" constant="8" id="Owz-Eq-JlD"/>
                             <constraint firstItem="icW-yB-2fU" firstAttribute="top" secondItem="xhC-jb-1uX" secondAttribute="top" priority="999" constant="3" id="QHc-kF-unu"/>
                             <constraint firstItem="vOx-Ug-4IN" firstAttribute="leading" secondItem="icW-yB-2fU" secondAttribute="trailing" constant="8" id="RTB-A9-9bL"/>
-                            <constraint firstAttribute="trailing" secondItem="rTQ-3A-Tq9" secondAttribute="trailing" id="WdT-Al-Ifj"/>
                             <constraint firstItem="MFf-vH-LG7" firstAttribute="centerY" secondItem="7TX-RM-Krb" secondAttribute="centerY" id="Xph-FO-WnG"/>
                             <constraint firstAttribute="bottom" secondItem="MFf-vH-LG7" secondAttribute="bottom" priority="999" constant="3" id="aaZ-wZ-4wa"/>
                             <constraint firstItem="IJd-Fk-S56" firstAttribute="leading" secondItem="xhC-jb-1uX" secondAttribute="leading" id="aff-MD-yon"/>
                             <constraint firstItem="MFf-vH-LG7" firstAttribute="top" secondItem="DWU-Wn-NfC" secondAttribute="bottom" priority="999" constant="3" id="cL0-BZ-9rF"/>
-                            <constraint firstItem="rTQ-3A-Tq9" firstAttribute="leading" secondItem="MFf-vH-LG7" secondAttribute="trailing" constant="5" id="iw4-FB-5SN"/>
                             <constraint firstItem="DWU-Wn-NfC" firstAttribute="top" secondItem="icW-yB-2fU" secondAttribute="bottom" constant="3" id="j8e-Jc-mgv"/>
                             <constraint firstItem="IJd-Fk-S56" firstAttribute="top" secondItem="xhC-jb-1uX" secondAttribute="top" id="k0I-qe-oPV"/>
-                            <constraint firstItem="rTQ-3A-Tq9" firstAttribute="centerY" secondItem="7TX-RM-Krb" secondAttribute="centerY" id="kbx-wf-BYw"/>
                             <constraint firstItem="1ma-Mt-T4b" firstAttribute="top" secondItem="xhC-jb-1uX" secondAttribute="top" id="rci-Dn-GzX"/>
                             <constraint firstAttribute="trailing" secondItem="IJd-Fk-S56" secondAttribute="trailing" id="tBf-Sd-H5M"/>
                             <constraint firstItem="icW-yB-2fU" firstAttribute="leading" secondItem="xhC-jb-1uX" secondAttribute="leading" constant="8" id="zNs-LL-ugP"/>
@@ -294,14 +284,12 @@
                 <outlet property="topInfoView" destination="xhC-jb-1uX" id="8PX-1I-jCi"/>
                 <outlet property="topInfoViewHeight" destination="C34-oG-PJx" id="MaH-FM-tWx"/>
                 <outlet property="viewBetContent" destination="ZHg-oC-IUC" id="KeW-d8-bU2"/>
-                <outlet property="youHuaTag" destination="rTQ-3A-Tq9" id="KZ4-qr-fEi"/>
             </connections>
             <point key="canvasLocation" x="37.5" y="85"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="hometeam.png" width="28" height="28"/>
-        <image name="jiangji_youhuaTag.png" width="117" height="17"/>
         <image name="scheme_corner_mark.png" width="27" height="29"/>
     </resources>
 </document>

@@ -73,6 +73,7 @@
 @property(nonatomic,copy)NSString *virtualSp;
 @property(nonatomic,copy)NSString * schemeSource;
 @property(nonatomic,copy)NSString * originalContent;
+@property(nonatomic,copy)NSString * mobile;
 
 
 /******************** 跟单发单信息 *********************/

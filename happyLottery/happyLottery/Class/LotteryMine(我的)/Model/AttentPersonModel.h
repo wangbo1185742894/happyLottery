@@ -52,4 +52,6 @@
  * 关注的类型
  */
 @property(strong,nonatomic)NSString *  attentType;
+
+@property(strong,nonatomic)NSString *  mobile;
 @end
