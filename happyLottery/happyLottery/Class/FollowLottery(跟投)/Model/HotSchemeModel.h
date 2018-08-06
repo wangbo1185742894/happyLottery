@@ -77,6 +77,8 @@
  */
 @property(nonatomic,copy)NSString * won;
 
+@property(nonatomic,copy)NSString * schemeSource;
+
 -(NSString *)lotteryIcon;
 
 -(NSString *)getContent;

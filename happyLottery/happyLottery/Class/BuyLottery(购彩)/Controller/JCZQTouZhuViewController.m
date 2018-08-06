@@ -443,7 +443,7 @@
     [self showLoadingText:@"正在提交订单"];
     
     self.transction.maxPrize = 1.00;
-   
+    self.transction.schemeSource = SchemeSourceBet;
     self.transction.units = self.transction.betCount;
     if (btnZhenShiTouzhu.selected == YES) {
         self.transction.costType = CostTypeCASH;

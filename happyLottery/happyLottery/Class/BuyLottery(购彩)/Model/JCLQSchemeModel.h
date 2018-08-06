@@ -20,6 +20,8 @@
 @property(nonatomic,copy) NSString  * passTypes;
 @property(nonatomic,copy) NSString  * multiple;
 @property(nonatomic,copy) NSString  * virtualSp;
+@property(nonatomic,copy) NSString  * schemeSource;
+
 @end
 
 @interface JCLQOpenResult : BaseModel

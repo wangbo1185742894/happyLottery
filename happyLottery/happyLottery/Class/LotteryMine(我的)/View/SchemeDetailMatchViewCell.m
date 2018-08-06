@@ -26,6 +26,7 @@
     __weak IBOutlet UILabel *labHomeName;
     __weak IBOutlet UILabel *labMatchLine;
     
+    __weak IBOutlet UIImageView *youHuaTag;
     __weak IBOutlet NSLayoutConstraint *topInfoViewHeight;
     __weak IBOutlet MGLabel *labResult;
     __weak IBOutlet UILabel *labBeiCount;
@@ -656,7 +657,6 @@
         [subView removeFromSuperview];
         
     }
-    
     if (modelDic.isShow) {
         topInfoView.hidden = NO;
         [btnNumIndex setTitle:[NSString stringWithFormat:@"%ld",modelDic.index] forState:0];
@@ -664,7 +664,11 @@
         topInfoViewHeight.constant =  ((passType.count / 7) + 1) * 15 + 50;
         labBeiCount.text = [NSString stringWithFormat:@"%@倍",modelDic.multiple];
         labPassType.text = [self getChuanFa:modelDic.passTypes];
-        
+        if ([modelDic.schemeSource isEqualToString:@"BONUS_OPTIMIZE"]) {
+            youHuaTag.hidden = NO;
+        }else {
+            youHuaTag.hidden = YES;
+        }
         if (modelDic.isLast) {
             disTopL.constant = 8;
             disTopR.constant = 8;

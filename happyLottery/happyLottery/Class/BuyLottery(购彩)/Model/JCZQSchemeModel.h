@@ -71,6 +71,8 @@
 @property(nonatomic,copy)NSString * winMatchIndex;
 
 @property(nonatomic,copy)NSString *virtualSp;
+@property(nonatomic,copy)NSString * schemeSource;
+@property(nonatomic,copy)NSString * originalContent;
 
 
 /******************** 跟单发单信息 *********************/

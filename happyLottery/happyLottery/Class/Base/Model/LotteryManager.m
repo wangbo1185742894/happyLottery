@@ -283,7 +283,7 @@
     NSMutableDictionary *subSchemeDic = [transcation submitParaDicScheme];
     
     subSchemeDic[@"betContent"] = [self JsonFromId:contents];
-    
+    subSchemeDic[@"originalContent"] = transcation.originalContent;
     SOAPRequest *request = [self requestForAPI: APIBetLotteryScheme withParam:@{@"params":[self actionEncrypt:[self JsonFromId:subSchemeDic]]}];
     [self newRequestWithRequest:request
                          subAPI:SUBAPISchemeService
