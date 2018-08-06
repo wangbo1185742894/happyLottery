@@ -26,8 +26,8 @@
     self.imgIcon.layer.masksToBounds = YES;
 
     if ( model.attentNickname == nil) {
-        NSString *cardCode = model.attentCardCode;
-        cardCode = [cardCode stringByReplacingCharactersInRange:NSMakeRange(2, 4) withString:@"****"];
+        NSString *cardCode = model.mobile;
+        cardCode = [cardCode stringByReplacingCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
         self.labName.text  =cardCode;
     }else{
         self.labName.text  =model.attentNickname;
