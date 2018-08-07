@@ -274,7 +274,7 @@
         }
         else { //跟单方案内容锁，订单详情按钮不显示
             if (section == 1) {
-                return 2;
+                return 3;
             }
             else {
                 return 1;
@@ -309,6 +309,9 @@
             return 38;
         }
         if (indexPath.row == 2+self.dataArray.count){
+            if ([schemeDetail.schemeSource isEqualToString:@"BONUS_OPTIMIZE"]) {
+                return 35;
+            }
             return 79;
         }
         SchemeContainInfoCell *cell = [[SchemeContainInfoCell alloc]init];
@@ -346,10 +349,14 @@
         else {
             if (indexPath.section == 1) {
                 if (indexPath.row == 0) {
-                    return 51;
+                    SchemeContaintCell *cell = [[SchemeContaintCell alloc]init];
+                    return [cell dateHeight:schemeDetail]+32;
                 }
                 if (indexPath.row == 1) {
-                    return 120;
+                    return 80;
+                }
+                if (indexPath.row == 2) {
+                    return 79;
                 }
             }
         }
@@ -476,12 +483,15 @@
                     SchemeContaintCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeContaintCell];
                     [cell reloadPassTypeDate:schemeDetail];
                     [cell reloadDate:schemeDetail];
-                    cell.passTypeLab.hidden = YES;
-                    cell.passtypeText.hidden = YES;
                     return cell;
                 }
                 if (indexPath.row == 1) {
                     SuoSchemeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSuoSchemeViewCell];
+                    return cell;
+                }
+                if (indexPath.row == 2) {
+                    SchemeOverCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeOverCell];
+                    [cell reloadDate:schemeDetail];
                     return cell;
                 }
             }

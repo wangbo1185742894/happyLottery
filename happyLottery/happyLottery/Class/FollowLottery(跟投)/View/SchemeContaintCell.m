@@ -52,6 +52,11 @@
     NSString *pass = [mPass componentsJoinedByString:@","];
     self.passTypeLab.numberOfLines = 0;
     self.passTypeLab.text = pass;
+    if([model.schemeSource isEqualToString:@"BONUS_OPTIMIZE"]){
+        self.youHuaTag.hidden = NO;
+    }else {
+        self.youHuaTag.hidden = YES;
+    }
 }
 
 - (IBAction)actionOrderDetail:(id)sender {
@@ -62,10 +67,10 @@
 - (float)dateHeight:(JCZQSchemeItem *)schemeDetail{
     NSString *pass = [schemeDetail.passType componentsJoinedByString:@","];
     if ([Utility isIphone5s]) {
-        return [pass boundingRectWithSize:CGSizeMake(207, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName :[UIFont systemFontOfSize:14]} context:nil].size.height+50;
+        return [pass boundingRectWithSize:CGSizeMake(95, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName :[UIFont systemFontOfSize:14]} context:nil].size.height+50;
     }
     else {
-        return [pass boundingRectWithSize:CGSizeMake(262, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName :[UIFont systemFontOfSize:14]} context:nil].size.height+50;
+        return [pass boundingRectWithSize:CGSizeMake(145, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName :[UIFont systemFontOfSize:14]} context:nil].size.height+50;
     }
 }
 
