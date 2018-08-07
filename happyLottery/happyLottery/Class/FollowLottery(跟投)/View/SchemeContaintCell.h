@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *dingDan;
 @property (weak, nonatomic) IBOutlet UILabel *passTypeLab;
 @property (weak, nonatomic) IBOutlet UILabel *passtypeText;
+@property (weak, nonatomic) IBOutlet UIImageView *youHuaTag;
 
 - (void)reloadDate:(JCZQSchemeItem * )model;
 

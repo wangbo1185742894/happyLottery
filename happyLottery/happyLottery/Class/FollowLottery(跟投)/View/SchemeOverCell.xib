@@ -38,7 +38,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZKS-KP-snv">
-                        <rect key="frame" x="100" y="17" width="137.5" height="17"/>
+                        <rect key="frame" x="100" y="17" width="31" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="17" id="OAS-ls-i3a"/>
                         </constraints>
@@ -46,24 +46,14 @@
                         <color key="textColor" red="0.47843137250000001" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jiangji_youhuaTag.png" translatesAutoresizingMaskIntoConstraints="NO" id="FB9-YX-s1c">
-                        <rect key="frame" x="257.5" y="16" width="117.5" height="18"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="117.5" id="6lF-os-rrx"/>
-                            <constraint firstAttribute="height" constant="18" id="QgO-kr-CAJ"/>
-                        </constraints>
-                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="ZKS-KP-snv" firstAttribute="leading" secondItem="vWl-gW-mzg" secondAttribute="trailing" constant="-9" id="BWe-OE-4dg"/>
                     <constraint firstItem="vWl-gW-mzg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="CeR-4Y-e7s"/>
                     <constraint firstAttribute="trailing" secondItem="M2C-Ue-d5w" secondAttribute="trailing" constant="10" id="CuZ-KF-N7c"/>
                     <constraint firstAttribute="bottom" secondItem="M2C-Ue-d5w" secondAttribute="bottom" constant="0.5" id="JAL-uz-OdI"/>
-                    <constraint firstItem="FB9-YX-s1c" firstAttribute="leading" secondItem="ZKS-KP-snv" secondAttribute="trailing" constant="20" id="UZS-6i-M11"/>
                     <constraint firstItem="ZKS-KP-snv" firstAttribute="centerY" secondItem="vWl-gW-mzg" secondAttribute="centerY" id="YmV-6O-dR7"/>
-                    <constraint firstAttribute="trailing" secondItem="FB9-YX-s1c" secondAttribute="trailing" id="c7e-dG-zrW"/>
                     <constraint firstItem="M2C-Ue-d5w" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="ePM-rz-6ey"/>
-                    <constraint firstItem="FB9-YX-s1c" firstAttribute="centerY" secondItem="ZKS-KP-snv" secondAttribute="centerY" id="hHb-Vg-5MO"/>
                     <constraint firstItem="vWl-gW-mzg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="22" id="nzf-uB-2dt"/>
                 </constraints>
             </tableViewCellContentView>
@@ -72,12 +62,8 @@
                 <outlet property="infoLabel" destination="M2C-Ue-d5w" id="agd-jO-MJK"/>
                 <outlet property="touzhuCount" destination="ZKS-KP-snv" id="yRl-b8-nq8"/>
                 <outlet property="touzhuText" destination="vWl-gW-mzg" id="clZ-1F-O8E"/>
-                <outlet property="youHuaTag" destination="FB9-YX-s1c" id="FYA-nD-oi8"/>
             </connections>
             <point key="canvasLocation" x="-70.5" y="55.5"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="jiangji_youhuaTag.png" width="117" height="17"/>
-    </resources>
 </document>

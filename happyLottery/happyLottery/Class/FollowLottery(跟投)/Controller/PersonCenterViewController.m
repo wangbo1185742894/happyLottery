@@ -136,17 +136,22 @@
 }
 
 -(void)loadNewData{
-    _page = 1;
-    NSDictionary *parc;
-    parc = @{@"nickName":model.cardCode,@"page":@(_page),@"pageSize":@(KpageSize),@"isHis":@YES};
-    [self.lotteryMan getFollowSchemeByNickName:parc];
+    if (model != nil) {
+        _page = 1;
+        NSDictionary *parc;
+        parc = @{@"nickName":model.cardCode,@"page":@(_page),@"pageSize":@(KpageSize),@"isHis":@YES};
+        [self.lotteryMan getFollowSchemeByNickName:parc];
+    }
+    [self.personTabelView tableViewEndRefreshCurPageCount:0];
 }
 
 -(void)loadMoreData{
-    _page ++;
-    NSDictionary *parc;
-    parc = @{@"nickName":model.cardCode,@"page":@(_page),@"pageSize":@(KpageSize),@"isHis":@YES};
-    [self.lotteryMan getFollowSchemeByNickName:parc];
+    if (model != nil) {
+        _page ++;
+        NSDictionary *parc;
+        parc = @{@"nickName":model.cardCode,@"page":@(_page),@"pageSize":@(KpageSize),@"isHis":@YES};
+        [self.lotteryMan getFollowSchemeByNickName:parc];
+    }
 }
 
 -(void)getHotFollowScheme:(NSArray *)personList errorMsg:(NSString *)msg{
