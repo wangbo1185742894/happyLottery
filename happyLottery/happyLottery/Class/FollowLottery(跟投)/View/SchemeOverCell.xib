@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="投注注数：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vWl-gW-mzg">
-                        <rect key="frame" x="10" y="15" width="87" height="21"/>
+                        <rect key="frame" x="22" y="15" width="87" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="87" id="8sv-fF-3vC"/>
                             <constraint firstAttribute="height" constant="21" id="vlp-Lt-ejO"/>
@@ -38,7 +38,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZKS-KP-snv">
-                        <rect key="frame" x="88" y="17" width="149.5" height="17"/>
+                        <rect key="frame" x="100" y="17" width="137.5" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="17" id="OAS-ls-i3a"/>
                         </constraints>
@@ -64,7 +64,7 @@
                     <constraint firstAttribute="trailing" secondItem="FB9-YX-s1c" secondAttribute="trailing" id="c7e-dG-zrW"/>
                     <constraint firstItem="M2C-Ue-d5w" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="ePM-rz-6ey"/>
                     <constraint firstItem="FB9-YX-s1c" firstAttribute="centerY" secondItem="ZKS-KP-snv" secondAttribute="centerY" id="hHb-Vg-5MO"/>
-                    <constraint firstItem="vWl-gW-mzg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="nzf-uB-2dt"/>
+                    <constraint firstItem="vWl-gW-mzg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="22" id="nzf-uB-2dt"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

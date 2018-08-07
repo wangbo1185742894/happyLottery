@@ -1113,6 +1113,12 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 //切换到圈子页面，当前无登陆用户，跳转到登陆页面，否则调到圈子
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
+    //切换至跟投页面刷新数据
+    if (tabBarController.selectedIndex == 1) {
+        UINavigationController  *baseNAVVC = tabBarControllerMain.viewControllers[1];
+        FollowSendViewController *baseVC = (FollowSendViewController *)[baseNAVVC.childViewControllers firstObject];
+        [baseVC refreshView];
+    }
     if (tabBarController.selectedIndex == 2){
         //未登录
         User * curUser = [GlobalInstance instance].curUser;
@@ -1128,12 +1134,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         [self setGroupView];
         
     }
-    //切换至跟投页面刷新数据
-    if (tabBarController.selectedIndex == 1) {
-        UINavigationController  *baseNAVVC = tabBarControllerMain.viewControllers[1];
-        FollowSendViewController *baseVC = (FollowSendViewController *)[baseNAVVC.childViewControllers firstObject];
-        [baseVC refreshView];
-    }
+
     _showGroup = NO;
     _lastSelectedIndex = tabBarController.selectedIndex;
 }

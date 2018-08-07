@@ -78,8 +78,9 @@
     self.svInputMoney.labContent.delegate =self;
     self.labTopInfo.text = [NSString stringWithFormat:@"  共%ld场比赛，过关方式：%@",self.transcation.selectMatchArray.count,[_showChuanfa componentsJoinedByString:@" "]];
     self.labTopInfo.keyWord = [_showChuanfa componentsJoinedByString:@" "];
+    
     self.labTopInfo.keyWordColor = SystemGreen;
-
+    
     self .zhuArray = [NSMutableArray arrayWithCapacity:0];
     [self bounsYouhua];
 }
