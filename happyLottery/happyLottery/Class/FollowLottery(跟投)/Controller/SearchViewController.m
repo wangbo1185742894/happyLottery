@@ -161,10 +161,10 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (IBAction)actionSearch:(id)sender {
+    [schemeList removeAllObjects];
+    [self.tabSearchResultList reloadData];
     if (self.tfSearchKey.text.length == 0) {
         [self showPromptText:@"昵称不能为空" hideAfterDelay:1.9];
-        [schemeList removeAllObjects];
-        [self.tabSearchResultList reloadData];
         return;
     }
     [self loadNewData];
