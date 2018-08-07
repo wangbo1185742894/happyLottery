@@ -76,13 +76,19 @@
     [self.svInputMoney setTarget:self  rightAction:@selector(actionAdd) leftAction:@selector(actionSub)];
     self.svInputMoney.labContent.text = [NSString stringWithFormat:@"%ld",self.transcation.betCost];
     self.svInputMoney.labContent.delegate =self;
-    self.labTopInfo.text = [NSString stringWithFormat:@"  共%ld场比赛，过关方式：%@",self.transcation.selectMatchArray.count,[_showChuanfa componentsJoinedByString:@" "]];
-    self.labTopInfo.keyWord = [_showChuanfa componentsJoinedByString:@" "];
-    
-    self.labTopInfo.keyWordColor = SystemGreen;
-    
+    [self setMutableAttributedText];
     self .zhuArray = [NSMutableArray arrayWithCapacity:0];
     [self bounsYouhua];
+}
+
+- (void)setMutableAttributedText{
+    NSString *strq = [NSString stringWithFormat:@"  共%ld场比赛，过关方式：%@",self.transcation.selectMatchArray.count,[_showChuanfa componentsJoinedByString:@" "]];
+    NSRange rangeOne = [strq rangeOfString:[NSString stringWithFormat:@"%ld",self.transcation.selectMatchArray.count]];
+    NSRange rangeTwo = [strq rangeOfString:[NSString stringWithFormat:@"%@",[_showChuanfa componentsJoinedByString:@" "]]];
+    NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc] initWithString:strq];
+    [attributedStr addAttribute:NSForegroundColorAttributeName value:RGBCOLOR(255, 179, 108) range:rangeOne];
+    [attributedStr addAttribute:NSForegroundColorAttributeName value:SystemGreen range:rangeTwo];
+    self.labTopInfo.attributedText = attributedStr;
 }
 
 -(void)bounsYouhua{
