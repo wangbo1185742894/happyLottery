@@ -95,14 +95,19 @@
     [self.lotteryMan getAttentFollowScheme:dic];
 }
 
+//刷新数据
+- (void)refreshView {
+     [self loadNewData];
+    [tabFollewView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
+}
+
+//由二级页面返回，不刷新数据
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [tabFollewView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
     placeImageHidden = YES;
     headerView.btnGenDan.selected = YES;
     headerView.btnNotice.selected = NO;
     [self setNavigationBa];
-    [self loadNewData];
     [cell openTimer];
 }
 

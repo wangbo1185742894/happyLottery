@@ -9,5 +9,5 @@
 #import "BaseViewController.h"
 
 @interface FollowSendViewController : BaseViewController
-
+- (void)refreshView;
 @end

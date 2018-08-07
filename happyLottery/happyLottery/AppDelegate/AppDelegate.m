@@ -66,6 +66,7 @@
 #import "BaseViewController.h"
 #import "HomeJumpViewController.h"
 #import "AgentManager.h"
+#import "FollowSendViewController.h"
 
 @interface AppDelegate ()<NewFeatureViewDelegate,MemberManagerDelegate,JPUSHRegisterDelegate,VersionUpdatingPopViewDelegate,NetWorkingHelperDelegate,UITabBarControllerDelegate,AgentManagerDelegate,LotteryManagerDelegate>
 
@@ -1126,6 +1127,12 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         }
         [self setGroupView];
         
+    }
+    //切换至跟投页面刷新数据
+    if (tabBarController.selectedIndex == 1) {
+        UINavigationController  *baseNAVVC = tabBarControllerMain.viewControllers[1];
+        FollowSendViewController *baseVC = (FollowSendViewController *)[baseNAVVC.childViewControllers firstObject];
+        [baseVC refreshView];
     }
     _showGroup = NO;
     _lastSelectedIndex = tabBarController.selectedIndex;
