@@ -96,6 +96,7 @@
         self.transcation.chuanFa = chuan;
         [self AllSelectMatchFenzu];
     }
+    
     NSMutableArray *itemArray = [NSMutableArray arrayWithCapacity:0];
     for (NSMutableArray  *  select in _zhuArray) {
         BounsModelItem *item = [[BounsModelItem alloc]init];
@@ -124,6 +125,10 @@
     
     if ([textField.text integerValue] %2 != 0) {
          textField.text = [NSString stringWithFormat:@"%ld",[textField.text integerValue] + 1];
+    }
+    if ([textField.text integerValue] > 300000) {
+        [self showPromptText:@"最大投注不能超过30万" hideAfterDelay:2 ];
+          textField.text = @"300000";
     }
     self.transcation.betCost = [textField.text integerValue];
     [self.zhuArray removeAllObjects];

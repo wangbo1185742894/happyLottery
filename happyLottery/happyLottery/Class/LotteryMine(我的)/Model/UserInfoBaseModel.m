@@ -314,14 +314,14 @@
 @implementation ChasePrepayModel : UserInfoBaseModel
 -(NSString *)getLeftTitle{
     if (self.refundAmounts.doubleValue > 0) {
-        return [NSString stringWithFormat:@"\n类型\n\n彩种\n\n方案号\n\n时间\n\n追号期数\n\n认购金额\n\n退款金额\n\n"];
+        return [NSString stringWithFormat:@"\n类型\n\n彩种\n\n方案号\n\n时间\n\n追号期数\n\n认购金额\n\n预付款退款\n\n"];
     }else{
         return [NSString stringWithFormat:@"\n类型\n\n彩种\n\n方案号\n\n时间\n\n追号期数\n\n认购金额\n\n"];
     }
 }
 -(NSString *)getRightTitle{
     if (self.refundAmounts.doubleValue > 0) {
-        return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n%@\n\n%@/%@期\n\n#%@元\n\n%@元\n\n",[self get1Name],[BaseModel getLotteryByName:self.lotteryCode],self.chaseSchemeNo,self.subTime,self.catchIndex,self.totalCatch,self.subAmounts,self.refundAmounts];
+        return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n%@\n\n%@/%@期\n\n#%@元\n\n%@元\n\n",[self get1Name],[BaseModel getLotteryByName:self.lotteryCode],self.chaseSchemeNo,self.subTime,self.catchIndex,self.totalCatch,self.subAmounts,[NSString stringWithFormat:@"%.2f",[self.refundAmounts doubleValue] + [self.chaseExceptionRefund doubleValue]]];
     }else{
         return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n%@\n\n%@/%@期\n\n#%@元\n\n",[self get1Name],[BaseModel getLotteryByName:self.lotteryCode],self.chaseSchemeNo,self.subTime,self.catchIndex,self.totalCatch,self.subAmounts];
     }
@@ -337,10 +337,10 @@
 }
 
 -(NSString *)getRemark{
-    if ([self.refundAmounts doubleValue] == 0) {
+    if ([self.refundAmounts doubleValue] == 0 && [self .chaseExceptionRefund doubleValue] == 0) {
         return @"";
     }else{
-        return [NSString stringWithFormat:@"退款%.2f元",[self.refundAmounts doubleValue]];
+        return [NSString stringWithFormat:@"退款%.2f元",[self.refundAmounts doubleValue] + [self.chaseExceptionRefund doubleValue]];
     }
 }
 -(NSString *)get4Name{

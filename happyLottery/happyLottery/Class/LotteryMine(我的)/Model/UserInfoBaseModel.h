@@ -188,6 +188,9 @@
 
 /** 总期数 */
 @property(nonatomic,strong)NSString *  totalCatch;
+
+/** 异常追号退款 */
+@property(nonatomic,strong)NSString *  chaseExceptionRefund;
 @end
 
 

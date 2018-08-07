@@ -50,7 +50,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YMN-Sc-L3M" customClass="SelectView">
-                            <rect key="frame" x="152.5" y="15" width="110" height="33"/>
+                            <rect key="frame" x="132.5" y="15" width="150" height="33"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="投" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YPD-GY-Y0e">
                                     <rect key="frame" x="0.0" y="0.0" width="0.0" height="33"/>
@@ -72,7 +72,7 @@
                                     <state key="highlighted" image="smartfollow_sub_press.png"/>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mCu-Is-jfH">
-                                    <rect key="frame" x="79" y="1" width="30" height="31"/>
+                                    <rect key="frame" x="119" y="1" width="30" height="31"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="30" id="KAN-Jl-xkc"/>
@@ -81,7 +81,7 @@
                                     <state key="highlighted" image="smartfollow_add_pressed.png"/>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="元" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nby-kj-DJ0">
-                                    <rect key="frame" x="110" y="0.0" width="0.0" height="33"/>
+                                    <rect key="frame" x="150" y="0.0" width="0.0" height="33"/>
                                     <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="width" id="ZaM-hf-GCU"/>
@@ -91,7 +91,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NYc-kb-oS4">
-                                    <rect key="frame" x="31" y="1" width="48" height="31"/>
+                                    <rect key="frame" x="31" y="1" width="88" height="31"/>
                                     <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -115,7 +115,7 @@
                                 <constraint firstItem="NYc-kb-oS4" firstAttribute="leading" secondItem="MRF-M4-xJa" secondAttribute="trailing" id="hJL-w9-m1H"/>
                                 <constraint firstItem="nby-kj-DJ0" firstAttribute="leading" secondItem="mCu-Is-jfH" secondAttribute="trailing" constant="1" id="j8e-9M-qgk"/>
                                 <constraint firstAttribute="bottom" secondItem="mCu-Is-jfH" secondAttribute="bottom" constant="1" id="k3Y-Pw-Asl"/>
-                                <constraint firstAttribute="width" constant="110" id="wOm-gi-8RQ"/>
+                                <constraint firstAttribute="width" constant="150" id="wOm-gi-8RQ"/>
                                 <constraint firstItem="YPD-GY-Y0e" firstAttribute="leading" secondItem="YMN-Sc-L3M" secondAttribute="leading" id="wbt-c6-1UV"/>
                                 <constraint firstAttribute="bottom" secondItem="NYc-kb-oS4" secondAttribute="bottom" constant="1" id="wcC-Rx-B4y"/>
                             </constraints>
@@ -128,13 +128,13 @@
                             </connections>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mm6-oM-Rpg">
-                            <rect key="frame" x="272.5" y="23.5" width="14.5" height="17"/>
+                            <rect key="frame" x="292.5" y="23.5" width="14.5" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="计划购买" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yq1-lC-VfN">
-                            <rect key="frame" x="85" y="21" width="57.5" height="21"/>
+                            <rect key="frame" x="65" y="21" width="57.5" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="1uW-lA-IR4"/>
                             </constraints>
