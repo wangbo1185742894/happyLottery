@@ -79,14 +79,10 @@
         labTicketCount.text = @"";
         kaijiangOrders.text = @"";
     }
-    if ([model.lottery isEqualToString:@"JCZQ"] || [model.lottery isEqualToString:@"JCLQ"]) {
-        actionShuoming.hidden = NO;
+    if (([model.lottery isEqualToString:@"JCZQ"] || [model.lottery isEqualToString:@"JCLQ"])&&([labSchemeState.text containsString:@"已中奖"]||[labSchemeState.text containsString:@"未中奖"])) {
         kaijiangOrders.hidden = NO;
-    }else {
-        actionShuoming.hidden = YES;
-        kaijiangOrders.hidden = YES;
-    }
-    if ([model.winningStatus isEqualToString:@"WAIT_LOTTERY"]) {
+        actionShuoming.hidden = NO;
+    } else {
         kaijiangOrders.hidden = YES;
         actionShuoming.hidden = YES;
     }
@@ -94,12 +90,10 @@
         labBetBouns.text = @"";
         labBetBouns.mj_h = 0;
         labBouns.text = @"";
-        kaijiangOrders.text = @"";
         labBouns.hidden = YES;
         labBetBouns.hidden = YES;
         disTopBetBouns.constant = -17;
         disTopBetBounsInfo.constant = -17;
-        actionShuoming.hidden = YES;
     }
     
     labSchemeTime.text = model.createTime;
