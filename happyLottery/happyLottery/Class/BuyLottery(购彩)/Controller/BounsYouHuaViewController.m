@@ -341,7 +341,10 @@
             [self showPromptText:@"单笔总金额不能超过30万元" hideAfterDelay:1.7];
             return;
         }
-
+    if (self.transcation.betCost / 2 > 9999) {
+        [self showPromptText:@"投注倍数不能大于9999倍" hideAfterDelay:2];
+        return;
+    }
     
     
     [self showLoadingText:@"正在提交订单"];
@@ -361,10 +364,7 @@
     }else{
         self.transcation.schemeType = SchemeTypeZigou;
     }
-    if (self.transcation.betCost / 2 > 9999) {
-        [self showPromptText:@"投注倍数不能大于9999倍" hideAfterDelay:2];
-        return;
-    }
+
     self.transcation.originalContent = [self.transcation lottDataScheme];
     NSMutableArray *betContent = [NSMutableArray arrayWithCapacity:0];
     for (BounsModelItem *item in _zhuArray) {
