@@ -9,6 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "JCZQSchemeModel.h"
 
+@protocol SchemeDetailViewDelegate
+
+- (void)showAlert;
+
+@end
+
 @interface SchemeDetailViewCell : UITableViewCell
 -(void)reloadDataModel:(JCZQSchemeItem*)model;
+
+@property (nonatomic, weak) id<SchemeDetailViewDelegate> delegate;
+
 @end

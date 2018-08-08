@@ -33,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *zongShouruLabel;
 @property (weak, nonatomic) IBOutlet UIButton *shuoMingBtn;
 @property (nonatomic, weak) id<FollowCellDelegate> delegate;
+@property (weak, nonatomic) IBOutlet UILabel *kaijiangOrderLab;
 
 - (void)reloadDate:(JCZQSchemeItem * )model;
 @end

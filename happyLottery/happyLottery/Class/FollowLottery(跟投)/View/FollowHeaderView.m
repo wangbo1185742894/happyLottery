@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imgBottom;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imgDisLeft;
 
+
 @end
 
 @implementation FollowHeaderView

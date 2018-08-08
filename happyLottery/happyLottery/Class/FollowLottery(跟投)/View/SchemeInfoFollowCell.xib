@@ -23,6 +23,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="159"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当前开奖订单" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W7r-uj-AL2">
+                        <rect key="frame" x="291" y="129.5" width="74" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nS2-2c-EDG">
                         <rect key="frame" x="10" y="15" width="4" height="17"/>
                         <color key="backgroundColor" red="0.99607843137254903" green="0.6588235294117647" blue="0.074509803921568626" alpha="1" colorSpace="calibratedRGB"/>
@@ -122,6 +128,8 @@
                 </subviews>
                 <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="W7r-uj-AL2" secondAttribute="trailing" constant="10" id="2im-FO-kgu"/>
+                    <constraint firstItem="W7r-uj-AL2" firstAttribute="centerY" secondItem="3n4-7v-gzC" secondAttribute="centerY" id="2kI-DC-GsA"/>
                     <constraint firstItem="szN-JZ-JlZ" firstAttribute="leading" secondItem="nS2-2c-EDG" secondAttribute="trailing" constant="8" id="77S-0x-cU8"/>
                     <constraint firstItem="eMC-IZ-5IQ" firstAttribute="leading" secondItem="m3D-NX-6Zh" secondAttribute="leading" id="9VU-nS-p4n"/>
                     <constraint firstAttribute="bottom" secondItem="kzI-00-GYc" secondAttribute="bottom" id="BS8-FV-jan"/>
@@ -160,6 +168,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="kaijiangOrderLab" destination="W7r-uj-AL2" id="Oq8-BP-gYZ"/>
                 <outlet property="labBetBouns" destination="eMC-IZ-5IQ" id="J0Q-af-vbS"/>
                 <outlet property="labRemark" destination="VmZ-5A-JHw" id="BKT-UD-ibI"/>
                 <outlet property="loterryLabel" destination="m3D-NX-6Zh" id="kMf-p2-can"/>

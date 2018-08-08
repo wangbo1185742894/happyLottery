@@ -590,7 +590,7 @@
     for (NSString *item in self.transction.selectItems) {
         if ([item rangeOfString:@"串"].length >0) {
             if ([[[item componentsSeparatedByString:@"串"] lastObject] integerValue] > 1) {
-                [self showPromptText:@"奖金优化只支持过关4串1及以下串关玩法" hideAfterDelay:2];
+                [self showPromptText:@"奖金优化只支持自由过关4串1及以下串关玩法" hideAfterDelay:2];
                 return;
             }
         }

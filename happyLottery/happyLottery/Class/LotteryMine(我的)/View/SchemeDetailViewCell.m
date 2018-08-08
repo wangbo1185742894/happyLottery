@@ -32,6 +32,8 @@
     __weak IBOutlet NSLayoutConstraint *rightCons;
     __weak IBOutlet UILabel *labLottery;
     __weak IBOutlet UIImageView *youHuaTag;
+    __weak IBOutlet UIButton *actionShuoming;
+    __weak IBOutlet UILabel *kaijiangOrders;
 }
 @end
 
@@ -49,6 +51,7 @@
 
 -(void)reloadDataModel:(JCZQSchemeItem*)model{
     labTicketCount.adjustsFontSizeToFitWidth = YES;
+    kaijiangOrders.adjustsFontSizeToFitWidth = YES;
     scheme = model;
     labSchemeState.text = [model getSchemeState];
     
@@ -57,6 +60,7 @@
         labSchemeInfo.text = @"方案状态";
         if ([model.ticketCount integerValue] == 0) {
              labTicketCount.text = @"";
+             kaijiangOrders.text = @"";
         }else{
 
             if ([model.ticketFailRef doubleValue] > 0 && [model.printCount doubleValue]>0) {
@@ -66,18 +70,21 @@
             }else{
                  labTicketCount.text = [NSString stringWithFormat:@"出票%@/%@单",model.printCount,model.ticketCount];
             }
-       
+            kaijiangOrders.text = [NSString stringWithFormat:@" 当前开奖订单%@/%@单",model.drawCount,model.ticketCount];
+           
         }
         
     }else{
         labSchemeInfo.text = @"方案状态";
         labTicketCount.text = @"";
+        kaijiangOrders.text = @"";
     }
     
     if ([model.schemeStatus isEqualToString:@"CANCEL"]||[model.schemeStatus isEqualToString:@"REPEAL"] || [model.schemeStatus isEqualToString:@"INIT"] ) {
         labBetBouns.text = @"";
         labBetBouns.mj_h = 0;
         labBouns.text = @"";
+        kaijiangOrders.text = @"";
         labBouns.hidden = YES;
         labBetBouns.hidden = YES;
         disTopBetBouns.constant = -17;
@@ -119,6 +126,14 @@
     }
 //    labChuanFa.text = [self getChuanFa];
 //    [self reloadGYJModel:model];
+    if ([model.lottery isEqualToString:@"JCZQ"] || [model.lottery isEqualToString:@"JCLQ"]) {
+        actionShuoming.hidden = NO;
+        kaijiangOrders.hidden = NO;
+    }else {
+        actionShuoming.hidden = YES;
+        kaijiangOrders.hidden = YES;
+    }
+    
 }
 
 //冠亚军设置
@@ -194,4 +209,7 @@
     return @"彩票";
 }
 
+- (IBAction)actionToInfor:(id)sender {
+    [self.delegate showAlert];
+}
 @end

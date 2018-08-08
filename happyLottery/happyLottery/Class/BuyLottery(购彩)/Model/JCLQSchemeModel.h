@@ -70,6 +70,7 @@
 @property(nonatomic,copy)NSString * trDltOpenResult;
 
 @property(nonatomic,copy)NSString *virtualSp;
+@property(nonatomic,copy)NSString *drawCount;
 -(NSString *)getSchemeImgState;
 
 -(NSString *)getSchemeState;
