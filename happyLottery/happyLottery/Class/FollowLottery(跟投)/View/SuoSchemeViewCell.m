@@ -13,12 +13,18 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.publicTime.layer.masksToBounds = YES;
+    self.publicTime.layer.cornerRadius = 15;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)reloadDate:(JCZQSchemeItem * )model{
+    [self.publicTime setTitle:[NSString stringWithFormat:@"公开时间：%@", [model.sellEndTime substringWithRange:NSMakeRange(5, 11)]] forState:0];
 }
 
 @end

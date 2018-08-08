@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JCZQSchemeModel.h"
 
 @interface SuoSchemeViewCell : UITableViewCell
+
+@property (weak, nonatomic) IBOutlet UIButton *publicTime;
+
+- (void)reloadDate:(JCZQSchemeItem * )model;
 
 @end

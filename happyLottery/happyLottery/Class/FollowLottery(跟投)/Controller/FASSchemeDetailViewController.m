@@ -487,6 +487,7 @@
                 }
                 if (indexPath.row == 1) {
                     SuoSchemeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSuoSchemeViewCell];
+                    [cell reloadDate:schemeDetail];
                     return cell;
                 }
                 if (indexPath.row == 2) {
@@ -544,6 +545,7 @@
                 }
                 if (indexPath.row == 1) {
                     SuoSchemeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSuoSchemeViewCell];
+                    [cell reloadDate:schemeDetail];
                     return cell;
                 }
                 if (indexPath.row == 2) {

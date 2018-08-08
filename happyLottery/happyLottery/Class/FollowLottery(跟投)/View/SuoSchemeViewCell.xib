@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,59 +18,30 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="64.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EyA-1t-uEH">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="截期后公开" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QMw-d0-7Ma">
-                                <rect key="frame" x="125.5" y="47" width="77" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="0.55294117649999996" green="0.55294117649999996" blue="0.55294117649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJc-DZ-hEB">
-                                <rect key="frame" x="16" y="30" width="296" height="1"/>
-                                <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="eSo-1V-Fqv"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_suozi.png" translatesAutoresizingMaskIntoConstraints="NO" id="TNT-nz-NIk">
-                                <rect key="frame" x="144" y="18" width="40" height="20"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="Cmw-5p-YuF"/>
-                                    <constraint firstAttribute="width" constant="40" id="bWj-gQ-Xb1"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eQK-b6-IHg">
+                        <rect key="frame" x="16" y="17" width="288" height="30"/>
+                        <color key="backgroundColor" red="0.99607843139999996" green="0.64705882349999999" blue="0.074509803920000006" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="TNT-nz-NIk" firstAttribute="centerX" secondItem="rJc-DZ-hEB" secondAttribute="centerX" id="2v9-xq-lDP"/>
-                            <constraint firstItem="QMw-d0-7Ma" firstAttribute="top" secondItem="rJc-DZ-hEB" secondAttribute="bottom" constant="16" id="Hbf-Ey-McD"/>
-                            <constraint firstItem="TNT-nz-NIk" firstAttribute="centerX" secondItem="rJc-DZ-hEB" secondAttribute="centerX" id="HiT-hw-N9Y"/>
-                            <constraint firstItem="rJc-DZ-hEB" firstAttribute="leading" secondItem="EyA-1t-uEH" secondAttribute="leading" constant="16" id="LzX-kh-Hn8"/>
-                            <constraint firstItem="rJc-DZ-hEB" firstAttribute="trailing" secondItem="EyA-1t-uEH" secondAttribute="trailingMargin" id="bht-wU-rch"/>
-                            <constraint firstItem="TNT-nz-NIk" firstAttribute="top" secondItem="EyA-1t-uEH" secondAttribute="top" constant="18" id="gr7-ta-VXL"/>
-                            <constraint firstItem="QMw-d0-7Ma" firstAttribute="centerX" secondItem="rJc-DZ-hEB" secondAttribute="centerX" id="x3R-SF-dKw"/>
-                            <constraint firstItem="QMw-d0-7Ma" firstAttribute="top" secondItem="TNT-nz-NIk" secondAttribute="bottom" constant="9" id="xob-nl-cau"/>
+                            <constraint firstAttribute="width" constant="288" id="VWC-ha-h7L"/>
+                            <constraint firstAttribute="height" constant="30" id="WHg-h2-7UZ"/>
                         </constraints>
-                    </view>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <inset key="imageEdgeInsets" minX="-9" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title="Button" image="genDanSuo.png"/>
+                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="EyA-1t-uEH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="0sV-je-Flp"/>
-                    <constraint firstItem="EyA-1t-uEH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="bps-Z1-oHq"/>
-                    <constraint firstAttribute="bottom" secondItem="EyA-1t-uEH" secondAttribute="bottom" id="mdO-Gh-ep8"/>
-                    <constraint firstItem="EyA-1t-uEH" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="vKa-gJ-wzd"/>
-                    <constraint firstAttribute="trailing" secondItem="EyA-1t-uEH" secondAttribute="trailing" id="ynH-IP-nEn"/>
+                    <constraint firstItem="eQK-b6-IHg" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="HLW-aa-1PQ"/>
+                    <constraint firstItem="eQK-b6-IHg" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="QVu-MF-Naz"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="publicTime" destination="eQK-b6-IHg" id="iiB-yg-n0j"/>
+            </connections>
             <point key="canvasLocation" x="27" y="62.5"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="icon_suozi.png" width="11" height="14"/>
+        <image name="genDanSuo.png" width="11" height="14"/>
     </resources>
 </document>
