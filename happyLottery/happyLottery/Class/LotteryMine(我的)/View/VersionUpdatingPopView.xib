@@ -23,7 +23,7 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ftq-bV-ZKC">
-                    <rect key="frame" x="40" y="100" width="295" height="450"/>
+                    <rect key="frame" x="40" y="108.5" width="295" height="450"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bj_down" translatesAutoresizingMaskIntoConstraints="NO" id="Lst-L9-kyS">
                             <rect key="frame" x="0.0" y="0.0" width="295" height="450"/>
@@ -91,16 +91,15 @@
                 <constraint firstAttribute="trailing" secondItem="WbW-vB-FQS" secondAttribute="trailing" id="7xc-0K-ilA"/>
                 <constraint firstAttribute="trailing" secondItem="ftq-bV-ZKC" secondAttribute="trailing" constant="40" id="DNd-Qg-1s4"/>
                 <constraint firstItem="WbW-vB-FQS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="OPy-nQ-0pB"/>
+                <constraint firstItem="ftq-bV-ZKC" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Qre-qM-o1D"/>
                 <constraint firstItem="ftq-bV-ZKC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="fYO-eb-tJY"/>
                 <constraint firstItem="WbW-vB-FQS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="gKd-0d-Ral"/>
-                <constraint firstItem="ftq-bV-ZKC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="100" id="lJQ-80-BOA"/>
             </constraints>
             <connections>
                 <outlet property="content" destination="Oa7-W9-WGY" id="8yr-qs-9or"/>
                 <outlet property="guanbibtn" destination="WbW-vB-FQS" id="u9A-km-Qdf"/>
                 <outlet property="heightContstraints" destination="4NU-FW-LGb" id="OeO-MD-Tzp"/>
                 <outlet property="lijigenxinBtn" destination="RV5-tu-VRh" id="JCj-WU-z7u"/>
-                <outlet property="topContstraints" destination="lJQ-80-BOA" id="BHL-ZB-fgC"/>
                 <outlet property="xiaochachaBtn" destination="IYc-ly-RDU" id="2EE-jJ-1fS"/>
             </connections>
             <point key="canvasLocation" x="4.5" y="-106.5"/>
