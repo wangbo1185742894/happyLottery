@@ -34,7 +34,7 @@
     __weak IBOutlet NSLayoutConstraint *disTopR;
 }
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightBottom;
-@property (weak, nonatomic) IBOutlet UILabel *labBottomInfo;
+
 
 @property(nonatomic,assign)NSInteger num;
 @end

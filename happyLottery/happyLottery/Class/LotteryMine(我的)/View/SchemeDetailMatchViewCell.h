@@ -19,4 +19,5 @@
 -(NSString *)getPlayTypeRecEn:(NSString *)playType;
 -(NSString *)reloadDataWithRecResult:(NSArray *)option type:(NSString *)playType;
 -(NSString *)getPlayTypeRec:(NSString *)playType;
+@property (weak, nonatomic) IBOutlet UILabel *labBottomInfo;
 @end
