@@ -58,9 +58,14 @@
     
     if ([model.costType isEqualToString:@"CASH"]) {
         labSchemeInfo.text = @"方案状态";
+
         if ([model.ticketCount integerValue] == 0) {
+            
              labTicketCount.text = @"";
              kaijiangOrders.text = @"";
+        }else if([model.drawCount integerValue] == 0){
+            
+            kaijiangOrders.text = @"";
         }else{
 
             if ([model.ticketFailRef doubleValue] > 0 && [model.printCount doubleValue]>0) {
@@ -71,7 +76,6 @@
                  labTicketCount.text = [NSString stringWithFormat:@"出票%@/%@单",model.printCount,model.ticketCount];
             }
             kaijiangOrders.text = [NSString stringWithFormat:@" 当前开奖订单%@/%@单",model.drawCount,model.ticketCount];
-           
         }
         
     }else{

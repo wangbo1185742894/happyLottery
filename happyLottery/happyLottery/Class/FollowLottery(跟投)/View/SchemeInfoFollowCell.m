@@ -65,7 +65,7 @@
         self.winLabel.textColor = [UIColor blackColor];
         self.shuoMingBtn.hidden = YES;
     }
-    if ([model.ticketCount integerValue] == 0) {
+    if ([model.ticketCount integerValue] == 0||[model.drawCount integerValue] == 0) {
         self.kaijiangOrderLab.text = @"";
     } else if ([self.winLabel.text containsString:@"已中奖"] ||[self.winLabel.text containsString:@"未中奖"])
     {
