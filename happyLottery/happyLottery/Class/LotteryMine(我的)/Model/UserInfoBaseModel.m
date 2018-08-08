@@ -315,13 +315,13 @@
 -(NSString *)getLeftTitle{
     if (self.refundAmounts.doubleValue > 0) {
         if ([self.chaseExceptionRefund doubleValue] > 0 ) {
-              return [NSString stringWithFormat:@"\n类型\n\n彩种\n\n方案号\n\n时间\n\n追号期数\n\n认购金额\n\n预付款退款\n\n追号异常预付款\n\n"];
+              return [NSString stringWithFormat:@"\n类型\n\n彩种\n\n方案号\n\n时间\n\n追号期数\n\n认购金额\n\n预付款退款\n\n追号异常退款\n\n"];
         }else{
               return [NSString stringWithFormat:@"\n类型\n\n彩种\n\n方案号\n\n时间\n\n追号期数\n\n认购金额\n\n预付款退款\n\n"];
         }
     }else{
         if ([self.chaseExceptionRefund doubleValue] > 0 ) {
-            return [NSString stringWithFormat:@"\n类型\n\n彩种\n\n方案号\n\n时间\n\n追号期数\n\n认购金额\n\n追号异常预付款\n\n"];
+            return [NSString stringWithFormat:@"\n类型\n\n彩种\n\n方案号\n\n时间\n\n追号期数\n\n认购金额\n\n追号异常退款\n\n"];
         }else{
             return [NSString stringWithFormat:@"\n类型\n\n彩种\n\n方案号\n\n时间\n\n追号期数\n\n认购金额\n\n"];
         }
@@ -336,9 +336,9 @@
         }
     }else{
         if ([self.chaseExceptionRefund doubleValue] > 0 ) {
-            return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n%@\n\n%@/%@期\n\n#%@元\n\n",[self get1Name],[BaseModel getLotteryByName:self.lotteryCode],self.chaseSchemeNo,self.subTime,self.catchIndex,self.totalCatch,self.subAmounts];
+            return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n%@\n\n%@/%@期\n\n#%@元\n\n%.2f元\n\n",[self get1Name],[BaseModel getLotteryByName:self.lotteryCode],self.chaseSchemeNo,self.subTime,self.catchIndex,self.totalCatch,self.subAmounts,[self.chaseExceptionRefund doubleValue]];
         }else{
-            return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n%@\n\n%@/%@期\n\n#%@元\n\n%.2f\n\n",[self get1Name],[BaseModel getLotteryByName:self.lotteryCode],self.chaseSchemeNo,self.subTime,self.catchIndex,self.totalCatch,self.subAmounts,[self.chaseExceptionRefund doubleValue]];
+            return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n%@\n\n%@/%@期\n\n#%@元\n\n",[self get1Name],[BaseModel getLotteryByName:self.lotteryCode],self.chaseSchemeNo,self.subTime,self.catchIndex,self.totalCatch,self.subAmounts];
         }
     }
 }
