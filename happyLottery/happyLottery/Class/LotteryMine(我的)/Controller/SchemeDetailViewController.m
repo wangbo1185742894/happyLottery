@@ -285,6 +285,12 @@
                  SchemeDetailMatchViewCell *matchCell = [tableView dequeueReusableCellWithIdentifier:KSchemeDetailMatchViewCell];
                 if (schemeDetail != nil) {
                     [matchCell refreshData:matchList[indexPath.row] andResult:schemeDetail.trOpenResult];
+                    //最后一个cell显示提示语
+                    if (indexPath.row == matchList.count - 1) {
+                        matchCell.labBottomInfo.hidden = NO;
+                    }else {
+                        matchCell.labBottomInfo.hidden = YES;
+                    }
                 }
                 [matchCell setBtnNumIndexShow:![self showNum]];
                  cell = matchCell;
