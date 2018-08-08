@@ -100,7 +100,7 @@
     self.fanganLabel.hidden = NO;
     self.zhongjaingjinLabel.hidden = NO;
     self.helpButton.hidden = NO;
-    if ([model.ticketCount integerValue] == 0) {
+    if ([model.ticketCount integerValue] == 0||[model.drawCount integerValue] == 0) {
         self.kaijaingOrderLab.text = @"";
     } else if ([self.winLabel.text containsString:@"已中奖"] ||[self.winLabel.text containsString:@"未中奖"])
     {
