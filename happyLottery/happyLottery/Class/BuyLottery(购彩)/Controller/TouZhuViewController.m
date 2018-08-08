@@ -819,6 +819,13 @@
         return NO;
     }
     
+    if ([self.lottery.activeProfile.title isEqualToString:@"前一"]) {
+        if (betslist.count > 1) {
+            [self showPromptText:@"前一追号仅支持单组号码" hideAfterDelay:2];
+            return NO;
+        }
+    }
+    
     for(int i=0;i<betslist.count;i++)
     {
         int intunits =[[betslist[i] valueForKey:@"betCount"] intValue];
