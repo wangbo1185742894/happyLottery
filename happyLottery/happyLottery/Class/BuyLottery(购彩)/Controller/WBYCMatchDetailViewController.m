@@ -453,7 +453,13 @@
     }
     [self showLoadingViewWithText:@"正在加载"];
     
-    self.transaction.schemeSource = SchemeSourceFORECAST;
+    if (_btnOptimiz.selected == YES) {
+        self.transaction.schemeSource = SchemeSourceFORECAST;
+
+    }else{
+        
+        self.transaction.schemeSource = SchemeSourceFORECAST;
+    }
     self.transaction.costType = CostTypeCASH;
     if (self.btnOptimiz.selected == YES) {
         
