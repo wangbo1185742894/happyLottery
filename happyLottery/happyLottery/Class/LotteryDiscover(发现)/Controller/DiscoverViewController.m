@@ -31,6 +31,8 @@
     BOOL _pageCacheDisable;
     NSString *shareTitle;
     NSString *shareText;
+    NSString *lastUrl;
+    
 }
 
 @property (weak, nonatomic) IBOutlet UIWebView *faxianWebView;
@@ -92,6 +94,12 @@
         [self.faxianWebView loadRequest:request];
     }
     
+    if ([lastUrl containsString:@"index"]&&![lastUrl containsString:@"isLogin"]) {
+        self.tabBarController.tabBar.hidden = NO;
+  
+    }else{
+        self.tabBarController.tabBar.hidden = YES;
+    }
     self.navigationController.navigationBar.hidden = YES;
     
 }
@@ -161,6 +169,7 @@
     
     NSURL *URL = request.URL;
     NSString *scheme = [NSString stringWithFormat:@"%@",URL];
+    lastUrl = scheme;
     if ([scheme containsString:@"index"]&&![scheme containsString:@"isLogin"]) {
         self.tabBarController.tabBar.hidden = NO;
         
