@@ -79,7 +79,17 @@
         labTicketCount.text = @"";
         kaijiangOrders.text = @"";
     }
-    
+    if ([model.lottery isEqualToString:@"JCZQ"] || [model.lottery isEqualToString:@"JCLQ"]) {
+        actionShuoming.hidden = NO;
+        kaijiangOrders.hidden = NO;
+    }else {
+        actionShuoming.hidden = YES;
+        kaijiangOrders.hidden = YES;
+    }
+    if ([model.winningStatus isEqualToString:@"WAIT_LOTTERY"]) {
+        kaijiangOrders.hidden = YES;
+        actionShuoming.hidden = YES;
+    }
     if ([model.schemeStatus isEqualToString:@"CANCEL"]||[model.schemeStatus isEqualToString:@"REPEAL"] || [model.schemeStatus isEqualToString:@"INIT"] ) {
         labBetBouns.text = @"";
         labBetBouns.mj_h = 0;
@@ -89,6 +99,7 @@
         labBetBouns.hidden = YES;
         disTopBetBouns.constant = -17;
         disTopBetBounsInfo.constant = -17;
+        actionShuoming.hidden = YES;
     }
     
     labSchemeTime.text = model.createTime;
@@ -126,13 +137,7 @@
     }
 //    labChuanFa.text = [self getChuanFa];
 //    [self reloadGYJModel:model];
-    if ([model.lottery isEqualToString:@"JCZQ"] || [model.lottery isEqualToString:@"JCLQ"]) {
-        actionShuoming.hidden = NO;
-        kaijiangOrders.hidden = NO;
-    }else {
-        actionShuoming.hidden = YES;
-        kaijiangOrders.hidden = YES;
-    }
+   
     
 }
 
