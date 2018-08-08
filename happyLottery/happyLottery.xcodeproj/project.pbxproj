@@ -1313,6 +1313,8 @@
 		F97D82EE206B2EC600721336 /* zhushoubg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F97D82EC206B2EC600721336 /* zhushoubg@3x.png */; };
 		F97EE4EC211AA17F00EFCF08 /* header_mine@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F97EE4EA211AA17D00EFCF08 /* header_mine@3x.png */; };
 		F97EE4ED211AA17F00EFCF08 /* header_mine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F97EE4EB211AA17E00EFCF08 /* header_mine@2x.png */; };
+		F97EE4F0211AE4B600EFCF08 /* genDanSuo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F97EE4EE211AE4B400EFCF08 /* genDanSuo@2x.png */; };
+		F97EE4F1211AE4B600EFCF08 /* genDanSuo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F97EE4EF211AE4B500EFCF08 /* genDanSuo@3x.png */; };
 		F97FD9CA2003026300B35A7C /* inputbox@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F97FD9C82003026200B35A7C /* inputbox@3x.png */; };
 		F97FD9CB2003026300B35A7C /* inputbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F97FD9C92003026200B35A7C /* inputbox@2x.png */; };
 		F98A602C20638893008C3132 /* GYJSchemeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F98A602A20638892008C3132 /* GYJSchemeDetailViewController.m */; };
@@ -3467,6 +3469,8 @@
 		F97D82EC206B2EC600721336 /* zhushoubg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zhushoubg@3x.png"; sourceTree = "<group>"; };
 		F97EE4EA211AA17D00EFCF08 /* header_mine@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "header_mine@3x.png"; sourceTree = "<group>"; };
 		F97EE4EB211AA17E00EFCF08 /* header_mine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "header_mine@2x.png"; sourceTree = "<group>"; };
+		F97EE4EE211AE4B400EFCF08 /* genDanSuo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "genDanSuo@2x.png"; sourceTree = "<group>"; };
+		F97EE4EF211AE4B500EFCF08 /* genDanSuo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "genDanSuo@3x.png"; sourceTree = "<group>"; };
 		F97FD9C82003026200B35A7C /* inputbox@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inputbox@3x.png"; sourceTree = "<group>"; };
 		F97FD9C92003026200B35A7C /* inputbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inputbox@2x.png"; sourceTree = "<group>"; };
 		F98A602920638891008C3132 /* GYJSchemeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYJSchemeDetailViewController.h; sourceTree = "<group>"; };
@@ -5026,8 +5030,13 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+
 				2D4EE8E9211AF451000DF540 /* shareOrderimg@2x.png */,
 				2D4EE8E8211AF451000DF540 /* shareOrderimg@3x.png */,
+
+				F97EE4EE211AE4B400EFCF08 /* genDanSuo@2x.png */,
+				F97EE4EF211AE4B500EFCF08 /* genDanSuo@3x.png */,
+
 				F97EE4EB211AA17E00EFCF08 /* header_mine@2x.png */,
 				F97EE4EA211AA17D00EFCF08 /* header_mine@3x.png */,
 				F97966C2211428F100C061ED /* jiangji_youhuaTag@2x.png */,
@@ -7947,6 +7956,7 @@
 				2D06FFE91FFDC9EB009E7568 /* football@2x.png in Resources */,
 				2D40CAA4201EDE5700DDCFE3 /* bj_down@2x.png in Resources */,
 				2D0E23B920196B590098DA40 /* failure@3x.png in Resources */,
+				F97EE4F1211AE4B600EFCF08 /* genDanSuo@3x.png in Resources */,
 				F93EEEE92021D8EC001C635A /* unlockredpacket@2x.png in Resources */,
 				F9CDBEC8202306E100A1BE71 /* 1@3x.png in Resources */,
 				F97D82ED206B2EC600721336 /* zhushoubg@2x.png in Resources */,
@@ -8168,6 +8178,7 @@
 				F9BC6DFA20C285620037998B /* group_applybtn@2x.png in Resources */,
 				F928C6861FF48BE4001F1A32 /* bj_@2x.png in Resources */,
 				2DE892AA2022B5D1008926A6 /* schemeticket@2x.png in Resources */,
+				F97EE4F0211AE4B600EFCF08 /* genDanSuo@2x.png in Resources */,
 				F9DC69961FDF878D007D384D /* MyOrderListViewController.xib in Resources */,
 				F9B5D9942060A9DE00C9F6DC /* flag416@3x.png in Resources */,
 				F90D690220F4AF53007865E4 /* findyilou@2x.png in Resources */,

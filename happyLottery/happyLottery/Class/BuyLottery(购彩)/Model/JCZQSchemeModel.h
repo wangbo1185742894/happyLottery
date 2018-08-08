@@ -75,6 +75,7 @@
 @property(nonatomic,copy)NSString * originalContent;
 @property(nonatomic,copy)NSString * mobile;
 @property(nonatomic,copy)NSString *drawCount;//开奖订单数
+@property(nonatomic,copy)NSString *sellEndTime;
 
 /******************** 跟单发单信息 *********************/
 
