@@ -135,8 +135,9 @@
     }
 //    labChuanFa.text = [self getChuanFa];
 //    [self reloadGYJModel:model];
-   
-    
+    if (kaijiangOrders.hidden || [kaijiangOrders.text isEqualToString:@""]) {
+        actionShuoming.hidden = YES;
+    }
 }
 
 //冠亚军设置

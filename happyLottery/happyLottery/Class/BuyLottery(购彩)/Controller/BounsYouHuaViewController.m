@@ -38,7 +38,8 @@
     for (NSString *chuanfa in self.transcation.selectItems) {
         [_showChuanfa addObject:chuanfa];
     }
-    
+    self.btnTouzhu.layer.masksToBounds = YES;
+    self.btnTouzhu.layer.cornerRadius = 4;
     [self.transcation.selectItems removeAllObjects];
     for (NSString *chuanfa in _showChuanfa) {
         NSArray * chuanFaCodeDic = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"JingCaiChuanTypeDic" ofType:@"plist"]];
@@ -302,7 +303,11 @@
         minBounsModel.multiple =  [NSString stringWithFormat:@"%ld",([minBounsModel.multiple integerValue] + 1)];
     }
     self.labZhuInfo.text = [NSString stringWithFormat:@"%ld注，共%ld元",self.transcation.betCount,self.transcation.betCost];
-    
+    if (self.transcation != nil) {
+        self.labZhuInfo.keyWord = [NSString stringWithFormat:@"%ld",self.transcation.betCost];
+        self.labZhuInfo.keyWordColor = RGBCOLOR(255, 179, 108);
+    }
+   
     [self hideLoadingView];
     
     for (BounsModelItem *model in _zhuArray) {
@@ -420,6 +425,10 @@
     self.svInputMoney.labContent.text = [NSString stringWithFormat:@"%ld",beiNum * 2];
     self.transcation.betCost = beiNum * 2;
     self.labZhuInfo.text = [NSString stringWithFormat:@"%ld注，共%ld元",self.transcation.betCount,self.transcation.betCost];
+    if (self.transcation != nil) {
+        self.labZhuInfo.keyWord = [NSString stringWithFormat:@"%ld",self.transcation.betCost];
+        self.labZhuInfo.keyWordColor = RGBCOLOR(255, 179, 108);
+    }
     [self comMaxAndMinandAction:NULL];
 }
 
