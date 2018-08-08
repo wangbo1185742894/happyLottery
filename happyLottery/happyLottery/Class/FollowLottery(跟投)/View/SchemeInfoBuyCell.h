@@ -42,6 +42,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *fanganLabel;
 @property (weak, nonatomic) IBOutlet UILabel *zhongjaingjinLabel;
 @property (weak, nonatomic) IBOutlet UIButton *helpButton;
+@property (weak, nonatomic) IBOutlet UILabel *kaijaingOrderLab;
 
 - (void)reloadDate:(JCZQSchemeItem * )model;
 

@@ -29,7 +29,7 @@
 #define  KTableHeaderView               @"TableHeaderView"
 #define  KSchemeInfoViewCell            @"SchemeInfoViewCell"
 #define  KDLTSchemeViewCell             @"DLTSchemeViewCell.h"
-@interface SchemeDetailViewController ()<LotteryManagerDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface SchemeDetailViewController ()<LotteryManagerDelegate,UITableViewDelegate,UITableViewDataSource,SchemeDetailViewDelegate>
 {
     
     __weak IBOutlet NSLayoutConstraint *heightZhifuView;
@@ -272,6 +272,7 @@
         if (indexPath.section == 0) { // 显示 方案信息
             SchemeDetailViewCell *detailCell = [tableView dequeueReusableCellWithIdentifier:KSchemeDetailViewCell];
             [detailCell reloadDataModel:schemeDetail];
+            detailCell.delegate = self;
             cell = detailCell;
         }else if (indexPath.section == 2){ // 显示方案投注内容
             if ([schemeDetail.lottery isEqualToString:@"DLT"]) {
@@ -315,6 +316,7 @@
         if (indexPath.section == 0) { // 显示 方案信息
             SchemeDetailViewCell *detailCell = [tableView dequeueReusableCellWithIdentifier:KSchemeDetailViewCell];
             [detailCell reloadDataModel:schemeDetail];
+            detailCell.delegate = self;
             cell = detailCell;
         }else if (indexPath.section == 1){ // 显示方案投注内容
             if ([schemeDetail.lottery isEqualToString:@"DLT"]) {
@@ -634,6 +636,14 @@
     playViewVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:playViewVC animated:YES];
     
+}
+
+- (void)showAlert{
+    ZLAlertView *alert = [[ZLAlertView alloc]initWithTitle:@"" message:@"中奖金额为方案拆票中奖之和。如有拆票订单未开奖，请稍等"];
+    [alert addBtnTitle:@"确定" action:^{
+        
+    }];
+    [alert showAlertWithSender:self];
 }
 
 @end

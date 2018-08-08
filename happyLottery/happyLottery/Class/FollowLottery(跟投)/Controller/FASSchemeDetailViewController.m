@@ -672,7 +672,7 @@
 }
 
 - (void)showAlertFromFollow{
-    ZLAlertView *alert = [[ZLAlertView alloc]initWithTitle:@"" message:@"总收入=中奖-佣金"];
+    ZLAlertView *alert = [[ZLAlertView alloc]initWithTitle:@"" message:@"总收入=中奖-佣金(中奖金额为方案拆票中奖之和。如有拆票订单未开奖，请稍等)"];
     [alert addBtnTitle:@"确定" action:^{
         
     }];
@@ -680,7 +680,7 @@
 }
 
 - (void)showAlertFromBuy {
-    ZLAlertView *alert = [[ZLAlertView alloc]initWithTitle:@"" message:@"总收入=中奖+佣金"];
+    ZLAlertView *alert = [[ZLAlertView alloc]initWithTitle:@"" message:@"总收入=中奖+佣金(中奖金额为方案拆票中奖之和。如有拆票订单未开奖，请稍等)"];
     [alert addBtnTitle:@"确定" action:^{
         
     }];

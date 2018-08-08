@@ -74,7 +74,7 @@
 @property(nonatomic,copy)NSString * schemeSource;
 @property(nonatomic,copy)NSString * originalContent;
 @property(nonatomic,copy)NSString * mobile;
-
+@property(nonatomic,copy)NSString *drawCount;//开奖订单数
 
 /******************** 跟单发单信息 *********************/
 

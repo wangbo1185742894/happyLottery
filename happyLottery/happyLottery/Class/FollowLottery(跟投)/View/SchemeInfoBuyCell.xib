@@ -23,6 +23,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="195"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当前开奖订单" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WST-g1-1WU">
+                        <rect key="frame" x="291" y="129.5" width="74" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gx-uW-Oml">
                         <rect key="frame" x="10" y="15" width="4" height="17"/>
                         <color key="backgroundColor" red="0.99607843139999996" green="0.6588235294" blue="0.074509803920000006" alpha="1" colorSpace="calibratedRGB"/>
@@ -181,6 +187,7 @@
                     <constraint firstAttribute="trailing" secondItem="0uU-wD-DX5" secondAttribute="trailing" id="Pfz-GW-vQc"/>
                     <constraint firstItem="0uU-wD-DX5" firstAttribute="top" secondItem="ySy-e2-Uzq" secondAttribute="top" id="Pg3-B8-uZL"/>
                     <constraint firstItem="hqd-Op-NDd" firstAttribute="top" secondItem="l3v-jZ-Vf7" secondAttribute="bottom" constant="25" id="PgD-yZ-Hev"/>
+                    <constraint firstAttribute="trailing" secondItem="WST-g1-1WU" secondAttribute="trailing" constant="10" id="SQU-h2-9W0"/>
                     <constraint firstItem="4gx-uW-Oml" firstAttribute="leading" secondItem="ySy-e2-Uzq" secondAttribute="leading" constant="10" id="Voq-5d-h3A"/>
                     <constraint firstItem="l3v-jZ-Vf7" firstAttribute="centerY" secondItem="4gx-uW-Oml" secondAttribute="centerY" id="WHk-ix-7Ce"/>
                     <constraint firstAttribute="bottom" secondItem="iRt-sN-hrh" secondAttribute="bottom" id="Xxl-yR-Ode"/>
@@ -204,6 +211,7 @@
                     <constraint firstItem="srm-Ut-VEF" firstAttribute="leading" secondItem="Tjc-XO-DGg" secondAttribute="trailing" constant="8" id="rq3-iW-3NW"/>
                     <constraint firstItem="Tjc-XO-DGg" firstAttribute="leading" secondItem="yKR-vY-apE" secondAttribute="trailing" constant="33" id="sMb-hg-kme"/>
                     <constraint firstItem="zlu-aT-jeV" firstAttribute="centerX" secondItem="yKR-vY-apE" secondAttribute="centerX" id="soF-bU-nFQ"/>
+                    <constraint firstItem="WST-g1-1WU" firstAttribute="centerY" secondItem="yKR-vY-apE" secondAttribute="centerY" id="tXv-ti-zmW"/>
                     <constraint firstItem="yKR-vY-apE" firstAttribute="leading" secondItem="ySy-e2-Uzq" secondAttribute="leading" constant="10" id="trO-7N-gXs"/>
                     <constraint firstItem="iRt-sN-hrh" firstAttribute="top" secondItem="0uU-wD-DX5" secondAttribute="bottom" id="uxN-uw-1Gn"/>
                     <constraint firstItem="hqd-Op-NDd" firstAttribute="leading" secondItem="qnt-fL-mTO" secondAttribute="trailing" constant="14" id="uyL-Ax-qJK"/>
@@ -216,6 +224,7 @@
             <connections>
                 <outlet property="fanganLabel" destination="zlu-aT-jeV" id="RM2-UZ-sjk"/>
                 <outlet property="helpButton" destination="srm-Ut-VEF" id="stZ-Vm-YAW"/>
+                <outlet property="kaijaingOrderLab" destination="WST-g1-1WU" id="6Ij-Z0-1f8"/>
                 <outlet property="labBetBouns" destination="GKI-KN-c5E" id="URn-SE-xNd"/>
                 <outlet property="labRemark" destination="bWH-Ax-u2l" id="CDp-nK-6Hx"/>
                 <outlet property="loterryLabel" destination="hqd-Op-NDd" id="y5d-vO-vwD"/>

@@ -100,6 +100,11 @@
     self.fanganLabel.hidden = NO;
     self.zhongjaingjinLabel.hidden = NO;
     self.helpButton.hidden = NO;
+    if ([model.ticketCount integerValue] == 0||[self.winLabel.text isEqualToString:@"待支付"]||[self.winLabel.text isEqualToString:@"方案取消"]||[self.winLabel.text isEqualToString:@"已退款"]) {
+        self.kaijaingOrderLab.text = @"";
+    } else {
+        self.kaijaingOrderLab.text = [NSString stringWithFormat:@" 当前开奖订单%@/%@单",model.drawCount,model.ticketCount];
+    }
 }
 
 @end
