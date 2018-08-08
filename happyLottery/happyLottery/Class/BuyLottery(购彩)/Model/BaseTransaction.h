@@ -73,7 +73,7 @@ typedef enum : NSUInteger {
 @property(nonatomic,strong)NSArray *schemeTypes;
 @property(nonatomic,strong)NSArray *secretTypes;
 @property(nonatomic,assign)CostType costType;
-@property(nonatomic,assign)NSString * originalContent;
+@property(nonatomic,strong)NSString * originalContent;
 
 @property (assign,nonatomic)CGFloat maxPrize;
 

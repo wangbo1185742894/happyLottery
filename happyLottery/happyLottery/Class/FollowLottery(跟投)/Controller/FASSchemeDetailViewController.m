@@ -26,7 +26,7 @@
 #import <ShareSDKUI/ShareSDK+SSUI.h>
 #import <ShareSDK/NSMutableDictionary+SSDKShare.h>
 #import <MOBFoundation/MOBFoundation.h>
-
+#import "ShareOrderView.h"
 #define KSchemeInfoFollowCell @"SchemeInfoFollowCell"
 #define KSchemePerFollowCell  @"SchemePerFollowCell"
 #define KSchemeContaintCell   @"SchemeContaintCell"
@@ -37,7 +37,9 @@
 #define kSuoSchemeViewCell   @"SuoSchemeViewCell"
 
 
-@interface FASSchemeDetailViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,SchemeContaintCellDelegate,SchemePerFollowCellDelegate,FollowCellDelegate,BuyCellDelegate>
+@interface FASSchemeDetailViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,SchemeContaintCellDelegate,SchemePerFollowCellDelegate,FollowCellDelegate,BuyCellDelegate>{
+    ShareOrderView *introView;
+}
 
 @property (weak, nonatomic) IBOutlet UITableView *detailTableView;
 
@@ -57,6 +59,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     self.title = @"方案详情";
     self.lotteryMan.delegate = self;
     self.dataArray = [[NSMutableArray alloc]initWithCapacity:0];
@@ -71,6 +74,18 @@
 -(void)setRightBarItems{
     UIBarButtonItem *itemQuery = [self creatBarItem:@"" icon:@"sharedeat" andFrame:CGRectMake(0, 10, 31, 33) andAction:@selector(sharePress)];
     self.navigationItem.rightBarButtonItems = @[itemQuery];
+    NSString *  isShow = [[NSUserDefaults standardUserDefaults] objectForKey:KshareOrderIntroduce];
+    if (isShow == nil) {
+        introView = [[ShareOrderView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [[UIApplication sharedApplication].keyWindow addSubview:introView];
+        });
+    }else{
+        introView.hidden = YES;
+        if(introView.superview!=nil){
+            [introView removeFromSuperview];
+        }
+    }
 }
 
 - (void)sharePress {

@@ -352,7 +352,7 @@
     }
     
     
-    [self showLoadingText:@"正在提交订单"];
+//    [self showLoadingText:@"正在提交订单"];
     
     self.transcation.maxPrize = 1.00;
     
