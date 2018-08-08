@@ -259,10 +259,13 @@ static SystemSoundID shake_sound_male_id = 0;
 //                                                                   break;
                                 
                 case SSDKPlatformTypeWechat:
-                              //appstore
-                    [appInfo SSDKSetupWeChatByAppId:@"wxa0ff0f5a5d94e563" appSecret:@"bad37187c37042cfa2134ce2e1872d40"];
-//                    [appInfo SSDKSetupWeChatByAppId:@"wxe640eb18da420c3b"
-//                    appSecret:@"6ad481ed34390f25f4c930befb0e4abb"];
+#ifdef APPSTORE
+                [appInfo SSDKSetupWeChatByAppId:@"wxa0ff0f5a5d94e563" appSecret:@"bad37187c37042cfa2134ce2e1872d40"];
+#else
+                 
+                [appInfo SSDKSetupWeChatByAppId:@"wxe640eb18da420c3b" appSecret:@"6ad481ed34390f25f4c930befb0e4abb"];
+#endif
+                        
                     break;
                     default:
                     break;
