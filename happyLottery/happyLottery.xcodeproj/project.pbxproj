@@ -404,6 +404,10 @@
 		2D4D609E20B2548B00280033 /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4B1EA01FDFC5F30034B708 /* NewsTableViewCell.xib */; };
 		2D4D609F20B2548B00280033 /* FollowTop.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D4B1E421FDF65480034B708 /* FollowTop.plist */; };
 		2D4D60A020B2548B00280033 /* yuce_defealt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D4B1E631FDF684E0034B708 /* yuce_defealt@2x.png */; };
+		2D4EE8E6211AF3B3000DF540 /* ShareOrderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4EE8E4211AF3B2000DF540 /* ShareOrderView.xib */; };
+		2D4EE8E7211AF3B3000DF540 /* ShareOrderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4EE8E5211AF3B3000DF540 /* ShareOrderView.m */; };
+		2D4EE8EA211AF451000DF540 /* shareOrderimg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D4EE8E8211AF451000DF540 /* shareOrderimg@3x.png */; };
+		2D4EE8EB211AF451000DF540 /* shareOrderimg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D4EE8E9211AF451000DF540 /* shareOrderimg@2x.png */; };
 		2D5171B32007110D00C3CD7F /* SchemeInfoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5171B12007110D00C3CD7F /* SchemeInfoViewCell.m */; };
 		2D5171B42007110D00C3CD7F /* SchemeInfoViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D5171B22007110D00C3CD7F /* SchemeInfoViewCell.xib */; };
 		2D5171B7200844AD00C3CD7F /* ADSModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5171B6200844AD00C3CD7F /* ADSModel.m */; };
@@ -2208,6 +2212,11 @@
 		2D4D609020AEAACB00280033 /* huisebiankuang@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "huisebiankuang@2x.png"; sourceTree = "<group>"; };
 		2D4D609120AEAACC00280033 /* huisebiankuang@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "huisebiankuang@3x.png"; sourceTree = "<group>"; };
 		2D4D609220AEAACC00280033 /* lvsebiankuang@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lvsebiankuang@2x.png"; sourceTree = "<group>"; };
+		2D4EE8E3211AF3B2000DF540 /* ShareOrderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareOrderView.h; sourceTree = "<group>"; };
+		2D4EE8E4211AF3B2000DF540 /* ShareOrderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareOrderView.xib; sourceTree = "<group>"; };
+		2D4EE8E5211AF3B3000DF540 /* ShareOrderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareOrderView.m; sourceTree = "<group>"; };
+		2D4EE8E8211AF451000DF540 /* shareOrderimg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shareOrderimg@3x.png"; sourceTree = "<group>"; };
+		2D4EE8E9211AF451000DF540 /* shareOrderimg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shareOrderimg@2x.png"; sourceTree = "<group>"; };
 		2D5171B02007110D00C3CD7F /* SchemeInfoViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SchemeInfoViewCell.h; sourceTree = "<group>"; };
 		2D5171B12007110D00C3CD7F /* SchemeInfoViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SchemeInfoViewCell.m; sourceTree = "<group>"; };
 		2D5171B22007110D00C3CD7F /* SchemeInfoViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SchemeInfoViewCell.xib; sourceTree = "<group>"; };
@@ -5017,6 +5026,8 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				2D4EE8E9211AF451000DF540 /* shareOrderimg@2x.png */,
+				2D4EE8E8211AF451000DF540 /* shareOrderimg@3x.png */,
 				F97EE4EB211AA17E00EFCF08 /* header_mine@2x.png */,
 				F97EE4EA211AA17D00EFCF08 /* header_mine@3x.png */,
 				F97966C2211428F100C061ED /* jiangji_youhuaTag@2x.png */,
@@ -5584,6 +5595,9 @@
 		2DDEDBFA1FD4DBB5007AEBF7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2D4EE8E3211AF3B2000DF540 /* ShareOrderView.h */,
+				2D4EE8E5211AF3B3000DF540 /* ShareOrderView.m */,
+				2D4EE8E4211AF3B2000DF540 /* ShareOrderView.xib */,
 				F9E53D2320EE263E0072B8AF /* MineRecommendViewCell.h */,
 				F9E53D2520EE263F0072B8AF /* MineRecommendViewCell.m */,
 				F9E53D2420EE263E0072B8AF /* MineRecommendViewCell.xib */,
@@ -7590,6 +7604,7 @@
 				2DD2C515204522AD005A18C4 /* OptimizeViewCell.xib in Resources */,
 				F9BC6E1420C2B1390037998B /* pic_shibai@3x.png in Resources */,
 				2D7B12FE204D3F750035AE89 /* LotteryWinHistoryCell.xib in Resources */,
+				2D4EE8EB211AF451000DF540 /* shareOrderimg@2x.png in Resources */,
 				F999275D2003223000023F8F /* bj_overdue@2x.png in Resources */,
 				2D4B1E6D1FDF684E0034B708 /* duibiao@3x.png in Resources */,
 				2D16601620A2CF6700C1C7E7 /* PostSchemeViewCell.xib in Resources */,
@@ -7947,6 +7962,7 @@
 				2D4D609320AEAACD00280033 /* lvsebiankuang@3x.png in Resources */,
 				2D05C86220A43631001A8953 /* pic_hongrenbangbeijing@2x.png in Resources */,
 				F94AA9F41FEBBFE00021B980 /* BankCardSetTableViewCell.xib in Resources */,
+				2D4EE8EA211AF451000DF540 /* shareOrderimg@3x.png in Resources */,
 				F91565F41FFCBDAE00E254CE /* scancode@3x.png in Resources */,
 				F9BC6DFF20C285620037998B /* group_head@3x.png in Resources */,
 				F922FD2820AD6979000BA6F1 /* what@2x.png in Resources */,
@@ -8236,6 +8252,7 @@
 				F9705EC1207B6DDC00E25E4E /* daletoushouye@2x.png in Resources */,
 				F999275E2003223000023F8F /* bj_overdue@3x.png in Resources */,
 				F9CD01E6202419AD00E54E79 /* linehelp@3x.png in Resources */,
+				2D4EE8E6211AF3B3000DF540 /* ShareOrderView.xib in Resources */,
 				2D16602420A2EFB800C1C7E7 /* FollowSendViewController.xib in Resources */,
 				2D05C8CA20AABBF5001A8953 /* attentionperson@3x.png in Resources */,
 				2D628B451FECAA9A0013D0E1 /* fengkuangjingcai-monitouzhu-weixuanze@2x.png in Resources */,
@@ -8747,6 +8764,7 @@
 				2DDEDC1A1FD4DE97007AEBF7 /* Utility.m in Sources */,
 				2DDEDE711FD568C9007AEBF7 /* AFSecurityPolicy.m in Sources */,
 				F9B5D912205FB0B000C9F6DC /* GYJPlayViewController.m in Sources */,
+				2D4EE8E7211AF3B3000DF540 /* ShareOrderView.m in Sources */,
 				2D83E26320BE8FEE00F2D375 /* WBBifenZhiboViewController.m in Sources */,
 				2DDEDE651FD568C9007AEBF7 /* SDWebImagePrefetcher.m in Sources */,
 				2DDEDE691FD568C9007AEBF7 /* UIImage+WebP.m in Sources */,
