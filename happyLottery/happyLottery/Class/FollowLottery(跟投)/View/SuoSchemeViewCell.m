@@ -24,7 +24,11 @@
 }
 
 - (void)reloadDate:(JCZQSchemeItem * )model{
-    [self.publicTime setTitle:[NSString stringWithFormat:@"公开时间：%@", [model.sellEndTime substringWithRange:NSMakeRange(5, 11)]] forState:0];
+    if (model.sellEndTime == nil) {
+        [self.publicTime setTitle:[NSString stringWithFormat:@"截期后公开"] forState:0];
+    } else {
+        [self.publicTime setTitle:[NSString stringWithFormat:@"公开时间：%@", [model.sellEndTime substringWithRange:NSMakeRange(5, 11)]] forState:0];
+    }
 }
 
 @end

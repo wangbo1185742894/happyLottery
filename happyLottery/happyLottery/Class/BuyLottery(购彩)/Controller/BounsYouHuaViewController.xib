@@ -166,7 +166,7 @@
                             <color key="textColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4xh-0B-2SA">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4xh-0B-2SA" customClass="MGLabel">
                             <rect key="frame" x="12" y="15" width="35.5" height="15"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="15" id="Ghf-Dv-89J"/>
@@ -177,12 +177,13 @@
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3F-IS-WEY">
                             <rect key="frame" x="278" y="10" width="77" height="30"/>
+                            <color key="backgroundColor" red="0.070588235289999995" green="0.78039215689999997" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="77" id="CIj-2m-cuN"/>
                                 <constraint firstAttribute="height" constant="30" id="wpK-Dr-5BW"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <state key="normal" title="预约" backgroundImage="yuanjiaowukuangselect"/>
+                            <state key="normal" title="预约"/>
                             <state key="highlighted" backgroundImage="lvsebiankuang.png">
                                 <color key="titleColor" red="0.0" green="0.78823529410000004" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
@@ -281,6 +282,5 @@
         <image name="smartfollow_sub_press.png" width="16" height="16"/>
         <image name="touzhubeishujia.png" width="22" height="22"/>
         <image name="touzhubeishujian.png" width="22" height="22"/>
-        <image name="yuanjiaowukuangselect" width="45" height="23"/>
     </resources>
 </document>
