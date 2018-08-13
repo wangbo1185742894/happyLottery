@@ -327,6 +327,9 @@
     if (indexPath.section == 2) {
         dynamicModel = self.dynamicArray[indexPath.row];
         PersonCenterViewController *personCV = [[PersonCenterViewController alloc]init];
+        if (dynamicModel.cardCode.length == 0) {
+            return;
+        }
         personCV.cardCode = dynamicModel.cardCode;
         personCV.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:personCV animated:YES];

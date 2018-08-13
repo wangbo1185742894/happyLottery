@@ -23,8 +23,12 @@
         if (response.succeed) {
             NSDictionary *userInfo = [self objFromJson: responseJsonStr];
     
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"NSNotificationUserLoginSuccess" object:nil];
+
             [self.delegate loginUser:userInfo IsSuccess:YES errorMsg:response.errorMsg];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"NSNotificationUserLoginSuccess" object:nil];
+                
+            });
            
         } else {
             [self.delegate loginUser:nil IsSuccess:NO errorMsg:response.errorMsg];

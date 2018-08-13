@@ -92,8 +92,6 @@ static NSInteger seq = 0;
         user.loginPwd = [self.passwordTextField.text lowercaseString];
         user.isLogin = YES;
         [GlobalInstance instance].curUser = user;
-        [self upLoadClientInfo];
-        
         [self showPromptText: @"登录成功"  hideAfterDelay: 1.7];
         [self performSelector:@selector(delayMethod) withObject:nil afterDelay:0.7];
        

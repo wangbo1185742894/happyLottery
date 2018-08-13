@@ -341,6 +341,7 @@
 
 //{"code":"xxxxx", "visitCount":xxxxxx, "visitTime":xx, "source":"ios"}]
 -(void)uploadVisit{
+    [self upLoadClientInfo];
     if ([self.fmdb open]) {
         FMResultSet*  result = [self.fmdb executeQuery:@"select * from vcUserActiveInfo"];
         NSMutableArray *mVisitArray = [[NSMutableArray alloc]init];

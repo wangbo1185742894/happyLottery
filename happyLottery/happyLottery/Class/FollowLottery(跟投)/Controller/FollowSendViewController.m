@@ -417,13 +417,16 @@
 }
 
 - (void)actionToNotice {
+    if (self.curUser.isLogin == NO || self.curUser.cardCode.length == 0) {
+        [self needLogin];
+        return;
+    }
     placeImageHidden = YES;
     [schemeList removeAllObjects];
     page = 1;
     NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"page":@(page),@"pageSize":@(KpageSize)};
     [self.lotteryMan getAttentFollowScheme:dic];
 }
-
 
 - (void) gotAttentFollowScheme:(NSArray  *)personList  errorMsg:(NSString *)msg{
     [tabFollewView tableViewEndRefreshCurPageCount:personList.count];
