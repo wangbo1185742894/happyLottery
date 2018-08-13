@@ -7,7 +7,7 @@
 //
 #ifndef API_h
 #define API_h   //
-#define bate 1   // 用baseUrl 获取地址屏蔽宏
+//#define bate 1   // 用baseUrl 获取地址屏蔽宏
 //#define APPSTORE 1 //appstore 版本 打开宏，  内测包 ，自由平台  屏蔽宏
 #define BaseUrl @"http://t.11max.com/tbz/url.html" //获取 动态接口地址
 #define NameSpaceURI @"http://webservice.onlytest.com/"
