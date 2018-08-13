@@ -20,15 +20,15 @@
 #endif
 
 //#define WSServerURL @"http://115.28.27.198:28000/services%@"  //新服务地址
-//#define WSServerURL @"http://tbz.xianyingcai.com:28000/services%@"
-//#define ServerAddress @"http://124.89.85.110:17085"  //资讯  轮播图 用户图像
-//#define H5BaseAddress @"http://tbz.xianyingcai.com:28086"
-//#define OmitServerURL @"http://tc.xianticai.com:17082/ms"  //新后台
+#define WSServerURL @"http://tbz.xianyingcai.com:28000/services%@"
+#define ServerAddress @"http://124.89.85.110:17085"  //资讯  轮播图 用户图像
+#define H5BaseAddress @"http://tbz.xianyingcai.com:28086"
+#define OmitServerURL @"http://tc.xianticai.com:17082/ms"  //新后台
 //
-#define ServerAddress @"http://192.168.88.244:8086"  //资讯  轮播图 用户图像
-#define H5BaseAddress @"http://192.168.88.244:18086"
-#define WSServerURL @"http://192.168.88.244:28000/services%@"
-#define OmitServerURL @"http://192.88.244:19081/ms"
+//#define ServerAddress @"http://192.168.88.244:8086"  //资讯  轮播图 用户图像
+//#define H5BaseAddress @"http://192.168.88.244:18086"
+//#define WSServerURL @"http://192.168.88.244:28000/services%@"
+//#define OmitServerURL @"http://192.88.244:19081/ms"
 
 //#define WSServerURL @"http://115.28.27.198:28000/services%@"  //新服务地址
 //#define WSServerURL @"http://tbz.xianyingcai.com:28000/services%@"
