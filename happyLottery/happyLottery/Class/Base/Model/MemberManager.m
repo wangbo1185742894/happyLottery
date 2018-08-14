@@ -1324,7 +1324,6 @@
         if (response.succeed == YES) {
             NSLog(@"yes");
         }
-        
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
