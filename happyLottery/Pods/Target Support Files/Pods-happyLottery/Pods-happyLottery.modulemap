@@ -1,0 +1,6 @@
+framework module Pods_happyLottery {
+  umbrella header "Pods-happyLottery-umbrella.h"
+
+  export *
+  module * { export * }
+}

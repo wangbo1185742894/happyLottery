@@ -948,6 +948,7 @@
 		2DE892B02022C7A9008926A6 /* jczq_table_spf.html in Resources */ = {isa = PBXBuildFile; fileRef = 2DE892AF2022C7A8008926A6 /* jczq_table_spf.html */; };
 		2DE892B32024069F008926A6 /* pic_kongbaifangan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE892B12024069D008926A6 /* pic_kongbaifangan@2x.png */; };
 		2DE892B42024069F008926A6 /* pic_kongbaifangan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE892B22024069E008926A6 /* pic_kongbaifangan@3x.png */; };
+		E18D1583AA88B14CEE75B499 /* Pods_happyLottery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DA78207F9A04D730256C7F5 /* Pods_happyLottery.framework */; };
 		F90058DE1FF61327009C8E1C /* NoticeCenterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F90058DC1FF61327009C8E1C /* NoticeCenterTableViewCell.m */; };
 		F90058DF1FF61327009C8E1C /* NoticeCenterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F90058DD1FF61327009C8E1C /* NoticeCenterTableViewCell.xib */; };
 		F90058E51FF61619009C8E1C /* noticedelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F90058E11FF61618009C8E1C /* noticedelete@2x.png */; };
@@ -3036,6 +3037,9 @@
 		2DE892AF2022C7A8008926A6 /* jczq_table_spf.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = jczq_table_spf.html; sourceTree = "<group>"; };
 		2DE892B12024069D008926A6 /* pic_kongbaifangan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pic_kongbaifangan@2x.png"; sourceTree = "<group>"; };
 		2DE892B22024069E008926A6 /* pic_kongbaifangan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pic_kongbaifangan@3x.png"; sourceTree = "<group>"; };
+		5424381894BD95FF7B6C4978 /* Pods-happyLottery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-happyLottery.debug.xcconfig"; path = "Pods/Target Support Files/Pods-happyLottery/Pods-happyLottery.debug.xcconfig"; sourceTree = "<group>"; };
+		5DA78207F9A04D730256C7F5 /* Pods_happyLottery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_happyLottery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		688EA35A399BA86690BBFC68 /* Pods-happyLottery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-happyLottery.release.xcconfig"; path = "Pods/Target Support Files/Pods-happyLottery/Pods-happyLottery.release.xcconfig"; sourceTree = "<group>"; };
 		F90058DB1FF61327009C8E1C /* NoticeCenterTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeCenterTableViewCell.h; sourceTree = "<group>"; };
 		F90058DC1FF61327009C8E1C /* NoticeCenterTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeCenterTableViewCell.m; sourceTree = "<group>"; };
 		F90058DD1FF61327009C8E1C /* NoticeCenterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoticeCenterTableViewCell.xib; sourceTree = "<group>"; };
@@ -3960,6 +3964,7 @@
 				F93AC80C1FFDC617003DF05C /* libstdc++.tbd in Frameworks */,
 				2DDE19A820E35A0800ADD7D4 /* Bugly.framework in Frameworks */,
 				F93AC8081FFDC5F5003DF05C /* libicucore.tbd in Frameworks */,
+				E18D1583AA88B14CEE75B499 /* Pods_happyLottery.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3980,6 +3985,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		26C7CA9190D256C6C999E1B2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5424381894BD95FF7B6C4978 /* Pods-happyLottery.debug.xcconfig */,
+				688EA35A399BA86690BBFC68 /* Pods-happyLottery.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		2D03F25E2060BAE800C81BEF /* personnalSet */ = {
 			isa = PBXGroup;
 			children = (
@@ -4964,6 +4978,7 @@
 				2DCBB2721FD1000700934D92 /* Products */,
 				2D4B1EB51FDFDB190034B708 /* Recovered References */,
 				F93AC8061FFDC5F4003DF05C /* Frameworks */,
+				26C7CA9190D256C6C999E1B2 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -6417,6 +6432,7 @@
 				F93AC80B1FFDC617003DF05C /* libstdc++.tbd */,
 				F93AC8091FFDC603003DF05C /* libz.tbd */,
 				F93AC8071FFDC5F5003DF05C /* libicucore.tbd */,
+				5DA78207F9A04D730256C7F5 /* Pods_happyLottery.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -7112,6 +7128,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2DCBB29D1FD1000700934D92 /* Build configuration list for PBXNativeTarget "happyLottery" */;
 			buildPhases = (
+				12DFAA21107CCC7DB89B6274 /* [CP] Check Pods Manifest.lock */,
 				2DCBB26D1FD1000700934D92 /* Sources */,
 				2DCBB26E1FD1000700934D92 /* Frameworks */,
 				2DCBB26F1FD1000700934D92 /* Resources */,
@@ -8422,6 +8439,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		12DFAA21107CCC7DB89B6274 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-happyLottery-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2DCBB26D1FD1000700934D92 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -9064,6 +9102,7 @@
 		};
 		2DCBB29E1FD1000700934D92 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5424381894BD95FF7B6C4978 /* Pods-happyLottery.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -9110,6 +9149,7 @@
 		};
 		2DCBB29F1FD1000700934D92 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 688EA35A399BA86690BBFC68 /* Pods-happyLottery.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

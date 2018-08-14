@@ -177,12 +177,23 @@
         if ([itemModel.channel isEqualToString:@"SDALI"]) {
             [self.payWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:payInfo[@"qrCode"]]]];
             orderNO = payInfo[@"orderNo"];
-        }else if ([itemModel.channel isEqualToString:@"WFTWX"] || [itemModel.channel isEqualToString:@"WFTWX_HC"]){
+        }else if ([itemModel.channel isEqualToString:@"WFTWX"]){
             [self.payWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:payInfo[@"payInfo"]]]];
             orderNO = payInfo[@"orderNo"];
         }else if([itemModel.channel isEqualToString:@"UNION"]){
             orderNO = payInfo[@"orderNo"];
             [self  actionYinLianChongZhi: payInfo[@"tn"]];
+        }if ([itemModel.channel isEqualToString:@"WFTWX_HC"]) {
+            orderNO =payInfo[@"orderNo"];
+            NSDictionary * itemDic = [Utility objFromJson:payInfo[@"payInfo"]];
+            NSString *original_id = itemDic[@"original_id"];
+            NSString *app_id = itemDic[@"app_id"];
+            NSString *prepay_id = itemDic[@"prepay_id"];
+            if (original_id == nil || app_id == nil || prepay_id == nil) {
+                [self showPromptText:@"充值失败" hideAfterDelay:2];
+                return;
+            }
+            [self sendReqAppId:app_id prepayId:prepay_id orginalId:original_id];
         }
         
     }else{
@@ -431,5 +442,16 @@
     [self memberDetail:nil];
 }
 
+#pragma mark -----拉起微信支付-----
+-(void)sendReqAppId:(NSString *)appId prepayId:(NSString*)prepayId orginalId:(NSString *)orginalId
+{
+    NSString *path=  [NSString stringWithFormat:@"pages/index/index?appId=%@&prepayId=%@",appId,prepayId];
+    //"pages/index/index"+"?appId=" + appId +"&prepayId="+prepayId;
+    WXLaunchMiniProgramReq *launchMiniProgramReq = [WXLaunchMiniProgramReq object];
+    launchMiniProgramReq.userName = orginalId;
+    launchMiniProgramReq.path = path;
+    launchMiniProgramReq.miniProgramType = 0; //正式版
+    [WXApi sendReq:launchMiniProgramReq]; //拉起微信支付
+}
 
 @end
