@@ -36,15 +36,19 @@
 
 
 - (IBAction)actionGenDan:(UIButton *)sender {
-    self.btnGenDan.selected = NO;
-    self.btnNotice.selected = NO;
-    self.imgDisLeft.constant = sender.mj_x;
-    [UIView animateWithDuration:0.5 animations:^{
-        [self.imgBottom.superview layoutIfNeeded];
-    }];
-    sender.selected = YES;
-    self.btnGenDan.titleLabel.font = self.btnGenDan.selected?[UIFont boldSystemFontOfSize:14.0]:[UIFont systemFontOfSize:14.0];
-    self.btnNotice.titleLabel.font = self.btnNotice.selected?[UIFont boldSystemFontOfSize:14.0]:[UIFont systemFontOfSize:14.0];
+    if ([GlobalInstance instance].curUser.isLogin == YES) {
+        self.btnGenDan.selected = NO;
+        self.btnNotice.selected = NO;
+        self.imgDisLeft.constant = sender.mj_x;
+        [UIView animateWithDuration:0.5 animations:^{
+            [self.imgBottom.superview layoutIfNeeded];
+        }];
+        sender.selected = YES;
+        
+        self.btnGenDan.titleLabel.font = self.btnGenDan.selected?[UIFont boldSystemFontOfSize:14.0]:[UIFont systemFontOfSize:14.0];
+        self.btnNotice.titleLabel.font = self.btnNotice.selected?[UIFont boldSystemFontOfSize:14.0]:[UIFont systemFontOfSize:14.0];
+    }
+ 
     if (sender == self.btnGenDan) {
         [self.delegate actionToGD];
     } else {

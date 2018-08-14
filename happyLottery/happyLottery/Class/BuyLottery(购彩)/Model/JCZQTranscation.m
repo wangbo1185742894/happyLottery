@@ -83,10 +83,15 @@
     submitParaDic[@"units"] = [NSString stringWithFormat:@"%ld",(long)self.units];
     submitParaDic[@"betSource"] = @"2";
     submitParaDic[@"schemeSource"] = @(self.schemeSource);
-    submitParaDic[@"multiple"] = @(1);
+    
     submitParaDic[@"secretType"] =@(self.secretType);
     submitParaDic[@"costType"] = @(self.costType);
     NSString *betcost;
+    if (self.schemeSource == SchemeSourceBONUS_OPTIMIZE) {
+        submitParaDic[@"multiple"] = @"1";
+    }else{
+        submitParaDic[@"multiple"] = self.beitou;
+    }
     if (self.costType == CostTypeCASH) {
        betcost  =[NSString stringWithFormat:@"%ld",(long)self.betCost];
     }else if (self.costType == CostTypeSCORE){

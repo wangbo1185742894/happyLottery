@@ -181,8 +181,6 @@
 }
 
 -(void)doExchange:(NSMutableArray *) arrayLists{
-    
-    
     NSInteger len=arrayLists.count;
     //判断数组size是否小于2，如果小于说明已经递归完成了，否则你们懂得的，不懂？断续看代码
     if (len<2){
