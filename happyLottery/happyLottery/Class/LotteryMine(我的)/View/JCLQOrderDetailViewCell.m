@@ -479,13 +479,12 @@
         default:
             break;
     }
-    NSString *winType = [self setJCLQContentWin:playType resultArray:openResult Matchkey:matchKey];
     redText = @"";
+    NSString *handicap = [self getHandWithmatchKeyLQ:matchKey];
+    NSString *winType = [self setJCLQContentWin:playType resultArray:openResult Matchkey:matchKey andHandic:[NSString stringWithFormat:@"%@",handicap]];
     for (NSString *op in option) {
-        
-        NSString*type = [self getContentJCLQ:contentArray andOption:op];
+        NSString*type  = [self getContentJCLQ:contentArray andOption:op];
         NSString *odd = [self getOddWithOption:op matchKey:matchKey];
-        NSString *handicap = [self getHandWithmatchKeyLQ:matchKey];
         NSString *cont;
         if (odd.length == 0 || odd == nil) {
             if (handicap.length == 0 ||handicap == nil){
@@ -501,6 +500,7 @@
             }
         }
         [content appendString:cont];
+        
         if ([op isEqualToString:winType]) {
             redText = cont;
         }
@@ -512,10 +512,10 @@
 }
 
 //竞蓝开奖比对
-- (NSString *)setJCLQContentWin:(NSString *)playType resultArray:(NSArray *)openResult Matchkey:(NSString *)matchKey{
+- (NSString *)setJCLQContentWin:(NSString *)playType resultArray:(NSArray *)openResult Matchkey:(NSString *)matchKey andHandic:(NSString *)handic{
     JCLQOpenResult * openRt;
     for (JCLQOpenResult  *result in openResult) {
-        if ([result.matchKey isEqualToString:matchKey]) {
+        if ([result.matchKey isEqualToString:matchKey]&&[result.handicap isEqualToString:handic]) {
             openRt = result;
             break;
         }

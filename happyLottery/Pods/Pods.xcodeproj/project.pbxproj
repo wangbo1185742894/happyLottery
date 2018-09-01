@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		16E2F31D0A16CD0F3FAE7548B04803EE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		114132C9264F7AB628CC3348CE8CAB6F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
 		4D4830759EC84E3FEE1368528189C155 /* Pods-happyLottery-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ED0A725801BA3FECB5E4ACF13387945 /* Pods-happyLottery-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C56AF37BA0109B3795930076DE0DF8E8 /* Pods-happyLottery-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AFCFD1BB0800CFC44AA7DC57CC9FEB /* Pods-happyLottery-dummy.m */; };
 /* End PBXBuildFile section */
@@ -19,7 +19,7 @@
 		36E983344BC48AA24F24B325E48C16FA /* WXApiObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXApiObject.h; path = WechatSDK1.8.2/WXApiObject.h; sourceTree = "<group>"; };
 		3F5317CE6C340092F16F71691B7C6FB0 /* WXApi.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXApi.h; path = WechatSDK1.8.2/WXApi.h; sourceTree = "<group>"; };
 		4201DA47502963A01D32DF79E8782ECD /* Pods-happyLottery-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-happyLottery-acknowledgements.markdown"; sourceTree = "<group>"; };
-		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		71BA536C441B02AD8CCE9C9E9887884C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77924A69106534EF915EA431C7629C85 /* Pods-happyLottery-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-happyLottery-resources.sh"; sourceTree = "<group>"; };
 		89C521B2D7318DAB1BEDA929F935A482 /* Pods_happyLottery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_happyLottery.framework; path = "Pods-happyLottery.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -37,7 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16E2F31D0A16CD0F3FAE7548B04803EE /* Foundation.framework in Frameworks */,
+				114132C9264F7AB628CC3348CE8CAB6F /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +50,14 @@
 				89C521B2D7318DAB1BEDA929F935A482 /* Pods_happyLottery.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		5E0D919E635D23B70123790B8308F8EF /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */,
+			);
+			name = iOS;
 			sourceTree = "<group>";
 		};
 		7ADA45F435BB210C822629C0D9B54295 /* Pods */ = {
@@ -94,17 +102,9 @@
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D35AF013A5F0BAD4F32504907A52519E /* iOS */,
+				5E0D919E635D23B70123790B8308F8EF /* iOS */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */,
-			);
-			name = iOS;
 			sourceTree = "<group>";
 		};
 		EF1099DD8D8076A4CDDDF4EC67FA0740 /* Pods-happyLottery */ = {

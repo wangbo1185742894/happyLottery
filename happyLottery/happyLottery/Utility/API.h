@@ -201,8 +201,8 @@
 #define APIbetChaseScheme           @"betChaseScheme"
 #define APISchemeCashPayment        @"schemeCashPayment"
 #define APISchemeScorePayment       @"schemeScorePayment"
-#define APIGetSchemeRecord          @"getSchemeRecord"
-#define APIGetSchemeRecordBySchemeNo @"getSchemeRecordBySchemeNo"
+#define APIGetSchemeRecord          @"getSchemeRecord" //我的发单跟单列表
+#define APIGetSchemeRecordBySchemeNo @"getSchemeRecordBySchemeNo" //方案详情跟发单
 #define APIlistByHisGains           @"listByHisGains"
 #define APIbonusOptimize            @"bonusOptimize"
 #define APIlistChaseSchemeForApp    @"listChaseSchemeForApp"
@@ -213,7 +213,7 @@
 #define APIgetAttentFollowScheme    @"getAttentFollowScheme"  //获得关注人的发单
 #define APIconcealSchemeBySchemeNo  @"concealSchemeBySchemeNo" //删除方案
 #define APIchaseCompleteCount           @"chaseCompleteCount"
-#define APISearchGreatFollow        @"searchGreatFollow"
+#define APISearchGreatFollow        @"searchGreatFollow" //搜索
 
 
 
