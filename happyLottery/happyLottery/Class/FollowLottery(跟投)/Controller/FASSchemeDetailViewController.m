@@ -90,7 +90,7 @@
 
 - (void)sharePress {
     {
-        NSString *url = [NSString stringWithFormat:@"%@/app/share/shareScheme?schemeNo=%@",H5BaseAddress,schemeDetail.schemeNO];
+        NSString *url = [NSString stringWithFormat:@"%@/app/share/shareScheme?schemeNo=%@&date=%@",H5BaseAddress,schemeDetail.schemeNO,[NSDate dateWithTimeIntervalSinceNow:0]];
         NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
         NSArray* imageArray = @[[[NSBundle mainBundle] pathForResource:@"logo120@2x" ofType:@"png"]];
         [shareParams SSDKSetupShareParamsByText:@"给你推荐一个方案，跟着大神买准没错。"

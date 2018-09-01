@@ -118,7 +118,6 @@
 - (IBAction)updateImage:(id)sender {
     UIActionSheet *choseSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照",@"从相册中获取",nil];
     [choseSheet showInView:self.view];
-    
 }
 
 - (IBAction)setMember:(id)sender {

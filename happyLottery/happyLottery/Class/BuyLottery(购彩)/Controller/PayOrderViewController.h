@@ -16,6 +16,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewDisTop;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewDisBottom;
 @property(assign,nonatomic)SchemeType  schemetype;
-
+@property(assign,nonatomic)BOOL isYouhua;
 
 @end

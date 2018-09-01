@@ -177,13 +177,13 @@
         if ([itemModel.channel isEqualToString:@"SDALI"]) {
             [self.payWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:payInfo[@"qrCode"]]]];
             orderNO = payInfo[@"orderNo"];
-        }else if ([itemModel.channel isEqualToString:@"WFTWX"]){
+        }else if ([itemModel.channel isEqualToString:@"WFTWX"] || [itemModel.channel isEqualToString:@""]){
             [self.payWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:payInfo[@"payInfo"]]]];
             orderNO = payInfo[@"orderNo"];
         }else if([itemModel.channel isEqualToString:@"UNION"]){
             orderNO = payInfo[@"orderNo"];
             [self  actionYinLianChongZhi: payInfo[@"tn"]];
-        }if ([itemModel.channel isEqualToString:@"WFTWX_HC"]) {
+        }else if ([itemModel.channel isEqualToString:@"YUN_WX_XCX"]) {
             orderNO =payInfo[@"orderNo"];
             NSDictionary * itemDic = [Utility objFromJson:payInfo[@"payInfo"]];
             NSString *original_id = itemDic[@"original_id"];
@@ -202,8 +202,6 @@
 }
 
 - (IBAction)haveead:(id)sender {
-    
-  
     
 }
 - (IBAction)memberDetail:(id)sender{
@@ -278,7 +276,7 @@
     for (NSInteger i = 0 ; i < infoArray.count ; i ++ ) {
         NSDictionary *itemDic = infoArray[i];
         ChannelModel *model = [[ChannelModel alloc]initWith:itemDic];
-        if ([model.channelValue boolValue] == YES || [model.channel isEqualToString:@"UNION"] || [model.channel isEqualToString:@"WFTWX_HC"]) {
+        if ([model.channelValue boolValue] == YES || [model.channelValue isEqualToString:@"open"]) {
 //            if ([model.channelTitle containsString:@"微信支付"]) {
                 [channelList insertObject:model atIndex:0];
 //            } else {
@@ -361,6 +359,14 @@
     }
     return YES;
 }
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    if ([itemModel.channel isEqualToString:@"UNION"] && orderNO .length > 0) {
+        [[NSNotificationCenter defaultCenter ]postNotificationName:@"UPPaymentControlFinishNotification" object:orderNO];
+    }
+}
+
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"NSNotificationapplicationWillEnterForeground" object:nil];
@@ -371,14 +377,15 @@
 
 -(void)checkSchemePayState:(NSNotification *)notification{
 //    object    NSTaggedPointerString *    @"cancel"    0xa006c65636e61636
-    if ([itemModel.channel isEqualToString:@"UNION"]) {
-        if (![notification.object isEqualToString:@"success"]) {
-            [self showPromptText:@"支付失败" hideAfterDelay:1.6];
-            return;
-        }
-    }
+//    if ([itemModel.channel isEqualToString:@"UNION"]) {
+//        if (![notification.object isEqualToString:@"success"]) {
+//            [self showPromptText:@"支付失败" hideAfterDelay:1.6];
+//            return;
+//        }
+//    }
   
     if (orderNO == nil) {
+        [self showPromptText:@"支付失败" hideAfterDelay:1.6];
         return;
     }
     [self showLoadingText:@"正在查询充值结果，请稍等"];

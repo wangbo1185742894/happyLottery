@@ -16,7 +16,8 @@
 
 #define KBounsYouViewCell @"BounsYouViewCell"
 
-@interface BounsYouHuaViewController ()<UITableViewDelegate,UITableViewDataSource,BounsYouViewCellDelegate,UITextFieldDelegate,LotteryManagerDelegate>
+@interface BounsYouHuaViewController ()<UITableViewDelegate,UITableViewDataSource,BounsYouViewCellDelegate,UITextFieldDelegate,LotteryManagerDelegate,SelectViewDelegate>
+@property (weak, nonatomic) IBOutlet SelectView *beiSelectView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomDis;
 @property (weak, nonatomic) IBOutlet SelectView *svInputMoney;
 @property (weak, nonatomic) IBOutlet MGLabel *labTopInfo;
@@ -32,6 +33,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.beiSelectView.labContent.text = @"1";
+    self.transcation.outBeicount = 1;
     self.topDis.constant = NaviHeight;
     self.bottomDis.constant = BOTTOM_BAR_HEIGHT;
     self.showChuanfa = [NSMutableArray arrayWithCapacity:0];
@@ -77,6 +80,11 @@
     [self.svInputMoney setTarget:self  rightAction:@selector(actionAdd) leftAction:@selector(actionSub)];
     self.svInputMoney.labContent.text = [NSString stringWithFormat:@"%ld",self.transcation.betCost];
     self.svInputMoney.labContent.delegate =self;
+    
+    [self.beiSelectView setTarget:self rightAction:@selector(actionAddBei) leftAction:@selector(actionSubBei)];
+    self.beiSelectView.labContent.delegate = self;
+    _beiSelectView.beiShuLimit = 9999;
+    _beiSelectView.delegate = self;
     [self setMutableAttributedText];
     self .zhuArray = [NSMutableArray arrayWithCapacity:0];
     [self bounsYouhua];
@@ -119,21 +127,39 @@
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{
-    
-    if ([textField.text integerValue] < self.transcation.betCount * 2 ) {
-        textField.text = [NSString stringWithFormat:@"%ld",self.transcation.betCount * 2];
+   
+    if ([self.svInputMoney.labContent.text integerValue] < self.transcation.betCount * 2 ) {
+        self.svInputMoney.labContent.text = [NSString stringWithFormat:@"%ld",self.transcation.betCount * 2];
     }
     
-    if ([textField.text integerValue] %2 != 0) {
-         textField.text = [NSString stringWithFormat:@"%ld",[textField.text integerValue] + 1];
+    if ([self.beiSelectView.labContent.text integerValue] <=0) {
+        self.beiSelectView.labContent.text = @"1";
     }
-    if ([textField.text integerValue] > 300000) {
+    
+    if ([self.beiSelectView.labContent.text integerValue] > 9999) {
+        self.beiSelectView.labContent.text = @"9999";
+    }
+    
+    
+    
+    if ([self.svInputMoney.labContent.text integerValue] %2 != 0) {
+         self.svInputMoney.labContent.text = [NSString stringWithFormat:@"%ld",[textField.text integerValue] + 1];
+    }
+    if ([self.svInputMoney.labContent.text integerValue] * [self .svInputMoney.labContent.text integerValue] > 300000) {
         [self showPromptText:@"最大投注不能超过30万" hideAfterDelay:2 ];
           textField.text = @"300000";
     }
-    self.transcation.betCost = [textField.text integerValue];
-    [self.zhuArray removeAllObjects];
-    [self bounsYouhua];
+    
+    if (textField == self.svInputMoney.labContent) {
+        self.transcation.betCost = [textField.text integerValue];
+        [self.zhuArray removeAllObjects];
+        [self bounsYouhua];
+    }else{
+        self.transcation.outBeicount = [self.beiSelectView.labContent.text integerValue];
+        [self updateSummary];
+        [self.tabBounsList reloadData];
+    }
+    
 }
 
 -(void)actionSub{
@@ -158,6 +184,42 @@
     [self bounsYouhua];
 }
 
+-(void)actionSubBei{
+    NSInteger beiCount =[self.beiSelectView.labContent.text integerValue];
+    if ( beiCount> 1 ) {
+        beiCount --;
+    }
+    self.beiSelectView.labContent.text = [NSString stringWithFormat:@"%ld",(long)beiCount];
+    self.transcation.outBeicount = [ self.beiSelectView.labContent.text integerValue];
+    [self updateSummary];
+    [self.tabBounsList reloadData];
+}
+
+-(void)actionAddBei{
+    NSInteger  beiCount =[self.beiSelectView.labContent.text integerValue];
+    if ( beiCount < 9999) {
+        beiCount ++;
+    }
+    self.beiSelectView.labContent.text = [NSString stringWithFormat:@"%ld",(long)beiCount];
+    self.transcation.outBeicount = [ self.beiSelectView.labContent.text integerValue];
+    
+    [self updateSummary];
+    [self.tabBounsList reloadData];
+}
+
+-(void)update{
+    [self updateSummary];
+}
+
+-(void)updateSummary{
+    
+    self.labZhuInfo.text = [NSString stringWithFormat:@"%ld注，共%ld元",self.transcation.betCount,self.transcation.betCost * self.transcation.outBeicount];
+    if (self.transcation != nil) {
+        self.labZhuInfo.keyWord = [NSString stringWithFormat:@"%ld",self.transcation.betCost  * self.transcation.outBeicount];
+        self.labZhuInfo.keyWordColor = RGBCOLOR(255, 179, 108);
+    }
+}
+
 -(void)setTableView{
     self.tabBounsList.delegate = self;
     self.tabBounsList.dataSource = self;
@@ -176,6 +238,7 @@
     BounsYouViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KBounsYouViewCell];
     cell.delegate = self;
     [cell reloadModel:_zhuArray[indexPath.row]];
+
     cell.selectionStyle = 0;
     return cell;
 }
@@ -300,7 +363,7 @@
         }
         minBounsModel.multiple =  [NSString stringWithFormat:@"%ld",([minBounsModel.multiple integerValue] + 1)];
     }
-    self.labZhuInfo.text = [NSString stringWithFormat:@"%ld注，共%ld元",self.transcation.betCount,self.transcation.betCost];
+    self.labZhuInfo.text = [NSString stringWithFormat:@"%ld注，共%ld元",self.transcation.betCount,self.transcation.betCost * self.transcation.outBeicount];
     if (self.transcation != nil) {
         self.labZhuInfo.keyWord = [NSString stringWithFormat:@"%ld",self.transcation.betCost];
         self.labZhuInfo.keyWordColor = RGBCOLOR(255, 179, 108);
@@ -340,11 +403,11 @@
         return;
     }
 
-        if (self.transcation.betCost  > 300000) {
+        if (self.transcation.betCost * [self.beiSelectView.labContent.text integerValue] > 300000) {
             [self showPromptText:@"单笔总金额不能超过30万元" hideAfterDelay:1.7];
             return;
         }
-    if (self.transcation.betCost / 2 > 9999) {
+    if (self.transcation.betCost / 2  * [self.beiSelectView.labContent.text integerValue]> 9999) {
         [self showPromptText:@"投注倍数不能大于9999倍" hideAfterDelay:2];
         return;
     }
@@ -360,7 +423,7 @@
     self.transcation.secretType = SecretTypeFullOpen;
     if (self.fromSchemeType == SchemeTypeFaqiGenDan) {
         self.transcation.schemeType = SchemeTypeFaqiGenDan;
-        if (self.transcation.betCost < 10) {
+        if (self.transcation.betCost  * [self.beiSelectView.labContent.text integerValue]< 10) {
             [self showPromptText:@"发单金额不能小于10元" hideAfterDelay:1.9];
             return;
         }
@@ -368,6 +431,7 @@
         self.transcation.schemeType = SchemeTypeZigou;
     }
 
+    self.transcation.outBeicount = [self.beiSelectView.labContent.text integerValue];
     self.transcation.originalContent = [self.transcation lottDataScheme];
     NSMutableArray *betContent = [NSMutableArray arrayWithCapacity:0];
     for (BounsModelItem *item in _zhuArray) {
@@ -382,7 +446,7 @@
         [betContent  addObject:@{
                                  @"betMatches":matches,
                                  @"passTypes":@[chuanFaString],
-                                 @"multiple":item.multiple,
+                                 @"multiple":@([item.multiple integerValue]),
                                  @"units":@"1"
                                  }];
     }
@@ -396,6 +460,7 @@
     }
     PayOrderViewController *payVC = [[PayOrderViewController alloc]init];
     SchemeCashPayment *schemeCashModel = [[SchemeCashPayment alloc]init];
+    payVC.isYouhua = YES;
     schemeCashModel.cardCode = self.curUser.cardCode;
     schemeCashModel.lotteryName = @"竞彩足球";
     schemeCashModel.schemeNo = schemeNO;
@@ -408,8 +473,8 @@
         }
     [self hideLoadingView];
     payVC.schemetype = self.transcation.schemeType;
-    schemeCashModel.subscribed = self.transcation.betCost;
-    schemeCashModel.realSubscribed = self.transcation.betCost;
+    schemeCashModel.subscribed = self.transcation.betCost * self.transcation.outBeicount;
+    schemeCashModel.realSubscribed = self.transcation.betCost * self.transcation.outBeicount;
     payVC.cashPayMemt = schemeCashModel;
     [self.navigationController pushViewController:payVC animated:YES];
 }
@@ -422,7 +487,7 @@
     }
     self.svInputMoney.labContent.text = [NSString stringWithFormat:@"%ld",beiNum * 2];
     self.transcation.betCost = beiNum * 2;
-    self.labZhuInfo.text = [NSString stringWithFormat:@"%ld注，共%ld元",self.transcation.betCount,self.transcation.betCost];
+    self.labZhuInfo.text = [NSString stringWithFormat:@"%ld注，共%ld元",self.transcation.betCount,self.transcation.betCost * self.transcation.outBeicount];
     if (self.transcation != nil) {
         self.labZhuInfo.keyWord = [NSString stringWithFormat:@"%ld",self.transcation.betCost];
         self.labZhuInfo.keyWordColor = RGBCOLOR(255, 179, 108);
