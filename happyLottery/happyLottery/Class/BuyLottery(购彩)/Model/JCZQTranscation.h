@@ -17,7 +17,7 @@
 
 @property(assign,nonatomic)JCZQPlayType playType;
 @property(nonatomic,strong)JCZQProfile *curProfile;
-
+@property(nonatomic,assign)NSInteger outBeicount;
 @property(nonatomic,strong)NSString *chuanFa;
 @property(nonatomic,strong)NSString * beitou;
 

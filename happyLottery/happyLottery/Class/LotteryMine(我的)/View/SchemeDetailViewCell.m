@@ -58,14 +58,17 @@
     
     if ([model.costType isEqualToString:@"CASH"]) {
         labSchemeInfo.text = @"方案状态";
-
+        if([model.drawCount integerValue] == 0){
+            
+            kaijiangOrders.text = @"";
+        }else{
+            kaijiangOrders.text = [NSString stringWithFormat:@" 当前开奖订单%@/%@单",model.drawCount,model.ticketCount];
+        }
+        
         if ([model.ticketCount integerValue] == 0) {
             
              labTicketCount.text = @"";
              kaijiangOrders.text = @"";
-        }else if([model.drawCount integerValue] == 0){
-            
-            kaijiangOrders.text = @"";
         }else{
 
             if ([model.ticketFailRef doubleValue] > 0 && [model.printCount doubleValue]>0) {
@@ -75,7 +78,6 @@
             }else{
                  labTicketCount.text = [NSString stringWithFormat:@"出票%@/%@单",model.printCount,model.ticketCount];
             }
-            kaijiangOrders.text = [NSString stringWithFormat:@" 当前开奖订单%@/%@单",model.drawCount,model.ticketCount];
         }
         
     }else{
@@ -83,6 +85,8 @@
         labTicketCount.text = @"";
         kaijiangOrders.text = @"";
     }
+    
+    
     if (([model.lottery isEqualToString:@"JCZQ"] || [model.lottery isEqualToString:@"JCLQ"])&&([labSchemeState.text containsString:@"已中奖"]||[labSchemeState.text containsString:@"未中奖"])) {
         kaijiangOrders.hidden = NO;
         actionShuoming.hidden = NO;

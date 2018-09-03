@@ -128,7 +128,12 @@
                         betContent.isLast = NO;
                     }
                     betContent.isShow = YES;
-                    betContent.multiple = matchDic[@"multiple"];
+                    if ([schemeDetail.schemeSource isEqualToString:@"BONUS_OPTIMIZE"]) {
+                        betContent.multiple = [NSString stringWithFormat:@"%ld",[matchDic[@"multiple"] integerValue] * [schemeDetail.multiple integerValue]];
+                    }else{
+                        betContent.multiple = matchDic[@"multiple"];
+                    }
+                    
                     betContent.passTypes = matchDic[@"passTypes"];
                     itemIndex ++ ;
                 }else{

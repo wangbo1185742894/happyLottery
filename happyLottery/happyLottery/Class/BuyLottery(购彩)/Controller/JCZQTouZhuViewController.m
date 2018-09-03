@@ -29,6 +29,7 @@
     __weak IBOutlet UIButton *btnZhenShiTouzhu;
     __weak IBOutlet UIButton *chuanfaBtn;
 }
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *btnYouhuaWidth;
 @property (weak, nonatomic) IBOutlet UITableView *tabSelectedMatch;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *couHeight;
@@ -60,11 +61,13 @@
         costTypeSelectView.hidden = YES;
         self.widthTouzhu.constant = 0;
         fadanBtn.hidden = NO;
+        self.btnYouhuaWidth.constant = 0;
     }else{
         costTypeSelectView.hidden = NO;
         self.touzhuBtn.hidden = NO;
         self.widthTouzhu.constant = 60;
         fadanBtn.hidden = YES;
+        self.btnYouhuaWidth.constant = 72;
     }
     if ([self isIphoneX]) {
         self.viewDisTop.constant = 88;
