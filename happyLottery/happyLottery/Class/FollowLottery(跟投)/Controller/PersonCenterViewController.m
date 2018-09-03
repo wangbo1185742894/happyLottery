@@ -139,7 +139,12 @@
     if (model != nil) {
         _page = 1;
         NSDictionary *parc;
-        parc = @{@"nickName":model.cardCode,@"page":@(_page),@"pageSize":@(KpageSize),@"isHis":@YES};
+        if (self.curUser == nil || self.curUser.isLogin==NO) {
+         parc = @{@"nickName":model.cardCode,@"page":@(_page),@"pageSize":@(KpageSize),@"isHis":@YES};
+        }else {
+         parc = @{@"nickName":model.cardCode,@"selfCardCode":self.curUser.cardCode,@"page":@(_page),@"pageSize":@(KpageSize),@"isHis":@YES};
+        }
+        
         [self.lotteryMan getFollowSchemeByNickName:parc];
     }
     [self.personTabelView tableViewEndRefreshCurPageCount:0];
@@ -149,7 +154,11 @@
     if (model != nil) {
         _page ++;
         NSDictionary *parc;
-        parc = @{@"nickName":model.cardCode,@"page":@(_page),@"pageSize":@(KpageSize),@"isHis":@YES};
+        if (self.curUser == nil || self.curUser.isLogin==NO) {
+            parc = @{@"nickName":model.cardCode,@"page":@(_page),@"pageSize":@(KpageSize),@"isHis":@YES};
+        }else {
+            parc = @{@"nickName":model.cardCode,@"selfCardCode":self.curUser.cardCode,@"page":@(_page),@"pageSize":@(KpageSize),@"isHis":@YES};
+        }
         [self.lotteryMan getFollowSchemeByNickName:parc];
     }
 }

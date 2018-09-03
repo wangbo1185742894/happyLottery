@@ -1552,7 +1552,7 @@
                         failure:failureBlock];
 }
 
-- (void)getHotFollowScheme{
+- (void)getHotFollowScheme:(NSDictionary *)paraic{
     void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
     {
         SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
@@ -1569,7 +1569,7 @@
         [self.delegate getHotFollowScheme:nil errorMsg:@"请检查网络连接"];
     };
     
-    SOAPRequest* request = [self requestForAPI:APIGetHotFollowScheme withParam:nil];
+    SOAPRequest* request = [self requestForAPI:APIGetHotFollowScheme withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraic]]}];
     [self newRequestWithRequest:request
                          subAPI:SUBAPISchemeService
       constructingBodyWithBlock:nil

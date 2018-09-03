@@ -91,7 +91,7 @@
         return;
     }
     page ++;
-    NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"page":@(page),@"pageSize":@(KpageSize)};
+    NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"selfCardCode":self.curUser.cardCode,@"page":@(page),@"pageSize":@(KpageSize)};
     [self.lotteryMan getAttentFollowScheme:dic];
 }
 
@@ -137,7 +137,13 @@
 }
 
 -(void)getHotFollowScheme{
-    [self.lotteryMan getHotFollowScheme];
+    NSDictionary *parc;
+    if (self.curUser.isLogin == NO || self.curUser == nil) {
+        parc = nil;
+    }else {
+        parc = @{@"selfCardCode":self.curUser.cardCode};
+    }
+    [self.lotteryMan getHotFollowScheme:parc];
 }
 
 -(void)getHotFollowScheme:(NSArray *)personList errorMsg:(NSString *)msg{
@@ -424,7 +430,7 @@
     placeImageHidden = YES;
     [schemeList removeAllObjects];
     page = 1;
-    NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"page":@(page),@"pageSize":@(KpageSize)};
+    NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"selfCardCode":self.curUser.cardCode,@"page":@(page),@"pageSize":@(KpageSize)};
     [self.lotteryMan getAttentFollowScheme:dic];
 }
 

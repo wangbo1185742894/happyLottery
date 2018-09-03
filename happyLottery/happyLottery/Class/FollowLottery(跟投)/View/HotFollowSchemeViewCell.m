@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *labBetContent;
 @property (weak, nonatomic) IBOutlet UILabel *labPersonName;
 @property (weak, nonatomic) IBOutlet UIView *topPersonView;
+@property (weak, nonatomic) IBOutlet UIImageView *alreadyFollow;
 @property (nonatomic,copy) NSString *carcode;
 @end
 @implementation HotFollowSchemeViewCell
@@ -122,7 +123,7 @@
     self.labPersonHis.adjustsFontSizeToFitWidth = YES;
     if ([dateServer compare:dateCur] ==kCFCompareLessThan ||model.serverTime==nil) { //没过期 可以买
         self.btnFollowScheme.hidden = NO;
-        self.labBouns.hidden = YES;
+        self.labBouns.hidden = YES;  
         self.imgWinState.hidden = YES;
     }else{
         self.btnFollowScheme.hidden = YES;
@@ -209,7 +210,7 @@
             self.labPersonHis.hidden = YES;
         }
     }
-    
+    self.alreadyFollow.hidden = ![model.alreadyFollow boolValue];
 }
 
 @end

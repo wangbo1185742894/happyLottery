@@ -49,14 +49,25 @@
 //
     [self loadNewData];
 }
+
 -(void)loadNewData{
     self.page = 1;
-    NSDictionary *dic = @{@"agentId":self.agentId,@"page":@(_page),@"pageSize":@(KpageSize)};
+    NSDictionary *dic;
+    if (self.curUser == nil || self.curUser.isLogin==NO) {
+        dic = @{@"agentId":self.agentId,@"page":@(_page),@"pageSize":@(KpageSize)};
+    }else {
+        dic = @{@"agentId":self.agentId,@"selfCardCode":self.curUser.cardCode,@"page":@(_page),@"pageSize":@(KpageSize)};
+    }
     [self.agentMan listAgentFollow:dic];
 }
 -(void)loadMoreData{
     self.page ++;
-    NSDictionary *dic = @{@"agentId":self.agentId,@"page":@(_page),@"pageSize":@(KpageSize)};
+    NSDictionary *dic;
+    if (self.curUser == nil || self.curUser.isLogin==NO) {
+        dic = @{@"agentId":self.agentId,@"page":@(_page),@"pageSize":@(KpageSize)};
+    }else {
+        dic = @{@"agentId":self.agentId,@"selfCardCode":self.curUser.cardCode,@"page":@(_page),@"pageSize":@(KpageSize)};
+    }
     [self.agentMan listAgentFollow:dic];
 }
 - (void)didReceiveMemoryWarning {

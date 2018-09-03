@@ -148,7 +148,7 @@ typedef enum EarningsType{
 
 - (void)listGreatFollow:(NSDictionary *)infoDic;
 
-- (void)getHotFollowScheme;
+- (void)getHotFollowScheme:(NSDictionary *)paraic;
 - (void)getFollowSchemeByNickName:(NSDictionary *)paraic;
 - (void)followScheme:(NSDictionary *)paraic;
 
