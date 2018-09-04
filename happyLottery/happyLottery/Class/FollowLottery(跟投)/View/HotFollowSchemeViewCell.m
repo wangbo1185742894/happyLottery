@@ -75,6 +75,32 @@
     }
 }
 
+
+- (void)getTimesFromHours:(HotSchemeModel *)model {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *deadlines = [NSString stringWithFormat:@"%@ 23:59:59",[[model.deadLine componentsSeparatedByString:@" "] firstObject]];
+    NSDate *oldDate = [dateFormatter dateFromString:deadlines];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    // 比较时间
+    NSDateComponents *components = [calendar components:NSCalendarUnitDay fromDate:[NSDate date] toDate:oldDate options:0];
+    if (components.day == 0) {
+        //今日与昨日再加判断    24小时内 components.day == 0  对比日期是否相当
+        NSString *curDateD = [Utility timeStringFromFormat:@"dd" withDate:[NSDate date]];
+        NSString *matchDateD =[[[[model.deadLine componentsSeparatedByString:@" "] firstObject] componentsSeparatedByString:@"-"] lastObject];
+        NSInteger dayNum = [matchDateD integerValue] - [curDateD integerValue];
+        if (dayNum == 0) {
+            self.labDeadTime.text =[NSString stringWithFormat:@"今日%@",[model.deadLine substringWithRange:NSMakeRange(11, 5)]];
+        } else {
+            self.labDeadTime.text =[NSString stringWithFormat:@"%@", [model.deadLine substringWithRange:NSMakeRange(5, 11)]];
+        }
+    } else if (components.day == 1){
+        self.labDeadTime.text =[NSString stringWithFormat:@"明日%@",[model.deadLine substringWithRange:NSMakeRange(11, 5)]];
+    } else {
+        self.labDeadTime.text =[NSString stringWithFormat:@"%@", [model.deadLine substringWithRange:NSMakeRange(5, 11)]];
+    }
+}
+
 //个人中心
 -(void)loadDataWithModelInPC:(HotSchemeModel *)model {
     [self loadDataWithModel:model];
@@ -149,7 +175,7 @@
     self.btnFollowScheme.layer.masksToBounds = YES;
     self.btnFollowScheme.layer.borderWidth = 1;
     self.btnFollowScheme.layer.borderColor = SystemGreen.CGColor;
-    [self setMatchData:model];
+    [self getTimesFromHours:model];
     self.imgPersonHonor.hidden = YES;
     self.imgPersonHonor1.hidden = YES;
     self.imgPersonHonor2.hidden = YES;
