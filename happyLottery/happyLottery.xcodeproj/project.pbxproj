@@ -1636,6 +1636,8 @@
 		F9E53D7020EE28D70072B8AF /* help_mine@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9E53D4C20EE28D60072B8AF /* help_mine@3x.png */; };
 		F9F093B8213D053A00DCB26A /* gendanTag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F093B6213D053700DCB26A /* gendanTag@2x.png */; };
 		F9F093B9213D053A00DCB26A /* gendanTag@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F093B7213D053900DCB26A /* gendanTag@3x.png */; };
+		F9F093BC213E14C800DCB26A /* todayopen_lottery@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F093BA213E14C700DCB26A /* todayopen_lottery@2x.png */; };
+		F9F093BD213E14C800DCB26A /* todayopen_lottery@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F093BB213E14C700DCB26A /* todayopen_lottery@3x.png */; };
 		F9F2629C1FE8D7D000C2E60F /* closeperson@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F2629A1FE8D7D000C2E60F /* closeperson@2x.png */; };
 		F9F2629D1FE8D7D000C2E60F /* closeperson@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F2629B1FE8D7D000C2E60F /* closeperson@3x.png */; };
 		F9F262B01FE8F4AE00C2E60F /* CGGeometry+RSKImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F262A01FE8F4AE00C2E60F /* CGGeometry+RSKImageCropper.m */; };
@@ -3841,6 +3843,8 @@
 		F9E53D4C20EE28D60072B8AF /* help_mine@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "help_mine@3x.png"; sourceTree = "<group>"; };
 		F9F093B6213D053700DCB26A /* gendanTag@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gendanTag@2x.png"; sourceTree = "<group>"; };
 		F9F093B7213D053900DCB26A /* gendanTag@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gendanTag@3x.png"; sourceTree = "<group>"; };
+		F9F093BA213E14C700DCB26A /* todayopen_lottery@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "todayopen_lottery@2x.png"; sourceTree = "<group>"; };
+		F9F093BB213E14C700DCB26A /* todayopen_lottery@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "todayopen_lottery@3x.png"; sourceTree = "<group>"; };
 		F9F2629A1FE8D7D000C2E60F /* closeperson@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closeperson@2x.png"; sourceTree = "<group>"; };
 		F9F2629B1FE8D7D000C2E60F /* closeperson@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closeperson@3x.png"; sourceTree = "<group>"; };
 		F9F2629F1FE8F4AE00C2E60F /* CGGeometry+RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGGeometry+RSKImageCropper.h"; sourceTree = "<group>"; };
@@ -5049,6 +5053,8 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				F9F093BA213E14C700DCB26A /* todayopen_lottery@2x.png */,
+				F9F093BB213E14C700DCB26A /* todayopen_lottery@3x.png */,
 				F9F093B6213D053700DCB26A /* gendanTag@2x.png */,
 				F9F093B7213D053900DCB26A /* gendanTag@3x.png */,
 				2D4EE8E9211AF451000DF540 /* shareOrderimg@2x.png */,
@@ -7420,6 +7426,7 @@
 				2D92A8222010545D0038E165 /* btn_jinru@2x.png in Resources */,
 				2D05C86320A43631001A8953 /* third@3x.png in Resources */,
 				2D20601F1FFCB71E0086E266 /* icon_shijian@2x.png in Resources */,
+				F9F093BD213E14C800DCB26A /* todayopen_lottery@3x.png in Resources */,
 				F9BC6E1320C2B1390037998B /* pic_beijingjili@3x.png in Resources */,
 				2D03F2842060BAE800C81BEF /* ChangePayPWDViewController.xib in Resources */,
 				F97D0B4520B7A12A003D09C6 /* remengendan@2x.png in Resources */,
@@ -7443,6 +7450,7 @@
 				F91566021FFCCBEF00E254CE /* tilde@2x.png in Resources */,
 				2D517202200D86BD00C3CD7F /* history_icon_default_fangan@3x.png in Resources */,
 				F9CC9DE320CE225F009A9983 /* tuiguangtaoli@3x.png in Resources */,
+				F9F093BC213E14C800DCB26A /* todayopen_lottery@2x.png in Resources */,
 				2D4B1E871FDF684E0034B708 /* yuce@2x.png in Resources */,
 				2D0EEA9D201582C300B0769C /* yuce_detail_recom@2x.png in Resources */,
 				2D05C85620A43631001A8953 /* icon_niurenbang@2x.png in Resources */,

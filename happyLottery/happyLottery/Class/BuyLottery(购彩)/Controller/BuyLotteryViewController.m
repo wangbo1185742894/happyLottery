@@ -235,22 +235,43 @@ static NSString *ID = @"LotteryAreaViewCell";
     if (indexPath.row < self.sellLottery.count) {
         NSDictionary *itemDic = self.sellLottery[indexPath.row];
         cell.lotteryName.text = itemDic[@"lotteryName"];
-        if ([itemDic[@"lottery"] isEqualToString:@"JCZQDG"]) {
-            cell.isEable.hidden = [_lotteryList[@"JCZQ"] boolValue];
-        }else if ([itemDic[@"lottery"] isEqualToString:@"GYJ"]) {
-            if ( [_lotteryList[@"JCGJ"] boolValue] ==NO && [_lotteryList[@"JCGYJ"] boolValue] ==NO) {
-                cell.isEable .hidden= NO;
-            }else{
-                cell.isEable.hidden = YES;
+//        if ([itemDic[@"lottery"] isEqualToString:@"JCZQDG"]) {
+//            cell.isEable.hidden = [_lotteryList[@"JCZQ"] boolValue];
+//        }else if ([itemDic[@"lottery"] isEqualToString:@"GYJ"]) {
+//            if ( [_lotteryList[@"JCGJ"] boolValue] ==NO && [_lotteryList[@"JCGYJ"] boolValue] ==NO) {
+//                cell.isEable .hidden= NO;
+//            }else{
+//                cell.isEable.hidden = YES;
+//            }
+//        }else{
+//            cell.isEable.hidden = [_lotteryList[itemDic[@"lottery"]] boolValue];
+//        }
+        if ([itemDic[@"lottery"] isEqualToString:@"SSQ"]) { //双色球每周二，四，日 开奖
+            
+            NSString *weekStr = [Utility weekDayGetForTimeDate:[NSDate date]];
+            if ([weekStr isEqualToString:@"周二"] || [weekStr isEqualToString:@"周四"] ||[weekStr isEqualToString:@"周日"]) {
+                cell.todayOpenLottery.hidden = NO;
+            } else {
+                cell.todayOpenLottery.hidden = YES;
             }
-        }else{
-            cell.isEable.hidden = [_lotteryList[itemDic[@"lottery"]] boolValue];
+            
+        } else if ([itemDic[@"lottery"] isEqualToString:@"DLT"]){ //大乐透每周一、三、六 开奖
+            
+            NSString *weekStr = [Utility weekDayGetForTimeDate:[NSDate date]];
+            if ([weekStr isEqualToString:@"周一"] || [weekStr isEqualToString:@"周三"] ||[weekStr isEqualToString:@"周六"]) {
+                cell.todayOpenLottery.hidden = NO;
+            } else {
+                cell.todayOpenLottery.hidden = YES;
+            }
+            
+        } else {
+            cell.todayOpenLottery.hidden = YES;
         }
-        
         [cell.lotteryImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"icon_%@",itemDic[@"lotteryImageName"]]]];
     }else{
         cell.lotteryName .text= @"更多";
-        cell.isEable.hidden = YES;
+//        cell.isEable.hidden = YES;
+        cell.todayOpenLottery.hidden = YES;
         [cell.lotteryImageView setImage:[UIImage imageNamed:@"icon_gengduo"]];
     }
     return cell;
