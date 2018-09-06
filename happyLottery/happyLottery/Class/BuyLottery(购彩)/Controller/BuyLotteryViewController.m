@@ -392,7 +392,7 @@ static NSString *ID = @"LotteryAreaViewCell";
 
 -(void)loadAdsImg{
     adsArray = [NSMutableArray arrayWithCapacity:0];
-    NSString *strUlr = [NSString stringWithFormat:@"%@/app/banner/byChannel?usageChannel=3",[GlobalInstance instance].homeUrl];
+    NSString *strUlr = [NSString stringWithFormat:@"%@/app/banner/byChannelPost?usageChannel=3&appPost=0",[GlobalInstance instance].homeUrl];
     [singleLoad RequestWithString:strUlr isPost:NO andPara:nil andComplete:^(id data, BOOL isSuccess) {
         if (isSuccess == NO || data == nil) {
             return ;

@@ -502,7 +502,7 @@
 
 -(void)loadAdsImg{
     adsArray = [NSMutableArray arrayWithCapacity:0];
-    NSString *strUlr = [NSString stringWithFormat:@"%@/app/banner/byChannel?usageChannel=4",[GlobalInstance instance].homeUrl];
+    NSString *strUlr = [NSString stringWithFormat:@"%@/app/banner/byChannelPost?usageChannel=3&appPost=1",[GlobalInstance instance].homeUrl];
     [[LoadData singleLoadData] RequestWithString:strUlr isPost:NO andPara:nil andComplete:^(id data, BOOL isSuccess) {
         if (isSuccess == NO || data == nil) {
             return ;
