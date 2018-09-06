@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D0174CC2141010E00E2606B /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D0174CB2141010E00E2606B /* CoreText.framework */; };
+		2D0174CE2141011600E2606B /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D0174CD2141011600E2606B /* MobileCoreServices.framework */; };
+		2D0174D02141012200E2606B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D0174CF2141012200E2606B /* AVFoundation.framework */; };
+		2D0174D22141013700E2606B /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D0174D12141013700E2606B /* CoreMedia.framework */; };
+		2D0174D42141014200E2606B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D0174D32141014200E2606B /* AudioToolbox.framework */; };
+		2D0174D62141015100E2606B /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D0174D52141015100E2606B /* libstdc++.6.0.9.tbd */; };
+		2D0174D82141015A00E2606B /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D0174D72141015A00E2606B /* libsqlite3.0.tbd */; };
+		2D0174DA2141016200E2606B /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D0174D92141016200E2606B /* libxml2.tbd */; };
 		2D01750620CB8623005DEDC9 /* icon_jingzudanguan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D01750420CB8622005DEDC9 /* icon_jingzudanguan@3x.png */; };
 		2D01750720CB8623005DEDC9 /* icon_jingzudanguan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D01750520CB8623005DEDC9 /* icon_jingzudanguan@2x.png */; };
 		2D01750B20CB922C005DEDC9 /* ChongZhiRulePopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D01750920CB922B005DEDC9 /* ChongZhiRulePopView.m */; };
@@ -1726,6 +1734,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2D0174CB2141010E00E2606B /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		2D0174CD2141011600E2606B /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		2D0174CF2141012200E2606B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		2D0174D12141013700E2606B /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		2D0174D32141014200E2606B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		2D0174D52141015100E2606B /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
+		2D0174D72141015A00E2606B /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		2D0174D92141016200E2606B /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		2D01750420CB8622005DEDC9 /* icon_jingzudanguan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_jingzudanguan@3x.png"; sourceTree = "<group>"; };
 		2D01750520CB8623005DEDC9 /* icon_jingzudanguan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_jingzudanguan@2x.png"; sourceTree = "<group>"; };
 		2D01750820CB922B005DEDC9 /* ChongZhiRulePopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChongZhiRulePopView.h; sourceTree = "<group>"; };
@@ -3940,15 +3956,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DDE19AA20E35A4200ADD7D4 /* libc++.tbd in Frameworks */,
+				2D0174DA2141016200E2606B /* libxml2.tbd in Frameworks */,
+				2D0174D82141015A00E2606B /* libsqlite3.0.tbd in Frameworks */,
+				2D0174D62141015100E2606B /* libstdc++.6.0.9.tbd in Frameworks */,
 				F93AC80A1FFDC603003DF05C /* libz.tbd in Frameworks */,
+				2D0174D42141014200E2606B /* AudioToolbox.framework in Frameworks */,
+				2D0174D22141013700E2606B /* CoreMedia.framework in Frameworks */,
+				F9F91B61200EF7D50036DD2A /* CoreTelephony.framework in Frameworks */,
+				2D0174D02141012200E2606B /* AVFoundation.framework in Frameworks */,
+				F9F91B63200EF7DE0036DD2A /* SystemConfiguration.framework in Frameworks */,
+				2D0174CE2141011600E2606B /* MobileCoreServices.framework in Frameworks */,
+				2D0174CC2141010E00E2606B /* CoreText.framework in Frameworks */,
+				F9F91B69200EF8000036DD2A /* UIKit.framework in Frameworks */,
+				2DDE19AA20E35A4200ADD7D4 /* libc++.tbd in Frameworks */,
 				F9F91B71200EF83A0036DD2A /* libresolv.tbd in Frameworks */,
 				F9F91B6F200EF82B0036DD2A /* UserNotifications.framework in Frameworks */,
 				F9F91B6D200EF81C0036DD2A /* AdSupport.framework in Frameworks */,
 				F9418F4C2010991200454109 /* libWeiboSDK.a in Frameworks */,
 				2D7BFA6920DD3E27006173EC /* libPaymentControl.a in Frameworks */,
 				F9F91B6B200EF80A0036DD2A /* Security.framework in Frameworks */,
-				F9F91B69200EF8000036DD2A /* UIKit.framework in Frameworks */,
 				F9418F462010991200454109 /* ShareSDKConfigFile.framework in Frameworks */,
 				F9418F512010991200454109 /* ShareSDKConnector.framework in Frameworks */,
 				F9418F442010991200454109 /* ShareSDK.framework in Frameworks */,
@@ -3957,10 +3983,8 @@
 				F9418F432010991200454109 /* MOBFoundation.framework in Frameworks */,
 				F9F91B65200EF7E90036DD2A /* CoreGraphics.framework in Frameworks */,
 				F9418F492010991200454109 /* ShareSDKUI.framework in Frameworks */,
-				F9F91B63200EF7DE0036DD2A /* SystemConfiguration.framework in Frameworks */,
 				F9418F4A2010991200454109 /* SinaWeiboConnector.framework in Frameworks */,
 				F9418F4B2010991200454109 /* WechatConnector.framework in Frameworks */,
-				F9F91B61200EF7D50036DD2A /* CoreTelephony.framework in Frameworks */,
 				F9F91B5F200EF7BD0036DD2A /* CoreFoundation.framework in Frameworks */,
 				F9F91B5D200EF7B00036DD2A /* CFNetwork.framework in Frameworks */,
 				F9F91B59200EF4C20036DD2A /* jcore-ios-1.1.7.a in Frameworks */,
@@ -6426,6 +6450,14 @@
 		F93AC8061FFDC5F4003DF05C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2D0174D92141016200E2606B /* libxml2.tbd */,
+				2D0174D72141015A00E2606B /* libsqlite3.0.tbd */,
+				2D0174D52141015100E2606B /* libstdc++.6.0.9.tbd */,
+				2D0174D32141014200E2606B /* AudioToolbox.framework */,
+				2D0174D12141013700E2606B /* CoreMedia.framework */,
+				2D0174CF2141012200E2606B /* AVFoundation.framework */,
+				2D0174CD2141011600E2606B /* MobileCoreServices.framework */,
+				2D0174CB2141010E00E2606B /* CoreText.framework */,
 				2DDE19A920E35A4200ADD7D4 /* libc++.tbd */,
 				F9F91B70200EF83A0036DD2A /* libresolv.tbd */,
 				F9F91B6E200EF82A0036DD2A /* UserNotifications.framework */,
@@ -9147,6 +9179,7 @@
 					"$(PROJECT_DIR)/happyLottery/Libs/SHARESDK/ShareSDK/Support/PlatformSDK/WeChatSDK",
 					"$(PROJECT_DIR)/happyLottery/Libs/JPUSHLib",
 					"$(PROJECT_DIR)/happyLottery/Libs/paymentcontrol/libs",
+					"$(PROJECT_DIR)/happyLottery/Libs/QIYU_iOS_SDK_v4.2.1",
 				);
 				OTHER_LDFLAGS = (
 					"-force_load",
@@ -9193,6 +9226,7 @@
 					"$(PROJECT_DIR)/happyLottery/Libs/SHARESDK/ShareSDK/Support/PlatformSDK/WeChatSDK",
 					"$(PROJECT_DIR)/happyLottery/Libs/JPUSHLib",
 					"$(PROJECT_DIR)/happyLottery/Libs/paymentcontrol/libs",
+					"$(PROJECT_DIR)/happyLottery/Libs/QIYU_iOS_SDK_v4.2.1",
 				);
 				OTHER_LDFLAGS = (
 					"-force_load",
