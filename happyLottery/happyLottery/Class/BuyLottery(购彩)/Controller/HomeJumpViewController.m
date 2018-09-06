@@ -77,19 +77,25 @@
             if (self.curUser.cardCode != nil && self.isNeedBack == NO) {
                 linkUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@?cardCode=%@&isLogin=%@",slinkUrl,self.curUser.cardCode,self.curUser.isLogin == YES?@YES:@NO]];
             }else{
-                linkUrl = [NSURL URLWithString:_infoModel.linkUrl];
+                if (self.curUser.cardCode != nil) {
+                    linkUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@?cardCode=%@&isLogin=%@",slinkUrl,self.curUser.cardCode,@YES]];
+                }else{
+                    linkUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@?cardCode=%@&isLogin=%@",slinkUrl,@"",@NO]];
+                }
             }
         }else{
             if (self.curUser.cardCode != nil && self.isNeedBack == NO) {
                 linkUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@?cardCode=%@&isLogin=%@",slinkUrl,self.curUser.cardCode,self.curUser.isLogin == YES?@YES:@NO]];
             }else{
-                linkUrl = [NSURL URLWithString:_infoModel.linkUrl];
+                if (self.curUser.cardCode != nil) {
+                      linkUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@?cardCode=%@&isLogin=%@",slinkUrl,self.curUser.cardCode,@YES]];
+                }else{
+                    linkUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@?cardCode=%@&isLogin=%@",slinkUrl,@"",@NO]];
+                }
             }
         }
-
-        
     }else{
-        linkUrl = [NSURL URLWithString: [NSString stringWithFormat:@"%@?cardCode=%@&isLogin=%@",_infoModel.linkUrl,@"1",@NO]];
+        linkUrl = [NSURL URLWithString: [NSString stringWithFormat:@"%@?cardCode=%@&isLogin=%@",_infoModel.linkUrl,@"",@NO]];
     }
     UIWebView *webView;
     if (_isNeedBack) {
