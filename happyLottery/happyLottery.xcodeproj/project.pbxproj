@@ -1120,6 +1120,8 @@
 		F94770C4200706BC0091729E /* jingcaizuqiu_shengpingfu.html in Resources */ = {isa = PBXBuildFile; fileRef = F94770BE200706BC0091729E /* jingcaizuqiu_shengpingfu.html */; };
 		F94795B02062749300818A1F /* BaseTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = F94795AF2062749300818A1F /* BaseTransaction.m */; };
 		F94795B2206282A900818A1F /* BuyLotteryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F94795B1206282A900818A1F /* BuyLotteryViewController.xib */; };
+		F947DCF72140C37700F3BB98 /* gendanTag@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F947DCF52140C37600F3BB98 /* gendanTag@3x.png */; };
+		F947DCF82140C37700F3BB98 /* gendanTag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F947DCF62140C37600F3BB98 /* gendanTag@2x.png */; };
 		F94913471FFF642800D30AE7 /* ConversionCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F94913451FFF642800D30AE7 /* ConversionCodeViewController.m */; };
 		F94913481FFF642800D30AE7 /* ConversionCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F94913461FFF642800D30AE7 /* ConversionCodeViewController.xib */; };
 		F94A106C2022B715006C3695 /* checksuccess@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94A106A2022B715006C3695 /* checksuccess@3x.png */; };
@@ -1634,8 +1636,6 @@
 		F9E53D6E20EE28D70072B8AF /* cash_mine@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9E53D4A20EE28D50072B8AF /* cash_mine@3x.png */; };
 		F9E53D6F20EE28D70072B8AF /* tuijian_mine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9E53D4B20EE28D50072B8AF /* tuijian_mine@2x.png */; };
 		F9E53D7020EE28D70072B8AF /* help_mine@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9E53D4C20EE28D60072B8AF /* help_mine@3x.png */; };
-		F9F093B8213D053A00DCB26A /* gendanTag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F093B6213D053700DCB26A /* gendanTag@2x.png */; };
-		F9F093B9213D053A00DCB26A /* gendanTag@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F093B7213D053900DCB26A /* gendanTag@3x.png */; };
 		F9F093BC213E14C800DCB26A /* todayopen_lottery@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F093BA213E14C700DCB26A /* todayopen_lottery@2x.png */; };
 		F9F093BD213E14C800DCB26A /* todayopen_lottery@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F093BB213E14C700DCB26A /* todayopen_lottery@3x.png */; };
 		F9F2629C1FE8D7D000C2E60F /* closeperson@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F2629A1FE8D7D000C2E60F /* closeperson@2x.png */; };
@@ -3243,6 +3243,8 @@
 		F94795AE2062749300818A1F /* BaseTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTransaction.h; sourceTree = "<group>"; };
 		F94795AF2062749300818A1F /* BaseTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTransaction.m; sourceTree = "<group>"; };
 		F94795B1206282A900818A1F /* BuyLotteryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuyLotteryViewController.xib; sourceTree = "<group>"; };
+		F947DCF52140C37600F3BB98 /* gendanTag@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gendanTag@3x.png"; sourceTree = "<group>"; };
+		F947DCF62140C37600F3BB98 /* gendanTag@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gendanTag@2x.png"; sourceTree = "<group>"; };
 		F94913441FFF642800D30AE7 /* ConversionCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConversionCodeViewController.h; sourceTree = "<group>"; };
 		F94913451FFF642800D30AE7 /* ConversionCodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConversionCodeViewController.m; sourceTree = "<group>"; };
 		F94913461FFF642800D30AE7 /* ConversionCodeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConversionCodeViewController.xib; sourceTree = "<group>"; };
@@ -3841,8 +3843,6 @@
 		F9E53D4A20EE28D50072B8AF /* cash_mine@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cash_mine@3x.png"; sourceTree = "<group>"; };
 		F9E53D4B20EE28D50072B8AF /* tuijian_mine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tuijian_mine@2x.png"; sourceTree = "<group>"; };
 		F9E53D4C20EE28D60072B8AF /* help_mine@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "help_mine@3x.png"; sourceTree = "<group>"; };
-		F9F093B6213D053700DCB26A /* gendanTag@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gendanTag@2x.png"; sourceTree = "<group>"; };
-		F9F093B7213D053900DCB26A /* gendanTag@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gendanTag@3x.png"; sourceTree = "<group>"; };
 		F9F093BA213E14C700DCB26A /* todayopen_lottery@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "todayopen_lottery@2x.png"; sourceTree = "<group>"; };
 		F9F093BB213E14C700DCB26A /* todayopen_lottery@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "todayopen_lottery@3x.png"; sourceTree = "<group>"; };
 		F9F2629A1FE8D7D000C2E60F /* closeperson@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closeperson@2x.png"; sourceTree = "<group>"; };
@@ -5053,10 +5053,10 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				F947DCF62140C37600F3BB98 /* gendanTag@2x.png */,
+				F947DCF52140C37600F3BB98 /* gendanTag@3x.png */,
 				F9F093BA213E14C700DCB26A /* todayopen_lottery@2x.png */,
 				F9F093BB213E14C700DCB26A /* todayopen_lottery@3x.png */,
-				F9F093B6213D053700DCB26A /* gendanTag@2x.png */,
-				F9F093B7213D053900DCB26A /* gendanTag@3x.png */,
 				2D4EE8E9211AF451000DF540 /* shareOrderimg@2x.png */,
 				2D4EE8E8211AF451000DF540 /* shareOrderimg@3x.png */,
 				F97EE4EE211AE4B400EFCF08 /* genDanSuo@2x.png */,
@@ -7275,6 +7275,7 @@
 				F9B5D9AC2060A9DE00C9F6DC /* flag773@3x.png in Resources */,
 				2D5171CF200C567D00C3CD7F /* WonSchemeListController.xib in Resources */,
 				2D739CE71FEB462B00264044 /* danguan@2x.png in Resources */,
+				F947DCF72140C37700F3BB98 /* gendanTag@3x.png in Resources */,
 				F922FD2720AD6979000BA6F1 /* what@3x.png in Resources */,
 				2DA39EDA20523AAB00A03FD1 /* ZHTableViewCell.xib in Resources */,
 				2D628B3F1FECAA9A0013D0E1 /* fengkuangjingcai-monitouzhu-xuanze@3x.png in Resources */,
@@ -7632,6 +7633,7 @@
 				F90058E81FF61619009C8E1C /* noticeempty@2x.png in Resources */,
 				2D05C84E20A43631001A8953 /* second@3x.png in Resources */,
 				2D51720A200D9E7600C3CD7F /* buddha@3x.png in Resources */,
+				F947DCF82140C37700F3BB98 /* gendanTag@2x.png in Resources */,
 				F92855D320A2DFD20023A0AC /* SchemeInfoFollowCell.xib in Resources */,
 				2D7B1377204E63EF0035AE89 /* dltcheckbox@2x.png in Resources */,
 				2D7B137A204E6AEF0035AE89 /* BetPlayStyleCode.plist in Resources */,
@@ -7831,7 +7833,6 @@
 				2D01751420CB9D9D005DEDC9 /* redpacketruleback@3x.png in Resources */,
 				2D7B1418204FC7CD0035AE89 /* timebackimage@3x.png in Resources */,
 				F9418F452010991200454109 /* ShareSDKConfigFile.bundle in Resources */,
-				F9F093B9213D053A00DCB26A /* gendanTag@3x.png in Resources */,
 				F9632F4F200C8C9800F69D23 /* arrowup@2x.png in Resources */,
 				F90D68D720EF65D0007865E4 /* deletehelp@2x.png in Resources */,
 				F9E53D5E20EE28D70072B8AF /* help_mine@2x.png in Resources */,
@@ -7840,7 +7841,6 @@
 				2D811A95207DDA610069601C /* jingcailanqiu_daxiaofen.html in Resources */,
 				2D7BFACC20E0A0CF006173EC /* news@3x.png in Resources */,
 				F9CD01FF2024456500E54E79 /* annotation@3x.png in Resources */,
-				F9F093B8213D053A00DCB26A /* gendanTag@2x.png in Resources */,
 				F9705E4E207A0DE800E25E4E /* JCLQRFSFCell.xib in Resources */,
 				2D36E1F220E49C4B0001390A /* TopUpsViewController.xib in Resources */,
 				2D0E239E20181C790098DA40 /* checkBox_default@3x.png in Resources */,
