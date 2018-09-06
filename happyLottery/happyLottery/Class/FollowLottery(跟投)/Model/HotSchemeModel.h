@@ -79,6 +79,10 @@
 
 @property(nonatomic,copy)NSString * schemeSource;
 
+/** 是否已经跟单 */
+@property(nonatomic,copy)NSString * alreadyFollow;
+
+
 -(NSString *)lotteryIcon;
 
 -(NSString *)getContent;

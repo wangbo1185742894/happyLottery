@@ -40,6 +40,13 @@
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="todayopen_lottery.png" translatesAutoresizingMaskIntoConstraints="NO" id="ivk-Y4-fBP">
+                        <rect key="frame" x="82.5" y="1" width="22.5" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="22.5" id="TKd-PW-dGa"/>
+                            <constraint firstAttribute="height" constant="22" id="fYc-DH-fQZ"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
             </view>
             <constraints>
@@ -48,18 +55,24 @@
                 <constraint firstItem="GF3-MY-u1k" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="13" id="ciI-vb-vaP"/>
                 <constraint firstItem="GF3-MY-u1k" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="czT-aY-3vM"/>
                 <constraint firstAttribute="trailing" secondItem="WIm-aU-XX7" secondAttribute="trailing" id="fZn-7d-igk"/>
+                <constraint firstItem="GF3-MY-u1k" firstAttribute="top" secondItem="ivk-Y4-fBP" secondAttribute="bottom" constant="-10" id="hb7-s3-rHE"/>
                 <constraint firstAttribute="trailing" secondItem="v3Z-Gr-m08" secondAttribute="trailing" constant="11" id="jIO-Y9-Rc8"/>
                 <constraint firstItem="WIm-aU-XX7" firstAttribute="top" secondItem="v3Z-Gr-m08" secondAttribute="bottom" constant="3" id="jea-Dr-RS0"/>
                 <constraint firstAttribute="bottom" secondItem="WIm-aU-XX7" secondAttribute="bottom" constant="8" id="lhA-xq-8A8"/>
                 <constraint firstItem="WIm-aU-XX7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="yJi-7I-VBL"/>
+                <constraint firstItem="ivk-Y4-fBP" firstAttribute="leading" secondItem="GF3-MY-u1k" secondAttribute="trailing" constant="-10" id="zYX-Ps-Psq"/>
             </constraints>
             <size key="customSize" width="162" height="115"/>
             <connections>
                 <outlet property="lotteryImageView" destination="GF3-MY-u1k" id="eFv-bE-nUg"/>
                 <outlet property="lotteryIntroduce" destination="WIm-aU-XX7" id="KaO-hi-16S"/>
                 <outlet property="lotteryName" destination="v3Z-Gr-m08" id="3q4-Iy-NJu"/>
+                <outlet property="todayOpenLottery" destination="ivk-Y4-fBP" id="W9b-L9-xnW"/>
             </connections>
             <point key="canvasLocation" x="56.5" y="59.5"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="todayopen_lottery.png" width="22" height="22"/>
+    </resources>
 </document>

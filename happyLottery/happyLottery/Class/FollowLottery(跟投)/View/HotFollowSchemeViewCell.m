@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *labBetContent;
 @property (weak, nonatomic) IBOutlet UILabel *labPersonName;
 @property (weak, nonatomic) IBOutlet UIView *topPersonView;
+@property (weak, nonatomic) IBOutlet UIImageView *alreadyFollow;
 @property (nonatomic,copy) NSString *carcode;
 @end
 @implementation HotFollowSchemeViewCell
@@ -70,6 +71,32 @@
             self.labDeadTime.text =[NSString stringWithFormat:@"%@", [model.deadLine substringWithRange:NSMakeRange(5, 11)]];
         }
     }else{
+        self.labDeadTime.text =[NSString stringWithFormat:@"%@", [model.deadLine substringWithRange:NSMakeRange(5, 11)]];
+    }
+}
+
+
+- (void)getTimesFromHours:(HotSchemeModel *)model {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *deadlines = [NSString stringWithFormat:@"%@ 23:59:59",[[model.deadLine componentsSeparatedByString:@" "] firstObject]];
+    NSDate *oldDate = [dateFormatter dateFromString:deadlines];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    // 比较时间
+    NSDateComponents *components = [calendar components:NSCalendarUnitDay fromDate:[NSDate date] toDate:oldDate options:0];
+    if (components.day == 0) {
+        //今日与昨日再加判断    24小时内 components.day == 0  对比日期是否相当
+        NSString *curDateD = [Utility timeStringFromFormat:@"dd" withDate:[NSDate date]];
+        NSString *matchDateD =[[[[model.deadLine componentsSeparatedByString:@" "] firstObject] componentsSeparatedByString:@"-"] lastObject];
+        NSInteger dayNum = [matchDateD integerValue] - [curDateD integerValue];
+        if (dayNum == 0) {
+            self.labDeadTime.text =[NSString stringWithFormat:@"今日%@",[model.deadLine substringWithRange:NSMakeRange(11, 5)]];
+        } else {
+            self.labDeadTime.text =[NSString stringWithFormat:@"%@", [model.deadLine substringWithRange:NSMakeRange(5, 11)]];
+        }
+    } else if (components.day == 1){
+        self.labDeadTime.text =[NSString stringWithFormat:@"明日%@",[model.deadLine substringWithRange:NSMakeRange(11, 5)]];
+    } else {
         self.labDeadTime.text =[NSString stringWithFormat:@"%@", [model.deadLine substringWithRange:NSMakeRange(5, 11)]];
     }
 }
@@ -122,7 +149,7 @@
     self.labPersonHis.adjustsFontSizeToFitWidth = YES;
     if ([dateServer compare:dateCur] ==kCFCompareLessThan ||model.serverTime==nil) { //没过期 可以买
         self.btnFollowScheme.hidden = NO;
-        self.labBouns.hidden = YES;
+        self.labBouns.hidden = YES;  
         self.imgWinState.hidden = YES;
     }else{
         self.btnFollowScheme.hidden = YES;
@@ -148,7 +175,7 @@
     self.btnFollowScheme.layer.masksToBounds = YES;
     self.btnFollowScheme.layer.borderWidth = 1;
     self.btnFollowScheme.layer.borderColor = SystemGreen.CGColor;
-    [self setMatchData:model];
+    [self getTimesFromHours:model];
     self.imgPersonHonor.hidden = YES;
     self.imgPersonHonor1.hidden = YES;
     self.imgPersonHonor2.hidden = YES;
@@ -209,7 +236,7 @@
             self.labPersonHis.hidden = YES;
         }
     }
-    
+    self.alreadyFollow.hidden = ![model.alreadyFollow boolValue];
 }
 
 @end

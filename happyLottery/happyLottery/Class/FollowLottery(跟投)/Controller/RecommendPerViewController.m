@@ -148,15 +148,13 @@
     jinLabel.text = @"近15日";
     jinLabel.textColor = [UIColor whiteColor];
     jinLabel.backgroundColor = [UIColor clearColor];
-    
+    [image addSubview:jinLabel];
     if ([self.categoryCode isEqualToString:@"Cowman"]) {
         imageName = @"pic_niurenbangbeijing.png";
     } else if ([self.categoryCode isEqualToString:@"Redman"]){
         imageName = @"pic_hongrenbangbeijing.png";
-        [image addSubview:jinLabel];
     }else {
         imageName = @"pic_hongdanbangbeijing.png";
-        [image addSubview:jinLabel];
     }
     UIButton *returnToRoot = [self creatBar:@"" icon:@"newBack" andFrame:CGRectMake(10,30, 44,25) andAction:@selector(returnToRootView)];
     returnToRoot.contentMode = UIViewContentModeScaleAspectFit;

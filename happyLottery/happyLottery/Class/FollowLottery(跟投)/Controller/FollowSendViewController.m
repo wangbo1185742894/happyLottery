@@ -91,7 +91,7 @@
         return;
     }
     page ++;
-    NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"page":@(page),@"pageSize":@(KpageSize)};
+    NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"selfCardCode":self.curUser.cardCode,@"page":@(page),@"pageSize":@(KpageSize)};
     [self.lotteryMan getAttentFollowScheme:dic];
 }
 
@@ -137,7 +137,13 @@
 }
 
 -(void)getHotFollowScheme{
-    [self.lotteryMan getHotFollowScheme];
+    NSDictionary *parc;
+    if (self.curUser.isLogin == NO || self.curUser == nil) {
+        parc = nil;
+    }else {
+        parc = @{@"selfCardCode":self.curUser.cardCode};
+    }
+    [self.lotteryMan getHotFollowScheme:parc];
 }
 
 -(void)getHotFollowScheme:(NSArray *)personList errorMsg:(NSString *)msg{
@@ -424,7 +430,7 @@
     placeImageHidden = YES;
     [schemeList removeAllObjects];
     page = 1;
-    NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"page":@(page),@"pageSize":@(KpageSize)};
+    NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"selfCardCode":self.curUser.cardCode,@"page":@(page),@"pageSize":@(KpageSize)};
     [self.lotteryMan getAttentFollowScheme:dic];
 }
 
@@ -496,7 +502,7 @@
 
 -(void)loadAdsImg{
     adsArray = [NSMutableArray arrayWithCapacity:0];
-    NSString *strUlr = [NSString stringWithFormat:@"%@/app/banner/byChannel?usageChannel=4",[GlobalInstance instance].homeUrl];
+    NSString *strUlr = [NSString stringWithFormat:@"%@/app/banner/byChannelPost?usageChannel=3&appPost=1",[GlobalInstance instance].homeUrl];
     [[LoadData singleLoadData] RequestWithString:strUlr isPost:NO andPara:nil andComplete:^(id data, BOOL isSuccess) {
         if (isSuccess == NO || data == nil) {
             return ;

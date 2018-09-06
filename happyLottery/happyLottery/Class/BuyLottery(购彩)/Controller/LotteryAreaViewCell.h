@@ -17,4 +17,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *lotteryIntroduce;
 
+@property (weak, nonatomic) IBOutlet UIImageView *todayOpenLottery;
+
 @end
