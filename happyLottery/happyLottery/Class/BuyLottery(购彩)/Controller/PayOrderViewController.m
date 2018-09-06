@@ -8,6 +8,7 @@
 
 #import "PayOrderViewController.h"
 #import "PaySuccessViewController.h"
+#import "WXApi.h"
 #import "ChannelModel.h"
 #import "JCZQSchemeModel.h"
 #import "WBInputPopView.h"
@@ -128,7 +129,9 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
+    if ([itemModel.channel isEqualToString:@"UNION"]) {
+        [self checkSchemePayState:nil];
+    }
     [self showCoupon];
 }
 
@@ -481,7 +484,7 @@
     for (NSInteger i =0  ; i < infoArray.count ; i ++) {
         NSDictionary *itemDic = infoArray[i];
         ChannelModel *model = [[ChannelModel alloc]initWith:itemDic];
-        if ([model.channelValue boolValue] == YES) {
+        if ([model.channelValue boolValue] == YES || [model.channelValue isEqualToString:@"open"]) {
             [channelList addObject:model];
         }
     }
@@ -498,14 +501,25 @@
 }
 
 -(void)rechargeSmsIsSuccess:(BOOL)success andPayInfo:(NSDictionary *)payInfo errorMsg:(NSString *)msg{
-    
+    [self hideLoadingView];
     if (success) {
         if ([itemModel.channel isEqualToString:@"SDALI"]) {
             [self.payWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:payInfo[@"qrCode"]]]];
         }else if ([itemModel.channel isEqualToString:@"WFTWX"] || [itemModel.channel isEqualToString:@"WFTWX_HC"]){
             [self.payWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:payInfo[@"payInfo"]]]];
-        }else if ([itemModel.channel isEqualToString:@""]){
-            [self actionYinLianChongZhi:payInfo[@"payInfo"]];
+        }else if ([itemModel.channel isEqualToString:@"UNION"]){
+            [self actionYinLianChongZhi:payInfo[@"tn"]];
+        }else if ([itemModel.channel isEqualToString:@"YUN_WX_XCX"]) {
+//            orderNO =payInfo[@"orderNo"];
+            NSDictionary * itemDic = [Utility objFromJson:payInfo[@"payInfo"]];
+            NSString *original_id = itemDic[@"original_id"];
+            NSString *app_id = itemDic[@"app_id"];
+            NSString *prepay_id = itemDic[@"prepay_id"];
+            if (original_id == nil || app_id == nil || prepay_id == nil) {
+                [self showPromptText:@"充值失败" hideAfterDelay:2];
+                return;
+            }
+            [self sendReqAppId:app_id prepayId:prepay_id orginalId:original_id];
         }
         
     }else{
@@ -605,6 +619,17 @@
     webShow.pageUrl = pathUrl;
     webShow.title = @"用户服务协议";
     [self.navigationController pushViewController:webShow animated:YES];
+}
+
+-(void)sendReqAppId:(NSString *)appId prepayId:(NSString*)prepayId orginalId:(NSString *)orginalId
+{
+    NSString *path=  [NSString stringWithFormat:@"pages/index/index?appId=%@&prepayId=%@",appId,prepayId];
+    //"pages/index/index"+"?appId=" + appId +"&prepayId="+prepayId;
+    WXLaunchMiniProgramReq *launchMiniProgramReq = [WXLaunchMiniProgramReq object];
+    launchMiniProgramReq.userName = orginalId;
+    launchMiniProgramReq.path = path;
+    launchMiniProgramReq.miniProgramType = 0; //正式版
+    [WXApi sendReq:launchMiniProgramReq]; //拉起微信支付
 }
 
 

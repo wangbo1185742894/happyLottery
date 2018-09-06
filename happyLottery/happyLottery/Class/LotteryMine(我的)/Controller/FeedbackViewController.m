@@ -366,5 +366,9 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)actionLianxiKefu:(id)sender {
+    
+    
+}
 
 @end

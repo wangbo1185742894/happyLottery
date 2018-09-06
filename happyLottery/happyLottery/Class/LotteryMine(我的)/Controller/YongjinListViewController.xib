@@ -30,7 +30,7 @@
                     <rect key="frame" x="0.0" y="64" width="375" height="70"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="总销量(元)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z4i-PS-0rb">
-                            <rect key="frame" x="49" y="8" width="100" height="15"/>
+                            <rect key="frame" x="30" y="8" width="100" height="15"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="100" id="V6k-eB-hCL"/>
                                 <constraint firstAttribute="height" constant="15" id="aCG-H4-Luc"/>
@@ -40,11 +40,8 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P20-fa-MAD">
-                            <rect key="frame" x="49" y="28" width="150" height="37"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="150" id="LhV-JL-OwD"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                            <rect key="frame" x="30" y="28" width="224" height="37"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -63,7 +60,8 @@
                         <constraint firstItem="Z4i-PS-0rb" firstAttribute="top" secondItem="4s4-E9-fa7" secondAttribute="top" constant="8" id="Eaz-Kg-ilQ"/>
                         <constraint firstAttribute="bottom" secondItem="P20-fa-MAD" secondAttribute="bottom" constant="5" id="Inz-H0-SJ6"/>
                         <constraint firstAttribute="height" constant="70" id="Y4l-6g-L78"/>
-                        <constraint firstItem="Z4i-PS-0rb" firstAttribute="leading" secondItem="4s4-E9-fa7" secondAttribute="leading" constant="49" id="lJF-br-It3"/>
+                        <constraint firstItem="Z4i-PS-0rb" firstAttribute="leading" secondItem="4s4-E9-fa7" secondAttribute="leading" constant="30" id="lJF-br-It3"/>
+                        <constraint firstItem="M7Y-y7-gWo" firstAttribute="leading" secondItem="P20-fa-MAD" secondAttribute="trailing" constant="5" id="uTT-z9-TAc"/>
                         <constraint firstItem="M7Y-y7-gWo" firstAttribute="top" secondItem="4s4-E9-fa7" secondAttribute="top" constant="9" id="wot-3n-jvP"/>
                         <constraint firstItem="P20-fa-MAD" firstAttribute="leading" secondItem="Z4i-PS-0rb" secondAttribute="leading" id="zFv-UR-c1k"/>
                     </constraints>
@@ -79,7 +77,7 @@
                 <constraint firstAttribute="trailing" secondItem="3r0-VI-fzL" secondAttribute="trailing" id="hjX-sS-eRu"/>
                 <constraint firstAttribute="trailing" secondItem="4s4-E9-fa7" secondAttribute="trailing" id="oV2-G0-Nr3"/>
             </constraints>
-            <point key="canvasLocation" x="33.5" y="53.5"/>
+            <point key="canvasLocation" x="34" y="-64"/>
         </view>
     </objects>
     <resources>

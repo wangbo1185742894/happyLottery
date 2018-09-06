@@ -52,6 +52,8 @@
             self.infoModel.linkUrl = [NSString stringWithFormat:@"%@/app/find/turntable?activityId=5&cardCode=%@",H5BaseAddress,[GlobalInstance instance].curUser.cardCode];
             [self showWeb];
         }
+    }else{
+        [self showWeb];
     }
     
 }
@@ -73,21 +75,27 @@
        NSString * slinkUrl = _infoModel.linkUrl;
         if ([slinkUrl rangeOfString:@"app/activity/index"].length > 0) {
             if (self.curUser.cardCode != nil && self.isNeedBack == NO) {
-                linkUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@?cardCode=%@&isLogin=%@",slinkUrl,self.curUser.cardCode,self.curUser.isLogin == YES?@"true":@"false"]];
+                linkUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@?cardCode=%@&isLogin=%@",slinkUrl,self.curUser.cardCode,self.curUser.isLogin == YES?@YES:@NO]];
             }else{
-                linkUrl = [NSURL URLWithString:_infoModel.linkUrl];
+                if (self.curUser.cardCode != nil) {
+                    linkUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@?cardCode=%@&isLogin=%@",slinkUrl,self.curUser.cardCode,@YES]];
+                }else{
+                    linkUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@?cardCode=%@&isLogin=%@",slinkUrl,@"",@NO]];
+                }
             }
         }else{
             if (self.curUser.cardCode != nil && self.isNeedBack == NO) {
-                linkUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@?cardCode=%@",slinkUrl,self.curUser.cardCode]];
+                linkUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@?cardCode=%@&isLogin=%@",slinkUrl,self.curUser.cardCode,self.curUser.isLogin == YES?@YES:@NO]];
             }else{
-                linkUrl = [NSURL URLWithString:_infoModel.linkUrl];
+                if (self.curUser.cardCode != nil) {
+                      linkUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@?cardCode=%@&isLogin=%@",slinkUrl,self.curUser.cardCode,@YES]];
+                }else{
+                    linkUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@?cardCode=%@&isLogin=%@",slinkUrl,@"",@NO]];
+                }
             }
         }
-
-        
     }else{
-        linkUrl = [NSURL URLWithString:_infoModel.linkUrl];
+        linkUrl = [NSURL URLWithString: [NSString stringWithFormat:@"%@?cardCode=%@&isLogin=%@",_infoModel.linkUrl,@"",@NO]];
     }
     UIWebView *webView;
     if (_isNeedBack) {

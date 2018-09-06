@@ -24,6 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.labTotal.adjustsFontSizeToFitWidth = YES;
     self.topDis.constant = NaviHeight;
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.title = @"收入明细";
