@@ -242,16 +242,17 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.section == 0){
+        cell = [tableView dequeueReusableCellWithIdentifier:KHomeTabTopAdsViewCell];
+        cell.delegate = self;
+        cell.backgroundColor = RGBCOLOR(18, 199, 146);
+        [cell loadData:adsArray];
+        return  cell;
+    }else if(indexPath.section == 1){
         RecommendViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KRecommendViewCell];
         cell.delegate = self;
         [cell setCollection:0 andData:topMenuList];
         return cell;
-    }else   if(indexPath.section == 1){
-        cell = [tableView dequeueReusableCellWithIdentifier:KHomeTabTopAdsViewCell];
-        cell.delegate = self;
-        [cell loadData:adsArray];
-        return  cell;
-    }else   if(indexPath.section == 2){
+    }else if(indexPath.section == 2){
         RecommendViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KRecommendViewCell];
         cell.delegate = self;
         [cell setCollection:2 andData:eightList];
@@ -275,9 +276,10 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.section == 0){
-        return 85;
+        return 84;
     }else   if(indexPath.section == 1){
-        return  80;
+        return 85;
+        
     }else   if(indexPath.section == 2){
         if (eightList.count == 0) {
             return 0;
@@ -313,8 +315,10 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if(section == 3){
         return 40;
-    }if (section == 1||section == 2) {
+    }if (section == 0||section == 1) {
         return 0.01;
+    }if (section == 2) {
+        return 10;
     }
     else{
         return 1;
