@@ -1,20 +1,16 @@
 PODS:
-  - QIYU_iOS_SDK (4.2.1)
   - WechatOpenSDK (1.8.2)
 
 DEPENDENCIES:
-  - QIYU_iOS_SDK (~> 4.2.1)
   - WechatOpenSDK
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - QIYU_iOS_SDK
     - WechatOpenSDK
 
 SPEC CHECKSUMS:
-  QIYU_iOS_SDK: 9dc5cb1dee3abdccca56cc282ecbfc841e366680
   WechatOpenSDK: 676feec516a11173eafd1fe64b10d27babf28701
 
-PODFILE CHECKSUM: 0439f3932b5181479905e52f68aad535fded18d0
+PODFILE CHECKSUM: c61b8dc0abf55f51e482816c74823abc31e08ebf
 
 COCOAPODS: 1.5.3

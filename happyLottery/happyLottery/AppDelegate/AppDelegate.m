@@ -67,6 +67,7 @@
 #import "HomeJumpViewController.h"
 #import "AgentManager.h"
 #import "FollowSendViewController.h"
+#import "QYSDK.h"
 
 @interface AppDelegate ()<NewFeatureViewDelegate,MemberManagerDelegate,JPUSHRegisterDelegate,VersionUpdatingPopViewDelegate,NetWorkingHelperDelegate,UITabBarControllerDelegate,AgentManagerDelegate,LotteryManagerDelegate>
 
@@ -112,6 +113,8 @@ static SystemSoundID shake_sound_male_id = 0;
 //    }else{
 //        imgv.image = [UIImage imageNamed:@"launchImage"];
 //    }
+    
+    [[QYSDK sharedSDK] registerAppId:@"1750ba8866ce4ff7252e04b31823a672" appName:@"投必中"];
     lotteryMan = [[LotteryManager alloc]init];
     lotteryMan.delegate = self;
     
@@ -561,6 +564,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
     /// Required - 注册 DeviceToken
     [JPUSHService registerDeviceToken:deviceToken];
+    
+    [[QYSDK sharedSDK] updateApnsToken:deviceToken];
 }
 
 //实现注册APNs失败接口（可选）
