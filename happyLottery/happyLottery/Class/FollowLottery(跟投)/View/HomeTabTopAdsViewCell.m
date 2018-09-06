@@ -20,7 +20,7 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         if (adsView == nil) {
             
-            adsView = [[WBAdsImgView alloc]initWithFrame:CGRectMake(2,2,KscreenWidth-4, 80)];
+            adsView = [[WBAdsImgView alloc]initWithFrame:CGRectMake(0,5,KscreenWidth, 102-4)];
             adsView.contentMode = UIViewContentModeScaleAspectFit;
             adsView.delegate = self;
             [self addSubview:adsView];

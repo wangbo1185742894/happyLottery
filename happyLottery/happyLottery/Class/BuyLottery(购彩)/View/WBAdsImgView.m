@@ -30,14 +30,14 @@
         timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(autoScrImg) userInfo:nil repeats:YES];
         index = 0;
         _imgUrls = nil;
-        pageCtl = [[UIPageControl alloc]initWithFrame:CGRectMake((KscreenWidth - 80) / 2, self.mj_h - 50, 80, 40)];
+        pageCtl = [[UIPageControl alloc]initWithFrame:CGRectMake((KscreenWidth - 80) / 2, self.mj_h - 50, 80, 88)];
     }
     return self;
 }
 
 - (void)setImageUrlArray:(NSArray<ADSModel *> *)imgUrls placeImageName:(NSString *)imageName{
     if (scrContentView == nil) {
-        scrContentView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth,self.mj_h)];
+        scrContentView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth,98)];
         scrContentView.delegate = self;
         scrContentView.pagingEnabled = YES;
         scrContentView.showsHorizontalScrollIndicator = NO;
@@ -53,7 +53,7 @@
     if (imgUrls == nil||imgUrls.count==0) {//网络状态不好  或者数据未回来  预先加载本地banner图
         scrContentView.contentSize = CGSizeMake(KscreenWidth, scrContentView.mj_h);
         count = 1;
-        UIButton *itemImg = [[UIButton alloc]initWithFrame:CGRectMake(20, 0, KscreenWidth-40, 70)];
+        UIButton *itemImg = [[UIButton alloc]initWithFrame:CGRectMake(5, 0, KscreenWidth-10, 98)];
         
         [scrContentView addSubview:itemImg];
         itemImg.backgroundColor = [UIColor clearColor];
@@ -70,7 +70,7 @@
         pageCtl.hidden = NO;
     }
     for (int i = 0; i < imgUrls.count; i ++ ) {
-        UIButton *itemImg = [[UIButton alloc]initWithFrame:CGRectMake(KscreenWidth * i + 20, 0, KscreenWidth-40, 70)];
+        UIButton *itemImg = [[UIButton alloc]initWithFrame:CGRectMake(KscreenWidth * i + 5, 0, KscreenWidth-10, 98)];
         
         [scrContentView addSubview:itemImg];
         
