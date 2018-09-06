@@ -1568,8 +1568,13 @@
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         [self.delegate getHotFollowScheme:nil errorMsg:@"请检查网络连接"];
     };
-    
-    SOAPRequest* request = [self requestForAPI:APIGetHotFollowScheme withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraic]]}];
+    NSString *apiName;
+    if (paraic == nil) {
+        apiName = APIGetHotFollowScheme;
+    } else {
+        apiName = APIgetHotFollowSchemeNew;
+    }
+    SOAPRequest* request = [self requestForAPI:apiName withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraic]]}];
     [self newRequestWithRequest:request
                          subAPI:SUBAPISchemeService
       constructingBodyWithBlock:nil

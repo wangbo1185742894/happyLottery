@@ -9,22 +9,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "happyLottery/Class/FollowLottery(&#x8ddf;&#x6295;)/Controller/FollowSendViewController.m"
-            timestampString = "557894310.8055331"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
-            landmarkName = "-getHotFollowScheme"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "happyLottery/Class/FollowLottery(&#x8ddf;&#x6295;)/Controller/MyNoticeViewController.m"
             timestampString = "557647939.939653"
             startingColumnNumber = "9223372036854775807"
@@ -42,12 +26,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "happyLottery/Class/FollowLottery(&#x8ddf;&#x6295;)/View/HotFollowSchemeViewCell.m"
-            timestampString = "557894310.8061889"
+            timestampString = "557898141.718215"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "-getTimesFromHours:"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
+            landmarkName = "-loadDataWithModel:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/FollowLottery(&#x8ddf;&#x6295;)/View/HotFollowSchemeViewCell.m"
+            timestampString = "557898141.718305"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "-loadDataWithModel:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/FollowLottery(&#x8ddf;&#x6295;)/Controller/FollowSendViewController.m"
+            timestampString = "557898935.957955"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "267"
+            endingLineNumber = "267"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,13 +73,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/BuyLotteryViewController.m"
-            timestampString = "557894340.581357"
+            filePath = "happyLottery/Class/FollowLottery(&#x8ddf;&#x6295;)/Controller/FollowSendViewController.m"
+            timestampString = "557898935.958445"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "291"
-            endingLineNumber = "291"
-            landmarkName = "-nowTimeHours"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
+            landmarkName = "-getHotFollowScheme:errorMsg:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -73,13 +89,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/BuyLotteryViewController.m"
-            timestampString = "557894346.269513"
+            filePath = "happyLottery/Class/FollowLottery(&#x8ddf;&#x6295;)/Controller/FollowSendViewController.m"
+            timestampString = "557898935.958792"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "251"
-            endingLineNumber = "251"
-            landmarkName = "-collectionView:cellForItemAtIndexPath:"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
+            landmarkName = "-getHotFollowScheme"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/FollowLottery(&#x8ddf;&#x6295;)/Controller/FollowSendViewController.m"
+            timestampString = "557898935.959115"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "426"
+            endingLineNumber = "426"
+            landmarkName = "-actionToNotice"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
