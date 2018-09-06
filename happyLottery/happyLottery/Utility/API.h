@@ -104,6 +104,7 @@
 #define APIReliefAttent             @"reliefAttent"  //解除跟单
 #define APIlistRechargeHandsel      @"listRechargeHandsel"
 #define API_listSubscribeDetail     @"listSubscribeDetail"
+#define APIgetHotFollowSchemeNew     @"getHotFollowSchemeNew"
 
 /**
  * 分页查询会员的认购明细
