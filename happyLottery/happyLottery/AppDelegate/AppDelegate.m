@@ -80,7 +80,7 @@
     LotteryManager *lotteryMan;
     NSMutableArray *_messageContents;
     ZhuiHaoStopPushVIew *winPushView;
-    
+    NSString *strnim;
     UIAlertView *alert;
     NSString *pageCodeNotice;
     NSString *linkUrlNotice;
@@ -155,7 +155,23 @@ static SystemSoundID shake_sound_male_id = 0;
      _messageContents = [[NSMutableArray alloc] initWithCapacity:6];
     
     [self setKeyWindow];
-    
+    [[[QYSDK sharedSDK] conversationManager ] setDelegate:self];
+    if ([[UIApplication sharedApplication]
+         respondsToSelector:@selector(registerForRemoteNotifications)])
+    {
+        UIUserNotificationType types = UIRemoteNotificationTypeBadge
+        | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert;
+        UIUserNotificationSettings *settings =
+        [UIUserNotificationSettings settingsForTypes:types categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+    }
+    else
+    {
+        UIRemoteNotificationType types = UIRemoteNotificationTypeAlert
+        | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeBadge;
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:types];
+    }
     
     [self initJpush];
     [self setNewFeature];
@@ -210,6 +226,7 @@ static SystemSoundID shake_sound_male_id = 0;
         {
            NSDictionary * userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
             pageCodeNotice =  [userInfo valueForKey:@"pageCode"];
+            strnim =[userInfo valueForKey:@"nim"];
             linkUrlNotice=[userInfo valueForKey:@"linkUrl"];
             NSDictionary *aps = [userInfo valueForKey:@"aps"];
             NSInteger badge = [[aps valueForKey:@"badge"] integerValue];
@@ -576,12 +593,17 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 //添加处理APNs通知回调方法
 #pragma mark- JPUSHRegisterDelegate
 
+- (void)RegisterPushMessageNotification:(QYPushMessageBlock)block{
+    
+}
 // iOS 10 Support
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {
     // Required
     NSDictionary * userInfo = notification.request.content.userInfo;
+    strnim = userInfo[@"nim"];
     if (@available(iOS 10.0, *)) {
         if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+            
             [JPUSHService handleRemoteNotification:userInfo];
           
         }
@@ -598,6 +620,27 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
    
 }
 
+- (void)onReceiveMessage:(QYMessageInfo *)message{
+    if([UIApplication sharedApplication].applicationState == UIApplicationStateActive){
+        UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+        // 2.设置通知的必选参数
+        // 设置通知显示的内容
+        localNotification.alertBody =  message.text;
+        localNotification.userInfo = @{@"nim":@"1"};
+        // 设置通知的发送时间,单位秒
+        //解锁滑动时的事件
+        localNotification.alertAction = @"投必中";
+        //收到通知时App icon的角标
+        localNotification.applicationIconBadgeNumber = 1;
+        //推送是带的声音提醒，设置默认的字段为UILocalNotificationDefaultSoundName
+        localNotification.soundName = UILocalNotificationDefaultSoundName;
+        // 3.发送通知(🐽 : 根据项目需要使用)
+        // 方式一: 根据通知的发送时间(fireDate)发送通知
+        [[UIApplication sharedApplication] presentLocalNotificationNow:localNotification];
+    }
+
+}
+
 // iOS 10 Support
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^__strong)(void))completionHandler {
     // Required
@@ -607,6 +650,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
        if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
             [JPUSHService handleRemoteNotification:userInfo];
            pageCodeNotice =  [userInfo valueForKey:@"pageCode"];
+           strnim =[userInfo valueForKey:@"nim"];
            linkUrlNotice=[userInfo valueForKey:@"linkUrl"];
            [self jpushStart];
         }
@@ -617,6 +661,11 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 }
 
 -(void)jpushStart{
+    if (strnim != nil) {
+        
+        [self goToYunshiWithInfo:pageCodeNotice];
+       
+    }
     if (pageCodeNotice!=nil) {
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(KTimeJumpAfter * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -717,6 +766,72 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 }
 -(void)goToYunshiWithInfo:(NSString *)pageCode{
     
+    
+    if (strnim != nil) {
+         strnim = nil;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            {
+                
+//                QYUserInfo *userInfo = [[QYUserInfo alloc] init];
+//                userInfo.userId = [GlobalInstance instance].curUser.cardCode;
+//
+//
+//                NSMutableArray *array = [NSMutableArray new];
+//                NSMutableDictionary *dictRealName = [NSMutableDictionary new];
+//                [dictRealName setObject:@"real_name" forKey:@"key"];
+//                [dictRealName setObject:[GlobalInstance instance].curUser.cardCode forKey:@"value"];
+//                [array addObject:dictRealName];
+//
+//
+//                NSMutableDictionary *dictMobilePhone = [NSMutableDictionary new];
+//                [dictMobilePhone setObject:@"mobile_phone" forKey:@"key"];
+//                [dictMobilePhone setObject:[GlobalInstance instance].curUser.mobile forKey:@"value"];
+//                [array addObject:dictMobilePhone];
+//
+//
+//                NSMutableDictionary *dictEmail = [NSMutableDictionary new];
+//                [dictEmail setObject:@"avatar" forKey:@"key"];
+//                NSString *headurl;
+//                if ([GlobalInstance instance].curUser.headUrl == nil) {
+//                    headurl = @"";
+//                }else{
+//                    headurl = [GlobalInstance instance].curUser.headUrl;
+//                }
+//                [dictEmail setObject:headurl forKey:@"value"];
+//                [array addObject:dictEmail];
+//
+//
+//                NSData *data = [NSJSONSerialization dataWithJSONObject:array
+//                                                               options:0
+//                                                                 error:nil];
+//                if (data)
+//                {
+//                    userInfo.data = [[NSString alloc] initWithData:data
+//                                                          encoding:NSUTF8StringEncoding];
+//                }
+//
+//                [[QYSDK sharedSDK] setUserInfo:userInfo];
+                
+                QYSource *source = [[QYSource alloc] init];
+                source.title = @"投必中";
+                QYSessionViewController *sessionViewController = [[QYSDK sharedSDK]
+                                                                  sessionViewController];
+                sessionViewController.sessionTitle = @"投必中"; sessionViewController.source = source; sessionViewController.hidesBottomBarWhenPushed = YES;
+                UITabBarController *tabVC = (UITabBarController*)[self.window rootViewController];
+                
+                UINavigationController *navVC = tabVC.viewControllers[tabVC.selectedIndex];
+                for (UIViewController *vc in navVC.viewControllers) {
+                    if ([vc isKindOfClass:[QYSessionViewController class]]) {
+                        return ;
+                    }
+                }
+                [navVC pushViewController:sessionViewController
+                                 animated:YES];
+                //
+            }
+        });
+        return;
+    }
     NSString *keyStr = pageCode;
     pageCodeNotice = nil;
     if (keyStr == nil) {
@@ -989,6 +1104,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
         // 取得自定义字段内容，userInfo就是后台返回的JSON数据，是一个字典
        pageCodeNotice =  [userInfo valueForKey:@"pageCode"];
+        strnim =[userInfo valueForKey:@"nim"];
       linkUrlNotice=[userInfo valueForKey:@"linkUrl"];
         [self  jpushStart];
     [[UIApplication sharedApplication]setApplicationIconBadgeNumber:badge/2];
