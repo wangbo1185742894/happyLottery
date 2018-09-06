@@ -176,7 +176,7 @@ static SystemSoundID shake_sound_male_id = 0;
     [defaultCenter addObserver:self selector:@selector(networkDidReceiveMessage:) name:kJPFNetworkDidReceiveMessageNotification object:nil];
     [[UIApplication sharedApplication]setApplicationIconBadgeNumber:0];
     
-    [JPUSHService setBadge:0];
+    [JPUSHService resetBadge];
     if (launchOptions) {
         NSDictionary * remoteNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
         //清除角标

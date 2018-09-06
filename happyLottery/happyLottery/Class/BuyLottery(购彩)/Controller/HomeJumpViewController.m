@@ -52,6 +52,8 @@
             self.infoModel.linkUrl = [NSString stringWithFormat:@"%@/app/find/turntable?activityId=5&cardCode=%@",H5BaseAddress,[GlobalInstance instance].curUser.cardCode];
             [self showWeb];
         }
+    }else{
+        [self showWeb];
     }
     
 }
@@ -73,13 +75,13 @@
        NSString * slinkUrl = _infoModel.linkUrl;
         if ([slinkUrl rangeOfString:@"app/activity/index"].length > 0) {
             if (self.curUser.cardCode != nil && self.isNeedBack == NO) {
-                linkUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@?cardCode=%@&isLogin=%@",slinkUrl,self.curUser.cardCode,self.curUser.isLogin == YES?@"true":@"false"]];
+                linkUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@?cardCode=%@&isLogin=%@",slinkUrl,self.curUser.cardCode,self.curUser.isLogin == YES?@YES:@NO]];
             }else{
                 linkUrl = [NSURL URLWithString:_infoModel.linkUrl];
             }
         }else{
             if (self.curUser.cardCode != nil && self.isNeedBack == NO) {
-                linkUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@?cardCode=%@",slinkUrl,self.curUser.cardCode]];
+                linkUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@?cardCode=%@&isLogin=%@",slinkUrl,self.curUser.cardCode,self.curUser.isLogin == YES?@YES:@NO]];
             }else{
                 linkUrl = [NSURL URLWithString:_infoModel.linkUrl];
             }
@@ -87,7 +89,7 @@
 
         
     }else{
-        linkUrl = [NSURL URLWithString:_infoModel.linkUrl];
+        linkUrl = [NSURL URLWithString: [NSString stringWithFormat:@"%@?cardCode=%@&isLogin=%@",_infoModel.linkUrl,@"1",@NO]];
     }
     UIWebView *webView;
     if (_isNeedBack) {
