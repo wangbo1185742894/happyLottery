@@ -1,6 +1,11 @@
 # Acknowledgements
 This application makes use of the following third party libraries:
 
+## QIYU_iOS_SDK
+
+Copyright 2016 Netease 
+
+
 ## WechatOpenSDK
 
 Copyright 2018 tencent.com. All rights reserved.

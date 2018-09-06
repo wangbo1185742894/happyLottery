@@ -2,5 +2,5 @@ platform:ios,'9.0'
 use_frameworks!
 target 'happyLottery' do
 pod 'WechatOpenSDK'
-
+pod 'QIYU_iOS_SDK', '~>4.2.1'
 end
