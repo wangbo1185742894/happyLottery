@@ -250,7 +250,12 @@ static NSString *ID = @"LotteryAreaViewCell";
             
             NSString *weekStr = [Utility weekDayGetForTimeDate:[NSDate date]];
             if ([weekStr isEqualToString:@"周二"] || [weekStr isEqualToString:@"周四"] ||[weekStr isEqualToString:@"周日"]) {
-                cell.todayOpenLottery.hidden = NO;
+                if ([[self nowTimeHours] integerValue] < 20) {
+                    cell.todayOpenLottery.hidden = NO;
+                } else {
+                    cell.todayOpenLottery.hidden = YES;
+                }
+                
             } else {
                 cell.todayOpenLottery.hidden = YES;
             }
@@ -259,7 +264,12 @@ static NSString *ID = @"LotteryAreaViewCell";
             
             NSString *weekStr = [Utility weekDayGetForTimeDate:[NSDate date]];
             if ([weekStr isEqualToString:@"周一"] || [weekStr isEqualToString:@"周三"] ||[weekStr isEqualToString:@"周六"]) {
-                cell.todayOpenLottery.hidden = NO;
+                if ([[self nowTimeHours] integerValue] < 20) {
+                    cell.todayOpenLottery.hidden = NO;
+                } else {
+                    cell.todayOpenLottery.hidden = YES;
+                }
+                
             } else {
                 cell.todayOpenLottery.hidden = YES;
             }
@@ -275,6 +285,12 @@ static NSString *ID = @"LotteryAreaViewCell";
         [cell.lotteryImageView setImage:[UIImage imageNamed:@"icon_gengduo"]];
     }
     return cell;
+}
+
+- (NSString *)nowTimeHours {
+    NSString *time = [Utility timeStringFromFormat:@"yyyy-MM-dd HH:mm:ss" withDate:[NSDate date]];
+    time = [NSString stringWithFormat:@"%@", [time substringWithRange:NSMakeRange(11, 2)]];
+    return time;
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
