@@ -764,12 +764,14 @@
                 Bet.betType = (int)playType;
                 strbBetType = betType;
             }
-            Bet.lotteryDetails = lottery_.activeProfile.details;
+        
+        Bet.lotteryDetails = lottery_.activeProfile.details;
             Bet.betXHProfile = lottery_.activeProfile;
             Bet.betLotteryIdentifier = lottery_.identifier;
             Bet.betLotteryType = lottery_.type;
             Bet.betTypeDesc = [X115SchemeViewCell X115CHNTypeByEnType:strbBetType];
             Bet.betProfile = Bet.betTypeDesc;
+        
             NSArray *betRows = betDic[@"betRows"];
             
             NSMutableArray *mItemArray = [NSMutableArray arrayWithCapacity:0];
