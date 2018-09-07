@@ -822,6 +822,10 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
                 QYSessionViewController *sessionViewController = [[QYSDK sharedSDK]
                                                                   sessionViewController];
                 sessionViewController.sessionTitle = @"投必中"; sessionViewController.source = source; sessionViewController.hidesBottomBarWhenPushed = YES;
+                UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage
+                                                                             imageWithColor:[UIColor whiteColor]]];
+                imageView.contentMode = UIViewContentModeScaleToFill;
+                [[QYSDK sharedSDK] customUIConfig].sessionBackground = imageView;
                 UITabBarController *tabVC = (UITabBarController*)[self.window rootViewController];
                 
                 UINavigationController *navVC = tabVC.viewControllers[tabVC.selectedIndex];

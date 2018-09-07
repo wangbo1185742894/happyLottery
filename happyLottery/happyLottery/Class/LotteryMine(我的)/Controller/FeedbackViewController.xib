@@ -167,11 +167,8 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WHz-sf-yuF">
-                            <rect key="frame" x="0.0" y="553" width="375" height="50"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="50" id="MC7-Ty-Gjy"/>
-                            </constraints>
-                            <state key="normal" title="联系客服">
+                            <rect key="frame" x="298" y="443" width="77" height="43"/>
+                            <state key="normal" image="lianxikefu.png">
                                 <color key="titleColor" red="0.90980392160000001" green="0.30980392159999998" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
@@ -181,7 +178,6 @@
                     </subviews>
                     <color key="backgroundColor" red="0.96444731950759888" green="0.96840888261795044" blue="0.98488038778305054" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="WHz-sf-yuF" secondAttribute="bottom" id="19j-Hr-JN5"/>
                         <constraint firstAttribute="trailing" secondItem="Ko6-Yo-n7i" secondAttribute="trailing" constant="10" id="5uj-LF-dIb"/>
                         <constraint firstItem="eBv-95-3lI" firstAttribute="top" secondItem="Yuf-dN-dSW" secondAttribute="top" constant="186" id="6NC-9W-Pp5"/>
                         <constraint firstItem="Ko6-Yo-n7i" firstAttribute="top" secondItem="F26-lm-s5i" secondAttribute="bottom" constant="149" id="7UI-co-OKW"/>
@@ -189,11 +185,11 @@
                         <constraint firstAttribute="trailing" secondItem="7fd-sU-lRB" secondAttribute="trailing" constant="8" id="BKV-Nx-r1P"/>
                         <constraint firstItem="F26-lm-s5i" firstAttribute="top" secondItem="Yuf-dN-dSW" secondAttribute="top" constant="20" id="E1K-z5-OMD"/>
                         <constraint firstItem="JjF-5W-55o" firstAttribute="leading" secondItem="F26-lm-s5i" secondAttribute="leading" id="Ews-is-UXp"/>
+                        <constraint firstAttribute="trailing" secondItem="WHz-sf-yuF" secondAttribute="trailing" id="K8U-jJ-f0M"/>
                         <constraint firstItem="7fd-sU-lRB" firstAttribute="top" secondItem="F26-lm-s5i" secondAttribute="bottom" constant="36" id="QHH-KI-b3S"/>
                         <constraint firstAttribute="trailing" secondItem="F26-lm-s5i" secondAttribute="trailing" constant="10" id="R1j-DG-AfN"/>
                         <constraint firstItem="7fd-sU-lRB" firstAttribute="top" secondItem="JjF-5W-55o" secondAttribute="bottom" constant="13" id="YS3-i7-46w"/>
                         <constraint firstItem="F26-lm-s5i" firstAttribute="leading" secondItem="Yuf-dN-dSW" secondAttribute="leading" constant="10" id="Zf3-JE-XjO"/>
-                        <constraint firstItem="WHz-sf-yuF" firstAttribute="leading" secondItem="Yuf-dN-dSW" secondAttribute="leading" id="ZmE-Ub-kdc"/>
                         <constraint firstAttribute="trailing" secondItem="eBv-95-3lI" secondAttribute="trailing" constant="12" id="anC-PI-crw"/>
                         <constraint firstItem="7fd-sU-lRB" firstAttribute="leading" secondItem="Yuf-dN-dSW" secondAttribute="leading" constant="8" id="bOb-Ko-Stq"/>
                         <constraint firstItem="7fd-sU-lRB" firstAttribute="centerX" secondItem="Yuf-dN-dSW" secondAttribute="centerX" id="etT-dY-oCk"/>
@@ -203,6 +199,7 @@
                         <constraint firstItem="1i9-DZ-cGL" firstAttribute="leading" secondItem="Yuf-dN-dSW" secondAttribute="leading" constant="15" id="kXx-UC-8Eg"/>
                         <constraint firstItem="6hx-tU-Cva" firstAttribute="centerY" secondItem="JjF-5W-55o" secondAttribute="centerY" id="lcY-8t-PaB"/>
                         <constraint firstItem="JjF-5W-55o" firstAttribute="top" secondItem="F26-lm-s5i" secondAttribute="bottom" constant="8" id="nyy-5l-hES"/>
+                        <constraint firstItem="WHz-sf-yuF" firstAttribute="top" secondItem="Ko6-Yo-n7i" secondAttribute="bottom" constant="30" id="pML-FV-VHI"/>
                         <constraint firstItem="c21-UJ-d4b" firstAttribute="leading" secondItem="Yuf-dN-dSW" secondAttribute="leading" constant="15" id="rrt-Wx-zcX"/>
                         <constraint firstItem="c21-UJ-d4b" firstAttribute="top" secondItem="Yuf-dN-dSW" secondAttribute="top" constant="29" id="xfg-ju-XLG"/>
                         <constraint firstItem="Ko6-Yo-n7i" firstAttribute="leading" secondItem="Yuf-dN-dSW" secondAttribute="leading" constant="10" id="yFM-bj-efV"/>
@@ -221,5 +218,6 @@
     </objects>
     <resources>
         <image name="button_forbidden.png" width="143" height="20"/>
+        <image name="lianxikefu.png" width="77" height="43"/>
     </resources>
 </document>

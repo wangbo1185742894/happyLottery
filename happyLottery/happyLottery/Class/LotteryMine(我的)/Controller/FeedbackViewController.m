@@ -152,12 +152,8 @@
          [self showPromptText:@"请输入您的宝贵意见！" hideAfterDelay:1.7];
         return;
     }else{
-       
         [self FeedBackClient];
-        
     }
-
-    
 }
 -(void)FeedBack:(BOOL)success errorMsg:(NSString *)msg{
     
@@ -409,12 +405,18 @@
     }
     
     [[QYSDK sharedSDK] setUserInfo:userInfo];
-    
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageWithColor:[UIColor whiteColor]]];
+    imageView.contentMode = UIViewContentModeScaleToFill;
+    [[QYSDK sharedSDK] customUIConfig].sessionBackground = imageView;
     QYSource *source = [[QYSource alloc] init];
     source.title = @"投必中";
+    
     QYSessionViewController *sessionViewController = [[QYSDK sharedSDK]
                                                       sessionViewController];
-    sessionViewController.sessionTitle = @"投必中"; sessionViewController.source = source; sessionViewController.hidesBottomBarWhenPushed = YES; [self.navigationController pushViewController:sessionViewController
+    sessionViewController.sessionTitle = @"投必中";
+    sessionViewController.source = source;
+    sessionViewController.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
+    sessionViewController.hidesBottomBarWhenPushed = YES; [self.navigationController pushViewController:sessionViewController
                                                                                                                                                                                     animated:YES];
 //
 }
