@@ -9,12 +9,6 @@
 #import "BaseViewController.h"
 #import <JavaScriptCore/JavaScriptCore.h>
 
-@protocol JSObjcCTZQHisDelegate <JSExport>
-
--(void)exchangeToast:(NSString *)msg;
--(void)goCathectic:(NSString *)lotteryCode;
-@end
-
 @interface WebCTZQHisViewController : BaseViewController
 
 @property(nonatomic,strong)NSURL *pageUrl;

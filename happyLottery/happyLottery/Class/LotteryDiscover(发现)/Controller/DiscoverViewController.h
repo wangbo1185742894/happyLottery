@@ -9,16 +9,6 @@
 #import "BaseViewController.h"
 #import <JavaScriptCore/JavaScriptCore.h>
 
-@protocol JSObjcDelegate <JSExport>
--(void)SharingLinks;
--(void)goToJczq;
--(NSString *)getCardCode;
--(void)goCathectic:(NSString *)lotteryCode :(NSString *)cardCode;
-- (void)telPhone;
--(void)goToLogin;
--(void)exchangeToast:(NSString *)msg;
--(void)hiddenFooter:(BOOL )isHiden;
-@end
 
 @interface DiscoverViewController : BaseViewController
 

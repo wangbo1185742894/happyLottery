@@ -18,7 +18,7 @@
 
 #define rowNumber 3 //每行显示三个cell
 
-@interface LotteryAreaViewController ()<LotterySelectViewObjcDelegate,UIWebViewDelegate>
+@interface LotteryAreaViewController ()<UIWebViewDelegate>
 {
     NSArray *_lotteryArr; //彩种详细
     MBProgressHUD *loadingView;
@@ -88,7 +88,7 @@
     
     [self hideLoadingView];
     context = [webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
-    context[@"appObj"] = self;
+    context[@"appObj"] = [self getJumpHandler];
     context.exceptionHandler = ^(JSContext *context, JSValue *exceptionValue) {
         context.exception = exceptionValue;
     };
@@ -297,9 +297,6 @@
         [loadingView removeFromSuperview];
         loadingView = nil;
     }];
-}
--(void)exchangeToast:(NSString *)msg{
-    [self showPromptText:msg hideAfterDelay:1.7];
 }
 
 

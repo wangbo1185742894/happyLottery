@@ -12,6 +12,7 @@
 #import "AgentManager.h"
 #import "FMDB.h"
 #import "AppDelegate.h"
+#import "WebViewJumpHandler.h"
 
 
 
@@ -69,4 +70,5 @@
 
 - (void) showPromptViewWithText: (NSString *) text ;
 - (void) showPromptViewWithText: (NSString *) text hideAfter: (NSTimeInterval) interval ;
+-(WebViewJumpHandler *)getJumpHandler;
 @end

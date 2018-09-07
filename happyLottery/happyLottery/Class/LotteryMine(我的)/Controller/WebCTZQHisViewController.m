@@ -11,7 +11,7 @@
 #import "WebCTZQHisViewController.h"
 
 
-@interface WebCTZQHisViewController ()<UIWebViewDelegate,JSObjcCTZQHisDelegate>
+@interface WebCTZQHisViewController ()<UIWebViewDelegate>
 {
     JSContext *context;
     UIWebViewNavigationType _navigationType;
@@ -87,28 +87,12 @@
 {
     [self hideLoadingView];
     context = [webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
-    context[@"appObj"] = self;
+    context[@"appObj"] = [self getJumpHandler];
     context.exceptionHandler = ^(JSContext *context, JSValue *exceptionValue) {
         context.exception = exceptionValue;
     };
     [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitUserSelect='none';"];
     [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitTouchCallout='none';"];
-}
--(void)exchangeToast:(NSString *)msg{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self showPromptText:msg hideAfterDelay:1.7];
-    });
-}
-
--(void)goCathectic:(NSString *)lotteryCode{
-    if (lotteryCode == nil) {
-        return;
-    }
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self showPromptText:lotteryCode hideAfterDelay:1.8];
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"NSNotificationJumpToPlayVC" object:lotteryCode];
-        [self.navigationController popToRootViewControllerAnimated:NO];
-    });
 }
 
 @end

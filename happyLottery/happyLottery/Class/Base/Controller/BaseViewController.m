@@ -29,6 +29,7 @@
 }
 @property(nonatomic,strong)NSDate *openDate;
 @property(nonatomic,strong)NSDate *closeDate;
+@property(nonatomic,strong)WebViewJumpHandler *jumpHandler;
 @end
 
 @implementation BaseViewController
@@ -636,6 +637,11 @@
 - (void) showPromptViewWithText: (NSString *) text hideAfter: (NSTimeInterval) interval {
     [self showPromptText: text hideAfterDelay: interval];
 }
-
+-(WebViewJumpHandler *)getJumpHandler{
+    if (self.jumpHandler == nil) {
+        self.jumpHandler = [[WebViewJumpHandler alloc]initWithCurVC:self];
+    }
+    return self.jumpHandler;
+}
 
 @end

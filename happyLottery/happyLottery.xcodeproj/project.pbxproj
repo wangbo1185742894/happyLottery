@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2D0174DD21420FBC00E2606B /* lianxikefu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D0174DB21420FBB00E2606B /* lianxikefu@2x.png */; };
 		2D0174DE21420FBC00E2606B /* lianxikefu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D0174DC21420FBC00E2606B /* lianxikefu@3x.png */; };
+		2D0174E1214263BA00E2606B /* WebViewJumpHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0174E0214263BA00E2606B /* WebViewJumpHandler.m */; };
 		2D01750620CB8623005DEDC9 /* icon_jingzudanguan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D01750420CB8622005DEDC9 /* icon_jingzudanguan@3x.png */; };
 		2D01750720CB8623005DEDC9 /* icon_jingzudanguan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D01750520CB8623005DEDC9 /* icon_jingzudanguan@2x.png */; };
 		2D01750B20CB922C005DEDC9 /* ChongZhiRulePopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D01750920CB922B005DEDC9 /* ChongZhiRulePopView.m */; };
@@ -1743,6 +1744,8 @@
 /* Begin PBXFileReference section */
 		2D0174DB21420FBB00E2606B /* lianxikefu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lianxikefu@2x.png"; sourceTree = "<group>"; };
 		2D0174DC21420FBC00E2606B /* lianxikefu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lianxikefu@3x.png"; sourceTree = "<group>"; };
+		2D0174DF214263BA00E2606B /* WebViewJumpHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewJumpHandler.h; sourceTree = "<group>"; };
+		2D0174E0214263BA00E2606B /* WebViewJumpHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewJumpHandler.m; sourceTree = "<group>"; };
 		2D01750420CB8622005DEDC9 /* icon_jingzudanguan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_jingzudanguan@3x.png"; sourceTree = "<group>"; };
 		2D01750520CB8623005DEDC9 /* icon_jingzudanguan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_jingzudanguan@2x.png"; sourceTree = "<group>"; };
 		2D01750820CB922B005DEDC9 /* ChongZhiRulePopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChongZhiRulePopView.h; sourceTree = "<group>"; };
@@ -5988,6 +5991,8 @@
 				2DD2C51720455039005A18C4 /* OptimizeItemModel.m */,
 				2D4D608420AD592B00280033 /* AppSignModel.h */,
 				2D4D608520AD592B00280033 /* AppSignModel.m */,
+				2D0174DF214263BA00E2606B /* WebViewJumpHandler.h */,
+				2D0174E0214263BA00E2606B /* WebViewJumpHandler.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -8851,6 +8856,7 @@
 				F9FC153C20625815009BAD68 /* WebViewController.m in Sources */,
 				F9BC6E0720C2AC420037998B /* GAStatusViewController.m in Sources */,
 				2D92A826201068590038E165 /* PayOrderYouhunViewController.m in Sources */,
+				2D0174E1214263BA00E2606B /* WebViewJumpHandler.m in Sources */,
 				2D05C88320A58485001A8953 /* FollowListTableViewCell.m in Sources */,
 				2D7B8DC820C63EF2000EAFB1 /* YongjinListViewController.m in Sources */,
 				2DA39EC72052395D00A03FD1 /* OrderDatePickerView.m in Sources */,

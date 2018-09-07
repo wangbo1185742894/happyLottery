@@ -16,7 +16,7 @@
 #import <ShareSDK/NSMutableDictionary+SSDKShare.h>
 #import <MOBFoundation/MOBFoundation.h>
 
-@interface HomeJumpViewController ()<JSJumpDelegate,UIWebViewDelegate,MemberManagerDelegate,LotteryManagerDelegate>
+@interface HomeJumpViewController ()<UIWebViewDelegate,MemberManagerDelegate,LotteryManagerDelegate>
 {
     JSContext *context;
     NSString *shareTitle;
@@ -34,13 +34,11 @@
     
     self.title = @"活动信息";
     if (_isNeedBack) {
-        
     }
     self.memberMan.delegate = self;
     self.title = self.infoModel.title;
     [self showWeb];
     self.lotteryMan.delegate = self;
-
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -61,7 +59,6 @@
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     if (_isNeedBack) {
-        
         self .navigationController.navigationBar.hidden = NO;
     }
 }
@@ -122,50 +119,13 @@
         self.labBack.hidden = NO;
     }
     context = [webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
-    context[@"appObj"] = self;
+    context[@"appObj"] = [self  getJumpHandler];
     context.exceptionHandler = ^(JSContext *context, JSValue *exceptionValue) {
         context.exception = exceptionValue;
     };
     [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitUserSelect='none';"];
     [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitTouchCallout='none';"];
 }
-
--(void)goToLogin{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self needLogin];
-    });
-}
-
--(void)goToJczq{
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
-        [self.navigationController popToRootViewControllerAnimated:YES];
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"NSNotificationBuyVCJump" object:@1000];
-    });
-}
--(void)exchangeToast:(NSString *)msg{
-    [self showPromptText:msg hideAfterDelay:1.7];
-}
-
--(void)goCathectic:(NSString *)lotteryCode{ //跳转竟足  充值  优惠券
-    if (lotteryCode == nil) {
-        return;
-    }
-    if ([lotteryCode isEqualToString:@"JCZQ"]) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            JCZQPlayViewController * playViewVC = [[JCZQPlayViewController alloc]init];
-            playViewVC.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:playViewVC animated:YES];
-        });
-    }
-}
-
--(void)SharingLinks{
-    //    [self showPromptText:code hideAfterDelay:1.8];
-    [self.lotteryMan getCommonSetValue:@{@"typeCode":@"share",@"commonCode":@"share_activity"}];
-}
-
 -(void)gotCommonSetValue:(NSString *)strUrl{
     if (strUrl == nil || strUrl.length == 0) {
         return;
@@ -261,10 +221,8 @@
 -(void)giveShareScoreClient{
     NSDictionary *Info;
     @try {
-        
         Info = @{@"cardCode":self.curUser.cardCode
                  };
-        
     } @catch (NSException *exception) {
         return;
     }
@@ -281,10 +239,6 @@
     }
     
 }
-- (void)telPhone{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"tel://4006005558"]];
-    });
-}
+
 
 @end

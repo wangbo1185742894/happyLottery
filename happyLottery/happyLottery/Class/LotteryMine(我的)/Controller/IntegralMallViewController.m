@@ -9,7 +9,7 @@
 #import "IntegralMallViewController.h"
 #import "MyCouponViewController.h"
 
-@interface IntegralMallViewController ()<UIWebViewDelegate,JSObjcIntegralDelegate>
+@interface IntegralMallViewController ()<UIWebViewDelegate>
 {
     JSContext *context;
     __weak IBOutlet NSLayoutConstraint *webDisBottom;
@@ -88,7 +88,7 @@
     }
     [self hideLoadingView];
     context = [webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
-    context[@"appObj"] = self;
+    context[@"appObj"] = [self getJumpHandler];
     context.exceptionHandler = ^(JSContext *context, JSValue *exceptionValue) {
         context.exception = exceptionValue;
     };
@@ -127,9 +127,5 @@
         webDisBottom.constant = 0;
     }
 }
--(void)exchangeToast:(NSString *)msg{
-    [self showPromptText:msg hideAfterDelay:1.7];
-}
-
 
 @end

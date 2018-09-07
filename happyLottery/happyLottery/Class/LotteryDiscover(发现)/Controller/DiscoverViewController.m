@@ -18,7 +18,7 @@
 #import "TopUpsViewController.h"
 #import <WebKit/WebKit.h>
 
-@interface DiscoverViewController ()<JSObjcDelegate,UIWebViewDelegate,LotteryManagerDelegate>
+@interface DiscoverViewController ()<UIWebViewDelegate,LotteryManagerDelegate>
 {
     __weak IBOutlet NSLayoutConstraint *webDisTop;
     JSContext *context;
@@ -136,7 +136,7 @@
         [self.faxianWebView reload];
     }
     context = [webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
-    context[@"appObj"] = self;
+    context[@"appObj"] = [self getJumpHandler];
     context.exceptionHandler = ^(JSContext *context, JSValue *exceptionValue) {
         context.exception = exceptionValue;
     };
@@ -323,16 +323,9 @@
 }
 
 -(void)goToJczq{
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        
-        [self.navigationController popToRootViewControllerAnimated:YES];
-        self.tabBarController.selectedIndex = 0;
-    
-    });
     dispatch_async(dispatch_get_main_queue(), ^{
           [self.faxianWebView goBack];
     });
- 
 }
 
 -(void)hiddenFooter:(BOOL )isHiden{
@@ -346,89 +339,6 @@
         }
     });
 }
-
--(void)goCathectic:(NSString *)lotteryCode :(NSString *)cardCode{ //跳转竟足  充值  优惠券
-    if ([lotteryCode isEqualToString: @"GRZX"]) {
-        if (cardCode.length == 0) {
-            return;
-        }
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            PersonCenterViewController *personVC = [[PersonCenterViewController alloc]init];
-            personVC.cardCode = cardCode;
-            personVC.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:personVC animated:YES];
-        });
-        return;
-    }
-    if (self.curUser.isLogin == NO) {
-        [self needLogin];
-        return;
-    }
-    if ([lotteryCode isEqualToString:@"JCZQ"]) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            
-            JCZQPlayViewController * playViewVC = [[JCZQPlayViewController alloc]init];
-            playViewVC.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:playViewVC animated:YES];
-            
-        });
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.faxianWebView goBack];
-        });
-        return;
-    }
-    
-    
-    if ([lotteryCode isEqualToString:@"YHQ"]) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            MyCouponViewController *couponVC = [[MyCouponViewController alloc]init];
-            couponVC.hidesBottomBarWhenPushed = YES;
-            [self .navigationController pushViewController:couponVC animated:YES];
-            
-        });
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-               [self.faxianWebView goBack];
-        });
-     
-        return;
-    }
-    
-    if ([lotteryCode isEqualToString:@"CZ"]) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            
-            TopUpsViewController *topUpsVC = [[TopUpsViewController alloc]init];
-            topUpsVC.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:topUpsVC animated:YES];
-            
-        });
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.faxianWebView goBack];
-        });
-        return;
-    }
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"NSNotificationJumpToPlayVC" object:lotteryCode];
-        [self.navigationController popToRootViewControllerAnimated:NO];
-    });
-}
-
--(void)goToLogin{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self needLogin];
-    });
-}
-
-
-- (void)telPhone{
-    [self actionTelMe];
-}
-
-
--(void)exchangeToast:(NSString *)msg{
-    [self showPromptText:msg hideAfterDelay:1.7];
-}
-
 - (void)removeWebCache{
     if ([[UIDevice currentDevice].systemVersion floatValue] >= 9.0) {
         NSSet *websiteDataTypes= [NSSet setWithArray:@[
@@ -478,7 +388,5 @@
         [[NSURLCache sharedURLCache] removeAllCachedResponses];
     }
 }
-
-
 
 @end
