@@ -27,22 +27,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/BuyLotteryViewController.m"
-            timestampString = "554202260.552188"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "594"
-            endingLineNumber = "594"
-            landmarkName = "-setADSUI"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/View/DLT/LotteryTimeCountdownView.m"
             timestampString = "553585596.823699"
             startingColumnNumber = "9223372036854775807"
@@ -348,7 +332,7 @@
                   moduleName = "happyLottery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wangbo/Documents/%E5%B7%A5%E4%BD%9C%E6%96%87%E6%A1%A3/happyLottery/happyLottery/happyLottery/Class/BuyLottery(%E8%B4%AD%E5%BD%A9)/Controller/WBYCMatchDetailViewController.m"
-                  timestampString = "557923610.540134"
+                  timestampString = "557975748.810455"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "681"
@@ -363,7 +347,7 @@
                   moduleName = "happyLottery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wangbo/Documents/%E5%B7%A5%E4%BD%9C%E6%96%87%E6%A1%A3/happyLottery/happyLottery/happyLottery/Class/BuyLottery(%E8%B4%AD%E5%BD%A9)/Controller/WBYCMatchDetailViewController.m"
-                  timestampString = "557923610.54185"
+                  timestampString = "557975748.812264"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "681"
@@ -428,12 +412,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "happyLottery/AppDelegate/AppDelegate.m"
-            timestampString = "557920571.168222"
+            timestampString = "557975748.196874"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1217"
-            endingLineNumber = "1217"
-            landmarkName = "-application:openURL:options:"
+            startingLineNumber = "1222"
+            endingLineNumber = "1222"
+            landmarkName = "-getAgentInfodelegate:isSuccess:errorMsg:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -444,28 +428,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "happyLottery/AppDelegate/AppDelegate.m"
-            timestampString = "557920571.168612"
+            timestampString = "557975748.197053"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1212"
-            endingLineNumber = "1212"
-            landmarkName = "-application:openURL:options:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "happyLottery/Class/LotteryDiscover(&#x53d1;&#x73b0;)/Controller/DiscoverViewController.m"
-            timestampString = "555410837.249351"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
-            landmarkName = "-webView:shouldStartLoadWithRequest:navigationType:"
+            startingLineNumber = "1217"
+            endingLineNumber = "1217"
+            landmarkName = "-setGroupView"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -486,7 +454,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/TouZhuViewController.m"
-            timestampString = "557920571.168916"
+            timestampString = "557975748.197114"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "822"
@@ -550,7 +518,7 @@
                   moduleName = "happyLottery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wangbo/Documents/%E5%B7%A5%E4%BD%9C%E6%96%87%E6%A1%A3/happyLottery/happyLottery/happyLottery/Class/Base/Model/LotteryManager.m"
-                  timestampString = "557923610.588524"
+                  timestampString = "557975748.859376"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1693"
@@ -565,7 +533,7 @@
                   moduleName = "happyLottery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wangbo/Documents/%E5%B7%A5%E4%BD%9C%E6%96%87%E6%A1%A3/happyLottery/happyLottery/happyLottery/Class/Base/Model/LotteryManager.m"
-                  timestampString = "557923610.590524"
+                  timestampString = "557975748.862285"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1693"
@@ -598,7 +566,7 @@
                   moduleName = "happyLottery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wangbo/Documents/%E5%B7%A5%E4%BD%9C%E6%96%87%E6%A1%A3/happyLottery/happyLottery/happyLottery/Class/Base/Model/LotteryManager.m"
-                  timestampString = "557923610.595004"
+                  timestampString = "557975748.868281"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1707"
@@ -613,7 +581,7 @@
                   moduleName = "happyLottery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wangbo/Documents/%E5%B7%A5%E4%BD%9C%E6%96%87%E6%A1%A3/happyLottery/happyLottery/happyLottery/Class/Base/Model/LotteryManager.m"
-                  timestampString = "557923610.596662"
+                  timestampString = "557975748.870667"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1707"
@@ -628,7 +596,7 @@
                   moduleName = "happyLottery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wangbo/Documents/%E5%B7%A5%E4%BD%9C%E6%96%87%E6%A1%A3/happyLottery/happyLottery/happyLottery/Class/Base/Model/LotteryManager.m"
-                  timestampString = "557923610.599102"
+                  timestampString = "557975748.872823"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1707"

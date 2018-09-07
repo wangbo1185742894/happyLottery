@@ -493,7 +493,6 @@ static SystemSoundID shake_sound_male_id = 0;
     
     tabBarControllerMain.tabBar.backgroundColor = RGBCOLOR(37, 38, 38);
     tabBarControllerMain.tabBar.barTintColor =  RGBCOLOR(37, 38, 38);
-    
 }
 
 -(void)setNomalRootVC{
@@ -593,6 +592,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 //添加处理APNs通知回调方法
 #pragma mark- JPUSHRegisterDelegate
 
+
+
 - (void)RegisterPushMessageNotification:(QYPushMessageBlock)block{
     
 }
@@ -625,6 +626,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         UILocalNotification *localNotification = [[UILocalNotification alloc] init];
         // 2.设置通知的必选参数
         // 设置通知显示的内容
+        
         localNotification.alertBody =  message.text;
         localNotification.userInfo = @{@"nim":@"1"};
         // 设置通知的发送时间,单位秒
@@ -636,6 +638,9 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         localNotification.soundName = UILocalNotificationDefaultSoundName;
         // 3.发送通知(🐽 : 根据项目需要使用)
         // 方式一: 根据通知的发送时间(fireDate)发送通知
+        if (pageCodeNotice != nil) {
+            return;
+        }
         [[UIApplication sharedApplication] presentLocalNotificationNow:localNotification];
     }
 

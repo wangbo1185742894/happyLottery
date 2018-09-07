@@ -305,6 +305,10 @@
         
         TouZhuViewController *touzhuVC = [[TouZhuViewController alloc] initWithNibName: @"TouZhuViewController" bundle: nil];
         touzhuVC.lottery = self.lottery;
+        if(touzhuphaseInfoView == nil){
+            touzhuphaseInfoView = [[LotteryPhaseInfoView alloc] initWithFrame: CGRectMake(0,NaviHeight, KscreenWidth, 44)];
+        }
+        [touzhuphaseInfoView drawWithLotteryNoButton:self.lottery];
         touzhuVC.phaseInfoView = touzhuphaseInfoView;
         if (!self.lottery.currentRound) {
             [self getCurrentRound];
