@@ -9,6 +9,8 @@
 #import "FeedbackViewController.h"
 #import "FeedBackHistoryViewController.h"
 #import "QuestionsViewController.h"
+#import "QYSDK.h"
+
 
 @interface FeedbackViewController ()<UITextViewDelegate,MemberManagerDelegate>{
        NSString *myscore;
@@ -368,7 +370,53 @@
 }
 - (IBAction)actionLianxiKefu:(id)sender {
     
+    QYUserInfo *userInfo = [[QYUserInfo alloc] init];
+    userInfo.userId = self.curUser.cardCode;
     
+    
+    NSMutableArray *array = [NSMutableArray new];
+    NSMutableDictionary *dictRealName = [NSMutableDictionary new];
+    [dictRealName setObject:@"real_name" forKey:@"key"];
+    [dictRealName setObject:self.curUser.cardCode forKey:@"value"];
+    [array addObject:dictRealName];
+    
+    
+    NSMutableDictionary *dictMobilePhone = [NSMutableDictionary new];
+    [dictMobilePhone setObject:@"mobile_phone" forKey:@"key"];
+    [dictMobilePhone setObject:self.curUser.mobile forKey:@"value"];
+    [array addObject:dictMobilePhone];
+    
+    
+    NSMutableDictionary *dictEmail = [NSMutableDictionary new];
+    [dictEmail setObject:@"avatar" forKey:@"key"];
+    NSString *headurl;
+    if (self.curUser.headUrl == nil) {
+        headurl = @"";
+    }else{
+        headurl = self.curUser.headUrl;
+    }
+    [dictEmail setObject:headurl forKey:@"value"];
+    [array addObject:dictEmail];
+ 
+    
+    NSData *data = [NSJSONSerialization dataWithJSONObject:array
+                                                   options:0
+                                                     error:nil];
+    if (data)
+    {
+        userInfo.data = [[NSString alloc] initWithData:data
+                                              encoding:NSUTF8StringEncoding];
+    }
+    
+    [[QYSDK sharedSDK] setUserInfo:userInfo];
+    
+    QYSource *source = [[QYSource alloc] init];
+    source.title = @"投必中";
+    QYSessionViewController *sessionViewController = [[QYSDK sharedSDK]
+                                                      sessionViewController];
+    sessionViewController.sessionTitle = @"投必中"; sessionViewController.source = source; sessionViewController.hidesBottomBarWhenPushed = YES; [self.navigationController pushViewController:sessionViewController
+                                                                                                                                                                                    animated:YES];
+//
 }
 
 @end

@@ -15,7 +15,7 @@
 #import "LoadData.h"
 #import "ChangeLoginPWDViewController.h"
 #import "JPUSHService.h"
-
+#import "QYSDK.h"
 @interface PersonnalCenterViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate,RSKImageCropViewControllerDelegate,MemberManagerDelegate>{
      NSString *headUrl;
      NSString *titleStr;
@@ -538,6 +538,9 @@
 - (IBAction)outLogin:(id)sender {
   
     self.curUser.isLogin = NO;
+    [[QYSDK sharedSDK]logout:^{
+        
+    }];
     [self updateLoginStatus];
     [JPUSHService setTags:nil alias:@"" callbackSelector:@selector(tagsAliasCallback:tags:alias:) object:self];
     [self.navigationController popViewControllerAnimated:YES];
