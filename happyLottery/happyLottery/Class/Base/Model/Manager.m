@@ -85,7 +85,7 @@
 //        return nil;
 //    }
 //    [self afnReachabilityTest];
-    
+   
     NSString * soapMessage = [request getSOAPMessage];
     NSString *lotteryUrl;
     if ([GlobalInstance instance].lotteryUrl .length == 0) {
@@ -93,6 +93,11 @@
     }else{
         lotteryUrl = [GlobalInstance instance].lotteryUrl;
     }
+//
+//    if ([request.apiName isEqualToString:APIrecharge]) {
+//        lotteryUrl = @"http://192.168.88.108:28090/services%@";
+//    }
+  
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL: [NSURL URLWithString:[NSString stringWithFormat:lotteryUrl,subApi]]];
     theRequest.timeoutInterval = 10;
     NSString *msgLength = [NSString stringWithFormat:@"%lu", (unsigned long)[soapMessage length]];
@@ -111,7 +116,6 @@
          [operation setCompletionBlockWithSuccess: successBlock failure: failureBlock];
          [operation start];
     });
-   
    
     return operation;
 }

@@ -144,19 +144,23 @@
     [_getVerifyCodeBtn setTitle:[NSString stringWithFormat:@"重新发送(%ds)",KCheckSec] forState:UIControlStateDisabled];
     if (@available(iOS 10.0, *)) {
         countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 repeats:YES block:^(NSTimer * _Nonnull timer) {
-            if (seconds > 0) {
-                seconds --;
-                [_getVerifyCodeBtn setTitle:[NSString stringWithFormat:@"重新发送(%ds)",seconds] forState:UIControlStateDisabled];
-            }else{
-                seconds = KCheckSec;
-                [countDownTimer invalidate];
-                [_getVerifyCodeBtn setTitle:@"获取验证码" forState:0];
-                [_getVerifyCodeBtn setTitle:[NSString stringWithFormat:@"重新发送(%ds)",seconds] forState:UIControlStateDisabled];
-                [_getVerifyCodeBtn setEnabled: YES];
-            }
+            [self updateTime];
         }];
     } else {
-        // Fallback on earlier versions
+         [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateTime) userInfo:nil repeats:YES];
+    }
+}
+
+-(void)updateTime{
+    if (seconds > 0) {
+        seconds --;
+        [_getVerifyCodeBtn setTitle:[NSString stringWithFormat:@"重新发送(%ds)",seconds] forState:UIControlStateDisabled];
+    }else{
+        seconds = KCheckSec;
+        [countDownTimer invalidate];
+        [_getVerifyCodeBtn setTitle:@"获取验证码" forState:0];
+        [_getVerifyCodeBtn setTitle:[NSString stringWithFormat:@"重新发送(%ds)",seconds] forState:UIControlStateDisabled];
+        [_getVerifyCodeBtn setEnabled: YES];
     }
 }
 

@@ -10,11 +10,11 @@
 
 @implementation ChannelModel
 -(NSString*)channelIcon{
-    NSDictionary *iconDic = @{@"YUE":@"icon_yue",@"UNION":@"icon_yinlian",@"WFTWX":@"icon_weixin",@"WFTWX_HC":@"icon_weixin",@"SDALI":@"icon_zhifubao",@"BOINGWX":@"icon_weixin",@"YUN_WX_XCX":@"icon_weixin"};
+    NSDictionary *iconDic = @{@"YUE":@"icon_yue",@"UNION":@"icon_yinlian",@"WFTWX":@"icon_weixin",@"WFTWX_HC":@"icon_weixin",@"SDALI":@"icon_zhifubao",@"BOINGWX":@"icon_weixin",@"YUN_WX_XCX":@"icon_weixin",@"HAWKEYE_ALI":@"icon_zhifubao"};
     return iconDic[self.channel];
 }
 -(NSString*)channelTitle{
-    NSDictionary *iconDic = @{@"YUE":@"余额支付",@"UNION":@"银联支付",@"WFTWX":@"微信支付(推荐)",@"WFTWX_HC":@"微信支付(推 荐)",@"SDALI":@"支付宝支付",@"BOINGWX":@"微信支付2",@"YUN_WX_XCX":@"微信"};
+    NSDictionary *iconDic = @{@"YUE":@"余额支付",@"UNION":@"银联支付",@"WFTWX":@"微信支付(推荐)",@"WFTWX_HC":@"微信支付(推 荐)",@"SDALI":@"支付宝支付",@"BOINGWX":@"微信支付2",@"YUN_WX_XCX":@"微信",@"HAWKEYE_ALI":@"鹰眼支付宝"};
     return iconDic[self.channel];
 }
 

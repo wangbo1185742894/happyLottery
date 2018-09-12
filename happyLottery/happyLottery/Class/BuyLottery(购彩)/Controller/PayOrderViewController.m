@@ -5,8 +5,9 @@
 //  Created by 王博 on 2017/12/18.
 //  Copyright © 2017年 onlytechnology. All rights reserved.
 //
-
+#define KCheckSec 60
 #import "PayOrderViewController.h"
+#import "TabObaListCell.h"
 #import "PaySuccessViewController.h"
 #import "WXApi.h"
 #import "ChannelModel.h"
@@ -28,16 +29,31 @@
 #import "YinLanPayManage.h"
 #import "MyCouponViewController.h"
 #define KPayTypeListCell @"PayTypeListCell"
+
+#define KTabObaListCell @"TabObaListCell"
 @interface PayOrderViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,MemberManagerDelegate,UIWebViewDelegate,WBInputPopViewDelegate>
 {
     NSMutableArray <ChannelModel *>*channelList;
+    __weak IBOutlet NSLayoutConstraint *heightTopView;
     ChannelModel *itemModel;
+    __weak IBOutlet UIImageView *imgObaComeOn;
+    __weak IBOutlet UILabel *labCostInfo;
+    
+    
     WBInputPopView *passInput;
     YinLanPayManage *yinlanManage;
+    __weak IBOutlet UITableView *tabObaList;
+    __weak IBOutlet UIView *viewImgContent;
     JCZQSchemeItem * schemeDetail;
+    ZLAlertView *itemAlert;
     __weak IBOutlet UILabel *labCanUseYouhuiquan;
+    NSTimer *timer;
+    NSInteger checkSec;
     
+    IBOutlet UIView *viewOBaList;
 }
+@property (strong, nonatomic) IBOutlet UIView *viewOPaComeOn;
+@property (weak, nonatomic) IBOutlet UILabel *labTimer;
 @property (weak, nonatomic) IBOutlet UIWebView *payWebView;
 @property (weak, nonatomic) IBOutlet UILabel *labLotteryName;
 @property (weak, nonatomic) IBOutlet UILabel *labOrderCost;
@@ -68,7 +84,19 @@
 @implementation PayOrderViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
+    heightTopView.constant = NaviHeight;
+    checkSec = KCheckSec;
+    viewOBaList.frame = [UIScreen mainScreen].bounds;
+     viewOBaList.mj_x = KscreenWidth;
+    [[UIApplication sharedApplication].keyWindow addSubview:viewOBaList];
+   
+    [UIView animateWithDuration:0.2 animations:^{
+        self->viewOBaList.mj_x = 0;
+    }];
+    
+    [self startTimer];
     if ([self isIphoneX]) {
         self.viewDisTop.constant = 88;
         self.viewDisBottom.constant = 34;
@@ -202,16 +230,32 @@
     self.tabPayTypeList.delegate = self;
     self.tabPayTypeList.rowHeight = 60;
     [self.tabPayTypeList registerClass:[PayTypeListCell class] forCellReuseIdentifier:KPayTypeListCell];
+    
+    tabObaList .dataSource =self;
+    tabObaList.delegate = self;
+    tabObaList.rowHeight = 70;
+    [tabObaList registerNib:[UINib nibWithNibName:KTabObaListCell bundle:nil] forCellReuseIdentifier:KTabObaListCell];
+    tabObaList.tableFooterView = [UIView new];
+    tabObaList.sectionFooterHeight = 1;
+    [tabObaList reloadData];
+    
 }
 
--(void)navigationBackToLastPage{
+-(void)navigationBackToLastPageitem{
     ZLAlertView *alert = [[ZLAlertView alloc] initWithTitle:@"提示" message:@"确认退出支付？你可在投注信息里对此订单继续支付？"];
+    itemAlert  = alert;
     [alert addBtnTitle:@"取消" action:^{
         
     }];
     [alert addBtnTitle:@"确定" action:^{
-        
-//        [super navigationBackToLastPage];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [UIView animateWithDuration:0.3 animations:^{
+                self->viewOBaList.mj_x = -KscreenWidth;
+                [self->viewOBaList removeFromSuperview ];
+                [self->timer invalidate];
+            }];
+        });
+
         for (BaseViewController *baseVC in self.navigationController.viewControllers) {
             if ([baseVC isKindOfClass:[JCLQPlayController class]]) {
                 [self.navigationController popToViewController:baseVC animated:YES];
@@ -237,7 +281,11 @@
         [self.navigationController popViewControllerAnimated:YES];
         
     }];
-    [alert showAlertWithSender:self];
+//    [[UIApplication sharedApplication].keyWindow addSubview:alert];
+
+
+    [alert showAlertWithSender:(UIViewController *)[UIApplication sharedApplication].keyWindow];
+    
 }
 
 #pragma LotteryManagerDelegate
@@ -245,13 +293,24 @@
 #pragma UITableViewDelegate,UITableViewDataSource
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if (tableView == tabObaList) {
+        return 4;
+    }
     return channelList.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    PayTypeListCell *cell = [tableView dequeueReusableCellWithIdentifier:KPayTypeListCell];
-    [cell loadDataWithModel:channelList[indexPath.row]];
-    return cell;
+    if (tableView == tabObaList) {
+        TabObaListCell *cell = [tableView dequeueReusableCellWithIdentifier:KTabObaListCell];
+        cell.selectionStyle = 0;
+        return cell;
+    }else{
+        PayTypeListCell *cell = [tableView dequeueReusableCellWithIdentifier:KPayTypeListCell];
+        [cell loadDataWithModel:channelList[indexPath.row]];
+        return cell;
+    }
+
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -443,7 +502,10 @@
 -(void)gotSchemeCashPayment:(BOOL)isSuccess errorMsg:(NSString *)msg{
     [self hideLoadingView];
     if (isSuccess) {
-        [self paySuccess];
+        [self showObaComeView];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self paySuccess];
+        });
     }else{
         [self showPromptText:msg hideAfterDelay:1.7];
     }
@@ -493,6 +555,19 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (tableView == tabObaList ) {
+        MJWeakSelf
+        [UIView animateWithDuration:0.2 animations:^{
+             self->checkSec  = KCheckSec;
+            weakSelf.labTimer.text = @"60";
+            self->viewOBaList.mj_x = -KscreenWidth;
+            [self->viewOBaList removeFromSuperview];
+            [self->timer invalidate];
+            
+        }];
+        
+        return;
+    }
     for (ChannelModel *model in channelList) {
         model.isSelect = NO;
     }
@@ -631,6 +706,61 @@
     launchMiniProgramReq.miniProgramType = 0; //正式版
     [WXApi sendReq:launchMiniProgramReq]; //拉起微信支付
 }
+
+-(void)actionTimeUpdate{
+    if (checkSec > 0) {
+        checkSec --;
+        self.labTimer.text = [NSString stringWithFormat:@"%ld",checkSec];
+    }else{
+        checkSec = KCheckSec;
+        [timer invalidate];
+        self.labTimer.text = [NSString stringWithFormat:@"%ld",checkSec];
+        [UIView animateWithDuration:0.2 animations:^{
+            self->viewOBaList.mj_x = -KscreenWidth;
+            [self->viewOBaList removeFromSuperview];
+            [self->itemAlert hidenAlert];
+            
+        }];
+    }
+}
+
+-(void)startTimer{
+        timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(actionTimeUpdate) userInfo:nil repeats:YES ];
+}
+
+- (void)navigationBackToLastPage{
+    viewOBaList.mj_x = -KscreenWidth;
+    [[UIApplication sharedApplication].keyWindow addSubview:viewOBaList];
+    [UIView animateWithDuration:0.3 animations:^{
+        self->viewOBaList.mj_x = 0;
+        [self startTimer];
+    }];
+}
+
+- (IBAction)actionBack:(id)sender {
+    [self navigationBackToLastPageitem];
+}
+
+-(void)showObaComeView{
+    _viewOPaComeOn.frame = [UIScreen mainScreen].bounds;
+    [[UIApplication sharedApplication].keyWindow addSubview:_viewOPaComeOn];
+    
+    NSArray *images = @[[UIImage imageNamed:@"oba0.png"],[UIImage imageNamed:@"oba1.png"]];
+    
+    imgObaComeOn.frame = CGRectMake(320/2-117/2, 150, 117, 120);
+    viewImgContent.layer.cornerRadius = 8;
+    viewImgContent.layer.masksToBounds = YES;
+    imgObaComeOn.animationImages = images;  // 设置动画数组
+    
+    imgObaComeOn.animationDuration = 0.5f;  // 动画播放时间
+    
+    [imgObaComeOn startAnimating];          // 开始动画
+    MJWeakSelf;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [weakSelf.viewOPaComeOn removeFromSuperview];
+    });
+}
+
 
 
 @end

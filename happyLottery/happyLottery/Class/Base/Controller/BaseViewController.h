@@ -18,7 +18,7 @@
 
 
 @interface BaseViewController : UIViewController
-@property (nonatomic ,strong)NSString *viewControllerNo;
+@property (nonatomic ,strong)NSString * _Nullable viewControllerNo;
 @property (nonatomic,strong)MemberManager * memberMan;
 @property (nonatomic,strong)LotteryManager * lotteryMan;
 @property (nonatomic,strong)AgentManager * agentMan;

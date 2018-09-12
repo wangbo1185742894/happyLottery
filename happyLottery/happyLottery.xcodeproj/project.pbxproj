@@ -937,6 +937,10 @@
 		2DDEDE7F1FD568C9007AEBF7 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDEDC961FD568A4007AEBF7 /* UIProgressView+AFNetworking.m */; };
 		2DDEDE801FD568C9007AEBF7 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDEDC981FD568A4007AEBF7 /* UIRefreshControl+AFNetworking.m */; };
 		2DDEDE811FD568C9007AEBF7 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDEDC9A1FD568A4007AEBF7 /* UIWebView+AFNetworking.m */; };
+		2DDF0AF021478D6F006311E9 /* TabObaListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDF0AEE21478D6F006311E9 /* TabObaListCell.m */; };
+		2DDF0AF121478D6F006311E9 /* TabObaListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DDF0AEF21478D6F006311E9 /* TabObaListCell.xib */; };
+		2DDF0AF42147921D006311E9 /* oba1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DDF0AF22147921C006311E9 /* oba1.png */; };
+		2DDF0AF52147921D006311E9 /* oba0.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DDF0AF32147921C006311E9 /* oba0.png */; };
 		2DE109492003423E0020343A /* hometeam@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE109472003423C0020343A /* hometeam@2x.png */; };
 		2DE1094A2003423E0020343A /* hometeam@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE109482003423C0020343A /* hometeam@3x.png */; };
 		2DE10950200356350020343A /* JingCaiOrderCode.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DE1094F200356350020343A /* JingCaiOrderCode.plist */; };
@@ -3045,6 +3049,11 @@
 		2DDEDC981FD568A4007AEBF7 /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		2DDEDC991FD568A4007AEBF7 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		2DDEDC9A1FD568A4007AEBF7 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		2DDF0AED21478D6F006311E9 /* TabObaListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabObaListCell.h; sourceTree = "<group>"; };
+		2DDF0AEE21478D6F006311E9 /* TabObaListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabObaListCell.m; sourceTree = "<group>"; };
+		2DDF0AEF21478D6F006311E9 /* TabObaListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabObaListCell.xib; sourceTree = "<group>"; };
+		2DDF0AF22147921C006311E9 /* oba1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = oba1.png; sourceTree = "<group>"; };
+		2DDF0AF32147921C006311E9 /* oba0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = oba0.png; sourceTree = "<group>"; };
 		2DE109472003423C0020343A /* hometeam@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hometeam@2x.png"; sourceTree = "<group>"; };
 		2DE109482003423C0020343A /* hometeam@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hometeam@3x.png"; sourceTree = "<group>"; };
 		2DE1094F200356350020343A /* JingCaiOrderCode.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = JingCaiOrderCode.plist; sourceTree = "<group>"; };
@@ -5116,6 +5125,8 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				2DDF0AF32147921C006311E9 /* oba0.png */,
+				2DDF0AF22147921C006311E9 /* oba1.png */,
 				2D0174DB21420FBB00E2606B /* lianxikefu@2x.png */,
 				2D0174DC21420FBC00E2606B /* lianxikefu@3x.png */,
 				F947DCF62140C37600F3BB98 /* gendanTag@2x.png */,
@@ -6090,6 +6101,9 @@
 				2D438D7A210B081B002087CE /* BounsYouViewCell.h */,
 				2D438D7B210B081B002087CE /* BounsYouViewCell.m */,
 				2D438D7C210B081B002087CE /* BounsYouViewCell.xib */,
+				2DDF0AED21478D6F006311E9 /* TabObaListCell.h */,
+				2DDF0AEE21478D6F006311E9 /* TabObaListCell.m */,
+				2DDF0AEF21478D6F006311E9 /* TabObaListCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -7633,6 +7647,7 @@
 				F928C6A91FF4A268001F1A32 /* MyCouponTableViewCell.xib in Resources */,
 				F9B5D9722060A9DE00C9F6DC /* flag23@3x.png in Resources */,
 				2D89D60B206CE3AE005E0209 /* WelComeViewController.xib in Resources */,
+				2DDF0AF52147921D006311E9 /* oba0.png in Resources */,
 				2D4B1E831FDF684E0034B708 /* wode_select@2x.png in Resources */,
 				2D438D7E210B081B002087CE /* BounsYouViewCell.xib in Resources */,
 				2D739CF01FEB4B0E00264044 /* xiala@3x.png in Resources */,
@@ -8192,6 +8207,7 @@
 				2D5171F7200C73BF00C3CD7F /* won_scheme@3x.png in Resources */,
 				2D05C86120A43631001A8953 /* quanzi_seleceted@2x.png in Resources */,
 				F93AC8171FFDF035003DF05C /* AboutViewController.xib in Resources */,
+				2DDF0AF42147921D006311E9 /* oba1.png in Resources */,
 				F95C7EEF2071DA89005990F5 /* SSQPlayViewController.xib in Resources */,
 				F9DC69A01FDF88E5007D384D /* IntegralMallViewController.xib in Resources */,
 				F9F6CA9D1FF5D6B100A49F71 /* voice@3x.png in Resources */,
@@ -8506,6 +8522,7 @@
 				2D7B1390204E82FD0035AE89 /* pic_shengfucai@3x.png in Resources */,
 				2DA39EE920538FBB00A03FD1 /* LotteryProfilesConfigdlt.plist in Resources */,
 				2D4B1E7D1FDF684E0034B708 /* quanzi_select@2x.png in Resources */,
+				2DDF0AF121478D6F006311E9 /* TabObaListCell.xib in Resources */,
 				F9BC6E2020C2B2EC0037998B /* dengdai@3x.png in Resources */,
 				2D05C84C20A43631001A8953 /* deletesearch@3x.png in Resources */,
 				2D7B133B204E24AA0035AE89 /* ballWhiteBG.png in Resources */,
@@ -8748,6 +8765,7 @@
 				2D638F5920EF1518004463FC /* UserInfoDetailViewController.m in Sources */,
 				2D7B13A7204E871C0035AE89 /* CTZQOpenLotteryViewController.m in Sources */,
 				2D739C171FE2611C00264044 /* IQUIScrollView+Additions.m in Sources */,
+				2DDF0AF021478D6F006311E9 /* TabObaListCell.m in Sources */,
 				2D7B134C204E2A330035AE89 /* DLTTouZhuViewController.m in Sources */,
 				2D0E2397201713260098DA40 /* UITableView+XY.m in Sources */,
 				2D8CBFC21FF349ED00CC367F /* JcPairingOptions.m in Sources */,

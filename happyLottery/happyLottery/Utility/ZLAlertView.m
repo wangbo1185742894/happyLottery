@@ -14,6 +14,7 @@
 {
     NSMutableArray *_arrayTitles;
     NSMutableArray *_arrayActions;
+    UIAlertView *itemAlert;
 }
 
 //iOS8.0之后会使用UIAlertController，所以需要使用调用该类的ViewController
@@ -75,6 +76,10 @@
     }
     self.sender = sender;
     [[UIView appearance] setTintColor:SystemGreen];
+    if ([self.sender isKindOfClass:[UIWindow class]]) {
+        [self showAlertView];
+        return;
+    }
     if (iOS8_0) {
         [self showAlertController];
     } else {
@@ -85,7 +90,6 @@
 - (void)showAlertController
 {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:_title message:_message preferredStyle:UIAlertControllerStyleAlert];
-    
     for (int i = 0; i < _arrayTitles.count; i++) {
         UIAlertAction *action = [UIAlertAction actionWithTitle:_arrayTitles[i] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             ClickAction ac = _arrayActions[i];
@@ -93,9 +97,9 @@
         }];
         [alert addAction:action];
     }
-    if (_sender) {
-        [_sender showDetailViewController:alert sender:nil];
-    }
+        if (_sender) {
+            [_sender showDetailViewController:alert sender:nil];
+        }
 }
 
 - (void)showAlertView
@@ -104,8 +108,15 @@
     for (NSString *title in _arrayTitles) {
         [alert addButtonWithTitle:title];
     }
-    
+    itemAlert = alert;
     [alert show];
+}
+
+-(void)hidenAlert{
+    if (itemAlert == nil) {
+        return;
+    }
+    [itemAlert dismissWithClickedButtonIndex:0 animated:YES];
 }
 
 #pragma mark - UIAlertViewDelegate

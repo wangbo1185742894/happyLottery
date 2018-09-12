@@ -641,7 +641,6 @@
         [self.delegate rechargeSmsIsSuccess:NO andPayInfo:nil errorMsg:@"请检查网络连接"];
         //失败的代理方法
     };
-    //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
     
     SOAPRequest *request = [self requestForAPI: APIrecharge withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]} ];
     [self newRequestWithRequest:request

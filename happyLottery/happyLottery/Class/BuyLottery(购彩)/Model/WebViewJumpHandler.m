@@ -30,15 +30,28 @@
 }
 
 -(void)goToJczq{
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        self.curVc.tabBarController.selectedIndex = 0;
-        [self.curNav popToRootViewControllerAnimated:YES];
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"NSNotificationBuyVCJump" object:@1000];
+ 
+    dispatch_async(dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0* NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            if ([self.curVc isMemberOfClass:[DiscoverViewController class]]) {
+                [self .curVc performSelector:@selector(goToJczq)];
+            }
+        });
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+              [[NSNotificationCenter defaultCenter]postNotificationName:@"NSNotificationJumpToPlayVC" object:@"JCZQ"];
+        });
+      
     });
-    if ([self.curVc isMemberOfClass:[DiscoverViewController class]]) {
-        [self .curVc performSelector:@selector(goToJczq)];
-    }
+    
+//    {
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            JCZQPlayViewController * playViewVC = [[JCZQPlayViewController alloc]init];
+//            playViewVC.hidesBottomBarWhenPushed = YES;
+//            [self.curNav pushViewController:playViewVC animated:YES];
+//        });
+ 
+//        return;
+//    }
 }
 -(void)SharingLinks{
     SEL action = NSSelectorFromString(@"SharingLinks");
@@ -86,10 +99,14 @@
         });
         return;
     }
-    [self goCathectic:lotteryCode];
+    if ([self.curVc isKindOfClass:[LotteryAreaViewController class]]) {
+        [self goCathectic:lotteryCode];
+        return;
+    }
     //上面是不需要登录
     if (self.curVc.curUser.isLogin == NO) {
-        [self.curVc needLogin];
+    
+        [self goToLogin];
         return;
     }
     //下面需要登录
@@ -149,7 +166,7 @@
     if (self.curVc.curUser.isLogin ==YES) {
         return self.curVc.curUser.cardCode;
     }else{
-        [self.curVc needLogin];
+        [self goToLogin];
         return @"";
     }
 }

@@ -126,6 +126,12 @@
     [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitUserSelect='none';"];
     [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitTouchCallout='none';"];
 }
+
+-(void)SharingLinks{
+    //    [self showPromptText:code hideAfterDelay:1.8];
+    [self.lotteryMan getCommonSetValue:@{@"typeCode":@"share",@"commonCode":@"share_activity"}];
+}
+
 -(void)gotCommonSetValue:(NSString *)strUrl{
     if (strUrl == nil || strUrl.length == 0) {
         return;

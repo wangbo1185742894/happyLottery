@@ -301,14 +301,24 @@
 //    }
    
     [self setRoundItemState:round01];
-    [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
-        labRoundInfo.text = [self.lottery.currentRound getTimeStr];
-    }];
+
+        if (@available(iOS 10.0, *)) {
+            [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
+                self->labRoundInfo.text = [self.lottery.currentRound getTimeStr];
+            }];
+        } else {
+            [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateStr) userInfo:nil repeats:YES];
+        }
+
 //    [timeCountDownView0 startTimeCountdown:self.lottery.currentRound];
 
     [self hideLoadingView];
     _jiangQiView.hidden = NO;
     [self updateSummary];
+}
+
+-(void)updateStr{
+    labRoundInfo.text = [self.lottery.currentRound getTimeStr];
 }
 
 -(void)updateTime{

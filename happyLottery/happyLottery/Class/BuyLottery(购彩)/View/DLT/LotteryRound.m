@@ -56,18 +56,20 @@
 
 -(void)changeServerTime{
 
-    [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
-        NSDate * date = [Utility dateFromDateStr:_serverTime withFormat:@"yyyy-MM-dd HH:mm:ss"];
-        NSDate *nextDay = [NSDate dateWithTimeInterval:1 sinceDate:date];
-        
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
-        [dateFormatter  setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-        
-        NSString * date1  = [dateFormatter stringFromDate:nextDay];
-        _serverTime = date1;
-        NSLog(@"%@",date);
-    }];
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateTime) userInfo:nil repeats:YES];
+}
+
+-(void)updateTime{
+    NSDate * date = [Utility dateFromDateStr:_serverTime withFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *nextDay = [NSDate dateWithTimeInterval:1 sinceDate:date];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+    [dateFormatter  setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    
+    NSString * date1  = [dateFormatter stringFromDate:nextDay];
+    _serverTime = date1;
+    NSLog(@"%@",date);
 }
 
 -(NSString *)getTimeStr{

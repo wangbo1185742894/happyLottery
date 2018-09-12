@@ -290,7 +290,14 @@
         return 170;
     }else   if(indexPath.section == 3){
         if (schemeList.count == 0) {
-            return (tabFollewView.bounds.size.height - [tabFollewView rectForSection:3].origin.y-40-44);
+            if (IS_IPHONE_5) {
+                return 1;
+            }
+            if ((tabFollewView.bounds.size.height - [tabFollewView rectForSection:3].origin.y-40-44) <= 0) {
+                return 1;
+            }else{
+                return (tabFollewView.bounds.size.height - [tabFollewView rectForSection:3].origin.y-40-44);
+            }
         }
         return 202;
     }else{

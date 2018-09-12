@@ -38,4 +38,6 @@ typedef void (^ClickAction)();
 
 NS_ASSUME_NONNULL_END
 
+-(void)hidenAlert;
+
 @end

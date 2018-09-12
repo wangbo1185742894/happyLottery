@@ -29,6 +29,7 @@
 }
 @property(nonatomic,strong)NSDate *openDate;
 @property(nonatomic,strong)NSDate *closeDate;
+@property (weak, nonatomic) IBOutlet UITableView *tabPaotuiOBa;
 @property(nonatomic,strong)WebViewJumpHandler *jumpHandler;
 @end
 
@@ -643,5 +644,6 @@
     }
     return self.jumpHandler;
 }
+
 
 @end

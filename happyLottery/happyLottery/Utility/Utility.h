@@ -24,6 +24,7 @@
 +(BOOL)isIOS7Later;
 +(BOOL)isIOS8Later;
 +(BOOL)isIOS11Later;
++(BOOL)isIOS10Before;
 +(BOOL)isLegalURL : (NSString *)urlStr;
 +(BOOL)isLegalString : (NSString *)str;
 +(BOOL)isLegalEmailAddress : (NSString *)emailStr;

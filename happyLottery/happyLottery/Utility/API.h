@@ -30,6 +30,8 @@
 #define WSServerURL @"http://192.168.88.244:28000/services%@"
 #define OmitServerURL @"http://192.88.244:19081/ms"
 
+//志斌服务
+//#define WSServerURL @"http://192.168.88.108:28086/services%@"
 //
 //#define H5BaseAddress @"http://192.168.88.193:18086"  //谢青服务
 //#define H5BaseAddress @"http://192.168.88.116:18086"  //史少鹏服务
