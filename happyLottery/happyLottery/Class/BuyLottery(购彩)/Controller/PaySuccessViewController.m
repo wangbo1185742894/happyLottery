@@ -30,13 +30,21 @@
 #import "UMChongZhiViewController.h"
 #import "YuCeSchemeCreateViewController.h"
 #import "GroupFollowViewController.h"
+#import "RedPackageView.h"
+#import "WBInputPopView.h"
+#import "AESUtility.h"
 
-@interface PaySuccessViewController ()<LotteryManagerDelegate>
+#define iOS8_0 [[[UIDevice currentDevice] systemVersion] doubleValue] >= 8.0
+
+@interface PaySuccessViewController ()<LotteryManagerDelegate,RedPackageViewDelegete,WBInputPopViewDelegate,MemberManagerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *btnPostScheme;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *btnHeightPostScheme;
 @end
 
-@implementation PaySuccessViewController
+@implementation PaySuccessViewController{
+    UIAlertController *alert;
+    WBInputPopView *passInput;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -48,6 +56,7 @@
     }else{
         self.btnHeightPostScheme.constant = 0;
     }
+    self.memberMan.delegate = self;
     self.lotteryMan.delegate = self;
     if (self.isMoni) {
         self.labChuPiaoimg.text = @"";
@@ -227,10 +236,69 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
+#pragma mark ====== 发单红包 =====
+
 - (IBAction)actionPostScheme:(id)sender {
-    self.btnPostScheme.userInteractionEnabled = NO;
+    RedPackageView *redPackView = [[RedPackageView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    redPackView.delegate = self;
+    redPackView.totalBanlece = self.curUser.totalBanlece;
+    [[UIApplication sharedApplication].keyWindow addSubview:redPackView];
+}
+
+//RedPackageViewDelegete
+- (void)initiateFollowScheme {
     [self.lotteryMan initiateFollowScheme:@{@"schemeNo":self.schemeNO}];
 }
+
+//RedPackageViewDelegete
+- (void)payForRedPackage{
+   [self showPayPopView];
+}
+
+- (void)showPayPopView{
+    if (nil == passInput) {
+        passInput = [[WBInputPopView alloc]init];
+        passInput.delegate = self;
+        passInput.labTitle.text = @"请输入支付密码";
+    }
+    [self.view addSubview:passInput];
+    passInput.delegate = self;
+    [passInput.txtInput becomeFirstResponder];
+    [passInput createBlock:^(NSString *text) {
+        
+        if (nil == text) {
+            [self showPromptText:@"请输入支付密码" hideAfterDelay:2.7];
+            return;
+        }
+        
+        NSDictionary *cardInfo= @{@"cardCode":self.curUser.cardCode,
+                                  @"payPwd":[AESUtility encryptStr:text]};
+        [self.memberMan validatePaypwdSms:cardInfo];
+    }];
+    
+}
+
+//WBInputPopViewdelegate
+-(void)findPayPwd{
+    [self forgetPayPwd];
+}
+
+//WBInputPopViewdelegate
+- (void)clickBackGround{
+    [self.lotteryMan initiateFollowScheme:@{@"schemeNo":self.schemeNO}];
+}
+
+-(void)validatePaypwdSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    [passInput removeFromSuperview];
+    if (success == YES) {
+        //密码验证成功，扣除红包金额，发单
+        
+    }else{
+        //密码验证失败，不发红包
+        [self showPromptText:msg hideAfterDelay:1.7];
+    }
+}
+
 - (void)initiateFollowScheme:(NSString *)resultStr errorMsg:(NSString *)msg{
     if(resultStr != nil && resultStr.length > 0){
         [self showPromptText:@"发单成功" hideAfterDelay:1.9];

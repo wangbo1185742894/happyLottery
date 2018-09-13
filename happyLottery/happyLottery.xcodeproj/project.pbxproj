@@ -1384,6 +1384,14 @@
 		F9ADB10520FDCF4700AFAA03 /* ZhuiHaoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9ADB10320FDCF4700AFAA03 /* ZhuiHaoCell.m */; };
 		F9ADB10620FDCF4700AFAA03 /* ZhuiHaoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9ADB10420FDCF4700AFAA03 /* ZhuiHaoCell.xib */; };
 		F9ADB10820FDF41800AFAA03 /* zhuihao.html in Resources */ = {isa = PBXBuildFile; fileRef = F9ADB10720FDF41700AFAA03 /* zhuihao.html */; };
+		F9ADD2C52148B85D0091C4A1 /* RedPackageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9ADD2C42148B85D0091C4A1 /* RedPackageView.m */; };
+		F9ADD2C72148B8BF0091C4A1 /* RedPackageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9ADD2C62148B8BF0091C4A1 /* RedPackageView.xib */; };
+		F9ADD2CA2148F2C50091C4A1 /* redNew_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9ADD2C82148F2C30091C4A1 /* redNew_close@2x.png */; };
+		F9ADD2CB2148F2C50091C4A1 /* redNew_close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9ADD2C92148F2C40091C4A1 /* redNew_close@3x.png */; };
+		F9ADD2CE214931330091C4A1 /* redNew_open@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9ADD2CC214931310091C4A1 /* redNew_open@2x.png */; };
+		F9ADD2CF214931330091C4A1 /* redNew_open@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9ADD2CD214931320091C4A1 /* redNew_open@3x.png */; };
+		F9ADD2D2214931730091C4A1 /* redNew_disable@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9ADD2D0214931710091C4A1 /* redNew_disable@2x.png */; };
+		F9ADD2D3214931730091C4A1 /* redNew_disable@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9ADD2D1214931720091C4A1 /* redNew_disable@3x.png */; };
 		F9B5D8F6205F8B5000C9F6DC /* wordcup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9B5D8F4205F8B4F00C9F6DC /* wordcup@2x.png */; };
 		F9B5D8F7205F8B5000C9F6DC /* wordcup@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9B5D8F5205F8B4F00C9F6DC /* wordcup@3x.png */; };
 		F9B5D912205FB0B000C9F6DC /* GYJPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9B5D90F205FB0AE00C9F6DC /* GYJPlayViewController.m */; };
@@ -3596,6 +3604,15 @@
 		F9ADB10320FDCF4700AFAA03 /* ZhuiHaoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZhuiHaoCell.m; sourceTree = "<group>"; };
 		F9ADB10420FDCF4700AFAA03 /* ZhuiHaoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZhuiHaoCell.xib; sourceTree = "<group>"; };
 		F9ADB10720FDF41700AFAA03 /* zhuihao.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = zhuihao.html; sourceTree = "<group>"; };
+		F9ADD2C32148B85D0091C4A1 /* RedPackageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RedPackageView.h; sourceTree = "<group>"; };
+		F9ADD2C42148B85D0091C4A1 /* RedPackageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RedPackageView.m; sourceTree = "<group>"; };
+		F9ADD2C62148B8BF0091C4A1 /* RedPackageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RedPackageView.xib; sourceTree = "<group>"; };
+		F9ADD2C82148F2C30091C4A1 /* redNew_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redNew_close@2x.png"; sourceTree = "<group>"; };
+		F9ADD2C92148F2C40091C4A1 /* redNew_close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redNew_close@3x.png"; sourceTree = "<group>"; };
+		F9ADD2CC214931310091C4A1 /* redNew_open@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redNew_open@2x.png"; sourceTree = "<group>"; };
+		F9ADD2CD214931320091C4A1 /* redNew_open@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redNew_open@3x.png"; sourceTree = "<group>"; };
+		F9ADD2D0214931710091C4A1 /* redNew_disable@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redNew_disable@2x.png"; sourceTree = "<group>"; };
+		F9ADD2D1214931720091C4A1 /* redNew_disable@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redNew_disable@3x.png"; sourceTree = "<group>"; };
 		F9B5D8F4205F8B4F00C9F6DC /* wordcup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wordcup@2x.png"; sourceTree = "<group>"; };
 		F9B5D8F5205F8B4F00C9F6DC /* wordcup@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wordcup@3x.png"; sourceTree = "<group>"; };
 		F9B5D90F205FB0AE00C9F6DC /* GYJPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYJPlayViewController.m; sourceTree = "<group>"; };
@@ -5125,6 +5142,12 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				F9ADD2D0214931710091C4A1 /* redNew_disable@2x.png */,
+				F9ADD2D1214931720091C4A1 /* redNew_disable@3x.png */,
+				F9ADD2CC214931310091C4A1 /* redNew_open@2x.png */,
+				F9ADD2CD214931320091C4A1 /* redNew_open@3x.png */,
+				F9ADD2C92148F2C40091C4A1 /* redNew_close@3x.png */,
+				F9ADD2C82148F2C30091C4A1 /* redNew_close@2x.png */,
 				2DDF0AF32147921C006311E9 /* oba0.png */,
 				2DDF0AF22147921C006311E9 /* oba1.png */,
 				2D0174DB21420FBB00E2606B /* lianxikefu@2x.png */,
@@ -6015,6 +6038,9 @@
 				F9705E27207A0DE700E25E4E /* JCLQLotteryProfileSelectView.h */,
 				F9705E26207A0DE700E25E4E /* JCLQLotteryProfileSelectView.m */,
 				F9705E28207A0DE700E25E4E /* JCLQLotteryProfileSelectView.xib */,
+				F9ADD2C32148B85D0091C4A1 /* RedPackageView.h */,
+				F9ADD2C42148B85D0091C4A1 /* RedPackageView.m */,
+				F9ADD2C62148B8BF0091C4A1 /* RedPackageView.xib */,
 				2D3617852069D86B003093F9 /* GYJLeagueSelectView.h */,
 				2D3617862069D86C003093F9 /* GYJLeagueSelectView.m */,
 				2D3617842069D86B003093F9 /* GYJLeagueSelectView.xib */,
@@ -7435,6 +7461,7 @@
 				2D739CED1FEB490900264044 /* fangkuangjingcainomal@3x.png in Resources */,
 				2D4D608B20AD717900280033 /* activitymoney@2x.png in Resources */,
 				2D0E23AB2018833E0098DA40 /* switchbackground@3x.png in Resources */,
+				F9ADD2C72148B8BF0091C4A1 /* RedPackageView.xib in Resources */,
 				F9DC699B1FDF888F007D384D /* MyFavoriteViewController.xib in Resources */,
 				F9B5D9712060A9DE00C9F6DC /* flag23@2x.png in Resources */,
 				F9705E45207A0DE800E25E4E /* JCLQLotteryProfileSelectView.xib in Resources */,
@@ -7450,6 +7477,7 @@
 				F9BC6E6320C2DD3D0037998B /* xutu3@2x.png in Resources */,
 				2D5171F4200C72F300C3CD7F /* btn_change_@3x.png in Resources */,
 				2D05C86E20A43631001A8953 /* icon_niurenbang@3x.png in Resources */,
+				F9ADD2D3214931730091C4A1 /* redNew_disable@3x.png in Resources */,
 				2D05C86720A43631001A8953 /* icon_suozi@3x.png in Resources */,
 				2D8CBFFE1FF3857E00CC367F /* kuangyuanjiaolvse@3x.png in Resources */,
 				F94770C1200706BC0091729E /* jingcaizuqiu_hunheguoguan.html in Resources */,
@@ -7629,6 +7657,7 @@
 				2D0600921FFF4BDD009E7568 /* SchemeDetailMatchViewCell.xib in Resources */,
 				F954D51D200C49A600CD3B2B /* FunctionsViewController.xib in Resources */,
 				F958F18920BC04FF00F30690 /* icon_gengduo@2x.png in Resources */,
+				F9ADD2D2214931730091C4A1 /* redNew_disable@2x.png in Resources */,
 				2D4D608020AD45C400280033 /* ActivityInfoView.xib in Resources */,
 				2D205FF21FFC7AF30086E266 /* newFeatureView-1.png in Resources */,
 				2D30655920EB6C460084DB97 /* fengge@2x.png in Resources */,
@@ -7940,6 +7969,7 @@
 				2D438D79210AB7CC002087CE /* BounsYouHuaViewController.xib in Resources */,
 				2D7B13F4204E88420035AE89 /* OpenLotteryResultHeaderView.xib in Resources */,
 				F91565DD1FFCBB4A00E254CE /* ShareViewController.xib in Resources */,
+				F9ADD2CA2148F2C50091C4A1 /* redNew_close@2x.png in Resources */,
 				2D27A21720DC929D0050F6D5 /* wincup@3x.png in Resources */,
 				2D4B1E8C1FDF684E0034B708 /* yuce_select@3x.png in Resources */,
 				F9ADB10820FDF41800AFAA03 /* zhuihao.html in Resources */,
@@ -7949,6 +7979,7 @@
 				F9A75BBD20D0F6A9005AA881 /* mycircle_backgroup@3x.png in Resources */,
 				2D739CF91FEB5D1900264044 /* JCZQSelectBQCVIew.xib in Resources */,
 				F9BC6DFE20C285620037998B /* fandian_fencheng@2x.png in Resources */,
+				F9ADD2CB2148F2C50091C4A1 /* redNew_close@3x.png in Resources */,
 				F9705E1B207A0DAE00E25E4E /* JCLQTouZhuController.xib in Resources */,
 				2D628B2C1FECA9C40013D0E1 /* touzhubeishujia@3x.png in Resources */,
 				2D2060361FFCCB380086E266 /* SchemListCell.xib in Resources */,
@@ -8082,6 +8113,7 @@
 				2D7B13A3204E871C0035AE89 /* CTZQTouZhuViewController.xib in Resources */,
 				F9A75BBA20D0CFC9005AA881 /* border_renshu@2x.png in Resources */,
 				2D5171C92009C3B500C3CD7F /* button_checked@2x.png in Resources */,
+				F9ADD2CF214931330091C4A1 /* redNew_open@3x.png in Resources */,
 				F9F6CA9C1FF5D6B100A49F71 /* arrows@3x.png in Resources */,
 				F9CDBEC9202306E100A1BE71 /* 2@3x.png in Resources */,
 				2D30655E20EB71F30084DB97 /* omitshut@3x.png in Resources */,
@@ -8500,6 +8532,7 @@
 				2D05C85E20A43631001A8953 /* quanzi_normal@3x.png in Resources */,
 				F91565F11FFCBDAE00E254CE /* microblog@3x.png in Resources */,
 				2D36175F2061E6F2003093F9 /* shengfucai@3x.png in Resources */,
+				F9ADD2CE214931330091C4A1 /* redNew_open@2x.png in Resources */,
 				F97D0B4120B6BEA1003D09C6 /* genadnbanner@3x.png in Resources */,
 				F90FCD8D1FF396F700BD807C /* redpacket@2x.png in Resources */,
 				F9FC153F20625E9A009BAD68 /* gjplaytype.html in Resources */,
@@ -8698,6 +8731,7 @@
 				2D5171BA2008545F00C3CD7F /* ChannelModel.m in Sources */,
 				2D739C3A1FE365BE00264044 /* WebShowViewController.m in Sources */,
 				2D739C2A1FE26EA700264044 /* UIImage+ImageWithColor.m in Sources */,
+				F9ADD2C52148B85D0091C4A1 /* RedPackageView.m in Sources */,
 				F9FC0BF920C77A8D00BCCF59 /* GroupMemberVC.m in Sources */,
 				2D4B1E981FDF98600034B708 /* LoopProgressView.m in Sources */,
 				2D8CBFF71FF37D0800CC367F /* MGLabel.m in Sources */,
