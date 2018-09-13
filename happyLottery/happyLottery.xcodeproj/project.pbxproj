@@ -1392,6 +1392,7 @@
 		F9ADD2CF214931330091C4A1 /* redNew_open@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9ADD2CD214931320091C4A1 /* redNew_open@3x.png */; };
 		F9ADD2D2214931730091C4A1 /* redNew_disable@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9ADD2D0214931710091C4A1 /* redNew_disable@2x.png */; };
 		F9ADD2D3214931730091C4A1 /* redNew_disable@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9ADD2D1214931720091C4A1 /* redNew_disable@3x.png */; };
+		F9ADD2DF214A02FA0091C4A1 /* InitiateFollowRedPModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F9ADD2DE214A02FA0091C4A1 /* InitiateFollowRedPModel.m */; };
 		F9B5D8F6205F8B5000C9F6DC /* wordcup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9B5D8F4205F8B4F00C9F6DC /* wordcup@2x.png */; };
 		F9B5D8F7205F8B5000C9F6DC /* wordcup@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9B5D8F5205F8B4F00C9F6DC /* wordcup@3x.png */; };
 		F9B5D912205FB0B000C9F6DC /* GYJPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9B5D90F205FB0AE00C9F6DC /* GYJPlayViewController.m */; };
@@ -3613,6 +3614,8 @@
 		F9ADD2CD214931320091C4A1 /* redNew_open@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redNew_open@3x.png"; sourceTree = "<group>"; };
 		F9ADD2D0214931710091C4A1 /* redNew_disable@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redNew_disable@2x.png"; sourceTree = "<group>"; };
 		F9ADD2D1214931720091C4A1 /* redNew_disable@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redNew_disable@3x.png"; sourceTree = "<group>"; };
+		F9ADD2DD214A02FA0091C4A1 /* InitiateFollowRedPModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InitiateFollowRedPModel.h; sourceTree = "<group>"; };
+		F9ADD2DE214A02FA0091C4A1 /* InitiateFollowRedPModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InitiateFollowRedPModel.m; sourceTree = "<group>"; };
 		F9B5D8F4205F8B4F00C9F6DC /* wordcup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wordcup@2x.png"; sourceTree = "<group>"; };
 		F9B5D8F5205F8B4F00C9F6DC /* wordcup@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wordcup@3x.png"; sourceTree = "<group>"; };
 		F9B5D90F205FB0AE00C9F6DC /* GYJPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYJPlayViewController.m; sourceTree = "<group>"; };
@@ -6896,6 +6899,8 @@
 				F9A941D320A92C1900A7D67A /* PersonCenterModel.m */,
 				F954A7A7211330A300B40D00 /* SearchPerModel.h */,
 				F954A7A8211330A300B40D00 /* SearchPerModel.m */,
+				F9ADD2DD214A02FA0091C4A1 /* InitiateFollowRedPModel.h */,
+				F9ADD2DE214A02FA0091C4A1 /* InitiateFollowRedPModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -9002,6 +9007,7 @@
 				2D16601A20A2D4DF00C1C7E7 /* FollowSchemeViewCell.m in Sources */,
 				F94AA9D21FEB66FF0021B980 /* WithdrawalsViewController.m in Sources */,
 				2DDEDC1A1FD4DE97007AEBF7 /* Utility.m in Sources */,
+				F9ADD2DF214A02FA0091C4A1 /* InitiateFollowRedPModel.m in Sources */,
 				2DDEDE711FD568C9007AEBF7 /* AFSecurityPolicy.m in Sources */,
 				F9B5D912205FB0B000C9F6DC /* GYJPlayViewController.m in Sources */,
 				2D4EE8E7211AF3B3000DF540 /* ShareOrderView.m in Sources */,

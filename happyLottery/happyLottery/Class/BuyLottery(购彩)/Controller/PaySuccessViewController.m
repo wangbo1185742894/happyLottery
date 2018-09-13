@@ -33,6 +33,7 @@
 #import "RedPackageView.h"
 #import "WBInputPopView.h"
 #import "AESUtility.h"
+#import "InitiateFollowRedPModel.h"
 
 #define iOS8_0 [[[UIDevice currentDevice] systemVersion] doubleValue] >= 8.0
 
@@ -44,6 +45,9 @@
 @implementation PaySuccessViewController{
     UIAlertController *alert;
     WBInputPopView *passInput;
+    NSString * univalent; /** 单个价格 */
+    NSString * totalCount;  /** 红包个数 */
+    InitiateFollowRedPModel *model;
 }
 
 - (void)viewDidLoad {
@@ -77,6 +81,19 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.btnPostScheme.userInteractionEnabled = YES;
+    if (self.schemetype == SchemeTypeFaqiGenDan && self.btnHeightPostScheme.constant == 0) {
+        [self initRedPackageView];
+    }
+}
+
+- (void)initRedPackageView {
+    RedPackageView *redPackView = [[RedPackageView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    redPackView.delegate = self;
+    redPackView.totalBanlece = [NSString stringWithFormat:@"%.2f",[self.curUser.balance doubleValue] + [self.curUser.notCash doubleValue]];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [[UIApplication sharedApplication].keyWindow addSubview:redPackView];
+    });
+    
 }
 
 - (IBAction)actionLookOrder:(id)sender {
@@ -239,20 +256,22 @@
 #pragma mark ====== 发单红包 =====
 
 - (IBAction)actionPostScheme:(id)sender {
-    RedPackageView *redPackView = [[RedPackageView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    redPackView.delegate = self;
-    redPackView.totalBanlece = self.curUser.totalBanlece;
-    [[UIApplication sharedApplication].keyWindow addSubview:redPackView];
+    [self initRedPackageView];
 }
 
 //RedPackageViewDelegete
 - (void)initiateFollowScheme {
+    if (self.schemetype == SchemeTypeFaqiGenDan && self.btnHeightPostScheme.constant == 0) {
+        return;
+    }
     [self.lotteryMan initiateFollowScheme:@{@"schemeNo":self.schemeNO}];
 }
 
 //RedPackageViewDelegete
-- (void)payForRedPackage{
-   [self showPayPopView];
+- (void)payForRedPackage:(NSString *)count andMoney:(NSString *)money{
+     univalent = money;
+     totalCount = count;
+     [self showPayPopView];
 }
 
 - (void)showPayPopView{
@@ -292,6 +311,20 @@
     [passInput removeFromSuperview];
     if (success == YES) {
         //密码验证成功，扣除红包金额，发单
+        model = [InitiateFollowRedPModel new];
+        model.schemeNo = self.schemeNO;
+        model.cardCode = self.curUser.cardCode;
+        model.amount = [NSString stringWithFormat:@"%ld",[univalent integerValue]* [totalCount integerValue]];
+        model.univalent = univalent;
+        model.totalCount = totalCount;
+        model.randomType = NORMAL;
+        
+        if ( self.schemetype == SchemeTypeFaqiGenDan && self.btnHeightPostScheme.constant == 0) {
+            [self.lotteryMan initiateFollowRedPacketPayment:@{@"initiateFollowRedPacket":[model submitParaDicScheme]}];
+         
+        } else {
+            [self.lotteryMan initiateFollowScheme:@{@"schemeNo":self.schemeNO,@"initiateFollowRedPacket":[model submitParaDicScheme]}];
+        }
         
     }else{
         //密码验证失败，不发红包
@@ -314,7 +347,15 @@
         [vcS addObject:myOrderListVC];
         self.navigationController.viewControllers = vcS;
     });
-   
+}
+
+- (void)initiateFollowRedPacketPayment:(NSString *)resultStr  errorMsg:(NSString *)msg{
+    if(resultStr != nil && resultStr.length > 0){
+        [self showPromptText:@"发红包成功" hideAfterDelay:1.9];
+    }else{
+        [self showPromptText:msg hideAfterDelay:1.9];
+        return;
+    }
 }
 
 @end

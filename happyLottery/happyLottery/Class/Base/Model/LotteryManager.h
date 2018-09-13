@@ -80,6 +80,9 @@ typedef enum EarningsType{
 
 - (void) gotFollowSchemeBySchemeNo:(NSDictionary *)resultDic  errorInfo:(NSString *)msg;
 
+- (void)initiateFollowRedPacketPayment:(NSString *)resultStr  errorMsg:(NSString *)msg;
+
+
 @end
 
 @interface LotteryManager : Manager
@@ -145,6 +148,8 @@ typedef enum EarningsType{
 - (void)listRecommendPer:(NSDictionary *)infoDic categoryCode:(NSString *)categoryCode;//获取牛人，红人，红单榜
 
 - (void)initiateFollowScheme:(NSDictionary *)infoDic;
+
+- (void)initiateFollowRedPacketPayment:(NSDictionary *)infoDic;
 
 - (void)listGreatFollow:(NSDictionary *)infoDic;
 

@@ -65,7 +65,7 @@
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="5" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oNK-EZ-boI">
-                                    <rect key="frame" x="0.0" y="65" width="295" height="45"/>
+                                    <rect key="frame" x="0.0" y="67" width="295" height="45"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="45" id="n5E-jx-0y9"/>
                                     </constraints>
@@ -74,24 +74,40 @@
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HrI-YJ-ZQ0">
-                                    <rect key="frame" x="120.5" y="110" width="54" height="85"/>
+                                    <rect key="frame" x="120.5" y="129" width="54" height="49"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                     <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="单个红包至少1元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZF-an-tC1">
+                                    <rect key="frame" x="2" y="50" width="99" height="16"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" red="0.98431372549999996" green="0.58039215690000001" blue="0.058823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="红包个数至少5个" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwy-8S-SsF">
+                                    <rect key="frame" x="2" y="112" width="101" height="16"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" red="0.98431372549999996" green="0.58039215690000001" blue="0.058823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="HrI-YJ-ZQ0" firstAttribute="centerX" secondItem="mtg-gg-YYQ" secondAttribute="centerX" id="5k2-mu-dLr"/>
-                                <constraint firstItem="oNK-EZ-boI" firstAttribute="top" secondItem="OAI-NC-hB6" secondAttribute="bottom" constant="15" id="A0b-Cg-N7j"/>
+                                <constraint firstItem="oNK-EZ-boI" firstAttribute="top" secondItem="OAI-NC-hB6" secondAttribute="bottom" constant="17" id="A0b-Cg-N7j"/>
                                 <constraint firstItem="oNK-EZ-boI" firstAttribute="leading" secondItem="mtg-gg-YYQ" secondAttribute="leading" id="BWT-Mj-uYt"/>
                                 <constraint firstItem="OAI-NC-hB6" firstAttribute="leading" secondItem="mtg-gg-YYQ" secondAttribute="leading" id="EIH-RD-qb3"/>
                                 <constraint firstAttribute="trailing" secondItem="OAI-NC-hB6" secondAttribute="trailing" id="Lj5-KE-UP1"/>
                                 <constraint firstAttribute="height" constant="195" id="MWv-JU-UUk"/>
-                                <constraint firstItem="HrI-YJ-ZQ0" firstAttribute="top" secondItem="oNK-EZ-boI" secondAttribute="bottom" id="Wdp-LX-6Ug"/>
+                                <constraint firstItem="qwy-8S-SsF" firstAttribute="leading" secondItem="oNK-EZ-boI" secondAttribute="leading" constant="2" id="R0b-YG-oS0"/>
+                                <constraint firstItem="qwy-8S-SsF" firstAttribute="top" secondItem="oNK-EZ-boI" secondAttribute="bottom" id="TdK-kT-jMm"/>
+                                <constraint firstItem="HrI-YJ-ZQ0" firstAttribute="top" secondItem="oNK-EZ-boI" secondAttribute="bottom" constant="17" id="Wdp-LX-6Ug"/>
                                 <constraint firstItem="OAI-NC-hB6" firstAttribute="top" secondItem="mtg-gg-YYQ" secondAttribute="top" constant="5" id="Y4j-WI-69E"/>
-                                <constraint firstAttribute="bottom" secondItem="HrI-YJ-ZQ0" secondAttribute="bottom" id="cLS-yG-m47"/>
+                                <constraint firstItem="FZF-an-tC1" firstAttribute="top" secondItem="OAI-NC-hB6" secondAttribute="bottom" id="a3Y-YS-kTM"/>
+                                <constraint firstAttribute="bottom" secondItem="HrI-YJ-ZQ0" secondAttribute="bottom" constant="17" id="cLS-yG-m47"/>
                                 <constraint firstAttribute="trailing" secondItem="oNK-EZ-boI" secondAttribute="trailing" id="erc-T6-wUC"/>
+                                <constraint firstItem="FZF-an-tC1" firstAttribute="leading" secondItem="OAI-NC-hB6" secondAttribute="leading" constant="2" id="fbw-vv-vOI"/>
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o25-zh-eaT">
@@ -166,10 +182,12 @@
                 <outlet property="alertView" destination="yeW-lR-uie" id="zrn-DM-OMN"/>
                 <outlet property="closeBtn" destination="g6q-hz-q9f" id="nJ2-KX-8aP"/>
                 <outlet property="countMoneyLab" destination="HrI-YJ-ZQ0" id="s31-UQ-QqN"/>
+                <outlet property="countNoticeLab" destination="qwy-8S-SsF" id="meo-JZ-hCl"/>
                 <outlet property="countTextField" destination="oNK-EZ-boI" id="FIK-Wq-T3Q"/>
                 <outlet property="detailLab" destination="ke7-MW-VQW" id="cqF-aN-0mC"/>
                 <outlet property="inputView" destination="mtg-gg-YYQ" id="hqu-b6-DRI"/>
                 <outlet property="inputViewHeight" destination="MWv-JU-UUk" id="ZKG-pE-NxZ"/>
+                <outlet property="moneyNoticeLab" destination="FZF-an-tC1" id="8gi-Qp-6wc"/>
                 <outlet property="okBtn" destination="o25-zh-eaT" id="rT8-24-a1M"/>
                 <outlet property="redLab" destination="SM8-TY-zjY" id="KPL-Sg-sL3"/>
                 <outlet property="switchView" destination="Cxg-tn-k4q" id="wv4-nk-Nzl"/>

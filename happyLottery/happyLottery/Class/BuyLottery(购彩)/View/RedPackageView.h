@@ -12,7 +12,7 @@
 
 - (void)initiateFollowScheme;
 
-- (void)payForRedPackage;
+- (void)payForRedPackage:(NSString *)count andMoney:(NSString *)money;
 
 @end
 

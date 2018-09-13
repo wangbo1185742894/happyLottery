@@ -27,10 +27,15 @@
 @property (weak, nonatomic) IBOutlet UIView *inputView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *inputViewHeight;
 @property (weak, nonatomic) IBOutlet UIButton *closeBtn;
+@property (weak, nonatomic) IBOutlet UILabel *moneyNoticeLab;
+@property (weak, nonatomic) IBOutlet UILabel *countNoticeLab;
 
 @end
 
-@implementation RedPackageView
+@implementation RedPackageView{
+    NSInteger count;  //红包个数
+    NSInteger yuan; //单个价格
+}
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -96,26 +101,40 @@
     self.countTextField.rightViewMode = UITextFieldViewModeAlways;
     self.countTextField.rightView = labelCountRight;
     [self upDateCountMoney];
+    
+    self.moneyNoticeLab.hidden = YES;
+    self.countNoticeLab.hidden = YES;
 }
 
 //键盘关闭更新数据
 - (void)upDateCountMoney{
-    NSInteger count;
-    if ([self.countTextField.text isEqualToString:@""]) {
-        count = [self.countTextField.placeholder integerValue];
-    } else {
-        count = [self.countTextField.text integerValue];
-    }
-    NSInteger yuan;
-    if ([self.yuanTextField.text isEqualToString:@""]) {
-        yuan = [self.yuanTextField.placeholder integerValue];
-    } else {
-        yuan = [self.yuanTextField.text integerValue];
-    }
+    count = [self.countTextField.text integerValue];
+    yuan = [self.yuanTextField.text integerValue];
     self.countMoneyLab.text = [NSString stringWithFormat:@"￥ %ld",count * yuan];
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if (textField.text.length == 0 && [string isEqualToString:@"0"]) {
+        return NO;
+    }
+    return YES;
+}
+
+
 - (void)textFieldDidEndEditing:(UITextField *)textField{
+    if ([textField.text integerValue]<1 && textField == self.yuanTextField) {
+        textField.text = @"1";
+        self.moneyNoticeLab.hidden = NO;
+    } else {
+        self.moneyNoticeLab.hidden = YES;
+    }
+    if ([textField.text integerValue]<5 && textField == self.countTextField) {
+        textField.text = @"5";
+        self.countNoticeLab.text = @"红包个数至少5个";
+        self.countNoticeLab.hidden = NO;
+    } else{
+        self.countNoticeLab.hidden = YES;
+    }
     [self upDateCountMoney];
 }
 
@@ -146,9 +165,20 @@
 }
 
 - (IBAction)actionOkBtn:(id)sender {
-    if (self.switchView.on) { //支付红包金额
+    if (self.switchView.on) { //支付红包金额 并发单
+        //验证金额
+        if ([self.totalBanlece integerValue] < count * yuan) {
+            self.countNoticeLab.text = @"余额不足，请重新设置";
+            self.countNoticeLab.hidden = NO;
+            self.countTextField.text = @"5";
+            self.yuanTextField.text = @"1";
+            [self upDateCountMoney];
+            return;
+        }
+        self.countNoticeLab.hidden = YES;
+        self.moneyNoticeLab.hidden = YES;
         [self closeView];
-        [self.delegate payForRedPackage];
+        [self.delegate payForRedPackage:[NSString stringWithFormat:@"%ld",count] andMoney:[NSString stringWithFormat:@"%ld",yuan]];
     }else { //发单
         [self closeView];
         [self.delegate initiateFollowScheme];

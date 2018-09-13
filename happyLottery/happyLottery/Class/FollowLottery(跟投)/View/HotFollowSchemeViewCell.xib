@@ -177,6 +177,16 @@
                                     <constraint firstAttribute="width" constant="55" id="FTK-wR-qHQ"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DSA-8J-uHQ">
+                                <rect key="frame" x="344" y="57" width="22.5" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="4ah-QV-4t9"/>
+                                    <constraint firstAttribute="width" constant="22.5" id="7BH-8x-qGa"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="redNew_close.png"/>
+                                <state key="disabled" image="redNew_disable.png"/>
+                                <state key="selected" image="redNew_open.png"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -188,8 +198,10 @@
                             <constraint firstItem="j8E-Lg-GaF" firstAttribute="leading" secondItem="6qL-fj-HIw" secondAttribute="trailing" constant="65" id="DKr-ae-oAD"/>
                             <constraint firstItem="Fd8-h2-mGe" firstAttribute="top" secondItem="kgX-Lu-lLm" secondAttribute="top" constant="10" id="KtX-6e-1ol"/>
                             <constraint firstItem="cta-kC-bdW" firstAttribute="top" secondItem="j8E-Lg-GaF" secondAttribute="top" id="LFe-yN-p32"/>
+                            <constraint firstItem="DSA-8J-uHQ" firstAttribute="centerY" secondItem="e9u-FE-jy4" secondAttribute="centerY" id="Nac-Ew-Phf"/>
                             <constraint firstItem="Fd8-h2-mGe" firstAttribute="leading" secondItem="kgX-Lu-lLm" secondAttribute="leading" constant="15" id="NrX-N0-iGI"/>
                             <constraint firstItem="e9u-FE-jy4" firstAttribute="leading" secondItem="j8E-Lg-GaF" secondAttribute="trailing" constant="20" id="UA0-WO-fdk"/>
+                            <constraint firstItem="DSA-8J-uHQ" firstAttribute="leading" secondItem="e9u-FE-jy4" secondAttribute="trailing" constant="15" id="UKJ-Jk-fru"/>
                             <constraint firstItem="cta-kC-bdW" firstAttribute="leading" secondItem="j8E-Lg-GaF" secondAttribute="trailing" constant="8" id="Ucc-st-y2L"/>
                             <constraint firstItem="6qL-fj-HIw" firstAttribute="top" secondItem="eco-81-wFN" secondAttribute="bottom" constant="12" id="Zw0-pZ-tdQ"/>
                             <constraint firstItem="eco-81-wFN" firstAttribute="leading" secondItem="Fd8-h2-mGe" secondAttribute="trailing" constant="5" id="hXB-OA-C1w"/>
@@ -288,6 +300,9 @@
     <resources>
         <image name="gendanTag.png" width="46" height="17"/>
         <image name="icon_suozi.png" width="11" height="14"/>
+        <image name="redNew_close.png" width="22" height="25"/>
+        <image name="redNew_disable.png" width="22" height="25"/>
+        <image name="redNew_open.png" width="22" height="25"/>
         <image name="usermine.png" width="58" height="58"/>
         <image name="win.png" width="65" height="52"/>
     </resources>
