@@ -400,25 +400,13 @@
                             <color key="textColor" red="0.55294117649999996" green="0.55294117649999996" blue="0.55294117649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UQM-ya-Hth">
-                            <rect key="frame" x="324" y="32" width="22.5" height="25"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="22.5" id="EqK-Ju-f3z"/>
-                                <constraint firstAttribute="height" constant="25" id="oio-h2-4Wr"/>
-                            </constraints>
-                            <state key="normal" title="Button" image="redNew_close.png"/>
-                            <state key="disabled" image="redNew_disable.png"/>
-                            <state key="selected" image="redNew_open.png"/>
-                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="iIc-EN-gqf" firstAttribute="leading" secondItem="OJ0-vf-AVC" secondAttribute="leading" constant="20" id="F6f-Nv-SC9"/>
-                        <constraint firstItem="UQM-ya-Hth" firstAttribute="top" secondItem="OJ0-vf-AVC" secondAttribute="top" constant="32" id="LPu-tP-8L0"/>
                         <constraint firstItem="jD1-CC-EMk" firstAttribute="centerX" secondItem="OJ0-vf-AVC" secondAttribute="centerX" id="ULY-E6-gR4"/>
                         <constraint firstItem="jD1-CC-EMk" firstAttribute="top" secondItem="OJ0-vf-AVC" secondAttribute="top" constant="57" id="UQ1-MI-qiM"/>
                         <constraint firstItem="iIc-EN-gqf" firstAttribute="centerY" secondItem="ywg-tc-jF5" secondAttribute="centerY" id="WMu-aN-RBw"/>
-                        <constraint firstAttribute="trailing" secondItem="UQM-ya-Hth" secondAttribute="trailing" constant="28.5" id="Yb6-IN-ChV"/>
                         <constraint firstItem="onI-Pg-y6F" firstAttribute="top" secondItem="OJ0-vf-AVC" secondAttribute="top" constant="141" id="s1T-BL-PFq"/>
                         <constraint firstItem="onI-Pg-y6F" firstAttribute="centerX" secondItem="OJ0-vf-AVC" secondAttribute="centerX" id="vMd-Ls-Sbq"/>
                         <constraint firstItem="ywg-tc-jF5" firstAttribute="leading" secondItem="OJ0-vf-AVC" secondAttribute="leading" constant="15" id="vxX-IY-keg"/>
@@ -560,9 +548,6 @@
     <resources>
         <image name="gendanxiangqing.png" width="149" height="68"/>
         <image name="jiangji_youhuaTag.png" width="117" height="17"/>
-        <image name="redNew_close.png" width="22" height="25"/>
-        <image name="redNew_disable.png" width="22" height="25"/>
-        <image name="redNew_open.png" width="22" height="25"/>
         <image name="smartfollow_add_pressed.png" width="16" height="16"/>
         <image name="smartfollow_sub_press.png" width="16" height="16"/>
         <image name="touzhubeishujia.png" width="22" height="22"/>

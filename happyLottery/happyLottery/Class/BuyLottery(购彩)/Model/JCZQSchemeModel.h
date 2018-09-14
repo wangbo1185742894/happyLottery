@@ -103,6 +103,18 @@
 /** 跟单列表*/
 @property(nonatomic,copy)NSArray <FollowListModel *>  *followListDtos;
 
+/** 方案类型 BUY_INITIATE  BUY_FOLLOW*/   
+@property(nonatomic,copy)NSString * schemeType;
+
+/** 发单是否有红包 */
+@property(nonatomic,copy)NSString * hasRedPacket;
+
+/** 红包完成状态 */
+@property(nonatomic,copy)NSString * completeStatus;
+
+/** 是否领取 */
+@property(nonatomic,copy)NSString *gainRedPacket;
+
 @property(nonatomic,copy)NSString * initiateCardCode;
 @property(nonatomic,copy)NSString * trSchemeWinningStatus;
 @property(nonatomic,copy)NSString * sourceSchemeNo;

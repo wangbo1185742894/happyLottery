@@ -177,16 +177,13 @@
                                     <constraint firstAttribute="width" constant="55" id="FTK-wR-qHQ"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DSA-8J-uHQ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="redNew_disable.png" translatesAutoresizingMaskIntoConstraints="NO" id="Alc-oa-JvE">
                                 <rect key="frame" x="344" y="57" width="22.5" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="4ah-QV-4t9"/>
-                                    <constraint firstAttribute="width" constant="22.5" id="7BH-8x-qGa"/>
+                                    <constraint firstAttribute="height" constant="25" id="5H4-DP-zmt"/>
+                                    <constraint firstAttribute="width" constant="22.5" id="C89-N1-M8b"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="redNew_close.png"/>
-                                <state key="disabled" image="redNew_disable.png"/>
-                                <state key="selected" image="redNew_open.png"/>
-                            </button>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -198,13 +195,13 @@
                             <constraint firstItem="j8E-Lg-GaF" firstAttribute="leading" secondItem="6qL-fj-HIw" secondAttribute="trailing" constant="65" id="DKr-ae-oAD"/>
                             <constraint firstItem="Fd8-h2-mGe" firstAttribute="top" secondItem="kgX-Lu-lLm" secondAttribute="top" constant="10" id="KtX-6e-1ol"/>
                             <constraint firstItem="cta-kC-bdW" firstAttribute="top" secondItem="j8E-Lg-GaF" secondAttribute="top" id="LFe-yN-p32"/>
-                            <constraint firstItem="DSA-8J-uHQ" firstAttribute="centerY" secondItem="e9u-FE-jy4" secondAttribute="centerY" id="Nac-Ew-Phf"/>
+                            <constraint firstItem="Alc-oa-JvE" firstAttribute="centerY" secondItem="e9u-FE-jy4" secondAttribute="centerY" id="Lse-Hb-ccw"/>
                             <constraint firstItem="Fd8-h2-mGe" firstAttribute="leading" secondItem="kgX-Lu-lLm" secondAttribute="leading" constant="15" id="NrX-N0-iGI"/>
                             <constraint firstItem="e9u-FE-jy4" firstAttribute="leading" secondItem="j8E-Lg-GaF" secondAttribute="trailing" constant="20" id="UA0-WO-fdk"/>
-                            <constraint firstItem="DSA-8J-uHQ" firstAttribute="leading" secondItem="e9u-FE-jy4" secondAttribute="trailing" constant="15" id="UKJ-Jk-fru"/>
                             <constraint firstItem="cta-kC-bdW" firstAttribute="leading" secondItem="j8E-Lg-GaF" secondAttribute="trailing" constant="8" id="Ucc-st-y2L"/>
                             <constraint firstItem="6qL-fj-HIw" firstAttribute="top" secondItem="eco-81-wFN" secondAttribute="bottom" constant="12" id="Zw0-pZ-tdQ"/>
                             <constraint firstItem="eco-81-wFN" firstAttribute="leading" secondItem="Fd8-h2-mGe" secondAttribute="trailing" constant="5" id="hXB-OA-C1w"/>
+                            <constraint firstItem="Alc-oa-JvE" firstAttribute="leading" secondItem="e9u-FE-jy4" secondAttribute="trailing" constant="15" id="j0j-4e-M7q"/>
                             <constraint firstItem="Q9C-5e-5Ut" firstAttribute="top" secondItem="6qL-fj-HIw" secondAttribute="bottom" constant="6" id="k85-PO-JGc"/>
                             <constraint firstItem="gII-vO-ktc" firstAttribute="top" secondItem="kgX-Lu-lLm" secondAttribute="top" constant="21" id="q8d-Qw-BG3"/>
                             <constraint firstItem="j8E-Lg-GaF" firstAttribute="centerX" secondItem="kgX-Lu-lLm" secondAttribute="centerX" constant="-20" id="vNC-MD-ynJ"/>
@@ -292,6 +289,7 @@
                 <outlet property="labHuiBao" destination="6qL-fj-HIw" id="Owu-43-BLc"/>
                 <outlet property="labPersonHis" destination="wMA-7l-vt7" id="7X5-i5-WyQ"/>
                 <outlet property="labPersonName" destination="g8B-Sw-Oby" id="nmL-SP-Gpa"/>
+                <outlet property="redPackImg" destination="Alc-oa-JvE" id="WWv-Fu-yqa"/>
                 <outlet property="topPersonView" destination="CWd-J7-phh" id="Qgb-cq-NSh"/>
             </connections>
             <point key="canvasLocation" x="73.5" y="136"/>
@@ -300,9 +298,7 @@
     <resources>
         <image name="gendanTag.png" width="46" height="17"/>
         <image name="icon_suozi.png" width="11" height="14"/>
-        <image name="redNew_close.png" width="22" height="25"/>
         <image name="redNew_disable.png" width="22" height="25"/>
-        <image name="redNew_open.png" width="22" height="25"/>
         <image name="usermine.png" width="58" height="58"/>
         <image name="win.png" width="65" height="52"/>
     </resources>

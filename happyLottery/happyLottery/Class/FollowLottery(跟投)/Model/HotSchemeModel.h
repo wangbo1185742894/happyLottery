@@ -88,6 +88,9 @@
 /** 红包完成状态 */
 @property(nonatomic,copy)NSString * completeStatus;
 
+/** 是否领取 */
+@property(nonatomic,copy)NSString *gainRedPacket;
+
 -(NSString *)lotteryIcon;
 
 -(NSString *)getContent;

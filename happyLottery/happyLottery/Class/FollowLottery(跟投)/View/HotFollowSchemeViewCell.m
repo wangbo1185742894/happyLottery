@@ -8,6 +8,10 @@
 
 #import "HotFollowSchemeViewCell.h"
 #import "MGLabel.h"
+
+#define ImageNameNo   @"redNew_disable.png"
+#define ImageNameYes  @"redNew_close.png"
+
 @interface HotFollowSchemeViewCell()
 @property (weak, nonatomic) IBOutlet UIImageView *imgWinState;
 @property (weak, nonatomic) IBOutlet MGLabel *labBouns;
@@ -26,6 +30,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *labPersonName;
 @property (weak, nonatomic) IBOutlet UIView *topPersonView;
 @property (weak, nonatomic) IBOutlet UIImageView *alreadyFollow;
+@property (weak, nonatomic) IBOutlet UIImageView *redPackImg;
+
 @property (nonatomic,copy) NSString *carcode;
 @end
 @implementation HotFollowSchemeViewCell
@@ -237,6 +243,19 @@
         }
     }
     self.alreadyFollow.hidden = ![model.alreadyFollow boolValue];
+    //发单有红包
+    if ([model.hasRedPacket boolValue]) {
+        self.redPackImg.hidden = NO;
+        //红包领光了||用户已经领取红包  灰色
+        if (![model.completeStatus isEqualToString:@"RUNNING"]||[model.gainRedPacket boolValue]) {
+            
+            [self.redPackImg setImage:[UIImage imageNamed:ImageNameNo]];
+        } else {  //红色
+            [self.redPackImg setImage:[UIImage imageNamed:ImageNameYes]];
+        }
+    } else {
+        self.redPackImg.hidden = YES;
+    }
 }
 
 @end
