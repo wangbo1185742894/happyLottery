@@ -30,6 +30,16 @@
     self.FollowCost.text = [NSString stringWithFormat:@"%.2f",[model.followCost doubleValue]];
     self.bouns.text = [NSString stringWithFormat:@"%.2f",[model.bonus doubleValue]];
     self.yongjin.text = [NSString stringWithFormat:@"%.2f",[model.commission doubleValue]];
+    if ([model.gainRedPacket boolValue]) {
+        self.redImage.hidden = NO;
+        if ([model.open boolValue]) {
+            [self.redImage setImage:[UIImage imageNamed:@"redNew_close.png"]];
+        }else{
+            [self.redImage setImage:[UIImage imageNamed:@"redNew_disable.png"]];
+        }
+    }else {
+        self.redImage.hidden = YES;
+    }
 }
 
 @end

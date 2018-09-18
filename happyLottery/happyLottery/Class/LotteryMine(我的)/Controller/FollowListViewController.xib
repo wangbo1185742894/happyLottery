@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -49,36 +49,47 @@
                             <rect key="frame" x="0.0" y="36" width="375" height="44"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昵称" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XL9-nL-bxH">
-                                    <rect key="frame" x="0.0" y="0.0" width="94" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="88.5" height="44"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="跟单金额/元" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X6w-bL-Wum">
-                                    <rect key="frame" x="94" y="0.0" width="93.5" height="44"/>
+                                    <rect key="frame" x="111" y="0.0" width="88" height="44"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="奖金/元" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fcD-LI-sel">
-                                    <rect key="frame" x="187.5" y="0.0" width="94" height="44"/>
+                                    <rect key="frame" x="199" y="0.0" width="88" height="44"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="佣金/元" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YXK-w1-3Dc">
-                                    <rect key="frame" x="281.5" y="0.0" width="93.5" height="44"/>
+                                    <rect key="frame" x="287" y="0.0" width="88" height="44"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jF-KL-QQe">
+                                    <rect key="frame" x="88.5" y="0.0" width="22.5" height="44"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="22.5" id="gy9-Qm-Tce"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                             <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
+                                <constraint firstItem="4jF-KL-QQe" firstAttribute="top" secondItem="6p0-tg-w9v" secondAttribute="top" id="21j-7t-u5O"/>
                                 <constraint firstAttribute="height" constant="44" id="5Gz-gy-GuY"/>
+                                <constraint firstItem="4jF-KL-QQe" firstAttribute="leading" secondItem="XL9-nL-bxH" secondAttribute="trailing" id="BDy-fH-nuG"/>
+                                <constraint firstItem="X6w-bL-Wum" firstAttribute="leading" secondItem="4jF-KL-QQe" secondAttribute="trailing" id="EPE-vr-qQF"/>
                                 <constraint firstItem="fcD-LI-sel" firstAttribute="leading" secondItem="X6w-bL-Wum" secondAttribute="trailing" id="EVv-Y6-eVH"/>
                                 <constraint firstItem="YXK-w1-3Dc" firstAttribute="leading" secondItem="fcD-LI-sel" secondAttribute="trailing" id="Evi-VY-sQe"/>
-                                <constraint firstItem="X6w-bL-Wum" firstAttribute="leading" secondItem="XL9-nL-bxH" secondAttribute="trailing" id="FaX-1P-lOl"/>
                                 <constraint firstAttribute="bottom" secondItem="XL9-nL-bxH" secondAttribute="bottom" id="Jo4-dp-g9z"/>
                                 <constraint firstItem="X6w-bL-Wum" firstAttribute="top" secondItem="6p0-tg-w9v" secondAttribute="top" id="M5g-NF-uTm"/>
                                 <constraint firstItem="fcD-LI-sel" firstAttribute="top" secondItem="6p0-tg-w9v" secondAttribute="top" id="UrC-Mk-SH6"/>
@@ -87,6 +98,7 @@
                                 <constraint firstItem="XL9-nL-bxH" firstAttribute="leading" secondItem="6p0-tg-w9v" secondAttribute="leading" id="dZE-JK-PqP"/>
                                 <constraint firstAttribute="bottom" secondItem="X6w-bL-Wum" secondAttribute="bottom" id="eSw-cS-i66"/>
                                 <constraint firstAttribute="trailing" secondItem="YXK-w1-3Dc" secondAttribute="trailing" id="hx9-9D-gJI"/>
+                                <constraint firstAttribute="bottom" secondItem="4jF-KL-QQe" secondAttribute="bottom" id="jr5-oH-CcV"/>
                                 <constraint firstItem="YXK-w1-3Dc" firstAttribute="width" secondItem="XL9-nL-bxH" secondAttribute="width" id="pG9-j4-zz0"/>
                                 <constraint firstItem="X6w-bL-Wum" firstAttribute="width" secondItem="XL9-nL-bxH" secondAttribute="width" id="tz3-mm-MzR"/>
                                 <constraint firstItem="XL9-nL-bxH" firstAttribute="top" secondItem="6p0-tg-w9v" secondAttribute="top" id="vNT-9K-age"/>

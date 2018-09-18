@@ -252,6 +252,7 @@
 #define Agent_modifyNotice @"modifyNotice" //申请变更圈子公告
 #define Agent_listMyCommission @"listMyCommission" //获取圈子的佣金列表
 #define Agent_listAgentTotal @"listAgentTotal" //圈主圈民统计功能(发红包的前置查询)
+#define Agent_sendAgentRedPacket @"sendAgentRedPacket" //圈主发红包
 
 
 #define KcircleRegister @"/app/share/circleRegister" //圈主分享 H5BaseAddress

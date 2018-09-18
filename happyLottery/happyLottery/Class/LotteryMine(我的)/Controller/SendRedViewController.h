@@ -10,4 +10,6 @@
 
 @interface SendRedViewController : BaseViewController
 
+@property(nonatomic,strong)NSArray *circleMember;
+
 @end

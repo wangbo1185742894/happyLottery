@@ -31,4 +31,11 @@
 
 /** 佣金 */
 @property(nonatomic,strong)NSString * commission;
+
+/** 是否获得红包 */
+@property(nonatomic,strong)NSString * gainRedPacket;
+
+/** 红包是否打开 */
+@property(nonatomic,strong)NSString * open;
+
 @end
