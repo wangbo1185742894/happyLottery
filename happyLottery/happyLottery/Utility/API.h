@@ -50,7 +50,19 @@
 #define SUBAPIActivity       @"/activity"
 #define APIopenRedPacket           @"openRedPacket"
 #define APIgetRedPacketByState     @"getRedPacketByState"
+/**
+ * 我的红包 获得的红包
+ * @param params {"cardCode":"xxx","page":"xxx","pageSize":"xxx"} cardCode 会员卡号
+ */
 
+#define APIgainRedPacket @"gainRedPacket"
+
+/**
+ * 我的红包 发出的红包
+ * @param params {"cardCode":"xxx","page":"xxx","pageSize":"xxx"} cardCode 会员卡号
+ */
+
+#define APIsendOutRedPacket @"sendOutRedPacket"
 
 #define SUBAPIMember              @"/member"
 #define APILogin                        @"login"
@@ -160,6 +172,13 @@
 #define API_listAgentCommissionDetail       @"listAgentCommissionDetail"
 
 #define API_getChasePrepayOrderList         @"getChasePrepayOrderList"
+
+
+/**
+ * 红包 流水订单
+ * @param params {"cardCode":"xxx","page":"xxx","pageSize":"xxx"}
+*/
+#define APIgetRedPacketOrderList @"getRedPacketOrderList"
 
 
 #define SUBAPIDATA           @"/data"

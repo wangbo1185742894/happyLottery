@@ -17,6 +17,7 @@ typedef enum : NSUInteger {
     CashInfoCaijin,
     CashInfoYongjin,
     CashInfoFanyong,
+    CashInfoRedPacket,
 }CashInfoType;
 
 @interface CashInfoViewController : BaseViewController

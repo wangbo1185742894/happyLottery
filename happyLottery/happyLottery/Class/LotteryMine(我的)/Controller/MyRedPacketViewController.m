@@ -8,16 +8,18 @@
 
 #import "MyRedPacketViewController.h"
 #import "MyRedPacketTableViewCell.h"
-#import "RedPacket.h"
 #import "OpenRedPopView.h"
+#import "RedPacketHisViewController.h"
+#import "RedPacketGainModel.h"
+#import "RedPacketSendModel.h"
 #define AnimationDur 0.3
 
-@interface MyRedPacketViewController ()<MemberManagerDelegate,UITableViewDelegate,UITableViewDataSource,OpenRedPopViewDelegate>{
+@interface MyRedPacketViewController ()<MemberManagerDelegate,UITableViewDelegate,UITableViewDataSource,OpenRedPopViewDelegate,LotteryManagerDelegate>{
     
-    NSMutableArray <RedPacket *> *listUseRedPacketArray;
-    NSMutableArray <RedPacket *> *listUnUseRedPacketArray;
+    NSMutableArray <RedPacketGainModel *> *listUseRedPacketArray;
+    NSMutableArray <RedPacketSendModel *> *listUnUseRedPacketArray;
     NSString *packetId;
-    RedPacket *r;
+    RedPacketGainModel *redPacketGain;
     int page;
 }
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
@@ -35,7 +37,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"我的红包";
-    self.memberMan.delegate = self;
+    self.lotteryMan.delegate = self;
     self.tableView1.delegate = self;
     self.tableView1.dataSource = self;
     self.tableView2.delegate = self;
@@ -49,9 +51,8 @@
     
     listUseRedPacketArray = [[NSMutableArray alloc]init];
     listUnUseRedPacketArray = [[NSMutableArray alloc]init];
-    r = [[RedPacket alloc]init];
     
-    
+    self.memberMan.delegate = self;
     if ( self.segment.selectedSegmentIndex == 0) {
         
        
@@ -68,10 +69,14 @@
     [self initRefresh2];
     
 }
+    
+-(void)bounsYouhua{
+    RedPacketHisViewController *redPacket = [[RedPacketHisViewController alloc]init];
+    [self.navigationController pushViewController:redPacket animated:YES];
+}
 -(void)initRefresh1{
     
     [UITableView refreshHelperWithScrollView:self.tableView1 target:self loadNewData:@selector(loadTrueNewData) loadMoreData:@selector(loadTrueMoreData) isBeginRefresh:NO];
-
 }
 -(void)initRefresh2{
    [UITableView refreshHelperWithScrollView:self.tableView2 target:self loadNewData:@selector(loadFalseNewData) loadMoreData:@selector(loadFalseMoreData) isBeginRefresh:NO];
@@ -104,9 +109,9 @@
     }
 }
 
--(void)getRedPacketByStateSms:(NSArray *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+-(void)gotRedPacketHis:(NSArray *)redPacketInfo errorInfo:(NSString *)errMsg{
     
-    if (success == YES && redPacketInfo != nil) {
+    if (redPacketInfo != nil) {
         
         if (self.segment.selectedSegmentIndex == 0) {
             [self.tableView1 tableViewEndRefreshCurPageCount:redPacketInfo.count];
@@ -127,11 +132,18 @@
         if (page == 1) {
             [itemDataArray removeAllObjects];
         }
-        
-        for (NSDictionary *itemDic in redPacketInfo) {
-            RedPacket *coupon = [[RedPacket alloc]initWith:itemDic];
-            [itemDataArray addObject:coupon];
+        if (self.segment.selectedSegmentIndex == 0) {
+            for (NSDictionary *itemDic in redPacketInfo) {
+                RedPacketGainModel *coupon = [[RedPacketGainModel alloc]initWith:itemDic];
+                [itemDataArray addObject:coupon];
+            }
+        }else{
+            for (NSDictionary *itemDic in redPacketInfo) {
+                RedPacketSendModel *coupon = [[RedPacketSendModel alloc]initWith:itemDic];
+                [itemDataArray addObject:coupon];
+            }
         }
+       
         self.tableView1.hidden = YES;
         self.tableView2.hidden = YES;
         itemTableView .hidden = NO;
@@ -139,7 +151,7 @@
         [itemTableView reloadData];
         
     }else{
-        [self showPromptText:msg hideAfterDelay:1.7];
+        [self showPromptText:errMsg hideAfterDelay:1.7];
     }
 }
 
@@ -148,7 +160,7 @@
     NSLog(@"redPacketInfo%@",redPacketInfo);
     if ([msg isEqualToString:@"执行成功"]) {
         // [self showPromptText: @"memberInfo成功" hideAfterDelay: 1.7];
-        RedPacket *red = [[RedPacket alloc]initWith:redPacketInfo];
+        RedPacketGainModel *red = [[RedPacketGainModel alloc]initWith:redPacketInfo];
         UIImageView *image = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"redpacket"]];
         
         image.frame  = CGRectMake(self.view.mj_w/2-105, 200, 210,294);
@@ -216,37 +228,32 @@
 }
 
 -(void)loadTrueNewData{
-    [self getRedPacketNewData:@"true"];
+    page = 1;
+      [self.lotteryMan getRedPacketHis:@{@"cardCode":self.curUser.cardCode,@"page":@(page),@"pageSize":@(KpageSize)} andUrl:APIgainRedPacket];
 }
 
 -(void)loadFalseNewData{
-    [self getRedPacketNewData:@"false"];
+    page = 1;
+      [self.lotteryMan getRedPacketHis:@{@"cardCode":self.curUser.cardCode,@"page":@(page),@"pageSize":@(KpageSize)} andUrl:APIsendOutRedPacket];
 }
 
 -(void)loadTrueMoreData{
-    [self getRedPacketMoreData:@"true"];
+    [self getRedPacketMoreData:YES];
 }
 
 -(void)loadFalseMoreData{
-    [self getRedPacketMoreData:@"false"];
+    [self getRedPacketMoreData:NO];
 }
 
--(void)getRedPacketMoreData:(NSString*)isValid{
+-(void)getRedPacketMoreData:(BOOL)isValid{
     page++;
-    NSDictionary *Info;
-    @try {
-         NSString *pagestr=[NSString stringWithFormat:@"%d",page];
-        NSString *cardCode = self.curUser.cardCode;
-        Info = @{@"cardCode":cardCode,
-                 @"isValid":isValid,
-                 @"page":pagestr,
-                 @"pageSize":@(KpageSize)
-                 };
-        
-    } @catch (NSException *exception) {
-        return;
+    NSString *apiUrl;
+    if (isValid == YES) {
+        apiUrl = APIgainRedPacket;
+    }else{
+        apiUrl = APIsendOutRedPacket;
     }
-        [self.memberMan getRedPacketByStateSms:Info];
+    [self.lotteryMan getRedPacketHis:@{@"cardCode":self.curUser.cardCode,@"page":@(page),@"pageSize":@(KpageSize)} andUrl:apiUrl];
 
 }
 
@@ -272,15 +279,14 @@
 -(void)openRedPacketClient{
     NSDictionary *Info;
     @try {
-        NSString *cardCode = r._id;
+        NSString *cardCode = redPacketGain._id;
         Info = @{@"id":cardCode
                  };
         
     } @catch (NSException *exception) {
        return;
     }
-        [self.memberMan openRedPacketSms:Info];
-
+    [self.memberMan openRedPacketSms:Info];
 }
 
 #pragma UITableViewDataSource methods
@@ -290,7 +296,6 @@
             return listUseRedPacketArray.count;
         }
     }else if (tableView ==self.tableView2){
-        
         if (listUnUseRedPacketArray.count > 0) {
             return listUnUseRedPacketArray.count;
         }
@@ -315,7 +320,7 @@
     //            RECHARGE_CHANNEL("充值渠道"),
     //            CONSUME_CHANNEL("消费渠道"),
     //            WIN_CHANNEL("中奖渠道");
-    RedPacket *redPacket = [[RedPacket alloc]init];
+
     if (tableView ==self.tableView1) {
         
         static NSString *CellIdentifier = @"TabViewCell1";
@@ -324,16 +329,35 @@
             cell = [[[NSBundle mainBundle] loadNibNamed:@"MyRedPacketTableViewCell" owner:self options:nil] lastObject];
         }
         if (listUseRedPacketArray.count > 0) {
-           redPacket = listUseRedPacketArray[indexPath.row];
-             NSString *redPacketStatus = redPacket.redPacketStatus;
+          RedPacketGainModel * redPacket = listUseRedPacketArray[indexPath.row];
+             NSString *redPacketStatus = redPacket.trRedPacketStatus;
             if ([redPacketStatus isEqualToString:@"锁定"]) {
                 cell.packetImage.image = [UIImage imageNamed:@"lockredpacket"];
             } else  if ([redPacketStatus isEqualToString:@"解锁"]) {
                 cell.packetImage.image = [UIImage imageNamed:@"unlockredpacket"];
             }
+            
+           if ([redPacketStatus isEqualToString:@"领取"]) {
+                cell.endImage.image = [UIImage imageNamed:@"yilingqu"];
+                cell.packetImage.image = [UIImage imageNamed:@""];
+            if ([redPacket.redPacketType isEqualToString:@"COUPON"]) {
+                    cell.labRedPacketCost.text = [NSString stringWithFormat:@""];
+                    cell.packetImage.image = [UIImage imageNamed:@"优惠券"];
+            }else if([redPacket.redPacketType isEqualToString:@"INTEGRAL"]){
+                cell.labRedPacketCost.adjustsFontSizeToFitWidth = YES;
+                cell.labRedPacketCost.text = [NSString stringWithFormat:@"%@积分",redPacket.redPacketContent];
+            }else{
+                   cell.labRedPacketCost.adjustsFontSizeToFitWidth = YES;
+                    cell.labRedPacketCost.text = [NSString stringWithFormat:@"￥%@",redPacket.redPacketContent];
+               }
+                   
+              
+            }else  if ([redPacketStatus isEqualToString:@"失效"]) {
+                cell.endImage.image = [UIImage imageNamed:@"yiguoqi"];
+                     cell.packetImage.image = [UIImage imageNamed:@"unlockredpacket"];
+            }
          
-            cell.endImage.hidden = YES;
-            cell.nameLab.text = redPacket._description;
+            cell.nameLab.text = redPacket.trRedPacketChannel;
             
             NSString *redPacketChannel =redPacket.redPacketChannel;
             NSString *sourecs;
@@ -352,8 +376,7 @@
 //            }else if ([redPacketChannel isEqualToString:@"系统赠送"]){
 //                sourecs = @"来源： 系统赠送";
 //            }
-            
-            cell.sourceLab.text =  [NSString stringWithFormat:@"%@",redPacket.activityName];
+        
             NSString *date = @"";
             
             if (redPacket.endValidTime.length != 0) {
@@ -364,20 +387,26 @@
             if ([redPacket._description containsString:@"大转盘"]) {
                 cell.day.text = [self getTimesFromHours:redPacket.endValidTime];
             } else {
-                const long long  dayInteger = [self getDifferenceByDate:redPacket.endValidTime];
-                //            const long long  dayInteger = [self getDifferenceByDate:@"2018-01-26 09:24:57"];
-                NSNumber *longlongNumber = [NSNumber numberWithLongLong:dayInteger];
-                NSString *time = @"";
-                if (redPacket.endValidTime .length!=0) {
-                    time=[redPacket.endValidTime substringFromIndex:10];
-                }
-                
-                NSString *daystr = [longlongNumber stringValue];
-                if (dayInteger==0) {
-                    cell.day.text=[NSString stringWithFormat:@"截止%@过期",time];
+                if([redPacketStatus isEqualToString:@"领取"]){
+                    cell.day.text = @"已存入账户，可直接使用";
+                    cell.endTimeLab.text = @"";
                 }else{
-                    cell.day.text=[NSString stringWithFormat:@"还有%@天过期",daystr];
+                    const long long  dayInteger = [self getDifferenceByDate:redPacket.endValidTime];
+                    //            const long long  dayInteger = [self getDifferenceByDate:@"2018-01-26 09:24:57"];
+                    NSNumber *longlongNumber = [NSNumber numberWithLongLong:dayInteger];
+                    NSString *time = @"";
+                    if (redPacket.endValidTime .length != 0) {
+                        time=[redPacket.endValidTime substringFromIndex:10];
+                    }
+                    
+                    NSString *daystr = [longlongNumber stringValue];
+                    if (dayInteger<=0) {
+                        cell.day.text=[NSString stringWithFormat:@"截止%@过期",time];
+                    }else{
+                        cell.day.text=[NSString stringWithFormat:@"还有%@天过期",daystr];
+                    }
                 }
+              
             }
         }
       
@@ -389,34 +418,27 @@
             cell = [[[NSBundle mainBundle] loadNibNamed:@"MyRedPacketTableViewCell" owner:self options:nil] lastObject];
         }
         if (listUnUseRedPacketArray.count > 0) {
-           redPacket = listUnUseRedPacketArray[indexPath.row];
-          
-            cell.endImage.hidden = NO;
-            cell.nameLab.text = redPacket._description;
+          RedPacketSendModel * redPacket = listUnUseRedPacketArray[indexPath.row];
+             NSString *redPacketStatus = redPacket.trCompleteStatus;
+            cell.nameLab.text = redPacket.trPacketChannel;
+            if ([redPacket.refundAmount integerValue] != 0) {
+                     cell.labBackCost.text = [NSString  stringWithFormat:@"已退款%@元",redPacket.refundAmount];
+            }else{
+                cell.labBackCost.text = @"";
+            }
             
-            NSString *redPacketStatus =redPacket.redPacketStatus;
-
-            cell.packetImage.image = [UIImage imageNamed:@"unlock_cannot"];
-            NSString *sourecs;
-//            if ([redPacketChannel isEqualToString:@"注册渠道"]) {
-//                sourecs = @"来源： 系统注册赠送";
-//            } else if ([redPacketChannel isEqualToString:@"登录渠道"]){
-//                sourecs = @"来源： 系统登录赠送";
-//            }else if ([redPacketChannel isEqualToString:@"签到渠道"]){
-//                sourecs = @"来源： 系统签到赠送";
-//            }else if ([redPacketChannel isEqualToString:@"充值渠道"]){
-//                sourecs = @"来源： 系统充值赠送";
-//            }else if ([redPacketChannel isEqualToString:@"消费渠道"]){
-//                sourecs = @"来源： 系统消费赠送";
-//            }else if ([redPacketChannel isEqualToString:@"中奖渠道"]){
-//                sourecs = @"来源： 系统中奖赠送";
-//            }else if ([redPacketChannel isEqualToString:@"系统赠送"]){
-//                sourecs = @"来源： 系统赠送";
-//            }
-            cell.sourceLab.text =  [NSString stringWithFormat:@"%@",redPacket.activityName];;
-            NSString *date=[redPacket.endValidTime substringWithRange:NSMakeRange(0,10)];
-            cell.day.text = [NSString stringWithFormat:@"%@到期",date];
-            cell.endTimeLab.hidden = YES;
+            if ([redPacketStatus isEqualToString:@"已完成"]) {
+                cell.endImage.image = [UIImage imageNamed:@"yilingwan"];
+                cell.packetImage.image = [UIImage imageNamed:@""];
+            }
+       
+            cell.day.text = [NSString stringWithFormat:@"已领取%@/%ld",redPacket.surplusCount,[redPacket.totalCount  integerValue]- [redPacket.surplusCount integerValue]];
+            cell.endTimeLab.text = [[redPacket.createTime componentsSeparatedByString:@" "] firstObject];
+            
+            cell.labRedPacketCost.text = [NSString stringWithFormat:@"￥%@",redPacket.amount];
+            
+            cell.endImage.hidden = NO;
+            cell.packetImage.image = [UIImage imageNamed:@""];
         }
     }
     cell.sourceLab.adjustsFontSizeToFitWidth = YES;
@@ -431,10 +453,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath: indexPath animated: YES];
-    if (tableView ==self.tableView1){
-        r = listUseRedPacketArray[indexPath.row];
-        
-    [self openRedPacketClient];
+    if (tableView == self.tableView1) {
+        redPacketGain = listUseRedPacketArray[indexPath.row];
+        if(redPacketGain){
+            
+        }
+        [self openRedPacketClient];
     }
 }
 

@@ -8,6 +8,7 @@
 
 #import "MineViewController.h"
 #import "MineTableViewCell.h"
+#import "RedPacketGainModel.h"
 #import "MyAgentInfoModel.h"
 #import "UIImage+RandomSize.h"
 #import "CashInfoViewController.h"
@@ -36,7 +37,7 @@
 
 #define KMineRecommendViewCell @"MineRecommendViewCell"
 
-@interface MineViewController () <UITableViewDelegate, UITableViewDataSource,MemberManagerDelegate,RecommendViewCellDelegate,AgentManagerDelegate>{
+@interface MineViewController () <UITableViewDelegate, UITableViewDataSource,MemberManagerDelegate,RecommendViewCellDelegate,AgentManagerDelegate,LotteryManagerDelegate>{
     NSMutableArray <NSDictionary *>*listArray;
     NSMutableArray <NSDictionary *>*groupArray;
     long num;
@@ -716,41 +717,25 @@
 #pragma 获取红包是否显示小红点
 
 -(void)getRedPacketByStateClient:(NSString*)isValid{
-    NSDictionary *Info;
-    @try {
-        NSString *cardCode = self.curUser.cardCode;
-        Info = @{@"cardCode":cardCode,
-                 @"isValid":isValid,
-                 @"page":@"1",
-                 @"pageSize":@"10"
-                 };
-        
-    } @catch (NSException *exception) {
-        return;
-    }
-        [self.memberMan getRedPacketByStateSms:Info];
-  
-    
+    self.lotteryMan.delegate = self;
+    [self.lotteryMan getRedPacketHis:@{@"cardCode":self.curUser.cardCode,@"page":@(1),@"pageSize":@(20)} andUrl:APIgainRedPacket];
+
 }
 
--(void)getRedPacketByStateSms:(NSArray *)redPacketInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
-    
-    
+-(void)gotRedPacketHis:(NSArray *)redPacketInfo errorInfo:(NSString *)errMsg{
     NSLog(@"redPacketInfo%@",redPacketInfo);
-    if ([msg isEqualToString:@"执行成功"]) {
+    if ([errMsg isEqualToString:@"执行成功"]) {
         // [self showPromptText: @"memberInfo成功" hideAfterDelay: 1.7];
         [listUseRedPacketArray removeAllObjects];
         NSEnumerator *enumerator = [redPacketInfo objectEnumerator];
         id object;
         if ((object = [enumerator nextObject]) != nil) {
             NSArray *array = redPacketInfo;
-            
-            
-            
+        
             for (int i=0; i<array.count; i++) {
                 
-                RedPacket *redPacket = [[RedPacket alloc]initWith:array[i]];
-                NSString *redPacketStatus = redPacket.redPacketStatus;
+                RedPacketGainModel *redPacket = [[RedPacketGainModel alloc]initWith:array[i]];
+                NSString *redPacketStatus = redPacket.trRedPacketChannel;
                 if ([redPacketStatus isEqualToString:@"解锁"]) {
                     [listUseRedPacketArray addObject:redPacket];
                 }
@@ -759,7 +744,7 @@
         }
         
     }else{
-        [self showPromptText: msg hideAfterDelay: 1.7];
+        [self showPromptText: errMsg hideAfterDelay: 1.7];
     }
 }
 

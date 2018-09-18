@@ -366,4 +366,61 @@
 
 @end
 
+@implementation MemberRedPacketOrderModel : UserInfoBaseModel
+-(NSString *)getLeftTitle{
+    if ([self.orderType isEqualToString:@"CIRCLE_GIVEN"] || [self.orderType isEqualToString:@"CIRCLE_RECEIVE"]) {
+        if ([self.refund doubleValue] > 0 ) {
+            return [NSString stringWithFormat:@"\n类型\n\n时间\n\n认购金额\n\n退款金额\n\n"];
+        }else{
+            return [NSString stringWithFormat:@"\n类型\n\n时间\n\n认购金额\n\n"];
+        }
+    }else{
+        if ([self.refund doubleValue] > 0 ) {
+            return [NSString stringWithFormat:@"\n类型\n\n方案号\n\n时间\n\n支出金额\n\n退款金额\n\n"];
+        }else{
+            return [NSString stringWithFormat:@"\n类型\n\n方案号\n\n时间\n\n支出金额\n\n"];
+        }
+    }
+}
+-(NSString *)getRightTitle{
+    if ([self.orderType isEqualToString:@"CIRCLE_GIVEN"] || [self.orderType isEqualToString:@"CIRCLE_RECEIVE"]) {
+        if ([self.refund doubleValue] > 0 ) {
+            return [NSString stringWithFormat:@"\n%@\n\n%@\n\n#%@元\n\n%@元\n\n",self.trOrderType,self.createTime,self.amount,self.refund];
+        }else{
+            return [NSString stringWithFormat:@"\n%@\n\n%@\n\n#%@元\n\n",self.trOrderType,self.createTime,self.amount];
+        }
+    }else{
+        if ([self.refund doubleValue] > 0 ) {
+            return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n#%@元\n\n%@元\n\n",self.trOrderType,self.schemeNo,self.createTime,self.amount,self.refund];
+        }else{
+            return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n#%@元\n\n",self.trOrderType,self.schemeNo,self.createTime,self.amount];
+        }
+    }
+}
+-(NSString *)get1Name{
+    return self.trOrderType;
+}
+-(NSString *)get2Name{
+    return  [NSString stringWithFormat:@"%@元",self.amount];
+    
+}
+-(NSString *)get3Name{
+    return @"";
+}
+
+-(NSString *)getRemark{
+    if ([self.refund integerValue] == 0) {
+        return @"";
+    }
+    return  [NSString stringWithFormat:@"%@,退款%@元",self.remark,self.refund];
+}
+-(NSString *)get4Name{
+    return self.createTime;
+    
+}
+
+@end
+
+
+
 

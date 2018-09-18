@@ -193,4 +193,38 @@
 @property(nonatomic,strong)NSString *  chaseExceptionRefund;
 @end
 
+@interface MemberRedPacketOrderModel : UserInfoBaseModel
+@property(nonatomic,strong)NSString * orderNo;
+
+/** 来源  发出显示 memberRedPacket 的 id   打开的显示 redPacket的Id */
+@property(nonatomic,strong)NSString * origin;
+
+/** 卡号 */
+@property(nonatomic,strong)NSString * cardCode;
+
+/** 红包流水类型 */
+@property(nonatomic,strong)NSString * orderType;
+
+/** 金额 */
+@property(nonatomic,strong)NSString * amount;
+
+/** 收支类型 */
+@property(nonatomic,strong)NSString * budgetType;
+
+/** 退款金额 */
+@property(nonatomic,strong)NSString * refund;
+
+/** 备注 */
+@property(nonatomic,strong)NSString * remark;
+
+/** 创建时间 */
+@property(nonatomic,strong)NSString * createTime;
+
+/** 方案号 */
+@property(nonatomic,strong)NSString * schemeNo;
+
+@property(nonatomic,copy)NSString * trOrderType;
+@property(nonatomic,copy)NSString * trBudgetType;
+
+@end
 

@@ -77,12 +77,12 @@ typedef enum EarningsType{
 -(void)gotBootPageUrl:(NSString *)strUrl;
 - (void) deleteSchemeByNo:(NSString *)resultStr  errorMsg:(NSString *)msg; //删除订单
 -(void)gotCommonSetValue:(NSString *)strUrl;
-
+-(void)gotCommonSetValue:(NSString *)strUrl andIndex:(NSInteger)index;
 - (void) gotFollowSchemeBySchemeNo:(NSDictionary *)resultDic  errorInfo:(NSString *)msg;
 
 - (void)initiateFollowRedPacketPayment:(NSString *)resultStr  errorMsg:(NSString *)msg;
 
-
+- (void) gotRedPacketHis:(NSArray *)redList errorInfo:(NSString *)errMsg;
 @end
 
 @interface LotteryManager : Manager
@@ -181,5 +181,8 @@ typedef enum EarningsType{
 -(void)getFollowSchemeBySchemeNo:(NSDictionary *)para;
 
 - (void) betLotteryScheme:(BaseTransaction *)transcation andBetContentArray:(NSArray *)contents;
+    
+-(void)getCommonSetValue:(NSDictionary *)para andIndex:(NSInteger)index;
+-(void)getRedPacketHis:(NSDictionary *)para andUrl:(NSString *)strUrl;
 @end
 

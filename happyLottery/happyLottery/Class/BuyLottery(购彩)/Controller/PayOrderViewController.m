@@ -5,7 +5,7 @@
 //  Created by 王博 on 2017/12/18.
 //  Copyright © 2017年 onlytechnology. All rights reserved.
 //
-#define KCheckSec 60
+
 #import "PayOrderViewController.h"
 #import "TabObaListCell.h"
 #import "PaySuccessViewController.h"
@@ -35,6 +35,7 @@
 {
     NSMutableArray <ChannelModel *>*channelList;
     __weak IBOutlet NSLayoutConstraint *heightTopView;
+    NSInteger KCheckSec;
     ChannelModel *itemModel;
     __weak IBOutlet UIImageView *imgObaComeOn;
     __weak IBOutlet UILabel *labCostInfo;
@@ -71,7 +72,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewPayList;
 
 @property(strong,nonatomic)NSMutableArray <Coupon *> *couponList;
-
+    @property(assign,nonatomic)BOOL isShowOba;
 @property (weak, nonatomic) IBOutlet UIView *labScoreInfoContent;
 
 @property (weak, nonatomic) IBOutlet UILabel *labScoreBanlence;
@@ -86,18 +87,14 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    
+     self.isShowOba = NO;
+    [self.lotteryMan getCommonSetValue:@{@"typeCode":@"to_buy",@"commonCode":@"to_buy_lottery"} andIndex:0];
+      [self.lotteryMan getCommonSetValue:@{@"typeCode":@"to_buy",@"commonCode":@"to_buy_countdown"} andIndex:1];
     heightTopView.constant = NaviHeight;
-    checkSec = KCheckSec;
-    viewOBaList.frame = [UIScreen mainScreen].bounds;
-     viewOBaList.mj_x = KscreenWidth;
-    [[UIApplication sharedApplication].keyWindow addSubview:viewOBaList];
    
-    [UIView animateWithDuration:0.2 animations:^{
-        self->viewOBaList.mj_x = 0;
-    }];
+
     
-    [self startTimer];
+    
     if ([self isIphoneX]) {
         self.viewDisTop.constant = 88;
         self.viewDisBottom.constant = 34;
@@ -127,6 +124,30 @@
     self.lotteryMan.delegate = self;
     [self.memberMan getAvailableCoupon:@{@"cardCode":self.curUser.cardCode,@"amount":@(self.cashPayMemt.realSubscribed)}];
     [self getListByChannel];
+}
+    
+-(void)gotCommonSetValue:(NSString *)strUrl andIndex:(NSInteger)index{
+    if(index == 0){
+        self.isShowOba = [strUrl boolValue];
+        if(self.isShowOba == YES){
+            viewOBaList.frame = [UIScreen mainScreen].bounds;
+            viewOBaList.mj_x = KscreenWidth;
+            [[UIApplication sharedApplication].keyWindow addSubview:viewOBaList];
+            
+            [UIView animateWithDuration:0.2 animations:^{
+                self->viewOBaList.mj_x = 0;
+            }];
+        }
+    }else if(index == 1){
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            if(self.isShowOba == YES){
+                KCheckSec = [strUrl integerValue];
+                checkSec = KCheckSec;
+                [self startTimer];
+            }
+            
+        });
+    }
 }
 
 -(void)showCoupon{
@@ -505,8 +526,13 @@
 -(void)gotSchemeCashPayment:(BOOL)isSuccess errorMsg:(NSString *)msg{
     [self hideLoadingView];
     if (isSuccess) {
-        [self showObaComeView];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        NSInteger afterDelay = 0;
+        if(self.isShowOba == YES){
+             [self showObaComeView];
+            afterDelay = 1;
+        }
+       
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(afterDelay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self paySuccess];
         });
     }else{
@@ -562,7 +588,7 @@
         MJWeakSelf
         [UIView animateWithDuration:0.2 animations:^{
              self->checkSec  = KCheckSec;
-            weakSelf.labTimer.text = @"60";
+            weakSelf.labTimer.text = [NSString stringWithFormat:@"%ld",KCheckSec];
             self->viewOBaList.mj_x = -KscreenWidth;
             [self->viewOBaList removeFromSuperview];
             [self->timer invalidate];
@@ -732,6 +758,10 @@
 }
 
 - (void)navigationBackToLastPage{
+    if(self.isShowOba == NO){
+        [self navigationBackToLastPageitem];
+        return;
+    }
     viewOBaList.mj_x = -KscreenWidth;
     [[UIApplication sharedApplication].keyWindow addSubview:viewOBaList];
     [UIView animateWithDuration:0.3 animations:^{
