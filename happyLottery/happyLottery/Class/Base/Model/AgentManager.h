@@ -90,6 +90,12 @@
  获取圈子的佣金列表
  */
 -(void )listMyCommissiondelegate:(NSArray *)array isSuccess:(BOOL)success errorMsg:(NSString *)msg;
+
+
+/**
+ 圈主圈民统计功能(发红包的前置查询)
+ */
+-(void )listAgentTotaldelegate:(NSArray *)array isSuccess:(BOOL)success errorMsg:(NSString *)msg;
 @end
 
 @interface AgentManager : Manager
@@ -191,6 +197,13 @@
  @param param {"agentId":"圈子ID","notice":"公告" }
  */
 - (void)modifyNotice:(NSDictionary *)param;
+
+
+/**
+ * 圈主圈民统计功能(发红包的前置查询)
+ * @param param  {"agentId":"圈主ID","days":查询的天数 7 或者 30, "page":"分页页码","pageSize":"每页记录数","nickName":"昵称 (只有作为查询条件才有值, 没有该查询条件时可以为空)", "mobile":"手机号后四位 (只有作为查询条件才有值, 没有该查询条件时可以为空)"}
+ */
+- (void)listAgentTotal:(NSDictionary *)param;
 
 
 /**

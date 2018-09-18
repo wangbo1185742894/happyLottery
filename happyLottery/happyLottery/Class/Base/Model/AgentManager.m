@@ -234,5 +234,16 @@ typedef  void(^RequestBlock)(AFHTTPRequestOperation *operation, id responseObjec
     }];
 }
 
-
+/**
+ 圈主圈民统计功能(发红包的前置查询)
+ */
+- (void)listAgentTotal:(NSDictionary *)param{
+    [self AgentManagerRequest:param url:Agent_listAgentTotal andSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        SOAPResponse *response = [self wrapSOAPResponse:operation.responseString];
+        [self.delegate listAgentTotaldelegate:[self analyticalArray:response] isSuccess:response.succeed errorMsg:response.errorMsg];
+    } andfailure:^(AFHTTPRequestOperation *operation, id responseObject) {
+        SOAPResponse *response = [self wrapSOAPResponse:operation.responseString];
+        [self.delegate listAgentTotaldelegate:nil isSuccess:NO errorMsg:response.errorMsg];
+    }];
+}
 @end

@@ -11,7 +11,7 @@
 
 @interface SendPedPackCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *userNameLab;
+
 
 - (void)reloadDate:(RedPackCircleModal *)model;
 

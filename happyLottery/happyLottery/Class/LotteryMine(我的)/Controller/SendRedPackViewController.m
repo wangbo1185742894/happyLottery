@@ -14,7 +14,8 @@
 
 #define KSendPedPackCell   @"SendPedPackCell"
 
-@interface SendRedPackViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,UITextFieldDelegate>
+
+@interface SendRedPackViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,UITextFieldDelegate,AgentManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *jinQbtn;
 
@@ -34,6 +35,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *faRedPackBtn;
 @property (weak, nonatomic) IBOutlet UIView *searchView;
 @property (weak, nonatomic) IBOutlet UITextField *tfSearchKey;
+@property (weak, nonatomic) IBOutlet UIButton *SearchChange;
 
 @end
 
@@ -41,6 +43,7 @@
     NSMutableArray <RedPackCircleModal *>* dataArray;
     NSMutableArray <RedPackCircleModal *>* selectArray;
     NSInteger page;
+    BOOL  searchSH;
 }
 
 - (void)viewDidLoad {
@@ -49,9 +52,8 @@
     [self setSearchButtonItems];
     self.faRedPackBtn.layer.masksToBounds = YES;
     self.faRedPackBtn.layer.cornerRadius = 4;
-    [self actionRiQi:self.jinQbtn];
-//    dataArray = [NSMutableArray arrayWithCapacity:0];
-//    selectArray = [NSMutableArray arrayWithCapacity:0];
+    dataArray = [NSMutableArray arrayWithCapacity:0];
+    selectArray = [NSMutableArray arrayWithCapacity:0];
     if ([self isIphoneX]) {
         self.viewDisTop.constant = 88;
         self.viewDisBottom.constant = 38;
@@ -61,7 +63,9 @@
     }
     [self setTableView];
     [self setTextFiled];
+    [self actionRiQi:self.jinQbtn];
     self.searchView.hidden = YES;
+    [self loadNewData];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -93,9 +97,16 @@
 - (void)pressToSearch {
     self.navigationController.navigationBar.hidden = YES;
     self.searchView.hidden = NO;
+    [self animationEndFrame];
+    [UIView animateWithDuration:0.3f animations:^{
+        [self animationBeginFrame];
+    } completion:^(BOOL finished) {
+        [self animationBeginFrame];
+    }];
     [dataArray removeAllObjects];
     [selectArray removeAllObjects];
     [_personListView reloadData];
+    searchSH = NO;
     [self updateBottomView];
 }
 
@@ -125,28 +136,105 @@
     self.personListView.dataSource = self;
     self.personListView.rowHeight = 64;
     [self.personListView registerNib:[UINib nibWithNibName:KSendPedPackCell bundle:nil] forCellReuseIdentifier:KSendPedPackCell];
-    self.lotteryMan.delegate =self;
-//    [UITableView refreshHelperWithScrollView:self.personListView target:self loadNewData:@selector(loadNewData) loadMoreData:@selector(loadMoreData) isBeginRefresh:NO];
+    self.agentMan.delegate =self;
+    self.personListView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [UITableView refreshHelperWithScrollView:self.personListView target:self loadNewData:@selector(loadNewData) loadMoreData:@selector(loadMoreData) isBeginRefresh:NO];
+}
+
+
+-(void )listAgentTotaldelegate:(NSArray *)array isSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    [self.personListView tableViewEndRefreshCurPageCount:array.count];
+    if (page ==1 ) {
+        [dataArray removeAllObjects];
+    }
+    if (success == NO) {
+        [self  showPromptViewWithText:msg hideAfter:1.8];
+        [self.personListView reloadData];
+        return;
+    }else{
+        if (array .count == 0) {
+            [self.personListView reloadData];
+            return;
+        }
+    }
+    for (NSDictionary *itemDic in array) {
+        RedPackCircleModal *model = [[RedPackCircleModal alloc]initWith:itemDic];
+        model.isSelect = NO;
+        [dataArray addObject:model];
+    }
+    [self.personListView reloadData];
+    [self updateBottomView];
 }
 
 - (void)loadNewData{
+    [selectArray removeAllObjects];
+    if (self.searchView.hidden == NO && self.tfSearchKey.text.length == 0) {
+        [self.personListView tableViewEndRefreshCurPageCount:KpageSize];
+        return;
+    }
     page = 1;
-    
+    [self.agentMan listAgentTotal: @{@"agentId":self.curUser.agentInfo._id,@"days":@([self setSearchDay]),@"page":@(page),@"pageSize":@(KpageSize),@"nickName":[self setNickNameStr],@"mobile":[self setMobileStr]}];
 }
 
 - (void)loadMoreData{
+    if (self.searchView.hidden == NO && self.tfSearchKey.text.length == 0) {
+        [self.personListView tableViewEndRefreshCurPageCount:KpageSize];
+        return;
+    }
     page++;
+    [self.agentMan listAgentTotal: @{@"agentId":self.curUser.agentInfo._id,@"days":@([self setSearchDay]),@"page":@(page),@"pageSize":@(KpageSize),@"nickName":[self setNickNameStr],@"mobile":[self setMobileStr]}];
+    
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if(self.jinQbtn.selected) return 7;
+-(NSString *)setMobileStr {
+    if (self.searchView.hidden) {
+        return @"";
+    }else if ([self isNum:self.tfSearchKey.text]){
+        return self.tfSearchKey.text;
+    }else {
+        return @"";
+    }
+}
+
+-(NSString *)setNickNameStr {
+    if (self.searchView.hidden) {
+        return @"";
+    }else if ([self isNum:self.tfSearchKey.text]){
+        return @"";
+    }else {
+        return self.tfSearchKey.text;
+    }
+}
+
+-(NSInteger)setSearchDay {
+    if (self.searchView.hidden == NO) {
+        if (searchSH) {
+            return 30;
+        }
+        return 7;
+    } else if (self.jinQbtn.selected){
+        return 7;
+    }
     return 30;
+}
+
+//判断字符串是否为纯数字
+- (BOOL)isNum:(NSString *)checkedNumString {
+    checkedNumString = [checkedNumString stringByTrimmingCharactersInSet:[NSCharacterSet decimalDigitCharacterSet]];
+    if(checkedNumString.length > 0) {
+        return NO;
+    }
+    return YES;
+}
+
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return dataArray.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     SendPedPackCell *cell = [tableView dequeueReusableCellWithIdentifier:KSendPedPackCell];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.userNameLab.text = [NSString stringWithFormat:@"%ld",indexPath.row];
     [cell reloadDate:[dataArray objectAtIndex:indexPath.row]];
     return cell;
 }
@@ -207,11 +295,31 @@
 
 - (IBAction)actionToSendRed:(id)sender {
     
+  //  selectArray   选中的人
+}
+
+- (IBAction)actionToSearchS:(id)sender {
+    if ([self.SearchChange.titleLabel.text isEqualToString:@"切换至近30日"]) {
+        searchSH = YES;
+        [self.SearchChange setTitle:@"切换至近7日" forState:UIControlStateNormal];
+    } else {
+        searchSH = NO;
+        [self.SearchChange setTitle:@"切换至近30日" forState:UIControlStateNormal];
+    }
+    [self loadNewData];
 }
 
 - (IBAction)returnSearchView:(id)sender {
-    self.searchView.hidden = YES;
     self.navigationController.navigationBar.hidden = NO;
+    self.tfSearchKey.text = @"";
+    [self animationBeginFrame];
+    [UIView animateWithDuration:0.3f animations:^{
+        [self animationEndFrame];
+    } completion:^(BOOL finished) {
+        [self animationBeginFrame];
+        self.searchView.hidden = YES;
+        [self loadNewData];
+    }];
 }
 
 - (IBAction)actionSearch:(id)sender {
@@ -223,6 +331,17 @@
         return;
     }
     [self loadNewData];
+}
+
+- (void)animationBeginFrame{
+    self.searchView.frame = CGRectMake(0, self.searchView.mj_y, self.searchView.mj_w, self.searchView.mj_h);
+    self.personListView.frame = CGRectMake(0, self.personListView.mj_y, self.personListView.mj_w, self.personListView.mj_h);
+}
+
+
+- (void)animationEndFrame{
+    self.searchView.frame = CGRectMake(KscreenWidth, self.searchView.mj_y, self.searchView.mj_w, self.searchView.mj_h);
+    self.personListView.frame = CGRectMake(KscreenWidth, self.personListView.mj_y, self.personListView.mj_w, self.personListView.mj_h);
 }
 
 

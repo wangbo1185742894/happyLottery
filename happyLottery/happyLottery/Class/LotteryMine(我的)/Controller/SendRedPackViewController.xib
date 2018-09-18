@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SendRedPackViewController">
             <connections>
+                <outlet property="SearchChange" destination="BAj-Tw-mz1" id="04S-2Y-J2D"/>
                 <outlet property="countLab" destination="4aO-EU-qGk" id="PRW-0M-N1H"/>
                 <outlet property="disImgLeft" destination="GOF-Qj-aTe" id="c6E-EA-4Js"/>
                 <outlet property="faRedPackBtn" destination="KuC-7N-xd9" id="SVI-Z6-4Zi"/>
@@ -219,6 +220,9 @@
                             <state key="normal" title="切换至近30日">
                                 <color key="titleColor" red="0.070588235289999995" green="0.78039215689999997" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
+                            <connections>
+                                <action selector="actionToSearchS:" destination="-1" eventType="touchUpInside" id="Ivy-zI-MiC"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d0B-fc-zHi">
                             <rect key="frame" x="0.0" y="106" width="375" height="1"/>

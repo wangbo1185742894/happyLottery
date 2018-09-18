@@ -145,7 +145,7 @@
     if ([self.svInputMoney.labContent.text integerValue] %2 != 0) {
          self.svInputMoney.labContent.text = [NSString stringWithFormat:@"%ld",[textField.text integerValue] + 1];
     }
-    if ([self.svInputMoney.labContent.text integerValue] * [self .svInputMoney.labContent.text integerValue] > 300000) {
+    if ([self.svInputMoney.labContent.text integerValue] * [self.beiSelectView.labContent.text integerValue] > 300000) {
         [self showPromptText:@"最大投注不能超过30万" hideAfterDelay:2 ];
           textField.text = @"300000";
     }
