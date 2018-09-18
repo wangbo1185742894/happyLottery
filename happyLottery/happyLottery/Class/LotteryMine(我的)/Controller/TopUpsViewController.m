@@ -274,7 +274,7 @@
     for (NSInteger i = 0 ; i < infoArray.count ; i ++ ) {
         NSDictionary *itemDic = infoArray[i];
         ChannelModel *model = [[ChannelModel alloc]initWith:itemDic];
-        if ([model.channelValue boolValue] == YES || [model.channelValue isEqualToString:@"open"]) {
+        if ([model.channelValue boolValue] == YES || [model.channelValue isEqualToString:@"open"]||[model.channelValue isEqualToString:@"open_new"]) {
 //            if ([model.channelTitle containsString:@"微信支付"]) {
                 [channelList insertObject:model atIndex:0];
 //            } else {

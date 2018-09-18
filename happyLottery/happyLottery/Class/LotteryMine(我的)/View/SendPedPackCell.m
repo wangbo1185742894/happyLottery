@@ -12,7 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *userImage;
 
-
+@property (weak, nonatomic) IBOutlet UILabel *userNameLab;
 
 @property (weak, nonatomic) IBOutlet UILabel *countMoney;
 
@@ -40,7 +40,10 @@
 
 - (void)reloadDate:(RedPackCircleModal *)model{
     self.checkBtn.selected = model.isSelect;
-    
+    [self.userImage sd_setImageWithURL:[NSURL URLWithString:model.headUrl] placeholderImage:[UIImage imageNamed:@"usermine.png"]];
+    self.userNameLab.text = model.nickName == nil?[model.mobile stringByReplacingCharactersInRange:NSMakeRange(3,4) withString:@"****"]:model.nickName;
+    self.countMoney.text = [NSString stringWithFormat:@"%.2f",[model.totalCost doubleValue]];
+    self.countBuyLab.text = [NSString stringWithFormat:@"%ld",[model.totalSubCount integerValue]];
 }
 
 @end
