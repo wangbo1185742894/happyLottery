@@ -15,7 +15,7 @@
 #define KSendPedPackCell   @"SendPedPackCell"
 
 
-@interface SendRedPackViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,UITextFieldDelegate,AgentManagerDelegate>
+@interface SendRedPackViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,UITextFieldDelegate,AgentManagerDelegate,XYTableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *jinQbtn;
 
@@ -216,6 +216,24 @@
         return 7;
     }
     return 30;
+}
+
+-(BOOL)havData{
+    if (self.searchView.hidden == YES) {
+        if (dataArray.count == 0) {
+            return NO;
+        }
+        return YES;
+    } else {
+        if (_tfSearchKey.text.length == 0) {
+            return YES;
+        } else {
+            if (dataArray.count  == 0) {
+                return NO;
+            }
+            return YES;
+        }
+    }
 }
 
 //判断字符串是否为纯数字
