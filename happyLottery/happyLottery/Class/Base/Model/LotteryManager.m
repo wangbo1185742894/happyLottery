@@ -1527,6 +1527,29 @@
                         failure:failureBlock];
 }
 
+- (void)initiateFollowRedPacketPayment:(NSDictionary *)infoDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed  && responseJsonStr!= nil && responseJsonStr.length>0) {
+            [self.delegate initiateFollowRedPacketPayment:responseJsonStr errorMsg:response.errorMsg];
+        }else{
+            [self.delegate initiateFollowRedPacketPayment:nil errorMsg:response.errorMsg];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.delegate initiateFollowRedPacketPayment:nil errorMsg:@"请检查网络连接"];
+    };
+    
+    SOAPRequest* request = [self requestForAPI:APIinitiateFollowRedPacketPayment withParam:@{@"params":[self actionEncrypt:[self JsonFromId:infoDic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPISchemeService
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
 - (void)listGreatFollow:(NSDictionary *)infoDic{
     void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
     {

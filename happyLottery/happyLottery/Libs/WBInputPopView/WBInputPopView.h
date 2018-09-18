@@ -14,6 +14,9 @@ typedef void(^PasswordBlock)(NSString*pass);
 
 -(void)findPayPwd;
 
+@optional
+- (void)clickBackGround;
+
 @end
 @interface WBInputPopView : UIView
 

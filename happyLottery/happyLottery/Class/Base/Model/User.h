@@ -62,8 +62,8 @@ typedef enum {
  CIRCLE_MASTER("圈主"), CIRCLE_PERSON("圈民"), FREEDOM_PERSON("自由人");
  */
 @property(nonatomic,strong)NSString * memberType;
-@property(nonatomic,strong)NSString * balance;
-@property(nonatomic,strong)NSString * notCash;
+@property(nonatomic,strong)NSString * balance;  //余额
+@property(nonatomic,strong)NSString * notCash;  //不可提现的
 @property(nonatomic,strong)NSString * whitelist;
 @property(nonatomic,strong)NSString * channelCode;
 @property(nonatomic,strong)NSString * couponCount;

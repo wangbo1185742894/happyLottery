@@ -42,6 +42,28 @@
         self.touzhuText.hidden = NO;
         self.touzhuCount.hidden = NO;
     }
+    if ([schemeDetail.schemeType isEqualToString:@"BUY_INITIATE"]) {
+        //发单  领完灰色，未领完红色
+        if ([schemeDetail.hasRedPacket boolValue]) {
+            self.redPackImg.hidden = NO;
+            if ([schemeDetail.completeStatus isEqualToString:@"RUNNING"]) {
+                [self.redPackImg setImage:[UIImage imageNamed:@"redNew_close.png"]];
+            } else {
+                [self.redPackImg setImage:[UIImage imageNamed:@"redNew_disable.png"]];
+            }
+            
+        } else {
+            self.redPackImg.hidden = YES;
+        }
+        
+    }else { //跟单，领了红包显示红色，否则不显示
+        if ([schemeDetail.gainRedPacket boolValue]) {
+            self.redPackImg.hidden = NO;
+            [self.redPackImg setImage:[UIImage imageNamed:@"redNew_close.png"]];
+        }else {
+            self.redPackImg.hidden = YES;
+        }
+    }
 }
 
 - (float)dateHeight:(JCZQSchemeItem *)schemeDetail{

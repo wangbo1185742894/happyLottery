@@ -82,6 +82,14 @@
 /** 是否已经跟单 */
 @property(nonatomic,copy)NSString * alreadyFollow;
 
+/** 发单是否有红包 */
+@property(nonatomic,copy)NSString * hasRedPacket;
+
+/** 红包完成状态 */
+@property(nonatomic,copy)NSString * completeStatus;
+
+/** 是否领取 */
+@property(nonatomic,copy)NSString *gainRedPacket;
 
 -(NSString *)lotteryIcon;
 

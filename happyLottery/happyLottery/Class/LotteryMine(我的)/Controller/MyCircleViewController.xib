@@ -74,7 +74,7 @@
                                     </constraints>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3z6-gV-Ltd">
-                                    <rect key="frame" x="35" y="249" width="145" height="36"/>
+                                    <rect key="frame" x="35" y="249" width="91.5" height="36"/>
                                     <color key="backgroundColor" red="0.070588235289999995" green="0.78039215689999997" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="36" id="XNq-5v-PJt"/>
@@ -92,7 +92,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJ4-Aw-T3V">
-                                    <rect key="frame" x="195" y="249" width="145" height="36"/>
+                                    <rect key="frame" x="141.5" y="249" width="92" height="36"/>
                                     <color key="backgroundColor" red="0.99607843139999996" green="0.64705882349999999" blue="0.074509803920000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="36" id="jTU-8Z-F3L"/>
@@ -150,6 +150,24 @@
                                         <action selector="actionYongjinChaxun:" destination="-1" eventType="touchUpInside" id="0KL-NX-Xj4"/>
                                     </connections>
                                 </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NtD-oA-PTI">
+                                    <rect key="frame" x="248.5" y="249" width="91.5" height="36"/>
+                                    <color key="backgroundColor" red="0.96862745100000003" green="0.0" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="36" id="cCK-A0-xVU"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <state key="normal" title="派发红包"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="3"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="actionSendRedPack:" destination="-1" eventType="touchUpInside" id="n7m-89-IHI"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -157,21 +175,24 @@
                                 <constraint firstItem="Sar-eE-Rcg" firstAttribute="leading" secondItem="qXo-ef-Oze" secondAttribute="leading" constant="25" id="6HC-Ti-tcQ"/>
                                 <constraint firstItem="gJ4-Aw-T3V" firstAttribute="leading" secondItem="3z6-gV-Ltd" secondAttribute="trailing" constant="15" id="6Kj-2s-Vx5"/>
                                 <constraint firstItem="n65-Jb-h3L" firstAttribute="top" secondItem="Sar-eE-Rcg" secondAttribute="top" constant="8" id="G2y-kz-hp4"/>
+                                <constraint firstItem="NtD-oA-PTI" firstAttribute="width" secondItem="3z6-gV-Ltd" secondAttribute="width" id="Jmu-ho-9z1"/>
                                 <constraint firstItem="vZt-rH-ytS" firstAttribute="centerX" secondItem="qXo-ef-Oze" secondAttribute="centerX" id="Ljh-QQ-gN1"/>
                                 <constraint firstItem="3z6-gV-Ltd" firstAttribute="leading" secondItem="qXo-ef-Oze" secondAttribute="leading" constant="35" id="Ook-gS-toh"/>
                                 <constraint firstItem="Sar-eE-Rcg" firstAttribute="top" secondItem="QbR-UV-gBB" secondAttribute="bottom" constant="20" id="Tun-Vr-T5T"/>
                                 <constraint firstItem="PSW-7V-R5x" firstAttribute="centerX" secondItem="qXo-ef-Oze" secondAttribute="centerX" id="UOR-ek-Qvi"/>
-                                <constraint firstAttribute="trailing" secondItem="gJ4-Aw-T3V" secondAttribute="trailing" constant="35" id="WA9-49-odb"/>
                                 <constraint firstAttribute="trailing" secondItem="Sar-eE-Rcg" secondAttribute="trailing" constant="25" id="XYN-P6-acM"/>
                                 <constraint firstItem="8L3-49-dfb" firstAttribute="centerX" secondItem="qXo-ef-Oze" secondAttribute="centerX" id="au6-2G-uXZ"/>
+                                <constraint firstAttribute="trailing" secondItem="NtD-oA-PTI" secondAttribute="trailing" constant="35" id="deR-NE-0oU"/>
                                 <constraint firstItem="QbR-UV-gBB" firstAttribute="top" secondItem="qXo-ef-Oze" secondAttribute="top" constant="22" id="dln-rp-IA6"/>
                                 <constraint firstItem="8L3-49-dfb" firstAttribute="top" secondItem="Sar-eE-Rcg" secondAttribute="top" constant="27" id="ewg-9x-32v"/>
+                                <constraint firstItem="NtD-oA-PTI" firstAttribute="leading" secondItem="gJ4-Aw-T3V" secondAttribute="trailing" constant="15" id="fpf-A5-odc"/>
                                 <constraint firstAttribute="trailing" secondItem="QbR-UV-gBB" secondAttribute="trailing" constant="25" id="ish-5R-z3b"/>
                                 <constraint firstItem="QbR-UV-gBB" firstAttribute="leading" secondItem="qXo-ef-Oze" secondAttribute="leading" constant="25" id="kk4-xx-6fq"/>
                                 <constraint firstItem="PSW-7V-R5x" firstAttribute="top" secondItem="8L3-49-dfb" secondAttribute="bottom" constant="12" id="lWR-97-juQ"/>
                                 <constraint firstItem="gJ4-Aw-T3V" firstAttribute="top" secondItem="Sar-eE-Rcg" secondAttribute="bottom" constant="32" id="mAp-IZ-Hoc"/>
                                 <constraint firstItem="gJ4-Aw-T3V" firstAttribute="width" secondItem="3z6-gV-Ltd" secondAttribute="width" id="npX-SE-D03"/>
                                 <constraint firstItem="3z6-gV-Ltd" firstAttribute="top" secondItem="Sar-eE-Rcg" secondAttribute="bottom" constant="32" id="sAD-UO-c84"/>
+                                <constraint firstItem="NtD-oA-PTI" firstAttribute="top" secondItem="Sar-eE-Rcg" secondAttribute="bottom" constant="32" id="wVj-Ra-R5u"/>
                                 <constraint firstItem="vZt-rH-ytS" firstAttribute="top" secondItem="PSW-7V-R5x" secondAttribute="bottom" constant="13" id="xsA-OX-BVB"/>
                             </constraints>
                         </view>

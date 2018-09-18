@@ -30,13 +30,25 @@
 #import "UMChongZhiViewController.h"
 #import "YuCeSchemeCreateViewController.h"
 #import "GroupFollowViewController.h"
+#import "RedPackageView.h"
+#import "WBInputPopView.h"
+#import "AESUtility.h"
+#import "InitiateFollowRedPModel.h"
 
-@interface PaySuccessViewController ()<LotteryManagerDelegate>
+#define iOS8_0 [[[UIDevice currentDevice] systemVersion] doubleValue] >= 8.0
+
+@interface PaySuccessViewController ()<LotteryManagerDelegate,RedPackageViewDelegete,WBInputPopViewDelegate,MemberManagerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *btnPostScheme;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *btnHeightPostScheme;
 @end
 
-@implementation PaySuccessViewController
+@implementation PaySuccessViewController{
+    UIAlertController *alert;
+    WBInputPopView *passInput;
+    NSString * univalent; /** 单个价格 */
+    NSString * totalCount;  /** 红包个数 */
+    InitiateFollowRedPModel *model;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -48,6 +60,7 @@
     }else{
         self.btnHeightPostScheme.constant = 0;
     }
+    self.memberMan.delegate = self;
     self.lotteryMan.delegate = self;
     if (self.isMoni) {
         self.labChuPiaoimg.text = @"";
@@ -68,6 +81,19 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.btnPostScheme.userInteractionEnabled = YES;
+    if (self.schemetype == SchemeTypeFaqiGenDan && self.btnHeightPostScheme.constant == 0) {
+        [self initRedPackageView];
+    }
+}
+
+- (void)initRedPackageView {
+    RedPackageView *redPackView = [[RedPackageView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    redPackView.delegate = self;
+    redPackView.totalBanlece = [NSString stringWithFormat:@"%.2f",[self.curUser.balance doubleValue] + [self.curUser.notCash doubleValue]];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [[UIApplication sharedApplication].keyWindow addSubview:redPackView];
+    });
+    
 }
 
 - (IBAction)actionLookOrder:(id)sender {
@@ -227,10 +253,85 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
+#pragma mark ====== 发单红包 =====
+
 - (IBAction)actionPostScheme:(id)sender {
-    self.btnPostScheme.userInteractionEnabled = NO;
+    [self initRedPackageView];
+}
+
+//RedPackageViewDelegete
+- (void)initiateFollowScheme {
+    if (self.schemetype == SchemeTypeFaqiGenDan && self.btnHeightPostScheme.constant == 0) {
+        return;
+    }
     [self.lotteryMan initiateFollowScheme:@{@"schemeNo":self.schemeNO}];
 }
+
+//RedPackageViewDelegete
+- (void)payForRedPackage:(NSString *)count andMoney:(NSString *)money{
+     univalent = money;
+     totalCount = count;
+     [self showPayPopView];
+}
+
+- (void)showPayPopView{
+    if (nil == passInput) {
+        passInput = [[WBInputPopView alloc]init];
+        passInput.delegate = self;
+        passInput.labTitle.text = @"请输入支付密码";
+    }
+    [self.view addSubview:passInput];
+    passInput.delegate = self;
+    [passInput.txtInput becomeFirstResponder];
+    [passInput createBlock:^(NSString *text) {
+        
+        if (nil == text) {
+            [self showPromptText:@"请输入支付密码" hideAfterDelay:2.7];
+            return;
+        }
+        
+        NSDictionary *cardInfo= @{@"cardCode":self.curUser.cardCode,
+                                  @"payPwd":[AESUtility encryptStr:text]};
+        [self.memberMan validatePaypwdSms:cardInfo];
+    }];
+    
+}
+
+//WBInputPopViewdelegate
+-(void)findPayPwd{
+    [self forgetPayPwd];
+}
+
+//WBInputPopViewdelegate
+- (void)clickBackGround{
+    [self.lotteryMan initiateFollowScheme:@{@"schemeNo":self.schemeNO}];
+}
+
+-(void)validatePaypwdSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    [passInput removeFromSuperview];
+    if (success == YES) {
+        //密码验证成功，扣除红包金额，发单
+        model = [InitiateFollowRedPModel new];
+        model.schemeNo = self.schemeNO;
+        model.cardCode = self.curUser.cardCode;
+        model.amount = [NSString stringWithFormat:@"%ld",[univalent integerValue]* [totalCount integerValue]];
+        model.univalent = univalent;
+        model.totalCount = totalCount;
+        model.randomType = NORMAL;
+        
+        if ( self.schemetype == SchemeTypeFaqiGenDan && self.btnHeightPostScheme.constant == 0) {
+            [self.lotteryMan initiateFollowRedPacketPayment:@{@"initiateFollowRedPacket":[model submitParaDicScheme]}];
+         
+        } else {
+            [self.lotteryMan initiateFollowScheme:@{@"schemeNo":self.schemeNO,@"initiateFollowRedPacket":[model submitParaDicScheme]}];
+        }
+        
+    }else{
+        //密码验证失败，不发红包
+        [self showPromptText:msg hideAfterDelay:1.7];
+    }
+}
+
 - (void)initiateFollowScheme:(NSString *)resultStr errorMsg:(NSString *)msg{
     if(resultStr != nil && resultStr.length > 0){
         [self showPromptText:@"发单成功" hideAfterDelay:1.9];
@@ -246,7 +347,15 @@
         [vcS addObject:myOrderListVC];
         self.navigationController.viewControllers = vcS;
     });
-   
+}
+
+- (void)initiateFollowRedPacketPayment:(NSString *)resultStr  errorMsg:(NSString *)msg{
+    if(resultStr != nil && resultStr.length > 0){
+        [self showPromptText:@"发红包成功" hideAfterDelay:1.9];
+    }else{
+        [self showPromptText:msg hideAfterDelay:1.9];
+        return;
+    }
 }
 
 @end

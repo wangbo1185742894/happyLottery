@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightCons;
 
 @property (weak, nonatomic) IBOutlet UILabel *touzhuText;
+@property (weak, nonatomic) IBOutlet UIImageView *redPackImg;
 
 - (void)reloadDate :(JCZQSchemeItem *)schemeDetail;
 

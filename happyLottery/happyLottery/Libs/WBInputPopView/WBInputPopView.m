@@ -106,7 +106,7 @@
 //    [self endEditing:YES];
     self.imgBack.image = [UIImage imageNamed:@"pass0.png"];
     [self removeFromSuperview];
-    
+    [self.delegate clickBackGround];
 }
 
 

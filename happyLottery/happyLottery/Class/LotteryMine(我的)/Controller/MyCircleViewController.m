@@ -16,6 +16,7 @@
 #import "MyCricleYongJinVC.h"
 #import "RuZhangViewController.h"
 #import "CricleCenterViewController.h"
+#import "SendRedPackViewController.h"
 #import "MGLabel.h"
 @interface MyCircleViewController ()<AgentManagerDelegate>
 @property (weak, nonatomic) IBOutlet MGLabel *labRecentlyYongjinInfo;
@@ -239,6 +240,12 @@
     YongjinListViewController *yongjinVC = [[YongjinListViewController alloc]init];
     yongjinVC.model = self.agentInfoModel;
     [self.navigationController  pushViewController:yongjinVC animated:YES];
+}
+
+- (IBAction)actionSendRedPack:(id)sender {
+    SendRedPackViewController *sendRedVC = [[SendRedPackViewController alloc]init];
+    sendRedVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController  pushViewController:sendRedVC animated:YES];
 }
 
 @end

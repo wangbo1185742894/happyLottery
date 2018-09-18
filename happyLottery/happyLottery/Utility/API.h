@@ -217,6 +217,8 @@
 #define APIconcealSchemeBySchemeNo  @"concealSchemeBySchemeNo" //删除方案
 #define APIchaseCompleteCount           @"chaseCompleteCount"
 #define APISearchGreatFollow        @"searchGreatFollow" //搜索
+#define APIinitiateFollowRedPacketPayment     @"initiateFollowRedPacketPayment"//发单红包支付
+
 
 
 
