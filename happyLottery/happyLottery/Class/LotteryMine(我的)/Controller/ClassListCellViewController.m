@@ -40,7 +40,7 @@
 
 
 -(Class)getCurModelClass{
-    NSDictionary<NSString *,Class>  *classDic = @{API_listSubscribeDetail:[SubscribeDetail class],API_getChasePrepayOrderList:[ChasePrepayModel class],API_listRechargeDetail:[RechargeDetail class],API_listBonusDetail:[BonusDetail class],API_listWithdrawDetail:[WithdrawDetail class],API_listHandselDetail:[HandselDetail class],API_listFollowDetail:[FollowDetail class],API_listAgentCommissionDetail:[AgentCommissionDetail class]};
+    NSDictionary<NSString *,Class>  *classDic = @{API_listSubscribeDetail:[SubscribeDetail class],API_getChasePrepayOrderList:[ChasePrepayModel class],API_listRechargeDetail:[RechargeDetail class],API_listBonusDetail:[BonusDetail class],API_listWithdrawDetail:[WithdrawDetail class],API_listHandselDetail:[HandselDetail class],API_listFollowDetail:[FollowDetail class],API_listAgentCommissionDetail:[AgentCommissionDetail class],APIgetRedPacketOrderList:[MemberRedPacketOrderModel class]};
     return classDic[self.strApi];
 }
 

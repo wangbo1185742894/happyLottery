@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface MyRedPacketTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *labBackCost;
+@property (weak, nonatomic) IBOutlet UILabel *labRedPacketCost;
 @property (weak, nonatomic) IBOutlet UILabel *nameLab;
 @property (weak, nonatomic) IBOutlet UILabel *sourceLab;
 @property (weak, nonatomic) IBOutlet UILabel *endTimeLab;

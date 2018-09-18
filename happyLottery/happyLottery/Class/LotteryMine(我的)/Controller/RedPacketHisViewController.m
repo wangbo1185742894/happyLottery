@@ -84,14 +84,32 @@
 
 -(void)loadNewData{
     page = 1;
+    NSString *apiUrl;
+    if (_btnRecive.selected == YES) {
+        apiUrl = APIgainRedPacket;
+    }else{
+        apiUrl = APIsendOutRedPacket;
+    }
+    [self.lotteryMan getRedPacketHis:@{@"cardCode":self.curUser.cardCode,@"page":@(page),@"pageSize":@(KpageSize)} andUrl:apiUrl];
 }
 
 -(void)loadMoreData{
     page++;
- 
+    NSString *apiUrl;
+    if (_btnRecive.selected == YES) {
+        apiUrl = APIgainRedPacket;
+    }else{
+        apiUrl = APIsendOutRedPacket;
+    }
+    [self.lotteryMan getRedPacketHis:@{@"cardCode":self.curUser.cardCode,@"page":@(page),@"pageSize":@(KpageSize)} andUrl:apiUrl];
 }
 
--(void)gotSchemeRecord:(NSArray *)infoDic errorMsg:(NSString *)msg{
+-(void)gotRedPacketHis:(NSArray *)redList errorInfo:(NSString *)errMsg{
+    if (redList == nil) {
+        [self showPromptText:errMsg hideAfterDelay:1.7];
+        [dataArray removeAllObjects];
+        [self.tabSchemeListView reloadData];
+    }
     
 }
 
@@ -105,8 +123,7 @@
     self.btnRecive.selected = NO;
      self.disImgLeft.constant = sender.mj_x + 10;
     [UIView animateWithDuration:0.5 animations:^{
-           [self.imgBottom.superview layoutIfNeeded];
-//    self.imgBottom.mj_x = sender.mj_x + 10;
+        [self.imgBottom.superview layoutIfNeeded];
     }];
     
     sender.selected = YES;
