@@ -154,11 +154,10 @@
 
 -(void)webViewDidStartLoad:(UIWebView *)webView{
     self.wbContentView.hidden = YES;
+    [self showLoadingText:@"正在加载"];
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
-   
-    [self showLoadingViewWithText:@"正在加载"];
     NSString *requsetIngUrlStr =[NSString stringWithFormat:@"%@",request.URL];
     
     
@@ -194,7 +193,7 @@
 }
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
-    
+    [self hideLoadingView];
     // 1.获取页面标题
     NSString *string = @"document.title";
     [webView stringByEvaluatingJavaScriptFromString:string];

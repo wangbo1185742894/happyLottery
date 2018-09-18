@@ -48,7 +48,6 @@
     }else{
         isBack =NO;
     }
-    [self showLoadingViewWithText:@"正在加载"];
 
     NSString *requsetIngUrlStr =[NSString stringWithFormat:@"%@",request.URL];
     if ([requsetIngUrlStr containsString:@"/index"]) {
@@ -76,11 +75,11 @@
 }
 
 -(void)webViewDidStartLoad:(UIWebView *)webView{
-    
+    [self showLoadingText:@"正在加载"];
 }
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
-    
+    [self hideLoadingView];
     if (isBack) {
         [self.webContentView reload];
     }else{

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RedpecketDetailViewController">
+            <connections>
+                <outlet property="imgIcon" destination="z1l-pa-i9U" id="GPl-hu-hC0"/>
+                <outlet property="labRedCost" destination="RPa-UO-e9J" id="gAY-Im-OZk"/>
+                <outlet property="labRedInfo" destination="xwR-7l-Oot" id="lC9-uK-e9D"/>
+                <outlet property="labRedName" destination="Pe3-EN-7cc" id="e76-2Y-Yc5"/>
+                <outlet property="tabRedPacketList" destination="WNd-ia-V3H" id="rew-JY-mMM"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="redpackettop.png" translatesAutoresizingMaskIntoConstraints="NO" id="UVG-Y3-Ylp">
+                    <rect key="frame" x="0.0" y="64" width="375" height="125"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PXw-87-cxr">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                    <color key="backgroundColor" red="0.74117647058823533" green="0.0" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="S9A-6R-J1M"/>
+                    </constraints>
+                    <inset key="titleEdgeInsets" minX="0.0" minY="23" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="红包详情"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E6S-CR-LFL">
+                    <rect key="frame" x="10" y="26" width="46" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="46" id="V1n-KG-mBd"/>
+                        <constraint firstAttribute="height" constant="30" id="fL5-HG-UF8"/>
+                    </constraints>
+                    <state key="normal" image="newBack.png"/>
+                    <connections>
+                        <action selector="actionBack:" destination="-1" eventType="touchUpInside" id="qia-O5-fER"/>
+                    </connections>
+                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WNd-ia-V3H">
+                    <rect key="frame" x="0.0" y="189" width="375" height="478"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo120.png" translatesAutoresizingMaskIntoConstraints="NO" id="z1l-pa-i9U">
+                    <rect key="frame" x="162" y="78" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="EM4-4X-Cg3"/>
+                        <constraint firstAttribute="width" constant="50" id="prc-oY-LyS"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="圈子的红包" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pe3-EN-7cc">
+                    <rect key="frame" x="149" y="147" width="76.5" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RPa-UO-e9J">
+                    <rect key="frame" x="188" y="258" width="0.0" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="39"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xwR-7l-Oot">
+                    <rect key="frame" x="187.5" y="266" width="0.0" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Pe3-EN-7cc" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="25U-nD-1hU"/>
+                <constraint firstAttribute="trailing" secondItem="PXw-87-cxr" secondAttribute="trailing" id="3OA-XI-ki0"/>
+                <constraint firstItem="RPa-UO-e9J" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="81y-e6-TFp"/>
+                <constraint firstItem="xwR-7l-Oot" firstAttribute="top" secondItem="RPa-UO-e9J" secondAttribute="bottom" constant="8" id="A7l-Yr-2iv"/>
+                <constraint firstItem="RPa-UO-e9J" firstAttribute="top" secondItem="UVG-Y3-Ylp" secondAttribute="bottom" constant="69" id="Atv-f5-KH3"/>
+                <constraint firstItem="E6S-CR-LFL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="EAi-Ms-vXL"/>
+                <constraint firstAttribute="trailing" secondItem="UVG-Y3-Ylp" secondAttribute="trailing" id="OHU-sI-d36"/>
+                <constraint firstItem="Pe3-EN-7cc" firstAttribute="top" secondItem="z1l-pa-i9U" secondAttribute="bottom" constant="19" id="VKR-3f-QHT"/>
+                <constraint firstItem="z1l-pa-i9U" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="VrO-Qe-ULh"/>
+                <constraint firstItem="xwR-7l-Oot" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="YFF-N1-bN7"/>
+                <constraint firstItem="PXw-87-cxr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="e9f-Gb-eaq"/>
+                <constraint firstItem="UVG-Y3-Ylp" firstAttribute="top" secondItem="E6S-CR-LFL" secondAttribute="bottom" constant="8" id="ehi-V5-q2G"/>
+                <constraint firstAttribute="trailing" secondItem="WNd-ia-V3H" secondAttribute="trailing" id="fym-pS-UMW"/>
+                <constraint firstItem="UVG-Y3-Ylp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gcD-Xy-dc3"/>
+                <constraint firstItem="z1l-pa-i9U" firstAttribute="top" secondItem="PXw-87-cxr" secondAttribute="bottom" constant="14" id="jVr-eO-4f9"/>
+                <constraint firstItem="PXw-87-cxr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="n8s-AP-rHv"/>
+                <constraint firstItem="WNd-ia-V3H" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="nqS-pI-ELy"/>
+                <constraint firstItem="UVG-Y3-Ylp" firstAttribute="top" secondItem="PXw-87-cxr" secondAttribute="bottom" id="php-vi-USP"/>
+                <constraint firstAttribute="bottom" secondItem="WNd-ia-V3H" secondAttribute="bottom" id="uXK-Gr-0Uc"/>
+                <constraint firstItem="WNd-ia-V3H" firstAttribute="top" secondItem="UVG-Y3-Ylp" secondAttribute="bottom" id="wZx-Yr-TtP"/>
+            </constraints>
+            <point key="canvasLocation" x="99.5" y="53.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="logo120.png" width="64" height="64"/>
+        <image name="newBack.png" width="14" height="22"/>
+        <image name="redpackettop.png" width="375" height="125"/>
+    </resources>
+</document>

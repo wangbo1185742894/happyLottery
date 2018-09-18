@@ -130,10 +130,13 @@
         }
     }
 }
+
+-(void)webViewDidStartLoad:(UIWebView *)webView{
+    [self showLoadingText:@"正在加载"];
+}
+
 - (IBAction)actionSelectItem:(UIButton *)sender {
-    
     sender.selected = !sender.selected;
-    
 }
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
     [self hideLoadingView];

@@ -249,8 +249,6 @@
     [self showLoadingText:@"正在提交订单"];
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkSchemePayState:) name:@"NSNotificationapplicationWillEnterForeground" object:nil];
     [self.memberMan rechargeSms:rechargeInfo];
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {

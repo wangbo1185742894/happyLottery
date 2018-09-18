@@ -109,11 +109,16 @@
     [webView loadRequest:[NSURLRequest requestWithURL:linkUrl]];
 }
 
+-(void)webViewDidStartLoad:(UIWebView *)webView{
+    [self showLoadingText:@"正在加载"];
+}
+
 - (IBAction)actionBack:(id)sender {
     [super navigationBackToLastPage];
 }
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
+    [self hideLoadingView];
     if (_isNeedBack) {
         self.btnBack.hidden = NO;
         self.labBack.hidden = NO;
@@ -144,7 +149,7 @@
     });
 }
 
--(void)initshare:code{
+-(void)initshare:(NSString *)code{
     
     if (self.curUser.isLogin == NO) {
         [self needLogin];

@@ -86,6 +86,7 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
     heightTopView.constant = NaviHeight;
     checkSec = KCheckSec;
     viewOBaList.frame = [UIScreen mainScreen].bounds;
@@ -157,9 +158,11 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+
     if ([itemModel.channel isEqualToString:@"UNION"]) {
         [self checkSchemePayState:nil];
     }
+    
     [self showCoupon];
 }
 
@@ -503,7 +506,7 @@
     [self hideLoadingView];
     if (isSuccess) {
         [self showObaComeView];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self paySuccess];
         });
     }else{
@@ -742,12 +745,20 @@
 }
 
 -(void)showObaComeView{
+    self.labBack.layer.cornerRadius = self.btnCom.mj_h / 2;
+    self.labBack.layer.masksToBounds = YES;
+    self.btnCom.layer.cornerRadius = self.btnCom.mj_h / 2;
+    self.btnCom.layer.masksToBounds = YES;
+    self.btnCom.layer.borderColor = SystemRed.CGColor;
+    self.btnCom.layer.borderWidth = 2;
+    [self.btnCom setTitle:@"1" forState:0];
+    [self.btnCom setTitleColor:SystemRed forState:0];
+    self.btnCom.titleLabel.font = [UIFont boldSystemFontOfSize:24];
     _viewOPaComeOn.frame = [UIScreen mainScreen].bounds;
     [[UIApplication sharedApplication].keyWindow addSubview:_viewOPaComeOn];
     
     NSArray *images = @[[UIImage imageNamed:@"oba0.png"],[UIImage imageNamed:@"oba1.png"]];
     
-    imgObaComeOn.frame = CGRectMake(320/2-117/2, 150, 117, 120);
     viewImgContent.layer.cornerRadius = 8;
     viewImgContent.layer.masksToBounds = YES;
     imgObaComeOn.animationImages = images;  // 设置动画数组
@@ -756,9 +767,49 @@
     
     [imgObaComeOn startAnimating];          // 开始动画
     MJWeakSelf;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [weakSelf.viewOPaComeOn removeFromSuperview];
-    });
+
+    self.imgDisRight.constant = 230;
+    [UIView animateWithDuration:0.6 animations:^{
+        [self->viewImgContent layoutIfNeeded];
+    }];
+    self.imgDisLeft.constant = 30;
+    [UIView animateWithDuration:1.3 animations:^{
+        [self->viewImgContent layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        self.btnCom.hidden = NO;
+        self.labBack.hidden = NO;
+            for (int i = 0; i < 4; i++) {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(i * NSEC_PER_SEC * 0.5)), dispatch_get_main_queue(), ^{
+                    [UIView animateWithDuration:0.5 animations:^{
+                        self.btnCom.alpha = 0.3;
+                        [self.btnCom setTitle:[NSString stringWithFormat:@"%d",i] forState:0];
+                        self.labQiangdanBegin.text = [NSString stringWithFormat:@"%d家彩票点抢单中...",i * 5];
+                    }completion:^(BOOL finished) {
+
+                        self.btnCom.alpha = 1;
+                        
+                    }];
+                });
+            }
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            self.btnCom.alpha = 1;
+            self.labBack.hidden = YES;
+            self.disComBtn.constant = -80;
+            [UIView animateWithDuration:0.3 animations:^{
+                 [self.btnCom setTitle:[NSString stringWithFormat:@""] forState:0];
+                [self.btnCom setImage:[UIImage imageNamed:@"imgOk.png"] forState:0];
+                [weakSelf.viewOPaComeOn layoutIfNeeded];
+                self.labQiangdanBegin.text = [NSString stringWithFormat:@"哈哈彩票店"];
+                self.labQiangdanSucc.text = @"抢单成功";
+            }completion:^(BOOL finished) {
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        [weakSelf.viewOPaComeOn removeFromSuperview];
+                    });
+            }];
+        });
+     
+    }];
 }
 
 
