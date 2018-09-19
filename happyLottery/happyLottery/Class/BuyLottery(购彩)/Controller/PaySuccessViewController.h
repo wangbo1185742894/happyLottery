@@ -14,6 +14,7 @@
 @property(assign,nonatomic) BOOL isMoni;
 @property(nonatomic,assign)BOOL isShowFaDan;
 @property(nonatomic,strong)NSString *schemeNO;
+@property(nonatomic,strong)NSString *orderCost;
 
 @property(assign,nonatomic)SchemeType  schemetype;
 @end

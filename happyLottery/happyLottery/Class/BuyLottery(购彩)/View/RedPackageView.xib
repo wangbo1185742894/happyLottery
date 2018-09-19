@@ -24,14 +24,14 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SM8-TY-zjY">
-                            <rect key="frame" x="20" y="63" width="46.5" height="23"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我要塞红包" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SM8-TY-zjY">
+                            <rect key="frame" x="20" y="63" width="97" height="23"/>
                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
                             <color key="textColor" red="0.098039215686274508" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="redNew_close.png" translatesAutoresizingMaskIntoConstraints="NO" id="3Cm-Pf-Tdn">
-                            <rect key="frame" x="74.5" y="61.5" width="22.5" height="25"/>
+                            <rect key="frame" x="125" y="61.5" width="22.5" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="25" id="Rqh-t0-Hq1"/>
                                 <constraint firstAttribute="width" constant="22.5" id="bM8-Rn-QEF"/>
@@ -158,29 +158,15 @@
                         <constraint firstItem="3Cm-Pf-Tdn" firstAttribute="leading" secondItem="SM8-TY-zjY" secondAttribute="trailing" constant="8" id="uwc-q2-TlV"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g6q-hz-q9f">
-                    <rect key="frame" x="315" y="88.5" width="30" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="30" id="1K6-1A-yfO"/>
-                        <constraint firstAttribute="width" constant="30" id="Lde-1c-bbg"/>
-                    </constraints>
-                    <state key="normal" image="close.png"/>
-                    <connections>
-                        <action selector="actionToClose:" destination="iN0-l3-epB" eventType="touchUpInside" id="ppW-tm-SpB"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="yeW-lR-uie" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="1nx-J9-GUX"/>
-                <constraint firstItem="g6q-hz-q9f" firstAttribute="leading" secondItem="yeW-lR-uie" secondAttribute="trailing" constant="-30" id="3uF-SS-UW1"/>
                 <constraint firstItem="yeW-lR-uie" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="GY7-vT-GqJ"/>
                 <constraint firstItem="yeW-lR-uie" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="g4U-rW-fVk"/>
-                <constraint firstItem="yeW-lR-uie" firstAttribute="top" secondItem="g6q-hz-q9f" secondAttribute="bottom" constant="20" id="gwa-f5-IfV"/>
             </constraints>
             <connections>
                 <outlet property="alertView" destination="yeW-lR-uie" id="zrn-DM-OMN"/>
-                <outlet property="closeBtn" destination="g6q-hz-q9f" id="nJ2-KX-8aP"/>
                 <outlet property="countMoneyLab" destination="HrI-YJ-ZQ0" id="s31-UQ-QqN"/>
                 <outlet property="countNoticeLab" destination="qwy-8S-SsF" id="meo-JZ-hCl"/>
                 <outlet property="countTextField" destination="oNK-EZ-boI" id="FIK-Wq-T3Q"/>
@@ -197,7 +183,6 @@
         </view>
     </objects>
     <resources>
-        <image name="close.png" width="15" height="15"/>
         <image name="redNew_close.png" width="22" height="25"/>
     </resources>
 </document>

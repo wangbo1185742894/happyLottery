@@ -552,6 +552,10 @@
     paySuccessVC.lotteryName = self.cashPayMemt.lotteryName;
     paySuccessVC.schemeNO = self.cashPayMemt.schemeNo;
     paySuccessVC.isMoni = self.cashPayMemt.costType == CostTypeSCORE;
+    if ([self.labRealCost.text containsString:@" "]) {
+        NSArray *array = [self.labRealCost.text componentsSeparatedByString:@" "];
+        paySuccessVC.orderCost = array.firstObject;
+    }
     [self.navigationController pushViewController:paySuccessVC animated:YES];
 }
 
