@@ -8,8 +8,11 @@
 
 #import "SendRedViewController.h"
 #import "TopUpsViewController.h"
-
-@interface SendRedViewController ()<UITextFieldDelegate,AgentManagerDelegate>
+#import "WBInputPopView.h"
+#import "AESUtility.h"
+@interface SendRedViewController ()<UITextFieldDelegate,AgentManagerDelegate,WBInputPopViewDelegate,MemberManagerDelegate>{
+    WBInputPopView *passInput;
+}
 
 @property (weak, nonatomic) IBOutlet UILabel *balanceLab;
 
@@ -22,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *sendBtn;
 @property (weak, nonatomic) IBOutlet UIView *yuanView;
 @property (weak, nonatomic) IBOutlet UIView *countView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topDis;
 
 @end
 
@@ -32,7 +36,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.memberMan.delegate = self;
     self.title = @"发红包";
+    self.topDis.constant = NaviHeight;
     self.balanceLab.text = [NSString stringWithFormat:@"账户余额 %.2f元",[self.curUser.balance doubleValue]];
     self.yuanTextField.text = @"1";
     self.countTextField.text = [NSString stringWithFormat:@"%ld",self.circleMember.count];
@@ -98,14 +104,7 @@
 }
 
 - (IBAction)actionToSendRed:(id)sender {
-    [self.agentMan sendAgentRedPacket:@{@"agentId":self.curUser.agentInfo._id, //圈子ID
-                                        @"cardCode":self.curUser.cardCode,//圈主卡号
-                                        @"amount":[NSString stringWithFormat:@"%ld",count * yuan],//总金额
-                                        @"univalent":self.yuanTextField.text,//单个价格
-                                        @"totalCount":self.countTextField.text,//红包个数
-                                        @"randomType":@(0),//红包类型
-                                        @"sendCardCodeList":self.circleMember //收红包的圈民cardCode
-                                        }];
+    [self showPayPopView];
 }
 
 -(void)sendAgentRedPacketdelegate:(NSString *)string isSuccess:(BOOL)success errorMsg:(NSString *)msg{
@@ -129,4 +128,47 @@
 }
 */
 
+- (void)showPayPopView{
+    if (nil == passInput) {
+        passInput = [[WBInputPopView alloc]init];
+        passInput.delegate = self;
+        passInput.labTitle.text = @"请输入支付密码";
+    }
+    [self.view addSubview:passInput];
+    passInput.delegate = self;
+    [passInput.txtInput becomeFirstResponder];
+    [passInput createBlock:^(NSString *text) {
+        
+        if (nil == text) {
+            [self showPromptText:@"请输入支付密码" hideAfterDelay:2.7];
+            return;
+        }
+        
+        NSDictionary *cardInfo= @{@"cardCode":self.curUser.cardCode,
+                                  @"payPwd":[AESUtility encryptStr:text]};
+        [self.memberMan validatePaypwdSms:cardInfo];
+    }];
+    
+}
+
+-(void)validatePaypwdSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    [passInput removeFromSuperview];
+    if (success == YES) {
+        [self.agentMan sendAgentRedPacket:@{@"agentId":self.curUser.agentInfo._id, //圈子ID
+                                            @"cardCode":self.curUser.cardCode,//圈主卡号
+                                            @"amount":[NSString stringWithFormat:@"%ld",count * yuan],//总金额
+                                            @"univalent":self.yuanTextField.text,//单个价格
+                                            @"totalCount":self.countTextField.text,//红包个数
+                                            @"randomType":@(0),//红包类型
+                                            @"sendCardCodeList":self.circleMember //收红包的圈民cardCode
+                                            }];
+    }else{
+        //密码验证失败，不发红包
+        [self showPromptText:msg hideAfterDelay:1.7];
+    }
+}
+
+-(void)findPayPwd{
+    [self forgetPayPwd];
+}
 @end
