@@ -450,7 +450,7 @@
             }
        
             cell.sourceLab.text = [NSString stringWithFormat:@"已领取%@/%@",redPacket.openSize ,redPacket.totalCount];
-            cell.sourceLab.text = redPacket.createTime;
+            cell.labCreatTime.text = redPacket.createTime;
             
             cell.labRedPacketCost.text = [NSString stringWithFormat:@"￥%@",redPacket.amount];
             

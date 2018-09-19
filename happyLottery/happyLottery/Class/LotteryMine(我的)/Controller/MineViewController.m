@@ -735,7 +735,7 @@
             for (int i=0; i<array.count; i++) {
                 
                 RedPacketGainModel *redPacket = [[RedPacketGainModel alloc]initWith:array[i]];
-                NSString *redPacketStatus = redPacket.trRedPacketChannel;
+                NSString *redPacketStatus = redPacket.trRedPacketStatus;
                 if ([redPacketStatus isEqualToString:@"解锁"]) {
                     [listUseRedPacketArray addObject:redPacket];
                 }
