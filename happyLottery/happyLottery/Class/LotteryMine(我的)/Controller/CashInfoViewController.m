@@ -24,19 +24,25 @@
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     NSArray *titleArray;
+    NSArray *apiArray;
+    NSInteger fanyongindex;
     if ([self.curUser.memberType isEqualToString:@"CIRCLE_MASTER"]) {
         titleArray = @[@"购彩",@"追号",@"充值",@"派奖",@"提现",@"彩金",@"佣金",@"返佣",@"红包"];
+        fanyongindex = 7;
+            apiArray = @[API_listSubscribeDetail,API_getChasePrepayOrderList,API_listRechargeDetail,API_listBonusDetail,API_listWithdrawDetail,API_listHandselDetail,API_listFollowDetail,API_listAgentCommissionDetail,APIgetRedPacketOrderList];
     }else{
         titleArray = @[@"购彩",@"追号",@"充值",@"派奖",@"提现",@"彩金",@"佣金",@"红包"];
+        fanyongindex = 6;
+        apiArray = @[API_listSubscribeDetail,API_getChasePrepayOrderList,API_listRechargeDetail,API_listBonusDetail,API_listWithdrawDetail,API_listHandselDetail,API_listFollowDetail,APIgetRedPacketOrderList];
     }
-    NSArray *apiArray = @[API_listSubscribeDetail,API_getChasePrepayOrderList,API_listRechargeDetail,API_listBonusDetail,API_listWithdrawDetail,API_listHandselDetail,API_listFollowDetail,API_listAgentCommissionDetail,APIgetRedPacketOrderList];
+
     [_topMenu createMenuView:titleArray size:CGSizeMake(70, 40)];
     
     for (int i = 0; i < titleArray.count ; i ++) {
         ClassListCellViewController * classListVC = [[ClassListCellViewController alloc]init];
         classListVC.navVC = self;
         classListVC.strApi  = apiArray[i];
-        if (i == CashInfoFanyong) {
+        if (i == fanyongindex) {
             
             classListVC.firstPara = [NSMutableDictionary dictionaryWithDictionary:@{@"agentId":self.curUser.agentInfo._id==nil?@"":self.curUser.agentInfo._id,@"pageSize":@(KpageSize)}];
             
