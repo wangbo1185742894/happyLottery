@@ -247,7 +247,7 @@
     if ([model.hasRedPacket boolValue]) {
         self.redPackImg.hidden = NO;
         //红包领光了||用户已经领取红包  灰色
-        if ([model.gainRedPacket boolValue]||![model.completeStatus isEqualToString:@"RUNNING"]) {
+        if ([model.gainRedPacket boolValue]||_btnFollowScheme.hidden||![model.completeStatus isEqualToString:@"RUNNING"]) {
             [self.redPackImg setImage:[UIImage imageNamed:ImageNameNo]];
         } else {  //红色
             [self.redPackImg setImage:[UIImage imageNamed:ImageNameYes]];

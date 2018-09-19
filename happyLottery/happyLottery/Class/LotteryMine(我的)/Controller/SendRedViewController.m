@@ -39,7 +39,7 @@
     self.memberMan.delegate = self;
     self.title = @"发红包";
     self.topDis.constant = NaviHeight;
-    self.balanceLab.text = [NSString stringWithFormat:@"账户余额 %.2f元",[self.curUser.balance doubleValue]];
+    self.balanceLab.text = [NSString stringWithFormat:@"账户余额 %.2f元",[self.curUser.balance doubleValue]+[self.curUser.notCash doubleValue]];
     self.yuanTextField.text = @"1";
     self.countTextField.text = [NSString stringWithFormat:@"%ld",self.circleMember.count];
     self.yuanTextField.keyboardType = UIKeyboardTypeNumberPad;
