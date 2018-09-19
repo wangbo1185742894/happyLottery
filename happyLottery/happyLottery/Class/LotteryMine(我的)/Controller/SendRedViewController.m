@@ -65,6 +65,10 @@
 
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    NSInteger strLength = textField.text.length - range.length + string.length;
+    if (strLength > 4) {
+        return NO;
+    }
     if (textField.text.length == 0 && [string isEqualToString:@"0"]) {
         return NO;
     }
