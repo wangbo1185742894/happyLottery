@@ -368,17 +368,25 @@
 
 @implementation MemberRedPacketOrderModel : UserInfoBaseModel
 -(NSString *)getLeftTitle{
+    NSString *itemStr;
+    if ([self.trOrderType isEqualToString:@"送出发单红包"] || [self.trOrderType isEqualToString:@"送出圈子红包"]) {
+        itemStr =@"支出金额";
+    }
+    if ([self.trOrderType isEqualToString:@"收到跟单红包"] || [self.trOrderType isEqualToString:@"收到圈子红包"]) {
+        itemStr =@"收入金额";
+    }
+    
      if (![self.orderType isEqualToString:@"FOLLOW_INITIATE"])  {
         if ([self.refund doubleValue] > 0 ) {
-            return [NSString stringWithFormat:@"\n类型\n\n时间\n\n认购金额\n\n退款金额\n\n"];
+            return [NSString stringWithFormat:@"\n类型\n\n时间\n\n%@\n\n退款金额\n\n",itemStr];
         }else{
-            return [NSString stringWithFormat:@"\n类型\n\n时间\n\n认购金额\n\n"];
+            return [NSString stringWithFormat:@"\n类型\n\n时间\n\n%@\n\n",itemStr];
         }
     }else{
         if ([self.refund doubleValue] > 0 ) {
-            return [NSString stringWithFormat:@"\n类型\n\n方案号\n\n时间\n\n支出金额\n\n退款金额\n\n"];
+            return [NSString stringWithFormat:@"\n类型\n\n方案号\n\n时间\n\n%@\n\n退款金额\n\n",itemStr];
         }else{
-            return [NSString stringWithFormat:@"\n类型\n\n方案号\n\n时间\n\n支出金额\n\n"];
+            return [NSString stringWithFormat:@"\n类型\n\n方案号\n\n时间\n\n%@\n\n",itemStr];
         }
     }
 }
@@ -397,8 +405,27 @@
         }
     }
 }
+//FOLLOW_INITIATE("送出发单红包"),
+//
+//FOLLOW_FOLLOW("收到跟单红包"),
+//
+//CIRCLE_GIVEN("送出圈子红包"),
+//
+//CIRCLE_RECEIVE("收到圈子红包");
 -(NSString *)get1Name{
-    return self.trOrderType;
+    if ([self.trOrderType isEqualToString:@"送出发单红包"]) {
+        return @"发单红包(送)";
+    }
+    if ([self.trOrderType isEqualToString:@"收到跟单红包"]) {
+        return @"跟单红包(收)";
+    }
+    if ([self.trOrderType isEqualToString:@"送出圈子红包"]) {
+        return @"圈子红包(送)";
+    }
+    if ([self.trOrderType isEqualToString:@"收到圈子红包"]) {
+        return @"圈子红包(收)";
+    }
+    return @"";
 }
 -(NSString *)get2Name{
     return  [NSString stringWithFormat:@"%@元",self.amount];
