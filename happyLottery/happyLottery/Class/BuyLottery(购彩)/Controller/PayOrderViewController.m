@@ -464,6 +464,14 @@
 }
 
 -(void)actionPay{
+    if ([itemModel.channel isEqualToString:@"YUE"]){
+        if (self.cashPayMemt.realSubscribed > [self.curUser.totalBanlece doubleValue]) {
+            [self hideLoadingView];
+            [self showPromptText:@"余额不足" hideAfterDelay:1.7];
+            return;
+        }
+    }
+        
     [self showLoadingText:@"正在提交订单"];
     if (self.cashPayMemt.costType == CostTypeCASH) {
         
