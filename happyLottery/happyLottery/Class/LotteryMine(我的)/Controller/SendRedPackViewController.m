@@ -332,8 +332,19 @@
     }
     SendRedViewController *sendVC = [[SendRedViewController alloc]init];
     sendVC.circleMember = [array copy];
+    self.navigationController.navigationBar.hidden = NO;
     [self.navigationController pushViewController:sendVC animated:YES];
   //  selectArray   选中的人
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (self.searchView.hidden == YES) {
+        self.navigationController.navigationBar.hidden = NO;
+    }
+    else {
+        self.navigationController.navigationBar.hidden = YES;
+    }
 }
 
 - (IBAction)actionToSearchS:(id)sender {

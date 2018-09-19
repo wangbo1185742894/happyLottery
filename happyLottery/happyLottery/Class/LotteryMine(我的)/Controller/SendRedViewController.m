@@ -7,6 +7,7 @@
 //
 
 #import "SendRedViewController.h"
+#import "TopUpsViewController.h"
 
 @interface SendRedViewController ()<UITextFieldDelegate,AgentManagerDelegate>
 
@@ -83,31 +84,32 @@
 }
 
 - (IBAction)actionToRechage:(id)sender {
-    
-    
+    if (!self.curUser.isLogin){
+        [self needLogin];
+    } else {
+        TopUpsViewController *topUpsVC = [[TopUpsViewController alloc]init];
+        topUpsVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:topUpsVC animated:YES];
+    }
 }
 
 - (IBAction)actionToSendRed:(id)sender {
-    NSMutableArray *array = [NSMutableArray arrayWithCapacity:0];
-    for (NSString *str in self.circleMember) {
-        NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
-        [dic setObject:str forKey:@"cardCode"];
-        [array addObject:dic];
-    }
     [self.agentMan sendAgentRedPacket:@{@"agentId":self.curUser.agentInfo._id, //圈子ID
                                         @"cardCode":self.curUser.cardCode,//圈主卡号
                                         @"amount":[NSString stringWithFormat:@"%ld",count * yuan],//总金额
                                         @"univalent":self.yuanTextField.text,//单个价格
                                         @"totalCount":self.countTextField.text,//红包个数
                                         @"randomType":@(0),//红包类型
-                                        @"sendCardCodeList":array //收红包的圈民cardCode
+                                        @"sendCardCodeList":self.circleMember //收红包的圈民cardCode
                                         }];
 }
 
 -(void)sendAgentRedPacketdelegate:(NSString *)string isSuccess:(BOOL)success errorMsg:(NSString *)msg{
     if ([msg isEqualToString:@"执行成功"]) {
         [self showPromptText:@"发红包成功" hideAfterDelay:1.7];
-        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.navigationController popViewControllerAnimated:YES];
+        });
     }else{
         [self showPromptText:msg hideAfterDelay:1.7];
     }
