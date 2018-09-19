@@ -11,11 +11,12 @@
 #import "SendPedPackCell.h"
 #import "RedPackCircleModal.h"
 #import "MGLabel.h"
+#import "SendRedViewController.h"
 
 #define KSendPedPackCell   @"SendPedPackCell"
 
 
-@interface SendRedPackViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,UITextFieldDelegate,AgentManagerDelegate>
+@interface SendRedPackViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,UITextFieldDelegate,AgentManagerDelegate,XYTableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *jinQbtn;
 
@@ -36,8 +37,11 @@
 @property (weak, nonatomic) IBOutlet UIView *searchView;
 @property (weak, nonatomic) IBOutlet UITextField *tfSearchKey;
 @property (weak, nonatomic) IBOutlet UIButton *SearchChange;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *searchViewHeight;
 
 @end
+
 
 @implementation SendRedPackViewController{
     NSMutableArray <RedPackCircleModal *>* dataArray;
@@ -55,11 +59,15 @@
     dataArray = [NSMutableArray arrayWithCapacity:0];
     selectArray = [NSMutableArray arrayWithCapacity:0];
     if ([self isIphoneX]) {
+        self.topViewHeight.constant = 88;
         self.viewDisTop.constant = 88;
         self.viewDisBottom.constant = 38;
+        self.searchViewHeight.constant = 131;
     }else{
         self.viewDisTop.constant = 64;
+        self.topViewHeight.constant = 64;
         self.viewDisBottom.constant = 0;
+        self.searchViewHeight.constant = 107;
     }
     [self setTableView];
     [self setTextFiled];
@@ -127,6 +135,13 @@
     } else {
         self.quanXBtn.selected = NO;
     }
+    if (selectArray.count > 0) {
+        self.faRedPackBtn.userInteractionEnabled = YES;
+        self.faRedPackBtn.alpha = 1.0f;
+    }else {
+        self.faRedPackBtn.userInteractionEnabled = NO;
+        self.faRedPackBtn.alpha = 0.4f;
+    }
 }
 
 #pragma mark    UITableView
@@ -140,7 +155,6 @@
     self.personListView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [UITableView refreshHelperWithScrollView:self.personListView target:self loadNewData:@selector(loadNewData) loadMoreData:@selector(loadMoreData) isBeginRefresh:NO];
 }
-
 
 -(void )listAgentTotaldelegate:(NSArray *)array isSuccess:(BOOL)success errorMsg:(NSString *)msg{
     [self.personListView tableViewEndRefreshCurPageCount:array.count];
@@ -216,6 +230,24 @@
         return 7;
     }
     return 30;
+}
+
+-(BOOL)havData{
+    if (self.searchView.hidden == YES) {
+        if (dataArray.count == 0) {
+            return NO;
+        }
+        return YES;
+    } else {
+        if (_tfSearchKey.text.length == 0) {
+            return YES;
+        } else {
+            if (dataArray.count  == 0) {
+                return NO;
+            }
+            return YES;
+        }
+    }
 }
 
 //判断字符串是否为纯数字
@@ -294,8 +326,25 @@
 }
 
 - (IBAction)actionToSendRed:(id)sender {
-    
+    NSMutableArray *array = [[NSMutableArray alloc]initWithCapacity:0];
+    for (RedPackCircleModal *model in selectArray) {
+        [array addObject:model.cardCode];
+    }
+    SendRedViewController *sendVC = [[SendRedViewController alloc]init];
+    sendVC.circleMember = [array copy];
+    self.navigationController.navigationBar.hidden = NO;
+    [self.navigationController pushViewController:sendVC animated:YES];
   //  selectArray   选中的人
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (self.searchView.hidden == YES) {
+        self.navigationController.navigationBar.hidden = NO;
+    }
+    else {
+        self.navigationController.navigationBar.hidden = YES;
+    }
 }
 
 - (IBAction)actionToSearchS:(id)sender {

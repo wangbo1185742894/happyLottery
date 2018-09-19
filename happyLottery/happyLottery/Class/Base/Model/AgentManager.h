@@ -96,6 +96,13 @@
  圈主圈民统计功能(发红包的前置查询)
  */
 -(void )listAgentTotaldelegate:(NSArray *)array isSuccess:(BOOL)success errorMsg:(NSString *)msg;
+
+
+/**
+ * 圈主发红包
+ */
+-(void )sendAgentRedPacketdelegate:(NSString *)string isSuccess:(BOOL)success errorMsg:(NSString *)msg;
+
 @end
 
 @interface AgentManager : Manager
@@ -210,5 +217,10 @@
  获取圈子的佣金列表 {"agentId":"xxx","page":"xxx","pageSize":"xxx" }
  */
 - (void)listMyCommission:(NSDictionary *)param;
+
+/**
+ * 圈主发红包
+ */
+- (void)sendAgentRedPacket:(NSDictionary *)param;
 
 @end

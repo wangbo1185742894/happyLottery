@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,25 +19,31 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xal-d2-H7c">
-                        <rect key="frame" x="0.0" y="0.0" width="80" height="43.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="74.5" height="43.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="redNew_close.png" translatesAutoresizingMaskIntoConstraints="NO" id="gWR-hk-d9T">
+                        <rect key="frame" x="74.5" y="0.0" width="22.5" height="43.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="22.5" id="eyM-X9-7ha"/>
+                        </constraints>
+                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTl-8g-hu5">
-                        <rect key="frame" x="80" y="0.0" width="80" height="43.5"/>
+                        <rect key="frame" x="97" y="0.0" width="74.5" height="43.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Dw-kM-zdu">
-                        <rect key="frame" x="160" y="0.0" width="80" height="43.5"/>
+                        <rect key="frame" x="171.5" y="0.0" width="74" height="43.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBK-Xw-s7C">
-                        <rect key="frame" x="240" y="0.0" width="80" height="43.5"/>
+                        <rect key="frame" x="245.5" y="0.0" width="74.5" height="43.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.99607843139999996" green="0.2274509804" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -45,20 +51,23 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="hBK-Xw-s7C" secondAttribute="bottom" id="0My-Ii-AhF"/>
+                    <constraint firstAttribute="bottom" secondItem="gWR-hk-d9T" secondAttribute="bottom" id="5MC-6c-V1g"/>
                     <constraint firstItem="hBK-Xw-s7C" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="8Nr-fc-Uil"/>
                     <constraint firstItem="9Dw-kM-zdu" firstAttribute="width" secondItem="Xal-d2-H7c" secondAttribute="width" id="AKO-HA-90l"/>
                     <constraint firstItem="hBK-Xw-s7C" firstAttribute="leading" secondItem="9Dw-kM-zdu" secondAttribute="trailing" id="FHz-vu-1Wm"/>
                     <constraint firstItem="TTl-8g-hu5" firstAttribute="height" secondItem="Xal-d2-H7c" secondAttribute="height" id="HSo-iB-4Hs"/>
-                    <constraint firstItem="TTl-8g-hu5" firstAttribute="leading" secondItem="Xal-d2-H7c" secondAttribute="trailing" id="IuQ-Ch-YuX"/>
                     <constraint firstItem="hBK-Xw-s7C" firstAttribute="width" secondItem="Xal-d2-H7c" secondAttribute="width" id="J4D-VV-Lwc"/>
                     <constraint firstAttribute="trailing" secondItem="hBK-Xw-s7C" secondAttribute="trailing" id="Nxp-ak-3i9"/>
                     <constraint firstItem="9Dw-kM-zdu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="RHH-es-Cgo"/>
                     <constraint firstItem="Xal-d2-H7c" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="RiK-rz-iPz"/>
                     <constraint firstItem="TTl-8g-hu5" firstAttribute="width" secondItem="Xal-d2-H7c" secondAttribute="width" id="SQx-Xi-oP6"/>
+                    <constraint firstItem="gWR-hk-d9T" firstAttribute="leading" secondItem="Xal-d2-H7c" secondAttribute="trailing" id="V6c-Ej-yyT"/>
                     <constraint firstItem="hBK-Xw-s7C" firstAttribute="height" secondItem="Xal-d2-H7c" secondAttribute="height" id="YW3-gz-IJS"/>
                     <constraint firstItem="Xal-d2-H7c" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Zd0-7g-gYC"/>
                     <constraint firstItem="9Dw-kM-zdu" firstAttribute="height" secondItem="Xal-d2-H7c" secondAttribute="height" id="Zyy-A2-N8h"/>
+                    <constraint firstItem="TTl-8g-hu5" firstAttribute="leading" secondItem="gWR-hk-d9T" secondAttribute="trailing" id="eEl-sZ-4tt"/>
                     <constraint firstAttribute="bottom" secondItem="9Dw-kM-zdu" secondAttribute="bottom" id="fhI-yc-AX6"/>
+                    <constraint firstItem="gWR-hk-d9T" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="gFe-VE-4o8"/>
                     <constraint firstItem="TTl-8g-hu5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="gzW-lG-L75"/>
                     <constraint firstAttribute="bottom" secondItem="TTl-8g-hu5" secondAttribute="bottom" id="qu6-Sv-0aw"/>
                     <constraint firstAttribute="bottom" secondItem="Xal-d2-H7c" secondAttribute="bottom" id="sM1-Cp-EhO"/>
@@ -69,8 +78,12 @@
                 <outlet property="FollowCost" destination="TTl-8g-hu5" id="BIk-3f-wCC"/>
                 <outlet property="bouns" destination="9Dw-kM-zdu" id="biG-PU-64V"/>
                 <outlet property="labNickName" destination="Xal-d2-H7c" id="jKi-F1-am8"/>
+                <outlet property="redImage" destination="gWR-hk-d9T" id="pEY-O4-PdC"/>
                 <outlet property="yongjin" destination="hBK-Xw-s7C" id="Wzw-Eb-VoO"/>
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="redNew_close.png" width="22" height="25"/>
+    </resources>
 </document>

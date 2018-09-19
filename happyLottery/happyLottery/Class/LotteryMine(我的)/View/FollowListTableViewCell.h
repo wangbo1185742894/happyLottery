@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *FollowCost;
 @property (weak, nonatomic) IBOutlet UILabel *bouns;
 @property (weak, nonatomic) IBOutlet UILabel *yongjin;
+@property (weak, nonatomic) IBOutlet UIImageView *redImage;
 
 -(void)loadData:(FollowListModel *)model;
 @end

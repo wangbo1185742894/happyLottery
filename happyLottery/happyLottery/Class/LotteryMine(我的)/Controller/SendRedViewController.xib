@@ -11,7 +11,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SendRedViewController">
             <connections>
+                <outlet property="balanceLab" destination="2sU-nP-Gal" id="d8O-Ja-qNV"/>
+                <outlet property="countTextField" destination="bfR-Xw-JYV" id="8V6-yB-XAH"/>
+                <outlet property="countView" destination="6F1-XL-Lto" id="g4q-y1-NQD"/>
+                <outlet property="mountMoneyLab" destination="bFd-JS-Up8" id="MdJ-Fm-BuU"/>
+                <outlet property="sendBtn" destination="D6J-lh-Soc" id="3ZP-6i-Ric"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="yuanTextField" destination="aQD-aX-bIU" id="V9e-S3-PHH"/>
+                <outlet property="yuanView" destination="91N-Y0-c1W" id="zBU-pT-4lP"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -47,6 +54,9 @@
                     <state key="normal" title="去充值&gt;">
                         <color key="titleColor" red="0.35294117647058826" green="0.79607843137254897" blue="0.61568627450980395" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
+                    <connections>
+                        <action selector="actionToRechage:" destination="-1" eventType="touchUpInside" id="Srv-TZ-JH9"/>
+                    </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="91N-Y0-c1W">
                     <rect key="frame" x="16" y="116" width="343" height="45"/>
@@ -69,7 +79,7 @@
                             <color key="textColor" red="0.52549019610000003" green="0.52549019610000003" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aQD-aX-bIU">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="1" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aQD-aX-bIU">
                             <rect key="frame" x="68" y="0.0" width="250" height="45"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -112,7 +122,7 @@
                             <color key="textColor" red="0.52549019610000003" green="0.52549019610000003" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bfR-Xw-JYV">
+                        <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bfR-Xw-JYV">
                             <rect key="frame" x="68" y="0.0" width="250" height="45"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -158,7 +168,10 @@
                         <constraint firstAttribute="height" constant="40" id="ki9-va-uCq"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <state key="normal" title="理解发红包" backgroundImage="yuanjiaowukuangselect.png"/>
+                    <state key="normal" title="立即发红包" backgroundImage="yuanjiaowukuangselect.png"/>
+                    <connections>
+                        <action selector="actionToSendRed:" destination="-1" eventType="touchUpInside" id="u9z-bq-z7J"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="默认为每人1个红包，个数不可编辑" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5G9-eZ-h6Y">
                     <rect key="frame" x="25" y="248" width="174" height="13"/>
@@ -170,7 +183,7 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="6F1-XL-Lto" secondAttribute="trailing" constant="16" id="6jt-Ng-YEK"/>
                 <constraint firstItem="2sU-nP-Gal" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="24" id="Azq-0x-QJl"/>
