@@ -89,11 +89,10 @@
 - (void)initRedPackageView {
     RedPackageView *redPackView = [[RedPackageView alloc]initWithFrame:[UIScreen mainScreen].bounds];
     redPackView.delegate = self;
-    redPackView.totalBanlece = [NSString stringWithFormat:@"%.2f",[self.curUser.balance doubleValue] + [self.curUser.notCash doubleValue]];
+    redPackView.totalBanlece = [NSString stringWithFormat:@"%.2f",[self.curUser.balance doubleValue] + [self.curUser.notCash doubleValue] - [self.orderCost doubleValue]];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [[UIApplication sharedApplication].keyWindow addSubview:redPackView];
     });
-    
 }
 
 - (IBAction)actionLookOrder:(id)sender {

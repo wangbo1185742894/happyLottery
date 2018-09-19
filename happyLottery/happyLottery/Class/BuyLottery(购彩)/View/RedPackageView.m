@@ -26,7 +26,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *okBtn;
 @property (weak, nonatomic) IBOutlet UIView *inputView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *inputViewHeight;
-@property (weak, nonatomic) IBOutlet UIButton *closeBtn;
 @property (weak, nonatomic) IBOutlet UILabel *moneyNoticeLab;
 @property (weak, nonatomic) IBOutlet UILabel *countNoticeLab;
 
@@ -52,11 +51,9 @@
 
 //关闭红包设置
 - (void)initUI {
-    self.closeBtn.hidden = YES;
     self.switchView.on = NO;
     self.alertView.layer.masksToBounds = YES;
     self.alertView.layer.cornerRadius = 12;
-    self.redLab.text = @"我要塞红包";
     self.detailLab.text = @"将红包塞入发单方案，吸引更多人跟单~";
     self.detailLab.textColor = RGBCOLOR(254, 165, 19);
     [self.okBtn setTitle:@"不了，谢谢" forState:UIControlStateNormal];
@@ -68,8 +65,6 @@
 
 //打开红包设置
 - (void)setOpenViewUI {
-    self.closeBtn.hidden = NO;
-    self.redLab.text = @"塞入红包";
     self.detailLab.text = [NSString stringWithFormat:@"余额：%@元",self.totalBanlece];
     self.detailLab.textColor = SystemLightGray;
     [self.okBtn setTitle:@"确定" forState:UIControlStateNormal];
@@ -148,10 +143,6 @@
     lab.textAlignment = alignment;
     lab.textColor = SystemLightGray;
     return lab;
-}
-
-- (IBAction)actionToClose:(id)sender {
-    [self closeView];
 }
 
 - (void)closeView {
