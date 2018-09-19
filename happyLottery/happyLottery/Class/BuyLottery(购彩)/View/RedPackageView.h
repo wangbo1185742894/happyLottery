@@ -21,6 +21,12 @@
 
 @property(nonatomic, strong) NSString *totalBanlece;
 
+@property (weak, nonatomic) IBOutlet UITextField *yuanTextField;
+
+@property (weak, nonatomic) IBOutlet UITextField *countTextField;
+
 @property(nonatomic, weak) id<RedPackageViewDelegete> delegate;
+
+- (void)setOpenViewUI;
 
 @end

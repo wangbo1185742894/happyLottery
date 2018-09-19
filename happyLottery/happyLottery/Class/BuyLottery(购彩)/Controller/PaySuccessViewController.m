@@ -86,14 +86,7 @@
     }
 }
 
-- (void)initRedPackageView {
-    RedPackageView *redPackView = [[RedPackageView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    redPackView.delegate = self;
-    redPackView.totalBanlece = [NSString stringWithFormat:@"%.2f",[self.curUser.balance doubleValue] + [self.curUser.notCash doubleValue] - [self.orderCost doubleValue]];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [[UIApplication sharedApplication].keyWindow addSubview:redPackView];
-    });
-}
+
 
 - (IBAction)actionLookOrder:(id)sender {
    
@@ -254,6 +247,34 @@
 
 #pragma mark ====== 发单红包 =====
 
+- (void)initRedPackageView {
+    RedPackageView *redPackView = [[RedPackageView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    redPackView.delegate = self;
+    redPackView.yuanTextField.text = @"1";
+    redPackView.countTextField.text = @"5";
+    redPackView.yuanTextField.keyboardType = UIKeyboardTypeNumberPad;
+    redPackView.countTextField.keyboardType = UIKeyboardTypeNumberPad;
+    redPackView.totalBanlece = [NSString stringWithFormat:@"%.2f",[self.curUser.balance doubleValue] + [self.curUser.notCash doubleValue] - [self.orderCost doubleValue]];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [[UIApplication sharedApplication].keyWindow addSubview:redPackView];
+    });
+}
+
+
+- (void)payViewFaild {
+    RedPackageView *redPackView = [[RedPackageView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    redPackView.delegate = self;
+    redPackView.yuanTextField.text = univalent;
+    redPackView.countTextField.text = totalCount;
+    redPackView.yuanTextField.keyboardType = UIKeyboardTypeNumberPad;
+    redPackView.countTextField.keyboardType = UIKeyboardTypeNumberPad;
+    redPackView.totalBanlece = [NSString stringWithFormat:@"%.2f",[self.curUser.balance doubleValue] + [self.curUser.notCash doubleValue] - [self.orderCost doubleValue]];
+    [redPackView setOpenViewUI];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [[UIApplication sharedApplication].keyWindow addSubview:redPackView];
+    });
+}
+
 - (IBAction)actionPostScheme:(id)sender {
     [self initRedPackageView];
 }
@@ -328,6 +349,7 @@
     }else{
         //密码验证失败，不发红包
         [self showPromptText:msg hideAfterDelay:1.7];
+        [self payViewFaild];
     }
 }
 

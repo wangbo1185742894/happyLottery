@@ -20,8 +20,7 @@
 
 @property (weak, nonatomic) IBOutlet UISwitch *switchView;
 @property (weak, nonatomic) IBOutlet UILabel *detailLab;
-@property (weak, nonatomic) IBOutlet UITextField *yuanTextField;
-@property (weak, nonatomic) IBOutlet UITextField *countTextField;
+
 @property (weak, nonatomic) IBOutlet UILabel *countMoneyLab;
 @property (weak, nonatomic) IBOutlet UIButton *okBtn;
 @property (weak, nonatomic) IBOutlet UIView *inputView;
@@ -65,6 +64,7 @@
 
 //打开红包设置
 - (void)setOpenViewUI {
+    self.switchView.on = YES;
     self.detailLab.text = [NSString stringWithFormat:@"余额：%@元",self.totalBanlece];
     self.detailLab.textColor = SystemLightGray;
     [self.okBtn setTitle:@"确定" forState:UIControlStateNormal];
@@ -72,8 +72,8 @@
     [self.okBtn setBackgroundColor:RGBCOLOR(18, 199, 146)];
     self.inputViewHeight.constant = 195;
     self.inputView.hidden = NO;
-    self.yuanTextField.text = @"1";
-    self.countTextField.text = @"5";
+//    self.yuanTextField.text = @"1";
+//    self.countTextField.text = @"5";
     self.yuanTextField.keyboardType = UIKeyboardTypeNumberPad;
     self.countTextField.keyboardType = UIKeyboardTypeNumberPad;
     
