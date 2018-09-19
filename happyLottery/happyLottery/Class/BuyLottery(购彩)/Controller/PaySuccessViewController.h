@@ -15,6 +15,7 @@
 @property(nonatomic,assign)BOOL isShowFaDan;
 @property(nonatomic,strong)NSString *schemeNO;
 @property(nonatomic,strong)NSString *orderCost;
+@property(nonatomic,assign)NSInteger aniTime;
 
 @property(assign,nonatomic)SchemeType  schemetype;
 @end

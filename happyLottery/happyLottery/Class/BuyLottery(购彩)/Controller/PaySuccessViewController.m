@@ -82,7 +82,10 @@
     [super viewWillAppear:animated];
     self.btnPostScheme.userInteractionEnabled = YES;
     if (self.schemetype == SchemeTypeFaqiGenDan && self.btnHeightPostScheme.constant == 0) {
-        [self initRedPackageView];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(self.aniTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [self initRedPackageView];
+        });
+
     }
 }
 

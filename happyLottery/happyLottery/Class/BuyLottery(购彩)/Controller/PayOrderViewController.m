@@ -538,6 +538,7 @@
     }
   
     PaySuccessViewController * paySuccessVC = [[PaySuccessViewController alloc]init];
+    paySuccessVC.aniTime = 3;
     paySuccessVC.schemetype = self.schemetype;
     if(([self.cashPayMemt.lotteryName isEqualToString:@"竞彩足球"] ||[self.cashPayMemt.lotteryName isEqualToString:@"竞彩篮球"]) && self.cashPayMemt.costType == CostTypeCASH && self.cashPayMemt.subscribed > 10 && self.isYouhua == NO){
         paySuccessVC.isShowFaDan = YES;
