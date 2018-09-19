@@ -16,6 +16,7 @@
                 <outlet property="countView" destination="6F1-XL-Lto" id="g4q-y1-NQD"/>
                 <outlet property="mountMoneyLab" destination="bFd-JS-Up8" id="MdJ-Fm-BuU"/>
                 <outlet property="sendBtn" destination="D6J-lh-Soc" id="3ZP-6i-Ric"/>
+                <outlet property="topDis" destination="vAA-Nz-p8z" id="cU2-mk-tKb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="yuanTextField" destination="aQD-aX-bIU" id="V9e-S3-PHH"/>
                 <outlet property="yuanView" destination="91N-Y0-c1W" id="zBU-pT-4lP"/>
@@ -104,7 +105,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6F1-XL-Lto">
                     <rect key="frame" x="16" y="198" width="343" height="45"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="单个红包" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vl8-rD-Tfj">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="红包个数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vl8-rD-Tfj">
                             <rect key="frame" x="8" y="12" width="60" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="60" id="cuc-5U-7Mi"/>

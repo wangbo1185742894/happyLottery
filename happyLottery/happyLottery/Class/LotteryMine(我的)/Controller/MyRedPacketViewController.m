@@ -442,13 +442,13 @@
                 cell.labBackCost.text = @"";
             }
             
-            if ([redPacketStatus isEqualToString:@"已完成"]) {
+            if ([redPacket.openSize integerValue] == [redPacket.totalCount integerValue]) {
                 cell.endImage.image = [UIImage imageNamed:@"yilingwan"];
                 cell.packetImage.image = [UIImage imageNamed:@""];
             }
        
-            cell.day.text = [NSString stringWithFormat:@"已领取%@/%ld",redPacket.surplusCount,[redPacket.totalCount  integerValue]- [redPacket.surplusCount integerValue]];
-            cell.endTimeLab.text = [[redPacket.createTime componentsSeparatedByString:@" "] firstObject];
+            cell.sourceLab.text = [NSString stringWithFormat:@"已领取%@/%@",redPacket.openSize ,redPacket.totalCount];
+            cell.endTimeLab.text = redPacket.createTime;
             
             cell.labRedPacketCost.text = [NSString stringWithFormat:@"￥%@",redPacket.amount];
             

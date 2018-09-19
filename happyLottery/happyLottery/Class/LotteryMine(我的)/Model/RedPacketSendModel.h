@@ -51,4 +51,6 @@
 @property(nonatomic,copy)NSString * trCompleteStatus;
 
 @property(nonatomic,copy)NSString * trRandomType;
+
+@property(nonatomic,copy)NSString *  openSize;
 @end
