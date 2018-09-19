@@ -202,6 +202,13 @@
 /** 卡号 */
 @property(nonatomic,strong)NSString * cardCode;
 
+//FOLLOW_INITIATE("送出发单红包"),
+//
+//FOLLOW_FOLLOW("收到跟单红包"),
+//
+//CIRCLE_GIVEN("送出圈子红包"),
+//
+//CIRCLE_RECEIVE("收到圈子红包");
 /** 红包流水类型 */
 @property(nonatomic,strong)NSString * orderType;
 

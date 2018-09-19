@@ -313,6 +313,7 @@
                 return ;
             }
             if ([baseVC isKindOfClass: [JCZQPlayViewController class]]) {
+            [[NSNotificationCenter defaultCenter]postNotificationName:KSELECTMATCHCLEAN object:nil];
                 [self.navigationController popToViewController:baseVC animated:YES];
                 return;
             }
@@ -475,7 +476,8 @@
             return;
         }
         
-        if (self.cashPayMemt.realSubscribed > [self.curUser.balance doubleValue] + [self.curUser.notCash doubleValue] + [self.curUser.sendBalance doubleValue]) {
+        if (self.cashPayMemt.realSubscribed > [self.curUser.totalBanlece doubleValue]) {
+            [self hideLoadingView];
             [self showPromptText:@"余额不足" hideAfterDelay:1.7];
             return;
         }

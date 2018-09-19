@@ -290,7 +290,7 @@
             NSLog(@"info: %@", info);
     [picker dismissViewControllerAnimated:YES completion:^{}];
     
-    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     
     //01.21 应该在提交成功后再保存到沙盒，下次进来直接去沙盒路径取
     // 保存图片至本地，方法见下文

@@ -32,10 +32,14 @@
     self.yongjin.text = [NSString stringWithFormat:@"%.2f",[model.commission doubleValue]];
     if ([model.gainRedPacket boolValue]) {
         self.redImage.hidden = NO;
-        if ([model.open boolValue]) {
-            [self.redImage setImage:[UIImage imageNamed:@"redNew_close.png"]];
-        }else{
-            [self.redImage setImage:[UIImage imageNamed:@"redNew_disable.png"]];
+        if ([model.openStatus isEqualToString:@"LOCK"]) {
+            [self.redImage setImage:[UIImage imageNamed:@"rengouredsuoding.png"]];
+        }else if ([model.openStatus isEqualToString:@"UN_OPEN"]) {
+            [self.redImage setImage:[UIImage imageNamed:@"rengouredjiesuo.png"]];
+        }else if ([model.openStatus isEqualToString:@"OPEN"]) {
+            [self.redImage setImage:[UIImage imageNamed:@"rengoureddakai.png"]];
+        }else if ([model.openStatus isEqualToString:@"INVALID"]) {
+            [self.redImage setImage:[UIImage imageNamed:@"rengouredsuoding.png"]];
         }
     }else {
         self.redImage.hidden = YES;

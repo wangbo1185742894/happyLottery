@@ -139,7 +139,7 @@
 -(void)getHotFollowScheme{
     NSDictionary *parc;
     if (self.curUser.isLogin == NO || self.curUser == nil) {
-        parc = nil;
+        parc = @{@"selfCardCode":@""};
     }else {
         parc = @{@"selfCardCode":self.curUser.cardCode};
     }

@@ -368,7 +368,7 @@
 
 @implementation MemberRedPacketOrderModel : UserInfoBaseModel
 -(NSString *)getLeftTitle{
-    if ([self.orderType isEqualToString:@"CIRCLE_GIVEN"] || [self.orderType isEqualToString:@"CIRCLE_RECEIVE"]) {
+     if (![self.orderType isEqualToString:@"FOLLOW_INITIATE"])  {
         if ([self.refund doubleValue] > 0 ) {
             return [NSString stringWithFormat:@"\n类型\n\n时间\n\n认购金额\n\n退款金额\n\n"];
         }else{
@@ -383,7 +383,7 @@
     }
 }
 -(NSString *)getRightTitle{
-    if ([self.orderType isEqualToString:@"CIRCLE_GIVEN"] || [self.orderType isEqualToString:@"CIRCLE_RECEIVE"]) {
+    if (![self.orderType isEqualToString:@"FOLLOW_INITIATE"]) {
         if ([self.refund doubleValue] > 0 ) {
             return [NSString stringWithFormat:@"\n%@\n\n%@\n\n#%@元\n\n%@元\n\n",self.trOrderType,self.createTime,self.amount,self.refund];
         }else{
