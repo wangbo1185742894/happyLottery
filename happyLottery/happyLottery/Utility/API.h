@@ -182,6 +182,23 @@
 
 
 #define SUBAPIDATA           @"/data"
+/**
+ * 跑腿小哥列表
+ * @return 结果json
+ */
+#define APIgetLegWorkList           @"getLegWorkList"
+/**
+ * 门店随机显示
+ * @return 结果json
+ */
+#define APIgetLotteryShop @"getLotteryShop"
+/**
+ * 快递小哥关联方案保存
+ * @param params  {"legId":"xxx", "shopId":"xxx","schemeNo":"xxx"}
+ *                快递小哥Id 彩票店Id 方案号
+ * @return 结果json
+ */
+#define APIsaveLegScheme    @"saveLegScheme"
 #define APISaveClientInfo           @"saveClientInfo"
 #define APIgetJczqMatch             @"getJczqMatch"
 #define APIgetJczqSp                @"getJczqSp"

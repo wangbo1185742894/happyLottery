@@ -852,6 +852,7 @@
 		2DAE6F272150D6CE0074FFAB /* yilingqu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DAE6F212150D6CE0074FFAB /* yilingqu@3x.png */; };
 		2DAE6F2A2150E9830074FFAB /* 优惠券@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DAE6F282150E9830074FFAB /* 优惠券@3x.png */; };
 		2DAE6F2B2150E9830074FFAB /* 优惠券@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DAE6F292150E9830074FFAB /* 优惠券@2x.png */; };
+		2DAE6F2E21510BBD0074FFAB /* LegWordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAE6F2D21510BBD0074FFAB /* LegWordModel.m */; };
 		2DB4B340214B87A700E639FE /* RedPacketHisViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DB4B33D214B87A700E639FE /* RedPacketHisViewController.xib */; };
 		2DB4B341214B87A700E639FE /* RedPacketHisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB4B33E214B87A700E639FE /* RedPacketHisViewController.m */; };
 		2DB4B345214B89AE00E639FE /* RedPacketViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB4B343214B89AE00E639FE /* RedPacketViewCell.m */; };
@@ -2913,6 +2914,8 @@
 		2DAE6F212150D6CE0074FFAB /* yilingqu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yilingqu@3x.png"; sourceTree = "<group>"; };
 		2DAE6F282150E9830074FFAB /* 优惠券@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "优惠券@3x.png"; sourceTree = "<group>"; };
 		2DAE6F292150E9830074FFAB /* 优惠券@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "优惠券@2x.png"; sourceTree = "<group>"; };
+		2DAE6F2C21510BBD0074FFAB /* LegWordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LegWordModel.h; sourceTree = "<group>"; };
+		2DAE6F2D21510BBD0074FFAB /* LegWordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LegWordModel.m; sourceTree = "<group>"; };
 		2DB4B33D214B87A700E639FE /* RedPacketHisViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RedPacketHisViewController.xib; sourceTree = "<group>"; };
 		2DB4B33E214B87A700E639FE /* RedPacketHisViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedPacketHisViewController.m; sourceTree = "<group>"; };
 		2DB4B33F214B87A700E639FE /* RedPacketHisViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedPacketHisViewController.h; sourceTree = "<group>"; };
@@ -5838,6 +5841,8 @@
 				2DAE6F172150AADF0074FFAB /* RedPacketGainModel.m */,
 				2DAE6F192150AB810074FFAB /* RedPacketSendModel.h */,
 				2DAE6F1A2150AB810074FFAB /* RedPacketSendModel.m */,
+				2DAE6F2C21510BBD0074FFAB /* LegWordModel.h */,
+				2DAE6F2D21510BBD0074FFAB /* LegWordModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -9082,6 +9087,7 @@
 				F9A6390720A29D2200AA07C6 /* RecommendPerViewController.m in Sources */,
 				F95C7FEF2071F178005990F5 /* ZHDetailViewController.m in Sources */,
 				2D7B12F5204D3E5E0035AE89 /* LotteryRound.m in Sources */,
+				2DAE6F2E21510BBD0074FFAB /* LegWordModel.m in Sources */,
 				2D8CBFCF1FF3769F00CC367F /* YuceSchemeDetailViewController.m in Sources */,
 				2D36E1F320E49C4B0001390A /* TopUpsViewController.m in Sources */,
 				2DDEDC471FD52562007AEBF7 /* GlobalInstance.m in Sources */,

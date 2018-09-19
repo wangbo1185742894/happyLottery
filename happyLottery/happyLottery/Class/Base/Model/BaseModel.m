@@ -28,7 +28,12 @@
     if ([key isEqualToString:@"id"]) {
         key = @"_id";
     }
+
+    if ([key isEqualToString:@"description"]) {
+        key = @"_description";
+    }
   
+    
     [super setValue:strValue forKey:key];
 }
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key

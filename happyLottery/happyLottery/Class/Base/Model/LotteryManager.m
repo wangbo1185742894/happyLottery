@@ -2060,6 +2060,82 @@
                         failure:failureBlock];
 }
 
+-(void)getLegWorkList:(NSDictionary *)para{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        
+        if (response.succeed) {
+            NSArray *paraDic = [Utility objFromJson:responseJsonStr];
+            [self.delegate gotLegWorkList:paraDic errorInfo:response.errorMsg];
+        } else {
+            [self.delegate gotLegWorkList:nil errorInfo:response.errorMsg];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate gotLegWorkList:nil errorInfo:@"请检查网络连接"];
+    };
+    
+    SOAPRequest *request = [self requestForAPI: APIgetLegWorkList withParam:nil];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIDATA
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
 
+-(void)getLotteryShop:(NSDictionary *)para{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        
+        if (response.succeed) {
+            NSDictionary *paraDic = [Utility objFromJson:responseJsonStr];
+            [self.delegate gotLotteryShop:paraDic errorInfo:response.errorMsg];
+        } else {
+            [self.delegate gotLotteryShop:nil errorInfo:response.errorMsg];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate gotLotteryShop:nil errorInfo:@"请检查网络连接"];
+    };
+    
+    SOAPRequest *request = [self requestForAPI: APIgetLotteryShop withParam:nil];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIDATA
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+-(void)saveLegScheme:(NSDictionary *)para{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        
+        if (response.succeed) {
+            NSArray *paraDic = [Utility objFromJson:responseJsonStr];
+            [self.delegate savedLegScheme:paraDic errorInfo:response.errorMsg];
+        } else {
+            [self.delegate savedLegScheme:nil errorInfo:response.errorMsg];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate savedLegScheme:nil errorInfo:@"请检查网络连接"];
+    };
+    
+    SOAPRequest *request = [self requestForAPI: APIsaveLegScheme withParam:@{@"params":[self actionEncrypt:[self JsonFromId:para]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIDATA
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
 
 @end

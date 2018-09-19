@@ -83,6 +83,9 @@ typedef enum EarningsType{
 - (void)initiateFollowRedPacketPayment:(NSString *)resultStr  errorMsg:(NSString *)msg;
 
 - (void) gotRedPacketHis:(NSArray *)redList errorInfo:(NSString *)errMsg;
+- (void) gotLegWorkList:(NSArray *)redList errorInfo:(NSString *)errMsg;
+- (void) gotLotteryShop:(NSDictionary *)redList errorInfo:(NSString *)errMsg;
+- (void) savedLegScheme:(BOOL )success errorInfo:(NSString *)errMsg;
 @end
 
 @interface LotteryManager : Manager
@@ -184,5 +187,8 @@ typedef enum EarningsType{
     
 -(void)getCommonSetValue:(NSDictionary *)para andIndex:(NSInteger)index;
 -(void)getRedPacketHis:(NSDictionary *)para andUrl:(NSString *)strUrl;
+-(void)getLegWorkList:(NSDictionary *)para;
+-(void)saveLegScheme:(NSDictionary *)para;
+-(void)getLotteryShop:(NSDictionary *)para;
 @end
 

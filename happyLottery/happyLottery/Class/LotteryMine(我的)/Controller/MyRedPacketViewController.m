@@ -151,6 +151,11 @@
         [itemTableView reloadData];
         
     }else{
+        if (self.segment.selectedSegmentIndex == 0) {
+            [self.tableView1 tableViewEndRefreshCurPageCount:redPacketInfo.count];
+        }else{
+            [self.tableView2 tableViewEndRefreshCurPageCount:redPacketInfo.count];
+        }
         [self showPromptText:errMsg hideAfterDelay:1.7];
     }
 }
@@ -331,6 +336,16 @@
         if (listUseRedPacketArray.count > 0) {
           RedPacketGainModel * redPacket = listUseRedPacketArray[indexPath.row];
              NSString *redPacketStatus = redPacket.trRedPacketStatus;
+            
+            
+//            FOLLOW_CHANNEL("跟单红包"),
+//
+//            CIRCLE_CHANNEL("圈子红包");
+            if ([redPacket.redPacketType isEqualToString:@"FOLLOW_CHANNEL"] || [redPacket.redPacketType isEqualToString:@"CIRCLE_CHANNEL"]) {
+                
+            }else{
+                cell.sourceLab.text = [NSString stringWithFormat:@"来源：%@",redPacket.activityName];
+            }
             if ([redPacketStatus isEqualToString:@"锁定"]) {
                 cell.packetImage.image = [UIImage imageNamed:@"lockredpacket"];
             } else  if ([redPacketStatus isEqualToString:@"解锁"]) {
@@ -357,7 +372,7 @@
                      cell.packetImage.image = [UIImage imageNamed:@"unlockredpacket"];
             }
          
-            cell.nameLab.text = redPacket.trRedPacketChannel;
+            cell.nameLab.text = redPacket._description;
             
             NSString *redPacketChannel =redPacket.redPacketChannel;
             NSString *sourecs;
@@ -384,11 +399,11 @@
             }
             
             cell.endTimeLab.text = [NSString stringWithFormat:@"有效期至：%@",date];
-            if ([redPacket._description containsString:@"大转盘"]) {
+            if (0) {
                 cell.day.text = [self getTimesFromHours:redPacket.endValidTime];
             } else {
                 if([redPacketStatus isEqualToString:@"领取"]){
-                    cell.day.text = @"已存入账户，可直接使用";
+                    cell.day.text = @"";
                     cell.endTimeLab.text = @"";
                 }else{
                     const long long  dayInteger = [self getDifferenceByDate:redPacket.endValidTime];
@@ -454,11 +469,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath: indexPath animated: YES];
     if (tableView == self.tableView1) {
+     
         redPacketGain = listUseRedPacketArray[indexPath.row];
-        if(redPacketGain){
-            
+        if ([redPacketGain.trRedPacketStatus isEqualToString:@"解锁"]){
+            if(redPacketGain){
+                [self openRedPacketClient];
+            }
         }
-        [self openRedPacketClient];
     }
 }
 

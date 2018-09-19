@@ -15,6 +15,21 @@
     // Initialization code
 }
 
+-(void)loadData:(LegWordModel *)model{
+    if (model.isSelect == YES) {
+        self.labObaRemark.text = @"注：倒计时结束后会默认选中他";
+    }else{
+        self.labObaRemark.text = @"";
+    }
+    self.labObaName.text = model.legName;
+    if ([model.cost integerValue] == 0) {
+        self.labObaCost.text = @"限时免费";
+    }else{
+        self.labObaCost.text = [NSString stringWithFormat:@"一次%@元",model.cost];
+    }
+    
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

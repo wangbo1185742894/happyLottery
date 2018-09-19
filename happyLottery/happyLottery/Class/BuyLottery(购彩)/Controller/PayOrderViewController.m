@@ -8,6 +8,7 @@
 
 #import "PayOrderViewController.h"
 #import "TabObaListCell.h"
+#import "LegWordModel.h"
 #import "PaySuccessViewController.h"
 #import "WXApi.h"
 #import "ChannelModel.h"
@@ -34,7 +35,9 @@
 @interface PayOrderViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,MemberManagerDelegate,UIWebViewDelegate,WBInputPopViewDelegate>
 {
     NSMutableArray <ChannelModel *>*channelList;
-    __weak IBOutlet NSLayoutConstraint *heightTopView;
+    NSMutableArray <LegWordModel *>*legWorkList;
+    __weak IBOutlet NSLayoutConstraint*heightTopView;
+    LotteryShopDto*selectShopModel;
     NSInteger KCheckSec;
     ChannelModel *itemModel;
     __weak IBOutlet UIImageView *imgObaComeOn;
@@ -87,7 +90,9 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+ 
      self.isShowOba = NO;
+    legWorkList = [NSMutableArray arrayWithCapacity:0];
     [self.lotteryMan getCommonSetValue:@{@"typeCode":@"to_buy",@"commonCode":@"to_buy_lottery"} andIndex:0];
       [self.lotteryMan getCommonSetValue:@{@"typeCode":@"to_buy",@"commonCode":@"to_buy_countdown"} andIndex:1];
     heightTopView.constant = NaviHeight;
@@ -124,12 +129,19 @@
     self.lotteryMan.delegate = self;
     [self.memberMan getAvailableCoupon:@{@"cardCode":self.curUser.cardCode,@"amount":@(self.cashPayMemt.realSubscribed)}];
     [self getListByChannel];
+       [self .lotteryMan getLotteryShop:nil];
 }
-    
+
+-(void)gotLotteryShop:(NSDictionary *)redList errorInfo:(NSString *)errMsg{
+    if (redList != nil) {
+        selectShopModel = [[LotteryShopDto alloc]initWith:redList];
+    }
+}
 -(void)gotCommonSetValue:(NSString *)strUrl andIndex:(NSInteger)index{
     if(index == 0){
         self.isShowOba = [strUrl boolValue];
         if(self.isShowOba == YES){
+            [self .lotteryMan getLegWorkList:nil];
             viewOBaList.frame = [UIScreen mainScreen].bounds;
             viewOBaList.mj_x = KscreenWidth;
             [[UIApplication sharedApplication].keyWindow addSubview:viewOBaList];
@@ -147,6 +159,18 @@
             }
             
         });
+    }
+}
+
+-(void)gotLegWorkList:(NSArray *)redList errorInfo:(NSString *)errMsg{
+    if (redList.count > 0) {
+        for (NSDictionary *itemDic in redList) {
+            LegWordModel *model = [[LegWordModel alloc]initWith:itemDic];
+            [legWorkList addObject:model];
+            [tabObaList reloadData];
+        }
+        [legWorkList firstObject].isSelect = YES;
+        labCostInfo.text = [NSString stringWithFormat:@"明细：订单金额：%.2f + 跑腿费：%@",self.cashPayMemt.subscribed,[legWorkList firstObject].cost];
     }
 }
 
@@ -176,6 +200,8 @@
         [self.btnTouzhu setTitle:@"预约支付" forState:0];
     }
 }
+
+
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -318,7 +344,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (tableView == tabObaList) {
-        return 4;
+        return legWorkList.count;
     }
     return channelList.count;
 }
@@ -327,6 +353,7 @@
     if (tableView == tabObaList) {
         TabObaListCell *cell = [tableView dequeueReusableCellWithIdentifier:KTabObaListCell];
         cell.selectionStyle = 0;
+        [cell loadData:legWorkList[indexPath.row]];
         return cell;
     }else{
         PayTypeListCell *cell = [tableView dequeueReusableCellWithIdentifier:KPayTypeListCell];
@@ -493,6 +520,19 @@
 }
 
 -(void)paySuccess{
+    NSString *legId;
+    if (self.isShowOba) {
+        for (LegWordModel *model in legWorkList) {
+            if (model.isSelect == YES) {
+                legId = model._id;
+                break;
+            }
+        }
+        if (legId == nil) {
+            legId = [legWorkList firstObject]._id;
+        }
+        [self .lotteryMan saveLegScheme:@{@"legId":legId,@"shopId":selectShopModel._id,@"schemeNo":self.cashPayMemt.schemeNo}];
+    }
   
     PaySuccessViewController * paySuccessVC = [[PaySuccessViewController alloc]init];
     paySuccessVC.schemetype = self.schemetype;
@@ -510,6 +550,12 @@
     paySuccessVC.schemeNO = self.cashPayMemt.schemeNo;
     paySuccessVC.isMoni = self.cashPayMemt.costType == CostTypeSCORE;
     [self.navigationController pushViewController:paySuccessVC animated:YES];
+}
+
+-(void)savedLegScheme:(BOOL)success errorInfo:(NSString *)errMsg{
+    if (success == YES) {
+        
+    }
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
@@ -582,10 +628,16 @@
     self.viewPayList.constant = channelList.count * self.tabPayTypeList.rowHeight;
     [self.tabPayTypeList reloadData];
 }
-
+-(void)setSelectOba:(NSInteger )index{
+    for (LegWordModel *itemModel in legWorkList) {
+        itemModel.isSelect = NO;
+    }
+    legWorkList[index].isSelect = YES;
+}
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (tableView == tabObaList ) {
         MJWeakSelf
+        [self setSelectOba:indexPath.row];
         [UIView animateWithDuration:0.2 animations:^{
              self->checkSec  = KCheckSec;
             weakSelf.labTimer.text = [NSString stringWithFormat:@"%ld",KCheckSec];
@@ -762,6 +814,7 @@
         [self navigationBackToLastPageitem];
         return;
     }
+    [self setSelectOba:0];
     viewOBaList.mj_x = -KscreenWidth;
     [[UIApplication sharedApplication].keyWindow addSubview:viewOBaList];
     [UIView animateWithDuration:0.3 animations:^{
@@ -830,7 +883,7 @@
                  [self.btnCom setTitle:[NSString stringWithFormat:@""] forState:0];
                 [self.btnCom setImage:[UIImage imageNamed:@"imgOk.png"] forState:0];
                 [weakSelf.viewOPaComeOn layoutIfNeeded];
-                self.labQiangdanBegin.text = [NSString stringWithFormat:@"哈哈彩票店"];
+                self.labQiangdanBegin.text = [NSString stringWithFormat:@"%@彩票店",selectShopModel.shopName];
                 self.labQiangdanSucc.text = @"抢单成功";
             }completion:^(BOOL finished) {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

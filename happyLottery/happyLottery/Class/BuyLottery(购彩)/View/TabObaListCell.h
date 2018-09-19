@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "LegWordModel.h"
 @interface TabObaListCell : UITableViewCell
-
+@property (weak, nonatomic) IBOutlet UILabel *labObaCost;
+@property (weak, nonatomic) IBOutlet UILabel *labObaRemark;
+@property (weak, nonatomic) IBOutlet UILabel *labObaName;
+-(void)loadData:(LegWordModel *)model;
 @end
