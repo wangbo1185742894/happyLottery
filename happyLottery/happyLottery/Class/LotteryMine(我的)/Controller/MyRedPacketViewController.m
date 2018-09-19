@@ -179,6 +179,8 @@
             sourecs = [NSString stringWithFormat:@"恭喜您获得了%@积分",red.redPacketContent];
         }else if ([redPacketType isEqualToString:@"优惠券红包"]){
             sourecs = [NSString stringWithFormat:@"恭喜您获得了%@张优惠券",red.redPacketContent];
+        }else if ([redPacketType isEqualToString:@"不可提现红包"]) {
+            sourecs = [NSString stringWithFormat:@"恭喜您获得了%@元",red.redPacketContent];
         }
         [self rotation360repeatCount:2 view:image andHalf:width andCaijin:sourecs];
         page=1;
@@ -448,7 +450,7 @@
             }
        
             cell.sourceLab.text = [NSString stringWithFormat:@"已领取%@/%@",redPacket.openSize ,redPacket.totalCount];
-            cell.endTimeLab.text = redPacket.createTime;
+            cell.sourceLab.text = redPacket.createTime;
             
             cell.labRedPacketCost.text = [NSString stringWithFormat:@"￥%@",redPacket.amount];
             

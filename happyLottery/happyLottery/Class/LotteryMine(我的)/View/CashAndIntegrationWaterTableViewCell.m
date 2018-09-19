@@ -30,7 +30,21 @@
 -(void)loadUserInfo:(UserInfoBaseModel *)userInfo{
     self.imgWidth.constant = 0;
     self.imgDisLeft.constant = 0;
-
+    if ([userInfo isKindOfClass:[MemberRedPacketOrderModel class]]) {
+        MemberRedPacketOrderModel *model =(MemberRedPacketOrderModel *) userInfo;
+        //FOLLOW_INITIATE("送出发单红包"),
+        //
+        //FOLLOW_FOLLOW("收到跟单红包"),
+        //
+        //CIRCLE_GIVEN("送出圈子红包"),
+        //
+        //CIRCLE_RECEIVE("收到圈子红包");
+        if ([model.orderType isEqualToString:@"FOLLOW_INITIATE"] || [model.orderType isEqualToString:@"CIRCLE_GIVEN"]) {
+            self.imgIcon.image = [UIImage imageNamed:@"zhichured.png"];
+        }else{
+             self.imgIcon.image = [UIImage imageNamed:@"shourured.png"];
+        }
+    }
     self.nameLab.text = [userInfo get1Name];
     self.nameLab.keyWord = @"(驳回)";
     if ([[userInfo get1Name] isEqualToString:@"提现(驳回)"]) {

@@ -36,6 +36,11 @@
 @property(nonatomic,strong)NSString * gainRedPacket;
 
 /** 红包是否打开 */
+//LOCK("锁定"),
+//UN_OPEN("解锁"),
+//OPEN("领取"),
+//INVALID("失效");openStatus
+@property(nonatomic,strong)NSString * openStatus;
 @property(nonatomic,strong)NSString * open;
 
 @end
