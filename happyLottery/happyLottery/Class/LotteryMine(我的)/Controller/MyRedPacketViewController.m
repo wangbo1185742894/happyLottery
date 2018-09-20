@@ -373,7 +373,7 @@
               
             }else  if ([redPacketStatus isEqualToString:@"失效"]) {
                 cell.endImage.image = [UIImage imageNamed:@"yiguoqi"];
-                     cell.packetImage.image = [UIImage imageNamed:@"unlockredpacket"];
+                     cell.packetImage.image = [UIImage imageNamed:@"unlock_cannot"];
             }
          
             cell.nameLab.text = redPacket._description;

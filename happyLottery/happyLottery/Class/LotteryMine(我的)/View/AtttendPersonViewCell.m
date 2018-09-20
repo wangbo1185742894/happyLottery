@@ -65,6 +65,8 @@
         [self.redImage setImage:[UIImage imageNamed:@"rengouredjiesuo.png"]];
     }else if ([model.redPacketStatus isEqualToString:@"OPEN"]) {
         [self.redImage setImage:[UIImage imageNamed:@"rengoureddakai.png"]];
+    }else if ([model.openStatus isEqualToString:@"INVALID"]) {
+        [self.redImage setImage:[UIImage imageNamed:@"rengouredsuoding.png"]];
     }
     if (model.nikeName == nil) {
         if (model.mobile == nil) {
