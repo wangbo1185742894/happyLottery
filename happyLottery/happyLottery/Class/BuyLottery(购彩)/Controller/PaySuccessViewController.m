@@ -48,6 +48,7 @@
     NSString * univalent; /** 单个价格 */
     NSString * totalCount;  /** 红包个数 */
     InitiateFollowRedPModel *model;
+    BOOL faqigentou;
 }
 
 - (void)viewDidLoad {
@@ -70,6 +71,7 @@
     if ([Utility isIOS11After]) {
         self.automaticallyAdjustsScrollViewInsets = NO; // tableView 莫名其妙  contentOffset.y 成-64了  MMP
     }
+    faqigentou = NO;
 
 }
 
@@ -261,6 +263,7 @@
 
 
 - (IBAction)actionPostScheme:(id)sender {
+    faqigentou = YES;
     [self initRedPackageView];
 }
 
@@ -309,7 +312,7 @@
 }
 
 -(void)clickBackGround{
-    if (self.schemetype == SchemeTypeFaqiGenDan && self.btnHeightPostScheme.constant != 0) {
+    if (faqigentou) {
        [self.lotteryMan initiateFollowScheme:@{@"schemeNo":self.schemeNO}];
     }
 }
