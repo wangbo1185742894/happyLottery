@@ -34,27 +34,24 @@
                         <color key="textColor" red="0.14509803921568626" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9393" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PYT-62-FKa">
-                        <rect key="frame" x="195.5" y="10" width="39.5" height="18"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="993999.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PYT-62-FKa">
+                        <rect key="frame" x="172" y="15" width="78.5" height="17"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                         <color key="textColor" red="0.99607843137254903" green="0.22745098039215686" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="销量(元)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HRZ-da-4t5">
-                        <rect key="frame" x="190" y="37.5" width="50" height="16"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="销量(元)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HRZ-da-4t5">
+                        <rect key="frame" x="171" y="34" width="80" height="14.5"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="50" id="fXo-WS-62P"/>
+                            <constraint firstAttribute="width" constant="80" id="fXo-WS-62P"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.1450980392" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="购买(次)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZbI-x3-Fml">
-                        <rect key="frame" x="265" y="37.5" width="50" height="16"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="50" id="ZA6-5N-qg9"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="购买(次)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZbI-x3-Fml">
+                        <rect key="frame" x="251" y="34.5" width="89" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.14509803921568626" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -68,27 +65,28 @@
                         <state key="selected" image="red_check_select.png"/>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="38" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lyN-Gn-u70">
-                        <rect key="frame" x="280.5" y="10" width="20" height="18"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                        <rect key="frame" x="286.5" y="15" width="19" height="17"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="aMR-kl-RIp" firstAttribute="leading" secondItem="ZbI-x3-Fml" secondAttribute="trailing" id="21a-3W-R0s"/>
                     <constraint firstItem="ZbI-x3-Fml" firstAttribute="centerY" secondItem="HRZ-da-4t5" secondAttribute="centerY" id="2Rg-C2-AM9"/>
                     <constraint firstItem="lyN-Gn-u70" firstAttribute="centerX" secondItem="ZbI-x3-Fml" secondAttribute="centerX" id="33l-Qw-8Cs"/>
                     <constraint firstItem="PYT-62-FKa" firstAttribute="centerX" secondItem="HRZ-da-4t5" secondAttribute="centerX" id="5fh-00-QuX"/>
                     <constraint firstItem="aMR-kl-RIp" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Bjt-tu-ort"/>
-                    <constraint firstItem="aMR-kl-RIp" firstAttribute="leading" secondItem="ZbI-x3-Fml" secondAttribute="trailing" constant="25" id="DTV-yl-F7V"/>
-                    <constraint firstAttribute="bottom" secondItem="HRZ-da-4t5" secondAttribute="bottom" constant="10" id="Gd8-TI-OxO"/>
+                    <constraint firstAttribute="bottom" secondItem="HRZ-da-4t5" secondAttribute="bottom" constant="15" id="Gd8-TI-OxO"/>
                     <constraint firstItem="0SB-eA-mWF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Jiy-dO-1Lm"/>
                     <constraint firstItem="3VL-fs-R3S" firstAttribute="leading" secondItem="0SB-eA-mWF" secondAttribute="trailing" constant="10" id="VGA-bj-XWj"/>
+                    <constraint firstItem="ZbI-x3-Fml" firstAttribute="leading" secondItem="HRZ-da-4t5" secondAttribute="trailing" id="Viv-fF-Pdx"/>
                     <constraint firstAttribute="trailing" secondItem="aMR-kl-RIp" secondAttribute="trailing" constant="5" id="Xuf-cc-QKo"/>
                     <constraint firstItem="3VL-fs-R3S" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Yu6-5y-UAM"/>
                     <constraint firstItem="lyN-Gn-u70" firstAttribute="centerY" secondItem="PYT-62-FKa" secondAttribute="centerY" id="ZG8-wA-xcH"/>
                     <constraint firstItem="0SB-eA-mWF" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="cca-aO-qes"/>
-                    <constraint firstItem="ZbI-x3-Fml" firstAttribute="leading" secondItem="HRZ-da-4t5" secondAttribute="trailing" constant="25" id="sC5-LU-9i6"/>
-                    <constraint firstItem="PYT-62-FKa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="vHd-zc-m1D"/>
+                    <constraint firstItem="HRZ-da-4t5" firstAttribute="leading" secondItem="3VL-fs-R3S" secondAttribute="trailing" constant="20" id="nld-tQ-MF4"/>
+                    <constraint firstItem="PYT-62-FKa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="vHd-zc-m1D"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

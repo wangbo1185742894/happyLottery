@@ -74,14 +74,14 @@
                             </connections>
                         </button>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JaZ-0X-8Xt">
-                            <rect key="frame" x="0.0" y="40" width="187.5" height="3"/>
+                            <rect key="frame" x="0.0" y="40" width="187.5" height="2"/>
                             <color key="backgroundColor" red="0.067504443230000002" green="0.78096091749999996" blue="0.57203906770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="3" id="kao-T2-C8n"/>
+                                <constraint firstAttribute="height" constant="2" id="kao-T2-C8n"/>
                             </constraints>
                         </imageView>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5yW-Zo-rbU">
-                            <rect key="frame" x="0.0" y="43" width="375" height="510"/>
+                            <rect key="frame" x="0.0" y="42" width="375" height="511"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tableView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7ac-dr-Ku5">
@@ -152,7 +152,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ic7-tQ-0Ys">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="107"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="106"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YxM-sZ-Tmu">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
@@ -227,7 +227,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d0B-fc-zHi">
-                            <rect key="frame" x="0.0" y="106" width="375" height="1"/>
+                            <rect key="frame" x="0.0" y="105" width="375" height="1"/>
                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="YiG-2m-tpQ"/>
@@ -239,7 +239,7 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="107" id="2Qy-eR-gwn"/>
+                        <constraint firstAttribute="height" constant="106" id="2Qy-eR-gwn"/>
                         <constraint firstAttribute="bottom" secondItem="d0B-fc-zHi" secondAttribute="bottom" id="2WW-EZ-tFJ"/>
                         <constraint firstItem="BAj-Tw-mz1" firstAttribute="centerY" secondItem="QCZ-gv-huR" secondAttribute="centerY" id="70F-ag-3Xr"/>
                         <constraint firstAttribute="trailing" secondItem="BAj-Tw-mz1" secondAttribute="trailing" constant="20" id="8vj-i4-SNn"/>

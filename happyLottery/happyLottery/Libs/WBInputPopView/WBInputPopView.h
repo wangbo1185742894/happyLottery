@@ -26,6 +26,8 @@ typedef void(^PasswordBlock)(NSString*pass);
 
 @property(copy,nonatomic) PasswordBlock passBlock;
 
+@property(nonatomic,assign) BOOL fromSendRed;
+
 @property(nonatomic,assign)id <WBInputPopViewDelegate>delegate;
 -(void)createBlock:(PasswordBlock)pass;
 

@@ -875,7 +875,6 @@
 		2DB4B34F214B8D8200E639FE /* redpackettop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DB4B34D214B8D8200E639FE /* redpackettop@2x.png */; };
 		2DB4B353214BAA9A00E639FE /* SendRedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB4B351214BAA9A00E639FE /* SendRedViewController.m */; };
 		2DB4B354214BAA9A00E639FE /* SendRedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DB4B352214BAA9A00E639FE /* SendRedViewController.xib */; };
-		2DB4B356214BAB4300E639FE /* 红包设置.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DB4B355214BAB4300E639FE /* 红包设置.png */; };
 		2DCBB2761FD1000700934D92 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCBB2751FD1000700934D92 /* AppDelegate.m */; };
 		2DCBB27E1FD1000700934D92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DCBB27D1FD1000700934D92 /* Assets.xcassets */; };
 		2DCBB2811FD1000700934D92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DCBB27F1FD1000700934D92 /* LaunchScreen.storyboard */; };
@@ -1401,6 +1400,8 @@
 		F999278620037A8C00023F8F /* empty_youhuiquan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F999278420037A8B00023F8F /* empty_youhuiquan@3x.png */; };
 		F999278920037AA200023F8F /* empty_zhmx@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F999278720037AA200023F8F /* empty_zhmx@2x.png */; };
 		F999278A20037AA200023F8F /* empty_zhmx@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F999278820037AA200023F8F /* empty_zhmx@3x.png */; };
+		F99F8720215367CB00E60B08 /* redPackPay_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F99F871E215367C900E60B08 /* redPackPay_close@2x.png */; };
+		F99F8721215367CB00E60B08 /* redPackPay_close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F99F871F215367CA00E60B08 /* redPackPay_close@3x.png */; };
 		F9A6390720A29D2200AA07C6 /* RecommendPerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9A6390520A29D2200AA07C6 /* RecommendPerViewController.m */; };
 		F9A6390820A29D2200AA07C6 /* RecommendPerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9A6390620A29D2200AA07C6 /* RecommendPerViewController.xib */; };
 		F9A6391120A2A14000AA07C6 /* RecomPerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9A6390F20A2A14000AA07C6 /* RecomPerTableViewCell.m */; };
@@ -2955,7 +2956,6 @@
 		2DB4B350214BAA9A00E639FE /* SendRedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendRedViewController.h; sourceTree = "<group>"; };
 		2DB4B351214BAA9A00E639FE /* SendRedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendRedViewController.m; sourceTree = "<group>"; };
 		2DB4B352214BAA9A00E639FE /* SendRedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendRedViewController.xib; sourceTree = "<group>"; };
-		2DB4B355214BAB4300E639FE /* 红包设置.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "红包设置.png"; sourceTree = "<group>"; };
 		2DCBB2711FD1000700934D92 /* happyLottery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = happyLottery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DCBB2741FD1000700934D92 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2DCBB2751FD1000700934D92 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -3671,6 +3671,8 @@
 		F999278420037A8B00023F8F /* empty_youhuiquan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty_youhuiquan@3x.png"; sourceTree = "<group>"; };
 		F999278720037AA200023F8F /* empty_zhmx@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty_zhmx@2x.png"; sourceTree = "<group>"; };
 		F999278820037AA200023F8F /* empty_zhmx@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty_zhmx@3x.png"; sourceTree = "<group>"; };
+		F99F871E215367C900E60B08 /* redPackPay_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redPackPay_close@2x.png"; sourceTree = "<group>"; };
+		F99F871F215367CA00E60B08 /* redPackPay_close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redPackPay_close@3x.png"; sourceTree = "<group>"; };
 		F9A6390420A29D2200AA07C6 /* RecommendPerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecommendPerViewController.h; sourceTree = "<group>"; };
 		F9A6390520A29D2200AA07C6 /* RecommendPerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecommendPerViewController.m; sourceTree = "<group>"; };
 		F9A6390620A29D2200AA07C6 /* RecommendPerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendPerViewController.xib; sourceTree = "<group>"; };
@@ -5243,6 +5245,8 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				F99F871E215367C900E60B08 /* redPackPay_close@2x.png */,
+				F99F871F215367CA00E60B08 /* redPackPay_close@3x.png */,
 				2DB281AB2153448500B01BB4 /* navbackimage.png */,
 				2DB281A12152526900B01BB4 /* shourured@3x.png */,
 				2DB281A22152526900B01BB4 /* shourured2x.png */,
@@ -5262,7 +5266,6 @@
 				2DAE6F212150D6CE0074FFAB /* yilingqu@3x.png */,
 				2DAE6F1C2150D6CD0074FFAB /* yilingwan@2x.png */,
 				2DAE6F1D2150D6CD0074FFAB /* yilingwan@3x.png */,
-				2DB4B355214BAB4300E639FE /* 红包设置.png */,
 				2DB4B34D214B8D8200E639FE /* redpackettop@2x.png */,
 				2DB4B34C214B8D8200E639FE /* redpackettop@3x.png */,
 				2D6656D82149083F0022C77C /* imgOk.png */,
@@ -7646,6 +7649,7 @@
 				F9E53D5020EE28D70072B8AF /* tuijian_mine@3x.png in Resources */,
 				2D0EEA9A201582C300B0769C /* yuce_detail@3x.png in Resources */,
 				2D628B6B1FF2278F0013D0E1 /* icon_danguan@3x.png in Resources */,
+				F99F8721215367CB00E60B08 /* redPackPay_close@3x.png in Resources */,
 				2DA0C2D120B659280031AC47 /* guanyajun@3x.png in Resources */,
 				F9632F53200C8CC100F69D23 /* arrowdown@2x.png in Resources */,
 				2D4D609720B2548B00280033 /* RegisterViewController.xib in Resources */,
@@ -7972,6 +7976,7 @@
 				F947DCF82140C37700F3BB98 /* gendanTag@2x.png in Resources */,
 				F92855D320A2DFD20023A0AC /* SchemeInfoFollowCell.xib in Resources */,
 				2D7B1377204E63EF0035AE89 /* dltcheckbox@2x.png in Resources */,
+				F99F8720215367CB00E60B08 /* redPackPay_close@2x.png in Resources */,
 				2D7B137A204E6AEF0035AE89 /* BetPlayStyleCode.plist in Resources */,
 				2D0EEAAF2015DCFC00B0769C /* ad_home3@2x.png in Resources */,
 				F922FD2E20AE9940000BA6F1 /* quanzi_secelcted@3x.png in Resources */,
@@ -8502,7 +8507,6 @@
 				2D638F6720F5A597004463FC /* GYJSchemeDetailViewController.xib in Resources */,
 				2D739CFF1FEB68B800264044 /* backViewYuanJiao@3x.png in Resources */,
 				2D739C751FE79EAA00264044 /* LotteryProfileSelectView.xib in Resources */,
-				2DB4B356214BAB4300E639FE /* 红包设置.png in Resources */,
 				2D8CBFE61FF376DA00CC367F /* YuCeLiShiZhanJCell.xib in Resources */,
 				F9B5D98A2060A9DE00C9F6DC /* flag403@3x.png in Resources */,
 				2D40CAA3201EDE5700DDCFE3 /* button_line@2x.png in Resources */,

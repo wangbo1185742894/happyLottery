@@ -83,7 +83,7 @@
     self.btnPostScheme.userInteractionEnabled = YES;
     if (self.schemetype == SchemeTypeFaqiGenDan && self.btnHeightPostScheme.constant == 0) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(self.aniTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [self initRedPackageView];
+            [self initRedPackageView];
         });
 
     }
@@ -253,30 +253,12 @@
 - (void)initRedPackageView {
     RedPackageView *redPackView = [[RedPackageView alloc]initWithFrame:[UIScreen mainScreen].bounds];
     redPackView.delegate = self;
-    redPackView.yuanTextField.text = @"1";
-    redPackView.countTextField.text = @"5";
-    redPackView.yuanTextField.keyboardType = UIKeyboardTypeNumberPad;
-    redPackView.countTextField.keyboardType = UIKeyboardTypeNumberPad;
     redPackView.totalBanlece = self.orderCost;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [[UIApplication sharedApplication].keyWindow addSubview:redPackView];
     });
 }
 
-
-- (void)payViewFaild {
-    RedPackageView *redPackView = [[RedPackageView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    redPackView.delegate = self;
-    redPackView.yuanTextField.text = univalent;
-    redPackView.countTextField.text = totalCount;
-    redPackView.yuanTextField.keyboardType = UIKeyboardTypeNumberPad;
-    redPackView.countTextField.keyboardType = UIKeyboardTypeNumberPad;
-    redPackView.totalBanlece =self.orderCost;
-    [redPackView setOpenViewUI];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [[UIApplication sharedApplication].keyWindow addSubview:redPackView];
-    });
-}
 
 - (IBAction)actionPostScheme:(id)sender {
     [self initRedPackageView];
@@ -302,6 +284,7 @@
         passInput = [[WBInputPopView alloc]init];
         passInput.delegate = self;
         passInput.labTitle.text = @"请输入支付密码";
+        passInput.fromSendRed = YES;
     }
     [self.view addSubview:passInput];
     passInput.delegate = self;
@@ -325,14 +308,18 @@
     [self forgetPayPwd];
 }
 
-//WBInputPopViewdelegate
-- (void)clickBackGround{
-    [self.lotteryMan initiateFollowScheme:@{@"schemeNo":self.schemeNO}];
+-(void)clickBackGround{
+    if (self.schemetype == SchemeTypeFaqiGenDan && self.btnHeightPostScheme.constant != 0) {
+       [self.lotteryMan initiateFollowScheme:@{@"schemeNo":self.schemeNO}];
+    }
 }
 
+
+
 -(void)validatePaypwdSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
-    [passInput removeFromSuperview];
+    
     if (success == YES) {
+        [passInput removeFromSuperview];
         //密码验证成功，扣除红包金额，发单
         model = [InitiateFollowRedPModel new];
         model.schemeNo = self.schemeNO;
@@ -352,7 +339,6 @@
     }else{
         //密码验证失败，不发红包
         [self showPromptText:msg hideAfterDelay:1.7];
-        [self payViewFaild];
     }
 }
 
