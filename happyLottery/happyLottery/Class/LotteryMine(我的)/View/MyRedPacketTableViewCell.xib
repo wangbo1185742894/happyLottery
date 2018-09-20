@@ -86,6 +86,12 @@
                         <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2VS-pX-Xoe">
+                        <rect key="frame" x="137" y="54.5" width="0.0" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.47843137250000001" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="q0V-sZ-6Wh" firstAttribute="bottom" secondItem="unk-21-0A4" secondAttribute="bottom" id="5Pt-Fg-seP"/>
@@ -102,6 +108,8 @@
                     <constraint firstAttribute="trailingMargin" secondItem="QV1-k5-sxd" secondAttribute="trailing" constant="10" id="fTi-35-x4b"/>
                     <constraint firstItem="q0V-sZ-6Wh" firstAttribute="leading" secondItem="unk-21-0A4" secondAttribute="leading" constant="8" id="fZE-tM-gyN"/>
                     <constraint firstAttribute="trailing" secondItem="qmD-YM-XlR" secondAttribute="trailing" constant="14" id="fwC-bG-PK9"/>
+                    <constraint firstItem="2VS-pX-Xoe" firstAttribute="centerY" secondItem="8Sr-x5-1J3" secondAttribute="centerY" id="i2N-pi-1fT"/>
+                    <constraint firstItem="2VS-pX-Xoe" firstAttribute="leading" secondItem="8Sr-x5-1J3" secondAttribute="trailing" constant="50" id="l10-vG-gVP"/>
                     <constraint firstItem="q0V-sZ-6Wh" firstAttribute="top" secondItem="qkB-iF-EdM" secondAttribute="top" constant="15" id="lIe-i0-lIU"/>
                     <constraint firstAttribute="bottomMargin" secondItem="QV1-k5-sxd" secondAttribute="bottom" constant="10" id="pkU-J1-pdc"/>
                     <constraint firstAttribute="bottom" secondItem="G3Y-YP-4ch" secondAttribute="bottom" constant="3.5" id="pz0-zJ-tVt"/>
@@ -118,6 +126,7 @@
                 <outlet property="endImage" destination="G3Y-YP-4ch" id="gSF-hp-M2X"/>
                 <outlet property="endTimeLab" destination="qmD-YM-XlR" id="lSt-kB-tSV"/>
                 <outlet property="labBackCost" destination="QV1-k5-sxd" id="Ol5-JS-4tQ"/>
+                <outlet property="labCreatTime" destination="2VS-pX-Xoe" id="1AV-NQ-eEU"/>
                 <outlet property="labRedPacketCost" destination="unk-21-0A4" id="Rzn-Vv-N24"/>
                 <outlet property="nameLab" destination="AoG-vV-PWc" id="mY0-ey-d3n"/>
                 <outlet property="packetImage" destination="q0V-sZ-6Wh" id="22E-tX-L8j"/>

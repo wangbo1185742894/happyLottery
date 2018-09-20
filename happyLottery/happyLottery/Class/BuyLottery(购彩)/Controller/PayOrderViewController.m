@@ -464,6 +464,14 @@
 }
 
 -(void)actionPay{
+    if ([itemModel.channel isEqualToString:@"YUE"]){
+        if (self.cashPayMemt.realSubscribed > [self.curUser.totalBanlece doubleValue]) {
+            [self hideLoadingView];
+            [self showPromptText:@"余额不足" hideAfterDelay:1.7];
+            return;
+        }
+    }
+        
     [self showLoadingText:@"正在提交订单"];
     if (self.cashPayMemt.costType == CostTypeCASH) {
         
@@ -553,10 +561,13 @@
     paySuccessVC.lotteryName = self.cashPayMemt.lotteryName;
     paySuccessVC.schemeNO = self.cashPayMemt.schemeNo;
     paySuccessVC.isMoni = self.cashPayMemt.costType == CostTypeSCORE;
-    if ([self.labRealCost.text containsString:@" "]) {
-        NSArray *array = [self.labRealCost.text componentsSeparatedByString:@" "];
-        paySuccessVC.orderCost = array.firstObject;
+    double canjinban= [self.curUser.sendBalance doubleValue] - self.cashPayMemt.realSubscribed;
+    if (canjinban > 0) {
+            paySuccessVC.orderCost = [NSString stringWithFormat:@"%.2f", [self.curUser.balance  doubleValue]+ [self.curUser.notCash doubleValue]];
+    }else{
+            paySuccessVC.orderCost = [NSString stringWithFormat:@"%.2f",canjinban + [self.curUser.balance  doubleValue]+ [self.curUser.notCash doubleValue]];
     }
+
     [self.navigationController pushViewController:paySuccessVC animated:YES];
 }
 

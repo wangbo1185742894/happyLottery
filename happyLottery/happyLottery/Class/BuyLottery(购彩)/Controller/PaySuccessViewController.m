@@ -257,7 +257,7 @@
     redPackView.countTextField.text = @"5";
     redPackView.yuanTextField.keyboardType = UIKeyboardTypeNumberPad;
     redPackView.countTextField.keyboardType = UIKeyboardTypeNumberPad;
-    redPackView.totalBanlece = [NSString stringWithFormat:@"%.2f",[self.curUser.balance doubleValue] + [self.curUser.notCash doubleValue] - [self.orderCost doubleValue]];
+    redPackView.totalBanlece = self.orderCost;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [[UIApplication sharedApplication].keyWindow addSubview:redPackView];
     });
@@ -271,7 +271,7 @@
     redPackView.countTextField.text = totalCount;
     redPackView.yuanTextField.keyboardType = UIKeyboardTypeNumberPad;
     redPackView.countTextField.keyboardType = UIKeyboardTypeNumberPad;
-    redPackView.totalBanlece = [NSString stringWithFormat:@"%.2f",[self.curUser.balance doubleValue] + [self.curUser.notCash doubleValue] - [self.orderCost doubleValue]];
+    redPackView.totalBanlece =self.orderCost;
     [redPackView setOpenViewUI];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [[UIApplication sharedApplication].keyWindow addSubview:redPackView];

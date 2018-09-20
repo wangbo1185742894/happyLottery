@@ -1259,6 +1259,9 @@ static NSString *ID = @"LotteryAreaViewCell";
         }else if ([redPacketType isEqualToString:@"优惠券红包"]){
             sourecs = [NSString stringWithFormat:@"恭喜您获得了%@张优惠券",red.redPacketContent];
             subSource= @"红包已存入我的优惠券";
+        }else if ([redPacketType isEqualToString:@"不可提现红包"]) {
+            sourecs = [NSString stringWithFormat:@"恭喜您获得了%@元",red.redPacketContent];
+            subSource= @"红包已存入我的余额";
         }else{
             sourecs = @"恭喜您获得了红包！";
             subSource= @"红包已存入我的账户";
