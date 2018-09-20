@@ -13,6 +13,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *btnBackGround;//背景button
 @property (strong, nonatomic) IBOutlet UIImageView *imgBack;//模拟输入的图片
 
+@property (weak, nonatomic) IBOutlet UIButton *closeBtn;
 
 @property(strong,nonatomic)NSNotificationCenter *noCenter;
 - (IBAction)findPayPwd:(UIButton *)sender;
@@ -29,6 +30,8 @@
         
         self.frame = [UIScreen mainScreen].bounds;
         self.txtInput.delegate = self;
+        
+        self.closeBtn.hidden = YES;
 //        LCNumberKeyboard *numberKeyBoard= [[LCNumberKeyboard alloc] init];
 //        self.txtInput.inputView = numberKeyBoard;
         NSLog(@"%@",self.txtInput.delegate);
@@ -87,7 +90,9 @@
 -(void)createBlock:(PasswordBlock)pass{
 
     self.passBlock = pass;
-    
+    if (self.fromSendRed) {
+        self.closeBtn.hidden = NO;
+    }
 }
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
@@ -109,12 +114,16 @@
 //    [self endEditing:YES];
     self.imgBack.image = [UIImage imageNamed:@"pass0.png"];
     [self removeFromSuperview];
-    if ([self.delegate respondsToSelector:@selector(clickBackGround)]) {
-        [self.delegate clickBackGround];
-    }
+  
     
 }
 
+- (IBAction)actionToClose:(id)sender {
+    [self removeFromSuperview];
+    if ([self.delegate respondsToSelector:@selector(clickBackGround)]) {
+        [self.delegate clickBackGround];
+    }
+}
 
 - (IBAction)findPayPwd:(UIButton *)sender {
 

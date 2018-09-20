@@ -308,6 +308,14 @@
     [self forgetPayPwd];
 }
 
+-(void)clickBackGround{
+    if (self.schemetype == SchemeTypeFaqiGenDan && self.btnHeightPostScheme.constant != 0) {
+       [self.lotteryMan initiateFollowScheme:@{@"schemeNo":self.schemeNO}];
+    }
+}
+
+
+
 -(void)validatePaypwdSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     
     if (success == YES) {

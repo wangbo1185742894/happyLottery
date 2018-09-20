@@ -66,6 +66,17 @@
                                 <action selector="findPayPwd:" destination="iN0-l3-epB" eventType="touchUpInside" id="MfM-bH-1ga"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hI7-ap-Ggs">
+                            <rect key="frame" x="396" y="20" width="18" height="18"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="18" id="hMO-7h-uEo"/>
+                                <constraint firstAttribute="height" constant="18" id="yXY-DF-xSe"/>
+                            </constraints>
+                            <state key="normal" title="Button" image="redPackPay_close.png"/>
+                            <connections>
+                                <action selector="actionToClose:" destination="iN0-l3-epB" eventType="touchUpInside" id="ctc-b7-D46"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -76,6 +87,7 @@
                         <constraint firstItem="9Ke-oQ-87b" firstAttribute="leading" secondItem="rOa-Sd-lAV" secondAttribute="leading" constant="20" id="KPt-yu-mmc"/>
                         <constraint firstAttribute="trailing" secondItem="uz2-Z7-5FO" secondAttribute="trailing" constant="10" id="KR7-9N-ect"/>
                         <constraint firstItem="uz2-Z7-5FO" firstAttribute="top" secondItem="rOa-Sd-lAV" secondAttribute="top" constant="25" id="LXB-bZ-93u"/>
+                        <constraint firstAttribute="trailing" secondItem="hI7-ap-Ggs" secondAttribute="trailing" constant="25" id="O38-rq-8Bf"/>
                         <constraint firstItem="9Ke-oQ-87b" firstAttribute="height" secondItem="4P0-Xh-ZYg" secondAttribute="height" id="VKC-bB-Nro"/>
                         <constraint firstAttribute="trailing" secondItem="9Ke-oQ-87b" secondAttribute="trailing" constant="20" id="XZJ-Qp-uKZ"/>
                         <constraint firstItem="4P0-Xh-ZYg" firstAttribute="centerX" secondItem="rOa-Sd-lAV" secondAttribute="centerX" id="a2E-aD-gdx"/>
@@ -84,6 +96,7 @@
                         <constraint firstItem="y78-WU-uLa" firstAttribute="leading" secondItem="rOa-Sd-lAV" secondAttribute="leading" id="kuk-eH-1mF"/>
                         <constraint firstItem="tD5-Eb-W0x" firstAttribute="top" secondItem="4P0-Xh-ZYg" secondAttribute="bottom" constant="5" id="lnq-Tu-c6O"/>
                         <constraint firstAttribute="trailing" secondItem="4P0-Xh-ZYg" secondAttribute="trailing" constant="20" id="vrv-hB-9Uo"/>
+                        <constraint firstItem="hI7-ap-Ggs" firstAttribute="top" secondItem="rOa-Sd-lAV" secondAttribute="top" constant="20" id="wg1-EG-zJP"/>
                         <constraint firstAttribute="trailing" secondItem="tD5-Eb-W0x" secondAttribute="trailing" constant="20" id="yIi-BF-bQf"/>
                         <constraint firstItem="4P0-Xh-ZYg" firstAttribute="top" secondItem="y78-WU-uLa" secondAttribute="bottom" constant="20" id="yOX-Id-kOt"/>
                     </constraints>
@@ -102,6 +115,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="btnBackGround" destination="sHf-wR-LTL" id="mIJ-en-5Pi"/>
+                <outlet property="closeBtn" destination="hI7-ap-Ggs" id="7jO-w2-wUh"/>
                 <outlet property="imgBack" destination="4P0-Xh-ZYg" id="Kyu-80-PTV"/>
                 <outlet property="labTitle" destination="uz2-Z7-5FO" id="1Mh-zs-X7f"/>
                 <outlet property="txtInput" destination="9Ke-oQ-87b" id="SF0-YG-RRE"/>
@@ -111,5 +125,6 @@
     </objects>
     <resources>
         <image name="pass0.png" width="518" height="92"/>
+        <image name="redPackPay_close.png" width="18" height="18"/>
     </resources>
 </document>
