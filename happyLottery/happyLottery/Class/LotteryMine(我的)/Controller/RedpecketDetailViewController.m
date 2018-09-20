@@ -29,6 +29,15 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    self.imgIcon.layer.cornerRadius = self.imgIcon.mj_h / 2;
+    self.imgIcon.layer.masksToBounds = YES;
+    if ( self.curUser.headUrl == nil ) {
+            [self.imgIcon setImage:[UIImage imageNamed:@"user_mine"]];
+    }else{
+            [self.imgIcon sd_setImageWithURL:[NSURL URLWithString:self.curUser.headUrl]];
+    }
+
+    self.labRedName.text = self.redPacket.trPacketChannel;
     self.labRedDetailInfo.text = [NSString stringWithFormat:@"   已领取%@/%@个，共%.2f/%.2f元",_redPacket.openSize,_redPacket.totalCount,[_redPacket.openSize integerValue] * [_redPacket.univalent doubleValue],[_redPacket.totalCount integerValue] * [_redPacket.univalent doubleValue]];
     self.followRedList = [NSMutableArray arrayWithCapacity:0];
     self.heigthNavHeight.constant = NaviHeight;
@@ -108,8 +117,7 @@
     footer.backgroundColor = [UIColor whiteColor];
     footer.font = [UIFont systemFontOfSize:13];
     footer.textAlignment = NSTextAlignmentCenter;
-    
-    footer.text = @"未领取的红包，将于24小时后全部返还余额";
+     footer.text = @"未领取的红包，将于24小时后返还";
     footer.textColor = SystemGreen;
     return footer;
 }

@@ -1263,9 +1263,12 @@ static NSString *ID = @"LotteryAreaViewCell";
             sourecs = [NSString stringWithFormat:@"恭喜您获得了%@元",red.redPacketContent];
             subSource= @"红包已存入我的余额";
         }else{
-            sourecs = @"恭喜您获得了红包！";
-            subSource= @"红包已存入我的账户";
-            
+            if (red.redPacketContent != nil) {
+                      sourecs = [NSString stringWithFormat:@"恭喜您获得了%.2f元",[red.redPacketContent doubleValue]];
+            }else{
+                    sourecs = @"恭喜您获得了红包！";
+            }
+                subSource= @"红包已存入我的账户";
         }
         
         

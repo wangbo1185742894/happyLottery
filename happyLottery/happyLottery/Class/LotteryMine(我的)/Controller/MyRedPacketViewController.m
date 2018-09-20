@@ -482,11 +482,11 @@
         }
     }else{
        RedPacketSendModel * model = listUnUseRedPacketArray[indexPath.row];
-        if ([model.packetChannel isEqualToString:@"CIRCLE"]) {
+    
             RedpecketDetailViewController *packetVC = [[RedpecketDetailViewController alloc]init];
             packetVC.redPacket = model;
             [self.navigationController pushViewController:packetVC animated:YES];
-        }
+        
     }
 }
 

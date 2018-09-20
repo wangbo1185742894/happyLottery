@@ -866,7 +866,7 @@
     imgObaComeOn.animationImages = images;  // 设置动画数组
     
     imgObaComeOn.animationDuration = 0.5f;  // 动画播放时间
-    
+    __block NSInteger shopNum = 1;
     [imgObaComeOn startAnimating];          // 开始动画
     MJWeakSelf;
 
@@ -885,7 +885,8 @@
                     [UIView animateWithDuration:0.5 animations:^{
                         self.btnCom.alpha = 0.3;
                         [self.btnCom setTitle:[NSString stringWithFormat:@"%d",i] forState:0];
-                        self.labQiangdanBegin.text = [NSString stringWithFormat:@"%d家彩票点抢单中...",i * 5];
+                        shopNum += arc4random_uniform(5) + 2;
+                        self.labQiangdanBegin.text = [NSString stringWithFormat:@"%ld家彩票点抢单中...",shopNum];
                     }completion:^(BOOL finished) {
 
                         self.btnCom.alpha = 1;
