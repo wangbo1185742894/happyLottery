@@ -48,8 +48,8 @@
     [self upDateCountMoney];
     self.yuanView.layer.masksToBounds = YES;
     self.countView.layer.masksToBounds = YES;
-    self.yuanView.layer.cornerRadius = 10;
-    self.countView.layer.cornerRadius = 10;
+    self.yuanView.layer.cornerRadius = 20;
+    self.countView.layer.cornerRadius = 20;
     self.sendBtn.layer.masksToBounds = YES;
     self.sendBtn.layer.cornerRadius = 2;
     // Do any additional setup after loading the view from its nib.
@@ -76,6 +76,11 @@
         return NO;
     }
     if (textField.text.length == 0 && [string isEqualToString:@"0"]) {
+        return NO;
+    }
+    NSString * regex = @"^[0-9]";
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    if (![pred evaluateWithObject:string]&& ![string isEqualToString:@""]){
         return NO;
     }
     return YES;
@@ -133,6 +138,7 @@
         passInput = [[WBInputPopView alloc]init];
         passInput.delegate = self;
         passInput.labTitle.text = @"请输入支付密码";
+        passInput.fromSendRed = YES;
     }
     [self.view addSubview:passInput];
     passInput.delegate = self;

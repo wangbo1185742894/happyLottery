@@ -45,6 +45,8 @@
     self.frame = frame;
     self.backgroundColor = RGBACOLOR(37, 38, 38, 0.5);
     [self initUI];
+    self.yuanTextField.keyboardType = UIKeyboardTypeNumberPad;
+    self.countTextField.keyboardType = UIKeyboardTypeNumberPad;
     return self;
 }
 
@@ -72,14 +74,10 @@
     [self.okBtn setBackgroundColor:RGBCOLOR(18, 199, 146)];
     self.inputViewHeight.constant = 195;
     self.inputView.hidden = NO;
-//    self.yuanTextField.text = @"1";
-//    self.countTextField.text = @"5";
-    self.yuanTextField.keyboardType = UIKeyboardTypeNumberPad;
-    self.countTextField.keyboardType = UIKeyboardTypeNumberPad;
-    
+    self.yuanTextField.text = @"1";
+    self.countTextField.text = @"5";
     self.yuanTextField.delegate = self;
     self.countTextField.delegate = self;
-
     UILabel *label = [self createLabWithText:@"单个红包" andFrame:LeftTextFrame andTextAlignment:NSTextAlignmentCenter];
     self.yuanTextField.leftViewMode = UITextFieldViewModeAlways;
     self.yuanTextField.leftView = label;
@@ -109,11 +107,17 @@
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
     NSInteger strLength = textField.text.length - range.length + string.length;
     if (strLength > 4) {
         return NO;
     }
     if (textField.text.length == 0 && [string isEqualToString:@"0"]) {
+        return NO;
+    }
+    NSString *regex = @"^[0-9]";
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    if (![pred evaluateWithObject:string]&& ![string isEqualToString:@""]){
         return NO;
     }
     return YES;
@@ -141,7 +145,7 @@
     UILabel *lab = [[UILabel alloc]initWithFrame:frame];
     lab.text = text;
     lab.textAlignment = alignment;
-    lab.textColor = SystemLightGray;
+    lab.textColor = RGBCOLOR(25, 26, 26);
     return lab;
 }
 

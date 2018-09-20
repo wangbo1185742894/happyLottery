@@ -102,6 +102,9 @@
 
 //背景点击方法
 - (IBAction)clickBtnBackGround:(UIButton *)sender {
+    if (self.fromSendRed) {
+        return;
+    }
     self.txtInput.text = @"";
 //    [self endEditing:YES];
     self.imgBack.image = [UIImage imageNamed:@"pass0.png"];

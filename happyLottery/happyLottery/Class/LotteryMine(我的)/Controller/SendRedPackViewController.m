@@ -62,12 +62,12 @@
         self.topViewHeight.constant = 88;
         self.viewDisTop.constant = 88;
         self.viewDisBottom.constant = 38;
-        self.searchViewHeight.constant = 131;
+        self.searchViewHeight.constant = 130;
     }else{
         self.viewDisTop.constant = 64;
         self.topViewHeight.constant = 64;
         self.viewDisBottom.constant = 0;
-        self.searchViewHeight.constant = 107;
+        self.searchViewHeight.constant = 106;
     }
     [self setTableView];
     [self setTextFiled];
@@ -127,7 +127,7 @@
 }
 
 - (void)updateBottomView {
-    self.countLab.text = [NSString stringWithFormat:@"共%ld人",selectArray.count];
+    self.countLab.text = [NSString stringWithFormat:@"共 %ld 人",selectArray.count];
     self.countLab.keyWord = [NSString stringWithFormat:@"%ld",selectArray.count];
     self.countLab.keyWordColor = RGBCOLOR(254, 165, 19);
     if (selectArray.count == dataArray.count && selectArray.count > 0) {

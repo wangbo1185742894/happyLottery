@@ -178,10 +178,10 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="redNew_disable.png" translatesAutoresizingMaskIntoConstraints="NO" id="Alc-oa-JvE">
-                                <rect key="frame" x="344" y="57" width="22.5" height="25"/>
+                                <rect key="frame" x="344" y="57" width="20" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="5H4-DP-zmt"/>
-                                    <constraint firstAttribute="width" constant="22.5" id="C89-N1-M8b"/>
+                                    <constraint firstAttribute="width" constant="20" id="C89-N1-M8b"/>
                                 </constraints>
                             </imageView>
                         </subviews>
