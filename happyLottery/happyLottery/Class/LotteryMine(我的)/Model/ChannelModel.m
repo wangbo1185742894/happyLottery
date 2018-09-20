@@ -14,7 +14,7 @@
     return iconDic[self.channel];
 }
 -(NSString*)channelTitle{
-    NSDictionary *iconDic = @{@"YUE":@"余额支付",@"UNION":@"银联支付",@"WFTWX":@"微信支付(推荐)",@"WFTWX_HC":@"微信支付(推 荐)",@"SDALI":@"支付宝支付",@"BOINGWX":@"微信支付2",@"YUN_WX_XCX":@"微信",@"HAWKEYE_ALI":@"鹰眼支付宝"};
+    NSDictionary *iconDic = @{@"YUE":@"余额支付",@"UNION":@"银联支付",@"WFTWX":@"微信支付(推荐)",@"WFTWX_HC":@"微信支付(推 荐)",@"SDALI":@"支付宝支付",@"BOINGWX":@"微信支付2",@"YUN_WX_XCX":@"微信",@"HAWKEYE_ALI":@"支付宝"};
     return iconDic[self.channel];
 }
 

@@ -37,6 +37,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [self.navigationController.navigationBar setShadowImage:[UIImage imageWithColor:[UIColor clearColor]]]; //去掉导航栏 下面黑线线
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{

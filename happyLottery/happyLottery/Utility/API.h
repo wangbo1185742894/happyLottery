@@ -64,6 +64,13 @@
 
 #define APIsendOutRedPacket @"sendOutRedPacket"
 
+/**
+ * 我发出去的红包  点击详情
+ * @param params {"id":"xxx","page":"xxx","pageSize":"xxx"} 红包id
+ * @return
+ * @throws BizException
+ */
+#define APIsendOutRedPacketDetail @"sendOutRedPacketDetail"
 #define SUBAPIMember              @"/member"
 #define APILogin                        @"login"
 #define APIRegister                    @"register"

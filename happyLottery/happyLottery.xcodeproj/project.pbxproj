@@ -863,6 +863,8 @@
 		2DB281A52152526A00B01BB4 /* shourured@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DB281A12152526900B01BB4 /* shourured@3x.png */; };
 		2DB281A62152526A00B01BB4 /* shourured2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DB281A22152526900B01BB4 /* shourured2x.png */; };
 		2DB281A72152526A00B01BB4 /* zhichured@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DB281A32152526900B01BB4 /* zhichured@3x.png */; };
+		2DB281AA21533B6100B01BB4 /* FollowRedPacketModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB281A921533B6100B01BB4 /* FollowRedPacketModel.m */; };
+		2DB281AC2153448500B01BB4 /* navbackimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DB281AB2153448500B01BB4 /* navbackimage.png */; };
 		2DB4B340214B87A700E639FE /* RedPacketHisViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DB4B33D214B87A700E639FE /* RedPacketHisViewController.xib */; };
 		2DB4B341214B87A700E639FE /* RedPacketHisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB4B33E214B87A700E639FE /* RedPacketHisViewController.m */; };
 		2DB4B345214B89AE00E639FE /* RedPacketViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB4B343214B89AE00E639FE /* RedPacketViewCell.m */; };
@@ -2936,6 +2938,9 @@
 		2DB281A12152526900B01BB4 /* shourured@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shourured@3x.png"; sourceTree = "<group>"; };
 		2DB281A22152526900B01BB4 /* shourured2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shourured2x.png; sourceTree = "<group>"; };
 		2DB281A32152526900B01BB4 /* zhichured@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zhichured@3x.png"; sourceTree = "<group>"; };
+		2DB281A821533B6100B01BB4 /* FollowRedPacketModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FollowRedPacketModel.h; sourceTree = "<group>"; };
+		2DB281A921533B6100B01BB4 /* FollowRedPacketModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FollowRedPacketModel.m; sourceTree = "<group>"; };
+		2DB281AB2153448500B01BB4 /* navbackimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navbackimage.png; sourceTree = "<group>"; };
 		2DB4B33D214B87A700E639FE /* RedPacketHisViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RedPacketHisViewController.xib; sourceTree = "<group>"; };
 		2DB4B33E214B87A700E639FE /* RedPacketHisViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedPacketHisViewController.m; sourceTree = "<group>"; };
 		2DB4B33F214B87A700E639FE /* RedPacketHisViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedPacketHisViewController.h; sourceTree = "<group>"; };
@@ -5245,6 +5250,7 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				2DB281AB2153448500B01BB4 /* navbackimage.png */,
 				2DB281A12152526900B01BB4 /* shourured@3x.png */,
 				2DB281A22152526900B01BB4 /* shourured2x.png */,
 				2DB281A02152526900B01BB4 /* zhichured@2x.png */,
@@ -6185,6 +6191,8 @@
 				2D4D608520AD592B00280033 /* AppSignModel.m */,
 				2D0174DF214263BA00E2606B /* WebViewJumpHandler.h */,
 				2D0174E0214263BA00E2606B /* WebViewJumpHandler.m */,
+				2DB281A821533B6100B01BB4 /* FollowRedPacketModel.h */,
+				2DB281A921533B6100B01BB4 /* FollowRedPacketModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -8414,6 +8422,7 @@
 				2D83E26420BE8FEE00F2D375 /* WBBifenZhiboViewController.xib in Resources */,
 				2D0600441FFDDD51009E7568 /* schemedetailsymbol@2x.png in Resources */,
 				2D8CC00A1FF3958D00CC367F /* icon_normal@2x.png in Resources */,
+				2DB281AC2153448500B01BB4 /* navbackimage.png in Resources */,
 				2D0E23C020196B590098DA40 /* winning@3x.png in Resources */,
 				F9BC6E5B20C2DD3D0037998B /* xutu1@3x.png in Resources */,
 				F9C3BA2A200893D600916F3C /* FeedBackHistoryTableViewCell.xib in Resources */,
@@ -9233,6 +9242,7 @@
 				2D7B12C9204D3AB60035AE89 /* LotteryTransaction.m in Sources */,
 				2DDEDE701FD568C9007AEBF7 /* AFNetworkReachabilityManager.m in Sources */,
 				2D06002A1FFDCD9F009E7568 /* MJRefreshConst.m in Sources */,
+				2DB281AA21533B6100B01BB4 /* FollowRedPacketModel.m in Sources */,
 				2D3065DD20EC66910084DB97 /* WBContentView.m in Sources */,
 				2D628B521FECCD2D0013D0E1 /* SelectView.m in Sources */,
 				2D0600201FFDCD9F009E7568 /* MJRefreshAutoGifFooter.m in Sources */,

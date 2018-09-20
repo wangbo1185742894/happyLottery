@@ -7,7 +7,7 @@
 //
 
 #import "BaseViewController.h"
-
+#import "RedPacketSendModel.h"
 @interface RedpecketDetailViewController : BaseViewController
-
+@property(nonatomic,strong)RedPacketSendModel *redPacket;
 @end

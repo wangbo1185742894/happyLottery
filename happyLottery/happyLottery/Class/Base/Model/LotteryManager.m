@@ -2138,4 +2138,31 @@
                         failure:failureBlock];
 }
 
+-(void)sendOutRedPacketDetail:(NSDictionary *)para{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        
+        if (response.succeed) {
+            NSArray *paraDic = [Utility objFromJson:responseJsonStr];
+            [self.delegate sendedOutRedPacketDetail:YES followList:paraDic errorInfo:response.errorMsg];
+        } else {
+               [self.delegate sendedOutRedPacketDetail:NO followList:nil errorInfo:response.errorMsg];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+          [self.delegate sendedOutRedPacketDetail:NO followList:nil errorInfo:@"请检查网络连接"];
+    };
+    
+    SOAPRequest *request = [self requestForAPI: APIsendOutRedPacketDetail withParam:@{@"params":[self actionEncrypt:[self JsonFromId:para]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIActivity
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+
 @end
