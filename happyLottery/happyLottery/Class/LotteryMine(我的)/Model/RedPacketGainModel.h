@@ -37,7 +37,6 @@
 /** 红包内容, 可能是金额, 可能是 积分,或者优惠卷的卡号 根据 redPacketType */
 @property(nonatomic,copy)NSString * redPacketContent;
 
-
 /** 活动ID */
 @property(nonatomic,copy)NSString * activityId;
 

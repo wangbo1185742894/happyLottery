@@ -17,7 +17,6 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
     
 }
 
@@ -51,6 +50,35 @@
     }else{
         [self.imgIcon sd_setImageWithURL:[NSURL URLWithString:model.attentHeadUrl]];
     }
+}
+
+-(void)loadDataRedCell:(FollowRedPacketModel *)model{
+    if (model.headUrl == nil) {
+          self.imgIcon.image = [UIImage imageNamed:@"user_mine.png"];
+    }else{
+        [self.imgIcon sd_setImageWithURL:[NSURL URLWithString:model.headUrl]];
+    }
+  
+    if ([model.redPacketStatus isEqualToString:@"LOCK"]) {
+        [self.redImage setImage:[UIImage imageNamed:@"rengouredsuoding.png"]];
+    }else if ([model.redPacketStatus isEqualToString:@"UN_OPEN"]) {
+        [self.redImage setImage:[UIImage imageNamed:@"rengouredjiesuo.png"]];
+    }else if ([model.redPacketStatus isEqualToString:@"OPEN"]) {
+        [self.redImage setImage:[UIImage imageNamed:@"rengoureddakai.png"]];
+    }
+    if (model.nikeName == nil) {
+        if (model.mobile == nil) {
+             self.labName.text = [model.cardCode stringByReplacingCharactersInRange:NSMakeRange(2, 3) withString:@"***"];
+        }else{
+             self.labName.text = [model.mobile stringByReplacingCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
+        }
+    }else{
+        self.labName.text = model.nikeName;
+    }
+    self.imgIcon.layer.cornerRadius  =self.imgIcon.mj_h / 2;
+    self.imgIcon.layer.masksToBounds = YES;
+    self.labHis.hidden = YES;
+    self.labTime.text = model.createTime;
 }
 
 @end

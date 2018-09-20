@@ -7,6 +7,8 @@
 //
 
 #import "MyRedPacketViewController.h"
+#import "RedpecketDetailViewController.h"
+#import "RedpecketDetailViewController.h"
 #import "MyRedPacketTableViewCell.h"
 #import "OpenRedPopView.h"
 #import "RedPacketHisViewController.h"
@@ -477,6 +479,13 @@
             if(redPacketGain){
                 [self openRedPacketClient];
             }
+        }
+    }else{
+       RedPacketSendModel * model = listUnUseRedPacketArray[indexPath.row];
+        if ([model.packetChannel isEqualToString:@"CIRCLE"]) {
+            RedpecketDetailViewController *packetVC = [[RedpecketDetailViewController alloc]init];
+            packetVC.redPacket = model;
+            [self.navigationController pushViewController:packetVC animated:YES];
         }
     }
 }

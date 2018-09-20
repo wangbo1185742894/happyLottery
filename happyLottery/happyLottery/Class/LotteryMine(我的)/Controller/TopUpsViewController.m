@@ -34,13 +34,15 @@
 @property (weak, nonatomic) IBOutlet UIWebView *payWebView;
 @property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *labCaijin;
 @property (weak, nonatomic) IBOutlet UIButton *btnChongzhi;
-
+@property(nonatomic,strong)NSString *aliPayMinBouns;
 @end
 
 @implementation TopUpsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.aliPayMinBouns = @"50";
+    
     self.title = @"充值";
     self.automaticallyAdjustsScrollViewInsets = NO;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(checkSchemePayState:) name:@"UPPaymentControlFinishNotification" object:nil];
@@ -69,7 +71,11 @@
         lab.layer.masksToBounds = YES;
     }
     [self .lotteryMan listRechargeHandsel];
-   
+    [self.lotteryMan getCommonSetValue:@{@"typeCode":@"recharge",@"commonCode":@"hawkeye_ali"}];
+}
+
+-(void)gotCommonSetValue:(NSString *)strUrl{
+    self.aliPayMinBouns = strUrl;
 }
 
 -(void)listRechargeHandsel:(NSArray *)lotteryList errorMsg:(NSString *)msg{
@@ -234,6 +240,12 @@
         return;
     }
     
+    if ([itemModel.channel isEqualToString:@"HAWKEYE_ALI"] ) {
+        if ([self.txtChongZhiJIne.text doubleValue] < [self.aliPayMinBouns doubleValue]) {
+            [self showPromptText:[NSString stringWithFormat:@"%@充值最少充%@元",itemModel.channelTitle,self.aliPayMinBouns] hideAfterDelay:1.7];
+            return;
+        }
+    }
     @try {
         NSString *cardCode = self.curUser.cardCode;
         NSString *checkCode = self.txtChongZhiJIne.text;
@@ -458,5 +470,8 @@
     launchMiniProgramReq.miniProgramType = 0; //正式版
     [WXApi sendReq:launchMiniProgramReq]; //拉起微信支付
 }
+
+
+
 
 @end

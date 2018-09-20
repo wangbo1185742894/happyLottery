@@ -9,6 +9,8 @@
 #import "BaseModel.h"
 
 @interface RedPacketSendModel : BaseModel
+
+@property(nonatomic,copy)NSString * _id;
 /** 发单记方案号 圈子记 圈住id加时间戳  */
 @property(nonatomic,copy)NSString * origin;
 
@@ -36,7 +38,11 @@
 /** 退款金额 */
 @property(nonatomic,copy)NSString * refundAmount;
 
-/** 红包类型 */
+
+/** 红包类型
+ FOLLOW("跟单红包"),
+ CIRCLE("圈子红包");
+ */
 @property(nonatomic,copy)NSString * packetChannel;
 
 /** 是否可重复领取 */

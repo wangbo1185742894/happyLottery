@@ -104,6 +104,7 @@ static SystemSoundID shake_sound_male_id = 0;
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
 //    UIStoryboard *storyboard=[UIStoryboard storyboardWithName:@"LaunchScreen" bundle:nil];
 //    UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"launchVC"];
 //    UIImageView *imgv = (UIImageView *)[vc.view viewWithTag:909090];
