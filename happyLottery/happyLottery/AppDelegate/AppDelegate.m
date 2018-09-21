@@ -57,7 +57,7 @@
 #define KEYAPPVERSION @"appVersion"
 #define KEYCURAPPVERSION @"CFBundleVersion"
 
-#define KTimeJumpAfter 0.3
+#define KTimeJumpAfter 0.6
 
 #import <AudioToolbox/AudioToolbox.h>//添加推送声音lala
 #import "DiscoverViewController.h"
@@ -669,7 +669,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 -(void)jpushStart{
     if (strnim != nil) {
-        
+    
         [self goToYunshiWithInfo:pageCodeNotice];
        
     }
@@ -1160,7 +1160,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 //    if (pageCodeNotice!=nil) {
 //        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(KTimeJumpAfter * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //
-//            [self goToYunshiWithInfo:pageCodeNotice];
+
 //        });
 //    }
 //    if (linkUrlNotice!=nil) {

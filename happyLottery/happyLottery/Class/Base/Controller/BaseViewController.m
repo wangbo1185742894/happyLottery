@@ -62,6 +62,7 @@
 }
 
 -(User *)curUser{
+    
     if ([GlobalInstance instance ].curUser == nil) {
         return [User new];
     }else{
