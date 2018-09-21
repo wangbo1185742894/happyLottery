@@ -42,11 +42,20 @@
         self.touzhuText.hidden = NO;
         self.touzhuCount.hidden = NO;
     }
-    if ([schemeDetail.hasRedPacket boolValue]) {
-        self.redPackImg.hidden = NO;
-        [self.redPackImg setImage:[UIImage imageNamed:@"redNew_close.png"]];
-    }else {
-        self.redPackImg.hidden = YES;
+    if ([schemeDetail.schemeType isEqualToString:@"BUY_FOLLOW"]) {
+        if ([schemeDetail.gainRedPacket boolValue]) {
+            self.redPackImg.hidden = NO;
+            [self.redPackImg setImage:[UIImage imageNamed:@"redNew_close.png"]];
+        }else {
+            self.redPackImg.hidden = YES;
+        }
+    } else {
+        if ([schemeDetail.hasRedPacket boolValue]) {
+            self.redPackImg.hidden = NO;
+            [self.redPackImg setImage:[UIImage imageNamed:@"redNew_close.png"]];
+        }else {
+            self.redPackImg.hidden = YES;
+        }
     }
 }
 
