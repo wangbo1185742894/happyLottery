@@ -9,5 +9,5 @@
 #import "BaseViewController.h"
 
 @interface MyRedPacketViewController : BaseViewController
-
+-(void)selectRedType:(NSInteger)index;
 @end

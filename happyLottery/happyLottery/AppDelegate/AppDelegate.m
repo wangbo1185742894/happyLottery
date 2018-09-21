@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "MyRedPacketViewController.h"
 #import "CashAndIntegrationWaterViewController.h"
 #import "FollowDetailViewController.h"
 #import "FASSchemeDetailViewController.h"
@@ -1053,6 +1054,17 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         cashInfoVC.select = 1;
         cashInfoVC.hidesBottomBarWhenPushed = YES;
         [delegate.curNavVC pushViewController:cashInfoVC animated:YES];
+        return;
+    }else if ([keyStr isEqualToString:@"A437"]){
+        BaseViewController *base = delegate.curNavVC.viewControllers[0];
+        if ([GlobalInstance instance].curUser.isLogin == NO) {
+            [base needLogin];
+            return;
+        }
+        MyRedPacketViewController *redPacketVC  = [[MyRedPacketViewController alloc]init];
+        [redPacketVC selectRedType:1];
+        redPacketVC.hidesBottomBarWhenPushed = YES;
+        [delegate.curNavVC pushViewController:redPacketVC animated:YES];
         return;
     }else{
           baseVC.hidesBottomBarWhenPushed = YES;
