@@ -84,6 +84,10 @@
    [UITableView refreshHelperWithScrollView:self.tableView2 target:self loadNewData:@selector(loadFalseNewData) loadMoreData:@selector(loadFalseMoreData) isBeginRefresh:NO];
 }
 
+-(void)selectRedType:(NSInteger)index{
+    self.segment.selectedSegmentIndex = index;
+    [self segmentClick:self.segment];
+}
 - (IBAction)segmentClick:(id)sender {
     
     switch( self.segment.selectedSegmentIndex)

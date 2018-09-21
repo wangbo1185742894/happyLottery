@@ -873,7 +873,6 @@ static NSString *ID = @"LotteryAreaViewCell";
                 [baseVC needLogin];
             }
             return;
-            return;
         }
         CashAndIntegrationWaterViewController *cashInfoVC = [[CashAndIntegrationWaterViewController alloc]init];
         cashInfoVC.hidesBottomBarWhenPushed = YES;
@@ -882,6 +881,20 @@ static NSString *ID = @"LotteryAreaViewCell";
             [self.navigationController pushViewController:cashInfoVC animated:YES];
         }else{
             [navGationCotr pushViewController:cashInfoVC animated:YES];
+        }
+        return;
+    }else if ([keyStr isEqualToString:@"A437"]){
+       
+        if ([GlobalInstance instance].curUser.isLogin == NO) {
+            [self needLogin];
+            return;
+        }
+        MyRedPacketViewController *redPacketVC  = [[MyRedPacketViewController alloc]init];
+        [redPacketVC selectRedType:1];
+        if (navGationCotr == nil) {
+            [self.navigationController pushViewController:redPacketVC animated:YES];
+        }else{
+            [navGationCotr pushViewController:redPacketVC animated:YES];
         }
         return;
     }
