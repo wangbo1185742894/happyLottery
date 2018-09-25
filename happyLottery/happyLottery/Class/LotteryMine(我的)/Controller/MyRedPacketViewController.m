@@ -116,7 +116,7 @@
 }
 
 -(void)gotRedPacketHis:(NSArray *)redPacketInfo errorInfo:(NSString *)errMsg{
-    
+    [self hideLoadingView];
     if (redPacketInfo != nil) {
         
         if (self.segment.selectedSegmentIndex == 0) {
@@ -241,11 +241,13 @@
 }
 
 -(void)loadTrueNewData{
+    [self showLoadingText:@"正在加载"];
     page = 1;
       [self.lotteryMan getRedPacketHis:@{@"cardCode":self.curUser.cardCode,@"page":@(page),@"pageSize":@(KpageSize)} andUrl:APIgainRedPacket];
 }
 
 -(void)loadFalseNewData{
+    [self showLoadingText:@"正在加载"];
     page = 1;
       [self.lotteryMan getRedPacketHis:@{@"cardCode":self.curUser.cardCode,@"page":@(page),@"pageSize":@(KpageSize)} andUrl:APIsendOutRedPacket];
 }
@@ -259,6 +261,7 @@
 }
 
 -(void)getRedPacketMoreData:(BOOL)isValid{
+    [self showLoadingText:@"正在加载"];
     page++;
     NSString *apiUrl;
     if (isValid == YES) {

@@ -638,7 +638,10 @@
             return;
         }
         MyRedPacketViewController *redPacketVC  = [[MyRedPacketViewController alloc]init];
-        [redPacketVC selectRedType:1];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [redPacketVC selectRedType:1];
+        });
+        
         redPacketVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:redPacketVC animated:YES];
 
