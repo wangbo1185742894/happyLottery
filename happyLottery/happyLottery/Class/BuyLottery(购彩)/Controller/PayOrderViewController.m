@@ -309,6 +309,7 @@
 
         for (BaseViewController *baseVC in self.navigationController.viewControllers) {
             if ([baseVC isKindOfClass:[JCLQPlayController class]]) {
+                [[NSNotificationCenter defaultCenter]postNotificationName:KSELECTMATCHCLEAN object:nil];
                 [self.navigationController popToViewController:baseVC animated:YES];
                 return ;
             }
