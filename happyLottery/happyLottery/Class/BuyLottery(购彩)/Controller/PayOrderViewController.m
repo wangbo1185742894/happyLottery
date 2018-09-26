@@ -171,7 +171,7 @@
             [tabObaList reloadData];
         }
         [legWorkList firstObject].isSelect = YES;
-        labCostInfo.text = [NSString stringWithFormat:@"明细：订单金额：%.2f + 跑腿费：%@",self.cashPayMemt.subscribed,[legWorkList firstObject].cost];
+        labCostInfo.text = [NSString stringWithFormat:@"明细：彩票店出票%.2f + 跑腿费%@元",self.cashPayMemt.subscribed,[legWorkList firstObject].cost];
     }
 }
 
@@ -309,6 +309,7 @@
 
         for (BaseViewController *baseVC in self.navigationController.viewControllers) {
             if ([baseVC isKindOfClass:[JCLQPlayController class]]) {
+                [[NSNotificationCenter defaultCenter]postNotificationName:KSELECTMATCHCLEAN object:nil];
                 [self.navigationController popToViewController:baseVC animated:YES];
                 return ;
             }
@@ -546,7 +547,15 @@
     }
   
     PaySuccessViewController * paySuccessVC = [[PaySuccessViewController alloc]init];
-    paySuccessVC.aniTime = 3;
+    /**
+     显示oba的
+      */
+    if (self.isShowOba) {
+        paySuccessVC.aniTime = 3;
+    }
+    else {
+        paySuccessVC.aniTime = 0.2;
+    }
     paySuccessVC.schemetype = self.schemetype;
     if(([self.cashPayMemt.lotteryName isEqualToString:@"竞彩足球"] ||[self.cashPayMemt.lotteryName isEqualToString:@"竞彩篮球"]) && self.cashPayMemt.costType == CostTypeCASH && self.cashPayMemt.subscribed > 10 && self.isYouhua == NO){
         paySuccessVC.isShowFaDan = YES;

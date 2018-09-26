@@ -43,7 +43,6 @@
 @end
 
 @implementation PaySuccessViewController{
-    BOOL isSendFlag;
     UIAlertController *alert;
     WBInputPopView *passInput;
     NSString * univalent; /** 单个价格 */
@@ -54,7 +53,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    isSendFlag = NO;
     self.title = @"预约支付";
     if (self.schemetype == SchemeTypeGenDan ||self.schemetype == SchemeTypeFaqiGenDan) {
          self.btnHeightPostScheme.constant = 0;
@@ -92,8 +90,7 @@
     }
 }
 
-
-
+  
 - (IBAction)actionLookOrder:(id)sender {
    
     if (self.schemetype == SchemeTypeGenDan) {
@@ -264,10 +261,7 @@
 
 
 - (IBAction)actionPostScheme:(id)sender {
-    if (isSendFlag == YES) {
-        [self showPromptText:@"不能重复发单" hideAfterDelay:1.8];
-        return;
-    }
+    self.btnPostScheme.userInteractionEnabled = NO;
     faqigentou = YES;
     [self initRedPackageView];
 }
@@ -350,11 +344,12 @@
     }
 }
 
+
 - (void)initiateFollowScheme:(NSString *)resultStr errorMsg:(NSString *)msg{
     if(resultStr != nil && resultStr.length > 0){
-        isSendFlag = YES;
         [self showPromptText:@"发单成功" hideAfterDelay:1.9];
     }else{
+        self.btnPostScheme.userInteractionEnabled = YES;
         [self showPromptText:msg hideAfterDelay:1.9];
         return;
     }

@@ -60,7 +60,7 @@
     count = [self.countTextField.text integerValue];
     yuan = [self.yuanTextField.text integerValue];
     self.mountMoneyLab.text = [NSString stringWithFormat:@"￥ %ld",count * yuan];
-    if (count * yuan < [self.curUser.balance doubleValue] + [self.curUser.notCash doubleValue]) {
+    if (count * yuan <= [self.curUser.balance doubleValue] + [self.curUser.notCash doubleValue]) {
         self.sendBtn.userInteractionEnabled=YES;
         self.sendBtn.alpha=1.0f;
     } else {
