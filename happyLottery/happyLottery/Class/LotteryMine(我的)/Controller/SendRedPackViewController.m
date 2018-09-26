@@ -157,6 +157,7 @@
 }
 
 -(void )listAgentTotaldelegate:(NSArray *)array isSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    [self hideLoadingView];
     [self.personListView tableViewEndRefreshCurPageCount:array.count];
     if (page ==1 ) {
         [dataArray removeAllObjects];
@@ -181,6 +182,7 @@
 }
 
 - (void)loadNewData{
+    
     [selectArray removeAllObjects];
     if (self.searchView.hidden == NO && self.tfSearchKey.text.length == 0) {
         [self.personListView tableViewEndRefreshCurPageCount:KpageSize];
@@ -188,6 +190,7 @@
     }
     page = 1;
     [self.agentMan listAgentTotal: @{@"agentId":self.curUser.agentInfo._id,@"days":@([self setSearchDay]),@"page":@(page),@"pageSize":@(KpageSize),@"nickName":[self setNickNameStr],@"mobile":[self setMobileStr]}];
+    [self showLoadingText:@"正在加载"];
 }
 
 - (void)loadMoreData{
