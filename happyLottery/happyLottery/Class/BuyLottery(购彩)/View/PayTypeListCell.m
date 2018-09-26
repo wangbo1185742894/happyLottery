@@ -39,7 +39,11 @@
     self.btnSelectState.selected = model.isSelect;
 }
 -(void)chongzhiLoadDataWithModel:(ChannelModel *)model{
-    
+    if ([model.channel isEqualToString:@"UNION"]) {
+        self.labPayTypeDes.textColor = SystemRed;
+    }else{
+        self.labPayTypeDes.textColor = RGBCOLOR(55, 55, 55);
+    }
     self.labPayTypeDes.text = model.descValue;
     
     self.labPayTypeIcon.image = [UIImage imageNamed:model.channelIcon];

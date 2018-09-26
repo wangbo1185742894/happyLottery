@@ -53,7 +53,8 @@
     
     listUseRedPacketArray = [[NSMutableArray alloc]init];
     listUnUseRedPacketArray = [[NSMutableArray alloc]init];
-    
+    [self initRefresh1];
+    [self initRefresh2];
     self.memberMan.delegate = self;
     if ( self.segment.selectedSegmentIndex == 0) {
         
@@ -67,8 +68,7 @@
         self.tableView2.hidden = NO;
         self.tableView1.hidden = YES;
     }
-    [self initRefresh1];
-    [self initRefresh2];
+
     
 }
     
@@ -97,8 +97,6 @@
             self.tableView2.hidden=YES;
             [listUnUseRedPacketArray removeAllObjects];
             [listUseRedPacketArray removeAllObjects];
-            
-            
             [self loadTrueNewData];
              break;
         case 1:
@@ -106,8 +104,6 @@
             self.tableView1.hidden=YES;
             [listUnUseRedPacketArray removeAllObjects];
             [listUseRedPacketArray removeAllObjects];
-            
-            
             [self loadFalseNewData];
              break;
         default:
@@ -159,8 +155,10 @@
     }else{
         if (self.segment.selectedSegmentIndex == 0) {
             [self.tableView1 tableViewEndRefreshCurPageCount:redPacketInfo.count];
+            [self.tableView1 reloadData];
         }else{
             [self.tableView2 tableViewEndRefreshCurPageCount:redPacketInfo.count];
+            [self.tableView2 reloadData];
         }
         [self showPromptText:errMsg hideAfterDelay:1.7];
     }
@@ -307,16 +305,11 @@
 
 #pragma UITableViewDataSource methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (tableView ==self.tableView1) {
-        if (listUseRedPacketArray.count > 0) {
-            return listUseRedPacketArray.count;
-        }
-    }else if (tableView ==self.tableView2){
-        if (listUnUseRedPacketArray.count > 0) {
-            return listUnUseRedPacketArray.count;
-        }
+    if (self.segment.selectedSegmentIndex == 0) {
+        return listUseRedPacketArray.count;
+    }else if (self.segment.selectedSegmentIndex == 1){
+        return listUnUseRedPacketArray.count;
     }
-    
     return 0;
 }
 
