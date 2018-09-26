@@ -22,6 +22,7 @@
                 <outlet property="labLookNum" destination="n3D-0u-3ol" id="yoF-JF-3Pm"/>
                 <outlet property="labNewDate" destination="8Ef-KL-waD" id="xFI-Oi-6bL"/>
                 <outlet property="labNewTitle" destination="F0Z-M8-KCF" id="ukG-rO-0m9"/>
+                <outlet property="labRedChannel" destination="FAK-kU-FPs" id="lHC-QY-MxP"/>
                 <outlet property="lotteryPlayView" destination="zao-AV-HGH" id="Fgu-nz-9Lx"/>
                 <outlet property="openRedpacketButton" destination="HFI-cN-b9n" id="ByJ-o2-R0e"/>
                 <outlet property="playViewHeight" destination="UJT-Jz-ydC" id="dtR-AB-epo"/>
@@ -306,7 +307,7 @@
                                         <constraint firstAttribute="width" constant="148" id="g9I-AX-Sfy"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="55"/>
+                                    <inset key="titleEdgeInsets" minX="15" minY="-20" maxX="15" maxY="55"/>
                                     <state key="normal" title="恭喜发财。童话里都是劝人的"/>
                                     <connections>
                                         <action selector="openRedPacketClick:" destination="-1" eventType="touchUpInside" id="1Mj-Ym-DfB"/>
@@ -353,14 +354,26 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAK-kU-FPs">
+                                    <rect key="frame" x="5" y="32" width="130" height="34"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="34" id="QFz-WA-T5Z"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <constraints>
                                 <constraint firstAttribute="width" constant="163" id="2pZ-jB-GxU"/>
                                 <constraint firstAttribute="height" constant="238" id="5Op-dA-3Mk"/>
                                 <constraint firstItem="hSn-fT-7n5" firstAttribute="top" secondItem="Ay4-Ts-Dy5" secondAttribute="top" id="5wY-rT-1Ty"/>
                                 <constraint firstItem="dIV-Bb-Uy1" firstAttribute="centerX" secondItem="HFI-cN-b9n" secondAttribute="centerX" id="CKX-eC-gln"/>
+                                <constraint firstItem="FAK-kU-FPs" firstAttribute="leading" secondItem="Ay4-Ts-Dy5" secondAttribute="leading" constant="5" id="LEf-in-kSO"/>
+                                <constraint firstItem="FAK-kU-FPs" firstAttribute="top" secondItem="HFI-cN-b9n" secondAttribute="top" id="ONX-vX-OBV"/>
                                 <constraint firstAttribute="bottom" secondItem="qdU-kT-Mtt" secondAttribute="bottom" constant="45" id="PZU-uq-xrt"/>
                                 <constraint firstItem="HFI-cN-b9n" firstAttribute="top" secondItem="hSn-fT-7n5" secondAttribute="bottom" constant="12" id="TMY-6Q-d1T"/>
+                                <constraint firstAttribute="trailing" secondItem="FAK-kU-FPs" secondAttribute="trailing" constant="28" id="UdB-Jx-tHQ"/>
                                 <constraint firstAttribute="trailing" secondItem="hSn-fT-7n5" secondAttribute="trailing" id="c1j-BJ-7Pw"/>
                                 <constraint firstAttribute="bottom" secondItem="HFI-cN-b9n" secondAttribute="bottom" id="iUX-cY-dbt"/>
                                 <constraint firstItem="qdU-kT-Mtt" firstAttribute="top" secondItem="dIV-Bb-Uy1" secondAttribute="bottom" constant="16" id="irg-L3-oMV"/>

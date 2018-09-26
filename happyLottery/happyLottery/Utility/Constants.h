@@ -133,8 +133,8 @@
 #define TFBorderColor        RGBCOLOR(227,227,227)
 #define TEXTGRAYCOLOR       RGBCOLOR(72, 72, 72) //偏黑色
 #define TEXTGRAYOrange       RGBCOLOR(255, 153, 0) //偏黑色
-#define IPHONE_X [[Utility getCurrentDeviceModel] isEqualToString:@"iPhone_X"]
-/**距离导航栏底部的距离*/
+#define IPHONE_X [[Utility getCurrentDeviceModel] isEqualToString:@"iPhone_X"] ||  [[Utility getCurrentDeviceModel] isEqualToString:@"iPhone_XS"] || [[Utility getCurrentDeviceModel] isEqualToString:@"iPhone_XR"] || [[Utility getCurrentDeviceModel] isEqualToString:@"iPhone_XS_Max"]
+
 #define NaviHeight (IPHONE_X ? 88 : 64)
 /**iphonex导航栏增加的高度*/
 #define NaviAddHeight (IPHONE_X ? 24 : 0)

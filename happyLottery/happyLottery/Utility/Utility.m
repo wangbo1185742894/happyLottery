@@ -681,6 +681,10 @@
     if ([platform isEqualToString:@"iPhone10,5"])   return @"iPhone_8_Plus";
     if ([platform isEqualToString:@"iPhone10,3"])   return @"iPhone_X";
     if ([platform isEqualToString:@"iPhone10,6"])   return @"iPhone_X";
+    if ([platform isEqualToString:@"iPhone11,8"]) return @"iPhone_XR";
+    if ([platform isEqualToString:@"iPhone11,2"]) return @"iPhone_XS";
+    if ([platform isEqualToString:@"iPhone11,4"] ||
+        [platform isEqualToString:@"iPhone11,6"]) return @"iPhone_XS_Max";
     
     //iPod Touch
     if ([platform isEqualToString:@"iPod1,1"])   return @"iPodTouch";

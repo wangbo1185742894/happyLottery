@@ -65,6 +65,7 @@ static NSString *ID = @"LotteryAreaViewCell";
     ActivityInfoView *activityInfoView;
     __weak IBOutlet UIView *viewNews;
     NSDictionary *_lotteryList;
+    __weak IBOutlet UILabel *labRedChannel;
     __weak IBOutlet UIView *scrContentView;
     __weak IBOutlet NSLayoutConstraint *homeViewHeight;
     WBAdsImgView *adsView;
@@ -182,9 +183,6 @@ static NSString *ID = @"LotteryAreaViewCell";
     [lotteryPlayView setCollectionViewLayout:layout];
     lotteryPlayView.delegate = self;
     lotteryPlayView.dataSource = self;
-    
-//    [self.view bringSubviewToFront:redpacketView];
-//    [self.view insertSubview:redpacketView aboveSubview:self.tabBarController.tabBar];
 }
 
 
@@ -273,7 +271,6 @@ static NSString *ID = @"LotteryAreaViewCell";
             } else {
                 cell.todayOpenLottery.hidden = YES;
             }
-            
         } else {
             cell.todayOpenLottery.hidden = YES;
         }
@@ -1261,6 +1258,7 @@ static NSString *ID = @"LotteryAreaViewCell";
        
         red = [[RedPacket alloc]initWith:redPacketInfo];
         NSString *redPacketType = red.redPacketType;
+
         NSString *sourecs;
         NSString *subSource;
         if ([redPacketType isEqualToString:@"彩金红包"]) {
@@ -1429,7 +1427,8 @@ static NSString *ID = @"LotteryAreaViewCell";
                     disBottom.constant = 45;
                     goRedPacket.hidden=YES;
                     redpacketLab.hidden = YES;
-                    [openRedpacketButton setTitle:@"恭喜您获得1个红包！" forState:0];
+                    RedPacket * itemRed = [listUseRedPacketArray firstObject];
+                    [openRedpacketButton setTitle:[NSString stringWithFormat:@"恭喜您获得1个红包！\n(%@)",itemRed.redPacketChannel] forState:0];
 //                    redpacketLab.text=@"恭喜您获得1个红包！";
                     r =listUseRedPacketArray[0];
                    

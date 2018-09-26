@@ -990,6 +990,8 @@
 		2DE892B02022C7A9008926A6 /* jczq_table_spf.html in Resources */ = {isa = PBXBuildFile; fileRef = 2DE892AF2022C7A8008926A6 /* jczq_table_spf.html */; };
 		2DE892B32024069F008926A6 /* pic_kongbaifangan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE892B12024069D008926A6 /* pic_kongbaifangan@2x.png */; };
 		2DE892B42024069F008926A6 /* pic_kongbaifangan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE892B22024069E008926A6 /* pic_kongbaifangan@3x.png */; };
+		2DF69FF7215B56ED007F8493 /* rengoureddakaitest@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DF69FF5215B56EC007F8493 /* rengoureddakaitest@3x.png */; };
+		2DF69FF8215B56ED007F8493 /* rengoureddakaitest@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DF69FF6215B56EC007F8493 /* rengoureddakaitest@2x.png */; };
 		E18D1583AA88B14CEE75B499 /* Pods_happyLottery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DA78207F9A04D730256C7F5 /* Pods_happyLottery.framework */; };
 		F90058DE1FF61327009C8E1C /* NoticeCenterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F90058DC1FF61327009C8E1C /* NoticeCenterTableViewCell.m */; };
 		F90058DF1FF61327009C8E1C /* NoticeCenterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F90058DD1FF61327009C8E1C /* NoticeCenterTableViewCell.xib */; };
@@ -3170,6 +3172,8 @@
 		2DE892AF2022C7A8008926A6 /* jczq_table_spf.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = jczq_table_spf.html; sourceTree = "<group>"; };
 		2DE892B12024069D008926A6 /* pic_kongbaifangan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pic_kongbaifangan@2x.png"; sourceTree = "<group>"; };
 		2DE892B22024069E008926A6 /* pic_kongbaifangan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pic_kongbaifangan@3x.png"; sourceTree = "<group>"; };
+		2DF69FF5215B56EC007F8493 /* rengoureddakaitest@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rengoureddakaitest@3x.png"; sourceTree = "<group>"; };
+		2DF69FF6215B56EC007F8493 /* rengoureddakaitest@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rengoureddakaitest@2x.png"; sourceTree = "<group>"; };
 		5424381894BD95FF7B6C4978 /* Pods-happyLottery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-happyLottery.debug.xcconfig"; path = "Pods/Target Support Files/Pods-happyLottery/Pods-happyLottery.debug.xcconfig"; sourceTree = "<group>"; };
 		5DA78207F9A04D730256C7F5 /* Pods_happyLottery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_happyLottery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		688EA35A399BA86690BBFC68 /* Pods-happyLottery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-happyLottery.release.xcconfig"; path = "Pods/Target Support Files/Pods-happyLottery/Pods-happyLottery.release.xcconfig"; sourceTree = "<group>"; };
@@ -5369,6 +5373,8 @@
 				2D05C82220A43619001A8953 /* gendanres */,
 				2D621C742092FD7700526041 /* launchImage@2x.png */,
 				2D621C712092F6DF00526041 /* yuyuefangan@2x.png */,
+				2DF69FF6215B56EC007F8493 /* rengoureddakaitest@2x.png */,
+				2DF69FF5215B56EC007F8493 /* rengoureddakaitest@3x.png */,
 				2D621C702092F6DF00526041 /* yuyuefangan@3x.png */,
 				2D6F9236208D9D89007DFD0B /* leshan@2x.png */,
 				2D6F9235208D9D89007DFD0B /* leshan@3x.png */,
@@ -8533,6 +8539,7 @@
 				2D03F28A2060BAE800C81BEF /* PaySetViewController.xib in Resources */,
 				2D7B135F204E3D890035AE89 /* dlt_openlottery_ex@3x.png in Resources */,
 				2D36176B2061FA3D003093F9 /* dan_Win@3x.png in Resources */,
+				2DF69FF7215B56ED007F8493 /* rengoureddakaitest@3x.png in Resources */,
 				2D7B1376204E63EF0035AE89 /* dltcheckbox-default@2x.png in Resources */,
 				F9E53D6220EE28D70072B8AF /* notice_mine@2x.png in Resources */,
 				2D1FECD521523C7C008794F8 /* rengoureddakai@2x.png in Resources */,
@@ -8775,6 +8782,7 @@
 				2D23487F2049422D005AE1F2 /* bunsoptimseleced@2x.png in Resources */,
 				F9E53D6120EE28D70072B8AF /* jifen_mine@3x.png in Resources */,
 				F9C332DC1FF4D5EF00779197 /* cannot@2x.png in Resources */,
+				2DF69FF8215B56ED007F8493 /* rengoureddakaitest@2x.png in Resources */,
 				2DCD4D60202FD505007E544D /* scheme_corner_mark@2x.png in Resources */,
 				F94A10702022C3E3006C3695 /* logo125@2x.png in Resources */,
 				2D7B1391204E82FD0035AE89 /* pic_jingzu_@2x.png in Resources */,

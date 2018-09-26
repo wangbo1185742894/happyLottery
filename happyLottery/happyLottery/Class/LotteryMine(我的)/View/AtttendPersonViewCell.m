@@ -64,7 +64,7 @@
     }else if ([model.redPacketStatus isEqualToString:@"UN_OPEN"]) {
         [self.redImage setImage:[UIImage imageNamed:@"rengouredjiesuo.png"]];
     }else if ([model.redPacketStatus isEqualToString:@"OPEN"]) {
-        [self.redImage setImage:[UIImage imageNamed:@"rengoureddakai.png"]];
+        [self.redImage setImage:[UIImage imageNamed:@"rengoureddakaitest.png"]];
     }else if ([model.redPacketStatus isEqualToString:@"INVALID"]) {
         [self.redImage setImage:[UIImage imageNamed:@"rengouredsuoding.png"]];
     }

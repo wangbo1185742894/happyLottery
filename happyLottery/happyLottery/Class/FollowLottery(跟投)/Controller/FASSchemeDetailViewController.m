@@ -172,7 +172,7 @@
 }
 
 -(void)loadData{
-//    [self showLoadingText:@"正在加载"];
+    [self showLoadingText:@"正在加载"];
     [self.lotteryMan getSchemeRecordBySchemeNo:@{@"schemeNo":self.schemeNo}];
 }
 
@@ -182,6 +182,7 @@
 }
 
 - (void) gotSchemeRecordBySchemeNo:(NSDictionary *)infoArray errorMsg:(NSString *)msg{
+    [self hideLoadingView];
     if (infoArray == nil) {
         [self showPromptText:msg hideAfterDelay:17];
         return;
