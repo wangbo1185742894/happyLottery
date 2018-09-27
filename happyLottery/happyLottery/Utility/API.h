@@ -52,7 +52,7 @@
 #define APIgetRedPacketByState     @"getRedPacketByState"
 /**
  * 我的红包 获得的红包
- * @param params {"cardCode":"xxx","page":"xxx","pageSize":"xxx"} cardCode 会员卡号
+ * @param params {"cardCode":"xxx"  ,"page":"xxx","pageSize":"xxx"} cardCode 会员卡号
  */
 
 #define APIgainRedPacket @"gainRedPacket"
