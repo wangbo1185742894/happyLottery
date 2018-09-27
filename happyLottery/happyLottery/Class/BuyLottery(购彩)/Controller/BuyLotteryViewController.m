@@ -127,7 +127,6 @@ static NSString *ID = @"LotteryAreaViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     CGFloat bottomheight;
-   
     self.sellLottery = [NSMutableArray arrayWithCapacity:0];
     
     if ([self isIphoneX]) {
@@ -1428,7 +1427,9 @@ static NSString *ID = @"LotteryAreaViewCell";
                     goRedPacket.hidden=YES;
                     redpacketLab.hidden = YES;
                     RedPacket * itemRed = [listUseRedPacketArray firstObject];
-                    [openRedpacketButton setTitle:[NSString stringWithFormat:@"恭喜您获得1个红包！\n(%@)",itemRed.redPacketChannel] forState:0];
+                    NSString *channal =  itemRed.redPacketChannel;
+                    channal = [channal stringByReplacingOccurrencesOfString:@"渠道" withString:@"红包"];
+                    [openRedpacketButton setTitle:[NSString stringWithFormat:@"恭喜您获得1个红包！\n(%@)",channal] forState:0];
 //                    redpacketLab.text=@"恭喜您获得1个红包！";
                     r =listUseRedPacketArray[0];
                    

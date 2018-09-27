@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "happyLottery/Class/FollowLottery(&#x8ddf;&#x6295;)/Controller/FASSchemeDetailViewController.m"
-            timestampString = "559625764.504393"
+            timestampString = "559635707.748402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "94"
@@ -538,7 +538,7 @@
                   moduleName = "happyLottery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wangbo/Documents/%E5%B7%A5%E4%BD%9C%E6%96%87%E6%A1%A3/happyLottery/happyLottery/happyLottery/Class/BuyLottery(%E8%B4%AD%E5%BD%A9)/Controller/HomeJumpViewController.m"
-                  timestampString = "559633866.611513"
+                  timestampString = "559639985.357963"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "149"
@@ -553,7 +553,7 @@
                   moduleName = "happyLottery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wangbo/Documents/%E5%B7%A5%E4%BD%9C%E6%96%87%E6%A1%A3/happyLottery/happyLottery/happyLottery/Class/BuyLottery(%E8%B4%AD%E5%BD%A9)/Controller/HomeJumpViewController.m"
-                  timestampString = "559633866.613381"
+                  timestampString = "559639985.359957"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "147"
@@ -634,7 +634,7 @@
                   moduleName = "happyLottery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wangbo/Documents/%E5%B7%A5%E4%BD%9C%E6%96%87%E6%A1%A3/happyLottery/happyLottery/happyLottery/Class/LotteryMine(%E6%88%91%E7%9A%84)/Controller/MyRedPacketViewController.m"
-                  timestampString = "559633866.629948"
+                  timestampString = "559639985.377738"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "291"
@@ -649,7 +649,7 @@
                   moduleName = "happyLottery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wangbo/Documents/%E5%B7%A5%E4%BD%9C%E6%96%87%E6%A1%A3/happyLottery/happyLottery/happyLottery/Class/LotteryMine(%E6%88%91%E7%9A%84)/Controller/MyRedPacketViewController.m"
-                  timestampString = "559633866.631804"
+                  timestampString = "559639985.37955"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "291"
@@ -726,22 +726,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "happyLottery/Class/LotteryMine(&#x6211;&#x7684;)/Controller/MyRedPacketViewController.m"
-            timestampString = "559625764.506398"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
-            landmarkName = "-gotRedPacketHis:errorInfo:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -794,7 +778,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "happyLottery/Class/LotteryMine(&#x6211;&#x7684;)/View/AtttendPersonViewCell.m"
-            timestampString = "559131346.4920371"
+            timestampString = "559639984.889286"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "83"
@@ -848,6 +832,22 @@
             startingLineNumber = "116"
             endingLineNumber = "116"
             landmarkName = "-gotRedPacketHis:errorInfo:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/LotteryMine(&#x6211;&#x7684;)/Controller/SendRedPackViewController.m"
+            timestampString = "559639377.53095"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "-listAgentTotaldelegate:isSuccess:errorMsg:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
