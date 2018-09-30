@@ -155,6 +155,7 @@
     [super viewWillAppear:YES];
     self.navigationController.navigationBar.hidden = YES;
     AppDelegate  *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    #ifdef APPSTORE
     if ([self.curUser.whitelist boolValue] == NO && self.tabBarController.viewControllers.count == 5) {
         
         [app setAppstoreRootVC];
@@ -167,7 +168,7 @@
     }else{
         self.tableView.hidden = NO;
     }
-  
+    
     [self.tableView reloadData];
     if ([self.curUser.whitelist boolValue] == NO) {
         self.viewJIfen.hidden = YES;
@@ -180,8 +181,15 @@
         self.chongzhiViewHeight.constant = 66;
         self.viewChongZhi.hidden = NO;
     }
-    
-    
+    #endif
+    [self reloadDateArray];
+    self.tableView.hidden = NO;
+    [self.tableView reloadData];
+    self.viewJIfen.hidden = NO;
+    self.jifenHeight.constant = 70;
+    self.chongzhiViewHeight.constant = 66;
+    self.viewChongZhi.hidden = NO;
+   
     if (self.curUser.isLogin==YES) {
         [self updateMemberClinet];
         NSInteger num = [self getNotReadMes];
@@ -407,12 +415,17 @@
     if (!self.curUser.isLogin){
         [self needLogin];
     } else {
-        TopUpsViewController *t = [[TopUpsViewController alloc]init];
-        t.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:t animated:YES];
+        if ([self.curUser.whitelist boolValue]) {
+            TopUpsViewController *t = [[TopUpsViewController alloc]init];
+            t.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:t animated:YES];
+        }
+        else {
+            [self showPromptText:@"本功能暂未开放" hideAfterDelay:1.0f];
+        }
     }
- 
 }
+
 - (IBAction)withdrawalsBtnClick:(id)sender {
      if (self.curUser.isLogin == NO) {
         [self needLogin];

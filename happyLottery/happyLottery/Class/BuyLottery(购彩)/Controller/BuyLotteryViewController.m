@@ -1034,10 +1034,14 @@ static NSString *ID = @"LotteryAreaViewCell";
     [super viewWillAppear:animated];
     AppDelegate  *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [self getSystemNoticeClient];
+    #ifdef APPSTORE
     if ([self.curUser.whitelist boolValue] == NO && self.tabBarController.viewControllers.count == 5) {
-        
         [app setAppstoreRootVC];
     }else if([self.curUser.whitelist boolValue] == YES && self.tabBarController.viewControllers.count == 2){
+        [app setNomalRootVC];
+    }
+    #endif
+    if (self.tabBarController.viewControllers.count == 2) {
         [app setNomalRootVC];
     }
     //    activityInfoView.hidden = YES;

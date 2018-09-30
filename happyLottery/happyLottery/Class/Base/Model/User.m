@@ -69,8 +69,11 @@
         return @"0";
     }
 #endif
-    return @"1";
-
+    if ([_whitelist boolValue] == YES) {
+        return @"1";
+    } else {
+        return @"0";
+    }
 }
 
 -(NSString *)getShareUrl{

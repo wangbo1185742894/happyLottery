@@ -1261,15 +1261,28 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 //切换到圈子页面，当前无登陆用户，跳转到登陆页面，否则调到圈子
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
+    
+    User * curUser = [GlobalInstance instance].curUser;
+    //黑名单用户切换至跟投,圈子，发现 禁掉
+    if(tabBarController.selectedIndex == 1 || tabBarController.selectedIndex == 2 ||tabBarController.selectedIndex == 3){
+        if([curUser.whitelist boolValue] == NO ||curUser == nil){
+            UINavigationController  *baseNAVVC = tabBarControllerMain.viewControllers[_lastSelectedIndex];
+            BaseViewController *baseVC = (FollowSendViewController *)[baseNAVVC.childViewControllers firstObject];
+            [baseVC showPromptText:@"本功能暂未开放" hideAfterDelay:1.0];
+            tabBarController.selectedIndex = _lastSelectedIndex;
+            return;
+        }
+    }
     //切换至跟投页面刷新数据
     if (tabBarController.selectedIndex == 1) {
         UINavigationController  *baseNAVVC = tabBarControllerMain.viewControllers[1];
         FollowSendViewController *baseVC = (FollowSendViewController *)[baseNAVVC.childViewControllers firstObject];
         [baseVC refreshView];
     }
+    //切换☞圈子判断登陆
     if (tabBarController.selectedIndex == 2){
         //未登录
-        User * curUser = [GlobalInstance instance].curUser;
+        
         if (curUser.isLogin == NO) {
             
             AppDelegate *delegate  = (AppDelegate*)[UIApplication sharedApplication].delegate;
