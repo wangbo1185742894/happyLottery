@@ -1040,11 +1040,6 @@ static NSString *ID = @"LotteryAreaViewCell";
     }else if([self.curUser.whitelist boolValue] == YES && self.tabBarController.viewControllers.count == 2){
         [app setNomalRootVC];
     }
-    #endif
-    if (self.tabBarController.viewControllers.count == 2) {
-        [app setNomalRootVC];
-    }
-    //    activityInfoView.hidden = YES;
     if ([self.curUser.whitelist boolValue] == NO) {
         playViewHeight.constant = 0;
         lotteryPlayView.hidden = YES;
@@ -1052,6 +1047,14 @@ static NSString *ID = @"LotteryAreaViewCell";
         playViewHeight.constant = 180;
         lotteryPlayView.hidden = NO;
     }
+    #endif
+    if (self.tabBarController.viewControllers.count == 2) {
+        [app setNomalRootVC];
+    }
+    playViewHeight.constant = 180;
+    lotteryPlayView.hidden = NO;
+    //    activityInfoView.hidden = YES;
+  
     
    
     self.navigationController.navigationBar.hidden = YES;

@@ -59,17 +59,7 @@
 }
 
 -(NSString *)whitelist{
-    
-#ifdef APPSTORE
-    
-    if ([_whitelist boolValue] == YES&& self.isLogin == YES) {
-        return @"1";
-    }else{
-        
-        return @"0";
-    }
-#endif
-    if ([_whitelist boolValue] == YES) {
+    if ([_whitelist boolValue] == YES && self.isLogin == YES) {
         return @"1";
     } else {
         return @"0";
