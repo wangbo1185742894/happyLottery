@@ -56,7 +56,7 @@
     }
     self.title = @"预测详情";
 
-    if (self.isHis == YES || [self.curUser.whitelist boolValue] == NO) {
+    if (self.isHis == YES) {
         self.webViewdisBottom.constant = 0;
         self.viewBottom.hidden = YES;
     }else{

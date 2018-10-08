@@ -62,9 +62,9 @@
     }else{
         self.viewDisBottom.constant = 0;
     }
-    if ([self.curUser.whitelist boolValue] == NO) {
-        _btnTouzhu.hidden = YES;
-    }
+//    if ([self.curUser.whitelist boolValue] == NO) {
+//        _btnTouzhu.hidden = YES;
+//    }
     numBackNum = 0;
     self.viewControllerNo = @"A001";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cleanMatch:) name:KSELECTMATCHCLEAN object:nil];

@@ -1034,13 +1034,12 @@ static NSString *ID = @"LotteryAreaViewCell";
     [super viewWillAppear:animated];
     AppDelegate  *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [self getSystemNoticeClient];
+    #ifdef APPSTORE
     if ([self.curUser.whitelist boolValue] == NO && self.tabBarController.viewControllers.count == 5) {
-        
         [app setAppstoreRootVC];
     }else if([self.curUser.whitelist boolValue] == YES && self.tabBarController.viewControllers.count == 2){
         [app setNomalRootVC];
     }
-    //    activityInfoView.hidden = YES;
     if ([self.curUser.whitelist boolValue] == NO) {
         playViewHeight.constant = 0;
         lotteryPlayView.hidden = YES;
@@ -1048,6 +1047,14 @@ static NSString *ID = @"LotteryAreaViewCell";
         playViewHeight.constant = 180;
         lotteryPlayView.hidden = NO;
     }
+    #endif
+    if (self.tabBarController.viewControllers.count == 2) {
+        [app setNomalRootVC];
+    }
+    playViewHeight.constant = 180;
+    lotteryPlayView.hidden = NO;
+    //    activityInfoView.hidden = YES;
+  
     
    
     self.navigationController.navigationBar.hidden = YES;

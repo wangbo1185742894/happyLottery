@@ -70,9 +70,9 @@
 
     }
     self.title = @"跟单详情";
-    if ([self.curUser.whitelist boolValue] == NO) {
-        self.btnTouzhu.hidden = YES;
-    }
+//    if ([self.curUser.whitelist boolValue] == NO) {
+//        self.btnTouzhu.hidden = YES;
+//    }
 
     self.wbSelectView.beiShuLimit = 9999;
     self.wbSelectView.labContent.textColor = RGBCOLOR(254, 168, 19);

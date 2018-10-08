@@ -124,9 +124,7 @@
     [buttonSubmit_ setTitle: @"预约投注" forState: UIControlStateNormal];
     [buttonSubmit_ setTitle: @"预约投注" forState: UIControlStateHighlighted];
     [buttonSubmit_ setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
-    if ([self.curUser.whitelist boolValue] == NO) {
-        buttonSubmit_.hidden = YES;
-    }
+
     
     buttonSubmit_.backgroundColor = [UIColor whiteColor];
 
@@ -165,6 +163,12 @@
     [self currentBet:nil];
     [self getHisIssue];
     [self loadUI];
+//#ifdef APPSTORE
+//    if ([self.curUser.whitelist boolValue] == NO) {
+//        buttonSubmit_.hidden = YES;
+//    }
+//#endif
+//    buttonSubmit_.hidden = NO;
 }
 
 -(void)getHisIssue{

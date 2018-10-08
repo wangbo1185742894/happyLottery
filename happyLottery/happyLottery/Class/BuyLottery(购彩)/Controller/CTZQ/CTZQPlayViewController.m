@@ -100,9 +100,7 @@
     }else{
         btnSSC.selected = YES;
     }
-    if ([self.curUser.whitelist boolValue] == NO) {
-        _touzhuBtn.hidden = YES;
-    }
+    
     if (self.lottery.activeProfile ==nil ) {
         NSDictionary *lotteryDetailDic = [NSDictionary dictionaryWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"LotteryProfilesConfigdlt" ofType: @"plist"]];
         NSArray *profilesArray = lotteryDetailDic[[NSString stringWithFormat:@"%d", _lottery.type]];
@@ -127,6 +125,12 @@
     _jiangQiView.hidden = YES;
     [self getCurrentRound];
     _touzhuBtn.layer.cornerRadius = 5;
+////#ifdef APPSTORE
+////    if ([self.curUser.whitelist boolValue] == NO) {
+////        _touzhuBtn.hidden = YES;
+////    }
+////#endif
+//    _touzhuBtn.hidden = NO;
 }
 
 

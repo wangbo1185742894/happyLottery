@@ -59,18 +59,11 @@
 }
 
 -(NSString *)whitelist{
-    
-#ifdef APPSTORE
-    
-    if ([_whitelist boolValue] == YES&& self.isLogin == YES) {
+    if ([_whitelist boolValue] == YES && self.isLogin == YES) {
         return @"1";
-    }else{
-        
+    } else {
         return @"0";
     }
-#endif
-    return @"1";
-
 }
 
 -(NSString *)getShareUrl{

@@ -62,9 +62,9 @@
         self.viewDisTop.constant = 64;
         self.viewDisBottom.constant = 0;
     }
-    if ([self.curUser.whitelist boolValue] == NO) {
-        self.yuyueBtn.hidden = YES;
-    }
+//    if ([self.curUser.whitelist boolValue] == NO) {
+//        self.yuyueBtn.hidden = YES;
+//    }
     self.navigationItem.title = @"足球方案详情";
     self.transaction = [[JCFATransaction alloc]init];
      [self.myTableView registerNib:[UINib nibWithNibName:@"YuCeSchemeDetailCell" bundle:nil] forCellReuseIdentifier:@"YuCeSchemeDetailCell"];

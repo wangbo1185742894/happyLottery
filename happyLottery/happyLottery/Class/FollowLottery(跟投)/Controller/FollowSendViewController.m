@@ -229,11 +229,12 @@
         if(schemeList.count == 0){
             return 1;
         }
-        if ([self.curUser.whitelist boolValue] == NO) {
-             return 0;
-        }else{
-             return schemeList.count;
-        }
+        return schemeList.count;
+//        if ([self.curUser.whitelist boolValue] == NO) {
+//             return 0;
+//        }else{
+//
+//        }
        
     }else{
         return 0;
@@ -538,9 +539,9 @@
 }
 
 -(void)recommendViewCellClick:(NSIndexPath *)indexpath andTabIndex:(NSInteger)index{
-    if (self.curUser.whitelist == NO) {
-        return;
-    }
+//    if (self.curUser.whitelist == NO) {
+//        return;
+//    }
     if (index == 2) {
         NSDictionary *personInfo = eightList[indexpath.row];
         RecomPerModel *model = [[RecomPerModel alloc]initWith:personInfo];
