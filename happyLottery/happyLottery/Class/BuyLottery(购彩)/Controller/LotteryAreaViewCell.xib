@@ -47,6 +47,17 @@
                             <constraint firstAttribute="height" constant="22" id="fYc-DH-fQZ"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂停销售" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iTL-Yq-YVc">
+                        <rect key="frame" x="82.5" y="4" width="27" height="29"/>
+                        <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="27" id="0FL-iz-CTo"/>
+                            <constraint firstAttribute="height" constant="29" id="Ure-uT-umv"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" red="0.55294117647058827" green="0.55294117647058827" blue="0.55294117647058827" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <constraints>
@@ -58,12 +69,15 @@
                 <constraint firstItem="GF3-MY-u1k" firstAttribute="top" secondItem="ivk-Y4-fBP" secondAttribute="bottom" constant="-10" id="hb7-s3-rHE"/>
                 <constraint firstAttribute="trailing" secondItem="v3Z-Gr-m08" secondAttribute="trailing" constant="11" id="jIO-Y9-Rc8"/>
                 <constraint firstItem="WIm-aU-XX7" firstAttribute="top" secondItem="v3Z-Gr-m08" secondAttribute="bottom" constant="3" id="jea-Dr-RS0"/>
+                <constraint firstItem="iTL-Yq-YVc" firstAttribute="leading" secondItem="GF3-MY-u1k" secondAttribute="trailing" constant="-10" id="k5v-Ha-Wyw"/>
                 <constraint firstAttribute="bottom" secondItem="WIm-aU-XX7" secondAttribute="bottom" constant="8" id="lhA-xq-8A8"/>
+                <constraint firstItem="GF3-MY-u1k" firstAttribute="top" secondItem="iTL-Yq-YVc" secondAttribute="bottom" constant="-20" id="s48-uw-oek"/>
                 <constraint firstItem="WIm-aU-XX7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="yJi-7I-VBL"/>
                 <constraint firstItem="ivk-Y4-fBP" firstAttribute="leading" secondItem="GF3-MY-u1k" secondAttribute="trailing" constant="-10" id="zYX-Ps-Psq"/>
             </constraints>
             <size key="customSize" width="162" height="115"/>
             <connections>
+                <outlet property="isEable" destination="iTL-Yq-YVc" id="2c3-T6-gd4"/>
                 <outlet property="lotteryImageView" destination="GF3-MY-u1k" id="eFv-bE-nUg"/>
                 <outlet property="lotteryIntroduce" destination="WIm-aU-XX7" id="KaO-hi-16S"/>
                 <outlet property="lotteryName" destination="v3Z-Gr-m08" id="3q4-Iy-NJu"/>
