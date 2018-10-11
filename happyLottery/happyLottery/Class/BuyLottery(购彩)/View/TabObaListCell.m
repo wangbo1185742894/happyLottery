@@ -23,7 +23,7 @@
     }
     self.labObaName.text = model.legName;
     if ([model.cost integerValue] == 0) {
-        self.labObaCost.text = @"限时免费";
+        self.labObaCost.text = @"";
     }else{
         self.labObaCost.text = [NSString stringWithFormat:@"一次%@元",model.cost];
     }
