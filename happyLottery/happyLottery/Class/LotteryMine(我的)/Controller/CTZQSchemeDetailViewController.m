@@ -22,7 +22,8 @@
 #import "DLTPlayViewController.h"
 #import "CTZQSchemeViewCell.h"
 #import "CTZQPlayViewController.h"
-
+#import "LegInfoViewCell.h"
+#define KLegInfoViewCell @"LegInfoViewCell"
 #define  KSchemeDetailMatchViewCell     @"SchemeDetailMatchViewCell"
 #define  KSchemeDetailViewCell          @"SchemeDetailViewCell"
 #define  KTableHeaderView               @"TableHeaderView"
@@ -95,6 +96,7 @@
     tabMatchListVIew.delegate = self;
     tabMatchListVIew.dataSource = self;
     
+    [tabMatchListVIew registerNib:[UINib nibWithNibName:KLegInfoViewCell bundle:nil] forCellReuseIdentifier:KLegInfoViewCell];
     [tabMatchListVIew registerClass:[SchemeDetailMatchViewCell class] forCellReuseIdentifier: KSchemeDetailMatchViewCell];
     [tabMatchListVIew registerClass:[SchemeDetailViewCell class] forCellReuseIdentifier:KSchemeDetailViewCell];
     [tabMatchListVIew registerClass:[SchemeInfoViewCell class] forCellReuseIdentifier:KSchemeInfoViewCell];
@@ -183,9 +185,18 @@
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     if ([schemeDetail.costType isEqualToString:@"CASH"]) {
         if (schemeDetail.trDltOpenResult == nil || schemeDetail.trDltOpenResult.length ==0) {
-            return 3;
+            if ([schemeDetail isHasLeg]) {
+                return 4;
+            }else{
+                return 3;
+            }
+            
         }else{
-            return 4;
+            if ([schemeDetail isHasLeg]) {
+                return 5;
+            }else{
+                return 4;
+            }
         }
     }else{
         if (schemeDetail.trDltOpenResult == nil || schemeDetail.trDltOpenResult.length ==0) {
@@ -224,7 +235,14 @@
                     [infoCell loadData:schemeDetail];
                 }
                 cell = infoCell;
+            }else if (indexPath.section == 3){
+                LegInfoViewCell *legCell = [tableView dequeueReusableCellWithIdentifier:KLegInfoViewCell];
+                legCell.selectionStyle = UITableViewCellSelectionStyleNone;
+                [legCell LoadData:schemeDetail.legName legMobile:schemeDetail.legMobile legWechat:schemeDetail.legWechatId];
+                return legCell;
             }
+            
+            
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
         }else{
@@ -267,6 +285,11 @@
                     [infoCell loadData:schemeDetail];
                 }
                 cell = infoCell;
+            }else if (indexPath.section == 4){
+                LegInfoViewCell *legCell = [tableView dequeueReusableCellWithIdentifier:KLegInfoViewCell];
+                legCell.selectionStyle = UITableViewCellSelectionStyleNone;
+                [legCell LoadData:schemeDetail.legName legMobile:schemeDetail.legMobile legWechat:schemeDetail.legWechatId];
+                return legCell;
             }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
@@ -314,6 +337,8 @@
                     
                     return 110;
                 }
+            }else if (indexPath .section  == 3){
+                return 50;
             }
         }else{
             if (indexPath.section == 0) {
@@ -371,7 +396,6 @@
                 }else{
                     return 30;
                 }
-                
             }else{
                 return  30;
             }
@@ -440,6 +464,8 @@
                 
             }else if (section == 1){
                 header.titleLa.text = @"认购信息";
+            }else if (section == 3){
+                header.titleLa.text = @"跑腿信息";
             }
             return header;
         }else{
@@ -471,6 +497,8 @@
                 header.titleLa.text = @"开奖信息";
             }else if (section == 2){
                 header.titleLa.text = @"认购信息";
+            }else if (section == 4){
+                header.titleLa.text = @"跑腿信息";
             }
             return header;
         }else{

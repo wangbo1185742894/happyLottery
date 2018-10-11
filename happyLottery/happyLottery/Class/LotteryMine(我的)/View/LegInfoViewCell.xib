@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="55" id="KGk-i7-Jjw" customClass="LegInfoViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="365" height="55"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="365" height="54.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="跑腿小哥:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JXh-pa-z1M">
+                        <rect key="frame" x="16" y="18.5" width="65.5" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.1450980392" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TMm-Kb-t2k">
+                        <rect key="frame" x="91.5" y="16.5" width="70" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="22" id="0hP-45-mvO"/>
+                            <constraint firstAttribute="width" constant="70" id="35q-wN-0Hc"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <state key="normal">
+                            <color key="titleColor" red="1" green="0.62745098039215685" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="actionLegClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Lh1-k9-gds"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="TMm-Kb-t2k" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Ob8-vT-Fzu"/>
+                    <constraint firstItem="JXh-pa-z1M" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="YQh-4w-cgc"/>
+                    <constraint firstItem="JXh-pa-z1M" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="u1J-UC-hjo"/>
+                    <constraint firstItem="TMm-Kb-t2k" firstAttribute="leading" secondItem="JXh-pa-z1M" secondAttribute="trailing" constant="10" id="zi7-uC-gxN"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="labLegName" destination="TMm-Kb-t2k" id="S15-BR-Ncz"/>
+            </connections>
+            <point key="canvasLocation" x="173.59999999999999" y="158.77061469265368"/>
+        </tableViewCell>
+    </objects>
+</document>

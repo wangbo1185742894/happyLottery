@@ -20,10 +20,11 @@
 #import "MyOrderListViewController.h"
 #import "DLTPlayViewController.h"
 #import "JCZQPlayViewController.h"
+#import "LegInfoViewCell.h"
 
 #import "DLTSchemeViewCell.h"
 #import "DLTTouZhuViewController.h"
-
+#define KLegInfoViewCell @"LegInfoViewCell"
 #define  KSchemeDetailMatchViewCell     @"SchemeDetailMatchViewCell"
 #define  KSchemeDetailViewCell          @"SchemeDetailViewCell"
 #define  KTableHeaderView               @"TableHeaderView"
@@ -96,6 +97,8 @@
     tabMatchListVIew.dataSource = self;
     
     [tabMatchListVIew registerClass:[SchemeDetailMatchViewCell class] forCellReuseIdentifier: KSchemeDetailMatchViewCell];
+    
+    [tabMatchListVIew registerNib:[UINib nibWithNibName:KLegInfoViewCell bundle:nil] forCellReuseIdentifier:KLegInfoViewCell];
     [tabMatchListVIew registerClass:[SchemeDetailViewCell class] forCellReuseIdentifier:KSchemeDetailViewCell];
     [tabMatchListVIew registerClass:[SchemeInfoViewCell class] forCellReuseIdentifier:KSchemeInfoViewCell];
     [tabMatchListVIew registerClass:[DLTSchemeViewCell class] forCellReuseIdentifier:KDLTSchemeViewCell];
@@ -234,6 +237,8 @@
             
         }else if (section == 1){
             return 1;
+        }else if (section == 3){
+            return 1;
         }
     }else{
         if (section == 0) {
@@ -258,7 +263,11 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     if ([schemeDetail.costType isEqualToString:@"CASH"]) {
-        return 3;
+        if ([schemeDetail isHasLeg]) {
+            return 4;
+        }else{
+            return 3;
+        }
     }else{
         return 2;
     }
@@ -314,6 +323,11 @@
                 [infoCell loadData:schemeDetail];
             }
             cell = infoCell;
+        }else if (indexPath.section == 3){
+            LegInfoViewCell *legCell = [tableView dequeueReusableCellWithIdentifier:KLegInfoViewCell];
+            legCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            [legCell LoadData:schemeDetail.legName legMobile:schemeDetail.legMobile legWechat:schemeDetail.legWechatId];
+            return legCell;
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
@@ -417,6 +431,8 @@
                 
                 return 110;
             }
+        }else if(indexPath.section == 3){
+            return 50;
         }
     }else{
         if (indexPath.section == 0) {
@@ -560,8 +576,6 @@
             return  30;
         }
     }
-   
-    
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -582,6 +596,8 @@
             
         }else if (section == 1){
             header.titleLa.text = @"认购信息";
+        }else if (section == 3){
+            header.titleLa.text = @"跑腿信息";
         }
         return header;
     }else{

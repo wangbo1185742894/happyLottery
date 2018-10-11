@@ -168,8 +168,16 @@
         for (NSDictionary *itemDic in redList) {
             LegWordModel *model = [[LegWordModel alloc]initWith:itemDic];
             [legWorkList addObject:model];
-            [tabObaList reloadData];
+          
         }
+        for (int i = 0 ;i < legWorkList.count; i ++) {
+            NSInteger index1 = arc4random_uniform(legWorkList.count - 1);
+            NSInteger index2 = arc4random_uniform(legWorkList.count - 1);
+            LegWordModel *model = legWorkList[index1];
+            legWorkList[index1] = legWorkList[index2];
+            legWorkList[index2] = model;
+        }
+          [tabObaList reloadData];
         [legWorkList firstObject].isSelect = YES;
         labCostInfo.text = [NSString stringWithFormat:@"明细：彩票店出票%.2f + 跑腿费%@元",self.cashPayMemt.subscribed,[legWorkList firstObject].cost];
     }

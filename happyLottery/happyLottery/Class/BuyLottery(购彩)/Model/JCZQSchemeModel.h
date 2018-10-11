@@ -128,6 +128,19 @@
 @property(nonatomic,copy)NSString * trLottery;
 @property(nonatomic,copy)NSString * trCostType;
 
+/** 小哥名称*/
+@property(nonatomic,copy)NSString *  legName;
+/** 跑腿费 */
+@property(nonatomic,copy)NSString *  legCost;
+/** 小哥微信号*/
+@property(nonatomic,copy)NSString *  legWechatId;
+/** 小哥电话号*/
+@property(nonatomic,copy)NSString *  legMobile;
+/** 小哥支付宝号*/
+@property(nonatomic,copy)NSString *  legAlipay;
+
+@property(nonatomic,copy)NSString * legId;
+
 
 -(NSString *)getSchemeImgState;
 
@@ -135,6 +148,8 @@
 -(CGFloat)getJCZQCellHeight;
 -(CGFloat )getGYJCellHeight;
 -(NSString *)getLotteryByName;
+
+-(BOOL)isHasLeg;
 @end
 
 

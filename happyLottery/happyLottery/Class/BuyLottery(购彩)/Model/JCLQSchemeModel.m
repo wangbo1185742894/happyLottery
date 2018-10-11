@@ -19,6 +19,7 @@
     return self;
 }
 
+
 -(void)setValue:(id)value forKey:(NSString *)key{
 
     if ([key isEqualToString:@"list"]) {
@@ -55,6 +56,14 @@
         [super setValue:value forKey:key];
     }
 }
+
+-(BOOL)isHasLeg{
+    if (_legName == nil || _legAlipay == nil || _legMobile == nil) {
+        return NO;
+    }
+    return YES;
+}
+
 -(NSString *)getSchemeImgState{
     
     NSString *state;

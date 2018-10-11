@@ -198,6 +198,13 @@
     }
 }
 
+-(BOOL)isHasLeg{
+    if (_legName == nil || _legAlipay == nil || _legMobile == nil) {
+        return NO;
+    }
+    return YES;
+}
+
 -(NSString *)lotteryIcon{
     if ([self.lottery isEqualToString:@"DLT"]) {
         return @"icon_daletoushouye.png";

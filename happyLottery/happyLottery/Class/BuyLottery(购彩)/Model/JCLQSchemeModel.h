@@ -71,10 +71,23 @@
 
 @property(nonatomic,copy)NSString *virtualSp;
 @property(nonatomic,copy)NSString *drawCount;
+/** 小哥名称*/
+@property(nonatomic,copy)NSString *  legName;
+/** 跑腿费 */
+@property(nonatomic,copy)NSString *  legCost;
+/** 小哥微信号*/
+@property(nonatomic,copy)NSString *  legWechatId;
+/** 小哥电话号*/
+@property(nonatomic,copy)NSString *  legMobile;
+/** 小哥支付宝号*/
+@property(nonatomic,copy)NSString *  legAlipay;
+
+@property(nonatomic,copy)NSString * legId;
 -(NSString *)getSchemeImgState;
 
 -(NSString *)getSchemeState;
 -(CGFloat) getJCLQCellHeight;
+-(BOOL)isHasLeg;
 @end
 
 

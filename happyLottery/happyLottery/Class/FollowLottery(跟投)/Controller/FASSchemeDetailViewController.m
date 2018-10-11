@@ -8,6 +8,7 @@
 
 #import "FASSchemeDetailViewController.h"
 #import "MyPostSchemeViewController.h"
+#import "OrderListHeaderView.h"
 #import "PersonCenterViewController.h"
 #import "FollowListViewController.h"
 #import "SchemeInfoFollowCell.h"
@@ -21,12 +22,14 @@
 #import "JCLQOrderDetailInfoViewController.h"
 #import "SuoSchemeViewCell.h"
 #import "PayOrderViewController.h"
+#import "LegInfoViewCell.h"
 
 #import <ShareSDK/ShareSDK+Base.h>
 #import <ShareSDKUI/ShareSDK+SSUI.h>
 #import <ShareSDK/NSMutableDictionary+SSDKShare.h>
 #import <MOBFoundation/MOBFoundation.h>
 #import "ShareOrderView.h"
+#define KLegInfoViewCell @"LegInfoViewCell"
 #define KSchemeInfoFollowCell @"SchemeInfoFollowCell"
 #define KSchemePerFollowCell  @"SchemePerFollowCell"
 #define KSchemeContaintCell   @"SchemeContaintCell"
@@ -234,6 +237,7 @@
     self.detailTableView.dataSource = self;
     self.detailTableView.allowsSelection = NO;
     [self.detailTableView registerNib:[UINib nibWithNibName:KSchemeInfoFollowCell bundle:nil] forCellReuseIdentifier:KSchemeInfoFollowCell];
+    [self.detailTableView registerNib:[UINib nibWithNibName:KLegInfoViewCell bundle:nil] forCellReuseIdentifier:KLegInfoViewCell];
     [self.detailTableView registerNib:[UINib nibWithNibName:KSchemePerFollowCell bundle:nil] forCellReuseIdentifier:KSchemePerFollowCell];
     [self.detailTableView registerNib:[UINib nibWithNibName:KSchemeContaintCell bundle:nil] forCellReuseIdentifier:KSchemeContaintCell];
     [self.detailTableView registerNib:[UINib nibWithNibName:KSchemeBuyCell bundle:nil] forCellReuseIdentifier:KSchemeBuyCell];
@@ -250,7 +254,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    
+    if ([schemeDetail isHasLeg]) {
+        if (section == 4) {
+            return 30;
+        }
+    }
     return 0.01;
     
 }
@@ -273,7 +281,11 @@
             return 3;
         }
     }
-    return 4;
+    if ([schemeDetail isHasLeg]) {
+        return 5;
+    }else{
+        return 4;
+    }
 }
 
 
@@ -393,6 +405,9 @@
         if (indexPath.section == 2){
             return [self setHeightForFangan:indexPath];
         }
+        if (indexPath.section == 4) {
+            return 50;
+        }
         return 138;
     }
     else {
@@ -417,6 +432,9 @@
             } else {
                 return [self setHeightForFangan:indexPath];
             }
+        }
+        if (indexPath.section == 4) {
+            return 50;
         }
         return 138;
     }
@@ -538,6 +556,12 @@
         if (indexPath.section == 2){
             return  [self tableView:tableView cellForFangAnIndexPath:indexPath];
         }
+        if (indexPath.section == 4) {
+            LegInfoViewCell *legCell = [tableView dequeueReusableCellWithIdentifier:KLegInfoViewCell];
+            legCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            [legCell LoadData:schemeDetail.legName legMobile:schemeDetail.legMobile legWechat:schemeDetail.legWechatId];
+            return legCell;
+        }
     }
     else {
         if (indexPath.section == 0){
@@ -575,7 +599,14 @@
                  return [self tableView:tableView cellForFangAnIndexPath:indexPath];
             }
         }
+        if (indexPath.section == 4) {
+            LegInfoViewCell *legCell = [tableView dequeueReusableCellWithIdentifier:KLegInfoViewCell];
+            legCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            [legCell LoadData:schemeDetail.legName legMobile:schemeDetail.legMobile legWechat:schemeDetail.legWechatId];
+            return legCell;
+        }
     }
+
     SchemeBuyCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeBuyCell];
     [cell loadData:schemeDetail];
     return cell;
@@ -697,6 +728,18 @@
         
     }];
     [alert showAlertWithSender:self];
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if ([schemeDetail isHasLeg]) {
+        if (section == 4) {
+            OrderListHeaderView *header = [[[NSBundle mainBundle] loadNibNamed:@"OrderListHeaderView" owner:nil options:nil] lastObject];
+            header.backgroundColor = RGBCOLOR(253 , 252, 245);
+            header.titleLa.text = @"跑腿信息";
+            return header;
+        }
+    }
+    return [UIView new];
 }
 
 - (void)showAlertFromBuy {
