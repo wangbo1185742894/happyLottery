@@ -515,7 +515,7 @@
 - (NSString *)setJCLQContentWin:(NSString *)playType resultArray:(NSArray *)openResult Matchkey:(NSString *)matchKey andHandic:(NSString *)handic{
     JCLQOpenResult * openRt;
     for (JCLQOpenResult  *result in openResult) {
-        if ([result.matchKey isEqualToString:matchKey]&&[result.handicap isEqualToString:handic]) {
+        if ([result.matchKey isEqualToString:matchKey]) {
             openRt = result;
             break;
         }
@@ -532,7 +532,12 @@
             break;
             
         case 4:
-            result = openRt.DXF;
+            if (([openRt.homeScore doubleValue ] + [openRt.guestScore doubleValue]) > [handic doubleValue]) {
+                return @"1";
+            }else{
+                return @"2";
+            }
+//            result = openRt.DXF;
             break;
             
         case 3:
