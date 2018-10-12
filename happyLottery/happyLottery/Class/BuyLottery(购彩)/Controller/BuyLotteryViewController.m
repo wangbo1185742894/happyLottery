@@ -208,7 +208,6 @@ static NSString *ID = @"LotteryAreaViewCell";
                 modelDG.lotteryCode = @"JCZQDG";
                 modelDG.sell = model.sell;
                 modelDG.showHome = model.showHome;
-//                modelDG.lotteryImageName = model.lotteryImageName;
                 [self.sellLottery addObject:modelDG];
             }
         }
