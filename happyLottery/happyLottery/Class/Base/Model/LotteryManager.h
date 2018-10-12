@@ -72,7 +72,7 @@ typedef enum EarningsType{
 
 - (void) gotListAttent:(NSArray  *)personList  errorMsg:(NSString *)msg;
 - (void) gotAppSign:(NSDictionary *)personList  errorMsg:(NSString *)msg;
-- (void) listSellLottery:(NSDictionary *)lotteryList  errorMsg:(NSString *)msg;
+- (void) listSellLottery:(NSArray *)lotteryList  errorMsg:(NSString *)msg;
 - (void) listRechargeHandsel:(NSArray *)lotteryList  errorMsg:(NSString *)msg;
 -(void)gotBootPageUrl:(NSString *)strUrl;
 - (void) deleteSchemeByNo:(NSString *)resultStr  errorMsg:(NSString *)msg; //删除订单

@@ -51,6 +51,7 @@
 #import "LMJScrollTextView2.h"
 #import "LotteryPlayViewController.h"
 #import <UIKit/UIWebView.h>
+#import "BuyLotteryModel.h"
 #define KNewsListCell @"NewsListCell"
 #define AnimationDur 0.3
 #define KAppSignModelShow @"appSignModelShow"
@@ -112,11 +113,10 @@ static NSString *ID = @"LotteryAreaViewCell";
     __weak IBOutlet UIButton *goRedPacket;
 
     __weak IBOutlet UIButton *gyjButton;
-    NSMutableArray * _lotteryArr;
     BOOL showGJbtn;
 }
 @property (nonatomic, strong) LMJScrollTextView2 * scrollTextView;
-@property(nonatomic,strong)NSMutableArray *sellLottery;
+@property(nonatomic,strong)NSMutableArray<BuyLotteryModel *> *sellLottery;
 @property(nonatomic,strong)Lottery *lottery;
 @end
 
@@ -134,8 +134,8 @@ static NSString *ID = @"LotteryAreaViewCell";
     }else{
         bottomheight = 49;
     }
-    NSString *plistPath = [[NSBundle mainBundle]pathForResource:@"LotteryArea" ofType:@"plist"];
-    _lotteryArr = [[NSMutableArray alloc] initWithContentsOfFile:plistPath];
+//    NSString *plistPath = [[NSBundle mainBundle]pathForResource:@"LotteryArea" ofType:@"plist"];
+//    _lotteryArr = [[NSMutableArray alloc] initWithContentsOfFile:plistPath];
     activityInfoView = [[ActivityInfoView alloc ]initWithFrame:CGRectMake(0, KscreenHeight - bottomheight - 70, KscreenWidth, 70)];
     activityInfoView.frame = CGRectMake(0, KscreenHeight - bottomheight - 70, KscreenWidth, 70);
     [activityInfoView setStartBtnTarget:self andAction:@selector(startActivity)];
@@ -191,30 +191,30 @@ static NSString *ID = @"LotteryAreaViewCell";
     [self.lotteryMan getListSellLottery];
 }
 
--(void)listSellLottery:(NSDictionary *)lotteryList errorMsg:(NSString *)msg{
+-(void)listSellLottery:(NSArray *)lotteryList errorMsg:(NSString *)msg{
     [self.sellLottery removeAllObjects];
     if (lotteryList == nil) {
         [self showPromptText:msg hideAfterDelay:1.7];
         return;
     }
-    _lotteryList = lotteryList;
-    for (int i = 0;i < _lotteryArr.count ;i ++) {
-        NSDictionary *itemDic = _lotteryArr[i];
-        NSString *key = itemDic[@"lottery"] ;
-        if ([key isEqualToString:@"GYJ"]&& [lotteryList[@"JCGJ"] boolValue] ==NO && [lotteryList[@"JCGYJ"] boolValue] ==NO) {
-            continue;
+    for (NSDictionary *dic in lotteryList) {
+        BuyLotteryModel *model = [[BuyLotteryModel alloc]initWith:dic];
+        if ([model.showHome boolValue]) {
+            [self.sellLottery addObject:model];
+            //添加竞足单关
+            if ([model.lotteryCode isEqualToString:@"JCZQ"]&&self.sellLottery.count<7) {
+                BuyLotteryModel *modelDG = [[BuyLotteryModel alloc]init];
+                modelDG.lotteryName = @"竞足单关";
+                modelDG.lotteryCode = @"JCZQDG";
+                modelDG.sell = model.sell;
+                modelDG.showHome = model.showHome;
+                modelDG.lotteryImageName = model.lotteryImageName;
+                [self.sellLottery addObject:modelDG];
+            }
         }
-        //将双色球放置更多里面，不直接删除是因为配置文件在其他页面用到了双色球
-        if ([key isEqualToString:@"SSQ"]) {
-            continue;
-        }
-//        else if(![key isEqualToString:@"GYJ"] && [lotteryList[key] boolValue] == NO){
-//            continue;
-//        }
-        if (self.sellLottery .count == 7) {
+        if (self.sellLottery.count == 7) {
             break;
         }
-        [self.sellLottery addObject:itemDic];
     }
     [lotteryPlayView reloadData];
 }
@@ -232,27 +232,12 @@ static NSString *ID = @"LotteryAreaViewCell";
 - (UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     LotteryAreaViewCell *cell =  [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
-    
     if (indexPath.row < self.sellLottery.count) {
-        NSDictionary *itemDic = self.sellLottery[indexPath.row];
-        if ([itemDic[@"lotteryName"] isEqualToString:@"11选5"]) {
-            cell.lotteryName.text = @"陕西11选5";
-        } else {
-            cell.lotteryName.text = itemDic[@"lotteryName"];
-        }
-        if ([itemDic[@"lottery"] isEqualToString:@"JCZQDG"]) {
-            cell.isEable.hidden = [_lotteryList[@"JCZQ"] boolValue];
-        }else if ([itemDic[@"lottery"] isEqualToString:@"GYJ"]) {
-            if ( [_lotteryList[@"JCGJ"] boolValue] ==NO && [_lotteryList[@"JCGYJ"] boolValue] ==NO) {
-                cell.isEable .hidden= NO;
-            }else{
-                cell.isEable.hidden = YES;
-            }
-        }else{
-            cell.isEable.hidden = [_lotteryList[itemDic[@"lottery"]] boolValue];
-        }
-        if ([itemDic[@"lottery"] isEqualToString:@"SSQ"]) { //双色球每周二，四，日 开奖
-            if ([_lotteryList[@"SSQ"] boolValue] == NO) {
+        BuyLotteryModel *model = self.sellLottery[indexPath.row];
+        cell.lotteryName.text = model.lotteryName;
+        cell.isEable.hidden = [model.sell boolValue];
+        if ([model.lotteryCode isEqualToString:@"SSQ"]) { //双色球每周二，四，日 开奖
+            if ([model.sell boolValue] == NO) {
                 cell.todayOpenLottery.hidden = YES;
             } else {
                 NSString *weekStr = [Utility weekDayGetForTimeDate:[NSDate date]];
@@ -267,8 +252,8 @@ static NSString *ID = @"LotteryAreaViewCell";
                     cell.todayOpenLottery.hidden = YES;
                 }
             }
-        } else if ([itemDic[@"lottery"] isEqualToString:@"DLT"]){ //大乐透每周一、三、六 开奖
-            if ([_lotteryList[@"DLT"] boolValue] == NO) {
+        } else if ([model.lotteryCode isEqualToString:@"DLT"]){ //大乐透每周一、三、六 开奖
+            if ([model.sell boolValue] == NO) {
                 cell.todayOpenLottery.hidden = YES;
             } else {
                 NSString *weekStr = [Utility weekDayGetForTimeDate:[NSDate date]];
@@ -286,7 +271,7 @@ static NSString *ID = @"LotteryAreaViewCell";
         } else {
             cell.todayOpenLottery.hidden = YES;
         }
-        [cell.lotteryImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"icon_%@",itemDic[@"lotteryImageName"]]]];
+        [cell.lotteryImageView setImage:[UIImage imageNamed:model.lotteryImageName]];
     }else{
         cell.lotteryName .text= @"更多";
         cell.isEable.hidden = YES;
@@ -304,25 +289,12 @@ static NSString *ID = @"LotteryAreaViewCell";
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row <self.sellLottery.count) {
-        NSDictionary *itemDic = self.sellLottery[indexPath.row];
-        NSString *lottert =  itemDic[@"lottery"];
-        if ([lottert isEqualToString:@"JCZQDG"]) {
-            if ([_lotteryList[@"JCZQ"] boolValue] ==NO) {
-                [self showPromptText:@"该玩法暂未开售" hideAfterDelay:2.0];
-                return;
-            }
-        }else if ([lottert isEqualToString:@"GYJ"]) {
-            if ( [_lotteryList[@"JCGJ"] boolValue] ==NO && [_lotteryList[@"JCGYJ"] boolValue] ==NO) {
-                [self showPromptText:@"该玩法暂未开售" hideAfterDelay:2.0];
-                return;
-            }
-        }else{
-            if([_lotteryList[lottert] boolValue] == NO) {
-                [self showPromptText:@"该玩法暂未开售" hideAfterDelay:2.0];
-                return;
-            }
+        BuyLotteryModel *model = self.sellLottery[indexPath.row];
+        if (![model.sell boolValue]) {
+            [self showPromptText:@"该玩法暂未开售" hideAfterDelay:2.0];
+            return;
         }
-        NSString *funName = [NSString stringWithFormat:@"action%@:",lottert];
+        NSString *funName = [NSString stringWithFormat:@"action%@:",model.lotteryCode];
         SEL action = NSSelectorFromString(funName);
         if ([self respondsToSelector:action ]) {
             [self performSelector:action withObject:nil afterDelay:0];
@@ -821,14 +793,14 @@ static NSString *ID = @"LotteryAreaViewCell";
         }
         return;
     }else if ([keyStr isEqualToString:@"A009"]){
-        [self actionGYJ:nil];
+        [self actionJCGJ:nil];
         return;
     }else if ([keyStr isEqualToString:@"A006"]){
         
-        [self actionSFC:@"SFC"];
+        [self actionSFC:nil];
         return;
     }else if ([keyStr isEqualToString:@"A005"]){
-        [self actionSFC:@"RJC"];
+        [self actionRJC:nil];
         return;
     }else if ([keyStr isEqualToString:@"A004"]){
         [self actionDLT:nil];
@@ -1205,14 +1177,12 @@ static NSString *ID = @"LotteryAreaViewCell";
     [self.navigationController pushViewController:lotteryAreVc   animated:YES];
 }
 
+
 //进入冠亚军竞猜
 
--(void)actionGYJ:(UIButton*)sender{
-    [self actionJcgyj:sender];
-}
-
-- (IBAction)actionJcgyj:(id)sender {
+-(void)actionJCGYJ:(id)sender{
     GYJPlayViewController *gyjPlayVc = [[GYJPlayViewController alloc]init];
+    gyjPlayVc.buttonType = @"JCGYJ";
     gyjPlayVc.hidesBottomBarWhenPushed = YES;
     gyjPlayVc.navigationController.navigationBar.hidden = YES;
     if (navGationCotr == nil) {
@@ -1222,6 +1192,20 @@ static NSString *ID = @"LotteryAreaViewCell";
         [navGationCotr pushViewController:gyjPlayVc animated:YES];
     }
 }
+
+-(void)actionJCGJ:(id)sender{
+    GYJPlayViewController *gyjPlayVc = [[GYJPlayViewController alloc]init];
+    gyjPlayVc.buttonType = @"JCGJ";
+    gyjPlayVc.hidesBottomBarWhenPushed = YES;
+    gyjPlayVc.navigationController.navigationBar.hidden = YES;
+    if (navGationCotr == nil) {
+        [self.navigationController pushViewController:gyjPlayVc animated:YES];
+    }
+    else {
+        [navGationCotr pushViewController:gyjPlayVc animated:YES];
+    }
+}
+
 
 //"cardCode":"xxx","matchId":"x","isCollect":"x"
 -(void)newScollectMatch:(JczqShortcutModel *)model andIsSelect:(BOOL)isSelect{
@@ -1623,13 +1607,7 @@ static NSString *ID = @"LotteryAreaViewCell";
     }
     NSArray * lotteryDS = [self.lotteryMan getAllLottery];
     CTZQPlayViewController *playVC = [[CTZQPlayViewController alloc] init];
-    if ([sender isKindOfClass:[NSString class]]) {
-        if ([sender isEqualToString:@"SFC"]) {
-            playVC.playType = CTZQPlayTypeShiSi;
-        }else{
-            playVC.playType = CTZQPlayTypeRenjiu;
-        }
-    }
+    playVC.playType = CTZQPlayTypeShiSi;
     playVC.hidesBottomBarWhenPushed = YES;
     playVC.lottery = lotteryDS[7];
     if (navGationCotr == nil) {
@@ -1639,6 +1617,24 @@ static NSString *ID = @"LotteryAreaViewCell";
         [navGationCotr pushViewController:playVC animated:YES];
     }
 }
+
+- (IBAction)actionRJC:(id)sender {
+    if (self.lotteryMan == nil) {
+        self.lotteryMan = [[LotteryManager alloc]init];
+    }
+    NSArray * lotteryDS = [self.lotteryMan getAllLottery];
+    CTZQPlayViewController *playVC = [[CTZQPlayViewController alloc] init];
+    playVC.playType = CTZQPlayTypeRenjiu;
+    playVC.hidesBottomBarWhenPushed = YES;
+    playVC.lottery = lotteryDS[7];
+    if (navGationCotr == nil) {
+        [self.navigationController pushViewController:playVC animated:YES];
+    }
+    else {
+        [navGationCotr pushViewController:playVC animated:YES];
+    }
+}
+
 - (IBAction)actionJCLQ:(UIButton *)sender {
     JCLQPlayController * playViewVC = [[JCLQPlayController alloc]init];
     playViewVC.hidesBottomBarWhenPushed = YES;
@@ -1657,10 +1653,16 @@ static NSString *ID = @"LotteryAreaViewCell";
     }
     
     NSString *playType = notifi.object;
-    if ([playType isEqualToString:@"RJC"] || [playType isEqualToString:@"SFC"]) {
+    if ([playType isEqualToString:@"SFC"]) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
             [self actionSFC:nil];
+        });
+    }
+    if ([playType isEqualToString:@"RJC"]) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [self actionRJC:nil];
         });
     }
     if ([playType isEqualToString:@"DLT"]) {

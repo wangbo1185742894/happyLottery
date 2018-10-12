@@ -241,6 +241,7 @@
 #define APIlistSellLottery              @"listSellLottery"
 #define APIgetBootPageUrl           @"getBootPageUrl"
 #define APIgetCommonSetValue            @"getCommonSetValue"
+#define APIlistLotteryConfig        @"listLotteryConfig" //首页显示彩种新接口
 
 #define SUBAPISchemeService   @"/scheme"
 #define APIBetLotteryScheme         @"betLotteryScheme"
