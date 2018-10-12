@@ -10,4 +10,6 @@
 #import "BaseViewController.h"
 @interface GYJPlayViewController : BaseViewController
 
+@property (nonatomic,copy)NSString *buttonType;
+
 @end

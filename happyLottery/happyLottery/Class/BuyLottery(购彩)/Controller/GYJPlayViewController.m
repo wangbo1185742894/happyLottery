@@ -84,9 +84,11 @@
     self.lottery = [self.lotteryMan getAllLottery][8];
     
     [self navigationBarInit];
-    [self actionPlayTypeSelect:btnGJ];
-//    [self setUpRightBtn];
-//    [self setUpLeftBtn];
+    if ([self.buttonType isEqualToString:@"JCGJ"]) {
+        [self actionPlayTypeSelect:btnGJ];
+    }else {
+        [self actionPlayTypeSelect:btnGYJ];
+    }
     [self initLable];
     self.transaction = [[GYJTransaction alloc]init];
     yuyueBtn.layer.cornerRadius = 5;

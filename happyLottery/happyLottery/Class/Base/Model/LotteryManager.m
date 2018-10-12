@@ -1885,7 +1885,7 @@
     {
         SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
         NSString *responseJsonStr = [response getAPIResponse];
-        NSDictionary *lotteryList = [Utility objFromJson:responseJsonStr];
+        NSArray *lotteryList = [Utility objFromJson:responseJsonStr];
         if (response.succeed) {
             [self.delegate listSellLottery:lotteryList errorMsg:response.errorMsg];
             
@@ -1899,7 +1899,7 @@
         [self.delegate listSellLottery:nil errorMsg:@"请检查网络连接"];
     };
     
-    SOAPRequest *request = [self requestForAPI: APIlistSellLottery withParam:nil];
+    SOAPRequest *request = [self requestForAPI: APIlistLotteryConfig withParam:nil];
     [self newRequestWithRequest:request
                          subAPI:SUBAPIDATA
       constructingBodyWithBlock:nil
