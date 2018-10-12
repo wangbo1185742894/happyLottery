@@ -95,7 +95,7 @@
         return;
     }
     if (self.page == 1) {
-        [self.dataArray removeAllObjects];
+         [self.dataArray removeAllObjects];
     }
     [self.dataArray addObjectsFromArray:infoArray];
     [self.tabListDetail reloadData];

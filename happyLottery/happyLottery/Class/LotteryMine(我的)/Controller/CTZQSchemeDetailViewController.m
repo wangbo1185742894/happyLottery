@@ -361,6 +361,8 @@
                 }
             }else if(indexPath.section == 1){
                 return 50;
+            }else if (indexPath.section == 4){
+                return 50;
             }
         }else{
             if (indexPath.section == 0) {
@@ -372,7 +374,6 @@
             }
         }
     }
-
     return 0;
 }
 
