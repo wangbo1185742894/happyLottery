@@ -1408,6 +1408,8 @@
 		F999278A20037AA200023F8F /* empty_zhmx@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F999278820037AA200023F8F /* empty_zhmx@3x.png */; };
 		F99F8720215367CB00E60B08 /* redPackPay_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F99F871E215367C900E60B08 /* redPackPay_close@2x.png */; };
 		F99F8721215367CB00E60B08 /* redPackPay_close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F99F871F215367CA00E60B08 /* redPackPay_close@3x.png */; };
+		F9A310A42170988E006AE949 /* renjiu_shouye@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9A310A22170988D006AE949 /* renjiu_shouye@3x.png */; };
+		F9A310A52170988E006AE949 /* renjiu_shouye@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9A310A32170988E006AE949 /* renjiu_shouye@2x.png */; };
 		F9A6390720A29D2200AA07C6 /* RecommendPerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9A6390520A29D2200AA07C6 /* RecommendPerViewController.m */; };
 		F9A6390820A29D2200AA07C6 /* RecommendPerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9A6390620A29D2200AA07C6 /* RecommendPerViewController.xib */; };
 		F9A6391120A2A14000AA07C6 /* RecomPerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9A6390F20A2A14000AA07C6 /* RecomPerTableViewCell.m */; };
@@ -3691,6 +3693,8 @@
 		F999278820037AA200023F8F /* empty_zhmx@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty_zhmx@3x.png"; sourceTree = "<group>"; };
 		F99F871E215367C900E60B08 /* redPackPay_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redPackPay_close@2x.png"; sourceTree = "<group>"; };
 		F99F871F215367CA00E60B08 /* redPackPay_close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redPackPay_close@3x.png"; sourceTree = "<group>"; };
+		F9A310A22170988D006AE949 /* renjiu_shouye@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "renjiu_shouye@3x.png"; sourceTree = "<group>"; };
+		F9A310A32170988E006AE949 /* renjiu_shouye@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "renjiu_shouye@2x.png"; sourceTree = "<group>"; };
 		F9A6390420A29D2200AA07C6 /* RecommendPerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecommendPerViewController.h; sourceTree = "<group>"; };
 		F9A6390520A29D2200AA07C6 /* RecommendPerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecommendPerViewController.m; sourceTree = "<group>"; };
 		F9A6390620A29D2200AA07C6 /* RecommendPerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendPerViewController.xib; sourceTree = "<group>"; };
@@ -5257,6 +5261,8 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				F9A310A32170988E006AE949 /* renjiu_shouye@2x.png */,
+				F9A310A22170988D006AE949 /* renjiu_shouye@3x.png */,
 				F90B1E3B216F508700A32D38 /* icon_paiwu@2x.png */,
 				F90B1E3C216F508700A32D38 /* icon_paiwu@3x.png */,
 				F90B1E32216F2C1C00A32D38 /* yucezhanji@2x.png */,
@@ -7993,6 +7999,7 @@
 				2DB4B346214B89AE00E639FE /* RedPacketViewCell.xib in Resources */,
 				F928C6B81FF4BA40001F1A32 /* decrease@3x.png in Resources */,
 				2D05C8B420A97AEE001A8953 /* AtttendPersonViewCell.xib in Resources */,
+				F9A310A52170988E006AE949 /* renjiu_shouye@2x.png in Resources */,
 				F9FC0BF420C76E7D00BCCF59 /* yongjin_money@3x.png in Resources */,
 				2D05C81720A3F60E001A8953 /* HomeMenuItemsConfig.plist in Resources */,
 				F9B5D98F2060A9DE00C9F6DC /* flag413@2x.png in Resources */,
@@ -8234,6 +8241,7 @@
 				2D3617672061FA3D003093F9 /* dan_notWin@3x.png in Resources */,
 				2D30654E20EB5DC30084DB97 /* 11xuan5_howto.html in Resources */,
 				2D739CD51FEB44F400264044 /* rangqiuzheng@3x.png in Resources */,
+				F9A310A42170988E006AE949 /* renjiu_shouye@3x.png in Resources */,
 				2D06003E1FFDDD51009E7568 /* schemedetailsymbol@3x.png in Resources */,
 				F90D68FF20F2FDB0007865E4 /* sdwanfa.html in Resources */,
 				F9B5D97A2060A9DE00C9F6DC /* flag370@3x.png in Resources */,

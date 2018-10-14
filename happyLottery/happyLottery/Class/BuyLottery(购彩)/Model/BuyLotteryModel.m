@@ -18,9 +18,9 @@
         return @"icon_shengfucaishouye.png";
     }
     if ([self.lotteryCode isEqualToString:@"RJC"]) {
-        return @"icon_shengfucaishouye.png";
+        return @"renjiu_shouye.png";
     }
-    if ([self.lotteryCode isEqualToString:@"JCZQ"]) {
+    if ([self.lotteryCode isEqualToString:@"JCZQ"]||[self.lotteryCode isEqualToString:@"JCZQDG"]) {
         return @"icon_jingzu.png";
     }
     if ([self.lotteryCode isEqualToString:@"JCGYJ"]) {
