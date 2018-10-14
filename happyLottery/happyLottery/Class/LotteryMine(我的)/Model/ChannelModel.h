@@ -25,6 +25,7 @@
 
 @property(nonatomic,copy)NSString *handsel;
 @property(nonatomic,copy)NSString *recharge;
+@property(nonatomic,copy)NSString *rechargeChannel;
 @property(nonatomic,assign)BOOL isSelect;
 
 @end

@@ -80,7 +80,7 @@
     [self getLeaArray]; //获取联赛名称
     [self setSummary];
     self.btnTouzhu.layer.cornerRadius = 5;
-   
+    
 }
 
 -(void)cleanMatch:(NSNotification*)notification{

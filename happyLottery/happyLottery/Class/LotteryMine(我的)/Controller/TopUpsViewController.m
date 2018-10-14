@@ -70,7 +70,7 @@
         lab.layer.cornerRadius = 3;
         lab.layer.masksToBounds = YES;
     }
-    [self .lotteryMan listRechargeHandsel];
+    
     [self.lotteryMan getCommonSetValue:@{@"typeCode":@"recharge",@"commonCode":@"hawkeye_ali"}];
 }
 
@@ -89,32 +89,70 @@
         RechargeModel *model = [[RechargeModel alloc] initWith:itemDic];
         [rechList addObject:model];
     }
-    
-    [rechList sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+    [self reloadRechargeCost:[self getRechList]];
+}
+
+-(NSArray *)getRechList{
+    NSMutableArray *itemrechList = [NSMutableArray arrayWithCapacity:0];
+    NSString *strChannal;
+    for (ChannelModel *model in channelList) {
+        if (model.isSelect == YES) {
+            strChannal = model.channel;
+            break;
+        }
+    }
+    for (RechargeModel *model in rechList) {
+        if ([model.rechargeChannel isEqualToString:strChannal]) {
+            model.isSelect = NO;
+            [itemrechList addObject:model];
+        }
+    }
+    [itemrechList sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
         RechargeModel * r1 = obj1;
         RechargeModel * r2 = obj2;
         return  [r1.recharge doubleValue] > [r2.recharge doubleValue];
     }];
+    RechargeModel *model = [itemrechList  firstObject];
+    model.isSelect = YES;
+    return itemrechList;
+}
+
+-(void)reloadRechargeCost:(NSArray *)rechList{
     int i = 0;
     for (RechargeModel  *model in rechList) {
-        if (i == 0) {
-            model.isSelect = YES;
+        
+        
+        if (model.isSelect == YES) {
             self.txtChongZhiJIne.text = model.recharge;
             selectRech = model;
         }
         
         for (UIButton *itemDic in self.chongZhiSelectItem) {
+            
+//                itemDic.layer.borderColor = SystemGreen.CGColor;
+//                [itemDic setBackgroundImage:[UIImage imageWithColor:SystemGreen] forState:UIControlStateSelected];
+//                [itemDic setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//
+//
+//                itemDic.layer.borderColor = TFBorderColor.CGColor;
+//                [itemDic setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateSelected];
+//                [itemDic setTitleColor:SystemLightGray forState:UIControlStateNormal];
+            
             if (itemDic.tag == 100 + i) {
                 itemDic.selected = model.isSelect;
+                if (itemDic.selected == YES) {
+                    [self setItem:itemDic];
+                }
                 [itemDic setTitle: [NSString stringWithFormat:@"￥%.2f",[model.recharge doubleValue]] forState:0];
             }
         }
+        
         for (UILabel *itemDic in self.labCaijin) {
             if (itemDic.tag == 200 + i) {
                 if ([model.handsel doubleValue] == 0) {
                     itemDic.hidden = YES;
                 }else{
-                    itemDic.text = [NSString stringWithFormat:@"送 %.0f",[model.handsel doubleValue]];
+                    itemDic.text = [NSString stringWithFormat:@"送 %.1f",[model.handsel doubleValue]];
                     itemDic.hidden = NO;
                 }
                 
@@ -122,8 +160,6 @@
         }
         i ++;
     }
-    
-    
 }
 
 -(void)setTableView{
@@ -141,7 +177,7 @@
     }
   
     sender.selected = !sender.selected;
-    for (RechargeModel *model in rechList) {
+    for (RechargeModel *model in [self getRechList]) {
         if ([sender.currentTitle isEqualToString:[NSString stringWithFormat:@"￥%.2f",[model.recharge doubleValue]]]) {
             model.isSelect = sender.selected;
             if (model.isSelect == YES) {
@@ -161,20 +197,37 @@
         }
         
         if (item.selected == YES) {
-         item.layer.borderColor = SystemGreen.CGColor;
-        [item setBackgroundImage:[UIImage imageWithColor:SystemGreen] forState:UIControlStateSelected];
-            [item setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            item.layer.borderColor = SystemGreen.CGColor;
+            [item setBackgroundImage:[UIImage imageWithColor:SystemGreen] forState:UIControlStateSelected];
+            [item setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
 
         }else{
             item.layer.borderColor = TFBorderColor.CGColor;
-            [item setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateSelected];
+            [item setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateNormal];
             [item setTitleColor:SystemLightGray forState:UIControlStateNormal];
         }
         item.layer.borderWidth = 1;
         item.layer.cornerRadius = 4;
         item.layer.masksToBounds = YES;
     }
-    
+    [_btnChongzhi setTitle:[NSString stringWithFormat:@"实际到账%.2f+%.2f元",[selectRech.recharge doubleValue] ,[selectRech.handsel doubleValue]] forState:0];
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    BOOL flag = NO;
+    double cost = [textField.text doubleValue];
+    for (NSInteger i = [self getRechList].count; i -- ; i >= 0) {
+        RechargeModel *model = [self getRechList][i];
+        
+        if ( cost >= [model.recharge doubleValue]) {
+                [_btnChongzhi setTitle:[NSString stringWithFormat:@"实际到账%.2f+%.2f元",cost ,[model.handsel doubleValue]] forState:0];
+                flag = YES;
+            break;
+        }
+    }
+    if (flag == NO) {
+            [_btnChongzhi setTitle:[NSString stringWithFormat:@"实际到账%.2f+0.00元",cost] forState:0];
+    }
 }
 
 -(void)rechargeSmsIsSuccess:(BOOL)success andPayInfo:(NSDictionary *)payInfo errorMsg:(NSString *)msg{
@@ -300,6 +353,7 @@
     [channelList firstObject].isSelect = YES;
     self.tabPayListHeight.constant = channelList.count * self.tabChannelList.rowHeight;
     [self.tabChannelList reloadData];
+    [self .lotteryMan listRechargeHandsel];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -319,6 +373,7 @@
         model.isSelect = NO;
     }
     channelList[indexPath.row].isSelect = YES;
+    [self reloadRechargeCost:[self getRechList]];
     [self.tabChannelList reloadData];
 }
 - (IBAction)actionSelectItem:(UIButton *)sender {
