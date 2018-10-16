@@ -21,6 +21,7 @@
 @property(nonatomic,strong)UINavigationController  *curNavVC;
 @property(nonatomic, assign)BOOL showGroup;
 @property(assign,nonatomic)BOOL iswinStop;
+
 + (AppDelegate*) shareDelegate;
 -(void) playSound;
 - (void)showZhuihaoDetail:(NSString*) ordernumber;
