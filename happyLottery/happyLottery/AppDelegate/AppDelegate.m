@@ -158,6 +158,8 @@ static SystemSoundID shake_sound_male_id = 0;
     
     [self setKeyWindow];
     [[[QYSDK sharedSDK] conversationManager ] setDelegate:self];
+    
+    //七鱼客服本地推送
     if ([[UIApplication sharedApplication]
          respondsToSelector:@selector(registerForRemoteNotifications)])
     {
@@ -309,6 +311,7 @@ static SystemSoundID shake_sound_male_id = 0;
     [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
 }
 
+//自动登陆
 -(void)autoLogin{
     isLogin = NO;
     if ([self .fmdb open]) {
@@ -357,15 +360,21 @@ static SystemSoundID shake_sound_male_id = 0;
     
 
     if ([self .fmdb open]) {
+        //用户表
         BOOL iscreate = [self.fmdb executeUpdate:@"create table if not exists t_user_info(id integer primary key, cardCode text, mobile text ,loginPwd text, isLogin text,payVerifyType text)"];
+        //用户活动表  自动登陆时上传服务器  用来统计页面的活跃度
         BOOL resultVC = [self.fmdb executeUpdate:@"create table if not exists vcUserActiveInfo(id integer primary key autoincrement, vcNo text,updateDate text, visitCount integer , visitTime integer)"];
+        
+        //通知消息表 （我的消息-个人消息）
         BOOL resultMsgInfo = [self.fmdb executeUpdate:@"create table if not exists vcUserPushMsg(id integer primary key autoincrement, title text,content text, msgTime text,cardcode text,isread text, pagecode text,url text)"];
+        
+        //通知消息表 （我的消息-系统消息）
         BOOL resultSystemNoticeInfo = [self.fmdb executeUpdate:@"create table if not exists SystemNotice(id integer primary key autoincrement, title text,content text, msgTime text,cardcode text,isread text,type text, pagecode text,url text,noticeid text)"];
         if (iscreate && resultVC && resultMsgInfo && resultSystemNoticeInfo) {
             [self.fmdb close];
         }
     }
-    NSString *time = [Utility timeStringFromFormat:@"yyyy-MM-dd HH:mm:ss" withDate:[NSDate date]];
+//    NSString *time = [Utility timeStringFromFormat:@"yyyy-MM-dd HH:mm:ss" withDate:[NSDate date]];
 
 }
 
@@ -380,8 +389,9 @@ static SystemSoundID shake_sound_male_id = 0;
     
     lastVersion = [defaults objectForKey:KEYAPPVERSION];
     curVersion = [NSBundle mainBundle].infoDictionary[KEYCURAPPVERSION];
-    if ([curVersion isEqualToString:lastVersion]) { //
+    if ([curVersion isEqualToString:lastVersion]) {
         _window.rootViewController = tabBarControllerMain;
+        //启动图片   避免iPhoneX失真  请求不同的接口
         if(IPHONE_X ){
             [lotteryMan getCommonSetValue:@{@"typeCode":@"boot_page",@"commonCode":@"second_url_x"}];
         }else{
