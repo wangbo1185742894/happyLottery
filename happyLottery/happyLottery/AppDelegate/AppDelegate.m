@@ -143,7 +143,7 @@ static SystemSoundID shake_sound_male_id = 0;
     tabBarControllerMain.delegate = self;
     _lastSelectedIndex = 0;
     _showGroup = NO;
-     [[UIApplication sharedApplication]setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
     [[UITextField appearance]setTintColor:SystemGreen];
     
     [GlobalInstance instance].homeUrl = ServerAddress;
@@ -458,6 +458,9 @@ static SystemSoundID shake_sound_male_id = 0;
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);   //让手机震动
 }
 
+-(void)loadTabHeiheihei{
+    
+}
 
 - (void) loadTabVC {
     

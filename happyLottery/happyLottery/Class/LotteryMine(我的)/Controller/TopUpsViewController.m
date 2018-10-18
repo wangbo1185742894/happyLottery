@@ -11,6 +11,7 @@
 #import "WebShowViewController.h"
 #import "ChongZhiRulePopView.h"
 #import "DiscoverViewController.h"
+#import "ZhiFubaoWeixinErcodeController.h"
 #import "YinLanPayManage.h"
 #define KPayTypeListCell @"PayTypeListCell"
 @interface TopUpsViewController ()<MemberManagerDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,UITextFieldDelegate,UIWebViewDelegate,ChongZhiRulePopViewDelegate>
@@ -253,6 +254,20 @@
                 return;
             }
             [self sendReqAppId:app_id prepayId:prepay_id orginalId:original_id];
+        }else if([itemModel.channel isEqualToString:@"SDWX"]){
+            orderNO = payInfo[@"orderNo"];
+            NSString *erCodeUrl = payInfo[@"qrCode"];
+            
+            
+            NSString *str = [NSString stringWithFormat:@"%@",erCodeUrl];
+            
+            
+            ZhiFubaoWeixinErcodeController * zhifubaoVC = [[ZhiFubaoWeixinErcodeController alloc]init];
+            zhifubaoVC.erCode = erCodeUrl;
+        
+            zhifubaoVC.chongzhitype = @"weixin";
+            [self.navigationController pushViewController:zhifubaoVC animated:YES];
+    
         }
         
     }else{
@@ -427,7 +442,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    if ([itemModel.channel isEqualToString:@"UNION"] && orderNO .length > 0) {
+    if (([itemModel.channel isEqualToString:@"UNION"] || [itemModel.channel isEqualToString:@"SDWX"]) && orderNO .length > 0 ) {
         [[NSNotificationCenter defaultCenter ]postNotificationName:@"UPPaymentControlFinishNotification" object:orderNO];
     }
 }
@@ -469,6 +484,18 @@
             [self.navigationController popViewControllerAnimated:YES];
         });
     }else{
+        if ([itemModel.channel isEqualToString:@"SDWX"]) {
+            ZLAlertView *alert = [[ZLAlertView alloc] initWithTitle:@"提示" message:@"请检查是否完成充值"];
+            [alert addBtnTitle:@"未完成" action:^{
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+            [alert addBtnTitle:@"完成" action:^{
+                [self showLoadingText:@"正在查询充值结果，请稍等"];
+                 [self.memberMan queryRecharge:@{@"channel":itemModel.channel, @"orderNo":orderNO}];
+            }];
+            [alert showAlertWithSender:self];
+            return;
+        }
         [self showPromptText:msg hideAfterDelay:1.7];
     }
 }
