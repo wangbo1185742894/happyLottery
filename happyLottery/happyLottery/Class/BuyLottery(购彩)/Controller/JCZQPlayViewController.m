@@ -31,8 +31,8 @@
 @interface JCZQPlayViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryProfileSelectViewDelegate,LotteryManagerDelegate,JCZQMatchViewCellDelegate,JCZQSelectVIewDelegate,MatchLeagueSelectViewDelegate,OptionSelectedViewDelegate>
 
 {
-    NSInteger numBackNum;
-    MatchLeagueSelectView * matchSelectView;
+    NSInteger numBackNum;  //未用
+    MatchLeagueSelectView * matchSelectView;  //赛事选择联赛view
     LotteryProfileSelectView *profileSelectView;
     OptionSelectedView *optionView;
     JCZQMatchModel *curShowModel;
@@ -41,13 +41,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *labSelectInfo;
 @property (weak, nonatomic) IBOutlet UITableView *tabJCZQListView;
 @property(nonatomic,strong)NSMutableArray *arrayTableSectionIsOpen;
-@property (nonatomic,strong)NSMutableArray <BaseProfile * > *profiles;
+@property (nonatomic,strong)NSMutableArray <BaseProfile * > *profiles;  //玩法数组
 @property (weak, nonatomic) IBOutlet UIButton *btnTouzhu;
 @property (weak, nonatomic) IBOutlet UILabel *labSummary;
-@property(nonatomic,strong)NSMutableArray<NSMutableArray <JCZQMatchModel *> * > *matchArray;
-@property(nonatomic,strong)NSMutableArray<JCZQLeaModel * > *leaArray;
+@property(nonatomic,strong)NSMutableArray<NSMutableArray <JCZQMatchModel *> * > *matchArray;//服务器请求的所有赛事
+@property(nonatomic,strong)NSMutableArray<JCZQLeaModel * > *leaArray;  //联赛名称
 @property(nonatomic,strong)JCZQTranscation  *trancation;
-@property(nonatomic,strong)NSMutableArray<NSMutableArray <JCZQMatchModel *> * > *showArray;
+@property(nonatomic,strong)NSMutableArray<NSMutableArray <JCZQMatchModel *> * > *showArray;//最终展示出来的赛事
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewDisBottom;
 
 @end
@@ -65,7 +65,7 @@
 //    if ([self.curUser.whitelist boolValue] == NO) {
 //        _btnTouzhu.hidden = YES;
 //    }
-    numBackNum = 0;
+    numBackNum = 0; //未用
     self.viewControllerNo = @"A001";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cleanMatch:) name:KSELECTMATCHCLEAN object:nil];
     self.matchArray = [NSMutableArray arrayWithCapacity:0];
@@ -73,7 +73,7 @@
     self.lotteryMan.delegate = self;
     [self getCurlotteryProfiles];
     [self setTableView];
-    [self setVCInfo];
+    [self setVCInfo];  //未用
     [self setRightBarItems];
     [self setTitleView];
 //    [self.tabJCZQListView reloadData];
@@ -126,7 +126,6 @@
             JCZQLeaModel *model = [[JCZQLeaModel alloc]initWith:dic];
             [self.leaArray addObject:model];
         }
-        
          [self loadMatch];
          [self createUI];
     }
@@ -146,6 +145,7 @@
     }else{
         [self.matchArray removeAllObjects];
         [self.showArray removeAllObjects];
+        //按照 matchDate 进行分组
         for (NSDictionary *itemDic in dataArray) {
             BOOL isExit = NO;
             JCZQMatchModel *model = [[JCZQMatchModel alloc]initWith:itemDic];
@@ -163,31 +163,14 @@
                 }
             }
             
-            for (NSMutableArray *itemArray in self.showArray) {
-                JCZQMatchModel *firstModel = [itemArray firstObject];
-                if (firstModel == nil || model.matchDate == nil) {
-                    break;
-                }
-                
-                if ([firstModel.matchDate isEqualToString:model.matchDate]) {
-                    [itemArray addObject:model];
-                    isExit = YES;
-                    break;
-                }
-            }
-            
-            
             if (isExit == NO) {
                 NSMutableArray  *marray = [NSMutableArray arrayWithCapacity:0];
-                NSMutableArray  *showArray = [NSMutableArray arrayWithCapacity:0];
                 [self.arrayTableSectionIsOpen addObject:@(YES)];
                 [marray addObject:model];
-                [showArray addObject:model];
                 [self.matchArray addObject:marray];
-                [self.showArray addObject:showArray];
             }
         }
-        
+        self.showArray = [self.matchArray mutableCopy];
         [self loadMatchSP];
         if (self.playType == JCZQPlayTypeDanGuan) {
             [self lotteryProfileSelectViewDelegate:self.trancation.curProfile andPlayType:JCZQPlayTypeDanGuan andRes:@"1"];
@@ -288,6 +271,7 @@
     
 }
 
+//联赛名称
 -(NSString *)getLeaName:(NSString *)_id{
     for (JCZQLeaModel *model in _leaArray) {
         if ([model._id integerValue] == [_id integerValue]) {
@@ -303,8 +287,9 @@
 
 -(void)setTitleView{
     self.trancation = [[JCZQTranscation alloc]init];
-    
     self.profiles = [NSMutableArray arrayWithCapacity:0];
+    
+    // 下拉button设置
     WBButton * titleBtn = [WBButton buttonWithType:UIButtonTypeCustom];
     titleBtn.frame = CGRectMake(0, 10, 150, 40);
     [titleBtn addTarget:self action:@selector(showProfileType) forControlEvents:UIControlEventTouchUpInside];
@@ -316,6 +301,8 @@
     
     [titleBtn setImage:[UIImage imageNamed:@"wanfaxiala"] forState:0];
     titleBtn.titleLabel.font = [UIFont systemFontOfSize:18];
+    
+    //赛事选择框
     if (profileSelectView == nil) {
         profileSelectView = [[LotteryProfileSelectView alloc]initWithFrame:CGRectMake(0, NaviHeight, KscreenWidth, KscreenHeight - 64)];
     }
@@ -345,6 +332,7 @@
 }
 
 -(void)getCurlotteryProfiles{
+    //LotteryProfilesConfig.plist   玩法切换配置文件
     NSDictionary *allLottery = [NSDictionary dictionaryWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"LotteryProfilesConfig" ofType: @"plist"]];
     NSArray *profiles = allLottery[@"jczq"];
     for (NSDictionary *dic in profiles) {
@@ -462,10 +450,10 @@
     return numMatch;
 }
 
--(void)setVCInfo{
+-(void)setVCInfo{ //未用
 
 
-    
+
 }
 
 -(void)setTableView{

@@ -137,6 +137,7 @@
         }
         [passTypes addObject:chuanFaString];
     }
+    // JingCaiCode.plist   竞足全部玩法配置
     NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"JingCaiCode" ofType: @"plist"]] ;
     NSDictionary *contentArray;
     NSMutableArray *betMatches = [NSMutableArray arrayWithCapacity:0];

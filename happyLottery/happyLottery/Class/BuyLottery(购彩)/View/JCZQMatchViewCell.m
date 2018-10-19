@@ -16,13 +16,13 @@
 {
     JCZQMatchModel *curModel;
 }
-@property (weak, nonatomic) IBOutlet UILabel *labLeaName;
+@property (weak, nonatomic) IBOutlet UILabel *labLeaName; //联赛名称
 @property (weak, nonatomic) IBOutlet UILabel *labMatchLine;
 @property (weak, nonatomic) IBOutlet UILabel *labDeadLine;
 @property (weak, nonatomic) IBOutlet UIButton *btBottom;
 @property (weak, nonatomic) IBOutlet MGLabel *labHomeName;
 @property (weak, nonatomic) IBOutlet UILabel *labGuestName;
-@property (weak, nonatomic) IBOutlet UIView *playItemContentView;
+@property (weak, nonatomic) IBOutlet UIView *playItemContentView;  //玩法选择框
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthLabRangqiu;
 @property(nonatomic,strong)NSDictionary *titleDic;
 @property (weak, nonatomic) IBOutlet UIImageView *iconIsDanGuan;
@@ -58,7 +58,9 @@
 
 -(void)initHHGGCellSubItem{
     self.widthLabRangqiu.constant = 28;
+    //让球数 0
     [self creatBtnWithFrame:CGRectMake(0.5, 0, 24, self.playItemContentView.mj_h / 2 - 5 ) normal:@{@"nTitle":@"0",@"nImage":@"yuanjiaowubiankuangnomal",@"sImage":@""} andTag:0 andSelect:@"0"];
+    //让球数 +，-
     NSString *handicapst;
     if ([curModel.handicap compare:@"0"] == NSOrderedDescending) {
         handicapst = [NSString stringWithFormat:@"+%ld",[curModel.handicap integerValue]];
@@ -68,6 +70,7 @@
     UIButton *handicap = [self creatBtnWithFrame:CGRectMake(0,self.playItemContentView.mj_h / 2 - 5, 25, self.playItemContentView.mj_h / 2 -5) normal:@{@"nTitle":curModel.handicap == nil?@"0":handicapst,@"nImage":@"",@"sImage":@""} andTag:0 andSelect:@"0"];
     handicap.selected  = YES;
     [handicap setTitleColor:[UIColor whiteColor] forState:0];
+    //让球数背景图片
     if ([curModel.handicap integerValue] >0) {
         [handicap setBackgroundImage:[UIImage imageNamed:@"rangqiuzheng"] forState:0];
         
@@ -91,6 +94,7 @@
             NSString *title = [NSString stringWithFormat:@"%@%@",titDic[[NSString stringWithFormat:@"%d",100 + i]][@"appear"],[self getSpTitle:curModel.SPF_OddArray index:i]];
             [self creatBtnWithFrame:CGRectMake(curX, curY, width, height) normal:@{@"nTitle":title,@"nImage":@"yuanjiaowubiankuangnomal",@"sImage":@"yuanjiaowukuangselect"} andTag:100 + i andSelect:curModel.SPF_SelectMatch[i]];
         }else{
+            
             NSString *title = [NSString stringWithFormat:@"%@%@",titRQDic[[NSString stringWithFormat:@"%d",200 + i%3]][@"appear"],[self getSpTitle:curModel.RQSPF_OddArray index:i%3]];
             [self creatBtnWithFrame:CGRectMake(curX, curY, width, height) normal:@{@"nTitle":title,@"nImage":@"yuanjiaowubiankuangnomal",@"sImage":@"yuanjiaowukuangselect"} andTag:200 + i%3 andSelect:curModel.RQSPF_SelectMatch[i%3]];
         }
@@ -261,6 +265,7 @@
     }
 }
 
+//混合过关与单场混投模式下
 -(void)jczqCellItemClick:(UIButton *)sender{
     if (sender.tag == 0) {  //无效button
         
@@ -371,6 +376,7 @@
     
     [self.delegate showSPFARQSPFSelecedMsg:nil];
 }
+
 -(void)reloadDataMatch:(JCZQMatchModel *)match andProfileTitle:(NSString *)title andGuoguanType:(JCZQPlayType )playType{
     for (UIView *subView in self.playItemContentView.subviews) {
         [subView removeFromSuperview];
@@ -406,7 +412,7 @@
     self.labHomeName.keyWordFont = [UIFont systemFontOfSize:12];
     self.labHomeName.keyWordColor = SystemBlue;
     self.labGuestName.text = match.guestName;
-    self.labMatchLine .text = match.lineId;
+//    self.labMatchLine .text = match.lineId;
     NSString *funname = [NSString stringWithFormat:@"init%@CellSubItem",title];
     SEL function = NSSelectorFromString(funname);
     if ([self respondsToSelector:function]) {

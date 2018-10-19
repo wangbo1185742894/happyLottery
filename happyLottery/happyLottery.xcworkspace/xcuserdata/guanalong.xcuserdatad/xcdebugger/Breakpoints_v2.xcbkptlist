@@ -58,12 +58,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "happyLottery/AppDelegate/AppDelegate.m"
-            timestampString = "559977013.707396"
+            timestampString = "561431926.107072"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1121"
-            endingLineNumber = "1121"
-            landmarkName = "-logDic:"
+            startingLineNumber = "1132"
+            endingLineNumber = "1132"
+            landmarkName = "-application:didReceiveRemoteNotification:fetchCompletionHandler:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -74,43 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "happyLottery/AppDelegate/AppDelegate.m"
-            timestampString = "559977013.708061"
+            timestampString = "561431926.10761"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "603"
-            endingLineNumber = "603"
-            landmarkName = "-application:didFailToRegisterForRemoteNotificationsWithError:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "happyLottery/AppDelegate/AppDelegate.m"
-            timestampString = "559977013.708366"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "598"
-            endingLineNumber = "598"
-            landmarkName = "AppDelegate"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "happyLottery/AppDelegate/AppDelegate.m"
-            timestampString = "559977013.708679"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "625"
-            endingLineNumber = "625"
+            startingLineNumber = "634"
+            endingLineNumber = "634"
             landmarkName = "-jpushNotificationCenter:willPresentNotification:withCompletionHandler:"
             landmarkType = "7">
          </BreakpointContent>
@@ -394,7 +362,7 @@
                   moduleName = "happyLottery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/guanalong/happyLottery/happyLottery/happyLottery/Class/BuyLottery(%E8%B4%AD%E5%BD%A9)/Controller/BounsYouHuaViewController.m"
-                  timestampString = "561261994.180593"
+                  timestampString = "561626850.289995"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "485"
@@ -409,7 +377,7 @@
                   moduleName = "happyLottery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/guanalong/happyLottery/happyLottery/happyLottery/Class/BuyLottery(%E8%B4%AD%E5%BD%A9)/Controller/BounsYouHuaViewController.m"
-                  timestampString = "561261994.182942"
+                  timestampString = "561626850.292521"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "485"
@@ -602,7 +570,7 @@
                   moduleName = "happyLottery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/guanalong/happyLottery/happyLottery/happyLottery/Class/LotteryMine(%E6%88%91%E7%9A%84)/Controller/SendRedViewController.m"
-                  timestampString = "561261994.213755"
+                  timestampString = "561626850.32485"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "120"
@@ -617,7 +585,7 @@
                   moduleName = "happyLottery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/guanalong/happyLottery/happyLottery/happyLottery/Class/LotteryMine(%E6%88%91%E7%9A%84)/Controller/SendRedViewController.m"
-                  timestampString = "561261994.21619"
+                  timestampString = "561626850.327247"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "118"
@@ -735,7 +703,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1064"
             endingLineNumber = "1064"
-            landmarkName = "-jclqlotteryProfileSelectViewDelegate:andPlayType:andRes:"
+            landmarkName = "-cleanMatch:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -746,7 +714,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "happyLottery/Class/LotteryMine(&#x6211;&#x7684;)/Controller/TopUpsViewController.m"
-            timestampString = "560765055.303784"
+            timestampString = "561541145.696117"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "356"
@@ -826,7 +794,7 @@
                   moduleName = "happyLottery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/guanalong/happyLottery/happyLottery/happyLottery/Class/BuyLottery(%E8%B4%AD%E5%BD%A9)/Controller/LotteryPlayViewController.m"
-                  timestampString = "561261994.2720309"
+                  timestampString = "561626850.384438"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1196"
@@ -841,7 +809,7 @@
                   moduleName = "happyLottery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/guanalong/happyLottery/happyLottery/happyLottery/Class/BuyLottery(%E8%B4%AD%E5%BD%A9)/Controller/LotteryPlayViewController.m"
-                  timestampString = "561261994.27434"
+                  timestampString = "561626850.386927"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1196"
@@ -986,7 +954,7 @@
                   moduleName = "happyLottery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/guanalong/happyLottery/happyLottery/happyLottery/Class/BuyLottery(%E8%B4%AD%E5%BD%A9)/Controller/LotteryPlayViewController.m"
-                  timestampString = "561261994.315069"
+                  timestampString = "561626850.4292819"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1120"
@@ -1001,7 +969,7 @@
                   moduleName = "happyLottery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/guanalong/happyLottery/happyLottery/happyLottery/Class/BuyLottery(%E8%B4%AD%E5%BD%A9)/Controller/LotteryPlayViewController.m"
-                  timestampString = "561261994.317394"
+                  timestampString = "561626850.431733"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1121"
@@ -1016,7 +984,7 @@
                   moduleName = "happyLottery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/guanalong/happyLottery/happyLottery/happyLottery/Class/BuyLottery(%E8%B4%AD%E5%BD%A9)/Controller/LotteryPlayViewController.m"
-                  timestampString = "561261994.31995"
+                  timestampString = "561626850.43417"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1120"
@@ -1225,7 +1193,7 @@
                   moduleName = "happyLottery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/guanalong/happyLottery/happyLottery/happyLottery/Class/BuyLottery(%E8%B4%AD%E5%BD%A9)/Controller/LotteryPlayViewController.m"
-                  timestampString = "561261994.372533"
+                  timestampString = "561626850.493072"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "753"
@@ -1240,7 +1208,7 @@
                   moduleName = "happyLottery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/guanalong/happyLottery/happyLottery/happyLottery/Class/BuyLottery(%E8%B4%AD%E5%BD%A9)/Controller/LotteryPlayViewController.m"
-                  timestampString = "561261994.374886"
+                  timestampString = "561626850.49554"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "753"
@@ -1449,7 +1417,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/BuyLotteryViewController.m"
-            timestampString = "561261933.9271359"
+            timestampString = "561431926.109762"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1196"
@@ -1481,7 +1449,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "happyLottery/Class/Base/Model/LotteryManager.m"
-            timestampString = "561014807.393064"
+            timestampString = "561626648.73089"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "115"
@@ -1497,12 +1465,955 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "happyLottery/Class/Base/Model/LotteryManager.m"
-            timestampString = "561014807.393121"
+            timestampString = "561626648.731027"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "93"
             endingLineNumber = "93"
             landmarkName = "-getAllLottery"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/LotteryMine(&#x6211;&#x7684;)/Controller/TopUpsViewController.m"
+            timestampString = "561541145.697557"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "234"
+            endingLineNumber = "234"
+            landmarkName = "-rechargeSmsIsSuccess:andPayInfo:errorMsg:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/LotteryMine(&#x6211;&#x7684;)/Controller/TopUpsViewController.m"
+            timestampString = "561541145.697994"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "465"
+            endingLineNumber = "465"
+            landmarkName = "-queryRecharge:IsSuccess:errorMsg:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/LotteryMine(&#x6211;&#x7684;)/Controller/TopUpsViewController.m"
+            timestampString = "561541145.6983531"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "297"
+            endingLineNumber = "297"
+            landmarkName = "-commitClient"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/LotteryMine(&#x6211;&#x7684;)/Controller/TopUpsViewController.m"
+            timestampString = "561541145.698936"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "330"
+            endingLineNumber = "330"
+            landmarkName = "-gotListByRechargeChannel:errorMsg:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/LotteryMine(&#x6211;&#x7684;)/Controller/TopUpsViewController.m"
+            timestampString = "561541145.699255"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "-listRechargeHandsel:errorMsg:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/LotteryMine(&#x6211;&#x7684;)/Controller/TopUpsViewController.m"
+            timestampString = "561541145.699592"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "-getRechList"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/LotteryMine(&#x6211;&#x7684;)/Controller/TopUpsViewController.m"
+            timestampString = "561541145.699929"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "279"
+            endingLineNumber = "279"
+            landmarkName = "-commitClient"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/JCZQPlayViewController.m"
+            timestampString = "561626648.731297"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "-cleanMatch:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/JCZQPlayViewController.m"
+            timestampString = "561626648.7315"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
+            landmarkName = "-lookMatchForCurPlayType:andGuanType:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/JCZQPlayViewController.m"
+            timestampString = "561626648.731671"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "270"
+            endingLineNumber = "270"
+            landmarkName = "-netCommplet"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/JCZQPlayViewController.m"
+            timestampString = "561626648.732008"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "356"
+            endingLineNumber = "356"
+            landmarkName = "-optionRightButtonAction"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/JCZQPlayViewController.m"
+            timestampString = "561626648.732191"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "373"
+            endingLineNumber = "373"
+            landmarkName = "-optionDidSelacted:andIndex:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/JCZQPlayViewController.m"
+            timestampString = "561626648.732362"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "386"
+            endingLineNumber = "386"
+            landmarkName = "-showWinHistoryViewCtr"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/JCZQPlayViewController.m"
+            timestampString = "561626648.732613"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "394"
+            endingLineNumber = "394"
+            landmarkName = "-actionPlayTypeRecom"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/JCZQPlayViewController.m"
+            timestampString = "561626648.732803"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "413"
+            endingLineNumber = "413"
+            landmarkName = "-actionSelectLeague"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/JCZQPlayViewController.m"
+            timestampString = "561626648.732993"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "418"
+            endingLineNumber = "418"
+            landmarkName = "-selectedLeagueItem:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/JCZQPlayViewController.m"
+            timestampString = "561626648.73313"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "440"
+            endingLineNumber = "440"
+            landmarkName = "-selectedLeagueItem:andGetNum:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/JCZQPlayViewController.m"
+            timestampString = "561626648.733281"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "446"
+            endingLineNumber = "446"
+            landmarkName = "-getMatchNum:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/JCZQPlayViewController.m"
+            timestampString = "561626648.733421"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "475"
+            endingLineNumber = "475"
+            landmarkName = "-lotteryProfileSelectViewDelegate:andPlayType:andRes:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/JCZQPlayViewController.m"
+            timestampString = "561626648.733582"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "539"
+            endingLineNumber = "539"
+            landmarkName = "-cleanAllSelectMatch"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/JCZQPlayViewController.m"
+            timestampString = "561626648.73373"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "631"
+            endingLineNumber = "631"
+            landmarkName = "-headerViewClick:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[JCZQPlayViewController headerViewClick:]"
+                  moduleName = "happyLottery"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/guanalong/happyLottery/happyLottery/happyLottery/Class/BuyLottery(%E8%B4%AD%E5%BD%A9)/Controller/JCZQPlayViewController.m"
+                  timestampString = "561626850.74892"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "631"
+                  endingLineNumber = "631"
+                  offsetFromSymbolStart = "84">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__42-[JCZQPlayViewController headerViewClick:]_block_invoke"
+                  moduleName = "happyLottery"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/guanalong/happyLottery/happyLottery/happyLottery/Class/BuyLottery(%E8%B4%AD%E5%BD%A9)/Controller/JCZQPlayViewController.m"
+                  timestampString = "561626850.751312"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "631"
+                  endingLineNumber = "631"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_"
+                  moduleName = "happyLottery"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/guanalong/happyLottery/happyLottery/happyLottery/Class/BuyLottery(%E8%B4%AD%E5%BD%A9)/Controller/JCZQPlayViewController.m"
+                  timestampString = "561626850.75372"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "631"
+                  endingLineNumber = "631"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/JCZQPlayViewController.m"
+            timestampString = "561626648.7339261"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "648"
+            endingLineNumber = "648"
+            landmarkName = "-actionTouzhu:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/JCZQPlayViewController.m"
+            timestampString = "561626648.734095"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "669"
+            endingLineNumber = "669"
+            landmarkName = "-actionCleanAll:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/JCZQPlayViewController.m"
+            timestampString = "561626648.734277"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "674"
+            endingLineNumber = "674"
+            landmarkName = "-couldTouzhu"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/JCZQPlayViewController.m"
+            timestampString = "561626648.734416"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "703"
+            endingLineNumber = "703"
+            landmarkName = "-showAllPlayType::"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/JCZQPlayViewController.m"
+            timestampString = "561626648.734574"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "712"
+            endingLineNumber = "712"
+            landmarkName = "-JCZQPlayViewSelected"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/JCZQPlayViewController.m"
+            timestampString = "561626648.7347209"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "747"
+            endingLineNumber = "747"
+            landmarkName = "-showBFPlayType::"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/JCZQPlayViewController.m"
+            timestampString = "561626648.7348731"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "756"
+            endingLineNumber = "756"
+            landmarkName = "-showBQCPlayType::"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/JCZQPlayViewController.m"
+            timestampString = "561626648.735025"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "764"
+            endingLineNumber = "764"
+            landmarkName = "-acitonCleanAll:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/JCZQPlayViewController.m"
+            timestampString = "561626648.7351919"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "770"
+            endingLineNumber = "770"
+            landmarkName = "-showForecastDetailForCellBottom:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/JCZQPlayViewController.m"
+            timestampString = "561626648.735356"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "782"
+            endingLineNumber = "782"
+            landmarkName = "-gotForecastByMatch:errorMsg:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/JCZQPlayViewController.m"
+            timestampString = "561626648.735489"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "794"
+            endingLineNumber = "794"
+            landmarkName = "-showMatchDetailWith:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/JCZQPlayViewController.m"
+            timestampString = "561626648.735682"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "805"
+            endingLineNumber = "805"
+            landmarkName = "-showSchemeRecom"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/JCZQPlayViewController.m"
+            timestampString = "561626648.735876"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "810"
+            endingLineNumber = "810"
+            landmarkName = "-canBuyThisMatch:andIndex:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Controller/JCZQPlayViewController.m"
+            timestampString = "561626648.73601"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "830"
+            endingLineNumber = "830"
+            landmarkName = "-navigationBackToLastPage"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[JCZQPlayViewController navigationBackToLastPage]"
+                  moduleName = "happyLottery"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/guanalong/happyLottery/happyLottery/happyLottery/Class/BuyLottery(%E8%B4%AD%E5%BD%A9)/Controller/JCZQPlayViewController.m"
+                  timestampString = "561626850.843854"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "830"
+                  endingLineNumber = "830"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[JCZQPlayViewController navigationBackToLastPage]"
+                  moduleName = "happyLottery"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/guanalong/happyLottery/happyLottery/happyLottery/Class/BuyLottery(%E8%B4%AD%E5%BD%A9)/Controller/JCZQPlayViewController.m"
+                  timestampString = "561626850.848011"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "830"
+                  endingLineNumber = "830"
+                  offsetFromSymbolStart = "92">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Model/JCZQMatchModel.m"
+            timestampString = "561624663.866824"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "-getTouzhuAppearTitleByTypeAndSp:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Model/JCZQMatchModel.m"
+            timestampString = "561624663.866888"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "-getTitleForm:andSp:andSelectArray:andIndex:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Model/JCZQMatchModel.m"
+            timestampString = "561624663.866945"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "-getBounsAppearTitleByTypeAndSp:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Model/JCZQMatchModel.m"
+            timestampString = "561624663.867"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
+            landmarkName = "-getTouzhuAppearTitleByTypeNoSp:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Model/JCZQMatchModel.m"
+            timestampString = "561624663.8670551"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
+            landmarkName = "-getHeight"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Model/JCZQMatchModel.m"
+            timestampString = "561624663.86711"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
+            landmarkName = "-getSpByMatchBet:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Model/JCZQMatchModel.m"
+            timestampString = "561624663.867166"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "256"
+            endingLineNumber = "256"
+            landmarkName = "-matchBetArray"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/View/JCZQMatchViewCell.m"
+            timestampString = "561626648.7365839"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "426"
+            endingLineNumber = "426"
+            landmarkName = "-initRQSPFCellSubItem"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/View/JCZQMatchViewCell.m"
+            timestampString = "561626648.73713"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "457"
+            endingLineNumber = "457"
+            landmarkName = "-initSPFCellSubItem"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/View/JCZQMatchViewCell.m"
+            timestampString = "561626648.7374901"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "-creatLab:withDic:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/View/JCZQMatchViewCell.m"
+            timestampString = "561626648.73782"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "-creatBtnWithFrame:attribute:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/View/JCZQMatchViewCell.m"
+            timestampString = "561626648.7381901"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "475"
+            endingLineNumber = "475"
+            landmarkName = "-initJQSCellSubItem"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/View/JCZQMatchViewCell.m"
+            timestampString = "561626648.7385221"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "493"
+            endingLineNumber = "493"
+            landmarkName = "-initBQCCellSubItem"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/View/JCZQMatchViewCell.m"
+            timestampString = "561626648.738874"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "507"
+            endingLineNumber = "507"
+            landmarkName = "-initBFCellSubItem"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/View/JCZQMatchViewCell.m"
+            timestampString = "561626648.739229"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "547"
+            endingLineNumber = "547"
+            landmarkName = "-refreshWithYcInfo:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/Model/JCZQMatchModel.m"
+            timestampString = "561624663.870664"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "-selectItemNum"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/View/JCZQMatchViewCell.m"
+            timestampString = "561626648.739603"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "-initHHGGCellSubItem"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/View/JCZQMatchViewCell.m"
+            timestampString = "561626648.739929"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "292"
+            endingLineNumber = "292"
+            landmarkName = "-jczqCellItemClick:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "happyLottery/Class/BuyLottery(&#x8d2d;&#x5f69;)/View/JCZQSelectAllPlayTypeVIew.m"
+            timestampString = "561626648.74032"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "-loadAllItemTitle:andTitleDic:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

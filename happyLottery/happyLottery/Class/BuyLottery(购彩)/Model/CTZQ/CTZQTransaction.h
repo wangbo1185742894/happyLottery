@@ -10,6 +10,7 @@
 #import "CTZQMatch.h"
 #import "Lottery.h"
 #import "BaseTransaction.h"
+
 typedef enum {
     CTZQBetTypeSingle = 1<<0,//单式
     CTZQBetTypeDouble = 1<<1,//复式

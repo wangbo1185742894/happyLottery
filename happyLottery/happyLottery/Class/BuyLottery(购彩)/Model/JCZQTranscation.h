@@ -15,7 +15,7 @@
 @interface JCZQTranscation : BaseTransaction
 
 
-@property(assign,nonatomic)JCZQPlayType playType;
+@property(assign,nonatomic)JCZQPlayType playType;   //JCZQPlayTypeGuoGuan , JCZQPlayTypeDanGuan
 @property(nonatomic,strong)JCZQProfile *curProfile;
 @property(nonatomic,assign)NSInteger outBeicount;
 @property(nonatomic,strong)NSString *chuanFa;

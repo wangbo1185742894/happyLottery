@@ -10,5 +10,5 @@
 
 @interface JCZQLeaModel : BaseModel
 @property(nonatomic,copy)NSString * _id;
-@property(nonatomic,copy)NSString * name;
+@property(nonatomic,copy)NSString * name;  //联赛名称
 @end
