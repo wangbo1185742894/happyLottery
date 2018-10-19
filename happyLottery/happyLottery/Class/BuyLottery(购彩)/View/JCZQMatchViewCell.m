@@ -149,42 +149,38 @@
     item.frame =  frame;
     item.tag = tag;
     item.selected = [isselect boolValue];
-    NSMutableAttributedString *attrStrN = [[NSMutableAttributedString alloc] initWithString:dic[@"nTitle"]];
-    NSMutableAttributedString *attrStrS = [[NSMutableAttributedString alloc] initWithString:dic[@"nTitle"]];
+    NSMutableAttributedString *attrStrN;
+    NSMutableAttributedString *attrStrS;
     if ([self isCanBuyThisType:item]) {
+        
+        attrStrN = [[NSMutableAttributedString alloc] initWithString:dic[@"nTitle"]];
+        attrStrS = [[NSMutableAttributedString alloc] initWithString:dic[@"nTitle"]];
         NSDictionary * firstAttributesN = @{ NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:RGBCOLOR(72, 72, 72)};
         [attrStrN setAttributes:firstAttributesN range:NSMakeRange(0, attrStrN.string.length)];
         
-        
         NSDictionary * firstAttributesS = @{ NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:[UIColor whiteColor]};
         [attrStrS setAttributes:firstAttributesS range:NSMakeRange(0, attrStrS.string.length)];
+        [item setAttributedTitle:attrStrS forState:UIControlStateSelected];
+        [item setAttributedTitle:attrStrN forState:UIControlStateNormal];
         
-    }else{
+    }else{   //不可买 添加删除线
         NSString *title =[NSString stringWithFormat:@"%@(0)", [[dic[@"nTitle"] componentsSeparatedByString:@"("] firstObject]];
         
         attrStrN = [[NSMutableAttributedString alloc] initWithString:title];
-        attrStrS = [[NSMutableAttributedString alloc] initWithString:title];
+        
         NSDictionary * firstAttributesN = @{ NSFontAttributeName:[UIFont systemFontOfSize:13],NSForegroundColorAttributeName:RGBCOLOR(72, 72, 72),NSStrikethroughStyleAttributeName : @(NSUnderlineStyleSingle)};
         [attrStrN setAttributes:firstAttributesN range:NSMakeRange(0, attrStrN.string.length)];
-        [item setAttributedTitle:attrStrN forState:0];
         
-        NSDictionary * firstAttributesS = @{ NSFontAttributeName:[UIFont systemFontOfSize:13],NSForegroundColorAttributeName:RGBCOLOR(72, 72, 72),NSStrikethroughStyleAttributeName : @(NSUnderlineStyleSingle)};
-        [attrStrS setAttributes:firstAttributesS range:NSMakeRange(0, attrStrS.string.length)];
-        [item setAttributedTitle:attrStrS forState:0];
+        [item setAttributedTitle:attrStrN forState:UIControlStateNormal];
     }
-    [item setAttributedTitle:attrStrS forState:UIControlStateSelected];
-    [item setAttributedTitle:attrStrN forState:0];
-//    [item setTitleColor:RGBCOLOR(72, 72, 72) forState:0];
-//    [item setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
     item.titleLabel.numberOfLines = 0;
     item.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     item.titleLabel.font = [UIFont systemFontOfSize:13];
     
     [item setBackgroundImage:[UIImage imageNamed: dic[@"nImage"]] forState:UIControlStateNormal];
     [item setBackgroundImage:[UIImage imageNamed:dic[@"sImage"]]  forState:UIControlStateSelected];
-    [self.playItemContentView addSubview:item];
-    
     [item addTarget:self action:@selector(jczqCellItemClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.playItemContentView addSubview:item];
     
     return item;
     
@@ -362,19 +358,28 @@
         default:
             break;
     }
+    [self refreshQuanXuanBtn];
+    [self.delegate showSPFARQSPFSelecedMsg:nil];
+}
+
+- (void)refreshQuanXuanBtn{
     UIButton  *temp = (UIButton*)[self viewWithTag:1000];
-    
-    if ([curModel selectItemNum] == 0) {
-        
-        [temp setTitle:[NSString stringWithFormat:@"全部玩法"] forState:0];
+    NSInteger selectNum = [curModel selectItemNum];
+    NSDictionary * firstAttributesN;
+    NSAttributedString *attrStrN;
+    if (selectNum == 0) {
+        firstAttributesN = @{ NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:RGBCOLOR(72, 72, 72)};
+        attrStrN = [[NSAttributedString alloc]initWithString:@"全部玩法" attributes:firstAttributesN];
+        [temp setAttributedTitle:attrStrN forState:UIControlStateNormal];
         temp.selected = NO;
     }else{
+        firstAttributesN = @{ NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:[UIColor whiteColor]};
+        NSString *string = [NSString stringWithFormat:@"%@", [NSString stringWithFormat:@"已选%ld项",selectNum]];
+        attrStrN = [[NSAttributedString alloc]initWithString:string attributes:firstAttributesN];
         
-        [temp setTitle:[NSString stringWithFormat:[NSString stringWithFormat:@"已选%ld项",[curModel selectItemNum]]] forState:0];
+        [temp setAttributedTitle:attrStrN forState:UIControlStateSelected];
         temp.selected = YES;
     }
-    
-    [self.delegate showSPFARQSPFSelecedMsg:nil];
 }
 
 -(void)reloadDataMatch:(JCZQMatchModel *)match andProfileTitle:(NSString *)title andGuoguanType:(JCZQPlayType )playType{
@@ -412,12 +417,11 @@
     self.labHomeName.keyWordFont = [UIFont systemFontOfSize:12];
     self.labHomeName.keyWordColor = SystemBlue;
     self.labGuestName.text = match.guestName;
-//    self.labMatchLine .text = match.lineId;
+    self.labMatchLine.text = match.lineId;
+    
     NSString *funname = [NSString stringWithFormat:@"init%@CellSubItem",title];
     SEL function = NSSelectorFromString(funname);
-    if ([self respondsToSelector:function]) {
-        [self performSelector:function withObject:nil];
-    }
+    ((void (*)(id, SEL))[self methodForSelector:function])(self, function); 
 }
 
 
@@ -454,7 +458,7 @@
 }
 
 -(void)initSPFCellSubItem{
-    self.widthLabRangqiu.constant = 28;
+    self.widthLabRangqiu.constant = 0;
     NSDictionary *titDic = self.titleDic[@"SPF"];
     float marginRight = 3;
     float marginTop = 5;

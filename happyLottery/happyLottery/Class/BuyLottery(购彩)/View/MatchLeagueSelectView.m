@@ -73,6 +73,7 @@
     [self jczqCellItemClick:nil];
 }
 
+//玩法切换时，联赛恢复默认
 -(void)refreshItemState{
     _btnSelectAll.selected = YES;
     _btnSelectInvert.selected = NO;

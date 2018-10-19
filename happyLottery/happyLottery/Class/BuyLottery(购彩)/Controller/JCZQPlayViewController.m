@@ -132,7 +132,7 @@
 }
 
 
-
+//请求所有赛事
 -(void)loadMatch{
 
     [self.lotteryMan getJczqMatch:@{@"leagueIds":@[]}];
@@ -208,10 +208,8 @@
             NSMutableArray *temp = [NSMutableArray arrayWithCapacity:0];
             for (int j = 0; j<array.count; j++) {
                 JCZQMatchModel *model = array[j];
-                
-                
                 NSString* flag = [model.openFlag substringWithRange:NSMakeRange(ind, 1)];
-                if (type ==JCZQPlayTypeDanGuan ) {
+                if (type == JCZQPlayTypeDanGuan) {
                     if ([flag isEqualToString:@"1"]||[flag isEqualToString:@"0"]) {
                         model.isDanGuan = YES;
                         [temp addObject:model];
@@ -442,6 +440,7 @@
     block([self getMatchNum:self.showArray]);
 }
 
+//展示比赛数目
 -(NSInteger)getMatchNum:(NSMutableArray *)showArray{
     NSInteger numMatch = 0;
     for (NSMutableArray *matchArray in showArray) {
@@ -484,50 +483,31 @@
     self.trancation.playType = playType;
     [titleBtn setTitle:lotteryPros.Title forState:0];
     
-    if(self.trancation.playType == JCZQPlayTypeDanGuan ){
-        
-        if ([self.trancation.curProfile.Desc isEqualToString:@"SPF"]) {
-            [self lookMatchForCurPlayType:0 andGuanType:JCZQPlayTypeDanGuan];
-        }
-        if ([self.trancation.curProfile.Desc isEqualToString:@"RQSPF"]) {
-            [self lookMatchForCurPlayType:4 andGuanType:JCZQPlayTypeDanGuan];
-        }
-        if ([self.trancation.curProfile.Desc isEqualToString:@"BQC"]) {
-            [self lookMatchForCurPlayType:3 andGuanType:JCZQPlayTypeDanGuan];
-        }
-        if ([self.trancation.curProfile.Desc isEqualToString:@"JQS"]) {
-            [self lookMatchForCurPlayType:1 andGuanType:JCZQPlayTypeDanGuan];
-        }
-        if ([self.trancation.curProfile.Desc isEqualToString:@"BF"]) {
-            [self lookMatchForCurPlayType:2 andGuanType:JCZQPlayTypeDanGuan];
-        }
-        if ([self.trancation.curProfile.Desc isEqualToString:@"HHGG"]) {
-            [self lookMatchForCurPlayType:-1 andGuanType:JCZQPlayTypeDanGuan];
-        }
-        
-    }else if(self.trancation.playType == JCZQPlayTypeGuoGuan){
-        if ([self.trancation.curProfile.Desc isEqualToString:@"SPF"]) {
-            [self lookMatchForCurPlayType:0 andGuanType:JCZQPlayTypeGuoGuan];
-        }
-        if ([self.trancation.curProfile.Desc isEqualToString:@"RQSPF"]) {
-            [self lookMatchForCurPlayType:4 andGuanType:JCZQPlayTypeGuoGuan];
-        }
-        if ([self.trancation.curProfile.Desc isEqualToString:@"BQC"]) {
-            [self lookMatchForCurPlayType:3 andGuanType:JCZQPlayTypeGuoGuan];
-        }
-        if ([self.trancation.curProfile.Desc isEqualToString:@"JQS"]) {
-            [self lookMatchForCurPlayType:1 andGuanType:JCZQPlayTypeGuoGuan];
-        }
-        if ([self.trancation.curProfile.Desc isEqualToString:@"BF"]) {
-            [self lookMatchForCurPlayType:2 andGuanType:JCZQPlayTypeGuoGuan];
-        }
-        if ([self.trancation.curProfile.Desc isEqualToString:@"HHGG"]) {
-            [self lookMatchForCurPlayType:-1 andGuanType:JCZQPlayTypeGuoGuan];
-        }
-        
-        NSLog(@"当前过关方式！过关！！！");
-    }
     
+    if ([self.trancation.curProfile.Desc isEqualToString:@"SPF"]) {
+        
+        [self lookMatchForCurPlayType:0 andGuanType:self.trancation.playType];
+        
+    } else if ([self.trancation.curProfile.Desc isEqualToString:@"RQSPF"]) {
+        
+        [self lookMatchForCurPlayType:4 andGuanType:self.trancation.playType];
+        
+    } else if ([self.trancation.curProfile.Desc isEqualToString:@"BQC"]) {
+        
+         [self lookMatchForCurPlayType:3 andGuanType:self.trancation.playType];
+        
+    } else if ([self.trancation.curProfile.Desc isEqualToString:@"JQS"]) {
+        
+        [self lookMatchForCurPlayType:1 andGuanType:self.trancation.playType];
+        
+    } else if ([self.trancation.curProfile.Desc isEqualToString:@"BF"]) {
+        
+        [self lookMatchForCurPlayType:2 andGuanType:self.trancation.playType];
+        
+    } else if ([self.trancation.curProfile.Desc isEqualToString:@"HHGG"]) {
+        
+        [self lookMatchForCurPlayType:-1 andGuanType:self.trancation.playType];
+    }
     [matchSelectView setLabSelectNumText:[self getMatchNum:self.showArray]];
     
     [self updataSummary];
