@@ -19,7 +19,7 @@
 -(NSString *)getCardCode;
 -(void)goCathectic:(NSString *)lotteryCode :(NSString *)cardCode;
 -(void)hiddenFooter:(BOOL )isHiden;
-
+- (void)openWX;
 @end
 
 @interface WebViewJumpHandler : NSObject

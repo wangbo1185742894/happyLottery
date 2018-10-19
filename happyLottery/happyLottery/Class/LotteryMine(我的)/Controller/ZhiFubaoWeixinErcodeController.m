@@ -8,56 +8,38 @@
 
 #import "ZhiFubaoWeixinErcodeController.h"
 #import "QRCodeGenerator.h"
-@interface ZhiFubaoWeixinErcodeController ()
-@property (weak, nonatomic) IBOutlet UIImageView *imgErcode;
-@property (weak, nonatomic) IBOutlet UILabel *labInfo1;
-@property (weak, nonatomic) IBOutlet UILabel *labInfo2;
-@property (weak, nonatomic) IBOutlet UIButton *btnOpenApp;
+#import <ShareSDK/ShareSDK+Base.h>
+#import <ShareSDKUI/ShareSDK+SSUI.h>
+#import <ShareSDK/NSMutableDictionary+SSDKShare.h>
+#import <MOBFoundation/MOBFoundation.h>
 
+@interface ZhiFubaoWeixinErcodeController ()<UIWebViewDelegate>{
+    JSContext *context;
+}
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topDis;
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 @end
 
 @implementation ZhiFubaoWeixinErcodeController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.imgErcode.image = [QRCodeGenerator qrImageForString:self.erCode imageSize:self.imgErcode.mj_w];
-    
-    if ([self.chongzhitype isEqualToString:@"weixin"]) {
-        [self.btnOpenApp setTitle:@"1.找他人微信扫一扫代付充值；" forState:0];
-        self.title = @"微信扫码支付";
-        self.labInfo2.text = @"2.截图保存并发送至其他设备，打开手机微信扫此截图二维码充值。";
-    }else if ([self.chongzhitype isEqualToString:@"zhifubao"]) {
-        self.title = @"支付宝扫码支付";
-        self.labInfo2.text = @"2.打开支付宝”扫一扫“充值";
-        [self.btnOpenApp setTitle:@"打开支付宝支付" forState:0];
-    }
-    
+    self.topDis.constant = NaviHeight;
+    self.title  = @"微信扫码支付";
+    self.webView.delegate = self;
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/app/recharge/indexWX?orderNo=%@",H5BaseAddress,self.orderNo]]]];
 }
 
-- (IBAction)actionOpenWXorZFB:(UIButton *)sender {
-    
-    if ([self.chongzhitype isEqualToString:@"zhifubao"]) {
-        NSURL * url = [NSURL URLWithString:@"alipay://"];
-        BOOL canOpen = [[UIApplication sharedApplication] canOpenURL:url];
-        //先判断是否能打开该url
-        if (canOpen)
-        {   //打开微信
-            [[UIApplication sharedApplication] openURL:url];
-        }
-    }else if ([self.chongzhitype isEqualToString:@"weixin"]) {
-        
-        NSURL * url = [NSURL URLWithString:@"weixin://"];
-        BOOL canOpen = [[UIApplication sharedApplication] canOpenURL:url];
-        //先判断是否能打开该url
-        if (canOpen)
-        {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
-        }
-        
-    
-    }
-    
+-(void)webViewDidFinishLoad:(UIWebView *)webView{
+    [self hideLoadingView];
+    context = [webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
+    context[@"appObj"] = [self getJumpHandler];
+    context.exceptionHandler = ^(JSContext *context, JSValue *exceptionValue) {
+        context.exception = exceptionValue;
+    };
+    [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitUserSelect='none';"];
+    [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitTouchCallout='none';"];
 }
+
 
 @end

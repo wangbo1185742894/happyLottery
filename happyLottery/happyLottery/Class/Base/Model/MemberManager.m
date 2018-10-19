@@ -630,10 +630,14 @@
         
         if (response.succeed) {
             NSDictionary *Info = [self objFromJson: responseJsonStr];
-            [self.delegate rechargeSmsIsSuccess:YES andPayInfo:Info errorMsg:response.errorMsg];
+            if (Info == nil) {
+                [self.delegate rechargeSmsIsSuccess:YES andPayInfo:responseJsonStr errorMsg:response.errorMsg];
+            }else{
+                [self.delegate rechargeSmsIsSuccess:YES andPayInfo:Info errorMsg:response.errorMsg];
+            }
+            
         } else {
             [self.delegate rechargeSmsIsSuccess:NO andPayInfo:nil errorMsg:response.errorMsg];
-            
         }
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {

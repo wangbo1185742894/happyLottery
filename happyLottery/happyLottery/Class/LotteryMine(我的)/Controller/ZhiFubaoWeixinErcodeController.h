@@ -10,5 +10,6 @@
 
 @interface ZhiFubaoWeixinErcodeController : BaseViewController
 @property(nonatomic ,strong)NSString *erCode;
+@property(nonatomic ,strong)NSString *orderNo;
 @property(nonatomic ,strong)NSString *chongzhitype;
 @end

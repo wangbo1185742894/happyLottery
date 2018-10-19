@@ -11,11 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ZhiFubaoWeixinErcodeController">
             <connections>
-                <outlet property="btnOpenApp" destination="8Is-Ng-d1J" id="7IR-RD-Vlc"/>
-                <outlet property="imgErcode" destination="oeM-jU-IaI" id="e1s-aL-pFj"/>
-                <outlet property="labInfo1" destination="TPv-J9-uiP" id="HNt-M9-Idw"/>
-                <outlet property="labInfo2" destination="H7Q-fT-B7e" id="ItE-u6-M12"/>
+                <outlet property="topDis" destination="fC4-yx-t4Q" id="84c-S4-D08"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="webView" destination="E3y-5D-Uqy" id="Df0-xn-nNh"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -23,55 +21,19 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oeM-jU-IaI">
-                    <rect key="frame" x="117.5" y="130" width="140" height="140"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="140" id="7TM-e0-zyL"/>
-                        <constraint firstAttribute="height" constant="140" id="PGC-eb-0hu"/>
-                    </constraints>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.截图保存二维码到相册" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPv-J9-uiP">
-                    <rect key="frame" x="117.5" y="290" width="200" height="16"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="200" id="6HF-t2-Vk2"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.打开微信“扫一扫”充值" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H7Q-fT-B7e">
-                    <rect key="frame" x="117.5" y="320" width="200" height="16"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Is-Ng-d1J">
-                    <rect key="frame" x="144.5" y="370" width="86" height="35"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="35" id="Jei-q8-P4W"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <state key="normal" title="打开微信支付" backgroundImage="yuanjiaowukuangselect"/>
-                    <connections>
-                        <action selector="actionOpenWXorZFB:" destination="-1" eventType="touchUpInside" id="bnt-q3-kQg"/>
-                    </connections>
-                </button>
+                <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E3y-5D-Uqy">
+                    <rect key="frame" x="0.0" y="87" width="375" height="580"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </webView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="TPv-J9-uiP" firstAttribute="leading" secondItem="oeM-jU-IaI" secondAttribute="leading" id="5io-Co-CUh"/>
-                <constraint firstItem="H7Q-fT-B7e" firstAttribute="width" secondItem="TPv-J9-uiP" secondAttribute="width" id="DEl-4M-Mra"/>
-                <constraint firstItem="oeM-jU-IaI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="130" id="Lu9-4H-EsG"/>
-                <constraint firstItem="8Is-Ng-d1J" firstAttribute="top" secondItem="H7Q-fT-B7e" secondAttribute="bottom" constant="34" id="REU-Ie-cvK"/>
-                <constraint firstItem="8Is-Ng-d1J" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="b2v-Ll-SiJ"/>
-                <constraint firstItem="H7Q-fT-B7e" firstAttribute="leading" secondItem="TPv-J9-uiP" secondAttribute="leading" id="ffU-vd-Vx5"/>
-                <constraint firstItem="H7Q-fT-B7e" firstAttribute="top" secondItem="TPv-J9-uiP" secondAttribute="bottom" constant="14" id="jQs-mC-4Jg"/>
-                <constraint firstItem="oeM-jU-IaI" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="oDh-hQ-XTk"/>
-                <constraint firstItem="TPv-J9-uiP" firstAttribute="top" secondItem="oeM-jU-IaI" secondAttribute="bottom" constant="20" id="zQ1-Wa-coH"/>
+                <constraint firstItem="E3y-5D-Uqy" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="N0l-yD-sGE"/>
+                <constraint firstAttribute="trailing" secondItem="E3y-5D-Uqy" secondAttribute="trailing" id="NmH-cG-5bD"/>
+                <constraint firstAttribute="bottom" secondItem="E3y-5D-Uqy" secondAttribute="bottom" id="OUo-1i-mlE"/>
+                <constraint firstItem="E3y-5D-Uqy" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="fC4-yx-t4Q"/>
             </constraints>
+            <point key="canvasLocation" x="138.40000000000001" y="153.37331334332833"/>
         </view>
     </objects>
-    <resources>
-        <image name="yuanjiaowukuangselect" width="45" height="23"/>
-    </resources>
 </document>

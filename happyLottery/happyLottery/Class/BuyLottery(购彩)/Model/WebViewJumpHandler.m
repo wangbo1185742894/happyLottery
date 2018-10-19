@@ -170,4 +170,17 @@
         return @"";
     }
 }
+- (void)openWX{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        NSURL * url = [NSURL URLWithString:@"weixin://"];
+        BOOL canOpen = [[UIApplication sharedApplication] canOpenURL:url];
+        if (canOpen)
+        {
+            [[UIApplication sharedApplication] openURL:url];
+        }else{
+            [self.curVc showPromptText:@"请你先安装微信" hideAfterDelay:2.0];
+        }
+    });
+
+}
 @end
