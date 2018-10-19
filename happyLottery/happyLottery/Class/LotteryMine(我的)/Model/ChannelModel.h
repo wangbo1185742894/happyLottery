@@ -23,9 +23,9 @@
 
 @interface RechargeModel : BaseModel
 
-@property(nonatomic,copy)NSString *handsel;
-@property(nonatomic,copy)NSString *recharge;
-@property(nonatomic,copy)NSString *rechargeChannel;
+@property(nonatomic,copy)NSString *handsel;  //送的金额
+@property(nonatomic,copy)NSString *recharge; // 冲的金额
+@property(nonatomic,copy)NSString *rechargeChannel; // 渠道id
 @property(nonatomic,assign)BOOL isSelect;
 
 @end

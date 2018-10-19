@@ -118,6 +118,7 @@
     return itemrechList;
 }
 
+//显示充几送几
 -(void)reloadRechargeCost:(NSArray *)rechList{
     int i = 0;
     for (RechargeModel  *model in rechList) {
@@ -255,16 +256,9 @@
             }
             [self sendReqAppId:app_id prepayId:prepay_id orginalId:original_id];
         }else if([itemModel.channel isEqualToString:@"SDWX"]){
-            orderNO = payInfo[@"orderNo"];
-            NSString *erCodeUrl = payInfo[@"qrCode"];
-            
-            
-            NSString *str = [NSString stringWithFormat:@"%@",erCodeUrl];
-            
-            
+            orderNO = payInfo;
             ZhiFubaoWeixinErcodeController * zhifubaoVC = [[ZhiFubaoWeixinErcodeController alloc]init];
-            zhifubaoVC.erCode = erCodeUrl;
-        
+            zhifubaoVC.orderNo = orderNO;
             zhifubaoVC.chongzhitype = @"weixin";
             [self.navigationController pushViewController:zhifubaoVC animated:YES];
     
@@ -336,6 +330,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+//获取充值方式
 -(void)getListByChannel{
     
     [self.lotteryMan listByRechargeChannel:@{@"channelCode":CHANNEL_CODE}];
@@ -463,7 +459,7 @@
 //            return;
 //        }
 //    }
-  
+
     if (orderNO == nil) {
         [self showPromptText:@"支付失败" hideAfterDelay:1.6];
         return;
@@ -484,18 +480,18 @@
             [self.navigationController popViewControllerAnimated:YES];
         });
     }else{
-        if ([itemModel.channel isEqualToString:@"SDWX"]) {
-            ZLAlertView *alert = [[ZLAlertView alloc] initWithTitle:@"提示" message:@"请检查是否完成充值"];
-            [alert addBtnTitle:@"未完成" action:^{
-                [self.navigationController popViewControllerAnimated:YES];
-            }];
-            [alert addBtnTitle:@"完成" action:^{
-                [self showLoadingText:@"正在查询充值结果，请稍等"];
-                 [self.memberMan queryRecharge:@{@"channel":itemModel.channel, @"orderNo":orderNO}];
-            }];
-            [alert showAlertWithSender:self];
-            return;
-        }
+//        if ([itemModel.channel isEqualToString:@"SDWX"]) {
+//            ZLAlertView *alert = [[ZLAlertView alloc] initWithTitle:@"提示" message:@"请检查是否完成充值"];
+//            [alert addBtnTitle:@"未完成" action:^{
+//                [self.navigationController popViewControllerAnimated:YES];
+//            }];
+//            [alert addBtnTitle:@"完成" action:^{
+//                [self showLoadingText:@"正在查询充值结果，请稍等"];
+//                 [self.memberMan queryRecharge:@{@"channel":itemModel.channel, @"orderNo":orderNO}];
+//            }];
+//            [alert showAlertWithSender:self];
+//            return;
+//        }
         [self showPromptText:msg hideAfterDelay:1.7];
     }
 }
