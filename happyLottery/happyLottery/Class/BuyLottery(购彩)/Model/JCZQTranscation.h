@@ -18,7 +18,7 @@
 @property(assign,nonatomic)JCZQPlayType playType;   //JCZQPlayTypeGuoGuan , JCZQPlayTypeDanGuan
 @property(nonatomic,strong)JCZQProfile *curProfile;
 @property(nonatomic,assign)NSInteger outBeicount;
-@property(nonatomic,strong)NSString *chuanFa;
+@property(nonatomic,strong)NSString *chuanFa; //几串几
 @property(nonatomic,strong)NSString * beitou;  //默认投注倍数
 
 

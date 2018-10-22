@@ -10,6 +10,8 @@
 
 @interface JCZQPlayViewController : BaseViewController
 @property(nonatomic,assign)JCZQPlayType playType;
+
+//自购, 合买, 追号, 推荐, 发单, 跟单
 @property (assign,nonatomic)SchemeType fromSchemeType;
 
 @end

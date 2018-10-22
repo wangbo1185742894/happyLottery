@@ -49,12 +49,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // 优惠条
     [self getCouponMoreData];
+    
+    //奖金优化button
     btnJiangjinYouhua.layer.borderColor = SystemGreen.CGColor;
     btnJiangjinYouhua.layer.borderWidth  =1;
     btnJiangjinYouhua.layer.cornerRadius = 3;
     btnJiangjinYouhua.layer.masksToBounds = YES;
     [btnJiangjinYouhua addTarget: self action: @selector(bounsYouhua) forControlEvents: UIControlEventTouchUpInside];
+    
     self.itemDataArray = [NSMutableArray arrayWithCapacity:0];
     if (self.fromSchemeType  == SchemeTypeFaqiGenDan) {
         self.touzhuBtn.hidden = YES;
@@ -109,6 +114,7 @@
 }
 
 -(void)getCouponMoreData{
+    //可用优惠券显示条
     if (self.curUser.isLogin == NO) {
         self.labCouInfo.text = @"";
         _couHeight.constant = 0;
@@ -116,6 +122,7 @@
     }else{
         _couHeight.constant = 30;
     }
+    
     NSDictionary *Info;
     @try {
         NSString *cardCode = self.curUser.cardCode;
@@ -173,12 +180,13 @@
     [self.tabSelectedMatch reloadData];
 }
 
-
+//串法
 -(void)setChuanfa{
     
     if (self.transction.playType == JCZQPlayTypeGuoGuan) {
       
             int chuanfakey;
+            //半全场，比分  最大可4串1
             if ([self.transction.curProfile.Desc isEqualToString:@"BQC"] || [self.transction.curProfile.Desc isEqualToString:@"BF"]) {
                 if (self.transction.selectMatchArray.count == 1) {
                     self.transction.chuanFa = @"单场";
@@ -187,6 +195,7 @@
                 }
                 chuanfakey = 4;
             }else if ([self.transction.curProfile.Desc isEqualToString:@"JQS"]) {
+                //进球数  最大可6串1
                 if (self.transction.selectMatchArray.count == 1) {
                     self.transction.chuanFa = @"单场";
                 }else{
@@ -266,6 +275,7 @@
     }
 }
 
+// 倍数选择框
 -(void)setWBSelectView{
     if (peiSelectView  == nil) {
          peiSelectView= [[SelectView alloc]initWithFrame:CGRectMake(KscreenWidth -180, 10, 162, 32) andRightTitle:@"投" andLeftTitle:@"倍"];
