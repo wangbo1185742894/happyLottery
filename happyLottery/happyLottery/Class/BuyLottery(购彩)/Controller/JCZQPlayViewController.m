@@ -32,16 +32,15 @@
 
 {
     NSInteger numBackNum;  //未用
-    MatchLeagueSelectView * matchSelectView;  //赛事选择联赛view
-    LotteryProfileSelectView *profileSelectView;
-    OptionSelectedView *optionView;
+    MatchLeagueSelectView * matchSelectView;  //赛事选择view
+    LotteryProfileSelectView *profileSelectView;//过关单关玩法选择框
     JCZQMatchModel *curShowModel;
     
 }
 @property (weak, nonatomic) IBOutlet UILabel *labSelectInfo;
 @property (weak, nonatomic) IBOutlet UITableView *tabJCZQListView;
-@property(nonatomic,strong)NSMutableArray *arrayTableSectionIsOpen;
-@property (nonatomic,strong)NSMutableArray <BaseProfile * > *profiles;  //玩法数组
+@property(nonatomic,strong)NSMutableArray *arrayTableSectionIsOpen;// section 展开或者关闭
+@property (nonatomic,strong)NSMutableArray <BaseProfile * > *profiles;  //玩法配置
 @property (weak, nonatomic) IBOutlet UIButton *btnTouzhu;
 @property (weak, nonatomic) IBOutlet UILabel *labSummary;
 @property(nonatomic,strong)NSMutableArray<NSMutableArray <JCZQMatchModel *> * > *matchArray;//服务器请求的所有赛事
@@ -56,7 +55,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
+    // iPhone X 适配
     if ([self isIphoneX]) {
         self.viewDisBottom .constant = 34;
     }else{
@@ -329,7 +328,7 @@
     profileSelectView.hidden = !profileSelectView.hidden;
 }
 
--(void)getCurlotteryProfiles{
+-(void) getCurlotteryProfiles{
     //LotteryProfilesConfig.plist   玩法切换配置文件
     NSDictionary *allLottery = [NSDictionary dictionaryWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"LotteryProfilesConfig" ofType: @"plist"]];
     NSArray *profiles = allLottery[@"jczq"];
@@ -347,10 +346,7 @@
 }
 
 - (void) optionRightButtonAction {
-//    if (isShowFLag) {
-//        return;
-//    }
-    
+
     NSArray *titleArr = @[@" 开奖详情",
                          @" 玩法规则"];
     CGFloat optionviewWidth = 100;
@@ -362,9 +358,6 @@
     optionView.delegate = self;
     [self.view.window addSubview:optionView];
     
-    
-    
-    //    [optionActionSheet showInView: self.tabBarController.view];
 }
 
 - (void)optionDidSelacted:(OptionSelectedView *)optionSelectedView andIndex:(NSInteger)index{
@@ -538,8 +531,7 @@
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    
-//    return 3;
+
     return self.showArray.count;
 }
 
@@ -561,22 +553,10 @@
     [self updataSummary];
 }
 
-//- (void)optionRightButtonAction{
-//    //    NSLog(@"haha");
-//    NSArray *titleArr = @[@"玩法说明"];
-//    CGFloat optionviewWidth = 130;
-//    CGFloat optionviewCellheight = 44;
-//    CGSize mainSize = [UIScreen mainScreen].bounds.size;
-//    if (!optionView) {
-//        optionView = [[OptionSelectedView alloc] initWithFrame:CGRectMake(KscreenWidth - optionviewWidth, 64, optionviewWidth, optionviewCellheight * titleArr.count) andTitleArr:titleArr];
-//        optionView.delegate = self;
-//    }
-//    [[UIApplication sharedApplication].keyWindow addSubview:optionView];
-//}
-
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (_showArray[indexPath.section][indexPath.row].isShow == YES) {
+
         return 230;
     }else{
         
@@ -607,16 +587,15 @@
     return header;
 }
 
+//点击下拉
 -(void)headerViewClick:(UIButton *)btn{
     [UIView animateWithDuration:1.0 animations:^{
-        
         BOOL isOpen = [self.arrayTableSectionIsOpen[btn.tag] boolValue];
         if (isOpen == YES) {
-            [self.arrayTableSectionIsOpen removeObjectAtIndex:btn.tag];
-            [self.arrayTableSectionIsOpen insertObject:@(NO) atIndex:btn.tag];
+            [self.arrayTableSectionIsOpen setObject:@(NO) atIndexedSubscript:btn.tag];
+            
         }else{
-            [self.arrayTableSectionIsOpen removeObjectAtIndex:btn.tag];
-            [self.arrayTableSectionIsOpen insertObject:@(YES) atIndex:btn.tag];
+            [self.arrayTableSectionIsOpen setObject:@(YES) atIndexedSubscript:btn.tag];
         }
         [self.tabJCZQListView reloadData];
     }];
