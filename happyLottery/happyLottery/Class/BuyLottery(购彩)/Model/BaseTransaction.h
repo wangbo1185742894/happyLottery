@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Lottery.h"
 
-typedef enum{//自购, 合买, 追号, 推荐
+typedef enum{//自购, 合买, 追号, 推荐, 发单, 跟单
     SchemeTypeZigou = 0,
     SchemeTypeHemai = 1,
     SchemeTypeZhuihao = 2,
@@ -42,8 +42,8 @@ typedef enum{
 }SchemeSource;
 
 typedef enum : NSUInteger {
-    JCZQPlayTypeGuoGuan = 0,
-    JCZQPlayTypeDanGuan
+    JCZQPlayTypeGuoGuan = 0,  // 混合过关
+    JCZQPlayTypeDanGuan   // 单场混投
 } JCZQPlayType;
 
 

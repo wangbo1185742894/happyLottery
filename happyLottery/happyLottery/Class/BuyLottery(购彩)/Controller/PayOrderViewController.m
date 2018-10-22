@@ -168,8 +168,10 @@
         [legWorkList removeAllObjects];
         for (NSDictionary *itemDic in redList) {
             LegWordModel *model = [[LegWordModel alloc]initWith:itemDic];
-            [legWorkList addObject:model];
-          
+            //如果小哥在线 且 启用 该小哥显示
+            if ([model.overline boolValue] && [model.enabled boolValue]) {
+                [legWorkList addObject:model];
+            }
         }
         for (int i = 0 ;i < legWorkList.count; i ++) {
             NSInteger index1 = arc4random_uniform(legWorkList.count - 1);
