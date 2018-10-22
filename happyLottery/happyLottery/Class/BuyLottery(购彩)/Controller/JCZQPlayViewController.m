@@ -153,6 +153,19 @@
                 }
             }
             
+            for (NSMutableArray *itemArray in self.showArray) {
+                JCZQMatchModel *firstModel = [itemArray firstObject];
+                if (firstModel == nil || model.matchDate == nil) {
+                    break;
+                }
+                
+                if ([firstModel.matchDate isEqualToString:model.matchDate]) {
+                    [itemArray addObject:model];
+                    isExit = YES;
+                    break;
+                }
+            }
+            
             if (isExit == NO) {
                 NSMutableArray  *marray = [NSMutableArray arrayWithCapacity:0];
                 [self.arrayTableSectionIsOpen addObject:@(YES)];
