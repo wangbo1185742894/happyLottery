@@ -624,10 +624,6 @@
     [self.navigationController pushViewController:touzhuVC animated:YES];
 }
 
-- (IBAction)actionCleanAll:(id)sender {
-    
-    
-}
 
 -(NSString *)couldTouzhu{
     if (self.trancation.selectMatchArray.count >15 ) {
