@@ -176,7 +176,6 @@
                 }
             }
             
-            
             if (isExit == NO) {
                 NSMutableArray  *marray = [NSMutableArray arrayWithCapacity:0];
                 NSMutableArray  *showArray = [NSMutableArray arrayWithCapacity:0];

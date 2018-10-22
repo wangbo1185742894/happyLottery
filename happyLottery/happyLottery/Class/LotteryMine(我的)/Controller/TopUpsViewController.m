@@ -14,6 +14,7 @@
 #import "ZhiFubaoWeixinErcodeController.h"
 #import "YinLanPayManage.h"
 #define KPayTypeListCell @"PayTypeListCell"
+
 @interface TopUpsViewController ()<MemberManagerDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,UITextFieldDelegate,UIWebViewDelegate,ChongZhiRulePopViewDelegate>
 {
     NSMutableArray <ChannelModel *>*channelList;

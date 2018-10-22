@@ -165,6 +165,7 @@
 
 -(void)gotLegWorkList:(NSArray *)redList errorInfo:(NSString *)errMsg{
     if (redList.count > 0) {
+        [legWorkList removeAllObjects];
         for (NSDictionary *itemDic in redList) {
             LegWordModel *model = [[LegWordModel alloc]initWith:itemDic];
             [legWorkList addObject:model];
@@ -846,10 +847,12 @@
 }
 
 - (void)navigationBackToLastPage{
+    
     if(self.isShowOba == NO){
         [self navigationBackToLastPageitem];
         return;
     }
+    [self .lotteryMan getLegWorkList:nil];
     [self setSelectOba:0];
     viewOBaList.mj_x = -KscreenWidth;
     [[UIApplication sharedApplication].keyWindow addSubview:viewOBaList];
