@@ -488,18 +488,6 @@
     if (self.transction.playType == JCZQPlayTypeGuoGuan) {
         if (self.transction.selectMatchArray.count < 2 ) {
             return  @"过关模式下，至少保留两场比赛";
-//            if(self.transction.selectMatchArray.count ==1){
-//                JCZQMatchModel *model = [self.transction.selectMatchArray firstObject];
-//                if (model.isDanGuan == YES) {
-//                    self.transction.chuanFa = @"单场";
-//                    return nil;
-//                }
-//                return  @"过关模式下，至少保留两场比赛";
-//
-//            }else{
-//                return  @"过关模式下，至少保留两场比赛";
-//
-//            }
         }
     }
     return nil;
