@@ -83,15 +83,6 @@
 }
 
 -(void)cleanMatch:(NSNotification*)notification{
-//    if (self.trancation.playType == JCZQPlayTypeGuoGuan) {
-//        if (self.trancation.selectMatchArray.count <= 2) {
-//            return;
-//        }
-//    }else{
-//        if (self.trancation.selectMatchArray.count <=1) {
-//            return;
-//        }
-//    }
     JCZQMatchModel *model = (JCZQMatchModel*)notification.object;
     if (model == nil) {
         [self cleanAllSelectMatch];
@@ -280,6 +271,7 @@
     
     
 }
+
 
 //联赛名称
 -(NSString *)getLeaName:(NSString *)_id{
@@ -616,7 +608,6 @@
 
 - (IBAction)actionTouzhu:(id)sender {
     
-    
     [self.trancation.selectMatchArray removeAllObjects];
     JCZQTouZhuViewController *touzhuVC = [[JCZQTouZhuViewController alloc]init];
     touzhuVC.fromSchemeType = self.fromSchemeType;
@@ -649,24 +640,15 @@
     }
     if (self.trancation.playType == JCZQPlayTypeGuoGuan) {
         if (self.trancation.selectMatchArray.count < 2 ) {
-//            if(self.trancation.selectMatchArray.count ==1){
-//                JCZQMatchModel *model = [self.trancation.selectMatchArray firstObject];
-//                if (model.isDanGuan == YES) {
-//                    self.trancation.chuanFa = @"单场";
-//                    return nil;
-//                }
-//                return  @"过关模式下，至少选择两场比赛";
-//
-//            }else{
-                return  @"过关模式下，至少选择两场比赛";
-//            }
             
+            return  @"过关模式下，至少选择两场比赛";
         }
     }
     return nil;
 }
 
 #pragma JCZQMatchViewCellDelegate
+//混合过关 全部玩法
 -(void)showAllPlayType:(JCZQMatchModel *)model :(NSDictionary *)titleDic{
     JCZQSelectAllPlayTypeVIew * matchSelectView = [[JCZQSelectAllPlayTypeVIew alloc]initWithFrame:[UIScreen mainScreen].bounds];
     [[UIApplication sharedApplication].keyWindow addSubview:matchSelectView];
@@ -710,6 +692,7 @@
     }
 }
 
+//比分全部玩法
 -(void)showBFPlayType:(JCZQMatchModel *)model :(NSDictionary *)titleDic{
     
     JCZQSelectBFVIew * matchSelectView = [[JCZQSelectBFVIew alloc]initWithFrame:[UIScreen mainScreen].bounds];
@@ -719,6 +702,7 @@
     
 }
 
+//半全场 全部玩法
 -(void)showBQCPlayType:(JCZQMatchModel *)model :(NSDictionary *)titleDic{
     
     JCZQSelectBQCVIew * matchSelectView = [[JCZQSelectBQCVIew alloc]initWithFrame:[UIScreen mainScreen].bounds];
