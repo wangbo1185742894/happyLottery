@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.topDis.constant = NaviHeight;
-    self.title  = @"微信扫码支付";
+    self.title  = @"扫码支付";
     self.webView.delegate = self;
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/app/recharge/indexWX?orderNo=%@",H5BaseAddress,self.orderNo]]]];
 }
