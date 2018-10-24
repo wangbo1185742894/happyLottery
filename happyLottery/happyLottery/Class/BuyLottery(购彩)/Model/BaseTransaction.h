@@ -75,7 +75,7 @@ typedef enum : NSUInteger {
 @property(nonatomic,assign)CostType costType;
 @property(nonatomic,strong)NSString * originalContent;
 
-@property (assign,nonatomic)CGFloat maxPrize;
+@property (assign,nonatomic)CGFloat maxPrize; //
 
 -(NSMutableDictionary*)submitParaDicScheme;
 - (id)lottDataScheme;

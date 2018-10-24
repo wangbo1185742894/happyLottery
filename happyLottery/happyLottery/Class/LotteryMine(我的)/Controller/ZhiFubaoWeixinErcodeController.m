@@ -30,6 +30,10 @@
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/app/recharge/indexWX?orderNo=%@",H5BaseAddress,self.orderNo]]]];
 }
 
+-(void)webViewDidStartLoad:(UIWebView *)webView{
+    [self showLoadingViewWithText:@"正在加载"];
+}
+
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
     [self hideLoadingView];
     context = [webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
