@@ -126,7 +126,7 @@ static SystemSoundID shake_sound_male_id = 0;
 #ifdef bate
  
 #else
-    [Bugly startWithAppId:@"c36c93659f"];
+    [Bugly startWithAppId:@"7246d06929"];
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         NSString *item = [[NSString alloc]initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:BaseUrl]] encoding:NSUTF8StringEncoding];
 

@@ -490,7 +490,6 @@
 		2D638F5520EE2C54004463FC /* UserInfoBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D638F5420EE2C54004463FC /* UserInfoBaseModel.m */; };
 		2D638F5920EF1518004463FC /* UserInfoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D638F5720EF1518004463FC /* UserInfoDetailViewController.m */; };
 		2D638F5A20EF1518004463FC /* UserInfoDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D638F5820EF1518004463FC /* UserInfoDetailViewController.xib */; };
-		2D638F5D20F32836004463FC /* LaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D638F5C20F32836004463FC /* LaunchViewController.m */; };
 		2D638F5F20F32CAA004463FC /* launch_x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D638F5E20F32CAA004463FC /* launch_x.png */; };
 		2D638F6120F32FAE004463FC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D638F6020F32FAD004463FC /* Images.xcassets */; };
 		2D638F6420F45E05004463FC /* icon_shiyixuanwu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D638F6220F45E04004463FC /* icon_shiyixuanwu@3x.png */; };
@@ -898,7 +897,6 @@
 		2DBFB4BE21781ED60074B024 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DBFB4BD21781ED60074B024 /* libiconv.tbd */; };
 		2DCBB2761FD1000700934D92 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCBB2751FD1000700934D92 /* AppDelegate.m */; };
 		2DCBB27E1FD1000700934D92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DCBB27D1FD1000700934D92 /* Assets.xcassets */; };
-		2DCBB2811FD1000700934D92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DCBB27F1FD1000700934D92 /* LaunchScreen.storyboard */; };
 		2DCBB2841FD1000700934D92 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCBB2831FD1000700934D92 /* main.m */; };
 		2DCBB28E1FD1000700934D92 /* happyLotteryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCBB28D1FD1000700934D92 /* happyLotteryTests.m */; };
 		2DCBB2991FD1000700934D92 /* happyLotteryUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCBB2981FD1000700934D92 /* happyLotteryUITests.m */; };
@@ -2426,8 +2424,6 @@
 		2D638F5620EF1518004463FC /* UserInfoDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfoDetailViewController.h; sourceTree = "<group>"; };
 		2D638F5720EF1518004463FC /* UserInfoDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserInfoDetailViewController.m; sourceTree = "<group>"; };
 		2D638F5820EF1518004463FC /* UserInfoDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserInfoDetailViewController.xib; sourceTree = "<group>"; };
-		2D638F5B20F32836004463FC /* LaunchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LaunchViewController.h; sourceTree = "<group>"; };
-		2D638F5C20F32836004463FC /* LaunchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LaunchViewController.m; sourceTree = "<group>"; };
 		2D638F5E20F32CAA004463FC /* launch_x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch_x.png; sourceTree = "<group>"; };
 		2D638F6020F32FAD004463FC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2D638F6220F45E04004463FC /* icon_shiyixuanwu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_shiyixuanwu@3x.png"; sourceTree = "<group>"; };
@@ -3042,7 +3038,6 @@
 		2DCBB2741FD1000700934D92 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2DCBB2751FD1000700934D92 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		2DCBB27D1FD1000700934D92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		2DCBB2801FD1000700934D92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DCBB2821FD1000700934D92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DCBB2831FD1000700934D92 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2DCBB2891FD1000700934D92 /* happyLotteryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = happyLotteryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3454,7 +3449,6 @@
 		F9418F3F2010991200454109 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		F9418F412010991200454109 /* ShareSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShareSDK.bundle; sourceTree = "<group>"; };
 		F9418F422010991200454109 /* ShareSDKConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKConnector.framework; sourceTree = "<group>"; };
-		F9418F522010B94100454109 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		F94770B9200706BB0091729E /* jingcaizuqiu_banquanchang.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = jingcaizuqiu_banquanchang.html; sourceTree = "<group>"; };
 		F94770BA200706BB0091729E /* jingcaizuqiu_bifen.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = jingcaizuqiu_bifen.html; sourceTree = "<group>"; };
 		F94770BB200706BB0091729E /* jingcaizuqiu_hunheguoguan.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = jingcaizuqiu_hunheguoguan.html; sourceTree = "<group>"; };
@@ -5722,12 +5716,9 @@
 		2DCBB2B81FD107F000934D92 /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				2DCBB27F1FD1000700934D92 /* LaunchScreen.storyboard */,
 				2DCBB2821FD1000700934D92 /* Info.plist */,
 				2DCBB2831FD1000700934D92 /* main.m */,
 				2DCBB2C61FD1098300934D92 /* HappyLottery.pch */,
-				2D638F5B20F32836004463FC /* LaunchViewController.h */,
-				2D638F5C20F32836004463FC /* LaunchViewController.m */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -8155,7 +8146,6 @@
 				2D7B13C8204E877A0035AE89 /* CTZQTouzhuShisiCell.xib in Resources */,
 				F94AA9C31FEB59DA0021B980 /* unchecked@3x.png in Resources */,
 				F9BC6E6020C2DD3D0037998B /* xuhao2@3x.png in Resources */,
-				2DCBB2811FD1000700934D92 /* LaunchScreen.storyboard in Resources */,
 				F9E53D5420EE28D70072B8AF /* invite_mine@3x.png in Resources */,
 				2D3A06B820A3D640003C5E7B /* RecommendViewCell.xib in Resources */,
 				F9DC698C1FDF7CF5007D384D /* Mine.plist in Resources */,
@@ -9441,7 +9431,6 @@
 				F9F262B71FE8F4AE00C2E60F /* UIImage+RSKImageCropper.m in Sources */,
 				2DB100E1216DE71E00CE3F82 /* LegInfoViewCell.m in Sources */,
 				F9DC69A91FDF8957007D384D /* MyHelpViewController.m in Sources */,
-				2D638F5D20F32836004463FC /* LaunchViewController.m in Sources */,
 				F9DC699A1FDF888F007D384D /* MyFavoriteViewController.m in Sources */,
 				2D05C87920A58416001A8953 /* FollowListViewController.m in Sources */,
 				F96C357820ACFC0D00D1F034 /* SuoSchemeViewCell.m in Sources */,
@@ -9632,18 +9621,6 @@
 			targetProxy = 2DCBB2951FD1000700934D92 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		2DCBB27F1FD1000700934D92 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2DCBB2801FD1000700934D92 /* Base */,
-				F9418F522010B94100454109 /* zh-Hans */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		2DCBB29B1FD1000700934D92 /* Debug */ = {
