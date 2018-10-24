@@ -98,7 +98,7 @@
     if (_isNeedBack) {
         webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 20, KscreenWidth, KscreenHeight - 20)];
     }else{
-        webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64, KscreenWidth, KscreenHeight - 64)];
+        webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, NaviHeight, KscreenWidth, KscreenHeight - NaviHeight)];
     }
     webView.delegate = self;
     
