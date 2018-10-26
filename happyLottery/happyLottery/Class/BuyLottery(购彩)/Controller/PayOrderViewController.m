@@ -554,7 +554,13 @@
         if (legId == nil) {
             legId = [legWorkList firstObject]._id;
         }
-        [self .lotteryMan saveLegScheme:@{@"legId":legId,@"shopId":selectShopModel._id,@"schemeNo":self.cashPayMemt.schemeNo}];
+        
+        // 快递小哥为空时  崩溃bug
+        NSString * legIdStr = legId == nil ? @"0" : legId;
+        
+        NSString * shopIdStr = selectShopModel._id == nil?@"0":selectShopModel._id;
+        
+        [self .lotteryMan saveLegScheme:@{@"legId":legIdStr,@"shopId":shopIdStr,@"schemeNo":self.cashPayMemt.schemeNo}];
     }
   
     PaySuccessViewController * paySuccessVC = [[PaySuccessViewController alloc]init];
