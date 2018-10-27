@@ -7,19 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		16E2F31D0A16CD0F3FAE7548B04803EE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		114132C9264F7AB628CC3348CE8CAB6F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
 		4D4830759EC84E3FEE1368528189C155 /* Pods-happyLottery-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ED0A725801BA3FECB5E4ACF13387945 /* Pods-happyLottery-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C56AF37BA0109B3795930076DE0DF8E8 /* Pods-happyLottery-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AFCFD1BB0800CFC44AA7DC57CC9FEB /* Pods-happyLottery-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		06AFCFD1BB0800CFC44AA7DC57CC9FEB /* Pods-happyLottery-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-happyLottery-dummy.m"; sourceTree = "<group>"; };
-		2020C87D797F5606E0994E3B91DA4706 /* WechatAuthSDK.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WechatAuthSDK.h; path = WechatSDK1.8.2/WechatAuthSDK.h; sourceTree = "<group>"; };
+		0785FBE2B0F16BBFCA8B5D142C2570B2 /* WechatAuthSDK.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WechatAuthSDK.h; path = WeChatSDK1.8.3/WechatAuthSDK.h; sourceTree = "<group>"; };
 		228C3DCF804AD02D6E4BB0C5994D9AE0 /* Pods-happyLottery.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-happyLottery.modulemap"; sourceTree = "<group>"; };
-		36E983344BC48AA24F24B325E48C16FA /* WXApiObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXApiObject.h; path = WechatSDK1.8.2/WXApiObject.h; sourceTree = "<group>"; };
-		3F5317CE6C340092F16F71691B7C6FB0 /* WXApi.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXApi.h; path = WechatSDK1.8.2/WXApi.h; sourceTree = "<group>"; };
 		4201DA47502963A01D32DF79E8782ECD /* Pods-happyLottery-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-happyLottery-acknowledgements.markdown"; sourceTree = "<group>"; };
-		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		71BA536C441B02AD8CCE9C9E9887884C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77924A69106534EF915EA431C7629C85 /* Pods-happyLottery-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-happyLottery-resources.sh"; sourceTree = "<group>"; };
 		89C521B2D7318DAB1BEDA929F935A482 /* Pods_happyLottery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_happyLottery.framework; path = "Pods-happyLottery.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -28,8 +26,10 @@
 		B175AA0547FF5431C99F8740F3EFCCD8 /* Pods-happyLottery-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-happyLottery-frameworks.sh"; sourceTree = "<group>"; };
 		BE8FFFB239851AFE802A32388059F676 /* Pods-happyLottery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-happyLottery.debug.xcconfig"; sourceTree = "<group>"; };
 		DE8F8FD81D638438EF09160888C82F5A /* Pods-happyLottery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-happyLottery.release.xcconfig"; sourceTree = "<group>"; };
+		DF6F48A794D5A5C6D096B964C6BFE1A7 /* WXApiObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXApiObject.h; path = WeChatSDK1.8.3/WXApiObject.h; sourceTree = "<group>"; };
 		E736F203B5279A638B575B62A9302F6B /* Pods-happyLottery-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-happyLottery-acknowledgements.plist"; sourceTree = "<group>"; };
-		FEAAD5633BEB38D4AFAC83013D266481 /* libWeChatSDK.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libWeChatSDK.a; path = WechatSDK1.8.2/libWeChatSDK.a; sourceTree = "<group>"; };
+		F38E869CA6BEA91EA9BEAF811640E960 /* WXApi.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXApi.h; path = WeChatSDK1.8.3/WXApi.h; sourceTree = "<group>"; };
+		F487EDDE613757E4E7EEE7D2423905A4 /* libWeChatSDK.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libWeChatSDK.a; path = WeChatSDK1.8.3/libWeChatSDK.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,7 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16E2F31D0A16CD0F3FAE7548B04803EE /* Foundation.framework in Frameworks */,
+				114132C9264F7AB628CC3348CE8CAB6F /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,10 +52,18 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		5E0D919E635D23B70123790B8308F8EF /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
 		7ADA45F435BB210C822629C0D9B54295 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				8141BD691EAFFD929F6B60FACEF5ED5E /* WechatOpenSDK */,
+				B37557304B990AF0FE45AB23864CB362 /* WechatOpenSDK */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -71,13 +79,21 @@
 			);
 			sourceTree = "<group>";
 		};
-		8141BD691EAFFD929F6B60FACEF5ED5E /* WechatOpenSDK */ = {
+		902D4538E1885C694BF2300B0971350F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2020C87D797F5606E0994E3B91DA4706 /* WechatAuthSDK.h */,
-				3F5317CE6C340092F16F71691B7C6FB0 /* WXApi.h */,
-				36E983344BC48AA24F24B325E48C16FA /* WXApiObject.h */,
-				FA4DEEE33694C43B9585B9475FC919DB /* Frameworks */,
+				F487EDDE613757E4E7EEE7D2423905A4 /* libWeChatSDK.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B37557304B990AF0FE45AB23864CB362 /* WechatOpenSDK */ = {
+			isa = PBXGroup;
+			children = (
+				0785FBE2B0F16BBFCA8B5D142C2570B2 /* WechatAuthSDK.h */,
+				F38E869CA6BEA91EA9BEAF811640E960 /* WXApi.h */,
+				DF6F48A794D5A5C6D096B964C6BFE1A7 /* WXApiObject.h */,
+				902D4538E1885C694BF2300B0971350F /* Frameworks */,
 			);
 			name = WechatOpenSDK;
 			path = WechatOpenSDK;
@@ -94,17 +110,9 @@
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D35AF013A5F0BAD4F32504907A52519E /* iOS */,
+				5E0D919E635D23B70123790B8308F8EF /* iOS */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */,
-			);
-			name = iOS;
 			sourceTree = "<group>";
 		};
 		EF1099DD8D8076A4CDDDF4EC67FA0740 /* Pods-happyLottery */ = {
@@ -123,14 +131,6 @@
 			);
 			name = "Pods-happyLottery";
 			path = "Target Support Files/Pods-happyLottery";
-			sourceTree = "<group>";
-		};
-		FA4DEEE33694C43B9585B9475FC919DB /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				FEAAD5633BEB38D4AFAC83013D266481 /* libWeChatSDK.a */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
