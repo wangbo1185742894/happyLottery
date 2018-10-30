@@ -43,8 +43,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.aliPayMinBouns = @"50";
-    
+    self.aliPayMinBouns = @"0";
     self.title = @"充值";
     self.automaticallyAdjustsScrollViewInsets = NO;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(checkSchemePayState:) name:@"UPPaymentControlFinishNotification" object:nil];
@@ -77,7 +76,11 @@
 }
 
 -(void)gotCommonSetValue:(NSString *)strUrl{
-    self.aliPayMinBouns = strUrl;
+    if (strUrl == nil) {
+        self.aliPayMinBouns = @"0";
+    }else {
+        self.aliPayMinBouns = strUrl;
+    }
 }
 
 -(void)listRechargeHandsel:(NSArray *)lotteryList errorMsg:(NSString *)msg{
