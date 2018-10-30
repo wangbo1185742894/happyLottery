@@ -38,7 +38,7 @@
     BaseViewController *baseVC = (BaseViewController *)[self getCurrentVC];
     
     if (self.wechat == nil) {
-        [baseVC showPromptText:@"暂无微信信息" hideAfterDelay:2.0];
+        [baseVC showPromptText:@"暂未上传微信信息" hideAfterDelay:2.0];
     }else{
         [baseVC showPromptText:@"微信号已复制到剪贴板" hideAfterDelay:2.0];
         pboard.string = self.wechat;
@@ -51,7 +51,7 @@
     if (self.mobile == nil) {
         BaseViewController *baseVC = (BaseViewController *)[self getCurrentVC];
         
-        [baseVC showPromptText:@"暂无手机号" hideAfterDelay:2.0];
+        [baseVC showPromptText:@"暂未上传手机号" hideAfterDelay:2.0];
     }else{
         [[UIApplication sharedApplication]openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",self.mobile]]];
     }

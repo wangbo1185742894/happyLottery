@@ -112,6 +112,34 @@
             [itemrechList addObject:model];
         }
     }
+    //充值渠道没有匹配的值时，显示默认值
+    if (itemrechList.count == 0) {
+        for (int i = 0; i < 6 ; i++) {
+            RechargeModel *model = [[RechargeModel alloc]init];
+            model.rechargeChannel = strChannal;
+            switch (i) {
+                case 0:
+                    model.recharge = @"100";
+                    break;
+                case 1:
+                    model.recharge = @"200";
+                    break;
+                case 2:
+                    model.recharge = @"500";
+                    break;
+                case 3:
+                    model.recharge = @"1000";
+                    break;
+                case 4:
+                    model.recharge = @"5000";
+                    break;
+                default:
+                    model.recharge = @"10000";
+                    break;
+            }
+            [itemrechList addObject:model];
+        }
+    }
     [itemrechList sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
         RechargeModel * r1 = obj1;
         RechargeModel * r2 = obj2;
@@ -216,7 +244,11 @@
         item.layer.cornerRadius = 4;
         item.layer.masksToBounds = YES;
     }
-    [_btnChongzhi setTitle:[NSString stringWithFormat:@"实际到账%.2f+%.2f元",[selectRech.recharge doubleValue] ,[selectRech.handsel doubleValue]] forState:0];
+    if ([selectRech.handsel doubleValue] == 0) {
+        [_btnChongzhi setTitle:[NSString stringWithFormat:@"实际到账%.2f元",[selectRech.recharge doubleValue]] forState:0];
+    }else {
+        [_btnChongzhi setTitle:[NSString stringWithFormat:@"实际到账%.2f+%.2f元",[selectRech.recharge doubleValue] ,[selectRech.handsel doubleValue]] forState:0];
+    }
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{
@@ -226,13 +258,17 @@
         RechargeModel *model = [self getRechList][i];
         
         if ( cost >= [model.recharge doubleValue]) {
+            if ([model.handsel doubleValue] == 0) {
+                [_btnChongzhi setTitle:[NSString stringWithFormat:@"实际到账%.2f元",cost] forState:0];
+            }else{
                 [_btnChongzhi setTitle:[NSString stringWithFormat:@"实际到账%.2f+%.2f元",cost ,[model.handsel doubleValue]] forState:0];
-                flag = YES;
+            }
+            flag = YES;
             break;
         }
     }
     if (flag == NO) {
-            [_btnChongzhi setTitle:[NSString stringWithFormat:@"实际到账%.2f+0.00元",cost] forState:0];
+            [_btnChongzhi setTitle:[NSString stringWithFormat:@"实际到账%.2f元",cost] forState:0];
     }
 }
 
@@ -354,7 +390,7 @@
     for (NSInteger i = 0 ; i < infoArray.count ; i ++ ) {
         NSDictionary *itemDic = infoArray[i];
         ChannelModel *model = [[ChannelModel alloc]initWith:itemDic];
-        if ([model.channelValue boolValue] == YES || [model.channelValue isEqualToString:@"open"]||[model.channelValue isEqualToString:@"open_new"] ) {
+        if ([model.channelValue boolValue] == YES || [model.channelValue isEqualToString:@"open"]||[model.channelValue isEqualToString:@"open_new"]||[model.channelValue isEqualToString:@"open_"]) {
 //            if ([model.channelTitle containsString:@"微信支付"]) {
                 [channelList insertObject:model atIndex:0];
 //            } else {

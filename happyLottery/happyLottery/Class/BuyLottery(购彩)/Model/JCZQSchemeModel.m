@@ -199,7 +199,7 @@
 }
 
 -(BOOL)isHasLeg{
-    if (_legName == nil || _legWechatId == nil || _legMobile == nil) {
+    if (_legName == nil) {
         return NO;
     }
     return YES;
