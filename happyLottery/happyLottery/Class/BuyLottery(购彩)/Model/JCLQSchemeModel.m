@@ -58,7 +58,7 @@
 }
 
 -(BOOL)isHasLeg{
-    if (_legName == nil) {
+    if (_legName == nil || _legName.length == 0) {
         return NO;
     }
     return YES;
