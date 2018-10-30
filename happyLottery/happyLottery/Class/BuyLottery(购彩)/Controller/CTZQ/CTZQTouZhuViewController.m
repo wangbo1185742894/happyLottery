@@ -7,7 +7,7 @@
 //
 
 #import "CTZQTouZhuViewController.h"
-#import "PayOrderViewController.h"
+#import "PayOrderLegViewController.h"
 #import "LotteryTimeCountdownView.h"
 #import "CTZQTouzhuRenjiuCell.h"
 #import "CTZQTouzhuShisiCell.h"
@@ -271,7 +271,7 @@
         return;
     }
     
-    PayOrderViewController *payVC = [[PayOrderViewController alloc]init];
+    PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
     SchemeCashPayment *schemeCashModel = [[SchemeCashPayment alloc]init];
     schemeCashModel.lotteryName = self.lottery.activeProfile.title;
     schemeCashModel.cardCode = self.curUser.cardCode;

@@ -7,7 +7,7 @@
 //
 
 #import "PayOrderYouhunViewController.h"
-#import "PayOrderViewController.h"
+#import "PayOrderLegViewController.h"
 #import "MyCouponTableViewCell.h"
 
 #define KMyCouponTableViewCell @"MyCouponTableViewCell"

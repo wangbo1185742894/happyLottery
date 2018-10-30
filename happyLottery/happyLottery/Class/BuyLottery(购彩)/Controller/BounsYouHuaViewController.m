@@ -8,7 +8,7 @@
 
 #import "BounsYouHuaViewController.h"
 #import "SelectView.h"
-#import "PayOrderViewController.h"
+#import "PayOrderLegViewController.h"
 #import "SchemeCashPayment.h"
 #import "BonusOptimize.h"
 #import "BounsYouViewCell.h"
@@ -458,7 +458,7 @@
         [self showPromptText:msg hideAfterDelay:1.7];
         return;
     }
-    PayOrderViewController *payVC = [[PayOrderViewController alloc]init];
+    PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
     SchemeCashPayment *schemeCashModel = [[SchemeCashPayment alloc]init];
     payVC.isYouhua = YES;
     schemeCashModel.cardCode = self.curUser.cardCode;

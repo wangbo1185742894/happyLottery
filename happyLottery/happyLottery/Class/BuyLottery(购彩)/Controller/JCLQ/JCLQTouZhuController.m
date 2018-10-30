@@ -9,7 +9,7 @@
 
 #import "JCLQTouZhuController.h"
 #import "SchemeCashPayment.h"
-#import "PayOrderViewController.h"
+#import "PayOrderLegViewController.h"
 #import "WBButton.h"
 #import "SelectView.h"
 
@@ -523,7 +523,7 @@
         [self showPromptText:msg hideAfterDelay:1.7];
         return;
     }
-    PayOrderViewController *payVC = [[PayOrderViewController alloc]init];
+    PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
     SchemeCashPayment *schemeCashModel = [[SchemeCashPayment alloc]init];
     schemeCashModel.cardCode = self.curUser.cardCode;
     schemeCashModel.lotteryName = @"竞彩篮球";

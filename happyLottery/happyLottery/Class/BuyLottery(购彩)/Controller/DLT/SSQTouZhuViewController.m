@@ -10,7 +10,7 @@
 #import "LotteryXHSection.h"
 #import "SetPayPwdViewController.h"
 #import "AESUtility.h"
-#import "PayOrderViewController.h"
+#import "PayOrderLegViewController.h"
 #import "SchemeCashPayment.h"
 #import "ZhuiHaoInfoViewController.h"
 #define removeall  300
@@ -799,7 +799,7 @@
         return;
     }
     
-    PayOrderViewController *payVC = [[PayOrderViewController alloc]init];
+    PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
     SchemeCashPayment *schemeCashModel = [[SchemeCashPayment alloc]init];
     schemeCashModel.lotteryName = @"双色球";
     schemeCashModel.cardCode = self.curUser.cardCode;

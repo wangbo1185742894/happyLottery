@@ -10,7 +10,7 @@
 #import "AESUtility.h"
 
 #import "LotteryXHSection.h"
-#import "PayOrderViewController.h"
+#import "PayOrderLegViewController.h"
 #import "SchemeCashPayment.h"
 #define removeall  300
 #define zancuntag 10001
@@ -1155,7 +1155,7 @@
         return;
     }
     
-    PayOrderViewController *payVC = [[PayOrderViewController alloc]init];
+    PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
     SchemeCashPayment *schemeCashModel = [[SchemeCashPayment alloc]init];
     schemeCashModel.lotteryName = self.lottery.name;
     schemeCashModel.cardCode = self.curUser.cardCode;

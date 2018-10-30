@@ -11,7 +11,7 @@
 #import "BounsYouHuaViewController.h"
 #import "TZSelectMatchCell.h"
 #import "SelectView.h"
-#import "PayOrderViewController.h"
+#import "PayOrderLegViewController.h"
 
 #define KTZSelectMatchCell @"TZSelectMatchCell"
 
@@ -498,7 +498,7 @@
         [self showPromptText:msg hideAfterDelay:1.7];
         return;
     }
-    PayOrderViewController *payVC = [[PayOrderViewController alloc]init];
+    PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
     SchemeCashPayment *schemeCashModel = [[SchemeCashPayment alloc]init];
     schemeCashModel.cardCode = self.curUser.cardCode;
     schemeCashModel.lotteryName = @"竞彩足球";

@@ -14,7 +14,7 @@
 #import "GYJLeagueSelectView.h"
 #import "WebViewController.h"
 #import "GYJTransaction.h"
-#import "PayOrderViewController.h"
+#import "PayOrderLegViewController.h"
 
 #define KHomeGJItemViewCell @"HomeGJItemViewCell"
 #define KWCHomeGYJItemViewCell  @"WCHomeGYJItemViewCell"
@@ -584,7 +584,7 @@
         [self showPromptText:msg hideAfterDelay:1.7];
         return;
     }
-    PayOrderViewController *payVC = [[PayOrderViewController alloc]init];
+    PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
     SchemeCashPayment *schemeCashModel = [[SchemeCashPayment alloc]init];
     schemeCashModel.cardCode = self.curUser.cardCode;
     if (isShowGJ) {

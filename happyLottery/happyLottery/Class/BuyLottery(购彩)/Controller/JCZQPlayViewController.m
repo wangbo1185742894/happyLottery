@@ -26,7 +26,7 @@
 #import "YuCeSchemeCreateViewController.h"
 #import "FootBallPlayViewController.h"
 #import "DiscoverViewController.h"
-#import "PayOrderViewController.h"
+#import "PayOrderLegViewController.h"
 #define KJCZQMatchViewCell @"JCZQMatchViewCell"
 @interface JCZQPlayViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryProfileSelectViewDelegate,LotteryManagerDelegate,JCZQMatchViewCellDelegate,JCZQSelectVIewDelegate,MatchLeagueSelectViewDelegate,OptionSelectedViewDelegate>
 

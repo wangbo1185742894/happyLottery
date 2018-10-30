@@ -13,7 +13,7 @@
 #import "MGLabel.h"
 #import "JCFATransaction.h"
 #import "SchemeCashPayment.h"
-#import "PayOrderViewController.h"
+#import "PayOrderLegViewController.h"
 @interface YuceSchemeDetailViewController ()<UITableViewDelegate,UITableViewDataSource,SelectViewDelegate,LotteryManagerDelegate>
 {
     BOOL isAgreePayDelegateRuler;
@@ -302,7 +302,7 @@
         [self showPromptText:msg hideAfterDelay:1.7];
         return;
     }
-    PayOrderViewController *payVC = [[PayOrderViewController alloc]init];
+    PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
     SchemeCashPayment *schemeCashModel = [[SchemeCashPayment alloc]init];
     schemeCashModel.cardCode = self.curUser.cardCode;
     schemeCashModel.schemeNo = schemeNO;

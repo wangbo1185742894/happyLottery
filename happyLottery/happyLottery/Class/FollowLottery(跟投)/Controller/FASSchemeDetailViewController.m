@@ -21,7 +21,7 @@
 #import "JCZQSchemeModel.h"
 #import "JCLQOrderDetailInfoViewController.h"
 #import "SuoSchemeViewCell.h"
-#import "PayOrderViewController.h"
+#import "PayOrderLegViewController.h"
 #import "LegInfoViewCell.h"
 
 #import <ShareSDK/ShareSDK+Base.h>
@@ -700,7 +700,7 @@
 }
 
 - (IBAction)actionToZhiFu:(id)sender {
-    PayOrderViewController *payVC = [[PayOrderViewController alloc]init];
+    PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
     SchemeCashPayment *schemeCashModel = [[SchemeCashPayment alloc]init];
     schemeCashModel.cardCode = self.curUser.cardCode;
     schemeCashModel.schemeNo =schemeDetail.schemeNO;

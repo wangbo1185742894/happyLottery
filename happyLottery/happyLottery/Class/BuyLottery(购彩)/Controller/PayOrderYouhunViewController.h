@@ -9,8 +9,8 @@
 #import "BaseViewController.h"
 
 #import "Coupon.h"
-@class PayOrderViewController;
+@class PayOrderLegViewController;
 @interface PayOrderYouhunViewController : BaseViewController
-@property(weak,nonatomic)PayOrderViewController * payOrderVC;
+@property(weak,nonatomic)PayOrderLegViewController * payOrderVC;
 @property(strong,nonatomic)NSMutableArray <Coupon *> *couponList;
 @end

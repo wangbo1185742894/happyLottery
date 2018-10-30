@@ -9,7 +9,7 @@
 #import "FollowDetailViewController.h"
 #import "SelectView.h"
 #import "SchemeCashPayment.h"
-#import "PayOrderViewController.h"
+#import "PayOrderLegViewController.h"
 #import "MGLabel.h"
 
 @interface FollowDetailViewController ()<SelectViewDelegate,LotteryManagerDelegate>
@@ -213,7 +213,7 @@
         [self showPromptText:msg hideAfterDelay:1.7];
         return;
     }
-    PayOrderViewController *payVC = [[PayOrderViewController alloc]init];
+    PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
     payVC.schemetype = SchemeTypeGenDan;
     SchemeCashPayment *schemeCashModel = [[SchemeCashPayment alloc]init];
     schemeCashModel.cardCode = self.curUser.cardCode;

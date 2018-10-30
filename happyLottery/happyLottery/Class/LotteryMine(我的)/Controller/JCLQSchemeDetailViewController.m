@@ -10,7 +10,7 @@
 #import "JCLQOrderDetailInfoViewController.h"
 #import "LotteryXHSection.h"
 #import "JCLQSchemeModel.h"
-#import "PayOrderViewController.h"
+#import "PayOrderLegViewController.h"
 #import "SchemeDetailMatchViewCell.h"
 #import "SchemeDetailViewCell.h"
 #import "TableHeaderView.h"
@@ -172,7 +172,7 @@
 }
 
 - (IBAction)actionGotoTouzhu:(id)sender {
-    PayOrderViewController *payVC = [[PayOrderViewController alloc]init];
+    PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
     SchemeCashPayment *schemeCashModel = [[SchemeCashPayment alloc]init];
     schemeCashModel.cardCode = self.curUser.cardCode;
     schemeCashModel.schemeNo =schemeDetail.schemeNO;

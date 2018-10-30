@@ -11,7 +11,7 @@
 #import "WordCupHomeItem.h"
 #import "LotteryXHSection.h"
 #import "JCZQSchemeModel.h"
-#import "PayOrderViewController.h"
+#import "PayOrderLegViewController.h"
 #import "CTZQWinResultCell.h"
 #import "SchemeDetailMatchViewCell.h"
 #import "SchemeDetailViewCell.h"
@@ -178,7 +178,7 @@
 - (IBAction)actionGotoTouzhu:(id)sender {
     //检查订单号是否在售
     
-    PayOrderViewController *payVC = [[PayOrderViewController alloc]init];
+    PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
     SchemeCashPayment *schemeCashModel = [[SchemeCashPayment alloc]init];
     schemeCashModel.cardCode = self.curUser.cardCode;
     schemeCashModel.schemeNo =schemeDetail.schemeNO;

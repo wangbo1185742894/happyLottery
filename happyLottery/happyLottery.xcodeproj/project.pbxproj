@@ -1752,6 +1752,10 @@
 		F9F262B51FE8F4AE00C2E60F /* RSKTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F262AB1FE8F4AE00C2E60F /* RSKTouchView.m */; };
 		F9F262B61FE8F4AE00C2E60F /* UIApplication+RSKImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F262AD1FE8F4AE00C2E60F /* UIApplication+RSKImageCropper.m */; };
 		F9F262B71FE8F4AE00C2E60F /* UIImage+RSKImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F262AF1FE8F4AE00C2E60F /* UIImage+RSKImageCropper.m */; };
+		F9F645A12188440C003E459B /* PayOrderLegViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F6459F2188440B003E459B /* PayOrderLegViewController.m */; };
+		F9F645A22188440C003E459B /* PayOrderLegViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9F645A02188440B003E459B /* PayOrderLegViewController.xib */; };
+		F9F645A621887AE4003E459B /* hui_select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F645A421887AE3003E459B /* hui_select@2x.png */; };
+		F9F645A721887AE4003E459B /* hui_select@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F645A521887AE4003E459B /* hui_select@3x.png */; };
 		F9F6CA961FF5D6B100A49F71 /* inform@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F6CA8A1FF5D6AD00A49F71 /* inform@3x.png */; };
 		F9F6CA971FF5D6B100A49F71 /* voice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F6CA8B1FF5D6AD00A49F71 /* voice@2x.png */; };
 		F9F6CA981FF5D6B100A49F71 /* about@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9F6CA8C1FF5D6AD00A49F71 /* about@2x.png */; };
@@ -4139,6 +4143,11 @@
 		F9F262AD1FE8F4AE00C2E60F /* UIApplication+RSKImageCropper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+RSKImageCropper.m"; sourceTree = "<group>"; };
 		F9F262AE1FE8F4AE00C2E60F /* UIImage+RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RSKImageCropper.h"; sourceTree = "<group>"; };
 		F9F262AF1FE8F4AE00C2E60F /* UIImage+RSKImageCropper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RSKImageCropper.m"; sourceTree = "<group>"; };
+		F9F6459E2188440B003E459B /* PayOrderLegViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayOrderLegViewController.h; sourceTree = "<group>"; };
+		F9F6459F2188440B003E459B /* PayOrderLegViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayOrderLegViewController.m; sourceTree = "<group>"; };
+		F9F645A02188440B003E459B /* PayOrderLegViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PayOrderLegViewController.xib; sourceTree = "<group>"; };
+		F9F645A421887AE3003E459B /* hui_select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hui_select@2x.png"; sourceTree = "<group>"; };
+		F9F645A521887AE4003E459B /* hui_select@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hui_select@3x.png"; sourceTree = "<group>"; };
 		F9F6CA8A1FF5D6AD00A49F71 /* inform@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inform@3x.png"; sourceTree = "<group>"; };
 		F9F6CA8B1FF5D6AD00A49F71 /* voice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "voice@2x.png"; sourceTree = "<group>"; };
 		F9F6CA8C1FF5D6AD00A49F71 /* about@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about@2x.png"; sourceTree = "<group>"; };
@@ -5435,6 +5444,7 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				F9F645A3218879C1003E459B /* LegImage */,
 				2DBFB42F2178196B0074B024 /* weixinsaoma@2x.png */,
 				2DBFB4302178196C0074B024 /* weixinsaoma@3x.png */,
 				2DBFB42C2178194D0074B024 /* zhifubaosaoma@2x.png */,
@@ -6303,6 +6313,9 @@
 				2D36E1F520E49C960001390A /* PayOrderViewController.h */,
 				2D36E1F620E49C970001390A /* PayOrderViewController.m */,
 				2D36E1F420E49C950001390A /* PayOrderViewController.xib */,
+				F9F6459E2188440B003E459B /* PayOrderLegViewController.h */,
+				F9F6459F2188440B003E459B /* PayOrderLegViewController.m */,
+				F9F645A02188440B003E459B /* PayOrderLegViewController.xib */,
 				2D4B1EA31FDFCA520034B708 /* ForecastViewController.h */,
 				2D4B1EA41FDFCA520034B708 /* ForecastViewController.m */,
 				2D4B1EA51FDFCA520034B708 /* ForecastViewController.xib */,
@@ -7640,6 +7653,15 @@
 			path = RSKImageCropper;
 			sourceTree = "<group>";
 		};
+		F9F645A3218879C1003E459B /* LegImage */ = {
+			isa = PBXGroup;
+			children = (
+				F9F645A421887AE3003E459B /* hui_select@2x.png */,
+				F9F645A521887AE4003E459B /* hui_select@3x.png */,
+			);
+			path = LegImage;
+			sourceTree = "<group>";
+		};
 		F9F6CA891FF5D69800A49F71 /* systemSet */ = {
 			isa = PBXGroup;
 			children = (
@@ -8211,6 +8233,7 @@
 				2D628B2B1FECA9C40013D0E1 /* touzhusaishijia@2x.png in Resources */,
 				2D03F19F205A23B400C81BEF /* footerball@2x.png in Resources */,
 				2D23487E2049422D005AE1F2 /* bunsoptimseleced@3x.png in Resources */,
+				F9F645A22188440C003E459B /* PayOrderLegViewController.xib in Resources */,
 				F9B5D9A72060A9DE00C9F6DC /* flag524@2x.png in Resources */,
 				2D92A8212010545D0038E165 /* btn_jinru@3x.png in Resources */,
 				2D7B13E4204E878D0035AE89 /* CTZQWinResultCell.xib in Resources */,
@@ -8398,6 +8421,7 @@
 				F9BC6E1D20C2B2EC0037998B /* dengdai@2x.png in Resources */,
 				2DBFB4B021781E570074B024 /* zbar-helpicons.png in Resources */,
 				2D739CEB1FEB48B600264044 /* wukuangwuyuanjiaoselect@3x.png in Resources */,
+				F9F645A721887AE4003E459B /* hui_select@3x.png in Resources */,
 				2D40CAA2201EDE5700DDCFE3 /* shut@2x.png in Resources */,
 				F9DC8C4120A57F02006B31F4 /* pic_lianjiexian@3x.png in Resources */,
 				2D628B3A1FECAA9A0013D0E1 /* fengkuangjingcai-monitouzhu-weixuanze@3x.png in Resources */,
@@ -8831,6 +8855,7 @@
 				2D92A81A200EF91D0038E165 /* win_tag@2x.png in Resources */,
 				F9ADD2F7214B8AD00091C4A1 /* red_check_select@2x.png in Resources */,
 				F98C3EFE20747CE700C1DBF8 /* blueBall@3x.png in Resources */,
+				F9F645A621887AE4003E459B /* hui_select@2x.png in Resources */,
 				F9BC6DF420C285620037998B /* hezuo_gongying@3x.png in Resources */,
 				F9705EC4207B6DDC00E25E4E /* shuangseqiu@3x.png in Resources */,
 				F90D690A20FC4A33007865E4 /* 11x5tzh_selNo@3x.png in Resources */,
@@ -9136,6 +9161,7 @@
 				2D628B561FECCE4C0013D0E1 /* TZSelectMatchCell.m in Sources */,
 				2D03F27C2060BAE800C81BEF /* AddBankCardViewController.m in Sources */,
 				2D7B1414204E8FD50035AE89 /* CTZQWinHistoryTableViewCell.m in Sources */,
+				F9F645A12188440C003E459B /* PayOrderLegViewController.m in Sources */,
 				2DDEDE5D1FD568C9007AEBF7 /* MKAnnotationView+WebCache.m in Sources */,
 				F95BC7CF201724A6006D6243 /* OpenRedPopView.m in Sources */,
 				F9D9F2AD1FF22C54006434DC /* CashAndIntegrationWaterTableViewCell.m in Sources */,

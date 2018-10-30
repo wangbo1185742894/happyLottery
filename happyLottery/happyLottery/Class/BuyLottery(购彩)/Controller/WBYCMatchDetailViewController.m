@@ -7,7 +7,7 @@
 //
 
 #import "WBYCMatchDetailViewController.h"
-#import "PayOrderViewController.h"
+#import "PayOrderLegViewController.h"
 #import "SchemeCashPayment.h"
 #import "SelectView.h"
 #import "MGLabel.h"
@@ -602,7 +602,7 @@
         [self showPromptText:msg hideAfterDelay:1.7];
         return;
     }
-    PayOrderViewController *payVC = [[PayOrderViewController alloc]init];
+    PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
     SchemeCashPayment *schemeCashModel = [[SchemeCashPayment alloc]init];
     schemeCashModel.cardCode = self.curUser.cardCode;
     schemeCashModel.schemeNo = schemeNO;
