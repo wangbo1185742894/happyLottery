@@ -24,7 +24,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.topDis.constant = NaviHeight;
+    if ([self isIphoneX]) {
+        self.topDis.constant = 88;
+    }else{
+        self.topDis.constant = 64;
+        if ([Utility isIOS11After]) {
+            self.automaticallyAdjustsScrollViewInsets = NO; //莫名其妙  contentOffset.y 成-64了  MMP
+        }
+    }
     self.title  = @"扫码支付";
     self.webView.delegate = self;
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/app/recharge/indexWX?orderNo=%@",H5BaseAddress,self.orderNo]]]];
