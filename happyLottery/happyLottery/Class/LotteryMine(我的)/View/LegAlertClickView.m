@@ -37,7 +37,7 @@
     
     BaseViewController *baseVC = (BaseViewController *)[self getCurrentVC];
     
-    if (self.wechat == nil) {
+    if (self.wechat == nil || self.wechat.length == 0) {
         [baseVC showPromptText:@"暂未上传微信信息" hideAfterDelay:2.0];
     }else{
         [baseVC showPromptText:@"微信号已复制到剪贴板" hideAfterDelay:2.0];
@@ -48,7 +48,7 @@
     });
 }
 - (IBAction)actionClickMobile:(id)sender {
-    if (self.mobile == nil) {
+    if (self.mobile == nil || self.mobile.length == 0) {
         BaseViewController *baseVC = (BaseViewController *)[self getCurrentVC];
         
         [baseVC showPromptText:@"暂未上传手机号" hideAfterDelay:2.0];
