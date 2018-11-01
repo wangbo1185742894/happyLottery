@@ -1449,6 +1449,10 @@
 		F9AA4BC2218B06120094E7C7 /* LegDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9AA4BC0218B06110094E7C7 /* LegDetailHeaderView.xib */; };
 		F9AA4BC5218B24170094E7C7 /* leg_yue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9AA4BC3218B24160094E7C7 /* leg_yue@2x.png */; };
 		F9AA4BC6218B24170094E7C7 /* leg_yue@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9AA4BC4218B24160094E7C7 /* leg_yue@3x.png */; };
+		F9AA4BCA218B2C0F0094E7C7 /* ZhuanLegTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9AA4BC7218B2C0D0094E7C7 /* ZhuanLegTableViewCell.xib */; };
+		F9AA4BCB218B2C0F0094E7C7 /* ZhuanLegTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9AA4BC9218B2C0E0094E7C7 /* ZhuanLegTableViewCell.m */; };
+		F9AA4BCF218B2C2F0094E7C7 /* CunLegTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9AA4BCC218B2C2D0094E7C7 /* CunLegTableViewCell.m */; };
+		F9AA4BD0218B2C2F0094E7C7 /* CunLegTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9AA4BCD218B2C2D0094E7C7 /* CunLegTableViewCell.xib */; };
 		F9ADB10520FDCF4700AFAA03 /* ZhuiHaoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9ADB10320FDCF4700AFAA03 /* ZhuiHaoCell.m */; };
 		F9ADB10620FDCF4700AFAA03 /* ZhuiHaoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9ADB10420FDCF4700AFAA03 /* ZhuiHaoCell.xib */; };
 		F9ADB10820FDF41800AFAA03 /* zhuihao.html in Resources */ = {isa = PBXBuildFile; fileRef = F9ADB10720FDF41700AFAA03 /* zhuihao.html */; };
@@ -3823,6 +3827,12 @@
 		F9AA4BC0218B06110094E7C7 /* LegDetailHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LegDetailHeaderView.xib; sourceTree = "<group>"; };
 		F9AA4BC3218B24160094E7C7 /* leg_yue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leg_yue@2x.png"; sourceTree = "<group>"; };
 		F9AA4BC4218B24160094E7C7 /* leg_yue@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leg_yue@3x.png"; sourceTree = "<group>"; };
+		F9AA4BC7218B2C0D0094E7C7 /* ZhuanLegTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZhuanLegTableViewCell.xib; sourceTree = "<group>"; };
+		F9AA4BC8218B2C0E0094E7C7 /* ZhuanLegTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhuanLegTableViewCell.h; sourceTree = "<group>"; };
+		F9AA4BC9218B2C0E0094E7C7 /* ZhuanLegTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhuanLegTableViewCell.m; sourceTree = "<group>"; };
+		F9AA4BCC218B2C2D0094E7C7 /* CunLegTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CunLegTableViewCell.m; sourceTree = "<group>"; };
+		F9AA4BCD218B2C2D0094E7C7 /* CunLegTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CunLegTableViewCell.xib; sourceTree = "<group>"; };
+		F9AA4BCE218B2C2E0094E7C7 /* CunLegTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CunLegTableViewCell.h; sourceTree = "<group>"; };
 		F9ADB10220FDCF4700AFAA03 /* ZhuiHaoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZhuiHaoCell.h; sourceTree = "<group>"; };
 		F9ADB10320FDCF4700AFAA03 /* ZhuiHaoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZhuiHaoCell.m; sourceTree = "<group>"; };
 		F9ADB10420FDCF4700AFAA03 /* ZhuiHaoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZhuiHaoCell.xib; sourceTree = "<group>"; };
@@ -7665,6 +7675,12 @@
 		F9DB2CAB2189610800D4F95E /* LegView */ = {
 			isa = PBXGroup;
 			children = (
+				F9AA4BCE218B2C2E0094E7C7 /* CunLegTableViewCell.h */,
+				F9AA4BCC218B2C2D0094E7C7 /* CunLegTableViewCell.m */,
+				F9AA4BCD218B2C2D0094E7C7 /* CunLegTableViewCell.xib */,
+				F9AA4BC8218B2C0E0094E7C7 /* ZhuanLegTableViewCell.h */,
+				F9AA4BC9218B2C0E0094E7C7 /* ZhuanLegTableViewCell.m */,
+				F9AA4BC7218B2C0D0094E7C7 /* ZhuanLegTableViewCell.xib */,
 				F9AA4BBE218B06100094E7C7 /* LegDetailHeaderView.h */,
 				F9AA4BBF218B06110094E7C7 /* LegDetailHeaderView.m */,
 				F9AA4BC0218B06110094E7C7 /* LegDetailHeaderView.xib */,
@@ -8882,6 +8898,7 @@
 				F9BC6DD420C231F50037998B /* GroupFollowCell.xib in Resources */,
 				F90D68FD20F2FDB0007865E4 /* sdguize.html in Resources */,
 				F90FCD7D1FF3810F00BD807C /* stale@3x.png in Resources */,
+				F9AA4BCA218B2C0F0094E7C7 /* ZhuanLegTableViewCell.xib in Resources */,
 				2D03F1A0205A23B400C81BEF /* footerball@3x.png in Resources */,
 				2DAE6F262150D6CE0074FFAB /* yilingqu@2x.png in Resources */,
 				F9BC6E4720C2D62C0037998B /* AdvantageCell.xib in Resources */,
@@ -8950,6 +8967,7 @@
 				F98C3EE82071FDB400C1DBF8 /* ssq_logo.png in Resources */,
 				2D739C241FE2611C00264044 /* IQKeyboardManager.bundle in Resources */,
 				F94AA9DD1FEB7B780021B980 /* bank@3x.png in Resources */,
+				F9AA4BD0218B2C2F0094E7C7 /* CunLegTableViewCell.xib in Resources */,
 				F9DC8C4020A57F02006B31F4 /* pic_jinqizhuangtai@2x.png in Resources */,
 				F94AA9BA1FEB59DA0021B980 /* list@3x.png in Resources */,
 				F928C6B31FF4BA40001F1A32 /* lessen@3x.png in Resources */,
@@ -9478,6 +9496,7 @@
 				2D0600231FFDCD9F009E7568 /* MJRefreshBackGifFooter.m in Sources */,
 				F9A6391520A2AD1F00AA07C6 /* RecomPerModel.m in Sources */,
 				2DDEDE7F1FD568C9007AEBF7 /* UIProgressView+AFNetworking.m in Sources */,
+				F9AA4BCB218B2C0F0094E7C7 /* ZhuanLegTableViewCell.m in Sources */,
 				2DE892A02020724C008926A6 /* JWCacheURLProtocol.m in Sources */,
 				F9B5DA6D2060BD2E00C9F6DC /* HomeGJItemViewCell.m in Sources */,
 				2D7B8D8120C12E53000EAFB1 /* AgentMemberModel.m in Sources */,
@@ -9715,6 +9734,7 @@
 				2D739C941FE8A4DE00264044 /* JCZQSelectAllPlayTypeVIew.m in Sources */,
 				2D7B13FE204E887A0035AE89 /* CTZQOpenLotterySelectDateView.m in Sources */,
 				2D03F28B2060BAE900C81BEF /* PersonnalCenterViewController.m in Sources */,
+				F9AA4BCF218B2C2F0094E7C7 /* CunLegTableViewCell.m in Sources */,
 				2D739C4E1FE3AF9500264044 /* BaseModel.m in Sources */,
 				2D8CBFD01FF3769F00CC367F /* YuCeLiShiZhanJViewController.m in Sources */,
 				2D7B13B4204E873D0035AE89 /* CTZQBet.m in Sources */,
