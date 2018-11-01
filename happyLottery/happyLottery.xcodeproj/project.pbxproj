@@ -1445,6 +1445,10 @@
 		F9A75BC120D11371005AA881 /* wodequanzi@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9A75BBF20D11371005AA881 /* wodequanzi@3x.png */; };
 		F9A75BC220D11371005AA881 /* wodequanzi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9A75BC020D11371005AA881 /* wodequanzi@2x.png */; };
 		F9A941D420A92C1900A7D67A /* PersonCenterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F9A941D320A92C1900A7D67A /* PersonCenterModel.m */; };
+		F9AA4BC1218B06120094E7C7 /* LegDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9AA4BBF218B06110094E7C7 /* LegDetailHeaderView.m */; };
+		F9AA4BC2218B06120094E7C7 /* LegDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9AA4BC0218B06110094E7C7 /* LegDetailHeaderView.xib */; };
+		F9AA4BC5218B24170094E7C7 /* leg_yue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9AA4BC3218B24160094E7C7 /* leg_yue@2x.png */; };
+		F9AA4BC6218B24170094E7C7 /* leg_yue@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9AA4BC4218B24160094E7C7 /* leg_yue@3x.png */; };
 		F9ADB10520FDCF4700AFAA03 /* ZhuiHaoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9ADB10320FDCF4700AFAA03 /* ZhuiHaoCell.m */; };
 		F9ADB10620FDCF4700AFAA03 /* ZhuiHaoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9ADB10420FDCF4700AFAA03 /* ZhuiHaoCell.xib */; };
 		F9ADB10820FDF41800AFAA03 /* zhuihao.html in Resources */ = {isa = PBXBuildFile; fileRef = F9ADB10720FDF41700AFAA03 /* zhuihao.html */; };
@@ -3814,6 +3818,11 @@
 		F9A75BC020D11371005AA881 /* wodequanzi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wodequanzi@2x.png"; sourceTree = "<group>"; };
 		F9A941D220A92C1900A7D67A /* PersonCenterModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonCenterModel.h; sourceTree = "<group>"; };
 		F9A941D320A92C1900A7D67A /* PersonCenterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonCenterModel.m; sourceTree = "<group>"; };
+		F9AA4BBE218B06100094E7C7 /* LegDetailHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LegDetailHeaderView.h; sourceTree = "<group>"; };
+		F9AA4BBF218B06110094E7C7 /* LegDetailHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LegDetailHeaderView.m; sourceTree = "<group>"; };
+		F9AA4BC0218B06110094E7C7 /* LegDetailHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LegDetailHeaderView.xib; sourceTree = "<group>"; };
+		F9AA4BC3218B24160094E7C7 /* leg_yue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leg_yue@2x.png"; sourceTree = "<group>"; };
+		F9AA4BC4218B24160094E7C7 /* leg_yue@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leg_yue@3x.png"; sourceTree = "<group>"; };
 		F9ADB10220FDCF4700AFAA03 /* ZhuiHaoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZhuiHaoCell.h; sourceTree = "<group>"; };
 		F9ADB10320FDCF4700AFAA03 /* ZhuiHaoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZhuiHaoCell.m; sourceTree = "<group>"; };
 		F9ADB10420FDCF4700AFAA03 /* ZhuiHaoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZhuiHaoCell.xib; sourceTree = "<group>"; };
@@ -7656,6 +7665,9 @@
 		F9DB2CAB2189610800D4F95E /* LegView */ = {
 			isa = PBXGroup;
 			children = (
+				F9AA4BBE218B06100094E7C7 /* LegDetailHeaderView.h */,
+				F9AA4BBF218B06110094E7C7 /* LegDetailHeaderView.m */,
+				F9AA4BC0218B06110094E7C7 /* LegDetailHeaderView.xib */,
 				F9BC1A49218ACDE900BEE7E4 /* LegSelectFooterView.h */,
 				F9BC1A4A218ACDE900BEE7E4 /* LegSelectFooterView.m */,
 				F9BC1A4B218ACDEA00BEE7E4 /* LegSelectFooterView.xib */,
@@ -7764,6 +7776,8 @@
 		F9F645A3218879C1003E459B /* LegImage */ = {
 			isa = PBXGroup;
 			children = (
+				F9AA4BC3218B24160094E7C7 /* leg_yue@2x.png */,
+				F9AA4BC4218B24160094E7C7 /* leg_yue@3x.png */,
 				F9BC1A78218AF55800BEE7E4 /* leg_green@2x.png */,
 				F9BC1A79218AF55900BEE7E4 /* leg_green@3x.png */,
 				F9BC1A70218AEFFB00BEE7E4 /* leg_moneyTwo@2x.png */,
@@ -8172,6 +8186,7 @@
 				F9C4EED5202063D300CDCDBA /* about_logo@2x.png in Resources */,
 				2D06004C1FFE0606009E7568 /* JCLQOrderDetailInfoViewController.xib in Resources */,
 				F9C3BA2F200894ED00916F3C /* answer@2x.png in Resources */,
+				F9AA4BC2218B06120094E7C7 /* LegDetailHeaderView.xib in Resources */,
 				2D8CBFE51FF376DA00CC367F /* YuCeSchemeCreateCell.xib in Resources */,
 				2D3617872069D86C003093F9 /* GYJLeagueSelectView.xib in Resources */,
 				2D739D071FEB853500264044 /* btnbackimgNomal@3x.png in Resources */,
@@ -8217,6 +8232,7 @@
 				F9BC6E1F20C2B2EC0037998B /* apply_statusk@3x.png in Resources */,
 				F958F18120BC04FF00F30690 /* icon_guanyajun@3x.png in Resources */,
 				2D40CAA7201EDE5700DDCFE3 /* shut@3x.png in Resources */,
+				F9AA4BC6218B24170094E7C7 /* leg_yue@3x.png in Resources */,
 				2D7B12D6204D3B550035AE89 /* LotteryExtrendViewController.xib in Resources */,
 				2D4B1E881FDF684E0034B708 /* yuce@3x.png in Resources */,
 				F924BA981FE252CF00830BF4 /* phone@3x.png in Resources */,
@@ -9113,6 +9129,7 @@
 				F9BC1A71218AEFFB00BEE7E4 /* leg_moneyTwo@3x.png in Resources */,
 				2D8CC0021FF3868A00CC367F /* youkuangbtnback@3x.png in Resources */,
 				F9FDFADE2011BE300029ACC7 /* logo_45@2x.png in Resources */,
+				F9AA4BC5218B24170094E7C7 /* leg_yue@2x.png in Resources */,
 				F999278620037A8C00023F8F /* empty_youhuiquan@3x.png in Resources */,
 				F9CDBED12023243A00A1BE71 /* chongzhichecked@3x.png in Resources */,
 				F91565FE1FFCC73800E254CE /* qrcode@2x.png in Resources */,
@@ -9555,6 +9572,7 @@
 				2D628B691FF213050013D0E1 /* SchemeCashPayment.m in Sources */,
 				2D7B8DBE20C62A1F000EAFB1 /* RuZhangViewController.m in Sources */,
 				2D7BFAC120E08748006173EC /* MineCollectionViewCell.m in Sources */,
+				F9AA4BC1218B06120094E7C7 /* LegDetailHeaderView.m in Sources */,
 				2D3A06C520A3D6CB003C5E7B /* HomeTabTopAdsViewCell.m in Sources */,
 				2D7B12E4204D3BD60035AE89 /* Lottery.m in Sources */,
 				2D739C781FE7A38B00264044 /* JCZQProfile.m in Sources */,

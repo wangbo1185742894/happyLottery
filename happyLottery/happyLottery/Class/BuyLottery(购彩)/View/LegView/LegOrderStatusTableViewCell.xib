@@ -86,6 +86,14 @@
                     <constraint firstItem="mHz-eZ-F8K" firstAttribute="centerY" secondItem="qDM-QT-qdn" secondAttribute="centerY" id="usV-i0-vhF"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="chuPiaoImg" destination="mHz-eZ-F8K" id="eP3-kT-D4a"/>
+                <outlet property="chuPiaoStatue" destination="dw0-UU-VQw" id="Mlj-Lt-8PT"/>
+                <outlet property="zhiFuImg" destination="qDM-QT-qdn" id="uaF-8q-wGn"/>
+                <outlet property="zhiFuStatus" destination="5nq-DG-yuy" id="1Te-Gy-Nfw"/>
+                <outlet property="zhongJiangImage" destination="SRX-up-PEB" id="MlG-wg-AZb"/>
+                <outlet property="zhongJiangStatus" destination="YwV-c4-aXe" id="0t2-5z-wSH"/>
+            </connections>
             <point key="canvasLocation" x="108.8" y="8.995502248875562"/>
         </tableViewCell>
     </objects>

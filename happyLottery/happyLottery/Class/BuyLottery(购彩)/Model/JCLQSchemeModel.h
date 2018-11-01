@@ -84,8 +84,8 @@
 
 @property(nonatomic,copy)NSString * legId;
 -(NSString *)getSchemeImgState;
-
 -(NSString *)getSchemeState;
+-(NSString *)getLegSchemeState;
 -(CGFloat) getJCLQCellHeight;
 -(BOOL)isHasLeg;
 @end

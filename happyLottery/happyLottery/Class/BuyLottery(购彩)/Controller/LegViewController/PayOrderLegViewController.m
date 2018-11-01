@@ -20,6 +20,7 @@
 #import "LegSelectViewController.h"
 #import "WebShowViewController.h"
 #import "LegRechargeOrderViewController.h"
+#import "LegOrderDetailViewController.h"
 
 #define KPayTypeListCell @"PayTypeListCell"
 

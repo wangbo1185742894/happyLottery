@@ -49,7 +49,6 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(checkSchemePayState:) name:@"UPPaymentControlFinishNotification" object:nil];
     rechList = [NSMutableArray arrayWithCapacity:0];
-    [self setRightBarButtonItem];
     self.viewControllerNo = @"A105";
     self.payWebView.delegate = self;
     self.memberMan.delegate = self;
@@ -168,15 +167,6 @@
         }
         
         for (UIButton *itemDic in self.chongZhiSelectItem) {
-            
-//                itemDic.layer.borderColor = SystemGreen.CGColor;
-//                [itemDic setBackgroundImage:[UIImage imageWithColor:SystemGreen] forState:UIControlStateSelected];
-//                [itemDic setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//
-//
-//                itemDic.layer.borderColor = TFBorderColor.CGColor;
-//                [itemDic setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateSelected];
-//                [itemDic setTitleColor:SystemLightGray forState:UIControlStateNormal];
             
             if (itemDic.tag == 100 + i) {
                 itemDic.selected = model.isSelect;
@@ -376,7 +366,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-
 //获取充值方式
 -(void)getListByChannel{
     
@@ -560,15 +549,6 @@
     [[UIApplication sharedApplication].keyWindow addSubview:rulePopView];
 }
 
--(void)setRightBarButtonItem{
-    
-    UIButton *rightBtnRec = [UIButton buttonWithType:UIButtonTypeCustom];
-    rightBtnRec.frame = CGRectMake(0, 0, 30, 30);
-    [rightBtnRec addTarget:self action:@selector(showPlayRec) forControlEvents:UIControlEventTouchUpInside];
-    [rightBtnRec setImage:[UIImage imageNamed:@"redpacketrule"] forState:UIControlStateNormal];
-    UIBarButtonItem *barRedPacketRec = [[UIBarButtonItem alloc]initWithCustomView:rightBtnRec];
-    self.navigationItem.rightBarButtonItem  = barRedPacketRec;
-}
 -(void)actionYinLianChongZhi:(NSString *)orderNo{
     NSString * tn = orderNo;
     if (tn) {

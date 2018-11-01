@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LegOrderStatusTableViewCell : UITableViewCell
 
+- (void)loadNewDate:(NSString *)orderStatus;
+
 @end
 
 NS_ASSUME_NONNULL_END

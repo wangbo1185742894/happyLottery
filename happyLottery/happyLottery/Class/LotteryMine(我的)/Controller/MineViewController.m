@@ -33,6 +33,9 @@
 #import "Utility.h"
 #import "MyPostSchemeViewController.h"
 #import "MineRecommendViewCell.h"
+#import "LegRechargeViewController.h"
+
+
 
 
 #define KMineRecommendViewCell @"MineRecommendViewCell"
@@ -74,6 +77,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightCon;
 @property (weak, nonatomic) IBOutlet UIButton *siginBtn;
 @property(nonatomic,strong)  LoadData  *loadDataTool;
+@property (weak, nonatomic) IBOutlet UIButton *legYueBtn;
 @end
 
 @implementation MineViewController
@@ -95,8 +99,13 @@
         self.topDIs.constant = -20;
         self.topHeadCons.constant = 211;
     }
-    self.viewChongZhi.layer.masksToBounds = YES;
-    self.viewChongZhi.layer.cornerRadius = 12;
+    
+    self.withdrawalsBtn.layer.masksToBounds = YES;
+    self.withdrawalsBtn.layer.cornerRadius = 12;
+    
+    self.legYueBtn.layer.masksToBounds = YES;
+    self.legYueBtn.layer.cornerRadius = 12;
+    
     if (KscreenHeight >667) {
         self.heightCon.constant = KscreenHeight - self.tableView.mj_y;
     } else {
@@ -416,7 +425,7 @@
         [self needLogin];
     } else {
         if ([self.curUser.whitelist boolValue]) {
-            TopUpsViewController *t = [[TopUpsViewController alloc]init];
+            LegRechargeViewController *t = [[LegRechargeViewController alloc]init];
             t.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:t animated:YES];
         }

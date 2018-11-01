@@ -110,6 +110,52 @@
     return state;
 }
 
+
+-(NSString *)getLegSchemeState{
+    NSString *state;
+    if ([self.schemeStatus isEqualToString:@"INIT"]) {
+        state = @"待支付";
+    }else if([self.schemeStatus isEqualToString:@"CANCEL"]){
+        state = @"出票失败";
+    }else if([self.schemeStatus isEqualToString:@"REPEAL"]){
+        state = @"已退款";
+    }else {
+        if ([self.ticketStatus isEqualToString:@"FAIL_TICKET"]) {
+            state = @"已退款";
+            
+        }else if ([self.ticketStatus isEqualToString:@"WAIT_PAY"]) {
+            state = @"待支付";
+            
+        }else if ([self.ticketStatus isEqualToString:@"SUC_TICKET"]) {
+            
+            if ([self.winningStatus isEqualToString:@"WAIT_LOTTERY"]) {
+                
+                state = @"待开奖";
+                
+            }else{
+                
+                if ([self.won boolValue]) {
+                    
+                    state = @"已中奖";
+                    
+                    
+                }else{
+                    state = @"未中奖";
+                }
+            }
+            
+        }else{
+            if ([self.costType isEqualToString:@"CASH"]) {
+                state = @"出票中";
+            }else{
+                state = @"待开奖";
+            }
+            
+        }
+    }
+    return state;
+}
+
 -(NSString *)getSchemeState{
     
     NSString *state;
