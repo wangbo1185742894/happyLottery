@@ -269,6 +269,7 @@
 
 - (IBAction)actionToRechage:(id)sender {
     LegRechargeOrderViewController *legRechargrVC = [[LegRechargeOrderViewController alloc]init];
+    legRechargrVC.orderCost = self.labRealCost.text;
     [self.navigationController pushViewController:legRechargrVC animated:YES];
 }
 

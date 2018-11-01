@@ -36,6 +36,7 @@
 @property (weak, nonatomic) IBOutlet UIWebView *payWebView;
 @property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *labCaijin;
 @property (weak, nonatomic) IBOutlet UIButton *btnChongzhi;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *consHeight;
 @property(nonatomic,strong)NSString *aliPayMinBouns;
 @end
 
@@ -44,7 +45,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.aliPayMinBouns = @"0";
-    self.title = @"充值";
+    self.title = @"转账";
     self.automaticallyAdjustsScrollViewInsets = NO;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(checkSchemePayState:) name:@"UPPaymentControlFinishNotification" object:nil];
     rechList = [NSMutableArray arrayWithCapacity:0];
@@ -53,8 +54,13 @@
     self.payWebView.delegate = self;
     self.memberMan.delegate = self;
     self.lotteryMan.delegate =self;
-    self.labBanlence.text = [NSString stringWithFormat:@"%@元",self.curUser.totalBanlece];
+    self.labBanlence.text = [NSString stringWithFormat:@"%@",self.orderCost];
     [self setTableView];
+    if ([self isIphoneX]) {
+        self.consHeight.constant = 50+34;
+    }else{
+        self.consHeight.constant = 50;
+    }
     if ([self isIphoneX]) {
         self.top.constant = 88;
     }

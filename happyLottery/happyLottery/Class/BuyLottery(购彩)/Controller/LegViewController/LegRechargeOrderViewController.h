@@ -12,4 +12,7 @@
 
 @interface LegRechargeOrderViewController : BaseViewController
 
+//订单金额
+@property (nonatomic , copy) NSString *orderCost;
+
 @end
