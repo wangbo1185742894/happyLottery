@@ -1539,6 +1539,12 @@
 		F9B5D9AE2060A9DE00C9F6DC /* flag774@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9B5D96E2060A9DE00C9F6DC /* flag774@3x.png */; };
 		F9B5DA6D2060BD2E00C9F6DC /* HomeGJItemViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9B5DA682060BD2D00C9F6DC /* HomeGJItemViewCell.m */; };
 		F9B5DA6E2060BD2E00C9F6DC /* WCHomeGYJItemViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9B5DA6A2060BD2D00C9F6DC /* WCHomeGYJItemViewCell.m */; };
+		F9BC1A4C218ACDEA00BEE7E4 /* LegSelectFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BC1A4A218ACDE900BEE7E4 /* LegSelectFooterView.m */; };
+		F9BC1A4D218ACDEA00BEE7E4 /* LegSelectFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9BC1A4B218ACDEA00BEE7E4 /* LegSelectFooterView.xib */; };
+		F9BC1A51218AD45E00BEE7E4 /* LegRechargeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9BC1A4F218AD45D00BEE7E4 /* LegRechargeViewController.xib */; };
+		F9BC1A52218AD45E00BEE7E4 /* LegRechargeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BC1A50218AD45D00BEE7E4 /* LegRechargeViewController.m */; };
+		F9BC1A56218AD78E00BEE7E4 /* LegRechargeOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BC1A54218AD78D00BEE7E4 /* LegRechargeOrderViewController.m */; };
+		F9BC1A57218AD78E00BEE7E4 /* LegRechargeOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9BC1A55218AD78E00BEE7E4 /* LegRechargeOrderViewController.xib */; };
 		F9BC6DC920C228290037998B /* GroupNewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BC6DC720C228290037998B /* GroupNewViewController.m */; };
 		F9BC6DCA20C228290037998B /* GroupNewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9BC6DC820C228290037998B /* GroupNewViewController.xib */; };
 		F9BC6DCE20C22D740037998B /* AgentInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BC6DCC20C22D740037998B /* AgentInfoCell.m */; };
@@ -1678,6 +1684,12 @@
 		F9D9F2AD1FF22C54006434DC /* CashAndIntegrationWaterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9D9F2AB1FF22C54006434DC /* CashAndIntegrationWaterTableViewCell.m */; };
 		F9D9F2AE1FF22C54006434DC /* CashAndIntegrationWaterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9D9F2AC1FF22C54006434DC /* CashAndIntegrationWaterTableViewCell.xib */; };
 		F9D9F2B11FF2505E006434DC /* CashBoltter.m in Sources */ = {isa = PBXBuildFile; fileRef = F9D9F2B01FF2505E006434DC /* CashBoltter.m */; };
+		F9DB2CA821895B3500D4F95E /* LegSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DB2CA621895B3500D4F95E /* LegSelectViewController.m */; };
+		F9DB2CA921895B3500D4F95E /* LegSelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9DB2CA721895B3500D4F95E /* LegSelectViewController.xib */; };
+		F9DB2CAF2189613100D4F95E /* SelectLegTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DB2CAD2189613100D4F95E /* SelectLegTableViewCell.m */; };
+		F9DB2CB02189613100D4F95E /* SelectLegTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9DB2CAE2189613100D4F95E /* SelectLegTableViewCell.xib */; };
+		F9DB2CB32189625000D4F95E /* leg_personIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9DB2CB12189624F00D4F95E /* leg_personIcon@3x.png */; };
+		F9DB2CB42189625000D4F95E /* leg_personIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9DB2CB22189625000D4F95E /* leg_personIcon@2x.png */; };
 		F9DC698C1FDF7CF5007D384D /* Mine.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9DC698B1FDF7CF5007D384D /* Mine.plist */; };
 		F9DC69951FDF878D007D384D /* MyOrderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DC69931FDF878D007D384D /* MyOrderListViewController.m */; };
 		F9DC69961FDF878D007D384D /* MyOrderListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9DC69941FDF878D007D384D /* MyOrderListViewController.xib */; };
@@ -3890,6 +3902,15 @@
 		F9B5DA682060BD2D00C9F6DC /* HomeGJItemViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeGJItemViewCell.m; sourceTree = "<group>"; };
 		F9B5DA692060BD2D00C9F6DC /* WCHomeGYJItemViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCHomeGYJItemViewCell.h; sourceTree = "<group>"; };
 		F9B5DA6A2060BD2D00C9F6DC /* WCHomeGYJItemViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCHomeGYJItemViewCell.m; sourceTree = "<group>"; };
+		F9BC1A49218ACDE900BEE7E4 /* LegSelectFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LegSelectFooterView.h; sourceTree = "<group>"; };
+		F9BC1A4A218ACDE900BEE7E4 /* LegSelectFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LegSelectFooterView.m; sourceTree = "<group>"; };
+		F9BC1A4B218ACDEA00BEE7E4 /* LegSelectFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LegSelectFooterView.xib; sourceTree = "<group>"; };
+		F9BC1A4E218AD45D00BEE7E4 /* LegRechargeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LegRechargeViewController.h; sourceTree = "<group>"; };
+		F9BC1A4F218AD45D00BEE7E4 /* LegRechargeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LegRechargeViewController.xib; sourceTree = "<group>"; };
+		F9BC1A50218AD45D00BEE7E4 /* LegRechargeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LegRechargeViewController.m; sourceTree = "<group>"; };
+		F9BC1A53218AD78D00BEE7E4 /* LegRechargeOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LegRechargeOrderViewController.h; sourceTree = "<group>"; };
+		F9BC1A54218AD78D00BEE7E4 /* LegRechargeOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LegRechargeOrderViewController.m; sourceTree = "<group>"; };
+		F9BC1A55218AD78E00BEE7E4 /* LegRechargeOrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LegRechargeOrderViewController.xib; sourceTree = "<group>"; };
 		F9BC6DC620C228290037998B /* GroupNewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GroupNewViewController.h; sourceTree = "<group>"; };
 		F9BC6DC720C228290037998B /* GroupNewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupNewViewController.m; sourceTree = "<group>"; };
 		F9BC6DC820C228290037998B /* GroupNewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupNewViewController.xib; sourceTree = "<group>"; };
@@ -4051,6 +4072,14 @@
 		F9D9F2AC1FF22C54006434DC /* CashAndIntegrationWaterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CashAndIntegrationWaterTableViewCell.xib; sourceTree = "<group>"; };
 		F9D9F2AF1FF2505E006434DC /* CashBoltter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CashBoltter.h; path = "happyLottery/Class/LotteryMine(我的)/View/CashBoltter.h"; sourceTree = SOURCE_ROOT; };
 		F9D9F2B01FF2505E006434DC /* CashBoltter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CashBoltter.m; path = "happyLottery/Class/LotteryMine(我的)/View/CashBoltter.m"; sourceTree = SOURCE_ROOT; };
+		F9DB2CA521895B3500D4F95E /* LegSelectViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LegSelectViewController.h; sourceTree = "<group>"; };
+		F9DB2CA621895B3500D4F95E /* LegSelectViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LegSelectViewController.m; sourceTree = "<group>"; };
+		F9DB2CA721895B3500D4F95E /* LegSelectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LegSelectViewController.xib; sourceTree = "<group>"; };
+		F9DB2CAC2189613100D4F95E /* SelectLegTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectLegTableViewCell.h; sourceTree = "<group>"; };
+		F9DB2CAD2189613100D4F95E /* SelectLegTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectLegTableViewCell.m; sourceTree = "<group>"; };
+		F9DB2CAE2189613100D4F95E /* SelectLegTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectLegTableViewCell.xib; sourceTree = "<group>"; };
+		F9DB2CB12189624F00D4F95E /* leg_personIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leg_personIcon@3x.png"; sourceTree = "<group>"; };
+		F9DB2CB22189625000D4F95E /* leg_personIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leg_personIcon@2x.png"; sourceTree = "<group>"; };
 		F9DC698B1FDF7CF5007D384D /* Mine.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Mine.plist; sourceTree = "<group>"; };
 		F9DC69921FDF878D007D384D /* MyOrderListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyOrderListViewController.h; sourceTree = "<group>"; };
 		F9DC69931FDF878D007D384D /* MyOrderListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyOrderListViewController.m; sourceTree = "<group>"; };
@@ -6269,6 +6298,7 @@
 				F9FC153920625814009BAD68 /* WebViewController.h */,
 				F9FC153A20625814009BAD68 /* WebViewController.m */,
 				F9FC153820625814009BAD68 /* WebViewController.xib */,
+				F9DB2CAA21895B4500D4F95E /* LegViewController */,
 				2D7B1393204E87020035AE89 /* CTZQ */,
 				2D7B1292204D37BD0035AE89 /* DLT */,
 				2D0EEA792012CEF800B0769C /* HomeJumpViewController.h */,
@@ -6313,9 +6343,6 @@
 				2D36E1F520E49C960001390A /* PayOrderViewController.h */,
 				2D36E1F620E49C970001390A /* PayOrderViewController.m */,
 				2D36E1F420E49C950001390A /* PayOrderViewController.xib */,
-				F9F6459E2188440B003E459B /* PayOrderLegViewController.h */,
-				F9F6459F2188440B003E459B /* PayOrderLegViewController.m */,
-				F9F645A02188440B003E459B /* PayOrderLegViewController.xib */,
 				2D4B1EA31FDFCA520034B708 /* ForecastViewController.h */,
 				2D4B1EA41FDFCA520034B708 /* ForecastViewController.m */,
 				2D4B1EA51FDFCA520034B708 /* ForecastViewController.xib */,
@@ -6421,6 +6448,7 @@
 		2DDEDC021FD4DBB6007AEBF7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F9DB2CAB2189610800D4F95E /* LegView */,
 				F9705E29207A0DE700E25E4E /* JCLQ */,
 				F9705E27207A0DE700E25E4E /* JCLQLotteryProfileSelectView.h */,
 				F9705E26207A0DE700E25E4E /* JCLQLotteryProfileSelectView.m */,
@@ -7567,6 +7595,38 @@
 			name = feedback;
 			sourceTree = "<group>";
 		};
+		F9DB2CAA21895B4500D4F95E /* LegViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F9BC1A53218AD78D00BEE7E4 /* LegRechargeOrderViewController.h */,
+				F9BC1A54218AD78D00BEE7E4 /* LegRechargeOrderViewController.m */,
+				F9BC1A55218AD78E00BEE7E4 /* LegRechargeOrderViewController.xib */,
+				F9BC1A4E218AD45D00BEE7E4 /* LegRechargeViewController.h */,
+				F9BC1A50218AD45D00BEE7E4 /* LegRechargeViewController.m */,
+				F9BC1A4F218AD45D00BEE7E4 /* LegRechargeViewController.xib */,
+				F9DB2CA521895B3500D4F95E /* LegSelectViewController.h */,
+				F9DB2CA621895B3500D4F95E /* LegSelectViewController.m */,
+				F9DB2CA721895B3500D4F95E /* LegSelectViewController.xib */,
+				F9F6459E2188440B003E459B /* PayOrderLegViewController.h */,
+				F9F6459F2188440B003E459B /* PayOrderLegViewController.m */,
+				F9F645A02188440B003E459B /* PayOrderLegViewController.xib */,
+			);
+			path = LegViewController;
+			sourceTree = "<group>";
+		};
+		F9DB2CAB2189610800D4F95E /* LegView */ = {
+			isa = PBXGroup;
+			children = (
+				F9BC1A49218ACDE900BEE7E4 /* LegSelectFooterView.h */,
+				F9BC1A4A218ACDE900BEE7E4 /* LegSelectFooterView.m */,
+				F9BC1A4B218ACDEA00BEE7E4 /* LegSelectFooterView.xib */,
+				F9DB2CAC2189613100D4F95E /* SelectLegTableViewCell.h */,
+				F9DB2CAD2189613100D4F95E /* SelectLegTableViewCell.m */,
+				F9DB2CAE2189613100D4F95E /* SelectLegTableViewCell.xib */,
+			);
+			path = LegView;
+			sourceTree = "<group>";
+		};
 		F9DC8C3320A57E71006B31F4 /* PersonCenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -7656,6 +7716,8 @@
 		F9F645A3218879C1003E459B /* LegImage */ = {
 			isa = PBXGroup;
 			children = (
+				F9DB2CB22189625000D4F95E /* leg_personIcon@2x.png */,
+				F9DB2CB12189624F00D4F95E /* leg_personIcon@3x.png */,
 				F9F645A421887AE3003E459B /* hui_select@2x.png */,
 				F9F645A521887AE4003E459B /* hui_select@3x.png */,
 			);
@@ -8130,6 +8192,7 @@
 				F9B5D9A02060A9DE00C9F6DC /* flag430@3x.png in Resources */,
 				F9E53D5120EE28D70072B8AF /* chongzhi_mine@2x.png in Resources */,
 				F9A75BB920D0CFC9005AA881 /* border_gendan@2x.png in Resources */,
+				F9DB2CB42189625000D4F95E /* leg_personIcon@2x.png in Resources */,
 				2D0EEA742011DE9600B0769C /* unselected@3x.png in Resources */,
 				2D7B8D9020C4D53D000EAFB1 /* MyCircleViewController.xib in Resources */,
 				2D3617662061FA3D003093F9 /* dan_notWin@2x.png in Resources */,
@@ -8275,6 +8338,7 @@
 				2D3065D120EC63530084DB97 /* omitreach@2x.png in Resources */,
 				F9ADD2FF214B8AF00091C4A1 /* red_quanCheck_select@3x.png in Resources */,
 				F9B5D9822060A9DE00C9F6DC /* flag392@3x.png in Resources */,
+				F9DB2CB32189625000D4F95E /* leg_personIcon@3x.png in Resources */,
 				F92855D820A2E7C90023A0AC /* win@3x.png in Resources */,
 				2D40CAA8201EDE5700DDCFE3 /* bj_down@3x.png in Resources */,
 				F965561520C52EFE0017066C /* pic_wangguan@3x.png in Resources */,
@@ -8660,6 +8724,7 @@
 				F9BC6E4220C2D1C20037998B /* agreenNormal@3x.png in Resources */,
 				2D2060171FFCB71E0086E266 /* btn_shouqi_@3x.png in Resources */,
 				2D03F2822060BAE800C81BEF /* ChangeLoginPWDViewController.xib in Resources */,
+				F9BC1A57218AD78E00BEE7E4 /* LegRechargeOrderViewController.xib in Resources */,
 				F90D68D520EF647C007865E4 /* DeleteOrderView.xib in Resources */,
 				F957C1CD1FE36B3F0090B19B /* close@2x.png in Resources */,
 				2D7BFAC420E0925B006173EC /* set@3x.png in Resources */,
@@ -8694,6 +8759,7 @@
 				F9705ED3207DD15200E25E4E /* shiyixuanwu@3x.png in Resources */,
 				2D1C350620C8C17A00686DD5 /* icon_history@2x.png in Resources */,
 				2D5171EF200C72E700C3CD7F /* icon_daizhi_@2x.png in Resources */,
+				F9BC1A51218AD45E00BEE7E4 /* LegRechargeViewController.xib in Resources */,
 				F9B5D9A92060A9DE00C9F6DC /* flag543@2x.png in Resources */,
 				2D5171D8200C728C00C3CD7F /* icon_zhanbaotongji_@2x.png in Resources */,
 				F9BC6DF820C285620037998B /* zhuce_jiusong@2x.png in Resources */,
@@ -8744,6 +8810,7 @@
 				2D06FFEA1FFDC9EB009E7568 /* football@3x.png in Resources */,
 				2DB4B34E214B8D8200E639FE /* redpackettop@3x.png in Resources */,
 				F9C3BA1E20088E3800916F3C /* starUnselecte@3x.png in Resources */,
+				F9DB2CA921895B3500D4F95E /* LegSelectViewController.xib in Resources */,
 				2D628B4B1FECAE980013D0E1 /* JingCaiChaunFaSelectView.xib in Resources */,
 				F9705E48207A0DE800E25E4E /* HHTZAllPlayType.xib in Resources */,
 				2DD5992520E1D92E002441B5 /* X115LimitNumPopView.xib in Resources */,
@@ -8764,6 +8831,7 @@
 				F9B5D98A2060A9DE00C9F6DC /* flag403@3x.png in Resources */,
 				2D40CAA3201EDE5700DDCFE3 /* button_line@2x.png in Resources */,
 				F91565EE1FFCBDAE00E254CE /* scancode@2x.png in Resources */,
+				F9DB2CB02189613100D4F95E /* SelectLegTableViewCell.xib in Resources */,
 				2D4D609420AEAACD00280033 /* huisebiankuang@2x.png in Resources */,
 				F928C6B71FF4BA40001F1A32 /* addmoney@2x.png in Resources */,
 				2D05C86C20A43631001A8953 /* pic_hongdanbangbeijing@3x.png in Resources */,
@@ -8975,6 +9043,7 @@
 				2D7B1353204E37100035AE89 /* helper@3x.png in Resources */,
 				F9D7C54F20060C1A00415B4E /* CouponGuidViewController.xib in Resources */,
 				2D36175E2061E6F2003093F9 /* shengfucai@2x.png in Resources */,
+				F9BC1A4D218ACDEA00BEE7E4 /* LegSelectFooterView.xib in Resources */,
 				2D8CC0021FF3868A00CC367F /* youkuangbtnback@3x.png in Resources */,
 				F9FDFADE2011BE300029ACC7 /* logo_45@2x.png in Resources */,
 				F999278620037A8C00023F8F /* empty_youhuiquan@3x.png in Resources */,
@@ -9150,6 +9219,7 @@
 				F9BC6DC920C228290037998B /* GroupNewViewController.m in Sources */,
 				2D739C5D1FE3B31500264044 /* FMDatabasePool.m in Sources */,
 				F98A603120638EA9008C3132 /* GYJSchemeViewCell.m in Sources */,
+				F9DB2CA821895B3500D4F95E /* LegSelectViewController.m in Sources */,
 				2DDEDC441FD5254C007AEBF7 /* User.m in Sources */,
 				2DB100E7216E01CD00CE3F82 /* LegAlertClickView.m in Sources */,
 				2DD5991120E1C976002441B5 /* LotteryPlayViewController.m in Sources */,
@@ -9242,6 +9312,7 @@
 				F9F262B21FE8F4AE00C2E60F /* RSKImageCropViewController.m in Sources */,
 				F94AA9F31FEBBFE00021B980 /* BankCardSetTableViewCell.m in Sources */,
 				2D27A20B20DC84500050F6D5 /* LMJScrollTextView2.m in Sources */,
+				F9BC1A4C218ACDEA00BEE7E4 /* LegSelectFooterView.m in Sources */,
 				2DA39ED920523AAB00A03FD1 /* ZHTableViewCell.m in Sources */,
 				2DDEDE6F1FD568C9007AEBF7 /* AFHTTPSessionManager.m in Sources */,
 				2DDEDC321FD520FF007AEBF7 /* MemberManager.m in Sources */,
@@ -9256,6 +9327,7 @@
 				F9DC8C4720A57F8E006B31F4 /* PersonCenterViewController.m in Sources */,
 				2DDEDE721FD568C9007AEBF7 /* AFURLConnectionOperation.m in Sources */,
 				F9705E1A207A0DAE00E25E4E /* JCLQTouZhuController.m in Sources */,
+				F9DB2CAF2189613100D4F95E /* SelectLegTableViewCell.m in Sources */,
 				F9B5DA6E2060BD2E00C9F6DC /* WCHomeGYJItemViewCell.m in Sources */,
 				F9705E4D207A0DE800E25E4E /* JCLQRFSFCell.m in Sources */,
 				2DBFB4BB21781E570074B024 /* qrspec.c in Sources */,
@@ -9398,6 +9470,7 @@
 				2DAE6F2E21510BBD0074FFAB /* LegWordModel.m in Sources */,
 				2D8CBFCF1FF3769F00CC367F /* YuceSchemeDetailViewController.m in Sources */,
 				2D36E1F320E49C4B0001390A /* TopUpsViewController.m in Sources */,
+				F9BC1A56218AD78E00BEE7E4 /* LegRechargeOrderViewController.m in Sources */,
 				2DDEDC471FD52562007AEBF7 /* GlobalInstance.m in Sources */,
 				2D7B8D9920C51FE2000EAFB1 /* MyCricleFriendVC.m in Sources */,
 				2D2060351FFCCB380086E266 /* SchemListCell.m in Sources */,
@@ -9489,6 +9562,7 @@
 				2DD5994920E1EAED002441B5 /* DTTimePeriodGroup.m in Sources */,
 				2DD5995820E1EFAC002441B5 /* ZDdropView.m in Sources */,
 				F9705E4F207A0DE800E25E4E /* JCLQSFCCell.m in Sources */,
+				F9BC1A52218AD45E00BEE7E4 /* LegRechargeViewController.m in Sources */,
 				2D739C7B1FE7A3B400264044 /* BaseProfile.m in Sources */,
 				2D5171B32007110D00C3CD7F /* SchemeInfoViewCell.m in Sources */,
 				F9DC699F1FDF88E5007D384D /* IntegralMallViewController.m in Sources */,

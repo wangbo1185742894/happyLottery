@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PayOrderLegViewController">
             <connections>
+                <outlet property="bottomHeightCons" destination="vY0-lY-e7e" id="6TM-8K-Myv"/>
                 <outlet property="labCanUseYouhuiquan" destination="mZk-H1-tTd" id="I3U-4k-c3h"/>
                 <outlet property="labCostInfo" destination="Rxh-rR-ysu" id="nyx-Ng-npN"/>
                 <outlet property="labOrderCost" destination="4bo-7j-Fn7" id="Vyx-CZ-o1S"/>
@@ -18,6 +19,7 @@
                 <outlet property="labZheKou" destination="vMF-AI-6nT" id="ARJ-Sr-ECg"/>
                 <outlet property="payTypeView" destination="ut0-Np-ehE" id="zoH-Kf-0st"/>
                 <outlet property="selectLegLab" destination="Zy9-5n-dLc" id="SuO-YT-Myb"/>
+                <outlet property="sendBalanceLab" destination="FlS-j8-10l" id="GT3-Ms-gY0"/>
                 <outlet property="topViewCons" destination="NRt-5y-tps" id="9K1-ag-zzO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewDisBottom" destination="WQd-hl-BDr" id="da2-J3-zLI"/>
@@ -289,13 +291,16 @@
                             </constraints>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                             <state key="normal" title="转账给代买小哥"/>
+                            <connections>
+                                <action selector="actionToRechage:" destination="-1" eventType="touchUpInside" id="R5J-4s-PZx"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="8W9-h3-nYk" firstAttribute="leading" secondItem="gh9-Vg-xh2" secondAttribute="leading" constant="15" id="SoI-q6-X90"/>
                         <constraint firstItem="8W9-h3-nYk" firstAttribute="centerX" secondItem="gh9-Vg-xh2" secondAttribute="centerX" id="cDx-Ck-X2D"/>
-                        <constraint firstItem="8W9-h3-nYk" firstAttribute="centerY" secondItem="gh9-Vg-xh2" secondAttribute="centerY" id="p6w-BQ-13Z"/>
+                        <constraint firstItem="8W9-h3-nYk" firstAttribute="top" secondItem="gh9-Vg-xh2" secondAttribute="top" constant="7" id="eIk-Hk-IyQ"/>
                         <constraint firstAttribute="height" constant="50" id="vY0-lY-e7e"/>
                     </constraints>
                 </view>

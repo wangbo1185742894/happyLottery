@@ -9,26 +9,18 @@
 #import "PayOrderLegViewController.h"
 #import "TabObaListCell.h"
 #import "LegWordModel.h"
-#import "PaySuccessViewController.h"
-#import "WXApi.h"
-#import "ChannelModel.h"
-#import "JCZQSchemeModel.h"
-#import "WBInputPopView.h"
 #import "JCZQPlayViewController.h"
 #import "JCLQPlayController.h"
 #import "AESUtility.h"
-#import "BaseViewController.h"
 #import "PayOrderYouhunViewController.h"
-#import "WebShowViewController.h"
-#import "SetPayPWDViewController.h"
-#import "YuCeSchemeCreateViewController.h"
 #import "LotteryPlayViewController.h"
 #import "DLTPlayViewController.h"
 #import "SSQPlayViewController.h"
-#import "BaseViewController.h"
-#import "UMChongZhiViewController.h"
-#import "YinLanPayManage.h"
 #import "MyCouponViewController.h"
+#import "LegSelectViewController.h"
+#import "WebShowViewController.h"
+#import "LegRechargeOrderViewController.h"
+
 #define KPayTypeListCell @"PayTypeListCell"
 
 #define KTabObaListCell @"TabObaListCell"
@@ -53,7 +45,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *labRealCost;
 @property (weak, nonatomic) IBOutlet UILabel *labZheKou;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomHeightCons;
+
 @property(strong,nonatomic)NSMutableArray <Coupon *> *couponList;
+@property (weak, nonatomic) IBOutlet UILabel *sendBalanceLab;
 
 @end
 
@@ -73,18 +68,20 @@
     [super viewDidLoad];
     topViewCons.constant = NaviHeight;
     if ([self isIphoneX]) {
-        self.viewDisBottom.constant = 34;
+        self.bottomHeightCons.constant = 50+34;
     }else{
-        self.viewDisBottom.constant = 0;
+        self.bottomHeightCons.constant = 50;
     }
     if ([Utility isIOS11After]) {
         self.automaticallyAdjustsScrollViewInsets = NO; // 莫名其妙  contentOffset.y 成-64了
     }
     self.title = @"预约支付";
     
-    UITapGestureRecognizer *ViewTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(actionToYouHuiQuan)];
-    [self.youHuiQuanView
-     addGestureRecognizer:ViewTapGestureRecognizer];
+    UITapGestureRecognizer *youHuiViewTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(actionToYouHuiQuan)];
+    [self.youHuiQuanView addGestureRecognizer:youHuiViewTapGestureRecognizer];
+    
+    UITapGestureRecognizer *legListViewTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(actionToSelectLeg)];
+    [self.payTypeView addGestureRecognizer:legListViewTapGestureRecognizer];
     
     self.memberMan.delegate = self;
     
@@ -94,7 +91,8 @@
     self.couponList = [NSMutableArray arrayWithCapacity:0];
     
     //请求小哥信息
-    /// labCostInfo.text = [NSString stringWithFormat:@"明细：彩票店出票%.2f + 跑腿费%@元",self.cashPayMemt.subscribed,[legWorkList firstObject].cost];
+    ///
+    labCostInfo.text = [NSString stringWithFormat:@"明细：彩票店出票%.2f + 跑腿费%@元",self.cashPayMemt.subscribed,@"0"];
     ///
     
     [self.memberMan getMemberByCardCode:@{@"cardCode":self.curUser.cardCode}];
@@ -102,40 +100,12 @@
     [self showLoadingText:@"正在提交订单"];
     
     [self.memberMan getAvailableCoupon:@{@"cardCode":self.curUser.cardCode,@"amount":@(self.cashPayMemt.realSubscribed)}];
-    [self.lotteryMan getLotteryShop:nil];
-}
-
--(void)gotLotteryShop:(NSDictionary *)redList errorInfo:(NSString *)errMsg{
-    if (redList != nil) {
-        selectShopModel = [[LotteryShopDto alloc]initWith:redList];
-    }
-}
-
-
-/**
- 服务器请求回小哥状态信息 （暂时弃用）
-
- @param strUrl 是否显示快递小哥列表  默认选择小哥倒计时
- @param index 0 1
- */
--(void)gotCommonSetValue:(NSString *)strUrl andIndex:(NSInteger)index{
-    if(index == 0){
-        self.isShowOba = [strUrl boolValue];
-        if(self.isShowOba == YES){
-//            [self .lotteryMan getLegWorkList:nil];
-        }
-    }else if(index == 1){
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            if(self.isShowOba == YES){
-                
-            }
-        });
-    }
 }
 
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self showCoupon];
 }
 
 
@@ -188,18 +158,18 @@
         labCanUseYouhuiquan.text = [NSString stringWithFormat:@"暂无可用优惠券"];
         self.labZheKou.text = [NSString stringWithFormat:@"-0.00 元"];
         self.labZheKou.textColor = SystemGray;
-        self.labRealCost.text = [NSString stringWithFormat:@"%.2f 元",self.cashPayMemt.realSubscribed] ;
+        self.labRealCost.text = [NSString stringWithFormat:@"%.2f",self.cashPayMemt.realSubscribed - [self.curUser.sendBalance doubleValue]] ;
     }else {
         if (self.curSelectCoupon != nil) {
             labCanUseYouhuiquan.text = [NSString stringWithFormat:@"￥%@元优惠券",self.curSelectCoupon.deduction];
             self.labZheKou.text = [NSString stringWithFormat:@"-%.2f 元",[self.curSelectCoupon.deduction doubleValue]];
             self.labZheKou.textColor = SystemRed;
-            self.labRealCost.text = [NSString stringWithFormat:@"%.2f 元",self.cashPayMemt.realSubscribed - [self.curSelectCoupon.deduction doubleValue]] ;
+            self.labRealCost.text = [NSString stringWithFormat:@"%.2f",self.cashPayMemt.realSubscribed - [self.curSelectCoupon.deduction doubleValue] - [self.curUser.sendBalance doubleValue]] ;
         }else{
             labCanUseYouhuiquan.text = [NSString stringWithFormat:@"%ld张可用优惠券",self.couponList.count];
             self.labZheKou.text = [NSString stringWithFormat:@"-0.00 元"];
             self.labZheKou.textColor = SystemGray;
-            self.labRealCost.text = [NSString stringWithFormat:@"%.2f 元",self.cashPayMemt.realSubscribed] ;
+            self.labRealCost.text = [NSString stringWithFormat:@"%.2f",self.cashPayMemt.realSubscribed - [self.curUser.sendBalance doubleValue]] ;
         }
     }
 }
@@ -214,8 +184,10 @@
     self.curUser.balance = user.balance;
     self.curUser.sendBalance = user.sendBalance;
     self.curUser.score = user.score;
+    self.sendBalanceLab.text = [NSString stringWithFormat:@"-%.2f 元",[self.curUser.sendBalance doubleValue]];
     self.labOrderCost.text = [NSString stringWithFormat:@"%.2f 元",self.cashPayMemt.realSubscribed];
-    self.labRealCost.text = [NSString stringWithFormat:@"%.2f 元",self.cashPayMemt.realSubscribed - [self.curSelectCoupon.deduction doubleValue]] ;
+    self.labRealCost.text = [NSString stringWithFormat:@"%.2f 元",self.cashPayMemt.realSubscribed - [self.curSelectCoupon.deduction doubleValue] - [self.curUser.sendBalance doubleValue]] ;
+    
 }
 
 -(void)navigationBackToLastPageitem{
@@ -282,6 +254,11 @@
     }
 }
 
+- (void)actionToSelectLeg {
+    LegSelectViewController *legSelectVC = [[LegSelectViewController alloc]init];
+    [self.navigationController pushViewController:legSelectVC animated:YES];
+}
+
 - (IBAction)showRuler:(UIButton *)sender {
     NSURL *pathUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"tbz_useragreement" ofType:@"html"]];
     WebShowViewController *webShow = [[WebShowViewController alloc]init];
@@ -290,6 +267,10 @@
     [self.navigationController pushViewController:webShow animated:YES];
 }
 
+- (IBAction)actionToRechage:(id)sender {
+    LegRechargeOrderViewController *legRechargrVC = [[LegRechargeOrderViewController alloc]init];
+    [self.navigationController pushViewController:legRechargrVC animated:YES];
+}
 
 
 - (void)navigationBackToLastPage{
