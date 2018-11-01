@@ -33,6 +33,7 @@
                 <outlet property="viewChongZhi" destination="kk5-rP-XGf" id="Z8c-GM-oLS"/>
                 <outlet property="viewJIfen" destination="ut7-e6-ow1" id="9hN-x1-QY9"/>
                 <outlet property="withdrawalsBtn" destination="K9m-13-mCb" id="Mus-5Q-kTO"/>
+                <outlet property="yueLeftCons" destination="nkr-Q3-cRu" id="dkP-jE-W8N"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -286,6 +287,9 @@
                                     <state key="normal" title="小哥余额" image="leg_yue.png">
                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
+                                    <connections>
+                                        <action selector="actionToCunKuan:" destination="-1" eventType="touchUpInside" id="r72-o9-Qa3"/>
+                                    </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12039.68元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vUM-N9-aXp">
                                     <rect key="frame" x="44" y="44" width="80.5" height="18"/>

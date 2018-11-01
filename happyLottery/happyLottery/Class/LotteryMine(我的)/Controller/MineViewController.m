@@ -34,8 +34,7 @@
 #import "MyPostSchemeViewController.h"
 #import "MineRecommendViewCell.h"
 #import "LegRechargeViewController.h"
-
-
+#import "LegSelectViewController.h"
 
 
 #define KMineRecommendViewCell @"MineRecommendViewCell"
@@ -77,6 +76,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightCon;
 @property (weak, nonatomic) IBOutlet UIButton *siginBtn;
 @property(nonatomic,strong)  LoadData  *loadDataTool;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *yueLeftCons;
 @property (weak, nonatomic) IBOutlet UIButton *legYueBtn;
 @end
 
@@ -230,6 +230,7 @@
     [self.loginBtn setTitle:@"登录/注册" forState:UIControlStateNormal];
     [self.userImage setImage:[UIImage imageNamed:@"user_mine.png"]];
     self.loginBtn.enabled = YES;
+    self.yueLeftCons.constant = - KscreenWidth/3;
     self.balanceLab.text = @"0";
     self.integralLab.text = @"0";
     self.redPacketLab.text =  @"0";
@@ -328,6 +329,11 @@
     }else{
         [self.userImage sd_setImageWithURL:[NSURL URLWithString:self.curUser.headUrl] placeholderImage:[UIImage imageNamed:@"user_mine.png"]];
         
+    }
+    if (total == 0) {
+        self.yueLeftCons.constant = - KscreenWidth/3;
+    } else {
+        self.yueLeftCons.constant = 0;
     }
 }
 
@@ -913,6 +919,16 @@
         CashInfoViewController * pcVC = [[CashInfoViewController alloc]init];
         pcVC.hidesBottomBarWhenPushed = YES;
         [pcVC setMenuOffset:CashInfoCaijin];
+        [self.navigationController pushViewController:pcVC animated:YES];
+    }
+}
+- (IBAction)actionToCunKuan:(id)sender {
+    if (!self.curUser.isLogin) {
+        [self needLogin];
+    } else {
+        LegSelectViewController * pcVC = [[LegSelectViewController alloc]init];
+        pcVC.hidesBottomBarWhenPushed = YES;
+        pcVC.titleName = @"存款";
         [self.navigationController pushViewController:pcVC animated:YES];
     }
 }

@@ -32,16 +32,17 @@
     [super awakeFromNib];
     // Initialization code
     self.layer.masksToBounds = YES;
-    self.layer.cornerRadius = 4;
+    self.layer.cornerRadius = 8;
 }
 
 - (void)setFrame:(CGRect)frame{
     frame.origin.x += 6;
-    frame.origin.y += 3;
+    frame.origin.y += 6;
     frame.size.height -= 6;
     frame.size.width -= 12;
     [super setFrame:frame];
 }
+
 
 - (void)loadLegDate:(LegWordModel *)legModel{
     self.selectBackGroup.selected = legModel.isSelect;

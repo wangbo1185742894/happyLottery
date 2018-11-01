@@ -10,8 +10,13 @@
 #import "SelectLegTableViewCell.h"
 #import "LegWordModel.h"
 #import "LegSelectFooterView.h"
+#import "CunLegTableViewCell.h"
+#import "ZhuanLegTableViewCell.h"
+
 
 #define KSelectLegTableViewCell    @"SelectLegTableViewCell"
+#define KCunLegTableViewCell       @"CunLegTableViewCell"
+#define KZhuanLegTableViewCell     @"ZhuanLegTableViewCell"
 
 @interface LegSelectViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate>{
     
@@ -30,7 +35,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"选择代码小哥";
+    self.title = _titleName;
     self.personArray = [NSMutableArray arrayWithCapacity:0];
     [self setTableView];
     self.lotteryMan.delegate = self;
@@ -44,6 +49,8 @@
     personTableView.delegate = self;
     personTableView.dataSource = self;
     [personTableView registerNib:[UINib nibWithNibName:KSelectLegTableViewCell bundle:nil] forCellReuseIdentifier:KSelectLegTableViewCell];
+    [personTableView registerNib:[UINib nibWithNibName:KCunLegTableViewCell bundle:nil] forCellReuseIdentifier:KCunLegTableViewCell];
+    [personTableView registerNib:[UINib nibWithNibName:KZhuanLegTableViewCell bundle:nil] forCellReuseIdentifier:KZhuanLegTableViewCell];
 }
 
 - (void)loadNewDate {
@@ -77,12 +84,19 @@
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 74;
+    if ([self.titleName isEqualToString:@"选择代买小哥"]) {
+        return 74;
+    }
+    return 0.1;
 }
 
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    return footView;
+    if ([self.titleName isEqualToString:@"选择代买小哥"]) {
+        return footView;
+    }
+    return nil;
+    
 }
 
 
@@ -91,7 +105,21 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    SelectLegTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KSelectLegTableViewCell];
+    if ([self.titleName isEqualToString:@"选择代买小哥"]) {
+        SelectLegTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KSelectLegTableViewCell];
+        [cell loadLegDate:[self.personArray objectAtIndex:indexPath.row]];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        personTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        return cell;
+    }
+    if ([self.titleName isEqualToString:@"给跑腿小哥转账"]) {
+        ZhuanLegTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KZhuanLegTableViewCell];
+        [cell loadLegDate:[self.personArray objectAtIndex:indexPath.row]];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        personTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        return cell;
+    }
+    CunLegTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KCunLegTableViewCell];
     [cell loadLegDate:[self.personArray objectAtIndex:indexPath.row]];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     personTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -99,7 +127,13 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 100;
+    if ([self.titleName isEqualToString:@"选择代买小哥"]) {
+       return 110;
+    }
+    if ([self.titleName isEqualToString:@"给跑腿小哥转账"]) {
+       return 98;
+    }
+    return 80;
 }
 
 

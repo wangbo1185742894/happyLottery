@@ -257,6 +257,7 @@
 
 - (void)actionToSelectLeg {
     LegSelectViewController *legSelectVC = [[LegSelectViewController alloc]init];
+    legSelectVC.titleName = @"选择代买小哥";
     [self.navigationController pushViewController:legSelectVC animated:YES];
 }
 

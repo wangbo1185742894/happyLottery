@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LegSelectViewController : BaseViewController
 
+@property (nonatomic , copy) NSString *titleName;  //页面名称  给跑腿小哥转账  存款  代买小哥
+
 @end
 
 NS_ASSUME_NONNULL_END
