@@ -7,14 +7,17 @@
 //
 
 #import "BaseViewController.h"
-#import "SchemeCashPayment.h"
 #import "PayTypeListCell.h"
 
 #import "Coupon.h"
 
 @interface PayOrderLegViewController : BaseViewController
 
-@property(nonatomic,strong)SchemeCashPayment *cashPayMemt;
+@property(nonatomic,strong)JCZQTranscation *transction;
+
+@property(nonatomic,copy)NSString *lotteryName;
+
+@property(assign,nonatomic)double subscribed;
 
 //所选优惠券
 @property(nonatomic,strong)Coupon *curSelectCoupon;

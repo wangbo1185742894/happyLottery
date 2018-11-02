@@ -58,7 +58,7 @@
     self.protectMoney.text = @"平台签约保证金100000元";
     
     //余额
-    self.yuE.text = [NSString stringWithFormat:@"%@",legModel.totalBalance];
+    self.yuE.text = [NSString stringWithFormat:@"%f",[legModel.totalBalance doubleValue]];
     //跑腿费
     if ([legModel.cost integerValue] == 0) {
         self.legCost.text = @"免费跑腿";

@@ -230,7 +230,7 @@
     [self hideLoadingView];
     schemeCashModel.subscribed =[self getBetCost];
     schemeCashModel.realSubscribed = [self getBetCost];
-    payVC.cashPayMemt = schemeCashModel;
+//    payVC.cashPayMemt = schemeCashModel;
     [self.navigationController pushViewController:payVC animated:YES];
 }
 

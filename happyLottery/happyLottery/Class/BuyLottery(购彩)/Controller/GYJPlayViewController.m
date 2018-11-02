@@ -15,7 +15,7 @@
 #import "WebViewController.h"
 #import "GYJTransaction.h"
 #import "PayOrderLegViewController.h"
-
+#import "SchemeCashPayment.h"
 #define KHomeGJItemViewCell @"HomeGJItemViewCell"
 #define KWCHomeGYJItemViewCell  @"WCHomeGYJItemViewCell"
 
@@ -602,7 +602,7 @@
     [self hideLoadingView];
     schemeCashModel.subscribed = self.transaction.betCost;
     schemeCashModel.realSubscribed = self.transaction.betCost;
-    payVC.cashPayMemt = schemeCashModel;
+//    payVC.cashPayMemt = schemeCashModel;
     [self.navigationController pushViewController:payVC animated:YES];
 }
 

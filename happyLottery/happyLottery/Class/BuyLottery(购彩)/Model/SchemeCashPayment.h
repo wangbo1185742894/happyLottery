@@ -17,4 +17,8 @@
 @property(assign,nonatomic)BOOL isSponsor;
 
 @property(assign,nonatomic)CostType costType;
+
+
+-(NSMutableDictionary*)submitParaDicScheme;
+
 @end

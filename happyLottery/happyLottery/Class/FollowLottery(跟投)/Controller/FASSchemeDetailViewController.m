@@ -23,7 +23,7 @@
 #import "SuoSchemeViewCell.h"
 #import "PayOrderLegViewController.h"
 #import "LegInfoViewCell.h"
-
+#import "SchemeCashPayment.h"
 #import <ShareSDK/ShareSDK+Base.h>
 #import <ShareSDKUI/ShareSDK+SSUI.h>
 #import <ShareSDK/NSMutableDictionary+SSDKShare.h>
@@ -713,7 +713,7 @@
     }else if ([schemeDetail.lottery isEqualToString:@"JCLQ"]){
         schemeCashModel.lotteryName = @"竞彩篮球";
     }
-    payVC.cashPayMemt = schemeCashModel;
+//    payVC.cashPayMemt = schemeCashModel;
     if ([self.schemeType isEqualToString:@"BUY_INITIATE"]) {
         payVC.schemetype = SchemeTypeFaqiGenDan;
     } else {

@@ -200,7 +200,7 @@
         schemeCashModel.realSubscribed = [schemeDetail.betCost integerValue]/100;
     }
    
-    payVC.cashPayMemt = schemeCashModel;
+//    payVC.cashPayMemt = schemeCashModel;
     [self.navigationController pushViewController:payVC animated:YES];
 }
 

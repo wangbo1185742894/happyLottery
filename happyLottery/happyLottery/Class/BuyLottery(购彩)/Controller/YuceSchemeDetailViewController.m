@@ -312,7 +312,7 @@
     
     schemeCashModel.subscribed = self.transaction.betCost;
     schemeCashModel.realSubscribed = self.transaction.betCost;
-    payVC.cashPayMemt = schemeCashModel;
+//    payVC.cashPayMemt = schemeCashModel;
     [self.navigationController pushViewController:payVC animated:YES];
 }
 - (void) actionAfterLogin {

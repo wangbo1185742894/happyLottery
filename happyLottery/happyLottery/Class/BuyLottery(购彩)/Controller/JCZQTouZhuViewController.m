@@ -421,9 +421,6 @@
 }
 
 - (IBAction)actionTouzhu:(UIButton *)sender {
-    
-  
-    
     if (self.curUser == nil || self.curUser.isLogin == NO) {
         [self needLogin];
         return;
@@ -451,10 +448,6 @@
             return;
         }
     }
-    
-    
-    [self showLoadingText:@"正在提交订单"];
-    
     self.transction.maxPrize = 1.00;
     self.transction.schemeSource = SchemeSourceBet;
     self.transction.units = self.transction.betCount;
@@ -475,7 +468,12 @@
     }else{
         self.transction.schemeType = SchemeTypeZigou;
     }
-    [self.lotteryMan betLotteryScheme:self.transction];
+    PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
+    payVC.transction = self.transction;
+    payVC.lotteryName = @"竞彩足球";
+    payVC.subscribed = self.transction.betCost;
+    [self.navigationController pushViewController:payVC animated:YES];
+    
 }
 
 -(NSString *)couldTouzhu{
@@ -523,7 +521,6 @@
     payVC.schemetype = self.transction.schemeType;
     schemeCashModel.subscribed = self.transction.betCost;
     schemeCashModel.realSubscribed = self.transction.betCost;
-    payVC.cashPayMemt = schemeCashModel;
     [self.navigationController pushViewController:payVC animated:YES];
 }
 

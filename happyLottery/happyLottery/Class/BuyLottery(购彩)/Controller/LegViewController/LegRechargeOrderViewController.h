@@ -9,6 +9,8 @@
 #import "BaseViewController.h"
 #import "ChannelModel.h"
 #import "PayTypeListCell.h"
+#import "SchemeCashPayment.h"
+
 
 @interface LegRechargeOrderViewController : BaseViewController
 
@@ -16,6 +18,10 @@
 @property (nonatomic , copy) NSString *orderCost;
 
 @property (nonatomic , copy) NSString *legYuE;
+
+@property (nonatomic , copy) NSString *legId;
+
+@property(nonatomic,strong)SchemeCashPayment *cashPayMemt;
 
 
 @end

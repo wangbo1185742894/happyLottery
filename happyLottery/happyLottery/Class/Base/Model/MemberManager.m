@@ -618,9 +618,11 @@
 }
 
 /**
- * 会员充值 {"cardCode":"xxxxx", "channel":"xxxx", "amounts":10}
- 参数:
- params - String cardCode 会员卡号, RechargeChannel channel 充值渠道, BigDecimal amounts 充值金额
+ * 会员充值 {"cardCode":"xxxxx", "channel":"xxxx", "amounts":10, "schemeSub": "xxxx","postboyId":1}
+ * @param params  String cardCode 会员卡号, RechargeChannel channel 充值渠道, BigDecimal amounts 充值金额,
+ *                schemeSub 方案认购信息 SchemeCashPaymentDto 的json字符串
+ * @return
+ * @throws BizException
  */
 - (void) rechargeSms:(NSDictionary *)paraDic{
     void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)

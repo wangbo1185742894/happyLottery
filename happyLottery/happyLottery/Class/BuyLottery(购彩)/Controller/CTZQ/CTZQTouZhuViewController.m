@@ -221,7 +221,6 @@
 
 - (IBAction)actionTouZhu:(UIButton *)sender {
     self.cTransation.schemeSource = SchemeSourceBet;
-
     if ([_lottery.currentRound isExpire]||_lottery.currentRound == nil) {
         [self showPromptText:TextLotteryRoundExpire hideAfterDelay:1.7];
         return;
@@ -292,7 +291,7 @@
     
     schemeCashModel.subscribed = self.cTransation.betCost;
     schemeCashModel.realSubscribed = self.cTransation.betCost;
-    payVC.cashPayMemt = schemeCashModel;
+//    payVC.cashPayMemt = schemeCashModel;
     [self.navigationController pushViewController:payVC animated:YES];
 }
 

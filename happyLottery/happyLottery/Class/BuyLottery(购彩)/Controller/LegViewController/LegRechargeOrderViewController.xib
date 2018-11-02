@@ -235,6 +235,9 @@
                             </constraints>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                             <state key="normal" title="转账给代买小哥"/>
+                            <connections>
+                                <action selector="commitBtnClick:" destination="-1" eventType="touchUpInside" id="LSN-5X-ejn"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

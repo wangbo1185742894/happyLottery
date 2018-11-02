@@ -28,16 +28,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *legYueE;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewHeight;
 @property (weak, nonatomic) IBOutlet UILabel *labBanlence;
-@property (weak, nonatomic) IBOutlet UITextField *txtChongZhiJIne;
-@property (weak, nonatomic) IBOutlet UIButton *haveReadBtn;
-@property (weak, nonatomic) IBOutlet UIButton *memberDetailBtn;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
 @property (weak, nonatomic) IBOutlet UITableView *tabChannelList;
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *chongZhiSelectItem;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tabPayListHeight;
 @property (weak, nonatomic) IBOutlet UIWebView *payWebView;
-@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *labCaijin;
-@property (weak, nonatomic) IBOutlet UIButton *btnChongzhi;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *consHeight;
 @property(nonatomic,strong)NSString *aliPayMinBouns;
 @end
@@ -67,20 +62,8 @@
     if ([self isIphoneX]) {
         self.top.constant = 88;
     }
-    self.txtChongZhiJIne.delegate = self;
     [self getListByChannel];
-  
-    for (UIButton *selectItem in _chongZhiSelectItem) {
-        selectItem.titleLabel.adjustsFontSizeToFitWidth = YES;
-        if (selectItem.tag == 100) {
-             [self setItem:selectItem];
-        }
-    }
-    for (UILabel *lab in self.labCaijin) {
-        lab.layer.cornerRadius = 3;
-        lab.layer.masksToBounds = YES;
-    }
-    
+
     [self.lotteryMan getCommonSetValue:@{@"typeCode":@"recharge",@"commonCode":@"hawkeye_ali"}];
 }
 
@@ -92,184 +75,11 @@
     }
 }
 
--(void)listRechargeHandsel:(NSArray *)lotteryList errorMsg:(NSString *)msg{
-    if (lotteryList == nil) {
-        [self showPromptViewWithText:msg hideAfter:1.7];
-        
-        return;
-    }
-  
-    for (NSDictionary *itemDic in lotteryList) {
-        RechargeModel *model = [[RechargeModel alloc] initWith:itemDic];
-        [rechList addObject:model];
-    }
-    [self reloadRechargeCost:[self getRechList]];
-}
-
--(NSArray *)getRechList{
-    NSMutableArray *itemrechList = [NSMutableArray arrayWithCapacity:0];
-    NSString *strChannal;
-    for (ChannelModel *model in channelList) {
-        if (model.isSelect == YES) {
-            strChannal = model.channel;
-            break;
-        }
-    }
-    for (RechargeModel *model in rechList) {
-        if ([model.rechargeChannel isEqualToString:strChannal]) {
-            model.isSelect = NO;
-            [itemrechList addObject:model];
-        }
-    }
-    //充值渠道没有匹配的值时，显示默认值
-    if (itemrechList.count == 0) {
-        for (int i = 0; i < 6 ; i++) {
-            RechargeModel *model = [[RechargeModel alloc]init];
-            model.rechargeChannel = strChannal;
-            switch (i) {
-                case 0:
-                    model.recharge = @"100";
-                    break;
-                case 1:
-                    model.recharge = @"200";
-                    break;
-                case 2:
-                    model.recharge = @"500";
-                    break;
-                case 3:
-                    model.recharge = @"1000";
-                    break;
-                case 4:
-                    model.recharge = @"5000";
-                    break;
-                default:
-                    model.recharge = @"10000";
-                    break;
-            }
-            [itemrechList addObject:model];
-        }
-    }
-    [itemrechList sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
-        RechargeModel * r1 = obj1;
-        RechargeModel * r2 = obj2;
-        return  [r1.recharge doubleValue] > [r2.recharge doubleValue];
-    }];
-    RechargeModel *model = [itemrechList  firstObject];
-    model.isSelect = YES;
-    return itemrechList;
-}
-
-//显示充几送几
--(void)reloadRechargeCost:(NSArray *)rechList{
-    int i = 0;
-    for (RechargeModel  *model in rechList) {
-        
-        
-        if (model.isSelect == YES) {
-            self.txtChongZhiJIne.text = model.recharge;
-            selectRech = model;
-        }
-        
-        for (UIButton *itemDic in self.chongZhiSelectItem) {
-            
-            if (itemDic.tag == 100 + i) {
-                itemDic.selected = model.isSelect;
-                if (itemDic.selected == YES) {
-                    [self setItem:itemDic];
-                }
-                [itemDic setTitle: [NSString stringWithFormat:@"￥%.2f",[model.recharge doubleValue]] forState:0];
-            }
-        }
-        
-        for (UILabel *itemDic in self.labCaijin) {
-            if (itemDic.tag == 200 + i) {
-                if ([model.handsel doubleValue] == 0) {
-                    itemDic.hidden = YES;
-                }else{
-                    itemDic.text = [NSString stringWithFormat:@"送 %.1f",[model.handsel doubleValue]];
-                    itemDic.hidden = NO;
-                }
-                
-            }
-        }
-        i ++;
-    }
-}
-
 -(void)setTableView{
     self.tabChannelList.dataSource =self;
     self.tabChannelList.delegate = self;
     self.tabChannelList.rowHeight = 60;
     [self.tabChannelList registerClass:[PayTypeListCell class] forCellReuseIdentifier:KPayTypeListCell];
-}
-
--(void)setItem:(UIButton *)sender{
-    
-    for (UIButton *item in self.chongZhiSelectItem) {
-        
-        item.selected = NO;
-    }
-  
-    sender.selected = !sender.selected;
-    for (RechargeModel *model in [self getRechList]) {
-        if ([sender.currentTitle isEqualToString:[NSString stringWithFormat:@"￥%.2f",[model.recharge doubleValue]]]) {
-            model.isSelect = sender.selected;
-            if (model.isSelect == YES) {
-                selectRech = model;
-            }else{
-                selectRech = nil;
-            }
-        }else{
-            model.isSelect = NO;
-        }
-        
-    }
-    for (UIButton *item in self.chongZhiSelectItem) {
-        
-        if (sender.selected == YES) {
-            self.txtChongZhiJIne.text = [NSString stringWithFormat:@"%.2f",[selectRech.recharge doubleValue]];
-        }
-        
-        if (item.selected == YES) {
-            item.layer.borderColor = SystemGreen.CGColor;
-            [item setBackgroundImage:[UIImage imageWithColor:SystemGreen] forState:UIControlStateSelected];
-            [item setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-
-        }else{
-            item.layer.borderColor = TFBorderColor.CGColor;
-            [item setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateNormal];
-            [item setTitleColor:SystemLightGray forState:UIControlStateNormal];
-        }
-        item.layer.borderWidth = 1;
-        item.layer.cornerRadius = 4;
-        item.layer.masksToBounds = YES;
-    }
-    if ([selectRech.handsel doubleValue] == 0) {
-        [_btnChongzhi setTitle:[NSString stringWithFormat:@"实际到账%.2f元",[selectRech.recharge doubleValue]] forState:0];
-    }else {
-        [_btnChongzhi setTitle:[NSString stringWithFormat:@"实际到账%.2f+%.2f元",[selectRech.recharge doubleValue] ,[selectRech.handsel doubleValue]] forState:0];
-    }
-}
-
--(void)textFieldDidEndEditing:(UITextField *)textField{
-    BOOL flag = NO;
-    double cost = [textField.text doubleValue];
-    for (NSInteger i = [self getRechList].count; i -- ; i >= 0) {
-        RechargeModel *model = [self getRechList][i];
-        
-        if ( cost >= [model.recharge doubleValue]) {
-            if ([model.handsel doubleValue] == 0) {
-                [_btnChongzhi setTitle:[NSString stringWithFormat:@"实际到账%.2f元",cost] forState:0];
-            }else{
-                [_btnChongzhi setTitle:[NSString stringWithFormat:@"实际到账%.2f+%.2f元",cost ,[model.handsel doubleValue]] forState:0];
-            }
-            flag = YES;
-            break;
-        }
-    }
-    if (flag == NO) {
-            [_btnChongzhi setTitle:[NSString stringWithFormat:@"实际到账%.2f元",cost] forState:0];
-    }
 }
 
 -(void)rechargeSmsIsSuccess:(BOOL)success andPayInfo:(NSDictionary *)payInfo errorMsg:(NSString *)msg{
@@ -309,9 +119,6 @@
     }
 }
 
-- (IBAction)haveead:(id)sender {
-    
-}
 - (IBAction)memberDetail:(id)sender{
     NSURL *pathUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"tbz_recharge" ofType:@"html"]];
     WebShowViewController *webShow = [[WebShowViewController alloc]init];
@@ -319,6 +126,7 @@
     webShow.title = @"会员充值说明";
     [self.navigationController pushViewController:webShow animated:YES];
 }
+
 - (IBAction)commitBtnClick:(id)sender {
     [self commitClient];
 }
@@ -337,25 +145,22 @@
         return;
     }
     
-    if ([self.txtChongZhiJIne.text doubleValue] <= 0) {
-        [self showPromptText:@"请输入合法的金额" hideAfterDelay:1.7];
-        return;
-    }
-    
     if ([itemModel.channel isEqualToString:@"HAWKEYE_ALI"] ) {
-        if ([self.txtChongZhiJIne.text doubleValue] < [self.aliPayMinBouns doubleValue]) {
+        if ([self.realCost.text doubleValue] < [self.aliPayMinBouns doubleValue]) {
             [self showPromptText:[NSString stringWithFormat:@"%@充值最少充%@元",itemModel.channelTitle,self.aliPayMinBouns] hideAfterDelay:1.7];
             return;
         }
     }
     @try {
         NSString *cardCode = self.curUser.cardCode;
-        NSString *checkCode = self.txtChongZhiJIne.text;
+        NSString *checkCode = self.realCost.text;
         
       
         rechargeInfo = @{@"cardCode":cardCode,
                           @"channel":itemModel.channel,
                           @"amounts":checkCode,
+                          @"schemeSub":self.cashPayMemt.submitParaDicScheme,
+                          @"postboyId":self.legId
                         };
     } @catch (NSException *exception) {
        return;
@@ -390,11 +195,7 @@
         NSDictionary *itemDic = infoArray[i];
         ChannelModel *model = [[ChannelModel alloc]initWith:itemDic];
         if ([model.channelValue boolValue] == YES || [model.channelValue isEqualToString:@"open"]||[model.channelValue isEqualToString:@"open_new"]||[model.channelValue isEqualToString:@"open_"]) {
-//            if ([model.channelTitle containsString:@"微信支付"]) {
-                [channelList insertObject:model atIndex:0];
-//            } else {
-//                [channelList addObject:model];
-//            }
+            [channelList insertObject:model atIndex:0];
          }
     }
     
@@ -403,7 +204,6 @@
     [channelList firstObject].isSelect = YES;
     self.tabPayListHeight.constant = channelList.count * self.tabChannelList.rowHeight;
     [self.tabChannelList reloadData];
-    [self .lotteryMan listRechargeHandsel];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -423,39 +223,9 @@
         model.isSelect = NO;
     }
     channelList[indexPath.row].isSelect = YES;
-    [self reloadRechargeCost:[self getRechList]];
     [self.tabChannelList reloadData];
 }
-- (IBAction)actionSelectItem:(UIButton *)sender {
-    [self setItem:sender];
-}
 
--(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    [self setItem:nil];
-    if (range.location == 10) {
-        return NO;
-    }
-    if ([string isEqualToString:@""]) {
-        return YES;
-    }
-    
-    NSString * regex;
-    regex = @"^[0-9.]";
-    
-    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
-    BOOL isMatch = [pred evaluateWithObject:string];
-    if (isMatch) {
-        NSString *stringRegex = @"(\\+|\\-)?(([0]|(0[.]\\d{0,2}))|([1-9]\\d{0,4}(([.]\\d{0,2})?)))?";
-        NSPredicate *pred1 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", stringRegex];
-        BOOL isMatch1 = [pred1 evaluateWithObject:[NSString stringWithFormat:@"%@%@",textField.text,string]];
-        
-        return isMatch1;
-    }else{
-
-        return NO;
-    }
-
-}
 
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     NSString *strUrl = [NSString stringWithFormat:@"%@",request.URL];
@@ -491,13 +261,6 @@
 }
 
 -(void)checkSchemePayState:(NSNotification *)notification{
-//    object    NSTaggedPointerString *    @"cancel"    0xa006c65636e61636
-//    if ([itemModel.channel isEqualToString:@"UNION"]) {
-//        if (![notification.object isEqualToString:@"success"]) {
-//            [self showPromptText:@"支付失败" hideAfterDelay:1.6];
-//            return;
-//        }
-//    }
 
     if (orderNO == nil) {
         [self showPromptText:@"支付失败" hideAfterDelay:1.6];
@@ -519,18 +282,6 @@
             [self.navigationController popViewControllerAnimated:YES];
         });
     }else{
-//        if ([itemModel.channel isEqualToString:@"SDWX"]) {
-//            ZLAlertView *alert = [[ZLAlertView alloc] initWithTitle:@"提示" message:@"请检查是否完成充值"];
-//            [alert addBtnTitle:@"未完成" action:^{
-//                [self.navigationController popViewControllerAnimated:YES];
-//            }];
-//            [alert addBtnTitle:@"完成" action:^{
-//                [self showLoadingText:@"正在查询充值结果，请稍等"];
-//                 [self.memberMan queryRecharge:@{@"channel":itemModel.channel, @"orderNo":orderNO}];
-//            }];
-//            [alert showAlertWithSender:self];
-//            return;
-//        }
         [self showPromptText:msg hideAfterDelay:1.7];
     }
 }

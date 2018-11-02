@@ -100,6 +100,10 @@ typedef enum EarningsType{
 - (void) getJczqSp:(NSDictionary *)paraDic;
 - (void) getJczqLeague:(NSDictionary *)paraDic;
 - (void) betLotteryScheme:(BaseTransaction *)transcation;
+
+// 提交购彩方案
+- (void) betLotteryScheme:(BaseTransaction *)transcation andPostboyId:(NSString *)postboyId;
+
 - (void) schemeCashPayment:(NSDictionary *)paraDic;
 - (void) schemeScorePayment:(NSDictionary *)paraDic;
 - (void) getJczqShortcut;
@@ -126,6 +130,8 @@ typedef enum EarningsType{
 - (void)getSellIssueList:(NSDictionary *)paraDic;
 - (void)getListZcMatchSp:(NSDictionary *)paraDic;
 - (void) betChaseScheme:(LotteryTransaction *)transcation;
+// 提交追号方案
+- (void) betChaseScheme:(LotteryTransaction *)transcation andPostboyId:(NSString *)postboyId;
 - (void)listChaseSchemeForApp:(NSDictionary *)paraDic;
 - (void)getChaseDetailForApp:(NSDictionary *)paraDic;
 - (void)getListHisIssue:(NSDictionary *)paraDic;

@@ -1170,7 +1170,7 @@
     
     schemeCashModel.subscribed = self.transaction.betCost;
     schemeCashModel.realSubscribed = self.transaction.betCost;
-    payVC.cashPayMemt = schemeCashModel;
+//    payVC.cashPayMemt = schemeCashModel;
     [self.transaction removeAllBets];
     self.transaction.beiTouCount = 1;
     self.transaction.qiShuCount  = 1;

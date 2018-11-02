@@ -23,6 +23,7 @@
 #import "LegOrderDetailViewController.h"
 #import "PostboyAccountModel.h"
 
+
 #define KPayTypeListCell @"PayTypeListCell"
 
 #define KTabObaListCell @"TabObaListCell"
@@ -53,6 +54,7 @@
 @property(strong,nonatomic)NSMutableArray <Coupon *> *couponList;
 @property (weak, nonatomic) IBOutlet UILabel *sendBalanceLab;
 @property (nonatomic,strong)PostboyAccountModel *curModel;
+@property(nonatomic,strong)SchemeCashPayment *cashPayMemt;
 
 @end
 
@@ -103,7 +105,7 @@
     
     [self showLoadingText:@"正在提交订单"];
     
-    [self.memberMan getAvailableCoupon:@{@"cardCode":self.curUser.cardCode,@"amount":@(self.cashPayMemt.realSubscribed)}];
+    [self.memberMan getAvailableCoupon:@{@"cardCode":self.curUser.cardCode,@"amount":[NSString stringWithFormat:@"%f",self.subscribed]}];
 }
 
 
@@ -120,8 +122,13 @@
 
 - (void)upDateLegInfo:(PostboyAccountModel *)postModel {
     if (postModel != nil) {
-        selectLegLab.text = [NSString stringWithFormat:@"%@代付(余额 %.2f)",postModel.postboyName,        [postModel.totalBalance doubleValue]];
-        labCostInfo.text = [NSString stringWithFormat:@"明细：彩票店出票%.2f + 跑腿费%@元",self.cashPayMemt.subscribed,postModel.cost];
+        selectLegLab.text = [NSString stringWithFormat:@"%@代付(余额 %.2f)",postModel.postboyName,[postModel.totalBalance doubleValue]];
+        if (postModel.cost.length == 0) {
+            labCostInfo.text = [NSString stringWithFormat:@"明细：彩票店出票%.2f + 跑腿费%@元",self.subscribed,@"0"];
+        }
+        else {
+            labCostInfo.text = [NSString stringWithFormat:@"明细：彩票店出票%.2f + 跑腿费%@元",self.subscribed,postModel.cost];
+        }
         if (([postModel.totalBalance doubleValue] - [self.labRealCost.text doubleValue]) >= 0) {
             [rechargeBtn setTitle:@"确认支付" forState:0];
         }else {
@@ -131,13 +138,14 @@
         rechargeBtn.alpha=1.0f;
     }else {
         selectLegLab.text = @"请选择代买小哥代付";
-        labCostInfo.text = [NSString stringWithFormat:@"明细：彩票店出票%.2f + 跑腿费%@元",self.cashPayMemt.subscribed,@"0"];
+        labCostInfo.text = [NSString stringWithFormat:@"明细：彩票店出票%.2f + 跑腿费%@元",self.subscribed,@"0"];
         rechargeBtn.userInteractionEnabled=NO;
         rechargeBtn.alpha=0.4f;
     }
 }
 
 -(void )recentPostboyAccountdelegate:(NSDictionary *)param isSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    [self hideLoadingView];
     if (success == NO) {
         [self upDateLegInfo:nil];
         self.curModel = nil;
@@ -165,6 +173,7 @@
     if (success == NO || payInfo == nil ) {
         [self showPromptText:msg hideAfterDelay:1.7];
         labCanUseYouhuiquan.text = @"暂无可用优惠券";
+    
         return;
     }
     if (payInfo.count ==0) {
@@ -203,18 +212,18 @@
         labCanUseYouhuiquan.text = [NSString stringWithFormat:@"暂无可用优惠券"];
         self.labZheKou.text = [NSString stringWithFormat:@"-0.00 元"];
         self.labZheKou.textColor = SystemGray;
-        self.labRealCost.text = [NSString stringWithFormat:@"%.2f",self.cashPayMemt.realSubscribed - [self.curUser.sendBalance doubleValue]] ;
+        self.labRealCost.text = [NSString stringWithFormat:@"%.2f",self.subscribed - [self.curUser.sendBalance doubleValue]] ;
     }else {
         if (self.curSelectCoupon != nil) {
             labCanUseYouhuiquan.text = [NSString stringWithFormat:@"￥%@元优惠券",self.curSelectCoupon.deduction];
             self.labZheKou.text = [NSString stringWithFormat:@"-%.2f 元",[self.curSelectCoupon.deduction doubleValue]];
             self.labZheKou.textColor = SystemRed;
-            self.labRealCost.text = [NSString stringWithFormat:@"%.2f",self.cashPayMemt.realSubscribed - [self.curSelectCoupon.deduction doubleValue] - [self.curUser.sendBalance doubleValue]] ;
+            self.labRealCost.text = [NSString stringWithFormat:@"%.2f",self.subscribed - [self.curSelectCoupon.deduction doubleValue] - [self.curUser.sendBalance doubleValue]] ;
         }else{
             labCanUseYouhuiquan.text = [NSString stringWithFormat:@"%ld张可用优惠券",self.couponList.count];
             self.labZheKou.text = [NSString stringWithFormat:@"-0.00 元"];
             self.labZheKou.textColor = SystemGray;
-            self.labRealCost.text = [NSString stringWithFormat:@"%.2f",self.cashPayMemt.realSubscribed - [self.curUser.sendBalance doubleValue]] ;
+            self.labRealCost.text = [NSString stringWithFormat:@"%.2f",self.subscribed - [self.curUser.sendBalance doubleValue]] ;
         }
     }
 }
@@ -230,8 +239,8 @@
     self.curUser.sendBalance = user.sendBalance;
     self.curUser.score = user.score;
     self.sendBalanceLab.text = [NSString stringWithFormat:@"-%.2f 元",[self.curUser.sendBalance doubleValue]];
-    self.labOrderCost.text = [NSString stringWithFormat:@"%.2f 元",self.cashPayMemt.realSubscribed];
-    self.labRealCost.text = [NSString stringWithFormat:@"%.2f 元",self.cashPayMemt.realSubscribed - [self.curSelectCoupon.deduction doubleValue] - [self.curUser.sendBalance doubleValue]] ;
+    self.labOrderCost.text = [NSString stringWithFormat:@"%.2f 元",self.subscribed];
+    self.labRealCost.text = [NSString stringWithFormat:@"%.2f 元",self.subscribed - [self.curSelectCoupon.deduction doubleValue] - [self.curUser.sendBalance doubleValue]] ;
     
 }
 
@@ -316,9 +325,35 @@
 }
 
 - (IBAction)actionToRechage:(id)sender {
+    [self.lotteryMan betLotteryScheme:self.transction andPostboyId:self.curModel._id];
+   
+}
+
+
+- (void) betedLotteryScheme:(NSString *)schemeNO errorMsg:(NSString *)msg{
+    if (schemeNO == nil || schemeNO.length == 0) {
+        [self showPromptText:msg hideAfterDelay:1.7];
+        return;
+    }
+    SchemeCashPayment *schemeCashModel = [[SchemeCashPayment alloc]init];
+    schemeCashModel.cardCode = self.curUser.cardCode;
+    schemeCashModel.lotteryName = self.lotteryName;
+    schemeCashModel.schemeNo = schemeNO;
+    schemeCashModel.subCopies = 1;
+    schemeCashModel.costType = CostTypeCASH;
+    if (self.transction.betCost  > 300000) {
+        [self showPromptText:@"单笔总金额不能超过30万元" hideAfterDelay:1.7];
+        return;
+    }
+    [self hideLoadingView];
+    self.schemetype = self.transction.schemeType;
+    schemeCashModel.subscribed = self.transction.betCost;
+    schemeCashModel.realSubscribed = self.transction.betCost;
     LegRechargeOrderViewController *legRechargrVC = [[LegRechargeOrderViewController alloc]init];
     legRechargrVC.orderCost = self.labRealCost.text;
     legRechargrVC.legYuE = self.curModel.totalBalance;
+    legRechargrVC.cashPayMemt = schemeCashModel;
+    legRechargrVC.legId = self.curModel._id;
     [self.navigationController pushViewController:legRechargrVC animated:YES];
 }
 

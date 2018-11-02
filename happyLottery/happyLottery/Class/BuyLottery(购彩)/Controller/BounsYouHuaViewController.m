@@ -475,7 +475,7 @@
     payVC.schemetype = self.transcation.schemeType;
     schemeCashModel.subscribed = self.transcation.betCost * self.transcation.outBeicount;
     schemeCashModel.realSubscribed = self.transcation.betCost * self.transcation.outBeicount;
-    payVC.cashPayMemt = schemeCashModel;
+//    payVC.cashPayMemt = schemeCashModel;
     [self.navigationController pushViewController:payVC animated:YES];
 }
 
