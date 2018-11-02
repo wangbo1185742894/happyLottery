@@ -24,6 +24,8 @@
     RechargeModel *selectRech;
     NSString *orderNO;
 }
+@property (weak, nonatomic) IBOutlet UILabel *realCost;
+@property (weak, nonatomic) IBOutlet UILabel *legYueE;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewHeight;
 @property (weak, nonatomic) IBOutlet UILabel *labBanlence;
 @property (weak, nonatomic) IBOutlet UITextField *txtChongZhiJIne;
@@ -53,7 +55,9 @@
     self.payWebView.delegate = self;
     self.memberMan.delegate = self;
     self.lotteryMan.delegate =self;
-    self.labBanlence.text = [NSString stringWithFormat:@"%@",self.orderCost];
+    self.labBanlence.text = [NSString stringWithFormat:@"%.2f元",[self.orderCost doubleValue]];
+    _legYueE.text = [NSString stringWithFormat:@"%.2f元",[self.legYuE doubleValue]];
+    _realCost.text = [NSString stringWithFormat:@"%.2f元",[self.orderCost doubleValue] - [self.legYuE doubleValue]];
     [self setTableView];
     if ([self isIphoneX]) {
         self.consHeight.constant = 50+34;
@@ -65,7 +69,7 @@
     }
     self.txtChongZhiJIne.delegate = self;
     [self getListByChannel];
-    
+  
     for (UIButton *selectItem in _chongZhiSelectItem) {
         selectItem.titleLabel.adjustsFontSizeToFitWidth = YES;
         if (selectItem.tag == 100) {

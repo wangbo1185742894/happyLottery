@@ -13,7 +13,9 @@
             <connections>
                 <outlet property="consHeight" destination="6oc-uy-u4x" id="ugT-Gv-ygr"/>
                 <outlet property="labBanlence" destination="gDn-S3-arS" id="Vnw-tv-va1"/>
+                <outlet property="legYueE" destination="oWi-LK-NVx" id="shU-DO-Sg4"/>
                 <outlet property="payWebView" destination="f2a-Wh-UrD" id="0Bv-hk-oaZ"/>
+                <outlet property="realCost" destination="UU4-9a-vqr" id="7nL-IJ-dGY"/>
                 <outlet property="tabChannelList" destination="vca-lc-zdH" id="D0A-a1-WRI"/>
                 <outlet property="tabPayListHeight" destination="hjJ-Ew-HL7" id="Tdc-ss-S72"/>
                 <outlet property="top" destination="cgl-yS-5Uh" id="F0A-5Q-YCW"/>
@@ -51,7 +53,7 @@
                                             <color key="textColor" red="0.1960784314" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDn-S3-arS">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDn-S3-arS">
                                             <rect key="frame" x="105" y="11" width="250" height="18"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="18" id="YaK-8e-lmj"/>
@@ -99,7 +101,7 @@
                                             <color key="textColor" red="0.1960784314" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWi-LK-NVx">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWi-LK-NVx">
                                             <rect key="frame" x="105" y="11" width="250" height="18"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="18" id="zjw-7F-ais"/>
@@ -144,7 +146,7 @@
                                             <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UU4-9a-vqr">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UU4-9a-vqr">
                                             <rect key="frame" x="115" y="11" width="240" height="18"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="18" id="SyP-TB-XXv"/>

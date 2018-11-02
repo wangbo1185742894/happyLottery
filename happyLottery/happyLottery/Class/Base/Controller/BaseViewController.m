@@ -49,10 +49,11 @@
     self.memberMan = [[MemberManager alloc]init];
     self.lotteryMan = [[LotteryManager alloc]init];
     self.agentMan = [[AgentManager alloc]init];
-    
+    self.postboyMan = [[PostboyManager alloc]init];
     self.memberMan.netDelegate = self;
     self.lotteryMan.netDelegate = self;
     self.agentMan.netDelegate = self;
+    self.postboyMan.netDelegate = self;
     [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
     [self setNavigationBack];
     NSString *doc=[NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES) lastObject];

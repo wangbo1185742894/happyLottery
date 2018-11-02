@@ -121,12 +121,9 @@
     }
 }
 
-
 //请求所有赛事
 -(void)loadMatch{
-
     [self.lotteryMan getJczqMatch:@{@"leagueIds":@[]}];
-    
 }
 
 -(void)gotJczqMatch:(NSArray *)dataArray errorMsg:(NSString *)msg{

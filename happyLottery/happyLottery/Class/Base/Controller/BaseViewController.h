@@ -10,6 +10,7 @@
 #import "MemberManager.h"
 #import "LotteryManager.h"
 #import "AgentManager.h"
+#import "PostboyManager.h"
 #import "FMDB.h"
 #import "AppDelegate.h"
 #import "WebViewJumpHandler.h"
@@ -22,6 +23,8 @@
 @property (nonatomic,strong)MemberManager * memberMan;
 @property (nonatomic,strong)LotteryManager * lotteryMan;
 @property (nonatomic,strong)AgentManager * agentMan;
+@property (nonatomic,strong)PostboyManager * postboyMan;
+
 
 @property (nonatomic,strong) FMDatabase *fmdb;
 @property(nonatomic,strong)User *curUser;

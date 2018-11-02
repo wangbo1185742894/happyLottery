@@ -21,11 +21,12 @@
 #import "WebShowViewController.h"
 #import "LegRechargeOrderViewController.h"
 #import "LegOrderDetailViewController.h"
+#import "PostboyAccountModel.h"
 
 #define KPayTypeListCell @"PayTypeListCell"
 
 #define KTabObaListCell @"TabObaListCell"
-@interface PayOrderLegViewController ()<LotteryManagerDelegate,MemberManagerDelegate>
+@interface PayOrderLegViewController ()<LotteryManagerDelegate,MemberManagerDelegate,PostboyManagerDelegate,SelectModelDelegate>
 {
     LotteryShopDto* selectShopModel;
     
@@ -36,6 +37,7 @@
     
     ZLAlertView *itemAlert;
     __weak IBOutlet UILabel *labCanUseYouhuiquan;
+    __weak IBOutlet UIButton *rechargeBtn;
 }
 
 @property(assign,nonatomic)BOOL isShowOba;
@@ -50,6 +52,7 @@
 
 @property(strong,nonatomic)NSMutableArray <Coupon *> *couponList;
 @property (weak, nonatomic) IBOutlet UILabel *sendBalanceLab;
+@property (nonatomic,strong)PostboyAccountModel *curModel;
 
 @end
 
@@ -88,12 +91,12 @@
     
     self.lotteryMan.delegate = self;
     
-   
+    self.postboyMan.delegate = self;
     self.couponList = [NSMutableArray arrayWithCapacity:0];
     
     //请求小哥信息
     ///
-    labCostInfo.text = [NSString stringWithFormat:@"明细：彩票店出票%.2f + 跑腿费%@元",self.cashPayMemt.subscribed,@"0"];
+    [self.postboyMan recentPostboyAccount:@{@"cardCode":self.curUser.cardCode}];
     ///
     
     [self.memberMan getMemberByCardCode:@{@"cardCode":self.curUser.cardCode}];
@@ -107,6 +110,47 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self showCoupon];
+}
+
+
+- (void)alreadySelectModel:(PostboyAccountModel *)selectModel{
+    self.curModel = selectModel;
+    [self upDateLegInfo:self.curModel];
+}
+
+- (void)upDateLegInfo:(PostboyAccountModel *)postModel {
+    if (postModel != nil) {
+        selectLegLab.text = [NSString stringWithFormat:@"%@代付(余额 %.2f)",postModel.postboyName,        [postModel.totalBalance doubleValue]];
+        labCostInfo.text = [NSString stringWithFormat:@"明细：彩票店出票%.2f + 跑腿费%@元",self.cashPayMemt.subscribed,postModel.cost];
+        if (([postModel.totalBalance doubleValue] - [self.labRealCost.text doubleValue]) >= 0) {
+            [rechargeBtn setTitle:@"确认支付" forState:0];
+        }else {
+            [rechargeBtn setTitle:@"转账给代买小哥" forState:0];
+        }
+        rechargeBtn.userInteractionEnabled=YES;
+        rechargeBtn.alpha=1.0f;
+    }else {
+        selectLegLab.text = @"请选择代买小哥代付";
+        labCostInfo.text = [NSString stringWithFormat:@"明细：彩票店出票%.2f + 跑腿费%@元",self.cashPayMemt.subscribed,@"0"];
+        rechargeBtn.userInteractionEnabled=NO;
+        rechargeBtn.alpha=0.4f;
+    }
+}
+
+-(void )recentPostboyAccountdelegate:(NSDictionary *)param isSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    if (success == NO) {
+        [self upDateLegInfo:nil];
+        self.curModel = nil;
+        return;
+    }
+    if (param != nil) {
+        PostboyAccountModel *model = [[PostboyAccountModel alloc]initWith:param];
+        [self upDateLegInfo:model];
+        self.curModel = model;
+    } else {
+        [self upDateLegInfo:nil];
+        self.curModel = nil;
+    }
 }
 
 
@@ -257,7 +301,9 @@
 
 - (void)actionToSelectLeg {
     LegSelectViewController *legSelectVC = [[LegSelectViewController alloc]init];
+    legSelectVC.delegate = self;
     legSelectVC.titleName = @"选择代买小哥";
+    legSelectVC.curModel = self.curModel;
     [self.navigationController pushViewController:legSelectVC animated:YES];
 }
 
@@ -272,6 +318,7 @@
 - (IBAction)actionToRechage:(id)sender {
     LegRechargeOrderViewController *legRechargrVC = [[LegRechargeOrderViewController alloc]init];
     legRechargrVC.orderCost = self.labRealCost.text;
+    legRechargrVC.legYuE = self.curModel.totalBalance;
     [self.navigationController pushViewController:legRechargrVC animated:YES];
 }
 

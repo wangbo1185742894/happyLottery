@@ -15,4 +15,7 @@
 //订单金额
 @property (nonatomic , copy) NSString *orderCost;
 
+@property (nonatomic , copy) NSString *legYuE;
+
+
 @end

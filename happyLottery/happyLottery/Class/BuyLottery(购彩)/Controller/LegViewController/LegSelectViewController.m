@@ -8,23 +8,25 @@
 
 #import "LegSelectViewController.h"
 #import "SelectLegTableViewCell.h"
-#import "LegWordModel.h"
 #import "LegSelectFooterView.h"
 #import "CunLegTableViewCell.h"
 #import "ZhuanLegTableViewCell.h"
-
 
 #define KSelectLegTableViewCell    @"SelectLegTableViewCell"
 #define KCunLegTableViewCell       @"CunLegTableViewCell"
 #define KZhuanLegTableViewCell     @"ZhuanLegTableViewCell"
 
-@interface LegSelectViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate>{
+
+
+@interface LegSelectViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,PostboyManagerDelegate>{
     
     __weak IBOutlet UITableView *personTableView;
     
 }
 
-@property (nonatomic, strong)NSMutableArray <LegWordModel *> *personArray;
+@property (nonatomic, strong)NSMutableArray <PostboyAccountModel *> *personArray;
+
+
 
 @end
 
@@ -39,6 +41,7 @@
     self.personArray = [NSMutableArray arrayWithCapacity:0];
     [self setTableView];
     self.lotteryMan.delegate = self;
+    self.postboyMan.delegate = self;
     [self loadNewDate];
     footView = [[LegSelectFooterView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, 74)];
     // Do any additional setup after loading the view from its nib.
@@ -55,23 +58,28 @@
 
 - (void)loadNewDate {
     [self showLoadingText:@"正在加载中"];
-    [self.lotteryMan getLegWorkList:nil];
+    [self.postboyMan getPostboyAccountList:@{@"cardCode":self.curUser.cardCode}];
 }
 
-#pragma mark  Lotterydelegate
-- (void) gotLegWorkList:(NSArray *)redList errorInfo:(NSString *)errMsg{
-    if (redList == nil) {
-        [self showPromptViewWithText:errMsg hideAfter:1.9];
+#pragma mark  PostboyManagerDelegate
+-(void )getPostboyAccountListdelegate:(NSArray *)array isSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    if (success == NO) {
+        [self showPromptViewWithText:msg hideAfter:1.9];
         return;
     }
-    if (redList.count == 0) {
+    if (array.count == 0) {
         [self showPromptText:@"暂无小哥" hideAfterDelay:1.0];
     }else{
         //添加数据
-        for (NSDictionary *dic in redList) {
-            LegWordModel *model = [[LegWordModel alloc]initWith:dic];
-            if ([model.enabled boolValue]) {
-              [_personArray addObject:model];
+        for (NSDictionary *dic in array) {
+            PostboyAccountModel *postModel = [[PostboyAccountModel alloc]initWith:dic];
+            if ([postModel.enabled boolValue]) {
+                if ([postModel._id isEqualToString:self.curModel._id]) {
+                    postModel.isSelect = YES;
+                } else {
+                    postModel.isSelect = NO;
+                }
+                [_personArray addObject:postModel];
             }
         }
         [self hideLoadingView];
@@ -79,9 +87,11 @@
     [personTableView reloadData];
 }
 
-
 #pragma mark  tableview delegate
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 0.01;
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     if ([self.titleName isEqualToString:@"选择代买小哥"]) {
@@ -95,8 +105,7 @@
     if ([self.titleName isEqualToString:@"选择代买小哥"]) {
         return footView;
     }
-    return nil;
-    
+    return [UIView new];
 }
 
 
@@ -138,8 +147,10 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-   self.personArray[indexPath.row].isSelect = !self.personArray[indexPath.row].isSelect;
-   [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    PostboyAccountModel *legModel = self.personArray[indexPath.row];
+    legModel.isSelect = YES;
+    [self.delegate alreadySelectModel:legModel];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

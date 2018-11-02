@@ -192,5 +192,6 @@ typedef enum EarningsType{
 -(void)saveLegScheme:(NSDictionary *)para;
 -(void)getLotteryShop:(NSDictionary *)para;
 -(void)sendOutRedPacketDetail:(NSDictionary *)para;
+
 @end
 

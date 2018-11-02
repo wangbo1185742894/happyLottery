@@ -1073,6 +1073,8 @@
 		F91565FE1FFCC73800E254CE /* qrcode@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F91565FC1FFCC73800E254CE /* qrcode@2x.png */; };
 		F91566011FFCCBEF00E254CE /* tilde@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F91565FF1FFCCBEE00E254CE /* tilde@3x.png */; };
 		F91566021FFCCBEF00E254CE /* tilde@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F91566001FFCCBEE00E254CE /* tilde@2x.png */; };
+		F9182487218BDC090062A31D /* PostboyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F9182486218BDC090062A31D /* PostboyManager.m */; };
+		F918248B218BF5640062A31D /* PostboyAccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F918248A218BF5640062A31D /* PostboyAccountModel.m */; };
 		F922FD2720AD6979000BA6F1 /* what@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F922FD2520AD6978000BA6F1 /* what@3x.png */; };
 		F922FD2820AD6979000BA6F1 /* what@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F922FD2620AD6978000BA6F1 /* what@2x.png */; };
 		F922FD2D20AE9940000BA6F1 /* quanzi_secelcted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F922FD2B20AE993E000BA6F1 /* quanzi_secelcted@2x.png */; };
@@ -3362,6 +3364,10 @@
 		F91565FC1FFCC73800E254CE /* qrcode@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qrcode@2x.png"; sourceTree = "<group>"; };
 		F91565FF1FFCCBEE00E254CE /* tilde@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tilde@3x.png"; sourceTree = "<group>"; };
 		F91566001FFCCBEE00E254CE /* tilde@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tilde@2x.png"; sourceTree = "<group>"; };
+		F9182485218BDC090062A31D /* PostboyManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostboyManager.h; sourceTree = "<group>"; };
+		F9182486218BDC090062A31D /* PostboyManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostboyManager.m; sourceTree = "<group>"; };
+		F9182489218BF5640062A31D /* PostboyAccountModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostboyAccountModel.h; sourceTree = "<group>"; };
+		F918248A218BF5640062A31D /* PostboyAccountModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostboyAccountModel.m; sourceTree = "<group>"; };
 		F922FD2520AD6978000BA6F1 /* what@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "what@3x.png"; sourceTree = "<group>"; };
 		F922FD2620AD6978000BA6F1 /* what@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "what@2x.png"; sourceTree = "<group>"; };
 		F922FD2B20AE993E000BA6F1 /* quanzi_secelcted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "quanzi_secelcted@2x.png"; sourceTree = "<group>"; };
@@ -5909,6 +5915,8 @@
 				2D739C4D1FE3AF9500264044 /* BaseModel.m */,
 				2D7B8D7820C12028000EAFB1 /* AgentManager.h */,
 				2D7B8D7920C12028000EAFB1 /* AgentManager.m */,
+				F9182485218BDC090062A31D /* PostboyManager.h */,
+				F9182486218BDC090062A31D /* PostboyManager.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -6431,6 +6439,7 @@
 		2DDEDC011FD4DBB6007AEBF7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F9182488218BF4F00062A31D /* LegModel */,
 				F9705E1C207A0DC300E25E4E /* JCLQ */,
 				F9705E21207A0DC300E25E4E /* JCLQSchemeModel.h */,
 				F9705E22207A0DC400E25E4E /* JCLQSchemeModel.m */,
@@ -6858,6 +6867,15 @@
 				F91565E91FFCBDAE00E254CE /* wechat@3x.png */,
 			);
 			path = share;
+			sourceTree = "<group>";
+		};
+		F9182488218BF4F00062A31D /* LegModel */ = {
+			isa = PBXGroup;
+			children = (
+				F9182489218BF5640062A31D /* PostboyAccountModel.h */,
+				F918248A218BF5640062A31D /* PostboyAccountModel.m */,
+			);
+			path = LegModel;
 			sourceTree = "<group>";
 		};
 		F924BA791FE2528B00830BF4 /* login&registe */ = {
@@ -9449,6 +9467,7 @@
 				2D9847B71FF5EC9500038690 /* WBYCMatchDetailViewController.m in Sources */,
 				2D06001C1FFDCD9F009E7568 /* MJRefreshBackFooter.m in Sources */,
 				2D8CBFEB1FF3770100CC367F /* jcBetContent.m in Sources */,
+				F9182487218BDC090062A31D /* PostboyManager.m in Sources */,
 				2D525F0620FDB13600D66C81 /* ZhuiHaoViewController.m in Sources */,
 				F965562920C537810017066C /* AgentDynamicCell.m in Sources */,
 				2D739CFB1FEB5D1900264044 /* JCZQSelectBQCVIew.m in Sources */,
@@ -9564,6 +9583,7 @@
 				2D0600861FFE206F009E7568 /* IQPreviousNextView.m in Sources */,
 				2DD5995120E1EF58002441B5 /* OmitEnquiresTableViewCell.m in Sources */,
 				2D7B1326204D4ADB0035AE89 /* EXPingCeView.m in Sources */,
+				F918248B218BF5640062A31D /* PostboyAccountModel.m in Sources */,
 				2DB4B341214B87A700E639FE /* RedPacketHisViewController.m in Sources */,
 				2D0600321FFDD2A1009E7568 /* SchemeDetailViewController.m in Sources */,
 				2D8CBFE81FF376DA00CC367F /* YuCeLiShiZhanJCell.m in Sources */,

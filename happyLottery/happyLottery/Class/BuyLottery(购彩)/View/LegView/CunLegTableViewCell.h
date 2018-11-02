@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LegWordModel.h"
+#import "PostboyAccountModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
  @param legModel LegWordModel
  */
-- (void)loadLegDate:(LegWordModel *)legModel;
+- (void)loadLegDate:(PostboyAccountModel *)legModel;
 
 @end
 

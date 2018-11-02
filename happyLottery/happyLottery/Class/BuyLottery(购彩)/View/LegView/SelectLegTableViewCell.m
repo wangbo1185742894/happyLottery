@@ -43,9 +43,9 @@
     [super setFrame:frame];
 }
 
-- (void)loadLegDate:(LegWordModel *)legModel{
+- (void)loadLegDate:(PostboyAccountModel *)legModel{
     self.selectBackGroup.selected = legModel.isSelect;
-    self.legName.text = legModel.legName;
+    self.legName.text = legModel.postboyName;
     //小哥在线
     if ([legModel.overline boolValue]) {
         self.onlineLab.text = @"在线";
@@ -54,14 +54,23 @@
         self.onlineLab.text = @"离线";
         self.onlineLab.backgroundColor = RGBCOLOR(184, 182, 182);
     }
+    //保证金
+    self.protectMoney.text = @"平台签约保证金100000元";
     
+    //余额
+    self.yuE.text = [NSString stringWithFormat:@"%@",legModel.totalBalance];
     //跑腿费
     if ([legModel.cost integerValue] == 0) {
         self.legCost.text = @"免费跑腿";
     }else{
         self.legCost.text = [NSString stringWithFormat:@"一次%@元",legModel.cost];
     }
-    
+    //代买过
+    if (legModel.totalBalance.length == 0) {
+        self.usedLeg.hidden = YES;
+    }else {
+        self.usedLeg.hidden = NO;
+    }
     if (legModel.isSelect) {
         self.selectBackGroup.backgroundColor = RGBCOLOR(255,235,223);
     } else {

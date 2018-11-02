@@ -44,9 +44,9 @@
 }
 
 
-- (void)loadLegDate:(LegWordModel *)legModel{
+- (void)loadLegDate:(PostboyAccountModel *)legModel{
     self.selectBackGroup.selected = legModel.isSelect;
-    self.legName.text = legModel.legName;
+    self.legName.text = legModel.postboyName;
     //小哥在线
     if ([legModel.overline boolValue]) {
         self.onlineLab.text = @"在线";
