@@ -39,7 +39,7 @@
 
 #define KMineRecommendViewCell @"MineRecommendViewCell"
 
-@interface MineViewController () <UITableViewDelegate, UITableViewDataSource,MemberManagerDelegate,RecommendViewCellDelegate,AgentManagerDelegate,LotteryManagerDelegate>{
+@interface MineViewController () <UITableViewDelegate, UITableViewDataSource,MemberManagerDelegate,RecommendViewCellDelegate,AgentManagerDelegate,LotteryManagerDelegate,PostboyManagerDelegate>{
     NSMutableArray <NSDictionary *>*listArray;
     NSMutableArray <NSDictionary *>*groupArray;
     long num;
@@ -78,6 +78,7 @@
 @property(nonatomic,strong)  LoadData  *loadDataTool;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *yueLeftCons;
 @property (weak, nonatomic) IBOutlet UIButton *legYueBtn;
+@property (weak, nonatomic) IBOutlet UILabel *totalBalanceLeg;
 @end
 
 @implementation MineViewController
@@ -86,6 +87,7 @@
     [super viewDidLoad];
     num=0;
     self.memberMan.delegate = self;
+    self.postboyMan.delegate = self;
     listUseRedPacketArray = [[NSMutableArray alloc]init];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(actionUserLoginSuccess:) name:NotificationNameUserLogin object:nil];
     
@@ -235,6 +237,7 @@
     self.integralLab.text = @"0";
     self.redPacketLab.text =  @"0";
     self.lotMoneyLab.text = @"0";
+    self.totalBalanceLeg.text = @"0";
     self.noticeRedPointLab.hidden = YES;
 }
 
@@ -263,7 +266,7 @@
 }
 
 -(void)actionUserLoginSuccess:(NSNotification *)notification{
-    
+
     [self loadUserInfo];
 }
 
@@ -284,12 +287,33 @@
     }
 }
 
+
+-(void )memberPostboyBalanceCountdelegate:(NSDictionary *)param isSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    if (success == NO) {
+        self.curUser.totalBanleceLeg = @"0";
+    }else{
+        NSString *totalBalance = param[@"totalBalance"];
+        if (totalBalance.length == 0) {
+            self.curUser.totalBanleceLeg = @"0";
+        }else{
+            self.curUser.totalBanleceLeg = [NSString stringWithFormat:@"%.2f",[totalBalance doubleValue]];
+        }
+    }
+    self.totalBalanceLeg.text = [NSString stringWithFormat:@"%@元",self.curUser.totalBanleceLeg];
+}
+
+//小哥总余额
+-(void)getLegBanlance{
+    [self.postboyMan memberPostboyBalanceCount:@{@"cardCode":self.curUser.cardCode}];
+}
+
 -(void)loadUserInfo{
     [self reloadDateArray];
     [self.tableView reloadData];
     NSString *userName;
     if (self.curUser.cardCode.length >0) {
         [self getMyAgentInfo];
+        [self getLegBanlance];
     }
     if (self.curUser.nickname.length == 0) {
         userName = self.curUser.mobile;
@@ -469,191 +493,6 @@
 -(void)registerUser:(NSDictionary *)userInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     NSLog(@"%@",userInfo);
 }
-
-#pragma UITableViewDataSource methods
-
-
-//-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-//    return 2;
-//}
-
-//- (void)hiddenCell:(MineCollectionViewCell *)cell{
-//    cell.labRedPoint.hidden = YES;
-//    cell.imgItemIcon.hidden = YES;
-//    cell.labItemTitle.hidden = YES;
-//}
-
-//-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-//    MineCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:KMenuCollectionViewCell forIndexPath:indexPath];
-//    NSDictionary *optionDic;
-//
-//    if (indexPath.section == 0) {
-//        if (indexPath.row == groupArray.count) {
-//            [self hiddenCell:cell];
-//            return cell;
-//        }
-//        optionDic = groupArray[indexPath.row];
-//    }else {
-//        if (indexPath.row == listArray.count) {
-//           [self hiddenCell:cell];
-//           return cell;
-//        }
-//        optionDic = listArray[indexPath.row];
-//    }
-//    cell.labRedPoint.hidden = NO;
-//    cell.imgItemIcon.hidden = NO;
-//    cell.labItemTitle.hidden = NO;
-//    cell.labRedPoint.adjustsFontSizeToFitWidth = YES;
-//
-//    cell.imgItemIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_mine",optionDic[@"icon"]]];
-//    if (listUseRedPacketArray.count>0 && [optionDic[@"title"] isEqualToString:@"我的红包"]) {
-//
-//        cell.labRedPoint.hidden=  !self.curUser.isLogin;
-//    }else  if (rednum>0 && [optionDic[@"title"] isEqualToString:@"意见反馈"]) {
-//        cell.labRedPoint.hidden= !self.curUser.isLogin;
-//    }else{
-//        cell.labRedPoint.hidden= YES;
-//    }
-//    cell.labItemTitle.text = optionDic[@"title"];
-//    return cell;
-//}
-
-//-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-//    if (indexPath.section == 0) {
-//        return CGSizeMake(KscreenWidth / 2-0.5, 80);
-//    }
-//    return CGSizeMake(KscreenWidth / 2, 80);
-//}
-
-//- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
-//    if (section == 0) {
-//        return 1;
-//    }
-//    return 0;
-//}
-
-
-//- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
-//    if (section == 0) {
-//        return 1;
-//    }
-//    return 0;
-//}
-
-//- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
-//{
-//    if (section == 0) {
-//        return  UIEdgeInsetsMake(10, 0, 10, 0);
-//    }
-//    return UIEdgeInsetsMake(0, 0, 0, 0);
-//}
-
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    //[self.tableView registerClass :[YourTableCell class] forCellReuseIdentifier:@"txTableCell"];
-//    static NSString *CellIdentifier = @"TabViewCell";
-//    //自定义cell类
-//    MineTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-//    if (cell == nil) {
-//        cell = [[[NSBundle mainBundle] loadNibNamed:@"MineTableViewCell" owner:self options:nil] lastObject];
-//    }
-//    NSDictionary *optionDic = listArray[indexPath.section][indexPath.row];
-//    cell.image.image = [UIImage reSizeImageName:optionDic[@"icon"] andMinWidth:18];
-//    //    cell.imageView.image = [UIImage imageNamed: optionDic[@"icon"]];
-//
-//
-//    cell.lable.text = optionDic[@"title"];
-//
-//    if (listUseRedPacketArray.count>0 && [optionDic[@"title"] isEqualToString:@"我的红包"]) {
-//
-//        cell.redPoint.hidden=  !self.curUser.isLogin;
-//    }else  if (rednum>0 && [optionDic[@"title"] isEqualToString:@"意见反馈"]) {
-//        cell.redPoint.hidden= !self.curUser.isLogin;
-//    }else{
-//         cell.redPoint.hidden= YES;
-//    }
-//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    cell.lable.font = [UIFont systemFontOfSize:15];
-//    NSString *ShowIconRight =optionDic[@"ShowIconRight"];
-//    if ([ShowIconRight isEqualToString:@"1"]) {
-//        cell.rightIcon.hidden=NO;
-//    }else{
-//         cell.rightIcon.hidden=YES;
-//    }
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//
-////        tableViewHeight.constant = self.tableview.mj_h;
-//    });
-//    return cell;
-//}
-//- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-//{
-//    tableView.backgroundColor = [UIColor clearColor];
-//    NSString *sectionTitle;
-//    if ([self respondsToSelector:@selector(tableView)]) {
-//        sectionTitle = [self tableView:tableView titleForHeaderInSection:section];
-//    }else{
-//        sectionTitle = nil;
-//    }
-//
-//    if (sectionTitle == nil) {
-//        UIView * sectionView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 20)] ;
-//        [sectionView setBackgroundColor:[UIColor clearColor]];
-//        return  sectionView;
-//    }
-//
-//    UILabel * label = [[UILabel alloc] init] ;
-//    label.frame = CGRectMake(15, 0, 320, 40);
-//    label.backgroundColor = [UIColor clearColor];
-//    label.font=[UIFont systemFontOfSize:15];
-//    label.text = sectionTitle;
-//
-//    UIView * sectionView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 40)] ;
-//    [sectionView setBackgroundColor:[UIColor clearColor]];
-//    [sectionView addSubview:label];
-//    return sectionView;
-//}
-
-#pragma UITableViewDelegate methods
-
-//-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-//    if (section == 0) {
-//        return 4;
-//    }
-//    return 8;
-//}
-
-
-//-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-//    NSDictionary *optionDic;
-//
-//    if (indexPath.section == 0) {
-//        if(groupArray.count <= indexPath.row){
-//            return;
-//        }
-//        optionDic = groupArray[indexPath.row];
-//    }else{
-//        if(listArray.count <= indexPath.row){
-//            return;
-//        }
-//        optionDic = listArray[indexPath.row];
-//    }
-//    if ([optionDic[@"needLogin"] boolValue] == YES && self.curUser.isLogin == NO) {
-//        [self needLogin];
-//    } else {
-//        self.memberSubFunctionClass = optionDic[@"actionClassName"];
-//
-//        if ([self.memberSubFunctionClass isEqualToString:@"MyPostSchemeViewController"]) {
-//            MyPostSchemeViewController *vc = [[MyPostSchemeViewController alloc]init];
-//            vc.isFaDan = YES;
-//            vc.hidesBottomBarWhenPushed = YES;
-//            [self.navigationController pushViewController: vc animated: YES];
-//        } else {
-//             BaseViewController *vc = [[NSClassFromString(_memberSubFunctionClass) alloc] initWithNibName: _memberSubFunctionClass bundle: nil];
-//            vc.hidesBottomBarWhenPushed = YES;
-//            [self.navigationController pushViewController: vc animated: YES];
-//        }
-//    }
-//}
 
 #pragma 查询系统消息
 

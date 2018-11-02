@@ -158,187 +158,26 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 
-- (void)listSubscribeDetailByPostboy:(NSDictionary *)dictionary{
+-(void)getLegUserCashInfo:(NSDictionary *)paraDic andApi:(NSString *)api{
     void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
     {
         SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
-        NSString *responseJsonStr = [response getAPIResponse];
+        NSString * infoString = [response getAPIResponse];
+        
         if (response.succeed) {
-            NSArray *matchArray = [self objFromJson: responseJsonStr];
-            [self.delegate listSubscribeDetailByPostboydelegate:matchArray isSuccess:YES errorMsg:response.errorMsg];
-
-            
-        } else {
-            
-            [self.delegate listSubscribeDetailByPostboydelegate:nil isSuccess:NO errorMsg:response.errorMsg];
-
+            NSArray  *infoList = [self objFromJson:infoString];
+            [self.delegate gotLegUserCashInfoList: infoList errorMsg:response.errorMsg];
+        }else{
+            [self.delegate gotLegUserCashInfoList: nil errorMsg:response.errorMsg];
         }
     };
     void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
-        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
-        [self.delegate listSubscribeDetailByPostboydelegate:nil isSuccess:NO errorMsg:response.errorMsg];
-
+        [self.delegate gotLegUserCashInfoList: nil errorMsg:@"请检查网络连接"];
     };
     
-    SOAPRequest *request = [self requestForAPI: APIListSubscribeDetailByPostboy withParam:@{@"params":[self actionEncrypt:[self JsonFromId:dictionary]]} ];
-    [self newRequestWithRequest:request
-                         subAPI:SUBAPIPostboyService
-      constructingBodyWithBlock:nil
-                        success:succeedBlock
-                        failure:failureBlock];
-}
-
-
-- (void)listRechargeDetailByPostboy:(NSDictionary *)dictionary{
-    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
-    {
-        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
-        NSString *responseJsonStr = [response getAPIResponse];
-        if (response.succeed) {
-            NSArray *matchArray = [self objFromJson: responseJsonStr];
-            [self.delegate listRechargeDetailByPostboydelegate:matchArray isSuccess:YES errorMsg:response.errorMsg];
-
-        } else {
-            [self.delegate listRechargeDetailByPostboydelegate:nil isSuccess:NO errorMsg:response.errorMsg];
-
-            
-        }
-    };
-    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@", error);
-        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
-        [self.delegate listRechargeDetailByPostboydelegate:nil isSuccess:NO errorMsg:response.errorMsg];
-
-    };
+    SOAPRequest *request = [self requestForAPI:api withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
     
-    SOAPRequest *request = [self requestForAPI: APIListRechargeDetailByPostboy withParam:@{@"params":[self actionEncrypt:[self JsonFromId:dictionary]]} ];
-    [self newRequestWithRequest:request
-                         subAPI:SUBAPIPostboyService
-      constructingBodyWithBlock:nil
-                        success:succeedBlock
-                        failure:failureBlock];
-}
-
-
-- (void)listBonusDetailByPostboy:(NSDictionary *)dictionary{
-    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
-    {
-        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
-        NSString *responseJsonStr = [response getAPIResponse];
-        if (response.succeed) {
-            NSArray *matchArray = [self objFromJson: responseJsonStr];
-            [self.delegate listBonusDetailByPostboydelegate:matchArray isSuccess:YES errorMsg:response.errorMsg];
-
-            
-        } else {
-            [self.delegate listBonusDetailByPostboydelegate:nil isSuccess:NO errorMsg:response.errorMsg];
-            
-        }
-    };
-    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@", error);
-        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
-        [self.delegate listBonusDetailByPostboydelegate:nil isSuccess:NO errorMsg:response.errorMsg];
-    };
-    
-    SOAPRequest *request = [self requestForAPI: APIListBonusDetailByPostboy withParam:@{@"params":[self actionEncrypt:[self JsonFromId:dictionary]]} ];
-    [self newRequestWithRequest:request
-                         subAPI:SUBAPIPostboyService
-      constructingBodyWithBlock:nil
-                        success:succeedBlock
-                        failure:failureBlock];
-}
-
-
-- (void)listWithdrawDetailByPostboy:(NSDictionary *)dictionary{
-    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
-    {
-        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
-        NSString *responseJsonStr = [response getAPIResponse];
-        if (response.succeed) {
-            NSArray *matchArray = [self objFromJson: responseJsonStr];
-            [self.delegate listWithdrawDetailByPostboydelegate:matchArray isSuccess:YES errorMsg:response.errorMsg];
-
-            
-        } else {
-            
-            [self.delegate listWithdrawDetailByPostboydelegate:nil isSuccess:NO errorMsg:response.errorMsg];
-
-        }
-    };
-    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@", error);
-        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
-        [self.delegate listWithdrawDetailByPostboydelegate:nil isSuccess:NO errorMsg:response.errorMsg];
-
-    };
-    
-    SOAPRequest *request = [self requestForAPI: APIListWithdrawDetailByPostboy withParam:@{@"params":[self actionEncrypt:[self JsonFromId:dictionary]]} ];
-    [self newRequestWithRequest:request
-                         subAPI:SUBAPIPostboyService
-      constructingBodyWithBlock:nil
-                        success:succeedBlock
-                        failure:failureBlock];
-}
-
-
-- (void)getChasePrepayOrderListByPostboy:(NSDictionary *)dictionary{
-    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
-    {
-        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
-        NSString *responseJsonStr = [response getAPIResponse];
-        if (response.succeed) {
-            NSArray *matchArray = [self objFromJson: responseJsonStr];
-            [self.delegate getChasePrepayOrderListByPostboydelegate:matchArray isSuccess:YES errorMsg:response.errorMsg];
-
-            
-        } else {
-            [self.delegate getChasePrepayOrderListByPostboydelegate:nil isSuccess:NO errorMsg:response.errorMsg];
-
-            
-        }
-    };
-    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@", error);
-        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
-        [self.delegate getChasePrepayOrderListByPostboydelegate:nil isSuccess:NO errorMsg:response.errorMsg];
-
-    };
-    
-    SOAPRequest *request = [self requestForAPI: APIGetChasePrepayOrderListByPostboy withParam:@{@"params":[self actionEncrypt:[self JsonFromId:dictionary]]} ];
-    [self newRequestWithRequest:request
-                         subAPI:SUBAPIPostboyService
-      constructingBodyWithBlock:nil
-                        success:succeedBlock
-                        failure:failureBlock];
-}
-
-
-- (void)listCommissionDetailByPostboy:(NSDictionary *)dictionary{
-    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
-    {
-        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
-        NSString *responseJsonStr = [response getAPIResponse];
-        if (response.succeed) {
-            NSArray *matchArray = [self objFromJson: responseJsonStr];
-            [self.delegate listCommissionDetailByPostboydelegate:matchArray isSuccess:YES errorMsg:response.errorMsg];
-
-            
-        } else {
-            [self.delegate listCommissionDetailByPostboydelegate:nil isSuccess:NO errorMsg:response.errorMsg];
-
-            
-        }
-    };
-    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@", error);
-        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
-        [self.delegate listCommissionDetailByPostboydelegate:nil isSuccess:NO errorMsg:response.errorMsg];
-
-    };
-    
-    SOAPRequest *request = [self requestForAPI: APIListCommissionDetailByPostboy withParam:@{@"params":[self actionEncrypt:[self JsonFromId:dictionary]]} ];
     [self newRequestWithRequest:request
                          subAPI:SUBAPIPostboyService
       constructingBodyWithBlock:nil

@@ -46,7 +46,6 @@
 /** 对应会员可提现余额 */
 @property(nonatomic,strong)NSString * cashBalance;
 
-
 /** 对应会员不可提现金额 */
 @property(nonatomic,strong)NSString * notCash;
 

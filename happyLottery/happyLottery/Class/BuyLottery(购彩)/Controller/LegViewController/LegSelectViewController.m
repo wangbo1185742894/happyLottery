@@ -11,6 +11,7 @@
 #import "LegSelectFooterView.h"
 #import "CunLegTableViewCell.h"
 #import "ZhuanLegTableViewCell.h"
+#import "LegCashInfoViewController.h"
 
 #define KSelectLegTableViewCell    @"SelectLegTableViewCell"
 #define KCunLegTableViewCell       @"CunLegTableViewCell"
@@ -149,8 +150,18 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     PostboyAccountModel *legModel = self.personArray[indexPath.row];
     legModel.isSelect = YES;
-    [self.delegate alreadySelectModel:legModel];
-    [self.navigationController popViewControllerAnimated:YES];
+    if ([self.titleName isEqualToString:@"选择代买小哥"]) {
+        [self.delegate alreadySelectModel:legModel];
+        [self.navigationController popViewControllerAnimated:YES];
+    } else if ([self.titleName isEqualToString:@"存款"]) {
+        LegCashInfoViewController *legCashInfoVC = [[LegCashInfoViewController alloc]init];
+        legCashInfoVC.vcTitle = [NSString stringWithFormat:@"%@余额明细",legModel.postboyName];
+        legCashInfoVC.postboyId = legModel._id;
+        [self.navigationController pushViewController:legCashInfoVC animated:YES];
+    } else {
+        
+    }
+    
 }
 
 

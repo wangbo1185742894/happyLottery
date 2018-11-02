@@ -73,6 +73,9 @@ typedef enum {
 @property(nonatomic,strong)NSString * parentId;
 
 @property(nonatomic,strong)NSString *totalBanlece;
+
+@property(nonatomic,strong)NSString *totalBanleceLeg;
+
 @property (nonatomic, assign) PayVerifyType payVerifyType;
 
 @property(nonatomic,strong)MyAgentInfoModel *agentInfo;

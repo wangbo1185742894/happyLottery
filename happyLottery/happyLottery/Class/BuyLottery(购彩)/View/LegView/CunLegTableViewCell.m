@@ -17,10 +17,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *legName;
 @property (weak, nonatomic) IBOutlet UILabel *renZheng;
-@property (weak, nonatomic) IBOutlet UILabel *onlineLab;
-@property (weak, nonatomic) IBOutlet UILabel *protectMoney;
-@property (weak, nonatomic) IBOutlet UILabel *legCost;
-@property (weak, nonatomic) IBOutlet UILabel *usedLeg;
+
 @property (weak, nonatomic) IBOutlet UILabel *leaveMoney;
 @property (weak, nonatomic) IBOutlet UILabel *yuE;
 
@@ -47,22 +44,8 @@
 - (void)loadLegDate:(PostboyAccountModel *)legModel{
     self.selectBackGroup.selected = legModel.isSelect;
     self.legName.text = legModel.postboyName;
-    //小哥在线
-    if ([legModel.overline boolValue]) {
-        self.onlineLab.text = @"在线";
-        self.onlineLab.backgroundColor = RGBCOLOR(21, 126, 251);
-    } else {
-        self.onlineLab.text = @"离线";
-        self.onlineLab.backgroundColor = RGBCOLOR(184, 182, 182);
-    }
-    
-    //跑腿费
-    if ([legModel.cost integerValue] == 0) {
-        self.legCost.text = @"免费跑腿";
-    }else{
-        self.legCost.text = [NSString stringWithFormat:@"一次%@元",legModel.cost];
-    }
-    
+    //余额
+    self.yuE.text = [NSString stringWithFormat:@"%.2f元",[legModel.totalBalance doubleValue]];
     if (legModel.isSelect) {
         self.selectBackGroup.backgroundColor = RGBCOLOR(255,235,223);
     } else {

@@ -240,7 +240,7 @@
     self.curUser.score = user.score;
     self.sendBalanceLab.text = [NSString stringWithFormat:@"-%.2f 元",[self.curUser.sendBalance doubleValue]];
     self.labOrderCost.text = [NSString stringWithFormat:@"%.2f 元",self.subscribed];
-    self.labRealCost.text = [NSString stringWithFormat:@"%.2f 元",self.subscribed - [self.curSelectCoupon.deduction doubleValue] - [self.curUser.sendBalance doubleValue]] ;
+    self.labRealCost.text = [NSString stringWithFormat:@"%.2f",self.subscribed - [self.curSelectCoupon.deduction doubleValue] - [self.curUser.sendBalance doubleValue]] ;
     
 }
 

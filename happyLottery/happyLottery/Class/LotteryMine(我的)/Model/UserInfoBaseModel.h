@@ -8,8 +8,6 @@
 
 #import "BaseModel.h"
 
-
-
 @interface UserInfoBaseModel : BaseModel
 -(NSString *)get1Name;
 -(NSString *)get2Name;
@@ -33,6 +31,11 @@
 
 /** 派奖时间 */
 @property(nonatomic,strong)NSString * prizeTime;
+
+//-----------快递小哥-------------//
+/** 小哥ID*/
+@property(nonatomic,strong)NSString *  postboyId;
+
 @end
 
 
@@ -47,6 +50,7 @@
 
 /** 创建时间 */
 @property(nonatomic,strong)NSString * createTime;
+
 @end
 
 @interface HandselDetail : UserInfoBaseModel
@@ -80,6 +84,11 @@
 
 /** 成功时间 */
 @property(nonatomic,strong)NSString *  successTime;
+
+//-----------快递小哥-------------//
+/** 小哥ID*/
+@property(nonatomic,strong)NSString *  postboyId;
+
 @end
 
 @interface SubscribeDetail : UserInfoBaseModel
@@ -90,10 +99,11 @@
 /** 方案号*/
 @property(nonatomic,strong)NSString *  schemeNo;
 
-@property(nonatomic,strong)NSString * consumeType;
-
 /** 彩种*/
 @property(nonatomic,strong)NSString *  lotteryType;
+
+/** 消费类型*/
+@property(nonatomic,strong)NSString * consumeType;
 
 /** 认购总金额 */
 @property(nonatomic,strong)NSString *  subAmounts;
@@ -112,6 +122,21 @@
 
 /** 实际支付金额 */
 @property(nonatomic,strong)NSString *  realSubAmounts;
+
+//-----------快递小哥-------------//
+
+/** 是否完成交易 */
+@property(nonatomic,strong)NSString *  finished;
+
+/** 小哥ID*/
+@property(nonatomic,strong)NSString *  postboyId;
+
+/** 完成交易时间(完成出票时间) */
+@property(nonatomic,strong)NSString *  finishedTime;
+
+/** 备注 */
+@property(nonatomic,strong)NSString *  remark;
+
 @end
 
 @interface WithdrawDetail : UserInfoBaseModel
@@ -137,6 +162,11 @@
 
 /** 备注 */
 @property(nonatomic,strong)NSString * remark;
+
+//-----------快递小哥-------------//
+/** 小哥ID*/
+@property(nonatomic,strong)NSString *  postboyId;
+
 @end
 
 @interface AgentCommissionDetail : UserInfoBaseModel
@@ -167,6 +197,9 @@
 /** 退款总金额 */
 @property(nonatomic,strong)NSString * refundAmounts;
 
+/** 异常追号退款 */
+@property(nonatomic,strong)NSString *  chaseExceptionRefund;
+
 /** 认购时间 */
 @property(nonatomic,strong)NSString * subTime;
 
@@ -189,8 +222,11 @@
 /** 总期数 */
 @property(nonatomic,strong)NSString *  totalCatch;
 
-/** 异常追号退款 */
-@property(nonatomic,strong)NSString *  chaseExceptionRefund;
+//-----------快递小哥-------------//
+/** 小哥ID*/
+@property(nonatomic,strong)NSString *  postboyId;
+
+
 @end
 
 @interface MemberRedPacketOrderModel : UserInfoBaseModel
@@ -235,3 +271,34 @@
 
 @end
 
+
+/**
+ 小哥对应用户佣金流水
+ */
+@interface PostboyBlotterDetailModel : UserInfoBaseModel
+
+/** 所有业务的订单号*/
+@property(nonatomic,strong)NSString * orderNo;
+
+/** 所属的小哥ID */
+@property(nonatomic,strong)NSString * postboyId;
+
+/** 会员卡号 账号*/
+@property(nonatomic,strong)NSString * cardCode;
+
+/** 会员的订单类型(现金) */
+@property(nonatomic,strong)NSString * orderType;
+
+/** 金额类型(现金) */
+@property(nonatomic,strong)NSString * subType;
+
+/** 账户交易金额  */
+@property(nonatomic,strong)NSString * amounts;
+
+/** 变化后总余额 */
+@property(nonatomic,strong)NSString * remBalance;
+
+/** 备注 */
+@property(nonatomic,strong)NSString * remark;
+
+@end

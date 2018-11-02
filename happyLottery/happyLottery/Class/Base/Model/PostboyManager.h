@@ -27,20 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(void )recentPostboyAccountdelegate:(NSDictionary *)param isSuccess:(BOOL)success errorMsg:(NSString *)msg;
 
--(void )listSubscribeDetailByPostboydelegate:(NSArray *)array isSuccess:(BOOL)success errorMsg:(NSString *)msg;
-
--(void )listRechargeDetailByPostboydelegate:(NSArray *)array isSuccess:(BOOL)success errorMsg:(NSString *)msg;
-
--(void )listBonusDetailByPostboydelegate:(NSArray *)array isSuccess:(BOOL)success errorMsg:(NSString *)msg;
-
--(void )listWithdrawDetailByPostboydelegate:(NSArray *)array isSuccess:(BOOL)success errorMsg:(NSString *)msg;
-
-
--(void )getChasePrepayOrderListByPostboydelegate:(NSArray *)array isSuccess:(BOOL)success errorMsg:(NSString *)msg;
-
--(void )listCommissionDetailByPostboydelegate:(NSArray *)array isSuccess:(BOOL)success errorMsg:(NSString *)msg;
-
-
+- (void)gotLegUserCashInfoList:(NSArray*)infoList errorMsg:(NSString *)msg;
 
 @end
 
@@ -89,47 +76,14 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)recentPostboyAccount:(NSDictionary *)dictionary;
 
-/**
- 分页查询快递小哥对应会员的认购明细
-
- @param dictionary  {"cardCode":"xxx","postboyId":"xxxxx","page":"xxx","pageSize":"xxx"}
- */
-- (void)listSubscribeDetailByPostboy:(NSDictionary *)dictionary;
 
 /**
- 分页查询小哥对应会员充值明细
+ 分页查询小哥对应会员 认购  充值  中奖  提现  预付款  佣金明细
 
- @param dictionary  {"cardCode":"xxx","postboyId":"xxxxx","page":"xxx","pageSize":"xxx"}
+ @param paraDic {"cardCode":"xxx","postboyId":"xxxxx","page":"xxx","pageSize":"xxx"}
+ @param api 接口名
  */
-- (void)listRechargeDetailByPostboy:(NSDictionary *)dictionary;
-
-/**
-   * 分页查询小哥对应会员的中奖明细（派奖）
-
- @param dictionary {"cardCode":"xxx","postboyId":"xxxxx","page":"xxx","pageSize":"xxx"}
- */
-- (void)listBonusDetailByPostboy:(NSDictionary *)dictionary;
-
-/**
- 分页查询小哥对应会员提现明显
-
- @param dictionary {"cardCode":"xxx","postboyId":"xxxxx","page":"xxx","pageSize":"xxx"}
- */
-- (void)listWithdrawDetailByPostboy:(NSDictionary *)dictionary;
-
-/**
- 获得小哥对应会员追号预付款 流水
-
- @param dictionary {"cardCode":"xxx","postboyId":"xxxxx","page":"xxx","pageSize":"xxx"}
- */
-- (void)getChasePrepayOrderListByPostboy:(NSDictionary *)dictionary;
-
-/**
-   * 分页查询小哥对应会员发单佣金明细
-
- @param dictionary {"cardCode":"xxx","postboyId":"xxxxx","page":"xxx","pageSize":"xxx"}
- */
-- (void)listCommissionDetailByPostboy:(NSDictionary *)dictionary;
+-(void)getLegUserCashInfo:(NSDictionary *)paraDic andApi:(NSString *)api;
 
 @end
 

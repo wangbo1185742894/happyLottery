@@ -1075,6 +1075,10 @@
 		F91566021FFCCBEF00E254CE /* tilde@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F91566001FFCCBEE00E254CE /* tilde@2x.png */; };
 		F9182487218BDC090062A31D /* PostboyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F9182486218BDC090062A31D /* PostboyManager.m */; };
 		F918248B218BF5640062A31D /* PostboyAccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F918248A218BF5640062A31D /* PostboyAccountModel.m */; };
+		F918248F218C5BE20062A31D /* LegCashInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F918248C218C5BDC0062A31D /* LegCashInfoViewController.xib */; };
+		F9182490218C5BE20062A31D /* LegCashInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F918248E218C5BDD0062A31D /* LegCashInfoViewController.m */; };
+		F9182494218C652B0062A31D /* LegClassListCellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9182492218C652A0062A31D /* LegClassListCellViewController.m */; };
+		F9182495218C652B0062A31D /* LegClassListCellViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9182493218C652A0062A31D /* LegClassListCellViewController.xib */; };
 		F922FD2720AD6979000BA6F1 /* what@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F922FD2520AD6978000BA6F1 /* what@3x.png */; };
 		F922FD2820AD6979000BA6F1 /* what@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F922FD2620AD6978000BA6F1 /* what@2x.png */; };
 		F922FD2D20AE9940000BA6F1 /* quanzi_secelcted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F922FD2B20AE993E000BA6F1 /* quanzi_secelcted@2x.png */; };
@@ -3368,6 +3372,12 @@
 		F9182486218BDC090062A31D /* PostboyManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostboyManager.m; sourceTree = "<group>"; };
 		F9182489218BF5640062A31D /* PostboyAccountModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostboyAccountModel.h; sourceTree = "<group>"; };
 		F918248A218BF5640062A31D /* PostboyAccountModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostboyAccountModel.m; sourceTree = "<group>"; };
+		F918248C218C5BDC0062A31D /* LegCashInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LegCashInfoViewController.xib; sourceTree = "<group>"; };
+		F918248D218C5BDD0062A31D /* LegCashInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LegCashInfoViewController.h; sourceTree = "<group>"; };
+		F918248E218C5BDD0062A31D /* LegCashInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LegCashInfoViewController.m; sourceTree = "<group>"; };
+		F9182491218C652A0062A31D /* LegClassListCellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LegClassListCellViewController.h; sourceTree = "<group>"; };
+		F9182492218C652A0062A31D /* LegClassListCellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LegClassListCellViewController.m; sourceTree = "<group>"; };
+		F9182493218C652A0062A31D /* LegClassListCellViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LegClassListCellViewController.xib; sourceTree = "<group>"; };
 		F922FD2520AD6978000BA6F1 /* what@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "what@3x.png"; sourceTree = "<group>"; };
 		F922FD2620AD6978000BA6F1 /* what@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "what@2x.png"; sourceTree = "<group>"; };
 		F922FD2B20AE993E000BA6F1 /* quanzi_secelcted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "quanzi_secelcted@2x.png"; sourceTree = "<group>"; };
@@ -5992,6 +6002,12 @@
 		2DDEDBF81FD4DBB5007AEBF7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F9182491218C652A0062A31D /* LegClassListCellViewController.h */,
+				F9182492218C652A0062A31D /* LegClassListCellViewController.m */,
+				F9182493218C652A0062A31D /* LegClassListCellViewController.xib */,
+				F918248D218C5BDD0062A31D /* LegCashInfoViewController.h */,
+				F918248E218C5BDD0062A31D /* LegCashInfoViewController.m */,
+				F918248C218C5BDC0062A31D /* LegCashInfoViewController.xib */,
 				2DBFB43321781A3B0074B024 /* ZhiFubaoWeixinErcodeController.h */,
 				2DBFB43421781A3B0074B024 /* ZhiFubaoWeixinErcodeController.m */,
 				2DBFB43521781A3B0074B024 /* ZhiFubaoWeixinErcodeController.xib */,
@@ -8333,6 +8349,7 @@
 				2D4D608E20AD717900280033 /* activityshut@2x.png in Resources */,
 				F999277E2003597E00023F8F /* addcrease@2x.png in Resources */,
 				F9BC6E5E20C2DD3D0037998B /* xuhao3@3x.png in Resources */,
+				F9182495218C652B0062A31D /* LegClassListCellViewController.xib in Resources */,
 				F9CDBEC7202306E100A1BE71 /* 2@2x.png in Resources */,
 				F9BC6E2820C2CA090037998B /* tishi_man@3x.png in Resources */,
 				2D7B13C8204E877A0035AE89 /* CTZQTouzhuShisiCell.xib in Resources */,
@@ -8895,6 +8912,7 @@
 				F9BC6E6120C2DD3D0037998B /* xuhao1@2x.png in Resources */,
 				2DAE6F242150D6CE0074FFAB /* yiguoqi@2x.png in Resources */,
 				F9BC6DCA20C228290037998B /* GroupNewViewController.xib in Resources */,
+				F918248F218C5BE20062A31D /* LegCashInfoViewController.xib in Resources */,
 				F96723EE2009B12B0044DC8E /* response@3x.png in Resources */,
 				F94AA9DF1FEB7B780021B980 /* kuaijie@3x.png in Resources */,
 				2D638F6120F32FAE004463FC /* Images.xcassets in Resources */,
@@ -9419,6 +9437,7 @@
 				F9705E49207A0DE800E25E4E /* JCLQDXFCell.m in Sources */,
 				F9C3BA1720088D0100916F3C /* FeedBackHistoryViewController.m in Sources */,
 				F9705E4B207A0DE800E25E4E /* JCLQHHTZCell.m in Sources */,
+				F9182490218C5BE20062A31D /* LegCashInfoViewController.m in Sources */,
 				2D7B1314204D499D0035AE89 /* ExprieRoundViewCell.m in Sources */,
 				2D03F27F2060BAE800C81BEF /* BankCardSettingViewController.m in Sources */,
 				2D4B1E941FDF7BD20034B708 /* NewsListCell.m in Sources */,
@@ -9680,6 +9699,7 @@
 				F9B5D912205FB0B000C9F6DC /* GYJPlayViewController.m in Sources */,
 				2D4EE8E7211AF3B3000DF540 /* ShareOrderView.m in Sources */,
 				2D83E26320BE8FEE00F2D375 /* WBBifenZhiboViewController.m in Sources */,
+				F9182494218C652B0062A31D /* LegClassListCellViewController.m in Sources */,
 				2DDEDE651FD568C9007AEBF7 /* SDWebImagePrefetcher.m in Sources */,
 				2DDEDE691FD568C9007AEBF7 /* UIImage+WebP.m in Sources */,
 				F9C942D520B56107009BA1BF /* LotteryCollectionView.m in Sources */,
