@@ -8,12 +8,13 @@
 
 #import "BaseViewController.h"
 #import "PayTypeListCell.h"
-
+#import "JCLQTransaction.h"
 #import "Coupon.h"
 
 @interface PayOrderLegViewController : BaseViewController
 
-@property(nonatomic,strong)JCZQTranscation *transction;
+@property(nonatomic,strong)BaseTransaction *basetransction;
+
 
 @property(nonatomic,copy)NSString *lotteryName;
 

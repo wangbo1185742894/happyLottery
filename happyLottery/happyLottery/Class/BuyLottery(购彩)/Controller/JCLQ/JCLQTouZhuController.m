@@ -515,39 +515,10 @@
     }else{
         self.transaction.schemeType = SchemeTypeZigou;
     }
-    [self.lotteryMan betLotteryScheme:self.transaction];
-}
-- (void) betedLotteryScheme:(NSString *)schemeNO errorMsg:(NSString *)msg{
-    [self hideLoadingView];
-    if (schemeNO == nil || schemeNO.length == 0) {
-        [self showPromptText:msg hideAfterDelay:1.7];
-        return;
-    }
     PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
-    SchemeCashPayment *schemeCashModel = [[SchemeCashPayment alloc]init];
-    schemeCashModel.cardCode = self.curUser.cardCode;
-    schemeCashModel.lotteryName = @"竞彩篮球";
-    schemeCashModel.schemeNo = schemeNO;
-    schemeCashModel.subCopies = 1;
-    if (btnMoniTouzhu.selected == YES) {
-        schemeCashModel.costType = CostTypeSCORE;
-        if (self.transaction.betCost  > 30000000) {
-            [self showPromptText:@"单笔总积分不能超过3千万积分" hideAfterDelay:1.7];
-            return;
-        }
-    }else{
-        schemeCashModel.costType = CostTypeCASH;
-        if (self.transaction.betCost  > 300000) {
-            [self showPromptText:@"单笔总金额不能超过30万元" hideAfterDelay:1.7];
-            return;
-        }
-    }
-    payVC.schemetype  = self.transaction.schemeType;
-    [self hideLoadingView];
-    
-    schemeCashModel.subscribed = self.transaction.betCost;
-    schemeCashModel.realSubscribed = self.transaction.betCost;
-//    payVC.cashPayMemt = schemeCashModel;
+    payVC.basetransction = self.transaction;
+    payVC.lotteryName = @"竞彩篮球";
+    payVC.subscribed = self.transaction.betCost;
     [self.navigationController pushViewController:payVC animated:YES];
 }
 

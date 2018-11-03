@@ -22,7 +22,8 @@
 #import "LegRechargeOrderViewController.h"
 #import "LegOrderDetailViewController.h"
 #import "PostboyAccountModel.h"
-
+#import "PaySuccessViewController.h"
+#import "YuCeSchemeCreateViewController.h"
 
 #define KPayTypeListCell @"PayTypeListCell"
 
@@ -325,14 +326,18 @@
 }
 
 - (IBAction)actionToRechage:(id)sender {
-    [self.lotteryMan betLotteryScheme:self.transction andPostboyId:self.curModel._id];
-   
+    
+    [self.lotteryMan betLotteryScheme:self.basetransction andPostboyId:self.curModel._id];
+    
 }
-
 
 - (void) betedLotteryScheme:(NSString *)schemeNO errorMsg:(NSString *)msg{
     if (schemeNO == nil || schemeNO.length == 0) {
         [self showPromptText:msg hideAfterDelay:1.7];
+        return;
+    }
+    if ([rechargeBtn.titleLabel.text isEqualToString:@"确认支付"]) {
+        [self rechargeSchemeByNo:schemeNO];
         return;
     }
     SchemeCashPayment *schemeCashModel = [[SchemeCashPayment alloc]init];
@@ -341,20 +346,80 @@
     schemeCashModel.schemeNo = schemeNO;
     schemeCashModel.subCopies = 1;
     schemeCashModel.costType = CostTypeCASH;
-    if (self.transction.betCost  > 300000) {
-        [self showPromptText:@"单笔总金额不能超过30万元" hideAfterDelay:1.7];
-        return;
-    }
     [self hideLoadingView];
-    self.schemetype = self.transction.schemeType;
-    schemeCashModel.subscribed = self.transction.betCost;
-    schemeCashModel.realSubscribed = self.transction.betCost;
+    self.schemetype = self.basetransction.schemeType;
+    schemeCashModel.subscribed = self.basetransction.betCost;
+    schemeCashModel.realSubscribed = self.basetransction.betCost;
+    
     LegRechargeOrderViewController *legRechargrVC = [[LegRechargeOrderViewController alloc]init];
     legRechargrVC.orderCost = self.labRealCost.text;
     legRechargrVC.legYuE = self.curModel.totalBalance;
     legRechargrVC.cashPayMemt = schemeCashModel;
     legRechargrVC.legId = self.curModel._id;
+    legRechargrVC.isYouhua = self.isYouhua;
     [self.navigationController pushViewController:legRechargrVC animated:YES];
+}
+
+- (void)rechargeSchemeByNo:(NSString *)schemeNo{
+    [self.lotteryMan schemeCashPayment:[self getTouzhuParams:self.curSelectCoupon != nil andSchemeNo:schemeNo]];
+}
+
+
+-(void)gotSchemeCashPayment:(BOOL)isSuccess errorMsg:(NSString *)msg{
+    [self hideLoadingView];
+    if (isSuccess) {
+        [self paySuccess];
+    }else{
+        [self showPromptText:msg hideAfterDelay:1.7];
+    }
+}
+
+- (void)paySuccess
+{
+    PaySuccessViewController * paySuccessVC = [[PaySuccessViewController alloc]init];
+    paySuccessVC.schemetype = self.schemetype;
+    if(([self.cashPayMemt.lotteryName isEqualToString:@"竞彩足球"] ||[self.cashPayMemt.lotteryName isEqualToString:@"竞彩篮球"]) && self.cashPayMemt.costType == CostTypeCASH && self.cashPayMemt.subscribed > 10 && self.isYouhua == NO){
+        paySuccessVC.isShowFaDan = YES;
+    }else{
+        paySuccessVC.isShowFaDan = NO;
+    }
+    for (UIViewController *controller in self.navigationController.viewControllers) {
+        if ([controller isKindOfClass:[YuCeSchemeCreateViewController class]]||[controller isKindOfClass:[UMChongZhiViewController class]]) {
+            paySuccessVC.isShowFaDan = NO;
+        }
+    }
+    paySuccessVC.lotteryName = self.cashPayMemt.lotteryName;
+    paySuccessVC.schemeNO = self.cashPayMemt.schemeNo;
+    paySuccessVC.isMoni = self.cashPayMemt.costType == CostTypeSCORE;
+    double canjinban= [self.curUser.sendBalance doubleValue] - self.cashPayMemt.realSubscribed;
+    if (canjinban > 0) {
+        paySuccessVC.orderCost = [NSString stringWithFormat:@"%.2f", [self.curUser.balance  doubleValue]+ [self.curUser.notCash doubleValue]];
+    }else{
+        paySuccessVC.orderCost = [NSString stringWithFormat:@"%.2f",canjinban + [self.curUser.balance  doubleValue]+ [self.curUser.notCash doubleValue]];
+    }
+    [self.navigationController pushViewController:paySuccessVC animated:YES];
+}
+
+-(NSDictionary *)getTouzhuParams:(BOOL)isCoupon andSchemeNo:(NSString *)schemeNo{
+//    NSNumber *real = @([[NSString stringWithFormat:@"%.2f",self.cashPayMemt.realSubscribed] doubleValue]);
+    if (isCoupon) {
+        return @{@"cardCode":self.curUser.cardCode,
+                 @"schemeNo":schemeNo,
+                 @"subCopies":@(1),
+                 @"subscribed":@(self.subscribed),
+                 @"realSubscribed":self.labRealCost.text,
+                 @"isSponsor":@(true),
+                 @"couponCode":self.curSelectCoupon.couponCode
+                 };
+    }else{
+        return @{@"cardCode":self.curUser.cardCode,
+                 @"schemeNo":schemeNo,
+                 @"subCopies":@(1),
+                 @"subscribed":@(self.subscribed),
+                 @"realSubscribed":self.labRealCost.text,
+                 @"isSponsor":@(true)
+                 };
+    }
 }
 
 

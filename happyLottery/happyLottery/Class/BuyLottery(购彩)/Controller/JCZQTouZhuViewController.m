@@ -469,7 +469,7 @@
         self.transction.schemeType = SchemeTypeZigou;
     }
     PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
-    payVC.transction = self.transction;
+    payVC.basetransction = self.transction;
     payVC.lotteryName = @"竞彩足球";
     payVC.subscribed = self.transction.betCost;
     [self.navigationController pushViewController:payVC animated:YES];

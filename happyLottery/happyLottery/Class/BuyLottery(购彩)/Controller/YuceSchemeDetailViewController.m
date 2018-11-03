@@ -248,6 +248,7 @@
     
     self.kezhongLabel.text = [NSString stringWithFormat:@"%@元",moneyStr];
 }
+
 - (IBAction)actionTouZhu:(UIButton *)sender {
     if (self.curUser.isLogin) {
          [self showTouzhuInfo];
@@ -281,8 +282,12 @@
         
         self.transaction.betCost = maxPrize * beiCount;
         self.transaction.units = self.transaction.betCount;
-        [self.lotteryMan betLotteryScheme:self.transaction];
-       
+//        [self.lotteryMan betLotteryScheme:self.transaction];
+        PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
+        payVC.basetransction = self.transaction;
+        payVC.lotteryName = @"竞彩足球";
+        payVC.subscribed = self.transaction.betCost;
+        [self.navigationController pushViewController:payVC animated:YES];
         [self showLoadingViewWithText:@"正在加载"];
         if (self.scheme.recSchemeNo != nil) {
             [self.lotteryMan updateRecSchemeRecCount:@{@"recSchemeNo":self.scheme.recSchemeNo}];
@@ -369,8 +374,6 @@
     
     if ([self.beiSelectView.labContent.text integerValue]<1) {
         self.beiSelectView.labContent.text = @"1";
-        
-        
     }
 }
 

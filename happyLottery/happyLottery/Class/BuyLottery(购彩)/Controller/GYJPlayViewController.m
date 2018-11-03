@@ -576,7 +576,18 @@
         [self showPromptText:@"单注投注金额不得超过30万" hideAfterDelay:2];
         return;
     }
-    [self.lotteryMan betLotteryScheme:self.transaction];
+//    [self.lotteryMan betLotteryScheme:self.transaction];
+    
+    PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
+    payVC.basetransction = self.transaction;
+    if (isShowGJ) {
+        payVC.lotteryName  = @"冠军";
+    } else {
+        payVC.lotteryName  = @"冠亚军";
+    }
+    payVC.subscribed = self.transaction.betCost;
+    [self.navigationController pushViewController:payVC animated:YES];
+
 }
 
 - (void) betedLotteryScheme:(NSString *)schemeNO errorMsg:(NSString *)msg{

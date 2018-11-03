@@ -1073,6 +1073,11 @@
                 return;
             }
             
+            if (self.transaction.betCost  > 300000) {
+                [self showPromptText:@"单笔总金额不能超过30万元" hideAfterDelay:1.7];
+                return;
+            }
+            
             if (self.curUser.isLogin) {
                 
                 LotteryBet *bet1 = [_transaction.allBets firstObject];
@@ -1140,8 +1145,16 @@
                         
                 }
                 self.transaction.schemeType = SchemeTypeZigou;
-                
-                [self.lotteryMan betLotteryScheme:self.transaction];
+//                [self.lotteryMan betLotteryScheme:self.transaction];
+                PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
+                payVC.basetransction = transcation;
+                payVC.lotteryName = self.lottery.name;
+                payVC.subscribed = transcation.betCost;
+//                [self.transaction removeAllBets];
+//                self.transaction.beiTouCount = 1;
+//                self.transaction.qiShuCount  = 1;
+//                self.transaction.winStopStatus = WINSTOP;
+                [self.navigationController pushViewController:payVC animated:YES];
             } else {
                 [self needLogin];
             }

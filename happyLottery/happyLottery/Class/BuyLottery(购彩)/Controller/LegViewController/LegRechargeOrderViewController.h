@@ -23,5 +23,8 @@
 
 @property(nonatomic,strong)SchemeCashPayment *cashPayMemt;
 
+@property(assign,nonatomic)SchemeType  schemetype;
+
+@property(assign,nonatomic)BOOL isYouhua;
 
 @end

@@ -13,6 +13,9 @@
 #import "DiscoverViewController.h"
 #import "ZhiFubaoWeixinErcodeController.h"
 #import "YinLanPayManage.h"
+#import "PaySuccessViewController.h"
+#import "YuCeSchemeCreateViewController.h"
+#import "UMChongZhiViewController.h"
 #define KPayTypeListCell @"PayTypeListCell"
 
 @interface LegRechargeOrderViewController ()<MemberManagerDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,UITextFieldDelegate,UIWebViewDelegate,ChongZhiRulePopViewDelegate>
@@ -277,13 +280,41 @@
 -(void)queryRecharge:(NSDictionary *)Info IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     [self hideLoadingView];
     if (success == YES) {
-        [self showPromptText:@"充值成功" hideAfterDelay:1.7];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.navigationController popViewControllerAnimated:YES];
-        });
+        [self showPromptText:@"支付成功" hideAfterDelay:1.7];
+        [self paySuccess];
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            [self.navigationController popViewControllerAnimated:YES];
+//        });
     }else{
         [self showPromptText:msg hideAfterDelay:1.7];
     }
+}
+
+
+- (void)paySuccess
+{
+    PaySuccessViewController * paySuccessVC = [[PaySuccessViewController alloc]init];
+    paySuccessVC.schemetype = self.schemetype;
+    if(([self.cashPayMemt.lotteryName isEqualToString:@"竞彩足球"] ||[self.cashPayMemt.lotteryName isEqualToString:@"竞彩篮球"]) && self.cashPayMemt.costType == CostTypeCASH && self.cashPayMemt.subscribed > 10 && self.isYouhua == NO){
+        paySuccessVC.isShowFaDan = YES;
+    }else{
+        paySuccessVC.isShowFaDan = NO;
+    }
+    for (UIViewController *controller in self.navigationController.viewControllers) {
+        if ([controller isKindOfClass:[YuCeSchemeCreateViewController class]]||[controller isKindOfClass:[UMChongZhiViewController class]]) {
+            paySuccessVC.isShowFaDan = NO;
+        }
+    }
+    paySuccessVC.lotteryName = self.cashPayMemt.lotteryName;
+    paySuccessVC.schemeNO = self.cashPayMemt.schemeNo;
+    paySuccessVC.isMoni = self.cashPayMemt.costType == CostTypeSCORE;
+    double canjinban= [self.curUser.sendBalance doubleValue] - self.cashPayMemt.realSubscribed;
+    if (canjinban > 0) {
+        paySuccessVC.orderCost = [NSString stringWithFormat:@"%.2f", [self.curUser.balance  doubleValue]+ [self.curUser.notCash doubleValue]];
+    }else{
+        paySuccessVC.orderCost = [NSString stringWithFormat:@"%.2f",canjinban + [self.curUser.balance  doubleValue]+ [self.curUser.notCash doubleValue]];
+    }
+    [self.navigationController pushViewController:paySuccessVC animated:YES];
 }
 
 - (void)navigationBackToLastPage{

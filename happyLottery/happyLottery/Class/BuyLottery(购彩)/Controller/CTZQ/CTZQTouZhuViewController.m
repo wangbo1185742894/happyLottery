@@ -258,10 +258,18 @@
 - (void)touZhu{
     //奖期过期判断。
     
-    [self showLoadingViewWithText:@"正在提交订单"];
+//    [self showLoadingViewWithText:@"正在提交订单"];
     //当前用户登录判断
-  
-    [self.lotteryMan betLotteryScheme:self.cTransation];
+    if (self.cTransation.betCost  > 300000) {
+        [self showPromptText:@"单笔总金额不能超过30万元" hideAfterDelay:1.7];
+        return;
+    }
+//    [self.lotteryMan betLotteryScheme:self.cTransation];
+    PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
+    payVC.basetransction = self.cTransation;
+    payVC.lotteryName = self.lottery.activeProfile.title;
+    payVC.subscribed = self.cTransation.betCost;
+    [self.navigationController pushViewController:payVC animated:YES];
 }
 
 -(void)betedLotteryScheme:(NSString *)schemeNO errorMsg:(NSString *)msg{

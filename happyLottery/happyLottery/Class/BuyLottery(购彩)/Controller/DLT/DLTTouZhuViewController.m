@@ -759,7 +759,10 @@
                 [self showPromptText:TextTouzhuExceedLimit hideAfterDelay:1.7];
                 return;
             }
-            
+            if (self.transaction.betCost  > 300000) {
+                [self showPromptText:@"单笔总金额不能超过30万元" hideAfterDelay:1.7];
+                return;
+            }
             if (self.curUser.isLogin) {
                 BaseTransaction * transcation;
                 switch (_lottery.type) {
@@ -774,7 +777,13 @@
                 }
                 self.transaction.schemeType = SchemeTypeZigou;
                 
-                [self.lotteryMan betLotteryScheme:self.transaction];
+                PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
+                payVC.basetransction = self.transaction;
+                payVC.lotteryName = @"大乐透";
+                payVC.subscribed = self.transaction.betCost;
+                [self.navigationController pushViewController:payVC animated:YES];
+
+//                [self.lotteryMan betLotteryScheme:self.transaction];
             } else {
                 [self needLogin];
             }

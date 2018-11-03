@@ -482,7 +482,16 @@
         
         [self.lotteryMan betLotterySchemeOpti:self.transaction schemeList:betContent];
     }else{
-        [self.lotteryMan betLotteryScheme:self.transaction];
+//        [self.lotteryMan betLotteryScheme:self.transaction];
+        if (self.transaction.betCost  > 300000) {
+            [self showPromptText:@"单笔总金额不能超过30万元" hideAfterDelay:1.7];
+            return;
+        }
+        PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
+        payVC.basetransction = self.transaction;
+        payVC.lotteryName = @"竞彩足球";
+        payVC.subscribed = self.transaction.betCost;
+        [self.navigationController pushViewController:payVC animated:YES];
     }
     
 
