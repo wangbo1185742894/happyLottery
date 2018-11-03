@@ -23,11 +23,14 @@
     
     __weak IBOutlet UITableView *personTableView;
     
+    __weak IBOutlet UIButton *queDingBtn;
 }
 
 @property (nonatomic, strong)NSMutableArray <PostboyAccountModel *> *personArray;
 
+@property (nonatomic, strong)PostboyAccountModel *selectlegModel;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomHeightCons;
 
 @end
 
@@ -45,6 +48,18 @@
     self.postboyMan.delegate = self;
     [self loadNewDate];
     footView = [[LegSelectFooterView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, 74)];
+    if ([self.titleName isEqualToString:@"选择代买小哥"]||[self.titleName isEqualToString:@"存款"]) {
+        self.bottomHeightCons.constant = 0;
+    }else {
+        queDingBtn.layer.masksToBounds = YES;
+        queDingBtn.layer.cornerRadius = 4;
+        if ([self isIphoneX]) {
+            self.bottomHeightCons.constant = 50+34;
+        }else{
+            self.bottomHeightCons.constant = 50;
+        }
+    }
+  
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -141,28 +156,40 @@
        return 110;
     }
     if ([self.titleName isEqualToString:@"给跑腿小哥转账"]) {
-       return 98;
+       return 90;
     }
     return 80;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    PostboyAccountModel *legModel = self.personArray[indexPath.row];
-    legModel.isSelect = YES;
+   
     if ([self.titleName isEqualToString:@"选择代买小哥"]) {
+        PostboyAccountModel *legModel = self.personArray[indexPath.row];
+        legModel.isSelect = YES;
         [self.delegate alreadySelectModel:legModel];
         [self.navigationController popViewControllerAnimated:YES];
     } else if ([self.titleName isEqualToString:@"存款"]) {
+        PostboyAccountModel *legModel = self.personArray[indexPath.row];
+        legModel.isSelect = YES;
         LegCashInfoViewController *legCashInfoVC = [[LegCashInfoViewController alloc]init];
         legCashInfoVC.postboyModel = legModel;
         [self.navigationController pushViewController:legCashInfoVC animated:YES];
     } else {
-        
+        for (PostboyAccountModel *model  in self.personArray) {
+            model.isSelect = NO;
+        }
+        self.selectlegModel = self.personArray[indexPath.row];
+        self.selectlegModel.isSelect = YES;
+        [tableView reloadData];
     }
     
 }
 
+- (IBAction)actionQueDing:(id)sender {
+    [self.delegate alreadySelectModel:self.selectlegModel];
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 @end
 

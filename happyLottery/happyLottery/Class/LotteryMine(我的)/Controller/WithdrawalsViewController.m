@@ -53,9 +53,9 @@
     passInput.delegate = self;
     listBankArray = [[NSMutableArray alloc]init];
     self.memberMan.delegate = self;
-    if (self.totalBalance != nil) {
-        self.retainLab.text =[NSString stringWithFormat:@"%.2f元", [self.totalBalance doubleValue]] ;
-        NSString *balanceStr = [NSString stringWithFormat:@"%.2f元", [self.cashBalance doubleValue]];
+    if (self.postboyModel != nil) {
+        self.retainLab.text =[NSString stringWithFormat:@"%.2f元", [self.postboyModel.totalBalance doubleValue]] ;
+        NSString *balanceStr = [NSString stringWithFormat:@"%.2f元", [self.postboyModel.cashBalance doubleValue]];
         self.topUpsLab.text = balanceStr;
     }else {
         self.retainLab.text =[NSString stringWithFormat:@"%.2f元", [self.curUser.totalBanlece doubleValue]] ;
@@ -219,7 +219,13 @@
         return;
     }
     double text =[self.withdrawTextField.text doubleValue];
-    if (text>[self.curUser.balance doubleValue]) {
+    NSString *balanceStr;
+    if (self.postboyModel != nil) {
+        balanceStr = self.postboyModel.cashBalance;
+    }else {
+        balanceStr = self.curUser.balance;
+    }
+    if (text>[balanceStr doubleValue]) {
         [self showPromptText: @"取现金额不能大于可用余额！" hideAfterDelay: 3.7];
         self.withdrawTextField.text=@"";
         return;
@@ -266,17 +272,33 @@
         NSString *cardCode = self.curUser.cardCode;
         NSString *paypwd = self.withdrawTextField.text;
         
-        withdrawInfo = @{@"cardCode":cardCode,
-                         @"payPwd": [AESUtility encryptStr: pwd],
-                         @"bankId":bankCard._id,
-                         @"amounts":self.withdrawTextField.text,
-                         };
+        if (self.postboyModel != nil) { // 小哥提现
+            withdrawInfo = @{@"cardCode":cardCode,
+                             @"payPwd": [AESUtility encryptStr: pwd],
+                             @"bankId":bankCard._id,
+                             @"amounts":self.withdrawTextField.text,
+                             @"postboyId":self.postboyModel._id
+                             };
+        } else { //用户余额提现
+            withdrawInfo = @{@"cardCode":cardCode,
+                             @"payPwd": [AESUtility encryptStr: pwd],
+                             @"bankId":bankCard._id,
+                             @"amounts":self.withdrawTextField.text,
+                             };
+        }
+        
         
     } @catch (NSException *exception) {
        return;
     }
         [self showLoadingText:@"正在提交订单"];
-        [self.memberMan withdrawSms:withdrawInfo];
+    NSString *apiName;
+    if (self.postboyModel != nil) {
+        apiName = APIwithdrawByPostboy;
+    }else {
+        apiName = APIwithdraw;
+    }
+    [self.memberMan withdrawSms:withdrawInfo andAPI:apiName];
 }
 
 #pragma UITableViewDataSource methods

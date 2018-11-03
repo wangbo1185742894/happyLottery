@@ -13,9 +13,11 @@
 #import "DiscoverViewController.h"
 #import "ZhiFubaoWeixinErcodeController.h"
 #import "YinLanPayManage.h"
+#import "PostboyAccountModel.h"
+#import "LegSelectViewController.h"
 #define KPayTypeListCell @"PayTypeListCell"
 
-@interface LegRechargeViewController ()<MemberManagerDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,UITextFieldDelegate,UIWebViewDelegate,ChongZhiRulePopViewDelegate>
+@interface LegRechargeViewController ()<MemberManagerDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,PostboyManagerDelegate,UITextFieldDelegate,UIWebViewDelegate,ChongZhiRulePopViewDelegate,SelectModelDelegate>
 {
     NSMutableArray <ChannelModel *>*channelList;
     ChannelModel *itemModel;
@@ -23,6 +25,8 @@
     YinLanPayManage * yinlanManage;
     RechargeModel *selectRech;
     NSString *orderNO;
+        __weak IBOutlet UILabel *selectLegLab;
+    __weak IBOutlet UIView *selectLegView;
 }
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewHeight;
 @property (weak, nonatomic) IBOutlet UILabel *labBanlence;
@@ -37,6 +41,8 @@
 @property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *labCaijin;
 @property (weak, nonatomic) IBOutlet UIButton *btnChongzhi;
 @property(nonatomic,strong)NSString *aliPayMinBouns;
+
+@property (nonatomic,strong)PostboyAccountModel *curModel;
 @end
 
 @implementation LegRechargeViewController
@@ -48,12 +54,15 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(checkSchemePayState:) name:@"UPPaymentControlFinishNotification" object:nil];
     rechList = [NSMutableArray arrayWithCapacity:0];
-    [self setRightBarButtonItem];
     self.viewControllerNo = @"A105";
     self.payWebView.delegate = self;
     self.memberMan.delegate = self;
     self.lotteryMan.delegate =self;
+    self.postboyMan.delegate =self;
     self.labBanlence.text = [NSString stringWithFormat:@"%@元",self.curUser.totalBanlece];
+    [self.postboyMan recentPostboyAccount:@{@"cardCode":self.curUser.cardCode}];
+    UITapGestureRecognizer *legListViewTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(actionToSelectLeg)];
+    [selectLegView addGestureRecognizer:legListViewTapGestureRecognizer];
     [self setTableView];
     if ([self isIphoneX]) {
         self.top.constant = 88;
@@ -73,6 +82,37 @@
     }
     
     [self.lotteryMan getCommonSetValue:@{@"typeCode":@"recharge",@"commonCode":@"hawkeye_ali"}];
+}
+
+
+-(void )recentPostboyAccountdelegate:(NSDictionary *)param isSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    [self hideLoadingView];
+    if (success == NO) {
+        [self upDateLegInfo:nil];
+        self.curModel = nil;
+        return;
+    }
+    if (param != nil) {
+        PostboyAccountModel *model = [[PostboyAccountModel alloc]initWith:param];
+        [self upDateLegInfo:model];
+        self.curModel = model;
+    } else {
+        [self upDateLegInfo:nil];
+        self.curModel = nil;
+    }
+}
+
+
+- (void)upDateLegInfo:(PostboyAccountModel *)postModel {
+    if (postModel != nil) {
+        selectLegLab.text = [NSString stringWithFormat:@"%@(余额 %.2f元)",postModel.postboyName,[postModel.totalBalance doubleValue]];
+        _btnChongzhi.userInteractionEnabled=YES;
+        _btnChongzhi.alpha=1.0f;
+    }else {
+        selectLegLab.text = @"请选择代买小哥";
+        _btnChongzhi.userInteractionEnabled=NO;
+        _btnChongzhi.alpha=0.4f;
+    }
 }
 
 -(void)gotCommonSetValue:(NSString *)strUrl{
@@ -356,6 +396,7 @@
         rechargeInfo = @{@"cardCode":cardCode,
                           @"channel":itemModel.channel,
                           @"amounts":checkCode,
+                        @"postboyId":self.curModel._id
                         };
     } @catch (NSException *exception) {
        return;
@@ -398,7 +439,6 @@
 //            }
          }
     }
-    
     self.viewHeight.constant = 420 + channelList.count * 60;
 
     [channelList firstObject].isSelect = YES;
@@ -589,7 +629,17 @@
     [WXApi sendReq:launchMiniProgramReq]; //拉起微信支付
 }
 
+- (void)actionToSelectLeg {
+    LegSelectViewController *legSelectVC = [[LegSelectViewController alloc]init];
+    legSelectVC.delegate = self;
+    legSelectVC.titleName = @"给跑腿小哥转账";
+    legSelectVC.curModel = self.curModel;
+    [self.navigationController pushViewController:legSelectVC animated:YES];
+}
 
-
+- (void)alreadySelectModel:(PostboyAccountModel *)selectModel{
+    self.curModel = selectModel;
+    [self upDateLegInfo:self.curModel];
+}
 
 @end

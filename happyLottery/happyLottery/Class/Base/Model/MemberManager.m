@@ -717,7 +717,7 @@
  参数:
  params - String cardCode 会员卡号 , String paypwd 支付密码 , Long bankId 绑定的银行卡ID, BigDecimal amounts 金额
  */
-- (void) withdrawSms:(NSDictionary *)paraDic{
+- (void) withdrawSms:(NSDictionary *)paraDic  andAPI:(NSString *)apiName{
     void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
     {
         SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];

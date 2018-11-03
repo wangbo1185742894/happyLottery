@@ -86,7 +86,7 @@
 - (void) getBankListSms:(NSDictionary *)paraDic;
 - (void) unBindBankCardSms:(NSDictionary *)paraDic;
 - (void) rechargeSms:(NSDictionary *)paraDic;
-- (void) withdrawSms:(NSDictionary *)paraDic;
+- (void) withdrawSms:(NSDictionary *)paraDic  andAPI:(NSString *)apiName;
 - (void) sendUpdatePaypwdSms:(NSDictionary *)paraDic;
 - (void) checkUpdatePaypwdSms:(NSDictionary *)paraDic;
 - (void) getSupportBankSms;

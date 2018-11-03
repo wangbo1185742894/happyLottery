@@ -7,13 +7,11 @@
 //
 
 #import "BaseViewController.h"
+#import "PostboyAccountModel.h"
 
 @interface WithdrawalsViewController : BaseViewController
 
-//余额小哥
-@property (nonatomic , copy) NSString *totalBalance;
-
-@property (nonatomic , copy) NSString *cashBalance;
+@property (nonatomic , strong)PostboyAccountModel *postboyModel;
 
 
 @end

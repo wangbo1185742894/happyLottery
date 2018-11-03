@@ -23,6 +23,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *usedLeg;
 @property (weak, nonatomic) IBOutlet UILabel *leaveMoney;
 @property (weak, nonatomic) IBOutlet UILabel *yuE;
+@property (weak, nonatomic) IBOutlet UIButton *selectBtn;
+@property (weak, nonatomic) IBOutlet UIButton *weChatLab;
+@property (weak, nonatomic) IBOutlet UIButton *telephoneLab;
 
 @end
 
@@ -33,6 +36,15 @@
     // Initialization code
     self.layer.masksToBounds = YES;
     self.layer.cornerRadius = 8;
+    self.weChatLab.layer.masksToBounds = YES;
+    self.weChatLab.layer.cornerRadius = 4;
+    self.weChatLab.layer.borderColor = SystemGreen.CGColor;
+    self.weChatLab.layer.borderWidth = 1;
+    
+    self.telephoneLab.layer.masksToBounds = YES;
+    self.telephoneLab.layer.cornerRadius = 4;
+    self.telephoneLab.layer.borderColor = SystemGreen.CGColor;
+    self.telephoneLab.layer.borderWidth = 1;
 }
 
 - (void)setFrame:(CGRect)frame{
@@ -46,26 +58,18 @@
 - (void)loadLegDate:(PostboyAccountModel *)legModel{
     self.selectBackGroup.selected = legModel.isSelect;
     self.legName.text = legModel.postboyName;
-    //小哥在线
-    if ([legModel.overline boolValue]) {
-        self.onlineLab.text = @"在线";
-        self.onlineLab.backgroundColor = RGBCOLOR(21, 126, 251);
+    //余额
+    if (legModel.totalBalance.length == 0) {
+        self.yuE.hidden = YES;
+        self.leaveMoney.hidden = YES;
     } else {
-        self.onlineLab.text = @"离线";
-        self.onlineLab.backgroundColor = RGBCOLOR(184, 182, 182);
+        self.yuE.text = [NSString stringWithFormat:@"%.2f元",[legModel.totalBalance doubleValue]];
+        self.leaveMoney.hidden = NO;
     }
-    
-    //跑腿费
-    if ([legModel.cost integerValue] == 0) {
-        self.legCost.text = @"免费跑腿";
-    }else{
-        self.legCost.text = [NSString stringWithFormat:@"一次%@元",legModel.cost];
-    }
-    
     if (legModel.isSelect) {
-        self.selectBackGroup.backgroundColor = RGBCOLOR(255,235,223);
+        self.selectBtn.selected = YES;
     } else {
-        self.selectBackGroup.backgroundColor = [UIColor whiteColor];
+        self.selectBtn.selected = NO;
     }
 }
 

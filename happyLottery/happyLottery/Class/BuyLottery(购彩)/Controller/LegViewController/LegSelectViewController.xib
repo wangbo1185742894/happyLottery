@@ -11,7 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LegSelectViewController">
             <connections>
+                <outlet property="bottomHeightCons" destination="DDC-bp-ut7" id="Bch-6X-Giy"/>
                 <outlet property="personTableView" destination="N25-nh-b6R" id="VEH-jv-Eq0"/>
+                <outlet property="queDingBtn" destination="g2z-zc-bAd" id="YMY-Wd-RjV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,17 +23,46 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="N25-nh-b6R">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O2b-Ih-WgR">
+                    <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g2z-zc-bAd">
+                            <rect key="frame" x="20" y="5" width="335" height="40"/>
+                            <color key="backgroundColor" red="0.1176470588" green="0.77647058820000003" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="lfq-oc-d9J"/>
+                            </constraints>
+                            <state key="normal" title="确定">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="actionQueDing:" destination="-1" eventType="touchUpInside" id="2dI-rQ-84R"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="DDC-bp-ut7"/>
+                        <constraint firstItem="g2z-zc-bAd" firstAttribute="leading" secondItem="O2b-Ih-WgR" secondAttribute="leading" constant="20" id="Q80-ek-x3U"/>
+                        <constraint firstItem="g2z-zc-bAd" firstAttribute="top" secondItem="O2b-Ih-WgR" secondAttribute="top" constant="5" id="b6X-Ih-uQs"/>
+                        <constraint firstItem="g2z-zc-bAd" firstAttribute="centerX" secondItem="O2b-Ih-WgR" secondAttribute="centerX" id="pjw-Fd-MLT"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="N25-nh-b6R" secondAttribute="bottom" id="B7N-Yz-3r2"/>
+                <constraint firstItem="O2b-Ih-WgR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0qT-5q-2PO"/>
+                <constraint firstAttribute="trailing" secondItem="O2b-Ih-WgR" secondAttribute="trailing" id="Bct-Aq-pBL"/>
                 <constraint firstItem="N25-nh-b6R" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="D2Z-uH-I43"/>
+                <constraint firstAttribute="bottom" secondItem="O2b-Ih-WgR" secondAttribute="bottom" id="VUl-tc-2pN"/>
                 <constraint firstItem="N25-nh-b6R" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="bvC-zo-cd8"/>
+                <constraint firstItem="O2b-Ih-WgR" firstAttribute="top" secondItem="N25-nh-b6R" secondAttribute="bottom" id="eJk-xA-C9E"/>
                 <constraint firstAttribute="trailing" secondItem="N25-nh-b6R" secondAttribute="trailing" id="o0y-Lm-GaR"/>
             </constraints>
+            <point key="canvasLocation" x="84" y="-3"/>
         </view>
     </objects>
 </document>
