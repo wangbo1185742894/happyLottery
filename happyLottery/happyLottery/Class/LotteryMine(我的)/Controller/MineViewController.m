@@ -45,6 +45,7 @@
     long num;
     long rednum;
     NSMutableArray *listUseRedPacketArray;
+    __weak IBOutlet UIButton *tiXianBtn;
 }
 @property (weak, nonatomic) IBOutlet UIView *viewJIfen;
 @property (weak, nonatomic) IBOutlet UIView *viewChongZhi;
@@ -101,6 +102,10 @@
         self.topDIs.constant = -20;
         self.topHeadCons.constant = 211;
     }
+    tiXianBtn.layer.masksToBounds = YES;
+    tiXianBtn.layer.cornerRadius = 12;
+    tiXianBtn.layer.borderWidth = 1;
+    tiXianBtn.layer.borderColor = [UIColor whiteColor].CGColor;
     
     self.withdrawalsBtn.layer.masksToBounds = YES;
     self.withdrawalsBtn.layer.cornerRadius = 12;

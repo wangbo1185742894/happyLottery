@@ -56,7 +56,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *sendBalanceLab;
 @property (nonatomic,strong)PostboyAccountModel *curModel;
 @property(nonatomic,strong)SchemeCashPayment *cashPayMemt;
-
+@property (nonatomic,copy)NSString *schemeNo;
 @end
 
 @implementation PayOrderLegViewController
@@ -337,6 +337,7 @@
         return;
     }
     if ([rechargeBtn.titleLabel.text isEqualToString:@"确认支付"]) {
+        self.schemeNo = schemeNO;
         [self rechargeSchemeByNo:schemeNO];
         return;
     }
@@ -378,7 +379,7 @@
 {
     PaySuccessViewController * paySuccessVC = [[PaySuccessViewController alloc]init];
     paySuccessVC.schemetype = self.schemetype;
-    if(([self.cashPayMemt.lotteryName isEqualToString:@"竞彩足球"] ||[self.cashPayMemt.lotteryName isEqualToString:@"竞彩篮球"]) && self.cashPayMemt.costType == CostTypeCASH && self.cashPayMemt.subscribed > 10 && self.isYouhua == NO){
+    if(([self.cashPayMemt.lotteryName isEqualToString:@"竞彩足球"] ||[self.cashPayMemt.lotteryName isEqualToString:@"竞彩篮球"]) && [self.labRealCost.text doubleValue] > 10 && self.isYouhua == NO){
         paySuccessVC.isShowFaDan = YES;
     }else{
         paySuccessVC.isShowFaDan = NO;
@@ -388,10 +389,10 @@
             paySuccessVC.isShowFaDan = NO;
         }
     }
-    paySuccessVC.lotteryName = self.cashPayMemt.lotteryName;
-    paySuccessVC.schemeNO = self.cashPayMemt.schemeNo;
-    paySuccessVC.isMoni = self.cashPayMemt.costType == CostTypeSCORE;
-    double canjinban= [self.curUser.sendBalance doubleValue] - self.cashPayMemt.realSubscribed;
+    paySuccessVC.lotteryName = self.lotteryName;
+    paySuccessVC.schemeNO = self.schemeNo;
+//    paySuccessVC.isMoni = self.cashPayMemt.costType == CostTypeSCORE;
+    double canjinban= [self.curUser.sendBalance doubleValue] - [self.labRealCost.text doubleValue] ;
     if (canjinban > 0) {
         paySuccessVC.orderCost = [NSString stringWithFormat:@"%.2f", [self.curUser.balance  doubleValue]+ [self.curUser.notCash doubleValue]];
     }else{
