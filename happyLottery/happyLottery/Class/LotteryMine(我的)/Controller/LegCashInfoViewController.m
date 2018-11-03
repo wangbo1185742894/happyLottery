@@ -90,8 +90,7 @@
             
         }else{
             WithdrawalsViewController *withVC = [[WithdrawalsViewController alloc]init];
-            withVC.totalBalance = self.postboyModel.totalBalance;
-            withVC.cashBalance = self.postboyModel.cashBalance;
+            withVC.postboyModel = self.postboyModel;
             withVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:withVC animated:YES];
         }

@@ -736,7 +736,7 @@
     };
     //    NSDictionary *itemParaDic = @{@"mobile":paraDic[@"mobile"],@"channelCode":@"TBZ",@"checkCode":paraDic[@"checkCode"]};
     
-    SOAPRequest *request = [self requestForAPI: APIwithdraw withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]} ];
+    SOAPRequest *request = [self requestForAPI: apiName withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]} ];
     [self newRequestWithRequest:request
                          subAPI:SUBAPIMember
       constructingBodyWithBlock:nil
