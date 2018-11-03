@@ -8,9 +8,16 @@
 
 #import "LegCashInfoViewController.h"
 #import "LegClassListCellViewController.h"
+#import "FirstBankCardSetViewController.h"
+#import "WithdrawalsViewController.h"
 #import "WBMenu.h"
 @interface LegCashInfoViewController (){
     LegCashInfoType _index;
+    __weak IBOutlet NSLayoutConstraint *topCons;
+    __weak IBOutlet UIView *yueView;
+    __weak IBOutlet UILabel *yueLab;
+    __weak IBOutlet UILabel *canTiXianLab;
+    __weak IBOutlet UIButton *tiXianBtn;
 }
 
 @property(nonatomic,strong)WBMenu *topMenu;
@@ -21,8 +28,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = self.vcTitle;
-       _topMenu = [[WBMenu alloc]initWithFrame:CGRectMake(0, NaviHeight - 20, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - NaviHeight +20)];
+    self.title = [NSString stringWithFormat:@"%@余额明细",self.postboyModel.postboyName];
+    yueLab.text = [NSString stringWithFormat:@"%.2f元",[self.postboyModel.totalBalance doubleValue]];
+    canTiXianLab.text = [NSString stringWithFormat:@"%.2f元",[self.postboyModel.cashBalance doubleValue]];
+    if ([self.postboyModel.cashBalance doubleValue] == 0) {
+        tiXianBtn.userInteractionEnabled = NO;
+        tiXianBtn.alpha = 0.4;
+    } else {
+        tiXianBtn.userInteractionEnabled = YES;
+        tiXianBtn.alpha = 1.0;
+    }
+    topCons.constant = NaviHeight + 5;
+    yueView.layer.masksToBounds = YES;
+    yueView.layer.cornerRadius = 14;
+    tiXianBtn.layer.masksToBounds = YES;
+    tiXianBtn.layer.cornerRadius = 4;
+    
+    _topMenu = [[WBMenu alloc]initWithFrame:CGRectMake(0, NaviHeight - 20+ yueView.mj_h +10, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - NaviHeight +20- yueView.mj_h-10)];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     NSArray *titleArray;
@@ -36,7 +58,7 @@
         LegClassListCellViewController * classListVC = [[LegClassListCellViewController alloc]init];
         classListVC.navVCLeg = self;
         classListVC.strApiLeg  = apiArray[i];
-        classListVC.firstParaLeg = [NSMutableDictionary dictionaryWithDictionary:@{@"cardCode":self.curUser.cardCode,@"postboyId":self.postboyId, @"pageSize":@(KpageSize)}];
+        classListVC.firstParaLeg = [NSMutableDictionary dictionaryWithDictionary:@{@"cardCode":self.curUser.cardCode,@"postboyId":self.postboyModel._id, @"pageSize":@(KpageSize)}];
         [_topMenu addViewController:classListVC atIndex:i];
     }
     if (_index != 0) {
@@ -55,5 +77,26 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)actionToTiXian:(id)sender {
+    if (self.curUser.isLogin == NO) {
+        [self needLogin];
+    } else {
+        if (self.curUser.name == nil || self.curUser.name.length == 0) {
+            FirstBankCardSetViewController *fvc = [[FirstBankCardSetViewController alloc]init];
+            fvc.titleStr=@"绑定银行卡";
+            fvc.popTitle = @"尚未实名认证，请先实名认证再绑定银行卡";
+            fvc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:fvc animated:YES];
+            
+        }else{
+            WithdrawalsViewController *withVC = [[WithdrawalsViewController alloc]init];
+            withVC.totalBalance = self.postboyModel.totalBalance;
+            withVC.cashBalance = self.postboyModel.cashBalance;
+            withVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:withVC animated:YES];
+        }
+        
+    }
+}
 
 @end

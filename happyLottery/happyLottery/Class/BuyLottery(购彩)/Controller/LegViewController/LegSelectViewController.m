@@ -155,8 +155,7 @@
         [self.navigationController popViewControllerAnimated:YES];
     } else if ([self.titleName isEqualToString:@"存款"]) {
         LegCashInfoViewController *legCashInfoVC = [[LegCashInfoViewController alloc]init];
-        legCashInfoVC.vcTitle = [NSString stringWithFormat:@"%@余额明细",legModel.postboyName];
-        legCashInfoVC.postboyId = legModel._id;
+        legCashInfoVC.postboyModel = legModel;
         [self.navigationController pushViewController:legCashInfoVC animated:YES];
     } else {
         

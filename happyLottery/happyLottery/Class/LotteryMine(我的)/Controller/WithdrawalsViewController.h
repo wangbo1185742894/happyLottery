@@ -10,4 +10,10 @@
 
 @interface WithdrawalsViewController : BaseViewController
 
+//余额小哥
+@property (nonatomic , copy) NSString *totalBalance;
+
+@property (nonatomic , copy) NSString *cashBalance;
+
+
 @end

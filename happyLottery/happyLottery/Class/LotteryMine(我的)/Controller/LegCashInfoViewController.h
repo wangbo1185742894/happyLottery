@@ -7,6 +7,7 @@
 //
 
 #import "BaseViewController.h"
+#import "PostboyAccountModel.h"
 
 typedef enum : NSUInteger {
     CashInfoGoucai = 0,
@@ -19,9 +20,7 @@ typedef enum : NSUInteger {
 
 @interface LegCashInfoViewController : BaseViewController
 
-@property (nonatomic , copy)NSString *vcTitle;
-
-@property (nonatomic , copy)NSString *postboyId;
+@property (nonatomic , strong)PostboyAccountModel *postboyModel;
 
 -(void)setMenuOffset:(LegCashInfoType)index;
 

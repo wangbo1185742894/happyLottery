@@ -26,7 +26,7 @@
 }
 
 -(void)addMenuItems:(NSArray*)items andSize:(CGSize)itemSize{
-
+    self.backgroundColor = [UIColor whiteColor];
     self.buttomLable = [[UILabel alloc]initWithFrame:CGRectMake(0, itemSize.height-2, itemSize.width, 2)];
     self.buttomLable.backgroundColor = SystemGreen;
     [self addSubview:self.buttomLable];

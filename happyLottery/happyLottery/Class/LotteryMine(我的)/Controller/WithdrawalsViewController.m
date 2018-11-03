@@ -53,9 +53,15 @@
     passInput.delegate = self;
     listBankArray = [[NSMutableArray alloc]init];
     self.memberMan.delegate = self;
-    self.retainLab.text =[NSString stringWithFormat:@"%.2f元", [self.curUser.totalBanlece doubleValue]] ;
-    NSString *balanceStr = [NSString stringWithFormat:@"%.2f元", [self.curUser.balance doubleValue]];
-    self.topUpsLab.text = balanceStr;
+    if (self.totalBalance != nil) {
+        self.retainLab.text =[NSString stringWithFormat:@"%.2f元", [self.totalBalance doubleValue]] ;
+        NSString *balanceStr = [NSString stringWithFormat:@"%.2f元", [self.cashBalance doubleValue]];
+        self.topUpsLab.text = balanceStr;
+    }else {
+        self.retainLab.text =[NSString stringWithFormat:@"%.2f元", [self.curUser.totalBanlece doubleValue]] ;
+        NSString *balanceStr = [NSString stringWithFormat:@"%.2f元", [self.curUser.balance doubleValue]];
+        self.topUpsLab.text = balanceStr;
+    }
     self.nameLab.text = self.curUser.name;
     
 }
