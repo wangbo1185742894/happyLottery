@@ -16,6 +16,14 @@
 #import "PaySuccessViewController.h"
 #import "YuCeSchemeCreateViewController.h"
 #import "UMChongZhiViewController.h"
+#import "JCLQPlayController.h"
+#import "JCZQPlayViewController.h"
+#import "LotteryPlayViewController.h"
+#import "DLTPlayViewController.h"
+#import "SSQPlayViewController.h"
+
+
+
 #define KPayTypeListCell @"PayTypeListCell"
 
 @interface LegRechargeOrderViewController ()<MemberManagerDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,UITextFieldDelegate,UIWebViewDelegate,ChongZhiRulePopViewDelegate>
@@ -26,6 +34,7 @@
     YinLanPayManage * yinlanManage;
     RechargeModel *selectRech;
     NSString *orderNO;
+    ZLAlertView *itemAlert;
 }
 @property (weak, nonatomic) IBOutlet UILabel *realCost;
 @property (weak, nonatomic) IBOutlet UILabel *legYueE;
@@ -37,6 +46,7 @@
 @property (weak, nonatomic) IBOutlet UIWebView *payWebView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *consHeight;
+@property (weak, nonatomic) IBOutlet UILabel *infoAletLab;
 @property(nonatomic,strong)NSString *aliPayMinBouns;
 @end
 
@@ -66,8 +76,18 @@
         self.top.constant = 88;
     }
     [self getListByChannel];
-
+    [self.lotteryMan getDeadLine:@{@"schemeNo":self.schemeNo}];
     [self.lotteryMan getCommonSetValue:@{@"typeCode":@"recharge",@"commonCode":@"hawkeye_ali"}];
+}
+
+
+- (void)getDeadLineDelegate:(NSString *)resultStr  errorMsg:(NSString *)msg{
+    if (resultStr != nil) {
+        NSString *dateStr = resultStr;
+        self.infoAletLab.text = [NSString stringWithFormat:@"%@已接单，请在%@前完成支付", self.legName,[dateStr substringWithRange:NSMakeRange(11, 5)]];
+    } else {
+        self.infoAletLab.text = [NSString stringWithFormat:@"%@已接单，请尽快支付", self.legName];
+    }
 }
 
 -(void)gotCommonSetValue:(NSString *)strUrl{
@@ -114,7 +134,6 @@
             zhifubaoVC.orderNo = orderNO;
             zhifubaoVC.chongzhitype = @"weixin";
             [self.navigationController pushViewController:zhifubaoVC animated:YES];
-    
         }
         
     }else{
@@ -149,7 +168,7 @@
     }
     
     if ([itemModel.channel isEqualToString:@"HAWKEYE_ALI"] ) {
-        if ([self.realCost.text doubleValue] < [self.aliPayMinBouns doubleValue]) {
+        if ([self.orderCost doubleValue] < [self.aliPayMinBouns doubleValue]) {
             [self showPromptText:[NSString stringWithFormat:@"%@充值最少充%@元",itemModel.channelTitle,self.aliPayMinBouns] hideAfterDelay:1.7];
             return;
         }
@@ -161,7 +180,7 @@
       
         rechargeInfo = @{@"cardCode":cardCode,
                           @"channel":itemModel.channel,
-                          @"amounts":checkCode,
+                          @"amounts":@([self.orderCost doubleValue]),
                           @"schemeSub":self.cashPayMemt.submitParaDicScheme,
                           @"postboyId":self.legId
                         };
@@ -317,17 +336,17 @@
     [self.navigationController pushViewController:paySuccessVC animated:YES];
 }
 
-- (void)navigationBackToLastPage{
-    
-    for (UIViewController *controller in self.navigationController.viewControllers) {
-        if ([controller isKindOfClass:[DiscoverViewController class]]) {
-            self.tabBarController.selectedIndex = 3;
-            [self.navigationController popViewControllerAnimated:YES];
-            return;
-        }
-    }
-    [super navigationBackToLastPage];
-}
+//- (void)navigationBackToLastPage{
+//
+//    for (UIViewController *controller in self.navigationController.viewControllers) {
+//        if ([controller isKindOfClass:[DiscoverViewController class]]) {
+//            self.tabBarController.selectedIndex = 3;
+//            [self.navigationController popViewControllerAnimated:YES];
+//            return;
+//        }
+//    }
+//    [super navigationBackToLastPage];
+//}
 
 - (void)showPlayRec{
     ChongZhiRulePopView *rulePopView = [[ChongZhiRulePopView alloc]initWithFrame:[UIScreen mainScreen].bounds];
@@ -349,6 +368,52 @@
     [self memberDetail:nil];
 }
 
+
+-(void)navigationBackToLastPageitem{
+    
+    ZLAlertView *alert = [[ZLAlertView alloc] initWithTitle:@"提示" message:@"确认退出支付？你可在投注信息里对此订单继续支付？"];
+    itemAlert  = alert;
+    [alert addBtnTitle:@"取消" action:^{
+        
+    }];
+    [alert addBtnTitle:@"确定" action:^{
+        for (BaseViewController *baseVC in self.navigationController.viewControllers) {
+            if ([baseVC isKindOfClass:[DiscoverViewController class]]) {
+                self.tabBarController.selectedIndex = 3;
+                [self.navigationController popToViewController:baseVC animated:YES];
+                return ;
+            }
+            if ([baseVC isKindOfClass:[JCLQPlayController class]]) {
+                [[NSNotificationCenter defaultCenter]postNotificationName:KSELECTMATCHCLEAN object:nil];
+                [self.navigationController popToViewController:baseVC animated:YES];
+                return ;
+            }
+            if ([baseVC isKindOfClass: [JCZQPlayViewController class]]) {
+                [[NSNotificationCenter defaultCenter]postNotificationName:KSELECTMATCHCLEAN object:nil];
+                [self.navigationController popToViewController:baseVC animated:YES];
+                return;
+            }
+            if ([baseVC isKindOfClass: [LotteryPlayViewController class]]) {
+                [self.navigationController popToViewController:baseVC animated:YES];
+                return;
+            }
+            if ([baseVC isKindOfClass: [DLTPlayViewController class]]) {
+                [self.navigationController popToViewController:baseVC animated:YES];
+                return;
+            } if ([baseVC isKindOfClass: [SSQPlayViewController class]]) {
+                [self.navigationController popToViewController:baseVC animated:YES];
+                return;
+            }
+            
+        }
+        [self.navigationController popViewControllerAnimated:YES];
+        
+    }];
+    
+    [alert showAlertWithSender:(UIViewController *)[UIApplication sharedApplication].keyWindow];
+    
+}
+
 #pragma mark -----拉起微信支付-----
 -(void)sendReqAppId:(NSString *)appId prepayId:(NSString*)prepayId orginalId:(NSString *)orginalId
 {
@@ -362,6 +427,8 @@
 }
 
 
-
+- (void)navigationBackToLastPage{
+    [self navigationBackToLastPageitem];
+}
 
 @end

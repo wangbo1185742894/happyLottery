@@ -8,6 +8,40 @@
 
 #import "BaseModel.h"
 
+@interface PostboyModel : BaseModel
+
+/** 小哥id*/
+@property(nonatomic,strong)NSString *  _id;
+
+/** 小哥名称*/
+@property(nonatomic,strong)NSString * postboyName;
+
+/**  余额 */
+@property(nonatomic,strong)NSString * balance;
+
+/** 跑腿费 */
+@property(nonatomic,strong)NSString * cost;
+
+/** 小哥微信号*/
+@property(nonatomic,strong)NSString * wechatId;
+
+/** 小哥电话号*/
+@property(nonatomic,strong)NSString * mobile;
+
+/** 小哥支付宝号*/
+@property(nonatomic,strong)NSString * alipay;
+
+/** 是否在线*/
+@property(nonatomic,strong)NSString * overline;
+
+/** 是否启用*/
+@property(nonatomic,strong)NSString * enabled;
+
+@property(nonatomic,strong)NSString * createTime;
+
+
+@end
+
 @interface PostboyAccountModel : BaseModel
 
 /** 小哥id*/

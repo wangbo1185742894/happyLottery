@@ -656,6 +656,39 @@
                         failure:failureBlock];
 }
 
+
+- (void) transferToPostboy:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        
+        if (response.succeed) {
+            NSDictionary *Info = [self objFromJson: responseJsonStr];
+            if (Info == nil) {
+                [self.delegate rechargeSmsIsSuccess:YES andPayInfo:responseJsonStr errorMsg:response.errorMsg];
+            }else{
+                [self.delegate rechargeSmsIsSuccess:YES andPayInfo:Info errorMsg:response.errorMsg];
+            }
+            
+        } else {
+            [self.delegate rechargeSmsIsSuccess:NO andPayInfo:nil errorMsg:response.errorMsg];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate rechargeSmsIsSuccess:NO andPayInfo:nil errorMsg:@"请检查网络连接"];
+        //失败的代理方法
+    };
+    
+    SOAPRequest *request = [self requestForAPI: APITransferToPostboy withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]} ];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIMember
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
 - (void) getAvailableCoupon:(NSDictionary *)paraDic{
     void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
     {

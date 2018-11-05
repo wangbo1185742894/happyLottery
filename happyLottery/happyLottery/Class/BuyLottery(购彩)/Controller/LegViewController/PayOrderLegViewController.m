@@ -24,6 +24,7 @@
 #import "PostboyAccountModel.h"
 #import "PaySuccessViewController.h"
 #import "YuCeSchemeCreateViewController.h"
+#import "ZhuiHaoInfoViewController.h"
 
 #define KPayTypeListCell @"PayTypeListCell"
 
@@ -56,7 +57,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *sendBalanceLab;
 @property (nonatomic,strong)PostboyAccountModel *curModel;
 @property(nonatomic,strong)SchemeCashPayment *cashPayMemt;
-@property (nonatomic,copy)NSString *schemeNo;
+
 @end
 
 @implementation PayOrderLegViewController
@@ -99,7 +100,11 @@
     
     //请求小哥信息
     ///
-    [self.postboyMan recentPostboyAccount:@{@"cardCode":self.curUser.cardCode}];
+    if (self.schemeNo == nil) {
+        [self.postboyMan recentPostboyAccount:@{@"cardCode":self.curUser.cardCode}];
+    }else {
+        [self.postboyMan getPostboyInfoById:@{@"postboyId":self.postBoyId}];
+    }
     ///
     
     [self.memberMan getMemberByCardCode:@{@"cardCode":self.curUser.cardCode}];
@@ -146,6 +151,25 @@
 }
 
 -(void )recentPostboyAccountdelegate:(NSDictionary *)param isSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    [self hideLoadingView];
+    if (success == NO) {
+        [self upDateLegInfo:nil];
+        self.curModel = nil;
+        return;
+    }
+    if (param != nil) {
+        PostboyAccountModel *model = [[PostboyAccountModel alloc]initWith:param];
+        [self upDateLegInfo:model];
+        self.curModel = model;
+    } else {
+        [self upDateLegInfo:nil];
+        self.curModel = nil;
+    }
+}
+
+
+
+-(void )getPostboyInfoByIddelegate:(NSDictionary *)param isSuccess:(BOOL)success errorMsg:(NSString *)msg{
     [self hideLoadingView];
     if (success == NO) {
         [self upDateLegInfo:nil];
@@ -245,44 +269,7 @@
     
 }
 
--(void)navigationBackToLastPageitem{
-    ZLAlertView *alert = [[ZLAlertView alloc] initWithTitle:@"提示" message:@"确认退出支付？你可在投注信息里对此订单继续支付？"];
-    itemAlert  = alert;
-    [alert addBtnTitle:@"取消" action:^{
-        
-    }];
-    [alert addBtnTitle:@"确定" action:^{
-        for (BaseViewController *baseVC in self.navigationController.viewControllers) {
-            if ([baseVC isKindOfClass:[JCLQPlayController class]]) {
-                [[NSNotificationCenter defaultCenter]postNotificationName:KSELECTMATCHCLEAN object:nil];
-                [self.navigationController popToViewController:baseVC animated:YES];
-                return ;
-            }
-            if ([baseVC isKindOfClass: [JCZQPlayViewController class]]) {
-            [[NSNotificationCenter defaultCenter]postNotificationName:KSELECTMATCHCLEAN object:nil];
-                [self.navigationController popToViewController:baseVC animated:YES];
-                return;
-            }
-            if ([baseVC isKindOfClass: [LotteryPlayViewController class]]) {
-                [self.navigationController popToViewController:baseVC animated:YES];
-                return;
-            }
-            if ([baseVC isKindOfClass: [DLTPlayViewController class]]) {
-                [self.navigationController popToViewController:baseVC animated:YES];
-                return;
-            } if ([baseVC isKindOfClass: [SSQPlayViewController class]]) {
-                [self.navigationController popToViewController:baseVC animated:YES];
-                return;
-            }
-            
-        }
-        [self.navigationController popViewControllerAnimated:YES];
-        
-    }];
-    
-    [alert showAlertWithSender:(UIViewController *)[UIApplication sharedApplication].keyWindow];
-    
-}
+
 
 #pragma LotteryManagerDelegate
 
@@ -310,11 +297,16 @@
 }
 
 - (void)actionToSelectLeg {
-    LegSelectViewController *legSelectVC = [[LegSelectViewController alloc]init];
-    legSelectVC.delegate = self;
-    legSelectVC.titleName = @"选择代买小哥";
-    legSelectVC.curModel = self.curModel;
-    [self.navigationController pushViewController:legSelectVC animated:YES];
+    if (self.schemeNo == nil) {
+        LegSelectViewController *legSelectVC = [[LegSelectViewController alloc]init];
+        legSelectVC.delegate = self;
+        legSelectVC.titleName = @"选择代买小哥";
+        legSelectVC.curModel = self.curModel;
+        [self.navigationController pushViewController:legSelectVC animated:YES];
+    }
+    else {
+       [self showPromptText:@"订单已与此小哥进行绑定，\n如更改小哥请重新提交订单" hideAfterDelay:1.7];
+    }
 }
 
 - (IBAction)showRuler:(UIButton *)sender {
@@ -325,40 +317,93 @@
     [self.navigationController pushViewController:webShow animated:YES];
 }
 
+
+/**
+ schemeNo  是否为空  不为空  如果余额足  直接支付 否则跳入转账支付页面
+                    为空   发送方案 领取方案号  如果余额足  直接支付 否则跳入转账支付页面
+ @param sender sender description
+ */
 - (IBAction)actionToRechage:(id)sender {
-    
-    [self.lotteryMan betLotteryScheme:self.basetransction andPostboyId:self.curModel._id];
-    
+    if (self.schemeNo == nil) {
+        if (self.schemetype == SchemeTypeZhuihao) {
+            if ([self.lotteryName isEqualToString:@"大乐透"]||[self.lotteryName isEqualToString:@"双色球"]) {
+                //大乐透追号
+                [self.lotteryMan betChaseScheme:(LotteryTransaction *)self.basetransction andPostboyId:self.curModel._id];
+            } else if ([self.lotteryName isEqualToString:@"陕西11选5"]) {
+                //11选5追号
+                [self.lotteryMan betChaseSchemeZhineng:(LotteryTransaction *)self.basetransction andchaseList:self.zhuiArray andpostboyId:self.curModel._id];
+            }
+           
+        } else if(self.schemetype == SchemeTypeGenDan){
+            [self.lotteryMan followScheme:self.diction];
+        } else {
+            [self.lotteryMan betLotteryScheme:self.basetransction andPostboyId:self.curModel._id];
+        }
+    }else {
+        [self rechareSchemeWithSchemeNo];
+    }
 }
 
-- (void) betedLotteryScheme:(NSString *)schemeNO errorMsg:(NSString *)msg{
-    if (schemeNO == nil || schemeNO.length == 0) {
-        [self showPromptText:msg hideAfterDelay:1.7];
+//追号
+-(void)betedChaseScheme:(NSString *)schemeNO errorMsg:(NSString *)msg{
+    [self hideLoadingView];
+    if (schemeNO == nil) {
+        [self showPromptText:msg hideAfterDelay:1.8];
         return;
     }
+    ZhuiHaoInfoViewController * betInfoViewCtr = [[ZhuiHaoInfoViewController alloc] initWithNibName:@"ZhuiHaoInfoViewController" bundle:nil];
+    betInfoViewCtr.from = YES;
+    [self.navigationController pushViewController:betInfoViewCtr animated:YES];
+}
+
+- (void)rechareSchemeWithSchemeNo{
     if ([rechargeBtn.titleLabel.text isEqualToString:@"确认支付"]) {
-        self.schemeNo = schemeNO;
-        [self rechargeSchemeByNo:schemeNO];
+        [self rechargeSchemeByNo:self.schemeNo];
         return;
     }
     SchemeCashPayment *schemeCashModel = [[SchemeCashPayment alloc]init];
     schemeCashModel.cardCode = self.curUser.cardCode;
     schemeCashModel.lotteryName = self.lotteryName;
-    schemeCashModel.schemeNo = schemeNO;
+    schemeCashModel.schemeNo = self.schemeNo;
     schemeCashModel.subCopies = 1;
     schemeCashModel.costType = CostTypeCASH;
     [self hideLoadingView];
-    self.schemetype = self.basetransction.schemeType;
+    if (self.schemetype != SchemeTypeGenDan) {
+        self.schemetype = self.basetransction.schemeType;
+    }
     schemeCashModel.subscribed = self.basetransction.betCost;
     schemeCashModel.realSubscribed = self.basetransction.betCost;
     
     LegRechargeOrderViewController *legRechargrVC = [[LegRechargeOrderViewController alloc]init];
+    legRechargrVC.schemeNo = self.schemeNo;
     legRechargrVC.orderCost = self.labRealCost.text;
     legRechargrVC.legYuE = self.curModel.totalBalance;
+    legRechargrVC.legName = self.curModel.postboyName;
     legRechargrVC.cashPayMemt = schemeCashModel;
     legRechargrVC.legId = self.curModel._id;
     legRechargrVC.isYouhua = self.isYouhua;
     [self.navigationController pushViewController:legRechargrVC animated:YES];
+}
+
+//购彩
+- (void) betedLotteryScheme:(NSString *)schemeNO errorMsg:(NSString *)msg{
+    if (schemeNO == nil || schemeNO.length == 0) {
+        [self showPromptText:msg hideAfterDelay:1.7];
+        return;
+    }
+    self.schemeNo = schemeNO;
+    [self rechareSchemeWithSchemeNo];
+}
+
+-(void)followScheme:(NSString *)result errorMsg:(NSString *)msg{
+    [self hideLoadingView];
+    if (result == nil) {
+        [self showPromptText:msg hideAfterDelay:1.7];
+        return;
+    }
+    self.schemeNo = result;
+    [self rechareSchemeWithSchemeNo];
+    //    payVC.cashPayMemt = schemeCashModel;
 }
 
 - (void)rechargeSchemeByNo:(NSString *)schemeNo{
@@ -379,7 +424,7 @@
 {
     PaySuccessViewController * paySuccessVC = [[PaySuccessViewController alloc]init];
     paySuccessVC.schemetype = self.schemetype;
-    if(([self.cashPayMemt.lotteryName isEqualToString:@"竞彩足球"] ||[self.cashPayMemt.lotteryName isEqualToString:@"竞彩篮球"]) && [self.labRealCost.text doubleValue] > 10 && self.isYouhua == NO){
+    if(([self.lotteryName isEqualToString:@"竞彩足球"] ||[self.lotteryName isEqualToString:@"竞彩篮球"]) && self.subscribed > 10 && self.isYouhua == NO){
         paySuccessVC.isShowFaDan = YES;
     }else{
         paySuccessVC.isShowFaDan = NO;
@@ -402,13 +447,14 @@
 }
 
 -(NSDictionary *)getTouzhuParams:(BOOL)isCoupon andSchemeNo:(NSString *)schemeNo{
-//    NSNumber *real = @([[NSString stringWithFormat:@"%.2f",self.cashPayMemt.realSubscribed] doubleValue]);
+//    NSNumber *real = @([[NSString stringWithFormat:@"%.2f",self.cashPayMemt.realSubscribed] doubleValue]);  [self.curUser.sendBalance doubleValue]
+    
     if (isCoupon) {
         return @{@"cardCode":self.curUser.cardCode,
                  @"schemeNo":schemeNo,
                  @"subCopies":@(1),
                  @"subscribed":@(self.subscribed),
-                 @"realSubscribed":self.labRealCost.text,
+                 @"realSubscribed":@([self.curUser.sendBalance doubleValue] + [self.labRealCost.text doubleValue]),
                  @"isSponsor":@(true),
                  @"couponCode":self.curSelectCoupon.couponCode
                  };
@@ -417,15 +463,11 @@
                  @"schemeNo":schemeNo,
                  @"subCopies":@(1),
                  @"subscribed":@(self.subscribed),
-                 @"realSubscribed":self.labRealCost.text,
+                 @"realSubscribed":@([self.curUser.sendBalance doubleValue] + [self.labRealCost.text doubleValue]),
                  @"isSponsor":@(true)
                  };
     }
 }
 
-
-- (void)navigationBackToLastPage{
-    [self navigationBackToLastPageitem];
-}
 
 @end

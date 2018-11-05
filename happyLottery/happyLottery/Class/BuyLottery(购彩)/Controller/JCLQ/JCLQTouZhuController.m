@@ -494,7 +494,7 @@
         }
     }
     
-    [self showLoadingText:@"正在提交订单"];
+//    [self showLoadingText:@"正在提交订单"];
     
     self.transaction.maxPrize = 1.00;
     self.transaction.units = self.transaction.betCount;
@@ -517,6 +517,7 @@
     }
     PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
     payVC.basetransction = self.transaction;
+    payVC.schemetype = self.transaction.schemeType;
     payVC.lotteryName = @"竞彩篮球";
     payVC.subscribed = self.transaction.betCost;
     [self.navigationController pushViewController:payVC animated:YES];

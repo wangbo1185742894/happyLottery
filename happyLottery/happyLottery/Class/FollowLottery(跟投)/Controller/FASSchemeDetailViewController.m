@@ -701,18 +701,21 @@
 
 - (IBAction)actionToZhiFu:(id)sender {
     PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
-    SchemeCashPayment *schemeCashModel = [[SchemeCashPayment alloc]init];
-    schemeCashModel.cardCode = self.curUser.cardCode;
-    schemeCashModel.schemeNo =schemeDetail.schemeNO;
-    schemeCashModel.subCopies = 1;
-    schemeCashModel.costType = CostTypeCASH;
-    schemeCashModel.subscribed = [schemeDetail.betCost integerValue];
-    schemeCashModel.realSubscribed = [schemeDetail.betCost integerValue];
-    if ([schemeDetail.lottery isEqualToString:@"JCZQ"]){
-        schemeCashModel.lotteryName = @"竞彩足球";
-    }else if ([schemeDetail.lottery isEqualToString:@"JCLQ"]){
-        schemeCashModel.lotteryName = @"竞彩篮球";
-    }
+    payVC.schemeNo = schemeDetail.schemeNO;
+    payVC.subscribed = [schemeDetail.betCost doubleValue];
+    payVC.postBoyId = schemeDetail.postboyId;
+//    SchemeCashPayment *schemeCashModel = [[SchemeCashPayment alloc]init];
+//    schemeCashModel.cardCode = self.curUser.cardCode;
+//    schemeCashModel.schemeNo =schemeDetail.schemeNO;
+//    schemeCashModel.subCopies = 1;
+//    schemeCashModel.costType = CostTypeCASH;
+//    schemeCashModel.subscribed = [schemeDetail.betCost integerValue];
+//    schemeCashModel.realSubscribed = [schemeDetail.betCost integerValue];
+//    if ([schemeDetail.lottery isEqualToString:@"JCZQ"]){
+//        schemeCashModel.lotteryName = @"竞彩足球";
+//    }else if ([schemeDetail.lottery isEqualToString:@"JCLQ"]){
+//        schemeCashModel.lotteryName = @"竞彩篮球";
+//    }
 //    payVC.cashPayMemt = schemeCashModel;
     if ([self.schemeType isEqualToString:@"BUY_INITIATE"]) {
         payVC.schemetype = SchemeTypeFaqiGenDan;

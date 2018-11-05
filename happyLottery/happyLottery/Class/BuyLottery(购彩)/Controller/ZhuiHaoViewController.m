@@ -21,7 +21,7 @@
 #import "WBInputPopView.h"
 #import "WebViewController.h"
 #import "ZhuiHaoCell.h"
-
+#import "PayOrderLegViewController.h"
 #define PhaseInfoHeight 20
 #define VlineCount 5
 #define ZHSURETAG 12321
@@ -1576,8 +1576,13 @@
     }else{
         self.transaction.winStopStatus = NOTSTOP;
     }
-    
-    [self.lotteryMan betChaseSchemeZhineng:self.transaction andchaseList:[self getZhuiHaoInfo]];
+    PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
+    payVC.basetransction = self.transaction;
+    payVC.subscribed = [self getTotal]*2.0*_zhushu;
+    payVC.schemetype = SchemeTypeZhuihao;
+    payVC.zhuiArray = [self getZhuiHaoInfo];
+    payVC.lotteryName = @"陕西11选5";
+    [self.navigationController pushViewController:payVC animated:YES];
 }
 
 

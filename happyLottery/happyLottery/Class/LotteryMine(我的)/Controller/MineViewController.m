@@ -103,7 +103,7 @@
         self.topHeadCons.constant = 211;
     }
     tiXianBtn.layer.masksToBounds = YES;
-    tiXianBtn.layer.cornerRadius = 12;
+    tiXianBtn.layer.cornerRadius = 6;
     tiXianBtn.layer.borderWidth = 1;
     tiXianBtn.layer.borderColor = [UIColor whiteColor].CGColor;
     

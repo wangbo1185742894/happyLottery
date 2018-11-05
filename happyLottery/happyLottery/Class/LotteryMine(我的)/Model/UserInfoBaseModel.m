@@ -450,6 +450,29 @@
 
 @implementation PostboyBlotterDetailModel : UserInfoBaseModel
 
+-(NSString *)getLeftTitle{
+    return [NSString stringWithFormat:@"\n类型\n\n方案号\n\n时间\n\n金额\n\n"];
+}
+-(NSString *)getRightTitle{
+    return [NSString stringWithFormat:@"\n%@\n\n%@\n\n%@\n\n#%@元\n\n",[self get1Name],self.orderNo,self.createTime,self.amounts];
+}
+-(NSString *)get1Name{
+    return @"跟单佣金";
+}
+-(NSString *)get2Name{
+    return [NSString stringWithFormat:@"%.2f元",[self.amounts doubleValue]];
+}
+-(NSString *)get3Name{
+    return @"";
+}
+
+-(NSString *)getRemark{
+    return @"";
+}
+
+-(NSString *)get4Name{
+    return self.createTime;
+}
 
 @end
 

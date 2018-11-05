@@ -741,10 +741,12 @@
                 self.transaction.schemeType = SchemeTypeZigou;
                 
 //                [self.lotteryMan betLotteryScheme:self.transaction];
+                [self hideLoadingView];
                 PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
                 payVC.basetransction = self.transaction;
                 payVC.lotteryName = @"双色球";
                 payVC.subscribed = self.transaction.betCost;
+                payVC.schemetype = self.transaction.schemeType;
                 [self.navigationController pushViewController:payVC animated:YES];
             } else {
                 [self needLogin];
@@ -782,10 +784,16 @@
 }
 
 -(void)zhuihao{
-    [self showLoadingText:@"正在提交"];
+//    [self showLoadingText:@"正在提交"];
     self.transaction.qiShuCount = [tfQiCount.text intValue];
-    
-    [self.lotteryMan betChaseScheme:self.transaction];
+    PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
+    payVC.basetransction = self.transaction;
+    payVC.subscribed = [self.transaction getAllCost];
+    payVC.schemetype = SchemeTypeZhuihao;
+    payVC.zhuiArray = nil;
+    payVC.lotteryName = @"双色球";
+    [self.navigationController pushViewController:payVC animated:YES];
+//    [self.lotteryMan betChaseScheme:self.transaction];
 }
 
 -(void)betedChaseScheme:(NSString *)schemeNO errorMsg:(NSString *)msg{

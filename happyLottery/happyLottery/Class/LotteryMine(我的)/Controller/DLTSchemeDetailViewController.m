@@ -159,28 +159,32 @@
 
 - (IBAction)actionGotoTouzhu:(id)sender {
     PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
-    SchemeCashPayment *schemeCashModel = [[SchemeCashPayment alloc]init];
-    schemeCashModel.cardCode = self.curUser.cardCode;
-    schemeCashModel.schemeNo =schemeDetail.schemeNO;
-    schemeCashModel.subCopies = 1;
-    if ([schemeDetail.lottery isEqualToString:@"DLT"]) {
-        schemeCashModel.lotteryName = @"大乐透";
-    } else {
-        schemeCashModel.lotteryName = @"双色球";
-    }
-    
-    if ([schemeDetail.costType isEqualToString:@"CASH"]) {
-        schemeCashModel.costType = CostTypeCASH;
-        
-        schemeCashModel.subscribed = [schemeDetail.betCost integerValue];
-        schemeCashModel.realSubscribed = [schemeDetail.betCost integerValue];
-    }else{
-        schemeCashModel.costType = CostTypeSCORE;
-        
-        schemeCashModel.subscribed = [schemeDetail.betCost integerValue] /100;
-        schemeCashModel.realSubscribed = [schemeDetail.betCost integerValue]/100;
-    }
-   
+    payVC.schemeNo = schemeDetail.schemeNO;
+    payVC.subscribed = [schemeDetail.betCost doubleValue];
+    payVC.postBoyId = schemeDetail.postboyId;
+
+//    SchemeCashPayment *schemeCashModel = [[SchemeCashPayment alloc]init];
+//    schemeCashModel.cardCode = self.curUser.cardCode;
+//    schemeCashModel.schemeNo =schemeDetail.schemeNO;
+//    schemeCashModel.subCopies = 1;
+//    if ([schemeDetail.lottery isEqualToString:@"DLT"]) {
+//        schemeCashModel.lotteryName = @"大乐透";
+//    } else {
+//        schemeCashModel.lotteryName = @"双色球";
+//    }
+//
+//    if ([schemeDetail.costType isEqualToString:@"CASH"]) {
+//        schemeCashModel.costType = CostTypeCASH;
+//
+//        schemeCashModel.subscribed = [schemeDetail.betCost integerValue];
+//        schemeCashModel.realSubscribed = [schemeDetail.betCost integerValue];
+//    }else{
+//        schemeCashModel.costType = CostTypeSCORE;
+//
+//        schemeCashModel.subscribed = [schemeDetail.betCost integerValue] /100;
+//        schemeCashModel.realSubscribed = [schemeDetail.betCost integerValue]/100;
+//    }
+//
 //    payVC.cashPayMemt = schemeCashModel;
     [self.navigationController pushViewController:payVC animated:YES];
 }

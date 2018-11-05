@@ -863,13 +863,13 @@
 
 - (void)payForZHOrderInfo:(NSDictionary *)orderNeedInfo andQishu:(int)qi{
     
-    curBlance =  [[self.curUser totalBanlece] doubleValue];
-    if ([self.transaction getAllCost] > curBlance) {
-        [self showPromptText:[NSString stringWithFormat:@"账户余额:%.2f元,余额不足",curBlance] hideAfterDelay:2];
-        return;
-    }
+//    curBlance =  [[self.curUser totalBanlece] doubleValue];
+//    if ([self.transaction getAllCost] > curBlance) {
+//        [self showPromptText:[NSString stringWithFormat:@"账户余额:%.2f元,余额不足",curBlance] hideAfterDelay:2];
+//        return;
+//    }
     self.transaction.winStopStatus = _zhSelectBtn.selected?WINSTOP:NOTSTOP;
-    NSString *msg = [NSString stringWithFormat:@"共追%@期，共需%.0f元,您当前余额为%.1f元,是否确定追号？",tfQiText.text,[self.transaction getAllCost],curBlance];
+    NSString *msg = [NSString stringWithFormat:@"共追%@期，共需%.0f元,是否确定追号？",tfQiText.text,[self.transaction getAllCost]];
     ZLAlertView *alert = [[ZLAlertView alloc] initWithTitle:@"追号确认" message:msg];
     [alert addBtnTitle:TitleNotDo action:^{
         [self hideLoadingView];
@@ -883,13 +883,13 @@
 //追号期前的判断
 - (void)zhuihao{
     [self hideLoadingView];
-    if(curPay > curBlance)
-    {
-        NSString *msg =@"余额不足";
-        [self showPromptText:msg hideAfterDelay:2.7];
-        
-        return;
-    }
+//    if(curPay > curBlance)
+//    {
+//        NSString *msg =@"余额不足";
+//        [self showPromptText:msg hideAfterDelay:2.7];
+//
+//        return;
+//    }
     
     int qi = [tfQiText.text intValue];
     int bei = [tfBeiText.text intValue];
@@ -1148,6 +1148,7 @@
 //                [self.lotteryMan betLotteryScheme:self.transaction];
                 PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
                 payVC.basetransction = transcation;
+                payVC.schemetype = transcation.schemeType;
                 payVC.lotteryName = self.lottery.name;
                 payVC.subscribed = transcation.betCost;
 //                [self.transaction removeAllBets];
@@ -1162,35 +1163,6 @@
     }
 }
 
--(void)betedLotteryScheme:(NSString *)schemeNO errorMsg:(NSString *)msg{
-    if (schemeNO == nil) {
-        [self showPromptText:msg hideAfterDelay:1.9];
-        return;
-    }
-    
-    PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
-    SchemeCashPayment *schemeCashModel = [[SchemeCashPayment alloc]init];
-    schemeCashModel.lotteryName = self.lottery.name;
-    schemeCashModel.cardCode = self.curUser.cardCode;
-    schemeCashModel.schemeNo = schemeNO;
-    schemeCashModel.subCopies = 1;
-    schemeCashModel.costType = CostTypeCASH;
-    if (self.transaction.betCost  > 300000) {
-        [self showPromptText:@"单笔总金额不能超过30万元" hideAfterDelay:1.7];
-        return;
-    }
-    [self hideLoadingView];
-    
-    schemeCashModel.subscribed = self.transaction.betCost;
-    schemeCashModel.realSubscribed = self.transaction.betCost;
-//    payVC.cashPayMemt = schemeCashModel;
-    [self.transaction removeAllBets];
-    self.transaction.beiTouCount = 1;
-    self.transaction.qiShuCount  = 1;
-    self.transaction.winStopStatus = WINSTOP;
-    [self.navigationController pushViewController:payVC animated:YES];
-}
-
 //11.07
 - (void)nopayword
 {
@@ -1199,7 +1171,17 @@
 
 //    [myDelegate.ZHDic setObject:self.curUser.cardCode == nil?@"":self.curUser.cardCode forKey:@"cardCode"];
 //    NSString *jsonStr = [Utility JsonFromId:[self getZhuiHaoInfo]];
-    [self.lotteryMan betChaseSchemeZhineng:self.transaction andchaseList:nil];
+    PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
+    payVC.basetransction = self.transaction;
+    payVC.subscribed = [self.transaction getAllCost];
+    payVC.schemetype = SchemeTypeZhuihao;
+    payVC.zhuiArray = nil;
+    if (_lottery.type == LotteryTypeSDShiYiXuanWu) {
+        payVC.lotteryName = @"山东11选5";
+    }else if (_lottery.type == LotteryTypeShiYiXuanWu){
+        payVC.lotteryName = @"陕西11选5";
+    }
+    [self.navigationController pushViewController:payVC animated:YES];
 }
 
 -(void)betedChaseScheme:(NSString *)schemeNO errorMsg:(NSString *)msg{

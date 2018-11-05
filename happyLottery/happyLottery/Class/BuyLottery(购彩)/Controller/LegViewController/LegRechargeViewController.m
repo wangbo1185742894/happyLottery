@@ -342,6 +342,9 @@
             zhifubaoVC.chongzhitype = @"weixin";
             [self.navigationController pushViewController:zhifubaoVC animated:YES];
     
+        }else if ([itemModel.channel isEqualToString:@"YUE"]){
+            [self showPromptText:@"充值成功" hideAfterDelay:2];
+            [self.navigationController popViewControllerAnimated:YES];
         }
         
     }else{
@@ -387,6 +390,24 @@
             [self showPromptText:[NSString stringWithFormat:@"%@充值最少充%@元",itemModel.channelTitle,self.aliPayMinBouns] hideAfterDelay:1.7];
             return;
         }
+    }
+    if ([itemModel.channel isEqualToString:@"YUE"]) {
+        if ([self.curUser.balance doubleValue] + [self.curUser.notCash doubleValue]< [self.txtChongZhiJIne.text doubleValue]) {
+            [self showPromptText:[NSString stringWithFormat:@"充值金额不能大于余额"] hideAfterDelay:1.7];
+        }
+    }
+    if ([itemModel.channel isEqualToString:@"YUE"]) {
+        NSString *cardCode = self.curUser.cardCode;
+        NSString *checkCode = self.txtChongZhiJIne.text;
+        
+        
+        rechargeInfo = @{@"cardCode":cardCode,
+                         @"postboyId":self.curModel._id,
+                         @"amount":checkCode
+                         };
+        [self showLoadingText:@"正在提交订单"];
+        [self.memberMan transferToPostboy:rechargeInfo];
+        return;
     }
     @try {
         NSString *cardCode = self.curUser.cardCode;
@@ -439,6 +460,13 @@
 //            }
          }
     }
+    
+    ChannelModel *modelYuE = [[ChannelModel alloc]init];
+    modelYuE.descValue = [NSString stringWithFormat:@"平台余额:%.2f",[self.curUser.balance doubleValue] + [self.curUser.notCash doubleValue]];
+    modelYuE.channel = @"YUE";
+    modelYuE.channelValue = @"YES";
+    [channelList insertObject:modelYuE atIndex:0];
+    
     self.viewHeight.constant = 420 + channelList.count * 60;
 
     [channelList firstObject].isSelect = YES;

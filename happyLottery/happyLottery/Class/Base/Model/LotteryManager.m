@@ -330,6 +330,41 @@
                         failure:failureBlock];
 }
 
+- (void) betChaseSchemeZhineng:(LotteryTransaction *)transcation andchaseList:(NSArray *)chaseList andpostboyId:(NSString *)postboyId{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed) {
+            [self.delegate betedChaseScheme:responseJsonStr errorMsg:response.errorMsg];
+        } else {
+            [self.delegate betedChaseScheme:nil errorMsg:response.errorMsg];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        [self.delegate betedLotteryScheme:nil errorMsg:response.errorMsg];
+    };
+    
+    NSDictionary *chaseContent = [transcation lottDataSchemeZhiNeng];
+    
+    NSMutableDictionary *subSchemeDic = [transcation getDLTChaseScheme];
+    
+    subSchemeDic[@"chaseContent"] = [self JsonFromId:chaseContent];
+    if (chaseList != nil) {
+        subSchemeDic[@"chaseList"] = chaseList;
+    }
+    subSchemeDic[@"playType"] =  [NSString stringWithFormat:@"%@",[transcation X115PlayTypeValue:subSchemeDic[@"playType"]]];
+    subSchemeDic[@"postboyId"] = postboyId;
+    SOAPRequest *request = [self requestForAPI: APIbetChaseScheme withParam:@{@"params":[self actionEncrypt:[self JsonFromId:subSchemeDic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPISchemeService
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
 - (void) betChaseScheme:(LotteryTransaction *)transcation{
     void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
     {
@@ -1579,6 +1614,30 @@
     };
     
     SOAPRequest* request = [self requestForAPI:APIinitiateFollowRedPacketPayment withParam:@{@"params":[self actionEncrypt:[self JsonFromId:infoDic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPISchemeService
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+
+- (void)getDeadLine:(NSDictionary *)infoDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+        if (response.succeed  && responseJsonStr!= nil && responseJsonStr.length>0) {
+            [self.delegate getDeadLineDelegate:responseJsonStr errorMsg:response.errorMsg];
+        }else{
+            [self.delegate getDeadLineDelegate:nil errorMsg:response.errorMsg];
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.delegate getDeadLineDelegate:nil errorMsg:@"请检查网络连接"];
+    };
+    
+    SOAPRequest* request = [self requestForAPI:APIgetDeadLine withParam:@{@"params":[self actionEncrypt:[self JsonFromId:infoDic]]}];
     [self newRequestWithRequest:request
                          subAPI:SUBAPISchemeService
       constructingBodyWithBlock:nil

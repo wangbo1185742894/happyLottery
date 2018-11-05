@@ -73,7 +73,7 @@
 - (void) checkRegisterSms:(NSDictionary *)paraDic;
 
 - (void) getMemberByCardCode:(NSDictionary *)paraDic;
-
+- (void) transferToPostboy:(NSDictionary *)paraDic;
 - (void) forgetPWDSms:(NSDictionary *)paraDic;
 - (void) sendForgetPWDSms:(NSDictionary *)paraDic;
 - (void) checkForgetPWDSms:(NSDictionary *)paraDic;

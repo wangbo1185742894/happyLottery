@@ -21,9 +21,13 @@
 
 @property (nonatomic , copy) NSString *legId;
 
+@property (nonatomic , copy) NSString *legName;
+
 @property(nonatomic,strong)SchemeCashPayment *cashPayMemt;
 
 @property(assign,nonatomic)SchemeType  schemetype;
+
+@property (nonatomic , copy) NSString *schemeNo;
 
 @property(assign,nonatomic)BOOL isYouhua;
 

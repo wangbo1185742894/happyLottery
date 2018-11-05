@@ -81,7 +81,7 @@ typedef enum EarningsType{
 - (void) gotFollowSchemeBySchemeNo:(NSDictionary *)resultDic  errorInfo:(NSString *)msg;
 
 - (void)initiateFollowRedPacketPayment:(NSString *)resultStr  errorMsg:(NSString *)msg;
-
+- (void)getDeadLineDelegate:(NSString *)resultStr  errorMsg:(NSString *)msg;
 - (void) gotRedPacketHis:(NSArray *)redList errorInfo:(NSString *)errMsg;
 - (void) gotLegWorkList:(NSArray *)redList errorInfo:(NSString *)errMsg;
 - (void) gotLotteryShop:(NSDictionary *)redList errorInfo:(NSString *)errMsg;
@@ -199,5 +199,15 @@ typedef enum EarningsType{
 -(void)getLotteryShop:(NSDictionary *)para;
 -(void)sendOutRedPacketDetail:(NSDictionary *)para;
 
+/**
+ * 根据方案号获取方案截期时间
+ * @param params {"schemeNo":"xxxxxxx"}
+ * @return
+ * @throws BizException
+ */
+- (void)getDeadLine:(NSDictionary *)infoDic;
+
+
+- (void) betChaseSchemeZhineng:(LotteryTransaction *)transcation andchaseList:(NSArray *)chaseList andpostboyId:(NSString *)postboyId;
 @end
 

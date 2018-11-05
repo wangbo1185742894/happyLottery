@@ -82,7 +82,9 @@
 /** 小哥支付宝号*/
 @property(nonatomic,copy)NSString *  legAlipay;
 
-@property(nonatomic,copy)NSString * legId;
+//小哥id
+@property(nonatomic,copy)NSString * postboyId;
+
 -(NSString *)getSchemeImgState;
 -(NSString *)getSchemeState;
 -(NSString *)getLegSchemeState;

@@ -472,6 +472,7 @@
     payVC.basetransction = self.transction;
     payVC.lotteryName = @"竞彩足球";
     payVC.subscribed = self.transction.betCost;
+    payVC.schemetype = self.transction.schemeType;
     [self.navigationController pushViewController:payVC animated:YES];
     
 }

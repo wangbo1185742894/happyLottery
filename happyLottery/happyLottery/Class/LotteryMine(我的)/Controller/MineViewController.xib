@@ -324,9 +324,9 @@
                             <color key="sectionIndexBackgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
                         </tableView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PNJ-oo-jGl">
-                            <rect key="frame" x="252" y="60" width="45" height="20"/>
+                            <rect key="frame" x="242" y="60" width="55" height="20"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="45" id="9pU-1O-GSt"/>
+                                <constraint firstAttribute="width" constant="55" id="9pU-1O-GSt"/>
                                 <constraint firstAttribute="height" constant="20" id="gFJ-xR-fwr"/>
                             </constraints>
                             <state key="normal" title="提现">

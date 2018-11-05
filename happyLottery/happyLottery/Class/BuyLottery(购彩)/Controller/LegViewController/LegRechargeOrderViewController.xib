@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LegRechargeOrderViewController">
             <connections>
                 <outlet property="consHeight" destination="6oc-uy-u4x" id="ugT-Gv-ygr"/>
+                <outlet property="infoAletLab" destination="yr1-Ag-1Lw" id="TMS-WP-4RM"/>
                 <outlet property="labBanlence" destination="gDn-S3-arS" id="Vnw-tv-va1"/>
                 <outlet property="legYueE" destination="oWi-LK-NVx" id="shU-DO-Sg4"/>
                 <outlet property="payWebView" destination="f2a-Wh-UrD" id="0Bv-hk-oaZ"/>
@@ -216,11 +217,24 @@
                                 <constraint firstItem="M7e-AF-Cow" firstAttribute="top" secondItem="Z6k-7j-LYg" secondAttribute="bottom" id="wbq-Ha-pFg"/>
                             </constraints>
                         </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yr1-Ag-1Lw">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="21"/>
+                            <color key="backgroundColor" red="0.98431372549019602" green="0.82745098039215681" blue="0.70980392156862748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="MDX-BP-9CJ"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.99607843139999996" green="0.2274509804" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <constraints>
+                        <constraint firstItem="yr1-Ag-1Lw" firstAttribute="leading" secondItem="W3F-eZ-Uqg" secondAttribute="leading" id="Xjl-3W-K2F"/>
                         <constraint firstItem="E54-CB-Uwa" firstAttribute="top" secondItem="W3F-eZ-Uqg" secondAttribute="top" id="Xuo-Nn-nD5"/>
                         <constraint firstAttribute="trailing" secondItem="E54-CB-Uwa" secondAttribute="trailing" id="Yg9-NQ-oxL"/>
                         <constraint firstItem="E54-CB-Uwa" firstAttribute="leading" secondItem="W3F-eZ-Uqg" secondAttribute="leading" id="Z4f-qe-Ihx"/>
+                        <constraint firstAttribute="trailing" secondItem="yr1-Ag-1Lw" secondAttribute="trailing" id="iov-8h-Wel"/>
+                        <constraint firstItem="yr1-Ag-1Lw" firstAttribute="top" secondItem="W3F-eZ-Uqg" secondAttribute="top" id="kP3-81-4we"/>
                         <constraint firstAttribute="bottom" secondItem="E54-CB-Uwa" secondAttribute="bottom" constant="-97" id="nmp-As-54M"/>
                     </constraints>
                 </scrollView>

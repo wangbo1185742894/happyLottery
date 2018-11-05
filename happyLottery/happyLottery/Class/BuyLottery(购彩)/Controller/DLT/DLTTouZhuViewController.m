@@ -781,6 +781,7 @@
                 payVC.basetransction = self.transaction;
                 payVC.lotteryName = @"大乐透";
                 payVC.subscribed = self.transaction.betCost;
+                payVC.schemetype = self.transaction.schemeType;
                 [self.navigationController pushViewController:payVC animated:YES];
 
 //                [self.lotteryMan betLotteryScheme:self.transaction];
@@ -820,10 +821,16 @@
 }
 
 -(void)zhuihao{
-    [self showLoadingText:@"正在提交"];
+//    [self showLoadingText:@"正在提交"];
     self.transaction.qiShuCount = [tfQiCount.text intValue];
-    
-    [self.lotteryMan betChaseScheme:self.transaction];
+    PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
+    payVC.basetransction = self.transaction;
+    payVC.subscribed = [self.transaction getAllCost];
+    payVC.schemetype = SchemeTypeZhuihao;
+    payVC.zhuiArray = nil;
+    payVC.lotteryName = @"大乐透";
+    [self.navigationController pushViewController:payVC animated:YES];
+//    [self.lotteryMan betChaseScheme:self.transaction];
 }
 
 -(void)betedChaseScheme:(NSString *)schemeNO errorMsg:(NSString *)msg{

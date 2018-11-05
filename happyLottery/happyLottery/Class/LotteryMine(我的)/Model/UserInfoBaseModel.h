@@ -292,13 +292,16 @@
 /** 金额类型(现金) */
 @property(nonatomic,strong)NSString * subType;
 
-/** 账户交易金额  */
-@property(nonatomic,strong)NSString * amounts;
-
 /** 变化后总余额 */
 @property(nonatomic,strong)NSString * remBalance;
 
 /** 备注 */
 @property(nonatomic,strong)NSString * remark;
+
+/** 账户交易金额(佣金)  */
+@property(nonatomic,strong)NSString * amounts;
+
+/** 创建时间 */
+@property(nonatomic,strong)NSString * createTime;
 
 @end

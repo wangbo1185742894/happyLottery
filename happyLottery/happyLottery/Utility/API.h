@@ -128,7 +128,7 @@
 #define APIlistRechargeHandsel      @"listRechargeHandsel"
 #define API_listSubscribeDetail     @"listSubscribeDetail"
 #define APIgetHotFollowSchemeNew     @"getHotFollowSchemeNew"
-
+#define APITransferToPostboy        @"transferToPostboy"
 /**
  * 分页查询会员的认购明细
  * @param params {"cardCode":"xxx","page":"xxx","pageSize":"xxx"}
@@ -264,7 +264,7 @@
 #define APIchaseCompleteCount           @"chaseCompleteCount"
 #define APISearchGreatFollow        @"searchGreatFollow" //搜索
 #define APIinitiateFollowRedPacketPayment     @"initiateFollowRedPacketPayment"//发单红包支付
-
+#define APIgetDeadLine              @"getDeadLine"  //根据方案号获取方案截期时间
 
 
 

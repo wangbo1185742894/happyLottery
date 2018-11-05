@@ -13,10 +13,10 @@
 
 @interface PayOrderLegViewController : BaseViewController
 
-@property(nonatomic,strong)BaseTransaction *basetransction;
+@property(nonatomic,strong)BaseTransaction *basetransction; 
 
 
-@property(nonatomic,copy)NSString *lotteryName;
+@property(nonatomic,copy)NSString *lotteryName; //彩种名称
 
 @property(assign,nonatomic)double subscribed;
 
@@ -28,5 +28,12 @@
 
 @property(assign,nonatomic)BOOL isYouhua;
 
+@property (nonatomic,copy)NSString *schemeNo;  //未支付订单传递方案号
+
+@property (nonatomic,copy)NSString *postBoyId;  //未支付订单已选小哥id
+
+@property (nonatomic,strong)NSArray *zhuiArray;  //追号
+
+@property (nonatomic,strong)NSDictionary *diction;  //跟单传递值
 
 @end

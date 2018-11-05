@@ -44,9 +44,11 @@
     self.title = _titleName;
     self.personArray = [NSMutableArray arrayWithCapacity:0];
     [self setTableView];
+    [UITableView refreshHelperWithScrollView:personTableView target:self loadNewData:@selector(loadNewDate) loadMoreData:nil isBeginRefresh:NO];
+    [self loadNewDate];
     self.lotteryMan.delegate = self;
     self.postboyMan.delegate = self;
-    [self loadNewDate];
+    
     footView = [[LegSelectFooterView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, 74)];
     if ([self.titleName isEqualToString:@"选择代买小哥"]||[self.titleName isEqualToString:@"存款"]) {
         self.bottomHeightCons.constant = 0;
@@ -79,6 +81,9 @@
 
 #pragma mark  PostboyManagerDelegate
 -(void )getPostboyAccountListdelegate:(NSArray *)array isSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    [self hideLoadingView];
+    [personTableView tableViewEndRefreshCurPageCount:array.count];
+    [_personArray removeAllObjects];
     if (success == NO) {
         [self showPromptViewWithText:msg hideAfter:1.9];
         return;
@@ -86,7 +91,8 @@
     if (array.count == 0) {
         [self showPromptText:@"暂无小哥" hideAfterDelay:1.0];
     }else{
-        //添加数据
+        //添加数据，用过的小哥 按照服务器返回排列，没有用过的随机排列
+        NSMutableArray<PostboyAccountModel *> * notUseArray = [NSMutableArray arrayWithCapacity:0];
         for (NSDictionary *dic in array) {
             PostboyAccountModel *postModel = [[PostboyAccountModel alloc]initWith:dic];
             if ([postModel.enabled boolValue]) {
@@ -95,10 +101,24 @@
                 } else {
                     postModel.isSelect = NO;
                 }
-                [_personArray addObject:postModel];
+                if (postModel.totalBalance.length != 0) {
+                    [_personArray addObject:postModel];
+                } else {
+                    [notUseArray addObject:postModel];
+                }
             }
         }
-        [self hideLoadingView];
+        if (notUseArray.count >= 2) {
+            for (int i = 0 ;i < notUseArray.count; i ++) {
+                NSInteger index1 = arc4random_uniform(notUseArray.count - 1);
+                NSInteger index2 = arc4random_uniform(notUseArray.count - 1);
+                PostboyAccountModel *model = notUseArray[index1];
+                notUseArray[index1] = notUseArray[index2];
+                notUseArray[index2] = model;
+            }
+        }
+        [_personArray addObjectsFromArray:notUseArray];
+        
     }
     [personTableView reloadData];
 }

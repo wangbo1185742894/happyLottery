@@ -203,8 +203,19 @@
         return;
     }
     NSDictionary *paraDic= @{@"schemeNo":_model.schemeNo , @"cardCode":self.curUser.cardCode,@"multiple":@(_beiCount)};
-    [self showLoadingText:@"正在提交"];
-    [self.lotteryMan followScheme:paraDic];
+//    [self showLoadingText:@"正在提交"];
+    PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
+    payVC.schemetype = SchemeTypeGenDan;
+    payVC.diction = paraDic;
+    if ([_model.lottery isEqualToString:@"JCZQ"]) {
+        payVC.lotteryName = @"竞彩足球";
+    } else {
+        payVC.lotteryName = @"竞彩篮球";
+    }
+    payVC.subscribed = [self.model.minFollowCost doubleValue] * _beiCount;
+    [self.navigationController pushViewController:payVC animated:YES];
+
+//    [self.lotteryMan followScheme:paraDic];
 }
 
 -(void)followScheme:(NSString *)result errorMsg:(NSString *)msg{
@@ -231,7 +242,6 @@
     schemeCashModel.subscribed =[self getBetCost];
     schemeCashModel.realSubscribed = [self getBetCost];
 //    payVC.cashPayMemt = schemeCashModel;
-    [self.navigationController pushViewController:payVC animated:YES];
 }
 
 -(void)actionSub{
