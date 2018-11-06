@@ -68,8 +68,12 @@
     //代买过
     if (legModel.totalBalance.length == 0) {
         self.usedLeg.hidden = YES;
+        self.yuE.hidden = YES;
+        self.leaveMoney.hidden = YES;
     }else {
         self.usedLeg.hidden = NO;
+        self.yuE.hidden = NO;
+        self.leaveMoney.hidden = NO;
     }
     if (legModel.isSelect) {
         self.selectBackGroup.backgroundColor = RGBCOLOR(255,235,223);

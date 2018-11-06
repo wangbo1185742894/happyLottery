@@ -1831,6 +1831,8 @@
 		F9F91B6D200EF81C0036DD2A /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F91B6C200EF81C0036DD2A /* AdSupport.framework */; };
 		F9F91B6F200EF82B0036DD2A /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F91B6E200EF82A0036DD2A /* UserNotifications.framework */; };
 		F9F91B71200EF83A0036DD2A /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F91B70200EF83A0036DD2A /* libresolv.tbd */; };
+		F9FA29802191AF390035E77B /* leg_did_select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9FA297E2191AF370035E77B /* leg_did_select@2x.png */; };
+		F9FA29812191AF390035E77B /* leg_did_select@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9FA297F2191AF370035E77B /* leg_did_select@3x.png */; };
 		F9FC0BEF20C60AA000BCCF59 /* GroupFollowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9FC0BEC20C60A9F00BCCF59 /* GroupFollowViewController.xib */; };
 		F9FC0BF020C60AA000BCCF59 /* GroupFollowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FC0BEE20C60AA000BCCF59 /* GroupFollowViewController.m */; };
 		F9FC0BF320C76E7D00BCCF59 /* yongjin_money@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9FC0BF120C76E7B00BCCF59 /* yongjin_money@2x.png */; };
@@ -4290,6 +4292,8 @@
 		F9F91B6E200EF82A0036DD2A /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		F9F91B70200EF83A0036DD2A /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		F9F91B72200EF8EE0036DD2A /* happyLottery.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = happyLottery.entitlements; sourceTree = "<group>"; };
+		F9FA297E2191AF370035E77B /* leg_did_select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leg_did_select@2x.png"; sourceTree = "<group>"; };
+		F9FA297F2191AF370035E77B /* leg_did_select@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leg_did_select@3x.png"; sourceTree = "<group>"; };
 		F9FC0BEC20C60A9F00BCCF59 /* GroupFollowViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupFollowViewController.xib; sourceTree = "<group>"; };
 		F9FC0BED20C60A9F00BCCF59 /* GroupFollowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupFollowViewController.h; sourceTree = "<group>"; };
 		F9FC0BEE20C60AA000BCCF59 /* GroupFollowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupFollowViewController.m; sourceTree = "<group>"; };
@@ -7834,6 +7838,8 @@
 		F9F645A3218879C1003E459B /* LegImage */ = {
 			isa = PBXGroup;
 			children = (
+				F9FA297E2191AF370035E77B /* leg_did_select@2x.png */,
+				F9FA297F2191AF370035E77B /* leg_did_select@3x.png */,
 				F90EB5E8218D497F00E3CEC2 /* leg_notSelect@2x.png */,
 				F90EB5E9218D498000E3CEC2 /* leg_notSelect@3x.png */,
 				F90EB5EA218D498000E3CEC2 /* leg_SelectOne@2x.png */,
@@ -8054,6 +8060,7 @@
 				2D5171DC200C729A00C3CD7F /* icon_yingli_@2x.png in Resources */,
 				F9E53D4E20EE28D70072B8AF /* qiandao_mine@3x.png in Resources */,
 				2D628B2A1FECA9C40013D0E1 /* touzhuxuanzezhifuselect@3x.png in Resources */,
+				F9FA29802191AF390035E77B /* leg_did_select@2x.png in Resources */,
 				F94AA9C01FEB59DA0021B980 /* hint@2x.png in Resources */,
 				2D7B13F0204E88250035AE89 /* OpenLotteryCell.xib in Resources */,
 				2D4D608D20AD717900280033 /* activityshut@3x.png in Resources */,
@@ -8122,6 +8129,7 @@
 				F9E53D6820EE28D70072B8AF /* cash_mine@2x.png in Resources */,
 				2DA39EF02053900D00A03FD1 /* daletou_howto.html in Resources */,
 				2DA39EEE2053900D00A03FD1 /* daletou_intro.html in Resources */,
+				F9FA29812191AF390035E77B /* leg_did_select@3x.png in Resources */,
 				F94027E02018929700CF7A2B /* redpacketKong@3x.png in Resources */,
 				2D739C951FE8A4DE00264044 /* JCZQSelectAllPlayTypeVIew.xib in Resources */,
 				F965561A20C531DE0017066C /* pic_quanyuan@3x.png in Resources */,
