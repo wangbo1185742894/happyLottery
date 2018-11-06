@@ -21,7 +21,7 @@
 #import "LotteryPlayViewController.h"
 #import "DLTPlayViewController.h"
 #import "SSQPlayViewController.h"
-
+#import "FollowSendViewController.h"
 
 
 #define KPayTypeListCell @"PayTypeListCell"
@@ -400,9 +400,14 @@
             if ([baseVC isKindOfClass: [DLTPlayViewController class]]) {
                 [self.navigationController popToViewController:baseVC animated:YES];
                 return;
-            } if ([baseVC isKindOfClass: [SSQPlayViewController class]]) {
+            }
+            if ([baseVC isKindOfClass: [SSQPlayViewController class]]) {
                 [self.navigationController popToViewController:baseVC animated:YES];
                 return;
+            }
+            if ([baseVC isKindOfClass:[FollowSendViewController class]]) {
+                [self.navigationController popToViewController:baseVC animated:YES];
+                return ;
             }
             
         }

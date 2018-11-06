@@ -462,7 +462,7 @@
     if (sender.tag == 4) {
         self.transction.schemeType = SchemeTypeFaqiGenDan;
         if (self.transction.betCost < 10) {
-            [self showPromptText:@"发单金额不能小于10元" hideAfterDelay:1.9];
+            [self showPromptText:@"发单金额必须大于10元" hideAfterDelay:1.9];
             return;
         }
     }else{
