@@ -105,7 +105,8 @@
     if (self.schemeNo == nil) {
         [self.postboyMan recentPostboyAccount:@{@"cardCode":self.curUser.cardCode}];
     }else {
-        [self.postboyMan getPostboyInfoById:@{@"postboyId":self.postBoyId}];
+        
+        [self.postboyMan getMemberPostboyAccount:@{@"cardCode":self.curUser.cardCode,@"postboyId":self.postBoyId}];
     }
     ///
     
@@ -173,11 +174,13 @@
     }
 }
 
-
-
--(void )getPostboyInfoByIddelegate:(NSDictionary *)param isSuccess:(BOOL)success errorMsg:(NSString *)msg{
-     [self reloadLegInfo:param andSuccess:success errorMsg:msg];
+-(void )getMemberPostboyAccountdelegate:(NSDictionary *)param isSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    [self reloadLegInfo:param andSuccess:success errorMsg:msg];
 }
+
+//-(void )getPostboyInfoByIddelegate:(NSDictionary *)param isSuccess:(BOOL)success errorMsg:(NSString *)msg{
+//    
+//}
 
 
 /**
@@ -462,16 +465,14 @@
 }
 
 -(NSDictionary *)getTouzhuParams:(BOOL)isCoupon andSchemeNo:(NSString *)schemeNo{
-    double money;
     //实付金额 = 订单金额 - 优惠券金额
-    money = [self.labRealCost.text doubleValue] - [self.curSelectCoupon.deduction doubleValue];
-    
+    NSString *str = [NSString stringWithFormat:@"%.2f",self.subscribed - [self.curSelectCoupon.deduction doubleValue]];
     if (isCoupon) {
         return @{@"cardCode":self.curUser.cardCode,
                  @"schemeNo":schemeNo,
                  @"subCopies":@(1),
                  @"subscribed":@(self.subscribed),
-                 @"realSubscribed":@(money),
+                 @"realSubscribed":str,
                  @"isSponsor":@(true),
                  @"couponCode":self.curSelectCoupon.couponCode
                  };
@@ -480,7 +481,7 @@
                  @"schemeNo":schemeNo,
                  @"subCopies":@(1),
                  @"subscribed":@(self.subscribed),
-                 @"realSubscribed":@(money),
+                 @"realSubscribed":str,
                  @"isSponsor":@(true)
                  };
     }

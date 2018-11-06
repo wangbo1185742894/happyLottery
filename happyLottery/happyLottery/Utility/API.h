@@ -311,7 +311,7 @@
 #define APIGetPostboyAccountList     @"getPostboyAccountList" //获取快递小哥列表加账户信息
 #define APIGetMemberPostboyAccount   @"getMemberPostboyAccount" //获取用户对应某一个快递小哥余额
 #define APIMemberPostboyBalanceCount @"memberPostboyBalanceCount" //预存款处的总额
-#define APIRecentPostboyAccount      @"recentPostboyAccount"    //最近交易的小哥余额
+#define APIRecentPostboyAccount      @"maxPostboyAccount"    //最近交易的小哥余额
 #define APIListSubscribeDetailByPostboy  @"listSubscribeDetailByPostboy"  //分页查询快递小哥对应会员的认购明细
 #define APIListRechargeDetailByPostboy  @"listRechargeDetailByPostboy"//分页查询小哥对应会员充值明细
 #define APIListBonusDetailByPostboy     @"listBonusDetailByPostboy" //分页查询小哥对应会员的中奖明细（派奖）
