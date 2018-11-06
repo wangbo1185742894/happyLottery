@@ -177,10 +177,8 @@
     //    betOptionFunView.backgroundColor = RGBCOLOR(249, 249, 249);
     AppDelegate *myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     myDelegate.curNavVC = self.navigationController;
-//    self.title = [NSString stringWithFormat: @"%@投注", self.lottery.name];
     self.title = @"确认预约";
-    //     Do any additional setup after loading the view from its nib.
-    //    self.view.backgroundColor = RGBCOLOR(245, 245, 245);
+
     tableViewContent_.allowsSelection = NO;
     tableViewContent_.delegate  =self;
     tableViewContent_.dataSource = self;
