@@ -176,7 +176,6 @@
 }
 
 - (IBAction)actionGotoTouzhu:(id)sender {
-    //检查订单号是否在售
     PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
     payVC.schemeNo = schemeDetail.schemeNO;
     payVC.subscribed = [schemeDetail.betCost doubleValue];

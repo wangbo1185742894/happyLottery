@@ -162,16 +162,21 @@
     payVC.schemeNo = schemeDetail.schemeNO;
     payVC.subscribed = [schemeDetail.betCost doubleValue];
     payVC.postBoyId = schemeDetail.postboyId;
-   
+    payVC.lotteryName = schemeDetail.trLottery;
 //    SchemeCashPayment *schemeCashModel = [[SchemeCashPayment alloc]init];
 //    schemeCashModel.cardCode = self.curUser.cardCode;
 //    schemeCashModel.schemeNo =schemeDetail.schemeNO;
 //    schemeCashModel.subCopies = 1;
-    if ([schemeDetail.lottery isEqualToString:@"DLT"]) {
-        payVC.lotteryName = @"大乐透";
-    } else {
-        payVC.lotteryName = @"双色球";
-    }
+    
+//    if ([schemeDetail.lottery isEqualToString:@"DLT"]) {
+//
+//    } else if ([schemeDetail.lottery isEqualToString:@"SX115"]){
+//        payVC.lotteryName = @"双色球";
+//    } else if ([schemeDetail.lottery isEqualToString:@"SX115"]){
+//
+//    } else {
+//
+//    }
 //
 //    if ([schemeDetail.costType isEqualToString:@"CASH"]) {
 //        schemeCashModel.costType = CostTypeCASH;

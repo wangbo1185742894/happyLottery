@@ -105,7 +105,6 @@
     if (self.schemeNo == nil) {
         [self.postboyMan recentPostboyAccount:@{@"cardCode":self.curUser.cardCode}];
     }else {
-        
         [self.postboyMan getMemberPostboyAccount:@{@"cardCode":self.curUser.cardCode,@"postboyId":self.postBoyId}];
     }
     ///
@@ -177,10 +176,6 @@
 -(void )getMemberPostboyAccountdelegate:(NSDictionary *)param isSuccess:(BOOL)success errorMsg:(NSString *)msg{
     [self reloadLegInfo:param andSuccess:success errorMsg:msg];
 }
-
-//-(void )getPostboyInfoByIddelegate:(NSDictionary *)param isSuccess:(BOOL)success errorMsg:(NSString *)msg{
-//    
-//}
 
 
 /**
@@ -379,19 +374,18 @@
         [self rechargeSchemeByNo:self.schemeNo];
         return;
     }
-    SchemeCashPayment *schemeCashModel = [[SchemeCashPayment alloc]init];
-    schemeCashModel.cardCode = self.curUser.cardCode;
-    schemeCashModel.lotteryName = self.lotteryName;
-    schemeCashModel.schemeNo = self.schemeNo;
-    schemeCashModel.subCopies = 1;
-    schemeCashModel.costType = CostTypeCASH;
     [self hideLoadingView];
     if (self.schemetype != SchemeTypeGenDan) {
         self.schemetype = self.basetransction.schemeType;
     }
-    schemeCashModel.subscribed = self.basetransction.betCost;
-    schemeCashModel.realSubscribed = self.basetransction.betCost;
-    
+    SchemeCashPayment *schemeCashModel = [[SchemeCashPayment alloc]init];
+    schemeCashModel.cardCode = self.curUser.cardCode;
+    schemeCashModel.schemeNo = self.schemeNo;
+    schemeCashModel.subCopies = 1;
+    schemeCashModel.couponCode = self.curSelectCoupon.couponCode;
+    schemeCashModel.subscribed = self.subscribed;
+    NSString *str = [NSString stringWithFormat:@"%.2f",self.subscribed - [self.curSelectCoupon.deduction doubleValue]];
+    schemeCashModel.realSubscribed = [str doubleValue]; //实付金额
     LegRechargeOrderViewController *legRechargrVC = [[LegRechargeOrderViewController alloc]init];
     legRechargrVC.schemeNo = self.schemeNo;
     legRechargrVC.orderCost = self.labRealCost.text;
@@ -421,7 +415,6 @@
     }
     self.schemeNo = result;
     [self rechareSchemeWithSchemeNo];
-    //    payVC.cashPayMemt = schemeCashModel;
 }
 
 - (void)rechargeSchemeByNo:(NSString *)schemeNo{
