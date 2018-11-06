@@ -75,6 +75,9 @@
                     <constraint firstAttribute="trailing" secondItem="S72-h0-Pz6" secondAttribute="trailing" id="yqD-2d-vSR"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="orderInfoLab" destination="W4u-Cn-TnI" id="CWy-We-s4Y"/>
+            </connections>
             <point key="canvasLocation" x="132" y="157.42128935532236"/>
         </tableViewCell>
     </objects>

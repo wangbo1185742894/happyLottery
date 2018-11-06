@@ -26,6 +26,7 @@
 * surplusCopies,
 * lottery,
 * betContent,
+/** 自身方案编号 */
 * schemeNO,
 * trTicketStatus,
 * secretType,
@@ -40,6 +41,7 @@
 * version,
 * sysBaodiRefCopies,
 * sponsorCopies,
+/** 会员卡号 **/
 * cardCode,
 * printCount,
 * schedule,

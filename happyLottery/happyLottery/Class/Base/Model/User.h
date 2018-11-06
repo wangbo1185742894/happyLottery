@@ -74,7 +74,11 @@ typedef enum {
 
 @property(nonatomic,strong)NSString *totalBanlece;
 
-@property(nonatomic,strong)NSString *totalBanleceLeg;
+/** 可提现余额 */
+@property(nonatomic,strong)NSString *postboyBalance;
+
+/** 不可提现金额 */
+@property(nonatomic,strong)NSString *postboyNotCash;
 
 @property (nonatomic, assign) PayVerifyType payVerifyType;
 

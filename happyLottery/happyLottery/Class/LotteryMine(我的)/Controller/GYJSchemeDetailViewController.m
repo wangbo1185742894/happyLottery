@@ -177,38 +177,19 @@
 
 - (IBAction)actionGotoTouzhu:(id)sender {
     //检查订单号是否在售
-    
     PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
     payVC.schemeNo = schemeDetail.schemeNO;
     payVC.subscribed = [schemeDetail.betCost doubleValue];
     payVC.postBoyId = schemeDetail.postboyId;
-
-//    SchemeCashPayment *schemeCashModel = [[SchemeCashPayment alloc]init];
-//    schemeCashModel.cardCode = self.curUser.cardCode;
-//    schemeCashModel.schemeNo =schemeDetail.schemeNO;
-//    schemeCashModel.subCopies = 1;
-//    if ([schemeDetail.lottery isEqualToString:@"RJC"]){
-//        schemeCashModel.lotteryName = @"任选9场";
-//    }else if ([schemeDetail.lottery isEqualToString:@"SFC"]){
-//        schemeCashModel.lotteryName = @"胜负14场";
-//    }else if ([schemeDetail.lottery isEqualToString:@"JCGJ"]){
-//        schemeCashModel.lotteryName = @"冠军";
-//    }else if ([schemeDetail.lottery isEqualToString:@"JCGYJ"]){
-//        schemeCashModel.lotteryName = @"冠亚军";
-//    }
-//    if ([schemeDetail.costType isEqualToString:@"CASH"]) {
-//        schemeCashModel.costType = CostTypeCASH;
-//
-//        schemeCashModel.subscribed = [schemeDetail.betCost integerValue];
-//        schemeCashModel.realSubscribed = [schemeDetail.betCost integerValue];
-//    }else{
-//        schemeCashModel.costType = CostTypeSCORE;
-//
-//        schemeCashModel.subscribed = [schemeDetail.betCost integerValue] /100;
-//        schemeCashModel.realSubscribed = [schemeDetail.betCost integerValue]/100;
-//    }
-//
-//    payVC.cashPayMemt = schemeCashModel;
+    if ([schemeDetail.lottery isEqualToString:@"RJC"]){
+        payVC.lotteryName = @"任选9场";
+    }else if ([schemeDetail.lottery isEqualToString:@"SFC"]){
+        payVC.lotteryName = @"胜负14场";
+    }else if ([schemeDetail.lottery isEqualToString:@"JCGJ"]){
+        payVC.lotteryName = @"冠军";
+    }else if ([schemeDetail.lottery isEqualToString:@"JCGYJ"]){
+        payVC.lotteryName = @"冠亚军";
+    }
     [self.navigationController pushViewController:payVC animated:YES];
 }
 

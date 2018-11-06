@@ -1444,11 +1444,11 @@
     //    float balance = [strbalance floatValue];
     CGFloat balance =[[self.curUser totalBanlece] doubleValue];
     CGFloat needMoney = [self getTotal]*2.0*_zhushu;
-    if (balance < needMoney) {
-        [self showPromptText:[NSString stringWithFormat:@"账户余额:%.2f元,余额不足",balance] hideAfterDelay:2];
-        return;
-    }
-    NSString *msg = [NSString stringWithFormat:@"共追%lu期，共需%.1f元,您当前余额为%.1f元,是否确定追号？",(unsigned long)_issue,needMoney,balance];
+//    if (balance < needMoney) {
+//        [self showPromptText:[NSString stringWithFormat:@"账户余额:%.2f元,余额不足",balance] hideAfterDelay:2];
+//        return;
+//    }
+    NSString *msg = [NSString stringWithFormat:@"共追%lu期，共需%.1f元,是否确定追号？",(unsigned long)_issue,needMoney];
     
 //    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"追号确认"
 //                                                   message:msg

@@ -158,11 +158,11 @@
 //    schemeCashModel.cardCode = self.curUser.cardCode;
 //    schemeCashModel.schemeNo =schemeDetail.schemeNO;
 //    schemeCashModel.subCopies = 1;
-//    if ([schemeDetail.lottery isEqualToString:@"RJC"]){
-//        schemeCashModel.lotteryName = @"任选9场";
-//    }else if ([schemeDetail.lottery isEqualToString:@"SFC"]){
-//        schemeCashModel.lotteryName = @"胜负14场";
-//    }
+    if ([schemeDetail.lottery isEqualToString:@"RJC"]){
+        payVC.lotteryName = @"任选9场";
+    }else if ([schemeDetail.lottery isEqualToString:@"SFC"]){
+        payVC.lotteryName = @"胜负14场";
+    }
 //    if ([schemeDetail.costType isEqualToString:@"CASH"]) {
 //        schemeCashModel.costType = CostTypeCASH;
 //

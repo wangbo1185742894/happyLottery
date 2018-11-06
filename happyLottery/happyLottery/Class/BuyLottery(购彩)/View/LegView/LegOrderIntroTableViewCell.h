@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LegOrderIntroTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *orderInfoLab;
+
 @end
 
 NS_ASSUME_NONNULL_END

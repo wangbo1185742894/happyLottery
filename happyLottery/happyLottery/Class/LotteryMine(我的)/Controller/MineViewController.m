@@ -238,6 +238,7 @@
     [self.userImage setImage:[UIImage imageNamed:@"user_mine.png"]];
     self.loginBtn.enabled = YES;
     self.yueLeftCons.constant = - KscreenWidth/3;
+    tiXianBtn.hidden = YES;
     self.balanceLab.text = @"0";
     self.integralLab.text = @"0";
     self.redPacketLab.text =  @"0";
@@ -293,32 +294,12 @@
 }
 
 
--(void )memberPostboyBalanceCountdelegate:(NSDictionary *)param isSuccess:(BOOL)success errorMsg:(NSString *)msg{
-    if (success == NO) {
-        self.curUser.totalBanleceLeg = @"0";
-    }else{
-        NSString *totalBalance = param[@"totalBalance"];
-        if (totalBalance.length == 0) {
-            self.curUser.totalBanleceLeg = @"0";
-        }else{
-            self.curUser.totalBanleceLeg = [NSString stringWithFormat:@"%.2f",[totalBalance doubleValue]];
-        }
-    }
-    self.totalBalanceLeg.text = [NSString stringWithFormat:@"%@元",self.curUser.totalBanleceLeg];
-}
-
-//小哥总余额
--(void)getLegBanlance{
-    [self.postboyMan memberPostboyBalanceCount:@{@"cardCode":self.curUser.cardCode}];
-}
-
 -(void)loadUserInfo{
     [self reloadDateArray];
     [self.tableView reloadData];
     NSString *userName;
     if (self.curUser.cardCode.length >0) {
         [self getMyAgentInfo];
-        [self getLegBanlance];
     }
     if (self.curUser.nickname.length == 0) {
         userName = self.curUser.mobile;
@@ -361,9 +342,13 @@
     }
     if (total == 0) {
         self.yueLeftCons.constant = - KscreenWidth/3;
+        tiXianBtn.hidden = YES;
     } else {
         self.yueLeftCons.constant = 0;
+        tiXianBtn.hidden = NO;
     }
+    //小哥总余额
+    self.totalBalanceLeg.text = [NSString stringWithFormat:@"%.2f元",[self.curUser.postboyBalance doubleValue] + [self.curUser.postboyNotCash doubleValue]];
 }
 
 -(void)noticeBtnClick{

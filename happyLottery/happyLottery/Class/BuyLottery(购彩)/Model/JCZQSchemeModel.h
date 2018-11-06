@@ -40,41 +40,71 @@
 @end
 
 @interface JCZQSchemeItem : BaseModel
-
+/**　投注内容　*/
 @property(nonatomic,copy)NSString * betContent;
+/** 投注总金额 */
 @property(nonatomic,copy)NSString * betCost;
+/** 单倍注数 */
 @property(nonatomic,copy)NSString * units;
+/** 倍数 */
 @property(nonatomic,copy)NSString * multiple;
+/** 奖期期号 */
 @property(nonatomic,copy)NSString * issueNumber;
+
+/** 创建时间 */
 @property(nonatomic,copy)NSString * createTime;
+  /** 彩种 */
 @property(nonatomic,copy)NSString * lottery;
+/** 账户消费类型(积分或者现金) */
 @property(nonatomic,copy)NSString * costType;
+/** 开奖状态 (未开奖, 已开奖, 已派奖) */
 @property(nonatomic,copy)NSString * winningStatus;
+ /** 方案出票状态 (等待出票 ,委托中, 委托成功, 出票中, 出票成功) */
 @property(nonatomic,copy)NSString * ticketStatus;
+/** 自身方案编号 */
 @property(nonatomic,copy)NSString * schemeNO;
+/** 是否中奖 */
 @property(nonatomic,copy)NSString * won;
+/** 中奖详情 */
+@property(nonatomic,copy)NSString * wonDetail;
 @property(nonatomic,copy)NSString * lotteryIcon;
+/** 总票数 */
 @property(nonatomic,copy)NSString * ticketCount;
+ /** 出票数 */
 @property(nonatomic,copy)NSString * printCount;
+ /** 方案状态 */
 @property(nonatomic,copy)NSString * schemeStatus;
+/** 税后奖金 */
 @property(nonatomic,copy)NSString * bonus;
+/** 是否完成交易 */
 @property(nonatomic,copy)NSString * finished;
 @property(nonatomic,copy)NSString * deduction;
+/** 会员卡号 **/
 @property(nonatomic,copy)NSString * cardCode;
+/** 实际支付金额 */
 @property(nonatomic,copy)NSString * realSubAmounts;
+/** 是否使用优惠卷 */
 @property(nonatomic,copy)NSString * useCoupon;
 @property(nonatomic,copy)NSString * finishedTime;
+/** 认购时间 */
 @property(nonatomic,copy)NSString * subTime;
+ /** 销售期间 出票直接返回失败时执行退款的金额 */
 @property(nonatomic ,copy)NSString *ticketFailRef;
+/** 中奖号码 **/
 @property(nonatomic,copy)NSMutableArray <OpenResult *> * trOpenResult;
 @property(nonatomic,copy)NSString * trDltOpenResult;
+/** 竞彩冠军和竞彩冠亚军的开奖信息 */
 @property(nonatomic,copy)NSString * winMatchIndex;
-
+/** 虚拟赔率 */
 @property(nonatomic,copy)NSString *virtualSp;
+/** 投注来源类型*/
 @property(nonatomic,copy)NSString * schemeSource;
+/** 投注内容(原始)*/
 @property(nonatomic,copy)NSString * originalContent;
+/** 手机号 */
 @property(nonatomic,copy)NSString * mobile;
 @property(nonatomic,copy)NSString *drawCount;//开奖订单数
+/** 方案执行截期的时间 */
 @property(nonatomic,copy)NSString *sellEndTime;
 
 /******************** 跟单发单信息 *********************/
@@ -103,7 +133,7 @@
 /** 跟单列表*/
 @property(nonatomic,copy)NSArray <FollowListModel *>  *followListDtos;
 
-/** 方案类型 BUY_INITIATE  BUY_FOLLOW*/   
+/** 方案类型 (自购,合买, 追号, 推荐，　发起跟单，　跟单) */
 @property(nonatomic,copy)NSString * schemeType;
 
 /** 发单是否有红包 */
@@ -114,10 +144,13 @@
 
 /** 是否领取 */
 @property(nonatomic,copy)NSString *gainRedPacket;
-
+/** 发单人卡号 */
 @property(nonatomic,copy)NSString * initiateCardCode;
 @property(nonatomic,copy)NSString * trSchemeWinningStatus;
+/** 来源方案号 */
 @property(nonatomic,copy)NSString * sourceSchemeNo;
+/** 截期时间 */
+@property(nonatomic,copy)NSString * deadLine;
 @property(nonatomic,copy)NSString * trSchemeTicketStatus;
 @property(nonatomic,copy)NSString * DXF;
 @property(nonatomic,copy)NSString * hilo;

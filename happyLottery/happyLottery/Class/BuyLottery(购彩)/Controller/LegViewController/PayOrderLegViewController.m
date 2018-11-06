@@ -41,6 +41,7 @@
     ZLAlertView *itemAlert;
     __weak IBOutlet UILabel *labCanUseYouhuiquan;
     __weak IBOutlet UIButton *rechargeBtn;
+    __weak IBOutlet UILabel *lotteryNameLab;
 }
 
 @property(assign,nonatomic)BOOL isShowOba;
@@ -57,6 +58,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *sendBalanceLab;
 @property (nonatomic,strong)PostboyAccountModel *curModel;
 @property(nonatomic,strong)SchemeCashPayment *cashPayMemt;
+@property(nonatomic,strong)NSString *youHuiZhi;
 
 @end
 
@@ -84,7 +86,7 @@
         self.automaticallyAdjustsScrollViewInsets = NO; // 莫名其妙  contentOffset.y 成-64了
     }
     self.title = @"预约支付";
-    
+    lotteryNameLab.text = self.lotteryName;
     UITapGestureRecognizer *youHuiViewTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(actionToYouHuiQuan)];
     [self.youHuiQuanView addGestureRecognizer:youHuiViewTapGestureRecognizer];
     
@@ -110,8 +112,7 @@
     [self.memberMan getMemberByCardCode:@{@"cardCode":self.curUser.cardCode}];
     
     [self showLoadingText:@"正在提交订单"];
-    
-    [self.memberMan getAvailableCoupon:@{@"cardCode":self.curUser.cardCode,@"amount":[NSString stringWithFormat:@"%f",self.subscribed]}];
+
 }
 
 
@@ -152,9 +153,14 @@
 
 -(void )recentPostboyAccountdelegate:(NSDictionary *)param isSuccess:(BOOL)success errorMsg:(NSString *)msg{
     [self hideLoadingView];
+    [self reloadLegInfo:param andSuccess:success errorMsg:msg];
+}
+
+- (void)reloadLegInfo:(NSDictionary *)param andSuccess:(BOOL)success errorMsg:(NSString *)msg{
     if (success == NO) {
         [self upDateLegInfo:nil];
         self.curModel = nil;
+        [self showPromptText:msg hideAfterDelay:1.7];
         return;
     }
     if (param != nil) {
@@ -170,20 +176,7 @@
 
 
 -(void )getPostboyInfoByIddelegate:(NSDictionary *)param isSuccess:(BOOL)success errorMsg:(NSString *)msg{
-    [self hideLoadingView];
-    if (success == NO) {
-        [self upDateLegInfo:nil];
-        self.curModel = nil;
-        return;
-    }
-    if (param != nil) {
-        PostboyAccountModel *model = [[PostboyAccountModel alloc]initWith:param];
-        [self upDateLegInfo:model];
-        self.curModel = model;
-    } else {
-        [self upDateLegInfo:nil];
-        self.curModel = nil;
-    }
+     [self reloadLegInfo:param andSuccess:success errorMsg:msg];
 }
 
 
@@ -195,16 +188,16 @@
  @param msg 错误信息描述
  */
 -(void)gotAvailableCoupon:(BOOL)success andPayInfo:(NSArray *)payInfo errorMsg:(NSString *)msg{
+    [self hideLoadingView];
     if (success == NO || payInfo == nil ) {
         [self showPromptText:msg hideAfterDelay:1.7];
         labCanUseYouhuiquan.text = @"暂无可用优惠券";
-    
         return;
     }
     if (payInfo.count ==0) {
          labCanUseYouhuiquan.text = @"暂无可用优惠券";
     }else{
-         labCanUseYouhuiquan.text = [NSString stringWithFormat:@"%ld张可用优惠券",payInfo.count];
+         labCanUseYouhuiquan.text = [NSString stringWithFormat:@"%lu张可用优惠券",(unsigned long)payInfo.count];
     }
    
     for (NSDictionary *itemDic in payInfo) {
@@ -237,36 +230,57 @@
         labCanUseYouhuiquan.text = [NSString stringWithFormat:@"暂无可用优惠券"];
         self.labZheKou.text = [NSString stringWithFormat:@"-0.00 元"];
         self.labZheKou.textColor = SystemGray;
-        self.labRealCost.text = [NSString stringWithFormat:@"%.2f",self.subscribed - [self.curUser.sendBalance doubleValue]] ;
+        //彩金金额大于订单金额，彩金抵扣显示订单金额
+         [self MoneyLabSetNotWithYouHui];
     }else {
         if (self.curSelectCoupon != nil) {
             labCanUseYouhuiquan.text = [NSString stringWithFormat:@"￥%@元优惠券",self.curSelectCoupon.deduction];
             self.labZheKou.text = [NSString stringWithFormat:@"-%.2f 元",[self.curSelectCoupon.deduction doubleValue]];
             self.labZheKou.textColor = SystemRed;
-            self.labRealCost.text = [NSString stringWithFormat:@"%.2f",self.subscribed - [self.curSelectCoupon.deduction doubleValue] - [self.curUser.sendBalance doubleValue]] ;
+            [self MoneyLabSetWithYouHui];
         }else{
-            labCanUseYouhuiquan.text = [NSString stringWithFormat:@"%ld张可用优惠券",self.couponList.count];
+            labCanUseYouhuiquan.text = [NSString stringWithFormat:@"%lu张可用优惠券",(unsigned long)self.couponList.count];
             self.labZheKou.text = [NSString stringWithFormat:@"-0.00 元"];
             self.labZheKou.textColor = SystemGray;
-            self.labRealCost.text = [NSString stringWithFormat:@"%.2f",self.subscribed - [self.curUser.sendBalance doubleValue]] ;
+            [self MoneyLabSetNotWithYouHui];
         }
     }
 }
 
+- (void)MoneyLabSetNotWithYouHui{
+    if (self.subscribed <= [self.curUser.sendBalance doubleValue]) {
+        self.sendBalanceLab.text = [NSString stringWithFormat:@"%.2f",self.subscribed];
+    } else {
+        self.sendBalanceLab.text = [NSString stringWithFormat:@"%.2f",[self.curUser.sendBalance doubleValue]];
+    }
+    self.labRealCost.text = [NSString stringWithFormat:@"%.2f",self.subscribed - [self.sendBalanceLab.text doubleValue]];
+}
+
+- (void)MoneyLabSetWithYouHui{
+    //有优惠券，所需彩金  订单金额-优惠券
+    double banlanceLab = self.subscribed-[self.curSelectCoupon.deduction doubleValue];
+    if (banlanceLab <= [self.curUser.sendBalance doubleValue]) {
+        self.sendBalanceLab.text =  [NSString stringWithFormat:@"%.2f",banlanceLab];
+    } else {
+        self.sendBalanceLab.text =  [NSString stringWithFormat:@"%.2f",[self.curUser.sendBalance doubleValue]];
+    }
+    //实付金额 = 订单金额 - 优惠券金额 - 彩金金额
+    self.labRealCost.text = [NSString stringWithFormat:@"%.2f",self.subscribed - [self.curSelectCoupon.deduction doubleValue] - [self.sendBalanceLab.text doubleValue]];
+}
 
 /**
  根据当前卡号，从服务器请求用户信息
  */
 -(void)gotMemberByCardCode:(NSDictionary *)userInfo errorMsg:(NSString *)msg{
-    [self hideLoadingView];
+    [self.memberMan getAvailableCoupon:@{@"cardCode":self.curUser.cardCode,@"amount":
+                                             @(self.subscribed)
+                                         }];
     User *user = [[User alloc]initWith:userInfo];
     self.curUser.balance = user.balance;
     self.curUser.sendBalance = user.sendBalance;
     self.curUser.score = user.score;
-    self.sendBalanceLab.text = [NSString stringWithFormat:@"-%.2f 元",[self.curUser.sendBalance doubleValue]];
-    self.labOrderCost.text = [NSString stringWithFormat:@"%.2f 元",self.subscribed];
-    self.labRealCost.text = [NSString stringWithFormat:@"%.2f",self.subscribed - [self.curSelectCoupon.deduction doubleValue] - [self.curUser.sendBalance doubleValue]] ;
-    
+    self.labOrderCost.text = [NSString stringWithFormat:@"%.2f",self.subscribed];
+    [self MoneyLabSetWithYouHui];
 }
 
 
@@ -335,7 +349,8 @@
             }
            
         } else if(self.schemetype == SchemeTypeGenDan){
-            [self.lotteryMan followScheme:self.diction];
+            NSDictionary *paraDic= @{@"schemeNo":self.diction[@"schemeNo"], @"cardCode":self.diction[@"cardCode"],@"multiple":self.diction[@"multiple"],@"postboyId":self.curModel._id};
+            [self.lotteryMan followScheme:paraDic];
         } else {
             [self.lotteryMan betLotteryScheme:self.basetransction andPostboyId:self.curModel._id];
         }
@@ -447,14 +462,16 @@
 }
 
 -(NSDictionary *)getTouzhuParams:(BOOL)isCoupon andSchemeNo:(NSString *)schemeNo{
-//    NSNumber *real = @([[NSString stringWithFormat:@"%.2f",self.cashPayMemt.realSubscribed] doubleValue]);  [self.curUser.sendBalance doubleValue]
+    double money;
+    //实付金额 = 订单金额 - 优惠券金额
+    money = [self.labRealCost.text doubleValue] - [self.curSelectCoupon.deduction doubleValue];
     
     if (isCoupon) {
         return @{@"cardCode":self.curUser.cardCode,
                  @"schemeNo":schemeNo,
                  @"subCopies":@(1),
                  @"subscribed":@(self.subscribed),
-                 @"realSubscribed":@([self.curUser.sendBalance doubleValue] + [self.labRealCost.text doubleValue]),
+                 @"realSubscribed":@(money),
                  @"isSponsor":@(true),
                  @"couponCode":self.curSelectCoupon.couponCode
                  };
@@ -463,7 +480,7 @@
                  @"schemeNo":schemeNo,
                  @"subCopies":@(1),
                  @"subscribed":@(self.subscribed),
-                 @"realSubscribed":@([self.curUser.sendBalance doubleValue] + [self.labRealCost.text doubleValue]),
+                 @"realSubscribed":@(money),
                  @"isSponsor":@(true)
                  };
     }

@@ -34,6 +34,7 @@
 #import "WBInputPopView.h"
 #import "AESUtility.h"
 #import "InitiateFollowRedPModel.h"
+#import "LegOrderDetailViewController.h"
 
 #define iOS8_0 [[[UIDevice currentDevice] systemVersion] doubleValue] >= 8.0
 
@@ -92,7 +93,9 @@
 
   
 - (IBAction)actionLookOrder:(id)sender {
-   
+//    LegOrderDetailViewController *detail = [[LegOrderDetailViewController alloc]init];
+//    detail.schemeNo = self.schemeNO;
+//    [self.navigationController pushViewController:detail animated:YES];
     if (self.schemetype == SchemeTypeGenDan) {
         MyPostSchemeViewController *myOrderListVC = [[MyPostSchemeViewController alloc]init];
         myOrderListVC.isFaDan = NO;

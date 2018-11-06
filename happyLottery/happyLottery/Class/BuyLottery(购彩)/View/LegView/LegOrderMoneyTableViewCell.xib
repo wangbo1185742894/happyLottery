@@ -69,6 +69,10 @@
                     <constraint firstItem="5Jc-08-yZA" firstAttribute="bottom" secondItem="yjy-7B-fTY" secondAttribute="bottom" id="yV8-xv-crT"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="orderCost" destination="B8x-Gb-nvY" id="wXI-lX-RRB"/>
+                <outlet property="orderStatue" destination="sid-wk-l26" id="qtf-0L-qQP"/>
+            </connections>
             <point key="canvasLocation" x="140" y="80.50974512743629"/>
         </tableViewCell>
     </objects>
