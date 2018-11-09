@@ -72,6 +72,7 @@
     [personTableView registerNib:[UINib nibWithNibName:KSelectLegTableViewCell bundle:nil] forCellReuseIdentifier:KSelectLegTableViewCell];
     [personTableView registerNib:[UINib nibWithNibName:KCunLegTableViewCell bundle:nil] forCellReuseIdentifier:KCunLegTableViewCell];
     [personTableView registerNib:[UINib nibWithNibName:KZhuanLegTableViewCell bundle:nil] forCellReuseIdentifier:KZhuanLegTableViewCell];
+    personTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 - (void)loadNewDate {
@@ -95,17 +96,15 @@
         NSMutableArray<PostboyAccountModel *> * notUseArray = [NSMutableArray arrayWithCapacity:0];
         for (NSDictionary *dic in array) {
             PostboyAccountModel *postModel = [[PostboyAccountModel alloc]initWith:dic];
-            if ([postModel.enabled boolValue]) {
-                if ([postModel._id isEqualToString:self.curModel._id]) {
-                    postModel.isSelect = YES;
-                } else {
-                    postModel.isSelect = NO;
-                }
-                if (postModel.totalBalance.length != 0) {
-                    [_personArray addObject:postModel];
-                } else {
-                    [notUseArray addObject:postModel];
-                }
+            if ([postModel._id isEqualToString:self.curModel._id]) {
+                postModel.isSelect = YES;
+            } else {
+                postModel.isSelect = NO;
+            }
+            if (postModel.totalBalance.length != 0) {
+                [_personArray addObject:postModel];
+            } else {
+                [notUseArray addObject:postModel];
             }
         }
         if (notUseArray.count >= 2) {
@@ -167,7 +166,7 @@
     CunLegTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KCunLegTableViewCell];
     [cell loadLegDate:[self.personArray objectAtIndex:indexPath.row]];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    personTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
     return cell;
 }
 

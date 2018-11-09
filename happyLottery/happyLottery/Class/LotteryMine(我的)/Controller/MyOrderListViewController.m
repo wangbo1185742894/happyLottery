@@ -17,6 +17,7 @@
 #import "MJRefresh.h"
 #import "NoticeCenterViewController.h"
 #import "DeleteOrderView.h"
+#import "LegOrderDetailViewController.h"
 #define KSchemListCell @"SchemListCell"
 #define KdeleteOrderIntroduce  @"deleteOrderIntroduce"
 
@@ -190,37 +191,41 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if ([dataArray[indexPath.row].lottery isEqualToString:@"RJC"] || [dataArray[indexPath.row].lottery isEqualToString:@"SFC"]) {
-        CTZQSchemeDetailViewController*schemeVC = [[CTZQSchemeDetailViewController alloc]init];
-        schemeVC.schemeNO = dataArray[indexPath.row].schemeNO;
-        NSString *imageName = [dataArray[indexPath.row] getSchemeImgState];
-        schemeVC.imageName = imageName;
-        [self.navigationController pushViewController:schemeVC animated:YES];
-    }else if([dataArray[indexPath.row].lottery isEqualToString:@"DLT"]||[dataArray[indexPath.row].lottery isEqualToString:@"SSQ"] || [dataArray[indexPath.row].lottery isEqualToString:@"SX115"] || [dataArray[indexPath.row].lottery isEqualToString:@"SD115"]){
-        DLTSchemeDetailViewController *schemeVC = [[DLTSchemeDetailViewController alloc]init];
-        schemeVC.schemeNO = dataArray[indexPath.row].schemeNO;
-        NSString *imageName = [dataArray[indexPath.row] getSchemeImgState];
-        schemeVC.imageName = imageName;
-        [self.navigationController pushViewController:schemeVC animated:YES];
-    }else if ([dataArray[indexPath.row].lottery isEqualToString:@"JCGJ"] || [dataArray[indexPath.row].lottery isEqualToString:@"JCGYJ"]){
-        GYJSchemeDetailViewController*schemeVC = [[GYJSchemeDetailViewController alloc]init];
-        schemeVC.schemeNO = dataArray[indexPath.row].schemeNO;
-        NSString *imageName = [dataArray[indexPath.row] getSchemeImgState];
-        schemeVC.imageName = imageName;
-        [self.navigationController pushViewController:schemeVC animated:YES];
-    }else if ([dataArray[indexPath.row].lottery isEqualToString:@"JCLQ"]){
-        JCLQSchemeDetailViewController*schemeVC = [[JCLQSchemeDetailViewController alloc]init];
-        schemeVC.schemeNO = dataArray[indexPath.row].schemeNO;
-        NSString *imageName = [dataArray[indexPath.row] getSchemeImgState];
-        schemeVC.imageName = imageName;
-        [self.navigationController pushViewController:schemeVC animated:YES];
-    }else{
-        SchemeDetailViewController *schemeVC = [[SchemeDetailViewController alloc]init];
-        schemeVC.schemeNO = dataArray[indexPath.row].schemeNO;
-        NSString *imageName = [dataArray[indexPath.row] getSchemeImgState];
-        schemeVC.imageName = imageName;
-        [self.navigationController pushViewController:schemeVC animated:YES];
-    }
+    
+    LegOrderDetailViewController *detail = [[LegOrderDetailViewController alloc]init];
+    detail.schemeNo = dataArray[indexPath.row].schemeNO;
+    [self.navigationController pushViewController:detail animated:YES];
+//    if ([dataArray[indexPath.row].lottery isEqualToString:@"RJC"] || [dataArray[indexPath.row].lottery isEqualToString:@"SFC"]) {
+//        CTZQSchemeDetailViewController*schemeVC = [[CTZQSchemeDetailViewController alloc]init];
+//        schemeVC.schemeNO = dataArray[indexPath.row].schemeNO;
+//        NSString *imageName = [dataArray[indexPath.row] getSchemeImgState];
+//        schemeVC.imageName = imageName;
+//        [self.navigationController pushViewController:schemeVC animated:YES];
+//    }else if([dataArray[indexPath.row].lottery isEqualToString:@"DLT"]||[dataArray[indexPath.row].lottery isEqualToString:@"SSQ"] || [dataArray[indexPath.row].lottery isEqualToString:@"SX115"] || [dataArray[indexPath.row].lottery isEqualToString:@"SD115"]){
+//        DLTSchemeDetailViewController *schemeVC = [[DLTSchemeDetailViewController alloc]init];
+//        schemeVC.schemeNO = dataArray[indexPath.row].schemeNO;
+//        NSString *imageName = [dataArray[indexPath.row] getSchemeImgState];
+//        schemeVC.imageName = imageName;
+//        [self.navigationController pushViewController:schemeVC animated:YES];
+//    }else if ([dataArray[indexPath.row].lottery isEqualToString:@"JCGJ"] || [dataArray[indexPath.row].lottery isEqualToString:@"JCGYJ"]){
+//        GYJSchemeDetailViewController*schemeVC = [[GYJSchemeDetailViewController alloc]init];
+//        schemeVC.schemeNO = dataArray[indexPath.row].schemeNO;
+//        NSString *imageName = [dataArray[indexPath.row] getSchemeImgState];
+//        schemeVC.imageName = imageName;
+//        [self.navigationController pushViewController:schemeVC animated:YES];
+//    }else if ([dataArray[indexPath.row].lottery isEqualToString:@"JCLQ"]){
+//        JCLQSchemeDetailViewController*schemeVC = [[JCLQSchemeDetailViewController alloc]init];
+//        schemeVC.schemeNO = dataArray[indexPath.row].schemeNO;
+//        NSString *imageName = [dataArray[indexPath.row] getSchemeImgState];
+//        schemeVC.imageName = imageName;
+//        [self.navigationController pushViewController:schemeVC animated:YES];
+//    }else{
+//        SchemeDetailViewController *schemeVC = [[SchemeDetailViewController alloc]init];
+//        schemeVC.schemeNO = dataArray[indexPath.row].schemeNO;
+//        NSString *imageName = [dataArray[indexPath.row] getSchemeImgState];
+//        schemeVC.imageName = imageName;
+//        [self.navigationController pushViewController:schemeVC animated:YES];
+//    }
    
 }
 

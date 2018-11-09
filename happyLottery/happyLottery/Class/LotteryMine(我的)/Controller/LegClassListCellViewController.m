@@ -38,7 +38,7 @@
 
 
 -(Class)getCurModelClassLeg{
-    NSDictionary<NSString *,Class>  *classDicLeg = @{APIListSubscribeDetailByPostboy:[SubscribeDetail class],APIGetChasePrepayOrderListByPostboy:[ChasePrepayModel class],APIListRechargeDetailByPostboy:[RechargeDetail class],APIListBonusDetailByPostboy:[BonusDetail class],APIListWithdrawDetailByPostboy:[WithdrawDetail class],APIListCommissionDetailByPostboy:[PostboyBlotterDetailModel class]};
+    NSDictionary<NSString *,Class>  *classDicLeg = @{APIListSubscribeDetailByPostboy:[SubscribeDetail class],APIGetChasePrepayOrderListByPostboy:[ChasePrepayModel class],APIListRechargeDetailByPostboy:[RechargeDetail class],APIListBonusDetailByPostboy:[BonusDetail class],APIListWithdrawDetailByPostboy:[WithdrawDetail class],APIListCommissionDetailByPostboy:[PostboyBlotterDetailModel class],APIListTransferByPostboy:[MemberPostboyTransferModel class]};
     return classDicLeg[self.strApiLeg];
 }
 

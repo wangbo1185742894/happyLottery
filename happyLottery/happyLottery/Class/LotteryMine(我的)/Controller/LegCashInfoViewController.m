@@ -49,8 +49,8 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     NSArray *titleArray;
     NSArray *apiArray;
-    titleArray = @[@"购彩",@"追号",@"充值",@"派奖",@"提现",@"佣金"];
-    apiArray = @[APIListSubscribeDetailByPostboy,APIGetChasePrepayOrderListByPostboy,APIListRechargeDetailByPostboy,APIListBonusDetailByPostboy,APIListWithdrawDetailByPostboy,APIListCommissionDetailByPostboy];
+    titleArray = @[@"购彩",@"追号",@"充值",@"派奖",@"提现",@"佣金",@"余额转入"];
+    apiArray = @[APIListSubscribeDetailByPostboy,APIGetChasePrepayOrderListByPostboy,APIListRechargeDetailByPostboy,APIListBonusDetailByPostboy,APIListWithdrawDetailByPostboy,APIListCommissionDetailByPostboy,APIListTransferByPostboy];
 
     [_topMenu createMenuView:titleArray size:CGSizeMake(70, 40)];
     

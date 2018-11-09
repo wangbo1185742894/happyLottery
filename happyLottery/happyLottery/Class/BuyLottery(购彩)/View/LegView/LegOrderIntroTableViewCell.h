@@ -13,6 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface LegOrderIntroTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *orderInfoLab;
+@property (weak, nonatomic) IBOutlet UILabel *orderTimeLab;
+
+- (void)reloadDate:(NSDictionary *)dic;
 
 @end
 

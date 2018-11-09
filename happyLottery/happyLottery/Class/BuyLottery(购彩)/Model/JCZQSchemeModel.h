@@ -9,7 +9,18 @@
 #import "BaseModel.h"
 #import "FollowListModel.h"
 
-
+///**
+///**      等待开奖     */
+//WAIT_LOTTERY("等待开奖"),
+///**     已开奖     */
+//RUN_LOTTERY("已开奖"),
+///**     已派奖     */
+//SEND_PRIZE("已派奖"),
+///** 大奖方案未派奖 */
+//BIG_PRIZE("大奖方案未派奖"),
+///** 大奖方案已取票*/
+//BIG_GAIN_TICKET("大奖方案已取票");
+//**/
 //_trOpenResult    __NSCFString *    @"[{\"RQSPF\":\"1\",\"homeScore\":1,\"guestScore\":0,\"BF\":\"--\",\"BQC\":\"33\",\"handicap\":-1,\"SPF\":\"3\",\"matchKey\":102989,\"guest\":\"普埃布拉\",\"JQS\":\"1\",\"home\":\"莫雷利亚\",\"status\":1},{\"\":\"1\",\"homeScore\":1,\"guestScore\":0,\"BF\":\"--\",\"BQC\":\"33\",\"handicap\":-1,\"SPF\":\"3\",\"matchKey\":102988,\"guest\":\"内卡萨\",\"JQS\":\"1\",\"home\":\"蒂华纳\",\"status\":1}]"    0x0000000101af79c0
 
 @interface JcBetContent :NSObject
@@ -50,6 +61,15 @@
 @property(nonatomic,copy)NSString * multiple;
 /** 奖期期号 */
 @property(nonatomic,copy)NSString * issueNumber;
+
+/** 开始出票时间  */
+@property(nonatomic,copy)NSString * ticketTime;
+
+/** 完成出票时间 */
+@property(nonatomic,copy)NSString *commitTime;
+
+/**　派奖时间 */
+@property(nonatomic,copy)NSString *prizeTime;
 
 /** 创建时间 */
 @property(nonatomic,copy)NSString * createTime;
@@ -151,6 +171,9 @@
 @property(nonatomic,copy)NSString * sourceSchemeNo;
 /** 截期时间 */
 @property(nonatomic,copy)NSString * deadLine;
+/** 开奖时间 */
+@property(nonatomic,copy)NSString * drawTime;
+
 @property(nonatomic,copy)NSString * trSchemeTicketStatus;
 @property(nonatomic,copy)NSString * DXF;
 @property(nonatomic,copy)NSString * hilo;

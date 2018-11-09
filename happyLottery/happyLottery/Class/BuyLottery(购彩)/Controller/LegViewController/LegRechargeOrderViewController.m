@@ -23,7 +23,6 @@
 #import "SSQPlayViewController.h"
 #import "FollowSendViewController.h"
 
-
 #define KPayTypeListCell @"PayTypeListCell"
 
 @interface LegRechargeOrderViewController ()<MemberManagerDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,UITextFieldDelegate,UIWebViewDelegate,ChongZhiRulePopViewDelegate>
@@ -106,7 +105,7 @@
 }
 
 -(void)rechargeSmsIsSuccess:(BOOL)success andPayInfo:(NSDictionary *)payInfo errorMsg:(NSString *)msg{
-    [self hideLoadingView];
+    
     if (success) {
         if ([itemModel.channel isEqualToString:@"SDALI"]) {
             [self.payWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:payInfo[@"qrCode"]]]];
@@ -129,6 +128,7 @@
             }
             [self sendReqAppId:app_id prepayId:prepay_id orginalId:original_id];
         }else if([itemModel.channel isEqualToString:@"SDWX"]){
+            [self hideLoadingView];
             orderNO = payInfo;
             ZhiFubaoWeixinErcodeController * zhifubaoVC = [[ZhiFubaoWeixinErcodeController alloc]init];
             zhifubaoVC.orderNo = orderNO;
@@ -250,20 +250,22 @@
 
 
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
-    NSString *strUrl = [NSString stringWithFormat:@"%@",request.URL];
-    if ([strUrl hasPrefix:@"alipays"]) {
-        if ([[UIApplication sharedApplication] canOpenURL: [NSURL URLWithString:@"alipay://"]] == YES) {
-            [[UIApplication sharedApplication] openURL:request.URL];
-        }else{
-            [self showPromptText:@"您未安装支付宝客服端，请先安装！" hideAfterDelay:1.7];
-        }
-    }
     
-    if ([strUrl hasPrefix:@"weixin"]) {
-        if ([[UIApplication sharedApplication] canOpenURL: [NSURL URLWithString:@"weixin://"]] == YES) {
-            [[UIApplication sharedApplication] openURL:request.URL];
-        }
-    }
+    [[UIApplication sharedApplication] openURL:request.URL];
+//    NSString *strUrl = [NSString stringWithFormat:@"%@",request.URL];
+//    if ([strUrl hasPrefix:@"alipays"]) {
+//        if ([[UIApplication sharedApplication] canOpenURL: [NSURL URLWithString:@"alipay://"]] == YES) {
+//            [[UIApplication sharedApplication] openURL:request.URL];
+//        }else{
+//            [self showPromptText:@"您未安装支付宝客服端，请先安装！" hideAfterDelay:1.7];
+//        }
+//    }
+//
+//    if ([strUrl hasPrefix:@"weixin"]) {
+//        if ([[UIApplication sharedApplication] canOpenURL: [NSURL URLWithString:@"weixin://"]] == YES) {
+//            [[UIApplication sharedApplication] openURL:request.URL];
+//        }
+//    }
     return YES;
 }
 

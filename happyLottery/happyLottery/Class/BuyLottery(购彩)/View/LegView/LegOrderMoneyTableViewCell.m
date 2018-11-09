@@ -57,38 +57,25 @@
  1.待开奖
  @param orderStatus 订单状态
  */
-
-- (void)loadNewDate:(NSString *)orderStatus{
-    self.orderCost.text = @"订单总额33元";
-    if ([orderStatus isEqualToString:@"已中奖,全部出票成功，派奖中"]||[orderStatus isEqualToString:@"已中奖,部分出票成功，派奖中"]) {
-        self.orderStatue.text = OrderStatueZhong(@"22");
+- (void)loadNewDate:(JCZQSchemeItem *)detail andStatus:(NSString *)orderStatus{
+    self.orderCost.text = [NSString stringWithFormat:@"订单总额%@元",detail.betCost];
+    if ([orderStatus isEqualToString:@"派奖中"]) {
+        self.orderStatue.text = OrderStatueZhong(detail.bonus);
     }
-    if ([orderStatus isEqualToString:@"已中奖,全部出票成功，已派奖"]||[orderStatus isEqualToString:@"已中奖,部分出票成功，已派奖"]) {
-        self.orderStatue.text = OrderStatuePai(@"22");
+    if ([orderStatus isEqualToString:@"已派奖"]) {
+        self.orderStatue.text = OrderStatuePai(detail.bonus);
     }
-    if ([orderStatus isEqualToString:@"未中奖，全部出票成功"] || [orderStatus isEqualToString:@"未中奖，部分出票成功"]) {
-       self.orderStatue.text = OrderStatueLose;
+    if ([orderStatus isEqualToString:@"未中奖"] ) {
+        self.orderStatue.text = OrderStatueLose;
     }
     if ([orderStatus isEqualToString:@"投注单失败，支付成功，超时未出票"] || [orderStatus isEqualToString:@"投注单失败，支付成功，限号原因未出票"]|| [orderStatus isEqualToString:@"投注单失败，支付成功，未知原因未出票"]) {
         self.orderStatue.text = OrderStatueTui(@"22");
     }
-    if ([orderStatus isEqualToString:@"待开奖"]) {
-        self.orderStatue.text = OrderStatueWait(@"22");
+    if ([orderStatus isEqualToString:@"待开奖"] || [orderStatus isEqualToString:@"待支付"]) {
+        self.orderStatue.text = OrderStatueWait(detail.legName);
     }
-    if ([orderStatus isEqualToString:@"已中奖,追号停追，派奖中"]||[orderStatus isEqualToString:@"已中奖,追号不停追，派奖中"]) {
-        self.orderStatue.text = OrderStatueZhong(@"");
-    }
-    if ([orderStatus isEqualToString:@"已中奖,追号停追，已派奖"]||[orderStatus isEqualToString:@"已中奖,追号不停追，已派奖"]) {
-      self.orderStatue.text = OrderStatuePai(@"22");
-    }
-    if ([orderStatus isEqualToString:@"未中奖"]) {
-        self.orderStatue.text =OrderStatueLose;
-    }
-    if ([orderStatus isEqualToString:@"待开奖"]) {
-      self.orderStatue.text = OrderStatueWait(@"22");
-    }
-    
 }
+
 
 
 @end

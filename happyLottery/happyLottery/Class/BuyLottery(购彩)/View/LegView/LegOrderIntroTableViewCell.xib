@@ -77,6 +77,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="orderInfoLab" destination="W4u-Cn-TnI" id="CWy-We-s4Y"/>
+                <outlet property="orderTimeLab" destination="kNU-T5-9wI" id="5N4-XJ-Qbg"/>
             </connections>
             <point key="canvasLocation" x="132" y="157.42128935532236"/>
         </tableViewCell>

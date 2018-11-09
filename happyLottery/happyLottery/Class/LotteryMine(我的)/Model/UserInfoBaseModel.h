@@ -305,3 +305,37 @@
 @property(nonatomic,strong)NSString * createTime;
 
 @end
+
+/**
+ 小哥对应会员余额转入
+ */
+@interface MemberPostboyTransferModel : UserInfoBaseModel
+
+ /** 订单号 */
+@property(nonatomic,strong)NSString *orderNo;
+
+/** 会员卡号 账号*/
+@property(nonatomic,strong)NSString *cardCode;
+
+/** 小哥ID*/
+@property(nonatomic,strong)NSString *postboyId;
+
+/** 转账的账户类型*/
+@property(nonatomic,strong)NSString *subType;
+
+@property(nonatomic,strong)NSString *trSubType;
+
+/** 转账金额 */
+@property(nonatomic,strong)NSString *cost;
+
+/** 备注 */
+@property(nonatomic,strong)NSString *remark;
+
+/** 小哥名称*/
+@property(nonatomic,strong)NSString *postboyName;
+
+/** 订单生成时间 */
+@property(nonatomic,strong)NSString *createTime;
+
+
+@end

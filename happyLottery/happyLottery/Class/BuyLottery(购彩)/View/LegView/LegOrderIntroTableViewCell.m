@@ -110,4 +110,9 @@
     }
 }
 
+- (void)reloadDate:(NSDictionary *)dic {
+    self.orderTimeLab.text = dic[@"timeLab"];
+    self.orderInfoLab.text = dic[@"infoLab"];
+}
+
 @end

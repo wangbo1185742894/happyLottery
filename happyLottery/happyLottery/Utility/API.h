@@ -319,4 +319,7 @@
 #define APIGetChasePrepayOrderListByPostboy  @"getChasePrepayOrderListByPostboy" // 获得小哥对应会员追号预付款 流水
 #define APIListCommissionDetailByPostboy   @"listCommissionDetailByPostboy" //分页查询小哥对应会员发单佣金明细
 
+#define APIListTransferByPostboy           @"listTransferByPostboy" //分页查询小哥对应会员余额转入
+
+
 #endif /* API_h */

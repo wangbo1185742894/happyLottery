@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JCZQSchemeModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface LegOrderMoneyTableViewCell : UITableViewCell
+
+- (void)loadNewDate:(JCZQSchemeItem *)detail andStatus:(NSString *)orderStatus;
 
 @end
 

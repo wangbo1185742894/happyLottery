@@ -1020,6 +1020,10 @@
 		F90058E81FF61619009C8E1C /* noticeempty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F90058E41FF61619009C8E1C /* noticeempty@2x.png */; };
 		F90058EC1FF61AEC009C8E1C /* NoticeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F90058EA1FF61AEC009C8E1C /* NoticeDetailViewController.m */; };
 		F90058ED1FF61AEC009C8E1C /* NoticeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F90058EB1FF61AEC009C8E1C /* NoticeDetailViewController.xib */; };
+		F9044CE7219317C90061ADF4 /* LegOrderStatueWaitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9044CE5219317C90061ADF4 /* LegOrderStatueWaitTableViewCell.m */; };
+		F9044CE8219317C90061ADF4 /* LegOrderStatueWaitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9044CE6219317C90061ADF4 /* LegOrderStatueWaitTableViewCell.xib */; };
+		F9044CEB219320630061ADF4 /* leg_orangeDa@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9044CE9219320630061ADF4 /* leg_orangeDa@3x.png */; };
+		F9044CEC219320630061ADF4 /* leg_orangeDa@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9044CEA219320630061ADF4 /* leg_orangeDa@2x.png */; };
 		F9085B051FFB20D500DC0531 /* LoadData.m in Sources */ = {isa = PBXBuildFile; fileRef = F9085B031FFB20D500DC0531 /* LoadData.m */; };
 		F90B1E27216C59D300A32D38 /* sdx115@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F90B1E25216C59D200A32D38 /* sdx115@2x.png */; };
 		F90B1E28216C59D300A32D38 /* sdx115@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F90B1E26216C59D200A32D38 /* sdx115@3x.png */; };
@@ -3314,6 +3318,11 @@
 		F90058E91FF61AEC009C8E1C /* NoticeDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeDetailViewController.h; sourceTree = "<group>"; };
 		F90058EA1FF61AEC009C8E1C /* NoticeDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeDetailViewController.m; sourceTree = "<group>"; };
 		F90058EB1FF61AEC009C8E1C /* NoticeDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoticeDetailViewController.xib; sourceTree = "<group>"; };
+		F9044CE4219317C90061ADF4 /* LegOrderStatueWaitTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LegOrderStatueWaitTableViewCell.h; sourceTree = "<group>"; };
+		F9044CE5219317C90061ADF4 /* LegOrderStatueWaitTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LegOrderStatueWaitTableViewCell.m; sourceTree = "<group>"; };
+		F9044CE6219317C90061ADF4 /* LegOrderStatueWaitTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LegOrderStatueWaitTableViewCell.xib; sourceTree = "<group>"; };
+		F9044CE9219320630061ADF4 /* leg_orangeDa@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leg_orangeDa@3x.png"; sourceTree = "<group>"; };
+		F9044CEA219320630061ADF4 /* leg_orangeDa@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leg_orangeDa@2x.png"; sourceTree = "<group>"; };
 		F9085B031FFB20D500DC0531 /* LoadData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadData.m; sourceTree = "<group>"; };
 		F9085B041FFB20D500DC0531 /* LoadData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadData.h; sourceTree = "<group>"; };
 		F90B1E25216C59D200A32D38 /* sdx115@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sdx115@2x.png"; sourceTree = "<group>"; };
@@ -7745,6 +7754,9 @@
 				F9BC1A73218AF46100BEE7E4 /* LegOrderIntroTableViewCell.h */,
 				F9BC1A74218AF46100BEE7E4 /* LegOrderIntroTableViewCell.m */,
 				F9BC1A75218AF46100BEE7E4 /* LegOrderIntroTableViewCell.xib */,
+				F9044CE4219317C90061ADF4 /* LegOrderStatueWaitTableViewCell.h */,
+				F9044CE5219317C90061ADF4 /* LegOrderStatueWaitTableViewCell.m */,
+				F9044CE6219317C90061ADF4 /* LegOrderStatueWaitTableViewCell.xib */,
 			);
 			path = LegView;
 			sourceTree = "<group>";
@@ -7838,6 +7850,8 @@
 		F9F645A3218879C1003E459B /* LegImage */ = {
 			isa = PBXGroup;
 			children = (
+				F9044CEA219320630061ADF4 /* leg_orangeDa@2x.png */,
+				F9044CE9219320630061ADF4 /* leg_orangeDa@3x.png */,
 				F9FA297E2191AF370035E77B /* leg_did_select@2x.png */,
 				F9FA297F2191AF370035E77B /* leg_did_select@3x.png */,
 				F90EB5E8218D497F00E3CEC2 /* leg_notSelect@2x.png */,
@@ -8368,6 +8382,7 @@
 				F958F18020BC04FF00F30690 /* icon_daletoushouye@2x.png in Resources */,
 				F91565F31FFCBDAE00E254CE /* Moments@3x.png in Resources */,
 				F94A106C2022B715006C3695 /* checksuccess@3x.png in Resources */,
+				F9044CEC219320630061ADF4 /* leg_orangeDa@2x.png in Resources */,
 				2D4D608E20AD717900280033 /* activityshut@2x.png in Resources */,
 				F999277E2003597E00023F8F /* addcrease@2x.png in Resources */,
 				F9BC6E5E20C2DD3D0037998B /* xuhao3@3x.png in Resources */,
@@ -8734,6 +8749,7 @@
 				F9B5D9962060A9DE00C9F6DC /* flag417@3x.png in Resources */,
 				2D0E23C120196B590098DA40 /* losing_lottery@3x.png in Resources */,
 				F93EEEE62021D78D001C635A /* unlock_cannot@2x.png in Resources */,
+				F9044CEB219320630061ADF4 /* leg_orangeDa@3x.png in Resources */,
 				F93204F11FECF98B00E22A27 /* pass6.png in Resources */,
 				2DA0C2D220B659280031AC47 /* guanyajun@2x.png in Resources */,
 				2DE892A92022B5D1008926A6 /* schemeticket@3x.png in Resources */,
@@ -8743,6 +8759,7 @@
 				2D7B8DA720C541BB000EAFB1 /* icon_share@2x.png in Resources */,
 				2D4B1EB31FDFCDAF0034B708 /* arrow_up@2x.png in Resources */,
 				2D0EEA952013280500B0769C /* button_trophy@3x.png in Resources */,
+				F9044CE8219317C90061ADF4 /* LegOrderStatueWaitTableViewCell.xib in Resources */,
 				2D06003F1FFDDD51009E7568 /* schemedetailbutton@3x.png in Resources */,
 				2D7B13A4204E871C0035AE89 /* CTZQOpenLotteryViewController.xib in Resources */,
 				F9CDBEC02022F5C100A1BE71 /* attention@3x.png in Resources */,
@@ -9675,6 +9692,7 @@
 				2D3065DC20EC66910084DB97 /* WBMenuAllItem.m in Sources */,
 				2D7B12D7204D3B550035AE89 /* LotteryExtrendViewController.m in Sources */,
 				2D7B140D204E8D1F0035AE89 /* CTZQLotteryProfileSelectView.m in Sources */,
+				F9044CE7219317C90061ADF4 /* LegOrderStatueWaitTableViewCell.m in Sources */,
 				F9F262B01FE8F4AE00C2E60F /* CGGeometry+RSKImageCropper.m in Sources */,
 				2D739BEF1FE2555E00264044 /* RegisterViewController.m in Sources */,
 				F9705E47207A0DE800E25E4E /* HHTZAllPlayType.m in Sources */,
