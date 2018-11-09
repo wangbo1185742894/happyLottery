@@ -649,30 +649,30 @@
     }
 }
 
--(void)navigationBackToLastPage{
-    if (self.h5Init == YES) {
-        [self.navigationController popToRootViewControllerAnimated:YES];
-        return;
-    }
-        for (BaseViewController *baseVC in self.navigationController.viewControllers) {
-            if ([baseVC isKindOfClass:[MyPostSchemeViewController class]]) {
-                [self.navigationController popToViewController:baseVC animated:YES];
-                return;
-            }
-            if ([baseVC isKindOfClass:[PersonCenterViewController class]]) {
-                [self.navigationController popToViewController:baseVC animated:YES];
-                return;
-            }
-        }
-    MyPostSchemeViewController *revise = [[MyPostSchemeViewController alloc]init];
-    revise.hidesBottomBarWhenPushed = YES;
-    if ([self.schemeType isEqualToString:@"BUY_INITIATE"]) {
-        revise.isFaDan = YES;
-    } else {
-        revise.isFaDan = NO;
-    }
-    [self.navigationController pushViewController:revise animated:YES];
-}
+//-(void)navigationBackToLastPage{
+//    if (self.h5Init == YES) {
+//        [self.navigationController popToRootViewControllerAnimated:YES];
+//        return;
+//    }
+//        for (BaseViewController *baseVC in self.navigationController.viewControllers) {
+//            if ([baseVC isKindOfClass:[MyPostSchemeViewController class]]) {
+//                [self.navigationController popToViewController:baseVC animated:YES];
+//                return;
+//            }
+//            if ([baseVC isKindOfClass:[PersonCenterViewController class]]) {
+//                [self.navigationController popToViewController:baseVC animated:YES];
+//                return;
+//            }
+//        }
+//    MyPostSchemeViewController *revise = [[MyPostSchemeViewController alloc]init];
+//    revise.hidesBottomBarWhenPushed = YES;
+//    if ([self.schemeType isEqualToString:@"BUY_INITIATE"]) {
+//        revise.isFaDan = YES;
+//    } else {
+//        revise.isFaDan = NO;
+//    }
+//    [self.navigationController pushViewController:revise animated:YES];
+//}
 
 - (void) gotisAttent:(NSString *)diction  errorMsg:(NSString *)msg{
     isAttend = [diction boolValue];

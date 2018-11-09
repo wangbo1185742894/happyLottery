@@ -28,6 +28,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.layer.masksToBounds = YES;
+    self.layer.cornerRadius = 8;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -36,42 +38,50 @@
     // Configure the view for the selected state
 }
 
-/**
- 非追号状态：
- 1.已中奖,全部出票成功，派奖中
- 2.已中奖,部分出票成功，派奖中
- 3.已中奖,全部出票成功，已派奖
- 4.已中奖,部分出票成功，已派奖
- 5.未中奖，全部出票成功
- 6,未中奖，部分出票成功
- 7，投注单失败，支付成功，超时未出票
- 8，投注单失败，支付成功，限号原因未出票
- 9，投注单失败，支付成功，未知原因未出票
- 10，待开奖
- 追号状态：
- 1.已中奖,追号停追，派奖中
- 1.已中奖,追号不停追，派奖中
- 1.已中奖,追号停追，已派奖
- 1.已中奖,追号不停追，已派奖
- 1.未中奖
- 1.待开奖
- @param orderStatus 订单状态
- */
+- (IBAction)actionToOrderDetail:(id)sender {
+    [self.delegate showOrderDetail];
+}
+
+
+- (void)setFrame:(CGRect)frame{
+    frame.origin.x += 6;
+    frame.size.width -= 12;
+    [super setFrame:frame];
+}
+
+- (void)loadZhuiHaoNewDate:(OrderProfile *)detail andStatus:(NSString *)orderStatus andName:(NSString *)name{
+    self.orderCost.text = [NSString stringWithFormat:@"订单总额%@元",detail.sumSub];
+    if ([orderStatus isEqualToString:@"派奖中"]) {
+        self.orderStatue.text = OrderStatueZhong(detail.sumDraw);
+    }else if ([orderStatus isEqualToString:@"已派奖"]) {
+        self.orderStatue.text = OrderStatuePai(detail.sumDraw);
+    }else if ([orderStatus isEqualToString:@"未中奖"] ) {
+        self.orderStatue.text = OrderStatueLose;
+    }else if ([orderStatus isEqualToString:@"待开奖"]) {
+        self.orderStatue.text = @"等待开奖";
+    } else if([orderStatus isEqualToString:@"已退款"]){
+        self.orderStatue.text = OrderStatueTui(detail.sumSub);
+    } else {
+        self.orderStatue.text = OrderStatueWait(name);
+    }
+}
+
 - (void)loadNewDate:(JCZQSchemeItem *)detail andStatus:(NSString *)orderStatus{
     self.orderCost.text = [NSString stringWithFormat:@"订单总额%@元",detail.betCost];
     if ([orderStatus isEqualToString:@"派奖中"]) {
         self.orderStatue.text = OrderStatueZhong(detail.bonus);
-    }
-    if ([orderStatus isEqualToString:@"已派奖"]) {
+    } else if ([orderStatus isEqualToString:@"已派奖"]) {
         self.orderStatue.text = OrderStatuePai(detail.bonus);
-    }
-    if ([orderStatus isEqualToString:@"未中奖"] ) {
+    } else if ([orderStatus isEqualToString:@"未中奖"] ){
         self.orderStatue.text = OrderStatueLose;
-    }
-    if ([orderStatus isEqualToString:@"投注单失败，支付成功，超时未出票"] || [orderStatus isEqualToString:@"投注单失败，支付成功，限号原因未出票"]|| [orderStatus isEqualToString:@"投注单失败，支付成功，未知原因未出票"]) {
-        self.orderStatue.text = OrderStatueTui(@"22");
-    }
-    if ([orderStatus isEqualToString:@"待开奖"] || [orderStatus isEqualToString:@"待支付"]) {
+
+    }else if ([orderStatus isEqualToString:@"出票失败"] || [orderStatus isEqualToString:@"已退款"]){
+         self.orderStatue.text = OrderStatueTui(detail.ticketFailRef);
+    }else if ([orderStatus isEqualToString:@"待开奖"]){
+        self.orderStatue.text = @"待开奖";
+    }else if ([orderStatus isEqualToString:@"待支付"]){
+        self.orderStatue.text = OrderStatueWait(detail.legName);
+    }else {
         self.orderStatue.text = OrderStatueWait(detail.legName);
     }
 }

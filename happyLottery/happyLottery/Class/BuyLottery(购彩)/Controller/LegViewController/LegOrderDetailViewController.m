@@ -13,6 +13,15 @@
 #import "LegOrderStatueWaitTableViewCell.h"
 #import "LegDetailHeaderView.h"
 #import "JCZQSchemeModel.h"
+#import "DLTChaseSchemeDetail.h"
+#import "PostboyAccountModel.h"
+#import "ZHDetailViewController.h"
+#import "FASSchemeDetailViewController.h"
+#import "CTZQSchemeDetailViewController.h"
+#import "DLTSchemeDetailViewController.h"
+#import "GYJSchemeDetailViewController.h"
+#import "SchemeDetailViewController.h"
+#import "JCLQSchemeDetailViewController.h"
 
 #define KLegOrderStatusTableViewCell    @"LegOrderStatusTableViewCell"
 #define KLegOrderMoneyTableViewCell   @"LegOrderMoneyTableViewCell"
@@ -33,7 +42,7 @@
 
 #define OrderXianHaoChuPiaoShiBai(Money)   [NSString stringWithFormat:@"限号导致订单失败，平台将在10分钟内返还%@元给您",Money];
 
-#define OrderShiBai(Money)   [NSString stringWithFormat:@"订单失败，平台将在10分钟内返还%@元给您",Money];
+#define OrderShiBai(Money)   [NSString stringWithFormat:@"出票失败，平台将在10分钟内返还%@元给您",Money];
 
 #define DingDanWin(Name) [NSString stringWithFormat:@"订单已中奖！%@将在2小时内兑奖",Name];
 
@@ -53,17 +62,20 @@
 
 #define OrderZhuiTingFanJiang(Name,Money) [NSString stringWithFormat:@"追号已结束，%@已将奖金%@元返还至您在该账户的存款中，请查收",Name,Money];
 
-@interface LegOrderDetailViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate>
+@interface LegOrderDetailViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,PostboyManagerDelegate,OrderDetailDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *detailTableView;
 @property (nonatomic , strong) NSMutableArray<NSDictionary *> *infoArray;
 @property (nonatomic , strong) NSString *stateStr;
+@property (nonatomic , strong) NSMutableArray<OrderProfile *> *dateArray;
+@property (nonatomic, strong) NSString *zhuiHaoPostBoyNam;
 
 @end
 
 @implementation LegOrderDetailViewController{
     LegDetailHeaderView *headerView;
     JCZQSchemeItem *schemeDetail;
+    DLTChaseSchemeDetail *zhuiHaoDetail; //追号详情
 }
 
 - (void)viewDidLoad {
@@ -71,8 +83,15 @@
     self.title = @"查看订单";
     [self setTableView];
     self.lotteryMan.delegate = self;
-    [self loadNewDate];
+    self.postboyMan.delegate = self;
+    if (self.schemeNo != nil) {
+         [self loadNewDate];
+    } else{
+        [self loadZhuiHaoDate];
+    }
     self.infoArray = [NSMutableArray arrayWithCapacity:0];
+    self.dateArray = [NSMutableArray arrayWithCapacity:0];
+    
     headerView = [[LegDetailHeaderView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, 50)];
     // Do any additional setup after loading the view from its nib.
 }
@@ -86,6 +105,91 @@
     [self.detailTableView registerNib:[UINib nibWithNibName:KLegOrderStatueWaitTableViewCell bundle:nil] forCellReuseIdentifier:KLegOrderStatueWaitTableViewCell];
     self.detailTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
+}
+
+- (void)showOrderDetail{
+    if (self.schemeNo == 0) {
+        ZHDetailViewController *zhdetailViewCtr = [[ZHDetailViewController alloc]initWithNibName:@"ZHDetailViewController" bundle:nil];
+        
+//        zhdetailViewCtr.delegate = self;
+        zhdetailViewCtr.order = self.orderPro;
+        [self.navigationController pushViewController:zhdetailViewCtr animated:YES];
+    }else {
+        if (self.schemetype == SchemeTypeGenDan) {
+          FASSchemeDetailViewController *detailCV = [[FASSchemeDetailViewController alloc]init];
+          detailCV.schemeNo = self.schemeNo;
+          detailCV.schemeType = @"BUY_FOLLOW";
+          [self.navigationController pushViewController:detailCV animated:YES];
+        }else if ( self.schemetype == SchemeTypeFaqiGenDan){
+          FASSchemeDetailViewController *detailCV = [[FASSchemeDetailViewController alloc]init];
+          detailCV.schemeNo = self.schemeNo;
+          detailCV.schemeType = @"BUY_INITIATE";
+        [self.navigationController pushViewController:detailCV animated:YES];
+            }else{
+                if ([self.lotteryName isEqualToString:@"胜负14场"] || [self.lotteryName isEqualToString:@"任选9场"]) {
+                    CTZQSchemeDetailViewController *schemeVC = [[CTZQSchemeDetailViewController alloc]init];
+                    schemeVC.schemeNO = self.schemeNo;
+                    [self.navigationController pushViewController:schemeVC animated:YES];
+                }else if([self.lotteryName isEqualToString:@"大乐透"]||[self.lotteryName isEqualToString:@"双色球"] || [self.lotteryName isEqualToString:@"陕西11选5"] || [self.lotteryName isEqualToString:@"山东11选5"]){
+                    DLTSchemeDetailViewController *schemeVC = [[DLTSchemeDetailViewController alloc]init];
+                    schemeVC.schemeNO = self.schemeNo;
+                    [self.navigationController pushViewController:schemeVC animated:YES];
+                }else if ([self.lotteryName isEqualToString:@"冠军"] || [self.lotteryName isEqualToString:@"冠亚军"]){
+                    GYJSchemeDetailViewController *schemeVC = [[GYJSchemeDetailViewController alloc]init];
+                    schemeVC.schemeNO = self.schemeNo;
+                    [self.navigationController pushViewController:schemeVC animated:YES];
+                }else if ([self.lotteryName isEqualToString:@"竞彩篮球"]){
+                    JCLQSchemeDetailViewController *schemeVC = [[JCLQSchemeDetailViewController alloc]init];
+                    schemeVC.schemeNO = self.schemeNo;
+                    [self.navigationController pushViewController:schemeVC animated:YES];
+                }else{
+                    SchemeDetailViewController *schemeVC = [[SchemeDetailViewController alloc]init];
+                    schemeVC.schemeNO = self.schemeNo;
+                    [self.navigationController pushViewController:schemeVC animated:YES];
+                }
+        
+            }
+    }
+    
+}
+
+- (void)loadZhuiHaoDate {
+    [self showLoadingText:@"正在加载"];
+    if (_orderPro.postboyId.length == 0) {
+        [self.lotteryMan getChaseDetailForApp:@{@"chaseSchemeNo":_orderPro.chaseSchemeNo}];
+    } else {
+        [self.postboyMan getPostboyInfoById:@{@"postboyId":_orderPro.postboyId}];
+    }
+    
+}
+
+
+-(void )getPostboyInfoByIddelegate:(NSDictionary *)param isSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    if (param == nil) {
+        [self showPromptText:msg hideAfterDelay:1.7];
+        return;
+    }
+    PostboyModel * postBoy= [[PostboyModel alloc]initWith:param];
+    self.zhuiHaoPostBoyNam = postBoy.postboyName;
+    //追号订单详情
+    [self.lotteryMan getChaseDetailForApp:@{@"chaseSchemeNo":_orderPro.chaseSchemeNo}];
+}
+
+
+-(void)gotChaseDetailForApp:(NSDictionary *)info errorMsg:(NSString *)msg{
+    [self hideLoadingView];
+    if (info == nil) {
+        [self showPromptText:msg hideAfterDelay:1.7];
+        return;
+    }
+    [self.infoArray removeAllObjects];
+    zhuiHaoDetail = [[DLTChaseSchemeDetail alloc]initWith:info];
+    for (NSDictionary *itemDic in info[@"tempList"][@"rows"]) {
+        OrderProfile *profile = [[OrderProfile alloc]initWith:itemDic];
+        [self.dateArray addObject:profile];
+    }
+    [self reloadZhuiHaoInfo];
+    [self.detailTableView reloadData];
 }
 
 - (void)loadNewDate {
@@ -124,28 +228,163 @@
     [self.infoArray insertObject:dic atIndex:0];
 }
 
+
+- (void)reloadZhuiHaoInfo{
+    
+    NSString *legName;
+    NSDictionary *dic;
+    dic = @{@"timeLab":self.orderPro.createTime,@"infoLab":OrderTijiao};
+    [self.infoArray insertObject:dic atIndex:0];
+    
+    legName = OrderYiJie(self.zhuiHaoPostBoyNam);
+    dic = @{@"timeLab":self.orderPro.createTime,@"infoLab":legName};
+    [self.infoArray insertObject:dic atIndex:0];
+    
+    legName = OrderYiZhiFu(self.zhuiHaoPostBoyNam);
+    dic = @{@"timeLab":self.orderPro.createTime,@"infoLab":legName};
+    [self.infoArray insertObject:dic atIndex:0];
+    self.stateStr = @"已支付";
+    [self refreshStateZhuiHao];
+}
+
+- (void)refreshStateZhuiHao{
+    NSString *legName;
+    NSDictionary *dic;
+    for (OrderProfile *profile in self.dateArray) {
+        if ([profile.trOrderStatus isEqualToString:@"出票成功"]) {
+            self.stateStr = @"出票成功";
+            
+            if (self.orderPro.ticketTime.length != 0) {
+                legName = OrderZhuiHaoQingKuang(self.zhuiHaoPostBoyNam,@"1",self.orderPro.totalCatch);
+                dic = @{@"timeLab":self.orderPro.ticketTime,@"infoLab":legName};
+                [self.infoArray insertObject:dic atIndex:0];
+            }
+            break;
+        }
+    }
+    
+    if ([self.orderPro.chaseStatus isEqualToString:@"追号结束"]) {  //追号结束
+        BOOL chupiaoSuccess = NO;
+        for (OrderProfile *profile in self.dateArray) {
+            if ([profile.trOrderStatus isEqualToString:@"出票成功"]) {
+                chupiaoSuccess = YES;
+            }
+            break;
+        }
+        if (!chupiaoSuccess) {
+            self.stateStr = @"已退款";
+            legName = [NSString stringWithFormat:@"出票失败，已将%@元返回到小哥账户中，请注意查看",self.orderPro.sumSub];
+            dic = @{@"timeLab":self.orderPro.lastModifyTime,@"infoLab":legName};
+            [self.infoArray insertObject:dic atIndex:0];
+            return;
+        }
+        if ([self.orderPro.winStatus isEqualToString:@"NOT_LOTTERY"]) {//未中奖
+            self.stateStr = @"未中奖";
+            if (self.orderPro.lastModifyTime.length!= 0) {
+                legName = OrderZhuiHaoJieShu;
+                dic = @{@"timeLab":self.orderPro.lastModifyTime,@"infoLab":legName};
+                [self.infoArray insertObject:dic atIndex:0];
+            }
+        }else { //已中奖
+            for (OrderProfile *profile in self.dateArray) {
+                if ([profile.winStatus isEqualToString:@"LOTTERY"]) {
+                    self.stateStr = @"已中奖";
+                    if ([self.orderPro.chaseStatus isEqualToString:@"CATCHSTOP"]) { //已停追
+                        if (self.orderPro.ticketTime.length != 0) {
+                            legName = OrderZhuiTingZhi(profile.drawTime,self.zhuiHaoPostBoyNam);
+                            dic = @{@"timeLab":self.orderPro.ticketTime,@"infoLab":legName};
+                            [self.infoArray insertObject:dic atIndex:0];
+                        }
+                        break;
+                    } else { //不停追
+                        if (self.orderPro.ticketTime.length != 0) {
+                            legName = OrderZhuiHaoJiXu(profile.drawTime,self.zhuiHaoPostBoyNam);
+                            dic = @{@"timeLab":self.orderPro.ticketTime,@"infoLab":legName};
+                            [self.infoArray insertObject:dic atIndex:0];
+                        }
+                       
+                    }
+                }
+            }
+            if (self.orderPro.prizeTime.length !=0) {  //已派奖
+                self.stateStr = @"已派奖";
+                if (self.orderPro.ticketTime.length != 0) {
+                    legName = OrderZhuiTingFanJiang(self.zhuiHaoPostBoyNam,self.orderPro.sumDraw);
+                    dic = @{@"timeLab":self.orderPro.ticketTime,@"infoLab":legName};
+                    [self.infoArray insertObject:dic atIndex:0];
+                }
+               
+            }
+            
+        }
+        
+    } else {
+        for (OrderProfile *profile in self.dateArray) {
+            if ([profile.winStatus isEqualToString:@"LOTTERY"]) {
+                self.stateStr = @"已中奖";
+                if ([self.orderPro.chaseStatus isEqualToString:@"CATCHSTOP"]) { //已停追
+                    if (self.orderPro.ticketTime.length != 0) {
+                        legName = OrderZhuiTingZhi(profile.drawTime,self.zhuiHaoPostBoyNam);
+                        dic = @{@"timeLab":self.orderPro.ticketTime,@"infoLab":legName};
+                        [self.infoArray insertObject:dic atIndex:0];
+                    }
+                    
+                    break;
+                } else { //不停追
+                    if (self.orderPro.ticketTime.length != 0) {
+                        legName = OrderZhuiHaoJiXu(profile.drawTime,self.zhuiHaoPostBoyNam);
+                        dic = @{@"timeLab":self.orderPro.ticketTime,@"infoLab":legName};
+                        [self.infoArray insertObject:dic atIndex:0];
+                    }
+                   
+                }
+            }
+        }
+    }
+}
+
 - (void)refreshState {
     NSString *legName;
     NSDictionary *dic;
     if ([schemeDetail.ticketStatus isEqualToString:@"SUC_TICKET"]) { //出票成功
-        self.stateStr = @"已出票";
-        legName = OrderYiDaoChuPiao(schemeDetail.legName);
-        dic = @{@"timeLab":schemeDetail.commitTime,@"infoLab":legName};
-        [self.infoArray insertObject:dic atIndex:0];
+        
+        if (schemeDetail.printCount == schemeDetail.ticketCount) { //全部出票
+            self.stateStr = @"已出票";
+            if (schemeDetail.commitTime.length != 0) {
+                legName = OrderYiDaoChuPiao(schemeDetail.legName);
+                dic = @{@"timeLab":schemeDetail.commitTime,@"infoLab":legName};
+                [self.infoArray insertObject:dic atIndex:0];
+            }
+         
+        } else {//部分出票
+            self.stateStr = @"部分出票";
+            if (schemeDetail.commitTime.length != 0) {
+                legName = OrderYiDaoChuPiaoBuFen(schemeDetail.legName,schemeDetail.ticketFailRef);
+                dic = @{@"timeLab":schemeDetail.commitTime,@"infoLab":legName};
+                [self.infoArray insertObject:dic atIndex:0];
+            }
+  
+        }
         if ([schemeDetail.winningStatus isEqualToString:@"WAIT_LOTTERY"]) {//待开奖
             self.stateStr = @"待开奖";
         } else {
             if ([schemeDetail.won boolValue]) { //已中奖
-                legName = DingDanWin(schemeDetail.legName);
-                dic = @{@"timeLab":@"schemeDetail.drawTime",@"infoLab":legName};
-                [self.infoArray insertObject:dic atIndex:0];
+                if (schemeDetail.drawTime.length != 0) {
+                    legName = DingDanWin(schemeDetail.legName);
+                    dic = @{@"timeLab":schemeDetail.drawTime,@"infoLab":legName};
+                    [self.infoArray insertObject:dic atIndex:0];
+                }
+            
                 if([schemeDetail.winningStatus isEqualToString:@"BIG_GAIN_TICKET"]){  //大奖方案已取票
                     
                 }else if([schemeDetail.winningStatus isEqualToString:@"SEND_PRIZE"])  {//已派奖
-                    self.stateStr = @"已派奖";
-                    legName = OrderFanJiang(schemeDetail.legName,schemeDetail.bonus);
-                    dic = @{@"timeLab":@"schemeDetail.prizeTime",@"infoLab":legName};
-                    [self.infoArray insertObject:dic atIndex:0];
+                    if (schemeDetail.prizeTime.length != 0) {
+                        self.stateStr = @"已派奖";
+                        legName = OrderFanJiang(schemeDetail.legName,schemeDetail.bonus);
+                        dic = @{@"timeLab":schemeDetail.prizeTime,@"infoLab":legName};
+                        [self.infoArray insertObject:dic atIndex:0];
+                    }
+              
                 }else if([schemeDetail.winningStatus isEqualToString:@"BIG_PRIZE"]){ //大奖方案未派奖
     
                 }else { //未派奖
@@ -153,16 +392,35 @@
                 }
             } else {  //未中奖
                 self.stateStr = @"未中奖";
-                legName = OrderWeiWin;
-                dic = @{@"timeLab":@"schemeDetail.drawTime",@"infoLab":legName};
-                [self.infoArray insertObject:dic atIndex:0];
+                if (schemeDetail.drawTime.length != 0) {
+                    legName = OrderWeiWin;
+                    dic = @{@"timeLab":schemeDetail.drawTime,@"infoLab":legName};
+                    [self.infoArray insertObject:dic atIndex:0];
+                }
             }
         }
        
-    } else if ([schemeDetail.ticketStatus isEqualToString:@"FAIL_TICKET"]){//出票失败
-        
+    } else if ([schemeDetail.schemeStatus isEqualToString:@"REPEAL"]|| [schemeDetail.ticketStatus isEqualToString:@"TICKET_FAILED"]){//出票失败
+        self.stateStr = @"出票失败";
+        if (schemeDetail.sellEndTime.length != 0) {
+            legName = OrderShiBai(schemeDetail.ticketFailRef);
+            dic = @{@"timeLab":schemeDetail.sellEndTime,@"infoLab":legName};
+            [self.infoArray insertObject:dic atIndex:0];
+        }
+     
+        if ([schemeDetail.schemeStatus isEqualToString:@"REPEAL"]) { //退款
+            self.stateStr = @"已退款";
+            if (schemeDetail.sellEndTime.length != 0) {
+                legName = DingDanFanHuan(schemeDetail.ticketFailRef);
+                dic = @{@"timeLab":schemeDetail.sellEndTime,@"infoLab":legName};
+                [self.infoArray insertObject:dic atIndex:0];
+            }
+          
+        }
     }
 }
+
+
 
 - (void)reloadInfo{
     
@@ -179,17 +437,30 @@
     dic = @{@"timeLab":schemeDetail.ticketTime,@"infoLab":legName};
     [self.infoArray insertObject:dic atIndex:0];
     self.stateStr = @"已支付";
-    [self refreshState];
+    if (self.schemeNo != nil) {
+        [self refreshState];
+    }
+    else {
+        [self refreshStateZhuiHao];
+    }
+}
+
+- (void)reloadDateRefresh{
+    if (self.schemeNo) {
+        [self loadNewDate];
+    } else {
+        [self loadZhuiHaoDate];
+    }
 }
 
 #pragma mark  tableview delegate
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     if (section == 2) {
-        UIView *footer =  [[UIView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, 40)];
+        UIView *footer =  [[UIView alloc]initWithFrame:CGRectMake(6, 0, KscreenWidth-12, 40)];
         footer.backgroundColor = [UIColor whiteColor];
         UIButton *but = [UIButton buttonWithType:UIButtonTypeCustom];
-        [but addTarget:self action:@selector(loadNewDate) forControlEvents:UIControlEventTouchUpInside];
+        [but addTarget:self action:@selector(reloadDateRefresh) forControlEvents:UIControlEventTouchUpInside];
         but.frame = CGRectMake((KscreenWidth-70)/2, 5, 90, 30);
         but.titleLabel.font = [UIFont systemFontOfSize:13];
         [but setTitle:@"刷新订单状态" forState:0];
@@ -256,17 +527,33 @@
         }
         LegOrderStatusTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KLegOrderStatusTableViewCell];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell loadNewDate:self.stateStr]; 
+        if (self.stateStr) {
+            [cell loadNewDate:self.stateStr];
+        }
+        
         return cell;
     }
     if (indexPath.section == 1) {
         LegOrderMoneyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KLegOrderMoneyTableViewCell];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell loadNewDate:schemeDetail andStatus:self.stateStr];
+        cell.delegate = self;
+        if (self.stateStr) {
+            if (self.schemeNo != nil) {
+                [cell loadNewDate:schemeDetail andStatus:self.stateStr];
+            }
+            else {
+                [cell loadZhuiHaoNewDate:self.orderPro andStatus:self.stateStr andName:self.zhuiHaoPostBoyNam];
+            }
+        }
         return cell;
     }
     LegOrderIntroTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KLegOrderIntroTableViewCell];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    if (indexPath.row == self.infoArray.count - 1) {
+        cell.labTiao.hidden = YES;
+    }else {
+        cell.labTiao.hidden = NO;
+    }
     [cell reloadDate:self.infoArray[indexPath.row]];
     
     

@@ -88,8 +88,6 @@
     for (NSLayoutConstraint *sepHeight in sepHeightArr) {
         sepHeight.constant = SEPHEIGHT;
     }
-    
-    
     _allLotter = [lotteryMan getAllLottery];
     self.view.backgroundColor = [UIColor whiteColor];
     [self initLottyBetObj:nil];

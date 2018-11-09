@@ -22,6 +22,7 @@
 @property(nonatomic,copy)NSString * sumSub;
 @property(nonatomic,copy)NSString * sumDraw;
 @property(nonatomic,copy)NSString *leShanCode;
+@property (nonatomic , strong) NSString *postboyId;  //小哥id
 @property (nonatomic , strong) NSString * chaseSchemeNo;        // 追加
 @property (nonatomic , strong) NSString * cardCode;         //
 @property (nonatomic , strong) NSString * lotteryCode;      // 奖期
@@ -119,6 +120,20 @@
 @property (nonatomic , strong) NSString * openResult;//开奖号码
 @property (nonatomic , strong) NSString * remark;//未支付原因
 @property (nonatomic , strong) NSString * ticketRemark; // 当remark为空时候显示这个
+
+
+/** 派奖时间  */
+@property (nonatomic , strong) NSString * prizeTime;
+
+/**  开奖时间  */
+@property (nonatomic , strong) NSString * drawTime;
+
+/** 开始出票时间  */
+@property (nonatomic , strong) NSString * ticketTime;
+
+/** 完成出票时间 */
+@property (nonatomic , strong) NSString * commitTime;
+
 
 
 @end

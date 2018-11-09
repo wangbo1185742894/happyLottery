@@ -47,7 +47,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S72-h0-Pz6">
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S72-h0-Pz6">
                         <rect key="frame" x="330" y="47.5" width="45" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="ceQ-ji-lFq"/>
@@ -76,6 +76,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="labTiao" destination="Es0-QZ-mjc" id="oWF-hu-F3W"/>
                 <outlet property="orderInfoLab" destination="W4u-Cn-TnI" id="CWy-We-s4Y"/>
                 <outlet property="orderTimeLab" destination="kNU-T5-9wI" id="5N4-XJ-Qbg"/>
             </connections>

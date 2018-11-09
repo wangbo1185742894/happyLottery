@@ -52,8 +52,6 @@
 
 - (void)setFrame:(CGRect)frame{
     frame.origin.x += 6;
-    frame.origin.y += 6;
-    frame.size.height -= 6;
     frame.size.width -= 12;
     [super setFrame:frame];
 }
@@ -90,8 +88,7 @@
         self.imageHeightTwo.constant = 10;
         [self.zhongJiangImage setImage:[UIImage imageNamed:@"leg_orangeDa.png"]];
         self.imageHeightThree.constant = 14.5;
-    }
-    if ([orderStatus isEqualToString:@"已派奖"]) {
+    } else if ([orderStatus isEqualToString:@"已派奖"]) {
         _chuPiaoStatue.text = AlreadyChuPiao;
         _zhongJiangStatus.text = AlreadyPaiJiang;
         [self.zhiFuImg setImage:[UIImage imageNamed:@"leg_orange.png"]];
@@ -102,8 +99,7 @@
         [self.zhongJiangImage setImage:[UIImage imageNamed:@"leg_orangeDa.png"]];
         self.imageHeightThree.constant = 14.5;
 
-    }
-    if ([orderStatus isEqualToString:@"未中奖"] ) {
+    }else if ([orderStatus isEqualToString:@"未中奖"] ) {
         _chuPiaoStatue.text = AlreadyChuPiao;
         _zhongJiangStatus.text = NotWin;
         [self.zhiFuImg setImage:[UIImage imageNamed:@"leg_orange.png"]];
@@ -115,8 +111,7 @@
         [self.zhongJiangImage setImage:[UIImage imageNamed:@"leg_orangeDa.png"]];
         self.imageHeightThree.constant = 14.5;
 
-    }
-    if ([orderStatus isEqualToString:@"待开奖"]) {
+    }else if ([orderStatus isEqualToString:@"待开奖"]) {
         _chuPiaoStatue.text = AlreadyChuPiao;
         _zhongJiangStatus.text = WaitKaiJiang;
         [self.zhiFuImg setImage:[UIImage imageNamed:@"leg_orange.png"]];
@@ -128,8 +123,7 @@
         [self.zhongJiangImage setImage:[UIImage imageNamed:@"leg_orangeDa.png"]];
         self.imageHeightThree.constant = 14.5;
 
-    }
-    if ([orderStatus isEqualToString:@"已出票"]) {
+    } else if ([orderStatus isEqualToString:@"已出票"]||[orderStatus isEqualToString:@"部分出票"]) {
         _chuPiaoStatue.text = AlreadyChuPiao;
         _zhongJiangStatus.text = WaitKaiJiang;
         [self.zhiFuImg setImage:[UIImage imageNamed:@"leg_orange.png"]];
@@ -141,8 +135,7 @@
         [self.zhongJiangImage setImage:[UIImage imageNamed:@"leg_orange.png"]];
         self.imageHeightThree.constant = 10;
 
-    }
-    if ([orderStatus isEqualToString:@"已支付"]) {
+    }else if ([orderStatus isEqualToString:@"已支付"]) {
         _chuPiaoStatue.text = AlreadyChuPiao;
         _zhongJiangStatus.text = WaitKaiJiang;
         [self.zhiFuImg setImage:[UIImage imageNamed:@"leg_orangeDa.png"]];
@@ -154,10 +147,28 @@
         [self.zhongJiangImage setImage:[UIImage imageNamed:@"leg_orange.png"]];
         self.imageHeightThree.constant = 10;
 
-    }
-    if ([orderStatus isEqualToString:@"投注单失败，支付成功，超时未出票"] || [orderStatus isEqualToString:@"投注单失败，支付成功，限号原因未出票"]|| [orderStatus isEqualToString:@"投注单失败，支付成功，未知原因未出票"]) {
+    }else if ([orderStatus isEqualToString:@"出票失败"] || [orderStatus isEqualToString:@"已退款"]) {
         _chuPiaoStatue.text = DotChuPiao;
         _zhongJiangStatus.text = ReturnMoney;
+        [self.zhiFuImg setImage:[UIImage imageNamed:@"leg_orange.png"]];
+        self.imageHeightOne.constant = 10;
+        
+        [self.chuPiaoImg setImage:[UIImage imageNamed:@"leg_orange.png"]];
+        self.imageHeightTwo.constant = 10;
+        
+        [self.zhongJiangImage setImage:[UIImage imageNamed:@"leg_orangeDa.png"]];
+        self.imageHeightThree.constant = 14.5;
+    }else {
+        _chuPiaoStatue.text = AlreadyChuPiao;
+        _zhongJiangStatus.text = WaitKaiJiang;
+        [self.zhiFuImg setImage:[UIImage imageNamed:@"leg_orangeDa.png"]];
+        self.imageHeightOne.constant = 14.5;
+        
+        [self.chuPiaoImg setImage:[UIImage imageNamed:@"leg_orange.png"]];
+        self.imageHeightTwo.constant = 10;
+        
+        [self.zhongJiangImage setImage:[UIImage imageNamed:@"leg_orange.png"]];
+        self.imageHeightThree.constant = 10;
     }
 }
 

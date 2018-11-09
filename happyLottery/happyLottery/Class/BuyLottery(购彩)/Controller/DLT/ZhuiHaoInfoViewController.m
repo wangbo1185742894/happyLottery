@@ -12,6 +12,7 @@
 #import "OrderProfile.h"
 #import "OrderLotteryCateChooseView.h"
 #import "OrderDatePickerView.h"
+#import "LegOrderDetailViewController.h"
 
 #import "ZHDetailViewController.h"
 
@@ -186,12 +187,15 @@ typedef enum {
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     OrderProfile * order = _ordersArray[indexPath.row];
-    
-    ZHDetailViewController *zhdetailViewCtr = [[ZHDetailViewController alloc]initWithNibName:@"ZHDetailViewController" bundle:nil];
-
-            zhdetailViewCtr.delegate = self;
-            zhdetailViewCtr.order = order;
-            [self.navigationController pushViewController:zhdetailViewCtr animated:YES];
+    LegOrderDetailViewController *detail = [[LegOrderDetailViewController alloc]init];
+    detail.orderPro = order;
+    detail.schemetype =  SchemeTypeZhuihao;
+    [self.navigationController pushViewController:detail animated:YES];
+//    ZHDetailViewController *zhdetailViewCtr = [[ZHDetailViewController alloc]initWithNibName:@"ZHDetailViewController" bundle:nil];
+//
+//            zhdetailViewCtr.delegate = self;
+//            zhdetailViewCtr.order = order;
+//            [self.navigationController pushViewController:zhdetailViewCtr animated:YES];
 }
 
 #pragma LotteryManagerDelegate methods

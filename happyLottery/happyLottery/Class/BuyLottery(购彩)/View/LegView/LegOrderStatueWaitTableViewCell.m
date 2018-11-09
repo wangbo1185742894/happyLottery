@@ -13,6 +13,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.layer.masksToBounds = YES;
+    self.layer.cornerRadius = 8;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -21,4 +23,9 @@
     // Configure the view for the selected state
 }
 
+- (void)setFrame:(CGRect)frame{
+    frame.origin.x += 6;
+    frame.size.width -= 12;
+    [super setFrame:frame];
+}
 @end

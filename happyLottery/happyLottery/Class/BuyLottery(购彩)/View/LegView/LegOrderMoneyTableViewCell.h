@@ -8,12 +8,25 @@
 
 #import <UIKit/UIKit.h>
 #import "JCZQSchemeModel.h"
+#import "OrderProfile.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol OrderDetailDelegate
+
+- (void)showOrderDetail;
+
+@end
+
+
+
 @interface LegOrderMoneyTableViewCell : UITableViewCell
 
+@property (nonatomic, weak) id<OrderDetailDelegate> delegate;
+
 - (void)loadNewDate:(JCZQSchemeItem *)detail andStatus:(NSString *)orderStatus;
+
+- (void)loadZhuiHaoNewDate:(OrderProfile *)detail andStatus:(NSString *)orderStatus andName:(NSString *)name;
 
 @end
 

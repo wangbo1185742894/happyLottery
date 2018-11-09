@@ -13,6 +13,7 @@
 #import "JCZQSchemeModel.h"
 #import "FASSchemeDetailViewController.h"
 #import "NoticeCenterViewController.h"
+#import "LegOrderDetailViewController.h"
 #define KFollowSchemeViewCell @"FollowSchemeViewCell"
 #define KPostSchemeViewCell  @"PostSchemeViewCell"
 
@@ -163,11 +164,20 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     JCZQSchemeItem *model = [dataArray objectAtIndex:indexPath.row];
-    FASSchemeDetailViewController *detailCV = [[FASSchemeDetailViewController alloc]init];
-    detailCV.schemeNo = model.schemeNO;
-    detailCV.schemeType = [self getSchemeType];
-    detailCV.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:detailCV animated:YES];
+    LegOrderDetailViewController *detail = [[LegOrderDetailViewController alloc]init];
+    detail.schemeNo = model.schemeNO;
+    if(self.btnGendan.selected == YES){
+        detail.schemetype = SchemeTypeGenDan;
+    }else{
+        detail.schemetype = SchemeTypeFaqiGenDan;
+    }
+    detail.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:detail animated:YES];
+//    FASSchemeDetailViewController *detailCV = [[FASSchemeDetailViewController alloc]init];
+//    detailCV.schemeNo = model.schemeNO;
+//    detailCV.schemeType = [self getSchemeType];
+    
+//    [self.navigationController pushViewController:detailCV animated:YES];
 }
 
 -(void)navigationBackToLastPage{

@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *orderInfoLab;
 @property (weak, nonatomic) IBOutlet UILabel *orderTimeLab;
 
+@property (weak, nonatomic) IBOutlet UILabel *labTiao;
+
 - (void)reloadDate:(NSDictionary *)dic;
 
 @end

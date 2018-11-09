@@ -575,16 +575,16 @@
     [header.btnOrderDetail addTarget:self action:@selector(actionOrderDetail:) forControlEvents:UIControlEventTouchUpInside];
 }
 
--(void)navigationBackToLastPage{
-    
-    for (BaseViewController *baseVC in self.navigationController.viewControllers) {
-        if ([baseVC isKindOfClass:[MyOrderListViewController class]]) {
-            [self.navigationController popToViewController:baseVC animated:YES];
-            return;
-        }
-    }
-    [super navigationBackToLastPage];
-}
+//-(void)navigationBackToLastPage{
+//    
+//    for (BaseViewController *baseVC in self.navigationController.viewControllers) {
+//        if ([baseVC isKindOfClass:[MyOrderListViewController class]]) {
+//            [self.navigationController popToViewController:baseVC animated:YES];
+//            return;
+//        }
+//    }
+//    [super navigationBackToLastPage];
+//}
 - (IBAction)actionReBuy:(UIButton *)sender {
     JCLQPlayController * playViewVC = [[JCLQPlayController alloc]init];
     playViewVC.hidesBottomBarWhenPushed = YES;

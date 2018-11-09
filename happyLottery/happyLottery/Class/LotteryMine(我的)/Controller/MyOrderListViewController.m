@@ -194,6 +194,7 @@
     
     LegOrderDetailViewController *detail = [[LegOrderDetailViewController alloc]init];
     detail.schemeNo = dataArray[indexPath.row].schemeNO;
+    detail.schemetype =  SchemeTypeZigou;
     [self.navigationController pushViewController:detail animated:YES];
 //    if ([dataArray[indexPath.row].lottery isEqualToString:@"RJC"] || [dataArray[indexPath.row].lottery isEqualToString:@"SFC"]) {
 //        CTZQSchemeDetailViewController*schemeVC = [[CTZQSchemeDetailViewController alloc]init];

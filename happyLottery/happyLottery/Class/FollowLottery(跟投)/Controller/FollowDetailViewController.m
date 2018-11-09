@@ -154,11 +154,12 @@
         NSDictionary *dic = @{@"cardCode":self.curUser.cardCode,@"attentCardCode":_model.cardCode,@"attentType":@"FOLLOW"};
         [self.lotteryMan isAttent:dic];
     }
-    if ([_model.schemeSource isEqualToString:@"BONUS_OPTIMIZE"]) {
-        self.youHuaTag.hidden = NO;
-    }else {
-        self.youHuaTag.hidden = YES;
-    }
+    self.youHuaTag.hidden = YES;
+//    if ([_model.schemeSource isEqualToString:@"BONUS_OPTIMIZE"]) {
+//        self.youHuaTag.hidden = NO;
+//    }else {
+//        self.youHuaTag.hidden = YES;
+//    }
 }
 
 - (void) gotisAttent:(NSString *)diction  errorMsg:(NSString *)msg{

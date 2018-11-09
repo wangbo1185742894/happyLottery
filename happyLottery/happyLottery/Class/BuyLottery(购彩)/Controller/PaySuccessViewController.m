@@ -95,6 +95,8 @@
 - (IBAction)actionLookOrder:(id)sender {
     LegOrderDetailViewController *detail = [[LegOrderDetailViewController alloc]init];
     detail.schemeNo = self.schemeNO;
+    detail.schemetype = self.schemetype;
+    detail.lotteryName =  self.lotteryName;
     [self.navigationController pushViewController:detail animated:YES];
 //    if (self.schemetype == SchemeTypeGenDan) {
 //        MyPostSchemeViewController *myOrderListVC = [[MyPostSchemeViewController alloc]init];
