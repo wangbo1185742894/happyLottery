@@ -1501,65 +1501,9 @@
         [self needLogin];
         return;
     }
-
-    
-    BOOL isNeedPayPasswordVerify = NO;
-    
-    switch (self.curUser.payVerifyType) {
-        case PayVerifyTypeAlways:{
-            isNeedPayPasswordVerify = YES;
-            break;
-        }
-            
-        case PayVerifyTypeAlwaysNo:{
-            isNeedPayPasswordVerify = NO;
-            break;
-        }
-        case PayVerifyTypeLessThanOneHundred:{
-            if ( Allexpense*2.0*_zhushu > 100) {
-                isNeedPayPasswordVerify = YES;
-            }
-            break;
-        }
-        case PayVerifyTypeLessThanFiveHundred:{
-            if (Allexpense*2.0*_zhushu > 500) {
-                isNeedPayPasswordVerify = YES;
-            }
-            break;
-        }
-        case PayVerifyTypeLessThanThousand:{
-            if (Allexpense*2.0*_zhushu > 1000) {
-                isNeedPayPasswordVerify = YES;
-            }
-            break;
-        }
-        default:
-            isNeedPayPasswordVerify = YES;
-            break;
-    }
-    if (isNeedPayPasswordVerify) {
-        if(!self.curUser.paypwdSetting )
-        {
-            [self showSetPayPasswordAlert];
-        }else{
-            [self showPayPopView];
-        }
-    }else if (!self.curUser.paypwdSetting){
-    
-        [self showSetPayPasswordAlert];
-
-    }
-    else{
-        [self nopayword];
-    }
-    
+    [self nopayword];
 }
 
--(void)showSetPayPasswordAlert{
-    SetPayPWDViewController *spvc = [[SetPayPWDViewController alloc]init];
-    spvc.titleStr = @"设置支付密码";
-    [self.navigationController pushViewController:spvc animated:YES];
-}
 
 //11.07
 - (void)nopayword

@@ -881,13 +881,6 @@
 //追号期前的判断
 - (void)zhuihao{
     [self hideLoadingView];
-//    if(curPay > curBlance)
-//    {
-//        NSString *msg =@"余额不足";
-//        [self showPromptText:msg hideAfterDelay:2.7];
-//
-//        return;
-//    }
     
     int qi = [tfQiText.text intValue];
     int bei = [tfBeiText.text intValue];
@@ -910,55 +903,7 @@
     }
     betCount = betCount*qi;
     NSDictionary * orderNeedInfo =@{@"lotteryRoundDesc":lotteryRoundDesc,@"orderCost":[NSString stringWithFormat:@"%d",betCount]};
-    
-    BOOL isNeedPayPasswordVerify = NO;
-    int userVerifyType = self.curUser.payVerifyType ;
-    switch (userVerifyType) {
-        case PayVerifyTypeAlways:{
-            isNeedPayPasswordVerify = YES;
-            break;
-        }
-        case PayVerifyTypeAlwaysNo:{
-            isNeedPayPasswordVerify = NO;
-            break;
-        }
-        case PayVerifyTypeLessThanOneHundred:{
-            if ([orderNeedInfo[@"orderCost"] intValue] > 100) {
-                isNeedPayPasswordVerify = YES;
-            }
-            break;
-        }
-        case PayVerifyTypeLessThanFiveHundred:{
-            if ([orderNeedInfo[@"orderCost"] intValue] > 500) {
-                isNeedPayPasswordVerify = YES;
-            }
-            break;
-        }
-        case PayVerifyTypeLessThanThousand:{
-            if ([orderNeedInfo[@"orderCost"] intValue] > 1000) {
-                isNeedPayPasswordVerify = YES;
-            }
-            break;
-        }
-        default:
-            isNeedPayPasswordVerify = YES;
-            break;
-    }
-    if (isNeedPayPasswordVerify) {
-        if(!self.curUser.paypwdSetting){
-
-            [self showSetPayPasswordAlert];
-        } else {
-            [self showPayPopView];
-        }
-    }else if(!isNeedPayPasswordVerify&&self.curUser.paypwdSetting == NO){
-        
-        [self showSetPayPasswordAlert];
-        
-    }
-    else{
-        [self nopayword];
-    }
+    [self nopayword];
 }
 
 
@@ -1001,9 +946,8 @@
     } @catch (NSException *exception) {
         return @{};
     }
-    
-    
 }
+
 - (void)gotLotteryCurRoundTimeout {
     
     [self hideLoadingView];

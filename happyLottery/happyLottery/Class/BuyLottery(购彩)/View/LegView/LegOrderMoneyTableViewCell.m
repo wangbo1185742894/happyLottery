@@ -52,7 +52,7 @@
     if (won) {  //中奖
         self.orderStatue.text = [NSString stringWithFormat:@"已中奖%.2f",[detail.sumDraw doubleValue]];
     } else if ([orderStatus isEqualToString:@"追号中"]) {
-        self.orderStatue.text = OrderStatueWait(name);
+        self.orderStatue.text = @"等待开奖";
     }else if ([orderStatus isEqualToString:@"出票失败"]) {
         self.orderStatue.text = OrderStatueTui(detail.sumSub);
     }else {
@@ -62,13 +62,8 @@
 
 - (void)loadNewDate:(JCZQSchemeItem *)detail andStatus:(NSString *)orderStatus{
     self.orderCost.text = [NSString stringWithFormat:@"订单总额%@元",detail.betCost];
-    if ([orderStatus isEqualToString:@"派奖中"]) {
-        self.orderStatue.text = OrderStatueZhong(detail.bonus);
-    } else if ([orderStatus isEqualToString:@"已派奖"]) {
-        self.orderStatue.text = OrderStatuePai(detail.bonus);
-    } else if ([orderStatus isEqualToString:@"未中奖"] ){
+    if ([orderStatus isEqualToString:@"未中奖"] ){
         self.orderStatue.text = OrderStatueLose;
-
     }else if ([orderStatus isEqualToString:@"出票失败"] || [orderStatus isEqualToString:@"已退款"]){
          self.orderStatue.text = OrderStatueTui(detail.ticketFailRef);
     }else if ([orderStatus isEqualToString:@"待开奖"]){
@@ -77,6 +72,8 @@
         self.orderStatue.text = OrderStatueWait(detail.legName);
     }else if ([orderStatus isEqualToString:@"已支付"]){
         self.orderStatue.text = @"出票中";
+    }else if ([orderStatus isEqualToString:@"已中奖"]){
+        self.orderStatue.text = [NSString stringWithFormat:@"已中奖%.2f元",[detail.bonus doubleValue] ];
     }
 }
 

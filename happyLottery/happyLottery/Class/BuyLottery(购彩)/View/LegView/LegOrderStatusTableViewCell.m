@@ -118,27 +118,7 @@
 - (void)loadNewDate:(NSString *)orderStatus{
     
     _zhiFuStatus.text = AlreadyZhiFu;
-    if ([orderStatus isEqualToString:@"派奖中"]) {
-        _chuPiaoStatue.text = AlreadyChuPiao;
-        _zhongJiangStatus.text = PaiJiang;
-        [self.zhiFuImg setImage:[UIImage imageNamed:@"leg_orange.png"]];
-        self.imageHeightOne.constant = 10;
-        [self.chuPiaoImg setImage:[UIImage imageNamed:@"leg_orange.png"]];
-        self.imageHeightTwo.constant = 10;
-        [self.zhongJiangImage setImage:[UIImage imageNamed:@"leg_orangeDa.png"]];
-        self.imageHeightThree.constant = 14.5;
-    } else if ([orderStatus isEqualToString:@"已派奖"]) {
-        _chuPiaoStatue.text = AlreadyChuPiao;
-        _zhongJiangStatus.text = AlreadyPaiJiang;
-        [self.zhiFuImg setImage:[UIImage imageNamed:@"leg_orange.png"]];
-        self.imageHeightOne.constant = 10;
-        [self.chuPiaoImg setImage:[UIImage imageNamed:@"leg_orange.png"]];
-        self.imageHeightTwo.constant = 10;
-
-        [self.zhongJiangImage setImage:[UIImage imageNamed:@"leg_orangeDa.png"]];
-        self.imageHeightThree.constant = 14.5;
-
-    }else if ([orderStatus isEqualToString:@"未中奖"] ) {
+   if ([orderStatus isEqualToString:@"未中奖"] ) {
         _chuPiaoStatue.text = AlreadyChuPiao;
         _zhongJiangStatus.text = NotWin;
         [self.zhiFuImg setImage:[UIImage imageNamed:@"leg_orange.png"]];
@@ -197,17 +177,28 @@
         
         [self.zhongJiangImage setImage:[UIImage imageNamed:@"leg_orangeDa.png"]];
         self.imageHeightThree.constant = 14.5;
-    }else {
+    }else if([orderStatus isEqualToString:@"已中奖"]){
         _chuPiaoStatue.text = AlreadyChuPiao;
-        _zhongJiangStatus.text = WaitKaiJiang;
-        [self.zhiFuImg setImage:[UIImage imageNamed:@"leg_orangeDa.png"]];
-        self.imageHeightOne.constant = 14.5;
+        _zhongJiangStatus.text = @"已中奖";
+        [self.zhiFuImg setImage:[UIImage imageNamed:@"leg_orange.png"]];
+        self.imageHeightOne.constant = 10;
         
         [self.chuPiaoImg setImage:[UIImage imageNamed:@"leg_orange.png"]];
         self.imageHeightTwo.constant = 10;
         
-        [self.zhongJiangImage setImage:[UIImage imageNamed:@"leg_orange.png"]];
-        self.imageHeightThree.constant = 10;
+        [self.zhongJiangImage setImage:[UIImage imageNamed:@"leg_orangeDa.png"]];
+        self.imageHeightThree.constant = 14.5;
+    }else {
+        _chuPiaoStatue.text = AlreadyChuPiao;
+        _zhongJiangStatus.text = WaitKaiJiang;
+        [self.zhiFuImg setImage:[UIImage imageNamed:@"leg_orange.png"]];
+        self.imageHeightOne.constant = 10;
+        
+        [self.chuPiaoImg setImage:[UIImage imageNamed:@"leg_orange.png"]];
+        self.imageHeightTwo.constant = 10;
+        
+        [self.zhongJiangImage setImage:[UIImage imageNamed:@"leg_orangeDa.png"]];
+        self.imageHeightThree.constant = 14.5;
     }
     self.labelWidth.constant = self.zhongJiangImage.mj_x-30;
 }

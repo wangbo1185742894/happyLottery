@@ -706,21 +706,6 @@
                     }
                 }
                 
-                if(self.curUser.paypwdSetting == NO) {
-                    
-                    SetPayPWDViewController *spvc = [[SetPayPWDViewController alloc]init];
-                    spvc.titleStr = @"设置支付密码";
-                    [self.navigationController pushViewController:spvc animated:YES];
-                    
-                    return;
-                }else{
-                    if ([self checkPayPassword]) {
-                        
-                        [self showPayPopView];
-                        return;
-                    }
-                }
-                
                 [self actionZhuihao];
                 return;
             }else{

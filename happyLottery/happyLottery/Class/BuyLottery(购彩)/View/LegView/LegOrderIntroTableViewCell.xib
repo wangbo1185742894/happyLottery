@@ -47,24 +47,12 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S72-h0-Pz6">
-                        <rect key="frame" x="330" y="47.5" width="45" height="20"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="20" id="ceQ-ji-lFq"/>
-                            <constraint firstAttribute="width" constant="45" id="e1M-ce-atw"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <state key="normal" title="查看">
-                            <color key="titleColor" red="0.070588235289999995" green="0.78039215689999997" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
-                        </state>
-                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="kNU-T5-9wI" firstAttribute="leading" secondItem="izi-ec-XOU" secondAttribute="trailing" constant="10" id="1sv-pD-5mz"/>
                     <constraint firstItem="izi-ec-XOU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="3cS-Qa-aN2"/>
                     <constraint firstItem="izi-ec-XOU" firstAttribute="centerX" secondItem="Es0-QZ-mjc" secondAttribute="centerX" id="5sg-dy-ATS"/>
                     <constraint firstItem="izi-ec-XOU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="FIJ-rc-Rxj"/>
-                    <constraint firstAttribute="bottom" secondItem="S72-h0-Pz6" secondAttribute="bottom" id="NHW-WH-mrd"/>
                     <constraint firstAttribute="trailing" secondItem="kNU-T5-9wI" secondAttribute="trailing" constant="10" id="NKr-uO-hgw"/>
                     <constraint firstItem="W4u-Cn-TnI" firstAttribute="leading" secondItem="kNU-T5-9wI" secondAttribute="leading" id="dNJ-90-7dl"/>
                     <constraint firstItem="Es0-QZ-mjc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="dY1-Sw-E03"/>
@@ -72,7 +60,6 @@
                     <constraint firstItem="W4u-Cn-TnI" firstAttribute="top" secondItem="kNU-T5-9wI" secondAttribute="bottom" constant="3" id="fKS-Nv-AkB"/>
                     <constraint firstAttribute="trailing" secondItem="W4u-Cn-TnI" secondAttribute="trailing" constant="10" id="wJl-mr-1fT"/>
                     <constraint firstAttribute="bottom" secondItem="Es0-QZ-mjc" secondAttribute="bottom" id="wt5-cT-8Wq"/>
-                    <constraint firstAttribute="trailing" secondItem="S72-h0-Pz6" secondAttribute="trailing" id="yqD-2d-vSR"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
