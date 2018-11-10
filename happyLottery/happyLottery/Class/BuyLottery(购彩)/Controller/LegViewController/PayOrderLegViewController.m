@@ -160,7 +160,7 @@
     if (success == NO) {
         [self upDateLegInfo:nil];
         self.curModel = nil;
-        [self showPromptText:msg hideAfterDelay:1.7];
+//        [self showPromptText:msg hideAfterDelay:1.7];
         return;
     }
     if (param != nil) {

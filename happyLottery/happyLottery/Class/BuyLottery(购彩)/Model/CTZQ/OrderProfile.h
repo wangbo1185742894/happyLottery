@@ -134,6 +134,8 @@
 /** 完成出票时间 */
 @property (nonatomic , strong) NSString * commitTime;
 
+/** 完成追号时间 */
+@property (nonatomic , strong) NSString * completeTime;
 
 
 @end

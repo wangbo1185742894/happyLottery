@@ -1835,6 +1835,7 @@
 		F9F91B6D200EF81C0036DD2A /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F91B6C200EF81C0036DD2A /* AdSupport.framework */; };
 		F9F91B6F200EF82B0036DD2A /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F91B6E200EF82A0036DD2A /* UserNotifications.framework */; };
 		F9F91B71200EF83A0036DD2A /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F91B70200EF83A0036DD2A /* libresolv.tbd */; };
+		F9F9C97E21957E5700780CB8 /* legDelegate.html in Resources */ = {isa = PBXBuildFile; fileRef = F9F9C97D21957E5600780CB8 /* legDelegate.html */; };
 		F9FA29802191AF390035E77B /* leg_did_select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9FA297E2191AF370035E77B /* leg_did_select@2x.png */; };
 		F9FA29812191AF390035E77B /* leg_did_select@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9FA297F2191AF370035E77B /* leg_did_select@3x.png */; };
 		F9FC0BEF20C60AA000BCCF59 /* GroupFollowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9FC0BEC20C60A9F00BCCF59 /* GroupFollowViewController.xib */; };
@@ -4301,6 +4302,7 @@
 		F9F91B6E200EF82A0036DD2A /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		F9F91B70200EF83A0036DD2A /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		F9F91B72200EF8EE0036DD2A /* happyLottery.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = happyLottery.entitlements; sourceTree = "<group>"; };
+		F9F9C97D21957E5600780CB8 /* legDelegate.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = legDelegate.html; sourceTree = "<group>"; };
 		F9FA297E2191AF370035E77B /* leg_did_select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leg_did_select@2x.png"; sourceTree = "<group>"; };
 		F9FA297F2191AF370035E77B /* leg_did_select@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leg_did_select@3x.png"; sourceTree = "<group>"; };
 		F9FC0BEC20C60A9F00BCCF59 /* GroupFollowViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupFollowViewController.xib; sourceTree = "<group>"; };
@@ -4728,6 +4730,7 @@
 		2D4B1E411FDF65380034B708 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				F9F9C97D21957E5600780CB8 /* legDelegate.html */,
 				F9ADB10720FDF41700AFAA03 /* zhuihao.html */,
 				F90D68F920F2FDAE007865E4 /* sdguize.html */,
 				F90D68F820F2FDAD007865E4 /* sdjiangxiang.html */,
@@ -8326,6 +8329,7 @@
 				F9705ED2207DD15200E25E4E /* paiwu@2x.png in Resources */,
 				2D739CE91FEB462B00264044 /* danguan@3x.png in Resources */,
 				F924BA921FE252CF00830BF4 /* password@3x.png in Resources */,
+				F9F9C97E21957E5700780CB8 /* legDelegate.html in Resources */,
 				F9ADD2F2214B8A9D0091C4A1 /* red_check_unselect@3x.png in Resources */,
 				2DE109492003423E0020343A /* hometeam@2x.png in Resources */,
 				2DD5991520E1C988002441B5 /* TouZhuViewController.xib in Resources */,

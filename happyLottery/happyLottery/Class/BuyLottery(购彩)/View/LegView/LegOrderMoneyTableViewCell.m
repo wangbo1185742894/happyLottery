@@ -21,6 +21,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *orderCost;
 
+@property (weak, nonatomic) IBOutlet UILabel *yuanJiaoLab;
+
 @end
 
 @implementation LegOrderMoneyTableViewCell
@@ -28,8 +30,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    self.layer.masksToBounds = YES;
-    self.layer.cornerRadius = 8;
+    self.yuanJiaoLab.layer.masksToBounds = YES;
+    self.yuanJiaoLab.layer.cornerRadius = 8;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -42,27 +44,19 @@
     [self.delegate showOrderDetail];
 }
 
-
-- (void)setFrame:(CGRect)frame{
-    frame.origin.x += 6;
-    frame.size.width -= 12;
-    [super setFrame:frame];
-}
-
-- (void)loadZhuiHaoNewDate:(OrderProfile *)detail andStatus:(NSString *)orderStatus andName:(NSString *)name{
+- (void)loadZhuiHaoNewDate:(OrderProfile *)detail andStatus:(NSString *)orderStatus andName:(NSString *)name andWon:(BOOL)won{
+    if (name.length == 0) {
+        name = @"";
+    }
     self.orderCost.text = [NSString stringWithFormat:@"订单总额%@元",detail.sumSub];
-    if ([orderStatus isEqualToString:@"派奖中"]) {
-        self.orderStatue.text = OrderStatueZhong(detail.sumDraw);
-    }else if ([orderStatus isEqualToString:@"已派奖"]) {
-        self.orderStatue.text = OrderStatuePai(detail.sumDraw);
-    }else if ([orderStatus isEqualToString:@"未中奖"] ) {
-        self.orderStatue.text = OrderStatueLose;
-    }else if ([orderStatus isEqualToString:@"待开奖"]) {
-        self.orderStatue.text = @"等待开奖";
-    } else if([orderStatus isEqualToString:@"已退款"]){
-        self.orderStatue.text = OrderStatueTui(detail.sumSub);
-    } else {
+    if (won) {  //中奖
+        self.orderStatue.text = [NSString stringWithFormat:@"已中奖%.2f",[detail.sumDraw doubleValue]];
+    } else if ([orderStatus isEqualToString:@"追号中"]) {
         self.orderStatue.text = OrderStatueWait(name);
+    }else if ([orderStatus isEqualToString:@"出票失败"]) {
+        self.orderStatue.text = OrderStatueTui(detail.sumSub);
+    }else {
+        self.orderStatue.text = OrderStatueLose;
     }
 }
 

@@ -32,6 +32,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageHeightThree;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageHeightTwo;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageHeightOne;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *labelWidth;
 
 @end
 
@@ -56,28 +57,66 @@
     [super setFrame:frame];
 }
 
+
 /**
- 非追号状态：
- 1.已中奖,全部出票成功，派奖中
- 2.已中奖,部分出票成功，派奖中
- 3.已中奖,全部出票成功，已派奖
- 4.已中奖,部分出票成功，已派奖
- 5.未中奖，全部出票成功
- 6,未中奖，部分出票成功
- 7，投注单失败，支付成功，超时未出票
- 8，投注单失败，支付成功，限号原因未出票
- 9，投注单失败，支付成功，未知原因未出票
- 10，待开奖
- 追号状态：
- 1.已中奖,追号停追，派奖中
- 1.已中奖,追号不停追，派奖中
- 1.已中奖,追号停追，已派奖
- 1.已中奖,追号不停追，已派奖
- 1.未中奖
- 1.待开奖
+ 追号未结束
+ 1.已支付-追号中
+ 2.已中奖  已支付-追号中-已中奖
+ 
+ 追号结束
+ 1.未中奖   已支付-追号结束-未中奖
+ 2.已中奖   已支付-追号结束-已中奖
+ 3.全部出票失败  已支付—出票失败
  @param orderStatus 订单状态
  */
+- (void)loadZhuiHaoNewDate:(NSString *)orderStatus andWon:(BOOL)won{
+    _zhiFuStatus.text = AlreadyZhiFu;
+    [self.zhiFuImg setImage:[UIImage imageNamed:@"leg_orange.png"]];
+    self.imageHeightOne.constant = 10;
+    if ([orderStatus isEqualToString:@"追号中"]) {
+        if (won == NO) { //未中奖
+            [self.chuPiaoImg setImage:[UIImage imageNamed:@"leg_orangeDa.png"]];
+            self.imageHeightTwo.constant = 14.5;
+            _chuPiaoStatue.text = @"追号中";
+            self.zhongJiangImage.hidden = YES;
+            _zhongJiangStatus.hidden = YES;
+            self.labelWidth.constant = self.chuPiaoImg.mj_x-30;
+        } else {
+            [self.chuPiaoImg setImage:[UIImage imageNamed:@"leg_orange.png"]];
+            self.imageHeightTwo.constant = 10;
+            _chuPiaoStatue.text = @"追号中";
+            [self.zhongJiangImage setImage:[UIImage imageNamed:@"leg_orangeDa.png"]];
+            self.imageHeightThree.constant = 14.5;
+            _zhongJiangStatus.text = @"已中奖";
+            self.labelWidth.constant = self.zhongJiangImage.mj_x-30;
+        }
+    } else if ([orderStatus isEqualToString:@"追号结束"]){
+        [self.chuPiaoImg setImage:[UIImage imageNamed:@"leg_orange.png"]];
+        self.imageHeightTwo.constant = 10;
+        [self.zhongJiangImage setImage:[UIImage imageNamed:@"leg_orangeDa.png"]];
+        self.imageHeightThree.constant = 14.5;
+        self.labelWidth.constant = self.zhongJiangImage.mj_x-30;
+        if (won == NO) {
+            _chuPiaoStatue.text = @"追号结束";
+            _zhongJiangStatus.text = @"未中奖";
+        } else {
+            _chuPiaoStatue.text = @"追号结束";
+            _zhongJiangStatus.text = @"已中奖";
+            
+        }
+    } else {  //全部出票失败
+        [self.chuPiaoImg setImage:[UIImage imageNamed:@"leg_orangeDa.png"]];
+        self.imageHeightTwo.constant = 14.5;
+        _chuPiaoStatue.text = @"出票失败";
+        self.zhongJiangImage.hidden = YES;
+        _zhongJiangStatus.hidden = YES;
+        self.labelWidth.constant = self.chuPiaoImg.mj_x-30;
+    }
+    
+}
+
 - (void)loadNewDate:(NSString *)orderStatus{
+    
     _zhiFuStatus.text = AlreadyZhiFu;
     if ([orderStatus isEqualToString:@"派奖中"]) {
         _chuPiaoStatue.text = AlreadyChuPiao;
@@ -170,6 +209,7 @@
         [self.zhongJiangImage setImage:[UIImage imageNamed:@"leg_orange.png"]];
         self.imageHeightThree.constant = 10;
     }
+    self.labelWidth.constant = self.zhongJiangImage.mj_x-30;
 }
 
 @end

@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)loadNewDate:(NSString *)orderStatus;
 
+- (void)loadZhuiHaoNewDate:(NSString *)orderStatus andWon:(BOOL)won;
+
 @end
 
 NS_ASSUME_NONNULL_END

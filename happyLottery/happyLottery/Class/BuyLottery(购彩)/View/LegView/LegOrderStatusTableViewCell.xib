@@ -22,6 +22,7 @@
                         <rect key="frame" x="30" y="25" width="315" height="1"/>
                         <color key="backgroundColor" red="0.99607843139999996" green="0.64705882349999999" blue="0.074509803920000006" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="width" constant="315" id="DlQ-bC-wwu"/>
                             <constraint firstAttribute="height" constant="1" id="ipc-cR-fnO"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -46,20 +47,20 @@
                             <constraint firstAttribute="height" constant="10" id="2ny-Mp-KKE"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dw0-UU-VQw">
-                        <rect key="frame" x="171" y="37.5" width="33" height="16"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dw0-UU-VQw">
+                        <rect key="frame" x="187.5" y="37.5" width="0.0" height="0.0"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YwV-c4-aXe">
-                        <rect key="frame" x="323.5" y="37.5" width="33" height="16"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YwV-c4-aXe">
+                        <rect key="frame" x="340" y="37.5" width="0.0" height="0.0"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5nq-DG-yuy">
-                        <rect key="frame" x="18.5" y="37.5" width="33" height="16"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5nq-DG-yuy">
+                        <rect key="frame" x="35" y="37.5" width="0.0" height="0.0"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -67,11 +68,10 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="flw-81-3gO" firstAttribute="centerY" secondItem="qDM-QT-qdn" secondAttribute="centerY" id="1Cm-3Y-tzT"/>
-                    <constraint firstItem="SRX-up-PEB" firstAttribute="trailing" secondItem="flw-81-3gO" secondAttribute="trailing" id="2I1-G6-gdV"/>
-                    <constraint firstAttribute="trailing" secondItem="flw-81-3gO" secondAttribute="trailing" constant="30" id="Fgh-Je-MXa"/>
+                    <constraint firstItem="qDM-QT-qdn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="3Ju-G8-CkN"/>
+                    <constraint firstAttribute="trailing" secondItem="SRX-up-PEB" secondAttribute="trailing" constant="30" id="BdK-ed-OTU"/>
                     <constraint firstItem="SRX-up-PEB" firstAttribute="centerX" secondItem="YwV-c4-aXe" secondAttribute="centerX" id="G36-12-8Ff"/>
                     <constraint firstItem="flw-81-3gO" firstAttribute="leading" secondItem="qDM-QT-qdn" secondAttribute="leading" id="Hdi-te-6WT"/>
-                    <constraint firstItem="flw-81-3gO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="MyL-9M-9Wu"/>
                     <constraint firstItem="5nq-DG-yuy" firstAttribute="top" secondItem="qDM-QT-qdn" secondAttribute="bottom" constant="7" id="XWH-Mp-F1N"/>
                     <constraint firstItem="5nq-DG-yuy" firstAttribute="centerX" secondItem="qDM-QT-qdn" secondAttribute="centerX" id="Xf0-KU-Ibv"/>
                     <constraint firstItem="flw-81-3gO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="d1p-6T-R7c"/>
@@ -89,6 +89,7 @@
                 <outlet property="imageHeightOne" destination="XC1-EC-8Zo" id="drB-m6-iUs"/>
                 <outlet property="imageHeightThree" destination="2ny-Mp-KKE" id="IRr-iC-gDh"/>
                 <outlet property="imageHeightTwo" destination="ff9-5t-P74" id="hTe-Zh-0FI"/>
+                <outlet property="labelWidth" destination="DlQ-bC-wwu" id="VTz-z1-Wp5"/>
                 <outlet property="zhiFuImg" destination="qDM-QT-qdn" id="uaF-8q-wGn"/>
                 <outlet property="zhiFuStatus" destination="5nq-DG-yuy" id="1Te-Gy-Nfw"/>
                 <outlet property="zhongJiangImage" destination="SRX-up-PEB" id="MlG-wg-AZb"/>

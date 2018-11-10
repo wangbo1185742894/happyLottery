@@ -18,6 +18,23 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="120.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lti-7O-xgL">
+                        <rect key="frame" x="6" y="0.0" width="363" height="120.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r6C-kD-m8K">
+                        <rect key="frame" x="6" y="110.5" width="363" height="10"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="10" id="WRr-om-aeU"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leg_money.png" translatesAutoresizingMaskIntoConstraints="NO" id="yjy-7B-fTY">
                         <rect key="frame" x="5" y="61.5" width="64" height="49"/>
                         <constraints>
@@ -59,22 +76,32 @@
                         </connections>
                     </button>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="B8x-Gb-nvY" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="0lG-fD-zfU"/>
+                    <constraint firstItem="r6C-kD-m8K" firstAttribute="trailing" secondItem="Lti-7O-xgL" secondAttribute="trailing" id="6I6-VW-Ixj"/>
+                    <constraint firstItem="Lti-7O-xgL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="6" id="8Gs-47-wJI"/>
                     <constraint firstItem="zet-s7-9x1" firstAttribute="trailing" secondItem="5Jc-08-yZA" secondAttribute="trailing" id="DLw-DJ-nvq"/>
                     <constraint firstItem="zet-s7-9x1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="HK7-YI-Wcj"/>
                     <constraint firstItem="yjy-7B-fTY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="PdZ-Kl-35W"/>
                     <constraint firstItem="B8x-Gb-nvY" firstAttribute="top" secondItem="sid-wk-l26" secondAttribute="bottom" constant="3" id="RLh-ex-G04"/>
                     <constraint firstAttribute="trailing" secondItem="zet-s7-9x1" secondAttribute="trailing" constant="5" id="So1-aM-03p"/>
+                    <constraint firstItem="Lti-7O-xgL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="UYh-nh-KNK"/>
+                    <constraint firstItem="r6C-kD-m8K" firstAttribute="leading" secondItem="Lti-7O-xgL" secondAttribute="leading" id="X6I-qH-e7T"/>
                     <constraint firstItem="sid-wk-l26" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="d88-bC-9Pa"/>
                     <constraint firstAttribute="bottom" secondItem="yjy-7B-fTY" secondAttribute="bottom" constant="10" id="f5R-wp-lkg"/>
                     <constraint firstItem="sid-wk-l26" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="26" id="ggF-QO-VFj"/>
+                    <constraint firstAttribute="trailing" secondItem="Lti-7O-xgL" secondAttribute="trailing" constant="6" id="hDF-Mn-Ggm"/>
+                    <constraint firstAttribute="bottom" secondItem="r6C-kD-m8K" secondAttribute="bottom" id="hhy-Q0-vHz"/>
+                    <constraint firstAttribute="bottom" secondItem="Lti-7O-xgL" secondAttribute="bottom" id="ljq-60-6dS"/>
                     <constraint firstItem="5Jc-08-yZA" firstAttribute="bottom" secondItem="yjy-7B-fTY" secondAttribute="bottom" id="yV8-xv-crT"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="orderCost" destination="B8x-Gb-nvY" id="wXI-lX-RRB"/>
                 <outlet property="orderStatue" destination="sid-wk-l26" id="qtf-0L-qQP"/>
+                <outlet property="yuanJiaoLab" destination="Lti-7O-xgL" id="NnO-22-Szi"/>
             </connections>
             <point key="canvasLocation" x="140" y="80.50974512743629"/>
         </tableViewCell>
