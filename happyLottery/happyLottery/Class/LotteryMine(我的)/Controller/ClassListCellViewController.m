@@ -29,7 +29,7 @@
     [self setTableView];
     self.memberMan.delegate= self;
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.bottomDis.constant = BOTTOM_BAR_HEIGHT + 84;
+    self.bottomDis.constant = BOTTOM_BAR_HEIGHT + 84 + 20;
     [UITableView refreshHelperWithScrollView:self.classListView target:self loadNewData:@selector(loadNewData) loadMoreData:@selector(loadMoreData) isBeginRefresh:NO];
     
     self.classArray = [NSMutableArray arrayWithCapacity:0];

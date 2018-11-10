@@ -508,7 +508,7 @@
     self.transaction.betCost = self.transaction.betCount * 2 * [self.transaction.beitou integerValue];
     if (sender.tag == 4) {
         self.transaction.schemeType = SchemeTypeFaqiGenDan;
-        if (self.transaction.betCost < 10) {
+        if (self.transaction.betCost <= 10) {
             [self showPromptText:@"发单金额必须大于10元" hideAfterDelay:1.9];
             return;
         }

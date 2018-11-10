@@ -72,11 +72,11 @@
     }else if ([orderStatus isEqualToString:@"出票失败"] || [orderStatus isEqualToString:@"已退款"]){
          self.orderStatue.text = OrderStatueTui(detail.ticketFailRef);
     }else if ([orderStatus isEqualToString:@"待开奖"]){
-        self.orderStatue.text = @"待开奖";
+        self.orderStatue.text = @"等待开奖";
     }else if ([orderStatus isEqualToString:@"待支付"]){
         self.orderStatue.text = OrderStatueWait(detail.legName);
-    }else {
-        self.orderStatue.text = OrderStatueWait(detail.legName);
+    }else if ([orderStatus isEqualToString:@"已支付"]){
+        self.orderStatue.text = @"出票中";
     }
 }
 

@@ -28,7 +28,7 @@
     [self setTableView];
     self.postboyMan.delegate = self;
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.bottomDis.constant = BOTTOM_BAR_HEIGHT + 84;
+    self.bottomDis.constant = BOTTOM_BAR_HEIGHT + 84 + 75 +30;
     [UITableView refreshHelperWithScrollView:self.classListView target:self loadNewData:@selector(loadNewData) loadMoreData:@selector(loadMoreData) isBeginRefresh:NO];
     self.classArray = [NSMutableArray arrayWithCapacity:0];
     if ([self.strApiLeg isEqualToString:APIListSubscribeDetailByPostboy]) {

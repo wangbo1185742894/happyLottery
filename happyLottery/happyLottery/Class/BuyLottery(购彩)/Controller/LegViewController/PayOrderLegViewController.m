@@ -25,11 +25,12 @@
 #import "PaySuccessViewController.h"
 #import "YuCeSchemeCreateViewController.h"
 #import "ZhuiHaoInfoViewController.h"
-
+#import "SetPayPWDViewController.h"
+#import "WBInputPopView.h"
 #define KPayTypeListCell @"PayTypeListCell"
 
 #define KTabObaListCell @"TabObaListCell"
-@interface PayOrderLegViewController ()<LotteryManagerDelegate,MemberManagerDelegate,PostboyManagerDelegate,SelectModelDelegate>
+@interface PayOrderLegViewController ()<LotteryManagerDelegate,MemberManagerDelegate,PostboyManagerDelegate,SelectModelDelegate,WBInputPopViewDelegate>
 {
     LotteryShopDto* selectShopModel;
     
@@ -42,6 +43,8 @@
     __weak IBOutlet UILabel *labCanUseYouhuiquan;
     __weak IBOutlet UIButton *rechargeBtn;
     __weak IBOutlet UILabel *lotteryNameLab;
+    
+    WBInputPopView *passInput;
 }
 
 @property(assign,nonatomic)BOOL isShowOba;
@@ -369,8 +372,95 @@
     [self.navigationController pushViewController:betInfoViewCtr animated:YES];
 }
 
+-(BOOL)checkPayPassword{
+    
+    if(self.curUser.payVerifyType == PayVerifyTypeAlways){
+        return YES;
+    }else if(self.curUser.payVerifyType == PayVerifyTypeLessThanOneHundred){
+        if (self.cashPayMemt.realSubscribed > 100 ) {
+            return YES;
+        }else{
+            return NO;
+        }
+    }else if(self.curUser.payVerifyType == PayVerifyTypeLessThanFiveHundred){
+        
+        if (self.cashPayMemt.realSubscribed > 500 ) {
+            return YES;
+        }else{
+            return NO;
+        }
+        
+    }else if(self.curUser.payVerifyType == PayVerifyTypeLessThanThousand){
+        if (self.cashPayMemt.realSubscribed > 1000 ) {
+            return YES;
+        }else{
+            return NO;
+        }
+    }else{
+        return NO;
+    }
+}
+
+- (void)showPayPopView{
+    if (nil == passInput) {
+        
+        passInput = [[WBInputPopView alloc]init];
+        passInput.delegate = self;
+        passInput.labTitle.text = @"请输入支付密码";
+    }
+    
+    [self.view addSubview:passInput];
+    passInput.delegate = self;
+    [passInput.txtInput becomeFirstResponder];
+    [passInput createBlock:^(NSString *text) {
+        
+        if (nil == text) {
+            [self showPromptText:@"请输入支付密码" hideAfterDelay:2.7];
+            return;
+        }
+        
+        NSDictionary *cardInfo= @{@"cardCode":self.curUser.cardCode,
+                                  @"payPwd":[AESUtility encryptStr:text]};
+        [self.memberMan validatePaypwdSms:cardInfo];
+    }];
+    
+}
+
+
+-(void)findPayPwd{
+    [self forgetPayPwd];
+}
+
+
+-(void)forgetPayPwd{
+    SetPayPWDViewController *spvc = [[SetPayPWDViewController alloc]init];
+    spvc.titleStr = @"忘记支付密码";
+    spvc.isForeget = YES;
+    [self.navigationController pushViewController:spvc animated:YES];
+}
+
+-(void)validatePaypwdSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    [passInput removeFromSuperview];
+    if (success == YES) {
+        [self rechargeSchemeByNo:self.schemeNo];
+    }else{
+        [self showPromptText:msg hideAfterDelay:1.7];
+    }
+}
+
 - (void)rechareSchemeWithSchemeNo{
     if ([rechargeBtn.titleLabel.text isEqualToString:@"确认支付"]) {
+        if(self.curUser.paypwdSetting == NO) {
+            SetPayPWDViewController *spvc = [[SetPayPWDViewController alloc]init];
+            spvc.titleStr = @"设置支付密码";
+            [self.navigationController pushViewController:spvc animated:YES];
+            return;
+        }else{
+            if ([self checkPayPassword]) {
+                [self showPayPopView];
+                return;
+            }
+        }
         [self rechargeSchemeByNo:self.schemeNo];
         return;
     }
