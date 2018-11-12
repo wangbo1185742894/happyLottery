@@ -10,11 +10,11 @@
 
 @implementation ChannelModel
 -(NSString*)channelIcon{
-    NSDictionary *iconDic = @{@"YUE":@"icon_yue",@"UNION":@"icon_yinlian",@"WFTWX":@"icon_weixin",@"WFTWX_HC":@"icon_weixin",@"SDALI":@"icon_zhifubao",@"BOINGWX":@"icon_weixin",@"YUN_WX_XCX":@"icon_weixin",@"HAWKEYE_ALI":@"icon_zhifubao",@"SDWX":@"weixinsaoma"};
+    NSDictionary *iconDic = @{@"YUE":@"icon_yue",@"UNION":@"icon_yinlian",@"WFTWX":@"icon_weixin",@"WFTWX_HC":@"icon_weixin",@"SDALI":@"icon_zhifubao",@"BOINGWX":@"icon_weixin",@"YUN_WX_XCX":@"icon_weixin",@"HAWKEYE_ALI":@"icon_zhifubao",@"SDWX":@"weixinsaoma",@"OFFLINE":@"leg_ali_offline"};
     return iconDic[self.channel];
 }
 -(NSString*)channelTitle{
-    NSDictionary *iconDic = @{@"YUE":@"余额支付",@"UNION":@"银联支付",@"WFTWX":@"微信支付(推荐)",@"WFTWX_HC":@"微信支付(推 荐)",@"SDALI":@"支付宝支付",@"BOINGWX":@"微信支付",@"YUN_WX_XCX":@"微信",@"HAWKEYE_ALI":@"支付宝",@"SDWX":@"微信扫码支付"};
+    NSDictionary *iconDic = @{@"YUE":@"余额支付",@"UNION":@"银联支付",@"WFTWX":@"微信支付(推荐)",@"WFTWX_HC":@"微信支付(推 荐)",@"SDALI":@"支付宝支付",@"BOINGWX":@"微信支付",@"YUN_WX_XCX":@"微信",@"HAWKEYE_ALI":@"支付宝",@"SDWX":@"微信扫码支付",@"OFFLINE":@"线下支付"};
     return iconDic[self.channel];
 }
 

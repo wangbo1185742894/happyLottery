@@ -1759,6 +1759,10 @@
 		F9E0DF1D2019695C0089F51D /* MineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9E0DF1C2019695B0089F51D /* MineViewController.xib */; };
 		F9E0DF21201972570089F51D /* JumpWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9E0DF1F201972570089F51D /* JumpWebViewController.m */; };
 		F9E0DF22201972570089F51D /* JumpWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9E0DF20201972570089F51D /* JumpWebViewController.xib */; };
+		F9E0FBFD21994115008B09B5 /* leg_weixin_offline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9E0FBFB21994114008B09B5 /* leg_weixin_offline@2x.png */; };
+		F9E0FBFE21994115008B09B5 /* leg_weixin_offline@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9E0FBFC21994115008B09B5 /* leg_weixin_offline@3x.png */; };
+		F9E0FC0121994144008B09B5 /* leg_ali_offline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9E0FBFF21994143008B09B5 /* leg_ali_offline@2x.png */; };
+		F9E0FC0221994144008B09B5 /* leg_ali_offline@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9E0FC0021994143008B09B5 /* leg_ali_offline@3x.png */; };
 		F9E53D2620EE263F0072B8AF /* MineRecommendViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9E53D2420EE263E0072B8AF /* MineRecommendViewCell.xib */; };
 		F9E53D2720EE263F0072B8AF /* MineRecommendViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9E53D2520EE263F0072B8AF /* MineRecommendViewCell.m */; };
 		F9E53D4D20EE28D70072B8AF /* folder_mine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9E53D2920EE28BA0072B8AF /* folder_mine@2x.png */; };
@@ -4212,6 +4216,10 @@
 		F9E0DF1E201972570089F51D /* JumpWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JumpWebViewController.h; sourceTree = "<group>"; };
 		F9E0DF1F201972570089F51D /* JumpWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JumpWebViewController.m; sourceTree = "<group>"; };
 		F9E0DF20201972570089F51D /* JumpWebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JumpWebViewController.xib; sourceTree = "<group>"; };
+		F9E0FBFB21994114008B09B5 /* leg_weixin_offline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leg_weixin_offline@2x.png"; sourceTree = "<group>"; };
+		F9E0FBFC21994115008B09B5 /* leg_weixin_offline@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leg_weixin_offline@3x.png"; sourceTree = "<group>"; };
+		F9E0FBFF21994143008B09B5 /* leg_ali_offline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leg_ali_offline@2x.png"; sourceTree = "<group>"; };
+		F9E0FC0021994143008B09B5 /* leg_ali_offline@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leg_ali_offline@3x.png"; sourceTree = "<group>"; };
 		F9E53D2320EE263E0072B8AF /* MineRecommendViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineRecommendViewCell.h; sourceTree = "<group>"; };
 		F9E53D2420EE263E0072B8AF /* MineRecommendViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineRecommendViewCell.xib; sourceTree = "<group>"; };
 		F9E53D2520EE263F0072B8AF /* MineRecommendViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineRecommendViewCell.m; sourceTree = "<group>"; };
@@ -7857,6 +7865,10 @@
 		F9F645A3218879C1003E459B /* LegImage */ = {
 			isa = PBXGroup;
 			children = (
+				F9E0FBFF21994143008B09B5 /* leg_ali_offline@2x.png */,
+				F9E0FC0021994143008B09B5 /* leg_ali_offline@3x.png */,
+				F9E0FBFB21994114008B09B5 /* leg_weixin_offline@2x.png */,
+				F9E0FBFC21994115008B09B5 /* leg_weixin_offline@3x.png */,
 				F9971BA92196DD4400AAD30B /* leg_delegateNotSelect@2x.png */,
 				F9971BA82196DD4400AAD30B /* leg_delegateNotSelect@3x.png */,
 				F9971BA42196D2AA00AAD30B /* leg_teleph@2x.png */,
@@ -8213,6 +8225,7 @@
 				F958F16320BBEE2400F30690 /* winPerson@2x.png in Resources */,
 				2D628B411FECAA9A0013D0E1 /* fengkuangjingcai-gengduoshuoming@2x.png in Resources */,
 				F954D518200C498C00CD3B2B /* QuestionsViewController.xib in Resources */,
+				F9E0FC0221994144008B09B5 /* leg_ali_offline@3x.png in Resources */,
 				2D4B1E6F1FDF684E0034B708 /* faxian_defealt@2x.png in Resources */,
 				F9CD01E320240CEA00E54E79 /* zhifuchecked@2x.png in Resources */,
 				F93EEEE22021D388001C635A /* lockredpacket@3x.png in Resources */,
@@ -8333,6 +8346,7 @@
 				2D7B12D6204D3B550035AE89 /* LotteryExtrendViewController.xib in Resources */,
 				2D4B1E881FDF684E0034B708 /* yuce@3x.png in Resources */,
 				F924BA981FE252CF00830BF4 /* phone@3x.png in Resources */,
+				F9E0FBFD21994115008B09B5 /* leg_weixin_offline@2x.png in Resources */,
 				2D2060141FFCB71E0086E266 /* btn_huanyige@2x.png in Resources */,
 				F9705ED2207DD15200E25E4E /* paiwu@2x.png in Resources */,
 				2D739CE91FEB462B00264044 /* danguan@3x.png in Resources */,
@@ -8947,6 +8961,7 @@
 				F9BC1A6A218AEED900BEE7E4 /* LegOrderMoneyTableViewCell.xib in Resources */,
 				F9CD01EB20243DBC00E54E79 /* registerCode@3x.png in Resources */,
 				2D22810420B5470700F4C8B9 /* pic_zanwushuju_tongyong@3x.png in Resources */,
+				F9E0FC0121994144008B09B5 /* leg_ali_offline@2x.png in Resources */,
 				2D6F9238208D9D8A007DFD0B /* leshan@2x.png in Resources */,
 				F9B5D9A32060A9DE00C9F6DC /* flag438@2x.png in Resources */,
 				2D4D609820B2548B00280033 /* README.md in Resources */,
@@ -9184,6 +9199,7 @@
 				F965564720C561220017066C /* AgentHeaderView.xib in Resources */,
 				F9E53D6B20EE28D70072B8AF /* invite_mine@2x.png in Resources */,
 				F9F6CA981FF5D6B100A49F71 /* about@2x.png in Resources */,
+				F9E0FBFE21994115008B09B5 /* leg_weixin_offline@3x.png in Resources */,
 				2D36177C2064A884003093F9 /* win-zhuihao@3x.png in Resources */,
 				F93204F51FECF98C00E22A27 /* WBInputPopView.xib in Resources */,
 				F958F18320BC04FF00F30690 /* icon_guanyajun@2x.png in Resources */,
