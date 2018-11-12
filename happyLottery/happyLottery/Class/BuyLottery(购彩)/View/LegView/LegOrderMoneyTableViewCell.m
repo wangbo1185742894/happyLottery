@@ -13,7 +13,7 @@
 #define OrderStatuePai(Money)     [NSString stringWithFormat:@"已派奖%@元",Money];
 #define OrderStatueLose    @"很遗憾，祝您下次好运"
 #define OrderStatueTui(Money)     [NSString stringWithFormat:@"已退款%@元",Money];
-#define OrderStatueWait(Name)     [NSString stringWithFormat:@"%@已就位，时刻等待为您服务",Name];
+#define OrderStatueWait(Name)     [NSString stringWithFormat:@"%@已就位，请您尽快支付",Name];
 
 @interface LegOrderMoneyTableViewCell()
 
@@ -44,18 +44,18 @@
     [self.delegate showOrderDetail];
 }
 
-- (void)loadZhuiHaoNewDate:(OrderProfile *)detail andStatus:(NSString *)orderStatus andName:(NSString *)name andWon:(BOOL)won{
+- (void)loadZhuiHaoNewDate:(OrderProfile *)detail andStatus:(NSString *)orderStatus andName:(NSString *)name andWon:(NSString *)won{
     if (name.length == 0) {
         name = @"";
     }
     self.orderCost.text = [NSString stringWithFormat:@"订单总额%@元",detail.sumSub];
-    if (won) {  //中奖
+    if ([won isEqualToString:@"已中"]) {  //中奖
         self.orderStatue.text = [NSString stringWithFormat:@"已中奖%.2f",[detail.sumDraw doubleValue]];
-    } else if ([orderStatus isEqualToString:@"追号中"]) {
+    } else if ([orderStatus isEqualToString:@"追号中"]||[won isEqualToString:@"待开"]) {
         self.orderStatue.text = @"等待开奖";
     }else if ([orderStatus isEqualToString:@"出票失败"]) {
         self.orderStatue.text = OrderStatueTui(detail.sumSub);
-    }else {
+    }else{
         self.orderStatue.text = OrderStatueLose;
     }
 }

@@ -190,11 +190,39 @@
     [tabSchemeList reloadData];
 }
 
+
+-(NSString *)getLotteryByCode:(NSString *)code{
+    if ([code isEqualToString:@"JCZQ"]) {
+        return @"竞彩足球";
+    }else if([code isEqualToString:@"DLT"]){
+        return [NSString stringWithFormat:@"大乐透"];
+    }else if([code isEqualToString:@"RJC"]){
+        return [NSString stringWithFormat:@"任选9场"];
+    }else if([code isEqualToString:@"SFC"]){
+        return [NSString stringWithFormat:@"胜负14场"];
+    }else if ([code isEqualToString:@"JCGYJ"]){
+        return @"冠亚军";
+    }else if ([code isEqualToString:@"JCGJ"]){
+        return @"冠军";
+    }else if ([code isEqualToString:@"SSQ"]){
+        return [NSString stringWithFormat:@"双色球"];
+    }else if ([code isEqualToString:@"JCLQ"]){
+        return @"竞彩篮球";
+    }else if ([code isEqualToString:@"SD115"]){
+        return [NSString stringWithFormat:@"山东11选5"];
+        
+    }else if ([code isEqualToString:@"SX115"]){
+        return [NSString stringWithFormat:@"陕西11选5"];
+    }
+    return @"彩票";
+}
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     LegOrderDetailViewController *detail = [[LegOrderDetailViewController alloc]init];
     detail.schemeNo = dataArray[indexPath.row].schemeNO;
     detail.schemetype =  SchemeTypeZigou;
+    detail.lotteryName = [self getLotteryByCode:dataArray[indexPath.row].lottery];
     [self.navigationController pushViewController:detail animated:YES];
 //    if ([dataArray[indexPath.row].lottery isEqualToString:@"RJC"] || [dataArray[indexPath.row].lottery isEqualToString:@"SFC"]) {
 //        CTZQSchemeDetailViewController*schemeVC = [[CTZQSchemeDetailViewController alloc]init];

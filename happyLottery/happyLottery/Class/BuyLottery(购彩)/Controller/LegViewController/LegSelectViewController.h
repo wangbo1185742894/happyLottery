@@ -26,6 +26,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, weak) id<SelectModelDelegate> delegate;
 
+@property (nonatomic , copy) NSString *realCost;
+
 @end
 
 NS_ASSUME_NONNULL_END

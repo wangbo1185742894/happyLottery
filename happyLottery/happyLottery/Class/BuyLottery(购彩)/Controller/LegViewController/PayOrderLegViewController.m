@@ -135,7 +135,7 @@
         if (([postModel.totalBalance doubleValue] - [self.labRealCost.text doubleValue]) >= 0) {
             [rechargeBtn setTitle:@"确认支付" forState:0];
         }else {
-            [rechargeBtn setTitle:@"转账给代买小哥" forState:0];
+            [rechargeBtn setTitle:@"确认转账" forState:0];
         }
         rechargeBtn.userInteractionEnabled=YES;
         rechargeBtn.alpha=1.0f;
@@ -318,6 +318,7 @@
         legSelectVC.delegate = self;
         legSelectVC.titleName = @"选择代买小哥";
         legSelectVC.curModel = self.curModel;
+        legSelectVC.realCost = self.labRealCost.text;
         [self.navigationController pushViewController:legSelectVC animated:YES];
     }
     else {
@@ -350,7 +351,7 @@
     }
     if (self.schemeNo == nil) {
         if (self.schemetype == SchemeTypeZhuihao) {
-            if ([rechargeBtn.titleLabel.text isEqualToString:@"转账给代买小哥"]) {
+            if ([rechargeBtn.titleLabel.text isEqualToString:@"确认转账"]) {
                 [self showPromptViewWithText:@"追号方案仅支持小哥余额支付" hideAfter:1.7];
                 return;
             }
@@ -363,15 +364,28 @@
             }
            
         } else if(self.schemetype == SchemeTypeGenDan){
+            if ([rechargeBtn.titleLabel.text isEqualToString:@"确认转账"] &&![_curModel.overline boolValue]) {
+                [self showPromptViewWithText:@"该小哥已离线，请选择其他小哥转账" hideAfter:1.7];
+                return;
+            }
             NSDictionary *paraDic= @{@"schemeNo":self.diction[@"schemeNo"], @"cardCode":self.diction[@"cardCode"],@"multiple":self.diction[@"multiple"],@"postboyId":self.curModel._id};
             [self.lotteryMan followScheme:paraDic];
         } else {
+            if ([rechargeBtn.titleLabel.text isEqualToString:@"确认转账"] && ![_curModel.overline boolValue]) {
+                [self showPromptViewWithText:@"该小哥已离线，请选择其他小哥转账" hideAfter:1.7];
+                return;
+            }
             [self.lotteryMan betLotteryScheme:self.basetransction andPostboyId:self.curModel._id];
         }
     }else {
+        if ([rechargeBtn.titleLabel.text isEqualToString:@"确认转账"] && ![_curModel.overline boolValue]) {
+            [self showPromptViewWithText:@"该小哥已离线,不能转账,请重新下单" hideAfter:1.7];
+            return;
+        }
         [self rechareSchemeWithSchemeNo];
     }
 }
+
 
 //追号
 -(void)betedChaseScheme:(NSString *)schemeNO errorMsg:(NSString *)msg{

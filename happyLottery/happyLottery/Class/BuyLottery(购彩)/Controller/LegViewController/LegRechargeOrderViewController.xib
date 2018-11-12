@@ -248,7 +248,7 @@
                                 <constraint firstAttribute="height" constant="36" id="3Wf-3N-VnH"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                            <state key="normal" title="转账给代买小哥"/>
+                            <state key="normal" title="确认转账"/>
                             <connections>
                                 <action selector="commitBtnClick:" destination="-1" eventType="touchUpInside" id="LSN-5X-ejn"/>
                             </connections>

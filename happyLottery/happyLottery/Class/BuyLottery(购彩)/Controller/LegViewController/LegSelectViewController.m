@@ -186,6 +186,10 @@
    
     if ([self.titleName isEqualToString:@"选择代买小哥"]) {
         PostboyAccountModel *legModel = self.personArray[indexPath.row];
+        if (![legModel.overline boolValue] && [legModel.totalBalance doubleValue]<[self.realCost doubleValue]){
+            [self showPromptViewWithText:@"该小哥已离线且余额不足，请选择其他小哥" hideAfter:1.7];
+            return;
+        }
         legModel.isSelect = YES;
         [self.delegate alreadySelectModel:legModel];
         [self.navigationController popViewControllerAnimated:YES];

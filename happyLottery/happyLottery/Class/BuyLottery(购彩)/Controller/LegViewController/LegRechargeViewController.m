@@ -363,6 +363,10 @@
     [self.navigationController pushViewController:webShow animated:YES];
 }
 - (IBAction)commitBtnClick:(id)sender {
+    if (![_curModel.overline boolValue]) {
+        [self showPromptViewWithText:@"改小哥已离线，请选择其他小哥转账" hideAfter:1.7];
+        return;
+    }
     [self commitClient];
 }
 //params - String cardCode 会员卡号, RechargeChannel channel 充值渠道, BigDecimal amounts 充值金额
@@ -460,13 +464,13 @@
 //            }
          }
     }
-    
-    ChannelModel *modelYuE = [[ChannelModel alloc]init];
-    modelYuE.descValue = [NSString stringWithFormat:@"平台余额:%.2f",[self.curUser.balance doubleValue] + [self.curUser.notCash doubleValue]];
-    modelYuE.channel = @"YUE";
-    modelYuE.channelValue = @"YES";
-    [channelList insertObject:modelYuE atIndex:0];
-    
+    if ([self.curUser.balance doubleValue] + [self.curUser.notCash doubleValue]> 0) {
+        ChannelModel *modelYuE = [[ChannelModel alloc]init];
+        modelYuE.descValue = [NSString stringWithFormat:@"平台余额:%.2f",[self.curUser.balance doubleValue] + [self.curUser.notCash doubleValue]];
+        modelYuE.channel = @"YUE";
+        modelYuE.channelValue = @"YES";
+        [channelList insertObject:modelYuE atIndex:0];
+    }
     self.viewHeight.constant = 420 + channelList.count * 60;
 
     [channelList firstObject].isSelect = YES;
