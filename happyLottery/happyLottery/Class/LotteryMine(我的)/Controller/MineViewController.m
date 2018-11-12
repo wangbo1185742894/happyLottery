@@ -751,14 +751,20 @@
         [self.navigationController pushViewController:pcVC animated:YES];
     }
 }
+
 - (IBAction)actionToCunKuan:(id)sender {
     if (!self.curUser.isLogin) {
         [self needLogin];
     } else {
-        LegSelectViewController * pcVC = [[LegSelectViewController alloc]init];
-        pcVC.hidesBottomBarWhenPushed = YES;
-        pcVC.titleName = @"存款";
-        [self.navigationController pushViewController:pcVC animated:YES];
+        if ([self.curUser.whitelist boolValue]) {
+            LegSelectViewController * pcVC = [[LegSelectViewController alloc]init];
+            pcVC.hidesBottomBarWhenPushed = YES;
+            pcVC.titleName = @"存款";
+            [self.navigationController pushViewController:pcVC animated:YES];
+        }
+        else {
+            [self showPromptText:@"本功能暂未开放" hideAfterDelay:1.0f];
+        }
     }
 }
 

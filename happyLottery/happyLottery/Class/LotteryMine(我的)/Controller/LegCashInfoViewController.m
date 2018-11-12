@@ -11,7 +11,7 @@
 #import "FirstBankCardSetViewController.h"
 #import "WithdrawalsViewController.h"
 #import "WBMenu.h"
-@interface LegCashInfoViewController (){
+@interface LegCashInfoViewController ()<PostboyManagerDelegate>{
     LegCashInfoType _index;
     __weak IBOutlet NSLayoutConstraint *topCons;
     __weak IBOutlet UIView *yueView;
@@ -28,16 +28,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = [NSString stringWithFormat:@"%@余额明细",self.postboyModel.postboyName];
-    yueLab.text = [NSString stringWithFormat:@"%.2f元",[self.postboyModel.totalBalance doubleValue]];
-    canTiXianLab.text = [NSString stringWithFormat:@"%.2f元",[self.postboyModel.cashBalance doubleValue]];
-    if ([self.postboyModel.cashBalance doubleValue] == 0) {
-        tiXianBtn.userInteractionEnabled = NO;
-        tiXianBtn.alpha = 0.4;
-    } else {
-        tiXianBtn.userInteractionEnabled = YES;
-        tiXianBtn.alpha = 1.0;
-    }
+    self.postboyMan.delegate = self;
     topCons.constant = NaviHeight + 5;
     yueView.layer.masksToBounds = YES;
     yueView.layer.cornerRadius = 14;
@@ -49,7 +40,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     NSArray *titleArray;
     NSArray *apiArray;
-    titleArray = @[@"购彩",@"追号",@"充值",@"派奖",@"提现",@"佣金",@"余额转入"];
+    titleArray = @[@"代购",@"追号",@"预存",@"派奖",@"提现",@"佣金",@"余额转入"];
     apiArray = @[APIListSubscribeDetailByPostboy,APIGetChasePrepayOrderListByPostboy,APIListRechargeDetailByPostboy,APIListBonusDetailByPostboy,APIListWithdrawDetailByPostboy,APIListCommissionDetailByPostboy,APIListTransferByPostboy];
 
     [_topMenu createMenuView:titleArray size:CGSizeMake(70, 40)];
@@ -66,6 +57,29 @@
     }
     
     [self.view addSubview:_topMenu];
+}
+
+
+- (void)viewWillAppear:(BOOL)animated {
+     [self.postboyMan getMemberPostboyAccount:@{@"cardCode":self.curUser.cardCode,@"postboyId":self.postboyModel._id}];
+}
+
+
+-(void )getMemberPostboyAccountdelegate:(NSDictionary *)param isSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    if (param == nil) {
+        return;
+    }
+    PostboyAccountModel *model = [[PostboyAccountModel alloc]initWith:param];
+    self.title = [NSString stringWithFormat:@"%@余额明细",model.postboyName];
+    yueLab.text = [NSString stringWithFormat:@"%.2f元",[model.totalBalance doubleValue]];
+    canTiXianLab.text = [NSString stringWithFormat:@"%.2f元",[model.cashBalance doubleValue]];
+    if ([model.cashBalance doubleValue] == 0) {
+        tiXianBtn.userInteractionEnabled = NO;
+        tiXianBtn.alpha = 0.4;
+    } else {
+        tiXianBtn.userInteractionEnabled = YES;
+        tiXianBtn.alpha = 1.0;
+    }
 }
 
 -(void)setMenuOffset:(LegCashInfoType)index{

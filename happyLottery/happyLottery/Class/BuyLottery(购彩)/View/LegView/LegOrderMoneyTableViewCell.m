@@ -71,7 +71,7 @@
     }else if ([orderStatus isEqualToString:@"待支付"]){
         self.orderStatue.text = OrderStatueWait(detail.legName);
     }else if ([orderStatus isEqualToString:@"已支付"]){
-        self.orderStatue.text = @"出票中";
+        self.orderStatue.text = @"彩票站出票中";
     }else if ([orderStatus isEqualToString:@"已中奖"]){
         self.orderStatue.text = [NSString stringWithFormat:@"已中奖%.2f元",[detail.bonus doubleValue] ];
     }

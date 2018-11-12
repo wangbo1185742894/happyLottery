@@ -10,7 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface LegOrderStatueWaitTableViewCell : UITableViewCell
+@interface LegOrderStatueWaitTableViewCell :
+UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *timeLab;
 
 @end
 

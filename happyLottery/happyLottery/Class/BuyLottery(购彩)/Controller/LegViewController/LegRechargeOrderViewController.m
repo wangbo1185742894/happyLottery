@@ -180,7 +180,7 @@
       
         rechargeInfo = @{@"cardCode":cardCode,
                           @"channel":itemModel.channel,
-                          @"amounts":@([self.orderCost doubleValue]),
+                          @"amounts":@([checkCode doubleValue]),
                           @"schemeSub":self.cashPayMemt.submitParaDicScheme,
                           @"postboyId":self.legId
                         };

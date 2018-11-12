@@ -84,11 +84,11 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.btnPostScheme.userInteractionEnabled = YES;
-    if (self.schemetype == SchemeTypeFaqiGenDan && self.btnHeightPostScheme.constant == 0) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(self.aniTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self initRedPackageView];
-        });
-    }
+//    if (self.schemetype == SchemeTypeFaqiGenDan && self.btnHeightPostScheme.constant == 0) {
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(self.aniTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            [self initRedPackageView];
+//        });
+//    }
 }
 
   
@@ -268,7 +268,11 @@
 - (IBAction)actionPostScheme:(id)sender {
     self.btnPostScheme.userInteractionEnabled = NO;
     faqigentou = YES;
-    [self initRedPackageView];
+    if (self.schemetype == SchemeTypeFaqiGenDan && self.btnHeightPostScheme.constant == 0) {
+        return;
+    }
+    [self.lotteryMan initiateFollowScheme:@{@"schemeNo":self.schemeNO}];
+//    [self initRedPackageView];
 }
 
 //RedPackageViewDelegete
@@ -320,8 +324,6 @@
        [self.lotteryMan initiateFollowScheme:@{@"schemeNo":self.schemeNO}];
     }
 }
-
-
 
 -(void)validatePaypwdSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     

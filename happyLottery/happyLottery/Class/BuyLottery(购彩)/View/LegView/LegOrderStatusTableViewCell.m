@@ -188,7 +188,19 @@
         
         [self.zhongJiangImage setImage:[UIImage imageNamed:@"leg_orangeDa.png"]];
         self.imageHeightThree.constant = 14.5;
-    }else {
+    }else if ([orderStatus isEqualToString:@"出票中"]){
+        _chuPiaoStatue.text = @"出票中";
+        _zhongJiangStatus.text = WaitKaiJiang;
+        [self.zhiFuImg setImage:[UIImage imageNamed:@"leg_orange.png"]];
+        self.imageHeightOne.constant = 10;
+        
+        [self.chuPiaoImg setImage:[UIImage imageNamed:@"leg_orangeDa.png"]];
+        self.imageHeightTwo.constant = 14.5;
+        
+        [self.zhongJiangImage setImage:[UIImage imageNamed:@"leg_orange.png"]];
+        self.imageHeightThree.constant = 10;
+    }
+    else {
         _chuPiaoStatue.text = AlreadyChuPiao;
         _zhongJiangStatus.text = WaitKaiJiang;
         [self.zhiFuImg setImage:[UIImage imageNamed:@"leg_orange.png"]];

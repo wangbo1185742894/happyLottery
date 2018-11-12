@@ -8,7 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol LegDetailDelegate <NSObject>
+
+- (void)actionToTele;
+
+@end
+
 @interface LegDetailHeaderView : UIView
+
+@property (weak, nonatomic) IBOutlet UIButton *LegBtn;
+
+@property (assign, nonatomic) id<LegDetailDelegate> delegate;
 
 
 @end

@@ -107,17 +107,18 @@
                 [notUseArray addObject:postModel];
             }
         }
-        if (notUseArray.count >= 2) {
-            for (int i = 0 ;i < notUseArray.count; i ++) {
-                NSInteger index1 = arc4random_uniform(notUseArray.count - 1);
-                NSInteger index2 = arc4random_uniform(notUseArray.count - 1);
-                PostboyAccountModel *model = notUseArray[index1];
-                notUseArray[index1] = notUseArray[index2];
-                notUseArray[index2] = model;
+        if (![self.titleName isEqualToString:@"存款"]) { //存款中的小哥只显示用户使用过的小哥
+            if (notUseArray.count >= 2) {
+                for (int i = 0 ;i < notUseArray.count; i ++) {
+                    NSInteger index1 = arc4random_uniform(notUseArray.count - 1);
+                    NSInteger index2 = arc4random_uniform(notUseArray.count - 1);
+                    PostboyAccountModel *model = notUseArray[index1];
+                    notUseArray[index1] = notUseArray[index2];
+                    notUseArray[index2] = model;
+                }
             }
+            [_personArray addObjectsFromArray:notUseArray];
         }
-        [_personArray addObjectsFromArray:notUseArray];
-        
     }
     [personTableView reloadData];
 }

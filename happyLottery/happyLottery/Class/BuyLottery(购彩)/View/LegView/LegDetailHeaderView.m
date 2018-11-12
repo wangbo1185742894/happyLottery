@@ -11,6 +11,7 @@
 @interface LegDetailHeaderView()
 
 
+
 @end
 
 @implementation LegDetailHeaderView
@@ -22,11 +23,15 @@
     return  self;
 }
 
+
 - (void)setFrame:(CGRect)frame{
     frame.origin.x += 6;
     frame.size.width -= 12;
     [super setFrame:frame];
 }
 
+- (IBAction)actionToTel:(id)sender {
+    [self.delegate actionToTele];
+}
 
 @end

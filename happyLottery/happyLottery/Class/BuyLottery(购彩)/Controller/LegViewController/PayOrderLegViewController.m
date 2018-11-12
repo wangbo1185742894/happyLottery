@@ -44,6 +44,7 @@
     __weak IBOutlet UIButton *rechargeBtn;
     __weak IBOutlet UILabel *lotteryNameLab;
     
+    __weak IBOutlet UIButton *btnSelected;
     WBInputPopView *passInput;
 }
 
@@ -102,15 +103,7 @@
     
     self.postboyMan.delegate = self;
     self.couponList = [NSMutableArray arrayWithCapacity:0];
-    
-    //请求小哥信息
-    ///
-    if (self.schemeNo == nil) {
-        [self.postboyMan recentPostboyAccount:@{@"cardCode":self.curUser.cardCode}];
-    }else {
-        [self.postboyMan getMemberPostboyAccount:@{@"cardCode":self.curUser.cardCode,@"postboyId":self.postBoyId}];
-    }
-    ///
+
     
     [self.memberMan getMemberByCardCode:@{@"cardCode":self.curUser.cardCode}];
     
@@ -163,7 +156,6 @@
     if (success == NO) {
         [self upDateLegInfo:nil];
         self.curModel = nil;
-//        [self showPromptText:msg hideAfterDelay:1.7];
         return;
     }
     if (param != nil) {
@@ -281,7 +273,16 @@
     self.curUser.sendBalance = user.sendBalance;
     self.curUser.score = user.score;
     self.labOrderCost.text = [NSString stringWithFormat:@"%.2f",self.subscribed];
+    
+    ///
     [self MoneyLabSetWithYouHui];
+    //请求小哥信息
+    ///
+    if (self.schemeNo == nil) {
+        [self.postboyMan recentPostboyAccount:@{@"cardCode":self.curUser.cardCode}];
+    }else {
+        [self.postboyMan getMemberPostboyAccount:@{@"cardCode":self.curUser.cardCode,@"postboyId":self.postBoyId}];
+    }
 }
 
 
@@ -324,11 +325,15 @@
     }
 }
 
+- (IBAction)actionToAgree:(UIButton *)sender {
+    sender.selected = !sender.selected;
+}
+
 - (IBAction)showRuler:(UIButton *)sender {
-    NSURL *pathUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"tbz_useragreement" ofType:@"html"]];
+    NSURL *pathUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"postboy_agreement" ofType:@"html"]];
     WebShowViewController *webShow = [[WebShowViewController alloc]init];
     webShow.pageUrl = pathUrl;
-    webShow.title = @"用户服务协议";
+    webShow.title = @"代买服务协议";
     [self.navigationController pushViewController:webShow animated:YES];
 }
 
@@ -339,8 +344,16 @@
  @param sender sender description
  */
 - (IBAction)actionToRechage:(id)sender {
+    if (!btnSelected.selected) {
+        [self showPromptViewWithText:@"请选择同意《代跑腿服务协议》" hideAfter:1.7];
+        return;
+    }
     if (self.schemeNo == nil) {
         if (self.schemetype == SchemeTypeZhuihao) {
+            if ([rechargeBtn.titleLabel.text isEqualToString:@"转账给代买小哥"]) {
+                [self showPromptViewWithText:@"追号方案仅支持小哥余额支付" hideAfter:1.7];
+                return;
+            }
             if ([self.lotteryName isEqualToString:@"大乐透"]||[self.lotteryName isEqualToString:@"双色球"]) {
                 //大乐透追号
                 [self.lotteryMan betChaseScheme:(LotteryTransaction *)self.basetransction andPostboyId:self.curModel._id];

@@ -118,7 +118,7 @@
     return [NSString stringWithFormat:@"\n%@\n\n%@\n\n#%@元\n\n",[self get1Name],self.successTime,self.amounts];
 }
 -(NSString *)get1Name{
-    return @"充值";
+    return @"预存";
 }
 -(NSString *)get2Name{
     return [NSString stringWithFormat:@"%.2f元",[self.amounts doubleValue]];
@@ -141,7 +141,7 @@
 -(NSString *)getConsumeName{
     NSDictionary *consumeDic = @{
                                  
-                                 @"FOR_SELF":@"自购",
+                                 @"FOR_SELF":@"代购",
                                  @"FOR_INITIATE":@"发起合买",
                                  @"FOR_OFFER":@"认购合买",
                                  @"FOR_CHASE":@"预付款扣除",
@@ -199,7 +199,7 @@
     if ([self.refundAmounts doubleValue] == 0) {
         return @"";
     }else{
-        if ([self.refundAmounts doubleValue] == [self.realSubAmounts doubleValue]) {
+        if ([self.refundAmounts doubleValue] >= [self.realSubAmounts doubleValue]) {
             if ([self.consumeType isEqualToString:@"FOR_CHASE"]) {
                  return [NSString stringWithFormat:@"追号出票失败，退款%.0f元",[self.refundAmounts doubleValue]];
             }else{
