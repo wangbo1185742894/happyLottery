@@ -71,7 +71,7 @@
 - (void) registerUser:(NSDictionary *)paraDic;
 - (void) sendRegisterSms:(NSDictionary *)paraDic;
 - (void) checkRegisterSms:(NSDictionary *)paraDic;
-
+- (void) rechargeOffline:(NSDictionary *)paraDic;    //线下支付
 - (void) getMemberByCardCode:(NSDictionary *)paraDic;
 - (void) transferToPostboy:(NSDictionary *)paraDic;
 - (void) forgetPWDSms:(NSDictionary *)paraDic;

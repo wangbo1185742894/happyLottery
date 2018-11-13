@@ -58,6 +58,15 @@
 - (void)loadLegDate:(PostboyAccountModel *)legModel{
     self.selectBackGroup.selected = legModel.isSelect;
     self.legName.text = legModel.postboyName;
+    
+    //小哥在线
+    if ([legModel.overline boolValue]) {
+        self.onlineLab.text = @"在线";
+        self.onlineLab.backgroundColor = RGBCOLOR(21, 126, 251);
+    } else {
+        self.onlineLab.text = @"离线";
+        self.onlineLab.backgroundColor = RGBCOLOR(184, 182, 182);
+    }
     //余额
     if (legModel.totalBalance.length == 0) {
         self.yuE.hidden = YES;

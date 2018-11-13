@@ -355,6 +355,18 @@
                 [self showPromptViewWithText:@"追号方案仅支持小哥余额支付" hideAfter:1.7];
                 return;
             }
+            //免密支付验证
+            if(self.curUser.paypwdSetting == NO) {
+                SetPayPWDViewController *spvc = [[SetPayPWDViewController alloc]init];
+                spvc.titleStr = @"设置支付密码";
+                [self.navigationController pushViewController:spvc animated:YES];
+                return;
+            }else{
+                if ([self checkPayPassword]) {
+                    [self showPayPopView];
+                    return;
+                }
+            }
             if ([self.lotteryName isEqualToString:@"大乐透"]||[self.lotteryName isEqualToString:@"双色球"]) {
                 //大乐透追号
                 [self.lotteryMan betChaseScheme:(LotteryTransaction *)self.basetransction andPostboyId:self.curModel._id];
@@ -477,6 +489,7 @@
 
 - (void)rechareSchemeWithSchemeNo{
     if ([rechargeBtn.titleLabel.text isEqualToString:@"确认支付"]) {
+        //免密支付验证
         if(self.curUser.paypwdSetting == NO) {
             SetPayPWDViewController *spvc = [[SetPayPWDViewController alloc]init];
             spvc.titleStr = @"设置支付密码";
@@ -504,12 +517,10 @@
     NSString *str = [NSString stringWithFormat:@"%.2f",self.subscribed - [self.curSelectCoupon.deduction doubleValue]];
     schemeCashModel.realSubscribed = [str doubleValue]; //实付金额
     LegRechargeOrderViewController *legRechargrVC = [[LegRechargeOrderViewController alloc]init];
+    legRechargrVC.postModel = self.curModel;
     legRechargrVC.schemeNo = self.schemeNo;
     legRechargrVC.orderCost = self.labRealCost.text;
-    legRechargrVC.legYuE = self.curModel.totalBalance;
-    legRechargrVC.legName = self.curModel.postboyName;
     legRechargrVC.cashPayMemt = schemeCashModel;
-    legRechargrVC.legId = self.curModel._id;
     legRechargrVC.isYouhua = self.isYouhua;
     [self.navigationController pushViewController:legRechargrVC animated:YES];
 }

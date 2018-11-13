@@ -89,6 +89,17 @@
                         <state key="normal" image="leg_notSelect.png"/>
                         <state key="selected" image="leg_SelectOne.png"/>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="在线" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zln-bf-IaK">
+                        <rect key="frame" x="152" y="15" width="25" height="12"/>
+                        <color key="backgroundColor" red="0.08235294118" green="0.4941176471" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="12" id="NmR-GC-QXL"/>
+                            <constraint firstAttribute="width" constant="25" id="PSv-ew-25D"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="SLs-JF-hBi" firstAttribute="centerX" secondItem="YUO-MJ-5l5" secondAttribute="centerX" id="1xF-YQ-3SE"/>
@@ -106,15 +117,18 @@
                     <constraint firstItem="2dk-7X-7ai" firstAttribute="leading" secondItem="Yw8-8C-gE6" secondAttribute="trailing" constant="8" id="dk1-8x-IVZ"/>
                     <constraint firstItem="2dk-7X-7ai" firstAttribute="centerY" secondItem="Yw8-8C-gE6" secondAttribute="centerY" id="mnF-x4-AL2"/>
                     <constraint firstItem="YUO-MJ-5l5" firstAttribute="centerY" secondItem="kde-49-rZW" secondAttribute="centerY" id="qES-ab-jq6"/>
+                    <constraint firstItem="Zln-bf-IaK" firstAttribute="leading" secondItem="2dk-7X-7ai" secondAttribute="trailing" constant="5" id="tdC-al-Jmi"/>
                     <constraint firstItem="89e-qR-cRW" firstAttribute="top" secondItem="kde-49-rZW" secondAttribute="bottom" constant="5" id="toc-dR-NEC"/>
                     <constraint firstItem="YUO-MJ-5l5" firstAttribute="top" secondItem="SLs-JF-hBi" secondAttribute="bottom" constant="3" id="u9b-94-2rY"/>
                     <constraint firstItem="NAL-cl-Ic8" firstAttribute="leading" secondItem="89e-qR-cRW" secondAttribute="trailing" constant="15" id="wdv-bW-de3"/>
+                    <constraint firstItem="Zln-bf-IaK" firstAttribute="centerY" secondItem="2dk-7X-7ai" secondAttribute="centerY" id="yZq-37-3mn"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="leaveMoney" destination="SLs-JF-hBi" id="q43-hi-2hX"/>
                 <outlet property="legIcon" destination="Bdj-g1-QLF" id="5qb-D8-Nqc"/>
                 <outlet property="legName" destination="Yw8-8C-gE6" id="SCt-Gz-rAq"/>
+                <outlet property="onlineLab" destination="Zln-bf-IaK" id="IJ1-aS-RYc"/>
                 <outlet property="protectMoney" destination="kde-49-rZW" id="nzZ-fb-Q0h"/>
                 <outlet property="renZheng" destination="2dk-7X-7ai" id="mS9-cd-9ls"/>
                 <outlet property="selectBtn" destination="HjR-HK-a81" id="aB3-L8-8IC"/>

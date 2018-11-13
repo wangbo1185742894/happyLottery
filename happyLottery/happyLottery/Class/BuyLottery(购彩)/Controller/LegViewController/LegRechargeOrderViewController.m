@@ -22,7 +22,7 @@
 #import "DLTPlayViewController.h"
 #import "SSQPlayViewController.h"
 #import "FollowSendViewController.h"
-
+#import "OffLineView.h"
 #define KPayTypeListCell @"PayTypeListCell"
 
 @interface LegRechargeOrderViewController ()<MemberManagerDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,UITextFieldDelegate,UIWebViewDelegate,ChongZhiRulePopViewDelegate>
@@ -63,8 +63,8 @@
     self.memberMan.delegate = self;
     self.lotteryMan.delegate =self;
     self.labBanlence.text = [NSString stringWithFormat:@"%.2f元",[self.orderCost doubleValue]];
-    _legYueE.text = [NSString stringWithFormat:@"%.2f元",[self.legYuE doubleValue]];
-    _realCost.text = [NSString stringWithFormat:@"%.2f元",[self.orderCost doubleValue] - [self.legYuE doubleValue]];
+    _legYueE.text = [NSString stringWithFormat:@"%.2f元",[self.postModel.totalBalance doubleValue]];
+    _realCost.text = [NSString stringWithFormat:@"%.2f元",[self.orderCost doubleValue] - [self.postModel.totalBalance doubleValue]];
     [self setTableView];
     if ([self isIphoneX]) {
         self.consHeight.constant = 50+34;
@@ -83,9 +83,9 @@
 - (void)getDeadLineDelegate:(NSString *)resultStr  errorMsg:(NSString *)msg{
     if (resultStr != nil) {
         NSString *dateStr = resultStr;
-        self.infoAletLab.text = [NSString stringWithFormat:@"%@已接单，请在%@前完成支付", self.legName,[dateStr substringWithRange:NSMakeRange(11, 5)]];
+        self.infoAletLab.text = [NSString stringWithFormat:@"%@已接单，请在%@前完成支付", self.postModel.postboyName,[dateStr substringWithRange:NSMakeRange(11, 5)]];
     } else {
-        self.infoAletLab.text = [NSString stringWithFormat:@"%@已接单，请尽快支付", self.legName];
+        self.infoAletLab.text = [NSString stringWithFormat:@"%@已接单，请尽快支付", self.postModel.postboyName];
     }
 }
 
@@ -134,6 +134,15 @@
             zhifubaoVC.orderNo = orderNO;
             zhifubaoVC.chongzhitype = @"weixin";
             [self.navigationController pushViewController:zhifubaoVC animated:YES];
+        }else if ([itemModel.channel isEqualToString:@"OFFLINE"]){
+            [self hideLoadingView];
+            orderNO = payInfo;
+            OffLineView *offLineView = [[OffLineView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+            offLineView.orderNo = orderNO;
+            offLineView.weiXianCode = self.postModel.wechatId;
+            offLineView.telephone = self.postModel.mobile;
+            [offLineView loadDate];
+            [[UIApplication sharedApplication].keyWindow addSubview:offLineView];
         }
         
     }else{
@@ -148,6 +157,7 @@
     webShow.title = @"会员充值说明";
     [self.navigationController pushViewController:webShow animated:YES];
 }
+
 
 - (IBAction)commitBtnClick:(id)sender {
     [self commitClient];
@@ -182,14 +192,18 @@
                           @"channel":itemModel.channel,
                           @"amounts":@([checkCode doubleValue]),
                           @"schemeSub":self.cashPayMemt.submitParaDicScheme,
-                          @"postboyId":self.legId
+                          @"postboyId":self.postModel._id
                         };
     } @catch (NSException *exception) {
        return;
     }
     [self showLoadingText:@"正在提交订单"];
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkSchemePayState:) name:@"NSNotificationapplicationWillEnterForeground" object:nil];
-    [self.memberMan rechargeSms:rechargeInfo];
+    if ([itemModel.channel isEqualToString:@"OFFLINE"]) { //线下支付
+        [self.memberMan rechargeOffline:rechargeInfo];
+    } else {
+        [self.memberMan rechargeSms:rechargeInfo];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

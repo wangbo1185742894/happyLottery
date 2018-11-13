@@ -200,6 +200,11 @@
         legCashInfoVC.postboyModel = legModel;
         [self.navigationController pushViewController:legCashInfoVC animated:YES];
     } else {
+        PostboyAccountModel *legModel = self.personArray[indexPath.row];
+        if (![legModel.overline boolValue]){
+            [self showPromptViewWithText:@"该小哥已离线，请选择其他小哥转账" hideAfter:1.7];
+            return;
+        }
         for (PostboyAccountModel *model  in self.personArray) {
             model.isSelect = NO;
         }

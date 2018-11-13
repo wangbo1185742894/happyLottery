@@ -93,6 +93,7 @@
 #define APIunBindBankCard          @"unBindBankCard"
 #define APIrecharge                @"recharge"
 #define APIwithdraw                @"withdraw"
+#define APIrechargeOffline         @"rechargeOffline"  //线下充值
 #define APIwithdrawByPostboy       @"withdrawByPostboy"  //会员提现(小哥账户)
 #define APIvalidatePaypwd          @"validatePaypwd"
 #define APIsignIn                  @"signIn"

@@ -10,18 +10,13 @@
 #import "ChannelModel.h"
 #import "PayTypeListCell.h"
 #import "SchemeCashPayment.h"
+#import "PostboyAccountModel.h"
 
 
 @interface LegRechargeOrderViewController : BaseViewController
 
 //订单金额
 @property (nonatomic , copy) NSString *orderCost;
-
-@property (nonatomic , copy) NSString *legYuE;
-
-@property (nonatomic , copy) NSString *legId;
-
-@property (nonatomic , copy) NSString *legName;
 
 @property(nonatomic,strong)SchemeCashPayment *cashPayMemt;
 
@@ -30,5 +25,7 @@
 @property (nonatomic , copy) NSString *schemeNo;
 
 @property(assign,nonatomic)BOOL isYouhua;
+
+@property(nonatomic,strong)PostboyAccountModel *postModel;
 
 @end

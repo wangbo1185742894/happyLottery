@@ -364,7 +364,7 @@
 }
 - (IBAction)commitBtnClick:(id)sender {
     if (![_curModel.overline boolValue]) {
-        [self showPromptViewWithText:@"改小哥已离线，请选择其他小哥转账" hideAfter:1.7];
+        [self showPromptViewWithText:@"该小哥已离线，请选择其他小哥转账" hideAfter:1.7];
         return;
     }
     [self commitClient];

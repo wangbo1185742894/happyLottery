@@ -10,9 +10,6 @@
 #define AlreadyZhiFu     @"线下已支付"
 #define AlreadyChuPiao   @"彩票站已出票"
 #define DotChuPiao       @"彩票站未出票"
-#define PaiJiang         @"派奖中"
-#define AlreadyPaiJiang  @"已派奖"
-#define NotWin           @"未中奖"
 #define WaitKaiJiang     @"待开奖"
 #define ReturnMoney      @"已退款"
 
@@ -57,25 +54,13 @@
     [super setFrame:frame];
 }
 
-
-/**
- 追号未结束
- 1.已支付-追号中
- 2.已中奖  已支付-追号中-已中奖
- 
- 追号结束
- 1.未中奖   已支付-追号结束-未中奖
- 2.已中奖   已支付-追号结束-已中奖
- 3.全部出票失败  已支付—出票失败
- @param orderStatus 订单状态
- */
 - (void)loadZhuiHaoNewDate:(NSString *)orderStatus andWon:(NSString *)won{
     _zhiFuStatus.text = AlreadyZhiFu;
     [self.zhiFuImg setImage:[self imageWithState:NO]];
     self.imageHeightOne.constant = 10;
     _chuPiaoStatue.text = orderStatus;
     if ([orderStatus isEqualToString:@"追号中"]) {
-        if ([won isEqualToString:@"未中"]) { //未中奖
+        if ([won isEqualToString:@"未中"] || won.length == 0) { //未中奖
             [self.chuPiaoImg setImage:[self imageWithState:YES]];
             self.imageHeightTwo.constant = 14.5;
             self.zhongJiangImage.hidden = YES;
@@ -99,6 +84,11 @@
             _zhongJiangStatus.text = @"未中奖";
         }else if ([won isEqualToString:@"待开"]){
             _zhongJiangStatus.text = @"待开奖";
+            [self.chuPiaoImg setImage:[self imageWithState:YES]];
+            self.imageHeightTwo.constant = 14.5;
+            _zhongJiangStatus.hidden = YES;
+            self.zhongJiangImage.hidden = YES;
+            self.labelWidth.constant = self.chuPiaoImg.mj_x-30;
         }
         else {
             _zhongJiangStatus.text = @"已中奖";

@@ -91,7 +91,8 @@
 
 @end
 
-@interface SubscribeDetail : UserInfoBaseModel
+
+@interface LegSubscribeDetail : UserInfoBaseModel
 
 /** 会员卡号 账号*/
 @property(nonatomic,strong)NSString *  cardCode;
@@ -136,6 +137,41 @@
 
 /** 备注 */
 @property(nonatomic,strong)NSString *  remark;
+
+@end
+
+@interface SubscribeDetail : UserInfoBaseModel
+
+/** 会员卡号 账号*/
+@property(nonatomic,strong)NSString *  cardCode;
+
+/** 方案号*/
+@property(nonatomic,strong)NSString *  schemeNo;
+
+/** 彩种*/
+@property(nonatomic,strong)NSString *  lotteryType;
+
+/** 消费类型*/
+@property(nonatomic,strong)NSString * consumeType;
+
+/** 认购总金额 */
+@property(nonatomic,strong)NSString *  subAmounts;
+
+/** 退款总金额 */
+@property(nonatomic,strong)NSString *  refundAmounts ;
+
+/** 认购时间*/
+@property(nonatomic,strong)NSString *  subTime;
+
+/** 是否使用优惠卷*/
+@property(nonatomic,strong)NSString *  useCoupon;
+
+/** 抵扣金额 */
+@property(nonatomic,strong)NSString *  deduction;
+
+/** 实际支付金额 */
+@property(nonatomic,strong)NSString *  realSubAmounts;
+
 
 @end
 

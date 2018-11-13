@@ -32,7 +32,7 @@
             apiArray = @[API_listSubscribeDetail,API_getChasePrepayOrderList,API_listRechargeDetail,API_listBonusDetail,API_listWithdrawDetail,API_listHandselDetail,API_listFollowDetail,API_listAgentCommissionDetail,APIgetRedPacketOrderList];
     }else{
         titleArray = @[@"购彩",@"追号",@"充值",@"派奖",@"提现",@"彩金",@"佣金",@"红包"];
-        fanyongindex = 6;
+        fanyongindex = 8;  //没有返佣
         apiArray = @[API_listSubscribeDetail,API_getChasePrepayOrderList,API_listRechargeDetail,API_listBonusDetail,API_listWithdrawDetail,API_listHandselDetail,API_listFollowDetail,APIgetRedPacketOrderList];
     }
 
