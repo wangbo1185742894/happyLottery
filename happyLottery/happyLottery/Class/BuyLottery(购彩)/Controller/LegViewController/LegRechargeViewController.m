@@ -604,6 +604,11 @@
     });
 }
 
+
+- (void)alreadyRechare{
+    [self.memberMan queryRecharge:@{@"channel":itemModel.channel, @"orderNo":orderNO}];
+}
+
 -(void)queryRecharge:(NSDictionary *)Info IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     [self hideLoadingView];
     if (success == YES) {
