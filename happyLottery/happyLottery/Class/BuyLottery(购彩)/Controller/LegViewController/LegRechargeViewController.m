@@ -193,6 +193,25 @@
     return itemrechList;
 }
 
+-(void)reloadRechargeCostBySelect:(NSArray *)rechList{
+    int i = 0;
+    for (RechargeModel  *model in rechList) {
+        for (UILabel *itemDic in self.labCaijin) {
+            if (itemDic.tag == 200 + i) {
+                if ([model.handsel doubleValue] == 0) {
+                    itemDic.hidden = YES;
+                }else{
+                    itemDic.text = [NSString stringWithFormat:@"送 %.1f",[model.handsel doubleValue]];
+                    itemDic.hidden = NO;
+                }
+                
+            }
+        }
+        i ++;
+    }
+}
+
+
 //显示充几送几
 -(void)reloadRechargeCost:(NSArray *)rechList{
     int i = 0;
@@ -517,39 +536,69 @@
         model.isSelect = NO;
     }
     channelList[indexPath.row].isSelect = YES;
-    [self reloadRechargeCost:[self getRechList]];
+    [self reloadRechargeCostBySelect:[self getRechList]];
     [self.tabChannelList reloadData];
 }
 - (IBAction)actionSelectItem:(UIButton *)sender {
     [self setItem:sender];
 }
 
--(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     [self setItem:nil];
-    if (range.location == 10) {
+    //不能重复输入小数点
+    if ([string isEqualToString:@"."] && [textField.text rangeOfString:@"."].location != NSNotFound) {
         return NO;
     }
-    if ([string isEqualToString:@""]) {
-        return YES;
+    NSMutableString*numStr = [[NSMutableString alloc]initWithString:textField.text];
+    [numStr appendString:string];
+    
+    //小数点后限制输入2位
+    if ([numStr rangeOfString:@"."].location != NSNotFound) {
+        NSRange range = [numStr rangeOfString:@"."];
+        NSString *code = [numStr substringFromIndex:range.location + range.length];
+        if (code.length > 2) {
+            return NO;
+        }
     }
     
-    NSString * regex;
-    regex = @"^[0-9.]";
-    
+    // 只能输入10000000以下的数据
+    if ([numStr doubleValue]>9999999.99) {
+        return NO;
+    }
+    NSString * regex = @"^[0-9.]";
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
-    BOOL isMatch = [pred evaluateWithObject:string];
-    if (isMatch) {
-        NSString *stringRegex = @"(\\+|\\-)?(([0]|(0[.]\\d{0,2}))|([1-9]\\d{0,4}(([.]\\d{0,2})?)))?";
-        NSPredicate *pred1 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", stringRegex];
-        BOOL isMatch1 = [pred1 evaluateWithObject:[NSString stringWithFormat:@"%@%@",textField.text,string]];
-        
-        return isMatch1;
-    }else{
-
+    if (![pred evaluateWithObject:string]&& ![string isEqualToString:@""]){
         return NO;
     }
-
+    return YES;
 }
+
+//-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+//    [self setItem:nil];
+//    if (range.location == 10) {
+//        return NO;
+//    }
+//    if ([string isEqualToString:@""]) {
+//        return YES;
+//    }
+//
+//    NSString * regex;
+//    regex = @"^[0-9.]";
+//
+//    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+//    BOOL isMatch = [pred evaluateWithObject:string];
+//    if (isMatch) {
+//        NSString *stringRegex = @"(\\+|\\-)?(([0]|(0[.]\\d{0,2}))|([1-9]\\d{0,4}(([.]\\d{0,2})?)))?";
+//        NSPredicate *pred1 = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", stringRegex];
+//        BOOL isMatch1 = [pred1 evaluateWithObject:[NSString stringWithFormat:@"%@%@",textField.text,string]];
+//
+//        return isMatch1;
+//    }else{
+//
+//        return NO;
+//    }
+//
+//}
 
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     NSString *strUrl = [NSString stringWithFormat:@"%@",request.URL];

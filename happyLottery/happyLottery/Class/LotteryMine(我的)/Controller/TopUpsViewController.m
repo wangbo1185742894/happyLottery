@@ -459,7 +459,6 @@
 }
 
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
-    //之前方式 被支付宝限制了  所以暂时改为此 请实时关注  lyw
     if ([itemModel.channel isEqualToString:@"HAWKEYE_ALI"]) {
         if ([[UIApplication sharedApplication] canOpenURL: [NSURL URLWithString:@"alipay://"]] == YES) {
             [[UIApplication sharedApplication] openURL:request.URL];
