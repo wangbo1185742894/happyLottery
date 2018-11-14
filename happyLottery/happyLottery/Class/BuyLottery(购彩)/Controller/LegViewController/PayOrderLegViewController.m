@@ -181,6 +181,13 @@
  @param msg 错误信息描述
  */
 -(void)gotAvailableCoupon:(BOOL)success andPayInfo:(NSArray *)payInfo errorMsg:(NSString *)msg{
+    //请求小哥信息
+    ///
+    if (self.schemeNo == nil) {
+        [self.postboyMan recentPostboyAccount:@{@"cardCode":self.curUser.cardCode}];
+    }else {
+        [self.postboyMan getMemberPostboyAccount:@{@"cardCode":self.curUser.cardCode,@"postboyId":self.postBoyId}];
+    }
     [self hideLoadingView];
     if (success == NO || payInfo == nil ) {
         [self showPromptText:msg hideAfterDelay:1.7];
@@ -276,13 +283,7 @@
     
     ///
     [self MoneyLabSetWithYouHui];
-    //请求小哥信息
-    ///
-    if (self.schemeNo == nil) {
-        [self.postboyMan recentPostboyAccount:@{@"cardCode":self.curUser.cardCode}];
-    }else {
-        [self.postboyMan getMemberPostboyAccount:@{@"cardCode":self.curUser.cardCode,@"postboyId":self.postBoyId}];
-    }
+    
 }
 
 
@@ -521,6 +522,7 @@
     legRechargrVC.orderCost = self.labRealCost.text;
     legRechargrVC.cashPayMemt = schemeCashModel;
     legRechargrVC.isYouhua = self.isYouhua;
+    legRechargrVC.lotteryName = self.lotteryName;
     [self.navigationController pushViewController:legRechargrVC animated:YES];
 }
 

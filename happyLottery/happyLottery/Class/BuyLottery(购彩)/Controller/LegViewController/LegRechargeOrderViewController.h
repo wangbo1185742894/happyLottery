@@ -26,6 +26,8 @@
 
 @property(assign,nonatomic)BOOL isYouhua;
 
+@property (nonatomic , copy) NSString *lotteryName;//彩种名称
+
 @property(nonatomic,strong)PostboyAccountModel *postModel;
 
 @end
