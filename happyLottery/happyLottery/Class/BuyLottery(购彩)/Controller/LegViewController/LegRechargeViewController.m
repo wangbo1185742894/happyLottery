@@ -375,7 +375,7 @@
             offLineView.weiXianCode = self.curModel.wechatId;
             offLineView.telephone = self.curModel.mobile;
             offLineView.delegate = self;
-            offLineView.liShiLsb.text =  @"注意：1.在向小哥转账时，将此订单方案号一并发给小哥";
+            offLineView.liShiLsb.text =  @"注意：在向小哥转账时，将此充值订单号一并发给小哥";
             [offLineView loadDate];
             [self.view addSubview:offLineView];
         }else if ([itemModel.channel isEqualToString:@"BILLS_ALI"]){

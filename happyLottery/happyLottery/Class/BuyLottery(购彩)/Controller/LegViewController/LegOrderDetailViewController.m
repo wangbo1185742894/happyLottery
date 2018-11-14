@@ -132,32 +132,39 @@
           FASSchemeDetailViewController *detailCV = [[FASSchemeDetailViewController alloc]init];
           detailCV.schemeNo = self.schemeNo;
           detailCV.schemeType = @"BUY_FOLLOW";
+          detailCV.deadLineTime = dateStr;
           [self.navigationController pushViewController:detailCV animated:YES];
         }else if ( self.schemetype == SchemeTypeFaqiGenDan){
           FASSchemeDetailViewController *detailCV = [[FASSchemeDetailViewController alloc]init];
           detailCV.schemeNo = self.schemeNo;
+          detailCV.deadLineTime = dateStr;
           detailCV.schemeType = @"BUY_INITIATE";
         [self.navigationController pushViewController:detailCV animated:YES];
             }else{
                 if ([self.lotteryName isEqualToString:@"胜负14场"] || [self.lotteryName isEqualToString:@"任选9场"]) {
                     CTZQSchemeDetailViewController *schemeVC = [[CTZQSchemeDetailViewController alloc]init];
+                    schemeVC.deadLineTime = dateStr; 
                     schemeVC.schemeNO = self.schemeNo;
                     [self.navigationController pushViewController:schemeVC animated:YES];
                 }else if([self.lotteryName isEqualToString:@"大乐透"]||[self.lotteryName isEqualToString:@"双色球"] || [self.lotteryName isEqualToString:@"陕西11选5"] || [self.lotteryName isEqualToString:@"山东11选5"]){
                     DLTSchemeDetailViewController *schemeVC = [[DLTSchemeDetailViewController alloc]init];
                     schemeVC.schemeNO = self.schemeNo;
+                    schemeVC.deadLineTime = dateStr;
                     [self.navigationController pushViewController:schemeVC animated:YES];
                 }else if ([self.lotteryName isEqualToString:@"冠军"] || [self.lotteryName isEqualToString:@"冠亚军"]){
                     GYJSchemeDetailViewController *schemeVC = [[GYJSchemeDetailViewController alloc]init];
                     schemeVC.schemeNO = self.schemeNo;
+                    schemeVC.deadLineTime = dateStr;
                     [self.navigationController pushViewController:schemeVC animated:YES];
                 }else if ([self.lotteryName isEqualToString:@"竞彩篮球"]){
                     JCLQSchemeDetailViewController *schemeVC = [[JCLQSchemeDetailViewController alloc]init];
                     schemeVC.schemeNO = self.schemeNo;
+                    schemeVC.deadLineTime = dateStr;
                     [self.navigationController pushViewController:schemeVC animated:YES];
                 }else{
                     SchemeDetailViewController *schemeVC = [[SchemeDetailViewController alloc]init];
                     schemeVC.schemeNO = self.schemeNo;
+                    schemeVC.deadLineTime = dateStr;
                     [self.navigationController pushViewController:schemeVC animated:YES];
                 }
         

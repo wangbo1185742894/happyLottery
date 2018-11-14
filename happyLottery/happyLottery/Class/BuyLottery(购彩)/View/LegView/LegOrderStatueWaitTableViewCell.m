@@ -28,7 +28,7 @@
         [self.delegate actionToRecharge];
     } else {
         BaseViewController *baseVC = (BaseViewController *)[self getCurrentVC];
-        [baseVC showPromptText:@"方案已截期" hideAfterDelay:2.0];
+        [baseVC showPromptText:@"发单方案赛事已截期，不能继续支付" hideAfterDelay:2.0];
     }
 }
 

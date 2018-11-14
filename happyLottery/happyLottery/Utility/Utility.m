@@ -373,6 +373,21 @@
     return timeStr;
 }
 
+- (BOOL)timeCompareWithNSCalendarUnitMinute:(NSString *)timeStr {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *oldDate = [dateFormatter dateFromString:timeStr];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    // 比较时间
+    NSDateComponents *components = [calendar components:NSCalendarUnitMinute fromDate:[NSDate date] toDate:oldDate options:0];
+    if (components.minute >= 1) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+
 + (NSString *) literalStringTI: (double) ti {
     NSDate *now = [NSDate date];
     NSDate *aDate = [Utility dateFromTI: ti];

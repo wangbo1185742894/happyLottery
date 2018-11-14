@@ -8,6 +8,8 @@
 #import "BaseViewController.h"
 
 @interface JCLQSchemeDetailViewController : BaseViewController
+@property (nonatomic,strong) NSString *deadLineTime;
+
 @property(nonatomic,strong)NSString *imageName;
 @property(nonatomic,strong)NSString *schemeNO;
 

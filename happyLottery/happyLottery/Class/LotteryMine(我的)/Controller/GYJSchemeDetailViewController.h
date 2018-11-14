@@ -11,5 +11,7 @@
 @interface GYJSchemeDetailViewController : BaseViewController
 @property(nonatomic,strong)NSString *imageName;
 @property(nonatomic,strong)NSString *schemeNO;
+@property (nonatomic,strong) NSString *deadLineTime;
+
 @property (nonatomic,strong) LotteryTransaction *lotteryTransaction;
 @end

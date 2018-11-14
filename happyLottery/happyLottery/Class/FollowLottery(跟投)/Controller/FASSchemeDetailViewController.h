@@ -16,6 +16,8 @@
 
 @property (nonatomic,copy) NSString *schemeFromView;
 
+@property (nonatomic,strong) NSString *deadLineTime;
+
 @property(nonatomic,assign)BOOL h5Init;
 
 @end
