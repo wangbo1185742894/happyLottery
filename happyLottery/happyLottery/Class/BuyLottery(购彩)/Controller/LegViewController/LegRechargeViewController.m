@@ -359,6 +359,10 @@
             offLineView.liShiLsb.text =  @"注意：1.在向小哥转账时，将此订单方案号一并发给小哥";
             [offLineView loadDate];
             [self.view addSubview:offLineView];
+        }else if ([itemModel.channel isEqualToString:@"BILLS_ALI"]){
+            NSString *urlStr = [NSString stringWithFormat:@"alipays://platformapi/startapp?saId=10000007&qrcode=%@",payInfo[@"qrCode"]];
+            [self.payWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlStr]]];
+            orderNO = payInfo[@"orderNo"];
         }
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
