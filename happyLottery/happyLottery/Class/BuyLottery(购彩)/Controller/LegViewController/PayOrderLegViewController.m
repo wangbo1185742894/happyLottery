@@ -367,13 +367,7 @@
                     return;
                 }
             }
-            if ([self.lotteryName isEqualToString:@"大乐透"]||[self.lotteryName isEqualToString:@"双色球"]) {
-                //大乐透追号
-                [self.lotteryMan betChaseScheme:(LotteryTransaction *)self.basetransction andPostboyId:self.curModel._id];
-            } else if ([self.lotteryName isEqualToString:@"陕西11选5"]) {
-                //11选5追号
-                [self.lotteryMan betChaseSchemeZhineng:(LotteryTransaction *)self.basetransction andchaseList:self.zhuiArray andpostboyId:self.curModel._id];
-            }
+            [self rechargeZhuiHao];  //追号支付
            
         } else if(self.schemetype == SchemeTypeGenDan){
             if ([rechargeBtn.titleLabel.text isEqualToString:@"确认转账"] &&![_curModel.overline boolValue]) {
@@ -481,7 +475,12 @@
 -(void)validatePaypwdSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     [passInput removeFromSuperview];
     if (success == YES) {
-        [self rechargeSchemeByNo:self.schemeNo];
+        if (self.schemeNo != nil) {
+            [self rechargeSchemeByNo:self.schemeNo];
+        }else {
+            [self rechargeZhuiHao];
+        }
+        
     }else{
         [self showPromptText:msg hideAfterDelay:1.7];
     }
@@ -545,8 +544,21 @@
     [self rechareSchemeWithSchemeNo];
 }
 
+
+
 - (void)rechargeSchemeByNo:(NSString *)schemeNo{
     [self.lotteryMan schemeCashPayment:[self getTouzhuParams:self.curSelectCoupon != nil andSchemeNo:schemeNo]];
+}
+
+
+- (void)rechargeZhuiHao {
+    if ([self.lotteryName isEqualToString:@"大乐透"]||[self.lotteryName isEqualToString:@"双色球"]) {
+        //大乐透追号
+        [self.lotteryMan betChaseScheme:(LotteryTransaction *)self.basetransction andPostboyId:self.curModel._id];
+    } else if ([self.lotteryName isEqualToString:@"陕西11选5"]) {
+        //11选5追号
+        [self.lotteryMan betChaseSchemeZhineng:(LotteryTransaction *)self.basetransction andchaseList:self.zhuiArray andpostboyId:self.curModel._id];
+    }
 }
 
 

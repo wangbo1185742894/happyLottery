@@ -10,9 +10,21 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol LegOrderStatueWaitDelegate <NSObject>
+
+- (void)actionToRecharge;
+
+@end
+
 @interface LegOrderStatueWaitTableViewCell :
 UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UILabel *timeLab;
+
+@property (nonatomic,strong)NSString *timeStr;
+
+
+@property (weak, nonatomic) id<LegOrderStatueWaitDelegate>delegate;
 
 @end
 

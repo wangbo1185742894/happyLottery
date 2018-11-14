@@ -9,8 +9,6 @@
 
 #import "LegOrderMoneyTableViewCell.h"
 
-#define OrderStatueZhong(Money)     [NSString stringWithFormat:@"等待派奖%@元",Money];
-#define OrderStatuePai(Money)     [NSString stringWithFormat:@"已派奖%@元",Money];
 #define OrderStatueLose    @"很遗憾，祝您下次好运"
 #define OrderStatueTui(Money)     [NSString stringWithFormat:@"已退款%@元",Money];
 #define OrderStatueWait(Name)     [NSString stringWithFormat:@"%@已就位，请您尽快支付",Name];

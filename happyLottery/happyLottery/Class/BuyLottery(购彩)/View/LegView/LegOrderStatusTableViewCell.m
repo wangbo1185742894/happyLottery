@@ -26,9 +26,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *zhongJiangStatus;
 
 @property (weak, nonatomic) IBOutlet UIImageView *zhongJiangImage;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageHeightThree;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageHeightTwo;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageHeightOne;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *labelWidth;
 
 @end
@@ -56,36 +54,29 @@
 
 - (void)loadZhuiHaoNewDate:(NSString *)orderStatus andWon:(NSString *)won{
     _zhiFuStatus.text = AlreadyZhiFu;
-    [self.zhiFuImg setImage:[self imageWithState:NO]];
-    self.imageHeightOne.constant = 10;
+    [self imageWithState:NO andImage:self.zhiFuImg];
     _chuPiaoStatue.text = orderStatus;
     if ([orderStatus isEqualToString:@"追号中"]) {
         if ([won isEqualToString:@"未中"] || won.length == 0) { //未中奖
-            [self.chuPiaoImg setImage:[self imageWithState:YES]];
-            self.imageHeightTwo.constant = 14.5;
+            [self imageWithState:YES andImage:self.chuPiaoImg];
             self.zhongJiangImage.hidden = YES;
             _zhongJiangStatus.hidden = YES;
             self.labelWidth.constant = self.chuPiaoImg.mj_x-30;
         }else if ([won isEqualToString:@"已中"]){
-            [self.chuPiaoImg setImage:[self imageWithState:NO]];
-            self.imageHeightTwo.constant = 10;
-            [self.zhongJiangImage setImage:[self imageWithState:YES]];
-            self.imageHeightThree.constant = 14.5;
+            [self imageWithState:NO andImage:self.chuPiaoImg];
+            [self imageWithState:YES andImage:self.zhongJiangImage];
             _zhongJiangStatus.text = @"已中奖";
             self.labelWidth.constant = self.zhongJiangImage.mj_x-30;
         }
     } else if ([orderStatus isEqualToString:@"已停追"]||[orderStatus isEqualToString:@"撤销追号"]||[orderStatus isEqualToString:@"追号结束"]){
-        [self.chuPiaoImg setImage:[self imageWithState:NO]];
-        self.imageHeightTwo.constant = 10;
-        [self.zhongJiangImage setImage:[self imageWithState:YES]];
-        self.imageHeightThree.constant = 14.5;
+        [self imageWithState:NO andImage:self.chuPiaoImg];
+        [self imageWithState:YES andImage:self.zhongJiangImage];
         self.labelWidth.constant = self.zhongJiangImage.mj_x-30;
         if ([won isEqualToString:@"未中"]) {
             _zhongJiangStatus.text = @"未中奖";
         }else if ([won isEqualToString:@"待开"]){
             _zhongJiangStatus.text = @"待开奖";
-            [self.chuPiaoImg setImage:[self imageWithState:YES]];
-            self.imageHeightTwo.constant = 14.5;
+            [self imageWithState:YES andImage:self.chuPiaoImg];
             _zhongJiangStatus.hidden = YES;
             self.zhongJiangImage.hidden = YES;
             self.labelWidth.constant = self.chuPiaoImg.mj_x-30;
@@ -95,8 +86,7 @@
         }
     }
     else {  //全部出票失败
-        [self.chuPiaoImg setImage:[self imageWithState:YES]];
-        self.imageHeightTwo.constant = 14.5;
+        [self imageWithState:YES andImage:self.chuPiaoImg];
         _chuPiaoStatue.text = @"出票失败";
         self.zhongJiangImage.hidden = YES;
         _zhongJiangStatus.hidden = YES;
@@ -112,59 +102,40 @@
        [orderStatus isEqualToString:@"待开奖"]) {
         _chuPiaoStatue.text = AlreadyChuPiao;
         _zhongJiangStatus.text = orderStatus;
-        [self.zhiFuImg setImage:[self imageWithState:NO]];
-        self.imageHeightOne.constant = 10;
-
-        [self.chuPiaoImg setImage:[self imageWithState:NO]];
-        self.imageHeightTwo.constant = 10;
-
-        [self.zhongJiangImage setImage:[self imageWithState:YES]];
-        self.imageHeightThree.constant = 14.5;
+       [self imageWithState:NO andImage:self.zhiFuImg];
+       [self imageWithState:NO andImage:self.chuPiaoImg];
+       [self imageWithState:YES andImage:self.zhongJiangImage];
 
     }else if ([orderStatus isEqualToString:@"已出票"]||[orderStatus isEqualToString:@"部分出票"]) {
         _chuPiaoStatue.text = AlreadyChuPiao;
         _zhongJiangStatus.text = WaitKaiJiang;
-        [self.zhiFuImg setImage:[self imageWithState:NO]];
-        self.imageHeightOne.constant = 10;
-
-        [self.chuPiaoImg setImage:[self imageWithState:YES]];
-        self.imageHeightTwo.constant = 14.5;
-
-        [self.zhongJiangImage setImage:[self imageWithState:NO]];
-        self.imageHeightThree.constant = 10;
+        [self imageWithState:NO andImage:self.zhiFuImg];
+        [self imageWithState:YES andImage:self.chuPiaoImg];
+        [self imageWithState:NO andImage:self.zhongJiangImage];
 
     }else if ([orderStatus isEqualToString:@"出票失败"] || [orderStatus isEqualToString:@"已退款"]) {
         _chuPiaoStatue.text = DotChuPiao;
         _zhongJiangStatus.text = ReturnMoney;
-        [self.zhiFuImg setImage:[self imageWithState:NO]];
-        self.imageHeightOne.constant = 10;
-        
-        [self.chuPiaoImg setImage:[self imageWithState:NO]];
-        self.imageHeightTwo.constant = 10;
-        
-        [self.zhongJiangImage setImage:[self imageWithState:YES]];
-        self.imageHeightThree.constant = 14.5;
+        [self imageWithState:NO andImage:self.zhiFuImg];
+        [self imageWithState:NO andImage:self.chuPiaoImg];
+        [self imageWithState:YES andImage:self.zhongJiangImage];
     }else if ([orderStatus isEqualToString:@"出票中"]||[orderStatus isEqualToString:@"已支付"]){
         _chuPiaoStatue.text = @"出票中";
         _zhongJiangStatus.text = WaitKaiJiang;
-        [self.zhiFuImg setImage:[self imageWithState:NO]];
-        self.imageHeightOne.constant = 10;
-        
-        [self.chuPiaoImg setImage:[self imageWithState:YES]];
-        self.imageHeightTwo.constant = 14.5;
-        
-        [self.zhongJiangImage setImage:[self imageWithState:NO]];
-        self.imageHeightThree.constant = 10;
+        [self imageWithState:NO andImage:self.zhiFuImg];
+        [self imageWithState:YES andImage:self.chuPiaoImg];
+        [self imageWithState:NO andImage:self.zhongJiangImage];
     }
     self.labelWidth.constant = self.zhongJiangImage.mj_x-30;
 }
 
-- (UIImage *)imageWithState:(BOOL)now {
+- (UIImageView *)imageWithState:(BOOL)now  andImage:(UIImageView *)image{
     if (now) {
-        return [UIImage imageNamed:@"leg_orangeDa.png"];
+        [image setImage:[UIImage imageNamed:@"leg_orangeDa.png"]];
     } else {
-        return [UIImage imageNamed:@"leg_orange.png"];
+        [image setImage:[UIImage imageNamed:@"leg_orange.png"]];
     }
+    return image;
 }
 
 @end

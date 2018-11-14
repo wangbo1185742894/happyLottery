@@ -41,6 +41,9 @@
                         <state key="normal" title="继续支付">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
+                        <connections>
+                            <action selector="actionToRecharege:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="qDj-KM-vQ3"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>

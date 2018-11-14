@@ -166,6 +166,7 @@
     JCZQSchemeItem *model = [dataArray objectAtIndex:indexPath.row];
     LegOrderDetailViewController *detail = [[LegOrderDetailViewController alloc]init];
     detail.schemeNo = model.schemeNO;
+    detail.lotteryName = [model getLotteryByName];
     if(self.btnGendan.selected == YES){
         detail.schemetype = SchemeTypeGenDan;
     }else{

@@ -23,7 +23,6 @@
 
 @implementation OffLineView{
     
-    __weak IBOutlet UILabel *tiShiLab;
     __weak IBOutlet UILabel *orderNoLab;
 }
 
@@ -38,7 +37,6 @@
     self.backgroundColor = RGBACOLOR(37, 38, 38, 0.5);
     self.alertView.layer.masksToBounds = YES;
     self.alertView.layer.cornerRadius = 12;
-    tiShiLab.text = @"注意：1.在向小哥转账时，将此订单方案号一并发给小哥\n2.在小哥未确认订单前，建议不要关闭此页面，以免影响发单";
     self.alertLab.text = @"";
     return self;
 }
@@ -63,7 +61,8 @@
 }
 
 - (IBAction)actionOkBtn:(id)sender {
-    [self closeView];
+//    [self closeView];
+    [self.delegate alreadyRechare];
 }
 
 - (IBAction)actionToWeiXin:(id)sender {

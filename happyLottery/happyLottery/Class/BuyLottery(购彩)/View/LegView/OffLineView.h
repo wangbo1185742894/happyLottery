@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol OffLineViewDelegate <NSObject>
 
+- (void)alreadyRechare;
+
+@end
 
 @interface OffLineView : UIView
 
@@ -19,9 +23,12 @@
 
 @property (nonatomic,strong)NSString *telephone;
 
+@property (nonatomic,weak)id <OffLineViewDelegate>delegate;
+@property (weak, nonatomic) IBOutlet UILabel *liShiLsb;
+
 - (void)loadDate;
 
-
+- (void)closeView;
 
 
 @end

@@ -361,9 +361,10 @@
         return;
     }
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        FASSchemeDetailViewController *myOrderListVC = [[FASSchemeDetailViewController alloc]init];
+        LegOrderDetailViewController *myOrderListVC = [[LegOrderDetailViewController alloc]init];
         myOrderListVC.schemeNo = self.schemeNO;
-        myOrderListVC.schemeType = @"BUY_INITIATE";
+        myOrderListVC.schemetype = SchemeTypeFaqiGenDan;
+        myOrderListVC.lotteryName = self.lotteryName;
         NSMutableArray * vcS = [[NSMutableArray alloc]initWithArray:self.navigationController.viewControllers];
         [vcS addObject:myOrderListVC];
         self.navigationController.viewControllers = vcS;

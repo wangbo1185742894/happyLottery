@@ -25,7 +25,7 @@
 #import "OffLineView.h"
 #define KPayTypeListCell @"PayTypeListCell"
 
-@interface LegRechargeOrderViewController ()<MemberManagerDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,UITextFieldDelegate,UIWebViewDelegate,ChongZhiRulePopViewDelegate>
+@interface LegRechargeOrderViewController ()<MemberManagerDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,UITextFieldDelegate,UIWebViewDelegate,ChongZhiRulePopViewDelegate,OffLineViewDelegate>
 {
     NSMutableArray <ChannelModel *>*channelList;
     ChannelModel *itemModel;
@@ -34,6 +34,8 @@
     RechargeModel *selectRech;
     NSString *orderNO;
     ZLAlertView *itemAlert;
+    OffLineView *offLineView;
+    NSString *dateStr;
 }
 @property (weak, nonatomic) IBOutlet UILabel *realCost;
 @property (weak, nonatomic) IBOutlet UILabel *legYueE;
@@ -82,7 +84,7 @@
 
 - (void)getDeadLineDelegate:(NSString *)resultStr  errorMsg:(NSString *)msg{
     if (resultStr != nil) {
-        NSString *dateStr = resultStr;
+        dateStr = resultStr;
         self.infoAletLab.text = [NSString stringWithFormat:@"%@已接单，请在%@前完成支付", self.postModel.postboyName,[dateStr substringWithRange:NSMakeRange(11, 5)]];
     } else {
         self.infoAletLab.text = [NSString stringWithFormat:@"%@已接单，请尽快支付", self.postModel.postboyName];
@@ -137,17 +139,23 @@
         }else if ([itemModel.channel isEqualToString:@"OFFLINE"]){
             [self hideLoadingView];
             orderNO = payInfo;
-            OffLineView *offLineView = [[OffLineView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+            offLineView = [[OffLineView alloc]initWithFrame:[UIScreen mainScreen].bounds];
             offLineView.orderNo = orderNO;
             offLineView.weiXianCode = self.postModel.wechatId;
             offLineView.telephone = self.postModel.mobile;
+            offLineView.delegate = self;
+            offLineView.liShiLsb.text =  @"注意：1.在向小哥转账时，将此订单方案号一并发给小哥\n2.在小哥未确认订单前，建议不要关闭此页面，以免影响发单";
             [offLineView loadDate];
-            [[UIApplication sharedApplication].keyWindow addSubview:offLineView];
+            [self.view addSubview:offLineView];
         }
         
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
     }
+}
+
+- (void)alreadyRechare{
+    [self.memberMan queryRecharge:@{@"channel":itemModel.channel, @"orderNo":orderNO}];
 }
 
 - (IBAction)memberDetail:(id)sender{
@@ -160,7 +168,17 @@
 
 
 - (IBAction)commitBtnClick:(id)sender {
-    [self commitClient];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *oldDate = [dateFormatter dateFromString:dateStr];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    // 比较时间
+    NSDateComponents *components = [calendar components:NSCalendarUnitMinute fromDate:[NSDate date] toDate:oldDate options:0];
+    if (components.minute >= 1) {
+        [self commitClient];
+    } else {
+        [self showPromptText:@"方案已截期" hideAfterDelay:2.0];
+    }
 }
 //params - String cardCode 会员卡号, RechargeChannel channel 充值渠道, BigDecimal amounts 充值金额
 -(void)commitClient{
@@ -198,10 +216,11 @@
        return;
     }
     [self showLoadingText:@"正在提交订单"];
-     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkSchemePayState:) name:@"NSNotificationapplicationWillEnterForeground" object:nil];
+    
     if ([itemModel.channel isEqualToString:@"OFFLINE"]) { //线下支付
         [self.memberMan rechargeOffline:rechargeInfo];
     } else {
+         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkSchemePayState:) name:@"NSNotificationapplicationWillEnterForeground" object:nil];
         [self.memberMan rechargeSms:rechargeInfo];
     }
 }
@@ -264,22 +283,20 @@
 
 
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
-    
-    [[UIApplication sharedApplication] openURL:request.URL];
-//    NSString *strUrl = [NSString stringWithFormat:@"%@",request.URL];
-//    if ([strUrl hasPrefix:@"alipays"]) {
-//        if ([[UIApplication sharedApplication] canOpenURL: [NSURL URLWithString:@"alipay://"]] == YES) {
-//            [[UIApplication sharedApplication] openURL:request.URL];
-//        }else{
-//            [self showPromptText:@"您未安装支付宝客服端，请先安装！" hideAfterDelay:1.7];
-//        }
-//    }
-//
-//    if ([strUrl hasPrefix:@"weixin"]) {
-//        if ([[UIApplication sharedApplication] canOpenURL: [NSURL URLWithString:@"weixin://"]] == YES) {
-//            [[UIApplication sharedApplication] openURL:request.URL];
-//        }
-//    }
+    NSString *strUrl = [NSString stringWithFormat:@"%@",request.URL];
+    if ([strUrl hasPrefix:@"alipays"]) {
+        if ([[UIApplication sharedApplication] canOpenURL: [NSURL URLWithString:@"alipay://"]] == YES) {
+            [[UIApplication sharedApplication] openURL:request.URL];
+        }else{
+            [self showPromptText:@"您未安装支付宝客服端，请先安装！" hideAfterDelay:1.7];
+        }
+    }
+
+    if ([strUrl hasPrefix:@"weixin"]) {
+        if ([[UIApplication sharedApplication] canOpenURL: [NSURL URLWithString:@"weixin://"]] == YES) {
+            [[UIApplication sharedApplication] openURL:request.URL];
+        }
+    }
     return YES;
 }
 
@@ -315,13 +332,21 @@
 -(void)queryRecharge:(NSDictionary *)Info IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     [self hideLoadingView];
     if (success == YES) {
+        if ([itemModel.channel isEqualToString:@"OFFLINE"]) {
+            [offLineView closeView];
+        }
         [self showPromptText:@"支付成功" hideAfterDelay:1.7];
         [self paySuccess];
 //        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //            [self.navigationController popViewControllerAnimated:YES];
 //        });
     }else{
-        [self showPromptText:msg hideAfterDelay:1.7];
+        if ([itemModel.channel isEqualToString:@"OFFLINE"]) {
+            [self showPromptText:@"请等待小哥确认" hideAfterDelay:1.7];
+        }else {
+            [self showPromptText:msg hideAfterDelay:1.7];
+        }
+        
     }
 }
 

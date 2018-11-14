@@ -15,9 +15,10 @@
 #import "YinLanPayManage.h"
 #import "PostboyAccountModel.h"
 #import "LegSelectViewController.h"
+#import "OffLineView.h"
 #define KPayTypeListCell @"PayTypeListCell"
 
-@interface LegRechargeViewController ()<MemberManagerDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,PostboyManagerDelegate,UITextFieldDelegate,UIWebViewDelegate,ChongZhiRulePopViewDelegate,SelectModelDelegate>
+@interface LegRechargeViewController ()<MemberManagerDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,PostboyManagerDelegate,UITextFieldDelegate,UIWebViewDelegate,ChongZhiRulePopViewDelegate,SelectModelDelegate,OffLineViewDelegate>
 {
     NSMutableArray <ChannelModel *>*channelList;
     ChannelModel *itemModel;
@@ -45,7 +46,9 @@
 @property (nonatomic,strong)PostboyAccountModel *curModel;
 @end
 
-@implementation LegRechargeViewController
+@implementation LegRechargeViewController{
+    OffLineView *offLineView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -345,8 +348,18 @@
         }else if ([itemModel.channel isEqualToString:@"YUE"]){
             [self showPromptText:@"充值成功" hideAfterDelay:2];
             [self.navigationController popViewControllerAnimated:YES];
+        }else if ([itemModel.channel isEqualToString:@"OFFLINE"]){
+            [self hideLoadingView];
+            orderNO = payInfo;
+            offLineView = [[OffLineView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+            offLineView.orderNo = orderNO;
+            offLineView.weiXianCode = self.curModel.wechatId;
+            offLineView.telephone = self.curModel.mobile;
+            offLineView.delegate = self;
+            offLineView.liShiLsb.text =  @"注意：1.在向小哥转账时，将此订单方案号一并发给小哥";
+            [offLineView loadDate];
+            [self.view addSubview:offLineView];
         }
-        
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
     }
@@ -427,8 +440,12 @@
        return;
     }
     [self showLoadingText:@"正在提交订单"];
-     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkSchemePayState:) name:@"NSNotificationapplicationWillEnterForeground" object:nil];
-    [self.memberMan rechargeSms:rechargeInfo];
+    if ([itemModel.channel isEqualToString:@"OFFLINE"]) { //线下支付
+        [self.memberMan rechargeOffline:rechargeInfo];
+    } else {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkSchemePayState:) name:@"NSNotificationapplicationWillEnterForeground" object:nil];
+        [self.memberMan rechargeSms:rechargeInfo];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -563,6 +580,9 @@
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"NSNotificationapplicationWillEnterForeground" object:nil];
 }
 
+
+
+
 -(void)checkSchemePayState:(NSNotification *)notification{
 //    object    NSTaggedPointerString *    @"cancel"    0xa006c65636e61636
 //    if ([itemModel.channel isEqualToString:@"UNION"]) {
@@ -587,6 +607,9 @@
 -(void)queryRecharge:(NSDictionary *)Info IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     [self hideLoadingView];
     if (success == YES) {
+        if ([itemModel.channel isEqualToString:@"OFFLINE"]) {
+            [offLineView closeView];
+        }
         [self showPromptText:@"充值成功" hideAfterDelay:1.7];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self.navigationController popViewControllerAnimated:YES];
@@ -604,7 +627,12 @@
 //            [alert showAlertWithSender:self];
 //            return;
 //        }
-        [self showPromptText:msg hideAfterDelay:1.7];
+        if ([itemModel.channel isEqualToString:@"OFFLINE"]) {
+            [self showPromptText:@"请等待小哥确认" hideAfterDelay:1.7];
+        }else {
+            [self showPromptText:msg hideAfterDelay:1.7];
+        }
+        
     }
 }
 

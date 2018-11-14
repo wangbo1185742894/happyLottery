@@ -17,6 +17,21 @@
     self.layer.cornerRadius = 8;
 }
 
+- (IBAction)actionToRecharege:(id)sender {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *oldDate = [dateFormatter dateFromString:self.timeStr];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    // 比较时间
+    NSDateComponents *components = [calendar components:NSCalendarUnitMinute fromDate:[NSDate date] toDate:oldDate options:0];
+    if (components.minute >= 1) {
+        [self.delegate actionToRecharge];
+    } else {
+        BaseViewController *baseVC = (BaseViewController *)[self getCurrentVC];
+        [baseVC showPromptText:@"方案已截期" hideAfterDelay:2.0];
+    }
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

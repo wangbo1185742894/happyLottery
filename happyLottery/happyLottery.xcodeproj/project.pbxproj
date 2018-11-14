@@ -1414,6 +1414,8 @@
 		F97EE4F1211AE4B600EFCF08 /* genDanSuo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F97EE4EF211AE4B500EFCF08 /* genDanSuo@3x.png */; };
 		F97FD9CA2003026300B35A7C /* inputbox@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F97FD9C82003026200B35A7C /* inputbox@3x.png */; };
 		F97FD9CB2003026300B35A7C /* inputbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F97FD9C92003026200B35A7C /* inputbox@2x.png */; };
+		F98A284B219A9373004C1048 /* LegDetailFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F98A2848219A9371004C1048 /* LegDetailFooterView.xib */; };
+		F98A284C219A9373004C1048 /* LegDetailFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = F98A2849219A9372004C1048 /* LegDetailFooterView.m */; };
 		F98A602C20638893008C3132 /* GYJSchemeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F98A602A20638892008C3132 /* GYJSchemeDetailViewController.m */; };
 		F98A603120638EA9008C3132 /* GYJSchemeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F98A602E20638EA8008C3132 /* GYJSchemeViewCell.m */; };
 		F98A603220638EA9008C3132 /* GYJSchemeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F98A602F20638EA8008C3132 /* GYJSchemeViewCell.xib */; };
@@ -3819,6 +3821,9 @@
 		F97EE4EF211AE4B500EFCF08 /* genDanSuo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "genDanSuo@3x.png"; sourceTree = "<group>"; };
 		F97FD9C82003026200B35A7C /* inputbox@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inputbox@3x.png"; sourceTree = "<group>"; };
 		F97FD9C92003026200B35A7C /* inputbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inputbox@2x.png"; sourceTree = "<group>"; };
+		F98A2848219A9371004C1048 /* LegDetailFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LegDetailFooterView.xib; sourceTree = "<group>"; };
+		F98A2849219A9372004C1048 /* LegDetailFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LegDetailFooterView.m; sourceTree = "<group>"; };
+		F98A284A219A9372004C1048 /* LegDetailFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LegDetailFooterView.h; sourceTree = "<group>"; };
 		F98A602920638891008C3132 /* GYJSchemeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GYJSchemeDetailViewController.h; sourceTree = "<group>"; };
 		F98A602A20638892008C3132 /* GYJSchemeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYJSchemeDetailViewController.m; sourceTree = "<group>"; };
 		F98A602E20638EA8008C3132 /* GYJSchemeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GYJSchemeViewCell.m; sourceTree = "<group>"; };
@@ -7762,6 +7767,9 @@
 		F9DB2CAB2189610800D4F95E /* LegView */ = {
 			isa = PBXGroup;
 			children = (
+				F98A284A219A9372004C1048 /* LegDetailFooterView.h */,
+				F98A2849219A9372004C1048 /* LegDetailFooterView.m */,
+				F98A2848219A9371004C1048 /* LegDetailFooterView.xib */,
 				F9E0FC0F219978DB008B09B5 /* OffLineView.h */,
 				F9E0FC11219978DC008B09B5 /* OffLineView.m */,
 				F9E0FC10219978DB008B09B5 /* OffLineView.xib */,
@@ -8427,6 +8435,7 @@
 				F9C3BA1820088D0100916F3C /* FeedBackHistoryViewController.xib in Resources */,
 				2D628B3E1FECAA9A0013D0E1 /* fengkuangjingcai-zhenshitouzhu-weixuanze@2x.png in Resources */,
 				2D1FECD921523C7C008794F8 /* rengouredjiesuo@2x.png in Resources */,
+				F98A284B219A9373004C1048 /* LegDetailFooterView.xib in Resources */,
 				F9B5D97F2060A9DE00C9F6DC /* flag380@2x.png in Resources */,
 				2D628B271FECA9C40013D0E1 /* touzhubeishujia@2x.png in Resources */,
 				F9330AAC2068DF73005BFF0B /* first@2x.png in Resources */,
@@ -9884,6 +9893,7 @@
 				2D7B13B4204E873D0035AE89 /* CTZQBet.m in Sources */,
 				F9BC6DD820C26E4C0037998B /* GroupApplyInfoViewController.m in Sources */,
 				F96658F41FF0D26A001DE8B9 /* BankCard.m in Sources */,
+				F98A284C219A9373004C1048 /* LegDetailFooterView.m in Sources */,
 				F9A6391E20A2D38300AA07C6 /* FASSchemeDetailViewController.m in Sources */,
 				2DBFB4B421781E570074B024 /* Code39.m in Sources */,
 				2D7B8DB420C556DB000EAFB1 /* CricleCenterViewController.m in Sources */,

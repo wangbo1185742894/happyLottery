@@ -42,10 +42,9 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="方案号：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MYa-q5-ddE">
-                            <rect key="frame" x="18" y="51" width="66" height="20"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="充值订单号:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MYa-q5-ddE">
+                            <rect key="frame" x="18" y="51" width="75.5" height="20"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="66" id="NPR-Jd-Bel"/>
                                 <constraint firstAttribute="height" constant="20" id="mkV-Ch-RVs"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -170,9 +169,9 @@
             </constraints>
             <connections>
                 <outlet property="alertView" destination="yeW-lR-uie" id="zrn-DM-OMN"/>
+                <outlet property="liShiLsb" destination="A6J-Ap-UWh" id="LrO-7M-42H"/>
                 <outlet property="okBtn" destination="o25-zh-eaT" id="rT8-24-a1M"/>
                 <outlet property="orderNoLab" destination="bI6-Ys-lBe" id="mld-dw-okU"/>
-                <outlet property="tiShiLab" destination="A6J-Ap-UWh" id="MlL-gm-hPh"/>
             </connections>
             <point key="canvasLocation" x="23.199999999999999" y="50.824587706146929"/>
         </view>

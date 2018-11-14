@@ -32,8 +32,10 @@
 #import "DateTools.h"
 #import "ZLAlertView.h"
 #import "X115LimitNum.h"
+#import "PayOrderLegViewController.h"
 //跳转到查遗漏的界面
 #import "OmitEnquiriesViewController.h"
+#import "BuyLotteryViewController.h"
 #define BackAlertTag 20
 
 
@@ -216,9 +218,13 @@
     sd115MissUrl = strUrl;
     [self addQmitButton];
 }
-- (void) getCurrentRound{
-    NSLog(@"开始请求奖期。");
-    [self.lotteryMan getSellIssueList:@{@"lotteryCode":self.lottery.identifier}];
+
+- (void) getCurrentRound{  //奖期刷新问题，因为定时器停不掉，所以先用此方法
+    if ([[self.navigationController.viewControllers firstObject] isKindOfClass:[BuyLotteryViewController class]] && ([[self.navigationController.viewControllers lastObject] isKindOfClass:[TouZhuViewController class]] || [[self.navigationController.viewControllers lastObject] isKindOfClass:[LotteryPlayViewController class]])) {
+        NSLog(@"开始请求奖期。");
+        [self.lotteryMan getSellIssueList:@{@"lotteryCode":self.lottery.identifier}];
+    }
+   
 }
 
 -(void)getHisIssue{
@@ -402,7 +408,6 @@
 - (void) viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear: animated];
     [lotteryXHView resignFirstResponder];
- 
 }
 
 - (void) navigationBackToLastPage{

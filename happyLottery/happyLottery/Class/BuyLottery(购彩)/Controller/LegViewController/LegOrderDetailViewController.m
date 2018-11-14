@@ -22,6 +22,9 @@
 #import "GYJSchemeDetailViewController.h"
 #import "SchemeDetailViewController.h"
 #import "JCLQSchemeDetailViewController.h"
+#import "LegDetailFooterView.h"
+#import "PayOrderLegViewController.h"
+#import "WebShowViewController.h"
 
 #define KLegOrderStatusTableViewCell    @"LegOrderStatusTableViewCell"
 #define KLegOrderMoneyTableViewCell   @"LegOrderMoneyTableViewCell"
@@ -57,7 +60,7 @@
 #define OrderZhuiTingZhi(zhuiQi,Name) [NSString stringWithFormat:@"在追第%@期中奖，已停止追号。%@将在2小时内兑奖",zhuiQi,Name];
 
 
-@interface LegOrderDetailViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,PostboyManagerDelegate,OrderDetailDelegate,LegDetailDelegate>
+@interface LegOrderDetailViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,PostboyManagerDelegate,OrderDetailDelegate,LegDetailDelegate,LegOrderStatueWaitDelegate,LegDetailFooterDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *detailTableView;
 @property (nonatomic , strong) NSMutableArray<NSDictionary *> *infoArray;
@@ -74,6 +77,8 @@
     JCZQSchemeItem *schemeDetail;
     DLTChaseSchemeDetail *zhuiHaoDetail; //追号详情
     NSString *zhuihaoWon;
+    LegDetailFooterView *footView;
+    NSString *dateStr;
 }
 
 - (void)viewDidLoad {
@@ -91,6 +96,8 @@
     }
     self.infoArray = [NSMutableArray arrayWithCapacity:0];
     self.dateArray = [NSMutableArray arrayWithCapacity:0];
+    footView = [[LegDetailFooterView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, 110)];
+    footView.delegate =self;
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -196,7 +203,7 @@
 
 - (void)getDeadLineDelegate:(NSString *)resultStr  errorMsg:(NSString *)msg{
     if (resultStr != nil) {
-        NSString *dateStr = resultStr;
+        dateStr = resultStr;
         self.waitTime = [NSString stringWithFormat:@"请于%@前完成支付",[dateStr substringWithRange:NSMakeRange(5,11)]];
     } else {
         self.waitTime = [NSString stringWithFormat:@"请尽快支付"];
@@ -406,7 +413,7 @@
             self.zhuiHaoState = @"出票失败";
         }
         if (!chupiaoSuccess) {
-            legName = [NSString stringWithFormat:@"订单出票失败，已将退款返回到小哥账户中，请注意查看"];
+            legName = [NSString stringWithFormat:@"追号结束，已将退款返还至您在该账户的存款中，请查收"];
             dic = @{@"timeLab":self.orderPro.lastModifyTime,@"infoLab":legName};
             [self.infoArray insertObject:dic atIndex:0];
             return;
@@ -426,11 +433,18 @@
                 [self.infoArray insertObject:dic atIndex:0];
             }
         }else { //已中奖
-            for (OrderProfile *profile in self.dateArray) {
+            for (int i = 0; i < self.dateArray.count; i++) {
+                OrderProfile *profile = self.dateArray[i];
                 if ([profile.trBonus doubleValue]> 0) {
                     zhuihaoWon = @"已中";
                     if (profile.drawTime.length != 0) {
-                        legName = OrderZhuiTingZhi(profile.catchIndex,self.zhuiHaoPostBoyNam);
+                        if (i == self.dateArray.count - 1) {  //最后一期
+                            legName = [NSString stringWithFormat:@"在追第%@期中奖。%@将在2小时内兑奖",profile.catchIndex,self.zhuiHaoPostBoyNam];
+                        } else if ([self.orderPro.winStopStatus isEqualToString:@"NOTSTOP"]) {//中奖不停追
+                            legName = OrderZhuiHaoJiXu(profile.catchIndex,self.zhuiHaoPostBoyNam);
+                        } else {
+                            legName = OrderZhuiTingZhi(profile.catchIndex,self.zhuiHaoPostBoyNam);
+                        }
                         dic = @{@"timeLab":[self timeTransaction:profile.drawTime],@"infoLab":legName};
                         [self.infoArray insertObject:dic atIndex:0];
                     }
@@ -480,16 +494,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     if (section == 2) {
-        UIView *footer =  [[UIView alloc]initWithFrame:CGRectMake(6, 0, KscreenWidth-12, 40)];
-        footer.backgroundColor = [UIColor whiteColor];
-        UIButton *but = [UIButton buttonWithType:UIButtonTypeCustom];
-        [but addTarget:self action:@selector(reloadDateRefresh) forControlEvents:UIControlEventTouchUpInside];
-        but.frame = CGRectMake((KscreenWidth-70)/2, 5, 90, 30);
-        but.titleLabel.font = [UIFont systemFontOfSize:13];
-        [but setTitle:@"刷新订单状态" forState:0];
-        [but setTitleColor:SystemGreen forState:0];
-        [footer addSubview:but];
-        return footer;
+        return footView;
     }
     return [UIView new];
 }
@@ -517,7 +522,7 @@
         return 1;
     }
     if (section == 2) {
-        return 40;
+        return 110;
     }
     return 0.1;
 }
@@ -547,6 +552,8 @@
             LegOrderStatueWaitTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KLegOrderStatueWaitTableViewCell];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.timeLab.text = self.waitTime;
+            cell.delegate = self;
+            cell.timeStr = dateStr;
             return cell;
         }
         LegOrderStatusTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KLegOrderStatusTableViewCell];
@@ -595,6 +602,29 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
 }
+
+
+- (void)actionToRecharge{
+    PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
+    payVC.schemeNo = schemeDetail.schemeNO;
+    payVC.subscribed = [schemeDetail.betCost doubleValue];
+    payVC.postBoyId = schemeDetail.postboyId;
+    payVC.lotteryName = self.lotteryName;
+    [self.navigationController pushViewController:payVC animated:YES];
+}
+
+- (void)refreshDetail{
+    [self reloadDateRefresh];
+}
+
+- (void)lookLegDelegate{
+    NSURL *pathUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"postboy_agreement" ofType:@"html"]];
+    WebShowViewController *webShow = [[WebShowViewController alloc]init];
+    webShow.pageUrl = pathUrl;
+    webShow.title = @"代买服务协议";
+    [self.navigationController pushViewController:webShow animated:YES];
+}
+
 
 @end
 
