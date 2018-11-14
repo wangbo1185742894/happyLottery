@@ -25,6 +25,7 @@
 #import "LegDetailFooterView.h"
 #import "PayOrderLegViewController.h"
 #import "WebShowViewController.h"
+#import "PaySuccessViewController.h"
 
 #define KLegOrderStatusTableViewCell    @"LegOrderStatusTableViewCell"
 #define KLegOrderMoneyTableViewCell   @"LegOrderMoneyTableViewCell"
@@ -96,7 +97,7 @@
     }
     self.infoArray = [NSMutableArray arrayWithCapacity:0];
     self.dateArray = [NSMutableArray arrayWithCapacity:0];
-    footView = [[LegDetailFooterView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, 110)];
+    footView = [[LegDetailFooterView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, 130)];
     footView.delegate =self;
     // Do any additional setup after loading the view from its nib.
 }
@@ -123,7 +124,6 @@
 - (void)showOrderDetail{
     if (self.schemeNo == 0) {
         ZHDetailViewController *zhdetailViewCtr = [[ZHDetailViewController alloc]initWithNibName:@"ZHDetailViewController" bundle:nil];
-        
 //        zhdetailViewCtr.delegate = self;
         zhdetailViewCtr.order = self.orderPro;
         [self.navigationController pushViewController:zhdetailViewCtr animated:YES];
@@ -171,6 +171,17 @@
             }
     }
     
+}
+
+- (void)navigationBackToLastPage{
+    for (BaseViewController *baseVC in self.navigationController.viewControllers) {
+        if ([baseVC isKindOfClass:[PaySuccessViewController class]]) {
+            self.tabBarController.selectedIndex = 0;
+            [self.navigationController popToRootViewControllerAnimated:YES];
+            return ;
+        }
+    }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark 购彩
@@ -529,7 +540,7 @@
         return 1;
     }
     if (section == 2) {
-        return 110;
+        return 130;
     }
     return 0.1;
 }

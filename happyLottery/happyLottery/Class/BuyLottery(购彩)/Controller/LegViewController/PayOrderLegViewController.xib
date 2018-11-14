@@ -26,6 +26,7 @@
                 <outlet property="topViewCons" destination="NRt-5y-tps" id="9K1-ag-zzO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewDisBottom" destination="WQd-hl-BDr" id="da2-J3-zLI"/>
+                <outlet property="youHuiHeight" destination="sDR-aq-y5o" id="EeW-ju-egL"/>
                 <outlet property="youHuiQuanView" destination="caK-zA-Ygu" id="H3I-f9-8ha"/>
             </connections>
         </placeholder>
@@ -130,8 +131,8 @@
                                 <constraint firstItem="ntC-oE-Stb" firstAttribute="leading" secondItem="caK-zA-Ygu" secondAttribute="leading" constant="16" id="74H-Vt-aWc"/>
                                 <constraint firstAttribute="trailing" secondItem="Bv8-YO-2XA" secondAttribute="trailing" constant="5" id="FjM-e7-Ga0"/>
                                 <constraint firstItem="vMF-AI-6nT" firstAttribute="trailing" secondItem="mZk-H1-tTd" secondAttribute="trailing" id="OIB-6r-PE3"/>
+                                <constraint firstItem="Kqi-Dr-RyZ" firstAttribute="top" secondItem="ntC-oE-Stb" secondAttribute="bottom" constant="6" id="S7Y-FO-SEH"/>
                                 <constraint firstItem="vMF-AI-6nT" firstAttribute="centerY" secondItem="Kqi-Dr-RyZ" secondAttribute="centerY" id="Zgr-5d-aix"/>
-                                <constraint firstAttribute="bottom" secondItem="Kqi-Dr-RyZ" secondAttribute="bottom" constant="11" id="bk3-ql-qkp"/>
                                 <constraint firstAttribute="height" constant="61" id="sDR-aq-y5o"/>
                                 <constraint firstItem="mZk-H1-tTd" firstAttribute="centerY" secondItem="ntC-oE-Stb" secondAttribute="centerY" id="xic-bs-Ogv"/>
                             </constraints>
@@ -221,7 +222,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ut0-Np-ehE">
                             <rect key="frame" x="0.0" y="257" width="375" height="50"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付方式" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jGv-H7-4MS">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="代付小哥" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jGv-H7-4MS">
                                     <rect key="frame" x="16" y="16" width="62" height="18"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <nil key="textColor"/>
@@ -363,7 +364,7 @@
                 <constraint firstAttribute="trailing" secondItem="gh9-Vg-xh2" secondAttribute="trailing" id="TWb-gO-vD4"/>
                 <constraint firstAttribute="bottom" secondItem="gh9-Vg-xh2" secondAttribute="bottom" id="WQd-hl-BDr"/>
                 <constraint firstItem="Uzg-jq-HSG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Zj2-dc-qYj"/>
-                <constraint firstItem="1D8-lg-bAG" firstAttribute="top" secondItem="Uzg-jq-HSG" secondAttribute="bottom" constant="8" id="dmg-nr-mDK"/>
+                <constraint firstItem="1D8-lg-bAG" firstAttribute="top" secondItem="ut0-Np-ehE" secondAttribute="bottom" constant="1" id="nzH-sb-EEN"/>
             </constraints>
             <point key="canvasLocation" x="-706.39999999999998" y="-230.73463268365819"/>
         </view>

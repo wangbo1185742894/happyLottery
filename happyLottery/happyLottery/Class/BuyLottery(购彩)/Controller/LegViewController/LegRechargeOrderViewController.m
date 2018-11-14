@@ -85,7 +85,7 @@
 - (void)getDeadLineDelegate:(NSString *)resultStr  errorMsg:(NSString *)msg{
     if (resultStr != nil) {
         dateStr = resultStr;
-        self.infoAletLab.text = [NSString stringWithFormat:@"%@已接单，请在%@前完成支付", self.postModel.postboyName,[dateStr substringWithRange:NSMakeRange(11, 5)]];
+        self.infoAletLab.text = [NSString stringWithFormat:@"%@已接单，请在%@前完成支付", self.postModel.postboyName,[dateStr substringWithRange:NSMakeRange(5, 11)]];
     } else {
         self.infoAletLab.text = [NSString stringWithFormat:@"%@已接单，请尽快支付", self.postModel.postboyName];
     }

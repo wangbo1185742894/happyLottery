@@ -11,9 +11,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol ZhuanLegDelegate <NSObject>
+
+- (void)actionToWeiXin:(NSString *)weiXin;
+
+- (void)actionToTelephone:(NSString *)telephone;
+
+@end
+
 @interface ZhuanLegTableViewCell : UITableViewCell
 
-
+@property (nonatomic , weak)id<ZhuanLegDelegate>delegate;
 /**
  获取小哥cell详细信息
 

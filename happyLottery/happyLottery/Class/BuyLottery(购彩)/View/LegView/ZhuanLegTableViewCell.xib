@@ -27,7 +27,7 @@
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小哥名字" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yw8-8C-gE6">
                         <rect key="frame" x="52" y="12" width="62" height="18"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -69,6 +69,9 @@
                         <state key="normal" title="微信">
                             <color key="titleColor" red="0.1176470588" green="0.77647058820000003" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
+                        <connections>
+                            <action selector="actionToWeiXin:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="QqD-C7-726"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NAL-cl-Ic8">
                         <rect key="frame" x="112" y="53" width="45" height="25"/>
@@ -79,6 +82,9 @@
                         <state key="normal" title="电话">
                             <color key="titleColor" red="0.1176470588" green="0.77647058820000003" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
+                        <connections>
+                            <action selector="actionToTele:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="xb1-Ad-qKb"/>
+                        </connections>
                     </button>
                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HjR-HK-a81">
                         <rect key="frame" x="345" y="34" width="20" height="22"/>

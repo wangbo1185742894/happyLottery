@@ -7,6 +7,7 @@
 //
 
 #import "LegOrderStatueWaitTableViewCell.h"
+#import "Utility.h"
 
 @implementation LegOrderStatueWaitTableViewCell
 
@@ -18,18 +19,24 @@
 }
 
 - (IBAction)actionToRecharege:(id)sender {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSDate *oldDate = [dateFormatter dateFromString:self.timeStr];
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    // 比较时间
-    NSDateComponents *components = [calendar components:NSCalendarUnitMinute fromDate:[NSDate date] toDate:oldDate options:0];
-    if (components.minute >= 1) {
+    if ([Utility timeCompareWithNSCalendarUnitMinute:self.timeStr]) {
         [self.delegate actionToRecharge];
     } else {
         BaseViewController *baseVC = (BaseViewController *)[self getCurrentVC];
-        [baseVC showPromptText:@"发单方案赛事已截期，不能继续支付" hideAfterDelay:2.0];
+        [baseVC showPromptText:@"方案赛事已截期，不能继续支付" hideAfterDelay:2.0];
     }
+    
+//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+//    NSDate *oldDate = [dateFormatter dateFromString:self.timeStr];
+//    NSCalendar *calendar = [NSCalendar currentCalendar];
+//    // 比较时间
+//    NSDateComponents *components = [calendar components:NSCalendarUnitMinute fromDate:[NSDate date] toDate:oldDate options:0];
+//    if (components.minute >= 1) {
+//        [self.delegate actionToRecharge];
+//    } else {
+//
+//    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

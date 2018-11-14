@@ -46,6 +46,7 @@
     
     __weak IBOutlet UIButton *btnSelected;
     WBInputPopView *passInput;
+    __weak IBOutlet NSLayoutConstraint *youHuiHeight;
 }
 
 @property(assign,nonatomic)BOOL isShowOba;
@@ -81,6 +82,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     topViewCons.constant = NaviHeight;
+    rechargeBtn.layer.masksToBounds = YES;
+    rechargeBtn.layer.cornerRadius = 8;
+    if (self.schemetype == SchemeTypeZhuihao) { //追号不能使用优惠券
+        youHuiHeight.constant = 0;
+        _youHuiQuanView.hidden = YES;
+    } else {
+        youHuiHeight.constant = 61;
+        _youHuiQuanView.hidden = NO;
+    }
     if ([self isIphoneX]) {
         self.bottomHeightCons.constant = 50+34;
     }else{
@@ -135,7 +145,7 @@
         if (([postModel.totalBalance doubleValue] - [self.labRealCost.text doubleValue]) >= 0) {
             [rechargeBtn setTitle:@"确认支付" forState:0];
         }else {
-            [rechargeBtn setTitle:@"确认转账" forState:0];
+            [rechargeBtn setTitle:@"转账给代买小哥" forState:0];
         }
         rechargeBtn.userInteractionEnabled=YES;
         rechargeBtn.alpha=1.0f;
@@ -272,18 +282,24 @@
  根据当前卡号，从服务器请求用户信息
  */
 -(void)gotMemberByCardCode:(NSDictionary *)userInfo errorMsg:(NSString *)msg{
-    [self.memberMan getAvailableCoupon:@{@"cardCode":self.curUser.cardCode,@"amount":
-                                             @(self.subscribed)
-                                         }];
     User *user = [[User alloc]initWith:userInfo];
     self.curUser.balance = user.balance;
     self.curUser.sendBalance = user.sendBalance;
     self.curUser.score = user.score;
     self.labOrderCost.text = [NSString stringWithFormat:@"%.2f",self.subscribed];
-    
-    ///
-    [self MoneyLabSetWithYouHui];
-    
+    if (self.schemetype == SchemeTypeZhuihao) {
+        self.curSelectCoupon = nil;
+        if (self.schemeNo == nil) {
+            [self.postboyMan recentPostboyAccount:@{@"cardCode":self.curUser.cardCode}];
+        }else {
+            [self.postboyMan getMemberPostboyAccount:@{@"cardCode":self.curUser.cardCode,@"postboyId":self.postBoyId}];
+        }
+    }else {
+        [self.memberMan getAvailableCoupon:@{@"cardCode":self.curUser.cardCode,@"amount":
+                                                 @(self.subscribed)
+                                             }];
+        [self MoneyLabSetWithYouHui];
+    }
 }
 
 
@@ -352,7 +368,7 @@
     }
     if (self.schemeNo == nil) {
         if (self.schemetype == SchemeTypeZhuihao) {
-            if ([rechargeBtn.titleLabel.text isEqualToString:@"确认转账"]) {
+            if ([rechargeBtn.titleLabel.text isEqualToString:@"转账给代买小哥"]) {
                 [self showPromptViewWithText:@"追号方案仅支持小哥余额支付" hideAfter:1.7];
                 return;
             }
@@ -371,21 +387,21 @@
             [self rechargeZhuiHao];  //追号支付
            
         } else if(self.schemetype == SchemeTypeGenDan){
-            if ([rechargeBtn.titleLabel.text isEqualToString:@"确认转账"] &&![_curModel.overline boolValue]) {
+            if ([rechargeBtn.titleLabel.text isEqualToString:@"转账给代买小哥"] &&![_curModel.overline boolValue]) {
                 [self showPromptViewWithText:@"该小哥已离线，请选择其他小哥转账" hideAfter:1.7];
                 return;
             }
             NSDictionary *paraDic= @{@"schemeNo":self.diction[@"schemeNo"], @"cardCode":self.diction[@"cardCode"],@"multiple":self.diction[@"multiple"],@"postboyId":self.curModel._id};
             [self.lotteryMan followScheme:paraDic];
         } else {
-            if ([rechargeBtn.titleLabel.text isEqualToString:@"确认转账"] && ![_curModel.overline boolValue]) {
+            if ([rechargeBtn.titleLabel.text isEqualToString:@"转账给代买小哥"] && ![_curModel.overline boolValue]) {
                 [self showPromptViewWithText:@"该小哥已离线，请选择其他小哥转账" hideAfter:1.7];
                 return;
             }
             [self.lotteryMan betLotteryScheme:self.basetransction andPostboyId:self.curModel._id];
         }
     }else {
-        if ([rechargeBtn.titleLabel.text isEqualToString:@"确认转账"] && ![_curModel.overline boolValue]) {
+        if ([rechargeBtn.titleLabel.text isEqualToString:@"转账给代买小哥"] && ![_curModel.overline boolValue]) {
             [self showPromptViewWithText:@"该小哥已离线,不能转账,请重新下单" hideAfter:1.7];
             return;
         }

@@ -33,6 +33,13 @@
     // Initialization code
     self.layer.masksToBounds = YES;
     self.layer.cornerRadius = 8;
+    self.renZheng.layer.masksToBounds = YES;
+    self.renZheng.layer.cornerRadius = 4;
+    self.onlineLab.layer.masksToBounds = YES;
+    self.onlineLab.layer.cornerRadius = 4;
+    self.usedLeg.layer.masksToBounds = YES;
+    self.usedLeg.layer.cornerRadius = 4;
+    
 }
 
 - (void)setFrame:(CGRect)frame{

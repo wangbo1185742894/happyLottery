@@ -29,7 +29,9 @@
     [super awakeFromNib];
     // Initialization code
     self.layer.masksToBounds = YES;
-    self.layer.cornerRadius = 8;
+    self.layer.cornerRadius = 4;
+    self.renZheng.layer.masksToBounds = YES;
+    self.renZheng.layer.cornerRadius = 4;
 }
 
 - (void)setFrame:(CGRect)frame{

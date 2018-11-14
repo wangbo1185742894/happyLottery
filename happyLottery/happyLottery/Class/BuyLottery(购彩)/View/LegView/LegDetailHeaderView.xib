@@ -28,6 +28,8 @@
                         <constraint firstAttribute="height" constant="30" id="jB7-1T-HXk"/>
                         <constraint firstAttribute="width" constant="92" id="vOO-kf-y2R"/>
                     </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <state key="normal" image="leg_teleph.png">
                         <color key="titleColor" red="0.070588235289999995" green="0.78039215689999997" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
                     </state>

@@ -70,4 +70,5 @@
 +(NSString *)getCurrentDeviceModel;
 +(NSString *)toStringByfloat:(CGFloat )f;
 +(NSString *)toStringByInteger:(NSInteger )i;
++ (BOOL)timeCompareWithNSCalendarUnitMinute:(NSString *)timeStr;  //时间比较差一分钟
 @end

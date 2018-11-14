@@ -19,7 +19,7 @@
 
 
 
-@interface LegSelectViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,PostboyManagerDelegate>{
+@interface LegSelectViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,PostboyManagerDelegate,ZhuanLegDelegate>{
     
     __weak IBOutlet UITableView *personTableView;
     
@@ -161,6 +161,7 @@
         ZhuanLegTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KZhuanLegTableViewCell];
         [cell loadLegDate:[self.personArray objectAtIndex:indexPath.row]];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.delegate = self;
         personTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         return cell;
     }
@@ -213,6 +214,25 @@
         [tableView reloadData];
     }
     
+}
+
+
+- (void)actionToWeiXin:(NSString *)weiXin{
+    UIPasteboard *pboard = [UIPasteboard generalPasteboard];
+    if (weiXin == nil || weiXin.length == 0) {
+        [self showPromptText:@"暂未上传微信信息" hideAfterDelay:2.0];
+    }else{
+        [self showPromptText:@"微信号已复制到剪贴板" hideAfterDelay:2.0];
+         pboard.string = weiXin;
+    }
+}
+
+- (void)actionToTelephone:(NSString *)telephone{
+    if (telephone.length == 0) {
+        [self showPromptText:@"暂未上传手机号" hideAfterDelay:1.7];
+        return;
+    }
+    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",telephone]]];
 }
 
 - (IBAction)actionQueDing:(id)sender {

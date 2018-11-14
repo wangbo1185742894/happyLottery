@@ -26,7 +26,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *selectBtn;
 @property (weak, nonatomic) IBOutlet UIButton *weChatLab;
 @property (weak, nonatomic) IBOutlet UIButton *telephoneLab;
-
+@property (nonatomic,strong) NSString *weiXin;
+@property (nonatomic,strong) NSString *telephone;
 @end
 
 @implementation ZhuanLegTableViewCell
@@ -45,6 +46,10 @@
     self.telephoneLab.layer.cornerRadius = 4;
     self.telephoneLab.layer.borderColor = SystemGreen.CGColor;
     self.telephoneLab.layer.borderWidth = 1;
+    self.renZheng.layer.masksToBounds = YES;
+    self.renZheng.layer.cornerRadius = 4;
+    self.onlineLab.layer.masksToBounds = YES;
+    self.onlineLab.layer.cornerRadius = 4;
 }
 
 - (void)setFrame:(CGRect)frame{
@@ -58,7 +63,8 @@
 - (void)loadLegDate:(PostboyAccountModel *)legModel{
     self.selectBackGroup.selected = legModel.isSelect;
     self.legName.text = legModel.postboyName;
-    
+    self.weiXin = legModel.wechatId;
+    self.telephone = legModel.mobile;
     //小哥在线
     if ([legModel.overline boolValue]) {
         self.onlineLab.text = @"在线";
@@ -80,6 +86,13 @@
     } else {
         self.selectBtn.selected = NO;
     }
+}
+- (IBAction)actionToWeiXin:(id)sender {
+    [self.delegate actionToWeiXin:self.weiXin];
+}
+
+- (IBAction)actionToTele:(id)sender {
+    [self.delegate actionToTelephone:self.telephone];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

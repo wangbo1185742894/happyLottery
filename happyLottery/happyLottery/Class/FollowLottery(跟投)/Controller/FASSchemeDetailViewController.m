@@ -700,13 +700,17 @@
 }
 
 - (IBAction)actionToZhiFu:(id)sender {
-    PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
-    payVC.schemeNo = schemeDetail.schemeNO;
-    payVC.subscribed = [schemeDetail.betCost doubleValue];
-    payVC.postBoyId = schemeDetail.postboyId;
-    payVC.schemetype = [self.schemeType isEqualToString:@"BUY_INITIATE"]?SchemeTypeFaqiGenDan:SchemeTypeGenDan;
-    payVC.lotteryName = [schemeDetail.lottery isEqualToString:@"JCZQ"]?@"竞彩足球":@"竞彩篮球";
-    [self.navigationController pushViewController:payVC animated:YES];
+    if ( [Utility timeCompareWithNSCalendarUnitMinute:self.deadLineTime]) {
+        PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
+        payVC.schemeNo = schemeDetail.schemeNO;
+        payVC.subscribed = [schemeDetail.betCost doubleValue];
+        payVC.postBoyId = schemeDetail.postboyId;
+        payVC.schemetype = [self.schemeType isEqualToString:@"BUY_INITIATE"]?SchemeTypeFaqiGenDan:SchemeTypeGenDan;
+        payVC.lotteryName = [schemeDetail.lottery isEqualToString:@"JCZQ"]?@"竞彩足球":@"竞彩篮球";
+        [self.navigationController pushViewController:payVC animated:YES];
+    }else {
+        [self showPromptText:@"方案赛事已截期，不能继续支付" hideAfterDelay:2.0];
+    }
 }
 
 - (void)showAlertFromFollow{
