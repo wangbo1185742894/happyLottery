@@ -562,7 +562,7 @@
     }
     
     // 只能输入10000000以下的数据
-    if ([numStr doubleValue]>9999999.99) {
+    if ([numStr doubleValue]>999999.99) {
         return NO;
     }
     NSString * regex = @"^[0-9.]";
@@ -685,11 +685,7 @@
 //            [alert showAlertWithSender:self];
 //            return;
 //        }
-        if ([itemModel.channel isEqualToString:@"OFFLINE"]) {
-            [self showPromptText:@"请等待小哥确认" hideAfterDelay:1.7];
-        }else {
-            [self showPromptText:msg hideAfterDelay:1.7];
-        }
+        [self showPromptText:msg hideAfterDelay:1.7];
         
     }
 }

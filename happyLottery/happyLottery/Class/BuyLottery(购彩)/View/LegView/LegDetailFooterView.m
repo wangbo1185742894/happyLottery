@@ -11,7 +11,7 @@
 @interface LegDetailFooterView()
 
 @property (weak, nonatomic) IBOutlet UILabel *cornorView;
-@property (weak, nonatomic) IBOutlet UIButton *refreshBtn;
+
 
 @end
 

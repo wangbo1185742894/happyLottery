@@ -255,8 +255,14 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if ([schemeDetail isHasLeg]) {
-        if (section == 4) {
-            return 30;
+        if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) {
+            if (section == 3) {
+                return 30;
+            }
+        }else {
+            if (section == 4) {
+                return 30;
+            }
         }
     }
     return 0.01;
@@ -278,7 +284,7 @@
     else {
         if ([schemeDetail.schemeStatus isEqualToString:@"INIT"])// 未支付状态,显示方案信息，方案内容，认购信息提示语，支付按钮
         {
-            return 3;
+            return 4;
         }
     }
     if ([schemeDetail isHasLeg]) {
@@ -392,6 +398,9 @@
         }
         if (indexPath.section == 2){
             return 138;
+        }
+        if (indexPath.section == 3){
+            return 50;
         }
     }
     //支付后
@@ -515,21 +524,26 @@
         }
         else {
             if (indexPath.section == 1) {
-                if (indexPath.row == 0) {
-                    SchemeContaintCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeContaintCell];
-                    [cell reloadPassTypeDate:schemeDetail];
-                    [cell reloadDate:schemeDetail];
-                    return cell;
-                }
-                if (indexPath.row == 1) {
-                    SuoSchemeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSuoSchemeViewCell];
-                    [cell reloadDate:schemeDetail];
-                    return cell;
-                }
-                if (indexPath.row == 2) {
-                    SchemeOverCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeOverCell];
-                    [cell reloadDate:schemeDetail];
-                    return cell;
+                if ([schemeDetail.betContent isEqualToString:@"开奖后公开"]){
+                    if (indexPath.row == 0) {
+                        SchemeContaintCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeContaintCell];
+                        cell.delegate = self;
+                        [cell reloadDate:schemeDetail];
+                        [cell reloadPassTypeDate:schemeDetail];
+                        return cell;
+                    }
+                    if (indexPath.row == 1) {
+                        SuoSchemeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSuoSchemeViewCell];
+                        [cell reloadDate:schemeDetail];
+                        return cell;
+                    }
+                    if (indexPath.row == 2) {
+                        SchemeOverCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeOverCell];
+                        [cell reloadDate:schemeDetail];
+                        return cell;
+                    }
+                } else {
+                    return [self tableView:tableView cellForFangAnIndexPath:indexPath];
                 }
             }
         }
@@ -537,6 +551,12 @@
             SchemeBuyCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeBuyCell];
             [cell loadData:schemeDetail];
             return cell;
+        }
+        if (indexPath.section == 3){
+            LegInfoViewCell *legCell = [tableView dequeueReusableCellWithIdentifier:KLegInfoViewCell];
+            legCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            [legCell LoadData:schemeDetail.legName legMobile:schemeDetail.legMobile legWechat:schemeDetail.legWechatId];
+            return legCell;
         }
     }
     
@@ -611,7 +631,6 @@
     [cell loadData:schemeDetail];
     return cell;
 }
-
 
 -(void)goOrderList{
     JCLQOrderDetailInfoViewController *orderDetailVC =[[JCLQOrderDetailInfoViewController alloc]init];
@@ -700,17 +719,13 @@
 }
 
 - (IBAction)actionToZhiFu:(id)sender {
-    if ( [Utility timeCompareWithNSCalendarUnitMinute:self.deadLineTime]) {
-        PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
-        payVC.schemeNo = schemeDetail.schemeNO;
-        payVC.subscribed = [schemeDetail.betCost doubleValue];
-        payVC.postBoyId = schemeDetail.postboyId;
-        payVC.schemetype = [self.schemeType isEqualToString:@"BUY_INITIATE"]?SchemeTypeFaqiGenDan:SchemeTypeGenDan;
-        payVC.lotteryName = [schemeDetail.lottery isEqualToString:@"JCZQ"]?@"竞彩足球":@"竞彩篮球";
-        [self.navigationController pushViewController:payVC animated:YES];
-    }else {
-        [self showPromptText:@"方案赛事已截期，不能继续支付" hideAfterDelay:2.0];
-    }
+    PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
+    payVC.schemeNo = schemeDetail.schemeNO;
+    payVC.subscribed = [schemeDetail.betCost doubleValue];
+    payVC.postBoyId = schemeDetail.postboyId;
+    payVC.schemetype = [self.schemeType isEqualToString:@"BUY_INITIATE"]?SchemeTypeFaqiGenDan:SchemeTypeGenDan;
+    payVC.lotteryName = [schemeDetail.lottery isEqualToString:@"JCZQ"]?@"竞彩足球":@"竞彩篮球";
+    [self.navigationController pushViewController:payVC animated:YES];
 }
 
 - (void)showAlertFromFollow{
@@ -723,12 +738,22 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     if ([schemeDetail isHasLeg]) {
-        if (section == 4) {
-            OrderListHeaderView *header = [[[NSBundle mainBundle] loadNibNamed:@"OrderListHeaderView" owner:nil options:nil] lastObject];
-            header.backgroundColor = RGBCOLOR(253 , 252, 245);
-            header.titleLa.text = @"跑腿信息";
-            return header;
+        if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) {
+            if (section == 3) {
+                OrderListHeaderView *header = [[[NSBundle mainBundle] loadNibNamed:@"OrderListHeaderView" owner:nil options:nil] lastObject];
+                header.backgroundColor = RGBCOLOR(253 , 252, 245);
+                header.titleLa.text = @"跑腿信息";
+                return header;
+            }
+        } else {
+            if (section == 4) {
+                OrderListHeaderView *header = [[[NSBundle mainBundle] loadNibNamed:@"OrderListHeaderView" owner:nil options:nil] lastObject];
+                header.backgroundColor = RGBCOLOR(253 , 252, 245);
+                header.titleLa.text = @"跑腿信息";
+                return header;
+            }
         }
+       
     }
     return [UIView new];
 }

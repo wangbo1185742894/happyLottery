@@ -168,17 +168,7 @@
 
 
 - (IBAction)commitBtnClick:(id)sender {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSDate *oldDate = [dateFormatter dateFromString:dateStr];
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    // 比较时间
-    NSDateComponents *components = [calendar components:NSCalendarUnitMinute fromDate:[NSDate date] toDate:oldDate options:0];
-    if (components.minute >= 1) {
-        [self commitClient];
-    } else {
-        [self showPromptText:@"方案已截期" hideAfterDelay:2.0];
-    }
+    [self commitClient];
 }
 //params - String cardCode 会员卡号, RechargeChannel channel 充值渠道, BigDecimal amounts 充值金额
 -(void)commitClient{
@@ -341,12 +331,7 @@
 //            [self.navigationController popViewControllerAnimated:YES];
 //        });
     }else{
-        if ([itemModel.channel isEqualToString:@"OFFLINE"]) {
-            [self showPromptText:@"请等待小哥确认" hideAfterDelay:1.7];
-        }else {
-            [self showPromptText:msg hideAfterDelay:1.7];
-        }
-        
+        [self showPromptText:msg hideAfterDelay:1.7];
     }
 }
 

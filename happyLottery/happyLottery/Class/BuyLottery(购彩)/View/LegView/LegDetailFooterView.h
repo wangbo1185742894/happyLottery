@@ -21,4 +21,7 @@
 @property (weak,nonatomic)id<LegDetailFooterDelegate> delegate;
 
 
+@property (weak, nonatomic) IBOutlet UIButton *refreshBtn;
+
+
 @end

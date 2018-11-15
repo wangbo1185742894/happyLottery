@@ -99,6 +99,13 @@
     self.dateArray = [NSMutableArray arrayWithCapacity:0];
     footView = [[LegDetailFooterView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, 130)];
     footView.delegate =self;
+    if (self.schemeNo == nil) {//追号详情没有刷新按钮
+        footView.refreshBtn.hidden = YES;
+        footView.refreshBtn.userInteractionEnabled = NO;
+    } else {
+        footView.refreshBtn.hidden = NO;
+        footView.refreshBtn.userInteractionEnabled = YES;
+    }
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -187,7 +194,9 @@
 #pragma mark 购彩
 - (void)loadNewDate {
     [self showLoadingText:@"正在加载"];
-    [self.lotteryMan getSchemeRecordBySchemeNo:@{@"schemeNo":self.schemeNo}];
+    if (self.schemeNo != nil) {
+        [self.lotteryMan getSchemeRecordBySchemeNo:@{@"schemeNo":self.schemeNo}];
+    }
 }
 
 - (void) gotSchemeRecordBySchemeNo:(NSDictionary *)infoArray errorMsg:(NSString *)msg{
@@ -211,7 +220,9 @@
     if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) { //待支付状态
         [self loadInfoWhenWait];
         self.stateStr = @"待支付";
-        [self.lotteryMan getDeadLine:@{@"schemeNo":self.schemeNo}];
+        if (self.schemeNo != nil) {
+             [self.lotteryMan getDeadLine:@{@"schemeNo":self.schemeNo}];
+        }
     } else { //已支付
         [self reloadInfo];
         [self.detailTableView reloadData];
@@ -233,12 +244,16 @@
 - (void)loadInfoWhenWait{
     NSString *legName;
     NSDictionary *dic;
-    dic = @{@"timeLab":schemeDetail.createTime,@"infoLab":OrderTijiao};
-    [self.infoArray insertObject:dic atIndex:0];
+    if (schemeDetail.createTime != nil) {
+        dic = @{@"timeLab":schemeDetail.createTime,@"infoLab":OrderTijiao};
+        [self.infoArray insertObject:dic atIndex:0];
+    }
+    if (schemeDetail.createTime) {
+        legName = OrderYiJie(schemeDetail.legName);
+        dic = @{@"timeLab":schemeDetail.createTime,@"infoLab":legName};
+        [self.infoArray insertObject:dic atIndex:0];
+    }
     
-    legName = OrderYiJie(schemeDetail.legName);
-    dic = @{@"timeLab":schemeDetail.createTime,@"infoLab":legName};
-    [self.infoArray insertObject:dic atIndex:0];
 }
 
 

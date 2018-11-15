@@ -149,20 +149,16 @@
 }
 
 - (IBAction)actionGotoTouzhu:(id)sender {
-    if ([Utility timeCompareWithNSCalendarUnitMinute:self.deadLineTime]) {
-        PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
-        payVC.schemeNo = schemeDetail.schemeNO;
-        payVC.subscribed = [schemeDetail.betCost doubleValue];
-        payVC.postBoyId = schemeDetail.postboyId;
-        if ([schemeDetail.lottery isEqualToString:@"RJC"]){
-            payVC.lotteryName = @"任选9场";
-        }else if ([schemeDetail.lottery isEqualToString:@"SFC"]){
-            payVC.lotteryName = @"胜负14场";
-        }
-        [self.navigationController pushViewController:payVC animated:YES];
-    } else {
-        [self showPromptText:@"方案赛事已截期，不能继续支付" hideAfterDelay:2.0];
+    PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
+    payVC.schemeNo = schemeDetail.schemeNO;
+    payVC.subscribed = [schemeDetail.betCost doubleValue];
+    payVC.postBoyId = schemeDetail.postboyId;
+    if ([schemeDetail.lottery isEqualToString:@"RJC"]){
+        payVC.lotteryName = @"任选9场";
+    }else if ([schemeDetail.lottery isEqualToString:@"SFC"]){
+        payVC.lotteryName = @"胜负14场";
     }
+    [self.navigationController pushViewController:payVC animated:YES];
 }
 
 #pragma UITableViewDelegate,UITableViewDataSource

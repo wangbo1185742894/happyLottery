@@ -296,7 +296,7 @@
                                 <constraint firstAttribute="height" constant="36" id="h4B-6d-A5U"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                            <state key="normal" title="确认转账"/>
+                            <state key="normal" title="请选择代买小哥代付"/>
                             <connections>
                                 <action selector="actionToRechage:" destination="-1" eventType="touchUpInside" id="R5J-4s-PZx"/>
                             </connections>
