@@ -265,7 +265,7 @@
     
 
 }
-- (void) betLotteryScheme:(BaseTransaction *)transcation andBetContentArray:(NSArray *)contents{
+- (void) betLotteryScheme:(BaseTransaction *)transcation andBetContentArray:(NSArray *)contents andPostboyId:(NSString *)postboyId{
     
     void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
     {
@@ -288,6 +288,7 @@
     
     subSchemeDic[@"betContent"] = [self JsonFromId:contents];
     subSchemeDic[@"originalContent"] = transcation.originalContent;
+    subSchemeDic[@"postboyId"] = postboyId;
     SOAPRequest *request = [self requestForAPI: APIBetLotteryScheme withParam:@{@"params":[self actionEncrypt:[self JsonFromId:subSchemeDic]]}];
     [self newRequestWithRequest:request
                          subAPI:SUBAPISchemeService

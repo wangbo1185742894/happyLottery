@@ -403,16 +403,14 @@
         return;
     }
 
-        if (self.transcation.betCost * [self.beiSelectView.labContent.text integerValue] > 300000) {
+    if (self.transcation.betCost * [self.beiSelectView.labContent.text integerValue] > 300000) {
             [self showPromptText:@"单笔总金额不能超过30万元" hideAfterDelay:1.7];
             return;
-        }
+    }
     if (self.transcation.betCost / 2  * [self.beiSelectView.labContent.text integerValue]> 9999) {
         [self showPromptText:@"投注倍数不能大于9999倍" hideAfterDelay:2];
         return;
     }
-    
-    
 //    [self showLoadingText:@"正在提交订单"];
     
     self.transcation.maxPrize = 1.00;
@@ -450,7 +448,15 @@
                                  @"units":@"1"
                                  }];
     }
-    [self.lotteryMan betLotteryScheme:self.transcation andBetContentArray:betContent];
+    PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
+    payVC.basetransction = self.transcation;
+    payVC.lotteryName = @"竞彩足球";
+    payVC.subscribed = self.transcation.betCost * self.transcation.outBeicount;
+    payVC.schemetype = self.transcation.schemeType;
+    payVC.isYouhua = YES;
+    payVC.contentArray = betContent;
+    [self.navigationController pushViewController:payVC animated:YES];
+//    [self.lotteryMan betLotteryScheme:self.transcation andBetContentArray:betContent];
 }
 
 - (void) betedLotteryScheme:(NSString *)schemeNO errorMsg:(NSString *)msg{
@@ -467,10 +473,7 @@
     
     schemeCashModel.subCopies = 1;
         schemeCashModel.costType = CostTypeCASH;
-        if (self.transcation.betCost  > 300000) {
-            [self showPromptText:@"单笔总金额不能超过30万元" hideAfterDelay:1.7];
-            return;
-        }
+    
     [self hideLoadingView];
     payVC.schemetype = self.transcation.schemeType;
     schemeCashModel.subscribed = self.transcation.betCost * self.transcation.outBeicount;

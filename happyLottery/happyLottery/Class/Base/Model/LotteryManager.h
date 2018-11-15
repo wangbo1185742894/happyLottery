@@ -190,7 +190,7 @@ typedef enum EarningsType{
 - (void) betChaseSchemeZhineng:(LotteryTransaction *)transcation andchaseList:(NSArray *)chaseList;
 -(void)getFollowSchemeBySchemeNo:(NSDictionary *)para;
 
-- (void) betLotteryScheme:(BaseTransaction *)transcation andBetContentArray:(NSArray *)contents;
+- (void) betLotteryScheme:(BaseTransaction *)transcation andBetContentArray:(NSArray *)contents andPostboyId:(NSString *)postboyId;
     
 -(void)getCommonSetValue:(NSDictionary *)para andIndex:(NSInteger)index;
 -(void)getRedPacketHis:(NSDictionary *)para andUrl:(NSString *)strUrl;

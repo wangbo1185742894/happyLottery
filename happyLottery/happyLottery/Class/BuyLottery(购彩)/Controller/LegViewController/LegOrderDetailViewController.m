@@ -244,11 +244,11 @@
 - (void)loadInfoWhenWait{
     NSString *legName;
     NSDictionary *dic;
-    if (schemeDetail.createTime != nil) {
+    if (schemeDetail.createTime.length != 0) {
         dic = @{@"timeLab":schemeDetail.createTime,@"infoLab":OrderTijiao};
         [self.infoArray insertObject:dic atIndex:0];
     }
-    if (schemeDetail.createTime) {
+    if (schemeDetail.createTime.length != 0) {
         legName = OrderYiJie(schemeDetail.legName);
         dic = @{@"timeLab":schemeDetail.createTime,@"infoLab":legName};
         [self.infoArray insertObject:dic atIndex:0];
@@ -279,8 +279,16 @@
                 legName = OrderYiDaoChuPiaoBuFen(schemeDetail.legName);
                 dic = @{@"timeLab":schemeDetail.commitTime,@"infoLab":legName};
                 [self.infoArray insertObject:dic atIndex:0];
+            } else if (schemeDetail.sellEndTime.length != 0) {
+                legName = OrderYiDaoChuPiaoBuFen(schemeDetail.legName);
+                dic = @{@"timeLab":schemeDetail.sellEndTime,@"infoLab":legName};
+                [self.infoArray insertObject:dic atIndex:0];
             }
-            if (schemeDetail.sellEndTime.length != 0) { //退款
+            if (schemeDetail.commitTime.length != 0) { //退款
+                legName = DingDanFanHuan;
+                dic = @{@"timeLab":schemeDetail.commitTime,@"infoLab":legName};
+                [self.infoArray insertObject:dic atIndex:0];
+            } else if (schemeDetail.sellEndTime.length != 0){
                 legName = DingDanFanHuan;
                 dic = @{@"timeLab":schemeDetail.sellEndTime,@"infoLab":legName};
                 [self.infoArray insertObject:dic atIndex:0];
@@ -308,7 +316,11 @@
         
     } else if ([schemeDetail.schemeStatus isEqualToString:@"REPEAL"]|| [schemeDetail.ticketStatus isEqualToString:@"TICKET_FAILED"]){//出票失败
         self.stateStr = @"出票失败";
-        if (schemeDetail.sellEndTime.length != 0) {
+        if (schemeDetail.commitTime.length != 0) {
+            legName = OrderShiBai;
+            dic = @{@"timeLab":schemeDetail.commitTime,@"infoLab":legName};
+            [self.infoArray insertObject:dic atIndex:0];
+        } else if (schemeDetail.sellEndTime.length != 0) {
             legName = OrderShiBai;
             dic = @{@"timeLab":schemeDetail.sellEndTime,@"infoLab":legName};
             [self.infoArray insertObject:dic atIndex:0];
@@ -316,7 +328,11 @@
         
         if ([schemeDetail.schemeStatus isEqualToString:@"REPEAL"]) { //退款
             self.stateStr = @"已退款";
-            if (schemeDetail.sellEndTime.length != 0) {
+            if (schemeDetail.commitTime.length != 0) {
+                legName = DingDanFanHuan;
+                dic = @{@"timeLab":schemeDetail.commitTime,@"infoLab":legName};
+                [self.infoArray insertObject:dic atIndex:0];
+            } else if (schemeDetail.sellEndTime.length != 0){
                 legName = DingDanFanHuan;
                 dic = @{@"timeLab":schemeDetail.sellEndTime,@"infoLab":legName};
                 [self.infoArray insertObject:dic atIndex:0];
@@ -332,16 +348,21 @@
     }
     NSString *legName;
     NSDictionary *dic;
-    dic = @{@"timeLab":schemeDetail.createTime,@"infoLab":OrderTijiao};
-    [self.infoArray insertObject:dic atIndex:0];
+    if (schemeDetail.createTime.length != 0) {
+        dic = @{@"timeLab":schemeDetail.createTime,@"infoLab":OrderTijiao};
+        [self.infoArray insertObject:dic atIndex:0];
+    }
+    if (schemeDetail.createTime.length != 0) {
+        legName = OrderYiJie(schemeDetail.legName);
+        dic = @{@"timeLab":schemeDetail.createTime,@"infoLab":legName};
+        [self.infoArray insertObject:dic atIndex:0];
+    }
     
-    legName = OrderYiJie(schemeDetail.legName);
-    dic = @{@"timeLab":schemeDetail.createTime,@"infoLab":legName};
-    [self.infoArray insertObject:dic atIndex:0];
-    
-    legName = OrderYiZhiFu(schemeDetail.legName);
-    dic = @{@"timeLab":schemeDetail.ticketTime,@"infoLab":legName};
-    [self.infoArray insertObject:dic atIndex:0];
+    if (schemeDetail.ticketTime != nil) {
+        legName = OrderYiZhiFu(schemeDetail.legName);
+        dic = @{@"timeLab":schemeDetail.ticketTime,@"infoLab":legName};
+        [self.infoArray insertObject:dic atIndex:0];
+    }
     self.stateStr = @"已支付";
     [self refreshState];
 }
@@ -406,16 +427,19 @@
 - (void)reloadZhuiHaoInfo{
     NSString *legName;
     NSDictionary *dic;
-    dic = @{@"timeLab":self.orderPro.createTime,@"infoLab":OrderTijiao};
-    [self.infoArray insertObject:dic atIndex:0];
+    if (self.orderPro.createTime.length != 0) {
+        dic = @{@"timeLab":self.orderPro.createTime,@"infoLab":OrderTijiao};
+        [self.infoArray insertObject:dic atIndex:0];
+        
+        legName = OrderYiJie(self.zhuiHaoPostBoyNam);
+        dic = @{@"timeLab":self.orderPro.createTime,@"infoLab":legName};
+        [self.infoArray insertObject:dic atIndex:0];
+        
+        legName = OrderYiZhiFuZhuiHao(self.zhuiHaoPostBoyNam);
+        dic = @{@"timeLab":self.orderPro.createTime,@"infoLab":legName};
+        [self.infoArray insertObject:dic atIndex:0];
+    }
     
-    legName = OrderYiJie(self.zhuiHaoPostBoyNam);
-    dic = @{@"timeLab":self.orderPro.createTime,@"infoLab":legName};
-    [self.infoArray insertObject:dic atIndex:0];
-    
-    legName = OrderYiZhiFuZhuiHao(self.zhuiHaoPostBoyNam);
-    dic = @{@"timeLab":self.orderPro.createTime,@"infoLab":legName};
-    [self.infoArray insertObject:dic atIndex:0];
     self.stateStr = @"已支付";
     [self refreshStateZhuiHao];
 }
@@ -446,9 +470,11 @@
             self.zhuiHaoState = @"出票失败";
         }
         if (!chupiaoSuccess) {
-            legName = [NSString stringWithFormat:@"追号结束，已将退款返还至您在该账户的存款中，请查收"];
-            dic = @{@"timeLab":self.orderPro.lastModifyTime,@"infoLab":legName};
-            [self.infoArray insertObject:dic atIndex:0];
+            if (self.orderPro.lastModifyTime.length != 0) {
+                legName = [NSString stringWithFormat:@"追号结束，已将退款返还至您在该账户的存款中，请查收"];
+                dic = @{@"timeLab":self.orderPro.lastModifyTime,@"infoLab":legName};
+                [self.infoArray insertObject:dic atIndex:0];
+            }
             return;
         } 
         if ([self.orderPro.winStatus isEqualToString:@"NOT_LOTTERY"]) {//未中奖

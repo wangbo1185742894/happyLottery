@@ -147,6 +147,10 @@
             offLineView.liShiLsb.text =  @"注意：1.在向小哥转账时，将此充值订单号一并发给小哥\n2.在小哥未确认订单前，建议不要关闭此页面，以免影响发单";
             [offLineView loadDate];
             [self.view addSubview:offLineView];
+        }else if ([itemModel.channel isEqualToString:@"BILLS_ALI"]){
+            NSString *urlStr = [NSString stringWithFormat:@"alipays://platformapi/startapp?saId=10000007&qrcode=%@",payInfo[@"qrCode"]];
+            [self.payWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlStr]]];
+            orderNO = payInfo[@"orderNo"];
         }
         
     }else{

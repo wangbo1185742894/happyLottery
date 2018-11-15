@@ -310,7 +310,11 @@
         }
         else { //跟单方案内容锁，订单详情按钮不显示
             if (section == 1) {
-                return 3;
+                if ([schemeDetail.betContent isEqualToString:@"开奖后公开"]) {
+                    return 3;
+                }else {
+                    return 3+self.dataArray.count;
+                }
             }
             else {
                 return 1;
@@ -384,16 +388,21 @@
         }
         else {
             if (indexPath.section == 1) {
-                if (indexPath.row == 0) {
-                    SchemeContaintCell *cell = [[SchemeContaintCell alloc]init];
-                    return [cell dateHeight:schemeDetail]+32;
+                if ([schemeDetail.betContent isEqualToString:@"开奖后公开"]){
+                    if (indexPath.row == 0) {
+                        SchemeContaintCell *cell = [[SchemeContaintCell alloc]init];
+                        return [cell dateHeight:schemeDetail]+32;
+                    }
+                    if (indexPath.row == 1) {
+                        return 80;
+                    }
+                    if (indexPath.row == 2) {
+                        return 79;
+                    }
+                }else {
+                    return [self setHeightForFangan:indexPath];
                 }
-                if (indexPath.row == 1) {
-                    return 80;
-                }
-                if (indexPath.row == 2) {
-                    return 79;
-                }
+                
             }
         }
         if (indexPath.section == 2){
@@ -454,6 +463,9 @@
     if (indexPath.row == 0) {
         SchemeContaintCell *cell = [tableView dequeueReusableCellWithIdentifier:KSchemeContaintCell];
         [cell reloadPassTypeDate:schemeDetail];
+        if ([schemeDetail.schemeStatus isEqualToString:@"INIT"]) {
+            [cell reloadDate:schemeDetail];
+        }
         cell.delegate = self;
         return cell;
     }else if (indexPath.row == self.dataArray.count+2){

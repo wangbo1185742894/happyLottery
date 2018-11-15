@@ -36,4 +36,6 @@
 
 @property (nonatomic,strong)NSDictionary *diction;  //跟单传递值
 
+@property (nonatomic,strong)NSArray *contentArray;  //奖金优化
+
 @end

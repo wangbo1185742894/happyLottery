@@ -398,7 +398,11 @@
                 [self showPromptViewWithText:@"该小哥已离线，请选择其他小哥转账" hideAfter:1.7];
                 return;
             }
-            [self.lotteryMan betLotteryScheme:self.basetransction andPostboyId:self.curModel._id];
+            if (self.isYouhua) {
+                [self.lotteryMan betLotteryScheme:self.basetransction andBetContentArray:self.contentArray andPostboyId:self.curModel._id];
+            } else {
+                [self.lotteryMan betLotteryScheme:self.basetransction andPostboyId:self.curModel._id];
+            }
         }
     }else {
         if ([rechargeBtn.titleLabel.text isEqualToString:@"转账给代买小哥"] && ![_curModel.overline boolValue]) {
