@@ -38,4 +38,6 @@
 
 @property (nonatomic,strong)NSArray *contentArray;  //奖金优化
 
+@property (nonatomic,strong)NSString *schemeSource; //来源
+
 @end

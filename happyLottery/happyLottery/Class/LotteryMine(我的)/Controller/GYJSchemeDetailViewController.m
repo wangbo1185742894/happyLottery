@@ -180,6 +180,7 @@
     payVC.schemeNo = schemeDetail.schemeNO;
     payVC.subscribed = [schemeDetail.betCost doubleValue];
     payVC.postBoyId = schemeDetail.postboyId;
+    payVC.schemeSource = schemeDetail.schemeSource;
     if ([schemeDetail.lottery isEqualToString:@"RJC"]){
         payVC.lotteryName = @"任选9场";
     }else if ([schemeDetail.lottery isEqualToString:@"SFC"]){

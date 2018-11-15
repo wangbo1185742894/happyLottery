@@ -736,6 +736,7 @@
     payVC.subscribed = [schemeDetail.betCost doubleValue];
     payVC.postBoyId = schemeDetail.postboyId;
     payVC.schemetype = [self.schemeType isEqualToString:@"BUY_INITIATE"]?SchemeTypeFaqiGenDan:SchemeTypeGenDan;
+    payVC.schemeSource = schemeDetail.schemeSource;
     payVC.lotteryName = [schemeDetail.lottery isEqualToString:@"JCZQ"]?@"竞彩足球":@"竞彩篮球";
     [self.navigationController pushViewController:payVC animated:YES];
 }

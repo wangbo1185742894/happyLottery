@@ -177,6 +177,7 @@
     payVC.schemeNo = schemeDetail.schemeNO;
     payVC.subscribed = [schemeDetail.betCost doubleValue];
     payVC.postBoyId = schemeDetail.postboyId;
+    payVC.schemeSource = schemeDetail.schemeSource;
     if ([schemeDetail.lottery isEqualToString:@"DLT"]) {
         payVC.lotteryName = @"大乐透";
     }else if ([schemeDetail.lottery isEqualToString:@"JCZQ"]){
@@ -188,6 +189,7 @@
     }else if ([schemeDetail.lottery isEqualToString:@"JCLQ"]){
         payVC.lotteryName = @"竞彩篮球";
     }
+    
     [self.navigationController pushViewController:payVC animated:YES];
 //    SchemeCashPayment *schemeCashModel = [[SchemeCashPayment alloc]init];
 //    schemeCashModel.cardCode = self.curUser.cardCode;

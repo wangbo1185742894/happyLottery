@@ -164,6 +164,7 @@
     payVC.subscribed = [schemeDetail.betCost doubleValue];
     payVC.postBoyId = schemeDetail.postboyId;
     payVC.lotteryName = schemeDetail.trLottery;
+    payVC.schemeSource = schemeDetail.schemeSource;
     [self.navigationController pushViewController:payVC animated:YES];
     
 //    SchemeCashPayment *schemeCashModel = [[SchemeCashPayment alloc]init];

@@ -40,7 +40,7 @@
 @end
 
 @interface JCLQSchemeItem : BaseModel
-
+@property(nonatomic,copy) NSString  * schemeSource;
 @property(nonatomic,copy)NSString * betContent;
 @property(nonatomic,copy)NSString * betCost;
 @property(nonatomic,copy)NSString * units;

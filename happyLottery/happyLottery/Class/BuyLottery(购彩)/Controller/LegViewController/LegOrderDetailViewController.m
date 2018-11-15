@@ -669,6 +669,7 @@
     payVC.subscribed = [schemeDetail.betCost doubleValue];
     payVC.postBoyId = schemeDetail.postboyId;
     payVC.lotteryName = self.lotteryName;
+    payVC.schemeSource = schemeDetail.schemeSource;
     [self.navigationController pushViewController:payVC animated:YES];
 }
 

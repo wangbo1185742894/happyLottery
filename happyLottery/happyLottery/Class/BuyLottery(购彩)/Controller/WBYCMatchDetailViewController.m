@@ -451,8 +451,6 @@
         [self showPromptText:@"该场比赛不支持单关投注" hideAfterDelay:1.7];
         return;
     }
-    [self showLoadingViewWithText:@"正在加载"];
-    
     if (_btnOptimiz.selected == YES) {
         self.transaction.schemeSource = SchemeSourceFORECAST;
 
@@ -479,8 +477,15 @@
             [self showPromptText:@"奖金优化失败" hideAfterDelay:1.9];
             return;
         }
-        
-        [self.lotteryMan betLotterySchemeOpti:self.transaction schemeList:betContent];
+        PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
+        payVC.basetransction = self.transaction;
+        payVC.lotteryName = @"竞彩足球";
+        payVC.subscribed = self.transaction.betCost;
+        payVC.schemetype = self.transaction.schemeType;
+        payVC.contentArray = betContent;
+        payVC.isYouhua = YES;
+        [self.navigationController pushViewController:payVC animated:YES];
+//        [self.lotteryMan betLotterySchemeOpti:self.transaction schemeList:betContent];
     }else{
 //        [self.lotteryMan betLotteryScheme:self.transaction];
         if (self.transaction.betCost  > 300000) {

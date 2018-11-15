@@ -30,4 +30,6 @@
 
 @property(nonatomic,strong)PostboyAccountModel *postModel;
 
+@property(nonatomic,strong)NSString *schemeSource;
+
 @end

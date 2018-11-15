@@ -289,7 +289,7 @@
         payVC.subscribed = self.transaction.betCost;
         payVC.schemetype = self.transaction.schemeType;
         [self.navigationController pushViewController:payVC animated:YES];
-        [self showLoadingViewWithText:@"正在加载"];
+//        [self showLoadingViewWithText:@"正在加载"];
         if (self.scheme.recSchemeNo != nil) {
             [self.lotteryMan updateRecSchemeRecCount:@{@"recSchemeNo":self.scheme.recSchemeNo}];
         }

@@ -190,6 +190,7 @@
     payVC.schemeNo = schemeDetail.schemeNO;
     payVC.subscribed = [schemeDetail.betCost doubleValue];
     payVC.postBoyId = schemeDetail.postboyId;
+    payVC.schemeSource = schemeDetail.schemeSource;
     if ([schemeDetail.lottery isEqualToString:@"DLT"]) {
         payVC.lotteryName = @"大乐透";
     }else if ([schemeDetail.lottery isEqualToString:@"JCZQ"]){

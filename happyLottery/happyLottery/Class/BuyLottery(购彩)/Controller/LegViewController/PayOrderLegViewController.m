@@ -543,6 +543,7 @@
     legRechargrVC.cashPayMemt = schemeCashModel;
     legRechargrVC.isYouhua = self.isYouhua;
     legRechargrVC.lotteryName = self.lotteryName;
+    legRechargrVC.schemeSource = self.schemeSource;
     [self.navigationController pushViewController:legRechargrVC animated:YES];
 }
 
@@ -597,7 +598,7 @@
 {
     PaySuccessViewController * paySuccessVC = [[PaySuccessViewController alloc]init];
     paySuccessVC.schemetype = self.schemetype;
-    if(([self.lotteryName isEqualToString:@"竞彩足球"] ||[self.lotteryName isEqualToString:@"竞彩篮球"]) && self.subscribed > 10 && self.isYouhua == NO){
+    if(([self.lotteryName isEqualToString:@"竞彩足球"] ||[self.lotteryName isEqualToString:@"竞彩篮球"]) && self.subscribed > 10 && self.isYouhua == NO && (self.schemeSource == nil || [self.schemeSource isEqualToString:@"BET"])){
         paySuccessVC.isShowFaDan = YES;
     }else{
         paySuccessVC.isShowFaDan = NO;
