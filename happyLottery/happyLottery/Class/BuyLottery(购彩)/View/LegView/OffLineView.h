@@ -26,6 +26,9 @@
 @property (nonatomic,weak)id <OffLineViewDelegate>delegate;
 @property (weak, nonatomic) IBOutlet UILabel *liShiLsb;
 
+@property (weak, nonatomic) IBOutlet UIButton *okBtn;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewHeight;
+
 - (void)loadDate;
 
 - (void)closeView;

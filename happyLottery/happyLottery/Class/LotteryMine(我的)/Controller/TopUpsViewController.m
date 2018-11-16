@@ -459,30 +459,20 @@
 }
 
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
-    if ([itemModel.channel isEqualToString:@"HAWKEYE_ALI"]) {
+    NSString *strUrl = [NSString stringWithFormat:@"%@",request.URL];
+    if ([strUrl hasPrefix:@"alipays"]) {
         if ([[UIApplication sharedApplication] canOpenURL: [NSURL URLWithString:@"alipay://"]] == YES) {
             [[UIApplication sharedApplication] openURL:request.URL];
         }else{
             [self showPromptText:@"您未安装支付宝客服端，请先安装！" hideAfterDelay:1.7];
         }
-    } else {
-        NSString *strUrl = [NSString stringWithFormat:@"%@",request.URL];
-        if ([strUrl hasPrefix:@"weixin"]) {
-            if ([[UIApplication sharedApplication] canOpenURL: [NSURL URLWithString:@"weixin://"]] == YES) {
-                [[UIApplication sharedApplication] openURL:request.URL];
-            }
+    }
+    
+    if ([strUrl hasPrefix:@"weixin"]) {
+        if ([[UIApplication sharedApplication] canOpenURL: [NSURL URLWithString:@"weixin://"]] == YES) {
+            [[UIApplication sharedApplication] openURL:request.URL];
         }
     }
-//    NSString *strUrl = [NSString stringWithFormat:@"%@",request.URL];
-//    if ([strUrl hasPrefix:@"alipays"]) {
-//        if ([[UIApplication sharedApplication] canOpenURL: [NSURL URLWithString:@"alipay://"]] == YES) {
-//            [[UIApplication sharedApplication] openURL:request.URL];
-//        }else{
-//            [self showPromptText:@"您未安装支付宝客服端，请先安装！" hideAfterDelay:1.7];
-//        }
-//    }
-    
-  
     return YES;
 }
 

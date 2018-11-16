@@ -25,7 +25,7 @@
 #import "SSQPlayViewController.h"
 #import "WBInputPopView.h"
 
-@interface SSQTouZhuViewController ()<UITextFieldDelegate,UIAlertViewDelegate,MemberManagerDelegate,WBInputPopViewDelegate,UITableViewDelegate,UITableViewDataSource> {
+@interface SSQTouZhuViewController ()<UITextFieldDelegate,UIAlertViewDelegate,MemberManagerDelegate,WBInputPopViewDelegate,UITableViewDelegate,UITableViewDataSource,PayOrderLegDelegate> {
     
     __weak IBOutlet UIButton *btnMoniTouzhu;
     __weak IBOutlet UIButton *btnZhenShiTouzhu;
@@ -230,7 +230,7 @@
             limitNum = 99;
         }else{
             NSInteger curQI = [[self.lottery.currentRound.issueNumber substringFromIndex:4] integerValue];
-            limitNum = [[self.maxIssue substringFromIndex:4] integerValue]- curQI;
+            limitNum = [[self.maxIssue substringFromIndex:4] integerValue]- curQI + 1;
         }
         if (num > limitNum) {
             [self showPromptText:[NSString stringWithFormat:@"最大可追%ld期",limitNum] hideAfterDelay:1.8];
@@ -650,6 +650,13 @@
 }
 
 - (IBAction)actionSelectQiCount:(UIButton *)sender {
+    NSInteger limitNum;
+    NSInteger curQI = [[self.lottery.currentRound.issueNumber substringFromIndex:4] integerValue];
+    limitNum = [[self.maxIssue substringFromIndex:4] integerValue]- curQI + 1;
+    if (sender.tag > limitNum) {
+        [self showPromptText:[NSString stringWithFormat:@"最大可追%ld期",limitNum] hideAfterDelay:1.8];
+        return;
+    }
     for (UIButton *item in qiCountItem) {
         item.selected = NO;
     }
@@ -746,12 +753,19 @@
                 payVC.lotteryName = @"双色球";
                 payVC.subscribed = self.transaction.betCost;
                 payVC.schemetype = self.transaction.schemeType;
+                payVC.delegate = self;
                 [self.navigationController pushViewController:payVC animated:YES];
             } else {
                 [self needLogin];
             }
         }
     }
+}
+
+- (void)clearSelect{
+    self.transaction.qiShuCount = 1;
+    self.transaction.beiTouCount = 1;
+    [self.transaction removeAllBets];
 }
 
 -(void)actionZhuihao{
@@ -789,6 +803,7 @@
     payVC.basetransction = self.transaction;
     payVC.subscribed = [self.transaction getAllCost];
     payVC.schemetype = SchemeTypeZhuihao;
+    payVC.delegate = self;
     payVC.zhuiArray = nil;
     payVC.lotteryName = @"双色球";
     [self.navigationController pushViewController:payVC animated:YES];
@@ -808,39 +823,39 @@
     [self.navigationController pushViewController:betInfoViewCtr animated:YES];
 }
 
--(void)betedLotteryScheme:(NSString *)schemeNO errorMsg:(NSString *)msg{
-    if (schemeNO == nil) {
-        [self showPromptText:msg hideAfterDelay:1.9];
-        return;
-    }
-    
-    PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
-    SchemeCashPayment *schemeCashModel = [[SchemeCashPayment alloc]init];
-    schemeCashModel.lotteryName = @"双色球";
-    schemeCashModel.cardCode = self.curUser.cardCode;
-    schemeCashModel.schemeNo = schemeNO;
-    schemeCashModel.subCopies = 1;
-    if (btnMoniTouzhu.selected == YES) {
-        schemeCashModel.costType = CostTypeSCORE;
-        if (self.transaction.betCost  > 30000000) {
-            [self showPromptText:@"单笔总积分不能超过3千万积分" hideAfterDelay:1.7];
-            return;
-        }
-    }else{
-        schemeCashModel.costType = CostTypeCASH;
-        if (self.transaction.betCost  > 300000) {
-            [self showPromptText:@"单笔总金额不能超过30万元" hideAfterDelay:1.7];
-            return;
-        }
-    }
-    
-    [self hideLoadingView];
-    
-    schemeCashModel.subscribed = self.transaction.betCost;
-    schemeCashModel.realSubscribed = self.transaction.betCost;
-//    payVC.cashPayMemt = schemeCashModel;
-    [self.navigationController pushViewController:payVC animated:YES];
-}
+//-(void)betedLotteryScheme:(NSString *)schemeNO errorMsg:(NSString *)msg{
+//    if (schemeNO == nil) {
+//        [self showPromptText:msg hideAfterDelay:1.9];
+//        return;
+//    }
+//
+//    PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
+//    SchemeCashPayment *schemeCashModel = [[SchemeCashPayment alloc]init];
+//    schemeCashModel.lotteryName = @"双色球";
+//    schemeCashModel.cardCode = self.curUser.cardCode;
+//    schemeCashModel.schemeNo = schemeNO;
+//    schemeCashModel.subCopies = 1;
+//    if (btnMoniTouzhu.selected == YES) {
+//        schemeCashModel.costType = CostTypeSCORE;
+//        if (self.transaction.betCost  > 30000000) {
+//            [self showPromptText:@"单笔总积分不能超过3千万积分" hideAfterDelay:1.7];
+//            return;
+//        }
+//    }else{
+//        schemeCashModel.costType = CostTypeCASH;
+//        if (self.transaction.betCost  > 300000) {
+//            [self showPromptText:@"单笔总金额不能超过30万元" hideAfterDelay:1.7];
+//            return;
+//        }
+//    }
+//
+//    [self hideLoadingView];
+//
+//    schemeCashModel.subscribed = self.transaction.betCost;
+//    schemeCashModel.realSubscribed = self.transaction.betCost;
+////    payVC.cashPayMemt = schemeCashModel;
+//    [self.navigationController pushViewController:payVC animated:YES];
+//}
 -(BOOL)checkPayPassword{
     
     if(self.curUser.payVerifyType == PayVerifyTypeAlways){

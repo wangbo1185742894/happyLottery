@@ -338,14 +338,13 @@
         self.userImage.image = [UIImage imageNamed:@"user_mine.png"];
     }else{
         [self.userImage sd_setImageWithURL:[NSURL URLWithString:self.curUser.headUrl] placeholderImage:[UIImage imageNamed:@"user_mine.png"]];
-        
     }
-    if (total == 0) {
-        self.yueLeftCons.constant = - KscreenWidth/3;
-        tiXianBtn.hidden = YES;
-    } else {
+    if ([self.curUser.memberType isEqualToString:@"CIRCLE_MASTER"] || total != 0) {
         self.yueLeftCons.constant = 0;
         tiXianBtn.hidden = NO;
+    } else {
+        self.yueLeftCons.constant = - KscreenWidth/3;
+        tiXianBtn.hidden = YES;
     }
     //小哥总余额
     self.totalBalanceLeg.text = [NSString stringWithFormat:@"%.2f元",[self.curUser.postboyBalance doubleValue] + [self.curUser.postboyNotCash doubleValue]];

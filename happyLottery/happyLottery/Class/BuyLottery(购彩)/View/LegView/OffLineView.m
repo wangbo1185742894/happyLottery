@@ -15,7 +15,7 @@
 @interface OffLineView()<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *alertView;
-@property (weak, nonatomic) IBOutlet UIButton *okBtn;
+
 
 @property (weak, nonatomic) IBOutlet UILabel *alertLab;
 

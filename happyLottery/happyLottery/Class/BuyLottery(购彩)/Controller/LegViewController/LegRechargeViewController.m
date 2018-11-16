@@ -371,12 +371,7 @@
             [self hideLoadingView];
             orderNO = payInfo;
             offLineView = [[OffLineView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-            offLineView.orderNo = orderNO;
-            offLineView.weiXianCode = self.curModel.wechatId;
-            offLineView.telephone = self.curModel.mobile;
-            offLineView.delegate = self;
-            offLineView.liShiLsb.text =  @"注意：在向小哥转账时，将此充值订单号一并发给小哥";
-            [offLineView loadDate];
+            [self setOffLineView];
             [self.view addSubview:offLineView];
         }else if ([itemModel.channel isEqualToString:@"BILLS_ALI"]){
             NSString *urlStr = [NSString stringWithFormat:@"alipays://platformapi/startapp?saId=10000007&qrcode=%@",payInfo[@"qrCode"]];
@@ -386,6 +381,18 @@
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
     }
+}
+
+- (void)setOffLineView {
+    offLineView.orderNo = orderNO;
+    offLineView.weiXianCode = self.curModel.wechatId;
+    offLineView.telephone = self.curModel.mobile;
+    offLineView.delegate = self;
+    offLineView.liShiLsb.text =  @"注意：在向小哥转账时，将此充值订单号一并发给小哥";
+    offLineView.okBtn.hidden = YES;
+    offLineView.okBtn.userInteractionEnabled = NO;
+    offLineView.viewHeight.constant = 260;
+    [offLineView loadDate];
 }
 
 - (IBAction)haveead:(id)sender {

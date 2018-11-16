@@ -11,6 +11,12 @@
 #import "JCLQTransaction.h"
 #import "Coupon.h"
 
+@protocol PayOrderLegDelegate <NSObject>
+
+- (void)clearSelect;
+
+@end
+
 @interface PayOrderLegViewController : BaseViewController
 
 @property(nonatomic,strong)BaseTransaction *basetransction; 
@@ -40,4 +46,5 @@
 
 @property (nonatomic,strong)NSString *schemeSource; //来源
 
+@property (nonatomic,weak)id<PayOrderLegDelegate>delegate;
 @end

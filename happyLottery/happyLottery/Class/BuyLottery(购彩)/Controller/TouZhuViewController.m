@@ -27,7 +27,7 @@
 #import "SelectView.h"
 #import "SetPayPWDViewController.h"
 #import "X115LimitNumPopView.h"
-@interface TouZhuViewController ()<UITextFieldDelegate,UIAlertViewDelegate,MemberManagerDelegate,SelectViewDelegate,WBInputPopViewDelegate,X115LimitNumPopViewDelegate,UITableViewDelegate,UITableViewDataSource,LotteryPhaseInfoViewDelegate> {
+@interface TouZhuViewController ()<UITextFieldDelegate,UIAlertViewDelegate,MemberManagerDelegate,SelectViewDelegate,WBInputPopViewDelegate,X115LimitNumPopViewDelegate,UITableViewDelegate,UITableViewDataSource,LotteryPhaseInfoViewDelegate,PayOrderLegDelegate> {
     
     __weak IBOutlet UIView *betOptionFunView;
     __weak IBOutlet UIImageView *tableViewBGIV_;
@@ -1090,14 +1090,12 @@
                 self.transaction.schemeType = SchemeTypeZigou;
 //                [self.lotteryMan betLotteryScheme:self.transaction];
                 PayOrderLegViewController *payVC = [[PayOrderLegViewController alloc]init];
+                payVC.delegate = self;
                 payVC.basetransction = transcation;
                 payVC.schemetype = transcation.schemeType;
                 payVC.lotteryName = self.lottery.name;
                 payVC.subscribed = transcation.betCost;
-//                [self.transaction removeAllBets];
-//                self.transaction.beiTouCount = 1;
-//                self.transaction.qiShuCount  = 1;
-//                self.transaction.winStopStatus = WINSTOP;
+
                 [self.navigationController pushViewController:payVC animated:YES];
             } else {
                 [self needLogin];
@@ -1105,6 +1103,8 @@
         }
     }
 }
+
+
 
 //11.07
 - (void)nopayword
@@ -1118,6 +1118,7 @@
     payVC.basetransction = self.transaction;
     payVC.subscribed = [self.transaction getAllCost];
     payVC.schemetype = SchemeTypeZhuihao;
+    payVC.delegate = self;
     payVC.zhuiArray = nil;
     if (_lottery.type == LotteryTypeSDShiYiXuanWu) {
         payVC.lotteryName = @"山东11选5";
@@ -1125,6 +1126,13 @@
         payVC.lotteryName = @"陕西11选5";
     }
     [self.navigationController pushViewController:payVC animated:YES];
+}
+
+- (void)clearSelect{
+     [self.transaction removeAllBets];
+     self.transaction.beiTouCount = 1;
+     self.transaction.qiShuCount  = 1;
+     self.transaction.winStopStatus = WINSTOP;
 }
 
 -(void)betedChaseScheme:(NSString *)schemeNO errorMsg:(NSString *)msg{

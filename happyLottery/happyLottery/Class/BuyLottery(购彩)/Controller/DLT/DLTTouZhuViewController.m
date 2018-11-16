@@ -25,7 +25,7 @@
 #import "DLTPlayViewController.h"
 #import "WBInputPopView.h"
 
-@interface DLTTouZhuViewController ()<UITextFieldDelegate,UIAlertViewDelegate,MemberManagerDelegate,WBInputPopViewDelegate,UITableViewDelegate,UITableViewDataSource> {
+@interface DLTTouZhuViewController ()<UITextFieldDelegate,UIAlertViewDelegate,MemberManagerDelegate,WBInputPopViewDelegate,UITableViewDelegate,UITableViewDataSource,PayOrderLegDelegate> {
     
     __weak IBOutlet UIButton *btnMoniTouzhu;
     __weak IBOutlet UIButton *btnZhenShiTouzhu;
@@ -230,7 +230,8 @@
             limitNum = 99;
         }else{
             NSInteger curQI = [[self.lottery.currentRound.issueNumber substringFromIndex:2] integerValue];
-            limitNum = [[self.maxIssue substringFromIndex:2] integerValue] - curQI;
+            limitNum = [[self.maxIssue substringFromIndex:2] integerValue] - curQI + 1;
+            
         }
         if (num > limitNum) {
             [self showPromptText:[NSString stringWithFormat:@"最大可追%ld期",limitNum] hideAfterDelay:1.8];
@@ -318,6 +319,16 @@
     }];
 }
 
+- (void)clearSelect{
+    self.transaction.qiShuCount = 1;
+    self.transaction.beiTouCount = 1;
+    switch (_lottery.type) {
+        case LotteryTypeDaLeTou:
+        case LotteryTypeShiYiXuanWu:{
+            [self.transaction removeAllBets];
+        }
+    }
+}
 /*
  update bet transaction summary data
  */
@@ -676,7 +687,14 @@
     });
     [self update];
 }
+
 - (IBAction)actionSelectQiCount:(UIButton *)sender {
+    NSInteger curQI = [[self.lottery.currentRound.issueNumber substringFromIndex:2] integerValue];
+    NSInteger limitNum = [[self.maxIssue substringFromIndex:2] integerValue] - curQI + 1;
+    if (sender.tag > limitNum) {
+        [self showPromptText:[NSString stringWithFormat:@"最大可追%ld期",limitNum] hideAfterDelay:1.8];
+        return;
+    }
     for (UIButton *item in qiCountItem) {
         item.selected = NO;
     }
@@ -684,12 +702,14 @@
     tfQiCount.text = [NSString stringWithFormat:@"%ld",sender.tag];
     [self update];
 }
+
 - (IBAction)actionTouzhu:(UIButton *)sender {
     self.transaction.schemeSource = SchemeSourceBet;
     
     [self showLoadingText:@"正在提交订单"];
     [self.lotteryMan getSellIssueList:@{@"lotteryCode":self.lottery.identifier}];
 }
+
 -(void)gotSellIssueList:(NSArray *)infoDic errorMsg:(NSString *)msg{
     [self hideLoadingView];
     {
@@ -780,6 +800,7 @@
                 payVC.lotteryName = @"大乐透";
                 payVC.subscribed = self.transaction.betCost;
                 payVC.schemetype = self.transaction.schemeType;
+                payVC.delegate = self;
                 [self.navigationController pushViewController:payVC animated:YES];
 
 //                [self.lotteryMan betLotteryScheme:self.transaction];
@@ -823,6 +844,7 @@
     payVC.basetransction = self.transaction;
     payVC.subscribed = [self.transaction getAllCost];
     payVC.schemetype = SchemeTypeZhuihao;
+    payVC.delegate = self;
     payVC.zhuiArray = nil;
     payVC.lotteryName = @"大乐透";
     [self.navigationController pushViewController:payVC animated:YES];

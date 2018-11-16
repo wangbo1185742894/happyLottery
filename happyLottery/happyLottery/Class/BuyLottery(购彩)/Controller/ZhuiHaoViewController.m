@@ -27,7 +27,7 @@
 #define ZHSURETAG 12321
 #define KZhuihaoCell @"ZhuiHaoCell"
 
-@interface ZhuiHaoViewController ()<UIAlertViewDelegate,LotteryPhaseInfoViewDelegate,MemberManagerDelegate,WBInputPopViewDelegate,UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource,ZhuiHaoCellDelegate>{
+@interface ZhuiHaoViewController ()<UIAlertViewDelegate,LotteryPhaseInfoViewDelegate,MemberManagerDelegate,WBInputPopViewDelegate,UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource,ZhuiHaoCellDelegate,PayOrderLegDelegate>{
     
     LotteryPhaseInfoView *phaseInfoView;
     __weak IBOutlet UIView *ContentView;
@@ -252,6 +252,14 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+
+- (void)clearSelect {
+    [self.transaction removeAllBets];
+    self.transaction.beiTouCount = 1;
+    self.transaction.qiShuCount  = 1;
+    self.transaction.winStopStatus = WINSTOP;
 }
 
 - (void) optionRightButtonAction {
@@ -1526,6 +1534,7 @@
     payVC.schemetype = SchemeTypeZhuihao;
     payVC.zhuiArray = [self getZhuiHaoInfo];
     payVC.lotteryName = @"陕西11选5";
+    payVC.delegate = self;
     [self.navigationController pushViewController:payVC animated:YES];
 }
 

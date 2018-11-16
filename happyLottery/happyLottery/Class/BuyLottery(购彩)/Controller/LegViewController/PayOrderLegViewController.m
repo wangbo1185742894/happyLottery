@@ -165,6 +165,7 @@
 }
 
 - (void)reloadLegInfo:(NSDictionary *)param andSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    [self hideLoadingView];
     if (success == NO) {
         [self upDateLegInfo:nil];
         self.curModel = nil;
@@ -193,6 +194,7 @@
  @param msg 错误信息描述
  */
 -(void)gotAvailableCoupon:(BOOL)success andPayInfo:(NSArray *)payInfo errorMsg:(NSString *)msg{
+    [self hideLoadingView];
     //请求小哥信息
     ///
     if (self.schemeNo == nil) {
@@ -284,6 +286,7 @@
  根据当前卡号，从服务器请求用户信息
  */
 -(void)gotMemberByCardCode:(NSDictionary *)userInfo errorMsg:(NSString *)msg{
+    [self hideLoadingView];
     User *user = [[User alloc]initWith:userInfo];
     self.curUser.balance = user.balance;
     self.curUser.sendBalance = user.sendBalance;
@@ -364,6 +367,7 @@
  @param sender sender description
  */
 - (IBAction)actionToRechage:(id)sender {
+    
     if (!btnSelected.selected) {
         [self showPromptViewWithText:@"请选择同意《代跑腿服务协议》" hideAfter:1.7];
         return;
@@ -386,6 +390,7 @@
                     return;
                 }
             }
+            [self showLoadingText:@"正在提交订单中"];
             [self rechargeZhuiHao];  //追号支付
            
         } else if(self.schemetype == SchemeTypeGenDan){
@@ -393,6 +398,7 @@
                 [self showPromptViewWithText:@"该小哥已离线，请选择其他小哥转账" hideAfter:1.7];
                 return;
             }
+            [self showLoadingText:@"正在提交订单中"];
             NSDictionary *paraDic= @{@"schemeNo":self.diction[@"schemeNo"], @"cardCode":self.diction[@"cardCode"],@"multiple":self.diction[@"multiple"],@"postboyId":self.curModel._id};
             [self.lotteryMan followScheme:paraDic];
         } else {
@@ -400,6 +406,7 @@
                 [self showPromptViewWithText:@"该小哥已离线，请选择其他小哥转账" hideAfter:1.7];
                 return;
             }
+            [self showLoadingText:@"正在提交订单中"];
             if (self.isYouhua) {
                 [self.lotteryMan betLotteryScheme:self.basetransction andBetContentArray:self.contentArray andPostboyId:self.curModel._id];
             } else {
@@ -415,15 +422,23 @@
     }
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [self hideLoadingView];
+    
+}
+
 
 //追号
 -(void)betedChaseScheme:(NSString *)schemeNO errorMsg:(NSString *)msg{
+    
     [self hideLoadingView];
     if (schemeNO == nil) {
         [self showPromptText:msg hideAfterDelay:1.8];
+        return;
     } else {
         [self paySuccess];
     }
+    [self.delegate clearSelect];
 //    ZhuiHaoInfoViewController * betInfoViewCtr = [[ZhuiHaoInfoViewController alloc] initWithNibName:@"ZhuiHaoInfoViewController" bundle:nil];
 //    betInfoViewCtr.from = YES;
 //    [self.navigationController pushViewController:betInfoViewCtr animated:YES];
@@ -497,6 +512,7 @@
 }
 
 -(void)validatePaypwdSmsIsSuccess:(BOOL)success errorMsg:(NSString *)msg{
+    [self hideLoadingView];
     [passInput removeFromSuperview];
     if (success == YES) {
         if (self.schemeNo != nil) {
@@ -524,6 +540,7 @@
                 return;
             }
         }
+        [self showLoadingText:@"正在提交订单中"];
         [self rechargeSchemeByNo:self.schemeNo];
         return;
     }
@@ -552,11 +569,13 @@
 
 //购彩
 - (void) betedLotteryScheme:(NSString *)schemeNO errorMsg:(NSString *)msg{
+    [self hideLoadingView];
     if (schemeNO == nil || schemeNO.length == 0) {
         [self showPromptText:msg hideAfterDelay:1.7];
         return;
     }
     self.schemeNo = schemeNO;
+    [self.delegate clearSelect];
     [self rechareSchemeWithSchemeNo];
 }
 
@@ -648,7 +667,8 @@
 
 
 - (void)navigationBackToLastPage{
-for (UIViewController *controller in self.navigationController.viewControllers) {
+  [self.delegate clearSelect];
+  for (UIViewController *controller in self.navigationController.viewControllers) {
     NSLog(@"-----%@------",controller);
     if ([controller isKindOfClass:[GYJPlayViewController class]]) {
         GYJPlayViewController *revise =(GYJPlayViewController *)controller;
@@ -697,6 +717,7 @@ for (UIViewController *controller in self.navigationController.viewControllers) 
         return;
     }
  }
+    [super navigationBackToLastPage];
 }
 
 
