@@ -473,7 +473,6 @@
     payVC.lotteryName = @"竞彩足球";
     payVC.subscribed = self.transction.betCost;
     payVC.schemetype = self.transction.schemeType;
-    [[NSNotificationCenter defaultCenter]postNotificationName:KSELECTMATCHCLEAN object:nil];
     [self.navigationController pushViewController:payVC animated:YES];
     
 }

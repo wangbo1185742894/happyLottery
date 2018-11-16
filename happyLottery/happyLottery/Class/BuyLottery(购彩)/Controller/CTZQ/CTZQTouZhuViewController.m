@@ -270,7 +270,6 @@
     payVC.lotteryName = self.lottery.activeProfile.title;
     payVC.subscribed = self.cTransation.betCost;
     payVC.schemetype = self.cTransation.schemeType;
-    [self removeAllSelection];
     [self.navigationController pushViewController:payVC animated:YES];
 }
 

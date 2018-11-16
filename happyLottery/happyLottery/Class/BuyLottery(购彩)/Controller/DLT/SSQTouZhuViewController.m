@@ -746,9 +746,6 @@
                 payVC.lotteryName = @"双色球";
                 payVC.subscribed = self.transaction.betCost;
                 payVC.schemetype = self.transaction.schemeType;
-                self.transaction.qiShuCount = 1;
-                self.transaction.beiTouCount = 1;
-                [self.transaction removeAllBets];
                 [self.navigationController pushViewController:payVC animated:YES];
             } else {
                 [self needLogin];
@@ -794,9 +791,6 @@
     payVC.schemetype = SchemeTypeZhuihao;
     payVC.zhuiArray = nil;
     payVC.lotteryName = @"双色球";
-    self.transaction.qiShuCount = 1;
-    self.transaction.beiTouCount = 1;
-    [self.transaction removeAllBets];
     [self.navigationController pushViewController:payVC animated:YES];
 //    [self.lotteryMan betChaseScheme:self.transaction];
 }

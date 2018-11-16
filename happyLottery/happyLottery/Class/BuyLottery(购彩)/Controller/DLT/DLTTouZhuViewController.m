@@ -780,14 +780,8 @@
                 payVC.lotteryName = @"大乐透";
                 payVC.subscribed = self.transaction.betCost;
                 payVC.schemetype = self.transaction.schemeType;
-                self.transaction.qiShuCount = 1;
-                self.transaction.beiTouCount = 1;
-                switch (_lottery.type) {
-                    case LotteryTypeDaLeTou:
-                    case LotteryTypeShiYiXuanWu:{
-                        [self.transaction removeAllBets];
-                    }
-                }
+                [self.navigationController pushViewController:payVC animated:YES];
+
 //                [self.lotteryMan betLotteryScheme:self.transaction];
             } else {
                 [self needLogin];
@@ -831,14 +825,6 @@
     payVC.schemetype = SchemeTypeZhuihao;
     payVC.zhuiArray = nil;
     payVC.lotteryName = @"大乐透";
-    self.transaction.qiShuCount = 1;
-    self.transaction.beiTouCount = 1;
-    switch (_lottery.type) {
-        case LotteryTypeDaLeTou:
-        case LotteryTypeShiYiXuanWu:{
-            [self.transaction removeAllBets];
-        }
-    }
     [self.navigationController pushViewController:payVC animated:YES];
 //    [self.lotteryMan betChaseScheme:self.transaction];
 }
