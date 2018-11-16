@@ -419,11 +419,12 @@
     [self hideLoadingView];
     if (schemeNO == nil) {
         [self showPromptText:msg hideAfterDelay:1.8];
-        return;
+    } else {
+        [self paySuccess];
     }
-    ZhuiHaoInfoViewController * betInfoViewCtr = [[ZhuiHaoInfoViewController alloc] initWithNibName:@"ZhuiHaoInfoViewController" bundle:nil];
-    betInfoViewCtr.from = YES;
-    [self.navigationController pushViewController:betInfoViewCtr animated:YES];
+//    ZhuiHaoInfoViewController * betInfoViewCtr = [[ZhuiHaoInfoViewController alloc] initWithNibName:@"ZhuiHaoInfoViewController" bundle:nil];
+//    betInfoViewCtr.from = YES;
+//    [self.navigationController pushViewController:betInfoViewCtr animated:YES];
 }
 
 -(BOOL)checkPayPassword{

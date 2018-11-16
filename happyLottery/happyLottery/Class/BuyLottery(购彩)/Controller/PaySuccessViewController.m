@@ -35,6 +35,7 @@
 #import "AESUtility.h"
 #import "InitiateFollowRedPModel.h"
 #import "LegOrderDetailViewController.h"
+#import "ZhuiHaoInfoViewController.h"
 
 #define iOS8_0 [[[UIDevice currentDevice] systemVersion] doubleValue] >= 8.0
 
@@ -93,11 +94,18 @@
 
   
 - (IBAction)actionLookOrder:(id)sender {
-    LegOrderDetailViewController *detail = [[LegOrderDetailViewController alloc]init];
-    detail.schemeNo = self.schemeNO;
-    detail.schemetype = self.schemetype;
-    detail.lotteryName =  self.lotteryName;
-    [self.navigationController pushViewController:detail animated:YES];
+    if (self.schemetype == SchemeTypeZhuihao) {
+        ZhuiHaoInfoViewController * betInfoViewCtr = [[ZhuiHaoInfoViewController alloc] initWithNibName:@"ZhuiHaoInfoViewController" bundle:nil];
+        betInfoViewCtr.from = YES;
+        [self.navigationController pushViewController:betInfoViewCtr animated:YES];
+    } else{
+        LegOrderDetailViewController *detail = [[LegOrderDetailViewController alloc]init];
+        detail.schemeNo = self.schemeNO;
+        detail.schemetype = self.schemetype;
+        detail.lotteryName =  self.lotteryName;
+        [self.navigationController pushViewController:detail animated:YES];
+    }
+  
 //    if (self.schemetype == SchemeTypeGenDan) {
 //        MyPostSchemeViewController *myOrderListVC = [[MyPostSchemeViewController alloc]init];
 //        myOrderListVC.isFaDan = NO;
