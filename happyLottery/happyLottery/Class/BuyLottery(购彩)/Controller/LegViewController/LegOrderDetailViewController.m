@@ -54,11 +54,11 @@
 
 #define OrderZhuiHaoQingKuang(Name) [NSString stringWithFormat:@"%@已到达彩票站，已开始追号",Name];
 
-#define OrderZhuiHaoJiXu(zhuiQi,Name) [NSString stringWithFormat:@"在追第%@期中奖，继续追号。%@将在2小时内兑奖",zhuiQi,Name];
+#define OrderZhuiHaoJiXu(zhuiQi) [NSString stringWithFormat:@"在追第%@期中奖，继续追号。",zhuiQi];
 
 #define OrderZhuiHaoJieShu @"追号已结束，订单未中奖"
 
-#define OrderZhuiTingZhi(zhuiQi,Name) [NSString stringWithFormat:@"在追第%@期中奖，已停止追号。%@将在2小时内兑奖",zhuiQi,Name];
+#define OrderZhuiTingZhi(zhuiQi) [NSString stringWithFormat:@"在追第%@期中奖。",zhuiQi];
 
 
 @interface LegOrderDetailViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,PostboyManagerDelegate,OrderDetailDelegate,LegDetailDelegate,LegOrderStatueWaitDelegate,LegDetailFooterDelegate>
@@ -498,11 +498,11 @@
                     zhuihaoWon = @"已中";
                     if (profile.drawTime.length != 0) {
                         if (i == self.dateArray.count - 1) {  //最后一期
-                            legName = [NSString stringWithFormat:@"在追第%@期中奖。%@将在2小时内兑奖",profile.catchIndex,self.zhuiHaoPostBoyNam];
+                            legName = [NSString stringWithFormat:@"在追第%@期中奖。",profile.catchIndex];
                         } else if ([self.orderPro.winStopStatus isEqualToString:@"NOTSTOP"]) {//中奖不停追
-                            legName = OrderZhuiHaoJiXu(profile.catchIndex,self.zhuiHaoPostBoyNam);
+                            legName = OrderZhuiHaoJiXu(profile.catchIndex);
                         } else {
-                            legName = OrderZhuiTingZhi(profile.catchIndex,self.zhuiHaoPostBoyNam);
+                            legName = OrderZhuiTingZhi(profile.catchIndex);
                         }
                         dic = @{@"timeLab":[self timeTransaction:profile.drawTime],@"infoLab":legName};
                         [self.infoArray insertObject:dic atIndex:0];
@@ -510,7 +510,7 @@
                 }
             }
             if (self.orderPro.completeTime.length != 0) {
-                legName = [NSString stringWithFormat:@"%@,已将奖金%@元返还至您在该账户的存款中,请查收",self.orderPro.chaseStatus,self.orderPro.sumDraw];
+                legName = [NSString stringWithFormat:@"%@,订单已中奖！%@将在2小时内兑奖",self.orderPro.chaseStatus,self.zhuiHaoPostBoyNam];
                 dic = @{@"timeLab":self.orderPro.completeTime,@"infoLab":legName};
                 [self.infoArray insertObject:dic atIndex:0];
             }
@@ -522,7 +522,7 @@
             if ([profile.trBonus doubleValue] > 0) {
                 zhuihaoWon = @"已中";
                 if (profile.drawTime.length != 0) {
-                    legName = OrderZhuiHaoJiXu(profile.catchIndex,self.zhuiHaoPostBoyNam);
+                    legName = OrderZhuiHaoJiXu(profile.catchIndex);
                     dic = @{@"timeLab":[self timeTransaction:profile.drawTime],@"infoLab":legName};
                     [self.infoArray insertObject:dic atIndex:0];
                 }
