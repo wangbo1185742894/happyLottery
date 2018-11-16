@@ -99,6 +99,7 @@
 @property (nonatomic , strong) NSTimer *timer;
 @property(nonatomic,strong)User *curUser;
 @property(nonatomic,strong)UIToolbar *toolBar;
+@property (nonatomic,strong)NSString *maxIssue;
 @end
 
 #define DataSourceTimes 20
@@ -146,6 +147,18 @@
         [self setBtnState:btnMoniTouzhu];
     }
     [self update];
+    [self showLoadingText:@"正在加载"];
+    [self.lotteryMan getMaxIssue:@{@"lottery":@"DLT"}];
+}
+
+
+- (void) gotMaxIssue:(NSString *)diction  errorMsg:(NSString *)msg{
+    [self hideLoadingView];
+    if (diction == nil) {
+        [self showPromptText:msg hideAfterDelay:1.7];
+        return;
+    }
+    self.maxIssue = diction;
 }
 
 - (IBAction)actionMoniTouzhu:(UIButton *)sender {
@@ -217,7 +230,7 @@
             limitNum = 99;
         }else{
             NSInteger curQI = [[self.lottery.currentRound.issueNumber substringFromIndex:2] integerValue];
-            limitNum = 135 - curQI;
+            limitNum = [[self.maxIssue substringFromIndex:2] integerValue] - curQI;
         }
         if (num > limitNum) {
             [self showPromptText:[NSString stringWithFormat:@"最大可追%ld期",limitNum] hideAfterDelay:1.8];
@@ -767,8 +780,14 @@
                 payVC.lotteryName = @"大乐透";
                 payVC.subscribed = self.transaction.betCost;
                 payVC.schemetype = self.transaction.schemeType;
-                [self.navigationController pushViewController:payVC animated:YES];
-
+                self.transaction.qiShuCount = 1;
+                self.transaction.beiTouCount = 1;
+                switch (_lottery.type) {
+                    case LotteryTypeDaLeTou:
+                    case LotteryTypeShiYiXuanWu:{
+                        [self.transaction removeAllBets];
+                    }
+                }
 //                [self.lotteryMan betLotteryScheme:self.transaction];
             } else {
                 [self needLogin];
@@ -812,6 +831,14 @@
     payVC.schemetype = SchemeTypeZhuihao;
     payVC.zhuiArray = nil;
     payVC.lotteryName = @"大乐透";
+    self.transaction.qiShuCount = 1;
+    self.transaction.beiTouCount = 1;
+    switch (_lottery.type) {
+        case LotteryTypeDaLeTou:
+        case LotteryTypeShiYiXuanWu:{
+            [self.transaction removeAllBets];
+        }
+    }
     [self.navigationController pushViewController:payVC animated:YES];
 //    [self.lotteryMan betChaseScheme:self.transaction];
 }

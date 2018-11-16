@@ -2002,6 +2002,35 @@
                         success:succeedBlock
                         failure:failureBlock];
 }
+
+- (void)getMaxIssue:(NSDictionary *)paraDic{
+    void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        SOAPResponse *response = [self wrapSOAPResponse: operation.responseString];
+        NSString *responseJsonStr = [response getAPIResponse];
+//        NSArray *lotteryList = [Utility objFromJson:responseJsonStr];
+        if (response.succeed) {
+            [self.delegate gotMaxIssue:responseJsonStr errorMsg:response.errorMsg];
+            
+        } else {
+            [self.delegate gotMaxIssue:nil errorMsg:response.errorMsg];
+            
+        }
+    };
+    void (^failureBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self.delegate gotMaxIssue:nil errorMsg:@"请检查网络连接"];
+    };
+    
+    SOAPRequest *request = [self requestForAPI: APIgetMaxIssue withParam:@{@"params":[self actionEncrypt:[self JsonFromId:paraDic]]}];
+    [self newRequestWithRequest:request
+                         subAPI:SUBAPIDATA
+      constructingBodyWithBlock:nil
+                        success:succeedBlock
+                        failure:failureBlock];
+}
+
+
 - (void)listRechargeHandsel{
     void (^succeedBlock)(AFHTTPRequestOperation *operation, id responseObject) = ^(AFHTTPRequestOperation *operation, id responseObject)
     {

@@ -100,6 +100,7 @@
 @property (nonatomic , strong) NSTimer *timer;
 @property(nonatomic,strong)User *curUser;
 @property(nonatomic,strong)UIToolbar *toolBar;
+@property (nonatomic , strong )NSString *maxIssue;
 @end
 
 #define DataSourceTimes 20
@@ -126,12 +127,12 @@
     self.curUser = [[GlobalInstance instance] curUser];
     self.memberMan = [[MemberManager alloc] init];
     self.memberMan.delegate = self;
-
     self.title = @"确认预约";
     betsList = [self.transaction allBets];
     
     self.lotteryMan = [[LotteryManager alloc] init];
     self.lotteryMan.delegate = self;
+    
     [tableViewContent_ reloadData];
     
     tfQiCount.delegate = self;
@@ -146,7 +147,20 @@
         [self setBtnState:btnMoniTouzhu];
     }
     [self update];
+    [self showLoadingText:@"正在加载"];
+    [self.lotteryMan getMaxIssue:@{@"lottery":@"SSQ"}];
 }
+
+
+- (void) gotMaxIssue:(NSString *)diction  errorMsg:(NSString *)msg{
+    [self hideLoadingView];
+    if (diction == nil) {
+        [self showPromptText:msg hideAfterDelay:1.7];
+        return;
+    }
+    self.maxIssue = diction;
+}
+
 
 - (IBAction)actionMoniTouzhu:(UIButton *)sender {
     if([tfQiCount.text integerValue] >1){
@@ -216,7 +230,7 @@
             limitNum = 99;
         }else{
             NSInteger curQI = [[self.lottery.currentRound.issueNumber substringFromIndex:4] integerValue];
-            limitNum = 153 - curQI;
+            limitNum = [[self.maxIssue substringFromIndex:4] integerValue]- curQI;
         }
         if (num > limitNum) {
             [self showPromptText:[NSString stringWithFormat:@"最大可追%ld期",limitNum] hideAfterDelay:1.8];
@@ -732,6 +746,9 @@
                 payVC.lotteryName = @"双色球";
                 payVC.subscribed = self.transaction.betCost;
                 payVC.schemetype = self.transaction.schemeType;
+                self.transaction.qiShuCount = 1;
+                self.transaction.beiTouCount = 1;
+                [self.transaction removeAllBets];
                 [self.navigationController pushViewController:payVC animated:YES];
             } else {
                 [self needLogin];
@@ -777,6 +794,9 @@
     payVC.schemetype = SchemeTypeZhuihao;
     payVC.zhuiArray = nil;
     payVC.lotteryName = @"双色球";
+    self.transaction.qiShuCount = 1;
+    self.transaction.beiTouCount = 1;
+    [self.transaction removeAllBets];
     [self.navigationController pushViewController:payVC animated:YES];
 //    [self.lotteryMan betChaseScheme:self.transaction];
 }

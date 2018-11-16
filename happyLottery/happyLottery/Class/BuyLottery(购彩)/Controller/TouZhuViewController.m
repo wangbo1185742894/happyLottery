@@ -1094,7 +1094,10 @@
                 payVC.schemetype = transcation.schemeType;
                 payVC.lotteryName = self.lottery.name;
                 payVC.subscribed = transcation.betCost;
-//                [self.transaction removeAllBets];
+                [self.transaction removeAllBets];
+                self.transaction.beiTouCount = 1;
+                self.transaction.qiShuCount =1;
+                self.transaction.winStopStatus = WINSTOP;
 //                self.transaction.beiTouCount = 1;
 //                self.transaction.qiShuCount  = 1;
 //                self.transaction.winStopStatus = WINSTOP;
@@ -1119,11 +1122,16 @@
     payVC.subscribed = [self.transaction getAllCost];
     payVC.schemetype = SchemeTypeZhuihao;
     payVC.zhuiArray = nil;
+    
     if (_lottery.type == LotteryTypeSDShiYiXuanWu) {
         payVC.lotteryName = @"山东11选5";
     }else if (_lottery.type == LotteryTypeShiYiXuanWu){
         payVC.lotteryName = @"陕西11选5";
     }
+    [self.transaction removeAllBets];
+    self.transaction.beiTouCount = 1;
+    self.transaction.qiShuCount =1;
+    self.transaction.winStopStatus = WINSTOP;
     [self.navigationController pushViewController:payVC animated:YES];
 }
 

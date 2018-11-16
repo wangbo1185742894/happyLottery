@@ -246,6 +246,16 @@
 #define APIgetCommonSetValue            @"getCommonSetValue"
 #define APIlistLotteryConfig        @"listLotteryConfig" //首页显示彩种新接口
 
+/**
+ * 获取最大可追期号(大乐透,双色球)
+ * @param params {"lottery":"DLT"}
+ * @return
+ * @throws BizException
+ */
+
+#define APIgetMaxIssue           @"getMaxIssue"
+
+
 #define SUBAPISchemeService   @"/scheme"
 #define APIBetLotteryScheme         @"betLotteryScheme"
 #define APIbetChaseScheme           @"betChaseScheme"

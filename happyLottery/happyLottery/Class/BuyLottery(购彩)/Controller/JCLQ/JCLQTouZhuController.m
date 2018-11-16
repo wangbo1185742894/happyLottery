@@ -520,6 +520,8 @@
     payVC.schemetype = self.transaction.schemeType;
     payVC.lotteryName = @"竞彩篮球";
     payVC.subscribed = self.transaction.betCost;
+    [self.transaction.matchSelectArray removeAllObjects];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"NSNotificationDeleteAll" object:nil];
     [self.navigationController pushViewController:payVC animated:YES];
 }
 

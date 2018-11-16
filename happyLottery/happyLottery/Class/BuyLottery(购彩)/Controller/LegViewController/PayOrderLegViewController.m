@@ -27,6 +27,8 @@
 #import "ZhuiHaoInfoViewController.h"
 #import "SetPayPWDViewController.h"
 #import "WBInputPopView.h"
+#import "GYJPlayViewController.h"
+#import "CTZQPlayViewController.h"
 #define KPayTypeListCell @"PayTypeListCell"
 
 #define KTabObaListCell @"TabObaListCell"
@@ -643,6 +645,60 @@
                  };
     }
 }
+
+
+- (void)navigationBackToLastPage{
+for (UIViewController *controller in self.navigationController.viewControllers) {
+    NSLog(@"-----%@------",controller);
+    if ([controller isKindOfClass:[GYJPlayViewController class]]) {
+        GYJPlayViewController *revise =(GYJPlayViewController *)controller;
+        [self.navigationController popToViewController:revise animated:YES];
+        return;
+    }
+
+    if ([controller isKindOfClass:[DLTPlayViewController class]]) {
+        DLTPlayViewController *revise =(DLTPlayViewController *)controller;
+        [self.navigationController popToViewController:revise animated:YES];
+        return;
+    }
+    if ([controller isKindOfClass:[SSQPlayViewController class]]) {
+        SSQPlayViewController *revise =(SSQPlayViewController *)controller;
+        [self.navigationController popToViewController:revise animated:YES];
+        return;
+    }
+    if ([controller isKindOfClass:[JCZQPlayViewController class]]) {
+        JCZQPlayViewController *revise =(JCZQPlayViewController *)controller;
+        [self.navigationController popToViewController:revise animated:YES];
+        [[NSNotificationCenter defaultCenter]postNotificationName:KSELECTMATCHCLEAN object:nil];
+        return;
+    }
+    if ([controller isKindOfClass:[CTZQPlayViewController class]]) {
+        CTZQPlayViewController *revise =(CTZQPlayViewController *)controller;
+        [[NSNotificationCenter defaultCenter]postNotificationName:KSELECTMATCHCLEAN object:nil];
+        [self.navigationController popToViewController:revise animated:YES];
+        return;
+
+    }
+    if ([controller isKindOfClass:[JCLQPlayController class]]) {
+        JCLQPlayController *revise =(JCLQPlayController *)controller;
+        [[NSNotificationCenter defaultCenter]postNotificationName:KSELECTMATCHCLEAN object:nil];
+        [self.navigationController popToViewController:revise animated:YES];
+        return;
+    }
+    if ([controller isKindOfClass:[YuCeSchemeCreateViewController class]]) {
+        YuCeSchemeCreateViewController *revise =(YuCeSchemeCreateViewController *)controller;
+        [self.navigationController popToViewController:revise animated:YES];
+        return;
+    }
+
+    if ([controller isKindOfClass:[LotteryPlayViewController class]]) {
+        LotteryPlayViewController *revise =(LotteryPlayViewController *)controller;
+        [self.navigationController popToViewController:revise animated:YES];
+        return;
+    }
+ }
+}
+
 
 
 @end

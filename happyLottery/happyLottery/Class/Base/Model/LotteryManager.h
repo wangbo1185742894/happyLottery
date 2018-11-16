@@ -69,7 +69,7 @@ typedef enum EarningsType{
 - (void) gotisAttent:(NSString *)diction  errorMsg:(NSString *)msg;
 - (void) gotAttentMember:(NSString *)diction  errorMsg:(NSString *)msg;
 - (void) gotReliefAttent:(NSString *)diction  errorMsg:(NSString *)msg;
-
+- (void) gotMaxIssue:(NSString *)diction  errorMsg:(NSString *)msg;
 - (void) gotListAttent:(NSArray  *)personList  errorMsg:(NSString *)msg;
 - (void) gotAppSign:(NSDictionary *)personList  errorMsg:(NSString *)msg;
 - (void) listSellLottery:(NSArray *)lotteryList  errorMsg:(NSString *)msg;
@@ -184,6 +184,8 @@ typedef enum EarningsType{
 
 - (void)getListSellLottery;
 
+- (void)getMaxIssue:(NSDictionary *)paraDic;
+
 - (void)listRechargeHandsel;
 
 -(void)getCommonSetValue:(NSDictionary *)para;
@@ -209,5 +211,8 @@ typedef enum EarningsType{
 
 
 - (void) betChaseSchemeZhineng:(LotteryTransaction *)transcation andchaseList:(NSArray *)chaseList andpostboyId:(NSString *)postboyId;
+
+
+
 @end
 
