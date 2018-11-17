@@ -11,15 +11,17 @@
 #import "LegSelectFooterView.h"
 #import "CunLegTableViewCell.h"
 #import "ZhuanLegTableViewCell.h"
+#import "SelectHeaderTableViewCell.h"
 #import "LegCashInfoViewController.h"
 
 #define KSelectLegTableViewCell    @"SelectLegTableViewCell"
 #define KCunLegTableViewCell       @"CunLegTableViewCell"
 #define KZhuanLegTableViewCell     @"ZhuanLegTableViewCell"
+#define KSelectHeaderTableViewCell @"SelectHeaderTableViewCell"
 
 
 
-@interface LegSelectViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,PostboyManagerDelegate,ZhuanLegDelegate>{
+@interface LegSelectViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,PostboyManagerDelegate,ZhuanLegDelegate,MemberManagerDelegate>{
     
     __weak IBOutlet UITableView *personTableView;
     
@@ -32,10 +34,14 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomHeightCons;
 
+
+@property (nonatomic, strong)PostboyAccountModel *YueZhuanlegModel;
+
 @end
 
 @implementation LegSelectViewController {
     LegSelectFooterView * footView;
+    double yueMoney;
 }
 
 
@@ -48,7 +54,7 @@
     [self loadNewDate];
     self.lotteryMan.delegate = self;
     self.postboyMan.delegate = self;
-    
+    self.memberMan.delegate = self;
     footView = [[LegSelectFooterView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, 74)];
     if ([self.titleName isEqualToString:@"选择代买小哥"]||[self.titleName isEqualToString:@"存款"]) {
         self.bottomHeightCons.constant = 0;
@@ -72,12 +78,46 @@
     [personTableView registerNib:[UINib nibWithNibName:KSelectLegTableViewCell bundle:nil] forCellReuseIdentifier:KSelectLegTableViewCell];
     [personTableView registerNib:[UINib nibWithNibName:KCunLegTableViewCell bundle:nil] forCellReuseIdentifier:KCunLegTableViewCell];
     [personTableView registerNib:[UINib nibWithNibName:KZhuanLegTableViewCell bundle:nil] forCellReuseIdentifier:KZhuanLegTableViewCell];
+    [personTableView registerNib:[UINib nibWithNibName:KSelectHeaderTableViewCell bundle:nil] forCellReuseIdentifier:KSelectHeaderTableViewCell];
     personTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 - (void)loadNewDate {
     [self showLoadingText:@"正在加载中"];
+    if ([self.titleName isEqualToString:@"选择代买小哥"]) {
+         [self updateMemberClinet];
+    }
+    else {
+        [self.postboyMan getPostboyAccountList:@{@"cardCode":self.curUser.cardCode}];
+    }
+    
+}
+
+
+
+-(void)updateMemberClinet{
+    NSDictionary *MemberInfo;
+    NSString *cardCode =self.curUser.cardCode;
+    if (cardCode == nil) {
+        return;
+    }
+    MemberInfo = @{@"cardCode":cardCode
+                   };
+    [self.memberMan getMemberByCardCodeSms:(NSDictionary *)MemberInfo];
+}
+
+- (void) getMemberByCardCodeSms:(NSDictionary *)memberInfo IsSuccess:(BOOL)success errorMsg:(NSString *)msg{
     [self.postboyMan getPostboyAccountList:@{@"cardCode":self.curUser.cardCode}];
+    if (success) {
+        User *user = [[User alloc]initWith:memberInfo];
+        [GlobalInstance instance].curUser = user;
+        [GlobalInstance instance].curUser.isLogin = YES;
+        yueMoney = [user.balance doubleValue] + [user.notCash doubleValue];
+//        [personTableView reloadData];
+    }else{
+        [self showPromptText: msg hideAfterDelay: 1.7];
+    }
+    
 }
 
 #pragma mark  PostboyManagerDelegate
@@ -146,13 +186,27 @@
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if ([self.titleName isEqualToString:@"选择代买小哥"]&& yueMoney > 0) {
+        return self.personArray.count + 1;
+    }
     return self.personArray.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([self.titleName isEqualToString:@"选择代买小哥"]) {
+        if (yueMoney > 0 && indexPath.row == 0) {
+            SelectHeaderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KSelectHeaderTableViewCell];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            [cell reloadDateWithMoney:yueMoney];
+            personTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+            return cell;
+        }
         SelectLegTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KSelectLegTableViewCell];
-        [cell loadLegDate:[self.personArray objectAtIndex:indexPath.row]];
+        if (yueMoney > 0) {
+            [cell loadLegDate:[self.personArray objectAtIndex:indexPath.row-1]];
+        } else {
+            [cell loadLegDate:[self.personArray objectAtIndex:indexPath.row]];
+        }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         personTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         return cell;
@@ -174,6 +228,9 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([self.titleName isEqualToString:@"选择代买小哥"]) {
+        if (yueMoney > 0 && indexPath.row == 0) {
+            return 70;
+        }
        return 110;
     }
     if ([self.titleName isEqualToString:@"给跑腿小哥转账"]) {
@@ -186,14 +243,34 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
    
     if ([self.titleName isEqualToString:@"选择代买小哥"]) {
-        PostboyAccountModel *legModel = self.personArray[indexPath.row];
-        if (![legModel.overline boolValue] && [legModel.totalBalance doubleValue]<[self.realCost doubleValue]){
-            [self showPromptViewWithText:@"该小哥已离线且余额不足，请选择其他小哥" hideAfter:1.7];
+        PostboyAccountModel *legModel;
+        
+        if (yueMoney > 0 && indexPath.row == 0) {
             return;
+        } else {
+            if (yueMoney > 0) {
+                legModel = self.personArray[indexPath.row - 1];
+                if ([legModel.overline boolValue]){  //小哥不在线，不弹转账框m，直接走下面的逻辑
+                    [self alertView:legModel];
+                } else if ([legModel.totalBalance doubleValue]<[self.realCost doubleValue]){
+                    [self showPromptViewWithText:@"该小哥已离线且余额不足，请选择其他小哥" hideAfter:1.7];
+                } else {
+                    legModel.isSelect = YES;
+                    [self.delegate alreadySelectModel:legModel];
+                    [self.navigationController popViewControllerAnimated:YES];
+                }
+                
+            } else {
+                legModel = self.personArray[indexPath.row];
+                if (![legModel.overline boolValue] && [legModel.totalBalance doubleValue]<[self.realCost doubleValue]){
+                    [self showPromptViewWithText:@"该小哥已离线且余额不足，请选择其他小哥" hideAfter:1.7];
+                    return;
+                }
+                legModel.isSelect = YES;
+                [self.delegate alreadySelectModel:legModel];
+                [self.navigationController popViewControllerAnimated:YES];
+            }
         }
-        legModel.isSelect = YES;
-        [self.delegate alreadySelectModel:legModel];
-        [self.navigationController popViewControllerAnimated:YES];
     } else if ([self.titleName isEqualToString:@"存款"]) {
         PostboyAccountModel *legModel = self.personArray[indexPath.row];
         legModel.isSelect = YES;
@@ -214,6 +291,45 @@
         [tableView reloadData];
     }
     
+}
+
+
+
+- (void)alertView:(PostboyAccountModel *)model {
+    ZLAlertView *alert = [[ZLAlertView alloc] initWithTitle:@"预存" message:@"是否将账户余额全部预存至小哥账户下，让小哥进行代付相应金额?"];
+    [alert addBtnTitle:TitleNotDo action:^{
+        model.isSelect = YES;
+        [self.delegate alreadySelectModel:model];
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+    
+    
+    [alert addBtnTitle:TitleDo action:^{
+        [self rechargeYue:model];
+    }];
+    [alert showAlertWithSender:self];
+}
+
+- (void)rechargeYue:(PostboyAccountModel *)postModel{
+    [self showPromptText:@"正在加载中"];
+    NSDictionary * rechargeInfo = @{@"cardCode":self.curUser.cardCode,
+                     @"postboyId":postModel._id,
+                     @"amount":[NSString stringWithFormat:@"%.2f",yueMoney]
+                     };
+    _YueZhuanlegModel = postModel;
+    [self.memberMan transferToPostboy:rechargeInfo];
+    
+}
+
+-(void)rechargeSmsIsSuccess:(BOOL)success andPayInfo:(NSDictionary *)payInfo errorMsg:(NSString *)msg{
+    [self hideLoadingView];
+    if (success) {
+        _YueZhuanlegModel.isSelect = YES;
+        [self.delegate alreadySelectModel:_YueZhuanlegModel];
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
+        [self showPromptText:msg hideAfterDelay:1.7];
+    }
 }
 
 

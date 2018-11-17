@@ -453,7 +453,7 @@
             }else if (section == 1){
                 header.titleLa.text = @"认购信息";
             }else if (section == 3){
-                header.titleLa.text = @"跑腿信息";
+                header.titleLa.text = @"代买信息";
             }
             return header;
         }else{
@@ -486,7 +486,7 @@
             }else if (section == 2){
                 header.titleLa.text = @"认购信息";
             }else if (section == 4){
-                header.titleLa.text = @"跑腿信息";
+                header.titleLa.text = @"代买信息";
             }
             return header;
         }else{

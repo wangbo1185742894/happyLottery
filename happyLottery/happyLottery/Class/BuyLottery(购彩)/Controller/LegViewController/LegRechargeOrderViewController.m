@@ -144,7 +144,7 @@
             offLineView.weiXianCode = self.postModel.wechatId;
             offLineView.telephone = self.postModel.mobile;
             offLineView.delegate = self;
-            offLineView.liShiLsb.text =  @"注意：1.在向小哥转账时，将此充值订单号一并发给小哥\n2.在小哥未确认订单前，建议不要关闭此页面，以免影响发单";
+            offLineView.liShiLsb.text =  @"注意：1.添加小哥微信线下转账，并将充值订单号发送小哥确认。\n2.在小哥未确认订单前，建议不要关闭此页面，以免影响发单。\n3.如不需要进行发单，可继续购彩等其他操作。";
             [offLineView loadDate];
             [self.view addSubview:offLineView];
         }else if ([itemModel.channel isEqualToString:@"BILLS_ALI"]){

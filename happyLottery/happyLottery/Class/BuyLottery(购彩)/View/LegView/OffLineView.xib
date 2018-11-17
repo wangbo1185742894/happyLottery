@@ -16,10 +16,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yeW-lR-uie">
-                    <rect key="frame" x="30" y="176" width="315" height="315"/>
+                    <rect key="frame" x="30" y="166" width="315" height="335"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o25-zh-eaT">
-                            <rect key="frame" x="0.0" y="265" width="315" height="50"/>
+                            <rect key="frame" x="0.0" y="285" width="315" height="50"/>
                             <color key="backgroundColor" red="0.12549019610000001" green="0.7843137255" blue="0.59215686270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="SrE-pa-HGo"/>
@@ -133,7 +133,7 @@
                         <constraint firstItem="A6J-Ap-UWh" firstAttribute="top" secondItem="qIg-pP-1vm" secondAttribute="bottom" constant="10" id="A7U-hY-f8h"/>
                         <constraint firstItem="4xe-Hz-mJg" firstAttribute="top" secondItem="yeW-lR-uie" secondAttribute="top" constant="18" id="Bx2-1a-QtT"/>
                         <constraint firstItem="suu-JD-b9M" firstAttribute="centerX" secondItem="tzY-uN-hWU" secondAttribute="centerX" id="DGv-y1-C6f"/>
-                        <constraint firstAttribute="height" constant="315" id="Dru-Vk-Ejk"/>
+                        <constraint firstAttribute="height" constant="335" id="Dru-Vk-Ejk"/>
                         <constraint firstAttribute="trailing" secondItem="A6J-Ap-UWh" secondAttribute="trailing" constant="10" id="Ldw-5X-onp"/>
                         <constraint firstItem="o25-zh-eaT" firstAttribute="leading" secondItem="yeW-lR-uie" secondAttribute="leading" id="OWL-IQ-nPT"/>
                         <constraint firstItem="Qfx-v4-rUV" firstAttribute="leading" secondItem="4xe-Hz-mJg" secondAttribute="leading" id="YAY-QF-0UO"/>
@@ -152,7 +152,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ydk-SZ-eb4">
-                    <rect key="frame" x="330" y="134" width="15" height="22"/>
+                    <rect key="frame" x="330" y="124" width="15" height="22"/>
                     <state key="normal" image="close.png"/>
                     <connections>
                         <action selector="actionToClose:" destination="iN0-l3-epB" eventType="touchUpInside" id="KMp-Sa-PT1"/>

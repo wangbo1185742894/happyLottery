@@ -62,6 +62,7 @@
     self.memberMan.delegate = self;
     self.lotteryMan.delegate =self;
     self.postboyMan.delegate =self;
+    [self setRightBarButtonItem];
     self.labBanlence.text = [NSString stringWithFormat:@"%@元",self.curUser.totalBanlece];
     [self.postboyMan recentPostboyAccount:@{@"cardCode":self.curUser.cardCode}];
     UITapGestureRecognizer *legListViewTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(actionToSelectLeg)];
@@ -258,6 +259,16 @@
     }
 }
 
+-(void)setRightBarButtonItem{
+    
+    UIButton *rightBtnRec = [UIButton buttonWithType:UIButtonTypeCustom];
+    rightBtnRec.frame = CGRectMake(0, 0, 30, 30);
+    [rightBtnRec addTarget:self action:@selector(showPlayRec) forControlEvents:UIControlEventTouchUpInside];
+    [rightBtnRec setImage:[UIImage imageNamed:@"redpacketrule"] forState:UIControlStateNormal];
+    UIBarButtonItem *barRedPacketRec = [[UIBarButtonItem alloc]initWithCustomView:rightBtnRec];
+    self.navigationItem.rightBarButtonItem  = barRedPacketRec;
+}
+
 -(void)setTableView{
     self.tabChannelList.dataSource =self;
     self.tabChannelList.delegate = self;
@@ -388,10 +399,10 @@
     offLineView.weiXianCode = self.curModel.wechatId;
     offLineView.telephone = self.curModel.mobile;
     offLineView.delegate = self;
-    offLineView.liShiLsb.text =  @"注意：在向小哥转账时，将此充值订单号一并发给小哥";
+    offLineView.liShiLsb.text =  @"注意：1.添加小哥微信线下转账，并将充值订单号发送小哥确认。\n 2.小哥确认订单后，会将转账金额充值到小哥账户下,无需在此页面停留.";
     offLineView.okBtn.hidden = YES;
     offLineView.okBtn.userInteractionEnabled = NO;
-    offLineView.viewHeight.constant = 260;
+    offLineView.viewHeight.constant = 280;
     [offLineView loadDate];
 }
 
@@ -402,7 +413,7 @@
     NSURL *pathUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"tbz_recharge" ofType:@"html"]];
     WebShowViewController *webShow = [[WebShowViewController alloc]init];
     webShow.pageUrl = pathUrl;
-    webShow.title = @"会员充值说明";
+    webShow.title = @"会员转账说明";
     [self.navigationController pushViewController:webShow animated:YES];
 }
 - (IBAction)commitBtnClick:(id)sender {
@@ -715,15 +726,6 @@
     [[UIApplication sharedApplication].keyWindow addSubview:rulePopView];
 }
 
--(void)setRightBarButtonItem{
-    
-    UIButton *rightBtnRec = [UIButton buttonWithType:UIButtonTypeCustom];
-    rightBtnRec.frame = CGRectMake(0, 0, 30, 30);
-    [rightBtnRec addTarget:self action:@selector(showPlayRec) forControlEvents:UIControlEventTouchUpInside];
-    [rightBtnRec setImage:[UIImage imageNamed:@"redpacketrule"] forState:UIControlStateNormal];
-    UIBarButtonItem *barRedPacketRec = [[UIBarButtonItem alloc]initWithCustomView:rightBtnRec];
-    self.navigationItem.rightBarButtonItem  = barRedPacketRec;
-}
 -(void)actionYinLianChongZhi:(NSString *)orderNo{
     NSString * tn = orderNo;
     if (tn) {

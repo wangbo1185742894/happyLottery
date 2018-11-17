@@ -57,6 +57,8 @@
 #define KAppSignModelShow @"appSignModelShow"
 #define KAppSignModelUrl @"appSignModelUrl"
 #define KEYAPPVERSION @"appVersion"
+#define KLegIntroduce  @"legIntroduce"
+
 static NSString *ID = @"LotteryAreaViewCell";
 
 @interface BuyLotteryViewController ()<WBAdsImgViewDelegate,HomeMenuItemViewDelegate,UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,NewsListCellDelegate,OpenRedPopViewDelegate,MemberManagerDelegate,VersionUpdatingPopViewDelegate,NetWorkingHelperDelegate,UICollectionViewDataSource,UICollectionViewDelegate,XYTableViewDelegate,UIWebViewDelegate>
@@ -1061,6 +1063,20 @@ static NSString *ID = @"LotteryAreaViewCell";
         redpacketView.hidden = YES;
     }
     [self gyjButtonHiddenOrNot];
+
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    NSString *  isShow = [[NSUserDefaults standardUserDefaults] objectForKey:KLegIntroduce];
+    if (isShow == nil) {
+        ZLAlertView *alert = [[ZLAlertView alloc] initWithTitle:@"业务说明" message:@"现业务模式调整为用户转账给代买小哥，小哥实体彩票店代购形式。因此请于下单前先将您的账户余额转入小哥账户。"];
+        [alert addBtnTitle:@"我知道了" action:^{
+            [[NSUserDefaults standardUserDefaults] setValue:@1  forKey:KLegIntroduce];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }];
+        [alert showAlertWithSender:self];
+    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated{

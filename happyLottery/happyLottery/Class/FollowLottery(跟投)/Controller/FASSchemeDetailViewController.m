@@ -755,14 +755,14 @@
             if (section == 3) {
                 OrderListHeaderView *header = [[[NSBundle mainBundle] loadNibNamed:@"OrderListHeaderView" owner:nil options:nil] lastObject];
                 header.backgroundColor = RGBCOLOR(253 , 252, 245);
-                header.titleLa.text = @"跑腿信息";
+                header.titleLa.text = @"代买信息";
                 return header;
             }
         } else {
             if (section == 4) {
                 OrderListHeaderView *header = [[[NSBundle mainBundle] loadNibNamed:@"OrderListHeaderView" owner:nil options:nil] lastObject];
                 header.backgroundColor = RGBCOLOR(253 , 252, 245);
-                header.titleLa.text = @"跑腿信息";
+                header.titleLa.text = @"代买信息";
                 return header;
             }
         }

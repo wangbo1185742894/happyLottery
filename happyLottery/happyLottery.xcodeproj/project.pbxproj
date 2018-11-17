@@ -1000,7 +1000,6 @@
 		2DE10950200356350020343A /* JingCaiOrderCode.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DE1094F200356350020343A /* JingCaiOrderCode.plist */; };
 		2DE109532004E6690020343A /* NewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE109522004E6690020343A /* NewsModel.m */; };
 		2DE892A02020724C008926A6 /* JWCacheURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE8929F2020724B008926A6 /* JWCacheURLProtocol.m */; };
-		2DE892A3202150AC008926A6 /* tbz_recharge.html in Resources */ = {isa = PBXBuildFile; fileRef = 2DE892A1202150AB008926A6 /* tbz_recharge.html */; };
 		2DE892A6202171AB008926A6 /* tbz_useragreement.html in Resources */ = {isa = PBXBuildFile; fileRef = 2DE892A5202171AA008926A6 /* tbz_useragreement.html */; };
 		2DE892A92022B5D1008926A6 /* schemeticket@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE892A72022B5CF008926A6 /* schemeticket@3x.png */; };
 		2DE892AA2022B5D1008926A6 /* schemeticket@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DE892A82022B5D0008926A6 /* schemeticket@2x.png */; };
@@ -1422,6 +1421,9 @@
 		F97EE4F1211AE4B600EFCF08 /* genDanSuo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F97EE4EF211AE4B500EFCF08 /* genDanSuo@3x.png */; };
 		F97FD9CA2003026300B35A7C /* inputbox@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F97FD9C82003026200B35A7C /* inputbox@3x.png */; };
 		F97FD9CB2003026300B35A7C /* inputbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F97FD9C92003026200B35A7C /* inputbox@2x.png */; };
+		F981981D219FC66800CD540F /* SelectHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F981981B219FC66800CD540F /* SelectHeaderTableViewCell.m */; };
+		F981981E219FC66800CD540F /* SelectHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F981981C219FC66800CD540F /* SelectHeaderTableViewCell.xib */; };
+		F9819820219FF9DA00CD540F /* tbz_recharge.html in Resources */ = {isa = PBXBuildFile; fileRef = F981981F219FF9D800CD540F /* tbz_recharge.html */; };
 		F98A284B219A9373004C1048 /* LegDetailFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F98A2848219A9371004C1048 /* LegDetailFooterView.xib */; };
 		F98A284C219A9373004C1048 /* LegDetailFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = F98A2849219A9372004C1048 /* LegDetailFooterView.m */; };
 		F98A602C20638893008C3132 /* GYJSchemeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F98A602A20638892008C3132 /* GYJSchemeDetailViewController.m */; };
@@ -3317,7 +3319,6 @@
 		2DE109522004E6690020343A /* NewsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsModel.m; sourceTree = "<group>"; };
 		2DE8929E2020724B008926A6 /* JWCacheURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWCacheURLProtocol.h; sourceTree = "<group>"; };
 		2DE8929F2020724B008926A6 /* JWCacheURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWCacheURLProtocol.m; sourceTree = "<group>"; };
-		2DE892A1202150AB008926A6 /* tbz_recharge.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = tbz_recharge.html; sourceTree = "<group>"; };
 		2DE892A5202171AA008926A6 /* tbz_useragreement.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = tbz_useragreement.html; sourceTree = "<group>"; };
 		2DE892A72022B5CF008926A6 /* schemeticket@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "schemeticket@3x.png"; sourceTree = "<group>"; };
 		2DE892A82022B5D0008926A6 /* schemeticket@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "schemeticket@2x.png"; sourceTree = "<group>"; };
@@ -3835,6 +3836,10 @@
 		F97EE4EF211AE4B500EFCF08 /* genDanSuo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "genDanSuo@3x.png"; sourceTree = "<group>"; };
 		F97FD9C82003026200B35A7C /* inputbox@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inputbox@3x.png"; sourceTree = "<group>"; };
 		F97FD9C92003026200B35A7C /* inputbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inputbox@2x.png"; sourceTree = "<group>"; };
+		F981981A219FC66800CD540F /* SelectHeaderTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectHeaderTableViewCell.h; sourceTree = "<group>"; };
+		F981981B219FC66800CD540F /* SelectHeaderTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectHeaderTableViewCell.m; sourceTree = "<group>"; };
+		F981981C219FC66800CD540F /* SelectHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		F981981F219FF9D800CD540F /* tbz_recharge.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = tbz_recharge.html; sourceTree = "<group>"; };
 		F98A2848219A9371004C1048 /* LegDetailFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LegDetailFooterView.xib; sourceTree = "<group>"; };
 		F98A2849219A9372004C1048 /* LegDetailFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LegDetailFooterView.m; sourceTree = "<group>"; };
 		F98A284A219A9372004C1048 /* LegDetailFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LegDetailFooterView.h; sourceTree = "<group>"; };
@@ -4776,6 +4781,7 @@
 		2D4B1E411FDF65380034B708 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				F981981F219FF9D800CD540F /* tbz_recharge.html */,
 				F99AD2F5219E8C7F00ED4B99 /* postboy_agreement.html */,
 				F9ADB10720FDF41700AFAA03 /* zhuihao.html */,
 				F90D68F920F2FDAE007865E4 /* sdguize.html */,
@@ -4806,7 +4812,6 @@
 				2DA39EE820538FBA00A03FD1 /* LotteryProfilesConfigdlt.plist */,
 				2D7B1379204E6AEF0035AE89 /* BetPlayStyleCode.plist */,
 				2DA39EE220538ED900A03FD1 /* LotteryInstructionConfig.plist */,
-				2DE892A1202150AB008926A6 /* tbz_recharge.html */,
 				2DE892A5202171AA008926A6 /* tbz_useragreement.html */,
 				2D5171FD200C942300C3CD7F /* pageCodeConfig.plist */,
 				2DE1094F200356350020343A /* JingCaiOrderCode.plist */,
@@ -7800,6 +7805,9 @@
 				F9DB2CAC2189613100D4F95E /* SelectLegTableViewCell.h */,
 				F9DB2CAD2189613100D4F95E /* SelectLegTableViewCell.m */,
 				F9DB2CAE2189613100D4F95E /* SelectLegTableViewCell.xib */,
+				F981981A219FC66800CD540F /* SelectHeaderTableViewCell.h */,
+				F981981B219FC66800CD540F /* SelectHeaderTableViewCell.m */,
+				F981981C219FC66800CD540F /* SelectHeaderTableViewCell.xib */,
 				F9BC1A5D218AE7AF00BEE7E4 /* LegOrderStatusTableViewCell.h */,
 				F9BC1A5E218AE7AF00BEE7E4 /* LegOrderStatusTableViewCell.m */,
 				F9BC1A5F218AE7AF00BEE7E4 /* LegOrderStatusTableViewCell.xib */,
@@ -8195,7 +8203,6 @@
 				F9F6CA9B1FF5D6B100A49F71 /* button@2x.png in Resources */,
 				F90FCD5B1FF34D5000BD807C /* MyRedPacketTableViewCell.xib in Resources */,
 				F98A603220638EA9008C3132 /* GYJSchemeViewCell.xib in Resources */,
-				2DE892A3202150AC008926A6 /* tbz_recharge.html in Resources */,
 				F9BC6DE320C2724E0037998B /* GroupViewController.xib in Resources */,
 				2D27A21620DC929D0050F6D5 /* wincup@2x.png in Resources */,
 				F9B5D9702060A9DE00C9F6DC /* flag1044@3x.png in Resources */,
@@ -8761,6 +8768,7 @@
 				2D0E239E20181C790098DA40 /* checkBox_default@3x.png in Resources */,
 				2D739D061FEB853500264044 /* btnbackimgNomal@2x.png in Resources */,
 				F97D0B4220B6BEA1003D09C6 /* genadnbanner@2x.png in Resources */,
+				F9819820219FF9DA00CD540F /* tbz_recharge.html in Resources */,
 				2D05C85520A43631001A8953 /* fadan@2x.png in Resources */,
 				2DE892B32024069F008926A6 /* pic_kongbaifangan@2x.png in Resources */,
 				F9E53D5F20EE28D70072B8AF /* yijian_mine@3x.png in Resources */,
@@ -8776,6 +8784,7 @@
 				F97FD9CB2003026300B35A7C /* inputbox@2x.png in Resources */,
 				2D05C86D20A43631001A8953 /* pic_hongrenbangbeijing@3x.png in Resources */,
 				F9CC9DE220CE225F009A9983 /* tuiguangtaoli@2x.png in Resources */,
+				F981981E219FC66800CD540F /* SelectHeaderTableViewCell.xib in Resources */,
 				2D05C85C20A43631001A8953 /* firstbang@2x.png in Resources */,
 				2D7BFACB20E0A0CF006173EC /* news@2x.png in Resources */,
 				2D7B13F9204E885E0035AE89 /* OpenLotteryResultCell.xib in Resources */,
@@ -9781,6 +9790,7 @@
 				2D7B13B1204E873D0035AE89 /* CTZQMatch.m in Sources */,
 				F9705E46207A0DE800E25E4E /* BaseCell.m in Sources */,
 				2D3065E220EC69DF0084DB97 /* CashInfoViewController.m in Sources */,
+				F981981D219FC66800CD540F /* SelectHeaderTableViewCell.m in Sources */,
 				2D8CBFE41FF376DA00CC367F /* YuCeSchemeCreateCell.m in Sources */,
 				2D03F2892060BAE800C81BEF /* PaySetViewController.m in Sources */,
 				2D03F1E9205FD4C200C81BEF /* CTZQSchemeDetailViewController.m in Sources */,

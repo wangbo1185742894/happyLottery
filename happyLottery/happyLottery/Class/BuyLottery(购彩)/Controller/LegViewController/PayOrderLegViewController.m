@@ -123,26 +123,23 @@
 
 }
 
-
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self showCoupon];
 }
 
-
 - (void)alreadySelectModel:(PostboyAccountModel *)selectModel{
-    self.curModel = selectModel;
-    [self upDateLegInfo:self.curModel];
+    [self.postboyMan getMemberPostboyAccount:@{@"cardCode":self.curUser.cardCode,@"postboyId":selectModel._id}];
 }
 
 - (void)upDateLegInfo:(PostboyAccountModel *)postModel {
     if (postModel != nil) {
         selectLegLab.text = [NSString stringWithFormat:@"%@代付(余额 %.2f)",postModel.postboyName,[postModel.totalBalance doubleValue]];
         if (postModel.cost.length == 0) {
-            labCostInfo.text = [NSString stringWithFormat:@"明细：彩票店出票%.2f + 跑腿费%@元",self.subscribed,@"0"];
+            labCostInfo.text = [NSString stringWithFormat:@"明细：订单金额%.2f + 劳务费%@元",self.subscribed,@"0"];
         }
         else {
-            labCostInfo.text = [NSString stringWithFormat:@"明细：彩票店出票%.2f + 跑腿费%@元",self.subscribed,postModel.cost];
+            labCostInfo.text = [NSString stringWithFormat:@"明细：订单金额%.2f + 劳务费%@元",self.subscribed,postModel.cost];
         }
         if (([postModel.totalBalance doubleValue] - [self.labRealCost.text doubleValue]) >= 0) {
             [rechargeBtn setTitle:@"确认支付" forState:0];
@@ -153,7 +150,7 @@
         rechargeBtn.alpha=1.0f;
     }else {
         selectLegLab.text = @"请选择代买小哥代付";
-        labCostInfo.text = [NSString stringWithFormat:@"明细：彩票店出票%.2f + 跑腿费%@元",self.subscribed,@"0"];
+        labCostInfo.text = [NSString stringWithFormat:@"明细：订单金额%.2f + 劳务费%@元",self.subscribed,@"0"];
         rechargeBtn.userInteractionEnabled=NO;
         rechargeBtn.alpha=0.4f;
     }

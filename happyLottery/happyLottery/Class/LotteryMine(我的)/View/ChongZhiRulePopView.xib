@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -23,7 +23,7 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4OX-hE-SVj">
-                    <rect key="frame" x="20" y="208" width="335" height="250"/>
+                    <rect key="frame" x="20" y="208.5" width="335" height="250"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="redpacketruleback" translatesAutoresizingMaskIntoConstraints="NO" id="xEa-bi-jSi">
                             <rect key="frame" x="0.0" y="0.0" width="335" height="250"/>
@@ -55,9 +55,9 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <attributedString key="attributedText">
                                 <fragment>
-                                    <string key="content">1.充值免收手续费，即充即时到账；                                           2.充值金额的30%只能用于购彩，不能提现；                           3.投必中客服热线:  400-600-5558                                                   另附</string>
+                                    <mutableString key="content">1.转账时免手续费，即转即时到账，线下支付可能因小哥确认关系，会有部分延迟；                                                              2.每笔转账金额的70%可提现，30%只可用于消费使用，除余额转入部分；                                                                              3.投必中客服热线:  400-600-5558                                                   另附</mutableString>
                                     <attributes>
-                                        <color key="NSColor" red="0.28235294117647058" green="0.28235294117647058" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                         <font key="NSFont" size="11" name="DFWaWaSC-W5"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="6" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                     </attributes>
@@ -66,13 +66,13 @@
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UTZ-3o-4dC">
-                            <rect key="frame" x="26" y="126" width="108" height="19"/>
+                            <rect key="frame" x="26" y="164" width="108" height="19"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="108" id="PwA-JN-xjK"/>
                                 <constraint firstAttribute="height" constant="19" id="hfJ-9H-C0s"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                            <state key="normal" title="《会员充值说明》">
+                            <state key="normal" title="《会员转账说明》">
                                 <color key="titleColor" red="0.92156862750000001" green="0.30980392159999998" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
@@ -84,7 +84,7 @@
                         <constraint firstItem="xEa-bi-jSi" firstAttribute="leading" secondItem="4OX-hE-SVj" secondAttribute="leading" id="01Q-PX-tDn"/>
                         <constraint firstAttribute="bottom" secondItem="5vO-lY-82t" secondAttribute="bottom" constant="20" id="52W-3Y-IZ1"/>
                         <constraint firstItem="Asa-Qj-Xn1" firstAttribute="top" secondItem="4OX-hE-SVj" secondAttribute="top" constant="10" id="C7P-JI-pqQ"/>
-                        <constraint firstItem="UTZ-3o-4dC" firstAttribute="top" secondItem="Nd2-FA-v6v" secondAttribute="bottom" constant="76" id="FDY-yF-EwK"/>
+                        <constraint firstItem="UTZ-3o-4dC" firstAttribute="top" secondItem="Nd2-FA-v6v" secondAttribute="bottom" constant="114" id="FDY-yF-EwK"/>
                         <constraint firstItem="UTZ-3o-4dC" firstAttribute="leading" secondItem="4OX-hE-SVj" secondAttribute="leading" constant="26" id="LfU-9y-UpC"/>
                         <constraint firstItem="xEa-bi-jSi" firstAttribute="top" secondItem="4OX-hE-SVj" secondAttribute="top" id="NMN-qt-bbx"/>
                         <constraint firstItem="5vO-lY-82t" firstAttribute="leading" secondItem="4OX-hE-SVj" secondAttribute="leading" constant="10" id="OJf-zE-nKb"/>

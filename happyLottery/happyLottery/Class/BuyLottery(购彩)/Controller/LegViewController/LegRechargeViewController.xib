@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LegRechargeViewController">
             <connections>
                 <outlet property="btnChongzhi" destination="ND2-YG-fwX" id="qRw-RY-gds"/>
+                <outlet property="haveReadBtn" destination="cYc-k1-Acp" id="zVy-CK-4QE"/>
                 <outlet property="payWebView" destination="f2a-Wh-UrD" id="0Bv-hk-oaZ"/>
                 <outlet property="selectLegLab" destination="7bA-mB-6WW" id="cui-au-m4U"/>
                 <outlet property="selectLegView" destination="Rjx-Qh-95N" id="WX6-UD-cwX"/>
@@ -71,7 +72,7 @@
                                                 <constraint firstAttribute="height" constant="44" id="LXW-VV-2Sq"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                            <state key="normal" title="充值">
+                                            <state key="normal" title="转账">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <userDefinedRuntimeAttributes>
@@ -114,6 +115,33 @@
                                         <constraint firstItem="ND2-YG-fwX" firstAttribute="top" secondItem="vca-lc-zdH" secondAttribute="bottom" constant="69" id="z5j-MT-mfs"/>
                                     </constraints>
                                 </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYc-k1-Acp">
+                                    <rect key="frame" x="10" y="289" width="25" height="25"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="25" id="0ol-sh-TIY"/>
+                                        <constraint firstAttribute="height" constant="25" id="X4D-bE-1x1"/>
+                                    </constraints>
+                                    <state key="normal" image="ok.png"/>
+                                    <state key="selected" image="ok.png"/>
+                                    <connections>
+                                        <action selector="haveead:" destination="-1" eventType="touchUpInside" id="0ga-mt-vOb"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我已阅读并同意" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3AI-l8-9C1">
+                                    <rect key="frame" x="35" y="293" width="100" height="17"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" red="0.72148895260000001" green="0.72161453959999999" blue="0.72148102520000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oXr-RY-etT">
+                                    <rect key="frame" x="135" y="286.5" width="123" height="30"/>
+                                    <state key="normal" title="《会员转账说明》">
+                                        <color key="titleColor" red="0.067504443230000002" green="0.78096091749999996" blue="0.57203906770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="memberDetail:" destination="-1" eventType="touchUpInside" id="CaH-8I-sM7"/>
+                                    </connections>
+                                </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z6k-7j-LYg">
                                     <rect key="frame" x="0.0" y="52" width="375" height="180"/>
                                     <subviews>
@@ -289,7 +317,7 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="充值金额的70%可提现" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TB3-13-2u0">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="转账金额的70%可提现" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TB3-13-2u0">
                                             <rect key="frame" x="15" y="162" width="142.5" height="18"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="18" id="ktP-ec-Zrz"/>
@@ -399,8 +427,10 @@
                             <color key="backgroundColor" red="0.96444731950759888" green="0.96840888261795044" blue="0.98488038778305054" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="Z5v-0L-7bo" firstAttribute="top" secondItem="M7e-AF-Cow" secondAttribute="bottom" id="2fJ-5r-TXr"/>
+                                <constraint firstItem="cYc-k1-Acp" firstAttribute="top" secondItem="vca-lc-zdH" secondAttribute="bottom" constant="12" id="3pd-61-gaw"/>
                                 <constraint firstItem="M7e-AF-Cow" firstAttribute="leading" secondItem="E54-CB-Uwa" secondAttribute="leading" id="5tn-ED-Utv"/>
                                 <constraint firstAttribute="trailing" secondItem="dRm-HE-c1F" secondAttribute="trailing" id="AZp-dZ-m0W"/>
+                                <constraint firstItem="3AI-l8-9C1" firstAttribute="centerY" secondItem="cYc-k1-Acp" secondAttribute="centerY" id="CPI-Qi-VzA"/>
                                 <constraint firstItem="Rjx-Qh-95N" firstAttribute="leading" secondItem="E54-CB-Uwa" secondAttribute="leading" id="Ene-BS-HxB"/>
                                 <constraint firstAttribute="trailing" secondItem="Z5v-0L-7bo" secondAttribute="trailing" id="FB7-74-uoa"/>
                                 <constraint firstItem="Rjx-Qh-95N" firstAttribute="top" secondItem="E54-CB-Uwa" secondAttribute="top" constant="10" id="GvH-pv-hQj"/>
@@ -408,11 +438,15 @@
                                 <constraint firstItem="M7e-AF-Cow" firstAttribute="top" secondItem="dRm-HE-c1F" secondAttribute="bottom" id="Jpu-n2-kLT"/>
                                 <constraint firstAttribute="trailing" secondItem="M7e-AF-Cow" secondAttribute="trailing" id="Koz-XK-WfZ"/>
                                 <constraint firstAttribute="trailing" secondItem="Z6k-7j-LYg" secondAttribute="trailing" id="OZs-eG-hbf"/>
+                                <constraint firstItem="oXr-RY-etT" firstAttribute="centerY" secondItem="3AI-l8-9C1" secondAttribute="centerY" id="XLh-zG-GcE"/>
                                 <constraint firstItem="Z6k-7j-LYg" firstAttribute="top" secondItem="Rjx-Qh-95N" secondAttribute="bottom" constant="2" id="YT9-8E-Y62"/>
                                 <constraint firstItem="Z5v-0L-7bo" firstAttribute="leading" secondItem="E54-CB-Uwa" secondAttribute="leading" id="cej-iS-UdY"/>
                                 <constraint firstItem="dRm-HE-c1F" firstAttribute="leading" secondItem="E54-CB-Uwa" secondAttribute="leading" id="f0S-xF-2wB"/>
                                 <constraint firstItem="Z6k-7j-LYg" firstAttribute="leading" secondItem="E54-CB-Uwa" secondAttribute="leading" id="gKK-eF-Tnr"/>
+                                <constraint firstItem="cYc-k1-Acp" firstAttribute="leading" secondItem="E54-CB-Uwa" secondAttribute="leading" constant="10" id="mAB-dB-3tH"/>
                                 <constraint firstAttribute="trailing" secondItem="Rjx-Qh-95N" secondAttribute="trailing" id="mMa-jQ-gVz"/>
+                                <constraint firstItem="3AI-l8-9C1" firstAttribute="leading" secondItem="cYc-k1-Acp" secondAttribute="trailing" id="oFe-i0-gi9"/>
+                                <constraint firstItem="oXr-RY-etT" firstAttribute="leading" secondItem="3AI-l8-9C1" secondAttribute="trailing" id="pel-er-EPs"/>
                                 <constraint firstAttribute="height" constant="700" id="s1u-ik-OFL"/>
                                 <constraint firstItem="M7e-AF-Cow" firstAttribute="top" secondItem="Z6k-7j-LYg" secondAttribute="bottom" id="wbq-Ha-pFg"/>
                             </constraints>
@@ -439,5 +473,6 @@
     </objects>
     <resources>
         <image name="btn_jinru.png" width="5" height="8"/>
+        <image name="ok.png" width="15" height="15"/>
     </resources>
 </document>
