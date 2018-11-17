@@ -164,21 +164,26 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     JCZQSchemeItem *model = [dataArray objectAtIndex:indexPath.row];
-    LegOrderDetailViewController *detail = [[LegOrderDetailViewController alloc]init];
-    detail.schemeNo = model.schemeNO;
-    detail.lotteryName = [model getLotteryByName];
-    if(self.btnGendan.selected == YES){
-        detail.schemetype = SchemeTypeGenDan;
-    }else{
-        detail.schemetype = SchemeTypeFaqiGenDan;
+    if (model.postboyId.length > 0) {
+        LegOrderDetailViewController *detail = [[LegOrderDetailViewController alloc]init];
+        detail.schemeNo = model.schemeNO;
+        detail.lotteryName = [model getLotteryByName];
+        if(self.btnGendan.selected == YES){
+            detail.schemetype = SchemeTypeGenDan;
+        }else{
+            detail.schemetype = SchemeTypeFaqiGenDan;
+        }
+        detail.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:detail animated:YES];
+    } else {
+        FASSchemeDetailViewController *detailCV = [[FASSchemeDetailViewController alloc]init];
+        detailCV.schemeNo = model.schemeNO;
+        detailCV.schemeType = [self getSchemeType];
+        
+        [self.navigationController pushViewController:detailCV animated:YES];
     }
-    detail.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:detail animated:YES];
-//    FASSchemeDetailViewController *detailCV = [[FASSchemeDetailViewController alloc]init];
-//    detailCV.schemeNo = model.schemeNO;
-//    detailCV.schemeType = [self getSchemeType];
+   
     
-//    [self.navigationController pushViewController:detailCV animated:YES];
 }
 
 -(void)navigationBackToLastPage{
