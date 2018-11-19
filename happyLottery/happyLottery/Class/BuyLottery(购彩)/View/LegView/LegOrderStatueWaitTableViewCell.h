@@ -23,6 +23,7 @@ UITableViewCell
 
 @property (nonatomic,strong)NSString *timeStr;
 
+@property (weak, nonatomic) IBOutlet UIButton *continueBtn;
 
 @property (weak, nonatomic) id<LegOrderStatueWaitDelegate>delegate;
 

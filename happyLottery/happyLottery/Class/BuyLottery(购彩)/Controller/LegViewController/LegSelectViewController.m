@@ -115,7 +115,6 @@
         [GlobalInstance instance].curUser = user;
         [GlobalInstance instance].curUser.isLogin = YES;
         yueMoney = [user.balance doubleValue] + [user.notCash doubleValue];
-//        [personTableView reloadData];
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
     }
@@ -314,9 +313,9 @@
 
 - (void)rechargeYue:(PostboyAccountModel *)postModel{
     [self showPromptText:@"正在加载中"];
-    NSDictionary * rechargeInfo = @{@"cardCode":self.curUser.cardCode,
-                     @"postboyId":postModel._id,
-                     @"amount":[NSString stringWithFormat:@"%.2f",yueMoney]
+    NSDictionary * rechargeInfo = @{@"cardCode":self.curUser.cardCode == nil?@"":self.curUser.cardCode,
+                                    @"postboyId":postModel._id == nil?@"":postModel._id,
+                                    @"amount":[NSString stringWithFormat:@"%.2f",yueMoney]
                      };
     _YueZhuanlegModel = postModel;
     [self.memberMan transferToPostboy:rechargeInfo];

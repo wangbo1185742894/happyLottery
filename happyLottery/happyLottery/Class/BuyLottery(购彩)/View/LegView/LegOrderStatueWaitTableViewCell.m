@@ -16,6 +16,8 @@
     // Initialization code
     self.layer.masksToBounds = YES;
     self.layer.cornerRadius = 8;
+    self.continueBtn.layer.masksToBounds = YES;
+    self.continueBtn.layer.cornerRadius = 8;
 }
 
 - (IBAction)actionToRecharege:(id)sender {

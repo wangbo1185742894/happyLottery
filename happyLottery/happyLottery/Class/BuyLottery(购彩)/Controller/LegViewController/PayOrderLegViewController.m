@@ -396,7 +396,13 @@
                 return;
             }
             [self showLoadingText:@"正在提交订单中"];
-            NSDictionary *paraDic= @{@"schemeNo":self.diction[@"schemeNo"], @"cardCode":self.diction[@"cardCode"],@"multiple":self.diction[@"multiple"],@"postboyId":self.curModel._id};
+            NSDictionary *paraDic= @{@"schemeNo":self.diction[@"schemeNo"]==nil?@"":self.diction[@"schemeNo"],
+                                     @"cardCode":self.diction[@"cardCode"]==nil?
+                                     @"":self.diction[@"cardCode"],
+                                     @"multiple":self.diction[@"multiple"] == nil?@"":self.diction[@"multiple"],
+                                     @"postboyId":self.curModel._id == nil?
+                                     @"":self.curModel._id
+                                     };
             [self.lotteryMan followScheme:paraDic];
         } else {
             if ([rechargeBtn.titleLabel.text isEqualToString:@"转账给代买小哥"] && ![_curModel.overline boolValue]) {
