@@ -68,7 +68,7 @@
     self.yuE.text = [NSString stringWithFormat:@"%.2f元",[legModel.totalBalance doubleValue]];
     //跑腿费
     if ([legModel.cost integerValue] == 0) {
-        self.legCost.text = @"免费跑腿";
+        self.legCost.text = @"免费代买";
     }else{
         self.legCost.text = [NSString stringWithFormat:@"一次%@元",legModel.cost];
     }
