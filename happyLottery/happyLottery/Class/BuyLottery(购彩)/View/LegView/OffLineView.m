@@ -65,7 +65,7 @@
      pboard.string = self.orderNo;
 }
 
-- (IBAction)actionOkBtn:(id)sender {
+- (IBAction)actionOkBtn:(id)sender { 
 //    [self closeView];
     [self.delegate alreadyRechare];
 }

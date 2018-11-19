@@ -670,7 +670,13 @@
     payVC.postBoyId = schemeDetail.postboyId;
     payVC.lotteryName = self.lotteryName;
     payVC.schemeSource = schemeDetail.schemeSource;
-    payVC.schemetype = [schemeDetail.schemeType isEqualToString:@"BUY_INITIATE"]?SchemeTypeFaqiGenDan:SchemeTypeGenDan;
+    if ([schemeDetail.schemeType isEqualToString:@"BUY_INITIATE"]) {
+        payVC.schemetype = SchemeTypeFaqiGenDan;
+    } else if ([schemeDetail.schemeType isEqualToString:@"BUY_FOLLOW"]){
+        payVC.schemetype = SchemeTypeGenDan;
+    } else if([schemeDetail.schemeType isEqualToString:@"BUY_SELF"]){
+        payVC.schemetype = SchemeTypeZigou;
+    }
     [self.navigationController pushViewController:payVC animated:YES];
 }
 

@@ -77,7 +77,7 @@
         self.top.constant = 88;
     }
     [self getListByChannel];
-    [self.lotteryMan getDeadLine:@{@"schemeNo":self.schemeNo}];
+    [self.lotteryMan getDeadLine:@{@"schemeNo":self.schemeNo == nil?@"":self.schemeNo}];
     [self.lotteryMan getCommonSetValue:@{@"typeCode":@"recharge",@"commonCode":@"hawkeye_ali"}];
 }
 
