@@ -670,6 +670,7 @@
     payVC.postBoyId = schemeDetail.postboyId;
     payVC.lotteryName = self.lotteryName;
     payVC.schemeSource = schemeDetail.schemeSource;
+    payVC.schemetype = [schemeDetail.schemeType isEqualToString:@"BUY_INITIATE"]?SchemeTypeFaqiGenDan:SchemeTypeGenDan;
     [self.navigationController pushViewController:payVC animated:YES];
 }
 
