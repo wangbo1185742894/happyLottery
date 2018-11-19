@@ -23,6 +23,8 @@
 
 @property (nonatomic,strong)NSString *telephone;
 
+@property (weak, nonatomic) IBOutlet UILabel *fanganHao;
+
 @property (nonatomic,weak)id <OffLineViewDelegate>delegate;
 @property (weak, nonatomic) IBOutlet UILabel *liShiLsb;
 

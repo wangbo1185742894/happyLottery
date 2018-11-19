@@ -19,6 +19,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *alertLab;
 
+
+
 @end
 
 @implementation OffLineView{
@@ -54,9 +56,12 @@
 
 - (IBAction)actionToFuZhi:(id)sender {
      UIPasteboard *pboard = [UIPasteboard generalPasteboard];
-    
      BaseViewController *baseVC = (BaseViewController *)[self getCurrentVC];
-     [baseVC showPromptText:@"订单号已复制到剪贴板" hideAfterDelay:2.0];
+    if ([self.fanganHao.text isEqualToString:@"方案号"] ) {
+        [baseVC showPromptText:@"方案号已复制到剪贴板" hideAfterDelay:2.0];
+    } else {
+        [baseVC showPromptText:@"订单号已复制到剪贴板" hideAfterDelay:2.0];
+    }
      pboard.string = self.orderNo;
 }
 

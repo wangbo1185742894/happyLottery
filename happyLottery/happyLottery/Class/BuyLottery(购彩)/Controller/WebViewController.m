@@ -72,7 +72,7 @@
 
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     NSString *urlStr =[NSString stringWithFormat:@"%@", request.URL];
-    if ([urlStr rangeOfString:@"/app/activity/index"].length > 0) {
+    if ([urlStr rangeOfString:@"/app/activity/index"].length > 0 || [urlStr rangeOfString:@"/app/activity/serverGuide"].length > 0) {
         _btnBack.userInteractionEnabled = YES;
     }else{
         _btnBack.userInteractionEnabled = NO;

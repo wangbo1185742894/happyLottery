@@ -42,14 +42,14 @@
                             <constraint firstAttribute="width" constant="64" id="nlY-5L-fOi"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sid-wk-l26">
-                        <rect key="frame" x="187.5" y="26" width="0.0" height="0.0"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="112" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sid-wk-l26">
+                        <rect key="frame" x="175" y="35" width="25" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B8x-Gb-nvY">
-                        <rect key="frame" x="187.5" y="32" width="0.0" height="0.0"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="112" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B8x-Gb-nvY">
+                        <rect key="frame" x="177" y="61.5" width="21.5" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -75,10 +75,24 @@
                             <action selector="actionToOrderDetail:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="gPG-8R-XgJ"/>
                         </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ss" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nAU-Lh-NX3">
+                        <rect key="frame" x="12" y="8" width="14.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T69-gE-gTd">
+                        <rect key="frame" x="36.5" y="5.5" width="39" height="22"/>
+                        <state key="normal" image="leg_fuzhi.png"/>
+                        <connections>
+                            <action selector="fuZhiFangAnhao:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="JTh-uI-Moj"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="B8x-Gb-nvY" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="0lG-fD-zfU"/>
+                    <constraint firstItem="zet-s7-9x1" firstAttribute="centerY" secondItem="nAU-Lh-NX3" secondAttribute="centerY" id="4Ao-ZN-QtU"/>
                     <constraint firstItem="r6C-kD-m8K" firstAttribute="trailing" secondItem="Lti-7O-xgL" secondAttribute="trailing" id="6I6-VW-Ixj"/>
                     <constraint firstItem="Lti-7O-xgL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="6" id="8Gs-47-wJI"/>
                     <constraint firstItem="zet-s7-9x1" firstAttribute="trailing" secondItem="5Jc-08-yZA" secondAttribute="trailing" constant="5" id="DLw-DJ-nvq"/>
@@ -90,23 +104,29 @@
                     <constraint firstItem="r6C-kD-m8K" firstAttribute="leading" secondItem="Lti-7O-xgL" secondAttribute="leading" id="X6I-qH-e7T"/>
                     <constraint firstItem="sid-wk-l26" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="d88-bC-9Pa"/>
                     <constraint firstAttribute="bottom" secondItem="yjy-7B-fTY" secondAttribute="bottom" constant="10" id="f5R-wp-lkg"/>
-                    <constraint firstItem="sid-wk-l26" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="26" id="ggF-QO-VFj"/>
+                    <constraint firstItem="sid-wk-l26" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="35" id="ggF-QO-VFj"/>
                     <constraint firstAttribute="trailing" secondItem="Lti-7O-xgL" secondAttribute="trailing" constant="6" id="hDF-Mn-Ggm"/>
+                    <constraint firstItem="T69-gE-gTd" firstAttribute="leading" secondItem="nAU-Lh-NX3" secondAttribute="trailing" constant="10" id="hDG-YB-78f"/>
                     <constraint firstAttribute="bottom" secondItem="r6C-kD-m8K" secondAttribute="bottom" id="hhy-Q0-vHz"/>
+                    <constraint firstItem="T69-gE-gTd" firstAttribute="centerY" secondItem="nAU-Lh-NX3" secondAttribute="centerY" id="ihJ-bq-o8v"/>
                     <constraint firstAttribute="bottom" secondItem="Lti-7O-xgL" secondAttribute="bottom" id="ljq-60-6dS"/>
+                    <constraint firstItem="nAU-Lh-NX3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="yIP-T8-vSW"/>
                     <constraint firstItem="5Jc-08-yZA" firstAttribute="bottom" secondItem="yjy-7B-fTY" secondAttribute="bottom" id="yV8-xv-crT"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="orderBtn" destination="T69-gE-gTd" id="fCX-Kv-kY9"/>
                 <outlet property="orderCost" destination="B8x-Gb-nvY" id="wXI-lX-RRB"/>
                 <outlet property="orderStatue" destination="sid-wk-l26" id="qtf-0L-qQP"/>
+                <outlet property="schemeNo" destination="nAU-Lh-NX3" id="je8-dA-8oa"/>
                 <outlet property="yuanJiaoLab" destination="Lti-7O-xgL" id="NnO-22-Szi"/>
             </connections>
             <point key="canvasLocation" x="140" y="80.50974512743629"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="leg_fuzhi.png" width="39" height="19"/>
         <image name="leg_money.png" width="64" height="49"/>
         <image name="leg_moneyTwo.png" width="33" height="22"/>
     </resources>

@@ -139,14 +139,7 @@
         }else if ([itemModel.channel isEqualToString:@"OFFLINE"]){
             [self hideLoadingView];
             orderNO = payInfo;
-            offLineView = [[OffLineView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-            offLineView.orderNo = orderNO;
-            offLineView.weiXianCode = self.postModel.wechatId;
-            offLineView.telephone = self.postModel.mobile;
-            offLineView.delegate = self;
-            offLineView.liShiLsb.text =  @"注意：1.添加小哥微信线下转账，并将充值订单号发送小哥确认。\n2.在小哥未确认订单前，建议不要关闭此页面，以免影响发单。\n3.如不需要进行发单，可继续购彩等其他操作。";
-            [offLineView loadDate];
-            [self.view addSubview:offLineView];
+            [self setOffLine];
         }else if ([itemModel.channel isEqualToString:@"BILLS_ALI"]){
             NSString *urlStr = [NSString stringWithFormat:@"alipays://platformapi/startapp?saId=10000007&qrcode=%@",payInfo[@"qrCode"]];
             [self.payWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlStr]]];
@@ -156,6 +149,19 @@
     }else{
         [self showPromptText: msg hideAfterDelay: 1.7];
     }
+}
+
+
+- (void)setOffLine {
+    offLineView = [[OffLineView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    offLineView.orderNo = self.cashPayMemt.schemeNo;
+    offLineView.weiXianCode = self.postModel.wechatId;
+    offLineView.telephone = self.postModel.mobile;
+    offLineView.delegate = self;
+    offLineView.fanganHao.text = @"方案号";
+    offLineView.liShiLsb.text =  @"注意：1.添加小哥微信线下转账，并将方案号发送小哥确认。\n2.在小哥未确认订单前，建议不要关闭此页面，以免影响发单。\n3.如不需要进行发单，可继续购彩等其他操作。";
+    [offLineView loadDate];
+    [self.view addSubview:offLineView];
 }
 
 - (void)alreadyRechare{

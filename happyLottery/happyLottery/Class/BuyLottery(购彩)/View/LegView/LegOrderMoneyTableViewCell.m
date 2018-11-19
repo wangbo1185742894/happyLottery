@@ -20,6 +20,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *orderCost;
 
 @property (weak, nonatomic) IBOutlet UILabel *yuanJiaoLab;
+@property (weak, nonatomic) IBOutlet UILabel *schemeNo;
+
+@property (weak, nonatomic) IBOutlet UIButton *orderBtn;
+
+@property (nonatomic, strong)NSString *orderNo;
+
 
 @end
 
@@ -42,7 +48,16 @@
     [self.delegate showOrderDetail];
 }
 
+- (IBAction)fuZhiFangAnhao:(id)sender {
+    UIPasteboard *pboard = [UIPasteboard generalPasteboard];
+    BaseViewController *baseVC = (BaseViewController *)[self getCurrentVC];
+    [baseVC showPromptText:@"方案号已复制到剪贴板" hideAfterDelay:2.0];
+    pboard.string = self.orderNo;
+}
+
 - (void)loadZhuiHaoNewDate:(OrderProfile *)detail andStatus:(NSString *)orderStatus andName:(NSString *)name andWon:(NSString *)won{
+    self.schemeNo.hidden = YES;
+    self.orderBtn.hidden = YES;
     if (name.length == 0) {
         name = @"";
     }
@@ -59,6 +74,8 @@
 }
 
 - (void)loadNewDate:(JCZQSchemeItem *)detail andStatus:(NSString *)orderStatus{
+    self.schemeNo.hidden = YES;
+    self.orderBtn.hidden = YES;
     self.orderCost.text = [NSString stringWithFormat:@"订单总额%@元",detail.betCost];
     if ([orderStatus isEqualToString:@"未中奖"] ){
         self.orderStatue.text = OrderStatueLose;
@@ -67,7 +84,11 @@
     }else if ([orderStatus isEqualToString:@"待开奖"]){
         self.orderStatue.text = @"等待开奖";
     }else if ([orderStatus isEqualToString:@"待支付"]){
+        self.orderNo = detail.schemeNO;
+        self.schemeNo.hidden = NO;
+        self.orderBtn.hidden = NO;
         self.orderStatue.text = OrderStatueWait(detail.legName);
+        self.schemeNo.text = [NSString stringWithFormat:@"方案号：%@",detail.schemeNO];
     }else if ([orderStatus isEqualToString:@"已支付"]){
         self.orderStatue.text = @"彩票站出票中";
     }else if ([orderStatus isEqualToString:@"已中奖"]){

@@ -449,7 +449,6 @@
 		2D525F0620FDB13600D66C81 /* ZhuiHaoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D525F0420FDB13500D66C81 /* ZhuiHaoViewController.m */; };
 		2D621C722092F6E000526041 /* yuyuefangan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D621C702092F6DF00526041 /* yuyuefangan@3x.png */; };
 		2D621C732092F6E000526041 /* yuyuefangan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D621C712092F6DF00526041 /* yuyuefangan@2x.png */; };
-		2D621C752092FD7700526041 /* launchImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D621C742092FD7700526041 /* launchImage@2x.png */; };
 		2D628B181FEB9E290013D0E1 /* BaseJczaMorePlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D628B171FEB9E290013D0E1 /* BaseJczaMorePlayView.m */; };
 		2D628B231FECA9C40013D0E1 /* touzhubeishujian@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D628B191FECA9C00013D0E1 /* touzhubeishujian@2x.png */; };
 		2D628B241FECA9C40013D0E1 /* touzhuxuanzezhifuselect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D628B1A1FECA9C00013D0E1 /* touzhuxuanzezhifuselect@2x.png */; };
@@ -490,7 +489,6 @@
 		2D638F5520EE2C54004463FC /* UserInfoBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D638F5420EE2C54004463FC /* UserInfoBaseModel.m */; };
 		2D638F5920EF1518004463FC /* UserInfoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D638F5720EF1518004463FC /* UserInfoDetailViewController.m */; };
 		2D638F5A20EF1518004463FC /* UserInfoDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D638F5820EF1518004463FC /* UserInfoDetailViewController.xib */; };
-		2D638F5F20F32CAA004463FC /* launch_x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D638F5E20F32CAA004463FC /* launch_x.png */; };
 		2D638F6120F32FAE004463FC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D638F6020F32FAD004463FC /* Images.xcassets */; };
 		2D638F6420F45E05004463FC /* icon_shiyixuanwu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D638F6220F45E04004463FC /* icon_shiyixuanwu@3x.png */; };
 		2D638F6520F45E05004463FC /* icon_shiyixuanwu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D638F6320F45E04004463FC /* icon_shiyixuanwu@2x.png */; };
@@ -1153,6 +1151,8 @@
 		F9305F3221A2769E00AA782B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F91B62200EF7DE0036DD2A /* SystemConfiguration.framework */; };
 		F9305F3321A276BE00AA782B /* libPaymentControl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9305F2F21A26EF700AA782B /* libPaymentControl.a */; };
 		F9305F3421A276C800AA782B /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F93AC8091FFDC603003DF05C /* libz.tbd */; };
+		F9305F3621A2CDEC00AA782B /* launchImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9305F3521A2CDEC00AA782B /* launchImage@2x.png */; };
+		F9305F3821A2CE1100AA782B /* launch_x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9305F3721A2CE1100AA782B /* launch_x.png */; };
 		F93204ED1FECF98B00E22A27 /* pass1.png in Resources */ = {isa = PBXBuildFile; fileRef = F93204E31FECF98800E22A27 /* pass1.png */; };
 		F93204EE1FECF98B00E22A27 /* pass0.png in Resources */ = {isa = PBXBuildFile; fileRef = F93204E41FECF98900E22A27 /* pass0.png */; };
 		F93204EF1FECF98B00E22A27 /* pass2.png in Resources */ = {isa = PBXBuildFile; fileRef = F93204E51FECF98900E22A27 /* pass2.png */; };
@@ -2456,7 +2456,6 @@
 		2D525F0520FDB13500D66C81 /* ZhuiHaoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhuiHaoViewController.h; sourceTree = "<group>"; };
 		2D621C702092F6DF00526041 /* yuyuefangan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "yuyuefangan@3x.png"; path = "homeres/yuyuefangan@3x.png"; sourceTree = "<group>"; };
 		2D621C712092F6DF00526041 /* yuyuefangan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "yuyuefangan@2x.png"; path = "homeres/yuyuefangan@2x.png"; sourceTree = "<group>"; };
-		2D621C742092FD7700526041 /* launchImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launchImage@2x.png"; sourceTree = "<group>"; };
 		2D628B161FEB9E290013D0E1 /* BaseJczaMorePlayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseJczaMorePlayView.h; sourceTree = "<group>"; };
 		2D628B171FEB9E290013D0E1 /* BaseJczaMorePlayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseJczaMorePlayView.m; sourceTree = "<group>"; };
 		2D628B191FECA9C00013D0E1 /* touzhubeishujian@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "touzhubeishujian@2x.png"; sourceTree = "<group>"; };
@@ -2505,7 +2504,6 @@
 		2D638F5620EF1518004463FC /* UserInfoDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfoDetailViewController.h; sourceTree = "<group>"; };
 		2D638F5720EF1518004463FC /* UserInfoDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserInfoDetailViewController.m; sourceTree = "<group>"; };
 		2D638F5820EF1518004463FC /* UserInfoDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserInfoDetailViewController.xib; sourceTree = "<group>"; };
-		2D638F5E20F32CAA004463FC /* launch_x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch_x.png; sourceTree = "<group>"; };
 		2D638F6020F32FAD004463FC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2D638F6220F45E04004463FC /* icon_shiyixuanwu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_shiyixuanwu@3x.png"; sourceTree = "<group>"; };
 		2D638F6320F45E04004463FC /* icon_shiyixuanwu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_shiyixuanwu@2x.png"; sourceTree = "<group>"; };
@@ -3497,6 +3495,8 @@
 		F92F4B6C200DADA5005E33AC /* NNValidationCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NNValidationCodeView.h; sourceTree = "<group>"; };
 		F9305F2E21A26EEA00AA782B /* UPPaymentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPPaymentControl.h; sourceTree = "<group>"; };
 		F9305F2F21A26EF700AA782B /* libPaymentControl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPaymentControl.a; sourceTree = "<group>"; };
+		F9305F3521A2CDEC00AA782B /* launchImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launchImage@2x.png"; sourceTree = "<group>"; };
+		F9305F3721A2CE1100AA782B /* launch_x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch_x.png; sourceTree = "<group>"; };
 		F93204E31FECF98800E22A27 /* pass1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pass1.png; sourceTree = "<group>"; };
 		F93204E41FECF98900E22A27 /* pass0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pass0.png; sourceTree = "<group>"; };
 		F93204E51FECF98900E22A27 /* pass2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pass2.png; sourceTree = "<group>"; };
@@ -5619,6 +5619,8 @@
 		2DCBB2B71FD107F000934D92 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				F9305F3721A2CE1100AA782B /* launch_x.png */,
+				F9305F3521A2CDEC00AA782B /* launchImage@2x.png */,
 				F9F645A3218879C1003E459B /* LegImage */,
 				2DBFB42F2178196B0074B024 /* weixinsaoma@2x.png */,
 				2DBFB4302178196C0074B024 /* weixinsaoma@3x.png */,
@@ -5699,7 +5701,6 @@
 				2D525EFC20FC3DA400D66C81 /* winstopselect@3x.png */,
 				F90D690020F4AF51007865E4 /* findyilou@2x.png */,
 				F90D690120F4AF52007865E4 /* findyilou@3x.png */,
-				2D638F5E20F32CAA004463FC /* launch_x.png */,
 				F90D68D820EF65DA007865E4 /* deletehelp@3x.png */,
 				F90D68D620EF65CF007865E4 /* deletehelp@2x.png */,
 				F9E53D2820EE26B90072B8AF /* MineIcon */,
@@ -5756,7 +5757,6 @@
 				2D4D608F20AEAACB00280033 /* lvsebiankuang@3x.png */,
 				F9DC8C3320A57E71006B31F4 /* PersonCenter */,
 				2D05C82220A43619001A8953 /* gendanres */,
-				2D621C742092FD7700526041 /* launchImage@2x.png */,
 				2D621C712092F6DF00526041 /* yuyuefangan@2x.png */,
 				2DF69FF6215B56EC007F8493 /* rengoureddakaitest@2x.png */,
 				2DF69FF5215B56EC007F8493 /* rengoureddakaitest@3x.png */,
@@ -8401,6 +8401,7 @@
 				F9BC6E6220C2DD3D0037998B /* xuhao1@3x.png in Resources */,
 				2D8CBFB01FF328D800CC367F /* paysuccess@2x.png in Resources */,
 				F9E53D5220EE28D70072B8AF /* order_mine@3x.png in Resources */,
+				F9305F3621A2CDEC00AA782B /* launchImage@2x.png in Resources */,
 				F9BC6E2920C2CA090037998B /* tishi_man@2x.png in Resources */,
 				F9E0FC1C219988AE008B09B5 /* leg_fuzhi@2x.png in Resources */,
 				F90B1E3E216F508800A32D38 /* icon_paiwu@3x.png in Resources */,
@@ -8602,7 +8603,6 @@
 				2D5171B42007110D00C3CD7F /* SchemeInfoViewCell.xib in Resources */,
 				F9B5D98D2060A9DE00C9F6DC /* flag410@2x.png in Resources */,
 				F9418F502010991200454109 /* ShareSDK.bundle in Resources */,
-				2D638F5F20F32CAA004463FC /* launch_x.png in Resources */,
 				F9E53D5A20EE28D70072B8AF /* redbag_mine@3x.png in Resources */,
 				2D4B1E861FDF684E0034B708 /* yishoucang@3x.png in Resources */,
 				F9F6CA971FF5D6B100A49F71 /* voice@2x.png in Resources */,
@@ -8646,7 +8646,6 @@
 				2D36176A2061FA3D003093F9 /* dan_Win@2x.png in Resources */,
 				2D628B281FECA9C40013D0E1 /* touzhusaishijia@3x.png in Resources */,
 				2D20602E1FFCB71E0086E266 /* icon_zhifu_normal@2x.png in Resources */,
-				2D621C752092FD7700526041 /* launchImage@2x.png in Resources */,
 				F958F18620BC04FF00F30690 /* icon_jingzu@2x.png in Resources */,
 				F9CDBED02023243A00A1BE71 /* chongzhichecked@2x.png in Resources */,
 				F9ADD2F3214B8A9D0091C4A1 /* red_check_unselect@2x.png in Resources */,
@@ -8914,6 +8913,7 @@
 				2D27A21320DC87950050F6D5 /* 必中头条@2x.png in Resources */,
 				F9E53D6420EE28D70072B8AF /* guanzhu_mine@3x.png in Resources */,
 				F9BC6E2520C2C8A00037998B /* ApplayInventCell.xib in Resources */,
+				F9305F3821A2CE1100AA782B /* launch_x.png in Resources */,
 				F98D0E1520E391F20020B22B /* gyjweicome@2x.png in Resources */,
 				F9B5D96F2060A9DE00C9F6DC /* flag1044@2x.png in Resources */,
 				F9992769200335DC00023F8F /* guanbi@3x.png in Resources */,
