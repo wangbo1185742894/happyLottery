@@ -62,7 +62,7 @@
 
 - (void)loadLegDate:(PostboyAccountModel *)legModel{
     self.selectBackGroup.selected = legModel.isSelect;
-    self.legName.text = legModel.postboyName;
+    self.legName.text = [NSString stringWithFormat:@"代买小哥%@",legModel.postboyName];
     self.weiXin = legModel.wechatId;
     self.telephone = legModel.mobile;
     //小哥在线

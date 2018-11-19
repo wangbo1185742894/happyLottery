@@ -45,7 +45,7 @@
 
 - (void)loadLegDate:(PostboyAccountModel *)legModel{
     self.selectBackGroup.selected = legModel.isSelect;
-    self.legName.text = legModel.postboyName;
+    self.legName.text = [NSString stringWithFormat:@"代买小哥%@",legModel.postboyName];
     //余额
     self.yuE.text = [NSString stringWithFormat:@"%.2f元",[legModel.totalBalance doubleValue]];
     if (legModel.isSelect) {

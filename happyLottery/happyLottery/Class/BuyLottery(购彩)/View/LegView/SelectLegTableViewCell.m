@@ -52,7 +52,7 @@
 
 - (void)loadLegDate:(PostboyAccountModel *)legModel{
     self.selectBackGroup.selected = legModel.isSelect;
-    self.legName.text = legModel.postboyName;
+    self.legName.text = [NSString stringWithFormat:@"代买小哥%@",legModel.postboyName];
     //小哥在线
     if ([legModel.overline boolValue]) {
         self.onlineLab.text = @"在线";
