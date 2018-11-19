@@ -366,7 +366,7 @@
 - (IBAction)actionToRechage:(id)sender {
     
     if (!btnSelected.selected) {
-        [self showPromptViewWithText:@"请选择同意《代跑腿服务协议》" hideAfter:1.7];
+        [self showPromptViewWithText:@"请选择同意《代买服务协议》" hideAfter:1.7];
         return;
     }
     if (self.schemeNo == nil) {

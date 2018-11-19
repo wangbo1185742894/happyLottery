@@ -109,10 +109,6 @@ static NSInteger seq = 0;
 }
 
 - (void)delayMethod{
-    AppDelegate *delegate  = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    if (delegate.showGroup) {
-        [delegate setGroupView];
-    }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

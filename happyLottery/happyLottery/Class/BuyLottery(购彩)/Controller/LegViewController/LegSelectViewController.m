@@ -13,6 +13,7 @@
 #import "ZhuanLegTableViewCell.h"
 #import "SelectHeaderTableViewCell.h"
 #import "LegCashInfoViewController.h"
+#import "WebShowViewController.h"
 
 #define KSelectLegTableViewCell    @"SelectLegTableViewCell"
 #define KCunLegTableViewCell       @"CunLegTableViewCell"
@@ -21,7 +22,7 @@
 
 
 
-@interface LegSelectViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,PostboyManagerDelegate,ZhuanLegDelegate,MemberManagerDelegate>{
+@interface LegSelectViewController ()<UITableViewDelegate,UITableViewDataSource,LotteryManagerDelegate,PostboyManagerDelegate,ZhuanLegDelegate,MemberManagerDelegate,LegSelectFooterDelegate>{
     
     __weak IBOutlet UITableView *personTableView;
     
@@ -56,6 +57,7 @@
     self.postboyMan.delegate = self;
     self.memberMan.delegate = self;
     footView = [[LegSelectFooterView alloc]initWithFrame:CGRectMake(0, 0, KscreenWidth, 74)];
+    footView.delegate = self;
     if ([self.titleName isEqualToString:@"选择代买小哥"]||[self.titleName isEqualToString:@"存款"]) {
         self.bottomHeightCons.constant = 0;
     }else {
@@ -211,7 +213,7 @@
         personTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         return cell;
     }
-    if ([self.titleName isEqualToString:@"给跑腿小哥转账"]) {
+    if ([self.titleName isEqualToString:@"给代买小哥转账"]) {
         ZhuanLegTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KZhuanLegTableViewCell];
         [cell loadLegDate:[self.personArray objectAtIndex:indexPath.row]];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -233,7 +235,7 @@
         }
        return 110;
     }
-    if ([self.titleName isEqualToString:@"给跑腿小哥转账"]) {
+    if ([self.titleName isEqualToString:@"给代买小哥转账"]) {
        return 90;
     }
     return 80;
@@ -280,7 +282,7 @@
     } else {
         PostboyAccountModel *legModel = self.personArray[indexPath.row];
         if (![legModel.overline boolValue]){
-            [self showPromptViewWithText:@"该小哥已离线，请选择其他小哥转账" hideAfter:1.7];
+            [self showPromptViewWithText:@"请选择在线的代买小哥" hideAfter:1.7];
             return;
         }
         for (PostboyAccountModel *model  in self.personArray) {
@@ -296,7 +298,7 @@
 
 
 - (void)alertView:(PostboyAccountModel *)model {
-    ZLAlertView *alert = [[ZLAlertView alloc] initWithTitle:@"预存" message:@"是否将账户余额全部预存至小哥账户下，让小哥进行代付相应金额?"];
+    ZLAlertView *alert = [[ZLAlertView alloc] initWithTitle:@"提示" message:@"是否将账户余额全部转存至小哥账户，由该小哥代为购彩？"];
     [alert addBtnTitle:TitleNotDo action:^{
         model.isSelect = YES;
         [self.delegate alreadySelectModel:model];
@@ -354,6 +356,15 @@
 - (IBAction)actionQueDing:(id)sender {
     [self.delegate alreadySelectModel:self.selectlegModel];
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+- (void)actionToDelegate{
+    NSURL *pathUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"postboy_agreement" ofType:@"html"]];
+    WebShowViewController *webShow = [[WebShowViewController alloc]init];
+    webShow.pageUrl = pathUrl;
+    webShow.title = @"代买服务协议";
+    [self.navigationController pushViewController:webShow animated:YES];
 }
 
 @end

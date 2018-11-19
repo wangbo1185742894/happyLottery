@@ -8,7 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol LegSelectFooterDelegate <NSObject>
+
+- (void)actionToDelegate;
+
+@end
+
 @interface LegSelectFooterView : UIView
+
+@property (nonatomic,weak) id<LegSelectFooterDelegate> delegate;
 
 
 @end

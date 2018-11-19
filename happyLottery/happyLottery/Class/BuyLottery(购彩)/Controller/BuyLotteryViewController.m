@@ -1070,7 +1070,7 @@ static NSString *ID = @"LotteryAreaViewCell";
     [super viewDidAppear:animated];
     NSString *  isShow = [[NSUserDefaults standardUserDefaults] objectForKey:KLegIntroduce];
     if (isShow == nil) {
-        ZLAlertView *alert = [[ZLAlertView alloc] initWithTitle:@"业务说明" message:@"现业务模式调整为用户转账给代买小哥，小哥实体彩票店代购形式。因此请于下单前先将您的账户余额转入小哥账户。"];
+        ZLAlertView *alert = [[ZLAlertView alloc] initWithTitle:@"业务说明" message:@"现业务模式调整为用户转账给代买小哥，小哥实体彩票店代购形式。因此请于下单前先将您的账户余额转入小哥账户。此操作不会影响您的正常购彩、充值、提现等功能。"];
         [alert addBtnTitle:@"我知道了" action:^{
             [[NSUserDefaults standardUserDefaults] setValue:@1  forKey:KLegIntroduce];
             [[NSUserDefaults standardUserDefaults] synchronize];

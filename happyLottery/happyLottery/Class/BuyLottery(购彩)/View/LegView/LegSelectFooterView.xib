@@ -35,16 +35,19 @@
                     <color key="textColor" red="0.3294117647" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Fi-Cn-bCA">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Fi-Cn-bCA">
                     <rect key="frame" x="6" y="49" width="120" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="3EL-Ia-tmq"/>
                         <constraint firstAttribute="width" constant="120" id="qjO-RZ-OSU"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <state key="normal" title="《代跑腿服务协议》">
+                    <state key="normal" title="《代买服务协议》">
                         <color key="titleColor" red="0.1176470588" green="0.77647058820000003" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
+                    <connections>
+                        <action selector="actionToDelegate:" destination="iN0-l3-epB" eventType="touchUpInside" id="0qF-bs-Jjp"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

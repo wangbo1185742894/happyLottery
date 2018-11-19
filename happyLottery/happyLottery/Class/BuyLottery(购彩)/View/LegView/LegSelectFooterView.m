@@ -22,4 +22,8 @@
     return  self;
 }
 
+- (IBAction)actionToDelegate:(id)sender {
+    [self.delegate actionToDelegate];
+}
+
 @end

@@ -212,33 +212,30 @@
     }
 }
 
-
 //显示充几送几
 -(void)reloadRechargeCost:(NSArray *)rechList{
     int i = 0;
     for (RechargeModel  *model in rechList) {
-        
-        
         if (model.isSelect == YES) {
-            self.txtChongZhiJIne.text = model.recharge;
-            selectRech = model;
+            if ([model.rechargeChannel isEqualToString:@"YUE"]) {
+                self.txtChongZhiJIne.text = [NSString stringWithFormat:@"%.2f",[self.curUser.balance doubleValue] + [self.curUser.notCash doubleValue]];
+                selectRech = nil;
+            } else {
+                self.txtChongZhiJIne.text = model.recharge;
+                selectRech = model;
+            }
         }
         
         for (UIButton *itemDic in self.chongZhiSelectItem) {
             
-//                itemDic.layer.borderColor = SystemGreen.CGColor;
-//                [itemDic setBackgroundImage:[UIImage imageWithColor:SystemGreen] forState:UIControlStateSelected];
-//                [itemDic setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//
-//
-//                itemDic.layer.borderColor = TFBorderColor.CGColor;
-//                [itemDic setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateSelected];
-//                [itemDic setTitleColor:SystemLightGray forState:UIControlStateNormal];
-            
             if (itemDic.tag == 100 + i) {
-                itemDic.selected = model.isSelect;
-                if (itemDic.selected == YES) {
-                    [self setItem:itemDic];
+                if ([model.rechargeChannel isEqualToString:@"YUE"]) {
+                     [self setItem:nil];
+                } else {
+                    itemDic.selected = model.isSelect;
+                    if (itemDic.selected == YES) {
+                        [self setItem:itemDic];
+                    }
                 }
                 [itemDic setTitle: [NSString stringWithFormat:@"￥%.2f",[model.recharge doubleValue]] forState:0];
             }
@@ -282,7 +279,6 @@
         
         item.selected = NO;
     }
-  
     sender.selected = !sender.selected;
     for (RechargeModel *model in [self getRechList]) {
         if ([sender.currentTitle isEqualToString:[NSString stringWithFormat:@"￥%.2f",[model.recharge doubleValue]]]) {
@@ -317,7 +313,9 @@
         item.layer.cornerRadius = 4;
         item.layer.masksToBounds = YES;
     }
-    if ([selectRech.handsel doubleValue] == 0) {
+    if (selectRech == nil) {
+        [_btnChongzhi setTitle:[NSString stringWithFormat:@"实际到账%.2f元", [self.txtChongZhiJIne.text doubleValue]] forState:0];
+    } else if ([selectRech.handsel doubleValue] == 0) {
         [_btnChongzhi setTitle:[NSString stringWithFormat:@"实际到账%.2f元",[selectRech.recharge doubleValue]] forState:0];
     }else {
         [_btnChongzhi setTitle:[NSString stringWithFormat:@"实际到账%.2f+%.2f元",[selectRech.recharge doubleValue] ,[selectRech.handsel doubleValue]] forState:0];
@@ -755,7 +753,7 @@
 - (void)actionToSelectLeg {
     LegSelectViewController *legSelectVC = [[LegSelectViewController alloc]init];
     legSelectVC.delegate = self;
-    legSelectVC.titleName = @"给跑腿小哥转账";
+    legSelectVC.titleName = @"给代买小哥转账";
     legSelectVC.curModel = self.curModel;
     [self.navigationController pushViewController:legSelectVC animated:YES];
 }

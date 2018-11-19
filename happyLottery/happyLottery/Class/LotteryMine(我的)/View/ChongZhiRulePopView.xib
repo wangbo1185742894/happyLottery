@@ -35,7 +35,7 @@
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
-                            <state key="normal" title="充值小贴士">
+                            <state key="normal" title="转账小贴士">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
@@ -55,7 +55,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <attributedString key="attributedText">
                                 <fragment>
-                                    <mutableString key="content">1.转账时免手续费，即转即时到账，线下支付可能因小哥确认关系，会有部分延迟；                                                              2.每笔转账金额的70%可提现，30%只可用于消费使用，除余额转入部分；                                                                              3.投必中客服热线:  400-600-5558                                                   另附</mutableString>
+                                    <string key="content">1.转账时免手续费，即转即时到账，线下支付可能因小哥确认关系，会有部分延迟；                                                              2.每笔转账金额的70%可提现，30%只可用于消费使用，除余额转入部分；                                                                              3.投必中客服热线:  400-600-5558                                                   另附</string>
                                     <attributes>
                                         <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                         <font key="NSFont" size="11" name="DFWaWaSC-W5"/>

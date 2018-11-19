@@ -142,7 +142,6 @@ static SystemSoundID shake_sound_male_id = 0;
  
     tabBarControllerMain.delegate = self;
     _lastSelectedIndex = 0;
-    _showGroup = NO;
      [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
     [[UITextField appearance]setTintColor:SystemGreen];
     
@@ -1276,9 +1275,17 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
     
     User * curUser = [GlobalInstance instance].curUser;
-    //黑名单用户切换至跟投,圈子，发现 禁掉
-    if(tabBarController.selectedIndex == 1 || tabBarController.selectedIndex == 2 ||tabBarController.selectedIndex == 3){
-        if([curUser.whitelist boolValue] == NO ||curUser == nil){
+    if (tabBarController.selectedIndex == 1 || tabBarController.selectedIndex == 2 ||tabBarController.selectedIndex == 3) {
+        //未登录，跳到登陆页面
+        if (curUser.isLogin == NO || curUser == nil) {
+            AppDelegate *delegate  = (AppDelegate*)[UIApplication sharedApplication].delegate;
+            tabBarController.selectedIndex = _lastSelectedIndex;
+            BaseViewController *base = delegate.curNavVC.viewControllers[0];
+            [base needLogin];
+            return;
+        }
+        //黑名单用户切换至跟投,圈子，发现 禁掉
+        if([curUser.whitelist boolValue] == NO){
             UINavigationController  *baseNAVVC = tabBarControllerMain.viewControllers[_lastSelectedIndex];
             BaseViewController *baseVC = (FollowSendViewController *)[baseNAVVC.childViewControllers firstObject];
             [baseVC showPromptText:@"本功能暂未开放" hideAfterDelay:1.0];
@@ -1292,24 +1299,10 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         FollowSendViewController *baseVC = (FollowSendViewController *)[baseNAVVC.childViewControllers firstObject];
         [baseVC refreshView];
     }
-    //切换☞圈子判断登陆
+    //切换☞圈子判断状态
     if (tabBarController.selectedIndex == 2){
-        //未登录
-        
-        if (curUser.isLogin == NO) {
-            
-            AppDelegate *delegate  = (AppDelegate*)[UIApplication sharedApplication].delegate;
-            tabBarController.selectedIndex = _lastSelectedIndex;
-            BaseViewController *base = delegate.curNavVC.viewControllers[0];
-            _showGroup = YES;
-            [base needLogin];
-            return;
-        }
         [self setGroupView];
-        
     }
-
-    _showGroup = NO;
     _lastSelectedIndex = tabBarController.selectedIndex;
 }
 
