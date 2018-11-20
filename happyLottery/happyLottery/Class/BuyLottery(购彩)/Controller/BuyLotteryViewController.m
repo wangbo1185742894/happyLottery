@@ -55,6 +55,7 @@
 #define KNewsListCell @"NewsListCell"
 #define AnimationDur 0.3
 #define KAppSignModelShow @"appSignModelShow"
+//#define KLaBaSignModelShow  @"laBaSignModelShow"
 #define KAppSignModelUrl @"appSignModelUrl"
 #define KEYAPPVERSION @"appVersion"
 #define KLegIntroduce  @"legIntroduce"
@@ -167,13 +168,8 @@ static NSString *ID = @"LotteryAreaViewCell";
     [self setNewsView];
     [self gyjButtonView];
     [self setDLTCTZQView];
-   NSString *  isShow = [[NSUserDefaults standardUserDefaults] objectForKey:KAppSignModelShow];
-    if (isShow == nil) {
-        [self .lotteryMan getAppSign:nil];
-    }else{
-        activityInfoView.hidden = YES;
-    }
-    
+    [self.lotteryMan getAppSign:nil];
+    activityInfoView.hidden = YES;
     [self setTableView];
         openRedpacketButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
@@ -325,19 +321,26 @@ static NSString *ID = @"LotteryAreaViewCell";
     }
     appSignModel = [[AppSignModel alloc]initWith:personList];
     activityInfoView.labActivityInfo.text = appSignModel.describe;
+    activityInfoView.urlStr = appSignModel.skipUrl;
     if (appSignModel.imageUrl != nil) {
           [activityInfoView.imgRedIcon sd_setImageWithURL:[NSURL URLWithString:appSignModel.imageUrl]];
+    }
+    NSString *  isShow = [[NSUserDefaults standardUserDefaults] objectForKey:appSignModel.skipUrl];
+    if (isShow == nil) {
+        activityInfoView.hidden = NO;
+    } else {
+        activityInfoView.hidden = YES;
     }
 }
 
 -(void)startActivity{
+    activityInfoView.hidden = YES;
+    [[NSUserDefaults standardUserDefaults] setValue:@1  forKey:appSignModel.skipUrl];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     WebViewController *webVC = [[WebViewController alloc]init];
-    
     webVC.hidesBottomBarWhenPushed = YES;
     webVC.pageUrl = appSignModel.skipUrl;
     [self.navigationController pushViewController:webVC animated:YES];
-    activityInfoView.hidden = YES;
-    [[NSUserDefaults standardUserDefaults] setObject:@"1" forKey:KAppSignModelShow];
 }
 
 //修改，，，，，，，，，，

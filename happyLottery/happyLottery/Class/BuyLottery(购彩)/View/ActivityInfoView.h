@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *labRedCost;
 @property (weak, nonatomic) IBOutlet UILabel *labActivityInfo;
 @property (weak, nonatomic) IBOutlet UIButton *btnStart;
+@property (nonatomic , strong) NSString *urlStr;
 -(void)setStartBtnTarget:(id)target andAction:(SEL)action;
 @end

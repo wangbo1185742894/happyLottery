@@ -415,7 +415,7 @@
     [self.navigationController pushViewController:webShow animated:YES];
 }
 - (IBAction)commitBtnClick:(id)sender {
-    if (![_curModel.overline boolValue]) {
+    if ([itemModel.channel isEqualToString:@"OFFLINE"] && ![_curModel.overline boolValue]) {
         [self showPromptViewWithText:@"该小哥已离线，请选择其他小哥转账" hideAfter:1.7];
         return;
     }
@@ -552,6 +552,7 @@
         model.isSelect = NO;
     }
     channelList[indexPath.row].isSelect = YES;
+    itemModel = channelList[indexPath.row];
     [self reloadRechargeCostBySelect:[self getRechList]];
     [self.tabChannelList reloadData];
 }

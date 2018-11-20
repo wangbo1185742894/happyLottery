@@ -7,7 +7,7 @@
 //
 
 #import "ActivityInfoView.h"
-#define KAppSignModelShow @"appSignModelShow"
+//#define KLaBaSignModelShow @"laBaSignModelShow"
 @implementation ActivityInfoView
 
 -(id)initWithFrame:(CGRect)frame{
@@ -24,7 +24,7 @@
 
 - (IBAction)actionClose:(id)sender {
     self.hidden = YES;
-    [[NSUserDefaults standardUserDefaults] setValue:@1  forKey:KAppSignModelShow];
+    [[NSUserDefaults standardUserDefaults] setValue:@1  forKey:self.urlStr];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 

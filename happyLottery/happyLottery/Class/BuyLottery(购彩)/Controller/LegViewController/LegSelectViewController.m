@@ -280,10 +280,10 @@
         [self.navigationController pushViewController:legCashInfoVC animated:YES];
     } else {
         PostboyAccountModel *legModel = self.personArray[indexPath.row];
-        if (![legModel.overline boolValue]){
-            [self showPromptViewWithText:@"请选择在线的代买小哥" hideAfter:1.7];
-            return;
-        }
+//        if (![legModel.overline boolValue]){
+//            [self showPromptViewWithText:@"请选择在线的代买小哥" hideAfter:1.7];
+//            return;
+//        }
         for (PostboyAccountModel *model  in self.personArray) {
             model.isSelect = NO;
         }
