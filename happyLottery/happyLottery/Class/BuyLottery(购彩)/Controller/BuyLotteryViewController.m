@@ -168,7 +168,6 @@ static NSString *ID = @"LotteryAreaViewCell";
     [self setNewsView];
     [self gyjButtonView];
     [self setDLTCTZQView];
-    [self.lotteryMan getAppSign:nil];
     activityInfoView.hidden = YES;
     [self setTableView];
         openRedpacketButton.titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -1066,7 +1065,8 @@ static NSString *ID = @"LotteryAreaViewCell";
         redpacketView.hidden = YES;
     }
     [self gyjButtonHiddenOrNot];
-
+    //避免用户使用过程中，不杀进程。无法给出提示
+    [self.lotteryMan getAppSign:nil];//底部红包或者小喇叭
 }
 
 - (void)viewDidAppear:(BOOL)animated{
