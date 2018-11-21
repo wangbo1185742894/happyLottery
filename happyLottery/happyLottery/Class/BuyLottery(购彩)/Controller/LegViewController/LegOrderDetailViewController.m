@@ -491,6 +491,30 @@
                 dic = @{@"timeLab":self.orderPro.completeTime,@"infoLab":legName};
                 [self.infoArray insertObject:dic atIndex:0];
             }
+            BOOL wonStatue = NO;
+            for (int i = 0; i < self.dateArray.count; i++) {
+                OrderProfile *profile = self.dateArray[i];
+                if ([profile.trOrderStatus isEqualToString:@"出票中"]) {  //有未出票状态
+                    wonStatue = YES;
+                    break;
+                }
+                if ([profile.trOrderStatus isEqualToString:@"出票成功"] && profile.trOpenResult.length == 0) {  //有未开奖状态
+                    wonStatue = YES;
+                    break;
+                }
+                if ([profile.trBonus doubleValue] > 0) {
+                    wonStatue = YES;
+                    break;
+                }
+            }
+            if (!wonStatue) {
+                zhuihaoWon = @"未中";
+                if (self.orderPro.completeTime.length!= 0) {
+                    legName = OrderZhuiHaoJieShu;
+                    dic = @{@"timeLab":self.orderPro.completeTime,@"infoLab":legName};
+                    [self.infoArray insertObject:dic atIndex:0];
+                }
+            }
         }else { //已中奖
             for (int i = 0; i < self.dateArray.count; i++) {
                 OrderProfile *profile = self.dateArray[i];
