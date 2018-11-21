@@ -127,6 +127,8 @@ static NSString *ID = @"LotteryAreaViewCell";
    UINavigationController *navGationCotr;
 }
 
+//
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     CGFloat bottomheight;
