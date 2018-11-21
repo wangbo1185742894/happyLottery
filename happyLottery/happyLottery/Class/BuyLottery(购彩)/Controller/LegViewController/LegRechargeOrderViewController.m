@@ -249,7 +249,7 @@
     for (NSInteger i = 0 ; i < infoArray.count ; i ++ ) {
         NSDictionary *itemDic = infoArray[i];
         ChannelModel *model = [[ChannelModel alloc]initWith:itemDic];
-        if ([model.channelValue boolValue] == YES || [model.channelValue isEqualToString:@"open"]||[model.channelValue isEqualToString:@"open_new"]||[model.channelValue isEqualToString:@"open_"]) {
+        if ([model.channelValue boolValue] == YES) {
             [channelList insertObject:model atIndex:0];
          }
     }
